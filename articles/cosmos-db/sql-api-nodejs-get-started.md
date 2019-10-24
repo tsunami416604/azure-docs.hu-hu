@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971397"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754824"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node. js-konzol-alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-adat kezeléséhez
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node. js-konzol alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-adat kezeléséhez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -99,7 +99,7 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
 
    A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket*használja. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. 
    
-   `module.exports = config;`a kód az ```config``` objektum exportálására szolgál, hogy a ```app.js``` fájlon belül hivatkozhat rá.
+   `module.exports = config;` a kód a ```config``` objektum exportálására szolgál, hogy az ```app.js``` fájlon belül hivatkozhat rá.
 
 ## <a id="Connect"></a>Kapcsolódás Azure Cosmos DB fiókhoz
 
@@ -148,9 +148,9 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
    const partitionKey = { kind: "Hash", paths: ["/Country"] };
    ```
 
-   Egy adatbázis az `createIfNotExists` **adatbázisok** osztály vagy a Create függvény használatával hozható létre. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
+   Adatbázis hozható létre az **adatbázisok** osztály `createIfNotExists` vagy Create függvényének használatával. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
 
-2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. A **createDatabase** függvény létrehoz egy új, azonosítóval ```FamilyDatabase```rendelkező adatbázist, amely az ```config``` objektumból van megadva, ha még nem létezik. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
+2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. A **createDatabase** függvény létrehoz egy ```FamilyDatabase``` azonosítójú új adatbázist, amely a ```config``` objektumból van megadva, ha még nem létezik. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
 
    ```javascript
    /**
@@ -257,7 +257,7 @@ Ezután hozzon létre egy tárolót a Azure Cosmos DB fiókon belül, hogy táro
 > [!WARNING]
 > A tárolók létrehozása díjszabási következményekkel jár. Látogasson el az [árképzési oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/) , és tudja, mire számíthat.
 
-A tárolók a **tárolók** osztály vagy a `createIfNotExists` Create függvény használatával hozhatók létre.  A tároló elemeket (az SQL API esetében JSON-dokumentumokat) tartalmaz, valamint a kapcsolódó JavaScript-alkalmazáslogikát.
+A tárolók a `createIfNotExists` vagy a Create függvény használatával hozhatók létre a **tárolók** osztályból.  A tároló elemeket (az SQL API esetében JSON-dokumentumokat) tartalmaz, valamint a kapcsolódó JavaScript-alkalmazáslogikát.
 
 1. Másolja és illessze be a **createContainer** és a **readContainer** függvényt a **readDatabase** függvény alá az app.js fájlban. Ha még nem létezne, a **createContainer** függvény létrehoz egy új tárolót a ```containerId``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readContainer** függvény beolvassa a tároló definícióját, hogy ellenőrizze, hogy a tároló létezik-e.
 
@@ -376,7 +376,7 @@ A tárolók a **tárolók** osztály vagy a `createIfNotExists` Create függvén
 
 ## <a id="CreateItem"></a>Elemek létrehozása
 
-Egy elem az Items osztály Create függvényének használatával hozható létre . Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-be.
+Egy elem az **Items** osztály Create függvényének használatával hozható létre. Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-be.
 
 1. Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Ellenőrizzük, hogy a létrehozás előtt nem létezik-e már ugyanazzal az AZONOSÍTÓval rendelkező tétel.
 
@@ -414,7 +414,7 @@ Egy elem az Items osztály Create függvényének használatával hozható létr
    ```
 
 
-## <a id="Query"></a>Azure Cosmos DB-erőforrások lekérdezése
+## <a id="Query"></a>Azure Cosmos DB erőforrások lekérdezése
 
 Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon végzett részletes lekérdezéseket. Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a tárolóban található dokumentumokra vonatkozóan futtathat le.
 
@@ -662,7 +662,7 @@ Telepítse a projekt függőségeit a NPM-on keresztül. Használja az alábbi p
 
 * ```npm install``` 
 
-Ezután a ```config.js``` fájlban frissítse a config. Endpoint és a config. PrimaryKey értékeket a 3. [lépésben leírtak szerint. Adja meg az alkalmazás konfigurációit](#Config).  
+Ezután a ```config.js``` fájlban frissítse a config. Endpoint és a config. Key értékeket a [3. lépés: az alkalmazás konfigurációjának beállítása](#Config)című témakörben leírtak szerint.  
 
 Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot:  
 
@@ -674,7 +674,7 @@ node app.js
 
 Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB fiók figyelése](monitor-accounts.md)

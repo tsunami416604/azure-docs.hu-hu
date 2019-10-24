@@ -3,27 +3,27 @@ title: Képmoderálás – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: A felnőtteknek és a zamatos tartalomnak az Content Moderator géppel támogatott lemezkép-moderálási és a hurok-áttekintő eszköz használatával mérsékelt képeket használhat.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564898"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757337"
 ---
 # <a name="learn-image-moderation-concepts"></a>A képek moderálásával kapcsolatos fogalmak megismerése
 
-A felnőtteknek és a zamatos tartalomnak az Content Moderator géppel támogatott lemezkép-moderálási és [a hurok](Review-Tool-User-Guide/human-in-the-loop.md) -áttekintő eszköz használatával mérsékelt képeket használhat. Képek beolvasása szöveges tartalomhoz és a szöveg kinyerése és az arcok észlelése. A képeket megtekintheti az egyéni listán, és további műveleteket hajthat végre.
+A felnőtteknek és a zamatos tartalomnak az Content Moderator géppel támogatott lemezkép-moderálási és [a hurok-áttekintő eszköz](Review-Tool-User-Guide/human-in-the-loop.md) használatával mérsékelt képeket használhat. Képek beolvasása szöveges tartalomhoz és a szöveg kinyerése és az arcok észlelése. A képeket megtekintheti az egyéni listán, és további műveleteket hajthat végre.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>A felnőtt és a zamatos tartalom kiértékelése
 
-A  kiértékelési művelet 0 és 1 közötti megbízhatósági pontszámot ad vissza. Az érték igaz vagy HAMIS logikai értéket ad vissza. Ezek az értékek azt jelzik, hogy a rendszerkép tartalmaz-e potenciális felnőtt vagy zamatos tartalmat. Ha az API-t a rendszerképpel (fájl vagy URL) hívja meg, a visszaadott válasz a következő információkat tartalmazza:
+A **kiértékelési** művelet 0 és 1 közötti megbízhatósági pontszámot ad vissza. Az érték igaz vagy HAMIS logikai értéket ad vissza. Ezek az értékek azt jelzik, hogy a rendszerkép tartalmaz-e potenciális felnőtt vagy zamatos tartalmat. Ha az API-t a rendszerképpel (fájl vagy URL) hívja meg, a visszaadott válasz a következő információkat tartalmazza:
 
     "ImageModeration": {
       .............
@@ -109,7 +109,7 @@ Ahelyett, hogy ugyanazt a rendszerképet többször is felhasználja, a támadó
 > A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 >
 
-A Content Moderator egy teljes képlista- [felügyeleti API](try-image-list-api.md) -t biztosít az egyéni lemezképek listáinak kezelésére szolgáló műveletekkel. Kezdje a [képlista API-konzollal](try-image-list-api.md) , és használja a REST API kódot. Ha ismeri a Visual studiót és a-t, tekintse meg a .NET C#-es [képek listáját](image-lists-quickstart-dotnet.md) is.
+A Content Moderator egy teljes [képlista-felügyeleti API](try-image-list-api.md) -t biztosít az egyéni lemezképek listáinak kezelésére szolgáló műveletekkel. Kezdje a [képlista API-konzollal](try-image-list-api.md) , és használja a REST API kódot. Ha ismeri a Visual studiót és a-t, tekintse meg a .NET C#-es [képek listáját](image-lists-quickstart-dotnet.md) is.
 
 ## <a name="matching-against-your-custom-lists"></a>Az Egyéni listák egyeztetése
 
@@ -139,12 +139,12 @@ Példa kivonatra:
     ....
     }
 
-## <a name="human-review-tool"></a>Emberi felülvizsgálati eszköz
+## <a name="human-review-tool"></a>Emberi vizsgálóeszköz
 
 Árnyaltabb esetekben a Content Moderator [felülvizsgálati eszközzel](Review-Tool-User-Guide/human-in-the-loop.md) és az API-val felszínre teheti a moderátorok eredményeit és tartalmát az emberi moderátorok felülvizsgálatában. Áttekintik a gép által hozzárendelt címkéket, és megerősítik a végső döntéseket.
 
 ![Képek felülvizsgálata emberi moderátorok által](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tesztelje a [rendszerkép moderálási API](try-image-api.md) -konzolját, és használja a REST API-kód mintáit. Tekintse meg a [kép moderálása .net](image-moderation-quickstart-dotnet.md) gyors útmutatóját is, ha ismeri a Visual C#studiót és a-t.
+Tesztelje a [rendszerkép moderálási API-konzolját](try-image-api.md) , és használja a REST API-kód mintáit. Tekintse meg a [kép moderálása .net](image-moderation-quickstart-dotnet.md) gyors útmutatóját is, ha ismeri a Visual C#studiót és a-t.

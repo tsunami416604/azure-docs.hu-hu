@@ -1,25 +1,21 @@
 ---
-title: Azure Cloud Shell rövid útmutató | Microsoft Docs
-description: Azure Cloud Shell
-services: ''
-documentationcenter: ''
+title: Azure Cloud Shell rövid útmutató – bash
+description: Megtudhatja, hogyan használhatja a bash parancssort a böngészőben a Azure Cloud Shell használatával.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 8151013f263c6cf2f90e89fa1c3b0b3025f2ea38
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741989"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757395"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>A bash gyors üzembe helyezése Azure Cloud Shell
 
@@ -39,7 +35,7 @@ Ez a dokumentum részletesen ismerteti, hogyan használható a bash a [Azure Por
 > A rendszer minden munkamenetben automatikusan hitelesíti az Azure CLI-t.
 
 ### <a name="select-the-bash-environment"></a>Bash-környezet kiválasztása
-Győződjön meg arról, hogy a környezet legördülő menüje a rendszerhéj ablakának bal oldali `Bash`részén látható. <br>
+Győződjön meg arról, hogy a környezet legördülő lista a rendszerhéj ablak bal oldalán `Bash`. <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Előfizetés beállítása
@@ -54,15 +50,15 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Az előfizetést a későbbi munkamenetek `/home/<user>/.azure/azureProfile.json`esetén is megjegyezjük.
+> Az előfizetést a későbbi, `/home/<user>/.azure/azureProfile.json`t használó munkamenetek esetében emlékezni fogjuk.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy új erőforráscsoportot a "MyRG" nevű WestUS.
 ```azurecli-interactive
 az group create --location westus --name MyRG
 ```
 
-### <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép készítése
+### <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gépek létrehozása
 Hozzon létre egy Ubuntu virtuális gépet az új erőforráscsoporthoz. Az Azure CLI létrehozza az SSH-kulcsokat, és beállítja velük a virtuális gépet. <br>
 
 ```azurecli-interactive
@@ -70,16 +66,16 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> A `--generate-ssh-keys` használata arra utasítja az Azure CLI-t, hogy nyilvános és titkos kulcsokat hozzon `$Home` létre és állítson be a virtuális gépen és a címtárban. Alapértelmezés szerint a kulcsok a `/home/<user>/.ssh/id_rsa` és `/home/<user>/.ssh/id_rsa.pub`a Cloud Shell kerülnek. A `.ssh` mappát a rendszer a csatolt fájlmegosztás 5 GB-os rendszerképében `$Home`őrzi meg.
+> A `--generate-ssh-keys` használata arra utasítja az Azure CLI-t, hogy nyilvános és titkos kulcsokat hozzon létre és állítson be a virtuális gépen, és `$Home` könyvtárat. Alapértelmezés szerint a kulcsok a `/home/<user>/.ssh/id_rsa` és a `/home/<user>/.ssh/id_rsa.pub` Cloud Shell kerülnek. A `.ssh` mappát a csatolt fájlmegosztás 5 GB-os rendszerképe őrzi meg, amely a `$Home` megőrzésére szolgál.
 
-A virtuális gépen lévő felhasználóneve a Cloud Shell ($User@Azure:) által használt Felhasználónév.
+A virtuális gépen lévő felhasználóneve a Cloud Shell ($ User@Azure:) által használt Felhasználónév.
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH-t a linuxos virtuális gépre
 1. Keresse meg a virtuális gép nevét a Azure Portal keresési sávjában.
 2. Kattintson a "kapcsolódás" gombra a virtuális gép nevének és nyilvános IP-címének lekéréséhez. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. SSH-t a virtuális gépre `ssh` a cmd fájllal.
+3. SSH-t a virtuális gépre a `ssh` cmd fájllal.
    ```
    ssh username@ipaddress
    ```
@@ -98,7 +94,7 @@ Az SSH-kapcsolatok létrehozásakor az Ubuntu Welcome promptot kell látnia. <br
    az group delete -n MyRG
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Tudnivalók a bash-fájlok megőrzéséről Cloud Shell](persisting-shell-storage.md) <br>
 [További tudnivalók az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>
 [Tudnivalók a Azure Files Storage szolgáltatásról](../storage/files/storage-files-introduction.md) <br>

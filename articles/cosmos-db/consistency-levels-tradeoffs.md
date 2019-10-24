@@ -1,18 +1,18 @@
 ---
 title: Rendelkezésre állási és teljesítménybeli kompromisszumok a Azure Cosmos DB különböző konzisztenciáji szintjeihez
 description: Rendelkezésre állási és teljesítménybeli kompromisszumok a Azure Cosmos DB különböző konzisztenciáji szintjeihez.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2d80e291b3c054fec92b169c8a216a7189e24b79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384196"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755188"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
@@ -21,10 +21,10 @@ A magas rendelkezésre állást, az alacsony késést vagy mindkettőt a replik�
 A Azure Cosmos DB az adatkonzisztencia a választási lehetőségek spektrumát közelíti meg. Ez a megközelítés több lehetőséget is kínál, mint az erős és a végleges konzisztencia két véglete. Öt jól definiált modell közül választhat a konzisztencia-spektrumon. A modellek a legerősebbtól a leggyengébbig a következők:
 
 - *Erős*
-- *Korlátozott frissesség*
+- *Kötött elavultság*
 - *Munkamenet*
 - *Konzisztens előtag*
-- *Végleges*
+- *Esetleges*
 
 Az egyes modellek rendelkezésre állási és teljesítménybeli kompromisszumokat biztosítanak, és átfogó SLA-kat támogatnak.
 
@@ -50,20 +50,20 @@ Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat á
 
 Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti kapcsolatot határozza meg a régiók széles kimaradásának jelenlétében. Fontos megjegyezni, hogy egy elosztott rendszeren, még erős konzisztencia esetén is előfordulhat, hogy a CAP-tétel miatt nem lehet RPO és nulla RTO rendelkező elosztott adatbázis. Ha többet szeretne megtudni arról, hogy miért, tekintse meg [a Azure Cosmos db egységességi szintjei](consistency-levels.md)című témakört.
 
-|**Régió (k)**|**Replikálási mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
+|**Régió (k)**|**Replikálási mód**|**Konzisztencia szintje**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Egy vagy több főkiszolgáló|Bármely konzisztencia-szint|< 240 perc|< 1 hét|
-|>1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
-|>1|Egyetlen főkiszolgáló|Kötött elavulás|*K* & *T*|< 15 perc|
-|>1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
-|>1|Multi-Master|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
-|>1|Multi-Master|Kötött elavulás|*K* & *T*|0|
+|> 1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
+|> 1|Egyetlen főkiszolgáló|Kötött elavulás|*K*  & *t*|< 15 perc|
+|> 1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
+|> 1|Több főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
+|> 1|Több főkiszolgáló|Kötött elavulás|*K*  & *t*|0|
 
 *K* = egy elem *"k"* verziója (azaz frissítései) száma.
 
 *T* = a legutóbbi frissítés óta eltelt idő *"t"* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet az elosztott rendszerek globális eloszlásáról és az általános konzisztencia-kompromisszumokról. Lásd az alábbi cikkeket:
 

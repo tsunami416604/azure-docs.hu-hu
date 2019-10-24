@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 6a43b721b70858d82083538638853c5bbdf1531d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
-ms.translationtype: MT
+ms.openlocfilehash: 59bf62f73d8ba9732cd89209d2b239fd15a6d844
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004137"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754474"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -44,10 +44,10 @@ Az alábbi táblázat az egyes támogatott nyelvekre mutató hivatkozásokat tar
 
 | Nyelv | Protokoll paraméter |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |Azure-IOT-Device-mqtt |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType. Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Alapértelmezés szerint mindig támogatja a MQTT |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Eszköz alkalmazás migrálása a AMQP-ből a MQTT-be
@@ -68,7 +68,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 * A **ClientId** mezőben használja a **deviceId**-t.
 
-* A **username (Felhasználónév** ) mezőben `{iothubhostname}/{device_id}/?api-version=2018-06-30`használja a `{iothubhostname}` következőt:, ahol a az IoT hub teljes CNAME értéke.
+* A **Felhasználónév** mezőben használja a `{iothubhostname}/{device_id}/?api-version=2018-06-30`, ahol a `{iothubhostname}` az IoT hub teljes CNAME-je.
 
     Ha például az IoT hub neve **contoso.Azure-Devices.net** , és ha az eszköz neve **MyDevice01**, a teljes **Felhasználónév** mezőben a következőket kell tartalmaznia:
 
@@ -115,19 +115,19 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 A MQTT csatlakoztatásához és a csomagok leválasztásához IoT Hub a **műveletek figyelése** csatornán eseményt ad ki. Ez az esemény további információkat tartalmaz, amelyek segíthetnek a kapcsolódási problémák elhárításában.
 
-Az alkalmazás megadhat **egy üzenetet** a **csatlakoztatási** csomagban. Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a **leválasztási** csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
+Az alkalmazás megadhat **egy üzenetet** a **csatlakoztatási** csomagban. Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}`t kell használnia, mivel a (z) definiálni **kívánt témakör neve** telemetria üzenetként **fog** továbbítani. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a **leválasztási** csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 
 Ha a modul-identitás használatával csatlakozik a MQTT-hez IoT Hubhoz, az eszközhöz hasonlóan (lásd [fentebb](#using-the-mqtt-protocol-directly-as-a-device)), de a következőket kell használnia:
 
-* Állítsa be az ügyfél- `{device_id}/{module_id}`azonosítót a következőre:.
+* Állítsa be az ügyfél-azonosítót `{device_id}/{module_id}`ra.
 
-* Ha felhasználónévvel és jelszóval végzi a hitelesítést, állítsa be `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` a felhasználónevet, és használja a modul identitásához társított sas-tokent jelszóként.
+* Ha felhasználónévvel és jelszóval végzi a hitelesítést, állítsa be `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` a felhasználónevet, és használja a modul identitásához társított SAS-tokent jelszóként.
 
-* A `devices/{device_id}/modules/{module_id}/messages/events/` telemetria közzétételéhez használható témakörként.
+* A telemetria közzétételéhez használja a `devices/{device_id}/modules/{module_id}/messages/events/` témakört.
 
-* Használja `devices/{device_id}/modules/{module_id}/messages/events/` a következőt:.
+* A következő módon használhatja a `devices/{device_id}/modules/{module_id}/messages/events/`.
 
 * A Twin GET és a PATCH témakörök azonosak a modulok és az eszközök esetében.
 
@@ -149,13 +149,13 @@ pip install paho-mqtt
 
 Ezután implementálja az ügyfelet egy Python-parancsfájlban. Cserélje le a helyőrzőket a következőképpen:
 
-* `<local path to digicert.cer>`egy helyi fájl elérési útja, amely a DigiCert Baltimore főtanúsítványát tartalmazza. Ezt a fájlt úgy is létrehozhatja, hogy átmásolja a tanúsítvány információit a c-hez készült Azure IoT SDK-ból `-----BEGIN CERTIFICATE-----` . a sorok tartalmazzák `"` a sorokat, és `-----END CERTIFICATE-----`eltávolítja a jeleket az egyes sorok elején és végén, és eltávolítja a [](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) `\r\n`minden sor végén lévő karakterek.
+* `<local path to digicert.cer>` egy helyi fájl elérési útja, amely a DigiCert Baltimore főtanúsítványát tartalmazza. Ezt a fájlt úgy is létrehozhatja, hogy átmásolja a tanúsítvány információit a C Azure IoT SDK [-ban.](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) adja meg a sorokat `-----BEGIN CERTIFICATE-----` és `-----END CERTIFICATE-----`, távolítsa el az `"` jeleket az egyes sorok elején és végén, és távolítsa el a `\r\n` karaktereket az e végén. nagyon egyenes.
 
-* `<device id from device registry>`az IoT hub-hoz hozzáadott eszköz azonosítója.
+* `<device id from device registry>` az IoT hub-hoz hozzáadott eszköz azonosítója.
 
-* `<generated SAS token>`a a cikkben korábban ismertetett módon létrehozott SAS-jogkivonat.
+* a `<generated SAS token>` az eszközhöz a cikkben korábban leírt módon létrehozott SAS-jogkivonat.
 
-* `<iot hub name>`az IoT hub neve.
+* `<iot hub name>` az IoT hub nevét.
 
 ```python
 from paho.mqtt import client as mqtt
@@ -189,7 +189,7 @@ client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
                        device_id + "/?api-version=2018-06-30", password=sas_token)
 
 client.tls_set(ca_certs=path_to_root_cert, certfile=None, keyfile=None,
-               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
 client.tls_insecure_set(False)
 
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
@@ -216,7 +216,7 @@ client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
 cert_file = "<local path to your certificate file>"
 key_file = "<local path to your device key file>"
 client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
-               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
 
 # Connect as before
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
@@ -224,14 +224,14 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT hub `devices/{device_id}/messages/events/` a vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Példa:
+A sikeres kapcsolódást követően az eszközök `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` használatával küldhetnek üzeneteket IoT Hub a **témakör neveként**. A `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Példa:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
 ```
 
 > [!NOTE]
-> Ez `{property_bag}` az elem ugyanazt a kódolást használja, mint a lekérdezési karakterláncok a https protokollban.
+> Ez a `{property_bag}` elem ugyanazt a kódolást használja, mint a lekérdezési karakterláncok a HTTPS protokollban.
 
 Az alábbi lista a IoT Hub implementáció-specifikus viselkedéseit sorolja fel:
 
@@ -245,17 +245,17 @@ További információ: [üzenetküldési fejlesztői útmutató](iot-hub-devguid
 
 ## <a name="receiving-cloud-to-device-messages"></a>Felhőből az eszközre irányuló üzenetek fogadása
 
-Az üzenetek IoT hubból való fogadásához az eszköznek a `devices/{device_id}/messages/devicebound/#` használatával kell előfizetnie egy **témakör-szűrőként**. A témakör szűrője többszintű helyettesítő karaktert `#` használ, amely lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. IoT hub nem teszi lehetővé a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel IoT Hub nem egy általános célú pub-sub Messaging Broker, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
+Az IoT Hub érkező üzenetek fogadásához az eszköznek a `devices/{device_id}/messages/devicebound/#` használatával kell előfizetnie a **témakör-szűrőként**. A témakör szűrő többszintű helyettesítő karakteres `#` csak arra szolgál, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. A IoT Hub nem engedélyezi a `#` vagy a `?` helyettesítő karakter használatát az altémakörök szűréséhez. Mivel IoT Hub nem egy általános célú pub-sub Messaging Broker, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
 
-Az eszköz nem kap semmilyen üzenetet a IoT Hubtól, amíg sikeresen előfizette az eszközre jellemző végpontra, amelyet a `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra**, az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
+Az eszköz nem kap semmilyen üzenetet a IoT Hubtól, amíg sikeresen előfizetett az eszközre vonatkozó végpontra, amelyet az `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra**, az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
 
-IoT hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}/messages/devicebound/`, vagy `devices/{device_id}/messages/devicebound/{property_bag}` ha üzenet tulajdonságai vannak. `{property_bag}`URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságaiban. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei előtaggal **$** rendelkeznek, az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak.
+A IoT Hub üzeneteket küld a **témakör neve** `devices/{device_id}/messages/devicebound/` vagy `devices/{device_id}/messages/devicebound/{property_bag}`, ha vannak üzenet tulajdonságai. a `{property_bag}` URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságainál. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei **$** előtaggal rendelkeznek, az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak.
 
 Ha egy eszköz egy, a **QoS 2-es**verzióra való előfizetést tartalmaz, a IoT hub maximális QoS-szintet biztosít a **SUBACK** -csomagban. Ezután a IoT Hub a QoS 1 használatával továbbítja az üzeneteket az eszköznek.
 
 ## <a name="retrieving-a-device-twins-properties"></a>Az eszközök Twin tulajdonságainak beolvasása
 
-Először egy eszköz előfizet `$iothub/twin/res/#`a szolgáltatásra, hogy megkapja a művelet válaszait. Ezután egy üres üzenetet küld a témakörnek `$iothub/twin/GET/?$rid={request id}`, amely a **kérelem azonosítójának**feltöltésére szolgál. A szolgáltatás ezután elküld egy válaszüzenetet, amely tartalmazza az eszköz Twin `$iothub/twin/res/{status}/?$rid={request id}`-adatokat a témakörben, a kérelem **azonosítójának** használatával.
+Először egy eszköz előfizet a `$iothub/twin/res/#`ra, hogy megkapja a művelet válaszait. Ezt követően üres üzenetet küld a `$iothub/twin/GET/?$rid={request id}` témakörnek, amely a **kérelem azonosítójának**feltöltésére szolgál. A szolgáltatás ezután elküld egy válaszüzenetet, amely tartalmazza az eszköz Twin-adatokat a (z) `$iothub/twin/res/{status}/?$rid={request id}` témakörben, a kérelem **azonosítójának** használatával.
 
 A kérelem azonosítója lehet bármely érvényes érték az üzenet tulajdonságának értékeként, a [IoT hub üzenetkezelési fejlesztői útmutatója](iot-hub-devguide-messaging.md)szerint, az állapot pedig egész számként lesz érvényesítve.
 
@@ -277,27 +277,27 @@ A válasz törzse a Twin eszköz tulajdonságok szakaszát tartalmazza, ahogy az
 
 A lehetséges állapotkódok a következők:
 
-|State | Leírás |
+|Állapot | Leírás |
 | ----- | ----------- |
 | 204 | Sikeres (a rendszer nem ad vissza tartalmat) |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
-| 5** | Kiszolgálói hibák |
+| 5 * * | Kiszolgálói hibák |
 
 További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-device-twins.md).
 
 ## <a name="update-device-twins-reported-properties"></a>A Device Twin szolgáltatás jelentett tulajdonságainak frissítése
 
-A jelentett tulajdonságok frissítéséhez az eszköz egy, a kijelölt MQTT-témakörben közzétett kiadványon keresztül bocsát ki IoT Hub kérelmet. A kérelem feldolgozása után IoT Hub válaszol a frissítési művelet sikerességi vagy meghibásodási állapotára egy kiadványon keresztül egy másik témakörbe. Ez a témakör előfizethet az eszközön, hogy értesítést kapjon a kettős frissítési kérelem eredményéről. Az ilyen típusú kérés/válasz interakció MQTT-ben való megvalósításához az eszköz által a frissítési kérelemben`$rid`eredetileg megadott kérelem-azonosító () fogalmát használjuk ki. Ez a kérelem-azonosító a IoT Hub válaszában is szerepel, hogy az eszköz korrelálja az adott korábbi kérelemre adott választ.
+A jelentett tulajdonságok frissítéséhez az eszköz egy, a kijelölt MQTT-témakörben közzétett kiadványon keresztül bocsát ki IoT Hub kérelmet. A kérelem feldolgozása után IoT Hub válaszol a frissítési művelet sikerességi vagy meghibásodási állapotára egy kiadványon keresztül egy másik témakörbe. Ez a témakör előfizethet az eszközön, hogy értesítést kapjon a kettős frissítési kérelem eredményéről. Az ilyen típusú kérelmek/válaszok interakciójának a MQTT-ben való megvalósításához kihasználjuk az eszköz által kezdetben a frissítési kérelemben megadott kérelem-azonosító (`$rid`) fogalmát. Ez a kérelem-azonosító a IoT Hub válaszában is szerepel, hogy az eszköz korrelálja az adott korábbi kérelemre adott választ.
 
 A következő szakasz azt ismerteti, hogyan frissíti az eszköz a jelentett tulajdonságokat az eszköz két IoT Hubjában:
 
-1. Az eszköznek először elő kell fizetnie a `$iothub/twin/res/#` témakörre, hogy megkapja a művelet válaszait IoT hub.
+1. Az eszköznek először elő kell fizetnie a `$iothub/twin/res/#` témakörre, hogy megkapja a műveletnek a IoT Hubtól érkező válaszait.
 
-2. Az eszköz egy üzenetet küld, amely tartalmazza az eszköz kettős frissítését `$iothub/twin/PATCH/properties/reported/?$rid={request id}` a témakörhöz. Ez az üzenet tartalmazza a **kérelem azonosítójának** értékét.
+2. Az eszköz egy üzenetet küld, amely tartalmazza az eszköz kettős frissítését az `$iothub/twin/PATCH/properties/reported/?$rid={request id}` témakörhöz. Ez az üzenet tartalmazza a **kérelem azonosítójának** értékét.
 
-3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben `$iothub/twin/res/{status}/?$rid={request id}`:. Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
+3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben: `$iothub/twin/res/{status}/?$rid={request id}`. Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
 
-A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. A () értékre beállított `null`tag törli a tagot a tartalmazó objektumból. Példa:
+A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy `null`re beállított tag törli a tagot a tartalmazó objektumból. Példa:
 
 ```json
 {
@@ -308,12 +308,12 @@ A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tu
 
 A lehetséges állapotkódok a következők:
 
-|State | Leírás |
+|Állapot | Leírás |
 | ----- | ----------- |
-| 200 | Siker |
+| 200 | Sikeres |
 | 400 | Hibás kérelem. Helytelen formátumú JSON |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
-| 5** | Kiszolgálói hibák |
+| 5 * * | Kiszolgálói hibák |
 
 Az alábbi Python-kódrészlet a következőt mutatja be: MQTT (PAHO MQTT-ügyfél használata)
 
@@ -329,13 +329,13 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-A két jelentett tulajdonság frissítési műveletének sikeressége után a IoT hub közzétételére szolgáló üzenet a következő témakörben fog `$iothub/twin/res/204/?$rid=1&$version=6`megjelenni:, ahol `204` a a sikeres `$rid=1` állapotkód, amely megfelel a kérelem azonosítójának. az eszköz a kódban tartalmazza, és `$version` a frissítés után az eszköz ikrek által jelentett tulajdonságok szakaszának felel meg.
+A két jelentett tulajdonság frissítési műveletének sikeressége után a IoT Hub közzétételére szolgáló üzenet a következő témakörrel fog rendelkezni: `$iothub/twin/res/204/?$rid=1&$version=6`, ahol a `204` a sikert jelző állapotkód, `$rid=1` az eszköz által megadott kérelem-AZONOSÍTÓnak felel meg a kód és a `$version` a frissítés után az eszközök ikrek által jelentett tulajdonságok szakaszának felel meg.
 
 További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-device-twins.md).
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Ha egy eszköz csatlakoztatva van, IoT hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}`, amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Példa:
+Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakör `$iothub/twin/PATCH/properties/desired/?$version={new version}`, amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Példa:
 
 ```json
 {
@@ -345,7 +345,7 @@ Ha egy eszköz csatlakoztatva van, IoT hub értesítést küld a témakörnek `$
 }
 ```
 
-A tulajdonságok frissítéseihez hasonlóan `null` az értékek azt jelzik, hogy a JSON-objektum tagja törölve van. Azt is vegye figyelembe `$version` , hogy a Twin tulajdonság kívánt tulajdonságok szakaszának új verzióját jelzi.
+A tulajdonságok frissítéseihez hasonlóan `null` érték azt jelenti, hogy a JSON-objektum tagja törölve van. Azt is vegye figyelembe, hogy `$version` a Twin tulajdonság kívánt tulajdonságok szakaszának új verzióját jelzi.
 
 > [!IMPORTANT]
 > IoT Hub csak akkor hoz létre módosítási értesítéseket, ha az eszközök csatlakoztatva vannak. Győződjön meg arról, hogy az [eszköz újrakapcsolódási folyamata](iot-hub-devguide-device-twins.md#device-reconnection-flow) megtartja a kívánt tulajdonságokat a IoT hub és az eszköz alkalmazás között szinkronizálva.
@@ -354,9 +354,9 @@ További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-
 
 ## <a name="respond-to-a-direct-method"></a>Válasz közvetlen metódusra
 
-Először is elő kell fizetnünk `$iothub/methods/POST/#`az eszközre. IoT hub metódus-kérelmeket küld a `$iothub/methods/POST/{method name}/?$rid={request id}`témakörnek, érvényes JSON-val vagy üres törzstel.
+Első lépésként az eszköznek `$iothub/methods/POST/#`ra kell előfizetnie. IoT Hub metódus-kérelmeket küld a témakörnek `$iothub/methods/POST/{method name}/?$rid={request id}`, amely érvényes JSON-vagy üres törzstel rendelkezik.
 
-A válaszadáshoz az eszköz egy érvényes JSON-vagy üres törzsű üzenetet küld a témakörnek `$iothub/methods/res/{status}/?$rid={request id}`. Ebben az üzenetben a **kérelem azonosítójának** egyeznie kell a kérelem üzenetében szereplővel, és az **állapotnak** egész számnak kell lennie.
+A válaszadáshoz az eszköz egy érvényes JSON-vagy üres törzsű üzenetet küld a `$iothub/methods/res/{status}/?$rid={request id}` témakörnek. Ebben az üzenetben a **kérelem azonosítójának** egyeznie kell a kérelem üzenetében szereplővel, és az **állapotnak** egész számnak kell lennie.
 
 További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-devguide-direct-methods.md).
 
@@ -364,7 +364,7 @@ További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-
 
 Végső megfontolásként, ha testre kell szabnia a MQTT protokoll viselkedését a felhős oldalon, tekintse át az [Azure IoT Protocol Gatewayt](iot-hub-protocol-gateway.md). Ez a szoftver lehetővé teszi egy olyan nagy teljesítményű egyéni protokoll-átjáró üzembe helyezését, amely közvetlenül a IoT Hub. Az Azure IoT Protocol Gateway lehetővé teszi, hogy testreszabja az eszköz protokollját, hogy az rozsdaövezetek rehabilitálása MQTT-telepítések vagy más egyéni protokollok is megfeleljenek. Ez a megközelítés azonban megköveteli, hogy egy egyéni protokoll-átjárót futtasson és működtessen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/documentation).
 

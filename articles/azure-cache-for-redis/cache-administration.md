@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263652"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756610"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .
@@ -71,7 +71,7 @@ Ha a **fő** -és a **alárendelt** csomópontok is újraindulnak, akkor a gyors
 Ha csak az egyik csomópontot újraindítja, a rendszer általában nem veszíti el az adatvesztést, de az is lehetséges. Ha például a főcsomópontot újraindították, és a gyorsítótár írása folyamatban van, a gyorsítótárból származó adatok elvesznek. Az adatvesztés egy másik forgatókönyve az egyik csomópont újraindítása, a másik csomópont pedig egy hiba miatt leáll. Az adatvesztés lehetséges okaival kapcsolatos további információkért lásd: [Mi történt az Redis-beli adatokkal?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Újraindíthatom a gyorsítótárat a PowerShell, a CLI vagy más felügyeleti eszközök használatával?
-Igen, a PowerShell-utasításokért lásd: az [Azure cache újraindítása a Redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
+Igen, a PowerShell-utasításokért lásd: az [Azure cache újraindítása a Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
 ## <a name="schedule-updates"></a>Frissítések ütemezése
 A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár-példány karbantartási időszakát. Ha a karbantartási időszak meg van adva, a rendszer minden Redis-kiszolgáló frissítést végez ebben az ablakban. 

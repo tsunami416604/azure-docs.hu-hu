@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Az Azure AD Application Proxy üzembe helyezése | Microsoft Docs'
+title: Azure-AD Application Proxy üzembe helyezése Azure AD Domain Serviceshoz | Microsoft Docs
 description: Az Azure AD Application Proxy használata Azure Active Directory Domain Services felügyelt tartományokban
 services: active-directory-ds
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613019"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754403"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD Application Proxy üzembe helyezése Azure AD Domain Services felügyelt tartományon
 A Azure Active Directory (AD) alkalmazásproxy segítséget nyújt a távoli dolgozók támogatásához azáltal, hogy közzéteszi a helyszíni alkalmazásokat az interneten keresztül. A Azure AD Domain Services segítségével mostantól a helyszínen futó örökölt alkalmazások áthelyezhetők az Azure-infrastruktúra szolgáltatásaiba. Ezeket az alkalmazásokat az Azure AD Application Proxy használatával teheti közzé, így biztonságos távoli hozzáférést biztosíthat a szervezet felhasználói számára.
 
-Ha még nem ismeri az Azure AD Application Proxy, további információt a szolgáltatásról a következő cikkben talál: [Biztonságos távoli hozzáférés biztosítása a](../active-directory/manage-apps/application-proxy.md)helyszíni alkalmazásokhoz.
+Ha még nem ismeri az Azure AD Application Proxyét, további információt a szolgáltatásról a következő cikkben talál: [biztonságos távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz](../active-directory/manage-apps/application-proxy.md).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:
 
 1. Érvényes **Azure-előfizetés**.
@@ -73,7 +73,7 @@ Korábban kiépített egy Windows Server rendszerű virtuális gépet, és csatl
     ![A telepítés feltételeinek elfogadása](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. A telepítés során a rendszer felszólítja, hogy regisztrálja az összekötőt az Azure AD-címtár alkalmazásproxy használatával.
    * Adja meg az **Azure ad-alkalmazás rendszergazdai hitelesítő adatait**. Az alkalmazás-rendszergazda bérlője eltérhet a Microsoft Azure hitelesítő adataitól.
-   * Az összekötő regisztrálásához használt rendszergazdai fióknak ugyanahhoz a címtárhoz kell tartoznia, ahol engedélyezte az alkalmazásproxy szolgáltatást. Ha például a bérlő tartománya contoso.com, akkor a rendszergazdának vagy bármely admin@contoso.com más érvényes aliasnak kell lennie az adott tartományban.
+   * Az összekötő regisztrálásához használt rendszergazdai fióknak ugyanahhoz a címtárhoz kell tartoznia, ahol engedélyezte az alkalmazásproxy szolgáltatást. Ha például a bérlő tartománya contoso.com, a rendszergazdának admin@contoso.com vagy bármely más érvényes aliasnak kell lennie az adott tartományban.
    * Ha az Internet Explorer fokozott biztonsági beállításai be vannak kapcsolva azon a kiszolgálón, amelyen az összekötőt telepíti, lehetséges, hogy a regisztrációs képernyő blokkolva van. A hozzáférés engedélyezéséhez kövesse a hibaüzenet utasításait. Győződjön meg arról, hogy az Internet Explorer fokozott biztonsági beállításai ki vannak kapcsolva.
    * Ha az összekötő regisztrálása meghiúsul, tekintse meg a [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Alkalmazásproxy hibaelhárítása) című anyagot.
 
@@ -90,12 +90,12 @@ Korábban kiépített egy Windows Server rendszerű virtuális gépet, és csatl
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Beállította az Azure AD Application Proxyt, és integrálta azt a Azure AD Domain Services felügyelt tartományával.
 
-* **Alkalmazások migrálása az Azure Virtual Machines szolgáltatásba:** A felügyelt tartományhoz csatlakoztatott Azure-beli virtuális gépekre az alkalmazásokat a helyszíni kiszolgálókról is átirányíthatja. Így könnyebben megszabadulhat a helyszíni kiszolgálók üzemeltetésének infrastrukturális költségeitől.
+* **Alkalmazások migrálása az Azure Virtual Machines** szolgáltatásba: A felügyelt tartományhoz csatlakoztatott Azure-beli virtuális gépekre az alkalmazásokat a helyszíni kiszolgálókról is átirányíthatja. Így könnyebben megszabadulhat a helyszíni kiszolgálók üzemeltetésének infrastrukturális költségeitől.
 
-* **Alkalmazások közzététele az Azure AD Application Proxy használatával:** Azure-beli virtuális gépeken futó alkalmazások közzététele az Azure AD Application Proxy használatával. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
+* **Alkalmazások közzététele az Azure ad Application proxy használatával:** Azure-beli virtuális gépeken futó alkalmazások közzététele az Azure AD Application Proxy használatával. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Üzembe helyezési Megjegyzés – IWA (integrált Windows-hitelesítési) alkalmazások közzététele az Azure AD Application Proxy használatával

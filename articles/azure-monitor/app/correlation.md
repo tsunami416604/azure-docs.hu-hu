@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: aa683e90a328e9525fa7d0a78981aa107818188a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678185"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755376"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -214,6 +214,82 @@ A [OpenTracing adatmodell-specifikációja](https://opentracing.io/) és Applica
 További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md). 
 
 A OpenTracing-fogalmak definícióit lásd: OpenTracing- [specifikáció](https://github.com/opentracing/specification/blob/master/specification.md) és [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetria korreláció a OpenCensus Pythonban
+
+A OpenCensus Python a fentiekben ismertetett `OpenTracing` adatmodell-specifikációkat követi. Emellett a [W3C nyomkövetési környezetét](https://w3c.github.io/trace-context/) is támogatja, ha nincs szükség konfigurációra.
+
+### <a name="incoming-request-correlation"></a>Bejövő kérelmek korrelációja
+
+A OpenCensus Python összekapcsolja a W3C nyomkövetési környezet fejléceit a bejövő kérelmektől a kérések által a kérelmekből generált felölelve. A OpenCensus ezt automatikusan elvégzi a népszerű webalkalmazási keretrendszerek, például a `flask`, a `django` és a `pyramid` integrálásával. A W3C nyomkövetési környezet fejléceit egyszerűen fel kell tölteni a [megfelelő formátummal](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format), és a kéréssel kell elküldeni. Az alábbiakban egy példa `flask` alkalmazás szemlélteti ezt.
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Ez egy minta `flask` alkalmazást futtat a helyi gépen, amely a port `8080` figyeli. A nyomkövetési kontextus összekapcsolásához egy kérést küldünk a végpontnak. Ebben a példában egy `curl` parancsot használhatunk.
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+A [nyomkövetési kontextus fejlécének formátuma](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)a következő információkat származtatja: `version`: `00` 
+ `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
+ `parent-id/span-id`: `00f067aa0ba902b7` 
+ 0: 1
+
+Ha megvizsgáljuk a Azure Monitorba küldendő kérelem bejegyzését, láthatjuk, hogy a nyomkövetési fejléc adataival feltöltött mezők láthatók.
+
+![Képernyőkép a naplók (Analytics) telemetria, a nyomkövetési fejléc mezőinek kijelölése piros mezőben](./media/opencensus-python/0011-correlation.png)
+
+A `id` mező formátuma `<trace-id>.<span-id>`, ahol a `trace-id` a rendszer a kérelemben átadott nyomkövetési fejlécből veszi át, a `span-id` pedig a span 8 bájtos tömbje. 
+
+A `operation_ParentId` mező formátuma `<trace-id>.<parent-id>`, ahol a `trace-id` és a `parent-id` is a kérelemben átadott nyomkövetési fejlécből származik.
+
+### <a name="logs-correlation"></a>Korrelációs naplók
+
+A OpenCensus Python lehetővé teszi a naplók korrelációját a log-rekordok a nyomkövetési AZONOSÍTÓval, a span ID-vel és a mintavételezési jelzővel való bővítésével Ezt a OpenCensus [naplózási integrációjának](https://pypi.org/project/opencensus-ext-logging/)telepítésével teheti meg. A következő attribútumok lesznek hozzáadva a Python `LogRecord`shoz: `traceId`, `spanId` és `traceSampled`. Vegye figyelembe, hogy ez csak az integráció után létrehozott naplózók esetében lép érvénybe.
+Az alábbiakban egy minta alkalmazás szemlélteti ezt.
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+A kód futtatásakor a következő a konzolon érhető el:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+Figyelje meg, hogy van-e olyan spanId, amely a tartományon belüli naplófájlhoz tartozik, amely ugyanaz a spanId, amely a (z) `hello` nevű tartományhoz tartozik.
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetria korreláció a .NET-ben
 

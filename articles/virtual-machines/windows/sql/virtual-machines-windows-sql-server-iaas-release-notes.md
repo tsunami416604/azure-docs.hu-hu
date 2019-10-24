@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300099"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757468"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 
@@ -29,10 +29,10 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | Változások | Részletek |
 | --- | --- |
 | **Teljesítményre optimalizált tárolási konfiguráció** | Most már [teljes mértékben testreszabhatja a tárolási konfigurációt](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) új SQL Server VM létrehozásakor. |
-| **Prémium fájlmegosztás a következőhöz:.** | Most létrehozhat egy feladatátvevő fürtöt a [prémium fájlmegosztás](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) használatával a [közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)eredeti metódusa helyett. 
+| **Prémium fájlmegosztás a következőhöz:.** | Mostantól a [közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)eredeti metódusa helyett egy [prémium fájlmegosztás](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) használatával is létrehozhat egy feladatátvevő fürtöt. 
 | &nbsp; | &nbsp; |
 
-## <a name="august-2019"></a>Augusztus 2019
+## <a name="august-2019"></a>2019. augusztus
 
 | Változások | Részletek |
 | --- | --- |
@@ -40,7 +40,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | &nbsp; | &nbsp; |
 
 
-## <a name="july-2019"></a>Július 2019
+## <a name="july-2019"></a>2019. július
 
 
 | Változások | Részletek |
@@ -48,7 +48,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | **SQL virtuális gép áthelyezése másik régióba** | A Azure Site Recovery használatával [áttelepítheti a SQL Server VM az egyik régióból a másikba](virtual-machines-windows-sql-move-different-region.md). |
 | &nbsp; | &nbsp; |
 
-## <a name="june-2019"></a>Június 2019
+## <a name="june-2019"></a>2019. június
 
 
 | Változások | Részletek |
@@ -69,7 +69,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 
 
-## <a name="april-2019"></a>Április 2019
+## <a name="april-2019"></a>2019. április
 
 | Változások | Részletek |
 | --- | --- |
@@ -77,7 +77,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | &nbsp; | &nbsp; |
 
 
-## <a name="march-2019"></a>Március 2019
+## <a name="march-2019"></a>2019. március
 
 | Változások | Részletek |
 | --- | --- |
@@ -87,7 +87,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | &nbsp; | &nbsp; |
 
 
-## <a name="february-2019"></a>Február 2019
+## <a name="february-2019"></a>2019. február
 
 | Változások | Részletek |
 | --- | --- |
@@ -108,7 +108,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | &nbsp; | &nbsp; |
 
 
-### <a name="november-2018"></a>November 2018
+### <a name="november-2018"></a>2018. november
 
 | Változások | Részletek |
 | --- | --- |

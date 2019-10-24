@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550276"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756549"
 ---
 # <a name="use-the-azure-maps-map-control"></a>A Azure Maps Térkép vezérlőelem használata
 
@@ -44,6 +44,12 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
     <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
+
+    >[!Note]
+    > Az írógéppel definiált definíciók a hozzáadásával importálhatók az alkalmazásba:
+    > ```Javascript
+    > import * as atlas from 'azure-maps-control';
+    > ```
 
 3. Ha úgy szeretné megjeleníteni a térképet, hogy az kitöltse az oldal teljes törzsét, adja hozzá a következő `<style>` elemet a `<head>` elemhez.
 
@@ -102,6 +108,8 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
     </script>
     ```
 
+    [Itt](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)találhat olyan mintákat, amelyek bemutatják, hogyan integrálható Azure Active Directory (HRE) a Azure maps. 
+    
     További információ: [hitelesítés Azure Maps](azure-maps-authentication.md) dokumentummal.
 
 6. Szükség esetén a következő meta kódelem-elemek hozzáadását is megtalálhatja az oldal Head eleméhez:
@@ -222,3 +230,8 @@ További információ hozzáadása a térképhez:
 
 > [!div class="nextstepaction"]
 > [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+A Azure Active Directory (HRE) Azure Maps használatával történő integrálását bemutató minták listáját a következő témakörben tekintheti meg:
+
+> [!div class="nextstepaction"]
+> [HRE hitelesítési minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

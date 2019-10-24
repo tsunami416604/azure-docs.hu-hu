@@ -3,19 +3,19 @@ title: Videotartalom elemzése a kifogásolt anyagokra C# vonatkozóan Content m
 titleSuffix: Azure Cognitive Services
 description: Különböző kifogásolt anyagok videotartalom elemzése a .NET-hez készült Content Moderator SDK-val
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564316"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755238"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Videotartalom elemzése a kifogásolt anyagokhoz a következőben:C#
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="set-up-azure-resources"></a>Az Azure-erőforrások beállítása
 
-A Content Moderator videó-moderálási képessége ingyenes nyilvános előzetes verziójú **adathordozó** -feldolgozóként érhető el Azure Media Servicesban (AMS). A Azure Media Services egy speciális Azure-szolgáltatás, amely a videó tartalmának tárolására és továbbítására szolgál. 
+A Content Moderator videó-moderálási képessége ingyenes nyilvános előzetes verziójú **adathordozó-feldolgozóként** érhető el Azure Media Servicesban (AMS). A Azure Media Services egy speciális Azure-szolgáltatás, amely a videó tartalmának tárolására és továbbítására szolgál. 
 
 ### <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
@@ -40,7 +40,7 @@ Navigáljon az új AMS-előfizetéshez a Azure Portal, és válassza az **API-ho
 
 Az **Azure ad alkalmazás** szakaszban válassza az **új létrehozása** elemet, és nevezze el az új Azure ad-alkalmazás regisztrációját (például "VideoModADApp"). Kattintson a **Save (Mentés** ) gombra, és várjon néhány percet, amíg az alkalmazás konfigurálva van. Ezután meg kell jelennie az új alkalmazás regisztrálásának az oldal **Azure ad-alkalmazás** szakaszában.
 
-Válassza ki az alkalmazás regisztrációját, és kattintson az alatta lévő **alkalmazás kezelése** gombra. Jegyezze fel az **alkalmazás azonosító** mezőjében szereplő értéket; erre később szüksége lesz. Válassza a **Beállítások** > **kulcsok**lehetőséget, és adja meg az új kulcs leírását (például "VideoModKey"). Kattintson a **Mentés**gombra, és figyelje meg az új kulcs értékét. Másolja ezt a karakterláncot, és mentse biztonságos helyre.
+Válassza ki az alkalmazás regisztrációját, és kattintson az alatta lévő **alkalmazás kezelése** gombra. Jegyezze fel az **alkalmazás azonosító** mezőjében szereplő értéket; erre később szüksége lesz. Válassza a **beállítások**  > **kulcsok**lehetőséget, és adja meg az új kulcs leírását (például "VideoModKey"). Kattintson a **Mentés**gombra, és figyelje meg az új kulcs értékét. Másolja ezt a karakterláncot, és mentse biztonságos helyre.
 
 A fenti folyamat alaposabb áttekintése: az [Azure ad-hitelesítés első lépései](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 
@@ -57,8 +57,8 @@ A Azure Media Services Explorer egy felhasználóbarát előtér az AMS-hez. Has
 1. A Visual Studióban hozzon létre egy új **Console app (.NET-keretrendszer)** projektet, és nevezze el **VideoModeration**. 
 1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
 1. Szerezze be a szükséges NuGet-csomagokat. A Solution Explorer (Megoldáskezelő) felületén kattintson a jobb gombbal a projektre és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget, majd keresse meg és telepítse a következő csomagokat:
-    - windowsazure.mediaservices
-    - windowsazure.mediaservices.extensions
+    - windowsazure. Mediaservices
+    - windowsazure. Mediaservices. Extensions
 
 ## <a name="add-video-moderation-code"></a>Videó moderálási kódjának hozzáadása
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Erőforrás-hivatkozások beállítása
 
-Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és `CLIENT_SECRET` az adott alkalmazáshoz létrehozott "VideoModKey" értéke.
+Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe, hogy `CLIENT_ID` az Azure AD-alkalmazás **azonosító** értéke, és `CLIENT_SECRET` az adott alkalmazáshoz létrehozott "VideoModKey" értéke.
 
 ```csharp
 // declare constants and globals
@@ -118,7 +118,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ```
 
-Ha helyi videofájl (legegyszerűbb eset) használatát kívánja használni, adja hozzá a projekthez, és adja meg az elérési útját `INPUT_FILE` (relatív elérési utak a végrehajtási könyvtárhoz viszonyítva).
+Ha helyi videofájl (legegyszerűbb eset) használatát szeretné használni, adja hozzá a projekthez, és adja meg annak elérési útját `INPUT_FILE` értékként (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak).
 
 Emellett létre kell hoznia az _előre definiált. JSON_ fájlt az aktuális könyvtárban, és fel kell használni a verziószám megadásához. Példa:
 
@@ -196,7 +196,7 @@ static void CreateStorageContext()
 
 ### <a name="add-the-code-to-create-azure-media-assets-from-local-file-and-blob"></a>Adja hozzá a kódot az Azure Media-eszközök helyi fájlból és blobból való létrehozásához
 
-A Content Moderator adathordozó-feldolgozó a Azure Media Services platformon belüli eszközökön futtat feladatokat.
+A Content Moderator adathordozó-feldolgozó a Azure Media Services platformon belüli **eszközökön** futtat feladatokat.
 Ezek a módszerek létrehozzák az eszközöket egy helyi fájlból vagy egy társított blobból.
 
 ```csharp
@@ -365,14 +365,14 @@ A Content moderációs feladatok befejezése után elemezze a JSON-választ. Eze
 
 - Videó információinak összegzése
 - **Felvételek** "**töredékek**"
-- "**Események**" **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a zamatos pontszámok alapján
+- "**Események**" **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
 - a **Start**, az **időtartam**, a **totalDuration**és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
  
 > [!NOTE]
-> - `adultScore`a tartalom lehetséges jelenléti és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
-> - `racyScore`a tartalom lehetséges jelenlétét és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
-> - `adultScore`és `racyScore` 0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez az előzetes verzió egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
-> - `reviewRecommended`értéke igaz vagy hamis, a belső pontszám küszöbértékének függvényében. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
+> - `adultScore` a tartalom lehetséges jelenlétét és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
+> - `racyScore` a tartalom lehetséges jelenlétét és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
+> - a `adultScore` és a `racyScore` 0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez az előzetes verzió egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
+> - `reviewRecommended` értéke igaz vagy hamis a belső pontszám küszöbértéke alapján. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
 
 ```json
 {
@@ -426,9 +426,9 @@ A Content moderációs feladatok befejezése után elemezze a JSON-választ. Eze
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan hozhatja ki a moderálási kimenetből származó [video](video-reviews-quickstart-dotnet.md) -felülvizsgálatokat.
+Megtudhatja, hogyan hozhatja ki a moderálási kimenetből származó [video-felülvizsgálatokat](video-reviews-quickstart-dotnet.md) .
 
 [Átiratok moderálásának](video-transcript-moderation-review-tutorial-dotnet.md) hozzáadása a videók felülvizsgálatához.
 

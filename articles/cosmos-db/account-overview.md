@@ -1,27 +1,27 @@
 ---
 title: Azure Cosmos DB-fiókok használata
 description: Ez a cikk a Azure Cosmos DB-fiókok létrehozását és használatát ismerteti
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616997"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757091"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 
 A Azure Cosmos DB egy teljes körűen felügyelt platform-szolgáltatás (Péter). A Azure Cosmos DB használatának megkezdéséhez először létre kell hoznia egy Azure Cosmos-fiókot az Azure-előfizetésében. Az Azure Cosmos-fiókja egyedi DNS-nevet tartalmaz, és az Azure Portal, az Azure CLI vagy más nyelvfüggő SDK-k használatával kezelheti a fiókokat. További információ: [Az Azure Cosmos-fiók kezelése](how-to-manage-database-account.md).
 
-Az Azure Cosmos-fiók a globális terjesztés és a magas rendelkezésre állás alapvető egysége. Az adatok és az átviteli sebesség több Azure-régióban való globális elosztása érdekében bármikor hozzáadhat és eltávolíthat Azure-régiókat az Azure Cosmos-fiókjához. Beállíthatja, hogy az Azure Cosmos-fiók egyetlen vagy több írási régióval rendelkezzen. További információ: Azure- [régiók hozzáadása és eltávolítása Azure Cosmos](how-to-manage-database-account.md)-fiókjához. Beállíthatja az [alapértelmezett konzisztencia](consistency-levels.md) -szintet az Azure Cosmos-fiókban. A Azure Cosmos DB átfogó SLA-kat biztosít, amely magában foglalja az átviteli sebességet, a késést a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állás érdekében. További információ: [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
+Az Azure Cosmos-fiók a globális terjesztés és a magas rendelkezésre állás alapvető egysége. Az adatok és az átviteli sebesség több Azure-régióban való globális elosztása érdekében bármikor hozzáadhat és eltávolíthat Azure-régiókat az Azure Cosmos-fiókjához. Beállíthatja, hogy az Azure Cosmos-fiók egyetlen vagy több írási régióval rendelkezzen. További információ: Azure- [régiók hozzáadása és eltávolítása Azure Cosmos-fiókjához](how-to-manage-database-account.md). Beállíthatja az [alapértelmezett konzisztencia](consistency-levels.md) -szintet az Azure Cosmos-fiókban. A Azure Cosmos DB átfogó SLA-kat biztosít, amely magában foglalja az átviteli sebességet, a késést a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állás érdekében. További információ: [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
 
-Az Azure Cosmos-fiókban lévő összes adathoz való hozzáférés biztonságos kezeléséhez használhatja a fiókjához társított főkulcsokat. [](secure-access-to-data.md) Az adataihoz való további biztonságos hozzáféréshez konfigurálhat egy [VNET-szolgáltatási végpontot](vnet-service-endpoint.md) és egy [IP-tűzfalat](firewall-support.md) az Azure Cosmos-fiókjában. 
+Az Azure Cosmos-fiókban lévő összes adathoz való hozzáférés biztonságos kezeléséhez használhatja a fiókjához társított [főkulcsokat](secure-access-to-data.md) . Az adataihoz való további biztonságos hozzáféréshez konfigurálhat egy [VNET-szolgáltatási végpontot](vnet-service-endpoint.md) és egy [IP-tűzfalat](firewall-support.md) az Azure Cosmos-fiókjában. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elemek egy Azure Cosmos-fiókban
 
@@ -31,7 +31,7 @@ Jelenleg legfeljebb 100 Azure Cosmos-fiókot hozhat létre az Azure-előfizetés
 
 ![Azure Cosmos-fiók hierarchiája](./media/account-overview/hierarchy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kezelheti Azure Cosmos-fiókját és egyéb fogalmait:
 

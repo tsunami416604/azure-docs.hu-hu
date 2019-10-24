@@ -1,23 +1,23 @@
 ---
-title: 'Gyors útmutató: Szöveges tartalom elemzése a C# -Content Moderatorban'
+title: 'Gyors útmutató: szöveges tartalom C# elemzése Content moderator'
 titleSuffix: Azure Cognitive Services
 description: Különböző kifogásolt anyagok szöveges tartalmának elemzése a .NET-hez készült Content Moderator SDK-val
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.author: pafarley
+ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001439"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757225"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: Szöveges tartalom elemzése a kifogásolt anyagokhoz a következőben:C#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rövid útmutató: Szöveg tartalmának elemzése kifogásolható tartalom felismeréséhez C# nyelven
 
 Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtudhatja, hogyan hajthat végre lejáraton alapuló szűrést és a szöveges tartalom besorolását azzal a céllal, hogy a potenciálisan kifogásolt anyagok moderálása megtörténjen.
 
@@ -87,7 +87,7 @@ Ha többet szeretne megtudni arról, mire szolgálnak ezek a műveletek, kattint
 A program a JSON-sztringadatokat a _TextModerationOutput.txt_ fájlba írja. Az ebben a rövid útmutatóban használt mintaszöveg a következő kimenetet adja:
 
 ```json
-Autocorrect typos, check for matching terms, PII, and classify.
+Autocorrect typos, check for matching terms, check for personal data, and classify.
 {
 "OriginalText": "\"Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).\"",
 "NormalizedText": "\" Is this a garbage or crap email abide@ abed. com, phone: 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number ( SSN) . \"",
@@ -172,7 +172,7 @@ Autocorrect typos, check for matching terms, PII, and classify.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű .NET-alkalmazást, amely a Content Moderator szolgáltatás segítségével releváns információkat ad vissza egy adott szövegmintáról. Következő lépésként többet tudhat meg arról, mit jelentenek a különböző jelzők és besorolások, így eldöntheti, milyen adatokra van szüksége, és hogyan kezelje ezeket az alkalmazása.
 

@@ -1,104 +1,107 @@
 ---
-title: 'Oktatóanyag: Statikus webhely üzemeltetése a blob Storage-ban – Azure Storage'
-description: Megtudhatja, hogyan konfigurálhatja a statikus webhely üzemeltetése egy storage-fiókját, és a egy statikus webhelyet üzembe helyezni az Azure Storage.
+title: 'Oktatóanyag: statikus webhely üzemeltetése a blob Storage-ban – Azure Storage'
+description: Megtudhatja, hogyan konfigurálhat egy Storage-fiókot a statikus webhelyek üzemeltetéséhez, és hogyan helyezhet üzembe statikus webhelyeket az Azure Storage-ban.
 author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 10/22/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 4cc38b952e773002e0b5f6b2311187f8d3d46400
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855392"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757565"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Oktatóanyag: Statikus webhely üzemeltetése Blob Storage
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Oktatóanyag: statikus webhely üzemeltetése Blob Storage
 
-Ez az oktatóanyag egy sorozat első része. Abban megismerheti, hogyan készíthet és helyezhet üzembe egy statikus webhely az Azure Storage. Ha elkészült, kell, hogy a felhasználók nyilvánosan statikus webhely. 
+Ez az oktatóanyag egy sorozat első része. Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe statikus webhelyeket az Azure Storage-ban. Ha elkészült, egy olyan statikus webhellyel fog rendelkezni, amelyet a felhasználók nyilvánosan el tudnak érni. 
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Konfigurálja a statikus webhely üzemeltetése
-> * Webhely üzembe helyezése "Hello World"
+> * Statikus webhely üzemeltetésének konfigurálása
+> * "Helló világ!" alkalmazás webhely üzembe helyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Ebben az oktatóanyagban [Visual Studio Code](https://code.visualstudio.com/download), egy ingyenes eszköz programozóknak a statikus webhely létrehozása és üzembe helyezése az Azure Storage-fiókot.
+> [!NOTE] 
+> Győződjön meg arról, hogy létrehoz egy általános célú v2-es Storage-fiókot. A statikus webhelyek semmilyen más típusú Storage-fiókban nem érhetők el.
 
-Miután telepítette a Visual Studio Code-ot, az Azure Storage előzetes bővítmény telepítése. Ez a bővítmény a Visual Studio Code integrálható a Azure Storage felügyeleti funkciókat. A bővítmény használatával fog a statikus webhely telepítése az Azure Storage. A bővítmény telepítéséhez:
+Ez az oktatóanyag a [Visual Studio Code](https://code.visualstudio.com/download), a programozók számára ingyenes eszközt, a statikus webhely felépítését és az Azure Storage-fiókba való üzembe helyezését használja.
+
+A Visual Studio Code telepítése után telepítse az Azure Storage Preview bővítményt. Ez a bővítmény az Azure Storage felügyeleti funkcióit integrálja a Visual Studio Code-ban. A bővítmény használatával helyezheti üzembe statikus webhelyét az Azure Storage-ban. A bővítmény telepítése:
 
 1. Indítsa el a Visual Studio Code-ot.
-2. Kattintson az eszköztár **bővítmények**. Keresse meg *Azure Storage*, és válassza ki a **Azure Storage** bővítmény a listából. Kattintson a **telepítése** gomb a bővítmény telepítésére.
+2. Az eszköztáron kattintson a **bővítmények**elemre. Keressen rá az *Azure Storage*szolgáltatásra, és válassza ki az **Azure Storage** -bővítményt a listából. Ezután kattintson a **telepítés** gombra a bővítmény telepítéséhez.
 
-    ![A VS Code-ban az Azure Storage-bővítményének telepítése](media/storage-blob-static-website-host/install-extension-vs-code.png)
+    ![Az Azure Storage bővítmény telepítése a VS Code-ban](media/storage-blob-static-website-host/install-extension-vs-code.png)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a kezdéshez.
+A kezdéshez jelentkezzen be a [Azure Portalba](https://portal.azure.com/) .
 
-## <a name="configure-static-website-hosting"></a>Konfigurálja a statikus webhely üzemeltetése
+## <a name="configure-static-website-hosting"></a>Statikus webhely üzemeltetésének konfigurálása
 
-Az első lépés, hogy konfigurálja storage-fiókját az Azure Portalon statikus webhely üzemeltetésére. A fiók statikus webhelyüzemeltetésre konfigurálja, az Azure Storage automatikusan létrehoz egy tárolót *$web*. A *$web* tároló a statikus webhely-fájlokat tartalmazza. 
+Első lépésként konfigurálja a Storage-fiókot egy statikus webhely üzemeltetéséhez a Azure Portalban. Ha a fiókját statikus webhely-üzemeltetésre konfigurálja, az Azure Storage automatikusan létrehoz egy *$web*nevű tárolót. A *$web* tároló a statikus webhely fájljait fogja tartalmazni. 
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) a böngészőben. 
-1. Keresse meg a tárfiók, és megjeleníti a fiók áttekintése.
-1. Válassza ki **statikus webhely** statikus webhelyek a konfigurációs lap megjelenítéséhez.
-1. Válassza ki **engedélyezve** statikus webhelyüzemeltetésre a storage-fiók engedélyezése.
-1. Az a **Indexdokumentum nevének** mezőben adja meg egy alapértelmezett indexet lapján *index.html*. Az alapértelmezett index lap jelenik meg, amikor a felhasználók a statikus webhely gyökeréhez.  
-1. Az a **hibadokumentum elérési útjának** mezőben adja meg, egy alapértelmezett hibalap *404. html*. Amikor egy felhasználó megpróbál egy oldal, amely nem szerepel a statikus webhely keresse meg az alapértelmezett hibalap jelenik meg.
-1. Kattintson a **Save** (Mentés) gombra. Az Azure Portalon mostantól megjeleníti a statikus webhely végpontot. 
+1. Nyissa meg a [Azure Portalt](https://portal.azure.com/) a böngészőben. 
+1. Keresse meg a Storage-fiókját, és jelenítse meg a fiók áttekintését.
+1. Válassza a **statikus webhely** lehetőséget a statikus webhelyek konfigurációs oldalának megjelenítéséhez.
+1. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
+1. Az **index dokumentum neve** mezőben adja meg az *index. html*alapértelmezett index lapját. Az alapértelmezett index lap akkor jelenik meg, ha a felhasználó a statikus webhely gyökerére navigál.  
+1. A **hiba-dokumentum elérési útja** mezőben a *404. html*alapértelmezett hibaüzenetét kell megadnia. Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
+1. Kattintson a **Save** (Mentés) gombra. A Azure Portal mostantól megjeleníti a statikus webhely végpontját. 
 
-    ![Statikus webhely üzemeltetése egy storage-fiók engedélyezése](media/storage-blob-static-website-host/enable-static-website-hosting.png)
+    ![Statikus webhely üzemeltetésének engedélyezése Storage-fiókhoz](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-## <a name="deploy-a-hello-world-website"></a>Webhely üzembe helyezése "Hello World"
+## <a name="deploy-a-hello-world-website"></a>"Helló világ!" alkalmazás webhely üzembe helyezése
 
-Ezután hozzon létre egy "Hello World" weboldal a Visual Studio Code használatával, és helyezze üzembe azt a statikus webhely, az Azure Storage-fiókban tárolt.
+Ezután hozzon létre egy "Helló világ!" alkalmazás weblapot a Visual Studio Code-ban, és telepítse azt az Azure Storage-fiókjában üzemeltetett statikus webhelyre.
 
-1. Hozzon létre egy nevű üres mappát *segítségével* a helyi fájlrendszerben. 
-1. Indítsa el a Visual Studio Code-ot, és nyissa meg a mappát, amely az imént létrehozott a **Explorer** panel.
+1. Hozzon létre egy *mywebsite* nevű üres mappát a helyi fájlrendszerben. 
+1. Indítsa el a Visual Studio Code-ot, és nyissa meg az imént létrehozott mappát az **Explorer** paneljén.
 
     ![Mappa megnyitása a Visual Studio Code-ban](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
-1. Az alapértelmezett index fájlt létrehozni a a *segítségével* mappát, és nevezze el *index.html*.
+1. Hozza létre az alapértelmezett index fájlt a *mywebsite* mappában, és nevezze el az *index. html*nevet.
 
-    ![Az alapértelmezett index fájl létrehozása a Visual Studio Code-ban](media/storage-blob-static-website-host/create-index-file-vs-code.png)
+    ![Az alapértelmezett indexfájl létrehozása a Visual Studio Code-ban](media/storage-blob-static-website-host/create-index-file-vs-code.png)
 
-1. Nyissa meg *index.html* a szerkesztőben, illessze be a következő szöveget a fájlba, és mentse:
+1. Nyissa meg az *index. html* fájlt a szerkesztőben, illessze be a következő szöveget a fájlba, majd mentse:
 
     ```
     <h1>Hello World!</h1>
     ```
 
-1. Hozzon létre az alapértelmezett hiba történt a fájl *404. html*.
+1. Hozza létre az alapértelmezett hibaüzenetet, és nevezze el *404. html*néven.
 1. Nyissa meg a *404. html* fájlt a szerkesztőben, illessze be a következő szöveget a fájlba, majd mentse:
 
     ```
     <h1>404</h1>
     ```
 
-1. Területen kattintson a jobb gombbal a *segítségével* mappájában a **Explorer** panelen, majd válassza ki **üzembe helyezés az statikus webhely...**  , a webhelyet üzembe helyezni. A rendszer bekéri jelentkezzen be Azure-előfizetések listájának lekéréséhez.
+1. Kattintson a jobb gombbal a *mywebsite* mappára az **Explorer** panelen, és válassza a **üzembe helyezés statikus webhelyre** ... lehetőséget a webhely üzembe helyezéséhez. A rendszer kérni fogja, hogy jelentkezzen be az Azure-ba az előfizetések listájának lekéréséhez.
 
-1. Válassza ki, amelyhez statikus webhelyüzemeltetésre engedélyezve a storage-fiókot tartalmazó előfizetést. Ezután válassza ki a tárfiókot, amikor a rendszer kéri.
+1. Válassza ki azt a Storage-fiókot tartalmazó előfizetést, amelyhez engedélyezte a statikus webhely üzemeltetését. Ezután válassza ki a Storage-fiókot, amikor a rendszer kéri.
 
-A Visual Studio Code most a fájlok feltöltése a webes végpontra, és a sikeres állapotsor megjelenítése. Indítsa el a webhelyet, megtekintheti azokat az Azure-ban.
+A Visual Studio Code ekkor feltölti a fájlokat a webes végpontba, és megjeleníti a sikeres állapotjelző sávot. Indítsa el a webhelyet, és tekintse meg az Azure-ban.
 
-![Statikus webhely-üzembehelyezési megtekintése az Azure-ban](media/storage-blob-static-website-host/view-static-website-endpoint.png)
+![Statikus webhely üzembe helyezésének megtekintése az Azure-ban](media/storage-blob-static-website-host/view-static-website-endpoint.png)
 
-Az oktatóanyag teljesítése sikeres és a egy statikus webhely telepítése az Azure-bA.
+Sikeresen elvégezte az oktatóanyagot, és üzembe helyezett egy statikus webhelyet az Azure-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az első rész a jelen oktatóanyag bemutatta, statikus webhely üzemeltetése az Azure Storage-fiók konfigurálása, és hogyan hozhat létre, és a egy statikus webhely üzembe helyezése egy Azure-végpont.
+Az oktatóanyag első részében megtanulta, hogyan konfigurálhatja az Azure Storage-fiókját a statikus webhelyek üzemeltetéséhez, és hogyan hozhat létre és helyezhet üzembe statikus webhelyeket egy Azure-végponton.
 
-Most folytassa második, itt konfigurálhatja egy egyéni tartomány SSL-lel az Azure CDN a statikus webhely.
+Most lépjen tovább a második részre, ahol a statikus webhelye számára az Azure CDN használatával konfigurálhat egy egyéni tartományt.
 
 > [!div class="nextstepaction"]
-> [Statikus webhely egyéni tartomány SSL engedélyezése az Azure CDN használatával](storage-blob-static-website-custom-domain.md)
+> [Az SSL-t használó egyéni tartomány engedélyezése a Azure CDN használatával statikus webhelyeken](storage-blob-static-website-custom-domain.md)

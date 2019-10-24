@@ -1,19 +1,19 @@
 ---
 title: A Azure Cosmos DB hírcsatorna-feldolgozó függvénytárának módosítása
 description: A Azure Cosmos DB változás a hírcsatorna-feldolgozó kódtár használatával.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073686"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757041"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Adatcsatorna-processzor módosítása Azure Cosmos DB 
 
@@ -39,7 +39,7 @@ Ha szeretné jobban megismerni, hogy a változási hírcsatorna processzorának 
 
 ## <a name="implementing-the-change-feed-processor"></a>A változási csatorna processzorának implementálása
 
-A belépési pont mindig a figyelt tároló, amely egy `Container` meghívott `GetChangeFeedProcessorBuilder`példányból áll:
+A belépési pont mindig a figyelt tároló, `Container` `GetChangeFeedProcessorBuilder` meghívott példányból:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,16 +49,16 @@ Egy delegált példa:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Végül meghatároz egy nevet ehhez a processzor `WithInstanceName` -példányhoz a és a használatával, amely a bérlet `WithLeaseContainer`állapotának fenntartására szolgáló tároló.
+Végül megadhatja a processzor-példány nevét a `WithInstanceName` és azt a tárolót, amely a bérlet állapotát `WithLeaseContainer`sal tartja karban.
 
-A `Build` hívással megadhatja a processzor azon példányát, amelyet `StartAsync`elindíthat a hívásával.
+A `Build` meghívásával elindíthatja a processzor példányát, amely a `StartAsync` meghívásával indítható el.
 
 ## <a name="processing-life-cycle"></a>Életciklus feldolgozása
 
 A gazdagép-példányok normál életciklusa:
 
 1. Olvassa el a változási csatornát.
-1. Ha nincsenek változások, Aludjon előre meghatározott ideig (testreszabható `WithPollInterval` a-ben a Builder-ben), és lépjen a #1.
+1. Ha nincsenek változások, az alvó állapotot előre definiált ideig (testreszabható `WithPollInterval` a Builder-ben), és nyissa meg a #1.
 1. Ha vannak változások, küldje el azokat a **delegált**számára.
 1. Ha a delegálás **sikeresen**dolgozza fel a módosításokat, frissítse a címbérleti tárolót a legutóbbi feldolgozott időponttal, és lépjen #1.
 
@@ -72,7 +72,7 @@ Ahogy az a bevezetésben is említettük, a változási hírcsatorna processzora
 
 1. Minden példánynak ugyanazzal a bérlet-tároló konfigurációval kell rendelkeznie.
 1. Minden példánynak ugyanazzal a munkafolyamat-névvel kell rendelkeznie.
-1. Minden példánynak más példánynév (`WithInstanceName`) névvel kell rendelkeznie.
+1. Minden példánynak más példánynév (`WithInstanceName`) kell lennie.
 
 Ha ezt a három feltételt alkalmazza, akkor a módosítási hírcsatorna processzora egyenlő terjesztési algoritmussal osztja szét a bérleti tároló összes bérletét az összes futó példányon és a integrálással számításon keresztül. Egy bérlet csak egy példány tulajdonosa lehet egy adott időpontban, így a példányok maximális száma megegyezik a bérletek számával.
 
@@ -90,7 +90,7 @@ A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adat
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 

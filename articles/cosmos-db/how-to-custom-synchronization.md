@@ -1,17 +1,17 @@
 ---
 title: Egyéni szinkronizálás megvalósítása az Azure Cosmos DB magasabb rendelkezésre állásának és teljesítményének optimalizálása érdekében
 description: Ismerje meg, hogyan valósítható meg az egyéni szinkronizálás, hogy jobbá legyen a magasabb rendelkezésre állás és a teljesítmény a Azure Cosmos DBban.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 8fce14496b9f8fa17f2dbfd04b7ea42f1495a8a9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1fdd05f8a4757a49414a2a03c8f991a80186ed44
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093340"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755045"
 ---
 # <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Egyéni szinkronizálás megvalósítása a magasabb rendelkezésre állás és a teljesítmény optimalizálása érdekében
 
@@ -21,7 +21,7 @@ Az alábbi ábra vizuálisan ábrázolja az egyéni szinkronizálási modellt:
 
 ![Egyéni szinkronizálás](./media/how-to-custom-synchronization/custom-synchronization.png)
 
-Ebben az esetben az Azure Cosmos-tárolót világszerte több régióban replikálja a rendszer, több kontinensen. Az ebben a forgatókönyvben található összes régió esetében erős konzisztencia-használat befolyásolja a teljesítményt. Annak érdekében, hogy az írási késleltetés veszélyeztetése nélkül magasabb szintű adattartósságot biztosítson, az alkalmazás két olyan ügyfelet használhat, amelyek ugyanazt a [munkamenet](how-to-manage-consistency.md#utilize-session-tokens)-tokent használják.
+Ebben az esetben az Azure Cosmos-tárolót világszerte több régióban replikálja a rendszer, több kontinensen. Az ebben a forgatókönyvben található összes régió esetében erős konzisztencia-használat befolyásolja a teljesítményt. Annak érdekében, hogy az írási késleltetés veszélyeztetése nélkül magasabb szintű adattartósságot biztosítson, az alkalmazás két olyan ügyfelet használhat, amelyek ugyanazt a [munkamenet-tokent](how-to-manage-consistency.md#utilize-session-tokens)használják.
 
 Az első ügyfél írhat adatbevitelt a helyi régióba (például USA nyugati régiója). A második ügyfél (például az USA keleti régiójában) egy olvasási ügyfél, amely a szinkronizálás biztosítására szolgál. Ha a munkamenet-tokent az írási válaszból a következő olvasásra hajtja végre, az olvasás biztosítja az USA keleti régióba való írások szinkronizálását. Azure Cosmos DB biztosítja, hogy az írások legalább egy régióban láthatók legyenek. Ha az eredeti írási régió leáll, a rendszer a regionális kimaradást is megmaradja. Ebben a forgatókönyvben minden írás szinkronizálva van az USA keleti régiójában, így csökkentve a késést az összes régióban való erős konzisztencia alkalmazása során. Több főkiszolgálós forgatókönyv esetén, ahol az írások minden régióban megtörténnek, kiterjesztheti a modellt úgy, hogy párhuzamosan szinkronizáljon több régióval.
 
@@ -29,7 +29,7 @@ Az első ügyfél írhat adatbevitelt a helyi régióba (például USA nyugati r
 
 Az alábbi minta egy adatelérési réteget mutat be, amely két ügyfelet hoz létre az egyéni szinkronizáláshoz:
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET v2 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -65,7 +65,7 @@ class MyDataAccessLayer
 }
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.Net v3 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -93,7 +93,7 @@ class MyDataAccessLayer
 
 Az ügyfelek inicializálását követően az alkalmazás elvégezheti az írásokat a helyi régióban (USA nyugati régiója), és a következő módon kényszerítheti az írásokat az USA keleti régiójába.
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET v2 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -108,7 +108,7 @@ class MyDataAccessLayer
 }
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.Net v3 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -129,7 +129,7 @@ class MyDataAccessLayer
 
 A modellt kiterjesztheti párhuzamosan több régióba való szinkronizálásra is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Cosmos DB globális eloszlásáról és konzisztenciájáról, olvassa el a következő cikkeket:
 

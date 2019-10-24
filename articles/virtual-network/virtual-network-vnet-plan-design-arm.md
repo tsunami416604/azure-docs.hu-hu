@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168510"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756113"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok megtervezése
 
@@ -107,13 +107,13 @@ Az egyik virtuális hálózat erőforrásai nem tudják feloldani az Azure [beé
 
 ## <a name="permissions"></a>Engedélyek
 
-Az Azure [szerepkör-alapú hozzáférés-vezérlést](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) használ az erőforrásokhoz. Az engedélyek egy [hatókörhöz](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) vannak rendelve a következő hierarchiában: előfizetés, felügyeleti csoport, erőforráscsoport és egyedi erőforrás. A hierarchiával kapcsolatos további tudnivalókért tekintse meg az [erőforrások rendszerezését](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető témakört. Az Azure-beli virtuális hálózatok és az azokhoz kapcsolódó képességek, például a társítás, a hálózati biztonsági csoportok, a szolgáltatási végpontok és az útválasztási táblák használata érdekében a szervezet tagjait a beépített [tulajdonoshoz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [közreműködőhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)vagy [ Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörök, majd rendelje hozzá a szerepkört a megfelelő hatókörhöz. Ha konkrét engedélyeket szeretne rendelni a virtuális hálózati képességek egy részhalmazához, hozzon létre egy [Egyéni szerepkört](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , és rendelje hozzá a [virtuális hálózatokhoz](manage-virtual-network.md#permissions), [alhálózatokhoz és szolgáltatási végpontokhoz](virtual-network-manage-subnet.md#permissions)szükséges konkrét engedélyeket, valamint a [hálózati adaptereket. ](virtual-network-network-interface.md#permissions), [a](virtual-network-manage-peering.md#permissions)társítás, a [hálózat és az alkalmazás biztonsági csoportjai](manage-network-security-group.md#permissions), vagy [útválasztási táblák](manage-route-table.md#permissions) a szerepkörhöz.
+Az Azure [szerepkör-alapú hozzáférés-vezérlést](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) használ az erőforrásokhoz. Az engedélyek egy [hatókörhöz](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) vannak rendelve a következő hierarchiában: felügyeleti csoport, előfizetés, erőforráscsoport és egyedi erőforrás. A hierarchiával kapcsolatos további tudnivalókért tekintse meg az [erőforrások rendszerezését](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető témakört. Az Azure-beli virtuális hálózatok és az azokhoz kapcsolódó képességek, például a társítás, a hálózati biztonsági csoportok, a szolgáltatási végpontok és az útválasztási táblák használata érdekében a szervezet tagjait a beépített [tulajdonoshoz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [közreműködőhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)vagy [ Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörök, majd rendelje hozzá a szerepkört a megfelelő hatókörhöz. Ha konkrét engedélyeket szeretne rendelni a virtuális hálózati képességek egy részhalmazához, hozzon létre egy [Egyéni szerepkört](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , és rendelje hozzá a [virtuális hálózatokhoz](manage-virtual-network.md#permissions), [alhálózatokhoz és szolgáltatási végpontokhoz](virtual-network-manage-subnet.md#permissions)szükséges konkrét engedélyeket, valamint a [hálózati adaptereket. ](virtual-network-network-interface.md#permissions), [a](virtual-network-manage-peering.md#permissions)társítás, a [hálózat és az alkalmazás biztonsági csoportjai](manage-network-security-group.md#permissions), vagy [útválasztási táblák](manage-route-table.md#permissions) a szerepkörhöz.
 
 ## <a name="policy"></a>Szabályzat
 
 Azure Policy lehetővé teszi a szabályzat-definíciók létrehozását, hozzárendelését és kezelését. A szabályzat-definíciók különböző szabályokat alkalmaznak az erőforrásokon, így az erőforrások megfelelnek a szervezeti szabványoknak és a szolgáltatói szerződéseknek. Azure Policy futtatja az erőforrások értékelését, megvizsgálja azokat az erőforrásokat, amelyek nem felelnek meg az Ön által használt szabályzat-definícióknak. Meghatározhat és alkalmazhat például egy olyan házirendet, amely lehetővé teszi a virtuális hálózatok létrehozását egy adott erőforráscsoport vagy régió számára. Egy másik házirend megkövetelheti, hogy minden alhálózathoz hozzá legyen rendelve egy hálózati biztonsági csoport. Ezt követően a rendszer kiértékeli a szabályzatokat az erőforrások létrehozásakor és frissítésekor.
 
-A szabályzatok a következő hierarchiára lesznek alkalmazva: előfizetés, felügyeleti csoport és erőforráscsoport. Tudjon meg többet az [Azure-szabályzatról](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , vagy telepítsen néhány virtuális hálózati [házirend-sablon](policy-samples.md) mintáját.
+A házirendek a következő hierarchiára lesznek alkalmazva: felügyeleti csoport, előfizetés és erőforráscsoport. Tudjon meg többet az [Azure-szabályzatról](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , vagy telepítsen néhány virtuális hálózati [házirend-sablon](policy-samples.md) mintáját.
 
 ## <a name="next-steps"></a>Következő lépések
 

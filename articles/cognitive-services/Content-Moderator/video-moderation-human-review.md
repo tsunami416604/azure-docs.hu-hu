@@ -3,29 +3,29 @@ title: Videó moderálása humán felülvizsgálattal – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: A videó-moderálás és a humán felülvizsgálati eszközök használata mérsékelt, nem megfelelő tartalomra
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561163"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754161"
 ---
 # <a name="video-moderation-with-human-review"></a>Videó moderálása humán felülvizsgálattal
 
-A legjobb eredmények elérése érdekében használja a Content Moderator gépi támogatású [videó](video-moderation-api.md) -moderálási és [emberi felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md) a felnőtteknek (explicit) és a zamatos (szuggesztív) tartalomhoz.
+A legjobb eredmények elérése érdekében használja a Content Moderator gépi támogatású [videó-moderálási](video-moderation-api.md) és [emberi felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md) a felnőtteknek (explicit) és a zamatos (szuggesztív) tartalomhoz.
 
 ## <a name="video-trained-classifier-preview"></a>Videós képzésen alapuló osztályozó (előzetes verzió)
 
 A géppel támogatott videók besorolása vagy a képesített modellek vagy a videós képzésen alapuló modellek alapján érhető el. A képesített videó-besorolásokkal ellentétben a Microsoft felnőtt és zamatos videós besorolása videókkal van betanítva. Ez a módszer jobb egyezési minőséget eredményez.
 
-## <a name="shot-detection"></a>Felvételészlelés
+## <a name="shot-detection"></a>Lövés észlelése
 
 A besorolási adatok kihelyezése során a további videó-intelligenciával rugalmasabban elemezheti a videókat. A képkockák kihelyezése helyett a Microsoft videó-moderálási szolgáltatása is tartalmaz shot szintű információkat. Most lehetősége van arra, hogy a videókat a lövés szintjén és a keret szintjén elemezze.
 
@@ -100,9 +100,9 @@ A videók jellemzően olyan hangvételt igényelnek, amelynek a moderálása a t
 
 ![videó-felülvizsgálati eszköz átirat nézete](images/video-review-transcript-view.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [videó moderálási](video-moderation-api.md)útmutatójának használatába.
-- Ebből a témakörből [](video-reviews-quickstart-dotnet.md) megtudhatja, hogyan hozhatja ki az emberi felülvizsgálók videós felülvizsgálatait a moderált kimenetből.
+- Ebből a témakörből megtudhatja, hogyan hozhatja ki az emberi [felülvizsgálók videós felülvizsgálatait](video-reviews-quickstart-dotnet.md) a moderált kimenetből.
 - [Videó](video-transcript-reviews-quickstart-dotnet.md) -visszajelzéseket adhat hozzá a videókhoz.
 - Tekintse meg a [teljes videó-moderálási megoldás](video-transcript-moderation-review-tutorial-dotnet.md)kidolgozásának részletes leírását.

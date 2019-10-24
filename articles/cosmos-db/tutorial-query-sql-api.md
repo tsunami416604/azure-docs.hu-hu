@@ -1,21 +1,21 @@
 ---
 title: Hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben?
 description: Megismerheti, hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ffebdb0a46fdae981ca73a4569344365459dd7b8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932803"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756819"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB lekérdezése az SQL API használatával
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
 
 Az Azure Cosmos DB [SQL API](documentdb-introduction.md) támogatja a dokumentumok SQL-lel való lekérdezését. Ebben a cikkben egy mintadokumentum, valamint két minta SQL-lekérdezés és azok eredménye található.
 
@@ -65,7 +65,7 @@ További tudnivalók az SQL-lekérdezésekről:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel? Kövesse az [5 perces gyorsútmutató lépéseit](create-mongodb-nodejs.md).
+Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel? Kövesse az [5 perces gyorsútmutató lépéseit](create-cosmosdb-resources-portal.md).
 
 ## <a name="example-query-1"></a>1\. példalekérdezés
 
@@ -121,10 +121,10 @@ A következő lekérdezés a család összes olyan gyermekének utónevét adja 
 
 **Results**
 
-[{"givenName": "Jesse"}, {"givenName": "Lisa"}]
+[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

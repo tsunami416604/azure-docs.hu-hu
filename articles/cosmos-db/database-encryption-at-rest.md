@@ -1,63 +1,63 @@
 ---
-title: Titkosítás inaktív állapotban, az Azure Cosmos DB-ben
-description: Ismerje meg, hogyan nyújt az Azure Cosmos DB a inaktív adatok titkosítását, és hogyan van megvalósítva.
-author: rimman
+title: Titkosítás inaktív állapotban Azure Cosmos DB
+description: Ismerje meg, hogyan biztosítja a Azure Cosmos DB az inaktív adatok titkosítását és megvalósítását.
+author: markjbrown
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f406f008e2c377b39deb8d151855ce7315616701
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616856"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755106"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adattitkosítás a Azure Cosmos DBban 
 
-Titkosítás inaktív állapotban, egy kifejezés, amely gyakran felejtő tárolóeszközök, az adatok titkosítása vonatkozik, például a tartós állapotú meghajtókkal (SSD-kkel) és a merevlemezes (HDD) meghajtók. A cosmos DB az elsődleges adatbázisok SSD meghajtókon tárolja. A media mellékletek és a biztonsági mentések általánosan biztonsági másolatot készít a HDD-k, az Azure Blob storage vannak tárolva. A Cosmos DB-hez készült inaktív adatok titkosítását, kezdve az adatbázisok, media mellékletek és biztonsági mentések titkosítottak. Az adatok most már (a hálózaton kívül) titkosított átvitel és inaktív (felejtő tárolás), így teljes körű titkosítást.
+A inaktív adatok titkosítása olyan kifejezés, amely általában a nem felejtő tárolóeszközökön, például SSD-meghajtókon és merevlemez-meghajtókon (HDD-k) lévő adatok titkosítására utal. A Cosmos DB az elsődleges adatbázisait az SSD-meghajtókon tárolja. Az adathordozó mellékleteit és biztonsági másolatait az Azure Blob Storage tárolja, amelyet általában a HDD-k készítenek. A inaktív adatok titkosítása Cosmos DB esetén az összes adatbázisa, adathordozó-melléklete és biztonsági mentése titkosítva van. Az adatok most már titkosítva vannak az átvitelben (a hálózaton keresztül) és a nyugalmi állapotban (nem felejtő tárolóban), így teljes körű titkosítást biztosítanak.
 
-Mivel egy PaaS szolgáltatás, a Cosmos DB használata egyszerű. Cosmos DB-ben tárolt összes felhasználói adat titkosítva van, inaktív és átvitel, mert nincs teendője. Ez helyezni egy másik módja, hogy "on", alapértelmezés szerint a titkosítás inaktív állapotban van. Nincsenek ki- vagy kikapcsolni. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut. Ez a funkció kínálunk, miközben továbbra is, hogy megfeleljen a [rendelkezésre állását és teljesítményét az SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+A Cosmos DB nagyon könnyen használható. Mivel a Cosmos DBban tárolt összes felhasználói adatok titkosítva vannak, és a átvitel során nem kell semmilyen műveletet végrehajtania. A másik lehetőség az, hogy a titkosítás nyugalmi állapotban van, alapértelmezés szerint "on". Nincsenek olyan vezérlők, amelyekkel ki-vagy bekapcsolhatja. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut. Ezt a funkciót a [rendelkezésre állási és teljesítménybeli SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)-kat továbbra is teljesítjük.
 
-## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Titkosítás inaktív állapotban, az Azure Cosmos DB megvalósítása
+## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Inaktív titkosítás megvalósítása Azure Cosmos DB
 
-Inaktív adatok titkosítását számos biztonsági technológia, többek között a biztonságos kulcs tárolása rendszerek, a titkosított hálózatokat és a titkosítási API-k segítségével van megvalósítva. Adatok feldolgozása és visszafejtésére rendszerek kell kommunikálni a rendszereket, a kulcsok kezelése. Az ábra bemutatja, hogyan titkosított adatok és a kulcsok kezelését választja el egymástól. 
+A REST-alapú titkosítás számos biztonsági technológiával valósul meg, többek között a biztonságos kulcsú tárolási rendszerek, a titkosított hálózatok és a titkosítási API-k használatával. Az adatvisszafejtési és-feldolgozási rendszerek a kulcsokat kezelő rendszerekkel kommunikálnak. Az ábrán látható, hogy a titkosított adatok tárolása és a kulcsok kezelése elkülönül. 
 
-![Tervezési diagramja](./media/database-encryption-at-rest/design-diagram.png)
+![Tervezési diagram](./media/database-encryption-at-rest/design-diagram.png)
 
-Egy felhasználói kérelem használt alapvető folyamat a következőképpen történik:
-- Történik, hogy a felhasználói adatbázis-fiók készen áll, és a tárkulcsok olvassa be a felügyeleti szolgáltatás erőforrás-szolgáltató kérést keresztül.
-- Egy felhasználó kapcsolatot hoz létre a Cosmos DB-hez HTTPS/biztonságos átvitel keresztül. (Az SDK-k absztrakt részletei).
-- A felhasználó küld egy JSON-dokumentum a korábban létrehozott biztonságos kapcsolaton keresztül kell tárolni.
-- A JSON-dokumentum indexelve van, kivéve, ha a felhasználó kikapcsolta az indexelés.
-- A JSON dokumentum és index adatainak, mind a biztonságos tárolás készültek.
-- Az adatok rendszeres időközönként, olvassa el a biztonságos tárból és biztonsági mentése az Azure titkosított Blob Store.
+A felhasználói kérések alapszintű folyamatábrája a következő:
+- A felhasználói adatbázis fiókja készen áll, és a tárolási kulcsok beolvasása a kezelési szolgáltatás erőforrás-szolgáltatójának kérelme alapján történik.
+- A felhasználó HTTPS/biztonságos átvitelen keresztül hoz létre Cosmos DB kapcsolatát. (Az SDK-k elvonták a részleteket.)
+- A felhasználó egy JSON-dokumentumot küld a korábban létrehozott biztonságos kapcsolaton keresztül.
+- A JSON-dokumentum indexelve van, kivéve, ha a felhasználó kikapcsolta az indexelést.
+- A JSON-dokumentumot és az indexet is a biztonságos tárolóba írja a rendszer.
+- Időnként az adatok beolvasása a biztonságos tárolóból történik, és biztonsági másolat készül az Azure-beli titkosított blob-tárolóba.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>K: Mennyibe kerül az Azure Storage szolgáltatás, ha Storage Service Encryption engedélyezve van?
-V: Nincs további díj.
+A: nincs további díj.
 
-### <a name="q-who-manages-the-encryption-keys"></a>K: Kik kezelik a titkosítási kulcsokat?
-V: A kulcsokat a Microsoft felügyeli.
+### <a name="q-who-manages-the-encryption-keys"></a>K: kik kezelik a titkosítási kulcsokat?
+A: a kulcsokat a Microsoft felügyeli.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>K: Milyen gyakran vannak elforgatva a titkosítási kulcsok?
-V: A Microsoft a titkosítási kulcs elforgatására vonatkozó belső irányelveket tartalmaz, amelyek Cosmos DB következnek. A megadott irányelveket nem tesszük közzé. A Microsoft közzététele a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx), amely belső útmutató egy részét, látható, és fejlesztők számára hasznos ajánlott eljárásokat tartalmaz.
+### <a name="q-how-often-are-encryption-keys-rotated"></a>K: milyen gyakran forognak a titkosítási kulcsok?
+A: a Microsoft a titkosítási kulcs elforgatására vonatkozó belső irányelveket tartalmaz, amelyek Cosmos DB következnek. Az adott irányelvek nincsenek közzétéve. A Microsoft közzéteszi a [biztonsági fejlesztési életciklust (SDL)](https://www.microsoft.com/sdl/default.aspx), amelyet a belső útmutatások egy részhalmazának tekintenek, és hasznos gyakorlati tanácsokat tartalmaz a fejlesztők számára.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>K: Használhatom a saját titkosítási kulcsokat?
-V: Cosmos DB egy Pásti szolgáltatás, és a szolgáltatás könnyen használható marad. Azt észleltük, hogy ezt a kérdést gyakran feltesznek, például a PCI DSS megfelelőségi követelménynek proxy kérdést. Ez a szolgáltatás létrehozásának részeként működtünk együtt, győződjön meg arról, hogy ügyfeleink, akik Cosmos DB követelményeinek saját maguk kulcsok kezelése nélkül a megfelelőségi auditorok.
+### <a name="q-can-i-use-my-own-encryption-keys"></a>K: használhatom a saját titkosítási kulcsokat?
+A: Cosmos DB egy Pásti szolgáltatás, és a szolgáltatás könnyen használható. Észrevettük, hogy ezt a kérdést gyakran megkérdezik proxy-kérdésként a megfelelőségi követelmények (például a PCI-DSS) teljesítése érdekében. A szolgáltatás kiépítése során a megfelelőségi ellenőrökkel együttműködve biztosítjuk, hogy a Cosmos DBt használó ügyfelek a kulcsok felügyeletének szükségessége nélkül is megfeleljenek a követelményeiknek.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>K: Milyen régiókban van engedélyezve a titkosítás?
-V: Az összes Azure Cosmos DB-régió titkosítása be van kapcsolva minden felhasználói adattal.
+### <a name="q-what-regions-have-encryption-turned-on"></a>K: mely régiókban van engedélyezve a titkosítás?
+A: minden Azure Cosmos DB régióban van a titkosítás bekapcsolva az összes felhasználói adattal.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>K: Befolyásolja a titkosítás a teljesítmény késését és az átviteli sebességet?
-V: A teljesítményre vonatkozó SLA-kat jelenleg nem befolyásolja vagy nem változtatja meg, hogy az összes meglévő és új fiók esetében engedélyezve van a titkosítás a REST-ben. Tudjon meg többet a a [a Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) oldalon tekintheti meg a legújabb garanciákat.
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>K: a titkosítás befolyásolja a teljesítmény késését és az átviteli sebességet?
+A: a teljesítmény SLA-ban nem befolyásolja a teljesítményt, és nem változik meg, hogy az összes meglévő és új fiók esetében engedélyezve van a titkosítás a REST-ben. A legújabb garanciák megtekintéséhez további információt az [SLA Cosmos db](https://azure.microsoft.com/support/legal/sla/cosmos-db) oldalon talál.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>K: Támogatja a helyi emulátor a titkosítást a REST-ben?
-V: Az emulátor egy önálló fejlesztési/tesztelési eszköz, és nem használja a felügyelt Cosmos DB szolgáltatás által használt kulcskezelő szolgáltatásokat. Azt javasoljuk, hogy hol tárolja bizalmas emulátor Tesztadatok meghajtók engedélyezheti a Bitlockert. A [emulátor támogatja az alapértelmezett adatkönyvtárát módosítása](local-emulator.md) valamint a jól ismert hely használatát.
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>K: a helyi emulátor támogatja a titkosítást a REST-ben?
+A: az emulátor egy önálló fejlesztési/tesztelési eszköz, és nem használja a felügyelt Cosmos DB szolgáltatás által használt kulcskezelő szolgáltatásokat. Javasoljuk, hogy engedélyezze a BitLockert olyan meghajtókon, amelyeken érzékeny Emulator-tesztelési adatokat tárol. Az [emulátor támogatja az alapértelmezett adatkönyvtár módosítását](local-emulator.md) , valamint egy jól ismert hely használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Cosmos DB biztonság és a legújabb Újdonságok áttekintését lásd: az [Azure Cosmos Database biztonsága](database-security.md).
-Microsoft-minősítésekkel kapcsolatos további információkért lásd: a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/).
+További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).

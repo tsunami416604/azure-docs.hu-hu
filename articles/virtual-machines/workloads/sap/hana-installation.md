@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168598"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750362"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
 
@@ -101,7 +101,7 @@ A következő további és hasznos SAP a SUSE-hez kapcsolódó hivatkozásokat t
 
 A következő SAP-támogatási megjegyzések a 12. SLES SAP HANA megvalósítására alkalmazhatók:
 
-- [SAP-támogatás Megjegyzés #1944799 – SAP HANA irányelvek a SLES operációs rendszer telepítéséhez](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [SAP-támogatás Megjegyzés #1944799 – SAP HANA irányelvek a SLES operációs rendszer telepítéséhez](http://service.sap.com/sap/support/notes/1944799)
 - [SAP-támogatás Megjegyzés #2205917 – SAP HANA DB ajánlott operációsrendszer-beállítások az SLES 12 for SAP-alkalmazásokhoz](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [SAP-támogatás Megjegyzés #1984787 – SUSE Linux Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP-támogatás Megjegyzés #171356 – SAP-szoftverek Linux rendszeren: általános információk](https://launchpad.support.sap.com/#/notes/1984787)
@@ -125,7 +125,7 @@ A következő SAP-támogatási megjegyzések a Red Hat SAP HANA megvalósítás�
 
 ### <a name="time-synchronization"></a>Idő szinkronizálása
 
-Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszer részét képező különböző összetevők időbeli eltérésére. Az SAP ABAP rövid memóriaképei a ZDATE @ no__t-0LARGE @ no__t-1TIME @ no__t-2DIFF hibájának címével valószínűleg ismerősek. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, ha a különböző kiszolgálók vagy virtuális gépek rendszerideje túl távol sodródik egymástól.
+Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszer részét képező különböző összetevők időbeli eltérésére. Az SAP ABAP rövid memóriaképei a ZDATE \_LARGE \_TIME, \_DIFF valószínűleg ismerősek. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, ha a különböző kiszolgálók vagy virtuális gépek rendszerideje túl távol sodródik egymástól.
 
 SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszinkronizálás nem vonatkozik a nagyméretű példányokban lévő számítási egységekre. Ez a szinkronizálás nem alkalmazható natív Azure-beli virtuális gépeken futó SAP-alkalmazások futtatására, mert az Azure biztosítja, hogy a rendszer időben szinkronizálva legyen. 
 
@@ -152,8 +152,8 @@ A tárolási kötetek elnevezési konvenciói az alábbi táblázatban látható
 
 | Tárterület-használat | Csatlakoztatás neve | Kötet neve | 
 | --- | --- | ---|
-| HANA-adathalmazok | /hana/data/SID/mnt0000 @ no__t – 0m USD > | Tároló IP-címe:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-napló | /hana/log/SID/mnt0000 @ no__t – 0m USD > | Tároló IP-címe:/hana_log_SID_mnt00001_tenant_vol |
+| HANA-adathalmazok | /hana/data/SID/mnt0000 \<m > | Tároló IP-címe:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-napló | /hana/log/SID/mnt0000 \<m > | Tároló IP-címe:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-napló biztonsági mentése | /hana/log/backups | Tároló IP-címe:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA megosztott | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /usr/sap/SID | Tároló IP-címe:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |

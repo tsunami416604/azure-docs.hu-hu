@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: aahi
-ms.openlocfilehash: 53311567bbfa93cb66999518e5172b6c4ac36b3f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 571626da0f3f43c8c2a2e33e1147418158c5473b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555148"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754214"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és a Python használatával
 
@@ -32,7 +32,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 - [Python 2. x vagy 3. x](https://www.python.org/downloads/)
 
-- A Pythonhoz készült [kérelmek kódtára](http://docs.python-requests.org)
+- A Pythonhoz készült [kérelmek kódtára](https://pypi.org/project/requests/)
 
 - Idősorozat-adatpontokat tartalmazó JSON-fájl. A rövid útmutatóhoz tartozó példa a [githubon](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)érhető el.
 

@@ -3,55 +3,55 @@ title: Nyelvi támogatás – Content Moderator API
 titleSuffix: Azure Cognitive Services
 description: A Content Moderator API által támogatott természetes nyelvek listája.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 6c71cefc25296df5a05c19ee84eb4e24ea90aa9d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.author: pafarley
+ms.openlocfilehash: b4e6a5ca2dc19671dab3087c0a182925ac8f9a1b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562770"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755323"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API-hoz
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép által támogatott besorolási válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
+> A **Language** paraméterhez rendeljen `eng`, vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió). **Ez a funkció csak az angol nyelvet támogatja**.
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
 
 | Nyelvfelismerés | Vulgáris   | OCR    | Automatikus javítás     |
 | -------------------- |-------------|--------|---------------------|
-| Arab (római)   | afrikaans   | arab   | arab |
-| Balinéz | albán | kínai (egyszerűsített)    | dán |
-| bengáli | amhara | kínai (hagyományos)     | holland |
+| Arab (római)   | búr   | arab   | arab |
+| Balinéz | albán | Kínai (egyszerűsített)    | dán |
+| bengáli | Amhara | Kínai (hagyományos)     | holland |
 | Buginese | arab | cseh                     | Angol |
 | Buhid | örmény | dán                     | finn |
-| Carian | asszámi | holland                     | francia |
-| kínai (egyszerűsített) | Azeri | Angol  | Görög (modern) |
-| kínai (hagyományos) | Bangla – Banglades | finn  | olasz |
+| Carian | Asszámi | holland                     | francia |
+| Kínai (egyszerűsített) | Azerbajdzsáni | Angol  | Görög (modern) |
+| Kínai (hagyományos) | Bangla – Banglades | finn  | olasz |
 | Templom (szláv) | Bangla – India | francia     | koreai |
 | Kopt | baszk | német                      | norvég |
 | cseh |  belorusz | Görög (modern)         | lengyel |
 | Dhivehi | Bosnyák – cirill betűs | magyar      | portugál |
 | holland | Bosnyák – latin | olasz             | román |
 | Angol (kreol) | Breton [nem GeoPol] | japán  | orosz |
-| fárszi | bolgár | koreai                        | szlovák |
+| Perzsa | bolgár | koreai                        | szlovák |
 | francia | katalán | norvég                        | spanyol |
 | német | Közép-kurd | lengyel        | török |
 | görög | Cseroki | portugál | |
-| haiti | kínai (egyszerűsített) | román | |
+| Haiti | Kínai (egyszerűsített) | román | |
 | héber | Kínai (hagyományos) – Hongkong (KKT) | orosz | |
 | hindi | Kínai (hagyományos) – Tajvan | Szerb cirill betűs | |
 | Hmong | horvát | Szerb latin | |
 | magyar | cseh | szlovák | |
 | olasz | dán | spanyol | |
-| japán | dari | svéd | |
+| japán | Dari | svéd | |
 | koreai | holland | török | |
 | Kurd (arab) | Angol | | |
 | Kurd (latin betűs) | észt | | |
@@ -62,82 +62,82 @@ ms.locfileid: "69562770"
 | Lídiai | grúz | | |
 | Mycenaean (görög) | német | | |
 | Nko | görög | | |
-| norvég (bokmal) | gudzsaráti | | |
-| norvég (nynorsk) |  hausza | | |
+| Norvég (bokmal) | gudzsaráti | | |
+| norvég (nynorsk) |  Hausza | | |
 | Régi (perzsa) | héber | | |
-| pasto | hindi | | |
+| Pasto | hindi | | |
 | lengyel | magyar | | |
 | portugál | izlandi | | |
-| pandzsábi | igbo | | |
+| pandzsábi | Igbo | | |
 | Rejang | indonéz | | |
-| orosz | inuktitut | | |
+| orosz | Inuktitut | | |
 | Santali | ír | | |
 | Sasak | isiXhosa | | |
-| Saurashtra | isiZulu | | |
+| Saurashtra | Zulu | | |
 | szerb (cirill betűs) | olasz | | |
-| szerb (latin betűs) | japán | | |
-| sinhala | kannada | | |
+| Szerb (latin betűs) | japán | | |
+| Szingaléz | kannada | | |
 | szlovén | kazak | | |
-| spanyol | khmer | | |
-| svéd | quiché | | |
-| Sylheti | kinyarvanda | | |
-| szír | szuahéli | | |
-| Tagbanwa | kónkáni | | |
+| spanyol | Khmer | | |
+| svéd | Quiché | | |
+| Sylheti | Kinyarvanda | | |
+| Szír | Kiswahili | | |
+| Tagbanwa | Konkani | | |
 | Tai (Nua) | koreai | | |
 | Tamashek | kirgiz | | |
-| török | lao | | |
+| török | Lao | | |
 | Ugariti | lett | | |
-| Uzbek (Cyrillic) | litván | | |
-| üzbég (latin betűs) | luxemburgi | | |
-| Vai | macedón | | |
-| ji | maláj | | |
+| üzbég (cirill betűs) | litván | | |
+| Üzbég (latin betűs) | Luxemburgi | | |
+| Vai | Macedón | | |
+| Yi | maláj | | |
 | Zhuang, leveles | malajálam | | |
 | | máltai | | |
 | | maori | | |
-| | maráthi | | |
+| | marathi | | |
 | | mongol | | |
-| | nepáli | | |
+| | Nepáli | | |
 | | Norvég (nyelven) | | |
 | | norvég (nynorsk) | | |
-| | odia | | |
-| | pasto | | |
+| | Odia | | |
+| | Pasto | | |
 | | perzsa | | |
 | | lengyel | | |
 | | Portugál – Brazília | | |
 | | Portugál – Portugália | | |
 | | Pulaar | | |
 | | pandzsábi | | |
-| | pandzsábi (Pakisztán) | | |
-| | Quechua (Peru) | | |
+| | Pandzsábi (pakisztáni) | | |
+| | Kecsua (Peru) | | |
 | | román | | |
 | | orosz | | |
-| | skót gael | | |
+| | Skót gael | | |
 | | szerb (cirill betűs) | | |
-| | Szerb (cirill, Bosznia-Hercegovina) | | |
-| | szerb (latin betűs) | | |
+| | Szerb (cirill betűs, Bosznia-Hercegovina) | | |
+| | Szerb (latin betűs) | | |
 | | Sesotho | | |
-| | északi szeszotó | | |
-| | setswana | | |
-| | szindhi | | |
-| | sinhala | | |
+| | Sesotho sa szoto | | |
+| | Setswana | | |
+| | Szindhi | | |
+| | Szingaléz | | |
 | | szlovák | | |
 | | szlovén | | |
 | | spanyol | | |
 | | svéd | | |
-| | tadzsik | | |
+| | Tádzsik | | |
 | | tamil | | |
 | | tatár | | |
 | | telugu | | |
 | | thai | | |
-| | tigrinya | | |
+| | Tigrinya | | |
 | | török | | |
-| | türkmen | | |
+| | Türkmén | | |
 | | ukrán | | |
 | | urdu | | |
-| | ujgur | | |
-| | üzbég | | |
+| | Ujgur | | |
+| | Üzbég | | |
 | | Valenciai | | |
 | | vietnami | | |
 | | walesi | | |
-| | wolof | | |
-| | joruba | | |
+| | Wolof | | |
+| | Joruba | | |

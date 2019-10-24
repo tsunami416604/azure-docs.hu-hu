@@ -3,19 +3,19 @@ title: Szöveg ellenőrzése egyéni kifejezéslisták alapján a C# használat�
 titleSuffix: Azure Cognitive Services
 description: A cikk bemutatja, hogyan végezhető el szövegek moderálása egyéni kifejezéslistákkal a C#-hoz készült Content Moderator SDK-val.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 272063c3fcc77c76536dbd007b1ab0132a565e61
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242826"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757256"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Szöveg keresése egyéni kifejezési listához aC#
 
@@ -274,7 +274,7 @@ Szövegek egy adott kifejezéslista alapján való szűrését a **ContentModera
 - Egy MIME-típus, amely lehet „text/html”, „text/xml”, „text/markdown” vagy „text/plain”.
 - Az átvizsgálandó szöveg.
 - Logikai érték. Ebben a mezőben adja meg az **igaz** értéket a szöveg automatikus javításához az átvizsgálást megelőzően.
-- Logikai érték. Ebben a mezőben adja meg az **igaz** értéket a szövegben található személyes azonosításra alkalmas adatok (PII) észleléséhez.
+- Logikai érték. A mező értékét állítsa **igaz** értékre a szövegben tárolt személyes adatfelderítéshez.
 - A kifejezéslista azonosítója.
 
 További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).

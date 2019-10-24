@@ -3,19 +3,19 @@ title: Videós felülvizsgálatok létrehozása a .NET-Content Moderator haszná
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk információkat és kódokat tartalmaz, amelyek segítségével gyorsan megkezdheti a Content Moderator SDK- C# val való ismerkedést a videó-felülvizsgálatok létrehozásához.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5a0d462f08e88ae4d26e1c684cfaf772910d2220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: ca5322aa78a4fd3018d961a5d31c618cf10bf156
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242856"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757153"
 ---
 # <a name="create-video-reviews-using-net"></a>Videós felülvizsgálatok létrehozása a .NET használatával
 
@@ -165,7 +165,7 @@ Hozzon létre egy videó-áttekintést a **ContentModeratorClient. Reviews. Crea
 A **CreateVideoReviews** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie. 
 1. Az Content Moderator-csoport neve.
-1. Egy **IList @ no__t-1CreateVideoReviewsBodyItem >** objektum. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
+1. Egy **IList \<CreateVideoReviewsBodyItem >** objektumot. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
 
 A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a következő tulajdonságokat kell beállítania:
 - **Tartalom**. Az áttekinteni kívánt videó URL-címe.
@@ -173,7 +173,7 @@ A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a 
 - **Állapot**. Állítsa az értéket "közzététel előtt" értékre. Ha nem állítja be, a rendszer alapértelmezés szerint "függőben" állapotba kerül, ami azt jelenti, hogy a videó felülvizsgálata közzé van téve, és az emberi felülvizsgálat függőben van. A videó felülvizsgálatának közzététele után már nem adhat hozzá képkockákat, átiratokat vagy átiratok moderálási eredményét.
 
 > [!NOTE]
-> A **CreateVideoReviews** egy IList @ no__t-1string > ad vissza. Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével. 
+> A **CreateVideoReviews** egy IList \<string > ad vissza. Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével. 
 
 Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
 
@@ -223,18 +223,18 @@ A **AddVideoFrameUrl** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie.
 1. Az Content Moderator-csoport neve.
 1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
-1. Egy **IList @ no__t-1VideoFrameBodyItem >** objektum. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
+1. Egy **IList \<VideoFrameBodyItem >** objektumot. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
 
 A **VideoFrameBodyItem** a következő tulajdonságokkal rendelkezik:
 - **Időbélyeg**. Egy karakterlánc, amely másodpercek alatt azt a videót tartalmazza, amelyből a videó keretet készített.
 - **FrameImage**. A videó keretének URL-címe
-- **Metaadatok**. Egy IList @ no__t-0VideoFrameBodyItemMetadataItem >. A **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Az érvényes kulcsok a következők:
+- **Metaadatok**. Egy IList \<VideoFrameBodyItemMetadataItem >. A **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Az érvényes kulcsok a következők:
 - **reviewRecommended**. Igaz, ha a videó keretének emberi felülvizsgálata ajánlott.
 - **adultScore**. 0 és 1 közötti érték, amely a videó keretében lévő felnőtt tartalom súlyosságát értékeli.
 - **a**. Igaz, ha a videó felnőtt tartalmat tartalmaz.
 - **racyScore**. 0 és 1 közötti érték, amely a videó keretében a zamatos tartalom súlyosságát értékeli.
 - **r**. Értéke true, ha a videó kerete tartalmaz zamatos tartalmat.
-- **ReviewerResultTags**. Egy IList @ no__t-0VideoFrameBodyItemReviewerResultTagsItem >. A **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás ezeket a címkéket használhatja a képkockák rendszerezéséhez.
+- **ReviewerResultTags**. Egy IList \<VideoFrameBodyItemReviewerResultTagsItem >. A **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás ezeket a címkéket használhatja a képkockák rendszerezéséhez.
 
 > [!NOTE]
 > Ez a rövid útmutató véletlenszerű értékeket hoz létre a **adultScore** és a **racyScore** tulajdonsághoz. Éles alkalmazásokban ezeket az értékeket az Azure Media Service-ben üzembe helyezett [videó-moderálási szolgáltatásból](video-moderation-api.md)szerezheti be.
