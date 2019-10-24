@@ -3,15 +3,15 @@ title: Az első lekérdezés futtatása az Azure Resource Graph Explorerrel
 description: Ebből a cikkből megtudhatja, hogyan futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387602"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752151"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
@@ -39,13 +39,16 @@ Az első Resource Graph-lekérdezés futtatásához a következő lépésekkel k
    > [!NOTE]
    > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
 
-1. Frissítse a lekérdezést az első `order by` **névre a name** tulajdonságra, majd @no__t – 2 értéket az első öt eredményre: `Resources | project name, type | order by name asc | limit 5`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
+1. Frissítse a lekérdezést úgy, hogy először `order by` a **Name** tulajdonságot, majd `limit` az első öt találatra: `Resources | project name, type | order by name asc | limit 5`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
 Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a várt módon jelennek meg – a **Name** tulajdonság szerint rendezve, de továbbra is az első öt találatra korlátozódik.
 
 ### <a name="schema-browser"></a>Séma böngésző
 
-A séma böngészője a Resource Graph Explorer bal oldali ablaktábláján található. Ezen erőforrások listája az Azure Resource Graph által támogatott Azure-erőforrások összes olyan _erőforrás-típusát_ megjeleníti, amelyek az Ön számára elérhető bérlőben találhatók. Az erőforrás-típus vagy az altulajdonságok kibővítésével megjelenítheti az erőforrás-gráf-lekérdezések létrehozásához használható alárendelt tulajdonságokat. Ha kijelöli az erőforrástípus `where type =="<resource type>"` értéket a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztásakor a `where <propertyName> == "INSERT_VALUE_HERE"` értéket adja meg a lekérdezési mezőben. A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ne felejtse el lecserélni az _Insert @ no__t-1VALUE @ no__t-2HERE_ értéket a saját értékére, a lekérdezéseket a feltételekkel, operátorokkal és függvényekkel módosíthatja a kívánt eredmények elérése érdekében.
+A séma böngészője a Resource Graph Explorer bal oldali ablaktábláján található. Ezen erőforrások listája az Azure Resource Graph által támogatott Azure-erőforrások összes olyan _erőforrás-típusát_ megjeleníti, amelyek az Ön számára elérhető bérlőben találhatók. Az erőforrás-típus vagy az altulajdonságok kibővítésével megjelenítheti az erőforrás-gráf-lekérdezések létrehozásához használható alárendelt tulajdonságokat.
+
+Ha kijelöli az erőforrástípus `where type =="<resource type>"` értéket a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztásakor a `where <propertyName> == "INSERT_VALUE_HERE"` a lekérdezés mezőbe kerül.
+A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ügyeljen arra, hogy az _INSERT \_VALUE \_HEREt_ a saját értékére cserélje, a feltételekkel, operátorokkal és függvényekkel módosítsa a lekérdezéseket a kívánt eredmények eléréséhez.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása az erőforrás-gráf lekérdezésből
 
@@ -88,11 +91,11 @@ A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogy
 
 - [Resource Graph Explorer – minta irányítópult #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [@no__t – 1Example-rendszerkép a minta-irányítópulthoz #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [![Example rendszerkép a minta-irányítópulthoz #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Resource Graph Explorer – minta irányítópult #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [@no__t – 1Example-rendszerkép a minta-irányítópulthoz #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [![Example rendszerkép a minta-irányítópulthoz #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > A fenti példában az irányítópult képernyőképei az Azure-környezettől függően eltérőek lesznek.
