@@ -1,7 +1,7 @@
 ---
 title: API hívása egy alkalmazásból – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Tudnivalók a Custom Decision Service API-k hívása egy alkalmazással.
+description: A Custom Decision Service API-k meghívása egy okostelefon-alkalmazásból.
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -10,31 +10,32 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: slivkins
-ms.openlocfilehash: 0e5c99aae61fb927ea7f101bab74d661a747f88b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08fbc1716d402c83bc2c33be82cba143c1737a55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60511546"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707256"
 ---
 # <a name="call-api-from-an-app"></a>API hívása egy alkalmazásból
 
-Győződjön meg az Azure egyéni döntési szolgáltatás API-hívásait alkalmazással. Ez a cikk bemutatja, hogyan kezdheti el néhány alapvető beállításokkal.
+Hívásokat indíthat az Azure Custom Decision Service API-jai számára egy okostelefon-alkalmazásból. Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket néhány alapvető lehetőséggel.
 
-Ügyeljen arra, hogy [regisztrálhatja alkalmazását](custom-decision-service-get-started-register.md), először.
+Ügyeljen arra, hogy először [regisztrálja az alkalmazást](custom-decision-service-get-started-register.md).
 
-Nincsenek a két API-hívást hajt végre az alkalmazással a Custom Decision Service: egy a ranglistán megjelenő API meghívásához a tartalom és a egy ellenszolgáltatás jelentést a ellenszolgáltatás API hívása rangsorolt listájának beszerzése érdekében. Az alábbiakban a minta meghívja a [cURL](https://en.wikipedia.org/wiki/CURL).
+Két API-hívás áll rendelkezésre a smartphone-alkalmazásból a Custom Decision Service: a rangsorolási API meghívása a tartalom rangsorolt listájának beszerzéséhez, valamint a jutalom API meghívása a jutalom jelentéséhez. Itt láthatók a fürtökön [](https://en.wikipedia.org/wiki/CURL)megjelenő példák.
 
-További információkért tekintse meg a hivatkozás [API](custom-decision-service-api-reference.md).
+További információ: Reference [API](custom-decision-service-api-reference.md).
 
-Indítsa el a ranglistán megjelenő API-hívás. A fájl létrehozásához `<request.json>`, amely rendelkezik a beállított művelet azonosítója. Ezt az Azonosítót a megfelelő RSS nevét, vagy Atom-hírcsatorna megadott a portálon:
+Kezdje a rangsor API meghívásával. Hozza létre a `<request.json>`fájlt, amely a műveleti készlet azonosítója. Ez az azonosító a portálon megadott megfelelő RSS-vagy Atom-hírcsatorna neve:
 
 ```json
 {"decisions":
      [{ "actionSets":[{"id":{"id":"<actionSetId>"}}] }]}
 ```
 
-Számos művelet beállítja a következő adható meg:
+Számos Művelettípus megadható a következő módon:
 
 ```json
 {"decisions":
@@ -42,13 +43,13 @@ Számos művelet beállítja a következő adható meg:
                      {"id":{"id":"<actionSetId2>"}}] }]}
 ```
 
-A JSON-fájlt a rendszer elküldi a rangsorolás kérelem részeként:
+Ezt a JSON-fájlt a rendszer a rangsorolási kérelem részeként küldi el:
 
 ```shell
 curl -d @<request.json> -X POST https://ds.microsoft.com/api/v2/<appId>/rank --header "Content-Type: application/json"
 ```
 
-Itt `<appId>` az alkalmazás nevét a portál regisztrált. Tartalom cikkek, amelyek az alkalmazás leképezhetők egy rendezett készlet kell kapnia. A minta visszatérési hasonlóan néz ki:
+`<appId>` Itt a portálon regisztrált alkalmazás neve. Az alkalmazásban megjelenített tartalmi elemek rendezett készletét kell kapnia. A minta visszaadása A következőképpen néz ki:
 
 ```json
 [{ "ranking":[{"id":"actionId3"}, {"id":"actionId1"}, {"id":"actionId2"}],
@@ -59,15 +60,15 @@ Itt `<appId>` az alkalmazás nevét a portál regisztrált. Tartalom cikkek, ame
                  {"id":"<actionSetId2>","lastRefresh":"2017-04-30T22:34:25.3401438Z"}]}]
 ```
 
-A visszaadandó első része rendelkezik rendezett műveletek által a műveleti azonosítók megadott listáját. A művelet azonosítója egy cikken, az URL. A teljes kérést is rendelkezik egy egyedi `<eventId>`, a rendszer hozta létre.
+A Return első részében szerepel a megrendelt műveletek listája, amelyet a műveleti azonosítóik határoznak meg. Egy cikk esetében a műveleti azonosító egy URL-cím. A teljes kérelemhez egyedi `<eventId>`, a rendszer által létrehozott fájl is tartozik.
 
-Később, megadhatja, ha megfigyelte elemre kattint, ez az esemény, amely az első tartalomelem `<actionId3>`. Egy ellenszolgáltatás majd jelentheti a `<eventId>` a Custom Decision Service a ellenszolgáltatás API-n keresztül, egy másik kérelem például:
+Később megadhatja, hogy az esemény `<actionId3>`első tartalmi elemére kattintva megfigyelt-e. Ezt `<eventId>` követően a jutalmazási API-n keresztül Custom Decision Service jutalmat, amely egy másik kérelem, például:
 
 ```shell
 curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST
 ```
 
-Végül meg kell adnia a művelet beállítása API, amely szerint a Custom Decision Service a cikkeket (műveletek) listáját adja vissza. Az API egy RSS-hírcsatornát, mint ahogy az itt látható:
+Végül meg kell adnia a műveleti set API-t, amely visszaadja a Custom Decision Service által megfontolandó cikkek (műveletek) listáját. Az API-t RSS-hírcsatornaként implementálhatja, ahogy az itt látható:
 
 ```xml
 <rss version="2.0">
@@ -84,9 +85,9 @@ Végül meg kell adnia a művelet beállítása API, amely szerint a Custom Deci
 </rss>
 ```
 
-Itt minden felső szintű `<item>` elem egy cikk írja le. A `<link>` megadása kötelező, és a Custom Decision Service egy művelet ID használják. Adja meg `<date>` (a szabványos RSS formátumban) több mint 15 cikkeket, ha. A 15 legutóbbi cikkek szolgálnak. A `<title>` nem kötelező, és a cikkhez tartozó szöveg kapcsolatos funkciók létrehozására szolgál.
+Itt minden legfelső szintű `<item>` elem egy cikket ír le. A `<link>` kötelező, és Custom Decision Service alapján műveleti azonosítóként használja. Ha `<date>` több mint 15 cikket használ, válassza a (szabványos RSS-formátumban). A 15 legutóbb használt cikk. A `<title>` nem kötelező, és szöveggel kapcsolatos szolgáltatások létrehozására szolgál a cikkhez.
 
 ## <a name="next-steps"></a>További lépések
 
-* Haladjon végig a [oktatóanyag](custom-decision-service-tutorial-news.md) részletesebb példát.
-* Tekintse meg a hivatkozás [API](custom-decision-service-api-reference.md) további információ a megadott funkciót.
+* Részletes példa az [oktatóanyagra](custom-decision-service-tutorial-news.md) .
+* A megadott funkciókkal kapcsolatos további információkért tekintse meg a hivatkozási [API](custom-decision-service-api-reference.md) -t.

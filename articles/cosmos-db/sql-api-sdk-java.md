@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: SQL Java API, SDK & resources'
+title: 'Az Azure Cosmos DB: SQL Java API, SDK &-erőforrások'
 description: Mindent megtudhat a SQL Java API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB SQL Java SDK minden verziója közötti végzett módosításokat.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 7af43d24b03a4c548925bdca4189fd0524c701a4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: bf89d419bcd97c276df35701bc4fd808f599094a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341639"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637694"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Java SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -27,8 +27,8 @@ ms.locfileid: "67341639"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást, használja a [SQL API aszinkron Java SDK](sql-api-sdk-async-java.md). 
 
@@ -44,22 +44,22 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
-* Kijavítva a hiba a PartitionKey kivonatoló v2-ben.
+* Rögzített hiba a PartitionKey for hash v2 esetében.
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
-* Az összetett indexek támogatása.
-* Kijavítva a hiba az globális végpontja manager frissítés kényszerítése.
-* Kijavítva a hiba a upserts előtti feltételekkel közvetlen módban.
+* Összetett indexek támogatása hozzáadva.
+* Kijavítva a hiba a globális Endpoint Managerben a frissítés kényszerítéséhez.
+* Rögzített hiba az előfeltételekkel rendelkező upsert közvetlen módban.
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
-* Kijavítva a hiba átjáró cím gyorsítótárban.
+* Kijavítva a hiba az átjáró címeinek gyorsítótárában.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Többrégiós írási támogatása az közvetlen üzemmódban.
 * Támogatás hozzáadva a kezelési IOExceptions ServiceUnavailable kivételeket, a proxy lépett fel.
 * Kijavítva a hiba, a végpont felderítési újrapróbálkozási szabályzat.
 * Kijavítva a hiba, NULL értékű mutató nem kivételek BaseDatabaseAccountConfigurationProvider a biztosításához.
-* Kijavítva a hiba, annak érdekében, hogy QueryIterator nem ad vissza a null értékeket.
+* Kijavított egy hibát annak biztosítására, hogy a QueryIterator nem ad vissza null értéket.
 * Kijavítva a hiba, annak érdekében, hogy nagy PartitionKey engedélyezett
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -127,7 +127,7 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 * A módosítási hírcsatorna támogatása.
 * Támogatás hozzáadva a gyűjtemény kvótákra vonatkozó információk RequestOptions.setPopulateQuotaInfo keresztül.
 * Tárolt eljárás parancsfájl naplózást RequestOptions.setScriptLoggingEnabled támogatása.
-* Kijavítva a hiba, ahol lekérdezés DirectHttps módban nem válaszol hajt végre, amikor a szabályozási hibák.
+* Kijavítva a hiba, ahol a DirectHttps módban végzett lekérdezés nem válaszol a szabályozási hibák esetén.
 * Kijavítva a hiba, a munkamenet-konzisztencia módját.
 * Kijavítva a hiba, amely NullReferenceException bizonyos okozhat a HttpContext, ha a kérések aránya túl magas.
 * Továbbfejlesztett teljesítmény DirectHttps mód.
@@ -142,7 +142,7 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * Kijavítva a hiba, a kapcsolat-kezelés közvetlen kapcsolódás módban kapcsolat adatszivárgás megelőzése érdekében.
-* Kijavítva a hiba a felső lekérdezésben, ahol NullReference kivétel generálhat.
+* Kijavított egy hibát a felső lekérdezésben, amely NullReference kivételt okozhat.
 * Továbbfejlesztett teljesítmény a belső gyorsítótárak esetében a hálózati hívások számának csökkentésével.
 * Új ügyfélállapotok kódjai, ActivityID és a kérelem URI-t DocumentClientException hibaelhárítást.
 
@@ -198,7 +198,7 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Támogatja a térinformatikai Index
-* Ellenőrzi az összes erőforrás ID tulajdonsága. Az erőforrások azonosítóit nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközzel.
+* Érvényesíti az összes erőforrás azonosító tulajdonságát. Az erőforrások azonosítóit nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközzel.
 * ResourceResponse ad hozzá új fejléc "index átalakítási folyamat".
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -215,7 +215,7 @@ A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-
 Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
 
 > [!WARNING]
-> Az összes verzió **1.x** az SQL SDK for Java-jén kivonjuk a forgalomból **2020 május 30-as**.
+> A Javához készült SQL SDK összes verziójának **1. x** verziója **2020. május 30-** án megszűnik.
 > 
 >
 
@@ -228,10 +228,10 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |2018. március 13. |--- |
-| [2.1.2](#2.1.2) |2018. március 09. |--- |
-| [2.1.1](#2.1.1) |2018. december 13. |--- |
-| [2.1.0](#2.1.0) |2018. november 20. |--- |
+| [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
+| [2.1.2](#2.1.2) |Mar 09, 2018 |--- |
+| [2.1.1](#2.1.1) |Dec. 13, 2018 |--- |
+| [2.1.0](#2.1.0) |November 20, 2018 |--- |
 | [2.0.0](#2.0.0) |2018. Szeptembertől 21. |--- |
 | [1.16.4](#1.16.4) |2018. Szeptembertől 10. |2020. május 30. |
 | [1.16.3](#1.16.3) |2018. Szeptembertől 09. |2020. május 30. |

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326039"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása a Container instances szolgáltatásban
@@ -33,7 +33,7 @@ Ha környezeti változókként kell átadnia a titkokat, Azure Container Instanc
 
 ## <a name="azure-cli-example"></a>Azure CLI-példa
 
-Az [ACI-WordCount][aci-wordcount] container, run it first with this [az container create][az-container-create] parancs alapértelmezett kimenetének megjelenítéséhez (nincsenek megadva környezeti változók):
+Az [ACI-WordCount][aci-wordcount] tároló alapértelmezett kimenetének megtekintéséhez futtassa először az [az Container Create][az-container-create] paranccsal (nincs megadva környezeti változó):
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Ha mindkét tároló állapota *leáll* (az az [Container show][az-container-show] to check state), display their logs with [az container logs][az-container-logs] paranccsal jelenítheti meg a kimenetet).
+Ha mindkét tároló állapota leálltként jelenik meg (az [az Container show][az-container-show] to ellenőrizze State), akkor a kimenet megtekintéséhez jelenítse meg a naplókat az [az Container logs][az-container-logs] használatával.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,7 +88,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 A környezeti változók a PowerShellben való beállítása hasonló a CLI-hez, `-EnvironmentVariable` de a parancssori argumentumot használja.
 
-Először indítsa el az [ACI-WordCount][aci-wordcount] container in its default configuration with this [New-AzContainerGroup][new-Azcontainergroup] parancsot:
+Először indítsa el az [ACI-WordCount][aci-wordcount] tárolót az alapértelmezett konfigurációban ezzel a [New-AzContainerGroup][new-Azcontainergroup] paranccsal:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `

@@ -16,10 +16,10 @@ ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322657"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
@@ -64,14 +64,14 @@ Nem kell megadnia NSG-t az alhálózat szintjén, mert a Batch konfigurálja a s
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrásoldali szolgáltatás címkéje | Forrásportok | Cél | Célportok | Protocol | Action |
+| Forrás IP-címek | Forrás-szolgáltatáscímke | Forrásportok | Cél | Célportok | Protocol | Action |
 | --- | --- | --- | --- | --- | --- | --- |
 | – | `BatchNodeManagement`[Szolgáltatás címkéje](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876-29877 | TCP | Allow |
 | Felhasználói forrás IP-címei a számítási csomópontok és/vagy a számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladataihoz, ha szükséges. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
 
 **Kimenő biztonsági szabályok**
 
-| Source | Forrásportok | Cél | Cél szolgáltatáscímkéje | Célportok | Protocol | Action |
+| Source | Forrásportok | Cél | Cél-szolgáltatáscímke | Célportok | Protocol | Action |
 | --- | --- | --- | --- | --- | --- | --- |
 | Any | * | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(ugyanabban a régióban, mint a Batch-fiók és a VNet) | 443 | TCP | Allow |
 

@@ -1,7 +1,7 @@
 ---
-title: Academic Graph Entitásattribútumok – Academic Knowledge API
+title: Akadémiai gráf entitás attribútumai – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: További információ az Academic Graph az Academic Knowledge API-val használható tevékenységentitás-attribútumok.
+description: Ismerje meg a Academic Knowledge API Academic Graph használatával használható entitás-attribútumokat.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,31 +10,32 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 596ce35a0d744691edd75d6071d4758691e0031b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340179"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705022"
 ---
-# <a name="entity-attributes"></a>Entitásattribútumok
+# <a name="entity-attributes"></a>Entitás attribútumai
 
-A academic graph 7 típusú entitás tevődik össze. Minden entitás kap egy entitás azonosítója és a egy entitástípust.
+Az akadémiai gráf 7 típusú entitásból áll. Minden entitáshoz tartozik egy entitás azonosítója és egy entitás típusa.
 
-## <a name="common-entity-attributes"></a>Közös tevékenységentitás-attribútumok
-Name (Név)    |Leírás                |Típus       | Műveletek
+## <a name="common-entity-attributes"></a>Általános entitás attribútumai
+Name (Név)    |Leírás                |Type       | Műveletek
 ------- | ------------------------- | --------- | ----------------------------
-Azonosító      |Entitásazonosító                  |Int64      |Egyenlő
-Folyó évi      |Entitás típusa                |Enum   |Egyenlő
+Id      |Entitásazonosító                  |Int64      |Egyenlő
+Úlyossága      |Entitástípus                |Enum   |Egyenlő
 
-## <a name="entity-type-enum"></a>Entitás típusa enum
+## <a name="entity-type-enum"></a>Entitás típusa Enum
 Name (Név)                                                            |value
 ----------------------------------------------------------------|-----
 [Tanulmány](PaperEntityAttributes.md)                               |0
 [Szerző](AuthorEntityAttributes.md)                             |1
 [Napló](JournalEntityAttributes.md)                           |2
-[Konferenciasorozat](JournalEntityAttributes.md)                 |3
-[Konferenciaesemény](ConferenceInstanceEntityAttributes.md)    |4
+[Konferencia sorozat](JournalEntityAttributes.md)                 |3
+[Konferencia-példány](ConferenceInstanceEntityAttributes.md)    |4
 [Tagság](AffiliationEntityAttributes.md)                   |5
-[Szakterület](FieldsOfStudyEntityAttributes.md)                      |6
+[Tanulmányi mező](FieldsOfStudyEntityAttributes.md)                      |6
 

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure Security Center (ASC) használatával for IoT-előzetes verzió |} A Microsoft Docs
-description: Ismerkedés az IoT-szolgáltatások és a szolgáltatás az Azure Security Center az alapvető munkafolyamat ismertetése.
+title: Első lépések a Azure Security Center használata a IoT-hez | Microsoft Docs
+description: Ismerkedjen meg a IoT funkcióinak és szolgáltatásainak Azure Security Center alapvető munkafolyamatának megismerésével.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,70 +13,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 39f448f258923d23bdcba75a0a1987777ce0492e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 86c6c0bac5caae0873d0067c6abcb5a8ac864c88
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616865"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596421"
 ---
-# <a name="get-started-with-azure-security-center-for-iot"></a>IoT az Azure Security Center használatának első lépései 
+# <a name="get-started-with-azure-security-center-for-iot"></a>Az Azure Security Center for IoT használatának első lépései
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk a IoT szolgáltatás Azure Security Center különböző építőelemeit ismerteti, és bemutatja, hogyan kezdheti meg a szolgáltatást két lehetséges üzembe helyezési lehetőség használatával.  
 
-Ez a cikk az Azure Security Center (ASC) különböző építőelemeket magyarázattal szolgál abban az IoT-szolgáltatás, és azt ismerteti, hogyan kezdheti el az [engedélyezni a szolgáltatást](quickstart-onboard-iot-hub.md). 
+## <a name="deployment-options"></a>Telepítési beállítások
 
-Az IoT ASC zökkenőmentesen integrálható az IoT hubot, hogy adja meg a biztonsági elemzés az IoT hub konfigurációs, eszköz identitás- és hub-eszköz kommunikációs minták.
-Fokozott biztonsági képességei az IoT ASC biztosít az IoT-eszközökről származó biztonsági adatok gyűjtését az ügynök-alapú.
+Válassza ki azt a szolgáltatási forgatókönyvet, amely a legjobban megfelel a IoT eszköz és a környezet követelményeinek. 
 
-## <a name="asc-for-iot-seamless-iot-hub-integration"></a>ASC IoT zökkenőmentes az IoT Hub-integráció
+### <a name="built-in-deployment"></a>Beépített üzembe helyezés
+A zökkenőmentes, beépített üzembe helyezési lehetőséggel a IoT Azure Security Center gyorsan integrálható a IoT Hubba, és az IoT hub konfigurációjának, az eszköz identitásának és felügyeletének, valamint a hub-Device kommunikációs mintáknak a biztonsági elemzését is biztosíthatja.
 
-Megkísérelte az egyes IoT-eszközök védelme, szükség arra, hogy adatokat gyűjteni az eszközök közvetlenül a, vagy a hálózatról. Ebből a törekvésből támogatása érdekében ASC az IoT-eszköz figyelése és vezethet be alacsony erőforrás-igényű biztonsági ügynökök arsenal kínál.
+IoT Hub monitorozást és javaslatokat tartalmazó [beépített üzembe helyezés](iot-hub-integration.md) elindítása. 
+    <br>
 
-Az ASC IoT előzetes verzióra, a referenciaarchitektúra a Linux és Windows biztonsági ügynökök, a is C# és C vannak megadva.
-Az ügynökök kezelésére az eszköz operációs rendszere, az esemény összesítést a csökkentheti a költségeket, és konfigurációja a modul az ikereszközök keresztül érkező nyers események gyűjtése.
-Biztonsági üzeneteket küld az IoT Hub segítségével az IoT-elemzési szolgáltatások az ASC-be.
+### <a name="enhanced-deployment"></a>Továbbfejlesztett üzembe helyezés
+A fokozott biztonsági képességek érdekében Azure Security Center IoT-ügynökök számára történő üzembe helyezése mellett a IoT Hub biztonság lehetővé teszi az ügynök-alapú események gyűjtését, elemzését és veszélyforrások észlelését a IoT-eszközökről, valamint az átfogó a biztonsági testhelyzet kezelési képességei.
 
-## <a name="asc-for-iot-basics"></a>Az ASC IoT alapjai
-
-Válassza ki a munkafolyamat-forgatókönyvet, amely az IoT-eszköz és a környezet követelményeinek legjobban megfelelő:
-
-### <a name="get-started-with-asc-for-iot-seamless-iot-hub-integration"></a>Ismerkedés az ASC IoT zökkenőmentes az IoT Hub-integráció 
-
->[!Note]
->Ez a munkafolyamat lehetővé teszi a szolgáltatás használata az IoT biztonsági ügynökök esetében ASC használata nélkül. 
-
-Engedélyezze a monitorozást az eszköz az Identitáskezelés, eszköz-felhő és a felhő eszköz kommunikációs mintái, használja a következő alapvető munkafolyamattal teszteléshez és a szolgáltatás elindítása: 
-
-1. [Az IoT Hub szolgáltatás IoT ASC engedélyezése](quickstart-onboard-iot-hub.md)
-1. Ha az IoT Hub nem tartozik regisztrált eszköz, [új eszköz regisztrálása](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
-1. [Az eszközök azureiotsecurity biztonsági modul létrehozása](quickstart-create-security-twin.md) eszközökhöz. 
-1. Megadni az eszköz és a rendszer működését normál keresztül [egyéni riasztások](quickstart-create-custom-alerts.md). 
-1. Hajtsa végre a rendszer tesztelésen, szolgáltatás és az eszköz állapotát. 
-1. Ismerkedés a [riasztások](concept-security-alerts.md), [javaslatok](concept-recommendations.md), és [részletes ismertetése a Log Analytics használatával](how-to-security-data-access.md) IoT Hub használatával. 
-
-
-### <a name="get-started-with-asc-for-iot-security-agents"></a>Ismerkedés az ASC IoT biztonsági ügynökök esetében
-
-Ellenőrizze, hogy IoT-fokozott biztonsági képességei, például a távoli kapcsolatokat, aktív alkalmazások, bejelentkezési események és az operációs rendszer konfigurálási eljárásoknak megfelelő beállításában figyelést végezni a következő alapvető munkafolyamattal teszteléséhez, és engedélyezze a szolgáltatást az ASC használja: 
-
-1. [Az IoT Hub szolgáltatás IoT ASC engedélyezése](quickstart-onboard-iot-hub.md)
-1. Ha az IoT Hub nem tartozik regisztrált eszköz, [új eszköz regisztrálása](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
-1. [Hozzon létre egy azureiotsecurity biztonsági modult](quickstart-create-security-twin.md) eszközökhöz.
-1. Az ügynök telepítése egy tényleges eszközön telepítése helyett az Azure szimulált eszközön [léptetéses egy új Azure virtuális gép (VM) be](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) elérhető zónában. 
-1. [Az ASC IoT biztonsági ügynök telepítése](how-to-deploy-linux-cs.md) a IoT-eszközt, vagy új virtuális Gépen.
-1. Kövesse az utasításokat [trigger_events](https://aka.ms/iot-security-github-trigger-events) egy ártalmatlan támadás szimulációjának futtatásához.
-1. ASC ellenőrizze az előző lépésben a szimulált támadás válaszul IoT-riasztások esetén. Ellenőrzési öt perc alatt a szkript futtatása után kezdődik.
-1. Ismerkedés a [riasztások](concept-security-alerts.md), [javaslatok](concept-recommendations.md), és [részletes ismertetése a Log Analytics használatával](how-to-security-data-access.md) IoT Hub használatával. 
+Megkezdheti az ügynök-alapú átfogó veszélyforrások elleni védelem és a biztonsági helyzetek kezelésére szolgáló felügyeleti megoldás [kibővített üzembe helyezését](security-agents.md) .
+   
 
 ## <a name="next-steps"></a>További lépések
 
-- Engedélyezése [ASC az IoT](quickstart-onboard-iot-hub.md)
-- Konfigurálja a [megoldás](quickstart-configure-your-solution.md)
+- [A IoT Azure Security Center](quickstart-onboard-iot-hub.md) engedélyezése
+- A [megoldás](quickstart-configure-your-solution.md) konfigurálása
 - [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)
-- Konfigurálása [egyéni riasztások](quickstart-create-custom-alerts.md)
-- [A biztonsági ügynök telepítése](how-to-deploy-agent.md)
+- [Egyéni riasztások](quickstart-create-custom-alerts.md) konfigurálása
+- [Biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md)

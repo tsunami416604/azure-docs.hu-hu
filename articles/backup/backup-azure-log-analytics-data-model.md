@@ -1,18 +1,19 @@
 ---
 title: A Azure Backup adatmodelljét Azure Monitor naplózza
 description: Ez a cikk a Azure Backup adatok adatmodell-adatainak Azure Monitor naplóit tárgyalja.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: adigan
-ms.openlocfilehash: 6563eefffee0ed8d9ce94c3e0a1e24b0d32314f0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466157"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689238"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -329,12 +330,12 @@ Ez a táblázat a biztonságimásolat-felügyeleti kiszolgálók alapszintű mez
 
 |Mező  |Adattípus  | Leírás  |
 |---------|---------|----------|
-|BackupManagmentServerName_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló neve        |
+|BackupManagementServerName_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló neve        |
 |AzureBackupAgentVersion_s     |Text         |A Azure Backup ügynök verziója a biztonságimásolat-felügyeleti kiszolgálón          |
-|BackupManagmentServerVersion_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló verziója|
-|BackupManagmentServerOSVersion_s     |Text            |A biztonságimásolat-felügyeleti kiszolgáló operációs rendszerének verziója|
+|BackupManagementServerVersion_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló verziója|
+|BackupManagementServerOSVersion_s     |Text            |A biztonságimásolat-felügyeleti kiszolgáló operációs rendszerének verziója|
 |BackupManagementServerType_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló típusa, mint MABS, SC DPM|
-|BackupManagmentServerUniqueId_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló egyedi azonosítására szolgáló mező       |
+|BackupManagementServerUniqueId_s     |Text         |A biztonságimásolat-felügyeleti kiszolgáló egyedi azonosítására szolgáló mező       |
 
 ### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 

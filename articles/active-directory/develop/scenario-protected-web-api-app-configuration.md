@@ -1,6 +1,6 @@
 ---
-title: Védett webes API - alkalmazás helykódot |} Az Azure
-description: Ismerje meg, hogyan hozhat létre egy védett webes API-t, és konfigurálja az alkalmazás kódjában.
+title: Védett webes API – alkalmazás kódjának konfigurálása | Azure
+description: Ismerje meg, hogyan hozhat létre védett webes API-t, és hogyan konfigurálhatja az alkalmazás kódját.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,31 +16,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa262c1c6a091575a70c5670b1c7a7c96e8e2128
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
-ms.translationtype: MT
+ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536888"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562318"
 ---
-# <a name="protected-web-api-code-configuration"></a>Védett webes API-hoz: Kódkonfiguráció
+# <a name="protected-web-api-code-configuration"></a>Védett webes API: Kódkonfiguráció
 
-Adja meg a védett webes API kódját, mi határozza meg API-k, védettként, tulajdonosi jogkivonattal konfigurálása és ellenőrzése a jogkivonat kell.
+A védett webes API-hoz tartozó kód konfigurálásához meg kell ismernie, hogy mi határozza meg a védett API-kat, hogyan konfigurálhatja a tulajdonosi jogkivonatot, és hogyan érvényesítheti a jogkivonatot.
 
-## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Mi határozza meg ASP.NET/ASP.NET Core API-k védettként?
+## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Mi határozza meg a ASP.NET/ASP.NET Core API-kat védettként?
 
-Például a web apps, a ASP.NET/ASP.NET Core webes API-k "védett" mivel a tartományvezérlő lépések van fűzve előtagként a `[Authorize]` attribútum. Így a tartományvezérlő műveletek nem hívható meg csak akkor, ha az identitás, amelynek jogosítványa van meghívja az API-t.
+A webalkalmazásokhoz hasonlóan a ASP.net/ASP.net Core webes API-k "védettek", mert a vezérlő műveletei az `[Authorize]` attribútummal előtaggal vannak ellátva. Így a vezérlő műveletek csak akkor hívhatók meg, ha az API-t egy engedélyekkel rendelkező identitás hívja meg.
 
 Vegye figyelembe a következő kérdéseket:
 
-- Hogyan, hogy a webes API-t, amely meghívja ezt az alkalmazás identitását? (Csak az alkalmazás egy webes API-t hívhatja.)
-- Ha az alkalmazás neve a webes API egy felhasználó nevében, mi az a felhasználó identitása?
+- Hogyan ismeri a webes API a meghívást az alkalmazás identitásával? (Csak az alkalmazás hívhat meg webes API-t.)
+- Ha az alkalmazás a felhasználó nevében a webes API-t hívja meg, mi a felhasználó identitása?
 
 ## <a name="bearer-token"></a>Tulajdonosi jogkivonat
 
-Az alkalmazás identitását, és a felhasználó információt (kivéve, ha a webalkalmazás-démon alkalmazásból szolgáltatások közötti hívások fogad el), a tulajdonosi jogkivonatot, amely a fejlécében van beállítva, ha az alkalmazás neve tárolt.
+Az alkalmazás identitásával és a felhasználóval kapcsolatos információk (kivéve, ha a webalkalmazás nem fogadja el a szolgáltatások közötti hívásokat egy Daemon-alkalmazásból), az alkalmazás hívásakor a fejlécben beállított tulajdonosi jogkivonatban található.
 
-Íme egy C# kód példa bemutatja egy ügyfél az API meghívása után azt tokenbeolvasás a Microsoft-hitelesítési tár .NET (MSAL.NET):
+Az alábbi C# kódrészlet egy olyan ügyfelet mutat be, amely az API-t hívja meg, miután beszerezte a tokent a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával:
 
 ```CSharp
 var scopes = new[] {$"api://.../access_as_user}";
@@ -55,13 +55,13 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> A tulajdonosi jogkivonatot a Microsoft identity platform végpont ügyfélalkalmazás által kért *a webes API*. A webes API-t kell ellenőrizni a jogkivonatot, és a benne található jogcímeket megtekintése egyetlen alkalmazás. Ügyfélalkalmazások soha ne próbálja meg vizsgálja meg a jogcímeket a jogkivonatokban. (A webes API-t igényel, a jövőben, hogy a jogkivonat titkosítva legyen-e. Ez a követelmény megakadályozná, hogy az ügyfélalkalmazások, amelyek megtekintheti a hozzáférési jogkivonatok hozzáférés.)
+> A tulajdonosi jogkivonatot egy ügyfélalkalmazás kérelmezte a *webes API*-hoz készült Microsoft Identity platform végpontja számára. A webes API az egyetlen alkalmazás, amelynek ellenőriznie kell a jogkivonatot, és meg kell tekintenie a benne található jogcímeket. Az ügyfélalkalmazások soha nem próbálják meg megvizsgálni a jogkivonatokban lévő jogcímeket. (A webes API-nak a jövőben a jogkivonat titkosítása szükséges. Ez a követelmény megakadályozza a hozzáférési jogkivonatokat megtekintő ügyfélalkalmazások hozzáférését.)
 
-## <a name="jwtbearer-configuration"></a>JwtBearer konfiguráció
+## <a name="jwtbearer-configuration"></a>JwtBearer-konfiguráció
 
-Ez a szakasz ismerteti a tulajdonosi jogkivonattal konfigurálása.
+Ez a szakasz a tulajdonosi jogkivonatok konfigurálását ismerteti.
 
-### <a name="config-file"></a>A konfigurációs fájl
+### <a name="config-file"></a>Konfigurációs fájl
 
 ```Json
 {
@@ -91,26 +91,26 @@ Ez a szakasz ismerteti a tulajdonosi jogkivonattal konfigurálása.
 
 ### <a name="code-initialization"></a>Kód inicializálása
 
-Ha egy alkalmazás egy vezérlő műveletet, amely tartalmazza a neve egy `[Authorize]` attribútum, ASP.NET/ASP.NET Core a hívó kérelem az engedélyezési fejléc tulajdonosi jogkivonat megvizsgál, és kinyeri a hozzáférési jogkivonatot. A jogkivonat ezután a JwtBearer közbenső szoftver, amely meghív IdentityModel bővítmények a Microsoft .NET-keretrendszerhez készült lesznek továbbítva.
+Ha egy alkalmazás hívása egy `[Authorize]` attribútumot tartalmazó vezérlő műveletre történik, a ASP.net/ASP.net Core a hívó kérelem engedélyezési fejlécében lévő tulajdonosi jogkivonatot tekinti meg, és Kinyeri a hozzáférési jogkivonatot. A rendszer ezután továbbítja a tokent a JwtBearer middleware-hez, amely meghívja a .NET-hez készült Microsoft IdentityModel-bővítményeket.
 
-Az ASP.NET Core az a közbenső szoftver inicializálása a Startup.cs fájlban:
+A ASP.NET Core-ben ez a middleware a Startup.cs fájlban van inicializálva:
 
 ```CSharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
-A közbenső szoftver ezeket az utasításokat hozzáadta a webes API-hoz:
+A middleware a webes API-hoz kerül a következő utasítással:
 
 ```CSharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- Jelenleg az ASP.NET Core-sablonok az Azure Active Directory (Azure AD) webes API-kat jelentkezzen létre a szervezet vagy bármely szervezet személyes fiókkal nem rendelkező felhasználóit. Azonban egyszerűen módosíthatja az azokat a Microsoft identity platform végpont használatára Ez a kód hozzáadja a Startup.cs fájlban:
+ Jelenleg a ASP.NET Core sablonok olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten belül vagy bármely szervezeten belül, személyes fiókkal nem rendelkező felhasználók számára jelentkeznek be. A Microsoft Identity platform végpontját azonban egyszerűen módosíthatja úgy, hogy hozzáadja ezt a kódot a Startup.cs-fájlhoz:
 
 ```CSharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
-    // This is a Microsoft identity platform v2.0 web API.
+    // This is a Microsoft identity platform web API.
     options.Authority += "/v2.0";
 
     // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
@@ -127,36 +127,36 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 });
 ```
 
-## <a name="token-validation"></a>Érvényesítési jogkivonat
+## <a name="token-validation"></a>Jogkivonat ellenőrzése
 
-A JwtBearer közbenső szoftverek, például a web apps szolgáltatásban, az OpenID Connect közbenső szoftver által van irányítva `TokenValidationParameters` a jogkivonat érvényesítéséhez. A jogkivonatot a rendszer visszafejti a (igény szerint), a jogcímek ki kell olvasni, és ellenőrzi az aláírást. A közbenső szoftver majd érvényesíti a jogkivonatot az adatok ellenőrzésével:
+A JwtBearer middleware, mint például az OpenID Connect middleware a web Appsben, a `TokenValidationParameters` rendszer a token érvényesítésére irányítja. A jogkivonat visszafejtése (szükség szerint), a jogcímek kibontása és az aláírás ellenőrzése megtörtént. A middleware ezt követően ellenőrzi a tokent, hogy ellenőrzi az alábbi adatforrást:
 
-- Célja, hogy a webes API-t (célközönség).
-- Ki, hogy engedélyezte a webes API-k (al) meghívásához.
-- A bocsátotta megbízható biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) (kibocsátó).
-- Élettartama (lejárati) hatótávolságon belül van.
-- Ez nem lett illetéktelenül (aláírás).
+- A webes API-ra (célközönség) irányul.
+- Olyan alkalmazás számára lett kiadva, amely számára engedélyezett a webes API (Sub) hívása.
+- A tanúsítványt egy megbízható biztonsági jogkivonat szolgáltatás (STS) adta ki.
+- Az élettartama a hatótávolságon (lejárat) belül van.
+- Nem módosították a következővel: (aláírás).
 
-Emellett speciális ellenőrzések lehet. Például akkor lehet aláírási kulcsokat (Ha a beágyazott jogkivonat) megbízható, hogy, hogy a jogkivonat nincs folyamatban visszajátszani ellenőrzése. Végül néhány protokoll szükséges adott ellenőrzések.
+Speciális érvényesítés is lehetséges. Ellenőrizheti például, hogy az aláíró kulcsok (a tokenbe ágyazva) megbízhatóak-e, és hogy a jogkivonat nincs-e visszajátszva. Végezetül bizonyos protokollok speciális érvényesítést igényelnek.
 
-### <a name="validators"></a>Érvényesítők
+### <a name="validators"></a>Érvényesítőket
 
-Az ellenőrzési lépések érvényesítők, amelyek mind rögzíti a rendszer a [IdentityModel bővítmények a Microsoft .NET-keretrendszerhez készült](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) nyílt forráskódú kódtár, egy forrásfájl: [Microsoft.IdentityModel.Tokens/Validators.cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) nyílt forráskódú függvénytárában, egyetlen forrásfájlban vannak rögzítve. [Microsoft. IdentityModel. tokenek/érvényesítő. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
-Ez a táblázat ismerteti a érvényesítők:
+A következő táblázat ismerteti a validatorokat:
 
-| Érvényesítési | Leírás |
+| Validator | Leírás |
 |---------|---------|
-| `ValidateAudience` | Biztosítja a jogkivonatot, amely érvényesíti a jogkivonatot (a számomra). |
-| `ValidateIssuer` | Biztosítja a jogkivonatot egy megbízható STS bocsátotta (a valaki megbízható). |
-| `ValidateIssuerSigningKey` | Az alkalmazás a token bizalmi kapcsolatok ellenőrzése a jogkivonat aláírásához használt kulcs biztosítja. (Különleges eset, ahol a jogkivonatot a kulcs van beágyazva. Általában nem szükséges.) |
-| `ValidateLifetime` | Biztosítja a token érvényességét továbbra is (vagy már). Az érvényesítő ellenőrzi, hogy a jogkivonat élettartama (`notbefore` és `expires` jogcímek) hatótávolságon belül van. |
-| `ValidateSignature` | Biztosítja a jogkivonat még nem módosították illetéktelenül. |
-| `ValidateTokenReplay` | Biztosítja a jogkivonat nem játssza vissza. (Az egyes onetime használata protokollokat különleges eset.) |
+| `ValidateAudience` | Gondoskodik arról, hogy a jogkivonat a tokent érvényesítő alkalmazáshoz legyen (nekem). |
+| `ValidateIssuer` | Gondoskodik arról, hogy a tokent egy megbízható STS állította ki (valakitől, akiben megbízik). |
+| `ValidateIssuerSigningKey` | Gondoskodik arról, hogy a jogkivonatot érvényesítő alkalmazás megbízza a jogkivonat aláírásához használt kulcsot. (Speciális eset, ha a kulcs be van ágyazva a tokenbe. Általában nem szükséges.) |
+| `ValidateLifetime` | Gondoskodik arról, hogy a jogkivonat még mindig (vagy már) érvényes legyen. Az érvényesítő ellenőrzi, hogy a jogkivonat élettartama (`notbefore` és `expires` jogcímei) a tartományon belül van-e. |
+| `ValidateSignature` | Gondoskodik arról, hogy a jogkivonat ne legyen illetéktelenül módosítva. |
+| `ValidateTokenReplay` | Gondoskodik arról, hogy a jogkivonat ne legyen újrajátszva. (Speciális eset néhány, egyszeri használatú protokollhoz.) |
 
-A érvényesítők rendszer a tulajdonságait a `TokenValidationParameters` osztályhoz, inicializálja a ASP.NET/ASP.NET konfigurációján magukat. A legtöbb esetben nem kell módosítani a paraméterek. Nincs egyetlen kivétel, alkalmazások, amelyek egyetlen bérlő nem. (Azt jelenti, webalkalmazások, amely bármely szervezet vagy személyes Microsoft-fiókok a felhasználó fogadja el.) Ebben az esetben a kibocsátó érvényesíteni kell.
+A validatorok az `TokenValidationParameters` osztály tulajdonságaihoz vannak társítva, amelyek a ASP.net/ASP.net alapkonfigurációból lettek inicializálva. A legtöbb esetben nem kell módosítania a paramétereket. Egyetlen Bérlővel rendelkező alkalmazások esetében egyetlen kivétel van. (Ez a webalkalmazások, amelyek bármely szervezetből vagy személyes Microsoft-fiókokból fogadnak felhasználókat.) Ebben az esetben a kiállítót érvényesíteni kell.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ellenőrizze a hatókörök és alkalmazás-szerepkörök a kódban](scenario-protected-web-api-verification-scope-app-roles.md)
+> [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

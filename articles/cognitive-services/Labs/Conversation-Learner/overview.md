@@ -1,7 +1,7 @@
 ---
-title: Mi a Beszélgetéstanuló? – A Microsoft Cognitive Services |} A Microsoft Docs
+title: Mi a Beszélgetéstanuló? – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: További tudnivalók Beszélgetéstanuló és működését.
+description: További információ a Conversation Learnerről és annak működéséről.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,38 +10,39 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: f8bc7590f2d7a622b4b1ffb21bfeccef89691fd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 725a1d3628fb320a58e073fe2d825af23b02c0bd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389502"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707019"
 ---
 # <a name="what-is-conversation-learner"></a>Mi a Beszélgetéstanuló?
 
-Beszélgetéstanuló lehetővé teszi, hogy hozhat létre, és ismerje meg az a példában interakciók párbeszédfelületeket tanít. 
+Conversation Learner lehetővé teszi olyan társalgási felületek összeállítását és megtanulását, amelyek a példa interakcióit tanulják meg. 
 
-Ellentétben a hagyományos megközelítés Beszélgetéstanuló figyelembe veszi a párbeszéd válaszokat és vonzóbb felhasználói élményeket nyújthat teljes körű keretében. A különböző feladatközpontú átfedés használati esetek, Beszélgetéstanuló vonatkozik a machine learning robotokat és intelligens ügynököket kevésbé valószínű, hogy a felhasználók meghiúsítja, további ügyfél-szolgáltatás költségekkel és intuitívabb interakciók termékpiacokon a háttérben.
+A hagyományos megközelítésekkel ellentétben Conversation Learner a párbeszéd végpontok közötti kontextusát veszi figyelembe, hogy javítsa a válaszokat, és vonzóbb felhasználói élményt nyújtson. A feladathoz igazodó használati esetek széles körének bővítése Conversation Learner a jelenetek mögötti gépi tanulást alkalmazza, így a robotok és az intelligens ügynökök kevésbé valószínű, hogy meghiúsítják a felhasználókat, további ügyfélszolgálati költségekkel járnak, és intuitívabb interakciókat ösztönöznek.
 
-A fejlesztők modellezheti szeretnének prototípusos párbeszédpanelek beírásával indítsa el. A modell további párbeszédpanelek megadott módon tanul. Miután a modell jól működik, a robot is üzembe helyezhetők a végfelhasználók számára. Beszélgetéstanuló beszélgetések naplózza a felhasználókkal, és a fejlesztői tekintheti át őket. Ha a rendszer pedig a hibák pöttyös, teheti, hogy a fejlesztő egy a helyszíni javítás, és a modell retrained és használható azonnal.
+A fejlesztők a prototípusos párbeszédpanelek megadásával kezdhetik meg az utánzást. A modell több párbeszédablak beírásával tanul. Ha a modell jól működik, a robot üzembe helyezhető a végfelhasználók számára. Conversation Learner a felhasználókkal folytatott beszélgetéseket, a fejlesztő pedig áttekintheti őket. Ha a hibákat kiszúrták, a fejlesztő helyszíni javítást végezhet, és azonnal elérhetővé teheti a modellt.
 
-Ez a megközelítés csökkenti a párbeszéd ellenőrzési logika manuális kódolását, és lehetővé teszi az üzleti tulajdonosai vagy a tartomány szakértők való közreműködésre beszélgetések felület korábbi machine learning-ismeretek nélkül. A robot, az intelligens eszköz vagy intelligens ügynök részeként üzembe helyezett, hogy Beszélgetéstanuló gyors ismételt futtatásával új ismeretek, viselkedések vagy kompetenciák, és gyorsan javíthatja a minőségét. 
+Ez a megközelítés csökkenti a párbeszéd-vezérlési logika manuális kódolását, és lehetővé teszi, hogy az üzleti tulajdonosok vagy a tartományi szakértők a korábbi gépi tanulási ismeretek nélkül hozzájáruljanak a társalgási felülethez. Függetlenül attól, hogy a robot, az intelligens eszköz vagy az intelligens ügynök részeként van-e üzembe helyezve, Conversation Learner gyorsan megismételheti az új képességeket, viselkedéseket vagy kompetenciákat, és gyorsan javíthatja a minőséget. 
 
-Beszélgetéstanuló segítségével a fejlesztők számára, hogy növelje kerülési sebesség és a meghajtó sikeres lehetővé a Microsoft Bot Framework, vagy a saját infrastruktúrát használó önálló többféle természetes nyelvi csatornán keresztül.
+Conversation Learner lehetővé teszi a fejlesztők számára a gyorsabb és sikeres párbeszédek megnövekedését több társalgási csatornán keresztül a Microsoft bot Framework segítségével, vagy önálló infrastruktúrával.
 
-Összegzés és emeli ki:
+Összefoglalás és csúcsfények:
 
-- Beszélgetéstanuló a feladatközpontú robotok létrehozása az AI-és felhőközpontú módszerrel.
+- A Conversation Learner a tevékenység-orientált robotok létrehozásának AI-első módszere.
 
-- Egy teljes körű ütemezhetők Neurális hálózat (LSTM) támaszkodik, és megtanulja közvetlenül a beszélgetések példák többszörös kapcsolja. 
+- Egy végpontok közötti, egyidejű neurális hálózatra (LSTM) támaszkodik, és közvetlenül tanul a többes beszélgetésből származó példákkal. 
 
-- Lehetővé teszi a tervezők, a fejlesztők, az üzleti felhasználók és hívás center feldolgozók tekintettel a robotokat. 
+- Lehetővé teszi a tervezők, a fejlesztők, az üzleti felhasználók és a Call Center-feldolgozók számára a robotok készítését és karbantartását. 
 
-- Lehetővé teszi az üzleti szabályok és a kódban józan express.
+- Lehetővé teszi az üzleti szabályok és a józan ész kifejezését a kódban.
 
-- Során oktatási munkamenetek, a Neurális hálózat-modell segítségével a beszélgetésben. a várt műveletek következő készletét helyezett. A robot fejlesztő ezután válassza ki a megfelelő műveletet, és a hálózat, adja meg a megfelelő választ.
+- A tanítási munkamenetek során a neurális hálózati modell a beszélgetésben a várt műveletek következő készletének kiértékelésére szolgál. A robot fejlesztői ezután kiválaszthatják a megfelelő műveletet, és a megfelelő válasz biztosításához betanítják a hálózatot.
  
-- Képzési befejezése után a fejlesztői használhatja a napló párbeszédpanelek, a felhasználói tevékenységet a robot által küldött válaszokhoz korrekciók és a modell újratanítása. 
+- A betanítás befejezése után a fejlesztő a felhasználói interakciók napló párbeszédpaneleit használva kijavítani a bot válaszait, és újratanítja a modellt. 
 
-- Meghívhatja a tartomány-specifikus és külső API-k a feladatokat.
+- A a tartományi és külső API-kat is meghívhatja a feladatok elvégzéséhez.
 

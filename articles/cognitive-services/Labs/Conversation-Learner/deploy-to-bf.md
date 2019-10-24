@@ -1,7 +1,7 @@
 ---
-title: Beszélgetéstanuló robot – a Microsoft Cognitive Services üzembe helyezése |} A Microsoft Docs
+title: Conversation Learner robot-Microsoft Cognitive Services üzembe helyezése | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan helyezhet üzembe egy Beszélgetéstanuló robot.
+description: Megtudhatja, hogyan helyezhet üzembe egy Conversation Learner robotot.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,26 +10,27 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 5522f762f3893f1d67cd3755b1e022f0118cc004
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05fd83506aac26df33f18bec83dcadac8dee2d90
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385321"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705281"
 ---
-# <a name="how-to-deploy-a-conversation-learner-bot"></a>Beszélgetéstanuló robotprogramok üzembe helyezése
+# <a name="how-to-deploy-a-conversation-learner-bot"></a>Conversation Learner robot üzembe helyezése
 
-Ez a dokumentum azt ismerteti, hogyan helyezhet üzembe egy Beszélgetéstanuló robot – helyi vagy az Azure-bA.
+Ez a dokumentum ismerteti, hogyan helyezhet üzembe egy Conversation Learner robotot – akár helyileg, akár az Azure-ban.
 
-## <a name="prerequisite-determine-the-model-id"></a>Előfeltétel: a modell Azonosítóját határozza meg 
+## <a name="prerequisite-determine-the-model-id"></a>Előfeltétel: a modell AZONOSÍTÓjának meghatározása 
 
-A beszélgetés Learner felhasználói felületén kívül robotprogramok futtatja, be kell a Beszélgetéstanuló Modellazonosító, amelyet használni fog a robot – azaz a gépi tanulási modell Beszélgetéstanuló felhőbeli azonosítója.  (Ellentétben a robot a beszélgetés Learner felhasználói felületen futtatásakor a felhasználói felület úgy dönt, mely forrásmodell azonosítóját.).  
+Ha a Conversation Learner felhasználói felületen kívülről szeretne robotot futtatni, be kell állítania a Conversation Learner modell AZONOSÍTÓját, amelyet a robot használni fog – azaz a Machine learning modell AZONOSÍTÓját a Conversation Learner felhőben.  (Ezzel szemben, amikor a Conversation Learner felhasználói felületen futtatja a robotot, a felhasználói felület kiválasztja a modell AZONOSÍTÓját.).  
 
-Íme a Modellazonosító beszerzése:
+A modell AZONOSÍTÓjának beszerzése:
 
-1. Indítsa el a robot és a beszélgetés Learner felhasználói felületén.  A rövid útmutató a teljes körű útmutatást; lásd: összefoglalásképpen:
+1. Indítsa el a robotot és a Conversation Learner felhasználói felületet.  A teljes körű utasításokért lásd a gyors üzembe helyezési útmutatót. Összefoglalás:
 
-    Egy parancsablakban:
+    Egyetlen parancssori ablakban:
 
     ```
     [open a command window]
@@ -37,7 +38,7 @@ A beszélgetés Learner felhasználói felületén kívül robotprogramok futtat
     npm start
     ```
 
-    Más parancssori ablakban
+    A portok parancsablakban
 
     ```bash
     [open second command prompt window]
@@ -45,27 +46,27 @@ A beszélgetés Learner felhasználói felületén kívül robotprogramok futtat
     npm run ui
     ```
 
-2. Nyissa meg böngészőben `http://localhost:5050` 
+2. Böngésző megnyitása a következőhöz`http://localhost:5050` 
 
-3. Kattintson a Beszélgetéstanuló modellel ismerkedhet meg azonosítója
+3. Kattintson arra a Conversation Learner modellre, amelynek AZONOSÍTÓját le szeretné kérni
 
-4. Kattintson a "Beállítások" a a bal oldali navigációs sávon.
+4. Kattintson a bal oldali navigációs sávban a "beállítások" elemre.
 
-5. Az oldal tetején a "Model ID" GUID jelenik meg.
+5. A "modell azonosítója" GUID az oldal tetején jelenik meg.
 
-## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Option 1: Helyi futtatásához egy Beszélgetéstanuló bot üzembe helyezése
+## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>1\. lehetőség: Conversation Learner robot üzembe helyezése helyileg való futtatáshoz
 
-Üzembe helyez egy robot a helyi gépre, és bemutatja, hogyan férhet hozzá, a Bot Framework emulator használatával.
+Ez üzembe helyez egy robotot a helyi gépre, és bemutatja, hogyan érheti el azt a bot Framework Emulator használatával.
 
-### <a name="configure-your-bot-for-access-outside-the-conversation-learner-ui"></a>A robot a beszélgetés Learner felhasználói felületén kívül hozzáférés konfigurálása
+### <a name="configure-your-bot-for-access-outside-the-conversation-learner-ui"></a>A robot konfigurálása a Conversation Learner felhasználói felületén kívüli hozzáféréshez
 
-Amikor helyileg futtatja a robotprogramok, adja meg az Alkalmazásazonosítót a robot `.env` fájlt:
+A robot helyi futtatásakor adja hozzá az alkalmazás azonosítóját a robot `.env` fájlhoz:
 
     ```
     CONVERSATION_LEARNER_MODEL_ID=<YOUR_MODEL_ID>
     ```
 
-Ezután indítsa el a robot:
+Ezután indítsa el a robotot:
 
     ```
     [open a command window]
@@ -73,9 +74,9 @@ Ezután indítsa el a robot:
     npm start
     ```
 
-A robot mostantól helyileg fut.  Hozzá tud férni a Bot Framework emulátort.
+A robot mostantól helyileg fut.  A bot Framework Emulator használatával férhet hozzá.
 
-### <a name="download-and-install-the-emulator"></a>Töltse le és telepítse az emulátort
+### <a name="download-and-install-the-emulator"></a>Az emulátor letöltése és telepítése
 
     ```
     git clone https://github.com/Microsoft/BotFramework-Emulator
@@ -84,45 +85,45 @@ A robot mostantól helyileg fut.  Hozzá tud férni a Bot Framework emulátort.
     npm start
     ```
 
-### <a name="connect-the-emulator-to-your-bot"></a>Az emulátor csatlakozik a robot
+### <a name="connect-the-emulator-to-your-bot"></a>Az emulátor összekötése a robottal
 
-1. A bal felső sarkában az emulátorban, a "adja meg a végpont URL-címe", adja meg `http://127.0.0.1:3978/api/messages`.  A többi mezőt hagyja üresen, és kattintson a "Kapcsolódás" elemre.
+1. Az emulátor bal felső részén, a "adja meg a végpont URL-címe" mezőbe írja `http://127.0.0.1:3978/api/messages`be a következőt:.  Hagyja üresen a többi mezőt, és kattintson a "kapcsolat" gombra.
 
-2. Most már szolgáltatásprogram a robottal.
+2. Most már beszélget a robottal.
 
-## <a name="option-2-deploy-to-azure"></a>Option 2: Üzembe helyezés az Azure-ban
+## <a name="option-2-deploy-to-azure"></a>2\. lehetőség: Üzembe helyezés az Azure-ban
 
-Tegye közzé a ugyanúgy, mint bármilyen más robot közzé kívánja tenni a hasonló Beszélgetéstanuló robotjait. Magas szinten töltse fel a kódot egy üzemeltetett webhelyre, állítsa be a megfelelő konfigurációs értékeket, és regisztrálja a robot a különböző csatornákon. A videó közzététele a robot, az Azure Bot Service használatával történő bemutató részletes utasítások találhatók.
+Tegye közzé a Conversation Learner robotját ugyanúgy, mint bármely más robotot. Magas szinten töltse fel a kódot egy üzemeltetett webhelyre, állítsa be a megfelelő konfigurációs értékeket, majd regisztrálja a robotot különböző csatornákkal. A részletes utasítások ebben a videóban azt mutatják be, hogyan teheti közzé a robotot a Azure Bot Service használatával.
 
-A robot üzemel, és a futtató csatlakozhat más csatornákat, például a Facebook, a Teams, a Skype stb. az Azure Bot Csatornaregisztráció használatával. A folyamat lásd: dokumentáció: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
+A bot üzembe helyezése és futtatása után különböző csatornákat (például Facebook, csapatok, Skype stb.) kapcsolhat össze. Azure bot Channel-regisztráció használata. A folyamat dokumentációját lásd: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
-Az alábbiakban lépésről lépésre ismerteti, hogyan telepíthető egy beszélgetés Learner Bot az Azure-bA.  Ezek az utasítások feltételezik, hogy a robot forrás, például az Azure DevOps-szolgáltatásokkal, GitHub, BitBucket vagy onedrive vállalati verzió egy felhőalapú adatforrás érhető el, és konfigurálja a robot a folyamatos üzembe helyezéshez.
+Az alábbiakban részletes útmutatást talál a Conversation Learner-bot Azure-ba történő üzembe helyezéséhez.  Ezek az utasítások feltételezik, hogy a robot forrása elérhető egy felhőalapú forrásból, például az Azure DevOps Services, a GitHub, a BitBucket vagy a OneDrive, és a robotot a folyamatos üzembe helyezéshez konfigurálja.
 
-1. Jelentkezzen be az Azure Portalra https://portal.azure.com
+1. Jelentkezzen be a Azure Portal https://portal.azure.com
 
-2. Hozzon létre egy új "Az Web App Bot" erőforrást 
+2. Új "webalkalmazás-bot" erőforrás létrehozása 
 
-    1. Nevezze el a robotot
-    2. Kattintson a "Bot sablon", "Node.js" válassza, válassza az "Alapszintű", majd kattintson a "Select" gombra
-    3. Kattintson a "create" az Web App Bot létrehozásához.
-    4. Várjon, amíg a Web App Bot erőforrás létrehozását.
+    1. Adja meg a robot nevét
+    2. Kattintson a "bot Template" elemre, válassza a "Node. js" elemet, válassza az "alapszintű" lehetőséget, majd kattintson a "kiválasztás" gombra.
+    3. Kattintson a "létrehozás" gombra a webalkalmazás-robot létrehozásához.
+    4. Várjon, amíg létrejön a webalkalmazás-robot erőforrása.
 
-3. Az Azure Portalon szerkesztheti az újonnan létrehozott Web App Bot erőforrás.
+3. A Azure Portal szerkessze az imént létrehozott webalkalmazás-robot-erőforrást.
 
-   1. Kattintson az "Alkalmazás beállítások" nav elemet a bal oldalon
-   1. Görgessen le az "Alkalmazás beállítások" szakaszban
+   1. Kattintson a bal oldalon található "Alkalmazásbeállítások" navigációs elemre.
+   1. Görgessen le az "app Settings" (Alkalmazásbeállítások) szakaszhoz
    2. Adja hozzá ezeket a beállításokat:
 
        Környezeti változó | value
        --- | --- 
        CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
-       CONVERSATION_LEARNER_MODEL_ID      | Alkalmazás-azonosító GUID, a beszélgetés Learner felhasználói felületen a "beállítások" modell szerzett >
-       LUIS_AUTHORING_KEY               | Ehhez a modellhez kulcs létrehozási LUIS
-       LUIS_SUBSCRIPTION_KEY            | Nem kötelező, de a közzétett robotok kerülje a szerzői műveletek kvótájának ajánlott.
+       CONVERSATION_LEARNER_MODEL_ID      | Az alkalmazás azonosítójának GUID azonosítója, amely a modell "Settings" (beállítások) részének Conversation Learner felhasználói felületéről származik >
+       LUIS_AUTHORING_KEY               | A modell LUIS authoring kulcsa
+       LUIS_SUBSCRIPTION_KEY            | Nem kötelező, de ajánlott a közzétett robotok számára, hogy ne használja a szerzői kvótát.
     
-   4. Az oldal tetején a "Mentés" gombra
-   5. Nyissa meg a "Build" nav elemet a bal oldalon
-   6. Kattintson az "A folyamatos üzembe helyezés konfigurálása" 
-   7. Kattintson a "Telepítés" ikonra a központi telepítések
-   8. Kattintson a "Kötelező beállítások"
-   9. Válassza ki a forrás, amennyiben rendelkezésre áll-e a robot kód, és konfigurálja a forrás.
+   4. Kattintson a Save (Mentés) gombra az oldal tetején
+   5. A "Build" NAV-elem megnyitása a bal oldalon
+   6. Kattintson a "folyamatos üzembe helyezés konfigurálása" elemre. 
+   7. Kattintson a "telepítés" ikonra a központi telepítések területen.
+   8. Kattintson a kötelező beállítások elemre.
+   9. Válassza ki azt a forrást, ahol a robot kódja elérhető, és konfigurálja a forrást.

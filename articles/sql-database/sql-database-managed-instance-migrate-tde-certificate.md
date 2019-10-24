@@ -1,6 +1,6 @@
 ---
 title: TDE-tanúsítvány migrálása – Felügyelt Azure SQL Database-példány | Microsoft Docs
-description: A tanúsítvány védelme, adatbázis-titkosítási kulcs az adatbázis transzparens adattitkosítás az Azure SQL Database felügyelt példányába történő áttelepítése
+description: A tanúsítvány migrálása az adatbázis titkosítási kulcsát az átlátható adattitkosítással Azure SQL Database felügyelt példányhoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
-manager: craigg
 ms.date: 04/25/2019
-ms.openlocfilehash: f54950ab96664b17aab056b468db0644216e8654
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f9c1cefafdf6f7f33db3c5143e6b97b328fe699
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706102"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567414"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Tanúsítvány TDE védett adatbázis áttelepítése az Azure SQL Database felügyelt példánya
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE-védelemmel ellátott adatbázis tanúsítványának átirányítása Azure SQL Database felügyelt példányra
 
-Által védett adatbázis áttelepítését [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) Azure SQL Database felügyelt példányába történő natív visszaállítási lehetőséggel, a megfelelő tanúsítványt a helyszíni vagy IaaS SQL Server kell áttelepíteni Mielőtt az adatbázis-visszaállítás. Ez a cikk a tanúsítványnak a felügyelt Azure SQL Database-példányra történő manuális migrálásának a folyamatát mutatja be lépésről lépésre:
+Ha a [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) által védett adatbázist Azure SQL Database felügyelt példány natív visszaállítási lehetőséggel történő áttelepítését végzi, a helyszíni vagy IaaS tartozó tanúsítványokat a rendszer az adatbázis-visszaállítás előtt át kell telepítenie SQL Server. Ez a cikk a tanúsítványnak a felügyelt Azure SQL Database-példányra történő manuális migrálásának a folyamatát mutatja be lépésről lépésre:
 
 > [!div class="checklist"]
 > * A tanúsítvány exportálása egy személyes információcsere (.pfx) fájlba
@@ -31,20 +30,20 @@ ms.locfileid: "64706102"
 Alternatív megoldásként használhat egy teljes körűen felügyelt szolgáltatást a TDE-vel védett adatbázis és a kapcsolódó tanúsítvány zökkenőmentes migrálásához. További információért olvassa el a cikket, amely részletesen ismerteti a [helyszíni adatbázis egy felügyelt példányra való migrálását az Azure Database Migration Service használatával](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> A migrált tanúsítvány csak a TDE-vel védett adatbázis visszaállítására használható. Visszaállítás történik, miután a migrált tanúsítvány beolvasása váltotta fel egy másik védelmi modulra vonatkozó, vagy a szolgáltatás által kezelt tanúsítvány, vagy az aszimmetrikus kulcs a transzparens adattitkosítás, megadhatja a példányon típusától függően a kulcstartóból.
+> A migrált tanúsítvány csak a TDE-vel védett adatbázis visszaállítására használható. A visszaállítást követően a rendszer a példányon beállított transzparens adattitkosítás típusától függően lecseréli az áttelepített tanúsítványt egy másik oltalmazóra, vagy a szolgáltatás által felügyelt tanúsítványra vagy az aszimmetrikus kulcsra a kulcstartóból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 - Telepített [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) parancssori eszköz egy helyszíni kiszolgálón vagy egy olyan számítógépen, amely hozzáfér a fájlként exportált tanúsítványhoz. A Pvk2Pfx eszköz az [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) része, amely egy önálló parancssori környezet.
 - Telepített [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell), 5.0-s vagy újabb verzió.
-- Azure PowerShell-modul [telepítve van, és a frissített](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
+- Azure PowerShell modul [telepítve és frissítve](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [Az az. SQL modul](https://www.powershellgallery.com/packages/Az.Sql).
   A PowerShell modul telepítéséhez/frissítéséhez a következő parancsokat kell futtatni a PowerShellben:
 
    ```powershell
@@ -114,7 +113,7 @@ Amennyiben a tanúsítványt az SQL Server helyi számítógépének tanúsítv�
 
 4. A varázsló utasításait követve exportálja a tanúsítványt és a titkos kulcsot személyes információcsere formátumba.
 
-## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Tanúsítvány feltöltése az Azure SQL Database felügyelt példány az Azure PowerShell-parancsmag segítségével
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Tanúsítvány feltöltése Azure SQL Database felügyelt példányra Azure PowerShell parancsmag használatával
 
 1. Előkészítő lépések a PowerShellben:
 
@@ -144,6 +143,6 @@ A tanúsítvány ezzel elérhetővé válik a megadott felügyelt példányban, 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan telepítheti át a tanúsítvány védelme transzparens adattitkosítás, az adatbázis titkosítási kulcs a helyszíni vagy Azure SQL Database felügyelt példány SQL Server IaaS.
+Ebben a cikkben megtanulta, hogyan telepítheti át az adatbázis titkosítási kulcsát a transzparens adattitkosítás, a helyszíni vagy a IaaS SQL Serverról Azure SQL Database felügyelt példányra.
 
 Az adatbázis biztonsági másolatának egy felügyelt Azure SQL Database-példányra történő visszaállításáról itt olvashat: [Adatbázis biztonsági másolatának visszaállítása egy felügyelt Azure SQL Database-példányon](sql-database-managed-instance-get-started-restore.md).

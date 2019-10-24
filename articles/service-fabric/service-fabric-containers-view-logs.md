@@ -1,9 +1,9 @@
 ---
-title: Tároló naplóinak megtekintése az Azure Service Fabricben |} A Microsoft Docs
-description: Ismerteti a Service Fabric Explorerrel futó Service Fabric container Services tárolónaplók megtekintése.
+title: Tárolók naplóinak megtekintése az Azure Service Fabricban | Microsoft Docs
+description: Ismerteti, hogyan lehet megtekinteni egy futó Service Fabric Container Services tároló-naplóit Service Fabric Explorer használatával.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,28 +13,28 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
-ms.author: aljo
-ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60881492"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599733"
 ---
-# <a name="view-logs-for-a-service-fabric-container-service"></a>A Service Fabric-tároló szolgáltatás naplók megtekintése
-Az Azure Service Fabric egy tárolóvezénylő, és mindkettő támogatja [Linux és Windows-tárolók](service-fabric-containers-overview.md).  Ez a cikk azt ismerteti, hogy a futó tároló szolgáltatás vagy a kézbesíthetetlen tároló tárolónaplók megtekintése, így diagnosztizálhatja és elháríthatja.
+# <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric tároló szolgáltatás naplófájljainak megtekintése
+Az Azure Service Fabric egy tároló-Orchestrator, és támogatja a [Linux-és Windows-tárolókat](service-fabric-containers-overview.md)is.  Ez a cikk azt ismerteti, hogyan lehet megtekinteni egy futó tároló szolgáltatás vagy egy elhalt tároló tároló naplóit, így diagnosztizálhatja és elháríthatja a problémákat.
 
-## <a name="access-the-logs-of-a-running-container"></a>A futó tárolót, a naplók elérése
-Tárolónaplók használatával lehet elérni [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).  Egy webböngészőben nyissa meg a Service Fabric Explorert a a fürt felügyeleti végpontja az [ http://mycluster.region.cloudapp.azure.com:19080/Explorer ](http://mycluster.region.cloudapp.azure.com:19080/Explorer).  
+## <a name="access-the-logs-of-a-running-container"></a>Egy futó tároló naplóihoz való hozzáférés
+A tároló naplói [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)használatával érhetők el.  Egy webböngészőben nyissa meg Service Fabric Explorer a fürt felügyeleti végpontján, ehhez [http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer)navigáljon a következőre:.  
 
-Tárolónaplók találhatók, amely a container service-példány fut fürtcsomóponton. Tegyük fel, a webes előtér-tároló, a naplók lekérése az [mintaalkalmazás Linux szavazási](service-fabric-quickstart-containers-linux.md). A fanézetben bontsa ki a **fürt**>**alkalmazások**>**VotingType**>**fabric: / Voting / azurevotefront**.  Ezután bontsa ki a partíció (d1aa737e-f22a-e347-be16-eec90be24bc1, ebben a példában), és tekintse meg, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
+A tároló-naplók azon a fürtcsomóponton találhatók, amelyen a Container Service-példány fut. Tegyük fel például, hogy beolvassa a [linuxos szavazási minta alkalmazás](service-fabric-quickstart-containers-linux.md)webes kezelőfelületének naplóit. A fanézetben bontsa ki a **cluster**>**Applications**>**VotingType**>**Fabric:/szavazás/azurevotefront**elemet.  Ezután bontsa ki a partíciót (ebben a példában a d1aa737e-f22a-e347-be16-eec90be24bc1), és ellenőrizze, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
 
-A faszerkezetes nézetben található a kódcsomag a *_lnxvm_0* csomópont kibontásával **csomópontok**> **_lnxvm_0**>**fabric: / Voting**  > **azurevotfrontPkg**>**Kódcsomagok**>**kód**.  Válassza ki a **Tárolónaplók** beállítást a tároló naplóinak megjelenítése.
+A fanézetben keresse meg a *_lnxvm_0* csomóponton a **_lnxvm_0**>**Fabric:/szavazó**>**azurevotfrontPkg**>kód **csomópontok**>kibontásával.Csomagok>**kódja**.  Ezután válassza a **tárolói naplók** lehetőséget a tároló naplófájljainak megjelenítéséhez.
 
 ![Service Fabric platform][Image1]
 
-## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>Halott vagy összeomlott tároló a naplók elérése
-6\.2-es kezdődően lehet is beolvasni a naplókat a kézbesíthetetlen vagy összeomlott tároló használatával [REST API-k](/rest/api/servicefabric/sfclient-index) vagy [Service Fabric parancssori felület (SFCTL)](service-fabric-cli.md) parancsokat.
+## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>Egy halott vagy összeomlott tároló naplófájljainak elérése
+A v 6.2-es verziótól kezdődően a [REST API](/rest/api/servicefabric/sfclient-index) -k vagy a [Service FABRIC CLI (SFCTL)](service-fabric-cli.md) parancsok használatával is beolvashatja a halott vagy összeomlott tároló naplóit.
 
 ### <a name="set-container-retention-policy"></a>Tárolómegőrzési szabályzat megadása
 A tárolóindítási hibák diagnosztizálásának elősegítése céljából a Service Fabric (6.1-es vagy újabb verzió esetén) támogatja a megszakadt működésű vagy el sem induló tárolók megőrzését. Ez a szabályzat az **ApplicationManifest.xml** fájlban állítható be az alábbi kódrészletben látható módon:
@@ -42,31 +42,31 @@ A tárolóindítási hibák diagnosztizálásának elősegítése céljából a 
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
  ```
 
-A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, nincs olyan tárolót megőriz. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. A funkció használatakor alkalmazzon elhelyezési korlátozásokat, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne kerüljön át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
+A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, a rendszer nem őrzi meg a tárolókat. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. A funkció használatakor alkalmazzon elhelyezési korlátozásokat, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne kerüljön át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
 
-A beállítás **RunInteractive** felel meg a Docker `--interactive` és `tty` [jelzők](https://docs.docker.com/engine/reference/commandline/run/#options). Ha ez a beállítás értéke igaz a jegyzékfájlban, ezek a jelölők szolgálnak a tárolót.  
+A **RunInteractive** beállítás a Docker és `--interactive` `tty` a [Flags](https://docs.docker.com/engine/reference/commandline/run/#options)értéknek felel meg. Ha a jegyzékfájl értéke TRUE (igaz), akkor ezek a jelzők a tároló elindítására szolgálnak.  
 
 ### <a name="rest"></a>REST
-Használja a [első tároló naplóinak üzembe helyezett a csomópont](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) művelet a naplók lekérése az összeomlott a tárolóhoz. Adja meg a tárolót futtató csomópont nevét, alkalmazásnevet, szolgáltatás jegyzékfájl neve és a kód csomag nevét.  Adja meg `&Previous=true`. A válasz tartalmazni fogja a tároló naplóit a kézbesíthetetlen tároló kód csomag-példány.
+A csomópont-művelethez tartozó [tároló-naplók](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) beolvasása paranccsal lekérheti egy összeomlott tároló naplóit. Adja meg annak a csomópontnak a nevét, amelyen a tároló fut, az alkalmazás neve, a szolgáltatás jegyzékfájljának neve és a kód csomag neve.  Meg `&Previous=true`kell adni. A válasz tartalmazni fogja a kód csomag példányának Holt tárolójának tároló naplóit.
 
-A kérelem URI formátuma a következő:
+A kérelem URI-ja a következő formátumú:
 
 ```
 /Nodes/{nodeName}/$/GetApplications/{applicationId}/$/GetCodePackages/$/ContainerLogs?api-version=6.2&ServiceManifestName={ServiceManifestName}&CodePackageName={CodePackageName}&Previous={Previous}
 ```
 
-Kérelem (példa):
+Példa kérésre:
 ```
 GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$/GetCodePackages/$/ContainerLogs?api-version=6.2&ServiceManifestName=SimpleHttpServerSvcPkg&CodePackageName=Code&Previous=true  
 ```
 
-200 válasz törzsében:
+200 válasz törzse:
 ```json
 {   "Content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" } 
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-Használja a [sfctl szolgáltatás get-tároló-naplók](service-fabric-sfctl-service.md) parancs beolvassa a naplókat összeomlott a tárolóhoz.  Adja meg a tárolót futtató csomópont nevét, alkalmazásnevet, szolgáltatás jegyzékfájl neve és a kód csomag nevét. Adja meg a `--previous` jelzőt.  A válasz tartalmazni fogja a tároló naplóit a kézbesíthetetlen tároló kód csomag-példány.
+Az összeomlott tároló naplófájljainak beolvasásához használja a [Get-Container-logs](service-fabric-sfctl-service.md) parancsot a sfctl szolgáltatásban.  Adja meg annak a csomópontnak a nevét, amelyen a tároló fut, az alkalmazás neve, a szolgáltatás jegyzékfájljának neve és a kód csomag neve. Határozza meg `--previous` a jelzőt.  A válasz tartalmazni fogja a kód csomag példányának Holt tárolójának tároló naplóit.
 
 ```
 sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous
@@ -77,7 +77,7 @@ Válasz:
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Haladjon végig a [hozzon létre egy Linux-tároló alkalmazás oktatóanyag](service-fabric-tutorial-create-container-images.md).
-- Tudjon meg többet [Service Fabric és a tárolók](service-fabric-containers-overview.md)
+- A [Linux Container Application alkalmazás létrehozásával](service-fabric-tutorial-create-container-images.md)foglalkozó oktatóanyagban dolgozhat.
+- További információ a [Service Fabric és](service-fabric-containers-overview.md) a tárolók használatáról
 
 [Image1]: media/service-fabric-containers-view-logs/view-container-logs-sfx.png

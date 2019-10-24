@@ -1,7 +1,7 @@
 ---
-title: Hogyan használja az Elágaztatás és a egy Beszélgetéstanuló modell – a Microsoft Cognitive Services-műveletek visszavonása |} A Microsoft Docs
+title: Elágazó és visszavonási műveletek használata Conversation Learner modellel – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan használhatja a Elágaztatás és a egy Beszélgetéstanuló modellel műveletek visszavonásához.
+description: Megtudhatja, hogyan használhatja az elágazó és a visszavonási műveleteket egy Conversation Learner modellel.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,78 +10,79 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 6ffa0881df07e453c8beb175b8580deebbfc1ec9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: f4f3024451696dbd0244d9da39cba67b49447af1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389889"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703628"
 ---
-# <a name="how-to-use-branching-and-undo-operations"></a>Elágaztatási és visszavonás műveletek használata
-Ebben az oktatóanyagban azt lép, visszavonás és elágazási műveletek.
+# <a name="how-to-use-branching-and-undo-operations"></a>Elágazási és visszavonási műveletek használata
+Ebben az oktatóanyagban visszavonási és elágazási műveleteket végezünk.
 
 
 ## <a name="details"></a>Részletek
-### <a name="undo"></a>A Visszavonás
-Lehetővé teszi, hogy a fejlesztő "Visszavonás" utolsó felhasználói bemenet vagy művelet kiválasztását. A színfalak mögött "Visszavonás" ténylegesen hoz létre egy új párbeszédpanel és visszajátssza, akár az előző lépésben.  Ez azt jelenti, hogy az entitás észlelési visszahívási és API-hívások a párbeszédpanelen a rendszer újra meghívja.
+### <a name="undo"></a>Visszavonás
+Lehetővé teszi, hogy a fejlesztő "visszavonja" a legutóbbi felhasználói bevitelt vagy műveletet. A háttérben a "Visszavonás" nevű művelet ténylegesen új párbeszédpanelt hoz létre, és az előző lépéssel játssza újra.  Ez azt jelenti, hogy az entitás-észlelési visszahívási és API-hívások a párbeszédablakban újra meghívva lesznek.
 
 ### <a name="branch"></a>Ág
-Létrehoz egy új train párbeszédpanel, amely ugyanúgy megkezdi egy meglévő betanításához párbeszédpanel – ez menti a munka, amelyet manuálisan újra belépés párbeszédpanel bekapcsolja. A színfalak mögött "ág" hoz létre egy új párbeszédpanel, és visszajátssza a meglévő train párbeszédpanelen a kijelölt pontig.  Ez azt jelenti, hogy az entitás észlelési visszahívási és API-hívások a párbeszédpanelen a rendszer újra meghívja.
+Létrehoz egy új vonat párbeszédpanelt, amely ugyanúgy kezdődik, mint egy meglévő betanítási párbeszédpanel – ezzel a művelettel megtakaríthatja a manuális újbóli bevitelt a párbeszédablakban. A színfalak mögött az "ág" új párbeszédpanelt hoz létre, és a meglévő vonat párbeszédablakot a kijelölt lépésig játssza le.  Ez azt jelenti, hogy az entitás-észlelési visszahívási és API-hívások a párbeszédablakban újra meghívva lesznek.
 
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e a robot, amely a kétpizzás rendelések:
+Ez az oktatóanyag megköveteli, hogy a pizza-rendeléseket használó robot fusson:
 
     npm run demo-pizza
 
-### <a name="open-or-import-the-demo"></a>Nyissa meg a, vagy importálja a Demót
+### <a name="open-or-import-the-demo"></a>A bemutató megnyitása vagy importálása
 
-Ha korábban már használta korábban sorbarendezésre kétpizzás az oktatóanyagot, majd nyissa meg a modellek a webes felhasználói felületen a listából. Szüksége lesz ellenkező esetben kattintson a "Oktatóanyagokban importálása", és válassza ki a "Demo-PizzaOrder" nevű modellt.
+Ha már használta a pizza-rendezési oktatóanyagot, egyszerűen nyissa meg a modellt a webes felhasználói felületen lévő listából. Ellenkező esetben az "oktatóanyagok importálása" elemre kell kattintania, és ki kell választania a "demo-PizzaOrder" nevű modellt.
 
-## <a name="undo"></a>A Visszavonás
+## <a name="undo"></a>Visszavonás
 
-Íme egy példa bemutatja, hogyan tekintse meg a `Undo` szolgáltatást működés közben:
+Az alábbi példa bemutatja, hogyan tekintheti meg `Undo` a funkciót a következő műveletekben:
 
-### <a name="training-dialogs"></a>Képzési párbeszédpanelek
-1. A bal oldali panelen, kattintson a "Train-párbeszédpanelekhez", majd kattintson a `New Train Dialog` gombra.
-2. Írja be a "Kétpizzás egy rendelés".
+### <a name="training-dialogs"></a>Betanítási párbeszédpanelek
+1. A bal oldali panelen kattintson a "betanítási párbeszédpanelek" elemre `New Train Dialog` , majd a gombra.
+2. Írja be a "pizza rendelése" kifejezést.
 3. Kattintson a `Score Actions` gombra.
-4. Válassza ki a kattintson a "Mit szeretne a a kétpizzás?"
-5. Írja be a "bármit".
+4. Ide kattintva kiválaszthatja a "mit szeretne a pizzán?"
+5. Írja be a "Anything" kifejezést.
 6. Kattintson a `Undo` gombra.
-    - Az utolsó bejegyzés törlődik, és az utolsó Bot válasz a "Mit szeretne a a kétpizzás?"
+    - A rendszer eltávolítja az utolsó bejegyzést, és elhagyja a "mit szeretne a pizzában?" című rész utolsó válaszát.
 
 ## <a name="branch"></a>Ág
 
-Ebben a bemutatóban azt fog egy meglévő Train párbeszédpanel megnyitásához, és hozzon létre egy új Train párbeszédpanel belőle elágaztatás szerint.
+Ebben a bemutatóban egy meglévő betanítási párbeszédpanelt nyitunk meg, és létrehozunk egy új betanítási párbeszédpanelt az elágazás alapján.
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez".
-2. Figyelje meg, hogy a rács megtekintheti az oktatóprogram, amely csak egy "új rendelés" karakterlánccal kezdődik.
-3. A rácsban kattintson az "új rendelés" a meglévő Train párbeszédpanel megnyitásához.
-4. Kattintson a "nem" a párbeszédpanel az utolsó.
-5. Kattintson a "Ág" ikonra, azt az ezen az ábrán pirossal bekarikázva:
+1. A bal oldali panelen kattintson a "betanítási párbeszédpanelek" elemre.
+2. Figyelje meg, hogy a rácson csak egy olyan képzés jelenik meg, amely az "új sorrend" kifejezéssel kezdődik.
+3. A rácsban kattintson az "új sorrend" elemre a meglévő vonat párbeszédpanel megnyitásához.
+4. Kattintson az utolsó "nem" gombra a párbeszédpanelen.
+5. Kattintson a "ág" ikonra, a képen piros színnel jelenik meg:
     - ![](../media/tutorial15_branch.PNG)
-    - A teljes Train párbeszédpanel előtt a "no" átmásolja az egy új Train párbeszédpanel.
-    - Ezzel időt takarít meg újra meg az előző kerül, Fedezze fel az új beszélgetés "ág" ettől kezdve.
-6. Írja be az "Igen", a találati adja meg.
+    - A "nem" megelőzően a teljes betanítási párbeszédablak egy új betanítási párbeszédablakba másolódik.
+    - Ezzel a lépéssel újra beírhatja az előző fordulatot egy új "ág" beszélgetési pont megismeréséhez.
+6. Írja be az "igen" értéket, és nyomja meg az ENTER billentyűt
 7. Kattintson a `Score Actions` gombra.
-    - Ezen a ponton a Bot automatikusan kiválasztja a válasz, de úgy fogjuk módosítani, hogy nem tetszik a választ.
-8. Kattintson az utolsó Bot válasz.
-    - Ez lesz ki egy másik választ tudassa velünk.
-9. Válassza ki a "UseLastToppings".
+    - Ekkor a robot automatikusan választ választ, de nem tetszik a válasz, ezért módosítani fogjuk.
+8. Kattintson az utolsó bot-válaszra.
+    - Ez lehetővé teszi, hogy válasszon egy másik választ.
+9. Válassza a "UseLastToppings" lehetőséget.
 10. Kattintson a `Score Actions` gombra.
-    - A robot újra automatikusan választ választja ki. Ez legyen, "Vannak kolbászt, sajtok iránti szenvedélyének és gomba a kétpizzás.". 
-    - Most azt, mint a válasz megőrizzük, így.
+    - A bot ismét automatikusan választ választ. Tegyük fel, hogy "a kolbász, a sajt és a gombák szerepelnek a pizzán." 
+    - Ezúttal a válaszhoz hasonlóan fogjuk tartani.
 11. Kattintson a `Score Actions` gombra.
-    - Újra a Bot automatikusan választja ki egy választ üzenetnek kell megjelennie, "Szeretné bármi más?"
-12. Írja be a "nem".
+    - A robot ismét választ kér a válaszra, azaz "szeretne bármi más?"
+12. Írja be a "nem" értéket.
 13. Kattintson a `Save Branch` gombra.
-14. Figyelje meg, hogy a rács most már két betanítások "új rendelés" karakterlánccal kezdődik.
-    - Azok egyike, amelybe elágazhatna, hogy az azonos.
-    - És a másik egy az imént mentett elágazó verziója.
-    - Kattintson az egyes ellenőrizze ezeket az elvárásokat.
+14. Figyelje meg, hogy a rácsnak most két tanítása van, amelyek az "új sorrend" kifejezéssel kezdődnek.
+    - Az egyik közülük az, amelyet az ág kikapcsolására használt.
+    - A másik pedig az imént mentett elágazó verzió.
+    - Kattintson mindegyikre, hogy ellenőrizze ezeket az elvárásokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Verziókezelés és címkézése](./18-version-tag.md)
+> [Verziószámozás és címkézés](./18-version-tag.md)

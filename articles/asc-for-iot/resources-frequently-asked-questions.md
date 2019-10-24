@@ -1,6 +1,6 @@
 ---
-title: Gyakran ismételt kérdések az Azure Security Center for IoT-előzetes verzió |} A Microsoft Docs
-description: Keresse meg a válaszokat a leggyakoribb kapcsolatos gyakori kérdések az Azure Security Center IoT-szolgáltatások és a szolgáltatás.
+title: Gyakori kérdések a IoT-Azure Security Centerről | Microsoft Docs
+description: A IoT szolgáltatásaival és szolgáltatásával kapcsolatos Azure Security Center leggyakrabban feltett kérdésekre adott válaszokat talál.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,143 +13,139 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4e04e21d55722b8cb90b277b34b5bffab343c575
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0262be687b74ec1b97cb508f6da1b95cd5d7a533
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616596"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596923"
 ---
-# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Az Azure Security Center az IoT – gyakori kérdések  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>A IoT gyakori kérdései Azure Security Center  
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk a IoT Azure Security Center kapcsolatos gyakori kérdések és válaszok listáját tartalmazza. 
 
-Ez a cikk gyakori kérdéseket és válaszokat kapcsolatban az Azure Security Center (ASC) listáját az IoT. 
+## <a name="does-azure-provide-support-for-iot-security"></a>Az Azure támogatást nyújt a IoT biztonsághoz?
 
-## <a name="does-azure-provide-support-for-iot-security"></a>Nem Azure-támogatást nyújt IoT-biztonság?
+Az Azure egy integrált nézetet biztosít a IoT-biztonság monitorozásához és kezeléséhez a teljes biztonsági megoldás részeként Azure Security Centeron keresztül. Ha Ön egy alkalmazás fejlesztője, a IoT-alkalmazás biztonságának kezeléséhez IoT Hub nézetet használhatja.
 
-Az Azure biztosít egy integrált nézet felügyeléséhez és kezeléséhez az IoT-biztonság az Azure Security Center segítségével a teljes biztonsági megoldás részeként. Ha Ön egy alkalmazásfejlesztő, használhatja az IoT Hub nézetben az IoT-alkalmazások biztonságának kezeléséhez.
+## <a name="what-is-azures-unique-value-proposition-for-iot-security"></a>Mi az Azure egyedi Value IoT biztonsága?
 
-## <a name="what-is-azures-unique-value-proposition-for-iot-security"></a>Mi az egyedi értékajánlat az Azure IoT-biztonság?
+A IoT Azure Security Center lehetővé teszi a vállalatok számára, hogy a meglévő Cyber biztonsági nézetet a teljes IoT-megoldásra terjesszek. Az Azure teljes körű áttekintést nyújt az üzleti megoldásról, amely lehetővé teszi, hogy üzleti tevékenységeit és döntéseit a vállalati biztonsági helyzet és az összegyűjtött adatok alapján tegye elérhetővé. Az Azure IoT, a Azure IoT Edge és a Azure Security Center együttes biztonsága lehetővé teszi a kívánt megoldás létrehozását a szükséges biztonsággal.
 
-Az IoT ASC lehetővé teszi a vállalatok számára, hogy a meglévő internetes biztonsági nézetet a teljes IoT-megoldás bővítése. Az Azure üzleti megoldását, lehetővé téve a üzleti műveletek teljes körű képet és döntések alapján a vállalati biztonsági állapotáról, és összegyűjtött adatok. Kombinált használata az Azure IoT, az Azure IoT Edge, az Azure Sphere, Azure központi biztonsági, és az Azure Security Center lehetővé teszi a kívánt megoldás létrehozása az elvárt biztonság mellett.
+## <a name="who-is-azure-security-center-for-iot-made-for"></a>Ki Azure Security Center a IoT? 
 
-## <a name="who-is-asc-for-iot-made-for"></a>IoT arról, hogy ki ASC? 
+A IoT-hez készült Azure Security Center az Azure IoT Hub biztonságban van integrálva, és felügyeletet biztosít a napi üzleti megoldás biztonsági műveletei számára. A IoT Azure Security Center a Azure Security Center képességeibe is integrálva van, és integrált nézetet biztosít a IoT biztonság monitorozásához és kezeléséhez a teljes biztonsági megoldás részeként.
 
-Az IoT ASC integrálva van az Azure IoT Hub biztonsági belül, és a napi üzleti megoldás-kezelést biztosít a biztonsági műveletek. Az IoT ASC is integrálva van az Azure Security Center képességei, és adja meg egy integrált nézet figyelése és kezelése az IoT-biztonság a teljes biztonsági megoldás részeként.
+## <a name="how-does-azure-security-center-for-iot-compare-to-the-competition"></a>Hogyan hasonlít a IoT Azure Security Center a versenyhez?
 
-## <a name="how-does-asc-for-iot-compare-to-the-competition"></a>Az IoT ASC összehasonlítása a verseny
+Míg más megoldások olyan képességeket biztosítanak, amelyek lehetővé teszik, hogy az ügyfelek saját megoldásokat hozzanak létre, a IoT-Azure Security Center egyedülálló, teljes körű IoT biztonsági megoldást biztosítanak, amely átfogó képet nyújt az összes kapcsolódó Azure-beli biztonságról erőforrások. Az Azure lehetővé teszi a gyors üzembe helyezést és a teljes integrációt IoT Hub Modulos ikrek használatával, így könnyen integrálható a meglévő eszközök felügyeleti eszközeivel.
 
-Habár más megoldásokkal, amelyek lehetővé teszik az ügyfelek a saját megoldásokat hozhat létre olyan képességeket biztosít, az IoT ASC egyedi teljes körű IoT biztonsági megoldást nyújt, amely nyújt a széles körű az összes kapcsolódó Azure-erőforrásai biztonságát. Az Azure gyors üzembe helyezés és a szolgáltatás teljesen integrálható az IoT Hub ikermodulokkal számára megkönnyíti az integrációt a meglévő eszközeivel eszköz segítségével.
+## <a name="do-i-have-to-be-an-azure-security-center-customer-to-use-this-service"></a>A szolgáltatás használatához Azure Security Center ügyfélnek kell lennie?
 
-## <a name="do-i-have-to-be-an-azure-security-center-asc-customer"></a>Rendelkeznie kell az Azure Security Center (ASC) ügyfele?
+Nem, de ajánlott. Azure Security Center nélkül a IoT Azure Security Center korlátozott számú kapcsolódó erőforrás-adatmennyiséget kap, és korlátozott elemzést biztosít a potenciális támadási felületről, a fenyegetésekről és a lehetséges támadásokról. 
 
-Nem, de ajánlott. ASC nélkül ASC az IoT korlátozott csatlakoztatott erőforrásokkal kapcsolatos adatokat fogad, és a egy korlátozott elemzi a potenciális támadási felületet, a fenyegetések és a potenciális támadások. 
+## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Egy Azure IoT-ügyfélnek kell lennie?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Rendelkeznie kell egy Azure IoT-ügyfél?
+Igen. A IoT Azure Security Center az Azure IoT-kapcsolaton és-infrastruktúrán alapul.
 
-Igen. Az IoT ASC Azure IoT-kapcsolat és az infrastruktúra támaszkodik.
+## <a name="do-i-have-to-install-an-agent"></a>Kell-e ügynököt telepíteni?
 
-## <a name="do-i-have-to-install-an-agent"></a>Rendelkezik ügynök telepítéséhez?
+A IoT-eszközökön az ügynök telepítése nem kötelező, hogy engedélyezze a Microsoft Azure Security Center a IoT. A következő három lehetőség közül választhat, és a kiválasztott beállításoknak megfelelően különböző szintű biztonsági monitorozási és felügyeleti képességeket kaphat:
 
-Az IoT-eszközök ügynök telepítése nem kötelező, és engedélyezze a Microsoft ASC az IoT. A következő három lehetőség, így különböző szintű biztonsági figyelési és felügyeleti funkciók alapján a kijelölt közül választhat:
+1. Telepítse a IoT biztonsági ügynök Azure Security Centerét módosításokkal vagy anélkül. Ez a lehetőség a legmagasabb szintű biztonsági elemzéseket biztosítja az eszközök viselkedésének és elérésének.
 
-1. Az ASC IoT biztonsági ügynök telepítése, vagy a módosítások nélkül. Ez a beállítás nagyobb biztonságot betekintést az eszköz működésének és elérésének a legmagasabb szintű biztosít.
+2. Hozzon létre saját ügynököt, és implementálja Microsoft Azure Security Centert a IoT biztonsági üzenet sémájához. Ez a beállítás lehetővé teszi Microsoft Azure-Security Center használatát az IoT-ügynökön felüli elemzési eszközökön.
 
-2. Hozzon létre saját ügynököt, és valósítson meg Microsoft ASC IoT biztonsági üzenet séma. Ez a beállítás engedélyezi az eszköz biztonsági ügynök IoT elemzési eszközöket a Microsoft ASC használatát.
+3. Nincs biztonsági ügynök telepítése a IoT-eszközökön. Ez a beállítás lehetővé teszi IoT Hub kommunikáció figyelését, csökkentve a biztonsági monitorozási és felügyeleti képességeket. 
 
-3. Nincsenek biztonsági ügynök telepítése az IoT-eszközökről. Ez a beállítás lehetővé teszi az IoT Hub kommunikációs megfigyelés, az alacsonyabb szintű biztonsági figyelési és felügyeleti képességeket. 
+## <a name="what-does-the-azure-security-center-for-iot-agent-do"></a>Mit tesz a IoT-ügynök Azure Security Center?
 
-## <a name="what-does-the-asc-for-iot-agent-do"></a>Mit jelent az ASC IoT ügynök?
+A IoT-ügynök Azure Security Center az eszközök konfigurálására, viselkedésére és hozzáférésére (a konfiguráció vizsgálatával) biztosítja az eszköz szintű veszélyforrások lefedettségét, & kapcsolat feldolgozását. A IoT biztonsági ügynök Azure Security Center nem vizsgálja meg az üzleti tevékenységgel kapcsolatos adatait vagy tevékenységeit.
 
-IoT-ügynök ASC eszköz szintű fenyegetést lefedettséget biztosít a eszközkonfiguráció, a viselkedését, és a hozzáférést (a konfiguráció vizsgálatával), a folyamat és a kapcsolat. Az IoT biztonsági ügynök ASC nem ellenőrzi a üzleti adatok vagy a tevékenységekhez.
+## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>Honnan szerezhetem be a IoT biztonsági ügynök Azure Security Center?
 
-## <a name="where-i-can-get-the-asc-for-iot-security-agent"></a>Ahol az IoT biztonsági ügynök ASC szoftverei?
+A IoT biztonsági ügynök Azure Security Center nyílt forráskódú, és elérhető a GitHubon 32 bites és 64-bites Windows-és Linux-verziókon: https://github.com/Azure/Azure-Security-IoT.
 
-Az IoT biztonsági ügynök ASC is nyílt forráskódú és elérhető a Githubon a 32 bites és 64 bites Windows és Linux-verziók: https://github.com/Azure/Azure-Security-IoT-Preview
+## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Honnan telepíti a IoT-ügynök Azure Security Center? 
 
-## <a name="where-does-the-asc-for-iot-agent-get-installed"></a>Ahol települjenek nem az ASC IoT ügynök? 
+Részletes telepítési és ügynök-telepítési információk találhatók a GitHubban: https://github.com/Azure/Azure-Security-IoT.
 
-Részletes telepítési és az ügynök telepítési információk a Githubon található: https://github.com/Azure/Azure-Security-IoT-Preview
+## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Mik az ügynök függőségei és előfeltételei?
 
-## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Mik azok a függőségeket és előfeltételek az ügynök?
+A IoT Azure Security Center számos platformot támogat. Az adott eszközök támogatásának ellenőrzéséhez tekintse meg a [támogatott](how-to-deploy-agent.md) eszközök platformot. 
 
-ASC IOT számos különböző platformokat támogatja. Lásd: [támogatott eszközplatformok](how-to-deploy-agent.md) ellenőrizheti az adott eszközök támogatása. 
+## <a name="which-data-is-collected-by-the-agent"></a>Milyen adatokat gyűjt az ügynök?
 
-## <a name="which-data-is-collected-by-the-agent"></a>Az ügynök által összegyűjtött adatok?
+A kapcsolat, a hozzáférés, a tűzfal konfigurációja, a folyamatok listája & az operációs rendszer alapkonfigurációját az ügynök gyűjti.
 
-Az ügynök által gyűjtött kapcsolat, a hozzáférés, a tűzfal-konfiguráció, a folyamat listán és a operációs rendszer.
+## <a name="how-much-data-will-the-agent-generate"></a>Mennyi adattal fog létrejönni az ügynök?
 
-## <a name="how-much-data-will-the-agent-generate"></a>Mekkora mennyiségű adatot fog létrehozni az ügynök?
+Az ügynök adatgenerálását az eszköz, az alkalmazás, a kapcsolat típusa és az ügyfél-ügynök konfigurációja vezérli. Az eszközök és a IoT megoldások közötti nagyfokú változékonyság miatt javasoljuk, hogy először üzembe helyezze az ügynököt egy tesztkörnyezetben vagy tesztelési beállításban, hogy megfigyelje, megismerje és beállítsa az igényeinek megfelelő egyedi konfigurációt, miközben megméri a generált adatmennyiséget. A szolgáltatás elindítása után a IoT-ügynök Azure Security Center operatív javaslatokat biztosít az ügynök átviteli sebességének optimalizálásához a konfiguráció és a Testreszabás folyamatának elősegítése érdekében.
 
-Az ügynök adat-előállítás határozzák meg az eszközt, az alkalmazás, a kapcsolat típusa és a felhasználói ügynök konfigurálása. Eszközök és az IoT-megoldások között, a nagy változatossággal miatt javasoljuk, hogy első az ügynököt a labor- vagy tesztkörnyezetből figyelje meg, ismerje meg, és állítsa be, amely a legjobban az igényeinek, során létrehozott adatok mennyiségét a konfigurációs beállítást. A szolgáltatás elindítása után az ASC IoT-ügynök operatív javaslatokat tesz a ügynök átviteli sebesség optimalizálásával segítséget a konfigurációs és testreszabási folyamat.
+## <a name="how-can-i-control-my-billing"></a>Hogyan szabályozható a számlázás?
 
-## <a name="how-can-i-control-my-billing"></a>Hogyan felügyelhetem történik a számlázás?
+A IoT Azure Security Center konfigurálható ügynökök vizsgálatát, adatpuffereit és egyéni riasztások létrehozását teszi lehetővé, amelyek növelhetik vagy csökkenthetik az ügynök által generált adatmennyiséget.
 
-ASC IOT konfigurálható az ügynök biztosít, vizsgálatokat, adatok buffers és lehetővé teszi, hogy növelje vagy csökkentse az ügynök által létrehozott adatok mennyiségét egyéni riasztásokat is létrehozhat.
+## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Az ügynök üzenetei kvótát használnak a IoT Hubtól?
 
-## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Az ügynök üzenetek használnak fel az IoT hubról kvóta?
+Igen. Az ügynök által továbbított adatokat a rendszer a IoT Hub kvótába számítja. 
 
-Igen. Az ügynök továbbított adatok az IoT Hub kvóta külön tranzakciónak minősül. 
+## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Következő lépések Telepítettem az ügynököt, és nem látok semmilyen tevékenységet vagy naplót...
 
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Következő lépések E ügynök már telepítve van, és nem jelenik meg semmilyen tevékenységet vagy naplók
+1. Győződjön meg arról, hogy az [ügynök típusa megfelel az eszköz kijelölt operációsrendszer](how-to-deploy-agent.md) -platformjának
 
-1. Ellenőrizze a [ügynöktípus megfelel az eszköz a kijelölt operációsrendszer-platform](how-to-deploy-agent.md)
+1. Ellenőrizze, hogy az [ügynök fut-e az eszközön](how-to-agent-configuration.md).
 
-1. Erősítse meg a [ügynök fut-e az eszközön](how-to-agent-configuration.md).
+2. Győződjön meg arról, hogy a [szolgáltatás sikeresen engedélyezve lett](quickstart-onboard-iot-hub.md) a IoT hub **biztonsága** érdekében. 
 
-2. Ellenőrizze a [szolgáltatás engedélyezése sikeres volt](quickstart-onboard-iot-hub.md) való **biztonsági** az IoT hubban. 
+3. Győződjön meg arról, hogy az eszköz [IoT hub van konfigurálva a IoT modul Azure Security Center](quickstart-create-security-twin.md).  
 
-3. Ellenőrizze, hogy az eszköz [konfigurálva az IoT Hub az IoT-modul az ASC](quickstart-create-security-twin.md).  
+Ha a tevékenységek vagy naplók még nem érhetők el, további segítségért forduljon a Azure Security Center IoT-partnerhez.
 
-Ha még nem érhető el a tevékenységeket, vagy a naplók, IoT-partnerrel, további segítségért forduljon az ASC.
+## <a name="what-happens-when-the-internet-connection-stops-working"></a>Mi történik, ha az internetkapcsolat leáll?
 
-## <a name="what-happens-when-the-internet-connection-stops-working"></a>Mi történik, ha az internetes kapcsolat nem működik?
+Az ügynök továbbra is futtatja és tárolja az adattárolást, amíg az eszköz fut. A rendszer a biztonsági üzenet gyorsítótárában tárolja az adatmennyiséget a méret konfigurációjának megfelelően. Amikor az eszköz visszanyeri a kapcsolatot, a biztonsági üzenetek folytatják a küldést. 
 
-Az ügynök tovább fut, és mindaddig, amíg az eszköz fut-e az adatok tárolásához. Méretre vonatkozó konfigurációja szerint a biztonsági üzenet gyorsítótárban tárolt adatokat. Ha az eszköz ismét érvénybe lép, kapcsolat, a biztonsági üzenetek küldése folytatódik. 
+## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Ha az eszköz újraindul, a biztonsági ügynök önállóan helyreállítható?
 
-## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Ha az eszköz újraindul, a biztonsági ügynök önálló állítja helyre?
+A biztonsági ügynök úgy lett kialakítva, hogy automatikusan újrafusson az egyes eszközök újraindításakor.
 
-A biztonsági ügynök automatikusan újra futtatni, minden egyes eszköz újraindítással tervezték.
+## <a name="can-the-agent-affect-the-performance-of-the-device-or-other-installed-software"></a>Hatással lehet az ügynök az eszköz vagy más telepített szoftver teljesítményére?
 
-## <a name="can-the-agent-affect-the-performance-of-the-device-or-other-installed-software"></a>Az ügynök hatással lehet az eszköz vagy egyéb telepített szoftverek teljesítményét?
+Az ügynök bármilyen más alkalmazásként vagy folyamatként felhasználja a gépi erőforrásokat, és nem zavarja meg a normál eszköz tevékenységeit. Az erőforrás-használat azon az eszközön, amelyen az ügynök fut, a beállítással és a konfigurációval párosul. Azt javasoljuk, hogy az ügynök konfigurációját egy foglalt környezetben tesztelje, valamint a többi IoT-alkalmazással és-funkcióval való együttműködéssel, mielőtt éles környezetben telepítené az üzembe helyezést.
 
-Az ügynök egy másik alkalmazás vagy folyamat, a gép erőforrásokat használ fel, és nem okozhat hibát normál eszköz tevékenység. Erőforrás-használat az eszközön, az ügynök fut a beállítási és konfigurációs van így. Azt javasoljuk, hogy az ügynök konfigurációjának tesztelése tartalmazott-környezetben, és az egyéb IoT-alkalmazások és -funkcióihoz, együttműködés próbál egy éles környezetbe telepítése előtt.
-
-## <a name="im-making-some-maintenance-on-the-device-can-i-turn-off-the-agent"></a>Bizonyos karbantartási teszem az eszközön. Ki lehet kapcsolni az ügynököt?
+## <a name="im-making-some-maintenance-on-the-device-can-i-turn-off-the-agent"></a>Karbantartást végezek az eszközön. Ki tudom kapcsolni az ügynököt?
 
 Az ügynök nem kapcsolható ki.
 
-## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Van mód a tesztelése, ha az ügynök megfelelően működik-e? 
+## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Van mód annak tesztelésére, hogy az ügynök megfelelően működik-e? 
 
-Ha az ügynök leállítja a kommunikáció során, vagy nem biztonsági üzeneteket küld egy **eszköz csendes** riasztás akkor jön létre.
+Ha az ügynök leállítja a kommunikációt, vagy nem tudja elküldeni a biztonsági üzeneteket, az **eszköz csendes** riasztást generál.
 
-## <a name="can-i-create-my-own-alerts"></a>Saját riasztásokat hozhatnak létre?
+## <a name="can-i-create-my-own-alerts"></a>Létrehozhatom a saját riasztásokat?
 
-Igen. A testre szabott riasztás például IP-cím és portok megnyitása viselkedés előre meghatározott készletét megadhatja azt. Lásd: [egyéni riasztásokat is létrehozhat](quickstart-create-custom-alerts.md) további információ az egyéni riasztások, és hogyan javíthatja azokat. 
+Igen. Az előre meghatározott viselkedések, például az IP-címek és a nyitott portok esetében beállíthatja a testreszabott riasztásokat. Az egyéni riasztásokkal és azok létrehozásával kapcsolatos további tudnivalókért tekintse meg az [egyéni riasztások létrehozása](quickstart-create-custom-alerts.md) című témakört. 
 
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Hol tekinthetem meg naplók? Testreszabhatja a naplókat?
+## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Hol láthatom a naplókat? Testreszabhatók a naplók?
 
-- Riasztások megtekintése és használata a csatlakoztatott Log Analytics-munkaterület javaslatok. Konfigurálja a tároló mérete és időtartama a munkaterületen.
+- Riasztások és javaslatok megtekintése a csatlakoztatott Log Analytics munkaterületen. Konfigurálja a tárterület méretét és időtartamát a munkaterületen.
 
-- Nyers adatok a biztonsági ügynök is tárolhatók a Log Analytics-fiókban. Ez a beállítás konfigurációjának módosítása előtt fontolja meg a mérete, az időtartam, a tárhellyel kapcsolatos követelmények és a kapcsolódó költségek. 
+- A biztonsági ügynökből származó nyers adatok a Log Analytics-fiókban is tárolhatók. A beállítás konfigurációjának módosítása előtt vegye figyelembe a méretet, az időtartamot, a tárolási követelményeket és a kapcsolódó költségeket. 
 
-## <a name="why-should-i-add-asc-for-iot-to-the-module-identity-what-is-it-used-for"></a>Miért kell hozzáadni az ASC az IoT a modul identitás? Mire való?
+## <a name="why-should-i-add-azure-security-center-for-iot-to-the-module-identity-what-is-it-used-for"></a>Miért érdemes Azure Security Center hozzáadni a IoT a modul identitásához? Mire használható?
 
-Az IoT-modul ASC ügynök konfigurálására és felügyeletére szolgál.
+Az IoT modulhoz tartozó Azure Security Center az ügynökök konfigurálásához és kezeléséhez használatos.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Többet szeretne megtudni az IoT használatába ASC, tekintse meg a következő cikkeket:
+Ha többet szeretne megtudni a IoT Azure Security Center használatáról, tekintse meg a következő cikkeket:
 
 
-- Olvassa el az ASC IOT [áttekintése](overview.md)
-- Ellenőrizze a [szolgáltatás előfeltételei](service-prerequisites.md)
-- Ismerje meg, hogyan [első lépései](getting-started.md)
-- Megismerheti [ASC IoT biztonsági riasztások](concept-security-alerts.md)
+- Olvassa el a IoT Azure Security Centerét [– Áttekintés](overview.md)
+- A [szolgáltatás](service-prerequisites.md) előfeltételeinek ellenőrzése
+- További információ az [első lépésekről](getting-started.md)
+- [A IoT biztonsági riasztások Azure Security Center](concept-security-alerts.md) ismertetése
 

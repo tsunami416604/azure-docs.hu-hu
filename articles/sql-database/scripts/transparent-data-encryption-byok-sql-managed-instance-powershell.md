@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: A BYOK TDE - engedélyezése az Azure SQL Database felügyelt példány |} A Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálhatja az Azure felügyelt SQL-példány használatához BYOK transzparens adattitkosítási (TDE) az inaktív titkosítási PowerShell használatával.
+title: 'PowerShell: BYOK TDE engedélyezése – Azure SQL Database felügyelt példány | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egy Azure SQL felügyelt példányt úgy, hogy a PowerShell használatával megkezdje a BYOK transzparens adattitkosítás (TDE) használatát a titkosításhoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,28 +10,27 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: c2c4bd7bffd923430d0817cb6ea975f4c1596623
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729165"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569696"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Transzparens adattitkosítás a felügyelt példány az Azure Key vault (előzetes verzió) a saját kulcs használata kezelheti
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Felügyelt példányon lévő transzparens adattitkosítás kezelése a saját kulcsával Azure Key Vault (előzetes verzió)
 
-A PowerShell-példaszkript Bring Your Own Key (előzetes verzió) forgatókönyvben transzparens adattitkosítási (TDE) konfigurálja az Azure SQL felügyelt példány az Azure Key Vaultban lévő kulcsot használ. A TDE Bring Your Own Key (BYOK) támogatásával kapcsolatos további információkért lásd: [TDE Bring Your Own Key az Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
+Ez a PowerShell-parancsfájl az Azure SQL felügyelt példányának Bring Your Own Key (előzetes verzió) forgatókönyvében transzparens adattitkosítás (TDE) konfigurációját konfigurálja, amely a Azure Key Vault egyik kulcsát használja. Ha többet szeretne megtudni a TDE Bring Your Own Key (BYOK) támogatásával kapcsolatban, tekintse meg a [TDE bring your own Key az Azure SQL-](../transparent-data-encryption-byok-azure-sql.md)ben című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Meglévő felügyelt példányt. Lásd: [PowerShell-lel történő létrehozása az Azure SQL Database felügyelt példány](sql-database-create-configure-managed-instance-powershell.md).
+- Egy meglévő felügyelt példány. Lásd: [Azure SQL Database felügyelt példány létrehozása a PowerShell használatával](sql-database-create-configure-managed-instance-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Mindkét PowerShell segítségével helyileg vagy az Azure Cloud Shellt használja AZ PowerShell 1.1.1-preview vagy újabb verziója előzetes verzió szükséges. Ha frissíteni szeretne, olvassa el [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps), vagy futtassa az alábbi minta parancsfájl a modul telepítése.
+A PowerShell helyi vagy Azure Cloud Shell használatával történő használatához AZ PowerShell 1.1.1-Preview vagy egy újabb előzetes verzió szükséges. Ha frissítenie kell, lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps), vagy futtassa az alábbi minta parancsfájlt a modul telepítéséhez.
 
 `Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
 

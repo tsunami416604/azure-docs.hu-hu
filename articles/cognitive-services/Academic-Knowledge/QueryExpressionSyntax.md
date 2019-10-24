@@ -1,7 +1,7 @@
 ---
 title: Lekérdezési kifejezés szintaxisa – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használható az Academic Knowledge API lekérdezési kifejezés szintaxisa.
+description: Megtudhatja, hogyan használható a lekérdezési kifejezés szintaxisa a Academic Knowledge APIban.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,82 +10,83 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 95c2e9d3f54f967b3ebb434c742f69251b80573e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61336756"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704930"
 ---
 # <a name="query-expression-syntax"></a>Lekérdezési kifejezés szintaxisa
 
-Úgy találtuk, hogy a válasz egy **értelmezése** kérelem tartalmazza a lekérdezés. A szintaxis, amely értelmezi a felhasználó lekérdezése létrehozott egy lekérdezési kifejezés minden értelmezéséhez. A lekérdezés használhatók a probléma egy **kiértékelése** eredményeivel beolvasására irányuló kérelem.
+Láttuk, hogy egy értelmező kérelemre adott válasz egy lekérdezési kifejezést tartalmaz. A felhasználó lekérdezését értelmező nyelvtan egy lekérdezési kifejezést hozott létre az egyes értelmezésekhez. A lekérdezési kifejezés ezután felhasználható egy kiértékelési kérelem kiküldésére az entitás keresési eredményeinek lekéréséhez.
 
-Is hozhat létre saját lekérdezési kifejezések, és ezeket használhatja a egy **kiértékelése** kérelmet. Ez akkor lehet hasznos, ha a saját felhasználói felület, amely a felhasználói műveleteknek hoz létre a lekérdezés épít. Ehhez az szükséges, akkor ismernie kell a lekérdezési kifejezések szintaxisát.  
+Saját lekérdezési kifejezéseket is létrehozhat, amelyeket kiértékelési kérelemben is használhat. Ez akkor lehet hasznos, ha saját felhasználói felületet hoz létre, amely a felhasználó műveleteire adott válaszként létrehoz egy lekérdezési kifejezést. Ehhez ismernie kell a lekérdezési kifejezések szintaxisát.  
 
-Minden entitás, amely tartalmazhat egy lekérdezési kifejezésben attribútumnak adott adattípussal és lehetséges lekérdezési operátorokkal számos. Tevékenységentitás-attribútumok és a támogatott operátorok minden attribútum van megadva az [tevékenységentitás-attribútumok](EntityAttributes.md). Egy egyértékű lekérdezés megköveteli, hogy támogatja az attribútum a *egyenlő* műveletet. Előtag lekérdezés megköveteli, hogy támogatja az attribútum a *StartsWith* műveletet. Numerikustartomány lekérdezések megköveteli, hogy támogatja az attribútum a *IsBetween* műveletet.
+A lekérdezési kifejezésben szereplő minden entitás attribútum egy adott adattípussal és a lehetséges lekérdezési operátorok készletével rendelkezik. Az egyes attribútumokhoz tartozó entitás-attribútumok és a támogatott operátorok halmaza az [entitás attribútumaiban](EntityAttributes.md)van megadva. Egy egyértékű lekérdezés esetében az attribútumnak támogatnia kell az *EQUAL* műveletet. Az előtag-lekérdezés megköveteli, hogy az attribútum támogassa a *StartsWith* műveletet. A numerikus tartomány lekérdezéséhez az attribútumnak támogatnia kell a *IsBetween* műveletet.
 
-Egyes entitás tárolt összetett attribútumként egy pont jelzett módon "." attribútum nevében. Például Szerző/kapcsolatot információ jelenik meg egy összetett attribútum. 4 összetevőket tartalmazza: AuN, AuId, AfN, AfId. Ezeket az összetevőket külön darabokat egy egyetlen entitás attribútumérték alkotó adatok.
+Az entitások egy részét összetett attribútumokként tárolja a rendszer, ahogy azt a "." pont jelzi az attribútum nevében. A szerzői/kapcsolati adatok például összetett attribútumként jelennek meg. 4 összetevőt tartalmaz: AuN, AuId, AfN, AfId. Ezek az összetevők különálló adatmennyiséget alkotnak, amelyek egyetlen entitás-attribútum értékét alkotják.
 
 
-**Karakterlánc-attribútum: Egyetlen érték** (tartalmazza a szinonimák egyezések)  
-Ti = 'segít a rejtett szemantikai általi indexelés:  
-Összetett (AA. AuN = "tudja dumais")
+**Karakterlánc-attribútum: Egyetlen érték** (tartalmazza a szinonimák közötti egyezéseket)  
+Ti = ' a látens szemantikai elemzés szerint '  
+Összetett (AA. AuN = ' Sue dumais ')
 
-**Karakterlánc-attribútum: A pontos egyetlen érték** (megfelel csak forgalmára kanonikus értékeket)  
-Ti == 'segít a rejtett szemantikai általi indexelés:  
-Összetett (AA. AuN == "susan t dumais")
+**Karakterlánc-attribútum: Pontos egyszeri érték** (csak a kanonikus értékek egyezése)  
+Ti = = ' a látens szemantikai elemzés által indexelve '  
+Összetett (AA. AuN = = ' Susan t dumais ')
      
-**Karakterlánc-attribútum: Előtag-értéke**   
-TI = "segít a rejtett seman általi indexelés"...  
-Összetett (AA. AuN "tudja du" =...)
+**Karakterlánc-attribútum: Előtag értéke**   
+Ti = ' a látens Seman indexelése...  
+Összetett (AA. AuN = ' Sue du '...)
 
 **Numerikus attribútum: Egyetlen érték**  
 Y=2010
  
-**Numerikus attribútum: A tartomány értékét**  
+**Numerikus attribútum: Tartomány értéke**  
 Y>2005  
 Y>=2005  
 Y<2010  
 Y<=2010  
 Y =\[2010, 2012\) (csak a bal oldali határ értékét tartalmazza: 2010, 2011)  
-Y =\[2010, 2012\] (mindkét tartományhatár-értékek tartalmazza: 2010, 2011, 2012)
+Y =\[2010, 2012\] (mindkét határ értékkel rendelkezik: 2010, 2011, 2012)
  
-**Numerikus attribútum: Előtag-értéke**  
-Y = "19"... (bármely numerikus érték, amely elindítja a 19) 
+**Numerikus attribútum: Előtag értéke**  
+Y = ' 19 '... (a 19 értékkel kezdődő numerikus értékek) 
  
-**Attribútum időpontja: Egyetlen érték**  
+**Date attribútum: Egyetlen érték**  
 D='2010-02-04'
 
-**Attribútum időpontja: A tartomány értékét**  
+**Date attribútum: Tartomány értéke**  
 D>'2010-02-03'  
 D=['2010-02-03','2010-02-05']
 
-**És/vagy lekérdezéseket:**  
-And(Y=1985, Ti='disordered electronic systems')  
-Vagy (Ti = 'disordered elektronikus rendszerek"Ti ="tartalék tolerancia alapelvek és eljárás")  
-And(Or(Y=1985,Y=2008), Ti='disordered electronic systems')
+**És/vagy lekérdezések:**  
+És (Y = 1985, ti = ' elrendezetlen elektronikus rendszerek ')  
+Vagy (ti = "nem rendezett elektronikus rendszerek", ti = "hibatűrési alapelvek és gyakorlat")  
+És (vagy (Y = 1985, Y = 2008), ti = ' megrendelt elektronikus rendszerek ')
  
-**Összetett lekérdezéseket:**  
-Egy összetett attribútum lekérdezés összetevői kell tenni a lekérdezési kifejezés, amely hivatkozik a Composite() függvényben az összetett attribútum része. 
+**Összetett lekérdezések:**  
+Egy összetett attribútum összetevőinek lekérdezéséhez csatolni kell a lekérdezési kifejezés azon részét, amely a kompozit () függvény összetett attribútumára hivatkozik. 
 
-Szerző neve úgy lekérdezheti a tanulmányok, például használja a következő lekérdezést:
+Ha például a szerző neve alapján szeretne dokumentumokat lekérdezni, használja a következő lekérdezést:
 ```
 Composite(AA.AuN='mike smith')
 ```
-<br>Tanulmányok szerint egy adott szerző lekérdezése közben a szerző adott intézménynél, használja a következő lekérdezést:
+<br>Ha a szerző egy adott intézménynél szeretne lekérdezni egy adott szerző által készített dokumentumokat, használja a következő lekérdezést:
 ```
 Composite(And(AA.AuN='mike smith',AA.AfN='harvard university'))
 ```
-<br>A Composite() függvény együtt összeköt az összetett attribútum két részét. Ez azt jelenti, hogy csak kapunk tanulmányok, a szerzők egyik "Kovács János" közben, Harvard volt. 
+<br>Az összetett () függvény összekapcsolja az összetett attribútum két részét együtt. Ez azt jelenti, hogy csak olyan dokumentumokat kapunk, amelyekben a szerzők egyike "Mike Smith", miközben a Harvardon volt. 
 
-Tanulmányok szerint egy adott szerző, a tagságok az adott intézmény (egyéb) szerzők lekérdezéséhez használja a következő lekérdezést:
+Ha egy adott szerző által az adott intézményhez tartozó (más) szerzőkkel való kapcsolattal szeretne dokumentumokat lekérdezni, használja a következő lekérdezést:
 ```
 And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
-<br>Ebben a verzióban mert Composite() vonatkozik a szerző és külön-külön And(), mielőtt a tagságot kapunk minden tanulmányok, ahol a szerző egyik "Kovács János" és a szerzői tagságok egyik "Harvard". Ez az előző lekérdezés példához hasonló hangzik, de nem ugyanaz.
+<br>Ebben a verzióban, mivel az összetett () alkalmazás a szerzőre és a kapcsolatra külön van alkalmazva a (z) és () esetében, az összes olyan dokumentumot megkapjuk, ahol a szerzők egyike "Mike Smith", a szerzői kapcsolatok egyike pedig "Harvard". Ez az előző lekérdezési példához hasonlóan hangzik, de nem ugyanaz a dolog.
 
-Általánosságban elmondható vegye figyelembe az alábbi példában: Rendelkezünk egy összetett attribútum C, amely két részből áll a és B. Egy entitás több érték lehet a c-hez Az entitások a következők:
+Általánosságban vegye figyelembe a következő példát: Egy "C" kompozit attribútummal rendelkezik, amelynek két összetevője az A és A B. Egy entitás több "C" értékkel rendelkezhet. Ezek az entitások:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}
@@ -96,15 +97,15 @@ E2: C={A=1, B=3}  C={A=3,B=2}
 Composite(And(C.A=1, C.B=2))
 ```
 
-<br>csak olyan entitások, ahol az összetevő C.A 1, az összetevő C.B 2 C értékkel rendelkező illeszkedik. Csak E1 a lekérdezésnek megfelelő.
+<br>csak olyan entitásokra illeszkedik, amelyeknek értéke c. a c. A 1, a C. B összetevő pedig 2. Csak az E1 egyezik a lekérdezéssel.
 
 A lekérdezés 
 ```
 And(Composite(C.A=1), Composite(C.B=2))
 ```
-<br>entitások, amelyek egy értéket a c nyelvhez készült C.A esetén 1 és is rendelkezik értékkel a c nyelvhez készült C.B esetén 2 illeszkedik. E1 és E2 mind a lekérdezésnek megfelelő.
+<br>azokat az entitásokat tartalmazza, amelyek értéke c, ahol a c. A 1, és a c. B értéknél a c. B értéke is a 2. Az E1 és az E2 is megfelel a lekérdezésnek.
 
 Megjegyzés:  
-- Egy összetett attribútum kívül Composite() függvény egy részét nem lehet hivatkozni.
-- Az azonos Composite() függvényen belül két különböző összetett attribútumokat részei nem hivatkozhat.
-- Olyan attribútum, amely nem része egy Composite() függvényen belül egy összetett attribútum nem hivatkozhat.
+- Összetett () függvényen kívül nem hivatkozhat összetett attribútum egy részére.
+- Egyazon összetett () függvényen belül nem hivatkozhat két különböző összetett attribútum részeire.
+- Nem hivatkozhat olyan attribútumra, amely nem része összetett () függvényen belüli összetett attribútumnak.

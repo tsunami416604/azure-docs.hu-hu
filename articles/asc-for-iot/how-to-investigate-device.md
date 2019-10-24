@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center az IoT device vizsgálat útmutató előzetes verzió |} A Microsoft Docs
-description: Ennek módjáról útmutató ismerteti, hogyan segítségével egy gyanús IoT-eszközzel a Log Analytics az Azure Security Center az IoT.
+title: Azure Security Center a IoT-eszköz vizsgálati útmutatója | Microsoft Docs
+description: Ez az útmutató ismerteti, hogyan használható a Azure Security Center for IoT egy gyanús IoT-eszköz vizsgálatához Log Analytics használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,70 +13,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 884d001a65962d5e7e6e52dd47ce6ad7e02e1057
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618119"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596251"
 ---
-# <a name="investigate-a-suspicious-iot-device"></a>Vizsgálja meg a gyanús IoT-eszköz
+# <a name="investigate-a-suspicious-iot-device"></a>Gyanús IoT-eszköz vizsgálata
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+A IoT szolgáltatással kapcsolatos riasztások Azure Security Center egyértelmű jelzéseket biztosítanak, ha a IoT-eszközök gyanús tevékenységekben való részvétel gyanúja esetén jelentkeznek, vagy ha olyan jelzések vannak, amelyeket az eszköz veszélyeztet. 
 
-Azure Security Center (ASC) az IoT a szolgáltatás értesítéseinek és bizonyíték egyértelmű jelzések szolgáltatni IoT-eszközök gyanús bevonása a gyanús tevékenységek, vagy ha jelzések léteznek, hogy egy eszköz biztonsága sérül. 
-
-Ebben az útmutatóban használja az határozza meg az esetleges kockázatokat a szervezet számára, annak eldöntése, hogyan javíthatja és hasonló támadások megelőzése, a jövőben miként segítik a vizsgálat javaslatokat.  
+Ebben az útmutatóban a szervezete lehetséges kockázatának meghatározásához, a probléma megoldásához, valamint a hasonló támadásoknak a jövőben való elkerüléséhez szükséges legjobb módszerek megállapításához használja a vizsgálati javaslatokat.  
 
 > [!div class="checklist"]
-> * Az adatok keresése
-> * Vizsgálja meg a kql lekérdezésekkel
+> * Az eszköz adatai megkeresése
+> * Vizsgálat kql-lekérdezések használatával
 
 
-## <a name="how-can-i-access-my-data"></a>Hogyan érhetem el az adataimat?
+## <a name="how-can-i-access-my-data"></a>Hogyan érhetik el az adataim?
 
-Alapértelmezés szerint az IoT ASC tárolja a Log Analytics-munkaterület a biztonsági riasztások és javaslatok. Azt is beállíthatja a nyers biztonsági adatok tárolására.
+Alapértelmezés szerint a IoT Azure Security Center a biztonsági riasztásokat és javaslatokat a Log Analytics munkaterületen tárolja. Azt is megteheti, hogy a nyers biztonsági adatait tárolja.
 
-Keresse meg a Log Analytics-munkaterület, társzolgáltatást:
+Az adattároláshoz Log Analytics munkaterület megkeresése:
 
-1. Nyissa meg az IoT hubhoz 
-1. A **biztonsági**, kattintson a **áttekintése**, majd válassza ki **beállítások**.
-1. Módosítsa a Log Analytics-munkaterület konfigurációs adatait. 
+1. Nyissa meg az IoT hubot, 
+1. A **Biztonság**területen kattintson az **Áttekintés**, majd a **Beállítások**elemre.
+1. Módosítsa Log Analytics munkaterület konfigurációjának részleteit. 
 1. Kattintson a **Save** (Mentés) gombra. 
 
-A következő konfigurációs a következőket a Log Analytics-munkaterület adataihoz hozzáférést:
+A következő beállításokkal érheti el a Log Analytics munkaterületen tárolt adatait:
 
-1. Válassza ki, és kattintson az ASC az IoT hub IoT-riasztás. 
-1. Kattintson a **további vizsgálatra**. 
-1. Válassza ki **ezt a riasztást, kattintson ide, és tekintse meg a DeviceId oszlopot, mely eszközök vannak**.
+1. Jelölje ki, majd kattintson Azure Security Center a IoT-riasztáshoz a IoT Hub. 
+1. Kattintson a **további vizsgálat**gombra. 
+1. Jelölje be **, ha szeretné látni, hogy mely eszközöknél van ilyen riasztás, kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
-## <a name="investigation-steps-for-suspicious-iot-devices"></a>Vizsgálati lépések gyanús IoT-eszközök esetén
+## <a name="investigation-steps-for-suspicious-iot-devices"></a>A gyanús IoT-eszközök vizsgálatának lépései
 
-Insights és az IoT-eszközökre vonatkozó nyers adatok elérésére, nyissa meg a Log Analytics-munkaterület [adatok eléréséhez](#how-can-i-access-my-data).
+A IoT-eszközökre vonatkozó elemzések és nyers információk megtekintéséhez lépjen a Log Analytics munkaterületre az [adatai eléréséhez](#how-can-i-access-my-data).
 
-Ellenőrizze, és vizsgálja meg az eszközön lévő adatokat a következő részleteket és a tevékenységek az alábbi kql lekérdezésekkel.
+Tekintse meg az alábbi kql-lekérdezéseket a riasztások és a tevékenységek eszközön való kivizsgálásának megkezdéséhez.
 
 ### <a name="related-alerts"></a>Kapcsolódó riasztások
 
-Ismerje meg, ha más riasztások voltak, aktivált körül az azonos használja a következő kql lekérdezés:
+Annak megállapítása, hogy a riasztások egy időben lettek-e aktiválva a következő kql-lekérdezés használatával:
 
-  ~~~
+  ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
   SecurityAlert
   | where ExtendedProperties contains device and ResourceId contains tolower(hub)
   | project TimeGenerated, AlertName, AlertSeverity, Description, ExtendedProperties
-  ~~~
+  ```
 
 ### <a name="users-with-access"></a>Hozzáféréssel rendelkező felhasználók
 
-Ismerje meg, hogy mely felhasználók férhetnek hozzá az eszköz használatát a következő kql lekérdezés: 
+Annak megállapításához, hogy mely felhasználók férhetnek hozzá az eszközhöz, használja a következő kql-lekérdezést: 
 
-  ~~~
+ ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
   SecurityIoTRawEvent
@@ -88,16 +84,16 @@ Ismerje meg, hogy mely felhasználók férhetnek hozzá az eszköz használatát
      GroupNames=extractjson("$.GroupNames", EventDetails, typeof(string)),
      UserName=extractjson("$.UserName", EventDetails, typeof(string))
   | summarize FirstObserved=min(TimestampLocal) by GroupNames, UserName
-  ~~~
-Ezen adatok segítségével felderítése: 
-  1. Mely felhasználók rendelkezzenek hozzáféréssel az eszközhöz?
-  2. Rendelkeznek hozzáféréssel rendelkező felhasználók a várt módon jogosultsági szintek? 
+ ```
+Az alábbi adatfelderítési szolgáltatással derítheti fel: 
+- Mely felhasználók férhetnek hozzá az eszközhöz?
+- A hozzáféréssel rendelkező felhasználók rendelkeznek a várt jogosultsági szinttel?
 
 ### <a name="open-ports"></a>Portok megnyitása
 
-Ismerje meg, milyen portokat az eszközön jelenleg használatban van, vagy a használt, használja a következő kql lekérdezést: 
+A következő kql-lekérdezéssel megállapíthatja, hogy az eszköz mely portjai jelenleg használatban vannak vagy használták őket: 
 
-  ~~~
+ ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
   SecurityIoTRawEvent
@@ -113,18 +109,18 @@ Ismerje meg, milyen portokat az eszközön jelenleg használatban van, vagy a ha
      RemoteAddress=extractjson("$.RemoteAddress", EventDetails, typeof(string)),
      RemotePort=extractjson("$.RemotePort", EventDetails, typeof(string))
   | summarize MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), AllowedRemoteIPAddress=makeset(RemoteAddress), AllowedRemotePort=makeset(RemotePort) by Protocol, LocalPort
-  ~~~
+ ```
 
-    Use this data to discover:
-  1. Mely figyelő sockets jelenleg aktívak az eszközön?
-  2. A jelenleg aktív figyelési sockets engedélyezett?
-  3. Vannak-e az eszközhöz csatlakoztatott minden gyanús távoli cím?
+Az alábbi adatfelderítési szolgáltatással derítheti fel:
+- Mely figyelő szoftvercsatornák aktívak az eszközön?
+- A jelenleg aktív figyelő szoftvercsatornák engedélyezettek?
+- Van-e gyanús távoli cím csatlakoztatva az eszközhöz?
 
 ### <a name="user-logins"></a>Felhasználói bejelentkezések
 
-Ismerje meg, hogy a felhasználók, az eszközre való bejelentkezéshez használja a következő kql lekérdezést: 
+Az eszközre bejelentkezett felhasználók megkereséséhez használja a következő kql-lekérdezést: 
  
-  ~~~
+ ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
   SecurityIoTRawEvent
@@ -144,18 +140,18 @@ Ismerje meg, hogy a felhasználók, az eszközre való bejelentkezéshez haszná
      RemoteAddress=extractjson("$.RemoteAddress", EventDetails, typeof(string)),
      Result=extractjson("$.Result", EventDetails, typeof(string))
   | summarize CntLoginAttempts=count(), MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), CntIPAddress=dcount(RemoteAddress), IPAddress=makeset(RemoteAddress) by UserName, Result, LoginHandler
-  ~~~
+ ```
 
-    Use the query results to discover:
-  1. Az eszköz a bejelentkezett felhasználók?
-  2. Azok a felhasználók, a bejelentkezés lehet a bejelentkezéshez?
-  3. A bejelentkezett felhasználók várható vagy váratlan IP-címekről fejeződött csatlakozni?
+A lekérdezés eredményeinek felderítése:
+- Mely felhasználók jelentkezett be az eszközre?
+- Be vannak jelentkezve a felhasználók, akik be kellene jelentkezniük?
+- A bejelentkezett felhasználók a várt vagy váratlan IP-címekről csatlakoznak?
   
 ### <a name="process-list"></a>Folyamatok listája
 
-Ismerje meg, ha a folyamat lista van-e a várt módon, használja a következő kql lekérdezést: 
+Ha szeretné megtudni, hogy a folyamatok listája a várt módon történik-e, használja a következő kql-lekérdezést: 
 
-  ~~~
+ ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
   SecurityIoTRawEvent
@@ -180,14 +176,14 @@ Ismerje meg, ha a folyamat lista van-e a várt módon, használja a következő 
   ) on UserId
   | extend UserIdName = strcat("Id:", UserId, ", Name:", UserName)
   | summarize CntExecutions=count(), MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), ExecutingUsers=makeset(UserIdName), ExecutionCommandLines=makeset(CommandLine) by Executable
-  ~~~
+```
 
-    Use the query results to discover:
+A lekérdezés eredményeinek felderítése:
 
-  1. Az eszközön futó gyanús folyamatok küldtek?
-  2. A megfelelő felhasználók végrehajtódtak folyamatokat?
-  3. Tartalmazott bármely parancssori végrehajtás a megfelelő és a várt argumentum?
+- Voltak olyan gyanús folyamatok, amelyek az eszközön futnak?
+- A megfelelő felhasználók hajtották végre a folyamatokat?
+- A parancssori végrehajtások tartalmazzák a megfelelő és várt argumentumokat?
 
 ## <a name="next-steps"></a>További lépések
 
-Miután kivizsgálta egy eszköz, és azonosítsa a kockázatok jobban megértette, érdemes figyelembe venni [egyéni riasztások konfigurálása](quickstart-create-custom-alerts.md) javíthatja biztonsági helyzetét IoT megoldás. Ha egy eszköz ügynök még nem rendelkezik, érdemes lehet [egy biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md) vagy [módosítja a konfigurációt egy meglévő eszközt ügynök](how-to-agent-configuration.md) hatékonyságának növelése érdekében. 
+Az eszköz kivizsgálása és a kockázatok jobb megismerése érdekében érdemes lehet [Egyéni riasztásokat beállítani](quickstart-create-custom-alerts.md) a IoT-megoldás biztonsági helyzetének javítására. Ha még nem rendelkezik ügynökkel, érdemes lehet [biztonsági ügynököt telepíteni](how-to-deploy-agent.md) , vagy [egy meglévő ügynök konfigurációját módosítani](how-to-agent-configuration.md) az eredmények javítása érdekében. 

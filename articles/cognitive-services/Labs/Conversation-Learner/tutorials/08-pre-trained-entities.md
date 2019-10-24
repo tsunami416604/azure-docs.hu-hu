@@ -1,7 +1,7 @@
 ---
-title: A beszélgetés Learner modell – a Microsoft Cognitive Services Pre-Trained entitások hozzáadása |} A Microsoft Docs
+title: Előre betanított entitások hozzáadása egy Conversation Learner modellhez – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan Pre-trained entitásokat ad hozzá a beszélgetés Learner modell.
+description: Megtudhatja, hogyan adhat hozzá előre betanított entitásokat egy Conversation Learner modellhez.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,76 +10,77 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: fb70983c2f9fd20368bb8c6803c9568b27141af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: fceca459b80725e1a9c8b7dbc6a4387ea98dbb7b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389255"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704125"
 ---
-# <a name="how-to-add-pre-trained-entities"></a>Pre-trained entitások hozzáadása
-Ez az oktatóanyag bemutatja, hogyan Pre-Trained entitásokat ad hozzá a beszélgetés Learner modell.
+# <a name="how-to-add-pre-trained-entities"></a>Előre betanított entitások hozzáadása
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá előre betanított entitásokat a Conversation Learner modellhez.
 
 ## <a name="video"></a>Videó
 
-[![Előre betanított entitások oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
+[![Előre betanított entitások oktatóanyagának előzetes verziója](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy az általános oktatóanyag Bot fut.
+Ehhez az oktatóanyaghoz az általános oktatóanyag robotjának futtatására van szükség
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-Előre betanított entitások felismerése közös típusú entitások, például a számokat, dátumokat, pénzügyi összegek és mások.  Működnek-e "-a-beépített," nem igényelnek képzést, és eltérően az egyéni entitások nem lehet módosítani a felhasználók viselkedését.  Alapértelmezés szerint a Pre-Trained entitások többértékű adatelemeket, az entitás minden egyes azonosított példány gyűlik.
+Az előre betanított entitások az entitások gyakori típusait ismerik fel, például számokat, dátumokat, pénzügyi mennyiségeket és egyebeket.  A "beépített", nem igényel semmilyen képzést, és a viselkedésük nem módosítható az egyéni entitásokkal szemben.  Alapértelmezés szerint az előre képzett entitások többértékű, és az entitás minden azonosított példányát összesítik.
 
 ## <a name="steps"></a>Lépések
 
-Indítsa el a kezdőlapon a webes felhasználói felületen.
+Indítsa el a kezdőlapot a webes KEZELŐFELÜLETen.
 
 ### <a name="create-the-model"></a>A modell létrehozása
 
-1. Válassza ki **új modell**.
-2. Adja meg **PretrainedEntities** a **neve**.
+1. Válassza az **új modell**lehetőséget.
+2. Adja meg a **PretrainedEntities** **nevet**.
 3. Kattintson a **Létrehozás** gombra.
 
 ### <a name="entity-creation"></a>Entitás létrehozása
 
-1. Válassza ki **entitások** a bal oldali panelen, majd **új entitás**.
-2. Válassza ki **előtti-Trained/datetimeV2** a **entitástípus**.
-3. Ellenőrizze **többértékű** ahhoz, hogy az entitás egy vagy több értéket összeadódhatnak. Vegye figyelembe, hogy Pre-Trained entitások negálható nem lehet.
+1. Válassza az entitások lehetőséget a bal oldali panelen, majd az **új entitás**elemet.
+2. Válassza az **előképzett/datetimeV2** lehetőséget az **entitás típusához**.
+3. A **többértékű érték** megadásával engedélyezheti, hogy az entitás egy vagy több értéket gyűjtsön. Megjegyzés: az előre betanított entitások nem vonhatók le.
 4. Kattintson a **Létrehozás** gombra.
 
 ![](../media/T08_entity_create.png)
 
-1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
-2. Adja meg **a dátum az $builtin-datetimev2** a **robot a válasz...** .
+1. Válassza a **műveletek** lehetőséget a bal oldali panelen, majd az **új művelet**elemet.
+2. Adja meg **a következő dátumot: $Builtin-datetimev2** a **bot válaszához...**
 3. Kattintson a **Létrehozás** gombra.
 
 ![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>A második művelet létrehozása
 
-1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
-2. Adja meg **Mi az a dátum?** a **robot a válasz...** . Előre betanított entitások nem lehet **szükséges entitások** , azok minden utterances alapértelmezett felismeri.
-3. Adja meg **beépített-datetimev2** a **kizárásának entitások**.
+1. Válassza a **műveletek** lehetőséget a bal oldali panelen, majd az **új művelet**elemet.
+2. Adja meg **a dátumot?** a **bot válasza...** . Az előre betanított entitások nem lehetnek **kötelező entitások** , mert alapértelmezés szerint az összes hosszúságú kimondott szöveg el vannak ismerve.
+3. Adja meg a **datetimev2** az **entitások kizárásához**.
 4. Kattintson a **Létrehozás** gombra.
 
 ![](../media/T08_action_create_2.png)
 
-### <a name="train-the-model"></a>A modell betanítását
+### <a name="train-the-model"></a>A modell betanítása
 
-1. Válassza ki **Train-párbeszédpanelekhez** a bal oldali panelen, majd **új Train párbeszédpanel**.
-2. Adja meg **hello** az a felhasználó utterance (kifejezés) a bal oldali Csevegés panelen.
-3. Válassza ki **műveletek pontozása**.
-4. Válassza ki **Mi az a dátum?** a a műveletek listájáról
-5. Adja meg **Ma** az a felhasználó utterance (kifejezés) a bal oldali Csevegés panelen.
-    - A **Ma** utterance (kifejezés) automatikusan felismeri a LUIS előre betanított modellek.
-    - LUIS által biztosított további adatok felett Pre-Trained entitások értékét jeleníti meg.
+1. Válassza a betanítási párbeszédablakok lehetőséget a bal oldali panelen, majd az **új vonat párbeszédablakban**.
+2. A bal oldali csevegés paneljén adja meg a felhasználó teljes kiírásának a **Hello** értéket.
+3. Válassza a **pontszám műveletek**lehetőséget.
+4. Válassza ki **a dátumot?** a műveletek listából
+5. Adja **meg** a felhasználót a bal oldali csevegési panelen.
+    - A **mai** Kimondás automatikusan felismeri a Luis-ben előre betanított modelleket.
+    - Az előre betanított entitások értékei fölé helyezve a LUIS által biztosított további adatok láthatók.
 
 ![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Entitás feloldók](./09-entity-resolvers.md)
+> [Entitás-feloldók](./09-entity-resolvers.md)

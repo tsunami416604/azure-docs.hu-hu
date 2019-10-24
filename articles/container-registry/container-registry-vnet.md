@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310395"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619882"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure Container Registry-hozzáférés korlátozása Azure-beli virtuális hálózati vagy tűzfalszabályok használatával
 
 Az [azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztonságos, privát hálózatkezelést biztosít az Azure-hoz és a helyszíni erőforrásokhoz. Ha egy Azure-beli virtuális hálózatról korlátozza a privát Azure Container registryhez való hozzáférést, győződjön meg arról, hogy csak a virtuális hálózat erőforrásai férnek hozzá a beállításjegyzékhez. A létesítmények közötti forgatókönyvek esetében a tűzfalszabályok konfigurálásával is engedélyezhető, hogy a beállításjegyzék-hozzáférés csak adott IP-címekről legyen elérhető.
 
-Ez a cikk két forgatókönyvet mutat be a hálózati hozzáférési szabályok létrehozásához az Azure Container registryhez való hozzáférés korlátozása érdekében: egy virtuális hálózaton üzembe helyezett virtuális gépről vagy egy virtuális gép nyilvános IP-címéről.
+Ez a cikk két forgatókönyvet mutat be a bejövő hálózati hozzáférési szabályok konfigurálásához egy tároló-beállításjegyzékben: egy virtuális hálózaton üzembe helyezett virtuális gépről vagy egy virtuális gép nyilvános IP-címéről.
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
+
+Ha ehelyett olyan hozzáférési szabályokat kell beállítania az erőforrásokhoz, amelyek egy tároló-beállításjegyzéket érnek el a tűzfal mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.
+
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
@@ -39,7 +42,7 @@ Ez a cikk két forgatókönyvet mutat be a hálózati hozzáférési szabályok 
 
 * A cikkben szereplő Azure CLI-lépések használatához az Azure CLI 2.0.58 vagy újabb verziójára van szükség. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium SKU szükséges), és küldjön `hello-world` le egy mintát, például a Docker hub-ból. Például a [Azure Portal][quickstart-portal] or the [Azure CLI][quickstart-cli] használatával hozzon létre egy beállításjegyzéket. 
+* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium SKU szükséges), és küldjön `hello-world` le egy mintát, például a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t. 
 
 * Ha egy másik Azure-előfizetésben lévő virtuális hálózat használatával szeretné korlátozni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Példa:
 
@@ -202,7 +205,7 @@ Szolgáltatási végpont hozzáadása Azure Container Registry alhálózathoz:
 
 1. A [Azure Portal][azure-portal]tetején található keresőmezőbe írja be a *virtuális hálózatok*kifejezést. Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
 1. A virtuális hálózatok listájából válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMVNET*.
-1. A **Beállítások**területen válassza az alhálózatok lehetőséget.
+1. A **Beállítások**területen válasszaaz alhálózatok lehetőséget.
 1. Válassza ki azt az alhálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMSubnet*.
 1. A **szolgáltatási végpontok**területen válassza a **Microsoft. ContainerRegistry**elemet.
 1. Kattintson a **Mentés** gombra.
@@ -274,7 +277,7 @@ Ha korábban olyan hálózati szabályt adott hozzá, amely engedélyezi a hozz�
 * Frissítse az alhálózat beállításait az alhálózat szolgáltatási végpontjának Azure Container Registry való eltávolításához. 
 
   1. A [Azure Portal][azure-portal]navigáljon ahhoz a virtuális hálózathoz, amelyen a virtuális gép telepítve van.
-  1. A **Beállítások**területen válassza az alhálózatok lehetőséget.
+  1. A **Beállítások**területen válasszaaz alhálózatok lehetőséget.
   1. Válassza ki azt az alhálózatot, amelybe a virtuális gép telepítve van.
   1. A **szolgáltatási végpontok**területen távolítsa el a **Microsoft. ContainerRegistry**jelölőnégyzetét. 
   1. Kattintson a **Mentés** gombra.

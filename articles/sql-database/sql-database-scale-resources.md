@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database erőforrások skálázása |} A Microsoft Docs
-description: Ez a cikk ismerteti az adatbázis méretezése által lefoglalt erőforrások hozzáadásáról vagy eltávolításáról.
+title: Erőforrások Azure SQL Database méretezése | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan méretezheti az adatbázist a lefoglalt erőforrások hozzáadásával vagy eltávolításával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,65 +10,64 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: abc6f8a7a2fda3578bbcf2947188752f8f3373cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357134"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566826"
 ---
-# <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dinamikusan méretezheti az adatbázis-erőforrások minimális állásidővel
+# <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Adatbázis-erőforrások dinamikus méretezése minimális állásidővel
 
-Az Azure SQL Database lehetővé teszi, hogy további erőforrásokat dinamikusan vehet fel az adatbázis minimális [állásidő](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), azonban van egy kapcsoló időtartamon belül hol való kapcsolata megszakad az adatbázis egy rövid ideig, amely lehet a problémák elhárításáról újrapróbálkozási logika használata.
+Azure SQL Database lehetővé teszi, hogy a minimális állásidővel dinamikusan vegyen fel [](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)több erőforrást az adatbázisba. van azonban egy olyan időszak, amelyben a kapcsolat megszakadt az adatbázisba rövid idő alatt, ami az újrapróbálkozási logika használatával enyhíthető.
 
 ## <a name="overview"></a>Áttekintés
 
-Ha az alkalmazás iránti kereslet néhány eszközzel és ügyféllel milliók, az Azure SQL Database menet közben, minimális üzemkimaradással méretezhető. Méretezhetőség az egyik legfontosabb jellemzőit PaaS, amely lehetővé teszi, hogy további erőforrásokat dinamikusan vehet fel a szolgáltatás szükség esetén. Az Azure SQL Database lehetővé teszi, hogy könnyedén módosíthatja az adatbázisok számára lefoglalt erőforrások (CPU-teljesítmény, a memória, i/o-teljesítmény és tárolás).
+Ha az alkalmazás iránti kereslet néhány eszközről és ügyfélről millióra nő, Azure SQL Database menet közben, minimális állásidővel. A méretezhetőség a Pásti egyik legfontosabb jellemzője, amely lehetővé teszi, hogy szükség esetén dinamikusan vegyen fel további erőforrásokat a szolgáltatásba. A Azure SQL Database lehetővé teszi az adatbázisok számára lefoglalt erőforrások (CPU-teljesítmény, memória, IO-átviteli sebesség és tárterület) egyszerű módosítását.
 
-Teljesítménnyel kapcsolatos problémák miatt az alkalmazás, amely nem lehet kijavítani a indexelő használatával, vagy lekérdezési újraírási metódust megnövekedett használatának csökkentheti. További erőforrások hozzáadásával lehetővé teszi, hogy gyorsan reagál, amikor az eléri az aktuális erőforrás-korlátozások az adatbázis és a bejövő terhelés kezeléséhez további power. Az Azure SQL Database lehetővé teszi skálázási az erőforrások költségeinek nincs szükség esetén.
+A teljesítményproblémák enyhítése az alkalmazás nagyobb kihasználtsága miatt, amely nem oldható fel az indexelés vagy a lekérdezés Újraírási módszereivel. A további erőforrások hozzáadásával gyorsan reagálhat, ha az adatbázis eléri az aktuális erőforrás-korlátokat, és nagyobb teljesítményre van szüksége a bejövő munkaterhelés kezeléséhez. A Azure SQL Database az erőforrások méretezését is lehetővé teszi, ha a költségeket nem szükséges csökkenteni.
 
-Nem kell aggódnia a hardver megvásárlása és az alapul szolgáló infrastruktúra módosítására. Méretezési adatbázis Azure Portalon, a csúszka használatával egyszerűen elvégezhető.
+Nem kell aggódnia a hardver megvásárlása és a mögöttes infrastruktúra megváltozása miatt. A skálázási adatbázis egyszerűen elvégezhető Azure Portal egy csúszka használatával.
 
-![Adatbázis-teljesítmény méretezése](media/sql-database-scalability/scale-performance.svg)
+![Az adatbázis teljesítményének méretezése](media/sql-database-scalability/scale-performance.svg)
 
-Az Azure SQL Database kínál a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+Azure SQL Database a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) és a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)kínálja.
 
-- A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória és IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja: Alapszintű, Standard és Prémium. Az egyes szolgáltatásszintek teljesítményszintjei ezen erőforrások különféle keverékét kínálják, amelyhez további tárterület-erőforrások is hozzáadhatók.
-- A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé. A vásárlási modell három különböző szolgáltatásszinttel rendelkezik: Általános célú, kritikus fontosságú üzleti és nagy kapacitású.
+- A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) a számítási, a memória-és az i/o-erőforrások keverékét kínálja három szolgáltatási szinten a könnyű és a nehéz adatbázis-számítási feladatok támogatásához: Alapszintű, Standard és Prémium. Az egyes szolgáltatásszintek teljesítményszintjei ezen erőforrások különféle keverékét kínálják, amelyhez további tárterület-erőforrások is hozzáadhatók.
+- A [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) segítségével kiválaszthatja a virtuális mag számát, a mennyiségét vagy a memóriát, valamint a tárterület mennyiségét és sebességét. Ez a vásárlási modell három szolgáltatási szintet kínál: Általános célú, üzletileg kritikus és nagy kapacitású.
 
-Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison alacsony áron a Basic, Standard vagy általános célú szolgáltatási szinten a havonta, és ezután szolgáltatásszintet manuálisan vagy programon keresztül bármikor módosíthatja a prémium szintű és az üzletileg kritikus szolgáltatásszinthez megfelelni a ne a megoldás eds. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
+Az alapszintű, standard vagy általános célú szolgáltatási szinten egy kis méretű, önálló adatbázison hozhatja létre az első alkalmazását, majd a szolgáltatási szintet manuálisan vagy programozott módon módosíthatja a prémium vagy a üzletileg kritikus szolgáltatási szinten, hogy megfeleljen a ne a megoldás EDS-je. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 > [!NOTE]
-> A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázási akkor, ha a szolgáltatás alapján automatikusan méretezi a feltételek, mivel a dinamikus méretezhetőség lehetővé teszi, hogy manuális egy minimális állásidővel.
+> A dinamikus méretezhetőség különbözik az automatikus skálázástól. Az automatikus skálázás akkor történik meg, amikor a szolgáltatás automatikusan a feltételek alapján méretezi a szolgáltatásokat, míg a dinamikus méretezhetőség lehetővé teszi a manuális skálázást minimális állásidővel.
 
 Az önálló Azure SQL Database a manuális dinamikus méretezhetőséget támogatja, de az automatikus skálázást nem. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján.
-Vannak azonban olyan parancsfájlok, amelyek segítségével automatizálhatja a méretezhetőség egyetlen Azure SQL-adatbázishoz. Erre az [Egyetlen SQL-adatbázis monitorozása és skálázása a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md) című témakörben láthat példát.
+Vannak azonban olyan parancsfájlok, amelyek segítségével automatizálható egyetlen Azure SQL Database skálázhatósága. Erre az [Egyetlen SQL-adatbázis monitorozása és skálázása a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md) című témakörben láthat példát.
 
-Módosíthatja [DTU szolgáltatásszintek](sql-database-service-tiers-dtu.md) vagy [virtuális mag – jellemzőket](sql-database-vcore-resource-limits-single-databases.md) minimális állásideje (általában átlagosan kevesebb mint négy másodperc) az alkalmazás tetszőleges időpontban. Számos vállalkozás és alkalmazás számára elegendő az, ha adatbázisokat tudnak létrehozni, majd azok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése. Ebben a forgatókönyvben egy rugalmas készlet és a egy bizonyos számú edtu-t, amely a készlet több adatbázis között vannak megosztva használja.
+Az [DTU szolgáltatási szintjeinek](sql-database-service-tiers-dtu.md) vagy [virtuális mag jellemzőit](sql-database-vcore-resource-limits-single-databases.md) bármikor megváltoztathatja az alkalmazás minimális állásidővel (általában négy másodperc alatt átlagosan). Számos vállalkozás és alkalmazás számára elegendő az, ha adatbázisokat tudnak létrehozni, majd azok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése. Ebben a forgatókönyvben egy rugalmas készletet használ bizonyos számú Edtu, amelyek a készlet több adatbázisa között vannak megosztva.
 
-![Bevezetés az SQL Database: Önálló adatbázis dtu-k rétegek és szintek szerint](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+![Bevezetés a SQL Databaseba: Önálló adatbázisok DTU szint és szint szerint](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-Az Azure SQL Database összes három változatban érhetők el ajánlat dinamikusan méretezheti az adatbázisok néhány képessége:
+A Azure SQL Database mindhárom teljes választéka az adatbázisok dinamikus méretezésének lehetőségét kínálja:
 
-- Az egy [önálló adatbázis](sql-database-single-database-scale.md), használhat [DTU](sql-database-dtu-resource-limits-single-databases.md) vagy [virtuális mag](sql-database-vcore-resource-limits-single-databases.md) modellek meghatározásához rendeli hozzá az egyes adatbázisok erőforrások maximális mennyiségét.
-- A [felügyelt példány](sql-database-managed-instance.md) használ [virtuális magok](sql-database-managed-instance.md#vcore-based-purchasing-model) módban, és lehetővé teszi, hogy meghatározza a maximális CPU-magok és a példányhoz lefoglalt tárterület maximális. A példány belüli összes adatbázist fog ugyanazokat az a példányhoz lefoglalt erőforrásokat.
-- [Rugalmas készletek](sql-database-elastic-pool-scale.md) engedélyezése, hogy a készlet maximális erőforrás felső határ az egyes adatbázisok csoport definiálja.
+- [Egyetlen adatbázis](sql-database-single-database-scale.md)esetén [DTU](sql-database-dtu-resource-limits-single-databases.md) -vagy [virtuális mag](sql-database-vcore-resource-limits-single-databases.md) -modelleket is használhat az egyes adatbázisokhoz hozzárendelhető erőforrások maximális mennyiségének meghatározásához.
+- A [felügyelt példányok](sql-database-managed-instance.md) [virtuális mag](sql-database-managed-instance.md#vcore-based-purchasing-model) módot használnak, és lehetővé teszi a maximális CPU-magok és a példányhoz lefoglalt maximális tárterület meghatározását. A példányon belüli összes adatbázis osztozik a példányhoz lefoglalt erőforrásokon.
+- A [rugalmas készletek](sql-database-elastic-pool-scale.md) lehetővé teszik a készletben lévő adatbázisok csoportjára vonatkozó maximális erőforrás-korlátozás meghatározását.
 
 > [!NOTE]
-> Várható a kapcsolat rövid szünet, ha a méretezési csoport legfeljebb/vertikális leskálázási folyamat befejeződött. Ha megvalósította [újrapróbálkozási logika standard átmeneti hibák esetén](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), nem láthatja a feladatátvételt.
+> A vertikális Felskálázási/skálázási folyamat befejeződése után rövid kapcsolódási szünet várható. Ha implementálta az [újrapróbálkozási logikát a normál átmeneti hibákhoz](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), akkor nem fogja észrevenni a feladatátvételt.
 
-## <a name="alternative-scale-methods"></a>Alternatív méretezési módszer
+## <a name="alternative-scale-methods"></a>Alternatív méretezési módszerek
 
-Erőforrások skálázása, a legegyszerűbb és a leghatékonyabb megoldást választja, az adatbázis teljesítményének növelése adatbázis vagy az alkalmazás a programkód módosítása nélkül. Egyes esetekben akár a legmagasabb szintű szolgáltatási csomagokra, számítási méretű és teljesítményoptimalizálás előfordulhat, hogy nem kezeli a számítási feladatok, a sikeres és költséghatékony módja. Adott esetben ezek az adatbázis méretezése további lehetősége van:
+Az erőforrások méretezése a legegyszerűbb és a leghatékonyabb módszer az adatbázis teljesítményének javítására az adatbázis vagy az alkalmazás kódjának módosítása nélkül. Bizonyos esetekben a legmagasabb szintű szolgáltatási szintek, a számítási méretek és a teljesítmény-optimalizálás nem kezelheti a munkaterhelést sikeres és költséghatékony módon. Ebben az esetben ezekkel a további beállításokkal méretezheti az adatbázist:
 
-- [Horizontális felskálázás olvasása](sql-database-read-scale-out.md) érhető el a szolgáltatás hol azért kapta az adatok egy csak olvasható replikája ahol hajthat végre erőforrás-igényes csak olvasható lekérdezései, például a jelentések. A csak olvasható számítási feladat működésének megzavarása nélkül megtesztelheti az erőforrás-használata az elsődleges adatbázis csak olvasható replika kezeli.
-- [Database sharding](sql-database-elastic-scale-introduction.md) olyan technikákat, amely lehetővé teszi az adatok felosztása több adatbázist, és egymástól független méretezését.
+- Az [olvasási felskálázás](sql-database-read-scale-out.md) egy olyan szolgáltatás, ahol egy olyan írásvédett replikát kap az adataihoz, ahol a csak olvasható lekérdezéseket, például jelentéseket futtathat. A csak olvasási jogosultsággal rendelkező replikák az elsődleges adatbázis erőforrás-használatának befolyásolása nélkül kezelik az írásvédett munkaterhelést.
+- Az [adatbázis](sql-database-elastic-scale-introduction.md) -skálázás olyan technikák összessége, amelyek lehetővé teszik az adatmegosztást több adatbázisra, és egymástól függetlenül méretezheti azokat.
 
 ## <a name="next-steps"></a>További lépések
 
-- Adatbázis teljesítményének növelése adatbázis kód módosításával kapcsolatos információkért lásd: [keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása](sql-database-advisor-portal.md).
-- Így optimalizálhatja adatbázisát adatbázis beépített intelligencia kapcsolatos információkért lásd: [az automatikus hangolás](sql-database-automatic-tuning.md).
-- Olvasási horizontális felskálázás az Azure SQL Database szolgáltatásban kapcsolatos információkért lásd: hogyan [terheléselosztása csak olvasható lekérdezési számítási feladatok betöltése a csak olvasható replika segítségével](sql-database-read-scale-out.md).
-- Egy adatbázis horizontális skálázási kapcsolatos információkért lásd: [horizontális felskálázás az Azure SQL Database](sql-database-elastic-scale-introduction.md).
+- További információ az adatbázis-teljesítmény javításáról az adatbázis kódjának módosításával: [teljesítményre vonatkozó javaslatok keresése és alkalmazása](sql-database-advisor-portal.md).
+- További információ a beépített adatbázis-intelligenciával való optimalizálásáról: [automatikus hangolás](sql-database-automatic-tuning.md).
+- További információ a Azure SQL Database szolgáltatásban végzett olvasási felskálázásról: az írásvédett [replikák használata az írásvédett lekérdezési feladatok terheléselosztásához](sql-database-read-scale-out.md).
+- További információ az adatbázisok horizontális felskálázásáról: horizontális [felskálázás Azure SQL Database](sql-database-elastic-scale-introduction.md).

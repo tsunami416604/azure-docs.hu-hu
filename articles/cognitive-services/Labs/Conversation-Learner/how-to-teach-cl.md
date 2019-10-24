@@ -1,7 +1,7 @@
 ---
-title: Hogyan tanítsa meg Beszélgetéstanuló – a Microsoft Cognitive Services-|} A Microsoft Docs
+title: A Conversation Learner-Microsoft Cognitive Services megismerése | Microsoft Docs
 titleSuffix: Azure
-description: Útmutató a Beszélgetéstanuló tanít.
+description: Ismerje meg, hogyan taníthatja meg Conversation Learnereit.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,69 +10,70 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 9e5e6594a74219a22d67af18827bfe2b7cbd0fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: a18d4c31da4ffeefebd4bda9aa441fdfec062be9
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385276"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705271"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Tanítás a Beszélgetéstanulóval 
 
-Ez a dokumentum ismerteti, milyen Beszélgetéstanuló érzékeli, és ismerteti, hogyan képes megtanulni jelzi.  
+Ez a dokumentum ismerteti, hogy milyen jeleket Conversation Learner a rendszer, és leírja, hogyan tanul.  
 
-Pedagógiai bontható két különálló lépésre: entitások kinyeréséhez és a művelet kiválasztása.
+Az oktatás két különálló lépésből bontható: az entitások kinyerése és a művelet kiválasztása.
 
-## <a name="entity-extraction"></a>Entitások kinyeréséhez
+## <a name="entity-extraction"></a>Entitás kibontása
 
-Valójában Beszélgetéstanuló használ [LUIS](https://www.luis.ai) az entitások kinyeréséhez.  Ha ismeri a LUIS, hogy a entitások kinyeréséhez a Beszélgetéstanuló vonatkozik.
+A borítók alatt Conversation Learner [Luis](https://www.luis.ai) -t használ az entitások kinyeréséhez.  Ha ismeri a LUIS-t, ez a tapasztalat az entitások kinyerésére vonatkozik Conversation Learnerban.
 
-Az entitás kinyerési modellek tisztában a *tartalom* és *környezet* egy felhasználó utterance (kifejezés) belül.  Például, ha a "Seattle" szót lett feliratú egy utterance (kifejezés) a város, például a "Mi az az időjárás, a Seattle", entitások kinyeréséhez a következőkre képes FELISMERVE tartalmat ("Seattle") egy másik utterance "Population Seattle", például a város, akkor is, ha a beszédmódok amelyek nagyon eltérőek.  Ezzel szemben ha "Francis" ismeri el a nevét a "Ütemezés egy értekezlet Francis", hasonló környezetben, például a "Beállítása egy értekezlet-Robin" felismeri az új korábban látott nevet, majd.  Machine learning vegyen részt a tartalmat, helyi vagy mindkettőt, hogy mikor kikövetkezteti a példák alapján.
+Az entitások kinyerési modelljei a felhasználók teljes tartalmára és *kontextusára* vonatkozó ismerettel rendelkeznek.  Ha például a "Seattle" szó olyan városként van megjelölve, mint a "mi az időjárás Seattle-ben", az entitások kinyerése képes arra, hogy ugyanazt a tartalmat ("Seattle") olyan városként Ismerje meg, mint például a "Seattle populációja", még akkor is, ha a hosszúságú kimondott szöveg nagyon különbözőek.  Ezzel szemben, ha a "Francis" nevet a "Francis" találkozó bejelentése a "Francis" néven ismeri fel, akkor egy új, korábban láthatatlan név is felismerhető egy hasonló kontextusban, például: "találkozó létrehozása a Robin használatával".  A gépi tanulás a betanítási példák alapján kikövetkezteti, hogy mikor kell részt venni a tartalomban, a kontextusban vagy mindkettőben.
 
-Jelenleg entitások kinyeréséhez csak tisztában a jelenlegi utterance (kifejezés) tartalmát.  Ellentétben a művelet kiválasztása (alább) azt még nem ismeri, például a korábbi rendszer bekapcsolja, ennek a felhasználó korábbi vagy korábban felismert entitások párbeszédpanel előzmények.  Ennek eredményeképpen az entitások kinyeréséhez viselkedését "" között megoszlik az összes kimondott szöveg.  Például ha a felhasználó utterance (kifejezés) "Szeretnék Apple" a "Apple" entitástípus "Gyümölcs" az egy felhasználó utterance (kifejezés) címkével rendelkezik, az entitás kinyerési modell fog a várt, hogy ("szeretnék Apple") az utterance (kifejezés) mindig rendelkeznie kell a következő címkét "Gyümölcs": "Apple".
+Az entitások kivonása jelenleg csak a jelenlegi Kimondás tartalmát ismeri.  A művelet kiválasztásával ellentétben (alább) nem ismeri a párbeszédpanelek előzményeit, például a korábbi rendszerállapotot, a korábbi felhasználó bekapcsolt vagy korábban felismert entitásokat.  Ennek eredményeképpen az entitások kinyerésének viselkedése az összes hosszúságú kimondott szöveg "Shared".  Ha például a felhasználó az "azt szeretném, hogy az Apple" kifejezés "Fruit" típusúként van megjelölve az egyik felhasználó teljes nevében, akkor az entitás kinyerési modellje várhatóan azt is jelzi, hogy ez a lemondás ("szeretném, hogy az Apple") mindig "Fruit" (Apple) címkével legyen ellátva.
 
-Ha az entitások kinyeréséhez nem a várt módon viselkedik, az alábbiakban lehetséges megoldása:
+Ha az entitások kinyerése nem a várt módon viselkedik, a következő lehetőségek lehetségesek:
 
-- Próbálja ki a legfontosabb, hogy adjon hozzá további példák – különösen a tipikus entitás környezet (körülvevő szavak), vagy a kivételek felfedése példák
-- Fontolja meg, egy "Várt entitás" tulajdonság ad hozzá egy műveletet, ha szükséges.  További részletekért tekintse meg a oktatóanyag várt entitásokra.
-- Bár a manuális feldolgozás hozzáadandó `EntityExtractionCallback` kóddal entitások kinyeréséhez, ennek oka a legkevésbé ajánlott módszer nem élvezi az a machine learning, a rendszer kiforrottá fejlesztései.
+- Első lépésként további betanítási példákat is hozzáadhat – különösen olyan példákat, amelyek felfedik a jellemző entitások környezetét (a környező szavakat) vagy kivételeket.
+- Szükség esetén érdemes lehet "várt entitás" tulajdonságot hozzáadni egy művelethez.  További részletekért tekintse meg az oktatóanyag a várt entitásokról című témakört.
+- Habár manuálisan `EntityExtractionCallback` is felvehetők az entitások a kóddal való kinyeréséhez, ez a legkevésbé ajánlott módszer, mivel a rendszer a gépi tanulás fejlesztései miatt nem fog kihasználni.
 
 ## <a name="action-selection"></a>Művelet kiválasztása
 
-Művelet kiválasztása használ egy ütemezhetők Neurális hálózat, amely veszi fel a bemeneti összes a beszélgetések előzményeit.  Így a művelet kiválasztása az állapot-nyilvántartó, amely a korábbi felhasználói utterances entitásértékek és rendszer utterances érzékeli.  
+A művelet kiválasztása egy visszatérő neurális hálózatot használ, amely az összes beszélgetési előzmény bemenetét veszi figyelembe.  Így a művelet kiválasztása olyan állapot-nyilvántartó folyamat, amely ismeri a korábbi felhasználói hosszúságú kimondott szöveg, az entitások értékeit és a rendszer hosszúságú kimondott szöveg.  
 
-Bizonyos jelek természetes módon előnyben részesített a tanulási folyamatot.  Más szóval ha Beszélgetéstanuló ismertetik egy művelet használatával több "elsődleges" jelek döntés, akkor; Ha nem érhető el, majd fogja használni kevesebb "elsődleges" jeleket.
+Bizonyos jeleket a tanulási folyamat természetesen előnyben részesített.  Más szóval, ha Conversation Learner meg tudja magyarázni egy művelet kiválasztási döntését az "előnyben részesített" jelek használatával, a következő lesz: Ha nem, akkor a "kevésbé preferált" jeleket fogja használni.
 
-Itt látható az összes jel Beszélgetéstanuló, és melyeket művelet kiválasztása által használt megjelenítő táblázat.  Vegye figyelembe, hogy a rendelés word-felhasználó utterances a rendszer figyelmen kívül hagyja.
+Itt látható egy táblázat, amely a Conversation Learner összes jeleit mutatja, és melyeket a művelet kiválasztása használ.  Vegye figyelembe, hogy a felhasználói hosszúságú kimondott szöveg lévő Word Order utasítás figyelmen kívül lesz hagyva.
 
-Jel | Szabályozó (1 = leginkább előnyben részesített) | Megjegyzések
+Jel | Preferencia (1 = leginkább előnyben részesített) | Megjegyzések
 --- | --- | --- 
-Előző kapcsolja be a rendszer művelet | 1 | 
-Entitások aktuális kapcsolja szerepelnek. | 1 | 
-Hogy ez-e az első bekapcsolása | 1 |
-Az aktuális felhasználó utterance (kifejezés) szó pontos egyezés | 2 | 
-Hasonló – azaz a szavakat az aktuális felhasználó utterance (kifejezés) | 3 | 
-Előző bekapcsolása előtt a rendszer műveletek | 4 |
-Ennek a jelenlegi bekapcsolása előtt található entitások | 4 | 
-Aktuális bekapcsolása előtt a felhasználó kimondott szöveg | 5 | 
+Rendszerművelet az előző kanyarban | 1 | 
+Az aktuális fordulatban lévő entitások | 1 | 
+Hogy ez az első turn | 1 |
+A jelenlegi felhasználó teljes szövegének pontos egyezése | 2 | 
+Hasonló – a jelenlegi felhasználó teljes kifejezése | 3 | 
+Rendszerműveletek korábbi lépések előtt | 4 |
+Az aktuális fordulat előtt megjelenő entitások | 4 | 
+Felhasználói hosszúságú kimondott szöveg az aktuális fordulat előtt | 5 | 
 
 > [!NOTE]
-> Művelet kiválasztása nem veszi a tartalom rendszer műveletek – a szöveget, kártya tartalma, vagy API-név vagy viselkedés – csak a rendszer művelet identitását.  Ennek eredményeképpen a művelet tartalmának módosítása nem változtatja meg a művelet kiválasztása modell viselkedését.
+> A művelet kiválasztása nem veszi figyelembe a rendszerműveletek tartalmát – a szöveg, a kártya tartalma vagy az API neve vagy viselkedése – csak a rendszerművelet identitása.  Ennek eredményeképpen a művelet tartalmának módosítása nem változtatja meg a műveleti kiválasztási modell viselkedését.
 >
-> Továbbá, hogy a tartalom és az entitások értékei nem használt – csak jelenléte vagy hiánya.
+> Továbbá, az entitások tartalma/értékei nem használhatók – csak a jelenlétük/távollétük.
 
-Ha a művelet kiválasztása nem a várt módon viselkedik, az alábbiakban lehetséges megoldása:
+Ha a művelet kiválasztása nem a várt módon viselkedik, a következő lehetőségek lehetségesek:
 
-- Adjon hozzá további train párbeszédpanelek, különösen olyan párbeszédpanelek, amelyek bemutatják, milyen művelet kiválasztása kell lennie és fordítson különös figyelmet jelek.  Például ha művelet kiválasztása érdemes inkább egy jel egy másikkal szemben, példákkal szemlélteti azt mutatják be az előnyben részesített jel ugyanazt az állapotot folyamatban van, és az egyéb jelekkel változó.  Egyes sorozatok néhány további betanítási párbeszédpanelek is igénybe vehet.
-- Adja hozzá a "Kötelező" és "Kizárásának" művelet definíciók entitásokat.  A korlátok műveletek érhetők el, és expressz üzleti szabályok és a egy hétköznapi minták hasznos lehet. 
+- További betanítási párbeszédpanelek hozzáadása, különösen azok a párbeszédablakok, amelyek bemutatják, hogy a jelzések milyen műveleteket választanak ki.  Ha például a művelet kiválasztása egy másik jelet részesíti előnyben, adjon meg olyan példákat, amelyek az előnyben részesített jelet ugyanabban az állapotban mutatják, és a többi jelzés eltérő.  Néhány adatsor több tanítási párbeszédpanelt is igénybe vehet.
+- Adja hozzá a "kötelező" és a "nem megfelelő" entitásokat a műveleti definícióhoz.  Ez akkor fordul elő, ha a műveletek elérhetők, és hasznosak lehetnek az üzleti szabályok és a józan ész mintázatok kifejezésére. 
 
-## <a name="updates-to-models"></a>A modellek frissítések
+## <a name="updates-to-models"></a>Modellek frissítései
 
-Bármikor hozzáadásakor vagy szerkesztésekor egy entitást, művelet vagy train párbeszédpanel a felhasználói felületen Ez létrehoz egy kérelmet újra is az entitás kinyerési modell betanítására a művelet kiválasztása modell.  Ezt a kérést egy üzenetsorba el van helyezve, és újbóli betanítása aszinkron módon történik.  Új modell érhető el, ha használatos ettől a ponttól kezdődően entitás kivonása és a művelet kiválasztása.  Ez a folyamat újbóli képzésekre gyakran körülbelül 5 másodperc alatt, de tovább is lehet, ha a modell összetett, vagy ha a betanítási szolgáltatás terhelése nagy.
+Minden alkalommal, amikor hozzáad vagy szerkeszt egy entitást, műveletet vagy betanítási párbeszédpanelt a felhasználói felületen, ez egy kérést hoz létre, amely az entitás-kinyerési modellt és a művelet kiválasztási modelljét is újra betanítja.  A kérelem várólistára kerül, és az újraképzés aszinkron módon történik.  Ha új modell érhető el, az az adott ponttól kezdve az entitások kinyerésére és a művelet kiválasztására szolgál.  Ez az újraképzési folyamat gyakran körülbelül 5 másodpercet vesz igénybe, de hosszabb lehet, ha a modell összetett, vagy ha magas a betöltés a betanítási szolgáltatásban.
 
-Képzési aszinkron módon történik, mivel, lehetséges, hogy végrehajtott módosítások azonnal nem érvényesülnek.  Entitás kivonása vagy a művelet kiválasztása az elmúlt 5 – 10 másodpercben módosításainak alapján várt módon viselkedik, ha az OK lehet.
+Mivel a képzés aszinkron módon történik, lehetséges, hogy az elvégzett módosítások nem tükröződnek azonnal.  Ha az entitás kinyerése vagy a művelet kiválasztása nem a várt módon működik az elmúlt 5-10 másodpercben elvégzett módosítások alapján, ez az oka lehet.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az alapértelmezett értékeket, és határokat](./cl-values-and-boundaries.md)
+> [Alapértelmezett értékek és határok](./cl-values-and-boundaries.md)

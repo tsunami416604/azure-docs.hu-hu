@@ -1,6 +1,6 @@
 ---
-title: 'Együttműködés az Azure háttér-kapcsolati funkciók: Konfigurációs részletek |} A Microsoft Docs'
-description: Ez a cikk ismerteti a test-beállítás segítségével elemezheti az ExpressRoute, a site-to-site VPN és a virtuális hálózati társviszony az Azure-ban együttműködésével konfigurációs adatait.
+title: 'Együttműködés az Azure háttérbeli kapcsolati szolgáltatásaiban: Konfigurációs részletek | Microsoft Docs'
+description: Ez a cikk a ExpressRoute, a helyek közötti VPN-kapcsolat és az Azure-beli virtuális hálózatok közötti együttműködés elemzéséhez használható konfigurációs adatokat ismerteti.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,48 +10,48 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425754"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68335944"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Együttműködés az Azure háttér-kapcsolati funkciók: Tesztelési konfiguráció részletei
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Együttműködés az Azure háttérbeli kapcsolati szolgáltatásaiban: Konfiguráció tesztelése – részletek
 
-Ez a cikk ismerteti a konfigurációs adatait a [beállítások ellenőrzése][Setup]. A teszt beállítása segítségével elemezheti az Azure hálózati szolgáltatások együttműködik a vezérlési sík szint és az adatsík szintnek.
+Ez a cikk a [teszt beállításának][Setup]konfigurációs részleteit ismerteti. A teszt beállítása segít elemezni, hogy az Azure hálózati szolgáltatásai Hogyan működjenek együtt a vezérlési síkon és az adatsík szintjén.
 
-## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>A virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti küllőkapcsolat
+## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Küllős VNet-kapcsolat a VNet-társítás használatával
 
-Az alábbi ábra bemutatja az Azure virtuális hálózati társviszony-létesítés részleteinek küllő virtuális hálózat (VNet). Ismerje meg, hogyan állítsa be a társviszony-létesítés két virtuális hálózat között, lásd: [kezelése virtuális hálózatok közötti társviszony-létesítés][VNet-Config]. Ha azt szeretné, hogy a küllő virtuális hálózat számára, amely csatlakozik az agyi virtuális hálózat, válassza ki az átjárók használatát **távoli átjárók használata**.
+Az alábbi ábrán egy küllős virtuális hálózat (VNet) Azure Virtual Network-összevonási részletei láthatók. Ha meg szeretné tudni, hogyan állíthatja be a két virtuális hálózatok közötti társítást, tekintse meg a [VNet-kezelés kezelése][VNet-Config]című témakört. Ha azt szeretné, hogy a küllős VNet a hub VNet csatlakozó átjárókat használják, válassza a **távoli átjárók használata**lehetőséget.
 
 [![1]][1]
 
-Az alábbi ábra az agyi virtuális hálózat virtuális hálózatok közötti társviszony-létesítési részleteit jeleníti meg. Ha azt szeretné, hogy a küllő virtuális hálózat a hub VNet-átjárók használatára, válassza ki a **távoli átjárók használata**.
+Az alábbi ábra a hub-VNet VNet-társítási részleteit mutatja be. Ha azt szeretné, hogy a hub VNet engedélyezze a küllős VNet számára a hub átjáróinak használatát, válassza az **átjáró továbbításának engedélyezése**lehetőséget.
 
 [![2]][2]
 
-## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Ág virtuális hálózatok közötti kapcsolat egy helyek közötti VPN használatával
+## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Ág-VNet kapcsolódás helyek közötti VPN használatával
 
-A hub és a fiókiroda virtuális hálózatok között helyek közötti VPN-kapcsolat beállítása az Azure VPN Gateway VPN-átjárók használatával. Alapértelmezés szerint a VPN-átjárók és az Azure ExpressRoute-átjáró használata privát autonóm rendszer száma (ASN) érték **65515**. VPN-átjáró ASN értéke módosíthatja. A teszt beállítása az ág virtuális hálózatok közötti VPN-átjáró ASN értéke megváltozott **65516** eBGP a hub és a fiókiroda virtuális hálózatok közötti útválasztást támogatásához.
+A helyek közötti VPN-kapcsolat beállítása a hub és az ág közötti virtuális hálózatok az Azure VPN Gateway VPN-átjárók használatával. Alapértelmezés szerint a VPN-átjárók és az Azure ExpressRoute-átjárók a **65515**-as privát autonóm rendszer számát (ASN) használják. VPN Gatewayban módosíthatja az ASN-értéket. A teszt beállításakor a fiókiroda VNet VPN-átjáró ASN-értéke **65516** -ra változik, hogy támogassa a eBGP útválasztást a hub és az ág virtuális hálózatok között.
 
 
 [![3]][3]
 
 
-## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>A helyszíni hely 1 kapcsolat ExpressRoute- és helyek közötti VPN használatával
+## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>Helyszíni hely 1. kapcsolódás a ExpressRoute és a helyek közötti VPN használatával
 
-### <a name="expressroute-1-configuration-details"></a>1\. ExpressRoute-konfiguráció részletei
+### <a name="expressroute-1-configuration-details"></a>1\. ExpressRoute konfigurációs adatok
 
-Az alábbi ábra bemutatja az Azure régió 1 ExpressRoute-kapcsolatcsoport konfiguráció a helyszíni hely 1 ügyfél (CE) peremhálózati útválasztók felé:
+Az alábbi ábra az Azure régió 1 ExpressRoute áramköri konfigurációját mutatja be a helyszíni hely 1 Customer Edge (CE) útválasztók felé:
 
 [![4]][4]
 
-A következő ábrán látható, a kapcsolat konfigurációját az 1. ExpressRoute-kapcsolatcsoport és az agyi virtuális hálózat között:
+Az alábbi ábrán a ExpressRoute 1 áramkör és a hub VNet közötti kapcsolati konfiguráció látható:
 
 [![5]][5]
 
-A következő lista tartalmazza az ExpressRoute privát társviszony-létesítési kapcsolat elsődleges CE útválasztó konfigurációját. (Cisco ASR1000 útválasztók használt CE útválasztóként a vizsgálat beállítása.) Site-to-site VPN és ExpressRoute-Kapcsolatcsoportok úgy vannak konfigurálva, a helyszíni hálózat csatlakoztatása az Azure-ba történő párhuzamos, amikor az Azure alapértelmezés szerint az ExpressRoute-kapcsolatcsoport rangsorolja. Aszimmetrikus útválasztás elkerüléséhez a helyszíni hálózathoz is előnyben részesíti az ExpressRoute-kapcsolat keresztül site-to-site VPN-kapcsolat. A következő konfigurációt a BGP használatával hoz létre rangsorolási **helyi-szabályozó** attribútum:
+A következő lista az elsődleges CE-útválasztó konfigurációját mutatja be a ExpressRoute magánhálózati kapcsolathoz. (A Cisco ASR1000 útválasztók a tesztelési beállításban CE-útválasztóként használatosak.) Ha a helyek közötti VPN-és ExpressRoute-áramkörök párhuzamosan vannak konfigurálva a helyszíni hálózat Azure-hoz való összekapcsolásához, az Azure alapértelmezés szerint rangsorolja az ExpressRoute áramkört. Az aszimmetrikus útválasztás elkerüléséhez a helyszíni hálózatnak a helyek közötti VPN-kapcsolaton keresztüli ExpressRoute-kapcsolatot is rangsorolnia kell. A következő konfiguráció a BGP **Local-preferencia** attribútum használatával határozza meg a rangsorolást:
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure
@@ -91,9 +91,9 @@ A következő lista tartalmazza az ExpressRoute privát társviszony-létesíté
     ip prefix-list Cust30_to_Private seq 10 permit 10.2.30.0/25
     !
 
-### <a name="site-to-site-vpn-configuration-details"></a>Site-to-site VPN-konfiguráció részletei
+### <a name="site-to-site-vpn-configuration-details"></a>Helyek közötti VPN-konfiguráció részletei
 
-Az alábbi lista tartalmazza a helyek közötti VPN-kapcsolat elsődleges CE útválasztó konfigurációját:
+Az alábbi lista a helyek közötti VPN-kapcsolat elsődleges CE útválasztó-konfigurációját mutatja be:
 
     crypto ikev2 proposal Cust30-azure-proposal
      encryption aes-cbc-256 aes-cbc-128 3des
@@ -148,69 +148,69 @@ Az alábbi lista tartalmazza a helyek közötti VPN-kapcsolat elsődleges CE út
     !
     ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
-## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>A helyszíni hely 2 kapcsolat ExpressRoute használatával
+## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>Helyszíni 2. hely – kapcsolat a ExpressRoute használatával
 
-Egy második ExpressRoute-kapcsolatcsoport közelebb közelében a helyszíni hely 2, a helyszíni hely 2 csatlakozik az agyi virtuális hálózat. Az alábbi ábra a második az ExpressRoute-konfigurációját mutatja be:
+A második ExpressRoute áramkör a helyszíni hely 2. pontjának közelében csatlakozik a helyszíni 2. helyhez a hub VNet. A következő ábra a második ExpressRoute-konfigurációt mutatja be:
 
 [![6]][6]
 
-A következő ábrán látható, a második ExpressRoute-kapcsolatcsoportot, és az agyi virtuális hálózat közötti kapcsolat konfigurálása:
+Az alábbi ábrán a második ExpressRoute áramkör és a hub VNet közötti kapcsolati konfiguráció látható:
 
 [![7]][7]
 
-Az ExpressRoute 1 az agyi virtuális hálózat és a helyszíni hely 1 csatlakozik egy távoli virtuális hálózat egy másik Azure-régióban:
+A ExpressRoute 1 a hub-VNet és a helyszíni 1. helyet is összekapcsolja egy másik Azure-régióban található távoli VNet:
 
 [![8]][8]
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Területtel ExpressRoute- és helyek közötti VPN-kapcsolat
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute és helyek közötti VPN-kapcsolat párhuzamosan
 
-###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-site VPN expressroute-on keresztül
+###  <a name="site-to-site-vpn-over-expressroute"></a>Helyek közötti VPN a ExpressRoute-en keresztül
 
-A site-to-site VPN ExpressRoute Microsoft társviszony-létesítést úgy, hogy privát módon exchange-adatok a helyszíni hálózat és az Azure virtuális hálózatok közötti használatával konfigurálhatja. Ezzel a konfigurációval adatokat cserélni bizalmas hitelességét és integritását. Adatcsere során a visszajátszás. IPsec helyek közötti VPN konfigurálása bújtatási mód a Microsoft társviszony-létesítési ExpressRoute használatával kapcsolatos további információkért lásd: [Site-to-site VPN ExpressRoute Microsoft társviszony-létesítésen keresztül][S2S-Over-ExR]. 
+A helyek közötti VPN-t konfigurálhatja úgy, hogy a Microsoft ExpressRoute a saját helyszíni hálózata és az Azure-virtuális hálózatok közötti személyes információcserére használja. Ezzel a konfigurációval az adatok titkosságot, hitelességet és integritást cserélhetnek. Az adatcsere is a visszajátszás elleni védelem. Ha további információt szeretne arról, hogyan konfigurálhat helyek közötti IPsec VPN-t bújtatási módban a Microsoft ExpressRoute használatával, tekintse meg a [helyek közötti VPN-t a ExpressRoute Microsoft-partneri kapcsolaton keresztül][S2S-Over-ExR]. 
 
-Az elsődleges korlátozása a Microsoft társviszony-létesítést használó site-to-site VPN konfigurálása az átviteli sebességet. Az IPsec-alagúton keresztül átviteli sebességet a VPN-átjáró kapacitása korlátozza. A VPN gateway teljesítménye is kevesebbet, mint az ExpressRoute átviteli sebességet. Ebben a forgatókönyvben a rendkívül biztonságos forgalmat az IPsec-alagút használatával, és privát társviszony-létesítést az összes többi forgalom használatával segít optimalizálni a ExpressRoute sávszélesség-felhasználás.
+A helyek közötti VPN Microsoft-társítást használó konfigurálásának elsődleges korlátozása az átviteli sebesség. Az IPsec-alagút átviteli sebességét a VPN Gateway kapacitása korlátozza. A VPN-átjáró átviteli sebessége kisebb, mint a ExpressRoute átviteli sebessége. Ebben az esetben az IPsec-alagúton keresztül, a biztonságos forgalomhoz és a privát és a többi forgalomhoz való használat révén optimalizálhatja a ExpressRoute sávszélesség-kihasználtságot.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-to-site VPN biztonságos feladatátvételi útvonalként az expressroute-hoz
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Helyek közötti VPN biztonságos feladatátvételi útvonalként a ExpressRoute
 
-Az ExpressRoute kapcsolatcsoport redundáns két, magas rendelkezésre állás biztosítása érdekében szolgálja ki. Konfigurálhatja a georedundáns az ExpressRoute-kapcsolat másik Azure-régióban. Is ahogyan az a teszt beállítása egy Azure-régióban is használhatja a site-to-site VPN feladatátvételi útvonalként az ExpressRoute-kapcsolat létrehozása. Ha ugyanazokat az előtagokat vannak hirdetve az ExpressRoute- és a egy site-to-site VPN, az Azure ExpressRoute rangsorolja. Aszimmetrikus útválasztás az ExpressRoute és a site-to-site VPN közötti elkerülése érdekében a helyszíni hálózati konfiguráció is kell reciprocate site-to-site VPN-kapcsolat használata előtt az ExpressRoute-kapcsolat használatával.
+A ExpressRoute redundáns áramköri párokként szolgál a magas rendelkezésre állás biztosításához. Különböző Azure-régiókban is konfigurálhatja a Geo-redundáns ExpressRoute-kapcsolatot. Továbbá, ahogyan azt a tesztelési beállítás is mutatja, egy Azure-régión belül egy helyek közötti VPN használatával létrehozhat egy feladatátvételi útvonalat a ExpressRoute-kapcsolathoz. Ha ugyanazokat az előtagokat hirdeti meg mindkét ExpressRoute és egy helyek közötti VPN-en, az Azure rangsorolja a ExpressRoute-t. Ha el szeretné kerülni a ExpressRoute és a két hálózat közötti pont-pont típusú VPN közötti aszimmetrikus útválasztást, a helyszíni hálózati konfigurációnak a ExpressRoute-kapcsolat használatával is be kell állnia, mielőtt a helyek közötti VPN-kapcsolatot használja.
 
-Az ExpressRoute és site-to-site VPN egyidejű kapcsolatok konfigurálásával kapcsolatos további információkért lásd: [ExpressRoute és site-to-site párhuzamossági][ExR-S2S-CoEx].
+A ExpressRoute és helyek közötti VPN-hez való egyidejű kapcsolatok konfigurálásával kapcsolatos további információkért lásd: [ExpressRoute és helyek közötti együttélés][ExR-S2S-CoEx].
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Háttér-küllő virtuális hálózatok és a fiókirodában dolgozó csatlakozásának kiterjesztése
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Háttérbeli kapcsolat kiterjesztése küllős virtuális hálózatok és fiókirodák számára
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>A virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti küllőkapcsolat
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Küllős VNet-kapcsolat a VNet-társítás használatával
 
-Küllős architektúra virtuális hálózatok közötti szokták gyakran használni. A hub egy Vnetet az Azure-ban, amely egy központi csatlakozási pontra van szükség a küllő virtuális hálózatok között, és a helyszíni hálózathoz funkcionál. A küllők az agyhoz kapcsolódó virtuális hálózatok, és amelyekkel számítási feladatok elkülönítésére. A forgalom a helyszíni adatközpont és a egy expressroute-on vagy VPN-kapcsolaton keresztül a hub között. Az architektúrával kapcsolatos további információkért lásd: [küllős hálózati topológia implementálása az Azure-ban][Hub-n-Spoke].
+A hub és a küllős VNet architektúra széles körben használatos. A hub egy VNet az Azure-ban, amely központi kapcsolódási pontként szolgál a küllős virtuális hálózatok és a helyszíni hálózat között. A küllők a virtuális hálózatok, és a munkaterhelések elkülönítésére használhatók. A forgalom a helyszíni adatközpont és a hub között egy ExpressRoute vagy VPN-kapcsolaton keresztül áramlik. További információ az architektúráról: [sugaras hálózati topológia implementálása az Azure-ban][Hub-n-Spoke].
 
-Virtuális hálózatok közötti társviszony-létesítés egy adott régión belül, a küllő virtuális hálózatok használatával hub virtuális hálózati átjáró (VPN- és ExpressRoute-átjárók) kommunikálni a távoli hálózatokhoz.
+Egy adott régión belüli VNet-társítás esetén a küllő virtuális hálózatok az VNet-átjárókat (VPN-és ExpressRoute-átjárók) is használhatják a távoli hálózatokkal való kommunikációhoz.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Virtuális hálózatok közötti kapcsolat ágban site-to-site VPN használatával
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Ág VNet-kapcsolat a helyek közötti VPN használatával
 
-Érdemes lehet virtuális hálózatokat, amelyek a különböző régiókban, és a egy VNet-központon keresztül kommunikálnak egymással a helyszíni hálózatok ág. Ehhez a konfigurációhoz a natív Azure-megoldás közötti VPN használatával site-to-site VPN-kapcsolat. Alternatív, hogy egy hálózati virtuális készüléket (NVA) útválasztás az agyban.
+Előfordulhat, hogy a fiókirodák virtuális hálózatok, amelyek különböző régiókban vannak, és a helyszíni hálózatok egy hub-VNet keresztül kommunikálnak egymással. A konfiguráció natív Azure-megoldása a helyek közötti VPN-kapcsolat VPN használatával. Egy másik lehetőség, hogy hálózati virtuális berendezést (NVA) használ az útválasztáshoz a központban.
 
-További információkért lásd: [Mi az a VPN-átjáró?] [ VPN] és [üzembe helyezése egy magas rendelkezésre állású nva-t][Deploy-NVA].
+További információ: [Mi a VPN Gateway?][VPN] és telepítsen [egy magasan elérhető NVA][Deploy-NVA].
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [szabályozhatja az adatsík elemzési] [ Control-Analysis] a teszt beállítása és a nézetek különböző virtuális hálózatok vagy VLAN-okat a topológia.
+Ismerje meg a [vezérlési sík elemzését][Control-Analysis] a tesztelési beállításról, valamint a topológia különböző virtuális hálózatok vagy VLAN-ok nézeteiről.
 
-Ismerje meg [data analysis adatsík] [ Data-Analysis] a teszt beállítása és figyelési nézetei a szolgáltatás az Azure network.
+Ismerje meg [][Data-Analysis] a tesztelési beállítások és az Azure Network monitoring szolgáltatás nézeteinek adatsíkjainak elemzését.
 
-Tekintse meg a [ExpressRoute – gyakori kérdések] [ ExR-FAQ] való:
--   Ismerje meg, hány ExpressRoute-kapcsolatcsoporttal csatlakozhat egy ExpressRoute-átjárót.
--   Ismerje meg, hogy hány ExpressRoute-átjáró egy ExpressRoute-kapcsolatcsoporttal csatlakozhat.
--   Ismerje meg a többi skálázási korlátait expressroute.
+Tekintse meg a [ExpressRoute kapcsolatos gyakori kérdéseket][ExR-FAQ] :
+-   Megtudhatja, hogy hány ExpressRoute-áramkört tud csatlakozni egy ExpressRoute-átjáróhoz.
+-   Megtudhatja, hány ExpressRoute-átjárót tud csatlakozni egy ExpressRoute-áramkörhöz.
+-   A ExpressRoute egyéb méretezési korlátainak megismerése.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/SpokeVNet_peering.png "küllő virtuális hálózat virtuális hálózatok közötti társviszony-létesítés"
-[2]: ./media/backend-interoperability/HubVNet-peering.png "agyi virtuális hálózat virtuális hálózatok közötti társviszony-létesítés"
-[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "ág virtuális hálózatok közötti VPN-átjáró konfigurációját"
-[4]: ./media/backend-interoperability/ExR1.png "ExpressRoute 1-konfigurációt"
-[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "hubra ExR virtuális hálózati átjáró ExpressRoute 1 kapcsolat konfigurációja"
-[6]: ./media/backend-interoperability/ExR2.png "ExpressRoute 2 konfiguráció"
-[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "hubra ExR virtuális hálózati átjáró ExpressRoute 2. a kapcsolat konfigurációját"
-[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "egy távoli virtuális hálózat ExR átjáróhoz ExpressRoute 2 kapcsolat konfigurációja"
+[1]: ./media/backend-interoperability/SpokeVNet_peering.png  "Küllős VNet VNet" -társának
+[2]: ./media/backend-interoperability/HubVNet-peering.png  "A hub VNet VNet" -társítása
+[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png  "Ág-VNet VPN Gateway konfigurálása"
+[4]: ./media/backend-interoperability/ExR1.png  "ExpressRoute 1 konfiguráció"
+[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png  "1. ExpressRoute csatlakoztatása egy hub VNet ExR-átjáróhoz"
+[6]: ./media/backend-interoperability/ExR2.png  "ExpressRoute 2 – konfiguráció"
+[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png  "2. ExpressRoute-konfiguráció a hub VNet ExR-átjáróhoz"
+[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png  "A ExpressRoute 2 kapcsolódási konfigurációja egy távoli VNet ExR-átjáróhoz"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

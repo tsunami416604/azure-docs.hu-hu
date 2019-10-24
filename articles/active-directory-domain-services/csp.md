@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services Azure Cloud Solution-szolgáltatók számára | Microsoft Docs
+title: Azure AD Domain Services a Cloud Solution Providers szolgáltatáshoz | Microsoft Docs
 description: Azure Active Directory Domain Services Azure Cloud Solution-szolgáltatók számára.
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612963"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754443"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Az Azure Cloud Solution Providers (CSP) Azure Active Directory (AD) tartományi szolgáltatásai
 Ez a cikk azt ismerteti, hogyan használható a Azure AD Domain Services egy Azure CSP-előfizetésben.
@@ -74,7 +74,7 @@ A következő fontos szempontokat kell figyelembe venni egy felügyelt tartomán
 
 * **A CSP felügyeleti ügynökök a hitelesítő adataik használatával létrehozhatnak egy felügyelt tartományt:** A Azure AD Domain Services támogatja az Azure CSP-előfizetéseket. Ezért a CSP-partner felügyeleti ügynökök csoportjához tartozó felhasználók létrehozhatnak egy új Azure AD Domain Services felügyelt tartományt.
 
-* **A kriptográfiai szolgáltatók létrehozhatnak új felügyelt tartományokat az ügyfelek számára a PowerShell használatával:** A részletekért lásd: [Azure ad Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md) .
+* A **kriptográfiai szolgáltatók létrehozhatnak új felügyelt tartományokat az ügyfelek számára a PowerShell használatával:** A részletekért lásd: [Azure ad Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md) .
 
 * **A CSP rendszergazdai ügynökei nem végezhetnek folyamatos felügyeleti feladatokat a felügyelt tartományon a hitelesítő adataik használatával:** A CSP rendszergazdai felhasználói a felügyelt tartományon belül nem hajthatnak végre rutin felügyeleti feladatokat a hitelesítő adataik használatával. Ezek a felhasználók kívül esik az ügyfél Azure AD-címtárán, és a hitelesítő adataik nem érhetők el az ügyfél Azure AD-címtárában. Ezért Azure AD Domain Services nem fér hozzá ezekhez a felhasználókhoz a Kerberos-és NTLM-jelszó-kivonatokhoz. Ennek eredményeképpen az ilyen felhasználók nem hitelesíthetők Azure AD Domain Services felügyelt tartományokon.
 
@@ -86,7 +86,7 @@ A következő fontos szempontokat kell figyelembe venni egy felügyelt tartomán
 * **A folyamatos felügyelethez létrehozott felhasználói fiókot fel kell venni az "HRE DC rendszergazdák" csoportba:** Az "HRE DC rendszergazdák" csoport jogosultságokkal rendelkezik bizonyos delegált felügyeleti feladatok végrehajtásához a felügyelt tartományon. Ezek a feladatok közé tartoznak a DNS konfigurálása, a szervezeti egységek létrehozása, a Csoportházirend felügyelete stb. Ahhoz, hogy egy CSP-partner felügyelt tartományon hajtson végre ilyen feladatokat, felhasználói fiókot kell létrehoznia az ügyfél Azure AD-címtárában. A fiók hitelesítő adatait meg kell osztani a CSP-partner rendszergazdai ügynökével. Ezt a felhasználói fiókot is fel kell venni az "HRE DC-rendszergazdák" csoportba, hogy engedélyezze a konfigurációs feladatokat a felügyelt tartományon a felhasználói fiók használatával történő végrehajtáshoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Regisztráljon az Azure CSP programba](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) , és kezdje el létrehozni a vállalatot az Azure CSP-n keresztül.
 * Tekintse át az [Azure CSP-ben elérhető Azure-szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)listáját.
 * [Az Azure AD Domain Services engedélyezése a PowerShell-lel](powershell-create-instance.md)

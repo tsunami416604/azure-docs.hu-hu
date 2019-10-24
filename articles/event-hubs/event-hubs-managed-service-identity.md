@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbef1db94d7835bd9326102bd62921c6b3d88d74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978478"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707073"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Az Azure-erőforrásokhoz az Event Hubs felügyelt identitásokból
 
@@ -27,28 +27,28 @@ A felügyelt identitásokból az Azure platform kezeli a futtatókörnyezet iden
 Ha egy felügyelt identitás társítva, Event Hubs-ügyfél összes jogosult műveletek teheti meg. Az engedély megadása egy felügyelt identitás, az Event Hubs-szerepkörökhöz való társításával. 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepkörök és engedélyek
-Hozzáadhat egy felügyelt identitás a **Event Hubs-adatok tulajdonosa** Event Hubs-névtér szerepe. Ez a szerepkör az identitás, a névtérben lévő összes entitáshoz (a felügyeleti és az üzemeltetés) teljes hozzáférést biztosít.
+Felügyelt identitást adhat hozzá egy Event Hubs névtér **Event Hubs adat** -tulajdonosi szerepköréhez. Ez a szerepkör a névtér összes entitásán megadja a személyazonosságot, a teljes irányítást (felügyeleti és adatműveletek esetén).
 
 >[!IMPORTANT]
-> Korábban támogatva a felügyelt identitás hozzáadása a **tulajdonosa** vagy **közreműködői** szerepkör. Azonban, adat-hozzáférési jogosultságokat a **tulajdonosa** és **közreműködői** szerepkör már nem összes régió megfelel. Ha használja a **tulajdonosa** vagy **közreműködői** szerepkör, kapcsolót használó a **Event Hubs-adatok tulajdonosa** szerepkör.
+> Korábban támogatott a felügyelt identitás hozzáadása a **tulajdonoshoz** vagy a **közreműködő** szerepkörhöz. Azonban a tulajdonosi és a **közreműködő** szerepkörre vonatkozó adathozzáférési jogosultságok már nem teljesülnek. Ha a **tulajdonos** vagy **közreműködő** szerepkört használja, váltson át a **Event Hubs** adattulajdonosi szerepkör használatára.
 
-Az új beépített szerepkör használja, kövesse az alábbi lépéseket: 
+Az új beépített szerepkör használatához kövesse az alábbi lépéseket: 
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com)
-2. Keresse meg az Event Hubs-névtér.
-3. Az a **Event Hubs-Namespace** lapon jelölje be **hozzáférés Control(IAM)** a bal oldali menüből.
-4. Az a **hozzáférés-vezérlés (IAM)** lapon jelölje be **Hozzáadás** a a **egy szerepkör-hozzárendelés hozzáadása** szakaszban. 
+2. Navigáljon a Event Hubs névtérhez.
+3. A **Event Hubs névtér** lapon válassza a **Access Control (iam)** lehetőséget a bal oldali menüben.
+4. A **Access Control (iam)** lapon válassza a **Hozzáadás** lehetőséget a **szerepkör-hozzárendelés hozzáadása** szakaszban. 
 
-    ![Szerepkör-hozzárendelés gomb hozzáadása](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
-5. Az a **szerepkör-hozzárendelés hozzáadása** lapon, tegye a következőket: 
-    1. A **szerepkör**válassza **Azure Event Hubs-adatok tulajdonosa**. 
-    2. Válassza ki a **identitás** a szerepkörhöz kell hozzáadni.
+    ![Szerepkör-hozzárendelési gomb hozzáadása](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket: 
+    1. A **szerepkör**területen válassza az **Azure Event Hubs adattulajdonos**lehetőséget. 
+    2. Válassza ki a szerepkörbe felvenni kívánt identitást.
     3. Kattintson a **Mentés** gombra. 
 
-        ![Event Hubs-adatok tulajdonosi szerepkör](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
-6. Váltson a **szerepkör-hozzárendelések** lapon, és győződjön meg arról, hogy a felhasználó nincs hozzáadva a **Azure Event Hubs-adatok tulajdonosa** szerepkör. 
+        ![Adat-tulajdonosi szerepkör Event Hubs](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. Váltson a **szerepkör** -hozzárendelések lapra, és ellenőrizze, hogy a felhasználó hozzá lett-e adva az **Azure Event Hubs adat** -tulajdonosi szerepkörhöz. 
 
-    ![Győződjön meg arról, felhasználói adnak a szerepkörhöz](./media/event-hubs-managed-service-identity/role-assignments.png)
+    ![A felhasználó jóváhagyása a szerepkörhöz](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Felügyelt identitások használható Event Hubs az Azure-erőforrások
 
@@ -74,13 +74,13 @@ Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás l
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Hozzon létre egy új Event Hubs-névtér
 
-Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md). 
+Ezután [hozzon létre egy Event Hubs névteret](event-hubs-create.md). 
 
 Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra. A felügyelt identitás a webes alkalmazás most már hozzáfér az Event Hubs-névtér és az event hubs korábban hozott létre. 
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Most úgy módosítja az alapértelmezett oldalt, az ASP.NET alkalmazás hozott létre. Használhatja a webes alkalmazás kódot az [GitHub-adattárban](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
+Most úgy módosítja az alapértelmezett oldalt, az ASP.NET alkalmazás hozott létre. Használhatja a webes alkalmazás kódot az [GitHub-adattárban](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp). 
 
 Miután az alkalmazás elindításához, a böngésző EventHubsMSIDemo.aspx mutat. Is beállíthat, mint a kezdőlap. A kód a EventHubsMSIDemo.aspx.cs fájlban található. Az eredmény néhány számbeviteli mezők, valamint a minimális webalkalmazás **küldése** és **kap** küldése vagy események fogadása az Event Hubs csatlakozó gombok. 
 

@@ -1,6 +1,6 @@
 ---
-title: Oldal hozzáadása a távoli figyelési megoldás felhasználói felület – Azure |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adhat hozzá egy új lapot a távoli figyelési megoldás gyorsító webes felhasználói felületen.
+title: Oldal hozzáadása a távoli figyelési megoldás felhasználói felületéhez – Azure | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan adhat hozzá új lapot a távoli figyelési megoldás webes felhasználói felületéhez.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,36 +8,36 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec0b9fbdfdb96317e1e7f6fe00384ba4f8c42bcc
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447080"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607953"
 ---
-# <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni oldal hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen
+# <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy új lapot a távoli figyelési megoldás gyorsító webes felhasználói felületen. A cikk ismerteti:
+Ez a cikk bemutatja, hogyan adhat hozzá új lapot a távoli figyelési megoldás webes felhasználói felületéhez. A cikk a következőket ismerteti:
 
-- Hogyan készítheti elő a helyi fejlesztési környezetet.
-- Hogyan lehet új oldal hozzáadása a webes felhasználói Felületére.
+- Helyi fejlesztési környezet előkészítése.
+- Új lap hozzáadása a webes felhasználói felülethez.
 
-Egyéb útmutatók kiterjesztése ebben a forgatókönyvben a további funkciók hozzáadása az oldalhoz ad hozzá.
+További útmutatók: ezt a forgatókönyvet kiterjesztve további funkciókat adhat hozzá a hozzáadott laphoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató a lépések végrehajtásához szüksége van a következő szoftvereknek telepítve a helyi fejlesztői gépen:
+A jelen útmutató lépéseinek végrehajtásához a következő szoftverekre van szükség a helyi fejlesztői gépen:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="prepare-a-local-development-environment-for-the-ui"></a>A helyi fejlesztési környezet előkészítése a felhasználói felületen
+## <a name="prepare-a-local-development-environment-for-the-ui"></a>Helyi fejlesztési környezet előkészítése a felhasználói felületen
 
-A távoli figyelési megoldásgyorsító UI kód használatával lett megvalósítva a [React](https://reactjs.org/) JavaScript-keretrendszert. Annak a forráskódot a [távoli figyelés mire](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-adattárban.
+A távoli figyelési megoldás gyorsított felhasználói felületének kódja [](https://reactjs.org/) az reagáló JavaScript-keretrendszer használatával valósul meg. A forráskódot a [távoli figyelés WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-tárházában találja.
 
-Győződjön meg arról, és a felhasználói felület módosítások teszteléséhez helyi fejlesztői gépen futtathatja azt. Szükség esetén a helyi példány csatlakozhat ahhoz, hogy kommunikálhasson a valós vagy szimulált eszközök a megoldásgyorsító üzembe helyezett példánya.
+A felhasználói felületen végzett módosítások végrehajtásához és teszteléséhez futtassa azt a helyi fejlesztői gépen. Szükség esetén a helyi másolat a megoldás-gyorsító üzembe helyezett példányához is csatlakozhat, hogy az a valódi vagy szimulált eszközökkel is működjön.
 
-Készítse elő a helyi fejlesztési környezetét, a Git használatával klónozással készítsen a [távoli figyelés mire](https://github.com/Azure/pcs-remote-monitoring-webui) -adattár helyi számítógépre:
+A helyi fejlesztési környezet előkészítéséhez használja a git-t a [távoli monitorozási WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) adattár a helyi gépre történő klónozásához:
 
 ```cmd/sh
 git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
@@ -45,11 +45,11 @@ git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
 
 ## <a name="add-a-page"></a>Oldal hozzáadása
 
-Oldal hozzáadása a webes felhasználói felületen, szüksége adja hozzá a forrásfájlokat, amelyek meghatározzák az oldal, és néhány meglévő fájlokat, hogy a webes felhasználói felületen ismeri az új oldal módosítása.
+Ha egy oldalt szeretne felvenni a webes felhasználói felületre, fel kell vennie a lapot definiáló forrásfájlokat, és módosítania kell néhány meglévő fájlt, hogy a webes KEZELŐFELÜLET tisztában legyen az új oldallal.
 
-### <a name="add-the-new-files-that-define-the-page"></a>Adja hozzá az új fájlokat, amelyek meghatározzák az oldal
+### <a name="add-the-new-files-that-define-the-page"></a>Adja hozzá a lapot definiáló új fájlokat
 
-Az első lépésekhez, a **src/forgatókönyv/components/oldalak/basicPage** mappa tartalmazza, amelyek meghatározzák egy egyszerű lap négy fájlok:
+Az első lépésekhez az **src/walkthrough/Components/Pages/basicPage** mappa négy olyan fájlt tartalmaz, amelyek egy egyszerű lapot határoznak meg:
 
 **basicPage.container.js**
 
@@ -67,21 +67,21 @@ Az első lépésekhez, a **src/forgatókönyv/components/oldalak/basicPage** map
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
-Hozzon létre egy új mappát **példa src/components/oldalak** , és ezeket a fájlokat másolja a fájlba.
+Hozzon létre egy új mappát **src/Components/Pages/example** , és másolja ezt a négy fájlt.
 
-### <a name="add-the-new-page-to-the-web-ui"></a>Az új oldal hozzáadása a webes felhasználói felületen
+### <a name="add-the-new-page-to-the-web-ui"></a>Az új oldal hozzáadása a webes felhasználói felülethez
 
-Az új oldal hozzáadása a webes felhasználói felületen, a következő módosításokat a meglévő fájlokat:
+Az új oldal webes felhasználói felületen való hozzáadásához hajtsa végre a következő módosításokat a meglévő fájlokon:
 
-1. Adja hozzá az új oldal tárolót a **src/components/pages/index.js** fájlt:
+1. Adja hozzá az új oldal tárolót a **src/Components/Pages/index. js** fájlhoz:
 
     ```js
     export * from './example/basicPage.container';
     ```
 
-1. (Nem kötelező)  Adja hozzá az új oldal SVG ikon. További információkért lásd: [webui/src/utilities/README.md](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Egy meglévő SVG-fájlt is használhat.
+1. Választható  Adjon hozzá egy SVG-ikont az új laphoz. További információ: [WebUI/src/Utilities/readme. MD](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Meglévő SVG-fájlt is használhat.
 
-1. Adja hozzá a fordítások fájlhoz, a lap neve **public/locales/en/translations.json**. A webes felhasználói Felületet használja [i18next](https://www.i18next.com/) a nemzetközivé.
+1. Adja hozzá az oldal nevét a translations ( **nyilvános/helyi)/en/translations. JSON**fájlhoz. A webes felhasználói felület [i18next](https://www.i18next.com/) használ a honosításhoz.
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ Az új oldal hozzáadása a webes felhasználói felületen, a következő módo
     },
     ```
 
-1. Nyissa meg a **src/components/app.js** fájlt, amely meghatározza a legfelső szintű alkalmazás lapján. Az új oldal hozzáadása a listához import:
+1. Nyissa meg a legfelső szintű alkalmazás lapját meghatározó **src/Components/app. js** fájlt. Adja hozzá az új lapot az Importálások listájához:
 
     ```javascript
     // Page Components
@@ -99,7 +99,7 @@ Az új oldal hozzáadása a webes felhasználói felületen, a következő módo
     } from './pages';
     ```
 
-1. Ugyanebben a fájlban adja hozzá az új oldalt a `pagesConfig` tömb. Állítsa be a `to` az útvonal-cím, az SVG ikon és a korábban hozzáadott fordítások beállításához, és állítsa be a `component` az oldal tárolóba:
+1. Ugyanebben a fájlban adja hozzá az új lapot a `pagesConfig` tömbhöz. Állítsa be az útvonalhoz tartozó `component` címeket,hivatkozzonazSVGikonjáraésakorábbanhozzáadottfordításokra,majdállítsabealapotakövetkezőtárolóra:`to`
 
     ```js
     const pagesConfig = [
@@ -115,7 +115,7 @@ Az új oldal hozzáadása a webes felhasználói felületen, a következő módo
     ];
     ```
 
-1. Adja hozzá a bármely új webhely a `crumbsConfig` tömb:
+1. Adja hozzá az új navigációs elemeket `crumbsConfig` a tömbhöz:
 
     ```js
     const crumbsConfig = [
@@ -129,58 +129,58 @@ Az új oldal hozzáadása a webes felhasználói felületen, a következő módo
     ];
     ```
 
-    Ez a lap csak akkor van egy webhely-navigációs, de egyes oldalak is rendelkezhet.
+    Ebben a példában csak egy webhely-navigációs elem van, de néhány oldal több is lehet.
 
-Mentse az összes módosítást. Készen áll az új oldal hozzáadása a webes felhasználói felületének futtatásához.
+Mentse az összes módosítást. Készen áll a webes felhasználói felület futtatására az új oldal hozzáadásával.
 
-### <a name="test-the-new-page"></a>Az új lap tesztelése
+### <a name="test-the-new-page"></a>Az új oldal tesztelése
 
-Egy parancssorban keresse meg a tárház helyi példányának gyökérmappájában, és futtassa az alábbi parancsokat a szükséges kódtárak telepítése és a webes felhasználói felület helyileg történő futtatása:
+A parancssorban navigáljon a tárház helyi példányának gyökerére, és futtassa a következő parancsokat a szükséges kódtárak telepítéséhez és a webes felhasználói felület helyi futtatásához:
 
 ```cmd/sh
 npm install
 npm start
 ```
 
-Az előző parancs futtatása helyileg, a felhasználói felület [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard).
+Az előző parancs helyileg [http://localhost:3000/dashboard](http://localhost:3000/dashboard)FUTTATJA a felhasználói felületet.
 
-Anélkül, hogy a megoldásgyorsító üzembe helyezett példánya a webes felhasználói felületének a helyi példányát csatlakozna, hibába ütközik, az irányítópulton. Ezek a hibák nincs hatással arra, hogy tesztelje az új oldal.
+A webes felhasználói felület helyi példányának a megoldás-gyorsító üzembe helyezett példányához való csatlakoztatása nélkül az irányítópulton hibaüzenetek jelennek meg. Ezek a hibák nem érintik az új oldal tesztelésének lehetőségét.
 
-Most a kód szerkesztése közben a hely helyben fut, és tekintse meg a webes felhasználói felület dinamikusan frissülnek.
+Mostantól szerkesztheti a kódot, miközben a hely helyileg fut, és dinamikusan megtekintheti a webes felhasználói felület frissítését.
 
-## <a name="optional-connect-to-deployed-instance"></a>[Opcionális] Csatlakozhat az üzemelő példány
+## <a name="optional-connect-to-deployed-instance"></a>Választható Kapcsolódás központilag telepített példányhoz
 
-Szükség esetén a webes felhasználói felületen futó helyi példánya is kapcsolódni a távoli figyelési megoldásgyorsító a felhőben:
+Igény szerint a webes felhasználói felület helyi futó példányát a felhőben a távoli figyelési megoldáshoz kapcsolódó gyorssegédtel is összekapcsolhatja:
 
-1. Üzembe helyezése egy **alapszintű** példányának a megoldás gyorsító a **számítógépek** CLI. Jegyezze fel a nevét, valamint az üzembe helyezés, a virtuális gép a megadott hitelesítő adatok. További információkért lásd: [üzembe helyezés parancssori felületről](iot-accelerators-remote-monitoring-deploy-cli.md).
+1. Telepítse a megoldás-gyorsító alapszintű példányát a **számítógépek** CLI használatával. Jegyezze fel az üzemelő példány nevét és a virtuális géphez megadott hitelesítő adatokat. További információ: [üzembe helyezés a parancssori felület használatával](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Az Azure Portal vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ahhoz, hogy az a megoldás a mikroszolgáltatásokat üzemeltető virtuális gép SSH-hozzáférését. Példa:
+1. Az Azure Portal vagy az az az [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával engedélyezze az SSH-hozzáférést a megoldásban a-szolgáltatásokat üzemeltető virtuális géphez. Példa:
 
     ```sh
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    SSH-hozzáférés csak engedélyezze a fejlesztés és tesztelés során. Ha engedélyezi az SSH- [újra minél hamarabb tiltsa le,](../security/azure-security-network-security-best-practices.md).
+    Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, a lehető leghamarabb le kell tiltania](../security/fundamentals/network-best-practices.md).
 
-1. Az Azure Portal vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nevét és a virtuális gép nyilvános IP-cím megkereséséhez. Példa:
+1. A virtuális gép nevének és nyilvános IP-címének megkereséséhez használja a Azure Portal vagy az az az [parancssori](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) felületet. Példa:
 
     ```sh
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. SSH-val csatlakozzon a virtuális géphez az IP-címet az előző lépést, és a futtatásakor a megadott hitelesítő adatok használatával **számítógépek** a megoldás üzembe helyezéséhez.
+1. Az SSH használatával csatlakozhat a virtuális géphez az előző lépésben megadott IP-cím és a **számítógépeken** a megoldás üzembe helyezése során megadott hitelesítő adatok alapján.
 
-1. Ahhoz, hogy a helyi UX csatlakozni, a virtuális gépen a bash felületen futtassa az alábbi parancsokat:
+1. Ha engedélyezni szeretné a helyi UX-t a kapcsolódáshoz, futtassa a következő parancsokat a virtuális gép bash rendszerhéjában:
 
     ```sh
     cd /app
     sudo ./start.sh --unsafe
     ```
 
-1. Miután látja, hogy a parancs végrehajtása befejeződött, és a webhely elindul, leválaszthatja a virtuális gépről.
+1. Miután a parancs befejeződik, és elindul a webhely, leválaszthatja a virtuális gépet.
 
-1. A helyi példányának a [távoli figyelés mire](https://github.com/Azure/pcs-remote-monitoring-webui) adattárban szerkesztése a **.env** fájlját, hogy a telepített megoldás URL-címe:
+1. A [távoli figyelési WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) adattárának helyi példányában szerkessze a **. env** fájlt, és adja hozzá az üzembe helyezett megoldás URL-címét:
 
     ```config
     NODE_PATH = src/
@@ -189,8 +189,8 @@ Szükség esetén a webes felhasználói felületen futó helyi példánya is ka
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett az erőforrások segítenek testre szabni a webes felhasználói felület a távoli figyelési megoldásgyorsító a rendelkezésére.
+Ebből a cikkből megtudhatta, hogyan szabhatja testre a webes felhasználói felületet a távoli figyelési megoldás-gyorsító segítségével.
 
-Most már beállított egy oldal, a következő lépés az, hogy [adjon hozzá egy egyéni szolgáltatás a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-service.md) a felhasználói felületen megjelenítendő adatokat.
+Most már definiált egy oldalt, a következő lépés [egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md) , amely a felhasználói felületen megjelenített adatforrásokat kéri le.
 
-További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+A távoli figyelési megoldás-gyorsító részletes ismertetését lásd: [távoli figyelési architektúra](iot-accelerators-remote-monitoring-sample-walkthrough.md).

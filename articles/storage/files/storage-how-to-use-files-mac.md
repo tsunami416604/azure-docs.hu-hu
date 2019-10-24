@@ -1,19 +1,18 @@
 ---
 title: Azure-fájlmegosztás csatlakoztatása SMB protokoll segítségével macOS rendszeren | Microsoft Docs
 description: Itt megismerheti, hogyan csatlakoztathat Azure-fájlmegosztást az SMB protokoll segítségével macOS rendszeren.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7f2abbb355513c175329d01b9d5ed8884f2c27ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bd696ce5a314b0c849256311d0629b917036ea2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715947"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699546"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Azure-fájlmegosztás csatlakoztatása SMB protokoll segítségével macOS rendszeren
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások a macOS rendszer El Capitan 10.11-es vagy újabb verziójában elérhető, iparági szabványnak számító SMB 3 protokollal csatlakoztathatók. Ez a cikk két különböző módszert mutat be az Azure-fájlmegosztások macOS rendszeren történő csatlakoztatására: a Finder felhasználói felület és a Terminál használatát.
@@ -28,32 +27,32 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 >    ```
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>Az Azure-fájlmegosztások macOS rendszerre történő csatlakoztatásának előfeltételei
-* **Tárfiók neve**: Azure-fájlmegosztások csatlakoztatásához szüksége lesz a tárfiókja nevére.
+* **Storage-fiók neve**: Azure-fájlmegosztás csatlakoztatásához szüksége lesz a Storage-fiók nevére.
 
-* **Tárfiók kulcsa**: Azure-fájlmegosztások csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárkulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
+* **Storage-fiók kulcsa**: Azure-fájlmegosztás csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárolási kulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg, hogy a 445-ös port nyitva**: Az SMB protokoll a 445-ös TCP porton keresztül kommunikál. Az ügyfélgépen (Mac) ellenőrizze, és győződjön meg arról, hogy a tűzfal nem blokkolja a 445-ös TCP portot.
+* **Győződjön meg arról, hogy a 445-es port nyitva van**: Az SMB protokoll a 445-ös TCP porton keresztül kommunikál. Az ügyfélgépen (Mac) ellenőrizze, és győződjön meg arról, hogy a tűzfal nem blokkolja a 445-ös TCP portot.
 
 ## <a name="mount-an-azure-file-share-via-finder"></a>Azure-fájlmegosztás csatlakoztatása a Finder segítségével
-1. **Nyissa meg a Findert**: Finder alapértelmezés szerint a macOS rendszeren nyitva, de gondoskodhat az aktuálisan kiválasztott alkalmazásban kattintson a "macOS arc ikonra" a rögzítési hely:  
+1. A **Finder megnyitása**: A Finder alapértelmezés szerint meg van nyitva macOS rendszeren, de a Dockon a "macOS Face ikon" elemre kattintva biztos lehet benne, hogy a jelenleg kiválasztott alkalmazás.  
     ![A macOS arc ikonja](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **Válassza a "Csatlakozás a kiszolgálóhoz" a "Go" menüből**: Az előfeltételeket, az UNC-útvonal használatával konvertálni az elején dupla fordított perjelet (`\\`) való `smb://` és minden további fordított perjelet (`\`) perjelre (`/`). A hivatkozás a következőhöz hasonlóan kell kinéznie: ![A "Kapcsolódás a kiszolgálóhoz" párbeszédpanel](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **Válassza a "kapcsolódás a kiszolgálóhoz" lehetőséget a "Go" menüben**: Az előfeltételekből származó UNC elérési út használatával alakítsa át a dupla fordított`\\`perjelet `smb://` ()`\`és az összes többi fordított perjelet ()`/`a perjel () továbbítására. A hivatkozásnak a következőhöz hasonlóan kell kinéznie: ![A "kapcsolódás a kiszolgálóhoz" párbeszédpanel](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
-3. **A tárfiók neve és a tárfiók kulcsát, amikor egy felhasználónév és jelszó megadására kéri**: Ha a "Kapcsolódás a kiszolgálóhoz" párbeszédpanelen kattintson a "Csatlakozás", a rendszer kéri, a felhasználónév és jelszó (a rendszer automatikusan kitölti a macOS-felhasználónevével). Lehetősége van arra, hogy hozzáadja a tárfiók nevét és kulcsát a macOS-kulcskarikához.
+3. **Ha a rendszer a Felhasználónév és a jelszó megadását kéri, használja a Storage-fiók nevét és a Storage-fiók kulcsát**: Ha a "kapcsolódás a kiszolgálóhoz" párbeszédpanelen a "Csatlakozás" gombra kattint, a rendszer kérni fogja a felhasználónevet és a jelszót (ezt a rendszer automatikusan feltölti a macOS-felhasználónevével). Lehetősége van arra, hogy hozzáadja a tárfiók nevét és kulcsát a macOS-kulcskarikához.
 
-4. **Használja az Azure-fájlmegosztást igény szerint**: Után, és cserélje le a megosztási nevet és a tárfiók-kulcsot a felhasználónevet és jelszót, a megosztás csatlakoztatva lesz. Ezt ugyanúgy használhatja, mint egy helyi mappát/fájlmegosztást, beleértve azt is, hogy fájlokat húzhat a fájlmegosztásba:
+4. **Használja az Azure-fájlmegosztást igény szerint**: A megosztási név és a Storage-fiók kulcsának a felhasználónévvel és a jelszóval való helyettesítése után a megosztás csatlakoztatva lesz. Ezt ugyanúgy használhatja, mint egy helyi mappát/fájlmegosztást, beleértve azt is, hogy fájlokat húzhat a fájlmegosztásba:
 
     ![Pillanatfelvétel egy csatlakoztatott Azure-fájlmegosztásról](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Azure-fájlmegosztás csatlakoztatása a Terminál segítségével
-1. Cserélje le `<storage-account-name>` a tárfiók nevére. Adja meg a tárfiók kulcsát, amikor a rendszer felkéri erre. 
+1. Cserélje `<storage-account-name>`le a nevet a Storage-fiók nevére. Adja meg a tárfiók kulcsát, amikor a rendszer felkéri erre. 
 
     ```
     mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
     ```
 
-2. **Használja az Azure-fájlmegosztást igény szerint**: Az Azure-fájlmegosztás az előző parancs által megadott csatlakoztatási ponton lesz csatlakoztatva.  
+2. **Használja az Azure-fájlmegosztást igény szerint**: Az Azure-fájlmegosztás az előző parancs által megadott csatlakoztatási pontra lesz csatlakoztatva.  
 
     ![Pillanatfelvétel a csatlakoztatott Azure-fájlmegosztásról](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 

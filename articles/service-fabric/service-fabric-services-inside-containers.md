@@ -1,9 +1,9 @@
 ---
-title: Az Azure Service Fabric-szolgáltatások a Windows tárolóba
-description: Útmutató a Service Fabric Reliable Services és Reliable Actors szolgáltatások a Windows tárolóba.
+title: Azure Service Fabric-szolgáltatások tárolóba helyezése Windows rendszeren
+description: Ismerje meg, hogyan tárolóba helyezése a Service Fabric Reliable Services és a Reliable Actors szolgáltatások Windows rendszeren.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 1210b34590484379ae487ad1b87e76a433e4582a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621822"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599206"
 ---
-# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és Reliable Actors Windows a tárolóba
+# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és a Reliable Actors tárolóba helyezése Windows rendszeren
 
-Service Fabric támogatja a Service Fabric mikroszolgáltatásokat bontását a (a Reliable Services és Reliable Actors-alapú szolgáltatások). További információkért lásd: [service fabric-tárolók](service-fabric-containers-overview.md).
+Service Fabric támogatja a containerizing Service Fabric-szolgáltatásait (Reliable Services és a megbízható Actor-alapú szolgáltatásokat). További információt a [Service Fabric](service-fabric-containers-overview.md)-tárolók című témakörben talál.
 
-A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
+Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli futtatásához.
 
 > [!NOTE]
-> Ez a funkció jelenleg csak működik a Windows. Tárolók futtatásához, a fürt tárolókkal rendelkező Windows Server 2016 rendszeren kell futnia.
+> Jelenleg ez a funkció csak Windows rendszeren működik. A tárolók futtatásához a fürtnek a Windows Server 2016 tárolókkal kell futnia.
 
-## <a name="steps-to-containerize-your-service-fabric-application"></a>A Service Fabric-alkalmazás tárolóalapúvá lépései
+## <a name="steps-to-containerize-your-service-fabric-application"></a>A Service Fabric-alkalmazás tárolóba helyezése lépései
 
-1. A Visual Studióban nyissa meg a Service Fabric-alkalmazásokat.
+1. Nyissa meg a Service Fabric alkalmazást a Visual Studióban.
 
-2. Osztály hozzáadása [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) a projekthez. Ennek az osztálynak a kódja megfelelően betölteni a Service Fabric futtatókörnyezet bináris fájlokat, az alkalmazáson belül, ha a tárolóban futtatott segítő.
+2. Adja hozzá az osztály [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) a projekthez. Az ebben az osztályban található kód a Service Fabric futtatókörnyezet bináris fájljainak megfelelő betöltésére szolgál az alkalmazásban, amikor egy tárolón belül fut.
 
-3. Minden kódcsomaghoz szeretné a tárolóba, inicializálja a betöltőt, a program belépési pont. Adja hozzá a statikus konstruktort, a program belépési pont fájlt az alábbi kódrészlet látható.
+3. Minden tárolóba helyezése, amelyet szeretne, inicializálja a betöltőt a program belépési pontján. Adja hozzá a következő kódrészletben látható statikus konstruktort a program belépési pontjának fájljához.
 
    ```csharp
    namespace MyApplication
@@ -55,9 +55,9 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
           {
    ```
 
-4. Hozhat létre és [csomag](service-fabric-package-apps.md#Package-App) a projekthez. Hozhat létre, és hozzon létre egy csomagot, kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki a **csomag** parancsot.
+4. Készítse [](service-fabric-package-apps.md#Package-App) elő és csomagolja ki a projektet. A csomagok létrehozásához és létrehozásához kattintson a jobb gombbal az alkalmazás projektre Megoldáskezelő, majd válassza a **csomag** parancsot.
 
-5. Minden kódcsomaghoz kell igény szerint tárolóalapúvá alakíthatja, a PowerShell-parancsprogrammal [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). A használati a következőképpen történik:
+5. Minden tárolóba helyezése szükséges kód esetén futtassa a [CreateDockerPackage. Ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)PowerShell-szkriptet. A használat a következő:
 
     Teljes .NET
       ```powershell
@@ -73,11 +73,11 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      A szkript létrehoz egy mappát $dockerPackageOutputDirectoryPath, Docker-összetevőkkel. A létrehozott docker-fájlban való módosítása `expose` portokat, a telepítő szkriptek futtatása és így tovább. igényei alapján.
+      A szkript létrehoz egy mappát Docker-összetevőkkel a következő helyen: $dockerPackageOutputDirectoryPath. Módosítsa a generált Docker `expose` bármely portra, futtassa a telepítési parancsfájlokat, és így tovább. igényei alapján.
 
-6. Ezután kell [összeállítása](service-fabric-get-started-containers.md#Build-Containers) és [leküldéses](service-fabric-get-started-containers.md#Push-Containers) a Docker-tároló csomag a tárházhoz.
+6. Ezután [létre](service-fabric-get-started-containers.md#Build-Containers) kell hoznia és [le](service-fabric-get-started-containers.md#Push-Containers) kell küldenie a Docker-tároló csomagot a tárházba.
 
-7. Módosítsa az ApplicationManifest.xml és a ServiceManifest.xml a tárolórendszerképet, adattár információit, beállításjegyzék-hitelesítést és port-gazdagép leképezés hozzáadása. A jegyzékek módosítása, lásd: [egy Azure Service Fabric-tárolóalkalmazás létrehozása](service-fabric-get-started-containers.md). A kód Csomagdefiníció szolgáltatásjegyzékben kell írni a megfelelő tárolórendszerképet. Ellenőrizze, hogy módosítsa a belépési pont ContainerHost típusra.
+7. A ApplicationManifest. XML és a ServiceManifest. xml fájl módosításával adja hozzá a tároló képét, a tárház adatait, a beállításjegyzék-hitelesítést és a port – gazdagép megfeleltetést. A jegyzékfájlok módosításához tekintse meg az [Azure Service Fabric Container-alkalmazás létrehozása](service-fabric-get-started-containers.md)című témakört. A szolgáltatás jegyzékfájljában a csomag definícióját a megfelelő tároló képével kell helyettesíteni. Győződjön meg arról, hogy a BelépésiPont ContainerHost-típusra módosítja.
 
    ```xml
    <!-- Code package is your service executable. -->
@@ -92,7 +92,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
    </CodePackage>
    ```
 
-8. A port-gazdagép-leképezés a replikátor és egy szolgáltatásvégpont hozzáadása. Mindkét ezeket a portokat a Service Fabric által kiosztott futásidőben, mivel a ContainerPort értéke nulla esetén pedig a hozzárendelt port használatára való hozzárendelésére.
+8. Adja hozzá a port – gazdagép leképezést a replikátor és a szolgáltatás végpontja számára. Mivel mindkét portot Service Fabric futtató futtatókörnyezet rendeli hozzá, a ContainerPort nullára van állítva, hogy a hozzárendelt portot használja a leképezéshez.
 
    ```xml
    <Policies>
@@ -103,7 +103,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
    </Policies>
    ```
 
-9. Tároló elkülönítési mód konfigurálása, lásd: [elkülönítési mód konfigurálása]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek bemutatják, hogyan az elkülönítési mód az Alkalmazásjegyzék-fájl megadott.
+9. A tároló-elkülönítési mód konfigurálásával kapcsolatban lásd az [elkülönítési mód konfigurálása]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)című témakört. A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek azt mutatják be, hogyan van megadva az elkülönítési mód az alkalmazás jegyzékfájljában.
 
    ```xml
    <Policies>
@@ -121,7 +121,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
    ```
 
 > [!NOTE] 
-> Alapértelmezés szerint a Service Fabric-alkalmazások rendelkeznek a Service Fabric-futtatókörnyezet, a végpont fogadja a kéréseket és alkalmazásspecifikus formájában a hozzáférést. Fontolja meg a hozzáférés letiltását, amikor az alkalmazás futtat a nem megbízható kód. További információkért tekintse meg [ajánlott biztonsági eljárások a Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Letiltja a hozzáférést a Service Fabric-futtatókörnyezet, az alkalmazásjegyzéknek az importált Szolgáltatásjegyzék megfelelő módon házirendek szakaszában adja hozzá a következő beállítást:
+> Alapértelmezés szerint Service Fabric alkalmazások hozzáférhetnek az Service Fabric futtatókörnyezethez az alkalmazásspecifikus kérelmeket fogadó végpont formájában. Érdemes lehet letiltani ezt a hozzáférést, ha az alkalmazás nem megbízható programkódot üzemeltet. További információkért tekintse [meg a Service Fabric ajánlott biztonsági eljárásokat](service-fabric-best-practices-security.md#platform-isolation). Ha le szeretné tiltani a Service Fabric futtatókörnyezet elérését, adja hozzá a következő beállítást az importált szolgáltatás jegyzékfájljának megfelelő alkalmazás-jegyzékfájl szabályzatok szakaszában, a következőképpen:
 >
 ```xml
   <Policies>
@@ -130,7 +130,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
 ```
 >
 
-10. Ez az alkalmazás teszteléséhez szüksége telepíteni kell egy fürtöt, amely 5.7-es vagy újabb verziót futtat. A futtatókörnyezet 6.1-es vagy alacsonyabb verziók kell szerkesztése és az előzetes verziójú funkció engedélyezéséhez a fürt beállításainak frissítése. Kövesse a jelen [cikk](service-fabric-cluster-fabric-settings.md) a következő beállítás hozzáadásához.
+10. Az alkalmazás teszteléséhez a 5,7-es vagy újabb verziót futtató fürtre kell telepítenie. A 6,1-es vagy alacsonyabb verziójú futtatókörnyezet esetén szerkesztenie és frissítenie kell a fürt beállításait az előzetes verzió funkció engedélyezéséhez. A jelen [cikkben](service-fabric-cluster-fabric-settings.md) ismertetett lépéseket követve adja hozzá a következő beállítást.
     ```
       {
         "name": "Hosting",
@@ -143,9 +143,9 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
       }
     ```
 
-11. Tovább [üzembe helyezése](service-fabric-deploy-remove-applications.md) a szerkesztett alkalmazáscsomagot a fürt.
+11. Ezután [telepítse](service-fabric-deploy-remove-applications.md) a szerkesztett alkalmazáscsomag erre a fürtre.
 
-Most már a fürt futtatása tárolóalapú Service Fabric-alkalmazás.
+Most már rendelkeznie kell egy, a fürtöt futtató, tárolóban Service Fabric alkalmazással.
 
 ## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-get-started-containers.md).

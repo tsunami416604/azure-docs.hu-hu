@@ -1,45 +1,45 @@
 ---
-title: Az Image Builder Azure lemezkép-katalógus használata Windows virtuális gépek (előzetes verzió)
-description: Windows-rendszerképek létrehozása az Azure az Image Builder és megosztott lemezkép-katalógusában.
+title: Az Azure rendszerkép-készítő használata a Windows rendszerű virtuális gépekhez készült rendszerkép-katalógussal (előzetes verzió)
+description: Windows-lemezképek létrehozása az Azure Image Builder és a Shared Image Gallery szolgáltatással.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 164fc4d8ad567c75ed5029aaf26af260398f80ba
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722700"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698670"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-lemezkép létrehozása és a egy megosztott Képkatalógus kioszthatja 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képtárban 
 
-Ez a cikk az, hogy bemutatják, hogyan használhatja az Azure az Image Builder-lemezkép verziója a létrehozása egy [megosztott képgyűjtemény](shared-image-galleries.md), majd terjessze globálisan a lemezképet.
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy rendszerkép-verziót az Azure rendszerkép-készítő használatával egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, majd hogyan terjesztheti a rendszerképet globálisan.
 
-Fogjuk használni egy .JSON kiterjesztésű sablon konfigurálásához a lemezképet. Itt van a .json fájlt használjuk: [helloImageTemplateforWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
+A rendszerkép konfigurálásához egy. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-A lemezkép egy megosztott lemezkép-katalógus terjesztéséhez, használja a sablon [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) értékeként a `distribute` szakaszában a sablont.
+A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
 
 > [!IMPORTANT]
-> Az Azure az Image Builder jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-features"></a>Regisztráció az funkciók
-Az előzetes verzió ideje alatt az Azure az Image Builder használatához, regisztrálnia kell az új szolgáltatást.
+## <a name="register-the-features"></a>A szolgáltatások regisztrálása
+Ha az előzetes verzióban szeretné használni az Azure képszerkesztőt, regisztrálnia kell az új szolgáltatást.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-A szolgáltatás regisztrációs állapotának ellenőrzése.
+A szolgáltatás regisztrációjának állapotát vizsgálja meg.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Ellenőrizze a regisztrációt.
+Győződjön meg a regisztrációról.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -47,7 +47,7 @@ az provider show -n Microsoft.Storage | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 ```
 
-Ha ezek nem tegyük fel, hogy regisztrált, futtassa a következő parancsot:
+Ha nem mondják a regisztrációt, futtassa a következőt:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -55,9 +55,9 @@ az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Compute
 ```
 
-## <a name="set-variables-and-permissions"></a>Változók beállítása és engedélyek 
+## <a name="set-variables-and-permissions"></a>Változók és engedélyek beállítása 
 
-Fogjuk használni néhány információt ismételten, ezért hozunk létre változókat, amelyek adott információk tárolására. Cserélje le az értékeket a változók, például `username` és `vmpassword`, a saját adataira.
+Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni. Cserélje le a változókat, `username` például a és `vmpassword`a értékeket a saját adataival.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -77,7 +77,7 @@ username="azureuser"
 vmpassword="passwordfortheVM"
 ```
 
-Hozzon létre egy változót az előfizetés-azonosítóhoz. A használatával lekérheti `az account show | grep id`.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel `az account show | grep id`érheti el:.
 
 ```azurecli-interactive
 subscriptionID="Subscription ID"
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Az Azure az Image Builder engedélyt az adott erőforráscsoportba tartozó erőforrások létrehozásához. A `--assignee` értéke az Image Builder szolgáltatás regisztrációs Azonosítót. 
+Adja meg az Azure rendszerkép-szerkesztőnek, hogy erőforrásokat hozzon létre az adott erőforráscsoporthoz. Az `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -100,12 +100,11 @@ az role assignment create \
 ```
 
 
+## <a name="create-an-image-definition-and-gallery"></a>Rendszerkép-definíció és-gyűjtemény létrehozása
 
+Ha közös rendszerkép-katalógussal szeretné használni a képszerkesztőt, rendelkeznie kell egy meglévő képtárat és képdefiníciót tartalmazó képpel. A rendszerkép-szerkesztő nem hozza létre az Ön számára a rendszerkép-gyűjteményt és a rendszerkép definícióját.
 
-
-## <a name="create-an-image-definition-and-gallery"></a>Egy rendszerkép definíciójában és gyűjtemény létrehozása
-
-Hozzon létre egy rendszerkép-katalógusában. 
+Ha még nem rendelkezik a használni kívánt gyűjtemény-és képdefinícióval, először hozza létre őket. Először hozzon létre egy képtárat.
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +112,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-Hozzon létre egy rendszerkép definíciójában.
+Ezután hozzon létre egy rendszerkép-definíciót.
 
 ```azurecli-interactive
 az sig image-definition create \
@@ -127,9 +126,9 @@ az sig image-definition create \
 ```
 
 
-## <a name="download-and-configure-the-json"></a>Töltse le és konfigurálja a .json
+## <a name="download-and-configure-the-json"></a>A. JSON letöltése és konfigurálása
 
-Töltse le a .json sablont, és konfigurálja azt a változók a.
+Töltse le a. JSON sablont, és konfigurálja a változókkal.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json -o helloImageTemplateforWinSIG.json
@@ -142,11 +141,11 @@ sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforWinSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforWinSIG.json
 ```
 
-## <a name="create-the-image-version"></a>A lemezkép-verzió létrehozása
+## <a name="create-the-image-version"></a>A rendszerkép verziójának létrehozása
 
-A következő részére, amelyben létrehozza a rendszerkép verziószámát a katalógusban. 
+A következő rész a rendszerkép verzióját fogja létrehozni a katalógusban. 
 
-Küldje el a rendszerkép-konfiguráció az Azure az Image Builder szolgáltatásba.
+Küldje be a rendszerkép konfigurációját az Azure rendszerkép-szerkesztő szolgáltatásba.
 
 ```azurecli-interactive
 az resource create \
@@ -157,7 +156,7 @@ az resource create \
     -n helloImageTemplateforWinSIG01
 ```
 
-Indítsa el a rendszerkép összeállítását.
+Indítsa el a rendszerkép buildjét.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -167,12 +166,12 @@ az resource invoke-action \
      --action Run 
 ```
 
-Hozza létre a, és replikálja azt mindkét régióban eltarthat egy ideig. Várjon, amíg ez a rész befejeződik, mielőtt továbblép a virtuális gép létrehozása.
+A rendszerkép létrehozása és replikálása mindkét régióban eltarthat egy ideig. Várjon, amíg ez a rész be nem fejeződik a virtuális gép létrehozásához való továbblépés előtt.
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Virtuális gép létrehozása az Azure az Image Builder által létrehozott lemezkép verziója.
+Hozzon létre egy virtuális gépet az Azure-rendszerkép-szerkesztő által létrehozott rendszerkép-verzióból.
 
 ```azurecli-interactive
 az vm create \
@@ -185,25 +184,25 @@ az vm create \
 ```
 
 
-## <a name="verify-the-customization"></a>Ellenőrizze a testreszabása
-Hozzon létre egy távoli asztali kapcsolatot a virtuális Gépet, a felhasználónév és a virtuális gép létrehozásakor beállított jelszó használatával. A virtuális gép nyisson meg egy parancssort, írja be:
+## <a name="verify-the-customization"></a>A Testreszabás ellenőrzése
+Hozzon létre egy Távoli asztal-csatlakozást a virtuális géphez a virtuális gép létrehozásakor beállított Felhasználónév és jelszó használatával. A virtuális gépen nyisson meg egy parancssort, és írja be a következőt:
 
 ```console
 dir c:\
 ```
 
-Megtekintheti az nevű könyvtárat `buildActions` , hogy a lemezkép-testreszabási során jött létre.
+Ekkor megjelenik egy nevű `buildActions` könyvtár, amely a rendszerkép testreszabása során jött létre.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha most megpróbálja újra testreszabása a rendszerkép verziószámát ugyanazt a lemezképet, az új verzió létrehozásához **kihagyhatja ezt a lépést** , és folytassa a következővel: [használata az Azure az Image Builder hozhat létre egy másik lemezkép verziója](image-builder-gallery-update-image-version.md).
+Ha most újra testre szeretné szabni a rendszerkép verzióját, hogy ugyanazon rendszerkép új verzióját hozza létre, **hagyja ki ezt a lépést** , és folytassa az [Azure rendszerkép-készítő használatával egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md).
 
 
-Ez a művelet törli a lemezképet, amely lett létrehozva, és a más erőforrásfájlokhoz valamennyi. Ellenőrizze, hogy befejezte a központi telepítés az erőforrások törlése előtt.
+Ezzel törli a létrehozott rendszerképet, valamint az összes többi erőforrás-fájlt is. Az erőforrások törlése előtt ellenőrizze, hogy befejeződött-e az üzemelő példány.
 
-Kép galéria-erőforrásai törlésekor törölnie kell minden, a lemezkép-verzió, mielőtt törölheti a létrehozásukhoz használt rendszerkép definíciójában. Egy gyűjtemény törléséhez először törölni kell a lemezkép-definíciókat a katalógusban található összes.
+A rendszerkép-katalógus erőforrásainak törlésekor törölnie kell az összes rendszerkép-verziót, mielőtt törölné a létrehozásához használt képdefiníciót. A katalógus törléséhez először törölnie kell a gyűjtemény összes rendszerkép-definícióját.
 
-A kép builder sablon törlése.
+Törölje a rendszerkép-szerkesztő sablonját.
 
 ```azurecli-interactive
 az resource delete \
@@ -212,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-A rendszerkép verziószámát az image builder által létrehozott, a mindig elindul a `0.`, majd törölnie kell a lemezkép verziója
+Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely `0.`mindig a következővel kezdődik, majd törli a rendszerkép verzióját:
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -229,7 +228,7 @@ az sig image-version delete \
 ```   
 
 
-Törölje a rendszerkép definíciójában.
+Törölje a rendszerkép definícióját.
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -239,7 +238,7 @@ az sig image-definition delete \
    --subscription $subscriptionID
 ```
 
-Törölje a katalógusban.
+Törölje a gyűjteményt.
 
 ```azurecli-interactive
 az sig delete -r $sigName -g $sigResourceGroup
@@ -253,4 +252,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>További lépések
 
-A rendszerkép verziószámát létrehozott frissítésével kapcsolatban lásd: [használata az Azure az Image Builder hozhat létre egy másik lemezkép verziója](image-builder-gallery-update-image-version.md).
+Ha szeretné megtudni, hogyan frissítheti a létrehozott rendszerkép-verziót, tekintse meg az [Azure rendszerkép-készítő használata egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md)című témakört.

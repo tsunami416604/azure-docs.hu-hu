@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés engedélyezése az Azure SQL Database és az SQL Data Warehouse |} A Microsoft Docs
-description: A Microsoft Azure SQL Database és SQL Data warehouse-ba való hozzáférésének engedélyezésére vonatkozó tudnivalók.
+title: Hozzáférés biztosítása Azure SQL Database és SQL Data Warehousehoz | Microsoft Docs
+description: További információ a Microsoft Azure SQL Database és SQL Data Warehouse elérésének biztosításáról.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 05/08/2019
-ms.openlocfilehash: 783a8f0bc25717f1c2bf78a9c0d40b209a07939b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1292dbf43b5246fe3da95ead4d5d9113b4bc84f9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65473344"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569027"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Az Azure SQL Database és az SQL Data Warehouse hozzáférés-vezérlés
+# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database és SQL Data Warehouse hozzáférés-vezérlés
 
-Biztonság, az Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) hozzáférést tűzfalszabályokkal IP-címe, igazolja, hogy a felhasználók hitelesítési mechanizmusokkal rendelkező azok identitáskezelési és engedélyezési mechanizmusokkal korlátozza a felhasználók számára bizonyos műveletek és adatok. 
+A biztonság biztosításához az Azure [SQL Database](sql-database-technical-overview.md) és a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) hozzáférés-vezérlést biztosít az IP-címekhez való kapcsolódást korlátozó tűzfalszabályok, hitelesítési mechanizmusok, amelyek megkövetelik a felhasználókat, hogy igazolják identitásukat és engedélyezési mechanizmusaikat a felhasználók meghatározott műveletekre és adatértékekre való korlátozása. 
 
 > [!IMPORTANT]
-> Az SQL Database biztonsági szolgáltatásairól [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít további információkat. Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md). Az SQL Data Warehouse biztonsági szolgáltatások áttekintését lásd: [SQL Data Warehouse biztonsági áttekintése](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
+> Az SQL Database biztonsági szolgáltatásairól [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít további információkat. Oktatóanyagért lásd: [a Azure SQL Database biztonságossá tétele](sql-database-security-tutorial.md). A SQL Data Warehouse biztonsági funkcióinak áttekintését lásd: [SQL Data Warehouse biztonsági áttekintés](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
 
 ## <a name="firewall-and-firewall-rules"></a>Tűzfal és tűzfalszabályok
 
@@ -32,26 +31,26 @@ A Microsoft Azure SQL Database egy relációs adatbázis-szolgáltatást nyújt 
 
 Az Azure SQL Database szolgáltatás kizárólag a 1433-as TCP-porton keresztül érhető el. Ha a helyi számítógépről szeretné elérni az SQL Database-t, akkor ellenőrizze, hogy az ügyfélszámítógépen lévő tűzfal engedélyezi-e a kimenő kommunikációt az 1433-as TCP-porton keresztül. Ha más alkalmazásoknak nincs szüksége rá, akkor blokkolja az 1433-as TCP-port bejövő kapcsolatait. 
 
-A kapcsolódási folyamat részeként az Azure virtuális gépektől érkező kapcsolatok az egyes feldolgozói szerepkörök egyedi IP-címeire és portjaira lesznek átirányítva. A portszám a 11000-től 11999-ig terjedő tartományban található. TCP-portokkal kapcsolatos további információkért lásd: [ADO.NET 4.5 és a 2. a SQL adatbázis 1433-Ason túli](sql-database-develop-direct-route-ports-adonet-v12.md).
+A kapcsolódási folyamat részeként az Azure virtuális gépektől érkező kapcsolatok az egyes feldolgozói szerepkörök egyedi IP-címeire és portjaira lesznek átirányítva. A portszám a 11000-től 11999-ig terjedő tartományban található. A TCP-portokkal kapcsolatos további információkért lásd: [1433-nál nagyobb portok a ADO.NET 4,5 és az SQL Adatbázis2](sql-database-develop-direct-route-ports-adonet-v12.md).
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az SQL Database két hitelesítési típust támogat:
 
 - **SQL-hitelesítés**:
 
-  Ezt a hitelesítési módszert használ, egy felhasználónevet és jelszót. Az SQL Database-kiszolgáló az adatbázis létrehozásakor a "kiszolgálói rendszergazda" bejelentkezés megadott felhasználónévvel és jelszóval. Ezen hitelesítő adatokkal hitelesítheti magát a kiszolgáló minden adatbázisában az adatbázis tulajdonosaként („dbo”). 
-- **Az Azure Active Directory-hitelesítés**:
+  Ez a hitelesítési módszer egy felhasználónevet és egy jelszót használ. Amikor létrehozta a SQL Database-kiszolgálót az adatbázishoz, a "kiszolgálói rendszergazda" bejelentkezési azonosítót adta meg felhasználónévvel és jelszóval. Ezen hitelesítő adatokkal hitelesítheti magát a kiszolgáló minden adatbázisában az adatbázis tulajdonosaként („dbo”). 
+- **Azure Active Directory hitelesítés**:
 
-  Ez a hitelesítési módszer az Azure Active Directory által felügyelt identitásokat használ, és a felügyelt és integrált tartományok támogatott. Ha Azure Active Directory-alapú hitelesítést kíván használni, létre kell hoznia egy másik kiszolgálói rendszergazdát „Azure AD admin” névvel, amely engedélyekkel rendelkezik az Azure AD-felhasználók és -csoportok felügyeletéhez. Ez a rendszergazda a normál kiszolgálói rendszergazdák által elvégezhető összes műveletet is végrehajthatja. A [Csatlakozás az SQL Database-hez Azure Active Directory-alapú hitelesítéssel](sql-database-aad-authentication.md) című cikk bemutatja, hogyan hozhat létre Azure AD-rendszergazdát az Azure Active Directory-alapú hitelesítés engedélyezéséhez.
+  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ, és felügyelt és integrált tartományok esetén támogatott. Ha Azure Active Directory-alapú hitelesítést kíván használni, létre kell hoznia egy másik kiszolgálói rendszergazdát „Azure AD admin” névvel, amely engedélyekkel rendelkezik az Azure AD-felhasználók és -csoportok felügyeletéhez. Ez a rendszergazda a normál kiszolgálói rendszergazdák által elvégezhető összes műveletet is végrehajthatja. A [Csatlakozás az SQL Database-hez Azure Active Directory-alapú hitelesítéssel](sql-database-aad-authentication.md) című cikk bemutatja, hogyan hozhat létre Azure AD-rendszergazdát az Azure Active Directory-alapú hitelesítés engedélyezéséhez.
 
-Az adatbázismotor bontja a 30 percnél tovább tétlen kapcsolatokat. A kapcsolat használata újbóli bejelentkezés után folytatható. A folyamatosan aktív SQL Database-kapcsolatokat legalább 10 óránként újból hitelesíteni kell (ezt a feladatot az adatbázismotor végzi el). Az adatbázismotor az eredetileg megadott jelszóval kísérli meg az újrahitelesítést, felhasználói beavatkozásra nincs szükség. Teljesítménybeli megfontolások miatt a jelszó alaphelyzetbe áll, az SQL Database, ha a kapcsolat nem újrahitelesítése, még akkor is, ha a kapcsolat alaphelyzetbe állítása kapcsolatkészletezést miatt. Ez különbözik a helyszíni SQL Server működésétől. Ha a jelszó a kapcsolat első hitelesítése óta megváltozott, akkor a kapcsolatot bontani kell, és új kapcsolatot kell létrehozni új jelszóval. A `KILL DATABASE CONNECTION` engedéllyel rendelkező felhasználók a [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) paranccsal közvetlenül bonthatnak egy SQL Database-kapcsolatot.
+Az adatbázismotor bontja a 30 percnél tovább tétlen kapcsolatokat. A kapcsolat használata újbóli bejelentkezés után folytatható. A folyamatosan aktív SQL Database-kapcsolatokat legalább 10 óránként újból hitelesíteni kell (ezt a feladatot az adatbázismotor végzi el). Az adatbázismotor az eredetileg megadott jelszóval kísérli meg az újrahitelesítést, felhasználói beavatkozásra nincs szükség. A SQL Database a jelszó alaphelyzetbe állításakor a rendszer nem hitelesíti újra a kapcsolódást, még akkor sem, ha a Kapcsolódás a kapcsolatok készletezése miatt megtörténik. Ez különbözik a helyszíni SQL Server működésétől. Ha a jelszó a kapcsolat első hitelesítése óta megváltozott, akkor a kapcsolatot bontani kell, és új kapcsolatot kell létrehozni új jelszóval. A `KILL DATABASE CONNECTION` engedéllyel rendelkező felhasználók a [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) paranccsal közvetlenül bonthatnak egy SQL Database-kapcsolatot.
 
-A felhasználói fiókok a master adatbázisban hozhatók létre, így a kiszolgáló összes adatbázisához engedélyeket kaphatnak, de létrehozhatók magában az adatbázisban is (ezeket tartalmazott felhasználóknak nevezzük). A bejelentkezések létrehozásával és kezelésével kapcsolatos információért lásd: [Bejelentkezések kezelése](sql-database-manage-logins.md). A hordozhatóság és a méretezhetőség javításához használja tartalmazott adatbázisok. A tartalmazott felhasználókról további információ a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), a [CREATE USER-rel (Transact-SQL utasítás)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) és a [tartalmazott adatbázisokkal](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) foglalkozó cikkekben található.
+A felhasználói fiókok a master adatbázisban hozhatók létre, így a kiszolgáló összes adatbázisához engedélyeket kaphatnak, de létrehozhatók magában az adatbázisban is (ezeket tartalmazott felhasználóknak nevezzük). A bejelentkezések létrehozásával és kezelésével kapcsolatos információért lásd: [Bejelentkezések kezelése](sql-database-manage-logins.md). A hordozhatóság és a méretezhetőség érdekében a foglalt adatbázisok használhatók. A tartalmazott felhasználókról további információ a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), a [CREATE USER-rel (Transact-SQL utasítás)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) és a [tartalmazott adatbázisokkal](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) foglalkozó cikkekben található.
 
 Az ajánlott eljárás az, ha az alkalmazás egy dedikált fiókot használ a hitelesítéshez. Ezzel korlátozhatja az alkalmazáshoz rendelt engedélyeket, és csökkentheti a kártékony tevékenységek kockázatát abban az esetben, ha az alkalmazás kódja sebezhető az SQL-injektálásos támadásokkal szemben. Az ajánlott módszer a [tartalmazott adatbázis-felhasználó](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) létrehozása, amellyel az alkalmazás közvetlenül kapcsolódhat az adatbázishoz. 
 
-## <a name="authorization"></a>Engedélyezés
+## <a name="authorization"></a>Authorization
 
 Az engedélyezés az Azure SQL-adatbázisokban a felhasználók által végrehajtható műveletek körét jelenti, amelyeket a felhasználóifiók-adatbázis [szerepkörtagságai](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) és [objektumszintű engedélyei](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) határoznak meg. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak. A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szerepkör tagja, így teljes körű engedélyekkel rendelkezik az adott adatbázisban. Tartsa meg ezt a fiókot a sémafrissítések üzembe helyezéséhez és egyéb felügyeleti műveletekhez. Használja kevesebb engedéllyel rendelkező „ApplicationUser” fiókot, ha az alkalmazásból kíván csatlakozni az adatbázishoz az alkalmazás által minimálisan igényelt engedélyekkel. További információk: [Bejelentkezések kezelése](sql-database-manage-logins.md).
 
@@ -67,7 +66,7 @@ A `master` adatbázishoz általában csak a rendszergazdáknak kell hozzáférni
 ## <a name="next-steps"></a>További lépések
 
 - Az SQL Database biztonsági szolgáltatásairól [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít további információkat.
-- A tűzfalszabályokkal kapcsolatos további tudnivalókért lásd: [tűzfalszabályok](sql-database-firewall-configure.md).
+- További információ a tűzfalszabályok használatáról: [Tűzfalszabályok](sql-database-firewall-configure.md).
 - Felhasználókkal és bejelentkezésekkel kapcsolatos információk: [Bejelentkezések kezelése](sql-database-manage-logins.md). 
-- A proaktív, lásd: [Database Auditing](sql-database-auditing.md) és [SQL Database fenyegetésészlelési](sql-database-threat-detection.md).
-- Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md).
+- A proaktív figyeléssel kapcsolatban lásd: adatbázis- [naplózás](sql-database-auditing.md) és [SQL Database veszélyforrások észlelése](sql-database-threat-detection.md).
+- Oktatóanyagért lásd: [a Azure SQL Database biztonságossá tétele](sql-database-security-tutorial.md).

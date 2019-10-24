@@ -1,7 +1,7 @@
 ---
-title: Egy Beszélgetéstanuló modell – a Microsoft Cognitive Services bemutatása |} A Microsoft Docs
+title: Bevezetés a Conversation Learner Model betanítására – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan többek között az elágaztatási és -szerkesztő keresztül Beszélgetéstanuló előző képzési modell betanításához.
+description: Megtudhatja, hogyan taníthat modelleket, beleértve a korábbi képzések elágazását és szerkesztését Conversation Learneron keresztül.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,94 +10,95 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0bf5b71a4b0f51a586febbdaeaf8caba03c5b25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: c657025ce588363cf76ce10868d809a9aff69222
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387918"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705612"
 ---
-# <a name="introduction-to-training"></a>Képzések bemutatása
+# <a name="introduction-to-training"></a>Bevezetés a betanításba
 
-Ebben az oktatóanyagban egy modell tanítása esetén egy előző képzés és a szerkesztési Bot választ annak érdekében, hogy módosítsa alapján új képzési ki elágaztatás kapcsolatos alapfogalmakat ismerteti.
+Ez az oktatóanyag a modell képzésének alapjait mutatja be, és egy korábbi képzésen alapuló új képzést rendez, valamint a bot-válasz szerkesztését a módosításhoz.
 
 ## <a name="video"></a>Videó
 
-[![Bevezetés az oktatóanyag előzetes képzés](https://aka.ms/cl_Tutorial_v3_IntroTraining_Preview)](https://aka.ms/cl_Tutorial_v3_IntroTraining)
+[![Bevezetés az oktatóanyagok előzetes verziójába](https://aka.ms/cl_Tutorial_v3_IntroTraining_Preview)](https://aka.ms/cl_Tutorial_v3_IntroTraining)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz az általános oktatóanyag robotjának futtatására van szükség
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-- Műveletek: Felhasználói bevitel Bot választ.
-- Train: A módszer azt tanít robotprogramok válaszolni a felhasználói bevitel.
-- Elágaztatási: Egy mentett Train párbeszédpanel, amely egy új Train párbeszédpanel létrehozása céljából belüli felhasználói bevitel módosítása ugyanaz, mint az eredeti elindításakor, de a beszélgetés tart egy másik irányban.
+- Műveletek Felhasználói bevitelre adott robot.
+- Vonat Hogyan tanítunk egy robotot a felhasználói adatbevitelre való reagáláshoz.
+- Elágazó Egy mentett betanítási párbeszédpanelen lévő felhasználói bevitel módosítása egy új, az eredetivel megegyező kiindulási panel létrehozásához, de a beszélgetést más irányba viszi.
 
 ## <a name="steps"></a>Lépések
 
 ### <a name="create-a-new-model"></a>Új modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új modell
-2. Írja be a "Name", "Inspire Bot". Ezután kattintson a Létrehozás gombra.
+1. A webes felhasználói felületen kattintson az új modell elemre.
+2. A "név" mezőbe írja be az "INSPIRE bot" kifejezést. Ezután kattintson a Létrehozás gombra.
 
-### <a name="create-an-action"></a>Hozzon létre egy műveletet
+### <a name="create-an-action"></a>Művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban" mezőbe írja be a "Hi! Szeretne még ma ötletek? ".
-    - Minden más mezők és jelölőnégyzetet hagyja meg az alapértelmezett beállítás.
+1. A bal oldali panelen kattintson a "műveletek", majd az "új művelet" gombra.
+2. A "bot válasza" mezőben adja meg a "Hi!" kifejezést. Szeretne még ma ihletet? "
+    - Hagyja meg az összes többi mezőt, és törölje a jelölőnégyzeteket az alapértelmezett beállításnál.
 3. Kattintson a Létrehozás gombra.
 
-### <a name="first-training-and-creating-another-action-while-training"></a>Először képzési és a egy másik művelet közben képzési létrehozása
+### <a name="first-training-and-creating-another-action-while-training"></a>Első betanítás és egy másik művelet létrehozása a képzés során
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
-2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "hello" típusra. 
-    - Ez szimulálja a beszélgetést a felhasználó oldalán.
-3. Kattintson a "Score műveletek".
-4. Válassza ki a választ, a "Hi! Szeretne még ma ötletek? ".
-5. A felhasználó válaszol, az "Igen".
-6. Kattintson a "Score műveletek".
+1. A bal oldali panelen kattintson a "betanítási párbeszédablakok", majd az "új vonat párbeszédpanel" gombra.
+2. Írja be a "Hello" kifejezést a csevegés panelen, ahol a "begépelheti az üzenetet..." kifejezést. 
+    - Ez szimulálja a beszélgetés felhasználójának oldalát.
+3. Kattintson a "pontszám műveletek" elemre.
+4. Válassza ki a választ, "Hi! Szeretne még ma ihletet? "
+5. A felhasználó a következővel válaszol: "yes".
+6. Kattintson a "pontszám műveletek" elemre.
 7. Kattintson a "+ művelet" gombra. 
-    - Ekkor a jól ismert (an Action létrehozása) párbeszédpanelt.
-8. Írja be a robot válaszként, a "Készen nagyszerű!"
+    - Ekkor megnyílik az ismerős "művelet létrehozása" párbeszédpanel.
+8. Írja be a robot válaszát a következőre: "You are Awesome!"
 9. Kattintson a Létrehozás gombra.
-10. Figyelje meg, hogy a robot azonnal válaszol-e.
-11. A "Mentés" gombra.
+10. Figyelje meg, hogy a robot azonnal válaszol.
+11. Kattintson a Save (Mentés) gombra.
 
-### <a name="branch-a-second-training-off-of-the-first-training"></a>Az első képzési minden második képzési ág
-1. Kattintson a rács sort, amely összefoglalja az első képzést. 
-    - Ez lehetővé teszi, hogy megtekintheti és szerkesztheti a meglévő betanítási.
-2. Kattintson az "Igen" felhasználói válaszra. 
-    - Ez lesz teszik elérhetővé a szerkesztési vezérlők.
-3. Kattintson az ág ikonra. 
-    - Megjelenik egy új beszélgetés a különböző felhasználói bevitel kérése.
-4. Írja be a "nem", nyomja le adja meg, vagy kattintson a "Létrehozás" gombra. 
-    - Ekkor kap egy új példányát egy Train párbeszédpanel, változatlan marad az eredeti kapcsolatot.
-5. Kattintson a "Score műveletek".
-6. Kattintson a robot helytelen választ, amely meg is jelentek meg.
-7. Kattintson a "+ művelet" gomb 
-    - így is létrehozunk egy új műveletet is, a robot.
-8. Írja be a robot válaszként, "semmi gond. Van egy nagyszerű nap!"
+### <a name="branch-a-second-training-off-of-the-first-training"></a>Az első betanítás második tanítása
+1. Kattintson a rács sorra, amely összefoglalja az első képzést. 
+    - Ez lehetővé teszi a meglévő képzés megtekintését és szerkesztését.
+2. Kattintson az "igen" felhasználói válaszra. 
+    - Ez a szerkesztési vezérlőket teszi elérhetővé.
+3. Kattintson a ág ikonra. 
+    - Ekkor megjelenik egy másik felhasználói adatbevitelt kérő üzenet egy új beszélgetéshez.
+4. Írja be a "nem" értéket, nyomja meg az ENTER billentyűt, vagy kattintson a "létrehozás" gombra. 
+    - Ezen a ponton a vonat párbeszédpanel egy új példánya lesz, amely az eredetivel változatlan marad.
+5. Kattintson a "pontszám műveletek" elemre.
+6. Kattintson a bot helytelen válaszára, amely most már megjelent.
+7. Kattintson a "+ művelet" gombra 
+    - annak érdekében, hogy egy új műveletet hozzunk létre a Robothoz való válaszadáshoz.
+8. Írja be a robot válaszát a következőre: "nincs probléma! Jó napot! "
 9. Kattintson a Létrehozás gombra
-10. Figyelje meg, hogy a robot azonnal válaszol-e.
-11. A "Mentés" gombra.
+10. Figyelje meg, hogy a robot azonnal válaszol.
+11. Kattintson a Save (Mentés) gombra.
 
-### <a name="test-the-trainings"></a>Tesztelje a Betanítások
-1. A bal oldali panelen kattintson a "Log-párbeszédpanelekhez", majd a "Log párbeszédpanel".
-2. Írja be az üzenetet, a "hi". 
-3. Figyelje meg, hogy a robot a módon, hogy betanított automatikusan válaszol.
-4. Írja be a felhasználói válasz "yes".
-5. Figyelje meg, hogy a robot válasz jelenik meg, hogy az első képzési működik.
-6. A "Időtúllépés" gombra. Ezzel arra utasítja a Beszélgetéstanuló szeretnénk ismét, figyelmen kívül hagyja a természetes nyelvi bekapcsolja, amely csak a sor került.
-7. Írja be az üzenetet, a "hi". 
-8. Figyelje meg, hogy a robot a módon, hogy betanított automatikusan válaszol.
-9. Írja be a felhasználói válasz "no".
-10. Figyelje meg, hogy a robot válasz jelenik meg, hogy a második képzési működik.
-11. Kattintson a "Végzett tesztelése" gombra.
+### <a name="test-the-trainings"></a>A tréningek tesztelése
+1. A bal oldali panelen kattintson a "naplók naplózása", majd az "új napló párbeszédpanel" elemre.
+2. Írja be a "Hi" üzenetet. 
+3. Figyelje meg, hogy a robot automatikusan reagál a betanított módon.
+4. Írja be a "yes" (felhasználó) választ.
+5. Figyelje meg, hogy az első betanítás működik.
+6. Kattintson a "munkamenet időkorlátja" gombra. Ez azt jelzi, Conversation Learner szeretnénk újra kezdeni, figyelmen kívül hagyva a társalgási fordulatot, amely éppen lezajlott.
+7. Írja be a "Hi" üzenetet. 
+8. Figyelje meg, hogy a robot automatikusan reagál a betanított módon.
+9. Írja be a felhasználói választ, "nem".
+10. Figyelje meg, hogy a robotra adott válasz azt mutatja, hogy a második betanítás működik.
+11. Kattintson a "kész tesztelés" gombra.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Várjon, és nem várakozási művelet](./03-wait-vs-nonwait-actions.md)
+> [Várakozás és nem várt műveletek](./03-wait-vs-nonwait-actions.md)

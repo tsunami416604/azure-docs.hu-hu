@@ -1,9 +1,9 @@
 ---
-title: A rendszer és a helyi biztonsági fiókok egy Azure Service Fabric-szolgáltatás futtatásához |} A Microsoft Docs
-description: Útmutató a Service Fabric-alkalmazás futtatását a rendszer és a helyi biztonsági fiókok.  Rendszerbiztonsági tagok létrehozásával és alkalmazásával a Futtatás mint házirend biztonságos futtatására a szolgáltatásait.
+title: Azure Service Fabric szolgáltatás futtatása a rendszer és a helyi biztonsági fiókok területen | Microsoft Docs
+description: Megtudhatja, hogyan futtathat Service Fabric alkalmazást a rendszer-és a helyi biztonsági fiókokban.  Hozzon létre rendszerbiztonsági tagokat, és alkalmazza a futtató házirendet a szolgáltatások biztonságos futtatásához.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
-ms.author: aljo
-ms.openlocfilehash: 28cd1162d7cae2b3a16062bdf18a2971e1f05aad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621173"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600052"
 ---
-# <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Szolgáltatás futtatása egy helyi felhasználói fiók vagy helyi rendszerfiók
-Az Azure Service Fabric használatával gondoskodhat a különböző felhasználói fiókok a fürtben futó alkalmazásokat. Alapértelmezés szerint Service Fabric-alkalmazásokat, amely a Fabric.exe folyamatban fut, a fiók alatt fut. A Service Fabric emellett lehetővé teszi a helyi felhasználói vagy rendszer fiókja alatt alkalmazások futtatására. Támogatott helyi rendszer fiók típusok a következők **LocalUser**, **NetworkService**, **LocalService**, és **LocalSystem**.  Ha a Service Fabric Windows önálló fürtön futtatja, a szolgáltatás alatt futtathatja [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt szolgáltatásfiókok](service-fabric-run-service-as-gmsa.md).
+# <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Szolgáltatás futtatása helyi felhasználói fiókként vagy helyi rendszerfiókként
+Az Azure Service Fabric használatával a fürtben futó alkalmazások különböző felhasználói fiókokban is biztonságossá tehetők. Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. A Service Fabric lehetővé teszi az alkalmazások helyi felhasználói vagy rendszerfiókkal történő futtatását is. A helyi rendszerfiókok támogatott típusai a következők: **LocalUser**, **NetworkService**, **LocalService**és **LocalSystem**.  Ha a Service Fabrict egy önálló Windows-fürtön futtatja, akkor a [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy csoportosan [felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok területen futtathatja a szolgáltatást.
 
-Az alkalmazásjegyzék határoz meg a szolgáltatások és biztonságos erőforrások futtatásához szükséges felhasználói fiókokat a **rendszerbiztonsági tagok** szakaszban. Is határozza meg, és hozzon létre felhasználói csoportokat, hogy egy vagy több felhasználó együtt is kezelhető. Ez akkor hasznos, amikor több felhasználó számára a különböző belépési pontok és a közös jogosultságok, amelyek elérhetők a csoport szintjén kell.  A felhasználók ezután egy futtató szabályzatot, amely egy adott szolgáltatás vagy az alkalmazás összes szolgáltatásban alkalmazott hivatkozott. 
+Az alkalmazás jegyzékfájljában meghatározhatja a szolgáltatások futtatásához szükséges felhasználói fiókokat, illetve az erőforrások biztonságos elérését a **résztvevők** szakaszban. Létrehozhat és létrehozhat felhasználói csoportokat is, hogy egy vagy több felhasználó egyszerre kezelhető legyen. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és a csoport szintjén elérhető általános jogosultságokra van szükségük.  A felhasználók ezután egy futtató házirendben lesznek hivatkozva, amely egy adott szolgáltatásra vagy az alkalmazás összes szolgáltatására vonatkozik. 
 
-Alapértelmezés szerint a RunAs házirend vonatkozik a hlavní vstupní BOD.  Is alkalmazhat egy Futtatás mint házirend a beállítási belépési pontra, ha szeretné [bizonyos magas szintű jogosultsággal rendelkező telepítő műveletek egy rendszerfiókból futtatásához](service-fabric-run-script-at-service-startup.md), vagy mindkét fő és a beállítási belépési pontok.  
+Alapértelmezés szerint a rendszer a fő belépési pontra alkalmazza a RunAs-házirendet.  Egy futtató házirendet is alkalmazhat a telepítési belépési pontra, ha a rendszerfiókban [bizonyos magas szintű jogosultságokkal rendelkező telepítési műveleteket](service-fabric-run-script-at-service-startup.md)kell futtatnia, vagy a fő és a telepítési belépési pontokat is.  
 
 > [!NOTE] 
-> Ha egy futtató házirend vonatkozik egy szolgáltatás, és a szolgáltatásjegyzék deklarálja a HTTP protokollt végpont erőforrások, meg kell adnia egy **SecurityAccessPolicy**.  További információkért lásd: [HTTP vagy HTTPS-végpontokat a biztonsági hozzáférési szabályzat hozzárendelése](service-fabric-assign-policy-to-endpoint.md). 
+> Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy**.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>Szolgáltatás futtatása helyi felhasználóként
-Létrehozhat egy helyi felhasználót, amelyek segítségével biztonságossá tétele az alkalmazásban egy szolgáltatás. Ha egy **LocalUser** fióktípus szakaszban van megadva a rendszerbiztonsági tagok az alkalmazásjegyzékben, a Service Fabric hoz létre a helyi felhasználói fiókok gépekre, ahol az alkalmazás üzemel. Alapértelmezés szerint ezek a fiókok nem rendelkeznek az alkalmazásjegyzékben megadott nevével megegyező nevet (például *Customer3* a következő application manifest példában). Ehelyett dinamikusan jönnek létre, és véletlenszerű jelszavakat.
+Létrehozhat egy helyi felhasználót, amely segítségével biztonságossá teheti a szolgáltatást az alkalmazáson belül. Ha a **LocalUser** -fiók típusa meg van adva az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai szakaszban, Service Fabric helyi felhasználói fiókokat hoz létre azon gépeken, amelyeken az alkalmazás telepítve van. Alapértelmezés szerint ezek a fiókok nem egyeznek meg az alkalmazás jegyzékfájljában megadott névvel (például *Customer3* a következő alkalmazás jegyzékfájljában). Ehelyett dinamikusan jönnek létre, és véletlenszerű jelszavakkal rendelkeznek.
 
-Az a **RunAsPolicy** szakasz egy **ServiceManifestImport**, adja meg a felhasználói fiókot a **rendszerbiztonsági tagok** futtatásához a szolgáltatáscsomag kód szakaszban.  Az alábbi példa bemutatja, hogyan hozzon létre egy helyi felhasználót, és a egy Futtatás mint házirend alkalmazása a hlavní vstupní BOD:
+A ServiceManifestImport **RunAsPolicy** szakaszában adja mega felhasználói fiókot a **rendszerbiztonsági tag** szakaszban a szolgáltatás kódjának futtatásához.  Az alábbi példa bemutatja, hogyan hozhat létre helyi felhasználót, és hogyan alkalmazhat egy futtató házirendet a fő belépési pontra:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,7 +66,7 @@ Az a **RunAsPolicy** szakasz egy **ServiceManifestImport**, adja meg a felhaszn�
 ```
 
 ## <a name="create-a-local-user-group"></a>Helyi felhasználói csoport létrehozása
-Hozzon létre felhasználói csoportokat, és a egy vagy több felhasználó hozzáadása a csoporthoz. Ez akkor hasznos, ha több felhasználó számára a különböző belépési pontok, és szükségük van bizonyos közös jogosultságok, amely a csoport szintjén érhető el. A következő application manifest példa mutatja egy helyi csoport nevű *LocalAdminGroup* , amely rendszergazdai jogosultságokkal rendelkezik. Két olyan felhasználó, *Customer1* és *Customer2*, a helyi csoport tagjai. Az a **ServiceManifestImport** részben, egy Futtatás mint házirend érvényes futtassa a *Stateful1Pkg* kód csomagot *Customer2*.  Egy másik futtató házirend érvényes futtassa a *Web1Pkg* kód csomagot *Customer1*.
+Létrehozhat felhasználói csoportokat, és hozzáadhat egy vagy több felhasználót a csoporthoz. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és szükségük van bizonyos, a csoport szintjén elérhető általános jogosultságokra. A következő Application manifest-példa egy *LocalAdminGroup* nevű helyi csoportot mutat be, amely rendszergazdai jogosultságokkal rendelkezik. Két felhasználó, a *Customer1* és a *Customer2*ennek a helyi csoportnak a tagjai. A **ServiceManifestImport** szakaszban egy futtató házirend lesz alkalmazva a *Stateful1Pkg* -kód *Customer2*való futtatásához.  Egy másik futtató házirendet alkalmaz a *Web1Pkg* -kód *Customer1*való futtatására.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -127,8 +127,8 @@ Hozzon létre felhasználói csoportokat, és a egy vagy több felhasználó hoz
 </ApplicationManifest>
 ```
 
-## <a name="apply-a-default-policy-to-all-service-code-packages"></a>Az összes szolgáltatás kódcsomagok egy alapértelmezett házirend alkalmazása
-Használja a **DefaultRunAsPolicy** szakaszban adjon meg egy alapértelmezett felhasználói fiókja az összes kódot csomagokat, amelyek nincsenek egy adott **RunAsPolicy** definiálva. Ha meg van határozva a szolgáltatásjegyzék, az alkalmazás a kód csomagokat a legtöbb kell futni ugyanaz a felhasználó, az alkalmazás csak definiálhat egy alapértelmezett futtató szabályzatot, hogy felhasználói fiókkal. Az alábbi példa azt jelenti, hogy ha a kódcsomag nem rendelkezik egy **RunAsPolicy** megadva, a kódcsomag alatt futnia kell a **MyDefaultAccount** a rendszerbiztonsági tagok szakaszban megadott felhasználó.  Támogatott fióktípusok a következők: Helyifelhasznalo, NetworkService, LocalSystem és LocalService.  Ha egy helyi felhasználói vagy szolgáltatás használata esetén is meg a fiók nevét és jelszavát.
+## <a name="apply-a-default-policy-to-all-service-code-packages"></a>Alapértelmezett szabályzat alkalmazása az összes szolgáltatási kód csomagjaira
+A **DefaultRunAsPolicy** szakasz segítségével megadhat egy alapértelmezett felhasználói fiókot az összes olyan kódból, amely nem rendelkezik meghatározott **RunAsPolicy** . Ha az alkalmazás által használt szolgáltatás jegyzékfájljában megadott kódok többségét ugyanazon felhasználó alatt kell futtatnia, az alkalmazás csak az alapértelmezett futtató házirendet definiálhatja az adott felhasználói fiókhoz. A következő példa azt adja meg, hogy ha egy programkódhoz nincs megadva **RunAsPolicy** , a csomagnak a rendszerbiztonsági tag szakaszban megadott **MyDefaultAccount** -felhasználó alatt kell futnia.  A támogatott fióktípus a LocalUser, a NetworkService, a LocalSystem és a LocalService.  Ha helyi felhasználót vagy szolgáltatást használ, adja meg a fiók nevét és jelszavát is.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -159,15 +159,15 @@ Használja a **DefaultRunAsPolicy** szakaszban adjon meg egy alapértelmezett fe
 </ApplicationManifest>
 ```
 
-## <a name="debug-a-code-package-locally-using-console-redirection"></a>A konzol-átirányítás használatával helyben kódcsomag hibakeresése
-Bizonyos esetekben hasznos, megtekintheti a futó szolgáltatás konzolkimenete hibakeresés céljából. A belépési pont a szolgáltatásjegyzékben, amely a kimenetet egy fájlba írja be a konzol átirányítás házirendjében is megadhatja. Az alkalmazás nevű mappát a kimeneti fájl írt **log** a fürtcsomópontra, ahol az alkalmazás üzembe helyezését és futtatását. 
+## <a name="debug-a-code-package-locally-using-console-redirection"></a>Programkód hibakeresése helyileg a konzol átirányításával
+Alkalmanként hibakeresési célokra is hasznos lehet, ha a konzol kimenetét szeretné megtekinteni egy futó szolgáltatásból. A konzol átirányítási házirendjét megadhatja a szolgáltatási jegyzékfájl belépési pontján, amely a kimenetet fájlba írja. A fájl kimenete az alkalmazás központi telepítésére és futtatására szolgáló fürtcsomópont **log** nevű alkalmazás mappájába íródik. 
 
 > [!WARNING]
-> Soha ne használja a konzolon átirányítási házirendet egy alkalmazásban, amely az éles környezetben telepített, mert ez befolyásolhatja az alkalmazás feladatátvételt. *Csak* helyi fejlesztés és hibakeresés céljából használja.  
+> Soha ne használja a konzol átirányítási házirendjét az éles környezetben üzembe helyezett alkalmazásokban, mivel ez hatással lehet az alkalmazás feladatátvételére. Ezt *csak* helyi fejlesztési és hibakeresési célokra használhatja.  
 > 
 > 
 
-A következő Szolgáltatásjegyzék FileRetentionCount értékkel konzol-átirányítás engedélyezése példában látható:
+A következő szolgáltatási jegyzékfájl szemlélteti a konzol átirányításának engedélyezését egy FileRetentionCount értékkel:
 
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
@@ -184,8 +184,8 @@ A következő Szolgáltatásjegyzék FileRetentionCount értékkel konzol-átir�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-* [Az alkalmazásmodell megismerése](service-fabric-application-model.md)
-* [Erőforrások meghatározása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md)
+* [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
+* [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

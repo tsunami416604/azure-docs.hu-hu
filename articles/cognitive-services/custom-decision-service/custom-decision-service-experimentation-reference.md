@@ -1,7 +1,7 @@
 ---
-title: Kísérletezési – Custom Decision Service
+title: Kísérletezés – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Ez a cikk a Custom Decision Service a Kísérletezési készült útmutató.
+description: Ez a cikk egy, a Custom Decision Servicesal való kísérletezéshez nyújt útmutatót.
 services: cognitive-services
 author: marco-rossi29
 manager: nitinme
@@ -10,59 +10,60 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: e6e8e7d0d5b969464ba9183ccae9080f58f786a0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829174"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707278"
 ---
 # <a name="experimentation"></a>Kísérletezés
 
-A következő, az elméleti [környezetfüggő bandits (CB)](https://www.microsoft.com/en-us/research/blog/contextual-bandit-breakthrough-enables-deeper-personalization/), Custom Decision Service többször is figyelembe veszi a környezet végrehajt egy műveletet és betartja a kiválasztott művelet egy fejében. Például, a tartalom személyre szabása: a környezet ismerteti egy felhasználói műveletek jelölt történetek, és a ellenszolgáltatás méri, hogy mekkora a felhasználó a javasolt történetet tetszését.
+A [környezetfüggő banditák (CB)](https://www.microsoft.com/en-us/research/blog/contextual-bandit-breakthrough-enables-deeper-personalization/)elméletét követve a Custom Decision Service ismételten betartja a kontextust, végrehajt egy műveletet, és betartja a kiválasztott műveletre vonatkozó jutalmat. Ilyen például a tartalom személyre szabása: a kontextus leírja a felhasználót, a műveletek a jelölt történetek, a jutalmak pedig azt mérik, hogy a felhasználó mennyire tetszett a javasolt történet.
 
-A Custom Decision Service a házirendet, hoz létre, mivel a környezetek műveletek vannak leképezve. Egy adott cél szabályzattal szeretné tudni, hogy a várt ellenszolgáltatás. Egy módszer a fejében, hogy online-házirend használata, és azt válassza ki a műveletek (például ajánlott történetek a felhasználók számára). Azonban az ilyen online értékelési lehet költséges két oka:
+Custom Decision Service létrehoz egy házirendet, mivel a kontextusokból a műveletekre mutat. Egy konkrét célként megadott házirenddel szeretné megismerni a várt jutalmat. A jutalmak becslésének egyik módja, ha az online házirendet használja, és lehetővé teszi a műveletek (például a felhasználóknak szóló történetek) használatát. Az ilyen online értékelés azonban két okból is költséges lehet:
 
-* Egy nem tesztelt, kísérleti házirend számára teszi elérhetővé.
-* Ez nem méretezhető, több cél házirendek kiértékelése.
+* Lehetővé teszi a felhasználók számára a nem tesztelt, kísérleti szabályzatok betartását.
+* Nem méretezhető több cél házirend kiértékelésére.
 
-Szabályzat kiértékelés egy alternatív költségei. Ha egy meglévő online rendszer hajtsa végre a naplózási házirend naplóinak, a szabályzat kiértékelés megbecsülheti cél új szabályzatok a várt szüntelenül növekvő.
+A házirenden kívüli kiértékelés egy alternatív paradigma. Ha olyan meglévő online rendszerből származó naplókat használ, amely egy naplózási házirendet követ, a szabályzaton kívüli kiértékeléssel megbecsülheti az új megcélzott házirendek várt nyereményeit.
 
-A naplófájl használatával Kísérletezési kívánja a házirendet a legmagasabb becsült, a várt ellenszolgáltatás található. Cél szabályzatok vannak paraméterezni [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) argumentumokat. Az alapértelmezett módban, a szkript úgy teszteli a Vowpal Wabbit argumentumok számos, úgy, hogy a `--base_command`. A szkript a következő műveleteket hajtja végre:
+A naplófájl használatával a kísérletezés arra törekszik, hogy megtalálja a szabályzatot a legmagasabb becsült, várható jutalommal. A [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) argumentumai a célként megadott házirendek paraméterei. Az alapértelmezett módban a parancsfájl különböző Vowpal Wabbit-argumentumokat tesztel, ehhez fűzze hozzá a `--base_command`következőhöz:. A szkript a következő műveleteket hajtja végre:
 
-* Automatikusan észleli szolgáltatásokat névtereket az első `--auto_lines` a bemeneti fájl.
-* Első ismétlés végrehajtja a hyper-paraméterek (`learning rate`, `L1 regularization`, és `power_t`).
-* Szabályzat-kiértékelés tesztek `--cb_type` (más néven inverz upsell pontszám (`ips`) vagy kétszer robusztus (`dr`). További információkért lásd: [környezetfüggő Bandit példa](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
-* Tesztek melléklet.
-* Tesztek négyzetösszege az interaktív funkciókat:
-   * **találgatásos fázis**: Teszteli, az összes kombinációk `--q_bruteforce_terms` párokból vagy kevesebb.
-   * **mohó fázis**: A legjobb pár ad hozzá, amíg be nem nincs javulás `--q_greedy_stop` kerekít.
-* Végrehajtja a második ismétlés hiperparaméterekkel (`learning rate`, `L1 regularization`, és `power_t`).
+* Az automatikusan észleli a funkciók névtereit a bemeneti `--auto_lines` fájl első soraiból.
+* Végrehajtja az első áthúzást a Hyper`learning rate`- `L1 regularization`parameters ( `power_t`,, és).
+* Tesztelési házirend `--cb_type` kiértékelése (inverz felkészültség`ips`pontszáma () vagy kétszeresen robusztus (`dr`). További információ: [környezetfüggő bandita-példa](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
+* Melléklet szélzetszámokra amelyeknek tesztek.
+* Másodfokú interakciós funkciók tesztelése:
+   * **találgatásos kényszerítés fázisa**: A páros vagy a `--q_bruteforce_terms` kevesebb kombinációt teszteli.
+   * **kapzsi fázis**: Hozzáadja a legjobb párokat, amíg a `--q_greedy_stop` kerekítés nem javul.
+* Végrehajt egy második lendületet a Hyper-Parameters`learning rate`( `L1 regularization`,, `power_t`és).
 
-A következők néhány Vowpal Wabbit argumentum a paramétereket, amelyek vezérlik a következő lépéseket:
-- Példa adatkezelési lehetőségeket:
+Az alábbi lépéseket vezérlő paraméterek tartalmaznak néhány Vowpal Wabbit argumentumot:
+- Példa a manipulációs lehetőségekre:
   - megosztott névterek
-  - a művelet névterek
+  - műveleti névterek
   - marginális névterek
-  - négyzetösszege funkciók
-- A szabály beállítások frissítése
-  - tanulási ráta
+  - másodfokú funkciók
+- Szabály beállításainak frissítése
+  - tanulási arány
   - L1 regularizációs
   - t energiaellátási érték
 
-A fenti argumentum egy részletes ismertetése: [Vowpal Wabbit parancssori argumentumok](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
+A fenti argumentumok részletes ismertetését lásd: [Vowpal Wabbit parancssori argumentumok](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Vowpal Wabbit: Telepítve van, és az elérési útra.
-  - Windows: [Használja a `.msi` telepítő](https://github.com/eisber/vowpal_wabbit/releases).
-  - Más platformok: [A forrás kódot](https://github.com/JohnLangford/vowpal_wabbit/releases).
-- Python 3: Telepítve van, és az elérési útra.
-- NumPy: A package manager tetszőleges használja.
-- A *Microsoft/MOLWT-ds* tárházat: [A tárház klónozása](https://github.com/Microsoft/mwt-ds).
-- Döntési szolgáltatás JSON naplófájlja: Alapértelmezés szerint tartalmazza az alapszintű parancs `--dsjson`, amely lehetővé teszi a döntési szolgáltatás JSON-elemzés, a bemeneti adatfájlt. [Ebben a formátumban például Get](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
+- Vowpal Wabbit: Az elérési útra.
+  - Windows: [Használja a `.msi` telepítőt](https://github.com/eisber/vowpal_wabbit/releases).
+  - Egyéb platformok: [A forráskód](https://github.com/JohnLangford/vowpal_wabbit/releases)beolvasása.
+- Python 3: Az elérési útra.
+- NumPy Használja az Ön által választott csomagkezelő eszközt.
+- A *Microsoft/MWT-DS* adattár: [A](https://github.com/Microsoft/mwt-ds)tárház klónozása.
+- Döntési szolgáltatás JSON-naplófájlja: Alapértelmezés szerint az alapparancs tartalmazza `--dsjson`, amely lehetővé teszi a döntési szolgáltatás JSON-elemzését a bemeneti adatfájlban. [Példa erre a formátumra](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
 
 ## <a name="usage"></a>Használat
-Lépjen a `mwt-ds/DataScience` , és futtassa `Experimentation.py` megfelelő argumentumokkal, ahogy az az alábbi kódot:
+Nyissa `mwt-ds/DataScience` meg a `Experimentation.py` parancsot, és futtassa a megfelelő argumentumokat a következő kódban részletezett módon:
 
 ```cmd
 python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
@@ -74,38 +75,38 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
                           [--q_greedy_stop Q_GREEDY_STOP]
 ```
 
-Az eredmények naplózása a rendszer hozzáfűzi a *mwt-ds/DataScience/experiments.csv* fájlt.
+Az eredmények naplóját a rendszer hozzáfűzi a *MWT-DS/DataScience/experiments. csv* fájlhoz.
 
 ### <a name="parameters"></a>Paraméterek
 | Input (Bemenet) | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| `-h`, `--help` | Súgóüzenet megjelenítése, és zárja be. | |
-| `-f FILE_PATH`, `--file_path FILE_PATH` | Adatok elérési útja (`.json` vagy `.json.gz` -formátum – minden sorban van egy `dsjson`). | Szükséges |  
-| `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Alap Vowpal Wabbit parancsot.  | `vw --cb_adf --dsjson -c` |  
-| `-p N_PROC`, `--n_proc N_PROC` | Használandó párhuzamos folyamatok száma. | Logikai processzorok |  
-| `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | A szolgáltatás névterek megosztott (például `abc` azt jelenti, hogy a névterek `a`, `b`, és `c`).  | Automatikus észlelésű adatfájlból |  
-| `-a ACTION_NAMESPACES, --action_namespaces ACTION_NAMESPACES` | A művelet a szolgáltatás névterek. | Automatikus észlelésű adatfájlból |  
-| `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | Marginális funkció névterek. | Automatikus észlelésű adatfájlból |  
-| `--auto_lines AUTO_LINES` | Automatikus észlelésű szolgáltatásokat névtereket beolvasni adatokat fájl sorainak száma. | `100` |  
-| `--only_hp` | Szögtartomány csak hiperparaméterekkel keresztül (`learning rate`, `L1 regularization`, és `power_t`). | `False` |  
-| `-l LR_MIN_MAX_STEPS`, `--lr_min_max_steps LR_MIN_MAX_STEPS` | Tanulási tartományt, pozitív értékek `min,max,steps`. | `1e-5,0.5,4` |  
-| `-r REG_MIN_MAX_STEPS`, `--reg_min_max_steps REG_MIN_MAX_STEPS` | A pozitív értékek L1 regularizációs tartományba `min,max,steps`. | `1e-9,0.1,5` |  
-| `-t PT_MIN_MAX_STEPS`, `--pt_min_max_steps PT_MIN_MAX_STEPS` | A pozitív értékek Power_t tartományba `min,max,step`. | `1e-9,0.5,5` |  
-| `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | Találgatásos fázisban teszteléséhez négyzetösszege párok száma. | `2` |  
-| `--q_greedy_stop Q_GREEDY_STOP` | Kerekít nélkül fejlesztések, utána négyzetösszege mohó keresési fázisa véget ér. | `3` |  
+| `-h`, `--help` | Súgó üzenet megjelenítése és kilépés. | |
+| `-f FILE_PATH`, `--file_path FILE_PATH` | Az adatfájl elérési `.json.gz` útja (`.json` vagy formátuma – `dsjson`minden sor a). | Kötelező |  
+| `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Alap Vowpal Wabbit parancsa.  | `vw --cb_adf --dsjson -c` |  
+| `-p N_PROC`, `--n_proc N_PROC` | A használandó párhuzamos folyamatok száma. | Logikai processzorok |  
+| `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | A megosztott szolgáltatás `abc` névterei (például `a`névterek, `b`és `c`).  | Adatok automatikus észlelése adatfájlból |  
+| `-a ACTION_NAMESPACES, --action_namespaces ACTION_NAMESPACES` | Művelet funkcióinak névterei. | Adatok automatikus észlelése adatfájlból |  
+| `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | A marginális funkció névterei. | Adatok automatikus észlelése adatfájlból |  
+| `--auto_lines AUTO_LINES` | A funkciók névterének automatikus észlelésére szolgáló adatfájl-sorok száma. | `100` |  
+| `--only_hp` | Csak a Hyper-parameters (`learning rate`, `L1 regularization`, és `power_t`) esetén legyen elsöpörve. | `False` |  
+| `-l LR_MIN_MAX_STEPS`, `--lr_min_max_steps LR_MIN_MAX_STEPS` | A tanulási sebesség tartománya pozitív `min,max,steps`értékként. | `1e-5,0.5,4` |  
+| `-r REG_MIN_MAX_STEPS`, `--reg_min_max_steps REG_MIN_MAX_STEPS` | Az L1 regularizációs pozitív értékként `min,max,steps`van megjelölve. | `1e-9,0.1,5` |  
+| `-t PT_MIN_MAX_STEPS`, `--pt_min_max_steps PT_MIN_MAX_STEPS` | A Power_t értéke pozitív érték `min,max,step`. | `1e-9,0.5,5` |  
+| `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | A találgatásos kényszerítési fázisban tesztelni kívánt másodfokú párok száma. | `2` |  
+| `--q_greedy_stop Q_GREEDY_STOP` | A kilépések anélkül, hogy a másodfokú kapzsi keresési fázis leálljon. | `3` |  
 
 ### <a name="examples"></a>Példák
-Az előre beállított alapértékeket használata:
+Az előre beállított alapértelmezett értékek használata:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json
 ```
 
-Év, a Vowpal Wabbit is betöltheti `.json.gz` fájlok:
+Ezzel egyenértékű a Vowpal Wabbit is `.json.gz` képes a fájlok betöltésére:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json.gz
 ```
 
-Szögtartomány csak keresztül hiperparaméterekkel való (`learning rate`, `L1 regularization`, és `power_t`, 2. lépés után leállítása):
+Csak a Hyper-parameters (`learning rate`, `L1 regularization`, és `power_t`, a 2. lépés után történő leállítás) esetén:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json --only_hp
 ```

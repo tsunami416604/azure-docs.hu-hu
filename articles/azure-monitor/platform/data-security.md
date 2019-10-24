@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: dd4efcd2f1d4cbf497ad1fde6936088513cb5fd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759934"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68606676"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
-Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../../security/security-microsoft-trust-center.md).  
+Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../../security/fundamentals/trust-center.md).  
 
 Ez a cikk ismerteti az adatok gyűjtése, feldolgozása és a Log Analytics által védett. Ügynökök használatával a webszolgáltatáshoz csatlakozni, használja a System Center Operations Manager operatív adatok gyűjtéséhez vagy adatokat lekérni az Azure diagnostics Log Analytics általi használatra. 
 
@@ -77,7 +77,7 @@ Az alábbi táblázat az adattípusok példái láthatók:
 | --- | --- |
 | Riasztás |Riasztás neve, riasztás leírása, BaseManagedEntityId, probléma azonosítója, IsMonitorAlert, RuleId, ResolutionState, prioritás, súlyosság, kategória, tulajdonosa, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Konfiguráció |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Esemény |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** Egyéni mezőt tartalmazó eseményeket a Windows eseménynaplóba ír, amikor a Log Analytics gyűjti azokat. |
+| Esemény |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** Ha egyéni mezőkkel rendelkező eseményeket ír a Windows-eseménynaplóba, Log Analytics gyűjti őket. |
 | Metaadatok |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Teljesítmény |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, környezet, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, monitorid attribútumként, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
@@ -173,7 +173,7 @@ A fentiekben ismertetettek szerint a felügyeleti kiszolgálóról vagy közvetl
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. A Log Analytics szolgáltatás fogadja és dolgozza fel az adatokat
 A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból érvényesítésével megjeleníthető tanúsítványok és az adatok integritásának megőrzése Azure-hitelesítéssel. A feldolgozatlan nyers adatok majd tárolódik a régióban, az adatok inaktív végül lesznek tárolva az Azure-Eseményközpontba. A tárolt adatok típusát a megoldásokat, amelyek lettek importálva, és adatokat gyűjthet típusú függ. Ezután a Log Analytics szolgáltatás folyamatok a nyers adatokat, és feltölti azt az adatbázisba.
 
-Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az a *ingyenes* szint, a hét napja érhető összegyűjtött adatokat. Az a *fizetős* szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető el, de és 730 nap között is kiterjeszthető. Adatok titkosítása inaktív állapotban, adatkezelés, hogy az Azure storage tárolja, és az adatokat a helyileg redundáns tárolás (LRS) használó helyi régión belül replikálódnak. Az adatok az elmúlt két hétben is SSD-alapú gyorsítótárában vannak tárolva, és a gyorsítótár van titkosítva.
+Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az a *ingyenes* szint, a hét napja érhető összegyűjtött adatokat. Az a *fizetős* szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető el, de és 730 nap között is kiterjeszthető. Adatok titkosítása inaktív állapotban, adatkezelés, hogy az Azure storage tárolja, és az adatokat a helyileg redundáns tárolás (LRS) használó helyi régión belül replikálódnak. Az utolsó két hetet is tárolja SSD-alapú gyorsítótárban, és ez a gyorsítótár titkosítva van.
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Az adatok eléréséhez a Log Analytics használatával
 A Log Analytics-munkaterület elérését, jelentkezzen be az Azure Portalon a szervezeti fiók vagy a korábban használt Microsoft-fiók használatával. A portál és a Log Analytics szolgáltatás közötti összes forgalom egy biztonságos csatornán keresztül zajlik. A portál használata esetén a munkamenet-azonosító akkor jön létre, a felhasználó ügyfélen (webböngésző), és a helyi gyorsítótárban tárolt adatokat, mindaddig, amíg a munkamenet meg lett szakítva. Ha leállt, a gyorsítótár törlődik. Ügyféloldali cookie-kat, amelyek nem tartalmaznak személyes azonosításra alkalmas adatokat, nem lesznek automatikusan eltávolítva. Munkamenet-cookie HTTPOnly vannak megjelölve, és biztosított. Egy előre meghatározott tétlen időszak után az Azure portal munkamenet meg lett szakítva.

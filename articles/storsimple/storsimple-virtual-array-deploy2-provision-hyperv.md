@@ -1,6 +1,6 @@
 ---
-title: A Hyper-V-ben a StorSimple Virtual Array üzembe helyezése |} A Microsoft Docs
-description: A StorSimple Virtual Array üzembe helyezési oktatóanyag második magában foglalja a kiépítés egy Hyper-v virtuális tömböt.
+title: StorSimple virtuális tömb kiépítése a Hyper-V-ben | Microsoft Docs
+description: A StorSimple virtuális tömb üzembe helyezésének második oktatóanyaga egy virtuális tömb kiépítését foglalja magában a Hyper-V-ben.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,95 +12,98 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61416111"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516797"
 ---
-# <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>A StorSimple Virtual Array – üzembe helyezés Hyper-V rendszerben üzembe helyezése
+# <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple virtuális tömb üzembe helyezése – létesítés a Hyper-V-ben
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag leírja, hogyan helyezhet üzembe egy StorSimple Virtual Array állomás operációs rendszert futtató Hyper-V Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. Ez a cikk a StorSimple Virtual Arrayt az Azure Portalon és a Microsoft Azure Government Cloud központi telepítés vonatkozik.
 
-Kiépítés rendszergazdai jogosultságok szükségesek, és konfigurálja a virtuális tömb. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe.
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-## <a name="provisioning-prerequisites"></a>Üzembe helyezési Előfeltételek
-Itt megtalálja az előfeltételeket a virtuális tömb létrehozása egy gazdagépen rendszeren futó Hyper-V Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2.
+Ez az oktatóanyag azt ismerteti, hogyan lehet StorSimple virtuális tömböt létrehozni a Hyper-V-t futtató gazdagépeken Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. Ez a cikk a StorSimple virtuális tömbök üzembe helyezésére vonatkozik Azure Portal és Microsoft Azure Government felhőben.
+
+A virtuális tömb kiépítéséhez és konfigurálásához rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe.
+
+## <a name="provisioning-prerequisites"></a>Az előfeltételek kiépítési feltételei
+Itt megtalálhatja a virtuális tömb üzembe helyezésének előfeltételeit a Hyper-V-t futtató gazdagépen a Windows Server 2012 R2, a Windows Server 2012 vagy a Windows Server 2008 R2 rendszeren.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>A StorSimple-eszközkezelő szolgáltatás esetén
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* Az összes lépés elvégzését követően [a portál előkészítése a StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md).
-* A Hyper-V a virtuális tömb lemezképének már letöltötte az Azure Portalról. További információkért lásd: **3. lépés: A virtuális tömb lemezképének letöltése** , [StorSimple Virtual Array útmutató a portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md).
+* Elvégezte a [portál StorSimple virtuális tömbre való előkészítésének](storsimple-virtual-array-deploy1-portal-prep.md)lépéseit.
+* Letöltötte a Hyper-V virtuális tömb rendszerképét a Azure Portalról. További információ **: 3. lépés: Töltse le a** [StorSimple Virtual Array útmutató a portál előkészítésére szolgáló](storsimple-virtual-array-deploy1-portal-prep.md)virtuális tömb rendszerképét.
 
   > [!IMPORTANT]
-  > A StorSimple Virtual Array futó szoftver csak a StorSimple-Eszközkezelő szolgáltatással használható.
+  > A StorSimple virtuális tömbön futó szoftver csak a StorSimple Eszközkezelő szolgáltatással használható.
   >
   >
 
-### <a name="for-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb
-Mielőtt telepít egy virtuális tömböt, ellenőrizze, hogy:
+### <a name="for-the-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz
+Virtuális tömb üzembe helyezése előtt győződjön meg a következőket:
 
-* Gazdagép operációs rendszert futtató Hyper-V a Windows Server 2008 R2 vagy újabb, amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
-* A gazdagép rendszere viszont rendelnie a virtuális tömb telepítéséhez a következőket:
+* A Hyper-V-t futtató, Windows Server 2008 R2 vagy újabb rendszerű gazdagéprendszer számára elérhető, amely az eszköz kiépítéséhez használható.
+* A gazdagéprendszer a következő erőforrásokat tudja kiépíteni a virtuális tömb kiépítéséhez:
 
   * Legalább 4 mag.
-  * Legalább 8 GB RAM. Ha azt tervezi, konfigurálja a virtuális tömb fájlkiszolgálóként, 8 GB támogatja a kevesebb mint 2 millió fájlokat. 16 GB RAM, 2 – 4 millió fájl támogatásához szükséges.
+  * Legalább 8 GB RAM. Ha úgy tervezi, hogy a virtuális tömböt fájlkiszolgálóként konfigurálja, a 8 GB-nál kevesebb, mint 2 000 000 fájl. 2-4 millió fájl támogatásához 16 GB RAM szükséges.
   * Egy hálózati adapter.
-  * 500 GB-os virtuális lemez adatait.
+  * 500 GB-nyi virtuális lemez az adathoz.
 
 ### <a name="for-the-network-in-the-datacenter"></a>Az adatközpont hálózata esetén
-Mielőtt elkezdené, tekintse át a StorSimple Virtual Array üzembe helyezése és az Adatközpont-hálózat megfelelő konfigurálása a hálózati követelményeket. További információkért lásd: [StorSimple Virtual Array hálózati követelményei](storsimple-ova-system-requirements.md#networking-requirements).
+Mielőtt elkezdené, tekintse át a hálózati követelményeket a StorSimple virtuális tömb üzembe helyezéséhez és az adatközpont-hálózat megfelelő konfigurálásához. További információ: [StorSimple Virtual Array Network követelmények](storsimple-ova-system-requirements.md#networking-requirements).
 
-## <a name="step-by-step-provisioning"></a>Részletes kiépítése
-Kiépítése, és csatlakozzon a virtuális tömb, kell hajtsa végre az alábbi lépéseket:
+## <a name="step-by-step-provisioning"></a>Lépésenkénti üzembe helyezés
+Virtuális tömb kiépítéséhez és az ahhoz való kapcsolódáshoz a következő lépéseket kell elvégeznie:
 
-1. Győződjön meg arról, hogy a gazdagép rendszere rendelkezik-e elegendő erőforrás a virtuális tömb minimális követelményeinek.
-2. Virtuális tömb létrehozása a hipervizor az.
-3. A virtuális tömb indítása és IP-címének lekéréséhez.
+1. Győződjön meg arról, hogy a gazdagéprendszer elegendő erőforrással rendelkezik a virtuális tömb minimális követelményeinek kielégítéséhez.
+2. Hozzon létre egy virtuális tömböt a hypervisorban.
+3. Indítsa el a virtuális tömböt, és szerezze be az IP-címet.
 
-Egyes lépéseket az alábbiakban kifejtett.
+Ezeket a lépéseket az alábbi részekben ismertetjük.
 
-## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>1\. lépés: Győződjön meg arról, hogy a gazdagép rendszere megfelel-e a minimális virtual array – követelmények
-Hozzon létre egy virtuális tömböt, az alábbiak szükségesek:
+## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>1\. lépés: Győződjön meg arról, hogy a gazdagéprendszer megfelel a virtuális tömb minimális követelményeinek
+Virtuális tömb létrehozásához a következők szükségesek:
 
-* A Hyper-V szerepkör telepítése a Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 SP1.
+* A Windows Server 2012 R2, a Windows Server 2012 vagy a Windows Server 2008 R2 SP1 rendszerre telepített Hyper-V szerepkör.
 * Egy, a gazdagépre csatlakoztatott Microsoft Windows-ügyfélen futó Microsoft Hyper-V-kezelőre.
 
-Ügyeljen arra, hogy az alapul szolgáló hardver (gazdagép rendszere), amely létrehozza a virtuális tömb képes a virtuális tömb az alábbi erőforrások forrásfájloktól:
+Győződjön meg arról, hogy a virtuális tömböt létrehozó mögöttes hardver (gazdarendszer) képes a következő erőforrásokat a virtuális tömbhöz hozzárendelni:
 
 * Legalább 4 mag.
-* Legalább 8 GB RAM. Ha azt tervezi, konfigurálja a virtuális tömb fájlkiszolgálóként, 8 GB támogatja a kevesebb mint 2 millió fájlokat. 16 GB RAM, 2 – 4 millió fájl támogatásához szükséges.
+* Legalább 8 GB RAM. Ha úgy tervezi, hogy a virtuális tömböt fájlkiszolgálóként konfigurálja, a 8 GB-nál kevesebb, mint 2 000 000 fájl. 2-4 millió fájl támogatásához 16 GB RAM szükséges.
 * Egy hálózati adapter.
-* 500 GB-os virtuális lemez a rendszer adatokat.
+* Egy 500 GB méretű virtuális lemez a rendszeradathoz.
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. lépés: A hipervizor virtuális tömb létrehozása
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. lépés: Virtuális tömb kiépítése a hypervisorban
 A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipervizoron.
 
-#### <a name="to-provision-a-virtual-array"></a>A virtuális tömb létrehozása
-1. A Windows Server-gazdagépen másolja át a virtuális tömb lemezképet egy helyi meghajtóra. Ez a rendszerkép (VHD vagy vhdx-fájlt) letöltötte az Azure Portalon keresztül. Jegyezze fel a helyet, ahová a rendszerképet másolta, mivel az eljárás későbbi szakaszában szükség lesz rá.
+#### <a name="to-provision-a-virtual-array"></a>Virtuális tömb kiépítése
+1. A Windows Server-gazdagépen másolja a virtuális tömb rendszerképét egy helyi meghajtóra. Letöltötte ezt a rendszerképet (VHD vagy VHDX) a Azure Portalon keresztül. Jegyezze fel a helyet, ahová a rendszerképet másolta, mivel az eljárás későbbi szakaszában szükség lesz rá.
 2. Nyissa meg a **Kiszolgálókezelőt**. A jobb felső sarokban kattintson az **Eszközök** gombra, és válassza a **Hyper-V kezelője** lehetőséget.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
-   Ha futtatja a Windows Server 2008 R2, nyissa meg a Hyper-V kezelőjét. A Kiszolgálókezelőben kattintson a **szerepkörök > Hyper-V > Hyper-V Manager**.
+   Ha a Windows Server 2008 R2 rendszert futtatja, nyissa meg a Hyper-V kezelőjét. A Kiszolgálókezelőben kattintson a **szerepkörök > Hyper-v > Hyper-v kezelője**elemre.
 3. A **Hyper-V kezelője** hatókörpanelén kattintson jobb gombbal a rendszercsomópontra, majd a megnyíló helyi menüben kattintson az **Új** > **Virtuális gép** elemre.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. Az Új virtuális gép varázsló **Előkészületek** lapján kattintson a **Tovább** gombra.
-5. Az a **név és hely megadása** lapon egy **neve** a virtuális tömb. Kattintson a **tovább**.
+5. A **név és hely megadása** lapon adja meg a virtuális tömb **nevét** . Kattintson a **Tovább** gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
-6. Az a **adja meg a generáció** lapon válassza ki az eszköz lemezképet, és kattintson a **tovább**. Ezen a lapon nem jelenik meg, ha Windows Server 2008 R2 használja.
+6. A **generáció megadása** lapon válassza ki az eszköz rendszerképének típusát, majd kattintson a **tovább**gombra. Ez a lap nem jelenik meg, ha a Windows Server 2008 R2 rendszert használja.
 
-   * Válasszon **2. generációs** Ha letöltötte a .vhdx kép a Windows Server 2012 vagy újabb verzió.
-   * Válasszon **1. generációs** Ha letöltötte a .vhd-lemezképeket, a Windows Server 2008 R2 vagy újabb verzió.
+   * Válassza a **2. generáció** lehetőséget, ha a Windows Server 2012-es vagy újabb verziójához letöltötte a. vhdx-rendszerképet.
+   * Válassza az **1. generáció** lehetőséget, ha letöltött egy. vhd rendszerképet a Windows Server 2008 R2 vagy újabb verzióhoz.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image5.png)
 7. A **Memória hozzárendelése** lapon adjon meg egy legalább **8192 MB** méretű **indítási memóriát**, ne engedélyezze a dinamikus memóriát, majd kattintson a **Tovább** gombra.
@@ -109,7 +112,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 8. A **Hálózatkezelés beállítása** lapon adja meg az internetre csatlakoztatott virtuális kapcsolót, majd kattintson a **Tovább** gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. Az a **virtuális merevlemez csatlakoztatása** lapon a **egy meglévő virtuális merevlemez használata**, adja meg (.vhdx vagy .vhd), a virtuális tömb lemezképének helyét, és kattintson **tovább**.
+9. A **virtuális merevlemez** összekapcsolása lapon válassza a **meglévő virtuális merevlemez használata**lehetőséget, adja meg a virtuális tömb rendszerképének helyét (. vhdx vagy. vhd), majd kattintson a **tovább**gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
 10. Tekintse át az **összefoglalást**, majd kattintson a **Befejezés** gombra a virtuális gép létrehozásához.
@@ -121,7 +124,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 12. A **Beállítások** lap bal oldali panelén kattintson a **Processzor** lehetőségre. A jobb oldali panelen állítsa a **virtuális processzorok számát** 4-re (vagy többre). Kattintson az **Alkalmaz** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
-13. A minimális követelményeknek is hozzá kell 500 GB-os virtuális adatlemezt. A **Beállítások** lapon:
+13. A minimális követelmények teljesítéséhez hozzá kell adnia egy 500 GB-os virtuális adatlemezt is. A **Beállítások** lapon:
 
     1. A bal oldali panelen válassza az **SCSI-vezérlő** lehetőséget.
     2. A jobb oldali panelen válassza a **Merevlemez** lehetőséget, és kattintson a **Hozzáadás** gombra.
@@ -131,16 +134,16 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. Az Új virtuális merevlemez varázsló **Előkészületek** lapján kattintson a **Tovább** gombra.
-16. A **Lemezformátum kiválasztása** lapon fogadja el az alapértelmezett **VHDX** formátumot. Kattintson a **tovább**. Ezen a képernyőn nem jelenik meg, ha a Windows Server 2008 R2 rendszerű.
+16. A **Lemezformátum kiválasztása** lapon fogadja el az alapértelmezett **VHDX** formátumot. Kattintson a **Tovább** gombra. Ez a képernyő nem jelenik meg, ha a Windows Server 2008 R2 fut.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. A **Lemeztípus kiválasztása** lapon állítsa a virtuális merevlemez típusát a **Dinamikusan bővülő** típusra (ajánlott). A **Rögzített méretű** lemez is működhet, de előfordulhat, hogy túl sokat kellene várnia. Azt javasoljuk, hogy ne alkalmazza a **Különbség** beállítást. Kattintson a **tovább**. A Windows Server 2012 R2 és Windows Server 2012-ben **dinamikusan bővülő** lesz az alapértelmezett beállítás, mivel a Windows Server 2008 R2, az alapértelmezett érték **rögzített méretű**.
+17. A **Lemeztípus kiválasztása** lapon állítsa a virtuális merevlemez típusát a **Dinamikusan bővülő** típusra (ajánlott). A **Rögzített méretű** lemez is működhet, de előfordulhat, hogy túl sokat kellene várnia. Azt javasoljuk, hogy ne alkalmazza a **Különbség** beállítást. Kattintson a **Tovább** gombra. A Windows Server 2012 R2 és a Windows Server 2012 rendszerben a **dinamikusan bővült** az alapértelmezett beállítás, míg a windows Server 2008 R2 rendszerben az alapértelmezett érték a **rögzített méret**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **tovább**.
+18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **Tovább** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. Az a **lemez beállítása** lapra, jelölje be a beállítást **hozzon létre egy új üres virtuális merevlemezzel** , és adja meg a méretűnek **500 GB-os** (vagy több). A minimális követelmény 500 GB-os pedig mindig helyezhet nagyobb lemez. Vegye figyelembe, hogy nem bontsa ki a vagy a egyszer üzembe helyezett lemez zsugorítani. Kiépítés lemez mérete további információkért tekintse át a méretezési részt a [ajánlott eljárások a dokumentum](storsimple-ova-best-practices.md). Kattintson a **tovább**.
+19. A **lemez konfigurálása** lapon válassza az **új üres virtuális merevlemez létrehozása** lehetőséget, és adja meg a méretet **500 GB** -ként (vagy több). A minimális követelmény a 500 GB, így mindig nagyobb méretű lemez helyezhető üzembe. Vegye figyelembe, hogy a kiépítés után nem lehet kibontani vagy csökkenteni a lemezt. A kiépíthető lemez méretével kapcsolatos további információkért tekintse át az [ajánlott eljárásokat tartalmazó dokumentum](storsimple-ova-best-practices.md)méretezési szakaszát. Kattintson a **Tovább** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. Az **Összefoglalás** lapon tekintse át a virtuális adatlemez adatait, és ha elégedett, kattintson a **Befejezés** gombra a lemez létrehozásához. A varázsló bezáródik, és a rendszer hozzáadja a virtuális merevlemezt a géphez.
@@ -150,17 +153,17 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. lépés: A virtuális tömb indítása és az IP-cím kérése
-Hajtsa végre az alábbi lépéseket a virtuális tömb indítása és csatlakozni hozzá.
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. lépés: Indítsa el a virtuális tömböt, és szerezze be az IP-címet
+A következő lépések végrehajtásával indítsa el a virtuális tömböt, és kapcsolódjon hozzá.
 
-#### <a name="to-start-the-virtual-array"></a>A virtuális tömb indítása
-1. A virtuális tömb indítása.
+#### <a name="to-start-the-virtual-array"></a>A virtuális tömb elindítása
+1. Indítsa el a virtuális tömböt.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image21.png)
 2. Amikor az eszköz már fut, jelölje ki, kattintson rá a jobb gombbal, és válassza a **Csatlakozás** lehetőséget.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Előfordulhat, hogy az eszköz készen áll az 5 – 10 percet várnia kell. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Nyomja meg `Ctrl + Alt + Delete` jelentkezzen be a virtuális tömb. Az alapértelmezett felhasználó *StorSimpleAdmin* és az alapértelmezett jelszó az *jelszó1*.
+3. Előfordulhat, hogy várnia kell 5-10 percet, amíg az eszköz készen áll. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Nyomja `Ctrl + Alt + Delete` meg a gombot a virtuális tömbbe való bejelentkezéshez. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.
@@ -170,19 +173,19 @@ Hajtsa végre az alábbi lépéseket a virtuális tömb indítása és csatlakoz
    Olyan jelszót adjon meg, amely legalább 8 karakterből áll. A jelszónak a következő négy típusból legalább hármat tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek. Írja be ismét a jelszót a megerősítéséhez. A rendszer értesíti, hogy a jelszó megváltozott.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
-5. A jelszó sikeresen módosítását követően a virtuális tömb újraindulhat. Várjon, amíg az eszköz elindul.
+5. A jelszó sikeres módosítása után a virtuális tömb újraindulhat. Várjon, amíg az eszköz elindul.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)
 
     Megjelenik az eszköz Windows PowerShell-konzolja és egy folyamatjelző.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image27.png)
-6. A 6–8. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. Ha DHCP-környezetben van, hagyja ki ezeket a lépéseket, és folytassa a 9. lépéssel. Az eszköz nem DHCP-környezetben konzoljához, ha a következő képernyő jelenik meg.
+6. A 6–8. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. Ha DHCP-környezetben van, hagyja ki ezeket a lépéseket, és folytassa a 9. lépéssel. Ha nem DHCP-környezetben indítja el az eszközt, az alábbi képernyő jelenik meg.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image28m.png)
 
     Ezután konfigurálja a hálózatot.
-7. Használja a `Get-HcsIpAddress` paranccsal listát készíthet a hálózati adapterek engedélyezve a virtuális tömb. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
+7. `Get-HcsIpAddress` A parancs használatával listázhatja a virtuális tömbön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Lásd a következő példát:
@@ -190,30 +193,30 @@ Hajtsa végre az alábbi lépéseket a virtuális tömb indítása és csatlakoz
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
-9. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Az IP-cím használatával a webes felhasználói Felületére, a virtuális tömb csatlakozhat, és fejezze be a helyi telepítését és regisztrálását.
+9. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Ezzel az IP-címmel csatlakozhat a virtuális tömb webes felhasználói felületéhez, és elvégezheti a helyi telepítést és regisztrációt.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)
-10. (Nem kötelező) Csak akkor, ha az eszköz a Government Cloud végzi, hajtsa végre ezt a lépést. Mostantól az eszközön az Egyesült Államok Szövetségi információk feldolgozása Standard (FIPS) üzemmód lehetővé teszi. A FIPS 140 szabvány határozza meg, bizalmas adatok védelme az USA szövetségi kormányzati számítógépes rendszerek által jóváhagyott titkosítási algoritmusokat.
+10. Választható Ezt a lépést csak akkor hajtsa végre, ha központilag telepíti az eszközt a kormányzati felhőben. Ekkor engedélyezheti az Egyesült Államok Federal Information Processing standard (FIPS) üzemmódot az eszközön. Az FIPS 140 szabvány a bizalmas adatok védelméhez jóváhagyott titkosítási algoritmusokat határoz meg az USA szövetségi kormányzati számítógépes rendszereinek használatára.
 
-    1. Ahhoz, hogy a FIPS-módban, futtassa a következő parancsmagot:
+    1. Az FIPS mód engedélyezéséhez futtassa a következő parancsmagot:
 
         `Enable-HcsFIPSMode`
-    2. Indítsa újra az eszközt, miután engedélyezte a FIPS-módban, hogy a kriptográfiai ellenőrzések érvénybe léptetéséhez.
+    2. Az FIPS mód engedélyezése után indítsa újra az eszközt, hogy a titkosítási érvényesítések érvénybe lépnek.
 
        > [!NOTE]
-       > Engedélyezheti vagy letilthatja a FIPS-módban az eszközön. Váltakozó az eszköz közötti FIPS és a FIPS módban nem támogatott.
+       > Engedélyezheti vagy letilthatja az eszköz FIPS üzemmódját. Az eszköz az FIPS és a nem FIPS üzemmód közötti váltás nem támogatott.
        >
        >
 
-Ha az eszköz nem felel meg a minimális konfigurációs követelményeinek, láthatja a következő hiba a szalagcím szövegben (lásd alább). Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg a minimális konfigurációs követelményeinek, az 1. lépés: Győződjön meg arról, hogy a gazdagép rendszere megfelel-e a minimális virtual array – követelmények.
+Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, a következő hibaüzenet jelenik meg a szalagcím szövege (lásd alább). Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg az 1. lépésben szükséges minimális konfigurációs követelményeket: Győződjön meg arról, hogy a gazdagéprendszer megfelel a virtuális tömb minimális követelményeinek.
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
-Ha a helyi webes felhasználói felület a kezdeti konfiguráció során bármilyen hiba között, tekintse meg a következő munkafolyamatok:
+Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi webes felhasználói felülettel, tekintse meg a következő munkafolyamatokat:
 
-* Diagnosztikai tesztek futtatása annak [webes felhasználói felület beállításával kapcsolatos hibák elhárítása](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* [Napló csomagjának létrehozása és a naplók](storsimple-ova-web-ui-admin.md#generate-a-log-package).
+* Diagnosztikai tesztek futtatása a [webes felhasználói felület beállításának hibakereséséhez](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
+* [Naplófájlok előállítása és a naplófájlok megtekintése](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
 ## <a name="next-steps"></a>További lépések
-* [Állítsa be a StorSimple Virtual Array fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
-* [Állítsa be a StorSimple Virtual Array egy iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)
+* [A StorSimple virtuális tömb beállítása fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
+* [A StorSimple virtuális tömb beállítása iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)

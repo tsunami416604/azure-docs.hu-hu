@@ -1,7 +1,7 @@
 ---
-title: Használjon és megjelenítési követelményeihez - projekt válaszkeresés
+title: Használati és megjelenítési követelmények – projekt válaszának keresése
 titlesuffix: Azure Cognitive Services
-description: Használja, és megjeleníti a projekt válaszkeresés végpont követelményei.
+description: A Project answer keresési végpontra vonatkozó követelmények használata és megjelenítése.
 services: cognitive-services
 author: mikedodaro
 manager: nitinme
@@ -10,100 +10,101 @@ ms.subservice: answer-search
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 085cb20e4dad92ed55b5ba0914c677aa50f3ac97
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2b42d61fd887f166a08b78510d5eaacb8a7cdcb8
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345753"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706709"
 ---
-# <a name="project-answer-search-use-and-display-requirements"></a>Válaszkeresés projekt használja, és megjelenítési követelményeihez
+# <a name="project-answer-search-use-and-display-requirements"></a>A Project answer keresési használati és megjelenítési követelményei
 
-Használati és megjelenítési követelmények vonatkoznak minden olyan végrehajtása a tartalom és a kapcsolódó információkat, például kapcsolatokat, metaadatokat és egyéb jelekkel, a Bing keresés az Ismeretcikkek között, a Bing egyéni keresés, Entity Search, Képkeresés hívásainak keresztül elérhető Hírkeresési, Videókeresés, vizuális keresés, webes keresés, helyesírás-ellenőrzés és automatikus kiegészítési API-k. Ezek a követelmények kapcsolatos megvalósítási részletei található az a funkciók és az eredmények dokumentációja.
+A használati és megjelenítési követelmények a tartalom és a kapcsolódó információk (például kapcsolatok, metaadatok és egyéb jelek) bármely megvalósítására vonatkoznak a Bing Knowledge Search, Bing Custom Search, Entity Search, Image Search, News Search, Video Search, Visual Search, Web Search, Spell Check és automatikus javaslat API-k. Az ezekkel a követelményekkel kapcsolatos megvalósítási részletek a dokumentációban találhatók az adott funkciókhoz és eredményekhez.
 
-## <a name="1-bing-spell-check-and-bing-autosuggest-api"></a>1. A Bing Spell Check és a Bing Autosuggest API-t.
+## <a name="1-bing-spell-check-and-bing-autosuggest-api"></a>1. Bing Spell Check és Bing Autosuggest API.
 
 nem:
 
-- másolja, tárolni vagy bármilyen adatokat kap, a Bing Spell Check, vagy a Bing Autosuggest API-k
-- a Bing helyesírás-ellenőrzési vagy a Bing Autosuggest API-k olyan gépi tanulási vagy hasonló algoritmikus betanításához részeként kap adatait kiértékelése, vagy javíthatja a új vagy meglévő szolgáltatásokat, amelyek az Ön vagy harmadik felek kínálhatják.
+- a Bing Spell Check fogadott adatok másolása, tárolása vagy gyorsítótárazása, vagy Bing Autosuggest API-k
+- a Bing Spell Check vagy Bing Autosuggest API-kkal kapott adatokkal bármely gépi tanulási vagy hasonló algoritmikus tevékenység részeként betaníthatja, kiértékelheti vagy fejlesztheti azokat az új vagy meglévő szolgáltatásokat, amelyeket Ön vagy harmadik fél is felkínálhat.
 
-## <a name="2-definitions"></a>2. Meghatározások
+## <a name="2-definitions"></a>2. Definíciók
 
-- a válaszban visszaadott eredmények kategória "válasz" hivatkozik. Például a Bing Web Search API válaszára tartalmazhatnak válaszokat a weblap eredmények, kép, videó és hír; kategóriái
-- "response" azt jelenti, hogy minden válaszokat, és a kapcsolódó adatokat egy keresési API-t; egyetlen meghívása válaszként kapott
-- "eredménye" választ információk elemre hivatkozik. Például az olyan egyetlen hír segítségével csatlakoztatott adatok, egy news választ az eredményt.
-- "Keresési API-k" azt jelenti, hogy együttesen, a Bing Custom Search, Entity Search, Képkeresés, News Search, Videókeresés, vizuális keresés és webes keresési API-k. 
+- a "válasz" a válaszban visszaadott eredmények kategóriájára utal. A Bing Web Search API válasza például tartalmazhat válaszokat a weblapok eredményei, a képek, a videók és a hírek kategóriájában;
+- "válasz": a keresési API-ra irányuló egyetlen hívásra válaszként kapott összes válasz és kapcsolódó érték.
+- az "eredmény" a válaszban szereplő információ elemére hivatkozik. Az egyetlen újságcikkhez kapcsolódó adathalmaz például a hírek válaszának eredménye.
+- "Keresési API-k": együttesen, a Bing Custom Search, Entity Search, Image Search, News Search, Video Search, Visual Search és Web Search API-k. 
 
 
 ## <a name="3-search-apis"></a>3. Keresési API-k
 
-Ez a szakasz 3 követelményeit, a keresési API-khoz.
+A 3. szakasz követelményei a keresési API-kra vonatkoznak.
 
-**EGY. Internetes keresési funkciót.** Válaszok szereplő összes adatok csak internetes keresési funkciókat is használhatnak. Egy internetes keresési funkciókat jelenti, hogy a megjelenített, a megfelelő tartalom: 
-- megfelelő és válaszol-e a felhasználó a közvetlen lekérdezés vagy más arra utalhat, hogy a felhasználó keresési érdeklődés, valamint a leképezés (például felhasználói jelzett keresési lekérdezés); 
-- segít a felhasználóknak, keresse meg és nyissa meg az adatforrásokat (például a megadott URL-címek vannak megvalósítva a hivatkozások így a tartalom és tesznek elérhetővé; ilyenek feltűnően jelenik meg az adatokat az kattintható hivatkozás); vagy a Bing Entity Search API, ha jól láthatóan összekapcsolása a bing.com megadott URL-cím, amely lehetővé teszi a felhasználó számára a megfelelő lekérdezés Bing.com; a keresési eredmények között keresse meg a válasz
-- Válassza ki a végfelhasználó, aki több eredményeit tartalmazza (például a news választ, több eredmény jelenik meg vagy ad vissza minden eredményt, ha kevesebb, mint számos); 
-- egy (például a miniatűrök vannak miniatűr arányosan a felhasználó megjelenítendő kép); keresés a célt szolgálják, hogy megfelelő erejéig 
-- magában foglalja a végfelhasználók számára, hogy a tartalom-e az internetes keresési eredmények (például egy utasítást, hogy van-e a tartalom "az internetről"); látható jele és
-- bármely egyéb kombinációjáig terjedhet annak érdekében, hogy a keresési API-kon keresztül fogadott adatok használatát nem sérti semmilyen alkalmazandó jogszabályt vagy külső jogait (például, ha a Creative Commons licencet, a megfelelő licenc betartása a függő entitások megfelelő intézkedéseket tartalmaz feltételek). A részletekért a jogi tanácsadók mértékek lehet meghatározni a megfelelő.
-Az internetes keresési élményt követelmény az egyetlen kivétel van az URL-cím-felderítési szakasz 3E (felderítési URL-cím nem-megjelenítése) következő leírtak szerint. 
+**EGY. Internetes keresési élmény.** A válaszokban visszaadott összes adat csak internetes keresési élményekben használható. Az internetes keresési élmény azt jelenti, hogy a tartalom a megfelelő módon jelenik meg: 
+- fontos és reagál a végfelhasználó közvetlen lekérdezésére vagy a felhasználó keresési érdeklődésének és szándékának (például a felhasználó által jelzett keresési lekérdezés) egyéb jelzésére; 
+- segítségével a felhasználók megkereshetik és megkereshetik az adatforrásokat (például a megadott URL-címeket hiperhivatkozásként kell megvalósítani, hogy a tartalom vagy a hozzárendelés egy kattintható hivatkozás, amely szembetűnően megjelenik az adatokat); Ha Bing Entity Search API, akkor a válaszban megadott bing.com URL-címre mutató hivatkozás látható, amely lehetővé teszi a felhasználó számára, hogy navigáljon a megfelelő lekérdezés keresési eredményeihez a bing.com;
+- több eredményt is tartalmaz, amelyekkel a végfelhasználó kiválaszthat (például a hírekből több találat jelenik meg, vagy ha kevesebb, mint több eredményt ad vissza); 
+- a keresési cél kiszolgálására alkalmas mennyiségre korlátozódik (például a képminiatűrök miniatűr méretűek, a felhasználó megjelenítési arányában); 
+- magában foglalja a végfelhasználó számára, hogy a tartalom internetes keresési eredményei (például egy nyilatkozat arról, hogy a tartalom "a webről"); és
+- tartalmazza a keresési API-k által fogadott adatok használatának biztosításához szükséges bármilyen egyéb megoldást, amely nem sérti a vonatkozó jogszabályokat vagy harmadik felektől származó jogokat (például ha egy Creative Commons licencre támaszkodik, amely megfelel a megfelelő licencnek). feltételek). A jogi tanácsadókkal megtekintheti, hogy milyen mértékekre lehet szükség.
+Az internetes keresési élmény követelményének egyetlen kivétele az URL-címek felderítése a következő szakaszban ismertetett módon: 3E (nem megjelenített URL-cím felderítése). 
 
 **B. Korlátozások.** nem:
 
-- másolja, tárolni vagy válaszok (kivéve a megőrzést az "A szolgáltatás folytonosságának" szakasz alábbi által megengedett legteljesebb mértékben); származó adatok gyorsítótárazása 
-- bármely machine learning vagy hasonló algoritmikus tevékenység részeként a Search API-kon keresztül fogadott adatok használatával betanítani, kiértékelése vagy új vagy meglévő szolgáltatást, amelyek, vagy harmadik felek is javíthatja.
-- az eredmények (más, mint a formázza újra őket úgy, hogy nem felelnek meg minden egyéb követelmény) a tartalmának módosítása, kivéve, ha a törvény vagy; a Microsoft által egyeztetett 
-- hagyja el a felhasználási és eredmény tartalom; társított URL-címek
-- átrendezési, például úgy, hogy elhagyása, a válasz jelenik meg, ha egy rendelés vagy rangsoroló megadott eredményeket (a Bing Custom Search API, ez a szabály nem vonatkozik a customsearch.ai portálon keresztül megvalósított átrendezése), kivéve, ha a törvény vagy a Microsoft által egyeztetett ;
-- úgy, hogy a végfelhasználó számára úgy véli, hogy a többi tartalom része a válasz; vezetne választ bármelyik részét egyéb tartalmakra megjelenítése 
-- hirdetés, amely a Microsoft nem biztosít bármely; választ bármelyik részét megjelenítő lapján megjelenítése – a válaszok (i) a Bing – képek, hírek, vagy a Video Search API-k; hirdetését megjelenítéséhez vagy (ii), amely a szűrt vagy korlátozott elsősorban (vagy kizárólag), kép, hírek és/vagy videó eredményeket.
+- a válaszokból származó adatok másolása, tárolása vagy gyorsítótárazása (kivéve a megőrzési időt, amelyet a "szolgáltatás folytonossága" szakasz a következő szakaszban engedélyez); 
+- a keresési API-k által fogadott adatok felhasználása bármely gépi tanulási vagy hasonló algoritmikus tevékenység keretében az Ön vagy harmadik felek által kínált új vagy meglévő szolgáltatások betanítására, kiértékelésére vagy javítására.
+- az eredmények tartalmának módosítása (kivéve, ha olyan módon formázza őket, amely nem sérti a többi követelményt), hacsak a törvény nem írja elő vagy nem fogadja el a Microsoftot; 
+- kihagyhatja az eredmény tartalmához társított hozzárendeléseket és URL-címeket;
+- Átrendezés, beleértve a kihagyásokat is, a válaszban megjelenő eredmények egy adott megrendelés vagy rangsorolás megadásakor (a Bing Custom Search API esetében ez a szabály nem vonatkozik a customsearch.ai-portálon keresztül megvalósított átrendezésre), kivéve, ha törvény vagy a Microsoft nem fogadta el. ;
+- más tartalmak megjelenítése a válasz bármely részén, ami azt eredményezné, hogy a végfelhasználó azt feltételezi, hogy a másik tartalom a válasz részét képezi. 
+- megjelenítheti a Microsoft által nem biztosított hirdetéseket bármely olyan oldalon, amely a válasz bármely részét megjeleníti; – a Bing-rendszerképből, a hírekből vagy a Video Search API-ból származó válaszokkal (i) kapcsolatos hirdetések megjelenítése; vagy (II) a képek, Hírek és/vagy videók eredményeire elsősorban (vagy kizárólag) szűrve vagy korlátozva.
 
-**C. Értesítések és a Márkakezelés.** 
+**C. Megjegyzések és védjegyezés.** 
 
-- Ezzel a beállítással hangsúlyosan közé tartozik a Microsoft adatvédelmi nyilatkozatában, a funkcionális hivatkozás https://go.microsoft.com/fwlink/?LinkId=521839, a felhasználói felület (UX), amely lehetőséget biztosít a felhasználó adjon meg egy keresési lekérdezést minden pontján közelében. A hivatkozás "A Microsoft Privacy Statement" címkét.
-- Ezzel a beállítással hangsúlyosan megjelenítése a Bing márkajelzési, konzisztens a rendelkezésre álló irányelvek https://go.microsoft.com/fwlink/?linkid=833278, minden pont, amely lehetőséget biztosít a felhasználó adjon meg egy keresési lekérdezést felhasználói közelében.  Ilyen márkajelzési kell egyértelműen jelöl a felhasználó számára, hogy a Microsoft motorja van az internetes keresési funkciót.
-- Előfordulhat, hogy attribútuma, minden válasz (vagy a válasz részét) jelenik meg a Bing webes, kép, hírek és Video API-k a Microsoft leírtak szerint https://go.microsoft.com/fwlink/?linkid=833278, hacsak a Microsoft egyéb megadja írása a használatra. 
-- Nem attribútum válaszok (vagy egyes részeiből válaszok) a Microsoft, a Bing Custom Search API megjelenített, kivéve, ha a Microsoft más módon meghatározza az adott használatra írásban.
+- Kiemelten tartalmaz egy funkcionális hiperhivatkozást a Microsoft adatvédelmi nyilatkozatára, amely https://go.microsoft.com/fwlink/?LinkId=521839 a következő címen érhető el: a felhasználói élmény (UX) minden pontján, amely lehetővé teszi a felhasználó számára a keresési lekérdezés bevitelét. Címkézze fel a "Microsoft adatvédelmi nyilatkozat" hivatkozást.
+- Kiemelten jeleníti meg a Bing branding-et, https://go.microsoft.com/fwlink/?linkid=833278 amely összhangban van a-ben elérhető irányelvekkel, az UX minden pontja közelében, amely lehetővé teszi a felhasználó számára a keresési lekérdezés bevitelét.  Az ilyen védjegyezésnek egyértelműen meg kell jelölnie azt a felhasználót, akit a Microsoft az internetes keresési élményben bekapcsol.
+- A következő https://go.microsoft.com/fwlink/?linkid=833278 témakörben leírtak szerint a Bing web, a képek, a hírek és a videó API-k által megjelenített válaszokat (vagy válaszokat) a Microsoft számára is meghatározhatja, hacsak a Microsoft nem adja meg a használatát. 
+- Ne adjon meg a Bing Custom Search APIból a Microsoftnak megjelenő válaszokat (vagy válaszokat), kivéve, ha a Microsoft másképpen ír az adott használatra.
 
 
-**D. Válaszok átvitel.** Ha engedélyezi az adatátviteli válasz egy keresési API-ból egy másik felhasználó, például egy üzenetküldési alkalmazást vagy a közösségi média könyvelési, az alábbi esetek keresztül: 
-- Átvitt válaszokat kell:
-  - Tartalom, módosítás nélküli való továbbítása során a felhasználónak jelenik meg a válaszok tartalmának a áll (formázási módosítások teljesítménykorlátok);
-  - Nem foglal bele semmilyen adatot metaadatok űrlapon;
-  - A Bing webes, kép, hírek és Video API-k parancsválaszait megjelenítési nyelvét, a válasz jelző lett lekérve egy internetes keresési funkciót, a Bing által működtetett keresztül (például "Szolgáltató által a Bing," "További információ a Bing a lemezkép", vagy a Bing embléma használatával);
-  - A Bing Custom Search API parancsválaszait megjelenítési nyelvét, a válasz jelző lett lekérve keresztül egy internetes keresési funkciókat (például "További információ a keresési eredmények");
-  - Hangsúlyosan jelenítheti meg a teljes lekérdezést, a válasz; létrehozásához használt és
-  - Például egy neves hivatkozás vagy a válasz az alapul szolgáló forrás hasonló tesznek elérhetővé; ilyenek közvetlenül vagy a keresőmotor (bing.com, m.bing.com vagy az egyéni keresési szolgáltatás, társvállalatait) keresztül.
-- Nem, előfordulhat, hogy automatizálhatja a válaszok átvitelét. Egy átviteli egyértelműen részvényalapba történő tanúsító egy célja, hogy a válasz átviteli felhasználói műveletet kell kezdeményeznie.
-- Csak a felhasználó átadó lekérdezést válaszként megjelenített válaszok adatátviteli engedélyezheti.
+**D. Válaszok átvitele.** Ha engedélyezi a felhasználó számára, hogy egy keresési API-ról egy másik felhasználóra vigye át a választ, például egy üzenetküldési alkalmazás vagy egy közösségi média-közzététel segítségével, a következők érvényesek: 
+- Az átvitt válaszoknak a következőket kell tartalmazniuk:
+  - Olyan tartalmat tartalmaz, amely nem módosult az átadó felhasználó számára megjelenített válaszok tartalmától (a formázás módosításai megengedettek);
+  - Nem tartalmaz adatokat a metaadatok űrlapján;
+  - A Bing web, a képek, a hírek és a videó API-któl érkező válaszokért, amely azt jelzi, hogy a válasz a Bing által működtetett internetes keresési élményen (például "a Bing által," "
+  - A Bing Custom Search APIra adott válaszok esetében a válasz internetes keresési élményen (például "További információ a találatról") való megadását jelző nyelv megjelenítése.
+  - Kiemelten megjeleníti a válasz létrehozásához használt teljes lekérdezést. és
+  - Vegyen fel egy kiemelt hivatkozást, vagy hasonlítson a válasz alapjául szolgáló forráshoz, közvetlenül vagy a keresőmotoron keresztül (bing.com, m.bing.com vagy az egyéni keresési szolgáltatáson keresztül).
+- Előfordulhat, hogy nem automatizálja a válaszok átvitelét. Az átvitelt egy felhasználói műveletnek kell kezdeményeznie, amely egyértelműen igazolja a válaszok átvitelének szándékát.
+- Csak akkor engedélyezheti a felhasználók számára, hogy átvigye az átadó felhasználó lekérdezésére adott válaszban megjelenített válaszokat.
 
-**E. A szolgáltatás folytonosságának.** Ne másolja, tárolásához, vagy bármilyen keresési API-válaszok adatainak gyorsítótárba. Ahhoz, hogy a szolgáltatás-hozzáférés és az adatok ábrázolásakor folytonosságának, azonban kizárólag a következő feltételek eredmények megőrzése előfordulhat, hogy:
+**E. A szolgáltatás folytonossága.** Ne másolja, tárolja vagy gyorsítótárazza a keresési API-válaszok adatait. A szolgáltatás-hozzáférés és az adatmegjelenítés folytonosságának lehetővé tételéhez azonban az eredményeket kizárólag az alábbi feltételek teljesülése esetén lehet megőrizni:
 
-**Az eszköz.** Előfordulhat, hogy engedélyezi a végfelhasználó számára a lekérdezés vagy (ii) addig, amíg a felhasználó elküldi a frissített eredményt, egy másik lekérdezést egy eszközön (i) 24 órát is várhatnak a kisebb az eredmények megőrzése, feltéve, hogy a megőrzött eredmények csak akkor használhatók:
+**Eszköz.** Lehetővé teheti a végfelhasználók számára, hogy az eredményeket a lekérdezéstől számított 24 órán belül (i), vagy (II), amíg a végfelhasználó egy másik lekérdezést nem küld a frissített eredményekre, amennyiben a megőrzött eredmények csak a következő adatokhoz használhatók:
 
-- Ahhoz, hogy a végfelhasználó számára, hogy a végfelhasználók számára, hogy az eszközről (például esetén a szolgáltatás megszakadásának); korábban visszaadott eredmények eléréséhez vagy
-- a végfelhasználó jeleket (például esetén várható szolgáltatáskiesést) alapján a felhasználó igényeit várható a személyre szabott proaktív lekérdezésben visszaadott eredményeket tárolja.
+- annak lehetővé tétele, hogy a végfelhasználó hozzáférjen az adott eszközhöz korábban visszaadott eredményekhez (például szolgáltatás megszakítása esetén); vagy
+- a proaktív lekérdezés eredményeinek tárolása személyre szabottan, a végfelhasználók által a végfelhasználói igények alapján várhatóan felszámított módon (például a szolgáltatás megszakadása esetén).
 
-**A kiszolgáló.** Biztonságosan a vezérlőelemet, és csak a megőrzött találatok megjelenítéséhez kiszolgálón egy egyetlen felhasználónak adott eredmények is megőrzése:
+**Server.** Az egyetlen végfelhasználótól származó eredményeket biztonságosan megtarthatja egy olyan kiszolgálón, amelyet Ön vezérel, és csak a megőrzött eredményeket jeleníti meg:
 
-- Ahhoz, hogy a végfelhasználó az eredmények korábban adott vissza a felhasználó a megoldásban, feltéve, hogy az eredmények nem (i) tarthatók 21 napnál hosszabb idő a felhasználó kezdeti lekérdezést a, és (ii) jelenik meg a válasz egy teljes körű u korábbi jelentések eléréséhez új vagy ismétlődő lekérdezés elhasználó; vagy
-- a proaktív lekérdezésben visszaadott eredményeket tárolja személyre szabott várható a végfelhasználó igények esetében a kisebb (i) 24 órával az idő a lekérdezés vagy (ii) addig, amíg a felhasználó elküldi a frissített eredmények egy másik lekérdezést a végfelhasználó jelek alapján.
+- annak lehetővé tétele érdekében, hogy a végfelhasználó hozzáférhessen az adott felhasználóhoz korábban visszaadott eredmények korábbi jelentéseihez a megoldásban, ha az eredmények a végfelhasználó kezdeti lekérdezésének időpontjától számítva több mint 21 napig megmaradnak, és (II) az u végére adott válaszban láthatók. a ser új vagy ismétlődő lekérdezése; vagy
+- a proaktív lekérdezés eredményeinek tárolásához a végfelhasználói igények alapján, a lekérdezés időpontjának (i) 24 órájában, vagy (II) számítva, amíg a végfelhasználó nem küld egy másik lekérdezést a frissített eredményekre.
 
-Minden alkalommal, amikor őrzi, eredményeket egy adott felhasználó nem lehet commingled az eredmények egy másik felhasználó, azaz, az eredményeket a minden felhasználó őrződnek meg kell lehetnek, és külön-külön tartalmazott.
+Ha megtartja, az adott felhasználóhoz tartozó eredmények nem commingled egy másik felhasználó eredményeivel, azaz az egyes felhasználók eredményeit külön kell megőrizni és teljesíteni.
 
-**Általános.** A megőrzött eredmények összes bemutatása:
+**Általános.** A megőrzött eredmények összes megjelenítéséhez:
 
-- egyértelmű, látható az idő a lekérdezés elküldve, értesítést tartalmaznak
-- egy gomb vagy újból lekérdezése, és beszerezni a frissített eredmények hasonló azt jelenti, hogy a felhasználók bemutatásához 
-- a Bing, az eredmények a bemutató márkajelzési megőrzése és
-- Törlés (és szükség esetén egy új lekérdezést a frissítés) a megadott időkeretének meghatározása belül tárolt eredménye.
+- adja meg a lekérdezés elküldésekor megjelenő egyértelmű és látható értesítést.
+- a felhasználó egy gomb vagy hasonló módon jelenik meg az ismételt lekérdezéshez és a frissített eredmények beszerzéséhez. 
+- tartsa meg a Bing védjegyezését az eredmények megjelenítésében, és
+- törölje (és szükség esetén frissítsen egy új lekérdezéssel) a tárolt eredményeket a megadott időkereten belül.
 
-**F. Nem-megjelenítési URL-cím felderítés.** Használhat keresési találatok csak nem internetes keresési funkciókat azzal a céllal, az URL-címei reagálnak a lekérdezést a felhasználó vagy felhasználói információk felderítéséhez. Egy jelentésben vagy (i) kizárólag a felhasználó számára biztosított hasonló válasz is másolhatja az ilyen URL-címek vagy ügyfél, ez a lekérdezés és (ii) hogy válaszként jelentős értékes tartalmakra vonatkozó lekérdezéshez tartalmazza. A használati és megjelenítési követelménynek szakaszok 3A-3E követelményeinek nem vonatkozik ez nem megjelenítendő használati kivételével: 
+**F. Nem megjelenített URL-felderítés.** A keresési válaszokat csak a nem internetes keresési élményekben használhatja arra, hogy a felhasználó vagy az ügyfél által küldött lekérdezésre válaszoló információforrások URL-címeinek felfedésére legyen lehetőség. Az ilyen URL-címeket egy jelentésbe vagy hasonló válaszba másolhatja (i) csak az adott felhasználóra vagy ügyfélre, a lekérdezésre válaszul, és (II), amely a lekérdezéshez szükséges jelentős további értékes tartalmat tartalmazza. A jelen használati és megjelenítési követelmények a 3A – 3. szakaszában szereplő követelmények nem vonatkoznak erre a nem megjeleníthető használatra, kivéve a következőket: 
 
-- Nem kell gyorsítótárazni, másolja, vagy tárol adatokat, vagy a tartalom vagy abból, a keresési választ, nem a korlátozott URL-cím másolása, korábban leírt;
-- Győződjön meg arról, az adatok (az URL-címeket is beleértve) kapott a Search API-k használatát nem sérti semmilyen alkalmazandó jogszabályt vagy külső jogosultságok; és
-- Kell nem használhatja a keresési API-k érkező bármely search-index vagy a machine learning vagy hasonló algoritmikus tevékenység részeként (beleértve az URL-címek) adatokat train létrehozása, kiértékelheti és javíthatja a szolgáltatások, amelyek ajánlhat, vagy harmadik felek.
+- Nem kell gyorsítótárazni, másolni vagy tárolni a keresési válaszból származó adatokat és tartalmakat, illetve nem kell azokat a nem a korábban ismertetett korlátozott URL-címekről lemásolni;
+- Győződjön meg arról, hogy a keresési API-kkal kapott adatok (beleértve a URL-címeket is) nem sértik a vonatkozó jogszabályokat vagy harmadik féltől származó jogokat; és
+- Nem használhatja a keresési API-k által fogadott adatok (beleértve a URL-címeket) a keresési indexek, a gépi tanulási vagy a hasonló algoritmikus tevékenységek részeként, hogy kitanítsa az Ön vagy harmadik felek által kínált szolgáltatásokat.
 
 ## <a name="next-steps"></a>További lépések
-[Válasz Search áttekintése](overview.md)
+[Válaszok keresése – áttekintés](overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Automatikus hangolási e-mail-értesítések a gyakorlati útmutató – Azure SQL Database |} A Microsoft Docs
-description: Az Azure SQL Database-lekérdezések automatikus hangolási e-mail-értesítések engedélyezése.
+title: E-mail-értesítések automatikus finomhangolása útmutató – Azure SQL Database | Microsoft Docs
+description: E-mail-értesítések engedélyezése Azure SQL Database automatikus lekérdezés-hangoláshoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,81 +10,80 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: 0050745ea9d624adb6b7a28d5db91924d1c54b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479446"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569433"
 ---
-# <a name="email-notifications-for-automatic-tuning"></a>Az automatikus hangolási e-mail-értesítések
+# <a name="email-notifications-for-automatic-tuning"></a>Automatikus hangolással kapcsolatos e-mail-értesítések
 
-SQL-adatbázis hangolási ajánlásokat az Azure SQL Database által generált [az automatikus hangolás](sql-database-automatic-tuning.md). Ez a megoldás folyamatosan figyeli és elemzi a számítási feladatok SQL-adatbázisok biztosító testre szabott finomhangolási javaslatai az indexlétrehozást, index törlésre és lekérdezések végrehajtási tervét optimalizálása kapcsolatos minden egyes adatbázis.
+A SQL Database hangolási javaslatok Azure SQL Database [automatikus hangolással](sql-database-automatic-tuning.md)jönnek létre. Ez a megoldás folyamatosan figyeli és elemzi az SQL-adatbázisok munkaterheléseit, amelyek testreszabott hangolási javaslatokat biztosítanak minden egyes adatbázishoz, amely az indexek létrehozásával, az indexelés törlésével és a lekérdezés-végrehajtási tervek optimalizálásával kapcsolatos.
 
-Az SQL Database automatikus finomhangolási javaslatai lehet megtekinteni a [az Azure portal](sql-database-advisor-portal.md), a beolvasott [REST API-val](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) meghívja, vagy a [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) parancsokat. Ez a cikk alapján automatikus hangolási ajánlásokat lekérni egy PowerShell-parancsfájl használatával.
+SQL Database Automatikus hangolási javaslatok megtekinthetők a [Azure Portalban](sql-database-advisor-portal.md), [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) hívásokkal, illetve a [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) -parancsok használatával. Ez a cikk az Automatikus hangolási javaslatok beolvasására szolgáló PowerShell-parancsfájl használatával készült.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>E-mail értesítések automatikus finomhangolási ajánlásait automatizálása
+## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>E-mail-értesítések automatizálása Automatikus hangolási javaslatok esetén
 
-A következő megoldás automatizálja az automatikus finomhangolási ajánlásait tartalmazó e-mail-értesítések küldése. A bemutatott megoldás áll egy PowerShell-szkript használatával hangolási ajánlásokat beolvasása végrehajtásának automatizálása [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), és az ütemezés automation e-mail kézbesítési feladat használatával [Microsoft Flow ](https://flow.microsoft.com).
+Az alábbi megoldás automatizálja az Automatikus hangolási javaslatokat tartalmazó e-mail-értesítések küldését. A leírt megoldás egy PowerShell-parancsfájl végrehajtásának automatizálása a [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)használatával történő hangolási javaslatok beolvasásához és az e-mailek kézbesítési feladatainak [Microsoft flow](https://flow.microsoft.com)használatával történő automatizálásához.
 
-## <a name="create-azure-automation-account"></a>Azure Automation-fiók létrehozása
+## <a name="create-azure-automation-account"></a>Azure Automation fiók létrehozása
 
-Azure Automation használatához az első lépéseként automation-fiók létrehozása és konfigurálása, az Azure-erőforrások PowerShell-parancsprogram végrehajtásának használandó. Azure Automation vagy képességeivel kapcsolatos további információkért lásd: [első lépései az Azure automation](https://docs.microsoft.com/azure/automation/automation-offering-get-started).
+A Azure Automation használatához az első lépés egy Automation-fiók létrehozása és konfigurálása az Azure-erőforrásokkal a PowerShell-parancsfájl végrehajtásához. Ha többet szeretne megtudni a Azure Automation és képességeiről, tekintse meg a [Bevezetés az Azure Automation](https://docs.microsoft.com/azure/automation/automation-offering-get-started)használatába című témakört.
 
-Kövesse az alábbi lépéseket keresztül mód kiválasztása és konfigurálása az Automation-alkalmazások a Marketplace-ről Azure Automation-fiók létrehozása:
+A következő lépésekkel hozhat létre Azure Automation fiókot az Automation-alkalmazás piactéren való kiválasztásának és konfigurálásának módszerével:
 
-- Jelentkezzen be az Azure Portalon
-- Kattintson a " **+ erőforrás létrehozása**" bal felső sarokban található
-- Keresse meg "**Automation**" (nyomja le az enter)
-- Az Automation-alkalmazásban, a keresési eredmények között kattintson
+- Bejelentkezés a Azure Portalba
+- Kattintson a " **+ erőforrás létrehozása**" elemre a bal felső sarokban
+- Keressen rá az "**Automation**" kifejezésre (nyomja le az ENTER billentyűt)
+- Kattintson az Automation alkalmazásra a keresési eredmények között
 
-![Az Azure automation hozzáadása](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
+![Azure Automation hozzáadása](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-- Egyszer "Hozzon létre egy Automation-fiók" ablaktáblájában kattintson "**létrehozás**"
-- Töltse fel a szükséges adatokat: Adja meg az automation-fiók nevét, válassza ki az Azure-előfizetés Azonosítóját és az Azure-erőforrásokat az használható a PowerShell-parancsprogram végrehajtása
-- Az a "**létrehozása Azure-beli futtató fiók**" beállításnál válassza **Igen** alatt melyik PowerShell parancsfájl segítségével az Azure Automation futtató fiók típusú beállításához. Fióktípus esetében kapcsolatos további információkért lásd: [futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
-- Az automation-fiók létrehozása kötnek kattintva **létrehozása**
+- Az "Automation-fiók létrehozása" panelen kattintson a "**Létrehozás**" gombra.
+- Töltse fel a szükséges információkat: adja meg az Automation-fiók nevét, válassza ki a PowerShell-parancsfájl végrehajtásához használni kívánt Azure-előfizetési azonosítót és Azure-erőforrásokat.
+- Az "Azure-beli**futtató fiók létrehozása**" beállításnál válassza az **Igen** lehetőséget a fiók típusának konfigurálásához, amely alatt a PowerShell-szkript fut Azure Automation segítségével. További információ a fiókok típusairól: [futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
+- Az Automation-fiók létrehozásának befejezéséhez kattintson a **Létrehozás** gombra.
 
 > [!TIP]
-> Az Automation-alkalmazás létrehozásakor megadott pontosan jegyezze fel az Azure Automation-fiók neve, előfizetés-azonosító és erőforrások (például a másolás és beillesztés egy jegyzettömbfájlba). Később ezt az információra van szüksége.
+> Rögzítse a Azure Automation fiók nevét, az előfizetés AZONOSÍTÓját és az erőforrásokat (például másolás-beillesztés egy Jegyzettömbbe) pontosan az Automation-alkalmazás létrehozásakor megadott módon. Ezt az információt később kell megadnia.
 >
 
-Ha több Azure-előfizetést, amelynek szeretné az azonos buildelést, ismételje meg ezt a folyamatot a többi előfizetések szeretne.
+Ha több Azure-előfizetéssel is rendelkezik, amelyek esetében ugyanazt az automatizálást szeretné felépíteni, akkor a többi előfizetéshez meg kell ismételnie ezt a folyamatot.
 
-## <a name="update-azure-automation-modules"></a>Azure Automation-modulok frissítése
+## <a name="update-azure-automation-modules"></a>Azure Automation modulok frissítése
 
-A PowerShell parancsfájl beolvasni az automatikus hangolás javaslat [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) és [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) parancsok, mely Azure-modul 4-es vagy újabb verziója szükséges.
+Az Automatikus hangolási javaslat beolvasására szolgáló PowerShell-szkript a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) és a [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) parancsokat használja, amelyekhez szükség van az Azure-modul 4-es vagy újabb verziójára.
 
-- Abban az esetben az Azure-modulok frissíteni kell, lásd: [házirendmodul-támogatás Az Azure Automation](../automation/az-modules.md).
+- Ha az Azure-modulok frissítése szükséges, tekintse meg az [az modul-támogatás Azure Automationban](../automation/az-modules.md)című témakört.
 
-## <a name="create-azure-automation-runbook"></a>Az Azure Automation-Runbook létrehozása
+## <a name="create-azure-automation-runbook"></a>Azure Automation Runbook létrehozása
 
-A következő lépés, hogy egy Runbook létrehozása az Azure Automationben, amelyben finomhangolási javaslatai lekéréséhez a PowerShell-parancsprogram található.
+A következő lépés egy olyan Runbook létrehozása Azure Automation belül, amelyben a hangolási javaslatok lekérésére szolgáló PowerShell-szkript található.
 
-Kövesse az alábbi lépéseket egy új Azure Automation-runbook létrehozása:
+Új Azure Automation runbook létrehozásához kövesse az alábbi lépéseket:
 
-- Az előző lépésben létrehozott Azure Automation-fiók eléréséhez.
-- Egyszer az automatizálási fiók panelen, kattintson az a "**Runbookok**" menüpont egy új Azure Automation-runbook létrehozása a PowerShell-parancsfájlt a bal oldalon. Automation-runbook létrehozásával kapcsolatos további tudnivalókért lásd: [új runbook létrehozásának](../automation/manage-runbooks.md#create-a-runbook).
-- Adjon hozzá egy új runbookot, kattintson a a " **+ forgatókönyv hozzáadása**" menüpont, és kattintson a "**gyors létrehozása – hozzon létre egy új runbookot**".
-- A Runbook panelen írja be a runbook nevét (jelen példában "**AutomaticTuningEmailAutomation**" használt), válassza ki a runbook **PowerShell** írási és olvasási leírása Ez a runbook célra írja le.
-- Kattintson a **létrehozás** gombra az új runbook létrehozásának befejezéséhez
+- Hozzáférés az előző lépésben létrehozott Azure Automation fiókhoz
+- Az Automation-fiók panelen kattintson a bal oldalon található "**runbookok**" menüelemre, és hozzon létre egy új Azure Automation Runbook a PowerShell-parancsfájllal. További információ az Automation-runbookok létrehozásáról: [új Runbook létrehozása](../automation/manage-runbooks.md#create-a-runbook).
+- Új runbook hozzáadásához kattintson a " **+ Runbook hozzáadása**" menüpontra, majd kattintson a "**gyors létrehozás – új runbook létrehozása**" lehetőségre.
+- A Runbook panelen írja be a Runbook nevét (a jelen példában a "**AutomaticTuningEmailAutomation**" kifejezést használja), válassza ki a Runbook típusát powershellként, és írja le a Runbook leírását, hogy leírja a célját.
+- Kattintson a **Létrehozás** gombra egy új runbook létrehozásának befejezéséhez
 
-![Az Azure automation-runbook hozzáadása](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
+![Azure Automation-runbook hozzáadása](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
 
-Kövesse az alábbi lépéseket betölteni egy PowerShell-parancsfájlt a létrehozott runbook belül:
+Kövesse az alábbi lépéseket egy PowerShell-szkript betöltéséhez a létrehozott runbook:
 
-- Belül a "**PowerShell-alapú Runbook szerkesztése**"panelt, válassza"**RUNBOOKOK**" menüben fát, és bontsa ki a nézet, amíg meg nem látja a runbook nevét (ebben a példában " **AutomaticTuningEmailAutomation**"). Válassza ki a runbookot.
-- Az első sort a "PowerShell-Runbook szerkesztése" (a számot 1-től induló), a másolás és beillesztés a következő PowerShell-parancsfájl kódot. A PowerShell parancsfájlpéldát – az első lépésekhez. Módosítsa a parancsfájlt, és a suite az igényeinek.
+- A "**PowerShell-Runbook szerkesztése**" ablaktáblán a menüsávon válassza a "**runbookok**" elemet, és bontsa ki a nézetet, amíg meg nem jelenik a Runbook neve (ebben a példában "**AutomaticTuningEmailAutomation**"). Válassza ki ezt a runbook.
+- A "PowerShell-Runbook szerkesztése" első sorában (az 1. számmal kezdődően) másolja be a következő PowerShell-szkript kódját. Ezt a PowerShell-szkriptet a következő módon biztosítjuk: a kezdéshez. Módosítsa a szkriptet az igényeinek megfelelően.
 
-A fejlécben megadott PowerShell-szkript, ki kell cserélni `<SUBSCRIPTION_ID_WITH_DATABASES>` a az Azure-előfizetés-azonosítójára. Ismerje meg, hogyan kérheti le az Azure-előfizetése Azonosítóját, lásd: [Bevezetés az Azure-előfizetés GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
+A megadott PowerShell-parancsfájl fejlécében le kell cserélnie `<SUBSCRIPTION_ID_WITH_DATABASES>` az Azure-előfizetés azonosítóját. Az Azure-előfizetés AZONOSÍTÓjának beszerzésével kapcsolatos további információkért lásd: [Azure-előfizetés GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)-azonosítójának beolvasása.
 
-Több előfizetés esetén később is hozzáadhatja, vesszővel tagolt a parancsfájl fejlécében "$subscriptions" tulajdonsághoz.
+Több előfizetés esetén felveheti azokat vesszővel elválasztva a parancsfájl fejlécében lévő "$subscriptions" tulajdonságra.
 
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
@@ -171,86 +170,86 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-Kattintson a "**mentése**" gombra a jobb felső sarokban a parancsfájl mentéséhez. Ha elégedett a parancsfájlt, kattintson a "**közzététel**" gombra a runbook közzétételéhez.
+Kattintson a jobb felső sarokban található**Save (Mentés**) gombra a parancsfájl mentéséhez. Ha elégedett a parancsfájllal, kattintson a "**Közzététel**" gombra a runbook közzétételéhez.
 
-A fő runbook ablaktáblán, kattintson a választhatja a "**Start**" gombra kattintva **tesztelése** a parancsfájl. Kattintson a "**kimeneti**" a szkript eredményeinek megtekintése. Ez a kimenet az e-mail tartalma lesz. A szkript kimenetében minta az alábbi képernyőképen látható.
+A fő runbook panelen a "**Start**" gombra kattintva **ellenőrizheti a** parancsfájlt. A "**kimenet**" elemre kattintva megtekintheti a végrehajtott parancsfájl eredményeit. Ez a kimenet lesz az e-mail tartalma. A szkript mintájának kimenete a következő képernyőképen látható.
 
-![Futtatásnézet automatikus finomhangolási javaslatai az Azure Automationnel](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
+![Automatikus hangolási javaslatok megtekintése a Azure Automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
 
-Győződjön meg arról, a tartalom módosítása a PowerShell-parancsfájlt az igényeinek megfelelően testre szabásával.
+Győződjön meg arról, hogy a PowerShell-szkript igényeinek megfelelően testreszabja a tartalmat.
 
-A fenti lépéseket, az automatikus hangolási ajánlásokat lekérni a PowerShell-parancsfájl betöltése az Azure Automationben. A következő lépés, hogy automatizálni, és az e-mailek kézbesítési feladat ütemezése.
+A fenti lépésekkel az Automatikus hangolási javaslatok beolvasására szolgáló PowerShell-szkript betöltődik Azure Automationba. A következő lépés az e-mail kézbesítési feladatok automatizálása és ütemezve.
 
-## <a name="automate-the-email-jobs-with-microsoft-flow"></a>A Microsoft Flow az e-mail-feladatok automatizálása
+## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Az e-mail-feladatok automatizálása Microsoft Flow
 
-A megoldás, mint az utolsó lépés végrehajtásához automation folyamat létrehozása a Microsoft Flow álló három műveletet (feladat):
+A megoldás befejezéséhez az utolsó lépésként hozzon létre egy automatizálási folyamatot Microsoft Flow a három műveletből (feladatok) álló folyamatból:
 
-1. "**Azure Automation - feladat létrehozása**" – automatikus finomhangolási javaslatai az Azure Automation-runbook belül beolvasni a PowerShell-parancsfájl végrehajtása használatos
-2. "**Azure Automation - feladat kimeneti Get**" használt lekérnie a kimenetet a végrehajtott PowerShell-példaszkript –
-3. "**Office 365 Outlook – e-mail küldése**" – küldje el e-mailek használatos. E-mailek az Office 365-fiókkal a folyamatot hoz létre az egyéni küldtünk.
+1. "**Azure Automation – feladatok létrehozása**" – a PowerShell-szkript végrehajtásához használható az Automatikus hangolási javaslatok beolvasásához a Azure Automation runbook
+2. "**Azure Automation – a feladatok kimenetének**beolvasása" – a végrehajtott PowerShell-parancsfájl kimenetének lekéréséhez használatos
+3. "**Office 365 Outlook – E-mail küldése**" – e-mailek küldésére szolgál. Az e-maileket a folyamat létrehozásakor az Office 365-fiókkal küldi el a rendszer.
 
-Microsoft Flow képességeivel kapcsolatos további tudnivalókért lásd: [– első lépések a Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
+Microsoft Flow képességekkel kapcsolatos további tudnivalókért tekintse meg a [Microsoft flow első lépéseivel foglalkozó](https://docs.microsoft.com/flow/getting-started)témakört.
 
-Ebben a lépésben előfeltétele, hogy regisztráljon [Microsoft Flow](https://flow.microsoft.com) fiókot, és jelentkezzen be. Egyszer belül a megoldást, és kövesse az alábbi lépéseket állíthat be egy **új folyamat**:
+Ennek a lépésnek az előfeltétele, hogy regisztráljon a [Microsoft flow](https://flow.microsoft.com) fiókra, és jelentkezzen be. A megoldáson belül a következő lépésekkel állíthatja be az **új folyamatot**:
 
-- Hozzáférés "**saját folyamatok**" menüpont
-- Saját folyamatok belül válassza a " **+ üres folyamat létrehozása**" hivatkozásra a lap tetején
-- Kattintson a hivatkozásra "**keresés több száz összekötő és trigger között**" a lap alján
-- A Keresés mezőbe írja be "**ismétlődési**", és válassza ki "**ütemezés – ismétlődés**" az e-mailek kézbesítési feladat futtatásának ütemezése a keresési eredmények közül.
-- A gyakoriság mezőjében az ismétlődési ablaktáblán jelölje ki az ütemezési gyakoriság ezen folyamat hajtható végre, mint például az automatikus küldése e-mailben minden perc, óra, nap, hét, stb.
+- Hozzáférés**a "saját folyamatok**" menüponthoz
+- A saját folyamatok részen válassza az oldal tetején található " **+ Létrehozás üresből**" hivatkozást.
+- Kattintson a lap alján található "**több száz összekötő és triggerek keresése**" hivatkozásra.
+- A keresőmezőbe írja be az "**Ismétlődés**" kifejezést, majd a keresési eredmények közül válassza az "**ütemterv-ismétlődés**" lehetőséget az e-mail kézbesítési feladatok futtatásának ütemezése érdekében.
+- A gyakoriság mező ismétlődés ablaktábláján válassza ki a folyamat végrehajtásának ütemezési gyakoriságát, például az automatikus e-mailek küldését percenként, óránként, naponta, hetente stb.
 
-A következő lépés, hogy az újonnan létrehozott ismétlődő folyamat hozzáadása (létrehozása, get-kimenet és küldése e-mailben) három feladat. Ehhez a szükséges feladatok hozzáadása a folyamathoz, kövesse az alábbi lépéseket:
+A következő lépés a három feladat hozzáadása (létrehozás, kimenet beolvasása és e-mailek küldése) az újonnan létrehozott ismétlődő folyamathoz. A szükséges feladatok a folyamathoz való hozzáadásához kövesse az alábbi lépéseket:
 
-1. Művelet, amely végrehajtja a hangolási javaslatokat beolvasni a PowerShell-parancsprogram létrehozása
+1. Művelet létrehozása a hangolási javaslatok beolvasására szolgáló PowerShell-parancsfájl végrehajtásához
 
-   - Jelölje be " **+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-   - A Keresés mezőbe írja be "**automation**"és válassza a"**Azure Automation-feladat létrehozása**" a keresési eredmények közül
-   - A létrehozás a feladat panelt konfigurálja a feladat tulajdonságai. Ehhez a konfigurációhoz, szüksége lesz az Azure-előfizetés Azonosítóját, erőforráscsoport és az Automation-fiók részletei **korábban rögzített** , a **Automation-fiók panelen**. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation - feladat létrehozása](https://docs.microsoft.com/connectors/azureautomation/#create-job).
-   - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
+   - Válassza az " **+ új lépés**" elemet, majd a "**művelet hozzáadása**" lehetőséget az ismétlődési folyamat ablaktáblán.
+   - A keresőmezőbe írja be az "**Automation**" kifejezést, és válassza a "**Azure Automation – létrehozási feladatok**" elemet a keresési eredmények közül.
+   - A feladatok létrehozása panelen konfigurálja a feladatok tulajdonságait. Ehhez a konfigurációhoz a korábban az **Automation-fiók panelen** **rögzített** Azure-előfizetési azonosító, erőforráscsoport és Automation-fiók adataira lesz szüksége. Ha többet szeretne megtudni az ebben a szakaszban elérhető beállításokról, olvassa el a [Azure Automation-feladatok létrehozása](https://docs.microsoft.com/connectors/azureautomation/#create-job)című témakört.
+   - A művelet létrehozásához kattintson a "**folyamat mentése**" gombra.
 
-2. Művelet lekérnie a kimenetet a végrehajtott PowerShell-parancsprogram létrehozása
+2. Művelet létrehozása a végrehajtott PowerShell-parancsfájl kimenetének lekéréséhez
 
-   - Jelölje be " **+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-   - A keresés mezőtípusokra "**automation**"és válassza a"**Azure Automation – Get-feladat kimeneti**" a keresési eredmények közül. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation – Get-feladat kimeneti](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
-   - Töltse fel mezők szükséges (hasonló az előző feladat létrehozása) – töltse ki az Azure-előfizetés Azonosítóját, erőforráscsoport, és az Automation-fiók (mivel az Automation-fiók panel be)
-   - Kattintson a mezőbe "**Feladatazonosító**" számára a "**dinamikus tartalom**" menü jelenik meg. A belül ebből a menüből válassza a "**Feladatazonosító**".
-   - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
+   - Válassza az " **+ új lépés**" elemet, majd a "**művelet hozzáadása**" lehetőséget az ismétlődési folyamat ablaktáblán.
+   - A Keresés az "**Automation**" kifejezésre, és válassza a "**Azure Automation – a feladatok kimenetének**beolvasása" lehetőséget a keresési eredmények közül. További információ az ebben a szakaszban elérhető beállításokról: [Azure Automation – feladatok kimenetének](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)beolvasása.
+   - A szükséges mezők feltöltése (az előző feladathoz hasonlóan) – az Azure-előfizetési azonosító, erőforráscsoport és Automation-fiók feltöltése (az Automation-fiók panelen megadott módon)
+   - Kattintson a "**feladatok azonosítója**" mezőre a "**dinamikus tartalom**" menü megjelenítéséhez. A menüben válassza a "**Job ID**" lehetőséget.
+   - A művelet létrehozásához kattintson a "**folyamat mentése**" gombra.
 
-3. Küldje el e-mailt Office 365-integráció használatával művelet létrehozása
+3. Művelet létrehozása e-mailek küldéséhez az Office 365-integráció használatával
 
-   - Jelölje be " **+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-   - A keresés mezőtípusokra "**e-mail küldése**"és válassza a"**Office 365 Outlook – e-mail küldése**" a keresési eredmények közül
-   - Az a "**való**" mezőbe írja be az e-mail-címet, amelyhez szeretne értesítő e-mail küldése
-   - Az a "**tulajdonos**" mezőbe írja be az e-mail tárgya, például "automatikus finomhangolási ajánlásait e-mailes értesítés"
-   - Kattintson a mezőbe "**törzs**" számára a "**dinamikus tartalom**" menü jelenik meg. Az ebben a menüben található alatt "**feladat kimenetének beolvasása**", jelölje be"**tartalom**"
-   - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
+   - Válassza az " **+ új lépés**" elemet, majd a "**művelet hozzáadása**" lehetőséget az ismétlődési folyamat ablaktáblán.
+   - Az "**e-mail küldése**" keresési típusban válassza az "**Office 365 Outlook – e-mail küldése**" lehetőséget a keresési eredmények közül.
+   - A "**to**" mezőbe írja be az e-mail címet, amelyre el kell küldenie az értesítő e-mailt
+   - A "**Tárgy**" mezőbe írja be az e-mail-cím tárgyát, például: "Automatikus hangolási javaslatok e-mail értesítés"
+   - Kattintson a "**törzs**" mezőre a "**dinamikus tartalom**" menü megjelenítéséhez. A menüben a "**feladatok kimenetének**lekérése" területen válassza a "**tartalom**" lehetőséget.
+   - A művelet létrehozásához kattintson a "**folyamat mentése**" gombra.
 
 > [!TIP]
-> Automatikus e-mailek küldése a különböző címzetteknek, hozzon létre külön folyamatokat. Ezek a további folyamatok módosítsa a "To" mező a címzett e-mail-címét, és e-mailek Tárgy mezőjében a "Tulajdonos" mező. Az Azure Automation az új runbookok létrehozása egyéni PowerShell-parancsfájlok (például az módosítása az Azure-előfizetés azonosítója) lehetővé teszi, hogy további testreszabási automatizált forgatókönyvek, például van például e-mailben automatikus finomhangolásával külön címzettek önálló előfizetések javaslatok.
+> Ha automatizált e-maileket szeretne küldeni a különböző címzetteknek, hozzon létre külön folyamatokat. Ezekben a további folyamatokban módosítsa a címzett e-mail-címét a "címzett" mezőbe, az e-mail tárgyát pedig a "subject" (tárgy) mezőbe. A testreszabott PowerShell-parancsfájlokkal (például az Azure-előfizetés AZONOSÍTÓjának módosításával) rendelkező Azure Automation új runbookok létrehozása lehetővé teszi az automatizált forgatókönyvek további testreszabását, például a különálló címzettek automatikus hangolással történő elküldését. javaslatok a különböző előfizetésekhez.
 >
 
-A fenti azt állapítja meg az e-mailek kézbesítési feladat munkafolyamat konfigurálásához szükséges lépéseket. A beépített három műveletet álló teljes folyamat az alábbi képen látható.
+A fenti lépések az e-mail kézbesítési feladatok munkafolyamatának konfigurálásához szükségesek. A három létrehozott műveletből álló teljes folyamat az alábbi képen látható.
 
-![Automatikus hangolási e-mail értesítések folyamat megtekintése](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
+![E-mail-értesítések automatikus finomhangolásának megtekintése](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
 
-A folyamat teszteléséhez, kattintson a "**Futtatás most**" belül a flow-panel jobb felső sarkában.
+A folyamat teszteléséhez kattintson a jobb felső sarokban található "**Futtatás most**" elemre a folyamat ablaktáblán.
 
-Az automatizált feladatokkal, sikeres, küldött e-mail-értesítések megjelenítése a futó statisztika a Flow analytics panelen láthatók.
+Az automatizált feladatok futtatásának statisztikája, amely az e-mail-értesítések sikeres elküldését mutatja be, a flow Analytics panelről is megtekinthető.
 
-![Automatikus hangolási e-mail-értesítések a folyamatnak a futtatásához](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
+![Az e-mailek automatikus hangolására szolgáló folyamat futtatása](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
 
-A Flow analytics hasznos lehet a sikeres, a feladat-végrehajtások figyelése, és ha szükséges.  Hibaelhárítás esetén is érdemes megvizsgálni a PowerShell parancsfájl végrehajtási napló az Azure Automation alkalmazáson keresztül érhető el.
+A flow Analytics hasznos a feladatok végrehajtásának sikerességének figyeléséhez, és ha szükséges a hibaelhárításhoz.  Hibaelhárítás esetén érdemes megvizsgálni a PowerShell-parancsfájl futtatási naplóját Azure Automation alkalmazáson keresztül is.
 
-A végső kimenetet az automatikus e-mail fogadása után ez a megoldás készítése és a következő e-mail hasonlóan néz ki:
+Az automatizált e-mailek végső kimenete a megoldás kiépítése és futtatása után a következő e-mailekhez hasonlóan néz ki:
 
-![E-mailek mintakimenete automatikus hangolási e-mail-értesítések](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
+![Minta e-mail-kimenet Automatikus hangolási e-mail-értesítésekből](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
 
-A PowerShell-parancsfájl módosításával módosíthatja a kimenet és az automatikus e-mailt az igényeinek megfelelően formázását.
+A PowerShell-szkript módosításával beállíthatja az automatikus e-mailek kimenetét és formázását az igényeinek megfelelően.
 
-Előfordulhat, hogy további testre szabhatja a megoldást hozhat létre egy adott hangolási esemény alapján, és több címzettnek több előfizetést vagy adatbázisok függően az egyéni példahelyzetekre e-mail-értesítéseket.
+Előfordulhat, hogy a megoldás egy adott hangolási eseményen, illetve több címzettnél, több előfizetéshez vagy adatbázishoz való kiépítéséhez az egyéni forgatókönyvek függvényében tovább testreszabja a megoldást.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, további az automatikus hangolás segíthetnek adatbázis-teljesítmény javítása, lásd: [az Azure SQL Database automatikus finomhangolása](sql-database-automatic-tuning.md).
-- Engedélyezheti a a számítási feladatok kezelése Azure SQL Database automatikus finomhangolása [automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md).
-- Manuálisan ellenőrizze és az automatikus finomhangolási javaslatai vonatkoznak [keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása](sql-database-advisor-portal.md).
+- További információ arról, hogy az automatikus hangolás hogyan segít az adatbázisok teljesítményének javításában: [Azure SQL Database automatikus finomhangolása](sql-database-automatic-tuning.md).
+- A számítási feladatok kezeléséhez Azure SQL Database automatikus hangolásának engedélyezéséhez tekintse meg az [automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md)című témakört.
+- Az Automatikus hangolási javaslatok manuális áttekintéséhez és alkalmazásához tekintse [meg a teljesítményre vonatkozó javaslatok keresése és alkalmazása](sql-database-advisor-portal.md)című témakört.

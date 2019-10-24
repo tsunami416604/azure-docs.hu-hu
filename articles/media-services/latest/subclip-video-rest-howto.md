@@ -1,6 +1,6 @@
 ---
-title: Részklip egy videót, amikor a kódolás az Azure Media Services REST API
-description: Ez a témakör ismerteti, hogyan részklip egy videót, amikor a kódolás az Azure Media Serviceshez REST segítségével
+title: Videó kivágása Azure Media Services REST API kódolásakor
+description: Ez a témakör azt ismerteti, hogyan lehet videót alklipet használni Azure Media Services REST használatával történő kódoláskor
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,41 +13,41 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: df8c8a4040b4aae4379b4bfe0e9a16337588dd1b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304895"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704450"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Részklip egy videót, amikor a kódolás a Media Services – REST
+# <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Videó kivágása Media Services-REST kódolással
 
-Trim vagy a videó részklip használatával kódolás esetén egy [feladat](https://docs.microsoft.com/rest/api/media/jobs). Ez a funkció együttműködik bármely [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) épül fel, amelyek segítségével a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) készleteket, vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) készletek. 
+Ha feladatokkal kódolja a videót, levágja vagy alklipet készíthet. [](https://docs.microsoft.com/rest/api/media/jobs) Ez a funkció a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik. 
 
-Ebben a témakörben a REST-példa létrehoz egy feladatot, amely egy videót levágja, a kódolási feladatokat a helyrendszerekre. 
+A témakör REST példája egy olyan feladatot hoz létre, amely egy kódolási feladatot elküldő videót metsz el. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben a témakörben leírt lépések elvégzéséhez kell:
 
-- [Az Azure Media Services-fiók létrehozása](create-account-cli-how-to.md).
+- [Hozzon létre egy Azure Media Services fiókot](create-account-cli-how-to.md).
 - [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md).
     
-    Kövesse a témakör az utolsó lépés [lekérése az Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
-- Hozzon létre egy-egy átalakítási és a egy kimeneti objektumok. Láthatja, hogyan hozhat létre egy-egy átalakítási és a egy kimeneti az eszközök a [URL-cím alapján egy távoli fájl kódolása és streamelése a videó - REST](stream-files-tutorial-with-rest.md) oktatóanyag.
-- Tekintse át a [kódolás fogalom](encoding-concept.md) témakör.
+    Ügyeljen arra, hogy kövesse az [Azure ad-token](media-rest-apis-with-postman.md#get-azure-ad-token)beszerzése című témakör utolsó lépését. 
+- Hozzon létre egy átalakítót és egy kimeneti eszközt. Megtudhatja, hogyan hozhat létre átalakítót és kimeneti eszközöket a [Távoli fájl kódolása URL-cím alapján, és hogyan továbbíthatja a videó – Rest](stream-files-tutorial-with-rest.md) oktatóanyagot.
+- Tekintse át a [kódolási koncepcióval](encoding-concept.md) foglalkozó témakört.
 
-## <a name="create-a-subclipping-job"></a>Részklipkészítés feladat létrehozása
+## <a name="create-a-subclipping-job"></a>Kivágási feladatok létrehozása
 
-1. Válassza ki a letöltött Postman-gyűjteményben, **átalakítások és feladatok** -> **feladat létrehozása a Sub levágott**.
+1. A letöltött Poster-gyűjteményben válassza az **átalakítások és feladatok** -> **létrehozási feladat az alárendelt**levágással lehetőséget.
     
-    A **PUT** kérelem néz ki:
+    A **put** -kérés így néz ki:
     
     ```
     https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
     ```
-1. Frissítse az átalakítási neve "transformName" környezeti változó értékét. 
-1. Válassza ki a **törzs** lapra, és a "myOutputAsset" frissítse a kimeneti objektum nevét.
+1. Frissítse a "transformName" környezeti változó értékét az átalakító nevével. 
+1. Válassza a **törzs** fület, és frissítse a "MyOutputAsset" értéket a kimeneti objektum nevével.
 
     ```
     {
@@ -82,8 +82,8 @@ Az ebben a témakörben leírt lépések elvégzéséhez kell:
     ```
 1. Kattintson a **Küldés** gombra.
 
-    Megjelenik a **válasz** lett létrehozva, valamint elküldött egy feladattal kapcsolatos információkat és a feladat állapotát. 
+    Ekkor megjelenik a **Válasz** a létrehozott és elküldött feladatra vonatkozó információkkal, valamint a feladatok állapotával. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az egyéni átalakítási kódolása](custom-preset-rest-howto.md) 
+[Kódolás egyéni átalakítással](custom-preset-rest-howto.md) 
