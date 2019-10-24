@@ -6,12 +6,12 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: 7b3a21f3cfee806dc94353e0bc6c11e88641ea34
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 7dc3934f486b205febd5be3c0b484dfd2c97bb8f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827520"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755544"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Törölt App Service-alkalmazás visszaállítása a PowerShell használatával
 
@@ -19,7 +19,7 @@ Ha véletlenül törölte az alkalmazást Azure App Serviceban, visszaállíthat
 
 ## <a name="list-deleted-apps"></a>Törölt alkalmazások listázása
 
-A törölt alkalmazások gyűjteményének lekéréséhez használhatja `Get-AzDeletedWebApp`a következőt:.
+A törölt alkalmazások gyűjteményének beszerzéséhez használhatja a `Get-AzDeletedWebApp`.
 
 A következő használható egy adott törölt alkalmazás részletei:
 
@@ -29,17 +29,17 @@ Get-AzDeletedWebApp -Name <your_deleted_app>
 
 A részletes információk a következők:
 
-- **DeletedSiteId**: Az alkalmazás egyedi azonosítója, amelyet olyan helyzetekben kell használni, amikor már több azonos nevű alkalmazás is törölve lett
-- **SubscriptionID**: A törölt erőforrást tartalmazó előfizetés
-- **Hely**: Az eredeti alkalmazás helye
-- **ResourceGroupName**: Az eredeti erőforráscsoport neve
-- **Név**: Az eredeti alkalmazás neve.
+- **DeletedSiteId**: az alkalmazás egyedi azonosítója, amelyet olyan helyzetekben kell használni, amikor már több azonos nevű alkalmazás is törölve lett
+- **SubscriptionID**: a törölt erőforrást tartalmazó előfizetés
+- **Hely**: az eredeti alkalmazás helye
+- **ResourceGroupName**: az eredeti erőforráscsoport neve
+- **Name (név**): az eredeti alkalmazás neve.
 - **Tárolóhely**: a tárolóhely neve.
 - **Törlés időpontja**: Mikor lett törölve az alkalmazás  
 
 ## <a name="restore-deleted-app"></a>Törölt alkalmazás visszaállítása
 
-Miután azonosította a visszaállítani kívánt alkalmazást, visszaállíthatja azt a használatával `Restore-AzDeletedWebApp`.
+Miután azonosította a visszaállítani kívánt alkalmazást, `Restore-AzDeletedWebApp` használatával visszaállíthatja.
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
@@ -47,10 +47,14 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 A következő parancs bemenetei:
 
-- **Erőforráscsoport**: Cél erőforráscsoport, amelyben az alkalmazás vissza lesz állítva
-- **Név**: Az alkalmazás nevének globálisan egyedinek kell lennie.
-- **TargetAppServicePlanName**: Az alkalmazáshoz kapcsolódó App Service csomag
+- **Erőforráscsoport**: cél erőforráscsoport, amelyben az alkalmazás vissza lesz állítva
+- **Név**: az alkalmazás nevének globálisan egyedinek kell lennie.
+- **TargetAppServicePlanName**: app Service az alkalmazáshoz társított csomag
 
-Alapértelmezés `Restore-AzDeletedWebApp` szerint az alkalmazás konfigurációját és tartalmát is visszaállítja a rendszer. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
+Alapértelmezés szerint a `Restore-AzDeletedWebApp` az alkalmazás konfigurációját és tartalmát is visszaállítja. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
 
-A teljes parancsmagot-hivatkozás itt található: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).
+> [!NOTE]
+> Ha az alkalmazás futott, majd törölve lett egy App Service Environment, akkor csak akkor állítható vissza, ha a megfelelő App Service Environment továbbra is létezik.
+>
+
+A teljes parancsmagot-hivatkozást itt találja: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

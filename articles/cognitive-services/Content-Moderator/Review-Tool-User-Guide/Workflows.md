@@ -3,27 +3,27 @@ title: Tartalom-munkafolyamatok definiálása és használata a felülvizsgálat
 titleSuffix: Azure Cognitive Services
 description: Az Azure Content Moderator Munkafolyamat-tervezővel egyéni munkafolyamatokat és küszöbértékeket adhat meg a tartalmi szabályzatok alapján.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: sajagtap
-ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882702"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754256"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Moderálási munkafolyamatok definiálása és használata
 
-Ebből az útmutatóból megtudhatja, hogyan állíthatja be és használhatja [](../review-api.md#workflows) a munkafolyamatokat a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) webhelyén. A munkafolyamatok olyan felhőalapú testreszabott szűrők, amelyek segítségével hatékonyabban kezelheti a tartalmakat. A munkafolyamatok számos szolgáltatáshoz kapcsolódhatnak, hogy különböző módokon szűrje a tartalmakat, majd a megfelelő műveletet hajtsa végre. Ez az útmutató bemutatja, hogyan használhatja a Content Moderator-összekötőt (amely alapértelmezés szerint megtalálható) a tartalom szűréséhez és az emberi felülvizsgálatok egy tipikus moderálási forgatókönyvben való beállításához.
+Ebből az útmutatóból megtudhatja, hogyan állíthatja be és használhatja a [munkafolyamatokat](../review-api.md#workflows) a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) webhelyén. A munkafolyamatok olyan felhőalapú testreszabott szűrők, amelyek segítségével hatékonyabban kezelheti a tartalmakat. A munkafolyamatok számos szolgáltatáshoz kapcsolódhatnak, hogy különböző módokon szűrje a tartalmakat, majd a megfelelő műveletet hajtsa végre. Ez az útmutató bemutatja, hogyan használhatja a Content Moderator-összekötőt (amely alapértelmezés szerint megtalálható) a tartalom szűréséhez és az emberi felülvizsgálatok egy tipikus moderálási forgatókönyvben való beállításához.
 
 ## <a name="create-a-new-workflow"></a>Új munkafolyamat létrehozása
 
-Lépjen a [Content moderator felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/) , és jelentkezzen be. A **Beállítások** lapon válassza a munkafolyamatok lehetőséget.
+Lépjen a [Content moderator felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/) , és jelentkezzen be. A **Beállítások** lapon válassza a **munkafolyamatok**lehetőséget.
 
 ![Munkafolyamatok beállítása](images/2-workflows-0.png)
 
@@ -51,7 +51,7 @@ Válassza ki a használni kívánt kimenetet, és adja meg a feltételeket, hogy
 
 ### <a name="define-the-action"></a>A művelet megadása
 
-Lépjen a következő szakaszra, ahol kiválaszthat egy műveletet. Az alábbi példa egy rendszerkép-áttekintést hoz létre, és hozzárendel egy címkét. Opcionálisan hozzáadhat egy alternatív (más) útvonalat is, és beállíthat egy műveletet is.
+Lépjen a következő **szakaszra** , ahol kiválaszthat egy műveletet. Az alábbi példa egy rendszerkép-áttekintést hoz létre, és hozzárendel egy címkét. Opcionálisan hozzáadhat egy alternatív (más) útvonalat is, és beállíthat egy műveletet is.
 
 ![Munkafolyamat-művelet definiálása](images/image-workflow-action.PNG)
 
@@ -61,7 +61,7 @@ Jegyezze fel a munkafolyamat nevét; a (z) munkafolyamat-API-val való moderál�
 
 ## <a name="test-the-workflow"></a>A munkafolyamat tesztelése
 
-Most, hogy definiált egy egyéni munkafolyamatot, tesztelje a minta tartalmával. Nyissa meg a munkafolyamatokat, és válassza ki a megfelelő **végrehajtási munkafolyamat** gombot.
+Most, hogy definiált egy egyéni munkafolyamatot, tesztelje a minta tartalmával. Nyissa meg a **munkafolyamatokat** , és válassza ki a megfelelő **végrehajtási munkafolyamat** gombot.
 
 ![Munkafolyamat-teszt](images/image-workflow-execute.PNG)
 
@@ -81,6 +81,6 @@ Lépjen a **képek** lapra az **Áttekintés** területen, és ellenőrizze, hog
 
 ![Rendszerképek felülvizsgálata](images/image-workflow-review.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az útmutatóból megtudhatta, hogyan állíthatja be és használhatja a moderációs munkafolyamatokat a Content Moderator [felülvizsgálati eszközről](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-workflow.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon a munkafolyamatokat.

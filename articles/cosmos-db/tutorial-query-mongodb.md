@@ -1,28 +1,28 @@
 ---
-title: Az Azure Cosmos DB API adatok lekérdezése a mongodb-hez
-description: Ismerje meg, hogyan kérdezhet le adatokat az Azure Cosmos DB API a mongodb-hez.
-author: rimman
-ms.author: rimman
+title: Adatlekérdezés Azure Cosmos DB API-val a MongoDB-hez
+description: Ismerje meg, hogyan kérdezheti le az adatlekérdezéseket Azure Cosmos DB API-MongoDB.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 40385524e85f950fb32b69817fec27d842370736
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727148"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754762"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lekérdezése a mongodb-hez készült Azure Cosmos DB API használatával
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatlekérdezés Azure Cosmos DB API-MongoDB használatával
 
-A [Azure Cosmos DB MongoDB API-](mongodb-introduction.md) támogatja [MongoDB lekérdezések](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+A [Azure Cosmos db API-MongoDB](mongodb-introduction.md) támogatja a [MongoDB-lekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * A MongoDB shell használatával Cosmos-adatbázisban tárolt adatok lekérdezése
+> * A Cosmos-adatbázisban tárolt adatlekérdezés a MongoDB Shell használatával
 
 Az első lépésekhez segítséget nyújtanak a jelen dokumentum példái és az alábbi videó, amely az [Azure Cosmos DB MongoDB-felületről történő lekérdezését](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ismerteti.
 
@@ -297,12 +297,12 @@ A következő lekérdezés visszaadja az összes olyan családot, ahol a gyermek
 
 Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gyermek van. Ez a lekérdezés csak akkor lesz sikeres, és adja vissza a teljes dokumentumot, ha a paraméter értéke 2.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtudhatta, hogyan lehet lekérdezni a Cosmos DB API használatával a mongodb-hez
+> * Megtanultuk, hogyan lehet lekérdezni a Cosmos DB API-ját a MongoDB-hez
 
 Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 

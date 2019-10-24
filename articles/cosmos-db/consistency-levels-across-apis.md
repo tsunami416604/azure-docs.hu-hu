@@ -1,18 +1,18 @@
 ---
 title: Konzisztenciaszintek és Azure Cosmos DB API-k
 description: A Azure Cosmos DB API-k közötti konzisztencia-szintek megismerése.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 26cea6243a8b6d06c132325f0b2fe830c4030e9d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 6779e434339935b64440d7cf617c8946338e36e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467776"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756982"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
@@ -53,10 +53,10 @@ Az alábbi táblázat bemutatja, hogyan vannak leképezve a natív MongoDB írá
 
 [![MongoDB konzisztencia-modell leképezése](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a konzisztencia szintjeiről és a Azure Cosmos DB API-k és a nyílt forráskódú API-k közötti kompatibilitásról. Lásd az alábbi cikkeket:
 
-* [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
+* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
 * [A Azure Cosmos DB API-MongoDB által támogatott MongoDB-funkciók](mongodb-feature-support.md)
 * [Az Azure Cosmos DB által támogatott Apache Cassandra-funkciók Cassandra API](cassandra-support.md)

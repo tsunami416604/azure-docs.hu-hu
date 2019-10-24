@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Kompatibilis külső szoftverek |} A Microsoft Docs'
-description: Harmadik féltől származó szoftverekkel, amely együttműködik az Azure Active Directory Domain Services
+title: Kompatibilis harmadik féltől származó szoftver a Azure AD Domain Serviceshoz | Microsoft Docs
+description: Külső gyártótól származó szoftver, amely együttműködik Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: iainfou
-ms.openlocfilehash: 7d0130c3489d29f4e6b0fbe42f184dd06f17bbd7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f5a633a49a0f7b99da4eac08a527d17299aa34b9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473787"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754456"
 ---
-# <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Kompatibilis az Azure AD tartományi szolgáltatások harmadik féltől származó szoftverek
+# <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Külső gyártótól származó szoftverekkel kompatibilis Azure AD Domain Services
 
-## <a name="one-identity-authentication-services"></a>Egyetlen identitás hitelesítési szolgáltatások
+## <a name="one-identity-authentication-services"></a>Egy identitás-hitelesítési szolgáltatás
 
-![Egyetlen identitás](./media/compatible-software-icons/OneIdentity.png)
+![Egy identitás](./media/compatible-software-icons/OneIdentity.png)
 
-Egy identitás-hitelesítési szolgáltatások lehetővé teszi, hogy a Mac OS X, Unix és Linux rendszerek használandó a hozzáférést, hitelesítés és engedélyezés a szervezet meglévő Active Directory (AD) infrastruktúra. Hitelesítési szolgáltatások mostantól támogatja az Azure Active Directory tartományi szolgáltatások engedélyezése nem Windows-erőforrásokat az azonos következő generációs platform, amelyek már használják a meglévő SaaS-megoldások használatához.
+Az egyik identitás-hitelesítési szolgáltatás lehetővé teszi, hogy a UNIX, Linux és Mac OS X rendszerek a szervezet meglévő Active Directory (AD-) infrastruktúrájának hozzáférését, hitelesítését és engedélyezését használják. A hitelesítési szolgáltatások mostantól támogatják Azure Active Directory Domain Services a nem Windows rendszerű erőforrások használatát, hogy ugyanazt a következő generációs platformot használják, amelyet meglévő SaaS-megoldásai már használnak.
 
-[Egyetlen identitás hitelesítési szolgáltatások](https://www.quest.com/products/authentication-services/)
+[Egy identitás-hitelesítési szolgáltatás](https://www.quest.com/products/authentication-services/)
 
-[Tudásbáziscikk - hitelesítési szolgáltatások használata egy identitást, az Azure AD tartományi szolgáltatásokkal](https://support.quest.com/authentication-services/kb/208427)
+[TUDÁSBÁZISCIKK – egyetlen identitás-hitelesítési szolgáltatás használata Azure AD Domain Services](https://support.quest.com/authentication-services/kb/208427)
 
 
 ## <a name="red-hat-enterprise-linux"></a>Red Hat Enterprise Linux
 
 ![Red Hat](./media/compatible-software-icons/RedHat.png)
 
-Red Hat Enterprise Linux a világ vezető enterprise Linux rendszeren is, ha a mai modern nagyvállalati. Red Hat Enterprise Linux esetén a Microsoft Azure enterprise Linux virtuális gép (VM) számítási feladatokat az elsődleges választani. Red Hat Enterprise Linux egy, az üzleti szempontból kritikus fontosságú számítási feladatokhoz – az adatközpontból az Azure felhőbe – szorosan által támogatott üzembe helyezési rugalmasságot biztosíthat kívánó ügyfelek számára készült nyílt, megbízható és biztonságos platform integrált, nagyvállalati szintű támogatásra Red Hat és Microsoft.
+Red Hat Enterprise Linux a világ vezető nagyvállalati linuxos platformja, amely a mai modern nagyvállalati igények kielégítésére készült. A Red Hat Enterprise Linux a nagyvállalati Linux rendszerű virtuális gépek (VM) számítási feladatainak elsődleges választása a Microsoft Azure. A Red Hat Enterprise Linux egy nyílt, megbízható és biztonságos platform, amely az üzleti szempontból kritikus fontosságú számítási feladatokhoz, az adatközpontból az Azure-felhőbe, és szorosan integrált, nagyvállalati szintű támogatással rendelkező ügyfelek számára készült. Red Hat és a Microsoft.
 
-[Csatlakozzon a Red Hat Enterprise Linux 7.2 rendszerű virtuális gép az Azure AD tartományi szolgáltatásokra](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+[Red Hat Enterprise Linux 7,2 virtuális gép csatlakoztatása Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

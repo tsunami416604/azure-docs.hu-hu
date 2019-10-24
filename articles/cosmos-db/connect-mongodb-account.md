@@ -1,75 +1,75 @@
 ---
-title: Egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása
-description: Ismerje meg, a MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez.
-author: rimman
+title: MongoDB-alkalmazás összekötése Azure Cosmos DB
+description: Ismerje meg, hogyan csatlakoztatható a MongoDB-alkalmazás a Azure Cosmos DBhoz.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: dabce19d60a380b47d3583dedb5c11303f416ce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30b37b86bbe0e91887932423fa1884d8bd49333c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978702"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757007"
 ---
-# <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása
-Ismerje meg, a MongoDB-alkalmazás csatlakoztatása egy Azure Cosmos DB MongoDB-kapcsolati karakterlánc használatával. Az adatok egy Azure Cosmos database ezután használhatja a MongoDB-alkalmazást az áruházból. 
+# <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB-alkalmazás összekötése Azure Cosmos DB
+Megtudhatja, hogyan csatlakoztathatja a MongoDB-alkalmazást egy Azure Cosmos DBhoz egy MongoDB kapcsolati sztring használatával. Ezután egy Azure Cosmos-adatbázist is használhat a MongoDB-alkalmazás adattárában. 
 
-Ebben az oktatóanyagban a kapcsolati sztring adatainak lekéréséhez két lehetőséget biztosít:
+Ez az oktatóanyag két módszert biztosít a kapcsolódási karakterlánc adatainak lekérésére:
 
-- [A rövid útmutató metódus](#QuickstartConnection), .NET, Node.js, a MongoDB Shell, Java és Python-illesztőprogramok való használatra
-- [Az egyéni kapcsolati karakterlánc mód](#GetCustomConnection), más illesztőprogramok való használatra
+- [A](#QuickstartConnection)gyors üzembe helyezési módszer .net-, Node. js-, MongoDB-rendszerhéj-, Java-és Python-illesztőprogramokkal való használatra
+- [Az egyéni kapcsolatok karakterláncának módszere](#GetCustomConnection), a más illesztőprogramokkal való használathoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-fiók. Ha nem rendelkezik Azure-fiókkal, hozzon létre egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/) most. 
-- Cosmos-fiók. Útmutatásért lásd: [-webalkalmazás létrehozása Azure Cosmos DB API a mongodb-hez és a .NET SDK használatával](create-mongodb-dotnet.md).
+- Egy Azure-fiók. Ha nem rendelkezik Azure-fiókkal, hozzon létre most egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) . 
+- Egy Cosmos-fiók. Útmutatásért lásd: [Webalkalmazás létrehozása a MongoDB és a .net SDK-hoz készült Azure Cosmos db API-](create-mongodb-dotnet.md)val.
 
-## <a id="QuickstartConnection"></a>A gyors üzembe helyezési használatával a MongoDB-kapcsolati sztring lekérése
-1. Egy böngészőből, jelentkezzen be a [az Azure portal](https://portal.azure.com).
-2. Az a **Azure Cosmos DB** panelen válassza ki az API-t. 
-3. A fiók panel bal oldali panelen kattintson a **gyors üzembe helyezési**. 
-4. Válassza ki a platformot ( **.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Ha nem látja, hogy az illesztőprogram vagy eszköz szerepel a listán, ne aggódjon – a Microsoft folyamatosan a dokumentum további kapcsolat-kódtöredékek. Várjuk a megjegyzéseket alább az Önnek tetszőt megtekintéséhez. Ismerje meg, hogyan írhat saját kapcsolatot, olvassa el [a fiók kapcsolati sztringek adatainak lekérése](#GetCustomConnection).
-5. Másolja és illessze be a kódrészletet a MongoDB-alkalmazást.
+## <a id="QuickstartConnection"></a>A MongoDB-kapcsolatok karakterláncának beolvasása a gyors üzembe helyezés használatával
+1. Egy böngészőben jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+2. A **Azure Cosmos db** panelen válassza ki az API-t. 
+3. A fiók panel bal oldali paneljén kattintson a **gyors üzembe helyezés**elemre. 
+4. Válassza ki a platformot ( **.net**, **Node. js**, **MongoDB Shell**, **Java**, **Python**). Ha nem látja a felsorolt illesztőprogramot vagy eszközt, ne aggódjon – a további kapcsolatok kódrészleteit folyamatosan dokumentáljuk. Kérjük, írja le alább, hogy mit szeretne látni. Ha szeretné megismerni a saját kapcsolatok kiépítésének módját, olvassa el [a fiók kapcsolódási karakterláncával kapcsolatos információkat](#GetCustomConnection).
+5. Másolja és illessze be a kódrészletet a MongoDB alkalmazásba.
 
-    ![Gyors üzembe helyezési panel](./media/connect-mongodb-account/QuickStartBlade.png)
+    ![Gyors üzembe helyezés panel](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a> Testreszabhatja a MongoDB kapcsolati sztring lekérése
-1. Egy böngészőből, jelentkezzen be a [az Azure portal](https://portal.azure.com).
-2. Az a **Azure Cosmos DB** panelen válassza ki az API-t. 
-3. A fiók panel bal oldali panelen kattintson a **kapcsolati karakterlánc**. 
-4. A **kapcsolati karakterlánc** panel nyílik meg. Egy illesztőprogram a mongodb-hez, beleértve a preconstructed kapcsolati karakterlánc használatával kapcsolódni a fiókjához szükséges összes információt tartalmaz.
+## <a id="GetCustomConnection"></a>A MongoDB-kapcsolatok karakterláncának beolvasása a testreszabáshoz
+1. Egy böngészőben jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+2. A **Azure Cosmos db** panelen válassza ki az API-t. 
+3. A fiók panel bal oldali ablaktábláján kattintson a **kapcsolatok karakterlánc**elemre. 
+4. Megnyílik a **kapcsolatok karakterlánca** panel. Minden olyan információt tartalmaz, amely a fiókhoz való kapcsolódáshoz szükséges a MongoDB illesztőprogramjának használatával, beleértve az előépített kapcsolati karakterláncot is.
 
     ![Kapcsolati sztring panel](./media/connect-mongodb-account/ConnectionStringBlade.png)
 
-## <a name="connection-string-requirements"></a>Kapcsolati karakterlánc követelmények
+## <a name="connection-string-requirements"></a>A kapcsolatok karakterláncának követelményei
 > [!Important]
-> Az Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. Az Azure Cosmos DB-fiókokhoz hitelesítés és a biztonságos kommunikáció keresztül szükséges *SSL*. 
+> Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. Azure Cosmos DB fiókoknak hitelesítésre és biztonságos kommunikációra van szükségük *SSL*-n keresztül. 
 >
 >
 
-Az Azure Cosmos DB támogatja a standard szintű MongoDB kapcsolati URI karakterláncként, van azonban néhány konkrét követelmények: Az Azure Cosmos DB-fiókokhoz hitelesítés és biztonságos SSL-kommunikációra van szükség. Így a kapcsolati karakterlánc formátuma a következő:
+A Azure Cosmos DB támogatja a szabványos MongoDB-kapcsolati karakterlánc URI-formátumát, amely több konkrét követelménynek is eleget tesz: az Azure Cosmos DB fiókoknak hitelesítésre és biztonságos kommunikációra van szükségük az SSL Tehát a kapcsolatok karakterláncának formátuma a következőket teszi:
 
     mongodb://username:password@host:port/[database]?ssl=true
 
-Ez a karakterlánc értékét érhetők el a **kapcsolati karakterlánc** korábban bemutatott panelen:
+A karakterlánc értékei a korábban látható **kapcsolatok karakterlánc** paneljén érhetők el:
 
-* Username (kötelező): Cosmos-fióknév.
-* Jelszó (kötelező): Cosmos-fiók jelszava.
-* A gazdagép (kötelező): A Cosmos-fiók teljes Tartományneve.
+* Username (kötelező): Cosmos-fiók neve.
+* Password (kötelező): Cosmos-fiók jelszava.
+* Gazdagép (kötelező): a Cosmos-fiók teljes tartományneve.
 * Port (kötelező): 10255.
-* Az adatbázis (nem kötelező): Az adatbázis, amely a kapcsolatot használ. Ha nincs adatbázis van megadva, az alapértelmezett adatbázis-e a "teszt".
-* ssl=true (required)
+* Adatbázis (nem kötelező): a-adatbázis, amelyet a kapcsolatok használ. Ha nincs megadva adatbázis, az alapértelmezett adatbázis a "test".
+* SSL = True (kötelező)
 
-Vegyük példaként a fiók látható a **kapcsolati karakterlánc** panelen. Egy érvényes kapcsolati karakterláncot a következő:
+Tegyük fel például, hogy a fiók megjelenik a **kapcsolatok karakterlánca** panelen. Érvényes a kapcsolatok karakterlánca:
 
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan [a Studio 3T használata](mongodb-mongochef.md) az Azure Cosmos DB API a mongodb-hez.
-- Ismerje meg, hogyan [Robo 3T használata](mongodb-robomongo.md) az Azure Cosmos DB API a mongodb-hez.
-- Ismerkedés a MongoDB [minták](mongodb-samples.md) az Azure Cosmos DB API a mongodb-hez.
+- Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
+- Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
+- Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

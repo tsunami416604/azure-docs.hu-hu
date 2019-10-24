@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: Próbálja ki Content Moderator a Web-Content Moderator'
+title: 'Gyors útmutató: Content Moderator kipróbálása a Web-Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban az online Content Moderator felülvizsgálati eszközt fogja használni a Content Moderator alapvető funkcióinak teszteléséhez anélkül, hogy kódot kellene írnia.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564450"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757361"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
@@ -65,7 +65,7 @@ Ha többet szeretne megtudni a Content Moderator felülvizsgálati eszköz haszn
 
 Vagy folytassa a következő lépésekkel a kód moderálási API-jai használatának megkezdéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
 - Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) [ C# vagy a gyors](image-moderation-quickstart-dotnet.md) üzembe helyezéssel ellenőrizheti a képeket, és felderítheti a potenciális felnőtt és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.

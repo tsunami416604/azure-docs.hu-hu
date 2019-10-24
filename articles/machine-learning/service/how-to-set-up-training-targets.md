@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244436"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755969"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 
@@ -106,7 +106,7 @@ Igény szerint létrehozhat egy Azure Machine Learning számítási környezetet
 Futtatáskor számítási célként Azure Machine Learning számítási célt is létrehozhat. A rendszer automatikusan létrehozza a számítást a futtatásához. A rendszer automatikusan törli a számítást a Futtatás befejeződése után. 
 
 > [!NOTE]
-> A használni kívánt csomópontok maximális számának megadásához általában @no__t – 0 értéket kell beállítania a csomópontok számához. Jelenleg (04/04/2019) egy olyan hiba, amely megakadályozza ennek működését. Áthidaló megoldásként használja a futtatási konfiguráció `amlcompute._cluster_max_node_count` tulajdonságát. Például: `run_config.amlcompute._cluster_max_node_count = 5`.
+> A használni kívánt csomópontok maximális számának megadásához általában `node_count`t kell beállítania a csomópontok számához. Jelenleg (04/04/2019) egy olyan hiba, amely megakadályozza ennek működését. Áthidaló megoldásként használja a futtatási konfiguráció `amlcompute._cluster_max_node_count` tulajdonságát. Például: `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > A Azure Machine Learning számítás futtatásán alapuló létrehozása jelenleg előzetes verzióban érhető el. Ne használjon futtatáson alapuló létrehozást, ha automatikus hiperparaméter-hangolást vagy gépi tanulást használ. A hiperparaméter hangolás vagy az automatizált gépi tanulás használatához hozzon létre egy [állandó számítási](#persistent) célt.
@@ -295,7 +295,7 @@ A munkaterülethez tartozó számítási célok megtekintéséhez kövesse az al
  
 1. Az __alkalmazások__területen válassza a __számítás__lehetőséget.
 
-    [@no__t – 1View számítási lap](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [![View számítás lap](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Számítási cél létrehozása
 
@@ -406,7 +406,7 @@ Ugyanezt a kísérletet másik számítási célra is futtathatja, ha más futta
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Ez a példa alapértelmezés szerint csak a számítási cél egy csomópontját használja a betanításhoz. Ha egynél több csomópontot szeretne használni, állítsa a futtatási konfiguráció `node_count` értéket a kívánt számú csomópontra. A következő kód például beállítja a négy tanításhoz használt csomópontok számát:
+> Ez a példa alapértelmezés szerint csak a számítási cél egy csomópontját használja a betanításhoz. Ha egynél több csomópontot szeretne használni, állítsa a futtatási konfiguráció `node_count` a kívánt számú csomópontra. A következő kód például beállítja a négy tanításhoz használt csomópontok számát:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -499,7 +499,7 @@ Ezekről a ```az ml``` CLI-parancsokról és az argumentumok teljes készletér�
 
 ## <a name="git-tracking-and-integration"></a>Git-követés és-integráció
 
-Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. Az adattár aktuális véglegesítő AZONOSÍTÓját például az előzmények részeként naplózza a rendszer.
+Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. További információ: git- [integráció Azure Machine Learninghoz](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 

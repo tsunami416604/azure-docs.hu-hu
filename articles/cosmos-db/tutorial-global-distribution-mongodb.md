@@ -1,34 +1,34 @@
 ---
-title: Globális terjesztési oktatóanyaga a mongodb-hez az Azure Cosmos DB API használatával
-description: Ismerje meg, hogyan állítható be a globális terjesztés, mongodb-hez készült Azure Cosmos DB API használatával.
-author: rimman
+title: Globális terjesztési oktatóanyag a Azure Cosmos DB API-MongoDB
+description: Ismerje meg, hogyan állíthatja be a globális terjesztést a MongoDB-hez készült Azure Cosmos DB API-val.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5ae5923253575fc3dea6b90b599b9fa3d79a85b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a9c618fdcf2e904a2a3c03b3ae6b5477cd47c4e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578823"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754775"
 ---
-# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Állítsa be a globális elosztott adatbázis, Azure Cosmos DB API használatával a mongodb-hez
+# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Globálisan elosztott adatbázis beállítása a MongoDB-hez készült Azure Cosmos DB API-val
 
-Ebben a cikkben bemutatjuk, hogyan használható az Azure portal és egy globális elosztott adatbázis beállítása és kapcsolódás hozzá az Azure Cosmos DB API használatával a mongodb-hez.
+Ebben a cikkben bemutatjuk, hogyan használható a Azure Portal egy globálisan elosztott adatbázis beállításához és a hozzá való kapcsolódáshoz Azure Cosmos DB API-MongoDB használatával.
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
 > * Globális terjesztés konfigurálása az Azure Portallal
-> * Globális terjesztés használatával konfigurálja a [Azure Cosmos DB API a mongodb-hez](mongodb-introduction.md)
+> * A globális terjesztés konfigurálása a [Azure Cosmos db API-MongoDB](mongodb-introduction.md) használatával
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup"></a>A regionális beállítások ellenőrzése 
-Ellenőrizze a globális konfiguráció a Cosmos DB API-val, a mongodb-hez, hogy futtassa a legegyszerűbben a *isMaster()* parancsot a Mongo parancskörnyezetben.
+## <a name="verifying-your-regional-setup"></a>A területi beállítás ellenőrzése 
+A MongoDB Cosmos DB API-jával való globális konfigurációjának egyszerű módja, ha a Mongo-rendszerhéjból futtatja a *isMaster ()* parancsot.
 
 A Mongo parancskörnyezetben:
 
@@ -62,9 +62,9 @@ Példa eredmények:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region"></a>Csatlakozás egy kívánt régióhoz 
+## <a name="connecting-to-a-preferred-region"></a>Csatlakozás egy előnyben részesített régióhoz 
 
-Az Azure Cosmos DB MongoDB API lehetővé teszi, hogy adja meg a gyűjtemény olvasási beállításait egy globálisan elosztott adatbázis. Az alacsony olvasási késés és a globálisan magas rendelkezésre állás esetében egyaránt azt javasoljuk, hogy a gyűjtemény olvasási beállítását a *legközelebbi* értékre konfigurálja. A *legközelebbi* olvasási beállítás úgy van konfigurálva, hogy a legközelebb eső régióból olvasson.
+A Azure Cosmos DB API-MongoDB lehetővé teszi, hogy a gyűjtemény olvasási beállításait egy globálisan elosztott adatbázishoz adja meg. Az alacsony olvasási késés és a globálisan magas rendelkezésre állás esetében egyaránt azt javasoljuk, hogy a gyűjtemény olvasási beállítását a *legközelebbi* értékre konfigurálja. A *legközelebbi* olvasási beállítás úgy van konfigurálva, hogy a legközelebb eső régióból olvasson.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -88,15 +88,15 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
 > * Globális terjesztés konfigurálása az Azure Portallal
-> * Globális terjesztés konfigurálása a Cosmos DB API a mongodb-hez
+> * A globális terjesztés konfigurálása a Cosmos DB API-MongoDB használatával
 
 Továbbléphet a következő oktatóanyagra, amelyből megtudhatja, hogyan fejleszthet helyileg az Azure Cosmos DB helyi emulátorával.
 
 > [!div class="nextstepaction"]
-> [Helyi fejlesztés az Azure Cosmos DB emulátorral](local-emulator.md)
+> [Helyi fejlesztés a Azure Cosmos DB emulátorral](local-emulator.md)

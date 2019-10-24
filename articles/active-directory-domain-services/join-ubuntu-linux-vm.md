@@ -1,5 +1,5 @@
 ---
-title: Ubuntu-alapú virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs "
+title: Ubuntu-alapú virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakoztathat egy Ubuntu Linux virtuális gépet egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: e92327323f632f6b922e3eb948df75bb3666e2a9
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9fb41b08cb29a68b39fb416b4b7b7bcce9e821dd
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075381"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754351"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz
 
@@ -42,7 +42,7 @@ Ha rendelkezik egy meglévő Ubuntu Linux virtuális géppel az Azure-ban, csatl
 
 Ha létre kell hoznia egy Ubuntu Linux virtuális gépet, vagy létre szeretne hozni egy tesztelési virtuális gépet, amely a jelen cikkben használható, a következő módszerek egyikét használhatja:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portalra](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -72,13 +72,13 @@ Frissítse ezeket a neveket a saját értékeivel:
 127.0.0.1 ubuntu.contoso.com ubuntu
 ```
 
-Ha elkészült, mentse és zárja be a *hosts* fájlt `:wq` a szerkesztő parancs használatával.
+Ha elkészült, mentse és zárja be a *hosts* fájlt a szerkesztő `:wq` parancsának használatával.
 
 ## <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A virtuális gépnek szüksége van néhány további csomagra a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához. A csomagok telepítéséhez és konfigurálásához frissítse és telepítse a tartományhoz csatlakozó eszközöket a következő használatával:`apt-get`
+A virtuális gépnek szüksége van néhány további csomagra a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához. A csomagok telepítéséhez és konfigurálásához frissítse és telepítse a tartományhoz való csatlakozáshoz használt eszközöket `apt-get`
 
-A Kerberos telepítésekor a *krb5* csomag minden nagybetűvel kéri a tartománynevet. Ha például az Azure AD DS felügyelt tartományának neve *contoso.com*, adja meg a *contoso.com* tartományt. A telepítés a és `[realm]` `[domain_realm]` a szakaszt a */etc/krb5.conf állományt* konfigurációs fájlba írja. Győződjön meg arról, hogy a tartomány minden nagybetűvel rendelkezik:
+A Kerberos telepítésekor a *krb5* csomag minden nagybetűvel kéri a tartománynevet. Ha például az Azure AD DS felügyelt tartományának neve *contoso.com*, adja meg a *contoso.com* tartományt. A telepítés a */etc/krb5.conf állományt* konfigurációs fájlban írja be a `[realm]` és `[domain_realm]` szakaszt. Győződjön meg arról, hogy a tartomány minden nagybetűvel rendelkezik:
 
 ```console
 sudo apt-get update
@@ -101,7 +101,7 @@ Ahhoz, hogy a tartományi kommunikáció megfelelően működjön, az Ubuntu-ala
     server contoso.com
     ```
 
-    Ha elkészült, mentse és zárja be az *NTP. conf* fájlt a `:wq` szerkesztő parancsának használatával.
+    Ha elkészült, mentse és zárja be az *NTP. conf* fájlt a szerkesztő `:wq` parancsának használatával.
 
 1. A következő lépések szükségesek annak biztosításához, hogy a virtuális gép szinkronizálva legyen az Azure AD DS felügyelt tartományával:
 
@@ -109,7 +109,7 @@ Ahhoz, hogy a tartományi kommunikáció megfelelően működjön, az Ubuntu-ala
     * A dátum és idő frissítése a felügyelt tartományból
     * Az NTP szolgáltatás elindítása
 
-    Futtassa a következő parancsokat a lépések végrehajtásához. Használja a saját DNS-nevét `ntpdate` a paranccsal:
+    Futtassa a következő parancsokat a lépések végrehajtásához. Használja a saját DNS-nevét a `ntpdate` paranccsal:
 
     ```console
     sudo systemctl stop ntp
@@ -121,27 +121,27 @@ Ahhoz, hogy a tartományi kommunikáció megfelelően működjön, az Ubuntu-ala
 
 Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, és az NTP konfigurálva van, csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz.
 
-1. Használja az `realm discover` parancsot az Azure AD DS felügyelt tartomány felderítéséhez. A következő példa felfedi a *contoso.com*tartományát. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
+1. Az `realm discover` parancs használatával keresse fel az Azure AD DS felügyelt tartományt. A következő példa felfedi a *contoso.com*tartományát. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   Ha a `realm discover` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
+   Ha az `realm discover` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
 
-    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja `ping contoso.com` meg megtekinteni, hogy a rendszer pozitív választ ad-e vissza.
+    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja meg `ping contoso.com` a pozitív válasz visszaadása.
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
-1. Most inicializálja a Kerberost `kinit` a parancs használatával. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Most inicializálja a Kerberost a `kinit` parancs használatával. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában a nevű `contosoadmin@contoso.com` fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely a *HRE DC-rendszergazdák* csoport tagja:
+    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@contoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely a *HRE DC-rendszergazdák* csoport tagja:
 
     ```console
     kinit contosoadmin@CONTOSO.COM
     ```
 
-1. Végül csatlakoztassa a gépet az Azure AD DS felügyelt tartományhoz az `realm join` paranccsal. Ugyanazt a felhasználói fiókot használja, amely az előző `kinit` `contosoadmin@CONTOSO.COM`parancsban megadott *HRE DC-rendszergazdák* csoport tagja, például:
+1. Végül csatlakoztassa a gépet az Azure AD DS felügyelt tartományhoz a `realm join` parancs használatával. Ugyanazt a felhasználói fiókot használja, mint amely az előző `kinit` parancsban megadott *HRE DC-rendszergazdák* csoport tagja, például `contosoadmin@CONTOSO.COM`:
 
     ```console
     sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
@@ -171,7 +171,7 @@ Az előző lépésben telepített csomagok egyike a System Security Services Dae
     # use_fully_qualified_names = True
     ```
 
-    Ha elkészült, mentse és zárja be a *sssd. conf* fájlt a `:wq` szerkesztő parancsának használatával.
+    Ha elkészült, mentse és zárja be a *sssd. conf* fájlt a szerkesztő `:wq` parancsával.
 
 1. A módosítás alkalmazásához indítsa újra a SSSD szolgáltatást:
 
@@ -199,7 +199,7 @@ Alapértelmezés szerint a felhasználók csak az SSH nyilvános kulcs-alapú hi
     PasswordAuthentication yes
     ```
 
-    Ha elkészült, mentse és zárja be a *sshd_conf* fájlt `:wq` a szerkesztő parancsával.
+    Ha elkészült, mentse és zárja be a *sshd_conf* fájlt a szerkesztő `:wq` parancsával.
 
 1. A módosítások alkalmazásához és a felhasználók jelszóval való bejelentkezéséhez indítsa újra az SSH-szolgáltatást:
 
@@ -217,17 +217,17 @@ Ha engedélyezni szeretné a kezdőkönyvtár automatikus létrehozását, amiko
     sudo vi /etc/pam.d/common-session
     ```
 
-1. Adja hozzá a következő sort a fájlhoz a sor `session optional pam_sss.so`alatt:
+1. Adja hozzá a következő sort a fájlban a sor `session optional pam_sss.so` alatt:
 
     ```console
     session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
     ```
 
-    Ha elkészült, mentse és zárja be a *Common-Session* fájlt `:wq` a szerkesztő parancs használatával.
+    Ha elkészült, mentse és zárja be a *Common-Session* fájlt a szerkesztő `:wq` parancsának használatával.
 
 ### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>A "HRE DC Administrators" csoport sudo-jogosultságának megadása
 
-Ha a *HRE tartományvezérlő rendszergazdák* csoportjának tagjai számára rendszergazdai jogosultságokat kíván adni az Ubuntu virtuális gépen, vegyen fel egy bejegyzést a */etc/sudoers*. A hozzáadást követően a *HRE DC-rendszergazdák* csoport tagjai az `sudo` Ubuntu virtuális gépen található parancsot használhatják.
+Ha a *HRE tartományvezérlő rendszergazdák* csoportjának tagjai számára rendszergazdai jogosultságokat kíván adni az Ubuntu virtuális gépen, vegyen fel egy bejegyzést a */etc/sudoers*. A Hozzáadás után a *HRE tartományvezérlő rendszergazdák* csoportjának tagjai az Ubuntu virtuális gépen a `sudo` parancsot használhatják.
 
 1. Nyissa meg a *sudoers* fájlt a szerkesztéshez:
 
@@ -242,13 +242,13 @@ Ha a *HRE tartományvezérlő rendszergazdák* csoportjának tagjai számára re
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-    Ha elkészült, mentse és zárja be a szerkesztőt `Ctrl-X` a parancs használatával.
+    Ha elkészült, mentse és zárja be a szerkesztőt a `Ctrl-X` parancs használatával.
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Bejelentkezés a virtuális gépre tartományi fiók használatával
 
 Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e az Azure AD DS felügyelt tartományhoz, indítson el egy új SSH-kapcsolódást egy tartományi felhasználói fiók használatával. Győződjön meg arról, hogy a kezdőkönyvtár létrejött, és a rendszer a tartományból származó csoporttagság alkalmazását alkalmazza.
 
-1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik `ssh -l` a parancs használatával, `contosoadmin@contoso.com` például:, majd adja meg a virtuális gép (például *Ubuntu.contoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
+1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik a `ssh -l` parancs használatával, például `contosoadmin@contoso.com`, majd adja meg a virtuális gép (például *Ubuntu.contoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
 
     ```console
     ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com
@@ -270,13 +270,13 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e az Azur
 
     Az Azure AD DS felügyelt tartományból kell megjelennie a csoporttagságok.
 
-1. Ha a *HRE DC-rendszergazdák* csoport tagjaként jelentkezett be a virtuális gépre, ellenőrizze, hogy helyesen használja-e a `sudo` következő parancsot:
+1. Ha a *HRE DC-rendszergazdák* csoport tagjaként jelentkezett be a virtuális gépre, ellenőrizze, hogy megfelelően tudja-e használni a `sudo` parancsot:
 
     ```console
     sudo apt-get update
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémái adódnak a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel kapcsolatban, olvassa el a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

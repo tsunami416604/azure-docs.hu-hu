@@ -1,5 +1,5 @@
 ---
-title: CoreOS virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs "
+title: CoreOS virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakoztathat egy CoreOS virtuális gépet egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/14/2019
 ms.author: iainfou
-ms.openlocfilehash: c0c298a9aa0b9d46ec2c7510cdb5c3ba1c8c84af
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4cdc2fff05270a296d9c4c9151f73cadeb2a1cfc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075554"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754393"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>CoreOS virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz
 
@@ -42,7 +42,7 @@ Ha rendelkezik egy meglévő CoreOS Linux virtuális géppel az Azure-ban, csatl
 
 Ha létre kell hoznia egy CoreOS Linux rendszerű virtuális gépet, vagy létre szeretne hozni egy tesztelési virtuális gépet, amely a jelen cikkben használható, a következő módszerek egyikét használhatja:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portalra](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -72,7 +72,7 @@ Frissítse ezeket a neveket a saját értékeivel:
 127.0.0.1 coreos coreos.contoso.com
 ```
 
-Ha elkészült, mentse és zárja be a *hosts* fájlt `:wq` a szerkesztő parancs használatával.
+Ha elkészült, mentse és zárja be a *hosts* fájlt a szerkesztő `:wq` parancsának használatával.
 
 ## <a name="configure-the-sssd-service"></a>A SSSD szolgáltatás konfigurálása
 
@@ -128,15 +128,15 @@ A SSSD konfigurációs fájljának frissítése után most csatlakoztassa a virt
     sudo adcli info CONTOSO.COM
     ```
 
-   Ha a `adcli info` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
+   Ha az `adcli info` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
 
-    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja `ping contoso.com` meg megtekinteni, hogy a rendszer pozitív választ ad-e vissza.
+    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja meg `ping contoso.com` a pozitív válasz visszaadása.
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
-1. Most csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz `adcli join` az paranccsal. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Most csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz a `adcli join` paranccsal. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában a nevű `contosoadmin@contoso.com` fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az *HRE DC-rendszergazdák* csoport tagja.
+    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@contoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az *HRE DC-rendszergazdák* csoport tagja.
 
     ```console
     sudo adcli join -D CONTOSO.COM -U contosoadmin@CONTOSO.COM -K /etc/krb5.keytab -H coreos.contoso.com -N coreos
@@ -154,7 +154,7 @@ A SSSD konfigurációs fájljának frissítése után most csatlakoztassa a virt
 
 Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e az Azure AD DS felügyelt tartományhoz, indítson el egy új SSH-kapcsolódást egy tartományi felhasználói fiók használatával. Győződjön meg arról, hogy a kezdőkönyvtár létrejött, és a rendszer a tartományból származó csoporttagság alkalmazását alkalmazza.
 
-1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik `ssh -l` a parancs használatával, `contosoadmin@contoso.com` például:, majd adja meg a virtuális gép (például *CoreOS.contoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
+1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik a `ssh -l` parancs használatával, például `contosoadmin@contoso.com`, majd adja meg a virtuális gép (például *CoreOS.contoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
 
     ```console
     ssh -l contosoadmin@CONTOSO.com coreos.contoso.com
@@ -168,7 +168,7 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e az Azur
 
     Az Azure AD DS felügyelt tartományból kell megjelennie a csoporttagságok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémái adódnak a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel kapcsolatban, olvassa el a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan hagyhatja jóvá vagy tilthatja le a Azure AD P
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -16,14 +16,14 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a8d373a7e6edeaefd933e4f8ec8ee11e3c14ee
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804035"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756429"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával konfigurálhatja a szerepköröket az aktiválás jóváhagyásához, és egy vagy több felhasználót vagy csoportot delegált jóváhagyóként választhat ki. A delegált jóváhagyók 24 órával a kérelmek jóváhagyására jogosultak. Ha a kérést 24 órán belül nem hagyták jóvá, a jogosult felhasználónak újra be kell küldenie egy új kérelmet. A 24 órás jóváhagyási idő ablak nem konfigurálható.
 
@@ -31,9 +31,9 @@ Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkoz�
 
 ## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
 
-Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kéréseket a PIM-ben tekintheti meg.
+Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -75,7 +75,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
     A rendszer a megtagadásával frissíti az állapotjelző szimbólumot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [E-mail-értesítések a PIM-ben](pim-email-notifications.md)
-- [Azure-erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben](pim-resource-roles-approval-workflow.md)
+- [E-mail-értesítések Privileged Identity Management](pim-email-notifications.md)
+- [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)

@@ -1,17 +1,17 @@
 ---
 title: A tárolási díj optimalizálása Azure Cosmos DB
 description: Ez a cikk azt ismerteti, hogyan kezelhető a Azure Cosmos DB tárolt adattárolási költségei.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615003"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754943"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárolási díj optimalizálása Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Alapértelmezés szerint a rendszer automatikusan indexeli az adatmennyiséget, 
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizálja a költségeket az élettartam és a váltás során
 
-Ha már nincs szüksége az adatokra, könnyedén törölheti azt az Azure Cosmos-fiókjából, ha [időt](time-to-live.md)használ, megváltoztathatja a [hírcsatornát](change-feed.md) , vagy áttelepítheti a régi adatait egy másik adattárba, például az Azure Blob Storage szolgáltatásba vagy az Azure-adattárházba. Az élettartam vagy a TTL esetében a Azure Cosmos DB lehetővé teszi, hogy egy adott időszak után automatikusan törölje a tárolóból az elemeket. Alapértelmezés szerint beállíthatja az időt a tároló szintjén, és felülbírálhatja az értéket cikkenként. Miután beállította az ÉLETTARTAMot egy tárolóban vagy egy elem szintjén, Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az utolsó módosítás óta eltelt idő után. A Change feed használatával áttelepítheti az adatátvitelt egy másik tárolóba Azure Cosmos DB vagy egy külső adattárba. Az áttelepítés nulla időt vesz igénybe, és amikor végzett az áttelepítés során, törölheti vagy beállíthatja az élettartamot, hogy törölje a forrásként szolgáló Azure Cosmos-tárolót.
+Ha már nincs szüksége az adatokra, könnyedén törölheti azt az Azure Cosmos-fiókjából, ha [időt](time-to-live.md)használ, [megváltoztathatja a hírcsatornát](change-feed.md) , vagy áttelepítheti a régi adatait egy másik adattárba, például az Azure Blob Storage szolgáltatásba vagy az Azure-adattárházba. Az élettartam vagy a TTL esetében a Azure Cosmos DB lehetővé teszi, hogy egy adott időszak után automatikusan törölje a tárolóból az elemeket. Alapértelmezés szerint beállíthatja az időt a tároló szintjén, és felülbírálhatja az értéket cikkenként. Miután beállította az ÉLETTARTAMot egy tárolóban vagy egy elem szintjén, Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az utolsó módosítás óta eltelt idő után. A Change feed használatával áttelepítheti az adatátvitelt egy másik tárolóba Azure Cosmos DB vagy egy külső adattárba. Az áttelepítés nulla időt vesz igénybe, és amikor végzett az áttelepítés során, törölheti vagy beállíthatja az élettartamot, hogy törölje a forrásként szolgáló Azure Cosmos-tárolót.
 
 ## <a name="optimize-cost-with-rich-media-data-types"></a>A Cost optimalizálása a multimédiás adattípusokkal 
 
@@ -39,7 +39,7 @@ Ha olyan multimédiás típusokat szeretne tárolni, mint például a videók, a
 
 ## <a name="check-storage-consumed"></a>A felhasznált tároló keresése
 
-Egy Azure Cosmos-tároló tárolási felhasználásának ellenőrzéséhez futtathat egy Head vagy Get kérelmet a tárolón, és megvizsgálhatja a `x-ms-request-quota` és a `x-ms-request-usage` fejléceket is. Ha a .NET SDK-val dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))és a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságot is a felhasznált tárterület beszerzéséhez.
+Egy Azure Cosmos-tároló tárolási felhasználásának ellenőrzéséhez futtathat egy HEAD vagy GET kérelmet a tárolón, és megvizsgálhatja a `x-ms-request-quota` és a `x-ms-request-usage` fejléceit. Ha a .NET SDK-val dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))és a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságot is a felhasznált tárterület beszerzéséhez.
 
 ## <a name="using-sdk"></a>Az SDK használata
 
@@ -50,7 +50,7 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
 Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

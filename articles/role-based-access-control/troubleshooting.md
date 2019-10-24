@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
-ms.translationtype: MT
+ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967105"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750188"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure-erőforrások RBAC kapcsolatos hibák
 
@@ -28,15 +28,15 @@ Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével 
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problémák az RBAC-beli szerepkör-hozzárendelésekkel
 
-- Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** használatával, mert > a**szerepkör-hozzárendelés** hozzáadása beállítás le van tiltva, vagy az engedélyekkel kapcsolatos hibaüzenet jelenik meg, mert a (z) azonosítójú ügyfél nem rendelkezik művelet végrehajtásának engedélyezése ", győződjön meg arról, hogy jelenleg be van jelentkezve egy olyan szerepkörrel `Microsoft.Authorization/roleAssignments/write` rendelkező felhasználóval, amely jogosult a szerepkörhöz hozzárendelni kívánt hatókörre, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) jogosultsággal.
-- Ha a következő hibaüzenet jelenik meg: "nem hozhatók létre több szerepkör-hozzárendelés (kód: RoleAssignmentLimitExceeded)” (Nem lehet több szerepkör-hozzárendelést létrehozni (kód: RoleAssignmentLimitExceeded)) hibaüzenetet jelenik meg, próbálja meg csökkenteni a szerepkör-hozzárendelések számát a szerepkörök csoportokhoz történő hozzárendelésével. Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként.
+- Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** számára, mert a **Hozzáadás**  > **szerepkör-hozzárendelés** hozzáadása lehetőség le van tiltva, vagy az engedélyekkel kapcsolatos hibaüzenet jelenik meg: "az objektumazonosító nem rendelkezik az ügyfélhez. művelet végrehajtásának engedélyezése ", győződjön meg róla, hogy jelenleg be van jelentkezve egy olyan szerepkörrel rendelkező felhasználóval, amely rendelkezik a szerepkörhöz hozzárendelni kívánt hatókörön `Microsoft.Authorization/roleAssignments/write` engedéllyel (például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) ).
+- Ha a "nincs több szerepkör-hozzárendelés hozható létre (code: RoleAssignmentLimitExceeded)" hibaüzenet jelenik meg, amikor megpróbál hozzárendelni egy szerepkört, próbálja meg csökkenteni a szerepkör-hozzárendelések számát úgy, hogy szerepköröket rendel hozzá a csoportokhoz. Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként.
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 
 - Ha az egyéni szerepkörök létrehozásához szükséges lépéseket szeretné látni, tekintse meg az egyéni szerepkör-oktatóanyagokat [Azure PowerShell](tutorial-custom-role-powershell.md) vagy az [Azure CLI](tutorial-custom-role-cli.md)használatával.
-- Ha nem tud frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, `Microsoft.Authorization/roleDefinition/write` amely jogosultsággal rendelkezik, például a [tulajdonos](built-in-roles.md#owner) vagy a [felhasználó hozzáférés-rendszergazdája](built-in-roles.md#user-access-administrator).
-- Ha nem sikerül törölni egy egyéni szerepkört, és a „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments” (Szerepkör-hozzárendelések hivatkoznak a szerepkörre (kód: RoleDefinitionHasAssignments)) hibaüzenet jelenik meg, akkor vannak olyan szerepkör-hozzárendelések, amelyek továbbra is az adott egyéni szerepkört használják. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
-- Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nem hozhatók létre több szerepkör-definíció (kód: RoleDefinitionLimitExceeded) "Ha új egyéni szerepkört próbál létrehozni, törölje a nem használt egyéni szerepköröket. Az Azure legfeljebb **5000** egyéni szerepkört támogat a bérlők számára. (A speciális felhőkben, mint az Azure Government, az Azure Germany és az Azure China 21Vianet, az egyéni szerepkörök száma 2000-re van korlátozva.)
+- Ha nem tud frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely rendelkezik `Microsoft.Authorization/roleDefinition/write` engedéllyel, például a [tulajdonos](built-in-roles.md#owner) vagy a [felhasználói hozzáférés rendszergazdájával](built-in-roles.md#user-access-administrator).
+- Ha nem tudja törölni az egyéni szerepkört, és a következő hibaüzenet jelenik meg: "van meglévő szerepkör-hozzárendelések hivatkozó szerepköre (code: RoleDefinitionHasAssignments)", akkor a szerepkör-hozzárendelések továbbra is az egyéni szerepkört használják. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
+- Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nem hozhatók létre több szerepkör-definíció (code: RoleDefinitionLimitExceeded), ha új egyéni szerepkört próbál létrehozni, törölje a nem használt egyéni szerepköröket. Az Azure legfeljebb **5000** egyéni szerepkört támogat a bérlők számára. (A speciális felhőkben, mint az Azure Government, az Azure Germany és az Azure China 21Vianet, az egyéni szerepkörök száma 2000-re van korlátozva.)
 - Ha a következőhöz hasonló hibaüzenet jelenik meg: "az ügyfél jogosult a (z)" Microsoft. Authorization/roleDefinitions/Write "művelet végrehajtására a (z)"/Subscriptions/{subscriptionid} "hatókörben, de a csatolt előfizetés nem található" Ha egyéni szerepkört próbál frissíteni, ellenőrizze a következőt: azt határozza meg, hogy egy vagy több [hozzárendelhető hatókör](role-definitions.md#assignablescopes) törölve lett-e a bérlőben. Ha a hatókör törölve lett, hozzon létre egy támogatási jegyet, mivel jelenleg nem áll rendelkezésre önkiszolgáló megoldás.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Az RBAC helyreállítása az előfizetések bérlők közötti áthelyezésekor
@@ -51,12 +51,12 @@ Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével 
 
 ## <a name="access-denied-or-permission-errors"></a>Hozzáférés megtagadva vagy engedélyekkel kapcsolatos hibák
 
-- Ha egy erőforrás létrehozásakor a „The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)” (Az adott objektumazonosítójú ügyfél nem rendelkezik a művelet a kiválasztott hatókörben való végrehajtásához szükséges engedéllyel (kód: AuthorizationFailed)) engedélyekkel kapcsolatos hiba lép fel, ellenőrizze, hogy a felhasználó, amelyikkel bejelentkezett, olyan szerepkörhöz van-e hozzárendelve, amely rendelkezik írási engedéllyel a kiválasztott hatókörben található erőforráshoz. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörökhöz tartozó engedélyek listáját a [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md) témakörben tekintheti meg.
-- Ha a támogatási jegy létrehozásakor vagy frissítésekor a "nincs engedélye a támogatási kérelem létrehozására" hibaüzenet jelenik meg, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely rendelkezik `Microsoft.Support/supportTickets/write` engedéllyel, például [ Támogatási kérelem közreműködői](built-in-roles.md#support-request-contributor).
+- Ha a következő hibaüzenet jelenik meg: "az objektumazonosító nem rendelkezik jogosultsággal a hatókörön (code: AuthorizationFailed) való művelet végrehajtásához, amikor egy erőforrást próbál létrehozni, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, aki írási joggal rendelkezik. engedély az erőforráshoz a kiválasztott hatókörben. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörökhöz tartozó engedélyek listáját a [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md) témakörben tekintheti meg.
+- Ha a támogatási jegy létrehozásakor vagy frissítésekor a "nincs engedélye a támogatási kérelem létrehozására" hibaüzenet jelenik meg, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely rendelkezik `Microsoft.Support/supportTickets/write` engedéllyel , például [támogatási kérelem közreműködője](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-without-a-security-principal"></a>Rendszerbiztonsági tag nélküli szerepkör-hozzárendelések
+## <a name="role-assignments-with-unknown-security-principal"></a>Ismeretlen rendszerbiztonsági tag szerepkör-hozzárendelések
 
-Ha Azure PowerShell használatával listázza a szerepkör-hozzárendeléseket, akkor előfordulhat, hogy a hozzárendelések üresek `DisplayName` , és az `ObjectType` ismeretlen értékre van állítva. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következőhöz hasonló szerepkör-hozzárendelést ad vissza:
+Ha Azure PowerShell használatával listázza a szerepkör-hozzárendeléseket, akkor előfordulhat, hogy a hozzárendelések üres `DisplayName`, és az `ObjectType` ismeretlenre van állítva. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következőhöz hasonló szerepkör-hozzárendelést ad vissza:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -70,7 +70,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Hasonlóképpen, amikor az Azure CLI használatával listázza a szerepkör-hozzárendeléseket, a hozzárendelések üresen `principalName`jelenhetnek meg. Az az [szerepkör-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list) például a következőhöz hasonló szerepkör-hozzárendelést ad vissza:
+Hasonlóképpen, amikor az Azure CLI-vel listázza a szerepkör-hozzárendeléseket, akkor előfordulhat, hogy a hozzárendelések üres `principalName`. Az az [szerepkör-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list) például a következőhöz hasonló szerepkör-hozzárendelést ad vissza:
 
 ```azurecli
 {
@@ -90,7 +90,7 @@ Ezek a szerepkör-hozzárendelések akkor fordulnak elő, amikor szerepkört ren
 
 A szerepkör-hozzárendelések eltávolításához használja a [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) vagy [az az szerepkör-hozzárendelés törlési](/cli/azure/role/assignment#az-role-assignment-delete) parancsait.
 
-Ha a PowerShellben megpróbálja eltávolítani a szerepkör-hozzárendeléseket az objektumazonosító és a szerepkör-definíció neve alapján, és egynél több szerepkör-hozzárendelés felel meg a paramétereknek, a következő hibaüzenet jelenik meg: "A megadott információ nem képezhető le szerepkör-hozzárendelésre". A következő hibaüzenet egy példát mutat be:
+Ha a PowerShellben megpróbálja eltávolítani a szerepkör-hozzárendeléseket az objektumazonosító és a szerepkör-definíció neve alapján, és egynél több szerepkör-hozzárendelés felel meg a paramétereknek, a következő hibaüzenet jelenik meg: "a megadott információ nem képezhető le szerepkör-hozzárendelésre". A következő hibaüzenet egy példát mutat be:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -103,7 +103,7 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-Ha ez a hibaüzenet jelenik meg, győződjön meg arról, hogy a `-Scope` vagy `-ResourceGroupName` a paramétereket is megadja.
+Ha ezt a hibaüzenetet kapja, győződjön meg arról, hogy a `-Scope` vagy `-ResourceGroupName` paramétereket is megadja.
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -124,8 +124,8 @@ Ha csak olvasási hozzáférést ad a felhasználónak egyetlen webalkalmazásho
 * Diagnosztikai naplók konfigurálása
 * Konzol (parancssor)
 * Aktív és közelmúltbeli üzemelő példányok (a helyi git folyamatos üzembe helyezéséhez)
-* Becsült költség
-* Webtesztek
+* Becsült ráfordítás
+* Webes tesztek
 * Virtuális hálózat (csak akkor látható az olvasó számára, ha a virtuális hálózatot korábban írási hozzáféréssel rendelkező felhasználó konfigurálta).
 
 Ha nem fér hozzá ezekhez a csempéhöz, meg kell kérnie a rendszergazdát, hogy a webalkalmazáshoz közreműködői hozzáférést kérjen.
@@ -149,8 +149,8 @@ Ezeknek az elemeknek **írási** hozzáférésre van szükségük a webhelyet ta
 * SSL-tanúsítványok és-kötések (az SSL-tanúsítványok megoszthatók az azonos erőforráscsoporthoz és a földrajzi helyen található helyek között)  
 * Riasztási szabályok  
 * Az autoskálázás beállításai  
-* Application Insights-összetevők  
-* Webtesztek  
+* Application bepillantások összetevői  
+* Webes tesztek  
 
 ## <a name="virtual-machine-features-that-require-write-access"></a>Írási hozzáférést igénylő virtuálisgép-funkciók
 
@@ -160,7 +160,7 @@ A virtuális gépek a tartománynevek, a virtuális hálózatok, a tárolási fi
 
 Ezeknek az elemeknek **írási** hozzáférésre van szükségük a **virtuális géphez**:
 
-* Végpontok  
+* Endpoints (Végpontok)  
 * IP-címek  
 * Lemezek  
 * Bővítmények  
@@ -181,7 +181,7 @@ A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak
 
 Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden beállítás** elemre kattintva megtekintheti a Function alkalmazáshoz kapcsolódó beállításokat (a webalkalmazáshoz hasonlóan), de ezek a beállítások nem módosíthatók. A szolgáltatások eléréséhez szüksége lesz a [közreműködő](built-in-roles.md#contributor) szerepkörre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)

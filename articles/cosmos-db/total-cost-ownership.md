@@ -1,22 +1,22 @@
 ---
 title: Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 description: Ez a cikk a Azure Cosmos DB IaaS és helyszíni adatbázisokkal való teljes tulajdonlásának költségeit hasonlítja össze
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 911f5fa9985fc5e34f758dfb739d84521f91f5c0
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716935"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754795"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 
-Azure Cosmos DB a részletes, több-bérlős és erőforrás-szabályozással van kialakítva. Ez a kialakítás lehetővé teszi, hogy a Azure Cosmos DB jelentősen alacsonyabb áron működjön, és segítsen a felhasználóknak a mentésben. Jelenleg Azure Cosmos DB több mint 280 ügyfél-munkaterhelést támogat egyetlen gépen, amely a sűrűség folyamatosan bővül, és több ezer ügyfél-számítási feladat van a fürtön belül. Terheléselosztást végez az ügyfelek munkaterhelésének replikái között a fürtben lévő különböző gépeken, valamint az adatközpont több fürtjén keresztül. További információt a [Azure Cosmos db: Globálisan elosztott adatbázisok](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)határának kitolása. Az erőforrás-szabályozás, a több-bérlős és az Azure-infrastruktúrával való natív integráció miatt a Azure Cosmos DB átlagosan 4 – 6-szor olcsóbb, mint a MongoDB, Cassandra vagy más, IaaS-on futó OSS-NoSQL, és akár 10-szor olcsóbb, mint az adatbázis a helyszínen futó motorok. Tekintse meg a [NoSQL-adatbázis felhőalapú szolgáltatásának teljes költsége (nem) tulajdonjogát](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Azure Cosmos DB a részletes, több-bérlős és erőforrás-szabályozással van kialakítva. Ez a kialakítás lehetővé teszi, hogy a Azure Cosmos DB jelentősen alacsonyabb áron működjön, és segítsen a felhasználóknak a mentésben. Jelenleg Azure Cosmos DB több mint 280 ügyfél-munkaterhelést támogat egyetlen gépen, amely a sűrűség folyamatosan bővül, és több ezer ügyfél-számítási feladat van a fürtön belül. Terheléselosztást végez az ügyfelek munkaterhelésének replikái között a fürtben lévő különböző gépeken, valamint az adatközpont több fürtjén keresztül. További információt [a Azure Cosmos db: globálisan elosztott adatbázisok határának](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)leküldésével foglalkozó témakörben talál. Az erőforrás-szabályozás, a több-bérlős és az Azure-infrastruktúrával való natív integráció miatt a Azure Cosmos DB átlagosan 4 – 6-szor olcsóbb, mint a MongoDB, Cassandra vagy más, IaaS-on futó OSS-NoSQL, és akár 10-szor olcsóbb, mint az adatbázis a helyszínen futó motorok. Tekintse meg a [NoSQL-adatbázis felhőalapú szolgáltatásának teljes költsége (nem) tulajdonjogát](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 Az OSS NoSQL adatbázis-megoldásai, például az Apache Cassandra, a MongoDB, a HBase, a motorok helyszíni használatra készültek. Felügyelt szolgáltatásként való felkínálás esetén a kiépített fürtök kezeléséhez és a figyelés támogatásához a bérlői adatbázissal egyenértékű Resource Manager-sablon felel meg. Az OSS NoSQL architektúrák jelentős működési terhelést igényelnek, és a szakértelmet nehéz és költséges lehet megtalálni. Másfelől Azure Cosmos DB egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy az adatbázis-infrastruktúra kezelése és karbantartása helyett az üzleti innovációra összpontosítsanak. 
 
@@ -50,13 +50,13 @@ A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az
 
 * **Azure Cosmos DB a többi Azure-szolgáltatással való szoros integrációja.** Azure Cosmos DB rendelkezik a hálózatkezelés, a számítási, a Azure Functions (kiszolgáló nélküli), az Azure IoT és más Azure-szolgáltatások natív integrációs szolgáltatásával. Ezzel az integrációval a legjobb teljesítményt, az adatreplikáció sebességét biztosítja a világ minden pontján robusztus garanciákkal. A harmadik féltől származó megoldások nem tudnak megegyezni, vagy általában prémium díjat számítanak fel az ilyen funkciók felkínálása érdekében.
 
-* **A magas rendelkezésre állást automatikusan elérheti legalább 10-20 tartalék tartománnyal, alapértelmezés szerint:** Azure Cosmos DB támogatja a terhelések elosztását a tartalék tartományok között, amely a magas rendelkezésre állás szempontjából kritikus fontosságú szolgáltatás. 99,999 magas rendelkezésre állást kínál a esetek 99% percentilis olvasására és írására a világ bármely pontján belül. A saját vagy harmadik féltől származó megoldáson alapuló megvalósítási díj magas lenne.
+* A **magas rendelkezésre állást automatikusan elérheti legalább 10-20 tartalék tartománnyal, alapértelmezés szerint:** Azure Cosmos DB támogatja a terhelések elosztását a tartalék tartományok között, amely a magas rendelkezésre állás szempontjából kritikus fontosságú szolgáltatás. 99,999 magas rendelkezésre állást kínál a esetek 99% percentilis olvasására és írására a világ bármely pontján belül. A saját vagy harmadik féltől származó megoldáson alapuló megvalósítási díj magas lenne.
 
 * **Az összes nagyvállalati funkciót automatikusan, díjmentesen veheti igénybe.** A Azure Cosmos DB a megfelelőségi tanúsítványok, a biztonság és a titkosítás legátfogóbb készletét kínálja a nyugalmi állapotban és a mozgásban (a versenyhez képest) külön díj nélkül. A világ bármely pontján automatikusan elérhető a regionális elérhetőség. Az adatbázist tetszőleges számú Azure-régióban áthelyezheti, és bármikor hozzáadhat vagy eltávolíthat régiókat.
 
-* **A fenntartott kapacitással akár 65%-ot is megtakaríthat:** Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pénzt takaríthat meg, ha egy vagy három évig Azure Cosmos db erőforrásokra előre fizet. Jelentős mértékben csökkentheti a költségeket egy-vagy hároméves előzetes kötelezettségvállalásokkal, és a normál díjszabáshoz képest 20-65%-os kedvezményt takaríthat meg. A kritikus fontosságú számítási feladatokban jobb SLA-kat érhet el a kiépítési kapacitás szempontjából.
+* A **fenntartott kapacitással akár 65%-ot is megtakaríthat:** Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pénzt takaríthat meg, ha egy vagy három évig Azure Cosmos db erőforrásokra előre fizet. Jelentős mértékben csökkentheti a költségeket egy-vagy hároméves előzetes kötelezettségvállalásokkal, és a normál díjszabáshoz képest 20-65%-os kedvezményt takaríthat meg. A kritikus fontosságú számítási feladatokban jobb SLA-kat érhet el a kiépítési kapacitás szempontjából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ arról [, hogy a Azure Cosmos db díjszabási modellje mennyire költséghatékony az ügyfelek számára](total-cost-ownership.md)
 * További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)

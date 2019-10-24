@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: pafarley
-ms.openlocfilehash: 31b8dfc234ac99d6f04061d6596e3dc8113e8d0f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213839"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753489"
 ---
 # <a name="label-images-faster-with-suggested-tags"></a>Gyorsabban címkézheti a képeket a javasolt címkékkel
 
@@ -27,8 +27,7 @@ Ha Custom Vision modellhez címkéz képeket, a szolgáltatás a modell legújab
 
 Tartsa szem előtt a következő korlátozásokat:
 
-* Csak olyan képekre vonatkozó ajánlott címkék kérése, amelyek tartalma már egyszer már betanítva van. Ne kapjon olyan új címkére vonatkozó javaslatokat, amelyet most elkezd betanítani.
-* A felcímkézett képeken csak a javasolt címkéket lehet használni. a már címkézett képeken nem kaphat javaslatokat további címkékre.
+* Csak azokat a képeket ajánlott címkéket kérni, amelyek tartalmát már egyszer már betanítják. Ne kapjon olyan új címkére vonatkozó javaslatokat, amelyet most elkezd betanítani.
 
 > [!IMPORTANT]
 > A javasolt címkék funkció ugyanazt az [árképzési modellt](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) használja, mint a normál előrejelzések. Amikor első alkalommal indítja el a javasolt címkéket egy adott rendszerképhez, az előrejelzési hívásokhoz hasonlóan kell fizetnie. Ezt követően a szolgáltatás 30 napig tárolja a kiválasztott lemezképek eredményeit egy adatbázisban, és bármikor elérhetővé teheti azokat az adott időszakon belül ingyenesen. 30 nap után díjat számítunk fel, ha újra kéri a javasolt címkéket.
@@ -44,21 +43,21 @@ A következő lépések bemutatják, hogyan használhatja a javasolt címkék fu
 1. Indítsa el a betanítási folyamatot.
 1. A képzés befejezésekor navigáljon a **címkézett** nézethez, és válassza a **javasolt címkék beolvasása** gombot a bal oldali ablaktáblán.
     > [!div class="mx-imgBorder"]
-    > ![A javasolt címkék gomb a címkézetlen lemezképek lapon jelenik meg.](./media/suggested-tags/suggested-tags-button.png)
+    > ![The javasolt címkék gomb a címkézetlen lemezképek lapon látható. ](./media/suggested-tags/suggested-tags-button.png)
 1. Válassza ki azokat a lemezképeket, amelyekhez javaslatokat szeretne létrehozni. A címkézetlen lemezképek egy részének csak a kezdeti címkével kapcsolatos javaslatok olvashatók be. A folyamat megismétlése után jobb címkézési javaslatokat kaphat.
 1. Erősítse meg a javasolt címkéket, javítsa ki azokat, amelyek nem megfelelőek.
     > [!TIP]
     > A javasolt címkékkel rendelkező lemezképek az előrejelzési bizonytalanság szerint vannak rendezve (az alacsonyabb értékek nagyobb megbízhatóságot jeleznek). A rendezési sorrendet a **Rendezés bizonytalansága** lehetőséggel módosíthatja. Ha a rendelést **magasról alacsonyra**állítja, akkor először javítsa ki a magas bizonytalansági előrejelzéseket, majd gyorsan erősítse meg az alacsony bizonytalanságot.
     * A képbesorolási projektekben kiválaszthatja és jóváhagyhatja a címkéket a batchs szolgáltatásban. Egy adott javasolt címke alapján szűrheti a nézetet, törölje a helytelenül megjelölt rendszerképeket, majd erősítse meg a REST-t egy kötegben.
         > [!div class="mx-imgBorder"]
-        > ![A javasolt címkék kötegelt módban jelennek meg az IC szűrőkkel.](./media/suggested-tags/ic-batch-mode.png)
+        > ![Suggested címkék kötegelt módban jelennek meg az IC szűrőkkel. ](./media/suggested-tags/ic-batch-mode.png)
 
         A javasolt címkéket egyéni rendszerkép módban is használhatja, ha kijelöl egy képet a katalógusból.
 
         ![A javasolt címkék az IC egyedi rendszerkép módban jelennek meg.](./media/suggested-tags/ic-individual-image-mode.png)
     * Az objektum-észlelési projektekben a Batch-megerősítések nem támogatottak, de a javasolt címkék alapján továbbra is szűrhetők és rendezhetők a szervezett címkézési élmény. A címkézetlen képek miniatűrje megjeleníti a javasolt címkék helyét jelző, határoló mezők átfedését. Ha nem választ ki egy javasolt címke szűrőt, az összes címkézetlen kép megjelenik a határoló mezők átfedése nélkül.
         > [!div class="mx-imgBorder"]
-        > ![A javasolt címkék kötegelt módban jelennek meg az OD és a szűrők használatával.](./media/suggested-tags/od-batch-mode.png)
+        > ![Suggested címkék a szűrők használatával kötegelt módban jelennek meg az OD-ban. ](./media/suggested-tags/od-batch-mode.png)
 
         Az objektum-észlelési címkék megerősítéséhez ezeket a katalógusban szereplő egyes rendszerképekre kell alkalmaznia.
 
@@ -66,7 +65,7 @@ A következő lépések bemutatják, hogyan használhatja a javasolt címkék fu
 1. Indítsa el újra a betanítási folyamatot.
 1. Ismételje meg az előző lépéseket, amíg meg nem felel a javaslat minőségének.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy rövid útmutató segítségével megkezdheti a Custom Vision projektek létrehozását és betanítását.
 

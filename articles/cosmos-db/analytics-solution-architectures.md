@@ -1,18 +1,18 @@
 ---
 title: Globálisan elosztott elemzéseket használó megoldások Azure Cosmos DBban.
 description: Ismerkedjen meg a Azure Cosmos DB globálisan elosztott elemzési funkciójával felépíthető megoldásokkal.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d5c6b8727a24a7ea8ddf05f7983618b55884d3bf
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338983"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755204"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Globálisan elosztott elemzést használó megoldások Azure Cosmos DB
 
@@ -77,7 +77,7 @@ Az alábbi képen látható, hogyan használják a Azure Cosmos DB Spark-támoga
 
 ![Azure Cosmos DB Spark-támogatás a Gaming Analyticsben](./media/spark-api-introduction/gaming-analytics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Cosmos DB előnyeinek megismeréséhez tekintse meg az [áttekintést](introduction.md) ismertető cikket.
 * [Ismerkedés a MongoDB Azure Cosmos DB API-val](mongodb-introduction.md)

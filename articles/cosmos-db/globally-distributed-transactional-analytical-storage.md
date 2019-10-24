@@ -1,18 +1,18 @@
 ---
 title: Globálisan elosztott tranzakciós és analitikai tároló az Azure Cosmos-tárolók számára
 description: Ismerje meg a tranzakciós és analitikai tárterületet, valamint az Azure Cosmos-tárolók konfigurációs beállításait.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 27ca2102ee95273fbedd1a870e57d2ae3318e879
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703393"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756906"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálisan elosztott tranzakciós és analitikai tároló az Azure Cosmos-tárolók számára
 
@@ -27,7 +27,7 @@ Az Azure Cosmos-tárolót a két tárolóeszköz, a tranzakciós tárolók és e
 A tranzakciós tárolási motort a helyi SSD-k végzik, az analitikai tárterületet pedig egy nem fürtözött SSD-tárolón tároljuk. Az alábbi táblázat a tranzakciós és az analitikai tároló közötti jelentős különbségeket rögzíti.
 
 
-|Funkció  |Tranzakciós tár  |Analitikai tár |
+|Szolgáltatás  |Tranzakciós tár  |Analitikai tár |
 |---------|---------|---------|
 |Maximális tárterület egy Azure Cosmos-tárolóban |   Korlátlan      |    Korlátlan     |
 |Maximális tárterület logikai partíciós kulcs alapján   |   10 GB      |   Korlátlan      |
@@ -35,7 +35,7 @@ A tranzakciós tárolási motort a helyi SSD-k végzik, az analitikai tárterül
 |Tárolási helység |   Helyi vagy fürtön belüli SSD-k által támogatott replikált tároló. |  A replikált tárolót az olcsó távoli/off-cluster SSD-k támogatták.       |
 |Tartósság  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
 |Az adatelérést biztosító API-k  |   SQL, MongoDB, Cassandra, Gremlin, Tables és Etcd.       | Apache Spark         |
-|Megőrzés (élettartam vagy TTL)   |  Házirend-vezérelt, az Azure Cosmos-tárolón konfigurálva a `DefaultTimeToLive` tulajdonság használatával.       |   Házirend-vezérelt, az Azure Cosmos-tárolón konfigurálva a `ColumnStoreTimeToLive` tulajdonság használatával.      |
+|Megőrzés (élettartam vagy TTL)   |  Házirend-alapú, az Azure Cosmos-tárolón konfigurált `DefaultTimeToLive` tulajdonság használatával.       |   Házirend-alapú, az Azure Cosmos-tárolón konfigurált `ColumnStoreTimeToLive` tulajdonság használatával.      |
 |Díj GB-onként    |   0,25/GB      |  0,02/GB       |
 |Tárolási tranzakciók díja    | A kiépített átviteli sebesség óradíja $0,008/100 RU/s.        |  A fogyasztáson alapuló adatátviteli sebességet az $0,05-es 10 000-es írási tranzakciók és $0,004 for 10 000-olvasási tranzakciók esetében számítjuk fel.       |
 
@@ -81,7 +81,7 @@ Jelenleg csak az igény szerinti pillanatképek készíthetők a tárolóban, a 
 
 A forgatókönyvtől függően önállóan engedélyezheti vagy letilthatja a két tárolási motort. Az egyes forgatókönyvek konfigurációi a következők:
 
-|Forgatókönyv |Tranzakciós tárolási beállítás  |Analitikai tárolási beállítás |
+|Alkalmazási helyzet |Tranzakciós tárolási beállítás  |Analitikai tárolási beállítás |
 |---------|---------|---------|
 |Analitikai számítási feladatok kizárólagos futtatása (végtelen megőrzéssel) |  DefaultTimeToLive = 0       |  ColumnStoreTimeToLive =-1       |
 |Kizárólag tranzakciós munkaterhelések futtatása (végtelen megőrzéssel)  |   DefaultTimeToLive =-1      |  ColumnStoreTimeToLive = 0       |
@@ -90,19 +90,19 @@ A forgatókönyvtől függően önállóan engedélyezheti vagy letilthatja a k�
 
 1. **A tároló konfigurálása kizárólag analitikai számítási feladatokhoz (végtelen megőrzéssel)**
 
-   Az Azure Cosmos-tárolót kizárólag analitikai számítási feladatokhoz állíthatja be. Ennek a konfigurációnak van olyan előnye, hogy nem kell fizetnie a tranzakciós tárterületért. Ha a cél az, hogy csak analitikus számítási feladatokhoz használja a tárolót, letilthatja a tranzakciós tárolót úgy, hogy a Cosmos tárolóban `DefaultTimeToLive` értéket 0 értékre állítja, és a `ColumnStoreTimeToLive` és-1 érték beállításával engedélyezheti az analitikai tárolót a végtelen megőrzéssel.
+   Az Azure Cosmos-tárolót kizárólag analitikai számítási feladatokhoz állíthatja be. Ennek a konfigurációnak van olyan előnye, hogy nem kell fizetnie a tranzakciós tárterületért. Ha a cél az, hogy csak analitikus számítási feladatokhoz használja a tárolót, letilthatja a tranzakciós tárolót úgy, hogy a Cosmos tárolóban a `DefaultTimeToLive` 0-ra állítja, és az analitikai tárolót a végtelen megőrzés beállításával engedélyezheti `ColumnStoreTimeToLive` – 1 értékre.
 
    ![Elemzési számítási feladatok végtelen megőrzéssel](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
 
 1. **A tároló konfigurálása kizárólag tranzakciós munkaterhelésekhez (végtelen megőrzéssel)**
 
-   Az Azure Cosmos-tárolót kizárólag tranzakciós munkaterhelések esetében konfigurálhatja. Az analitikai tárterület letiltásához állítsa be a `ColumnStoreTimeToLive` értéket a tárolóra, és az analitikai tárolót a végtelen megőrzés beállításával engedélyezheti `DefaultTimeToLive` és-1 értékkel.
+   Az Azure Cosmos-tárolót kizárólag tranzakciós munkaterhelések esetében konfigurálhatja. Az analitikai tároló letiltásához állítsa be a `ColumnStoreTimeToLive` 0-ra értéket a tárolóra, és az analitikai tárolót a végtelen megőrzés beállítással engedélyezheti a `DefaultTimeToLive` – 1 értékre való állításával.
 
    ![Tranzakciós munkaterhelések végtelen megőrzéssel](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
 
 1. **A tároló konfigurálása tranzakciós és analitikai számítási feladatokhoz (végtelen megőrzéssel)**
 
-   Az Azure Cosmos-tárolót mind a tranzakciós, mind az analitikus számítási feladatokhoz beállíthatja, a teljes teljesítmény-elkülönítéssel együtt. Az analitikai tárolót a `ColumnStoreTimeToLive` és a-1 érték beállításával engedélyezheti, és engedélyezheti a tranzakciós tárolást a végtelen megőrzéssel `DefaultTimeToLive ` és-1 érték beállításával.
+   Az Azure Cosmos-tárolót mind a tranzakciós, mind az analitikus számítási feladatokhoz beállíthatja, a teljes teljesítmény-elkülönítéssel együtt. Engedélyezheti az analitikai tárterületet, ha a `ColumnStoreTimeToLive` az-1 értékre állítja, és lehetővé teszi a tranzakciós tárolást a végtelen megőrzéssel a `DefaultTimeToLive ` – 1 érték beállításával.
 
    ![Tranzakciós és analitikai számítási feladatok végtelen megőrzéssel](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
 
@@ -110,10 +110,10 @@ A forgatókönyvtől függően önállóan engedélyezheti vagy letilthatja a k�
 
    Az Azure Cosmos-tárolót mind a tranzakciós, mind az analitikus számítási feladatokhoz beállíthatja, a különböző adatmegőrzési intervallumok közötti teljes teljesítmény-elkülönítéssel. Azure Cosmos DB fogja kényszeríteni, hogy az analitikai tárterületet mindig hosszabb ideig őrzi meg a tranzakciós tárterületnél.
 
-   A tranzakciós tárterületet a végtelen megőrzés beállításával engedélyezheti, ha a `DefaultTimeToLive` értéket < 1. érték >, és a `ColumnStoreTimeToLive` érték beállításával engedélyezte az analitikai tárolót < 2. érték >. A Azure Cosmos DB kikényszeríti, hogy a < Value 2 > mindig nagyobb legyen, mint < 1 > érték.
+   A tranzakciós tárterületet a végtelen megőrzés beállításával engedélyezheti, ha a `DefaultTimeToLive` értéket < 1. érték > és az analitikai tároló engedélyezését `ColumnStoreTimeToLive` < Value 2 > értékre állítva. A Azure Cosmos DB kikényszeríti, hogy a < Value 2 > mindig nagyobb legyen, mint < 1 > érték.
 
    ![Tranzakciós és analitikai számítási feladatok tárolási szinttel](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Élettartam Azure Cosmos DB](time-to-live.md)

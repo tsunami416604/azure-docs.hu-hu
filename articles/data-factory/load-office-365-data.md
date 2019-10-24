@@ -1,5 +1,5 @@
 ---
-title: Adatok betöltése az Office 365-ből az Azure Data Factory használatával |} A Microsoft Docs
+title: Adatok betöltése az Office 365-ből Azure Data Factory használatával | Microsoft Docs
 description: Adatok másolása az Office 365-ből az Azure Data Factory használatával
 services: data-factory
 documentationcenter: ''
@@ -11,148 +11,141 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: da3d407b39ef00154b717b54213a3b40d2d110bb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60548109"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754526"
 ---
-# <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből az Azure Data Factory használatával
+# <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
 
-Ez a cikk bemutatja, hogyan használható a Data Factory _adatok betöltése az Office 365-ből az Azure Blob storage_. Adatok másolása az Azure Data Lake Gen1 és Gen2 hasonló lépéseket követheti. Tekintse meg [Office 365-összekötő cikk](connector-office-365.md) a általában az adatok másolása az Office 365.
+Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési adatait az Office 365-ből az Azure Blob Storage-ba_. A hasonló lépéseket követve másolhatja az Adatmásolást Azure Data Lake Gen1 vagy Gen2. Tekintse meg az [office 365-összekötőt](connector-office-365.md) az Office 365-ből általában az adatok másolásáról szóló cikket.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**: 
+1. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analitika** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Az a **új adat-előállító** lap, adja meg a mezőket az alábbi képen látható:
+2. Az **új adat-előállító** lapon adja meg az alábbi képen látható mezők értékét:
       
    ![Új adat-előállító lap](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Név**: Adja meg az Azure data factory egy globálisan egyedi nevet. Ha a hibaüzenetet kapja "adat-előállító nevét \"LoadFromOffice365Demo\" nem érhető el" adja meg a data Factory egy másik nevet. Például használhatja a név  _**sajátneve**_ **LoadFromOffice365Demo**. Próbálja meg újra létrehozni az adat-előállító. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés**: Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
-    * **Erőforráscsoport**: A legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: Válassza ki **V2**.
-    * **Hely**: Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. Ezek adattárak közé tartozik az Azure Data Lake Store, az Azure Storage, Azure SQL Database és így tovább.
+    * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *LoadFromOffice365Demo* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_ **LoadFromOffice365Demo**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
+    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Verzió**: válassza a **v2**elemet.
+    * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
 3. Kattintson a **Létrehozás** gombra.
-4. Létrehozás befejezése után nyissa meg az adat-előállítóhoz. Megjelenik a **adat-előállító** kezdőlapja a következő képen látható módon:
+4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
    
    ![Data factory kezdőlap](./media/load-office-365-data/data-factory-home-page.png)
 
-5. Válassza ki a **létrehozás és Monitorozás** csempére kattintva indítsa el az adatintegrációs alkalmazás külön lapon.
+5. Az adatintegrációs alkalmazás külön lapon történő elindításához válassza a **szerző & figyelése** csempét.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-1. Válassza az "Első lépések" oldalon **folyamat létrehozása**.
+1. Az "első lépések" lapon válassza a **folyamat létrehozása**lehetőséget.
  
     ![Folyamat létrehozása](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. Az a **az Általános lapon** a folyamat, adja meg "CopyPipeline" **neve** a folyamat.
+2. A folyamat **Általános lapján** adja meg a folyamat **nevét** a "CopyPipeline" értékkel.
 
-3. A tevékenységek eszköz mezőbe > áthelyezése és átalakítása kategória > húzza át a **másolási tevékenység** az eszközkészletből a folyamat tervezőfelületére. Adja meg a "CopyFromOffice365ToBlob" tevékenység neve.
+3. A tevékenységek eszköz panelen > a & átalakítási kategória áthelyezése > húzza a **másolási tevékenységet** az eszközkészletből a folyamat tervező felületére. Adja meg a "CopyFromOffice365ToBlob" nevet a tevékenység neveként.
 
 ### <a name="configure-source"></a>Forrás konfigurálása
 
-1. Nyissa meg a folyamat > **(forrás) lapot**, kattintson a **+ új** forrásadatkészlet létrehozásához. 
+1. Nyissa meg a folyamat > **forrás lapot**, és kattintson az **+ új** elemre a forrás-adatkészlet létrehozásához. 
 
-2. Jelölje ki az új adatkészlet ablakban **Office 365**, majd válassza ki **Befejezés**.
-
-    ![Új Office 365-adatkészlet](./media/load-office-365-data/new-office-365-dataset.png)
+2. Az új adatkészlet ablakban válassza az **Office 365**lehetőséget, majd kattintson a **Folytatás**gombra.
  
-3. Megjelenik egy új lap nyílik meg az Office 365-adatkészlethez. Az a **az Általános lapon** a Tulajdonságok ablak alján, írja be a "SourceOffice365Dataset" nevet.
+3. Most már a másolási tevékenység konfigurációja lapon van. az Office 365-adatkészlet melletti **Szerkesztés** gombra kattintva folytathatja az adatkonfigurációt.
 
-    ![Általános konfiguráció az Office 365-adatkészlet](./media/load-office-365-data/config-office-365-dataset-general.png)
+    ![A config Office 365 adatkészlet általános](./media/load-office-365-data/transition-to-edit-dataset.png)
  
-4. Nyissa meg a **kapcsolat lap** a Tulajdonságok ablakának. A társított szolgáltatás beviteli mező mellett kattintson **+ új**.
+4. Ekkor megjelenik egy új lap, amely az Office 365-adatkészlethez van megnyitva. A Tulajdonságok ablak alján található **Általános lapon** adja meg a "SourceOffice365Dataset" nevet.
  
-    ![Konfiguráció az Office 365 adatkészlet kapcsolata](./media/load-office-365-data/config-office-365-dataset-connection.png)
+5. Lépjen a Tulajdonságok ablak **kapcsolatok lapjára** . A társított szolgáltatás szövegmező mellett kattintson az **+ új**elemre.
 
-5. Az új társított szolgáltatás ablak neveként adja meg a "Office365LinkedService", adja meg a szolgáltatásnév-Azonosítót és a szolgáltatásnév kulcsát, majd válassza a Mentés a társított szolgáltatás üzembe helyezéséhez.
+6. Az új társított szolgáltatás ablakban írja be a "Office365LinkedService" nevet a név mezőbe, írja be az egyszerű szolgáltatásnév és szolgáltatásnév kulcsát, majd tesztelje a kapcsolódást, és válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
-    ![Új Office 365-beli társított szolgáltatás](./media/load-office-365-data/new-office-365-linked-service.png)
+    ![Új Office 365 társított szolgáltatás](./media/load-office-365-data/new-office-365-linked-service.png)
  
-6. A társított szolgáltatás létrehozása után a rendszer visszalépteti az adatkészlet beállításaihoz. Melletti "Table" válassza a lefelé mutató nyílra kattintva bontsa ki a lista az elérhető Office 365-adatkészletek, és válassza a "BasicDataSet_v0. Contact_v0 "a legördülő listából:
+7. A társított szolgáltatás létrehozása után a rendszer visszalépteti az adatkészlet beállításaihoz. A **táblázat**mellett kattintson a lefelé mutató nyílra az elérhető Office 365-adatkészletek listájának kibontásához, majd válassza a "BasicDataSet_v0" lehetőséget. Message_v0 "a legördülő listából:
 
-    ![Konfiguráció az Office 365 adatkészlet tábla](./media/load-office-365-data/config-office-365-dataset-table.png)
- 
-7. Nyissa meg a **séma lapján** a Tulajdonságok ablakban, majd válassza a **séma importálása**.  Figyelje meg, hogy megjelenik-e a séma- és minta értékek, forduljon az adatkészlethez.
+    ![Config Office 365 adatkészlet táblázata](./media/load-office-365-data/edit-dataset.png)
 
-    ![Konfiguráció az Office 365 adathalmaz-séma](./media/load-office-365-data/config-office-365-dataset-schema.png)
+8. Most lépjen vissza a **folyamat**  > **forrás lapjára** , hogy továbbra is konfigurálja az Office 365-kinyerés további tulajdonságait.  A felhasználói hatókör és a felhasználói hatókör szűrője választható predikátumokat határozhat meg az Office 365-ből kinyerni kívánt adatok korlátozásához. A beállítások konfigurálásával kapcsolatban lásd az [Office 365-adatkészlet tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) című szakaszt.
 
-8. Most lépjen vissza a folyamat > forrás lap, győződjön meg arról, hogy SourceBlobDataset van kiválasztva.
- 
+9. Ki kell választania a Dátumszűrő egyikét, és meg kell adnia a kezdési és a befejezési időpontot.
+
+10. Kattintson a **séma importálása** lapra az üzenet-adatkészlet sémájának importálásához.
+
+    ![A config Office 365 adatkészlet sémája](./media/load-office-365-data/edit-source-properties.png)
+
 ### <a name="configure-sink"></a>Fogadó konfigurálása
 
-1. Nyissa meg a folyamat > **fogadó lap**, és válassza ki **+ új** egy fogadó-adatkészlet létrehozásához.
+1. Nyissa meg a folyamat > fogadó **lapot**, és válassza az **+ új** lehetőséget a fogadó adatkészlet létrehozásához.
  
-2. Az új adatkészlet ablakban figyelje meg, hogy csak a támogatott cél példatípust az Office 365-ből van kiválasztva. Válassza ki **Azure Blob Storage**, majd válassza ki **Befejezés**.  Ebben az oktatóanyagban az Office 365-adatokat egy Azure Blob Storage-ba másolja.
+2. Az új adatkészlet ablakban figyelje meg, hogy csak a támogatott célhelyek vannak kiválasztva az Office 365-ból való másoláskor. Válassza az **Azure Blob Storage**lehetőséget, válassza a bináris formátum lehetőséget, majd kattintson a **Folytatás**gombra.  Ebben az oktatóanyagban az Office 365-es verzióját egy Azure-Blob Storage másolja.
 
-    ![Új Blob-adatkészlet](./media/load-office-365-data/new-blob-dataset.png)
+3. Az adatkonfiguráció folytatásához kattintson az Azure Blob Storage adatkészlet melletti **Szerkesztés** gombra.
 
-4. Az a **az Általános lapon** a Tulajdonságok ablakban, a nevét, adja meg a "OutputBlobDataset".
+4. A Tulajdonságok ablak **Általános lapján** , a név mezőben adja meg a "OutputBlobDataset" értéket.
 
-5. Nyissa meg a **kapcsolat lap** a Tulajdonságok ablakának. Válassza ki a társított szolgáltatás szövegmező melletti **+ új**.
+5. Lépjen a Tulajdonságok ablak **kapcsolatok lapjára** . A társított szolgáltatás szövege mező mellett válassza az **+ új**lehetőséget.
 
-    ![Konfiguráció Blob-adatkészlet kapcsolata](./media/load-office-365-data/config-blob-dataset-connection.png) 
+6. Az új társított szolgáltatás ablakban adja meg a "AzureStorageLinkedService" nevet, válassza a "szolgáltatásnév" lehetőséget a hitelesítési módszerek legördülő listából, majd töltse ki a szolgáltatási végpontot, a bérlőt, a szolgáltatás egyszerű AZONOSÍTÓját és a szolgáltatásnév kulcsát, majd válassza a mentés lehetőséget. a társított szolgáltatás üzembe helyezése.  Az Azure Blob Storage szolgáltatás egyszerű hitelesítésének beállításával kapcsolatban [itt talál](connector-azure-blob-storage.md#service-principal-authentication) további információt.
 
-6. Az új társított szolgáltatás ablak neveként adja meg a "AzureStorageLinkedService", "szolgáltatásnév kiválasztása" lehetőséget a legördülő listából hitelesítési módszerek, töltse ki a szolgáltatásvégpont, bérlői szolgáltatásnév-Azonosítót, és szolgáltatás a szolgáltatásnév kulcsát, majd válassza a Mentés a társított szolgáltatás üzembe helyezéséhez.  Tekintse meg [Itt](connector-azure-blob-storage.md#service-principal-authentication) az egyszerű szolgáltatásnév hitelesítése az Azure Blob Storage-beállítása.
+    ![Új blob társított szolgáltatás](./media/load-office-365-data/configure-blob-linked-service.png)
 
-    ![Új társított Blob szolgáltatás](./media/load-office-365-data/new-blob-linked-service.png)
-
-7. A társított szolgáltatás létrehozása után a rendszer visszalépteti az adatkészlet beállításaihoz. Fájl elérési útja, mellett válassza ki **Tallózás** választani a kimeneti mappát, ahol az Office 365-adatok bontja ki.  "Fájlformátum beállításai", melletti formátumú, területen válassza a "**JSON formátumban**", mellett Fájlmintát, válassza a "**objektumok közül**".
-
-    ![Konfiguráció Blob-adatkészlet elérési útja és a formátum](./media/load-office-365-data/config-blob-dataset-path-and-format.png) 
-
-8. Lépjen vissza a folyamat > fogadó lap, győződjön meg arról, hogy OutputBlobDataset van kiválasztva.
 
 ## <a name="validate-the-pipeline"></a>A folyamat érvényesítése
 
 A folyamat érvényesítéséhez válassza az **Érvényesítés** elemet az eszköztáron.
 
-Megtekintheti a folyamat társított kód kattintson a jobb felső sarokban a JSON-kód is.
+A folyamathoz társított JSON-kódot a jobb felső sarokban található kód elemre kattintva is megtekintheti.
 
 ## <a name="publish-the-pipeline"></a>A folyamat közzététele
 
-A felső eszköztáron válassza **összes közzététele**. Ez a művelet közzéteszi a létrehozott entitásokat (adatkészleteket és folyamatokat) a Data Factoryben.
+A felső eszköztáron válassza az **összes közzététele**lehetőséget. Ez a művelet közzéteszi a létrehozott entitásokat (adatkészleteket és folyamatokat) a Data Factoryben.
 
 ![Módosítások közzététele](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 
-Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. A Folyamatfuttatás lapon válassza ki a **Befejezés**. 
+Válassza az **aktiválás hozzáadása** lehetőséget az eszköztáron, majd válassza az **aktiválás most**lehetőséget. A folyamat futtatása lapon válassza a **Befejezés**lehetőséget. 
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-Nyissa meg a **figyelés lapon** a bal oldalon. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A hivatkozások a **műveletek oszlopban** megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
+Lépjen a bal oldali **Figyelés** lapra. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **Műveletek** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
-![Folyamat figyelése](./media/load-office-365-data/pipeline-monitoring.png) 
+![Folyamat figyelése](./media/load-office-365-data/pipeline-status.png) 
 
-A folyamat futásához társított tevékenységfuttatások megtekintéséhez kattintson a **Tevékenységfuttatások megtekintése** a műveletek oszlopban található hivatkozásra. Ebben a példában csak egy tevékenység található, ezért csak egy bejegyzést lát a listán. A másolási művelet részleteinek kiválasztása a **részletek hivatkozását (szemüveg ikon)** a műveletek oszlopban található.
+A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a műveletek oszlop **Megtekintés tevékenység** futtatása hivatkozását. Ebben a példában csak egy tevékenység található, ezért csak egy bejegyzést lát a listán. A másolási művelet részleteinek megtekintéséhez válassza a műveletek oszlop **részletek** hivatkozását (szemüveg ikon).
 
-![Tevékenység figyelése](./media/load-office-365-data/activity-monitoring.png) 
+![Tevékenység figyelése](./media/load-office-365-data/activity-status.png) 
 
-Ha első alkalommal a kért adatokat az ebben a környezetben (kombinációjával, hogy mely tábla folyamatban van a hozzáférés, mely cél fiók be az adatokat, és mely felhasználói identitás, hogy így az adatok hozzáférési kérés), megjelenik a másolási tevékenység állapot szerint "**folyamatban**", és csak akkor, ha a "Details" hivatkozást a műveletek megoldásra kattint, megjelenik az állapot szerint "**RequesetingConsent**".  Az adatelérési jóváhagyó csoportja tagjának kell jóváhagyhatja a kérést a Privileged Access Management, mielőtt konfigurálhatná az adatok kinyerése.
+Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (az adattábla kombinációja, amelynek a rendeltetési helye a betöltésre kerül, és amely felhasználói identitása az adatelérési kérelem), megjelenik a másolási tevékenység. az állapot **folyamatban**van, és csak akkor, ha a műveletek területen a "Részletek" hivatkozásra kattint, az állapot **RequesetingConsent**lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
-_Kérelmező hozzájárul állapota:_ 
-![a tevékenység végrehajtásának részletei – jóváhagyási kérelem](./media/load-office-365-data/activity-details-request-consent.png) 
+_Engedély_ kérése: 
+ ![Activity végrehajtás részletei – kérelem belefoglalása ](./media/load-office-365-data/activity-details-request-consent.png) 
 
-_Adatok kinyerése, állapot:_
+_Állapot kibontási adatokként:_
 
-![A tevékenység végrehajtásának részletei – adatok kinyeréséhez.](./media/load-office-365-data/activity-details-extract-data.png) 
+![Tevékenység-végrehajtás részletei – adatok kinyerése](./media/load-office-365-data/activity-details-extract-data.png) 
 
-Miután az hozzájárulásra van megadott adatkinyerés továbbra is, és némi várakozás után, a folyamat futásához befejezettként jelennek meg.
+Miután megadta a beleegyezett adatgyűjtést, a rendszer folytatja az adatfeldolgozást, és egy kis idő elteltével a folyamat futása sikeresnek fog megjelenni.
 
 ![Folyamat figyelése – sikeres](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
 
-Most nyissa meg a cél Azure Blob Storage, és győződjön meg arról, hogy az Office 365-adatok lehívása JSON formátumban.
+Most lépjen a cél Azure Blob Storagera, és ellenőrizze, hogy az Office 365-es Adatkivonatok bináris formátumban lettek kibontva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Lépjen az Azure SQL Data Warehouse-támogatással kapcsolatos további információt a következő cikket: 
+A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását: 
 
 > [!div class="nextstepaction"]
 >[Office 365-összekötő](connector-office-365.md)

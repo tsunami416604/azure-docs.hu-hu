@@ -1,5 +1,5 @@
 ---
-title: Biztonságos Azure AD Domain Services | Microsoft Docs "
+title: Biztonságos Azure AD Domain Services | Microsoft Docs
 description: Megtudhatja, hogyan tilthatja le a gyenge titkosításokat, a régi protokollokat és az NTLM jelszó-kivonatolási szinkronizálást egy Azure Active Directory Domain Services felügyelt tartományhoz.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: db086c56c9f16f4691efaade03571bf8a36c6444
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6d60663e345f297246a423e1b4e7a4fb45f352a5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842626"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754339"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány biztonságossá tételéhez tiltsa le a gyenge titkosításokat és a jelszó-kivonatolási szinkronizálást
 
@@ -75,7 +75,7 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 
 Néhány percet vesz igénybe, hogy a biztonsági beállítások az Azure AD DS felügyelt tartományra legyenek alkalmazva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a szinkronizálási folyamatról: az [objektumok és a hitelesítő adatok szinkronizálása egy Azure AD DS felügyelt tartományban][synchronization].
 

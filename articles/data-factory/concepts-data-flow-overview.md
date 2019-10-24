@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 94bde7b2e2a6f3902d83de90b06638035fd34397
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679121"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754712"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -39,6 +39,38 @@ Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfig
 A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
 
 ![Vászon](media/data-flow/canvas2.png "Vászon")
+
+### <a name="azure-integration-runtime-data-flow-properties"></a>Az Azure Integration Runtime adatforgalmának tulajdonságai
+
+![Hibakeresés gomb](media/data-flow/debugbutton.png "Hibakeresés gomb")
+
+Amikor megkezdi az Adatáramlások használatát az ADF-ben, be kell kapcsolnia a "hibakeresés" kapcsolót a böngésző felhasználói felületének felső részén lévő adatfolyamatokhoz. Ezzel egy Azure Databricks-fürtöt fog használni az interaktív hibakereséshez, az adatelőzetesekhez és a folyamat-hibakeresési végrehajtáshoz. Az egyéni [Azure Integration Runtime](concepts-integration-runtime.md)kiválasztásával megadhatja a használni kívánt fürt méretét. A hibakeresési munkamenet az utolsó adatelőnézet vagy az utolsó hibakeresési folyamat végrehajtása után akár 60 perccel is életben marad.
+
+Ha adatáramlási tevékenységekkel működővé tenni a folyamatokat, az ADF a "Futtatás" tulajdonságban a [tevékenységhez](control-flow-execute-data-flow-activity.md) társított Azure Integration Runtime fogja használni.
+
+Az alapértelmezett Azure Integration Runtime egy 4 magos, egyetlen feldolgozó csomópont-fürt, amely lehetővé teszi az adatmegtekintést és a hibakeresési folyamatok gyors végrehajtását minimális költségek mellett. Nagyobb Azure IR konfiguráció beállítása, ha nagyméretű adatkészleteken végez műveleteket.
+
+A fürt erőforrásainak (VM-EK) készletének fenntartásához az ADF-et kell megadnia a Azure IR adatfolyam tulajdonságai között. Ez gyorsabb feladatok végrehajtását eredményezi a későbbi tevékenységek esetén.
+
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Az Azure Integration Runtime és az adatáramlási stratégiák
+
+##### <a name="execute-data-flows-in-parallel"></a>Az adatfolyamatok párhuzamos végrehajtása
+
+Ha párhuzamosan hajtja végre az adatfolyamatokat, az ADF külön Azure Databricks fürtöket helyez el minden tevékenység végrehajtásához az egyes tevékenységekhez csatolt Azure Integration Runtime beállításai alapján. Az ADF-folyamatok párhuzamos végrehajtásának kialakításához adja hozzá az adatfolyam-tevékenységeket a felhasználói felület elsőbbségi korlátozásai nélkül.
+
+Ebből a három lehetőségből ez a lehetőség valószínűleg a lehető legrövidebb idő alatt fog megjelenni. Azonban az egyes párhuzamos adatfolyamok külön fürtökön lesznek végrehajtva, így az események rendezése nem determinisztikus.
+
+##### <a name="overload-single-data-flow"></a>Egyetlen adatfolyam túlterhelése
+
+Ha egyetlen adatfolyamaton belül helyezi el az összes logikát, akkor a rendszer az ADF-t egyetlen Spark-fürtbeli példányon hajtja végre ugyanazon a feladatok végrehajtási környezetében.
+
+Ez a lehetőség valószínűleg nehezebben követhető és elhárítható, mert az üzleti szabályok és az üzleti logika össze lesz keverve. Ez a beállítás szintén nem nyújt sok újrahasználhatóságot.
+
+##### <a name="execute-data-flows-serially"></a>Az adatfolyamatok soros végrehajtása
+
+Ha a folyamat soros verziójában hajtja végre az adatfolyam-tevékenységeket, és beállította az ÉLETTARTAMot a Azure IR konfigurációban, akkor az ADF újra felhasználja a számítási erőforrásokat (VM), ami gyorsabb végrehajtást eredményez. Minden egyes végrehajtáshoz továbbra is új Spark-kontextust fog kapni.
+
+Ebből a három lehetőségből ez valószínűleg a leghosszabb időt fogja igénybe venni a végpontok között. Azonban a logikai műveletek tiszta elkülönítését teszi lehetővé az egyes adatfolyamok lépéseiben.
 
 ### <a name="configuration-panel"></a>Konfigurációs panel
 

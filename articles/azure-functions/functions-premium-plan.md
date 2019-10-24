@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096231"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755400"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium csomag (előzetes verzió)
 
@@ -31,11 +31,11 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Ebben a példában cserélje le `<RESOURCE_GROUP>` az erőforráscsoportot és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [ `<REGION>`támogatottat ](#regions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
+Ebben a példában cserélje le a `<RESOURCE_GROUP>`t az erőforráscsoporthoz, és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [támogatott `<REGION>`](#regions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
@@ -45,7 +45,7 @@ Ha a használati tervben jelenleg nem fordulnak elő események és végrehajtá
 
 A prémium csomaggal előre bemelegítheti az alkalmazást egy adott számú példányra, a minimálisan szükséges méretig.  Az előre bemelegített példányok lehetővé teszik az alkalmazások előre méretezését a nagy terhelés előtt. Az alkalmazás kiskálázásakor először az előre bemelegítő példányokra méretezi a folyamatokat. A további példányok továbbra is kiállnak a pufferbe, és azonnal melegen vesznek részt a következő skálázási művelet előkészítésében. Az előre bemelegített példányok pufferével hatékonyan elkerülheti a hideg indítási késéseket.  Az előre bemelegített példányok a Prémium csomag egyik funkciója, és legalább egy példányon futnia kell, és a csomag aktív állapotban kell lennie.
 
-A Azure Portal előre bemelegítő példányok számát úgy is beállíthatja, hogy kiválasztja a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, és kiválasztja a kibővíthető lehetőségeket. Az alkalmazás szerkesztése ablakban az előre felmelegedett példányok az adott alkalmazásra vonatkoznak, de a minimális és a maximális példányszám a teljes tervre vonatkozik.
+A Azure Portal előre bemelegítő példányok számát úgy is beállíthatja, hogy kiválasztja a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, és kiválasztja a **kibővíthető** lehetőségeket. Az alkalmazás szerkesztése ablakban az előre felmelegedett példányok az adott alkalmazásra vonatkoznak, de a minimális és a maximális példányszám a teljes tervre vonatkozik.
 
 ![Rugalmas méretezési beállítások](./media/functions-premium-plan/scale-out.png)
 
@@ -57,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Magánhálózati kapcsolat
 
-A prémium csomagra telepített Azure Functions a webalkalmazások [új VNet](../app-service/web-sites-integrate-with-vnet.md)-integrációját is kihasználja.  Ha be van állítva, az alkalmazás képes kommunikálni a VNet lévő erőforrásokkal, vagy szolgáltatási végpontokon keresztül.  Az alkalmazásban az IP-korlátozások is elérhetők a bejövő forgalom korlátozására.
+A prémium csomagra telepített Azure Functions a [webalkalmazások új VNet-integrációját](../app-service/web-sites-integrate-with-vnet.md)is kihasználja.  Ha be van állítva, az alkalmazás képes kommunikálni a VNet lévő erőforrásokkal, vagy szolgáltatási végpontokon keresztül.  Az alkalmazásban az IP-korlátozások is elérhetők a bejövő forgalom korlátozására.
 
 Amikor prémium szintű csomagban rendel hozzá egy alhálózatot a Function alkalmazáshoz, szüksége van egy alhálózatra, amely minden lehetséges példányhoz elegendő IP-címmel rendelkezik. Bár az előzetes verzióban a példányok maximális száma eltérő lehet, a rendszer legalább 100 rendelkezésre álló címmel rendelkező IP-blokkot igényel.
 
@@ -69,7 +69,7 @@ Az alkalmazáshoz további számítási példányok is automatikusan hozzáadód
 
 ### <a name="unbounded-run-duration"></a>Nem kötött Futtatás időtartama
 
-A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. [A Host. JSON-konfiguráció](./functions-host-json.md#functiontimeout) azonban módosítható úgy, hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen.
+A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. [A Host. JSON-konfiguráció azonban módosítható](./functions-host-json.md#functiontimeout) úgy, hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen.
 
 Az előzetes verzióban az időtartam nem garantált az elmúlt 12 percben, és a lehető legkevesebb időt vesz igénybe, ha az alkalmazás nem méretezhető a feldolgozók minimális száma felett.
 
@@ -82,7 +82,7 @@ A terv létrehozásakor két beállítást kell beállítania: a példányok min
 
 Ha az alkalmazás a csomag méretétől meghaladó példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás az, ha az alkalmazást a meghatározott maximális korlátig méretezni, míg a minimálisan szükséges csomag példányai garantáltak az alkalmazás számára.
 
-A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag kibővíthető lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
+A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővíthető** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
 Az Azure CLI maximális burst korlátját is megnövelheti:
 
@@ -94,27 +94,30 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|SKU|Processzormagok|Memory (Memória)|Storage|
+|SKU (Cikkszám)|Processzormagok|Memória|Adattárolás|
 |--|--|--|--|
 |EP1|1|3.5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Térségek
 
 Az alábbiakban a jelenleg támogatott régiók érhetők el az egyes operációs rendszerekhez tartozó nyilvános előzetes verzióhoz.
 
-|Régió| Windows | Linux |
+|Region (Régió)| Windows | Linux |
 |--| -- | -- |
-|Kelet-Ausztrália| ✔ | |
+|Ausztrália középső régiója| ✔ * | |
+|Ausztrália 2. középső régiója| ✔ * | |
+|Ausztrália keleti régiója| ✔ | |
 |Délkelet-Ausztrália | ✔ | ✔ |
+|Dél-Brazília| ✔ * * |  |
 |Közép-Kanada| ✔ |  |
 |USA középső régiója| ✔ |  |
 |Kelet-Ázsia| ✔ |  |
-|East US | | ✔ |
+|USA keleti régiója | ✔ | ✔ |
 |USA 2. keleti régiója| ✔ |  |
 |Közép-Franciaország| ✔ |  |
-|Kelet-Japán|  | ✔ |
+|Kelet-Japán| ✔ | ✔ |
 |Nyugat-Japán| ✔ | |
 |Korea középső régiója| ✔ |  |
 |USA északi középső régiója| ✔ |  |
@@ -122,16 +125,21 @@ Az alábbiakban a jelenleg támogatott régiók érhetők el az egyes operáció
 |USA déli középső régiója| ✔ |  |
 |Dél-India | ✔ | |
 |Délkelet-Ázsia| ✔ | ✔ |
-|Az Egyesült Királyság nyugati régiója| ✔ |  |
+|Egyesült Királyság déli régiója| ✔ | |
+|Egyesült Királyság nyugati régiója| ✔ |  |
 |Nyugat-Európa| ✔ | ✔ |
 |Nyugat-India| ✔ |  |
 |USA nyugati régiója| ✔ | ✔ |
 
+\* legfeljebb 20 példányra korlátozható a maximális méretezés
+
+\* * maximális méretezés 60 példányra korlátozva
+
 ## <a name="known-issues"></a>Ismert problémák
 
-Nyomon követheti a GitHubon elérhető [nyilvános előzetes](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)verzió ismert problémáinak állapotát.
+Nyomon követheti a [githubon elérhető nyilvános előzetes](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)verzió ismert problémáinak állapotát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Azure Functions méretezési és üzemeltetési lehetőségeinek megismerése](functions-scale.md)

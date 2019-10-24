@@ -4,28 +4,28 @@ description: Az Azure-erőforrás szerepköreinek tevékenység-és naplózási 
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 0c9a58fb6cd8591f571b4e65c3ab88cc59e38cda
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804051"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756329"
 ---
-# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrás szerepköreinek tevékenység-és naplózási előzményeinek megtekintése a PIM-ben
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Az Azure Resource szerepköreinek tevékenység-és naplózási előzményeinek megtekintése Privileged Identity Management
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával megtekintheti a szervezeten belüli Azure-erőforrások szerepköreinek tevékenységeit, aktiválásait és naplózási előzményeit. Ide tartoznak az előfizetések, az erőforráscsoportok és a virtuális gépek is. A Azure Portalon belüli, az Azure szerepköralapú hozzáférés-vezérlést (RBAC) használó összes erőforrás kihasználhatja a PIM biztonsági és életciklus-kezelési funkcióit.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával megtekintheti a szervezeten belüli Azure-erőforrások szerepköreinek tevékenységeit, aktiválásait és naplózási előzményeit. Ide tartoznak az előfizetések, az erőforráscsoportok és a virtuális gépek is. A Azure Portalon belüli, az Azure szerepköralapú hozzáférés-vezérlést (RBAC) használó összes erőforrás kihasználhatja Privileged Identity Management biztonsági és életciklus-kezelési funkcióit.
 
 ## <a name="view-activity-and-activations"></a>Tevékenységek és aktiválások megtekintése
 
@@ -51,7 +51,7 @@ Ha szeretné megtekinteni, hogy egy adott felhasználó milyen műveleteket vég
 
 ## <a name="export-role-assignments-with-children"></a>Szerepkör-hozzárendelések exportálása gyermekekkel
 
-Lehet, hogy megfelelőségi követelményt kell megadnia, amelyben meg kell adnia a rendszernaplók szerepkör-hozzárendeléseinek teljes listáját. A PIM lehetővé teszi a szerepkör-hozzárendelések lekérdezését egy adott erőforráson, amely tartalmazza az összes alárendelt erőforráshoz tartozó szerepkör-hozzárendeléseket. Korábban nehéz volt, hogy a rendszergazdák teljes listát kapjanak az előfizetéshez tartozó szerepkör-hozzárendelésekről, és minden egyes erőforráshoz hozzá kellett exportálni a szerepkör-hozzárendeléseket. A PIM használatával lekérdezheti az összes aktív és jogosult szerepkör-hozzárendelést egy előfizetésben, beleértve az összes erőforráscsoport és erőforrás szerepkör-hozzárendelését.
+Lehet, hogy megfelelőségi követelményt kell megadnia, amelyben meg kell adnia a rendszernaplók szerepkör-hozzárendeléseinek teljes listáját. Privileged Identity Management lehetővé teszi a szerepkör-hozzárendelések lekérdezését egy adott erőforráson, amely tartalmazza az összes alárendelt erőforráshoz tartozó szerepkör-hozzárendeléseket. Korábban nehéz volt, hogy a rendszergazdák teljes listát kapjanak az előfizetéshez tartozó szerepkör-hozzárendelésekről, és minden egyes erőforráshoz hozzá kellett exportálni a szerepkör-hozzárendeléseket. A Privileged Identity Management használatával lekérdezheti az összes aktív és jogosult szerepkör-hozzárendelést egy előfizetésben, beleértve az összes erőforráscsoport és erőforrás szerepkör-hozzárendelését is.
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -67,7 +67,7 @@ Lehet, hogy megfelelőségi követelményt kell megadnia, amelyben meg kell adni
 
 1. Kattintson az **összes tag exportálása** lehetőségre egy CSV-fájlban lévő összes szerepkör-hozzárendelés exportálásához.
 
-    ![Az exportált szerepkör-hozzárendelések a CSV-fájlban az Excelben való megjelenítéssel](media/azure-pim-resource-rbac/export-csv.png)
+    ![Exportált szerepkör-hozzárendelések CSV-fájlban az Excelben való megjelenítésként](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>Erőforrás-naplózási előzmények megtekintése
 
@@ -109,8 +109,8 @@ A saját audit lehetővé teszi a személyes szerepkör-tevékenységek megtekin
 
     ![Az aktuális felhasználó naplózási listája](media/azure-pim-resource-rbac/my-audit-time.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure-beli erőforrás-szerepkörök kiosztása a PIM-ben](pim-resource-roles-assign-roles.md)
-- [Azure-erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben](pim-resource-roles-approval-workflow.md)
-- [Azure AD-szerepkörök naplózási előzményeinek megtekintése a PIM-ben](pim-how-to-use-audit-log.md)
+- [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)
+- [Azure AD-szerepkörök naplózási előzményeinek megtekintése Privileged Identity Management](pim-how-to-use-audit-log.md)

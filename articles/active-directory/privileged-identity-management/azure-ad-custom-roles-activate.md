@@ -6,21 +6,21 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38b0f4463c2188f0b2da6ebb1b57d08af69b41f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2ac8acf2193442de5c85e0a1134d46330821c77b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947330"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756441"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör aktiválása Privileged Identity Management
 
@@ -31,9 +31,9 @@ A Azure Active Directory (Azure AD) Privileged Identity Management mostantól t�
 
 ## <a name="activate-a-role"></a>Szerepkör aktiválása
 
-Ha egy egyéni Azure AD-szerepkört kell aktiválni, a saját szerepkörök navigációs lehetőség kiválasztásával kérheti az aktiválást a PIM-ben.
+Ha egy egyéni Azure AD-szerepkört kell aktiválnia, az aktiválás kéréséhez válassza a saját szerepkörök navigációs lehetőséget a Privileged Identity Management.
 
-1. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com).
 1. Nyissa meg az Azure AD [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart).
 
 1. Válassza az **Egyéni Azure ad-szerepkörök** lehetőséget a jogosult Azure ad egyéni szerepkör-hozzárendelések listájának megtekintéséhez.
@@ -56,7 +56,7 @@ Ha a szerepkörhöz nem szükséges jóváhagyás, a beállításoknak megfelel�
 
 Ha a szerepkör jóváhagyást igényel az aktiváláshoz, egy Azure-értesítés jelenik meg, amely tájékoztatja arról, hogy a kérelem jóváhagyása függőben van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

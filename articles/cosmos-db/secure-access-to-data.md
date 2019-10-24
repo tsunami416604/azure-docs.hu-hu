@@ -1,25 +1,25 @@
 ---
 title: Megtudhatja, hogyan védheti meg Azure Cosmos DB az adathozzáférését
 description: Ismerje meg a Azure Cosmos DB hozzáférés-vezérlési fogalmait, beleértve a főkulcsokat, a csak olvasható kulcsokat, a felhasználókat és az engedélyeket.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7e732f1d35097730d4468b43a2d9804fe7a18514
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616670"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753174"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés a Azure Cosmos DB lévő adateléréshez
 
-Ez a cikk áttekintést nyújt a Microsoft Azure Cosmos DBban tárolt adathozzáférés biztonságossá [](https://azure.microsoft.com/services/cosmos-db/)tételéről.
+Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.microsoft.com/services/cosmos-db/)tárolt adathozzáférés biztonságossá tételéről.
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcstípus|További források|
+|Kulcs típusa|Segédanyagok és eszközök|
 |---|---|
 |[Főkulcsok](#master-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -38,7 +38,7 @@ Minden fiók két főkulcsból áll: egy elsődleges és egy másodlagos kulcsb�
 
 A Cosmos DB fiók két főkulcsán kívül két írásvédett kulcs is van. Ezek a csak olvasási jogosultsággal rendelkező kulcsok csak olvasási műveleteket engedélyeznek a fiókon. A csak olvasási jogosultsággal rendelkező kulcsok nem biztosítanak hozzáférést az olvasási engedélyek erőforrásaihoz.
 
-Az elsődleges, másodlagos, írásvédett és írható főkulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és](manage-with-cli.md#regenerate-account-key)újragenerálása.
+Az elsődleges, másodlagos, írásvédett és írható főkulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
 
 ![Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -74,7 +74,7 @@ Database database = await client.CreateDatabaseAsync(
 
 Az erőforrás-tokenek hozzáférést biztosítanak az adatbázison belüli alkalmazás-erőforrásokhoz. Erőforrás-tokenek:
 - Hozzáférés biztosítása bizonyos tárolók, partíciós kulcsok, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF számára.
-- Akkor jön létre, amikor egy [felhasználó](#users) engedélyt kap egy adott erőforráshoz. [](#permissions)
+- Akkor jön létre, [](#users) amikor egy felhasználó [engedélyt kap egy](#permissions) adott erőforráshoz.
 - Akkor jön létre újra, amikor egy engedélyezési erőforrást POST, GET vagy PUT hívás után végeznek el.
 - Használjon olyan kivonatoló erőforrás-tokent, amelyet kifejezetten a felhasználóhoz, erőforráshoz és engedélyhez alakítottak ki.
 - Az idő egy testreszabható érvényességi időtartammal van kötve. Az alapértelmezett érvényes TimeSpan egy óra. A jogkivonat élettartama azonban explicit módon megadható, legfeljebb öt órára.
@@ -98,7 +98,7 @@ A Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak,
 
     ![Azure Cosmos DB erőforrás-tokenek munkafolyamata](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik; Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. További információ a REST-alapú hitelesítési fejlécek létrehozásáról: [Access Control Cosmos db erőforrásokon](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy az [SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)-k forráskódján.
+Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik; Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. További információ a REST-alapú hitelesítési fejlécek létrehozásáról: [Access Control Cosmos db erőforrásokon](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy az SDK-k [forráskódján](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
 Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt középső rétegű szolgáltatásra például a [ResourceTokenBroker alkalmazásban](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)talál példát.
 
@@ -128,8 +128,8 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Egy Cosmos DB engedély erőforrás egy Cosmos DB felhasználóhoz van társítva.  Minden felhasználó nulla vagy több Cosmos DB engedélyt is tartalmazhat.  Az engedélyezési erőforrás hozzáférést biztosít egy olyan biztonsági jogkivonathoz, amelyhez a felhasználónak szüksége van egy adott alkalmazás-erőforrás elérésére tett kísérlet során.
 Az engedélyezési erőforrások két rendelkezésre álló hozzáférési szintet tartalmazhatnak:
 
-* Összes A felhasználó teljes körű engedéllyel rendelkezik az erőforráson.
-* Olvasni A felhasználó csak az erőforrás tartalmát tudja olvasni, de az erőforráson nem hajtható végre írási, frissítési vagy törlési művelet.
+* Összes: a felhasználó teljes körű engedéllyel rendelkezik az erőforráson.
+* Olvasás: a felhasználó csak az erőforrás tartalmát tudja olvasni, de írási, frissítési vagy törlési műveletet nem tud végrehajtani az erőforráson.
 
 > [!NOTE]
 > Cosmos DB tárolt eljárások futtatásához a felhasználónak az összes engedéllyel kell rendelkeznie arra a tárolóra, amelyben a tárolt eljárás futni fog.
@@ -192,6 +192,6 @@ Azure Cosmos DB lehetővé teszi, hogy az adatbázisban vagy gyűjteményekben t
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>További lépések
-* A Cosmos Database biztonságával kapcsolatos további tudnivalókért tekintse [meg a Cosmos db: Adatbázis-](database-security.md)biztonság.
+## <a name="next-steps"></a>Következő lépések
+* A Cosmos Database biztonságával kapcsolatos további tudnivalókért tekintse meg a [Cosmos db: adatbázis-biztonság](database-security.md)című témakört.
 * A Azure Cosmos DB engedélyezési jogkivonatok létrehozásával kapcsolatos további információkért lásd: [Access Control Azure Cosmos db erőforrásokon](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
