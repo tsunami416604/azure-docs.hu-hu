@@ -1,0 +1,92 @@
+- name: A Lab Services dokumentációja
+  href: index.yml
+- name: Ugrás a DevTest Labs dokumentációjára
+  href: ../devtest-lab-overview.md
+- name: Áttekintés
+  items:
+    - name: Az osztályterem-tesztkörnyezetek ismertetése
+      href: classroom-labs-overview.md
+    - name: A Lab Services és a DevTest Labs bemutatása
+      href: ../lab-services-overview.md?toc=%2fazure%2flab-services%2fclassroom-labs%2ftoc.json
+- name: Oktatóanyagok
+  items:
+    - name: Tesztkörnyezetfiók beállítása
+      href: tutorial-setup-lab-account.md
+    - name: Osztályterem-tesztkörnyezet beállítása
+      href: tutorial-setup-classroom-lab.md
+    - name: Osztályterem-tesztkörnyezet elérése
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: Osztályterem-tesztkörnyezet használatának követése
+      href: tutorial-track-usage.md
+- name: Alapelvek
+  items:
+    - name: Osztályterem-tesztkörnyezetek alapelvei
+      href: classroom-labs-concepts.md
+    - name: Forgatókönyvek
+      items:
+        - name: Tesztkörnyezetek használata tanórák lebonyolításához
+          href: classroom-labs-scenarios.md
+- name: Útmutatók
+  items:
+    - name: Osztályterem-tesztkörnyezetek – osztálytípusok
+      items:
+        - name: Osztálytípusok áttekintése
+          href: class-types.md
+        - name: Mélytanulás a természetes feldolgozásban
+          href: class-type-deep-learning-natural-processing.md
+        - name: Héjszkriptek használata Linuxon
+          href: class-type-shell-scripting-linux.md
+        - name: Etikus hackertevékenység
+          href: class-type-ethical-hacking.md
+    - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása (tesztkörnyezeti fiók tulajdonosa)
+      items:
+        - name: Tesztkörnyezeti fiókok létrehozása és felügyelete
+          href: how-to-manage-lab-accounts.md
+        - name: Tesztkörnyezeti fiókok konfigurálása
+          href: how-to-configure-lab-accounts.md
+        - name: Társviszony létesítése a tesztkörnyezet és egy virtuális hálózat között
+          href: how-to-connect-peer-virtual-network.md
+        - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
+          href: how-to-attach-detach-shared-image-gallery.md
+    - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
+      items:
+        - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
+          href: how-to-manage-classroom-labs.md
+        - name: 'Sablonok beállítása, testreszabása és közzététele'
+          href: how-to-create-manage-template.md
+        - name: Virtuális gépek készleteinek létrehozása és kezelése
+          href: how-to-set-virtual-machine-passwords.md
+        - name: Tesztkörnyezeti felhasználók létrehozása és felügyelete
+          href: how-to-configure-student-usage.md
+        - name: Ütemezések létrehozása és felügyelete
+          href: how-to-create-schedules.md
+        - name: Megosztott rendszerkép-katalógus használata
+          href: how-to-use-shared-image-gallery.md
+        - name: Távoli asztali kapcsolat engedélyezése Linuxon
+          href: how-to-enable-remote-desktop-linux.md
+        - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
+          href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Környezet létrehozása több virtuális géppel egy sablon virtuális gépen belül
+          href: how-to-enable-multi-vm-environment.md
+    - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
+      items:
+        - name: Osztályterem-tesztkörnyezetek elérése
+          href: how-to-use-classroom-lab.md
+        - name: Távoli asztali kapcsolat használata Linux rendszerű virtuális gépeken
+          href: how-to-use-remote-desktop-linux-student.md
+        - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
+          href: how-to-set-virtual-machine-passwords-student.md
+- name: Referencia
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/labservices/'
+- name: További források
+  items:
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?product=lab-services'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/lab-services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: Gyakori kérdések
+      href: classroom-labs-faq.md

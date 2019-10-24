@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Létrehozás, közzététel, válasz-QnA Maker'
+title: 'Oktatóanyag: létrehozás, közzététel, válasz-QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ez a REST-alapú oktatóanyag végigvezeti egy tudásbázis programozott módon történő létrehozásának és közzétételének, majd egy kérdés a tudásbázisból való megválaszolásának folyamatán.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d13bce3c1cafd20b311aa882d3a32101c1833ba5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802821"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555503"
 ---
-# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: A C#, Tudásbázis létrehozása, majd a kérdés megválaszolása
+# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: a C# használata tudásbázis létrehozásához és kérdések megválaszolásához
 
 Ez az oktatóanyag végigvezeti egy tudásbázis (KB) programozott módon történő létrehozásának és közzétételének, majd egy ügyféltől származó kérdés a tudásbázisból való megválaszolásának folyamatán. 
 
@@ -215,6 +215,13 @@ Adja hozzá a következő metódust, amellyel lekérheti a felhasználó kérdé
 
 [!code-csharp[Get Answer](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=290-315 "Get Answer")]
 
+Ha korlátozni szeretné a kérdésekre adott válaszokat, adja hozzá a `[rankerType](Learn more about [rankerType](../concepts/best-practices.md#choosing-ranker-type).
+)` tulajdonságot a törzshöz, például: 
+
+```csharp
+request.Content = new StringContent("{question:'" + question + "', rankerType:'QuestionOnly'}", Encoding.UTF8, "application/json"); 
+```
+
 Ez az API-hívás egy JSON-választ ad vissza: 
 
 ```JSON
@@ -245,7 +252,7 @@ Hozza létre és futtassa a programot.
 
 A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Saját tudásbázisok) lapon tekintheti meg azt. Ha már tudja, hogyan használható a válasz összeállítása API, bármely nyelvvel vagy HTTP-kérelem-keretrendszerrel használhatja az API-t. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

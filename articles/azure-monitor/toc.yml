@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: Adatelemzés naplólekérdezésekkel
                   href: insights/vminsights-log-search.md
+                - name: Dependency Agent frissítése
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: Monitorozás letiltása
                   href: insights/vminsights-optout.md
             - name: Kapacitással és teljesítménnyel kapcsolatos megoldás

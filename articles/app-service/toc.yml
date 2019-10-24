@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: Üzembe helyezés a helyi Gitből
               href: deploy-local-git.md
+            - name: Üzembe helyezés GitHub-műveletekkel
+              href: deploy-github-actions.md
             - name: Üzembe helyezés sablon használatával
               href: deploy-complex-application-predictably.md
         - name: Telepítési hitelesítő adatok beállítása

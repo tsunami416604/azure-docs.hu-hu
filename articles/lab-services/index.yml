@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Az Azure Lab Services dokumentációja
-summary: Ismerje meg, hogyan helyezhet üzembe az Azure Lab Services használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára.
+title: Az Azure DevTest Labs dokumentációja
+summary: Ismerje meg, hogyan helyezhet üzembe az Azure DevTest Labs használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára.
 metadata:
-  title: Az Azure Lab Services dokumentációja
-  description: Ismerje meg, hogyan helyezhet üzembe az Azure Lab Services használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára.
+  title: Az Azure DevTest Labs dokumentációja
+  description: Ismerje meg, hogyan helyezhet üzembe az Azure DevTest Labs használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára.
   services: lab-services
   ms.service: lab-services
   ms.subservice: 
@@ -12,75 +12,59 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/26/2019
-  ms.openlocfilehash: 63a5b41fba026cc52cdcc599bfdd38e1e27ad42d
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
+  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71326981"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72790948"
 landingContent:
-- title: Magas szintű áttekintés
+- title: Bevezetés
   linkLists:
   - linkListType: overview
     links:
-    - text: A Lab Services ismertetése
+    - text: A DevTest Labs ismertetése
+      url: devtest-lab-overview.md
+    - text: A DevTest Labs és a Lab Services bemutatása
       url: lab-services-overview.md
-    - text: A DevTest Labs ismertetése
-      url: devtest-lab-overview.md
-    - text: Az osztályterem-tesztkörnyezetek ismertetése
-      url: ./classroom-labs/classroom-labs-overview.md
-- title: DevTest Labs
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: A DevTest Labs ismertetése
-      url: devtest-lab-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Tesztkörnyezet beállítása
-      url: tutorial-create-custom-lab.md
-    - text: Tesztkörnyezet elérése
-      url: tutorial-use-custom-lab.md
   - linkListType: concept
     links:
     - text: DevTest Labs-fogalmak
       url: devtest-lab-concepts.md
     - text: Népszerű forgatókönyvek
       url: devtest-lab-guidance-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: Tesztkörnyezet beállítása
+      url: tutorial-create-custom-lab.md
+    - text: Tesztkörnyezet elérése
+      url: tutorial-use-custom-lab.md
+- title: Összetevők
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Műtermék hozzáadása virtuális géphez
+      url: add-artifact-vm.md
+    - text: Egyéni összetevők létrehozása
+      url: devtest-lab-artifact-author.md
+    - text: Kötelező műtermékek megadása
+      url: devtest-lab-mandatory-artifacts.md
+    - text: Összetevőkkel kapcsolatos hibák elhárítása
+      url: devtest-lab-troubleshoot-artifact-failure.md
+- title: Környezetek
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: Nyilvános környezetek konfigurálása és használata
       url: devtest-lab-configure-use-public-environments.md
-    - text: Saját környezet létrehozása és használata
+    - text: Környezet létrehozása
       url: devtest-lab-create-environment-from-arm.md
-    - text: Egyéni lemezkép létrehozása
-      url: devtest-lab-create-custom-image-from-vm-using-portal.md
-    - text: Képletek kezelése
-      url: devtest-lab-manage-formulas.md
-    - text: Összetevők hozzáadása egy virtuális géphez
-      url: add-artifact-vm.md
-- title: Osztályterem-tesztkörnyezetek
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Az osztályterem-tesztkörnyezetek ismertetése
-      url: ./classroom-labs/classroom-labs-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Tesztkörnyezetfiók beállítása
-      url: ./classroom-labs/tutorial-setup-lab-account.md
-    - text: Osztályterem-tesztkörnyezet beállítása
-      url: ./classroom-labs/tutorial-setup-classroom-lab.md
-    - text: Osztályterem-tesztkörnyezet elérése
-      url: ./classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
-    - text: Osztályterem-tesztkörnyezet használatának követése
-      url: ./classroom-labs/tutorial-track-usage.md
-  - linkListType: concept
-    links:
-    - text: Osztályterem-tesztkörnyezetek alapelvei
-      url: ./classroom-labs/classroom-labs-concepts.md
-    - text: Tesztkörnyezetek használata tanórák lebonyolításához
-      url: ./classroom-labs/classroom-labs-scenarios.md
+    - text: Szolgáltatásként nyújtott platform típusú szolgáltatások használata
+      url: use-paas-services.md
+    - text: Csatlakozás a tesztkörnyezet virtuális hálózatához
+      url: connect-environment-lab-virtual-network.md
+    - text: A környezettel kapcsolatos problémák megoldása
+      url: troubleshoot-vm-environment-creation-failures.md
 - title: A referenciatartalom áttekintése
   linkLists:
   - linkListType: reference
@@ -91,3 +75,15 @@ landingContent:
       url: /powershell/module/az.devtestlabs/#devtest_labs
     - text: REST
       url: /rest/api/dtl
+- title: Sablonok
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Egyéni rendszerkép vs. Képlet
+      url: devtest-lab-comparing-vm-base-image-types.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni rendszerkép létrehozása virtuális gépből
+      url: devtest-lab-create-custom-image-from-vm-using-portal.md
+    - text: Képletek kezelése
+      url: devtest-lab-manage-formulas.md

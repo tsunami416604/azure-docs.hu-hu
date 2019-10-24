@@ -1,20 +1,24 @@
-- name: Azure Search-dokumentáció
+- name: Az Azure Cognitive Search dokumentációja
   href: index.yml
 - name: Áttekintés
-  items:
-    - name: Mi az az Azure Search?
-      href: search-what-is-azure-search.md
-- name: Gyors útmutatók
   expanded: true
+  items:
+    - name: Mi az az Azure Cognitive Search?
+      href: search-what-is-azure-search.md
+    - name: Újdonságok
+      href: whats-new.md
+- name: Gyors útmutatók
   items:
     - name: Szolgáltatás létrehozása
       href: search-create-service-portal.md
     - name: Portál
       items:
-        - name: Index létrehozása és használata
+        - name: Keresési index létrehozása
           href: search-get-started-portal.md
-        - name: Bővítés kognitív kereséssel (AI)
+        - name: Kognitív képességcsoport létrehozása
           href: cognitive-search-quickstart-blob.md
+        - name: Tudástár létrehozása
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: Teljes szöveges keresés
       href: search-lucene-query-architecture.md
-    - name: Cognitive Search
+    - name: MI-bővítés
       href: cognitive-search-concept-intro.md
     - name: Készségek
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: Leképezések
       href: knowledge-store-projection-overview.md
+    - name: Növekményes indexelés
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: Útmutatók
   items:
     - name: Tervezés
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: Mezők leképezése
           href: search-indexer-field-mappings.md
+        - name: Növekményes indexelés
+          href: search-howto-incremental-index.md
         - name: Csatlakozás felügyelt SQL-példányhoz
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Csatlakozás az SQL Server virtuális gépeihez
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: Tudástár (előzetes verzió)
           items:
-            - name: Tudástár létrehozása az Azure Portalon
-              href: knowledge-store-create-portal.md
             - name: Létrehozás a REST és a Postman használatával
               href: knowledge-store-create-rest.md
             - name: Megtekintés a Storage Explorerrel

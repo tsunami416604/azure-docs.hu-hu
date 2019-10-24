@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Search-dokumentáció
+title: Az Azure Cognitive Search dokumentációja
 summary: Felhőbeli keresés különböző típusú privát tartalmakon, mesterséges intelligencián alapuló tartalombővítési lehetőséggel arra az esetre, ha a tartalom nem strukturált, vagy nem kereshető nyers formában.
 metadata:
-  title: Azure Search-dokumentáció
+  title: Az Azure Cognitive Search dokumentációja
   description: Felhőbeli keresés különböző típusú privát tartalmakon, mesterséges intelligencián alapuló tartalombővítési lehetőséggel arra az esetre, ha a tartalom nem strukturált, vagy nem kereshető nyers formában.
   services: search
   ms.service: service
@@ -11,26 +11,26 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
-  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.openlocfilehash: 5bf7ec2b629fc765ef5c6393b042b608a48ec804
+  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/17/2019
-  ms.locfileid: "72529448"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72790062"
 landingContent:
-- title: Az Azure Search névjegye
+- title: A Cognitive Search bemutatása
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az az Azure Search?
+    - text: Mi az az Azure Cognitive Search?
       url: search-what-is-azure-search.md
   - linkListType: architecture
     links:
-    - text: A teljes szöveges keresés működése az Azure Searchben
+    - text: A teljes szöveges keresés működése a Cognitive Searchben
       url: search-lucene-query-architecture.md
   - linkListType: video
     links:
-    - text: Az Azure Search ismertetése (1 perc 27 másodperc)
+    - text: Mi az a Cognitive Search (1 perc 27 másodperc)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
 - title: Bevezetés
   linkLists:
@@ -42,9 +42,13 @@ landingContent:
       url: search-get-started-portal.md
     - text: Bővítési folyamat létrehozása
       url: cognitive-search-quickstart-blob.md
+  - linkListType: tutorial
+    links:
+    - text: Alkalmazás létrehozása
+      url: tutorial-csharp-create-first-app.md
   - linkListType: learn
     links:
-    - text: Az Azure Search bemutatása
+    - text: Bevezetés az Azure Cognitive Search használatába
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
 - title: Használat blobtárolóval
   linkLists:
@@ -72,10 +76,6 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Indexelés blobtárolóból
-      url: search-howto-indexing-azure-blob-storage.md
-    - text: JSON-blobok indexelése
-      url: search-howto-index-json-blobs.md
     - text: Indexelés Azure SQL Database-ből
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Indexelés Cosmos DB-adatokból
@@ -90,7 +90,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Mi az a kognitív keresés?
+    - text: MI-bővítési folyamat
       url: cognitive-search-concept-intro.md
     - text: Készségek
       url: cognitive-search-defining-skillset.md
@@ -108,7 +108,7 @@ landingContent:
       url: knowledge-store-create-portal.md
   - linkListType: reference
     links:
-    - text: Előre megadott képesség
+    - text: Beépített képességek
       url: cognitive-search-predefined-skills.md
 - title: Adatok lekérdezése
   linkLists:

@@ -719,6 +719,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Felügyelt példány hozzáadása feladatátvételi csoporthoz
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: Helyszíni felhasználók és csoportok migrálása
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: Alapelvek
       items:
         - name: Felügyeleti API-referencia
