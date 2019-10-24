@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 10/21/2019
 ms.author: juliako
-ms.openlocfilehash: bb62a28798010d3e18c5f19fa0062001a70b9622
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675656"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750249"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST
 
@@ -94,11 +94,12 @@ Klónozzon egy GitHub-adattárat, amely tartalmazza a Postman-gyűjtemény és -
 Ebben a szakaszban olyan kéréseket küldünk, amelyek a kódolás és az URL-ek létrehozása szempontjából fontosak, hogy streamelhesse a fájlját. Konkrétan a következő kéréseket küldi el a rendszer:
 
 1. Azure AD-jogkivonat lekérése a szolgáltatásnév hitelesítéséhez
+1. Adatfolyam-végpont elindítása
 2. Kimeneti objektum létrehozása
-3. **Átalakítás** létrehozása
-4. **Feladatok** létrehozása
-5. Adatfolyam- **kereső** létrehozása
-6. A **folyamatos átviteli lokátor** elérési útjának listázása
+3. Átalakítás létrehozása
+4. Feladatok létrehozása
+5. Adatfolyam-kereső létrehozása
+6. A folyamatos átviteli lokátor elérési útjának listázása
 
 > [!Note]
 >  Ez az oktatóanyag azt feltételezi, hogy az összes erőforrást egyedi névvel hozza létre.  
@@ -118,6 +119,33 @@ Ebben a szakaszban olyan kéréseket küldünk, amelyek a kódolás és az URL-e
 4. A válasz a jogkivonattal együtt megérkezik, és beállítja az „AccessToken” környezeti változót a jogkivonat értékének. Az „AccessToken” értéket beállító kód megtekintéséhez kattintson a **Tests** (Tesztek) fülre. 
 
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+
+### <a name="start-a-streaming-endpoint"></a>Adatfolyam-végpont elindítása
+
+A folyamatos átvitel engedélyezéséhez először el kell indítania azt a [folyamatos átviteli végpontot](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , amelyről továbbítani szeretné a videót.
+
+> [!NOTE]
+> Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont futó állapotban van.
+
+1. A Poster alkalmazás bal oldali ablakában válassza a "streaming and Live" lehetőséget.
+2. Ezután válassza a "Start Streamvégpontok" lehetőséget.
+3. Kattintson a **Küldés** gombra.
+
+    * A rendszer a következő **post** műveletet küldi el:
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * Ha a kérelem sikeres, a rendszer a `Status: 202 Accepted` adja vissza.
+
+        Ez az állapot azt jelenti, hogy a kérelem feldolgozásra lett elfogadva; a feldolgozás azonban nem fejeződött be. A művelet állapotát a `Azure-AsyncOperation` válasz fejlécében szereplő érték alapján kérdezheti le.
+
+        Például a következő GET művelet a művelet állapotát adja vissza:
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        Az [aszinkron Azure-műveletek nyomon követése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) című cikk részletesen ismerteti, hogyan követheti nyomon az aszinkron Azure-műveletek állapotát a válaszban visszaadott értékek alapján.
 
 ### <a name="create-an-output-asset"></a>Kimeneti objektum létrehozása
 

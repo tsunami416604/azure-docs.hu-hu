@@ -1,18 +1,18 @@
 ---
-title: Az Azure Cosmos DB globális terjesztési oktatóanyaga az SQL API-hoz
+title: Azure Cosmos DB globális terjesztési oktatóanyag az SQL API-hoz
 description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az SQL API használatával.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 07/15/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234601"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756829"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása az SQL API használatával
 
@@ -47,7 +47,7 @@ Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális
 ## <a name="net-sdk"></a>.NET SDK
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A karakterlánc-értékek az oszlop szerint formázott a [Azure-régiók][regions] lapon, szóközök nélküli szövegláncként előtt vagy után az első és utolsó karakter.
+A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A karakterlánc-értékek az [Azure-régiók][regions] lap régió neve oszlopában vannak formázva, az első és az utolsó karakter előtt vagy után szóközök nélkül.
 
 Az aktuális írási és olvasási végpontokat a DocumentClient.WriteEndpoint és a DocumentClient.ReadEndpoint tulajdonság tartalmazza.
 
@@ -78,11 +78,11 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy sztringtömb, amely a régiónevek listáját használja. A nevek vannak régiónév oszlop található a [Azure-régiók][regions] lap. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
+Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy sztringtömb, amely a régiónevek listáját használja. A nevek a régió neve oszlop szerint vannak formázva az [Azure-régiók][regions] lapon. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
 
 Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoint és a DocumentClient.getReadEndpoint tulajdonság tartalmazza.
 
@@ -91,7 +91,7 @@ Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoin
 >
 >
 
-Az alábbi, a példakód Node.js/Javascript számára.
+Alább látható egy példa a Node. js-hez vagy a Javascripthez.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -109,7 +109,7 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 
 ## <a name="python-sdk"></a>Python SDK
 
-A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyek a Python SDK-val:
+A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Python SDK használatával:
 
 ```python
 
@@ -119,9 +119,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>V2 a Java SDK
+## <a name="java-v2-sdk"></a>Java v2 SDK
 
-A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyek a Java SDK-val:
+A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Java SDK használatával:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -184,7 +184,7 @@ Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, 
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

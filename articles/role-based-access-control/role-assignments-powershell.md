@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4eaf59200295a25498d3c8b84196e73a703b055d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 5a6ed66efa0f73f957c3acb048136a5328f9c264
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995250"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750169"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával
 
@@ -310,7 +310,7 @@ Ha szerepkör-hozzárendelést szeretne létrehozni a szerepkör neve helyett az
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-A következő példa a [virtuális gépi közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört *alain@example.com* rendeli a felhasználóhoz a *Pharma-Sales* erőforráscsoport hatókörében. Az egyedi szerepkör-azonosító beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy az [Azure-erőforrások beépített szerepköreit](built-in-roles.md).
+A következő példa a [virtuális gépi közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört rendeli hozzá *alain@example.com* felhasználóhoz a *Pharma-Sales* erőforráscsoport hatókörében. Az egyedi szerepkör-azonosító beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy az [Azure-erőforrások beépített szerepköreit](built-in-roles.md).
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -401,11 +401,11 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Hozzáférés megszüntetése
+## <a name="remove-access"></a>Hozzáférés eltávolítása
 
 A RBAC a hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést a [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)használatával.
 
-A következő példa eltávolítja a *virtuálisgép-közreműködő* szerepkör-hozzárendelést az *Alain\@example.com* -felhasználótól a *Pharma-Sales* erőforráscsoporthoz:
+A következő példa eltávolítja a *virtuálisgép-közreműködő* szerepkör-hozzárendelést az *Alain \@example. com* -felhasználótól a *Pharma-Sales* erőforráscsoporthoz:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -423,10 +423,10 @@ A következő példa eltávolítja a < role_name > szerepkört a felügyeleti cs
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Ha a következő hibaüzenet jelenik meg: "A megadott információ nem képezhető le szerepkör-hozzárendelésre", győződjön meg arról, hogy a vagy `-Scope` `-ResourceGroupName` a paramétereket is megadja. További információ: [Az Azure-erőforrások RBAC kapcsolatos hibák megoldása](troubleshooting.md#role-assignments-without-a-security-principal).
+Ha a következő hibaüzenet jelenik meg: "a megadott információk nem képeznek szerepkör-hozzárendelést", győződjön meg arról, hogy a `-Scope` vagy `-ResourceGroupName` paramétereket is megadja. További információ: [Az Azure-erőforrások RBAC kapcsolatos hibák megoldása](troubleshooting.md#role-assignments-with-unknown-security-principal).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: Az Azure-erőforrásokhoz való hozzáférés biztosítása a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
-- [Oktatóanyag: Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](tutorial-custom-role-powershell.md)
+- [Oktatóanyag: csoportos hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
+- [Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-custom-role-powershell.md)
 - [Erőforrások kezelése a Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)

@@ -3,15 +3,15 @@ title: A lekérdezés nyelvének megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 6189920cb03a6cf388f0b5d232c6ce97ae4f3f82
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 80b33212afa7fed3f87b241d5cf69b43be66574d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389769"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755919"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -30,9 +30,9 @@ Az erőforrás-diagram több táblázatot is biztosít a Resource Manager-erőfo
 |Resource Graph-táblák |Leírás |
 |---|---|
 |Segédanyagok és eszközök |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
-|ResourceContainers |Tartalmazza az előfizetés (`Microsoft.Resources/subscriptions`) és az erőforráscsoport (`Microsoft.Resources/subscriptions/resourcegroups`) típusú erőforrásokat és az adattípusokat. |
-|AlertsManagementResources |@No__t-1- _hez kapcsolódó_ erőforrásokat tartalmaz. |
-|SecurityResources |@No__t-1- _hez kapcsolódó_ erőforrásokat tartalmaz. |
+|ResourceContainers |Az előfizetést (előzetes verzió – `Microsoft.Resources/subscriptions`) és az erőforráscsoport (`Microsoft.Resources/subscriptions/resourcegroups`) típusú erőforrásokat és az adattípusokat tartalmazza. |
+|AlertsManagementResources |@No__t_1hoz _kapcsolódó_ erőforrásokat tartalmaz. |
+|SecurityResources |@No__t_1hoz _kapcsolódó_ erőforrásokat tartalmaz. |
 
 > [!NOTE]
 > Az _erőforrások_ az alapértelmezett tábla. A _Resources (erőforrások_ ) tábla lekérdezése során nem szükséges megadnia a tábla nevét, kivéve, ha `join` vagy `union` van használatban. Azonban az ajánlott eljárás az, hogy mindig tartalmazza a kezdeti táblát a lekérdezésben.
@@ -51,8 +51,8 @@ Az alábbi lekérdezés a `join` összetettebb használatát mutatja be. A leké
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```
@@ -73,24 +73,24 @@ Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-
 |[count](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
 |[különböző](/azure/kusto/query/distinctoperator) |[Egy adott alias különböző értékeinek megjelenítése](../samples/starter.md#distinct-alias-values) | |
 |[kiterjesztése](/azure/kusto/query/extendoperator) |[A virtuális gépek száma az operációs rendszer típusa szerint](../samples/starter.md#count-os) | |
-|[csatlakozás](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 @no__t – 0 egyetlen lekérdezésben. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
-|[korlátot](/azure/kusto/query/limitoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |@No__t – 0 szinonimája |
+|[csatlakozás](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 `join` egyetlen lekérdezésben. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
+|[korlátot](/azure/kusto/query/limitoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |@No__t_0 szinonimája |
 |[MV – Kibontás](/azure/kusto/query/mvexpandoperator) |[Adott írási hellyel rendelkező Cosmos DB listázása](../samples/advanced.md#mvexpand-cosmosdb) |_ROWLIMIT_ Max 400 |
-|[sorrendben](/azure/kusto/query/orderoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |@No__t – 0 szinonimája |
+|[sorrendben](/azure/kusto/query/orderoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |@No__t_0 szinonimája |
 |[projekt](/azure/kusto/query/projectoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) | |
 |[projekt – vendég](/azure/kusto/query/projectawayoperator) |[Oszlopok eltávolítása az eredményekből](../samples/advanced.md#remove-column) | |
-|[Rendezés](/azure/kusto/query/sortoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |@No__t – 0 szinonimája |
+|[Rendezés](/azure/kusto/query/sortoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |@No__t_0 szinonimája |
 |[Összegzés](/azure/kusto/query/summarizeoperator) |[Az Azure-erőforrások száma](../samples/starter.md#count-resources) |Csak egyszerűsített első oldal |
-|[eltarthat](/azure/kusto/query/takeoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |@No__t – 0 szinonimája |
+|[eltarthat](/azure/kusto/query/takeoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |@No__t_0 szinonimája |
 |[Top](/azure/kusto/query/topoperator) |[Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint](../samples/starter.md#show-sorted) | |
-|[Union](/azure/kusto/query/unionoperator) |[Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](../samples/advanced.md#unionresults) |Önálló tábla engedélyezve: _T_ `| union` \[ @ no__t-3 `inner` @ no__t-5 @ no__t-6 @ no__t-7 \[ @ no__t-9_ColumnName_1 _tábla_. Legfeljebb 3 @no__t – 0 láb egyetlen lekérdezésben. @No__t-0 láb-táblázatok fuzzy feloldása nem engedélyezett. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
+|[Union](/azure/kusto/query/unionoperator) |[Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](../samples/advanced.md#unionresults) |Önálló tábla engedélyezve: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=`_ColumnName_ 1 _tábla_. Legfeljebb 3 `union` lábát egyetlen lekérdezésben. @No__t_0 lábát tartalmazó táblák fuzzy feloldása nem engedélyezett. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
 |[ahol](/azure/kusto/query/whereoperator) |[A tárolót tartalmazó erőforrások megjelenítése](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Escape-karakterek
 
 Egyes tulajdonságnév, például a `.` vagy a `$`, be kell csomagolni vagy megszökni a lekérdezésben, vagy a tulajdonságnév helytelenül van értelmezve, és nem biztosítja a várt eredményeket.
 
-- @no__t – 0 – a tulajdonság nevének becsomagolása: `['propertyname.withaperiod']`
+- `.` – a tulajdonság nevét csomagolja be: `['propertyname.withaperiod']`
   
   Példa lekérdezésre, amely a OData tulajdonságot csomagolja _. írja be a következőt_:
 
@@ -98,9 +98,9 @@ Egyes tulajdonságnév, például a `.` vagy a `$`, be kell csomagolni vagy megs
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- @no__t – 0 – a tulajdonság nevében lévő karakter elkerülhető. A használatban lévő escape-karakter a rendszerhéj-erőforrás Gráftól függ.
+- `$` – escape a tulajdonság nevében szereplő karakter. A használatban lévő escape-karakter a rendszerhéj-erőforrás Gráftól függ.
 
-  - **bash** -  @ no__t-2
+  - **bash**  -  `\`
 
     Példa olyan lekérdezésre, amely a bash _\$type_ tulajdonságát megmenekül:
 
@@ -110,7 +110,7 @@ Egyes tulajdonságnév, például a `.` vagy a `$`, be kell csomagolni vagy megs
 
   - **cmd** – ne elkerülje a `$` karaktert.
 
-  - **PowerShell** -  @ no__t-2
+  - **PowerShell** - -  ``` ` ```
 
     Példa a _\$type_ tulajdonságot a PowerShellben elkerülő lekérdezésre:
 

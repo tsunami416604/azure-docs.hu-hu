@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 297c6a51c1f902cf7b5843b2dd47b658ebc705fd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980988"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755927"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Hozzárendelések kezelése a PowerShell-lel
 
@@ -40,9 +40,9 @@ A PowerShell tervrajz-modulja az **az. Blueprint**.
    ```
 
    > [!NOTE]
-   > Ha az **az. accounts** már telepítve van, szükség lehet a `-AllowClobber` használatára a telepítés kényszerítéséhez.
+   > Ha az **az. accounts** már telepítve van, szükséges lehet a `-AllowClobber` használata a telepítés kényszerítéséhez.
 
-1. Ellenőrizze, hogy a modul importálása megtörtént-e, és a megfelelő verzió-e (0.2.5):
+1. Ellenőrizze, hogy a modul importálása megtörtént-e, és a megfelelő verzió-e (0.2.6):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -52,9 +52,9 @@ A PowerShell tervrajz-modulja az **az. Blueprint**.
 ## <a name="get-blueprint-definitions"></a>Tervezet-definíciók beolvasása
 
 A hozzárendelések használatának első lépése gyakran hivatkozik egy terv meghatározására.
-A `Get-AzBlueprint` parancsmag egy vagy több tervezet-definíciót kap. A parancsmag egy felügyeleti csoport tervezet-definícióit `-ManagementGroupId {mgId}` vagy `-SubscriptionId {subId}` előfizetéssel szerezheti be. A **Name** paraméter egy terv definícióját kapja meg, de a **ManagementGroupId** vagy a **SubscriptionId**használatával kell használni. A **verzió** használható a **névvel** , hogy világosabb legyen a terv definíciója. A **verzió**helyett a `-LatestPublished` kapcsoló a legutóbb közzétett verziót fogja megragadni.
+A `Get-AzBlueprint` parancsmag egy vagy több tervrajz-definíciót kap. A parancsmag a felügyeleti csoport tervrajz-definícióit `-ManagementGroupId {mgId}` vagy `-SubscriptionId {subId}`val rendelkező előfizetéssel szerezheti be. A **Name** paraméter egy terv definícióját kapja meg, de a **ManagementGroupId** vagy a **SubscriptionId**használatával kell használni. A **verzió** használható a **névvel** , hogy világosabb legyen a terv definíciója. A **verzió**helyett a kapcsoló `-LatestPublished` a legutóbb közzétett verziót fogja megragadni.
 
-A következő példa a `Get-AzBlueprint` értéket használja az "101-BluePrints-definition-Subscription" nevű tervezet-definíció összes verziójának lekéréséhez egy adott előfizetésből, amelyet `{subId}` értékként képvisel:
+Az alábbi példa a `Get-AzBlueprint` használatával lekéri a "101-BluePrints-definition-Subscription" nevű tervezet-definíció összes verzióját egy adott előfizetésből `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -98,9 +98,9 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 
 ## <a name="get-blueprint-assignments"></a>Tervezet-hozzárendelések beolvasása
 
-Ha a terv-hozzárendelés már létezik, akkor a `Get-AzBlueprintAssignment` parancsmaggal hivatkozhat rá. A parancsmag a **SubscriptionId** és a **Name** paramétert választható paraméterekként veszi igénybe. Ha a **SubscriptionId** nincs megadva, a rendszer az aktuális előfizetési környezetet használja.
+Ha a terv-hozzárendelés már létezik, a `Get-AzBlueprintAssignment` parancsmaggal kérheti a hivatkozást. A parancsmag a **SubscriptionId** és a **Name** paramétert választható paraméterekként veszi igénybe. Ha a **SubscriptionId** nincs megadva, a rendszer az aktuális előfizetési környezetet használja.
 
-A következő példa a `Get-AzBlueprintAssignment` értéket használja egy "hozzárendelés-zárolás – erőforrás-csoportok" nevű, egy adott előfizetésből származó, `{subId}` típusú hozzárendeléshez:
+Az alábbi példa a `Get-AzBlueprintAssignment` használatával egyetlen, "hozzárendelés-zárolás-erőforrás-csoportok" nevű tervezet-hozzárendelést kap egy adott előfizetésből, amelyet `{subId}`ként képvisel:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -128,14 +128,14 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="create-blueprint-assignments"></a>Terv-hozzárendelések létrehozása
 
-Ha a terv hozzárendelése még nem létezik, akkor a `New-AzBlueprintAssignment` parancsmaggal hozható létre. Ez a parancsmag a következő paramétereket használja:
+Ha a terv-hozzárendelés még nem létezik, akkor a `New-AzBlueprintAssignment` parancsmaggal hozható létre. Ez a parancsmag a következő paramétereket használja:
 
 - **Név** [kötelező]
   - Meghatározza a terv-hozzárendelés nevét
   - Egyedinek kell lennie, és még nem létezik a **SubscriptionId**
 - **Terv** [kötelező]
   - Meghatározza a hozzárendelni kívánt terv definícióját
-  - A Reference objektum lekérése `Get-AzBlueprint` használatával
+  - A Reference objektum beolvasásához használja a `Get-AzBlueprint`
 - **Hely** [kötelező]
   - Itt adható meg a rendszerszintű felügyelt identitás és előfizetés központi telepítési objektumának régiója, amelyet létre kell hozni
 - **Előfizetés** (nem kötelező)
@@ -143,7 +143,7 @@ Ha a terv hozzárendelése még nem létezik, akkor a `New-AzBlueprintAssignment
   - Ha nincs megadva, az alapértelmezett érték az aktuális előfizetési környezet
 - **Zárolás** (nem kötelező)
   - Meghatározza a [terv erőforrás-zárolását](../concepts/resource-locking.md) , amelyet az üzembe helyezett erőforrások számára kíván használni
-  - Támogatott beállítások: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
+  - Támogatott beállítások: _none_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
   - Ha nincs megadva, az alapértelmezett érték a _none_
 - **SystemAssignedIdentity** (nem kötelező)
   - Ezzel a beállítással rendszerszintű felügyelt identitást hozhat létre a hozzárendeléshez, és üzembe helyezheti az erőforrásokat
@@ -169,9 +169,9 @@ Ha a terv hozzárendelése még nem létezik, akkor a `New-AzBlueprintAssignment
   - A terv-hozzárendelések JSON-fájlhoz való megjelenítésének elérési útja
   - Ez a paraméter egy olyan PowerShell-paraméterérték része, amely csak a **nevet**, a **tervrajzot**és a **SubscriptionId**tartalmazza, valamint a közös paramétereket.
 
-### <a name="example-1-provide-parameters"></a>1\. példa: Paraméterek megadása
+### <a name="example-1-provide-parameters"></a>1\. példa: paraméterek megadása
 
-Az alábbi példa új hozzárendelést hoz létre a (z) `Get-AzBlueprint` értékkel beolvasott "My-Blueprint" terv definíciójának "1,1" verziójához, a felügyelt identitás és a hozzárendelési objektum helyét a "westus2" értékre állítja, zárolja az erőforrásokat a _AllResourcesReadOnly_, a és a **ResourceGroupParameter** is beállítja az adott előfizetéshez tartozó és a `{subId}` értékkel rendelkező **paraméterekhez** :
+A következő példa új hozzárendelést hoz létre a (z) "My-Blueprint" tervezet definíciójának `Get-AzBlueprint`-es 1,1 verziójában, amely a felügyelt identitás és a hozzárendelési objektum helyét a "westus2" értékre állítja, zárolja az erőforrásokat a _AllResourcesReadOnly_, a és a **ResourceGroupParameter** **is beállítja** az adott előfizetéshez tartozó `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -206,7 +206,7 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-### <a name="example-2-use-a-json-assignment-definition-file"></a>2\. példa JSON-hozzárendelés definíciós fájljának használata
+### <a name="example-2-use-a-json-assignment-definition-file"></a>2\. példa: JSON-hozzárendelési definíciós fájl használata
 
 A következő példa majdnem ugyanazt a hozzárendelést hozza létre, mint az [1. példa](#example-1-provide-parameters).
 A paramétereknek a parancsmaghoz való átadása helyett a példa egy JSON-hozzárendelés definíciós fájljának és a **AssignmentFile** paraméternek a használatát mutatja be. Emellett a **excludedPrincipals** tulajdonság a **zárolások**részeként van konfigurálva. Nincs PowerShell-paraméter a **excludedPrincipals** számára, és a tulajdonság csak úgy konfigurálható, hogy a JSON-hozzárendelés definíciós fájlján keresztül beállítja.
@@ -252,7 +252,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>Terv-hozzárendelések frissítése
 
-Előfordulhat, hogy egy már létrehozott terv-hozzárendelést kell frissítenie. A `Set-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A (z) parancsmag a `New-AzBlueprintAssignment` parancsmag által megegyező paraméterek többségét veszi figyelembe, ami lehetővé teszi, hogy a hozzárendelésen beállított minden adat frissítve legyen. A kivételek a következők: _név_, _terv_és _SubscriptionId_. Csak a megadott értékek frissülnek.
+Előfordulhat, hogy egy már létrehozott terv-hozzárendelést kell frissítenie. A `Set-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag a `New-AzBlueprintAssignment` parancsmag által megegyező paraméterek többségét veszi figyelembe, így a hozzárendelésen beállított minden adat frissül. A kivételek a következők: _név_, _terv_és _SubscriptionId_. Csak a megadott értékek frissülnek.
 
 Annak megismeréséhez, hogy mi történik a terv-hozzárendelések frissítésekor, tekintse meg [a hozzárendelések frissítésének szabályait](./update-existing-assignments.md#rules-for-updating-assignments).
 
@@ -261,7 +261,7 @@ Annak megismeréséhez, hogy mi történik a terv-hozzárendelések frissítése
   - A frissítendő hozzárendelés megkeresésére használatos, a hozzárendelés módosítása nélkül
 - **Terv** [kötelező]
   - Meghatározza a terv-hozzárendelés tervezetének definícióját.
-  - A Reference objektum lekérése `Get-AzBlueprint` használatával
+  - A Reference objektum beolvasásához használja a `Get-AzBlueprint`
   - A frissítendő hozzárendelés megkeresésére használatos, a hozzárendelés módosítása nélkül
 - **Hely** (nem kötelező)
   - Itt adható meg a rendszerszintű felügyelt identitás és előfizetés központi telepítési objektumának régiója, amelyet létre kell hozni
@@ -271,7 +271,7 @@ Annak megismeréséhez, hogy mi történik a terv-hozzárendelések frissítése
   - A frissítendő hozzárendelés megkeresésére használatos, a hozzárendelés módosítása nélkül
 - **Zárolás** (nem kötelező)
   - Meghatározza a [terv erőforrás-zárolását](../concepts/resource-locking.md) , amelyet az üzembe helyezett erőforrások számára kíván használni
-  - Támogatott beállítások: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
+  - Támogatott beállítások: _none_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
 - **SystemAssignedIdentity** (nem kötelező)
   - Ezzel a beállítással rendszerszintű felügyelt identitást hozhat létre a hozzárendeléshez, és üzembe helyezheti az erőforrásokat
   - Az "Identity" paraméter alapértelmezett értéke
@@ -293,7 +293,7 @@ Annak megismeréséhez, hogy mi történik a terv-hozzárendelések frissítése
   - Minden erőforráscsoport-összetevő helyőrzője kulcs/érték párokkal rendelkezik, amelyekkel dinamikusan állíthatja be az erőforráscsoport-összetevő **nevét** és **helyét** .
   - Ha nincs megadva erőforráscsoport-paraméter, és nincs **defaultValue**, az erőforráscsoport paraméter nem választható
 
-A következő példa a zárolási mód módosításával frissíti a "saját terv" tervezetének "1,1" verziójának hozzárendelését `Get-AzBlueprint` értékkel.
+A következő példa a zárolási mód módosításával frissíti a "My-Blueprint" tervezet `Get-AzBlueprint` definíciójának "1,1" verzióját.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -322,9 +322,9 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="remove-blueprint-assignments"></a>Terv-hozzárendelések eltávolítása
 
-Ha el szeretné távolítani a terv-hozzárendelés eltávolításának idejét, a `Remove-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag **neve** vagy **inputobject elemnél** alapján határozza meg, hogy melyik tervrajz-hozzárendelést kívánja eltávolítani. A SubscriptionId _megadása kötelező_ , és minden esetben meg kell adni.
+Ha a terv-hozzárendelés eltávolításához szükséges idő, a `Remove-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag **neve** vagy **inputobject elemnél** alapján határozza meg, hogy melyik tervrajz-hozzárendelést kívánja eltávolítani. A SubscriptionId _megadása kötelező_ , és minden esetben meg kell adni.
 
-Az alábbi példa egy meglévő terv-hozzárendelést olvas be `Get-AzBlueprintAssignment` értékkel, majd eltávolítja azt az adott előfizetésből, amelyet `{subId}`ként képvisel:
+Az alábbi példa egy meglévő terv-hozzárendelést olvas be `Get-AzBlueprintAssignment`, majd eltávolítja azt a megadott előfizetésből `{subId}`ként:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -338,7 +338,7 @@ Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '
 
 ## <a name="end-to-end-code-example"></a>Végpontok közötti kód – példa
 
-Az összes lépés összevonásával a következő példa lekéri a terv definícióját, majd létrehozza, frissíti és eltávolítja a terv-hozzárendelést az adott előfizetésben `{subId}` értékkel:
+Az összes lépés összevonásával a következő példa beolvassa a terv definícióját, majd létrehozza, frissíti és eltávolítja a terv-hozzárendelést az adott előfizetésben `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -378,7 +378,7 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 #endregion
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
