@@ -1,13 +1,13 @@
 ---
-title: OData-kifejezés szintaxisának leírása – Azure Search
-description: A OData kifejezések formális nyelvtani és szintaxisi specifikációja Azure Search lekérdezésekben.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData-kifejezés szintaxisának referenciája
+titleSuffix: Azure Cognitive Search
+description: Formális nyelvtani és szintaxis-specifikáció az Azure Cognitive Search lekérdezésekben található OData-kifejezésekhez.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647495"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793232"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure Search OData-kifejezés szintaxisának referenciája
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája
 
-A Azure Search [OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) -kifejezéseket használ paraméterként az API-ban. A és `$orderby` `$filter` a paraméterek leggyakrabban a OData kifejezéseket használják. Ezek a kifejezések bonyolultak lehetnek, amelyek több záradékot, funkciót és operátort tartalmaznak. Az Azure Search REST API számos részében azonban még az egyszerű OData kifejezések is használatosak, például a tulajdonságok elérési útjai. Az elérésiút-kifejezések például az összetett mezők almezőire hivatkoznak az API-ban mindenhol, például ha az almezőket egy javaslatban, egy [](index-add-suggesters.md) [pontozási függvényben](index-add-scoring-profiles.md), a `$select` paraméterben vagy akár a [Lucene lekérdezések](query-lucene-syntax.md).
+Az Azure Cognitive Search [OData-kifejezéseket](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) használ paraméterekként az API-ban. Az `$orderby` és `$filter` paraméterek esetében leggyakrabban a OData kifejezések használatosak. Ezek a kifejezések bonyolultak lehetnek, amelyek több záradékot, funkciót és operátort tartalmaznak. Az Azure Cognitive Search REST API számos részében azonban még az egyszerű OData kifejezések is használatosak, például a tulajdonságok elérési útjai. Az elérésiút-kifejezések például az összetett mezők almezőire hivatkoznak az API-ban mindenhol, például ha az almezőket egy [javaslatban](index-add-suggesters.md), egy [pontozási függvényben](index-add-scoring-profiles.md), a `$select` paraméterben vagy akár a Lucene- [lekérdezésekben található almezőket szeretné megkeresni ](query-lucene-syntax.md).
 
 Ez a cikk a OData kifejezések ezen formáit mutatja be formális nyelvtan használatával. Létezik egy [interaktív diagram](#syntax-diagram) is, amely a nyelvtan vizuális megismerését segíti.
 
 ## <a name="formal-grammar"></a>Formális nyelvtan
 
-A Azure Search által támogatott OData nyelv részhalmazát a EBNF ([bővített Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával tudjuk leírni. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legbonyolultabb kifejezésekkel, és az összetettebb kifejezéseket lebontva. A fent láthatók a Azure Search REST API adott paramétereinek megfelelő nyelvtani szabályok:
+Az Azure Cognitive Search által támogatott OData-nyelv részhalmazát az EBNF ([bővített Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával tudjuk leírni. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legbonyolultabb kifejezésekkel, és az összetettebb kifejezéseket lebontva. A tetején az Azure Cognitive Search REST API adott paramétereinek megfelelő nyelvtani szabályok szerepelnek:
 
 - [`$filter`](search-query-odata-filter.md), amelyet a `filter_expression` szabály határoz meg.
 - [`$orderby`](search-query-odata-orderby.md), amelyet a `order_by_expression` szabály határoz meg.
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>Szintaxis diagram
 
-A Azure Search által támogatott nyelvi nyelvtan vizuális megismeréséhez próbálkozzon az interaktív OData:
+Az Azure Cognitive Search által támogatott nyelvi OData vizuális megismeréséhez próbálja ki az interaktív szintaxis diagramot:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Az Azure Cognitive Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>Lásd még  
+## <a name="see-also"></a>Lásd még:  
 
-- [Szűrők a Azure Searchban](search-filters.md)
-- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Szűrők az Azure Cognitive Search](search-filters.md)
+- [Dokumentumok &#40;keresése az Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
-- [Egyszerű lekérdezési szintaxis a Azure Searchban](query-simple-syntax.md)
+- [Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search](query-simple-syntax.md)

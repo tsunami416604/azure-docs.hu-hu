@@ -11,14 +11,14 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030552"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793896"
 ---
-# <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
+# <a name="what-is-automated-machine-learning"></a>Mi az az automatizált gépi tanulás?
 
 Az automatizált gépi tanulás, más néven automatizált ML, az időigényes automatizálási folyamat, a gépi tanulási modellek fejlesztésének ismétlődő feladatai. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. Az automatikus ML a [Microsoft kutatási részlegének](https://arxiv.org/abs/1705.05355)áttörésén alapul.
 
@@ -39,7 +39,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 
 Az alábbi táblázat a gyakori automatikus ML-használati eseteket sorolja fel. 
 
-Besorolás| Regresszió | Idősorozat-előrejelzés
+Osztályozás| Regressziós | Idősorozat-előrejelzés
 ---|---|---
 [Csalások észlelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[CPU-teljesítmény előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance/auto-ml-regression-hardware-performance.ipynb) |[Kereslet-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
 [Marketing-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing/auto-ml-classification-bank-marketing.ipynb)|[Anyagok tartósságának előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)|[Értékesítések előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
@@ -81,7 +81,7 @@ Minden automatizált gépi tanulási kísérlet során az adatai az alapértelme
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek.  A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre.
 
-|Skálázás @ no__t-0 @ no__t-1 @ no__t-2normalization| Leírás |
+|Méretezés&nbsp;&&nbsp;normalizálás| Leírás |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -95,9 +95,9 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 
 További speciális előfeldolgozási és featurization is elérhetők, például a hiányzó értékek: imputálási, kódolás és átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess). A beállítás engedélyezése a következővel:
 
-+ Azure Portal: A [fenti lépésekkel](how-to-create-portal-experiments.md)válassza az **előfeldolgozás** jelölőnégyzetet a **speciális beállításokban** .
++ Azure Portal: válassza az **előfeldolgozás** jelölőnégyzetet a **speciális beállításokban** az [alábbi lépésekkel](how-to-create-portal-experiments.md).
 
-+ Python SDK: @No__t-0 megadása a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Python SDK: `"preprocess": True` megadása a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Idősoros előrejelzés
@@ -108,6 +108,8 @@ Az automatikus idősorozat-kísérletet többváltozós regressziós problémak�
 További információ: az [automatikus gépi tanulásra vonatkozó példa az idősorozat-előrejelzéshez](how-to-auto-train-forecast.md). Vagy tekintse meg az [energia igényét bemutató jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) részletes kód példákkal a speciális előrejelzési konfigurációhoz, beleértve a következőket:
 
 * üdülés észlelése és featurization
+* idősorozat-és DNN-tanulók (Auto-ARIMA, próféta, ForecastTCN)
+* számos modell-támogatás csoportosításon keresztül
 * gördülő-eredetű kereszt-ellenőrzés
 * konfigurálható késések
 * a gördülő ablak összesített funkciói
@@ -168,11 +170,11 @@ Az automatikus ML más Microsoft-megoldásokban is elérhető, például:
 |[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Gépi tanulási modellek meghívása közvetlenül Power BI (előzetes verzió).|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Új gépi tanulási modelleket hozhat létre SQL Server 2019 big data-fürtök adatain keresztül.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
 
-+ Kövesse a [Tutorial: Regressziós modell automatikus betanítása az Azure automatizált Machine Learning @ no__t-0
++ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása az Azure automatizált Machine learning](tutorial-auto-train-models.md)
 
 + Konfigurálja az automatikus betanítási kísérlet beállításait:
   + A Azure Portal felületen vagy a munkaterület kezdőlapján (előzetes verzió) [kövesse az alábbi lépéseket](how-to-create-portal-experiments.md).

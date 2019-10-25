@@ -1,5 +1,6 @@
 ---
-title: Védjegyzési útmutató az alkalmazásokhoz | Microsoft Docs
+title: Védjegyzési útmutató az alkalmazásokhoz
+titleSuffix: Microsoft identity platform
 description: Átfogó útmutató az Azure Active Directory fejlesztőknek készített erőforrásairól
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70053246"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803874"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -60,9 +61,9 @@ Az irányelvek korábbi verziójában a „kék jelvény” piktogram használat
 
 Az alkalmazása eltérően működhet regisztráció és bejelentkezés esetén. A következő szakaszokban vizuális útmutatást talál mindkét esethez.
 
-**Ha az alkalmazás támogatja a végfelhasználói regisztrációt (például ingyenes próbaverziós vagy freemium modell)** : Megjelenítheti a **bejelentkezési** gombot, amely lehetővé teszi a felhasználók számára, hogy munkahelyi fiókjával vagy személyes fiókjával férhessenek hozzá az alkalmazáshoz. Az Azure AD az alkalmazásba való első bejelentkezéskor a jóváhagyásukat fogja kérni.
+**Ha az alkalmazás támogatja a végfelhasználói regisztrációt (például „free to trial” vagy „freemium” modellek)** : Megjeleníthet egy **Bejelentkezés** gombot, amelyen keresztül a felhasználók a munkahelyi vagy személyes fiókjukkal elérhetik az alkalmazást. Az Azure AD az alkalmazásba való első bejelentkezéskor a jóváhagyásukat fogja kérni.
 
-**Ha az alkalmazásnak olyan engedélyekre van szüksége, amelyekhez csak a rendszergazdák adhatnak engedélyt, vagy ha az alkalmazáshoz szervezeti licencelés szükséges**: A rendszergazdai beszerzések elkülönítése a felhasználói bejelentkezéstől. Az **„Alkalmazás beszerzése” gomb** átirányítja a rendszergazdákat a bejelentkezéshez, majd a hozzájárulásukat kéri a szervezet felhasználói nevében, aminek az a további előnye, hogy megszünteti a végfelhasználóktól az alkalmazáshoz érkező hozzájárulási kérelmeket.
+**Ha az alkalmazás kizárólag rendszergazdák által hozzáférhető engedélyeket, vagy szervezeti licencet igényel**: Különítse el a rendszergazdai beszerzést a felhasználói bejelentkezéstől. Az **„Alkalmazás beszerzése” gomb** átirányítja a rendszergazdákat a bejelentkezéshez, majd a hozzájárulásukat kéri a szervezet felhasználói nevében, aminek az a további előnye, hogy megszünteti a végfelhasználóktól az alkalmazáshoz érkező hozzájárulási kérelmeket.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Vizuális útmutató az alkalmazásbeszerzéshez
 
@@ -74,13 +75,13 @@ Miután a rendszergazda engedélyezi az alkalmazást, eldöntheti, hogy hozzáad
 
 Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
 
-> *Ha már használja az Office 365-öt vagy a Microsoft más üzleti szolgáltatását, engedélyezheti a(z) <alkalmazás_neve> alkalmazásnak, hogy hozzáférjen a szervezet adataihoz. Így a felhasználók elérhetik a(z) <alkalmazás_neve> alkalmazást a már létező munkahelyi fiókjukkal.*
+> *Ha már használja az Office 365-et vagy más üzleti szolgáltatást a Microsofttól, > hozzáférést biztosíthat < your_app_name a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek < your_app_name > a meglévő munkahelyi fiókjaikkal.*
 
 A hivatalos Microsoft embléma letöltéséhez az alkalmazáshoz kattintson a jobb gombbal a választott emblémára, majd mentse a gépére.
 
 | Objektum                                | PNG formátum | SVG formátum |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft embléma  | ![Letölthető Microsoft-embléma PNG formátumban](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Letölthető Microsoft-embléma SVG formátumban](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Microsoft logó  | ![Letölthető Microsoft-embléma PNG formátumban](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Letölthető Microsoft-embléma SVG formátumban](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Vizuális útmutató a bejelentkezéshez
 

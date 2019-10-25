@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 11924b44a51767df68372cd94c581b2feaa8ac25
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 984b6aed6ae1b36432b932afb7d0f9dfb0b2dc15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72247104"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72783572"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Tartalék tartományok száma régiónként
 
@@ -40,22 +40,22 @@ ms.locfileid: "72247104"
 | Nyugat-India          | 2                       |
 | Korea középső régiója       | 2                       |
 | Dél-Korea         | 2                       |
-| Az Egyesült Arab Emírségek északi régiója           | 2                       |
+| Egyesült Arab Emírségek északi régiója           | 2                       |
 |                     |                         |
 | Kelet-Kína          | 2                       |
-| Kelet-Kína 2        | 2                       |
+| Kína 2. keleti régiója        | 2                       |
 | Észak-Kína         | 2                       |
-| Észak-Kína 2       | 2                       |
-|
-| Kelet-Ausztrália      | 2                       |
+| Kína 2. északi régiója       | 2                       |
+|                     |                         |
+| Ausztrália keleti régiója      | 2                       |
 | Délkelet-Ausztrália | 2                       |
 | Ausztrália középső régiója   | 2                       |
 | Ausztrália 2. középső régiója | 2                       |
 |                     |                         |
 | Dél-Brazília        | 2                       |
 |                     |                         |
-| USA Virginia állam     | 2                       |
-| USA-beli államigazgatás – Texas        | 2                       |
-| USA Arizona állam      | 2                       |
-| US DoD – Középső régió      | 2                       |
-| US DoD – Kelet         | 2                       |
+| US Gov Virginia     | 2                       |
+| US Gov Texas        | 2                       |
+| US Gov Arizona      | 2                       |
+| US DoD – középső régió      | 2                       |
+| US DoD – keleti régió         | 2                       |

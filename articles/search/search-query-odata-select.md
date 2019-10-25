@@ -1,13 +1,13 @@
 ---
-title: 'OData: hivatkozás kiválasztása – Azure Search'
-description: OData nyelvi referenciájának kiválasztása Azure Search lekérdezésekben.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData-hivatkozás kiválasztása
+titleSuffix: Azure Cognitive Search
+description: OData nyelvi referenciája az Azure Cognitive Search lekérdezésekben való kiválasztásához.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647877"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793251"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>OData $select szintaxis Azure Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure-ban Cognitive Search
 
- A [OData **$Select** paraméterrel](query-odata-filter-orderby-syntax.md) kiválaszthatja, hogy mely mezők szerepeljenek a Azure Search keresési eredményei között. Ez a cikk részletesen ismerteti **$Select** szintaxisát. A keresési eredmények megjelenítésével kapcsolatos további általános információkért lásd: a [keresési eredmények](search-pagination-page-layout.md) **$select** használata a Azure Searchban.
+ A [OData **$Select** paraméter](query-odata-filter-orderby-syntax.md) használatával kiválaszthatja, hogy mely mezők szerepeljenek az Azure Cognitive Search keresési eredményei között. Ez a cikk részletesen ismerteti **$Select** szintaxisát. A keresési eredmények megjelenítésével kapcsolatos további általános információkért lásd: a keresési eredmények **$Select** használata [Az Azure-ban Cognitive Search](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -45,10 +45,10 @@ field_path ::= identifier('/'identifier)*
 Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Az Azure Cognitive Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> A teljes EBNF [Azure Search a OData kifejezés szintaxisát](search-query-odata-syntax-reference.md) ismertető témakörben talál.
+> Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
 A **$Select** paraméter két formában jön:
 
@@ -57,11 +57,11 @@ A **$Select** paraméter két formában jön:
 
 A második űrlap használatakor csak lekérhető mezőket adhat meg a listában.
 
-Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az indexnek van egy `Address` mezője `Country` a, `City`a `Street`és az almező, amely minden lekérdezhető. Ha $selectban `Address` adjameg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
+Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az index egy `Address` mezővel rendelkezik, amely `Street`, `City`és `Country` almezőket tartalmaz. Ha **$select**`Address`t ad meg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
 
 ## <a name="examples"></a>Példák
 
-`Rating` `City` `Address`Adja meg a `HotelName`, és a legfelső szintű mezőket az eredmények között, valamint az almezőjét `HotelId`:
+Adja meg az eredmények `HotelId`, `HotelName`és `Rating` legfelső szintű mezőit, valamint `Address``City` almezőjét:
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ Egy példa eredménye a következőképpen néz ki:
 }
 ```
 
-`BaseRate` `Address` `Type` Adja meg az eredmények `Rooms` legfelső szintű mezőjét, valamint az összes almezőjét, valamint a gyűjtemény minden objektumának és almezőjét: `HotelName`
+Adja meg az eredmények `HotelName` legfelső szintű mezőjét, valamint a `Address`összes almezőjét, valamint a `Rooms` gyűjtemény egyes objektumainak `Type` és `BaseRate` almezőit:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
@@ -108,9 +108,9 @@ Egy példa eredménye a következőképpen néz ki:
 }
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
-- [Keresési eredmények használata Azure Search](search-pagination-page-layout.md)
-- [A OData kifejezés nyelvének áttekintése Azure Search](query-odata-filter-orderby-syntax.md)
-- [Azure Search OData-kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
+- [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
+- [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok &#40;keresése az Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

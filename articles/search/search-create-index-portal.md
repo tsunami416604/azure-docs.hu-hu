@@ -1,23 +1,23 @@
 ---
-title: Azure Search index létrehozása Azure Portal-Azure Search
-description: Megtudhatja, hogyan hozhat létre indexet a Azure Searchhoz egy beépített portál-index Designer használatával.
+title: Azure Cognitive Search index létrehozása Azure Portal
+titleSuffix: Azure Cognitive Search
+description: Megtudhatja, hogyan hozhat létre indexet az Azure Cognitive Searchhoz egy beépített Portal index Designer használatával.
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71937271"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792455"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>Azure Search index létrehozása a portálon
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>Azure Cognitive Search index létrehozása a portálon
 
-Azure Search tartalmaz egy beépített index-tervezőt a portálon, amely a prototípusok esetében hasznos, vagy a Azure Search szolgáltatásban futtatott [keresési indexet](search-what-is-an-index.md) hoz létre. Az eszköz a séma kialakításához használatos. A definíció mentésekor az üres index Azure Search-ban teljes mértékben kialakul. A kereshető tartalommal való betöltés akár Önnek is megfelel.
+Az Azure Cognitive Search tartalmaz egy beépített index-tervezőt a portálon, amely a prototípusok esetében hasznos, vagy az Azure Cognitive Search szolgáltatásban futtatott [keresési indexet](search-what-is-an-index.md) hoz létre. Az eszköz a séma kialakításához használatos. A definíció mentésekor az üres index teljes mértékben ki lesz fejezve az Azure Cognitive Searchban. A kereshető tartalommal való betöltés akár Önnek is megfelel.
 
 Az index tervezője csak egyetlen megközelítés az index létrehozásához. Azt is megteheti, hogy létrehoz és betölt egy indexet az [adat importálása varázslóval](search-get-started-portal.md). A varázsló csak a saját maga által létrehozott indexekkel működik. Programozott módon létrehozhat egy indexet a [.net](search-create-index-dotnet.md) vagy a [Rest](search-create-index-rest-api.md) API-k használatával.
 
@@ -29,7 +29,7 @@ Az index tervezője csak egyetlen megközelítés az index létrehozásához. Az
 
    ![Index hivatkozás hozzáadása a parancssáv](media/search-create-index-portal/add-index.png "Index hivatkozás hozzáadása a parancssáv")
 
-3. Adjon nevet az Azure Search-indexnek. Az indexek nevei az indexelési és lekérdezési műveletekben vannak hivatkozva. Az index neve része lesz az indexhez való kapcsolódáshoz és az Azure Search REST API-ban HTTP-kérelmek küldéséhez használt végpont URL-címének.
+3. Nevezze el az Azure Cognitive Search indexét. Az indexek nevei az indexelési és lekérdezési műveletekben vannak hivatkozva. Az index neve az indexhez való kapcsolódáskor használt végpont URL-címéhez és a HTTP-kérések Azure-Cognitive Search REST API történő elküldéséhez lesz része.
 
    * Kezdje betűvel.
    * Csak kisbetűket, számjegyeket vagy kötőjeleket ("-") használjon.
@@ -43,11 +43,11 @@ Az index összeállításához tartozik egy *Mezőkollekció*, amely az indexben
 
 1. Ha a bejövő adatértékek hierarchikus jellegűek, a sémának tartalmaznia kell a beágyazott struktúrákat jelképező [összetett típusokat](search-howto-complex-data-types.md) . A beépített mintavételi adatkészlet, a hotelek és az összetett típusok illusztrálása egy olyan címen (több almezőt tartalmaz), amely egy-az-egyhez kapcsolattal rendelkezik az egyes szolgáltatásokkal, valamint a szobák összetett gyűjteménye, ahol több szoba van társítva az egyes szolgáltatásokhoz. 
 
-1. Adjon meg egy EDM. String típusú *kulcsot* . A kulcs mező minden Azure Search-indexhez kötelező, és sztringnek (string) kell lennie. A mező értékének egyedi módon kell azonosítania az egyes dokumentumokat. A mező neve alapértelmezés szerint *id*, de az [elnevezési szabályok](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) betartása mellett át is nevezhető. Ha például a mezők gyűjteménye tartalmazza a *Hotel-ID-* t, válassza ki a kulcsot a kulcshoz. 
+1. Adjon meg egy EDM. String típusú *kulcsot* . Minden Azure Cognitive Search indexhez kötelező megadni a Key mezőt, és karakterláncnak kell lennie. A mező értékének egyedi módon kell azonosítania az egyes dokumentumokat. A mező neve alapértelmezés szerint *id*, de az [elnevezési szabályok](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) betartása mellett át is nevezhető. Ha például a mezők gyűjteménye tartalmazza a *Hotel-ID-* t, válassza ki a kulcsot a kulcshoz. 
 
 1. Attribútumok beállítása az egyes mezőknél. Az index tervezője kizár minden olyan attribútumot, amely érvénytelen az adattípushoz, de nem javasolja, hogy mit tartalmazzon. Tekintse át a következő szakaszban található útmutatást, amelyből megismerheti, hogy az attribútumok mire vonatkoznak.
 
-    Az Azure Search API dokumentációja egy egyszerű *szálloda*-indexet használó kódpéldákat is tartalmaz. Az alábbi képernyőképen látható az index definíciója, beleértve az index definíciójában megadott francia nyelvű elemzőt is, amelyet a portálon az eljárás gyakorlatának megfelelően újra létrehozhat.
+    Az Azure Cognitive Search API dokumentációja egy egyszerű *Hotels* -indexet tartalmazó példákat tartalmaz. Az alábbi képernyőképen látható az index definíciója, beleértve az index definíciójában megadott francia nyelvű elemzőt is, amelyet a portálon az eljárás gyakorlatának megfelelően újra létrehozhat.
 
     ![A Hotels bemutató indexe](media/search-create-index-portal/field-definitions.png "A Hotels bemutató indexe")
 
@@ -76,7 +76,7 @@ A mezőtulajdonságok határozzák meg egy mező használati módját, például
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozott egy Azure Search-indexet, folytathatja a következő lépéssel, ami a [kereshető adatok feltöltése az indexbe](search-what-is-data-import.md).
+Az Azure Cognitive Search index létrehozása után átléphet a következő lépésre: [kereshető adatok feltöltése az indexbe](search-what-is-data-import.md).
 
 Azt is megteheti, hogy [mélyebben megtekinti az indexeket](search-what-is-an-index.md). Az indexek a Mezőkollekción kívül megadják az elemzőket, javaslattevőket, értékelési profilokat és CORS-beállításokat is. A portál lapokra osztott oldalakat kínál a leggyakrabban használt elemek: a mezők, elemzők és javaslattevők megadására. Más elemek létrehozására vagy módosítására a REST API vagy a .NET SDK használható.
 

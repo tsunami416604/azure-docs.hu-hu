@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: ff96bddef1b34f5a8bf743ccaaccba2da01534dc
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f51dbce3c251f4e89483d925ac657aac7eb928d8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335069"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804073"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Definíciós összetevő megtekintése Azure Managed Applications
 
@@ -26,7 +26,7 @@ A View definition összetevőnek **viewDefinition. JSON** nevűnek kell lennie, 
 
 ## <a name="view-definition-schema"></a>Definíciós séma megtekintése
 
-A **viewDefinition. JSON** fájlnak csak egyetlen legfelső `views` szintű tulajdonsága van, amely a nézetek tömbje. A felügyelt alkalmazás felhasználói felületén minden nézet külön menüelemként jelenik meg a tartalomjegyzékben. Minden nézet rendelkezik egy `kind` tulajdonsággal, amely a nézet típusát állítja be. A következő értékek egyikére kell beállítani: [Áttekintés](#overview), [metrikák](#metrics), [CustomResources](#custom-resources). További információ: [a viewDefinition. JSON jelenlegi JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)-sémája.
+A **viewDefinition. JSON** fájlnak csak egyetlen legfelső szintű `views` tulajdonsága van, amely a nézetek tömbje. A felügyelt alkalmazás felhasználói felületén minden nézet külön menüelemként jelenik meg a tartalomjegyzékben. Minden nézet rendelkezik egy `kind` tulajdonsággal, amely a nézet típusát állítja be. A következő értékek egyikére kell beállítani: [Áttekintés](#overview), [metrikák](#metrics), [CustomResources](#custom-resources). További információ: [a viewDefinition. JSON jelenlegi JSON-sémája](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
 
 Példa a JSON-ra a nézet definíciójában:
 
@@ -79,10 +79,6 @@ Példa a JSON-ra a nézet definíciójában:
                 "createUIDefinition": { },
                 "commands": [
                     {
-                        "displayName": "Custom Test Action",
-                        "path": "testAction"
-                    },
-                    {
                         "displayName": "Custom Context Action",
                         "path": "testCustomResource/testContextAction",
                         "icon": "Stop",
@@ -123,15 +119,15 @@ Ha ezt a nézetet megadja a **viewDefinition. JSON**fájlban, a felülbírálja 
 }
 ```
 
-|Tulajdonság|Kötelező|Leírás|
+|Tulajdonság|Szükséges|Leírás|
 |---------|---------|---------|
 |header|Nem|Az Áttekintés lap fejléce|
-|description|Nem|A felügyelt alkalmazás leírása.|
-|Parancsok|Nem|Az Áttekintés lap további eszköztár gombjainak tömbje: [parancsok](#commands).|
+|leírás|Nem|A felügyelt alkalmazás leírása.|
+|parancsok|Nem|Az Áttekintés lap további eszköztár gombjainak tömbje: [parancsok](#commands).|
 
 ![Áttekintés](./media/view-definition/overview.png)
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 `"kind": "Metrics"`
 
@@ -162,31 +158,31 @@ A metrikák nézet lehetővé teszi, hogy [Azure monitor mérőszámokban](../az
 }
 ```
 
-|Tulajdonság|Kötelező|Leírás|
+|Tulajdonság|Szükséges|Leírás|
 |---------|---------|---------|
-|displayName|Nem|A nézet megjelenített címe|
+|DisplayName|Nem|A nézet megjelenített címe|
 |version|Nem|A nézet megjelenítéséhez használt platform verziója.|
 |diagramok|Igen|A metrikák oldal diagramok tömbje.|
 
 ### <a name="chart"></a>Diagram
 
-|Tulajdonság|Kötelező|Leírás|
+|Tulajdonság|Szükséges|Leírás|
 |---------|---------|---------|
-|displayName|Igen|A diagram megjelenített címe|
+|DisplayName|Igen|A diagram megjelenített címe|
 |chartType|Nem|A diagramhoz használandó vizualizáció. Alapértelmezés szerint egy vonalas diagramot használ. Támogatott diagramok típusai: `Bar, Line, Area, Scatter`.|
-|metrikák|Igen|A diagramon nyomtatandó mérőszámok tömbje. Ha többet szeretne megtudni a Azure Portal által támogatott mérőszámokról, tekintse meg [a támogatott mérőszámokat Azure monitor](../azure-monitor/platform/metrics-supported.md)|
+|metrics|Igen|A diagramon nyomtatandó mérőszámok tömbje. Ha többet szeretne megtudni a Azure Portal által támogatott mérőszámokról, tekintse meg [a támogatott mérőszámokat Azure monitor](../azure-monitor/platform/metrics-supported.md)|
 
 ### <a name="metric"></a>Metrika
 
-|Tulajdonság|Kötelező|Leírás|
+|Tulajdonság|Szükséges|Leírás|
 |---------|---------|---------|
-|name|Igen|A metrika neve.|
-|aggregationType|Igen|A metrikához használandó összesítési típus. Támogatott összesítési típusok:`none, sum, min, max, avg, unique, percentile, count`|
+|név|Igen|A metrika neve.|
+|aggregationType|Igen|A metrikához használandó összesítési típus. Támogatott összesítési típusok: `none, sum, min, max, avg, unique, percentile, count`|
 |névtér|Nem|A helyes metrikák szolgáltatójának meghatározásakor használandó további információk.|
-|resourceTagFilter|Nem|Az erőforrás-címkék tömbje (a `or` szó szerint lesz elválasztva), amelynél megjelennek a metrikák. Az erőforrástípus-szűrőre vonatkozik.|
+|resourceTagFilter|Nem|Az erőforrás-címkék tömbje (`or` Szóval lesz elválasztva), amelynél megjelennek a metrikák. Az erőforrástípus-szűrőre vonatkozik.|
 |resourceType|Igen|Az az erőforrástípus, amelynek mérőszámait meg szeretné jeleníteni.|
 
-![Mérőszámok](./media/view-definition/metrics.png)
+![Metrikák](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>Egyéni erőforrások
 
@@ -203,12 +199,9 @@ Ebben a nézetben elvégezheti az egyéni erőforrástípus GET, PUT, DELETE és
         "displayName": "Test custom resource type",
         "version": "1.0.0",
         "resourceType": "testCustomResource",
+        "icon": "Polychromatic.ResourceList",
         "createUIDefinition": { },
         "commands": [
-            {
-                "displayName": "Custom Test Action",
-                "path": "testAction"
-            },
             {
                 "displayName": "Custom Context Action",
                 "path": "testCustomResource/testContextAction",
@@ -225,14 +218,15 @@ Ebben a nézetben elvégezheti az egyéni erőforrástípus GET, PUT, DELETE és
 }
 ```
 
-|Tulajdonság|Kötelező|Leírás|
+|Tulajdonság|Szükséges|Leírás|
 |---------|---------|---------|
-|displayName|Igen|A nézet megjelenített címe A címnek egyedinek  kell lennie a **viewDefinition. JSON**fájl minden egyes CustomResources-nézetében.|
+|DisplayName|Igen|A nézet megjelenített címe A címnek **egyedinek** kell lennie a **viewDefinition. JSON**fájl minden egyes CustomResources-nézetében.|
 |version|Nem|A nézet megjelenítéséhez használt platform verziója.|
 |resourceType|Igen|Az egyéni erőforrástípus. **Egyedi** egyéni erőforrás-típusnak kell lennie az egyéni szolgáltatónál.|
+|Ikon|Nem|A nézet ikonja A [JSON-sémában](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)definiált ikonok listája.|
 |createUIDefinition|Nem|Felhasználói felületi definíciós séma létrehozása az egyéni erőforrás létrehozása parancshoz. A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md) használatába|
-|Parancsok|Nem|A CustomResources nézet további eszköztár gombjainak tömbje: [parancsok](#commands).|
-|Oszlopok|Nem|Az egyéni erőforrás oszlopainak tömbje. Ha nincs megadva, `name` az oszlop alapértelmezés szerint megjelenik. Az oszlopnak a `"key"` és `"displayName"`a értékkel kell rendelkeznie. A kulcs mezőben adja meg a nézetben megjelenítendő tulajdonság kulcsát. Ha beágyazott, a pontot elválasztó karakterként kell `"key": "name"` használni `"key": "properties.property1"`, például vagy. A megjelenítendő név mezőben adja meg a nézetben megjelenítendő tulajdonság megjelenítendő nevét. Egy `"optional"` tulajdonságot is megadhat. Ha igaz értékre van állítva, a rendszer alapértelmezés szerint elrejti az oszlopot a nézetben.|
+|parancsok|Nem|A CustomResources nézet további eszköztár gombjainak tömbje: [parancsok](#commands).|
+|Oszlopok|Nem|Az egyéni erőforrás oszlopainak tömbje. Ha nincs megadva, a rendszer alapértelmezés szerint a `name` oszlopot jeleníti meg. Az oszlopnak `"key"` és `"displayName"`nak kell lennie. A kulcs mezőben adja meg a nézetben megjelenítendő tulajdonság kulcsát. Ha beágyazott, a pontot elválasztó karakterként használja, például `"key": "name"` vagy `"key": "properties.property1"`. A megjelenítendő név mezőben adja meg a nézetben megjelenítendő tulajdonság megjelenítendő nevét. `"optional"` tulajdonságot is megadhat. Ha igaz értékre van állítva, a rendszer alapértelmezés szerint elrejti az oszlopot a nézetben.|
 
 ![CustomResources](./media/view-definition/customresources.png)
 
@@ -253,19 +247,19 @@ A parancsok a lapon megjelenő további eszköztár-gombok tömbje. Minden paran
 }
 ```
 
-|Tulajdonság|Kötelező|Leírás|
+|Tulajdonság|Szükséges|Leírás|
 |---------|---------|---------|
-|displayName|Igen|A parancsgomb megjelenített neve.|
-|path|Igen|Az egyéni szolgáltató műveleti neve. A műveletet a **mainTemplate. JSON**fájlban kell definiálni.|
-|Ikon|Nem|A parancsgomb ikonja A támogatott ikonok listája a JSON- [sémában](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)van definiálva.|
+|DisplayName|Igen|A parancsgomb megjelenített neve.|
+|elérési útja|Igen|Az egyéni szolgáltató műveleti neve. A műveletet a **mainTemplate. JSON**fájlban kell definiálni.|
+|Ikon|Nem|A parancsgomb ikonja A [JSON-sémában](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)definiált ikonok listája.|
 |createUIDefinition|Nem|Felhasználói felületi definíciós séma létrehozása a parancshoz. A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.|
 
 ## <a name="looking-for-help"></a>Segítség keresése
 
-Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg megkérdezni a [stack overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke `azure-managedapps` hozzáadásával gyors választ kaphat!
+Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg megkérdezni a [stack overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke `azure-managedapps` hozzáadásával gyorsan választ kaphat!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](overview.md) cikk ismerteti.
 - Az egyéni szolgáltatók bevezetését az [Azure egyéni szolgáltatók áttekintése](custom-providers-overview.md)című témakörben tekintheti meg.
-- Azure-beli felügyelt alkalmazás Azure-beli egyéni szolgáltatókkal [való létrehozásával kapcsolatban lásd: oktatóanyag: Felügyelt alkalmazás létrehozása egyéni szolgáltatói műveletekkel és erőforrás-típusokkal](tutorial-create-managed-app-with-custom-provider.md)
+- Azure-beli felügyelt alkalmazás Azure-beli egyéni szolgáltatókkal való létrehozásával kapcsolatban lásd [: oktatóanyag: felügyelt alkalmazás létrehozása egyéni szolgáltatói műveletekkel és erőforrás-típusokkal](tutorial-create-managed-app-with-custom-provider.md)

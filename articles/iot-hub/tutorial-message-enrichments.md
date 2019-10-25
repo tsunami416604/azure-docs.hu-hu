@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 8b74621f2c5a9c91ece58c8118cd2bc952c3a464
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535009"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809695"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Oktatóanyag: Az Azure IoT Hub üzenet-gazdagítás használata (előzetes verzió)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata (előzetes verzió)
 
-Az *üzenet* -gazdagítás a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen lepecsételni. Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz. További információ: az [üzenetek dúsításának áttekintése](iot-hub-message-enrichments-overview.md).
+Az *üzenet-gazdagítás* a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen *lepecsételni* . Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz. További információ: az [üzenetek dúsításának áttekintése](iot-hub-message-enrichments-overview.md).
 
 Ebben az oktatóanyagban az Azure CLI használatával állítja be az erőforrásokat, köztük két végpontot, amelyek két különböző tároló-tárolóra mutatnak – **gazdagított** és **eredeti**. Ezután a [Azure Portal](https://portal.azure.com) használatával konfigurálja az üzenetek dúsítását, hogy csak a **dúsított** tárolóval rendelkező végpontnak küldött üzenetekre alkalmazza a rendszer. Üzeneteket küld a IoT Hubnak, amelyek mindkét tárolóba vannak irányítva. Csak a **dúsított** tároló számára a végpontnak küldött üzenetek gazdagítva lesznek.
 
@@ -48,7 +48,7 @@ Ha készen áll a tesztelés elindítására, az eszköz-szimulációs alkalmaz�
 
 ## <a name="set-up-and-configure-resources"></a>Erőforrások beállítása és konfigurálása
 
-A szükséges erőforrások létrehozása mellett az Azure CLI-szkript a két útvonalat is konfigurálja külön tárolók közötti végpontokra. Az Útválasztás konfigurálásával kapcsolatos további információkért tekintse meg [](tutorial-routing.md)az útválasztással foglalkozó oktatóanyagot. Az erőforrások beállítása után a [Azure Portal](https://portal.azure.com) segítségével konfigurálja az egyes végpontok üzenet-dúsítását, majd folytassa a tesztelési lépéssel.
+A szükséges erőforrások létrehozása mellett az Azure CLI-szkript a két útvonalat is konfigurálja külön tárolók közötti végpontokra. Az Útválasztás konfigurálásával kapcsolatos további információkért tekintse meg az [útválasztással foglalkozó oktatóanyagot](tutorial-routing.md). Az erőforrások beállítása után a [Azure Portal](https://portal.azure.com) segítségével konfigurálja az egyes végpontok üzenet-dúsítását, majd folytassa a tesztelési lépéssel.
 
 > [!NOTE]
 > Az összes üzenet mindkét végponthoz van irányítva, de csak a végpontra irányuló, konfigurált üzenet-dúsítású üzenetek lesznek bővítve.
@@ -65,15 +65,15 @@ Használhatja az alábbi parancsfájlt, vagy megnyithatja a parancsfájlt a let�
 
 Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. A szkript egyszerűbb futtatásához ezeket az erőforrásokat a *randomValue*nevű véletlenszerű alfanumerikus érték fűzi hozzá. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre.
 
-Ha még nem tette meg, nyisson meg egy [Cloud Shell ablakot a bash számára.](https://shell.azure.com) Nyissa meg a parancsfájlt a kibontott tárházban, majd a CTRL-A billentyűkombinációval jelölje ki az összes, majd a CTRL-C billentyűkombinációt a másoláshoz. Másik lehetőségként átmásolhatja a következő CLI-szkriptet, vagy megnyithatja közvetlenül a Cloud shellben. Illessze be a szkriptet az Azure Cloud Shell ablakába úgy, hogy a jobb gombbal a parancssorra kattint, és kiválasztja a **Beillesztés**elemet. A parancsfájl egyszerre egy utasítást futtat. Ha a parancsfájl futása leáll, válassza az **ENTER billentyűt** , és győződjön meg arról, hogy az utolsó parancsot futtatja. A következő kódrészlet a használt szkriptet mutatja be, a megjegyzésekkel pedig elmagyarázza, hogy mit csinál.
+Ha még nem tette meg, nyisson meg egy [Cloud Shell ablakot](https://shell.azure.com) , és győződjön meg róla, hogy a bash értékre van állítva. Nyissa meg a parancsfájlt a kibontott tárházban, majd a CTRL-A billentyűkombinációval jelölje ki az összes, majd a CTRL-C billentyűkombinációt a másoláshoz. Másik lehetőségként átmásolhatja a következő CLI-szkriptet, vagy megnyithatja közvetlenül Cloud Shellban. Illessze be a szkriptet a Cloud Shell ablakába úgy, hogy a parancssorba a jobb gombbal kattint, és kiválasztja a **Beillesztés**elemet. A parancsfájl egyszerre egy utasítást futtat. Ha a parancsfájl futása leáll, válassza az **ENTER billentyűt** , és győződjön meg arról, hogy az utolsó parancsot futtatja. A következő kódrészlet a használt szkriptet mutatja be, a megjegyzésekkel pedig elmagyarázza, hogy mit csinál.
 
 Itt láthatók a szkript által létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Name (Név) | Value |
+| Név | Value (Díj) |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| tároló neve | eredeti  |
-| tároló neve | sokoldalú és  |
+| Tároló neve | eredeti  |
+| Tároló neve | sokoldalú és  |
 | IoT-eszköz neve | Contoso-test-Device |
 | IoT Hub neve | ContosoTestHubMsgEn |
 | Storage-fiók neve | contosostorage |
@@ -168,10 +168,10 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ##### ROUTING FOR STORAGE #####
 
 # You're going to have two routes and two endpoints.
-# One points to container1 in the storage account
-#   and includes all messages.
-# The other points to container2 in the same storage account
-#   and only includes enriched messages.
+# One route points to the first container ("original") in the storage account
+#   and includes the original messages.
+# The other points to the second container ("enriched") in the same storage account
+#   and includes the enriched versions of the messages.
 
 endpointType="azurestoragecontainer"
 endpointName1="ContosoStorageEndpointOriginal"
@@ -190,7 +190,7 @@ storageConnectionString=$(az storage account show-connection-string \
 # Create the routing endpoints and routes.
 # Set the encoding format to either avro or json.
 
-# This is the endpoint for container 1, for endpoint messages that are not enriched.
+# This is the endpoint for the first container, for endpoint messages that are not enriched.
 az iot hub routing-endpoint create \
   --connection-string $storageConnectionString \
   --endpoint-name $endpointName1 \
@@ -202,7 +202,7 @@ az iot hub routing-endpoint create \
   --resource-group $resourceGroup \
   --encoding json
 
-# This is the endpoint for container 2, for endpoint messages that are enriched.
+# This is the endpoint for the second container, for endpoint messages that are enriched.
 az iot hub routing-endpoint create \
   --connection-string $storageConnectionString \
   --endpoint-name $endpointName2 \
@@ -225,7 +225,8 @@ az iot hub route create \
   --enabled \
   --condition $condition
 
-# This is the route for messages that are not enriched.
+# This is the route for messages that are enriched.
+# Create the route for the second storage endpoint.
 az iot hub route create \
   --name $routeName2 \
   --hub-name $iotHubName \
@@ -240,7 +241,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 ### <a name="view-routing-and-configure-the-message-enrichments"></a>Útválasztás megtekintése és az üzenetek dúsításának konfigurálása
 
-1. Lépjen a IoT Hub az **erőforráscsoportok**lehetőség kiválasztásával, majd válassza ki az oktatóanyaghoz beállított erőforráscsoportot (**ContosoResources_MsgEn**). Keresse meg a IoT Hub a listában, és válassza ki. Válassza az IOT hub *üzenet-útválasztás** elemét.
+1. Lépjen a IoT Hub az **erőforráscsoportok**lehetőség kiválasztásával, majd válassza ki az oktatóanyaghoz beállított erőforráscsoportot (**ContosoResources_MsgEn**). Keresse meg a IoT Hub a listában, és válassza ki. Válassza az IOT hub **üzenet-útválasztás** elemét.
 
    ![Üzenet-útválasztás kiválasztása](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -250,10 +251,10 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 2. Adja hozzá ezeket az értékeket a ContosoStorageEndpointEnriched-végpont listájához.
 
-   | Name (Név) | Value | Végpont (legördülő lista) |
+   | Név | Value (Díj) | Végpont (legördülő lista) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | DeviceLocation | $twin. Tags. location | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | deviceLocation | $twin. Tags. location | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |Vevőkód | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
@@ -271,29 +272,29 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 Most, hogy az üzenet gazdagítása konfigurálva van a végponthoz, futtassa a szimulált eszköz alkalmazást, hogy üzeneteket küldjön a IoT Hub. A hub beállítása olyan beállításokkal történt, amelyek a következőket hajtják végre:
 
-* A tárolási végpont ContosoStorageEndpointOriginal továbbított üzenetek nem lesznek gazdagítva, és a tárolóban `original`lesznek tárolva.
+* A tárolási végpont ContosoStorageEndpointOriginal továbbított üzenetek nem lesznek gazdagítva, és a tárolóban lesznek tárolva `original`.
 
-* A tárolási végpont ContosoStorageEndpointEnriched átirányított üzenetek a tárolóban `enriched`lesznek gazdagítva és tárolva.
+* A tárolási végpont ContosoStorageEndpointEnriched továbbított üzeneteket a rendszer a Storage-tárolóban `enriched`fogja bővíteni és tárolni.
 
 A szimulált eszköz alkalmazás a kibontott letöltésben szereplő egyik alkalmazás. Az alkalmazás az [útválasztási oktatóanyag](tutorial-routing.md)különböző üzenet-útválasztási módszereire küld üzeneteket. Ez magában foglalja az Azure Storage-t is.
 
-Kattintson duplán a megoldás fájlra (IoT_SimulatedDevice. SLN) a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs. Helyettesítse `{your hub name}` be az IoT hub nevét. Az IoT hub-állomásnév formátuma **{a hub neve}. Azure-Devices.net**. Ebben az oktatóanyagban a hub-gazdagép neve **ContosoTestHubMsgEn.Azure-Devices.net**. Ezután cserélje `{device key}` le a korábban mentett eszköz kulcsát, amikor a parancsfájlt az erőforrások létrehozásához futtatja.
+Kattintson duplán a megoldás fájlra (IoT_SimulatedDevice. SLN) a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs. Helyettesítse be a IoT hub nevét a jelölő `{your hub name}`. Az IoT hub-állomásnév formátuma **{a hub neve}. Azure-Devices.net**. Ebben az oktatóanyagban a hub-gazdagép neve **ContosoTestHubMsgEn.Azure-Devices.net**. Ezután cserélje le a korábban mentett eszköz kulcsát, amikor futtatja a parancsfájlt a jelölő `{your device key}`erőforrásainak létrehozásához.
 
 Ha nem rendelkezik az eszköz kulcsával, lekérheti azt a portálról. A bejelentkezés után lépjen az **erőforráscsoportok**elemre, válassza ki az erőforráscsoportot, majd válassza ki a IoT hub. Keresse meg a **IoT eszközöket** a tesztelési eszközhöz, és válassza ki az eszközt. A vágólapra másoláshoz kattintson az **elsődleges kulcs** melletti másolás ikonra.
 
    ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHubMsgEn.azure-devices.net";
+        private readonly static string s_myDeviceId = "Contoso-Test-Device";
+        private readonly static string s_iotHubUri = "ContosoTestHubMsgEn.azure-devices.net";
         // This is the primary key for the device. This is in the portal.
         // Find your IoT hub in the portal > IoT devices > select your device > copy the key.
-        static string deviceKey = "{your device key here}";
+        private readonly static string s_deviceKey = "{your device key}";
    ```
 
 ## <a name="run-and-test"></a>Futtatás és tesztelés
 
 Futtassa a konzolalkalmazást. Várjon néhány percet. Az elküldött üzenetek az alkalmazás konzol képernyőjén jelennek meg.
 
-Az alkalmazás másodpercenként elküld egy új üzenetet az eszközről a felhőbe az IoT Hubnak. Az üzenet egy JSON-szerializált objektumot tartalmaz az eszköz azonosítójával, a hőmérséklettel, a páratartalommal és az üzenet szintjével, amely alapértelmezés szerint `normal`. Véletlenszerűen rendeli hozzá `critical` a vagy `storage`a-t, így az üzenet a Storage-fiókhoz vagy az alapértelmezett végponthoz lesz irányítva. A Storage-fiókban a **dúsított** tárolóba küldött üzenetek gazdagítva lesznek.
+Az alkalmazás másodpercenként elküld egy új üzenetet az eszközről a felhőbe az IoT Hubnak. Az üzenet egy JSON-szerializált objektumot tartalmaz az eszköz azonosítójával, a hőmérséklettel, a páratartalommal és az üzenet szintjével, amely alapértelmezés szerint `normal`. Véletlenszerűen rendel hozzá `critical` vagy `storage`szintet, így az üzenet a Storage-fiókba vagy az alapértelmezett végpontba irányítható. A Storage-fiókban a **dúsított** tárolóba küldött üzenetek gazdagítva lesznek.
 
 A több Storage-üzenet elküldése után megtekintheti az adatmegjelenítést.
 
@@ -303,7 +304,7 @@ A több Storage-üzenet elküldése után megtekintheti az adatmegjelenítést.
 
    ![A Storage Explorer kiválasztása](./media/tutorial-message-enrichments/select-storage-explorer.png)
 
-   Válassza a **blob** -tárolók lehetőséget a két használható tároló megjelenítéséhez.
+   Válassza a **blob-tárolók** lehetőséget a két használható tároló megjelenítéséhez.
 
    ![A Storage-fiókban található tárolók](./media/tutorial-message-enrichments/show-blob-containers.png)
 
@@ -315,7 +316,7 @@ Ha megtekinti a dúsított üzeneteket, a "saját IoT Hub" nevet kell látnia a 
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","devicelocation":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-És itt egy nem dúsított üzenet. A "My IoT Hub", a "devicelocation" és a "Vevőkód" nem jelenik meg itt, mert ez a végpont nem rendelkezik alkoholtartalom-növeléssel.
+Itt egy nem gazdagított üzenet. a "My IoT Hub", a "devicelocation" és a "Vevőkód" nem jelenik meg itt, mert ezek a mezők, amelyeket a dúsítások adnak hozzá, és ez a végpont nem rendelkezik alkoholtartalom-növeléssel.
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
@@ -327,13 +328,13 @@ Ha el szeretné távolítani az oktatóanyagban létrehozott összes erőforrás
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup`az oktatóanyag elején a **ContosoResources** vissza lett állítva.
+Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején **ContosoResources** vissza.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az alábbi lépéseket követve konfigurálta és tesztelte az üzenet-gazdagítók hozzáadását IoT Hub üzenetekhez:
 

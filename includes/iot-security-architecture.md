@@ -8,266 +8,264 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179777"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789104"
 ---
-# <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
+A rendszer tervezésekor fontos megérteni a rendszer potenciális veszélyforrásait, és ennek megfelelően hozzá kell adnia a megfelelő védelmi lehetőségeket, ahogy a rendszert tervezték és felépíteni. Fontos, hogy megtervezze a terméket a kezdetektől a biztonsággal szem előtt tartva, mert megértette, hogy a támadók hogyan veszélyeztethetik a rendszereket, így biztosítható, hogy a megfelelő enyhítések a kezdetektől fogva megtörténjenek.
 
-A rendszer tervezésekor fontos, hogy a rendszer a potenciális fenyegetések, és megfelelő védelmet ennek megfelelően felvenni, mert a rendszer lett kialakítva, és lett tervezve. Fontos a kezdetektől a termék tervezhet a biztonságot szem, mivel egy támadó hogyan lehet tudni veszélyeztetheti a rendszer segítségével, győződjön meg arról, hogy megfelelő megoldások tudnivalók a rendszer az elejétől.
+## <a name="security-starts-with-a-threat-model"></a>A biztonság a veszélyforrások modelljével kezdődik
 
-## <a name="security-starts-with-a-threat-model"></a>Biztonsági kezdődik a fenyegetések modellezése
+A Microsoft már régóta használta a veszélyforrásokat a termékeihez, és nyilvánosan elérhetővé tette a vállalat fenyegetés-modellezési folyamatát. A vállalati élmény azt mutatja be, hogy a modellezés nem várt előnyökkel jár, mint az, hogy a leginkább milyen fenyegetéseket érint. Létrehozhat például egy utat is a fejlesztői csapaton kívüli másokkal folytatott nyílt beszélgetésekhez, ami új ötleteket és fejlesztéseket eredményezhet a termékben.
 
-A Microsoft már hosszú használt modelljei termékei és által végrehajtott folyamat nyilvánosan elérhető modellezési a vállalat veszélyforrások elleni. A vállalat felhasználói élményt ismerteti, hogy rendelkezik-e a modellezési túli fenyegetések Mik a legtöbb azonnali ismeretekkel nem várt előnyök vonatkozóan. Például is létrehoz egy sérülésre egy megnyitott beszélgetéshez másokkal kívül a fejlesztői csapat, ami új ötleteket és fejlesztések a termékben.
+A veszélyforrások modellezésének célja annak megértése, hogy a támadók hogyan veszélyeztethetik a rendszer biztonságát, és hogy a megfelelő enyhítések érvényben legyenek. A veszélyforrások modellezése arra kényszeríti a tervezési csapatot, hogy a rendszer központi telepítésének megtervezése helyett a rendszer tervezésekor vegye figyelembe a megoldást. Ez a tény kritikus fontosságú, mivel a biztonsági védelem több, a területen található eszközre való utólagos beszerelése nem valósítható meg, és az ügyfeleket veszélyezteti.
 
-Fenyegetés modellezési célja, hogy hogyan egy támadó képes veszélyeztetheti a rendszer, és ezután ellenőrizze, hogy megfelelő megoldások vannak érvényben. Veszélyforrások elleni modellezési kényszeríti a rendszert úgy tervezték, hanem után a rendszer a megoldások, érdemes figyelembe venni a tervezési csapattal van üzembe helyezve. A tény, különösen fontos, mivel az eszközök a mezőben a számtalan biztonsági védelmekkel történő lehessen hozni, hibalehetőségeket rejt magában, és hagyja ügyfeleinek kockáztatja.
+Számos fejlesztői csapat kiváló feladattal rögzíti az ügyfelek számára előnyös rendszer működési követelményeit. Ha azonban nem nyilvánvaló módszereket azonosít, hogy valaki visszaélést okozhat a rendszeren, nagyobb kihívást jelent. A veszélyforrások modellezése segíthet a fejlesztési csapatoknak megérteni, hogy mit tehetnek a támadók, és miért is. A veszélyforrások modellezése egy strukturált folyamat, amely vitát készít a rendszeren a biztonsági tervezési döntésekről, valamint a biztonsági szempontokat érintő tervezési változásokról. Habár a veszélyforrások modellje egyszerűen egy dokumentum, ez a dokumentáció ideális megoldást kínál az ismeretek folytonosságának biztosítására, a tanulságok megőrzésére és az új csapat gyors előkészítésére. Végül a veszélyforrások modellezésének eredménye, hogy a biztonság más szempontjait is figyelembe veszi, például azt, hogy milyen biztonsági kötelezettségeket szeretne biztosítani az ügyfeleknek. Ezek a kötelezettségvállalások a veszélyforrások modellezésével és a eszközök internetes hálózata-(IoT-) megoldás tesztelésével foglalkoznak.
 
-Számos fejlesztői csapatok munkaköre egy kiváló rögzítése a rendszer a funkcionális követelmények, amelyek igénybe vehető. Azonban, hogy valaki visszaél előfordulhat, hogy a rendszer nem egyértelmű módon azonosítása, nehéz lehet. Fenyegetések modellezése segíthetnek megérteni, hogy egy támadó előfordulhat, hogy mire fejlesztői csapatok és miért. Fenyegetések modellezése az strukturált, amely a biztonsági szóló vita tervezési döntéseket hoz a rendszer, valamint a kialakítási hatás biztonság végzett követhető változik. Bár a fenyegetések modellezése egyszerűen csak egy dokumentumot, ezt a dokumentációt is jelöli annak biztosítására, megőrzési több leckéből áll, az ismeretek folytonossági megtudhatta, és súgó, új gyorsan csapat felvétele ideális megoldást. Végül a fenyegetések modellezése pénznembeli díjváltozása ahhoz, hogy más például milyen pedig adja meg az ügyfelek számára kíván biztonsági kötelezettségeit, biztonsági szempontból. E kötelezettségek threat modellezési együtt értesíti, és a meghajtó tesztelését, az eszközök internetes hálózata (IoT) megoldás.
+### <a name="when-to-do-threat-modeling"></a>Mikor érdemes elvégezni a veszélyforrások modellezését
 
-### <a name="when-to-do-threat-modeling"></a>Ha a fenyegetések modellezése
+A [Threat Modeling](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) a legnagyobb értéket kínálja a tervezési fázisba való beépítésekor. A tervezésekor a lehető legnagyobb rugalmassággal rendelkezik a fenyegetések elhárítása érdekében. A fenyegetések megtervezése a kívánt eredmény. Ez sokkal egyszerűbb, mint a mérséklések hozzáadása, a tesztelés, és annak biztosítása, hogy továbbra is naprakészek maradjanak, továbbá az ilyen eltávolítás nem mindig lehetséges. Nehezebbé válik a fenyegetések kiiktatása, mivel a termék még érettebb lesz, és végül a fejlesztés során egyre több munkát és sokkal nehezebb kompromisszumokat igényel, mint a veszélyforrások modellezése.
 
-[Veszélyforrások elleni modellezési](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) kínálja a legnagyobb értékű, beépítheti a tervezési fázis során. Ha a tervez, akkor ki a fenyegetéseket, módosítsa a legnagyobb rugalmasságot. A szükséges teljesítendő veszélyforrások kiküszöbölése szándékosan. Sokkal egyszerűbb, mint kockázatcsökkentő hozzáadása, kipróbálása és naprakészek maradjanak, és emellett az ilyen eltávolítás nem mindig lehetőség. Ki a fenyegetéseket, valamint a termék válik több érett végső soron pedig szükség van a több munkát és sokkal nehezebb kompromisszumot kínál a fenyegetések modellezése már a legelején a fejlesztői, mint nehezebb lesz.
+### <a name="what-to-consider-for-threat-modeling"></a>Mit érdemes figyelembe venni a veszélyforrások modellezéséhez
 
-### <a name="what-to-consider-for-threat-modeling"></a>Mit kell figyelembe venni a fenyegetések modellezése
-
-Akkor tekintse meg a megoldás egy egész és azt is hangsúlyt a következő területeken:
+Tekintse meg a megoldás egészét, és az alábbi területekre is koncentrálhat:
 
 * A biztonsági és adatvédelmi funkciók
-* A Funkciók, amelynek hibák a megfelelő biztonsági
-* A Funkciók, amelyek egy megbízhatósági kapcsolat határán touch
+* Azok a funkciók, amelyek meghibásodása biztonsági jelentőséggel bír
+* A megbízhatósági kapcsolat határát érintő funkciók
 
-### <a name="who-performs-threat-modeling"></a>Akik hajtja végre a fenyegetések modellezése
+### <a name="who-performs-threat-modeling"></a>Ki végzi el a fenyegetések modellezését
 
-Veszélyforrások elleni modellezési egy olyan folyamat, mint minden más. Célszerű a veszélyforrások elleni modell dokumentumot, mint bármely másik összetevője a megoldás kezeli, és érvényesítse azt. Számos fejlesztői csapatok munkaköre egy kiváló rögzítése a rendszer a funkcionális követelmények, amelyek igénybe vehető. Azonban, hogy valaki visszaél előfordulhat, hogy a rendszer nem egyértelmű módon azonosítása, nehéz lehet. Fenyegetések modellezése segíthetnek megérteni, hogy egy támadó előfordulhat, hogy mire fejlesztői csapatok és miért.
+A veszélyforrások modellezése olyan folyamat, mint bármely más. Érdemes a veszélyforrást modellező dokumentumot a megoldás bármely más összetevőjéhez hasonlóan kezelni, és érvényesíteni. Számos fejlesztői csapat kiváló feladattal rögzíti az ügyfelek számára előnyös rendszer működési követelményeit. Ha azonban nem nyilvánvaló módszereket azonosít, hogy valaki visszaélést okozhat a rendszeren, nagyobb kihívást jelent. A veszélyforrások modellezése segíthet a fejlesztési csapatoknak megérteni, hogy mit tehetnek a támadók, és miért is.
 
-### <a name="how-to-perform-threat-modeling"></a>Hogyan hajthat végre a fenyegetések modellezése
+### <a name="how-to-perform-threat-modeling"></a>A veszélyforrások modellezése
 
-A fenyegetés a modellezési folyamat négy lépést; áll a lépések a következők:
+A veszélyforrások modellezési folyamata négy lépésből áll; a lépések a következők:
 
-* Modellezze az alkalmazást
+* Az alkalmazás modellezése
 * Fenyegetések számbavétele
-* Elhárítani a fenyegetéseket
-* A megoldások ellenőrzése
+* Fenyegetések enyhítése
+* A enyhítések ellenőrzése
 
-#### <a name="the-process-steps"></a>A folyamat lépéseivel
+#### <a name="the-process-steps"></a>A folyamat lépései
 
-Három szabályok költségcsökkenést eredményezzen szem előtt kell tartani a fenyegetések modellezése készítése során:
+Három szabályt kell szem előtt tartani a fenyegetések modell létrehozásakor:
 
-1. Hozzon létre egy kívül a referencia-architektúra diagramja.
+1. Hozzon létre egy diagramot a hivatkozási architektúrából.
 
-2. Indítsa el a szélesség-és felhőközpontú. Áttekintheti, és megismerheti a rendszer egészének részletes műugrásra előtt. Ez a megközelítés segít biztosítani, hogy Ön részletes leírása a megfelelő helyeken.
+2. Kezdési szélesség – első. Tekintse át az áttekintést, és tekintse át a rendszer egészét, mielőtt a Deep-Diving. Ezzel a megközelítéssel biztosíthatja, hogy a megfelelő helyeken mélyen elmerülnek.
 
-3. Meghajtó a folyamatot, ne hagyja, hogy a meghajtó, a folyamat. Ha a modellezési fázisban olyan problémát talált, és felfedezheti, vegyen részt benne!! Nem úgy gondolja, hogy slavishly kövesse az alábbi lépéseket kell.
+3. Hajtsa meg a folyamatot, ne hagyja, hogy a folyamat elvezesse. Ha hibát talál a modellezési fázisban, és azt szeretné felfedezni, keresse fel! Ne habozzon, hogy kövesse az alábbi lépéseket slavishly.
 
 #### <a name="threats"></a>Fenyegetések
 
-A fenyegetések modellezése négy alapvető elemei a következők:
+A veszélyforrások modellezésének négy fő eleme a következők:
 
-* Például a webes szolgáltatások, a Win32-szolgáltatások, folyamatok és a * démonok nix. Bizonyos összetett entitások (például a helyszíni átjárók és az érzékelők) is emeli ki, mert az egy folyamatot, ha a következő területeken technikai részletezése nem lehetséges.
+* Folyamatok, például webszolgáltatások, Win32-szolgáltatások és * nix démonok. Bizonyos összetett entitások (például a helyszíni átjárók és érzékelők) olyan folyamatként vonhatók el, amelyben nem lehet technikai részletezést biztosítani ezekben a területeken.
 
-* Adattárak (bárhol adatokat tárolja, például egy konfigurációs fájlban vagy adatbázis)
+* Adattárak (bárhol tárolva, például konfigurációs fájl vagy adatbázis)
 
-* Az adatfolyam (ahol adatokat helyez át, az alkalmazás más elemek között)
+* Adatfolyam (ahol az adatforgalom az alkalmazás más elemei között mozog)
 
-* Külső entitások (semmit, amellyel kommunikál a rendszer, de ez nem az alkalmazás felügyelete alá tartozik, példák felhasználókat tartalmazza, és hírcsatornák műholdas)
+* Külső entitások (minden, ami a rendszerrel kommunikál, de nem az alkalmazás felügyelete alá tartozik, például a felhasználók és a műholdas csatornák)
 
-Az architekturális diagramja szereplő összes elem fenyegetéseket; vonatkozik. Ez a cikk a STRIDE követelnék. Olvasási [Threat újra modellezés, a STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) többet megtudni a STRIDE elemeket.
+Az építészeti diagram minden eleme különböző fenyegetésekre vonatkozik; Ez a cikk a Stride hívóbetűje. Olvassa el [újra a veszélyforrások modellezését,](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) és tekintse meg a lépéseket a lépéshossz elemek megismeréséhez.
 
-Különböző elemeit, az alkalmazás diagram egyes STRIDE fenyegetések vonatkozik:
+Az alkalmazás diagramjának különböző elemei bizonyos átlépési fenyegetésekre vonatkoznak:
 
-* Folyamatok STRIDE vonatkozik.
-* Adatfolyam-gyűjteményre vonatkoznak rájuk a TID
-* Adattárak vonatkoznak rá TID, és néha R, ha az adattárak naplófájlokat.
-* Külső entitások SRD vonatkozik.
+* A folyamatok a következő lépések hatálya alá esnek
+* Az adatfolyamatok a TID-nek vannak kitéve
+* Az adattárakat a TID-nek, és esetenként az R-nek kell alávetni, amikor az adattárak naplófájlok.
+* A külső entitások SRD vonatkoznak
 
-## <a name="security-in-iot"></a>Az IoT biztonsági
+## <a name="security-in-iot"></a>Biztonság a IoT
 
-Csatlakoztatott speciális célú eszközök kapcsolati surface területeket, és interakció minták, amelyek mindegyike figyelembe kell venni egy keretrendszert nyújt a digitális, az adott eszközökre való hozzáférés biztonságossá tétele jelentős számú rendelkezik. A használt kifejezés a "digitális hozzáférés" Itt megkülönböztetni a közvetlen interakció keresztül végrehajtott műveleteket a hozzáférés-biztonságot amennyiben a fizikai hozzáférés-vezérlés használatával. Ha például üzembe helyezése az eszköz zár szoba ajtón. Fizikai hozzáférés nem elutasítja a hardver- és használatával, miközben intézkedéseket is vezető rendszer zavaró tényező való fizikai hozzáférés megakadályozása.
+A csatlakoztatott speciális célú eszközök jelentős számú potenciális interakciós felülettel és interakciós mintákkal rendelkeznek, és mindegyiknek figyelembe kell vennie az eszközök digitális elérésének biztosításához szükséges keretrendszert. A "digitális hozzáférés" kifejezés azért használatos, hogy megkülönböztesse azokat a műveleteket, amelyek a közvetlen eszköz interakcióján keresztül valósulnak meg, ha a hozzáférés biztonságát fizikai hozzáférés-vezérléssel biztosítjuk. Tegyük fel például, hogy az eszközt egy lakattal rendelkező helyiségbe helyezi. Habár a fizikai hozzáférés nem tagadható meg a szoftver és a hardver használatával, a rendszer meggátolja, hogy a fizikai hozzáférés megakadályozza a rendszerbeavatkozást.
 
-A kapcsolati minták megismerésével meg "eszköz" és "eszköz" azonos szintű a figyelmet. Minden olyan információt, amely bármely fél által biztosított az eszközökre,. a cél módosítása, illetve annak viselkedését felé az állapot vagy a környezet állapotát befolyásoló az "Eszköz control" meghatározhassa. "Eszköz adatok" meghatározhassa minden olyan információt, az eszköz bocsát ki a másik félre állapotában és a megfigyelt állapotát a környezetében.
+Az interakciós minták megismeréséhez tekintse meg a "Device Control" és az "Device-adatmennyiség" kifejezést ugyanazzal a szintű figyelemmel. Az "eszközök vezérlése" a bármely fél által az eszközre adott bármilyen információ besorolva, amelynek célja, hogy megváltoztatja vagy befolyásolja a viselkedését az állapotára vagy a környezetének állapotára vonatkozóan. Az "eszköz adatai" olyan információk besorolására alkalmasak, amelyeket az eszköz az állapotáról és a környezete megfigyelt állapotáról bocsát ki.
 
-Annak érdekében, hogy ajánlott biztonsági eljárások optimalizálása érdekében javasoljuk, hogy egy tipikus IoT-architektúra van felosztva számos összetevő és a fenyegetések modellezése a gyakorlatban részeként. A zónák teljes ebben a szakaszban leírt, és a következők:
+Az ajánlott biztonsági eljárások optimalizálása érdekében javasoljuk, hogy egy tipikus IoT architektúra több összetevőre vagy zónára legyen osztva a veszélyforrások modellezésének gyakorlása során. Ezeket a zónákat a szakasz teljes egészében ismerteti, és a következőket tartalmazza:
 
-* Eszköz,
-* Helyszíni átjáró,
-* Átjárók, a felhő és a
-* Szolgáltatások.
+* Eszköz
+* Field Gateway,
+* Felhőbeli átjárók és
+* Services.
 
-Zónák olyan meghibásodások széles körű lépésig, szegmentálhatja a megoldást. az egyes zónák gyakran rendelkezik a saját adatok és a hitelesítési és engedélyezési követelményeinek. Zónák is használható elkülönítési károkat, és magasabb megbízhatósági zónák alacsony megbízhatósági zónák hatásának korlátozása.
+A zónák széles körűen használhatók a megoldások szegmentálásához; az egyes zónákhoz gyakran a saját adat-és hitelesítési és engedélyezési követelmények vonatkoznak. A zónák is felhasználhatók a sérülések elkülönítésére, és az alacsony megbízhatósági zónák hatásának korlátozására a magasabb szintű megbízhatósági zónákban.
 
-Minden zóna megbízhatósági tartományba tartozik, az alábbi ábrán a pontozott piros vonal észlelt választja el. Adatok és információk átmenetet, jelöl egy forrásból egy másikba. Ez a váltás során az adatokat és információkat lehet Spoofing, módosítás, Letagadhatóság, Információfelfedés, szolgáltatásmegtagadás és jogosultság jogosultságszint-emelés (LÉPÉSKÖZ) vonatkoznak.
+Minden zónához egy megbízhatósági kapcsolati határ van elválasztva, amely a következő ábrán pontozott piros vonalként van feltüntetve. Az adatok/információk egyik forrásról a másikra való átállását jelenti. Az áttérés során az adatok/információk a hamisítás, a hamisítás, a Megtagadás, az információ-közzététel, a szolgáltatásmegtagadás és a jogosultsági szint megemelése (LÉPÉSHOSSZ) alapján változhatnak.
 
-![IoT-biztonsági zónák](media/iot-security-architecture/iot-security-architecture-fig1.png) 
+![IoT biztonsági zónák](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
-Az egyes határán belül kitaláltak összetevők is kell alávetni STRIDE, egy teljes 360 engedélyezése nézet a megoldás modellezési fenyegetést. Az alábbi szakaszok ismertetik az egyes összetevőjének és adott biztonsági problémákat és megoldásokat, amelyek kell üzembe helyezéséhez.
+Az egyes határokon belül ábrázolt összetevők is meghaladják a lépéseket, ami lehetővé teszi a megoldás teljes 360-es veszélyforrás-modellezési nézetét. Az alábbi részekben az egyes összetevőkre, valamint a szükséges konkrét biztonsági kérdésekre és megoldásokra vonatkozó részletes információk találhatók.
 
-A következő részekben bemutatjuk a szabványos összetevők általában ebben a zónában található.
+Az alábbi részek a szabványos összetevőket tárgyalják, amelyek általában a következő zónákban találhatók.
 
-### <a name="the-device-zone"></a>Az eszköz időzónája
+### <a name="the-device-zone"></a>Az eszköz zónája
 
-Az eszköz környezet az eszköz azonnal fizikai körülötte, amennyiben a fizikai hozzáférés és/vagy a "helyi hálózat" társ-társ digitális az eszközre is megvalósítható. A "helyi hálózat" adatforrásmérete egy hálózatot, amely önálló, és a – szigetelt, de potenciálisan Áthidalt való – a nyilvános interneten, és bármely rövid hatótávolságú vezeték nélküli választógomb technológia, amely lehetővé teszi a társ-társ kommunikációs eszközök tartalmazza. Ugyanúgy *nem* közé tartozik minden olyan hálózati virtualizációs technológia a helyi hálózaton finomabb létrehozása, és nem is tartalmazza nyilvános operátor hálózatok, amelyek bármely nyilvános hálózat címterületének kommunikálhassanak, ha a két eszköz megkövetelése Adja meg a társ-társ kommunikációs kapcsolat voltak.
+Az eszköz környezete az eszköz körüli közvetlen fizikai terület, ahol a fizikai hozzáférés és/vagy a "helyi hálózat" társközi digitális hozzáférése az eszközhöz lehetséges. A "helyi hálózat" azt feltételezi, hogy egy különálló és szigetelt hálózat – a nyilvános interneten keresztül is –, valamint olyan rövid hatótávolságú vezeték nélküli rádiófrekvenciás technológiát tartalmaz, amely lehetővé teszi az eszközök egyenrangú kommunikációját. *Nem* tartalmaz olyan hálózati virtualizációs technológiát, amely az ilyen helyi hálózatok illúzióját hozza létre, és nem tartalmaz olyan nyilvános operátori hálózatokat, amelyek két eszközt igényelnek a nyilvános hálózati térben való kommunikációhoz, ha társközi kommunikációs kapcsolat.
 
-### <a name="the-field-gateway-zone"></a>A mező átjáró zóna
+### <a name="the-field-gateway-zone"></a>A mező-átjáró zónája
 
-Helyszíni átjáró az eszköz és berendezés vagy néhány általános célú kiszolgáló számítógép szoftver, amely kommunikációs engedélyező, és esetleg eszköz verziókezelő rendszer-és eszköz adatfeldolgozási hub funkcionál. A mező átjáró zónát tartalmaz, a helyszíni átjáró magát, és minden hozzá kapcsolt eszközöket. A neve is mutatja, ahogy helyszíni átjárók létesítményekben kívül dedikált adatfeldolgozási működésre, általában kötött helye, fizikai behatolás potenciálisan vonatkozik, és működési redundancia korlátozott. Tegyük fel, győződjön meg arról, hogy a helyszíni átjárók gyakran egy dolog, minden egyik touch és a feladatait van, hogy közben szabotálására.
+A Field Gateway egy eszköz/berendezés vagy egy olyan általános célú kiszolgáló számítógépes szoftver, amely kommunikációt tesz lehetővé, és potenciálisan eszköz-ellenőrzési rendszerként és eszköz-adatfeldolgozó központként működik. A mező átjáró zónája magába foglalja a mező átjáróját és a hozzá csatolt összes eszközt. Ahogy a név is jelenti, a helyszíni átjárók a dedikált adatfeldolgozási létesítményeken kívül járnak el, általában a helyhez kötöttek, és a fizikai behatolásra is alkalmasak, és korlátozott működési redundanciával rendelkeznek. Minden, ami azt jelenti, hogy egy adott mező átjárója általában egy olyan dolog, amely a működésének ismeretében megtudhatja és szabotálhatja.
 
-Helyszíni átjáró különbözik puszta forgalom útválasztó, hogy rendelkezik mint a hozzáférés-kezelés az aktív szerepet, és információáramlás, ami azt jelenti, egy alkalmazás rendelkező entitást és a hálózati kapcsolat vagy a Terminálszolgáltatások munkamenet. Egy NAT-eszköz vagy tűzfal, ellentétben nem tesz eleget helyszíni átjárók, mivel azok nincsenek explicit kapcsolat vagy a munkamenet terminálok, de a inkább egy útvonal (vagy blokk) kapcsolatok vagy a munkamenetek keresztül őket. A helyszíni átjáró van két különböző surface területre. Egy arcokat, az eszközöket, amelyek kapcsolódnak, és a belső, a zóna jelöli, és a másik az összes külső felek arcokat, és a peremhálózaton, a zóna.
+A mező-átjáró különbözik a puszta forgalmú útválasztótól, hogy aktív szerepkörrel rendelkezik a hozzáférés és az információáramlás kezelésében, ami azt jelenti, hogy egy alkalmazás által kezelt entitás és hálózati kapcsolat vagy munkamenet-terminál. Egy NAT-eszköz vagy tűzfal ezzel szemben nem felel meg a mező-átjárónak, mivel nem kifejezetten kapcsolati vagy munkamenet-terminálok, hanem egy útvonal (vagy blokk) kapcsolatok vagy a rajtuk keresztül végrehajtott munkamenetek. A Field Gateway két különálló felülettel rendelkezik. Az egyik a hozzá csatlakozó eszközökre néz, és a zónán belüli, a másik pedig az összes külső felet és a zóna szélét jelképezi.
 
-### <a name="the-cloud-gateway-zone"></a>A felhő átjáró zóna
+### <a name="the-cloud-gateway-zone"></a>A Felhőbeli átjáró zónája
 
-Átjáró egy rendszer, amely lehetővé teszi az eszközök vagy helyszíni átjárók számos különböző helyekről és távoli kommunikációs között nyilvános hálózati helyet, általában egy felhőalapú vezérlőt, és az adatok elemzési rendszer, az ilyen rendszerek összevonási felé. Bizonyos esetekben egy felhőátjáróhoz előfordulhat, hogy azonnal biztosítja a hozzáférést a speciális célú eszközök, például táblagépek vagy telefonok terminálok. Az itt tárgyalt környezetben a "felhő" hivatott tekintse meg a dedikált adatfeldolgozási rendszer, amely nincs kötve a csatlakoztatott eszközökkel vagy helyszíni átjárók ugyanazon a helyen. Is egy Felhőbeli zónában működési mértékek célzott fizikai hozzáférés megakadályozása, és nem feltétlenül közzétéve "nyilvános felhőről" infrastruktúrában.  
+A Cloud Gateway egy olyan rendszer, amely lehetővé teszi a távoli kommunikációt több különböző helyről az eszközökre vagy a helyszíni átjáróra a nyilvános hálózati térben, jellemzően a felhőalapú vezérlési és adatelemzési rendszer, az ilyen rendszerek összevonása felé. Bizonyos esetekben előfordulhat, hogy a Cloud Gateway azonnal megkönnyíti a speciális célú eszközökhöz, például a tablettákhoz vagy telefonokhoz való hozzáférést. Az itt tárgyalt kontextusban a "Cloud" kifejezés arra szolgál, hogy egy dedikált adatfeldolgozó rendszerre hivatkozzon, amely nem ugyanahhoz a helyhez van kötve, mint a csatlakoztatott eszközök vagy a helyszíni átjárók. A Felhőbeli zónákban a működési intézkedések meggátolják a célként megadott fizikai hozzáférést, és nem feltétlenül teszik közzé a "nyilvános felhő" infrastruktúráját.  
 
-A felhőátjáró potenciálisan leképezni egy hálózati virtualizációs területre, megvédheti a felhőátjáró és az összes a csatlakoztatott eszközökkel vagy a helyszíni átjárók más hálózati forgalomtól. A felhőátjáró maga nem egy eszköz verziókezelő rendszer vagy egy feldolgozási vagy a tárolási létesítmény az eszközadatok; Ezekben a létesítményekben kommunikáljanak a felhőátjárónak. A felhő átjáró felhőalapú maga az átjáró együtt minden helyszíni átjárók és közvetve vagy közvetlenül csatlakoztatott eszköz tartozik. Az edge, a zóna egy egy különböző támadási, ahol az összes külső felek keresztül kommunikálnak.
+Előfordulhat, hogy egy Felhőbeli átjáró egy hálózati virtualizálási átfedésben van, hogy elszigetelje a felhő-átjárót és annak összes csatlakoztatott eszközét vagy helyszíni átjáróját bármilyen más hálózati forgalomból. Maga a Felhőbeli átjáró nem eszköz-vagy adatfeldolgozási vagy-tárolási létesítmény; Ezek a létesítmények a Cloud Gateway felülettel rendelkeznek. A felhőalapú átjáró zónája magába foglalja a felhő-átjárót, valamint az összes helyszíni átjárót és eszközt, amely közvetlenül vagy közvetve hozzá van rendelve. A zóna szegélye egy különálló terület, ahol az összes külső fél kommunikál.
 
 ### <a name="the-services-zone"></a>A szolgáltatások zóna
 
-"Szolgáltatás" definiálva van ebben a környezetben, bármely szoftverfrissítési összetevő vagy a modul, amely az eszközök egy mező vagy felhő-átjárón keresztül adatok gyűjtése és elemzése, valamint a parancs és vezérlés vele. Szolgáltatások közvetítők. Azok felé az átjárók és más alrendszerek identitás alatt reagálhat, tárolására és adatok elemzése, önállóan parancsokat kiadni data insights vagy ütemezés alapján eszközök és tegye elérhetővé az adatokat és szabályozhatja a funkciókat a jogosult végfelhasználók számára.
+A "Service" definiálva van ehhez a környezethez, mint bármely olyan szoftver-összetevő vagy-modul, amely egy mező-vagy felhőalapú átjárón keresztül kapcsolódik az adatgyűjtéshez és az elemzéshez, valamint a parancs-és vezérlési szolgáltatáshoz. A szolgáltatások közvetítők. Az identitásuk az átjárók és más alrendszerek felé, az adatok tárolása és elemzése, az eszközökre vonatkozó, az adatelemzések vagy az ütemtervek alapján, valamint a jogosult végfelhasználók számára elérhető információ-és vezérlési képességekkel való önálló kiállítók.
 
-### <a name="information-devices-versus-special-purpose-devices"></a>Eszközök információk, és a speciális célú eszközök
+### <a name="information-devices-versus-special-purpose-devices"></a>Információ – eszközök és speciális célú eszközök
 
-Számítógépek, telefonokon és táblagépeken olyan eszközök elsősorban interaktív információk. Telefonokon és táblagépeken körül akkumulátor-élettartamát maximalizálása explicit módon vannak optimalizálva. Lehetőleg kikapcsolása részlegesen nem azonnal személy való interakció során, vagy ha nem biztosító szolgáltatások, például lejátszás, zene, vagy egy adott helyre irányítsa a tulajdonostól. A rendszerek szempontjából ezek az információk technológiai eszközök főleg vannak átjáróként proxyk személyek felé. Műveletek és a "személyek érzékelők" bemeneti gyűjtése javasolásával "személyek indítószerkezeteket".
+A számítógépek, telefonok és tabletták elsősorban interaktív információs eszközök. A telefonok és a tabletták kifejezetten optimalizálva vannak az akkumulátorok élettartamának maximalizálására. Lehetőleg kikapcsolhatják részben, ha nem kapcsolódnak azonnal egy személyhez, vagy ha nem biztosítanak olyan szolgáltatásokat, mint a zene lejátszása vagy a tulajdonosuk egy adott helyre való irányítása. A rendszerek szemszögéből ezek az információtechnológiai eszközök elsősorban proxyként működnek a felhasználók felé. A "People-indítószerkezetek" azt sugallják, hogy a műveletek és a "személyek érzékelők" begyűjtik a bemenetet.
 
-Speciális célú eszközök, az egyszerű hőmérséklet érzékelőktől az összetevőit őket, több ezer összetett gyártósorokon eltérőek. Ezek az eszközök sokkal hatóköre a cél, és akkor is, ha a felhasználói felület egyes biztosítanak, nagymértékben hatóköre való együttműködésre vagy integráljuk a való világban az eszközök. Azok mérjük és jelentés környezeti körülmények között, kapcsolja szelepet, servos szabályozhatja, hang-riasztások, lámpa váltson, és számos egyéb feladatokat. Ezek segítenek működnek, amelynek egy információk eszköz túl általános, túl költséges, túl nagy vagy túl törékennyé teszi. A konkrét célja azonnal előírja a műszaki tervezést, gyártási és ütemezett élettartama műveletet is rendelkezésre álló pénzügyi költségvetési. Ez a két legfontosabb tényező kombinációja korlátozza az elérhető működési energia költségvetési, fizikai jelenlét, és így rendelkezésre álló tárhelyet, számítási és biztonsági képességeket.
+A speciális célú eszközök, az egyszerű hőmérséklet-érzékelőktől kezdve a különböző, több ezer összetevővel rendelkező összetett gyárbeli üzemi vonalaktól eltérőek. Ezek az eszközök sokkal nagyobb hatókörben vannak, és akkor is, ha bizonyos felhasználói felületet biztosítanak, nagyrészt a fizikai világban lévő eszközökhöz való kapcsolódásra, illetve azok integrálására terjednek ki. Ezek a környezeti körülményeket mérik és jelentik, bekapcsolják a szelepeket, vezérlik a szervókat, a hangriasztásokat, a fények váltását és sok más feladatot. Olyan munkát tesznek lehetővé, amellyel egy információs eszköz túl általános, túl drága, túl nagy vagy túl törékeny. A konkrét cél azonnal a technikai kialakítását, valamint a rendelkezésre álló pénzügyi költségvetést a termelési és ütemezett életciklus-művelethez. Ennek a két kulcsfontosságú tényezőnek a kombinációja korlátozza a rendelkezésre álló működési energia-költségvetést, a fizikai lábnyomot, és így elérhető tárolási, számítási és biztonsági képességeket.
 
-Ha valami "goes nem megfelelő" automatizált és a távoli vezérelhető eszközök, például fizikai hibák vagy ellenőrzési logika hibák willful illetéktelen behatolás és kezelését. Az éles sok meg kell semmisíteni, az épületek looted vagy írása lehet és személyek lehet, hogy sérült, vagy akár die. Ez a károk valaki maxing egy ellopott hitelkártya korlát, mint egy teljesen eltérő osztályt. Eszközök, amelyek áthelyezése dolgokat és érzékelőktől kapott adatok, amelyek végül parancsok, amelyek miatt az alábbiakkal helyezi át, a biztonsági sávban kell lennie, mint bármely e-kereskedelmi vagy banki adathierarchia.
+Ha valami "hibás", az automatizált vagy távoli felügyelhető eszközökkel, például fizikai hibákkal, illetve a jogosulatlan behatolást és manipulációt befolyásoló hibás hibákkal. Az éles üzemben megsemmisíthető, hogy az épületek kifosztották vagy leírhatók, és a személyek megsérülhetnek vagy akár meghalnak is. Ez egy teljes, különböző típusú károsodás, mint valaki maxing egy ellopott hitelkártya-korlátot. A műveleteket elvégező eszközök biztonsági sávja, valamint azok az érzékelők, amelyek végül olyan parancsokat eredményeznek, amelyek a dolgok áthelyezését okozzák, magasabbnak kell lenniük, mint bármely e-kereskedelmi vagy banki forgatókönyv esetében.
 
-### <a name="device-control-and-device-data-interactions"></a>Eszköz-ellenőrzési és eszköz-adatok interakciói
+### <a name="device-control-and-device-data-interactions"></a>Az eszközök és az eszközök közötti adatkapcsolatok
 
-Csatlakoztatott speciális célú eszközök kapcsolati surface területeket, és interakció minták, amelyek mindegyike figyelembe kell venni egy keretrendszert nyújt a digitális, az adott eszközökre való hozzáférés biztonságossá tétele jelentős számú rendelkezik. A használt kifejezés a "digitális hozzáférés" Itt megkülönböztetni a közvetlen interakció keresztül végrehajtott műveleteket a hozzáférés-biztonságot amennyiben a fizikai hozzáférés-vezérlés használatával. Ha például üzembe helyezése az eszköz zár szoba ajtón. Fizikai hozzáférés nem elutasítja a hardver- és használatával, miközben intézkedéseket is vezető rendszer zavaró tényező való fizikai hozzáférés megakadályozása.
+A csatlakoztatott speciális célú eszközök jelentős számú potenciális interakciós felülettel és interakciós mintákkal rendelkeznek, és mindegyiknek figyelembe kell vennie az eszközök digitális elérésének biztosításához szükséges keretrendszert. A "digitális hozzáférés" kifejezés azért használatos, hogy megkülönböztesse azokat a műveleteket, amelyek a közvetlen eszköz interakcióján keresztül valósulnak meg, ha a hozzáférés biztonságát fizikai hozzáférés-vezérléssel biztosítjuk. Tegyük fel például, hogy az eszközt egy lakattal rendelkező helyiségbe helyezi. Habár a fizikai hozzáférés nem tagadható meg a szoftver és a hardver használatával, a rendszer meggátolja, hogy a fizikai hozzáférés megakadályozza a rendszerbeavatkozást.
 
-A kapcsolati minták megismerésével meg "eszköz vezérlési" és "eszköz" azonos szintű a figyelmet threat modellezés közben. Minden olyan információt, amely bármely fél által biztosított az eszközökre,. a cél módosítása, illetve annak viselkedését felé az állapot vagy a környezet állapotát befolyásoló az "Eszköz control" meghatározhassa. "Eszköz adatok" meghatározhassa minden olyan információt, az eszköz bocsát ki a másik félre állapotában és a megfigyelt állapotát a környezetében.
+Ahogy az interakciós mintákat vizsgálja, tekintse meg az "eszköz vezérlése" és az "eszköz adatmennyisége" kifejezést, miközben a veszélyforrások modellezése is megfigyelhető. Az "eszközök vezérlése" a bármely fél által az eszközre adott bármilyen információ besorolva, amelynek célja, hogy megváltoztatja vagy befolyásolja a viselkedését az állapotára vagy a környezetének állapotára vonatkozóan. Az "eszköz adatai" olyan információk besorolására alkalmasak, amelyeket az eszköz az állapotáról és a környezete megfigyelt állapotáról bocsát ki.
 
-## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Az Azure IoT-referenciaarchitektúra modellezése threat végrehajtása
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Veszélyforrások modellezése az Azure IoT hivatkozási architektúrája esetében
 
-Microsoft threat modeling az Azure IoT ehhez korábban leírt keretében használja. A következő szakaszban az Azure IoT-Referenciaarchitektúra konkrét példa használatával bemutatják, hogyan kell foglalkoznia a fenyegetések modellezése IoT és hogyan oldja meg az azonosított fenyegetések. Ebben a példában négy fő területtel fókusz azonosítja:
+A Microsoft a korábban ismertetett keretrendszert használja az Azure IoT kapcsolatos veszélyforrások modellezéséhez. A következő szakasz az Azure IoT Reference Architecture konkrét példáját használja annak bemutatására, hogyan gondolja át a IoT veszélyforrások modellezését, és hogy miként lehet kezelni az azonosított fenyegetéseket. Ez a példa a fókusz négy fő területét azonosítja:
 
-* Eszközök és az adatforrásokat,
-* Szállítási adatok
-* Eszköz és esemény feldolgozása, és
+* Eszközök és adatforrások,
+* Adatátviteli szolgáltatás,
+* Eszközök és események feldolgozása, valamint
 * Bemutató
 
-![Az Azure IoT modellezési fenyegetés](media/iot-security-architecture/iot-security-architecture-fig2.png)
+![Veszélyforrások modellezése az Azure IoT](media/iot-security-architecture/iot-security-architecture-fig2.png)
 
-A következő ábra a Microsoft Threat Modeling Tool által használt adatfolyam-Diagram modell segítségével a Microsoft IoT-architektúra leegyszerűsített nézete nyújtja:
+A következő ábra a Microsoft IoT architektúrájának egyszerűsített nézetét mutatja be a Microsoft Threat Modeling Tool által használt adatfolyam-diagram modell használatával:
 
-![Fenyegetések modellezése az Azure IoT MS Threat Modeling Tool használatával](media/iot-security-architecture/iot-security-architecture-fig3.png)
+![Veszélyforrások modellezése az Azure IoT az MS Threat Modeling Tool használatával](media/iot-security-architecture/iot-security-architecture-fig3.png)
 
-Fontos megjegyezni, hogy az architektúra elkülöníti az eszköz és átjáró funkciókat. Ez a megközelítés lehetővé teszi, hogy a felhasználó átjáró eszközök, amelyek biztonságosabb kihasználhatja: képesek kommunikálni a felhőátjáró biztonságos protokollok használatával, amihez általában nagyobb feldolgozási terhelés, hogy a natív eszköz -, például egy thermostat - sikerült Adja meg saját maga. Az Azure-szolgáltatások zóna feltételeztük, hogy az átjáró megjelenjen-e az Azure IoT Hub szolgáltatás.
+Fontos megjegyezni, hogy az architektúra elkülöníti az eszköz és az átjáró képességeit. Ez a megközelítés lehetővé teszi a felhasználó számára, hogy a biztonságosabb átjárókat használja: képesek legyenek a biztonságos protokollok használatával kommunikálni a felhő-átjáróval, ami általában nagyobb feldolgozási terhelést igényel, mint például a termosztát saját maga is megadható. Az Azure-szolgáltatások zónában tegyük fel, hogy a Felhőbeli átjárót az Azure IoT Hub szolgáltatás képviseli.
 
-### <a name="device-and-data-sourcesdata-transport"></a>Eszköz- és források/adatátvitel
+### <a name="device-and-data-sourcesdata-transport"></a>Eszköz-és adatforrások/adatátviteli szolgáltatás
 
-Ebben a szakaszban a fenyegetések modellezése identitásalapú korábban leírt architektúra bemutatja, és hogyan cikksorozatnak rejlő fontos szempont áttekintést. Ebben a példában a fenyegetések modellezése alapvető elemeit összpontosít:
+Ez a szakasz a korábban a veszélyforrások modellezése során felvázolt architektúrát vizsgálja, és áttekintést nyújt arról, hogyan kell kezelni az egyes rejlő problémákat. Ez a példa egy fenyegetési modell alapvető elemeire koncentrál:
 
-* Folyamatok (mind a vezérlő és a külső elemek alatt)
-* (Más néven adatfolyamok) kommunikáció
+* Folyamatok (a vezérlő és a külső elemek alatt)
+* Kommunikáció (más néven adatfolyamatok)
 * Storage (más néven adattárak)
 
 #### <a name="processes"></a>Folyamatok
 
-Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a különböző szakaszaiban található adatok és információk között számos különböző fenyegetések mérséklésére megpróbálja: folyamatok, a kommunikáció és a storage. Következő el a leggyakrabban a "folyamat" kategória, hogyan ezek a kártevők sikerült legjobb enyhíthető áttekintése után áttekintése:
+Az Azure IoT architektúrában ismertetett kategóriák mindegyikében a következő példa megpróbál számos különböző veszélyforrást elhárítani a különböző fázisokban lévő adatok/információk között: folyamat, kommunikáció és tárolás. Az alábbiakban áttekintjük a "folyamat" kategóriához tartozó leggyakoribb tudnivalókat, majd egy áttekintést arról, hogy ezek a fenyegetések hogyan lehetségesek a legjobban enyhíteni:
 
-**(S) hamisítást**: A támadó titkosítási kulcs adatai kinyerése előfordulhat, hogy egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag foglalt a hozzáférés. Egy jó ábra, amely kapcsolhatja be minden TV és, hogy azok az eszközök népszerű prankster távvezérlés.
+**Hamisítás (ok)** : egy támadó kinyerheti a titkosítási kulcs anyagát egy eszközről a szoftver vagy a hardver szintjén, majd ezt követően egy másik fizikai vagy virtuális eszközzel fér hozzá a rendszerhez az eszköz identitása alatt. elvégezve. A jó illusztráció olyan távoli vezérlők, amelyek bármilyen TV-t és népszerű tréfacsináló-eszközt is kikapcsolhatnak.
 
-**Szolgáltatásmegtagadás (D)** : A rádiófrekvenciák zavarása vagy a vezetékek elvágása egy eszközt teljesen működésképtelenné tehet, vagy meggátolhat a kommunikációban. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
+A **szolgáltatás megtagadása (D)** : az eszközök nem tudnak működni vagy kommunikálni a rádiófrekvenciák vagy a kivágási vezetékek zavarásával. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
 
-**Illetéktelen módosításának (T)** : A támadó részben vagy teljesen kicserélheti az eszközön futó szoftvert, lehetővé téve, hogy a kicserélt szoftver kihasználja az eszköz valódi azonosítóit, és hozzáférhessen a kulcshoz, vagy a kulcsot tároló létesítményhez, ha az elérhető az illegális szoftver számára. Például egy támadó kinyert megosztottkulcs-anyag elfogására és a le adatokat az eszközről, a kommunikáció elérési úttal, és cserélje le az ellopott megosztottkulcs-anyag adatokkal van hitelesítve hamis adatokat is használhatja.
+**Illetéktelen módosítás (T)** : a támadó részben vagy teljesen lecserélheti az eszközön futó szoftvereket, ami lehetővé teszi, hogy a kicserélt szoftver kihasználja az eszköz valódi identitását, ha a kulcs anyaga vagy a titkosítási létesítmények megtartja a kulcsot az anyagok a tiltott program számára voltak elérhetők. Előfordulhat például, hogy egy támadó kinyerte a kulcsfontosságú anyagokat a kommunikációs útvonalon lévő adatok elfogására és letiltására, és az ellopott kulcs anyagával hitelesített hamis adatokkal helyettesíti azokat.
 
-**(I) információk felfedése**: Ha az eszköz úgy szoftver fut, úgy szoftver vélhetően kockáztató adatok illetéktelen felek számára. Például egy támadó kinyert megosztottkulcs-anyag behelyezése maga az eszköz és a vezérlő nebo Pole átjáró vagy siphon ki információkat az átjáró közötti kommunikációs útvonal, előfordulhat, hogy használhatja.
+**Információ-közzététel (I)** : Ha az eszköz manipulált szoftvert futtat, az ilyen manipulált szoftverek esetleg illetéktelen feleknek is elvégezhetik az adatokat. Előfordulhat például, hogy egy támadó kinyerte a kulcsfontosságú anyagokat, hogy az eszköz és a vezérlő vagy a mező átjárója vagy a Felhőbeli átjáró közötti kommunikációs útvonalon beinjektálja az adatokat a szifon kikapcsolásához.
 
-**(E) jogok kiterjesztése**: Egy meghatározott funkcióra tervezett eszközt más funkció végzésére kényszerítenek. Például, hogy van programozva felénél megnyitásához szelepet is kell címeket ágyaznak, egészen a megnyitásához.
+**Jogosultságszint-emelés (E)** : egy adott függvényt használó eszköz kényszeríthető valamilyen másra. Például, ha egy olyan szelepet nyitunk meg, amely a nyílt félidőben van kiválasztva, megnyithatja az egész utat.
 
-| **Összetevő** | **Fenyegetés** | **Kockázatcsökkentés** | **Kockázat** | **Megvalósítása** |
+| **Összetevő** | **Threat** | **Kockázatcsökkentő** | **Kockázati** | **Végrehajtása** |
 | --- | --- | --- | --- | --- |
-| Eszköz |S |Identitás hozzárendelése az eszköz és az eszköz hitelesítéséhez |Eszköz vagy az eszköz részét cserélje le egy másik eszköz. Honnan tudhatja meg a megfelelő eszközökre kiindulásként? |Az eszköz, a Transport Layer Security (TLS) vagy az IPSec protokollt használó hitelesítéséhez. Infrastruktúra támogatnia kell a előre megosztott kulcs (PSK) használatával, amely nem tudja kezelni a teljes aszimmetrikus titkosítási ezeken az eszközökön. Mindemellett az Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
-|| TRID |Tamperproof mechanizmusok az eszközön, például alkalmazni így nehéz a kulcsok és más kriptográfiai elemeit kicsomagolja az eszközön lévő nem lehetséges. |A kockázat esetén, ha valaki van illetéktelen módosítását az eszköz (fizikai zavaró tényező). Hogy biztosan, az eszköz nem módosították. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a speciális a lapkával áramkört, amelyből a kulcsok nem lehet olvasni, de csak akkor használható, amelyek a kulcsot használják, de soha nem adjuk ki a kulcsot a titkosítási műveletek kulcsok tárolásához. Az eszköz titkosítása memória. Az eszköz kulcskezelés. A kód aláírása. |
-|| E |Az eszköz hozzáférés-vezérlés kellene. Engedélyezési séma. |Az eszköz lehetővé teszi, hogy az egyes műveleteket kell elvégezni a külső forrásnak, vagy akár feltört érzékelők parancsait alapján, ha lehetővé teszi a támadás műveletek végrehajtása egyéb módon nem érhető el. |Az eszköz engedélyezési séma kellene |
-| Helyszíni átjáró |S |A helyszíni átjáró felhőátjárónak hitelesítése (például a tanúsítvány alapú, PSK, vagy jogcím alapján.) |Ha valaki meghamisítását is a helyszíni átjáró, majd azt is jelenthet magát, bármilyen eszközön. |A TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Ugyanazokat az eszközök általában – tárolási és a tanúkiszolgáló fontos problémákkal legjobb esetben van TPM használatát. Az IPSec támogatja a vezeték nélküli érzékelő hálózatok (WSN) bővítmény 6LowPAN. |
-|| TRID |A helyszíni átjáró (TPM?) illetéktelen módosítással szembeni védelme |Információfelfedés és az adatok illetéktelen módosításának hamisításra épülő támadásoknak, amely a felhasználót: a felhőbeli átjáró terhelése, a helyszíni átjáró beszél okozhat |Memória titkosítás, a TPM a, hitelesítés. |
-|| E |Helyszíni átjáró hozzáférés-vezérlési mechanizmus | | |
+| Eszköz |S |Identitás kiosztása az eszközhöz és az eszköz hitelesítése |Az eszköz vagy az eszköz egy részének cseréje egy másik eszközre. Honnan tudhatja, hogy a megfelelő eszközről van szó? |Az eszköz hitelesítése Transport Layer Security (TLS) vagy IPSec használatával. Az infrastruktúrának támogatnia kell az előmegosztott kulcs (PSK) használatát azokon az eszközökön, amelyek nem képesek a teljes aszimmetrikus titkosítás kezelésére. Az Azure AD és a [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) kihasználása |
+|| TRID |Alkalmazzon tamperproof mechanizmusokat az eszközre, például azáltal, hogy a kulcsokat és egyéb titkosítási anyagokat nem lehet kinyerni az eszközről. |A kockázat az, hogy valaki illetéktelenül módosítja az eszközt (fizikai interferencia). Hogyan biztos benne, hogy az eszköz nem lett illetéktelenül módosítva. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a kulcsok tárolását olyan speciális, chipes áramkörben, amelyből a kulcsok nem olvashatók, de csak olyan titkosítási műveletekhez használhatók, amelyek használják a kulcsot, de soha nem hozzák nyilvánosságra a kulcsot. Az eszköz memóriájának titkosítása. Az eszköz kulcskezelő szolgáltatásának kezelése. A kód aláírása. |
+|| E |Az eszköz hozzáférés-vezérlése. Engedélyezési séma. |Ha az eszköz lehetővé teszi, hogy az egyes műveleteket egy külső forrásból származó, illetve akár sérült érzékelők parancsai alapján végezze el, az lehetővé teszi, hogy a támadás más módon nem hozzáférhető műveleteket hajtson végre. |Engedélyezési séma az eszközhöz |
+| Mező átjáró |S |A helyszíni átjáró hitelesítése a Felhőbeli átjárón (például CERT-alapú, PSK vagy jogcím alapján) |Ha valaki meghamisítja a Field Gatewayt, akkor azt bármely eszközként bejelenthetheti. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Az eszközök általános tárolási és igazolási problémái általában – a legjobb esetben a TPM használata. 6LowPAN-bővítmény az IPSec számára a vezeték nélküli érzékelő hálózatok (WSN) támogatásához. |
+|| TRID |A helyszíni átjáró védelmének megakadályozása a jogosulatlan hozzáférés ellen (TPM?) |A Felhőbeli átjárót támadó támadásokkal kapcsolatos hamisítások, amelyek arra utalnak, hogy a helyszíni átjáróval kommunikálnak, az adatokhoz való illetéktelen hozzáférés |Memória titkosítása, TPM, hitelesítés. |
+|| E |A Field Gateway hozzáférés-vezérlési mechanizmusa | | |
 
-Íme néhány példa a fenyegetések ebbe a kategóriába:
+Íme néhány példa a veszélyforrásokra ebben a kategóriában:
 
-**Hamisítást**: A támadó titkosítási kulcs adatai kinyerése előfordulhat, hogy egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag foglalt a hozzáférés.
+**Hamisítás**: a támadó kinyerheti a titkosítási kulcs anyagát egy eszközről a szoftver vagy a hardver szintjén, majd ezt követően egy másik fizikai vagy virtuális eszközzel fér hozzá a rendszerhez az eszköz identitása alatt. elvégezve.
 
-**Szolgáltatásmegtagadás**: A rádiófrekvenciák zavarása vagy a vezetékek elvágása egy eszközt teljesen működésképtelenné tehet, vagy meggátolhat a kommunikációban. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
+**Szolgáltatásmegtagadás**: egy eszköz nem tud működni, illetve kommunikálni a rádiófrekvenciák vagy a kivágási vezetékek zavarásával. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
 
-**Illetéktelen**: A támadó részben vagy teljesen kicserélheti az eszközön futó szoftvert, lehetővé téve, hogy a kicserélt szoftver kihasználja az eszköz valódi azonosítóit, és hozzáférhessen a kulcshoz, vagy a kulcsot tároló létesítményhez, ha az elérhető az illegális szoftver számára.
+**Illetéktelen módosítás**: a támadók részben vagy teljesen lecserélhetik az eszközön futó szoftvereket, ami lehetővé teszi, hogy a kicserélt szoftver kihasználja az eszköz valódi identitását, ha a kulcs anyaga vagy a titkosítási létesítmények megtartják a kulcsot az anyagok a tiltott program számára voltak elérhetők.
 
-**Illetéktelen**: Egy ilyen előcsarnokbeli fényképe sikerült célja egy felügyeleti kamera, amely egy üres előcsarnokbeli látható spektrum képe látható. Füst vagy fire érzékelő sikerült készítőnek tekintene valaki rendelkezés egy világosabb, annak alapján. Mindkét esetben az eszköz lehet technikailag teljesen megbízható-e a rendszer felé, de azt jelenti, hogy úgy információkat.
+**Illetéktelen módosítás**: egy olyan megfigyelő kamera, amely egy üres folyosó látható spektrumú képét jeleníti meg, egy ilyen előszoba fényképét célozza meg. A füst-vagy tűzjelzők jelenthetnek olyan személyeket, akik könnyebben megtartják az informatikai szervezetet. Az eszköz mindkét esetben műszakilag teljesen megbízható a rendszer felé, de a manipulált információkat is jelenti.
 
-**Illetéktelen**: A támadó kinyert megosztottkulcs-anyag elfogására és a le adatokat az eszközről, a kommunikáció elérési úttal, és cserélje le az ellopott megosztottkulcs-anyag adatokkal van hitelesítve hamis adatokat is használhatja.
+**Illetéktelen**hozzáférés: a támadó kinyerte a kulcsfontosságú anyagokat a kommunikációs útvonalon tárolt adatok elfogására és letiltására, valamint a lopott kulcsokkal hitelesített, hamis adatokra cserélve.
 
-**Illetéktelen**: A támadó előfordulhat, hogy részben vagy teljesen cserélje le a szoftvert az eszközön futó potenciálisan lehetővé teszi a valódi identitás, az eszköz használhatja, ha a megosztottkulcs-anyag vagy a titkosítási funkciók anyagok legfontosabb rendelkezés voltak elérhetők a lecserélt szoftver a tiltott programba.
+**Illetéktelen módosítás**: a támadó részben vagy teljesen lecserélheti az eszközön futó szoftvert, ami lehetővé teszi, hogy a kicserélt szoftver kihasználja az eszköz valódi identitását, ha a kulcs anyaga vagy a titkosítási létesítmények megtartja a kulcsot az anyagok a tiltott program számára voltak elérhetők.
 
-**Információk felfedése**: Ha az eszköz úgy szoftver fut, úgy szoftver vélhetően kockáztató adatok illetéktelen felek számára.
+**Információ-közzététel**: Ha az eszköz manipulált szoftvert futtat, akkor az ilyen manipulált szoftverek esetleg jogosulatlan feleknek is elvégezhetik az adatszivárgást.
 
-**Információk felfedése**: A támadó kinyert megosztottkulcs-anyag behelyezése maga az eszköz és a vezérlő nebo Pole átjáró vagy siphon ki információkat az átjáró közötti kommunikációs útvonal, előfordulhat, hogy használhatja.
+**Információk közzététele**: a támadó kinyerte a kulcsfontosságú anyagokat, hogy az eszköz és a vezérlő vagy a mező átjárója és a Felhőbeli átjáró közötti kommunikációs útvonalon beinjektálja az adatokat a szifon kikapcsolásához.
 
-**Szolgáltatásmegtagadás**: Az eszköz ki van kapcsolva vagy módba kapcsolni, ahol a tájékoztató nem lehetséges (azaz az ipari gépekről számos szándékos).
+**Szolgáltatás megtagadása**: az eszköz kikapcsolható, vagy olyan üzemmódba kapcsolható, amelyben a kommunikáció nem lehetséges (ami számos iparági gépen szándékos).
 
-**Illetéktelen**: Az eszköz újra tudja konfigurálni, hogy ismeretlen a rendszerbe (kívül ismert hitelesítési paraméterek) állapotban működjön, és így adja meg hibásan lesznek értelmezve adatok
+**Illetéktelen**hozzáférés: az eszköz újrakonfigurálható úgy, hogy az a vezérlőrendszer (az ismert kalibrációs paramétereken kívül) számára ismeretlen állapotba működjön, és így olyan adatokkal lássa el, amelyeket helytelenül lehet értelmezni.
 
-**Jogok kiterjesztése**: Egy meghatározott funkcióra tervezett eszközt más funkció végzésére kényszerítenek. Például, hogy van programozva felénél megnyitásához szelepet is kell címeket ágyaznak, egészen a megnyitásához.
+**Jogosultságszint-emelési jogosultság**: egy adott függvényt használó eszköz kényszeríthető más művelet végrehajtására. Például, ha egy olyan szelepet nyitunk meg, amely a nyílt félidőben van kiválasztva, megnyithatja az egész utat.
 
-**Szolgáltatásmegtagadás**: Az eszköz kapcsolható egy állapotba kerül, ahol a tájékoztató nem lehetséges.
+**Szolgáltatásmegtagadás**: az eszköz olyan állapotba állítható be, amelyben a kommunikáció nem lehetséges.
 
-**Illetéktelen**: Az eszköz újra tudja konfigurálni, hogy ismeretlen a rendszerbe (kívül ismert hitelesítési paraméterek) állapotban működjön, és így adja meg az adatokat, amely hibásan lesznek értelmezve.
+**Illetéktelen**hozzáférés: az eszköz újrakonfigurálható úgy, hogy a vezérlőrendszer ismeretlen állapotában működjön (az ismert kalibrációs paramétereken kívül), és így olyan adatokkal lássa el, amelyeket helytelenül lehet értelmezni.
 
-**Címhamisítást vagy illetéktelen módosítása/Letagadhatóság**: Ha nem védett (amely a ritkán fogyasztói távvezérlés esetében), a támadó névtelenül egy eszköz állapotáról is módosíthatja. Egy jó ábra, amely kapcsolhatja be minden TV és, hogy azok az eszközök népszerű prankster távvezérlés.
+**Hamisítás/illetéktelen módosítás/megtagadás**: Ha nem védett (ami ritkán fordul elő a fogyasztó távvezérlésével), a támadók névtelenül kezelhetik az eszközök állapotát. A jó illusztráció olyan távoli vezérlők, amelyek bármilyen TV-t és népszerű tréfacsináló-eszközt is kikapcsolhatnak.
 
 #### <a name="communication"></a>Kommunikáció
 
-Fenyegetések eszközöket és a helyszíni átjárók, valamint eszköz és a felhő-átjáró közötti kommunikációs útvonal körül. Az alábbi táblázat az eszköz/VPN nyílt sockets körül útmutatást rendelkezik:
+Az eszközök, az eszközök és a helyszíni átjárók, valamint az eszközök és a Felhőbeli átjáró közötti kommunikációs útvonal elleni fenyegetések. Az alábbi táblázat az eszközön/VPN-en található nyitott szoftvercsatornák használatával kapcsolatos útmutatást tartalmaz:
 
-| **Összetevő** | **Fenyegetés** | **Kockázatcsökkentés** | **Kockázat** | **Megvalósítása** |
+| **Összetevő** | **Threat** | **Kockázatcsökkentő** | **Kockázati** | **Végrehajtása** |
 | --- | --- | --- | --- | --- |
-| Device IoT Hub |TID |(D) TLS (PSK/RSA) a forgalom titkosításához |Lehallgatást, vagy zavaró, az eszköz és az átjáró közötti kommunikáció |Biztonság, a protokoll szintjén. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. A legtöbb esetben a kommunikáció történik az eszközről az IoT hub (eszköz kezdeményezi a kapcsolatot). |
-| Eszköz eszköz |TID |(D) TLS (PSK/RSA) a forgalom titkosításához. |Az eszközök között átvitt adatok olvasása. Az adatok illetéktelen módosítása. Az eszközt az új kapcsolatok terhelve. |Biztonsági a protokoll szintjén (mqtt-ről vagy AMQP vagy HTTP/CoAP. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. A megoldás a szolgáltatásmegtagadási fenyegetések, hogy a felhő nebo Pole átjárón keresztül eszközök társviszonyt, azok csak act-ügyfélként a hálózat felé. A társviszony-létesítést követően kellene már felügyelt, az átjáró által a partnerek közötti közvetlen kapcsolat eredményezhet |
-| Külső entitás eszköz |TID |A külső entitás az eszköz erős párosítás |Az eszköz kapcsolat lehallgatást. Zavarja a folyamatot a kommunikációt az eszközzel |Biztonságosan párosítást a külső entitás az eszköz NFC/Bluetooth LE. A műveleti panelen az eszköz (fizikai) szabályozása |
-| Helyszíni átjáró felhőalapú átjáró |TID |TLS (PSK/RSA) a forgalom titkosításához. |Lehallgatást, vagy zavaró, az eszköz és az átjáró közötti kommunikáció |Biztonsági szint (mqtt-ről vagy AMQP vagy HTTP/CoAP) protokollt. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. |
-| Eszköz-felhő átjáró |TID |TLS (PSK/RSA) a forgalom titkosításához. |Lehallgatást, vagy zavaró, az eszköz és az átjáró közötti kommunikáció |Biztonsági szint (mqtt-ről vagy AMQP vagy HTTP/CoAP) protokollt. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. |
+| Eszköz IoT Hub |TID |D TLS (PSK/RSA) a forgalom titkosításához |Az eszköz és az átjáró közötti kommunikáció lehallgatásának vagy megzavarásának megakadályozása |Biztonság a protokoll szintjén. Egyéni protokollok esetén meg kell állapítania, hogyan kell védelemmel ellátni. A legtöbb esetben a kommunikáció az eszközről a IoT Hubra történik (az eszköz kezdeményezi a kapcsolatot). |
+| Eszközről az eszközre |TID |D TLS (PSK/RSA) a forgalom titkosításához. |Az eszközök közötti átvitel során beolvasott adatforgalom. Illetéktelenül módosítható az adatkezelés. Az eszköz túlterhelése új kapcsolatokkal |A protokoll szintjének biztonsága (MQTT/AMQP/HTTP/CoAP. Egyéni protokollok esetén meg kell állapítania, hogyan kell védelemmel ellátni. A DoS-fenyegetés enyhítése egy Felhőbeli vagy egy helyszíni átjárón keresztüli társ-eszköz, és csak a hálózat felé irányuló ügyfelekként működhet. Előfordulhat, hogy a társítás közvetlen kapcsolatot létesít a társak között, miután az átjáró felügyelte azt. |
+| Külső entitás eszköz |TID |A külső entitás erős párosítása az eszközhöz |Az eszközhöz való kapcsolódás lehallgatásával. Az eszközzel folytatott kommunikáció megakadályozása |A külső entitás biztonságos párosítása az eszköz NFC/Bluetooth LE. Az eszköz operatív paneljének vezérlése (fizikai) |
+| Field Gateway Cloud Gateway |TID |TLS (PSK/RSA) a forgalom titkosításához. |Az eszköz és az átjáró közötti kommunikáció lehallgatásának vagy megzavarásának megakadályozása |A protokoll szintjének biztonsága (MQTT/AMQP/HTTP/CoAP). Egyéni protokollok esetén meg kell állapítania, hogyan kell védelemmel ellátni. |
+| Device Cloud Gateway |TID |TLS (PSK/RSA) a forgalom titkosításához. |Az eszköz és az átjáró közötti kommunikáció lehallgatásának vagy megzavarásának megakadályozása |A protokoll szintjének biztonsága (MQTT/AMQP/HTTP/CoAP). Egyéni protokollok esetén meg kell állapítania, hogyan kell védelemmel ellátni. |
 
-Íme néhány példa a fenyegetések ebbe a kategóriába:
+Íme néhány példa a veszélyforrásokra ebben a kategóriában:
 
-**Szolgáltatásmegtagadás**: Korlátozott eszközök esetén általában a szolgáltatásmegtagadási fenyegetések azokat aktívan figyelni a bejövő kapcsolatok vagy kéretlen datagramok hálózaton, mert egy támadó is nyissa meg a sok kapcsolattal párhuzamosan, és nem őket szolgáltatás vagy szolgáltatás azok lassan, vagy lehet az eszköz túlterhelve, amelyeknek kéretlen forgalommal. Mindkét esetben az eszköz ténylegesen renderelhető működésképtelenné válik a hálózaton.
+**Szolgáltatás megtagadása**: a korlátozott eszközök általában a DOS-fenyegetés alatt állnak, amikor aktívan figyelik a bejövő kapcsolatokat vagy a kéretlen datagramokat a hálózaton, mert egy támadó egyszerre több kapcsolatot nyithat meg, és nem tudja azokat kiszolgálni vagy kiszolgálni lassan, vagy az eszközt nem kérelmezett forgalommal lehet elárasztani. Mindkét esetben az eszköz gyakorlatilag működésképtelenné válik a hálózaton.
 
-**IP-hamisítás, illetéktelen**: Korlátozott eszközök és a speciális célú eszközök gyakran rendelkeznek egy összes biztonsági létesítményekben például jelszó vagy PIN-kód védelmet, vagy ezek teljes mértékben támaszkodik a hálózaton, ami azt jelenti, azok információkhoz való hozzáférés biztosítása, ha egy eszköz ugyanazon a hálózaton, és a hálózati megbízó gyakran csak védett megosztott kulcs. Amely azt jelenti, hogy nyilvánosságra hozza a közös titkos kulcsot, eszköz és a hálózathoz, amikor az eszköz vezérléséhez, vagy tekintse át az adatokat az eszközről rendelkezésre.  
+**Hamisítás, információk közzététele**: a korlátozott eszközök és a speciális célú eszközök gyakran rendelkeznek egy az összes biztonsági szolgáltatással, például a jelszóval vagy a PIN-kóddal kapcsolatos védelemmel, vagy teljes mértékben a hálózat megbízhatóságára támaszkodnak, ami azt jelenti, hogy hozzáférést biztosítanak az információkhoz, amikor az eszköz ugyanazon a hálózaton található, és a hálózatot gyakran csak megosztott kulcs védi. Ez azt jelenti, hogy amikor az eszköz vagy a hálózat közös titkát kizárták, az eszközt szabályozhatja, vagy megfigyelheti az eszközről kibocsátott adatmennyiséget.  
 
-**Hamisítást**: egy támadó előfordulhat, hogy intercept vagy részlegesen bírálja felül a közvetítés és a kezdeményező (közbeékelődéses támadás) agresszívebb
+**Hamisítás**: a támadó feltartóztathatja vagy részlegesen felülbírálhatja a szórást, és meghamisíthatja a kezdeményezőt (az ember középen)
 
-**Illetéktelen**: egy támadó előfordulhat, hogy intercept vagy részlegesen bírálja felül a közvetítést, és elküldi false (hamis) 
+**Illetéktelen**hozzáférés: a támadó elfoghatja vagy részlegesen felülbírálhatja a szórást, és hamis adatokat küldhet 
 
-**Információk felfedése:** egy támadó előfordulhat, hogy kihallgassa a közvetítés és engedély nélkül megszerzése **szolgáltatásmegtagadásos:** egy támadó előfordulhat, hogy a szórási jel dzsem és információk terjesztési megtagadása
+**Információ-közzététel:** a támadók hallgatózik a szórást, és a szolgáltatás engedélyezési **szolgáltatásmegtagadás** nélkül szerezhetnek be adatokat: a támadó elakadhat a szórási jel, és megtagadhatja az információk terjesztését
 
-#### <a name="storage"></a>Storage
+#### <a name="storage"></a>Adattárolás
 
-Minden eszköz- és mezőnevek átjáró valamilyen storage (az adatok, az operációs rendszer (OS) képtárolás Queuing ideiglenes) rendelkezik.
+Minden eszköz és mező átjárója rendelkezik valamilyen tárolási formával (ideiglenes az adatok sorba állításához, az operációs rendszer (OS) rendszerképének tárolásához).
 
-| **Összetevő** | **Fenyegetés** | **Kockázatcsökkentés** | **Kockázat** | **Megvalósítása** |
+| **Összetevő** | **Threat** | **Kockázatcsökkentő** | **Kockázati** | **Végrehajtása** |
 | --- | --- | --- | --- | --- |
-| Eszköz tárhelye |TRID |Tártitkosítás, a naplók aláírása |A storage (PII adatokat), telemetriai adatok illetéktelen módosítása adatok olvasása. Illetéktelenül várakoztathatók vagy parancs control-adatok a gyorsítótárba. Konfiguráció vagy a belső vezérlőprogram frissítési csomagokat illetéktelenül során a gyorsítótárba, vagy helyileg várólistára vezethet feltörését az operációs rendszer és/vagy a rendszer összetevői |Titkosítás, üzenethitelesítő kódot (MAC), vagy digitális aláírással. Ha lehetséges, erős hozzáférés-vezérlő erőforrásokhoz való hozzáférés révén vezérlő listák (ACL) vagy az engedélyekkel. |
-| Eszköz operációs rendszere kép |TRID | |Az operációs rendszer illetéktelenül / cseréje az operációs rendszer összetevői |Csak olvasható operációsrendszer-partíció aláírt operációsrendszer-lemezkép, titkosítás |
-| Helyszíni átjáró storage (az adatok kezelés) |TRID |Tártitkosítás, a naplók aláírása |A storage (PII adatokat), telemetriai adatokat, illetéktelenül adatok olvasása illetéktelenül várakoztathatók vagy parancs control-adatok a gyorsítótárba. Konfiguráció vagy a belső vezérlőprogram frissítési csomagokat (eszközökön vagy a helyszíni átjáró felé irányuló) illetéktelenül során a gyorsítótárba, vagy helyileg várólistára vezethet feltörését az operációs rendszer és/vagy a rendszer összetevői |BitLocker |
-| A mező átjáró operációsrendszer-lemezkép |TRID | |Az operációs rendszer illetéktelenül / cseréje az operációs rendszer összetevői |Csak olvasható operációsrendszer-partíció aláírt operációsrendszer-lemezkép, titkosítás |
+| Eszköz tárterülete |TRID |Storage-titkosítás, a naplók aláírása |Adatok olvasása a tárolóból (személyes adatok), a telemetria-adatokkal való illetéktelen módosítás. Az üzenetsor-kezelési vagy a gyorsítótárazott parancs-vezérlési adattal való illetéktelen módosítás. A konfigurációs vagy a belső vezérlőprogram frissítési csomagjainak a gyorsítótárba vagy helyileg történő gyorsítótárazása közben történő illetéktelen módosításával az operációs rendszer és/vagy a rendszerösszetevők biztonsága is sérül |Titkosítás, üzenet-hitelesítési kód (MAC) vagy digitális aláírás. Ahol lehetséges, az erőforrás-hozzáférés-vezérlési listák (ACL-ek) vagy engedélyek használatával történő erős hozzáférés-vezérlés. |
+| Eszköz operációs rendszerének képe |TRID | |Az operációs rendszer/replacing az operációs rendszer összetevőinek illetéktelen módosítása |Írásvédett operációsrendszer-partíció, aláírt operációsrendszer-rendszerkép, titkosítás |
+| Field Gateway Storage (az adatsorba állítása) |TRID |Storage-titkosítás, a naplók aláírása |Adatok olvasása a tárolóból (személyes adatok), a telemetria adatokkal való illetéktelen módosítás, a várólistára helyezett vagy a gyorsítótárazott parancs-vezérlési adatok módosítása. A konfigurációval vagy a belső vezérlőprogram frissítési csomagjaival (az eszközök vagy a mező-átjárók számára szánt) való illetéktelen hozzáférés a gyorsítótárazott vagy a helyileg várólistára kerül, az operációs rendszer és/vagy a rendszerösszetevők biztonsága érdekében |BitLocker |
+| Field Gateway operációsrendszer-rendszerkép |TRID | |Az operációs rendszer/replacing az operációs rendszer összetevőinek illetéktelen módosítása |Írásvédett operációsrendszer-partíció, aláírt operációsrendszer-rendszerkép, titkosítás |
 
-### <a name="device-and-event-processingcloud-gateway-zone"></a>Eszköz és esemény feldolgozása/felhőbeli átjáró zóna
+### <a name="device-and-event-processingcloud-gateway-zone"></a>Eszköz-és esemény-feldolgozás/Felhőbeli átjáró zóna
 
-A felhőátjáró rendszer, amely lehetővé teszi, hogy az eszközök vagy helyszíni átjárók számos különböző helyekről és távoli kommunikációs nyilvános hálózati helyet, általában egy felhőalapú vezérlőt, és az adatok elemzési rendszer, az ilyen rendszerek összevonási felé között. Bizonyos esetekben egy felhőátjáróhoz előfordulhat, hogy azonnal biztosítja a hozzáférést a speciális célú eszközök, például táblagépek vagy telefonok terminálok. A tárgyalt környezetben itt "felhő" célja, hogy egy dedikált adatfeldolgozási rendszer, amely nincs kötve a csatlakoztatott eszközökkel vagy helyszíni átjárók ugyanazon a helyen, és ahol működési mértékek célzott fizikai hozzáférés megakadályozása érdekében tekintse meg, de nem feltétlenül a egy " nyilvános felhő"infrastruktúrát. A felhőátjáró potenciálisan leképezni egy hálózati virtualizációs területre, megvédheti a felhőátjáró és az összes a csatlakoztatott eszközökkel vagy a helyszíni átjárók más hálózati forgalomtól. A felhőátjáró maga nem egy eszköz verziókezelő rendszer vagy egy feldolgozási vagy a tárolási létesítmény az eszközadatok; Ezekben a létesítményekben kommunikáljanak a felhőátjárónak. A felhő átjáró felhőalapú maga az átjáró együtt minden helyszíni átjárók és közvetve vagy közvetlenül csatlakoztatott eszköz tartozik.
+A Felhőbeli átjáró olyan rendszer, amely lehetővé teszi a távoli kommunikációt több különböző helyről az eszközökre vagy a helyszíni átjáróra a nyilvános hálózati térben, jellemzően a felhőalapú vezérlési és adatelemzési rendszer, az ilyen rendszerek összevonása felé. Bizonyos esetekben előfordulhat, hogy a Cloud Gateway azonnal megkönnyíti a speciális célú eszközökhöz, például a tablettákhoz vagy telefonokhoz való hozzáférést. Az itt tárgyalt kontextusban a "Cloud" kifejezés arra szolgál, hogy egy dedikált adatfeldolgozó rendszerre hivatkozzon, amely nem ugyanahhoz a helyhez van kötve, mint a csatlakoztatott eszközök vagy a helyszíni átjárók, és ahol a működési intézkedések meggátolják a célzott fizikai hozzáférést, de nem feltétlenül a " nyilvános felhő "infrastruktúra. Előfordulhat, hogy egy Felhőbeli átjáró egy hálózati virtualizálási átfedésben van, hogy elszigetelje a felhő-átjárót és annak összes csatlakoztatott eszközét vagy helyszíni átjáróját bármilyen más hálózati forgalomból. Maga a Felhőbeli átjáró nem eszköz-vagy adatfeldolgozási vagy-tárolási létesítmény; Ezek a létesítmények a Cloud Gateway felülettel rendelkeznek. A felhőalapú átjáró zónája magába foglalja a felhő-átjárót, valamint az összes helyszíni átjárót és eszközt, amely közvetlenül vagy közvetve hozzá van rendelve.
 
-Átjáró csak a szoftvert, szolgáltatásként való elérhetővé tett végpontokon, amelyhez a helyszíni átjáró és az eszközök csatlakozni egyéni beépített részét. Ezért úgy kell megtervezni a biztonság szem. Hajtsa végre a [SDL](https://www.microsoft.com/sdl) feldolgozása tervezéséről és kiépítéséről ezt a szolgáltatást.
+A Cloud Gateway többnyire a kihelyezett végpontokkal rendelkező, a helyszíni átjáró és az eszközök csatlakoztatására szolgáló, beépített szoftvereket futtató szolgáltatás. Ennek megfelelően a biztonságot szem előtt tartva kell tervezni. A szolgáltatás tervezéséhez és létrehozásához kövesse az [SDL](https://www.microsoft.com/sdl) -folyamatot.
 
-#### <a name="services-zone"></a>Szolgáltatások zóna
+#### <a name="services-zone"></a>Szolgáltatási zóna
 
-A verziókezelő rendszer (vagy a tartományvezérlő) egy szoftveres megoldás, amely a felületek, egy eszközt, vagy egy helyszíni átjáró vagy a felhőátjáró ellenőrizhető egy vagy több eszközt, és/vagy az összegyűjtése és/vagy tárolása és/vagy eszköz bemutató, elemzéséhez, vagy További ellenőrzési célból. Vezérlő rendszereket, amelyek azonnal elősegítik a felhasználókkal interakciót vitafórumban hatókörében csak entitásokat. A kivételek közé tartoznak az eszközökön, például egy kapcsoló, amely lehetővé teszi, hogy egy személy kapcsolja ki az eszközt, vagy egyéb tulajdonságok módosításához, és amelynek nincs digitálisan elérhető funkcionális megfelelője a köztes fizikai vezérlő felületek.
+A vezérlőrendszer (vagy vezérlő) olyan szoftveres megoldás, amely egy eszközhöz, egy mezőhöz vagy egy helyszíni átjáróhoz, vagy a Felhőbeli átjáróhoz csatlakozik egy vagy több eszköz vezérléséhez, illetve a bemutató eszköz adatainak gyűjtéséhez és/vagy elemzéséhez, illetve későbbi vezérlési célok. A jelen vita hatálya alá tartozó egyetlen entitás a vezérlési rendszerek, amely azonnal megkönnyíti az emberekkel való interakciót. A kivételek köztes fizikai vezérlési felületek az eszközökön, például egy kapcsoló, amely lehetővé teszi, hogy egy személy kikapcsolja az eszközt, vagy más tulajdonságokat módosítson, és amelyeknél nincs olyan funkcionális egyenértékű, amely digitálisan elérhető.
 
-Köztes fizikai vezérlő felületek megegyeznek, ha a fizikai lehessen vezérelni a surface, a függvény szabályozó logikát korlátozza, hogy egy azzal egyenértékű függvényt is kezdeményezhető, távolról, vagy a bemeneti nem felel meg a távoli bemeneti felderítésfeldolgozó – például adatbázisoktól vezérlő felületek elméleti szinten is csatlakozik egy helyi verziókezelő rendszer, amely megegyezik a bármely más távvezérlés rendszer, amely az eszköz párhuzamos csatlakoztatható alapul szolgáló funkcióval. A felhő-számítástechnika, lehet olvassa el a legnépszerűbb fenyegetések [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) lapot.
+A köztes fizikai vezérlési felületek azok, amelyekben a logika szabályozza a fizikai vezérlő felületének működését, úgy, hogy egy egyenértékű funkció távolról is indítható, vagy a távoli bemenettel ütközések elkerülhetők legyenek – ilyen köztes a vezérlési felületek fogalmi módon vannak csatolva egy helyi vezérlési rendszerhez, amely ugyanazt az alapul szolgáló funkciót használja, mint bármely más távvezérlési rendszer, amelyet az eszköz párhuzamosan csatlakoztathat. A Felhőbeli számítástechnika leggyakoribb fenyegetéseit a [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) lapon olvashatja.
 
 ## <a name="additional-resources"></a>További források
 
 További információkért tekintse át a következő cikkeket:
 
-* [SDL Fenyegetésmodellezési eszköz](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-* [A Microsoft Azure IoT-referenciaarchitektúra](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
+* [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
+* [Microsoft Azure IoT-hivatkozás architektúrája](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

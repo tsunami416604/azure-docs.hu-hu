@@ -1,26 +1,25 @@
 ---
-title: Szöveg feldolgozása és kinyerése a rendszerképekből a kognitív keresésben – Azure Search
-description: Szövegek és egyéb információk feldolgozása és kinyerése képekből a Azure Search kognitív keresési folyamataiban.
-services: search
+title: Szöveg feldolgozása és kinyerése a képekből a dúsítási folyamatban
+titleSuffix: Azure Cognitive Search
+description: Szöveg és egyéb információk feldolgozása és kinyerése az Azure Cognitive Search-folyamatokból származó képekből.
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265869"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787740"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Információk feldolgozása és kinyerése a rendszerképekből a kognitív keresési helyzetekben
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
 
-A kognitív keresés számos képességgel rendelkezik a képek és a képfájlok használatáról. A dokumentum repedése során a *imageAction* paraméter használatával kinyerheti a szövegeket a fényképekből vagy az alfanumerikus szöveget tartalmazó képekből, például a "Leállítás" szót egy leállítási jelre. Más forgatókönyvek közé tartozik például a képek szöveges ábrázolása, például a "pitypang", egy pitypang fényképe vagy a "sárga" szín. A rendszerképpel kapcsolatos metaadatokat is kinyerheti, például a méretét.
+Az Azure Cognitive Search számos képességgel rendelkezik a képek és a képfájlok használatáról. A dokumentum repedése során a *imageAction* paraméter használatával kinyerheti a szövegeket a fényképekből vagy az alfanumerikus szöveget tartalmazó képekből, például a "Leállítás" szót egy leállítási jelre. Más forgatókönyvek közé tartozik például a képek szöveges ábrázolása, például a "pitypang", egy pitypang fényképe vagy a "sárga" szín. A rendszerképpel kapcsolatos metaadatokat is kinyerheti, például a méretét.
 
-Ez a cikk részletesebben ismerteti a képfeldolgozást, és útmutatást nyújt a rendszerképeknek a kognitív keresési folyamatokban való használatához.
+Ez a cikk részletesebben ismerteti a képfeldolgozást, és útmutatást nyújt a rendszerképek egy mesterséges intelligenciával kapcsolatos folyamatokban való használatához.
 
 <a name="get-normalized-images"></a>
 
@@ -32,18 +31,18 @@ A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek n
 
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
-| imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>A "generateNormalizedImagePerPage" értékre állítva olyan normalizált lemezképek tömbjét hozza létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a képek a *normalized_images* mezőben lesznek elérhetők. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
+| imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>Állítsa "generateNormalizedImagePerPage" értékre, ha normalizált képekből álló tömböt hoz létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a képek a *normalized_images* mezőben lesznek elérhetők. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
 |  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték a 2000. A maximálisan engedélyezett érték 10000. | 
 |  normalizedImageMaxHeight | A generált normalizált képek maximális magassága (képpontban). Az alapértelmezett érték a 2000. A maximálisan engedélyezett érték 10000.|
 
 > [!NOTE]
 > Ha a *imageAction* tulajdonságot a "None" értékre állítja, a *parsingMode* tulajdonság nem állítható be a "default" értéktől eltérő értékre.  Az indexelő konfigurációjában csak az alábbi két tulajdonság egyikét állíthatja be nem alapértelmezett értékre.
 
-Állítsa a **parsingMode** paramétert `json` (az egyes Blobok egyetlen dokumentumként való indexeléséhez `jsonArray` ), vagy (ha a Blobok JSON-tömböket tartalmaznak, és egy tömb minden eleméhez külön dokumentumként kell kezelni őket).
+Állítsa a **parsingMode** paramétert úgy, hogy `json` (az egyes blobokat egyetlen dokumentumként indexelje) vagy `jsonArray` (ha a Blobok JSON-tömböket tartalmaznak, és egy tömb minden eleméhez külön dokumentumként kell kezelni őket).
 
 A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 
-A imageAction az alábbi módon adhatja [](https://docs.microsoft.com/rest/api/searchservice/create-indexer) meg az indexelő definíciójában:
+A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
 
 ```json
 {
@@ -63,7 +62,7 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 
 | Rendszerkép tagja       | Leírás                             |
 |--------------------|-----------------------------------------|
-| data               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
+| adatok               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
 | Szélessége              | A normalizált képek szélessége képpontban megadva |
 | Magasság             | A normalizált képek magassága képpontban megadva |
 | originalWidth      | A rendszerkép eredeti szélessége a normalizálás előtt. |
@@ -90,9 +89,9 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 
 ## <a name="image-related-skills"></a>Képekkel kapcsolatos képességek
 
-Két beépített kognitív képességgel rendelkezik, amelyek bemenetként készítenek képeket: [OCR](cognitive-search-skill-ocr.md) -és [rendszerkép-elemzés](cognitive-search-skill-image-analysis.md). 
+Két beépített kognitív képességgel rendelkezik, amelyek bemenetként készítenek képeket: [OCR](cognitive-search-skill-ocr.md) és [Image Analysis](cognitive-search-skill-image-analysis.md). 
 
-Jelenleg ezek a képességek csak a dokumentum csinos lépése által generált képekkel működnek. Így az egyetlen támogatott bemenet `"/document/normalized_images"`.
+Jelenleg ezek a képességek csak a dokumentum csinos lépése által generált képekkel működnek. Ezért az egyetlen támogatott bemenet `"/document/normalized_images"`.
 
 ### <a name="image-analysis-skill"></a>Rendszerkép-elemzési képesség
 
@@ -107,7 +106,7 @@ Az [OCR-képesség](cognitive-search-skill-ocr.md) a képfájlok, például a jp
 Egy gyakori forgatókönyvben egyetlen karakterláncot kell létrehozni, amely az összes fájl tartalmát, a szöveg és a képforrás szövegét is tartalmazza a következő lépések végrehajtásával:  
 
 1. [Normalized_images kinyerése](#get-normalized-images)
-1. OCR-képesség `"/document/normalized_images"` futtatása bemenetként
+1. Az OCR-képesség futtatása a `"/document/normalized_images"` bemenet használatával
 1. Egyesítse a képek szöveges ábrázolását a fájlból kinyert nyers szöveggel. A [szöveg egyesítése](cognitive-search-skill-textmerger.md) képességgel összevonhatja a szöveges adattömböket egyetlen nagy sztringbe.
 
 A következő példában a készségkészlet létrehoz egy *merged_text* mezőt, amely a dokumentum szöveges tartalmát tartalmazza. Emellett magában foglalja az egyes beágyazott képek OCRed szövegét is. 
@@ -214,7 +213,7 @@ Segítőként, ha a normalizált koordinátákat át kell alakítani az eredeti 
         }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 + [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Képképesség elemzése](cognitive-search-skill-image-analysis.md)
 + [OCR-képesség](cognitive-search-skill-ocr.md)

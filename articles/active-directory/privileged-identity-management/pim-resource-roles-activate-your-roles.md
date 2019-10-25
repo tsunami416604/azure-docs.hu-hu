@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/28/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e2bf1253f1c2f53b839a73034fcdb33f3aab463
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 2e2062ece84676e0af37c79cf25d8662f186ab0a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804334"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808984"
 ---
-# <a name="activate-my-azure-resource-roles-in-pim"></a>Azure-beli erőforrás-szerepkörök aktiválása a PIM-ben
+# <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök aktiválása Privileged Identity Management
 
-A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával az Azure-erőforrások jogosult szerepkör-tagjai ütemezhetik az aktiválást egy későbbi dátumra és időpontra. Kiválaszthatnak egy adott aktiválási időtartamot is a maximumon belül (a rendszergazdák által konfigurálva).
+A Privileged Identity Management (PIM) használatával engedélyezheti az Azure-erőforrások jogosult szerepkör-tagjai számára az aktiválást egy későbbi dátumra és időpontra vonatkozóan. Kiválaszthatnak egy adott aktiválási időtartamot is a maximumon belül (a rendszergazdák által konfigurálva).
 
-Ez a cikk azoknak a tagoknak szól, akiknek aktiválniuk kell az Azure-beli erőforrás-szerepkört a PIM-ben.
+Ez a cikk azokra a tagokra vonatkozik, akiknek aktiválniuk kell az Azure-erőforrás-szerepkört Privileged Identity Managementban.
 
 ## <a name="activate-a-role"></a>Szerepkör aktiválása
 
-Ha egy Azure-erőforrás szerepkört kell igénybe vennie, az aktiválást a PIM **saját szerepkörök** navigációs lehetősége használatával kérheti le.
+Ha egy Azure-erőforrás szerepkört kell igénybe vennie, az aktiválást az Privileged Identity Management **saját szerepkörök** navigációs lehetősége használatával kérheti le.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. Nyissa meg **Azure ad Privileged Identity Management**. További információ a PIM-csempe irányítópulthoz való hozzáadásáról: [a PIM használatának megkezdése](pim-getting-started.md).
+1. Nyissa meg **Azure ad Privileged Identity Management**. További információ a Privileged Identity Management csempe irányítópulthoz való hozzáadásáról: a [Privileged Identity Management használatának megkezdése](pim-getting-started.md).
 
-1. Kattintson **a saját szerepkörök**elemre.
+1. Válassza **a saját szerepkörök**lehetőséget.
 
     ![Saját szerepkörök lap, amely az aktiválható szerepköröket mutatja be](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
-1. Az **Azure-erőforrás szerepköreire** kattintva megtekintheti a jogosult Azure-erőforrás-szerepkörök listáját.
+1. Válassza ki az **Azure-erőforrások szerepköreit** , és tekintse meg a jogosult Azure-erőforrás-szerepkörök listáját.
 
    ![Saját szerepkörök – Azure Resource roles lap](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
@@ -48,17 +48,17 @@ Ha egy Azure-erőforrás szerepkört kell igénybe vennie, az aktiválást a PIM
 
     ![Azure Resource roles – a jogosult szerepkörök listája](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. Az aktiválás ablaktábla megnyitásához kattintson az **aktiválás** gombra.
+1. Az aktiválás ablaktábla megnyitásához kattintson az **aktiválás** elemre.
 
-1. Ha a szerepkörhöz többtényezős hitelesítés (MFA) szükséges, kattintson **az identitás ellenőrzése lehetőségre a folytatás előtt**. Egy munkamenetben csak egyszer kell hitelesítést végezni.
+1. Ha a szerepkör többtényezős hitelesítést igényel, akkor **a folytatás előtt válassza a személyazonosság ellenőrzése**lehetőséget. Egy munkamenetben csak egyszer kell hitelesítést végezni.
 
     ![Identitás ellenőrzése az MFA-val a szerepkör aktiválása előtt](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
-1. Kattintson a **személyazonosság ellenőrzése** lehetőségre, és kövesse az utasításokat a további biztonsági ellenőrzés megadásához.
+1. Válassza a **személyazonosság ellenőrzése** lehetőséget, és kövesse az utasításokat a további biztonsági ellenőrzés megadásához.
 
     ![Biztonsági ellenőrzés, például PIN-kód megadására szolgáló képernyő](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. Ha csökkentett hatókört szeretne megadni, kattintson a **hatókör** elemre az erőforrás-szűrő ablaktábla megnyitásához.
+1. Ha csökkentett hatókört szeretne megadni, válassza a **hatókör** lehetőséget az erőforrás-szűrő ablaktábla megnyitásához.
 
     A legjobb megoldás, ha csak a szükséges erőforrásokhoz kér hozzáférést. Az erőforrás-szűrő panelen megadhatja azokat az erőforráscsoportokat vagy erőforrásokat, amelyekhez hozzáférésre van szüksége.
 
@@ -70,7 +70,7 @@ Ha egy Azure-erőforrás szerepkört kell igénybe vennie, az aktiválást a PIM
 
     ![Befejezte az aktiválás panel hatókörét, kezdési idejét, időtartamát és okát](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. Kattintson az **aktiválás**gombra.
+1. Válassza az **aktiválás**lehetőséget.
 
     Ha a szerepkörhöz nincs szükség jóváhagyásra, az aktiválva lesz, és a rendszer hozzáadja az aktív szerepkörök listájához. Ha a szerepkört szeretné használni, kövesse a következő szakaszban ismertetett lépéseket.
 
@@ -84,11 +84,11 @@ Ha az aktiválást követően bármilyen késleltetést észlel, kövesse az al�
 
 1. Nyissa meg Azure AD Privileged Identity Management.
 
-1. A **saját szerepkörök** lehetőségre kattintva megtekintheti a jogosult Azure ad-szerepköröket és az Azure-erőforrás-szerepkörök listáját.
+1. A **saját szerepkörök** lehetőség kiválasztásával megtekintheti a jogosult Azure ad-szerepköröket és az Azure-erőforrás-szerepkörök listáját.
 
-1. Kattintson az **Azure-erőforrás szerepkörei**elemre.
+1. Válassza ki az **Azure Resource roles**elemet.
 
-1. Kattintson az **aktív szerepkörök** fülre.
+1. Válassza az **aktív szerepkörök** lapot.
 
 1. Ha a szerepkör aktív, jelentkezzen ki a portálról, majd jelentkezzen be újra.
 
@@ -100,7 +100,7 @@ A függőben lévő kérések állapotát az aktiváláshoz tekintheti meg.
 
 1. Nyissa meg Azure AD Privileged Identity Management.
 
-1. Kattintson a **saját kérések** lehetőségre az Azure ad-szerepkör és az Azure-erőforrás-szerepkörre vonatkozó kérések listájának megtekintéséhez.
+1. Válassza a **saját kérések** lehetőséget az Azure ad-szerepkör és az Azure-erőforrás-szerepkörre vonatkozó kérések listájának megtekintéséhez.
 
     ![Saját kérések – Azure Resource oldal, amely a függőben lévő kéréseket jeleníti meg](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
@@ -112,11 +112,11 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 
 1. Nyissa meg Azure AD Privileged Identity Management.
 
-1. Kattintson **a saját kérések**lehetőségre.
+1. Válassza **a saját kérések**lehetőséget.
 
-1. A megszakítani kívánt szerepkörhöz kattintson a **Mégse** hivatkozásra.
+1. A megszakítani kívánt szerepkörhöz válassza a **Mégse** hivatkozást.
 
-    Ha a Mégse gombra kattint, a rendszer megszakítja a kérést. A szerepkör újbóli aktiválásához új aktiválási kérést kell benyújtania.
+    A Mégse gombra kattintva a rendszer megszakítja a kérést. A szerepkör újbóli aktiválásához új aktiválási kérést kell benyújtania.
 
    ![Saját kérések listája a Mégse művelettel kiemelve](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
@@ -124,15 +124,15 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>A szerepkör aktiválását követően az engedélyek kiosztása nem történik meg
 
-Ha a PIM-ben aktivál egy szerepkört, előfordulhat, hogy az aktiválás nem terjed ki azonnal az összes olyan portálra, amely a Kiemelt szerepkört igényli. Néha az is előfordul, hogy még ha a módosítás propagálása meg is történik, a portálon történő webes gyorsítótárazás miatt a módosítás nem lép azonnal életbe. Ha az aktiválás késleltetve van, a következő műveleteket kell végrehajtania.
+Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat, hogy az aktiválás nem terjed ki azonnal az összes olyan portálra, amelyhez Kiemelt szerepkör szükséges. Néha az is előfordul, hogy még ha a módosítás propagálása meg is történik, a portálon történő webes gyorsítótárazás miatt a módosítás nem lép azonnal életbe. Ha az aktiválás késleltetve van, a következő műveleteket kell végrehajtania.
 
 1. Jelentkezzen ki az Azure Portalról, majd jelentkezzen be újra.
 
-    Ha aktivál egy Azure-erőforrás-szerepkört, megjelenik az aktiválás szakaszai. Ha az összes szakasz kész, megjelenik a **Kijelentkezés** hivatkozás. Erre a hivatkozásra kattintva kijelentkezhet. Ez a legtöbb esetben megoldja az aktiválás késésének problémáját.
+    Ha aktivál egy Azure-erőforrás-szerepkört, megjelenik az aktiválás szakaszai. Ha az összes szakasz kész, megjelenik a **Kijelentkezés** hivatkozás. Ezt a hivatkozást a kijelentkezéshez használhatja. Ez a legtöbb esetben megoldja az aktiválási késleltetést.
 
-1. A PIM-ben ellenőrizze, hogy szerepel-e a szerepkör tagjaként.
+1. A Privileged Identity Managementban ellenőrizze, hogy a szerepkör tagja-e a listához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure-erőforrás szerepköreinek kiterjesztése vagy megújítása a PIM-ben](pim-resource-roles-renew-extend.md)
-- [Saját Azure AD-szerepkörök aktiválása a PIM-ben](pim-how-to-activate-role.md)
+- [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Management](pim-resource-roles-renew-extend.md)
+- [Azure AD-szerepkörök aktiválása Privileged Identity Management](pim-how-to-activate-role.md)

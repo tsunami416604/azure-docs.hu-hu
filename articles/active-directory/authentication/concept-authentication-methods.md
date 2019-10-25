@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051448"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808414"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -28,14 +28,14 @@ A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan 
 
 |Hitelesítési módszer|Használat|
 | --- | --- |
-| Windows 10 | MFA és SSPR |
+| Jelszó | MFA és SSPR |
 | Biztonsági kérdések | Csak SSPR |
 | E-mail-cím | Csak SSPR |
-| Microsoft Authenticator alkalmazás | MFA és SSPR |
+| A Microsoft Authenticator alkalmazás | MFA és SSPR |
 | A hardver-token ESKÜje | Az MFA és a SSPR nyilvános előzetes verziója |
 | SMS | MFA és SSPR |
 | Hanghívás | MFA és SSPR |
-| Alkalmazásjelszavak | MFA csak bizonyos esetekben |
+| Alkalmazásjelszók | MFA csak bizonyos esetekben |
 
 ![A bejelentkezési képernyőn használt hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
@@ -44,13 +44,13 @@ A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan 
 | Az MFA és a SSPR-hez tartozó hardver-tokenek a Azure Active Directory nyilvános előzetes verziójának funkciói. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="password"></a>Windows 10
+## <a name="password"></a>Jelszó
 
 Az Azure AD-jelszó hitelesítési módszernek minősül. Ez az egyetlen olyan metódus, amely **nem tiltható le**.
 
 ## <a name="security-questions"></a>Biztonsági kérdések
 
-A biztonsági kérdések **csak az Azure ad** önkiszolgáló jelszó-visszaállítási szolgáltatásában érhetők el a nem rendszergazdai fiókokra.
+A biztonsági kérdések **csak az Azure ad önkiszolgáló jelszó-visszaállítási szolgáltatásában** érhetők el a nem rendszergazdai fiókokra.
 
 Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel együtt használja őket. A biztonsági kérdések kevésbé biztonságosak, mint más metódusok, mert egyes felhasználók tudják, hogy a válaszokat egy másik felhasználó kérdéseire.
 
@@ -119,32 +119,32 @@ Az e-mail **-cím csak az Azure ad önkiszolgáló jelszó-visszaállítási szo
 
 A Microsoft olyan e-mail-fiók használatát javasolja, amely nem igényli a felhasználó Azure AD-jelszavának elérését.
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
+## <a name="microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás
 
 A Microsoft Authenticator alkalmazás további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjához vagy a Microsoft-fiókhoz.
 
-A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
+A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) rendszereken érhető el.
 
 > [!NOTE]
-> A felhasználók nem regisztrálhatják a mobil alkalmazásaikat az önkiszolgáló jelszó-visszaállításhoz való regisztráláskor. Ehelyett a felhasználók a biztonsági adatok regisztrációjának [https://aka.ms/mfasetup](https://aka.ms/mfasetup) [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)előzetes verziójában regisztrálhatják a Mobile alkalmazást.
+> A felhasználók nem regisztrálhatják a mobil alkalmazásaikat az önkiszolgáló jelszó-visszaállításhoz való regisztráláskor. Ehelyett a felhasználók [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a biztonsági adatok regisztrációjának előzetes verziójában regisztrálhatják a mobil alkalmazást [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)címen.
 >
 
-### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazáson keresztül
+### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
 
 A Microsoft Authenticator alkalmazás segít megakadályozni a fiókok jogosulatlan elérését, és letilthatja a csalárd tranzakciókat, ha értesítéseket küld az okostelefonra vagy a táblaszámítógépre. A felhasználók megtekinthetik az értesítést, és ha ez jogos, válassza az ellenőrzés lehetőséget. Ellenkező esetben a Megtagadás lehetőséget is kiválaszthatja.
 
 > [!WARNING]
 > Az önkiszolgáló jelszó-visszaállításhoz, ha csak egy módszer szükséges az alaphelyzetbe állításhoz, az ellenőrzési kód az egyetlen lehetőség a felhasználók számára a **legmagasabb szintű biztonság biztosításához**.
 >
-> Ha két módszer szükséges, a felhasználók visszaállíthatják az értesítési **vagy** ellenőrzési kódokat az egyéb engedélyezett módszerek kiegészítéseként.
+> Ha két módszer szükséges, a felhasználók visszaállíthatják az értesítési **vagy** ellenőrzési **kódokat az egyéb** engedélyezett módszerek kiegészítéseként.
 >
 
 Ha engedélyezi mindkét értesítés használatát a Mobile App és az ellenőrző kód használatával a Mobile apps szolgáltatásban, a Microsoft Authenticator alkalmazást az értesítéseket használó felhasználók értesítést és kódot is használhatnak az identitásuk ellenőrzéséhez.
 
 > [!NOTE]
-> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az **Android** -eszközökön a **Mobile App metóduson keresztül küldött értesítés** nem működik az adott országban. Ezeket a felhasználókat alternatív módszereket kell elérhetővé tenni.
+> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az **Android-eszközökön** a **Mobile App metóduson keresztül küldött értesítés** nem működik az adott országban. Ezeket a felhasználókat alternatív módszereket kell elérhetővé tenni.
 
-### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
+### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
 
 A Microsoft Authenticator alkalmazás vagy más külső féltől származó alkalmazások szoftver-tokenként használhatók eskü-ellenőrző kód létrehozásához. A Felhasználónév és a jelszó megadása után adja meg az alkalmazás által a bejelentkezési képernyőn megadott kódot. Az ellenőrző kód a hitelesítés második formáját biztosítja.
 
@@ -172,15 +172,15 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 > [!NOTE]
 > Ügyeljen rá, hogy a fejlécsort a fent látható módon adja meg a CSV-fájlban.
 
-Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megkeresheti **Azure Active Directory**, **MFA-kiszolgálót**, **eskü**-tokeneket, és FELTÖLTheti az eredményül kapott CSV-fájlt.
+Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megkeresheti **Azure Active Directory**, **MFA-kiszolgálót**, **eskü-tokeneket**, és FELTÖLTheti az eredményül kapott CSV-fájlt.
 
 A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha a fájlban hibák merülnek fel, lehetősége lesz letölteni egy CSV-fájlt, amely felsorolja a feloldható hibákat.
 
-A hibák elhárítása után a rendszergazda ezután aktiválhatja az egyes kulcsokat, ha a jogkivonat **aktiválása** elemre kattint, és beírja a tokenen megjelenített egyszeri jelszavas azonosítót.
+A hibák elhárítása után a rendszergazda ezután aktiválhatja az egyes kulcsokat, ha a jogkivonat aktiválása elemre kattint, és beírja a tokenen megjelenített egyszeri **jelszavas** azonosítót.
 
 Előfordulhat, hogy a felhasználók legfeljebb öt olyan hardver-tokent vagy hitelesítő alkalmazást (például a Microsoft Authenticator alkalmazást, amelyet a használatra konfiguráltak) kombinálnak.
 
-## <a name="phone-options"></a>Telefonbeállítások
+## <a name="phone-options"></a>Telefonos beállítások
 
 ### <a name="mobile-phone"></a>Mobiltelefon
 
@@ -243,7 +243,7 @@ A hitelesítési módszerekkel kapcsolatos gyakori problémák telefonszám hasz
 * Hibás távközlési szolgáltatók (nem észlelhetők telefonos bemenetek, hiányzó DTMF-hangok, letiltott hívóazonosító több eszközön, vagy a több eszközön letiltott SMS-ek)
    * A Microsoft több távközlési szolgáltatót használ a telefonhívások és SMS-üzenetek továbbítására a hitelesítéshez. Ha a fenti problémák bármelyikét látja, akkor a felhasználó 5 percen belül legalább 5 alkalommal megpróbálta használni a metódust, és a felhasználó információi elérhetők a Microsoft ügyfélszolgálatával való kapcsolatfelvételkor.
 
-## <a name="app-passwords"></a>Alkalmazásjelszavak
+## <a name="app-passwords"></a>Alkalmazás jelszavai
 
 Bizonyos böngészőn kívüli alkalmazások nem támogatják a többtényezős hitelesítést, ha a felhasználó számára engedélyezve van a többtényezős hitelesítés, és a nem böngészőbeli alkalmazások használatát kísérli meg, nem tudnak hitelesíteni. Az alkalmazás jelszava lehetővé teszi, hogy a felhasználók továbbra is hitelesítsék magukat
 
@@ -255,9 +255,9 @@ Ha a szervezete az Azure AD-vel történő egyszeri bejelentkezéshez készült,
 * Az alkalmazásjelszó nem tartja be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
 * Nem érhető el helyszíni hitelesítési naplózási/naplózási képesség az alkalmazások jelszavainak megadásához.
 * Bizonyos speciális építészeti kialakításokhoz szükség lehet a szervezeti felhasználónevek és jelszavak és az alkalmazások jelszavának együttes használatára, ha kétlépéses ellenőrzést használ az ügyfelekkel a hitelesítés helyétől függően. A helyszíni infrastruktúrával hitelesítő ügyfelek esetében szervezeti felhasználónevet és jelszót kell használnia. Az Azure AD-vel hitelesítő ügyfelek esetében használja az alkalmazás jelszavát.
-* Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Ha lehetővé szeretné tenni a felhasználóknak az alkalmazás jelszavának létrehozását, jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget** a szolgáltatás beállításai területen lévő nem böngészőalapú alkalmazásokba való bejelentkezéshez.
+* Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Ha lehetővé szeretné tenni a felhasználóknak az alkalmazás jelszavának létrehozását, jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget a szolgáltatás beállításai területen lévő nem böngészőalapú alkalmazásokba való bejelentkezéshez** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Önkiszolgáló jelszó-visszaállítás engedélyezése a szervezet számára](quickstart-sspr.md)
 

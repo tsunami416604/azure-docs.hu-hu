@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 103a18389a2b956f20b61ce45d045fb9a11c4356
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 1748ec5ada9488487cd29ffb563226749b29f9f4
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984714"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808840"
 ---
-# <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Oktatóanyag: IoT Hub üzenet-útválasztás konfigurálása az Azure CLI használatával
+# <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Oktatóanyag: az Azure CLI használata IoT Hub üzenet-útválasztás konfigurálásához
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -30,17 +30,17 @@ Ha szeretné megtekinteni a kész parancsfájlt, töltse le az [Azure IoT C# -mi
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>Erőforrások létrehozása az Azure CLI használatával
 
+Másolja és illessze be az alábbi szkriptet Cloud Shellba, majd nyomja le az ENTER billentyűt. A parancsfájl egyszerre egy sort futtat. A szkript ezen első szakasza létrehozza az oktatóanyag alaperőforrásait, beleértve a Storage-fiókot, a IoT Hub, a Service Bus névteret és a Service Bus üzenetsor-t. Ahogy az oktatóanyag többi részén, másolja az egyes parancsfájlokat, és illessze be Cloud Shellba a futtatásához.
+
+> [!TIP]
+> Tipp a hibakereséshez: Ez a szkript a folytatás szimbólumot (a fordított perjel `\`) használja, hogy a szkript olvashatóbb legyen. Ha a parancsfájl futtatása során probléma merül fel, győződjön meg arról, hogy a Cloud Shell-munkamenet `bash` fut, és hogy a fordított perjelek bármelyike után nincsenek szóközök.
+> 
+
 Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue*nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre. 
 
 > [!IMPORTANT]
 > A kezdeti parancsfájlban beállított változókat az útválasztási parancsfájl is használja, ezért futtassa az összes parancsfájlt ugyanabban a Cloud Shell-munkamenetben. Ha új munkamenetet nyit meg az Útválasztás beállítására szolgáló parancsfájl futtatásához, akkor a változók közül számos érték hiányzik.
 >
-
-Másolja és illessze be az alábbi szkriptet Cloud Shellba, majd nyomja le az ENTER billentyűt. A parancsfájl egyszerre egy sort futtat. A szkript ezen első szakasza létrehozza az oktatóanyag alaperőforrásait, beleértve a Storage-fiókot, a IoT Hub, a Service Bus névteret és a Service Bus üzenetsor-t. Ahogy az oktatóanyag többi részén, másolja az egyes parancsfájlokat, és illessze be Cloud Shellba a futtatásához.
-
-> [!TIP]
-> Tipp a hibakereséshez: Ez a szkript a folytatási szimbólumot ( `\`a fordított perjelet) használja, hogy a szkript olvashatóbb legyen. Ha a parancsfájl futtatása során probléma merül fel, ügyeljen arra, hogy a fordított perjelek bármelyike után ne legyen szóköz.
-> 
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account. 
@@ -155,29 +155,29 @@ Most, hogy beállította az alaperőforrásokat, beállíthatja az üzenet-útv�
 
 Először állítsa be a végpontot a Storage-fiókhoz, majd állítsa be az útvonalat. 
 
-A következő változók vannak beállítva:
+Ezek a szkriptek által használt változók, amelyeket a Cloud Shell-munkameneten belül kell beállítani:
 
-**storageConnectionString**: Ezt az értéket az előző parancsfájlban beállított Storage-fiókból kéri le a rendszer. Ezt az üzenet-útválasztás használja a Storage-fiók eléréséhez.
+**storageConnectionString**: ezt az értéket az előző parancsfájlban beállított Storage-fiókból kéri le a rendszer. Ezt az üzenet-útválasztás használja a Storage-fiók eléréséhez.
 
-  **resourceGroup**: Az erőforráscsoport két előfordulása van – állítsa be őket az erőforráscsoporthoz.
+  **resourceGroup**: az erőforráscsoport két előfordulása van – állítsa be őket az erőforráscsoporthoz.
 
 **végpont subscriptionID**: Ez a mező a végpont Azure-subscriptionID van beállítva. 
 
-**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `servicebusqueue`, `eventhub`vagy `servicebustopic`a értékre kell beállítani. Itt adja meg a kívánt `azurestoragecontainer`célokat.
+**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket `azurestoragecontainer`, `eventhub`, `servicebusqueue`vagy `servicebustopic`értékre kell beállítani. Itt állíthatja be, hogy `azurestoragecontainer`.
 
 **iotHubName**: Ez a mező az útválasztást elvégező központ neve.
 
 **containerName**: Ez a mező annak a tárolónak a neve, amelybe az adatírás történik.
 
-**kódolás**: A mező `avro` a következő lesz: `json`vagy. Ez a tárolt adatmennyiség formátumát jelöli.
+**kódolás**: Ez a mező `avro` vagy `json`lesz. Ez a tárolt adatmennyiség formátumát jelöli.
 
 **z**: Ez a mező a beállított útvonal neve. 
 
 **végpontneve**: Ez a mező a végpontot azonosító név. 
 
-**engedélyezve**: A mező alapértéke `true`a, amely azt jelzi, hogy az üzenet útvonalát a létrehozás után engedélyezni kell.
+**engedélyezve**: Ez a mező alapértelmezett értéke `true`, ami azt jelzi, hogy a létrehozás után az üzenet útvonalának engedélyezve kell lennie.
 
-**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. A tárolóba `level="storage"`átirányított üzenetek lekérdezési feltétele.
+**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. A tárolóba átirányított üzenetek lekérdezési feltétele `level="storage"`.
 
 Másolja ezt a szkriptet, és illessze be a Cloud Shell ablakába, és futtassa.
 
@@ -227,7 +227,7 @@ az iot hub route create \
 
 ### <a name="route-to-a-service-bus-queue"></a>Útvonal Service Bus üzenetsor felé
 
-Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. A Service Bus üzenetsor kapcsolódási karakterláncának beolvasásához létre kell hoznia egy engedélyezési szabályt, amely rendelkezik a megfelelő jogosultságokkal. A következő szkript létrehoz egy engedélyezési szabályt a nevű `sbauthrule`Service Bus üzenetsor számára, és beállítja a `Listen Manage Send`jogosultságokat. Az engedélyezési szabály meghatározása után a segítségével lekérheti a várólista kapcsolódási karakterláncát.
+Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. A Service Bus üzenetsor kapcsolódási karakterláncának beolvasásához létre kell hoznia egy engedélyezési szabályt, amely rendelkezik a megfelelő jogosultságokkal. A következő szkript létrehoz egy engedélyezési szabályt a `sbauthrule`nevű Service Bus várólistához, és beállítja a `Listen Manage Send`jogosultságokat. Az engedélyezési szabály meghatározása után a segítségével lekérheti a várólista kapcsolódási karakterláncát.
 
 ```azurecli
 # Create the authorization rule for the Service Bus queue.
@@ -257,15 +257,15 @@ sbqConnectionString=$(az servicebus queue authorization-rule keys list \
 echo "service bus queue connection string = " $sbqConnectionString
 ```
 
-Most állítsa be az útválasztási végpontot és a Service Bus üzenetsor üzenetének útvonalát. A következő változók vannak beállítva:
+Most állítsa be az útválasztási végpontot és a Service Bus üzenetsor üzenetének útvonalát. Ezek a szkriptek által használt változók, amelyeket a Cloud Shell-munkameneten belül kell beállítani:
 
 **végpontneve**: Ez a mező a végpontot azonosító név. 
 
-**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `servicebusqueue`, `eventhub`vagy `servicebustopic`a értékre kell beállítani. Itt adja meg a kívánt `servicebusqueue`célokat.
+**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket `azurestoragecontainer`, `eventhub`, `servicebusqueue`vagy `servicebustopic`értékre kell beállítani. Itt állíthatja be, hogy `servicebusqueue`.
 
 **z**: Ez a mező a beállított útvonal neve. 
 
-**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. Az Service Bus várólistára `level="critical"`átirányított üzenetek lekérdezési feltétele.
+**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. Az Service Bus várólistára átirányított üzenetek lekérdezési feltétele `level="critical"`.
 
 Itt látható az útválasztási végpont Azure CLI-je és az Service Bus üzenetsor üzenetének útvonala.
 
@@ -300,7 +300,7 @@ az iot hub route create --name $routeName \
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította az erőforrásokat, és konfigurálta az üzenet útvonalait, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan küldhet üzeneteket az IoT hubhoz, és hogyan irányíthatja őket át a különböző célhelyekre. 
 

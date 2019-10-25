@@ -1,5 +1,6 @@
 ---
-title: Az Objective-C-problémák MSAL hibaelhárítása | Microsoft Identity platform
+title: A Objective-C-problémák MSAL hibaelhárítása
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy mi a teendő a MSAL SSL-tanúsítványokat használó különböző problémákról. Objective-C függvénytár.
 services: active-directory
 documentationcenter: ''
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268907"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803665"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Útmutató: IOS-és macOS-alapú SSL-problémák MSAL hibaelhárítása
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Útmutató: az iOS-és macOS-alapú SSL-problémák MSAL hibáinak elhárítása
 
 Ez a cikk az [iOS és a MacOS rendszerhez készült Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) használata során esetlegesen előforduló problémák megoldásához nyújt segítséget.
 
 ## <a name="network-issues"></a>Hálózati problémák
 
-**Hiba – 1200**: "SSL-hiba történt, és nem hozható létre biztonságos kapcsolat a kiszolgálóval."
+**Hiba-1200**: "SSL-hiba történt, és nem hozható létre biztonságos kapcsolat a kiszolgálóval."
 
-Ez a hiba azt jelenti, hogy a kapcsolatok nem biztonságosak. Akkor következik be, amikor egy tanúsítvány érvénytelen. Ha további információra van szó, beleértve az SSL-ellenőrzési hibát okozó kiszolgálót `NSURLErrorFailingURLErrorKey` is, `userInfo` tekintse meg a következő témakört:.
+Ez a hiba azt jelenti, hogy a kapcsolatok nem biztonságosak. Akkor következik be, amikor egy tanúsítvány érvénytelen. Ha további információra van szó, beleértve az SSL-ellenőrzési hibát okozó kiszolgálókat is, tekintse meg a `NSURLErrorFailingURLErrorKey` a hiba objektum `userInfo` szótárában.
 
 Ez a hiba az Apple hálózatkezelési könyvtárából származik. A NSURL-hibakódok teljes listája a macOS és iOS SDK-ban található NSURLError. h nyelven érhető el. A hibával kapcsolatos további információkért tekintse meg a [rendszerhiba-kódok betöltését](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)ismertető témakört.
 
@@ -48,6 +49,6 @@ Az SHA-1 kivonatokat használó tanúsítványok ismert biztonsági réseket tar
 
 A céges portál egy weblapot jelenít meg a felhasználónak, amikor először fér hozzá egy Wi-Fi-hálózathoz, és még nem kapott hozzáférést ehhez a hálózathoz. Elfogja az internetes forgalmat, amíg a felhasználó nem teljesíti a portál követelményeit. Hálózati hibák, mert a felhasználó nem tud csatlakozni a hálózati erőforrásokhoz, amíg a felhasználó nem csatlakozik a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a [fogságban lévő portálokat](https://en.wikipedia.org/wiki/Captive_portal) és az Apple új [app TRANSPORT Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) szolgáltatását.

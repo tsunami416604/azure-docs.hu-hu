@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
+title: Azure Active Directory hozzáadása a Visual Studio csatlakoztatott szolgáltatásainak használatával | Azure
 description: Azure Active Directory hozzáadása a Visual Studio csatlakoztatott szolgáltatások hozzáadása párbeszédpanel használatával
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c02821a41faa976f8f35984ecf48f425239e6fd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881175"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802468"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
 
@@ -29,7 +29,7 @@ A Active Directory csatlakoztatott szolgáltatás jelenleg nem támogatja ASP.NE
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-fiók: Ha nem rendelkezik Azure-fiókkal, [regisztrálhat az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) , vagy [aktiválhatja a Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)előfizetői előnyeit.
+- Azure-fiók: Ha nem rendelkezik Azure-fiókkal, [regisztrálhat az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 - **Visual Studio 2015** vagy újabb verzió. [Töltse le most a Visual studiót](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Csatlakozás Azure Active Directory a csatlakoztatott szolgáltatások párbeszédpanel használatával
@@ -46,7 +46,7 @@ A Active Directory csatlakoztatott szolgáltatás jelenleg nem támogatja ASP.NE
 
     ![Bevezetés oldal](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Az **egyszeri bejelentkezés** lapon válasszon ki egy tartományt a **tartomány** legördülő listából. A lista tartalmazza a Visual Studio Fiókbeállítások párbeszédpanelén felsorolt fiókok által elérhető összes tartományt (a**fájl > Fiókbeállítások...** ). Másik lehetőségként megadhatja a tartománynevet, ha nem találja a keresett nevet, például `mydomain.onmicrosoft.com`:. Lehetőség van Azure Active Directory alkalmazás létrehozására, vagy egy meglévő Azure Active Directory alkalmazás beállításainak használatára. Ha elkészült, válassza a **tovább** lehetőséget.
+1. Az **egyszeri bejelentkezés** lapon válasszon ki egy tartományt a **tartomány** legördülő listából. A lista tartalmazza a Visual Studio Fiókbeállítások párbeszédpanelén felsorolt fiókok által elérhető összes tartományt (a**fájl > Fiókbeállítások...** ). Másik lehetőségként megadhatja a tartománynevet, ha nem találja a keresett nevet, például `mydomain.onmicrosoft.com`. Lehetőség van Azure Active Directory alkalmazás létrehozására, vagy egy meglévő Azure Active Directory alkalmazás beállításainak használatára. Ha elkészült, válassza a **tovább** lehetőséget.
 
     ![Egyszeri bejelentkezés lap](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
@@ -72,7 +72,7 @@ Amikor hozzáadja a csatlakoztatott szolgáltatást a varázslóhoz, a Visual St
 - [Mi történt a .NET MVC-projektemmel?](vs-active-directory-dotnet-what-happened.md)
 - [Mi történt a webes API-projekttel?](vs-active-directory-webapi-what-happened.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v1-aspnet-webapp.md)

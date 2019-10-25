@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 04753ca4c9b14d7ccc265cfcf971b3fd63c861ae
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 11cd90da1b1ca85893dbdad2ced191326af51238
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72384160"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793889"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
@@ -56,8 +56,9 @@ Osztályozás | Regressziós | Idősorozat-előrejelzés
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [DNN osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN lineáris osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineáris Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineáris Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
-[Sztochasztikus gradiens leereszkedés (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
+[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||[Automatikus ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Sztochasztikus gradiens leereszkedés (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
+|||ForecastTCN
 
 A kísérlet típusának megadásához használja a `AutoMLConfig` konstruktor `task` paraméterét.
 
@@ -70,28 +71,24 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Adatforrás és formátum
 
-Az automatizált gépi tanulás támogatja a helyi asztalon vagy a felhőben, például az Azure Blob Storageban található adategységeket. Az adatokat egy Panda DataFrame vagy egy Azure Machine Learning adatkészletbe is beolvashatja. Az alábbi példák bemutatják, hogyan tárolhatja az ilyen formátumú adattárakat. [További információ a datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+Az automatizált gépi tanulás támogatja a helyi asztalon vagy a felhőben, például az Azure Blob Storageban található adategységeket. Az információk egy **Panda DataFrame** vagy egy **Azure Machine learning TabularDataset**is beolvashatók.  [További információ a datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+
+A betanítási adatgyűjtésre vonatkozó követelmények:
+- Az adatokat táblázatos formában kell megadni.
+- Az előre jelzett értéknek, a célként megadott oszlopnak szerepelnie kell az adatsorokban.
+
+Az alábbi példák bemutatják, hogyan tárolhatja az ilyen formátumú adattárakat.
 
 * TabularDataset
+  ```python
+  from azureml.core.dataset import Dataset
+  
+  tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
+  train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
+  label = "Label"
+  ```
+
 * Panda dataframe
-
->[!Important]
-> A betanítási adatgyűjtésre vonatkozó követelmények:
->* Az adatokat táblázatos formában kell megadni.
->* A megjósolni kívánt értéknek (célként megadott oszlopnak) jelen kell lennie az adatsorokban.
-
-Példák:
-
-* TabularDataset
-```python
-    from azureml.core.dataset import Dataset
-
-    tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
-    train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
-    label = "Label"
-```
-
-*   Panda dataframe
 
     ```python
     import pandas as pd
@@ -117,11 +114,11 @@ A `AutoMLConfig` konstruktorban közvetlenül megadhatja a különböző vonat-�
 
 ### <a name="k-folds-cross-validation"></a>K-összecsukható kereszt-ellenőrzés
 
-A többszörös érvényesítések számának megadásához használja a `n_cross_validations` beállítást. A betanítási adatkészletet véletlenszerűen `n_cross_validations`, egyenlő méretű kiosztással tagolja a rendszer. Az egyes átellenőrzési körökben a rendszer az egyik hajtogatást használja a fennmaradó hajtogatási modell érvényesítéséhez. Ez a folyamat a `n_cross_validations` fordulóban ismétlődik, amíg az összes összekapcsolást be nem használja az érvényesítési csoportba. A rendszer az összes `n_cross_validations` kör átlagos pontszámát fogja jelenteni, és a megfelelő modellt a teljes betanítási adatkészleten át lesz képezni.
+A `n_cross_validations` beállítással adhatja meg a több érvényesítést. A betanítási adatkészletet véletlenszerűen `n_cross_validations`, egyenlő méretűre bontja. Az egyes átellenőrzési körökben a rendszer az egyik hajtogatást használja a fennmaradó hajtogatási modell érvényesítéséhez. Ez a folyamat megismétli a `n_cross_validations`i köröket, amíg az összes összekapcsolást be nem használja az érvényesítési csoportba. A rendszer az összes `n_cross_validations` kör átlagos pontszámát fogja jelenteni, és a rendszer a megfelelő modellt a teljes betanítási adatkészletre átképezi.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo Cross Validation (ismétlődő véletlenszerű almintavételezés)
 
-A `validation_size` érték megadásával határozza meg az érvényesítéshez használandó betanítási adatkészlet százalékos arányát, és a `n_cross_validations` érték megadásával határozza meg a keresztek érvényességének számát. Az egyes átellenőrzési körökben a (z) `validation_size` méret részhalmaza véletlenszerűen lesz kiválasztva a fennmaradó adattípusra képzett modell érvényesítéséhez. Végezetül az összes `n_cross_validations` fordulóban az átlagos pontszámokat fogja jelenteni, és a rendszer a megfelelő modellt a teljes betanítási adatkészletre újra betanítja. A Monte Carlo nem támogatott az idősorozat-előrejelzéshez.
+A `validation_size` segítségével megadhatja az érvényesítéshez használandó betanítási adatkészlet százalékos arányát, és a `n_cross_validations` használatával megadhatja a többhöz tartozó érvényességi értéket. Az egyes átellenőrzési körökben a méret `validation_size` egy részhalmaza véletlenszerűen lesz kiválasztva a fennmaradó adattípusra képzett modell érvényesítéséhez. Végezetül az összes `n_cross_validations`-kör átlagos pontszámát fogjuk jelenteni, és a rendszer a megfelelő modellt a teljes betanítási adatkészletre újra betanítja. A Monte Carlo nem támogatott az idősorozat-előrejelzéshez.
 
 ### <a name="custom-validation-dataset"></a>Egyéni ellenőrzési adatkészlet
 
@@ -202,8 +199,8 @@ A featurization engedélyezéséhez `"preprocess": True` értéket kell megadnia
 Az idősorozat `forecasting` feladat további paramétereket igényel a konfigurációs objektumban:
 
 1. `time_column_name`: kötelező paraméter, amely meghatározza a betanítási adataiban érvényes idősorozatot tartalmazó oszlop nevét.
-1. `max_horizon`: meghatározza, hogy mennyi idő elteltével kell előre jelezni a betanítási adatmennyiségek gyakorisága alapján. Ha például napi időkeretekkel rendelkező betanítási információkkal rendelkezik, meghatározhatja, hogy a modell milyen mértékben legyen betanítva.
-1. `grain_column_names`: meghatározza a betanítási adataiban az egyes idősorozat-adatsorokat tartalmazó oszlopok nevét. Ha például egy adott márka értékesítési adatait az áruházban szeretné megtekinteni, a tároló és a márka oszlopokat a gabona oszlopaiban definiálhatja. Minden egyes gabona/csoportosítás esetében külön idősorozatok és előrejelzések jönnek létre. 
+1. `max_horizon`: azt határozza meg, hogy mennyi idő elteltével kívánja előre jelezni a betanítási adatmennyiséget. Ha például napi időkeretekkel rendelkező betanítási információkkal rendelkezik, meghatározhatja, hogy a modell milyen mértékben legyen betanítva.
+1. `grain_column_names`: meghatározza a betanítási adataiban az egyes idősorozat-adataikat tartalmazó oszlopok nevét. Ha például egy adott márka értékesítési adatait az áruházban szeretné megtekinteni, a tároló és a márka oszlopokat a gabona oszlopaiban definiálhatja. Minden egyes gabona/csoportosítás esetében külön idősorozatok és előrejelzések jönnek létre. 
 
 Az alább használt beállításokra vonatkozó példákért tekintse meg a [minta notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
@@ -242,9 +239,9 @@ Az Ensemble-modellek alapértelmezés szerint engedélyezve vannak, és az autom
 
 Több alapértelmezett argumentum is megadható `kwargs` értékként egy `AutoMLConfig` objektumban, hogy megváltoztassa az alapértelmezett stack Ensemble viselkedését.
 
-* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes különböző-modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók @no__t – 0 a besorolási feladatokhoz (vagy @no__t – 1, ha a kereszt-ellenőrzés engedélyezve van), és `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy @no__t – 3, ha a többszörös ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor` vagy `LinearRegression`.
-* `stack_meta_learner_train_percentage`: meghatározza a betanítási készlet (a betanítási típus kiválasztásakor a képzés betanítási típusa) arányát, amelyet a meta-tanuló képzéséhez le kell foglalni. Az alapértelmezett érték `0.2`.
-* `stack_meta_learner_kwargs`: választható paraméterek, amelyeket át kell adni a meta-Learner inicializálásának. Ezek a paraméterek és paraméterek típusú tükrözések a megfelelő modell konstruktorával, és a modell konstruktorának továbbítva lesznek.
+* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes különböző-modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók `LogisticRegression` a besorolási feladatokhoz (vagy `LogisticRegressionCV`, ha a kereszt-ellenőrzés engedélyezve van), és `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor` vagy `LinearRegression`.
+* `stack_meta_learner_train_percentage`: a betanítási készlet (a betanítási típus kiválasztásakor) a meta-tanuló betanítása számára fenntartott arányát határozza meg. Az alapértelmezett érték `0.2`.
+* `stack_meta_learner_kwargs`: nem kötelező paramétereket adni a meta-learning inicializáló. Ezek a paraméterek és paraméterek típusú tükrözések a megfelelő modell konstruktorával, és a modell konstruktorának továbbítva lesznek.
 
 A következő kód példát mutat be az egyéni Ensemble viselkedésének megadására egy `AutoMLConfig` objektumban.
 
@@ -272,7 +269,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-Az Ensemble-képzés alapértelmezés szerint engedélyezve van, de a `enable_voting_ensemble` és a `enable_stack_ensemble` logikai paraméterek használatával letiltható.
+Az Ensemble-képzés alapértelmezés szerint engedélyezve van, de a `enable_voting_ensemble` és az `enable_stack_ensemble` logikai paraméterek használatával le is tilthatja.
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -311,14 +308,14 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >A függőségek először egy új gépre települnek.  A kimenet megjelenítése előtt akár 10 percet is igénybe vehet.
->Ha a `show_output` értéket `True` értékre állítja, a kimenet megjelenik a konzolon.
+>A `show_output` beállítása a konzolon megjelenített kimenet `True` eredményeire.
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 A kísérlet befejezéséhez több lehetőség is megadható.
 1. Nincs feltétel: Ha nem ad meg kilépési paramétereket, a kísérlet addig folytatódik, amíg az elsődleges metrika nem végez további előrehaladást.
-1. Ismétlések száma: megadhatja a kísérlet futtatásához szükséges iterációk számát. Megadhatja, hogy az egyes iterációk időkorlátja percekben megadva `iteration_timeout_minutes` legyen.
+1. Ismétlések száma: megadhatja a kísérlet futtatásához szükséges iterációk számát. Az egyes iterációk időkorlátját percek alatt megadhatja `iteration_timeout_minutes`.
 1. Kilépés hosszú idő után: `experiment_timeout_minutes` használata a beállításokban megadhatja, hogy a rendszer hány perc elteltével folytassa a kísérlet futtatását.
-1. Kilépés egy pontszám eltelte után: a `experiment_exit_score` használatával a rendszer elvégezte a kísérletet, miután elérte az elsődleges metrikai pontszám értékét.
+1. Kilépés egy pontszám elérésekor: a `experiment_exit_score` használatával a rendszer elvégzi a kísérletet, miután elérte az elsődleges metrikai pontszám értékét.
 
 ### <a name="explore-model-metrics"></a>Modell metrikáinak megismerése
 
@@ -350,7 +347,7 @@ Megfontolandó példa:
 
 A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban megértsen.  Tekintse meg [ezt a minta notebookot](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-+ 1\. API: a `get_engineered_feature_names()` a megtervezett szolgáltatások neveinek listáját adja vissza.
++ 1\. API: `get_engineered_feature_names()` a meglevő funkciók neveinek listáját adja vissza.
 
   Használat
   ```python
@@ -366,7 +363,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
   >[!Note]
   >Használja a "timeseriestransformer" műveletet a Task = "forecasting" művelethez, máskülönben használja a "datatransformer" műveletet a "regresszió" vagy a "besorolás" feladathoz.
 
-+ 2\. API: `get_featurization_summary()` – az összes bemeneti funkció featurization összegzését adja vissza.
++ 2\. API: a `get_featurization_summary()` az összes bemeneti szolgáltatás featurization-összegzését adja vissza.
 
   Használat
   ```python
@@ -475,7 +472,7 @@ Az automatizált gépi tanulás lehetővé teszi a funkciók fontosságának meg
 
 A szolgáltatások fontosságának kétféleképpen hozhatók elérhetővé.
 
-*   A kísérlet befejezése után bármely iteráción `explain_model` metódust használhat.
+*   A kísérlet befejezése után bármely iterációhoz használhatja `explain_model` metódust.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -492,7 +489,7 @@ A szolgáltatások fontosságának kétféleképpen hozhatók elérhetővé.
     print(per_class_summary)
     ```
 
-*   Ha szeretné megtekinteni az összes iteráció funkciójának fontosságát, állítsa `model_explainability` jelzőt a AutoMLConfig `True` értékére.
+*   Ha meg szeretné tekinteni az összes iteráció funkciójának fontosságát, állítsa `model_explainability` jelzőt `True`re a AutoMLConfig-ben.
 
     ```python
     automl_config = AutoMLConfig(task='classification',

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 721d4dae2c05c252b863b7cea2589deca8404602
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392695"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791613"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
-Mielőtt felhasználja a Piactéri ajánlatot egy önállóan felügyelt OpenShift Container platform 3,11-fürt üzembe helyezéséhez az Azure-ban, néhány előfeltételt be kell állítani.  A [OpenShift előfeltételeit](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-prerequisites) ismertető cikkben megtudhatja, hogyan hozhat létre SSH-kulcsot (jelszó nélkül), az Azure Key vaultot, a Key Vault secrett és egy egyszerű szolgáltatást.
+Mielőtt felhasználja a Piactéri ajánlatot egy önállóan felügyelt OpenShift Container platform 3,11-fürt üzembe helyezéséhez az Azure-ban, néhány előfeltételt be kell állítani.  A [OpenShift előfeltételeit](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) ismertető cikkben megtudhatja, hogyan hozhat létre SSH-kulcsot (jelszó nélkül), az Azure Key vaultot, a Key Vault secrett és egy egyszerű szolgáltatást.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Üzembe helyezés a Piactéri ajánlat használatával

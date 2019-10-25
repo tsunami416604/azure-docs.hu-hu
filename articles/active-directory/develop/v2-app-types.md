@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6799e604b9e5e2acc3af35e4038ea6f14271d5c8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834730"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809267"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token](id-tokens.md) -hivatkozásban találhatók.
+A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token-hivatkozásban](id-tokens.md) találhatók.
 
 A webkiszolgáló alkalmazásokban a bejelentkezési hitelesítési folyamat a következő magas szintű lépéseket hajtja végre:
 
@@ -100,7 +100,7 @@ Accept: application/json
 ...
 ```
 
-A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token](id-tokens.md) -hivatkozásban találhatók.
+A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token-hivatkozásban](id-tokens.md) találhatók.
 
 A webes API-k lehetővé teszik a felhasználók számára, hogy a jogosultságok, más néven [hatókörök](v2-permissions-and-consent.md)megadásával vagy letiltásával eldönthetik, hogy bizonyos funkciókat vagy adatokból választhatnak. Ahhoz, hogy egy hívó alkalmazás egy hatókörhöz engedélyt szerezzen, a felhasználónak a folyamat során hozzá kell járulnia a hatókörhöz. A Microsoft Identity platform végpontja kéri a felhasználótól az engedélyt, majd rögzíti az engedélyeket a webes API által fogadott összes hozzáférési jogkivonatban. A webes API ellenőrzi az egyes hívásokhoz kapott hozzáférési jogkivonatokat, és végrehajtja az engedélyezési ellenőrzéseket.
 
@@ -122,10 +122,10 @@ Ebben a folyamatban az alkalmazás egy engedélyezési kódot kap a Microsoft Id
 
 ## <a name="daemons-and-server-side-apps"></a>Démonok és kiszolgálóoldali alkalmazások
 
-A hosszan futó folyamatokkal rendelkező vagy a felhasználóval való interakció nélkül működő alkalmazások esetében is szükség van a biztonságos erőforrásokhoz, például a webes API-khoz való hozzáférésre. Ezek az alkalmazások a felhasználó delegált identitása helyett az alkalmazás identitását használva hitelesíthetők és lekérhetik a jogkivonatokat a OAuth 2,0 ügyfél-hitelesítő adatokkal. Az alkalmazás identitását az ügyfél titkos kódjával vagy tanúsítványával igazolhatja. További információ: [hitelesítés a Microsoft Identity platformon a Daemon-alkalmazásokban tanúsítványokkal](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
+A hosszan futó folyamatokkal rendelkező vagy a felhasználóval való interakció nélkül működő alkalmazások esetében is szükség van a biztonságos erőforrásokhoz, például a webes API-khoz való hozzáférésre. Ezek az alkalmazások a felhasználó delegált identitása helyett az alkalmazás identitását használva hitelesíthetők és lekérhetik a jogkivonatokat a OAuth 2,0 ügyfél-hitelesítő adatokkal. Az alkalmazás identitását az ügyfél titkos kódjával vagy tanúsítványával igazolhatja. További információ: [hitelesítés a Microsoft Identity platformon a Daemon-alkalmazásokban tanúsítványokkal](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/).
 
-Ebben a folyamatban az alkalmazás közvetlenül a végpontot használja a `/token` hozzáférés eléréséhez:
+Ebben a folyamatban az alkalmazás közvetlenül a `/token`-végponttal kommunikál a hozzáférés eléréséhez:
 
 ![A démon-alkalmazás hitelesítési folyamatát mutatja](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
-Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait](v2-oauth2-client-creds-grant-flow.md)tartalmazó dokumentációt, vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait tartalmazó dokumentációt](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

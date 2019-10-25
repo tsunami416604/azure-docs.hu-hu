@@ -1,67 +1,57 @@
 ---
-title: Az Azure Functions támogatott nyelvek
-description: Ismerje meg, mely nyelveket támogatja (elérhetővé tétel GA), és amelyeket a kísérleti vagy előzetes verzióban érhető el.
-services: functions
-documentationcenter: na
+title: Támogatott nyelvek a Azure Functions
+description: Megtudhatja, hogy mely nyelvek támogatottak (GA), és melyek kísérleti vagy előzetes verziójúak.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eac67c43915edb0aed273df40e7b08ca846062bf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148825"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802451"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Az Azure Functions támogatott nyelvek
+# <a name="supported-languages-in-azure-functions"></a>Támogatott nyelvek a Azure Functions
 
-Ez a cikk bemutatja a támogatási szintet kínált nyelvet használhatja az Azure Functions használatával.
+Ez a cikk a Azure Functions használatával használható nyelvekhez kínált támogatási szinteket ismerteti.
 
 ## <a name="levels-of-support"></a>Támogatási szintek
 
-Támogatási három szintre sorolhatók:
+Három támogatási szint létezik:
 
-* **Általánosan elérhető (GA)** – teljes körűen támogatott, és éles használatra jóváhagyott.
-* **Előzetes verzió** – még nem támogatott, de a várt a későbbiekben elérni a végleges verzió állapota.
-* **Kísérleti** – nem támogatott, és előfordulhat, hogy lesz hagyva a jövőben; nem tudunk garanciát végleges Preview-ban és a végleges verzió állapota.
+* **Általánosan elérhető (GA)** – teljes mértékben támogatott és jóváhagyott éles használatra.
+* **Előzetes** verzió – még nem támogatott, de a jövőben várhatóan elérhető lesz a ga állapota.
+* **Kísérleti** – nem támogatott, és a jövőben is elhagyható; az előzetes verzió vagy a GA-állapot jótállása nem lehetséges.
 
-## <a name="languages-in-runtime-1x-and-2x"></a>Nyelveket a futtatókörnyezet 1.x és a 2.x
+## <a name="languages-by-runtime-version"></a>Nyelvek futásidejű verzió szerint 
 
-[Az Azure Functions runtime két verziója](functions-versions.md) érhetők el. Az alábbi táblázat az egyes futtatókörnyezet-verzió támogatott nyelvek.
+[A Azure functions futtatókörnyezet két verziója](functions-versions.md) érhető el. Az alábbi táblázat azt mutatja, hogy az egyes futásidejű verziók Milyen nyelveket támogatnak.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 ### <a name="experimental-languages"></a>Kísérleti nyelvek
 
-A kísérleti nyelvek verzióban 1.x nem jól méretezhető, és nem támogatják az összes kötését.
+Az 1. x verzióban a kísérleti nyelvek nem méretezhetők jól, és nem támogatják az összes kötést.
 
-Kísérleti jellegű funkciókhoz, amelyeket Ön támaszkodnak, ne használjon, mivel azok nem hivatalos támogatott. Támogatási esetek kísérleti nyelvek kapcsolatos problémák nem lehet megnyitni. 
+Ne használjon olyan kísérleti funkciókat, amelyekre támaszkodik, mivel nem rendelkezik hivatalos támogatással a számukra. A kísérleti nyelvekkel kapcsolatos problémák esetén nem szabad megnyitni a támogatási eseteket. 
 
-A verzió 2.x verziójú futtatókörnyezet kísérleti nyelvek nem támogatja. Újabb támogatott nyelvek csak akkor, amikor a nyelv is támogatott, éles környezetben megjelenik. 
+A 2. x verziójú futtatókörnyezet nem támogatja a kísérleti nyelveket. Az új nyelvek támogatását csak akkor adja hozzá a rendszer, ha a nyelv az éles környezetben is támogatott. 
 
 ### <a name="language-extensibility"></a>Nyelvi bővíthetőség
 
-A 2.x verziójú futtatókörnyezet arra tervezték, hogy [nyelvi bővíthetőség](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). A JavaScript és Java nyelven a 2.x verziójú futtatókörnyezet a beépített a bővíthetőséget.
+A 2. x verziótól kezdődően a futtatókörnyezet [nyelvi bővíthetőséget](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)kínál. A 2. x futtatókörnyezetben található JavaScript-és Java-nyelvek ezzel a bővíthetőséggel vannak felépítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az Azure Functions használata a végleges verzió vagy előzetes nyelvek valamelyikével, a következő forrásanyagokban talál:
+Ha többet szeretne megtudni a függvények a támogatott nyelveken való fejlesztéséről, tekintse meg a következő forrásokat:
 
-> [!div class="nextstepaction"]
-> [C#](functions-reference-csharp.md)
-
-> [!div class="nextstepaction"]
-> [F#](functions-reference-fsharp.md)
-
-> [!div class="nextstepaction"]
-> [JavaScript](functions-reference-node.md)
-
-> [!div class="nextstepaction"]
-> [Java](functions-reference-java.md)
-
-> [!div class="nextstepaction"]
-> [Python](functions-reference-python.md)
++ [C#a Class Library fejlesztői referenciája](functions-dotnet-class-library.md)
++ [C#parancsfájl fejlesztői referenciája](functions-reference-csharp.md)
++ [Java fejlesztői segédlet](functions-reference-java.md)
++ [JavaScript fejlesztői segédlet](functions-reference-node.md)
++ [A PowerShell fejlesztői referenciája](functions-reference-powershell.md)
++ [Python fejlesztői segédlet](functions-reference-python.md)
++ [Írógéppel – fejlesztői segédlet](functions-reference-node.md#typescript)

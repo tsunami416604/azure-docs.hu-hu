@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 650e45ca9092b9c81b2127eb995a0297745410a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b452fccf2ae0915592420bdda3a47fef43eba9a8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244137"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788689"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute titkosítása
  
@@ -31,7 +31,7 @@ Nem. Ha a MACsec konfigurálva van, és a kulcs nem egyezik, elveszíti a kapcso
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Engedélyezi a MACsec a ExpressRoute a hálózati teljesítmény közvetlen romlását?
 A MACsec titkosítás és visszafejtés az általunk használt útválasztó hardverén történik. Az oldalunkon nincs hatással a teljesítményre. Érdemes azonban megkeresni a hálózati szolgáltatót a használt eszközökhöz, és látnia kell, hogy a MACsec rendelkezik-e teljesítménnyel.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>mely titkosítási csomagok támogatottak a titkosításhoz?
-Támogatjuk a AES128 (GCM – AES – 128) és a AES256 (GCM – AES – 256) használatát.
+Támogatjuk a AES128 és a AES256.
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Végpontok közötti titkosítás az IPsec-ben – gyakori kérdések
 Az IPsec egy [IETF standard](https://tools.ietf.org/html/rfc6071). A Internet Protocol (IP) szintjén vagy a 3. hálózati rétegben titkosítja az adatfájlokat. A helyszíni hálózat és az Azure-beli virtuális hálózat (VNET) közötti végpontok közötti kapcsolat titkosításához használhatja az IPsec protokollt. Tekintse meg az alábbi további gyakori kérdéseket.

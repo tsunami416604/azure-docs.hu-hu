@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9fcac058a510b8b7fed5b3967bbbf439dd4c0f71
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561339"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786733"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszó-visszaállítás
 
 Hogyan működik az önkiszolgáló jelszó-visszaállítás (SSPR)? Mit jelent ez a beállítás az illesztőfelületen? Folytassa az olvasást a Azure Active Directory (Azure AD) SSPR kapcsolatos további információkért.
 
@@ -34,9 +34,9 @@ Amikor egy felhasználó a jelszó-visszaállítási portálra lép, a rendszer 
 
 Olvassa el a következő lépéseket a jelszó-visszaállítási oldal mögötti logika megismeréséhez:
 
-1. A felhasználó kiválasztja a **nem tud hozzáférni a fiók** hivatkozásához, [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)vagy közvetlenül a következőre lép:.
+1. A felhasználó kiválasztja a **nem tud hozzáférni a fiók** hivatkozásához, vagy közvetlenül a [https://aka.ms/sspr](https://passwordreset.microsoftonline.com).
    * A böngésző területi beállítása alapján a felhasználói élmény a megfelelő nyelven jelenik meg. A jelszó-visszaállítási élmény az Office 365 által támogatott nyelvekre van honosítva.
-   * Ha egy másik honosított nyelven szeretné megtekinteni a jelszó-visszaállítási portált, fűzze hozzá a "? MKT =" kifejezést a jelszó-visszaállítási URL-cím [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)végéhez a következő példával: spanyol.
+   * Ha egy másik honosított nyelven szeretné megtekinteni a jelszó-változtatási portált, fűzze hozzá a "? MKT =" kifejezést a jelszó-visszaállítási URL-cím végéhez a következő példával: spanyol [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us).
 2. A felhasználó beírja a felhasználói azonosítót, és átadja a CAPTCHA-t.
 3. Az Azure AD ellenőrzi, hogy a felhasználó használhatja-e ezt a szolgáltatást a következő ellenőrzések végrehajtásával:
    * Ellenőrzi, hogy a felhasználó rendelkezik-e ezzel a szolgáltatással, és van-e hozzárendelve Azure AD-licenc.
@@ -52,13 +52,13 @@ Olvassa el a következő lépéseket a jelszó-visszaállítási oldal mögötti
      * Ha a visszaírási nincs telepítve, és a felhasználó jelszava felügyelve van a helyszínen, a felhasználónak kapcsolatba kell lépnie a rendszergazdával a jelszavuk alaphelyzetbe állításához.
 4. Ha megállapítható, hogy a felhasználó sikeresen visszaállíthatja a jelszavát, akkor a felhasználó az alaphelyzetbe állítási folyamaton keresztül vezérli.
 
-## <a name="authentication-methods"></a>Hitelesítési módszerek
+## <a name="authentication-methods"></a>Hitelesítési módok
 
 Ha a SSPR engedélyezve van, ki kell választania legalább egyet a következő beállítások közül a hitelesítési módszerekhez. Időnként ezeket a beállításokat "Gates"-ként is hallja. Javasoljuk, hogy **két vagy több hitelesítési módszert válasszon** , hogy a felhasználók nagyobb rugalmasságot biztosítsanak abban az esetben, ha nem tudnak hozzáférni az egyikhez. Az alább felsorolt módszerekkel kapcsolatos további információk a következő cikkben találhatók: [Mi a hitelesítési módszer?](concept-authentication-methods.md).
 
-* Mobilalkalmazásbeli értesítés
-* Mobilalkalmazás-kód
-* Email
+* Mobilalkalmazás-értesítés
+* Mobile App Code
+* E-mail cím
 * Mobiltelefon
 * Irodai telefon
 * Biztonsági kérdések
@@ -86,16 +86,22 @@ Ha a felhasználó nem rendelkezik a regisztrált minimálisan szükséges móds
 Ha mobil alkalmazást használ, például a Microsoft Authenticator alkalmazást a jelszó-visszaállítási módszerként, vegye figyelembe az alábbi figyelmeztetéseket:
 
 * Ha a rendszergazdáknak a jelszó alaphelyzetbe állításához egy metódust kell használni, az ellenőrzési kód az egyetlen elérhető lehetőség.
-* Ha a rendszergazdáknak két módszert kell használniuk a jelszó alaphelyzetbe állításához, a felhasználók a többi engedélyezett módszer mellett értesítési **vagy** ellenőrzési kódokat is használhatnak.
+* Ha a rendszergazdáknak két módszert kell használniuk a jelszó alaphelyzetbe állításához, a felhasználók a többi engedélyezett módszer **mellett értesítési** **vagy** ellenőrzési kódokat is használhatnak.
 
-| Az új jelszó kéréséhez szükséges módszerek száma | Egy | Kettő |
+| Az alaphelyzetbe állításhoz szükséges módszerek száma | Egy | Kettő |
 | :---: | :---: | :---: |
 | Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
 
-A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az önkiszolgáló jelszó- [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)visszaállításhoz való regisztráció során. A felhasználók a következő címen [https://aka.ms/mfasetup](https://aka.ms/mfasetup) [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)regisztrálhatják a Mobile alkalmazást: vagy az új biztonsági adatok regisztrációjának előzetes verziójában.
+A felhasználók nem regisztrálhatják a mobil alkalmazásaikat az önkiszolgáló jelszó-visszaállítás [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)való regisztrálásakor. A felhasználók a [https://aka.ms/mfasetup](https://aka.ms/mfasetup)címen regisztrálhatják a mobil alkalmazást, vagy az új biztonsági adatok regisztrációjának előzetes verzióját [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)címen.
 
 > [!WARNING]
-> Engedélyeznie kell a konvergens regisztrációt az önkiszolgáló [jelszó-visszaállításhoz és az Azure multi-Factor Authentication szolgáltatáshoz (nyilvános előzetes verzió)](concept-registration-mfa-sspr-converged.md) , mielőtt a felhasználók el tudják érni [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)az új felhasználói élményt.
+> Engedélyeznie kell a [konvergens regisztrációt az önkiszolgáló jelszó-visszaállításhoz és az Azure multi-Factor Authenticationhoz (nyilvános előzetes verzió)](concept-registration-mfa-sspr-converged.md) , mielőtt a felhasználók el tudják érni az új felhasználói élményt a [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+
+> [!IMPORTANT]
+> Egy 1 kapus házirend konfigurálásakor a hitelesítő alkalmazás nem választható ki egyetlen hitelesítési módszerként. Hasonlóképpen, a hitelesítő alkalmazás és csak egy további metódus nem választható ki 2 kapus házirend konfigurálásakor.
+> Ezután a hitelesítő alkalmazást metódusként tartalmazó SSPR szabályzatok konfigurálásakor legalább egy további módszert ki kell választani egy 1 kapus házirend konfigurálásakor, és legalább két további módszert kell kijelölni egy 2 kapus házirend konfigurálásakor.
+> Ennek a követelménynek az oka az, hogy az aktuális SSPR-regisztrációs felület nem tartalmazza a hitelesítő alkalmazás regisztrálásának lehetőségét. A hitelesítő alkalmazás regisztrálásának lehetősége az új, [konvergens regisztráció az önkiszolgáló jelszó-visszaállításhoz és az Azure multi-Factor Authentication (nyilvános előzetes verzió)](concept-registration-mfa-sspr-converged.md)része.
+> Ha olyan házirendeket tesz lehetővé, amelyek csak a hitelesítő alkalmazást (1 kapus házirendek esetében) vagy a hitelesítő alkalmazást használják, és csak egy további módszer (a 2 kapus házirendek esetében), a felhasználók nem regisztrálhatnak a SSPR, amíg nem konfigurálták az új szolgáltatás használatára. regisztrációs élmény.
 
 ### <a name="change-authentication-methods"></a>Hitelesítési módszerek módosítása
 
@@ -126,7 +132,7 @@ Ha engedélyezi ezt a beállítást, a felhasználónak be kell fejeznie a jelsz
 * Összevont alkalmazások
 * Az Azure AD-t használó egyéni alkalmazások
 
-Ha a regisztráció megkövetelése le van tiltva, a felhasználók manuálisan is regisztrálhatnak. A hozzáférési panel [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) **profil** lapján megkereshetik vagy kiválaszthatják a jelszó-visszaállítási hivatkozás **regisztrálása** hivatkozásra.
+Ha a regisztráció megkövetelése le van tiltva, a felhasználók manuálisan is regisztrálhatnak. Vagy ellátogathatnak [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) vagy kiválaszthatják a **jelszó-visszaállítási hivatkozás regisztrálása** hivatkozásra a hozzáférés panel **profil** lapján.
 
 > [!NOTE]
 > A felhasználó a **Mégse gombra** kattintva vagy az ablak bezárásával elvetheti a jelszó-átállítási regisztrációs portált. A rendszer azonban minden egyes bejelentkezés alkalmával regisztrálja őket, amíg a regisztrációt el nem végzik.
@@ -135,7 +141,7 @@ Ha a regisztráció megkövetelése le van tiltva, a felhasználók manuálisan 
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Azon napok száma, amely után a felhasználóknak meg kell adniuk a hitelesítési adataik ismételt megerősítését
 
-Ez a beállítás határozza meg a hitelesítési adatok beállítása és megerősítése között eltelt időt, és csak akkor érhető el, ha engedélyezi a **felhasználók regisztrációját** a bejelentkezéskor lehetőségre.
+Ez a beállítás határozza meg a hitelesítési adatok beállítása és megerősítése között eltelt időt, és csak akkor érhető el, ha engedélyezi a **felhasználók regisztrációját a bejelentkezéskor** lehetőségre.
 
 Az érvényes értékek 0 – 730 nap, a "0" kifejezéssel pedig azt jelenti, hogy a felhasználók soha nem kérik újra a hitelesítési adataik megerősítését.
 
@@ -149,7 +155,7 @@ Ha ez a beállítás **Igen**értékre van állítva, akkor a felhasználók a j
 
 Ha ez a beállítás az **Igen**értékre van állítva, akkor az *összes rendszergazda* e-mailt kap az elsődleges e-mail-CÍMÉre az Azure ad-ban található fájlban. Az e-mail értesíti őket arról, hogy egy másik rendszergazda módosította a jelszavát a SSPR használatával.
 
-Példa: Négy rendszergazda található a környezetben. A rendszergazda A SSPR használatával visszaállítja a jelszavukat. A B, C és D rendszergazdák e-mailben értesítést kapnak a jelszó-visszaállításról.
+Példa: egy környezetben négy rendszergazda található. A rendszergazda A SSPR használatával visszaállítja a jelszavukat. A B, C és D rendszergazdák e-mailben értesítést kapnak a jelszó-visszaállításról.
 
 ## <a name="on-premises-integration"></a>Helyszíni integráció
 
@@ -188,16 +194,16 @@ Az Azure AD önkiszolgáló jelszó-visszaállítási szolgáltatása a rendszer
 
 A jelszó alaphelyzetbe állítása és módosítása teljes mértékben támogatott az összes vállalatközi (B2B) konfigurációban. A B2B felhasználói jelszó alaphelyzetbe állítása a következő három esetben támogatott:
 
-* **Meglévő Azure ad-Bérlővel rendelkező partnerszervezet felhasználói**: Ha a szervezet, amellyel a partnerrel rendelkezik, meglévő Azure AD-Bérlővel rendelkezik, a jelszó-visszaállítási házirendeket a bérlőn is *be kell tartani*. A jelszó-visszaállítás működéséhez a partner szervezetnek csak meg kell győződnie arról, hogy az Azure AD SSPR engedélyezve van. Az Office 365-ügyfelek díjmentesen használhatók, és az első [lépések a jelszó-kezelési](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató lépéseit követve engedélyezhetők.
-* Önkiszolgáló regisztráción **keresztül regisztrációt végző felhasználók** : Ha a szervezet, amellyel az [önkiszolgáló regisztrációs](../users-groups-roles/directory-self-service-signup.md) funkciót használja, a bérlőhöz való belépéshez visszaállíthatja a jelszót a regisztrált e-mail-címre.
-* **B2B-felhasználók**: Az új [Azure ad B2B-funkciók](../active-directory-b2b-what-is-azure-ad-b2b.md) használatával létrehozott új B2B-felhasználók a Meghívási folyamat során regisztrált e-mail-címmel is visszaállíthatják a jelszavukat.
+* **Meglévő Azure ad-Bérlővel rendelkező partnerszervezet felhasználói**: Ha a szervezet, amelyhez a partnert használja, meglévő Azure ad-Bérlővel rendelkezik, a *jelszó-visszaállítási házirendeket a bérlőn is be kell tartani*. A jelszó-visszaállítás működéséhez a partner szervezetnek csak meg kell győződnie arról, hogy az Azure AD SSPR engedélyezve van. Az Office 365-ügyfelek díjmentesen használhatók, és az első [lépések a jelszó-kezelési](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató lépéseit követve engedélyezhetők.
+* Felhasználók, akik önkiszolgáló regisztráción **keresztül regisztrálhatnak** : Ha a szervezet, amellyel az önkiszolgáló bejelentkezési funkciót felhasználva bekerül egy bérlőbe, visszaállíthatja a jelszót a regisztrált e-mail [-](../users-groups-roles/directory-self-service-signup.md) címre.
+* **B2B-felhasználók**: az új [Azure ad B2B-funkciók](../active-directory-b2b-what-is-azure-ad-b2b.md) használatával létrehozott összes új B2B-felhasználó is visszaállíthatja a jelszavukat a Meghívási folyamat során regisztrált e-mail-címre.
 
-A forgatókönyv teszteléséhez lépjen https://passwordreset.microsoftonline.com a következő partner-felhasználók egyikével. Ha egy másodlagos e-mail-vagy hitelesítési e-mail-cím van megadva, a jelszó-visszaállítás a várt módon működik.
+A forgatókönyv teszteléséhez lépjen a https://passwordreset.microsoftonline.com az egyik partner felhasználóval. Ha egy másodlagos e-mail-vagy hitelesítési e-mail-cím van megadva, a jelszó-visszaállítás a várt módon működik.
 
 > [!NOTE]
 > Az Azure ad-bérlőhöz (például Hotmail.com, Outlook.com vagy más személyes e-mail-címekhez) hozzáféréssel rendelkező Microsoft-fiókok nem tudják használni az Azure AD-SSPR. A jelszó alaphelyzetbe állításához a következő információkat kell használnia, [Ha nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 
@@ -211,7 +217,7 @@ Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további in
 * [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Az elérhető Azure AD-hitelesítési módszerek és a szükséges mennyiség"

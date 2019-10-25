@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory regisztrált alkalmazás korlátozása felhasználói csoportra
+title: A Azure Active Directory regisztrált alkalmazás korlátozása felhasználók körére
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan korlátozhatja az Azure AD-ban regisztrált alkalmazásaihoz való hozzáférést egy kiválasztott felhasználói csoportba.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51c49633e68fdc5f9afd4bf0205adaa625940ff
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812973"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803948"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Útmutató: Alkalmazás korlátozása felhasználók egy halmazára
+# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Útmutató: az alkalmazás korlátozása felhasználói csoportra
 
 Az Azure Active Directory (Azure AD) bérlőben regisztrált alkalmazások alapértelmezés szerint a sikeres hitelesítést végző bérlő összes felhasználója számára elérhetők.
 
@@ -43,7 +44,7 @@ Egy adott alkalmazás a következő típusú alkalmazásokkal rendelkező felhas
 - A közvetlenül az Azure AD alkalmazás platformján létrehozott alkalmazások, amelyek a OAuth 2.0/OpenID Connect hitelesítést használják, miután egy felhasználó vagy rendszergazda beleegyezett az adott alkalmazásba.
 
      > [!NOTE]
-     > Ez a funkció csak a Web App/web API-hoz és a vállalati alkalmazásokhoz érhető el. A natívként regisztrált alkalmazások [](quickstart-v1-integrate-apps-with-azure-ad.md) nem korlátozhatók a bérlőben lévő felhasználók vagy biztonsági csoportok csoportjára.
+     > Ez a funkció csak a Web App/web API-hoz és a vállalati alkalmazásokhoz érhető el. A [natívként](quickstart-v1-integrate-apps-with-azure-ad.md) regisztrált alkalmazások nem korlátozhatók a bérlőben lévő felhasználók vagy biztonsági csoportok csoportjára.
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>Az alkalmazás frissítése a felhasználó-hozzárendelés engedélyezéséhez
 
@@ -69,13 +70,13 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhatók l
 1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen**értékre. Ha a beállítás értéke **Igen**, akkor a felhasználóknak először hozzá kell rendelniük ezt az alkalmazást ahhoz, hogy hozzáférhessenek hozzá.
 1. A konfigurációs módosítás mentéséhez válassza a **Mentés** lehetőséget.
 
-### <a name="app-registration"></a>Appok regisztrálása
+### <a name="app-registration"></a>Alkalmazásregisztráció
 
 1. Lépjen a [**Azure Portal**](https://portal.azure.com/).
 1. A felső sávon válassza ki a bejelentkezett fiókot. 
 1. A **címtár**területen válassza ki azt az Azure ad-bérlőt, ahol az alkalmazás regisztrálva lesz.
 1. A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget.
-1. A **Azure Active Directory** ablaktáblán válassza az **alkalmazás** -regisztrációk lehetőséget a **Azure Active Directory** bal oldali navigációs menüjében.
+1. A **Azure Active Directory** ablaktáblán válassza az **alkalmazás-regisztrációk** lehetőséget a **Azure Active Directory** bal oldali navigációs menüjében.
 1. Hozza létre vagy válassza ki a kezelni kívánt alkalmazást. Az alkalmazás regisztrációjának **tulajdonosaként** kell lennie.
 1. Az alkalmazás **áttekintése** lapon kövesse a **felügyelt alkalmazás helyi címtárban** hivatkozását az oldal tetején található Essentials elem alatt. Ezzel az alkalmazás regisztrációjának _felügyelt vállalati alkalmazására_ kerül.
 1. A bal oldali navigációs panelen válassza a **Tulajdonságok**lehetőséget.

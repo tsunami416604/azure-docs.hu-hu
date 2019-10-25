@@ -1,23 +1,24 @@
 ---
-title: Kapcsolódás a Power BI-Azure Searchsal rendelkező Knowledge Store-hoz
-description: Azure Search Tudásbázis összekötése az elemzés és a feltárás Power BIával.
+title: Kapcsolódás a Power BIsal rendelkező Knowledge Store-hoz
+titleSuffix: Azure Cognitive Search
+description: Az Azure Cognitive Search Knowledge Store összekapcsolásával elemzést és feltárást Power BI.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265650"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790064"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
 > [!Note]
-> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. A [Azure Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
+> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. Az [Azure Cognitive Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 >
 Ebből a cikkből megtudhatja, hogyan csatlakozhat és vizsgálhat meg egy tudásbázist a Power BI Desktop alkalmazás Power Query használatával. Az útmutatóban használt Knowledge Store-minta létrehozásával kapcsolatban tekintse meg a [Knowledge Store létrehozása a Azure Portalban](knowledge-store-create-portal.md)című témakört.
 
@@ -33,13 +34,13 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat és vizsgálhat meg egy tudá
 
 1. Az **adatlekérdezés** ablakban válassza az **Azure**lehetőséget, majd válassza az **Azure Table Storage**elemet.
 
-1. Kattintson a **Csatlakozás** gombra.
+1. Kattintson a **Connect** (Csatlakozás) gombra.
 
 1. A **fiók neve vagy URL-címe**mezőben adja meg az Azure Storage-fiók nevét (a teljes URL-cím lesz létrehozva).
 
 1. Ha a rendszer kéri, adja meg a Storage-fiók kulcsát.
 
-1. Válassza ki a *hotelReviewsSsDocument*, a *HotelReviewsSsKeyPhrases*és a *hotelReviewsSsPages* táblákat. Ezek a táblák az Azure Table-kivetítések, amelyeket a Hotel a Knowledge Store létrehozásakor kiválasztott kognitív szolgáltatás-bővítésekkel kapcsolatos információkat tartalmaz.
+1. Válassza ki a *hotelReviewsSsDocument*, a *HotelReviewsSsKeyPhrases*és a *hotelReviewsSsPages* táblákat. Ezek a táblák az Azure Table-kivetítések, amelyek a szálloda által áttekintett mintaadatok, és tartalmazzák azokat a mesterséges intelligenciát, amelyeket a rendszer a Knowledge Store létrehozásakor választott ki.
 
 1. Kattintson a **Betöltés**elemre.
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 
@@ -99,7 +100,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkből megtudhatja, hogyan derítheti fel ezt a Knowledge áruházat a Storage Explorer használatával.
 

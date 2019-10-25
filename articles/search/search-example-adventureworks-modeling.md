@@ -1,23 +1,23 @@
 ---
-title: 'Példa: A AdventureWorks-leltári adatbázis modellezése – Azure Search'
-description: Megtudhatja, hogyan modellezheti a kapcsolatokat, és hogyan alakíthatja át azt egy összevont adatkészletbe az indexeléshez és a teljes szöveges kereséshez Azure Searchban.
+title: 'Példa: a AdventureWorks-leltár adatbázisának modellezése'
+titleSuffix: Azure Cognitive Search
+description: Megtudhatja, hogyan modellezheti a kapcsolatokat, és hogyan alakíthatja át azt egy összevont adatkészletbe az indexeléshez és a teljes szöveges kereséshez az Azure Cognitive Searchban.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274037"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792991"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Példa: A Azure Search AdventureWorks-leltározási adatbázisának modellezése
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Példa: az Azure-beli AdventureWorks-leltári adatbázis modellezése Cognitive Search
 
-A Azure Search az [indexelési (adatfeldolgozási) folyamat](search-what-is-an-index.md)bemenetként fogadja az összeolvasztott sorhalmazt. Ha a forrásadatok egy SQL Server viszonyítási adatbázisból származnak, ez a cikk azt mutatja be, hogyan hozható létre egy összevont sorhalmaz az indexelés előtt, az AdventureWorks példaként használva.
+Az Azure Cognitive Search egy összeolvasztott sorhalmazt fogad el bemenetként az [indexelési (adatfeldolgozási) folyamathoz](search-what-is-an-index.md). Ha a forrásadatok egy SQL Server viszonyítási adatbázisból származnak, ez a cikk azt mutatja be, hogyan hozható létre egy összevont sorhalmaz az indexelés előtt, az AdventureWorks példaként használva.
 
 ## <a name="about-adventureworks"></a>A AdventureWorks névjegye
 
@@ -43,7 +43,7 @@ A probléma megoldása nem annyira egyszerű, hogy a cél indexet a ProductModel
 
 ## <a name="use-a-collection-data-type"></a>Gyűjtemény adattípusának használata
 
-A "helyes megközelítés" olyan keresési séma funkció használata, amely nem rendelkezik közvetlen párhuzamosan az adatbázis-modellben: **Collection(Edm.String)** . Ez a szerkezet a Azure Search index sémában van definiálva. A gyűjtemény adattípusa akkor használatos, ha egy nagyon hosszú (szimpla) karakterlánc helyett az egyes karakterláncok listáját kell képviselnie. Ha címkéket vagy kulcsszavakat tartalmaz, a mezőhöz gyűjtemény adattípust kell használnia.
+A "helyes megközelítés" olyan keresési séma funkció használata, amely nem rendelkezik közvetlen párhuzamosan a következő adatbázismodell-modellben: **Collection (EDM. String)** . Ez a szerkezet az Azure Cognitive Search index sémában van definiálva. A gyűjtemény adattípusa akkor használatos, ha egy nagyon hosszú (szimpla) karakterlánc helyett az egyes karakterláncok listáját kell képviselnie. Ha címkéket vagy kulcsszavakat tartalmaz, a mezőhöz gyűjtemény adattípust kell használnia.
 
 A többértékű index mezők **(EDM. String)** a "Color", a "size" és a "képhez" tulajdonság megadásával a kiegészítő információk megmaradnak az elemzéshez és a szűréshez, az index ismétlődő bejegyzésekkel való szennyezése nélkül. Ehhez hasonlóan alkalmazzon összesítő függvényeket a numerikus termékek mezőire, az indexelési **minListPrice** az egyes termékek **listPrice**helyett.
 
@@ -160,7 +160,7 @@ WHERE
   md.Culture='en'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Példa: Többszintű dimenziók besorolása Azure Search](search-example-adventureworks-multilevel-faceting.md)
+> [Példa: többszintű dimenziós besorolások az Azure-ban Cognitive Search](search-example-adventureworks-multilevel-faceting.md)

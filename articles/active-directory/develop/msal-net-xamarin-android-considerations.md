@@ -1,5 +1,6 @@
 ---
-title: Xamarin Android-megfontolások (Microsoft Authentication Library for .NET) | Azure
+title: Xamarin Android-megfontolások (Microsoft Authentication Library for .NET)
+titleSuffix: Microsoft identity platform
 description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2d6af9753887ffa593a44fba9faa3376066417a8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532478"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802645"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus megfontolások a MSAL.NET
 Ez a cikk a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat ismerteti.
@@ -58,7 +59,7 @@ var pca = PublicClientApplicationBuilder
 
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Annak biztosítása, hogy a vezérlés visszakerüljön a MSAL, amint a hitelesítési folyamat interaktív része véget ér
-Androidon felül kell bírálnia `OnActivityResult` a metódust `Activity` , és meg kell hívnia a AuthenticationContinuationHelper MSAL osztály SetAuthenticationContinuationEventArgs metódusát.
+Androidon felül kell bírálnia a `Activity` `OnActivityResult` metódusát, és meg kell hívnia a AuthenticationContinuationHelper MSAL osztály SetAuthenticationContinuationEventArgs metódusát.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -74,7 +75,7 @@ protected override void OnActivityResult(int requestCode,
 Ez a vonal biztosítja, hogy a vezérlő visszakerüljön a MSAL, amint a hitelesítési folyamat interaktív része befejeződött.
 
 ## <a name="update-the-android-manifest"></a>Az Android-jegyzékfájl frissítése
-A `AndroidManifest.xml` következő értékeket kell tartalmaznia:
+A `AndroidManifest.xml`nak a következő értékeket kell tartalmaznia:
 ```csharp
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -88,7 +89,7 @@ A `AndroidManifest.xml` következő értékeket kell tartalmaznia:
 
 ## <a name="use-the-embedded-web-view-optional"></a>A beágyazott webes nézet használata (nem kötelező)
 
-Alapértelmezés szerint a MSAL.NET a rendszerböngészőt használja, amely lehetővé teszi az egyszeri bejelentkezést a webalkalmazásokkal és más alkalmazásokkal. Bizonyos ritkán előforduló esetekben érdemes megadnia, hogy a beágyazott webes nézetet kívánja használni. További információ: [a MSAL.net](msal-net-web-browsers.md) webböngészőt és [Android rendszerű böngészőt](msal-net-system-browser-android-considerations.md)használ.
+Alapértelmezés szerint a MSAL.NET a rendszerböngészőt használja, amely lehetővé teszi az egyszeri bejelentkezést a webalkalmazásokkal és más alkalmazásokkal. Bizonyos ritkán előforduló esetekben érdemes megadnia, hogy a beágyazott webes nézetet kívánja használni. További információ: [a MSAL.net webböngészőt](msal-net-web-browsers.md) és [Android rendszerű böngészőt](msal-net-system-browser-android-considerations.md)használ.
 
 ```csharp
 bool useEmbeddedWebView = !app.IsSystemWebViewAvailable;
@@ -99,7 +100,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 Ha létrehoz egy új Xamarin. Forms alkalmazást, és felvesz egy hivatkozást a MSAL.Net NuGet-csomagra, akkor ez csak működni fog.
 Ha azonban egy meglévő Xamarin. Forms alkalmazást szeretne frissíteni a MSAL.NET Preview 1.1.2 vagy újabb verziójára, előfordulhat, hogy felmerülő problémák merülhetnek fel.
 
@@ -113,9 +114,9 @@ A problémák elhárításához a következőket kell tennie:
 - Ha a parancssorból kíván felépíteni, próbálja meg eltávolítani az/m parancsot a parancsból, ha azt használja.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hiba: A "AuthenticationContinuationHelper" név nem létezik az aktuális környezetben.
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hiba: a "AuthenticationContinuationHelper" név nem létezik az aktuális környezetben.
 
-Ez valószínűleg azért van, mert a Visual Studio nem tudta megfelelően frissíteni az Android. csproj * fájlt. Előfordul, hogy a  **\<HintPath >** filepath helytelenül tartalmazza a netstandard13-t a **monoandroid90**helyett.
+Ez valószínűleg azért van, mert a Visual Studio nem tudta megfelelően frissíteni az Android. csproj * fájlt. Előfordul, hogy a **\<HintPath >** filepath helytelenül tartalmaz netstandard13 a **monoandroid90**helyett.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -124,7 +125,7 @@ Ez valószínűleg azért van, mert a Visual Studio nem tudta megfelelően friss
 </Reference>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További részleteket és mintákat a következő minta readme.md-fájljának [Android-specifikus megfontolások](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) című részében talál:
 

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b0c9fd85171020c9b78dc166980f85bcd89d8d67
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 3852531615418ffe5397295bc194de34139d6e81
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692319"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792659"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Oktatóanyag: az autó árának előrejelzése a vizuális felületen
 
@@ -40,15 +40,15 @@ Az oktatóanyag [második részében](ui-tutorial-automobile-price-deploy.md) me
 
 ## <a name="create-a-new-pipeline"></a>Új folyamat létrehozása
 
-Azure Machine Learning folyamatok több, függő adatfeldolgozási lépést szerveznek egyetlen erőforrásba. A folyamatok segítségével összetett gépi tanulási munkafolyamatokat szervezheti, kezelheti és használhatja fel a projektek és a felhasználók számára. Azure Machine Learning folyamat létrehozásához Azure Machine Learning szolgáltatási munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
+Azure Machine Learning folyamatok több, függő gépi tanulási és adatfeldolgozási lépést szerveznek egyetlen erőforrásba. A folyamatok segítségével összetett gépi tanulási munkafolyamatokat szervezheti, kezelheti és használhatja fel a projektek és a felhasználók számára. Azure Machine Learning folyamat létrehozásához Azure Machine Learning szolgáltatási munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
 
 ### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
-Ha Azure Machine Learning munkaterülettel rendelkezik, ugorjon a következő szakaszra.
+Ha Azure Machine Learning szolgáltatás-munkaterülettel rendelkezik, ugorjon a következő szakaszra.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="create-a-pipeline"></a>Folyamat létrehozása
+### <a name="create-the-pipeline"></a>A folyamat létrehozása
 
 1. Jelentkezzen be a [ml.Azure.com](https://ml.azure.com) -be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
 
@@ -56,7 +56,7 @@ Ha Azure Machine Learning munkaterülettel rendelkezik, ugorjon a következő sz
 
     ![Képernyőkép a vizuális munkaterület eléréséről, amely bemutatja, hogyan érheti el a vizuális felületet](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
 
-1. Válassza az **üres folyamat**elemet.
+1. Válassza **a könnyen használható előre elkészített modulok**elemet.
 
 1. Válassza ki az alapértelmezett **"folyamat – létrehozva..."** nevű folyamatot a vászon tetején, és nevezze át valami értelmesre. Például: **"autó árának előrejelzése"** . A névnek nem kell egyedinek lennie.
 
@@ -69,32 +69,6 @@ A vizuális felületen több minta adatkészletet is megadhat, amelyekkel kísé
 1. Válassza ki az adatkészletet, az **autó árát (RAW)** , majd húzza rá a vászonra.
 
    ![Az adathúzás vászonra](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
-
-1. Válassza ki, hogy mely adatoszlopok működjenek együtt a szolgáltatásban. Írja be a **Kiválasztás elemet** a paletta tetején található keresőmezőbe, és keresse meg az **Oszlopok kiválasztása az adatkészlet** modulban.
-
-1. Kattintson és húzza az **Oszlopok kiválasztása az adatkészlet** modulban a vászonra. Dobja el a modult az adatkészlet modul alatt.
-
-1. A korábban hozzáadott adatkészlet összekapcsolásához kattintson a és a húzás elemre az **adatkészlet kijelölése oszlopban** . Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása**bemeneti portjára, amely a modul tetején lévő kis kör.
-
-    > [!TIP]
-    > Az adatáramlás a folyamaton keresztül jön létre, amikor egy modul kimeneti portját egy másik bemeneti porthoz kapcsolja.
-    >
-
-    ![Modulok összekapcsolása](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
-
-1. A vászontól jobbra található **Tulajdonságok** ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
-
-    Az **Oszlopok kiválasztása** párbeszédpanelen válassza az **összes oszlop** lehetőséget, és adja meg az **összes funkciót**.
-
-1. A jobb alsó sarokban kattintson a **Mentés** gombra az oszlop választójának bezárásához.
-
-### <a name="run-the-pipeline"></a>A folyamat futtatása
-
-Bármikor rákattinthat egy adatkészlet vagy modul kimeneti portjára, és megtekintheti, hogy az adat milyen módon néz ki az adatfolyamatban. Ha a **kimenetek** lap nem jelenik meg, először futtatnia kell a folyamatot.
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 ### <a name="visualize-the-data"></a>Az adatok vizualizációja
 
@@ -114,30 +88,23 @@ Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 
-Az adatkészletek általában némi előfeldolgozást igényelnek az elemzés előtt. Előfordulhat, hogy néhány hiányzó értéket észlelt az adatkészlet megjelenítésekor. Ahhoz, hogy a modell elemezni tudja az adatokat, el kell távolítani a hiányzó értékeket. A hiányzó értékekkel rendelkező sorok törlődnek.
+Az adatkészletek általában némi előfeldolgozást igényelnek az elemzés előtt. Előfordulhat, hogy néhány hiányzó értéket észlelt az adatkészlet megjelenítésekor. Ahhoz, hogy a modell elemezni tudja az adatokat, el kell távolítani a hiányzó értékeket. A sok hiányzó értékkel rendelkező oszlopokat el kell távolítania, és el kell távolítania a hiányzó értékeket tartalmazó sorokat.
 
-1. Írja be a **Kiválasztás elemet** a paletta tetején található keresőmezőbe, és keresse meg az **Oszlopok kiválasztása az adatkészlet** modulban.
+### <a name="remove-a-column"></a>Oszlop eltávolítása
+
+A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az adatkészletben a **normalizált veszteségek** oszlop sok értéket tartalmaz, ezért a modellből kizárja ezt az oszlopot.
+
+1. Válassza ki, hogy mely adatoszlopok működjenek együtt a szolgáltatásban. Írja be a **Kiválasztás elemet** a paletta tetején található keresőmezőbe, és keresse meg az **Oszlopok kiválasztása az adatkészlet** modulban.
 
 1. Kattintson és húzza az **Oszlopok kiválasztása az adatkészlet** modulban a vászonra. Dobja el a modult az adatkészlet modul alatt.
 
 1. A korábban hozzáadott adatkészlet összekapcsolásához kattintson a és a húzás elemre az **adatkészlet kijelölése oszlopban** . Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása**bemeneti portjára, amely a modul tetején lévő kis kör.
 
+    > [!TIP]
+    > Az adatáramlás a folyamaton keresztül jön létre, amikor egy modul kimeneti portját egy másik bemeneti porthoz kapcsolja.
+    >
+
     ![Modulok összekapcsolása](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
-
-1. A vászontól jobbra található **Tulajdonságok** ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
-
-    Az **Oszlopok kiválasztása** párbeszédpanelen válassza az **összes oszlop** lehetőséget, és adja meg az **összes funkciót**.
-
-1. A jobb alsó sarokban kattintson a **Mentés** gombra az oszlop választójának bezárásához.
-
-> [!TIP]
-> A bemeneti adatokból hiányzó értékek tisztítása előfeltétel a legtöbb modul a vizualizációs felületen való használatához.
-
-### <a name="remove-column"></a>Oszlop eltávolítása
-
-A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az adatkészletben a **normalizált veszteségek** oszlop nagy számú hiányzó értékkel rendelkezik, ezért a modellből teljes egészében ki kell zárnia ezt az oszlopot.
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
 
@@ -162,6 +129,9 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 ### <a name="clean-missing-data"></a>Hiányzó adatértékek törlése
 
 A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet továbbra is hiányzó értékeket tartalmaz. A fennmaradó hiányzó adatelemet a **tiszta hiányzó** adatmodul használatával távolíthatja el.
+
+> [!TIP]
+> A bemeneti adatokból hiányzó értékek tisztítása előfeltétel a legtöbb modul a vizualizációs felületen való használatához.
 
 1. A **tiszta hiányzó** adatmodul megtalálásához a **keresőmezőbe írja be a** törlés kifejezést.
 
@@ -286,7 +256,7 @@ Az oktatóanyag első részében a következő lépéseket végezte el:
 * A modell képzése
 * A modell pontozása és kiértékelése
 
-A második részből megtudhatja, hogyan helyezheti üzembe a modellt folyamat-végpontként.
+A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 
 > [!div class="nextstepaction"]
 > [Modellek üzembe helyezésének folytatása](ui-tutorial-automobile-price-deploy.md)

@@ -1,13 +1,13 @@
 ---
-title: Nyelvi elemzők hozzáadása – Azure Search
-description: Többnyelvű lexikális szöveg elemzése a nem angol nyelvű lekérdezésekhez és indexekhez Azure Searchban.
-ms.date: 02/14/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz indexben
+titleSuffix: Azure Cognitive Search
+description: Többnyelvű lexikális szöveg elemzése nem angol nyelvű lekérdezésekhez és indexekhez az Azure Cognitive Searchban.
+manager: nitinme
 author: Yahnoosh
 ms.author: jlembicz
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e54fa449e0ed7f3208d9924b69946c6598a00444
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648814"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790142"
 ---
-# <a name="add-language-analyzers-to-an-azure-search-index"></a>Nyelvi elemzők hozzáadása Azure Search indexhez
+# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása egy Azure Cognitive Search indexhez
 
 A *Language Analyzer* egy adott típusú [szöveges elemző](search-analyzers.md) , amely lexikális analízist hajt végre a célnyelv nyelvi szabályainak használatával. Minden kereshető mező rendelkezik egy **Analyzer** tulajdonsággal. Ha az index lefordított karakterláncokat tartalmaz, például a különböző angol és kínai nyelvű szövegeket, megadhatja az egyes mezők nyelvi elemzőit az elemzők gazdag nyelvi képességeinek eléréséhez.  
 
-Azure Search támogatja a Lucene által támogatott 35-elemzőket, valamint az Office-ban és a Bingben használt, saját tulajdonú Microsoft természetes nyelvi feldolgozó technológiával támogatott 50-elemzőket.
+Az Azure Cognitive Search támogatja a Lucene által támogatott 35-elemzőket, valamint az Office-ban és a Bingben használt, saját tulajdonú Microsoft természetes nyelvi feldolgozási technológiával támogatott 50-elemzőket.
 
 ## <a name="comparing-analyzers"></a>Elemzők összehasonlítása
 
@@ -48,11 +48,11 @@ Az alapértelmezett elemző a standard Lucene, amely az angol nyelvhez jól műk
 
 ## <a name="configuring-analyzers"></a>Elemzők konfigurálása
 
-A nyelvi elemzők a következőképpen használhatók:. Az index definíciójának minden mezőjénél megadhatja az **analizátor** tulajdonságot egy Analyzer-névre, amely megadja a nyelv és a nyelvi készlet (Microsoft vagy Lucene) értékét. Ugyanez az analizátor lesz alkalmazva a mező indexeléséhez és kereséséhez. Megadhatja például, hogy az angol, a francia és a spanyol nyelvű szállodai leírások külön mezői legyenek, amelyek ugyanabban az indexben vannak egymás mellett. Másik lehetőségként a **IndexAnalyzer** és a **searchAnalyzer** használatával különböző elemzési szabályok is tartozhatnak az indexelési idő és a lekérdezési idő alapján. 
+A nyelvi elemzők a következőképpen használhatók:. Az index definíciójának minden mezőjénél megadhatja az **analizátor** tulajdonságot egy Analyzer-névre, amely megadja a nyelv és a nyelvi készlet (Microsoft vagy Lucene) értékét. Ugyanez az analizátor lesz alkalmazva a mező indexeléséhez és kereséséhez. Megadhatja például, hogy az angol, a francia és a spanyol nyelvű szállodai leírások külön mezői legyenek, amelyek ugyanabban az indexben vannak egymás mellett. Másik lehetőségként a **indexAnalyzer** **és a** **searchAnalyzer** használatával különböző elemzési szabályok is tartozhatnak az indexelési idő és a lekérdezési idő alapján. 
 
 A **searchFields** lekérdezési paraméterrel megadásával meghatározhatja, hogy melyik nyelvspecifikus mezőt szeretné keresni a lekérdezésekben. Áttekintheti azokat a lekérdezési példákat is, amelyek tartalmazzák a Analyzer tulajdonságot a [keresési dokumentumokban](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-További információ az index tulajdonságairól: [create index &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). A Azure Search elemzésével kapcsolatos további információkért lásd: [elemzők a Azure Searchban](https://docs.microsoft.com/azure/search/search-analyzers).
+További információ az index tulajdonságairól: [create index &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Az Azure Cognitive Search elemzésével kapcsolatos további információkért lásd: [elemzők az Azure-ban Cognitive Search](https://docs.microsoft.com/azure/search/search-analyzers).
 
 <a name="language-analyzer-list"></a>
 
@@ -61,67 +61,68 @@ További információ az index tulajdonságairól: [create index &#40;Azure Sear
 
 |Nyelv|Microsoft Analyzer neve|Lucene Analyzer neve|  
 |--------------|-----------------------------|--------------------------|  
-|arab|ar.microsoft|ar. Lucene|  
+|arab|ar. Microsoft|ar. Lucene|  
 |örmény||Lucene|  
-|Bengáli|bn.microsoft||  
+|Bangla|bn. Microsoft||  
 |baszk||EU. Lucene|  
-|bolgár|bg.microsoft|bg.lucene|  
+|bolgár|BG. Microsoft|BG. Lucene|  
 |katalán|CA. Microsoft|CA. Lucene|  
-|kínai (egyszerűsített)|zh-Hans.microsoft|zh-Hans.lucene|  
-|kínai (hagyományos)|zh-Hant.microsoft|zh-Hant. Lucene|  
+|kínai (egyszerűsített)|zh-Hans. Microsoft|zh-Hans. Lucene|  
+|kínai (hagyományos)|zh-Hant. Microsoft|zh-Hant. Lucene|  
 |horvát|HR. Microsoft||  
 |cseh|cs. Microsoft|cs. Lucene|  
-|dán|da.microsoft|da. Lucene|  
+|dán|da. Microsoft|da. Lucene|  
 |holland|nl. Microsoft|nl. Lucene|  
 |Angol|en. Microsoft|en. Lucene|  
 |észt|et. Microsoft||  
-|finn|fi.microsoft|Fi. Lucene|  
+|finn|Fi. Microsoft|Fi. Lucene|  
 |francia|fr. Microsoft|fr. Lucene|  
 |galíciai||Gl. Lucene|  
-|német|de.microsoft|de. Lucene|  
+|német|de. Microsoft|de. Lucene|  
 |görög|el. Microsoft|el. Lucene|  
-|gudzsaráti|gu.microsoft||  
+|gudzsaráti|Gu. Microsoft||  
 |héber|ő. Microsoft||  
-|hindi|hi.microsoft|Hi. Lucene|  
+|hindi|Hi. Microsoft|Hi. Lucene|  
 |magyar|hu. Microsoft|hu. Lucene|  
-|izlandi|is.microsoft||  
-|Indonéz (Bahasa)|id.microsoft|id.lucene|  
+|izlandi|a. Microsoft||  
+|Indonéz (Bahasa)|azonosító. Microsoft|ID. Lucene|  
 |ír||ga. Lucene|  
 |olasz|it. Microsoft|it. Lucene|  
 |japán|ja. Microsoft|ja. Lucene|  
-|kannada|kn.microsoft||  
-|koreai|ko.microsoft|ko. Lucene|  
-|lett|lv.microsoft|lv. Lucene|  
-|litván|lt.microsoft||  
-|malajálam|ml.microsoft||  
-|Maláj (latin betűs)|ms.microsoft||  
-|maráthi|mr.microsoft||  
-|norvég|nb.microsoft|nem. Lucene|  
+|kannada|KN. Microsoft||  
+|koreai|ko. Microsoft|ko. Lucene|  
+|lett|lv. Microsoft|lv. Lucene|  
+|litván|lt. Microsoft||  
+|malajálam|ml. Microsoft||  
+|Maláj (latin betűs)|MS. Microsoft||  
+|marathi|Mr. Microsoft||  
+|norvég|NB. Microsoft|nem. Lucene|  
 |perzsa||fa. Lucene|  
-|lengyel|pl.microsoft|pl. Lucene|  
-|portugál (brazíliai)|pt-Br.microsoft|pt-Br.lucene|  
-|portugál (általános)|pt-Pt.microsoft|pt-Pt.lucene|  
-|pandzsábi|pa.microsoft||  
-|román|ro.microsoft|ro. Lucene|  
-|orosz|ru.microsoft|ru. Lucene|  
-|szerb (cirill betűs)|sr-cyrillic.microsoft||  
-|szerb (latin betűs)|sr-latin.microsoft||  
-|szlovák|sk.microsoft||  
+|lengyel|pl. Microsoft|pl. Lucene|  
+|Portugál (brazíliai)|pt-br. Microsoft|pt-br. Lucene|  
+|Portugál (portugáliai)|PT-pt. Microsoft|PT-pt. Lucene|  
+|pandzsábi|PA. Microsoft||  
+|román|ro. Microsoft|ro. Lucene|  
+|orosz|ru. Microsoft|ru. Lucene|  
+|szerb (cirill betűs)|SR-cirill betűs. Microsoft||  
+|Szerb (latin betűs)|SR-latin. Microsoft||  
+|szlovák|sk. Microsoft||  
 |szlovén|SL. Microsoft||  
 |spanyol|es. Microsoft|es. Lucene|  
-|svéd|sv.microsoft|Sv. Lucene|  
-|tamil|ta.microsoft||  
+|svéd|Sv. Microsoft|Sv. Lucene|  
+|tamil|ta. Microsoft||  
 |telugu|te. Microsoft||  
-|thai|th.microsoft|th. Lucene|  
+|thai|th. Microsoft|th. Lucene|  
 |török|TR. Microsoft|TR. Lucene|  
-|ukrán|uk.microsoft||  
+|ukrán|Egyesült Királyság. Microsoft||  
 |urdu|a. Microsoft||  
-|vietnami|vi.microsoft||  
+|vietnami|VI. Microsoft||  
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 
-## <a name="see-also"></a>Lásd még  
- [Index &#40;Azure Search szolgáltatás létrehozása REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
- [AnalyzerName osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
- [Videó: Azure Search MVA-bemutató 7](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07). modulja.  
+## <a name="see-also"></a>Lásd még:  
+
++ [Index &#40;létrehozása az Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+
++ [AnalyzerName osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
 

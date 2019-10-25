@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595098"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803991"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>VHD feltöltése az Azure-ba az Azure CLI használatával
 
@@ -29,7 +29,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 - Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 - Helyileg tárolt vhd-fájl
-- Ha a virtuális merevlemezt a PEM-ról kívánja feltölteni: az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
+- Ha a virtuális merevlemezt a helyszínen kívánja feltölteni: az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
 - Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
@@ -124,6 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt egy virtuális géphez, és megkezdheti a használatát.
+Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt [adatlemezként egy meglévő virtuális géphez](add-disk.md) , vagy [csatlakoztathatja a lemezt egy virtuális géphez egy operációsrendszer-lemezként](upload-vhd.md#create-the-vm)egy új virtuális gép létrehozásához. 
 
-Ha meg szeretné tudni, hogyan lehet lemezeket csatlakoztatni egy virtuális géphez, tekintse meg a tárgyat ismertető cikket: [lemez hozzáadása Linux rendszerű virtuális géphez](add-disk.md).

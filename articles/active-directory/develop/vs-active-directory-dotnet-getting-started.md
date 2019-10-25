@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure AD-vel a Visual Studio .NET MVC-projektekben
+title: Ismerkedés az Azure AD-vel a Visual Studio .NET MVC-projektekben | Azure
 description: A .NET MVC-projektek Azure Active Directory használatának első lépései az Azure AD-vel való csatlakozás vagy a Visual Studio Connected Services használatával való létrehozás után
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852024"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803610"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Első lépések Azure Active Directory (ASP.NET MVC-projektekkel)
 
@@ -31,11 +31,11 @@ Megtudhatja [, mi történt az MVC-projekttel?](vs-active-directory-dotnet-what-
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Hitelesítés megkövetelése a hozzáférés-vezérléshez
 
-A projekt összes vezérlőjét az `[Authorize]` attribútummal díszítették. Ez az attribútum megköveteli a felhasználó hitelesítését a vezérlők elérése előtt. Annak engedélyezéséhez, hogy a vezérlő névtelenül legyen elérhető, távolítsa el ezt az attribútumot a vezérlőből. Ha az engedélyeket részletesebben szeretné beállítani, alkalmazza az attribútumot minden olyan metódusra, amely az engedélyezést igényli a vezérlő osztályra való alkalmazása helyett.
+A projekt összes vezérlőjét a `[Authorize]` attribútummal díszítették. Ez az attribútum megköveteli a felhasználó hitelesítését a vezérlők elérése előtt. Annak engedélyezéséhez, hogy a vezérlő névtelenül legyen elérhető, távolítsa el ezt az attribútumot a vezérlőből. Ha az engedélyeket részletesebben szeretné beállítani, alkalmazza az attribútumot minden olyan metódusra, amely az engedélyezést igényli a vezérlő osztályra való alkalmazása helyett.
 
 ## <a name="adding-signin--signout-controls"></a>Bejelentkezési-/kijelentkezés-vezérlők hozzáadása
 
-A bejelentkezési/kijelentkezés vezérlőelemeknek a nézethez való hozzáadásához a `_LoginPartial.cshtml` részleges nézetet használhatja a funkciók egyik nézethez való hozzáadásához. Íme egy példa a standard `_Layout.cshtml` nézethez hozzáadott funkciókra. (Jegyezze fel az utolsó elemet a div-összecsukási osztályhoz:
+A bejelentkezési/kijelentkezés vezérlőnek a nézethez való hozzáadásához a `_LoginPartial.cshtml` részleges nézettel adhatja hozzá a funkciókat az egyik nézethez. Íme egy példa a standard `_Layout.cshtml` nézethez hozzáadott funkciókra. (Jegyezze fel az utolsó elemet a div-összecsukási osztályhoz:
 
 ```html
 <!DOCTYPE html>
@@ -82,7 +82,7 @@ A bejelentkezési/kijelentkezés vezérlőelemeknek a nézethez való hozzáadá
 </html>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v1-aspnet-webapp.md)

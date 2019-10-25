@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 42d0d7dcc4e10e6f9bfad02a68f3ec176b8a7fb4
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315995"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785835"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.
@@ -73,7 +73,7 @@ A következő gyakori kérdések a Redis készült Azure cache alapfogalmait és
 * [Teljesítménnyel kapcsolatos szempontok a kapcsolatokhoz](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Figyelés és hibaelhárítás – GYIK
-Az ebben a szakaszban található gyakori kérdések az általános monitorozási és hibaelhárítási kérdésekkel foglalkoznak. Az Azure cache Redis-példányok figyelésével és hibaelhárításával kapcsolatos további információkért lásd: az [Azure cache figyelése a Redis](cache-how-to-monitor.md) és az [Azure cache hibaelhárítása a Redis](cache-how-to-troubleshoot.md).
+Az ebben a szakaszban található gyakori kérdések az általános monitorozási és hibaelhárítási kérdésekkel foglalkoznak. Az Azure cache Redis-példányok figyelésével és hibaelhárításával kapcsolatos további információkért lásd: az [Azure cache figyelése a Redis](cache-how-to-monitor.md) és a különböző hibaelhárítási útmutatókhoz.
 
 * [Hogyan figyeli a gyorsítótár állapotát és teljesítményét?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [Miért látok időtúllépéseket?](#why-am-i-seeing-timeouts)
@@ -90,7 +90,7 @@ Az Azure cache Redis többféleképpen is elsajátíthatja.
 
 * A [.net](cache-dotnet-how-to-use-azure-redis-cache.md), a [ASP.net](cache-web-app-howto.md), a [Java](cache-java-get-started.md), a [Node. js](cache-nodejs-get-started.md)és a [Python](cache-python-get-started.md)szolgáltatáshoz elérhető oktatóanyagok közül választhat.
 * Megtekintheti [, hogyan hozhat létre nagy teljesítményű alkalmazásokat a Redis Microsoft Azure cache használatával](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Megtekintheti az ügyfél dokumentációját a projekt fejlesztői nyelvének megfelelő ügyfelek számára, hogy megtudja, hogyan használhatja a Redis. Számos Redis-ügyfél használható az Azure cache használatával a Redis. A Redis-ügyfelek listáját a következő témakörben tekintheti meg: [https://redis.io/clients](https://redis.io/clients).
+* Megtekintheti az ügyfél dokumentációját a projekt fejlesztői nyelvének megfelelő ügyfelek számára, hogy megtudja, hogyan használhatja a Redis. Számos Redis-ügyfél használható az Azure cache használatával a Redis. A Redis-ügyfelek listáját itt tekintheti meg: [https://redis.io/clients](https://redis.io/clients).
 
 Ha még nem rendelkezik Azure-fiókkal, a következőket teheti:
 
@@ -104,23 +104,23 @@ A Redis minden egyes Azure-gyorsítótára különböző szintű **méreteket**,
 
 A gyorsítótár-ajánlat kiválasztásának szempontjai a következők:
 
-* **Memória**: Az alapszintű és standard csomag 250 MB – 53 GB. A prémium szint akár 1,2 TB-ot (fürtöt) vagy 120 GB-ot (nem fürtözött) is kínál. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
-* **Hálózati teljesítmény**: Ha olyan számítási feladattal rendelkezik, amely nagy adatátvitelt igényel, a prémium szint nagyobb sávszélességet biztosít a standard és az alapszinthez képest. Az egyes szinteknél a nagyobb méretű gyorsítótárak is nagyobb sávszélességet igényelnek a gyorsítótárat működtető mögöttes virtuális gép miatt. További információkért tekintse meg a [következő táblázatot](#cache-performance).
-* **Átviteli sebesség**: A prémium szint az elérhető maximális átviteli sebességet kínálja. Ha a gyorsítótár-kiszolgáló vagy-ügyfél eléri a sávszélesség-korlátot, időtúllépést kaphat az ügyfél oldalán. További információkért tekintse meg a következő táblázatot.
-* **Magas rendelkezésre állás/SLA**: Az Azure cache for Redis garantálja, hogy az idő legalább 99,9%-ában elérhető standard/prémium szintű gyorsítótár. Az SLA-val kapcsolatos további tudnivalókért tekintse meg [Az Azure cache Redis díjszabását](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Az SLA csak a cache-végpontokhoz való kapcsolódást fedi le. A szolgáltatói szerződés nem biztosít védelmet az adatvesztéssel szemben. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben.
-* **Redis adatmegőrzés**: A prémium szint lehetővé teszi az Azure Storage-fiókban tárolt gyorsítótár-adatmegőrzést. Alapszintű/standard gyorsítótárban az összes adat tárolása csak a memóriában történik. Az alapul szolgáló infrastrukturális problémák potenciális adatvesztést okozhatnak. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben. Az Azure cache for Redis RDB és AOF (hamarosan elérhető) lehetőségeket kínál a Redis megőrzésében. További információ: az [adatmegőrzés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-persistence.md)-hez.
-* **Redis-fürt**: A 120 GB-nál nagyobb gyorsítótárak létrehozásához, illetve az adatszegmensek több Redis-csomóponton keresztüli kibontásához használhatja a prémium szinten elérhető Redis-fürtözést. Minden csomópont egy elsődleges/replika-gyorsítótárból áll a magas rendelkezésre állás érdekében. További információ: [fürtözés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-clustering.md)-hez.
-* **Fokozott biztonság és hálózati elkülönítés**: Az Azure Virtual Network (VNET) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure cache Redis, valamint az alhálózatok, hozzáférés-vezérlési házirendek és egyéb funkciók számára a hozzáférés további korlátozásához. További információkért lásd: [Virtual Network támogatásának konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-vnet.md)-hez.
-* **Redis konfigurálása**: A standard és a prémium szintű csomag esetében a Redis is konfigurálhatja a lemezterület-értesítések esetében.
-* **Ügyfélkapcsolatok maximális száma**: A prémium szint azon ügyfelek maximális számát kínálja, akik csatlakozhatnak a Redis, és nagyobb számú kapcsolattal rendelkeznek a nagyobb méretű gyorsítótárak esetében. A fürtözés nem fokozza a fürtözött gyorsítótár számára elérhető kapcsolatok számát. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
-* **Dedikált mag a Redis-kiszolgálóhoz**: A prémium szinten az összes gyorsítótár mérete dedikált alapszintű a Redis számára. Az alap/standard szintekben a C1-es méretnek és a fentieknek dedikált magja van a Redis-kiszolgálóhoz.
+* **Memória**: az alapszintű és a Standard csomag 250 MB – 53 GB. A prémium szint akár 1,2 TB-ot (fürtöt) vagy 120 GB-ot (nem fürtözött) is kínál. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
+* Hálózati teljesítmény: Ha olyan számítási **feladattal**rendelkezik, amely nagy adatátvitelt igényel, a prémium szint nagyobb sávszélességet biztosít a standard és az alapszinthez képest. Az egyes szinteknél a nagyobb méretű gyorsítótárak is nagyobb sávszélességet igényelnek a gyorsítótárat működtető mögöttes virtuális gép miatt. További információkért tekintse meg a [következő táblázatot](#cache-performance).
+* **Átviteli sebesség**: a prémium szint a maximálisan elérhető átviteli sebességet kínálja. Ha a gyorsítótár-kiszolgáló vagy-ügyfél eléri a sávszélesség-korlátot, időtúllépést kaphat az ügyfél oldalán. További információkért tekintse meg a következő táblázatot.
+* **Magas rendelkezésre állás/SLA**: az Azure cache for Redis garantálja, hogy az idő legalább 99,9%-ában elérhető a standard/Premium gyorsítótár. Az SLA-val kapcsolatos további tudnivalókért tekintse meg [Az Azure cache Redis díjszabását](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Az SLA csak a cache-végpontokhoz való kapcsolódást fedi le. A szolgáltatói szerződés nem biztosít védelmet az adatvesztéssel szemben. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben.
+* **Redis-adatmegőrzés**: a prémium szint lehetővé teszi, hogy megmaradjon az Azure Storage-fiók gyorsítótár-adatvédelme. Alapszintű/standard gyorsítótárban az összes adat tárolása csak a memóriában történik. Az alapul szolgáló infrastrukturális problémák potenciális adatvesztést okozhatnak. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben. Az Azure cache for Redis RDB és AOF (hamarosan elérhető) lehetőségeket kínál a Redis megőrzésében. További információ: az [adatmegőrzés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-persistence.md)-hez.
+* **Redis-fürt**: a 120 GB-nál nagyobb gyorsítótárak létrehozásához, illetve az adatszegmensek több Redis-csomóponton keresztüli kibontásához használhatja a Redis-fürtszolgáltatást, amely a prémium szintű csomagban érhető el. Minden csomópont egy elsődleges/replika-gyorsítótárból áll a magas rendelkezésre állás érdekében. További információ: [fürtözés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-clustering.md)-hez.
+* **Fokozott biztonság és hálózati elkülönítés**: az Azure Virtual Network (VNET) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure-gyorsítótár Redis, valamint az alhálózatok, a hozzáférés-vezérlési házirendek és más funkciók számára a hozzáférés további korlátozásához. További információkért lásd: [Virtual Network támogatásának konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-vnet.md)-hez.
+* **Redis konfigurálása**: a standard és a prémium szinten is konfigurálhatja a Redis a lemezterület-értesítésekhez.
+* **Ügyfélkapcsolatok maximális száma**: a prémium szint azon ügyfelek maximális számát kínálja, akik csatlakozhatnak a Redis, és nagyobb számú kapcsolattal rendelkeznek a nagyobb méretű gyorsítótárak esetében. A fürtözés nem fokozza a fürtözött gyorsítótár számára elérhető kapcsolatok számát. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
+* **Dedikált mag a Redis-kiszolgálóhoz**: a prémium szinten az összes gyorsítótár mérete dedikált alapszintű a Redis számára. Az alap/standard szintekben a C1-es méretnek és a fentieknek dedikált magja van a Redis-kiszolgálóhoz.
 * **A Redis egyszálas** , így a kettőnél több mag nem nyújt további előnyt, mint a két magot, de a nagyobb méretű virtuálisgép-méretek általában nagyobb sávszélességgel rendelkeznek, mint a kisebb méretek. Ha a gyorsítótár-kiszolgáló vagy-ügyfél eléri a sávszélességre vonatkozó korlátozásokat, időtúllépést kap az ügyfél oldalán.
-* **Teljesítménybeli változások**: A prémium szintű gyorsítótárak üzembe helyezése gyorsabb processzorokkal rendelkező hardvereken történik, ami jobb teljesítményt nyújt az alap-vagy standard szinthez képest. A prémium szintű gyorsítótárak nagyobb átviteli sebességgel és kisebb késéssel rendelkeznek.
+* **Teljesítménybeli fejlesztések**: a prémium szintű gyorsítótárak üzembe helyezése gyorsabb processzorokkal rendelkező hardvereken történik, ami jobb teljesítményt nyújt az alap-vagy standard szinthez képest. A prémium szintű gyorsítótárak nagyobb átviteli sebességgel és kisebb késéssel rendelkeznek.
 
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure cache a Redis teljesítményéhez
-Az alábbi táblázat a standard és prémium gyorsítótárak különböző méretekben történő tesztelésekor megfigyelt maximális sávszélességet mutatja a IaaS virtuális gépről a Redis-végponthoz tartozó Azure cache használatával `redis-benchmark.exe` . Az SSL átviteli sebessége esetén a Redis-benchmark a stunnel használatával csatlakozik az Azure cache-hez a Redis-végponthoz.
+Az alábbi táblázat a standard és a prémium gyorsítótárak különböző méretének tesztelése során megfigyelt maximális sávszélességet mutatja `redis-benchmark.exe` egy IaaS virtuális gépről a Redis-végponthoz tartozó Azure cache használatával. Az SSL átviteli sebessége esetén a Redis-benchmark a stunnel használatával csatlakozik az Azure cache-hez a Redis-végponthoz.
 
 >[!NOTE] 
 >Ezek az értékek nem garantáltak, és ezekhez a számokhoz nem biztosítunk SLA-t, de jellemzőnek kell lennie. Az alkalmazás megfelelő gyorsítótár-méretének meghatározásához be kell töltenie a saját alkalmazásának tesztelését.
@@ -133,24 +133,24 @@ Ebből a táblázatból a következő következtetéseket tudjuk felhívni:
 * A Redis fürtszolgáltatással a teljesítmény lineárisan növekszik a fürtben lévő szegmensek számának növelésével. Ha például 10 szegmensből álló P4-fürtöt hoz létre, akkor az elérhető átviteli sebesség 400 000 * 10 = 4 000 000 RPS.
 * A nagyobb méretű kulcsok átviteli sebessége magasabb a prémium szinten a standard szinthez képest.
 
-| Tarifacsomag | Size | CPU-magok | Rendelkezésre álló sávszélesség | 1 KB-os érték mérete | 1 KB-os érték mérete |
+| Díjcsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os érték mérete | 1 KB-os érték mérete |
 | --- | --- | --- | --- | --- | --- |
 | **Standard gyorsítótár mérete** | | |**Megabit/mp (MB/s)/megabájt/mp (MB/s)** |**Másodpercenkénti kérelmek (RPS) nem SSL** |**Másodpercenkénti kérelmek (RPS) SSL** |
-| C0 | 250 MB | Megosztott | 100 / 12.5  |  15,000 |   7,500 |
-| C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
-| C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
-| C3 |   6 GB | 4      | 1000 / 125  | 100,000 |  90,000 |
-| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
-| C5 |  26 GB | 4      | 1,000 / 125 | 102 000 |  93 000 |
-| C6 |  53 GB | 8      | 2,000 / 250 | 126 000 | 120,000 |
+| C0 | 250 MB | Közös | 100/12,5  |  15 000 |   7500 |
+| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
+| C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
+| C3 |   6 GB | 4      | 1000/125  | 100 000 |  90 000 |
+| C4 |  13 GB | 2      | 500/62,5  |  60 000 |  55 000 |
+| C5 |  26 GB | 4      | 1 000/125 | 102 000 |  93 000 |
+| C6 |  53 GB | 8      | 2 000/250 | 126 000 | 120 000 |
 | **Prémium szintű gyorsítótár mérete** | |**CPU-magok/szegmensek** | **Megabit/mp (MB/s)/megabájt/mp (MB/s)** |**Másodpercenkénti kérelmek (RPS) nem SSL, szegmens szerint** |**Másodpercenkénti kérelmek másodpercenkénti száma (RPS)** |
-| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172 000 |
-| P2 |  13 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
-| P3 |  26 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
-| P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373 000 |
-| P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373 000 |
+| P1 |   6 GB |  2 | 1 500/187,5 | 180 000 | 172 000 |
+| P2 |  13 GB |  4 | 3 000/375   | 350 000 | 341 000 |
+| P3 |  26 GB |  4 | 3 000/375   | 350 000 | 341 000 |
+| P4 |  53 GB |  8 | 6 000/750   | 400,000 | 373 000 |
+| P5 | 120 GB | 20 | 6 000/750   | 400,000 | 373 000 |
 
-A stunnel beállításával vagy a Redis `redis-benchmark.exe`-eszközök (például) letöltésével kapcsolatos utasításokért lásd a [Hogyan futtathatom a Redis-parancsokat?](#cache-commands) című szakaszt.
+A stunnel beállításával vagy a Redis-eszközök, például a `redis-benchmark.exe`letöltésével kapcsolatos utasításokért lásd a [Redis-parancsok futtatásának menetét](#cache-commands) ismertető szakaszt.
 
 <a name="cache-region"></a>
 
@@ -165,12 +165,12 @@ Az Azure cache for Redis díjszabása [itt](https://azure.microsoft.com/pricing/
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Használhatom az Azure cache-t a Redis Azure Government Cloud, az Azure China Cloud vagy a Microsoft Azure Germany használatával?
 Igen, a Redis-hez készült Azure cache Azure Government felhőben, az Azure China 21Vianet-felhőben és Microsoft Azure Germany érhető el. A Redis Azure cache eléréséhez és kezeléséhez használt URL-címek eltérőek ezekben a felhőkben az Azure nyilvános felhővel szemben.
 
-| Felhő   | Redis DNS-utótagja            |
+| Felhőbeli   | Redis DNS-utótagja            |
 |---------|---------------------------------|
-| Nyilvános  | *.redis.cache.windows.net       |
-| US Gov  | *.redis.cache.usgovcloudapi.net |
-| Németország | *.redis.cache.cloudapi.de       |
-| Kína   | *.redis.cache.chinacloudapi.cn  |
+| Nyilvános  | *. redis.cache.windows.net       |
+| USA-beli államigazgatás  | *. redis.cache.usgovcloudapi.net |
+| Németország | *. redis.cache.cloudapi.de       |
+| Kína   | *. redis.cache.chinacloudapi.cn  |
 
 Az Azure cache más Felhőkkel való Redis való használatának szempontjaival kapcsolatos további információkért tekintse meg a következő hivatkozásokat.
 
@@ -178,7 +178,7 @@ Az Azure cache más Felhőkkel való Redis való használatának szempontjaival 
 - [Azure China 21Vianet-felhő – Azure cache a Redis-hoz](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-További információ az Azure cache Redis való használatáról a PowerShell használatával Azure Government felhőben, az Azure China 21Vianet Cloud és a Microsoft Azure Germanyban: [Kapcsolódás más felhőhöz – Azure cache a Redis powershellhez](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+További információ az Azure cache Redis való használatáról a PowerShell használatával Azure Government felhőben, az Azure China 21Vianet Cloud és a Microsoft Azure Germanyban: [Kapcsolódás más felhőhöz – Azure cache a Redis powershellhez](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
@@ -197,18 +197,19 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
   * A ConnectRetry és a ConnectTimeout esetében az általános útmutató fail fast, majd újra próbálkozik. Ez az útmutató a számítási feladatokon alapul, és mennyi időt vesz igénybe az ügyfél számára, hogy kiadjon egy Redis-parancsot, és választ kapjon.
   * Hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik a kapcsolat állapotának ellenőrzése és az újbóli csatlakoztatása helyett. **Kerülje a ConnectionMultiplexer. IsConnected tulajdonság használatát**.
   * Bevezetés – időnként előfordulhat, hogy az újrapróbálkozást és a hógolyó újrapróbálkozását, illetve a rendszer soha nem állítja vissza. Ha bekövetkezik a bevezetést, érdemes lehet egy exponenciális leállítási újrapróbálkozási algoritmust használni a Microsoft Patterns & Practices csoport által közzétett [általános útmutató](../best-practices-retry-general.md) című témakörben leírtak szerint.
+  
 * **Időtúllépési értékek**
   * Vegye figyelembe a számítási feladatokat, és ennek megfelelően állítsa be az értékeket. Ha nagyméretű értékeket tárol, állítsa az időtúllépést magasabb értékre.
-  * Állítsa `AbortOnConnectFail` hamis értékre, és hagyja, hogy a StackExchange. Redis újracsatlakozik.
+  * Állítsa a `AbortOnConnectFail` értéket hamis értékre, és hagyja, hogy a StackExchange. Redis újracsatlakozik.
   * Egyetlen ConnectionMultiplexer-példányt használjon az alkalmazáshoz. A LazyConnection használatával létrehozhat egyetlen, a kapcsolati tulajdonság által visszaadott példányt, ahogy az a [ConnectionMultiplexer osztály használatával a gyorsítótárhoz való kapcsolódással](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)is látható.
-  * Állítsa a `ConnectionMultiplexer.ClientName` tulajdonságot az alkalmazás-példány egyedi nevére diagnosztikai célokra.
+  * Állítsa be a `ConnectionMultiplexer.ClientName` tulajdonságot az alkalmazás példányának egyedi nevére diagnosztikai célokra.
   * Több `ConnectionMultiplexer` példány használata az egyéni munkaterhelésekhez.
       * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Példa:
       * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
       * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
       * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.
-      * Állítsa be `ClientName` az egyes multiplexerek tulajdonságát a diagnosztika segítésére.
-      * Ez az útmutató az egyszerűbb késést `ConnectionMultiplexer`eredményezhet.
+      * Állítsa be az egyes multiplexerek `ClientName` tulajdonságát a diagnosztika segítésére.
+      * Ez az útmutató a `ConnectionMultiplexer`egyszerűbb késését eredményezheti.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Milyen Azure cache-t használhatok a Redis-ügyfelek számára?
 A Redis egyik nagyszerű dologa, hogy sok ügyfél támogatja számos különböző fejlesztési nyelvet. Az ügyfelek aktuális listájáért lásd: [Redis-ügyfelek](https://redis.io/clients). A különböző nyelveket és ügyfeleket bemutató oktatóanyagokat lásd: az [Azure cache használata a Redis](cache-dotnet-how-to-use-azure-redis-cache.md) és a testvér cikkeihez a tartalomjegyzékben.
@@ -247,11 +248,11 @@ A [Redis parancsokban](https://redis.io/commands#) felsorolt parancsok bármelyi
 * Ha standard vagy prémium szintű gyorsítótárral rendelkezik, Redis-parancsokat futtathat a Redis- [konzol](cache-configure.md#redis-console)használatával. A Redis-konzol biztonságos módot biztosít a Redis parancsok futtatására a Azure Portal.
 * Használhatja a Redis parancssori eszközöket is. A használatához hajtsa végre a következő lépéseket:
 * Töltse le a [Redis parancssori eszközöket](https://github.com/MSOpenTech/redis/releases/).
-* Kapcsolódjon a gyorsítótárhoz `redis-cli.exe`a használatával. Továbbítsa a gyorsítótár-végpontot a-h kapcsolóval és a-a kulcs használatával a következő példában látható módon:
+* Kapcsolódjon a gyorsítótárhoz `redis-cli.exe`használatával. Továbbítsa a gyorsítótár-végpontot a-h kapcsolóval és a-a kulcs használatával a következő példában látható módon:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> A Redis parancssori eszközei nem működnek az SSL-porttal, de használhatnak olyan segédprogramot `stunnel` is, amely az eszközöket az SSL-porthoz való biztonságos csatlakozáshoz használja a [Redis parancssori eszköz használata az Azure cache-vel a Redis-hez](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) című cikk útmutatásait követve. .
+> A Redis parancssori eszközei nem működnek az SSL-porttal, de használhatnak olyan segédprogramot, mint például a `stunnel` az eszközök SSL-porthoz való biztonságos csatlakoztatásához, a következő témakör útmutatását követve: a [Redis parancssori eszköz használata az Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) című cikkben ismertetett módon.
 >
 >
 
@@ -263,14 +264,14 @@ A Redis Microsoft Azure gyorsítótára a Redis népszerű, nyílt forráskódú
 Mivel minden ügyfél eltérő, az MSDN-ben nem találhatók központi osztályok, és mindegyik ügyfél saját dokumentációt tart fenn. A dokumentáción kívül számos oktatóanyag mutatja be, hogyan kezdheti el az Azure cache használatát a Redis különböző nyelveken és gyorsítótár-ügyfeleken. Az oktatóanyagok eléréséhez tekintse meg az [Azure cache használata a Redis](cache-dotnet-how-to-use-azure-redis-cache.md) és a testvéri cikkek a tartalomjegyzékben című cikket.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Használhatom az Azure cache-t a Redis PHP-munkamenet-gyorsítótárként?
-Igen, ha a Redis-hez készült Azure cache-t PHP-munkamenet-gyorsítótárként szeretné használni, adja meg a kapcsolati `session.save_path`karakterláncot a Redis-példányhoz tartozó Azure cache-hez.
+Igen, ha a Redis-hez készült Azure cache-t PHP-munkamenet-gyorsítótárként szeretné használni, adja meg a kapcsolati karakterláncot a Redis-példányhoz tartozó Azure cache-hez a `session.save_path`.
 
 > [!IMPORTANT]
 > Ha az Azure cache-t PHP-Redis használja, akkor a gyorsítótárhoz való csatlakozáshoz használt biztonsági kulcsot URL-címként kell kódolnia, ahogy az az alábbi példában is látható:
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Ha a kulcs nem kódolt URL-cím, a következőhöz hasonló üzenet jelenhet meg:`Failed to parse session.save_path`
+> Ha a kulcs nem kódolt URL-cím, a következőhöz hasonló üzenet jelenhet meg: `Failed to parse session.save_path`
 >
 >
 
@@ -296,7 +297,7 @@ A Redis-kiszolgáló nem támogatja natív módon az SSL használatát, de az Az
 >
 >
 
-A Redis-eszközök `redis-cli` , például az SSL-port nem működnek, de használhatnak olyan segédprogramot `stunnel` is, amely az eszközök biztonságos összekapcsolását az SSL-porthoz a [bejelentési ASP.NET munkamenet-állapot szolgáltatója a Redis előzetes kiadásához követve ](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)blogbejegyzés.
+A Redis-eszközök, például a `redis-cli` nem működnek az SSL-porttal, de használhatnak olyan segédprogramot is, mint például a `stunnel` az eszközök biztonságos csatlakoztatásához az SSL-porthoz a [Redis előzetes kiadási blogjának Bejelentési ASP.NET munkamenet-szolgáltatójának](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) utasításait követve. utáni.
 
 A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [Hogyan futtathatom a Redis parancsokat?](#cache-commands) című szakaszt.
 
@@ -306,12 +307,12 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [
 * [Teljesítménytesztelés](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange. Redis – ajánlott eljárások
-* Állítsa `AbortConnect` false (hamis) értékre, majd engedélyezze a ConnectionMultiplexer automatikus újrakapcsolódását. [Részletekért lásd itt](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* A ConnectionMultiplexer újrafelhasználása – ne hozzon létre újat minden kérelemhez. Az `Lazy<ConnectionMultiplexer>` [itt látható](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) minta használata javasolt.
+* Állítsa a `AbortConnect` értéket false (hamis) értékre, majd engedélyezze a ConnectionMultiplexer automatikus újrakapcsolódását. [Részletekért lásd itt](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* A ConnectionMultiplexer újrafelhasználása – ne hozzon létre újat minden kérelemhez. Az [itt látható](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) `Lazy<ConnectionMultiplexer>` minta ajánlott.
 * A Redis kisebb értékekkel működik a legjobban, ezért érdemes lehet nagyobb mennyiségű kulcsot feldarabolni több kulcsra. Ebben a [Redis-vitában](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)az 100 kb nagy méretű. Olvassa el [ezt a cikket](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) egy olyan problémával kapcsolatban, amelyet nagy értékek okozhatnak.
 * Az időtúllépések elkerüléséhez konfigurálja a [szálkészlet munkaszála belépett beállításait](#important-details-about-threadpool-growth) .
 * Használjon legalább 5 másodperces alapértelmezett connectTimeout. Ez az intervallum elegendő időt biztosít a StackExchange. Redis számára a kapcsolat újbóli létrehozásához a hálózati rendszerindítási hiba esetén.
-* Vegye figyelembe a futtatott különböző műveletekhez kapcsolódó teljesítménnyel kapcsolatos költségeket. Például a `KEYS` parancs egy O (n) művelet, ezért el kell kerülni. A [Redis.IO hely](https://redis.io/commands/) részletesen ismerteti az általa támogatott műveletek időbeli összetettségét. Az egyes parancsokra kattintva megtekintheti az egyes műveletek bonyolultságát.
+* Vegye figyelembe a futtatott különböző műveletekhez kapcsolódó teljesítménnyel kapcsolatos költségeket. Például az `KEYS` parancs egy O (n) művelet, ezért el kell kerülni. A [Redis.IO hely](https://redis.io/commands/) részletesen ismerteti az általa támogatott műveletek időbeli összetettségét. Az egyes parancsokra kattintva megtekintheti az egyes műveletek bonyolultságát.
 
 #### <a name="configuration-and-concepts"></a>Konfigurálás és fogalmak
 * Használjon standard vagy prémium szintű üzemi rendszereket. Az alapszintű csomag egyetlen csomópontos rendszer, amely nem rendelkezik adatreplikálással, és nem biztosít SLA-t. Emellett használjon legalább egy C1 gyorsítótárat. A C0 cache-gyorsítótárak jellemzően egyszerű fejlesztési/tesztelési helyzetekben használatosak.
@@ -319,7 +320,7 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [
 * Fejlessze a rendszerét úgy, hogy a [javítás és a feladatátvétel miatt](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)képes legyen kezelni a kapcsolódási naplókat.
 
 #### <a name="performance-testing"></a>Teljesítménytesztelés
-* Kezdje a használatával `redis-benchmark.exe` , hogy a saját Perf-tesztek megírása előtt a lehető legnagyobb átviteli sebességre legyen szükség. Mivel `redis-benchmark` a nem támogatja az SSL használatát, a teszt futtatása előtt [engedélyeznie kell a nem SSL-portot a Azure Portalon keresztül](cache-configure.md#access-ports) . Példák: [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* A saját teljesítményű tesztek megírása előtt Kezdje a `redis-benchmark.exe` használatával. Mivel `redis-benchmark` nem támogatja az SSL használatát, a teszt futtatása előtt [engedélyeznie kell a nem SSL-portot a Azure Portalon keresztül](cache-configure.md#access-ports) . Példák: [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * A teszteléshez használt ügyfél virtuális gépnek ugyanabban a régióban kell lennie, mint a Redis-példányhoz tartozó Azure cache-nek.
 * Azt javasoljuk, hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez használja, mivel azok jobb hardvert használnak, és a legjobb eredményt kell biztosítani.
 * Győződjön meg arról, hogy a kiválasztott ügyfél virtuális gépe legalább annyi számítási és sávszélességi képességgel rendelkezik, mint a tesztelt gyorsítótár.
@@ -350,7 +351,7 @@ A következő parancsok példát mutatnak a Redis-benchmark. exe használatára.
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
 * A folyamatok tesztelése egy 1k hasznos adattartalommal.
-  MEGJEGYZÉS: Futtassa először a fent látható SET tesztet a gyorsítótár feltöltéséhez.
+  Megjegyzés: a gyorsítótár feltöltéséhez először futtassa a fent látható SET tesztet.
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 
@@ -359,7 +360,7 @@ A következő parancsok példát mutatnak a Redis-benchmark. exe használatára.
 ### <a name="important-details-about-threadpool-growth"></a>Fontos információk a szálkészlet munkaszála belépett növekedéséről
 A CLR-beli szálkészlet munkaszála belépett két típusú szálat tartalmaz: "Worker" és "I/O-befejezési port" (olvasóhoz) szálak.
 
-* A munkaszálakat olyan dolgokhoz használják, `Task.Run(…)`mint például `ThreadPool.QueueUserWorkItem(…)` a, vagy a metódusok feldolgozása. Ezeket a szálakat a CLR különböző összetevői is használják, ha a munkafolyamatnak egy háttérben futó szálon kell történnie.
+* A munkaszálakat olyan dolgokhoz használják, mint például a `Task.Run(…)`vagy a `ThreadPool.QueueUserWorkItem(…)` metódusok feldolgozása. Ezeket a szálakat a CLR különböző összetevői is használják, ha a munkafolyamatnak egy háttérben futó szálon kell történnie.
 * A olvasóhoz szálakat akkor használja a rendszer, amikor aszinkron IO történik, például a hálózatról való olvasáskor.
 
 A szál készlete új munkavégző szálakat vagy I/O-befejezési szálakat biztosít igény szerint (szabályozás nélkül), amíg el nem éri a "minimális" beállítást az egyes típusú szálak esetében. Alapértelmezés szerint a szálak minimális száma a rendszeren lévő processzorok számára van beállítva.
@@ -388,7 +389,7 @@ Ezeknek az információknak az alapján határozottan azt javasoljuk, hogy az ü
 
 A beállítás konfigurálása:
 
-* Azt javasoljuk, `global.asax.cs`hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban. Példa:
+* Azt javasoljuk, hogy programozott módon módosítsa ezt a beállítást a `global.asax.cs`[szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódusának használatával. Példa:
 
 ```cs
 private readonly int minThreads = 200;
@@ -405,10 +406,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > A metódus által megadott érték globális beállítás, amely hatással van a teljes alkalmazástartomány. Ha például egy 4 magos géppel rendelkezik, és a *minWorkerThreads* és a *minIoThreads* processzort 50-ra szeretné beállítani, akkor a **szálkészlet munkaszála belépett. SetMinThreads (200, 200)** értéket kell használnia.
 
-* A szálak minimális beállítása `<processModel>` a [ *minIoThreads* vagy *minWorkerThreads* konfigurációs beállítással](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) `Machine.config`is megadható a alkalmazásban, általában a következő helyen: `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
+* A szálak minimális beállítása a [ *minIoThreads* vagy a *minWorkerThreads* konfigurációs beállítással](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) is megadható a `Machine.config``<processModel>` konfigurációs elemében, általában a következő helyen: `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
 
   > [!NOTE]
-  > A konfigurációs elemben megadott érték egy *alapszintű* beállítás. Ha például egy 4 magos géppel rendelkezik, és szeretné, hogy a *minIoThreads* -beállítás értéke 200, akkor a következőt fogja használni `<processModel minIoThreads="50"/>`:.
+  > A konfigurációs elemben megadott érték egy *alapszintű* beállítás. Ha például egy 4 magos géppel rendelkezik, és szeretné, hogy a *minIoThreads* -beállítás értéke 200, akkor a `<processModel minIoThreads="50"/>`t kellene használnia.
   >
 
 <a name="server-gc"></a>
@@ -435,7 +436,7 @@ Az Redis-példányok Microsoft Azure gyorsítótára figyelhető a [Azure Portal
 Az Azure cache for Redis **erőforrás menü** számos eszközt is tartalmaz a gyorsítótárak figyeléséhez és hibaelhárításához.
 
 * A **problémák diagnosztizálása és megoldása** a gyakori problémákról és stratégiákról nyújt információkat.
-* **Erőforrás állapota** az erőforrás figyeli, és jelzi, hogy ha a várt módon fut. Az Azure Resource Health szolgáltatással kapcsolatos további információkért lásd: az [Azure Resource Health áttekintése](../resource-health/resource-health-overview.md).
+* A **Resource Health** figyeli az erőforrást, és jelzi, hogy a várt módon fut-e. Az Azure Resource Health szolgáltatással kapcsolatos további információkért lásd: az [Azure Resource Health áttekintése](../resource-health/resource-health-overview.md).
 * Az **új támogatási kérelem** lehetőséget biztosít a gyorsítótárhoz tartozó támogatási kérelem megnyitására.
 
 Ezek az eszközök lehetővé teszik az Azure cache Redis-példányok állapotának figyelését, valamint a gyorsítótárazási alkalmazások kezelését. További információ: az [Azure cache konfigurálása a Redis-hoz](cache-configure.md)– a "támogatási & hibaelhárítási beállítások" című szakasz.
@@ -443,7 +444,7 @@ Ezek az eszközök lehetővé teszik az Azure cache Redis-példányok állapotá
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>Miért látok időtúllépéseket?
-Időtúllépések történnek abban az ügyfélben, amelyet a Redis való kommunikációhoz használ. Ha egy parancsot a Redis-kiszolgálónak továbbítanak, a parancs várólistára kerül, és a Redis-kiszolgáló végül felveszi a parancsot, és végrehajtja azt. Az ügyfél azonban időtúllépést okozhat a folyamat során, és ha kivétel történik a hívási oldalon. Az időtúllépési problémák elhárításával kapcsolatos további információkért lásd: [ügyféloldali hibaelhárítás](cache-how-to-troubleshoot.md#client-side-troubleshooting) és [StackExchange. Redis időtúllépési kivételek](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+Időtúllépések történnek abban az ügyfélben, amelyet a Redis való kommunikációhoz használ. Ha egy parancsot a Redis-kiszolgálónak továbbítanak, a parancs várólistára kerül, és a Redis-kiszolgáló végül felveszi a parancsot, és végrehajtja azt. Az ügyfél azonban időtúllépést okozhat a folyamat során, és ha kivétel történik a hívási oldalon. Az időtúllépési problémák elhárításával kapcsolatos további információkért lásd: [ügyféloldali hibaelhárítás](cache-troubleshoot-client.md) és [StackExchange. Redis időtúllépési kivételek](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions).
 
 <a name="cache-disconnect"></a>
 

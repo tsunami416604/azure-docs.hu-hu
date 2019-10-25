@@ -1,6 +1,6 @@
 ---
-title: Útmutató az Azure AD SSPR - Azure Active Directory konfigurálása a jelszóvisszaíró
-description: Az Azure AD és a jelszóvisszaíró jelszavait, hogy egy helyszíni címtár Azure AD Connect
+title: A jelszó-visszaírási konfigurálása az Azure AD SSPR – Azure Active Directory
+description: Az Azure AD és a Azure AD Connect használata jelszavak visszaírási egy helyszíni címtárba
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17a2661883dd069e8cb719672f6b92442f1a8a0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357502"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808154"
 ---
-# <a name="how-to-configure-password-writeback"></a>Útmutató: Jelszóvisszaíró konfigurálása
+# <a name="how-to-configure-password-writeback"></a>Útmutató: a jelszó visszaírási konfigurálása
 
-A következő lépések azt feltételezik, hogy már konfigurálta az Azure AD Connect a környezetében az a [Express](../hybrid/how-to-connect-install-express.md) vagy [egyéni](../hybrid/how-to-connect-install-custom.md) beállításait.
+Az alábbi lépések feltételezik, hogy már konfigurálta Azure AD Connect a környezetben az [expressz](../hybrid/how-to-connect-install-express.md) vagy az [Egyéni](../hybrid/how-to-connect-install-custom.md) beállítások használatával.
 
 1. A jelszóvisszaíró konfigurálásához és engedélyezéséhez jelentkezzen be az Azure AD Connect-kiszolgálóra, és indítsa el az **Azure AD Connect** konfigurációs varázslóját.
 2. Az **üdvözlőlapon** kattintson a **Konfigurálás** gombra.
@@ -28,79 +28,81 @@ A következő lépések azt feltételezik, hogy már konfigurálta az Azure AD C
 4. A **Csatlakozás az Azure AD szolgáltatáshoz** lapon adja meg egy globális rendszergazda hitelesítő adatait, majd kattintson a **Tovább** gombra.
 5. A **Címtárak csatlakoztatása** és a **Tartomány/szervezeti egység** szűrőoldalakon kattintson a **Tovább** gombra.
 6. A **Választható funkciók** lapon jelölje be a **Jelszóvisszaíró** melletti jelölőnégyzetet, és kattintson a **Tovább** gombra.
-   ![Az Azure AD Connect a jelszóvisszaírás engedélyezése][Writeback]
+   ![Jelszó visszaírási engedélyezése a Azure AD Connectban][Writeback]
 7. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
 8. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
-A jelszóvisszaírás, kapcsolódó általános hibaelhárítási feladatokat című [a jelszóvisszaíró hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) hibaelhárítási című cikkben.
+A jelszó-visszaírási kapcsolatos gyakori hibaelhárítási feladatokért tekintse meg a hibaelhárítási cikkben a [jelszó visszaírási hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) című szakaszt.
 
 > [!WARNING]
-> A jelszóvisszaíró régebbi során és az Azure AD Connect verziója 1.0.8641.0 használó ügyfeleink számára megszűnnek működni a [Azure Access Control service (ACS) 2018. November 7 kivonják](../develop/active-directory-acs-migration.md). Az Azure AD Connect verziója 1.0.8641.0 és a régebbi engedélyezi többé a jelszóvisszaíró adott időpontban, mert az a funkciók ACS függenek.
+> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../develop/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
 >
-> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md)
+> A szolgáltatás megszakadásának elkerülése érdekében frissítse a Azure AD Connect egy korábbi verziójáról egy újabb verzióra, és tekintse meg a [Azure ad Connect: frissítés korábbi verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md) című cikket.
 >
 
-## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket
+## <a name="licensing-requirements-for-password-writeback"></a>A jelszó-visszaírási licencelési követelményei
 
-**Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással a rendszer egy Azure ad premium-funkció**. Licenceléssel kapcsolatos további információkért lásd: a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
+Az **önkiszolgáló jelszó-visszaállítás, illetve a helyszíni visszaírási való módosítás/feloldás az Azure ad prémium funkciója**. A licenceléssel kapcsolatos további információkért tekintse meg a [Azure Active Directory díjszabási webhelyét](https://azure.microsoft.com/pricing/details/active-directory/).
 
-A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a bérlő egyik:
+A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő licencek egyike szükséges:
 
 * Prémium szintű Azure AD P1
 * Prémium szintű Azure AD P2
-* Enterprise Mobility + Security E3 vagy A3
-* Enterprise Mobility + Security E5 vagy a5 csomag
-* A Microsoft 365 E3 vagy A3
-* A Microsoft 365 E5 vagy a5 csomag
+* E3 vagy a3 Enterprise Mobility + Security
+* Enterprise Mobility + Security E5 vagy a5
+* E3 vagy a3 Microsoft 365
+* Microsoft 365 E5 vagy a5
 * Microsoft 365 F1
-* Microsoft 365 Business
+* Microsoft 365 Vállalati verzió
 
 > [!WARNING]
-> Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
+> Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.
 >
 
-## <a name="active-directory-permissions"></a>Az Active Directory-engedélyek
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory engedélyek és a helyszíni jelszó bonyolultságára vonatkozó szabályzatok 
 
-A fiók megadva, az Azure AD Connect eszközben a következő elemek be kell, ha az SSPR hatókörébe szeretné:
+A Azure AD Connect segédprogramban megadott fióknak a következő elemeknek kell megadnia, ha a SSPR hatókörében szeretné használni:
 
 * **Új jelszó létrehozása** 
 * **Jelszó módosítása** 
-* **Írási engedélyekkel** a `lockoutTime`
-* **Írási engedélyekkel** a `pwdLastSet`
-* **Bővített jogosultságokat** a következők:
-   * A legfelső szintű objektumához *minden egyes tartományhoz* az adott erdőben
-   * Az SSPR hatókörébe kell szeretne a felhasználó szervezeti egységekhez (OU)
+* **Írási engedélyek** `lockoutTime`
+* **Írási engedélyek** `pwdLastSet`
+* **Kiterjesztett jogosultságok** a következők közül:
+   * Az erdő *minden tartományának* legfelső szintű objektuma
+   * A SSPR hatókörében használni kívánt felhasználói szervezeti egységek (OU-ket)
 
-Ha nem biztos hivatkozik melyik fiókra az itt ismertetett fiókot, nyissa meg az Azure Active Directory Connect konfigurációs felhasználói Felületet, és válassza ki a **aktuális konfiguráció megtekintése** lehetőséget. A fiókot, amelyet kell hozzáadnia részen **szinkronizált címtárak**.
+Ha nem biztos abban, hogy milyen fiókra hivatkozik a leírt fiók, nyissa meg a Azure Active Directory Connect konfigurációs felhasználói felületet, és válassza a **jelenlegi konfiguráció megtekintése** lehetőséget. Az a fiók, amelyhez engedélyeket kell hozzáadnia, megjelenik a **szinkronizált könyvtárak**területen.
 
-Ha ezeket az engedélyeket, az egyes erdők MA-szolgáltatásfiókja kezelheti jelszavakat az erdőben lévő felhasználói fiókok nevében. 
+Ha ezeket az engedélyeket állítja be, az egyes erdőkhöz tartozó MA-szolgáltatásfiók az adott erdőben lévő felhasználói fiókok nevében képes kezelni a jelszavakat. 
 
 > [!IMPORTANT]
-> Ha azt elmulasztják, a hozzá ezeket az engedélyeket, majd, annak ellenére, hogy a jelszóvisszaíró megfelelően kell konfigurálni jelenik meg felhasználók hibákat tapasztalnak, amikor azok megkísérlik a helyszíni jelszavak kezeléséhez a felhőben.
+> Ha nem szeretné hozzárendelni ezeket az engedélyeket, akkor annak ellenére, hogy a visszaírási megfelelően van konfigurálva, a felhasználók hibákat fognak tapasztalni, amikor megkísérlik a felhőből kezelni a helyszíni jelszavukat.
 >
 
 > [!NOTE]
-> Azt is igénybe vehet egy óráig vagy tovább ezen engedélyeket a címtár összes objektumába replikálja.
+> Ezekhez az engedélyekhez akár egy óráig is eltarthat, hogy az engedélyek a címtárban lévő összes objektumra replikálódnak.
 >
 
-Állítsa be a megfelelő engedélyekkel a jelszóvisszaírást, fordulhat elő, hajtsa végre az alábbi lépéseket:
+A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az Active Directory – felhasználók és számítógépek egy olyan fiókkal, amely a megfelelő tartományi rendszergazdai engedélyekkel rendelkezik.
-2. Az a **nézet** menü, győződjön meg arról, **speciális szolgáltatások** be van kapcsolva.
-3. A bal oldali panelen kattintson a jobb gombbal a tartomány, és válassza ki a legfelső szintű képviselő objektumot **tulajdonságok** > **biztonsági** > **speciális**.
-4. Az a **engedélyek** lapon jelölje be **Hozzáadás**.
-5. Válassza ki a fiókot, amelyet engedélyek vannak alkalmazva (az az Azure AD Connect beállítása).
-6. Az a **vonatkozik** legördülő listában válassza **leszármazott felhasználó objektumai**.
-7. A **engedélyek**, jelölje be a következő beállításokat:
+1. Nyisson meg Active Directory felhasználókat és számítógépeket egy olyan fiókkal, amely rendelkezik a megfelelő tartományi rendszergazdai engedélyekkel.
+2. A **nézet** menüben ellenőrizze, hogy be van-e kapcsolva a **Speciális funkciók** .
+3. A bal oldali panelen kattintson a jobb gombbal arra az objektumra, amely a tartomány gyökerét jelöli, majd válassza a **tulajdonságok** > **biztonsági** > **speciális**lehetőséget.
+4. Az **engedélyek** lapon válassza a **Hozzáadás**lehetőséget.
+5. Válassza ki azt a fiókot, amelyre az engedélyek vonatkoznak (a Azure AD Connect telepítőből).
+6. Az **érintettek** legördülő listában válassza a **leszármazott felhasználói objektumok**elemet.
+7. Az **engedélyek**területen jelölje be a következő beállításokhoz tartozó mezőket:
     * **Jelszó módosítása**
     * **Új jelszó létrehozása**
-8. A **tulajdonságok**, jelölje be a következő beállításokat:
+8. A **Tulajdonságok**területen jelölje be a következő beállításokhoz tartozó mezőket:
     * **LockoutTime írása**
     * **PwdLastSet írása**
-9. Válassza ki **alkalmaz/OK** alkalmazza a módosításokat, és lépjen ki az összes megnyitott párbeszédpanelen.
+9. Válassza az **alkalmaz/ok** lehetőséget a módosítások alkalmazásához és a megnyitott párbeszédpanelek bezárásához.
 
-## <a name="next-steps"></a>További lépések
+Mivel a hatóság forrása a helyszínen található, a jelszó-összetettségi szabályzatok ugyanarra a csatlakoztatott adatforrásra vonatkoznak. Ellenőrizze, hogy módosította-e a meglévő csoportházirendeket a "jelszó minimális hossza" értékre. A csoportházirend nem állítható be 1 értékre, ami azt jelenti, hogy a jelszónak legalább egy nappal korábbinak kell lennie ahhoz, hogy frissíteni lehessen. Győződjön meg arról, hogy 0-ra van beállítva. Ezek a beállítások a `gpmc.msc` **Számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > fiók házirendek**területen találhatók. `gpupdate /force` futtatásával győződjön meg arról, hogy a módosítás érvénybe lép. 
 
-[Mi a jelszóvisszaíró?](concept-sspr-writeback.md)
+## <a name="next-steps"></a>Következő lépések
 
-[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Az Azure AD Connect a jelszóvisszaírás engedélyezése"
+[Mi a jelszó visszaírási?](concept-sspr-writeback.md)
+
+[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Jelszó visszaírási engedélyezése a Azure AD Connectban"

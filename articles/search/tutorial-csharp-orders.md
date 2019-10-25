@@ -1,24 +1,25 @@
 ---
-title: C#oktatóanyag az eredmények megrendeléséhez – Azure Search
-description: Ez az oktatóanyag a "keresési eredmények tördelése – Azure Search" projektre épít a keresési eredmények rendezésének hozzáadásához. Megtudhatja, hogyan rendezheti az eredményeket egy elsődleges tulajdonságra, valamint az azonos elsődleges tulajdonsággal rendelkező eredmények esetében, hogyan rendelhet hozzá eredményeket egy másodlagos tulajdonsághoz. Végezetül megtudhatja, hogyan rendezheti az eredményeket egy pontozási profil alapján.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#oktatóanyag az eredmények megrendeléséről
+titleSuffix: Azure Cognitive Search
+description: Ez az oktatóanyag az "keresési eredmények tördelése – Azure Cognitive Search" projektre épít a keresési eredmények rendezésének hozzáadásához. Megtudhatja, hogyan rendezheti az eredményeket egy elsődleges tulajdonságra, valamint az azonos elsődleges tulajdonsággal rendelkező eredmények esetében, hogyan rendelhet hozzá eredményeket egy másodlagos tulajdonsághoz. Végezetül megtudhatja, hogyan rendezheti az eredményeket egy pontozási profil alapján.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327651"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794055"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#oktatóanyag Az eredmények rendezése – Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Oktatóanyag: az eredmények rendezése – Azure Cognitive Search
 
 Egészen addig, amíg ez a pont nem szerepel az oktatóanyagokban, a rendszer visszaadja az eredményeket, és megjeleníti az alapértelmezett sorrendet. Ez lehet az a sorrend, amelyben az adatok találhatók, vagy esetleg egy alapértelmezett _pontozási profil_ lett meghatározva, amelyet a rendszer akkor használ, ha nincs megadva rendezési paraméter. Ebben az oktatóanyagban bemutatjuk, hogyan lehet az eredményeket egy elsődleges tulajdonság alapján megrendelni, majd az azonos elsődleges tulajdonsággal rendelkező eredmények esetében a kijelölés sorrendjét egy másodlagos tulajdonsághoz. A numerikus értékek alapján történő rendezés alternatívájaként az utolsó példa azt szemlélteti, hogyan lehet sorrendet rendelni egy egyéni pontozási profil alapján. Az _összetett típusok_megjelenítését is mélyebben fogjuk bemutatni.
 
-Ha egyszerűen össze szeretné hasonlítani a visszaadott eredményeket, a projekt a [C# oktatóanyagban létrehozott végtelen görgetési projektre épül: Keresési eredmények tördelése – Azure Search @ no__t-0 oktatóanyag.
+Ha a visszaadott eredményeket egyszerűen össze szeretné hasonlítani, a projekt az [ C# oktatóanyag: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyagban létrehozott végtelen görgetési projektre épül.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -31,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-A [C# oktatóanyag végtelen görgethető verziója: Keresési eredmények tördelése – Azure Search @ no__t-0 projekt üzembe helyezése folyamatban van. A projekt lehet saját verziója, vagy a GitHubról telepítheti azt: [Hozza létre az első alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Az oktatóanyag végtelen görgethető verziója [ C# : keresési eredmények tördelése – az Azure Cognitive Search-](tutorial-csharp-paging.md) projekt felhasználható. A projekt lehet saját verziója, vagy a GitHubról telepítheti: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>Eredmények megrendelése egy tulajdonság alapján
 
@@ -127,7 +128,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési hurkot ( **&lt;!--jelenítse meg a szállodai adatértékeket.--&gt;** ) a következő kóddal.
+5. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust ( **&lt;!--jelenítse meg a szállodai adatértékeket.--&gt;** ) a következő kóddal.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -435,7 +436,7 @@ Az eredmények földrajzi távolság alapján történő megjelenítéséhez tö
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Bár a Azure Search az eredményeket egy távolsági szűrő használatával adta vissza, a rendszer _nem_ adja vissza az adatmennyiség és a megadott pont közötti számított távolságot. Számítsa ki újra ezt az értéket a nézetből vagy vezérlőből, ha az eredmények között szeretné megjeleníteni.
+3. Bár az Azure Cognitive Search az eredményeket egy távolsági szűrő használatával adta vissza, a rendszer _nem_ adja vissza az adatmennyiség és a megadott pont közötti számított távolságot. Számítsa ki újra ezt az értéket a nézetből vagy vezérlőből, ha az eredmények között szeretné megjeleníteni.
 
     A következő kód a két lat/Lon pont közötti távolságot számítja ki.
 
@@ -465,7 +466,7 @@ Az eredmények földrajzi távolság alapján történő megjelenítéséhez tö
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Eredmények megrendelése pontozási profil alapján
 
-Az oktatóanyagban szereplő példák azt mutatják be, hogyan lehet megrendelni a numerikus értékeket (a minősítési, a felújítási dátumot, _a földrajzi_ távolságot). Egyes keresések és egyes adatértékek azonban nem alkalmasak arra, hogy egy ilyen egyszerű összehasonlítást végezzenek két adatelem között. Azure Search a _pontozás_fogalmát tartalmazza. A _pontozási profilok_ megadhatók olyan adathalmazokhoz, amelyek összetettebb és minőségi összehasonlítást is biztosítanak, ami a legértékesebb, ha a szöveges alapú adatmennyiséget a következőnek kell megjelennie.
+Az oktatóanyagban szereplő példák azt mutatják be, hogyan lehet megrendelni a numerikus értékeket (a minősítési, a felújítási dátumot, _a földrajzi_ távolságot). Egyes keresések és egyes adatértékek azonban nem alkalmasak arra, hogy egy ilyen egyszerű összehasonlítást végezzenek két adatelem között. Az Azure Cognitive Search a _pontozás_fogalmát is tartalmazza. A _pontozási profilok_ megadhatók olyan adathalmazokhoz, amelyek összetettebb és minőségi összehasonlítást is biztosítanak, ami a legértékesebb, ha a szöveges alapú adatmennyiséget a következőnek kell megjelennie.
 
 A pontozási profilokat a felhasználók nem határozzák meg, de általában egy adathalmaz rendszergazdái. Több pontozási profil is be lett állítva a szállodákban tárolt értékekre. Nézzük meg, hogyan határozzák meg a pontozási profilt, majd próbáljon meg kódot írni a kereséshez.
 
@@ -543,7 +544,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Kód hozzáadása a nézethez a profilok összehasonlításához
 
-1. Nyissa meg az index. cshtml fájlt, és cserélje le a &lt;body @ no__t-1 szakaszt a következő kódra.
+1. Nyissa meg az index. cshtml fájlt, és cserélje le a &lt;Body&gt; szakaszt a következő kódra.
 
     ```cs
     <body>
@@ -955,9 +956,9 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 4. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Segédanyagok és eszközök
 
-További információ: [pontozási profilok hozzáadása Azure Search indexhez](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)című témakörben talál.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
@@ -969,8 +970,8 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Természetes, hogy egyes eredmények növekvő sorrendben legyenek rendezve (azaz távolság egy ponttól), és néhány csökkenő sorrendben (azaz a vendég minősítése).
 * A pontozási profilok meghatározhatók, ha a numerikus összehasonlítások nem érhetők el, vagy nem elég intelligensek egy adatkészlethez. Az egyes eredmények pontozásával intelligens módon rendezheti és jelenítheti meg az eredményeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Elvégezte ezt az C# oktatóanyag-sorozatot – értékes ismereteket szerzett a Azure Search API-kkal kapcsolatban.
+Elvégezte ezt az C# oktatóanyag-sorozatot – értékes ismereteket szerzett az Azure Cognitive Search API-król.
 
-További tudnivalókat és oktatóanyagokat a [Azure Search dokumentációjában találhat](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)vagy más oktatóanyagokat.
+További tudnivalókat és oktatóanyagokat az [Azure Cognitive Search dokumentációjában találhat](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)vagy más oktatóanyagokat.

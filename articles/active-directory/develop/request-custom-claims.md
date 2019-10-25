@@ -1,5 +1,6 @@
 ---
-title: Egyéni jogcímek kérése az iOS és a macOS MSAL használatával | Microsoft Identity platform
+title: Egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
+titleSuffix: Microsoft identity platform
 description: További információ az egyéni jogcímek igényléséről.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e09d58742bffd74f07f79b3ec55c1e81533632
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268985"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802593"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: Egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
 
 Az OpenID Connect segítségével igény szerint kérheti az egyes jogcímek visszaadását a UserInfo-végpontból és/vagy az azonosító jogkivonatban. A jogcím-kérelmek JSON-objektumként jelennek meg, amely tartalmazza a kért jogcímek listáját. További részletekért lásd: [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
 
@@ -36,9 +37,9 @@ Több forgatókönyv is van, ahol ez szükséges. Példa:
 - A standard jogcímek adott kombinációinak kérése, amelyek nem adhatók meg hatókörökkel az alkalmazáshoz. Ha például egy hozzáférési jogkivonat a hiányzó jogcímek miatt elutasításra kerül, az alkalmazás a MSAL használatával kérheti le a hiányzó jogcímeket.
 
 > [!NOTE]
-> A MSAL megkerüli a hozzáférési jogkivonat gyorsítótárát, ha meg van adva jogcím-kérelem. Fontos, hogy csak akkor adja `claimsRequest` meg a paramétereket, ha további jogcímek szükségesek (az egyes `claimsRequest` MSAL API-hívásokban mindig ugyanazt a paramétert biztosítjuk).
+> A MSAL megkerüli a hozzáférési jogkivonat gyorsítótárát, ha meg van adva jogcím-kérelem. Fontos, hogy csak a `claimsRequest` paramétert adja meg, ha további jogcímek szükségesek (az egyes MSAL API-hívásokban mindig ugyanazt a `claimsRequest` paramétert biztosítjuk).
 
-`claimsRequest`a és `MSALSilentTokenParameters` `MSALInteractiveTokenParameters`a esetén adható meg:
+`claimsRequest` megadható `MSALSilentTokenParameters` és `MSALInteractiveTokenParameters`:
 
 ```objc
 /*!
@@ -54,7 +55,7 @@ Több forgatókönyv is van, ahol ez szükséges. Példa:
 
 @end
 ```
-`MSALClaimsRequest`a JSON-jogcímek kérelmének NSString-reprezentációja alapján hozható létre. 
+`MSALClaimsRequest` a JSON-jogcímek kérelmének NSString-ábrázolásával hozható létre. 
 
 Objective-C:
 
@@ -103,7 +104,7 @@ do {
 
 
 
-`MSALClaimsRequest`Ezután be kell állítani a jogkivonat paramétereit, és meg kell adni az egyik MSAL jogkivonat-beszerzési API-nak:
+ezt követően be kell állítani a token paramétereit, és meg kell adni az MSAL jogkivonat-felvásárlási API-k egyikének: `MSALClaimsRequest`
 
 Objective-C:
 
@@ -133,6 +134,6 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

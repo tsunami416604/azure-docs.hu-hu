@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Logic Apps a REST-végpontok
-description: REST-végpontokat az automatizált feladatokat, folyamatok és munkafolyamatok monitorozása az Azure Logic Apps használatával
+title: Kapcsolódás REST-végpontokhoz Azure Logic Apps
+description: A REST-végpontok figyelése az automatizált feladatokban, folyamatokban és munkafolyamatokban Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,162 +10,162 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 663ef16511269dd61a6567d6570f3445b7da6447
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541584"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804236"
 ---
-# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása az Azure Logic Apps használatával
+# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
-A [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a beépített HTTP + Swagger összekötő, akkor automatizálhatja, amelyek rendszeresen meg bármely REST-végponton keresztül egy [Swagger-fájl](https://swagger.io) logikai alkalmazások létrehozásával. A HTTP + Swagger-trigger és műveleti azonos módon működik a [HTTP-eseményindító és művelet](connectors-native-http.md) , de a Logic App Designerben jobb felhasználói élményt nyújtanak teszi elérhetővé az API szerkezete és a Swagger-fájl által leírt kimenetek. Lekérdezési eseményindító implementálásához az alábbi lekérdezés mintát leírt [meghívhatnak más API-kat, szolgáltatásokat és rendszereket a logic apps egyéni API-k létrehozása](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http + hencegő összekötővel automatizálhatja azokat a munkafolyamatokat, amelyek rendszeresen meghívnak bármely Rest-végpontot egy [hencegő fájlon](https://swagger.io) keresztül a logikai alkalmazások létrehozásával. A HTTP + hencegés-trigger és a művelet ugyanúgy működik, mint a [http-trigger és a művelet](connectors-native-http.md) , de a Logic app Designerben jobb élményt nyújt, ha kiteszi a hencegő fájl által leírt API-struktúrát és kimeneteket. A lekérdezési trigger megvalósításához kövesse az egyéni API-k létrehozása című témakörben leírt lekérdezési mintát, amely [más API-kat, szolgáltatásokat és rendszereket hív meg a Logic apps szolgáltatásban](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A Swagger-fájl, amely leírja a cél REST-végpont URL-címe
+* A célként megadott REST-végpontot leíró hencegő fájl URL-címe
 
-  Általában a REST-végpont az összekötő működéséhez a feltételeknek kell megfelelnie:
+  Általában a REST-végpontnak teljesítenie kell ezt a feltételt az összekötő működéséhez:
 
-  * A Swagger-fájl kell futhat HTTPS URL-címet, amely nyilvánosan elérhető-e.
+  * A hencegő fájlt nyilvánosan elérhető HTTPS URL-címen kell tárolni.
 
-  * Rendelkeznie kell a Swagger-fájl [eltérő eredetű erőforrások megosztása (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) engedélyezve van.
+  * A hencegő fájlnak engedélyezni kell a [több eredetű erőforrás-megosztást (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
-  Egy Swagger-fájl, amely nem üzemel, vagy, amely nem felel meg a biztonsági és az eltérő eredetű követelményeknek, hivatkozni is [a Swagger-fájl feltöltése a blob-tárolóba az Azure storage-fiók](#host-swagger), és így az a tárfiók CORS engedélyezése hogy a fájl hivatkozhat.
+  Ha olyan hencegő fájlra szeretne hivatkozni, amely nem található meg, vagy nem felel meg a biztonsági és az egyéb eredetű követelményeknek, [feltöltheti a hencegő fájlt egy Azure Storage-fiókban lévő blob-tárolóba](#host-swagger), és engedélyezheti a CORS a Storage-fiókban, hogy hivatkozzon a fájl.
 
-  Ez a témakör használatban a példák a [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview), ami megköveteli egy [Cognitive Services-fiók és hozzáférési kulcsát](../cognitive-services/cognitive-services-apis-create-account.md).
+  A jelen témakörben szereplő példák a [Cognitive Services Face APIt](https://docs.microsoft.com/azure/cognitive-services/face/overview)használják, amelyhez [Cognitive Services fiók és hozzáférési kulcs](../cognitive-services/cognitive-services-apis-create-account.md)szükséges.
 
-* Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
-* A logikai alkalmazás, ahonnan csak szeretné, a céloldali végpont meghívására. A kezdéshez a HTTP + Swagger aktiválásához [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). Használja a HTTP + Swagger-műveletet a logikai alkalmazás kezdje bármilyen kívánt eseményindító. Az ebben a példában a HTTP + Swagger eseményindító első lépéseként.
+* Az a logikai alkalmazás, amelyről meg szeretné hívni a célként megadott végpontot. A HTTP + hencegő triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). A HTTP + hencegés művelet használatához indítsa el a logikai alkalmazást a kívánt triggerrel. Ez a példa a HTTP + hencegő triggert használja első lépésként.
 
-## <a name="add-an-http--swagger-trigger"></a>Adja hozzá a HTTP + Swagger-eseményindító
+## <a name="add-an-http--swagger-trigger"></a>HTTP + hencegő trigger hozzáadása
 
-A beépített trigger HTTP-kérést küld egy URL-címet a Swagger-fájl, amely ismerteti a REST API-t, és a egy választ, amely tartalmazza a fájl tartalmát adja vissza.
+Ez a beépített trigger HTTP-kérést küld egy REST API leíró hencegő fájl URL-címére, és egy olyan választ ad vissza, amely tartalmazza a fájl tartalmát.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazás a Logikaialkalmazás-tervezőben.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-1. A tervezőben a Keresés mezőbe írja be "swagger" a szűrőnek. Az a **eseményindítók** listáról válassza ki a **HTTP + Swagger** eseményindító.
+1. A tervezőben a keresőmezőbe írja be szűrőként a "hencegés" kifejezést. Az **Eseményindítók** listából válassza ki a **http + hencegő** eseményindítót.
 
-   ![Válassza a HTTP + Swagger-trigger](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
+   ![HTTP + hencegő trigger kiválasztása](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. Az a **SWAGGER VÉGPONTI URL-cím** mezőbe írja be az URL-címet a Swagger-fájl, és válassza ki **tovább**.
+1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra**.
 
-   Ebben a példában a Swagger URL-címet, amely esetében az USA nyugati régiójában található a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   Ez a példa a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)az USA nyugati régiójában található hencegő URL-címet használja:
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Adja meg az URL-címet a Swagger-végpont](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Adja meg a hencegő végpont URL-címét](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
-1. A tervezőben a Swagger-fájl által leírt műveleteket jeleníti meg, amikor válassza ki a használni kívánt műveletet.
+1. Ha a tervező megjeleníti a hencegő fájl által leírt műveleteket, válassza ki a használni kívánt műveletet.
 
-   ![Műveletek a Swagger-fájl](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Műveletek a hencegő fájlban](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
-1. Adja meg a az eseményindító paraméterei, amelyek eltérőek lehetnek, amelyeket szeretne szerepeltetni a szolgáltatásvégpont hívása a kijelölt művelet alapján. Állítsa be számára, hogy milyen gyakran kívánja az eseményindító az ismétlődést a végpont meghívására.
+1. Adja meg az trigger paramétereinek értékeit, amelyek a kiválasztott művelettől függően változnak a végponti hívásban. Állítsa be az ismétlődést, hogy az eseményindító milyen gyakran hívja meg a végpontot.
 
-   Ebben a példában az eseményindító, átnevezi "HTTP + Swagger aktiválása: A Face – észlelése"úgy, hogy a lépés egy leíró nevet.
+   Ez a példa átnevezi a triggert a "HTTP + hencegő trigger: Face-Detect" kifejezésre, hogy a lépésnek legyen egy leíró neve.
 
    ![Művelet részletei](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. Egyéb elérhető paraméterek hozzáadásához nyissa meg a **új paraméter hozzáadása** listában, és válassza ki a kívánt paramétereket.
+1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
-   A HTTP + Swagger elérhető hitelesítési típusok kapcsolatos további információkért lásd: [hitelesítéshez a HTTP-eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   A HTTP + hencegés számára elérhető hitelesítési típusokkal kapcsolatos további információkért lásd: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. Folytassa a logikai alkalmazás munkafolyamat-műveletek, amelyek futtatását, amikor az eseményindító aktiválódik.
+1. Folytassa a logikai alkalmazás munkafolyamatának kialakítását olyan műveletekkel, amelyek az eseményindító indításakor futnak.
 
-1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A Tervező eszköztárán válassza **mentése**.
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-## <a name="add-an-http--swagger-action"></a>Adjon hozzá egy HTTP + Swagger művelet
+## <a name="add-an-http--swagger-action"></a>HTTP + hencegés művelet hozzáadása
 
-A beépített művelet hajt végre egy HTTP-kérelem az URL-címet a Swagger-fájl, amely ismerteti a REST API-t, és a egy választ, amely tartalmazza a fájl tartalmát adja vissza.
+Ez a beépített művelet HTTP-kérést küld a REST API leíró hencegő fájl URL-címére, és egy választ ad vissza, amely tartalmazza a fájl tartalmát.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Hol szeretne hozzáadni a HTTP + Swagger feladatütemezésekben műveletet, válassza **új lépés**.
+1. Válassza ki azt a lépést, amelyben hozzá szeretné adni a HTTP + hencegés műveletet, és válassza az **új lépés**lehetőséget.
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. Válassza a pluszjelet ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A tervezőben a Keresés mezőbe írja be "swagger" a szűrőnek. Az a **műveletek** listáról válassza ki a **HTTP + Swagger** művelet.
+1. A tervezőben a keresőmezőbe írja be szűrőként a "hencegés" kifejezést. A **műveletek** listából válassza a **http + hencegés** műveletet.
 
-    ![Válassza ki a HTTP + Swagger művelet](./media/connectors-native-http-swagger/select-http-swagger-action.png)
+    ![HTTP + hencegés művelet kiválasztása](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. Az a **SWAGGER VÉGPONTI URL-cím** mezőbe írja be az URL-címet a Swagger-fájl, és válassza ki **tovább**.
+1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra**.
 
-   Ebben a példában a Swagger URL-címet, amely esetében az USA nyugati régiójában található a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   Ez a példa a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)az USA nyugati régiójában található hencegő URL-címet használja:
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Adja meg az URL-címet a Swagger-végpont](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
+   ![Adja meg a hencegő végpont URL-címét](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
 
-1. A tervezőben a Swagger-fájl által leírt műveleteket jeleníti meg, amikor válassza ki a használni kívánt műveletet.
+1. Ha a tervező megjeleníti a hencegő fájl által leírt műveleteket, válassza ki a használni kívánt műveletet.
 
-   ![Műveletek a Swagger-fájl](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
+   ![Műveletek a hencegő fájlban](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
 
-1. A paraméterek értékének megadására a művelet, amelyek eltérőek lehetnek, amelyeket szeretne szerepeltetni a szolgáltatásvégpont hívása a kijelölt művelet alapján.
+1. Adja meg a műveleti paraméterek értékeit, amelyek a kiválasztott művelettől függően változnak a végponti hívásban.
 
-   Ebben a példában nincsenek paraméterei, de nevez át a műveletet az "a HTTP + Swagger művelet: A Face – azonosítása"úgy, hogy a lépés egy leíró nevet.
+   Ebben a példában nincsenek paraméterek, de a műveletet átnevezi a "HTTP + hencegés művelet: Face-IDENTIFY" kifejezésre, hogy a lépésnek legyen egy leíró neve.
 
    ![Művelet részletei](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. Egyéb elérhető paraméterek hozzáadásához nyissa meg a **új paraméter hozzáadása** listában, és válassza ki a kívánt paramétereket.
+1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
-   A HTTP + Swagger elérhető hitelesítési típusok kapcsolatos további információkért lásd: [hitelesítéshez a HTTP-eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   A HTTP + hencegés számára elérhető hitelesítési típusokkal kapcsolatos további információkért lásd: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A Tervező eszköztárán válassza **mentése**.
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 <a name="host-swagger"></a>
 
-## <a name="host-swagger-in-azure-storage"></a>Gazdagép Swagger az Azure Storage-ban
+## <a name="host-swagger-in-azure-storage"></a>Üzemeltetés az Azure Storage-ban
 
-Egy Swagger-fájl, amely nem üzemel, vagy, amely nem felel meg a biztonsági és az eltérő eredetű követelményeknek, hogy a fájl feltöltése a blob-tárolóba az Azure storage-fiók és a tárfiók CORS lehetővé tevő hivatkozhat. Hozzon létre, és állítsa be a Swagger-fájlok tárolására az Azure Storage-ban, kövesse az alábbi lépéseket:
+Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg a biztonsági és az egyéb eredetű követelményeknek azáltal, hogy feltölti a fájlt a blob-tárolóba egy Azure Storage-fiókban, és engedélyezi a CORS. Az Azure Storage-ban az alábbi lépéseket követve hozhatja létre, állíthatja be és tárolhatja a hencegő fájlokat:
 
 1. [Hozzon létre egy Azure-tárfiókot](../storage/common/storage-create-storage-account.md).
 
-1. Most már a BLOB CORS engedélyezése. A tárfiók menüjében kattintson a **CORS**. Az a **Blob service** lapot, adja meg ezeket az értékeket, majd **mentése**.
+1. Most engedélyezze a CORS a blobhoz. A Storage-fiók menüjében válassza a **CORS**lehetőséget. A **blob Service** lapon adja meg ezeket az értékeket, majd kattintson a **Mentés**gombra.
 
-   | Tulajdonság | Érték |
+   | Tulajdonság | Value (Díj) |
    |----------|-------|
    | **Engedélyezett eredetek** | `*` |
    | **Engedélyezett metódusok** | `GET`, `HEAD`, `PUT` |
    | **Engedélyezett fejlécek** | `*` |
-   | **Közzétett fejlécek** | `*` |
-   | **Maximális kor** (másodpercben) | `200` |
+   | **Elérhető fejlécek** | `*` |
+   | **Maximális életkor** (másodpercben) | `200` |
    |||
 
-   Bár ebben a példában a [az Azure portal](https://portal.azure.com), például használhat olyan eszközöket [Azure Storage Explorer](https://storageexplorer.com/), vagy automatikusan konfigurálja ezt a beállítást a minta használatával [PowerShell-parancsfájl](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
+   Bár ez a példa a [Azure Portal](https://portal.azure.com)használja, használhat egy eszközt, például [Azure Storage Explorert](https://storageexplorer.com/), vagy automatikusan konfigurálhatja ezt a beállítást a [PowerShell-parancsfájl](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)használatával.
 
-1. [Hozzon létre egy blobtárolót](../storage/blobs/storage-quickstart-blobs-portal.md). A tároló **áttekintése** ablaktáblán válassza előbb **hozzáférési szint módosítása**. Az a **nyilvános hozzáférés szintje** listáról válassza ki **Blob (névtelen olvasási hozzáférés csak blobokhoz)** , és válassza ki **OK**.
+1. [Hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). A tároló **Áttekintés** paneljén válassza a **hozzáférési szint módosítása**lehetőséget. A **nyilvános hozzáférési szint** listából válassza a **blob (névtelen olvasási hozzáférés csak blobokhoz)** lehetőséget, majd kattintson **az OK gombra**.
 
-1. [A Swagger-fájl feltöltése a blob-tárolóba](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), vagy – a [az Azure portal](https://portal.azure.com) vagy [Azure Storage Explorer](https://storageexplorer.com/).
+1. [Töltse fel a hencegő fájlt a blob-tárolóba](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), vagy a [Azure Portalon](https://portal.azure.com) vagy [Azure Storage Exploreron](https://storageexplorer.com/)keresztül.
 
-1. A blob-tárolóban fájl hivatkozik, használja a HTTPS-kapcsolat a következő ezt a formátumot, amely kis-és nagybetűket:
+1. A blob-tárolóban található fájlra való hivatkozáshoz használjon olyan HTTPS-hivatkozást, amely ezt a formátumot követi, ami megkülönbözteti a kis-és nagybetűket:
 
    `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Egy HTTP + Swagger kimenetei további információt a következő eseményindítót vagy műveletet. A HTTP + Swagger irányuló hívások visszaadják az ezeket az információkat:
+Itt talál további információt a HTTP + hencegő triggerből vagy műveletből származó kimenetekről. A HTTP + hencegés hívása ezt az információt adja vissza:
 
-| Tulajdonság neve | Típus | Leírás |
+| Tulajdonság neve | Type (Típus) | Leírás |
 |---------------|------|-------------|
-| A fejlécek | object | A kérelemből a fejlécek |
-| Törzs | object | JSON-objektum | Az objektum a kérelem törzsében tartalommal |
-| Állapotkód | int | A kérelem az állapotkód: |
+| fejlécek | objektum | A kérelemben szereplő fejlécek |
+| törzse | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
 | Állapotkód | Leírás |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Elfogadva |
-| 400 | Hibás kérés |
+| 202 | Elfogadott |
+| 400 | Hibás kérelem |
 | 401 | Nem engedélyezett |
-| 403 | Tiltott |
+| 403 | Forbidden |
 | 404 | Nem található |
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

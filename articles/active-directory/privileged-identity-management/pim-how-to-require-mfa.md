@@ -1,5 +1,5 @@
 ---
-title: Multi-Factor Authentication (MFA) és PIM – Azure Active Directory | Microsoft Docs
+title: Multi-Factor Authentication (MFA) és Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Ismerje meg, hogyan ellenőrzi a Azure AD Privileged Identity Management (PIM) a többtényezős hitelesítést (MFA).
 services: active-directory
 documentationcenter: ''
@@ -14,31 +14,31 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 686c39c9fb1f1ff7c0ecf068a6612f530620d5dc
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 12b6cd17fac77361fa20d3b3e048e64228a2ed3d
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804297"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809023"
 ---
-# <a name="multi-factor-authentication-mfa-and-pim"></a>Multi-Factor Authentication (MFA) és PIM
+# <a name="multi-factor-authentication-and-privileged-identity-management"></a>Multi-Factor Authentication és Privileged Identity Management
 
 Javasoljuk, hogy a többtényezős hitelesítés (MFA) megkövetelése az összes rendszergazda számára. Ez csökkenti a támadás kockázatát egy sérült jelszó miatt.
 
-Megkövetelheti, hogy a felhasználók a bejelentkezéskor MFA-kihívásokat végezzenek el. Azt is megkövetelheti, hogy a felhasználók a Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szerepkör aktiválásakor végezzenek el MFA-kihívásokat. Így ha a felhasználó nem fejezte be az MFA-t, amikor bejelentkezett, a rendszer kérni fogja a PIM által.
+Megkövetelheti, hogy a felhasználók a bejelentkezéskor több = faktoros hitelesítési kihívást is végezzenek. Azt is megkövetelheti, hogy a felhasználók egy többtényezős hitelesítési kihívást végezzenek, amikor aktiválást végeznek Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szerepkörben. Így ha a felhasználó a bejelentkezéskor nem fejeződött be több = faktoros hitelesítési kérdés, a rendszer Privileged Identity Management fogja kérni őket.
 
 > [!IMPORTANT]
-> Az Azure MFA jelenleg csak munkahelyi vagy iskolai fiókokkal működik, nem Microsoft-fiókokkal (általában személyes fiókkal, amely a Microsoft-szolgáltatásokhoz, például a Skype, az Xbox, a Outlook.com stb.) való bejelentkezéshez használatos. Ennek következtében bárki, aki Microsoft-fiókt használ, nem lehet jogosult rendszergazda, mert nem használhatják az MFA-t a szerepköreik aktiválásához. Ha ezeknek a felhasználóknak továbbra is a munkaterhelések felügyeletét Microsoft-fiók segítségével kell megadniuk, akkor az állandó rendszergazdák számára is megemelheti őket.
+> Az Azure Multi-Factor Authentication csak munkahelyi vagy iskolai fiókokkal működik, nem a Microsoft személyes fiókjaival (általában személyes fiókkal, amely a Microsoft-szolgáltatásokba (például Skype, Xbox vagy Outlook.com) való bejelentkezéshez használatos. Emiatt a személyes fiókot használó felhasználók nem jogosultak a rendszergazda szerepkörre, mert nem használhatják a többtényezős hitelesítést a szerepköreik aktiválásához. Ha ezeknek a felhasználóknak továbbra is a munkaterhelések felügyeletét Microsoft-fiók segítségével kell megadniuk, akkor az állandó rendszergazdák számára is megemelheti őket.
 
 ## <a name="how-pim-validates-mfa"></a>Hogyan érvényesíti a PIM az MFA-t
 
-Az MFA érvényesítésére két lehetőség áll rendelkezésre, ha egy felhasználó aktiválja a szerepkört.
+A többtényezős hitelesítés érvényesítésére két lehetőség áll rendelkezésre, amikor egy felhasználó aktiválja a szerepkört.
 
-A legegyszerűbb lehetőség arra, hogy az Azure MFA-t használja a Kiemelt szerepkört aktiváló felhasználók számára. Ehhez először ellenőrizze, hogy ezek a felhasználók jogosultak-e, ha szükséges, és regisztrálva vannak az Azure MFA-hoz. További információ az Azure MFA üzembe helyezéséről: [Cloud-based azure multi-Factor Authentication üzembe helyezése](../authentication/howto-mfa-getstarted.md). Ajánlott, de nem kötelező, hogy az Azure AD-t úgy konfigurálja, hogy az MFA-t kikényszerítse ezen felhasználók számára a bejelentkezéskor. Ennek az az oka, hogy az MFA-ellenőrzéseket maga a PIM fogja elvégezni.
+A legegyszerűbb lehetőség az Azure Multi-Factor Authentication használata a Kiemelt szerepkört aktiváló felhasználók számára. Ehhez először ellenőrizze, hogy ezek a felhasználók jogosultak-e, ha szükséges, és regisztrálva vannak az Azure Multi-Factor Authentication. Az Azure Multi-Factor Authentication üzembe helyezésével kapcsolatos további információkért lásd: [felhőalapú Azure-multi-Factor Authentication üzembe helyezése](../authentication/howto-mfa-getstarted.md). Ajánlott, de nem kötelező, hogy az Azure AD-t konfigurálja a többtényezős hitelesítés érvényesítéséhez ezen felhasználók számára a bejelentkezéskor. Ennek az az oka, hogy a multi-Factor Authentication-ellenőrzéseket Privileged Identity Management saját maga végzi.
 
-Ha a felhasználók helyszíni hitelesítést végeznek, akkor az identitás-szolgáltató felelős az MFA-nak. Ha például úgy konfigurálta az AD összevonási szolgáltatásokat, hogy az Azure AD-hez való hozzáférés előtt intelligenskártya-alapú hitelesítést igényeljen, a [felhőalapú erőforrásokat az azure multi-Factor Authentication és a AD FS](../authentication/howto-mfa-adfs.md) a AD FS konfigurálására vonatkozó utasításokat tartalmaz. jogcímek küldése az Azure AD-nek. Amikor egy felhasználó megpróbál aktiválni egy szerepkört, a PIM elfogadja, hogy az MFA már érvényesítve lett a felhasználó számára, miután megkapja a megfelelő jogcímeket.
+Ha a felhasználók helyszíni hitelesítést végeznek, akkor a többtényezős hitelesítésért a személyazonossági szolgáltató felelős. Ha például úgy konfigurálta az AD összevonási szolgáltatásokat, hogy az Azure AD-hez való hozzáférés előtt intelligenskártya-alapú hitelesítést igényeljen, a [felhőalapú erőforrásokat az azure multi-Factor Authentication és a AD FS](../authentication/howto-mfa-adfs.md) a AD FS konfigurálására vonatkozó utasításokat tartalmaz. jogcímek küldése az Azure AD-nek. Amikor egy felhasználó megpróbál aktiválni egy szerepkört, Privileged Identity Management elfogadja, hogy a többtényezős hitelesítés már érvényesítve lett a felhasználó számára, amint megkapja a megfelelő jogcímeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure AD szerepkör beállításainak konfigurálása a PIM-ben](pim-how-to-change-default-settings.md)
-- [Az Azure erőforrás-szerepkör beállításainak konfigurálása a PIM-ben](pim-resource-roles-configure-role-settings.md)
+- [Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)
+- [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)

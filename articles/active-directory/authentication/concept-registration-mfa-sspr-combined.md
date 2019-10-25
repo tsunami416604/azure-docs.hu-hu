@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a312c39352f0d13b4354e7b0dfcd897bf4cc0992
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162421"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808464"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági információk regisztrálása (előzetes verzió)
 
@@ -34,9 +34,12 @@ Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg ne
 |     |
 
 > [!IMPORTANT]
-> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést fogják látni. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt fogják látni. Az új saját profil a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő címen érhetik el [https://myprofile.microsoft.com](https://myprofile.microsoft.com)a profilt:.
+> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést fogják látni. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt fogják látni. Az új saját profil a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a [https://myprofile.microsoft.com](https://myprofile.microsoft.com)címen tekinthetik meg a profilt.
 
-A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak újra megjelennek. Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat `?lng=<language>` az URL végéhez, ahol `<language>` a a megjeleníteni kívánt nyelv kódja.
+> [!NOTE] 
+> Előfordulhat, hogy hibaüzenet jelenik meg, amikor megpróbál hozzáférni a biztonsági adatok lehetőséghez. Például: "sajnos nem tudjuk bejelentkezni". Ebben az esetben győződjön meg arról, hogy nincs olyan konfigurációs vagy csoportházirend-objektuma, amely blokkolja a külső felek cookie-jait a böngészőben. 
+
+A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak újra megjelennek. Ha egy adott nyelvet szeretne kényszeríteni, `?lng=<language>` adhat hozzá az URL végéhez, ahol `<language>` a megjeleníteni kívánt nyelv kódja.
 
 ![SSPR vagy egyéb biztonsági ellenőrzési módszerek beállítása](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -44,17 +47,17 @@ A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelv
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-|   | Regisztrálás | Módosítás | Törlés |
+|   | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
-| Hardvertoken | Nem | Nem | Igen |
-| Phone | Igen | Igen | Igen |
-| Másodlagos telefon | Igen | Igen | Igen |
+| Hardver jogkivonata | Nem | Nem | Igen |
+| Telefonszám | Igen | Igen | Igen |
+| Másik telefon | Igen | Igen | Igen |
 | Irodai telefon | Nem | Nem | Nem |
-| Email | Igen | Igen | Igen |
+| E-mail cím | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
-| Alkalmazásjelszavak | Igen | Nem | Igen |
+| Alkalmazásjelszók | Igen | Nem | Igen |
 
 > [!NOTE]
 > Az alkalmazás jelszavai csak az Multi-Factor Authentication számára kikényszerített felhasználók számára érhetők el. Az alkalmazás jelszavai nem érhetők el azokhoz a felhasználókhoz, akik számára engedélyezett a Multi-Factor Authentication egy feltételes hozzáférési szabályzaton keresztül.
@@ -84,11 +87,11 @@ A kombinált regisztráció a Multi-Factor Authentication és a SSPR szabályzat
 
 Az alábbiakban néhány olyan forgatókönyv látható, amelyben a felhasználók a biztonsági adatok regisztrálására vagy frissítésére kérhetnek:
 
-- Multi-Factor Authentication regisztráció a személyazonosság védelme révén kényszerítve: A rendszer megkéri a felhasználókat, hogy regisztráljanak a bejelentkezés során. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
-- Multi-Factor Authentication regisztráció a felhasználónkénti Multi-Factor Authentication használatával: A rendszer megkéri a felhasználókat, hogy regisztráljanak a bejelentkezés során. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
-- Multi-Factor Authentication a regisztrációt a feltételes hozzáférés vagy más szabályzatok segítségével érvényesítjük: A rendszer akkor kéri a felhasználókat, hogy regisztráljanak, ha Multi-Factor Authenticationt igénylő erőforrást használnak. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
-- SSPR-regisztráció érvénybe léptetése: A rendszer megkéri a felhasználókat, hogy regisztráljanak a bejelentkezés során. Csak SSPR metódusokat regisztráljanak.
-- SSPR-frissítés kényszerítve: A felhasználóknak a biztonsági adataikat a rendszergazda által beállított időközönként kell áttekinteniük. A felhasználók megtekinthetik az adataikat, és szükség esetén ellenőrizhetik a jelenlegi adatokat, vagy módosíthatják azokat.
+- Multi-Factor Authentication regisztráció a személyazonosság védelme révén kényszerítve: a rendszer a felhasználókat a bejelentkezés során kéri. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
+- Multi-Factor Authentication regisztráció a felhasználónkénti Multi-Factor Authentication használatával: a rendszer a felhasználókat a bejelentkezéskor kéri. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
+- Multi-Factor Authentication a regisztrációt a feltételes hozzáférés vagy más szabályzatok alapján kényszerítjük: a felhasználóknak regisztrálniuk kell, amikor olyan erőforrást használnak, amelyhez Multi-Factor Authentication szükséges. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
+- SSPR-regisztráció érvénybe léptetése: a rendszer a felhasználóknak a bejelentkezés során kéri a regisztrálást. Csak SSPR metódusokat regisztráljanak.
+- SSPR-frissítés kényszerítve: a felhasználóknak a rendszergazda által beállított időközönként kell áttekinteniük biztonsági adataikat. A felhasználók megtekinthetik az adataikat, és szükség esetén ellenőrizhetik a jelenlegi adatokat, vagy módosíthatják azokat.
 
 A regisztráció érvénybe léptetése esetén a felhasználók a lehető legkevesebb módszert mutatják be a Multi-Factor Authentication és a SSPR szabályzatoknak való megfeleléshez.
 
@@ -109,7 +112,7 @@ Ha a SSPR-szabályzat megköveteli, hogy a felhasználók rendszeres időközön
 
 ### <a name="manage-mode"></a>Kezelés módja
 
-A felhasználók a saját profil [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
+A felhasználók a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) vagy a saját profil **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
 
 ## <a name="key-usage-scenarios"></a>Kulcshasználat forgatókönyvek
 
@@ -123,17 +126,17 @@ Egy felhasználó nem állította be az összes szükséges biztonsági adatot, 
 
 Egy rendszergazda nem kényszerített regisztrációt.
 
-Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági [https://myprofile.microsoft.com](https://myprofile.microsoft.com)adatot, a következőre lép:. A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó az imént beállított módszert látja el a biztonsági adatok lapon.
+Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági adatot, [https://myprofile.microsoft.com](https://myprofile.microsoft.com). A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó az imént beállított módszert látja el a biztonsági adatok lapon.
 
 ### <a name="delete-security-info-from-my-profile"></a>Biztonsági adatok törlése a saját profilból
 
-Az a felhasználó, aki korábban beállított legalább egy metódust, navigál a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)következőhöz:. A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerek egyikét. Ha elkészült, a felhasználó már nem látja ezt a metódust a biztonsági adatok lapon.
+Az a felhasználó, aki korábban beállított legalább egy metódust, navigál [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerek egyikét. Ha elkészült, a felhasználó már nem látja ezt a metódust a biztonsági adatok lapon.
 
 ### <a name="change-the-default-method-from-my-profile"></a>A saját profil alapértelmezett módszerének módosítása
 
-Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)használhat a alkalmazásban. A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
+Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A felhasználók számára a hitelesítési módszerek ismételt regisztrálásának kényszerítése](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 

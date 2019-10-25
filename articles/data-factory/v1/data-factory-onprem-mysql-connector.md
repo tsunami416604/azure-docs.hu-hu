@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a MySQL-hez az Azure Data Factory használatával |} A Microsoft Docs
-description: Tudnivalók az adatok áthelyezése az Azure Data Factory segítségével MySQL-adatbázisból.
+title: Adatok áthelyezése a MySQL-ből a Azure Data Factory használatával | Microsoft Docs
+description: Ismerje meg, hogyan helyezhetők át adatok a MySQL-adatbázisból a Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 675189a5485bb0cfcc833fc21b376a21ddde7cdf
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839007"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809363"
 ---
-# <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-mysql-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-mysql.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [MySQL-összekötő a v2-ben](../connector-mysql.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a MySQL-összekötőt a v2-ben](../connector-mysql.md).
 
 
-Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával helyezheti át egy helyszíni MySQL-adatbázishoz. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok helyszíni MySQL-adatbázisból való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
-A MySQL a helyszíni adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy MySQL-adattár pedig más adattárakban, de nem szükséges más adattárakból származó adatok áthelyezése egy MySQL-adattárba. 
+A helyszíni MySQL-adattárból bármilyen támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által mosogatóként támogatott adattárak listáját a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblázatban tekintheti meg. A adatfeldolgozó jelenleg csak a MySQL-adattárból származó adatok áthelyezését támogatja más adattárakba, de az adatok más adattárakból egy MySQL-adattárba való áthelyezésére nem. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Data Factory szolgáltatás támogatja a helyszíni MySQL források az adatkezelési átjáró segítségével csatlakozik. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk további információt talál az adatkezelési átjáró-lépésenként az átjáró beállítása.
+A Data Factory szolgáltatás támogatja a helyszíni MySQL-forrásokhoz való kapcsolódást a adatkezelés átjáró használatával. Az átjáró beállításával adatkezelés kapcsolatos további információkért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Átjáróra szükség, akkor is, ha a MySQL-adatbázishoz az Azure IaaS virtuális gépen (VM) üzemel. Telepítheti az átjáró adattárként ugyanazon a virtuális Gépen vagy egy másik virtuális gép mindaddig, amíg az átjáró képes kapcsolódni az adatbázishoz.
+Az átjáróra akkor is szükség van, ha a MySQL-adatbázist egy Azure IaaS virtuális gépen (VM) üzemeltetik. Az átjárót ugyanarra a virtuális gépre telepítheti, mint az adattár vagy egy másik virtuális gép, feltéve, hogy az átjáró csatlakozni tud az adatbázishoz.
 
 > [!NOTE]
-> Lásd: [gateway hibáinak elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolódási/átjáró hibaelhárítási tippek a kapcsolatos problémákat.
+> A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
-Az adatkezelési átjárót a MySQL-adatbázishoz csatlakozni, telepítenie kell a [MySQL Connector/Net a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (6.6.5 és 6.10.7 közötti verzió) az adatkezelési átjárót ugyanazon a rendszeren. A 32 bites illesztőprogramot az adatkezelési átjárót 64 bites kompatibilis. MySQL 5.1-es és újabb támogatott.
+Ahhoz, hogy adatkezelés átjáró csatlakozhasson a MySQL-adatbázishoz, telepítenie kell a [MySQL-összekötőt/NET-et a Microsoft Windowshoz](https://dev.mysql.com/downloads/connector/net/) (6.6.5 és 6.10.7 közötti verzió) ugyanazon a rendszeren, amelyen a adatkezelés átjáró található. Ez a 32 bites illesztőprogram kompatibilis a 64 bites adatkezelés átjáróval. A MySQL 5,1-es és újabb verziói támogatottak.
 
 > [!TIP]
-> Ha eléri a "Hitelesítés nem sikerült, mert a távoli fél bezárta az átviteli adatfolyamot." hibaüzenet, fontolja meg a MySQL Connector/Net frissítése újabb verzióra.
+> Ha a "sikertelen hitelesítés" hibát észlelt, mert a távoli fél bezárta az átviteli streamet, érdemes lehet frissíteni a MySQL-összekötőt/a NET-et újabb verzióra.
 
-## <a name="getting-started"></a>Első lépések
-Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
+## <a name="getting-started"></a>Bevezetés
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal. 
 
-- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
+- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
+1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. 
+3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amelyek a MySQL a helyszíni adattárolókból az adatok másolása JSON-definíciói egy minta: [JSON-példa: Adatok másolása az MySQL az Azure Blob](#json-example-copy-data-from-mysql-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  A helyszíni MySQL-adattárakból származó adatok másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében tekintse meg a jelen cikk [JSON-példa: adatok másolása a MySQL-ből az Azure blobba](#json-example-copy-data-from-mysql-to-azure-blob) című szakaszát. 
 
-A következő szakaszok a MySQL adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
+A következő szakaszokban részletesen ismertetjük a MySQL-adattárra jellemző Data Factory-entitások definiálásához használt JSON-tulajdonságokat:
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-Az alábbi táblázatban a JSON-elemeket társított MySQL szolgáltatás leírását.
+A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **OnPremisesMySql** |Igen |
-| server |A MySQL-kiszolgáló neve. |Igen |
-| database |A MySQL-adatbázis neve. |Igen |
-| schema |A séma az adatbázis neve. |Nem |
-| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
-| userName |Adja meg a felhasználónevet, a MySQL-adatbázishoz való csatlakozáshoz. |Igen |
-| password |Adja meg a megadott felhasználói fiókhoz tartozó jelszót. |Igen |
-| gatewayName |Az átjáró által a Data Factory szolgáltatás a helyi MySQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
+| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
+| kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
+| adatbázis |A MySQL-adatbázis neve. |Igen |
+| Séma |A séma neve az adatbázisban. |Nem |
+| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic`. |Igen |
+| userName |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
+| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
+Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
-A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A typeProperties szakasz típusú adatkészlet **RelationalTable** (amely tartalmazza a MySQL-adatkészlet) a következő tulajdonságokkal rendelkezik
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú (MySQL-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| tableName |A MySQL-adatbázispéldányban, amelyek a társított szolgáltatás hivatkozik a tábla neve. |Nem (Ha **lekérdezés** , **RelationalSource** van megadva) |
+| tableName |Annak a MySQL-adatbázis-példánynak a neve, amelyhez a társított szolgáltatás hivatkozik. |Nem (ha meg van adva a **RelationalSource** **lekérdezése** ) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Név, leírás, bemeneti és kimeneti táblák, például a tulajdonságok akkor, házirend érhető el az összes típusú tevékenységet.
+A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, a szabályzatok minden típusú tevékenységhez elérhetők.
 
-Mivel a tulajdonságok érhetők el a **typeProperties** a tevékenység szakaszban tevékenységek minden típusának számától függ. A másolási tevékenységhez azok változhat a forrásként és fogadóként típusú is.
+Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-Ha a másolási tevékenység forrása típusa **RelationalSource** (amely tartalmazza a MySQL), a következő tulajdonságok typeProperties szakasz érhető el:
+Ha a másolási tevékenységben a forrás **RelationalSource** típusú (amely tartalmazza a MySQL-t), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 
-## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-példa: Adatok másolása az MySQL az Azure Blob
-Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Azt mutatja, hogyan másolhat adatokat egy helyi MySQL-adatbázisból egy Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-példa: adatok másolása a MySQL-ből az Azure Blobba
+Ez a példa JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatja, hogyan másolhat adatok egy helyszíni MySQL-adatbázisból egy Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
 
 > [!IMPORTANT]
-> Ez a példa JSON-kódrészletek biztosít. Nem tartalmaz részletes útmutató az adat-előállító létrehozásához. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) részletesen ismertető cikket.
+> Ez a példa JSON-kódrészleteket biztosít. Nem tartalmaz részletes útmutatást az adatelőállító létrehozásához. Részletes útmutatásért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhőalapú cikkek között](data-factory-move-data-between-onprem-and-cloud.md) .
 
-A minta az alábbi data factory-entitások rendelkezik:
+A minta a következő adatgyári entitásokat tartalmazhatja:
 
-1. A társított szolgáltatás típusa [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties).
-2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [RelationalTable](data-factory-onprem-mysql-connector.md#dataset-properties).
-4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties)típusú társított szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
+3. [RelationalTable](data-factory-onprem-mysql-connector.md#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+5. [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta adatokat másol egy lekérdezés eredménye a MySQL-adatbázis egy blobba óránként. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
+A minta a MySQL-adatbázis lekérdezési eredményeiből másolja át az adatait egy adott blobra. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Első lépésként a telepítő az adatkezelési átjárót. A rendszer az utasításokat a [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk.
+Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni [helyszínek és a felhő közötti adatáthelyezést](data-factory-move-data-between-onprem-and-cloud.md) ismertetik.
 
-**MySQL-beli társított szolgáltatást:**
+**MySQL társított szolgáltatás:**
 
 ```JSON
     {
@@ -136,7 +136,7 @@ Első lépésként a telepítő az adatkezelési átjárót. A rendszer az utas�
     }
 ```
 
-**Az Azure Storage társított szolgáltatást:**
+**Azure Storage-beli társított szolgáltatás:**
 
 ```JSON
     {
@@ -152,9 +152,9 @@ Első lépésként a telepítő az adatkezelési átjárót. A rendszer az utas�
 
 **MySQL bemeneti adatkészlet:**
 
-A minta azt feltételezi, létrehozott egy táblát "MyTable" MySQL-ben és a egy idősorozat-adatok a "timestampcolumn" nevű oszlopot tartalmaz.
+A minta feltételezi, hogy létrehozott egy "Sajáttábla" táblát a MySQL-ben, és egy "timestampcolumn" nevű oszlopot tartalmaz az idősorozat-adatsorokhoz.
 
-Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásban, hogy a tábla a data factory a külső, és nem hozzák az adat-előállító adott tevékenységéhez.
+A "külső" beállítása: az "igaz" érték tájékoztatja a Data Factory szolgáltatást arról, hogy a tábla kívül esik az adatelőállítón, és nem az adatelőállító tevékenysége.
 
 ```JSON
     {
@@ -180,9 +180,9 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
     }
 ```
 
-**Azure blobkimeneti adatkészlet:**
+**Azure-Blob kimeneti adatkészlete:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
 
 ```JSON
     {
@@ -242,7 +242,7 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A map
 
 **Másolási tevékenységgel rendelkező folyamat:**
 
-A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **RelationalSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság kiválasztja az adatokat másolni az elmúlt órában.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
 
 ```JSON
     {
@@ -291,61 +291,61 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 ```
 
 
-### <a name="type-mapping-for-mysql"></a>MySQL-leképezés típusa
-Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi kétlépéses módszer a forrás-típusok közül:
+### <a name="type-mapping-for-mysql"></a>Type leképezés a MySQL-hez
+Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokra:
 
-1. A natív forrástípusok átalakítása typ .NET
-2. A .NET-típusból átalakítása natív fogadó típusa
+1. Konvertálás natív forrásokból .NET-típusra
+2. Konvertálás .NET-típusról natív fogadó típusra
 
-Ha helyez át adatokat a MySQL-hez, a következő hozzárendeléseket a rendszer MySQL-típusok közül .NET Tulajdonságtípusokat használja.
+Az adatok MySQL-re való áthelyezésekor a következő leképezések használatosak a MySQL-típusoktól a .NET-típusokig.
 
 | MySQL-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| aláíratlan bigint |Decimal |
+| bigint aláíratlan |Decimális |
 | bigint |Int64 |
-| bit |Decimal |
-| blob |Byte[] |
-| bool |Logikai |
+| bites |Decimális |
+| blob |Bájt [] |
+| logikai |Logikai |
 | char |Sztring |
-| date |Datetime |
-| datetime |Datetime |
-| tizedes tört |Decimal |
-| a kétszeres pontosság |Double |
-| double |Double |
-| Enum |Karakterlánc |
-| float |Single |
-| aláíratlan int |Int64 |
+| dátum |datetime |
+| dátum/idő |datetime |
+| tizedes tört |Decimális |
+| dupla pontosság |duplán |
+| double |duplán |
+| Enum |Sztring |
+| lebegőpontos |Önálló |
+| int előjel nélküli |Int64 |
 | int |Int32 |
-| egész szám aláíratlan |Int64 |
-| integer |Int32 |
-| hosszú varbinary |Byte[] |
+| egész szám előjel nélküli |Int64 |
+| egész szám |Int32 |
+| hosszú varbinary |Bájt [] |
 | hosszú varchar |Sztring |
-| longblob |Byte[] |
-| LONGTEXT |Karakterlánc |
-| mediumblob |Byte[] |
-| aláíratlan mediumint |Int64 |
+| dereglye |Bájt [] |
+| LONGTEXT |Sztring |
+| mediumblob |Bájt [] |
+| mediumint aláíratlan |Int64 |
 | mediumint |Int32 |
-| mediumtext |Karakterlánc |
-| numeric |Decimal |
-| real |Double |
+| mediumtext |Sztring |
+| numerikus |Decimális |
+| valós |duplán |
 | halmaz |Sztring |
-| aláíratlan smallint |Int32 |
+| smallint aláíratlan |Int32 |
 | smallint |Int16 |
-| text |Sztring |
+| szöveg |Sztring |
 | time |TimeSpan |
-| timestamp |Datetime |
-| tinyblob |Byte[] |
-| tinyint unsigned |Int16 |
+| időbélyeg |datetime |
+| tinyblob |Bájt [] |
+| tinyint aláíratlan |Int16 |
 | tinyint |Int16 |
 | tinytext |Sztring |
 | varchar |Sztring |
-| év |Int |
+| év |int |
 
-## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
-Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcsolatos további információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
+A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>A relációs források megismételhető olvasása
-Amikor adatmásolásra, relációs adatokat tárol, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja az újrapróbálkozási szabályzat egy adatkészlethez, úgy, hogy a szelet akkor fut újra, ha hiba történik. Ha a szelet akkor fut újra, vagy módon, győződjön meg arról, hogy ugyanazokat az adatokat olvasható függetlenül attól, hogy hány alkalommal fut egy szeletet, kell. Lásd: [olvasni a relációs források Repeatable](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
+Az adatok a kapcsolódó adattárakból való másolása során érdemes megismételni a nem kívánt eredmények elkerülését. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy a rendszer hiba esetén újrafuttassa a szeleteket. Ha egy szeletet mindkét módon újrafuttat, meg kell győződnie arról, hogy a szeletek hányszor futnak. Lásd: [megismételhető olvasás a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md) megismerheti a kulcsfontosságú szerepet játszik az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre.
+## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
+A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

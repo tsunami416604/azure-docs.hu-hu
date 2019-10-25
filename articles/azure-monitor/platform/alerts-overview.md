@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555608"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802305"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -184,9 +184,9 @@ A riasztási példányok felhasználása és kezelése megköveteli, hogy a felh
 
 Előfordulhat, hogy programozott módon kívánja lekérdezni az előfizetéssel létrehozott riasztásokat. Előfordulhat, hogy a Azure Portalon kívül egyéni nézeteket is létre kell hoznia, vagy elemezni kell a riasztásokat a minták és trendek azonosításához.
 
-Az előfizetésekhez kapcsolódó riasztásokat a [Alert Management REST API](https://aka.ms/alert-management-api) vagy a [riasztások Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources)használatával kérdezheti le.
+Az előfizetésekhez kapcsolódó riasztásokat a [Alert Management REST API](https://aka.ms/alert-management-api) vagy a [riasztások Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)használatával lehet lekérdezni.
 
-A [riasztásokhoz készült Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) lehetővé teszi a riasztási példányok lekérdezését a skálán. Ez akkor ajánlott, ha több előfizetésben létrehozott riasztásokat kell kezelnie. 
+Az [Azure Resource Graph REST API a riasztásokhoz](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)) lehetővé teszi a riasztási példányok lekérdezését a skálán. Ez akkor ajánlott, ha több előfizetésben létrehozott riasztásokat kell kezelnie. 
 
 Az API-hoz tartozó következő minta-kérelem egy előfizetésben lévő riasztások számát adja vissza:
 

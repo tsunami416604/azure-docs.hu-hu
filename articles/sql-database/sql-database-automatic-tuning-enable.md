@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162344"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809651"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatikus hangolás engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 
@@ -104,11 +104,17 @@ További vmivel T-SQL-beállítások az automatikus hangolás konfigurálásáho
 
 Az automatikus hangolás az adatbázison végrehajtott összes műveletet figyeli, és bizonyos esetekben megállapíthatja, hogy az automatikus hangolás nem tud megfelelően működni az adatbázison. Ebben az esetben a rendszer letiltja a hangolási beállítást. A legtöbb esetben ez azért történik, mert a lekérdezési tár nincs engedélyezve, vagy csak olvasható állapotban van egy adott adatbázison.
 
+## <a name="permissions"></a>Engedélyek
+
+Mivel az automatikus hangolás az Azure-szolgáltatás, a használatához az Azure beépített RBAC-szerepköreit kell használnia. Az SQL-hitelesítés használata nem elegendő a funkció Azure Portalból való használatához.
+
+Az automatikus hangolás használatához minimálisan szükséges engedély a felhasználónak az Azure beépített [SQL-adatbázis-közreműködői](../role-based-access-control/built-in-roles.md#sql-db-contributor) szerepköre. Érdemes lehet magasabb jogosultsági szerepköröket használni, például SQL Server közreműködő, közreműködő és tulajdonos.
+
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>E-mail értesítések automatikus hangolásának konfigurálása
 
 Lásd: az [e-mail értesítések automatikus finomhangolása](sql-database-automatic-tuning-email-notifications.md) útmutató.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](sql-database-automatic-tuning.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 * Tekintse meg a teljesítményre vonatkozó [javaslatokat](sql-database-advisor.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

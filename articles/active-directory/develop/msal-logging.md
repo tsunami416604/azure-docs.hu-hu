@@ -1,5 +1,6 @@
 ---
-title: Bejelentkezés a Microsoft Authentication Library (MSAL) alkalmazásba | Azure
+title: Naplózás a Microsoft Authentication Library (MSAL) alkalmazásokban
+titleSuffix: Microsoft identity platform
 description: Tudnivalók a Microsoft Authentication Library-(MSAL-) alkalmazások naplózásáról.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 87102e3ea71695006e465d1becad0f2ece2a426b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678036"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802976"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -32,10 +33,10 @@ A Microsoft Authentication Library (MSAL) alkalmazásai olyan naplófájlokat ho
 
 A MSAL számos naplózási részletességi szintet biztosít:
 
-- Hiba: Azt jelzi, hogy valami hiba történt, és a rendszer hibát generált. Hibakereséshez és a problémák azonosításához használható.
-- Figyelmeztetés: Nem szükségszerűen hiba vagy hiba történt, de a diagnosztika és a problémák megoldására szolgál.
-- Információ A MSAL a tájékoztató célokra szánt eseményeket naplózza, nem feltétlenül a hibakereséshez.
-- részletes Default (Alapértelmezett): A MSAL a könyvtár működésének részletes adatait naplózza.
+- Hiba: azt jelzi, hogy valami hiba történt, és a rendszer hibát generált. Hibakereséshez és a problémák azonosításához használható.
+- Figyelmeztetés: nem szükségszerűen hiba vagy hiba történt, de a diagnosztika és a problémák megoldására szolgál.
+- Információ: a MSAL a tájékoztató célokra szánt eseményeket naplózza, nem feltétlenül a hibakereséshez.
+- Részletes: alapértelmezett. A MSAL a könyvtár működésének részletes adatait naplózza.
 
 ## <a name="personal-and-organizational-data"></a>Személyes és szervezeti adatkezelés
 
@@ -46,12 +47,12 @@ Alapértelmezés szerint a MSAL-naplózó nem gyűjt kényes személyes vagy sze
  > [!NOTE]
  > Tekintse meg a [MSAL.net wikit](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) a MSAL.net-naplózási és egyéb mintákhoz.
 
-A 3. x MSAL a naplózás az alkalmazáson belül, a `.WithLogging` Builder módosító használatával van beállítva. Ez a metódus nem kötelező paramétereket vesz igénybe:
+A 3. x MSAL a naplózás az alkalmazások létrehozásakor az `.WithLogging` Builder-módosító használatával van beállítva. Ez a metódus nem kötelező paramétereket vesz igénybe:
 
-- a `Level` lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
+- `Level` lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
 - a `PiiLoggingEnabled` lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait.
-- a `LogCallback` egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha a `PiiLoggingEnabled` értéke igaz, a metódus kétszer fogja fogadni az üzeneteket: egyszer a `containsPii` paraméter értéke false, és az üzenet személyes adatként nem, a második pedig a `containsPii` paraméter értéke igaz, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
-- a `DefaultLoggingEnabled` lehetővé teszi a platform alapértelmezett naplózását. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
+- a `LogCallback` egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha a `PiiLoggingEnabled` értéke igaz, a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPii` paraméter értéke false (hamis), az üzenet pedig személyes adatként nem jelenik meg, és a `containsPii` paraméterrel való második idő igaz, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- a `DefaultLoggingEnabled` engedélyezi a platform alapértelmezett naplózását. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
 
 ```csharp
 class Program
@@ -84,10 +85,10 @@ class Program
 
 Jelentkezzen be az alkalmazás létrehozásakor egy naplózási visszahívás létrehozásával. A visszahívás a következő paramétereket veszi figyelembe:
 
-- @no__t – 0 – a könyvtár által visszahívásra átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
-- a `logLevel` lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info` és `Verbose`.
-- a `message` a naplóbejegyzés tartalma.
-- `containsPII` megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatüzeneteket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha a `containsPII` értéke `true`, ez a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPII` paraméterrel, amely a `false` értékre van állítva, a személyes és a `message` beállítás pedig a személyes, és a `containsPii` paraméterrel `true` értékre van állítva, és az üzenet tartalmazhat személyes adattípust. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- `tag` a könyvtár által a visszahívás számára átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
+- `logLevel` lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info`és `Verbose`.
+- `message` a naplóbejegyzés tartalma.
+- `containsPII` megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatelemeket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` `true`, ez a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPII` paraméterrel `false`, a `message` pedig személyes adatként nem, és egy második alkalommal, amikor a `containsPii` paraméter értéke `true`, és az üzenet tartalmazhat személyes adatként. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
 
 ```java
 private StringBuilder mLogs;
@@ -126,9 +127,9 @@ Logger.getInstance().setEnableLogcatLog(true);
  Engedélyezze a naplózást a MSAL. js-ben egy `UserAgentApplication` példány létrehozásakor a konfiguráció során egy naplózó objektum átadásával. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
 - `localCallback`: egy visszahívási példány, amelyet a fejlesztő biztosíthat a naplók egyéni módon történő felhasználásához és közzétételéhez. A localCallback metódus implementálása attól függően, hogy hogyan szeretné átirányítani a naplókat.
-- `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info` és `Verbose`. A mező alapértelmezett értéke: `Info`.
+- `level` (nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info`és `Verbose`. A mező alapértelmezett értéke: `Info`.
 - `piiLoggingEnabled` (nem kötelező): ha igaz értékre van állítva, a személyes és szervezeti adatnaplókat naplózza. Alapértelmezés szerint ez hamis, így az alkalmazás nem naplózza a személyes adatait. A személyes adatnaplókat soha nem írja az alapértelmezett kimenetekre, például a konzolra, a Logcat vagy a NSLog.
-- `correlationId`(nem kötelező): egyedi azonosító, amely a kérésnek a hibakeresési célú hozzárendelésére szolgál. Az alapértelmezett érték a RFC4122 4-es verziójának GUID-azonosítója (128 bit).
+- `correlationId` (nem kötelező): egyedi azonosító, amely a kérelem hibakeresési célú hozzárendelésére szolgál. Az alapértelmezett érték a RFC4122 4-es verziójának GUID-azonosítója (128 bit).
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -253,7 +254,7 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 ### <a name="log-message-format"></a>Napló üzenetének formátuma
 
-A MSAL üzenetek része a következő formátumú:`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+A MSAL üzenetek részének formátuma `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
 Példa:
 

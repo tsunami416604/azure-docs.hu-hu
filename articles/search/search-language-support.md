@@ -1,25 +1,25 @@
 ---
-title: Többnyelvű indexelés a nem angol nyelvű keresési lekérdezésekhez – Azure Search
-description: A Azure Search támogatja az 56 nyelv használatát, a Lucene és a természetes nyelvi feldolgozási technológiából származó nyelvi elemzők kihasználása a Microsofttól.
-author: yahnoosh
+title: Többnyelvű indexelés a nem angol nyelvű keresési lekérdezésekhez
+titleSuffix: Azure Cognitive Search
+description: Az Azure Cognitive Search támogatja az 56 nyelv használatát, a Lucene és a természetes nyelvi feldolgozási technológiából származó nyelvi elemzők kihasználását a Microsofttól.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+author: yahnoosh
 ms.author: jlembicz
-ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186561"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793594"
 ---
-# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Index létrehozása több nyelvhez Azure Search
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Index létrehozása több nyelvhez az Azure-ban Cognitive Search
 
 Az indexek olyan mezőket tartalmazhatnak, amelyek több nyelvből származó tartalmat tartalmaznak, például egyéni mezők létrehozása a nyelvspecifikus karakterláncokhoz. Az indexelés és a lekérdezés során a legjobb eredmények elérése érdekében rendeljen hozzá egy nyelvi elemzőt, amely a megfelelő nyelvi szabályokat tartalmazza. 
 
-A Azure Search a Lucene és a Microsofttól származó nyelvi elemzők széles választékát kínálja, amelyeket az analizátor tulajdonság használatával rendelhet hozzá az egyes mezőkhöz. Az ebben a cikkben leírtak szerint megadhat egy Language Analyzert is a portálon.
+Az Azure Cognitive Search a Lucene és a Microsofttól származó nyelvi elemzők széles választékát kínálja, amelyeket az analizátor tulajdonság használatával rendelhet hozzá az egyes mezőkhöz. Az ebben a cikkben leírtak szerint megadhat egy Language Analyzert is a portálon.
 
 ## <a name="add-analyzers-to-fields"></a>Elemzők hozzáadása a mezőkhöz
 
@@ -34,9 +34,9 @@ Egy adott mező létrehozásakor nyelvi analizátor van megadva. Az analizátor 
 
 ![Nyelvi elemzők kiosztása a mező meghatározása során](media/search-language-support/select-analyzer.png "Nyelvi elemzők kiosztása a mező meghatározása során")
 
-Alapértelmezés szerint minden kereshető mező a [szabványos Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) -elemzőt használja, amely nyelvtől független. A támogatott elemzők teljes listájának megtekintéséhez lásd: [nyelvi elemzők hozzáadása egy Azure Search indexhez](index-add-language-analyzers.md).
+Alapértelmezés szerint minden kereshető mező a [szabványos Lucene-elemzőt](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) használja, amely nyelvtől független. A támogatott elemzők teljes listájának megtekintéséhez lásd: [nyelvi elemzők hozzáadása Azure Cognitive Search indexhez](index-add-language-analyzers.md).
 
-A portálon az elemzők célja, hogy használhatók legyenek. Ha testreszabásra vagy szűrők és tokenizers egyedi konfigurációra van szüksége, hozzon [létre egy egyéni elemzőt](index-add-custom-analyzers.md) a kódban. A portál nem támogatja az egyéni elemzők kijelölését és konfigurálását.
+A portálon az elemzők célja, hogy használhatók legyenek. Ha testreszabásra vagy szűrők és tokenizers egyedi konfigurációra van szüksége, [hozzon létre egy egyéni elemzőt](index-add-custom-analyzers.md) a kódban. A portál nem támogatja az egyéni elemzők kijelölését és konfigurálását.
 
 ## <a name="query-language-specific-fields"></a>Nyelvspecifikus mezők lekérdezése
 
@@ -63,6 +63,6 @@ Előfordulhat, hogy a lekérdezést kiállító ügynök nyelve nem ismert, ebbe
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha .NET-fejlesztőként dolgozik, vegye figyelembe, hogy a [Azure Search .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) és az [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) tulajdonság használatával konfigurálhatja a nyelvi elemzőket. 
+Ha .NET-fejlesztőként dolgozik, vegye figyelembe, hogy az [Azure Cognitive Search .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) és az [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) tulajdonság használatával konfigurálhatja a nyelvi elemzőket. 

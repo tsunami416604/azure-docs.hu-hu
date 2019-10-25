@@ -1,25 +1,25 @@
 ---
-title: Készségkészlet létrehozása kognitív keresési folyamatokban – Azure Search
-description: Meghatározhatja az adatok kinyerését, a természetes nyelvi feldolgozást, illetve a képelemzési lépéseket az adatokból Azure Search-ban való használatra szánt strukturált adatok dúsításához és kinyeréséhez
+title: Készségkészlet létrehozása a dúsítási folyamatban
+titleSuffix: Azure Cognitive Search
+description: Meghatározhatja az adatok kinyerését, a természetes nyelvi feldolgozást vagy a képelemzési lépéseket az adatokból az Azure-Cognitive Search való használatra szánt strukturált adatok dúsításához és kinyeréséhez.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71265516"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787471"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Készségkészlet létrehozása a dúsítási folyamatban
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Készségkészlet létrehozása AI-bővítési folyamatokban az Azure-ban Cognitive Search 
 
-A kognitív keresés kinyeri és gazdagítja az adatgyűjtést Azure Searchban kereshetővé teszi. A kinyerési és bővítési lépéseket a *kognitív képességek*, az indexelés során hivatkozott *készségkészlet* együtt hívjuk. A készségkészlet [beépített képességeket](cognitive-search-predefined-skills.md) vagy egyéni képességeket használhat (lásd [például: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md) további információk).
+Az AI-gazdagítás kinyeri és gazdagítja az Azure Cognitive Searchban kereshetővé tenni kívánt adatgyűjtést. A kinyerési és bővítési lépéseket a *kognitív képességek*, az indexelés során hivatkozott *készségkészlet* együtt hívjuk. A készségkészlet [beépített képességeket](cognitive-search-predefined-skills.md) vagy egyéni képességeket használhatnak (lásd [például: egyéni képesség létrehozása AI-bővítési folyamatokban](cognitive-search-create-custom-skill-example.md) további információk).
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre a használni kívánt képességek bővítési folyamatát. A készségkészlet egy Azure Search [Indexelő](search-indexer-overview.md)van csatolva. A folyamat kialakításának egyik része, amely ebben a cikkben is szerepel, a készségkészlet maga hozza létre. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre a használni kívánt képességek bővítési folyamatát. A készségkészlet egy Azure Cognitive Search [Indexelő](search-indexer-overview.md)van csatolva. A folyamat kialakításának egyik része, amely ebben a cikkben is szerepel, a készségkészlet maga hozza létre. 
 
 > [!NOTE]
 > A folyamat kialakításának egy másik része a [következő lépésben](#next-step)lefedett indexelő megadása. Az indexelő definíciója a készségkészlet mutató hivatkozást, valamint a bemenetek a célként megadott indexben való csatlakoztatásához használt mező-hozzárendeléseket is tartalmazza.
@@ -45,10 +45,10 @@ Az alábbi ábrán egy feltételezett alkoholtartalom-növelési folyamat látha
 ![Egy feltételezett alkoholtartalom-növelési folyamat](media/cognitive-search-defining-skillset/sample-skillset.png "Egy feltételezett alkoholtartalom-növelési folyamat")
 
 
-Ha jó ötlete van arról, hogy mit szeretne a folyamaton belül, megadhatja a lépéseket készségkészlet. A készségkészlet az indexelő definíciójának Azure Search való feltöltésekor fejezi ki. Az indexelő feltöltésével kapcsolatos további tudnivalókért tekintse meg az [Indexelő dokumentációját](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Ha jó ötlete van arról, hogy mit szeretne a folyamaton belül, megadhatja a lépéseket készségkészlet. A készségkészlet az indexelő definíciójának Azure Cognitive Searchba való feltöltésekor fejezi ki. Az indexelő feltöltésével kapcsolatos további tudnivalókért tekintse meg az [Indexelő dokumentációját](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-A diagramon a *repedések* megjelenő lépése automatikusan megtörténik. Lényegében Azure Search tudja, hogyan nyitható meg a jól ismert fájlok, és létrehoz egy olyan *tartalmi* mezőt, amely az egyes dokumentumokból kinyert szöveget tartalmazza. A fehér dobozok beépített gazdagítók, a pontozott "Bing Entity Search" mező pedig egy Ön által létrehozott egyéni dúsítást jelöl. Ahogy az ábrán látható, a készségkészlet három ismerettel rendelkezik.
+A diagramon a *repedések* megjelenő lépése automatikusan megtörténik. Az Azure Cognitive Search ismeri a jól ismert fájlok megnyitását és az egyes dokumentumokból kinyert szöveget tartalmazó *tartalmi* mezőt. A fehér dobozok beépített gazdagítók, a pontozott "Bing Entity Search" mező pedig egy Ön által létrehozott egyéni dúsítást jelöl. Ahogy az ábrán látható, a készségkészlet három ismerettel rendelkezik.
 
 ## <a name="skillset-definition-in-rest"></a>Készségkészlet-definíció a REST-ben
 
@@ -243,11 +243,11 @@ A valószínű eredmény az alábbi ábrához hasonló generált struktúra lehe
 
 ![Minta kimeneti szerkezete](media/cognitive-search-defining-skillset/enriched-doc.png "Minta kimeneti szerkezete")
 
-Eddig ez a struktúra csak belső, csak a memóriában, és csak Azure Search indexekben használható. A Tudásbázis hozzáadása lehetővé teszi, hogy a keresésen kívüli használatra is mentse az alakzatokat.
+Eddig ez a struktúra csak belső, csak a memóriában, és csak az Azure Cognitive Search indexekben használatos. A Tudásbázis hozzáadása lehetővé teszi, hogy a keresésen kívüli használatra is mentse az alakzatokat.
 
 ## <a name="add-a-knowledge-store"></a>Knowledge Store hozzáadása
 
-A [Knowledge Store](knowledge-store-concept-intro.md) a Azure Search előzetes verziójának funkciója a dúsított dokumentumok mentéséhez. A létrehozott, Azure Storage-fiókkal támogatott adattár az a tárház, amelyben a dúsított adatterületek szerepelnek. 
+A [Knowledge Store](knowledge-store-concept-intro.md) az Azure Cognitive Search előzetes funkciója, amely a dúsított dokumentumok mentését teszi elérhetővé. A létrehozott, Azure Storage-fiókkal támogatott adattár az a tárház, amelyben a dúsított adatterületek szerepelnek. 
 
 A rendszer egy Knowledge Store-definíciót ad hozzá egy készségkészlet. A teljes folyamatról a [Ismerkedés a Knowledge Store](knowledge-store-howto.md)szolgáltatással című témakörben olvashat bővebben.
 

@@ -1,5 +1,6 @@
 ---
-title: Identitás létrehozása az Azure-alkalmazáshoz a portálon | Microsoft Docs
+title: Identitás létrehozása az Azure-alkalmazáshoz a portálon
+titleSuffix: Microsoft identity platform
 description: Ismerteti, hogyan lehet létrehozni egy új Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely a Azure Resource Manager szerepköralapú hozzáférés-vezérlésével használható az erőforrásokhoz való hozzáférés kezeléséhez.
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324707"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803329"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 
@@ -126,7 +127,7 @@ Ne feledje, hogy az alkalmazáshoz hozzáférő erőforrásokhoz is konfiguráln
 1. A [Azure Portal](https://portal.azure.com)navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok**lehetőséget.  
 1. Válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd válassza ki az alkalmazáshoz használni kívánt kulcs-, titkos és tanúsítvány-engedélyeket.  Válassza ki a korábban létrehozott szolgáltatásnevet.
 1. A hozzáférési szabályzat hozzáadásához válassza a **Hozzáadás** lehetőséget, majd a **Mentés** gombra kattintva véglegesítse a módosításokat.
-    @no__t – 0Add hozzáférési szabályzat @ no__t-1
+    ![hozzáférési házirend hozzáadása](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 

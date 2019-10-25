@@ -1,5 +1,6 @@
 ---
-title: Az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása a vállalati alkalmazások számára az Azure AD-ben | Microsoft Docs
+title: Vállalati alkalmazásokhoz tartozó szerepkör-jogcím konfigurálása az Azure AD-ben
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhatja a vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör-jogcímet Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207190"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803493"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
 A Azure Active Directory (Azure AD) használatával testreszabhatja a szerepkör-jogcím típusát az alkalmazás engedélyezése után kapott válasz jogkivonatban.
 
@@ -80,7 +81,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Ha több könyvtárat használ, kövesse az alábbi mintát:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Ha több könyvtárat használ, kövesse az alábbi mintát: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Graph Explorer párbeszédpanel az egyszerű szolgáltatások beolvasására szolgáló lekérdezéssel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -134,7 +135,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
       ```
 
       > [!Note]
-      > A javítási művelet msiam_access után csak új szerepköröket adhat hozzá. Emellett a szervezet igényeinek megfelelő számú szerepkört is hozzáadhat. Az Azure AD ezeket a szerepköröket az SAML-válaszban szereplő jogcím értékként fogja elküldeni. Az új szerepkörök AZONOSÍTÓjának GUID-értékeinek létrehozásához használja a következőhöz hasonló [](https://www.guidgenerator.com/) webes eszközöket:
+      > A javítási művelet msiam_access után csak új szerepköröket adhat hozzá. Emellett a szervezet igényeinek megfelelő számú szerepkört is hozzáadhat. Az Azure AD ezeket a szerepköröket az SAML-válaszban szereplő jogcím értékként fogja elküldeni. Az új szerepkörök AZONOSÍTÓjának GUID-értékeinek létrehozásához használja [a következőhöz hasonló webes](https://www.guidgenerator.com/) eszközöket:
 
     i. Lépjen vissza a Graph Explorerben, és változtassa meg a **Get** to **patch**metódust. Az előző példában látható módon frissítse a **appRoles** tulajdonságot úgy, hogy az egyszerű szolgáltatásnév objektummal rendelkezzen a kívánt szerepkörökkel. Válassza a **lekérdezés futtatása** lehetőséget a javítási művelet végrehajtásához. A sikeres üzenet megerősíti a szerepkör létrehozását.
 
@@ -153,7 +154,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
 8. Frissítse az **attribútumok** táblát a szerepkör-jogcím testreszabott leképezésének megadásához.
 
-9. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+9. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
     | Attribútum neve | Attribútum értéke |
     | -------------- | ----------------|
@@ -162,7 +163,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
     >[!NOTE]
     >Ha a szerepkör-jogcím értéke null, akkor az Azure AD nem küldi el ezt az értéket a jogkivonatban, és ez az alapértelmezett érték a terv szerint.
 
-    a. az ikon **szerkesztése** gombra kattintva megnyithatja a **felhasználói attribútumok &** jogcímek párbeszédpanelt.
+    a. az ikon **szerkesztése** gombra kattintva megnyithatja a **felhasználói attribútumok & jogcímek** párbeszédpanelt.
 
       !["Attribútum hozzáadása" gomb](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
@@ -194,7 +195,7 @@ Meglévő szerepkör frissítéséhez hajtsa végre a következő lépéseket:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Ha több könyvtárat használ, kövesse az alábbi mintát:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több könyvtárat használ, kövesse az alábbi mintát: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer párbeszédpanel az egyszerű szolgáltatások beolvasására szolgáló lekérdezéssel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -232,7 +233,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Ha több könyvtárat használ, kövesse az alábbi mintát:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több könyvtárat használ, kövesse az alábbi mintát: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer párbeszédpanel, az egyszerű szolgáltatások listájának beolvasására szolgáló lekérdezéssel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -268,7 +269,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
     > [!NOTE]
     > A szerepkört le kell tiltani ahhoz, hogy el lehessen távolítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További lépésekért tekintse meg az [alkalmazás dokumentációját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 

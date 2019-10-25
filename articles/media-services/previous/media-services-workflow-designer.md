@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613244"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801955"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel  
 ## <a name="overview"></a>Áttekintés
@@ -34,15 +34,15 @@ A létrehozhatók például a következők:
 * Döntési alapú munkafolyamatok, amelyek megvizsgálják a forrás tartalmát a feloldáshoz, és csak a kívánt kimeneti számokat kódolják.  Ez hasznos lehet a forrás tartalmának véletlen skálázásával előállított, hulladékká vált számok eltávolításával.
 * Több bemeneti fájl is használható a feliratok, átfedések és a tartalom összefűzéséhez. 
 
-Ez az eszköz a [közzétett](media-services-workflow-designer.md#existing_workflows)munkafolyamatok bármelyikének módosítására is használható. 
+Ez az eszköz a [közzétett munkafolyamatok](media-services-workflow-designer.md#existing_workflows)bármelyikének módosítására is használható. 
 
 > [!NOTE]
-> A Munkafolyamat-tervező eszköz másolatának beszerzéséhez vegye fel mepd@microsoft.coma kapcsolatot a következővel:.
+> A Munkafolyamat-tervező eszköz másolatának beszerzéséhez vegye fel a kapcsolatot mepd@microsoft.com.
 
 A munkafolyamat-fájl létrehozása után feltölthetők egy eszközként, majd a médiafájlok kódolására használhatók. A **Media Encoder Premium workflow** **.net**-tel való kódolásával kapcsolatos információkért lásd: [speciális kódolás a Media Encoder Premium workflow](media-services-encode-with-premium-workflow.md).
 
 ## <a id="existing_workflows"></a>Meglévő munkafolyamatok módosítása
-Az alapértelmezett [közzétett](media-services-workflow-designer.md#existing_workflows) munkafolyamatokat a Designer eszközzel lehet módosítani. Az alapértelmezett munkafolyamat-fájlok [itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)olvashatók be. A mappa a fájlok leírását is tartalmazza.
+Az alapértelmezett [közzétett munkafolyamatokat](media-services-workflow-designer.md#existing_workflows) a Designer eszközzel lehet módosítani. Az alapértelmezett munkafolyamat-fájlok [itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)olvashatók be. A mappa a fájlok leírását is tartalmazza.
 
 A következő videók bemutatják, hogyan használhatja a tervezőt.
 
@@ -57,7 +57,7 @@ A következő videók bemutatják, hogyan használhatja a tervezőt.
 > 
 > 
 
-### <a name="day-2"></a>2\. napon
+### <a name="day-2"></a>2\. nap
 A 2. nap videó a következőket tartalmazza:
 
 * Különböző forrásfájl-forgatókönyvek – hang-kezelő
@@ -79,6 +79,10 @@ A 3. nap videó a következőket tartalmazza:
 > 
 > 
 
+## <a name="need-help"></a>Segítség
+
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+
 ## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.
 
@@ -86,8 +90,6 @@ Tekintse át a Media Services képzési terveket.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-Ha támogatásra van szüksége, vagy kérdése van az egyéni munkafolyamatok létrehozásával kapcsolatban a Munkafolyamat-tervező eszközben, küldjön e-mailt a mepd@microsoft.comkövetkező címre:. Az e-mailek írásakor használja az angol nyelvet.
 
 ## <a name="see-also"></a>Lásd még:
 [Azure Premium Encoder – munkafolyamat-tervezői képzés – videók](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

@@ -1,22 +1,21 @@
 ---
-title: Az Azure rendszergazdai hozzáférés RBAC szerepköreinek beállítása a portálon – Azure Search
-description: Szerepköralapú felügyeleti vezérlés (RBAC) a Azure Portal a Azure Search felügyeletéhez szükséges felügyeleti feladatok vezérlésére és delegálására.
-author: HeidiSteen
+title: Az Azure rendszergazdai hozzáférés RBAC szerepköreinek beállítása a portálon
+titleSuffix: Azure Cognitive Search
+description: Szerepköralapú felügyeleti vezérlés (RBAC) az Azure Cognitive Search Management felügyeleti feladatainak vezérlésére és delegálására szolgáló Azure Portal.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 04/05/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 924d2529e3477c299d4a90c076fe9e6c8faf11f3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647404"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794327"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>RBAC-szerepkörök beállítása rendszergazdai hozzáféréshez
+# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-szerepkörök beállítása az Azure Cognitive Searchhoz való rendszergazdai hozzáféréshez
 
 Az Azure [globális szerepköralapú engedélyezési modellt](../role-based-access-control/role-assignments-portal.md) biztosít a portálon vagy a Resource Manager API-kon keresztül felügyelt összes szolgáltatáshoz. A tulajdonos, közreműködő és olvasó szerepkörök határozzák meg az egyes szerepkörökhöz rendelt Active Directory felhasználók, csoportok és rendszerbiztonsági tag *szolgáltatások felügyeletének* szintjét. 
 
@@ -25,9 +24,9 @@ Az Azure [globális szerepköralapú engedélyezési modellt](../role-based-acce
 
 ## <a name="management-tasks-by-role"></a>Felügyeleti feladatok szerepkör szerint
 
-Azure Search esetén a szerepkörök a következő felügyeleti feladatokat támogató jogosultsági szintekhez vannak társítva:
+Az Azure Cognitive Search esetében a szerepkörök a következő felügyeleti feladatokat támogató jogosultsági szintekhez vannak társítva:
 
-| Role | Tevékenység |
+| Szerepkör | Tevékenység |
 | --- | --- |
 | Tulajdonos |Hozza létre vagy törölje a szolgáltatást vagy a szolgáltatás bármely objektumát, beleértve az API-kulcsokat, az indexeket, az indexelő, az indexelő adatforrásokat és az indexelő-ütemterveket.<p>A szolgáltatás állapotának megtekintése, beleértve a darabszámot és a tárterület méretét.<p>Szerepkör-tagság hozzáadása vagy törlése (csak a tulajdonosok kezelhetik a szerepkör-tagságot).<p>Az előfizetés-rendszergazdák és a szolgáltatás tulajdonosai automatikus tagsággal rendelkeznek a tulajdonosi szerepkörben. |
 | Közreműködő |Azonos szintű hozzáférés tulajdonosként, mínusz a RBAC szerepkör-kezelés. A közreműködők például létrehozhatnak vagy törölhetnek objektumokat, vagy megtekinthetik és újragenerálják az [API-kulcsokat](search-security-api-keys.md), de nem módosíthatják a szerepkör-tagságokat. |
@@ -36,8 +35,8 @@ Azure Search esetén a szerepkörök a következő felügyeleti feladatokat tám
 
 A szerepkörök nem biztosítanak hozzáférési jogosultságot a szolgáltatási végpont számára. A keresési szolgáltatási műveleteket, például az indexelést, az indexelést és a keresési adatok lekérdezéseit az API-kulcsok vezérlik, nem pedig a szerepkörök. További információ: az [API-kulcsok kezelése](search-security-api-keys.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Kezelés a PowerShell használatával](search-manage-powershell.md) 
-+ [Teljesítmény és optimalizálás Azure Search](search-performance-optimization.md)
++ [Teljesítmény és optimalizálás az Azure Cognitive Search](search-performance-optimization.md)
 + [Ismerkedjen meg a Azure Portal szerepköralapú Access Controlával](../role-based-access-control/overview.md).

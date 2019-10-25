@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915330"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800054"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsightC#()
 
 Megtudhatja, hogyan dolgozhat az Azure Event Hubs [Apache Storm](https://storm.apache.org/) a HDInsight-on. Ez a dokumentum C# Storm-topológiát használ az adatok olvasására és írására Event Hubs
 
 > [!NOTE]  
-> A projekt Java-verziója: [események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> A projekt Java-verziója: [események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -44,17 +44,17 @@ C#a topológiák esetében a .NET 4,5-et is meg kell célozni.
 
 ## <a name="how-to-work-with-event-hubs"></a>A Event Hubs használata
 
-A Microsoft olyan Java-összetevőket biztosít, amelyek használatával a Storm-topológiából Event Hubs lehet kommunikálni. Az ezen összetevők HDInsight 3,6 kompatibilis verzióját tartalmazó Java Archive-(JAR-) fájl megtalálható a következő helyen: [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+A Microsoft olyan Java-összetevőket biztosít, amelyek használatával a Storm-topológiából Event Hubs lehet kommunikálni. Az összetevők HDInsight 3,6 kompatibilis verzióját tartalmazó Java Archive-(JAR-) fájl a [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)címen található.
 
 > [!IMPORTANT]  
 > Az összetevők Java nyelven íródnak, így könnyen használhatók a C# topológiából.
 
 Ebben a példában a következő összetevőket használjuk:
 
-* __EventHubSpout__: Adatokat olvas Event Hubsból.
-* __EventHubBolt__: Az Event Hubsba írja az adatot.
-* __EventHubSpoutConfig__: A EventHubSpout konfigurálására szolgál.
-* __EventHubBoltConfig__: A EventHubBolt konfigurálására szolgál.
+* __EventHubSpout__: adatokat olvas Event Hubsból.
+* __EventHubBolt__: adatot ír Event Hubsba.
+* __EventHubSpoutConfig__: a EventHubSpout konfigurálására szolgál.
+* __EventHubBoltConfig__: a EventHubBolt konfigurálására szolgál.
 
 ### <a name="example-spout-usage"></a>Példa a kiöntő használatra
 
@@ -125,7 +125,7 @@ Az ebben a cikkben létrehozott projekt teljes verzióját letöltheti a [github
 
 ## <a name="download-the-event-hubs-components"></a>A Event Hubs-összetevők letöltése
 
-Töltse le a Event Hubs kiöntő és a [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)bolt összetevőt innen:.
+Töltse le a Event Hubs kiöntő és a bolt összetevőt a [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ról ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 Hozzon létre egy `eventhubspout`nevű könyvtárat, és mentse a fájlt a könyvtárba.
 
@@ -135,9 +135,9 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 1. Az Event hub létrehozása után tekintse meg a **EventHub** beállításait a Azure Portalban, és válassza a **megosztott hozzáférési házirendek**elemet. Válassza a **+ Hozzáadás** lehetőséget a következő szabályzatok hozzáadásához:
 
-   | Name (Név) | Engedélyek |
+   | Név | Engedélyek |
    | --- | --- |
-   | szerkesztő |Küldés |
+   | író |Küldés |
    | olvasó |Figyelés |
 
     ![Képernyőfelvétel a hozzáférési házirendek megosztásáról ablak](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
@@ -152,7 +152,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 3. A **EventHubWriter** projektben nyissa meg az **app. config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
 
-   | Kulcs | Value |
+   | Jelmagyarázat | Value (Díj) |
    | --- | --- |
    | EventHubPolicyName |író (ha a Szabályzathoz más nevet használt a *küldési* engedéllyel, használja helyette.) |
    | EventHubPolicyKey |Az író házirend kulcsa. |
@@ -168,7 +168,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 2. Nyissa meg az **app. config** fájlt a **EventHubReader**. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
 
-   | Kulcs | Value |
+   | Jelmagyarázat | Value (Díj) |
    | --- | --- |
    | EventHubPolicyName |olvasó (ha a Szabályzathoz más nevet használt a *figyelés* engedéllyel, használja helyette.) |
    | EventHubPolicyKey |Az olvasó házirend kulcsa. |
@@ -218,7 +218,7 @@ A topológiák leállításához jelölje ki az egyes topológiákat a **Storm t
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan használhatja a Java Event Hubs kiöntőt és a C# boltot egy topológiából az Azure-Event Hubsban lévő adatokkal való munkához. A topológiák létrehozásával C# kapcsolatos további tudnivalókért tekintse meg a következőket:
 

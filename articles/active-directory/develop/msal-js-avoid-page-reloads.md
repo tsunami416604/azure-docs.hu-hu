@@ -1,5 +1,6 @@
 ---
-title: A lap újratöltésének elkerülése (Microsoft hitelesítési függvénytár JavaScripthez) | Azure
+title: Az oldal újratöltésének elkerülése (Microsoft hitelesítési függvénytár JavaScripthez)
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy miként kerülheti el a lapok újratöltését a tokenek a Microsoft-hitelesítési kódtár használatával való csendes beszerzése és megújítása közben a JavaScripthez (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,31 +18,31 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532829"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803102"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>A MSAL. js használatával a tokenek beszerzése és megújítása előtt Kerülje a lap újratöltését
-A Microsoft hitelesítési könyvtára a javascripthez (MSAL. js) `iframe` rejtett elemeket használ a jogkivonatok csendes beszerzéséhez és megújításához a háttérben. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_uri (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, az a következőhöz tartozó `redirect_uri` `iframe`HTML-kódot eredményezi:. Általában az alkalmazás `redirect_uri` a legfelső szintű lap, és ez az eszköz újratöltését okozza.
+A JavaScripthez készült Microsoft Authentication Library (MSAL. js) rejtett `iframe` elemeket használ a jogkivonatok háttérben való csendes beszerzéséhez és megújításához. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_uri (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, a `iframe`a betöltéshez `redirect_uri` megfelelő HTML-kódot eredményez. Általában az alkalmazás `redirect_uri` a legfelső szintű lap, ezért az újratöltést okoz.
 
-Más esetekben, ha az alkalmazás főoldalára való navigálás hitelesítés szükséges, a beágyazott `iframe` elemek vagy `X-Frame-Options: deny` hibák vezethetnek.
+Más esetekben, ha az alkalmazás főoldalára való navigáláshoz hitelesítés szükséges, a beágyazott `iframe` elemeket vagy `X-Frame-Options: deny` hibát okozhat.
 
-Mivel a MSAL. js nem tudja elhagyni az Azure ad által kiadott 302-et, és a visszaadott jogkivonat feldolgozásához szükséges, nem akadályozhatja `iframe`meg a `redirect_uri` betöltését a alkalmazásban.
+Mivel a MSAL. js nem tudja elhagyni az Azure AD által kiadott 302-et, és a visszaadott jogkivonat feldolgozásához szükséges, nem tudja megakadályozni, hogy a `redirect_uri` betöltse a `iframe`.
 
 Ha el szeretné kerülni, hogy a teljes alkalmazás újratöltődik újra, vagy más hibák okozzák a problémát, kövesse ezeket a megoldásokat.
 
 ## <a name="specify-different-html-for-the-iframe"></a>Különböző HTML-elemek megadása az IFRAME számára
 
-Állítsa be `redirect_uri` a config tulajdonságot egy egyszerű lapra, amely nem igényel hitelesítést. Győződjön meg arról, hogy az megfelel a `redirect_uri` regisztrált Azure Portal. Ez nem befolyásolja a felhasználó bejelentkezési folyamatát, mivel a MSAL menti a kezdőlapot, amikor a felhasználó megkezdi a bejelentkezési folyamatot, és a bejelentkezés befejeződése után visszairányítja a pontos helyre.
+Állítsa a konfiguráció `redirect_uri` tulajdonságát egy egyszerű lapra, amelyhez nincs szükség hitelesítésre. Győződjön meg arról, hogy az megfelel a Azure Portalban regisztrált `redirect_uri`nak. Ez nem befolyásolja a felhasználó bejelentkezési folyamatát, mivel a MSAL menti a kezdőlapot, amikor a felhasználó megkezdi a bejelentkezési folyamatot, és a bejelentkezés befejeződése után visszairányítja a pontos helyre.
 
 ## <a name="initialization-in-your-main-app-file"></a>Inicializálás a fő alkalmazás fájljában
 
-Ha az alkalmazás úgy van strukturálva, hogy az alkalmazás inicializálási, útválasztási és egyéb elemeinek definiálására egy központi JavaScript-fájl van, akkor az alkalmazás moduljait feltételesen is betöltheti, attól függően, `iframe` hogy az alkalmazás betöltődik-e vagy sem. Példa:
+Ha az alkalmazás úgy van strukturálva, hogy van egy központi JavaScript-fájl, amely meghatározza az alkalmazás inicializálási, útválasztási és egyéb elemeit, akkor az alkalmazás-modulok feltételeit attól függően is betöltheti, hogy az alkalmazás betöltődik-e `iframe` vagy sem. Példa:
 
-In AngularJS: app.js
+A AngularJS: app. js fájlban
 
 ```javascript
 // Check that the window is an iframe and not popup
@@ -149,5 +150,5 @@ export class MsalComponent {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [egyoldalas alkalmazások (Spa)](scenario-spa-overview.md) a MSAL. js használatával történő létrehozásáról.

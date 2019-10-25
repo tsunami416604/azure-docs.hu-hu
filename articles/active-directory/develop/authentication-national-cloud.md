@@ -1,5 +1,6 @@
 ---
 title: Hitelesítés a Azure Active Directory használatával az országos felhőkben
+titleSuffix: Microsoft identity platform
 description: Ismerje meg az alkalmazások regisztrációs és hitelesítési végpontját az országos felhők számára.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135853"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803882"
 ---
 # <a name="national-clouds"></a>Nemzeti felhők
 
@@ -64,8 +65,8 @@ A következő táblázat felsorolja az egyes nemzeti felhők jogkivonatának bes
 
 Az Azure AD-engedélyezési vagy jogkivonat-végpontokra irányuló kéréseket a megfelelő régióspecifikus alap URL-cím használatával lehet megalkotni. Az Azure Germany esetében például:
 
-  - Az engedélyezési Common `https://login.microsoftonline.de/common/oauth2/authorize`Endpoint értéke.
-  - A token Common `https://login.microsoftonline.de/common/oauth2/token`Endpoint értéke.
+  - Az engedélyezési Common Endpoint `https://login.microsoftonline.de/common/oauth2/authorize`.
+  - A jogkivonat közös végpontja `https://login.microsoftonline.de/common/oauth2/token`.
 
 Egybérlős alkalmazások esetében az előző URL-címek "Common" értékét cserélje le a bérlői AZONOSÍTÓra vagy a névre. Például: `https://login.microsoftonline.de/contoso.com`.
 
@@ -78,9 +79,9 @@ Ha meg szeretné tudni, hogyan hívhatja meg a Microsoft Graph API-kat egy nemze
 
 Ha meg szeretné tudni, hogyan hozhat létre egy alkalmazást a Microsoft Identity platform használatával, kövesse a [Microsoft Authentication Library (MSAL) oktatóanyagot](msal-national-cloud.md). Pontosabban, az alkalmazás bejelentkezik egy felhasználóval, és hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információk az alábbiakról:
+További információk:
 
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
 - [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)

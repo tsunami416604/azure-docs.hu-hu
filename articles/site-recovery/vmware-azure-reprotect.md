@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331063"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791805"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Gépek ismételt védetté és visszavétele a helyszíni helyre az Azure-ba történő feladatátvétel után
 
@@ -34,6 +34,7 @@ Ha sablont használt a virtuális gépek létrehozásához, győződjön meg arr
 - Ha a vCenter-kiszolgáló felügyeli azokat a virtuális gépeket, amelyeken a feladat-visszavételt végzi, győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) a vCenter-kiszolgálókon futó virtuális gépek felderítéséhez.
 - Az ismételt védelem előtt törölje a pillanatképeket a fő célkiszolgálón. Ha Pillanatképek találhatók a helyszíni fő tárolón vagy a virtuális gépen, az ismételt védelem sikertelen lesz. A virtuális gépen lévő Pillanatképek automatikusan egyesülnek egy újravédelemi feladatokban.
 - A replikációs csoport összes virtuális gépnek azonos operációsrendszer-típusnak kell lennie (vagy az összes Windows vagy az összes Linux rendszernek). A vegyes operációs rendszerekkel rendelkező replikációs csoportok jelenleg nem támogatottak a helyszíni védelemhez és a feladat-visszavételhez. Ennek az az oka, hogy a fő célhelynek a virtuális géppel megegyező operációs rendszernek kell lennie. A replikációs csoport összes virtuális gépnek ugyanazzal a fő célként kell tartoznia. 
+- A fő célhelynek azonos vagy magasabb operációsrendszer-verzióval kell rendelkeznie, mint a replikált elemek operációs rendszerének verziószáma.
 - A feladat-visszavételt követően konfigurációs kiszolgáló szükséges a helyszínen. A feladat-visszavétel során a virtuális gépnek léteznie kell a konfigurációs kiszolgáló adatbázisában. Ellenkező esetben a feladat-visszavétel sikertelen. Győződjön meg arról, hogy rendszeresen ütemezett biztonsági mentést készít a konfigurációs kiszolgálóról. Ha vészhelyzet van, állítsa vissza a kiszolgálót ugyanazzal az IP-címmel, hogy a feladat-visszavétel működik. 
 - Az ismételt védelem és a feladat-visszavétel egy helyek közötti (S2S) VPN-vagy ExpressRoute-alapú magánhálózati kapcsolatot igényel az adatreplikáláshoz. Adja meg a hálózatot úgy, hogy az Azure-beli feladatátvételt használó virtuális gépek elérjék (pingelni) a helyszíni konfigurációs kiszolgálót. A feladatátvételi virtuális gép (ek) Azure-hálózatán kell telepítenie egy folyamat-kiszolgálót. A folyamat-kiszolgálónak képesnek kell lennie kommunikálni a helyszíni konfigurációs kiszolgálóval és a fő célkiszolgálón is.
 - Abban az esetben, ha a replikált elemek IP-címeit megtartották a feladatátvétel során, S2S vagy ExpressRoute kapcsolatot kell létesíteni az Azure-beli virtuális gépek és a konfigurációs kiszolgáló feladat-visszavételi NIC-je között. Vegye figyelembe, hogy az IP-címek megőrzése megköveteli, hogy a konfigurációs kiszolgáló két hálózati adapterrel rendelkezzen – egyet a forrásoldali gépekhez, és egyet az Azure feladat-visszavétel kapcsolatához. Ennek célja, hogy elkerülje a forrás alhálózati címtartományok átfedését és a feladatátvételt a virtuális gépeken.

@@ -1,22 +1,23 @@
 ---
-title: Hozzon létre egy Knowledge Store-t a REST-Azure Search használatával
-description: A REST API és a Poster használatával hozzon létre egy Azure Search tudásbázist, amely a kognitív keresési folyamaton belül megőrzi a dúsítást.
+title: Knowledge Store létrehozása REST használatával
+titleSuffix: Azure Cognitive Search
+description: Az REST API és a Poster használatával hozzon létre egy Azure Cognitive Search Knowledge Store-t, amely egy mesterséges intelligencia-bővítési folyamatból származó dúsítást tart fenn.
 author: lobrien
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 10/01/2019
+manager: nitinme
 ms.author: laobri
-ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678454"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790016"
 ---
-# <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Azure Search Knowledge Store létrehozása REST használatával
+# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Azure Cognitive Search Knowledge Store létrehozása REST használatával
 
-A Azure Search Knowledge Store szolgáltatása megőrzi a mesterséges intelligencia-bővítési folyamat kimenetét a későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozásokhoz. Egy mesterséges intelligenciával rendelkező folyamat képfájlokat vagy strukturálatlan szövegfájlokat fogad el, Azure Search használatával indexeli azokat, az Azure-Cognitive Services mesterséges intelligenciát alkalmaz (például a képelemzést és a természetes nyelvi feldolgozást), majd menti az eredményeket egy tudásbázisba. tárolás az Azure Storage-ban. A Azure Portalban Power BI vagy Storage Explorer eszközökkel is elvégezheti a Tudásbázis megismerését.
+Az Azure Cognitive Search tudásbázisbeli funkciója továbbra is megőrzi az AI-bővítési folyamat kimenetét a későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozásokhoz. Egy mesterséges intelligenciával rendelkező folyamat képfájlokat vagy strukturálatlan szövegfájlokat fogad el, indexeli őket az Azure Cognitive Search használatával, az Azure-Cognitive Services mesterséges intelligenciát alkalmaz (például a képelemzést és a természetes nyelvi feldolgozást), majd menti az eredményeket Tudásbázis az Azure Storage-ban. A Azure Portalban Power BI vagy Storage Explorer eszközökkel is elvégezheti a Tudásbázis megismerését.
 
 Ebben a cikkben a REST API felület használatával végezheti el, indexelheti és alkalmazhatja a mesterséges intelligenciát a szállodai felülvizsgálatok készletén. A szállodai értékelések importálása az Azure Blob Storage-ba történik. Az eredményeket a rendszer az Azure Table Storage szolgáltatásban található Tudásbázisban menti.
 
@@ -26,15 +27,15 @@ Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el a [Storage E
 
 Hozza létre a következő szolgáltatásokat:
 
-- Hozzon létre egy [Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetésében. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
+- Hozzon létre egy [Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetésében. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
-- Hozzon létre egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok és a Tudásbázis tárolására. A Storage-fióknak ugyanazt a helyet kell használnia (például az USA nyugati régióját) a Azure Search szolgáltatáshoz. A **fióktípus** értékének a következőnek kell lennie: **StorageV2 (általános célú v2)** (alapértelmezett) vagy **Storage (általános célú v1)** .
+- Hozzon létre egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok és a Tudásbázis tárolására. A Storage-fióknak ugyanazt a helyet (például az USA-Nyugatot) kell használnia az Azure Cognitive Search szolgáltatáshoz. A **fióktípus** értékének a következőnek kell lennie: **StorageV2 (általános célú v2)** (alapértelmezett) vagy **Storage (általános célú v1)** .
 
-- Ajánlott: szerezze be a [Poster Desktop alkalmazást](https://www.getpostman.com/) , amely a kérelmeket Azure Searchba küldi. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására. Ebben a cikkben a Poster-t használjuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) a kérelmek Poster-gyűjteményét is tartalmazza. 
+- Ajánlott: szerezze be a [Poster Desktop alkalmazást](https://www.getpostman.com/) , amely kéri az Azure-Cognitive Search küldését. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására. Ebben a cikkben a Poster-t használjuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) a kérelmek Poster-gyűjteményét is tartalmazza. 
 
 ## <a name="store-the-data"></a>Az adattárolás
 
-Töltse be a Hotel a CSV-fájlt az Azure Blob Storage-ba, hogy az egy Azure Search indexelő számára legyen elérhető, és a mesterséges intelligencia-bővítési folyamaton keresztül is elérhető legyen.
+Töltse be a Hotel a CSV-fájlt az Azure Blob Storage-ba, hogy az egy Azure Cognitive Search indexelő számára elérhető legyen, és a mesterséges intelligencia-bővítési folyamaton keresztül is felhasználható legyen.
 
 ### <a name="create-a-blob-container-by-using-the-data"></a>BLOB-tároló létrehozása az adatai alapján
 
@@ -68,21 +69,21 @@ A Poster telepítése és beállítása.
 
 A **változók** lapon olyan értékeket adhat hozzá a Poster-feladatokhoz, amelyek minden alkalommal felvesznek egy adott változót a kettős zárójelek között. Például a Poster helyettesíti a `{{admin-key}}` szimbólumot a `admin-key` értékhez beállított aktuális értékkel. A Poster lehetővé teszi a helyettesítést az URL-címek, a fejlécek, a kérés törzse és így tovább. 
 
-A `admin-key` értékének lekéréséhez lépjen a Azure Search szolgáltatásra, és válassza a **kulcsok** fület. módosítsa a `search-service-name` és a `storage-account-name` értéket a [szolgáltatások létrehozása](#create-services)területen kiválasztott értékekre. A Storage-fiók **hozzáférési kulcsok** lapján található érték használatával állítsa be a `storage-connection-string` értéket. A többi értéknél meghagyhatja az alapértelmezett értékeket.
+`admin-key`értékének beszerzéséhez nyissa meg az Azure Cognitive Search szolgáltatást, és válassza a **kulcsok** fület. módosítsa `search-service-name` és `storage-account-name` a [szolgáltatások létrehozása](#create-services)területen kiválasztott értékekre. A Storage-fiók **hozzáférési kulcsok** lapján található érték használatával állítsa be a `storage-connection-string` értéket. A többi értéknél meghagyhatja az alapértelmezett értékeket.
 
 ![Poster-alkalmazás változók lapja](media/knowledge-store-create-rest/postman-variables-window.png "A Poster változói ablaka")
 
 
 | Változó    | Honnan szerezheti be |
 |-------------|-----------------|
-| `admin-key` | A Azure Search szolgáltatás **kulcsok** lapján.  |
+| `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
 | `api-version` | **2019-05-06 – előzetes**verzióként érhető el. |
 | `datasource-name` | Távozás a **Hotel-Reviews-DS**. | 
 | `indexer-name` | Távozás a **Hotel-Reviews-IXR**. | 
 | `index-name` | Hagyja a **Hotel-Reviews-IX**. | 
-| `search-service-name` | A Azure Search szolgáltatás fő neve. Az URL-cím `https://{{search-service-name}}.search.windows.net`. | 
+| `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL-cím `https://{{search-service-name}}.search.windows.net`. | 
 | `skillset-name` | Távozás a **Hotel-Reviews-SS**. | 
-| `storage-account-name` | A Storage-fiók fő neve. | 
+| `storage-account-name` | A tárfiók neve. | 
 | `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1** > **kapcsolati karakterlánc**lehetőséget. | 
 | `storage-container-name` | Távozás a **Hotel-Reviews-** ben. | 
 
@@ -90,8 +91,8 @@ A `admin-key` értékének lekéréséhez lépjen a Azure Search szolgáltatásr
 
 A Tudásbázis létrehozásakor négy HTTP-kérelmet kell kiadnia: 
 
-- **Az index létrehozásának kérése**: ez az index a Azure Search által használt és visszaadott adatok tárolására szolgál.
-- **Az adatforrás létrehozásához szükséges post kérelem**: ez az adatforrás összekapcsolja az Azure Search viselkedését az adat-és a Tudásbázis Storage-fiókjával. 
+- **Az index létrehozásának kérése**: ez az index az Azure Cognitive Search által használt és visszaadott adatok tárolására szolgál.
+- **Az adatforrás létrehozásához szükséges post kérelem**: ez az adatforrás összekapcsolja az Azure Cognitive Search viselkedését az adat-és Tudásbázis Storage-fiókjával. 
 - **Kérelem létrehozása a készségkészlet létrehozásához**: a készségkészlet meghatározza az adataira alkalmazott dúsításokat és a Tudásbázis struktúráját.
 - **Put-kérelem az indexelő létrehozásához**: az indexelő beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
 
@@ -103,11 +104,11 @@ A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 > Az összes kérelemben be kell állítania `api-key` és `Content-type` fejléceket. Ha a Poster egy változót is felismer, a változó narancssárga szövegben jelenik meg, mint az előző képernyőképen `{{admin-key}}`. Ha a változó hibásan van írva, vörös szövegben jelenik meg.
 >
 
-## <a name="create-an-azure-search-index"></a>Azure Search-index létrehozása
+## <a name="create-an-azure-cognitive-search-index"></a>Azure Cognitive Search index létrehozása
 
-Hozzon létre egy Azure Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelem `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` értékre való kiállításával. A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat (például `{{search-service-name}}`, `{{index-name}}` és `{{api-version}}`), a [Poster configureban](#configure-postman)beállított értékekkel. Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
+Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelem `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` értékre való kiállításával. A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat (például `{{search-service-name}}`, `{{index-name}}` és `{{api-version}}`), a [Poster configureban](#configure-postman)beállított értékekkel. Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
 
-Állítsa be Azure Search index struktúráját a kérelem törzsében. A Poster-ben a `api-key` és a `Content-type` fejlécek beállítása után lépjen a kérelem **törzs** ablaktáblájába. A következő JSON-t kell látnia. Ha nem, válassza a **Raw** > **JSON (alkalmazás/JSON)** elemet, majd illessze be a következő kódot törzsként:
+Állítsa be az Azure Cognitive Search index struktúráját a kérelem törzsében. A Poster-ben a `api-key` és a `Content-type` fejlécek beállítása után lépjen a kérelem **törzs** ablaktáblájába. A következő JSON-t kell látnia. Ha nem, válassza a **Raw** > **JSON (alkalmazás/JSON)** elemet, majd illessze be a következő kódot törzsként:
 
 ```JSON
 {
@@ -148,7 +149,7 @@ Válassza a **Küldés** lehetőséget a Put kérelem kiválasztásához. A köv
 
 ## <a name="create-the-datasource"></a>Az adatforrás létrehozása
 
-Ezután kapcsolódjon a Azure Search az [adattárban](#store-the-data)tárolt adatszolgáltatáshoz. Az adatforrás létrehozásához küldjön egy POST-kérelmet `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` értékre. A korábban leírtaknak megfelelően be kell állítania a `api-key` és a `Content-Type` fejléceket. 
+Ezután csatlakoztassuk az Azure Cognitive Searcht az [adattárolásban](#store-the-data)tárolt adatszolgáltatáshoz. Az adatforrás létrehozásához küldjön egy POST-kérelmet `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` értékre. A korábban leírtaknak megfelelően be kell állítania a `api-key` és a `Content-Type` fejléceket. 
 
 A Poster területen lépjen az **adatforrás létrehozása** kérelemre, majd a **törzs** ablaktáblára. A következő kódot kell megjelennie:
 
@@ -306,7 +307,7 @@ Az utolsó lépés az indexelő létrehozása. Az indexelő beolvassa az adatoka
 
 A `parameters/configuration` objektum azt szabályozza, hogy az indexelő Hogyan nyelje le az adatmennyiséget. Ebben az esetben a bemeneti adatok egy olyan dokumentumban vannak, amely tartalmaz egy fejlécet és egy vesszővel tagolt értéket. A dokumentum kulcsa a dokumentum egyedi azonosítója. A kódolás előtt a dokumentum kulcsa a forrásdokumentum URL-címe. Végül a készségkészlet kimeneti értékei, például a Nyelvkód, a hangulat és a legfontosabb kifejezések a dokumentumban lévő helyükre vannak leképezve. Bár a `Language` értéke egyetlen érték, a rendszer a `Sentiment` értéket alkalmazza a `pages` tömb egyes elemeire. a `Keyphrases` egy olyan tömb, amely a `pages` tömb egyes elemeire is vonatkozik.
 
-Miután beállította a `api-key` és a `Content-type` fejléceket, és győződjön meg arról, hogy a kérelem törzse hasonló a következő forráskódhoz, válassza a **Küldés** Poster-ban lehetőséget. A Poster elküld egy PUT kérelmet `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` értékre. Azure Search létrehozza és futtatja az indexelő. 
+Miután beállította a `api-key` és a `Content-type` fejléceket, és győződjön meg arról, hogy a kérelem törzse hasonló a következő forráskódhoz, válassza a **Küldés** Poster-ban lehetőséget. A Poster elküld egy PUT kérelmet `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` értékre. Az Azure Cognitive Search létrehozza és futtatja az indexelő. 
 
 ```json
 {
@@ -339,7 +340,7 @@ Miután beállította a `api-key` és a `Content-type` fejléceket, és győződ
 
 ## <a name="run-the-indexer"></a>Az indexelő futtatása 
 
-A Azure Portal nyissa meg a Azure Search szolgáltatás **Áttekintés** lapját. Válassza ki az **Indexelő** fület, majd válassza a **Hotels-Reviews-IXR**lehetőséget. Ha az indexelő még nem fut, válassza a **Futtatás**lehetőséget. Előfordulhat, hogy az indexelési feladat bizonyos, a nyelvi felismeréssel kapcsolatos figyelmeztetéseket eredményezhet. Az adatelemzés tartalmaz néhány olyan nyelvet, amely a kognitív képességek által még nem támogatott nyelveken íródott. 
+A Azure Portal nyissa meg az Azure Cognitive Search szolgáltatás **Áttekintés** lapját. Válassza ki az **Indexelő** fület, majd válassza a **Hotels-Reviews-IXR**lehetőséget. Ha az indexelő még nem fut, válassza a **Futtatás**lehetőséget. Előfordulhat, hogy az indexelési feladat bizonyos, a nyelvi felismeréssel kapcsolatos figyelmeztetéseket eredményezhet. Az adatelemzés tartalmaz néhány olyan nyelvet, amely a kognitív képességek által még nem támogatott nyelveken íródott. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b640a3cb9382ad72bb48e06c6a7074c96409e2e4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a5747912a18b8406cabd03c9823e3f6fe6898a6
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179740"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808814"
 ---
 <!-- description of message routing used in the Azure CLI, PowerShell, and RM routing articles.-->
 
-Az üzeneteket különböző forrásokhoz fogja irányítani azon tulajdonságok alapján, amelyeket a szimulált eszköz csatolt az üzenethez. Azokat az üzeneteket, amelyekhez nincs egyéni útválasztás beállítva, az alapértelmezett végpontra (üzenetek/események) küldi a rendszer. A következő oktatóanyagban üzenetek küldése az IoT Hub, és megtekintheti őket a más célhelyre irányított.
+Az üzeneteket különböző forrásokhoz fogja irányítani azon tulajdonságok alapján, amelyeket a szimulált eszköz csatolt az üzenethez. Azokat az üzeneteket, amelyekhez nincs egyéni útválasztás beállítva, az alapértelmezett végpontra (üzenetek/események) küldi a rendszer. A következő oktatóanyagban üzeneteket küld a IoT Hubnek, és megtekintheti őket a különböző célhelyekre irányítva.
 
-|value |Eredmény|
+|Value (Díj) |Eredmény|
 |------|------|
 |level="storage" |Írás az Azure Storage-ba.|
 |level="critical" |Írás a Service Bus-üzenetsorba. Egy logikai alkalmazás lekéri az üzenetet a sorból, és az Office 365 használatával e-mailben küldi el az üzenetet.|
 |alapértelmezett |Jelenítse meg az adatokat a Power BI használatával.|
 
-Az első lépés, hogy az adatokat továbbítja a végpont beállításához. A második lépés, hogy az üzenet útvonalának, amely használja, hogy a végpont beállításához. Miután beállította az Útválasztás, megtekintheti a végpontok és Üzenetútvonalak a portálon.
+Ennek első lépéseként be kell állítania azt a végpontot, amelyhez az adattovábbítás történik. A második lépés a végpontot használó üzenet útvonalának beállítása. Az Útválasztás beállítása után megtekintheti a végpontokat és az üzenetek útvonalait a portálon.

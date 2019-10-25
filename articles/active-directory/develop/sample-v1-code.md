@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374117"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809298"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -81,7 +81,7 @@ A következő minták olyan nyilvános ügyfélalkalmazások (iskolapad/pmobile-
 
 Ügyfélalkalmazás | Platform | Folyamat/támogatás | Hívások Microsoft Graph | ASP.NET vagy ASP.NET Core 2. x webes API meghívása
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Asztali (WPF)           | ![Ez a rendszerkép a .NET/C# emblémát jeleníti meg](media/sample-v2-code/logo_NET.png)  | Interaktív | A [DotNet-natív-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) része | [DotNet – natív – asztali](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet – natív – aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi-Manual-JWT-validate](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Asztali (WPF)           | ![Ez a rendszerkép a .NET/C# emblémát jeleníti meg](media/sample-v2-code/logo_NET.png)  | Interaktív | A [DotNet-natív-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) része | [DotNet – natív – asztali](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet – natív – aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi-Manual-JWT-validate](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobil (UWP)            | .![Ez a rendszerkép a .NET/C#/UWP jeleníti meg](media/sample-v2-code/logo_Windows.png)   | Interaktív | [DotNet-Native-uwp-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Ez a példa a [WAM](/windows/uwp/security/web-account-manager)-t használja, nem [ADAL.net](https://aka.ms/adalnet)|  [DotNet – Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP alkalmazás a ADAL.NET használatával egyetlen bérlői webes API meghívásához) </p> [DotNet-webapi-több-bérlős-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-alkalmazás a ADAL.NET használatával egy több-bérlős webes API meghívásához)|
 Mobil (Android, iOS, UWP)   | ![Ez a képen a .NET/C# (Xamarin) látható](media/sample-v2-code/logo_xamarin.png) | Interaktív | [DotNet – natív – többcél](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobil (Android)           | ![Ez a rendszerkép az Android-emblémát jeleníti meg](media/sample-v2-code/logo_Android.png) | Interaktív |   [Android](https://github.com/Azure-Samples/active-directory-android) |

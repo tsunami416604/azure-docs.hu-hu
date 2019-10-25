@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 7ca6f1bda2dff9a8a9e54cb9d9ce5fd2d34c7245
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428074"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72783787"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -341,11 +341,15 @@ A következő elemek előtaggal vannak ellátva:
 - **[2]** : csak a 2. csomópontra vonatkozik
 
 **[A]** a pacemaker konfigurálásának előfeltételei:
-1. Állítsa le mindkét adatbázis-kiszolgálót a DB2 @ no__t-0sid > a db2stop-mel.
-1. Módosítsa a rendszerhéj-környezetet DB2 @ no__t-0sid > felhasználó */bin/ksh*. Javasoljuk, hogy használja a YaST eszközt. 
+1. Állítsa le mindkét adatbázis-kiszolgálót a DB2\<SID > a db2stop.
+1. Módosítsa a rendszerhéj környezetét DB2\<SID > felhasználó */bin/ksh*. Javasoljuk, hogy használja a YaST eszközt. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-konfiguráció
+
+> [!IMPORTANT]
+> A közelmúltbeli tesztelés feltárta a helyzeteket, ahol a netcat nem válaszol a várakozó kérelmekre, és csak egyetlen kapcsolat kezelésére vonatkozó korlátozásokat okoz. A netcat erőforrás nem figyeli az Azure Load Balancer kéréseit, és a lebegőpontos IP-cím elérhetetlenné válik.  
+> A meglévő pacemaker-fürtök esetében javasoljuk, hogy cserélje le a netcat-t a socat-ra, és kövesse az [Azure Load-Balancer észlelési megerősítésének](https://www.suse.com/support/kb/doc/?id=7024128)utasításait. Vegye figyelembe, hogy a módosítás rövid állásidőt igényel.  
 
 **[1]** IBM DB2 HADR-specifikus pacemaker-konfiguráció:
 <pre><code># Put Pacemaker into maintenance mode
@@ -371,7 +375,7 @@ sudo crm configure primitive rsc_ip_db2ptr_<b>PTR</b> IPaddr2 \
 
 # Configure probe port for Azure load Balancer
 sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> anything \
-        params binfile="/usr/bin/nc" cmdline_options="-l -k <b>62500</b>" \
+        params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>62500</b>,backlog=10,fork,reuseaddr /dev/null" \
         op monitor timeout="20s" interval="10" depth="0"
 
 sudo crm configure group g_ip_db2ptr_<b>PTR</b> rsc_ip_db2ptr_<b>PTR</b> rsc_nc_db2ptr_<b>PTR</b>
@@ -474,12 +478,12 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Az SAP-profilok módosítása virtuális IP-cím használatára a kapcsolódáshoz
 A HADR-konfiguráció elsődleges példányához való kapcsolódáshoz az SAP-alkalmazás rétegének a Azure Load Balancerhoz megadott és konfigurált virtuális IP-címet kell használnia. A következő módosítások szükségesek:
 
-/sapmnt/@no__t – 0SID >/profile/DEFAULT. PFL
+/sapmnt/\<SID >/profile/DEFAULT. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/@no__t – 0SID >/Global/DB6/db2cli.ini
+/sapmnt/\<SID >/Global/DB6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -558,7 +562,7 @@ Az SAP-rendszer eredeti állapota dokumentálva van a Transaction DBACOCKPIT > C
 > A teszt elkezdése előtt győződjön meg a következőket:
 > * A pacemaker nem rendelkezik sikertelen műveletekkel (CRM-állapot).
 > * Nincsenek megkötések (az áttelepítési teszt maradékai)
-> * Az IBM DB2 HADR szinkronizálása működik. A felhasználó és a DB2 @ no__t-0sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Az IBM DB2 HADR szinkronizálása működik. Kérdezze meg a DB2\<SID-> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Telepítse át az elsődleges DB2-adatbázist futtató csomópontot a következő parancs végrehajtásával:
@@ -592,8 +596,8 @@ Telepítse újra az erőforrást a *azibmdb01* , és törölje a hely megkötés
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **CRM-erőforrás migrálása \<res_name > \<host >:** Megkötéseket hoz létre, és problémákat okozhat az átvétel során
-- **CRM-erőforrás – clear \<res_name >** : törli a hely megkötéseit
+- **CRM-erőforrás migrálása \<res_name > \<gazdagép >:** Megkötéseket hoz létre, és problémákat okozhat az átvétel során
+- **CRM-erőforrás clear \<res_name >** : törli a hely megkötéseit
 - **CRM-erőforrás karbantartása \<res_name >** : törli az erőforrás összes hibáját
 
 ### <a name="test-the-fencing-agent"></a>A kerítés ügynök tesztelése
@@ -767,7 +771,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-Felhasználó DB2 @ no__t-0sid > Execute parancs db2stop-kényszerítése:
+Felhasználó DB2\<SID > Execute parancs db2stop Force:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

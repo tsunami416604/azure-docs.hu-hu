@@ -1,31 +1,31 @@
 ---
-title: Indexelő ütemezhetnek – Azure Search
-description: Ütemezze Azure Search indexelő tartalmat rendszeres időközönként vagy adott időpontra.
-ms.date: 05/31/2019
+title: Az indexelő ütemezhetnek
+titleSuffix: Azure Cognitive Search
+description: Ütemezze az Azure Cognitive Search indexelő programját, hogy rendszeres időközönként vagy adott időpontokban indexelje a tartalmat.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533621"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793695"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Indexelő ütemezett Azure Search
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexelő ütemezhetnek az Azure Cognitive Search
+
 Az indexelő általában egyszer fut, közvetlenül a létrehozása után. Igény szerint újra futtathatja a portál, a REST API vagy a .NET SDK használatával. Az indexelő konfigurálható úgy is, hogy rendszeres időközönként fusson az ütemterven.
 
 Bizonyos helyzetekben hasznos lehet az indexelő ütemezése:
 
-* A forrásadatok idővel változnak, és azt szeretné, hogy a Azure Search indexelő automatikusan feldolgozzák a módosított adatait.
+* A forrásadatok idővel változnak, és azt szeretné, hogy az Azure Cognitive Search indexelő automatikusan feldolgozzák a módosított adatforrásokat.
 * Az index több adatforrásból lesz feltöltve, és biztosítani szeretné, hogy az indexelő a konfliktusok csökkentése érdekében különböző időpontokban fussanak.
-* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. A nagy mennyiségű adat indexelésével kapcsolatos további információkért lásd: a [nagyméretű adathalmazok indexelése Azure Searchban](search-howto-large-index.md).
+* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. A nagy mennyiségű adat indexelésével kapcsolatos további információkért lásd: [nagyméretű adatkészletek indexelése az Azure Cognitive Searchban](search-howto-large-index.md).
 
-Az ütemező a Azure Search beépített funkciója. A keresési indexelő vezérléséhez nem használhat külső ütemező funkciót.
+Az ütemező az Azure Cognitive Search beépített funkciója. A keresési indexelő vezérléséhez nem használhat külső ütemező funkciót.
 
 ## <a name="define-schedule-properties"></a>Ütemterv tulajdonságainak megadása
 
@@ -88,7 +88,7 @@ Az indexelő igény szerint bármikor futtatható a Run indexelő hívásával i
 
 ## <a name="schedule-using-the-net-sdk"></a>Ütemterv a .NET SDK használatával
 
-Az indexelő ütemtervét a Azure Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
+Az indexelő ütemtervét az Azure Cognitive Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
 
 Az alábbi C# példa létrehoz egy indexelő egy előre definiált adatforrás és egy index használatával, és az ütemtervet úgy állítja be, hogy minden nap 30 perc múlva fusson:
 

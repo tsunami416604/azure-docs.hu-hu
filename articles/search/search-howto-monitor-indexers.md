@@ -1,25 +1,24 @@
 ---
-title: Az indexelő állapotának és eredményeinek figyelése – Azure Search
-description: A Azure Portal Azure Search indexelő állapotának, előrehaladásának és eredményének figyelése a REST API vagy a .NET SDK használatával.
-ms.date: 06/28/2019
-author: RobDixon22
+title: Az indexelő állapotának és eredményeinek figyelése
+titleSuffix: Azure Cognitive Search
+description: Az Azure Cognitive Search indexek állapotának, előrehaladásának és eredményének figyelése a Azure Portal, a REST API vagy a .NET SDK használatával.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533699"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793798"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search indexelő állapotának és eredményeinek figyelése
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
 
-Azure Search az összes indexelő aktuális és korábbi futtatásával kapcsolatos állapot-és figyelési információkat biztosít.
+Az Azure Cognitive Search minden indexelő aktuális és korábbi futtatásával kapcsolatos állapot-és figyelési információkat biztosít.
 
 Az indexelő figyelése a következő esetekben hasznos:
 
@@ -75,7 +74,7 @@ Ha a Futtatás során dokumentált problémák léptek fel, azok a hibák és fi
 
 A figyelmeztetések gyakran előfordulnak bizonyos típusú indexelő típusokban, és nem mindig jeleznek problémát. A kognitív szolgáltatásokat használó indexelő például figyelmeztetést jelenthetnek, ha a kép-vagy PDF-fájlok nem tartalmaznak feldolgozni kívánt szöveget.
 
-Az indexelő hibáival és a figyelmeztetésekkel kapcsolatos további információkért lásd: [gyakori indexelő problémák elhárítása Azure Searchban](search-indexer-troubleshooting.md).
+További információ az indexelő hibáiról és a figyelmeztetésekről: [Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása](search-indexer-troubleshooting.md).
 
 <a name="restapi"></a>
 
@@ -128,7 +127,7 @@ Az állapotkódok és az indexelő adatainak figyelésével kapcsolatos további
 
 ## <a name="monitor-using-the-net-sdk"></a>Figyelés a .NET SDK használatával
 
-Az indexelő ütemtervét a Azure Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
+Az indexelő ütemtervét az Azure Cognitive Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
 
 A következő C# példa adatokat ír az indexelő állapotáról, valamint a legutóbbi (vagy folyamatban lévő) eszköznek a konzolra való futtatásának eredményéről.
 

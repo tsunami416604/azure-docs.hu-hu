@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511021"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784834"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -49,7 +49,7 @@ Az ügyfél böngészőjéből eljuttatott HTTP-állomásfejléc a leggyakoribb 
 
 Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/traffic-manager-how-it-works.md)ismerteti, Traffic Manager a DNS-szinten működik. Mivel az ügyfelek közvetlenül a szolgáltatási végpontokhoz csatlakoznak, a kapcsolat létrejötte után a Traffic Manager használatakor nincs hatással a teljesítményre.
 
-Mivel a Traffic Manager DNS-szinten integrálódik az alkalmazásokkal, a DNS-feloldási láncba való beillesztéshez további DNS-névlekérdezésre van szükség. A Traffic Manager DNS-feloldási időpontra gyakorolt hatása minimális. A Traffic Manager a névkiszolgálók globális hálózatát használja, és a [](https://en.wikipedia.org/wiki/Anycast) teljes képernyős hálózatkezelést használja annak biztosítására, hogy a DNS-lekérdezések mindig a legközelebbi elérhető névkiszolgálók felé legyenek irányítva. A DNS-válaszok gyorsítótárazása emellett azt is jelenti, hogy a Traffic Manager használatával felmerülő további DNS-késés csak a munkamenetek töredékére vonatkozik.
+Mivel a Traffic Manager DNS-szinten integrálódik az alkalmazásokkal, a DNS-feloldási láncba való beillesztéshez további DNS-névlekérdezésre van szükség. A Traffic Manager DNS-feloldási időpontra gyakorolt hatása minimális. A Traffic Manager a névkiszolgálók globális hálózatát használja, és a teljes képernyős [hálózatkezelést](https://en.wikipedia.org/wiki/Anycast) használja annak biztosítására, hogy a DNS-lekérdezések mindig a legközelebbi elérhető névkiszolgálók felé legyenek irányítva. A DNS-válaszok gyorsítótárazása emellett azt is jelenti, hogy a Traffic Manager használatával felmerülő további DNS-késés csak a munkamenetek töredékére vonatkozik.
 
 A teljesítmény metódus a legközelebbi elérhető végpontra irányítja a forgalmat. A nettó eredmény az, hogy az ehhez a metódushoz társított általános teljesítményre gyakorolt hatásnak minimálisnak kell lennie. A DNS-késés növelését a végponthoz képest alacsonyabb hálózati késéssel kell ellensúlyozni.
 
@@ -64,7 +64,7 @@ Igen. Ha meg szeretné tudni, hogyan hozhat létre alias-rekordot a tartományn�
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>A DNS-lekérdezések kezelésekor az ügyfél alhálózati címének Traffic Manager kell lennie? 
 
 Igen, az általa fogadott DNS-lekérdezés forrás IP-címén kívül (amely általában a DNS-feloldó IP-címe), amikor a földrajzi, a teljesítmény-és az alhálózat-útválasztási módszerekhez keres keresést, a Traffic Manager az ügyfél alhálózati címét is figyelembe veszi, ha a kérelem a felhasználó nevében a kérést a feloldó által megadott lekérdezésben szerepel.  
-Pontosabban, [RFC 7871 – ügyfél-alhálózat a DNS](https://tools.ietf.org/html/rfc7871) -lekérdezésekben, amelyek a [DNS (EDNS0) bővítményi mechanizmust](https://tools.ietf.org/html/rfc2671) biztosítanak az ügyfél alhálózati címére az azt támogató feloldók alapján.
+Pontosabban, [RFC 7871 – ügyfél-alhálózat a DNS-lekérdezésekben](https://tools.ietf.org/html/rfc7871) , amelyek a [DNS (EDNS0) bővítményi mechanizmust](https://tools.ietf.org/html/rfc2671) biztosítanak az ügyfél alhálózati címére az azt támogató feloldók alapján.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Mi a DNS-élettartam, és hogyan befolyásolja a felhasználókat?
 
@@ -172,7 +172,7 @@ Megadhatja a visszaadni kívánt végpontok maximális számát, és a többért
 
 Nem garantáljuk, hogy az egyes lekérdezésekben ugyanazok a végpontok lesznek visszaadva. Ezt az is befolyásolja, hogy egyes végpontok nem megfelelő állapotba kerülhetnek, amikor a válaszban nem fognak szerepelni.
 
-## <a name="real-user-measurements"></a>Valós felhasználói mérések
+## <a name="real-user-measurements"></a>Valós felhasználóiélmény-mérések
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Milyen előnyökkel jár a valós felhasználómérés használata?
 
@@ -252,7 +252,7 @@ Nem, a valós felhasználómérés működéséhez nem szükséges kiszolgálóo
 
 Az előző válaszban említettek szerint a valós felhasználómérés kiszolgálóoldali összetevői az Azure tulajdonában és felügyelete alatt állnak. Ez azt jelenti, hogy az Azure-sávszélesség használata nem fog növekedni, mert valós felhasználómérés használ. Ez nem tartalmazza az Azure-díjakon kívüli sávszélesség-használatot. A sávszélességet az Azure-régiók késésének méréséhez csak egyetlen képpontos rendszerkép letöltésével lehet csökkenteni. 
 
-## <a name="traffic-view"></a>Forgalomnézet
+## <a name="traffic-view"></a>Traffic View
 
 ### <a name="what-does-traffic-view-do"></a>Mit tesz forgalomáttekintő?
 
@@ -326,7 +326,7 @@ A Traffic Manager általában a különböző régiókban üzembe helyezett alka
 
 A Traffic Manager profiljához társított Azure-végpontokat az erőforrás-azonosítóik alapján követjük nyomon. Ha egy olyan Azure-erőforrást, amelyet végpontként használ (például a nyilvános IP-címet, a klasszikus felhőalapú szolgáltatást, a WebApp-t vagy egy beágyazott módon használt Traffic Manager profilt), a rendszer áthelyezi egy másik erőforráscsoporthoz vagy előfizetésbe, és az erőforrás-azonosítót módosítja. Ebben a forgatókönyvben jelenleg a Traffic Manager profilt először törölnie kell, majd újra hozzá kell adnia a végpontokat a profilhoz.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
+## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-végpontmonitorozás
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Rugalmasan Traffic Manager az Azure-régiók hibáira?
 
@@ -384,13 +384,13 @@ Olyan profilok esetében, amelyek nem a többértékű útválasztási módszerr
 
 |Bejövő lekérdezési kérelem|    Végpont típusa|  Válasz megadva|
 |--|--|--|
-|BÁRMELY |  A / AAAA / CNAME |  Cél végpont| 
-|J |    A / CNAME | Cél végpont|
-|J |    AAAA |  NODATA |
-|AAAA | AAAA / CNAME |  Cél végpont|
-|AAAA | J | NODATA |
+|BÁRMELY |  A/AAAA/CNAME |  Cél végpont| 
+|A |    A/CNAME | Cél végpont|
+|A |    AAAA |  NODATA |
+|AAAA | AAAA/CNAME |  Cél végpont|
+|AAAA | A | NODATA |
 |CNAME |    CNAME | Cél végpont|
-|CNAME  |A / AAAA | NODATA |
+|CNAME  |A/AAAA | NODATA |
 |
 
 Olyan profilok esetében, amelyeknél az útválasztási módszer értéke többértékű:
@@ -398,7 +398,7 @@ Olyan profilok esetében, amelyeknél az útválasztási módszer értéke több
 |Bejövő lekérdezési kérelem|    Végpont típusa | Válasz megadva|
 |--|--|--|
 |BÁRMELY |  A és AAAA kombinációja | Cél végpontok|
-|J |    A és AAAA kombinációja | Csak az A típusú cél végpontok|
+|A |    A és AAAA kombinációja | Csak az A típusú cél végpontok|
 |AAAA   |A és AAAA kombinációja|     Csak AAAA típusú cél végpontok|
 |CNAME |    A és AAAA kombinációja | NODATA |
 
@@ -416,7 +416,10 @@ Igen. Megadhatja a TCP protokollt a figyelési protokollként, és Traffic Manag
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Milyen válaszokra van szükség a végponttól a TCP-figyelés használatakor?
 
-A TCP-figyelés használatakor Traffic Manager egy háromutas TCP-kézfogást indít el egy SYN-kérelem küldésével a megadott porton. Ezután a végponttól érkező válaszra vár egy ideig (az időtúllépési beállításokban meghatározottak szerint). Ha a végpont a figyelési beállításokban megadott időkorláton belül a SYN-ACK választ tartalmazó SYN-kérelemre válaszol, akkor a végpont kifogástalannak minősül. Ha a SYN-ACK válasz érkezik, a Traffic Manager visszaállítja a kapcsolatokat úgy, hogy az ELSŐvel válaszol vissza.
+A TCP-figyelés használatakor Traffic Manager egy háromutas TCP-kézfogást indít el egy SYN-kérelem küldésével a megadott porton. Ezután vár egy SYN-ACK választ a végponttól az időtúllépési beállításokban megadott időtartamra.
+
+- Ha a figyelési beállításokban megadott időtúllépési időszakon belül egy SYN-ACK-válasz érkezik, akkor a végpont kifogástalannak minősül. Egy FIN vagy FIN-ACK a Traffic Manager várt válasza, amikor rendszeresen leállítja a szoftvercsatornát.
+- Ha a megadott időkorlát után egy SYN-ACK-válasz érkezik, a Traffic Manager egy első lépésre válaszol a kapcsolat visszaállításához.
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Milyen gyorsan Traffic Manager áthelyezni a felhasználókat egy nem kifogástalan állapotú végpontról?
 
@@ -444,7 +447,7 @@ Ha nincs megadva egyéni állomásfejléc-beállítás, az Traffic Manager álta
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Mik azok az IP-címek, amelyekről az állapot-ellenőrzések származnak?
 
-Ide [](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) kattintva megtekintheti a JSON-fájlt, amely felsorolja azokat az IP-címeket, amelyekről Traffic Manager állapot-ellenőrzések származhatnak. Tekintse át a JSON-fájlban felsorolt IP-címeket annak biztosításához, hogy az ezen IP-címekről érkező bejövő kapcsolatok engedélyezettek legyenek a végpontokon az állapotának ellenőrzéséhez.
+Ide [kattintva](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) megtekintheti a JSON-fájlt, amely felsorolja azokat az IP-címeket, amelyekről Traffic Manager állapot-ellenőrzések származhatnak. Tekintse át a JSON-fájlban felsorolt IP-címeket annak biztosításához, hogy az ezen IP-címekről érkező bejövő kapcsolatok engedélyezettek legyenek a végpontokon az állapotának ellenőrzéséhez.
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hány állapot-ellenőrzést várhatok a végpontom Traffic Manager?
 
@@ -477,8 +480,8 @@ A beágyazott profilok használata nem befolyásolja a negatív díjszabást.
 
 Traffic Manager számlázás két összetevőből áll: a végpontok állapotának ellenőrzése és a több millió DNS-lekérdezés
 
-* Végpont állapotának ellenőrzése: Egy alárendelt profil nem számít fel díjat, ha a szülő profilban végpontként van konfigurálva. A gyermek profilban található végpontok figyelése a szokásos módon történik.
-* DNS-lekérdezések: Minden lekérdezés csak egyszer számít. Egy alárendelt profilból egy végpontot visszaadó szülő profilra vonatkozó lekérdezés csak a szülő profilban számít.
+* Végpont állapotának ellenőrzése: a szülő profilban végpontként konfigurált alárendelt profilért nem számítunk fel díjat. A gyermek profilban található végpontok figyelése a szokásos módon történik.
+* DNS-lekérdezések: minden lekérdezés csak egyszer számít. Egy alárendelt profilból egy végpontot visszaadó szülő profilra vonatkozó lekérdezés csak a szülő profilban számít.
 
 A részletekért tekintse meg a [Traffic Manager díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
@@ -502,7 +505,7 @@ A következő táblázat ismerteti a beágyazott végpontok Traffic Manager áll
 | CheckingEndpoints. Legalább egy alárendelt profil végpontja a következő: "CheckingEndpoint". Nincsenek végpontok "online" vagy "csökkentett teljesítményű" |Ugyanaz, mint a fenti. | |
 | Inaktív. Az összes alárendelt profil végpontja le van tiltva vagy le van állítva, vagy ez a profil nem rendelkezik végpontokkal. |Leállítva | |
 
-## <a name="next-steps"></a>További lépések:
+## <a name="next-steps"></a>Következő lépések:
 
 - További információ a Traffic Manager [végpont monitorozásáról és az automatikus feladatátvételről](../traffic-manager/traffic-manager-monitoring.md).
 - További információ a Traffic Manager [forgalom-útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).

@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitások használata az Azure-erőforrások egy Azure virtuális gépen az Azure SDK-k
-description: Kódminták az Azure SDK-k használata Azure virtuális gép rendelkezik felügyelt identitások az Azure-erőforrásokhoz.
+title: Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépeken Azure SDK-k használatával
+description: Az Azure SDK-k Azure-beli virtuális gépekkel való használatára szolgáló, Azure-erőforrásokhoz felügyelt identitásokkal rendelkező Azure SDK-k használata.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,39 +15,39 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c86562e0fdb4e6d62d44088b7aba08e45e22a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c66bb2b4e9af6f4b79b0ead98b8d18fc56cb467
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60293234"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809190"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure virtuális gépen az Azure SDK-k 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépeken Azure SDK-k használatával 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-A cikk ismerteti az SDK-mintákat, amelyek bemutatják, használja a megfelelő Azure SDK-támogatás felügyelt identitások az Azure-erőforrások listáját.
+Ez a cikk az SDK-minták listáját mutatja be, amely bemutatja az Azure-erőforrások felügyelt identitásának támogatását a megfelelő Azure SDK-ban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 > [!IMPORTANT]
-> - Az összes kódot minta parancsfájl ebben a cikkben azt feltételezi, hogy a felügyelt identitások az Azure-erőforrások engedélyezve van a virtuális gép fut az ügyfél. Az Azure Portalon a virtuális gép "Csatlakozás" funkció használatával távolról csatlakozzon a virtuális Géphez. Felügyelt identitások a virtuális gép Azure-erőforrások engedélyezésével kapcsolatos részletekért lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md), vagy az variant cikkekben (PowerShell, CLI, egy sablon vagy az Azure használatával SDK-T). 
+> - A cikkben szereplő összes mintakód/szkript azt feltételezi, hogy az ügyfél olyan virtuális gépen fut, amelyen engedélyezve van az Azure-erőforrások felügyelt identitása. Használja a Azure Portal virtuális gép "kapcsolódás" szolgáltatását a virtuális géphez való távoli kapcsolódáshoz. A virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezésével kapcsolatos részletekért lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrások számára a Azure Portal](qs-configure-portal-windows-vm.md)vagy az egyik varianting article (POWERSHELL, CLI, sablon vagy Azure SDK használatával). 
 
-## <a name="sdk-code-samples"></a>SDK-Kódminták
+## <a name="sdk-code-samples"></a>SDK-kód minták
 
 | SDK             | Kódminta |
 | --------------- | ----------- |
-| .NET            | [Felügyelt identitások használatával az Azure-erőforrások Windows rendszerű virtuális gépről egy Azure Resource Manager-sablon üzembe helyezése](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
-| .NET Core       | [Azure-szolgáltatás hívása egy Linux rendszerű virtuális gép felügyelt identitások használatával az Azure-erőforrásokhoz](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
-| Node.js         | [Felügyelt identitások használatával az Azure-erőforrások-erőforrások kezelése](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
-| Python          | [Felügyelt identitások az Azure-erőforrások használatával egyszerűen a virtuális Gépen belüli hitelesítéshez](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
-| Ruby            | [Erőforrások kezelése a felügyelt identitások az Azure-erőforrások engedélyezve van a virtuális gép](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) |
+| .NET            | [Azure Resource Manager-sablon központi telepítése Windows rendszerű virtuális gépről felügyelt identitások használatával Azure-erőforrásokhoz](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
+| .NET Core       | [Azure-szolgáltatások meghívása linuxos virtuális gépről az Azure-erőforrások felügyelt identitásai használatával](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
+| Node.js         | [Erőforrások kezelése felügyelt identitások használatával az Azure-erőforrásokhoz](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
+| Python          | [Felügyelt identitások használata Azure-erőforrásokhoz egyszerűen egy virtuális gépen belülről történő hitelesítéshez](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
+| Ruby            | [Felügyelt identitással rendelkező virtuális gépek erőforrásainak kezelése engedélyezett Azure-erőforrások esetén](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Lásd: [Azure SDK-k](https://azure.microsoft.com/downloads/) teljes listája megtalálható az Azure SDK-erőforrásokat, többek között a szalagtár letöltések, dokumentáció és egyéb.
-- Engedélyezheti a felügyelt identitások az Azure-erőforrások egy Azure-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md).
+- Tekintse meg az Azure SDK-kat az Azure SDK-erőforrások teljes listájához, beleértve a könyvtárak letöltését [, a](https://azure.microsoft.com/downloads/) dokumentációt és egyebeket.
+- Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).
 
 
 

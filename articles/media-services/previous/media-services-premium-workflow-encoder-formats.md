@@ -14,18 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015043"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792584"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Formátumok és kodekek Media Encoder Premium Workflow
 
 > [!NOTE]
-> A prémium szintű kódolóval kapcsolatos mepd@microsoft.comkérdésekért e-mailben.
-> 
 > A jelen témakörben tárgyalt Media Encoder Premium Workflow adathordozó-feldolgozó Kínában nem érhető el. 
 
 Ez a dokumentum tartalmazza a bemeneti és kimeneti fájlformátumokat és kodekeket, amelyeket a **Media Encoder Premium workflow** kódoló nyilvános előzetes verziója támogat.
@@ -55,7 +53,7 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 
 * AVC 8 bites/10 bites, legfeljebb 4:2:2, beleértve a következőt: AVCIntra
 * Avid DNxHD (MXF)
-* DVCPro/DVCProHD (in MXF)
+* DVCPro/munkáját (a MXF-ben)
 * HEVC/H. 265, Main és Main 10 profil
 * JPEG2000
 * MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat)
@@ -70,7 +68,7 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 * AAC (AAC-LC, AAC-s és AAC-HEv2; akár 5,1)
 * 2\. MPEG-réteg
 * MP3 (MPEG-1 hangréteg 3)
-* Windows Media Audio
+* Windows Media hang
 * WAV/PCM
 
 ## <a id="output_format"></a>Kimeneti formátumok és kodekek Media Encoder Premium Workflow
@@ -87,20 +85,18 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 * Windows Media/ASF
 * AVI (tömörítetlen 8bit/10bit)
 * Smooth Streaming fájl formátuma (PIFF 1,3)
-* MPEG-TS 
+* MPEG – TS 
 
 ### <a name="output-video-codecs"></a>Kimeneti videó codec-je
 
 * AVC (H. 264; 8 bites; legfeljebb magas profil, 5,2-as szint; 4K Ultra HD; AVC-n belüli)
 * Avid DNxHD (MXF)
-* DVCPro/DVCProHD (in MXF)
+* DVCPro/munkáját (a MXF-ben)
 * MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat)
 * MPEG-1
 * Windows Media Video/VC-1
 * JPEG-miniatűr létrehozása
 * HEVC (H. 265; 8 bites és 10 bites, fő és fő 10 profil)
-
-  A HDR 10 támogatása bizonyos helyzetekben elérhető, további információért forduljon mepd@microsoft.com a következőhöz:
 
 
 ### <a name="output-audio-codecs"></a>Kimeneti hangkodekek
@@ -111,7 +107,7 @@ A következő szakasz azokat a kodekeket és fájlformátumokat sorolja fel, ame
 * AAC (AAC-LC, AAC-s és AAC-HEv2; akár 5,1)
 * 2\. MPEG-réteg
 * MP3 (MPEG-1 hangréteg 3)
-* Windows Media Audio
+* Windows Media hang
 
 >[!NOTE]
 >Ha a Dolby® Digital (AC3) kódolást végez, a kimenet csak ISO MP4-fájlba írható.
@@ -141,6 +137,9 @@ A kimeneten a következő lehetőségek érhetők el:
 
 Ha a bemeneti videó nem tartalmaz kódolt feliratozást, a kimeneti eszköz továbbra is tartalmaz egy üres TTML-fájlt. 
 
+## <a name="need-help"></a>Segítség
+
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,26 +1,25 @@
 ---
-title: Index definíciójának és fogalmának létrehozása – Azure Search
-description: Bevezetés a Azure Search indexelési feltételeit és fogalmait, beleértve az összetevő-részeket és a fizikai struktúrákat.
-author: HeidiSteen
+title: Index definíciójának és fogalmának létrehozása
+titleSuffix: Azure Cognitive Search
+description: Bevezetés az Azure Cognitive Search indexelési feltételeit és fogalmait, beleértve az összetevők és a fizikai struktúra részleteit.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69647369"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794210"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Alapszintű index létrehozása a Azure Searchban
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Alapszintű index létrehozása az Azure Cognitive Searchban
 
-A Azure Searchban az *index* a *dokumentumok* és más, a Azure Search szolgáltatásokban szűrt és teljes szöveges kereséshez használt szerkezetek állandó tárolója. Elméletileg a dokumentumok az indexben kereshető adategységek. Az elektronikus kereskedelemmel foglalkozó ügyfelek például minden egyes értékesített áru, egy hírközlő szervezet pedig minden egyes cikk esetében rendelkezhet dokumentumokkal. Ezen fogalmak ismertebb, adatbázisbeli megfelelőivel élve: az *index* koncepcionálisan egy *táblához* hasonlít, a *dokumentumok* pedig nagyjából a tábla *sorainak* felelnek meg.
+Az Azure Cognitive Searchban az *index* az Azure Cognitive Search szolgáltatásban szűrt és teljes szöveges kereséshez használt *dokumentumok* és egyéb szerkezetek állandó tárolója. Elméletileg a dokumentumok az indexben kereshető adategységek. Az elektronikus kereskedelemmel foglalkozó ügyfelek például minden egyes értékesített áru, egy hírközlő szervezet pedig minden egyes cikk esetében rendelkezhet dokumentumokkal. Ezen fogalmak ismertebb, adatbázisbeli megfelelőivel élve: az *index* koncepcionálisan egy *táblához* hasonlít, a *dokumentumok* pedig nagyjából a tábla *sorainak* felelnek meg.
 
-Ha indexet ad hozzá vagy tölt fel, Azure Search fizikai struktúrákat hoz létre az Ön által megadott séma alapján. Ha például az index egy mezője kereshetőként van megjelölve, akkor az adott mezőhöz fordított index jön létre. Később, amikor dokumentumokat ad hozzá vagy tölt fel, vagy keresési lekérdezéseket küld Azure Searchba, a keresési szolgáltatás egy adott indexére küldi a kéréseket. A dokumentum típusú értékekkel rendelkező mezők *indexelési* vagy adatfeldolgozási szolgáltatásnak nevezzük.
+Ha indexet ad hozzá vagy tölt fel, az Azure Cognitive Search fizikai struktúrákat hoz létre az Ön által megadott séma alapján. Ha például az index egy mezője kereshetőként van megjelölve, akkor az adott mezőhöz fordított index jön létre. Később, amikor dokumentumokat ad hozzá vagy tölt fel, vagy keresési lekérdezéseket küld az Azure Cognitive Searchba, a keresési szolgáltatás egy adott indexére küldi a kéréseket. A dokumentum típusú értékekkel rendelkező mezők *indexelési* vagy adatfeldolgozási szolgáltatásnak nevezzük.
 
 Létrehozhat egy indexet a portálon, [REST API](search-create-index-rest-api.md)vagy [.net SDK](search-create-index-dotnet.md)-ban.
 
@@ -40,7 +39,7 @@ A jobb oldali index kialakításának megérkezése általában több iteráció
 
    Ezen a ponton a kód alapú megközelítésre vált. A portál nem alkalmas az iterációhoz, mert már létrehozott index nem szerkeszthető. De a további feladatokhoz a Poster és a REST is használható.
 
-4. [Töltse be az indexet az adataival](search-what-is-data-import.md). A Azure Search JSON-dokumentumokat fogad el. Az adatok programozott módon történő betöltéséhez használhatja a Poster-t JSON-dokumentumokkal a kérelem hasznos adatai között. Ha az adatai nem könnyen használhatók JSON-ként, ez a lépés a legintenzívebb munkaerő.
+4. [Töltse be az indexet az adataival](search-what-is-data-import.md). Az Azure Cognitive Search JSON-dokumentumokat fogad el. Az adatok programozott módon történő betöltéséhez használhatja a Poster-t JSON-dokumentumokkal a kérelem hasznos adatai között. Ha az adatai nem könnyen használhatók JSON-ként, ez a lépés a legintenzívebb munkaerő.
 
 5. Kérdezze le az indexet, vizsgálja meg az eredményeket, és ismételje meg az indexelési sémát, amíg meg nem kezdődik a várt eredmények megtekintése. Az index lekérdezéséhez használhatja a [**Search Explorert**](search-explorer.md) vagy a Poster-t.
 
@@ -52,7 +51,7 @@ A portál megközelítése helyett a kód használata javasolt az ismétlődő k
 
 ## <a name="components-of-an-index"></a>Index összetevői
 
-A Azure Search index sematikusan a következő elemekből áll. 
+Az Azure Cognitive Search index sematikusan a következő elemekből áll. 
 
 A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb része, ahol az egyes mezők neve, beírása és attribútuma engedélyezett viselkedésmódokkal, amelyek meghatározzák a használatuk módját. A további elemek közé tartoznak a [javaslatok](#suggesters), a [pontozási profilok](#scoring-profiles)és az összetevőkkel rendelkező [elemzők](#analyzers) , amelyek támogatják a testreszabást, a [CORS](#cors) és a [titkosítási kulcs](#encryption-key) beállításait.
 
@@ -157,7 +156,7 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 | *Edm.DateTimeOffset* |A OData v4 formátumban (például `yyyy-MM-ddTHH:mm:ss.fffZ` vagy `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`) megadott dátum-idő értékek. |
 | *Edm.GeographyPoint* |A pont egy konkrét földrajzi helyet jelöl. |
 
-Részletesebb információkat az Azure Search által [támogatott adattípusokról itt](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) talál.
+Az Azure Cognitive Search [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)kapcsolatos részletesebb információkat itt talál.
 
 ### <a name="index-attributes"></a>Index attribútumai
 
@@ -190,7 +189,7 @@ Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befo
 A szűrést és rendezést támogató indexek a csak teljes szöveges keresést támogató indexek arányosan nagyobbak. Ennek az az oka, hogy a szűrés és a rendezés lekérdezése pontos egyezéseket eredményez, így a dokumentumok érintetlenül tárolódnak. Ezzel szemben a teljes szöveges és a zavaros keresést támogató kereshető mezők invertált indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok.
 
 > [!Note]
-> A tárolási architektúra a Azure Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
+> A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
 
 ## <a name="suggesters"></a>Javaslatok
 A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában részleges keresési karakterláncokat küld a [javaslatoknak (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , miközben a felhasználó keresési lekérdezést ír be, és az API a javasolt kifejezések egy halmazát adja vissza. 
@@ -205,7 +204,7 @@ Az alapértelmezett pontozási profil a háttérben működik, hogy kiszámítsa
 
 ## <a name="analyzers"></a>Elemzők
 
-Az analizátorok elem beállítja a mezőhöz használandó nyelvi elemző nevét. Az elérhető elemzők tartományával kapcsolatos további információkért lásd: [elemzők hozzáadása egy Azure Search indexhez](search-analyzers.md). Az elemzők csak kereshető mezőkkel használhatók. Ha az analizátor egy mezőhöz van rendelve, akkor nem módosítható, ha újra létrehozza az indexet.
+Az analizátorok elem beállítja a mezőhöz használandó nyelvi elemző nevét. Az elérhető elemzők tartományával kapcsolatos további információkért lásd: [elemzők hozzáadása egy Azure Cognitive Search indexhez](search-analyzers.md). Az elemzők csak kereshető mezőkkel használhatók. Ha az analizátor egy mezőhöz van rendelve, akkor nem módosítható, ha újra létrehozza az indexet.
 
 ## <a name="cors"></a>CORS
 
@@ -221,7 +220,7 @@ A következő beállítások állíthatók be a CORS:
 
 ## <a name="encryption-key"></a>Titkosítási kulcs
 
-Noha az összes Azure Search-index a Microsoft által felügyelt kulcsok használatával van titkosítva, az indexek úgy konfigurálhatók, hogy a Key Vault-ben **felügyelt kulccsal** titkosítva legyenek. További információ: [titkosítási kulcsok kezelése Azure Searchban](search-security-manage-encryption-keys.md).
+Noha az összes Azure Cognitive Search index a Microsoft által felügyelt kulcsokkal van titkosítva, az indexek úgy konfigurálhatók, hogy a Key Vault-ben az **ügyfél által felügyelt kulcsokkal** titkosítva legyenek. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

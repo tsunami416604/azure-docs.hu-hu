@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528192"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792837"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -29,7 +29,7 @@ A Azure Backup [beépített figyelési és riasztási képességeket](backup-azu
 ## <a name="using-log-analytics-workspace"></a>Log Analytics munkaterület használata
 
 > [!NOTE]
-> Az Azure virtuális gépek biztonsági mentései, a Azure Backup ügynök, a System Center Data Protection Manager, az Azure-beli virtuális gépek SQL-biztonsági mentései, valamint a Azure Files megosztási biztonsági mentések a Log Analytics munkaterületre állnak a diagnosztikai beállítások segítségével.
+> Az Azure virtuális gépek biztonsági mentései, a Azure Backup ügynök, a System Center Data Protection Manager, az Azure-beli virtuális gépek SQL-biztonsági mentései, valamint a Azure Files megosztási biztonsági mentések a Log Analytics munkaterületre állnak a diagnosztikai beállítások segítségével. A Microsoft Azure Backup-kiszolgáló (MABS) támogatását hamarosan felveszi
 
 A skála figyeléséhez vagy jelentéséhez két Azure-szolgáltatás képességeire van szükség. A *diagnosztikai beállítások* több Azure Resource Manager erőforrás adatait küldik egy másik erőforrásnak. A *log Analytics* olyan egyéni riasztásokat hoz létre, amelyekben a műveleti csoportok más értesítési csatornákat is meghatározhatnak.
 

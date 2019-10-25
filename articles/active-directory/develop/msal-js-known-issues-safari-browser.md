@@ -1,6 +1,7 @@
 ---
-title: Ismert problémák a böngészőkben (Microsoft-hitelesítési tár JavaScript-) |} Az Azure
-description: Ismert problémák a Microsoft-hitelesítési tár JavaScript (MSAL.js) használatakor a ismerteti a Safari böngészőben.
+title: Böngészőkkel kapcsolatos ismert problémák (Microsoft Authentication Library JavaScripthez)
+titleSuffix: Microsoft identity platform
+description: Ismerje meg a Microsoft hitelesítési függvénytár JavaScripthez (MSAL. js) való használatakor felmerülő problémákat a Safari böngészőben.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,30 +18,30 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51d800ea2fbbc733a6213d7bc4f61f955612aba0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873885"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803065"
 ---
-# <a name="known-issues-on-safari-browser-with-msaljs"></a>A Safari böngésző az MSAL.js ismert problémák 
+# <a name="known-issues-on-safari-browser-with-msaljs"></a>A Safari böngészőben a MSAL. js-vel kapcsolatos ismert problémák 
 
-## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>A Safari 12 és ITP 2.0 csendes token megújítása
+## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>Csendes jogkivonat megújítása a Safari 12 és a ITP 2,0 esetében
 
-12\. az Apple iOS és MacOS 10.14 operációs rendszerek része egy kiadása a [12 a Safari böngésző](https://developer.apple.com/safari/whats-new/). Biztonsági és adatvédelmi okokból a Safari 12 tartalmazza a [intelligens követési megelőzési 2.0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/). Ez lényegében hatására a böngésző dobja el a külső cookie-k beállítása alapján történik. ITP 2.0 is kezeli az identitás-szolgáltatóktól, külső cookie-k által beállított cookie-kat.
+Az Apple iOS 12 és MacOS 10,14 operációs rendszerek tartalmazzák a [Safari 12 böngésző](https://developer.apple.com/safari/whats-new/)kiadását. A biztonság és az adatvédelem érdekében a Safari 12 a 2,0-es [intelligens nyomkövetést](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/)is tartalmazza. Ez lényegében azt eredményezi, hogy a böngésző el szeretné dobni a harmadik féltől származó cookie-k készletét. A ITP 2,0 az identitás-szolgáltatók által a harmadik féltől származó cookie-k által beállított cookie-kat is kezeli.
 
-### <a name="impact-on-msaljs"></a>Impact on MSAL.js
+### <a name="impact-on-msaljs"></a>A MSAL. js-re gyakorolt hatás
 
-MSAL.js rejtett Iframe használatával beavatkozás nélküli token beszerzése és megújítása során végrehajtott a `acquireTokenSilent` hívásokat. A beavatkozás nélküli jogkivonat-kérelmeket az IFRAME-keret férhető hozzá a hitelesített felhasználói munkamenetet a cookie-kat, állítsa be az Azure AD által képviselt támaszkodnak. ITP 2.0 letiltja a hozzáférést a cookie-kat, MSAL.js csendes beszerezni, és a jogkivonatok megújítása sikertelen lesz, és ennek eredményeként `acquireTokenSilent` hibák.
+A MSAL. js egy rejtett iframe-t használ a `acquireTokenSilent`-hívások részeként a csendes jogkivonat beszerzésének és megújításának végrehajtásához. A csendes jogkivonat-kérelmek arra támaszkodnak az IFRAME-re, hogy hozzáférjenek az Azure AD által beállított cookie-k által jelölt hitelesített felhasználói munkamenethez. Ha ITP 2,0 megakadályozza a cookie-k elérését, a MSAL. js nem tudja lekérni és megújítani a tokeneket, és ez `acquireTokenSilent` hibákat eredményez.
 
-Nincs a probléma megoldása ezen a ponton, és hogy kipróbálja a beállítások a szabványok Közösséggel.
+Ezen a ponton nincs megoldás erre a problémára, és a rendszer kiértékeli a közösségi szabványokkal kapcsolatos lehetőségeket.
 
-### <a name="work-around"></a>Megkerüléséhez
+### <a name="work-around"></a>Megkerülő megoldás
 
-A ITP beállítás alapértelmezés szerint engedélyezve van a Safari böngészőben. Ezzel a beállítással letilthatja az **beállítások** -> **adatvédelmi** és az eszközhitelesítést az **többhelyes követési megakadályozása** lehetőséget.
+Alapértelmezés szerint a ITP beállítás engedélyezve van a Safari böngészőben. Ezt a beállítást letilthatja, ha a **beállítások** -> az **Adatvédelem** lehetőségre navigál, és törli a **helyek közötti nyomkövetés tiltása** lehetőséget.
 
 ![Safari-beállítás](./media/msal-js-known-issue-safari-browser/safari.png)
 
-Kezelni kell a `acquireTokenSilent` rendelkező egy interaktív hibák beszerezni token hívás, amely felszólítja a felhasználót, hogy jelentkezzen be.
-Ismétlődő bejelentkezések elkerülése érdekében az megközelítés valósítható meg, hogy kezelni a `acquireTokenSilent` hiba, és adja meg a felhasználó lehet kikapcsolni a Safari ITP beállítását az interaktív hívás végrehajtása előtt. Ha a beállítás le van tiltva, ezt követő csendes token megújításának sikeres legyen.
+Egy interaktív beszerzési jogkivonat-hívással kell kezelnie a `acquireTokenSilent` hibákat, amely felszólítja a felhasználót, hogy jelentkezzen be.
+A ismételt bejelentkezések elkerülése érdekében a megvalósítható megközelítéssel kezelheti a `acquireTokenSilent` meghibásodását, és megadhatja a felhasználónak, hogy letiltsa a ITP-beállítást a Safariban az interaktív hívás folytatása előtt. Ha a beállítás le van tiltva, a következő csendes jogkivonat megújításának sikeresnek kell lennie.

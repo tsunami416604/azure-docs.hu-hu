@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61efc9d9d12cb67ea9c22e44ba0060db0f224f73
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5ad03e69df4ca03d58bba98b912ade354f90042e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554305"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809204"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -38,25 +38,25 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     Ha még nem indította el Privileged Identity Management a Azure Portalban, ugorjon a [Privileged Identity Management használatának megkezdéséhez](pim-getting-started.md).
 
-1. Kattintson az **Azure ad-szerepkörök**elemre.
+1. Válassza az **Azure ad-szerepkörök**elemet.
 
-1. Kattintson a **szerepkörök** vagy **tagok**elemre.
+1. Válasszon **szerepköröket** vagy **tagokat**.
 
     ![Azure AD-szerepkörök Kiemelt szerepkörökkel és tagokkal menüpont kiemelve](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
-1. Kattintson a **tag hozzáadása** gombra a felügyelt tagok hozzáadásának megnyitásához.
+1. Válassza a **tag hozzáadása** elemet a felügyelt tagok hozzáadásának megnyitásához.
 
-1. Kattintson a **szerepkör kiválasztása**elemre, kattintson a kezelni kívánt szerepkörre, majd a **kiválasztás**elemre.
+1. Válassza a **szerepkör kiválasztása**lehetőséget, válassza ki a kezelni kívánt szerepkört, majd válassza a **kiválasztás**lehetőséget.
 
     ![Válassza ki az Azure AD-szerepköröket felsoroló szerepkör panelt](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. Kattintson a **Tagok kiválasztása**elemre, jelölje ki a szerepkörhöz hozzárendelni kívánt felhasználókat, majd kattintson a **kiválasztás**gombra.
+1. Válassza a **Tagok kiválasztása**lehetőséget, válassza ki a szerepkörhöz hozzárendelni kívánt felhasználókat, majd válassza a **kiválasztás**lehetőséget.
 
     ![Válassza ki a tagok ablaktáblát, ahol kiválaszthat egy felhasználót](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. A felügyelt Tagok hozzáadása párbeszédpanelen kattintson az **OK** gombra a felhasználó szerepkörhöz való hozzáadásához.
+1. A felügyelt Tagok hozzáadása lapon kattintson az **OK** gombra a felhasználó szerepkörhöz való hozzáadásához.
 
-1. A szerepkörök listájában kattintson az imént hozzárendelt szerepkörre a tagok listájának megtekintéséhez.
+1. A szerepkörök listájában válassza ki az imént hozzárendelt szerepkört a tagok listájának megtekintéséhez.
 
      Ha a szerepkör hozzá van rendelve, a kiválasztott felhasználó a szerepkörhöz **jogosultként** fog megjelenni a tagok listájában.
 
@@ -72,15 +72,15 @@ Alapértelmezés szerint az új felhasználók csak Azure AD-rendszergazdai szer
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson az **Azure ad-szerepkörök**elemre.
+1. Válassza az **Azure ad-szerepkörök**elemet.
 
-1. Kattintson a **tagok**elemre.
+1. Válasszon **tagokat**.
 
     ![Azure AD-szerepkörök – a tagok listája a szerepkör-és aktiválási állapotot jeleníti meg](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Kattintson arra a **jogosult** szerepkörre, amelyet véglegesen szeretne készíteni.
+1. Válasszon ki egy olyan **jogosult** szerepkört, amelyet véglegesen szeretne végezni.
 
-1. Kattintson a **továbbiak** , majd a **dauer készítése**elemre.
+1. Válassza a **továbbiak** lehetőséget, majd válassza a **make perm**lehetőséget.
 
     ![Ablaktábla, amely egy olyan felhasználót listáz, amely jogosult egy szerepkörre a további menüpontok megnyitásakor](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
@@ -116,7 +116,9 @@ A következő lépésekkel távolíthat el egy adott felhasználót egy Azure AD
 
 ## <a name="authorization-error-when-assigning-roles"></a>Engedélyezési hiba a szerepkörök hozzárendeléséhez
 
-Ha nemrég engedélyezte Privileged Identity Management egy Azure-előfizetéshez, és egy hitelesítési hibaüzenetet kap, amikor egy felhasználó jogosult az Azure AD rendszergazdai szerepkörre, annak oka az lehet, hogy az MS-PIM szolgáltatásnév még nem rendelkezik a megfelelő jogosultságokkal engedélyek. Szerepkörök hozzárendeléséhez az MS-PIM szolgáltatásnevet hozzá kell rendelni a [felhasználói hozzáférés rendszergazdai szerepkörhöz](../../role-based-access-control/built-in-roles.md#user-access-administrator) az Azure-erőforrásokhoz való hozzáféréshez az Azure-beli szerepköralapú hozzáférés-vezérlésben (az Azure ad felügyeleti szerepköreivel ellentétben). Ahelyett, hogy megvárná, amíg az MS-PIM hozzá nem rendeli a felhasználói hozzáférés rendszergazdai szerepkört, manuálisan is hozzárendelheti.
+Forgatókönyv: az Azure-erőforrásokhoz tartozó aktív tulajdonosi vagy felhasználói hozzáférési rendszergazdaként megtekintheti az erőforrást Privileged Identity Managementon belül, de nem végezhet olyan műveleteket, mint például a jogosult hozzárendelés vagy a szerepkör-hozzárendelések listájának megtekintése a erőforrás-Áttekintés lap. A műveletek bármelyike hitelesítési hibát eredményez.
+
+Szerepkörök hozzárendeléséhez az MS-PIM szolgáltatásnevet hozzá kell rendelni a [felhasználói hozzáférés rendszergazdai szerepkörhöz](../../role-based-access-control/built-in-roles.md#user-access-administrator) az Azure-erőforrásokhoz való hozzáféréshez az Azure-beli szerepköralapú hozzáférés-vezérlésben (az Azure ad felügyeleti szerepköreivel ellentétben). Ahelyett, hogy megvárná, amíg az MS-PIM hozzá nem rendeli a felhasználói hozzáférés rendszergazdai szerepkört, manuálisan is hozzárendelheti.
 
 A következő lépésekkel rendelheti hozzá a felhasználói hozzáférés rendszergazdai szerepkört az MS-PIM szolgáltatáshoz az előfizetéshez.
 
@@ -147,7 +149,6 @@ A következő lépésekkel rendelheti hozzá a felhasználói hozzáférés rend
    Néhány pillanat elteltével az MS-PIM egyszerű szolgáltatásnév a felhasználói hozzáférés rendszergazdai szerepköréhez van rendelve az előfizetés hatókörében.
 
    ![Hozzáférés-vezérlés (IAM) panel, amely az MS-PIM felhasználói hozzáférés-felügyeleti szerepkörének hozzárendelését jeleníti meg](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
 
 ## <a name="next-steps"></a>Következő lépések
 

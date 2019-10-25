@@ -1,25 +1,25 @@
 ---
-title: A kognitív keresés egyéni képességeinek kezelőfelület-definíciója – Azure Search
-description: Egyéni adatkiemelési felület a webes API-k egyéni képességeihez a Azure Search kognitív keresési folyamatában.
+title: Az egyéni képességek kezelőfelületi definíciója
+titleSuffix: Azure Cognitive Search
+description: Egyéni adatkiemelési felület a webes API-k egyéni képességeihez az Azure Cognitive Search mesterséges intelligencia-gazdagító folyamatában.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f86c34dcc1276b8677e3e60514661a6d0b974005
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692193"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787550"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egyéni szakértelem hozzáadása egy kognitív keresési folyamathoz
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni képesség hozzáadása Azure Cognitive Search-bővítési folyamathoz
 
-A Azure Searchban található [kognitív keresési folyamat](cognitive-search-concept-intro.md) az [előre definiált ismeretekből](cognitive-search-predefined-skills.md) , valamint a folyamathoz személyesen létrehozott és hozzáadott [Egyéni képességekkel](cognitive-search-custom-skill-web-api.md) is összeállítható. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni képességet, amely lehetővé teszi, hogy egy olyan felületet biztosítson, amely egy kognitív keresési folyamat részét képezi. 
+Az Azure Cognitive Search bővítési [folyamata](cognitive-search-concept-intro.md) a [beépített kognitív képességekből](cognitive-search-predefined-skills.md) , valamint a folyamathoz személyesen létrehozott és hozzáadott [Egyéni képességekkel](cognitive-search-custom-skill-web-api.md) is összeállítható. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni képességet, amely egy olyan felületet tesz elérhetővé, amely lehetővé teszi, hogy egy AI-dúsítási folyamat része legyen. 
 
-Az egyéni képességek létrehozása lehetővé teszi, hogy a tartalom egyedi átalakításokat helyezzen be. Az egyéni képességek egymástól függetlenül hajthatók végre, a szükséges alkoholtartalom-növelési lépés alkalmazásával. Meghatározhatja például a mezőkre vonatkozó egyéni entitásokat, egyéni besorolási modelleket hozhat létre az üzleti és pénzügyi szerződések és dokumentumok megkülönböztetéséhez, vagy hozzáadhat egy beszédfelismerési képességet a hangfájlok mélyebb eléréséhez a releváns tartalmakhoz. Lépésről lépésre példaként tekintse meg a következő [példát: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md).
+Az egyéni képességek létrehozása lehetővé teszi, hogy a tartalom egyedi átalakításokat helyezzen be. Az egyéni képességek egymástól függetlenül hajthatók végre, a szükséges alkoholtartalom-növelési lépés alkalmazásával. Meghatározhatja például a mezőkre vonatkozó egyéni entitásokat, egyéni besorolási modelleket hozhat létre az üzleti és pénzügyi szerződések és dokumentumok megkülönböztetéséhez, vagy hozzáadhat egy beszédfelismerési képességet a hangfájlok mélyebb eléréséhez a releváns tartalmakhoz. Lépésről lépésre példaként tekintse meg a következő [példát: egyéni képesség létrehozása AI](cognitive-search-create-custom-skill-example.md)-bővítéshez.
 
  Bármilyen egyéni képességre van szükség, van egy egyszerű és egyértelmű felület, amellyel egy egyéni képességet csatlakoztathat a többi bővítési folyamathoz. A [készségkészlet](cognitive-search-defining-skillset.md) való felvétel egyetlen követelménye az, hogy képes legyen a bemenetek fogadására és kimenetek kibocsátására olyan módokon, amelyek a készségkészlet belül a teljes használatra készek. Ennek a cikknek a célja a dúsítási folyamat által igényelt bemeneti és kimeneti formátum.
 

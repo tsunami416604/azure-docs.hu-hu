@@ -1,25 +1,25 @@
 ---
-title: Nyelvi és szöveges adatfeldolgozási elemzők – Azure Search
+title: Nyelvi és szövegszerkesztés-elemzők
+titleSuffix: Azure Cognitive Search
 description: Az alapértelmezett standard Lucene egyéni, előre definiált vagy nyelvspecifikus alternatívákkal való helyettesítéséhez rendeljen elemzőket a kereshető szöveges mezőkhöz egy indexben.
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
-ms.author: heidist
-manager: nitinme
 author: HeidiSteen
-ms.openlocfilehash: 387248b2dac7c10ec0e96454f26964ca7f15c56e
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+manager: nitinme
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ee2790cbf0f9e147222c5cf3ea4448362d9f87
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649991"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791214"
 ---
-# <a name="analyzers-for-text-processing-in-azure-search"></a>A szöveg feldolgozásának elemzői Azure Search
+# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
 Az *elemző* a [teljes szöveges keresőmotor](search-lucene-query-architecture.md) összetevője, amely a lekérdezési karakterláncokban és az indexelt dokumentumokban lévő szövegek feldolgozásához felelős. A különböző elemzők a forgatókönyvtől függően különböző módokon kezelhetik a szöveget. A nyelvi elemzők a nyelvi szabályok segítségével dolgozzák fel a minőségi keresési minőséget, míg más elemzők több alapvető feladatot hajtanak végre, például a karakterek kis-és nagybetűkre való konvertálásakor. 
 
-A nyelvi elemzők a leggyakrabban használt nyelv, és a Azure Search index minden kereshető mezőjéhez társítva van egy alapértelmezett nyelvi elemző. A szöveg elemzése során a következő nyelvi átalakítások jellemzőek:
+A nyelvi elemzők a leggyakrabban használatos, és az Azure Cognitive Search indexben található minden kereshető mezőhöz alapértelmezett nyelvi elemző van rendelve. A szöveg elemzése során a következő nyelvi átalakítások jellemzőek:
 
 + A nem lényeges szavakat (indexelendő) és a központozást a rendszer eltávolítja.
 + A kifejezések és az elválasztott szavak összetevőinek bontása.
@@ -30,36 +30,36 @@ A nyelvi elemzők olyan egyszerű vagy legfelső szintű űrlapokra alakítják 
 
 ## <a name="default-analyzer"></a>Alapértelmezett elemző  
 
-Azure Search az [Apache Lucene standard Analyzert (standard Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) használja alapértelmezettként, amely a szövegeket a ["Unicode Text szegmentálás"](https://unicode.org/reports/tr29/) szabályait követő elemekre bontja. Emellett a standard Analyzer az összes karaktert a kisbetűs űrlapra konvertálja. Az indexelt dokumentumok és a keresési kifejezések az indexelés és a lekérdezés feldolgozása során is meghaladják az elemzést.  
+Az Azure Cognitive Search az [Apache Lucene standard Analyzert (standard Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) használja alapértelmezettként, amely a ["Unicode Text szegmentálás"](https://unicode.org/reports/tr29/) szabályait követő elemekre bontja a szöveget. Emellett a standard Analyzer az összes karaktert a kisbetűs űrlapra konvertálja. Az indexelt dokumentumok és a keresési kifejezések az indexelés és a lekérdezés feldolgozása során is meghaladják az elemzést.  
 
 Minden kereshető mező esetében automatikusan használatos. Az alapértelmezett mező felülbírálható a mezők alapján. Az alternatív elemzők lehetnek [nyelvi analizátorok](index-add-language-analyzers.md), [Egyéni analizátorok](index-add-custom-analyzers.md)vagy egy előre definiált elemzők az [elérhető elemzők listájából](index-add-custom-analyzers.md#AnalyzerTable).
 
 
 ## <a name="types-of-analyzers"></a>Elemzők típusai
 
-A következő lista ismerteti, hogy mely elemzők érhetők el Azure Searchban.
+Az alábbi lista ismerteti, hogy mely elemzők érhetők el az Azure Cognitive Searchban.
 
-| Category | Leírás |
+| Kategória | Leírás |
 |----------|-------------|
 | [Standard Lucene analizátor](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs szükség specifikációra vagy konfigurációra. Ez az általános célú elemző a legtöbb nyelv és forgatókönyv esetében jól teljesít.|
-| Előre definiált elemzők | A szolgáltatásként való használatra szánt késztermékként kínált termék. <br/>Két típus létezik: speciális és nyelvi. Mi teszi őket "előre definiált" értékre, ha név szerint hivatkozik rájuk, konfiguráció vagy testreszabás nélkül. <br/><br/>A [speciális (nyelv – agnosztikus) elemzők](index-add-custom-analyzers.md#AnalyzerTable) akkor használatosak, ha a szöveges bemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. A nem nyelvi előre definiált elemzők közé tartozik a **Asciifolding**, a **kulcsszó**, a **minta**, az **egyszerű**, a **Leállítás**és a **szóközök**.<br/><br/>[Nyelvi elemzőket](index-add-language-analyzers.md) akkor kell használni, ha az egyes nyelvekhez széles körű nyelvi támogatásra van szükség. A Azure Search támogatja a 35 Lucene Language Analyzers és a 50 Microsoft Natural Language Processing-elemzőt. |
+| Előre definiált elemzők | A szolgáltatásként való használatra szánt késztermékként kínált termék. <br/>Két típus létezik: speciális és nyelvi. Mi teszi őket "előre definiált" értékre, ha név szerint hivatkozik rájuk, konfiguráció vagy testreszabás nélkül. <br/><br/>A [speciális (nyelv – agnosztikus) elemzők](index-add-custom-analyzers.md#AnalyzerTable) akkor használatosak, ha a szöveges bemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. A nem nyelvi előre definiált elemzők közé tartozik a **Asciifolding**, a **kulcsszó**, a **minta**, az **egyszerű**, a **Leállítás**és a **szóközök**.<br/><br/>[Nyelvi elemzőket](index-add-language-analyzers.md) akkor kell használni, ha az egyes nyelvekhez széles körű nyelvi támogatásra van szükség. Az Azure Cognitive Search támogatja a 35 Lucene Language Analyzers és a 50 Microsoft Natural Language Processing-elemzőt. |
 |[Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | A meglévő elemek kombinációjának felhasználó által definiált konfigurációját jelöli, amely egy tokenizer (kötelező) és opcionális szűrőket (char vagy token) tartalmaz.|
 
-Néhány előre definiált elemző, mint például a **minta** vagy a **Leállítás**, a konfigurációs beállítások korlátozott készletét támogatja. Ezen beállítások megadásához hatékonyan hozzon létre egy egyéni elemzőt, amely az előre definiált analizátorból és az [előre definiált Analyzer](index-add-custom-analyzers.md#AnalyzerTable)-referenciában dokumentált alternatív beállításokból áll. Ahogy az egyéni konfigurációk esetében is, adja meg az új konfigurációt egy névvel, például *myPatternAnalyzer* , hogy megkülönböztesse azt a Lucene Pattern analyzerből.
+Néhány előre definiált elemző, mint például a **minta** vagy a **Leállítás**, a konfigurációs beállítások korlátozott készletét támogatja. Ezen beállítások megadásához hatékonyan hozzon létre egy egyéni elemzőt, amely az előre definiált analizátorból és az [előre definiált Analyzer-referenciában](index-add-custom-analyzers.md#AnalyzerTable)dokumentált alternatív beállításokból áll. Ahogy az egyéni konfigurációk esetében is, adja meg az új konfigurációt egy névvel, például *myPatternAnalyzer* , hogy megkülönböztesse azt a Lucene Pattern analyzerből.
 
 ## <a name="how-to-specify-analyzers"></a>Elemzők meghatározása
 
 1. (csak egyéni elemzők esetén) Hozzon létre egy nevesített **analizátor** szakaszt az index definíciójában. További információ: [index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) és [Egyéni elemzők hozzáadása](index-add-custom-analyzers.md).
 
-2. Az index [](https://docs.microsoft.com/rest/api/searchservice/create-index) egyik mezőjében állítsa be a mező **Analyzer** tulajdonságát egy cél-elemző nevére (például `"analyzer" = "keyword"`:). Az érvényes értékek közé tartozik az előre definiált analizátor, a Language Analyzer vagy az egyéni elemző neve is az index sémában. Tervezze meg az analizátor hozzárendelését az index definíciós fázisában, mielőtt létrehozza az indexet a szolgáltatásban.
+2. Az index egyik [mezőjében](https://docs.microsoft.com/rest/api/searchservice/create-index) állítsa be a mező **Analyzer** tulajdonságát egy cél-elemző nevére (például `"analyzer" = "keyword"`. Az érvényes értékek közé tartozik az előre definiált analizátor, a Language Analyzer vagy az egyéni elemző neve is az index sémában. Tervezze meg az analizátor hozzárendelését az index definíciós fázisában, mielőtt létrehozza az indexet a szolgáltatásban.
 
-3. A **indexAnalyzer** és a **searchAnalyzer** mező paramétereinek használatával különböző elemzőket is beállíthat az indexeléshez és lekérdezésekhez. Az adatok előkészítéséhez és lekéréséhez különböző elemzőket kellene használni, ha az egyik tevékenységhez szükséges egy adott átalakítás, amelyet a másik nem igényel.
+3. A **indexAnalyzer** és a **searchAnalyzer** mező paramétereinek használatával **különböző elemzőket** is beállíthat az indexeléshez és lekérdezésekhez. Az adatok előkészítéséhez és lekéréséhez különböző elemzőket kellene használni, ha az egyik tevékenységhez szükséges egy adott átalakítás, amelyet a másik nem igényel.
 
 Az **analizátor** vagy a **indexAnalyzer** egy már fizikailag létrehozott mezőhöz való hozzárendelésének engedélyezése nem engedélyezett. Ha a fentiek bármelyike nem egyértelmű, tekintse át a következő táblázatot annak részletezéséhez, hogy mely műveletek szükségesek a helyreállításhoz, és miért.
  
- | Forgatókönyv | Hatás | Lépések |
+ | Alkalmazási helyzet | Hatás | Lépések |
  |----------|--------|-------|
- | Új mező hozzáadása | minimális | Ha a mező még nem létezik a sémában, nem végezhető el a mező módosítása, mert a mező még nem rendelkezik fizikai jelenléttel az indexben. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával új mezőket adhat hozzá egy meglévő indexhez, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez.|
+ | Új mező hozzáadása | Minimális | Ha a mező még nem létezik a sémában, nem végezhető el a mező módosítása, mert a mező még nem rendelkezik fizikai jelenléttel az indexben. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával új mezőket adhat hozzá egy meglévő indexhez, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez.|
  | **Elemző** vagy **indexAnalyzer** hozzáadása egy meglévő indexelt mezőhöz. | [újraépítése](search-howto-reindex.md) | Az adott mező fordított indexét újra létre kell hozni az alapoktól, és a mezők tartalmát újra kell indexelni. <br/> <br/>Az aktív fejlesztés alatt álló indexek esetében [törölje](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [hozza létre](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexet az új mező definíciójának kiválasztásához. <br/> <br/>Az éles környezetben lévő indexek esetében egy új mező létrehozásával elhalaszthatja az újraépítést, és megkezdheti a módosítást, és a régi helyett használhatja azt. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával vegye fel az új mezőt és a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez. Később, a tervezett indexek karbantartásának részeként törölheti az indexet az elavult mezők eltávolításához. |
 
 ## <a name="when-to-add-analyzers"></a>Mikor lehet elemzőket felvenni
@@ -70,7 +70,7 @@ Ahogy az index definíciója megszilárdul, új elemzési szerkezeteket lehet ho
 
 *"Az index frissítése nem engedélyezett, mert az állásidőt okoz. Ahhoz, hogy új elemzőket, tokenizers, jogkivonat-szűrőket vagy karakterstílusokat adjon hozzá egy meglévő indexhez, állítsa a "allowIndexDowntime" lekérdezési paramétert "true" értékre az index frissítési kérelmében. Vegye figyelembe, hogy ez a művelet legalább néhány másodpercig offline állapotba helyezi az indexet, így az indexelés és a lekérdezési kérelmek sikertelenek lesznek. Az index teljesítményének és írásának rendelkezésre állása az index frissítése után több percig is eltarthat, vagy a nagyon nagy indexek esetében már nem. "*
 
-Ugyanez igaz, ha az analizátort egy mezőhöz rendeli. Az analizátor a mező definíciójának szerves részét képezi, így csak a mező létrehozásakor adható hozzá. Ha a meglévő mezőkhöz is hozzá kívánja adni a elemzőket, el kell [dobnia és újra](search-howto-reindex.md) kell építenie az indexet, vagy hozzá kell adnia egy új mezőt a kívánt elemzőhöz.
+Ugyanez igaz, ha az analizátort egy mezőhöz rendeli. Az analizátor a mező definíciójának szerves részét képezi, így csak a mező létrehozásakor adható hozzá. Ha a meglévő mezőkhöz is hozzá kívánja adni a elemzőket, el kell [dobnia és újra kell építenie](search-howto-reindex.md) az indexet, vagy hozzá kell adnia egy új mezőt a kívánt elemzőhöz.
 
 Ahogy azt említettük, kivételt jelent a **searchAnalyzer** -változat. Az elemzők (**Analyzer**, **indexAnalyzer**, **searchAnalyzer**) megadásának három módja közül csak a **searchAnalyzer** attribútum módosítható egy meglévő mezőben.
 
@@ -80,7 +80,7 @@ Ez a szakasz az elemzők használatáról nyújt útmutatást.
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Egyetlen elemző az írható-olvasható, hacsak nem rendelkezik konkrét követelményekkel
 
-Azure Search lehetővé teszi különböző elemzők megadását az indexeléshez és a kereséshez további **indexAnalyzer** és **searchAnalyzer** mező-paraméterek használatával. Ha nincs megadva, az Analyzer tulajdonsággal beállított analizátor az indexeléshez és a kereséshez is használatos. Ha `analyzer` nincs megadva, a rendszer az alapértelmezett standard Lucene Analyzer-t használja.
+Az Azure Cognitive Search lehetővé teszi különböző elemzők megadását az indexeléshez és a kereséshez további **indexAnalyzer** és **searchAnalyzer** mezők paramétereinek használatával. Ha nincs megadva, az **Analyzer tulajdonsággal** beállított analizátor az indexeléshez és a kereséshez is használatos. Ha `analyzer` nincs meghatározva, a rendszer az alapértelmezett standard Lucene Analyzert használja.
 
 Az általános szabály az, hogy ugyanazt az elemzőt használja mind az indexeléshez, mind a lekérdezéshez, kivéve, ha a konkrét követelmények másképp nem rendelkeznek. Ügyeljen arra, hogy alaposan tesztelje. Ha a szöveg feldolgozása a keresés és az indexelés során különbözik, akkor a lekérdezési feltételek és az indexelt kifejezések közötti eltérés kockázata nem egyezik meg, ha a keresési és az indexelési elemző konfigurációja nincs igazítva.
 
@@ -183,7 +183,7 @@ A következő példa:
 
 A standard Analyzer az alapértelmezett. Tegyük fel, hogy az alapértelmezett értéket egy másik előre definiált elemzővel szeretné lecserélni, például a minta-elemzőt. Ha nem állít be egyéni beállításokat, csak név alapján kell megadnia a mező definíciójában.
 
-A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapján. Nincs globális felülbírálás. Ebben a példában `text1` a minta `text2`analizátort használja, amely nem ad meg elemzőt, az alapértelmezett értéket használja.
+A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapján. Nincs globális felülbírálás. Ebben a példában a `text1` a minta analizátort használja, és `text2`, amely nem ad meg elemzőt, az alapértelmezett értéket használja.
 
 ~~~~
   {
@@ -286,7 +286,7 @@ Bármely, konfiguráció nélkül használt analizátor meg van adva egy mező d
 
 Ez a példa a Microsoft angol és francia elemzőit rendeli hozzá a Description (Leírás) mezőkhöz. Ez egy olyan kódrészlet, amely a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta Hotels.cs fájljában a Hotel osztály használatával jön létre.
 
-Hívja [](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)meg az analizátort, adja meg a Azure Search által támogatott [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) -típust.
+Hívja meg az [analizátort](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), adja meg az Azure Cognitive Search által támogatott [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) -típust.
 
 ```csharp
     public partial class Hotel
@@ -334,9 +334,9 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-+ Tekintse át a [teljes szöveges keresés Azure Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
++ Tekintse át a [teljes szöveges keresés az Azure Cognitive Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
 
 + További lekérdezési szintaxist a [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) example szakasz vagy az [egyszerű lekérdezési szintaxis](query-simple-syntax.md) a Search Explorerben a portálon.
 
@@ -344,7 +344,7 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 
 + [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
  [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

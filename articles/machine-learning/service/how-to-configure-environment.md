@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598429"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804149"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 
@@ -305,7 +305,7 @@ Használja ezeket a beállításokat:
 | Beállítás |A következőkre vonatkozik| Value (Díj) |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
-| A Databricks futtatókörnyezete |mindig| Bármilyen nem ML futtatókörnyezet (nem ML 4. x, 5. x) |
+| A Databricks futtatókörnyezete |mindig|Nem ML futtatókörnyezet 6,0 (Scala 2,11, Spark 2.4.3) |
 | Python-verzió |mindig| 3 |
 | Feldolgozók |mindig| 2 vagy magasabb |
 | Munkavégző csomópont virtuálisgép-típusai <br>(meghatározza az egyidejű ismétlések maximális számát) |Automatizált ML<br>csak| A memóriára optimalizált virtuális gép előnyben részesített |
@@ -346,14 +346,17 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
 
 Ha a telepítés sikeres volt, az importált függvénytárnak a következőhöz hasonlóan kell kinéznie:
 
-Databricks-hez készült SDK a Databricks Machine Learning SDK-val **_nem rendelkező_** automatizált Machine learning-![Azure ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Databricks-hez készült SDK a Databricks Azure Machine Learning SDK-val **_nem rendelkező_** automatizált Machine learning-![](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Databricks-hez **készült** SDK automatikus gépi tanulási ![SDK a Databricks-on telepített automatikus gépi tanulással ](./media/how-to-configure-environment/automlonadb.jpg)
+Databricks-hez **készült** SDK az automatikus gépi tanulás ![SDK-val a Databricks-on telepített automatikus gépi tanulással](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Ismerkedés a felfedezéssel
 
 Próbálja ki:
 + Habár több jegyzetfüzet is elérhető, **csak ezek a [minta-jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) működnek együtt Azure Databricksokkal.**
+
++ Importálja ezeket a mintákat közvetlenül a munkaterületről. Lásd alább: ![válassza az importálás](media/how-to-configure-environment/azure-db-screenshot.png)
+![importálás panelt](media/how-to-configure-environment/azure-db-import.png)
 
 + Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a betanítási számításokat](how-to-create-your-first-pipeline.md).
 

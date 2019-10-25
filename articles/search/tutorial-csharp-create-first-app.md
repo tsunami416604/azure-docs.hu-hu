@@ -1,32 +1,33 @@
 ---
-title: C#című cikk alapján létrehozhatja első alkalmazását – Azure Search
-description: Ez az oktatóanyag részletesen ismerteti az első alkalmazás létrehozása az Azure Search biztosít. Az oktatóanyagban mindkét egy hivatkozást kínál a egy működő alkalmazást a Githubról, és a teljes folyamatot hozhat létre az előzmények nélküli új alkalmazást. További információ az Azure Search alapvető összetevői.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#oktatóanyag az első alkalmazás létrehozásához
+titleSuffix: Azure Cognitive Search
+description: Megtudhatja, hogyan hozhatja létre első keresési alkalmazását lépésről lépésre. Az oktatóanyagban egy, a GitHubon működő alkalmazásra mutató hivatkozás, valamint az alkalmazás teljesen új felépítésének teljes folyamata is elérhető. Az Azure Cognitive Search alapvető összetevőinek megismerése.
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: d569437a3e6f6f05ddb9c6fa85f62c77ac51f72b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443817"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794136"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-search"></a>C#oktatóanyag: Hozzon létre első alkalmazását – Azure Search
+# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#Oktatóanyag: az első alkalmazás létrehozása – Azure Cognitive Search
 
-Ismerje meg, hogyan hozhat létre egy webes felület, használja az Azure Search-index lekérdezése és a jelenlegi keresési eredmények. Ebben az oktatóanyagban egy meglévő, üzemeltetett index kezdődik, úgy, hogy a keresési lapot készítésére összpontosíthat. Az index tartalmazza a fiktív Szálloda adatokat. Ha már rendelkezik egy egyszerű lap, fejlesztheti az ezt követő leckék lapozási, a metszettel és a egy gépelés közbeni élmény.
+Megtudhatja, hogyan hozhat létre webes felületet az indexek keresési eredményeinek lekérdezéséhez és megjelenítéséhez az Azure Cognitive Search használatával. Ez az oktatóanyag egy meglévő, üzemeltetett indextel kezdődik, így a keresési oldal kiépítésére koncentrálhat. Az index fiktív szállodai adathalmazt tartalmaz. Ha már rendelkezik alapszintű oldallal, a következő leckében javíthatja a lapozást, az aspektusokat és a fajta élményt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * A fejlesztési környezet beállítása
-> * Modell adatstruktúrák
+> * Fejlesztési környezet beállítása
+> * Adatstruktúrák modellezése
 > * Weblap létrehozása
-> * Metódusok meghatározásához
+> * Metódusok definiálása
 > * Az alkalmazás tesztelése
 
-Azt is megtudhatja, hogyan könnyen érthető megjegyzésblokkok írására van egy keresési hívás. A legfontosabb utasításokat a kódban elkészít vannak ágyazva az alábbiakban néhány sort.
+Azt is megtudhatja, hogy milyen egyszerű keresési hívást végez. A kifejleszteni kívánt kódban szereplő kulcsfontosságú utasítások a következő néhány sorban vannak beágyazva.
 
 ```cs
 var parameters = new SearchParameters
@@ -38,49 +39,49 @@ var parameters = new SearchParameters
 DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<Hotel>("search text", parameters);
 ```
 
-Ez egy hívás elindítja a keresést, az Azure-beli adat, és az eredményeket adja vissza.
+Ez az egy hívás az Azure-adatok keresését kezdeményezi, és visszaadja az eredményeket.
 
-![A "készlet" keresése](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+![A "pool" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-[A Visual Studio telepítése](https://visualstudio.microsoft.com/) az IDE adatokként.
+[Telepítse a Visual studiót](https://visualstudio.microsoft.com/) ide-ként való használatra.
 
-### <a name="install-and-run-the-project-from-github"></a>Telepítse és futtassa a projektet a Githubról
+### <a name="install-and-run-the-project-from-github"></a>A projekt telepítése és futtatása a GitHubról
 
-1. Keresse meg a mintát a Githubon: [Első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. Válassza ki **Klónozás vagy letöltés** , és adja meg a projekt személyes helyi példányának.
-1. A Visual Studio használatával, keresse meg, és nyissa meg a megoldást, az alapszintű kereséssel oldal, és válassza ki **Indítás hibakeresés nélkül** (vagy nyomja le az F5 billentyűt).
-1. Írja be az egyes szavak (például "Wi-Fi", "view", "sáv", "ideiglenes"), és vizsgálja meg az eredményeket.
+1. Keresse meg a mintát a GitHubon: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+1. Válassza a **klón vagy a letöltés** lehetőséget, és hozza el a projekt privát helyi példányát.
+1. A Visual Studióban navigáljon a alkalmazáshoz, és nyissa meg a megoldást az alapszintű keresés oldalra, majd válassza a **Start hibakeresés nélkül** lehetőséget (vagy nyomja le az F5 billentyűt).
+1. Írjon be néhány szót (például "WiFi", "View", "Bar", "parkoló"), és vizsgálja meg az eredményeket.
 
-    ![A "Wi-Fi" keresése](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    ![A "WiFi" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
 
-Ez a projekt remélhetőleg a zökkenőmentesen futnak, és futó Azure app rendelkezik. Az alapvető összetevők kifinomultabb keresések számos szerepelnek az egy alkalmazáshoz, így érdemes halad át, és hozza létre újra, lépésről lépésre.
+Remélhetőleg ez a projekt zökkenőmentesen fog futni, és az Azure-alkalmazás fut. Ebben az alkalmazásban sok olyan alapvető összetevő található, amely kifinomultabb kereséseket tartalmaz, ezért érdemes átmenni rajta, és újra létrehozni lépésről lépésre.
 
-Ez a projekt létrehozása előzmények nélkül, és ezáltal segít a megerősítése az Azure Search összetevői a szem előtt, lépjen az alábbi lépéseket.
+Ha a projektet a semmiből szeretné létrehozni, és így segít megerősíteni az Azure Cognitive Search összetevőit az Ön szemében, folytassa a következő lépésekkel.
 
-## <a name="set-up-a-development-environment"></a>A fejlesztési környezet beállítása
+## <a name="set-up-a-development-environment"></a>Fejlesztési környezet beállítása
 
-1. A Visual Studio 2017, vagy újabb verziójú, jelölje be a **új projektgyűjtemény** majd **ASP.NET Core-webalkalmazás**. Adjon meg egy nevet, például "FirstAzureSearchApp" a projekt.
+1. A Visual Studio 2017 vagy újabb verziójában válassza az **új/projekt** , majd **ASP.net Core webalkalmazás**lehetőséget. Adjon nevet a projektnek, például "FirstAzureSearchApp".
 
-    ![A felhő-projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    ![Felhőbeli projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
 
-2. Miután rákattintott a **OK** a projekt típus után kap egy második együttesét a projekt típushoz elérhető beállításokat. Válassza ki **webalkalmazás (Model-View-Controller)** .
+2. Miután rákattintott az **OK gombra** ehhez a projekthez, a rendszer a projektre vonatkozó második beállításokat kap. Válassza a **webalkalmazás (Model-View-Controller)** lehetőséget.
 
-    ![MVC projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    ![MVC-projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
 
-3. Ezután a **eszközök** menüjében válassza **NuGet-Csomagkezelő** , majd **NuGet-csomagok kezelése megoldáshoz...** . Nincs telepíteni kell egy csomagot. Válassza ki a **Tallózás** lapfülre, majd írja be az "Azure Search" kifejezést a keresőmezőbe. Telepítés **Microsoft.Azure.Search** amikor megjelenik a listában (9.0.1, verzió vagy újabb). Kattintson végig a telepítés befejezéséhez néhány további párbeszédpanelek kell.
+3. Ezután a Tools ( **eszközök** ) menüben válassza a **NuGet csomagkezelő** elemet, majd az **NuGet-csomagok kezelése a megoldáshoz..** . lehetőséget. A telepítéshez egy csomagra van szükség. Válassza a **Tallózás** fület, majd írja be az "Azure Cognitive Search" kifejezést a keresőmezőbe. Telepítse a **Microsoft. Azure. Search** programot, ha az megjelenik a listában (9.0.1 vagy újabb verzió). A telepítés befejezéséhez kattintson néhány további párbeszédpanelre.
 
-    ![Azure-kódtárak hozzáadása NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    ![Azure-kódtárak hozzáadása a NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-### <a name="initialize-azure-search"></a>Az Azure Search inicializálása
+### <a name="initialize-azure-cognitive-search"></a>Azure-Cognitive Search inicializálása
 
-Ebben a példában a nyilvánosan elérhető Szálloda adatokat használjuk. Ezeket az adatokat az 50 képzeletbeli Szálloda neveket és leírásokat, kizárólag a bemutató-adatokat biztosítva célból létrehozott egy tetszőleges gyűjteménye. Ezek az adatok eléréséhez meg kell adjon meg egy nevet és a hozzá tartozó kulcs.
+Ebben a példában nyilvánosan elérhető szállodai adatszolgáltatásokat használunk. Ezek az adat a 50 kitalált nevek és leírások tetszőleges gyűjteménye, amely kizárólag a bemutató adatának biztosítása céljából hozható létre. Az adateléréshez meg kell adnia egy nevet és egy kulcsot.
 
-1. Nyissa meg a appsettings.json fájlt az új projekt, és cserélje le az alapértelmezett sorokat a következő nevére és kulcsára. Itt nem egy kulcsot egy példa látható API-kulcs van _pontosan_ a Szálloda adatok eléréséhez szükséges kulcs. Az appsettings.json fájlt kell kinéznie.
+1. Nyissa meg az appSettings. JSON fájlt az új projektben, és cserélje le az alapértelmezett sorokat a következő névre és kulcsra. Az itt megjelenő API-kulcs nem egy példa a kulcsra, hanem _pontosan_ a szükséges kulcsot kell elérnie. A appSettings. JSON fájlnak most így kell kinéznie.
 
     ```cs
     {
@@ -89,17 +90,17 @@ Ebben a példában a nyilvánosan elérhető Szálloda adatokat használjuk. Eze
     }
     ```
 
-2. Ez a fájl nem történik, de ez a fájl tulajdonságainak kiválasztunk, és módosítása a **Copy to Output Directory** beállítást **másolás, ha újabb**.
+2. Ezt a fájlt még nem tesszük elérhetővé, válassza ki a fájl tulajdonságait, és módosítsa a **Másolás a kimeneti könyvtárba** beállítást, **Ha újabb**értékre kíván másolni.
 
-    ![A kimenet a beállítások másolása](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    ![Az alkalmazás beállításainak másolása a kimenetre](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
 
-## <a name="model-data-structures"></a>Modell adatstruktúrák
+## <a name="model-data-structures"></a>Adatstruktúrák modellezése
 
-Modellek (C# osztályok) az ügyfél (Nézet), a kiszolgáló (vezérlő), valamint az MVC (model, megtekintése, tartományvezérlő) architektúra használatával az Azure-felhő közötti kommunikációra szolgálnak. Általában ezek a modellek, amelyek hozzáférnek az adatok struktúráját fogja tartalmazni. Továbbá meg kell kezelni a nézetvezérlője/kommunikációhoz modell.
+A modellekC# (osztályok) az ügyfél (a nézet), a kiszolgáló (a vezérlő) és az Azure-felhő közötti adatkommunikációra szolgálnak az MVC (modell, nézet, vezérlő) architektúra használatával. Ezek a modellek általában tükrözik az éppen elért adat szerkezetét. Emellett modellre van szükségünk a nézet/vezérlő kommunikáció kezeléséhez.
 
-1. Nyissa meg a **modellek** mappát a projekt használatával a Megoldáskezelőben, és egy alapértelmezett modell meg ott jelenik meg: **ErrorViewModel.cs**.
+1. Nyissa meg a projekt **models (modellek** ) mappáját megoldáskezelő használatával, és itt egy alapértelmezett modell jelenik meg: **ErrorViewModel.cs**.
 
-2. Kattintson a jobb gombbal a **modellek** mappára, és válassza **Hozzáadás** majd **új elem**. Majd a megjelenő párbeszédablakban válassza **ASP.NET Core** majd az első lehetőség **osztály**. Nevezze át a .cs fájlt hotel.cs fájlban, és kattintson a **Hozzáadás**. Cserélje le a hotel.cs fájlban a tartalmát az alábbira. Figyelje meg a **cím** és **szoba** tagokat az osztály, ezek a mezők találhatók osztályok magukat, szükségünk lesz modellek számukra túl.
+2. Kattintson a jobb gombbal a **modellek** mappára, és válassza a **Hozzáadás** , majd az **új elem elemet**. Ezután a megjelenő párbeszédpanelen válassza a **ASP.net Core** , majd az első lehetőség **osztály**elemet. Nevezze át a. cs fájlt a Hotel.cs, majd kattintson a **Hozzáadás**gombra. Cserélje le a Hotel.cs összes tartalmát a következő kódra. Figyelje meg, hogy az osztály **címe** és a **helyiség** tagja, ezek a mezők maguk az osztályok, ezért ezekre a modellekre is szükség lesz.
 
     ```cs
     using System;
@@ -153,7 +154,7 @@ Modellek (C# osztályok) az ügyfél (Nézet), a kiszolgáló (vezérlő), valam
     }
     ```
 
-3. Kövesse a modell létrehozásának eljárást a **cím** osztályhoz, azzal a különbséggel a Address.cs fájl neve. Cserélje ki annak tartalmát az alábbira.
+3. Kövesse ugyanezt a **modellt a Address.cs** , kivéve a fájl nevét. Cserélje le a tartalmát az alábbira.
 
     ```cs
     using Microsoft.Azure.Search;
@@ -180,7 +181,7 @@ Modellek (C# osztályok) az ügyfél (Nézet), a kiszolgáló (vezérlő), valam
     }
     ```
 
-4. És ismét leírtakat hozhat létre a **szoba** osztályt, a fájl Room.cs elnevezési. Ismét cserélje ki annak tartalmát az alábbira.
+4. És újra, kövesse ugyanezt a folyamatot a **Room** osztály létrehozásához, nevezze el a fájlt Room.cs. Ismét cserélje le a tartalmát az alábbira.
 
     ```cs
     using Microsoft.Azure.Search;
@@ -223,7 +224,7 @@ Modellek (C# osztályok) az ügyfél (Nézet), a kiszolgáló (vezérlő), valam
     }
     ```
 
-5. Készletét **Szálloda**, **cím**, és **szoba** osztályok az Azure-t néven ismert [ _komplex típusok_ ](search-howto-complex-data-types.md), az Azure Search egyik fontos szolgáltatása. Komplexní typy is hány szint mélységig az osztályok és alosztályok, és jóval összetettebb adatstruktúrákat, mint képviseltesse engedélyezése _egyszerű típusokat_ (csak a primitív tagokat tartalmazó osztály). Valóban szükséges egy további modell, ezért nyissa meg újra létrehozni egy új modellosztály folyamatát, azonban ennek az időnek hívja az osztály SearchData.cs és az alapértelmezett kód cserélje le a következő.
+5. A **Hotel**, a **címe**és a **szoba** osztályok készlete az Azure-ban [_összetett típusokként_](search-howto-complex-data-types.md)ismert, az Azure Cognitive Search fontos funkciója. Az összetett típusok számos szinten lehetnek osztályok és alosztályok, és lehetővé teszik a sokkal összetettebb adatstruktúrák megjelenítését, mint az _egyszerű típusok_ (csak primitív tagokat tartalmazó osztály) használatát. Még egy modellre van szükségünk, ezért ugorjon az új modell osztály létrehozásának folyamatán, de ezúttal hívja meg az osztály SearchData.cs, és cserélje le az alapértelmezett kódot az alábbira.
 
     ```cs
     using Microsoft.Azure.Search.Models;
@@ -241,25 +242,25 @@ Modellek (C# osztályok) az ügyfél (Nézet), a kiszolgáló (vezérlő), valam
     }
     ```
 
-    Ez az osztály tartalmazza a felhasználói bevitel (**Keresettszöveg**), és a keresés kimeneti (**resultList**). A kimeneti típus kritikus fontosságú, **DocumentSearchResult&lt;Szálloda&gt;** , mivel ez a típus pontosan megegyezik az eredményeket a keresési, ezért ellenőriznünk kell a ezt a hivatkozást a nézet keresztül adja át.
+    Ez az osztály tartalmazza a felhasználó bemenetét (**keresettszöveg**) és a keresés kimenetét (**resultList**). A kimenet típusa kritikus, **DocumentSearchResult&lt;&gt;** , mivel ez a típus pontosan megfelel a keresés eredményeinek, és át kell adni ezt a hivatkozást a nézetnek.
 
 
 
 ## <a name="create-a-web-page"></a>Weblap létrehozása
 
-A létrehozott projekt alapértelmezés szerint létrehoz egy ügyfél száma nézeteket. A pontos nézetek használata Core .NET verzióját függ (használjuk 2.1 ebben a példában). Mindezt legyenek a **nézetek** mappát a projekt. Az Index.cshtml fájl módosítása csak kell (a a **nézetek készletkövetést** mappát).
+Az Ön által létrehozott projekt alapértelmezés szerint több ügyfél-nézetet hoz létre. A pontos nézetek az alapszintű .NET-verziótól függenek (ebben a példában a 2,1-es verziót használjuk). Ezek mind a projekt **views (nézetek** ) mappájában találhatók. Az index. cshtml fájlt csak a **views/Home** mappában kell módosítania.
 
-Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájlt az alábbi lépéseket.
+Törölje az index. cshtml tartalmát a teljes egészében, majd hozza létre újra a fájlt a következő lépésekben.
 
-1. Két kis képek az nézetben használjuk. Használhatja a saját, vagy másolja át a rendszerképek között a GitHub-projekt: azure-logo.png és search.png. E két lemezképet kell helyezni a **wwwroot/képek** mappát.
+1. A nézet két kis képet használ. Használhatja a sajátját, vagy átmásolhatja a képeket a GitHub-projektből: Azure-logo. png és Search. png. Ezt a két képet a **wwwroot/images** mappába kell helyezni.
 
-2. Az első sort Index.cshtml kell hivatkoznia a modellt fogjuk használni az ügyfél (Nézet) és a kiszolgáló (vezérlő), amely közötti kommunikációhoz a **SearchData** létrehozott modellt. Adja hozzá ezt a sort a Index.cshtml fájl.
+2. Az index első sora. a cshtml-nek hivatkoznia kell arra a modellre, amelyet a rendszer az ügyfél (a nézet) és a kiszolgáló (a vezérlő) közötti adatkommunikációra használ, amely az általunk létrehozott **SearchData** -modell. Adja hozzá ezt a sort az index. cshtml fájlhoz.
 
     ```cs
     @model FirstAzureSearchApp.Models.SearchData
     ```
 
-3. Célszerű a szabványos eljárás az, hogy a nézetben, adjon meg egy címet, a következő sorokat kell lennie:
+3. Általános gyakorlat a nézet címének megadásához, így a következő soroknak kell lenniük:
 
     ```cs
     @{
@@ -267,7 +268,7 @@ Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájl
     }
     ```
 
-4. A cím a következő adjon meg egy HTML stíluslap, amely hamarosan létrehozunk egy hivatkozást.
+4. A címet követve adjon meg egy HTML-stíluslapra mutató hivatkozást, amelyet hamarosan létre fogunk hozni.
 
     ```cs
     <head>
@@ -275,7 +276,7 @@ Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájl
     </head>
     ```
 
-5. Most, hogy a nézet húsa. A lényeg, ne felejtse el, hogy rendelkezik-e a nézet két helyzetek kezelésére. A megjelenített először azt kell kezelnie először az alkalmazást elindítja, és a felhasználó még nem lépett keresési szöveg. Másodszor azt kell kezelnie a megjelenített eredmények mellett a keresőmezőbe, a felhasználó ismételt felhasználásra. E két helyzetek kezelése érdekében ellenőrizze, hogy a nézet a megadott mintának null értékű vagy nem kell. Egy NULL értékű modell azt jelzi, hogy vagyunk az első két helyzetben (az alkalmazás a kezdeti futó). Adja hozzá a következőket az Index.cshtml fájl, és olvassa végig a megjegyzéseket.
+5. Most a nézet húsát. Fontos megjegyezni, hogy a nézetnek két szituációt kell kezelnie. Először is az alkalmazás első elindításakor kell kezelnie a megjelenítést, és a felhasználó még nem adott meg keresési szöveget. Másodszor, a keresés szövegmezőn kívül az eredmények megjelenítését is kezelni kell a felhasználó általi ismételt használat érdekében. Ennek a két helyzetnek a kezeléséhez meg kell vizsgálni, hogy a nézethez megadott modell null értékű-e. A Null modell azt jelzi, hogy a két helyzetben (az alkalmazás kezdeti futtatásakor) az első. Adja hozzá a következőt az index. cshtml fájlhoz, és olvassa végig a megjegyzéseket.
 
     ```cs
     <body>
@@ -309,7 +310,7 @@ Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájl
     </body>
     ```
 
-6. Végül a stíluslap hozzáadunk. A Visual Studióban az a **fájl** menüből válassza **új/fájl** majd **stíluslap** (a **általános** kiemelt). Cserélje le az alapértelmezett kód a következő. A stílusok fog nem lehet fogjuk ebbe a fájlba bármely részletesebben, normál HTML.
+6. Végül hozzáadjuk a stíluslapot. A Visual Studióban a **fájl** menüben válassza az **új/fájl** , majd a **stíluslapot** ( **általános** kiemelve). Cserélje le az alapértelmezett kódot az alábbira. Ezt a fájlt nem fogjuk részletesebben bevezetni, a stílusok a szabványos HTML-fájlok.
 
     ```html
     textarea.box1 {
@@ -386,15 +387,15 @@ Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájl
     }
     ```
 
-7. Mentse a stíluslap fájlt hotels.css, mint a wwwroot/css mappába, az alapértelmezett site.css fájl mellett.
+7. Mentse a stíluslapot Hotels. css néven a WWWroot/CSS mappába az alapértelmezett site. css fájl mellett.
 
-Ezzel befejezte a nézet. Igyekszünk jó folyamatban van. A modellek és nézetek végezhető el, csak a vezérlő összekapcsolása mindent marad.
+Ezzel befejezte a nézetet. Jó előrehaladást biztosítunk. A modellek és nézetek készen állnak, csak a vezérlő marad, hogy egyesítse az összeset.
 
-## <a name="define-methods"></a>Metódusok meghatározásához
+## <a name="define-methods"></a>Metódusok definiálása
 
-Módosítani szeretne az egyik vezérlő tartalmát kell (**kezdőlap vezérlő**), amely alapértelmezés szerint létrejön.
+Az alapértelmezés szerint létrehozott egyik vezérlő (**otthoni vezérlő**) tartalmára kell módosítani.
 
-1. Nyissa meg a HomeController.cs fájlban, és cserélje le a **használatával** az alábbi utasításokat.
+1. Nyissa meg a HomeController.cs fájlt, és cserélje le a **using** utasításokat a következőre.
 
     ```cs
     using System;
@@ -407,11 +408,11 @@ Módosítani szeretne az egyik vezérlő tartalmát kell (**kezdőlap vezérlő*
     using Microsoft.Azure.Search.Models;
     ```
 
-### <a name="add-index-methods"></a>Index módszerek hozzáadása
+### <a name="add-index-methods"></a>Index metódusok hozzáadása
 
-Igazolnia kell, hogy két **Index** módszerek egyet nincsenek paraméterei (az alkalmazás első megnyitásakor eset) tart, és egy modell véve paramétert (a, amikor a felhasználó megadott szöveg keresése). Ezen metódusok közül az első alapértelmezetten jön létre. 
+Két **indexelési** módszerre van szükségünk, amelyek közül az egyik nem jár paraméterekkel (az alkalmazás első megnyitásakor), és az egyik modell paraméterként (ha a felhasználó beírt egy keresési szöveget). Alapértelmezés szerint az első ilyen metódust hozza létre. 
 
-1. Adja hozzá a következő metódust az alapértelmezett után **Index()** metódust.
+1. Adja hozzá a következő metódust az alapértelmezett **index ()** metódus után.
 
     ```cs
         [HttpPost]
@@ -425,7 +426,7 @@ Igazolnia kell, hogy két **Index** módszerek egyet nincsenek paraméterei (az 
                     model.searchText = "";
                 }
 
-                // Make the Azure Search call.
+                // Make the Azure Cognitive Search call.
                 await RunQueryAsync(model);
             }
 
@@ -437,23 +438,23 @@ Igazolnia kell, hogy két **Index** módszerek egyet nincsenek paraméterei (az 
         }
     ```
 
-    Figyelje meg a **aszinkron** deklarace metody, és a **await** hívása **RunQueryAsync**. Ezek a kulcsszavak a hívások aszinkron gondoskodik, és ezért ne blokkolja a szálak a kiszolgálón.
+    Figyelje meg a metódus **aszinkron** deklarációját, és **várja** meg a **RunQueryAsync**. Ezek a kulcsszavak gondoskodnak arról, hogy a hívások aszinkron módon legyenek letiltva, ezért ne blokkolja a szálakat a kiszolgálón.
 
-    A **catch** letiltása, amely alapértelmezés szerint az USA készült hiba modellt használja.
+    A **Catch** blokk az alapértelmezés szerint az általunk létrehozott hibakódot használja.
 
-### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>Vegye figyelembe a hibakezelést és más alapértelmezett nézetek és módszerek
+### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>Figyelje meg, hogy a hibakezelés és egyéb alapértelmezett nézetek és metódusok
 
-Attól függően, melyik verzióját használja, a .NET Core alapértelmezett némileg eltérő készletét nézetek alapértelmezés szerint jönnek létre. .NET Core 2.1 az alapértelmezett nézetek Index, névjegy, névjegy, adatvédelmi és hiba esetén. A .NET Core 2.2-es, például az alapértelmezett nézetek olyan Index, az adatvédelmet és a hiba. Mindkét esetben ezeket az oldalakat alapértelmezett megtekintheti az alkalmazás futtatásakor, és vizsgálja meg, hogyan kezeli azokat a vezérlő.
+Attól függően, hogy a .NET Core melyik verzióját használja, a rendszer alapértelmezés szerint az alapértelmezett nézetek némileg eltérő készletét hozza létre. A .NET Core 2,1 esetében az alapértelmezett nézetek az index, a névjegy, a kapcsolatfelvétel, az adatvédelem és a hiba. A .NET Core 2,2 esetében például az alapértelmezett nézetek az index, az adatvédelem és a hiba. Mindkét esetben megtekintheti ezeket az alapértelmezett lapokat az alkalmazás futtatásakor, és megvizsgálhatja, hogyan történjen a kezelés a vezérlőben.
 
-A Microsoft teszteli a hiba nézet később ebben az oktatóanyagban.
+Ebben az oktatóanyagban később a hiba nézetet fogjuk tesztelni.
 
-A GitHub-mintában a fel nem használt nézetek és a kapcsolódó lépések töröltük.
+A GitHub-mintában törölte a nem használt nézeteket, valamint a hozzájuk tartozó műveleteket.
 
-### <a name="add-the-runqueryasync-method"></a>Adja hozzá a RunQueryAsync metódust
+### <a name="add-the-runqueryasync-method"></a>A RunQueryAsync metódus hozzáadása
 
-Az Azure Search-hívásra van beágyazva a **RunQueryAsync** metódust.
+Az Azure Cognitive Search hívást a **RunQueryAsync** metódusban ágyazjuk be.
 
-1. Először adja hozzá a statikus változókat, állítsa be az Azure-szolgáltatás, és a egy hívás kezdeményezése nélkül.
+1. Először adjon hozzá néhány statikus változót az Azure-szolgáltatás beállításához, valamint egy hívást a kezdeményezéshez.
 
     ```cs
         private static SearchServiceClient _serviceClient;
@@ -477,7 +478,7 @@ Az Azure Search-hívásra van beágyazva a **RunQueryAsync** metódust.
         }
     ```
 
-2. Ezután adja hozzá a **RunQueryAsync** metódus magát.
+2. Most adja hozzá a **RunQueryAsync** metódust.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model)
@@ -499,60 +500,60 @@ Az Azure Search-hívásra van beágyazva a **RunQueryAsync** metódust.
         }
     ```
 
-    Ezen módszer esetében először biztosítható az Azure konfigurációs van kezdeményezett, majd állítsa be az egyes keresési paraméterek. A mezők nevei a **kiválasztása** paraméter felel meg pontosan a tulajdonságneveket a **Szálloda** osztály. Lehetséges, hogy hagyja ki a **kiválasztása** paramétert, ebben az esetben az összes tulajdonság adja vissza. Azonban a nem beállítás **kiválasztása** paraméterek nem hatékony, ha azt csak az adatok egy részét. Foglalkozunk tulajdonságainak megadásával csak ezeket a tulajdonságokat adja vissza.
+    Ez a módszer először gondoskodik az Azure-konfiguráció kezdeményezéséről, majd beállítja a keresési paramétereket. A **Select** paraméter mezőinek nevei pontosan egyeznek a **Hotel** osztályban található tulajdonságok neveivel. A **Select** paraméter kihagyható, amely esetben a rendszer az összes tulajdonságot visszaadja. A **Select** paraméterek beállítása nem hatékony, ha csak az adatok egy részhalmazát érdeklik. A fontos tulajdonságok megadásával csak ezeket a tulajdonságokat adja vissza.
 
-    Keresés a aszinkron hívás (**model.resultList = await _indexClient.Documents.SearchAsync&lt;Szálloda&gt;(model.searchText, paraméterek);** ) Mi ez az oktatóanyag és az alkalmazás a részletes tudnivalók. A **DocumentSearchResult** osztály egy érdekes, és (ha az alkalmazás fut) érdemes itt állítson be egy töréspontot, és vizsgálja meg a tartalmát a hibakeresőt használatával **model.resultList**. Keresse meg, hogy éppen intuitív, hogy az adatokat kéri, és sokkal más.
+    A keresés aszinkron hívása (**Model. resultList = vár _indexClient. Documents. SearchAsync&lt;Hotel&gt;(Model. keresettszöveg, Parameters);** ) az oktatóanyag és az alkalmazás lényege. A **DocumentSearchResult** osztály egy érdekes, és jó ötlet (ha az alkalmazás fut) itt egy töréspontot kell beállítania, és egy hibakereső használatával meg kell vizsgálnia a **Model. resultList**tartalmát. Érdemes megkeresni, hogy a rendszer intuitív módon adja meg a kért adatmennyiséget, és nem sok más.
 
-Most a kis időt az egyértelműség.
+Most az igazság pillanatában.
 
 ### <a name="test-the-app"></a>Az alkalmazás tesztelése
 
-Most ellenőrizzük a futtatások megfelelően.
+Most ellenőrizzük, hogy az alkalmazás megfelelően fut-e.
 
-1. Válassza ki **hibakeresési/Start Without Debugging** vagy nyomja le az F5 billentyűt. Ha megfelelően dolog van kódolva, megjelenik a kezdeti Index nézet.
+1. Válassza a **hibakeresés/indítás hibakeresés nélkül** lehetőséget, vagy nyomja le az F5 billentyűt. Ha helyesen kódolta a megfelelő dolgokat, a kezdeti index nézet jelenik meg.
 
-     ![Az alkalmazás megnyitásakor](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     ![Az alkalmazás megnyitása](./media/tutorial-csharp-create-first-app/azure-search-index.png)
 
-2. Adja meg például a "beach" (vagy bármilyen szöveg, amely mind) szöveget, és kattintson a keresés ikonra. Egyes eredményeket kell kapnia.
+2. Írjon be egy szöveget (például "Beach") (vagy bármilyen szöveget, amely szóba jöhet), majd kattintson a keresés ikonra. Némi eredményt kell kapnia.
 
-     ![A "beach" keresése](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     ![A "Beach" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
 
-3. Adjon meg "öt csillag". Ne feledje, hogyan juthat nincs eredménye. Egy bonyolultabb keresési volna "öt csillag" gyökérkönyvtárral "engedélyezhető" szinonimát, és ezeket az eredményeket adja vissza. A szinonimák használata az Azure Search szolgáltatásban elérhető, ha azt fogja nem lehet benne, az első oktatóanyagok.
+3. Próbálja meg beírni a "Five Star" kifejezést. Vegye figyelembe, hogy az eredmények nem jelennek meg. A kifinomultabb keresés a "Five Star" kifejezést fogja kezelni a "luxus" szinonimája, és visszaküldi az eredményeket. A Szinonimák használata az Azure Cognitive Searchban érhető el, de az első oktatóanyagokban nem jelennek meg.
  
-4. Próbálja ki, írja be a "hot" keresési szövegként. Ugyanúgy _nem_ "hotel" szót tartalmazó bejegyzéseket vissza őket. A keresés csak teljes szavak van megkeresése, néhány eredményeket ad vissza, ha.
+4. Próbálja meg beírni a "gyors" kifejezést a keresett szövegként. _Nem_ ad vissza bejegyzéseket a (z) "Hotel" szónak. A keresés csak a teljes szavakat keresi, bár a rendszer néhány eredményt ad vissza.
 
-5. Használjon más szavakat: "-készlet", "babaváró", "megtekintése" és függetlenül. Látni fogja az Azure Search a legegyszerűbb működik, de továbbra is meggyőző szintet.
+5. Próbálja ki a következő szavakat: "pool", "Sunshine", "View", és bármit. Az Azure Cognitive Search a legegyszerűbb, de még mindig meggyőző szinten fog megjelenni.
 
-## <a name="test-edge-conditions-and-errors"></a>Vizsgálati edge-feltételek és hibák
+## <a name="test-edge-conditions-and-errors"></a>Edge-feltételek és hibák tesztelése
 
-Fontos győződjön meg arról, hogy a hibakezelés funkciókat, akkor kell, akkor is, ha működik-e tökéletesen működik-e. 
+Fontos ellenőrizni, hogy a hibakezelés funkciói működnek-e, még akkor is, ha a dolgok tökéletesen működnek. 
 
-1. Az a **Index** metódust, miután a **próbálja {** hívja, adja meg a sor **új Exception() Throw**. Ehhez a kivételhez kényszeríti a hiba, hogy a szöveg keresése.
+1. Az **index** metódusban, a **Try {** hívás után írja be a line **Throw New Exception ()** sort. Ez a kivétel hibát jelez, amikor szöveget keresünk.
 
-2. Futtassa az alkalmazást, adja meg a "sávon" szöveges keresés, és kattintson a keresés ikonra. A kivétel a hiba nézetet kell eredményeznie.
+2. Futtassa az alkalmazást, írja be a "sáv" kifejezést keresési szövegként, majd kattintson a keresés ikonra. A kivételnek a hiba nézetet kell eredményeznie.
 
-     ![Kényszerített hiba](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     ![Hiba kényszerítése](./media/tutorial-csharp-create-first-app/azure-search-error.png)
 
     > [!Important]
-    > Belső hiba számok visszaadandó hibalapok biztonsági kockázatot minősül. Ha az alkalmazás általános használatra szánt, tegye a mi vissza, ha hiba lép fel, biztonságos és ajánlott eljárások egyes vizsgálja.
+    > Biztonsági kockázatnak számít a belső hibák számának visszaküldése a hibás lapokon. Ha az alkalmazást általános használatra szánják, végezzen vizsgálatot a biztonságos és ajánlott eljárások között, amelyekkel a hiba bekövetkezésekor vissza lehet térni.
 
-3. Távolítsa el **új Exception() Throw** Ha elégedett a hibakezelési működik, ahogyan kellene.
+3. Távolítsa el az **új kivételt ()** , ha meggyőződött arról, hogy a hibakezelés működik.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Vegye figyelembe a következő takeaways a projekt:
+Vegye figyelembe az alábbi elvihetőket a projektből:
 
-* Egy Azure Search-hívás tömör, és egyszerűen, az eredmények értelmezéséhez.
-* Asynchronní volání kanálu összetettsége kisebb mennyiségű ad hozzá a tartományvezérlő, de az ajánlott eljárás, ha szeretne olyan minőségi alkalmazásokat fejleszthet.
-* Ez az alkalmazás egyszerű szöveges keresés, mi beállítása által meghatározott végrehajtása **searchParameters**. Azonban ez az osztály egy kifinomultabbak hozzáadni a keresés sok tagot tartalmazó is kell feltöltenie. Jelentősen nagyobb teljesítményű tenni az alkalmazást nem sok további munkára van szükség.
+* Az Azure Cognitive Search hívása tömör, és könnyen értelmezhető az eredmények.
+* Az aszinkron hívások kis bonyolultságot adhatnak a vezérlőhöz, de az ajánlott eljárás, ha minőségi alkalmazásokat szeretne fejleszteni.
+* Az alkalmazás egyszerű szöveges keresést hajtott végre, amelyet a **searchParameters**-ben beállított beállítások határoznak meg. Ez az osztály azonban számos olyan taggal feltölthető, amely kifinomultságot ad a kereséshez. Nem sok további munka szükséges ahhoz, hogy ez az alkalmazás lényegesen nagyobb teljesítményű legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Annak érdekében, hogy a legjobb felhasználói élmény, használja az Azure Search, hozzá kell adnunk a további funkciók, többek között a lapozófájl (segítségével lapon végtelen görgethető, vagy számokat), és az automatikus kiegészítés és javaslatok. Azt is figyelembe kell venni bonyolultabb keresési paraméterek (például szállodák egy adott időpontra, és a keresési eredmények rendezése a megadott sugarú körön belül földrajzi keresés).
+Az Azure Cognitive Search használatának legjobb felhasználói élménye érdekében további funkciókat kell hozzáadnia, például a lapozást (oldalszámok vagy végtelen görgetés használatával), valamint az automatikus kiegészítés/javaslatok lehetőséget. A kifinomultabb keresési paramétereket is érdemes megfontolni (például egy adott pont egy adott sugarán belüli földrajzi keresések és a keresési eredmények rendezése).
 
-A következő lépések oktatóanyag egy sorozat része foglalkozik. Kezdjük lapozást.
+A következő lépések számos oktatóanyagban szerepelnek. Kezdjük a lapozással.
 
 > [!div class="nextstepaction"]
-> [C#Oktatóanyag: Keresési eredmények tördelés – Azure Search](tutorial-csharp-paging.md)
+> [C#Oktatóanyag: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md)
 
 

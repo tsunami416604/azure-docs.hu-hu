@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596641"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802028"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedjen meg Azure Cost Management partnerekkel
 
@@ -30,10 +30,10 @@ A CSP-partnerek a következő Cost Management használják:
 - Engedélyezze a Azure Resource Manageri házirendet, amely hozzáférést biztosít az ügyfelek számára Cost Management-adathozzáféréshez. Az ügyfelek ezt követően megtekinthetik az előfizetésük használati költségeit az utólagos elszámolású [díjszabás](https://azure.microsoft.com/pricing/calculator/)alapján.
 
 Az alábbi példa az összes ügyfél költségeit mutatja be.
-![Example az összes ügyfél költségeinek megjelenítése ](./media/get-started-partners/customer-costs1.png)
+![példa az összes ügyfélre vonatkozó költségek megjelenítésére](./media/get-started-partners/customer-costs1.png)
 
 Az alábbi példa egy adott ügyfél költségeit mutatja be.
-egyetlen ügyfél költségeinek megjelenítése ![Example ](./media/get-started-partners/customer-costs2.png)
+![például egyetlen ügyfél költségeinek megjelenítése](./media/get-started-partners/customer-costs2.png)
 
 A Azure Cost Managementban elérhető összes funkció REST API-kkal is elérhető. Az API-k segítségével automatizálhatja a Cost Management feladatait.
 
@@ -101,7 +101,7 @@ Az ügyfél hatóköre nem tartalmazza azokat az ügyfeleket, akik a jelenlegi C
 
 Csak a **globális rendszergazdai** és **rendszergazdai ügynök** szerepkörökkel rendelkező felhasználók kezelhetik és tekinthetik meg a számlázási fiókok, a számlázási profilok és az ügyfelek költségeit közvetlenül a partner Azure-bérlője számára. A partner Center szerepköreivel kapcsolatos további információkért lásd: [felhasználói szerepkörök és engedélyek kiosztása](/partner-center/permissions-overview).
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>A Cost Management engedélyezése az ügyfél bérlője számára
+## <a name="enable-cost-management-in-the-customer-tenant"></a>A Cost Management engedélyezése az ügyfél bérlője számára
 
 A partnerek a Microsoft felhasználói szerződésbe való bevezetésük után engedélyezhetik Cost Management hozzáférését. A partnerek ezután engedélyezhetik a szabályzatot, amely lehetővé teszi, hogy az ügyfelek megtekintsék az utólagos elszámolású kiskereskedelmi díjszabás szerint kiszámított költségeiket. A költségek az ügyfél számlázási pénznemében jelennek meg a RBAC-előfizetés és az erőforráscsoportok hatókörén.
 
@@ -122,7 +122,7 @@ Az ügyfelek listájában válassza ki azt az ügyfelet, aki számára engedély
 A **Beállítások**területen kattintson a **házirendek**elemre.
 
 A kiválasztott ügyfél előfizetéséhez tartozó **Azure-használati** díjak esetében az aktuális költség-láthatósági szabályzat jelenik meg.
-![Policy lehetővé teszi, hogy az ügyfelek megtekintsék az utólagos elszámolású díjakat ](./media/get-started-partners/cost-management-billing-policies.png)
+![szabályzat, amely lehetővé teszi az ügyfelek számára az utólagos elszámolású díjak megtekintését](./media/get-started-partners/cost-management-billing-policies.png)
 
 Ha a házirend **nem**értékre van állítva, Azure Cost Management nem érhető el az ügyfélhez társított előfizetési felhasználók számára. Hacsak a partner nem engedélyezte, a Cost láthatósági szabályzata alapértelmezés szerint le van tiltva az összes előfizetés felhasználója számára.
 

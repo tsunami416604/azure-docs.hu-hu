@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitások az Azure-erőforrások a virtuális gép konfigurálása az Azure SDK használata
-description: Lépésről lépésre vonatkozó, konfigurálásával és használatával felügyelt identitások az Azure-erőforrások egy Azure virtuális gépen, az Azure SDK-val.
+title: Azure SDK használata felügyelt identitásokkal rendelkező virtuális gép konfigurálásához Azure-erőforrásokhoz
+description: Részletes útmutató az Azure-beli virtuális gépeken az Azure-erőforrások felügyelt identitásának konfigurálásához és használatához az Azure SDK használatával.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,37 +15,37 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29446f6f0a86a00cc92fe46211caddd22aaa4859
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4f5a26f240656911fb9627d273de8b69edff6a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112555"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809166"
 ---
-# <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Felügyelt identitások az Azure-erőforrások egy Azure SDK-val rendelkező virtuális gép konfigurálása
+# <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure-erőforrások felügyelt identitással rendelkező virtuális gépek konfigurálása Azure SDK használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directory (AD) automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
+Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory (AD) automatikusan felügyelt identitással. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
 
-Ebből a cikkből megismerheti, hogyan engedélyezheti és távolítsa el a felügyelt identitások az Azure-erőforrások egy Azure virtuális gép, egy Azure SDK-val.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti és távolíthatja el az Azure-beli virtuális gépekhez tartozó felügyelt identitásokat egy Azure SDK használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-## <a name="azure-sdks-with-managed-identities-for-azure-resources-support"></a>Az Azure SDK-k az Azure-erőforrások felügyelt identitások támogatásához 
+## <a name="azure-sdks-with-managed-identities-for-azure-resources-support"></a>Azure SDK-k felügyelt identitásokkal az Azure-erőforrások támogatásához 
 
-Az Azure támogatja több programozási platformon keresztül sorozatát [Azure SDK-k](https://azure.microsoft.com/downloads). Ezek a felügyelt identitásokból támogatják az Azure-erőforrásokhoz, és megfelelő mintákat a használatot bemutató frissültek. Ez a lista frissül a kiegészítő támogatás:
+Az Azure több programozási platformot is támogat az [Azure SDK](https://azure.microsoft.com/downloads)-k sorozatán keresztül. Ezek közül több frissítve lett az Azure-erőforrások felügyelt identitásának támogatásához, és megfelelő mintákat biztosít a használat bemutatásához. A lista további támogatásként való hozzáadásakor frissül:
 
-| SDK | Sample |
+| SDK | Minta |
 | --- | ------ | 
-| .NET   | [Erőforrás kezelése az Azure-erőforrások engedélyezve van a felügyelt identitásokból engedélyezve van egy virtuális gépről](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Tárhely kezelése a felügyelt identitások Azure-erőforrások számára engedélyezve van egy virtuális gépről](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
-| Node.js| [A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuális gép létrehozása](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
-| Python | [A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuális gép létrehozása](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Azure virtuális gép létrehozása egy rendszer által hozzárendelt identitással engedélyezve](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| .NET   | [Erőforrás kezelése egy olyan virtuális gépről, amelyen engedélyezve van a felügyelt identitások használata az Azure-erőforrások számára](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| Java   | [Felügyelt identitással rendelkező virtuális gépek tárterületének kezelése Azure-erőforrásokhoz](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| Node.js| [Virtuális gép létrehozása rendszerhez rendelt felügyelt identitással](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
+| Python | [Virtuális gép létrehozása rendszerhez rendelt felügyelt identitással](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
+| Ruby   | [Azure-beli virtuális gép létrehozása rendszer által hozzárendelt identitással](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a kapcsolódó cikkeket **egy Azure virtuális gép konfigurálása identitás**, megtudhatja, hogyan használhatja az Azure portal, PowerShell, CLI és erőforrás-sablonok.
+- Tekintse meg az **Azure virtuális gép identitásának konfigurálása**című kapcsolódó cikket, amelyből megtudhatja, hogyan használhatja a Azure Portal, a PowerShell, a CLI és az erőforrás-sablonokat is.

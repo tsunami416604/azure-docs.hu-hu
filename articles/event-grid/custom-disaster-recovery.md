@@ -1,39 +1,39 @@
 ---
-title: A saját vész-helyreállítási hozhat létre egyéni témaköröket az Azure Event Grid |} A Microsoft Docs
-description: Stabilitást biztosít az Azure Event Grid csatlakoztatva tartani a regionális üzemkimaradások utáni helyreállításon.
+title: A Azure Event Grid egyéni témaköreinek vész-helyreállítási következményei
+description: Ismerje meg, hogy a regionális kimaradások ne maradjanak Azure Event Grid csatlakoztatva.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/16/2019
+ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305083"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790278"
 ---
-# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozhat létre a saját vész-helyreállítási egyéni témakört az Event Gridben
-Az alkalmazás funkciói súlyos adatvesztést helyreállva vész-helyreállítási összpontosít. Ez az oktatóanyag végigvezeti a eseménykezelési architektúra beállítása helyreállítja, ha egy adott régióban az Event Grid szolgáltatás akkor kerül sérült.
+# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
+A vész-helyreállítási funkció az alkalmazások jelentős elvesztése miatti helyreállításra összpontosít. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eseményvezérelt architektúrát, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy adott régióban.
 
-Ebben az oktatóanyagban megismerheti, hogyan hozhat létre egyéni témaköröket az aktív-passzív feladatátvétel architektúra az Event Gridben lesz. Feladatátvétel által az üzenettémák és előfizetések tükrözés két régióban is, és kezeli a feladatátvétel során egy témakör akkor kerül sérült fogja elvégezni. Ebben az oktatóanyagban az architektúra minden új forgalom feladatait. Fontos, hogy ne feledje, a telepítés, események már útban nem állítható helyre, amíg a feltört régió ismét kifogástalan.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre aktív-passzív feladatátvételi architektúrát a Event Grid egyéni témaköreihez. A feladatátvételt a témakörök és az előfizetések két régióban való tükrözésével, majd a feladatátvétel kezelésével végezheti el, ha egy témakör nem megfelelő állapotba kerül. Az oktatóanyag architektúrája minden új forgalom esetében meghiúsul. Fontos tisztában lenni azzal, hogy ezzel a beállítással a már a repülés során bekövetkezett események nem lesznek helyreállítva, amíg a feltört régió Kifogástalan állapotba nem kerül.
 
 > [!NOTE]
-> Event Grid mostantól támogatja az automatikus georedundáns vészhelyreállítás (GeoDR) a kiszolgálói oldalon. Ha azt szeretné, hogy a feladatátvételi folyamat nagyobb vezérlőelem ügyféloldali vész-helyreállítási logikai továbbra is alkalmazható. További információk az automatikus GeoDR: [kiszolgálóoldali georedundáns vészhelyreállítás az Azure Event Grid](geo-disaster-recovery.md).
+> Event Grid támogatja az automatikus geo vész-helyreállítást (GeoDR) a kiszolgálóoldali oldalon. Ha nagyobb mértékű vezérlést szeretne végrehajtani a feladatátvételi folyamaton, továbbra is megvalósíthatja az ügyféloldali vész-helyreállítási logikát. Az automatikus GeoDR kapcsolatos részletekért lásd: [kiszolgálóoldali földrajzi katasztrófa-helyreállítás Azure Event Gridban](geo-disaster-recovery.md).
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A feladatátvételi konfiguráció tesztelése, szüksége lesz egy végpontot, az események fogadására. A végpont nem része a feladatátvételi infrastruktúrát, de az eseménykezelő könnyebb teszteléséhez fog működni.
+A feladatátvételi konfiguráció teszteléséhez szüksége lesz egy végpontra, hogy megkapja az eseményeket a következő helyen:. A végpont nem része a feladatátvételi infrastruktúrának, de az eseménykezelővel fog működni, hogy könnyebb legyen a tesztelés.
 
-Egyszerűbb, tesztelés, üzembe helyezése egy [előre elkészített webalkalmazás](https://github.com/Azure-Samples/azure-event-grid-viewer) , amely az esemény üzeneteket jelenít meg. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
+A tesztelés egyszerűsítése érdekében helyezzen üzembe egy [előre elkészített webalkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) , amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
 1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
-Mindenképpen jegyezze fel az URL-címet, mert később szüksége.
+Jegyezze fel ezt az URL-címet, mert később szüksége lesz rá.
 
 1. A hely látható, de még nem lett közzétéve esemény.
 
@@ -42,58 +42,58 @@ Mindenképpen jegyezze fel az URL-címet, mert később szüksége.
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 
-## <a name="create-your-primary-and-secondary-topics"></a>Hozzon létre az elsődleges és másodlagos kapcsolatos témakörök
+## <a name="create-your-primary-and-secondary-topics"></a>Az elsődleges és másodlagos témakörök létrehozása
 
-Először hozzon létre két Event Grid-témakör. Ezek a témakörök fog működni, mint az elsődleges és másodlagos. Alapértelmezés szerint az eseményeket az elsődleges témakör keresztül fog haladni. Ha az elsődleges régióban szolgáltatáskimaradás, a másodlagos vesz igénybe.
+Először hozzon létre két Event Grid témakört. Ezek a témakörök elsődlegesként és másodlagosként is működni fognak. Alapértelmezés szerint az események az elsődleges témakörön keresztül fognak folyni. Ha az elsődleges régióban van szolgáltatási leállás, a másodlagos átveszi a feladatokat.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
-1. Az Azure fő menüjéből bal felső sarkában válassza **minden szolgáltatás** > keresse meg **Event Grid** > Válasszon **Event Grid-témakörök**.
+1. Az Azure fő menüjének bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, > keressen rá **Event Grid** > válassza a **Event Grid témakörök**lehetőséget.
 
-   ![Event Grid-témakörök menü](./media/custom-disaster-recovery/select-topics-menu.png)
+   ![Event Grid témakörök menü](./media/custom-disaster-recovery/select-topics-menu.png)
 
-    Válassza ki a csillag mellett az Event Grid-témakörök a jövőben hozzá erőforrás menüben, a könnyebb elérhetőség érdekében.
+    Válassza ki a Event Grid témakörök melletti csillagot, és adja hozzá az erőforrás menühöz a későbbi könnyebb hozzáférés érdekében.
 
-1. Az Event Grid témakörök menüjében válassza **+ Hozzáadás** az elsődleges témakör létrehozásához.
+1. A Event Grid témakörök menüben válassza a **+ Hozzáadás** elemet az elsődleges témakör létrehozásához.
 
-   * A témakör egy logikai név és hozzáadása "-elsődleges" utótaggal kiegészítve, hogy könnyen nyomon követhető.
-   * Ez a témakör régióban lesz az elsődleges régióba.
+   * Adjon egy logikai nevet a témakörnek, és adja hozzá az "-Primary" utótagot, hogy könnyen nyomon követhető legyen.
+   * Ennek a témakörnek a régiója az elsődleges régió lesz.
 
-     ![Elsődleges Event Grid-témakör létrehozása párbeszédpanelen](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Event Grid témakör elsődleges létrehozási párbeszéde](./media/custom-disaster-recovery/create-primary-topic.png)
 
-1. A témakör létrehozása után keresse meg, és másolja a **téma végpontja**. az URI-t később még szüksége lesz.
+1. A témakör létrehozása után navigáljon hozzá, és másolja ki a **témakör-végpontot**. később szüksége lesz az URI-ra.
 
-    ![Event Grid-elsődleges témakör](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
+    ![Event Grid elsődleges témakör](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
 
-1. A témakör, amely szintén később szüksége lesz a tárelérési kulcs lekérésével. Kattintson a **hozzáférési kulcsok** az erőforrás menüben, és a kulcs 1 másolja.
+1. A témakörhöz tartozó hozzáférési kulcs beszerzése, amelyre később is szüksége lesz. Kattintson a **hozzáférési kulcsok** elemre az erőforrás menüben, és másolja az 1. kulcsot.
 
-    ![A témakör elsődleges kulcs lekérése](./media/custom-disaster-recovery/get-primary-access-key.png)
+    ![Elsődleges témakör kulcsának beolvasása](./media/custom-disaster-recovery/get-primary-access-key.png)
 
-1. A témakör panelen kattintson a **+ esemény-előfizetés** csatlakozás, az előfizetés az eseményt fogadó webhely végzett az oktatóanyaggal az Előfeltételek előfizetést létrehozni.
+1. A témakör panelen kattintson az **+ esemény-előfizetés** lehetőségre egy előfizetés létrehozásához, amely az előfeltételekben az oktatóanyaghoz kapcsolódó esemény-fogadó webhelyhez csatlakozik.
 
-   * Adja meg az esemény-előfizetés logikai nevét, és adja hozzá "-elsődleges" utótaggal kiegészítve, hogy könnyen nyomon követhető.
-   * Válassza ki a végpont típusa Webhook.
-   * Állítsa be a végpont az eseményt fogadó esemény URL-címre, amely kell kinéznie, például: `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Adja meg az esemény-előfizetés logikai nevét, és adja hozzá az "-Primary" utótagot, hogy könnyen nyomon követhető legyen.
+   * Válassza ki a végpont típusa webhook elemet.
+   * Állítsa a végpontot az esemény-fogadó esemény URL-címére, amelynek a következőképpen kell kinéznie: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Event Grid elsődleges esemény-előfizetés](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Elsődleges esemény-előfizetés Event Grid](./media/custom-disaster-recovery/create-primary-es.png)
 
-1. Ismételje meg a másodlagos témakör és előfizetés létrehozása ugyanezt a folyamatot. Ennek során cserélje le a "-elsődleges" utótag az "– másodlagos" könnyebb nyomon követésére. Végül ellenőrizze, hogy egy másik Azure-régióban való helyezze. Helyezheti, bárhol felhasználható, amíg javasoljuk, hogy használja a [Azure párosított régiói](../best-practices-availability-paired-regions.md). A másodlagos témakör és előfizetés és a egy másik régióban biztosítja, hogy az új események fog haladni, még akkor is, ha az elsődleges régió leáll.
+1. Ismételje meg ugyanezt a folyamatot a másodlagos témakör és előfizetés létrehozásához. Ezúttal cserélje le az "-Primary" utótagot "-másodlagos" értékre a könnyebb nyomon követés érdekében. Végül ügyeljen arra, hogy egy másik Azure-régióban helyezze el. Amíg a kívánt helyre helyezi, azt javasoljuk, hogy az [Azure párosított régiókat](../best-practices-availability-paired-regions.md)használja. A másodlagos témakör és az előfizetés egy másik régióban való elhelyezése biztosítja, hogy az új események akkor is folynak, ha az elsődleges régió leáll.
 
-Most már:
+Ekkor a következőket kell tennie:
 
-   * Egy esemény fogadó tesztelési webhelyen.
-   * Az elsődleges régió elsődleges témakörében.
-   * Az elsődleges témakör csatlakozik az eseményt fogadó webhely elsődleges esemény-előfizetés.
-   * A másodlagos régióba másodlagos témakörében.
-   * Az elsődleges témakör csatlakozik az eseményt fogadó webhely másodlagos esemény-előfizetés.
+   * Egy Event fogadó webhelye teszteléshez.
+   * Elsődleges témakör az elsődleges régióban.
+   * Egy elsődleges esemény-előfizetés, amely összekapcsolja az elsődleges témakört az Event fogadó webhellyel.
+   * Másodlagos témakör a másodlagos régióban.
+   * Egy másodlagos esemény-előfizetés, amely az elsődleges témakört csatlakoztatja az Event fogadó webhelyéhez.
 
 ## <a name="implement-client-side-failover"></a>Ügyféloldali feladatátvétel implementálása
 
-Most, hogy a témakörök és előfizetések telepítő regionálisan redundáns pár, készen áll az ügyféloldali feladatátvétel végrehajtásához. Számos különböző módon végezhető el, azonban minden feladatátvétel-megvalósítások kell egy közös funkciója: egy témakör már nem működik megfelelően, ha a többi témakör forgalmat irányítja Önt.
+Most, hogy már van egy regionálisan redundáns pár témakör és előfizetések beállítása, készen áll az ügyféloldali feladatátvétel megvalósítására. Több módon is elvégezhető, de az összes feladatátvételi implementáció közös szolgáltatással fog rendelkezni: Ha egy témakör már nem kifogástalan állapotú, akkor a forgalom átirányítja a másik témakörre.
 
-### <a name="basic-client-side-implementation"></a>Alapszintű ügyféloldali megvalósítása
+### <a name="basic-client-side-implementation"></a>Alapszintű ügyféloldali implementáció
 
-Az alábbi mintakód egy egyszerű .NET közzétevő, is minden esetben megpróbálkoznak való közzétételéhez először az elsődleges témakör. Ha nem jár sikerrel, akkor majd feladatátvétel a másodlagos témakört. Mindkét esetben akkor is ellenőrzi a health api egy GET tegye meg a témakör `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Kifogástalan állapotú témakör mindig kell visszaadnia **200 OK** egy GET készült mikor a **/api/Állapotjegyzői** végpont.
+Az alábbi mintakód egy egyszerű .NET-közzétevő, amely először az elsődleges témakörre próbálja meg közzétenni a közzétételt. Ha ez nem sikerül, a rendszer feladatátvételt hajt végre a másodlagos témakörben. Mindkét esetben a beolvasás `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`a másik témakör Health API-ját is ellenőrzi. Az egészséges témakörnek mindig a **200 OK** értékűre kell válaszolnia, ha az **/API/Health** -végponton beolvasás történik.
 
 ```csharp
 using System;
@@ -188,27 +188,27 @@ namespace EventGridFailoverPublisher
 
 ### <a name="try-it-out"></a>Próbálja ki!
 
-Most, hogy az összetevők mindegyikét helyen, a feladatátvétel végrehajtására, tesztelheti. Futtassa a fenti példa a Visual Studio Code-ot, vagy a kedvenc környezet. A következő négy értékeket cserélje le a végpontok és a kulcsokat, a témakörök:
+Most, hogy már rendelkezik az összes összetevővel, tesztelheti a feladatátvétel megvalósítását. Futtassa a fenti mintát a Visual Studio Code-ban vagy a kedvenc környezetében. Cserélje le a következő négy értéket a végpontokkal és kulcsokkal a témakörökből:
 
-   * primaryTopic – az elsődleges témakör végpontját.
-   * secondaryTopic – a másodlagos témakör végpontját.
-   * primaryTopicKey – a kulcs az elsődleges témakörhöz.
-   * secondaryTopicKey – a saját másodlagos témaköréhez tartozó kulcsot.
+   * primaryTopic – az elsődleges témakör végpontja.
+   * secondaryTopic – a másodlagos témakör végpontja.
+   * primaryTopicKey – az elsődleges témakör kulcsa.
+   * secondaryTopicKey – a másodlagos témakör kulcsa.
 
-Próbálja meg futtatni az esemény-közzétevő. A vizsgálati események föld az Event Grid-megjelenítőben például alatt kell megjelennie.
+Próbálja meg futtatni az esemény közzétevőjét. Az alábbihoz hasonló Event Grid-megjelenítőben láthatja a tesztelési eseményeket.
 
-![Event Grid elsődleges esemény-előfizetés](./media/custom-disaster-recovery/event-grid-viewer.png)
+![Elsődleges esemény-előfizetés Event Grid](./media/custom-disaster-recovery/event-grid-viewer.png)
 
-Ahhoz, hogy a feladatátvétel szolgáltatás működik, módosíthatja a témakör elsődleges kulcsot, így már nem érvényes néhány karakter. Próbálja meg újra futtatni a közzétevő. Továbbra is megtekintheti az új események jelennek meg az Event Grid-megjelenítőjében, azonban ha a konzolt, látni fogja, hogy azok már folyamatban van a másodlagos témakör keresztül.
+A feladatátvétel működésének biztosításához módosíthatja az elsődleges témakör kulcsának néhány karakterét, hogy az ne legyen érvényes. Próbálja meg újból futtatni a közzétevőt. Az új események továbbra is megjelennek a Event Grid-megjelenítőben, de ha megtekinti a konzolt, láthatja, hogy most már a másodlagos témakörben jelennek meg.
 
-### <a name="possible-extensions"></a>A lehetséges bővítmények
+### <a name="possible-extensions"></a>Lehetséges bővítmények
 
-Számos módon a minta saját igényei szerint bővítheti. Nagy mennyiségű forgatókönyvek esetén érdemes rendszeresen ellenőrizni a témakör health api egymástól függetlenül. Ezzel a módszerrel a témakör leáll, ha nincs szükségünk, hogy minden egyetlen közzététellel. Ha már tudja, hogy a témakör nem kifogástalan állapotú, is alapértelmezett a másodlagos témakörre való közzététel beállításait.
+A mintát többféleképpen is kiterjesztheti igényei alapján. Nagy mennyiségű forgatókönyv esetén érdemes lehet rendszeresen ellenőriznie a témakör Health API-ját egymástól függetlenül. Így ha egy témakör leállt, nem kell minden egyes közzétételsel ellenőriznie. Ha már tudja, hogy egy témakör állapota nem megfelelő, a rendszer alapértelmezés szerint a másodlagos témakörben teheti közzé.
 
-Hasonlóképpen érdemes feladat-visszavétel logikákat implementálhat saját különleges igényei alapján. Közzététel a legközelebbi adatközpontnak, a késés csökkentése érdekében fontos, ha az állapotfigyelő rendszeres időközönként mintavételi is api, a témakör, amely feladatátadása megtörtént. Amint azt kifogástalan újra, tudni fogja, biztonságosan közelebb adatközpontban történő feladat-visszavétel.
+Hasonlóképpen érdemes lehet megvalósítani a feladat-visszavétel logikáját az adott igények alapján. Ha a legközelebbi adatközpontba való közzététel kritikus fontosságú a késés csökkentése érdekében, rendszeres időközönként lekérdezheti egy olyan témakör Health API-ját, amely feladatátvételt végez. Ha ismét Kifogástalan állapotba kerül, biztos lehet benne, hogy a szorosabb adatközpontba történő feladat-visszavétel biztonságos.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan [kapja egy http-végponton](./receive-events.md)
-- Fedezze fel hogyan [-események átirányítása a hibrid kapcsolatok](./custom-event-to-hybrid-connection.md)
-- Ismerje meg [vész-helyreállítási Azure DNS-ben és a Traffic Manager használatával](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- Ismerje meg, hogyan [fogadhat eseményeket egy http-végponton](./receive-events.md)
+- Ismerje meg, hogyan [irányíthatja az eseményeket hibrid kapcsolatok](./custom-event-to-hybrid-connection.md)
+- Tudnivalók a vész [-helyreállításról Azure DNS és Traffic Manager használatával](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)

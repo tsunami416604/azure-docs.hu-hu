@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 1d8b3aad3104f07f8f6499c88f00328c95047816
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1a0d0426904ef5f9f49a627120ff2cc65f630861
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274220"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785942"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
@@ -24,7 +24,7 @@ Az oktatóanyag elvégzésével „Azure” kifejezéseket tartalmazó Twitter-t
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
-![Az Azure Databricks használata az Event Hubs és a Cognitive Services szolgáltatásokkal](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Az Azure Databricks használata az Event Hubs és a Cognitive Services szolgáltatásokkal")
+![Azure Databricks Event Hubs és Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Azure Databricks Event Hubs és Cognitive Services")
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
-> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) ismertető cikket.
+> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg az előfizetését **az utólagos**elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,11 +65,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **Azure Databricks** elemet.
 
-    ![Databricks az Azure Portalon](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Databricks az Azure Portalon")
+    ![Databricks Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Databricks Azure Portal")
 
 3. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
 
-    ![Azure Databricks-munkaterület létrehozása](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
+    ![Azure Databricks munkaterület létrehozása](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
     Adja meg a következő értékeket:
 
@@ -93,11 +93,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 2. A rendszer átirányítja az Azure Databricks portáljára. A portálon válassza a **Fürt** elemet.
 
-    ![Databricks az Azure-on](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Databricks az Azure-on")
+    ![Databricks az Azure-ban](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Databricks az Azure-ban")
 
 3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-    ![Databricks Spark-fürt létrehozása az Azure-on](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
+    ![Databricks Spark-fürt létrehozása az Azure-ban](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
@@ -115,7 +115,7 @@ A valós idejű tweetstream fogadásához létre kell hoznia egy alkalmazást a 
 
 1. A böngészőben nyissa meg a [Twitter fejlesztőket](https://developer.twitter.com/en/apps), és válassza **az alkalmazás létrehozása**lehetőséget. Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy egy Twitter fejlesztői fiókra van szüksége. Nyugodtan megteheti, és az alkalmazás jóváhagyását követően meg kell jelennie egy megerősítő e-mailben. Több napot is igénybe vehet egy fejlesztői fiók jóváhagyása.
 
-    ![Twitter fejlesztői fiók megerősítése]–(./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Twitter fejlesztői fiók megerősítése")
+    ![Twitter fejlesztői fiók megerősítése](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Twitter fejlesztői fiók megerősítése")
 
 2. Az **Alkalmazás létrehozása** oldalon adja meg az új alkalmazás adatait, majd válassza a **Twitter-alkalmazás létrehozása** parancsot.
 
@@ -135,9 +135,9 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
 1. A Azure Databricks munkaterületen válassza a **fürtök**lehetőséget, majd válassza ki a meglévő Spark-fürtöt. A fürt menüben válassza a **tárak** lehetőséget, majd kattintson az **új telepítése**elemre.
 
-   Kódtár ![hozzáadása párbeszédpanel]a(./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "fürt megkeresése")
+   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Könyvtár megkeresése fürt hozzáadása")
 
-   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "új kódtár telepítése")
+   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Függvénytár hozzáadása új telepítése")
 
 2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven**lehetőséget. A **koordináta**esetében kattintson a hozzáadni kívánt csomaghoz tartozó **csomagok keresése** elemre. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
 
@@ -146,13 +146,13 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
      ![Maven-koordináták megadása](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Maven-koordináták megadása")
 
-     ![Maven-koordináták](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "keresési Maven-koordináták") megadása
+     ![Maven-koordináták megadása](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Maven-koordináták keresése")
 
 3. Válassza az **Install** (Telepítés) lehetőséget.
 
 4. Győződjön meg arról, hogy a fürt menüjében mindkét függvénytár telepítve van és megfelelően van csatolva.
 
-    ![Könyvtárak]keresése(./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "a könyvtárakban")
+    ![Tárak keresése](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Tárak keresése")
 
 6. Ismételje meg ezeket a lépéseket a Twitter-csomag (`twitter4j-core:4.0.7`) esetében is.
 
@@ -166,11 +166,11 @@ Ebben az oktatóanyagban az [Azure Cognitive Services Text Analytics API-kat](..
 
 3. Az Azure Marketplace területen válassza a **Mesterséges intelligencia és Cognitive Services** > **Text Analytics API** lehetőséget.
 
-    ![Cognitive Services-fiók létrehozása](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Cognitive Services-fiók létrehozása")
+    ![Kognitív szolgáltatások fiók létrehozása](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Kognitív szolgáltatások fiók létrehozása")
 
 4. A **Létrehozás** párbeszédpanelen adja meg az alábbi értékeket:
 
-    ![Cognitive Services-fiók létrehozása](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Cognitive Services-fiók létrehozása")
+    ![Kognitív szolgáltatások fiók létrehozása](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Kognitív szolgáltatások fiók létrehozása")
 
    - Adja meg a Cognitive Services-fiók nevét.
    - Adja meg az Azure-előfizetés nevét, amelyben a fiókot létrehozta.
@@ -201,11 +201,11 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 
 1. A bal oldali panelen válassza a **Munkaterület** elemet. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
 
-    ![Notebook létrehozása a Databricksben](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Notebook létrehozása a Databricksben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 2. A **Jegyzetfüzet létrehozása** párbeszédpanelen írja be a **SendTweetsToEventHub** nevet, a nyelvnél válassza a **Scala** lehetőséget, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-    ![Notebook létrehozása a Databricksben](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Notebook létrehozása a Databricksben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
     Kattintson a **Létrehozás** gombra.
 
@@ -216,7 +216,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőket a korábban létrehozott Event Hubs névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 > [!NOTE]
-> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **Adatforrást** `test` értékre a @no__t – 2 helyett, és töltse fel a lista **testSource** az előnyben részesített teszt bemenettel.
+> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **Adatforrást** `test` helyett `twitter` és töltse ki a lista **testSource** az előnyben részesített teszt bemenettel.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -622,7 +622,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Data
 
 ![Databricks-fürt leállítása](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítást \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Megismerte, hogyan végezheti el az alábbi műveleteket:

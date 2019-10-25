@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtajának szolgáltatás – gyakori kérdések az bejárati ajtajának |} A Microsoft Docs
-description: Ez az oldal nyújt Azure bejárati ajtajának szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
+title: Azure bejárati szolgáltatás – gyakran ismételt kérdések a bejárati ajtóhoz | Microsoft Docs
+description: Ez a lap az Azure bejárati szolgáltatásával kapcsolatos gyakori kérdésekre ad választ.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,154 +11,156 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442902"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809737"
 ---
-# <a name="frequently-asked-questions-for-azure-front-door-service"></a>Az Azure bejárati ajtajának Service kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-for-azure-front-door-service"></a>Gyakori kérdések az Azure-előtérben szolgáltatásról
 
-Ez a cikk gyakori kérdésekre ad választ Azure bejárati ajtajának Service szolgáltatásairól és funkcióiról. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a eszkalálásáról rendelésben) a következő csatornákon keresztül:
+Ez a cikk az Azure bejárati szolgáltatás funkcióit és funkcióit érintő gyakori kérdésekre ad választ. Ha nem látja a választ a kérdésére, felveheti velünk a kapcsolatot a következő csatornákon keresztül (növekvő sorrendben):
 
-1. Ez a cikk a megjegyzéseket.
-2. [Az Azure bejárati ajtajának szolgáltatás UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **A Microsoft-támogatás:** Hozhat létre egy új támogatási kérelmet az Azure Portalon, az a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza ki **új támogatási kérelem**.
+1. A cikk megjegyzések szakasza.
+2. [Azure bejárati ajtó szolgáltatás UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
+3. **Microsoft ügyfélszolgálata:** Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-azure-front-door-service"></a>Mi az az Azure Front Door Service?
 
-Azure bejárati ajtajának Service szolgáltatás egy Tartalomkézbesítési hálózat (ADN) szolgáltatás, az alkalmazások különböző 7. rétegbeli terheléselosztási funkciókat kínál. Dinamikuswebhely-gyorsítás (DSA) együtt globális terheléselosztást a közel valós idejű feladatátvételt biztosít. Egy magas rendelkezésre állású és méretezhető szolgáltatás, amely az Azure teljes körűen felügyelt.
+Az Azure bejárati ajtó szolgáltatás egy alkalmazásszolgáltatási hálózat (ADN) szolgáltatás, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazásai számára. A dinamikus hely gyorsítását (DSA) és a globális terheléselosztást is biztosítja a közel valós idejű feladatátvételsel együtt. Ez egy kiválóan elérhető és méretezhető szolgáltatás, amelyet az Azure teljes körűen kezel.
 
-### <a name="what-features-does-azure-front-door-service-support"></a>Milyen funkciókat támogatja az Azure bejárati ajtajának Service?
+### <a name="what-features-does-azure-front-door-service-support"></a>Milyen funkciókkal támogatja az Azure bejárati ajtó szolgáltatást?
 
-Azure bejárati ajtajának szolgáltatás támogatja a dinamikuswebhely-gyorsítás (DSA), SSL-kiürítés és teljes körű SSL, a webalkalmazási tűzfal, cookie-alapú munkamenet-affinitást, URL-cím-alapú útválasztás, ingyenes tanúsítványok és a több tartomány felügyeleti és mások. Támogatott szolgáltatások teljes listáját lásd: [áttekintése az Azure bejárati ajtajának Service](front-door-overview.md).
+Az Azure előtér-szolgáltatás támogatja a dinamikus hely gyorsítását (DSA), az SSL-kiszervezést és a végpontok közötti SSL-t, a webalkalmazási tűzfalat, a cookie-alapú munkamenet-affinitást, az URL-elérésiút-alapú útválasztást, az ingyenes tanúsítványokat és több tartományi felügyeletet A támogatott szolgáltatások teljes listájáért lásd: [Az Azure bejárati szolgáltatásának áttekintése](front-door-overview.md).
 
-### <a name="what-is-the-difference-between-azure-front-door-service-and-azure-application-gateway"></a>Mi a különbség az Azure bejárati ajtajának Service és az Azure Application Gateway között?
+### <a name="what-is-the-difference-between-azure-front-door-service-and-azure-application-gateway"></a>Mi a különbség az Azure bejárati ajtó szolgáltatás és az Azure Application Gateway között?
 
-Bejárati ajtajának és az Application Gateway vannak réteg 7 (HTTP/HTTPS) terheléselosztók, amíg az elsődleges különbség az, hogy bejárati ajtajának-e egy globális szolgáltatást, mivel az Application Gateway egy regionális szolgáltatás. Bejárati ajtajának között a különböző méretezési egység/fürtök/blokk egységeket régióban is terheléselosztást, míg az Application Gateway lehetővé teszi, hogy a virtuális gépek és tárolók stb., amely a skálázási egységben lévő csoport közötti terheléselosztást.
+Míg a bejárati ajtó és a Application Gateway a 7. rétegbeli (HTTP/HTTPS) terheléselosztó, az elsődleges különbség az, hogy a bejárati ajtó globális szolgáltatás, míg a Application Gateway regionális szolgáltatás. Míg a bejárati ajtó terheléselosztást végez a különböző méretezési egységek/fürtök/Stamp egységek között a régiók között, Application Gateway lehetővé teszi a terheléselosztást a virtuális gépek/tárolók, illetve a skálázási egységen belül.
 
-### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Ha azt telepítse az Application Gateway mögött bejárati ajtajának?
+### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Mikor érdemes üzembe helyezni egy Application Gateway a bejárati ajtó mögött?
 
-Miért érdemes az egyik kell használni az Application Gateway mögött bejárati ajtajának azon kulcsfontosságú forgatókönyvek a következők:
+A legfontosabb forgatókönyvek, hogy miért érdemes Application Gateway a bejárati ajtó mögött:
 
-- Bejárati ajtajának-alapú terheléselosztási csak a globális szinten, de az egyik szeretné-e forgalom terheléselosztása is a virtuális hálózaton (VNET) belüli betölteni, akkor kell használniuk, az Application Gateway hajthat végre.
-- Mivel bejárati ajtajának nem működik a virtuális gép és tároló szintjén, így azt nem hajtható végre kapcsolat kiürítése. Azonban az Application Gateway lehetővé teszi, hogy a kapcsolat kiürítése. 
-- Az Application Gateway mögött AFD egy SSL kiszervezheti és irányíthatja a saját virtuális hálózaton (VNET) belüli csak HTTP-kérések 100 %-át érheti el.
-- Bejárati ajtajának és az Application Gateway egyaránt támogatja a munkamenet-affinitás. Bejárati ajtajának is forgalmát háttérkiszolgálóra irányítani a felhasználói munkamenet az azonos fürthöz, vagy a háttérrendszer egy adott régióban, amíg az Alkalmazásátjáró közvetlen beosztására is a forgalom ugyanarra a kiszolgálóra a fürtön belül.  
+- A bevezető ajtó csak globális szinten hajthat végre elérésiút-alapú terheléselosztást, de ha a virtuális hálózatán (VNET) belül még tovább szeretné terheléselosztási forgalmat végezni, akkor a Application Gatewayt kell használniuk.
+- Mivel a bejárati ajtó nem működik a virtuális gépek/tárolók szintjén, így nem tudja elvégezni a kapcsolatok kiürítését. Application Gateway azonban lehetővé teszi a kapcsolatok kiürítését. 
+- A AFD mögötti Application Gateway az egyik elérheti a 100%-os SSL-kiszervezést és csak a virtuális hálózaton belüli HTTP-kérelmeket (VNET).
+- A bejárati ajtó és a Application Gateway támogatja a munkamenet-affinitást is. Míg a bejárati ajtó egy adott régióban a felhasználói munkamenetből egy adott fürtre vagy háttérre irányíthatja a további forgalmat, Application Gateway a fürtön belüli ugyanazon kiszolgálóra irányíthatja a forgalmat a affinitize.  
 
-### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Telepítheti a Microsoft Azure Load Balancer mögött bejárati ajtajának?
+### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Üzembe helyezhető Azure Load Balancer a bejárati ajtó mögött?
 
-Azure bejárati ajtajának szolgáltatás kell továbbítani a forgalmat egy nyilvános virtuális IP-cím vagy egy nyilvánosan elérhető DNS-név. Üzembe helyezése az Azure Load Balancerhez bejárati ajtajának mögött, egy közös használati eset.
+Az Azure bejárati szolgáltatásának nyilvános VIP-nek vagy nyilvánosan elérhető DNS-névnek kell lennie ahhoz, hogy átirányítsa a forgalmat. A bejárati ajtó mögötti Azure Load Balancer üzembe helyezése gyakori használati eset.
 
-### <a name="what-protocols-does-azure-front-door-service-support"></a>Milyen protokollokat támogatja az Azure bejárati ajtajának Service?
+### <a name="what-protocols-does-azure-front-door-service-support"></a>Milyen protokollok támogatják az Azure bejárati ajtó szolgáltatást?
 
-Az Azure bejárati ajtajának szolgáltatás támogatja a HTTP, HTTPS és HTTP/2.
+Az Azure bejárati ajtó szolgáltatás a HTTP, a HTTPS és a HTTP/2 használatát támogatja.
 
-### <a name="how-does-azure-front-door-service-support-http2"></a>Hogyan támogatja a HTTP/2 Azure bejárati ajtajának Service?
+### <a name="how-does-azure-front-door-service-support-http2"></a>Hogyan támogatja az Azure bejárati ajtó szolgáltatás a HTTP/2-t?
 
-HTTP/2 protokoll támogatása csak Azure bejárati ajtajának szolgáltatáshoz csatlakozó ügyfelek számára érhető el. A kommunikáció a háttérkészlet háttérrendszereket HTTP/1.1 felett van. Alapértelmezés szerint engedélyezve van a HTTP/2-támogatás.
+A HTTP/2 protokoll támogatása csak az Azure bejárati ajtó szolgáltatáshoz csatlakozó ügyfelek számára érhető el. A háttérrendszer-készletben található háttérrendszer-kommunikáció HTTP/1.1-n keresztül történik. A HTTP/2 támogatás alapértelmezés szerint engedélyezve van.
 
-### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Milyen erőforrások jelenleg háttérkészlet részeként támogatottak?
+### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Milyen erőforrások támogatottak ma a háttérrendszer-készlet részeként?
 
-Háttérkészletek tárolási, webalkalmazás, Kubernetes-példányok vagy bármely más egyéni állomásnév, amely rendelkezik a nyilvános kapcsolódási állhat. Azure bejárati ajtajának szolgáltatás szükséges a háttérrendszerek vagy nyilvános IP-cím vagy egy nyilvánosan feloldható DNS-állomásnév definiált. Háttérkészletek tagjai lehetnek zónákban, régiók, vagy az Azure-on is kívül, amíg a nyilvános kapcsolódási rendelkeznek.
+A háttér-készletek a következők lehetnek: Storage, Web App, Kubernetes instances vagy bármely más, nyilvános kapcsolattal rendelkező egyedi állomásnév. Az Azure bejárati szolgáltatása megköveteli, hogy a háttérrendszer egy nyilvános IP-címen vagy egy nyilvánosan feloldható DNS-állomásnévn keresztül legyen definiálva. A háttér-készletek tagjai többek között zónák, régiók vagy akár az Azure-on kívül is lehetnek, amíg nyilvános kapcsolattal rendelkeznek.
 
-### <a name="what-regions-is-the-service-available-in"></a>Mely régiókban érhető el a szolgáltatást?
+### <a name="what-regions-is-the-service-available-in"></a>Milyen régiókban érhető el a szolgáltatás?
 
-Az Azure bejárati ajtajának Service globális szolgáltatás, és nem kötődnek konkrét Azure-régiókba. Meg kell adnia egy bejárati ajtajának létrehozásakor csak helye az erőforráscsoport helyét, amely alapvetően határozza meg a metaadatok az erőforráscsoport helyét. Bejárati ajtajának erőforrásán jön létre, globális erőforrás, és a konfigurációs van telepítve globálisan a POP (jelenléti pontok). 
+Az Azure bejárati ajtó szolgáltatás globális szolgáltatás, és nem kötődik egyetlen adott Azure-régióhoz sem. A bejárati ajtó létrehozásakor csak az erőforráscsoport helyét kell megadnia, amely alapvetően meghatározza, hogy az erőforráscsoport metaadatainak hol lesznek tárolva. Az előtérben lévő erőforrás maga globális erőforrásként jön létre, és a konfiguráció globálisan települ az összes pop-ra (a jelenléti pontra). 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door-service"></a>Mik azok a POP-helyek Azure bejárati ajtajának szolgáltatás?
+### <a name="what-are-the-pop-locations-for-azure-front-door-service"></a>Mik az Azure bejárati ajtó szolgáltatásának POP-helyei?
 
-Az Azure bejárati ajtajának Service ugyanezt a listát (jelenléti pontok) POP-helyek, a Microsoft Azure CDN rendelkezik. A teljes listát a POP könyvtárából tekintse [a Microsoft Azure CDN POP-helyek](https://docs.microsoft.com/azure/cdn/cdn-pop-locations).
+Az Azure-beli bejárati szolgáltatásban a POP (jelenléti pont) helyeinek listája Azure CDN a Microsofttól. A POPs teljes listájáért tekintse meg [Azure CDN pop-helyszíneket a Microsofttól](https://docs.microsoft.com/azure/cdn/cdn-pop-locations).
 
-### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Az Azure bejárati ajtajának Service az alkalmazásomhoz tartozó dedikált üzemelő, megosztott vagy ügyfelek között?
+### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Az Azure bejárati ajtó szolgáltatás egy dedikált üzembe helyezés az alkalmazáshoz, vagy megosztották az ügyfelek között?
 
-Az Azure bejárati ajtajának szolgáltatás egy olyan globálisan elosztott több-bérlős szolgáltatás. Tehát bejárati ajtajának infrastruktúráját közösen használja az összes ügyfeleinek. Azonban a bejárati ajtajának profilt hoz létre, a az alkalmazás számára szükséges konfigurációs határoz meg, és nem a bejárati ajtajának végrehajtott módosítások hatással más bejárati ajtajának konfigurációs.
+Az Azure bejárati ajtó szolgáltatás egy globálisan elosztott, több-bérlős szolgáltatás. Így a bejárati ajtó infrastruktúrája az összes ügyfele között meg van osztva. A bejárati ajtó profiljának létrehozásával azonban megadhatja az alkalmazáshoz szükséges konkrét konfigurációt, és a bejárati ajtón végrehajtott módosítások nem érintik a többi bejárati ajtó konfigurációját.
 
-### <a name="is-http-https-redirection-supported"></a>Is HTTP->HTTPS redirection supported?
+### <a name="is-http-https-redirection-supported"></a>Támogatott-e a HTTP-> HTTPS-átirányítás?
 
-Igen. Sőt az Azure bejárati ajtajának szolgáltatás támogatja a gazdagép, elérési út, és a lekérdezési karakterlánc átirányítás, valamint átirányítási URL-cím része. Tudjon meg többet [URL-átirányítás](front-door-url-redirect.md). 
+Igen. Valójában az Azure bejárati szolgáltatás támogatja a gazdagép-, útvonal-és lekérdezési karakterláncok átirányítását, valamint az URL-átirányítás részét. További információ az [URL-átirányításról](front-door-url-redirect.md). 
 
-### <a name="in-what-order-are-routing-rules-processed"></a>Milyen sorrendben útválasztási szabályok feldolgozása?
+### <a name="in-what-order-are-routing-rules-processed"></a>Milyen sorrendben történik az útválasztási szabályok feldolgozása?
 
-A bejárati ajtajának útvonalai nem vannak rendezve, és a egy adott útvonal alapján választja ki a legmegfelelőbb. Tudjon meg többet [hogyan bejárati ajtajának megfelelő kérelem-útválasztási szabály](front-door-route-matching.md).
+Az előtérben lévő útvonalak nincsenek megrendezve, és egy adott útvonal van kiválasztva a legjobb egyezés alapján. További információ arról [, hogyan illeszkedik a bejárati ajtó a kérelmekhez egy útválasztási szabályhoz](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hogyan do I zárolhatja a hozzáférést a háttérrendszerhez való csak Azure bejárati ajtajának?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hogyan lezárni a háttérbeli hozzáférést, hogy csak az Azure bejárati ajtót?
 
-Zárolhatja az alkalmazás csak az adott bejárati ajtajának érkező forgalmat fogad, be kell biztosítani a háttérbeli IP ACL-ek beállítása, majd korlátozza az elfogadott értékek a Azure bejárati ajtajának által küldött "X-továbbított-Host" fejléc. Ezek a lépések részletes leírást talál meg látható:
+Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtóról fogadja a forgalmat, be kell állítania az IP ACL-eket a háttérhez, majd az Azure-beli bejárati ajtó által küldött "X-Forwarded-host" fejléchez tartozó elfogadott értékek készletét. Ezeket a lépéseket az alábbiak szerint részletezjük:
 
-- Konfigurálja az IP-ACLing a a háttérrendszerek Azure bejárati ajtajának háttérbeli IP-címtér és csak az Azure infrastruktúraszolgáltatások érkező forgalom fogadására. Dolgozunk az felé integrálása [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519) , de most tekintse meg az alábbi IP-címtartományok esetében:
+- Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat az Azure bejárati ajtó háttérbeli IP-címe és az Azure infrastruktúra-szolgáltatásai között. Az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) integrálásával dolgozunk, de most az alábbi módon hivatkozhat az IP-tartományokra:
  
-    - Bejárati ajtajának **IPv4** háttérbeli IP-címtér: `147.243.0.0/16`
-    - Bejárati ajtajának **IPv6** háttérbeli IP-címtér: `2a01:111:2050::/44`
-    - Az Azure [alapszintű infrastruktúra-szolgáltatások](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtuális gazdagép IP-címekkel: `168.63.129.16` és `169.254.169.254`
+    - A bejárati ajtó **IPv4** -háttér IP-címe: `147.243.0.0/16`
+    - Bejárati ajtó **IPv6** -háttér IP-címe: `2a01:111:2050::/44`
+    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és `169.254.169.254`
 
     > [!WARNING]
-    > Bejárati ajtajának háttérbeli IP-címtér később módosíthatja, azonban, hogy gondoskodik arról, hogy előtt történik, hogy lenne integráltuk az [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519). Azt javasoljuk, hogy az előfizetett [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519) a módosításaiért vagy frissítéseiért.
+    > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
 
--   Az értékeket a bejövő fejléc szűrőt "**X továbbított gazdagép**" bejárati ajtajának által küldött. A fejléc csak engedélyezett értékek kell lennie, az összes előtér-gazdagépeken a bejárati ajtajának config meghatározottak szerint. Valójában még pontosabban, csak a gazdagép neve, amelynek meg szeretné fogadja el a forgalmat, az adott háttérrendszer terveztük.
-    - Példa – hozzunk tegyük a bejárati ajtajának config rendelkezik a következő előtérbeli gazdagépek _`contoso.azurefd.net`_ (A) _`www.contoso.com`_ (B), _ (C), és _`notifications.contoso.com`_ (D). Tegyük fel, hogy rendelkezik-e két háttérrendszerek X és Y. 
-    - Háttérrendszer X csak kell vennie A állomásnevek érkező forgalmat és a háttérrendszer i b forgalmat a, C és a d
-    - Így a háttérrendszer X csak elfogadása, tartalmaz a forgalom "**X továbbított gazdagép**" beállítása termékeken _`contoso.azurefd.net`_ vagy _`www.contoso.com`_ . Minden más a háttérbeli X kell utasítania a forgalmat.
-    - Ehhez hasonlóan a háttérrendszer i csak elfogadása, forgalom, amely rendelkezik a fejléc "**X továbbított gazdagép**" beállítása termékeken _`contoso.azurefd.net`_ , _`api.contoso.com`_ vagy  _`notifications.contoso.com`_ . Minden más a háttérrendszer i kell utasítania a forgalmat.
+-   Szűrje a bejárati ajtó által küldött "**X-Forwarded-Host**" fejléc értékeit. A fejléc csak a bejárati ajtó konfigurációjában meghatározott összes előtér-gazdagépet tartalmazhat. Valójában még pontosabban csak azok az állomásnevek szerepelnek, amelyekről el szeretné fogadni a forgalmat.
+    - Példa – tegyük fel, hogy a bejárati ajtó konfigurációja a következő előtér-gazdagépekkel rendelkezik _`contoso.azurefd.net`_ (A), a _`www.contoso.com`_ (B), a _ (C) és a _`notifications.contoso.com`_ (D). Tegyük fel, hogy van két háttér X és Y. 
+    - Az X háttérrendszer csak az A és B állomásnévből származó forgalmat veszi át. A háttér Y az A, C és D adatforgalomból is elvégezhető.
+    - Tehát az X háttérrendszer esetében csak olyan forgalmat kell fogadnia, amelynél a "**X-Forwarded-Host**" fejléc van beállítva _`contoso.azurefd.net`_ vagy _`www.contoso.com`_ . Minden más esetében a háttér-X-nek el kell utasítania a forgalmat.
+    - Hasonlóképpen, a háttérbeli Y-ben csak olyan forgalmat kell fogadnia, amelynél a "**X-Forwarded-Host**" fejléc van beállítva _`contoso.azurefd.net`_ , _`api.contoso.com`_ vagy _`notifications.contoso.com`_ . Minden más esetében a háttérbeli Y-nek el kell utasítania a forgalmat.
 
-### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>A csomópontválasztásos IP-címet módosíthatja a bejárati ajtó élettartama során?
+### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>A kiválasztó IP-cím változhat a bejárati ajtó élettartama során?
 
-Az előtérbeli csomópontválasztásos IP számára a bejárati ajtajának általában nem kell módosítani, és előfordulhat, hogy kezdettől fogva élettartama statikus marad. Vannak azonban **nincs garancia** esetében azonos. Könyvtárából nem lépnek közvetlen függőségek az IP-címen.
+A bejárati ajtóhoz tartozó előtér-alhálózatok IP-címe általában nem változik, és a bejárati ajtó élettartama esetén statikus maradhat. Azonban nincsenek ilyen **garanciák** . Kérjük, ne vegyen fel közvetlen függőségeket az IP-címekre.
 
-### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Támogatja az Azure bejárati ajtajának Service statikus vagy dedikált IP-címek?
+### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Támogatja az Azure bejárati ajtó szolgáltatás a statikus vagy dedikált IP-címeket?
 
-Nem, az Azure bejárati ajtajának szolgáltatás jelenleg nem támogatja statikus vagy dedikált előtér nem egyedi IP-címek. 
+Nem, az Azure bejárati ajtó szolgáltatás jelenleg nem támogatja a statikus vagy dedikált előtér-IP-címek használatát. 
 
-### <a name="does-azure-front-door-service-support-x-forwarded-for-headers"></a>Azure bejárati ajtajának Service támogatja az x-továbbított – a fejlécek?
+### <a name="does-azure-front-door-service-support-x-forwarded-for-headers"></a>Támogatja az Azure bejárati ajtó szolgáltatás az x-továbbítást a fejlécekhez?
 
-Igen, Azure bejárati ajtajának Service támogatja az X-továbbított – esetén, X továbbított gazdagép és az X továbbított Proto fejlécek. Ha X – továbbított-a a fejléc már jelen volt, majd a bejárati ajtajának az ügyfél a szoftvercsatorna IP hozzáfűzi azt. Más esetben hozzáadja az ügyfél a szoftvercsatorna IP-Címét a fejléc értékeként. X továbbított állomás és X továbbított protokoll esetében az érték felülbírálja.
+Igen, az Azure bejárati szolgáltatás támogatja az X által továbbított, X által továbbított-gazdagép és az X által továbbított-proto fejléceket. X-továbbítás esetén – ha a fejléc már szerepel, akkor a bejárati ajtó hozzáfűzi az ügyfél szoftvercsatorna IP-címét. Máskülönben hozzáadja a fejlécet az ügyfél szoftvercsatorna IP-címéhez az értékként. Az X által továbbított-gazdagép és az X-továbbított-proto esetében az érték felül van bírálva.
 
-Tudjon meg többet a [bejárati ajtajának támogatott HTTP-fejlécek](front-door-http-headers-protocol.md).  
+További információ az [előtérben támogatott HTTP-fejlécekről](front-door-http-headers-protocol.md).  
 
-### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-service-does-my-front-door-still-work-when-being-updated"></a>Mennyi ideig tart egy Azure bejárati ajtajának szolgáltatás üzembe helyezéséhez? Saját bejárati ajtajának továbbra is működik, ha a frissítés alatt?
+### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-service-does-my-front-door-still-work-when-being-updated"></a>Mennyi időt kell igénybe venni egy Azure bejárati ajtó üzembe helyezésére? A bejárati ajtóm továbbra is működik a frissítéskor?
 
-Egy új bejárati ajtajának létrehozása vagy egy meglévő bejárati ajtajának frissítéseit globális üzembe helyezési körülbelül 3 – 5 percig tart. Ez azt jelenti, körülbelül 3-5 perc alatt, a bejárati ajtajának konfigurációs globálisan üzembe helyezendő összes a POP között.
+Egy új bejárati ajtó létrehozása vagy egy meglévő bejárati ajtó frissítése körülbelül 3 – 5 percet vesz igénybe globális üzembe helyezés esetén. Ez azt jelenti, hogy körülbelül 3 – 5 percet vesz igénybe a bejárati ajtó konfigurálása globálisan.
 
-Megjegyzés – egyéni SSL-tanúsítvány frissítések nagyjából 30 percet igénybe globálisan üzembe helyezendő.
+Megjegyzés: az egyéni SSL-tanúsítványok frissítései nagyjából 30 percet vesznek igénybe a globális telepítéshez.
 
 ## <a name="configuration"></a>Konfiguráció
 
-### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Képes Azure bejárati ajtajának terheléselosztás és útvonal forgalom egy virtuális hálózaton belül?
+### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Képes az Azure-beli bejárati terheléselosztásra vagy a virtuális hálózaton belüli forgalom irányítására?
 
-Azure bejárati ajtajának (AFD) egy nyilvános IP-cím vagy a forgalom irányítására nyilvánosan feloldható DNS-név szükséges. Tehát van a válasz nem AFD közvetlenül nem hajthat végre útválasztást egy virtuális hálózaton belül, de ebben a forgatókönyvben egy Application Gateway vagy az Azure Load Balancer használatával a kettő között fogja megoldani.
+Az Azure bejárati ajtajának (AFD) egy nyilvános IP-címet vagy nyilvánosan feloldható DNS-nevet igényel a forgalom irányításához. Így a válasz nem AFD közvetlenül egy virtuális hálózaton belül, de a két Application Gateway vagy Azure Load Balancer használatával megoldja ezt a forgatókönyvet.
 
-### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door-service"></a>Mik azok a különféle időtúllépések és Azure bejárati ajtajának Service korlátai?
+### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door-service"></a>Milyen időtúllépések és korlátok vonatkoznak az Azure bejárati ajtó szolgáltatására?
 
-További tudnivalók a dokumentált [időtúllépések és Azure bejárati ajtajának szolgáltatási korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-front-door-service-limits).
+Ismerje meg az [Azure bejárati ajtó szolgáltatásának dokumentált időtúllépéseit és korlátait](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-front-door-service-limits).
 
 ## <a name="performance"></a>Teljesítmény
 
-### <a name="how-does-azure-front-door-service-support-high-availability-and-scalability"></a>Hogyan támogatja a Azure bejárati ajtajának szolgáltatás a magas rendelkezésre állás és méretezhetőség?
+### <a name="how-does-azure-front-door-service-support-high-availability-and-scalability"></a>Hogyan támogatja az Azure bejárati ajtó szolgáltatás a magas rendelkezésre állást és a méretezhetőséget?
 
-Azure bejárati ajtajának szolgáltatás az a hatalmas mennyiségű kapacitást gondoskodjon arról, hogy az alkalmazás méretezhetőségi igényei szerint, globálisan elosztott több-bérlős platform. A Microsoft globális hálózat peremén az biztosítja, bejárati ajtajának globális, amely lehetővé teszi, hogy átadja a feladatokat a teljes alkalmazás vagy akár az egyes mikroszolgáltatások régiókban vagy különböző felhők közötti terheléselosztás képességet nyújt.
+Az Azure bejárati ajtó szolgáltatás egy globálisan elosztott, több-bérlős platform, amely nagy mennyiségű kapacitással gondoskodik az alkalmazás méretezhetőségi igényeiről. A Microsoft globális hálózatának szélétől kezdve a bejárati ajtó globális terheléselosztási képességet biztosít, amely lehetővé teszi, hogy a teljes alkalmazást, vagy akár az egyes régiókban vagy más felhőkben is egyedi szolgáltatást végezzen.
 
-## <a name="ssl-configuration"></a>SSL-konfigurációja
+## <a name="ssl-configuration"></a>SSL-konfiguráció
 
-### <a name="what-tls-versions-are-supported-by-azure-front-door-service"></a>Milyen TLS-verziójú Azure bejárati ajtajának Service által támogatott?
+### <a name="what-tls-versions-are-supported-by-azure-front-door-service"></a>Milyen TLS-verziókat támogat az Azure bejárati ajtó szolgáltatása?
 
-Bejárati ajtajának támogatja a TLS 1.0, 1.1 és 1.2-es. A TLS 1.3 még nem támogatott.
+A 2019 szeptember után létrehozott összes bejárati profil a TLS 1,2-et használja alapértelmezett minimumként.
 
-### <a name="what-certificates-are-supported-on-azure-front-door-service"></a>Milyen tanúsítványok az Azure bejárati ajtajának Service támogatottak?
+A bejárati ajtó támogatja a 1,0, 1,1 és 1,2 TLS-verziókat. A TLS 1,3 még nem támogatott.
 
-Ahhoz, hogy biztonságosan tartalomtovábbításhoz bejárati ajtajának egyéni tartomány HTTPS-protokollt, kiválaszthatja az Azure bejárati ajtajának szolgáltatás által kezelt tanúsítványt használjon, vagy a saját tanúsítványt használjon.
-Kezdettől fogva beállítás rendelkezések egy szabványos SSL-tanúsítvány Digicert keresztül felügyelt, és tárolja az előtérben ajtó a Key Vault. Ha úgy dönt, hogy a saját tanúsítványt használ, akkor segítségével készítheti elő egy támogatott Hitelesítésszolgáltatótól származó tanúsítványt, és a egy szabványos SSL, a bővített ellenőrzés tanúsítvány vagy a helyettesítő tanúsítvány is lehet. Önaláírt tanúsítványok használata nem támogatott. Ismerje meg, [HTTPS engedélyezése egyéni tartomány](https://aka.ms/FrontDoorCustomDomainHTTPS).
+### <a name="what-certificates-are-supported-on-azure-front-door-service"></a>Milyen tanúsítványokat támogat az Azure bejárati ajtó szolgáltatás?
 
-### <a name="does-front-door-support-autorotation-of-certificates"></a>Támogatja a bejárati ajtajának illesztőprogramja tanúsítványok?
+Ha engedélyezni szeretné, hogy a HTTPS protokoll biztonságos módon kézbesítse a tartalmat egy bejárati ajtó egyéni tartományán, dönthet úgy, hogy az Azure bejárati szolgáltatás által felügyelt tanúsítványt használ, vagy saját tanúsítványt használ.
+A bejárati ajtó által felügyelt beállítás a Digicert-on keresztül szabványos SSL-tanúsítványt, a bejárati ajtó Key Vaultjában tárolja. Ha úgy dönt, hogy saját tanúsítványt használ, akkor a tanúsítványokat egy támogatott HITELESÍTÉSSZOLGÁLTATÓTÓL is elvégezheti, és lehet szabványos SSL-, kiterjesztett ellenőrzési tanúsítvány vagy akár helyettesítő tanúsítvány is. Az önaláírt tanúsítványok nem támogatottak. Megtudhatja [, hogyan engedélyezheti a HTTPS-t egy egyéni tartományhoz](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
-A felügyelt bejárati ajtajának tanúsítvány lehetőséget választotta a tanúsítványok autorotated bejárati ajtajának szerint. Ha felügyelt bejárati ajtajának tanúsítványt használ, és figyelje meg, hogy a tanúsítvány lejárati dátuma kevesebb, mint 60 nap múlva, egy támogatási jegyet fájlt.
-</br>A saját egyéni SSL-tanúsítvány illesztőprogramja nem támogatott. Hasonlóan hogyan hozták létre, először egy adott egyéni tartomány fogja pont bejárati ajtajának kell a megfelelő verziójának a Key vaultban és győződjön meg arról, hogy a szolgáltatásnév számára a bejárati ajtajának továbbra is rendelkezik-e a Key Vaulthoz való hozzáférése. A frissített tanúsítvány bevezetési művelet által bejárati ajtajának atomi, és nem okozza a termelési hatással a tulajdonos nevét a megadott, vagy a tanúsítvány SAN nem változik.
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Támogatja a bejárati ajtó a tanúsítványok autorotációját?
 
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Mik azok az aktuális Azure bejárati ajtajának szolgáltatás által támogatott titkosító csomagok?
+Az előtérben felügyelt tanúsítvány beállításnál a tanúsítványokat a rendszer automatikusan elforgatja a bejárati ajtón. Ha egy bejárati ajtót felügyelt tanúsítványt használ, és azt látja, hogy a tanúsítvány lejárati dátuma kevesebb, mint 60 nap múlva, a támogatási jegyet.
+</br>Az egyéni SSL-tanúsítvány esetében az autorotáció nem támogatott. Az adott egyéni tartományhoz való első beállításhoz hasonlóan a Key Vault a megfelelő tanúsítvány-verzióra kell mutatnia, és biztosítania kell, hogy az első ajtóhoz tartozó szolgáltatásnév továbbra is hozzáférhessen a Key Vaulthoz. Ez a tanúsítvány bevezetési művelete a bejárati ajtónál atomi, és nem okoz semmilyen éles hatást, ha a tulajdonos neve vagy a SAN nem változik a tanúsítványban.
 
-Az aktuális Azure bejárati ajtajának szolgáltatás által támogatott titkosító csomagok a következők:
+### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Mik az Azure bejárati ajtó szolgáltatás által támogatott jelenlegi titkosítási csomagok?
+
+Az Azure bejárati ajtó szolgáltatás által támogatott jelenlegi titkosítási csomagok a következők:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -179,37 +181,37 @@ Az aktuális Azure bejárati ajtajának szolgáltatás által támogatott titkos
 - TLS_RSA_WITH_AES_256_CBC_SHA
 - TLS_RSA_WITH_AES_128_CBC_SHA
 
-### <a name="does-azure-front-door-service-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure bejárati ajtajának Service is támogatja a forgalmat a háttérbeli újbóli titkosítása?
+### <a name="does-azure-front-door-service-also-support-re-encryption-of-traffic-to-the-backend"></a>Támogatja az Azure bejárati ajtó szolgáltatás a háttérbeli forgalom újratitkosítását is?
 
-Igen, Azure bejárati ajtajának Service támogatja az SSL-alapú kiszervezéshez és teljes körű SSL-t, amely újra titkosítja a forgalmat a háttérbeli. Sőt mivel keresztül történjen a kapcsolatokat, a háttérkiszolgáló nyilvános IP-cím, javasoljuk, hogy konfigurálja-e a bejárati ajtajának továbbítási protokoll a HTTPS használatára.
+Igen, az Azure bejárati szolgáltatás támogatja az SSL-alapú kiszervezést és a végpontok közötti SSL-t, amely újra titkosítja a forgalmat a háttérbe. Valójában, mivel a háttérrel létesített kapcsolatok a nyilvános IP-címeken keresztül történnek, javasoljuk, hogy konfigurálja a bejárati ajtót a HTTPS használatára továbbítási protokollként.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Konfigurálhatja az SSL-szabályzat az SSL-protokollverziók vezérlésére?
+### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Konfigurálható az SSL-szabályzat az SSL protokoll verzióinak szabályozására?
 
-Nem, jelenleg nem támogatja a bejárati ajtajának megtagadni konkrét TLS-verziók és nem állíthatja a TLS minimális verzióját. 
+Az Azure- [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)használatával beállíthatja az Azure-beli bejárati ajtó minimális TLS-verzióját. Jelenleg a 1,0 és a 1,2 közötti választásra van lehetőség.
 
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Konfigurálhatja a bejárati ajtajának csak az adott titkosító csomagok támogatásához?
+### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Beállítható a bejárati ajtó, hogy csak bizonyos titkosítási csomagokat támogasson?
 
-Nem, adott titkosító csomagok bejárati ajtajának konfigurálása nem támogatott. 
+Nem, az adott titkosítási csomagok bejáratának konfigurálása nem támogatott. 
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 
-### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door-service"></a>Milyen típusú metrikák és naplók érhetők el Azure bejárati ajtajának szolgáltatással?
+### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door-service"></a>Milyen típusú metrikák és naplók érhetők el az Azure bejárati ajtó szolgáltatásával?
 
-A naplók és egyéb diagnosztikai képességeket biztosít további információkért lásd: [metrikák és naplók monitoringjának bejárati ajtajának](front-door-diagnostics.md).
+A naplókról és az egyéb diagnosztikai képességekről további információt a [metrikák és naplók a bejárati ajtóhoz való figyelését](front-door-diagnostics.md)ismertető témakörben talál.
 
-### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Mi a megőrzési házirend a diagnosztikai naplók?
+### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Mi az adatmegőrzési szabályzat a diagnosztikai naplókon?
 
-Diagnosztikai naplók folyamat ügyfelek storage-fiókba, és ügyfelek állíthatja be a megtartási házirend alapján választaniuk. Diagnosztikai naplók is küldhetők Event Hub vagy az Azure Monitor-naplókat. További információkért lásd: [Azure bejárati ajtajának diagnosztika](front-door-diagnostics.md).
+A diagnosztikai naplók a Customers Storage-fiókba áramlanak, és az ügyfelek megadhatják az adatmegőrzési szabályzatot a preferencia alapján. A diagnosztikai naplókat egy Event hub-vagy Azure Monitor-naplóba is lehet elküldeni. További információ: [Azure bejárati ajtó szolgáltatásának diagnosztikája](front-door-diagnostics.md).
 
-### <a name="how-do-i-get-audit-logs-for-azure-front-door-service"></a>Hogyan kaphatok auditnaplók Azure bejárati ajtajának szolgáltatás?
+### <a name="how-do-i-get-audit-logs-for-azure-front-door-service"></a>Hogyan naplók beszerzése az Azure bejárati ajtó szolgáltatáshoz?
 
-Auditnaplók Azure bejárati ajtajának szolgáltatás érhetők el. Kattintson a portál **tevékenységnapló** menü paneljén látható a bejárati ajtó a napló eléréséhez. 
+A naplók elérhetők az Azure bejárati ajtó szolgáltatáshoz. A portálon kattintson a **tevékenység napló** elemre a bejárati ajtó menüjében a napló eléréséhez. 
 
-### <a name="can-i-set-alerts-with-azure-front-door-service"></a>Állítható riasztások Azure bejárati ajtajának szolgáltatással?
+### <a name="can-i-set-alerts-with-azure-front-door-service"></a>Beállíthat riasztásokat az Azure bejárati ajtó szolgáltatásával?
 
-Igen, Azure bejárati ajtajának Service támogatják a riasztásokat. Riasztások a metrikák vannak konfigurálva. 
+Igen, az Azure bejárati ajtó szolgáltatás támogatja a riasztásokat. A riasztások a metrikák használatára vannak konfigurálva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door létrehozására](quickstart-create-front-door.md) vonatkozó információk.
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

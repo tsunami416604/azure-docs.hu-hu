@@ -1,24 +1,23 @@
 ---
-title: Feltételes kognitív keresési képesség (Azure Search) | Microsoft Docs
-description: A feltételes képesség lehetővé teszi a szűrést, az alapértékek létrehozását és az egyesítési értékeket.
-services: search
+title: Feltételes kognitív képességek
+titleSuffix: Azure Cognitive Search
+description: Az Azure Cognitive Search feltételes képességei lehetővé teszik a szűrést, az Alapértelmezések létrehozását és az értékek egyesítését egy készségkészlet-definícióban.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265819"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792051"
 ---
-#   <a name="conditional-skill"></a>Feltételes szaktudás
+# <a name="conditional-cognitive-skill"></a>Feltételes kognitív képességek
 
-A *feltételes képesség* lehetővé teszi olyan Azure Search forgatókönyvek használatát, amelyek logikai műveletet igényelnek a kimenethez rendelendő adatok meghatározásához. Ilyen forgatókönyvek például a szűrés, az alapértelmezett érték kiosztása és az adatok egyesítése egy adott feltétel alapján.
+A **feltételes** képesség lehetővé teszi, hogy az Azure Cognitive Search olyan forgatókönyvek, amelyek Boolean műveletet igényelnek a kimenethez rendelendő adatok meghatározásához. Ilyen forgatókönyvek például a szűrés, az alapértelmezett érték kiosztása és az adatok egyesítése egy adott feltétel alapján.
 
 A következő pseudocode bemutatja, hogy a feltételes képességek hogyan valósulnak meg:
 
@@ -33,7 +32,7 @@ else
 > Ez a képesség nem egy Azure Cognitive Services API-hoz van kötve, és nem számítunk fel díjat a használatára. Azonban továbbra is [csatolnia kell egy Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md) az "ingyenes" erőforrás-beállítás felülbírálásához, amely korlátozza a naponta kis mennyiségű dúsítást.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.ConditionalSkill
+Microsoft. Skills. util. ConditionalSkill
 
 
 ## <a name="evaluated-fields"></a>Kiértékelt mezők
@@ -88,7 +87,7 @@ A bemenetek megkülönböztetik a kis-és nagybetűket.
 
 | Input (Bemenet)   | Leírás |
 |-------------|-------------|
-| condition   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
+| feltétel   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/\*/Language) = = $ (/document/expectedLanguage)" <br/> |
 | whenTrue    | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *igaz*értékre van kiértékelve. Az állandó sztringeket szimpla idézőjelek ("és") szerint kell megadni. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
 | whenFalse   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *hamis*értékre van kiértékelve. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
 
@@ -97,7 +96,7 @@ Egyetlen kimenetre van szükség, amelyet egyszerűen "output"-nek nevezünk. A 
 
 ## <a name="examples"></a>Példák
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Példa a skill definition 1: Dokumentumok szűrése csak francia dokumentumok visszaküldéséhez
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>1\. példa: szakértelem meghatározása: dokumentumok szűrése csak francia dokumentumok visszaküldéséhez
 
 A következő kimenet a mondatok ("/document/frenchSentences") tömbjét adja vissza, ha a dokumentum nyelve francia. Ha a nyelv nem francia, az érték *NULL értékűre*van állítva.
 
@@ -116,7 +115,7 @@ A következő kimenet a mondatok ("/document/frenchSentences") tömbjét adja vi
 Ha a "/document/frenchSentences" egy másik képesség *kontextusában* van használatban, ez a képesség csak akkor fut, ha a "/Document/frenchSentences" tulajdonság értéke nem *Null*.
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Példa a 2. szakértelem-definícióra: Nem létező érték alapértelmezett értékének beállítása
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>2\. minta-definíció: a nem létező érték alapértelmezett értékének beállítása
 
 A következő kimenet létrehoz egy jegyzetet ("/document/languageWithDefault"), amely a dokumentum nyelvére vagy "es" értékre van beállítva, ha nincs beállítva a nyelv.
 
@@ -133,7 +132,7 @@ A következő kimenet létrehoz egy jegyzetet ("/document/languageWithDefault"),
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Példa a skill definition 3: Értékek egyesítése két mezőből egyetlen értékre
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Példa a skill definition 3: értékek egyesítése két mezőből egyetlenre
 
 Ebben a példában néhány mondatnak van egy *frenchSentiment* tulajdonsága. Ha a *frenchSentiment* tulajdonság értéke null, a *englishSentiment* értéket szeretnénk használni. A kimenetet egy " *hangulat* " ("/Document/Sentiment/*/Sentiment") nevű tag számára rendeljük hozzá.
 
@@ -151,7 +150,7 @@ Ebben a példában néhány mondatnak van egy *frenchSentiment* tulajdonsága. H
 ```
 
 ## <a name="transformation-example"></a>Transzformációs példa
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Példa a 4. szakértelem-definícióra: Adatátalakítás egyetlen mezőben
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>4\. minta: az adatátalakítás egyetlen mezőben
 
 Ebben a példában egy 0 és 1 közötti *érzést* kapunk. Azt szeretnénk, hogy az-1 és 1 közötti értékre alakítsa át. Ezt a kisebb átalakítást a feltételes képesség használatával teheti meg.
 
@@ -174,7 +173,7 @@ Ebben a példában nem használjuk a szakértelem feltételes aspektusát, mert 
 Bizonyos paraméterek kiértékelése megtörténik, ezért különösen körültekintően kell követnie a dokumentált mintát. A kifejezéseknek egyenlő jellel kell kezdődnie. Az elérési utat "$ (" és ")" karakterrel kell elválasztani. Ügyeljen arra, hogy a sztringeket szimpla idézőjelek között helyezze el. Ez segíti az értékelést a karakterláncok és a tényleges elérési utak és operátorok közötti különbségtételben. Győződjön meg arról is, hogy az operátorok körül a szóköz (például egy "*", egy elérési út esetében pedig a szorzás) érték van.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

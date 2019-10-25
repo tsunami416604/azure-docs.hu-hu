@@ -1,5 +1,6 @@
 ---
-title: Nyilvános ügyfélalkalmazás létrehozása lehetőségekkel (Microsoft Authentication Library for .NET) | Azure
+title: Nyilvános ügyfélalkalmazás létrehozása lehetőségekkel (Microsoft Authentication Library for .NET)
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre egy nyilvános ügyfélalkalmazás konfigurációs beállításokkal a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1311e047b63cc9b5cccc785fbcd118db29f7c4bd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: bdc6d65d811c09ffae94fe6394f8ae7e61cf0a6f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532616"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802866"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Nyilvános ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
 Ez a cikk azt ismerteti, hogyan hozható létre [nyilvános ügyfélalkalmazás](msal-client-applications.md) a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával.  Az alkalmazás egy beállítási fájlban megadott konfigurációs beállításokkal lett létrehozva.
 
-Az alkalmazás inicializálásához először regisztrálnia kell, hogy [](quickstart-register-app.md) az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
+Az alkalmazás inicializálásához először [regisztrálnia](quickstart-register-app.md) kell, hogy az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
 - Az ügyfél-azonosító (GUID jelölő sztring)
 - Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.

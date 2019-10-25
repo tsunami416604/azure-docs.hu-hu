@@ -1,5 +1,6 @@
 ---
-title: Microsoft Authenticatort használó Xamarin iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be | Azure
+title: Microsoft Authenticatort használó Xamarin iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan telepíthet át Microsoft Authenticatort használó Xamarin iOS-alkalmazásokat a .NET-hez készült Azure AD Authentication Library (ADAL.NET) rendszerből a Microsoft Authentication Library for .NET (MSAL.NET) szolgáltatásba.
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdfb2d7d33111f1adf998cd75446576d2010a365
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b05c93d5c13b0f0a462d566dc69b4238adfd34c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257780"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802803"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
 
@@ -46,21 +47,21 @@ Ezek a következőket teszik lehetővé:
 
 ## <a name="migrate-from-adal-to-msal"></a>Migrálás a ADAL-ből a MSAL-be
 
-### <a name="step-1-enable-the-broker"></a>1\. lépés: A közvetítő engedélyezése
+### <a name="step-1-enable-the-broker"></a>1\. lépés: a közvetítő engedélyezése
 
 <table>
 <tr><td>Aktuális ADAL-kód:</td><td>MSAL-ügyfél:</td></tr>
 <tr><td>
 A ADAL.NET-ben a Broker-támogatás hitelesítésen alapuló kontextusban volt engedélyezve. Alapértelmezés szerint le van tiltva. Be kellett állítania a 
 
-`useBroker`a közvetítő hívása True `PlatformParameters` értékre a konstruktorban:
+`useBroker` jelzőt True értékre a `PlatformParameters` konstruktorban a közvetítő meghívásához:
 
 ```CSharp
 public PlatformParameters(
         UIViewController callerViewController, 
         bool useBroker)
 ```
-Emellett a platform-specifikus kódban, ebben a példában az iOS-hez készült oldal megjelenítő lapján állítsa be a következőt:`useBroker` 
+Emellett a platform-specifikus kódban, ebben a példában az iOS-hez készült Page renderelő esetében állítsa be a `useBroker` 
 igaz jelző:
 ```CSharp
 page.BrokerParameters = new PlatformParameters(
@@ -84,7 +85,7 @@ Ezután adja meg a paramétereket a beszerzési jogkivonat hívásában:
 </td><td>
 A MSAL.NET-ben a közvetítői támogatás PublicClientApplication alapon engedélyezett. Alapértelmezés szerint le van tiltva. Az engedélyezéséhez használja a 
 
-`WithBroker()`a (z) paraméter (alapértelmezés szerint True értékre van állítva) a közvetítő meghívásához:
+`WithBroker()` paraméter (alapértelmezés szerint igaz értékre állítva) a közvetítő meghívásához:
 
 ```CSharp
 var app = PublicClientApplicationBuilder
@@ -102,13 +103,13 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>2\. lépés: UIViewController () beállítása
-A ADAL.NET-ben átadott egy UIViewController a részeként `PlatformParameters`. (Lásd az 1. lépésben szereplő példát.) A MSAL.NET-ben a fejlesztők számára nagyobb rugalmasságot biztosítanak, de a normál iOS-használat esetében nem szükséges. Ha a közvetítőt szeretné használni, állítsa be az objektum ablakát a brókertől érkező válaszok küldéséhez és fogadásához. 
+A ADAL.NET-ben a `PlatformParameters`részeként átadott egy UIViewController. (Lásd az 1. lépésben szereplő példát.) A MSAL.NET-ben a fejlesztők számára nagyobb rugalmasságot biztosítanak, de a normál iOS-használat esetében nem szükséges. Ha a közvetítőt szeretné használni, állítsa be az objektum ablakát a brókertől érkező válaszok küldéséhez és fogadásához. 
 <table>
 <tr><td>Aktuális ADAL-kód:</td><td>MSAL-ügyfél:</td></tr>
 <tr><td>
 A rendszer átadja a UIViewController 
 
-`PlatformParameters`az iOS-specifikus platformon.
+`PlatformParameters` az iOS-specifikus platformon.
 
 ```CSharp
 page.BrokerParameters = new PlatformParameters(
@@ -119,10 +120,10 @@ page.BrokerParameters = new PlatformParameters(
 </td><td>
 A MSAL.NET-ben két dolgot kell beállítania az iOS-hez készült objektum ablakának beállításához:
 
-1. A `AppDelegate.cs`-ben `App.RootViewController` állítsa egy új `UIViewController()`értékre. Ez a hozzárendelés biztosítja, hogy van egy UIViewController a közvetítő hívásával. Ha nincs megfelelően beállítva, a következő hibaüzenet jelenhet meg:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-1. A AcquireTokenInteractive hívásakor használja `.WithParentActivityOrWindow(App.RootViewController)`a (z) és a pass hivatkozást a használni kívánt objektum-ablakra.
+1. A `AppDelegate.cs`ban állítsa be a `App.RootViewController`t egy új `UIViewController()`re. Ez a hozzárendelés biztosítja, hogy van egy UIViewController a közvetítő hívásával. Ha nincs megfelelően beállítva, a következő hibaüzenet jelenhet meg: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. A AcquireTokenInteractive-hívásban használja a `.WithParentActivityOrWindow(App.RootViewController)`, és adja át a hivatkozást a használni kívánt objektum-ablakra.
 
-**Példa:**
+**Például:**
 
 Az `App.cs` szkriptben:
 ```CSharp
@@ -142,13 +143,13 @@ result = await app.AcquireTokenInteractive(scopes)
 
 </table>
 
-### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3\. lépés: AppDelegate frissítése a visszahívás kezeléséhez
-Mind a ADAL, mind a MSAL meghívja a közvetítőt, a közvetítő pedig visszahívja az alkalmazást `OpenUrl` az `AppDelegate` osztály metódusával. További információkért tekintse meg [ezt a dokumentációt](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback).
+### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3\. lépés: a visszahívás kezeléséhez a AppDelegate frissítése
+Mind a ADAL, mind a MSAL meghívja a közvetítőt, a közvetítő pedig visszahívja az alkalmazást az `AppDelegate` osztály `OpenUrl` metódusával. További információkért tekintse meg [ezt a dokumentációt](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback).
 
 A ADAL.NET és a MSAL.NET között nincs változás.
 
 ### <a name="step-4-register-a-url-scheme"></a>4\. lépés: URL-séma regisztrálása
-A ADAL.NET és a MSAL.NET URL-címek használatával meghívja a közvetítőt, és visszaküldi a közvetítői választ az alkalmazásnak. Az alkalmazáshoz tartozó fájlban regisztrálja az URL-sémát a `Info.plist` következő módon:
+A ADAL.NET és a MSAL.NET URL-címek használatával meghívja a közvetítőt, és visszaküldi a közvetítői választ az alkalmazásnak. Regisztrálja az URL-sémát az alkalmazás `Info.plist` fájljában a következőképpen:
 
 <table>
 <tr><td>Aktuális ADAL-kód:</td><td>MSAL-ügyfél:</td></tr>
@@ -157,11 +158,11 @@ Az URL-séma egyedi az alkalmazás számára.
 </td><td>
 A(z) 
 
-`CFBundleURLSchemes`a névnek szerepelnie kell 
+`CFBundleURLSchemes` névnek tartalmaznia kell 
 
 `msauth.`
 
-előtagként, amelyet a`CFBundleURLName`
+előtagként, majd a `CFBundleURLName`
 
 Például:`$"msauth.(BundleId")`
 
@@ -186,9 +187,9 @@ Például:`$"msauth.(BundleId")`
 
 </table>
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>5\. lépés: Adja hozzá a közvetítő azonosítóját a összes szakaszhoz
+### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>5\. lépés: az ügynök azonosítójának hozzáadása a összes szakaszhoz
 
-A ADAL.net és a MSAL.net `-canOpenURL:` egyaránt azt vizsgálja, hogy a közvetítő telepítve van-e az eszközön. Adja hozzá az iOS-közvetítő helyes azonosítóját az info. plist fájl összes szakaszához a következőképpen:
+A ADAL.NET és a MSAL.NET egyaránt a `-canOpenURL:` használatával ellenőrizze, hogy a közvetítő telepítve van-e az eszközön. Adja hozzá az iOS-közvetítő helyes azonosítóját az info. plist fájl összes szakaszához a következőképpen:
 
 <table>
 <tr><td>Aktuális ADAL-kód:</td><td>MSAL-ügyfél:</td></tr>
@@ -218,7 +219,7 @@ Felhasználások
 ```
 </table>
 
-### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>6\. lépés: Az átirányítási URI regisztrálása a portálon
+### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>6\. lépés: az átirányítási URI regisztrálása a portálon
 
 A ADAL.NET és a MSAL.NET egyaránt hozzáadhat egy extra követelményt az átirányítási URI-hoz, ha az a közvetítőt célozza meg. Regisztrálja az átirányítási URI-t az alkalmazásával a portálon.
 <table>
@@ -242,6 +243,6 @@ Példa:
 
 További információ az átirányítási URI-portálon való regisztrálásáról: [a közvetítő kihasználása a Xamarin. iOS-alkalmazásokban](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg [, hogyan Xamarin az iOS-specifikus szempontokat a MSAL.net](msal-net-xamarin-ios-considerations.md). 

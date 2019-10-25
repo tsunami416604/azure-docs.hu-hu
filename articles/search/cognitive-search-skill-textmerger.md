@@ -1,22 +1,21 @@
 ---
-title: Kognitív keresési képességek szövegének egyesítése – Azure Search
-description: Szöveg egyesítése mezők egy összevont mezőjébe Használja ezt a kognitív képességet egy Azure Search alkoholtartalom-növelési folyamat során.
-services: search
+title: Szöveg egyesítése – kognitív képességek
+titleSuffix: Azure Cognitive Search
+description: Szöveg egyesítése mezők egy összevont mezőjébe Ezt a kognitív képességet az Azure Cognitive Search AI-dúsítási folyamatában használhatja.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265264"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791844"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítése – kognitív képességek
+#   <a name="text-merge-cognitive-skill"></a>Szöveg egyesítése – kognitív képességek
 
 A **szöveges egyesítési** képesség a mezők gyűjteményében lévő szöveget egyetlen mezőben összesíti. 
 
@@ -32,8 +31,8 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| insertPreTag  | Minden Beszúrás előtt szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket `""`a következőre:.  |
-| insertPostTag | Az összes beszúrás után szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket `""`a következőre:.  |
+| insertPreTag  | Minden Beszúrás előtt szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa `""`értékre.  |
+| insertPostTag | Az összes beszúrás után szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa `""`értékre.  |
 
 
 ##  <a name="sample-input"></a>Minta bemenet
@@ -56,7 +55,7 @@ Az ehhez a képességhez használható, felhasználható bemenetet biztosító J
 ```
 
 ##  <a name="sample-output"></a>Példa kimenet
-Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPreTag* be `" "`van állítva, és a *insertPostTag* értékre van állítva `""`. 
+Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPreTag* értéke `" "`, és a *insertPostTag* értéke `""`. 
 
 ```json
 {
@@ -141,8 +140,8 @@ A fenti példa azt feltételezi, hogy a normalizált lemezképek mező létezik.
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

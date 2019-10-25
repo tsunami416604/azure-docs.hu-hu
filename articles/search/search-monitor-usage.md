@@ -1,24 +1,24 @@
 ---
-title: Az erőforrás-használat és a lekérdezési metrikák figyelése egy keresési szolgáltatáshoz – Azure Search
-description: Naplózás engedélyezése, lekérdezési tevékenység metrikáinak beolvasása, erőforrás-használat és egyéb rendszeradatok egy Azure Search szolgáltatásból.
-author: HeidiSteen
+title: Erőforrás-használati és lekérdezési metrikák figyelése
+titleSuffix: Azure Cognitive Search
+description: Naplózás engedélyezése, lekérdezési tevékenység metrikáinak beolvasása, erőforrás-használat és egyéb rendszeradatok Azure Cognitive Search szolgáltatásból.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72331216"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793483"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Az erőforrás-felhasználás és a lekérdezési tevékenységek figyelése Azure Search
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Az erőforrás-felhasználás és a lekérdezési tevékenységek figyelése az Azure-ban Cognitive Search
 
-A Azure Search szolgáltatás áttekintés lapján megtekintheti az erőforrás-használattal, a lekérdezési metrikákkal, valamint a további indexek, indexelő és adatforrások létrehozásához rendelkezésre álló kvóta mennyiségét. A portál használatával is konfigurálhatja a log Analytics szolgáltatást, illetve az állandó adatgyűjtéshez használt más erőforrásokat. 
+Az Azure Cognitive Search szolgáltatás áttekintés lapján megtekintheti az erőforrás-használattal, a lekérdezési metrikákkal és a több index, indexelő és adatforrás létrehozásához rendelkezésre álló kvóta mennyiségét. A portál használatával is konfigurálhatja a log Analytics szolgáltatást, illetve az állandó adatgyűjtéshez használt más erőforrásokat. 
 
 A naplók beállítása az öndiagnosztika és a működési Előzmények megőrzése esetén hasznos. Belsőleg a naplófájlok a háttérben, rövid idő alatt léteznek, elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha szabályozni szeretné a naplózási adatokat, és hozzáférést szeretne biztosítani a naplófájlhoz, akkor a jelen cikkben ismertetett megoldások egyikét kell beállítania.
 
@@ -52,7 +52,7 @@ Az olyan szolgáltatáson belüli feladatokhoz, mint például az index létreho
 
 ## <a name="add-on-monitoring-solutions"></a>Kiegészítő figyelési megoldások
 
-Azure Search nem tárol semmilyen, az általa kezelt objektumon túli adattárolást, ami azt jelenti, hogy a naplózási adatforrásokat külsőleg kell tárolni. Az alábbi erőforrások bármelyikét megadhatja, ha szeretné megőrizni a naplózási adatmennyiséget. 
+Az Azure Cognitive Search nem tárol semmilyen, az általa kezelt objektumon túli adattárolást, ami azt jelenti, hogy a naplózási adatforrásokat külsőleg kell tárolni. Az alábbi erőforrások bármelyikét megadhatja, ha szeretné megőrizni a naplózási adatmennyiséget. 
 
 A következő táblázat összehasonlítja a naplók tárolásának lehetőségeit, és részletesen figyeli a szolgáltatási műveleteket és a lekérdezési feladatokat a Application Insightson keresztül.
 
@@ -64,17 +64,17 @@ A következő táblázat összehasonlítja a naplók tárolásának lehetősége
 
 A Azure Monitor naplók és a blob Storage is ingyenes szolgáltatásként érhető el, így ingyenesen kipróbálható az Azure-előfizetés élettartama. Application Insights ingyenesen regisztrálhatók és használhatók, amíg az alkalmazás adatainak mérete bizonyos korlátok között van (a részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/monitor/) ).
 
-A következő szakasz végigvezeti az Azure Blob Storage engedélyezésének és használatának lépésein a Azure Search műveletek által létrehozott naplózási adatok gyűjtéséhez és eléréséhez.
+A következő szakasz végigvezeti az Azure Blob Storage engedélyezésének és használatának lépésein az Azure Cognitive Search-műveletek által létrehozott naplózási adatok gyűjtéséhez és eléréséhez.
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
-Az indexelési és lekérdezési számítási feladatok naplózása alapértelmezés szerint ki van kapcsolva, és a naplózási infrastruktúra és a hosszú távú külső tárolók kiegészítő megoldásaitól függ. Önmagában az egyetlen megőrzött adatAzure Search a létrehozott és felügyelt objektumok, ezért a naplókat máshol kell tárolni.
+Az indexelési és lekérdezési számítási feladatok naplózása alapértelmezés szerint ki van kapcsolva, és a naplózási infrastruktúra és a hosszú távú külső tárolók kiegészítő megoldásaitól függ. Önmagában az Azure Cognitive Search által létrehozott és kezelt objektumok csak a megőrzött adatforrások, ezért a naplókat máshol kell tárolni.
 
 Ez a szakasz azt ismerteti, hogyan használható a blob Storage a naplózott események és mérőszámok adatok tárolására.
 
-1. [Hozzon létre egy Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , ha még nem rendelkezik ilyennel. Azt is megteheti, hogy ugyanabba az erőforráscsoporthoz helyezi, mint a Azure Search a tisztítást később, ha törölni szeretné az ebben a gyakorlatban használt összes erőforrást.
+1. [Hozzon létre egy Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , ha még nem rendelkezik ilyennel. Azt is megteheti, hogy ugyanabba az erőforráscsoporthoz helyezi, mint az Azure Cognitive Search, hogy később leegyszerűsítse a tisztítást, ha törölni szeretné az ebben a gyakorlatban használt összes erőforrást.
 
-   A Storage-fióknak ugyanabban a régióban kell lennie, mint Azure Search.
+   A Storage-fióknak ugyanabban a régióban kell lennie, mint az Azure Cognitive Search.
 
 2. Nyissa meg a keresési szolgáltatás áttekintés lapját. A bal oldali navigációs panelen görgessen lefelé a **figyelés** elemre, és kattintson a **figyelés engedélyezése**lehetőségre.
 
@@ -158,14 +158,14 @@ A naplófájl megtekintéséhez bármely JSON-szerkesztőt használhat. Ha még 
 
 1. Azure Portal nyissa meg a Storage-fiókját. 
 
-2. A bal oldali navigációs panelen kattintson a **Blobok**elemre. Látnia kell az elemzéseket – **naplók – operationlogs** és elemzések – **mérőszámok – pt1m**. Ezeket a tárolókat a Azure Search hozza létre, amikor a rendszer a naplózási adatként a blob Storage-ba exportálja.
+2. A bal oldali navigációs panelen kattintson a **Blobok**elemre. Látnia kell az elemzéseket – **naplók – operationlogs** és elemzések – **mérőszámok – pt1m**. Ezeket a tárolókat az Azure Cognitive Search hozza létre, amikor a naplózási adatként a blob Storage-ba exportálja őket.
 
 3. Kattintson a mappa-hierarchiára, amíg el nem éri a. JSON fájlt.  A fájl letöltéséhez használja a helyi menüt.
 
 Miután letöltötte a fájlt, nyissa meg egy JSON-szerkesztőben a tartalom megtekintéséhez.
 
 ## <a name="use-system-apis"></a>A System API-k használata
-A Azure Search REST API és a .NET SDK egyaránt biztosít programozott hozzáférést a szolgáltatási metrikák, az index és az indexelő adataihoz, valamint a dokumentumok számát.
+Az Azure Cognitive Search REST API és a .NET SDK egyaránt biztosít programozott hozzáférést a szolgáltatási metrikák, az index és az indexelő adataihoz, valamint a dokumentumok számát.
 
 * [Szolgáltatások statisztikáinak beolvasása](/rest/api/searchservice/get-service-statistics)
 * [Index statisztikáinak beolvasása](/rest/api/searchservice/get-index-statistics)

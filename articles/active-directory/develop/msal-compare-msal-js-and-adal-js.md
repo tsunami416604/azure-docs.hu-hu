@@ -1,5 +1,6 @@
 ---
-title: A MSAL. js és a ADAL. js közötti különbségek | Azure
+title: A MSAL. js és a ADAL. js közötti különbségek
+titleSuffix: Microsoft identity platform
 description: Ismerje meg a Microsoft Authentication Library for JavaScript (MSAL. js) és az Azure AD Authentication Library for JavaScript (ADAL. js) közötti különbségeket, valamint azt, hogy melyiket válassza ki.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429947"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803170"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>A MSAL JS és a ADAL JS közötti különbségek
 
@@ -48,7 +49,7 @@ Azonban továbbra is a ADAL. js fájlt kell használnia, ha az alkalmazásnak a 
 
 * A tokenek csendes beszerzésének és megújításának módszere a felhasználók értesítése nélkül, a ADAL. js fájlban `acquireToken`. A MSAL. js fájlban ezt a metódust `acquireTokenSilent` névvel kell elnevezni, hogy ennél a funkciónál jobban legyen leíró jellegű.
 
-### <a name="authority-value-common"></a>Szolgáltatói érték @no__t – 0
+### <a name="authority-value-common"></a>A szolgáltató értéke `common`
 
 A 1.0-s verzióban a `https://login.microsoftonline.com/common` szolgáltató használatával a felhasználók bármilyen Azure AD-fiókkal bejelentkezhetnek (bármely szervezet esetében).
 
@@ -59,9 +60,9 @@ A 2.0-s verzióban a `https://login.microsoftonline.com/common` szolgáltató ha
 
     a v 2.0 protokoll hatóköröket használ a kérelmekben lévő erőforrások helyett. Más szóval, amikor az alkalmazásnak olyan jogkivonatokat kell igényelnie, amelyekhez engedélyek szükségesek egy adott erőforráshoz (például MS Graph), a függvénytár-metódusoknak átadott értékek különbsége a következő:
 
-    1\.0-s verzió: erőforrás = HTTPS @ no__t-0//Graph. microsoft. com
+    1\.0-s verzió: erőforrás = HTTPS\://graph.microsoft.com
 
-    v 2.0: hatókör = HTTPS @ no__t-0//gráf. microsoft. com/user. Read
+    v 2.0: hatókör = HTTPS\://graph.microsoft.com/User.Read
 
     Az API URI-ja alapján bármilyen erőforrás-API hatókörét lekérheti a következő formátumban: appidURI/scope, például: https: \//mytenant. onmicrosoft. com/myapi/API. Read
 

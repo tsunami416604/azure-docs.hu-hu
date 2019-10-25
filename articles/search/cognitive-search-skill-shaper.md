@@ -1,22 +1,21 @@
 ---
-title: Formáló kognitív keresési képesség – Azure Search
-description: Metaadatok és strukturált adatok kinyerése strukturálatlan adatokból, és összetett típusként alakítása egy Azure Search alkoholtartalom-növelési folyamatban.
-services: search
+title: Formáló kognitív képesség
+titleSuffix: Azure Cognitive Search
+description: Metaadatok és strukturált adatok kinyerése strukturálatlan adatokból, és az Azure Cognitive Search mesterséges intelligencia-dúsítási folyamata összetett típusként.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265358"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791879"
 ---
-#   <a name="shaper-cognitive-skill"></a>Formáló kognitív képesség
+# <a name="shaper-cognitive-skill"></a>Formáló kognitív képesség
 
 A **formáló** képesség több bemenetet egyesít egy [összetett típusba](search-howto-complex-data-types.md) , amelyet később a dúsítási folyamat során lehet hivatkozni. A **formáló** képességgel lényegében létrehozhat egy struktúrát, megadhatja a struktúra tagjainak nevét, és értékeket rendelhet hozzájuk az egyes tagokhoz. Példák a keresési forgatókönyvekben hasznos konszolidált mezőkre: az első és az utolsó név egyetlen struktúrába, városba és állapotba való egyesítése egyetlen struktúrába, vagy név és születésnap egyetlen struktúrában egyedi identitás létrehozásához.
 
@@ -28,11 +27,11 @@ A kimeneti név mindig "output". Belsőleg a folyamat egy másik nevet (példáu
 > A **formáló** képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.ShaperSkill
+Microsoft. Skills. util. ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>1\. forgatókönyv: összetett típusok
 
-Vegyünk egy olyan forgatókönyvet, amelyben létre szeretne hozni egy *analyzedText* nevű struktúrát, amelynek két tagja van: *szöveg* és *hangulat*. Egy Azure Search indexben egy többrészes kereshető mező *összetett típusú* , és gyakran jön létre, ha a forrásadatok olyan összetett szerkezettel rendelkeznek, amely leképezi azt.
+Vegyünk egy olyan forgatókönyvet, amelyben létre szeretne hozni egy *analyzedText* nevű struktúrát, amelynek két tagja van: *szöveg* és *hangulat*. Egy indexben egy többrészes kereshető mező *összetett típusú* , és gyakran jön létre, ha a forrásadatok olyan összetett szerkezettel rendelkeznek, amely leképezi azt.
 
 Az összetett típusok létrehozásának másik megközelítése azonban a **shapeer** -képességen keresztül történik. Ennek a képességnek a készségkészlet való belefoglalásával a készségkészlet-feldolgozás során a memóriában lévő műveletek az adatalakzatokat beágyazott struktúrákkal is kihasználhatják, amelyek ezután az index összetett típusára képezhetők le. 
 
@@ -110,7 +109,7 @@ Egy bejövő JSON-dokumentum, amely felhasználható bemenetet biztosít ehhez a
 
 ### <a name="skill-output"></a>Szaktudás kimenete
 
-A **formáló** képesség egy új, *analyzedText* nevű elemet hoz létre, amely a *szöveg* és a *hangulat*együttes elemeit tartalmazza. Ez a kimenet megfelel az index sémájának. Egy Azure Search indexben lesznek importálva és indexelve.
+A **formáló** képesség egy új, *analyzedText* nevű elemet hoz létre, amely a *szöveg* és a *hangulat*együttes elemeit tartalmazza. Ez a kimenet megfelel az index sémájának. A rendszer egy Azure Cognitive Search indexbe importálja és indexeli.
 
 ```json
 {
@@ -247,10 +246,10 @@ Ebben az esetben az **alakzat** összetett típust hoz létre. Ez a struktúra a
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Összetett típusok használata](search-howto-complex-data-types.md)
-+ [A Knowledge Store áttekintése](knowledge-store-concept-intro.md)
++ [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md)
 + [Ismerkedés a Knowledge Store-ban](knowledge-store-howto.md)

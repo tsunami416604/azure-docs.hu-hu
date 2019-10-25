@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 42819749b019b4b1db77942e22e09ea31a137fe7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 831d3a187a4388a429c6fabb1bb0e0ec6dd584cc
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813852"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800047"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Példa Apache Storm-topológiák és-összetevők a HDInsight Apache Storm
 
@@ -24,12 +24,12 @@ A következő lista a Microsoft által létrehozott és karbantartott példákat
 | [Írás a Azure Data Lake Storageba Apache Storm](apache-storm-write-data-lake-store.md) |Írás a Azure Data Lake Storageba |Java |
 | [Event hub kiöntő és bolt forrása](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Az Event hub kiöntő és a bolt forrása |Java |
 | [Java-alapú topológiák fejlesztése a HDInsight-hez Apache Storm][5797064f] |Maven |Java |
-| [A C# Visual Studio használatával HDInsight Apache Storm-topológiák fejlesztése][16fce2d1] |HDInsight Tools for Visual Studio |C#, Java |
-| [Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)][844d1d81] |Event Hubs |C#és a Java |
-| [Az Azure Event Hubs-eseményközpontok eseményeinek feldolgozása a HDInsight alatt futó Stormmal (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) |Event Hubs |Java |
+| [A C# Visual Studio használatával HDInsight Apache Storm-topológiák fejlesztése][16fce2d1] |A Visual studióhoz készült HDInsight-eszközök |C#, Java |
+| [Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsightC#()][844d1d81] |Azure Event Hubs-eseményközpontok |C#és a Java |
+| [Az Azure Event Hubs-eseményközpontok eseményeinek feldolgozása a HDInsight alatt futó Stormmal (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) |Azure Event Hubs-eseményközpontok |Java |
 | [Jármű-érzékelő adatainak feldolgozása a Event Hubs Apache Storm használatával a HDInsight][246ee964] |Event Hubs, Cosmos DB, Azure Storage Blob (WASB) |C#, Java |
 | [Kinyerési, átalakítási és betöltési (ETL) az Azure Event Hubs az Apache HBase-be a HDInsight-Apache Storm használatával][b4b68194] |Event Hubs, HBase |C# |
-| [Sablon C# Storm-topológiai projekt az Azure-szolgáltatásokkal való együttműködéshez Apache Storm on HDInsight][ce0c02a2] |Event Hubs, Cosmos DB, SQL Database, HBase, SignalR |C#, Java |
+| [Sablon C# Storm-topológiai projekt az Azure-szolgáltatásokkal való együttműködéshez Apache Storm on HDInsight][ce0c02a2] |Event Hubs, Cosmos DB, SQL Database, HBase, Signaler |C#, Java |
 | [Skálázhatósági referenciaértékek az Azure Event Hubs való olvasáshoz a HDInsight Apache Storm használatával][d6c540e3] |Üzenet átviteli sebessége, Event Hubs, SQL Database |C#, Java |
 | [Apache Kafka használata a HDInsight Apache Storm használatával](../hdinsight-apache-storm-with-kafka.md) | Apache Kafka Apache Storm olvasása és írása | Java |
 
@@ -42,7 +42,7 @@ A következő lista a Microsoft által létrehozott és karbantartott példákat
 
 Lásd: a [Python és a Apache Storm használata a HDInsight](apache-storm-develop-python-topology.md) -ben a Flux-topológiával rendelkező Python-összetevőkre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Storm topológia létrehozása és figyelése az Azure HDInsight](./apache-storm-quickstart.md)
 * [Megtudhatja, hogyan helyezhet üzembe és kezelhet Apache Storm-topológiákat a HDInsight Apache Storm használatával][6eb0d3b8]

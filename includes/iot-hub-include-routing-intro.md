@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 863989f8e2cb90fe5ec0921ea6e080b61fc1b4ae
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271577"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808820"
 ---
-[Üzenet-útválasztása](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) telemetriai adatok küldését az IoT-eszközökről származó beépített Event Hub-kompatibilis végpontokra vagy egyéni végpontok például lehetővé teszi, hogy a blob storage, Service Bus-üzenetsorok, Service Bus-témakörök és Eseményközpontok. Egyéni üzenet útválasztás konfigurálásához, hozzon létre [útválasztási lekérdezések](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) szabhatja testre az útvonalat, amely megfelel egy bizonyos feltételnek. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha az üzenet nem egyezik a megadott útválasztási lekérdezések bármelyikét, az alapértelmezett végpont lesz irányítva.
+Az [üzenet-útválasztás](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) lehetővé teszi az telemetria-adatok küldését a IoT-eszközökről a beépített Event hub-kompatibilis végpontokra vagy egyéni végpontokra, például a blob Storage-ba, a Service Bus várólistákra, a Service Bus témakörökre és a Event Hubs. Az egyéni üzenet-útválasztás konfigurálásához [útválasztási lekérdezéseket](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) kell létrehoznia az adott feltételnek megfelelő útvonal testreszabásához. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha egy üzenet nem egyezik a megadott útválasztási lekérdezések egyikével sem, a rendszer az alapértelmezett végpontra irányítja át.
 
-2. rész – ebben az oktatóanyagban megismerheti, hogyan állíthatja be, és ezek egyéni útválasztási lekérdezések használata az IoT hubbal. Egy IoT-eszköz egy több végpontot, beleértve a blob storage és a egy Service Bus-üzenetsor üzeneteit, irányíthatja. A Service Bus-üzenetsorba való üzenetet, dolgozza fel a logikai alkalmazás és az e-mailben küldött. Üzenetek, amelyek nem rendelkeznek, egyéni üzenet-útválasztása definiálva az alapértelmezett végpont küldött, majd dolgozza fel az Azure Stream Analytics és tekinthetők meg a Power BI-Vizualizációk.
+Ebben a kétrészes oktatóanyagban megismerheti, hogyan állíthatja be és használhatja ezeket az egyéni útválasztási lekérdezéseket IoT Hub. Az üzeneteket egy IoT-eszközről irányítja át több végpontra, beleértve a blob Storage-t és egy Service Bus-várólistát is. A rendszer a Service Bus üzenetsor felé irányuló üzeneteket egy logikai alkalmazás használja, és e-mailben küldi el. Az egyéni üzenet-útválasztással nem rendelkező üzeneteket a rendszer az alapértelmezett végpontra küldi, majd Azure Stream Analytics és egy Power BI vizualizációban tekinti meg.
 
-1. és 2. Ez az oktatóanyag teljes részére hajtotta végre a következő feladatokat:
+Az oktatóanyag 1. és 2. részének végrehajtásához hajtsa végre a következő feladatokat:
 
-**I. rész Erőforrások létrehozása, és beállíthatja az üzenet-útválasztása**
+**I. rész: erőforrások létrehozása, üzenetek útválasztásának beállítása**
 > [!div class="checklist"]
-> * Az erőforrások – egy IoT hubot, tárfiók, Service Bus-üzenetsorba és szimulált eszköz létrehozása. Ezt megteheti a portálon, az Azure CLI, Azure PowerShell vagy az Azure Resource Manager-sablon használatával.
-> * A végpontok és Üzenetútvonalak konfigurálása az IoT Hub a storage-fiók és a Service Bus-üzenetsorba.
+> * Hozza létre az erőforrásokat – egy IoT hub, egy Storage-fiók, egy Service Bus üzenetsor és egy szimulált eszköz. Ezt a Azure Portal, egy Azure Resource Manager sablon, az Azure CLI vagy a Azure PowerShell használatával teheti meg.
+> * Konfigurálja a végpontokat és az üzenetek útvonalait IoT Hubban a Storage-fiók és a Service Bus üzenetsor számára.
 
-**II. rész: Üzeneteket küldjön a hubnak, irányított eredmények megtekintése**
+**II. rész: üzenetek küldése a hubhoz, útválasztásos eredmények megtekintése**
 > [!div class="checklist"]
 > * Egy logikai alkalmazás létrehozása, amely egy üzenet Service Bus-üzenetsorba való érkezésekor indul el és küld e-maileket.
 > * Egy olyan alkalmazás letöltése és futtatása, amely a Hubhoz üzeneteket küldő IoT-eszközt szimulál a különböző útválasztási lehetőségekhez.
@@ -38,13 +38,13 @@ ms.locfileid: "66271577"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ez az oktatóanyag 1 részéhez:
+* Az oktatóanyag 1. részében:
   - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Ez az oktatóanyag 2 részéhez:
-  - 1. rész befejeződött. a jelen oktatóanyag rendelkezik, és rendelkezik az erőforrások továbbra is elérhető.
+* Az oktatóanyag 2. részében:
+  - El kell végeznie az oktatóanyag 1. részét, és az erőforrások továbbra is elérhetők maradnak.
   - A [Visual Studio](https://www.visualstudio.com/) telepítése.
-  - Power BI-fiók az alapértelmezett végpont Stream Analytics-elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Office 365-fiók értesítési e-mailek küldéséhez.
+  - Hozzáférés egy Power BI fiókhoz az alapértelmezett végpont stream Analytics elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
+  - Office 365-fiókkal kell rendelkeznie az értesítő e-mailek küldéséhez.
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

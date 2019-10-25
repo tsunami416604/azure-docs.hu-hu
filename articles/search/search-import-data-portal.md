@@ -1,24 +1,23 @@
 ---
-title: Az adatimportálás keresési indexbe Azure Portal-Azure Search használatával
+title: Adatimportálás keresési indexbe az Azure Portal használatával
+titleSuffix: Azure Cognitive Search
 description: Megtudhatja, hogyan használhatja az adatok importálása varázslót a Azure Portal az Azure-adatok Cosmos DB, blob Storage, Table Storage, SQL Database és SQL Server Azure-beli virtuális gépeken való bejárásához.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71936911"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793676"
 ---
-# <a name="import-data-wizard-for-azure-search"></a>Adatimportálási varázsló Azure Search
+# <a name="import-data-wizard-for-azure-cognitive-search"></a>Az Azure Cognitive Search adatimportálási varázslója
 
-A Azure Portal egy **adatimportálási** varázslót biztosít a prototípusok Azure Search irányítópultján, és betölt egy indexet. Ez a cikk a varázsló, bemenetek és kimenetek, valamint egyes használati információk használatának előnyeit és korlátozásait ismerteti. Gyakorlati útmutató a varázsló beépített mintaadatok használatával történő átlépéséhez: [Azure Search index létrehozása az Azure Portal](search-get-started-portal.md) rövid útmutató segítségével.
+A Azure Portal **adatimportálási** varázslót biztosít az Azure Cognitive Search irányítópultján a prototípus-készítéshez és az indexek betöltéséhez. Ez a cikk a varázsló, bemenetek és kimenetek, valamint egyes használati információk használatának előnyeit és korlátozásait ismerteti. A beépített mintaadatok használatával kapcsolatos gyakorlati útmutatásért lásd az [Azure Cognitive Search index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutató segítségével című témakört.
 
 A varázsló által végrehajtott műveletek a következők:
 
@@ -34,7 +33,7 @@ A varázsló a keresési szolgáltatásba mentett objektumok számát jeleníti 
 
 ## <a name="advantages-and-limitations"></a>Előnyök és korlátozások
 
-A kód írása előtt használhatja a varázslót a prototípus-készítéshez és a próba-koncepció teszteléséhez. A varázsló külső adatforrásokhoz csatlakozik, az adatmintákat a kezdeti index létrehozásához, majd JSON-dokumentumként importálja a Azure Search-beli indexbe. 
+A kód írása előtt használhatja a varázslót a prototípus-készítéshez és a próba-koncepció teszteléséhez. A varázsló külső adatforrásokhoz csatlakozik, a kezdeti index létrehozásához az adatmintákat, majd JSON-dokumentumként importálja azokat az Azure Cognitive Search-beli indexbe. 
 
 A mintavétel az a folyamat, amellyel az index sémája következtetve van, és bizonyos korlátozásokkal rendelkezik. Az adatforrás létrehozásakor a varázsló felvesz egy mintát a dokumentumokból, hogy eldöntse, hogy az adatforráshoz mely oszlopok tartoznak. Nem minden fájl olvasása történik, mivel ez akár órákat is igénybe vehet a nagy méretű adatforrások esetében. A dokumentumok, a forrás metaadatainak, például a mezőnév vagy a típus kiválasztásával mezőket hozhat létre egy index sémában. A forrásadatok összetettsége alapján előfordulhat, hogy módosítania kell a kezdeti sémát a pontosság kedvéért, vagy ki kell terjesztenie a teljességre. A módosításokat a tárgymutató-definíció oldalán is elvégezheti.
 
@@ -56,7 +55,7 @@ Az ismert korlátozások a következőképpen vannak Összefoglalva:
 
 ## <a name="data-source-input"></a>Adatforrás bemenete
 
-Az **adatok importálása** varázsló egy külső adatforráshoz csatlakozik a Azure Search indexelő által biztosított belső logikával, amely a forrásként való mintavételre, a metaadatok olvasására, a tartalom beolvasására és a szerkezet tartalmának beolvasására, valamint a tartalmak JSON-ként való szerializálására szolgál. További Importálás a Azure Searchba.
+Az **adatok importálása** varázsló egy külső adatforráshoz csatlakozik, amely az Azure Cognitive Search indexelő által biztosított belső logikát használja, amely a forrásként való mintavételre, a metaadatok olvasására, a tartalom és a szerkezet olvasására szolgáló kiváló dokumentumokra, valamint a tartalmak szerializálására szolgál. JSON-ként az Azure Cognitive Searchba való későbbi importáláshoz.
 
 Csak egyetlen táblából, adatbázis-nézetből vagy ezzel egyenértékű adatszerkezetből importálhat, azonban a struktúra hierarchikus vagy beágyazott alstruktúrákat is tartalmazhat. További információkért lásd: [komplex típusok modellezése](search-howto-complex-data-types.md).
 
@@ -64,10 +63,10 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 
 |  Kiválasztás | Leírás |
 | ---------- | ----------- |
-| **Meglévő adatforrás** |Ha már van definiálva indexelő a keresési szolgáltatásban, lehet, hogy van egy meglévő adatforrás-definíciója, amelyet újra használhat. Azure Search az adatforrás-objektumokat csak indexelő használják. Az adatforrás-objektumokat programozott módon vagy az **adatimportálás** varázslóval is létrehozhatja, és igény szerint újra felhasználhatja őket.|
-| **Minták**| A Azure Search két beépített minta adatforrást biztosít, amelyek az oktatóanyagokban és a gyors útmutatókban használatosak: egy ingatlan SQL Database-adatbázis és egy Cosmos DB-on üzemeltetett Hotels-adatbázis. A Hotels-minta alapján történő átjáráshoz tekintse meg az [index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutatóban. |
+| **Meglévő adatforrás** |Ha már van definiálva indexelő a keresési szolgáltatásban, lehet, hogy van egy meglévő adatforrás-definíciója, amelyet újra használhat. Az Azure Cognitive Searchban az adatforrás-objektumokat csak az indexelő használják. Az adatforrás-objektumokat programozott módon vagy az **adatimportálás** varázslóval is létrehozhatja, és igény szerint újra felhasználhatja őket.|
+| **Minták**| Az Azure Cognitive Search két beépített minta adatforrást biztosít, amelyek az oktatóanyagokban és a gyors útmutatókban használhatók: egy ingatlan SQL Database-adatbázis és egy Cosmos DB-on üzemeltetett Hotels-adatbázis. A Hotels-minta alapján történő átjáráshoz tekintse meg az [index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutatóban. |
 | [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati sztring használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati sztring lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet.|
-| **Azure virtuális gépen futó SQL Server** |Adja meg a teljes szolgáltatásnevet, a felhasználói azonosítót és a jelszót, valamint az adatbázist a kapcsolatok karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Részletes útmutatásért lásd az [SQL virtuális gép az Azure Search-höz történő csatlakoztatását](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) ismertető témakört. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
+| **Azure virtuális gépen futó SQL Server** |Adja meg a teljes szolgáltatásnevet, a felhasználói azonosítót és a jelszót, valamint az adatbázist a kapcsolatok karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Útmutatásért lásd: [SQL VM-kapcsolódás az Azure Cognitive Searchhoz](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Megadhat egy lekérdezést, amely lelapul vagy szűrheti a sorhalmazt, vagy hagyja üresen a lekérdezést. A varázslóban nincs szükség lekérdezésre.|
 | [**Azure-Blob Storage**](search-howto-indexing-azure-blob-storage.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy tároló. Szükség esetén, ha csoportosítási célból a blob-nevek egy virtuális elnevezési konvenciót követnek, akkor a név virtuáliskönyvtár-részét a tárolóban található mappa neveként is megadhatja. A további információkat [a Blob Storage indexelését](search-howto-indexing-azure-blob-storage.md) ismertető témakör tartalmazza. |
 | [**Azure-Table Storage**](search-howto-indexing-azure-tables.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy táblanév. Szükség esetén megadhat egy lekérdezést a táblák részhalmazának beolvasásához. A további információkat [a Table Storage indexelését](search-howto-indexing-azure-tables.md) ismertető témakör tartalmazza. |
@@ -94,7 +93,7 @@ Az adatok importálása varázsló a szolgáltatás Áttekintés lapjának paran
 
    ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
 
-Más Azure-szolgáltatásokból is indíthat **importálási adatok** , például Azure Cosmos DB, Azure SQL Database és az Azure Blob Storage. Keresse meg a **hozzáadás Azure Search** a bal oldali navigációs ablaktáblán a szolgáltatás áttekintése oldalon.
+Más Azure-szolgáltatásokból is indíthat **importálási adatok** , például Azure Cosmos DB, Azure SQL Database és az Azure Blob Storage. A szolgáltatás áttekintése lapon a bal oldali navigációs panelen keresse meg az **Azure Cognitive Search hozzáadása** részt.
 
 <a name="index-definition"></a>
 
@@ -104,7 +103,7 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 
 1. A mezőlista elkészült? Vegyen fel új mezőket a kihagyott mintavételezésből, és távolítsa el azokat, amelyek nem adhatnak értéket keresési élményhez, vagy nem használhatók [szűrő kifejezésben](search-query-odata-filter.md) vagy [pontozási profilban](index-add-scoring-profiles.md).
 
-1. Megfelelő az adattípus a bejövő adattípusokhoz? Azure Search támogatja az [Entity adatmodell-(EDM-) adattípusokat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Az Azure SQL-adatok esetében van olyan [leképezési diagram](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#mapping-between-sql-and-azure-search-data-types) , amely egyenértékű értékeket határoz meg. További hátteret a [mező-hozzárendelések és átalakítások](search-indexer-field-mappings.md)című témakörben talál.
+1. Megfelelő az adattípus a bejövő adattípusokhoz? Az Azure Cognitive Search támogatja az [Entity adatmodell-(EDM-) adattípusokat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Az Azure SQL-adatok esetében van olyan [leképezési diagram](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) , amely egyenértékű értékeket határoz meg. További hátteret a [mező-hozzárendelések és átalakítások](search-indexer-field-mappings.md)című témakörben talál.
 
 1. Van egy mezője, amely *kulcsként*szolgálhat? A mezőnek EDM. stringnek kell lennie, és egyedi módon kell azonosítania a dokumentumot. A kapcsolódó adatértékek esetében előfordulhat, hogy az elsődleges kulcshoz van rendelve. Blobok esetén előfordulhat, hogy a `metadata-storage-path`. Ha a mezőértékek szóközöket vagy kötőjeleket tartalmaznak, a **Speciális beállítások**területen a **Base-64 kódolási kulcs** beállítását kell megadnia **a következő** karakterek érvényesítési ellenőrzésének mellőzéséhez.
 
@@ -134,4 +133,4 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 A varázsló előnyeinek és korlátainak megismeréséhez a legjobb módszer a lépés. Az alábbi rövid útmutató végigvezeti az egyes lépéseken.
 
 > [!div class="nextstepaction"]
-> [Azure Search index létrehozása a Azure Portal használatával](search-get-started-portal.md)
+> [Azure Cognitive Search-index létrehozása a Azure Portal használatával](search-get-started-portal.md)

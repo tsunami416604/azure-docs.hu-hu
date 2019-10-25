@@ -5,15 +5,15 @@ description: Szemantikai, természetes nyelvi feldolgozási és képelemzési ad
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678420"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792475"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>A blob Storage-beli adatkezelési szolgáltatással való Ismerkedés
 
@@ -68,7 +68,7 @@ Az AI-dúsítás olyan modulokra utal, amelyek mintákat vagy tulajdonságokat k
 
 Azure Search a *képességek* a mesterséges intelligencia-feldolgozás egyes összetevői, amelyek önállóan vagy más képességekkel kombinálva is használhatók. 
 
-+ A beépített képességeket Cognitive Services támogatja, és a képek elemzése a Computer Visionon alapul, és a természetes nyelvi feldolgozás a Text Analytics alapján történik. A beépített képességek teljes listáját megtekintheti a [tartalom-gazdagítás előre definiált képességeiben](cognitive-search-predefined-skills.md).
++ A beépített képességeket Cognitive Services támogatja, és a képek elemzése a Computer Visionon alapul, és a természetes nyelvi feldolgozás a Text Analytics alapján történik. A teljes lista a tartalom- [gazdagítás beépített képességei](cognitive-search-predefined-skills.md)című témakörben található.
 
 + Az egyéni képességek egyéni kódok, amelyek egy olyan [illesztőfelület-definícióba](cognitive-search-custom-skill-interface.md) vannak becsomagolva, amely lehetővé teszi az integrációt a folyamatba. Az ügyfél-megoldásokban általános gyakorlat, hogy mindkettőt a nyílt forráskódú, harmadik féltől származó vagy az első féltől származó AI-modulokat biztosító egyéni ismeretekkel együtt használja.
 

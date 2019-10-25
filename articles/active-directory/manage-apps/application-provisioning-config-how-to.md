@@ -1,6 +1,6 @@
 ---
-title: Hogyan kell konfigurálnom a felhasználókiépítést az Azure AD katalógusából származó alkalmazásba való |} A Microsoft Docs
-description: Gazdag felhasználói fiók kiépítésének és megszüntetésének biztosítása már szerepel az Azure AD Alkalmazásgyűjteményben alkalmazások gyors konfigurálásához
+title: A felhasználók üzembe helyezésének konfigurálása Azure AD Gallery-alkalmazásokban | Microsoft Docs
+description: Hogyan állíthatja be gyorsan az Azure AD Application Galleryben már felsorolt alkalmazások részletes felhasználói fiókjának üzembe helyezését és megszüntetését
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,44 +16,42 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be43f0e100bc96de2be916cbf52bca7d3ba51431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bcc53b97b1187314404cfe075f6593f437e7bf4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784533"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789049"
 ---
-# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Hogyan kell konfigurálnom a felhasználókiépítést egy Azure AD katalógusából származó alkalmazásba
+# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>A felhasználók üzembe helyezésének konfigurálása Azure AD Gallery-alkalmazásokban
 
-*Felhasználói fiók kiépítése* a törvény létrehozása, frissítése, illetve letiltása a felhasználóifiók-rekordok az alkalmazás helyi felhasználói profiljainak tárolójában van. A legtöbb felhő- és SaaS-alkalmazások tárolja a felhasználói szerepköröket és engedélyeket a saját helyi felhasználói profiljainak tárolójában, és ilyen egy felhasználórekordban tárolja a helyi tároló jelenléte *szükséges* egyszeri bejelentkezést és a hozzáférés működéséhez.
+A *felhasználói fiókok üzembe* helyezése a felhasználói fiókok rekordjainak létrehozása, frissítése és/vagy letiltása az alkalmazás helyi felhasználói profiljának tárolójába. A legtöbb felhőalapú és SaaS-alkalmazás a felhasználók szerepkörét és engedélyeit tárolja a felhasználó helyi felhasználói profiljának tárolójában, és az egyszeri bejelentkezéshez és a munkához való hozzáféréshez *szükség* van egy ilyen felhasználói rekord meglétét a felhasználó helyi tárolójába.
 
-Az Azure Portalon a **kiépítési** lapra a bal oldali navigációs panelen, a vállalati alkalmazásokat jeleníti meg, milyen üzembe helyezési módok használata támogatott az adott alkalmazáshoz. Ez két értékek egyike lehet:
+A Azure Portal a vállalati alkalmazás bal oldali navigációs paneljének **kiépítés** lapja megjeleníti az adott alkalmazás által támogatott kiépítési módokat. Ez az alábbi két érték egyike lehet:
 
-## <a name="configuring-an-application-for-manual-provisioning"></a>Alkalmazás manuális üzembe helyezés konfigurálása
+## <a name="configuring-an-application-for-manual-provisioning"></a>Alkalmazás konfigurálása kézi üzembe helyezéshez
 
-*Manuális* kiépítés azt jelenti, hogy felhasználói fiókokat kell létrehozni, amelyet az alkalmazás által biztosított metódusokkal segítségével manuálisan. Ez azt jelentheti, hogy jelentkezik be egy felügyeleti portálon, az adott alkalmazáshoz és a egy webalapú felhasználói felület használatával a felhasználók hozzáadásával. Vagy, sikerült feltölteni egy táblázatot a felhasználói fiók részletes, egy adott alkalmazás által biztosított mechanizmus segítségével. Tekintse át a dokumentációt, az alkalmazás által biztosított, vagy forduljon az alkalmazás fejlesztőjének meghatározásához wat mechanizmus áll rendelkezésre.
+A *manuális* kiépítés azt jelenti, hogy a felhasználói fiókokat manuálisan kell létrehozni az alkalmazás által biztosított metódusok használatával. Ez azt jelentheti, hogy be kell jelentkeznie egy felügyeleti portálra az alkalmazáshoz, és hozzá kell hozzáadni a felhasználókat egy webalapú felhasználói felület használatával. Vagy a felhasználói fiókkal részletesen feltölthet egy táblázatot az adott alkalmazás által biztosított mechanizmus használatával. Tekintse át az alkalmazás által biztosított dokumentációt, vagy lépjen kapcsolatba az alkalmazás fejlesztővel, és határozza meg, hogy milyen mechanizmusok érhetők el.
 
-Ha a manuális az egyetlen mód egy adott alkalmazás látható, az azt jelenti, hogy nem automatikus az Azure AD connector kiépítése még létrehozva az alkalmazás. Vagy az azt jelenti, hogy az alkalmazás nem támogatja az előfeltételként felhasználói felügyeleti API-t, amelyen egy automatizált üzembe helyezési összekötőt hozhat létre.
+Ha az adott alkalmazáshoz csak a *manuális* mód látható, az azt jelenti, hogy még nincs automatikus Azure ad-létesítési összekötő az alkalmazáshoz. Ez azt jelenti, hogy az alkalmazás nem támogatja a Microsoft felhasználói Management API előfeltételeit, amelyekkel automatizált kiépítési összekötők hozhatók létre.
 
-Ha szeretné egy adott alkalmazás automatikus üzembe helyezés támogatást kérhet, kitölti a kérelmet az a [Azure Active Directory alkalmazásokra irányuló kérések](https://aka.ms/aadapprequest).
+Ha szeretne támogatást kérni egy adott alkalmazás automatikus kiépítéséhez, kitöltheti a kérést a [Azure Active Directory alkalmazás-kérelmek](https://aka.ms/aadapprequest)használatával.
 
-## <a name="configuring-an-application-for-automatic-provisioning"></a>Alkalmazás automatikus üzembe helyezés konfigurálása
+## <a name="configuring-an-application-for-automatic-provisioning"></a>Alkalmazás konfigurálása automatikus kiépítés esetén
 
-*Automatikus* azt jelenti, hogy egy összekötő kiépítése az Azure AD identitáskezelési ehhez az alkalmazáshoz. Az Azure AD regisztrációs szolgáltatást és annak működéséről további információért lásd: [automatizálhatja a Felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+Az *automatikus* beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Az Azure AD kiépítési szolgáltatásával és működésével kapcsolatos további információkért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
 
-Adott felhasználók és csoportok alkalmazásokhoz való kiépítése további információkért lásd: [kezelése a felhasználói fiók kiépítése vállalati alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Az egyes felhasználók és csoportok alkalmazásokhoz való kiépítésével kapcsolatos további információkért lásd: a [felhasználói fiókok üzembe helyezésének kezelése a vállalati](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning)alkalmazásokhoz.
 
-Engedélyezheti és konfigurálhatja az Automatikus kiépítés tényleges lépéseit az alkalmazástól függően eltérőek lehetnek.
+Az automatikus kiépítés engedélyezéséhez és konfigurálásához szükséges tényleges lépések az alkalmazástól függően változnak.
 
->[!NOTE]
->A telepítő az oktatóanyag az alkalmazás üzembe helyezésével és azok lépések konfigurálhatja az alkalmazás és a kiépítési kapcsolat létrehozása az Azure AD alábbi beállítására vonatkozó felderítésével webalkalmazásokba. 
->
->
+> [!NOTE]
+> Először meg kell keresnie a telepítési oktatóanyagot, amely az alkalmazás üzembe helyezésének beállítására vonatkozik, és ezeket a lépéseket követve konfigurálhatja az alkalmazást és az Azure AD-t is a létesítési kapcsolatok létrehozásához. 
 
-Alkalmazás oktatóanyagokat talál [oktatóanyagok listája SaaS-alkalmazások integrálása az Azure Active Directoryval való](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)találhatók.
 
-Egy lényeges tudnivaló, hogy fontolja meg a kiépítési beállítása során kell, hogy tekintse át, és az attribútumleképezések és a munkafolyamatok, amelyek meghatározzák, mely felhasználó (vagy csoport) tulajdonságai a folyamat az Azure ad-ből az alkalmazás konfigurálása. Ez magában foglalja a "egyező tulajdonság" beállítás, amely egyedileg azonosíthatja és felhasználók/csoportok a két rendszer közötti megfelelő használható. További információ a fontos folyamattal.
+A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ide tartozik a "megfelelő tulajdonság" beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál. Az attribútumok hozzárendelésével kapcsolatos további információkért tekintse meg a *következő lépések* hivatkozását.
 
-## <a name="next-steps"></a>További lépések
-[Felhasználókiépítés az attribútum-leképezéshez az SaaS-alkalmazásokhoz az Azure Active Directoryban testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+## <a name="next-steps"></a>Következő lépések
+[Az SaaS-alkalmazások felhasználói kiépítési attribútum-leképezésének testreszabása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

@@ -1,30 +1,30 @@
 ---
-title: PowerShell-parancsfájlok az az. Search modul-Azure Search
-description: Hozzon létre és konfiguráljon egy Azure Search szolgáltatást a PowerShell használatával. A szolgáltatások fel-és leskálázása, a felügyeleti és lekérdezési API-kulcsok kezelése, valamint a rendszerinformációk lekérdezése.
-author: HeidiSteen
+title: PowerShell-parancsfájlok az az. Search modul használatával
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search szolgáltatás létrehozása és konfigurálása a PowerShell-lel. A szolgáltatás fel-vagy leskálázása, a rendszergazdák és a lekérdezési API-kulcsok kezelése, valamint a rendszerinformációk lekérdezése.
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331247"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793542"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Azure Search szolgáltatás kezelése a PowerShell-lel
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)@no__t – 1 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-A PowerShell-parancsmagokat és parancsfájlokat Windows, Linux vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) rendszeren is futtathatja Azure Search létrehozásához és konfigurálásához. Az az **. Search** modul a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement)-kkal teljes paritással bővíti Azure PowerShell]. A Azure PowerShell és **az az. Search**használatával a következő feladatokat végezheti el:
+Az Azure Cognitive Search létrehozásához és konfigurálásához Windows, Linux vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) PowerShell-parancsmagokat és-parancsfájlokat is futtathat. Az az **. Search** modul az [Azure Cognitive Search Management REST API](https://docs.microsoft.com/rest/api/searchmanagement)-kkal teljes paritással bővíti Azure PowerShell]. A Azure PowerShell és **az az. Search**használatával a következő feladatokat végezheti el:
 
 > [!div class="checklist"]
 > * [Az előfizetésben található összes keresési szolgáltatás listázása](#list-search-services)
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>Az előfizetéshez tartozó összes Azure Search-szolgáltatás listázása
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Az előfizetéshez tartozó összes Azure Cognitive Search-szolgáltatás listázása
 
 A következő parancsok az [**az. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), az előfizetésben már üzembe helyezendő meglévő erőforrásokkal és szolgáltatásokkal kapcsolatos információkat adnak vissza. Ha nem tudja, hogy hány keresési szolgáltatás van már létrehozva, ezek a parancsok visszaküldik ezt az információt, és megmenti a portálon.
 
@@ -201,7 +201,7 @@ Egyszerre csak egyszer lehet újból előállítani, ha a `primary` vagy a `seco
 
 Ahogy várható, ha az ügyfél kódjának frissítése nélkül újragenerálja a kulcsokat, a régi kulcsot használó kérelmek sikertelenek lesznek. Az összes új kulcs újragenerálása nem zárja ki véglegesen a szolgáltatást, és a portálon keresztül továbbra is hozzáférhet a szolgáltatáshoz. Az elsődleges és a másodlagos kulcsok újragenerálása után frissítheti az ügyfélszoftvert az új kulcsok használatára, és ennek megfelelően folytathatja a műveletet.
 
-Az API-kulcsok értékeit a szolgáltatás hozza létre. Nem adhat meg egyéni kulcsot a használni kívánt Azure Searchhoz. Hasonlóképpen, a rendszergazda API-kulcsok nem rendelkeznek felhasználó által definiált névvel. A kulcsra mutató hivatkozások rögzített karakterláncok, `primary` vagy `secondary`. 
+Az API-kulcsok értékeit a szolgáltatás hozza létre. Nem adhat meg egyéni kulcsot az Azure Cognitive Search használatához. Hasonlóképpen, a rendszergazda API-kulcsok nem rendelkeznek felhasználó által definiált névvel. A kulcsra mutató hivatkozások rögzített karakterláncok, `primary` vagy `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Lekérdezési kulcsok létrehozása vagy törlése
 
-A [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) használatával lekérdezési [API-kulcsokat](search-security-api-keys.md) hozhat létre a csak olvasási hozzáféréshez az ügyfélalkalmazások és egy Azure Search index között. A lekérdezési kulcsok egy adott indexre való hitelesítésre szolgálnak a keresési eredmények beolvasása céljából. A lekérdezési kulcsok nem biztosítanak csak olvasási hozzáférést a szolgáltatás más elemeihez, például az indexhez, az adatforráshoz vagy az indexelő.
+A [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) használatával lekérdezési [API-kulcsokat](search-security-api-keys.md) hozhat létre a csak olvasási hozzáféréshez az ügyfélalkalmazások és egy Azure Cognitive Search index között. A lekérdezési kulcsok egy adott indexre való hitelesítésre szolgálnak a keresési eredmények beolvasása céljából. A lekérdezési kulcsok nem biztosítanak csak olvasási hozzáférést a szolgáltatás más elemeihez, például az indexhez, az adatforráshoz vagy az indexelő.
 
-Nem adhat meg kulcsot a használni kívánt Azure Searchhoz. Az API-kulcsokat a szolgáltatás hozza létre.
+Nem adhat meg kulcsot az Azure Cognitive Search használatához. Az API-kulcsokat a szolgáltatás hozza létre.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 
-* [Azure Search index létrehozása a Azure Portal](search-create-index-portal.md)
+* [Hozzon létre egy Azure Cognitive Search indexet a Azure Portal](search-create-index-portal.md)
 * [Indexelő beállítása az adatok más szolgáltatásokból való betöltéséhez](search-indexer-overview.md)
-* [Azure Search index lekérdezése a keresési ablak használatával a Azure Portal](search-explorer.md)
-* [Az Azure Search használata a .NET-ben](search-howto-dotnet-sdk.md)
+* [Azure Cognitive Search-index lekérdezése a keresési ablak használatával a Azure Portal](search-explorer.md)
+* [Az Azure Cognitive Search használata a .NET-ben](search-howto-dotnet-sdk.md)

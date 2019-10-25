@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 952bcb85484e885d45876de1e4cf3326db0a146a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693393"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786060"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -163,7 +163,7 @@ Windows Update több beállításkulcs is módosítható, amelyek közül bárme
 
 ### <a name="resolution"></a>Felbontás
 
-Tekintse át az [Automatikus frissítések konfigurálása](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-rej7uijui7jgistry) szakaszban felsorolt beállításkulcsokat, és szerkessze az [újraindításhoz használt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) beállításjegyzéket és beállításkulcsokat, és győződjön meg arról, hogy a gépek megfelelően vannak konfigurálva.
+Tekintse át az [Automatikus frissítések konfigurálása](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) szakaszban felsorolt beállításkulcsokat, és szerkessze az [újraindításhoz használt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) beállításjegyzéket és beállításkulcsokat, és győződjön meg arról, hogy a gépek megfelelően vannak konfigurálva.
 
 ## <a name="failed-to-start"></a>Forgatókönyv: a gép a "nem sikerült elindítani" hibaüzenetet jeleníti meg egy frissítés központi telepítésében
 
@@ -334,7 +334,7 @@ Emellett letöltheti és futtathatja a [Windows Update-hibakeresőt](https://sup
 > [!NOTE]
 > A [Windows Update-hibakereső](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) dokumentációja azt jelzi, hogy a Windows-ügyfeleken használható, de a Windows Serveren is működik.
 
-## <a name="scenario-update-run-returns-failed-status"></a>Forgatókönyv: a frissítés futtatása "sikertelen" állapotot ad vissza.
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Forgatókönyv: a frissítés futtatása "sikertelen" állapotot ad vissza (Linux)
 
 ### <a name="issue"></a>Probléma
 
@@ -367,7 +367,7 @@ Ha nem tudja feloldani a javítási problémát, készítsen másolatot a követ
 ### <a name="machines-dont-install-updates"></a>A gépek nem telepítik a frissítéseket
 
 * Próbálja meg közvetlenül a gépen lefuttatni a frissítéseket. Ha a gép nem tudja alkalmazni a frissítéseket, tekintse [át a lehetséges hibák listáját a hibaelhárítási útmutatóban](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
-* Ha a frissítések helyileg futnak, próbálja meg eltávolítani és újratelepíteni az ügynököt a gépen a [virtuális gép eltávolítása a Update Managementról](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management)című témakör útmutatását követve.
+* Ha a frissítések helyileg futnak, próbálja meg eltávolítani és újratelepíteni az ügynököt a gépen a [virtuális gép eltávolítása a Update Managementról](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources)című témakör útmutatását követve.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Tudom, hogy vannak-e elérhető frissítések, de nem jelennek meg a saját gépeken
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301723"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801863"
 ---
 # <a name="developers-guide-to-durable-entities-in-net-preview"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben (előzetes verzió)
 
@@ -120,7 +120,7 @@ Például módosíthatjuk a számláló entitást, hogy elindítson egy előkés
 Az osztály-alapú entitások közvetlenül, az entitáshoz és annak műveleteihez explicit karakterlánc-nevek használatával érhetők el. Alább néhány példát láthatunk. az alapul szolgáló fogalmak (például a jelek és hívások) mélyebb magyarázatát lásd: az [entitások elérésének](durable-functions-entities.md#accessing-entities)vitafóruma. 
 
 > [!NOTE]
-> Ha lehetséges, az [entitások felületeken keresztüli elérését]()javasoljuk, mert több típusú ellenőrzést is biztosít.
+> Ha lehetséges, az [entitások felületeken keresztüli elérését](#accessing-entities-through-interfaces)javasoljuk, mert több típusú ellenőrzést is biztosít.
 
 ### <a name="example-client-signals-entity"></a>Példa: ügyfél-jelzési entitás
 
@@ -275,7 +275,7 @@ Néhány további szabályt is érvénybe léptetett:
 Ha a szabályok bármelyike meg van sértve, a rendszer egy `InvalidOperationException` értéket használ, ha a csatoló típusa argumentumként van használatban `SignalEntity` vagy `CreateProxy`. A kivételt jelző üzenet ismerteti, hogy melyik szabály lett megszakítva.
 
 > [!NOTE]
-> @No__t-0 értéket visszaadó illesztőfelület-metódusok csak jelzéssel (egyirányú), nem pedig (kétirányú) adhatók meg. A `Task` vagy `Task<T>` értéket visszaadó illesztőfelületi metódusok meghívhatók vagy megadhatók. Ha a hívása megtörténik, a művelet eredményét visszaállítják, vagy a művelet által eldobott kivételeket. Ha azonban a jelezve van, nem adják vissza a művelet tényleges eredményét vagy kivételét, de csak az alapértelmezett értéket.
+> `void` visszaadott illesztőfelület-metódusok csak a következő módon szerepelhetnek (egyirányú), nem nevezhető (kétirányú). A `Task` vagy `Task<T>` értéket visszaadó illesztőfelületi metódusok meghívhatók vagy megadhatók. Ha a hívása megtörténik, a művelet eredményét visszaállítják, vagy a művelet által eldobott kivételeket. Ha azonban a jelezve van, nem adják vissza a művelet tényleges eredményét vagy kivételét, de csak az alapértelmezett értéket.
 
 ## <a name="entity-serialization"></a>Entitás szerializálása
 
@@ -313,8 +313,8 @@ public class User
 ### <a name="serialization-attributes"></a>Szerializálási attribútumok
 
 A fenti példában úgy döntöttünk, hogy több attribútumot is tartalmaz, amelyek láthatóvá teszik a mögöttes szerializálást:
-- A osztályt a `[JsonObject(MemberSerialization.OptIn)]` értékkel láthatjuk el, hogy emlékeztessen arra, hogy az osztálynak szerializálható kell lennie, és csak olyan tagokat kell megőriznie, amelyek kifejezetten JSON-tulajdonságokkal vannak megjelölve.
--  A `[JsonProperty("name")]` értékkel megőrzött mezőket megjegyzésekkel láthatjuk el, hogy egy mező a megőrzött entitás állapotának részét képezi-e, valamint hogy megadja a JSON-ábrázolásban használandó tulajdonságnév nevét.
+- A osztályt megjegyzésekkel láthatjuk `[JsonObject(MemberSerialization.OptIn)]`, hogy emlékeztessen arra, hogy az osztálynak szerializálható kell lennie, és csak olyan tagokat kell megőriznie, amelyek kifejezetten JSON-tulajdonságokkal vannak megjelölve.
+-  A megőrzött `[JsonProperty("name")]` mezőket megjegyzésekkel láthatjuk, hogy egy mező a megőrzött entitások állapotának részét képezi, és meg kell határozni a JSON-ábrázolásban használandó tulajdonságnév nevét.
 
 Ezek az attribútumok azonban nem szükségesek; más konvenciók vagy attribútumok akkor is engedélyezettek, ha a Json.NET-mel működnek. Előfordulhat például, hogy az egyik `[DataContract]` attribútumot vagy egyáltalán nem attribútumot használ:
 

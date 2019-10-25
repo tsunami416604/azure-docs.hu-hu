@@ -1,5 +1,5 @@
 ---
-title: Azure AD-szerepkör beállításainak konfigurálása a PIM-Azure Active Directoryban | Microsoft Docs
+title: Az Azure AD szerepkör beállításainak konfigurálása a Privileged Identity Managementban – Azure Active Directory | Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja az Azure AD szerepkör beállításait a Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/31/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9252e3bb8ccddb810074b485f6f073f1bda3f05
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: cff298e24ac185767e6290e396818ccece7b9b55
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804439"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809150"
 ---
-# <a name="configure-azure-ad-role-settings-in-pim"></a>Az Azure AD szerepkör beállításainak konfigurálása a PIM-ben
+# <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
 
-A Kiemelt szerepkörű rendszergazda testre szabhatja Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szervezetében, beleértve a jogosult szerepkör-hozzárendelést aktiváló felhasználó élményének módosítását is.
+A Kiemelt szerepkörű rendszergazda testre szabhatja Privileged Identity Management (PIM) Azure Active Directory (Azure AD) szervezetében, beleértve a jogosult szerepkör-hozzárendelést aktiváló felhasználó élményének módosítását is.
 
 ## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
 
@@ -51,7 +51,7 @@ Az **aktiválások** csúszkával állíthatja be azt a maximális időtartamot 
 
 ## <a name="notifications"></a>Értesítések
 
-Az **értesítések** kapcsoló segítségével megadhatja, hogy a rendszergazdák kapnak-e e-mail-értesítéseket a szerepkörök aktiválása után. Ez hasznos lehet a jogosulatlan vagy törvénytelen aktiválások észleléséhez.
+Az **értesítések** kapcsoló segítségével megadhatja, hogy a rendszergazdák kapnak-e e-mail-értesítéseket a szerepkörök aktiválása után. Ez az értesítés hasznos lehet a jogosulatlan vagy törvénytelen aktiválások észleléséhez.
 
 Az **Engedélyezés**beállítás megadása esetén a rendszer a következő értesítéseket küldi el:
 
@@ -59,63 +59,60 @@ Az **Engedélyezés**beállítás megadása esetén a rendszer a következő ér
 - Biztonsági rendszergazda
 - Globális rendszergazda
 
-További információ: [e-mailes értesítések a PIM-ben](pim-email-notifications.md).
+További információkért tekintse [meg az e-mailes értesítéseket Privileged Identity Management](pim-email-notifications.md).
 
 ## <a name="incidentrequest-ticket"></a>Incidens/kérelem jegye
 
-Az **incidens/kérelem jegy** kapcsolójának használatával megadhatja, hogy a jogosult rendszergazdák megkövetelhetik-e a jegy számának megadását a szerepkörük aktiválásakor. Ez akkor lehet hasznos, ha szerepkör-hozzáférési naplózást hajt végre.
+Az **incidens/kérelem jegy** kapcsolójának használatával megkövetelheti, hogy a jogosult rendszergazdák a szerepkörük aktiválása után is tartalmazzák a jegy számát. Ezzel a gyakorlattal hatékonyabbá teheti a szerepkör-hozzáférés naplózását.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
-Használja a **multi-Factor Authentication** kapcsolót annak megadásához, hogy a felhasználóknak meg kell-e adniuk identitását az MFA-ban, mielőtt aktiválni tudják a szerepköreiket. Csak egyszer kell ellenőrizniük, hogy csak egyszer kell-e meggyőződnie, nem minden alkalommal, amikor aktiválnak egy szerepkört. Az MFA engedélyezésekor két tippet kell szem előtt tartani:
+Használja a **multi-Factor Authentication** kapcsolót annak megadásához, hogy a felhasználóknak meg kell-e adniuk identitását az MFA-ban, mielőtt aktiválni tudják a szerepköreiket. Csak egyszer kell meggyőződniük a saját identitásukat, nem minden alkalommal, amikor aktiválnak egy szerepkört. Az MFA engedélyezésekor két tippet kell szem előtt tartani:
 
-* Azok a felhasználók, akik rendelkeznek Microsoft-fiókkal az @outlook.come-mail-címeiknek (általában, de nem mindig), nem regisztrálhatják az Azure MFA-t Ha a Microsoft-fiókkal rendelkező felhasználók számára szeretné hozzárendelni a szerepköröket, akkor a rendszergazdáknak állandó rendszergazdai jogosultságokkal kell rendelkezniük, vagy le kell tiltaniuk az MFA-t.
-* Az MFA nem tiltható le magas jogosultsági szintű szerepkörökhöz az Azure AD-ben és a Office 365-ben. Ez egy biztonsági funkció, mivel ezeket a szerepköröket gondosan védeni kell:  
+- Azok a felhasználók, akik rendelkeznek Microsoft-fiókkal az e-mail-címükhez (általában @outlook.com, de nem mindig), nem regisztrálhatnak az Azure Multi-Factor Authentication. Ha a Microsoft-fiókkal rendelkező felhasználók számára szeretné hozzárendelni a szerepköröket, a rendszergazdáknak állandó rendszergazdai jogosultságokkal kell rendelkezniük, vagy le kell tiltaniuk a többtényezős hitelesítést a szerepkörhöz.
+- Az Azure Multi-Factor Authentication nem tiltható le magas jogosultsági szintű szerepkörökhöz az Azure AD-ben és az Office 365-ben. Ez a biztonsági funkció a következő szerepkörök védelme érdekében nyújt segítséget:  
   
-  * Azure Information Protection rendszergazda
-  * Számlázási adminisztrátor
-  * Felhőalkalmazás-rendszergazda
-  * Szabályozási ügyintéző
-  * Feltételes hozzáférésű rendszergazda
-  * CRM-szolgáltatásgazda
-  * Ügyfélszéf-hozzáférési jóváhagyó
-  * Címtárírók
-  * Exchange-rendszergazda
-  * Globális rendszergazda
-  * Intune szolgáltatás rendszergazdája
-  * Power BI-szolgáltatásgazda
-  * Kiemelt szerepkörű rendszergazda
-  * Biztonsági rendszergazda
-  * SharePoint szolgáltatás-rendszergazda
-  * Skype Vállalati verzió rendszergazdája
-  * Felhasználói rendszergazda
+  - Azure Information Protection rendszergazda
+  - Számlázási rendszergazda
+  - Cloud Application Administrator
+  - Megfelelőségi rendszergazda
+  - Feltételes hozzáférésű rendszergazda
+  - Dynamics 365-rendszergazda
+  - Ügyfél-kulcstároló hozzáférési jóváhagyója
+  - Címtár-írók
+  - Exchange-rendszergazda
+  - Globális rendszergazda
+  - Intune-rendszergazda
+  - Power BI rendszergazda
+  - Kiemelt szerepkörű rendszergazda
+  - Biztonsági rendszergazda
+  - SharePoint-rendszergazda
+  - Skype vállalati verzió-rendszergazda
+  - Felhasználói rendszergazda
 
-További információ: [többtényezős hitelesítés (MFA) és a PIM](pim-how-to-require-mfa.md).
+További információ: [multi-Factor Authentication és Privileged Identity Management](pim-how-to-require-mfa.md).
 
-## <a name="require-approval"></a>Jóváhagyás szükséges
+## <a name="require-approval"></a>Jóváhagyás megkövetelése
 
-Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az alábbi lépéseket.
+Ha a szükséges jóváhagyást delegálni szeretné a szerepkör aktiválásához, kövesse az alábbi lépéseket.
 
 1. Állítsa be a **jóváhagyás megkövetelése** kapcsolót az **engedélyezve**értékre. A panel kibontja a beállításokat a jóváhagyók kiválasztásához.
 
     ![Azure AD-szerepkörök – beállítások – jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
-    Ha **nem** ad meg jóváhagyókat, a Kiemelt szerepkörű rendszergazdák az alapértelmezett jóváhagyók lesznek. A Kiemelt szerepkörű rendszergazdáknak **minden** aktiválási kérelmet jóvá kell hagynia ehhez a szerepkörhöz.
+    Ha nem ad meg jóváhagyókat, a Kiemelt szerepkörű rendszergazda lesz az alapértelmezett jóváhagyó, és ezután jóvá kell hagynia a szerepkörre vonatkozó összes aktiválási kérést.
 
 1. A jóváhagyók megadásához kattintson a **jóváhagyók kiválasztása**elemre.
 
     ![Azure AD-szerepkörök – beállítások – jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Válasszon ki egy vagy több jóváhagyót, majd kattintson a **kiválasztás**elemre. Felhasználókat vagy csoportokat választhat ki. Legalább két jóváhagyó ajánlott. Az önjóváhagyás nem engedélyezett.
-
-    A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
+1. Válasszon ki egy vagy több jóváhagyót a Kiemelt szerepkörű rendszergazda mellett, majd kattintson a **kiválasztás**elemre. Felhasználókat vagy csoportokat választhat ki. Javasoljuk, hogy legalább két jóváhagyó legyen. Még ha Ön is jóváhagyja a saját magát, nem hagyhat jóvá önálló szerepkör-aktiválást. A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
 
 1. Miután megadta az összes szerepkör-beállítást, kattintson a **Save (Mentés** ) gombra a módosítások mentéséhez.
 
-
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure AD-szerepkörök kiosztása a PIM-ben](pim-how-to-add-role-to-user.md)
-- [Biztonsági riasztások konfigurálása Azure AD-szerepkörökhöz a PIM-ben](pim-how-to-configure-security-alerts.md)
+- [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
+- [Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management](pim-how-to-configure-security-alerts.md)

@@ -1,24 +1,23 @@
 ---
-title: Gyakori hibák és figyelmeztetések – Azure Search
-description: Ez a cikk olyan gyakori hibákkal és figyelmeztetésekkel kapcsolatos információkat és megoldásokat tartalmaz, amelyeket az AI-gazdagítás során a Azure Searchban lehet megtapasztalni.
-services: search
-manager: heidist
+title: Gyakori hibák és figyelmeztetések
+titleSuffix: Azure Cognitive Search
+description: Ez a cikk olyan gyakori hibákkal és figyelmeztetésekkel kapcsolatos információkat és megoldásokat tartalmaz, amelyeket az AI az Azure Cognitive Search-ban való gyarapítása során felmerülhet.
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553611"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787976"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Gyakori hibák és figyelmeztetések a mesterséges intelligencia-bővítési folyamatról Azure Search
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Gyakori hibák és figyelmeztetések a mesterséges intelligencia-bővítési folyamatról az Azure-ban Cognitive Search
 
-Ez a cikk olyan gyakori hibákkal és figyelmeztetésekkel kapcsolatos információkat és megoldásokat tartalmaz, amelyeket az AI-gazdagítás során a Azure Searchban lehet megtapasztalni.
+Ez a cikk olyan gyakori hibákkal és figyelmeztetésekkel kapcsolatos információkat és megoldásokat tartalmaz, amelyeket az AI az Azure Cognitive Search-ban való gyarapítása során felmerülhet.
 
 ## <a name="errors"></a>Hibák
 Az indexelés leáll, ha a hibák száma meghaladja a ["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -210,3 +209,14 @@ Ha biztosítani szeretné, hogy az összes szöveg elemzése megtörténjen, ér
 
 ### <a name="web-api-skill-response-contains-warnings"></a>A webes API-ügyességi válasza figyelmeztetéseket tartalmaz
 Az indexelő egy képességet tudott futtatni a készségkészlet, de a webes API-kérelemtől kapott válasz a végrehajtás során figyelmeztetéseket jelzett. Tekintse át a figyelmeztetéseket, és Ismerje meg, hogy milyen hatással van az adatai, és hogy van-e szükség beavatkozásra.
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>Az aktuális indexelő konfiguráció nem támogatja a növekményes előrehaladást
+Ez a figyelmeztetés csak Cosmos DB adatforrások esetén fordul elő.
+
+Az indexelés során fellépő növekményes előrehaladás biztosítja, hogy ha az indexelő végrehajtását átmeneti hibák vagy végrehajtási időkorlát miatt megszakítja, az indexelő elvégezheti a következő futása után, hogy a teljes gyűjteményt ne kelljen újból indexelni. Ez különösen fontos a nagyméretű gyűjtemények indexelése során.
+
+A befejezetlen indexelési feladatok folytatásának lehetősége a `_ts` oszlop által megrendelt dokumentumok alapján történik. Az indexelő az időbélyeg használatával határozza meg, hogy melyik dokumentumot kell felvenni a következőre. Ha a `_ts` oszlop hiányzik, vagy az indexelő nem tudja megállapítani, hogy az adott egyéni lekérdezést rendeli-e meg, az indexelő elindul, és látni fogja ezt a figyelmeztetést.
+
+Felülbírálhatja ezt a viselkedést, és engedélyezheti a növekményes előrehaladást, és letilthatja ezt a figyelmeztetést a `assumeOrderByHighWatermarkColumn` konfigurációs tulajdonság használatával.
+
+[További információ a növekményes és egyéni lekérdezésekkel Cosmos DB.](https://go.microsoft.com/fwlink/?linkid=2099593)

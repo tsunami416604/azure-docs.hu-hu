@@ -1,5 +1,6 @@
 ---
 title: Az alkalmazások Azure Active Directoryhoz való hozzáadása
+titleSuffix: Microsoft identity platform
 description: Mit jelent az alkalmazás hozzáadása az Azure AD-hez, és hogyan juthat hozzájuk?
 services: active-directory
 documentationcenter: ''
@@ -18,23 +19,23 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835385"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803448"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
 
 Az Azure AD-ben két alkalmazás van jelen: 
-* [Alkalmazásobjektumok](app-objects-and-service-principals.md#application-object) – bár vannak kivételek [](#notes-and-exceptions), az Application Objects egy alkalmazás definíciójának tekinthető.
+* [Alkalmazásobjektumok](app-objects-and-service-principals.md#application-object) – bár vannak [kivételek](#notes-and-exceptions), az Application Objects egy alkalmazás definíciójának tekinthető.
 * [Egyszerű szolgáltatásnév](app-objects-and-service-principals.md#service-principal-object) – az alkalmazás egy példányát lehet tekinteni. Az egyszerű szolgáltatásnév általában egy Application objektumra hivatkozik, és egy alkalmazás-objektumra több egyszerű szolgáltatásnév is hivatkozhat a címtárak között.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Mik azok az alkalmazásobjektumok és honnan származnak?
 Az alkalmazás- [objektumok](app-objects-and-service-principals.md#application-object) a Azure Portalban kezelhetők az alkalmazások [regisztrációjának](https://aka.ms/appregistrations) felhasználói felületén keresztül. Az Application Objects leírja az alkalmazást az Azure AD-nek, és az alkalmazás definíciójának is tekinthető, amely lehetővé teszi, hogy a szolgáltatás tudja, hogyan kell jogkivonatokat kibocsátani az alkalmazásnak a beállításai alapján. Az Application objektum csak a saját könyvtárában létezik, még akkor is, ha egy több-bérlős alkalmazás, amely más címtárakban is támogatja az egyszerű szolgáltatásokat. Az Application objektum a következők bármelyikét tartalmazhatja (valamint további, itt nem említett információkat):
 * Név, embléma és közzétevő
-* Átirányítási URI azonosítók
+* Átirányítási URI-k
 * Titkos kódok (az alkalmazás hitelesítéséhez használt szimmetrikus és/vagy aszimmetrikus kulcsok)
 * API-függőségek (OAuth)
 * Közzétett API-k/erőforrások/hatókörök (OAuth)
@@ -91,7 +92,7 @@ Az előző ábrán a Microsoft két könyvtárat tart fenn belsőleg (a bal olda
 
 Az Azure AD-vel integrált alkalmazás-közzétevők/szállítók számára közzétételi könyvtárat kell megadnia (a jobb oldalon a "néhány SaaS-címtár" lehetőség jelenik meg).
 
-A saját maga által hozzáadott alkalmazások (amelyek a diagramon az alkalmazásként jelennek meg) a következők:
+A saját maga által hozzáadott alkalmazások (amelyek a diagramon az **alkalmazásként** jelennek meg) a következők:
 
 * Fejlesztett alkalmazások (az Azure AD-vel integráltan)
 * Egyszeri bejelentkezéshez csatlakoztatott alkalmazások

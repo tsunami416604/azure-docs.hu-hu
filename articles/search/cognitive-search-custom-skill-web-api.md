@@ -1,24 +1,23 @@
 ---
-title: Egyéni kognitív keresési képességek – Azure Search
-description: A kognitív keresési szakértelmével képességeinek kiterjesztése a webes API-k meghívásával
-services: search
+title: Egyéni webes API-képesség egy alkoholtartalom-növelési folyamatban
+titleSuffix: Azure Cognitive Search
+description: Kiterjesztheti az Azure Cognitive Search szakértelmével képességeit a webes API-k meghívásával. Egyéni kód integrálásához használja az egyéni webes API-képességet.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693295"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784892"
 ---
-# <a name="custom-web-api-skill"></a>Egyéni webes API-képesség
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
 
-Az **egyéni webes API** -képesség lehetővé teszi a kognitív keresés kiterjesztését, ha az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
+Az **egyéni webes API** -képesség lehetővé teszi, hogy kiterjessze az AI-bővítést úgy, hogy az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
 
 A JSON-adattartalom szerkezetét részletesebben ismertetjük ebben a dokumentumban.
 
@@ -204,5 +203,5 @@ Azokban az esetekben, amikor a webes API nem érhető el vagy HTTP-hibát ad vis
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://aka.ms/powerskills)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Egyéni szakértelem hozzáadása a kognitív kereséshez](cognitive-search-custom-skill-interface.md)
-+ [Példa: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)
++ [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
++ [Példa: egyéni képesség létrehozása AI-bővítéshez (kognitív-Search-Create-Custom-skill-example.md)

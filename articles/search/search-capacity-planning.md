@@ -1,22 +1,22 @@
 ---
-title: Partíciók és replikák skálázása lekérdezésekhez és indexeléshez – Azure Search
-description: A partíciós és a replika számítógép erőforrásainak módosítása a Azure Searchban, ahol az egyes erőforrások díjszabása számlázható keresési egységekben történik.
-author: HeidiSteen
+title: Partíciók és replikák vertikális felskálázása a lekérdezési és indexelési munkaterhelések kapacitásának hozzáadásához
+titleSuffix: Azure Cognitive Search
+description: A partíciós és a replika számítógép erőforrásainak módosítása az Azure Cognitive Searchban, ahol az egyes erőforrások számlázható keresési egységekben vannak.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/01/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69650063"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792500"
 ---
-# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Partíciók és replikák méretezése a lekérdezési és indexelési feladatokhoz Azure Search
+# <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Partíciók és replikák vertikális felskálázása az Azure-beli lekérdezési és indexelési feladatok kapacitásának növeléséhez Cognitive Search
+
 Miután [kiválasztotta a díjszabási szintet](search-sku-tier.md) , és [kiépít egy keresési szolgáltatást](search-create-service-portal.md), a következő lépés a szolgáltatás által használt replikák vagy partíciók számának megadása. Az egyes szintek rögzített számú számlázási egységet biztosítanak. Ez a cikk bemutatja, hogyan oszthatja ki ezeket az egységeket olyan optimális konfiguráció eléréséhez, amely kiegyenlíti a lekérdezések végrehajtásához, indexeléséhez és tárolásához szükséges követelményeket.
 
 Az erőforrás-konfiguráció akkor érhető el, ha az [alapszintű](https://aka.ms/azuresearchbasic) vagy a [standard vagy a Storage optimalizált szintjein](search-limits-quotas-capacity.md)állít be szolgáltatást. Ezen rétegek szolgáltatásai esetében a kapacitás a *keresési egységek* (SUs) növekményei között vásárolható meg, ahol az egyes partíciók és replikák egy Su-ként számítanak. 
@@ -24,7 +24,7 @@ Az erőforrás-konfiguráció akkor érhető el, ha az [alapszintű](https://aka
 Ha kevesebb SUs-eredményt kíván használni, egy arányosan alacsonyabb számlán kell lennie. A számlázás mindaddig érvényes, amíg a szolgáltatás be van állítva. Ha átmenetileg nem használ szolgáltatást, a számlázás elkerülésének egyetlen módja, ha törli a szolgáltatást, majd újra létrehozza azt, amikor szüksége van rá.
 
 > [!Note]
-> A szolgáltatás törlésével mindent töröl. A megőrzött keresési adatbiztonsági mentéshez és helyreállításhoz nincs lehetőség Azure Searchon belül. Egy meglévő index új szolgáltatáson való újbóli üzembe helyezéséhez futtassa az eredeti létrehozásához és betöltéséhez használt programot. 
+> A szolgáltatás törlésével mindent töröl. Az Azure Cognitive Searchon belül nem áll rendelkezésre a megőrzött keresési adatbiztonsági mentés és helyreállítás. Egy meglévő index új szolgáltatáson való újbóli üzembe helyezéséhez futtassa az eredeti létrehozásához és betöltéséhez használt programot. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminológia: replikák és partíciók
 A replikák és partíciók a keresési szolgáltatást támogató elsődleges erőforrások.
@@ -40,7 +40,7 @@ A replikák és partíciók a keresési szolgáltatást támogató elsődleges e
 
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Replikák és partíciók lefoglalása
-Azure Search a szolgáltatás kezdetben egy partíciót és egy replikát tartalmazó minimális szintű erőforrást foglal le. Az azt támogató rétegek esetén a partíciók növelésével fokozatosan állíthatja be a számítási erőforrásokat, ha több tárterületre és I/O-ra van szüksége, vagy további replikákat ad hozzá a nagyobb lekérdezési kötetekhez vagy jobb teljesítményhez. Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes számítási feladat (indexelés és lekérdezések) kezeléséhez. A számítási feladatok több szolgáltatás között nem oszthatók ki.
+Az Azure Cognitive Search-ban a szolgáltatás eredetileg egy partícióból és egy replikából álló minimális szintű erőforrásokat foglal le. Az azt támogató rétegek esetén a partíciók növelésével fokozatosan állíthatja be a számítási erőforrásokat, ha több tárterületre és I/O-ra van szüksége, vagy további replikákat ad hozzá a nagyobb lekérdezési kötetekhez vagy jobb teljesítményhez. Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes számítási feladat (indexelés és lekérdezések) kezeléséhez. A számítási feladatok több szolgáltatás között nem oszthatók ki.
 
 A replikák és partíciók kiosztásának növeléséhez vagy módosításához javasolt a Azure Portal használata. A portál a maximális határértékek alatti megengedett kombinációk korlátozásait kényszeríti ki. Ha parancsfájl-vagy programkód-alapú létesítési megközelítésre van szüksége, akkor a [Azure PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatív megoldás.
 
@@ -72,7 +72,7 @@ A replikák és partíciók kiosztásának növeléséhez vagy módosításához
 
 
 > [!NOTE]
-> A szolgáltatás üzembe helyezését követően nem lehet magasabb SKU-ra frissíteni. Létre kell hoznia egy keresési szolgáltatást az új szinten, és újra kell töltenie az indexeket. A szolgáltatás kiépítési támogatásához lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) .
+> A szolgáltatás üzembe helyezését követően nem lehet magasabb SKU-ra frissíteni. Létre kell hoznia egy keresési szolgáltatást az új szinten, és újra kell töltenie az indexeket. A szolgáltatás kiépítési támogatásához tekintse meg az [Azure Cognitive Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) című témakört.
 >
 >
 
@@ -97,7 +97,7 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> A replikák és partíciók száma egyenletesen oszlik el a 12 (pontosabban, 1, 2, 3, 4, 6, 12). Ennek az az oka, hogy a Azure Search az egyes indexeket 12 szegmensre osztja, hogy az összes partíción egyenlő arányban legyen elosztva. Ha például a szolgáltatás három partícióval rendelkezik, és létrehoz egy indexet, minden partíció az index négy szegmensét fogja tartalmazni. Hogyan Azure Search az indexek egy implementációs részletességgel, amely a jövőbeli kiadásokban változhat. Bár a szám 12 ma, nem várható, hogy ez a szám mindig 12 lesz a jövőben.
+> A replikák és partíciók száma egyenletesen oszlik el a 12 (pontosabban, 1, 2, 3, 4, 6, 12). Ennek az az oka, hogy az Azure Cognitive Search az egyes indexeket 12 szegmensre osztja, így a partíciók között egyenlő arányban terjedhet. Ha például a szolgáltatás három partícióval rendelkezik, és létrehoz egy indexet, minden partíció az index négy szegmensét fogja tartalmazni. Az Azure Cognitive Search az indexek egy implementációs részletességgel rendelkeznek, amely a jövőbeli kiadásokban változhat. Bár a szám 12 ma, nem várható, hogy ez a szám mindig 12 lesz a jövőben.
 >
 
 
@@ -112,16 +112,16 @@ A magas rendelkezésre állásra vonatkozó általános javaslatok a következő
 
 * Három vagy több replika az olvasási/írási munkaterhelések magas rendelkezésre állásához (lekérdezések és az indexelés egyéni dokumentumok hozzáadása, frissítése vagy törlése)
 
-A Azure Search szolgáltatói szerződése (SLA) a lekérdezési műveletekre és a dokumentumok hozzáadását, frissítését vagy törlését tartalmazó index-frissítésekre irányul.
+Az Azure Cognitive Search szolgáltatói szerződések (SLA) a lekérdezési műveletekre és a dokumentumok hozzáadását, frissítését vagy törlését tartalmazó index-frissítésekre irányulnak.
 
 Az alapszintű csomag egy partíción és három replikán található. Ha azt szeretné, hogy a rugalmasság azonnal reagáljon az indexelési és a lekérdezési átviteli sebesség igény szerinti ingadozására, vegye figyelembe az egyik standard szintet is.  Ha úgy találja, hogy a tárolási követelmények sokkal gyorsabban növekednek, mint a lekérdezési átviteli sebesség, vegye figyelembe a tárterület optimalizált szintjeinek egyikét.
 
 ### <a name="index-availability-during-a-rebuild"></a>Az index rendelkezésre állása Újraépítés közben
 
-A Azure Search magas rendelkezésre állása olyan lekérdezésekhez és index-frissítésekhez tartozik, amelyek nem járnak az indexek újraépítésekor. Ha töröl egy mezőt, módosít egy adattípust, vagy átnevez egy mezőt, újra létre kell hoznia az indexet. Az index újraépítéséhez törölnie kell az indexet, újra létre kell hoznia az indexet, és újra kell töltenie az adatfájlokat.
+Az Azure Cognitive Search magas rendelkezésre állása olyan lekérdezésekre és index-frissítésekre vonatkozik, amelyek nem járnak az indexek újraépítésekor. Ha töröl egy mezőt, módosít egy adattípust, vagy átnevez egy mezőt, újra létre kell hoznia az indexet. Az index újraépítéséhez törölnie kell az indexet, újra létre kell hoznia az indexet, és újra kell töltenie az adatfájlokat.
 
 > [!NOTE]
-> Az index újraépítése nélkül új mezőket adhat hozzá egy Azure Search indexhez. Az új mező értéke NULL lesz az indexben már szereplő összes dokumentum esetében.
+> Az index újraépítése nélkül új mezőket adhat hozzá egy Azure Cognitive Search indexhez. Az új mező értéke NULL lesz az indexben már szereplő összes dokumentum esetében.
 
 Ahhoz, hogy az index rendelkezésre álljon az Újraépítés során, az index egy másik névvel kell rendelkeznie ugyanazon a szolgáltatáson, vagy az index egy másolata ugyanazzal a névvel egy másik szolgáltatáson, majd a kódban át kell adni az átirányítási vagy feladatátvételi logikát.
 
@@ -133,7 +133,7 @@ A lekérdezés késése azt jelzi, hogy további replikák szükségesek. Által
 
 A lekérdezések másodpercenkénti számát (QPS) nem lehet megbecsülni: a lekérdezési teljesítmény a lekérdezés és a versengő számítási feladatok összetettsége alapján változhat. Bár a replikák hozzáadása egyértelműen jobb teljesítményt eredményez, az eredmény nem feltétlenül lineáris: három replika hozzáadása nem garantálja a háromszoros átviteli sebességet.
 
-A számítási feladatok QPS becslésével kapcsolatos útmutatásért lásd: [Azure Search teljesítmény-és optimalizálási megfontolások](search-performance-optimization.md).
+A számítási feladatok QPS becslésével kapcsolatos útmutatásért lásd: az [Azure Cognitive Search teljesítmény-és optimalizálási szempontjai](search-performance-optimization.md).
 
 ## <a name="increase-indexing-performance-with-partitions"></a>Az indexelési teljesítmény javítása a partíciókkal
 A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a replikák több partícióra van szükségük. A partíciók hozzáadásával az írási/olvasási műveletek nagyobb számú számítási erőforráson keresztül terjednek ki. Emellett további lemezterületet biztosít a további indexek és dokumentumok tárolásához.
@@ -143,4 +143,4 @@ A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat,
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Válasszon árképzési szintet Azure Search](search-sku-tier.md)
+[Válasszon árképzési szintet az Azure Cognitive Search](search-sku-tier.md)

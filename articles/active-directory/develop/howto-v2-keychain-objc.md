@@ -1,5 +1,6 @@
 ---
-title: Kulcstartó konfigurálása | Microsoft Identity platform
+title: Kulcskarika konfigurálása
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan konfigurálhatja a kulcstartót úgy, hogy az alkalmazás gyorsítótárazza a tokeneket a kulcstartóban.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264176"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803805"
 ---
 # <a name="configure-keychain"></a>Kulcskarika konfigurálása
 

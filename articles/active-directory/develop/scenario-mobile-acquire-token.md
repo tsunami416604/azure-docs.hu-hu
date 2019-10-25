@@ -1,5 +1,6 @@
 ---
-title: Webes API-kat meghívó mobil alkalmazás – token beszerzése az alkalmazáshoz | Microsoft Identity platform
+title: Webes API-kat meghívó mobil alkalmazás – token beszerzése az alkalmazáshoz
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre olyan mobil alkalmazást, amely meghívja a webes API-kat (az alkalmazás jogkivonatának beszerzése)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 454d62f871290d2e7dd8d0eee4b1a2429625a5fc
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268271"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803768"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Webes API-kat meghívó mobil alkalmazás – jogkivonat beolvasása
 
@@ -31,7 +32,7 @@ A védett webes API-k hívásának megkezdése előtt az alkalmazásnak hozzáf�
 
 Ha jogkivonatot kér, meg kell határoznia egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adataihoz férhet hozzá.  
 
-A legegyszerűbb módszer a kívánt webes API-k `App ID URI` és a hatókör `.default`összevonása. Ez azt jelzi, hogy az alkalmazásnak szüksége van a Microsoft Identity platformra, amely a portálon beállított összes hatókört igényli.
+A legegyszerűbb módszer a kívánt webes API-`App ID URI` és a hatókör `.default`ének összevonása. Ez azt jelzi, hogy az alkalmazásnak szüksége van a Microsoft Identity platformra, amely a portálon beállított összes hatókört igényli.
 
 #### <a name="android"></a>Android
 ```Java
@@ -152,7 +153,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-**Ha a MSAL visszatér `MSALErrorInteractionRequired`, próbálja meg interaktív módon beszerezze a jogkivonatokat:**
+**Ha a MSAL visszaadja a `MSALErrorInteractionRequired`t, próbálja meg interaktív módon beszerezze a jogkivonatokat:**
 
 Objective-C:
 
@@ -218,25 +219,25 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Kötelező paraméterek a MSAL.NET
 
-`AcquireTokenInteractive`csak egy kötelező paramétert ``scopes``tartalmaz, amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat a Microsoft Graph, a szükséges hatókörök az "engedélyek" szakaszban található minden Microsoft Graph API API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. Lásd még [Microsoft Graph engedélyek referenciáját](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive` csak egy kötelező paraméterrel rendelkezik ``scopes``, amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat a Microsoft Graph, a szükséges hatókörök az "engedélyek" szakaszban található minden Microsoft Graph API API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. Lásd még [Microsoft Graph engedélyek referenciáját](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-Ha az alkalmazás létrehozásakor nem adta meg az alkalmazást, az Androidon meg kell adnia a szülő tevékenységet is (a használatával `.WithParentActivityOrWindow`, lásd alább), hogy a token visszakerüljön az adott szülő tevékenységre az interakció után. Ha nem ad meg, kivételt fog a rendszer a hívásakor `.ExecuteAsync()`.
+Ha az alkalmazás létrehozásakor nem adta meg az alkalmazást, az Androidon meg kell adnia a szülő tevékenységet is (`.WithParentActivityOrWindow`használatával, lásd alább), hogy a token visszakerüljön az adott szülő tevékenységre az interakció után. Ha nem ad meg, a rendszer kivételt fog kiváltani `.ExecuteAsync()`meghívásakor.
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>Speciális választható paraméterek a MSAL.NET
 
 ##### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()`a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával
+a `WithPrompt()` a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 Az osztály a következő konstansokat határozza meg:
 
-- ``SelectAccount``: kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely olyan fiókokat tartalmaz, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazások fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ezzel a beállítással a MSAL ``prompt=select_account`` küldheti az identitás-szolgáltatónak. Ez az alapértelmezett beállítás, és jó munkát végez a lehető legjobb élmény biztosításához a rendelkezésre álló információk (fiók, a felhasználó munkamenetének jelenléte stb.) alapján. ...). Csak akkor módosítsa, ha nincs megfelelő oka.
-- ``Consent``: lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót abban az esetben is, ha beleegyezett a beleegyező engedély megadására. Ebben az esetben a MSAL elküldi `prompt=consent` az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor megtekintse a beleegyezik párbeszédpanelt.
-- ``ForceLogin``: lehetővé teszi, hogy az alkalmazás fejlesztője akkor is kérje a felhasználótól a hitelesítő adatok megadását, ha ez a felhasználó nem lenne szükséges. Ez a beállítás akkor lehet hasznos, ha a jogkivonat beszerzése meghiúsul, hogy a felhasználó újra bejelentkezzen. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Azt is láttuk, hogy az egyes biztonsági irányultságú alkalmazásokban, ahol a szervezeti irányítás megköveteli, hogy a felhasználó újrajelentkezzen – minden alkalommal, amikor hozzáférnek az alkalmazás egyes részeihez.
-- ``Never``(csak a .NET 4,5 és a WinRT esetében) nem fogja kérni a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni (lásd alább: Webes nézetek a MSAL.NET-ben). Ha ez a beállítás nem sikerül, és ebben az `AcquireTokenInteractive` esetben a rendszer kivételt jelez arról, hogy a felhasználói felületi interakcióra van szükség, és egy `Prompt` másik paramétert kell használnia.
-- ``NoPrompt``: A rendszer nem küld figyelmeztetést az identitás-szolgáltatónak. Ez a lehetőség csak Azure AD B2C profil-házirendek szerkesztéséhez használható (lásd a [B2C](https://aka.ms/msal-net-b2c-specificities)-specifikusokat).
+- ``SelectAccount``: kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely olyan fiókokat tartalmaz, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazások fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ez a beállítás a MSAL ``prompt=select_account`` küldését hajtja az identitás-szolgáltatónak. Ez az alapértelmezett beállítás, és jó munkát végez a lehető legjobb élmény biztosításához a rendelkezésre álló információk (fiók, a felhasználó munkamenetének jelenléte stb.) alapján. ...). Csak akkor módosítsa, ha nincs megfelelő oka.
+- ``Consent``: lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót abban az esetben is, ha a beleegyező engedélyt megadták. Ebben az esetben a MSAL `prompt=consent` küld az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor megtekintse a beleegyezik párbeszédpanelt.
+- ``ForceLogin``: lehetővé teszi, hogy az alkalmazás fejlesztője akkor is kérje a felhasználótól a hitelesítő adatok megadását, ha ez a felhasználó nem lenne szükséges. Ez a beállítás akkor lehet hasznos, ha a jogkivonat beszerzése meghiúsul, hogy a felhasználó újra bejelentkezzen. Ebben az esetben a MSAL `prompt=login` küld az identitás-szolgáltatónak. Azt is láttuk, hogy az egyes biztonsági irányultságú alkalmazásokban, ahol a szervezeti irányítás megköveteli, hogy a felhasználó újrajelentkezzen – minden alkalommal, amikor hozzáférnek az alkalmazás egyes részeihez.
+- ``Never`` (csak a .NET 4,5-es és a WinRT esetén) nem kéri a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni (lásd alább: webes nézetek a MSAL.NET-ben). Ha ez a beállítás nem sikerül, és ebben az esetben `AcquireTokenInteractive` kivételt jelez, hogy a felhasználói felületi interakcióra van szükség, és egy másik `Prompt` paramétert kell használnia.
+- ``NoPrompt``: a rendszer nem küld figyelmeztetést az identitás-szolgáltatónak. Ez a lehetőség csak Azure AD B2C profil-házirendek szerkesztéséhez használható (lásd a [B2C-specifikusokat](https://aka.ms/msal-net-b2c-specificities)).
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
@@ -250,7 +251,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Egyéb választható paraméterek
 
-További információ az `AcquireTokenInteractive` [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) dokumentációjában található további választható paraméterekről
+További információ a [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) -hez készült dokumentációban `AcquireTokenInteractive` további opcionális paraméterekről
 
 ### <a name="acquire-tokens-via-the-protocol"></a>Jogkivonatok beszerzése a protokollon keresztül
 
@@ -258,7 +259,7 @@ A protokollt nem ajánlott közvetlenül használni. Ha így tesz, az alkalmazá
 
 Ha a protokollt használja a Mobile apps-jogkivonatok beszerzéséhez, két kérést kell tennie: Kérjen egy engedélyezési kódot, és cserélje ki egy tokenre.
 
-#### <a name="get-authorization-code"></a>Engedélyezési kód beszerzése
+#### <a name="get-authorization-code"></a>Engedélyezési kód lekérése
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -284,7 +285,7 @@ client_id=<CLIENT_ID>
 &grant_type=authorization_code
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API meghívása](scenario-mobile-call-api.md)

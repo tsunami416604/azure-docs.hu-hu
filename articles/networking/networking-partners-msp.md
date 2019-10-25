@@ -1,5 +1,5 @@
 ---
-title: 'Hálózati partnerek: Azure-hálózatkezelés | Microsoft Docs'
+title: 'Hálózati partnerek: Azure Networking | Microsoft Docs'
 description: Ez a cikk az MSP hálózati partnerek listáját tartalmazza
 services: networking
 author: skishen525
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 60127a8aebaf45969ba78a65676093210ea6de78
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828187"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804215"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 
@@ -26,7 +26,7 @@ Az ügyfelek az Azure Marketplace-en vagy közvetlenül az MSP-ből vásárolhat
 
 ## <a name="msp"></a>Azure hálózati MSP-partnerek
 
-Az ebben a szakaszban található hivatkozásokra kattintva további információt találhat az Azure hálózati MSP-partnerek által kínált felügyelt felhőalapú hálózati szolgáltatásokról. Ha a Cloud Network Services-partner nem szerepel az alábbi szakaszban, akkor a szolgáltató vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e ManagedVirtualWAN@microsoft.com-mailt küldenek a címre. 
+Az ebben a szakaszban található hivatkozásokra kattintva további információt találhat az Azure hálózati MSP-partnerek által kínált felügyelt felhőalapú hálózati szolgáltatásokról. Ha a Cloud Network Services-partner nem szerepel az alábbi szakaszban, akkor a szolgáltató vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a ManagedVirtualWAN@microsoft.comnak. 
 
 [ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)
 
@@ -38,7 +38,7 @@ Az ebben a szakaszban található hivatkozásokra kattintva további informáci�
 
 [Equinix](https://www.equinix.com/)
 
-[InterCloud](https://www.intercloud.com/partners/cloud-service-providers/get-azure-expressroute)
+[InterCloud](https://intercloud.com/partners/get-to-azure-via-expressroute/)
 
 [IIJ](https://www.iij.ad.jp/biz/cloudex/)
 

@@ -1,26 +1,26 @@
 ---
-title: Teljes szöveges keresőmotor (Lucene) architektúrája – Azure Search
-description: A Lucene-lekérdezés feldolgozásának és dokumentum-beolvasási fogalmának magyarázata a teljes szöveges kereséshez, Azure Search kapcsolódóan.
+title: Teljes szöveges lekérdezés és indexelési motor architektúrája (Lucene)
+titleSuffix: Azure Cognitive Search
+description: Megvizsgálja a Lucene-lekérdezés feldolgozási és dokumentum-beolvasási fogalmait a teljes szöveges kereséshez, az Azure Cognitive Search-hez kapcsolódóan.
 manager: nitinme
 author: yahnoosh
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
 ms.author: jlembicz
-ms.openlocfilehash: d377d6180f3d2d64f183ed574add3e7307e34fc3
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186539"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793558"
 ---
-# <a name="how-full-text-search-works-in-azure-search"></a>A teljes szöveges keresés működése Azure Search
+# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search
 
-Ez a cikk azoknak a fejlesztőknek szól, akiknek alaposabban meg kell ismerniük, hogyan működik a Lucene teljes szöveges keresése Azure Search. A szöveges lekérdezések esetében a Azure Search a legtöbb esetben zökkenőmentesen kézbesíti a várt eredményeket, de időnként előfordulhat, hogy egy "off" (kikapcsolt) eredmény jelenik meg. Ezekben az esetekben a Lucene-lekérdezés végrehajtásának négy fázisában (lekérdezés-elemzés, lexikális analízis, dokumentumok egyeztetése, pontozás) segíthet azonosítani a lekérdezési paraméterek vagy az indexelési konfiguráció adott módosításait, amelyek a kívánt eredmény. 
+Ez a cikk olyan fejlesztőknek szól, akiknek alaposabban meg kell ismerniük, hogyan működik a Lucene teljes szöveges keresése az Azure Cognitive Searchban. Szöveges lekérdezéseknél az Azure Cognitive Search a legtöbb esetben zökkenőmentesen kézbesítheti a várt eredményeket, de esetenként előfordulhat, hogy a "Kikapcsolva" érték jelenik meg. Ezekben az esetekben a Lucene-lekérdezés végrehajtásának négy fázisában (lekérdezés-elemzés, lexikális analízis, dokumentumok egyeztetése, pontozás) segíthet azonosítani a lekérdezési paraméterek vagy az indexelési konfiguráció adott módosításait, amelyek a kívánt eredmény. 
 
 > [!Note] 
-> A Azure Search Lucene használ a teljes szöveges kereséshez, de a Lucene-integráció nem teljes. A Lucene funkcióit szelektíven tesszük elérhetővé, és kiterjesztjük, hogy a forgatókönyvek Azure Search fontosak legyenek. 
+> Az Azure Cognitive Search Lucene használ a teljes szöveges kereséshez, de a Lucene-integráció nem teljes. A Lucene funkcióit szelektíven tesszük elérhetővé és bővítjük, hogy az Azure Cognitive Search számára fontos forgatókönyveket lehessen engedélyezni. 
 
 ## <a name="architecture-overview-and-diagram"></a>Architektúra áttekintése és diagram
 
@@ -35,7 +35,7 @@ A teljes szöveges keresési lekérdezés feldolgozásával elindul a lekérdez�
 
 Az alábbi ábra a keresési kérések feldolgozásához használt összetevőket szemlélteti. 
 
- ![Lucene lekérdezési architektúra diagramja Azure Search][1]
+ ![Lucene lekérdezési architektúra diagram az Azure Cognitive Search][1]
 
 
 | A legfontosabb összetevők | Funkcionális Leírás | 
@@ -49,7 +49,7 @@ Az alábbi ábra a keresési kérések feldolgozásához használt összetevőke
 
 A keresési kérések teljes körűen meghatározzák, hogy mit kell visszaadni egy eredményhalmaz. Legegyszerűbb formában ez egy üres lekérdezés, amely nem tartalmaz semmiféle feltételt. A reálisabb példa többek között paramétereket, több lekérdezési kifejezést is magában foglal, például bizonyos mezőkre, például egy szűrési kifejezésre és a megrendelési szabályokra.  
 
-A következő példa egy keresési kérelem, amelyet a [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával küldhet Azure Searchnak.  
+A következő példa egy olyan keresési kérelem, amelyet az Azure-Cognitive Search küldhet az [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2019-05-06
@@ -66,13 +66,13 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Ehhez a kérelemhez a keresőmotor a következő műveleteket végzi el:
 
 1. Kiszűri a dokumentumokat, ahol az ár legalább $60, és kisebb, mint $300.
-2. Végrehajtja a lekérdezést. Ebben a példában a keresési lekérdezés kifejezésekből és kifejezésből áll: `"Spacious, air-condition* +\"Ocean view\""` (a felhasználók általában nem adnak meg írásjeleket, de a példában szereplő módon lehetővé teszi, hogy elmagyarázza, hogyan kezeli a elemzőket). Ebben a lekérdezésben a keresőmotor megvizsgálja az "Ocean View" és a " `searchFields` tágas" kifejezéssel, illetve a "légkondicionáló" előtaggal kezdődő feltételekben megadott leírási és title mezőket. A `searchMode` paraméter minden olyan kifejezésre (alapértelmezett) vagy mindegyikre vonatkozik, amelynél nincs expliciten kötelező kifejezés (`+`).
+2. Végrehajtja a lekérdezést. Ebben a példában a keresési lekérdezés kifejezésekből és kifejezésből áll: `"Spacious, air-condition* +\"Ocean view\""` (a felhasználók általában nem adnak meg írásjeleket, de a példában szereplő módon lehetővé teszi, hogy elmagyarázza, hogyan kezeli az elemzőket). Ebben a lekérdezésben a keresőmotor megvizsgálja a `searchFields` az "Ocean View" és a "tágas" kifejezéssel, illetve a "légkondicionáló" előtaggal rendelkező dokumentumok esetében megadott leírási és title mezőket. A `searchMode` paraméter minden olyan kifejezéshez (alapértelmezett) vagy mindegyikhez használatos, amelynél nincs expliciten kötelező kifejezés (`+`).
 3. Megrendeli az eredményül kapott szállodákat egy adott földrajzi hely közelében, majd visszaadja a hívó alkalmazásnak. 
 
-Ennek a cikknek a többsége a *keresési lekérdezés*feldolgozását ismerteti `"Spacious, air-condition* +\"Ocean view\""`:. A szűrés és a megrendelés a hatókörön kívül esik. További információkért tekintse meg a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)-referenciák dokumentációját.
+Ennek a cikknek a többsége a *keresési lekérdezés*feldolgozását ismerteti: `"Spacious, air-condition* +\"Ocean view\""`. A szűrés és a megrendelés a hatókörön kívül esik. További információkért tekintse meg a [Search API-referenciák dokumentációját](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>1\. fázis: Lekérdezés elemzése 
+## <a name="stage-1-query-parsing"></a>1\. lépés: lekérdezés elemzése 
 
 A lekérdezési karakterlánc a kérelem első sora: 
 
@@ -80,39 +80,39 @@ A lekérdezési karakterlánc a kérelem első sora:
  "search": "Spacious, air-condition* +\"Ocean view\"", 
 ~~~~
 
-A lekérdezés-elemző a keresési kifejezésektől elkülöníti `+` a operátorokat ( `*` például a és a példában), és a keresési lekérdezést egy támogatott típusú allekérdezésbe hozza létre: 
+A lekérdezés-elemző elkülöníti az operátorokat (például `*` és `+` a példában) a keresési feltételek közül, és a keresési lekérdezést a támogatott típusú *allekérdezésekre* bontja: 
 
 + *kifejezéses lekérdezés* önálló kifejezésekhez (például tágas)
-+ kifejezések lekérdezése idézőjelek között (például Ocean View)
-+ előtag- *lekérdezés* a kifejezésekhez, majd egy `*` előtag-operátor (például a légkondicionáló).
++ kifejezések *lekérdezése* idézőjelek között (például Ocean View)
++ *előtag-lekérdezés* a feltételekhez, amelyet egy előtag-operátor `*` (például: légkondicionáló)
 
 A támogatott lekérdezési típusok teljes listáját lásd: [Lucene lekérdezési szintaxisa](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
-Az allekérdezéshez társított operátorok határozzák meg, hogy a lekérdezésnek "vagy" értékűnek kell lennie ahhoz, hogy egy dokumentum egyezésnek tekintendő legyen. Például `+"Ocean view"` a "kötelező" a `+` kezelő miatt. 
+Az allekérdezéshez társított operátorok határozzák meg, hogy a lekérdezésnek "vagy" értékűnek kell lennie ahhoz, hogy egy dokumentum egyezésnek tekintendő legyen. Például `+"Ocean view"` a `+` operátor miatt "kötelező". 
 
 A lekérdezés-elemző átstrukturálja az allekérdezéseket egy *lekérdezési fában* (a lekérdezést jelképező belső struktúra), amelyet a keresőmotornak továbbít. A lekérdezés-elemzés első szakaszában a lekérdezési fa így néz ki.  
 
  ![Logikai lekérdezés searchmode][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Támogatott elemzők: Egyszerű és teljes Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Támogatott elemzők: egyszerű és teljes Lucene 
 
- Azure Search két különböző lekérdezési nyelvet `simple` tesz elérhetővé (alapértelmezett) és. `full` Ha a `queryType` paramétert a keresési kérelemre állítja be, a lekérdezési elemzőnek meg kell határoznia, hogy melyik lekérdezési nyelvet választotta, hogy tudja, hogyan kell értelmezni a kezelőket és a szintaxist. Az [egyszerű lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) intuitív és robusztus, ami gyakran alkalmas arra, hogy az ügyféloldali feldolgozás nélkül értelmezze a felhasználói adatokat. Támogatja a webes keresőmotorokból ismerős lekérdezési operátorokat. A beállítás `queryType=full`által beolvasott [teljes Lucene lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)kibővíti az alapértelmezett egyszerű lekérdezési nyelvet azáltal, hogy további operátorokat és lekérdezési típusokat (például helyettesítő karaktert, fuzzy, regexet és mező-hatókörű lekérdezéseket) ad hozzá. Az egyszerű lekérdezési szintaxisban eljuttatott reguláris kifejezés például lekérdezési karakterláncként, nem pedig kifejezésként értelmezhető. A cikkben szereplő példa a teljes Lucene lekérdezési nyelvet használja.
+ Az Azure Cognitive Search két különböző lekérdezési nyelvet tesz elérhetővé, `simple` (alapértelmezett) és `full`. Ha a `queryType` paramétert a keresési kérelemre állítja be, a lekérdezési elemzőnek meg kell határoznia, hogy melyik lekérdezési nyelvet választja ki, hogy tudja, hogyan kell értelmezni a kezelőket és a szintaxist. Az [egyszerű lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) intuitív és robusztus, ami gyakran alkalmas arra, hogy az ügyféloldali feldolgozás nélkül értelmezze a felhasználói adatokat. Támogatja a webes keresőmotorokból ismerős lekérdezési operátorokat. A `queryType=full`beállításával kapott [teljes Lucene lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)kibővíti az alapértelmezett egyszerű lekérdezési nyelvet, ha további operátorokat és lekérdezési típusokat ad hozzá, például helyettesítő karaktereket, fuzzy, regexet és mező-hatókörű lekérdezéseket. Az egyszerű lekérdezési szintaxisban eljuttatott reguláris kifejezés például lekérdezési karakterláncként, nem pedig kifejezésként értelmezhető. A cikkben szereplő példa a teljes Lucene lekérdezési nyelvet használja.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Az elemző searchMode gyakorolt hatása 
 
-Az elemzést befolyásoló másik keresési kérelem paraméter a `searchMode` paraméter. A logikai lekérdezések alapértelmezett operátorát vezérli: bármely (alapértelmezett) vagy mind.  
+Egy másik, az elemzést befolyásoló keresési kérelem paraméter a `searchMode` paraméter. A logikai lekérdezések alapértelmezett operátorát vezérli: bármely (alapértelmezett) vagy mind.  
 
-Ha `searchMode=any`a (z) alapértelmezés szerint a tágas és a légkondicionáló közötti térköz (), vagy (`||`), a minta lekérdezési szövege megegyezik a következővel: 
+Ha `searchMode=any`, amely az alapértelmezett, a tágas és a légkondicionáló közötti szóközzel elválasztó szóköz vagy (`||`), így a minta lekérdezési szövege egyenértékű a következővel: 
 
 ~~~~
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-A explicit operátorok `+` (például `+"Ocean view"`a-ben) nem egyértelműek a logikai lekérdezések szerkezetében (a kifejezésnek egyeznie *kell* ). Kevésbé nyilvánvaló, hogy hogyan értelmezheti a fennmaradó kifejezéseket: tágas és légkondicionáló. A keresőmotor az Ocean View *és* a tágas *, illetve* a légkondicionáló esetében is megfelel? Vagy az is előfordulhat, hogy az Ocean View vagy a fennmaradó feltételek valamelyike szerepel? 
+Az explicit operátorok, például a `+"Ocean view"``+`, nem egyértelműek a logikai lekérdezési felépítésben (a kifejezésnek egyeznie *kell* ). Kevésbé nyilvánvaló, hogy hogyan értelmezheti a fennmaradó kifejezéseket: tágas és légkondicionáló. A keresőmotor az Ocean View *és* a tágas *, illetve* a légkondicionáló esetében is megfelel? Vagy az is előfordulhat, hogy az Ocean View vagy a fennmaradó feltételek *valamelyike* szerepel? 
 
-Alapértelmezés`searchMode=any`szerint a keresőmotor a szélesebb körű értelmezést feltételezi. Mindkét mezőnek egyeznie kell, és tükröznie kell a "vagy a" szemantikai értékeket. A kezdeti lekérdezési fa korábban is látható, a két "If" művelettel pedig az alapértelmezett értéket mutatja.  
+Alapértelmezés szerint (`searchMode=any`) a keresőmotor a szélesebb körű értelmezést feltételezi. Mindkét *mezőnek egyeznie kell,* és tükröznie kell a "vagy a" szemantikai értékeket. A kezdeti lekérdezési fa korábban is látható, a két "If" művelettel pedig az alapértelmezett értéket mutatja.  
 
-Tegyük fel, hogy `searchMode=all`most már be van állítva. Ebben az esetben a rendszer "és" műveletként értelmezi a helyet. A többi feltételnek mindkettőnek szerepelnie kell a dokumentumban, hogy egyezzen a megfelelő jogosultsággal. Az eredményül kapott minta lekérdezés a következőképpen lesz értelmezve: 
+Tegyük fel, hogy most már beállítottuk a `searchMode=all`. Ebben az esetben a rendszer "és" műveletként értelmezi a helyet. A többi feltételnek mindkettőnek szerepelnie kell a dokumentumban, hogy egyezzen a megfelelő jogosultsággal. Az eredményül kapott minta lekérdezés a következőképpen lesz értelmezve: 
 
 ~~~~
 +Spacious,+air-condition*+"Ocean view"
@@ -123,12 +123,12 @@ A lekérdezés módosított lekérdezési fájának a következőnek kell lennie
  ![Searchmode logikai lekérdezés][3]
 
 > [!Note] 
-> A `searchMode=any` többit `searchMode=all` megillető döntés a legjobb választás a reprezentatív lekérdezések futtatásával. Azok a felhasználók, akik valószínűleg belefoglalják az operátorokat (a dokumentumtárakban való kereséskor gyakran előfordulnak), az eredmények könnyebben megjelenhetnek, ha `searchMode=all` a logikai lekérdezési szerkezeteket tájékoztatja. A és a operátorok közötti `searchMode` interakcióról további információt az [egyszerű lekérdezés szintaxisa](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)című témakörben talál.
+> `searchMode=any` kiválasztása `searchMode=all` a legjobb választás a reprezentatív lekérdezések futtatásával. Azok a felhasználók, akik valószínűleg belefoglalják az operátorokat (a dokumentumtárakban való kereséskor gyakran előfordulnak), az eredmények könnyebben megtalálhatók, ha `searchMode=all` a logikai lekérdezési szerkezeteket is tájékoztatja. További információ a `searchMode` és a kezelők közötti interakcióról: [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>2\. fázis: Lexikális analízis 
+## <a name="stage-2-lexical-analysis"></a>2\. fázis: lexikális analízis 
 
-A lexikális elemzők feldolgozzák a lekérdezési és *kifejezési* lekérdezéseket a lekérdezési fa strukturálása után. Az analizátor fogadja az elemző által megadott szöveges bemeneteket, feldolgozza a szöveget, majd visszaküldi a jogkivonatos kifejezéseket a lekérdezési fába. 
+A lexikális elemzők *feldolgozzák* a lekérdezési és *kifejezési* lekérdezéseket a lekérdezési fa strukturálása után. Az analizátor fogadja az elemző által megadott szöveges bemeneteket, feldolgozza a szöveget, majd visszaküldi a jogkivonatos kifejezéseket a lekérdezési fába. 
 
 A lexikális analízis leggyakoribb formája a *nyelvi elemzés* , amely az adott nyelvre vonatkozó szabályok alapján átalakítja a lekérdezési feltételeket: 
 
@@ -137,7 +137,7 @@ A lexikális analízis leggyakoribb formája a *nyelvi elemzés* , amely az adot
 * Összetett szó lebontása összetevő-részekre 
 * Alsó borítású szó kisbetűvel 
 
-Az összes művelet általában törli a felhasználó által megadott szövegbevitel és az indexben tárolt feltételek közötti különbségeket. Az ilyen műveletek túlmutatnak a szöveg feldolgozásán, és a nyelv részletes ismeretét igényli. Ha ezt a réteget szeretné felvenni a nyelvi ismeretekbe, Azure Search támogatja a Lucene és a Microsoft által [használt nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support) hosszú listáját.
+Az összes művelet általában törli a felhasználó által megadott szövegbevitel és az indexben tárolt feltételek közötti különbségeket. Az ilyen műveletek túlmutatnak a szöveg feldolgozásán, és a nyelv részletes ismeretét igényli. Az Azure Cognitive Search a nyelvi [elemzések](https://docs.microsoft.com/rest/api/searchservice/language-support) egy hosszú listáját támogatja a Lucene és a Microsofttól.
 
 > [!Note]
 > Az elemzési követelmények a forgatókönyvtől függően minimálisról kidolgozhatók. A lexikális analízis bonyolultságát az előre definiált elemzők egyikének kiválasztásával vagy a saját [Egyéni analizátor](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)létrehozásával szabályozhatja. Az elemzők a kereshető mezőkre vannak kiterjedően, és a mező definíciójának részeként vannak megadva. Ez lehetővé teszi, hogy a lexikális elemzést egy mező alapján változtassa meg. Meghatározatlan, a *standard* Lucene Analyzer használatos.
@@ -184,11 +184,11 @@ A standard Analyzer megszakítja a bemeneti szöveget a következő két jogkivo
 
 ### <a name="exceptions-to-lexical-analysis"></a>A lexikális analízis alóli kivételek 
 
-A lexikális analízis csak olyan lekérdezési típusokra vonatkozik, amelyek teljes kifejezést igényelnek – vagy egy kifejezéses lekérdezést vagy egy kifejezéses lekérdezést. Nem vonatkozik a hiányos kifejezésekkel rendelkező lekérdezési típusokra – előtag-lekérdezés, helyettesítő karakteres lekérdezés, regex lekérdezés – vagy egy fuzzy lekérdezésre. Ezek a lekérdezési típusok, beleértve a példában `air-condition*` szereplő előtag-lekérdezést is, közvetlenül a lekérdezési fában lesznek hozzáadva, és megkerülik az elemzési szakaszt. Az egyetlen, az adott típusok lekérdezési feltételein végrehajtott átalakítás lowercasing.
+A lexikális analízis csak olyan lekérdezési típusokra vonatkozik, amelyek teljes kifejezést igényelnek – vagy egy kifejezéses lekérdezést vagy egy kifejezéses lekérdezést. Nem vonatkozik a hiányos kifejezésekkel rendelkező lekérdezési típusokra – előtag-lekérdezés, helyettesítő karakteres lekérdezés, regex lekérdezés – vagy egy fuzzy lekérdezésre. Ezek a lekérdezési típusok, beleértve a példában szereplő `air-condition*` kifejezéssel rendelkező előtag-lekérdezést is, közvetlenül a lekérdezési fában lesznek hozzáadva, az elemzési szakasz megkerülésével. Az egyetlen, az adott típusok lekérdezési feltételein végrehajtott átalakítás lowercasing.
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>3\. fázis: Dokumentumok beolvasása 
+## <a name="stage-3-document-retrieval"></a>3\. fázis: dokumentumok beolvasása 
 
 A dokumentumok beolvasása arra utal, hogy az indexben a dokumentumok megkeresése egyező kifejezésekkel történjen. Ez a szakasz a legjobban egy példán keresztül értelmezhető. Kezdjük a következő egyszerű sémával rendelkező Hotels indextel: 
 
@@ -239,19 +239,19 @@ A lekérések megismeréséhez segít az indexeléssel kapcsolatos alapvető tud
 Egy fordított indexben a kifejezések előállításához a keresőmotor a dokumentumok tartalmának lexikális elemzését hajtja végre, hasonlóan a lekérdezés feldolgozásához:
 
 1. A rendszer átadja a *szöveges bemeneteket* egy elemzőnek, az alacsonyabb betokozású, a kimaradt írásjeleket és így tovább, az analizátor konfigurációjától függően. 
-2. A tokenek a szöveges elemzések kimenetét jelentik.
+2. A *tokenek* a szöveges elemzések kimenetét jelentik.
 3. A *feltételek* hozzáadódnak az indexhez.
 
 Gyakori, de nem kötelező, ha ugyanazokat az elemzőket használja a keresési és indexelési műveletekhez, hogy a lekérdezési feltételek jobban hasonlítsák az indexen belüli kifejezéseket.
 
 > [!Note]
-> Azure Search lehetővé teszi különböző elemzők megadását az indexeléshez és `indexAnalyzer` a `searchAnalyzer` kereséshez további és mező paraméterek használatával. Ha nincs megadva, a `analyzer` tulajdonsággal beállított Analyzer az indexeléshez és a kereséshez is használatos.  
+> Az Azure Cognitive Search lehetővé teszi különböző elemzők megadását az indexeléshez és a kereséshez további `indexAnalyzer` és `searchAnalyzer` mező paraméterek használatával. Ha nincs megadva, a rendszer a `analyzer` tulajdonsággal beállított elemzőt használja az indexeléshez és a kereséshez.  
 
 **Invertált index például dokumentumok**
 
 Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a következőképpen néz ki:
 
-| Kifejezés | Dokumentumok listája |
+| Időtartam | Dokumentumok listája |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -261,35 +261,35 @@ Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a 
 | Resort | 3 |
 | Retreat | 4 |
 
-A title (cím) mezőben csak a két dokumentum jelenik meg: 1, 3.
+A title (cím) mezőben csak a ( *z* ) két dokumentum jelenik meg: 1, 3.
 
 A **Leírás** mezőben az index a következő:
 
-| Kifejezés | Dokumentumok listája |
+| Időtartam | Dokumentumok listája |
 |------|---------------|
 | levegő | 3
 | és | 4
 | Beach | 1
 | légkondicionált | 3
 | tisztában | 3
-| distance | 1
+| távolság | 1
 | -sziget | 2
-| kauaʻi | 2
+| kaua ʻ | 2
 | található | 2
 | Észak | 2
 | óceáni | 1, 2, 3
 | / | 2
-| be |2
+| A |2
 | csendes | 4
 | tárgyalótermek  | 1, 3
 | félreeső | 4
 | Shore | 2
 | tágas | 1
 | műveletnek a(z) | 1, 2
-| to | 1
+| erre: | 1
 | megtekintés | 1, 2, 3
 | séta | 1
-| a következővel: | 3
+| A | 3
 
 
 **Lekérdezési feltételek egyeztetése indexelt kifejezésekkel**
@@ -309,13 +309,13 @@ A lekérdezés végrehajtása során az egyes lekérdezések egymástól függet
 + Az "Ocean View" PhraseQuery megkeresi az "Ocean" és a "View" kifejezést, és ellenőrzi a feltételek közelségét az eredeti dokumentumban. Az 1., 2. és 3. dokumentum megfelel a Leírás mezőben szereplő lekérdezésnek. Figyelje meg, hogy a 4. dokumentum az Ocean kifejezést használja a címben, de nem egyezik meg, mert az "Ocean View" kifejezést keresi az egyes szavak helyett. 
 
 > [!Note]
-> A keresési lekérdezéseket a rendszer a Azure Search index összes kereshető mezőjétől függetlenül hajtja végre, hacsak nem korlátozza a `searchFields` paraméterrel beállított mezőket, ahogyan az a példában szereplő keresési kérelemben látható. A rendszer a kijelölt mezők bármelyikének megfelelő dokumentumokat adja vissza. 
+> A keresési lekérdezéseket az Azure Cognitive Search index összes kereshető mezőjétől függetlenül hajtja végre, hacsak nem korlátozza a `searchFields` paraméterrel beállított mezőket, ahogyan az a példában szereplő keresési kérelemben látható. A rendszer a kijelölt mezők bármelyikének megfelelő dokumentumokat adja vissza. 
 
 A kérdéses lekérdezés teljes egészében az 1, 2, 3. 
 
-## <a name="stage-4-scoring"></a>4\. fázis: Pontozási  
+## <a name="stage-4-scoring"></a>4\. fázis: pontozás  
 
-A keresési eredményhalmaz minden dokumentuma releváns pontszámot kap. A relevancia pontszám funkciója, hogy magasabbra rangsorolja azokat a dokumentumokat, amelyek a keresési lekérdezés által kifejezett felhasználói kérdésre válaszolnak. A pontszám kiszámítása az egyeztetett kifejezések statisztikai tulajdonságai alapján történik. A pontozási képlet magja a [TF/IDF (kifejezés gyakorisága-inverz dokumentum gyakorisága)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). A ritka és gyakori kifejezéseket tartalmazó lekérdezésekben a TF/IDF elősegíti a ritka időszakot tartalmazó eredményeket. Például egy olyan feltételezett indexben, amelyben az összes wikipedia-cikk szerepel, a lekérdezésnek megfelelő dokumentumokban *az*elnöknek megfeleltetett dokumentumok nagyobb jelentőséggel rendelkeznek, mint *a*dokumentumoknak megfelelő dokumentumok.
+A keresési eredményhalmaz minden dokumentuma releváns pontszámot kap. A relevancia pontszám funkciója, hogy magasabbra rangsorolja azokat a dokumentumokat, amelyek a keresési lekérdezés által kifejezett felhasználói kérdésre válaszolnak. A pontszám kiszámítása az egyeztetett kifejezések statisztikai tulajdonságai alapján történik. A pontozási képlet magja a [TF/IDF (kifejezés gyakorisága-inverz dokumentum gyakorisága)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). A ritka és gyakori kifejezéseket tartalmazó lekérdezésekben a TF/IDF elősegíti a ritka időszakot tartalmazó eredményeket. Például egy olyan feltételezett indexben, amelyben az összes wikipedia-cikk szerepel, a lekérdezésnek megfelelő dokumentumokban *az*elnöknek megfeleltetett dokumentumok nagyobb jelentőséggel *rendelkeznek,* mint *a*dokumentumoknak megfelelő dokumentumok.
 
 
 ### <a name="scoring-example"></a>Pontozási példa
@@ -357,17 +357,17 @@ Ebben a példában egy példa szemlélteti, hogy miért fontos a kérdés. A hel
 
 ### <a name="score-tuning"></a>Pontszám finomhangolása
 
-A következő két módon lehet meghangolni a releváns pontszámokat a Azure Searchban:
+Az Azure Cognitive Searchban kétféleképpen hangolhatja be a relevancia pontszámait:
 
 1. A **pontozási profilok** a szabályok egy halmaza alapján támogatják az eredmények rangsorolt listáján szereplő dokumentumokat. A példánkban a title (cím) mezőben szereplő dokumentumokat a Leírás mezőben szereplő dokumentumokra vonatkozó szempontok szerint érdemes megfontolni. Továbbá, ha az indexünk minden egyes szállodára érvényes, akkor alacsonyabb díjszabású dokumentumokat is támogatunk. További információ a [pontozási profilok keresési indexhez való hozzáadásáról.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) olyan fellendítő `^` operátort biztosít, amely a lekérdezési fa bármely részén alkalmazható. Ebben a példában az előtag a helyett *air-condition*\*, egy sikerült keresési a pontos kifejezés *air-condition* vagy az előtag, de a pontos kifejezés a megfelelő dokumentumok előrébb kifejezés lekérdezéshez boost alkalmazásával: *a feltétel vezeték nélkül ^ 2 || Air-condition* *. További információ a [kifejezés növeléséről](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) biztosít egy fellendítő operátort `^`, amely a lekérdezési fa bármely részére alkalmazható. A példánkban, ahelyett, hogy megkeresi a *légkondicionáló*\*, az egyik a pontos *állapotra* vagy az előtagra is rákereshet, de a pontos kifejezéssel egyező dokumentumok magasabbra vannak rangsorolva, ha a lekérdezés kifejezésre való ösztönzést alkalmaz: * légkondicionáló ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Pontozás egy elosztott indexben
 
-A Azure Search összes indexe automatikusan több szegmensre van felosztva, így gyorsan terjesztheti az indexet több csomópont között a szolgáltatás vertikális felskálázása vagy leskálázása során. Egy keresési kérelem kibocsátásakor az egyes szegmensek egymástól függetlenül kerülnek kiosztásra. Ezután az egyes szegmensek eredményeit összevontuk, és a pontszám alapján rendezi a rendszer (ha nincs más sorrend definiálva). Fontos tudni, hogy a pontozási függvény a szegmensben lévő összes dokumentumra kiterjedő, a teljes szegmensen belüli összes dokumentumban a lekérdezési kifejezés gyakoriságát és az inverz dokumentum gyakoriságát is felszámolja.
+Az Azure Cognitive Search összes indexe automatikusan több szegmensre oszlik, így gyorsan terjesztheti az indexet több csomópont között a szolgáltatás vertikális felskálázása vagy leskálázása során. Egy keresési kérelem kibocsátásakor az egyes szegmensek egymástól függetlenül kerülnek kiosztásra. Ezután az egyes szegmensek eredményeit összevontuk, és a pontszám alapján rendezi a rendszer (ha nincs más sorrend definiálva). Fontos tudni, hogy a pontozási függvény a szegmensben lévő összes dokumentumra kiterjedő, a teljes szegmensen belüli összes dokumentumban a lekérdezési kifejezés gyakoriságát és az inverz dokumentum gyakoriságát is felszámolja.
 
-Ez azt jelenti, hogy a relevancia pontszáma eltérő lehet az azonos dokumentumok esetében, ha különböző szegmensekben találhatók. Szerencsére az ilyen eltérések általában nem tűnnek el, mivel az indexben lévő dokumentumok száma még a hosszabb távú eloszlás miatt is nő. Nem lehet feltételezni, hogy az adott dokumentum melyik szegmensbe kerül. Azonban feltételezve, hogy a dokumentum kulcsa nem változik, mindig ugyanahhoz a szegmenshez lesz hozzárendelve.
+Ez azt jelenti, hogy a *relevancia pontszáma* eltérő lehet az azonos dokumentumok esetében, ha különböző szegmensekben találhatók. Szerencsére az ilyen eltérések általában nem tűnnek el, mivel az indexben lévő dokumentumok száma még a hosszabb távú eloszlás miatt is nő. Nem lehet feltételezni, hogy az adott dokumentum melyik szegmensbe kerül. Azonban feltételezve, hogy a dokumentum kulcsa nem változik, mindig ugyanahhoz a szegmenshez lesz hozzárendelve.
 
 Általánosságban elmondható, hogy a dokumentum pontszáma nem a legjobb megoldás a dokumentumok rendezéséhez, ha a megrendelés stabilitása fontos. Ha például két, azonos pontszámmal rendelkező dokumentumot adott meg, akkor nincs garancia arra, hogy az adott lekérdezés későbbi futtatása során az egyik első jelenik meg. A dokumentum pontszáma csak az eredmények készletében lévő többi dokumentumra vonatkozó általános értelemben vett dokumentum-megfelelőséget adja meg.
 
@@ -377,9 +377,9 @@ Az internetes keresőprogramok sikere miatt a teljes szöveges keresésre vonatk
 
 Technikai szempontból a teljes szöveges keresés nagyon összetett, és kifinomult nyelvi elemzést és szisztematikus módszert igényel a feldolgozáshoz, amely a lekérdezési kifejezések kiszűrését, kibővítését és átalakítását jelenti egy adott eredmény biztosításához. A bennük rejlő bonyodalmak miatt sok tényező befolyásolja a lekérdezés eredményét. Ebből kifolyólag a teljes szöveges kereséshez szükséges idő befektetve kézzelfogható előnyökkel jár, ha nem várt eredményekkel próbál dolgozni.  
 
-Ez a cikk a teljes szöveges keresést ismerteti Azure Search kontextusában. Reméljük, hogy elegendő hátteret biztosít a gyakori lekérdezési problémák kezelésére vonatkozó lehetséges okok és megoldások felismeréséhez. 
+Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search kontextusában. Reméljük, hogy elegendő hátteret biztosít a gyakori lekérdezési problémák kezelésére vonatkozó lehetséges okok és megoldások felismeréséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + Hozza létre a minta indexet, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [index létrehozása és lekérdezése a portálon](search-get-started-portal.md#query-index).
 
@@ -391,7 +391,7 @@ Ez a cikk a teljes szöveges keresést ismerteti Azure Search kontextusában. Re
 
 + [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

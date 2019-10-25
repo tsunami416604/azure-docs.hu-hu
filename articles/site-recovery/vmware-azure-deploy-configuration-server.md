@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331958"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792358"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -28,7 +28,7 @@ A konfigurációs kiszolgálót egy olyan, magasan elérhető VMware virtuális 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A konfigurációs kiszolgáló minimális hardverkövetelmények a következő táblázatban vannak összegezve.
+A konfigurációs kiszolgáló minimális hardverkövetelmények a következő részben vannak összefoglalva.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -37,31 +37,19 @@ A konfigurációs kiszolgáló minimális hardverkövetelmények a következő t
 A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való regisztrálásához a **következő engedélyek egyikével** kell RENDELKEZNIE: hre (Azure Active Directory).
 
 1. Az alkalmazás létrehozásához a felhasználónak "Application Developer" szerepkörrel kell rendelkeznie.
-   1. Az ellenőrzéshez jelentkezzen be Azure Portal</br>
-   1. Navigáljon Azure Active Directory > szerepkörökhöz és rendszergazdákhoz</br>
-   1. Ellenőrizze, hogy az "Application Developer" szerepkör hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy érje el [a rendszergazdát, hogy engedélyezze az engedélyt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Az ellenőrzéshez jelentkezzen be Azure Portal</br>
+    - Navigáljon Azure Active Directory > szerepkörökhöz és rendszergazdákhoz</br>
+    - Ellenőrizze, hogy az "Application Developer" szerepkör hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy érje el [a rendszergazdát, hogy engedélyezze az engedélyt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
-1. Ha az "alkalmazás-fejlesztő" szerepkör nem rendelhető hozzá, győződjön meg arról, hogy a "felhasználó regisztrálhatja az alkalmazást" jelző értéke TRUE (igaz), ha a felhasználó identitást hoz létre. A fenti engedélyek engedélyezéséhez
-   1. Bejelentkezés az Azure Portalra
-   1. Navigáljon Azure Active Directory > felhasználói beállítások
-   1. A * * Alkalmazásregisztrációk "alatt a" felhasználók regisztrálhatnak alkalmazásokat "beállítás" yes "(igen) értékűnek kell lennie.
+2. Ha az "alkalmazás-fejlesztő" szerepkör nem rendelhető hozzá, győződjön meg arról, hogy a "felhasználó regisztrálhatja az alkalmazást" jelző értéke TRUE (igaz), ha a felhasználó identitást hoz létre. A fenti engedélyek engedélyezéséhez
+    - Bejelentkezés az Azure Portalra
+    - Navigáljon Azure Active Directory > felhasználói beállítások
+    - A * * Alkalmazásregisztrációk "alatt a" felhasználók regisztrálhatnak alkalmazásokat "beállítás" yes "(igen) értékűnek kell lennie.
 
       ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > A Active Directory összevonási szolgáltatások (AD FS) (ADFS) **nem támogatott**. Használjon [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)használatával felügyelt fiókot.
-
-## <a name="capacity-planning"></a>Kapacitástervezés
-
-A konfigurációs kiszolgáló méretezési követelményei a lehetséges adatváltozási aránytól függenek. Ezt a táblázatot útmutatóként használhatja.
-
-| **CPU** | **Memória** | **Gyorsítótárazott lemez mérete** | **Adatváltozási arány** | **Védett gépek** |
-| --- | --- | --- | --- | --- |
-| 8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz) |16 GB |300 GB |500 GB vagy kevesebb |A replikálás kevesebb, mint 100 gép. |
-| 12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) |18 GB |600 GB |500 GB – 1 TB |100-150 gép replikálása. |
-| 16 vCPU (2 szoftvercsatorna * 8 mag \@ 2,5 GHz) |32 GB |1 TB |1 TB – 2 TB |150-200 gép replikálása. |
-
-Ha több VMware virtuális gépet replikál, olvassa el a [kapacitás megtervezésével kapcsolatos szempontokat](site-recovery-plan-capacity-vmware.md). Futtassa a [Deployment Planner eszközt](site-recovery-deployment-planner.md) a VMware-replikációhoz.
 
 ## <a name="download-the-template"></a>A sablon letöltése
 
@@ -149,7 +137,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-A konfigurációs kiszolgáló legújabb verzióra való frissítéséhez kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Az összes Site Recovery-összetevő frissítésével kapcsolatos részletes információkért kattintson [ide](service-updates-how-to.md).
+A konfigurációs kiszolgáló legújabb verzióra való frissítéséhez kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Az összes Site Recovery-összetevő frissítésével kapcsolatos részletes utasításokért látogasson el a [Service Update Management](service-updates-how-to.md)webhelyre.
 
 ## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
 
@@ -157,9 +145,9 @@ A folyamatban lévő replikáció megszakításának elkerülése érdekében gy
 
 ## <a name="faq"></a>Gyakori kérdések
 
-1. Mennyi ideig érvényes a OVF-en keresztül üzembe helyezett konfigurációs kiszolgálón megadott licenc? Mi történik, ha nem aktiválom újra a licencet?
+1. Mennyi ideig érvényes a OVF-en keresztül központilag telepített konfigurációs kiszolgálón megadott licenc? Mi történik, ha nem aktiválom újra a licencet?
 
-    A petesejtek sablonnal megadott licenc 180 napig érvényes próbaverzió. A lejárat előtt aktiválnia kell a licencet. Ez azt eredményezheti, hogy a konfigurációs kiszolgáló gyakori leállítása, így a replikálási tevékenységek akadályozása.
+    A petesejtek sablonnal megadott licenc 180 napig érvényes próbaverzió. A lejárat előtt aktiválnia kell a licencet. Más esetben a konfigurációs kiszolgáló gyakori leállítása, és ezáltal a replikálási tevékenységek akadályozása. További részletekért tekintse meg a [konfigurációs kiszolgáló licencének kezelése](vmware-azure-manage-configuration-server.md#update-windows-license)című cikket.
 
 2. Használhatom a virtuális gépet, ahol a konfigurációs kiszolgáló telepítve van, különböző célokra?
 

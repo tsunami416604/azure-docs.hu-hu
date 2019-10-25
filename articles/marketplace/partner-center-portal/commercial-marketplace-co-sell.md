@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773222"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784816"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Közös értékesítés lehetősége a partner Centerben
 
@@ -35,7 +35,7 @@ Válassza ki az ajánlat típusát:
 | Eszköz | Olyan ajánlat, amely az eszköz gyártójától származó hardverek létrehozását és értékesítését foglalja magában. |
 | IP | Az ügyfél általi használatra jogosult alkalmazások vagy más, szerzői joggal rendelkező anyagok. Például: olyan CRM-program, amely a helyszínen engedélyezhető és telepíthető. |
 | Szolgáltatás | Gyakorlati szakértelem egy adott egyszeri projekthez, amely gyakran tanácsadók útján valósul meg. Példa: ügyfél-adatbázis beállítása egy ügyfélhez (az ügyfél számára, hogy a kézbesítés után az adatbázis üzemeltetését vállalja). |
-| Felügyelt szolgáltatás | Gyakorlati szakértelem egy felhőalapú projekthez, általában folyamatosan. Példa: Platform és eszközök biztosítása egy online adatbázis futtatásához a felügyelt szolgáltató által biztosított folyamatos felügyelettel. |
+| Felügyelt szolgáltatás | Gyakorlati szakértelem egy felhőalapú projekthez, általában folyamatosan. Példa: platformot és eszközöket biztosít az online adatbázisok futtatásához, a felügyelt szolgáltató által biztosított folyamatos felügyelettel. |
 
 ## <a name="solution-areas"></a>Megoldási területek
 
@@ -57,7 +57,7 @@ A megoldási területek segítségével meghatározhatja, hogy az ajánlat mely 
 | *Egyéb dokumentumok* | Akár öt további dokumentumot vagy videót is feltölthet, hogy segítse a Microsoft értékesítési csapatait és a csatornák viszonteladóit, hogy többet tudjon meg a megoldásról, a szervezetről és/vagy a differenciálekről. |
 | *Külső hivatkozás URL-címe* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csoportjai és a csatorna-viszonteladók többet tudnak megtudni a megoldásról. |
 
-## <a name="contacts"></a>Névjegyek
+## <a name="contacts"></a>Kapcsolatok
 
 A kapcsolattartási adatok lehetővé teszik, hogy a Microsoft értékesítési csapatok és a csatornák viszonteladói további információkat kérjenek a szervezet megfelelő erőforrásáról. A kapcsolattartási adatok minden Microsoft értékesítési csapat számára elérhetők. Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a CSP programban, a kapcsolattartási adatok a csatorna-viszonteladók számára is elérhetők. 
 
@@ -65,17 +65,17 @@ Ez a dokumentum útmutatást nyújt a partnerek különböző szerepköreivel é
 
 Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosíthatja a fájlt.
 
-* *Név (kötelező)* : A partner neve.
-* *E-mail-cím (kötelező)* : A partner e-mail-címe.
-* *Beosztás (kötelező)* : Beosztás
-* *Szerepkör (kötelező)* : A sablonban ebben a mezőben a következő szerepkörök egyikét használhatja.
+* *Név (kötelező)* : a partner neve.
+* *E-mail-cím (kötelező)* : a partner e-mail-címe.
+* *Beosztás (kötelező)* : beosztás.
+* *Szerepkör (kötelező)* : használja a következő szerepkörök egyikét a sablonban ebben a mezőben.
 
     | **Szerepkör**    | **Leírás**  |
     | :------------------- | :-------------------|
-    | *Partner marketing* | Ez a szerepkör a megoldás marketingjét és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal folytatott marketing-erőfeszítésekkel foglalkozik. A marketing-bevezetések és az ajánlat tartalmának, például a termékleírások, a képek és a videók listázásának fő pontja. |
-    | *Partneri értékesítés* | Ez a szerepkör a megoldás értékesítésére és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal való együttműködésre koncentrál. A közös értékesítésre szolgáló megoldások esetében adjon meg legalább egy partneri értékesítési kapcsolattartót régiónként, amelyben szeretné, hogy a közös értékesítés készüljön. Ugyanaz a partner értékesítési kapcsolat több régióra is kiterjed. |
-    | *Partneri műszaki értékesítés* | A technikai architektúrát és üzembe helyezési szempontokat az értékesítési ciklus, az értékesítés utáni integráció és a telepítési időszakok során támogatja. |
-    | *Partneri ügyfelek sikerességének kezelője* | A általában támogatja az ügyfeleket a telepítés után, hogy a lehető legtöbbet hozza ki a megoldásból, és növelje a lábnyomát az ügyfél szervezetén belül. |
+    | *:::no-loc text="Partner marketing":::* | Ez a szerepkör a megoldás marketingjét és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal folytatott marketing-erőfeszítésekkel foglalkozik. A marketing-bevezetések és az ajánlat tartalmának, például a termékleírások, a képek és a videók listázásának fő pontja. |
+    | *:::no-loc text="Partner sales":::* | Ez a szerepkör a megoldás értékesítésére és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal való együttműködésre koncentrál. A közös értékesítésre szolgáló megoldások esetében adjon meg legalább egy partneri értékesítési kapcsolattartót régiónként, amelyben szeretné, hogy a közös értékesítés készüljön. Ugyanaz a partner értékesítési kapcsolat több régióra is kiterjed. |
+    | *:::no-loc text="Partner technical sales":::* | A technikai architektúrát és üzembe helyezési szempontokat az értékesítési ciklus, az értékesítés utáni integráció és a telepítési időszakok során támogatja. |
+    | *:::no-loc text="Partner customer success manager":::* | A általában támogatja az ügyfeleket a telepítés után, hogy a lehető legtöbbet hozza ki a megoldásból, és növelje a lábnyomát az ügyfél szervezetén belül. |
 
 * *Országok/régiók (kötelező):*  A sablon kitöltésekor használja a [két betű ország/régió kódokat a felsoroltak szerint](./commercial-marketplace-co-sell-countries.md). Ha a kapcsolattartó az összes országot/régiót tartalmazza, használja az "OOO" három betűt. Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két betűs kódot vesszővel elválasztva (például: "US, CA, FR", idézőjelek nélkül a sablonba).
 
@@ -83,6 +83,6 @@ Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosí
 
 * *Államok/tartományok (nem kötelező):*  A sablon kitöltésekor használja az XX-XX formátumot az [Államok/tartományok táblában](./commercial-marketplace-co-sell-states.md)felsoroltak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [értékesítés a Microsofttal](https://partner.microsoft.com/membership/sell-with-microsoft).

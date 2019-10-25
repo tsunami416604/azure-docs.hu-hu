@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553950"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793867"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -69,7 +69,10 @@ Az Office 365-előfizetésből:
 
 - Username: rendszergazdai fiók e-mail-címe.
 - Bérlő azonosítója: az Office 365-előfizetés egyedi azonosítója.
-- Ügyfél-azonosító: 16 karakterből álló karakterlánc, amely az Office 365-ügyfelet jelöli.
+
+A következő információkat kell összegyűjteni az Office 365 alkalmazás létrehozásakor és konfigurálásakor a Azure Active Directoryban:
+
+- Alkalmazás (ügyfél) azonosítója: 16 karakterből álló karakterlánc, amely az Office 365-ügyfelet jelöli.
 - Ügyfél titka: a hitelesítéshez szükséges titkosított karakterlánc.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Office 365-alkalmazás létrehozása Azure Active Directory
@@ -87,6 +90,9 @@ Első lépésként létre kell hoznia egy alkalmazást Azure Active Directory, a
 1. Kattintson a **regisztrálás** gombra, és ellenőrizze az alkalmazás adatait.
 
     ![Regisztrált alkalmazás](media/solution-office-365/registered-app.png)
+
+1. Mentse az alkalmazás (ügyfél) AZONOSÍTÓját, valamint a többi, korábban összegyűjtött információt.
+
 
 ### <a name="configure-application-for-office-365"></a>Az Office 365 alkalmazás konfigurálása
 
@@ -117,7 +123,7 @@ Első lépésként létre kell hoznia egy alkalmazást Azure Active Directory, a
     ![Kulcsok](media/solution-office-365/secret.png)
  
 1. Adja meg az új kulcs **leírását** és **időtartamát** .
-1. Kattintson a **Hozzáadás** elemre, majd másolja ki a generált **értéket** .
+1. Kattintson a **Hozzáadás** elemre, majd mentse a létrehozott **értéket** az ügyfél titkos kulcsaként, a többi összegyűjtött információval együtt.
 
     ![Kulcsok](media/solution-office-365/keys.png)
 
@@ -188,7 +194,12 @@ A rendszergazdai fiók első engedélyezéséhez meg kell adnia az alkalmazásho
     
     ![Rendszergazdai jóváhagyás](media/solution-office-365/admin-consent.png)
 
+> [!NOTE]
+> Előfordulhat, hogy a rendszer átirányítja egy olyan oldalra, amely nem létezik. Gondolja át sikerként.
+
 ### <a name="subscribe-to-log-analytics-workspace"></a>Előfizetés Log Analytics munkaterületre
+
+Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizetése. Ezt egy PowerShell-parancsfájllal is elvégezheti.
 
 Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizetése. Ezt egy PowerShell-parancsfájllal is elvégezheti.
 
@@ -236,18 +247,20 @@ Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizet�
                     $authority = "https://login.windows.net/$adTenant";
                     $ARMResource ="https://management.azure.com/";break} 
                     }
-    
+
     Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
+    $global:SubscriptionID = $Subscription.Subscription.Id
     # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
+    $resourceAppIdURIARM=$ARMResource
     # Authenticate and Acquire Token 
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
+
     $authHeader
     }
     
@@ -271,7 +284,7 @@ Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizet�
     
     Function Connection-API
     {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     
@@ -315,7 +328,7 @@ Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizet�
     Function Office-Subscribe-Call{
     try{
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
     
@@ -509,7 +522,7 @@ Az adatok kezdetben való gyűjtése igénybe vehet néhány órát. A gyűjtés
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Amikor hozzáadja az Office 365-megoldást a Log Analytics munkaterülethez, az **office 365** csempe hozzá lesz adva az irányítópulthoz. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
-![Office 365 összefoglaló csempe ](media/solution-office-365/tile.png)  
+![Office 365 összefoglaló csempe](media/solution-office-365/tile.png)  
 
 Kattintson az **office 365** csempére az **Office 365** irányítópultjának megnyitásához.
 

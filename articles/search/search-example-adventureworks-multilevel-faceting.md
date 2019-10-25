@@ -1,27 +1,27 @@
 ---
-title: 'Példa: többszintű dimenziók – Azure Search'
+title: 'Példa: többszintű aspektusok'
+titleSuffix: Azure Cognitive Search
 description: Ismerje meg, hogyan hozhat létre sokrétű struktúrákat többszintű besorolásokhoz, és hogyan hozhat létre egy beágyazott navigációs struktúrát, amelyet az alkalmazás lapjain is tartalmazhat.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70274085"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792943"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Példa: többszintű aspektusok a Azure Searchban
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Példa: többszintű aspektusok az Azure-ban Cognitive Search
 
-Azure Search sémák nem támogatják explicit módon a többszintű besorolási kategóriákat, de a tartalom indexelés előtti módosításával, majd az eredményekre vonatkozó speciális kezelés alkalmazásával közelítheti meg őket. 
+Az Azure Cognitive Search sémái nem támogatják explicit módon a többszintű besorolási kategóriákat, de a tartalom indexelés előtti módosításával, majd az eredményekre vonatkozó speciális kezelés alkalmazásával közelítheti meg őket. 
 
 ## <a name="start-with-the-data"></a>Az adatkezelés megkezdése
 
-A cikkben szereplő példa egy korábbi példára épül, amely a [AdventureWorks-leltári adatbázis modellezésével](search-example-adventureworks-modeling.md)mutatja be Azure Search többszintű aspektusait.
+A cikkben szereplő példa egy előző példára épül, amely az Azure Cognitive Search többszintű aspektusának bemutatását mutatja be [a AdventureWorks-leltári adatbázis modellezésével](search-example-adventureworks-modeling.md).
 
 A AdventureWorks egyszerű, kétszintű besorolást tartalmaz egy szülő-gyermek kapcsolattal. A struktúra rögzített hosszúságú taxonómiai mélysége esetén egy egyszerű SQL JOIN-lekérdezést használhat a taxonómia csoportosításához:
 
@@ -39,9 +39,9 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Indexelés egy gyűjtemény mezőjébe
 
-A struktúrát tartalmazó indexben hozzon létre egy **gyűjteményt (EDM. String)** a Azure Search sémában az adatok tárolásához, és győződjön meg arról, hogy a mező attribútumai között kereshető, szűrhető, és lekérhető.
+A struktúrát tartalmazó indexben hozzon létre egy **gyűjteményt (EDM. String)** az Azure Cognitive Search sémában az adatok tárolásához, és ügyeljen rá, hogy a mező attribútumai tartalmazzák a kereshető, a szűrhető, a sokrétű és a lekérdezhető mezőket.
 
-Most, amikor egy adott besorolási kategóriára hivatkozó tartalmat indexel, elküldheti a besorolást egy olyan tömbként, amely a taxonómia egyes szintjeiből szöveget tartalmaz. Egy `ProductCategoryId = 5 (Mountain Bikes)` rendelkező entitás esetében például küldje el a mezőt `[ "Bikes", "Bikes|Mountain Bikes"]`
+Most, amikor egy adott besorolási kategóriára hivatkozó tartalmat indexel, elküldheti a besorolást egy olyan tömbként, amely a taxonómia egyes szintjeiből szöveget tartalmaz. Egy `ProductCategoryId = 5 (Mountain Bikes)`rendelkező entitás esetében például küldje el a mezőt `[ "Bikes", "Bikes|Mountain Bikes"]`
 
 Figyelje meg, hogy a "bikes" szülő kategóriába belefoglalt "Mountain Bikes" érték szerepel a gyermek kategóriában. Minden alkategóriának a gyökér elemhez viszonyított teljes elérési útját kell beágyaznia. A cső karakter elválasztója nem megfelelő, de konzisztensnek kell lennie, és nem szerepelhet a forrás szövegében. A rendszer az alkalmazás kódjában az elválasztó karaktert fogja használni a taxonómia fájának a dimenziós eredményekből való újraépítéséhez.
 
@@ -99,4 +99,4 @@ Ez a módszer az összetettebb forgatókönyvek, például a mélyebb besorolás
 
 ## <a name="see-also"></a>Lásd még:
 
-[Példa: a Azure Search AdventureWorks-leltározási adatbázisának modellezése](search-example-adventureworks-modeling.md)
+[Példa: az Azure-beli AdventureWorks-leltári adatbázis modellezése Cognitive Search](search-example-adventureworks-modeling.md)

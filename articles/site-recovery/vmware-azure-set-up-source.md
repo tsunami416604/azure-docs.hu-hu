@@ -1,6 +1,6 @@
 ---
-title: A forráskörnyezet beállítása VMware-ről az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan lehet VMware virtuális gépek replikálásához az Azure-bA az Azure Site Recovery a helyszíni környezet beállítása.
+title: A VMware-ből az Azure-ba történő replikációra szolgáló forrásoldali környezet beállítása Azure Site Recovery használatával | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni környezetet a VMware virtuális gépek Azure-ba való replikálásához Azure Site Recovery használatával.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,26 +8,26 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723426"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791771"
 ---
-# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forráskörnyezet beállítása VMware-ről az Azure-bA
+# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás-környezet beállítása a VMware – Azure replikáláshoz
 
-Ez a cikk ismerteti, hogyan állítható be a forráskörnyezethez a helyszíni VMware virtuális gépek replikálásához az Azure-bA. A replikációs forgatókönyv, egy a helyszíni gépen a Site Recovery konfigurációs kiszolgálóként beállítása kiválasztására szolgáló lépéseket tartalmazza, és automatikusan felderítése a helyszíni virtuális gépeket. 
+Ez a cikk bemutatja, hogyan állíthatja be a helyszíni környezetet a VMware virtuális gépek Azure-ba történő replikálásához. A cikk tartalmazza a replikációs forgatókönyv kiválasztásának lépéseit, a helyszíni gép beállítását Site Recovery konfigurációs kiszolgálóként, valamint a helyszíni virtuális gépek automatikus felfedését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk feltételezi, hogy már:
+A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
 
-- A központi telepítés segítségével tervezett [Azure Site Recovery Deployment Planner](site-recovery-deployment-planner.md). Ennek segítségével a kívánt helyreállítási időkorlátot (RPO) teljesítéséhez a napi szintű adatváltozások díj alapján elegendő sávszélességet kell kiosztania.
-- [Erőforrások beállítása](tutorial-prepare-azure.md) a a [az Azure portal](https://portal.azure.com).
-- [Állítsa be a helyszíni VMware](vmware-azure-tutorial-prepare-on-premises.md), beleértve az automatikus felderítéshez egy dedikált fiókot.
+- Megtervezte az üzembe helyezést [Azure site Recovery Deployment Planner](site-recovery-deployment-planner.md)segítségével. Ez segít a napi adatváltozási arányon alapuló sávszélesség lefoglalásában, hogy megfeleljen a kívánt helyreállítási időkorlátnak (RPO).
+- [Erőforrások beállítása](tutorial-prepare-azure.md) a [Azure Portalban](https://portal.azure.com).
+- [A helyszíni VMware beállítása](vmware-azure-tutorial-prepare-on-premises.md), beleértve egy dedikált fiókot az automatikus felderítéshez.
 
-## <a name="choose-your-protection-goals"></a>Védelmi célok megválasztása
+## <a name="choose-your-protection-goals"></a>Válassza ki a védelmi célokat
 
 1. A **Helyreállítási tárak** listából válassza ki a tár nevét. Ehhez a forgatókönyvhöz a **ContosoVMVault** nevet használjuk.
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
@@ -37,52 +37,52 @@ A cikk feltételezi, hogy már:
 
 ## <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
-Állítható be a konfigurációs kiszolgálót egy helyszíni VMware virtuális gép egy Open Virtualization alkalmazás (OVA) sablon segítségével. [További](concepts-vmware-to-azure-architecture.md) kapcsolatban az összetevőket, amelyek a VMware virtuális gép lesz telepítve.
+A konfigurációs kiszolgálót helyszíni VMware virtuális gépként is beállíthatja egy Open Virtualization Application (PETESEJT) sablonnal. [További](concepts-vmware-to-azure-architecture.md) információ a VMWare virtuális gépre telepítendő összetevőkről.
 
-1. További információ a [Előfeltételek](vmware-azure-deploy-configuration-server.md#prerequisites) server központi telepítésére vonatkozóan.
-2. [Ellenőrizze a kapacitás számok](vmware-azure-deploy-configuration-server.md#capacity-planning) üzembe helyezéshez.
-3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) az OVA sablon egy helyszíni VMware virtuális gép, amely futtatja a konfigurációs kiszolgáló beállításához. A sablon biztosított licencet egy próbalicencre és érvényes 180 napig. POST ennek az időtartamnak kell határidődátumával licenccel a windows aktiválása.
-4. A VMware virtuális gép bekapcsolása és [regisztrálja](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) a Recovery Services-tároló.
+1. Ismerje meg a konfigurációs kiszolgáló telepítésének [előfeltételeit](vmware-azure-deploy-configuration-server.md#prerequisites) .
+2. A központi telepítés [Kapacitási számának ellenőrzését](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) .
+3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálja](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) a petesejtek sablont egy olyan helyszíni VMWare virtuális gép beállításához, amely a konfigurációs kiszolgálót futtatja. A sablonhoz megadott licenc egy próbaverziós licenc, amely 180 napig érvényes. Ezen időszak közzététele után az ügyfélnek egy beszerzett licenccel kell aktiválnia a Windowst.
+4. Kapcsolja be a VMware virtuális gépet, és [regisztrálja azt](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) a Recovery Services-tárolóban.
 
-## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Az Azure Site Recovery mappakivételek víruskereső program
+## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Azure Site Recovery mappák kizárása a víruskereső programból
 
-### <a name="if-antivirus-software-is-active-on-source-machine"></a>Ha a víruskereső szoftver aktív forrásgépen
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>Ha a víruskereső szoftver aktív a forrásoldali gépen
 
-Ha a forrásgépen egy víruskereső szoftver aktív, ki kell zárni a telepítési mappa. Így a mappa kizárása *C:\ProgramData\ASR\agent* zökkenőmentes replikálásra.
+Ha a forrásoldali gépen aktív víruskereső szoftver található, a telepítési mappát ki kell zárni. Tehát zárja ki a *C:\ProgramData\ASR\agent* mappát a zökkenőmentes replikáláshoz.
 
-### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Ha a víruskereső szoftver aktív, a konfigurációs kiszolgálón
+### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Ha a víruskereső szoftver aktív a konfigurációs kiszolgálón
 
-A következő mappák a víruskereső szoftver zökkenőmentes replikáció és a kapcsolódási problémák elkerülése érdekében kizárása
+A következő mappák kizárása a víruskereső szoftverből a zökkenőmentes replikáláshoz és a kapcsolódási problémák elkerüléséhez
 
 - C:\Program Files\Microsoft Azure Recovery Services Agent.
-- C:\Program Files\Microsoft Azure Site Recovery Provider
+- C:\Program Files\Microsoft Azure Site Recovery-szolgáltató
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
-- C:\Program Files\Microsoft Azure Site Recovery hiba gyűjtemény eszköz 
+- C:\Program Files\Microsoft Azure Site Recovery hiba-összegyűjtési eszköz 
   - C:\thirdparty
   - C:\Temp
   - C:\strawberry
   - C:\ProgramData\MySQL
-  - C:\Program Files (x86)\MySQL
+  - C:\Program Files (x86) \MySQL
   - C:\ProgramData\ASR
   - C:\ProgramData\Microsoft Azure Site Recovery
   - C:\ProgramData\ASRLogs
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - ASR-kiszolgáló telepítési könyvtárában. Példa: E:\Program fájlok (x86) \Microsoft Azure Site Recovery
+  - Site Recovery kiszolgáló telepítési könyvtára. Például: E:\Program Files (x86) \Microsoft Azure Site Recovery
 
-### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Ha a víruskereső szoftver aktív, a horizontális felskálázás feldolgozása vagy a fő cél
+### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Ha a víruskereső szoftver aktív a kibővíthető folyamat-kiszolgáló vagy fő célhelyen
 
-A következő mappák a víruskereső szoftver kizárása
+A következő mappák kizárása a víruskereső szoftverből
 
-1. C:\Program Files\Microsoft Azure Recovery Services-ügynök
+1. C:\Program Files\Microsoft Azure Recovery Services ügynök
 2. C:\ProgramData\ASR
 3. C:\ProgramData\ASRLogs
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Az ASR terhelés elosztott terhelésű folyamat kiszolgáló telepítési mappájában, például: C:\Program Files (x86)\Microsoft Azure Site Recovery
+7. Azure Site Recovery terheléselosztási folyamat kiszolgálójának telepítési könyvtára, példa: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>További lépések
-[A célkörnyezet beállítása](./vmware-azure-set-up-target.md) 
+## <a name="next-steps"></a>Következő lépések
+[A célként megadott környezet beállítása](./vmware-azure-set-up-target.md) 

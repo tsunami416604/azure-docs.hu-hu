@@ -1,5 +1,6 @@
 ---
-title: Az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához | Microsoft Identity platform
+title: Az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan használhatja a különböző hatóságokat, például a B2C-t, a szuverén felhőket és a vendég felhasználókat az iOS-és macOS-MSAL.
 services: active-directory
 documentationcenter: ''
@@ -17,20 +18,20 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114e67e2dca7ba304cb92b21a894e045cbe0c9e9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269089"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803831"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Útmutató: Az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
+# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Útmutató: az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja az iOS és macOS rendszerhez készült Microsoft Authentication Library alkalmazást (MSAL) különböző, például a Azure Active Directory (Azure AD), a vállalat és a fogyasztó (B2C), a szuverén felhők és a vendég felhasználók számára.  Ebben a cikkben általában úgy gondolja, hogy a szolgáltatót identitás-szolgáltatóként tekinti.
 
 ## <a name="default-authority-configuration"></a>Alapértelmezett szolgáltató konfigurációja
 
-`MSALPublicClientApplication`a az alapértelmezett szolgáltatói URL-címével `https://login.microsoftonline.com/common`van konfigurálva, amely a legtöbb Azure Active Directory (HRE) forgatókönyvhöz megfelelő. Hacsak nem végez speciális forgatókönyveket, például a nemzeti felhőket, vagy a B2C-vel dolgozik, nem kell módosítania.
+a `MSALPublicClientApplication` a `https://login.microsoftonline.com/common`alapértelmezett szolgáltatói URL-címével van konfigurálva, amely a legtöbb Azure Active Directory (HRE) forgatókönyvhöz megfelelő. Hacsak nem végez speciális forgatókönyveket, például a nemzeti felhőket, vagy a B2C-vel dolgozik, nem kell módosítania.
 
 > [!NOTE]
 > A Active Directory összevonási szolgáltatások (AD FS) as Identity Provider (ADFS) szolgáltatással való modern hitelesítés nem támogatott (lásd: [ADFS for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers) for details). Az ADFS-t az összevonás támogatja.
@@ -41,9 +42,9 @@ Bizonyos helyzetekben, például a vállalatok közötti (B2C) megoldásban elő
 
 ### <a name="b2c"></a>B2C
 
-A B2C-vel való együttműködéshez a [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) más szolgáltatói konfigurációt igényel. A MSAL egy szolgáltatói URL-formátumot is felismer a B2C-ként. A B2C `https://<host>/tfp/<tenant>/<policy>`-hatóság felismert formátuma például `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`a következő:. Más támogatott B2C-szolgáltatói URL-címeket is használhat, ha a szolgáltatót B2C-szolgáltatóként deklarálja.
+A B2C-vel való együttműködéshez a [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) más szolgáltatói konfigurációt igényel. A MSAL egy szolgáltatói URL-formátumot is felismer a B2C-ként. A B2C-hatóság felismert formátuma `https://<host>/tfp/<tenant>/<policy>`, például `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. Más támogatott B2C-szolgáltatói URL-címeket is használhat, ha a szolgáltatót B2C-szolgáltatóként deklarálja.
 
-A B2C `MSALB2CAuthority` tetszőleges URL-formátumának támogatásához tetszőleges URL-címmel állítható be, például a következő módon:
+A B2C tetszőleges URL-formátumának támogatásához a `MSALB2CAuthority` tetszőleges URL-címmel állítható be, például a következőképpen:
 
 Objective-C
 ```objc
@@ -80,7 +81,7 @@ b2cApplicationConfig.knownAuthorities = [b2cAuthority]
 
 Ha az alkalmazás új szabályzatot kér, a szolgáltatói URL-címet módosítani kell, mert a szolgáltatói URL-cím különbözik az egyes házirendek esetében. 
 
-A B2C `MSALB2CAuthority` -alkalmazások konfigurálásához a `@property MSALAuthority *authority` következőt kell beállítania `MSALPublicClientApplicationConfig` a létrehozása `MSALPublicClientApplication`előtt:
+A B2C-alkalmazások konfigurálásához állítsa be a `@property MSALAuthority *authority`t a `MSALPublicClientApplicationConfig` `MSALB2CAuthority`-példányát a `MSALPublicClientApplication`létrehozása előtt, a következőhöz hasonlóan:
 
 Objective-C
 ```ObjC
@@ -133,7 +134,7 @@ do{
 
 ### <a name="sovereign-clouds"></a>Szuverén felhők
 
-Ha az alkalmazás szuverén felhőben fut, előfordulhat, hogy módosítania kell a szolgáltatói URL- `MSALPublicClientApplication`címet a alkalmazásban. A következő példa a szolgáltatói URL-címet állítja be a német HRE-felhővel való együttműködéshez:
+Ha az alkalmazás szuverén felhőben fut, előfordulhat, hogy módosítania kell a szolgáltatói URL-címet a `MSALPublicClientApplication`ban. A következő példa a szolgáltatói URL-címet állítja be a német HRE-felhővel való együttműködéshez:
 
 Objective-C
 ```objc
@@ -178,13 +179,13 @@ do{
 }
 ```
 
-Előfordulhat, hogy különböző hatóköröket kell átadnia az egyes szuverén felhőknek. A küldeni kívánt hatókörök a használt erőforrástól függenek. Használhatja `"https://graph.microsoft.com/user.read"` például a globális felhőben és `"https://graph.microsoft.de/user.read"` a német felhőben is.
+Előfordulhat, hogy különböző hatóköröket kell átadnia az egyes szuverén felhőknek. A küldeni kívánt hatókörök a használt erőforrástól függenek. Előfordulhat például, hogy a `"https://graph.microsoft.com/user.read"`t a globális felhőben használja, és `"https://graph.microsoft.de/user.read"` a német felhőben.
 
 ### <a name="signing-a-user-into-a-specific-tenant"></a>Felhasználó aláírása egy adott bérlőn
 
-Ha a szolgáltatói URL-cím `"login.microsoftonline.com/common"`be van állítva, a felhasználó be lesz jelentkezve a saját bérlőbe. Előfordulhat azonban, hogy egyes alkalmazásoknak egy másik bérlőbe kell írniuk a felhasználót, és egyes alkalmazások csak egyetlen Bérlővel működnek.
+Ha a szolgáltatói URL-cím `"login.microsoftonline.com/common"`értékre van állítva, a felhasználó bekerül a saját bérlőbe. Előfordulhat azonban, hogy egyes alkalmazásoknak egy másik bérlőbe kell írniuk a felhasználót, és egyes alkalmazások csak egyetlen Bérlővel működnek.
 
-Ha a felhasználót egy adott bérlőbe szeretné írni, `MSALPublicClientApplication` konfigurálja egy adott szolgáltatót. Példa:
+A felhasználó egy adott bérlőbe való aláírásához konfigurálja `MSALPublicClientApplication` egy adott szolgáltatóval. Példa:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
@@ -236,20 +237,20 @@ do{
 
 ### <a name="msalauthority"></a>MSALAuthority
 
-Az `MSALAuthority` osztály az MSAL-szolgáltató osztályainak alap absztrakt osztálya. Ne próbálkozzon a vagy `alloc` `new`a használatával létrehozott példány létrehozásával. Ehelyett hozzon létre egy alosztályt közvetlenül (`MSALAADAuthority`, `MSALB2CAuthority`), vagy használja a Factory metódust `authorityWithURL:error:` alosztályok létrehozásához a szolgáltatói URL-cím használatával.
+A `MSALAuthority` osztály a MSAL-szolgáltató osztályainak alap absztrakt osztálya. Ne próbálja létrehozni a példányát `alloc` vagy `new`használatával. Ehelyett hozzon létre egy alosztályt közvetlenül (`MSALAADAuthority`, `MSALB2CAuthority`), vagy a Factory metódus `authorityWithURL:error:` használatával hozzon létre alosztályokat a szolgáltatói URL-cím használatával.
 
 A `url` tulajdonság használatával normalizált szolgáltatói URL-címet kaphat. A nem a hatóság részét képező további paraméterek és elérési utak összetevői vagy töredékei nem lesznek a visszaadott normalizált szolgáltatói URL-címben.
 
-A következő alosztályai `MSALAuthority` a-től függően a szolgáltatótól függően hozhatók létre.
+A következő alosztályok `MSALAuthority`, amelyek a szolgáltatótól függően hozhatók létre.
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`HRE-szolgáltatót jelöl. A szolgáltatói URL-címnek a következő formátumban kell lennie, ahol `<port>` a nem kötelező:`https://<host>:<port>/<tenant>`
+`MSALAADAuthority` egy HRE-szolgáltatót jelöl. A szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` megadása nem kötelező: `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`a B2C-hatóságot jelöli. Alapértelmezés szerint a B2C-szolgáltatói URL-címnek a következő formátumban kell lennie, `<port>` ahol `https://<host>:<port>/tfp/<tenant>/<policy>`a nem kötelező:. A MSAL azonban más, tetszőleges B2C-szolgáltatói formátumokat is támogat.
+`MSALB2CAuthority` a B2C-hatóságot jelöli. Alapértelmezés szerint a B2C-szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező: `https://<host>:<port>/tfp/<tenant>/<policy>`. A MSAL azonban más, tetszőleges B2C-szolgáltatói formátumokat is támogat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

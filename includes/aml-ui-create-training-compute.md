@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 28478f38df6ba6ea356626cc36c23ad498fc1f47
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692419"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792655"
 ---
-Egy folyamat egy számítási célra, a munkaterülethez csatolt számítási erőforrásra fut.  A számítási cél létrehozása után újból felhasználhatja azt későbbi futtatásokhoz.
+Egy folyamat egy számítási célra fut, amely a munkaterülethez csatolt számítási erőforrás. A számítási cél létrehozása után újból felhasználhatja azt későbbi futtatásokhoz.
 
 1. Válassza a **Futtatás** lehetőséget a vászon tetején a folyamat futtatásához.
 
@@ -36,6 +36,9 @@ Egy folyamat egy számítási célra, a munkaterülethez csatolt számítási er
 1. Válassza a **Futtatás** lehetőséget.
 
 1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **+ új kísérlet** a **kísérlethez** lehetőséget.
+
+    > [!NOTE]
+    > A kísérletek csoport hasonló folyamata együtt fut. Ha többször is futtat egy folyamatot, kiválaszthatja ugyanazt a kísérletet egymást követő futtatásokhoz.
 
     * Adjon meg egy leíró **kísérlet nevét**
 

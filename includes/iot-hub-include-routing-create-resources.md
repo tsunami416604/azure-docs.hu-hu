@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179738"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808834"
 ---
-## <a name="create-base-resources"></a>Alap-erőforrások létrehozása
+## <a name="create-base-resources"></a>Alaperőforrások létrehozása
 
-Az üzenet-útválasztással is konfigurálhat, birtokában hozhat létre egy IoT hubot, a storage-fiók és a egy Service Bus-üzenetsorba. Ezek az erőforrások hozható létre az elérhető négy cikkekben esetében ez az oktatóanyag 1. rész: az Azure CLI, Azure PowerShell-lel, az Azure Portalon vagy Azure Resource Manager-sablon.
+Az üzenet-útválasztás konfigurálása előtt létre kell hoznia egy IoT hubot, egy Storage-fiókot és egy Service Bus várólistát. Ezek az erőforrások az oktatóanyag 1. részében elérhető négy cikk egyikének használatával hozhatók létre: a Azure Portal, egy Azure Resource Manager sablon, az Azure CLI vagy a Azure PowerShell.
 
-Ugyanazt az erőforráscsoportot és helyet használja minden erőforráshoz. Majd végén, eltávolíthatja az erőforrásokat egy lépésben az erőforráscsoport törlésével.
+Ugyanazt az erőforráscsoportot és helyet használja minden erőforráshoz. Ezután törölheti az összes erőforrást egy lépésben az erőforráscsoport törlésével.
 
-A következő szakaszok ismertetik a lépéseket kell végrehajtania.
+Az alábbiakban a következő részekben végrehajtandó lépések összegzése látható: 
 
 1. Hozzon létre egy [erőforráscsoportot](../articles/azure-resource-manager/resource-group-overview.md).
 
 2. Hozzon létre egy IoT Hubot az S1 szinten. Adjon hozzá egy fogyasztói csoportot az IoT Hubhoz. A fogyasztói csoportot az Azure Stream Analytics használja az adatok lekérésekor.
 
    > [!NOTE]
-   > Az oktatóanyag elvégzéséhez a fizetős csomagra kell használnia egy Iot hubot. Az ingyenes szinten csak lehetővé teszi egy végpont beállítása, és ehhez az oktatóanyaghoz több végpontot.
+   > Az oktatóanyag elvégzéséhez egy fizetős szinten IOT hub-t kell használnia. Az ingyenes szint csak egy végpont beállítását teszi lehetővé, és ez az oktatóanyag több végpontot igényel.
    > 
 
 3. Hozzon létre egy standard szintű V1-tárfiókot Standard_LRS-replikációval.
 
 4. Hozzon létre egy Service Bus-névteret és üzenetsort.
 
-5. Hozzon létre egy eszközidentitást ahhoz a szimulált eszközhöz, amely üzeneteket küld a központnak. Mentse a kulcsot a tesztelési fázishoz. (Resource Manager-sablonnal hoz létre, ha ez történik a sablon üzembe helyezése után.)
+5. Hozzon létre egy eszközidentitást ahhoz a szimulált eszközhöz, amely üzeneteket küld a központnak. Mentse a kulcsot a tesztelési fázishoz. (Resource Manager-sablon létrehozásakor ez a sablon telepítése után történik.)

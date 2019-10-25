@@ -1,5 +1,6 @@
 ---
-title: Webes API-kat meghívó mobil alkalmazás – alkalmazás kódjának konfigurációja | Microsoft Identity platform
+title: Webes API-kat meghívó mobil alkalmazás – az alkalmazás kódjának konfigurálása
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az alkalmazás kódjának konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413592"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803734"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó mobil alkalmazás – alkalmazás regisztrálása
 
@@ -40,7 +41,7 @@ A legtöbb Mobile-alkalmazás interaktív hitelesítést használ. Ha ez a helyz
 - Ha integrált Windows-hitelesítést (UWP-alkalmazásokat) vagy felhasználónevet vagy jelszót szeretne használni, az alkalmazásnak be kell jelentkeznie a saját bérlő (LOB-fejlesztő) vagy az Azure Active Directory-szervezetek (ISV-forgatókönyv) felhasználói számára. A Microsoft személyes fiókjai nem támogatják ezeket a hitelesítési folyamatokat
 - Ha a felhasználók a B2C-szolgáltatót és a szabályzatot áthaladó közösségi identitásokkal jelentkeznek be, akkor csak az interaktív és a username-Password hitelesítést használhatja. Felhasználónév – a jelszó jelenleg csak a Xamarin. iOS, a Xamarin. Android és a UWP esetében támogatott.
 
-A Big Picture esetében lásd: [forgatókönyvek és támogatott hitelesítési folyamatok](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) és forgatókönyvek, valamint [támogatott platformok és nyelvek](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
+A Big Picture esetében lásd: [forgatókönyvek és támogatott hitelesítési folyamatok](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) és [forgatókönyvek, valamint támogatott platformok és nyelvek](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
 
 ## <a name="platform-configuration-and-redirect-uris"></a>Platform konfigurálása és URI-k átirányítása  
 
@@ -52,25 +53,25 @@ Ez a felhasználói élmény lehetővé teszi az alkalmazás számára, hogy egy
 
 Vegye figyelembe, hogy az alkalmazás regisztrációs portálján elérhető egy előzetes verzió, amely segítséget nyújt az iOS-és Android-alkalmazások felügyelt válasz URI-azonosítójának kiszámításához:
 
-1. Az alkalmazás regisztrációjában válassza a **hitelesítés** és kiválasztás kipróbálom **az új felületi**
-   ![képet](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. Az alkalmazás regisztrálása beállításban válassza a **hitelesítés** és kiválasztás **kipróbálom az új felhasználói élményt**
+   ![rendszerképet](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. Válassza a **platform**
-   ![hozzáadása rendszerképet](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+2. Válassza a **platform hozzáadása**
+   ![rendszerkép lehetőséget](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
 3. Ha a platformok listája támogatott, válassza az **iOS**
-   ![-rendszerkép elemet.](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+   ![a rendszerképet](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Adja meg a köteg azonosítóját a kért módon, 
-   majd kattintson a rendszerkép regisztrálása![elemre.](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+4. Adja meg a köteg AZONOSÍTÓját a kért módon, majd nyomja meg
+   ![-rendszerkép **regisztrálása**](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Az átirányítási URI-t az Ön számára számítjuk ki.
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![rendszerkép](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás Jegyzékfájlján keresztül teheti meg. Az ajánlott formátum a következő:
 
 - ***iOS***: `msauth.<BUNDLE_ID>://auth` (például "msauth. com. yourcompany. appName://auth")
-- ***Android***:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Az androidos aláírás kivonata a Key Tool parancs használatával hozható létre a kiadási vagy a hibakeresési kulcsokkal.
 
 ### <a name="username-password"></a>Felhasználónév jelszava
@@ -81,7 +82,7 @@ Ha az alkalmazás csak a username/Password nevet használja, nem kell regisztrá
 
 A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-kat. Az alkalmazásnak delegált engedélyeket kell igényelnie, más néven hatóköröknek kell lennie. A kívánt élménytől függően ez statikusan végezhető el a Azure Portalon vagy dinamikusan, futásidőben. Az engedélyek statikus regisztrálása lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást, és ajánlottak legyenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kód konfigurálása](scenario-mobile-app-configuration.md)

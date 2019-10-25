@@ -1,22 +1,21 @@
 ---
-title: A kognitív keresési képességek szövegének felosztása – Azure Search
-description: Szöveg felosztása darabokra vagy szöveges lapokra egy Azure Search alkoholtartalom-növelési folyamaton alapuló hossz alapján.
-services: search
+title: Szöveg felosztása kognitív képességgel
+titleSuffix: Azure Cognitive Search
+description: Szöveg felosztása darabokra vagy szöveges lapokra az Azure Cognitive Search AI-dúsítási folyamatának hossza alapján.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265669"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784848"
 ---
-#   <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
+# <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
 A **szöveg felosztása** készséggel szövegrészek szövegét bontja. Megadhatja, hogy a szöveget mondatokra vagy adott hosszúságú lapokra kívánja-e bontani. Ez a képesség különösen akkor hasznos, ha az egyéb szakismeretekben legfeljebb egy szöveges hosszra vonatkozó követelmény van. 
 
@@ -24,7 +23,7 @@ A **szöveg felosztása** készséggel szövegrészek szövegét bontja. Megadha
 > Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.SplitSkill 
+Microsoft. Skills. Text. SplitSkill 
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
@@ -33,7 +32,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textSplitMode      | Vagy "Pages" vagy "mondatok" | 
-| maximumPageLength | Ha a textSplitMode "Pages" (lapok `String.Length`) értékre van állítva, ez az oldal maximális hosszára vonatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
+| maximumPageLength | Ha a textSplitMode "Pages" értékre van állítva, akkor a `String.Length`alapján mért maximális oldalszámra hivatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
 | defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint a kínai, Japán és koreai nyelveken.</li></ul>  |
 
 
@@ -41,7 +40,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Paraméter neve       | Leírás      |
 |----------------------|------------------|
-| text  | Az alsztringbe feldarabolt szöveg |
+| szöveg  | Az alsztringbe feldarabolt szöveg |
 | languageCode  | Választható A dokumentumhoz tartozó nyelvi kód.  |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei 
@@ -131,7 +130,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 ## <a name="error-cases"></a>Hibák esetei
 Ha a nyelv nem támogatott, a rendszer figyelmeztetést generál, és a szöveg a karakter határain belülre van bontva.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-+ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

@@ -1,22 +1,23 @@
 ---
-title: A szintek és az SKU-Azure Search szolgáltatási korlátai
-description: A kapacitás megtervezésére, valamint a kérelmek és a Azure Searchre adott válaszok maximális korlátaira vonatkozó szolgáltatási korlátok.
-author: HeidiSteen
+title: A csomagokra és az SKU-ra vonatkozó szolgáltatási korlátok
+titleSuffix: Azure Cognitive Search
+description: A kapacitás megtervezésére és az Azure-Cognitive Search kéréseire adott válaszok maximális korlátozására használt szolgáltatási korlátok.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947781"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793580"
 ---
-# <a name="service-limits-in-azure-search"></a>Szolgáltatási korlátozások a Azure Search
-A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
+# <a name="service-limits-in-azure-cognitive-search"></a>Szolgáltatási korlátozások az Azure Cognitive Search
+
+A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy az Azure Cognitive Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinten van-e [kiépítve](search-create-service-portal.md) .
 
 + Az **ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéshez tartozik. Az indexelési és lekérdezési kérelmek a más bérlők által használt replikák és partíciók esetében futnak.
 
@@ -24,7 +25,7 @@ A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb o
 
 + A **standard** szintű dedikált gépeken fut, és minden szinten nagyobb a tárterület és a feldolgozási kapacitás. A standard szint négy szinten érhető el: S1, S2, S3 és S3 HD.
 
-+ A Storage-ra **optimalizált tárolók** a **standard szintű**tárterületet, tárolási sávszélességet és memóriát biztosító dedikált gépeken futnak. A tárterület optimalizálása két szinten érhető el: L1 és L2
++ A Storage-ra **optimalizált tárolók** a **standard szintű**tárterületet, tárolási sávszélességet és memóriát biztosító dedikált gépeken futnak. A tároló optimalizált két szinten érhető el: L1 és L2
 
 > [!NOTE]
 > Július 1-től az összes szintet általánosan elérhetővé kell tennie, beleértve a tárolási optimalizált szintet is. A díjszabás a [díjszabás részletei](https://azure.microsoft.com/pricing/details/search/) lapon található.
@@ -45,7 +46,7 @@ A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb o
 
 ## <a name="index-limits"></a>Index korlátai
 
-| Resource | Free | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | 2\. |
+| Erőforrás | Ingyenes | Alapszintű&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
 | Egyszerű mezők maximális száma index szerint |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -66,15 +67,15 @@ Október 2018-én már nem minden olyan dokumentum korlátozza az<sup>1</sup> . 
 
 Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentum-korlátozásokkal, tekintse meg a szolgáltatás áttekintés lapján a használat csempét. A dokumentumok száma korlátlan, vagy a küszöbértéken alapuló korlátra vonatkozik.
 
-  ![Használat csempe](media/search-limits-quotas-capacity/portal-usage-tile.png)
+  ![Használati csempe](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-<sup>1</sup> annak ellenére, hogy nincs SKU-specifikus dokumentumra vonatkozó korlátozás, minden indexre továbbra is a maximális biztonságos korlát vonatkozik a szolgáltatás stabilitásának biztosítása érdekében. Ez a korlát a Lucene származik. Minden Azure Search dokumentum belsőleg indexelve van egy vagy több Lucene-dokumentumként. Az Azure Search-dokumentumok Lucene száma az összetett gyűjtemények mezőiben szereplő elemek teljes számától függ. Minden elem külön Lucene-dokumentumként van indexelve. Egy összetett gyűjtemény mezőben 3 elemet tartalmazó dokumentum például 4 Lucene-dokumentumként lesz indexelve – 1 a dokumentumhoz, és 3 az elemekhez. Az Lucene dokumentumok maximális száma nagyjából 25 000 000 000.
+<sup>1</sup> annak ellenére, hogy nincs SKU-specifikus dokumentumra vonatkozó korlátozás, minden indexre továbbra is a maximális biztonságos korlát vonatkozik a szolgáltatás stabilitásának biztosítása érdekében. Ez a korlát a Lucene származik. Minden Azure Cognitive Search-dokumentum belsőleg indexelve van egy vagy több Lucene-dokumentumként. A Lucene dokumentumok száma egy keresési dokumentumban az összetett gyűjtemények mezőiben szereplő elemek teljes számától függ. Minden elem külön Lucene-dokumentumként van indexelve. Egy összetett gyűjtemény mezőben 3 elemet tartalmazó dokumentum például 4 Lucene-dokumentumként lesz indexelve – 1 a dokumentumhoz, és 3 az elemekhez. Az Lucene dokumentumok maximális száma nagyjából 25 000 000 000.
 
 ### <a name="regions-previously-having-document-limits"></a>Korábban dokumentum-korlátokkal rendelkező régiók
 
-Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-es késői időpontig jött létre, vagy egy adatközpontban lett létrehozva, amely alacsonyabb kapacitású fürtöket használ Azure Search szolgáltatások üzemeltetéséhez:
+Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-es késői időpontig jött létre, vagy egy adatközpontban lett létrehozva az Azure Cognitive Search szolgáltatásainak üzemeltetéséhez szükséges alacsonyabb kapacitású fürtök használatával:
 
-+ Kelet-Ausztrália
++ Ausztrália keleti régiója
 + Kelet-Ázsia
 + Közép-India
 + Nyugat-Japán
@@ -82,9 +83,9 @@ Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-e
 
 A dokumentumok korlátja alá eső szolgáltatások esetében a következő maximális korlátok érvényesek:
 
-|  Free | Alapszintű | S1 | S2 | S3 | S3&nbsp;HD |
+|  Ingyenes | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1 @ no__t – 0million |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
+|  10,000 |1 @ no__t_0_ millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
 
 Ha a szolgáltatás korlátozásokat blokkol, hozzon létre egy új szolgáltatást, majd tegye közzé újra az összes tartalmat a szolgáltatásban. Nincs olyan mechanizmus, amellyel zökkenőmentesen újra kiépítheti a szolgáltatást a színfalak mögötti új hardverre.
 
@@ -105,7 +106,7 @@ A dokumentum méretének megőrzéséhez ne felejtse el kizárni a kérelemből 
 A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és stabilitást biztosít, de a nagyobb adatkészletek esetében a maximálisan megengedettnél több indexelési időt is igénybe vehet. Ha egy indexelési feladatok nem hajthatók végre a maximálisan engedélyezett időtartamon belül, futtassa az ütemezett futtatást. Az ütemező nyomon követi az indexelési állapotot. Ha egy ütemezett indexelési feladatot valamilyen oknál fogva megszakítanak, az indexelő kiválaszthatja, hogy a következő ütemezett futtatásnál melyik utolsó marad.
 
 
-| Resource | Ingyenes @ no__t – 0<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2\. |
+| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Alapszintű&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
@@ -115,7 +116,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 | Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
 | A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
 | BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |–  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32,000 |64,000 |4 @ no__t – 0million |4 @ no__t – 0million |4 @ no__t – 0million |– |4 @ no__t – 0million |4 @ no__t – 0million |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4 @ no__t_0_ millió |4 @ no__t_0_ millió |4 @ no__t_0_ millió |– |4 @ no__t_0_ millió |4 @ no__t_0_ millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -131,7 +132,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 Az engedélyezett szinonimák maximális száma az árképzési szinten változhat. Mindegyik szabály legfeljebb 20 bővítéssel rendelkezhet, ahol a bővítés egy equivalvent-kifejezés. Például a "Cat", a "Kitty", a "macskaféle" és az "Felis" (a macskák nemhez tartozó) társítása 3 kiterjesztésnek számít.
 
-| Resource | Free | Alapszintű | S1 | S2 | S3 | S3 – HD |L1 | 2\. |
+| Erőforrás | Ingyenes | Basic | S1 | S2 | S3 | S3 – HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Szinonimák maximális térképe |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Szabályok maximális száma leképezés szerint |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -140,13 +141,13 @@ Az engedélyezett szinonimák maximális száma az árképzési szinten változh
 
 A QPS-becsléseket minden ügyféltől függetlenül kell kialakítani. Az index mérete és összetettsége, a lekérdezés mérete és összetettsége, valamint a forgalom mennyisége a QPS elsődleges tényezője. Az ilyen tényezők ismeretlenek lehetnek, így nem lehet értelmes becsléseket nyújtani.
 
-A becslések a dedikált erőforrásokon futó szolgáltatásokra (alapszintű és standard csomagokra) számítanak. Megbecsülheti a QPS, mert több paramétert is megadhat. A becslések megközelítésével kapcsolatos útmutatásért lásd: [Azure Search teljesítmény és optimalizálás](search-performance-optimization.md).
+A becslések a dedikált erőforrásokon futó szolgáltatásokra (alapszintű és standard csomagokra) számítanak. Megbecsülheti a QPS, mert több paramétert is megadhat. A becslések megközelítésével kapcsolatos útmutatásért lásd: [Azure Cognitive Search teljesítmény és optimalizálás](search-performance-optimization.md).
 
 A tárterületre optimalizált csomagok esetében az alacsonyabb lekérdezési sebességet és a standard szintnél nagyobb késést kell várnia.  A lekérdezési teljesítmény kiszámításának módszertana megegyezik a standard szinttel.
 
-## <a name="data-limits-cognitive-search"></a>Adatkorlátok (kognitív keresés)
+## <a name="data-limits-ai-enrichment"></a>Adatkorlátok (AI-dúsítás)
 
-Egy olyan [kognitív keresési folyamat](cognitive-search-concept-intro.md) , amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcsfontosságú kifejezés kinyeréséhez](cognitive-search-skill-keyphrases.md), a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakterből kell állnia [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)értékkel mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+Egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat, amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcs kifejezésének kinyeréséhez](cognitive-search-skill-keyphrases.md), a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Szabályozási korlátok
 
@@ -154,9 +155,9 @@ A keresési lekérdezési és indexelési kérelmeket a rendszer a maximális ka
 
 Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek:
 
-+ Indexek listázása (/Indexes beolvasása): másodpercenként 5/keresési egység
-+ Index beolvasása (/Indexes/myindex beolvasása): másodpercenként 10 másodpercenként
-+ Index létrehozása (/Indexes utáni): 12 percenként/keresési egységenként
++ Indexek listázása (/Indexes beolvasása): 5 másodpercenkénti keresési egységenként
++ Index beolvasása (/Indexes/myindex beolvasása): másodpercenként 10/keresési egység
++ Index létrehozása (/Indexes POST): 12 percenként, keresési egységenként
 + Index létrehozása vagy frissítése (PUT/Indexes/myindex): 6 másodpercenként/keresési egységenként
 + Index törlése (/Indexes/myindex törlése): 12 percenként/keresési egységenként 
 
@@ -167,7 +168,7 @@ Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek
 * Maximális 32 mező a $orderby záradékban
 * A maximális keresési kifejezés mérete 32 766 bájt (32 KB mínusz 2 bájt) UTF-8 kódolású szöveg esetén
 
-<sup>1</sup> Azure Searchban a kérelem törzse 16 MB-os felső korláttal rendelkezik, és az egyes mezők vagy gyűjtemények esetében gyakorlati korlátozást ír elő, amely nem korlátozza az elméleti korlátokat (lásd: [támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a mezők összeállításával és korlátozásával kapcsolatos információk.
+<sup>1</sup> az Azure Cognitive Search-ban a kérelem törzse 16 MB-os felső korlátot tartalmaz, és az egyes mezők vagy gyűjtemények olyan tartalmára vonatkozó gyakorlati korlátozást szab, amelyet nem az elméleti korlátok határoznak meg (lásd a [támogatott adattípusokat). ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)a mezők összeállításával és korlátozásával kapcsolatos további információkért.
 
 ## <a name="api-response-limits"></a>API-válaszok korlátai
 * A keresési eredmények által visszaadott maximális 1000-dokumentumok száma

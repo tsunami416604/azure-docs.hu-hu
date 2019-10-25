@@ -1,24 +1,23 @@
 ---
-title: A Search Explorer eszköz használata az Azure Portal-Azure Searchban tárolt adatlekérdezéshez
-description: A Search Explorer a Azure Portalbe van építve, amely hasznos lehet a tartalom feltárásához és a lekérdezések érvényesítéséhez Azure Searchokban. Karakterláncokat adhat meg a kifejezés vagy kifejezés kereséséhez, vagy a speciális szintaxissal rendelkező teljes keresési kifejezésekhez.
+title: A Search Explorer eszköz használata az adatlekérdezéshez Azure Portal
+titleSuffix: Azure Cognitive Search
+description: A Search Explorer a Azure Portalbe van építve, amely hasznos lehet a tartalmak feltárásához és a lekérdezések érvényesítéséhez az Azure Cognitive Searchban. Karakterláncokat adhat meg a kifejezés vagy kifejezés kereséséhez, vagy a speciális szintaxissal rendelkező teljes keresési kifejezésekhez.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178132"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792962"
 ---
-# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>A Azure Portal keresési ablakának használata dokumentumok lekérdezéséhez Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Az Azure-ban a dokumentumok lekérdezéséhez használja a Azure Portal keresési ablakát Cognitive Search 
 
-Ez a cikk bemutatja, hogyan lehet lekérdezni egy meglévő Azure Search indexet a Azure Portal a **Search Explorerben** . A keresési tallózót elindíthatja a parancssorból egyszerű vagy teljes Lucene lekérdezési kifejezések küldéséhez a szolgáltatás bármely meglévő indexéhez. 
+Ebből a cikkből megtudhatja, hogyan kérdezheti le egy meglévő Azure Cognitive Search-indexet a Azure Portal **keresési ablakának** használatával. A keresési tallózót elindíthatja a parancssorból egyszerű vagy teljes Lucene lekérdezési kifejezések küldéséhez a szolgáltatás bármely meglévő indexéhez. 
 
    ![Keresési Explorer parancs a portálon](./media/search-explorer/search-explorer-cmd2.png "Keresési Explorer parancs a portálon")
 
@@ -28,9 +27,9 @@ Az alábbi példák feltételezik a beépített ingatlan-minta indexét. Ezt az 
 
 ### <a name="example-1---empty-search"></a>1\. példa – üres keresés
 
-Ha először szeretné megtekinteni a tartalmat, hajtson végre egy üres keresést a kifejezés nélküli **Keresés** gombra kattintva. Az üres keresések első lekérdezésként hasznosak, mivel teljes dokumentumokat ad vissza, így áttekintheti a dokumentumok összeállítását. Üres keresés esetén a keresés nem történik meg, és a dokumentumok tetszőleges sorrendben lesznek visszaadva (`"@search.score": 1` minden dokumentum esetében). Alapértelmezés szerint a rendszer 50-dokumentumokat ad vissza egy keresési kérelemben.
+Ha először szeretné megtekinteni a tartalmat, hajtson végre egy üres keresést a kifejezés nélküli **Keresés** gombra kattintva. Az üres keresések első lekérdezésként hasznosak, mivel teljes dokumentumokat ad vissza, így áttekintheti a dokumentumok összeállítását. Üres keresés esetén a rendszer nem ad vissza keresési rangot, és a dokumentumok tetszőleges sorrendben lesznek visszaadva (`"@search.score": 1` az összes dokumentumhoz). Alapértelmezés szerint a rendszer 50-dokumentumokat ad vissza egy keresési kérelemben.
 
-Üres keresés `*` egyenértékű szintaxisa: vagy `search=*`.
+Az üres keresés egyenértékű szintaxisa `*` vagy `search=*`.
 
    ```Input
    search=*
@@ -38,11 +37,11 @@ Ha először szeretné megtekinteni a tartalmat, hajtson végre egy üres keres�
 
    **Results**
    
-   ![Üres lekérdezési példa Nem](./media/search-explorer/search-explorer-example-empty.png "minősített vagy üres lekérdezési példa")
+   ![Üres lekérdezési példa](./media/search-explorer/search-explorer-example-empty.png "Nem minősített vagy üres lekérdezési példa")
 
 ### <a name="example-2---free-text-search"></a>2\. példa – ingyenes szöveges keresés
 
-A szabad formátumú lekérdezések operátorokkal vagy anélkül is hasznosak az egyéni alkalmazásokból a Azure Searchba küldött, felhasználó által definiált lekérdezések szimulálásához. Figyelje meg, hogy amikor lekérdezési kifejezéseket vagy kifejezéseket ad meg, a keresés rangba kerül. Az alábbi példa egy ingyenes szöveges keresést mutat be.
+A szabad formátumú lekérdezések operátorokkal vagy anélkül is hasznosak az egyéni alkalmazásokból az Azure-Cognitive Search küldött, felhasználó által definiált lekérdezések szimulálásához. Figyelje meg, hogy amikor lekérdezési kifejezéseket vagy kifejezéseket ad meg, a keresés rangba kerül. Az alábbi példa egy ingyenes szöveges keresést mutat be.
 
    ```Input
    Seattle apartment "Lake Washington" miele OR thermador appliance
@@ -67,7 +66,7 @@ A szabad formátumú lekérdezések operátorokkal vagy anélkül is hasznosak a
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>4\. példa – mezők korlátozása a keresési eredmények között
 
-**$Select** hozzáadása az eredmények a explicit módon megnevezett mezőkre való korlátozásához a **Search Explorerben**olvasható kimenethez. A keresési karakterlánc és a **$Count = True**érték megtartásához előtag **&** argumentumai a következővel:. 
+**$Select** hozzáadása az eredmények a explicit módon megnevezett mezőkre való korlátozásához a **Search Explorerben**olvasható kimenethez. A keresési karakterlánc és a **$Count = True**értékének megtartásához előtag-argumentumokat **&** . 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
@@ -79,7 +78,7 @@ A szabad formátumú lekérdezések operátorokkal vagy anélkül is hasznosak a
 
 ### <a name="example-5---return-next-batch-of-results"></a>5\. példa – az eredmények következő kötegének visszaküldése
 
-A Azure Search a keresési rangsor alapján a legfontosabb 50-as egyezést adja vissza. A megfelelő dokumentumok következő készletének lekéréséhez fűzze hozzá a **$Top = 100, & $skip = 50** , hogy növelje az eredményhalmaz 100-es dokumentumokra (alapértelmezett érték: 50, maximális értéke 1000), kihagyva az első 50-dokumentumot. Ne felejtse el, hogy keresési feltételeket kell megadnia, például egy lekérdezési kifejezést vagy kifejezést a rangsorolt eredmények beszerzéséhez. Figyelje meg, hogy a keresési pontszámok csökkentik a keresési eredményekben elért mélyebb eredményeket.
+Az Azure Cognitive Search a keresési rangsor alapján a legfontosabb 50-as egyezést adja vissza. A megfelelő dokumentumok következő készletének lekéréséhez fűzze hozzá a **$Top = 100, & $skip = 50** , hogy növelje az eredményhalmaz 100-es dokumentumokra (alapértelmezett érték: 50, maximális értéke 1000), kihagyva az első 50-dokumentumot. Ne felejtse el, hogy keresési feltételeket kell megadnia, például egy lekérdezési kifejezést vagy kifejezést a rangsorolt eredmények beszerzéséhez. Figyelje meg, hogy a keresési pontszámok csökkentik a keresési eredményekben elért mélyebb eredményeket.
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
@@ -87,7 +86,7 @@ A Azure Search a keresési rangsor alapján a legfontosabb 50-as egyezést adja 
 
    **Results**
 
-   A ![Batch keresési eredményei](./media/search-explorer/search-explorer-example-topskip.png "Keresési eredmények következő kötegének visszaküldése")
+   ![A Batch keresési eredményei](./media/search-explorer/search-explorer-example-topskip.png "Keresési eredmények következő kötegének visszaküldése")
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Szűrési kifejezések (nagyobb, mint, kisebb, mint, egyenlő)
 
@@ -133,20 +132,20 @@ Ha a szabadszöveges keresés helyett pontos feltételeket szeretne megadni, has
 
 5. Az index és az API-verzió kijelölése után írja be a keresési kifejezéseket vagy a teljes lekérdezési kifejezéseket a keresősávba, és kattintson a **Keresés** gombra a végrehajtáshoz.
 
-   ![Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra](./media/search-explorer/search-explorer-query-string-example.png "Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra") .
+   ![Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra.](./media/search-explorer/search-explorer-query-string-example.png "Adja meg a keresési kifejezéseket, és kattintson a Keresés gombra.")
 
 Tippek a **Search Explorerben**való kereséshez:
 
 + Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza, így teljes egészében megtekintheti a dokumentumok szerkezetét és tartalmát. A példákban megjelenített lekérdezési kifejezésekkel korlátozhatja, hogy mely mezők legyenek visszaadva.
 
-+ A dokumentumok minden olyan mezőből állnak, amely az indexben beolvasható van megjelölve. Ha szeretné megtekinteni az index attribútumokat a portálon, kattintson a *Realestate-US-Sample* elemre az **indexek** listájában a keresés – áttekintés oldalon.
++ A dokumentumok minden olyan mezőből állnak, amely az indexben **beolvasható** van megjelölve. Ha szeretné megtekinteni az index attribútumokat a portálon, kattintson a *Realestate-US-Sample* elemre az **indexek** listájában a keresés – áttekintés oldalon.
 
 + A kereskedelmi webböngészőben megadható, a szabad formátumú lekérdezések a végfelhasználói élmény teszteléséhez is hasznosak lehetnek. Tegyük fel például, hogy a beépített Realestate-minta indexe a "Seattle Apartments Lake Washington" kifejezést adja meg, majd a CTRL-F billentyűkombinációval megkeresheti a kifejezéseket a keresési eredmények között. 
 
-+ A lekérdezési és szűrési kifejezéseket Azure Search által támogatott szintaxissal kell tagolni. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de igény szerint a [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) is használhatja nagyobb teljesítményű lekérdezésekhez. A [szűrési kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData szintaxis.
++ A lekérdezési és szűrési kifejezéseket az Azure Cognitive Search által támogatott szintaxissal kell tagolni. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de igény szerint a [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) is használhatja nagyobb teljesítményű lekérdezésekhez. A [szűrési kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData szintaxis.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi forrásokban további tudnivalókat és példákat találhat a lekérdezési szintaxisokról.
 

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260874"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809382"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -28,10 +28,10 @@ A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben
 
 A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulcshasználat. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a Azure Portal használatával. Ha szeretné megtudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt: [] rövid útmutató: Azure Key Vault titkos kód beállítása és beolvasása a Azure Portal] (.. /key-vault/quick-create-portal.md).
+Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a Azure Portal használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../key-vault/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok Azure-Event Hubs való használata megköveteli, hogy a kulcstartó két szükséges tulajdonsággal rendelkezzen. Ezek a következők:  **Nem végleges**törlés, és nem **törölhető** . Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
+> Az ügyfél által felügyelt kulcsok Azure-Event Hubs való használata megköveteli, hogy a kulcstartó két szükséges tulajdonsággal rendelkezzen. Ezek a következők: **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
@@ -101,20 +101,20 @@ Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél 
 
     ![Válassza az ügyfél által felügyelt kulcs felhasználói naplók lehetőséget](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Séma 
-Az összes napló JavaScript Object Notation (JSON) formátumban vannak tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely az alábbi táblázatban ismertetett formátumot használja. 
+## <a name="log-schema"></a>Napló sémája 
+Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely az alábbi táblázatban ismertetett formátumot használja. 
 
-| Name (Név) | Leírás |
+| Név | Leírás |
 | ---- | ----------- | 
-| Feladatnév | Leírás a sikertelen feladat. |
+| Feladatnév | A sikertelen feladat leírása. |
 | Tevékenységazonosító | A nyomon követéshez használt belső azonosító. |
 | category | Meghatározza a feladat besorolását. Ha például a kulcstartó kulcsa le van tiltva, akkor az egy információs kategória lenne, vagy ha egy kulcs nem csomagolható ki, a hiba a következő lehet:. |
 | resourceId | Erőforrás-azonosító Azure Resource Manager |
-| KeyVault | A Key Vault teljes neve. |
-| key | Az Event Hubs névtér titkosításához használt kulcsnév. |
+| keyVault | A Key Vault teljes neve. |
+| kulcs | Az Event Hubs névtér titkosításához használt kulcsnév. |
 | version | A használt kulcs verziószáma. |
-| operation | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
-| code | A művelethez társított kód. Példa: Hibakód, 404 azt jelenti, hogy a kulcs nem található. |
+| Művelet | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
+| Kód | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |
 | message | A művelethez társított hibaüzenetek |
 
 Íme egy példa egy ügyfél által felügyelt kulcs naplójára:
@@ -154,7 +154,7 @@ Ajánlott eljárásként mindig engedélyezze a naplókat, például az előző 
 
 A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás engedélyezve van.
 
-| Action | Hibakód | Eredményül kapott állapot |
+| Műveletek | Hibakód | Eredményül kapott állapot |
 | ------ | ---------- | ----------------------- | 
 | Kicsomagolási/kicsomagolási engedély eltávolítása a kulcstartóból | 403 |    Nem érhető el |
 | HRE-szerepkör tagságának eltávolítása egy olyan HRE, amely a wrap/unwrap engedélyt adta | 403 |  Nem érhető el |
@@ -173,7 +173,7 @@ A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás 
 > Ha a Virtual Network (VNet) szolgáltatási végpontok konfigurálva vannak a Event Hubs névtér Azure Key Vault, a BYOK nem lesz támogatott. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 - [Event Hubs – áttekintés](event-hubs-about.md)
 - [Key Vault áttekintése](../key-vault/key-vault-overview.md)

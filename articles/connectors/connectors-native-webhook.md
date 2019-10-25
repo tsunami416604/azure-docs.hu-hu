@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264336"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804265"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatizált eseményvezérelt munkafolyamatok létrehozása és futtatása HTTP-webhookok használatával Azure Logic Apps
 
@@ -75,7 +75,7 @@ Ez a beépített trigger egy visszahívási URL-címet regisztrál a megadott sz
 
 1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
-   További információ a HTTP-webhookhoz elérhető hitelesítési típusokról: [http-eseményindítók és-műveletek hitelesítése](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   További információ a HTTP webhookhoz elérhető hitelesítési típusokról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Folytassa a logikai alkalmazás munkafolyamatának kialakítását olyan műveletekkel, amelyek az eseményindító indításakor futnak.
 
@@ -111,7 +111,7 @@ Ez a beépített művelet regisztrálja a visszahívási URL-címet a megadott s
 
 1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
-   További információ a HTTP-webhookhoz elérhető hitelesítési típusokról: [http-eseményindítók és-műveletek hitelesítése](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   További információ a HTTP webhookhoz elérhető hitelesítési típusokról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 

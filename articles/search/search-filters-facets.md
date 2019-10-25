@@ -1,24 +1,23 @@
 ---
-title: Az alkalmazásokban való keresési Navigálás dimenziós szűrése – Azure Search
-description: A feltételeket a felhasználói biztonsági identitás, a földrajzi hely vagy a numerikus értékek alapján szűrheti, így csökkenthető a keresési eredmények Azure Search, egy üzemeltetett felhőalapú keresési szolgáltatás a Microsoft Azure.
-author: HeidiSteen
+title: Az alkalmazásokban való kereséshez használt dimenziós szűrők
+titleSuffix: Azure Cognitive Search
+description: A feltételeket a felhasználói biztonsági identitás, a földrajzi hely vagy a numerikus értékek alapján szűrheti, így csökkenthető a keresési eredmények az Azure Cognitive Search-on futó felhőalapú keresési szolgáltatásban Microsoft Azure.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 5/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649884"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792896"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Dimenziós szűrő létrehozása Azure Search 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Dimenziós szűrő létrehozása az Azure-ban Cognitive Search 
 
-A részletes Navigálás a lekérdezés eredményeinek önálló irányított szűrésére szolgál, ahol az alkalmazás felhasználói felületi vezérlőket biztosít a dokumentumok csoportjaihoz (például kategóriákhoz vagy márkákhoz) való kereséshez, és Azure Search biztosítja az adatszerkezetet a élmény. Ebből a cikkből megtudhatja, hogyan hozhat létre részletes navigációs struktúrát a megadható keresési felület létrehozásához szükséges alapvető lépésekkel. 
+A részletes Navigálás a lekérdezés eredményeinek önálló irányított szűrésére szolgál, ahol az alkalmazás felhasználói felületi vezérlőket biztosít a dokumentumok csoportjaihoz (például kategóriákhoz vagy márkákhoz) való kereséshez, és az Azure Cognitive Search biztosítja az adatszerkezetet a felhasználói élmény visszaállításához. Ebből a cikkből megtudhatja, hogyan hozhat létre részletes navigációs struktúrát a megadható keresési felület létrehozásához szükséges alapvető lépésekkel. 
 
 > [!div class="checklist"]
 > * Szűrési és aspektusi mezők kiválasztása
@@ -31,30 +30,30 @@ A dimenziók dinamikusak, és egy lekérdezésen keresztül lesznek visszaadva. 
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-Új a csiszolatlan navigációhoz, és további részletekre van szüksége? Tekintse meg, [hogyan valósítható meg a részletes Navigálás a Azure Searchban](search-faceted-navigation.md).
+Új a csiszolatlan navigációhoz, és további részletekre van szüksége? Megtudhatja [, hogyan valósítható meg a részletes navigálás az Azure Cognitive Searchban](search-faceted-navigation.md).
 
 ## <a name="choose-fields"></a>Mezők kiválasztása
 
 Az aspektusok az egyértékű mezőkön és a gyűjteményeken is kiszámíthatók. A leghatékonyabban felhasználható navigációs mezőkben kevés a különbség: kis számú különböző érték, amely megismétli a keresés során a dokumentumok között (például a színek, országok/régiók vagy márkanevek listája). 
 
-Ha az `facetable` `true`attribútumot a (z) értékre állítja, akkor a rendszer mező alapján, az index létrehozásakor engedélyezve van. `filterable` Az`true` attribútumot általában úgy kell beállítania, hogy az ilyen mezőkhöz a keresési alkalmazás a végfelhasználó által kiválasztott aspektusok alapján szűrheti ezeket a mezőket. 
+Ha a `facetable` attribútumot `true`értékre állítja, a rendszer az adatmegjelenítést a mező alapján hozza létre. A `filterable` attribútumot általában úgy kell beállítani, hogy az ilyen mezőkhöz `true`, így a keresőalkalmazás a végfelhasználó által kiválasztott aspektusok alapján szűrheti ezeket a mezőket. 
 
-Ha a REST API használatával hoz létre egy indexet, a rendszer a felhasználható [mezők bármely típusát](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) alapértelmezés szerint megjelöli `facetable` :
+Ha a REST API használatával hoz létre egy indexet, a rendszer alapértelmezés szerint a csiszolatlan Navigálás során esetlegesen felhasználható bármely [típusú mezőt](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) `facetable`ként jelöli meg:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Numerikus mezők típusai: `Edm.Int32`, `Edm.Int64`,`Edm.Double`
-+ A fenti típusok (például `Collection(Edm.String)` vagy `Collection(Edm.Double)`) gyűjteményei
++ Numerikus mezők típusai: `Edm.Int32`, `Edm.Int64`, `Edm.Double`
++ A fenti típusok gyűjteményei (például `Collection(Edm.String)` vagy `Collection(Edm.Double)`)
 
-Nem használhatók `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)` mezők a csiszolatlan navigálásban. Az aspektusok a legjobban a kis-és nagyszámú mezőkben működnek. A földrajzi koordináták feloldása miatt ritkán fordul elő, hogy a két közös koordinációs csoport egy adott adatkészletben egyenlő lesz. Ezért az aspektusok nem támogatottak a földrajzi koordináták esetében. Egy város vagy régió mezőre lesz szüksége a következő helyen: Face.
+Nem használhat `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)` mezőket a sokoldalú navigálásban. Az aspektusok a legjobban a kis-és nagyszámú mezőkben működnek. A földrajzi koordináták feloldása miatt ritkán fordul elő, hogy a két közös koordinációs csoport egy adott adatkészletben egyenlő lesz. Ezért az aspektusok nem támogatottak a földrajzi koordináták esetében. Egy város vagy régió mezőre lesz szüksége a következő helyen: Face.
 
 ## <a name="set-attributes"></a>Attribútumok beállítása
 
-Indexelő attribútumok, amelyek azt szabályozzák, hogy a rendszer hogyan használja a mezőket az index egyes mezőihez. A következő példában a kis-és nagybetűket tartalmazó mezők a következők: `category` (Hotel, Motel, Hostel), `tags`és `rating`. Ezeknek a mezőknek `filterable` a `facetable` és attribútumai explicit módon vannak megadva a következő példában szemléltető célokra. 
+Indexelő attribútumok, amelyek azt szabályozzák, hogy a rendszer hogyan használja a mezőket az index egyes mezőihez. A következő példában a kis-és nagybetűket tartalmazó mezők, amelyek hasznosak az aspektusokhoz, a következőkből állnak: `category` (Hotel, Motel, Hostel), `tags`és `rating`. Ezek a mezők a `filterable` és `facetable` attribútumok explicit módon vannak beállítva a következő példában szemléltető célokra. 
 
 > [!Tip]
-> A teljesítmény és a tárolás optimalizálásának ajánlott eljárása, ha olyan mezőkhöz kapcsolja ki a dimenziókat, amelyek soha nem használhatók dimenzióként. Az egyedi értékekhez (például azonosítóhoz vagy terméknévhoz) tartozó karakterlánc-mezőket úgy kell beállítani `"facetable": false` , hogy megakadályozza a véletlen (és nem hatékony) használatát a sokoldalú navigációban.
+> A teljesítmény és a tárolás optimalizálásának ajánlott eljárása, ha olyan mezőkhöz kapcsolja ki a dimenziókat, amelyek soha nem használhatók dimenzióként. Az egyedi értékekhez (például AZONOSÍTÓhoz vagy terméknévhoz) tartozó karakterlánc-mezőket úgy kell beállítani, hogy `"facetable": false` legyenek, hogy a véletlen (és nem hatékony) használatuk elkerülhető legyen a sokoldalú navigációban.
 
 
 ```json
@@ -78,11 +77,11 @@ Indexelő attribútumok, amelyek azt szabályozzák, hogy a rendszer hogyan hasz
 ```
 
 > [!Note]
-> Az index definícióját a rendszer átmásolja a [Azure Search index létrehozása a REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Ez a mező-definíciók esetében azonos, kivéve a felületi különbségeket. A `filterable` és `category` attribútumokexplicitmódon`smokingAllowed`hozzáadódnak a `parkingIncluded`,,, és`rating` mezőkhöz. `tags` `facetable` A gyakorlatban, `filterable` és `facetable` alapértelmezés szerint engedélyezve lesznek ezeken a mezőkön a REST API használatakor. A .NET SDK használatakor ezeket az attribútumokat explicit módon kell engedélyezni.
+> Az index definícióját a rendszer [a REST API használatával másolja az Azure Cognitive Search index létrehozása](https://docs.microsoft.com/azure/search/search-create-index-rest-api)elemből. Ez a mező-definíciók esetében azonos, kivéve a felületi különbségeket. A `filterable` és `facetable` attribútumok explicit módon hozzáadódnak a `category`, `tags`, `parkingIncluded`, `smokingAllowed`és `rating` mezőkhöz. A gyakorlatban a `filterable` és az `facetable` a REST API használatakor alapértelmezés szerint engedélyezve lesznek ezeken a mezőkön. A .NET SDK használatakor ezeket az attribútumokat explicit módon kell engedélyezni.
 
 ## <a name="build-and-load-an-index"></a>Index létrehozása és betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az, hogy az indexet fel kell építenie és fel kell [töltenie a](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
+Egy közbenső (és talán nyilvánvaló) lépés az, hogy [az indexet fel kell építenie és fel kell töltenie a](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
 
 ## <a name="add-facet-filters-to-a-query"></a>Dimenziós szűrők hozzáadása egy lekérdezéshez
 
@@ -99,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>Szűrt eredmények visszaküldése a kattintási eseményekre
 
-Ha a végfelhasználó egy dimenzióérték-értékre kattint, a click esemény kezelőjének egy szűrési kifejezést kell használnia a felhasználó szándékának felismeréséhez. Az adott `$filter` aspektusban a "Motel" kategóriára kattintva olyan kifejezéssel valósul meg, amely kiválasztja az adott típusú szállást. `category` Ha a felhasználó a "Motel" gombra kattint, jelezve, hogy csak a motelek jelennek meg, az `$filter=category eq 'motel'`alkalmazás által küldött következő lekérdezés tartalmazza a-t.
+Ha a végfelhasználó egy dimenzióérték-értékre kattint, a click esemény kezelőjének egy szűrési kifejezést kell használnia a felhasználó szándékának felismeréséhez. Egy `category` aspektusban a "Motel" kategóriára kattintva egy `$filter` kifejezéssel van megvalósítva, amely kiválasztja az adott típusú szállást. Amikor a felhasználó a "Motel" gombra kattint, jelezve, hogy csak a motelek jelennek meg, az alkalmazás által küldött következő lekérdezés tartalmazza a `$filter=category eq 'motel'`.
 
 A következő kódrészlet hozzáadja a szűrőt a szűrőhöz, ha a felhasználó egy értéket választ ki a kategória dimenzióból.
 
@@ -108,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Ha a felhasználó a gyűjtemény mezőjéhez hasonló `tags`, például a "pool" értékre kattint, az alkalmazásnak a következő szűrési szintaxist kell használnia:`$filter=tags/any(t: t eq 'pool')`
+Ha a felhasználó egy olyan gyűjtemény mezőjére kattint, mint például a `tags`például a "pool" érték, az alkalmazásnak a következő szűrési szintaxist kell használnia: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tippek és megkerülő megoldások
 
@@ -118,12 +117,12 @@ Ha egy olyan oldalt szeretne inicializálni, amelynek a helyén dimenziók vanna
 
 ### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Dimenziós navigációs struktúra aszinkron módon történő megőrzése szűrt eredmények alapján
 
-Azure Search az egyik kihívás az, hogy az aktuális eredményekhez csak az adott dimenziók találhatók. A gyakorlatban gyakori a dimenziók statikus készletének megtartása, hogy a felhasználó visszafelé Tudjon navigálni, és újra nyomon követheti az alternatív útvonalakat a keresési tartalmakon. 
+Az Azure Cognitive Searchban az egyik kihívás az, hogy az aktuális eredményekhez csak az összes aspektus létezik. A gyakorlatban gyakori a dimenziók statikus készletének megtartása, hogy a felhasználó visszafelé Tudjon navigálni, és újra nyomon követheti az alternatív útvonalakat a keresési tartalmakon. 
 
 Bár ez egy gyakori használati eset, nem az, hogy a facet navigációs struktúra jelenleg azonnal elérhető. A statikus aspektusokat szeretnéő fejlesztők általában két szűrt lekérdezés kiadásával használják a korlátozásokat: egy hatókört az eredményekre, a másik pedig a dimenziók statikus listáját hozza létre navigációs célokra.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-+ [Szűrők a Azure Searchban](search-filters.md)
++ [Szűrők az Azure Cognitive Search](search-filters.md)
 + [Index létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

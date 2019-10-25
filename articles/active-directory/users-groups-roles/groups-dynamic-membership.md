@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241173"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808967"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -185,7 +185,7 @@ Ha egy kifejezésen belül értéket ad meg, fontos, hogy a hibák elkerülése 
 
 * Idézőjelek megadása nem kötelező, kivéve, ha az érték karakterlánc.
 * A karakterlánc és a regex művelet nem megkülönbözteti a kis-és nagybetűket.
-* Ha egy karakterlánc-érték dupla idézőjelet tartalmaz, mindkét idézőjelet a \` karakterrel kell megszökni, például: user. Department-EQ \` "Sales @ no__t-2" a megfelelő szintaxis, ha az "értékesítés" az érték.
+* Ha egy sztring dupla idézőjelet tartalmaz, mindkét idézőjelet a \` karakterrel kell megszökni, például a felhasználó. Department-EQ \`"Sales\`" a megfelelő szintaxis, ha az "értékesítés" az érték.
 * NULL értékű ellenőrzéseket is végrehajthat, ha a null értéket használja, például `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Null értékek használata
@@ -281,7 +281,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ### <a name="using-the-underscore-_-syntax"></a>Az aláhúzás (\_) szintaxis használata
 
-Az aláhúzásjel (\_) szintaxisa egy adott értéknek a Többértékű karakterlánc-gyűjtemény tulajdonságai egyikének egy adott értékét adja meg a felhasználók vagy eszközök dinamikus csoportba való felvételéhez. Ez a-any vagy az-All operátorral együtt használatos.
+Az aláhúzás (\_) szintaxisa egy adott értéknek a Többértékű karakterlánc-gyűjtemény tulajdonságai egyikének egy adott értékét adja meg a felhasználók vagy eszközök dinamikus csoportba való felvételéhez. Ez a-any vagy az-All operátorral együtt használatos.
 
 Íme egy példa arra, hogy egy szabály aláhúzás (\_) használatával adja hozzá a tagokat a User. proxyAddress alapján (ez a felhasználó. otherMails esetében is működik). Ez a szabály bármely olyan felhasználót felvenni a csoportba, amely a "contoso" kifejezést tartalmazó proxy-címekkel rendelkezik.
 
@@ -342,7 +342,7 @@ A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinami
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Az egyéni bővítmények tulajdonságai a helyszíni Windows Server AD-ből vagy egy csatlakoztatott SaaS-alkalmazásból vannak szinkronizálva, és `user.extension_[GUID]_[Attribute]` formátumúak, ahol:
+Az egyéni bővítmények tulajdonságai a helyszíni Windows Server AD-ből vagy egy csatlakoztatott SaaS-alkalmazásból vannak szinkronizálva, és `user.extension_[GUID]_[Attribute]`formátuma, ahol:
 
 * A [GUID] az Azure AD-ben egyedi azonosító azon alkalmazás számára, amely létrehozta a tulajdonságot az Azure AD-ben
 * A (z) [Attribute] a létrehozott tulajdonság neve.
@@ -379,8 +379,10 @@ A következő eszköz-attribútumok használhatók.
  enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)
  managementType | MDM (mobileszközök esetében)<br>SZÁMÍTÓGÉP (az Intune PC Agent által felügyelt számítógépek esetén) | (Device. managementType-EQ "MDM")
+ organizationalUnit | egy érvényes helyszíni szervezeti egység (OU) | (Device. organizationalUnit – a "laptop" kifejezést tartalmazza)
  deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ 76ad43c9-32c5-45E8-A272-7b58b58f596d ")
+ devicePhysicalIds | az Autopilot által használt bármely karakterláncérték, például az összes Autopilot-eszköz, a Rendeléskód vagy a PurchaseOrderID  | (Device. devicePhysicalIDs – any _ – tartalmazza a következőt: "[ZTDId]") (Device. devicePhysicalIds – any _-EQ "[Rendeléskód]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (Device. systemLabels – a "M365Managed" kifejezést tartalmazza)
 
 > [!Note]  

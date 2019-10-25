@@ -1,5 +1,6 @@
 ---
-title: Alkalmazás közzétevő tartományának konfigurálása | Azure
+title: Alkalmazás közzétevő tartományának konfigurálása
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhat egy alkalmazás közzétevő tartományát, hogy a felhasználók tisztában legyenek az adataik elküldésével.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257934"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803346"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: Alkalmazás közzétevő tartományának konfigurálása (előzetes verzió)
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: alkalmazás közzétevő tartományának konfigurálása (előzetes verzió)
 
 Az alkalmazás közzétevői tartománya megjelenik a felhasználók számára az [alkalmazás jóváhagyására vonatkozó kérésben](application-consent-experience.md) , hogy a felhasználók tudják, hol küldik el az adataikat. A több-bérlős alkalmazások, amelyek a 2019. május 21. után vannak regisztrálva, amelyek nem rendelkeznek közzétevő tartománnyal, nem **ellenőrzöttként**jelennek meg. A több-bérlős alkalmazások olyan alkalmazások, amelyek egyetlen szervezeti címtáron kívül is támogatják a fiókokat. például támogassa az összes Azure AD-fiókot, vagy támogassa az összes Azure AD-fiókot és a személyes Microsoft-fiókokat.
 
@@ -38,9 +39,9 @@ A következő táblázat összefoglalja a közzétevő tartomány értékének a
 
 | Bérlő által ellenőrzött tartományok | Közzétevő tartomány alapértelmezett értéke |
 |-------------------------|----------------------------|
-| null | null |
-| *.onmicrosoft.com | *.onmicrosoft.com |
-| - *.onmicrosoft.com<br/>- domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
+| NULL | NULL |
+| *. onmicrosoft.com | *. onmicrosoft.com |
+| -*. onmicrosoft.com<br/>– domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
 
 Ha a több-bérlős alkalmazás közzétevő tartománya nincs beállítva, vagy ha egy olyan tartományra van beállítva, amely a. onmicrosoft.com-ben ér véget, akkor az alkalmazás hozzájárulási kérése nem **ellenőrzöttként** jelenik meg a közzétevő tartománya helyett.
 
@@ -69,7 +70,7 @@ Az alkalmazás közzétevő tartományának beállításához kövesse az alább
    - Válassza **a tartomány konfigurálása** lehetőséget, ha már nem konfigurált tartományt.
    - Válassza a **tartomány frissítése** lehetőséget, ha már konfigurálva van egy tartomány.
 
-Ha az alkalmazás regisztrálva van egy bérlőben, két lap közül választhat: **Válasszon egy ellenőrzött tartományt** , és **ellenőrizzen egy új tartományt**.
+Ha az alkalmazás regisztrálva van egy bérlőben, két lap közül választhat: **válasszon ki egy ellenőrzött tartományt** , és **ellenőrizze az új tartományt**.
 
 Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány ellenőrzésének lehetősége jelenik meg.
 
@@ -89,7 +90,7 @@ Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány
 
 1. Cserélje le a *{Your-app-ID-here}* helyőrzőt az alkalmazásnak megfelelő alkalmazás-(ügyfél-) azonosítóra.
 
-1. A fájl üzemeltetése a `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`következő helyen:. Cserélje le a *{Your-Domain-ide}* helyőrzőt az ellenőrzött tartománynak megfelelően.
+1. A fájlt a következő helyen tárolja: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Cserélje le a *{Your-Domain-ide}* helyőrzőt az ellenőrzött tartománynak megfelelően.
 
 1. Kattintson a **tartomány ellenőrzése és mentése** gombra.
 
@@ -98,7 +99,7 @@ Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány
 - Ha a bérlő ellenőrizte a tartományokat, válassza ki az egyik tartományt a **Select an ellenőrzött tartomány** legördülő listából.
 
 >[!Note]
-> A várt "Content-Type" fejlécnek `application/json`kell szerepelnie. Előfordulhat, hogy az alábbihoz hasonló hibaüzenetet kap, ha mást szeretne használni`application/json; charset=utf-8` 
+> A rendszer a várt "Content-Type" fejlécet `application/json`adja vissza. Az alább leírtak szerint előfordulhat, hogy az alábbihoz hasonló hibaüzenetet használ, ha mást szeretne használni `application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

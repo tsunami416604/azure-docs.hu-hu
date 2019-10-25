@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/16/2019
+ms.date: 10/21/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99e3cbc157817321e41a273b2bcf31128d71db18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b857ea5380fb13f8c8b1ff30b9dd9d8b6c723c2
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431032"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809675"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,7 +120,10 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Módosítási napló
-- 10/16/2019: hibás hivatkozások javítása a [biztonsági mentés és visszaállítás](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-backup-restore) során
+- 10/22/2019: az SAP [NetWeaver magas rendelkezésre állásának megváltozása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)esetében, [magas rendelkezésre állás az Azure-beli virtuális SUSE Linux Enterprise Server gépeken futó SAP NetWeaver számára az SAP-alkalmazásokhoz Azure NetApp Files ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Magas rendelkezésre állás a SUSE Linux Enterprise Server Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), a [pacemaker beállítása az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)-beli SUSE Linux Enterprise Server számára, [magas rendelkezésre állás az Azure-beli virtuális GÉPEKen elérhető IBM DB2-LUW, SUSE Linux Enterprise Server a pacemakerrel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) Az Azure-beli [virtuális gépeken futó SAP HANA magas rendelkezésre állása a SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) Azure Load-Balancer észlelésének megerősítéséhez
+- A ANF szakasz és fejléc szakaszának módosítása [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- 10/21/2019: az [Azure-beli virtuális gépek készenléti csomópontjaival SAP HANA kibővíthető, Azure NetApp Files a SLES-on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- 10/16/2019: hibás hivatkozások javítása a [biztonsági mentés és visszaállítás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore) során
 - 10/16/2019: módosítsa a minimális ajánlott operációs rendszert a SLES 12 SP3 verzióról a SLES 12 SP4-re az Azure-beli [virtuális gépeken, SUSE Linux Enterprise Server a pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) használatával
 - 10/11/2019: a lemezes tárolás konfigurációjának változásai és a ANF bevezetése [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/01/2019: változás az [Azure Proximity-elhelyezési csoportok grafikájában az optimális hálózati késés érdekében az SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) , hogy világosabb legyen
@@ -129,8 +132,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - 09/17/2019: változás a NetWeaver tervezési és telepítési útmutatóban az SAP virtuálisgép-bővítményének használatának egységesítéséhez  
 - 08/22/2019: a [pacemaker beállítása a SUSE Linux Enterprise Server az Azure-ban beállítás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) változásai az egyéni szerepkör-létrehozás URL-címeinek frissítéséhez  
 - 08/16/2019: változások a [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , hogy emlékeztesse az ügyfeleket az egyéni szerepkör műveleteinek frissítésére, ha az Azure kerítési ügynök új verziójára frissít.  
-- 08/15/2019: a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai az ultra Disk (korábban Ultra SSD) általánosan elérhetővé tételének tükrözéséhez
-- 08/01/2019: változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításához](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) , hogy integrálják a módosításokat kifejezetten a 15. SLES 
+- 08/15/2019: a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai az ultra Disk (korábban Ultra SSD) általánosan elérhetővé tételének tükrözéséhez
+- 08/01/2019: változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) , hogy integrálják a módosításokat kifejezetten a 15. SLES 
 - 07/23/2019: változások a [fürtben egy SAP ASCS/SCS-példány egy Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](sap-high-availability-guide-wsfc-file-share.md) , amely a közvetlen tárolóhelyek Azure site Recovery szolgáltatások általi támogatását tükrözi
 - 07/14/2019: [Azure Proximity-elhelyezési csoportok kiadása az optimális hálózati késés érdekében SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md)
 - 07/11/2019: a HANA nagy példányokra kiterjedő különböző dokumentumok változásai a HANA nagy példányok 4. változatának fedezésére

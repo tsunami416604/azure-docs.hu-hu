@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 004010983b87c333adeb4b20abbe851581917a3a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937439"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802180"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -29,19 +29,17 @@ A táblázat összefoglalja a Hyper-V virtuális gépek támogatott forgatókön
 **Helyszíni Hyper-V virtuális gépek felmérése** | [Állítsa be](tutorial-prepare-hyper-v.md) az első értékelést.<br/><br/> Nagy léptékű értékelés [futtatása](scale-hyper-v-assessment.md) .
 **A Hyper-V virtuális gépek migrálása az Azure-ba** | [Próbálja ki](tutorial-migrate-hyper-v.md) az Azure-ba való áttelepítést.
 
-A System Center Virtual Machine Manager (VMM) által felügyelt Hyper-V-kiszolgálók áttelepítése nem támogatott Azure Migrate-kiszolgáló áttelepítése esetén.
-
 ## <a name="azure-migrate-projects"></a>Azure Migrate projektek
 
 **Támogatás** | **Részletek**
 --- | ---
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
 Hyper-V virtuális gépek | Akár 35 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
-Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is létrehozhatja. Bár bizonyos földrajzi területeken létrehozhat projekteket, a gépeket más célhelyekre is felhasználhatja vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
+földrajz | Azure Migrate-projekteket számos földrajzi régióban is létrehozhatja. Bár bizonyos földrajzi területeken létrehozhat projekteket, a gépeket más célhelyekre is felhasználhatja vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
 
   **Régiócsoport** | **Metaadatok tárolási helye**
   --- | ---
-  Azure Government | USA-beli államigazgatás – Virginia
+  Azure Government | US Gov Virginia
   Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
   Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
   Brazília | Dél-Brazília
@@ -50,7 +48,7 @@ Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is lé
   Franciaország | Közép-Franciaország
   India | Közép-India vagy Dél-India
   Japán |  Kelet-japán vagy Nyugat-Japán
-  Korea | Korea középső régiója vagy Dél-Korea
+  Dél-Korea | Korea középső régiója vagy Dél-Korea
   Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
   Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -107,7 +105,7 @@ A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapc
 --- | ---
 *.portal.azure.com | Navigálás a Azure Portal
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
+*.microsoftonline.com <br/> *. microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 management.azure.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 dc.services.visualstudio.com | Naplózás és figyelés
 *.vault.azure.net | Azure Key Vault titkok kezelése a készülék és a szolgáltatás közötti kommunikáció során.
@@ -120,9 +118,9 @@ https://download.microsoft.com/download/* | A letölthető fájlok letöltése a
 
 A következő táblázat összefoglalja az értékeléshez szükséges portokra vonatkozó követelményeket.
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
-**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
+**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
 **Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek konfigurációjának és teljesítményének lekéréséhez CIM (CIM) munkamenet használatával.
 
 ## <a name="migration-limitations"></a>Áttelepítés – korlátozások
@@ -180,13 +178,13 @@ time.windows.com | Ellenőrzi a rendszerek és a globális idő közötti idősz
 
 A következő táblázat összefoglalja a Hyper-V-gazdagépeken és virtuális gépeken a VM-Migrálás portokra vonatkozó követelményeit.
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 Hyper-V-gazdagépek/virtuális gépek | Kimenő kapcsolatok a 443-es HTTPS-porton, hogy a virtuális gép replikációs szolgáltatásait Azure Migrate küldje el.
 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felkészülés a Hyper-V virtuális](tutorial-prepare-hyper-v.md) gépek áttelepítésre való értékelésére.

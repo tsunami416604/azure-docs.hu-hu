@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: a6789f409e26d1310d9e583ac2934e0bae462b21
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679878"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799430"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -132,7 +132,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 
 | Value (Díj) | Type (Típus) | Leírás | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name* > | Sztring | Az trigger neve | 
+| <*APIConnection_trigger_name*> | Sztring | Az trigger neve | 
 | < a*kapcsolatok neve* > | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
 | <*metódus típusa* > | Sztring | A felügyelt API-val való kommunikáció HTTP-metódusa: "GET", "PUT", "POST", "PATCH", "DELETE" | 
 | <*API-művelet* > | Sztring | A meghívni kívánt API-művelet | 
@@ -273,19 +273,21 @@ Ez az aktiválási definíció előfizet az Office 365 Outlook API-ra, visszahí
 
 ### <a name="http-trigger"></a>HTTP eseményindító
 
-Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megadott ismétlődési ütemterv alapján. A végpont válasza határozza meg, hogy fut-e a munkafolyamat.
+Ez az eseményindító kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak a megadott ismétlődési ütemterv alapján. Az trigger ezután ellenőrzi a választ, hogy a munkafolyamat fut-e.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,27 +305,27 @@ Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megado
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
-|-------|------|-------------| 
-| <*metódus típusa* > | Sztring | A megadott végpont lekérdezéséhez használandó HTTP-metódus: "GET", "PUT", "POST", "javítás", "DELETE" | 
-| <*végpont URL-címe* > | Sztring | A lekérdezéshez használt végpont HTTP-vagy HTTPS-URL-címe <p>Maximális sztring mérete: 2 KB | 
-| <*időegység* > | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
-| <*szám-idő egység* > | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
-|||| 
+| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+|----------|-------|------|-------------|
+| `method` | <*metódus típusa* > | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
+| `uri` | <*http-vagy-https-Endpoint-URL-cím* > | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
+| `frequency` | <*időegység* > | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" |
+| `interval` | <*szám-idő egység* > | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. |
+|||||
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
-|-------|------|-------------| 
-| <*fejléc – tartalom* > | JSON-objektum | A kérelemmel küldendő fejlécek <p>Például egy kérelem nyelvének és típusának megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*törzs – tartalom* > | Sztring | A kéréssel adattartalomként küldendő üzenet tartalma | 
-| <*hitelesítési módszer* > | JSON-objektum | A kérelem által a hitelesítéshez használt metódus. További információ: [Scheduler kimenő hitelesítés](../scheduler/scheduler-outbound-authentication.md). A feladatütemezőn kívül a `authority` tulajdonság is támogatott. Ha nincs megadva, az alapértelmezett érték `https://login.windows.net`, de más értéket is használhat, például `https://login.windows\-ppe.net`. |
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |  
- <*lekérdezés – paraméterek* > | JSON-objektum | A kérelemben szerepeltetni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja `?api-version=2018-01-01` a kérelemhez. | 
-| <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
-| <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
-|||| 
+| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+|----------|-------|------|-------------|
+| `headers` | <*fejléc – tartalom* > | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*lekérdezés – paraméterek* > | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja `?api-version=2018-01-01` a kérelemhez. |
+| `body` | <*törzs – tartalom* > | JSON-objektum | A kéréssel adattartalomként küldendő üzenet tartalma |
+| `authentication` | <*hitelesítési-Type-and-Property-values*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). A feladatütemezőn kívül a `authority` tulajdonság is támogatott. Ha nincs megadva, az alapértelmezett érték `https://management.azure.com/`, de más értéket is használhat. |
+| `retryPolicy` > `type` | <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
+| `runs` | <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. |
+| `maximumWaitingRuns` | <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. |
+| `operationOptions` | <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). |
+|||||
 
 *Kimenetek*
 
@@ -374,7 +376,7 @@ Az trigger viselkedése a használt vagy kihagyott elemektől függ.
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +385,7 @@ Az trigger viselkedése a használt vagy kihagyott elemektől függ.
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,7 +415,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a `"subscrib
 | <*metódus típusa* > | Sztring | A törlési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
 | <*végpont – leiratkozás – URL-cím* > | Sztring | Az a végpont URL-címe, ahová el kell küldeni a lemondási kérelmet | 
 | <*törzs – tartalom* > | Sztring | Az előfizetéshez vagy a lemondási kérelemhez küldendő üzenet tartalma | 
-| <*hitelesítési módszer* > | JSON-objektum | A kérelem által a hitelesítéshez használt metódus. További információ: [Scheduler kimenő hitelesítés](../scheduler/scheduler-outbound-authentication.md). |
+| <*hitelesítési típus*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
 | <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
 | <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
@@ -950,7 +952,7 @@ Ez a művelet egy [Microsoft által felügyelt API](../connectors/apis-list.md)h
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +962,7 @@ Ez a művelet egy [Microsoft által felügyelt API](../connectors/apis-list.md)h
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +988,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a `"subscrib
 | <*API – leiratkozás – URL-cím* > | Sztring | Az API-ból való leiratkozáshoz használandó URI | 
 | <*fejléc – tartalom* > | JSON-objektum | A kérelemben küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*törzs – tartalom* > | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
-| <*hitelesítési módszer* > | JSON-objektum | A kérelem által a hitelesítéshez használt metódus. További információ: [Scheduler kimenő hitelesítés](../scheduler/scheduler-outbound-authentication.md). |
+| <*hitelesítési típus*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
 | <*lekérdezés – paraméterek* > | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
 | <*egyéb művelet-specifikus-input-properties* > | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
@@ -1105,9 +1107,9 @@ Ez a művelet olyan kódot futtat, amely megkapja a logikai alkalmazás nevét, 
 
 *2. példa*
 
-Ez a művelet kódot futtat egy logikai alkalmazásban, amely elindítja, amikor új e-mail érkezik egy Office 365 Outlook-fiókba. A logikai alkalmazás egy küldési jóváhagyási e-mail-műveletet is használ, amely a kapott e-mailben továbbítja a tartalmat a jóváhagyásra vonatkozó kéréssel együtt. 
+Ez a művelet kódot futtat egy logikai alkalmazásban, amely elindítja, amikor új e-mail érkezik egy Office 365 Outlook-fiókba. A logikai alkalmazás egy küldési jóváhagyási e-mail-műveletet is használ, amely a kapott e-mailben továbbítja a tartalmat a jóváhagyásra vonatkozó kéréssel együtt.
 
-A kód kibontja az e-mail-címeket az trigger `Body` tulajdonságában, és visszaadja az e-mail-címeket a jóváhagyási művelet `SelectedOption` tulajdonságának értékével együtt. A művelet explicit módon magában foglalja a jóváhagyás küldése e-mailben műveletet a `explicitDependencies`  >  `actions` attribútumtól való függőségként.
+A kód kibontja az e-mail-címeket az trigger `Body` tulajdonságában, és visszaadja a címeket a jóváhagyási művelet `SelectedOption` tulajdonságának értékével együtt. A művelet explicit módon magában foglalja a jóváhagyás küldése e-mailben műveletet a `explicitDependencies`  >  `actions` attribútumtól való függőségként.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1208,21 @@ Ez a műveleti definíció a korábban létrehozott "GetProductID" függvényt h
 
 ### <a name="http-action"></a>HTTP-művelet
 
-Ez a művelet egy kérelmet küld a megadott végpontnak, és ellenőrzi a választ, hogy a munkafolyamat fusson-e. 
+Ez a művelet egy kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak, és ellenőrzi a választ, hogy a munkafolyamat fut-e.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1230,24 @@ Ez a művelet egy kérelmet küld a megadott végpontnak, és ellenőrzi a vála
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
-|-------|------|-------------| 
-| <*metódus típusa* > | Sztring | A kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
-| <*http-vagy-https-Endpoint-URL-cím* > | Sztring | A hívni kívánt HTTP-vagy HTTPS-végpont. Maximális sztring mérete: 2 KB | 
-|||| 
+| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+|----------|-------|------|-------------|
+| `method` | <*metódus típusa* > | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
+| `uri` | <*http-vagy-https-Endpoint-URL-cím* > | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
+|||||
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
-|-------|------|-------------| 
-| <*fejléc – tartalom* > | JSON-objektum | A kérelemmel küldendő fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*törzs – tartalom* > | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
-| <*lekérdezés – paraméterek* > | JSON-objektum | A kérelemben szerepeltetni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
-| <*egyéb művelet-specifikus-input-properties* > | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
-| <*egyéb művelet-specifikus-tulajdonságok* > | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
-|||| 
+| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+|----------|-------|------|-------------|
+| `headers` | <*fejléc – tartalom* > | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*lekérdezés – paraméterek* > | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. |
+| `body` | <*törzs – tartalom* > | JSON-objektum | A kéréssel adattartalomként küldendő üzenet tartalma |
+| `authentication` | <*hitelesítési-Type-and-Property-values*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). A feladatütemezőn kívül a `authority` tulajdonság is támogatott. Ha nincs megadva, az alapértelmezett érték `https://management.azure.com/`, de más értéket is használhat. |
+| `retryPolicy` > `type` | <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
+| <*egyéb művelet-specifikus-input-properties* > | <*input-property*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok |
+| <*egyéb művelet-specifikus-tulajdonságok* > | <*tulajdonság – érték*> | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok |
+|||||
 
 *Példa*
 
@@ -2665,134 +2675,11 @@ Egyetlen logikai alkalmazás definíciójában az 5 percenként végrehajtandó 
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>HTTP-eseményindítók és-műveletek hitelesítése
+## <a name="authenticate-triggers-and-actions"></a>Eseményindítók és műveletek hitelesítése
 
-A HTTP-végpontok különböző típusú hitelesítést támogatnak. A következő HTTP-eseményindítók és műveletek hitelesítését állíthatja be:
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Webhook](../connectors/connectors-native-webhook.md)
-
-A következőkben állíthatja be a beállított hitelesítés típusát:
-
-* [Alapszintű hitelesítés](#basic-authentication)
-* [Ügyféltanúsítvány-alapú hitelesítés](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth-hitelesítés](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> Ügyeljen arra, hogy megvédje a logikai alkalmazás munkafolyamat-definíciója által kezelt bizalmas adatokat. Használjon biztonságos paramétereket, és szükség szerint kódolja az adatok mennyiségét. A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>Alapszintű hitelesítés
-
-Az Azure Active Directory használatával történő [egyszerű hitelesítéshez](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) az trigger vagy a művelet definíciója tartalmazhat egy `authentication` JSON-objektumot, amely a következő táblázatban megadott tulajdonságokkal rendelkezik. A paraméter értékének futásidőben való eléréséhez használhatja a `@parameters('parameterName')` kifejezést, amelyet a [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs)biztosít. 
-
-| Tulajdonság | Szükséges | Value (Díj) | Leírás | 
-|----------|----------|-------|-------------| 
-| **type** | Igen | Alapvető | A használni kívánt hitelesítési típus, amely itt az "alapszintű" | 
-| **username** | Igen | "@parameters (" userNameParam ")" | A cél szolgáltatási végponthoz való hozzáférés hitelesítéséhez használt Felhasználónév |
-| **jelszó** | Igen | "@parameters (" passwordParam ")" | A cél szolgáltatási végponthoz való hozzáférés hitelesítéséhez használt jelszó |
-||||| 
-
-Ebben a példában a HTTP-művelet definíciójában a `authentication` szakasz meghatározza `Basic` hitelesítést. A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Ügyeljen arra, hogy megvédje a logikai alkalmazás munkafolyamat-definíciója által kezelt bizalmas adatokat. Használjon biztonságos paramétereket, és szükség szerint kódolja az adatok mennyiségét. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)című témakört.
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>Ügyféltanúsítvány-alapú hitelesítés
-
-A [tanúsítványalapú hitelesítés](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) Azure Active Directory használatával az trigger vagy a művelet definíciója tartalmazhat egy `authentication` JSON-objektumot, amely a következő táblázatban megadott tulajdonságokkal rendelkezik. A paraméter értékének futásidőben való eléréséhez használhatja a `@parameters('parameterName')` kifejezést, amelyet a [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs)biztosít. A használható Ügyféltanúsítványok számának korlátozásai: [Azure Logic apps korlátozásai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md).
-
-| Tulajdonság | Szükséges | Value (Díj) | Leírás |
-|----------|----------|-------|-------------|
-| **type** | Igen | ClientCertificate | A SSL-(SSL-) Ügyféltanúsítványok esetében használandó hitelesítési típus. Míg az önaláírt tanúsítványok támogatottak, az önaláírt tanúsítványok nem támogatottak az SSL-hez. |
-| **pfx** | Igen | "@parameters (' pfxParam ') | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
-| **jelszó** | Igen | "@parameters (" passwordParam ")" | A PFX-fájl eléréséhez használt jelszó |
-||||| 
-
-Ebben a példában a HTTP-művelet definíciójában a `authentication` szakasz meghatározza `ClientCertificate` hitelesítést. A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Ügyeljen arra, hogy megvédje a logikai alkalmazás munkafolyamat-definíciója által kezelt bizalmas adatokat. Használjon biztonságos paramétereket, és szükség szerint kódolja az adatok mennyiségét. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)című témakört.
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth-hitelesítés
-
-Az [Azure ad OAuth-hitelesítés](../active-directory/develop/authentication-scenarios.md)esetében az trigger vagy a művelet definíciója tartalmazhat egy `authentication` JSON-objektumot, amely a következő táblázatban megadott tulajdonságokkal rendelkezik. A paraméter értékének futásidőben való eléréséhez használhatja a `@parameters('parameterName')` kifejezést, amelyet a [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs)biztosít.
-
-| Tulajdonság | Szükséges | Value (Díj) | Leírás |
-|----------|----------|-------|-------------|
-| **type** | Igen | `ActiveDirectoryOAuth` | A használni kívánt hitelesítési típus, amely az Azure AD-OAuth "ActiveDirectoryOAuth" |
-| **hitelesítésszolgáltató** | Nem | <*URL-cím-a-Authority-token-kiállító* > | A hitelesítési jogkivonatot biztosító szolgáltató URL-címe |
-| **Bérlő** | Igen | <*bérlő-azonosító* > | Az Azure AD-bérlő bérlői azonosítója |
-| **célközönség** | Igen | *erőforrás-engedélyezés* < > | Az engedélyezéshez használni kívánt erőforrás, például `https://management.core.windows.net/` |
-| **clientId** | Igen | <*ügyfél-azonosító* > | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |
-| **credentialType** | Igen | "Tanúsítvány" vagy "titkos" | Az ügyfél által a hitelesítés kérelmezéséhez használt hitelesítő adat típusa. Ez a tulajdonság és az érték nem jelenik meg az alapul szolgáló definícióban, de meghatározza a hitelesítő adatok típusához szükséges paramétereket. |
-| **pfx** | Igen, csak a "tanúsítvány" hitelesítő adatok típusa esetén | "@parameters (' pfxParam ') | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
-| **jelszó** | Igen, csak a "tanúsítvány" hitelesítő adatok típusa esetén | "@parameters (" passwordParam ")" | A PFX-fájl eléréséhez használt jelszó |
-| **titkos** | Igen, csak a "titkos" hitelesítő adatok típusához | "@parameters (" secretParam ")" | Az engedélyezést kérő ügyfél titka |
-|||||
-
-Ebben a példában a HTTP-művelet definíciójában a `authentication` szakasz meghatározza `ActiveDirectoryOAuth` hitelesítés és a "titkos" hitelesítő adatok típusát. A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Ügyeljen arra, hogy megvédje a logikai alkalmazás munkafolyamat-definíciója által kezelt bizalmas adatokat. Használjon biztonságos paramétereket, és szükség szerint kódolja az adatok mennyiségét. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd [a logikai alkalmazás biztonságossá tétele](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)című témakört.
+A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontok elérésére irányuló kérések elvégzéséhez használt trigger vagy művelet alapján különböző hitelesítési típusok közül választhat. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 ## <a name="next-steps"></a>Következő lépések
 

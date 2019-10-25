@@ -1,6 +1,7 @@
 ---
-title: Egyszeri bejelentkezés (Microsoft-hitelesítési tár JavaScript-) |} Az Azure
-description: Ismerje meg az egyszeri bejelentkezés-megoldásokat a Microsoft-hitelesítési tár (MSAL.js) JavaScript-létrehozásához.
+title: Egyszeri bejelentkezés (Microsoft hitelesítési függvénytár JavaScripthez)
+titleSuffix: Microsoft identity platform
+description: Ismerje meg az egyszeri bejelentkezéses élmények létrehozását a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,24 +18,24 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f102307256852ac92616c7fb707e0e2739e5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f1b79e1694d759682833bf6022dbc9cd0a0977f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544158"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802997"
 ---
-# <a name="single-sign-on-with-msaljs"></a>Egyszeri bejelentkezés az MSAL.js
+# <a name="single-sign-on-with-msaljs"></a>Egyszeri bejelentkezés az MSAL.js-sel
 
-Egyszeri bejelentkezés (SSO) lehetővé teszi a felhasználók számára adja meg a hitelesítő adataikat egyszer jelentkezik be, és hozzon létre egy munkamenetet, amely anélkül, hogy újbóli felhasználhatók több alkalmazásban. Ez és zökkenőmentes élményt nyújt a felhasználónak a hitelesítő adatokat az ismétlődő utasításokat.
+Az egyszeri bejelentkezés (SSO) lehetővé teszi, hogy a felhasználók a bejelentkezéshez egyszer megadják a hitelesítő adataikat, és olyan munkamenetet hozzanak létre, amely többször is felhasználható a több alkalmazás között anélkül, hogy újra kellene hitelesíteni a hitelesítést. Ez zökkenőmentes felhasználói élményt nyújt a felhasználónak, és csökkenti a hitelesítő adatok ismételt megadását.
 
-Az Azure AD biztosítja, hogy az alkalmazások egyszeri bejelentkezési képességek beállítása egy munkamenetcookie-t, amikor a felhasználó első alkalommal végzi a hitelesítést. Az MSAL.js kódtár lehetővé teszi az alkalmazások Ez több módon is használhatja.
+Az Azure AD egyszeri bejelentkezéses képességeket biztosít az alkalmazásokhoz, ha beállítja a munkamenet-cookie-t, amikor a felhasználó első alkalommal hitelesíti magát. A MSAL. js függvénytár lehetővé teszi, hogy az alkalmazások többféleképpen is kihasználják ezt.
 
-## <a name="sso-between-browser-tabs"></a>Egyszeri bejelentkezés böngészőlapokon között
+## <a name="sso-between-browser-tabs"></a>Egyszeri bejelentkezés a böngésző lapjai között
 
-Amikor az alkalmazás meg nyitva a több lapra, és először jelentkezik be a felhasználó egy lapon, a felhasználó is jelentkezett be a többi lapon nélkül. MSAL.js gyorsítótárazza a felhasználó a böngészőben a azonosító jogkivonat `localStorage` és fog bejelentkezni a felhasználó az alkalmazás a többi megnyitott lap.
+Ha az alkalmazás több lapon van megnyitva, és először bejelentkezik egy lapra, a felhasználó a további lapokon is bejelentkezett, és nem kell megadnia. A MSAL. js gyorsítótárba helyezi a felhasználó azonosító tokenjét a böngészőben `localStorage` és aláírja a felhasználót az alkalmazásba a többi megnyitott lapon.
 
-Alapértelmezés szerint az MSAL.js használja `sessionStorage` nem engedi a munkamenet lapok között lehetnek megosztva. Beolvasni az egyszeri bejelentkezési lapok között, ügyeljen arra, hogy állítsa be a `cacheLocation` az MSAL.js való `localStorage` alább látható módon.
+Alapértelmezés szerint a MSAL. js olyan `sessionStorage` használ, amely nem engedélyezi a munkamenetnek a lapok közötti megosztását. Ha SSO-t szeretne beolvasni a lapok között, ügyeljen arra, hogy a `cacheLocation` a MSAL. js fájlban állítsa be a `localStorage` az alábbi ábrán látható módon.
 
 ```javascript
 const config = {
@@ -49,27 +50,27 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-## <a name="sso-between-apps"></a>Alkalmazások közötti SSO
+## <a name="sso-between-apps"></a>Egyszeri bejelentkezés az alkalmazások között
 
-Egy felhasználó hitelesíti magát, amikor egy munkamenetcookie-t a böngészőben az Azure AD-tartomány van beállítva. MSAL.js támaszkodik a munkamenetcookie-t egyszeri Bejelentkezést biztosít a felhasználó más alkalmazások között. MSAL.js is gyorsítótáraz a azonosító-jogkivonatokat és hozzáférési jogkivonatokat a felhasználó a böngésző tárterület doména aplikace. Ennek eredményeképpen az egyszeri bejelentkezés működése változó, különböző esetek:  
+Amikor egy felhasználó hitelesíti magát, egy munkamenet-cookie van beállítva az Azure AD-tartományban a böngészőben. A MSAL. js ezen munkamenet-cookie-ra támaszkodik, hogy a felhasználók a különböző alkalmazások közötti egyszeri bejelentkezést nyújtsanak. A MSAL. js emellett gyorsítótárazza a felhasználó azonosító jogkivonatait és hozzáférési jogkivonatait a böngésző tárterületén. Ennek eredményeképpen az egyszeri bejelentkezés viselkedése különböző esetekben változhat:  
 
-### <a name="applications-on-the-same-domain"></a>Ugyanabban a tartományban lévő alkalmazások
+### <a name="applications-on-the-same-domain"></a>Azonos tartományban lévő alkalmazások
 
-Alkalmazások ugyanabban a tartományban található, amikor a felhasználó be tud jelentkezni az alkalmazás egyszer, és ezután hitelesítik az egyéb alkalmazásokra kérdés nélkül. MSAL.js kihasználja a jogkivonatokat, a felhasználó egyszeri Bejelentkezést biztosít a tartományon a gyorsítótárban.
+Ha az alkalmazások ugyanazon a tartományon futnak, a felhasználó egyszer tud bejelentkezni egy alkalmazásba, majd kérés nélkül hitelesíti a többi alkalmazást. A MSAL. js kihasználja a felhasználó számára a gyorsítótárban gyorsítótárazott jogkivonatokat az egyszeri bejelentkezés biztosításához.
 
-### <a name="applications-on-different-domain"></a>Másik tartományban lévő alkalmazások
+### <a name="applications-on-different-domain"></a>Különböző tartományba tartozó alkalmazások
 
-Amikor alkalmazásokat különböző tartományokban található, a gyorsítótárba helyezi a tartományt A jogkivonatok nem érhető el MSAL.js b tartományban
+Ha az alkalmazások különböző tartományokban futnak, az A tartományon gyorsítótárazott tokenek nem érhetők el a B tartomány MSAL. js fájljában.
 
-Ez azt jelenti, hogy felhasználók jelentkezett be a tartomány egy nyissa meg a B tartományban lévő alkalmazás, amikor azok lesz átirányítva vagy az Azure AD-oldalról a rendszer. Mivel Azure ad-ben továbbra is rendelkezik a felhasználói munkamenet cookie-t, a felhasználói bejelentkezéshez lesz, és adja meg újra a hitelesítő adatok nem rendelkeznek. Ha a felhasználó több felhasználói fiókot az Azure AD-munkamenetben, jelentkezzen be a megfelelő fiókot választja ki bekéri a felhasználó.
+Ez azt jelenti, hogy amikor a (z) tartományba bejelentkezett felhasználók megnyitnak egy alkalmazást a B tartományban, a rendszer átirányítja vagy megkéri az Azure AD-oldalát. Mivel az Azure AD továbbra is a felhasználói munkamenet cookie-val rendelkezik, be fog jelentkezni a felhasználóba, és nem kell újra megadnia a hitelesítő adatokat. Ha a felhasználó több felhasználói fiókkal rendelkezik az Azure AD-vel való munkamenetben, a rendszer felszólítja a felhasználót, hogy válassza ki a megfelelő fiókot a bejelentkezéshez.
 
-### <a name="automatically-select-account-on-azure-ad"></a>Automatikusan válassza ki a fiókot az Azure ad-ben
+### <a name="automatically-select-account-on-azure-ad"></a>Fiók automatikus kiválasztása az Azure AD-ben
 
-Bizonyos esetekben az alkalmazás hozzáfér a felhasználó hitelesítési környezetet, és szeretne elkerülése érdekében a az Azure AD-fiók kiválasztása használatával több fiók be van jelentkezve.  Ezt megteheti különböző módokon:
+Bizonyos esetekben az alkalmazás hozzáfér a felhasználó hitelesítési környezetéhez, és szeretné elkerülni az Azure AD-fiók kijelölését, ha több fiók van bejelentkezve.  Ezt többféleképpen is elvégezheti:
 
-**A munkamenet-azonosító (SID) használata**
+**Munkamenet-azonosító (SID) használata**
 
-Munkamenet-azonosító egy [választható jogcím](active-directory-optional-claims.md) konfigurálható az azonosító-jogkivonatokat. Ez a jogcím lehetővé teszi, hogy az alkalmazás a felhasználó Azure AD munkamenet független a felhasználói fiók nevét vagy a felhasználónév az azonosításához. A kérelem paramétereit, és az SID adhasson a `acquireTokenSilent` hívja. Ez lehetővé teszi az Azure ad-ben a fiókválasztás kihagyásához. Biztonsági azonosító a munkamenetcookie-t van kötve, és nem lesz adatbázisközi böngésző környezeteket.
+A munkamenet-azonosító egy [opcionális jogcím](active-directory-optional-claims.md) , amely konfigurálható az azonosító jogkivonatokban. Ez a jogcím lehetővé teszi az alkalmazás számára, hogy azonosítsa a felhasználó Azure AD-munkamenetét a felhasználó fiókjának nevétől vagy felhasználónevétől függetlenül. A kérés paramétereinek átadhatja a SID-t a `acquireTokenSilent` híváshoz. Ez lehetővé teszi, hogy az Azure AD megkerüljék a fiók kijelölését. A SID a munkamenet-cookie-hoz van kötve, és nem fog több böngészőbeli kontextust felvenni.
 
 ```javascript
 var request = {
@@ -86,12 +87,12 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 ```
 
 > [!Note]
-> Biztonsági azonosító csak beavatkozás nélküli hitelesítési kérelmek által használható `acquireTokenSilent` MSAL.js-hívás.
-Nem kötelező jogcímek konfigurálásáról az alkalmazásjegyzékben annak [Itt](active-directory-optional-claims.md).
+> A SID csak a `acquireTokenSilent` hívás által a MSAL. js-ben végrehajtott csendes hitelesítési kérések esetén használható.
+A választható jogcímek konfigurálásának lépései [itt](active-directory-optional-claims.md)találhatók az alkalmazás jegyzékfájljában.
 
-**Bejelentkezési mutató használatával**
+**A login hint használata**
 
-Ha nem rendelkezik SID jogcím konfigurálva, vagy a fiók kiválasztása használatával interaktív hitelesítés hívásokban megkerülése kell, megteheti azáltal, hogy egy `login_hint` a kérelem paramétereit, és opcionálisan egy `domain_hint` , `extraQueryParameters` az MSAL.js a interaktív metódusok (`loginPopup`, `loginRedirect`, `acquireTokenPopup` és `acquireTokenRedirect`). Példa:
+Ha nincs konfigurálva a SID-jogcím, vagy meg kell kerülnie a fiók kiválasztására vonatkozó kérést az interaktív hitelesítési hívásokban, ezt úgy teheti meg, hogy a kérés paramétereinek `login_hint`ét, és opcionálisan `extraQueryParameters` `domain_hint` a MSAL. js interaktív metódusokban (@no __t_3_, `loginRedirect`, `acquireTokenPopup` és `acquireTokenRedirect`). Példa:
 
 ```javascript
 var request = {
@@ -103,28 +104,28 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-A jogcímek, az azonosító jogkivonat a felhasználó által visszaadott olvassa el az értékeket is igénybe login_hint és domain_hint.
+A login_hint és a domain_hint értékeit a felhasználó azonosító jogkivonatában visszaadott jogcímek beolvasásával érheti el.
 
-* **loginHint** értékre kell állítani a `preferred_username` jogcím az azonosító jogkivonat.
+* a **loginHint** az azonosító jogkivonatban az `preferred_username` jogcím értékére kell beállítani.
 
-* **domain_hint** átadni a/Common használata esetén csak szükséges szolgáltatót. A tartomány mutató bérlői ID(tid) határozza meg.  Ha a `tid` az azonosító jogkivonat jogcím `9188040d-6c67-4c5b-b112-36a304b66dad` fogyasztók. Ellenkező esetben célszerű a szervezetek számára.
+* a **domain_hint** csak akkor szükséges, ha a/gyakori hibák-szolgáltatót használja. A tartomány-emlékeztetőt a bérlői azonosító (TID) határozza meg.  Ha a `tid` jogcímet az azonosító jogkivonatban `9188040d-6c67-4c5b-b112-36a304b66dad` a fogyasztó. Egyéb esetben ez a szervezet.
 
-Olvasási [Itt](v2-oauth2-implicit-grant-flow.md) további információ a bejelentkezési mutató és a tartomány mutató értéke.
+Az [itt](v2-oauth2-implicit-grant-flow.md) olvasható további információ a bejelentkezési és a tartományi emlékeztető értékeiről.
 
 > [!Note]
-> Egyszerre nem adhatók át SID és login_hint. Hibaüzenetet eredményez.
+> A SID-és a login_hint nem adható át egyszerre. Ez hibaüzenetet eredményez.
 
-## <a name="sso-without-msaljs-login"></a>Egyszeri bejelentkezés MSAL.js bejelentkezés nélkül
+## <a name="sso-without-msaljs-login"></a>SSO MSAL. js-bejelentkezés nélkül
 
-A kialakításból fakadóan MSAL.js megköveteli, hogy a bejelentkezési módszert hívja meg a felhasználói környezet létrehozása előtt API-jogkivonatok lekérésének lépéseiről. Mivel interaktív bejelentkezési módszert, a felhasználó kap egy parancssort.
+A MSAL. js megtervezése megköveteli, hogy a rendszer bejelentkezési metódust hozzon létre a felhasználói környezet létrehozásához az API-k jogkivonatok beszerzése előtt. Mivel a bejelentkezési módszerek interaktívak, a felhasználó egy kérést lát.
 
-Bizonyos esetekben, amely alkalmazások hozzáférhetnek a hitelesített felhasználói környezetben vagy azonosító jogkivonat-hitelesítésen keresztül egy másik alkalmazás által kezdeményezett, és szeretnék kihasználni az egyszeri bejelentkezés az első bejelentkezés nélkül MSAL.js használatával szerzi be a jogkivonatokat.
+Bizonyos esetekben előfordulhat, hogy az alkalmazások egy másik alkalmazásban kezdeményezett hitelesítésen keresztül férnek hozzá a hitelesített felhasználó környezetéhez vagy azonosító jogkivonatához, és az egyszeri bejelentkezést szeretnék használni a tokenek beszerzéséhez anélkül, hogy a MSAL. js-en keresztül bejelentkeznek.
 
-A következő példa erre: Egy felhasználó egy szülő-webalkalmazást, amely egy másik JavaScript-alkalmazást futtató egy beépülő modul vagy bővítmény be van jelentkezve.
+Példa erre: A felhasználó egy szülő webalkalmazásba van bejelentkezve, amely bővítményként vagy beépülő modulként futó másik JavaScript-alkalmazást üzemeltet.
 
-Az egyszeri Bejelentkezéses felhasználói élmény ebben a forgatókönyvben a következőképpen érhető el:
+Ebben az esetben az egyszeri bejelentkezés felhasználói felülete a következőképpen érhető el:
 
-Adja át a `sid` ha rendelkezésre áll (vagy `login_hint` és opcionálisan `domain_hint`), a kérés paraméterei, az MSAL.js `acquireTokenSilent` hívja az alábbiak szerint:
+Adja át a `sid`, ha elérhető (vagy `login_hint` és opcionálisan `domain_hint`) a MSAL. js `acquireTokenSilent` hívásához a következőképpen:
 
 ```javascript
 var request = {
@@ -141,11 +142,11 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 });
 ```
 
-## <a name="sso-in-adaljs-to-msaljs-update"></a>Egyszeri bejelentkezés az MSAL.js Update ADAL.js
+## <a name="sso-in-adaljs-to-msaljs-update"></a>SSO a ADAL. js-ben a MSAL. js frissítéséhez
 
-MSAL.js számos lehetőséget kínál az Azure AD-hitelesítési forgatókönyvek az ADAL.js funkcióparitás. Győződjön meg arról, az áttelepítés ADAL.js az MSAL.js az egyszerű, így elkerülheti kéri a felhasználókat, hogy jelentkezzen be újra, a tár beolvassa a felhasználói munkamenetet képviselő ADAL.js gyorsítótárban azonosító jogkivonat, és zökkenőmentesen MSAL.js a felhasználó bejelentkezik.  
+A MSAL. js az Azure AD hitelesítési forgatókönyvek esetében a ADAL. js szolgáltatással biztosítja a funkció paritását. Ahhoz, hogy a ADAL. js fájlról MSAL. js-re váltson át, és ne kelljen újra bejelentkeznie a felhasználóktól, a függvénytár beolvassa a felhasználó munkamenetét jelképező ID tokent a ADAL. js gyorsítótárban, és zökkenőmentesen aláírja a felhasználót a MSAL. js fájlban.  
 
-Kihasználhatja az egyszeri bejelentkezés (SSO) viselkedés ADAL.js frissítésekor, kell annak érdekében, hogy a kódtárak használata `localStorage` jogkivonatok gyorsítótárazáshoz. Állítsa be a `cacheLocation` való `localStorage` az MSAL.js és a ADAL.js konfigurációban inicializáláskor az alábbiak szerint:
+Az egyszeri bejelentkezés (SSO) működésének a ADAL. js fájlból való frissítésekor való kihasználása érdekében gondoskodnia kell arról, hogy a kódtárak a gyorsítótárazási tokenek `localStorage` használják. Állítsa be a `cacheLocation`t úgy, hogy a MSAL. js és az ADAL. js konfigurációban is `localStorage` az inicializáláskor a következőképpen:
 
 
 ```javascript
@@ -171,8 +172,8 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-Ha ez lett konfigurálva, MSAL.js olvashatja a hitelesített felhasználó ADAL.js a gyorsítótárazott állapotát, és adja meg az egyszeri bejelentkezés az MSAL.js felhasználhatja lesz.
+Ha ez a beállítás be van állítva, a MSAL. js képes lesz olvasni a hitelesített felhasználó gyorsítótárazott állapotát a ADAL. js fájlban, és ezzel az SSO-t a MSAL. js fájlban is megadhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tudjon meg többet a [egyszeri bejelentkezés munkamenetet, és a jogkivonat élettartama](active-directory-configurable-token-lifetimes.md) értékeket az Azure ad-ben.
+További információ az [egyszeri bejelentkezési munkamenet és a jogkivonat élettartamának](active-directory-configurable-token-lifetimes.md) értékeiről az Azure ad-ben.

@@ -1,26 +1,25 @@
 ---
-title: Szinonimák C# példa – Azure Search
-description: Ebből C# a példából megtudhatja, hogyan adhatja hozzá a szinonima funkciót a Azure Search egy indexéhez. A szinonimák leképezése az egyenértékű kifejezések listája. A szinonimákat támogató mezők kibontják a lekérdezéseket, hogy tartalmazzák a felhasználó által megadott kifejezést és az összes kapcsolódó szinonimát.
+title: Szinonimák C# – példa
+titleSuffix: Azure Cognitive Search
+description: Ebből C# a példából megtudhatja, hogyan adhatja hozzá a szinonima funkciót az Azure Cognitive Search egy indexéhez. A szinonimák leképezése az egyenértékű kifejezések listája. A szinonimákat támogató mezők kibontják a lekérdezéseket, hogy tartalmazzák a felhasználó által megadott kifejezést és az összes kapcsolódó szinonimát.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647751"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794236"
 ---
-# <a name="example-add-synonyms-for-azure-search-in-c"></a>Példa: Szinonimák hozzáadása a Azure SearchhozC#
+# <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Példa: szinonimák hozzáadása az Azure Cognitive SearchhozC#
 
 A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik a bemeneti kifejezéssel szemantikailag egyenértékűnek tekintett kifejezéseket. Előfordulhat például, hogy azt szeretné, hogy a „kocsi” kifejezésre olyan dokumentumokat kapjon eredményül, amelyek az „autó” vagy a „jármű” kifejezéseket is tartalmazzák. 
 
-Az Azure Search szolgáltatásban a szinonimák meghatározása egy *szinonimatérképpel* történik, az egyenértékű kifejezéseket társító *leképezési szabályok* segítségével. Ez a példa a szinonimák meglévő indextel való hozzáadásának és használatának alapvető lépéseit ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure Cognitive Searchban a szinonimák a *szinonimák*szerint vannak definiálva, a *megfeleltetési szabályok* alapján, amelyek egyenértékű feltételeket társítanak. Ez a példa a szinonimák meglévő indextel való hozzáadásának és használatának alapvető lépéseit ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Hozzon létre egy szinonima leképezést a [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) osztály használatával. 
@@ -28,7 +27,7 @@ Az Azure Search szolgáltatásban a szinonimák meghatározása egy *szinonimat�
 
 A szinonimákat támogató mezőket a szokásos módon kérdezheti le. A szinonimák eléréséhez nincs szükség további lekérdezési szintaxisra.
 
-Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. Az indexben való keresés mellett az Azure Search szolgáltatás lekérdezéskor a szinonimatérképben is keres, ha meg van határozva egy a lekérdezésben használt mezőkhöz.
+Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. A lekérdezési időpontokban az Azure Cognitive Search egy szinonimás térképen keres, ha a lekérdezésben használt mezőkben meg van adva.
 
 > [!NOTE]
 > A szinonimák programozott módon hozhatók létre, de nem a portálon. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
@@ -38,9 +37,9 @@ Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index sz
 Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Search szolgáltatás](search-create-service-portal.md)
+* [Azure Cognitive Search szolgáltatás](search-create-service-portal.md)
 * [Microsoft.Azure.Search .NET-könyvtár](https://aka.ms/search-sdk)
-* [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Az Azure Cognitive Search használata .NET-alkalmazásokból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -78,7 +77,7 @@ Az „előtte és utána” lekérdezések a szinonimák előnyeit mutatják be.
       Console.ReadKey();
   }
 ```
-A mintaindex létrehozásának és a dokumentumok feltöltésének lépései [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk) című cikkben találhatók.
+A minta index létrehozásának és feltöltésének lépéseit az [Azure Cognitive Search .NET-alkalmazásokból való használatának](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)ismertetése ismerteti.
 
 ## <a name="before-queries"></a>„Előtte” lekérdezések
 
@@ -129,7 +128,7 @@ A szinonimák engedélyezése egy kétlépéses folyamat. Először meghatározz
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   A szinonimatérképnek meg kell felelnie a nyílt forráskódú szabványos `solr` formátumnak. A formátum ismertetését a [Szinonimák az Azure Search szolgáltatásban](search-synonyms.md) című cikk `Apache Solr synonym format` szakasza tartalmazza.
+   A szinonimatérképnek meg kell felelnie a nyílt forráskódú szabványos `solr` formátumnak. A formátumot az [Azure Cognitive Search szinonimái](search-synonyms.md) ismertetik a `Apache Solr synonym format`szakaszban.
 
 2. Konfiguráljon kereshető mezőket a szinonimatérkép indexdefinícióban történő használatához. Az `EnableSynonymsInHotelsIndex` parancsban engedélyezzük a szinonimákat a `category` és a `tags` mezőkben úgy, hogy a `synonymMaps` tulajdonságot az újonnan feltöltött szinonimatérkép nevére állítjuk.
    ```csharp
@@ -170,11 +169,11 @@ A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHu
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Egy példa után a leggyorsabb megoldás a Azure Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Search szolgáltatás Áttekintés lapján szerepel.
+Egy példa után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa a C# kód szinonimái funkcióját mutatja be a leképezési szabályok létrehozásához és közzétételéhez, majd meghív egy lekérdezés szinonimáit. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
 
 > [!div class="nextstepaction"]
-> [Szinonimák használata az Azure Searchben](search-synonyms.md)
+> [Szinonimák használata az Azure-ban Cognitive Search](search-synonyms.md)

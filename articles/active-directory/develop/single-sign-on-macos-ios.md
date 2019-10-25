@@ -1,5 +1,6 @@
 ---
-title: SSO konfigurálása macOS és iOS rendszeren | Microsoft Identity platform
+title: SSO konfigurálása macOS és iOS rendszeren
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést (SSO) macOS és iOS rendszeren.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b43319f3a456c7ea56ee3c6d5b3f9a1a4526bbe0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268933"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802492"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: SSO konfigurálása macOS és iOS rendszeren
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: az SSO konfigurálása macOS és iOS rendszeren
 
 A macOS és az iOS rendszerhez készült Microsoft Authentication Library (MSAL) támogatja az egyszeri bejelentkezést (SSO) macOS/iOS-alkalmazások és-böngészők között. Ez a cikk a következő SSO-forgatókönyveket ismerteti:
 
@@ -71,7 +72,7 @@ Ahhoz, hogy a Microsoft Identity platform tudja, mely alkalmazások oszthatják 
 
 A Microsoft Identity platform azt mutatja be, hogy az azonos alkalmazás-azonosítót használó alkalmazások **átirányítási URI**-k. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Példa:
 
-App1 átirányítási URI: `msauth.com.contoso.mytestapp1://auth`App2 átirányítási URI: `msauth.com.contoso.mytestapp2://auth`App3 átirányítási URI:`msauth.com.contoso.mytestapp3://auth`
+App1 átirányítási URI: `msauth.com.contoso.mytestapp1://auth` App2 átirányítási URI: `msauth.com.contoso.mytestapp2://auth` App3 átirányítási URI: `msauth.com.contoso.mytestapp3://auth`
 
 > [!IMPORTANT]
 > Az átirányítási URI-k formátumának kompatibilisnek kell lennie a MSAL által támogatott formátummal, amely a [MSAL átirányítási URI-formátumának követelményeiben](redirect-uris-ios.md#msal-redirect-uri-format-requirements)van dokumentálva.
@@ -80,7 +81,7 @@ App1 átirányítási URI: `msauth.com.contoso.mytestapp1://auth`App2 átirány�
 
 A kulcstartó megosztásának engedélyezéséhez tekintse meg az Apple [hozzáadási képességeivel](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) foglalkozó cikket. Fontos, hogy eldöntse, mit szeretne meghívni a kulcstartót, és ezt a képességet adja hozzá az összes olyan alkalmazáshoz, amely az egyszeri bejelentkezésben részt vesz.
 
-Ha helyesen állította be a jogosultságokat, egy olyan `entitlements.plist` fájlt fog látni a projekt könyvtárában, amely a következőhöz hasonló példát tartalmaz:
+Ha helyesen állította be a jogosultságokat, megjelenik egy `entitlements.plist` fájl a projekt könyvtárában, amely a következőhöz hasonló példát tartalmaz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +97,7 @@ Ha helyesen állította be a jogosultságokat, egy olyan `entitlements.plist` f�
 </plist>
 ```
 
-Miután az összes alkalmazásban engedélyezte a kulcstartó jogosultságot, és készen áll az egyszeri bejelentkezés használatára, konfigurálja `MSALPublicClientApplication` a kulcstartó-hozzáférési csoporttal a következő példában látható módon:
+Miután minden alkalmazásban engedélyezte a kulcstartó jogosultságot, és készen áll az egyszeri bejelentkezés használatára, konfigurálja a `MSALPublicClientApplication`t a kulcstartó-hozzáférési csoporttal az alábbi példában látható módon:
 
 Objective-C:
 
@@ -137,7 +138,7 @@ A MSAL támogatja a Microsoft Authenticator felügyelt hitelesítését. A Micro
 
 Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az alkalmazáshoz tartozó hitelesítési közvetítő használatával:
 
-1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI `msauth.<app.bundle.id>://auth`formátuma. Cserélje le a "< app. Bundle. id >" "elemre az alkalmazás Bundle-azonosítójával. Példa:
+1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth`. Cserélje le a "< app. Bundle. id >" "elemre az alkalmazás Bundle-azonosítójával. Példa:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -146,7 +147,7 @@ Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az a
     </array>
     ```
 
-1. Adja hozzá az alábbi sémákat az alkalmazás info. plist `LSApplicationQueriesSchemes`fájljában:
+1. Adja hozzá az alábbi sémákat az alkalmazás info. plist fájljában `LSApplicationQueriesSchemes`:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -156,7 +157,7 @@ Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az a
     </array>
     ```
 
-1. Adja hozzá a következőt `AppDelegate.m` a fájlhoz a visszahívások kezeléséhez:
+1. Adja hozzá a következőt a `AppDelegate.m` fájlhoz a visszahívások kezeléséhez:
 
     Objective-C:
     
@@ -175,7 +176,7 @@ Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az a
     }
     ```
     
-**Ha a Xcode 11**-et használja, helyette a MSAL visszahívást kell elhelyeznie a `SceneDelegate` fájlba.
+**Ha a Xcode 11**-et használja, helyette a MSAL-visszahívást kell elhelyeznie a `SceneDelegate` fájlba.
 Ha mind a UISceneDelegate, mind a UIApplicationDelegate támogatja a régebbi iOS-kompatibilitást, akkor a MSAL visszahívást mindkét fájlba be kell helyezni.
 
 Objective-C:
@@ -207,6 +208,6 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
     }
 ```
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

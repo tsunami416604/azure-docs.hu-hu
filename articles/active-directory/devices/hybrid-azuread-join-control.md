@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851777"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809226"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
@@ -41,7 +41,7 @@ A hibrid Azure AD-csatlakozásnak a Windows aktuális eszközökön való ellen�
 A Active Directory Services Interfaces Editor (ADSI szerkesztő) segítségével módosítsa az SCP-objektumokat az AD-ben.
 
 1. Indítsa el az **ADSI-szerkesztő** asztali alkalmazást a és a felügyeleti munkaállomásról, vagy egy tartományvezérlőt vállalati rendszergazdaként.
-1. Kapcsolódjon a tartomány **konfiguráció** -névhasználati környezetéhez.
+1. Kapcsolódjon a tartomány **konfiguráció-névhasználati környezetéhez** .
 1. Tallózással keresse meg a **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = eszköz regisztrációs konfigurációját**
 1. Kattintson a jobb gombbal a levél objektumra a **CN = eszköz regisztrációjának konfigurációja** területen, majd válassza a **Tulajdonságok** lehetőséget.
    1. Válassza ki a **kulcsszavakat** az **attribútum-szerkesztő** ablakban, és kattintson a **Szerkesztés** gombra.
@@ -55,24 +55,24 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
 
 1. Nyisson meg egy Csoportházirend felügyeleti konzolt, és hozzon létre egy új Csoportházirend objektumot a tartományban.
    1. Adja meg az újonnan létrehozott csoportházirend-objektum nevét (például ClientSideSCP).
-1. Szerkessze a csoportházirend-objektumot, és keresse meg a következő elérési utat: **Számítógép-konfigurációs** > **Beállítások** >  **– Windows-beállítások** **beállításjegyzéke**  > 
+1. Szerkessze a csoportházirend-objektumot, és keresse meg a következő elérési utat: **Számítógép konfigurációja** > **Beállítások** > **Windows beállítások** > **Registry**
 1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új** > **beállításjegyzék elemet** .
    1. Az **általános** lapon konfigurálja a következőket
-      1. Művelet: **Update**
-      1. Kaptár **HKEY_LOCAL_MACHINE**
+      1. Művelet: **frissítés**
+      1. Struktúra: **HKEY_LOCAL_MACHINE**
       1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Érték neve: **TenantId**
       1. Érték típusa: **REG_SZ**
-      1. Érték: Az Azure ad-példány GUID- **azonosítója vagy könyvtára** (ez az érték a **Azure Portal** > **Azure Active Directory** > **Tulajdonságok** > **könyvtár**-azonosítójában található)
+      1. Value (érték): az Azure AD-példány GUID- **azonosítója vagy könyvtára** (ez az érték megtalálható a **Azure Portal** > **Azure Active Directory** > **Tulajdonságok** > **Directory-azonosító**)
    1. Kattintson az **OK** gombra
 1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új** > **beállításjegyzék elemet** .
    1. Az **általános** lapon konfigurálja a következőket
-      1. Művelet: **Update**
-      1. Kaptár **HKEY_LOCAL_MACHINE**
+      1. Művelet: **frissítés**
+      1. Struktúra: **HKEY_LOCAL_MACHINE**
       1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Érték neve: **TenantName**
       1. Érték típusa: **REG_SZ**
-      1. Érték: Az ellenőrzött **tartománynevet** , ha összevont környezetet használ, például AD FS. A hitelesített **tartománynevet** vagy az onmicrosoft.com tartománynevet, `contoso.onmicrosoft.com` Ha például felügyelt környezetet használ
+      1. Érték adatai: az ellenőrzött **tartománynevet** , ha összevont környezetet használ, például AD FS. Az ellenőrzött **tartománynevet** vagy az onmicrosoft.com tartománynevet például `contoso.onmicrosoft.com`, ha felügyelt környezetet használ
    1. Kattintson az **OK** gombra
 1. Az újonnan létrehozott csoportházirend-objektum szerkesztőjének lezárása
 1. Csatolja az újonnan létrehozott GPO-t az ellenőrzött bevezetési populációhoz tartozó, tartományhoz csatlakoztatott számítógépeket tartalmazó kívánt szervezeti egységhez.
@@ -82,7 +82,7 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
 Ha AD FS használ, először konfigurálnia kell az ügyféloldali SCP-t a fent említett utasítások alapján, de a csoportházirend-objektumot a AD FS-kiszolgálókhoz kell összekapcsolnia. Az SCP objektum határozza meg az eszköz-objektumok szolgáltatójának forrását. Helyszíni vagy Azure AD-t is használhat. Ha a AD FS konfigurálva van, az eszköz objektumainak forrása Azure AD-ként lesz létrehozva.
 
 > [!NOTE]
-> Ha nem tudta konfigurálni az ügyféloldali SCP-t a AD FS-kiszolgálókon, akkor az eszköz identitásának forrása helyszíninek tekintendő, és a AD FS egy meghatározott időszak után elkezdi törölni a helyszíni címtárból származó objektumokat.
+> Ha nem tudta konfigurálni az ügyféloldali SCP-t a AD FS-kiszolgálókon, akkor az eszköz identitásának forrása helyszíninek tekintendő, és ha rendelkezik az eszköz visszaírási, a AD FS megkezdi a helyszíni regisztrált eszköz tárolójában lévő eszközbeállítások törlését meghatározott időszak.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzése Windows rendszerű eszközökön
 
@@ -100,6 +100,6 @@ Az eszköz regisztrációjának szabályozásához a Windows Installer csomagot 
 
 Miután meggyőződött róla, hogy minden a várt módon működik-e, automatikusan regisztrálhatja a Windows jelenlegi és régebbi verziójú eszközeit az Azure AD-vel az [SCP konfigurálásával Azure ad Connect használatával](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése](hybrid-azuread-join-plan.md)

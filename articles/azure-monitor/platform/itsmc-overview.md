@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ae1792d9ef3f07ef7258451be79b587692a1694
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177652"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809443"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -94,7 +94,7 @@ Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok 
 
 1. Nyissa meg az **összes erőforrást**, keresse meg a **ügyfélszolgálati (YourWorkspaceName)** .
 2. A bal oldali ablaktábla **munkaterület-ADATforrások** területén kattintson a **ITSM-kapcsolatok**elemre.
-   ![ITSM kapcsolatok @ no__t-1
+   ![ITSM-kapcsolatok](media/itsmc-overview/itsm-connections.png)
 
    Ez az oldal a kapcsolatok listáját jeleníti meg.
 3. Kattintson a **kapcsolatok hozzáadása**lehetőségre.
@@ -297,7 +297,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 2. Ha a ServiceNow származó adatok nem lettek szinkronizálva a Log Analyticsba, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok időnként hosszabb ideig tétlenek maradnak. Máskülönben jelentse a problémát.
 3. Ha Log Analytics a riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, vagy a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy más általános információkhoz, tekintse meg a következő helyeket:
    -  ITSMC: a megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg. Kattintson az **összekötő állapotát**megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására** kerül. További információkért tekintse meg a LogType_S a KÖVETKEZŐvel:.
-   - **Naplók keresése** oldalon: a hibák/kapcsolódó információk közvetlenül a lekérdezéssel `*`ServiceDeskLog_CL @ no__t-2 használatával tekinthetők meg.
+   - **Naplók keresése** oldalon: közvetlenül a lekérdezés `*`ServiceDeskLog_CL`*`használatával megtekintheti a hibákat/kapcsolódó információkat.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
 1.  A webalkalmazások telepítésével kapcsolatos problémák esetén győződjön meg arról, hogy rendelkezik az erőforrások létrehozásához és üzembe helyezéséhez szükséges engedélyekkel az előfizetésben.

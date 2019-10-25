@@ -1,27 +1,27 @@
 ---
-title: 'C#Oktatóanyag: több adatforrás indexelése – Azure Search'
-description: Megtudhatja, hogyan importálhat több adatforrásból származó adatait egyetlen Azure Search indexbe.
-author: RobDixon22
+title: 'C#Oktatóanyag: több adatforrás indexelése'
+titleSuffix: Azure Cognitive Search
+description: Megtudhatja, hogyan importálhat több adatforrásból származó adatait egyetlen Azure Cognitive Search indexbe.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 06/21/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70241837"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786482"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Oktatóanyag: több adatforrásból származó adatok egyesítése egy Azure Search indexben
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Oktatóanyag: több adatforrásból származó adatok egyesítése egy Azure Cognitive Search indexben
 
-Azure Search több adatforrásból is importálhat, elemezheti és indexelheti az adatait egyetlen kombinált keresési indexbe. Ez olyan helyzeteket támogat, amelyekben a strukturált adatok összesítése kevésbé strukturált vagy akár egyszerű szöveges adatokkal történik más forrásokból, például szöveg-, HTML-vagy JSON-dokumentumokból.
+Az Azure Cognitive Search több adatforrás adatait is importálhatja, elemezheti és indexelheti egyetlen kombinált keresési indexbe. Ez olyan helyzeteket támogat, amelyekben a strukturált adatok összesítése kevésbé strukturált vagy akár egyszerű szöveges adatokkal történik más forrásokból, például szöveg-, HTML-vagy JSON-dokumentumokból.
 
 Ez az oktatóanyag azt ismerteti, hogyan indexelheti a szállodai adatokat egy Azure Cosmos DB adatforrásból, és hogyan egyesítheti az Azure Blob Storage-dokumentumokból kirajzolt szállodai helyiségek adatait. Az eredmény egy összetett szállodai keresési index, amely komplex adattípusokat tartalmaz.
 
-Ez az oktatóanyag C#a Azure Search .net SDK-t és a Azure Portalt használja a következő feladatok elvégzéséhez:
+Ez az oktatóanyag C#az Azure-hoz készült .net SDK-t, a Cognitive Search és a Azure Portal a következő feladatok elvégzésére használja:
 
 > [!div class="checklist"]
 > * Mintaadatok feltöltése és adatforrások létrehozása
@@ -34,7 +34,7 @@ Ez az oktatóanyag C#a Azure Search .net SDK-t és a Azure Portalt használja a 
 
 Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és adatfájlokat használja a rendszer. 
 
-- [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
+- [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
 - [Hozzon létre egy Azure Cosmos db fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a minta szállodai adattárolók tárolásához.
 
@@ -46,7 +46,7 @@ Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és 
 
 1. Keresse meg a minta tárházat a GitHubon: [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Válassza a **klónozás vagy a letöltés** lehetőséget, és végezze el a tárház saját helyi példányát.
-1. Nyissa meg a Visual studiót, és telepítse a Microsoft Azure Search NuGet csomagot, ha még nincs telepítve. Az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..** . lehetőséget. Válassza a **Tallózás** fület, majd írja be a "Azure Search" kifejezést a keresőmezőbe. Telepítse a **Microsoft. Azure. Search** programot, ha az megjelenik a listában (9.0.1 vagy újabb verzió). A telepítés befejezéséhez kattintson a további párbeszédablakok lehetőségre.
+1. Nyissa meg a Visual studiót, és telepítse a Microsoft Azure Cognitive Search NuGet csomagot, ha még nincs telepítve. Az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..** . lehetőséget. A **Tallózás** lapon keresse meg és telepítse a **Microsoft. Azure. Search** (9.0.1 vagy újabb verzió). A telepítés befejezéséhez kattintson a további párbeszédablakok lehetőségre.
 
     ![Azure-kódtárak hozzáadása a NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -54,7 +54,7 @@ Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és 
 
 ## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-A Azure Search szolgáltatással való kommunikációhoz szükség van a szolgáltatás URL-címére és egy hozzáférési kulcsra. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+Az Azure Cognitive Search szolgáltatással való kommunikációhoz szükség van a szolgáltatás URL-címére és egy hozzáférési kulcsra. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
@@ -121,17 +121,17 @@ A keresési szolgáltatás és az adatforrások elérhetőségi adatai a megold�
 }
 ```
 
-Az első két bejegyzés a Azure Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. @No__t_0 egy végpontja, például a megadni kívánt szolgáltatásnév `mydemo`.
+Az első két bejegyzés az Azure Cognitive Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. @No__t_0 egy végpontja, például a megadni kívánt szolgáltatásnév `mydemo`.
 
 A következő bejegyzések megadják az Azure Blob Storage és Azure Cosmos DB adatforrások fiókjának nevét és a kapcsolatok karakterláncának adatait.
 
 ### <a name="identify-the-document-key"></a>A dokumentum kulcsának azonosítása
 
-Azure Search a Key mező egyedileg azonosítja az indexben szereplő összes dokumentumot. Minden keresési indexnek pontosan egy `Edm.String` típusú kulcsfontosságú mezővel kell rendelkeznie. A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
+Az Azure Cognitive Searchban a Key mező egyedileg azonosítja az indexben szereplő összes dokumentumot. Minden keresési indexnek pontosan egy `Edm.String` típusú kulcsfontosságú mezővel kell rendelkeznie. A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
 
 Ha több adatforrásból indexeli az adatok indexelését, az egyes adatforrások kulcsának értékének ugyanahhoz a Key mezőhöz kell tartoznia a kombinált indexben. Gyakran igényel némi kezdeti megtervezést az index értelmes dokumentum-kulcsainak azonosításához, és győződjön meg arról, hogy az minden adatforrásban létezik.
 
-Azure Search indexelő segítségével az indexelési folyamat során átnevezheti és akár újraformázhatja az adatmezőket, így a forrásadatok a megfelelő index mezőre irányíthatók.
+Az Azure Cognitive Search indexelő mezőivel átnevezheti és akár újraformázhatja az adatmezőket az indexelési folyamat során, így a forrásadatok a megfelelő index mezőre irányíthatók.
 
 Például a minta Azure Cosmos DBi adatban a szállodai azonosító neve **HotelId**. A szállodai szobák JSON blob-fájljaiban azonban a szállodai azonosító neve **azonosító**. A program ezt úgy kezeli, hogy hozzárendeli az **azonosító** mezőt a blobokból az index **HotelId** Key mezőjéhez.
 
@@ -143,7 +143,7 @@ Például a minta Azure Cosmos DBi adatban a szállodai azonosító neve **Hotel
 Az adatés konfigurációs beállítások megadását követően a **AzureSearchMultipleDataSources. SLN** programban a minta programnak készen kell állnia a létrehozásra és a futtatásra.
 
 Ez az C#egyszerű kódon-konzol alkalmazás a következő feladatokat hajtja végre:
-* Létrehoz egy új Azure Search indexet a C# Hotel osztály adatstruktúrája alapján (amely a címekre és a Room osztályokra is hivatkozik).
+* Létrehoz egy új Azure Cognitive Search indexet a C# szállodai osztály adatstruktúrája alapján (amely a címekre és a Room osztályokra is hivatkozik).
 * Létrehoz egy Azure Cosmos DB adatforrást és egy olyan indexelő, amely leképezi a Azure Cosmos db-adat index mezőibe.
 * A Azure Cosmos DB indexelő futtatásával tölti be a szállodai adatkészletet.
 * Létrehoz egy Azure Blob Storage adatforrást és egy olyan indexelő, amely a JSON-Blobok adatait indexelő mezőkbe képezi.
@@ -152,11 +152,11 @@ Ez az C#egyszerű kódon-konzol alkalmazás a következő feladatokat hajtja vé
  A program futtatása előtt szánjon egy percet a minta kódjának és indexének és indexelő definícióinak tanulmányozására. A megfelelő kód a következő két fájlban található meg:
 
   + A **Hotel.cs** tartalmazza az indexet meghatározó sémát.
-  + A **program.cs** olyan függvényeket tartalmaz, amelyek létrehozzák a Azure Search indexet, az adatforrásokat és az indexelő, és betöltik az összesített eredményeket az indexbe.
+  + A **program.cs** olyan függvényeket tartalmaz, amelyek létrehozzák az Azure Cognitive Search indexet, az adatforrásokat és az indexelő, és betöltik az összesített eredményeket az indexbe.
 
 ### <a name="define-the-index"></a>Az index meghatározása
 
-Ez a mintakód a .NET SDK használatával határozza meg és hozza létre Azure Search indexet. Kihasználja a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy index-struktúrát állítson elő egy C# adatmodell osztályból.
+Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy index-struktúrát állítson elő egy C# adatmodell osztályból.
 
 Az adatmodellt a Hotel osztály határozza meg, amely a címekre és a helyiségekre vonatkozó osztályokra mutató hivatkozásokat is tartalmaz. A FieldBuilder részletesen részletezi az indexek összetett adatstruktúrájának létrehozásához. A metaadatok címkéi az egyes mezők attribútumainak meghatározására szolgálnak, például hogy kereshető vagy rendezhető legyen.
 
@@ -336,22 +336,22 @@ A program futtatása után megtekintheti a feltöltött keresési indexet a port
 
 A Azure Portalban nyissa meg a keresési szolgáltatás **áttekintése** lapot, és keresse meg a **Hotel-Rooms-Sample** indexet az **indexek** listájában.
 
-  ![Azure Search indexek listája](media/tutorial-multiple-data-sources/index-list.png "Azure Search indexek listája")
+  ![Az Azure Cognitive Search indexek listája](media/tutorial-multiple-data-sources/index-list.png "Az Azure Cognitive Search indexek listája")
 
 Kattintson a Hotel-Rooms-Sample index elemre a listában. Ekkor megjelenik az indexhez tartozó keresési Explorer felülete. Adjon meg egy lekérdezést egy olyan kifejezéshez, mint a "Luxury". Meg kell jelennie legalább egy dokumentumnak az eredményekben, és a dokumentumnak tartalmaznia kell a Room Objects-objektumok listáját a szobák tömbben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatást tartalmazó erőforráscsoport törlésével távolíthatók el a leggyorsabban. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve a Azure Search szolgáltatás áttekintés lapján található.
+Az oktatóanyag után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlésével. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
 ## <a name="next-steps"></a>Következő lépések
 
 A JSON-Blobok indexeléséhez több módszer és több lehetőség is van. Ha a forrásadatok JSON-tartalmat tartalmaznak, áttekintheti ezeket a beállításokat, hogy megtudja, mi a legmegfelelőbb a forgatókönyvhöz.
 
 > [!div class="nextstepaction"]
-> [JSON-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-json-blobs.md)
+> [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-json-blobs.md)
 
-Előfordulhat, hogy az egyik adatforrásból származó strukturált index-adatokat ki szeretné bővíteni a strukturálatlan blobokból vagy teljes szöveges tartalomból származó, kognitívan dúsított adatokkal. Az alábbi oktatóanyag azt mutatja be, hogyan használható a Cognitive Services együtt a Azure Search használatával a .NET SDK-val.
+Előfordulhat, hogy az egyik adatforrásból származó strukturált index-adatokat ki szeretné bővíteni a strukturálatlan blobokból vagy teljes szöveges tartalomból származó, kognitívan dúsított adatokkal. Az alábbi oktatóanyag azt mutatja be, hogyan használható a Cognitive Services az Azure Cognitive Search használatával, a .NET SDK-val együtt.
 
 > [!div class="nextstepaction"]
-> [Cognitive Services API-k hívása egy Azure Search indexelési folyamatban](cognitive-search-tutorial-blob-dotnet.md)
+> [Cognitive Services API-k hívása egy Azure Cognitive Search indexelési folyamatában](cognitive-search-tutorial-blob-dotnet.md)

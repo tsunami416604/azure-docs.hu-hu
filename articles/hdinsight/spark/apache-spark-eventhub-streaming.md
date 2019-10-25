@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/24/2019
-ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/17/2019
+ms.openlocfilehash: 33ec747edaeba60f1c1e5fdb29fd2af1cb29cf8d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266198"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800081"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: tweetek feldolgozása az Azure Event Hubs és a HDInsight-Apache Spark használatával
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete. További információ: [adatok betöltése és lekérdezések futtatása Apache Spark a HDInsight-on](./apache-spark-load-data-run-query.md).
 
-* Egy [Twitter-fiók](https://twitter.com/i/flow/signup).
+* [Twitter-fiók](https://twitter.com/i/flow/signup) és a Twitter ismerete.
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -40,45 +40,45 @@ A valós idejű tweetstream fogadásához létre kell hoznia egy alkalmazást a 
 
 1. Tallózással keresse meg a [Twitter-alkalmazások kezelését](https://apps.twitter.com/).
 
-1. Válassza az **új alkalmazás létrehozása**lehetőséget.
+1. Válassza **az alkalmazás létrehozása**lehetőséget.
 
-1. Adja meg a következő értékeket:
+1. Adja meg a következő szükséges értékeket:
 
     |Tulajdonság |Value (Díj) |
     |---|---|
-    |Név|Adja meg az alkalmazás nevét. Az oktatóanyaghoz használt érték a **HDISparkStreamApp0423**. A névnek egyedi névnek kell lennie.|
-    |Leírás|Adja meg az alkalmazás rövid leírását. Az oktatóanyaghoz használt érték **egy egyszerű HDInsight Spark streaming-alkalmazás**.|
-    |Honlap|Adja meg az alkalmazás webhelyét. Nem kell érvényes webhelynek lennie.  Az oktatóanyaghoz használt érték `http://www.contoso.com`.|
-    |Visszahívási URL-cím|Üresen hagyhatja.|
+    |App neve|Adja meg az alkalmazás nevét. Az oktatóanyaghoz használt érték a **HDISparkStreamApp0423**. A névnek egyedi névnek kell lennie.|
+    |Alkalmazás leírása|Adja meg az alkalmazás rövid leírását. Az oktatóanyaghoz használt érték **egy egyszerű HDInsight Spark streaming-alkalmazás**.|
+    |Webhely URL-címe|Adja meg az alkalmazás webhelyét. Nem kell érvényes webhelynek lennie.  Az oktatóanyaghoz használt érték `http://www.contoso.com`.|
+    |Mondja el, hogyan fogja használni ezt az alkalmazást?|Csak tesztelési célra. Apache Spark streaming-alkalmazás létrehozása tweetek küldéséhez egy Azure Event hub-ba.|
 
-1. Válassza **az igen, elolvastam és elfogadom a Twitter fejlesztői szerződést**, majd válassza a **Twitter-alkalmazás létrehozása**lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
-1. Válassza a **kulcsok és hozzáférési tokenek** fület.
+1. A **fejlesztői kifejezések áttekintése** lapon válassza a **Létrehozás**lehetőséget.
 
-1. A lap végén válassza a **saját hozzáférési jogkivonat létrehozása** elemet.
+1. Válassza a **kulcsok és jogkivonatok** fület.
 
-1. Jegyezze fel a következő értékeket az oldalról.  Ezekre az értékekre később szüksége lesz az oktatóanyagban:
+1. A **hozzáférési jogkivonat & hozzáférési jogkivonat titka**területen válassza a **Létrehozás**lehetőséget.
 
-    - **Fogyasztói kulcs (API-kulcs)**    
-    - **Fogyasztói titok (API Secret)**  
+1. Jegyezze fel a következő négy olyan értéket, amely most már megjelenik az oldalon a későbbi használathoz:
+
+    - **Fogyasztói kulcs (API-kulcs)**
+    - **Fogyasztói titok (API titkos kulcs)**
     - **Hozzáférési jogkivonat**
-    - **Hozzáférési jogkivonat titka**   
+    - **Hozzáférési jogkivonat titka**
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Azure Event Hubs-névtér létrehozása
 
 Ezt az Event hub-t használja a tweetek tárolásához.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.  
-
-3. **A dolgok internete**területen válassza a **Event Hubs**lehetőséget. 
+1. A bal oldali menüben navigáljon az **összes szolgáltatás** >  ** > ** **Event Hubs**.  
 
     ![Event hub létrehozása Spark streaming-példaként](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Event hub létrehozása Spark streaming-példaként")
 
-4. Válassza a **+ Hozzáadás** lehetőséget.
+1. Válassza a **+ Hozzáadás** lehetőséget.
 
-5. Adja meg a következő értékeket az új Event Hubs névtérhez:
+1. Adja meg a következő értékeket az új Event Hubs névtérhez:
 
     |Tulajdonság |Value (Díj) |
     |---|---|
@@ -92,26 +92,26 @@ Ezt az Event hub-t használja a tweetek tárolásához.
 
     ![Adjon meg egy Event hub-nevet a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Adjon meg egy Event hub-nevet a Spark streaming példához")
 
-6. A névtér létrehozásához válassza a **Létrehozás** elemet.  Az üzembe helyezés néhány percen belül befejeződik.
+1. A névtér létrehozásához válassza a **Létrehozás** elemet.  Az üzembe helyezés néhány percen belül befejeződik.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event hub létrehozása
+
 Hozzon létre egy Event hubot az Event Hubs névtér üzembe helyezése után.  A portálról:
 
-1. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.  
+1. A bal oldali menüben navigáljon az **összes szolgáltatás** >  ** > ** **Event Hubs**.
 
-1. **A dolgok internete**területen válassza a **Event Hubs**lehetőséget.  
-
-1. Válassza ki a Event Hubs névteret a listából.  
+1. Válassza ki a Event Hubs névteret a listából.
 
 1. A **Event Hubs névtér** lapon válassza a **+ Event hub**elemet.  
+
 1. Adja meg a következő értékeket az **Event hub létrehozása** lapon:
 
-    - **Név**: adjon egy nevet az Event hub számára. 
- 
+    - **Név**: adjon egy nevet az Event hub számára.
+
     - **Partíciók száma**: 10.  
 
-    - **Üzenet megőrzése**: 1.   
-   
+    - **Üzenet megőrzése**: 1.
+
       ![Az Event hub részletes adatainak megadása a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Az Event hub részletes adatainak megadása a Spark streaming példához")
 
 1. Kattintson a **Létrehozás** gombra.  A központi telepítésnek néhány másodpercen belül el kell végeznie, és a rendszer visszaküldi a Event Hubs névtér oldalára.
@@ -119,17 +119,16 @@ Hozzon létre egy Event hubot az Event Hubs névtér üzembe helyezése után.  
 1. A **Beállítások**területen válassza a **megosztott hozzáférési házirendek**elemet.
 
 1. Válassza a **RootManageSharedAccessKey**lehetőséget.
-    
+
      ![Event hub-szabályzatok beállítása a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Event hub-szabályzatok beállítása a Spark streaming példához")
 
-1. Mentse az **elsődleges kulcs** és a **kapcsolódási karakterlánc elsődleges kulcsának** értékeit az oktatóanyag későbbi részében való használatra.
+1. Mentse az **elsődleges kulcs** és a **kapcsolatok karakterláncának elsődleges kulcsának** értékét az oktatóanyag későbbi részében való használatra.
 
      ![Az Event hub-szabályzatok kulcsainak megtekintése a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Az Event hub-szabályzatok kulcsainak megtekintése a Spark streaming példához")
 
-
 ## <a name="send-tweets-to-the-event-hub"></a>Tweetek küldése az Event hub-nak
 
-Hozzon létre egy Jupyter-jegyzetfüzetet, és nevezze el **SendTweetsToEventHub**. 
+1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter`, ahol a `CLUSTERNAME` a Apache Spark-fürt neve. Hozzon létre egy Jupyter-jegyzetfüzetet, és nevezze el **SendTweetsToEventHub**.
 
 1. A külső Apache Maven-kódtárak hozzáadásához futtassa a következő kódot:
 
@@ -138,53 +137,53 @@ Hozzon létre egy Jupyter-jegyzetfüzetet, és nevezze el **SendTweetsToEventHub
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. Szerkessze az alábbi kódot a `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` és `<TOKEN SECRET>` érték lecserélése a megfelelő értékekkel. A szerkesztett kód futtatásával tweeteket küldhet az Event hubhoz:
+1. Szerkessze az alábbi kódot a `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` és `<TOKEN SECRET>` érték lecserélése a megfelelő értékekkel. A szerkesztett kód futtatásával tweeteket küldhet az Event hubhoz:
 
     ```scala
     import java.util._
     import scala.collection.JavaConverters._
     import java.util.concurrent._
-    
+
     import org.apache.spark._
     import org.apache.spark.streaming._
     import org.apache.spark.eventhubs.ConnectionStringBuilder
 
     // Event hub configurations
-    // Replace values below with yours        
+    // Replace values below with yours
     val eventHubName = "<Event hub name>"
     val eventHubNSConnStr = "<Event hub namespace connection string>"
-    val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
-    
+    val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build
+
     import com.microsoft.azure.eventhubs._
     val pool = Executors.newFixedThreadPool(1)
     val eventHubClient = EventHubClient.create(connStr.toString(), pool)
-    
+
     def sendEvent(message: String) = {
           val messageData = EventData.create(message.getBytes("UTF-8"))
           eventHubClient.get().send(messageData)
           println("Sent event: " + message + "\n")
     }
-    
+
     import twitter4j._
     import twitter4j.TwitterFactory
     import twitter4j.Twitter
     import twitter4j.conf.ConfigurationBuilder
 
     // Twitter application configurations
-    // Replace values below with yours   
+    // Replace values below with yours
     val twitterConsumerKey = "<CONSUMER KEY>"
     val twitterConsumerSecret = "<CONSUMER SECRET>"
     val twitterOauthAccessToken = "<ACCESS TOKEN>"
     val twitterOauthTokenSecret = "<TOKEN SECRET>"
-    
+
     val cb = new ConfigurationBuilder()
     cb.setDebugEnabled(true).setOAuthConsumerKey(twitterConsumerKey).setOAuthConsumerSecret(twitterConsumerSecret).setOAuthAccessToken(twitterOauthAccessToken).setOAuthAccessTokenSecret(twitterOauthTokenSecret)
-    
+
     val twitterFactory = new TwitterFactory(cb.build())
     val twitter = twitterFactory.getInstance()
 
     // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
-    
+
     val query = new Query(" #Azure ")
     query.setCount(100)
     query.lang("en")
@@ -202,16 +201,16 @@ Hozzon létre egy Jupyter-jegyzetfüzetet, és nevezze el **SendTweetsToEventHub
       }
       query.setMaxId(lowestStatusId - 1)
     }
-    
+
     // Closing connection to the Event Hub
     eventHubClient.get().close()
     ```
 
-3. Nyissa meg az Event hub-t a Azure Portal.  Az **Áttekintés**során látnia kell néhány diagramot, amely az Event hub-nak küldött üzeneteket jeleníti meg.
+1. Nyissa meg az Event hub-t a Azure Portal.  Az **Áttekintés**során látnia kell néhány diagramot, amely az Event hub-nak küldött üzeneteket jeleníti meg.
 
 ## <a name="read-tweets-from-the-event-hub"></a>Tweetek olvasása az Event hub-ból
 
-Hozzon létre egy másik Jupyter-jegyzetfüzetet, és nevezze el **ReadTweetsFromEventHub**. 
+Hozzon létre egy másik Jupyter-jegyzetfüzetet, és nevezze el **ReadTweetsFromEventHub**.
 
 1. A következő kód futtatásával vegyen fel egy külső Apache Maven-tárat:
 
@@ -225,34 +224,34 @@ Hozzon létre egy másik Jupyter-jegyzetfüzetet, és nevezze el **ReadTweetsFro
     ```scala
     import org.apache.spark.eventhubs._
     // Event hub configurations
-    // Replace values below with yours        
+    // Replace values below with yours
     val eventHubName = "<Event hub name>"
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build
-    
+
     val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
-    //incomingStream.printSchema    
-    
+    //incomingStream.printSchema
+
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
-    
+
     // Event Hub message format is JSON and contains "body" field
     // Body is binary, so you cast it to string to see the actual content of the message
     val messages = incomingStream.withColumn("Offset", $"offset".cast(LongType)).withColumn("Time (readable)", $"enqueuedTime".cast(TimestampType)).withColumn("Timestamp", $"enqueuedTime".cast(LongType)).withColumn("Body", $"body".cast(StringType)).select("Offset", "Time (readable)", "Timestamp", "Body")
-    
+
     messages.printSchema
-    
+
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
     ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A HDInsight az adatait az Azure Storage vagy a Azure Data Lake Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Ha azt tervezi, hogy azonnal a következő oktatóanyagban dolgozik, érdemes megtartania a fürtöt, ellenkező esetben pedig törölje a fürtöt.
+A HDInsight az adatait az Azure Storage vagy a Azure Data Lake Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Ha azt tervezi, hogy azonnal a következő oktatóanyagban dolgozik, érdemes megtartania a fürtöt, ellenkező esetben pedig törölje a fürtöt.
 
 Nyissa meg az Azure Portalon a fürtöt, és válassza a **Törlés** lehetőséget.
 
-![HDInsight Azure Portal – fürt törlése](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+![HDInsight Azure Portal fürt törlése](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésekor a rendszer a HDInsight Spark-fürtöt és az alapértelmezett tárfiókot is törli.
 

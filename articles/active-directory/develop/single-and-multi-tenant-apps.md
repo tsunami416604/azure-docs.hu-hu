@@ -1,6 +1,7 @@
 ---
-title: Az Azure Active Directoryban egyetlen és több-bérlős alkalmazások
-description: Ismerje meg a szolgáltatásokat és egybérlős és több-bérlős alkalmazások az Azure AD közötti különbségeket.
+title: Egy-és több-bérlős alkalmazások Azure Active Directory
+titleSuffix: Microsoft identity platform
+description: Ismerje meg az egybérlős és a több-bérlős Azure AD-beli alkalmazások funkcióit és különbségeit.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,39 +18,39 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aa8f63b6e7355ae387a321acf77683fac22e028
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111068"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803654"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Az Azure Active Directoryban bérlős
+# <a name="tenancy-in-azure-active-directory"></a>Bérlet Azure Active Directory
 
-Az Azure Active Directory (Azure AD) csoportokba rendezi az objektumok, például felhasználók és alkalmazások nevű *bérlők*. Bérlők lehetővé teszik a rendszergazdáknak a szabályzatok beállítását a felhasználók az alkalmazásokat, amelyek a szervezet tulajdonában lévő biztonsági és működési szabályzatai a szervezeten belül. 
+Azure Active Directory (Azure AD) olyan objektumokat szervez, mint a felhasználók és az alkalmazások a *bérlők*nevű csoportokban. A bérlők lehetővé teszik, hogy a rendszergazda szabályzatokat állítson be a szervezeten belüli felhasználókon és a szervezet tulajdonában lévő alkalmazásokkal, hogy azok megfeleljenek a biztonsági és működési házirendeknek. 
 
-## <a name="who-can-sign-in-to-your-app"></a>Ki jelentkezhet be az alkalmazásba?
+## <a name="who-can-sign-in-to-your-app"></a>Ki tud bejelentkezni az alkalmazásba?
 
-Használatával történő alkalmazásfejlesztésbe származik, amikor a fejlesztők megadhatja alkalmazás az egybérlős vagy több-bérlős lehet az alkalmazás regisztrációja során a [az Azure portal](https://portal.azure.com).
-* Egybérlős alkalmazások csak a bérlő azok volt regisztrálva, más néven a saját bérlőjén érhető el.
-* Több-bérlős alkalmazások a felhasználók a saját bérlőjén és a többi bérlő számára érhetők el.
+Az alkalmazások fejlesztése során a fejlesztők úgy is dönthetnek, hogy az alkalmazás regisztrálásakor egy vagy több bérlőt konfigurálnak a [Azure Portal](https://portal.azure.com).
+* Az egybérlős alkalmazások csak abban a bérlőben érhetők el, amelyet regisztráltak, más néven a saját bérlők.
+* A több-bérlős alkalmazások a felhasználók saját bérlői és más bérlői számára egyaránt elérhetők.
 
-Az Azure Portalon konfigurálhatja úgy az alkalmazását az egybérlős vagy több-bérlős célközönség módon beállításával.
+A Azure Portalban úgy konfigurálhatja az alkalmazást, hogy egybérlős vagy több-bérlő legyen a célközönségnek a következőképpen történő beállításával.
 
-| Célközönség | Egyetlen/több-tenant | Ki jelentkezhet be | 
+| Közönség | Egyetlen/több-bérlős | Kik jelentkezhetnek be | 
 |----------|--------| ---------|
-| A fiókok csak ebben a címtárban | Egybérlős alkalmazás | Minden felhasználó és a címtárban lévő vendégfiókok API-t vagy az alkalmazás használhatja.<br>*Használja ezt a beállítást, ha a cégen belüli használatra, a célközönséget.* |
-| Minden olyan Azure AD-címtárban lévő fiókok | Több-bérlős | Minden felhasználó és a vendégek egy munkahelyi vagy iskolai fiókkal, a Microsoft API-t vagy az alkalmazás használhatja. Ez magában foglalja az iskolák és az Office 365 használó vállalatok.<br>*Használja ezt a beállítást, ha a célközönséget üzleti vagy oktatási ügyfelek.* |
-| Minden olyan Azure AD-címtár és a személyes Microsoft-fiókok (például a Skype, Xbox és Outlook.com) fiókok | Több-bérlős | A munkahelyi, iskolai vagy személyes Microsoft-fiókkal rendelkező felhasználókat az alkalmazás- vagy API-t használhatja. Az iskolák és az Office 365-höz, valamint a személyes fiókok, mint az Xbox és a Skype-szolgáltatásokhoz való bejelentkezéshez használt használó vállalatok tartalmazza.<br>*Ezt a beállítást használja, amelyekre a Microsoft-fiókok legszélesebb készletét.* | 
+| Csak ebben a könyvtárban lévő fiókok | Egybérlős alkalmazás | A címtárban lévő összes felhasználói és vendég fiók használhatja az alkalmazást vagy az API-t.<br>*Akkor használja ezt a beállítást, ha a célközönség belső a szervezete számára.* |
+| Fiókok bármely Azure AD-címtárban | Több-bérlős | A Microsoft által használt munkahelyi vagy iskolai fiókkal rendelkező felhasználók és vendégek az alkalmazást vagy az API-t használhatják. Ilyenek például az Office 365-et használó iskolák és vállalkozások.<br>*Akkor használja ezt a lehetőséget, ha a célközönség üzleti vagy oktatási ügyfél.* |
+| Fiókok bármely Azure AD-címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com) | Több-bérlős | Minden munkahelyi vagy iskolai felhasználó, vagy személyes Microsoft-fiók használhatja az alkalmazást vagy az API-t. Olyan iskolákat és vállalkozásokat foglal magába, amelyek az Office 365-et használják, valamint olyan személyes fiókokat, amelyeket az Xbox és a Skype szolgáltatásba való bejelentkezéshez használtak.<br>*Ezzel a beállítással megcélozhatja a Microsoft-fiókok legszélesebb körét.* | 
 
-## <a name="best-practices-for-multi-tenant-apps"></a>Ajánlott eljárások a több-bérlős alkalmazások
+## <a name="best-practices-for-multi-tenant-apps"></a>Ajánlott eljárások több-bérlős alkalmazásokhoz
 
-Több-bérlős nagyszerű alkalmazások készítésére kihívást jelenthet, amely a bérlői rendszergazdák állíthatja be különböző szabályzatok száma miatt. Ha úgy dönt, hogy egy több-bérlős alkalmazás készítése, kövesse az alábbi gyakorlati tanácsokat:
+A nagyszerű, több-bérlős alkalmazások kiépítése kihívást jelenthet, mert a rendszergazdák által a bérlők számára megadható különböző szabályzatok száma. Ha több-bérlős alkalmazást szeretne létrehozni, kövesse az alábbi ajánlott eljárásokat:
 
-* Az alkalmazás tesztelése a konfigurált bérlő [feltételes hozzáférési szabályzatok](conditional-access-dev-guide.md).
-* Kövesse a felhasználói hozzáférés legalább győződjön meg arról, hogy csak az alkalmazás kéri a ténylegesen szükséges engedélyek elvét. Kerülje a rendszergazdai jóváhagyásra van szükség, mivel ez megakadályozhatja a felhasználók az alkalmazás minden egyes szervezetek beszerzése a engedélyeket kérő. 
-* Adja meg a megfelelő nevekkel, és elérhetővé teszi az alkalmazás részeként engedélyek leírását. Ez segít a felhasználóknak, és a rendszergazdák tudják, mire azok elfogadja meghatározott, amikor azok megkísérlik az alkalmazás API-k használata. További információkért tekintse meg az ajánlott eljárások szakasz a [engedélyek útmutató](v1-permissions-and-consent.md).
+* Tesztelje az alkalmazást egy olyan bérlőn, amely beállította a [feltételes hozzáférési szabályzatokat](conditional-access-dev-guide.md).
+* A minimális felhasználói hozzáférés elve alapján győződjön meg arról, hogy az alkalmazás csak a ténylegesen szükséges engedélyeket kéri. Kerülje a rendszergazdai belefoglalást igénylő engedélyek megadását, mivel ez megakadályozhatja, hogy a felhasználók bizonyos szervezeteknél is beszerezzék az alkalmazást. 
+* Adja meg az alkalmazás részeként közzétett engedélyek megfelelő nevét és leírását. Ez segíti a felhasználókat és a rendszergazdákat arról, hogy mit fogadnak el az alkalmazás API-jai használatának megkísérlése során. További információ: az [engedélyek útmutatójának](v1-permissions-and-consent.md)ajánlott eljárások szakasza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Kell több-bérlős alkalmazás átalakítása](howto-convert-app-to-be-multi-tenant.md)
+* [Alkalmazások átalakítása több-bérlővé](howto-convert-app-to-be-multi-tenant.md)

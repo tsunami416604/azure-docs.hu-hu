@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d1461a1bb026d478d51a5f79cc02b34172524db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566415"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791760"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-adatszinkronizálás figyelése Azure Monitor naplókkal 
 
@@ -67,13 +67,13 @@ Győződjön meg arról, hogy a következő dolgokat állította be:
 
 -   Egy Azure Automation fiók
 
--   Log Analytics-munkaterület
+-   Log Analytics munkaterület
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>PowerShell-Runbook SQL-adatszinkronizálás napló beszerzéséhez 
 
 A Azure Automationban üzemeltetett PowerShell-runbook lekéréséhez és az Azure Monitor naplókba való elküldéséhez használja a SQL-adatszinkronizálás naplózási szolgáltatásait A rendszer egy minta parancsfájlt is tartalmaz. Előfeltételként Azure Automation fiókkal kell rendelkeznie. Ezután létre kell hoznia egy runbook, és ütemeznie kell a futtatását. 
 
-### <a name="create-a-runbook"></a>Forgatókönyv létrehozása
+### <a name="create-a-runbook"></a>Runbook létrehozása
 
 A runbook létrehozásával kapcsolatos további információkért tekintse meg [az első PowerShell-runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell).
 
@@ -83,7 +83,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
 3.  Válassza **a meglévő Runbook importálása**lehetőséget.
 
-4.  A **Runbook fájl**alatt használja a megadott `DataSyncLogPowerShellRunbook` fájlt. Állítsa a **Runbook** típust `PowerShell`a következőre:. Adja meg a runbook nevét.
+4.  A **Runbook fájl**alatt használja a megadott `DataSyncLogPowerShellRunbook` fájlt. Adja meg a **Runbook típusát** `PowerShell`ként. Adja meg a runbook nevét.
 
 5.  Kattintson a **Létrehozás** gombra. Most már rendelkezik egy runbook.
 
@@ -91,7 +91,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
 7.  Válassza a **változó hozzáadása** lehetőséget a változók lapon. Hozzon létre egy változót, amely a runbook utolsó végrehajtási idejét tárolja. Ha több runbookok rendelkezik, minden egyes runbook egy változóra van szükség.
 
-8.  Állítsa be a változó nevét `DataSyncLogLastUpdatedTime` , és állítsa be a típusát datetime értékre.
+8.  Állítsa a változó nevét `DataSyncLogLastUpdatedTime` értékre, és állítsa be a típusát DateTime értékre.
 
 9.  Válassza ki a runbook, és kattintson a lap tetején található Szerkesztés gombra.
 
@@ -113,7 +113,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
 A runbook ütemezhet:
 
-1.  A runbook alatt válassza az erőforrások területen az ütemtervek lapot.
+1.  A runbook alatt válassza az erőforrások területen az **ütemtervek** lapot.
 
 2.  Válassza az **ütemterv hozzáadása** lehetőséget az ütemtervek lapon.
 
@@ -121,7 +121,7 @@ A runbook ütemezhet:
 
 4.  Válassza **az új ütemterv létrehozása lehetőséget.**
 
-5.  Állítsa be az ismétlődést ismétlődőre, és állítsa be a kívánt időközt. Használja ugyanazt az intervallumot itt, a parancsfájlban és a Azure Monitor naplókban.
+5.  Állítsa be az **ismétlődést** ismétlődőre, és állítsa be a kívánt időközt. Használja ugyanazt az intervallumot itt, a parancsfájlban és a Azure Monitor naplókban.
 
 6.  Kattintson a **Létrehozás** gombra.
 
@@ -137,13 +137,13 @@ Azure Monitor naplókat használó riasztás létrehozásához tegye a következ
 
 2.  Hozzon létre egy lekérdezést a hibák és figyelmeztetések kiválasztásához a kiválasztott intervallumon belül a szinkronizálási csoport alapján. Példa:
 
-    `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
+    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 
-3.  A lekérdezés futtatása után válassza ki azt a harangot, amely a riasztást mondja.
+3.  A lekérdezés futtatása után válassza ki azt a harangot, amely a **riasztást**mondja.
 
 4.  **A riasztás alapja**alapján területen válassza a **metrika mérése**elemet.
 
-    1.  Állítsa az összesítő értéket nagyobbra, **mint**.
+    1.  Állítsa az összesítő értéket **nagyobbra, mint**.
 
     2.  A **nagyobb**értéket követően adja meg a küszöbértéket az értesítések fogadása előtt. Átmeneti hibák várhatóak az adatszinkronizálás során. A zaj csökkentése érdekében állítsa 5 értékre a küszöbértéket.
 
@@ -187,7 +187,7 @@ A legtöbb esetben ez a megoldás ingyenes.
 
 **Azure Automation:** A használattól függően a Azure Automation-fiókkal kapcsolatos költségek is felmerülhetnek. Havonta a feladatok futtatásának első 500 perce ingyenes. A legtöbb esetben ez a megoldás várhatóan kevesebb mint 500 percet vesz igénybe havonta. A díjak elkerüléséhez ütemezze a runbook úgy, hogy két órán belül fusson. További információ: az [Automation díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
-**Naplók Azure Monitor:** A használattól függően előfordulhat, hogy a Azure Monitor naplókhoz kapcsolódó költségeket kell fizetnie. Az ingyenes csomag naponta 500 MB betöltött adatot tartalmaz. A legtöbb esetben ez a megoldás várhatóan kevesebb, mint 500 MB-ot tölt be naponta. A használat csökkentése érdekében használja a runbook található, csak hibákra vonatkozó szűrést. Ha naponta több mint 500 MB-ot használ, frissítsen a fizetős szintre, hogy elkerülje az elemzések kockázatát a korlátozás elérésekor. További információ: [Azure monitor naplók díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Naplók Azure monitor:** A használattól függően előfordulhat, hogy a Azure Monitor naplókhoz kapcsolódó költségeket kell fizetnie. Az ingyenes csomag naponta 500 MB betöltött adatot tartalmaz. A legtöbb esetben ez a megoldás várhatóan kevesebb, mint 500 MB-ot tölt be naponta. A használat csökkentése érdekében használja a runbook található, csak hibákra vonatkozó szűrést. Ha naponta több mint 500 MB-ot használ, frissítsen a fizetős szintre, hogy elkerülje az elemzések kockázatát a korlátozás elérésekor. További információ: [Azure monitor naplók díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Kódminták
 
@@ -197,18 +197,18 @@ Töltse le a cikkben ismertetett kódot a következő helyekről:
 
 -   [Adatszinkronizálási Azure Monitor nézet](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: Az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizálás SQL-adatszinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
-        -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](sql-database-data-sync-agent.md)
+        -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
--   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás](sql-database-troubleshoot-data-sync.md) hibáinak elhárítása
+-   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése
     -   A Transact-SQL- [ben – automatizálja a séma változásainak az Azure-ban való replikálását SQL-adatszinkronizálás](sql-database-update-sync-schema.md)
     -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/sql-database-sync-update-schema.md) .

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387589"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800179"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -36,7 +36,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-A [REST API](/rest/api/azureresourcegraph/resources/resources)a vezérlő **$Top** , és a **QueryRequestOptions**része.
+A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)a vezérlő **$Top** , és a **QueryRequestOptions**része.
 
 A _legszigorúbb_ vezérlő fog nyerni. Ha például a lekérdezés a **felső** vagy a **korlátot** használja, és az **elsőnél**több rekordot fog eredményezni, akkor a visszaadott maximális rekordok megegyeznek az **elsővel**. Hasonlóképpen, ha a **felső** vagy a **korlát** kisebb, mint az **első**, a visszaadott rekord a **felső** vagy a **korlát**által konfigurált kisebb érték lesz.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-A [REST API](/rest/api/azureresourcegraph/resources/resources)a vezérlő **$skip** , és a **QueryRequestOptions**része.
+A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)a vezérlő **$skip** , és a **QueryRequestOptions**része.
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
-Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**.
+Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**.
 a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban nem ad vissza további rekordokat. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
 
 Ha a **resultTruncated** értéke **igaz**, a válaszban a **$skipToken** tulajdonság van beállítva. Ez az érték ugyanazokkal a lekérdezési és előfizetési értékekkel együtt használható a lekérdezésnek megfelelő rekordok következő készletének beolvasásához.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > A lekérdezésnek az **azonosító** mezőt kell megadnia ahhoz, **hogy a tördelés** működjön. Ha hiányzik a lekérdezésből, a válasz nem tartalmazza a **$skipToken**.
 
-Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azureresourcegraph/resources/resources#next-page-query) a REST API docs webhelyen.
+Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) a REST API docs webhelyen.
 
 ## <a name="formatting-results"></a>Formázás eredményei
 

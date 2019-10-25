@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692987"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792677"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a vizualizációs felületen
 
@@ -40,7 +40,7 @@ A folyamat üzembe helyezéséhez a következőket kell tennie:
 
 1. A folyamat vászon tetején válassza a **következtetési folyamat létrehozása**  > **valós idejű következtetési folyamat** lehetőséget.
 
-    Ha a **prediktív folyamat létrehozása**lehetőséget választja, több dolog történik:
+    Amikor kiválasztja a **következtetési folyamat létrehozása**lehetőséget, több dolog történik:
     
     * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
     * A képzéshez használt modulok, például a betanítási **modell** és a **felosztott adategységek**el lesznek távolítva.
@@ -97,7 +97,7 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
-    [! Képernyőfelvétel: új valós idejű végpont beállítása](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Az új valós idejű végpont beállítását bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
 
     Ha az üzembe helyezés befejeződik, a rendszer a vászon fölötti sikeres értesítést jeleníti meg, néhány percet is igénybe vehet.
 
