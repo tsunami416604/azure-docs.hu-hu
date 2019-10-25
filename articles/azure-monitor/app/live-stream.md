@@ -1,26 +1,21 @@
 ---
 title: Élő metrikastream egyéni metrikákkal és diagnosztika az Azure Application Insightsban | Microsoft Docs
 description: Valós időben figyelheti a webalkalmazást egyéni metrikákkal, és diagnosztizálhatja a hibákat, nyomokat és eseményeket élő hírcsatornával.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: d85688d297eb0df00e71f388b2a3350eabe5f6d5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012754"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817197"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: 1 másodperces késéssel figyelje & diagnosztizálása
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: figyelje & diagnosztizálása 1 másodperces késéssel
 
 Az éles környezetben futó webalkalmazások dobogós szívének mintavétele a [Application Insights](../../azure-monitor/app/app-insights-overview.md)élő metrikastream használatával. A metrikák és teljesítményszámlálók kiválasztásával valós időben figyelheti a szolgáltatást, és nem zavarja a szolgáltatását. A sikertelen kérelmek és kivételek alapján ellenőrizze a verem nyomkövetéseit. A [Profilerrel](../../azure-monitor/app/profiler.md)együtt a [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md). A Élő metrikastream egy hatékony és nem invazív diagnosztikai eszközt biztosít az élő webhelyhez.
 
@@ -38,11 +33,11 @@ A Élő metrikastream a következőket teheti:
 
 Az élő metrikák jelenleg ASP.NET, ASP.NET Core, Azure Functions, Java és Node. js-alkalmazások esetén támogatottak.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 1. Ha még nem [telepítette Application Insights](../../azure-monitor/azure-monitor-app-hub.md) a webalkalmazásban, tegye meg most.
 2. A standard Application Insights csomagokon kívül a [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) csomagok is szükségesek az élő metrikák adatfolyamának engedélyezéséhez.
-3. Frissítsen a Application Insights csomag **legújabb verziójára** . A Visual Studióban kattintson a jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**lehetőséget. Nyissa meg a **frissítések** lapot, és válassza ki az összes Microsoft. ApplicationInsights. * csomagot.
+3. **Frissítsen a Application Insights csomag legújabb verziójára** . A Visual Studióban kattintson a jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**lehetőséget. Nyissa meg a **frissítések** lapot, és válassza ki az összes Microsoft. ApplicationInsights. * csomagot.
 
     Helyezze ismét üzembe alkalmazását.
 
@@ -52,9 +47,9 @@ Az élő metrikák jelenleg ASP.NET, ASP.NET Core, Azure Functions, Java és Nod
 
 ### <a name="nodejs"></a>Node.js
 
-Ha a Node. js használatával szeretne élő metrikákat használni, frissítenie kell az SDK 1,30-es vagy újabb verziójára. Alapértelmezés szerint az élő metrikák le vannak tiltva a Node. js SDK-ban. Ha engedélyezni szeretné az élő metrikák hozzáadását `setSendLiveMetrics(true)` a [konfigurációs módszerekhez](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) , az SDK inicializálásakor.
+Ha a Node. js használatával szeretne élő metrikákat használni, frissítenie kell az SDK 1,30-es vagy újabb verziójára. Alapértelmezés szerint az élő metrikák le vannak tiltva a Node. js SDK-ban. Ha engedélyezni szeretné az élő metrikákat, adja hozzá `setSendLiveMetrics(true)` a [konfigurációs módszerekhez](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) az SDK inicializálásakor.
 
-### <a name="no-data-check-your-server-firewall"></a>Nincs adat? A kiszolgáló tűzfalának keresése
+### <a name="no-data-check-your-server-firewall"></a>Nincsenek adatok? A kiszolgáló tűzfalának keresése
 
 Győződjön meg arról, hogy a [kimenő portok élő metrikastream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) a kiszolgálók tűzfalán vannak megnyitva. 
 
@@ -65,8 +60,8 @@ Győződjön meg arról, hogy a [kimenő portok élő metrikastream](../../azure
 |Késés|Egy másodpercen belül megjelenített adatértékek|Percek alatt összesítve|
 |Nincs megőrzés|Az adatmegőrzési idő a diagramon marad, és a rendszer elveti|[90 napig megőrzött adat](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Igény szerinti|Az adatok továbbítása az élő metrikák megnyitásakor történik|Ha az SDK telepítve és engedélyezve van, az adatküldés történik|
-|Free|Élő stream-adatszolgáltatásért nem számítunk fel díjat|A [díjszabás](../../azure-monitor/app/pricing.md) hatálya alá tartozik
-|Mintavételezés|Minden kiválasztott metrika és számláló továbbítva van. A hibák és a verem nyomkövetési mintája. A TelemetryProcessors nincsenek alkalmazva.|Az események [mintavétele](../../azure-monitor/app/api-filtering-sampling.md) megtörténhet|
+|Ingyenes|Élő stream-adatszolgáltatásért nem számítunk fel díjat|A [díjszabás](../../azure-monitor/app/pricing.md) hatálya alá tartozik
+|Mintavétel|Minden kiválasztott metrika és számláló továbbítva van. A hibák és a verem nyomkövetési mintája. A TelemetryProcessors nincsenek alkalmazva.|Az események [mintavétele](../../azure-monitor/app/api-filtering-sampling.md) megtörténhet|
 |Vezérlési csatorna|A szűrő vezérlő jeleit a rendszer elküldi az SDK-nak. Javasoljuk, hogy gondoskodjon a csatorna biztonságáról.|Egyirányú kommunikáció a portálon|
 
 ## <a name="select-and-filter-your-metrics"></a>Metrikák kiválasztása és szűrése
@@ -85,7 +80,7 @@ Application Insights telemetria kívül a Windows-teljesítményszámlálók fig
 
 Az élő metrikák összesítése két ponton történik: helyileg az egyes kiszolgálókon, majd az összes kiszolgálón. Az alapértelmezett érték a megfelelő legördülő menüben található egyéb beállítások lehetőség kiválasztásával módosítható.
 
-## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Minta telemetria: Egyéni élő diagnosztikai események
+## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Példa telemetria: egyéni élő diagnosztikai események
 Alapértelmezés szerint az események élő hírcsatornája a sikertelen kérelmek és függőségi hívások, kivételek, események és Nyomkövetések mintáit jeleníti meg. Kattintson a szűrő ikonra az alkalmazott feltételek bármely időpontban történő megtekintéséhez. 
 
 ![Alapértelmezett élő csatorna](./media/live-stream/live-stream-eventsdefault.png)
@@ -94,7 +89,7 @@ Mint a metrikák esetében, tetszőleges feltételek bármelyikét megadhatja a 
 
 ![Egyéni élő hírcsatorna](./media/live-stream/live-stream-events.png)
 
-Megjegyzés: Jelenleg a kivételt jelző üzenetekre vonatkozó feltételek esetén használja a legkülső kivételként szolgáló üzenetet. Az előző példában a belső kivételű üzenettel való jóindulatú kivétel kiszűréséhez (a "< –" elválasztó karakterrel) "az ügyfél leválasztva". "hiba történt a kérelem tartalmának olvasása" feltételt nem tartalmazó üzenet használata.
+Megjegyzés: jelenleg a kivételt jelző üzenetekre vonatkozó feltételek esetén használja a legkülső kivételként szolgáló üzenetet. Az előző példában a belső kivételű üzenettel való jóindulatú kivétel kiszűréséhez (a "< –" elválasztó karakterrel) "az ügyfél leválasztva". "hiba történt a kérelem tartalmának olvasása" feltételt nem tartalmazó üzenet használata.
 
 Az élő hírcsatornában található elemek részleteinek megtekintéséhez kattintson rá. A hírcsatornát szüneteltetheti, ha a **szüneteltetés** gombra kattint, vagy egyszerűen lefelé görget, vagy rákattint egy elemre. Az élő hírcsatornák a felülre görgetés után is folytatódnak, vagy a felfüggesztéskor gyűjtött elemek számlálóra kattintanak.
 
@@ -112,7 +107,7 @@ Ha egy adott kiszolgálói szerepkör-példányt szeretne figyelni, akkor a kisz
 Az egyéni Élő metrikastream a [Application INSIGHTS SDK for web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)2.4.0-Beta2 vagy újabb verziójával érhető el. Ne felejtse el kiválasztani az "előzetes kiadás" lehetőséget a NuGet Package managerből.
 
 ### <a name="nodejs"></a>Node.js
-Élő metrikastream a [Node. js-hez készült Application INSIGHTS SDK](https://npmjs.com/package/applicationinsights)1.3.0 vagy újabb verziójával érhető el. Ne felejtse `setSendLiveMetrics(true)` el használni az SDK-nak a kódban való konfigurálásához.
+Élő metrikastream a [Node. js-hez készült Application INSIGHTS SDK](https://npmjs.com/package/applicationinsights)1.3.0 vagy újabb verziójával érhető el. Ne felejtse el használni a `setSendLiveMetrics(true)`, miközben konfigurálja az SDK-t a kódban.
 
 ## <a name="secure-the-control-channel"></a>A vezérlő csatorna biztonságossá tétele
 Az egyéni szűrők megadott feltételeit a rendszer visszaküldi a Application Insights SDK élő metrikák összetevőjére. A szűrők potenciálisan bizalmas adatokat is tartalmazhatnak, például customerIDs. A csatornát a kialakítási kulcs mellett titkos API-kulccsal is biztonságossá teheti.
@@ -172,7 +167,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 Az Azure Function apps (v2) esetében, ha a csatornát egy API-kulccsal védi, környezeti változóval végezhető el. 
 
-Hozzon létre egy API-kulcsot a Application Insights erőforrásból, és lépjen a függvényalkalmazás **alkalmazás beállításaihoz** . Válassza az **új beállítás hozzáadása** lehetőséget, és adjon `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` meg egy nevet és egy olyan értéket, amely megfelel az API-kulcsnak.
+Hozzon létre egy API-kulcsot a Application Insights erőforrásból, és lépjen a függvényalkalmazás **alkalmazás beállításaihoz** . Válassza az **új beállítás hozzáadása** lehetőséget, és adjon meg egy `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` nevet és egy olyan értéket, amely megfelel az API-kulcsnak.
 
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0-Beta vagy újabb verzió szükséges)
 
@@ -198,13 +193,13 @@ Ha azonban felismeri és megbízik az összes csatlakoztatott kiszolgálón, a h
 >Javasoljuk, hogy a hitelesített csatornát úgy állítsa be, hogy a szűrési feltételeknek megfelelő bizalmas információk (például a Vevőkód) megadása előtt.
 >
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-Nincs adat? Ha az alkalmazás védett hálózaton van: Élő metrikastream eltérő IP-címeket használ, mint a többi Application Insights telemetria. Győződjön meg arról, hogy az [IP-címek](../../azure-monitor/app/ip-addresses.md) meg vannak nyitva a tűzfalon.
+Nincsenek adatok? Ha az alkalmazás védett hálózaton van: Élő metrikastream eltérő IP-címeket használ, mint a többi Application Insights telemetria. Győződjön meg arról, hogy az [IP-címek](../../azure-monitor/app/ip-addresses.md) meg vannak nyitva a tűzfalon.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Használat figyelése Application Insights](../../azure-monitor/app/usage-overview.md)
 * [A diagnosztikai keresés használata](../../azure-monitor/app/diagnostic-search.md)
 * [Profilkészítő](../../azure-monitor/app/profiler.md)

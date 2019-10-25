@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015461"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881765"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Az arc és az érzelem észlelése Azure Media Analytics
+
+> [!IMPORTANT]
+> Tekintse át az egyes adathordozó-processzorok [nyugdíjazási terveit](media-services-analytics-overview.md#retirement-plans) .
+
 ## <a name="overview"></a>Áttekintés
 A **Azure Media Face Detector** Media Processor (mp) lehetővé teszi a mozgások megszámlálását, nyomon követését, valamint az arc-kifejezéseken keresztüli közönség részvételének és reagálásának mérését. Ez a szolgáltatás két funkciót tartalmaz: 
 
@@ -64,7 +68,7 @@ A Face detektor a töredezettségi technikákat használja (ahol a metaadatok az
 [Bemeneti videó](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Feladat konfigurációja (előre beállított)
-Ha Azure Media Face Detectorkal rendelkező feladatothoz létre, meg kell adnia egy konfigurációs beállításkészletet. A következő konfigurációs beállításkészlet csak a Arcfelismerés esetében használható.
+Ha **Azure Media Face Detectorkal**rendelkező feladatot hoz létre, meg kell adnia egy konfigurációs beállításkészletet. A következő konfigurációs beállításkészlet csak a Arcfelismerés esetében használható.
 
 ```json
     {
@@ -136,7 +140,7 @@ A JSON-kimenet következő példája csonkolt.
 [Bemeneti videó](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Feladat konfigurációja (előre beállított)
-Ha Azure Media Face Detectorkal rendelkező feladatothoz létre, meg kell adnia egy konfigurációs beállításkészletet. A következő konfigurációs beállításkészlet azt adja meg, hogy az érzelem észlelése alapján hozzon létre JSON-t.
+Ha **Azure Media Face Detectorkal**rendelkező feladatot hoz létre, meg kell adnia egy konfigurációs beállításkészletet. A következő konfigurációs beállításkészlet azt adja meg, hogy az érzelem észlelése alapján hozzon létre JSON-t.
 
 ```json
     {
@@ -153,17 +157,17 @@ Ha Azure Media Face Detectorkal rendelkező feladatothoz létre, meg kell adnia 
 #### <a name="attribute-descriptions"></a>Attribútumok leírása
 | Attribútum neve | Leírás |
 | --- | --- |
-| Mód |Arcok Csak Arcfelismerés.<br/>PerFaceEmotion: Az érzelmeket egymástól függetlenül vissza kell adni az egyes Arcfelismerés esetén.<br/>AggregateEmotion: A keretben lévő összes arc átlagos érzelem-értékének visszaadása. |
+| Mód |Arcok: csak Arcfelismerés.<br/>PerFaceEmotion: az érzelmeket egymástól függetlenül visszaküldi az egyes Arcfelismerés.<br/>AggregateEmotion: a keretben lévő összes arc átlagos érzelem-értékének visszaadása. |
 | AggregateEmotionWindowMs |Akkor használja, ha a AggregateEmotion mód van kiválasztva. Megadja az egyes összesített eredmények előállításához használt videó hosszát ezredmásodpercben. |
 | AggregateEmotionIntervalMs |Akkor használja, ha a AggregateEmotion mód van kiválasztva. Meghatározza, hogy milyen gyakorisággal hozhatók létre összesített eredmények. |
 
 #### <a name="aggregate-defaults"></a>Összesített alapértékek
 Az alábbi értékek az összesítő ablak és az intervallum beállításainak ajánlott értékei. A AggregateEmotionWindowMs hosszabbnak kell lennie, mint AggregateEmotionIntervalMs.
 
-|| Alapértelmezett érték (ek) | Max(s) | Minimum (ok) |
+|| Alapértelmezett érték (ek) | Maximum (ok) | Minimum (ok) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0.25|
-| AggregateEmotionIntervalMs |0,5 |1 |0.25|
+| AggregateEmotionWindowMs |0,5 |2 |0,25|
+| AggregateEmotionIntervalMs |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON-kimenet
 Az összesített érzelem JSON-kimenete (csonkolt):

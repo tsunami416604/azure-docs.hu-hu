@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Analytics OCR-rel szöveg digitalizálhatók |} A Microsoft Docs
-description: Az Azure Media Analytics OCR (optikai karakterfelismerés) lehetővé teszi a szöveges tartalom lévő szerkeszthetők, kereshető digitális szöveggé alakíthatja.  Ez lehetővé teszi, hogy az értelmezhető metaadatokat kivonása kinyert videó az adathordozó automatizálja.
+title: Szöveg digitalizálása Azure Media Analytics OCR-sel | Microsoft Docs
+description: Azure Media Analytics OCR (optikai karakterfelismerés) lehetővé teszi, hogy a videofájlok szövegét szerkeszthető, kereshető digitális szöveggé alakítsa át.  Ez lehetővé teszi, hogy automatizálja az értelmes metaadatok kinyerését az adathordozó Videójának jelének használatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,43 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825608"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881746"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalom digitális szöveggé alakíthatja az Azure Médiaelemzés használatával  
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalmának digitális szöveggé alakításához használja a Azure Media Analytics.  
+
+> [!IMPORTANT]
+> Tekintse át az egyes adathordozó-processzorok [nyugdíjazási terveit](media-services-analytics-overview.md#retirement-plans) .
+
 ## <a name="overview"></a>Áttekintés
-Ha a szöveges tartalom kinyerése a videofájlok és a egy szerkeszthetők, kereshető digitális szöveg generálása van szüksége, az Azure Media Analytics OCR (optikai karakterfelismerés) kell használnia. Az Azure Media processzor szöveges tartalom észleli a videó fájlokban, és a szöveges fájlokat generál. Optikai Karakterfelismerés lehetővé teszi, hogy az értelmezhető metaadatokat kivonása kinyert videó az adathordozó automatizálja.
+Ha szöveges tartalmat kell kibontania a videofájlokből, és szerkeszthető, kereshető digitális szöveget kell létrehoznia, akkor Azure Media Analytics OCR-t (optikai karakterfelismerést) kell használnia. Ez az Azure-beli adathordozó-feldolgozó észleli a videofájlok szöveges tartalmát, és szöveges fájlokat hoz létre a használathoz. Az OCR lehetővé teszi, hogy automatizálja az értelmezhető metaadatok kinyerését az adathordozó Videójának jelének használatával.
 
-Használt keresőmotor, egyszerűen a multimédiás index a szöveg, és a médiaindexelés, a tartalom. Ez különösen hasznos a magas értéket képviselő szöveges videó, például egy videó-felvételt vagy a képernyő-rögzítési diavetítés a bemutató. Az Azure OCR Médiafeldolgozót digitális szöveg van optimalizálva.
+A keresőmotorokkal együtt használva egyszerűen indexelheti az adathordozót szöveg szerint, és javíthatja a tartalom felderíthetővé tételét. Ez rendkívül hasznos a nagy szöveges videóban, mint például a videó rögzítése vagy képernyőfelvétel készítése egy diavetítéses bemutatóról. Az Azure OCR-adathordozó processzora digitális szövegre van optimalizálva.
 
-A **Azure Media OCR** médiafeldolgozót jelenleg előzetes verzióban érhető el.
+Az **Azure Media OCR** adathordozó-processzor jelenleg előzetes verzióban érhető el.
 
-Ez a cikk kapcsolatos részleteket nyújt **Azure Media OCR** , és bemutatja, hogyan használja a Media Services SDK a .NET-hez. További információért és példákért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+Ez a cikk részletesen ismerteti az **Azure Media OCR** -t, és bemutatja, hogyan használhatja azt a .net-hez készült Media Services SDK-val. További információért és példákért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
 
-## <a name="ocr-input-files"></a>Optikai Karakterfelismerés bemeneti fájlok
-Videofájlok. Jelenleg a következő formátumok támogatottak: MP4 MOV és WMV.
+## <a name="ocr-input-files"></a>OCR bemeneti fájlok
+Videofájlok. Jelenleg a következő formátumok támogatottak: MP4, MOV és WMV.
 
 ## <a name="task-configuration"></a>Feladatkonfiguráció
-A feladat konfigurációs (előre). A feladat létrehozásakor **Azure Media OCR**, meg kell adnia egy készlet használatával JSON vagy XML-konfiguráció. 
+Feladat konfigurációja (előre beállított). Amikor az **Azure Media OCR**használatával hoz létre egy feladatot, meg kell adnia egy konfigurációs beállításkészletet JSON vagy XML segítségével. 
 
 >[!NOTE]
->A OCR-motor mindössze egy lemezkép-régióhoz minimális 40 képpont maximális 32000 képpont mindkét magasságát/szélességét a egy érvényes bemeneti adatként.
+>Az OCR-motor csak olyan képterületet vesz igénybe, amely legalább 40 képpont méretű, a maximális 32000 képpont érték pedig érvényes bemenet mind a magasságban, mind a szélességben.
 >
 
-### <a name="attribute-descriptions"></a>Attribútum leírása
+### <a name="attribute-descriptions"></a>Attribútumok leírása
 | Attribútum neve | Leírás |
 | --- | --- |
-|AdvancedOutput| Ha AdvancedOutput true értékre állítja, a JSON-kimenet minden egyszavas (kifejezések és régiók) mellett a helyzeti adatok fogja tartalmazni. Ha nem szeretné, hogy ezek a részletek megtekintéséhez, a jelzőt "false" értékűre. Az alapértelmezett értéke FALSE (hamis). További információt [ebben a blogban](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/) talál.|
-| Nyelv |(nem kötelező) ismerteti a keresendő szöveg nyelvét. A következők egyikét: Automatikus észlelés (alapértelmezett), arab, ChineseSimplified, ChineseTraditional, dán Cseh, holland, angol nyelven, finn, francia, német, görög, magyar, olasz, japán, koreai, norvég, lengyel, portugál, román, orosz, SerbianCyrillic, SerbianLatin , Szlovák, spanyol, svéd, török. |
-| TextOrientation |(nem kötelező) ismerteti a tájolásának keresendő szöveg.  "Left" azt jelenti, hogy a felső részén csupa felé, a bal vannak mutatott.  Alapértelmezett szöveg (például, hogy egy könyv található) nem hívható meg "Be" objektumorientált.  A következők egyikét: AutoDetect (default), Up, Right, Down, Left. |
-| TimeInterval |(nem kötelező) a mintavételi ráta ismerteti.  Az alapértelmezett érték 1/2 másodpercenként.<br/>JSON-formátumban – óó. Biztonságos tár szolgáltatás (alapértelmezett 00:00:00.500)<br/>XML-formátum – a W3C XSD időtartama primitív (alapértelmezett PT0.5) |
-| DetectRegions |(nem kötelező) Adja meg a képkocka használandó szöveget észlelése belül más régiókba DetectRegion objektumok egy tömbjét.<br/>Egy DetectRegion objektum a következő négy egész érték jön létre:<br/>Left – a bal margó a képpont<br/>Felső – az a felső margó képpont<br/>Szélesség – szélességét (képpontban) régió<br/>Magasság – magasságát (képpontban) régió |
+|AdvancedOutput| Ha a AdvancedOutput értéke TRUE (igaz), a JSON-kimenet minden egyes szó esetében tartalmaz pozíciós adatokat (a kifejezéseken és a régiókban is). Ha nem szeretné megtekinteni ezeket a részleteket, állítsa hamis értékre a jelzőt. Az alapértelmezett érték false (hamis). További információkért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+| Nyelv |(nem kötelező) annak a szövegnek a nyelvét írja le, amelynek meg kell keresnie. A következők egyike: automatikus észlelés (alapértelmezett), Arab, ChineseSimplified, ChineseTraditional, Cseh dán, holland, angol, finn, francia, német, görög, magyar, olasz, Japán, Koreai, norvég, lengyel, portugál, román, Orosz, SerbianCyrillic, SerbianLatin, szlovák, spanyol, svéd, Török. |
+| TextOrientation |(nem kötelező) annak a szövegnek a tájolását írja le, amelynek meg kell keresnie.  A "bal" érték azt jelenti, hogy az összes betű tetejét a bal oldalon kell kimutatni.  Az alapértelmezett szöveg (például a könyvben található) a "fel" irányú.  A következők egyike: automatikus észlelés (alapértelmezett), fel, jobbra, le, balra. |
+| TimeInterval |(nem kötelező) a mintavételezési sebességet ismerteti.  Az alapértelmezett érték minden 1/2 másodperc.<br/>JSON-formátum – óó: PP: mm. ÉER (alapértelmezett 00:00:00.500)<br/>XML Format – W3C XSD-időtartam primitív (alapértelmezett PT 0.5) |
+| DetectRegions |választható DetectRegion-objektumok tömbje, amely a képkereten belüli régiókat határozza meg a szöveg észleléséhez.<br/>A következő négy egész értékből álló DetectRegion objektum:<br/>Left – képpont a bal oldali margótól<br/>Top – képpont a felső margótól<br/>Szélesség – a régió szélessége képpontban<br/>Magasság – a régió magassága képpontban |
 
-#### <a name="json-preset-example"></a>Előre definiált JSON-példa
+#### <a name="json-preset-example"></a>JSON-beállításkészlet – példa
 
 ```json
     {
@@ -73,7 +77,7 @@ A feladat konfigurációs (előre). A feladat létrehozásakor **Azure Media OCR
     }
 ```
 
-#### <a name="xml-preset-example"></a>Előre definiált XML-példa
+#### <a name="xml-preset-example"></a>XML-beállításkészlet – példa
 
 ```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
@@ -95,34 +99,34 @@ A feladat konfigurációs (előre). A feladat létrehozásakor **Azure Media OCR
     </VideoOcrPreset>
 ```
 
-## <a name="ocr-output-files"></a>Optikai Karakterfelismerés kimeneti fájlok
-Az optikai Karakterfelismerés médiafeldolgozót kimenete egy JSON-fájlt.
+## <a name="ocr-output-files"></a>OCR kimeneti fájlok
+Az OCR-adathordozó processzorának kimenete egy JSON-fájl.
 
-### <a name="elements-of-the-output-json-file"></a>A kimenet JSON-fájl elemeinek
-A videós optikai Karakterfelismerés kimeneti idő szegmentált adatok nyújt a karaktereket a videóban található.  Használhatja például a nyelvi és a tájolás hone be a pontosan az, hogy Önt érdeklő elemzése szavakat. 
+### <a name="elements-of-the-output-json-file"></a>A kimeneti JSON-fájl elemei
+A videó OCR kimenete időben szegmentált adatokat biztosít a videóban található karakterekről.  Olyan attribútumokat használhat, mint például a nyelv vagy a tájolás, amely pontosan azokat a szavakat használja, amelyeknek az elemzését érdekli. 
 
-A kimenet tartalmazza a következő attribútumokat:
+A kimenet a következő attribútumokat tartalmazza:
 
 | Elem | Leírás |
 | --- | --- |
-| Időskála |"órajel során végbemenő" a videó másodpercenként |
-| Offset |az időbélyegekhez időeltolódás. Videó API-k 1.0-s verziójában ez mindig 0 lesz. |
-| Framerate |A képkockák másodpercenkénti a videó |
-| Szélesség |szélességét (képpontban) a videó |
-| Magasság |magasságát (képpontban) |
-| Fragments |időalapú adattömböket, amelybe a metaadatok adattömbökre osztotta videó tömbje |
-| start |a "órajel során végbemenő" töredéket kezdete |
-| Időtartam |a "órajel során végbemenő" töredéket hossza |
-| interval |a megadott töredék belül az egyes eseményeket időköz |
-| események |Pole obsahující régiók |
-| régió |szavak vagy kifejezések objektumot képviselő észlelt |
-| language |egy adott régión belül észlelt szöveg nyelvét |
-| Tájolás |egy adott régión belül észlelt a szöveg tájolása |
-| sorok |sor szöveget észlelt egy adott régión belül tömbje |
-| szöveg |a tényleges szövege |
+| Időskála |"ketyeg" a videó másodpercenként |
+| Eltolás |időbélyeg időeltolódása. A video API-k 1,0-es verziójában ez mindig 0 lesz. |
+| Képkockasebesség |Képkockák másodpercenkénti száma |
+| Szélessége |a videó szélessége képpontban |
+| Magasság |a videó magassága képpontban |
+| Töredékek |azon időalapú adatdarabok tömbje, amelyekben a metaadatok feldarabolva vannak |
+| start |töredék kezdő időpontja "ketyeg" |
+| Időtartama |töredék hossza a "ticks" kifejezésben |
+| interval |az adott töredéken belüli események intervalluma |
+| események |régiókat tartalmazó tömb |
+| régió |az észlelt szavakat vagy kifejezéseket jelképező objektum |
+| language |a régión belül észlelt szöveg nyelve |
+| tájolás |a régión belül észlelt szöveg tájolása |
+| sorok |egy régión belül észlelt szövegsorok tömbje |
+| szöveg |a tényleges szöveg |
 
-### <a name="json-output-example"></a>JSON kimeneti példa
-Az alábbi kimeneti példa tartalmazza a videó általános adatait, és több videó töredék. Minden videó töredék az tartalmaz minden régióhoz, a nyelv és a szöveg tájolása OCR felügyeleti csomag által észlelt. A régió is tartalmaz, minden szó sor ebben a régióban a sor szövege, a sor pozícióját és minden szót információkat (a word tartalmat, beosztás és magabiztosan) az ebben a sorban. Az alábbiakban látható egy példa, és helyezhetem el bizonyos megjegyzéseket beágyazott.
+### <a name="json-output-example"></a>Példa JSON-kimenetre
+A következő kimeneti példa az általános videó-információkat és számos videó-töredéket tartalmaz. Minden videó töredékben minden olyan régiót tartalmaz, amelyet az OCR MP a nyelvvel és a szöveges tájolással észlelt. A régió az ebben a régióban található összes szót is tartalmazza a sor szövegével, a sor pozícióját, valamint minden Word-információt (Word-tartalom, pozíció és megbízhatóság) ebben a sorban. A következőkben egy példa látható, és néhány Megjegyzés bekerült.
 
 ```json
     {
@@ -179,12 +183,12 @@ Az alábbi kimeneti példa tartalmazza a videó általános adatait, és több v
     }
 ```
 
-## <a name="net-sample-code"></a>.NET mintakód
+## <a name="net-sample-code"></a>.NET-mintakód
 
-A következő program mutat be, hogyan:
+A következő program a következőket mutatja be:
 
-1. Hozzon létre egy objektumot, és a egy médiafájlt feltöltése az objektumba.
-2. Hozzon létre egy feladatot egy OCR-konfiguráció/készlet fájl.
+1. Hozzon létre egy adategységet, és töltsön fel egy médiafájlt az eszközre.
+2. Hozzon létre egy feladatot egy OCR-konfigurációval vagy egy előre beállított fájllal.
 3. Töltse le a kimeneti JSON-fájlokat. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -369,5 +373,5 @@ namespace OCR
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
+[Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 

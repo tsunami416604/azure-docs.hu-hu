@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015987"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881695"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Videók összegzésének létrehozása a Azure Media Video Thumbnails használatával  
+
+> [!IMPORTANT]
+> Tekintse át az egyes adathordozó-processzorok [nyugdíjazási terveit](media-services-analytics-overview.md#retirement-plans) .
+
 ## <a name="overview"></a>Áttekintés
 A **Azure Media Video thumbnails** Media Processor (mp) lehetővé teszi egy olyan videó összegzésének létrehozását, amely olyan ügyfelek számára hasznos, akik csak egy hosszú videó összegzését szeretnék előkészíteni. Előfordulhat például, hogy az ügyfelek egy rövid "összefoglaló videót" szeretnének látni, amikor az egérmutatót egy miniatűr fölé viszi. A **Azure Media Video thumbnails** paramétereinek egy konfigurációs készleten keresztüli megcsípésével az MP hatékony shot észlelési és összefűzési technológiája segítségével algorithmically elő egy leíró alklip.  
 
@@ -44,7 +48,7 @@ Bizonyos esetekben, ha a videó nem különböző jelenetekből áll, a kimenet 
 [Videó miniatűr eredménye](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Feladat konfigurációja (előre beállított)
-Ha Azure Media Video Thumbnailskal rendelkező videó miniatűr feladatothoz létre, meg kell adnia egy konfigurációs beállításkészletet. A fenti miniatűr minta a következő alapszintű JSON-konfigurációval lett létrehozva:
+Ha **Azure Media Video Thumbnailskal**rendelkező videó miniatűr feladatot hoz létre, meg kell adnia egy konfigurációs beállításkészletet. A fenti miniatűr minta a következő alapszintű JSON-konfigurációval lett létrehozva:
 
 ```json
     {
@@ -56,8 +60,8 @@ Jelenleg a következő paramétereket módosíthatja:
 
 | Param | Leírás |
 | --- | --- |
-| outputAudio |Megadja, hogy az eredményül kapott videó tartalmaz-e hangot. <br/>Engedélyezett értékek a következők: IGAZ vagy hamis. Az alapértelmezett érték a True (igaz). |
-| fadeInFadeOut |Megadja, hogy a rendszer áttűnési átmeneteket használ-e a különálló mozgóképek bélyegképei között.  <br/>Engedélyezett értékek a következők: IGAZ vagy hamis.  Az alapértelmezett érték a True (igaz). |
+| outputAudio |Megadja, hogy az eredményül kapott videó tartalmaz-e hangot. <br/>Az engedélyezett értékek: true vagy FALSE. Az alapértelmezett érték a True (igaz). |
+| fadeInFadeOut |Megadja, hogy a rendszer áttűnési átmeneteket használ-e a különálló mozgóképek bélyegképei között.  <br/>Az engedélyezett értékek: true vagy FALSE.  Az alapértelmezett érték a True (igaz). |
 | maxMotionThumbnailDurationInSecs |Egész szám, amely azt határozza meg, hogy mennyi ideig kell a teljes eredményes videó.  Az alapértelmezett érték az eredeti videó időtartamától függ. |
 
 Az alábbi táblázat az alapértelmezett időtartamot ismerteti, ha a **maxMotionThumbnailInSecs** nincs használatban.

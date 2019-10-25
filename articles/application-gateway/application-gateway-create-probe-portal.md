@@ -13,56 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 10/14/2019
 ms.author: victorh
-ms.openlocfilehash: b92b9d953b6dd941b8b5f445ad64059f557c2980
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 18799d928f7239eea311aa39159bfa0b5416ca1a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061792"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821094"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Egyéni mintavétel létrehozása Application Gatewayhoz a portál használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Portalra](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
-Ebben a cikkben egy egyéni mintavételt ad hozzá egy meglévő Application Gateway-hez a Azure Portalon keresztül. Az egyéni mintavételek olyan alkalmazások esetében hasznosak, amelyek adott állapot-ellenőrzési oldallal rendelkeznek, illetve olyan alkalmazásokhoz, amelyek nem adnak választ az alapértelmezett webalkalmazásra.
+Ebben a cikkben egy egyéni állapot-mintavételt ad hozzá egy meglévő Application Gateway-hez a Azure Portalon keresztül. Az állapotadatok használatával az Azure Application Gateway figyeli a háttérbeli készlet erőforrásainak állapotát.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ha még nem rendelkezik Application Gateway-rel, látogasson el a [Application Gateway létrehozására](application-gateway-create-gateway-portal.md) , és hozzon létre egy Application Gateway-t, amely együttműködik a szolgáltatással.
 
-## <a name="createprobe"></a>A mintavétel létrehozása
+## <a name="create-probe-for-application-gateway-v2-sku"></a>Mintavétel létrehozása Application Gateway v2 SKU-hoz
 
-A mintavétel két lépésből álló folyamaton keresztül történik a portálon. Első lépésként hozza létre a mintavételt. A második lépésben hozzáadja a mintavételt az Application Gateway háttérbeli http-beállításaihoz.
+A mintavétel két lépésből álló folyamaton keresztül történik a portálon. Első lépésként adja meg a mintavételi konfigurációhoz szükséges értékeket. A második lépésben tesztelheti a háttér állapotát ezzel a mintavételi konfigurációval, és mentheti a mintavételt. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nem rendelkezik fiókkal, regisztrálhat egy [hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free)
+### <a name="createprobe"></a>Mintavételi tulajdonságok megadása
 
-1. A Azure Portal Kedvencek ablaktáblán kattintson az összes erőforrás elemre. Kattintson az Application Gateway elemre a minden erőforrás panelen. Ha a kiválasztott előfizetés már rendelkezik több erőforrással, a partners.contoso.net megadhatja a szűrés név szerint... mezőbe.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Ha még nem rendelkezik fiókkal, regisztrálhat egy [hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free)
 
-1. Kattintson a mintavételek elemre, majd a **Hozzáadás** gombra a mintavétel hozzáadásához.
+2. A Azure Portal Kedvencek ablaktáblán kattintson az összes erőforrás elemre. Kattintson az Application Gateway elemre a minden erőforrás panelen. Ha a kiválasztott előfizetés már rendelkezik több erőforrással, a partners.contoso.net megadhatja a szűrés név szerint... mezőbe.
 
-   ![Mintavételi panel hozzáadása a kitöltött információkkal][1]
+3. Válassza az **állapot** -mintavételek lehetőséget, majd válassza a **Hozzáadás** lehetőséget egy új állapot-mintavétel hozzáadásához.
 
-1. Az **állapotfelmérés hozzáadása** panelen töltse ki a mintavételhez szükséges adatokat, és ha elkészült, kattintson **az OK gombra**.
+   ![Új mintavétel hozzáadása][4]
+
+4. Az **állapotadatok hozzáadása** lapon adja meg a mintavételhez szükséges adatokat, és ha elkészült, kattintson az **OK gombra**.
 
    |**Beállítás** | **Érték** | **Részletek**|
    |---|---|---|
-   |**Name**|customProbe|Ez az érték egy rövid név a mintavétel számára, amely elérhető a portálon.|
-   |**Protocol (Protokoll)**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll.|
-   |**Gazdagép**|azaz contoso.com|Ez az érték a mintavételhez használt állomásnév. Csak akkor alkalmazható, ha a többhelyes Application Gateway van konfigurálva, ellenkező esetben a "127.0.0.1"-t használja. Ez az érték eltér a virtuális gép gazdagépének nevétől.|
-   |**Path**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:\//contoso.com alapértelmezett elérési útja csak a "/" értéket használja |
+   |**Name (Név)**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
+   |**Protocol (Protokoll)**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
+   |**Gazdagép**|azaz contoso.com|Ez az érték annak a virtuális gazdagépnek a neve (amely eltér a virtuálisgép-állomásnévtől), amely az alkalmazáskiszolgáló kiszolgálón fut. A rendszer elküldi a mintavételt a (z)://(állomásnév):(port httpsetting)/urlPath.  Ez akkor alkalmazható, ha a többhelyes konfiguráció a Application Gatewayon van konfigurálva. Ha a Application Gateway egyetlen helyhez van konfigurálva, írja be a "127.0.0.1" értéket.|
+   |**Állomásnév kiválasztása a háttérbeli HTTP-beállításokból**|Igen vagy nem|A mintavételben *szereplő állomásfejléc* értékének beállítása annak a http-beállításnak a háttér-erőforrásának állomásneve, amelyhez ez a mintavétel hozzá van rendelve. Kifejezetten a több-bérlős háttérrendszer, például az Azure app Service esetében szükséges. [További információ](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Elérési út**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:\//contoso.com alapértelmezett elérési útja csak a "/" értéket használja |
    |**Időköz (mp)**|30|Milyen gyakran fut a mintavétel az állapot kereséséhez. A 30 másodpercnél kisebb értéket nem ajánlott beállítani.|
-   |**Időkorlát (mp)**|30|Az az időtartam, ameddig a mintavétel időtúllépés előtt várakozik. Az időtúllépési intervallumnak elég magasnak kell lennie ahhoz, hogy http-hívást lehessen biztosítani, hogy a háttér állapota lap elérhető legyen.|
-   |**Nem Kifogástalan állapot küszöbértéke**|3|A nem kifogástalannak minősülő sikertelen kísérletek száma. A küszöbérték értéke 1 vagy több lehet.|
+   |**Időkorlát (mp)**|30|Az az időtartam, ameddig a mintavétel időtúllépés előtt várakozik. Ha az időkorláton belül nem érkezik érvényes válasz, a mintavétel sikertelenként van megjelölve. Az időtúllépési intervallumnak elég magasnak kell lennie ahhoz, hogy http-hívást lehessen biztosítani, hogy a háttér állapota lap elérhető legyen. Vegye figyelembe, hogy az időtúllépési érték nem lehet nagyobb, mint a mintavételi beállításban használt "Interval" érték, vagy a "kérelem időtúllépése" érték abban a HTTP-beállításban, amely ehhez a mintavételhez lesz társítva.|
+|**Nem Kifogástalan állapot küszöbértéke**|3|Az egymást követő sikertelen kísérletek nem megfelelőnek tekintendők. A küszöbérték értéke 1 vagy több lehet.|
+   |**Mintavételi feltételek használata**|Igen vagy nem|Alapértelmezés szerint a 200 és 399 közötti állapotkódot biztosító HTTP (S) válaszok kifogástalannak számítanak. Módosíthatja a háttérbeli válasz kódja vagy a háttérbeli válasz törzsének elfogadható tartományát. [További információ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**HTTP-beállítások**|kijelölés a legördülő listából|A mintavétel hozzá lesz rendelve az itt kiválasztott HTTP-beállítás (ok) hoz, ezért a a kiválasztott HTTP-beállításhoz társított háttér-készlet állapotát figyeli. Ugyanazt a portot fogja használni a mintavételi kérelemhez, amelyet a kiválasztott HTTP-beállításban használ. Csak azokat a HTTP-beállításokat lehet választani, amelyek nincsenek társítva más egyéni mintavételhez. <br>Vegye figyelembe, hogy csak azok a HTTP-beállítások érhetők el olyan társításokhoz, amelyek a mintavételi konfigurációban választott protokollal megegyező protokollal rendelkeznek, és azonos állapotban vannak a *kiválasztó állomásnévnek a háttérbeli http-beállítás* kapcsolóval.|
+   
+   > [!IMPORTANT]
+   > A mintavétel csak akkor fogja figyelni a háttér állapotát, ha egy vagy több HTTP-beállítással van társítva. Ezzel a beállítással megfigyelheti azokat a háttérbeli készleteket, amelyek azokhoz a HTTP-beállításokhoz vannak társítva, amelyekhez a mintavétel társítva van. A mintavételi kérelmet a rendszer a http://(állomásnév):(portra küldi a httpsetting-ből)/urlPath.
+
+### <a name="test-backend-health-with-the-probe"></a>Háttérrendszer állapotának tesztelése a mintavételsel
+
+A mintavételi tulajdonságok megadása után a háttérbeli erőforrások állapotának tesztelésével ellenőrizheti, hogy a mintavételi konfiguráció helyes-e, és hogy a háttérbeli erőforrások a várt módon működnek-e.
+
+1. Válassza a **teszt** lehetőséget, és jegyezze fel a mintavétel eredményét. Az Application Gateway megvizsgálja a mintavételhez használt HTTP-beállítás (ok) hoz tartozó backend-készletek összes háttérbeli erőforrásának állapotát. 
+
+   ![Háttérrendszer állapotának tesztelése][5]
+
+2. Ha sérült háttérbeli erőforrások vannak, akkor a **részletek** oszlopban tekintse át az erőforrás sérült állapotának okát. Ha az erőforrás nem megfelelő állapotra van megjelölve egy helytelen mintavételi konfiguráció miatt, válassza a **visszalépés** a mintavételhez hivatkozást, és szerkessze a mintavétel konfigurációját. Ellenkező esetben, ha az erőforrás a háttérrel kapcsolatos probléma miatt nem megfelelőként van megjelölve, akkor oldja meg a háttér-erőforrással kapcsolatos problémákat, majd próbálja megismételni a hátteret a **visszalépés a mintavételhez hivatkozásra kattintva** , és válassza a **teszt**lehetőséget.
+
+   > [!NOTE]
+   > Dönthet úgy is, hogy a mintavételt a nem megfelelő állapotú háttér-erőforrásokkal is menti, de nem ajánlott. Ennek az az oka, hogy a Application Gateway eltávolítja ezeket a háttér-erőforrásokat a háttér-készletből, mert a mintavétel nem Kifogástalan állapotra van meghatározva. Ha nem áll rendelkezésre kifogástalan erőforrás a háttér-készletben, akkor nem fog tudni hozzáférni az alkalmazáshoz, és 502-es hibaüzenetet kap.
+
+   ![Mintavétel eredményének megtekintése][6]
+
+3. A mintavétel mentéséhez válassza a **Hozzáadás** lehetőséget. 
+
+## <a name="create-probe-for-application-gateway-v1-sku"></a>Mintavétel létrehozása Application Gateway v1 SKU-hoz
+
+A mintavétel két lépésből álló folyamaton keresztül történik a portálon. Első lépésként hozza létre a mintavételt. A második lépésben hozzáadja a mintavételt az Application Gateway háttérbeli http-beállításaihoz.
+
+### <a name="createprobe"></a>A mintavétel létrehozása
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Ha még nem rendelkezik fiókkal, regisztrálhat egy [hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free)
+
+2. A Azure Portal Kedvencek ablaktáblán válassza a **minden erőforrás**elemet. Válassza ki az Application Gatewayt a **minden erőforrás** lapon. Ha a kiválasztott előfizetés már rendelkezik több erőforrással, a partners.contoso.net megadhatja a szűrés név szerint... mezőbe.
+
+3. Válassza a mintavételek **lehetőséget, majd a** **Hozzáadás** lehetőséget a mintavétel hozzáadásához.
+
+   ![Mintavételi panel hozzáadása a kitöltött információkkal][1]
+
+4. Az **állapotfelmérés hozzáadása** panelen töltse ki a mintavételhez szükséges adatokat, és ha elkészült, kattintson az **OK gombra**.
+
+   |**Beállítás** | **Érték** | **Részletek**|
+   |---|---|---|
+   |**Name (Név)**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
+   |**Protocol (Protokoll)**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
+   |**Gazdagép**|azaz contoso.com|Ez az érték annak a virtuális gazdagépnek a neve (amely eltér a virtuálisgép-állomásnévtől), amely az alkalmazáskiszolgáló kiszolgálón fut. A rendszer elküldi a mintavételt a (z)://(állomásnév):(port httpsetting)/urlPath.  Ez akkor alkalmazható, ha a többhelyes konfiguráció a Application Gatewayon van konfigurálva. Ha a Application Gateway egyetlen helyhez van konfigurálva, írja be a "127.0.0.1" értéket.|
+   |**Állomásnév kiválasztása a háttérbeli HTTP-beállításokból**|Igen vagy nem|A mintavételben *szereplő állomásfejléc* értékének beállítása annak a http-beállításnak a háttér-erőforrásának állomásneve, amelyhez ez a mintavétel hozzá van rendelve. Kifejezetten a több-bérlős háttérrendszer, például az Azure app Service esetében szükséges. [További információ](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Elérési út**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:\//contoso.com alapértelmezett elérési útja csak a "/" értéket használja |
+   |**Időköz (mp)**|30|Milyen gyakran fut a mintavétel az állapot kereséséhez. A 30 másodpercnél kisebb értéket nem ajánlott beállítani.|
+   |**Időkorlát (mp)**|30|Az az időtartam, ameddig a mintavétel időtúllépés előtt várakozik. Ha az időkorláton belül nem érkezik érvényes válasz, a mintavétel sikertelenként van megjelölve. Az időtúllépési intervallumnak elég magasnak kell lennie ahhoz, hogy http-hívást lehessen biztosítani, hogy a háttér állapota lap elérhető legyen. Vegye figyelembe, hogy az időtúllépési érték nem lehet nagyobb, mint a mintavételi beállításban használt "Interval" érték, vagy a "kérelem időtúllépése" érték abban a HTTP-beállításban, amely ehhez a mintavételhez lesz társítva.|
+|**Nem Kifogástalan állapot küszöbértéke**|3|Az egymást követő sikertelen kísérletek nem megfelelőnek tekintendők. A küszöbérték értéke 1 vagy több lehet.|
+   |**Mintavételi feltételek használata**|Igen vagy nem|Alapértelmezés szerint a 200 és 399 közötti állapotkódot biztosító HTTP (S) válaszok kifogástalannak számítanak. Módosíthatja a háttérbeli válasz kódja vagy a háttérbeli válasz törzsének elfogadható tartományát. [További információ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
    > Az állomásnév nem egyezik meg a kiszolgáló nevével. Ez az érték az alkalmazáskiszolgáló által futtatott virtuális gazdagép neve. A mintavétel a http://(állomásnév):(portra érkezik a httpsetting-ból)/urlPath
 
-## <a name="add-probe-to-the-gateway"></a>Mintavétel hozzáadása az átjáróhoz
+### <a name="add-probe-to-the-gateway"></a>Mintavétel hozzáadása az átjáróhoz
 
 Most, hogy létrejött a mintavétel, itt az ideje, hogy hozzáadja az átjáróhoz. A mintavételi beállítások az Application Gateway háttérbeli http-beállításainál állíthatók be.
 
@@ -70,15 +123,15 @@ Most, hogy létrejött a mintavétel, itt az ideje, hogy hozzáadja az átjáró
 
    ![https-beállítások ablak][2]
 
-1. A **appGatewayBackEndHttpSettings** -beállítások panelen jelölje be az **Egyéni mintavétel használata** jelölőnégyzetet, és válassza ki a mintavétel [létrehozása](#createprobe) szakaszban létrehozott mintavételt az **Egyéni** mintavétel legördülő menüben.
+2. A **appGatewayBackEndHttpSettings** -beállítások lapon jelölje be az **Egyéni mintavétel használata** jelölőnégyzetet, és válassza ki a mintavétel [létrehozása](#createprobe) szakaszban létrehozott mintavételt az **Egyéni** mintavétel legördülő menüben.
    Ha elkészült, kattintson a **Mentés** gombra, és alkalmazza a beállításokat.
 
-Az alapértelmezett mintavétel ellenőrzi az alapértelmezett hozzáférést a webalkalmazáshoz. Most, hogy létrehozta az egyéni mintavételt, az Application Gateway a háttér-kiszolgálók állapotának figyeléséhez megadott egyéni elérési utat használja. A definiált feltételek alapján az Application Gateway ellenőrzi a mintavételben megadott elérési utat. Ha a gazdagépre irányuló hívás: a port/elérési út nem ad vissza HTTP 200-399-es állapotra vonatkozó választ, a rendszer elveszi a kiszolgálót a nem kifogástalan küszöbérték elérésekor. A szondázás a nem kifogástalan állapotú példányon folytatja annak meghatározását, hogy mikor válik újra. Ha a példányt visszaadja a kifogástalan állapotú kiszolgáló készletnek, a forgalom újra áramlik, és a példányhoz való szondázás a szokásosnál továbbra is a felhasználó által megadott időközönként folytatódik.
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-Az SSL-alapú kiszervezésnek az Azure Application Gateway használatával történő konfigurálásával kapcsolatos további információkért lásd: SSL-kiszervezés [konfigurálása](application-gateway-ssl-portal.md)
+Tekintse meg a háttérbeli erőforrások állapotát a [háttér állapot nézet](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)alapján, a mintavétel alapján.
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png
-
+[4]: ./media/application-gateway-create-probe-portal/figure4.png
+[5]: ./media/application-gateway-create-probe-portal/figure5.png
+[6]: ./media/application-gateway-create-probe-portal/figure6.png

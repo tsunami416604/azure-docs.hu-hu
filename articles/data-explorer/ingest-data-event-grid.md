@@ -7,17 +7,17 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028376"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881543"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobok betöltése az Azure Adatkezelőba Event Grid értesítésekre való feliratkozással
 
 > [!div class="op_single_selector"]
-> * [Portál](ingest-data-event-grid.md)
+> * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja, hogyan állíthat be [Azure Event Grid](/azure/ev
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Event Grid előfizetés létrehozása a Storage-fiókban
 
 1. A Azure Portal keresse meg a Storage-fiókját.
-1. Válassza az **események** > **esemény-előfizetés**elemet.
+1. Válassza az **események** > **esemény-előfizetés**lehetőséget.
 
     ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -43,17 +43,17 @@ Ebből a cikkből megtudhatja, hogyan állíthat be [Azure Event Grid](/azure/ev
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Name (Név) | *test-grid-connection* | A létrehozni kívánt Event Grid neve.|
+    | Név | *test-Grid – kapcsolatok* | A létrehozni kívánt Event Grid neve.|
     | Esemény sémája | *Event Grid séma* | Az Event gridhez használandó séma. |
     | Témakör típusa | *Storage-fiók* | Az Event Grid-témakör típusa |
     | Témakör erőforrása | *gridteststorage* | A Storage-fiók neve. |
-    | Előfizetés az összes eseménytípusra | *egyértelmű* | Ne kapjon értesítést minden eseményről. |
+    | Előfizetés minden eseménytípus esetében | *egyértelmű* | Ne kapjon értesítést minden eseményről. |
     | Definiált események típusai | *BLOB létrehozva* | Mely adott eseményekről kap értesítést. |
     | Végpont típusa | *Event hubok* | Az eseményeket küldő végpont típusa. |
     | Végpont | *test-hub* | A létrehozott eseményközpont. |
     | | |
 
-1. Ha egy adott tárolóból kívánja nyomon követni a fájlokat, válassza a **További szolgáltatások** lapot. Az értesítések szűrőit az alábbiak szerint állítsa be:
+1. Ha egy adott tárolóból kívánja nyomon követni a fájlokat, válassza a **szűrők** lapot. Az értesítések szűrőit az alábbiak szerint állítsa be:
     * A **tulajdonos kezdete** mező a blob-tároló *szövegkonstans* -előtagja. Ahogy az alkalmazott minta *startswith*, több tárolóra is kiterjedhet. Nem engedélyezettek a helyettesítő karakterek.
      A *következőket kell beállítani* : *`/blobServices/default/containers/`* [Container előtag]
     * A **tulajdonos végződik** mező a blob *literál* utótagja. Nem engedélyezettek a helyettesítő karakterek.
@@ -86,15 +86,15 @@ Most kapcsolódjon az Azure Adatkezelő Event Grid, hogy a blob-tárolóba áram
 
 1. Az eszközsáv **Értesítések** elemének kiválasztásával győződjön meg arról, hogy az eseményközpont üzembe helyezése sikeresen megtörtént.
 
-1. A létrehozott fürt alatt válassza az **adatbázisok**@no__t – 1**TestDatabase**elemet.
+1. A létrehozott fürt alatt válassza az **adatbázisok** > **TestDatabase**elemet.
 
     ![Tesztadatbázis kiválasztása](media/ingest-data-event-grid/select-test-database.png)
 
-1. Válassza **az adatfeldolgozás**@no__t – 1**adatkezelési kapcsolatok hozzáadása**elemet.
+1. Válassza **az adatfeldolgozás** > **adatkezelési kapcsolatok hozzáadása**elemet.
 
     ![Adatfeldolgozás](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1.  Válassza ki a kapcsolattípus típusát: **A BLOB Storage-** .
+1.  Válassza ki a kapcsolattípus típusát: **blob Storage**.
 
 1. Töltse ki az űrlapot a következő információkkal, majd válassza a **Létrehozás**lehetőséget.
 
@@ -107,7 +107,7 @@ Most kapcsolódjon az Azure Adatkezelő Event Grid, hogy a blob-tárolóba áram
     | Adatkapcsolat neve | *test-hub-connection* | Az Azure Adatkezelőban létrehozni kívánt kapcsolódás neve.|
     | Storage-fiók előfizetése | Az előfizetés azonosítója | Az előfizetés-azonosító, amelyben a Storage-fiók található.|
     | Tárfiók | *gridteststorage* | A korábban létrehozott Storage-fiók neve.|
-    | Event Grid | *test-grid-connection* | A létrehozott Event Grid neve. |
+    | Event Grid | *test-Grid – kapcsolatok* | A létrehozott Event Grid neve. |
     | Eseményközpont neve | *test-hub* | A létrehozott Event hub. A program automatikusan kitölti ezt a mezőt az Event Grid kiválasztásakor. |
     | Fogyasztói csoport | *test-group* | A létrehozott Event hub-ban definiált fogyasztói csoport. |
     | | |
@@ -116,8 +116,8 @@ Most kapcsolódjon az Azure Adatkezelő Event Grid, hogy a blob-tárolóba áram
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
-    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: Zip és GZip |
+    | Table | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
+    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: zip és GZip |
     | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
     | | |
     
@@ -199,6 +199,6 @@ Ha nem tervezi az Event Grid ismételt használatát, törölje a **test-hub-RG*
 
 1. Az új ablakban adja meg a törölni kívánt erőforráscsoport nevét (*test-hub-RG*), majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő lekérdezése](web-query-data.md)

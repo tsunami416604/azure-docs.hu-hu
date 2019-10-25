@@ -1,5 +1,5 @@
 ---
-title: Használati és adatellenőrzési jelentés a Azure Active Directory portálon | Microsoft Docs
+title: Használati és adatellenőrzési jelentés | Microsoft Docs
 description: A használati és betekintési jelentés bemutatása a Azure Active Directory portálon
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 568eaa358f6788af525a69cd8ecda76a0591879f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989860"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820940"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Használati és bepillantást a Azure Active Directory portálon
 
@@ -43,7 +43,7 @@ A használati és elemzési jelentésből származó adatok eléréséhez a köv
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a megfelelő könyvtárat, majd válassza a **Azure Active Directory** lehetőséget, és válassza a **vállalati alkalmazások**lehetőséget.
-3. A **tevékenység** szakaszban válassza a **használati &** a bepillantást a jelentés megnyitásához. 
+3. A **tevékenység** szakaszban válassza a **használati & a bepillantást** a jelentés megnyitásához. 
 
 ![Használati és elemzési jelentés](./media/concept-usage-insights-report/main-menu.png)
                                      
@@ -60,6 +60,6 @@ Amikor kiválaszt egy napot az alkalmazás használati gráfjában, részletes l
 
 ![Használati és elemzési jelentés](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezések jelentés](concept-sign-ins.md)

@@ -4,19 +4,19 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Linux 
 services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
-ms.date: 12/5/2018
+ms.date: 10/22/2019
 ms.topic: conceptual
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd87477da15d5c18f94b66cac855672b4a2a3523
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091351"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882699"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a id="create"></a> Linux rendszerű, telepített SQL Serverrel rendelkező virtuális gép létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget.
 
@@ -49,51 +49,47 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
    ![Az összes virtuálisgép-rendszerkép megjelenítése](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. A keresőmezőbe írja be a **SQL Server 2017**kifejezést, majd a keresés indításához válassza az **ENTER billentyűt** .
+1. A keresőmezőbe írja be a **SQL Server 2019**kifejezést, majd a keresés indításához válassza az **ENTER billentyűt** .
 
-1. Korlátozza a keresési eredményeket az **operációs rendszer** > **RedHat**kiválasztásával. Ezután a **kiadó**területen válassza a **Microsoft**lehetőséget.
+1. Korlátozza a keresési eredményeket az **operációs rendszer** > **RedHat**lehetőség kiválasztásával.
 
-    ![Keresési szűrő az SQL Server 2017-alapú virtuálisgép-rendszerképekhez](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
+    ![SQL Server 2019 virtuálisgép-lemezképek keresési szűrője](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. Válasszon egy Linux rendszerű SQL Server 2017-rendszerképet a keresési eredmények közül. Ez az oktatóanyag **ingyenes SQL Server licencet használ: SQL Server 2017 fejlesztői Red Hat Enterprise Linux 7,4**.
+1. Válasszon ki egy SQL Server 2019 Linux-rendszerképet a keresési eredmények közül. Ez az oktatóanyag **SQL Server 2019**-et használ a RHEL74-on.
 
    > [!TIP]
    > A fejlesztői kiadással tesztelheti vagy fejlesztheti a vállalati kiadás szolgáltatásait, de nem SQL Server licencelési költségeket. Csak a Linux rendszerű virtuális gép futtatásával járó költségeket kell kifizetnie.
 
-1. A **telepítési modell kiválasztása**területen válasszon egy üzemi modellt, amely megfelel a számítási feladatok igényeinek.
+1. Kattintson a **Létrehozás** gombra. 
 
-    > [!Note]
-    > Új munkaterhelések esetén használja a **Resource Managert**. Meglévő virtuális hálózathoz való kapcsolódáshoz válassza ki a virtuális hálózat központi telepítési módszerét a számítási feladathoz. További információ az üzembe helyezési modellekről: [Azure Resource Manager és klasszikus üzembe helyezési modellek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model).
-
-1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="set-up-your-linux-vm"></a>Linux rendszerű virtuális gép beállítása
 
-1. Az **alapvető beállítások** lapon válassza ki az előfizetést és az **erőforráscsoportot**. 
+1. Az **alapvető beállítások** lapon válassza ki az **előfizetést** és az **erőforráscsoportot**. 
 
     ![Alapvető beállítások ablak](./media/provision-sql-server-linux-virtual-machine/basics.png)
 
 1. A **virtuális gép neve**mezőbe írja be az új linuxos virtuális gép nevét.
 1. Ezután írja be vagy válassza ki a következő értékeket:
-   * **Régió**: Válassza ki az Ön számára legmegfelelőbb Azure-régiót.
-   * **Rendelkezésre állási lehetőségek**: Válassza ki az alkalmazásaihoz és adataihoz legmegfelelőbb rendelkezésre állási és redundancia-beállítást.
-   * **Méret módosítása**: Válassza ezt a lehetőséget a gép méretének kiválasztásához, és ha elkészült, válassza a **kiválasztás**elemet. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
+   * **Régió**: válassza ki az Ön számára legmegfelelőbb Azure-régiót.
+   * **Rendelkezésre állási lehetőségek**: válassza ki az alkalmazásaihoz és adataihoz leginkább megfelelő rendelkezésre állási és redundancia-beállítást.
+   * **Méret módosítása**: válassza ezt a lehetőséget a gép méretének kiválasztásához, és ha elkészült, válassza a **kiválasztás**elemet. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
 
      ![Virtuális gép méretének kiválasztása](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > A fejlesztéshez és a működéshez való teszteléshez használjon **DS2** vagy magasabb virtuálisgép-méretet. A teljesítményteszteléshez használjon **DS13** vagy nagyobb méretet.
 
-   * **Hitelesítés típusa**: Válassza az **SSH nyilvános kulcs**lehetőséget.
+   * **Hitelesítés típusa**: válassza az **SSH nyilvános kulcs**lehetőséget.
 
      > [!Note]
      > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
-   * **Felhasználónév**: Adja meg a virtuális gép rendszergazdájának nevét.
-   * **Nyilvános SSH-kulcs**: Adja meg az RSA nyilvános kulcsát.
-   * **Nyilvános bejövő portok**: Válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza ki az **SSH (22)** portot a **nyilvános bejövő portok kiválasztása** listában. Ebben a rövid útmutatóban ez a lépés szükséges a SQL Server konfigurációjának összekapcsolásához és befejezéséhez. Ha távolról szeretne az SQL Serverhez kapcsolódni, válassza ki az **MS SQL (1433)** lehetőséget is a 1433-as port megnyitásához az interneten keresztüli kapcsolatokhoz.
+   * **Username (Felhasználónév**): adja meg a virtuális gép rendszergazdájának nevét.
+   * **Nyilvános SSH-kulcs**: adja meg az RSA nyilvános kulcsát.
+   * **Nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza ki az **SSH (22)** portot a **nyilvános bejövő portok kiválasztása** listában. Ebben a rövid útmutatóban ez a lépés szükséges a SQL Server konfigurációjának összekapcsolásához és befejezéséhez. Ha távolról szeretne csatlakozni a SQL Serverhoz, akkor a virtuális gép létrehozása után manuálisan engedélyeznie kell a forgalmat a Microsoft SQL Server által használt alapértelmezett portra (1433).
 
-   ![Bejövő portok](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+     ![Bejövő portok](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
 1. Végezze el a kívánt módosításokat a következő lapokon található beállításokban, vagy tartsa meg az alapértelmezett beállításokat.
     * **Lemezek**
@@ -197,7 +193,7 @@ Ez az oktatóanyag egy Red Hat Enterprise Linux (RHEL) rendszerű virtuális gé
    sudo firewall-cmd --reload
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy van egy SQL Server 2017-es virtuális gépe az Azure-ban, helyileg csatlakozhat az **sqlcmd** használatával, és Transact-SQL-lekérdezéseket futtathat.
 

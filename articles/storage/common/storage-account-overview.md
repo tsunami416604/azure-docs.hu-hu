@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671313"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882562"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure Storage-fiók áttekintése
 
@@ -29,7 +29,7 @@ Az Azure Storage-fiókok létrehozásával kapcsolatos további információkér
 
 Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat. Az általános célú v2 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
-- Blobok (az összes típus: Letiltás, Hozzáfűzés, lap)
+- Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
 - Fájlok
 - Lemezek
 - Üzenetsorok
@@ -44,7 +44,7 @@ Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínál
 
 ### <a name="general-purpose-v1-accounts"></a>Általános célú v1-fiókok
 
-Az általános célú v1-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
+Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus)
 - Fájlok
@@ -60,17 +60,19 @@ Habár az általános célú v2-fiókok használata a legtöbb esetben ajánlott
 
 * A [Storage szolgáltatások REST API felülete](https://msdn.microsoft.com/library/azure/dd894041.aspx) 2014. 02. 14-nél korábbi verzióját vagy egy 4.x-nél korábbi verziójú ügyfélkódtárat használ, és nem tudja frissíteni az alkalmazást.
 
-### <a name="block-blob-storage-accounts"></a>BLOB Storage-fiókok letiltása
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-fiókok
 
-A blokk blob Storage-fiók egy speciális Storage-fiók, amely a strukturálatlan objektumok adatait blokkolja a Blobok tárolásához. Ez a Storage-fióktípus támogatja a Blobok blokkolását és a Blobok hozzáfűzését, nem pedig a lapok blobokat, táblákat vagy várólistákat.
+A BlockBlobStorage-fiók egy speciális Storage-fiók, amely strukturálatlan objektumok tárolására szolgál, és prémium szintű blokk blobokat hoz létre. Ez a Storage-fióktípus támogatja a Blobok blokkolását és a Blobok hozzáfűzését, nem pedig az oldal blobokat, táblákat vagy várólistákat.
 
-Az általános célú v2-és blob Storage-fiókokkal szemben a blob Storage-fiókok blokkolása alacsony és konzisztens késést és magasabb tranzakciós sebességet biztosít.
+Az általános célú v2-és BlobStorage-fiókokkal összehasonlítva a BlockBlobStorage-fiókok alacsony és konzisztens késést és magasabb tranzakciós sebességet biztosítanak.
 
-A blob Storage-fiókok jelenleg nem támogatják a leválasztást a gyakori, ritka elérésű vagy archív hozzáférési szintekre.
+A BlockBlobStorage-fiókok jelenleg nem támogatják a leválasztást a gyakori, ritka elérésű vagy archív hozzáférési szintekre.
 
-### <a name="filestorage-storage-accounts"></a>FileStorage
+### <a name="filestorage-accounts"></a>FileStorage-fiókok
 
-A FileStorage Storage-fiók egy speciális Storage-fiók, amely prémium szintű fájlmegosztás tárolására és létrehozására szolgál. A FileStorage-fiókok egyedi teljesítményű dedikált jellemzőkkel rendelkeznek, mint például a IOPS burst. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás teljesítmény szintjei](../files/storage-files-planning.md#file-share-performance-tiers) című szakaszát.
+A FileStorage-fiók a prémium fájlmegosztás tárolására és létrehozására szolgáló speciális Storage-fiók. Ez a Storage-fióktípus támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűzi a blobokat, a blobokat, a táblákat és a várólistákat 
+
+A FileStorage-fiókok egyedi teljesítmény-dedikált jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás teljesítmény szintjei](../files/storage-files-planning.md#file-share-performance-tiers) című szakaszát.
 
 ## <a name="naming-storage-accounts"></a>Tárolási fiókok elnevezése
 
@@ -86,7 +88,7 @@ Az általános célú Storage-fiókok a következő teljesítményszint-szintek 
 * Szabványos teljesítményszint Blobok, fájlok, táblák, várólisták és Azure-beli virtuális gépek lemezei tárolásához.
 * Prémium szintű teljesítményszint, amely csak a nem felügyelt virtuális gépek lemezeit tárolja.
 
-A blob Storage-fiókok blokkolása prémium szintű teljesítményt biztosít a blokkos Blobok tárolásához és a Blobok hozzáfűzéséhez.
+A BlockBlobStorage Storage-fiókok prémium szintű teljesítményt biztosítanak a blokkos Blobok tárolásához és a Blobok hozzáfűzéséhez.
 
 Az FileStorage Storage-fiókok prémium szintű teljesítményt biztosítanak az Azure-fájlmegosztás számára.
 
@@ -105,17 +107,17 @@ Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáfé
 > [!IMPORTANT]
 > Egy meglévő Storage-fiók vagy blob hozzáférési rétegének módosítása további díjakat eredményezhet. További információt a [Storage-fiók számlázási szakasza](#storage-account-billing)tartalmaz.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 További információ a tárolási replikálásról: az [Azure Storage replikációja](storage-redundancy.md).
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>Titkosítás
 
 A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán. A titkosítással kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](storage-service-encryption.md).
 
-## <a name="storage-account-endpoints"></a>Tárfiók végpontjai
+## <a name="storage-account-endpoints"></a>Tárfiókvégpontok
 
 A Storage-fiók egyedi névteret biztosít az Azure-ban az adataihoz. Az Azure Storage-ban tárolt összes objektumhoz tartozik egy olyan címe, amely tartalmazza az egyedi fióknevet. A fiók neve és az Azure Storage szolgáltatás végpontja a Storage-fiókhoz tartozó végpontokat képezi le.
 
@@ -183,8 +185,8 @@ Az import/export szolgáltatással az Azure Blob Storage-ból származó adatok 
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az általános célú Azure Storage-fiók létrehozásáról a [Storage-fiók létrehozása](storage-quickstart-create-account.md)című témakörben olvashat bővebben.
-* A blokk blob Storage-fiók létrehozásával kapcsolatos további információkért lásd: [blokk blob Storage-fiók létrehozása](../blobs/storage-blob-create-account-block-blob.md).
+* A BlockBlobStorage-fiókok létrehozásával kapcsolatos további információkért lásd: [blokk blob Storage-fiók létrehozása](../blobs/storage-blob-create-account-block-blob.md).
 * Meglévő Storage-fiók kezeléséhez vagy törléséhez tekintse meg az [Azure Storage-fiókok kezelése](storage-account-manage.md)című témakört.

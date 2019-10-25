@@ -1,23 +1,18 @@
 ---
 title: Azure-Application Insights automatizálása a PowerShell használatával | Microsoft Docs
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/17/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5cfe09c3c38ffd6e68d45ddc90862b69b305a824
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/17/2019
+ms.openlocfilehash: 938511069500c551eb526b6c7238546b85d59dce
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555489"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818930"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -546,7 +541,7 @@ Ha más tesztelési helyekhez tartozó kódokat szeretne felderíteni, vagy öss
 
 Bármilyen más erőforrás létrehozásának automatizálásához hozzon létre egy példát manuálisan, majd másolja és parametrizálja a kódját a [Azure Resource Managerból](https://resources.azure.com/). 
 
-1. Nyissa meg [Azure Resource Manager](https://resources.azure.com/). @No__t_0 navigáljon az alkalmazás-erőforráshoz. 
+1. Nyissa meg [Azure Resource Manager](https://resources.azure.com/). `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`navigáljon az alkalmazás-erőforráshoz. 
    
     ![Navigálás Azure Erőforrás-kezelő](./media/powershell/01.png)
    

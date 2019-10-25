@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678234"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817385"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes teszt
 
@@ -34,38 +34,12 @@ Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa e
 > [!NOTE]
 > A több lépésből álló webes tesztek további költségekkel is rendelkeznek. További információkért tekintse meg a [hivatalos díjszabási útmutatót](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="record-a-multi-step-web-test"></a>Többlépéses webes teszt rögzítése
+## <a name="record-a-multi-step-web-test"></a>Többlépéses webes teszt rögzítése 
 
-Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Application Insights visszajátssza a forgatókönyvet a beállított időközönként, és ellenőrzi a választ.
+> [!WARNING]
+> A több lépésből álló rögzítő használata már nem ajánlott. A rögzítő a statikus HTML-lapokra, alapszintű interakciókkal lett kifejlesztve, és nem biztosít funkcionális élményt a modern weblapokhoz.
 
-> [!IMPORTANT]
-> * A tesztekben nem használhat kódolt függvényeket vagy hurkokat. A .webtest szkriptnek teljes egészében tartalmaznia kell a tesztet. Ehelyett azonban standard beépülő modulok is használhatók.
-> * Kizárólag angol karakterek támogatottak a többlépéses webes tesztekben. Ha más nyelven használja a Visual Studiót, kérjük, frissítse a webes teszt definíciófájlját a nem angol karakterek fordításához/kihagyásához.
-
-A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
-
-1. Hozzon létre egy webes teljesítmény-és terhelési teszt projektet. **Fájl**  > **új**  > **Project**  > **Visual C#**   > **test**
-
-    ![Visual Studio – új projekt felhasználói felülete](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. Nyissa meg a `.webtest` fájlt, és kezdje meg a rögzítést.
-
-    ![A Visual Studio test Recording felhasználói felülete](./media/availability-multistep/open-web-test.png)
-
-3. Kattintson arra a lépésre, amelyet a teszt által szimulálni szeretne a rögzítés részeként.
-
-    ![Böngésző rögzítésének felhasználói felülete](./media/availability-multistep/record.png)
-
-4. Szerkessze a tesztet:
-
-    * Adjon hozzá ellenőrzéseket a kapott szöveg- és válaszkódok ellenőrzéséhez.
-    * Távolítsa el a uneccesary interakciókat. Eltávolíthat olyan függő kérelmeket is, amelyek nem relevánsak a sikeres teszteléshez, és olyan nyomkövetési helyeket is hozzáadhatnak, amelyek nem relevánsak.
-    
-    Ne feledje, hogy csak a tesztelési parancsfájlt lehet szerkeszteni – egyéni kódot adhat hozzá, vagy meghívhat más webes teszteket. Ne szúrjon be hurkokat a tesztbe. Használhatja a normál webes teszt beépülő modulokat.
-
-5. Az ellenőrzéshez futtassa a tesztet a Visual Studióban, és ellenőrizze, hogy működik-e.
-
-    A webes teszt futtatója megnyit egy webböngészőt, és megismétli a rögzített műveleteket. Győződjön meg arról, hogy minden a vártnak megfelelően viselkedik.
+A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért tekintse meg a [hivatalos Visual studio 2019 dokumentációját](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
@@ -96,7 +70,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 |**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
 |**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  a**tesztelési helyek száma – 2, legalább öt tesztelési hellyel.**|
 
-## <a name="advanced-configuration"></a>Speciális konfiguráció
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Idő és véletlenszerű számok csatlakoztatása a teszthez
 

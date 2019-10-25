@@ -8,13 +8,13 @@ author: tomarcher
 manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b156169e7202319366e337cc7081e02f5de3acad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 82cee1e5c93eb21fa8db29985d26fe75bde970d2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244807"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882606"
 ---
 # <a name="create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Bejövő Application Gateway-vezérlő létrehozása az Azure Kubernetes szolgáltatásban
 
@@ -477,9 +477,9 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
 
 Az ebben a szakaszban bemutatott kód a fürt, a hely és a resource_group_name nevét állítja be. A `dns_prefix` érték – a fürthöz való hozzáféréshez használt teljes tartománynév (FQDN) részét képezi.
 
-A `linux_profile` rekord lehetővé teszi az SSH használatával történő bejelentkezést engedélyező beállítások konfigurálását a munkavégző csomópontok számára.
+A `linux_profile` rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek engedélyezik az SSH-val való bejelentkezést a munkavégző csomópontokra.
 
-Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `agent_pool_profile` rekord konfigurálja a munkavégző csomópontok részleteit. A `agent_pool_profile record` a létrehozandó munkavégző csomópontok számát és a feldolgozó csomópontok típusát foglalja magában. Ha a későbbiekben a fürt vertikális felskálázását vagy leskálázását szeretné végezni, módosítsa a `count` értéket ebben a rekordban.
+Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `agent_pool_profile` rekord a munkavégző csomópontok adatait konfigurálja. A `agent_pool_profile record` tartalmazza a létrehozandó munkavégző csomópontok számát és a feldolgozó csomópontok típusát. Ha a későbbiekben a fürt vertikális felskálázását vagy leskálázását szeretné végezni, módosítsa a `count` értéket ebben a rekordban.
 
 ## <a name="create-a-terraform-output-file"></a>Terraform kimeneti fájl létrehozása
 
@@ -568,7 +568,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    A `terraform init` parancs megjeleníti a háttérrendszer és a szolgáltató beépülő modul sikeres inicializálását:
+    A `terraform init` parancs a háttérrendszer és a szolgáltató beépülő modul inicializálásának sikerességét jeleníti meg:
 
     ![A „terraform init” eredményeit mutató példa](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
@@ -727,14 +727,14 @@ Az ebben a szakaszban szereplő kód a [Helm](/azure/aks/kubernetes-helm) -Kuber
 
     - `verbosityLevel`: a AGIC naplózási infrastruktúrájának részletességi szintjét állítja be. Lásd: a lehetséges értékek [naplózási szintjei](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
     - `appgw.subscriptionId`: az App Gateway Azure-előfizetés azonosítója. Például: `a123b234-a3b4-557d-b2df-a0bc12de1234`
-    - @no__t – 0: azon Azure-erőforráscsoport neve, amelyben az App Gateway létrejött. 
-    - @no__t – 0: a Application Gateway neve. Példa: `applicationgateway1`.
+    - `appgw.resourceGroup`: az az Azure-erőforráscsoport neve, amelyben az App Gateway létrejött. 
+    - `appgw.name`: a Application Gateway neve. Példa: `applicationgateway1`.
     - `appgw.shared`: ezt a logikai jelzőt a `false` értékre kell állítani. Állítsa be a `true` értéket, ha [megosztott alkalmazás-átjáróra](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)van szüksége.
     - `kubernetes.watchNamespace`: adja meg azt a AGIC, amelyet meg kell nézni. A névtér lehet egy karakterlánc-érték, vagy a névterek vesszővel tagolt listája.
     - `armAuth.type`: `aadPodIdentity` vagy `servicePrincipal` érték.
     - `armAuth.identityResourceID`: a felügyelt identitás erőforrás-azonosítója.
     - `armAuth.identityClientId`: az identitás ügyfél-azonosítója.
-    - @no__t – 0: csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusát választotta (ha a `armAuth.type` beállítás értéke `servicePrincipal`).
+    - `armAuth.secretJSON`: csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusa van kiválasztva (ha `armAuth.type` van beállítva a következőre: `servicePrincipal`).
 
     Fontos megjegyzések:
     - A `identityResourceID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_client_id)"`.

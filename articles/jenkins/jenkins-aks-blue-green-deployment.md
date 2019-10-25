@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/23/2019
+ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249409"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882090"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
@@ -218,7 +218,7 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
     1. Válassza a **Manage Jenkins (Jenkins kezelése)> Manage Plugins (Beépülő modulok kezelése) > Available (Elérhető)** lehetőséget.
     1. Keresse meg és telepítse az Azure Container Service beépülő modult.
 
-1. Az Azure-beli erőforrások kezeléséhez adja meg a hitelesítő adatokat. Ha még nincs telepítve a beépülő modul, telepítse az **Azure-beli hitelesítő adatok** beépülő modulját.
+1. Az Azure-beli erőforrások kezeléséhez adja meg a hitelesítő adatokat. Ha még nem rendelkezik a beépülő modullal, telepítse az **Azure hitelesítőadat** -beépülő modult.
 
 1. Adja meg az Azure szolgáltatásnévhez tartozó hitelesítő adatot **Microsoft Azure Service Principal** (Microsoft Azure szolgáltatásnév) típusként.
 

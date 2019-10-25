@@ -1,59 +1,55 @@
 ---
-title: Profiljának ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler |} A Microsoft Docs
-description: Fogalmi áttekintése és Application Insights Profiler használatának részletes oktatóanyaga.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.reviewer: mbullwin
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler között | Microsoft Docs
+description: A Application Insights Profiler használatának elméleti áttekintése és részletes oktatóanyaga.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/23/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/23/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: a300aa066bdef40c4768ac5e278537aec1a8b3b7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306482"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820553"
 ---
-# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Az ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler-profil
+# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler
 
 Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
-Ismerje meg, hogy mennyi időt vesz igénybe az egyes módszerek az élő webalkalmazásának használatakor [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler már elérhető az Azure App Service Linux rendszeren futó ASP.NET Core web Apps. Ez az útmutató részletes útmutatás a Profiler nyomkövetések hogyan gyűjthetők össze az ASP.NET Core Linuxos webalkalmazásokat.
+Megtudhatja, hogy mennyi idő telik el az élő webalkalmazás egyes módszereiben [Application Insights](../../azure-monitor/app/app-insights-overview.md)használatakor. A Application Insights Profiler mostantól elérhető ASP.NET Core webalkalmazásokhoz, amelyek a Azure App Service Linux rendszeren futnak. Ez az útmutató lépésről lépésre bemutatja, hogyan gyűjthetők össze a Profiler-Nyomkövetések ASP.NET Core linuxos webalkalmazásokhoz.
 
-Ez az útmutató befejeztével az alkalmazás például a képen látható a nyomkövetés Profiler-nyomkövetések képes összegyűjteni. Ebben a példában a Profiler nyomkövetést azt jelzi, hogy egy bizonyos webes kérés lassú várakozással töltött idő miatt. A *gyakori elérésű útvonal* egy személy ikon jelöli, amelyet a rendszer lassítása az alkalmazást. A **kapcsolatos** metódus az a **HomeController** szakaszban van a webalkalmazás lassítása, mert a metódust hívja a **Thread.Sleep** függvény.
+Miután elvégezte a bemutatót, az alkalmazás összegyűjthet Profiler-nyomkövetéseket, például a képen látható nyomkövetéseket. Ebben a példában a Profiler-nyomkövetés azt jelzi, hogy egy adott webes kérelem lassú a várakozási idő miatt. Az alkalmazást lelassító *gyors elérési utat* egy láng ikon jelöli. A **HomeController** szakasz **About** metódusa lelassítja a webalkalmazást, mert a metódus hívja a **Thread. Sleep** függvényt.
 
-![Profiler-nyomkövetések](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Profiler-Nyomkövetések](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Összes Windows, Linux és Mac fejlesztési környezetre vonatkozik az alábbi utasításokat:
+Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői környezetre érvényesek:
 
-* Telepítse a [.NET Core SDK 2.1.2 vagy újabb](https://dotnet.microsoft.com/download/archives).
-* A Git telepítése a webhelyen található utasításokat követve [első lépések – Git telepítése](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Telepítse a [.net Core SDK 2.1.2 vagy újabb verziót](https://dotnet.microsoft.com/download/archives).
+* Telepítse a git-t az [első lépések-install git telepítésével](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)kapcsolatos utasításokat követve.
 
 ## <a name="set-up-the-project-locally"></a>A projekt helyi beállítása
 
-1. Nyissa meg a parancssor ablakát a gépen. Az alábbi utasításokat az összes Windows, Linux és Mac fejlesztési környezetek esetében működik.
+1. Nyisson meg egy parancssori ablakot a gépen. Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztési környezetben működnek.
 
-1. Az ASP.NET Core MVC webalkalmazás létrehozásához:
+1. ASP.NET Core MVC-Webalkalmazás létrehozása:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-1. A munkakönyvtárban módosítsa a projekt gyökérkönyvtárába.
+1. Módosítsa a munkakönyvtárat a projekt gyökérkönyvtárára.
 
-1. Adja hozzá a NuGet-csomagot a Profiler-nyomkövetések gyűjtése:
+1. Adja hozzá a NuGet-csomagot a Profiler-Nyomkövetések gyűjtéséhez:
 
     ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. Engedélyezze az Application Insights a program.cs fájlban:
+1. Application Insights engedélyezése a Program.cs-ben:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -62,7 +58,7 @@ Ez az útmutató befejeztével az alkalmazás például a képen látható a nyo
             .UseStartup<Startup>();
     ```
     
-1. A Startup.cs fájlban Profiler engedélyezése:
+1. A Profiler engedélyezése a Startup.cs-ben:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -72,7 +68,7 @@ Ez az útmutató befejeztével az alkalmazás például a képen látható a nyo
     }
     ```
 
-1. Adjon hozzá egy sort a kód a **HomeController.cs** véletlenszerűen késleltetheti néhány másodpercig szakaszban:
+1. Adja hozzá a **HomeController.cs** szakaszban található kód sorát, hogy véletlenszerűen késleltess néhány másodpercet:
 
     ```csharp
         using System.Threading;
@@ -95,37 +91,37 @@ Ez az útmutató befejeztével az alkalmazás például a képen látható a nyo
         git commit -m "first commit"
     ```
 
-## <a name="create-the-linux-web-app-to-host-your-project"></a>A Linux webalkalmazás üzemeltetéséhez a projekt létrehozása
+## <a name="create-the-linux-web-app-to-host-your-project"></a>A Linux-Webalkalmazás létrehozása a projekt üzemeltetéséhez
 
-1. A web app-környezet létrehozása a linuxon futó App Service használatával:
+1. A webalkalmazás-környezet létrehozása a Linux App Service használatával:
 
-    ![A Linux-webalkalmazás létrehozása](./media/profiler-aspnetcore-linux/create-linux-appservice.png)
+    ![A linuxos webes alkalmazás létrehozása](./media/profiler-aspnetcore-linux/create-linux-appservice.png)
 
-2. Az üzembe helyezési hitelesítő adatok létrehozása:
+2. A központi telepítési hitelesítő adatok létrehozása:
 
     > [!NOTE]
-    > Jegyezze fel a jelszót a webes alkalmazás üzembe helyezésekor későbbi használat céljából.
+    > Jegyezze fel a jelszavát, hogy később használhassa a webalkalmazást.
 
-    ![Az üzembe helyezési hitelesítő adatok létrehozása](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
+    ![A központi telepítési hitelesítő adatok létrehozása](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
 
-3. Adja meg a központi telepítési beállításokat. Állítsa be a webalkalmazás helyi Git-tárházat az utasításokat követve az Azure Portalon. Git-tárház automatikusan létrejön.
+3. Válassza ki a központi telepítési beállításokat. Állítsa be a helyi git-tárházat a webalkalmazásban a Azure Portal utasításait követve. A rendszer automatikusan létrehoz egy git-tárházat.
 
-    ![A Git-tárház beállítása](./media/profiler-aspnetcore-linux/setup-git-repo.png)
+    ![A git-tárház beállítása](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-A további telepítési lehetőségekről [Ez a cikk](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
 
 ## <a name="deploy-your-project"></a>A projekt üzembe helyezése
 
-1. A parancssori ablakot keresse meg a projekt gyökérkönyvtárába. Adjon hozzá egy távoli Git-tárház, mutasson a tárházba az App Service-ben:
+1. A Parancssor ablakban keresse meg a projekt gyökérkönyvtárát. Vegyen fel egy git távoli tárházat, amely a App Service adattárára mutat:
 
     ```
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * Használja a **felhasználónév** az üzembe helyezési hitelesítő adatok létrehozásához használt.
-    * Használja a **alkalmazásnév** , hogy használja-e a webes alkalmazás létrehozása Linuxon futó App Service használatával.
+    * Használja az üzembe helyezési hitelesítő adatok létrehozásához használt **felhasználónevet** .
+    * Használja az **alkalmazás nevét** , amelyet a webalkalmazás létrehozásához használt a Linux app Service használatával.
 
-2. A projekt telepítése révén a módosításokat az Azure-bA:
+2. A projekt üzembe helyezéséhez hajtsa végre a módosításokat az Azure-ban:
 
     ```
     git push azure master
@@ -154,33 +150,33 @@ Az alábbi példához hasonló kimenetnek kell megjelennie:
 
     ```
 
-## <a name="add-application-insights-to-monitor-your-web-apps"></a>A webalkalmazások monitorozása az Application Insights hozzáadása
+## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights hozzáadása a webalkalmazások figyeléséhez
 
-1. [Hozzon létre egy Application Insights-erőforrást](./../../azure-monitor/app/create-new-resource.md ).
+1. [Hozzon létre egy Application Insights erőforrást](./../../azure-monitor/app/create-new-resource.md ).
 
-2. Másolás a **Rendszerállapotkulcsot** Application Insights-erőforrás értékének, és a web apps állítson be a következő beállításokat:
+2. Másolja a Application Insights erőforrás **rendszerállapotkulcsot** értékét, és állítsa be a következő beállításokat a webalkalmazásokban:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
     ```
 
-    Ha a beállítások módosítják, a hely automatikusan újraindul. Miután az új beállításokat alkalmazzák, a Profiler azonnal két percig fut. A Profiler majd két percig óránként fut.
+    Az Alkalmazásbeállítások megváltozásakor a hely automatikusan újraindul. Az új beállítások alkalmazása után a Profiler azonnal két percig fut. A Profiler ezután óránként két percig fut.
 
-3. Hozzon létre a webhely forgalom egy része. A hely frissítése forgalmat is létrehozhat **kapcsolatos** oldal néhány alkalommal.
+3. A webhelyre irányuló adatforgalom előállítása. A forgalmat úgy is létrehozhatja **, hogy néhányszor frissít a webhelyet.**
 
-4. Várjon az események 2 – 5 percet, amíg az Application Insightsba összesített.
+4. Várjon kettő – öt percet, amíg az események összesítve Application Insights.
 
-5. Tallózással keresse meg az Application Insights **teljesítmény** panel az Azure Portalon. A Profiler nyomkövetések aljának jobb oldalán a panelen tekintheti meg.
+5. Keresse meg a Azure Portal Application Insights **teljesítmény** ablaktábláját. A Profiler-nyomkövetéseket a panel jobb alsó sarkában tekintheti meg.
 
-    ![Profiler-nyomkövetések megtekintéséhez](./media/profiler-aspnetcore-linux/view-traces.png)
+    ![Profiler-Nyomkövetések megtekintése](./media/profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Profil gombra a Linux Profiler nem működik.
-A Linux-verzióját az App Insights profiler még nem támogatja az igény szerinti profilkészítés a profilt használó most gombra.
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>A profil most gomb nem működik a Linux Profiler esetében
+Az App ininsights Profiler Linux-verziója még nem támogatja az igény szerinti profilkészítést a profil most gomb használatával.
 
 
-## <a name="next-steps"></a>További lépések
-Ha egyéni Azure App Service által üzemeltetett tárolók használja, kövesse a [ Service Profiler engedélyezése a tárolóalapú ASP.NET Core alkalmazás](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler engedélyezése.
+## <a name="next-steps"></a>Következő lépések
+Ha Azure App Service által üzemeltetett egyéni tárolókat használ, a Application Insights Profiler engedélyezéséhez kövesse az [Service Profiler engedélyezése a tároló ASP.net Core alkalmazás számára](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) című témakör utasításait.
 
-Jelentheti a hibákat és javaslatokat az Application Insights GitHub-adattárhoz: [ApplicationInsights-Profiler-AspNetCore: Problémák](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Jelentse be a Application Insights GitHub-adattárral kapcsolatos problémákat vagy javaslatokat: [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: de68d5217fb455c8d2b3e11163287e00abcf8481
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173479"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882510"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal egy egyéni Packer-rendszerképből
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 > * [A Terraform telepítése és az Azure-hoz való hozzáférés konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
 > * [Egy SSH-kulcspár létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), ha még nem rendelkezik kulcspárral
 > * [A Packer telepítése](https://www.packer.io/docs/install/index.html), ha még nincs telepítve a helyi gépen
@@ -42,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Hozzon létre három új fájlt egy üres könyvtárban a következő nevekkel:
 
-- `variables.tf`: Ez a fájl tárolja a sablonban használt változók értékeit.
+- `variables.tf`: Ez a fájl tartalmazza a sablonban használt változók értékeit.
 - `output.tf`: Ez a fájl az üzembe helyezés után megjelenő beállításokat ismerteti.
 - `vmss.tf`: Ez a fájl tartalmazza a telepítendő infrastruktúra kódját.
 
@@ -145,7 +145,7 @@ A Terraform-környezet inicializálásához futtassa a következő parancsot a `
 terraform init 
 ```
  
-A szolgáltató beépülő moduljait a rendszer a Terraform-beállításjegyzékből abban a könyvtárban lévő `.terraform` mappába tölti le, ahol futtatta a parancsot.
+A szolgáltatói beépülő modulok a Terraform beállításjegyzékből tölthetők le a `.terraform` mappába abban a könyvtárban, ahol a parancsot futtatta.
 
 Futtassa az alábbi parancsot az infrastruktúra az Azure-ban történő üzembe helyezéséhez.
 
@@ -455,7 +455,7 @@ terraform destroy
 
 Írja be a `yes` választ, amikor a rendszer az erőforrások törlésének megerősítését kéri. Az eltávolítási folyamat eltarthat pár percig.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy virtuálisgép-méretezési csoportot és egy jumpboxot helyezett üzembe az Azure-ban a Terraform használatával. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

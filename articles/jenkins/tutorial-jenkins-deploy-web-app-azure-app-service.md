@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Üzembe helyezés a GitHubról Azure App Service a Jenkins használatával'
+title: 'Oktatóanyag: üzembe helyezés a GitHubról Azure App Service a Jenkins használatával'
 description: A a GitHub és a folyamatos üzembe helyezés (CD) és a Java-webalkalmazások Azure App Serviceához készült Jenkins beállítása a folyamatos integrációhoz (CI)
 services: jenkins
 ms.service: jenkins
@@ -7,18 +7,18 @@ author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24dbe67052d185de0eb308c4c869e63dbc825d9e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172796"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882027"
 ---
-# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a GitHubról Azure App Service a Jenkins folyamatos integrációja és üzembe helyezése révén
+# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: üzembe helyezés a GitHubról Azure App Service a Jenkins folyamatos integrációja és üzembe helyezése révén
 
-Ez az oktatóanyag egy minta Java-webalkalmazást helyez üzembe a GitHubról a Linuxon való [Azure app Service a](/azure/app-service/containers/app-service-linux-intro) folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) a Jenkins-ben való létrehozásával. Ha a véglegesítések a GitHubba való küldésével frissíti az alkalmazást, a Jenkins automatikusan létrehozza és újból közzéteszi az alkalmazást Azure App Service. Az oktatóanyagban szereplő minta alkalmazás a [Spring boot](https://projects.spring.io/spring-boot/) Framework használatával lett kifejlesztve. 
+Ez az oktatóanyag egy minta Java-webalkalmazást helyez üzembe a GitHubról a [Linuxon való Azure app Service a](/azure/app-service/containers/app-service-linux-intro) folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) a Jenkins-ben való létrehozásával. Ha a véglegesítések a GitHubba való küldésével frissíti az alkalmazást, a Jenkins automatikusan létrehozza és újból közzéteszi az alkalmazást Azure App Service. Az oktatóanyagban szereplő minta alkalmazás a [Spring boot](https://projects.spring.io/spring-boot/) Framework használatával lett kifejlesztve. 
 
 ![A GitHub és a Azure App Service üzembe helyezés áttekintése](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
@@ -44,7 +44,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz ezekre az elemekre:
 
 * Egy Azure Linux rendszerű virtuális gépen telepített Java Development Kit (JDK) és Maven-eszközöket tartalmazó [Jenkins](https://jenkins.io/) -kiszolgáló
 
-  Ha nem rendelkezik Jenkins-kiszolgálóval, hajtsa végre a következő lépéseket a Azure Portalban: [Jenkins-kiszolgáló létrehozása Azure Linux rendszerű virtuális gépen](/azure/jenkins/install-jenkins-solution-template)
+  Ha nem rendelkezik Jenkins-kiszolgálóval, hajtsa végre ezeket a lépéseket most a Azure Portal: [hozzon létre Jenkins-kiszolgálót egy Azure Linux rendszerű virtuális gépen](/azure/jenkins/install-jenkins-solution-template)
 
 * Egy [GitHub](https://github.com) -fiókkal, hogy a minta Java-webalkalmazáshoz egy működő másolatot (elágazást) kapjon. 
 
@@ -56,7 +56,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz ezekre az elemekre:
 
    `https://<Jenkins-server-name>.<Azure-region>.cloudapp.azure.com`
 
-1. A Jenkins főoldalán válassza a **Jenkins** > kezelése**beépülő**modult.
+1. A Jenkins főoldalán válassza a **Jenkins kezelése** > a **beépülő modulok kezelése**lehetőséget.
 
    ![Jenkins beépülő modulok kezelése](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-plugins.png)
 
@@ -64,7 +64,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz ezekre az elemekre:
 
    - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [GitHub-ág forrása](https://plugins.jenkins.io/github-branch-source)
-   - Jenkins- [környezet-injektor beépülő modul](https://plugins.jenkins.io/envinject)
+   - Jenkins [-környezet injektor beépülő modulja](https://plugins.jenkins.io/envinject)
    - [Azure-beli hitelesítő adatok](https://plugins.jenkins.io/azure-credentials)
 
    Ha ezek a beépülő modulok nem jelennek meg, győződjön meg arról, hogy még nincsenek telepítve a **telepített** lapon.
@@ -87,7 +87,7 @@ Ezután állítsa be a Jenkins-t a GitHub hitelesítő adataival.
 
 ## <a name="connect-jenkins-to-github"></a>A Jenkins összekötése a GitHubtal
 
-Ahhoz, hogy a Jenkins figyelje a GitHubot, és válaszoljon arra, amikor új véglegesíti a webalkalmazását a GitHub-elágazásban, engedélyezze a [GitHub](https://developer.github.com/webhooks/) -webhookokat a Jenkins-ben.
+Ahhoz, hogy a Jenkins figyelje a GitHubot, és válaszoljon arra, amikor új véglegesíti a webalkalmazását a GitHub-elágazásban, engedélyezze a [GitHub-webhookokat](https://developer.github.com/webhooks/) a Jenkins-ben.
 
 > [!NOTE]
 > 
@@ -107,7 +107,7 @@ Ahhoz, hogy a Jenkins figyelje a GitHubot, és válaszoljon arra, amikor új vé
 
    ![A GitHub-kiszolgáló speciális Jenkins-beállításainak megadása](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
-1. A **további GitHub-műveletek kezelése** listából válassza a **Bejelentkezés és jelszó konvertálása**a tokenbe lehetőséget.
+1. A **további GitHub-műveletek kezelése** listából válassza a **Bejelentkezés és jelszó konvertálása a tokenbe**lehetőséget.
 
    ![A bejelentkezési azonosító és a jelszó konvertálása a GitHub-tokenre](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
@@ -123,7 +123,7 @@ Ezután hozza létre azt az Azure-szolgáltatásnevet, amelyet a Jenkins haszná
 
 ## <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Egy későbbi szakaszban egy Jenkins-feldolgozási feladatot hoz létre, amely létrehozza az alkalmazást a GitHubon, és üzembe helyezi az alkalmazást Azure App Service. Ahhoz, hogy a Jenkins hozzáférhessen az Azure-hoz a hitelesítő adatok megadása nélkül, hozzon létre egy [egyszerű szolgáltatásnevet](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) a Azure Active Directory for Jenkins szolgáltatásban. Az egyszerű szolgáltatásnév egy különálló identitás, amelyet a Jenkins használhat az Azure-erőforrásokhoz való hozzáférés hitelesítéséhez. Az egyszerű szolgáltatásnév létrehozásához futtassa az Azure CLI-parancsot [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)a helyi parancssorból vagy Azure Cloud Shellból, például: 
+Egy későbbi szakaszban egy Jenkins-feldolgozási feladatot hoz létre, amely létrehozza az alkalmazást a GitHubon, és üzembe helyezi az alkalmazást Azure App Service. Ahhoz, hogy a Jenkins hozzáférhessen az Azure-hoz a hitelesítő adatok megadása nélkül, hozzon létre egy egyszerű szolgáltatásnevet a Azure Active Directory for Jenkins [szolgáltatásban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) . Az egyszerű szolgáltatásnév egy különálló identitás, amelyet a Jenkins használhat az Azure-erőforrásokhoz való hozzáférés hitelesítéséhez. Az egyszerű szolgáltatás létrehozásához futtassa az Azure CLI-parancsot [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)a helyi parancssorból vagy Azure Cloud Shellból, például: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -146,12 +146,12 @@ A **`create-for-rbac`** parancs által generált kimenet:
 > [!TIP]
 > 
 > Ha már rendelkezik egy egyszerű szolgáltatással, ezt a személyazonosságot újra használhatja.
-> Ha egyszerű szolgáltatásnév-értékeket biztosít a hitelesítéshez, `appId`használja `password`a, `tenant` és a tulajdonság értékét. 
-> Egy meglévő egyszerű szolgáltatásnév keresésekor használja a `displayName` tulajdonság értékét.
+> Ha egyszerű szolgáltatásnév-értékeket ad meg a hitelesítéshez, használja a `appId`, `password`és `tenant` tulajdonságértékek értékét. 
+> Egy meglévő szolgáltatásnév keresésekor használja a `displayName` tulajdonság értékét.
 
 ## <a name="add-service-principal-to-jenkins"></a>Egyszerű szolgáltatásnév hozzáadása a Jenkins szolgáltatáshoz
 
-1. A Jenkins főoldalán válassza a **hitelesítő adatok** > **rendszer**elemet. 
+1. A Jenkins főoldalán válassza a **hitelesítő adatok** > **rendszer**lehetőséget. 
 
 1. A **rendszer** lap **tartomány**területén válassza a **globális hitelesítő adatok (korlátlan)** lehetőséget.
 
@@ -163,13 +163,13 @@ A **`create-for-rbac`** parancs által generált kimenet:
 
    ![Azure-szolgáltatásnév hitelesítő adatainak hozzáadása](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | Tulajdonság | Érték | Leírás | 
+   | Tulajdonság | Value (Díj) | Leírás | 
    |----------|-------|-------------| 
-   | **Előfizetés azonosítója** | <*yourAzureSubscription-ID*> | Az Azure-előfizetéshez tartozó GUID-érték <p>**Tipp**: Ha nem ismeri az Azure-előfizetés azonosítóját, futtassa ezt az Azure CLI-parancsot a parancssorból vagy a Cloud shell, majd használja a `id` GUID értékét: <p>`az account list` | 
-   | **Ügyfél-azonosító** | <*yourAzureServicePrincipal-ID*> | Az `appId` Azure-szolgáltatásnév számára korábban generált GUID-érték | 
-   | **Ügyfél titka** | <*yourSecurePassword*> | Az `password` Azure-szolgáltatásnév számára megadott érték vagy "titok" | 
-   | **Bérlő azonosítója** | <*yourAzureActiveDirectoryTenant-ID*> | A `tenant` Azure Active Directory-bérlő GUID-értéke | 
-   | **Azonosító** | <*yourAzureServicePrincipalName*> | Az `displayName` Azure-szolgáltatásnév értéke | 
+   | **Előfizetés azonosítója** | <*yourAzureSubscription-azonosító*> | Az Azure-előfizetéshez tartozó GUID-érték <p>**Tipp**: Ha nem ismeri az Azure-előfizetés azonosítóját, futtassa ezt az Azure CLI-parancsot a parancssorból vagy a Cloud shell, majd használja a `id` GUID értéket: <p>`az account list` | 
+   | **Ügyfél-azonosító** | <*yourAzureServicePrincipal-azonosító*> | Az Azure-szolgáltatáshoz korábban létrehozott `appId` GUID-érték | 
+   | **Ügyfél titka** | <*yourSecurePassword*> | Az Azure-szolgáltatáshoz megadott `password` érték vagy titkos kulcs | 
+   | **Bérlő azonosítója** | <*yourAzureActiveDirectoryTenant-azonosító*> | A Azure Active Directory bérlő `tenant` GUID-értéke | 
+   | **Azonosító** | <*yourAzureServicePrincipalName*> | Az Azure-szolgáltatásnév `displayName` értéke | 
 
 1. Az egyszerű szolgáltatás működésének ellenőrzéséhez válassza a **szolgáltatásnév ellenőrzése**lehetőséget. Amikor elkészült, válassza az **OK** lehetőséget.
 
@@ -209,7 +209,7 @@ Következő lépésként hozzon létre Build-és üzembe helyezési parancsfájl
 
 Most hozza létre a Jenkins által az alkalmazás létrehozásához és üzembe helyezéséhez használt fájlokat.
 
-1. `src/main/resources/` A GitHub-elágazás mappájában hozza létre az alkalmazás nevű `web.config`konfigurációs fájlt, amely tartalmazza ezt az XML-t `gs-spring-boot-0.1.0.jar`, de cserélje le `$(JAR_FILE_NAME)` a következőre:
+1. A GitHub-elágazás `src/main/resources/` mappájában hozza létre az alkalmazás `web.config`nevű konfigurációs fájlját, amely tartalmazza ezt az XML-t, de cserélje le a `$(JAR_FILE_NAME)` a `gs-spring-boot-0.1.0.jar`ra:
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -223,7 +223,7 @@ Most hozza létre a Jenkins által az alkalmazás létrehozásához és üzembe 
    </configuration>
    ```
 
-1. A GitHub-elágazás gyökérkönyvtárában hozza létre ezt a létrehozási és telepítési parancsfájlt `Jenkinsfile`, amely tartalmazza ezt a szöveget (a[GitHub forrása itt található](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
+1. A GitHub-elágazás gyökérkönyvtárában hozza létre ezt a (z) `Jenkinsfile`nevű Build és Deployment szkriptet, amely tartalmazza ezt a szöveget ([forrás a githubban](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
 
    ```groovy
    node {
@@ -246,7 +246,7 @@ Most hozza létre a Jenkins által az alkalmazás létrehozásához és üzembe 
    }
    ```
 
-1. Véglegesítse a fájlokat a GitHub-elágazásban, és küldje el a módosításokat. `Jenkinsfile` `web.config`
+1. Véglegesítse `web.config` és `Jenkinsfile` fájlokat a GitHub-elágazásban, és küldje el a módosításokat.
 
 ## <a name="point-pipeline-at-script"></a>Pont folyamata parancsfájlban
 
@@ -258,7 +258,7 @@ Most adja meg azt a létrehozási és üzembe helyezési parancsfájlt, amelyet 
 
 1. A bal oldali menüben válassza a **Konfigurálás**lehetőséget.
 
-1. A **folyamat** lapon, a **definíció** listából válassza ki a folyamat parancsfájlt az **SCM-ből**.
+1. A **folyamat** lapon, a **definíció** listából válassza ki a **folyamat parancsfájlt az SCM-ből**.
 
    1. A megjelenő **SCM** mezőben válassza a **git** lehetőséget a forrás vezérlőelemként. 
 
@@ -280,7 +280,7 @@ Ezután hozza létre és telepítse az alkalmazást Azure App Servicere.
 
 ## <a name="build-and-deploy-to-azure"></a>Az Azure létrehozása és üzembe helyezése
 
-1. Az Azure CLI-vel, vagy a parancssorból vagy a Azure Cloud Shellból hozzon létre egy [Azure app Service](/azure/app-service/containers/app-service-linux-intro) webalkalmazást Linuxon, ahol a Jenkins üzembe helyezi a webalkalmazást a Build befejezése után. Győződjön meg arról, hogy a webalkalmazás egyedi névvel rendelkezik.
+1. Az Azure CLI-vel, vagy a parancssorból vagy a Azure Cloud Shellból hozzon létre egy [Azure app Service webalkalmazást Linuxon](/azure/app-service/containers/app-service-linux-intro) , ahol a Jenkins üzembe helyezi a webalkalmazást a Build befejezése után. Győződjön meg arról, hogy a webalkalmazás egyedi névvel rendelkezik.
 
    ```azurecli-interactive
    az group create --name yourWebAppAzureResourceGroupName --location yourAzureRegion
@@ -296,7 +296,7 @@ Ezután hozza létre és telepítse az alkalmazást Azure App Servicere.
 
    * [**`az webapp create`**](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)
 
-1. A Jenkins területen válassza ki a folyamat felépítését, és válassza a **Build most**lehetőséget.
+1. A Jenkins területen válassza ki a folyamat **felépítését**, és válassza a Build most lehetőséget.
 
    A létrehozás befejeződése után a Jenkins üzembe helyezi az alkalmazást, amely most már az Azure-ban is elérhető a kiadvány URL-címén, például: 
 
@@ -312,7 +312,7 @@ Ezután hozza létre és telepítse az alkalmazást Azure App Servicere.
    
 1. A GitHub jobb felső sarkában válassza **a fájl szerkesztése**lehetőséget.
 
-1. Végezze el ezt a `commandLineRunner()` módosítást a metóduson, és véglegesítse a `master` változást a tárház ágában. Ez a commit `master` in the Branch megkezdi a Jenkins-ben való kiépítést. 
+1. Végezze el ezt a módosítást a `commandLineRunner()` metóduson, és véglegesítse a változást a tárház `master` ágában. Ez a `master`-ág elvégzése elindítja a Jenkins-ben való kiépítést. 
    
    ```java
    System.out.println("Let's inspect the beans provided by Spring Boot on Azure");
@@ -326,7 +326,7 @@ Ezután hozza létre és telepítse az alkalmazást Azure App Servicere.
 
 Ha a Jenkins beépülő moduljaival kapcsolatos hibákba ütközik, akkor az adott összetevőhöz tartozó [Jenkins-JIRA](https://issues.jenkins-ci.org/) egy problémát kell megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gépek buildügynökként való használata](/azure/jenkins/jenkins-azure-vm-agents)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667140"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881310"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection- és B2B-felhasználók
 
@@ -33,9 +33,9 @@ A VÁLLALATKÖZI együttműködés felhasználóinak felhasználói kockázata a
 
 Az Identity Protection az erőforrás-címtár VÁLLALATKÖZI együttműködési felhasználói számára való megvalósításának korlátai a saját címtárában meglévő identitásuk miatt korlátozottak. A fő korlátozások a következők:
 
-- Ha a vendég felhasználó elindítja az Identity Protection felhasználói kockázati házirendjét, hogy kényszerítse a jelszó-visszaállítást, azok le lesznek tiltva. Ezt a blokkot az erőforrás-címtárban található jelszavak alaphelyzetbe állításának lehetősége okozza.
-- A vendég felhasználók nem jelennek meg a kockázatos felhasználók jelentésében. Ez a láthatósági adatvesztés oka a VÁLLALATKÖZI felhasználó kezdőkönyvtárának bekövetkezett kockázatának kiértékelése.
-- A rendszergazdák nem tudják eloszlatni vagy szervizelni a kockázatos B2B csoportmunka-felhasználókat az erőforrás-címtárban. A funkcionalitás elvesztése oka az, hogy az erőforrás-címtárban lévő rendszergazdák nem férnek hozzá a B2B felhasználó kezdőkönyvtárának.
+- Ha a vendég felhasználó elindítja az Identity Protection felhasználói kockázati házirendjét, hogy kényszerítse a jelszó-visszaállítást, azok le lesznek **tiltva**. Ezt a blokkot az erőforrás-címtárban található jelszavak alaphelyzetbe állításának lehetősége okozza.
+- **A vendég felhasználók nem jelennek meg a kockázatos felhasználók jelentésében**. Ez a láthatósági adatvesztés oka a VÁLLALATKÖZI felhasználó kezdőkönyvtárának bekövetkezett kockázatának kiértékelése.
+- A rendszergazdák **nem tudják eloszlatni vagy szervizelni a kockázatos B2B csoportmunka-felhasználókat** az erőforrás-címtárban. A funkcionalitás elvesztése oka az, hogy az erőforrás-címtárban lévő rendszergazdák nem férnek hozzá a B2B felhasználó kezdőkönyvtárának.
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>Miért nem tudom elhárítani a kockázatos B2B csoportmunka-felhasználókat a címtárban?
 
@@ -49,9 +49,8 @@ Ha a saját címtárában lévő kockázatos B2B-felhasználót a kockázatkezel
 
 A szervezet kockázatalapú feltételes hozzáférési házirendjeinek B2B-felhasználóinak kizárásával megakadályozható, hogy a VÁLLALATKÖZI felhasználók kiértékeljék vagy letiltsák a kockázatértékelést. A B2B-felhasználók kizárásához hozzon létre egy csoportot az Azure AD-ben, amely az összes szervezet vendég felhasználóját tartalmazza. Ezt követően adja hozzá ezt a csoportot a beépített Identity Protection-felhasználói kockázat és a bejelentkezési kockázati szabályzatok kizárásához, valamint minden olyan feltételes hozzáférési szabályzatot, amely feltételként a bejelentkezési kockázatokat használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 
 - [Mi az az Azure AD B2B együttműködés?](../b2b/what-is-b2b.md)
-- [Mi a feltételes hozzáférés?](../conditional-access/overview.md)

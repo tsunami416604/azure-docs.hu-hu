@@ -1,23 +1,19 @@
 ---
 title: Profil éles alkalmazások az Azure-ban Application Insights Profiler | Microsoft Docs
 description: Azonosítsa a webkiszolgáló kódjában található gyors elérési utat egy alacsony helyigényű Profilerrel.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338077"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820522"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles alkalmazások az Azure-ban Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler engedélyezése az alkalmazáshoz
@@ -48,10 +44,10 @@ Válasszon ki egy mintát a kérelem végrehajtásához szükséges idő kód sz
 
 A nyomkövetési tallózó a következő információkat jeleníti meg:
 
-* **Gyors elérési út megjelenítése**: Megnyitja a legnagyobb levél csomópontot, vagy legalább egy bezárást. A legtöbb esetben ez a csomópont a teljesítmény szűk keresztmetszete közelében van.
-* **Címke**: A függvény vagy esemény neve. A fa a kód és a bekövetkezett események, például az SQL-és a HTTP-események kombinációját jeleníti meg. A felső esemény a kérelem teljes időtartamát jelenti.
-* **Eltelt idő**: A művelet kezdete és a művelet vége közötti időtartam.
-* **Mikor**: Az az idő, amikor a függvény vagy esemény más függvényekhez képest futott.
+* **Gyors elérési út megjelenítése**: megnyitja a legnagyobb levél csomópontot, vagy legalább egy bezárást. A legtöbb esetben ez a csomópont a teljesítmény szűk keresztmetszete közelében van.
+* **Label (címke**): a függvény vagy esemény neve. A fa a kód és a bekövetkezett események, például az SQL-és a HTTP-események kombinációját jeleníti meg. A felső esemény a kérelem teljes időtartamát jelenti.
+* **Eltelt**idő: a művelet kezdete és a művelet vége közötti időintervallum.
+* **Mikor**: az az idő, amikor a függvény vagy esemény más függvényekhez képest futott.
 
 ## <a name="how-to-read-performance-data"></a>Teljesítményadatok beolvasása
 
@@ -59,9 +55,9 @@ A Microsoft Service Profiler a mintavételi módszerek és a rendszerállapotok 
 
 Az idősor nézetben megjelenő hívási verem a mintavételezés és a kivezetés eredménye. Mivel mindegyik minta rögzíti a szál teljes hívási veremét, Microsoft .NET-keretrendszerből származó kódot, valamint az Ön által hivatkozott egyéb keretrendszereket is tartalmazza.
 
-### <a id="jitnewobj"></a>Objektum kiosztása (CLR! JIT @ no__t-1New vagy CLR! JIT @ no__t-2Newarr1)
+### <a id="jitnewobj"></a>Objektum kiosztása (CLR! JIT\_új vagy CLR! JIT\_Newarr1)
 
-**CLR! JIT @ no__t-1New** és **CLR! A JIT @ no__t-3Newarr1** olyan segítő függvények a .net-keretrendszerben, amelyek memóriát foglalnak le egy felügyelt halomból. **CLR! JIT @ no__t –** a rendszer meghívja a 1New egy objektum lefoglalásakor. **CLR! JIT @ no__t –** a rendszer meghívja a 1Newarr1, amikor egy objektum tömbje van lefoglalva. Ez a két függvény általában gyors, és viszonylag kis mennyiségű időt vesz igénybe. Ha **CLR! JIT @ no__t-1New** vagy **CLR! JIT @ no__t – a 3Newarr1** sok időt vesz igénybe az idővonalban, a kód több objektumot is lefoglalhat, és jelentős mennyiségű memóriát is igénybe vehet.
+**CLR! JIT\_új** és **CLR! A JIT\_Newarr1** olyan segítő függvények a .net-keretrendszerben, amelyek memóriát foglalnak le egy felügyelt halomból. **CLR!** Egy objektum lefoglalásakor a rendszer meghívja a JIT\_új meghívását. **CLR!** A rendszer meghívja a JIT\_Newarr1 egy objektum-tömb lefoglalásakor. Ez a két függvény általában gyors, és viszonylag kis mennyiségű időt vesz igénybe. Ha **CLR! JIT\_új** vagy **CLR! A JIT\_Newarr1** sok időt vesz igénybe az idővonalban, a kód több objektumot is lefoglalhat, és jelentős mennyiségű memóriát is igénybe vehet.
 
 ### <a id="theprestub"></a>Kód betöltése (CLR! ThePreStub)
 
@@ -69,9 +65,9 @@ Az idősor nézetben megjelenő hívási verem a mintavételezés és a kivezet�
 
 Ha **CLR! A ThePreStub** hosszú időt vesz igénybe, a kérelem az első, amely végrehajtja ezt a metódust. A .NET-keretrendszer futtatókörnyezetének az első módszer betöltéséhez szükséges ideje jelentős. Érdemes lehet olyan bemelegedési folyamatot használni, amely végrehajtja a kód azon részét, mielőtt a felhasználók hozzáférnek hozzá, vagy érdemes lehet natív rendszerkép-generátort (Ngen. exe) futtatni a szerelvényeken.
 
-### <a id="lockcontention"></a>Zárolás feloldása (CLR! JITutil @ no__t – 1MonContention vagy CLR! JITutil\_MonEnterWorker)
+### <a id="lockcontention"></a>Zárolás feloldása (CLR! JITutil\_MonContention vagy CLR! JITutil\_MonEnterWorker)
 
-**CLR! JITutil @ no__t – 1MonContention** vagy **CLR! JITutil @ no__t – a 3MonEnterWorker** azt jelzi, hogy az aktuális szál a zárolás felszabadítására vár. Ez a szöveg gyakran jelenik meg a C# **zárolási** utasítás végrehajtásakor, a figyelő meghívásával **. adja meg** a metódust, vagy hívja meg a metódust a **MethodImplOptions. szinkronizált** attribútummal. A zárolási tartalom általában akkor fordul elő, ha a szál egy zárolást szerez be, és a _B_ szál megpróbálja ugyanazt a zárolást megnyerni, mielőtt elkezdené a kiadást.
+**CLR! JITutil\_MonContention** vagy **CLR! A JITutil\_MonEnterWorker** azt jelzi, hogy az aktuális szál zárolás felszabadítására vár. Ez a szöveg gyakran jelenik meg a C# **zárolási** utasítás végrehajtásakor, a figyelő meghívásával **. adja meg** a metódust, vagy hívja meg a metódust a **MethodImplOptions. szinkronizált** attribútummal. A zárolási tartalom általában akkor fordul elő, ha a _szál egy zárolást szerez be_ , és a _B_ szál megpróbálja ugyanazt a zárolást megnyerni, mielőtt elkezdené _a kiadást_ .
 
 ### <a id="ngencold"></a>Kód betöltése ([hideg])
 
@@ -87,9 +83,9 @@ A **HttpClient. Send** metódusok például azt jelzik, hogy a kód a HTTP-kére
 
 A **SqlCommand. Execute** metódusok például azt jelzik, hogy a kód arra vár, hogy egy adatbázis-művelet befejeződik.
 
-### <a id="await"></a>Várakozás (várja a @ no__t-1TIME)
+### <a id="await"></a>Várakozás (\_időt vár)
 
-**Várja meg a @ no__t-1TIME** azt jelzi, hogy a kód egy másik feladat befejeződésére vár. Ez a késleltetés általában a C# **várakozási** utasítással történik. Ha a kód megvárja C# a **várakozást**, a szál felcsévélést végez, és visszaadja a vezérlést a szál készletnek, és nincs olyan szál , amely le van tiltva a várakozás befejezésére. Logikusan azonban a **várt** szál "Letiltva", és a művelet befejezésére vár. A wait **@ no__t-1TIME** utasítás azt a letiltott időt jelzi, amíg a feladat befejeződik.
+**Várja** meg,\_az idő azt jelzi, hogy a kód egy másik feladat befejeződésére vár. Ez a késleltetés általában a C# **várakozási** utasítással történik. Ha a kód C# **megvárja a várakozást**, a szál felcsévélést végez, és visszaadja a vezérlést a szál készletnek, és nincs olyan szál, amely le van **tiltva a várakozás** befejezésére. Logikusan azonban a **várt** szál "Letiltva", és a művelet befejezésére vár. A várakozási **\_Time** utasítás a feladat befejezésére várt letiltott időt jelzi.
 
 ### <a id="block"></a>Letiltott idő
 
@@ -125,7 +121,7 @@ A Profiler szolgáltatás használatáért nem számítunk fel díjat. Ahhoz, ho
 
 A Profiler véletlenszerűen két percen belül fut minden olyan virtuális gépen, amelyen a Profiler engedélyezve van a nyomkövetés rögzítéséhez. Ha a Profiler fut, az 5 – 15 százalékos CPU-terhelést tesz elérhetővé a kiszolgálóra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Application Insights Profiler engedélyezése az Azure-alkalmazáshoz. Lásd még:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)

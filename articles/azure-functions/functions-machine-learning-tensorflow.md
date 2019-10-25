@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677877"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817459"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
 
@@ -114,7 +114,7 @@ func new --language python --template HttpTrigger --name classify
 
 Létrejön egy *besorolás* nevű új mappa, amely két fájlt tartalmaz.
 
-- *\_ \_init \_ \_.* a: a fő függvény fájlja
+- *\_\_init\_\_.* file: a fő függvény fájlja
 - *function. JSON*: a függvény triggerét és a hozzá tartozó bemeneti és kimeneti kötéseket leíró fájl
 
 ### <a name="run-the-function"></a>A függvény futtatása
@@ -179,7 +179,7 @@ Győződjön meg arról, hogy a *besorolás* most tartalmaz egy *Predict.py*nev�
 A Segéd-függvénytárban vannak olyan függőségek, amelyeket telepíteni kell. Nyissa meg a *Start/követelmények. txt* fájlt a szerkesztőben, és adja hozzá a következő függőségeket a fájlhoz.
 
 ```txt
-tensorflow==1.15
+tensorflow==1.14
 Pillow
 requests
 ```
@@ -200,7 +200,7 @@ A globális változókra vonatkozó további információkért tekintse meg a [A
 
 ## <a name="update-function-to-run-predictions"></a>Frissítési függvény az előrejelzések futtatásához
 
-Nyissa meg az *osztályozás/\_ \_init \_ \_. a.* a szerkesztőben. Importálja a korábban ugyanahhoz a mappához hozzáadott *előrejelző* könyvtárat. Adja hozzá a következő `import` utasításokat a fájlban már szereplő többi importálás alatt.
+Nyissa meg az *osztályozás/\_\_init\_\_. a.* a szerkesztőben. Importálja a korábban ugyanahhoz a mappához hozzáadott *előrejelző* könyvtárat. Adja hozzá a következő `import` utasításokat a fájlban már szereplő többi importálás alatt.
 
 ```python
 import json

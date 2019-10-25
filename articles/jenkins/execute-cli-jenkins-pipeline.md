@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 6/7/2017
-ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2019
+ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162213"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882118"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Üzembe helyezés az Azure App Service-ben a Jenkinsszel és az Azure CLI használatával
 Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI-t egy [Jenkins-folyamatban](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
@@ -31,13 +31,13 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Jenkins-példány létrehozása és konfigurálása
-Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldássablonnal](install-jenkins-solution-template.md), amely alapértelmezés szerint tartalmazza az [Azure Credentials](https://plugins.jenkins.io/azure-credentials) beépülő modult. 
+Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldás sablonnal](install-jenkins-solution-template.md), amely alapértelmezés szerint tartalmazza a szükséges Azure-beli [hitelesítő adatok](https://plugins.jenkins.io/azure-credentials) beépülő modult. 
 
-Az Azure Credentials beépülő modul segítségével tárolhatóak Microsoft Azure-szolgáltatásnevek a Jenkinsben használt hitelesítő adatai. Az 1.2-es verzió támogatja, hogy a Jenkins-folyamat lekérje az Azure-beli hitelesítő adatokat. 
+Az Azure hitelesítő adatok beépülő modulja lehetővé teszi Microsoft Azure egyszerű hitelesítő adatok tárolását a Jenkins szolgáltatásban. Az 1.2-es verzió támogatja, hogy a Jenkins-folyamat lekérje az Azure-beli hitelesítő adatokat. 
 
 Győződjön meg róla, hogy 1.2-es vagy újabb verziót használ:
 * A Jenkins irányítópultján kattintson a **Manage Jenkins (Jenkins kezelése) -> Plugin Manager (Beépülőmodul-kezelő)** lehetőségre, és keressen az **Azure Credential** kifejezésre. 
-* Frissítse a beépülő modult, ha 1.2-esnél korábbi verziójú.
+* Frissítse a beépülő modult, ha a verzió 1,2-nál korábbi.
 
 A Jenkins-főkiszolgálóban emellett a Java JDK és a Maven is szükséges. A telepítéshez jelentkezzen be a Jenkins-főkiszolgálóra SSH használatával, és futtassa a következő parancsokat:
 ```bash
@@ -152,7 +152,7 @@ Nyissa meg a Jenkinst egy webböngészőben, és kattintson a **New Item** (Új 
 * A **Definition (Definíció)** értékeként válassza a **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
 * Az **SCM** értékeként válassza a **Git** lehetőséget.
 * Adja meg az elágaztatott adattár GitHub URL-címét: https:\<elágaztatott adattár\>.git
-* Kattintson a **Save** (Mentés) gombra
+* Kattintson a **Mentés** gombra.
 
 ## <a name="test-your-pipeline"></a>A folyamat tesztelése
 * Lépjen a létrehozott folyamatra, majd kattintson a **Build Now** (Buildelés most) lehetőségre.
@@ -174,7 +174,7 @@ A következőt fogja látni:
 ## <a name="deploy-to-azure-web-app-on-linux"></a>Üzembe helyezés az Azure Web App on Linuxban
 Most, hogy megismerkedett az Azure CLI használatával Jenkins-folyamatban, módosíthatja a szkriptet az Azure Web App on Linuxba való üzembe helyezéshez.
 
-A Web App on Linux egy eltérő üzembehelyezési módszert támogat: a Docker használatát. Az üzembe helyezéshez meg kell adnia egy Docker-fájlt, amely a webalkalmazást a szolgáltatási futtatókörnyezettel együtt egy Docker-rendszerképbe csomagolja. A beépülő modul ezután létrehozza a rendszerképet, leküldi a Docker regisztrációs adatbázisba, majd üzembe helyezi a rendszerképet a webalkalmazásban.
+A Web App on Linux egy eltérő üzembehelyezési módszert támogat: a Docker használatát. Az üzembe helyezéshez meg kell adnia egy Docker-fájlt, amely a webalkalmazást a szolgáltatási futtatókörnyezettel együtt egy Docker-rendszerképbe csomagolja. A beépülő modul létrehozza a rendszerképet, leküldi a Docker-beállításjegyzékbe, és telepíti a rendszerképet a webalkalmazásba.
 
 * Kövesse az [itt](../app-service/containers/quickstart-nodejs.md) megadott lépéseket Linuxon futó Azure-webalkalmazás létrehozásához.
 * Telepítse a Dockert a Jenkins-példányon [ezen cikk](https://docs.docker.com/engine/installation/linux/ubuntu/) utasításait követve.
@@ -215,7 +215,7 @@ A Web App on Linux egy eltérő üzembehelyezési módszert támogat: a Docker h
 
     Lépjen a http://&lt;alkalmazás_neve>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> helyre (&lt;x> és &lt;y> helyére írjon be egy-egy tetszőleges számot), hogy megkapja x és y összegét.
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy Jenkins-folyamatot konfigurált, amely ellenőrzi a forráskódot a GitHub-adattárban. A Maven futtatásával létrehoz egy War-fájlt, majd az Azure CLI használatával üzembe helyezést végez az Azure App Service-be. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

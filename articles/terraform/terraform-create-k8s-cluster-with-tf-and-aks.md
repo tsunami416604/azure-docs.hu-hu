@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: 9661bfe9c3b10a31a962767debbe3d7e58bf4fa3
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173499"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882531"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
 Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -28,11 +28,11 @@ Ebben az oktatóanyagban megtudhatja, hogyan végezheti el az alábbi feladatoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Terraform konfigurálása**: Kövesse a cikk utasításait, [Terraform és konfigurálja az Azure-hoz való hozzáférést](/azure/virtual-machines/linux/terraform-install-configure)
+- **A Terraform konfigurálása**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](/azure/virtual-machines/linux/terraform-install-configure) található utasításokat
 
-- **Azure egyszerű szolgáltatás**: Kövesse a cikk **egyszerű szolgáltatásnév létrehozása** című szakaszának utasításait, és [hozzon létre egy Azure-SZOLGÁLTATÁSNEVET az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Jegyezze fel az appId, a displayName, a password és a tenant értékét.
+- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terraform konfigurációs fájlokat tárolja.
@@ -336,7 +336,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    A `terraform init` parancs megjeleníti a háttérrendszer és a szolgáltató beépülő modul sikeres inicializálását:
+    A `terraform init` parancs a háttérrendszer és a szolgáltató beépülő modul inicializálásának sikerességét jeleníti meg:
 
     ![A „terraform init” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
@@ -357,7 +357,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform plan” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata néhány percet igénybe vehet, ez a Cloud Shell-munkamenet időtúllépését eredményezi. Ha a Cloud Shell munkamenet időtúllépés miatt meghaladta az időkorlátot, kövesse a "helyreállítás Cloud Shell időtúllépésből" című szakasz lépéseit az oktatóanyag befejezéséhez.
+1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata több percet is igénybe vehet, ami a Cloud Shell munkamenet időtúllépését eredményezi. Ha a Cloud Shell munkamenet időtúllépés miatt meghaladta az időkorlátot, kövesse a "helyreállítás Cloud Shell időtúllépésből" című szakasz lépéseit az oktatóanyag befejezéséhez.
 
     ```bash
     terraform apply out.plan
@@ -382,7 +382,7 @@ Ha a Cloud Shell-munkamenet túllépi az időkorlátot, az alábbi lépéseket h
     cd /clouddrive/terraform-aks-k8s
     ```
 
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```bash
     export KUBECONFIG=./azurek8s
@@ -416,7 +416,7 @@ A Kubernetes-eszközök használhatók az újonnan létrehozott fürt tesztelés
 ## <a name="monitor-health-and-logs"></a>Állapot és naplók monitorozása
 Az AKS-fürt létrejöttekor a monitorozás is engedélyezve lett, hogy rögzítse a fürtcsomópontok és a podok állapotmetrikáit. Ezek az állapotmetrikák elérhetők az Azure Portalon. A tároló állapotának figyelésével kapcsolatos további információkért lásd: az [Azure Kubernetes szolgáltatás állapotának figyelése](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megismerte, hogyan használható a Terraform és az AKS egy Kubernetes-fürt létrehozásához. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról: 
 
  [Terraform Hub a Microsoft.com webhelyen](https://docs.microsoft.com/azure/terraform/)  

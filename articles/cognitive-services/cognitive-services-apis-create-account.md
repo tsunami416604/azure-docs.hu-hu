@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 14157ed22ea40a2157f696e91c59af9b58110bf2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743853"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819938"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -39,19 +39,19 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Computer Vision  | Tartalommoderátor                                    | Face               | Language Understanding (LUIS) | Szövegelemzések   |
-    | Translator Text  | Bing Search 7-es verzió <br>(Web, kép, hírek, videó, vizualizáció) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
+    | Computer Vision  | Content Moderator                                    | Face               | Hangfelismerés (LUIS) | Text Analytics   |
+    | Translator Text  | Bing Search v7 <br>(Web, kép, hírek, videó, vizualizáció) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
     | Bing Spell Check |                                                      |                    |                               |                  |
     
     #### <a name="single-service-resourcetabsingleservice"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
     Az alábbi hivatkozásokat követve hozhat létre erőforrást az elérhető Cognitive Serviceshoz:
 
-    | Látás                      | Beszéd                  | Nyelv                          | Döntés             | Keresés                 |
+    | Látás                      | Beszéd                  | Nyelv                          | Döntés             | Search                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Számítógépes látástechnológia](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Magával ragadó olvasó](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomália detektor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
-    | [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Custom Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
-    | [Arcfelismerés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Személyre szabás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entity Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Custom Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Arc](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Személyre szabás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entity Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [Kézírás-felismerő](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Szövegelemzés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing helyesírás-ellenőrzés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Translator Text](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
@@ -62,29 +62,29 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 
     |    |    |
     |--|--|
-    | **Name** | A kognitív szolgáltatások erőforrásának leíró neve. Például: *MyCognitiveServicesResource*. |
+    | **Name (Név)** | A kognitív szolgáltatások erőforrásának leíró neve. Például: *MyCognitiveServicesResource*. |
     | **Előfizetés** | Válassza ki az egyik elérhető Azure-előfizetést. |
-    | **Location** | A kognitív szolgáltatás példányának helye. A különböző helyek késést okozhatnak, de nincs hatással az erőforrás futásidejű rendelkezésre állására. Vegye figyelembe az Azure-beli helyet, mert szüksége lehet rá az Azure-Cognitive Services meghívásakor. |
+    | **Hely** | A kognitív szolgáltatás példányának helye. A különböző helyek késést okozhatnak, de nincs hatással az erőforrás futásidejű rendelkezésre állására. Vegye figyelembe az Azure-beli helyet, mert szüksége lehet rá az Azure-Cognitive Services meghívásakor. |
     | **Tarifacsomag** | A Cognitive Services fiókjának díja a választott beállításoktól és a használattól függ. További információt az API [díjszabását](https://azure.microsoft.com/pricing/details/cognitive-services/)ismertető témakörben talál.
     | **Erőforráscsoport** | Az Azure-erőforráscsoport, amely a Cognitive Services erőforrást fogja tartalmazni. Létrehozhat egy új csoportot, vagy hozzáadhatja egy már meglévő csoporthoz is. |
 
     ![Erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Kattintson a **Create** (Létrehozás) gombra.
+    Kattintson a  **Create** (Létrehozás) gombra.
 
     #### <a name="single-service-resourcetabsingleservice"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **Name** | A kognitív szolgáltatások erőforrásának leíró neve. Például: *TextAnalyticsResource*. |
+    | **Name (Név)** | A kognitív szolgáltatások erőforrásának leíró neve. Például: *TextAnalyticsResource*. |
     | **Előfizetés** | Válassza ki az egyik elérhető Azure-előfizetést. |
-    | **Location** | A kognitív szolgáltatás példányának helye. A különböző helyek késést okozhatnak, de nincs hatással az erőforrás futásidejű rendelkezésre állására. Vegye figyelembe az Azure-beli helyet, mert szüksége lehet rá az Azure-Cognitive Services meghívásakor. |
+    | **Hely** | A kognitív szolgáltatás példányának helye. A különböző helyek késést okozhatnak, de nincs hatással az erőforrás futásidejű rendelkezésre állására. Vegye figyelembe az Azure-beli helyet, mert szüksége lehet rá az Azure-Cognitive Services meghívásakor. |
     | **Tarifacsomag** | A Cognitive Services fiókjának díja a választott beállításoktól és a használattól függ. További információt az API [díjszabását](https://azure.microsoft.com/pricing/details/cognitive-services/)ismertető témakörben talál.
     | **Erőforráscsoport** | Az Azure-erőforráscsoport, amely a Cognitive Services erőforrást fogja tartalmazni. Létrehozhat egy új csoportot, vagy hozzáadhatja egy már meglévő csoporthoz is. |
 
     ![Erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Kattintson a **Create** (Létrehozás) gombra.
+    Kattintson a  **Create** (Létrehozás) gombra.
 
     ***
 
@@ -108,7 +108,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 2. Keresse meg a törölni kívánt erőforrást tartalmazó erőforráscsoportot.
 3. Kattintson a jobb gombbal az erőforráscsoport listájára. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
 * [Mi az Azure Cognitive Services?](Welcome.md)

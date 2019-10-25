@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750188"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819773"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure-erőforrások RBAC kapcsolatos hibák
 
@@ -29,7 +29,7 @@ Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével 
 ## <a name="problems-with-rbac-role-assignments"></a>Problémák az RBAC-beli szerepkör-hozzárendelésekkel
 
 - Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** számára, mert a **Hozzáadás**  > **szerepkör-hozzárendelés** hozzáadása lehetőség le van tiltva, vagy az engedélyekkel kapcsolatos hibaüzenet jelenik meg: "az objektumazonosító nem rendelkezik az ügyfélhez. művelet végrehajtásának engedélyezése ", győződjön meg róla, hogy jelenleg be van jelentkezve egy olyan szerepkörrel rendelkező felhasználóval, amely rendelkezik a szerepkörhöz hozzárendelni kívánt hatókörön `Microsoft.Authorization/roleAssignments/write` engedéllyel (például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) ).
-- Ha a "nincs több szerepkör-hozzárendelés hozható létre (code: RoleAssignmentLimitExceeded)" hibaüzenet jelenik meg, amikor megpróbál hozzárendelni egy szerepkört, próbálja meg csökkenteni a szerepkör-hozzárendelések számát úgy, hogy szerepköröket rendel hozzá a csoportokhoz. Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként.
+- Ha a "nincs több szerepkör-hozzárendelés hozható létre (code: RoleAssignmentLimitExceeded)" hibaüzenet jelenik meg, amikor megpróbál hozzárendelni egy szerepkört, próbálja meg csökkenteni a szerepkör-hozzárendelések számát úgy, hogy szerepköröket rendel hozzá a csoportokhoz. Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként. Ez a szerepkör-hozzárendelési korlát rögzített, és nem növelhető.
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 

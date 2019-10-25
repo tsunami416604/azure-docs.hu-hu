@@ -7,22 +7,22 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815734"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882039"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Üzembe helyezés Azure Functions a Jenkins Azure Functions beépülő modullal
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Üzembe helyezés Azure Functions a Jenkins Azure Functions beépülő modullal
 
-[Azure functions](/azure/azure-functions/) kiszolgáló nélküli számítási szolgáltatás. A Azure Functions használatával igény szerint futtathat programkódot az infrastruktúra kiépítése vagy kezelése nélkül. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy Java-függvényt Azure Functions a Azure Functions beépülő modullal.
+[Azure functions](/azure/azure-functions/) kiszolgáló nélküli számítási szolgáltatás. A Azure Functions használatával igény szerint futtathat programkódot az infrastruktúra kiépítése vagy kezelése nélkül. Ebből az oktatóanyagból megtudhatja, hogyan telepíthet Java-függvényeket Azure Functions a Azure Functions beépülő modullal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
-- **Jenkins-kiszolgáló**: Ha nincs telepítve Jenkins-kiszolgáló, tekintse meg a [Jenkins-kiszolgáló létrehozása az Azure](./install-jenkins-solution-template.md)-ban című cikket.
+- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Jenkins-kiszolgáló**: Ha nincs telepítve Jenkins-kiszolgáló, tekintse meg a Jenkins- [kiszolgáló létrehozása az Azure](./install-jenkins-solution-template.md)-ban című cikket.
 
   > [!TIP]
   > Az oktatóanyaghoz használt forráskód a [Visual Studio China GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)-tárházban található.
@@ -33,7 +33,7 @@ A Java-futtatókörnyezettel rendelkező Java-függvények létrehozásához has
 
 A következő lépések bemutatják, hogyan hozhat létre Java-függvényeket az Azure CLI használatával:
 
-1. Hozzon létre egy erőforráscsoportot, és cserélje le a  **&lt;resource_group >** helyőrzőt az erőforráscsoport nevére.
+1. Hozzon létre egy erőforráscsoportot, és cserélje le a **&lt;resource_group >** helyőrzőt az erőforráscsoport nevére.
 
     ```cli
     az group create --name <resource_group> --location eastus
@@ -76,7 +76,7 @@ A Jenkins-kiszolgáló előkészítését az alábbi lépések ismertetik:
 
 1. A Jenkins-irányítópulton telepítse a következő beépülő modulokat:
 
-    - Azure Functions beépülő modul
+    - Beépülő modul Azure Functions
     - EnvInject beépülő modul
 
 1. A Jenkins-nek szüksége van egy Azure-szolgáltatásra az Azure-erőforrások hitelesítéséhez és eléréséhez. Részletes utasításokért tekintse meg a [központi telepítés Azure app Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) .
@@ -137,7 +137,7 @@ Most már ideje futtatni a Jenkins-feladatot.
 
 1. Először szerezze be az engedélyezési kulcsot a [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) című cikkben található utasítások alapján.
 
-1. A böngészőben adja meg az alkalmazás URL-címét. Cserélje le a helyőrzőket a megfelelő értékekre, és adjon meg egy numerikus értéket  **&lt;a input_number >** a Java-függvény bemenete.
+1. A böngészőben adja meg az alkalmazás URL-címét. Cserélje le a helyőrzőket a megfelelő értékekre, és adjon meg egy numerikus értéket **&lt;input_number >** a Java-függvény bemenete.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>
@@ -156,7 +156,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott erőforr
 az group delete -y --no-wait -n <resource_group>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Functionsről, tekintse meg a következő erőforrást:
 > [!div class="nextstepaction"]

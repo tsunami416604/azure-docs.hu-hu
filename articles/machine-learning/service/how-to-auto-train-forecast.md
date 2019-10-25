@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436629"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819848"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -34,6 +34,27 @@ Ez a klasszikus idősorozat-módszerekkel ellentétben az egyik előnye, hogy te
 [Megadhatja, hogy a](#config) jövőben milyen mértékben kell kiterjesztenie az előrejelzést (az előrejelzési horizontot), valamint a késéseket és egyebeket. Az automatizált ML egyetlen, de gyakran belsőleg elágazó modellt tanul az adatkészlet összes eleméhez és előrejelzési horizontokhoz. Így több adat érhető el a modell paramétereinek becsléséhez és az általánosításhoz, hogy a láthatatlan adatsorozatok elérhetővé válnak.
 
 A betanítási adatokból kinyert funkciók kritikus szerepet játszanak. Az automatizált ML standard előfeldolgozási lépéseket hajt végre, és további idősorozat-funkciókat hoz létre az idényjellegű hatások rögzítése és a prediktív pontosság maximalizálása érdekében.
+
+## <a name="time-series-and-deep-learning-models"></a>Idősorozatok és mély tanulási modellek
+
+
+Az automatikus ML lehetővé teszi, hogy a felhasználók natív idősorozatú és mély tanulási modelleket is biztosítanak a javaslatrendszer részeként. Ezek a tanulók a következők:
++ Próféta
++ Automatikus ARIMA
++ ForecastTCN
+
+Az automatizált ML mély tanulási funkciói lehetővé teszik az előrejelzési univariate és a többváltozós idősorozatok adatsorait.
+
+A Deep learning-modellek három belső capbailities rendelkeznek:
+1. Tanulhatnak a bemenetekről a kimenetekre való tetszőleges leképezésekről
+1. Több bemenetet és kimenetet támogatnak
+1. Képesek automatikusan kinyerni a hosszú sorokra kiterjedő bemeneti adatok mintáit
+
+A nagyobb adatmennyiségek, a Deep learning-modellek, például a Microsofts ForecasTCN növelhetik az eredményül kapott modell pontszámait. 
+
+A natív idősorozat-tanulók az automatizált ML részeként is elérhetők. A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A próféta pontos & gyors, robusztus kiugró, hiányzó adatokat és drámai változásokat tartalmaz az idősorozatban. 
+
+A AutoRegressive integrált mozgóátlag (ARIMA) egy népszerű statisztikai módszer az idősorozat-előrejelzéshez. Ezt az előrejelzési technikát gyakran használják rövid távú előrejelzési forgatókönyvekben, ahol az adatok olyan trendeket mutatnak, mint például a ciklusok, amelyek kiszámíthatatlanok és megnehezítik a modellezést vagy az előrejelzést. Az automatikus ARIMA úgy alakítja át az adatait, hogy az konzisztens és megbízható eredményeket kapjon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +77,7 @@ Az előrejelzési regressziós feladattípusok és a regressziós feladattípuso
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Ez az adathalmaz egy egyszerű példa arra, hogy egy vállalat napi értékesítési adatforgalma két különböző üzlettel rendelkezik, A és A B. Emellett a `week_of_year` egy funkciója, amely lehetővé teszi, hogy a modell képes legyen a heti szezonális felderíteni. A `day_datetime` mező a napi gyakorisággal rendelkező tiszta idősorozatot jelöli, a `sales_quantity` mező pedig a cél oszlop az előrejelzések futtatásához. Olvassa el az adat egy Panda dataframe, majd a `to_datetime` függvénnyel ellenőrizze, hogy az idősorozat `datetime` típusú-e.
+Ez az adathalmaz egy egyszerű példa arra, hogy egy vállalat napi értékesítési adatforgalma két különböző üzlettel rendelkezik, A és A B. Emellett van egy olyan szolgáltatás is a `week_of_year` számára, amely lehetővé teszi a modell számára, hogy észlelje a heti szezonális munkavégzést. A mező `day_datetime` a napi gyakoriságú tiszta idősorozatot jelöli, és a mező `sales_quantity` a cél oszlop az előrejelzések futtatásához. Olvassa el az adatait egy Panda dataframe, majd az `to_datetime` függvény használatával győződjön meg arról, hogy az idősorozat `datetime` típusú.
 
 ```python
 import pandas as pd
@@ -64,7 +85,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-Ebben az esetben az adatsorok növekvő sorrendbe vannak rendezve a `day_datetime` időmezővel. A kísérlet beállításakor azonban győződjön meg arról, hogy a kívánt idő oszlop növekvő sorrendben van rendezve egy érvényes idősorozat létrehozásához. Tegyük fel, hogy az adatok 1 000-es rekordokat tartalmaznak, és az adatok alapján determinisztikus az adatkészletek képzéséhez és teszteléséhez. Azonosítsa a címke oszlop nevét, és állítsa a címkére. Ebben a példában a felirat a következő lesz: `sales_quantity`. Ezután válassza el a Label (címke) mezőt @no__t – 0 értékről, hogy a `test_target` készletet hozza létre.
+Ebben az esetben az adatmezők már növekvő sorrendbe vannak rendezve `day_datetime`. A kísérlet beállításakor azonban győződjön meg arról, hogy a kívánt idő oszlop növekvő sorrendben van rendezve egy érvényes idősorozat létrehozásához. Tegyük fel, hogy az adatok 1 000-es rekordokat tartalmaznak, és az adatok alapján determinisztikus az adatkészletek képzéséhez és teszteléséhez. Azonosítsa a címke oszlop nevét, és állítsa a címkére. Ebben a példában a címke `sales_quantity`lesz. Ezután válassza el `test_data` a Label (címke) mezőt a `test_target` készlet létrehozásához.
 
 ```python
 train_data = data.iloc[:950]
@@ -101,7 +122,7 @@ A `AutoMLConfig` objektum határozza meg az automatizált gépi tanulási felada
 
 További információt a [dokumentációban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) talál.
 
-Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa a `time_column_name` értéket az adathalmaz `day_datetime` mezőjére. Adja meg a `grain_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adategységhez; az A és B tároló egyike. Végül állítsa be a `max_horizon`-50-et a teljes tesztelési készlet előrejelzéséhez. Állítsa be az előrejelzési időszakot 10 pontra `target_rolling_window_size` értékkel, és az `target_lags` paraméterrel előrébb álló két időszakra vonatkozóan egyetlen késést határozzon meg.
+Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa a `time_column_name` az adathalmaz `day_datetime` mezőjére. Adja meg a `grain_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adatsorokhoz; az A és B tároló egyike. Végül állítsa a `max_horizon` 50-re, hogy a teljes tesztelési készletet előre meg lehessen jósolni. Állítsa be az előrejelzési időszakot 10, `target_rolling_window_size`értékkel rendelkező időszakra, és az `target_lags` paraméterrel előrébb álló két időszakra vonatkozóan egyetlen késést határozzon meg.
 
 ```python
 time_series_settings = {
@@ -117,7 +138,7 @@ time_series_settings = {
 > [!NOTE]
 > Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
 
-Ha a fenti kódrészletben meghatározza a `grain_column_names` értéket, a AutoML két külön idősorozat-csoportot hoz létre, más néven több idősorozatot. Ha nincs megadva gabona, a AutoML azt feltételezi, hogy az adatkészlet egy egyidejű adatsorozat. Ha többet szeretne megtudni az egyidejű adatsorozatokról, tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+A fenti kódrészletben szereplő `grain_column_names` definiálásával a AutoML két különálló idősorozat-csoportot hoz létre, más néven több idősorozatot. Ha nincs megadva gabona, a AutoML azt feltételezi, hogy az adatkészlet egy egyidejű adatsorozat. Ha többet szeretne megtudni az egyidejű adatsorozatokról, tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
 Most hozzon létre egy standard `AutoMLConfig` objektumot, adja meg a `forecasting` feladattípust, és küldje el a kísérletet. A modell befejeződése után kérje le a legjobb futtatási iterációt.
 
@@ -173,9 +194,9 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-Azt is megteheti, hogy `predict()` helyett a `forecast()` függvényt használja, amely lehetővé teszi a specifikációk megkezdését. A következő példában először a `y_pred` összes értékét lecseréli a `NaN` értékre. Ebben az esetben az előrejelzési forrás a betanítási adatgyűjtési időszak végén lesz, mivel általában `predict()` használata esetén. Ha azonban a `y_pred` második felét lecserélte a `NaN` értékre, akkor a függvény a numerikus értékeket az első fél változatlanul hagyja, de a második felében előre megbecsüli a `NaN` értéket. A függvény az előre jelzett értékeket és az igazított funkciókat is visszaadja.
+Azt is megteheti, hogy `predict()` helyett a `forecast()` függvényt használja, amely lehetővé teszi a specifikációk megkezdését. Az alábbi példában a `y_pred` az összes értéket lecseréli a `NaN`. Ebben az esetben az előrejelzési forrás a betanítási adatgyűjtési időszak végén lesz, mivel általában `predict()` használata esetén. Ha azonban csak a `y_pred` második felét cserélte le `NaN`, akkor a függvény a numerikus értékeket az első fél változatlanul hagyja, de a második felében előre megbecsüli a `NaN` értékeket. A függvény az előre jelzett értékeket és az igazított funkciókat is visszaadja.
 
-A `forecast()` függvény `forecast_destination` paramétere a megadott dátumig előre jelzett értékeket is használhatja.
+A `forecast()` függvény `forecast_destination` paraméterét is használhatja az értékek előrejelzésére a megadott dátumig.
 
 ```python
 label_query = test_labels.copy().astype(np.float)
@@ -184,7 +205,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Kiszámítja a GYÖKÁTLAGOS (a legfelső szintű négyzetes hibát) a `actual_labels` tényleges értékek és az előre jelzett értékek között `predict_labels` értékben.
+Kiszámítja a GYÖKÁTLAGOS (a legfelső szintű négyzetes hibát) a `actual_labels` tényleges értékei és a `predict_labels`előrejelzett értékei között.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -194,16 +215,16 @@ rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-Most, hogy a modell teljes pontossága meg lett határozva, a legreálisabb következő lépés a modell használata az ismeretlen jövőbeli értékek előrejelzésére. Egyszerűen adjon meg egy olyan adathalmazt, amelynek a formátuma `test_data`, de a jövőbeli datetime értékekkel megegyező formátumban van megadva, és az eredményül kapott előrejelzési készlet az egyes idősorozat-lépések előre jelzett értékei. Tegyük fel, hogy az adatkészletben az utolsó idősorozat rekord a 12/31/2018-es értékre van állítva. Ha a következő napra szeretné előre jelezni az igényt (vagy annyit, amennyire szüksége van az előrejelzéshez, < = `max_horizon`), hozzon létre egy egyidejű adatsorozat-rekordot a 01/01/2019-es tárolóhoz.
+Most, hogy a modell teljes pontossága meg lett határozva, a legreálisabb következő lépés a modell használata az ismeretlen jövőbeli értékek előrejelzésére. Egyszerűen adjon meg egy adatkészletet a tesztelési készlet `test_data`, de a jövőbeli datetime értékekkel megegyező formátumban, és az eredményül kapott előrejelzési készlet az egyes idősorozat-lépések előre jelzett értékei. Tegyük fel, hogy az adatkészletben az utolsó idősorozat rekord a 12/31/2018-es értékre van állítva. Ha a következő napra (vagy az előrejelzéshez szükséges számos időszakra vonatkozóan szeretne előrejelzést készíteni, < = `max_horizon`), hozzon létre egy egyidejű adatsorozat-rekordot a 01/01/2019-es tárolóhoz.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-Ismételje meg a szükséges lépéseket a jövőbeli adatok egy dataframe való betöltéséhez, majd `best_run.predict(test_data)` futtatásával Jósolja meg a jövőbeli értékeket.
+Ismételje meg a szükséges lépéseket a jövőbeli adatok dataframe való betöltéséhez, majd `best_run.predict(test_data)` futtatásához a jövőbeli értékek előrejelzéséhez.
 
 > [!NOTE]
-> A `max_horizon` értéknél nagyobb időszakok száma nem lehet előre jelezve. A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
+> Nem lehet előre jelezni a `max_horizon`nál nagyobb időszakok számának értékét. A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
 
 ## <a name="next-steps"></a>Következő lépések
 

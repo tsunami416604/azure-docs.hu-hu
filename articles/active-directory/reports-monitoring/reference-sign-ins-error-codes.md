@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon | Microsoft Docs
+title: Hibakódok a Azure Active Directory portálon | Microsoft Docs
 description: Bejelentkezési tevékenységekre vonatkozó jelentések hibakódjainak referenciája.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383175"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820878"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -38,15 +38,15 @@ Ha a bejelentkezés sikertelen, akkor a hibának megfelelő hibakód jelenik meg
 
 Navigáljon a [Azure Portalban](https://portal.azure.com)található [bejelentkezési jelentésre](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) .
 
-![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/61.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/61.png "Bejelentkezési tevékenység")
 
 Szűrje a jelentést úgy, hogy az összes sikertelen bejelentkezés megjelenjen, ha a **bejelentkezési állapot** legördülő listából kiválasztja a **hiba** lehetőséget.
 
-![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/06.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/06.png "Bejelentkezési tevékenység")
 
-Ha kiválaszt egy elemet a szűrt listából, **megnyílik a tevékenység részletei:**  Bejelentkezések panel. Ez a nézet további információkat biztosít a sikertelen bejelentkezési eseményről, beleértve a **bejelentkezési hibakódot** és a **hiba okát**.
+Ha kiválaszt egy elemet a szűrt listából, megnyílik a **tevékenység részletei: bejelentkezések panel** . Ez a nézet további információkat biztosít a sikertelen bejelentkezési eseményről, beleértve a **bejelentkezési hibakódot** és a **hiba okát**.
 
-![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/05.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/05.png "Bejelentkezési tevékenység")
 
 A [jelentéskészítési API](concept-reporting-api.md)használatával programozott módon is elérheti a bejelentkezési adataikat.
 
@@ -71,7 +71,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |50007|Ehhez az alkalmazáshoz nem található partnertitkosítási tanúsítvány. [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a Microsofttal a rögzített megoldás eléréséhez.|
 |50008|Hiányzik a SAML helyességi feltétel, vagy rosszul van konfigurálva a jogkivonatban. Forduljon az összevonási szolgáltatójához.|
 |50010|A célközönség URI-ellenőrzése sikertelen volt az alkalmazás esetében, mert a jogkivonat célközönsége nincs konfigurálva. Forduljon az alkalmazás tulajdonosához a feloldáshoz.|
-|50011|A válaszcím hiányzik, rosszul van konfigurálva, vagy nem egyezik az alkalmazáshoz konfigurált válaszcímekkel. Próbálja ki a (z [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application)) című cikkben felsorolt megoldást. Ha a probléma továbbra is fennáll, forduljon az alkalmazás tulajdonosához vagy az alkalmazás rendszergazdájához.|
+|50011|A válaszcím hiányzik, rosszul van konfigurálva, vagy nem egyezik az alkalmazáshoz konfigurált válaszcímekkel. Próbálja ki a következő helyen felsorolt felbontást: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Ha a probléma továbbra is fennáll, forduljon az alkalmazás tulajdonosához vagy az alkalmazás rendszergazdájához.|
 |50012| Ez egy általános hibaüzenet, amely azt jelzi, hogy a hitelesítés sikertelen volt. Ez olyan okok miatt fordulhat elő, mint például a hiányzó vagy érvénytelen hitelesítő adatok vagy jogcímek a kérelemben. Győződjön meg arról, hogy a kérést a megfelelő hitelesítő adatokkal és jogcímekkel küldi el a rendszer. |
 |50013|Az állítás különböző okok miatt érvénytelen. Például a jogkivonat kiállítója nem felel meg az API-verziónak az érvényes időtartományon belül, a jogkivonat lejárt vagy helytelen formátumú, vagy az állításban szereplő frissítési jogkivonat nem elsődleges frissítési jogkivonat.|
 |50017|Az érvényesítés nem sikerült az alábbi okok egyike miatt:<ul><li>A kiállítási tanúsítvány nem szerepel a megbízható tanúsítványok listájában</li><li>A várt CrlSegment nem található</li><li>A kiállítási tanúsítvány nem szerepel a megbízható tanúsítványok listájában</li><li>A különbözeti CRL terjesztési pontja megfelelő CRL terjesztési pont nélkül lett konfigurálva</li><li>időtúllépési hiba miatt nem sikerült érvényes CRL-szegmenseket lekérni</li><li>A CRL letöltése nem sikerült</li></ul>Forduljon a bérlői rendszergazdához.|
@@ -116,7 +116,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |50143|A munkamenet nem egyezik – a munkamenet érvénytelen, mert a felhasználói bérlő nem felel meg a tartománynak a különböző erőforrások miatti célzásnak. További részletekért  [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) KORRELÁCIÓs azonosítóval, kérelem-azonosítóval és hibakódtal.|
 |50144|A felhasználó Active Directory jelszava lejárt. Hozzon létre egy új jelszót a felhasználó számára, vagy használja a végfelhasználót az önkiszolgáló visszaállítási eszköz használatával.|
 |50146|Ezt az alkalmazást egy alkalmazásspecifikus bejelentkezési kulccsal kell konfigurálni. Az alkalmazás nem ilyennel van konfigurálva, vagy a kulcs lejárt vagy még nem érvényes. Lépjen kapcsolatba az alkalmazás tulajdonosával.|
-|50148|A code_verifier nem egyezik meg a PKCE hitelesítési kérésben megadott code_challenge értékkel. Lépjen kapcsolatba az alkalmazás fejlesztőjével. |
+|50148|A code_verifier nem egyezik meg a PKCE hitelesítési kérésben megadott code_challenge értékkel. Forduljon az alkalmazás fejlesztőihez. |
 |50155|Ehhez a felhasználóhoz nem sikerült az eszköz hitelesítése.|
 |50158|A külső biztonsági probléma nem teljesült.|
 |50161|A külső szolgáltató által eljuttatott jogcímek nem elegendőek, vagy hiányoznak a külső szolgáltatóhoz kért jogcímek.|
@@ -137,7 +137,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |53002|A használt alkalmazás nem jóváhagyott alkalmazás a feltételes hozzáféréshez. A felhasználónak a jóváhagyott alkalmazások listáján szereplő alkalmazást kell használnia a hozzáféréshez.|
 |53003|A hozzáférés a feltételes hozzáférési házirendek miatt le lett tiltva.|
 |53004|A tartalom elérése előtt a felhasználónak el kell végeznie a többtényezős hitelesítés regisztrációs folyamatát. A felhasználónak regisztrálnia kell többtényezős hitelesítésre.|
-|65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X AZONOSÍTÓval való használatára. küldjön egy engedélyezési kérelmet a bérlői rendszergazdának, hogy az alkalmazás nevében járjon el: Y erőforráshoz: Z.|
+|65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy engedélyezési kérést a bérlő rendszergazdájának, hogy az Y alkalmazás nevében végezzen tevékenységet a Z erőforráson.|
 |65004|A felhasználó elutasította az alkalmazáshoz való hozzáférés jóváhagyását. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
 |65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, akkor előfordulhat, hogy nem a megfelelő azonosítóval (entitással) konfigurálta az alkalmazást. Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|A hozzáférés érvénytelen az alábbi okok miatt:<ul><li>A szükséges SAML 2.0 helyességi feltétel érvénytelen tárgyjóváhagyási metódussal rendelkezik</li><li>Az alkalmazás OnBehalfOf folyamata nem támogatott a V2-ben</li><li>Elsődleges frissítési jogkivonat nincs aláírva a munkamenetkulccsal</li><li>Érvénytelen külső frissítési jogkivonat</li><li>A megadott hozzáférés egy másik bérlőhöz lett beszerezve.</li></ul>|
@@ -162,15 +162,15 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |75011|A felhasználó által a szolgáltatásban való hitelesítésre használt hitelesítési mód nem egyezik a kért hitelesítési móddal. Lépjen kapcsolatba az alkalmazás tulajdonosával.|
 |75016|A SAML2 hitelesítési kérelem érvénytelen NameIdPolicy értékkel rendelkezik. Lépjen kapcsolatba az alkalmazás tulajdonosával.|
 |80001|A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. Győződjön meg arról, hogy a hitelesítési ügynök telepítve van egy olyan tartományhoz csatlakozó gépen, amely rálát a felhasználó bejelentkezési kérelmét kiszolgáló tartományvezérlőre.|
-|80002|Belső hiba történt. A jelszó-ellenőrzési kérelem túllépte az időkorlátot. Nem sikerült elküldeni a hitelesítési kérést a belső hibrid identitásszolgáltatásnak. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
+|80002|Belső hiba történt. A jelszó-érvényesítési kérelem időkorlátja lejárt. Nem sikerült elküldeni a hitelesítési kérést a belső hibrid identitási szolgáltatásnak. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
 |80003|A hitelesítési ügynök érvénytelen választ kapott. Ismeretlen hiba történt a helyszíni Active Directoryban történő hitelesítésre tett kísérlet során. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
-|80005|Hitelesítési ügynök: Ismeretlen hiba történt a hitelesítési ügynök válaszának feldolgozása során. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
+|80005|Hitelesítési ügynök: Ismeretlen hiba történt a Hitelesítési ügynöktől érkező válasz feldolgozásakor. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
 |80007|A hitelesítési ügynök nem tudta ellenőrizni a felhasználó jelszavát.|
 |80010|A hitelesítési ügynök nem tudta visszafejteni a jelszót. |
 |80011|A hitelesítési ügynök nem tudta lekérni a titkosítási kulcsot.|
 |80012|A felhasználók az engedélyezett órákon kívül próbáltak bejelentkezni (ez az AD-ben van megadva).|
 |80013|A hitelesítési kísérlet a hitelesítési ügynököt és az AD-t futtató számítógép közötti időeltérés miatt nem sikerült. Javítsa ki az időszinkronizálási problémákat|
-|80014|A hitelesítési ügynök túllépte az időkorlátot. A hibával kapcsolatos további részletekért [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hibakódtal, a KORRELÁCIÓs azonosítóval és a datetime értékkel.|
+|80014|A hitelesítési ügynök időkorlátja lejárt. A hibával kapcsolatos további részletekért [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hibakódtal, a KORRELÁCIÓs azonosítóval és a datetime értékkel.|
 |81001|A felhasználó Kerberos-jegye túl nagy. Ez akkor fordulhat elő, ha a felhasználó túl sok csoportban szerepel, és így a Kerberos-jegy túl sok csoporttagságot tartalmaz. Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.|
 |81005|A hitelesítési csomag nem támogatott.|
 |81007|A bérlő nincs engedélyezve a zökkenőmentes egyszeri bejelentkezéshez.|
@@ -190,7 +190,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |7000218|A kérelem törzsének tartalmaznia kell a következő paramétert: "client_assertion" vagy "client_secret".|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A bejelentkezések jelentéseinek áttekintése](concept-sign-ins.md)
 * [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)
