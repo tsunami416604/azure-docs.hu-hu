@@ -1,31 +1,26 @@
 ---
 title: A Java Web Apps teljesítményének figyelése az Azure Application Insightsban | Microsoft Docs
 description: A Java-webhely kiterjesztett teljesítmény-és használati figyelése Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/10/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 01/10/2019
+ms.openlocfilehash: 181a1f253157fe112d42753d6f824a327457a2fa
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338086"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819418"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételek és metódus-végrehajtási idők figyelése Java-webalkalmazásokban
 
 
-Ha a Java-webalkalmazást [Application Insights][java]használatával állította be, a Java-ügynökkel mélyebb elemzéseket kaphat, kód módosítása nélkül:
+Ha a [Java-webalkalmazást Application Insights][java]használatával állította be, a Java-ügynökkel mélyebb elemzéseket kaphat, kód módosítása nélkül:
 
-* **Függőségek** Az alkalmazás által más összetevőkre irányuló hívásokkal kapcsolatos információk, beleértve a következőket:
-  * Az Apache HttpClient, a OkHttp és `java.net.HttpURLConnection` a rögzített http-hívások rögzítése megtörtént.
+* **Függőségek:** Az alkalmazás által más összetevőkre irányuló hívásokkal kapcsolatos információk, beleértve a következőket:
+  * Az Apache HttpClient, a OkHttp és a `java.net.HttpURLConnection` használatával végrehajtott **kimenő HTTP-hívások** rögzítése megtörtént.
   * A Jedis ügyféllel készített **Redis-hívások** rögzítése történik.
   * **JDBC-lekérdezések** – a MySQL és a PostgreSQL esetében, ha a hívás 10 másodpercnél hosszabb időt vesz igénybe, az ügynök jelentést készít a lekérdezési tervről.
 
@@ -34,9 +29,9 @@ Ha a Java-webalkalmazást [Application Insights][java]használatával állított
   * **Log4j2**
   * **Logback**
 
-* **Jobb működés elnevezése:** (a portálon található kérelmek összesítéséhez használatos)
-  * **Rugó** – alapján `@RequestMapping`.
-  * **Jax-RS** -alapján `@Path`. 
+* **Jobb működés elnevezése:** (a portálon található kérelmek összesítéséhez használják)
+  * **Rugó** – `@RequestMapping`alapján.
+  * **Jax-RS** – `@Path`alapján. 
 
 A Java-ügynök használatához telepítenie kell a-kiszolgálóra. A webalkalmazásokat a [Application Insights Java SDK][java]-val kell kiépíteni. 
 
@@ -52,7 +47,7 @@ A Java-ügynök használatához telepítenie kell a-kiszolgálóra. A webalkalma
 3. Indítsa újra az alkalmazást.
 
 ## <a name="configure-the-agent"></a>Az ügynök konfigurálása
-Hozzon létre egy `AI-Agent.xml` nevű fájlt, és helyezze ugyanabba a mappába, amelyben az ügynök jar-fájlja található.
+Hozzon létre egy `AI-Agent.xml` nevű fájlt, és helyezze ugyanabba a mappába, amelyben az ügynök JAR-fájlja található.
 
 Adja meg az XML-fájl tartalmát. Szerkessze az alábbi példát a kívánt funkciók belefoglalásához vagy kihagyásához.
 
@@ -93,17 +88,17 @@ Az Azure App Services esetében tegye a következőket:
 * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
 * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
 
-Kulcs `JAVA_OPTS`Érték`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Kulcs: `JAVA_OPTS` érték: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-A Java-ügynök legújabb verziójáért tekintse meg a [kiadásokat](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)itt. 
+A Java-ügynök legújabb verziójáért tekintse meg a kiadásokat [itt](https://github.com/Microsoft/ApplicationInsights-Java/releases
+). 
 
-Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** > **speciális eszközök** > **hibakeresési konzolján** ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e, és megvizsgálja a hely könyvtárának tartalmát.    
+Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** > **speciális eszközök** > a **hibakeresési konzol** és a webhelycímtár tartalmának vizsgálatával ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban van-e.    
 
 * Mentse a beállításokat, és indítsa újra az alkalmazást. (Ezek a lépések csak Windows rendszeren futó App Services vonatkoznak.)
 
 > [!NOTE]
-> A AI-Agent. XML és az Agent jar-fájlnak ugyanabban a mappában kell lennie. Ezeket gyakran együtt helyezik el `/resources` a projekt mappájába.  
+> A AI-Agent. XML és az Agent jar-fájlnak ugyanabban a mappában kell lennie. Ezek gyakran együtt kerülnek a projekt `/resources` mappájába.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>W3C elosztott nyomkövetés engedélyezése
 
@@ -131,8 +126,8 @@ A függőség, a kivétel és a metódus-jelentések egyes példányainak keres�
 
 [Függőségi problémák diagnosztizálása – további információ](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
-## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
-* Nincs adat? [Tűzfal-kivételek beállítása](../../azure-monitor/app/ip-addresses.md)
+## <a name="questions-problems"></a>Kérdése van? Problémái vannak?
+* Nincsenek adatok? [Tűzfal-kivételek beállítása](../../azure-monitor/app/ip-addresses.md)
 * [A Java hibaelhárítása](java-troubleshoot.md)
 
 <!--Link references-->

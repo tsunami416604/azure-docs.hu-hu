@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez | Microsoft Docs
+title: Munkafüzetek Azure Monitor jelentésekhez | Microsoft Docs
 description: Megtudhatja, hogyan használhatja Azure Monitor munkafüzeteket Azure Active Directory jelentésekhez.
 services: active-directory
 author: cawrites
@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 5e498dcb39f62fc870bc7efa989b91caeac0dedc
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255662"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819715"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
 

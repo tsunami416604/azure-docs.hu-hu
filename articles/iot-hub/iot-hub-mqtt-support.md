@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 59bf62f73d8ba9732cd89209d2b239fd15a6d844
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 11e2a02277a47e070f91e8f057f0d8493235c5ce
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754474"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821353"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -116,6 +116,38 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 A MQTT csatlakoztatásához és a csomagok leválasztásához IoT Hub a **műveletek figyelése** csatornán eseményt ad ki. Ez az esemény további információkat tartalmaz, amelyek segíthetnek a kapcsolódási problémák elhárításában.
 
 Az alkalmazás megadhat **egy üzenetet** a **csatlakoztatási** csomagban. Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}`t kell használnia, mivel a (z) definiálni **kívánt témakör neve** telemetria üzenetként **fog** továbbítani. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a **leválasztási** csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
+
+### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>C kód példája az Azure IoT C SDK nélküli MQTT használatával
+Ebben a [tárházban](https://github.com/Azure-Samples/IoTMQTTSample)néhány C/C++ bemutató projektet talál, amelyek bemutatják, hogyan küldhet telemetria-üzeneteket az IoT hub használatával az Azure IoT C SDK használata nélkül. 
+
+Ezek a minták az Eclipse Mosquitto könyvtár használatával küldenek üzenetet az IoT hub-ban megvalósított MQTT-közvetítőnek.
+
+A tárház tartalma:
+
+**Windows esetén:**
+
+• TelemetryMQTTWin32: olyan kódot tartalmaz, amely telemetria üzenetet küld egy Azure IoT hub-ra, amely egy Windows rendszerű gépen lett létrehozva és futtatva.
+
+• SubscribeMQTTWin32: olyan kódot tartalmaz, amely egy Windows rendszerű gépen lévő adott IoT hub eseményeire fizet elő.
+
+• DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és Előfizeti a Windows rendszerű számítógépeken lévő Azure IoT hub eszközön található eszközök kettős eseményeit.
+
+• PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure-beli IoT-eszközökön is megtekinthető. További információ a IoT Plug & [játékról](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play)
+
+**Linux esetén:**
+
+• MQTTLinux: tartalmazza a kód és a Build szkriptet a Linuxon való futtatáshoz (WSL, Ubuntu és Raspbian).
+
+• LinuxConsoleVS2019: ugyanazt a kódot tartalmazza, de egy VS2019-projekt WSL (Windows Linux alrendszer). Ez a projekt lehetővé teszi a Linux lépésről lépésre futó kód hibakeresését a Visual studióból.
+
+**Mosquito_pub esetén:**
+
+• Ez a mappa két mintát tartalmaz, amelyeket a Mosquitto.org által biztosított mosquitto_pub segédprogram eszközzel használ.
+
+Mosquitto_sendmessage: egyszerű szöveges üzenet küldése egy eszközként működő Azure IoT hub-nak.
+
+Mosquitto_subscribe: az Azure IoT hub-ban előforduló események megtekintéséhez.
+
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 
@@ -249,7 +281,7 @@ Az IoT Hub érkező üzenetek fogadásához az eszköznek a `devices/{device_id}
 
 Az eszköz nem kap semmilyen üzenetet a IoT Hubtól, amíg sikeresen előfizetett az eszközre vonatkozó végpontra, amelyet az `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra**, az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
 
-A IoT Hub üzeneteket küld a **témakör neve** `devices/{device_id}/messages/devicebound/` vagy `devices/{device_id}/messages/devicebound/{property_bag}`, ha vannak üzenet tulajdonságai. a `{property_bag}` URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságainál. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei **$** előtaggal rendelkeznek, az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak.
+A IoT Hub üzeneteket küld a **témakör neve** `devices/{device_id}/messages/devicebound/`vagy `devices/{device_id}/messages/devicebound/{property_bag}`, ha vannak üzenet tulajdonságai. a `{property_bag}` URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságainál. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei **$** előtaggal rendelkeznek, az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak.
 
 Ha egy eszköz egy, a **QoS 2-es**verzióra való előfizetést tartalmaz, a IoT hub maximális QoS-szintet biztosít a **SUBACK** -csomagban. Ezután a IoT Hub a QoS 1 használatával továbbítja az üzeneteket az eszköznek.
 

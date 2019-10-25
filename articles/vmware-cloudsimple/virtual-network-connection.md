@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2e2195c61acbf39b40a7659335afff78ac03cb4b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563057"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881426"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Azure-beli virtuális hálózat összekötése a CloudSimple a ExpressRoute használatával
 
@@ -23,22 +23,29 @@ Saját felhőalapú hálózatát kiterjesztheti az Azure-beli virtuális hálóz
 
 A privát felhő és az Azure virtuális hálózat közötti ExpressRoute-kapcsolathoz engedélyezési kulcs szükséges. A kulcs beszerzéséhez egy <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási</a>jegyet kell beszereznie.  A kérelemben használja a következő információkat:
 
-* Probléma típusa: **Technikai**
-* Előfizetés: **Válassza ki azt az előfizetést, ahol a CloudSimple szolgáltatás telepítve van**
+* Probléma típusa: **technikai**
+* Előfizetés: **válassza ki azt az előfizetést, ahol a CloudSimple szolgáltatás telepítve van**
 * Szolgáltatás: **VMware-megoldás CloudSimple szerint**
-* Probléma típusa: **Szolgáltatási kérelem**
+* Probléma típusa: **szolgáltatás kérése**
 * Probléma altípusa: **Az Azure VNET-kapcsolatok engedélyezési kulcsa**
-* Tárgy: **Az Azure VNET-kapcsolatok engedélyezési kulcsának kérése**
+* Subject: **engedélyezési kulcs kérése az Azure VNET-kapcsolatban**
 
-## <a name="obtain-peering-information-for-azure-virtual-network-to-cloudsimple-connection"></a>Az Azure Virtual Network CloudSimple-hez való kapcsolódási információinak beszerzése
+## <a name="get-peering-information-from-cloudsimple-portal"></a>Egyenrangú információk beolvasása a CloudSimple-portálról
 
 A kapcsolat beállításához létre kell hoznia egy kapcsolatot az Azure Virtual Network és a CloudSimple-környezet között.  Az eljárás részeként meg kell adnia a társ-áramköri URI-t és az engedélyezési kulcsot. Szerezze be az URI és az engedélyezési kulcsot a [CloudSimple portálról](access-cloudsimple-portal.md).  Válassza a **hálózat** lehetőséget az oldalsó menüben, majd válassza az **Azure hálózati kapcsolatok**lehetőséget. Vagy válassza a **fiók** lehetőséget az oldalsó menüben, majd válassza az **Azure hálózati kapcsolatok**lehetőséget.
 
-Figyelje meg a partneri kör URI azonosítójának és az egyes régiók engedélyezési kulcsának másolási ikonjait. Minden olyan privát felhőhöz, amelyhez csatlakozni szeretne:
+Másolja a társ-áramköri URI-t és az egyes régiókhoz tartozó engedélyezési kulcsot a *Másolás* ikon használatával. Minden olyan CloudSimple-régióhoz, amelyhez csatlakozni szeretne:
 
-* Az URI másolásához kattintson a **Másolás** gombra. Illessze be egy fájlba, ahol elérhető lehet a Azure Portalhoz való hozzáadáshoz.  
-* A **Másolás** gombra kattintva másolja az engedélyezési kulcsot, és illessze be a fájlba.
+1. Az URI másolásához kattintson a **Másolás** gombra. Illessze be egy fájlba, ahol elérhető lehet a Azure Portalhoz való hozzáadáshoz.  
+2. A **Másolás** gombra kattintva másolja az engedélyezési kulcsot, és illessze be a fájlba.
 
-![Virtual Network a kapcsolatok lapja](media/network-virt-conn-page.png)
+Másolja ki az **elérhető** állapotban lévő engedélyezési kulcsot és a társ-kör URI azonosítóját.  A **használt** állapot azt jelzi, hogy a kulcs már használatban van egy virtuális hálózati kapcsolatok létrehozásához.
+
+![Virtual Network a kapcsolatok lapja](media/virtual-network-connection.png)
 
 Az Azure-beli virtuális hálózat CloudSimple való beállításával kapcsolatos további információkért lásd: a [CloudSimple saját felhőalapú környezetének csatlakoztatása az Azure Virtual networkhez a ExpressRoute használatával](azure-expressroute-connection.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Azure-beli virtuális hálózati kapcsolatok a privát felhőhöz](azure-expressroute-connection.md)
+* [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)

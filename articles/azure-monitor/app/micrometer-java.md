@@ -1,23 +1,18 @@
 ---
 title: A Mikrométer használata az Azure Application Insights Java SDK-val | Microsoft Docs
 description: 'Részletes útmutató a Mikrométerek használatáról Application Insights Spring boot-és nem tavaszi rendszerindító alkalmazásaival. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/01/2018
+ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299577"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819307"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
@@ -101,19 +96,19 @@ Alapértelmezett mérőszámok:
 Az automatikus metrikák gyűjtésének kikapcsolása: 
  
 - JVM metrikák: 
-    - management.metrics.binders.jvm.enabled=false 
+    - felügyeleti. mérőszámok. kötések. JVM. enabled = false 
 - Logback metrikák: 
-    - management.metrics.binders.logback.enabled=false
+    - felügyeleti. mérőszámok. kötések. logback. enabled = false
 - Üzemidő mérőszámai: 
-    - management.metrics.binders.uptime.enabled=false 
+    - felügyeleti. mérőszámok. kötések. üzemidő. enabled = false 
 - Processzor Metrikái:
-    -  management.metrics.binders.processor.enabled=false 
+    -  felügyeleti. mérőszámok. kötések. processzor. enabled = false 
 - FileDescriptorMetrics:
-    - management.metrics.binders.files.enabled=false 
+    - felügyeleti. mérőszámok. kötések. files. enabled = false 
 - Hystrix metrikák, ha a osztályútvonal lévő könyvtár: 
-    - management.metrics.binders.hystrix.enabled=false 
+    - felügyeleti. mérőszámok. kötések. Hystrix. enabled = false 
 - AspectJ metrikák, ha a osztályútvonal lévő könyvtár: 
-    - spring.aop.enabled=false 
+    - Spring. AOP. enabled = false 
 
 > [!NOTE]
 > Adja meg a fenti tulajdonságokat a Spring boot-alkalmazás Application. properties vagy Application. YML fájljában.
@@ -144,7 +139,7 @@ Lépések:
         </dependency>
      ```
 
-2. Fájl `ApplicationInsights.xml` elhelyezése a Resources mappában:
+2. Helyezze `ApplicationInsights.xml` fájlt az erőforrások mappába:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -275,7 +270,7 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
     New GuavaCacheMetrics().bind(registry);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
 * A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.

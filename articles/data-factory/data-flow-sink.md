@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596520"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882447"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
 
@@ -53,8 +53,8 @@ Válassza a **séma ellenőrzése** lehetőséget, ha a séma megváltozásakor 
 
 Válassza **a mappa törlése** elemet a fogadó mappa tartalmának kivágásához, mielőtt a célmappába beírja a célfájl tartalmát.
 
-## <a name="rule-based-mapping"></a>Szabály alapú leképezés
-Az automatikus leképezés kikapcsolásakor lehetősége van az oszlop alapú leképezés (rögzített leképezés) vagy a szabályokon alapuló leképezés hozzáadására is. A szabályon alapuló leképezés lehetővé teszi, hogy a kifejezéseket minta egyeztetéssel írja. 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Rögzített leképezés és szabály alapú hozzárendelés
+Ha kikapcsolja az automatikus leképezést, lehetősége van az oszlop alapú leképezés (rögzített leképezés) vagy a szabályokon alapuló leképezés hozzáadására is. A szabályokon alapuló leképezés lehetővé teszi, hogy a mintázat egyezésének megfelelő kifejezéseket írjon, a rögzített leképezés pedig a logikai és a fizikai oszlopnevek nevét.
 
 ![Szabály alapú leképezés](media/data-flow/rules4.png "Szabály alapú leképezés")
 
@@ -65,6 +65,12 @@ A minta egyeztetésével kapcsolatos részletek az [oszlop mintájának dokument
 A reguláris kifejezési mintákat is megadhatja a szabályokon alapuló egyeztetéshez a sor kibontásával és a "név egyezések:" melletti reguláris kifejezés beírásával.
 
 ![Regex-leképezés](media/data-flow/scdt1g4.png "Regex-leképezés")
+
+A szabályokon alapuló leképezések és a rögzített leképezések nagyon egyszerű általános példája az a helyzet, amikor az összes bejövő mezőt le szeretné képezni a célként megadott névre. Rögzített leképezések esetén a tábla minden egyes oszlopát fel kell sorolni. A szabályokon alapuló leképezés esetében egyetlen szabályt is megadhat, amely az összes mezőt a ```true()``` és a ```$$```által képviselt nevű mezőhöz rendeli.
+
+### <a name="sink-association-with-dataset"></a>Fogadó társítása adatkészlettel
+
+A fogadó számára kiválasztott adatkészlet lehet, hogy nem rendelkezik az adatkészlet definíciójában definiált sémával. Ha nem rendelkezik definiált sémával, engedélyeznie kell a séma eltolódását. Rögzített leképezés meghatározásakor a logikai – fizikai név leképezése megmarad a fogadó transzformációjában. Ha megváltoztatja az adatkészlet sémájának definícióját, akkor a fogadó leképezése is megszakítható. Ennek elkerüléséhez használja a szabályokon alapuló leképezést. A szabályokon alapuló leképezések általánosítva vannak, ami azt jelenti, hogy az adatkészlet sémájának módosítása nem fogja megszüntetni a leképezést.
 
 ## <a name="file-name-options"></a>Fájlnév beállításai
 

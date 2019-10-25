@@ -1,105 +1,126 @@
 ---
-title: C++ Azure Table Storage és az Azure Cosmos DB Table API használatával
+title: Az Azure Table Storage és a Azure Cosmos DB Table API használataC++
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 40b84a56f93ad670a26eb876a18820e0d4037f63
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 48222bf3f964f8c728f980f839c460862a8212ca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130551"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818642"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a C++ nyelvvel
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Table Storage szolgáltatás vagy az Azure Cosmos DB Table API használatával. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével**, valamint a **táblaentitások használatával** foglalkoznak.
+Ez az útmutató a gyakori forgatókönyveket mutatja be az Azure Table Storage szolgáltatás vagy a Azure Cosmos DB Table API használatával. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. Ez a cikk a következő forgatókönyveket ismerteti:
+
+* Tábla létrehozása és törlése
+* Tábla entitások használata
 
 > [!NOTE]
-> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](https://www.nuget.org/packages/wastorage) vagy a [GitHubon](https://github.com/Azure/azure-storage-cpp/) keresztül.
-> 
+> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtár 2.2.0, amely a [NuGet](https://www.nuget.org/packages/wastorage) vagy a [GitHub](https://github.com/Azure/azure-storage-cpp/)használatával érhető el.
+>
 
-## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
+## <a name="create-accounts"></a>Fiókok létrehozása
+
+### <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-c-application"></a>C++-alkalmazás létrehozása
-Az útmutatóban olyan Storage-szolgáltatásokat használ, amelyek futtathatók egy C++-alkalmazásban. Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát, és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésben.  
 
-Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
+Ebben az útmutatóban egy C++ alkalmazás tárolási funkcióit használja. Ehhez telepítse az Azure Storage ügyféloldali kódtárat a következőhöz C++:.
 
-* **Linux:** Kövesse az utasításokat az adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.  
-* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be az alábbi parancsot a [NuGet csomagkezelő konzolján](/nuget/tools/package-manager-console), majd nyomja le az Enter billentyűt.  
-  
-     Install-Package wastorage
+Az Azure Storage ügyféloldali Kódtárajának C++telepítéséhez használja az alábbi módszereket:
 
-## <a name="configure-access-to-the-table-client-library"></a>A Table ügyféloldali kódtárhoz való hozzáférés konfigurálása
-Adja hozzá az alábbi beszúrási utasításokat a C++-fájl elejéhez, ahol használni szeretné az Azure Storage API-kat a táblák eléréséhez:  
+* Linux. Kövesse az [Azure Storage ügyféloldali kódtár C++ ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)utasításait.  
+* Windows. A Visual Studióban válassza az **eszközök > NuGet > Package**Manager-konzol lehetőséget. Futtassa a következő parancsot a **csomagkezelő konzolon**:
+
+  ```powershell
+  Install-Package wastorage
+  ```
+
+További információ a **csomagkezelő konzolról**: [csomagok telepítése és kezelése a Package Manager konzollal a Visual Studióban](/nuget/tools/package-manager-console).
+
+### <a name="configure-access-to-the-table-client-library"></a>A Table ügyféloldali kódtárhoz való hozzáférés konfigurálása
+
+Ha az Azure Storage API-kat szeretné használni a táblák eléréséhez, adja hozzá a következő `include` utasításokat C++ a fájl elejéhez:
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/table.h>
 ```
 
-Az Azure Storage-ügyfél és a Cosmos DB-ügyfél egy kapcsolati sztringet használ a végpontok és az adatkezelési szolgáltatások elérésére szolgáló hitelesítő adatok tárolásához. Ügyfélalkalmazás futtatásakor meg kell adnia a Storage kapcsolati sztringjét vagy az Azure Cosmos DB kapcsolati sztringjét a megfelelő formátumban.
+Az Azure Storage-ügyfél és a Cosmos DB-ügyfél egy kapcsolati sztringet használ a végpontok és az adatkezelési szolgáltatások elérésére szolgáló hitelesítő adatok tárolásához. Ügyfélalkalmazás futtatásakor meg kell adnia a tárolási kapcsolódási karakterláncot, vagy a megfelelő formátumban kell megadnia a Azure Cosmos DB a kapcsolódási karakterláncot.
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage kapcsolati sztring beállítása
- Használja a Storage-fiók nevét és az [Azure Portalon](https://portal.azure.com) megtalálható hozzáférési kulcsát az *AccountName* és *AccountKey* értékeként. További információ a Storage-fiókokkal és a hozzáférési kulcsokkal kapcsolatban: [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt az Azure Storage kapcsolati sztring tárolására:  
+### <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage kapcsolati sztring beállítása
+
+Ebből a példából megtudhatja, hogyan deklarálhat egy statikus mezőt az Azure Storage kapcsolódási karakterláncának tárolásához:  
 
 ```cpp
 // Define the Storage connection string with your values.
-const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-## <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB kapcsolati sztring beállítása
-Használja az Azure Cosmos DB-fiók nevét, az elsődleges kulcsot és az [Azure Portalon](https://portal.azure.com) található végpontot a *Fiók neve*, az *Elsődleges kulcs* és a *Végpont* értékeként. Ez a példa bemutatja, hogyan deklarálhat statikus mezőt az Azure Cosmos DB kapcsolati sztring tárolására:
+`<your_storage_account>`éhez használja a Storage-fiókjának nevét. < Your_storage_account_key > használja a [Azure Portalben](https://portal.azure.com)felsorolt Storage-fiók elérési kulcsát. A Storage-fiókokról és a hozzáférési kulcsokról a [Storage-fiók létrehozása](../storage/common/storage-create-storage-account.md)című témakörben olvashat bővebben.
+
+### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB kapcsolati sztring beállítása
+
+Ebből a példából megtudhatja, hogyan deklarálhat egy statikus mezőt a Azure Cosmos DB kapcsolódási karakterláncának tárolásához:
 
 ```cpp
 // Define the Azure Cosmos DB connection string with your values.
-const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_cosmos_db_account>;AccountKey=<your_cosmos_db_account_key>;TableEndpoint=<your_cosmos_db_endpoint>"));
 ```
 
+`<your_cosmos_db_account>`hoz használja a Azure Cosmos DB fiókjának nevét. Adja meg `<your_cosmos_db_account_key>`elsődleges kulcsát. Adja meg a `<your_cosmos_db_endpoint>`[Azure Portalban](https://portal.azure.com) felsorolt végpontot.
 
-Az alkalmazás helyi Windows-alapú számítógépen történő teszteléséhez az Azure [Storage Emulatort](../storage/common/storage-use-emulator.md) használhatja, amely az [Azure SDK-val](https://azure.microsoft.com/downloads/) lett telepítve. A Storage Emulator egy olyan segédprogram, amely a helyi fejlesztői gépen elérhető Azure Blob, Queue és Table szolgáltatást szimulálja. A következő példa bemutatja, hogyan deklarálhat statikus mezőt a helyi Storage Emulatorhoz használható kapcsolati sztring tárolására:  
+Az alkalmazás helyi Windows-alapú számítógépeken való teszteléséhez használhatja az Azure [SDK](https://azure.microsoft.com/downloads/)-val telepített Azure Storage emulatort is. A Storage Emulator egy olyan segédprogram, amely a helyi fejlesztői gépen elérhető Azure Blob, Queue és Table szolgáltatást szimulálja. Az alábbi példa bemutatja, hogyan deklarálhat egy statikus mezőt a kapcsolódási karakterláncnak a helyi tároló emulátorhoz való tárolásához:  
 
 ```cpp
 // Define the connection string with Azure storage emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Az Azure Storage Emulator elindításához kattintson a **Start** gombra vagy nyomja le a Windows billentyűt. Kezdje el beírni az **Azure Storage Emulator** kifejezést, majd válassza a **Microsoft Azure Storage Emulator** elemet az alkalmazások listájából.  
+Az Azure Storage-emulátor elindításához a Windows asztaláról válassza a **Start** gombot vagy a Windows-kulcsot. *Microsoft Azure Storage Emulator*megadása és futtatása. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../storage/common/storage-use-emulator.md).
 
-Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kérte le a Storage kapcsolati sztringjét.  
+### <a name="retrieve-your-connection-string"></a>A kapcsolati sztring lekérése
 
-## <a name="retrieve-your-connection-string"></a>A kapcsolati sztring lekérése
-A **cloud_storage_account** osztály használatával jelenítheti meg a Storage-fiók információit. A Storage-fiók információit a **parse** metódussal kérheti le a Storage kapcsolati sztringjéből.
+A Storage-fiók adatainak megjelenítéséhez használhatja a `cloud_storage_account` osztályt. A Storage-fiók adatainak a Storage-kapcsolódási karakterláncból való lekéréséhez használja a `parse` metódust.
 
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Ezután szerezze be a **cloud_table_client** osztályra mutató hivatkozást, mivel ez lehetővé teszi, hogy megkaphassa a táblák hivatkozásobjektumait és a Table Storage szolgáltatásban tárolt entitásokat. Az alábbi kód egy **cloud_table_client** objektumot hoz létre a Storage-fiók fent lekért objektumának használatával:  
+Ezután szerezzen be egy `cloud_table_client` osztályra mutató hivatkozást. Ez az osztály lehetővé teszi a Table Storage szolgáltatásban tárolt táblák és entitások hivatkozási objektumainak lekérését. A következő kód egy `cloud_table_client` objektumot hoz létre a korábban beolvasott Storage Account objektum használatával:  
 
 ```cpp
 // Create the table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 ```
 
-## <a name="create-a-table"></a>Tábla létrehozása
-A **cloud_table_client** objektum lehetővé teszi, hogy lekérje táblák és entitások hivatkozásobjektumait. Az alábbi kód egy **cloud_table_client** objektumot hoz létre, és egy új tábla létrehozásához használja azt.
+## <a name="create-and-add-entities-to-a-table"></a>Entitások létrehozása és hozzáadása egy táblához
+
+### <a name="create-a-table"></a>Tábla létrehozása
+
+A `cloud_table_client` objektumok lehetővé teszi a táblák és entitások hivatkozási objektumainak beolvasását. A következő kód létrehoz egy `cloud_table_client` objektumot, és felhasználja egy új tábla létrehozásához.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -115,10 +136,11 @@ azure::storage::cloud_table table = table_client.get_table_reference(U("people")
 table.create_if_not_exists();  
 ```
 
-## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új **table_entity** objektumot, és adja át a **table_operation::insert_entity** számára. Az alábbi kód az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé. További információ: [A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája](../storage/common/storage-performance-checklist.md).
+### <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Az alábbi kód a **table_entity** egy új példányát hozza létre, néhány tárolandó ügyféladattal. A kód ezután meghívja a **table_operation::insert_entity** metódust egy **table_operation** objektum létrehozására, amely egy entitást szúr be egy táblába, és társítja hozzá az új táblaentitást. Végül a kód meghívja a végrehajtási metódust a **cloud_table** objektumra vonatkozóan. Az új **table_operation** kérést küld a Table Service számára az új ügyfélentitásnak a „people” táblába való beszúrásához.  
+Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új `table_entity` objektumot, és adja át a `table_operation::insert_entity`nak. Az alábbi kód az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az ugyanazzal a partíciós kulccsal rendelkező entitások gyorsabban kérhetők le, mint a különböző partíciós kulcsokkal rendelkező entitások. A különböző partíciós kulcsok használata lehetővé teszi a párhuzamos működés nagyobb mértékű méretezhetőségét. További információ: [A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája](../storage/common/storage-performance-checklist.md).
+
+A következő kód a `table_entity` egy új példányát hozza létre, és néhány vásárlói adattal együtt tárolja azokat. A következő hívások `table_operation::insert_entity` egy `table_operation` objektum létrehozásához, amely beszúr egy entitást egy táblába, és társítja az új tábla entitást. Végül a kód meghívja a `execute` metódust a `cloud_table` objektumon. Az új `table_operation` egy kérést küld a Table servicenak az új ügyfél entitásnak a `people` táblába való beszúrásához.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -149,8 +171,9 @@ azure::storage::table_operation insert_operation = azure::storage::table_operati
 azure::storage::table_result insert_result = table.execute(insert_operation);
 ```
 
-## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Egyetlen írási művelettel egy teljes entitásköteget is beszúrhat a Table Service-be. Az alábbi kód egy **table_batch_operation** objektumot hoz létre, majd hozzáad három beszúrási műveletet. Az egyes beszúrási műveletek a következőképpen adhatók hozzá: létre kell hozni egy új entitásobjektumot, be kell állítani az értékeit, majd meg kell hívni a beszúrási metódust a **table_batch_operation** objektumra vonatkozóan az entitás társításához egy új beszúrási művelettel. Ezután a **cloud_table.execute** meghívásával hajtható végre a művelet.  
+### <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
+
+Egyetlen írási művelettel egy teljes entitásköteget is beszúrhat a Table Service-be. A következő kód létrehoz egy `table_batch_operation` objektumot, majd három beszúrási műveletet hoz létre hozzá. Az egyes beszúrási műveletek új entitás-objektum létrehozásával, az értékek megadásával, majd a `table_batch_operation` objektum `insert` metódusának meghívásával társíthatók az entitást egy új beszúrási művelettel. Ezután a kód meghívja a `cloud_table.execute` a művelet futtatásához.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,15 +221,18 @@ batch_operation.insert_or_replace_entity(customer3);
 std::vector<azure::storage::table_result> results = table.execute_batch(batch_operation);
 ```
 
-Kötegelt műveletek esetében ügyeljen a következőkre:  
+Kötegelt műveletek esetében ügyeljen a következőkre:
 
-* Akár 100 beszúrás, törlés, egyesítés, csere, beszúrás-vagy-egyesítés és beszúrás-vagy-csere műveletet is végrehajthat, bármilyen kombinációban, egyetlen kötegben.  
-* A kötegművelet rendelkezhet lekérési művelettel, ha ez a kötegben található egyetlen művelet.  
+* Legfeljebb 100 `insert`, `delete`, `merge`, `replace`, `insert-or-merge`és `insert-or-replace` műveletet végezhet egyetlen köteg bármely kombinációjában.  
+* Egy batch-művelet lekéréses művelettel rendelkezhet, ha ez az egyetlen művelet a kötegben.  
 * Egy adott kötegművelet összes entitásának ugyanazzal a partíciókulccsal kell rendelkeznie.  
 * A kötegműveletek 4 MB nagyságú hasznos adatra vannak korlátozva.  
 
-## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
-Ha egy táblából egy partíció összes entitását le szeretné kérdezni, használjon **table_query** objektumot. Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.  
+## <a name="query-and-modify-entities"></a>Entitások lekérdezése és módosítása
+
+### <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
+
+Egy partíció összes entitásához tartozó tábla lekérdezéséhez használjon `table_query` objektumot. A következő mintakód olyan entitások szűrőjét határozza meg, amelyekben `Smith` a partíciós kulcs. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.  
 
 > [!NOTE]
 > Ezek a metódusok jelenleg nem támogatottak a C++ nyelv esetén az Azure Cosmos DB szolgáltatásban.
@@ -241,10 +267,11 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-A példában szereplő lekérdezés a szűrési feltételeknek megfelelő összes entitást megjeleníti. Ha nagy táblákkal rendelkezik és gyakran le kell töltenie a táblaentitásokat, javasoljuk, hogy adatait inkább Azure Storage-blobokban tárolja.
+Az ebben a példában szereplő lekérdezés az összes olyan entitást adja vissza, amelyek megfelelnek a szűrési feltételeknek. Ha nagy táblákkal rendelkezik és gyakran le kell töltenie a táblaentitásokat, javasoljuk, hogy adatait inkább Azure Storage-blobokban tárolja.
 
-## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Partíció entitástartományának lekérése
-Ha nem szeretné az összes entitást lekérdezni egy partícióból, megadhat egy tartományt a partíciókulcs és a sorkulcs szűrőjének kombinálásával. Az alábbi példakód két szűrő segítségével kéri le az összes olyan entitást a „Smith” partícióból, ahol a sorkulcs (keresztnév) az ábécében az „E”-t megelőző betűvel kezdődik, majd megjeleníti a lekérdezés eredményeit.  
+### <a name="retrieve-a-range-of-entities-in-a-partition"></a>Partíció entitástartományának lekérése
+
+Ha nem szeretné lekérdezni egy partíció összes entitását, megadhat egy tartományt. A partíciós kulcs szűrőjét egy sor kulcs szűrővel kombinálja. A következő példa két szűrőt használ a Partition `Smith` összes entitásának beolvasásához, ahol a sor kulcsa (Utónév) az ábécében `E`nál korábbi betűvel kezdődik, majd kinyomtatja a lekérdezés eredményeit.  
 
 > [!NOTE]
 > Ezek a metódusok jelenleg nem támogatottak a C++ nyelv esetén az Azure Cosmos DB szolgáltatásban.
@@ -283,8 +310,9 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-## <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
-Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kód a **table_operation::retrieve_entity** metódussal adja meg a „Jeff Smith” nevű ügyfelet. Ez a metódus egy gyűjtemény helyett csak egyetlen entitást ad vissza, és a visszaadott értéket a **table_result** tartalmazza. Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.  
+### <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
+
+Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kód a `table_operation::retrieve_entity`t használja az ügyfél `Jeff Smith`megadásához. Ez a metódus csak egyetlen entitást ad vissza, nem egy gyűjteményt, és a visszaadott érték `table_result`. Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -308,8 +336,9 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
     << U(", Property2: ") << properties.at(U("Phone")).string_value() << std::endl;
 ```
 
-## <a name="replace-an-entity"></a>Entitás cseréje
-Ha le szeretne cserélni egy entitást, kérje le a Table Service-ből, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table Service-be. A következő kód egy meglévő ügyfél telefonszámát és e-mail-címét módosítja. A **table_operation::insert_entity** meghívása helyett a kód a **table_operation::replace_entity** műveletet használja. A rendszer így teljesen lecseréli az entitást a kiszolgálón, hacsak az a lekérdezés óta nem módosult, mert ez esetben a művelet sikertelen lesz. Erre a hibára azért van szükség, hogy az alkalmazás ne írhasson felül véletlenül egy olyan módosítást, amelyet az alkalmazás egy másik összetevője hozott létre a lekérés és a frissítés között. A hiba megfelelő kezeléséhez kérje le újra az entitást, végezze el a módosításokat (ha még érvényesek), majd hajtson végre egy újabb **table_operation::replace_entity** műveletet. A következő szakaszban megtudhatja, hogyan bírálhatja felül ezt a viselkedést.  
+### <a name="replace-an-entity"></a>Entitás cseréje
+
+Ha le szeretne cserélni egy entitást, kérje le a Table Service-ből, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table Service-be. A következő kód egy meglévő ügyfél telefonszámát és e-mail-címét módosítja. A `table_operation::insert_entity`meghívása helyett ez a kód `table_operation::replace_entity`használ. Ez a módszer azt eredményezi, hogy az entitás teljes mértékben le lesz cserélve a kiszolgálón, kivéve, ha a kiszolgáló entitása megváltozott a lekérése óta. Ha megváltozott, a művelet sikertelen lesz. Ez a hiba megakadályozza, hogy az alkalmazás felülírja a beolvasás és a frissítés egy másik összetevővel végzett módosítását. Ennek a hibának a megfelelő kezelése az entitás ismételt beolvasása, ha még érvényes, végezze el a módosításokat, majd hajtson végre egy másik `table_operation::replace_entity` műveletet.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -339,8 +368,9 @@ azure::storage::table_operation replace_operation = azure::storage::table_operat
 azure::storage::table_result replace_result = table.execute(replace_operation);
 ```
 
-## <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy lecserélése
-Ha az entitást a kiszolgálóról való lekérése óta módosították, a **table_operation::replace_entity** műveletek sikertelenek lesznek. Ezenkívül a **table_operation::replace_entity** művelet sikeres végrehajtásához először le kell kérnie az entitást a kiszolgálóról. Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hogy a benne tárolt aktuális értékek irrelevánsak-e – a frissítésnek felül kell írnia minden értéket. Ehhez használja a **table_operation::insert_or_replace_entity** műveletet. Ha nem létezik az entitás, ez a művelet beszúrja, ha pedig létezik, akkor a legutóbbi frissítés idejétől függetlenül lecseréli. Az alábbi kódpéldában a rendszer lekérdezi Jeff Smith ügyfélentitását, majd a **table_operation::insert_or_replace_entity** művelettel menti a kiszolgálóra. Az entitáson a lekérési és a frissítési művelet között történt összes módosítás felül lesz írva.  
+### <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy cseréje
+
+`table_operation::replace_entity` művelet meghiúsul, ha az entitás megváltozott a kiszolgálóról való lekérése óta. Emellett először le kell kérnie az entitást a kiszolgálóról ahhoz, hogy a `table_operation::replace_entity` sikeres legyen. Néha nem tudja, hogy az entitás létezik-e a kiszolgálón. A benne tárolt aktuális értékek nem relevánsak, mert a frissítés felülírja őket. Ennek az eredménynek a végrehajtásához használjon `table_operation::insert_or_replace_entity` műveletet. A művelet beszúrja az entitást, ha az nem létezik. Ha létezik, a művelet lecseréli az entitást. A következő példában a `Jeff Smith` ügyfél entitása továbbra is beolvasható, de a `table_operation::insert_or_replace_entity`használatával ment vissza a kiszolgálóra. Az entitáson a lekérési és a frissítési művelet között történt összes módosítás felül lesz írva.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -352,7 +382,7 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Insert-or-replace an entity.
+// Insert or replace an entity.
 azure::storage::table_entity entity_to_insert_or_replace(U("Smith"), U("Jeff"));
 azure::storage::table_entity::properties_type& properties_to_insert_or_replace = entity_to_insert_or_replace.properties();
 
@@ -364,15 +394,16 @@ properties_to_insert_or_replace[U("Phone")] = azure::storage::entity_property(U(
 // Specify an email address.
 properties_to_insert_or_replace[U("Email")] = azure::storage::entity_property(U("Jeffsm@contoso.com"));
 
-// Create an operation to insert-or-replace the entity.
+// Create an operation to insert or replace the entity.
 azure::storage::table_operation insert_or_replace_operation = azure::storage::table_operation::insert_or_replace_entity(entity_to_insert_or_replace);
 
 // Submit the operation to the Table service.
 azure::storage::table_result insert_or_replace_result = table.execute(insert_or_replace_operation);
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. Az alábbi kódban szereplő lekérdezés a **table_query::set_select_columns** metódust használja a táblában található entitások e-mail-címének lekérdezéséhez.  
+### <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
+
+Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. A következő kódban szereplő lekérdezés a `table_query::set_select_columns` metódust használja a tábla entitások e-mail-címeinek visszaadásához.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -412,11 +443,13 @@ for (; it != end_of_results; ++it)
 
 > [!NOTE]
 > Egy entitás néhány tulajdonságának lekérdezése hatékonyabb, mint minden tulajdonság lekérése.
-> 
-> 
+>
 
-## <a name="delete-an-entity"></a>Entitás törlése
-A lekérés után egyszerűen törölheti az entitásokat. Az entitás lekérése után a törléshez hívja meg a **table_operation::delete_entity** műveletet az entitással. Ezután hívja meg a **cloud_table.execute** metódust. Az alábbi kód lekérdezi és törli a „Smith” partíciókulcsú és a „Jeff” sorkulcsú entitást.  
+## <a name="delete-content"></a>Tartalom törlése
+
+### <a name="delete-an-entity"></a>Entitás törlése
+
+Az entitásokat a lekérése után törölheti. Az entitások lekérése után hívja meg a `table_operation::delete_entity`t a törölni kívánt entitással. Ezután hívja meg a `cloud_table.execute` metódust. A következő kód lekérdezi és törli a `Smith` partíciós kulcsával rendelkező entitást `Jeff`.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -439,8 +472,9 @@ azure::storage::table_operation delete_operation = azure::storage::table_operati
 azure::storage::table_result delete_result = table.execute(delete_operation);  
 ```
 
-## <a name="delete-a-table"></a>Tábla törlése
-Végezetül pedig az alábbi példakóddal törölhető egy tábla a tárfiókból. A törölt táblák a törlés után egy ideig nem hozhatók létre újra.  
+### <a name="delete-a-table"></a>Tábla törlése
+
+Végezetül pedig az alábbi példakóddal törölhető egy tábla a tárfiókból. Egy törölt tábla nem érhető el újra a törlés után egy ideig.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -454,28 +488,30 @@ azure::storage::cloud_table table = table_client.get_table_reference(U("people")
 
 // Delete the table if it exists
 if (table.delete_table_if_exists())
-    {
-        std::cout << "Table deleted!";
-    }
-    else
-    {
-        std::cout << "Table didn't exist";
-    }
+{
+    std::cout << "Table deleted!";
+}
+else
+{
+    std::cout << "Table didn't exist";
+}
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
-* A Visual Studio 2017 Community Edition felépítési hibái
+## <a name="troubleshooting"></a>Hibakeresés
 
-  Ha a projektben felépítési hibákat tapasztal a storage_account.h és a table.h belefoglalási fájl miatt, távolítsa el a **/permissive-** fordítókapcsolót. 
-  - A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a projektre, és válassza a **Properties** (Tulajdonságok) elemet.
-  - A **Property Pages** (Tulajdonságlapok) párbeszédpanelen bontsa ki a **Configuration Properties** (Konfigurációs tulajdonságok), majd a **C/C++** csomópontot, és válassza a **Language** (Nyelv) elemet.
-  - A **Conformance mode** (Megfelelőségi mód) értékét állítsa **No** (Nem) értékűre.
-   
-## <a name="next-steps"></a>További lépések
-Az alábbi hivatkozásokat követve többet is megtudhat az Azure Storage és a Table API Azure Cosmos DB-ben való használatáról: 
+A Visual Studio Community Edition esetében, ha a projekt a *storage_account. h* és a *table. h*fájl belefoglalása miatt hibákat hoz létre, távolítsa el a **/permissive-** fordítóprogram kapcsolóját:
+
+1. A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a projektre, és válassza a **Properties** (Tulajdonságok) elemet.
+1. A **Property Pages** (Tulajdonságlapok) párbeszédpanelen bontsa ki a **Configuration Properties** (Konfigurációs tulajdonságok), majd a **C/C++** csomópontot, és válassza a **Language** (Nyelv) elemet.
+1. A **Conformance mode** (Megfelelőségi mód) értékét állítsa **No** (Nem) értékűre.
+
+## <a name="next-steps"></a>Következő lépések
+
+A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
+
+Az alábbi hivatkozásokat követve többet is megtudhat az Azure Storage és a Table API Azure Cosmos DB-ben való használatáról:
 
 * [A Table API bemutatása](table-introduction.md)
-* A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Storage-erőforrások listázása C++-ban](../storage/common/storage-c-plus-plus-enumeration.md)
 * [A Storage ügyféloldali kódtára a C++ programnyelvhez – referencia](https://azure.github.io/azure-storage-cpp)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)

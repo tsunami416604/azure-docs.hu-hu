@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 241935afa023162a35559cd3c46206efa7a7835f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240183"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817110"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -100,15 +100,17 @@ A minta futtatásához a következőkre lesz szüksége:
 1. Nyissa meg a **app_config.** file fájlt, amely megtalálható a gyökérkönyvtárban, és cserélje le a következő kódrészletre:
 
 ```python
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 CLIENT_ID = "Enter_the_Application_Id_here"
+CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
 > Helyszín:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
-> - @no__t – 0 – a **tanúsítványokban & titkokat** a regisztrált alkalmazáshoz létrehozott **titkos kulcs** .
+> - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
+> - `Enter_the_Tenant_Name_Here` – a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
 
 #### <a name="step-4-run-the-code-sample"></a>4\. lépés: a kód mintájának futtatása
 
@@ -122,6 +124,25 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 
    ```Shell
    python app.py
+   ```
+   > [!IMPORTANT]
+   > Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a Project-fájlokhoz, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a következő [utasításokban](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials)talál további információt.
+
+   ## <a name="more-information"></a>További információ
+
+   ### <a name="getting-msal"></a>MSAL beolvasása
+   A MSAL az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek.
+   A pip használatával hozzáadhat MSAL Pythont az alkalmazáshoz.
+
+   ```Shell
+   pip install msal
+   ```
+
+   ### <a name="msal-initialization"></a>Az MSAL inicializálása
+   A MSAL Pythonra mutató hivatkozást úgy adhatja hozzá, hogy hozzáadja a következő kódot a fájl elejéhez, ahol a MSAL fogja használni:
+
+   ```Python
+   import msal
    ```
 
 ## <a name="next-steps"></a>Következő lépések

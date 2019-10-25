@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
-ms.openlocfilehash: 692062b29bd22cb5b37cc6371f2908adcdb4b29d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d7821014dc950f2bbb0b96f83536268e90c695a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67178868"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818624"
 ---
-Legegyszerűbben az [Azure Portal](https://portal.azure.com) segítségével hozhatja létre első Azure Storage-fiókját. További tudnivalókért lásd: [Create a storage account](../articles/storage/common/storage-quickstart-create-account.md) (Tárfiók létrehozása).
+Az Azure Storage-fiók létrehozásának legegyszerűbb módja a [Azure Portal](https://portal.azure.com)használata. További tudnivalókért lásd: [Create a storage account](../articles/storage/common/storage-quickstart-create-account.md) (Tárfiók létrehozása).
 
 Ezenkívül az [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md) vagy az [Azure CLI](../articles/storage/common/storage-azure-cli.md) használatával is létrehozhat egy Azure-tárfiókot.
 
-Ha most nem kíván tárfiókot létrehozni, az Azure Storage Emulatorral helyi környezetben futtathatja és tesztelheti a kódját. További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](../articles/storage/common/storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral).
+Ha most nem kíván tárfiókot létrehozni, az Azure Storage Emulatorral helyi környezetben futtathatja és tesztelheti a kódját. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../articles/storage/common/storage-use-emulator.md).

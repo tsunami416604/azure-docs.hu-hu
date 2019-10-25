@@ -1,30 +1,26 @@
 ---
 title: Az Azure Application Insights Profiler beállítások panel használata | Microsoft Docs
 description: 'Lásd: a Profiler állapota és a profilkészítési munkamenetek elindítása'
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 12cb8e31617ee6b1e0c8515e66e265f4eccdf3df
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338045"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820490"
 ---
-# <a name="configure-application-insights-profiler"></a>Az Application Insights Profiler konfigurálása
+# <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
 
 ## <a name="updated-profiler-agent"></a>Frissített Profiler-ügynök
 Az trigger funkciói csak a Profiler-ügynök 2,6-es vagy újabb verziójával működnek. Ha Azure App Service futtat, akkor az ügynök automatikusan frissül. Megtekintheti, hogy az ügynök melyik verzióját futtatja, ha a webhely kudu URL-címét használja, és hozzáfűzi a \DiagnosticServices a végéhez, például: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. A Application Insights Profiler Webjobs 2,6-es vagy újabb verziójúnak kell lennie. A webalkalmazás újraindításával kényszerítheti a frissítést. 
 
-Ha a Profilert egy virtuális gépen vagy egy felhőalapú szolgáltatáson futtatja, akkor a Windows Azure Diagnostics (WAD) bővítmény 16.0.4 vagy újabb verzióját kell telepítenie. A WAD verziójának ellenőrzéséhez jelentkezzen be a virtuális gépre, és tekintse át a következő könyvtárat: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. A könyvtár neve a telepített WAD verziója. Az Azure-beli virtuálisgép-ügynök automatikusan frissíti a WAD-t, ha új verzió érhető el.
+Ha a Profilert egy virtuális gépen vagy egy felhőalapú szolgáltatáson futtatja, akkor a Windows Azure Diagnostics (WAD) bővítmény 16.0.4 vagy újabb verzióját kell telepítenie. A WAD verziójának ellenőrzéséhez jelentkezzen be a virtuális gépre, és tekintse meg a következő könyvtárat: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. A könyvtár neve a telepített WAD verziója. Az Azure-beli virtuálisgép-ügynök automatikusan frissíti a WAD-t, ha új verzió érhető el.
 
 ## <a name="profiler-settings-page"></a>Profiler-beállítások lap
 
@@ -41,15 +37,15 @@ A **Application Insights Profiler konfigurálása** lapon a következő funkció
 | | |
 |-|-|
 Profil most | A profilkészítési munkamenetek elindítása minden olyan alkalmazáshoz, amely a Application Insights ezen példányához van csatolva.
-Triggerek | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
-Legutóbbi profilkészítési munkamenetek | A korábbi profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg.
+Eseményindítók | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
+Közelmúltbeli profilkészítési munkamenetek | A korábbi profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg.
 
 ## <a name="profile-now"></a>Profil most
 Ez a beállítás lehetővé teszi a profilkészítési munkamenet igény szerinti elindítását. Ha erre a hivatkozásra kattint, az összes Profiler-ügynök, amely adatokat küld erre a Application Insights-példányra, megkezdi a profil rögzítését. 5 – 10 perc elteltével a profil-munkamenet az alábbi listában fog megjelenni.
 
 Ahhoz, hogy egy felhasználó manuálisan aktiválja a Profiler-munkamenetet, a Application Insights összetevő szerepköréhez legalább "írási" hozzáférésre van szükségük. A legtöbb esetben automatikusan megkapja ezt a hozzáférést, és nincs szükség további munkára. Ha problémák merülnek fel, a hozzáadandó előfizetési hatókör szerepkör a "Application Insights Component közreműködő" szerepkör lenne. [További információ a szerepköralapú hozzáférés-vezérlésről az Azure monitoring szolgáltatással](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
-## <a name="trigger-settings"></a>Aktiválási beállítások
+## <a name="trigger-settings"></a>Trigger beállításai
 ![Trigger beállításai menü][trigger-settings-flyout]
 
 A menüsávon az eseményindítók gombra kattintva megnyílik az eseményindító-beállítások mező. Beállíthatja a triggert a profilkészítés elindításához, amikor a CPU vagy a memória kihasználtsági aránya eléri a beállított szintet.
@@ -58,8 +54,8 @@ A menüsávon az eseményindítók gombra kattintva megnyílik az eseményindít
 |-|-|
 Be/ki gomb | Bekapcsolva: a Profiler elindítható ez a trigger; Kikapcsolva: a Profiler nem indul el ezzel az aktiválással.
 Memória küszöbértéke | Ha a memória ezen százaléka használatban van, a Profiler elindul.
-Duration | Megadja, hogy a rendszer mikor futtassa a Profilert az aktiváláskor.
-Lehűlés | Azt adja meg, hogy a Profiler mennyi ideig várjon, mielőtt a rendszer elindítja a memóriát vagy a CPU-használatot.
+Időtartam | Megadja, hogy a rendszer mikor futtassa a Profilert az aktiváláskor.
+Hűtő | Azt adja meg, hogy a Profiler mennyi ideig várjon, mielőtt a rendszer elindítja a memóriát vagy a CPU-használatot.
 
 ## <a name="recent-profiling-sessions"></a>Közelmúltbeli profilkészítési munkamenetek
 Az oldal ezen szakasza a közelmúltbeli profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg. A profilkészítési munkamenet azt az időtartamot jelenti, amikor a Profiler-ügynök profilt vett az alkalmazást üzemeltető gépek egyikén. A profilokat egy adott munkamenetből is megnyithatja, ha rákattint az egyik sorra. Az egyes munkamenetek esetében a következőt mutatjuk be:
@@ -67,9 +63,9 @@ Az oldal ezen szakasza a közelmúltbeli profilkészítési munkamenetekkel kapc
 | | |
 |-|-|
 Aktiválta: | A munkamenet elindítása a trigger, a profil és az alapértelmezett mintavételezés használatával. 
-Alkalmazásnév | A létrehozott alkalmazás neve.
+Alkalmazás neve | A létrehozott alkalmazás neve.
 Gépi példány | Annak a gépnek a neve, amelyen a Profiler-ügynök futott.
-Timestamp | A profil rögzítésének ideje.
+Időbélyeg | A profil rögzítésének ideje.
 Farkas | Az egyes kérelmekhez csatolt Nyomkövetések száma.
 CPU | A Profiler futása közben használt CPU százaléka.
 Memória | A Profiler futása közben használt memória százalékos aránya.
@@ -80,11 +76,11 @@ A Profilert manuálisan is aktiválhatja egyetlen kattintással. Tegyük fel, ho
 
 A következő részekben bemutatjuk, hogyan működik ez a forgatókönyv:
 
-### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1\. lépés: Adatforgalom létrehozása a webalkalmazáshoz a webes teljesítmény-ellenőrzés elindításával
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1\. lépés: adatforgalom létrehozása a webalkalmazáshoz a webes teljesítménytesztek elindításával
 
 Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuálisan szeretné előállítani a forgalmat, ugorja át ezt a szakaszt, és folytassa a 2. lépéssel.
 
-1. A Application Insights portálon válassza a  > **teljesítmény-tesztelés** **konfigurálása**lehetőséget. 
+1. A Application Insights portálon válassza a > **teljesítmény-tesztelés** **konfigurálása** lehetőséget. 
 
 1. Új teljesítményteszt indításához kattintson az **új** gombra.
 
@@ -100,7 +96,7 @@ Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuáli
 
     ![A terhelési teszt folyamatban van][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>2\. lépés: Profilkezelő igény szerinti munkamenetének elindítása
+### <a name="step-2-start-a-profiler-on-demand-session"></a>2\. lépés: a Profiler igény szerinti munkamenetének elindítása
 
 1. Ha a terhelési teszt fut, indítsa el a Profilert, hogy rögzítse a nyomkövetéseket a webalkalmazásban a terhelés fogadása közben.
 
@@ -111,7 +107,7 @@ Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuáli
 
 Miután a Profiler befejezte a futtatást, kövesse az értesítésen megjelenő utasításokat a teljesítmény panelre való ugráshoz és a Nyomkövetések megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Profiler engedélyezése és a Nyomkövetések megtekintése](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png

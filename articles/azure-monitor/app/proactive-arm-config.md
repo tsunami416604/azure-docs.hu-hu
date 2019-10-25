@@ -1,24 +1,19 @@
 ---
 title: Az Azure Application Insights intelligens észlelési szabály beállításainak konfigurálása Azure Resource Manager-sablonokkal | Microsoft Docs
 description: Az Azure Application Insights intelligens észlelési szabályok kezelésének és konfigurálásának automatizálása Azure Resource Manager-sablonokkal
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: harelbr
+ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.author: harelbr
-ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b55271b39bf2a65dababbef58f7389ca07d57d8
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193718"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818832"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
@@ -29,7 +24,7 @@ Ez a módszer akkor használható, ha új Application Insights erőforrásokat t
 
 Az intelligens detektálási szabályokhoz a következő beállításokat konfigurálhatja:
 - Ha a szabály engedélyezve van (az alapértelmezett érték **igaz**.)
-- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) felhasználóinak, illetve a közreműködői szerepkörök [figyelésére](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
+- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
 - Minden további e-mail-címzett, akinek értesítést kell kapnia, amikor észlelés található.
     -  Az e-mail-konfiguráció nem érhető el az _előzetes_verzióként megjelölt intelligens észlelési szabályokhoz.
 
@@ -153,7 +148,7 @@ Ez a Azure Resource Manager-sablon azt mutatja be, hogy a hiba anomália v2 rias
             "name": "Failure Anomalies - my-app",
             "location": "global", 
             "properties": {
-                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
                   "state": "Enabled",
                   "severity": "2",
                   "frequency": "PT1M",
@@ -178,22 +173,22 @@ Ez a Azure Resource Manager-sablon azt mutatja be, hogy a hiba anomália v2 rias
 Az alábbi táblázat az intelligens észlelési szabályok neveit mutatja, ahogy azok a portálon jelennek meg, a belső nevükkel együtt, amelyeket a Azure Resource Manager sablonban kell használni.
 
 > [!NOTE]
-> Az előzetesként megjelölt intelligens észlelési szabályok nem támogatják az e-mailes értesítéseket. Ezért csak a szabályok _engedélyezve_ tulajdonságát állíthatja be. 
+> Az _előzetesként_ megjelölt intelligens észlelési szabályok nem támogatják az e-mailes értesítéseket. Ezért csak a szabályok _engedélyezve_ tulajdonságát állíthatja be. 
 
-| Azure Portal szabály neve | A belső név
+| Azure Portal szabály neve | Belső név
 |:---|:---|
-| Lassú lapbetöltés | slowpageloadtime |
-| Lassú kiszolgálói válasz | slowserverresponsetime |
+| Lassú oldal betöltési ideje | slowpageloadtime |
+| Lassú kiszolgáló válaszideje | slowserverresponsetime |
 | Hosszú függőségi időtartam | longdependencyduration |
-| Kiszolgáló válaszidejének romlása | degradationinserverresponsetime |
-| Függőségi időtartam csökkenése | degradationindependencyduration |
+| Romlás a kiszolgáló válaszideje | degradationinserverresponsetime |
+| Romlás a függőségi időtartamban | degradationindependencyduration |
 | A nyomkövetés súlyossági arányának csökkenése (előzetes verzió) | extension_traceseveritydetector |
 | Rendellenes növekedés a kivétel mennyisége (előzetes verzió) | extension_exceptionchangeextension |
 | Potenciális memóriavesztés észlelhető (előzetes verzió) | extension_memoryleakextension |
 | Lehetséges biztonsági probléma észlelhető (előzetes verzió) | extension_securityextensionspackage |
 | A napi adatmennyiség rendellenes növekedése (előzetes verzió) | extension_billingdatavolumedailyspikeextension |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az automatikus észlelésről:
 

@@ -5,39 +5,34 @@ author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648900"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880206"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 
-Azure Cosmos DB képes terabájtos adattárolásra. Nagy léptékű adatáttelepítést hajthat végre az éles számítási feladatok Azure Cosmos DBre való áthelyezéséhez. Ez a cikk a nagy léptékű adatok Azure Cosmos DBba való áthelyezésével kapcsolatos kihívásokat ismerteti, és bemutatja azokat az eszközöket, amelyek segítik a kihívásokat, és az adatok áttelepíthetők a Azure Cosmos DBra. Ebben az esetben az ügyfél a Cosmos DB SQL API-t használta.  
+Az Azure Cosmos DB több terabájtnyi adatot tud tárolni. Nagy léptékű adatmigrálás elvégzésével áthelyezheti éles számítási feladatait az Azure Cosmos DB-be. Ez a cikk a nagy léptékű adatok Azure Cosmos DBba való áthelyezésével kapcsolatos kihívásokat ismerteti, és bemutatja azokat az eszközöket, amelyek segítik a kihívásokat, és az adatok áttelepíthetők a Azure Cosmos DBra. Ebben az esetben az ügyfél a Cosmos DB SQL API-t használta.  
 
 Mielőtt áttelepíti a teljes munkaterhelést Azure Cosmos DBre, áttelepítheti az adatok egy részhalmazát, hogy érvényesítse a különböző szempontokat, például a partíciós kulcs választását, a lekérdezési teljesítményt és az adatmodellezést. A koncepció ellenőrzése után áthelyezheti a teljes munkaterhelést Azure Cosmos DBra.  
 
-A Cosmos DB rendszerindítási [program](https://azurecosmosdb.github.io/CosmosBootstrap/) használatával felgyorsíthatja az alkalmazások Azure Cosmos db-on való létrehozását vagy áttelepítését. A program részeként a Azure Cosmos DB csapat mérnökei hozzá lesznek rendelve a projekthez, és segítséget nyújtanak az adatok áttelepítéséhez Azure Cosmos DBba. Az alábbi gombra kattintva regisztrálhat a Cosmos DB bootstrap programra:
-
-> [!div class="nextstepaction"]
-> [Rendszerindítási program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
-
 ## <a name="tools-for-data-migration"></a>Adatmigrálás eszközei 
 
-Azure Cosmos DB áttelepítési stratégiák jelenleg eltérőek az API-k választása és az adatmennyiség alapján. Kisebb adatkészletek áttelepítéséhez – az adatmodellezés ellenőrzése, a lekérdezési teljesítmény, a partíciós kulcs választása stb. – kiválaszthatja az áttelepítési [eszközt](import-data.md) vagy a [Azure Data Factory Azure Cosmos db](../data-factory/connector-azure-cosmos-db.md)-összekötőjét. Ha már ismeri a Sparkot, a [Azure Cosmos db Spark-összekötő](spark-connector.md) használatával is áttelepítheti az adatátvitelt.
+Azure Cosmos DB áttelepítési stratégiák jelenleg eltérőek az API-k választása és az adatmennyiség alapján. Kisebb adatkészletek áttelepítéséhez – az adatmodellezés ellenőrzése, a lekérdezési teljesítmény, a partíciós kulcs választása stb. – kiválaszthatja az [áttelepítési eszközt](import-data.md) vagy a [Azure Data Factory Azure Cosmos db-összekötőjét](../data-factory/connector-azure-cosmos-db.md). Ha már ismeri a Sparkot, a [Azure Cosmos db Spark-összekötő](spark-connector.md) használatával is áttelepítheti az adatátvitelt.
 
 ## <a name="challenges-for-large-scale-migrations"></a>A nagyméretű Migrálás kihívásai 
 
 Az Azure Cosmos DB az adatáttelepítés meglévő eszközei bizonyos korlátozásokkal rendelkeznek, amelyek különösen nagy léptékekben lesznek láthatók:
 
- * **Korlátozott kibővíthető képességek**: Ha a lehető leggyorsabban szeretné áttelepíteni a terabájtos adatmennyiséget a Azure Cosmos DBba, és hatékonyan felhasználja a teljes kiosztott átviteli sebességet, az áttelepítési ügyfeleknek képesnek kell lenniük a határozatlan idejű felskálázásra.  
+ * **Korlátozott kibővíthető képességek**: Ha a lehető leggyorsabban szeretné áttelepíteni a terabájtos adatmennyiséget a Azure Cosmos DBba, és hatékonyan felhasználja a teljes kiosztott átviteli sebességet, az áttelepítési ügyfeleknek képesnek kell lenniük a határozatlan idejű méretezésre.  
 
-* **A folyamat nyomon követésének és ellenőrzésének hiánya**: Fontos, hogy nyomon kövessük az áttelepítési folyamatot, és a nagyméretű adathalmazok áttelepítése közben is ellenőrizzék azokat. Ellenkező esetben az áttelepítés során felmerülő hibák miatt a rendszer leállítja az áttelepítést, és teljesen el kell indítania a folyamatot. Nem lenne hatékony a teljes áttelepítési folyamat újraindítása, amikor a 99%-a már befejeződött.  
+* A **folyamat nyomon követésének és ellenőrzésének hiánya**: fontos, hogy nyomon követhesse az áttelepítési folyamatot, és a nagyméretű adathalmazok áttelepítése során a rendszer a bejelentkezést is bemutasson. Ellenkező esetben az áttelepítés során felmerülő hibák miatt a rendszer leállítja az áttelepítést, és teljesen el kell indítania a folyamatot. Nem lenne hatékony a teljes áttelepítési folyamat újraindítása, amikor a 99%-a már befejeződött.  
 
-* **A kézbesítetlen levelek várólistájának hiánya**: A nagyméretű adatkészleteken belül bizonyos esetekben problémák merülhetnek fel a forrásadatok részeivel. Emellett átmeneti problémák merülhetnek fel az ügyféllel vagy a hálózattal kapcsolatban. Ezen esetek egyike sem okozhatja a teljes áttelepítést. Annak ellenére, hogy a legtöbb áttelepítési eszköz robusztus újrapróbálkozási képességekkel rendelkezik, amelyek védelmet biztosítanak az időszakos problémák ellen, nem mindig elég. Ha például a forrásoldali adatdokumentumok kevesebb mint 0,01%-a mérete meghaladja a 2 MB-ot, akkor a dokumentum írása sikertelen lesz Azure Cosmos DB. Ideális esetben az áttelepítési eszköz számára hasznos, hogy a "sikertelen" dokumentumokat egy másik kézbesítetlen levelek várólistáján is megőrzi, amely az áttelepítés után dolgozható fel. 
+* A **kézbesítetlen levelek várólistájának hiánya**: a nagyméretű adatkészleteken belül bizonyos esetekben problémák merülhetnek fel a forrásadatok részeivel. Emellett átmeneti problémák merülhetnek fel az ügyféllel vagy a hálózattal kapcsolatban. Ezen esetek egyike sem okozhatja a teljes áttelepítést. Annak ellenére, hogy a legtöbb áttelepítési eszköz robusztus újrapróbálkozási képességekkel rendelkezik, amelyek védelmet biztosítanak az időszakos problémák ellen, nem mindig elég. Ha például a forrásoldali adatdokumentumok kevesebb mint 0,01%-a mérete meghaladja a 2 MB-ot, akkor a dokumentum írása sikertelen lesz Azure Cosmos DB. Ideális esetben az áttelepítési eszköz számára hasznos, hogy a "sikertelen" dokumentumokat egy másik kézbesítetlen levelek várólistáján is megőrzi, amely az áttelepítés után dolgozható fel. 
 
 A korlátozások nagy része az Azure-beli adatáttelepítési szolgáltatásokhoz hasonló eszközökhöz készült. 
 
@@ -153,11 +148,8 @@ Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adat
 ![Áttelepítési támogatás témakör](./media/migrate-cosmosdb-data/supporttopic.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  
 * A nagyméretű áttelepítéssel kapcsolatos további segítségért lépjen kapcsolatba a Azure Cosmos DB termék csapatával, és nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípusban. 
-* Az Cosmos DB rendszerindítási [program](https://azurecosmosdb.github.io/CosmosBootstrap/) használatával felgyorsíthatja az alkalmazások Azure Cosmos DBn való létrehozását vagy áttelepítését.
-
-> [!div class="nextstepaction"]
-> [Rendszerindítási program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)

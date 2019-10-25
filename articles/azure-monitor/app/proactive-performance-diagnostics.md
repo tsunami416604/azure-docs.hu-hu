@@ -1,30 +1,25 @@
 ---
 title: Intelligens észlelés – teljesítménybeli rendellenességek | Microsoft Docs
 description: Application Insights az alkalmazás telemetria intelligens elemzését végzi, és figyelmezteti a lehetséges problémákra. Ehhez a szolgáltatáshoz nincs szükség beállításra.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867713"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820567"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan elemzi a webalkalmazás teljesítményét, és figyelmezteti a lehetséges problémákra. Lehet, hogy ezt olvashatja, mert az intelligens észlelési értesítések egyikét kapta.
 
-Ehhez a szolgáltatáshoz nincs szükség speciális beállításra, kivéve, ha az alkalmazást Application Insights ( [ASP.net](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)vagy [Node. js](../../azure-monitor/app/nodejs.md)-ben, illetve weboldali [kódban](../../azure-monitor/app/javascript.md)) konfigurálja. Akkor aktív, ha az alkalmazás elég telemetria hoz létre.
+Ehhez a szolgáltatáshoz nincs szükség speciális beállításra, kivéve, ha az alkalmazást Application Insights ( [ASP.net](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)vagy [Node. js](../../azure-monitor/app/nodejs.md)-ben, illetve [weboldali kódban](../../azure-monitor/app/javascript.md)) konfigurálja. Akkor aktív, ha az alkalmazás elég telemetria hoz létre.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Mikor kapok egy intelligens észlelési értesítést?
 
@@ -41,7 +36,7 @@ Az intelligens észlelésnek legalább 8 napos telemetria kell lennie egy műkö
 
 Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Ezek csupán javaslatok, hogy az adott anomáliát érdemes részletesebben megvizsgálni.
 
-## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
+## <a name="how-do-i-fix-it"></a>Hogyan kijavítani?
 
 Az értesítések közé tartoznak a diagnosztikai információk. Például:
 
@@ -58,15 +53,15 @@ Az értesítések közé tartoznak a diagnosztikai információk. Például:
 
 ## <a name="configure-email-notifications"></a>E-mail-értesítések konfigurálása
 
-Az intelligens észlelési értesítések alapértelmezés szerint engedélyezve vannak, és a rendszer [](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) elküldte azokat a felhasználókat, akik figyelik az olvasót, és figyelik a [közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) hozzáférést ahhoz az előfizetéshez, amelyben a Application Insights erőforrás található. Ennek módosításához kattintson a configure ( **Konfigurálás** ) elemre az e-mail-értesítésben, vagy nyissa meg a Application Insights intelligens észlelési beállításait. 
+Az intelligens észlelési értesítések alapértelmezés szerint engedélyezve vannak, és a rendszer elküldte azokat a felhasználókat, akik [figyelik az olvasót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) , és [figyelik a közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) hozzáférést ahhoz az előfizetéshez, amelyben a Application Insights erőforrás található. Ennek módosításához kattintson a configure ( **Konfigurálás** ) elemre az e-mail-értesítésben, vagy nyissa meg a Application Insights intelligens észlelési beállításait. 
   
   ![Intelligens észlelési beállítások](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * Az e-mail -értesítések fogadásának leállításához használhatja az intelligens észlelési e-mailben található **leiratkozási** hivatkozást.
+  * Az e-mail-értesítések fogadásának leállításához használhatja az intelligens észlelési e-mailben található **leiratkozási** hivatkozást.
 
 Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights erőforráson naponta egy e-mailre korlátozódik. Az e-mail csak akkor lesz elküldve, ha van legalább egy új, az adott napon észlelt probléma. Egyetlen üzenet sem jelenik meg. 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 * *Tehát a Microsoft munkatársai megvizsgálják az adataikat?*
   * Nem. A szolgáltatás teljesen automatikus. Csak Ön kapja meg az értesítéseket. Az adatai [magánjellegűek](../../azure-monitor/app/data-retention-privacy.md).
@@ -116,8 +111,8 @@ Nyissa meg a böngészők metrika paneljét. A böngésző oldal betöltési ide
 ### <a name="improve-slow-pages"></a>Lassú lapok javítása
 A kiszolgáló válaszait és az oldalak betöltési idejét a teljes körűen megtalálhatja, így nem fogjuk megismételni. Íme néhány tipp, amely valószínűleg már ismeri a-t, csak azért, hogy megismerje a következőket:
 
-* Lassú betöltés a Big files miatt: Aszinkron módon töltse be a parancsfájlokat és egyéb részeket. Parancsfájl-árukapcsolás használata. Bontsa ki a Főoldalt a widgetek számára, amelyek külön töltik be az adatfájlokat. Ne küldjön egyszerű, régi HTML-t a hosszú táblákhoz: használjon egy parancsfájlt, amely JSON-ként vagy más kompakt formátumba kéri az adatkérést, majd töltse ki a táblázatot a helyén. Ebben az útmutatóban nagyszerű keretrendszerek érhetők el. (Természetesen a Big Scripts is magában foglalja.)
-* Lassú kiszolgálói függőségek: Vegye figyelembe az összetevők földrajzi elhelyezkedését. Ha például az Azure-t használja, győződjön meg arról, hogy a webkiszolgáló és az adatbázis ugyanabban a régióban található. Kérik a lekérdezések a szükségesnél több információt? Gyorsítótárazást vagy kötegelt segítséget szeretne?
+* Lassú betöltés a Big files miatt: a parancsfájlok és más részek aszinkron módon tölthetők be. Parancsfájl-árukapcsolás használata. Bontsa ki a Főoldalt a widgetek számára, amelyek külön töltik be az adatfájlokat. Ne küldjön egyszerű, régi HTML-t a hosszú táblákhoz: használjon egy parancsfájlt, amely JSON-ként vagy más kompakt formátumba kéri az adatkérést, majd töltse ki a táblázatot a helyén. Ebben az útmutatóban nagyszerű keretrendszerek érhetők el. (Természetesen a Big Scripts is magában foglalja.)
+* Lassú kiszolgálói függőségek: vegye figyelembe az összetevők földrajzi elhelyezkedését. Ha például az Azure-t használja, győződjön meg arról, hogy a webkiszolgáló és az adatbázis ugyanabban a régióban található. Kérik a lekérdezések a szükségesnél több információt? Gyorsítótárazást vagy kötegelt segítséget szeretne?
 * Kapacitással kapcsolatos problémák: Tekintse meg a kiszolgálói metrikákat és a kérelmek számát. Ha a válaszidő csúcsa nem arányos a kérelmek számának csúcsával, akkor valószínű, hogy a kiszolgálók ki vannak feszítve.
 
 
@@ -169,7 +164,7 @@ Nem kell megadnia a küszöbértékeket, és nem kell konfigurálnia a szabályo
 ![Az e-mail riasztásban kattintson a hivatkozásra a diagnosztikai jelentés megnyitásához az Azure-ban](./media/proactive-performance-diagnostics/03.png)
 
 * **Mikor** jelenik meg a probléma észlelésének időpontja.
-* **A** leírása:
+* A **leírása:**
 
   * A észlelt probléma;
   * Az események azon készletének jellemzői, amelyek a probléma viselkedését jelenítik meg.
@@ -179,7 +174,7 @@ Kattintson a hivatkozásokra a metrika-kezelő megnyitásához és a megfelelő 
 
 Módosítsa az időtartományt és a szűrőket a telemetria megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
 * [Profilkészítő](profiler.md) 

@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595575"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819801"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Új Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -101,7 +101,7 @@ Válasszon ki legalább egyet, és legfeljebb három kategóriát, amelyek az aj
 
 ### <a name="industry"></a>Iparág
 
-Lehetősége van akár két iparágra is kiválasztani, hogy az ajánlatot a piactéren kategorizálja. Ha az ajánlat nem az iparágra jellemző, hagyja üresen ezt a szakaszt. Ügyeljen arra, hogy az ajánlat leírásában ne feledje, hogyan támogatja a kiválasztott iparágakat. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 

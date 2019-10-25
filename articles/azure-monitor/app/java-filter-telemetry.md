@@ -1,41 +1,37 @@
 ---
-title: A Java-webalkalmazását az Azure Application Insights telemetria szűrése |} A Microsoft Docs
-description: Csökkenthető a telemetriai forgalom szűrésével ki az eseményeket, nem kell figyelnie.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Az Azure Application Insights telemetria szűrése a Java-webalkalmazásban | Microsoft Docs
+description: Csökkentse a telemetria forgalmat úgy, hogy kiszűri azokat az eseményeket, amelyeket nem kell figyelnie.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 3/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9cf939b241da01be55c1b2ba5f00a5131ab94c06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 3/14/2019
+ms.openlocfilehash: de2a7c73b87254a6fd2e6c5dc942a9c93d28c2d4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061158"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819359"
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a>A Java-webalkalmazásban szűrőtelemetria
+# <a name="filter-telemetry-in-your-java-web-app"></a>Telemetria szűrése a Java-webalkalmazásban
 
-Szűrők hardvermódosításainak válassza ki a telemetriát, amely a [küld az Application Insights Java-webalkalmazás](java-get-started.md). Néhány-a-beépített szűrőket, amelyeket használhat, és a saját egyéni szűrőket is kiírhatja.
+A szűrők segítségével kiválaszthatja azt a telemetria, amelyet a [Java-webalkalmazás küld Application Insights](java-get-started.md). Vannak olyan beépített szűrők, amelyeket használhat, és saját egyéni szűrőket is írhat.
 
-A-beépített szűrők a következők:
+A beépített szűrők a következők:
 
-* Nyomkövetési súlyossági szint
-* Konkrét URL-címeket, kulcsszavakat vagy válaszkódok
-* Gyors válaszokat – vagyis a kérelmeket, amelyhez az alkalmazás válasza, gyorsan
-* Az események egyedi neve
+* Nyomkövetés súlyossági szintje
+* Konkrét URL-címek, kulcsszavak vagy válaszok kódjai
+* Gyors válaszok – ez a kérelmek, amelyekhez az alkalmazás gyorsan reagált
+* Adott események nevei
 
 > [!NOTE]
-> Szűrők az alkalmazás a metrikák döntés. Például dönthet úgy, hogy lassúak a válaszok diagnosztizálhatja, hogy beállítsa az elveti a gyors válaszidők szűrőt. De vegye figyelembe, hogy az átlagos válaszidők az Application Insights által jelentett igaz sebessége lassabb lesz, és a kérelmek száma kisebb, mint a valós szám lesz.
-> Ez nagyon fontos, ha [mintavételi](../../azure-monitor/app/sampling.md) helyette.
+> A szűrők elferdítik az alkalmazás metrikáit. Dönthet például úgy, hogy a lassú válaszok diagnosztizálásához beállít egy szűrőt a gyors válaszadási idő elvetéséhez. Azonban tisztában kell lennie azzal, hogy Application Insights által jelentett átlagos válaszidő a valós fordulatszámnál lassabb lesz, és a kérések száma kisebb lesz, mint a tényleges szám.
+> Ha ez problémát jelent, használja inkább a [mintavételezést](../../azure-monitor/app/sampling.md) .
 
 ## <a name="setting-filters"></a>Szűrők beállítása
 
-Az applicationinsights.xml fájlt, adja hozzá a `TelemetryProcessors` szakasz példához hasonlóan:
+A ApplicationInsights. xml fájlban adjon hozzá egy `TelemetryProcessors` szakaszt a következő példához hasonlóan:
 
 
 ```XML
@@ -88,11 +84,11 @@ Az applicationinsights.xml fájlt, adja hozzá a `TelemetryProcessors` szakasz p
 
 
 
-[Vizsgálja meg a beépített processzorok teljes körű](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Vizsgálja meg a beépített processzorok teljes készletét](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Beépített szűrők
 
-### <a name="metric-telemetry-filter"></a>Metrikaszűrőjének Telemetria
+### <a name="metric-telemetry-filter"></a>Metrikus telemetria szűrő
 
 ```XML
 
@@ -101,10 +97,10 @@ Az applicationinsights.xml fájlt, adja hozzá a `TelemetryProcessors` szakasz p
            </Processor>
 ```
 
-* `NotNeeded` -Egyéni metrikák nevei vesszővel tagolt listája.
+* `NotNeeded` – az egyéni metrikák neveinek vesszővel tagolt listája.
 
 
-### <a name="page-view-telemetry-filter"></a>Lapmegtekintések telemetriai adatai szűrő
+### <a name="page-view-telemetry-filter"></a>Oldal nézet telemetria szűrője
 
 ```XML
 
@@ -115,12 +111,12 @@ Az applicationinsights.xml fájlt, adja hozzá a `TelemetryProcessors` szakasz p
            </Processor>
 ```
 
-* `DurationThresholdInMS` – A lap betöltéséhez szükséges idő időtartam hivatkozik. Ha a beállítás engedélyezése esetén gyorsabb, mint a jelenleg betöltött oldalak nem jelenti.
-* `NotNeededNames` – Lap neve vesszővel tagolt listája.
-* `NotNeededUrls` -Töredékek URL-cím vesszővel tagolt listája. Ha például `"home"` szűri ki minden olyan lap, amely rendelkezik a "home" URL-címét.
+* `DurationThresholdInMS` – az időtartam a lap betöltéséhez szükséges időt jelenti. Ha ez a beállítás be van állítva, a rendszer nem adja meg az adott időpontnál gyorsabban betöltött lapokat.
+* `NotNeededNames` – a lapok neveinek vesszővel tagolt listája.
+* `NotNeededUrls` – URL-töredékek vesszővel tagolt listája. `"home"` például kiszűri az összes olyan oldalt, amely az URL-címben "Home".
 
 
-### <a name="request-telemetry-filter"></a>Telemetria szűrése kérése
+### <a name="request-telemetry-filter"></a>Telemetria-szűrő kérése
 
 
 ```XML
@@ -134,11 +130,11 @@ Az applicationinsights.xml fájlt, adja hozzá a `TelemetryProcessors` szakasz p
 
 
 
-### <a name="synthetic-source-filter"></a>Szintetikus adatforrásszűrő
+### <a name="synthetic-source-filter"></a>Szintetikus Forrás szűrő
 
-Kiszűri a SyntheticSource tulajdonság értéket tartalmazó összes telemetriai adat. Ezek közé tartozik a robotok, a csillag és a rendelkezésre állási tesztek érkező kérelmeket.
+Kiszűri az összes olyan telemetria, amely értékeket tartalmaz a SyntheticSource tulajdonságban. Ilyenek például a botoktól, a pókoktól és a rendelkezésre állási tesztektől érkező kérések.
 
-Szűrje ki a szintetikus kéréseket az összes telemetriai adatokat:
+A telemetria kiszűrése az összes szintetikus kérelem esetében:
 
 
 ```XML
@@ -146,7 +142,7 @@ Szűrje ki a szintetikus kéréseket az összes telemetriai adatokat:
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Szűrje ki a meghatározott szintetikus források telemetriája:
+Kiszűri az adott szintetikus források telemetria:
 
 
 ```XML
@@ -156,11 +152,11 @@ Szűrje ki a meghatározott szintetikus források telemetriája:
            </Processor>
 ```
 
-* `NotNeeded` – Szintetikus adatforrások nevének vesszővel tagolt listája.
+* `NotNeeded` – szintetikus források neveinek vesszővel tagolt listája.
 
-### <a name="telemetry-event-filter"></a>Telemetriai események szűrése
+### <a name="telemetry-event-filter"></a>Telemetria-esemény szűrője
 
-Egyéni események szűrők (használatával naplózza [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
+Egyéni események szűrése (a [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)használatával naplózva).
 
 
 ```XML
@@ -171,12 +167,12 @@ Egyéni események szűrők (használatával naplózza [TrackEvent()](../../azur
 ```
 
 
-* `NotNeededNames` – Az események neve vesszővel tagolt listája.
+* `NotNeededNames` – az események neveinek vesszővel tagolt listája.
 
 
-### <a name="trace-telemetry-filter"></a>Nyomkövetési Telemetriai szűrő
+### <a name="trace-telemetry-filter"></a>Nyomkövetési telemetria szűrője
 
-Nyomkövetési naplók szűrők (használatával naplózza [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) vagy egy [naplózási keretrendszer gyűjtő](java-trace-logs.md)).
+Szűri a naplók nyomkövetéseit (a [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) vagy egy [naplózási keretrendszer-gyűjtővel](java-trace-logs.md)naplózva).
 
 ```XML
 
@@ -185,20 +181,20 @@ Nyomkövetési naplók szűrők (használatával naplózza [TrackTrace()](../../
            </Processor>
 ```
 
-* `FromSeverityLevel` Érvényes értékek a következők:
-  *  KI - összes nyomkövetési kiszűréséhez
-  *  NYOMKÖVETÉS - szűrés. Nyomkövetési szint egyenlő
-  *  INFORMÁCIÓ - szűrő ki NYOMKÖVETÉSI szint
-  *  FIGYELMEZTETÉS – ki információkat és a NYOMKÖVETÉSI szűrő
-  *  HIBA – meg figyelmeztetés, információ a NYOMKÖVETÉSI szűrő
-  *  KRITIKUS - szűrő, kivéve a kritikus fontosságú
+* `FromSeverityLevel` érvényes értékek a következők:
+  *  Az összes nyomkövetés kiszűrése
+  *  Nyomkövetés – nincs szűrés. a nyomkövetési szinttel egyenlő
+  *  INFORMÁCIÓ – kiszűrési NYOMKÖVETÉSi szint
+  *  Figyelmeztetés – kiszűrheti a NYOMKÖVETÉSt és az adatokat
+  *  HIBA – figyelmeztetés, információ, nyomkövetés kiszűrése
+  *  KRITIKUS – az összes kritikus kiszűrése
 
 
 ## <a name="custom-filters"></a>Egyéni szűrők
 
-### <a name="1-code-your-filter"></a>1. A szűrő-kód
+### <a name="1-code-your-filter"></a>1. a szűrő kódja
 
-A kódban, hozzon létre egy osztályt, amely megvalósítja `TelemetryProcessor`:
+A kódban hozzon létre egy olyan osztályt, amely megvalósítja `TelemetryProcessor`:
 
 ```Java
 
@@ -235,9 +231,9 @@ A kódban, hozzon létre egy osztályt, amely megvalósítja `TelemetryProcessor
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. A szűrő a konfigurációs fájl meghívása
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. a szűrő meghívása a konfigurációs fájlban
 
-In ApplicationInsights.xml:
+A ApplicationInsights. xml fájlban:
 
 ```XML
 
@@ -254,9 +250,9 @@ In ApplicationInsights.xml:
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. A szűrő (Java Spring) meghívása
+### <a name="3-invoke-your-filter-java-spring"></a>3. a szűrő meghívása (Java Spring)
 
-Alapján a Spring-keretrendszert használó alkalmazások egyéni telemetriát processzorok kell regisztrálni a fő alkalmazásosztály, egy bean. Az alkalmazás indításakor autowired majd lesz.
+A Spring Framework-alapú alkalmazások esetében az egyéni telemetria processzorokat Bean-ként kell regisztrálni a fő alkalmazás osztályban. Ezt követően automatikusan drótba kerülnek, amikor az alkalmazás elindul.
 
 ```Java
 @Bean
@@ -265,15 +261,15 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-Hozza létre a saját szűrő paramétereket lévő kell `application.properties` és használja ki a Spring Boot externalized konfigurációs keretrendszer ezeket a paramétereket adhat át az egyéni szűrő. 
+Létre kell hoznia a saját szűrő paramétereit a `application.properties`ban, és a Spring boot külső konfigurációs keretrendszerét kell használnia, hogy átadja ezeket a paramétereket az egyéni szűrőnek. 
 
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-*A szűrés nem működik.*
+*A szűrő nem működik.*
 
-* Ellenőrizze, hogy megadta-e érvényes paraméterértékeket. Például időtartamok egész számoknak kell lenniük. Érvénytelen értékek miatt a szűrőt, hogy figyelmen kívül lesz hagyva. Ha az egyéni szűrő konstruktor vagy set metódus kivételt jelez, akkor figyelmen kívül.
+* Győződjön meg arról, hogy érvényes paraméter-értékeket adott meg. Például az időtartamoknak egész számnak kell lenniük. Az értékek érvénytelenek, mert a szűrő figyelmen kívül lesz hagyva. Ha az egyéni szűrő kivételt okoz a konstruktorból vagy a set metódusból, a rendszer figyelmen kívül hagyja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Mintavételi](../../azure-monitor/app/sampling.md) -fontolja meg a mintavétel a metrikák nem tevékenységdiagramon alternatívájaként.
+* [Mintavételezés](../../azure-monitor/app/sampling.md) – vegye fontolóra a mintavételezést olyan Alternatív megoldásként, amely nem rontja a metrikákat.

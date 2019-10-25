@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376290"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819822"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -96,7 +96,7 @@ Az alábbi táblázat egy példát mutat be a költségek és a kifizetések leb
 
 |**Microsoft-számlák**|**$100/hó**|
 |:---|:---|
-|A Microsoft a licencelési díj 80%-ában fizet <br>@no__t – 0*a minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet*|$80,00/hó <br>*@no__t – 1*90,00/hó *|
+|A Microsoft a licencelési díj 80%-ában fizet <br>a *minősített SaaS-alkalmazások *a Microsoft a licencek díja 90%-át fizet*|$80,00/hó <br>*$* 90,00/hó *|
 
 - Ebben a példában a Microsoft $100,00-es számlát küld az ügyfélnek a szoftverlicenc számára, és kifizeti a $80,00-et a közzétevőnek.
 - Azok a partnerek, akik a **kedvezményes Piactéri szolgáltatási díjjal** rendelkeznek, csökkentett tranzakciós díjat kapnak az SaaS-ajánlatokról, a május 2019-ig, 2020-ig. Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $90,00-et a közzétevőnek.
@@ -178,7 +178,8 @@ A mezők befejezése után válassza a **Mentés** lehetőséget.
 Válasszon legalább egyet (1), és legfeljebb három (3) kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területein való csoportosításához használhatók. Kérjük, tekintse meg, hogyan támogatja az ajánlat a kategóriákat az ajánlat leírásában. 
 
 ### <a name="industry"></a>Iparág
-Válasszon akár két (2) iparágat is, amelyek az ajánlatnak a piactér megfelelő keresési területein való csoportosítására szolgálnak. Ha az ajánlat nem az iparágra jellemző, ne válasszon egyet. Kérjük, hívja meg az ajánlat leírásában, hogy az ajánlat hogyan támogatja a kiválasztott iparágakat. 
+
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 Ez egy nem kötelezően kitöltendő mező, amely az AppSource piactéren az ajánlat verziószámának azonosítására szolgál. 
@@ -240,8 +241,8 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
     **Példa**: 
 
-    @no__t – 0 ez az első bekezdésem. `</p>` <br>
-    @no__t – 0 Ez a második bekezdés. `</p>` <br>
+    `<p>` ez az első bekezdés. `</p>` <br>
+    `<p>` ez a második bekezdés. `</p>` <br>
 
     A fentiek így néznek ki:
 
@@ -279,22 +280,22 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
     **Példa**:
 
-    Ez egy szöveges sor. @no__t – 0 ez egy olyan szövegsor, amely új sorban indul el. @no__t – 0 – ez egy sor, amely az alábbi két sort fogja elindítani. 
+    Ez egy szöveges sor. `<br>` ez egy olyan szövegsor, amely új sorban indul el. `<br><br>` ez egy olyan vonal, amely az alábbi két sort fogja elindítani. 
 
     A fentiek így néznek ki:
 
     Ez egy szöveges sor. <br> Ez egy olyan szövegsor, amely új sorban indul el. <br><br> Ez egy olyan sor, amely az alábbi két sort fogja elindítani. 
 
-1. Ha szeretné **megnövelni a szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő @no__t – 0 címkét a szöveg elejéhez és végéhez. 
+1. Ha szeretné **megnövelni a szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő `<H*></H*>` címkéket a szöveg elejéhez és végéhez. 
 
     **Példa**:
 
-    `<h1>`This az 1 @ no__t-1 fejléc <br>
-    @no__t – a 0This a 2. no__t-1. <br>
-    @no__t – a 0This a 3. no__t-1. <br>
-    @no__t – a 0This a 4. @ no__t-1. <br>
-    @no__t – a 0This 5. címsor @ no__t-1. <br>
-    @no__t – a 0This a 6 @ no__t-1. 
+    `<h1>`ez az 1. címsor`</h1>` <br>
+    `<h2>`ez a 2. fejléc`</h2>` <br>
+    `<h3>`ez a 3. címsor`</h3>` <br>
+    `<h4>`ez a 4. címsor`</h4>` <br>
+    `<h5>`ez az 5. címsor`</h5>` <br>
+    `<h6>`ez a 6. címsor`</h6>` 
 
     A fentiek így néznek ki:
 
@@ -405,7 +406,7 @@ Az ingyenes próbaverzió konfigurálásának lehetősége az ajánlat minden cs
 >[!Note]
 >Ha a visszagörgethető ajánlat ingyenes próbaverzióval lett közzétéve, az adott csomag esetében nem tiltható le. Győződjön meg arról, hogy ez a beállítás megfelelő az első közzétételhez, hogy ne kelljen újból létrehoznia a csomagot.
 
-Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot @no__t – 0, amely igaz vagy hamis értékként lesz megjelölve. További információt a [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) -val foglalkozó témakörben talál.
+Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial`, amely True (igaz) vagy FALSE (hamis) értékűként lesz megjelölve. További információt a [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) -val foglalkozó témakörben talál.
 
 >[!Note]
 >Az ingyenes próbaverziók nem támogatottak a piactér-mérési szolgáltatást használó csomagok esetében.
@@ -436,7 +437,7 @@ Válassza ki azt a gyakoriságot, amellyel az ügyfeleknek meg kell fizetniük a
 - **Díj**: USD/hó vagy USD/év
 
 A helyi pénznemben (USD = Egyesült Államok dollár) beállított díjak az összes kiválasztott piac helyi pénznemére lesznek átalakítva a telepítés során elérhető aktuális árfolyamok használatával. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. A jelen díjszabás és a saját beállítások ellenőrzése a felelős.
-*@no__t – a 1You először mentenie kell a díjszabási módosításokat, hogy lehetővé váljon az árképzési adatmennyiség exportálása.*
+*\*a díjszabási módosítások exportálásának engedélyezéséhez először mentenie kell a díjszabási módosításokat.*
 
 A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos korlátozások vonatkoznak a csomag közzététele után megjelenő változásokra:
 

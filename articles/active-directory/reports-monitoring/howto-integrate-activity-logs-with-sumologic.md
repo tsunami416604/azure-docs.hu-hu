@@ -1,5 +1,5 @@
 ---
-title: Stream Azure Active Directory naplók a SumoLogic Azure Monitor használatával | Microsoft Docs
+title: Stream-naplók a SumoLogic Azure Monitor használatával | Microsoft Docs
 description: Ismerje meg, hogyan integrálhatja Azure Active Directory-naplókat a SumoLogic a Azure Monitor használatával
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1645415a8cfd86b142c25dc145c60e8b986d1013
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 70c3b72ab650eb506dfaac378e10a7170b8f041d
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989759"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819752"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Active Directory-naplók integrálása a SumoLogic a Azure Monitor használatával
 
@@ -42,7 +42,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 
    ![Irányítópult](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az auditnaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4a8a8d7f6004ac32aeb7ce2b8cbffeca9ddf0079
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595541"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816985"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Hozzon létre egy új Dynamics 365 for Operations ajánlatot
 
@@ -102,7 +102,7 @@ Válasszon legalább egyet és legfeljebb három kategóriát. A rendszer ezeket
 
 ### <a name="industry"></a>Iparág
 
-Lehetősége van akár két iparágra is kiválasztani, hogy az ajánlatot a piactéren kategorizálja. Ha az ajánlat nem az iparágra jellemző, hagyja üresen ezt a szakaszt. Ügyeljen arra, hogy az ajánlat leírásában ne feledje, hogyan támogatja a kiválasztott iparágakat. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 

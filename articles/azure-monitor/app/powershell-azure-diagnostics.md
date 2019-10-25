@@ -1,22 +1,18 @@
 ---
 title: Az Application Insights beállítása a PowerShell segítségével az Azure-ban | Microsoft Docs
 description: Automatizálja a Azure Diagnostics Application Insightsre való konfigurálását.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/06/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 0c963e4cd7befffe69fef159542eabd29059e3d9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/06/2019
+ms.openlocfilehash: 0e1fd048b855473c1d7978e2a908c45360a1ed2a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035192"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819020"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Azure-Application Insights beállítása a PowerShell használatával Cloud Services
 
@@ -43,7 +39,7 @@ Ha a webalkalmazás az Azure-ban található és Azure Resource Manager-sablonna
      } 
 
 * `nameOfAIAppResource`– az Application Insights-erőforrás neve
-* `myWebAppName`– a webalkalmazás azonosítója
+* `myWebAppName` – a webalkalmazás azonosítója
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
 A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Példa:
@@ -133,7 +129,7 @@ A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
 ```
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 * [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](../../azure-monitor/app/cloudservices.md)
 * [Az Azure Diagnostics küldése az Application Insights-ba](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Riasztások konfigurálásának automatizálása](powershell-alerts.md)

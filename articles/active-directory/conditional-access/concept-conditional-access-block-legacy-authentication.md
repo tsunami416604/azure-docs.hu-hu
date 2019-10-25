@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc8381fe964ce924ed37d6b7e6d22dc730eae89
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 19b29181f023b49cca7159fbbcad4a4675744a96
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453055"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819739"
 ---
 # <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
  
@@ -33,9 +33,11 @@ Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először m
 
 1. Navigáljon a Azure Portal > Azure Active Directory a bejelentkezések >.
 1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az oszlopok > ügyfélalkalmazás elemre kattint.
-1. Szűrje az ügyfélalkalmazás > más ügyfeleket, és kattintson az Alkalmaz gombra.
+1. Az ügyfélalkalmazás alapján történő szűrés > jelölje be az összes megjelenített ügyfél-beállítást, majd kattintson az Alkalmaz gombra.
+1. A szűrés állapot szerint > sikeres, és kattintson az Alkalmaz gombra. 
+1. Ha szükséges, bontsa ki a dátumtartományt a Dátum szűrő használatával.
 
-A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az alapinformációk lapon található ügyfélalkalmazás mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer. Ezek a naplók azt jelzik, hogy mely felhasználók maradnak az örökölt hitelesítéstől függően, és mely alkalmazások örökölt protokollokat használnak a hitelesítési kérések elvégzéséhez. Azoknál a felhasználóknál, akik nem jelennek meg a naplókban, és a rendszer megerősíti, hogy nem használ örökölt hitelesítést, implementáljon egy feltételes hozzáférési szabályzatot vagy engedélyezze az alapkonfigurációt: tiltsa le az örökölt hitelesítést ezen felhasználók számára.
+A szűrés csak a kiválasztott örökölt hitelesítési protokollok sikeres bejelentkezési kísérleteit jeleníti meg. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az egyes adatsorok kiválasztása után az alapszintű adatok lapon található ügyfélalkalmazás vagy az ügyfélalkalmazás mező jelzi, hogy melyik örökölt hitelesítési protokollt használta. Ezek a naplók azt jelzik, hogy mely felhasználók maradnak az örökölt hitelesítéstől függően, és mely alkalmazások örökölt protokollokat használnak a hitelesítési kérések elvégzéséhez. Azoknál a felhasználóknál, akik nem jelennek meg a naplókban, és a rendszer megerősíti, hogy nem használ örökölt hitelesítést, implementáljon egy feltételes hozzáférési szabályzatot vagy engedélyezze az alapkonfigurációt: tiltsa le az örökölt hitelesítést ezen felhasználók számára.
 
 ## <a name="moving-away-from-legacy-authentication"></a>A régi hitelesítéstől való elmozdulás 
 
@@ -47,8 +49,8 @@ Ez a szakasz részletes áttekintést nyújt arról, hogyan frissítheti környe
 
 A modern hitelesítés engedélyezésének első lépéseként győződjön meg arról, hogy a címtár támogatja a modern hitelesítést. A modern hitelesítés alapértelmezés szerint engedélyezve van a 2017. augusztus 1-jén vagy azt követően létrehozott címtárakban. Ha a címtár ezen dátum előtt lett létrehozva, akkor a következő lépések végrehajtásával manuálisan kell engedélyeznie a címtár modern hitelesítését:
 
-1. Ellenőrizze, hogy a címtár már támogatja-e a modern hitelesítést. Ehhez futtassa a következőt: @ no__t-0 @ no__t-1from a [Skype vállalati online PowerShell-modulhoz](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Ha a parancs üres @ no__t-0 @ no__t-1property ad vissza, akkor a modern hitelesítés le van tiltva. Frissítse a beállítást a modern hitelesítés engedélyezéséhez a @ no__t-0 használatával. Ha a @ no__t-0 @ no__t-1property tartalmaz egy bejegyzést, akkor jó.
+1. Ellenőrizze, hogy a címtár már támogatja-e a modern hitelesítést a [Skype vállalati online PowerShell-modul](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell) `Get-CsOAuthConfiguration` futtatásával.
+1. Ha a parancs üres `OAuthServers` tulajdonságot ad vissza, akkor a modern hitelesítés le van tiltva. Frissítse a beállítást a modern hitelesítés engedélyezéséhez `Set-CsOAuthConfiguration`használatával. Ha a `OAuthServers` tulajdonság egy bejegyzést tartalmaz, akkor a megfelelő lépés.
 
 A továbblépés előtt mindenképpen hajtsa végre ezt a lépést. Fontos, hogy a címtár-konfigurációk először módosítva legyenek, mivel azt írják elő, hogy az összes Office-ügyfél melyik protokollt fogja használni. Még ha olyan Office-ügyfeleket is használ, amelyek támogatják a modern hitelesítést, alapértelmezés szerint örökölt protokollokat használnak, ha a modern hitelesítés le van tiltva a címtárban.
 
@@ -56,7 +58,7 @@ A továbblépés előtt mindenképpen hajtsa végre ezt a lépést. Fontos, hogy
 
 Miután engedélyezte a modern hitelesítést a címtárban, az Office-ügyfelek modern hitelesítésének engedélyezésével elkezdheti az alkalmazások frissítését. Az Office 2016 vagy újabb verziójú ügyfelek alapértelmezés szerint támogatják a modern hitelesítést. Nincs szükség további lépésekre.
 
-Ha Office 2013 Windows-ügyfeleket vagy régebbit használ, javasoljuk, hogy frissítsen az Office 2016-es vagy újabb verziójára. A régebbi Office-alkalmazások továbbra is a régi hitelesítési protokollok használatát követően is a modern hitelesítés engedélyezésének befejezése után is elvégezték a korábbi lépéseket. Ha Office 2013-ügyfeleket használ, és nem tud azonnal frissíteni az Office 2016-es vagy újabb verziójára, kövesse a következő cikkben ismertetett lépéseket, hogy [engedélyezze a modern hitelesítést az office 2013-ben Windows-eszközökön](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Ha az örökölt hitelesítés használata közben szeretné védetté tenni a fiókját, javasoljuk, hogy használjon erős jelszavakat a címtárban. Tekintse meg az [Azure ad jelszavas védelmet](../authentication/concept-password-ban-bad.md)@no__t – 1to tiltja a teljes címtárban a gyenge jelszavakat.
+Ha Office 2013 Windows-ügyfeleket vagy régebbit használ, javasoljuk, hogy frissítsen az Office 2016-es vagy újabb verziójára. A régebbi Office-alkalmazások továbbra is a régi hitelesítési protokollok használatát követően is a modern hitelesítés engedélyezésének befejezése után is elvégezték a korábbi lépéseket. Ha Office 2013-ügyfeleket használ, és nem tud azonnal frissíteni az Office 2016-es vagy újabb verziójára, kövesse a következő cikkben ismertetett lépéseket, hogy [engedélyezze a modern hitelesítést az office 2013-ben Windows-eszközökön](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Ha az örökölt hitelesítés használata közben szeretné védetté tenni a fiókját, javasoljuk, hogy használjon erős jelszavakat a címtárban. Tekintse meg az [Azure ad jelszavas védelmet](../authentication/concept-password-ban-bad.md) a gyenge jelszavak megtiltásához a címtárban.
 
 Az Office 2010 nem támogatja a modern hitelesítést. Az Office 2010-et használó felhasználókat az Office újabb verziójára kell frissítenie. Javasoljuk, hogy az Office 2016-es vagy újabb verziójára frissítsen, mivel alapértelmezés szerint blokkolja az örökölt hitelesítést.
 

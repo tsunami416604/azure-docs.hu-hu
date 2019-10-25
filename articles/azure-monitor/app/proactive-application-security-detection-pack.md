@@ -1,50 +1,45 @@
 ---
-title: Intelligens detektálás – biztonsági kimutatási csomagot az Azure Application Insights |} A Microsoft Docs
-description: Monitorozhatók az alkalmazások az Azure Application Insights a potenciális biztonsági problémákat.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Intelligens észlelés – biztonsági észlelési csomag az Azure Application Insightsval | Microsoft Docs
+description: Az alkalmazások monitorozása az Azure Application Insights a potenciális biztonsági problémák miatt.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 12/12/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 90d58d1b22e893e922aa0f3770198fc95f539419
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/12/2017
+ms.openlocfilehash: 10c8a38af9e4f04b874bfa75e9e78d241b093117
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572887"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820648"
 ---
-# <a name="application-security-detection-pack-preview"></a>Alkalmazás biztonsági észlelési csomag (előzetes verzió)
+# <a name="application-security-detection-pack-preview"></a>Alkalmazás biztonsági észlelési csomagja (előzetes verzió)
 
-Az Application Insights automatikusan elemzi a telemetria az alkalmazás által generált, és észleli a potenciális biztonsági problémákat. Ezzel a képességgel azonosíthatja a potenciális biztonsági problémákat, és kezelni őket, azzal, hogy az alkalmazás és a szükséges biztonsági intézkedéseket.
+Application Insights automatikusan elemzi az alkalmazás által generált telemetria, és észleli a lehetséges biztonsági problémákat. Ez a funkció lehetővé teszi az esetleges biztonsági problémák azonosítását, valamint az alkalmazás kijavításával vagy a szükséges biztonsági intézkedések meghozatalával történő kezelését.
 
-Ez a funkció nem speciális beállítás nem szükséges [telemetriát küldjön az alkalmazás konfigurálásához](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
+Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, [az alkalmazás nem konfigurálható telemetria küldéséhez](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Ha szeretné be intelligens detektálás értesítést az ilyen típusú?
-Észlelt biztonsági problémák három típusa van:
-1. Nem biztonságos URL-hozzáférés: az alkalmazás URL-hozzáférnek a HTTP és HTTPS-n keresztül. Általában egy URL-címet, amely HTTPS-kéréseket fogad el kell nem fogadja el a HTTP-kérések. Ez egy programhiba vagy biztonsági probléma az alkalmazásban utalhat.
-2. Nem biztonságos űrlap: egy űrlapot (vagy más "POST" kérelem), az alkalmazás használja a HTTP helyett HTTPS. HTTP-n keresztül kedvezőtlenül befolyásolhatja a felhasználói adatokat az űrlap által küldött.
-3. Gyanús felhasználói tevékenység: az alkalmazás hozzáférnek több ország/régió szerint ugyanaz a felhasználó körülbelül egy időben. Például ugyanaz a felhasználó elérhető az alkalmazás Spanyolország és az Egyesült Államokban adott órán belül. Az észlelés azt jelzi, hogy az alkalmazás egy potenciálisan kártékony hozzáférési kísérlet.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
+A rendszer háromféle biztonsági problémát észlelt:
+1. Nem biztonságos URL-hozzáférés: az alkalmazásban lévő URL-cím a HTTP és a HTTPS protokollon keresztül érhető el. A HTTPS-kérelmeket fogadó URL-cím általában nem fogadhat el HTTP-kérelmeket. Ez az alkalmazásban felmerülő hibákra vagy biztonsági problémákra utalhat.
+2. Nem biztonságos űrlap: az alkalmazásban lévő űrlap (vagy más "POST" kérelem) HTTPS helyett HTTP-t használ. A HTTP használata veszélyeztetheti az űrlap által elküldhető felhasználói adattípusokat.
+3. Gyanús felhasználói tevékenység: az alkalmazás több országból vagy régióból érhető el, és ugyanaz a felhasználó nagyjából egy időben. Például ugyanaz a felhasználó az alkalmazást Spanyolországból és a Egyesült Államok egy órán belül elérte. Ez az észlelés egy potenciálisan rosszindulatú hozzáférési kísérletet jelez az alkalmazáshoz.
 
-## <a name="does-my-app-definitely-have-a-security-issue"></a>Saját alkalmazás mindenképp rendelkezik egy biztonsági probléma?
-Nem, egy értesítés nem jelenti azt, hogy az alkalmazás mindenképp rendelkezik egy biztonsági probléma. Sok esetben egy észlelését, az a fenti esetekben biztonsági jelezheti. Az észlelés azonban előfordulhat, hogy természetes üzleti indoklásának, és figyelmen kívül hagyható.
+## <a name="does-my-app-definitely-have-a-security-issue"></a>Az alkalmazásom határozottan biztonsági probléma?
+Nem, egy értesítés nem jelenti azt, hogy az alkalmazásnak határozottan biztonsági probléma van. A fenti forgatókönyvek bármelyikének észlelése számos esetben biztonsági problémát jelezhet. Az észlelés azonban természetes üzleti indoklással rendelkezhet, és figyelmen kívül hagyható.
 
-## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>Hogyan oldja meg a "Nem biztonságos URL-cím hozzáférés" észlelését?
-1. **Osztályozási.** Az értesítés biztosít a felhasználók száma, akik nem biztonságos URL-címeket, és az URL-cím, amely a legtöbb volt elérhető, biztonságos hozzáférés által érintett. Ez segíthet a probléma prioritást rendelhet.
-2. **A hatókör.** A felhasználók milyen százalékos érhető el a nem biztonságos URL-címek? Hány URL-címek érintettek? Ez az információ szerezhető az értesítést.
-3. **Diagnosztizálja a.** Az észlelés nem biztonságos kérések listáját és az URL-címek és, amelyek segítséget nyújtanak a probléma további diagnosztizálása érintett felhasználók listáját biztosít.
+## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>Hogyan javítsa ki a "nem biztonságos URL-hozzáférés" észlelését?
+1. **Osztályozás.** Az értesítés megadja a nem biztonságos URL-címekhez hozzáférő felhasználók számát, valamint a nem biztonságos hozzáférés által a leginkább érintett URL-címet. Ez segíthet a probléma prioritásának hozzárendelésében.
+2. **Hatókör.** A felhasználók hány százaléka fér hozzá a nem biztonságos URL-címekhez? Hány URL-cím érintett? Ezeket az információkat az értesítésből lehet beszerezni.
+3. **Diagnosztizálása.** Az észlelés biztosítja a nem biztonságos kérelmek listáját, valamint az érintett URL-címek és felhasználók listáját, hogy segítsen a probléma további diagnosztizálásában.
 
-## <a name="how-do-i-fix-the-insecure-form-detection"></a>Hogyan oldja meg a "Biztonságos űrlap" észlelését?
-1. **Osztályozási.** Az értesítés nem biztonságos űrlapok számától és a felhasználók, amelynek adatait potenciálisan sérült biztonságú biztosít. Ez segíthet a probléma prioritást rendelhet.
-2. **A hatókör.** Melyik képernyő legnagyobb mennyisége nem biztonságos átvitelt részt, és mi nem biztonságos átvitelek időbeli megoszlása? Ez az információ szerezhető az értesítést.
-3. **Diagnosztizálja a.** Az észlelés nem biztonságos űrlapok listáján, és a egy bontása minden egyes űrlap segítséget a probléma további diagnosztizálása nem biztonságos átvitelek száma biztosít.
+## <a name="how-do-i-fix-the-insecure-form-detection"></a>Hogyan javítsa ki a "nem biztonságos űrlap" észlelést?
+1. **Osztályozás.** Az értesítés megadja a nem biztonságos űrlapok számát és azon felhasználók számát, akiknek az adatsérülése veszélyben volt. Ez segíthet a probléma prioritásának hozzárendelésében.
+2. **Hatókör.** Melyik űrlap vett részt a legtöbb nem biztonságos átvitelben, és milyen a nem biztonságos átvitelek eloszlása az idő múlásával? Ezeket az információkat az értesítésből lehet beszerezni.
+3. **Diagnosztizálása.** Az észlelés biztosítja a nem biztonságos űrlapok listáját, valamint az egyes űrlapok nem biztonságos átvitelének lebontását, hogy segítsen a probléma további diagnosztizálásában.
 
-## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Hogyan oldja meg a "gyanús felhasználói tevékenység" észlelését?
-1. **Osztályozási.** Az értesítés biztosít, amely a gyanús viselkedés sokfélék különböző felhasználók száma. Ez segíthet a probléma prioritást rendelhet.
-2. **A hatókör.** Mely országokban és régiókban az volt a gyanús ügyfélkérések? Melyik felhasználó volt a legnagyobb gyanús? Ez az információ szerezhető az értesítést.
-3. **Diagnosztizálja a.** Az észlelés biztosít a gyanús felhasználók listáját, és minden felhasználó segítséget a probléma további diagnosztizálása országok/régiók listája.
+## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Hogyan javítsa ki a "gyanús felhasználói tevékenység" észlelését?
+1. **Osztályozás.** Az értesítés a gyanús viselkedést kiállító különböző felhasználók számát adja meg. Ez segíthet a probléma prioritásának hozzárendelésében.
+2. **Hatókör.** Mely országokból/régiókból származnak a gyanús kérelmek? Melyik felhasználó volt a leggyanús? Ezeket az információkat az értesítésből lehet beszerezni.
+3. **Diagnosztizálása.** Az észlelés megjeleníti a gyanús felhasználók listáját, valamint az egyes felhasználók országait/régióit, hogy segítsen a probléma további diagnosztizálásában.

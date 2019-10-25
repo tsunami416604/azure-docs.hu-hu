@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097658"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819663"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -58,15 +58,15 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 ## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
 A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure Portalra](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
 <a name="Configure-Local-Cache-Portal"></a>
 
-A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmazás-beállítás használatával:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti a következő alkalmazás-beállítás használatával: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![Azure Portal alkalmazás beállításai: Helyi gyorsítótár](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![Azure Portal Alkalmazásbeállítások: helyi gyorsítótár](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
 ### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Helyi gyorsítótár konfigurálása Azure Resource Manager használatával
 <a name="Configure-Local-Cache-ARM"></a>
@@ -93,25 +93,26 @@ A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmaz
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>A méret beállítás módosítása a helyi gyorsítótárban
-Alapértelmezés szerint a helyi gyorsítótár mérete **300 MB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja az alkalmazás beállítását `WEBSITE_LOCAL_CACHE_SIZEINMB`. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet.
+Alapértelmezés szerint a helyi gyorsítótár mérete **1 GB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja a `WEBSITE_LOCAL_CACHE_SIZEINMB`alkalmazást. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Ajánlott eljárások App Service helyi gyorsítótár használatához
 Javasoljuk, hogy a helyi gyorsítótárat az [átmeneti környezetek](../app-service/deploy-staging-slots.md) szolgáltatással együtt használja.
 
-* Adja hozzá a *Sticky* app `WEBSITE_LOCAL_CACHE_OPTION` beállítást az éles tárolóhely értékével. `Always` Ha használja `WEBSITE_LOCAL_CACHE_SIZEINMB`a-t, az éles tárolóhelyként is hozzáadja az értéket.
+* Adja hozzá a *Sticky* app Setting `WEBSITE_LOCAL_CACHE_OPTION` értéket az **üzemi** tárolóhelyhez `Always` értékkel. Ha `WEBSITE_LOCAL_CACHE_SIZEINMB`használ, azt is vegye fel az éles környezetbe.
 * Hozzon létre egy **átmeneti** tárolóhelyet, és tegye közzé az átmeneti tárolóhelyen. Általában nem úgy állítja be az átmeneti tárolóhelyet, hogy a helyi gyorsítótárat használja, hogy zökkenőmentes Build-üzembe helyezés-tesztelési életciklust engedélyezzen az átmeneti tároláshoz, ha az üzemi tárolóhelyhez tartozó helyi gyorsítótár előnyeit kapja.
 * Tesztelje a webhelyet az átmeneti tárolóhelyen.  
 * Ha elkészült, állítson ki egy [swap-műveletet](../app-service/deploy-staging-slots.md#Swap) az átmeneti és az üzemi tárolóhelyek között.  
 * A Sticky-beállítások közé tartozik a név és a Sticky to a slot. Tehát amikor az előkészítési pont az éles környezetbe kerül, örökli a helyi gyorsítótár-alkalmazás beállításait. Az újonnan felcserélt üzemi tárolóhely néhány perc elteltével a helyi gyorsítótárral fog futni, és a rendszer a swap után bemelegíti a slot bemelegedési részét. Tehát amikor a tárolóhely cseréje befejeződött, az éles tárolóhely a helyi gyorsítótáron fut.
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Honnan tudhatom meg, hogy a helyi gyorsítótár vonatkozik-e az alkalmazásra?
 Ha az alkalmazásnak nagy teljesítményű, megbízható tartalom-tárolóra van szüksége, a nem használja a Content Store-t a kritikus adatokat futásidőben, és a teljes méretnél kevesebb, mint 2 GB-ot, a válasz igen. A/site és a/siteextensions mappák teljes méretének lekéréséhez használhatja az "Azure Web Apps lemezhasználat" nevű helyet.
 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Honnan tudhatom meg, hogy a webhelyem a helyi gyorsítótár használatára váltott-e?
-Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használja, a swap művelet nem fejeződik be, amíg a helyi gyorsítótár be nem fejeződik. Ha ellenőrizni szeretné, hogy a hely a helyi gyorsítótáron fut-e, ellenőrizze a munkavégző `WEBSITE_LOCALCACHE_READY`folyamat környezeti változóját. A [munkavégző folyamat környezeti változójának](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lapján található utasítások segítségével több példányon is elérheti a munkavégző folyamat környezeti változóját.  
+Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használja, a swap művelet nem fejeződik be, amíg a helyi gyorsítótár be nem fejeződik. Ha ellenőrizni szeretné, hogy a hely a helyi gyorsítótáron fut-e, akkor ellenőrizze a munkavégző folyamat környezeti változóját `WEBSITE_LOCALCACHE_READY`. A [munkavégző folyamat környezeti változójának](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lapján található utasítások segítségével több példányon is elérheti a munkavégző folyamat környezeti változóját.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Hogy miért?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Miért?
 Ha az alkalmazás helyi gyorsítótárat használ, a legújabb módosítások beszerzéséhez újra kell indítania a helyet. Nem kívánja közzétenni a módosításokat egy éles helyen? Tekintse meg a tárolóhelyek beállításait az előző ajánlott eljárások szakaszban.
 
 ### <a name="where-are-my-logs"></a>Hol találhatók a naplók?

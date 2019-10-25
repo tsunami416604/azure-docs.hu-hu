@@ -4,16 +4,16 @@ description: Ez a cikk AzCopy-példákat tartalmaz, amelyek segítenek a tárol�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c65c6b3f6f186e7821ff402eea4494fa60e9c370
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598066"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817044"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
@@ -31,6 +31,9 @@ Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cik
 > Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 Tároló létrehozásához használhatja a [azcopy make](storage-ref-azcopy-make.md) parancsot. Az ebben a szakaszban szereplő példák egy `mycontainer` nevű tárolót hoznak létre.
 
@@ -54,10 +57,10 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Könyvtár tartalmának feltöltése 
 > * Adott fájlok feltöltése
 
-> [!NOTE]
-> A AzCopy nem számítja ki automatikusan a fájl MD5 kivonatoló kódját. Ha azt szeretné, hogy a AzCopy ezt tegye, fűzze hozzá a `--put-md5` jelzőt az egyes másolási parancsokhoz. Így a blob letöltésekor a AzCopy egy MD5-kivonatot számít ki a letöltött adatokat, és ellenőrzi, hogy a blob `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal.
-
 A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
 
@@ -122,7 +125,6 @@ Ebben a példában a AzCopy átviszi a `C:\myDirectory\photos` könyvtárat és 
 
 A fájlokat a `--exclude-path` kapcsoló használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
 Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket egy semicolin (`;`) használva válassza el. 
@@ -153,6 +155,9 @@ Ez a szakasz a következő példákat tartalmazza:
 > Ha egy blob `Content-md5` tulajdonsága kivonatot tartalmaz, a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a blob `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés meghiúsul, hacsak nem bírálja felül ezt a viselkedést úgy, hogy `--check-md5=NoCheck` vagy `--check-md5=LogOnly` értéket fűz a másolási parancshoz.
 
 A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 ### <a name="download-a-file"></a>Fájl letöltése
 
@@ -242,6 +247,9 @@ Ez a szakasz a következő példákat tartalmazza:
 
 A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.md).
 
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>BLOB másolása másik Storage-fiókba
 
 |    |     |
@@ -285,6 +293,9 @@ Ha a `--delete-destination` jelzőt úgy állítja be, hogy `true` AzCopy, a fá
 > A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a `--delete-destination=prompt|true` jelző használata előtt engedélyezze a [Soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkciót.
 
 A részletes dokumentációs dokumentáció: [azcopy Sync](storage-ref-azcopy-sync.md).
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Tároló frissítése egy helyi fájlrendszer módosításaival
 

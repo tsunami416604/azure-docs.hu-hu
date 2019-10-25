@@ -4,14 +4,14 @@ description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy nö
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258964"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881643"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
@@ -21,7 +21,9 @@ A Resource Manager mindkét módban megpróbálja létrehozni a sablonban megado
 
 ## <a name="complete-mode"></a>Teljes mód
 
-Teljes módban a Resource Manager **törli** az erőforráscsoport meglévő erőforrásait, de nincs megadva a sablonban. A sablonban megadott erőforrások, de nincs telepítve, mert egy [feltétel](conditional-resource-deployment.md) hamis értékre van kiértékelve, nem törlődik.
+Teljes módban a Resource Manager **törli** az erőforráscsoport meglévő erőforrásait, de nincs megadva a sablonban.
+
+Ha a sablon olyan erőforrást tartalmaz, amely nincs központilag telepítve, mert a [feltétel](conditional-resource-deployment.md) hamis értéket ad vissza, akkor az eredmény attól függ, hogy melyik REST API-verziót használja a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. Az Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást.
 
 Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](resource-group-create-multiple.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
 
@@ -115,7 +117,7 @@ A következő példa egy olyan csatolt sablont mutat be, amely növekményes üz
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok](resource-group-authoring-templates.md)készítése.
 * További információ az erőforrások üzembe helyezéséről: [alkalmazások központi telepítése Azure Resource Manager sablonnal](resource-group-template-deploy.md).

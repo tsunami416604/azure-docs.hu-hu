@@ -1,23 +1,18 @@
 ---
 title: Application Insights JavaScript-webappokhoz | Microsoft Docs
 description: Lekérheti a lapmegtekintések és a munkamenetek számát, a webes ügyfél adatait, és nyomon követheti a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430194"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819380"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -50,7 +45,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Kódrészlet-alapú telepítés
 
-Ha az alkalmazás nem használja az NPM-t, akkor közvetlenül a weblapjait az egyes lapok tetején található kódrészlettel Application Insightshatja. Lehetséges, hogy az első szkriptnek kell lennie a `<head>` szakaszban, hogy az képes legyen az összes függőségével kapcsolatos esetleges problémák figyelésére. Ha a Blazer Server alkalmazást használja, adja hozzá a kódrészletet a `<head>` szakaszban található `_Host.cshtml` fájl elejéhez.
+Ha az alkalmazás nem használja az NPM-t, akkor közvetlenül a weblapjait az egyes lapok tetején található kódrészlettel Application Insightshatja. Lehetséges, hogy az első szkriptnek kell lennie a `<head>` szakaszban, hogy az képes legyen az összes függőségével kapcsolatos esetleges problémák figyelésére. Ha a Blazer Server alkalmazást használja, adja hozzá a kódrészletet a `<head>` szakaszban `_Host.cshtml` fájl elejéhez.
 
 ```html
 <script type="text/javascript">
@@ -145,7 +140,7 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 
 ## <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
-Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez hozzáadhat @no__t – 0 értéket a telepítési konfigurációhoz.
+Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez `enableAutoRouteTracking: true` adhat hozzá a beállítási konfigurációhoz.
 
 Jelenleg egy külön, az SDK-val inicializálható [beépülő modult](#react-extensions) is kínálunk. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint [más reagáló specifikus telemetria](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)is gyűjthet.
 
@@ -178,7 +173,7 @@ Válassza a **böngésző** lehetőséget, majd válassza a **hibák** vagy a **
 
 ### <a name="analytics"></a>Elemzés 
 
-A JavaScript SDK által gyűjtött telemetria lekéréséhez válassza a **megtekintés a naplókban (elemzés)** gombot. @No__t-1 `where` utasításának hozzáadásával csak a JavaScript SDK-ból és más SDK-k által gyűjtött kiszolgálóoldali telemetria fog adatokat kizárni.
+A JavaScript SDK által gyűjtött telemetria lekéréséhez válassza a **megtekintés a naplókban (elemzés)** gombot. `client_Type == "Browser"``where` utasításának hozzáadásával csak a JavaScript SDK-ból és más SDK-k által gyűjtött kiszolgálóoldali telemetria fog adatokat kizárni.
  
 ```kusto
 // average pageView duration by name
@@ -200,7 +195,7 @@ dataset
 A kivétel telemetria minified hívási verem lehet unminified a Azure Portal. A kivétel részletei panelen lévő összes meglévő integráció az újonnan unminified hívási verem fog működni. A forrás-hozzárendelési leképezés eltávolítása a meglévő és a jövőbeli JS SDK-kat (+ node. JS) is támogatja, így nem kell frissítenie az SDK verzióját. A nem minified hívási verem megtekintéséhez
 1. Válasszon ki egy kivételt telemetria elemet a Azure Portal a "végpontok közötti tranzakció részletei" megtekintéséhez.
 2. Azonosítsa, hogy mely forrás-térképek felelnek meg ehhez a hívási veremnek. A forrás-hozzárendelésnek egyeznie kell egy verem-keret forrásfájljait, de a `.map` utótaggal van ellátva.
-3. Húzza a forrást a legördülő listára a hívási verembe a Azure Portal ![](https://i.imgur.com/Efue9nU.gif)
+3. Húzza a forrást a legördülő menüre a Azure Portal a hívási verembe ![](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights webes alapszintű
 
@@ -219,7 +214,7 @@ A futtatható-példákat lásd: [Application Insights JavaScript SDK-minták](ht
 Az SDK v2 verziójában feltört változások:
 - A jobb API-aláírások engedélyezéséhez néhány API-hívás, például a trackPageView, a trackException frissítése megtörtént. A böngésző IE8-ban vagy alacsonyabb verzióban való futtatása nem támogatott.
 - Az telemetria-borítékban az Adatséma frissítései miatt a mező neve és szerkezete módosul.
-- Áthelyezte a `context.operation` értéket `context.telemetryTrace` értékre. Egyes mezők is módosultak (`operation.id` @ no__t-1 @ no__t-2)
+- Áthelyezte a `context.operation` értéket `context.telemetryTrace` értékre. Egyes mezők is módosultak (`operation.id` --> `telemetryTrace.traceID`)
   - Ha manuálisan szeretné frissíteni az aktuális oldalmegtekintési azonosítót (például a SPA-alkalmazásokban), ezt a `appInsights.properties.context.telemetryTrace.traceID = Util.newId()` használatával végezheti el
 
 Ha az aktuális Application bepillantást előállító SDK-t (1.0.20) használja, és szeretné megtekinteni, hogy az új SDK működik-e futásidőben, frissítse az URL-címet az aktuális SDK-betöltési forgatókönyvtől függően.

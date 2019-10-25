@@ -1,23 +1,18 @@
 ---
 title: Ismerkedés a Java-nyomkövetési naplókkal az Azure Application Insightsban | Microsoft Docs
 description: Log4J-vagy Logback-nyomkövetés keresése a Application Insightsban
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/18/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.date: 05/18/2019
+ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038146"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819336"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
@@ -27,7 +22,7 @@ Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomköv
 
 ## <a name="using-the-application-insights-java-agent"></a>A Application Insights Java-ügynök használata
 
-A Application Insights Java-ügynököt beállíthatja úgy, hogy automatikusan rögzítse a naplókat, ha engedélyezi a funkciót a `AI-Agent.xml` fájlban:
+A Application Insights Java-ügynököt úgy is beállíthatja, hogy automatikusan rögzítse a naplókat a szolgáltatásnak a `AI-Agent.xml` fájlban való engedélyezésével:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -68,7 +63,7 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J 2.0-s verzió*
 
 ```XML
 
@@ -81,7 +76,7 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J 2.0-s verzió*
 
 ```XML
 
@@ -95,7 +90,7 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
 ```
 
 #### <a name="if-youre-using-gradle"></a>Ha Gradle-t használ...
-Ha a projekt már be van állítva az Gradle for Build használatára, adja hozzá a következő sorok egyikét a Build. Gradle fájl `dependencies` csoportjához:
+Ha a projekt már be van állítva az Gradle for Build használatára, adja hozzá a következő sorok egyikét a Build. Gradle fájl `dependencies` csoportjába:
 
 Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letöltéséhez.
 
@@ -106,13 +101,13 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J 2.0-s verzió**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J 2.0-s verzió**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -121,11 +116,11 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
 #### <a name="otherwise-"></a>Egyéb esetben...
 Kövesse az irányelveket a Application Insights Java SDK manuális telepítéséhez, töltse le a jar-t (a Maven Central oldalának megérkezése után kattintson a "jar" hivatkozásra a letöltési szakaszban) a megfelelő hozzáfűzéshez, és adja hozzá a letöltött append jar-t a projekthez.
 
-| Tuskózó | Letöltés | Erőforrástár |
+| Tuskózó | Letöltés | Részletes ismertetés |
 | --- | --- | --- |
-| Logback |[Logback-hozzáfűző jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
-| Log4J v2.0 |[Log4J v2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j 2.0-s verzió |[Log4J v 1.2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Logback |[Logback-hozzáfűző jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights – naplózás – logback |
+| Log4J 2.0-s verzió |[Log4J v2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights – naplózás – log4j2 |
+| Log4j 2.0-s verzió |[Log4J v 1.2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights – naplózás – log4j1_2 |
 
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>A hozzáfűzése hozzáadása a naplózási keretrendszerhez
@@ -144,7 +139,7 @@ A nyomkövetési lépések elindításához egyesítse a megfelelő kódrészlet
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J 2.0-s verzió*
 
 ```XML
 
@@ -160,7 +155,7 @@ A nyomkövetési lépések elindításához egyesítse a megfelelő kódrészlet
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J 2.0-s verzió*
 
 ```XML
 
@@ -183,7 +178,7 @@ A gyűjtők által küldött kivételek a portálon a kivétel telemetria jelenn
 
 ![A Application Insights portálon nyissa meg a keresést](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Diagnosztikai keresés][diagnostic]
 
 <!--Link references-->

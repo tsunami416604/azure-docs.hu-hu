@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387065"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880146"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory GYIK
 Ez a cikk a Azure Data Factoryával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.  
@@ -178,34 +176,21 @@ Igen. Egy tevékenység kimenete felhasználható egy későbbi tevékenységben
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hogyan szabályosan kezeli a tevékenység kimenetében lévő null értékeket? 
 A kifejezésekben a `@coalesce` konstruktor használatával a null értékeket szabályosan kezelheti. 
 
-## <a name="mapping-data-flows"></a>Adatfolyamatok leképezése
-
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Milyen Data Factory verziót használok adatfolyamatok létrehozásához?
-Adatfolyamatok létrehozásához használja a Data Factory v2 verziót.
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Egy korábbi privát előzetes verziót használok, aki az adatfolyamatokat használta, és az Data Factory v2 előzetes verzióját használták az adatforgalomhoz.
-Ez a verzió már elavult. Data Factory v2 adatforgalomhoz használható.
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Mi változott a privát előzetes verzióról a korlátozott nyilvános előzetes verzióra az adatforgalom tekintetében?
-Többé nem kell saját Azure Databricks-fürtöket használnia. A Data Factory a fürt létrehozását és lebontását fogja kezelni. A blob-adatkészletek és a Azure Data Lake Storage Gen2 adatkészletek tagolt szövegben és Apache Parquet-adatkészletekben vannak elválasztva. A fájlok tárolásához továbbra is használhatja a Data Lake Storage Gen2 és a blob Storage-tárolót. Használja a megfelelő társított szolgáltatást a tárolóeszközökhöz.
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Áttelepíthetem a privát előnézeti gyárakat Data Factory v2-re?
-
-Igen. [Kövesse az utasításokat](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
+## <a name="mapping-data-flows"></a>Adatfolyamok leképezése
 
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Segítségre van szükségem az adatfolyam logikájának hibaelhárításához. Milyen információkat kell megadnia a segítséghez?
 
-Ha a Microsoft segítséget vagy hibaelhárítást biztosít az adatfolyamatokkal kapcsolatban, adja meg a DSL-kód tervét. Ehhez kövesse az alábbi lépéseket:
+Ha a Microsoft segítséget vagy hibaelhárítást biztosít az adatfolyamatokkal kapcsolatban, adja meg az adatfolyam-parancsfájlt. Ez az adatfolyam-diagramon található kód mögötti parancsfájl. Az ADF felhasználói felületén nyissa meg az adatfolyamatot, majd kattintson a jobb felső sarokban található "parancsfájl" gombra. Másolja és illessze be ezt a parancsfájlt, vagy mentse szövegfájlba.
 
-1. Az adatfolyam-tervezőben válassza a **kód** lehetőséget a jobb felső sarokban. Ekkor megjelenik az adatfolyam szerkeszthető JSON-kódja.
-2. A kód nézetben válassza a **tervezés** lehetőséget a jobb felső sarokban. Ez a váltógomb a JSON-ról a csak olvasható formázott DSL-parancsfájlra vált.
-3. Másolja és illessze be ezt a parancsfájlt, vagy mentse szövegfájlba.
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>A Data Factory más 80 adatkészlet-típusaival Hogyan a hozzáférési adatokat?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>A Data Factory más 90 adatkészlet-típusaival Hogyan a hozzáférési adatokat?
 
 A leképezési adatfolyam funkció jelenleg lehetővé teszi Azure SQL Database, Azure SQL Data Warehouse, tagolt szövegfájlok használatát az Azure Blob Storage-ból vagy a Azure Data Lake Storage Gen2-ból, valamint a blob Storage-ból származó, illetve a forrás-és a fogadó Data Lake Storage Gen2 natív módon. 
 
 A másolási tevékenység használatával a többi összekötőtől származó adatok is megadhatók, majd az adatok átalakítását követően végrehajthat egy adatfolyam-tevékenységet. Például a folyamat először a blob Storage-ba másol, majd egy adatfolyam-tevékenység egy adatkészletet fog használni a forrásban az adatátalakításhoz.
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Elérhető a saját üzemeltetésű integrációs modul az adatforgalomhoz?
+
+A saját üzemeltetésű integrációs modul egy ADF-alapú folyamat-összeállítás, amellyel a másolási tevékenységgel adatok szerezhetők be és helyezhetők át a helyszíni vagy a VM-alapú adatforrásokból, illetve elsüllyednek. Először készítsen másolatot az adatforgalomról, majd az átalakításhoz szükséges adatfolyamot, majd egy későbbi másolatot, ha át kell helyeznie az átalakított adattárolót a helyszíni áruházba.
 
 ## <a name="next-steps"></a>Következő lépések
 Az adat-előállító létrehozásával kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat:

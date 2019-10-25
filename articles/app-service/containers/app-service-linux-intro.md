@@ -4,8 +4,8 @@ description: Az Azure Linux App Service szolgáltatás ismertetése.
 keywords: azure app service, linux, oss
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -15,38 +15,29 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071330"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819686"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
-A [Azure app Service](../overview.md) egy teljes körűen felügyelt számítási platform, amely webhelyek és webalkalmazások üzemeltetésére van optimalizálva. A Linuxon futó App Service használatával az ügyfelek natív módon üzemeltethetnek webalkalmazásokat a támogatott alkalmazáscsoportok számára a Linuxon. A [nyelvek](#languages) szakasz felsorolja a jelenleg támogatott alkalmazás-készleteket.
+A [Azure app Service](../overview.md) egy teljes körűen felügyelt számítási platform, amely webhelyek és webalkalmazások üzemeltetésére van optimalizálva. A Linuxon futó App Service használatával az ügyfelek natív módon üzemeltethetnek webalkalmazásokat a támogatott alkalmazáscsoportok számára a Linuxon.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Nyelvek
 
-Az Linuxon futó App Service számos beépített rendszerképet támogat a fejlesztői termelékenység növelése érdekében. Ha a beépített rendszerképek nem támogatják az alkalmazás számára szükséges futtatókörnyezetet, akkor a [saját Docker rendszerkép felépítésére](tutorial-custom-docker-image.md) vonatkozó utasításokkal üzembe helyezheti azt a Web App for Containers szolgáltatásban.
+Az Linuxon futó App Service számos beépített rendszerképet támogat a fejlesztői termelékenység növelése érdekében. A nyelvek közé tartozik a Node. js, a Java (JRE 8 & JRE 11), a PHP, a Python, a .NET Core és a Ruby. [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) futtatásával megtekintheti a legújabb nyelveket és a támogatott verziókat. Ha a beépített rendszerképek nem támogatják az alkalmazás számára szükséges futtatókörnyezetet, akkor a [saját Docker rendszerkép felépítésére](tutorial-custom-docker-image.md) vonatkozó utasításokkal üzembe helyezheti azt a Web App for Containers szolgáltatásban.
 
-| Nyelv | Támogatott verziók |
-|---|---|
-| Node.js | 4,4, 4,5, 4,8, 6,2, 6,6, 6,9, 6,10, 6,11, 8,0, 8,1, 8,2, 8,8, 8,9, 8,11, 8,12, 9,4, 10,1, 10,10, 10,14 |
-| Java* | Tomcat 8,5, 9,0, Java SE, WildFly 14 (az összes futó JRE 8) |
-| PHP | 5,6, 7,0, 7,2, 7,3 |
-| Python | 2,7, 3,6, 3,7 |
-| .NET Core | 1,0, 1,1, 2,0, 2,1, 2,2 |
-| Ruby | 2,3, 2,4, 2,5, 2,6 |
-
-## <a name="deployments"></a>Üzemelő példányok
+## <a name="deployments"></a>Központi telepítés
 
 * FTP
 * Helyi Git
 * GitHub
 * Bitbucket
 
-## <a name="devops"></a>DevOps
+## <a name="devops"></a>Fejlesztés és üzemeltetés
 
 * Átmeneti környezetek
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) és DockerHub CI/CD
@@ -54,7 +45,7 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 ## <a name="console-publishing-and-debugging"></a>Konzol, közzététel és hibakeresés
 
 * Környezetek
-* Üzemelő példányok
+* Központi telepítés
 * Alapszintű konzol
 * SSH
 
@@ -62,7 +53,7 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 
 * Az [App Service-csomag](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json) szintjének megváltoztatásával az ügyfelek le- és felskálázhatják webalkalmazásaikat
 
-## <a name="locations"></a>Helyek
+## <a name="locations"></a>Földrajzi egységek
 
 Ellenőrizze az [Azure állapot-irányítópultját](https://azure.microsoft.com/status).
 
@@ -74,15 +65,15 @@ A Linuxon App Service csak [ingyenes, alapszintű, standard és prémium szintű
 
 Az egyazon erőforráscsoporthoz tartozó jelenlegi korlátozás alapján nem keverheti össze a Windows és Linux rendszerű alkalmazásokat ugyanabban a régióban.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-Ellenőrizze a LogFiles könyvtár Docker naplóit, ha az alkalmazás nem indul el, vagy ha meg szeretné tekinteni az alkalmazás naplózását. A könyvtárhoz az SCM-webhelyen vagy FTP-n keresztül férhet hozzá. `stdout` A és `stderr` a tárolóból való bejelentkezéshez engedélyeznie kell a Docker- **tároló** naplózását **app Service naplók**alatt. A beállítás azonnal érvénybe lép. App Service észleli a változást, és automatikusan újraindítja a tárolót.
+Ellenőrizze a LogFiles könyvtár Docker naplóit, ha az alkalmazás nem indul el, vagy ha meg szeretné tekinteni az alkalmazás naplózását. A könyvtárhoz az SCM-webhelyen vagy FTP-n keresztül férhet hozzá. A `stdout` és `stderr` a tárolóból való beléptetéséhez engedélyeznie kell a **Docker-tároló naplózását** a **app Service naplók**területen. A beállítás azonnal érvénybe lép. App Service észleli a változást, és automatikusan újraindítja a tárolót.
 
 Az SCM-webhelyet a **Fejlesztési eszközök** menüben található **Haladó eszközök** oldalon érheti el.
 
 ![A Kudu használata a Docker naplók megtekintésére][1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek a Linuxon futó App Service különböző nyelveken írt webalkalmazásokkal való használatának első lépéseit tartalmazzák:
 

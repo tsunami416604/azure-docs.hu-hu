@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezési hibák elhárítása Azure Active Directory jelentésekkel | Microsoft Docs
+title: A bejelentkezési hibákkal kapcsolatos jelentések hibaelhárítása | Microsoft Docs
 description: A bejelentkezéssel kapcsolatos hibák elhárítása Azure Active Directory jelentések használatával a Azure Portal
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 692fd2034fb70feffe02320eea5cdb9a3d163475
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988170"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819696"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: Bejelentkezési hibák elhárítása Azure Active Directory jelentések használatával
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: bejelentkezéssel kapcsolatos hibák elhárítása Azure Active Directory-jelentések használatával
 
 A Azure Active Directory (Azure AD) [bejelentkezési jelentései](concept-sign-ins.md) lehetővé teszik a szervezet alkalmazásaihoz való hozzáférés kezelésével kapcsolatos kérdésekre adott válaszok megkeresését, beleértve a következőket:
 
@@ -47,7 +47,7 @@ A következők szükségesek:
 
     ![Szűrés eredményei](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Azonosítsa a vizsgálni kívánt sikertelen bejelentkezést. Válassza ki azt a további részletek ablak megnyitásához, ahol további információ található a sikertelen bejelentkezésről. Jegyezze fel a **bejelentkezéshez** tartozó hibakódot és a **hiba okát**. 
+4. Azonosítsa a vizsgálni kívánt sikertelen bejelentkezést. Válassza ki azt a további részletek ablak megnyitásához, ahol további információ található a sikertelen bejelentkezésről. Jegyezze fel a **bejelentkezéshez tartozó hibakódot** és a **hiba okát**. 
 
     ![Rekord kiválasztása](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
@@ -61,7 +61,7 @@ A következők szükségesek:
 
 8. Ha az összes kötél meghibásodik, vagy ha a probléma továbbra is fennáll, az ajánlott művelet végrehajtása előtt [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a **Hibaelhárítás és támogatás** lapon leírt lépések követésével. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezések hibakód-referenciája](reference-sign-ins-error-codes.md)
 * [A bejelentkezések jelentésének áttekintése](concept-sign-ins.md)

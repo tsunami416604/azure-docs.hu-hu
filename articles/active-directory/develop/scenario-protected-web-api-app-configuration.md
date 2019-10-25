@@ -1,5 +1,6 @@
 ---
-title: Védett webes API – alkalmazás kódjának konfigurálása | Azure
+title: Védett webes API – az alkalmazás kódjának konfigurálása
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre védett webes API-t, és hogyan konfigurálhatja az alkalmazás kódját.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,20 +17,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562318"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803700"
 ---
-# <a name="protected-web-api-code-configuration"></a>Védett webes API: Kódkonfiguráció
+# <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
 A védett webes API-hoz tartozó kód konfigurálásához meg kell ismernie, hogy mi határozza meg a védett API-kat, hogyan konfigurálhatja a tulajdonosi jogkivonatot, és hogyan érvényesítheti a jogkivonatot.
 
 ## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Mi határozza meg a ASP.NET/ASP.NET Core API-kat védettként?
 
-A webalkalmazásokhoz hasonlóan a ASP.net/ASP.net Core webes API-k "védettek", mert a vezérlő műveletei az `[Authorize]` attribútummal előtaggal vannak ellátva. Így a vezérlő műveletek csak akkor hívhatók meg, ha az API-t egy engedélyekkel rendelkező identitás hívja meg.
+A webalkalmazásokhoz hasonlóan a ASP.NET/ASP.NET Core webes API-k "védettek", mert a vezérlő műveletei a `[Authorize]` attribútummal vannak előjavítva. Így a vezérlő műveletek csak akkor hívhatók meg, ha az API-t egy engedélyekkel rendelkező identitás hívja meg.
 
 Vegye figyelembe a következő kérdéseket:
 
@@ -91,7 +92,7 @@ Ez a szakasz a tulajdonosi jogkivonatok konfigurálását ismerteti.
 
 ### <a name="code-initialization"></a>Kód inicializálása
 
-Ha egy alkalmazás hívása egy `[Authorize]` attribútumot tartalmazó vezérlő műveletre történik, a ASP.net/ASP.net Core a hívó kérelem engedélyezési fejlécében lévő tulajdonosi jogkivonatot tekinti meg, és Kinyeri a hozzáférési jogkivonatot. A rendszer ezután továbbítja a tokent a JwtBearer middleware-hez, amely meghívja a .NET-hez készült Microsoft IdentityModel-bővítményeket.
+Ha egy alkalmazás egy `[Authorize]` attribútumot tartalmazó vezérlő műveletre van meghívva, a ASP.NET/ASP.NET Core a hívó kérelem engedélyezési fejlécében a tulajdonosi jogkivonatot tekinti meg, és kibontja a hozzáférési jogkivonatot. A rendszer ezután továbbítja a tokent a JwtBearer middleware-hez, amely meghívja a .NET-hez készült Microsoft IdentityModel-bővítményeket.
 
 A ASP.NET Core-ben ez a middleware a Startup.cs fájlban van inicializálva:
 
@@ -129,7 +130,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>Jogkivonat ellenőrzése
 
-A JwtBearer middleware, mint például az OpenID Connect middleware a web Appsben, a `TokenValidationParameters` rendszer a token érvényesítésére irányítja. A jogkivonat visszafejtése (szükség szerint), a jogcímek kibontása és az aláírás ellenőrzése megtörtént. A middleware ezt követően ellenőrzi a tokent, hogy ellenőrzi az alábbi adatforrást:
+A JwtBearer middleware-t, például az OpenID Connect middleware-t a web Appsben `TokenValidationParameters` irányítja a jogkivonat érvényesítéséhez. A jogkivonat visszafejtése (szükség szerint), a jogcímek kibontása és az aláírás ellenőrzése megtörtént. A middleware ezt követően ellenőrzi a tokent, hogy ellenőrzi az alábbi adatforrást:
 
 - A webes API-ra (célközönség) irányul.
 - Olyan alkalmazás számára lett kiadva, amely számára engedélyezett a webes API (Sub) hívása.
@@ -141,7 +142,7 @@ Speciális érvényesítés is lehetséges. Ellenőrizheti például, hogy az al
 
 ### <a name="validators"></a>Érvényesítőket
 
-Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) nyílt forráskódú függvénytárában, egyetlen forrásfájlban vannak rögzítve. [Microsoft. IdentityModel. tokenek/érvényesítő. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+Az érvényesítési lépéseket a rendszer az érvényesítő szolgáltatásban rögzíti, amelyek a .NET nyílt forráskódú kódtár [Microsoft IdentityModel bővítményeiben](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) találhatók, egyetlen forrásfájlban: [Microsoft. IdentityModel. tokens/validators. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
 A következő táblázat ismerteti a validatorokat:
 
@@ -150,13 +151,13 @@ A következő táblázat ismerteti a validatorokat:
 | `ValidateAudience` | Gondoskodik arról, hogy a jogkivonat a tokent érvényesítő alkalmazáshoz legyen (nekem). |
 | `ValidateIssuer` | Gondoskodik arról, hogy a tokent egy megbízható STS állította ki (valakitől, akiben megbízik). |
 | `ValidateIssuerSigningKey` | Gondoskodik arról, hogy a jogkivonatot érvényesítő alkalmazás megbízza a jogkivonat aláírásához használt kulcsot. (Speciális eset, ha a kulcs be van ágyazva a tokenbe. Általában nem szükséges.) |
-| `ValidateLifetime` | Gondoskodik arról, hogy a jogkivonat még mindig (vagy már) érvényes legyen. Az érvényesítő ellenőrzi, hogy a jogkivonat élettartama (`notbefore` és `expires` jogcímei) a tartományon belül van-e. |
+| `ValidateLifetime` | Gondoskodik arról, hogy a jogkivonat még mindig (vagy már) érvényes legyen. Az érvényesítő ellenőrzi, hogy a jogkivonat élettartama (`notbefore` és `expires` jogcímek) a tartományon belül van-e. |
 | `ValidateSignature` | Gondoskodik arról, hogy a jogkivonat ne legyen illetéktelenül módosítva. |
 | `ValidateTokenReplay` | Gondoskodik arról, hogy a jogkivonat ne legyen újrajátszva. (Speciális eset néhány, egyszeri használatú protokollhoz.) |
 
-A validatorok az `TokenValidationParameters` osztály tulajdonságaihoz vannak társítva, amelyek a ASP.net/ASP.net alapkonfigurációból lettek inicializálva. A legtöbb esetben nem kell módosítania a paramétereket. Egyetlen Bérlővel rendelkező alkalmazások esetében egyetlen kivétel van. (Ez a webalkalmazások, amelyek bármely szervezetből vagy személyes Microsoft-fiókokból fogadnak felhasználókat.) Ebben az esetben a kiállítót érvényesíteni kell.
+A validatorok a `TokenValidationParameters` osztály tulajdonságaihoz vannak társítva, amelyek a ASP.NET/ASP.NET alapkonfigurációból lettek inicializálva. A legtöbb esetben nem kell módosítania a paramétereket. Egyetlen Bérlővel rendelkező alkalmazások esetében egyetlen kivétel van. (Ez a webalkalmazások, amelyek bármely szervezetből vagy személyes Microsoft-fiókokból fogadnak felhasználókat.) Ebben az esetben a kiállítót érvényesíteni kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

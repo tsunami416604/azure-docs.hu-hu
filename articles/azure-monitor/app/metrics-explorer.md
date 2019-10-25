@@ -1,210 +1,205 @@
 ---
-title: Az Azure Application Insights a metrikák felfedezése |} A Microsoft Docs
-description: A metrika explorer diagramok értelmezése, és a metrika explorer panelek testreszabása.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Mérőszámok feltárása az Azure Application Insightsban | Microsoft Docs
+description: Diagramok értelmezése a metrika-kezelőben és a metrikai Explorer-lapok testreszabása.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/22/2019
+ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700708"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820787"
 ---
-# <a name="exploring-metrics-in-application-insights"></a>Az Application Insightsban a metrikák felfedezése
-A metrikák [Application Insights] [ start] mért értékek és az eseményszámok az alkalmazásból küldött telemetriai adatokat a rendszer. Ezek segítenek teljesítménybeli problémák észlelése, és tekintse meg az alkalmazás használatának trendjei. Standard mérőszámok széles skáláját, és a saját egyéni metrikákkal és eseményekkel is létrehozhat.
+# <a name="exploring-metrics-in-application-insights"></a>A metrikák feltárása Application Insights
+A [Application Insights][start] mérőszámai az alkalmazásból telemetria eljuttatott események értékeit és számát mérik. Segítenek észlelni a teljesítménnyel kapcsolatos problémákat, és figyeli az alkalmazás használatának folyamatát. A standard mérőszámok széles skáláját használhatja, és saját egyéni metrikákat és eseményeket is létrehozhat.
 
 > [!NOTE]
-> Ez a cikk ismerteti a klasszikus felületen jelenleg elavult, és végül kivonjuk a forgalomból. Javasoljuk, hogy az új funkció, amelyet a ellenőrzése [Ez a cikk](../platform/metrics-charts.md).
+> Ez a cikk a klasszikus metrikák Explorer-élményt mutatja be, amely jelenleg elavult, és végül kimarad. Javasoljuk, hogy tekintse meg az [ebben a cikkben](../platform/metrics-charts.md)ismertetett új felhasználói élményt.
 
-Metrikák és események számát az összesített értékek például összegeket, átlagokat vagy számát a diagramokban jelennek meg.
+A metrikák és események száma az összesített értékek (például összegek, átlagok vagy darabszámok) diagramjaiban jelenik meg.
 
-Itt egy olyan minta diagramokat:
+Íme egy példa a diagramokra:
 
 ![](./media/metrics-explorer/01-overview.png)
 
-Mérőszámdiagramok mindenhol az Application Insights portálon találja. A legtöbb esetben ezek testreszabhatók, és a panelen adhat hozzá további diagramokat. Az Áttekintés panelen kattintson az részletes diagramok (melyek címei, például a "Kiszolgáló"), vagy kattintson a **Metrikaböngésző** , egyéni diagramok hozható létre egy új panel megnyitásához.
+A metrikák diagramjai mindenhol a Application Insights-portálon találhatók. A legtöbb esetben testreszabhatók, és több diagramot is hozzáadhat a panelhez. Az Áttekintés panelen kattintson a through (többek között a "kiszolgálók") részletes diagramjaira, vagy kattintson a **Metrikaböngésző** elemre egy új panel megnyitásához, ahol egyéni diagramokat hozhat létre.
 
 ## <a name="time-range"></a>Időtartomány
-Módosíthatja az időtartományt, a diagramokat vagy bármely panelen rácsok hatálya alá.
+Bármely panelen módosíthatja a diagramok vagy rácsok által jelzett időtartományt.
 
-![Az alkalmazás áttekintése panel megnyitásához az Azure Portalon](./media/metrics-explorer/03-range.png)
+![Nyissa meg az alkalmazás áttekintés paneljét a Azure Portal](./media/metrics-explorer/03-range.png)
 
-Ha még nem történt meg még néhány adatot vár, a frissítés parancsra. A diagramok adott időközönként frissülnek, de az intervallumok hosszabb ideig nagyobb időintervallumok. Eljussanak az elemzési folyamatot, egy diagram be adatok egy ideig is eltarthat.
+Ha olyan adatokra van szüksége, amely még nem jelent meg, kattintson a frissítés gombra. A diagramok időközönként frissülnek, de az intervallumok hosszabbak a nagyobb időtartományok esetében. Eltarthat egy ideig, amíg az adatelemzési folyamat átkerül egy diagramra.
 
-Nagyíthatja a diagram része, húzza át azt:
+A diagram egy részének nagyításához húzza át a következőre:
 
-![Húzza a diagram része keresztül.](./media/metrics-explorer/12-drag.png)
+![Húzza át a diagram egy részét.](./media/metrics-explorer/12-drag.png)
 
-A Nagyítás visszavonása gombra kattintva állítsa vissza.
+A visszaállításhoz kattintson a nagyítás visszavonása gombra.
 
-## <a name="granularity-and-point-values"></a>És a pont értékek
-Az egérmutatóval rámutat a metrikák értékeinek megjelenítése ezen a ponton a diagramot.
+## <a name="granularity-and-point-values"></a>Részletesség és pontok értékei
+Vigye az egérmutatót a diagram fölé, és jelenítse meg a metrikák értékeit ezen a ponton.
 
-![Vigye az egérmutatót egy diagram](./media/metrics-explorer/02-focus.png)
+![Vigye az egérmutatót egy diagram fölé](./media/metrics-explorer/02-focus.png)
 
-A metrika egy adott időpontban értékét az előző mintavételi időszakra vonatkozó összesített érték.
+Egy adott pont metrikájának értéke az előző mintavételi időköz szerint lesz összesítve.
 
-A mintavételi időközben vagy a "granularitási" a panel tetején látható.
+A mintavételi időköz vagy a "részletesség" a panel tetején jelenik meg.
 
-![A fejléc egy panel.](./media/metrics-explorer/11-grain.png)
+![Egy panel fejléce](./media/metrics-explorer/11-grain.png)
 
-A granularitási az idő a tartomány panelen módosíthatja:
+A részletesség az időtartomány panelen állítható be:
 
-![A fejléc egy panel.](./media/metrics-explorer/grain.png)
+![Egy panel fejléce](./media/metrics-explorer/grain.png)
 
-A rendelkezésre álló granularitással, válassza ki az időtartományt függenek. Az explicit granularitással alternatívával, az "automatikus" részletességgel az időtartományt.
+Az elérhető részletességi beállítások a kiválasztott időtartománytól függenek. A explicit részletesség az időtartomány "automatikus" részletességének alternatívája.
 
 
-## <a name="editing-charts-and-grids"></a>Diagramok és táblázatok szerkesztése
-Új diagram hozzáadása a panelen:
+## <a name="editing-charts-and-grids"></a>Diagramok és rácsok szerkesztése
+Új diagram hozzáadása a panelhez:
 
-![A Metrikaböngészőben válassza a diagram hozzáadása](./media/metrics-explorer/04-add.png)
+![A Metrikaböngésző területen válassza a diagram hozzáadása elemet.](./media/metrics-explorer/04-add.png)
 
-Válassza ki **szerkesztése** egy meglévő vagy új diagram szerkesztése azt mutatja be:
+Válassza a **Szerkesztés** lehetőséget egy meglévő vagy új diagramon a megjelenített elemek szerkesztéséhez:
 
-![Válassza ki egy vagy több metrikát](./media/metrics-explorer/08-select.png)
+![Válasszon ki egy vagy több mérőszámot](./media/metrics-explorer/08-select.png)
 
-Egynél több metrikát egy diagramot, megjelenítheti, bár a kombinációk együtt megjelenő kapcsolatos korlátozások vonatkoznak. Amint egy metrika választja, a többi le vannak tiltva.
+A diagramon több metrika is megjeleníthető, de a kombinációk is megjelenhetnek egymással. Amint kiválaszt egy metrikát, a többiek némelyike le van tiltva.
 
-Ha Ön kódolt [egyéni metrikákat] [ track] az alkalmazásba (hívás TrackMetric és TrackEvent), a rendszer itt listázza.
+Ha [Egyéni metrikákat][track] kódolt az alkalmazásba (TrackMetric és TrackEvent-hívásokat hív meg), azok itt lesznek felsorolva.
 
-## <a name="segment-your-data"></a>Az adatok szegmentálására
-Akkor is feloszthatja az metrika tulajdonság – például ügyfelek különböző operációs rendszereken az oldalmegtekintéseket összehasonlítására.
+## <a name="segment-your-data"></a>Az adatai szegmentálása
+A mérőszámokat tulajdonság alapján is feloszthatja – például a különböző operációs rendszerekkel rendelkező ügyfeleken lévő oldalmegtekintések összehasonlításához.
 
-Válasszon ki egy diagram vagy a rács, a csoportosítás váltson, és válasszon egy tulajdonságot a csoportba:
+Válasszon ki egy diagramot vagy rácsvonalakat, kapcsolja be a csoportosítást, és válasszon ki egy tulajdonságot a csoportosításhoz:
 
-![Jelölje ki a csoportosítás a készlet, válasszon ki egy tulajdonságot a Group By, majd](./media/metrics-explorer/15-segment.png)
+![Válassza a csoportosítás lehetőséget, majd állítsa be a tulajdonságot a csoportban](./media/metrics-explorer/15-segment.png)
 
 > [!NOTE]
-> A csoportosítás használata esetén a terület- és oszlopdiagram típusok halmozott megjelenítési adja meg. Ez a megfelelő Sum összesítő metódus helyére. De ha az összesítés típusa átlagos, válassza a sor vagy a rács megjelenítési típusok.
+> A csoportosítás használatakor a munkaterület és a sávdiagram típusa halmozott megjelenítést biztosít. Ez akkor megfelelő, ha az összesítési módszer összege. Ha azonban az összesítés típusa átlagos, válassza a vonal vagy a rács megjelenítési típusait.
 >
 >
 
-Ha, a kódolt [egyéni metrikákat] [ track] az alkalmazásba és tulajdonságértékeket tartalmazzák, láthatja a listában jelölje ki a tulajdonságot.
+Ha [Egyéni metrikákat][track] kódolt az alkalmazásba, és tulajdonságokat tartalmaz, a listában kiválaszthatja a tulajdonságot.
 
-A diagram az túl kicsi a szegmentált adatok? Magasság igazítása:
+Túl kicsi a diagram a szegmentált adathoz? Állítsa be a magasságát:
 
-![A csúszka](./media/metrics-explorer/18-height.png)
+![A csúszka igazítása](./media/metrics-explorer/18-height.png)
 
-## <a name="aggregation-types"></a>Aggregáció típusa
-Alapértelmezés szerint a oldalán a jelmagyarázat a diagram a időszakban általában jeleníti meg az összesített érték. Ha a kurzort a diagram, azt az értéket mutatja ezen a ponton.
+## <a name="aggregation-types"></a>Összesítési típusok
+Az oldal jelmagyarázata alapértelmezés szerint általában az összesített értéket jeleníti meg a diagram időszakában. Ha a diagram fölé viszi a mutatót, az azt jelzi, hogy az érték ekkora.
 
-A diagram az egyes adatpontok az előző mintavételi időköz vagy a "granularitási" fogadott adatok értékeinek összesítést. A granularitási a panel tetején látható, és az általános időskálán a diagram változik.
+A diagram minden adatpontja az előző mintavételi intervallumban vagy a "részletesség" során kapott adatértékek összesítése. A részletesség a panel tetején látható, és a diagram teljes időkeretén belülre változik.
 
-Metrikák összesíthetők különböző módon:
+A metrikák többféleképpen is összevonhatók:
 
-* **Száma** a mintavételi időközben a fogadott események száma. Az esemény, például kérelmeket szolgál. A diagram magasságát változata, amellyel az események történnek ingadozása jelzi. Azonban vegye figyelembe, hogy a numerikus értéket módosítja, amikor módosítja a mintavételi időköz.
-* **Sum** összeadja a mintavételi intervallum, vagy azt az időszakot, a diagram keresztül fogadott összes adatpont értékeit.
-* **Átlagos** a Sum elosztja az időtartamra, kapott adatpontok száma.
-* **Egyedi** counts használt felhasználók és fiókok számát. A mintavételi időszakban, vagy a diagram az időtartam alatt az ábrán látható az az időpont látható a különböző felhasználók száma.
-* **%** -minden Összesítés százalékos verziói csak szegmentált diagramokkal szolgálnak. Az összes mindig hozzáadása akár 100 %-os, valamint a diagram bemutatja a különböző összetevőihez tartozó teljes relatív hozzájárulást.
+* A **Count** a mintavételi időszakban fogadott események száma. Olyan eseményekhez használatos, mint a kérelmek. A diagram magasságában szereplő változatok azt jelzik, hogy az események milyen arányban történnek. Vegye figyelembe azonban, hogy a numerikus érték a Mintavételezési időköz módosításakor változik.
+* Az **összeg** felveszi a mintavételi intervallumban fogadott adatpontok értékeit vagy a diagram időtartamát.
+* Az **átlag** az adott intervallumban fogadott adatpontok számával osztja el az összeget.
+* A felhasználók és a fiókok száma **egyedi** számokkal történik. A mintavételi időköz vagy a diagram időszaka felett az ábrán az adott időszakban látható különböző felhasználók száma látható.
+* **%** – az egyes összesítések százalékos verziói csak szegmentált diagramokkal használhatók. Az összeg minden esetben akár 100%-ot is felvesz, a diagram pedig a teljes összeg különböző összetevőinek relatív hozzájárulását mutatja.
 
-    ![Százalékos összesítést](./media/metrics-explorer/percentage-aggregation.png)
+    ![Százalékos összesítés](./media/metrics-explorer/percentage-aggregation.png)
 
-### <a name="change-the-aggregation-type"></a>Az összesítés típusa módosítható
+### <a name="change-the-aggregation-type"></a>Az Összesítés típusának módosítása
 
-![A diagramra a szerkesztéséhez, és válassza ki az összesítés](./media/metrics-explorer/05-aggregation.png)
+![Szerkessze a diagramot, majd válassza az Összesítés lehetőséget.](./media/metrics-explorer/05-aggregation.png)
 
-Amikor létrehoz egy új diagramot, vagy ha minden metrika sincs vannak kijelölve az alapértelmezett módszer egyes metrika látható:
+Az egyes mérőszámok alapértelmezett metódusa akkor jelenik meg, ha új diagramot hoz létre, vagy ha az összes metrika ki van választva:
 
-![Kapcsolja ki az összes metrikák megtekintéséhez az alapértelmezett beállításokat](./media/metrics-explorer/06-total.png)
+![Az alapértelmezett értékek megjelenítéséhez törölje az összes mérőszám kijelölését](./media/metrics-explorer/06-total.png)
 
-## <a name="pin-y-axis"></a>PIN-kód y tengely 
-Alapértelmezés szerint a diagram Y tengely értékből nulla eddig: vizuális megjelenítését, az értékek quantum biztosíthat az adattartomány maximális értékeket mutatja. Azonban bizonyos esetekben több, mint a quantum vizuálisan megvizsgálják a kisebb módosításokat értékeket számára érdekes lehet. Testreszabásokat hasonlóan ez a használati y tartomány rögzítése a kívánt helyen y tengely minimális vagy maximális értékének szerkesztési funkciót.
-Kattintson a "Speciális beállítások" jelölőnégyzetet az y tengely tartománya beállítások megjelenítéséhez
+## <a name="pin-y-axis"></a>Y tengely rögzítése 
+Alapértelmezés szerint a diagram az Y tengely értékeit jeleníti meg az adattartományban a nullától egészen a maximális értéktől kezdve, hogy vizuálisan ábrázolja az értékek kvantumját. Bizonyos esetekben azonban előfordulhat, hogy az értékek kisebb változásainak vizuális vizsgálatára is érdekes lehet. Az ehhez hasonló testreszabásokhoz az Y tengely tartományának szerkesztési funkciója segítségével rögzítheti az Y tengely minimális vagy maximális értékét a kívánt helyen.
+Kattintson a "speciális beállítások" jelölőnégyzetre az Y tengely tartományának beállításainak kikapcsolásához.
 
-![Kattintson a Speciális beállítások, egyéni tartományt, és adja meg a minimális, maximális értékek](./media/metrics-explorer/y-axis-range.png)
+![Kattintson a speciális beállítások elemre, válassza az egyéni tartomány lehetőséget, és adja meg a maximális értékeket.](./media/metrics-explorer/y-axis-range.png)
 
-## <a name="filter-your-data"></a>Az adatok szűrése
-Csak a kijelölt készletének tulajdonságértékek metrikák megtekintése:
+## <a name="filter-your-data"></a>Az adatai szűrése
+A tulajdonságértékek kiválasztott készletéhez tartozó mérőszámok megtekintéséhez:
 
-![Kattintson a szűrő gombra, bontsa ki a tulajdonságot és néhány érték ellenőrzése](./media/metrics-explorer/19-filter.png)
+![Kattintson a szűrő elemre, bontsa ki a tulajdonságot, és jelölje be a kívánt értékeket.](./media/metrics-explorer/19-filter.png)
 
-Minden olyan értékeket egy adott tulajdonság nem adja meg, ha ugyanaz, mint ha kiválasztja őket az összes: nincs szűrő az adott tulajdonságot.
+Ha nem választ ki egy adott tulajdonság értékeit, akkor ugyanaz, mint az összes kijelölése: az adott tulajdonsághoz nincs szűrő.
 
-Figyelje meg, hogy az eseményszámok mellett minden egyes tulajdonság értéke. Amikor kiválaszt egy tulajdonság értékét, az érintett mellett egyéb tulajdonságértékek módosulnak.
+Figyelje meg az események számát az egyes tulajdonságértékek mellett. Ha egy tulajdonság értékeit választja, a többi tulajdonság értéke mellett a Count is módosul.
 
-Szűrők panel összes diagramjai vonatkoznak. Ha azt szeretné, hogy a alkalmazni a különböző diagramok különböző szűrőket, hozzon létre és különböző mérőszámpaneleket. Ha azt szeretné, diagramok a különböző paneleket az irányítópultot, így láthatják őket egymással párhuzamosan is rögzíthet.
+A szűrők a panel összes diagramján érvényesek. Ha eltérő szűrőket szeretne alkalmazni különböző diagramokra, hozzon létre és mentsen különböző metrikákat. Ha szeretné, a különböző pengék diagramjait rögzítheti az irányítópulton, így egymás mellett is megtekintheti őket.
 
-### <a name="remove-bot-and-web-test-traffic"></a>Távolítsa el a robot és a webes teszt forgalom
-A szűrő használata **valós vagy szintetikus forgalom** , és ellenőrizze **valós**.
+### <a name="remove-bot-and-web-test-traffic"></a>A robot és a webes teszt forgalmának eltávolítása
+Használja a **valós vagy szintetikus forgalom** szűrését, és győződjön meg róla, hogy **valós**.
 
-Szerint is szűrheti **szintetikus forgalom forrása**.
+Azt is megteheti, hogy **a szintetikus forgalom forrása**alapján szűri.
 
-### <a name="to-add-properties-to-the-filter-list"></a>A lista tulajdonságok hozzáadása
-Szeretne saját egy kategóriához szűrőtelemetria? Például a felhasználók különböző kategóriákba feloszthatja talán, és szeretné szegmentálni az adatokat, ezen kategóriák szerinti csoportosításához.
+### <a name="to-add-properties-to-the-filter-list"></a>Tulajdonságok hozzáadása a szűrő listához
+Szeretné szűrni a telemetria a saját választása szerint? Előfordulhat például, hogy a felhasználók különböző kategóriákba vannak osztva, és ezeket a kategóriákat szeretné szegmentálni.
 
-[Hozzon létre saját tulajdonságot](../../azure-monitor/app/api-custom-events-metrics.md#properties). Beállíthatja a egy [Telemetriainicializáló](../../azure-monitor/app/api-custom-events-metrics.md#defaults) , hogy az összes telemetriai adat - jelennek meg a normál telemetriai többek között küldött különböző SDK-modulok által.
+[Hozzon létre egy saját tulajdonságot](../../azure-monitor/app/api-custom-events-metrics.md#properties). Állítsa be egy [telemetria-inicializálásban](../../azure-monitor/app/api-custom-events-metrics.md#defaults) úgy, hogy az minden telemetria megjelenjen – beleértve a különböző SDK-modulok által eljuttatott szabványos telemetria is.
 
-## <a name="edit-the-chart-type"></a>A diagram típus szerkesztése
-Figyelje meg, hogy válthat a között rácsok és diagramjait:
+## <a name="edit-the-chart-type"></a>A diagram típusának szerkesztése
+Figyelje meg, hogy válthat a rácsok és a diagramok között:
 
-![Rács vagy diagram kiválasztása, majd válassza a diagram típusát](./media/metrics-explorer/16-chart-grid.png)
+![Válasszon ki egy rácsvonalat vagy diagramot, majd válassza ki a diagram típusát.](./media/metrics-explorer/16-chart-grid.png)
 
-## <a name="save-your-metrics-blade"></a>Mentse a metrikák paneljén
-Ha létrehozta az egyes diagramok, mentse őket kedvencként. Kiválaszthatja, hogy e hogy megosztja azokat más csapattagokat, ha szervezeti fiókkal.
+## <a name="save-your-metrics-blade"></a>A metrikák panel mentése
+Egyes diagramok létrehozásakor kedvencként mentheti őket. Ha szervezeti fiókot használ, kiválaszthatja, hogy meg kívánja-e osztani a csoport többi tagjával.
 
-![Válassza ki a Kedvencek közé](./media/metrics-explorer/21-favorite-save.png)
+![Kedvenc kiválasztása](./media/metrics-explorer/21-favorite-save.png)
 
-A panel újra, hogy **lépjen az Áttekintés panelen** , és nyissa meg a Kedvencek:
+Ha ismét látni szeretné a panelt, **ugorjon az Áttekintés** panelre, és nyissa meg a kedvencek:
 
-![Az Áttekintés panelen válassza ki a Kedvencek közé](./media/metrics-explorer/22-favorite-get.png)
+![Az Áttekintés panelen válassza a Kedvencek lehetőséget.](./media/metrics-explorer/22-favorite-get.png)
 
-Relatív időtartomány azt választotta, amikor mentette, ha a panel frissül a legfrissebb metrikákkal. Ha abszolút időtartomány beállítást választja, azt minden alkalommal jeleníti meg ugyanazokat az adatokat.
+Ha a relatív időtartományt a mentéskor választotta, a panel a legújabb metrikákkal lesz frissítve. Ha az abszolút időtartomány lehetőséget választotta, minden alkalommal ugyanazokat az adatsorokat fogja megjeleníteni.
 
-## <a name="reset-the-blade"></a>A panel visszaállítása
-Ha a panelen szerkesztheti, de szeretne, majd az eredeti készlet mentett való visszatéréshez, csak kattintson az Alaphelyzet.
+## <a name="reset-the-blade"></a>A panel alaphelyzetbe állítása
+Ha szerkeszt egy panelt, de vissza szeretné állítani az eredeti mentett készletet, egyszerűen kattintson az Alaphelyzetbe állítás gombra.
 
-![A Metrikaböngésző tetején a gombok](./media/metrics-explorer/17-reset.png)
+![A metrikai Explorer felső részén található gombokkal](./media/metrics-explorer/17-reset.png)
 
-## <a name="live-metrics-stream"></a>Élő metrikastream
+## <a name="live-metrics-stream"></a>Élő mérőszámok streamje
 
-Nyissa meg a telemetriai adatok nézetével sokkal azonnali, [élő Stream](live-stream.md). A legtöbb metrikák jelennek meg, a folyamat az összesítés miatt néhány percet igénybe vehet. Ezzel szemben az élő metrikákat a közel valós idejű vannak optimalizálva. 
+A telemetria sokkal jobb azonnali megjelenítéséhez nyissa meg [élő stream](live-stream.md). A legtöbb metrika az összesítési folyamat miatt néhány percet vesz igénybe. Ezzel szemben az élő metrikák alacsony késésre vannak optimalizálva. 
 
 ## <a name="set-alerts"></a>Riasztások beállítása
-Valamelyik metrika rendkívüli értékek az e-mailben értesítést kapjon, riasztás hozzáadásához. Választhat az e-mailt küldjön a fiók a rendszergazdák, vagy adott e-mail-címek.
+Ha bármilyen metrika szokatlan értékeit e-mailben szeretné értesíteni, adjon hozzá egy riasztást. Választhatja azt is, hogy az e-mailt a fiók rendszergazdái vagy adott e-mail-címei számára küldje el.
 
-![A Metrikaböngészőben válassza ki a riasztási szabályok, a riasztás hozzáadása](./media/metrics-explorer/appinsights-413setMetricAlert.png)
+![A Metrikaböngésző területen válassza a riasztási szabályok, majd a riasztás hozzáadása elemet.](./media/metrics-explorer/appinsights-413setMetricAlert.png)
 
-[További információ a riasztásokkal kapcsolatban][alerts].
+[További információ a riasztásokról][alerts].
 
 
 ## <a name="continuous-export"></a>Folyamatos exportálás
-Ha azt szeretné, hogy külsőleg feldolgozása folyamatosan exportált adatok, érdemes [a folyamatos exportálás](../../azure-monitor/app/export-telemetry.md).
+Ha azt szeretné, hogy a rendszer folyamatosan exportálja az adatexportálást, hogy külsőleg is feldolgozza, érdemes lehet [folyamatos exportálást](../../azure-monitor/app/export-telemetry.md)használni.
 
 ### <a name="power-bi"></a>Power BI
-Ha azt szeretné, hogy az adatok még mélyebb nézeteket, [exportálása a Power bi-bA](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Ha az adatait még gazdagabban szeretné megtekinteni, [exportálhatja Power BIba](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Elemzés
-[Analytics](../../azure-monitor/app/analytics.md) sokoldalúbb módja a hatékony lekérdezési nyelv a telemetria elemzését. Használnia, ha szeretné egyesítése vagy számítási mérőszámok eredményei, vagy hajtsa végre a közelebbről megismerheti a legújabb az alkalmazás teljesítményének. 
+Az [elemzés](../../azure-monitor/app/analytics.md) sokoldalú módszert használ a telemetria hatékony lekérdezési nyelv használatával történő elemzéséhez. Akkor használja, ha a metrikák eredményeinek összevonásához vagy kiszámításához, illetve az alkalmazás legutóbbi teljesítményének részletes feltárásához is szükség van. 
 
-Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvasásához az Analytics ikonra kattint.
+Egy metrikai diagramon az elemzés ikonra kattintva közvetlenül elérheti az egyenértékű elemzési lekérdezéseket.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
-*A diagram nem látható semmilyen adatot.*
+## <a name="troubleshooting"></a>Hibakeresés
+*Nem látok semmilyen információt a diagramon.*
 
-* A panelen a diagramok szűrők vonatkoznak. Győződjön meg arról, hogy Ön összpontosítunk, egy diagram, amíg nem állította be egy szűrőt, amely nem tartalmazza a másik az adatokat.
+* A szűrők a panel összes diagramján érvényesek. Győződjön meg arról, hogy az egyik diagramra való összpontosítás közben nem állított be olyan szűrőt, amely kizárja az összes adathalmazt egy másikon.
 
-    Ha azt szeretné, a különböző szűrőivel beállíthatja a különböző diagramok különböző paneljein hozzon létre őket, mentse azokat, külön Kedvencek. Ha azt szeretné, is rögzítheti őket az irányítópulton, hogy tekintheti meg őket egymással párhuzamosan.
-* Ha olyan tulajdonságot, amely nincs meghatározva a metrikát a diagram csoportosítás, majd kell semmi a diagramra. Törölje a "Csoportosítás", vagy válasszon egy különböző csoportosítási tulajdonságot.
-* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Nem Azure-webhelyekhez érhető el.
+    Ha különböző szűrőket szeretne beállítani különböző diagramokon, hozzon létre különböző lapokon, majd mentse őket külön kedvencekként. Ha szeretné, rögzítheti őket az irányítópulton, hogy azok egymás mellett is megjelenjenek.
+* Ha olyan tulajdonság szerint csoportosít egy diagramot, amely nincs meghatározva a metrikán, akkor a diagramon nem lesz semmi. Próbálja meg törölni a "Group By" parancsot, vagy válasszon másik csoportosítási tulajdonságot.
+* A Teljesítményadatok (CPU, IO-sebesség stb.) a Java-webszolgáltatásokhoz, a Windows asztali alkalmazásokhoz, [az IIS-webalkalmazásokhoz és-szolgáltatásokhoz](../../azure-monitor/app/monitor-performance-live-website-now.md)érhetők el, ha telepíti az állapotfigyelő szolgáltatást és az [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Az Azure-webhelyekhez nem érhető el.
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>További lépések
-* [Az Application Insights figyelési használat](../../azure-monitor/app/usage-overview.md)
-* [Diagnosztikai keresés használata](../../azure-monitor/app/diagnostic-search.md)
+## <a name="next-steps"></a>Következő lépések
+* [Használat figyelése Application Insights](../../azure-monitor/app/usage-overview.md)
+* [A diagnosztikai keresés használata](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 

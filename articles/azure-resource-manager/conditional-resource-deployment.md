@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88f8b6a8dcce0e498a7b81b8741072bcf4cfcad8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259508"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881664"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Feltételes üzembe helyezés Resource Manager-sablonokban
 
-Néha szükség van egy erőforrás üzembe helyezésére egy sablonban. Az `condition` elem használatával adhatja meg, hogy az erőforrás telepítve van-e. Az elem értéke TRUE (igaz) vagy FALSE (hamis) értékre lesz feloldva. Ha az érték TRUE (igaz), a rendszer létrehozza az erőforrást. Ha az érték false (hamis), az erőforrás nincs létrehozva. Az értéket csak a teljes erőforrásra lehet alkalmazni.
+Néha szükség van egy erőforrás üzembe helyezésére egy sablonban. Használja az `condition` elemet annak megadásához, hogy az erőforrás telepítve van-e. Az elem értéke TRUE (igaz) vagy FALSE (hamis) értékre lesz feloldva. Ha az érték TRUE (igaz), a rendszer létrehozza az erőforrást. Ha az érték false (hamis), az erőforrás nincs létrehozva. Az értéket csak a teljes erőforrásra lehet alkalmazni.
 
 ## <a name="new-or-existing-resource"></a>Új vagy meglévő erőforrás
 
@@ -82,7 +82,11 @@ Ha a [hivatkozás](resource-group-template-functions-resource.md#reference) vagy
 
 Az [IF](resource-group-template-functions-logical.md#if) függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor feltételként van kiértékelve. Tekintse meg az IF [függvényt](resource-group-template-functions-logical.md#if) egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="condition-with-complete-mode"></a>Feltétel teljes móddal
+
+Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az erőforrás nincs telepítve, mert a feltétel hamis értéket ad vissza, akkor az eredmény attól függ, hogy REST API milyen verziót használ a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. A Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
+
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
 * Egy erőforrás több példányának létrehozásához tekintse [meg Azure Resource Manager sablonok erőforrás, tulajdonság vagy változó iterációját](resource-group-create-multiple.md).

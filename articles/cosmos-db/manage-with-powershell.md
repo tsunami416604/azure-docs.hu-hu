@@ -4,15 +4,15 @@ description: Az Azure PowerShell használatával kezelheti Azure Cosmos DB fiók
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 08/05/2019
+ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5d8ff6177b4f9f397b40f50a9cc65f74460f02
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815890"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882112"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
@@ -26,8 +26,8 @@ Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja az [Azure CLI]
 
 Kövesse a [Azure PowerShell telepítésének és konfigurálásának][powershell-install-configure] lépéseit a PowerShell Azure-fiókjába való telepítéséhez és bejelentkezéséhez.
 
-* Ha szeretné, hajtsa végre a következő parancsokat a felhasználó jóváhagyásának kérése nélkül, fűzze hozzá a `-Force` jelző a következő paranccsal.
-* Az alábbi parancsokat a rendszer szinkron.
+* Ha a következő parancsokat szeretné végrehajtani a felhasználó megerősítésének megkövetelése nélkül, fűzze hozzá a `-Force` jelzőt a parancshoz.
+* Az összes következő parancs szinkronban van.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
 
@@ -78,11 +78,11 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-* `$accountName`Az Azure Cosmos-fiók neve. Kisbetűnek kell lennie, alfanumerikus karaktereket és a "-" karaktert, valamint 3 – 31 karakterből állhat.
-* `$location`Az Azure Cosmos-fiók erőforrásának helye.
-* `$locations`Az adatbázis-fiók replikáinak régiói. A 0 értékű feladatátvételi prioritási értékkel rendelkező adatbázis-fiókok esetében egy írási régiónak kell lennie.
-* `$consistencyPolicy`Az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
-* `$CosmosDBProperties`A Cosmos DB Azure Resource Manager szolgáltatónak átadott tulajdonságértékek a fiók kiépítéséhez.
+* `$accountName` az Azure Cosmos-fiók nevét. Kisbetűnek kell lennie, alfanumerikus karaktereket és a "-" karaktert, valamint 3 – 31 karakterből állhat.
+* `$location` az Azure Cosmos-fiók erőforrásának helyét.
+* `$locations` a replika régiókat az adatbázis-fiókhoz. A 0 értékű feladatátvételi prioritási értékkel rendelkező adatbázis-fiókok esetében egy írási régiónak kell lennie.
+* `$consistencyPolicy` az Azure Cosmos-fiók alapértelmezett konzisztencia-szintjét. További információ: [Azure Cosmos db egységességi szintjei](consistency-levels.md).
+* a fiók kiépítéséhez `$CosmosDBProperties` a Cosmos DB Azure Resource Manager szolgáltatónak átadott tulajdonságértékek értékét.
 
 Az Azure Cosmos-fiókok IP-tűzfallal és Virtual Network szolgáltatásbeli végpontokkal is konfigurálhatók. További információ a Azure Cosmos DB IP-tűzfalának konfigurálásáról: az [IP-tűzfal konfigurálása](how-to-configure-firewall.md).  További információ a Azure Cosmos DB szolgáltatási végpontjának engedélyezéséről: [a virtuális hálózatokról való hozzáférés konfigurálása](how-to-configure-vnet-service-endpoint.md).
 
@@ -122,7 +122,7 @@ Ezzel a paranccsal frissítheti az Azure Cosmos-adatbázis fiókjának tulajdons
 * Több főkiszolgáló engedélyezése
 
 > [!NOTE]
-> Nem lehet egyszerre hozzáadni vagy eltávolítani a `locations` régiókat, és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani, mint a fiók erőforrásának egyéb módosításait.
+> Nem lehet egyszerre hozzáadni vagy eltávolítani a régiókat `locations` és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani, mint a fiók erőforrásának egyéb módosításait.
 > [!NOTE]
 > Ezzel a paranccsal hozzáadhat és eltávolíthat régiókat, de nem teszi lehetővé a feladatátvételi prioritások módosítását, illetve manuális feladatátvételt is indíthat. Lásd: a [feladatátvételi prioritás módosítása](#modify-failover-priority) és a [manuális feladatátvétel elindítása](#trigger-manual-failover).
 
@@ -223,7 +223,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 Az alábbi példa azt ismerteti, hogyan állíthatja be az [Azure-erőforrás címkéit][azure-resource-tags] egy Azure Cosmos-fiókhoz.
 
 > [!NOTE]
-> Ez a parancs kombinálva, a létrehozás vagy frissítés parancsok hozzáfűzésével a `-Tags` jelzőt mellékel a megfelelő paraméter.
+> Ez a parancs a Create vagy a Update paranccsal kombinálható úgy, hogy hozzáfűzi a `-Tags` jelzőt a megfelelő paraméterrel.
 
 ```azurepowershell-interactive
 # Update tags for an Azure Cosmos Account
@@ -241,9 +241,9 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -Tags $tags
 ```
 
-### <a id="list-keys"></a> Fiók kulcsainak listázása
+### <a id="list-keys"></a>Fiók kulcsainak listázása
 
-Az Azure Cosmos DB-fiók létrehozásakor a szolgáltatás két fő kulcsot, amely az Azure Cosmos DB-fiók elérésekor hitelesítéshez használt állít elő. Azáltal, hogy a két hozzáférési kulcsot, az Azure Cosmos DB lehetővé teszi a kulcsok az Azure Cosmos DB-fiók megszakítás nélkül. Írásvédett kulcsok hitelesítéséhez a csak olvasható műveletekhez is elérhetők. Nincsenek két írható és olvasható kulcsok (elsődleges és másodlagos) és a két csak olvasható kulcsok (elsődleges és másodlagos).
+Azure Cosmos DB fiók létrehozásakor a szolgáltatás két fő hozzáférési kulcsot hoz létre, amelyek hitelesítésre használhatók a Azure Cosmos DB-fiók elérésekor. A két hozzáférési kulcs megadásával a Azure Cosmos DB lehetővé teszi, hogy a kulcsokat a Azure Cosmos DB-fiók megszakítása nélkül újra létrehozza. A csak olvasási jogosultságú kulcsok a csak olvasási műveletek hitelesítéséhez is elérhetők. Két írható-olvasható kulcs (elsődleges és másodlagos) és két írásvédett kulcs (elsődleges és másodlagos).
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -255,12 +255,13 @@ $keys = Invoke-AzResourceAction -Action listKeys `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
     -ResourceGroupName $resourceGroupName -Name $accountName
 
-Select-Object $keys
+Write-Host "PrimaryKey =" $keys.primaryMasterKey
+Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
-### <a id="list-connection-strings"></a> Kapcsolati karakterláncok listája
+### <a id="list-connection-strings"></a>Kapcsolatok karakterláncok listázása
 
-MongoDB-fiókok esetében a kapcsolati karakterláncot a MongoDB-alkalmazás csatlakozni az adatbázis-fiókot az alábbi parancs használatával lekérhetők.
+A MongoDB-fiókok esetében a MongoDB-alkalmazásnak az adatbázis-fiókhoz való csatlakoztatásához használt kapcsolati karakterlánc a következő paranccsal kérhető le.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account
@@ -319,10 +320,10 @@ Set-AzResource -ResourceType $resourceType `
 
 Az automatikus Feladatátvételsel konfigurált fiókok esetében megváltoztathatja azt a sorrendet, amelyben a Cosmos a másodlagos replikákat az elsődlegesnek fogja előléptetni, és az elsődleges elérhetetlenné válik.
 
-Az alábbi példában feltételezzük, hogy az aktuális feladatátvételi prioritás `West US 2 = 0` `East US 2 = 1` `South Central US = 2`:,,.
+Az alábbi példában feltételezzük, hogy az aktuális feladatátvételi prioritás, `West US 2 = 0`, `East US 2 = 1`, `South Central US = 2`.
 
 > [!CAUTION]
-> A `locationName` szolgáltatásra való `failoverPriority=0` váltáskor a rendszer manuális feladatátvételt indít el egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
+> A `failoverPriority=0` `locationName` módosítása egy Azure Cosmos-fiók manuális feladatátvételét indítja el. A többi prioritási változás nem indít el feladatátvételt.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -348,12 +349,12 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 
 ### <a id="trigger-manual-failover"></a>Manuális feladatátvétel indítása
 
-A manuális Feladatátvételsel konfigurált fiókok esetében a módosításával `failoverPriority=0`feladatátvételt hajthat végre, és előléptetheti a másodlagos replikákat az elsődlegesre. Ezzel a művelettel vészhelyzeti helyreállítási gyakorlatot indíthat a vész-helyreállítási tervezés teszteléséhez.
+A manuális Feladatátvételsel konfigurált fiókok esetében a másodlagos replikák feladatátvételét és előléptetését az elsődlegesre `failoverPriority=0`módosításával végezheti el. Ezzel a művelettel vészhelyzeti helyreállítási gyakorlatot indíthat a vész-helyreállítási tervezés teszteléséhez.
 
-Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi prioritásával `West US 2 = 0` `East US 2 = 1` rendelkezik, és megfordítja a régiókat.
+Az alábbi példában feltételezzük, hogy a fiók a `West US 2 = 0` aktuális feladatátvételi prioritásával rendelkezik, és `East US 2 = 1` és megfordítja a régiókat.
 
 > [!CAUTION]
-> A `locationName` szolgáltatásra való `failoverPriority=0` váltáskor a rendszer manuális feladatátvételt indít el egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
+> A `failoverPriority=0` `locationName` módosítása egy Azure Cosmos-fiók manuális feladatátvételét indítja el. A többi prioritási változás nem indít el feladatátvételt.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -697,7 +698,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 
 ### <a id="create-container-lww"></a>Ütközéses feloldást biztosító Azure Cosmos-tároló létrehozása
 
-Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne `"mode"="custom"` létrehozni, állítsa be és állítsa be a megoldás elérési útját `"conflictResolutionPath"="myResolverStoredProcedure"`a tárolt eljárás neveként. Ha az összes ütközést a ConflictsFeed szeretné írni, és külön `"mode"="custom"` kezeli a leírót, állítsa be és`"conflictResolutionPath"=""`
+Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne létrehozni, állítsa be `"mode"="custom"` és állítsa a feloldási útvonalat a tárolt eljárás neveként, `"conflictResolutionPath"="myResolverStoredProcedure"`. Ha az összes ütközést a ConflictsFeed szeretné írni, és külön kezeli a leírót, állítsa be `"mode"="custom"` és `"conflictResolutionPath"=""`
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy
@@ -770,7 +771,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $resourceName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Minden PowerShell-minta](powershell-samples.md)
 * [Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)

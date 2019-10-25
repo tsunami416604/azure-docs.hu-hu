@@ -1,23 +1,18 @@
 ---
 title: Telemetria folyamatos exportálása a Application Insightsból | Microsoft Docs
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
-ms.translationtype: HT
+ms.date: 07/25/2019
+ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516946"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819552"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása a Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -92,7 +87,7 @@ Az adatmennyiség magában foglalja az Ön által beállított [rendelkezésre �
 ## <a name="get"></a>Az adatgyűjtés ellenőrzése
 A tárolót közvetlenül a portálon ellenőrizheti. Kattintson a bal szélső menü Kezdőlap elemére, ahol az "Azure-szolgáltatások" lehetőséget választja a **Storage-fiókok**elemre, majd válassza ki a Storage-fiók nevét, az Áttekintés lapon a szolgáltatások területen válassza a **Blobok** lehetőséget, végül válassza ki a tároló nevét.
 
-Az Azure Storage a Visual Studióban való vizsgálatához nyissa meg a **nézet**, **Cloud Explorer**lehetőséget. (Ha nem rendelkezik a menüparancsokkal, telepítenie kell az Azure SDK-t: Nyissa meg az **új projekt** párbeszédpanelt, C#bontsa ki a Visual/Cloud elemet, és válassza a **Get Microsoft Azure SDK a .net-hez**lehetőséget.)
+Az Azure Storage a Visual Studióban való vizsgálatához nyissa meg a **nézet**, **Cloud Explorer**lehetőséget. (Ha nem rendelkezik a menüparancsokkal, telepítenie kell az Azure SDK-t: Nyissa meg az **új projekt** párbeszédpanelt, C#bontsa ki a Visual/Cloud elemet, és válassza a **beolvasás Microsoft Azure SDK a .net-hez**lehetőséget.)
 
 A blob-tároló megnyitásakor egy tárolót fog látni a blob-fájlokkal. A Application Insights-erőforrás nevéből származtatott fájlok URI-ja, a kialakítási kulcs, a telemetria-típus/dátum/idő. (Az erőforrás neve mind kisbetűs, és a kialakítási kulcs kihagyja a kötőjeleket.)
 
@@ -104,10 +99,10 @@ Az elérési út formája:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-Ahol (a(z)
+Ahol
 
-* `blobCreationTimeUtc`az az idő, amikor a blobot a belső átmeneti tárolóban hozták létre
-* `blobDeliveryTimeUtc`az az idő, amikor a blobot a rendszer az Exportálás célhelyére másolja
+* `blobCreationTimeUtc` az idő, amikor a blobot a belső átmeneti tárolóban hozták létre
+* `blobDeliveryTimeUtc` az az idő, amikor a blobot a rendszer az Exportálás célhelyére másolja
 
 ## <a name="format"></a>Adatformátum
 * Minden blob egy szövegfájl, amely több "\n"-tagolt sort tartalmaz. Tartalmazza a feldolgozott telemetria körülbelül fél percen belül.
@@ -144,7 +139,7 @@ Kis léptékben írhat egy kódot, amely lekéri az adatait, beolvashatja azt eg
       }
     }
 
-Nagyobb mintakód esetén lásd: feldolgozói [szerepkör használata][exportasa].
+Nagyobb mintakód esetén lásd: [feldolgozói szerepkör használata][exportasa].
 
 ## <a name="delete"></a>Régi adatai törlése
 Az Ön felelőssége, hogy kezelje a tárolókapacitást, és szükség esetén törölje a régi adatmennyiséget.
@@ -185,7 +180,7 @@ Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.
   * Emellett a nagy forgalmú alkalmazások esetében további partíciós egységek is le vannak foglalva. Ebben az esetben minden egység percenként hoz létre egy blobot.
 * *Újrageneráltam a kulcsot a tárhelyhez, vagy Megváltoztattam a tároló nevét, és most az exportálás nem működik.*
 
-    Szerkessze az exportálást, és nyissa meg az Exportálás célhelye lapot. Hagyja meg ugyanazt a tárolót, mint korábban, majd a megerősítéshez kattintson az OK gombra. Az Exportálás újra fog indulni. Ha a módosítás az elmúlt néhány napon belül volt, nem veszíti el az adatvesztést.
+    Szerkessze az exportálást, és nyissa meg az Exportálás célhelye lapot. hagyja ki ugyanazt a tárolót, mint korábban, majd a megerősítéshez kattintson az OK gombra. Az Exportálás újra fog indulni. Ha a módosítás az elmúlt néhány napon belül volt, nem veszíti el az adatvesztést.
 * *Szüneteltethető az Exportálás?*
 
     Igen. Kattintson a Letiltás gombra.

@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242167"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881519"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: a kubenet hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
 
@@ -107,16 +107,16 @@ Mentse a következő forgatókönyvet `aks.yml` néven:
 
 Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- A támogatott verzió megkereséséhez használja a `azure_rm_aks_version` modult.
+- Használja `azure_rm_aks_version` modult a támogatott verzió megkereséséhez.
 - A `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
-- A `network_profile` a kubenet hálózati beépülő modul tulajdonságait határozza meg.
-- A `service_cidr` a belső szolgáltatások az AK-fürtben IP-címhez való hozzárendelésére szolgál. Ez az IP-címtartomány olyan címterület, amelyet a hálózat máshol nem használ. 
+- A `network_profile` a kubenet hálózati beépülő moduljának tulajdonságait határozza meg.
+- A `service_cidr` az AK-fürt belső szolgáltatásainak IP-címhez való hozzárendelésére szolgál. Ez az IP-címtartomány olyan címterület, amelyet a hálózat máshol nem használ. 
 - A `dns_service_ip` címnek a szolgáltatás IP-címtartomány ". 10" címének kell lennie.
-- A `pod_cidr` nagy címtartomány, amely nem használatos a hálózati környezetben máshol. A címtartománynek elég nagynak kell lennie ahhoz, hogy megfeleljen a felskálázásra várt csomópontok számának. Ez a címtartomány a fürt üzembe helyezése után nem módosítható.
-- A pod IP-címtartomány egy/24 címterület hozzárendelésére szolgál a fürt mindegyik csomópontján. A következő példában a 192.168.0.0/16 `pod_cidr` a (192.168.0.0/24) első csomópontot rendeli hozzá, a második csomópontot, a 192.168.1.0/24-et, a harmadik csomópontot pedig a 192.168.2.0/24.
+- A `pod_cidr`nak olyan nagy címtartománynek kell lennie, amely nem a hálózati környezet más részében van használatban. A címtartománynek elég nagynak kell lennie ahhoz, hogy megfeleljen a felskálázásra várt csomópontok számának. Ez a címtartomány a fürt üzembe helyezése után nem módosítható.
+- A pod IP-címtartomány egy/24 címterület hozzárendelésére szolgál a fürt mindegyik csomópontján. A következő példában a 192.168.0.0/16 `pod_cidr` az első csomópontot (192.168.0.0/24), a második csomópontot 192.168.1.0/24, a harmadik pedig a 192.168.2.0/24 csomópontot rendeli hozzá.
 - A fürt méretezése vagy frissítése során az Azure továbbra is egy Pod IP-címtartományt rendel minden új csomóponthoz.
-- A forgatókönyv betölti a `ssh_key` `~/.ssh/id_rsa.pub` értéket. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
-- A `client_id` és a `client_secret` érték betöltődik a `~/.azure/credentials` típusból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
+- A forgatókönyv betölti `ssh_key`t a `~/.ssh/id_rsa.pub`ból. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
+- A `client_id` és `client_secret` értékek betöltődik a `~/.azure/credentials`ból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -161,7 +161,7 @@ Mentse a következő forgatókönyvet `associate.yml` néven.
 
 Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- A `node_resource_group` az erőforráscsoport neve, amelyben az AK-csomópontok jönnek létre.
+- A `node_resource_group` az az erőforráscsoport-név, amelyben az AK-csomópontok létre lettek hozva.
 - A `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
 
 
@@ -212,7 +212,7 @@ Mentse a következő forgatókönyvet `aks-kubenet.yml` néven:
 
 A `vars` szakaszban hajtsa végre a következő módosításokat:
 
-- A `resource_group` kulcs esetében módosítsa a `aksansibletest` értéket az erőforráscsoport nevére.
+- A `resource_group` kulcsnál módosítsa a `aksansibletest` értéket az erőforráscsoport nevére.
 - A `name` kulcs esetében módosítsa a `aksansibletest` értéket az AK-névre.
 - A `Location` kulcs esetében módosítsa a `eastus` értéket az erőforráscsoport helyére.
 
@@ -346,7 +346,7 @@ Mentse a következő kódot `cleanup.yml`-ként:
             force: yes
 ```
 
-A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 

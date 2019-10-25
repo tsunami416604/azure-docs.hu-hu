@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6f6c656bee9d271942e74f8116e64aeb47d68d5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: b141677e60705dc4176630ee7fd195ae03bba842
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757531"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816935"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele a AzCopy és a file Storage szolgáltatással 
 
@@ -23,6 +23,9 @@ Mielőtt elkezdené, tekintse meg az első [lépések a AzCopy](storage-use-azco
 ## <a name="create-file-shares"></a>Fájlmegosztás létrehozása
 
 A [azcopy make](storage-ref-azcopy-make.md) paranccsal fájlmegosztást hozhat létre. Az ebben a szakaszban szereplő példa egy `myfileshare` nevű fájlmegosztást hoz létre.
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 |    |     |
 |--------|-----------|
@@ -47,6 +50,9 @@ Ez a szakasz a következő példákat tartalmazza:
 > A AzCopy nem számítja ki automatikusan a fájl MD5 kivonatoló kódját. Ha azt szeretné, hogy a AzCopy ezt tegye, fűzze hozzá a `--put-md5` jelzőt az egyes másolási parancsokhoz. Így a fájl letöltésekor a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a fájl `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal.
 
 Részletes dokumentációs dokumentáció: [azcopy másolás](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
 
@@ -133,6 +139,9 @@ Ez a szakasz a következő példákat tartalmazza:
 
 Részletes dokumentációs dokumentáció: [azcopy másolás](storage-ref-azcopy-copy.md).
 
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
+
 ### <a name="download-a-file"></a>Fájl letöltése
 
 |    |     |
@@ -207,6 +216,9 @@ Ez a szakasz a következő példákat tartalmazza:
 
 A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.md).
 
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
+
 ### <a name="copy-a-file-to-another-storage-account"></a>Fájl másolása másik Storage-fiókba
 
 |    |     |
@@ -247,6 +259,9 @@ A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a f�
 Ha a `--delete-destination` jelzőt úgy állítja be, hogy `true` AzCopy, a fájlok megadása nélkül törli a fájlokat. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a `--delete-destination` jelzőt `prompt` értékre.
 
 A részletes dokumentációs dokumentáció: [azcopy Sync](storage-ref-azcopy-sync.md).
+
+> [!TIP]
+> Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 ### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Fájlmegosztás frissítése egy másik fájlmegosztás módosításaival
 

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 82a0d98b7a9bb29a69830f1d8bd9b1e7db977273
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 19f06ee2d254e927fde4ca087fdd46f596c7dcbd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598410"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819902"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Hozzon létre egy új Dynamics 365-et a Customer engagement & PowerApps ajánlathoz
 
@@ -101,7 +101,7 @@ Válasszon legalább egyet és legfeljebb három kategóriát. A rendszer ezeket
 
 ### <a name="industry"></a>Iparág
 
-Lehetősége van akár két iparágra is kiválasztani, hogy az ajánlatot a piactéren kategorizálja. Ha az ajánlat nem az iparágra jellemző, hagyja üresen ezt a szakaszt. Ügyeljen arra, hogy az ajánlat leírásában ne feledje, hogyan támogatja a kiválasztott iparágakat. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="applicable-dynamics-365-products"></a>Alkalmazható Dynamics 365-termékek
 

@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights OpenCensus elosztott nyomkövetés helyi továbbítója (előzetes verzió) | Microsoft docs
 description: Továbbítsa a OpenCensus elosztott nyomkövetéseit, és a Pythonhoz hasonló nyelveket és az Azure Application Insights
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.author: mbullwin
-ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348152"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819203"
 ---
 # <a name="local-forwarder-preview"></a>Helyi továbbító (előzetes verzió)
 
@@ -34,14 +30,14 @@ A helyi továbbító egy [nyílt forráskódú projekt a githubon](https://githu
 A helyi továbbító Windows rendszeren való futtatásának legegyszerűbb módja, ha Windows-szolgáltatásként telepíti. A kiadáshoz tartozik egy Windows-szolgáltatás végrehajtható fájlja (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), amely könnyen regisztrálható az operációs rendszerben.
 
 > [!NOTE]
-> A helyi továbbító szolgáltatáshoz legalább a .NET-keretrendszer 4,7-es verziójának kell tartoznia. Ha nincs telepítve a .NET-keretrendszer 4,7-es szolgáltatása, a szolgáltatás nem fog elindulni. A .NET-keretrendszer legújabb verzióját eléréséhez **[a .NET-keretrendszer letöltési oldalán](
+> A helyi továbbító szolgáltatáshoz legalább a .NET-keretrendszer 4,7-es verziójának kell tartoznia. Ha nincs telepítve a .NET-keretrendszer 4,7-es szolgáltatása, a szolgáltatás nem fog elindulni. A .NET-keretrendszer legújabb verziójának eléréséhez **[látogasson el a .NET-keretrendszer letöltési oldalára](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Töltse le a TT-t. A WindowsServiceHost. zip fájl a GitHubon a [helyi továbbító kiadás oldaláról](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) .
 
     ![Képernyőkép a helyi továbbító kiadásának letöltési oldaláról](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
-2. Ebben a példában a könnyű bemutatóhoz csak a. zip fájlt fogjuk kinyerni az elérési útra `C:\LF-WindowsServiceHost`.
+2. Ebben a példában a könnyű bemutatóhoz csak a. zip fájlt fogjuk kinyerni az elérési úthoz `C:\LF-WindowsServiceHost`.
 
     A szolgáltatás regisztrálásához és a rendszerindítási indításhoz való konfigurálásához futtassa a következő parancsot a parancssorból rendszergazdaként:
 
@@ -53,13 +49,13 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     `[SC] CreateService SUCCESS`
     
-    Az új szolgáltatás megvizsgálása a szolgáltatások grafikus felhasználói felületének típusán keresztül``services.msc``
+    Az új szolgáltatás megvizsgálása a szolgáltatások grafikus felhasználói felületének típusa ``services.msc``
         
      ![Képernyőkép a helyi továbbító szolgáltatásról](./media/opencensus-local-forwarder/002-services.png)
 
 3. **Kattintson a jobb gombbal** az új helyi továbbítóra, és válassza az **Indítás**lehetőséget. A szolgáltatás mostantól egy futó állapotot fog megadni.
 
-4. Alapértelmezés szerint a szolgáltatás helyreállítási műveletek nélkül jön létre. Kattintson a **jobb gombbal** , és válassza a **Tulajdonságok** > **helyreállítása** lehetőséget a szolgáltatási hibákra vonatkozó automatikus válaszok konfigurálásához.
+4. Alapértelmezés szerint a szolgáltatás helyreállítási műveletek nélkül jön létre. Kattintson a **jobb gombbal** , és válassza a **Tulajdonságok** > **helyreállítás** lehetőséget a szolgáltatási hibákra vonatkozó automatikus válaszok konfigurálásához.
 
     Ha a hibák előfordulásakor programozottan szeretné beállítani az automatikus helyreállítási beállításokat, a következőt használhatja:
 
@@ -67,11 +63,11 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     sc failure "Local Forwarder" reset= 432000 actions= restart/1000/restart/1000/restart/1000
     ```
 
-5. A ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` fájl ugyanazon a helyen található, amely ebben a ``C:\LF-WindowsServiceHost`` példában egy nevű ``LocalForwarder.config``fájl. Ez egy XML-alapú fájl, amelynek segítségével módosíthatja a localforwader konfigurációját, és megadhatja annak a Application Insights erőforrásnak a rendszerállapot-kulcsát, amelyet az elosztott nyomkövetési adatai továbbítottak. 
+5. Ugyanazon a helyen, mint a ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` fájl, amely ebben a példában ``C:\LF-WindowsServiceHost`` van egy ``LocalForwarder.config``nevű fájl. Ez egy XML-alapú fájl, amelynek segítségével módosíthatja a localforwader konfigurációját, és megadhatja annak a Application Insights erőforrásnak a rendszerállapot-kulcsát, amelyet az elosztott nyomkövetési adatai továbbítottak. 
 
-    Miután módosította ``LocalForwarder.config`` a fájlt a kialakítási kulcs hozzáadásához, indítsa újra a **helyi továbbító szolgáltatást** , hogy a módosítások életbe lépnek.
+    Miután módosította a ``LocalForwarder.config`` fájlt a kialakítási kulcs hozzáadásához, indítsa újra a **helyi továbbító szolgáltatást** , hogy a módosítások életbe lépnek.
     
-6. Annak ellenőrzéséhez, hogy a kívánt beállítások teljesülnek-e, és hogy a helyi továbbító a várt módon figyeli-e ``LocalForwarder.log`` a nyomkövetési adatait, tekintse meg a fájlt. A fájl alján az alábbi képhez hasonló eredményeknek kell megjelennie:
+6. Annak ellenőrzéséhez, hogy a kívánt beállítások teljesülnek-e, és hogy a helyi továbbító a várt módon figyeli-e a nyomkövetési adatait, tekintse meg a ``LocalForwarder.log`` fájlt. A fájl alján az alábbi képhez hasonló eredményeknek kell megjelennie:
 
     ![Képernyőkép a LocalForwarder. log fájlról](./media/opencensus-local-forwarder/003-log-file.png)
 
@@ -97,7 +93,7 @@ A Windowshoz hasonlóan a kiadás a konzol gazdagépének következő végrehajt
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* egy önálló .NET Core-készlet a Linux-64-hez. Ehhez nem szükséges, hogy a .NET Core futtatókörnyezet fusson. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* egy önálló .NET Core-készlet a Linux-64-hez. Ehhez nem szükséges, hogy a .NET Core futtatókörnyezet fusson. */ConsoleHost/Linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost
@@ -151,7 +147,7 @@ systemctl start localforwarder
 ### <a name="mac"></a>Mac
 A helyi továbbító a macOS-mel is működhet, de jelenleg nem támogatott.
 
-### <a name="self-hosting"></a>Self-hosting
+### <a name="self-hosting"></a>Önálló üzemeltetés
 A helyi továbbítót .NET Standard NuGet-csomagként is terjesztik, amely lehetővé teszi, hogy a saját .NET-alkalmazásán belül tárolja azt.
 
 ```csharp
@@ -177,10 +173,10 @@ host.Stop();
 
 ## <a name="monitoring-local-forwarder"></a>Helyi továbbító figyelése
 
-A nyomkövetéseket a helyi továbbítót futtató végrehajtható fájl (a * *. log* fájlok) melletti fájlrendszerbe írja a rendszer. A végrehajtható fájl neve mellett a *NLog. config* nevű fájlt is elhelyezheti, hogy az alapértelmezett beállítás helyett saját konfigurációt adjon meg. A [](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) formátum leírását a dokumentációban találja.
+A nyomkövetéseket a helyi továbbítót futtató végrehajtható fájl (a * *. log* fájlok) melletti fájlrendszerbe írja a rendszer. A végrehajtható fájl neve mellett a *NLog. config* nevű fájlt is elhelyezheti, hogy az alapértelmezett beállítás helyett saját konfigurációt adjon meg. A formátum leírását a [dokumentációban](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) találja.
 
 Ha nincs megadva konfigurációs fájl (ez az alapértelmezett beállítás), a helyi továbbító az alapértelmezett konfigurációt fogja használni, amely [itt](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config)található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az összeírás megnyitása](https://opencensus.io/)

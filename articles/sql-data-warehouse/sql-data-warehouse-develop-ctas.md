@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 1b4ccd7742f8a84eec2d63a86e1387733d4c1864
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e347287a6d77cdc947a79ca497fdb2ffe83ad1bc
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479699"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882470"
 ---
 # <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE a SELECT (CTAS) beállítással Azure SQL Data Warehouse
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Válassza a... lehetőséget. A-ben nem teszi lehetővé, hogy a művelet részeként módosítsa a terjesztési módszert vagy az index típusát. A létrehozásához `[dbo].[FactInternetSales_new]` használja a ROUND_ROBIN alapértelmezett terjesztési típusát, valamint a fürtözött oszlopcentrikus indexének alapértelmezett táblázatos szerkezetét.
+Válassza a... lehetőséget. A-ben nem teszi lehetővé, hogy a művelet részeként módosítsa a terjesztési módszert vagy az index típusát. `[dbo].[FactInternetSales_new]` létrehozásához használja a ROUND_ROBIN alapértelmezett terjesztési típusát, és a FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXének alapértelmezett felépítését.
 
 A CTAS segítségével azonban megadhatja a tábla és a tábla szerkezetének eloszlását is. Az előző példa átalakítása CTAS:
 
@@ -46,13 +46,12 @@ A CTAS segítségével azonban megadhatja a tábla és a tábla szerkezetének e
 CREATE TABLE [dbo].[FactInternetSales_new]
 WITH
 (
-    DISTRIBUTION = ROUND_ROBIN
-   ,CLUSTERED COLUMNSTORE INDEX
+ DISTRIBUTION = ROUND_ROBIN
+ ,CLUSTERED COLUMNSTORE INDEX
 )
 AS
 SELECT  *
-FROM    [dbo].[FactInternetSales]
-;
+FROM    [dbo].[FactInternetSales];
 ```
 
 > [!NOTE]
@@ -60,9 +59,9 @@ FROM    [dbo].[FactInternetSales]
 
 ## <a name="use-ctas-to-copy-a-table"></a>Táblázat másolása CTAS használatával
 
-A CTAS egyik leggyakoribb felhasználási célja, hogy a DDL módosításához létrehozza a tábla másolatát. Tegyük fel `ROUND_ROBIN`, hogy eredetileg létrehozta a táblát, és most módosítani szeretné egy oszlopra terjesztett táblára. A CTAS a terjesztési oszlop módosítása. A CTAS a particionálás, az indexelés vagy az oszlopok típusának módosítására is használhatja.
+A CTAS egyik leggyakoribb felhasználási célja, hogy a DDL módosításához létrehozza a tábla másolatát. Tegyük fel, hogy eredetileg `ROUND_ROBIN`ként hozta létre a táblázatot, és most módosítani szeretné egy oszlopra terjesztett táblára. A CTAS a terjesztési oszlop módosítása. A CTAS a particionálás, az indexelés vagy az oszlopok típusának módosítására is használhatja.
 
-Tegyük fel `ROUND_ROBIN`, hogy létrehozta ezt a táblázatot az alapértelmezett terjesztési típusával, és nem határoz meg terjesztési oszlopot a `CREATE TABLE`alkalmazásban.
+Tegyük fel, hogy a táblázatot a `ROUND_ROBIN`alapértelmezett terjesztési típusával hozta létre, és nem határoz meg terjesztési oszlopot a `CREATE TABLE`.
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -89,11 +88,10 @@ CREATE TABLE FactInternetSales
     TaxAmt money NOT NULL,
     Freight money NOT NULL,
     CarrierTrackingNumber nvarchar(25),
-    CustomerPONumber nvarchar(25)
-);
+    CustomerPONumber nvarchar(25));
 ```
 
-Most létre kell hoznia egy új példányt a táblából, amelynek `Clustered Columnstore Index`segítségével kihasználhatja a fürtözött oszlopcentrikus-táblák teljesítményét. Ezt a `ProductKey`táblázatot is el kell osztania, mert az az oszlophoz való csatlakozást tervezi, és el szeretné kerülni az adatáthelyezést `ProductKey`az illesztések során. Végül pedig a particionálást is fel kell vennie, `OrderDateKey`így a régi partíciók eldobásával gyorsan törölheti a régi adatbázisokat. Itt látható a CTAS utasítás, amely egy új táblába másolja a régi táblát.
+Most létre kell hoznia a táblázat egy új példányát, amely egy `Clustered Columnstore Index`, így kihasználhatja a fürtözött Oszlopcentrikus-táblák teljesítményét. Ezt a táblázatot a `ProductKey`is el szeretné terjeszteni, mert az illesztéseket várhatóan az oszlophoz kívánja használni, és nem szeretné elkerülni az adatáthelyezést `ProductKey`. Végül a particionálást is érdemes `OrderDateKey`, így a régi partíciók eldobásával gyorsan törölheti a régieket. Itt látható a CTAS utasítás, amely egy új táblába másolja a régi táblát.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -142,15 +140,14 @@ Képzelje el, hogy frissítenie kell ezt a táblázatot:
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
-(    [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
-,    [CalendarYear]                    SMALLINT        NOT NULL
-,    [TotalSalesAmount]                MONEY            NOT NULL
+( [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
+, [CalendarYear]                    SMALLINT        NOT NULL
+, [TotalSalesAmount]                MONEY            NOT NULL
 )
 WITH
 (
     DISTRIBUTION = ROUND_ROBIN
-)
-;
+);
 ```
 
 Lehetséges, hogy az eredeti lekérdezés a következő példához hasonlóan néz ki:
@@ -160,9 +157,9 @@ UPDATE    acs
 SET        [TotalSalesAmount] = [fis].[TotalSalesAmount]
 FROM    [dbo].[AnnualCategorySales]     AS acs
 JOIN    (
-        SELECT    [EnglishProductCategoryName]
-        ,        [CalendarYear]
-        ,        SUM([SalesAmount])                AS [TotalSalesAmount]
+        SELECT [EnglishProductCategoryName]
+        , [CalendarYear]
+        , SUM([SalesAmount])                AS [TotalSalesAmount]
         FROM    [dbo].[FactInternetSales]        AS s
         JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
         JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
@@ -174,11 +171,10 @@ JOIN    (
         ,        [CalendarYear]
         ) AS fis
 ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
-AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
-;
+AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-A `FROM` SQL Data Warehouse nem támogatja az ANSI-illesztéseket egy `UPDATE` utasítás záradékában, ezért módosítás nélkül nem használhatja az előző példát.
+A SQL Data Warehouse nem támogatja az ANSI illesztéseket egy `UPDATE` utasítás `FROM` záradékában, így módosítás nélkül nem használhatja az előző példát.
 
 Az előző példát lecserélve egy CTAS és egy implicit illesztés kombinációját is használhatja:
 
@@ -187,38 +183,34 @@ Az előző példát lecserélve egy CTAS és egy implicit illesztés kombináci�
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)    AS [EnglishProductCategoryName]
-,        ISNULL(CAST([CalendarYear] AS SMALLINT),0)                         AS [CalendarYear]
-,        ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)                        AS [TotalSalesAmount]
+SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0) AS [EnglishProductCategoryName]
+, ISNULL(CAST([CalendarYear] AS SMALLINT),0)  AS [CalendarYear]
+, ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)  AS [TotalSalesAmount]
 FROM    [dbo].[FactInternetSales]        AS s
 JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
 JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
 JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
 JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
 WHERE     [CalendarYear] = 2004
-GROUP BY
-        [EnglishProductCategoryName]
-,        [CalendarYear]
-;
+GROUP BY [EnglishProductCategoryName]
+, [CalendarYear];
 
 -- Use an implicit join to perform the update
 UPDATE  AnnualCategorySales
 SET     AnnualCategorySales.TotalSalesAmount = CTAS_ACS.TotalSalesAmount
 FROM    CTAS_acs
 WHERE   CTAS_acs.[EnglishProductCategoryName] = AnnualCategorySales.[EnglishProductCategoryName]
-AND     CTAS_acs.[CalendarYear]               = AnnualCategorySales.[CalendarYear]
-;
+AND     CTAS_acs.[CalendarYear]  = AnnualCategorySales.[CalendarYear] ;
 
 --Drop the interim table
-DROP TABLE CTAS_acs
-;
+DROP TABLE CTAS_acs;
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI illesztés a DELETE utasításokhoz
 
-Előfordulhat, hogy az adattörlés legjobb módja az CTAS használata, különösen az `DELETE` olyan utasítások esetében, amelyek ANSI illesztési szintaxist használnak. Ennek az az oka, hogy SQL Data Warehouse nem támogatja az `FROM` ANSI illesztéseket `DELETE` egy utasítás záradékában. Az adattörlés helyett válassza ki a megőrizni kívánt adatértékeket.
+Előfordulhat, hogy az adattörlés legjobb módja az CTAS használata, különösen az olyan `DELETE` utasítások esetében, amelyek ANSI illesztési szintaxist használnak. Ennek az az oka, hogy SQL Data Warehouse nem támogatja az ANSI-illesztéseket egy `DELETE` utasítás `FROM` záradékában. Az adattörlés helyett válassza ki a megőrizni kívánt adatértékeket.
 
-A következő példa egy konvertált `DELETE` utasítást mutat be:
+A következő példa egy átalakított `DELETE` utasítást mutat be:
 
 ```sql
 CREATE TABLE dbo.DimProduct_upsert
@@ -227,23 +219,22 @@ WITH
 ,   CLUSTERED INDEX (ProductKey)
 )
 AS -- Select Data you want to keep
-SELECT     p.ProductKey
-,          p.EnglishProductName
-,          p.Color
-FROM       dbo.DimProduct p
+SELECT p.ProductKey
+, p.EnglishProductName
+,  p.Color
+FROM  dbo.DimProduct p
 RIGHT JOIN dbo.stg_DimProduct s
-ON         p.ProductKey = s.ProductKey
-;
+ON p.ProductKey = s.ProductKey;
 
-RENAME OBJECT dbo.DimProduct        TO DimProduct_old;
+RENAME OBJECT dbo.DimProduct TO DimProduct_old;
 RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>Egyesítési utasítások cseréje
 
-Az egyesítési utasítások (legalább részben) a CTAS használatával cserélhetők fel. A `INSERT` és a `UPDATE` egyetlen utasítást kombinálhatja. A törölt rekordokat az `SELECT` utasításból kell korlátozni, hogy kihagyják az eredményekből.
+Az egyesítési utasítások (legalább részben) a CTAS használatával cserélhetők fel. A `INSERT` és a `UPDATE` egyetlen utasítással egyesíthető. A törölt rekordokat a `SELECT` utasításból kell korlátozni, hogy kihagyják az eredményekből.
 
-Az alábbi példa egy `UPSERT`:
+A következő példa egy `UPSERT`re mutat:
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -253,22 +244,21 @@ WITH
 )
 AS
 -- New rows and new versions of rows
-SELECT      s.[ProductKey]
-,           s.[EnglishProductName]
-,           s.[Color]
+SELECT s.[ProductKey]
+, s.[EnglishProductName]
+, s.[Color]
 FROM      dbo.[stg_DimProduct] AS s
 UNION ALL  
 -- Keep rows that are not being touched
 SELECT      p.[ProductKey]
-,           p.[EnglishProductName]
-,           p.[Color]
+, p.[EnglishProductName]
+, p.[Color]
 FROM      dbo.[DimProduct] AS p
 WHERE NOT EXISTS
 (   SELECT  *
     FROM    [dbo].[stg_DimProduct] s
     WHERE   s.[ProductKey] = p.[ProductKey]
-)
-;
+);
 
 RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
 RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
@@ -288,8 +278,7 @@ CREATE TABLE result
 WITH (DISTRIBUTION = ROUND_ROBIN)
 
 INSERT INTO result
-SELECT @d*@f
-;
+SELECT @d*@f;
 ```
 
 Előfordulhat, hogy érdemes áttelepítenie ezt a kódot a CTAS-re, és helyes lenne. Itt azonban rejtett probléma van.
@@ -298,14 +287,12 @@ A következő kód nem eredményezi ugyanazt az eredményt:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
-,       @f float(24)    = 85.455
-;
+, @f float(24)    = 85.455;
 
 CREATE TABLE ctas_r
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT @d*@f as result
-;
+SELECT @d*@f as result;
 ```
 
 Figyelje meg, hogy a "result" oszlop továbbítja a kifejezés adattípusát és nullára vonatkozó értékeit. Ha nem vigyáz rá, az adattípusok továbbítása enyhe eltéréseket eredményezhet az értékekben.
@@ -314,12 +301,10 @@ Próbálja ki ezt a példát:
 
 ```sql
 SELECT result,result*@d
-from result
-;
+from result;
 
 SELECT result,result*@d
-from ctas_r
-;
+from ctas_r;
 ```
 
 Az eredményként tárolt érték eltér. Mivel az eredmény oszlopban megőrzött érték más kifejezésekben is szerepel, a hiba még jelentősebb lesz.
@@ -337,7 +322,7 @@ A következő példa a kód kijavítását mutatja be:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
-,       @f float(24)    = 85.455
+, @f float(24)    = 85.455
 
 CREATE TABLE ctas_r
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -361,11 +346,11 @@ A számítások integritásának biztosítása szintén fontos a tábla partíci
 CREATE TABLE [dbo].[Sales]
 (
     [date]      INT     NOT NULL
-,   [product]   INT     NOT NULL
-,   [store]     INT     NOT NULL
-,   [quantity]  INT     NOT NULL
-,   [price]     MONEY   NOT NULL
-,   [amount]    MONEY   NOT NULL
+, [product]   INT     NOT NULL
+, [store]     INT     NOT NULL
+, [quantity]  INT     NOT NULL
+, [price]     MONEY   NOT NULL
+, [amount]    MONEY   NOT NULL
 )
 WITH
 (   DISTRIBUTION = HASH([product])
@@ -374,8 +359,7 @@ WITH
                     ,20030101,20040101,20050101
                     )
                 )
-)
-;
+);
 ```
 
 Az összeg mező azonban számított kifejezés. Nem a forrásadatok részét képezi.
@@ -385,8 +369,8 @@ Particionált adatkészlet létrehozásához a következő kódot érdemes haszn
 ```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH
-(   DISTRIBUTION = HASH([product])
-,   PARTITION   (   [date] RANGE RIGHT FOR VALUES
+( DISTRIBUTION = HASH([product])
+, PARTITION   (   [date] RANGE RIGHT FOR VALUES
                     (20000101,20010101
                     )
                 )
@@ -400,29 +384,28 @@ SELECT
 ,   [price]
 ,   [quantity]*[price]  AS [amount]
 FROM [stg].[source]
-OPTION (LABEL = 'CTAS : Partition IN table : Create')
-;
+OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-A lekérdezés teljesen jól fut. A probléma a partíciós kapcsoló kipróbálásakor jön. A tábla definíciói nem egyeznek. Ahhoz, hogy a táblázat-definíciók megegyezzenek, módosítsa `ISNULL` a CTAS egy függvény hozzáadásához, amely az oszlop nullára vonatkozó attribútumának megőrzését végzi.
+A lekérdezés teljesen jól fut. A probléma a partíciós kapcsoló kipróbálásakor jön. A tábla definíciói nem egyeznek. Ahhoz, hogy a táblázat-definíciók megegyezzenek, módosítsa a CTAS egy `ISNULL` függvény hozzáadásával az oszlop nullára vonatkozó attribútumának megőrzése érdekében.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH
-(   DISTRIBUTION = HASH([product])
-,   PARTITION   (   [date] RANGE RIGHT FOR VALUES
+( DISTRIBUTION = HASH([product])
+, PARTITION   (   [date] RANGE RIGHT FOR VALUES
                     (20000101,20010101
                     )
                 )
 )
 AS
 SELECT
-    [date]
-,   [product]
-,   [store]
-,   [quantity]
-,   [price]   
-,   ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
+  [date]
+, [product]
+, [store]
+, [quantity]
+, [price]   
+, ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
 FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
@@ -431,7 +414,7 @@ Láthatja, hogy a típus konzisztenciája és a CTAS tulajdonság fenntartása e
 
 A CTAS a SQL Data Warehouse egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippekért tekintse meg a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md)című témakört.
 
