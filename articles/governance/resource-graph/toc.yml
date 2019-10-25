@@ -17,6 +17,11 @@
     - name: Az első lekérdezés futtatása – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: Oktatóanyagok
+  items:
+    - name: Lekérdezés létrehozása és megosztása az Azure Portalon
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: Példák
   items:
     - name: Kezdő szintű lekérdezések

@@ -3,65 +3,49 @@
 - name: Áttekintés
   items:
     - name: Mi az az Azure AD Identity Protection?
-      href: overview.md
-- name: Gyors útmutatók
-  items:
-    - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
-      href: quickstart-sign-in-risk-policy.md
+      href: overview-identity-protection.md
 - name: Alapelvek
   expanded: false
   items:
-    - name: Mik azok a biztonsági rések?
-      href: vulnerabilities.md
-    - name: Mik azok az értesítések?
-      href: notifications.md
+    - name: Biztonsági áttekintés
+      href: concept-identity-protection-security-overview.md
+    - name: Mik azok a kockázatok?
+      href: concept-identity-protection-risks.md
+    - name: Identity Protection-szabályzatok
+      href: concept-identity-protection-policies.md
     - name: Mi az a bejelentkezési élmény?
-      href: flows.md
+      href: concept-identity-protection-user-experience.md
     - name: Identity Protection- és B2B-felhasználók
       href: concept-identity-protection-b2b.md
 - name: Útmutatók
   expanded: true
   items:
-    - name: Identity Protection
+    - name: Értesítések konfigurálása
+      href: howto-identity-protection-configure-notifications.md
+    - name: Szabályzatkonfiguráció
       items:
-        - name: Az Azure AD Identity Protection engedélyezése
-          href: enable.md
         - name: Az MFA regisztrációs szabályzat konfigurálása
-          href: howto-mfa-policy.md
-        - name: A bejelentkezési kockázati szabályzat konfigurálása
-          href: howto-sign-in-risk-policy.md
-        - name: A felhasználói kockázati szabályzat konfigurálása
-          href: howto-user-risk-policy.md
-        - name: Az aktív kockázatészlelések bezárása
-          href: howto-close-active-risk-events.md
-        - name: Felhasználók tiltásának feloldása
-          href: howto-unblock-user.md
-        - name: Kockázatészlelések szimulálása
-          href: playbook.md
-        - name: Gyakori kérdések
-          href: faqs.md
-    - name: Identity Protection (frissítve)
-      items:
-        - name: Áttekintés
-          href: overview-v2.md
-        - name: Biztonsági áttekintés
-          href: security-overview.md
-        - name: Kockázat vizsgálata
-          href: howto-investigate-risk.md
-        - name: Visszajelzés a kockázatészlelésekről
-          href: howto-provide-risk-event-feedback.md
+          href: howto-identity-protection-configure-mfa-policy.md
         - name: Kockázati szabályzatok beállítása
-          href: howto-configure-risk-policies.md
-        - name: Gyakori kérdések és ismert problémák
-          href: known-issues.md
+          href: howto-identity-protection-configure-risk-policies.md
+    - name: Kockázatészlelések szimulálása
+      href: howto-identity-protection-simulate-risk.md
+    - name: Vizsgálat és szervizelés
+      items:
+        - name: Kockázat vizsgálata
+          href: howto-identity-protection-investigate-risk.md
+        - name: Kockázatészlelések szervizelése és tiltás feloldása
+          href: howto-identity-protection-remediate-unblock.md
+        - name: A Microsoft Graph API használata
+          href: howto-identity-protection-graph-api.md
+    - name: Visszajelzés a kockázatészlelésekről
+      href: howto-identity-protection-risk-feedback.md
+    - name: Gyakori kérdések
+      href: troubleshooting-identity-protection-faq.md
 - name: Referencia
   items:
-    - name: A Microsoft Graph API használata
-      href: graph-get-started.md
-    - name: Kockázatészlelések
-      href: risk-events-reference.md
     - name: Szószedet
-      href: glossary.md
+      href: reference-identity-protection-glossary.md
 - name: További források
   items:
     - name: Azure visszajelzési fórum

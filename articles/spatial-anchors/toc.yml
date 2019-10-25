@@ -31,10 +31,11 @@
           href: quickstarts/get-started-xamarin-ios.md
 - name: Oktatóanyagok
   items:
-    - name: Megosztás a Unityben
+    - name: Megosztás munkamenetek és eszközök között
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: Megosztás a Unityben az Azure Cosmos DB-vel
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: Állandó megosztás az Azure Cosmos DB-vel
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: Új Unity HoloLens-alkalmazás indítása
       href: tutorials/tutorial-new-unity-hololens-app.md
     - name: Új androidos alkalmazás indítása

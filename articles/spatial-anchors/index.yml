@@ -81,7 +81,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Megosztás a Unityben.</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Megosztás a Unityben az Azure Cosmos DB-vel.</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Megosztás munkamenetek és eszközök között.</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Állandó megosztás az Azure Cosmos DB-vel.</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">Új Unity HoloLens-alkalmazás indítása.</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">Új androidos alkalmazás indítása.</a>

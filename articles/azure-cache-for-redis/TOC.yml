@@ -89,6 +89,8 @@
           href: 'cache-administration.md#schedule-updates'
         - name: A redis-cli.exe hozzáférésének konfigurálása
           href: cache-how-to-redis-cli-tool.md
+        - name: A TLS 1.0 és 1.1 használatának elavulttá tétele
+          href: cache-deprecate-tls-10-11.md
     - name: Figyelés
       items:
         - name: Monitorozás az Azure Portalon
