@@ -1,20 +1,20 @@
 ---
 title: 'Gyors útmutató: Node. js-MongoDB-alkalmazás összekötése Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet a Node. js-ben írt meglévő MongoDB-alkalmazást Azure Cosmos DBba kapcsolni.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b9cadbf35680953058bd38d7db26a6e6c684836b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327292"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792179"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Gyors útmutató: meglévő MongoDB Node. js-webalkalmazás migrálása Azure Cosmos DBre 
 
@@ -55,7 +55,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. Ez a mintatárh
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson az új mappára, ahol telepíteni szeretné a mintaalkalmazást.
@@ -179,10 +179,10 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>A kulcs lekérése
 
-A Cosmos-adatbázishoz való kapcsolódáshoz szükség van az adatbázis kulcsára. Az [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) parancs használatával kérje le az elsődleges kulcsot.
+A Cosmos-adatbázishoz való kapcsolódáshoz szükség van az adatbázis kulcsára. Az elsődleges kulcs lekéréséhez használja az az [cosmosdb Keys List](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) parancsot.
 
 ```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
 Az Azure CLI az alábbi példához hasonló formában jeleníti meg a kimeneti adatokat. 

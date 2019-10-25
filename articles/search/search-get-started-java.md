@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: keresési index létrehozása Java-ban REST API-k használatával – Azure Search'
-description: Ismerteti, hogyan lehet indexet létrehozni, adatok betöltésére és lekérdezéseket futtatni a Java és a Azure Search REST API-k használatával.
+title: 'Gyors útmutató: keresési index létrehozása Java-ban REST API-k használatával'
+titleSuffix: Azure Cognitive Search
+description: Ismerteti, hogyan lehet indexet létrehozni, adatok betöltésére és lekérdezéseket futtatni a Java és az Azure Cognitive Search REST API-k használatával.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166244"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792816"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Search index létrehozása javában a REST API-k használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166244"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Hozzon létre egy Azure Search-indexet létrehozó, betöltési és lekérdezési Java-konzolos alkalmazást a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)és a [Azure Search Service REST API](/rest/api/searchservice/)használatával. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Hozzon létre egy Java-konzolos alkalmazást, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le az [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)és az [Azure Cognitive Search REST API](/rest/api/searchservice/)használatával. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -38,13 +38,13 @@ A következő szoftvereket és szolgáltatásokat használtuk a minta összeáll
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési kulcsot igényelnek minden kérelemben. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési kulcsot igényelnek minden kérelemben. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
@@ -133,9 +133,9 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 ### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
 
 1. Válassza a **fájl** > **projekt szerkezete**elemet.
-1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 mappa tartalmának eléréséhez.
-1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 mappában adja hozzá a `app` és a `service` mappát. Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
-1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 mappában adja hozzá a `app` és a `service` mappát.
+1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a `src` >  `main` mappa tartalmának eléréséhez.
+1. A `src` >  `main` > `java` mappában adja hozzá `app` és `service` mappákat. Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
+1. A `src` >  `main` >`resources` mappában adja hozzá `app` és `service` mappákat.
 
     Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
 
@@ -143,9 +143,9 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 1. Az ablak bezárásához kattintson **az OK** gombra.
 
-### <a name="add-azure-search-service-information"></a>Azure Search szolgáltatás adatainak hozzáadása
+### <a name="add-azure-cognitive-search-service-information"></a>Azure Cognitive Search szolgáltatás adatainak hozzáadása
 
-1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 mappa eléréséhez, és adjon hozzá egy `config.properties` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` >  `main` >`resources` > `app` mappához, és adjon hozzá egy `config.properties` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 
 1. Másolja a következő beállításokat az új fájlba, és cserélje le a `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` és `<YOUR-QUERY-KEY>` értéket a szolgáltatás nevére és kulcsaira. Ha a szolgáltatási végpont `https://mydemo.search.windows.net`, a szolgáltatás neve "mydemo" lesz.
 
@@ -159,7 +159,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-the-main-method"></a>A Main metódus hozzáadása
 
-1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 mappában adjon hozzá egy `App` osztályt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java osztály**lehetőséget, majd adja meg az osztály nevét.
+1. A `src` >  `main` > `java` > `app` mappában adjon hozzá egy `App` osztályt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java osztály**lehetőséget, majd adja meg az osztály nevét.
 1. Nyissa meg a `App` osztályt, és cserélje le a tartalmat a következő kódra. Ez a kód a `main` metódust tartalmazza. 
 
     A nem kommentált kód beolvassa a keresési szolgáltatás paramétereit, és a segítségével létrehozza a keresési szolgáltatás ügyfelének egy példányát. A Search szolgáltatás ügyfelének kódját a következő szakaszban adja hozzá a rendszer.
@@ -258,8 +258,8 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-the-http-operations"></a>HTTP-műveletek hozzáadása
 
-1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 mappában adja hozzá a @ no__t-7 osztályt. Ehhez válassza ki a `service` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java osztály**lehetőséget, majd adja meg az osztály nevét.
-1. Nyissa meg a `SearchServiceClient` osztályt, és cserélje le a tartalmát a következő kódra. Ez a kód biztosítja a Azure Search REST API használatához szükséges HTTP-műveleteket. Az index létrehozásának, a dokumentumok feltöltésének és az index lekérdezésének további módszerei egy későbbi szakaszban lesznek hozzáadva.
+1. A `src` >  `main` > `java` > `service` mappában adjon hozzá egy`SearchServiceClient` osztályt. Ehhez válassza ki a `service` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java osztály**lehetőséget, majd adja meg az osztály nevét.
+1. Nyissa meg a `SearchServiceClient` osztályt, és cserélje le a tartalmát a következő kódra. Ez a kód biztosítja az Azure Cognitive Search REST API használatához szükséges HTTP-műveleteket. Az index létrehozásának, a dokumentumok feltöltésének és az index lekérdezésének további módszerei egy későbbi szakaszban lesznek hozzáadva.
 
     ```java
     package main.java.service;
@@ -374,7 +374,8 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
     ![Projekt könyvtárának szerkezete](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java` @ no__t-2 @ No__t-3Execute Maven Goal: exec ellenőrzése: Java @ no__t-4
+1. Nyissa meg a **Maven** -eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
+![végrehajtja a Maven célját: az exec ellenőrzése: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
 A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy nulla (0) kilépési kód követ.
 
@@ -382,7 +383,7 @@ A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy 
 
 A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartalmaz. Egyszerű mező például a "pezsgő" vagy a "Description". A "címe" mező egy összetett mező, mert almezővel rendelkezik, például "utca címe" és "város". Ebben a rövid útmutatóban az index definíciója a JSON használatával van megadva.
 
-1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 mappa eléréséhez, és adjon hozzá egy `index.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` >  `main` >`resources` > `service` mappában, és vegyen fel egy `index.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 
 1. Nyissa meg a `index.json` fájlt, és szúrja be a következő index-definíciót.
 
@@ -511,9 +512,9 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
 
     Az index neve "Hotels-Gyorsindítás" lesz. Az index mezők attribútumai határozzák meg, hogy az indexelt adat hogyan kereshető meg egy alkalmazásban. A `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. Az attribútumokkal kapcsolatos további tudnivalókért tekintse meg a [mezők gyűjteménye és a mező attribútumai](search-what-is-an-index.md#fields-collection)című témakört.
     
-    Az index `Description` mezője az opcionális `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzer `fr.lucene` értéket használja, mert francia nyelvű szöveget tárol. A `Description` a választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: a [Azure Searchban lévő szöveg-feldolgozásra szolgáló elemzők](search-analyzers.md).
+    Az index `Description` mezője az opcionális `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzer `fr.lucene` használja, mert francia nyelvű szöveget tárol. A `Description` a választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: az [Azure Cognitive Searchban végzett szövegszerkesztés elemzői](search-analyzers.md).
 
-1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ezek a módszerek olyan Azure Search REST-szolgáltatás URL-címeinek kiépítése, amelyek indexet hoznak létre és törölnek, és amelyek meghatározzák, hogy létezik-e index A metódusok a HTTP-kérést is elvégzik.
+1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ezek a módszerek létrehozzák az Azure Cognitive Search REST szolgáltatás URL-címét, amelyek indexet hoznak létre és törölnek, és amelyek meghatározzák, hogy létezik-e index. A metódusok a HTTP-kérést is elvégzik.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -569,7 +570,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 mappa eléréséhez, és adjon hozzá egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` >  `main` >`resources` > `service` mappában, és vegyen fel egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 1. Szúrja be a következő szállodai dokumentumokat a fájlba.
 
     ```json
@@ -693,9 +694,9 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
 
 Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lekérdezéseket a szállások eléréséhez.
 
-1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ez a kód Azure Search REST-szolgáltatás URL-címeit hozza létre az indexelt adatokban való kereséshez és a keresési eredmények kinyomtatásához.
+1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ez a kód az Azure Cognitive Search REST-szolgáltatás URL-címeit építi fel az indexelt adatok keresésére és a keresési eredmények kinyomtatására.
 
-    A `SearchOptions` osztály és a `createSearchOptions` metódus lehetővé teszi az elérhető Azure Search REST API lekérdezési beállítások részhalmazának megadását. További információ a REST API lekérdezési lehetőségekről: [dokumentumok keresése (Azure Search Service REST API)](/rest/api/searchservice/search-documents).
+    A `SearchOptions` osztály és a `createSearchOptions` metódus lehetővé teszi az elérhető Azure-Cognitive Search REST API lekérdezési beállítások részhalmazának megadását. További információ a REST API lekérdezési lehetőségekről: [dokumentumok keresése (Azure Cognitive Search REST API)](/rest/api/searchservice/search-documents).
 
     A `SearchPlus` metódus létrehozza a keresési lekérdezés URL-címét, végrehajtja a keresési kérelmet, majd kinyomtatja az eredményeket a-konzolra. 
 

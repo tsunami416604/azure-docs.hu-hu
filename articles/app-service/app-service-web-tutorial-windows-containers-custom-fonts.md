@@ -10,15 +10,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 10/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6f9005b0e73e60bf479d0d3c059c301668f3b848
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071518"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787314"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>ASP.NET-alkalmazás áttelepítése az Azure App Service szolgáltatásba egy Windows-tároló (előzetes verzió) használatával
 
@@ -90,6 +90,10 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 Az _InstallFont.ps1_ megtalálható a **CustomFontSample** projektben. Ez egy egyszerű szkript a betűkészlet telepítéséhez. A [Script Centerben](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133) megtalálja a szkript egy összetettebb verzióját.
 
+> [!NOTE]
+> A Windows-tároló helyi teszteléséhez győződjön meg arról, hogy a Docker elindult a helyi gépen.
+>
+
 ## <a name="publish-to-azure-container-registry"></a>Közzététel az Azure Container Registryben
 
 Az [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) képes tárolni a rendszerképeket a tárolók üzembe helyezéséhez. Az App Service-t az Azure Container Registryben üzemeltetett rendszerképek használatára konfigurálhatja.
@@ -120,7 +124,7 @@ Konfigurálja az új Container Registryt a következő táblázatban javasolt é
 | ----------------- | ------------ | ----|
 |**DNS-előtag**| Megtarthatja a beállításjegyzék létrehozott nevét, vagy módosíthatja egy másik egyedi névre. |  |
 |**Erőforráscsoport**| Kattintson a **New** (Új) lehetőségre, írja be a **myResourceGroup** kifejezést, majd kattintson az **OK** gombra. |  |
-|**Termékváltozat**| Alapszintű | [Árképzési szintek](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Termékváltozat**| Basic | [Árképzési szintek](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Beállításjegyzékbeli hely**| Nyugat-Európa | |
 
 ![Az Azure Container Registry konfigurálása](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -135,27 +139,34 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 A bal oldali menüben válassza az **Erőforrás létrehozása** > **Web** > **Web App for Containers** lehetőséget.
 
-### <a name="configure-the-new-web-app"></a>Az új webalkalmazás konfigurálása
+### <a name="configure-app-basics"></a>Alkalmazás alapalapjainak konfigurálása
 
-A létrehozási felületen konfigurálja a beállításokat a következő táblázat szerint:
+Az **alapvető** beállítások lapon konfigurálja a beállításokat az alábbi táblázat szerint, majd kattintson a Tovább gombra **: Docker**.
 
 | Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
-|**Alkalmazás neve**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve. |
-|**Erőforráscsoport**| Válassza a **Meglévő használata** lehetőséget, majd írja be, hogy **myResourceGroup**. |  |
-|**OS**| Windows (előzetes verzió) | |
+|**Előfizetés**| Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva. |  |
+|**Erőforráscsoport**| Válassza az **új létrehozása**elemet, írja be a **myResourceGroup**, majd kattintson **az OK**gombra. |  |
+|**Name (Név)**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve. |
+|**Közzététel**| Docker-tároló | |
+|**Operációs rendszer**| Windows | |
+|**Régió**| Nyugat-Európa | |
+|**Windows-csomag**| Válassza az **új létrehozása**elemet, írja be a **myAppServicePlan**, majd kattintson **az OK**gombra. | |
 
-### <a name="configure-app-service-plan"></a>App Service-csomag konfigurálása
+Az **alapvető beállítások** lap így néz ki:
 
-Kattintson az **App Service-csomag/Hely** > **Új létrehozása** lehetőségre. Adja meg az új csomag nevét, a helynél válassza a **Nyugat-Európa** beállítást, majd kattintson az **OK** gombra.
+![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-service-plan.png)
+### <a name="configure-windows-container"></a>Windows-tároló konfigurálása
 
-### <a name="configure-container"></a>Tároló konfigurálása
+A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblázatban látható módon, majd válassza a **felülvizsgálat + létrehozás**elemet.
 
-Kattintson a **Tároló konfigurálása** > **Azure Container Registry** lehetőségre. Válassza ki a [Közzététel az Azure Container Registryben](#publish-to-azure-container-registry) című szakaszban korábban létrehozott beállításjegyzéket, rendszerképet és címkét, majd kattintson az **OK** gombra.
-
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-container.png)
+| Beállítás  | Ajánlott érték |
+| ----------------- | ------------ |
+|**Rendszerkép forrása**| Azure Container-regisztráció |
+|**Beállításjegyzék**| Válassza ki [a korábban létrehozott beállításjegyzéket](#publish-to-azure-container-registry). |
+|**Rendszerkép**| customfontsample |
+|**Tag**| legutóbbi |
 
 ### <a name="complete-app-creation"></a>Alkalmazás létrehozásának befejezése
 
@@ -183,9 +194,9 @@ Várjon néhány percet, és próbálkozzon újra, amíg meg nem jelenik a kezd�
 
 ## <a name="see-container-start-up-logs"></a>A tároló rendszerindítási naplóinak megtekintése
 
-A Windows-tároló betöltése hosszabb időbe telhet. A folyamat előrehaladásának nyomon követéséhez nyissa meg az alábbi URL-címet úgy, hogy az *\<app_name>* sztringet az alkalmazás nevére cseréli.
+A Windows-tároló betöltése hosszabb időbe telhet. Ha szeretné megtekinteni az előrehaladást, navigáljon a következő URL-címre\<az App *-name >* helyére az alkalmazás nevét.
 ```
-https://<app_name>.scm.azurewebsites.net/api/logstream
+https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
 
 A streamelt naplók a következőképpen néznek ki:

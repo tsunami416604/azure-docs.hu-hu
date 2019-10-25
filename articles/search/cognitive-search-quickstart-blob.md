@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Ismerje meg a kognitív keresés AI-bővítését Azure Portal-Azure Search'
+title: 'Gyors útmutató: a kognitív keresés AI-bővítésének megismerése Azure Portal-Azure Search'
 description: Adatok kinyerése, természetes nyelvi és képfeldolgozási képességek egy Azure Search indexelő portálon a Azure Portal és a mintaadatok használatával.
 manager: nitinme
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 11c58a891a730c57aae3500911741623dde5d51b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265900"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809667"
 ---
-# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Gyors útmutató: AI-dúsítási folyamat létrehozása a Azure Search kognitív képességeinek használatával
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Rövid útmutató: AI-bővítési folyamat létrehozása a kognitív képességek használatával Azure Search
 
 A Azure Search a [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), a tartalom kinyerését, a természetes nyelvi feldolgozást (NLP) és a képfeldolgozási képességeket egy Azure Search indexelési folyamatba integrálja, így a kereshető vagy strukturálatlan tartalmak kereshetők. 
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban létrehozza az első alkoholtartalom-növelési fol
 Ez a rövid útmutató az ingyenes szolgáltatáson fut, de az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha naponta többször szeretné futtatni ezt a rövid útmutatót, használjon kisebb fájlméretet, hogy több futtatással is elférjen.
 
 > [!NOTE]
-> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
 > A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
@@ -101,7 +101,7 @@ Ebben a rövid útmutatóban a varázsló észszerű alapértelmezett beállít�
 
 + Az alapértelmezett név a *azureblob-index* az adatforrás típusa alapján. 
 
-+ Az alapértelmezett mezők az eredeti`content`forrásoldali adatmezőn () alapulnak, valamint a kognitív folyamat által létrehozott kimeneti mezők (`people`, `organizations`és `locations`). Az alapértelmezett adattípusok a metaadatok és az adatok mintavételezésére utalnak.
++ Az alapértelmezett mezők az eredeti forrásoldali adatmezőn (`content`), valamint a kognitív folyamat által létrehozott kimeneti mezőkön (`people`, `organizations`és `locations`) alapulnak. Az alapértelmezett adattípusok a metaadatok és az adatok mintavételezésére utalnak.
 
 + Az alapértelmezett kulcs a *metadata_storage_path* (ez a mező egyedi értékeket tartalmaz).
 
@@ -109,9 +109,9 @@ Ebben a rövid útmutatóban a varázsló észszerű alapértelmezett beállít�
 
   ![Indexmezők](media/cognitive-search-quickstart-blob/index-fields.png)
 
-Figyelje meg a **lekéréses** attribútum `content` áthúzott és kérdőjel értékét a mező alapján. Szöveg – nagy méretű blob-dokumentumok esetén `content` a mező a fájl nagy részét tartalmazza, amely akár több ezer sorra is futhat. Ha meg kell adnia a fájl tartalmát az ügyfél kódjához, győződjön meg arról, hogy a **beolvasható** maradok lehetőség van kiválasztva. Ellenkező esetben érdemes lehet törölni ezt az `content` attribútumot, ha a`people`kinyert `locations`elemek (, `organizations`és) elegendőek a célra.
+Figyelje meg a **lekéréses** attribútum áthúzott és kérdőjel értékét a `content` mező alapján. Szöveg – nagy méretű blob-dokumentumok esetén a `content` mező a fájl nagy részét tartalmazza, ami akár több ezer sorra is felhasználható. Ha meg kell adnia a fájl tartalmát az ügyfél kódjához, győződjön meg arról, hogy a **beolvasható** maradok lehetőség van kiválasztva. Ellenkező esetben érdemes lehet törölni ezt az attribútumot `content`, ha a kinyert elemek (`people`, `organizations`és `locations`) elegendőek a célra.
 
-A mezők **beolvasható** való megjelölése nem jelenti azt, hogy a mezőnek jelen *kell lennie* a keresési eredmények között. A keresési eredmények összetételét pontosan vezérelheti a **$Select** lekérdezési paraméterrel, hogy megadja, hogy mely mezők szerepeljenek hozzá. A Text-nagy méretű mezőkhöz hasonlóan `content`a **$Select** paraméter a felügyelhető keresési eredmények az alkalmazás emberi felhasználói számára való biztosítására szolgáló megoldás, miközben az ügyfél kódjának hozzáférése van az összes szükséges információhoz a  **Beolvasható** attribútum.
+A mezők **beolvasható** való megjelölése nem jelenti azt, hogy a mezőnek jelen *kell lennie* a keresési eredmények között. A keresési eredmények összetételét pontosan vezérelheti a **$Select** lekérdezési paraméterrel, hogy megadja, hogy mely mezők szerepeljenek hozzá. A nagy méretű mezőkhöz, például a `content`hoz a **$Select** paraméter a felügyelhető keresési eredmények az alkalmazás emberi felhasználói számára való biztosítására szolgáló megoldás, miközben az ügyfél kódjának hozzáférése van az összes szükséges információhoz a lekérhető használatávalattribútum.
   
 Folytassa a következő oldallal.
 
@@ -145,7 +145,7 @@ Miután az index létrejött, lekérdezéseket küldhet be, amelyek dokumentumok
 
 1. A létrehozott index kiválasztásához kattintson az **Index módosítása** lehetőségre az oldal tetején.
 
-1. Adja meg a keresési karakterláncot az index lekérdezéséhez, `search=Microsoft&searchFields=organizations`például:.
+1. Adja meg a keresési karakterláncot az index lekérdezéséhez, például `search=Microsoft&searchFields=Organizations`.
 
 A rendszer JSON-formátumban adja vissza az eredményeket, amely különösen az Azure-blobokból származó nagyméretű dokumentumok esetén részletes és nehezen olvasható lehet. Ha az eredményeket nem lehet egyszerűen áttekinteni, a CTRL-F billentyűkombinációval kereshet a dokumentumokban. Ehhez a lekérdezéshez a JSON-ban megadott feltételek alapján kereshet. 
 
@@ -173,7 +173,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Cognitive Services erőforrás kiépített módjától függően a varázsló újrafuttatásával különböző képességekkel és forrásadatok mezőivel kísérletezheti az indexeléssel és a dúsítással. A lépések megismétléséhez törölje az indexelőt, majd hozza létre újra az indexelőt más választott beállításokkal.
 
@@ -184,4 +184,4 @@ A Cognitive Services erőforrás kiépített módjától függően a varázsló 
 Vagy a létrehozott mintaadatokat és szolgáltatásokat újból felhasználva a következő oktatóanyagból megtanulhatja, hogyan végezheti el ugyanazokat a feladatokat programozott módon. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Ismerje meg a kognitív keresési REST API-kat](cognitive-search-tutorial-blob.md)
+> [Oktatóanyag: A kognitív keresést alkalmazó REST API-k megismerése](cognitive-search-tutorial-blob.md)

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: c55de6b437755f46df8d95a8ee461c0671a52cff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274156"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791529"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Resource Manager-sablon használatával
 
@@ -31,7 +31,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
-> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg az előfizetését **az utólagos**elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
+> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg az előfizetését **az utólagos**elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -43,7 +43,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet hoz létre az Azure Reso
 
 2. Adja meg az Azure Databricks-munkaterület létrehozásához szükséges értékeket
 
-   ![Azure Databricks-munkaterület létrehozása egy Azure Resource Manager-sablon használatával](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Azure Databricks-munkaterület létrehozása egy Azure Resource Manager-sablon használatával")
+   ![Azure Databricks munkaterület létrehozása Azure Resource Manager sablon használatával](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Azure Databricks munkaterület létrehozása Azure Resource Manager sablon használatával")
 
    Adja meg a következő értékeket:
 
@@ -67,11 +67,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet hoz létre az Azure Reso
 
 2. A rendszer átirányítja az Azure Databricks portáljára. A portálon kattintson a **Fürt** elemre.
 
-   ![Databricks az Azure-on](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Databricks az Azure-on")
+   ![Databricks az Azure-ban](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Databricks az Azure-ban")
 
 3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-   ![Databricks Spark-fürt létrehozása az Azure-on](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
+   ![Databricks Spark-fürt létrehozása az Azure-ban](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
    Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
@@ -95,11 +95,11 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
 1. A bal oldali panelen kattintson a **Munkaterület** elemre. A **Munkaterület** legördülő menüjében kattintson a **Létrehozás**, majd a **Notebook** elemre.
 
-   ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Notebook létrehozása a Databricksben")
+   ![Jegyzetfüzet létrehozása a Databricks-ben](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 2. A **Notebook létrehozása** párbeszédpanelen adjon meg egy nevet, a nyelvnél válassza a **Scala** lehetőséget, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-   ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Notebook létrehozása a Databricksben")
+   ![Jegyzetfüzet létrehozása a Databricks-ben](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
    Kattintson a  **Create** (Létrehozás) gombra.
 
@@ -153,13 +153,13 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
 6. Így egy, az alábbi képernyőképhez hasonló táblázatos kimenet jelenik meg (csak egyes oszlopok láthatók):
 
-   ![JSON-mintaadatok](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "JSON-mintaadatok")
+   ![JSON-adatminta](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "JSON-adatminta")
 
    Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, **nem),** valamint azt, hogy az előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint**).
 
 7. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
-   ![Oszlopdiagram létrehozása](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Oszlopdiagram létrehozása")
+   ![Sávdiagram létrehozása](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Sávdiagram létrehozása")
 
 8. A **Ábrázolás testreszabása** lapon húzza az értékeket a megfelelő helyre a képernyőképen látható módon.
 
@@ -182,7 +182,7 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munka
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítást \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>Következő lépések
 

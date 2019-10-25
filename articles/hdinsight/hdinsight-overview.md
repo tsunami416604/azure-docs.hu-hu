@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1cea76bec3a1b8b698a604c0bac491ac0319a10e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71076405"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791178"
 ---
 # <a name="what-is-azure-hdinsight"></a>Mi az az Azure HDInsight?
 
@@ -86,7 +86,7 @@ A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tart
 |[Apache Spark](https://spark.apache.org/)|Egy nyílt forráskódú, párhuzamos feldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big-adatelemzési alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a HDInsight-alapú Apache Spark?](./spark/apache-spark-overview.md).|
 |[Apache HBase](https://hbase.apache.org/)|Egy Hadoop-alapú NoSQL-adatbázis, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adat számára – potenciálisan több milliárd sorból, több millió oszlopból. Lásd: [Mi a HDInsight-alapú HBase?](./hbase/apache-hbase-overview.md)|
 |[ML szolgáltatások](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Egy kiszolgáló párhuzamos, elosztott R-folyamatok üzemeltetéséhez és kezeléséhez. Skálázható, elosztott elemzési módszereket kínál az adatszakértők, statisztikusok és R-programozók számára a HDInsightban. Tekintse meg az [ML-szolgáltatások használatának áttekintését a HDInsighton](./r-server/r-server-overview.md).|
-|[Apache Storm](https://storm.incubator.apache.org/)|Elosztott, valós idejű számítási rendszer a nagy adatstreamek gyors feldolgozásához. A Storm a HDInsightban felügyelt fürtként érhető el. Lásd: [Analyze real-time sensor data using Storm and Hadoop](./storm/apache-storm-sensor-data-analysis.md) (Valós idejű érzékelőadatok elemzése a Storm és a Hadoop segítségével).|
+|[Apache Storm](https://storm.incubator.apache.org/)|Elosztott, valós idejű számítási rendszer a nagy adatstreamek gyors feldolgozásához. A Storm a HDInsightban felügyelt fürtként érhető el. Lásd: [Analyze real-time sensor data using Storm and Hadoop](/azure/hdinsight/storm/apache-storm-overview) (Valós idejű érzékelőadatok elemzése a Storm és a Hadoop segítségével).|
 |[Apache interaktív lekérdezés](https://cwiki.apache.org/confluence/display/Hive/LLAP)|Memóriában történő gyorsítótárazás az interaktív és gyorsabb kaptár-lekérdezésekhez. Lásd: [Az interaktív lekérdezés használata a HDInsightban](./interactive-query/apache-interactive-query-get-started.md).|
 |[Apache Kafka](https://kafka.apache.org/)|Egy nyílt forráskódú platform, amely adatfolyam-adatcsatornák és-alkalmazások létrehozására szolgál. A Kafka egy Üzenetsor funkciót is biztosít, amelynek segítségével közzétehet adatstreameket vagy feliratkozhat rájuk. Lásd: [A HDInsight alatt futó Apache Kafka bemutatása](./kafka/apache-kafka-introduction.md).|
 

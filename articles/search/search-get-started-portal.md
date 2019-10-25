@@ -1,45 +1,46 @@
 ---
-title: 'Gyors útmutató: Keresési index létrehozása a Azure Portal-Azure Search használatával'
-description: A Azure Portal az adatimportálás varázsló segítségével hozhatja létre, betöltheti és kérdezheti le az első indexét Azure Searchban.
+title: Keresési index létrehozása a Azure Portalban
+titleSuffix: Azure Cognitive Search
+description: Az adatimportálás varázsló segítségével hozza létre, töltse be és kérdezze le az első keresési indexét az Azure Cognitive Searchban.
 author: lobrien
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936986"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791242"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Azure Search index létrehozása a Azure Portal használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 > [!div class="op_single_selector"]
-> * [Portál](search-get-started-portal.md)
+> * [Portal](search-get-started-portal.md)
+> * [C#](search-get-started-dotnet.md)
+> * [Java](search-get-started-java.md)
+> * [Node.js](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [C#](search-get-started-dotnet.md)
 
-Azure Search fogalmak gyors felgyorsításához próbálja ki a Azure Portal beépített eszközeit. A varázslók és a szerkesztők nem biztosítanak teljes paritást a .NET és a REST API-kkal, de gyorsan megkezdheti a kód nélküli bevezetést, és néhány percen belül megtudhatja, hogy az indexek milyen érdekes lekérdezéseket tartalmaznak.
+A portál használatával gyorsan felgyorsíthatja a fogalmakat, és néhány percen belül érdekes lekérdezéseket írhat egy indexre.
 
 > [!div class="checklist"]
 > * Első lépésként az Azure-ban üzemeltetett ingyenes nyilvános mintaadatok
-> * A Azure Search **adatimportálás** varázsló futtatása az betöltéshez és az index létrehozásához
+> * Az Azure Cognitive Searchban az **adatimportálás** varázsló futtatása az betöltéshez és az index létrehozásához
 > * Az indexelési folyamat figyelése a portálon
 > * Meglévő index és beállítások megtekintése a módosításhoz
 > * Teljes szöveges keresés, szűrők, aspektusok, fuzzy keresés és geosearch funkciót a **keresési Explorerrel**
 
-Ha az eszközök túl korlátozzák a korlátozást, érdemes lehet a [.net-ben a programozási Azure Search](search-howto-dotnet-sdk.md) , vagy a [poster használatával REST API hívásokat](search-get-started-postman.md). Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
+Ha az eszközök túl korlátozzák a korlátozást, érdemes lehet egy [kód alapú bevezetést használni az Azure Cognitive Search .net-ben való programozásához](search-howto-dotnet-sdk.md) , vagy a [poster használatával REST API-hívások készítéséhez](search-get-started-postman.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
+[Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
 ### <a name="check-for-space"></a>Szabad terület ellenőrzése
 
@@ -53,15 +54,15 @@ A szolgáltatás irányítópultjának fejezetei azt mutatják be, hogy hány in
 
 A keresési lekérdezések egy [*index*](search-what-is-an-index.md) alapján ismétlődnek, amely kereshető adatokat, metaadatokat és további szerkezeteket tartalmaz, amelyek bizonyos keresési viselkedések optimalizálásához használhatók.
 
-Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az [*Indexer*](search-indexer-overview.md) használatával bejárható az [ **adatimportálás** varázsló](search-import-data-portal.md)segítségével. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. Az indexelő általában programozott módon van használatban, de a portálon az adatimportálás varázsló segítségével érheti el azokat. 
+Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az [*Indexer*](search-indexer-overview.md) használatával bejárható az [ **adatimportálás** varázsló](search-import-data-portal.md)segítségével. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. Az indexelő általában programozott módon van használatban, de a portálon az **adatimportálás** varázsló segítségével érheti el azokat. 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1\. lépés – az adatimportálás varázsló elindítása és adatforrás létrehozása
 
-1. A Azure Search szolgáltatás Irányítópultján kattintson a parancssáv **adatok importálása** elemére a keresési index létrehozásához és feltöltéséhez.
+1. Az Azure Cognitive Search szolgáltatás Irányítópultján kattintson a parancssáv **adatok importálása** elemére a keresési index létrehozásához és feltöltéséhez.
 
    ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd.png)
 
-2. A varázslóban kattintson a **Kapcsolódás** > az**adatmintákhoz** > **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
+2. A varázslóban kattintson a **Kapcsolódás az adataihoz** > **minták** > **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
    ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample.png)
 
@@ -71,7 +72,7 @@ Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az
 
 ### <a name="step-2---skip-cognitive-skills"></a>2\. lépés – a kognitív képességek kihagyása
 
-A varázsló támogatja egy [kognitív szaktudási folyamat](cognitive-search-concept-intro.md) létrehozását, amely a Cognitive Services AI-algoritmusok indexelésbe való integrálására használható. 
+A varázsló támogatja egy AI-bővítési [folyamat](cognitive-search-concept-intro.md) létrehozását a Cognitive Services AI-algoritmusok indexelésbe való integrálásához. 
 
 Most kihagyjuk ezt a lépést, és közvetlenül a cél- **index testreszabásához**.
 
@@ -88,12 +89,12 @@ A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jel
 
 * **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. Az egyes mezők kikapcsolási korlátként való megjelöléséhez törölje ezt a jelölőnégyzetet, például a csak szűrési kifejezésekben használt mezőknél.
 * A **kulcs** az egyedi dokumentum azonosítója. Mindig sztring, és kötelező megadni.
-* **Szűrhető**, **rendezhető**és rendszerezhető annak meghatározása, hogy a mezők szűrő, rendezés vagy csiszolt navigációs szerkezetben vannak-e használva.
+* **Szűrhető**, **rendezhető**és rendszerezhető annak meghatározása, hogy a mezők szűrő, rendezés **vagy csiszolt** navigációs szerkezetben vannak-e használva.
 * **Kereshető**: azt jelenti, hogy a mező szerepel a teljes szöveges keresésben. A sztringek kereshetők. A numerikus és logikai mezőket gyakran nem kereshetőként jelölik meg.
 
-A tárolási követelmények nem változnak a kijelölés eredményeként. Ha például több mezőben állítja be a lekérdezhető attribútumot, a tárolási követelmények nem lépnek fel.
+A tárolási követelmények nem változnak a kijelölés eredményeként. Ha például több mezőben állítja be a lekérdezhető **attribútumot** , a tárolási követelmények nem lépnek fel.
 
-Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. A karakterláncok beolvasható és **kereshetők**. Az *egész számok* lekérhető, **szűrhető**, rendezhető és **sokrétű**lehet.
+Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. A *karakterláncok* **beolvasható** és **kereshetők**. *Az egész számok* lekérhető **,** **szűrhető**, **rendezhető**és **sokrétű**lehet.
 
 1. Fogadja el az alapértelmezett beállításokat. 
 
@@ -125,13 +126,13 @@ Több percet is igénybe vehet, amíg a portál frissíti az oldalt, de az újon
 
 ## <a name="view-the-index"></a>Az index megtekintése
 
-A szolgáltatás fő lapja a Azure Search szolgáltatásban létrehozott erőforrásokra mutató hivatkozásokat tartalmaz.  Az imént létrehozott index megtekintéséhez kattintson az indexek elemre a hivatkozások listájában. 
+A szolgáltatás fő lapja az Azure Cognitive Search szolgáltatásban létrehozott erőforrásokra mutató hivatkozásokat tartalmaz.  Az imént létrehozott index megtekintéséhez kattintson az **indexek** elemre a hivatkozások listájában. 
 
    ![Indexek listája a szolgáltatás irányítópultján](media/search-get-started-portal/indexes-list.png)
 
 Ebből a listából rákattinthat az imént létrehozott *Hotels-Sample* indexre, és megtekintheti az index sémát. és opcionálisan hozzáadhat új mezőket. 
 
-A **mezők** lap az index sémát jeleníti meg. Görgessen a lista aljára, és adjon meg egy új mezőt. A legtöbb esetben nem módosíthatja a meglévő mezőket. A meglévő mezők fizikailag vannak jelölve az Azure Searchben, és így nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új indexet, és vidd az eredetit.
+A **mezők** lap az index sémát jeleníti meg. Görgessen a lista aljára, és adjon meg egy új mezőt. A legtöbb esetben nem módosíthatja a meglévő mezőket. A meglévő mezők fizikai ábrázolással rendelkeznek az Azure Cognitive Searchban, ezért nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új indexet, és vidd az eredetit.
 
    ![példa indexdefinícióra](media/search-get-started-portal/sample-index-def.png)
 
@@ -146,7 +147,7 @@ Továbblépve most már rendelkezünk egy keresési indexszel, amely készen ál
 A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents)kezelésére alkalmas, de az [egyszerű lekérdezési szintaxishoz](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene-lekérdezési elemzőhöz](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)is elfogadja a szintaxist, valamint a [keresési dokumentumban](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) elérhető összes keresési paramétert is REST API Operations.
 
 > [!TIP]
-> Az [Azure Search szolgáltatás áttekintő videója](https://channel9.msdn.com/Events/Connect/2016/138) a következő lépéseket mutatja be 6 perc 8 másodperctől kezdve.
+> Az alábbi lépéseket a 6m08s az [Azure Cognitive Search áttekintő videójában](https://channel9.msdn.com/Events/Connect/2016/138)mutatjuk be.
 >
 
 1. A parancssávon kattintson a **Keresési ablak** elemre.
@@ -167,7 +168,7 @@ Megadhatja a kifejezéseket és kifejezéseket, hasonlóan a Bing vagy a Google 
 
 ### <a name="simple-query-with-top-n-results"></a>Egyszerű lekérdezés az első N eredménnyel
 
-#### <a name="example-string-query-searchspa"></a>Példa (karakterlánc-lekérdezés):`search=spa`
+#### <a name="example-string-query-searchspa"></a>Példa (karakterlánc-lekérdezés): `search=spa`
 
 * A **keresési** paraméter segítségével megadhatja a teljes szöveges keresés kulcsszavas keresését. ebben az esetben a rendszer a dokumentum bármely kereshető mezőjében visszaküldi a *Spa* -t tartalmazó adatokat.
 
@@ -175,13 +176,13 @@ Megadhatja a kifejezéseket és kifejezéseket, hasonlóan a Bing vagy a Google 
 
 * A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. Az index attribútumainak megtekintéséhez a portálon kattintson a *Hotels-Sample* elemre az **indexek** listájában.
 
-#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Példa (paraméteres lekérdezés):`search=spa&$count=true&$top=10`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Példa (paraméteres lekérdezés): `search=spa&$count=true&$top=10`
 
 * Az **&** szimbólum a keresési paraméterek összefűzésére használható, amelyek bármilyen sorrendben megadhatók.
 
 * A **$Count = True** paraméter a visszaadott dokumentumok teljes számát adja vissza. Ez az érték a keresési eredmények elejénél található. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a **$count=true** paraméter által jelentett módosításokat. A kisebb darabszámok azt jelzik, hogy a szűrő működik.
 
-* A **$Top = 10** érték a legmagasabb rangsorolt 10 dokumentumot adja vissza a teljes összegből. Alapértelmezés szerint az Azure Search az első 50 egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
+* A **$Top = 10** érték a legmagasabb rangsorolt 10 dokumentumot adja vissza a teljes összegből. Alapértelmezés szerint az Azure Cognitive Search az első 50 legjobb egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
 
 ### <a name="filter-query"></a> A lekérdezés szűrése
 
@@ -200,17 +201,17 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=Category&$top=2`
 
 * A **search=** * egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
-* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának*megfelelő mezőn alapulnak. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának*megfelelő mezőn alapulnak. Az Azure Cognitive Search nem rendelkezik összesítéssel, de az összesítést `facet`használatával közelítheti meg, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 
 * A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
 
-#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Példa (dimenzió a numerikus értékeken):`search=spa&facet=Rating`
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Példa (dimenzió a numerikus értékeken): `search=spa&facet=Rating`
 
 * Ez a lekérdezés az értékelés dimenziója, a *Spa*szöveges keresésekor. A *minősítés* kifejezése egy dimenzióként adható meg, mert a mező lekérhető, szűrhető, és az indexben látható, valamint a benne foglalt értékek (numerikus, 1 – 5) alapján kategorizálható a listák csoportjaiba.
 
 * Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
 
-* A *minősítés* mező dupla pontosságú lebegőpontos, és a csoportosítás pontos értékkel történik. További információ az intervallumok szerinti csoportosításról (például "3 csillagos minősítések", "4 csillagos minősítések" stb.): részletes [Navigálás megvalósítása Azure Searchban](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* A *minősítés* mező dupla pontosságú lebegőpontos, és a csoportosítás pontos értékkel történik. További információ az intervallumok szerinti csoportosításról (például "3 csillagos minősítések", "4 csillagos minősítések" stb.): részletes [Navigálás megvalósítása az Azure Cognitive Searchban](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Keresési eredmények kiemelése
@@ -225,7 +226,7 @@ A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti,
 
 * A teljes szöveges keresés felismeri a Word-űrlapok alapvető változatait. Ebben az esetben a keresési eredmények a "Beach" Kiemelt szövegét tartalmazzák azon szállodák esetében, amelyeken a kifejezés a kereshető mezőkben szerepel, a "strandok" kifejezésre adott kulcsszavas keresésre válaszul. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között. 
 
-* Az Azure Search szolgáltatás összesen 56, a Lucene-től és Microsoft-tól származó elemzőt támogat. A szolgáltatás alapértelmezés szerint a standard Lucene-elemzőt használja.
+* Az Azure Cognitive Search a Lucene és a Microsofttól származó 56-elemzőt is támogatja. Az Azure Cognitive Search alapértelmezés szerint a standard Lucene Analyzer.
 
 ### <a name="fuzzy-search"></a> Az intelligens keresés kipróbálása
 
@@ -241,9 +242,9 @@ Ez a példa most a "Seattle" egyezéseit tartalmazó dokumentumokat adja vissza.
 
 Amikor a **queryType** paraméter nincs meghatározva, a rendszer az alapértelmezett egyszerű lekérdezéselemzőt használja. Ez az egyszerű lekérdezéselemző gyorsabb, de ha intelligens keresésre, reguláris kifejezésekre, közelségi keresésre vagy egyéb speciális lekérdezéstípusokra van szüksége, a teljes szintaxisra szüksége lesz.
 
-Az intelligens keresés és a helyettesítő karakteres keresések befolyásolják a keresési eredményeket. A rendszer az ilyen formátumú kereséseken nem végez nyelvi elemzést. Az intelligens és a helyettesítő karakteres keresések használata előtt tekintse át [Az Azure Search teljes szöveges keresés funkciójának működését](search-lucene-query-architecture.md#stage-2-lexical-analysis) ismertető cikknek a nyelvi elemzés kivételeivel foglalkozó szakaszát.
+Az intelligens keresés és a helyettesítő karakteres keresések befolyásolják a keresési eredményeket. A rendszer az ilyen formátumú kereséseken nem végez nyelvi elemzést. A fuzzy és a helyettesítő karakteres keresés használata előtt tekintse át, [Hogyan működik a teljes szöveges keresés az Azure Cognitive Searchban](search-lucene-query-architecture.md#stage-2-lexical-analysis) , és keresse meg a lexikális analízis alóli kivételekről szóló szakaszt.
 
-A teljes lekérdezéselemző által lehetővé tett lekérdezési forgatókönyvekkel kapcsolatos további információk: [Lucene lekérdezési szintaxis az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+A teljes lekérdezés-elemző által engedélyezett lekérdezési forgatókönyvekkel kapcsolatos további információkért lásd: [Lucene lekérdezési szintaxis az Azure Cognitive Searchban](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="geo-search"></a> A térinformatikai keresés kipróbálása
 
@@ -257,7 +258,7 @@ A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik �
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Ez az oktatóanyag gyors bevezetést biztosít a Azure Search a Azure Portal használatával.
+Ez az oktatóanyag gyors bevezetést biztosít az Azure Cognitive Search a Azure Portal használatával.
 
 Megtudta, hogyan hozhat létre keresési indexet az **Adatok importálása** varázslóval. Megismerkedett az [indexelőkkel](search-indexer-overview.md), valamint az indextervezés alapvető munkafolyamatával, többek között [a közzétett indexek támogatott módosításaival](https://docs.microsoft.com/rest/api/searchservice/update-index) is.
 
@@ -273,10 +274,10 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure Searchöt behatóbban is megismerheti az alábbi programozási eszközökkel:
+Több Azure-Cognitive Search is megismerheti a programozott eszközök használatával:
 
 * [Index létrehozása a .NET SDK használatával](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [Index létrehozása REST API-k használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Index létrehozása a Poster vagy a Hegedűs és a Azure Search REST API-k használatával](search-get-started-postman.md)
+* [Index létrehozása a Poster vagy a Hegedűs, valamint az Azure Cognitive Search REST API-k használatával](search-get-started-postman.md)

@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: keresési index létrehozása a Poster-ben REST API-k használatával – Azure Search'
-description: Megtudhatja, hogyan hívhatja meg a Azure Search REST API-kat a Poster és a mintaadatok és a definíciók használatával.
+title: 'Gyors útmutató: keresési index létrehozása a Poster-ben REST API-k használatával'
+titleSuffix: Azure Cognitive Search
+description: Megtudhatja, hogyan hívhatja meg az Azure Cognitive Search REST API-kat a Poster és a mintaadatok és a definíciók használatával.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72176040"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792286"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Search index létrehozása a Poster-ben REST API-k használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "72176040"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-A [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) -k megismerésének egyik legegyszerűbb módja a Poster vagy egy másik webes tesztelési eszköz használata a HTTP-kérelmek összeállításához és a válaszok vizsgálatához. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
+Az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice) -k megismerésének egyik legegyszerűbb módja a Poster vagy egy másik webes tesztelési eszköz használata a HTTP-kérelmek összeállításához és a válaszok vizsgálatához. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
 
 Ez a cikk bemutatja, hogyan lehet interaktív módon megfogalmazni a kérelmeket. Azt is megteheti, hogy [letölti és importálja a Poster-gyűjteményt](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) az előre meghatározott kérések használatára.
 
@@ -35,13 +35,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek. 
 
-+ A [Poster Desktop alkalmazás](https://www.getpostman.com/) a kérelmek Azure Search való küldésére szolgál.
++ A [Poster Desktop alkalmazás](https://www.getpostman.com/) a kérelmek Azure-Cognitive Search való küldésére szolgál.
 
-+ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
 ## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
@@ -51,9 +51,9 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="connect-to-azure-search"></a>Kapcsolódás Azure Searchhoz
+## <a name="connect-to-azure-cognitive-search"></a>Kapcsolódás az Azure Cognitive Searchhoz
 
-Ebben a szakaszban a saját webes eszközével állíthatja be a Azure Search kapcsolatait. Minden eszköz megőrzi a kérelmek fejlécére vonatkozó információkat a munkamenethez, ami azt jelenti, hogy csak egyszer kell megadnia az API-kulcs és a Content-Type típust.
+Ebben a szakaszban a saját webes eszközével állíthatja be az Azure Cognitive Search kapcsolatait. Minden eszköz megőrzi a kérelmek fejlécére vonatkozó információkat a munkamenethez, ami azt jelenti, hogy csak egyszer kell megadnia az API-kulcs és a Content-Type típust.
 
 Bármelyik eszközhöz ki kell választania egy parancsot (GET, POST, PUT stb.), meg kell adnia egy URL-végpontot, és egyes feladatokhoz meg kell adni a JSON-t a kérelem törzsében. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) érvényes értékre. Adja hozzá a `$select=name` értéket, hogy csak az egyes indexek nevét adja vissza. 
 
@@ -61,18 +61,18 @@ Bármelyik eszközhöz ki kell választania egy parancsot (GET, POST, PUT stb.),
 
 Figyelje meg a HTTPS-előtagot, a szolgáltatás nevét, az objektum nevét (ebben az esetben az indexek gyűjteményét) és az [API-verziót](search-api-versions.md). Az API-Version kötelező, a jelenlegi verzióhoz `?api-version=2019-05-06` értékként megadott kisbetűs karakterlánc. Az API-verziók frissítése rendszeresen megtörténik. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
-A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusát, valamint a Azure Search hitelesítéséhez használt API-kulcsot. Cserélje le a felügyeleti API-kulcsot (az-AZURE-SEARCH-ADMIN-API-KEY) érvényes értékre. 
+A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusát, valamint az Azure-Cognitive Search hitelesítéséhez használt API-kulcsot. Cserélje le a felügyeleti API-kulcsot (az-AZURE-SEARCH-ADMIN-API-KEY) érvényes értékre. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza a **beolvasás** művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik a Azure Searchhoz, beolvassa az indexek gyűjteményt, és visszaadja a 200-es HTTP-állapotkódot egy sikeres kapcsolaton. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
+A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza a **beolvasás** művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik az Azure Cognitive Searchhoz, beolvassa az indexek gyűjteményét, és az 200-as HTTP-állapotkódot egy sikeres kapcsolaton keresztül adja vissza. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
 
 ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Azure Search általában az indexet hozza létre az adatbevitel előtt. Ehhez a feladathoz a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban. 
+Az Azure Cognitive Search általában az indexet hozza létre az adatbevitel előtt. Ehhez a feladathoz a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban. 
 
 Az URL-cím kiterjeszthető, hogy tartalmazza a `hotels` index nevét.
 
@@ -126,7 +126,7 @@ A kérelem elküldését követően megjelenik a 201-es HTTP-válasz, amely azt 
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Searchben az index tartalmazza az összes kereshető adatot, amelyeket JSON-dokumentumok formájában adhat be. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
+Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Cognitive Searchban az index tartalmazza az összes kereshető, JSON-dokumentumként megadható adatelemet. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
 
 Az URL-cím kiterjeszthető, hogy tartalmazza a `docs` gyűjtemények és a `index` műveletet.
 
@@ -301,4 +301,4 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 Most, hogy már tudja, hogyan hajthat végre alapszintű feladatokat, további REST API hívásokat is használhat további speciális funkciókkal, például indexelő szolgáltatásokkal vagy [egy kognitív keresési folyamat beállításával](cognitive-search-tutorial-blob.md). A következő lépésként a következő hivatkozást javasoljuk:
 
 > [!div class="nextstepaction"]
-> [REST-oktatóanyag: részben strukturált adatok (JSON-Blobok) indexelése és keresése Azure Search](search-semi-structured-data.md)
+> [REST-oktatóanyag: részben strukturált adatok (JSON-Blobok) indexelése és keresése az Azure Cognitive Search](search-semi-structured-data.md)
