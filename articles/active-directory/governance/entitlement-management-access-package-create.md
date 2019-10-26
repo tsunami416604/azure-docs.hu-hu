@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389518"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934643"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -68,9 +68,9 @@ Az alábbi lépésekkel hozhat létre új hozzáférési csomagot.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok**elemre.
 
-    ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. Kattintson az **új hozzáférési csomag**elemre.
+
+    ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Alapvető beállítások
 
@@ -100,11 +100,11 @@ Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban s
 
     ![Hozzáférési csomag – erőforrás-szerepkörök](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Ha a hozzáférési csomagot az általános katalógusban vagy egy új katalógusban hozza létre, a saját címtárból is kiválaszthatja az összes erőforrást. Legalább egy globális rendszergazdának, egy felhasználói rendszergazdának vagy katalógus létrehozójának kell lennie.
+    Ha a hozzáférési csomagot az általános katalógusban vagy egy új katalógusban hozza létre, a saját címtárból is kiválaszthatja az összes erőforrást. Legalább egy globális rendszergazdának, egy felhasználói rendszergazdának vagy egy katalógus létrehozójának kell lennie.
 
     Ha egy meglévő katalógusban hozza létre a hozzáférési csomagot, kiválaszthatja, hogy a katalógusban lévő összes erőforrás tulajdonos nélkül legyen.
 
-    Ha Ön globális rendszergazda, a felhasználó rendszergazdája vagy a katalógus tulajdonosa, lehetősége van arra, hogy kiválassza a katalógusban még nem használt erőforrásokat. Ha olyan erőforrásokat választ ki, amelyek jelenleg nem szerepelnek a kiválasztott katalógusban, akkor ezek az erőforrások is hozzáadódnak a katalógushoz más katalógus-rendszergazdák számára, hogy hozzáférési csomagokat hozzanak létre a használatával. Ha csak azokat az erőforrásokat szeretné kiválasztani, amelyek jelenleg a kiválasztott katalógusban vannak, jelölje be a csak a Pan (pásztázás) jelölőnégyzet felső részén található **Megtekintés** jelölőnégyzetet.
+    Ha Ön globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa, lehetősége van arra, hogy olyan erőforrásokat válasszon ki, amelyek még nem szerepelnek a katalógusban. Ha olyan erőforrásokat választ ki, amelyek jelenleg nem szerepelnek a kiválasztott katalógusban, akkor ezek az erőforrások is hozzáadódnak a katalógushoz más katalógus-rendszergazdák számára, hogy hozzáférési csomagokat hozzanak létre a használatával. Ha csak azokat az erőforrásokat szeretné kiválasztani, amelyek jelenleg a kiválasztott katalógusban vannak, jelölje be a csak a kijelölés ablaktábla tetején **látható megjelenítés** jelölőnégyzetet.
 
 1. Miután kiválasztotta az erőforrásokat, a **szerepkör** listából válassza ki azt a szerepkört, amelyhez hozzá szeretné rendelni a felhasználókat az erőforráshoz.
 
@@ -118,7 +118,7 @@ A **kérelmek** lapon létrehozhatja az első szabályzatot annak megadásához,
 
 ![Hozzáférési csomag – kérelmek lap](./media/entitlement-management-access-package-create/requests.png)
 
-Hajtsa végre a következő részekben ismertetett lépéseket.
+Attól függően, hogy ki szeretné használni ezt a hozzáférési csomagot, hajtsa végre az alábbi részekben ismertetett lépéseket.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Videókhoz állapotok és az Azure Media Servicesben számlázási |} A Microsoft Docs
-description: Ez a témakör áttekintést nyújt az Azure Media Services videókhoz állapotok és a számlázás.
+title: LiveEvent állapotok és számlázás Azure Media Servicesban | Microsoft Docs
+description: Ez a témakör áttekintést nyújt Azure Media Services LiveEvent állapotáról és számlázásáról.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,34 +11,37 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af3d4b51dadfaa99a166ca0ce475c5a110d8f6e8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074892"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933683"
 ---
-# <a name="live-event-states-and-billing"></a>Élő esemény állapotok és számlázás
+# <a name="live-event-states-and-billing"></a>Élő események állapotai és számlázása
 
-Az Azure Media Services egy élő eseményt megkezdődik, amint állapotában átkerül számlázási **futó**. Az élő esemény, a számlázás megszüntetéséhez akkor állítsa le az élő esemény.
+Azure Media Services egy élő esemény azonnal megkezdi a számlázást, amint az állapota a **futásra**változik. Az élő esemény számlázásának leállításához le kell állítania az élő eseményt.
 
-Amikor **LiveEventEncodingType** a a [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) van beállítva, a Standard vagy Premium1080p, automatikus után állítja le minden olyan élő eseményt, amely továbbra is a Media Services a **futó** 12 állapot óra után a bemeneti hírcsatorna elvész, és nincsenek nincs **élő kimeneti**futó s. Azonban továbbra is díjköteles volt az élő esemény indításakor a **futó** állapota.
+Ha az [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) **LiveEventEncodingType** standard vagy Premium1080p értékre van állítva, Media Services automatikusan kikapcsol minden olyan élő eseményt, amely még mindig a **futó** állapotban van, 12 órával a bemeneti csatorna elvesztése után, és nincs **élő kimenet** s fut. Azonban továbbra is fizetnie kell arra az időre, amíg az élő esemény **futó** állapotban volt.
+
+> [!NOTE]
+> Az áteresztő élő események nem állnak le automatikusan, és az API-n keresztül explicit módon le kell állítani őket, hogy elkerülje a túlzott mértékű számlázást. 
 
 ## <a name="states"></a>Állapotok
 
-Az élő esemény lehet a következő állapotok valamelyikében.
+Az élő esemény a következő állapotok egyikében lehet.
 
-|Állapot|Leírás|
+|Állami|Leírás|
 |---|---|
-|**Stopped**| Ez a kezdeti állapota, az élő esemény a létrehozása után (kivéve, ha az autostart lett beállítva igaz.) Ebben az állapotban nem számlázási akkor fordul elő. Ebben az állapotban az élő esemény tulajdonságai frissíthetők, de a streamelés nem engedélyezett.|
-|**Indítása**| Az élő esemény indítása folyamatban van, és a lefoglalt erőforrásokat. Ebben az állapotban nem számlázási akkor fordul elő. Frissítések vagy a streamelés nem engedélyezett ebben az állapotban. Ha hiba történik, az élő esemény leállított állapotra adja vissza.|
-|**Fut**| Az élő esemény erőforrások van lefoglalva, betöltési és URL-címek előzetes jött létre, és élő adatfolyamok fogadni képes. Ezen a ponton a számlázási lesz aktív. Leállítás explicit módon kell meghívnia, további számlázási megállítani az élő esemény erőforráson.|
-|**Leállítása**| Az élő esemény leállítás alatt van, és erőforrások eltávolítjuk folyamatban van. Nincs számlázási ez átmeneti állapot történik. Frissítések vagy a streamelés nem engedélyezett ebben az állapotban.|
-|**Törlése**| Az élő esemény törlése folyamatban van. Nincs számlázási ez átmeneti állapot történik. Frissítések vagy a streamelés nem engedélyezett ebben az állapotban.|
+|**Megállt**| Ez az élő esemény kezdeti állapota a létrehozás után (kivéve, ha az autostart értéke TRUE (igaz).) Ebben az állapotban nem történik számlázás. Ebben az állapotban az élő esemény tulajdonságai módosíthatók, a streamelés azonban nem engedélyezett.|
+|**Indítása**| Az élő esemény elindult, és az erőforrások le vannak foglalva. Ebben az állapotban nem történik számlázás. A frissítések vagy a folyamatos átvitel nem engedélyezett ebben az állapotban. Ha hiba lép fel, az élő esemény visszaállítja a leállított állapotot.|
+|**Fut**| Az élő esemény erőforrásai lefoglalva, betöltési és előnézeti URL-címek lettek létrehozva, és képesek élő streamek fogadására. Ezen a ponton a számlázás aktív. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását.|
+|**Leállítása**| Az élő esemény leáll, és a rendszer kiépíti az erőforrásokat. Ebben az átmeneti állapotban nem történik számlázás. A frissítések vagy a folyamatos átvitel nem engedélyezett ebben az állapotban.|
+|**Törlése**| Az élő esemény törlése folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. A frissítések vagy a folyamatos átvitel nem engedélyezett ebben az állapotban.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Élő adatfolyam – áttekintés](live-streaming-overview.md)
-- [Élő adatfolyam-továbbítási oktatóanyag](stream-live-tutorial-with-api.md)
+- [Élő közvetítés – áttekintés](live-streaming-overview.md)
+- [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527098"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934390"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -50,11 +50,13 @@ A következő ábra és lépések áttekintést nyújtanak arról, hogy a küls�
 
 ![A külső felhasználók életciklusát bemutató ábra](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. [Hozzá kell adnia egy csatlakoztatott szervezetet](entitlement-management-organization.md) ahhoz az Azure ad-címtárhoz vagy-tartományhoz, amelyhez együttműködik.
+
 1. Olyan hozzáférési csomagot hoz létre a címtárban, amely a [címtárban nem szereplő felhasználókra](entitlement-management-access-package-create.md#for-users-not-in-your-directory)vonatkozó szabályzatot tartalmaz.
 
 1. A [saját hozzáférési portálra mutató hivatkozást](entitlement-management-access-package-settings.md) küld a külső szervezeten belüli partnernek, amelyet a felhasználók megoszthatnak a hozzáférési csomag igényléséhez.
 
-1. Egy külső felhasználó (ebben a példában a**kérelmező** ) a My Access portál hivatkozást használja a hozzáférési csomaghoz [való hozzáférés kéréséhez](entitlement-management-request-access.md) .
+1. Egy külső felhasználó (ebben a példában a**kérelmező** ) a My Access portál hivatkozást használja a hozzáférési csomaghoz [való hozzáférés kéréséhez](entitlement-management-request-access.md) . A felhasználó bejelentkezése a csatlakoztatott szervezetben definiált címtár vagy tartomány hitelesítési típusától függ.
 
 1. [A jóváhagyó jóváhagyja a kérelmet](entitlement-management-request-approve.md) (vagy a kérést automatikusan jóváhagyják).
 
@@ -116,6 +118,6 @@ Ezt a beállítást a katalógus létrehozása után is módosíthatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
+- [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md)
 - [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)
-- [Delegálás és szerepkörök](entitlement-management-delegate.md)

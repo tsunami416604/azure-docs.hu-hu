@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59e6bbbca982d428d4e590cb647f186e1c3fec3a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813769"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933839"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>A VMM-felhőkben lévő helyszíni Hyper-V virtuális gépek vész-helyreállításának beállítása az Azure-ba
 
@@ -32,7 +32,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért tekintse át a [site Recovery dokumentációjának](https://docs.microsoft.com/azure/site-recovery) **útmutatók** szakaszának cikkeit.
 
-## <a name="before-you-begin"></a>Előkészületek
+> [!WARNING]
+> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
+
+
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez az oktatóanyag egy sorozat harmadik része. Feltételezi, hogy már végrehajtotta a feladatokat az előző oktatóanyagokban:
 
@@ -63,7 +67,7 @@ A forrás-környezet beállításakor telepíti a Azure Site Recovery szolgálta
 1. Az **infrastruktúra előkészítése**területen válassza a **forrás**lehetőséget.
 2. A **forrás előkészítése**lapon válassza a **+ VMM** elemet a VMM-kiszolgáló hozzáadásához. A **Kiszolgáló hozzáadása** panelen ellenőrizze, hogy a **Kiszolgálótípus** mezőben a **System Center VMM-kiszolgáló** érték látható-e.
 3. Töltse le a Microsoft Azure Site Recovery Provider telepítőjét.
-4. Töltse le a tárolóregisztrációs kulcsot. Ezt a kulcsot a szolgáltató telepítőjének futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
+4. Töltse le a tároló regisztrációs kulcsát. Ezt a kulcsot a szolgáltató telepítőjének futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
 5. Töltse le a Microsoft Azure Recovery Services-ügynök telepítőjét.
 
     ![Szolgáltató, regisztrációs kulcs és ügynök letöltése](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
@@ -101,7 +105,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 ## <a name="configure-network-mapping"></a>Hálózatleképezés konfigurálása
 
-1. **Site Recovery infrastruktúra** > **hálózati** leképezések hálózati leképezése területen válassza a + hálózat leképezése ikont. > 
+1. **Site Recovery infrastruktúra** > **hálózati** leképezések > **hálózati leképezés**lapon válassza a **+ hálózat leképezése** ikont.
 2. A **hálózati leképezés hozzáadása**lapon válassza ki a forrás VMM-kiszolgálót. Válassza az **Azure** lehetőséget célként.
 3. Ellenőrizze az előfizetést, illetve a feladatok átadását követően használatos üzembe helyezési modellt.
 4. A **forrásoldali hálózaton**válassza ki a helyszíni virtuálisgép-hálózatot.
@@ -111,7 +115,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 ## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
-1. Válassza az **infrastruktúra** > előkészítése**replikációs beállítások** >  **+ Létrehozás és hozzárendelés**lehetőséget.
+1. Válassza az **infrastruktúra előkészítése** > **replikációs beállítások** >  **+ Létrehozás és hozzárendelés**lehetőséget.
 2. A **Házirend létrehozása és társítása** beállításnál adja meg a szabályzat nevét. **ContosoReplicationPolicy**használunk.
 3. Hagyja meg az alapértelmezett beállításokat, majd kattintson **az OK gombra**.
     - A **másolási gyakoriság** azt jelzi, hogy a kezdeti replikálás után öt percenként replikálja a rendszer a különbözeti adataikat.
@@ -121,16 +125,16 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
     - Az **Azure-on tárolt adatok titkosítása** az alapértelmezett (**kikapcsolt**) értékre van állítva, és azt jelzi, hogy az Azure-on kívüli adatok nem titkosítottak.
 4. A szabályzat létrehozása után kattintson **az OK gombra**. Új szabályzat létrehozásakor a rendszer automatikusan hozzárendeli a VMM-felhőhöz.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 1. Az **alkalmazás replikálása**területen válassza a **forrás**lehetőséget.
 2. A **forrás**területen válassza ki a VMM-felhőt. Ezután válassza az **OK** lehetőséget.
 3. A **cél**lapon ellenőrizze a célt (Azure), a tár előfizetését, és válassza ki a **Resource Manager** -modellt.
 4. Válassza ki a **contosovmsacct1910171607** Storage-fiókot és a **ContosoASRnet** Azure-hálózatot.
-5. A **virtuális gépek** > **területen**válassza ki a replikálni kívánt virtuális gépet. Ezután válassza az **OK** lehetőséget.
+5. Válassza ki a **virtuális gépek** > **válassza**ki a replikálni kívánt virtuális gépet. Ezután válassza az **OK** lehetőséget.
 
    A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **védelem véglegesítése** művelet befejezése után a kezdeti replikálás befejeződött, és a virtuális gép készen áll a feladatátvételre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-azure.md)

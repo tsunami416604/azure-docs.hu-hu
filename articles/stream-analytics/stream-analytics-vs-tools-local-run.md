@@ -1,5 +1,5 @@
 ---
-title: A Visual Studióval helyileg tesztelheti Azure Stream Analytics lekérdezéseit
+title: Azure Stream Analytics lekérdezések helyi tesztelése a Visual Studióban
 description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg tesztelni a Visual studióhoz készült Azure Stream Analytics eszközökkel.
 services: stream-analytics
 author: su-jie
@@ -9,18 +9,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 4ec427ad7af18f4f301e1e62ca21af643a0425aa
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 01383531293635af8c15f891928eec004e05b54d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914014"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925041"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
 
 A Visual studióhoz készült Azure Stream Analytics Tools segítségével helyileg tesztelheti Stream Analytics-feladatait mintaadatok vagy [élő adatok](stream-analytics-live-data-local-testing.md)használatával. 
 
-Ebből a [](stream-analytics-quick-create-vs.md) rövid útmutatóból megtudhatja, hogyan hozhat létre stream Analytics feladatokat a Visual Studióval.
+Ebből a rövid útmutatóból megtudhatja [, hogyan](stream-analytics-quick-create-vs.md) hozhat létre stream Analytics feladatokat a Visual Studióval.
 
 ## <a name="test-your-query"></a>A lekérdezés tesztelése
 
@@ -72,11 +72,11 @@ A folyamat előrehaladását a **kimenet** ablakban tekintheti meg.
 
 ![Mintaadatok kimenete](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [A Visual Studio használata az Azure Stream Analytics-feladatok megtekintése](stream-analytics-vs-tools.md)
+* [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)
 * [Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)](stream-analytics-live-data-local-testing.md)
 * [Oktatóanyag: Azure Stream Analytics-feladatok üzembe helyezése CI/CD-vel az Azure DevOps használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)

@@ -1,5 +1,5 @@
 ---
-title: Nagy gyakoriságú kereskedelmi szimuláció az Azure Stream Analyticsszel
+title: Nagy gyakoriságú kereskedelem a Azure Stream Analytics használatával
 description: Lineáris regressziós modellek tanítása és pontozása Azure Stream Analytics-feladatban.
 services: stream-analytics
 author: zhongc
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9d3c1a730c34632403669794bdd97f95e3b3662d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598639"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925514"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.
@@ -71,7 +71,7 @@ A kötetsorrend-egyenetlenség (VOI) az aktuális ajánlattételi/lekérdezési 
 
 A betanított modell ezt követően az ajánlatok árváltozásának előrejelzésére használható az aktuális kereskedési napon, valós időben. Ha a modell kellően nagy árváltozást jelez előre, akkor történik kereskedelmi ügylet végrehajtása. A küszöbérték-beállítástól függően egyetlen kereskedési napon kereskedelmi ügyletek ezreinek lebonyolítása várható egyetlen részvény esetében.
 
-![Kötet rendelés egyenetlenségének definíciója](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Mennyiségi sorrendi egyensúlyhiány definíciója](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Most fejezzük ki a tanítási és előrejelzési műveleteket egy Azure Stream Analytics-feladatban.
 
@@ -451,12 +451,12 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Vizuális ügyletek Power BI-diagram](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Trades Power BI diagram vizualizáció](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![Vizuális PNL Power BI-diagram](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![PNL Power BI diagram vizualizáció](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure Stream Analyticsben valósághű nagy gyakoriságú kereskedelmi modellt hozhatunk létre egy közepesen összetett lekérdezéssel. A beépített lineáris regressziós funkció hiánya miatt le kell egyszerűsítenünk a modellt úgy, hogy öt bemeneti változó helyett csak kettőt használjon. Az eltökélt felhasználók számára azonban a több dimenzióval rendelkező és kifinomultabb algoritmusok implementálhatóak JavaScript UDA-ként is. 
 
 Érdemes megjegyezni, hogy a legtöbb lekérdezés (a JavaScript UDA kivételével) tesztelése és hibakeresése elvégezhető a [Visual Studióhoz készült Azure Stream Analytics](stream-analytics-tools-for-visual-studio-install.md) eszközökkel a Visual Studióban. A kezdeti lekérdezés megírását követően a szerző kevesebb mint 30 percet töltött teszteléssel és hibakereséssel a Visual Studióban. 

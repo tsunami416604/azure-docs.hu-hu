@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099152"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933226"
 ---
 Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni. 
 
@@ -19,7 +19,7 @@ Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni.
 >
 > További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a számítógép kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása: [kiszolgálói szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
@@ -31,31 +31,31 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
 3. Az **alapvető beállítások** lap **projekt részletei** területén írja be vagy válassza ki a következő értékeket:
 
-   - **Előfizetés**: Legördülő menüből válassza ki a megfelelő előfizetést, ha az nem jelenik meg.
-   - **Erőforráscsoport**: Válassza az **új létrehozása**, `myResourceGroup`majd a típus lehetőséget, majd kattintson **az OK gombra**.
+   - **Előfizetés**: legördülő menüből válassza ki a megfelelő előfizetést, ha az nem jelenik meg.
+   - **Erőforráscsoport**: válassza az **új létrehozása**elemet, írja be a `myResourceGroup`lehetőséget, majd kattintson **az OK gombra**.
 
      ![Új SQL Database-adatbázis – alapszintű lap](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
 4. Az **adatbázis részletei** szakaszban írja be vagy válassza ki a következő értékeket:
 
-   - **Adatbázis neve**: Írja be a `mySampleDatabase` (igen) kifejezést.
-   - **Kiszolgáló**: Válassza az **új létrehozása**elemet, adja meg a következő értékeket, majd válassza a **kiválasztás**lehetőséget.
-       - **Kiszolgáló neve**: Írja `mysqlserver`be a típust, és adjon meg néhány számot az egyediséghez.
-       - **Kiszolgáló-rendszergazdai bejelentkezés**: Gépelje be: `azureuser`.
-       - **Jelszó**: Írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-       - **Hely**: Válasszon egy helyet a legördülő menüből, például `West US`:.
+   - **Adatbázis neve**: írja be a `mySampleDatabase`.
+   - **Kiszolgáló**: válassza az **új létrehozása**elemet, adja meg a következő értékeket, majd válassza a **kiválasztás**lehetőséget.
+       - **Kiszolgáló neve**: Type `mysqlserver`; az egyediséggel együtt néhány számot.
+       - **Kiszolgáló-rendszergazdai bejelentkezés**: írja be a `azureuser`.
+       - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
+       - **Hely**: válasszon ki egy helyet a legördülő menüből, például `West US`.
 
          ![Új kiszolgáló](../media/sql-database-get-started-portal/new-server.png)
 
       > [!IMPORTANT]
       > Ne felejtse el rögzíteni a kiszolgáló-rendszergazdai bejelentkezési azonosítót és a jelszót, hogy bejelentkezzen a kiszolgálóra és az adatbázisokra ehhez és más gyors útmutatóhoz. Ha elfelejti a felhasználónevét vagy jelszavát, beolvashatja a bejelentkezési nevet, vagy visszaállíthatja a jelszót az **SQL Server** -lapon. Az **SQL Server** oldal megnyitásához válassza ki a kiszolgáló nevét az adatbázis- **Áttekintés** oldalon az adatbázis létrehozása után.
 
-   - **Rugalmas SQL-készletet szeretne használni**: Válassza a **nincs** lehetőséget.
-   - **Számítás + tárolás**: Válassza az **adatbázis konfigurálása**lehetőséget. 
+   - **Rugalmas SQL-készletet szeretne használni**: válassza a **nincs** lehetőséget.
+   - **Számítás + tárolás**: válassza az **adatbázis konfigurálása**lehetőséget. 
 
      ![SQL Database részletei](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Válassza a kiépített és a **Gen5**lehetőséget.
+   - Válassza a **kiépített** és a **Gen5**lehetőséget.
 
      ![Kiépített Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
@@ -64,7 +64,7 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
    - Kattintson az **Alkalmaz** gombra.
 
 5. Válassza a **További beállítások** lapot. 
-6. Az **adatforrás** szakasz **meglévő adat használata**területén válassza a elemet `Sample`.
+6. Az **adatforrás** szakasz **meglévő adat használata**területén válassza a `Sample`lehetőséget.
 
    ![További SQL-adatbázis-beállítások](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
@@ -142,6 +142,15 @@ Hozzon létre egy erőforráscsoportot és egy önálló adatbázist a PowerShel
    $database
    ```
 
+A cikk ezen része a következő PowerShell-parancsmagokat használja:
+
+| Parancs | Megjegyzések |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
+| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása logikai kiszolgálóhoz. | 
+| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy új Azure SQL Database önálló adatbázist. | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist AZ AZ parancssori felület használatával.
@@ -207,5 +216,16 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist AZ AZ parancss
       --family Gen5 \
       --capacity 2
    ```
+
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+
+| Parancs | Megjegyzések |
+|---|---|
+| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Egy előfizetést állít be az aktuális aktív előfizetésre. | 
+| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
+| [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Létrehoz egy kiszolgáló tűzfalszabály-szabályait. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Létrehoz egy adatbázist. | 
+
 
 ---

@@ -1,86 +1,134 @@
 ---
-title: Azure-előfizetés összekapcsolása – Azure Active Directory B2C | Microsoft Docs
-description: Lépésenkénti útmutató, amellyel egy Azure-előfizetésben helyezi az Azure AD B2C-bérlőt számlázás.
+title: Számlázási modell Azure Active Directory B2C
+description: Ismerje meg az Azure AD B2C's havi aktív felhasználók (MAU) számlázási modelljét, valamint egy adott Azure-előfizetés számlázásának engedélyezését.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 892f47b6acf22c62ce2290e2ede9d0bcd21eefc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065896"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931423"
 ---
-# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure-előfizetés összekapcsolása egy Azure Active Directory B2C Bérlővel
+# <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
+
+A Azure Active Directory B2C (Azure AD B2C) használat számlázása egy társított Azure-előfizetéshez történik, és havi aktív felhasználói (MAU) számlázási modellt használ. Megtudhatja, hogyan kapcsolhat Azure AD B2C-erőforrást egy előfizetéshez, és hogyan működik a MAU számlázási modell a következő fejezetekben.
 
 > [!IMPORTANT]
-> A Azure Active Directory B2C (Azure AD B2C) használati számlázásával és díjszabásával kapcsolatos legfrissebb információkért tekintse meg a [Azure ad B2C díjszabását](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Ez a cikk nem tartalmaz díjszabási információt. A használati számlázással és a díjszabással kapcsolatos legfrissebb információkért tekintse meg a [Azure Active Directory B2C díjszabását](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
-Azure-előfizetéshez az Azure AD B2C használati díjakat számítjuk fel. Azure AD B2C-bérlő jön létre, ha a bérlői rendszergazda explicit módon az Azure AD B2C-bérlő összekapcsolása egy Azure-előfizetést kell. Ez a cikk bemutatja, hogyan.
+## <a name="monthly-active-users-mau-billing"></a>Havi aktív felhasználók (MAU) számlázása
 
-> [!NOTE]
-> Egy előfizetéshez társított Azure AD B2C-bérlő a számlázás az Azure AD B2C használatát vagy más Azure-erőforrások további Azure AD B2C-erőforrással együtt is használható.  Más Azure-licenc-alapú szolgáltatások vagy az Office 365-licencek az Azure AD B2C-bérlő belül hozzáadandó nem használható.
+Azure AD B2C számlázás díja a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók számának, azaz a havi aktív felhasználók (MAU) számlázásnak.
 
-Hozzon létre egy Azure AD B2C-vel "erőforrás" belül a cél Azure-előfizetés az előfizetési hivatkozást érhető el. Számos Azure AD B2C-vel "resources" is létrehozható egy Azure-előfizetéssel, valamint más Azure-erőforrások (például virtuális gépeket, adattárolás, LogicApps) belül. Az erőforrások az előfizetésen belüli összes láthatja a az Azure AD-bérlővel, amely az előfizetés van társítva.
+**2019. november**1-jétől az újonnan létrehozott Azure ad B2C bérlők havi aktív felhasználók (Mau) szerint kerülnek számlázásra. A 2019. november 1-én vagy azt követően az [előfizetéshez kapcsolódó](#link-an-azure-ad-b2c-tenant-to-a-subscription) meglévő bérlők havi aktív felhasználók (Mau) számlán lesznek felszámítva.
 
-A Azure AD B2C támogatja az Azure Cloud Solution Providers (CSP) előfizetéseket. A funkció API-kkal vagy a Azure AD B2Choz és az összes Azure-erőforráshoz Azure Portal érhető el. A CSP-előfizetések rendszergazdái ugyanúgy kapcsolhatják össze, helyezhetik el és törölhetik a kapcsolatokat a Azure AD B2Cekkel, mint az összes Azure-erőforráshoz. A szerepköralapú hozzáférés-vezérlést használó Azure AD B2C felügyeletét a Azure AD B2C bérlő és az Azure CSP-előfizetés közötti társítás nem érinti. A szerepköralapú hozzáférés-vezérlést a bérlői Alapszerepkörök, nem előfizetés-alapú szerepkörök használatával érik el.
+Ha olyan meglévő Azure AD B2C Bérlővel rendelkezik, amely egy, a 2019. november 1. előtti előfizetéshez van csatolva, a következők közül választhat:
 
-A folytatáshoz érvényes Azure-előfizetéssel van szükség.
+* Frissítsen a havi aktív felhasználók (MAU) számlázási modelljére, vagy
+* Maradjon a hitelesítési számlázási modellen
 
-## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő létrehozása
+### <a name="upgrade-to-monthly-active-users-billing-model"></a>Frissítés a havi aktív felhasználói számlázási modellre
 
-Első lépés [létrehozása az Azure AD B2C-bérlő](active-directory-b2c-get-started.md) , hogy szeretné-e az egy előfizetés összekapcsolása. Hagyja ki ezt a lépést, ha már létrehozott egy Azure AD B2C-bérlőben.
+Azok az Azure-előfizetések tulajdonosai, akik rendszergazdai hozzáféréssel rendelkeznek a Azure AD B2C erőforráshoz, válthatnak a MAU számlázási modellre. A számlázási beállítások a Azure AD B2C erőforrásban konfigurálhatók.
 
-## <a name="open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>Az Azure AD-bérlővel, amely bemutatja az Azure-előfizetéshez az Azure portál megnyitása
+A havi aktív felhasználók (MAU) számlázására való váltás **visszafordíthatatlan**. Ha egy Azure AD B2C erőforrást a MAU-alapú számlázási modellre konvertál, az erőforrást nem lehet visszaállítani a hitelesítési számlázási modellre.
 
-Keresse meg az Azure AD-bérlővel, amely bemutatja az Azure-előfizetésében. Nyissa meg a [az Azure portal](https://portal.azure.com), és váltson át az Azure AD-bérlővel, amely bemutatja az Azure-előfizetéshez szeretne használni.
+A következőkben megtudhatja, hogyan válthat egy meglévő Azure AD B2C erőforrást a MAU-számlázásra:
 
-![Váltás az Azure AD-bérlő](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az előfizetés tulajdonosaként.
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure ad B2C könyvtárat, amelyet Mau-számlázásra szeretne frissíteni.<br/>
+    ![könyvtár-és előfizetés-szűrő Azure Portal](media/active-directory-b2c-how-to-enable-billing/portal-mau-01-select-b2c-directory.png)
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. A Azure AD B2C bérlő **Áttekintés** lapján kattintson az **Erőforrás neve**alatt található hivatkozásra. A rendszer átirányítja az Azure AD-bérlő Azure AD B2C erőforrására.<br/>
+    ![Azure AD B2C kiemelve az erőforrás-hivatkozás Azure Portal](media/active-directory-b2c-how-to-enable-billing/portal-mau-02-b2c-resource-link.png)
+1. Az Azure AD B2C erőforrás **áttekintő** lapján a **számlázható egységek**területen válassza ki a **hitelesítést (a Mau-re váltás)** hivatkozásra.<br/>
+    ![a MAU-hivatkozásra Kiemelt Azure Portal](media/active-directory-b2c-how-to-enable-billing/portal-mau-03-change-to-mau-link.png)
+1. Válassza a **megerősítés** lehetőséget a frissítés a Mau-számlázásra való befejezéséhez.<br/>
+    ![MAU-alapú számlázási megerősítő párbeszédpanel Azure Portal](media/active-directory-b2c-how-to-enable-billing/portal-mau-04-confirm-change-to-mau.png)
 
-## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Keresse meg az Azure AD B2C az Azure Marketplace-en
+### <a name="what-to-expect-when-you-transition-to-mau-billing-from-per-authentication-billing"></a>Mit kell várni a MAU-számlázásra való áttéréskor a hitelesítési számlázástól
 
-Kattintson a **erőforrás létrehozása** gombra. A **Keresés a piactéren** mezőbe írja be `Active Directory B2C`a értéket.
+A MAU-alapú mérés az előfizetés/erőforrás tulajdonosaként azonnal engedélyezve van, erősítse meg a változást. A havi számla a változás és a MAU új egységeinek változása után számlázza a hitelesítési egységeket.
 
-![A "Active Directory B2C" nevű portál képernyőképe a piactéren – keresés](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanazok a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Példa:
 
-Az eredmények listájában válassza ki a **Azure AD B2C-vel**.
+* A contoso B2C-bérlő 1 000 felhasználóval rendelkezik. 250 a felhasználók egy adott hónapban aktívak. Az előfizetés rendszergazdája a hónap 10. napján megváltoztathatja a hitelesítést a havi aktív felhasználók (MAU) esetében.
+* Az 1 – 10. számlázási díj számlázása az egyes hitelesítési modell alapján történik.
+  * Ha 100 felhasználó jelentkezik be ebben az időszakban (1 – 10.), ezek *a felhasználók a hónapra kifizetettként*vannak megjelölve.
+* A 10 (az áttérés tényleges időpontjában) számlázása a MAU-díj alapján történik.
+  * Ha egy további 150 felhasználó jelentkezik be ebben az időszakban (10 – 30.), akkor csak a további 150 lesz kiszámlázva.
+  * Az első 100 felhasználó folyamatos tevékenysége nem befolyásolja a naptári hónap hátralévő részének számlázását.
 
-![Az Azure AD B2C az eredménylistában kiválasztva](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
+Az áttérés számlázási időszaka során az előfizetés tulajdonosa valószínűleg mindkét módszer (hitelesítés és/MAU) bejegyzéseinek megjelenítése az Azure-előfizetés számlázási utasításában jelenik meg:
 
-Az Azure AD B2C-vel kapcsolatos részletek jelennek meg. Az új Azure Active Directory B2C-bérlő konfigurálásának megkezdéséhez kattintson a **Létrehozás** gombra.
+* Egy bejegyzés a használathoz, amely a módosítás dátumát és időpontját tükrözi.
+* A havi aktív felhasználókat (MAU) tükröző módosítás utáni használat bejegyzése.
 
-Az erőforrás létrehozás képernyőn válassza ki a **hivatkozásra egy meglévő Azure AD B2C-bérlőt szeretne aktiválni az Azure-előfizetésem**.
+A Azure AD B2C használati számlázásával és díjszabásával kapcsolatos legfrissebb információkért tekintse meg a [Azure Active Directory B2C díjszabását](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
-## <a name="create-an-azure-ad-b2c-resource-within-the-azure-subscription"></a>Hozzon létre egy Azure AD B2C-erőforrás Azure-előfizetésen belül
+## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Azure AD B2C bérlő összekapcsolása egy előfizetéssel
 
-Erőforrás létrehozása párbeszédpanelen válassza ki az Azure AD B2C-bérlő a legördülő listából. Megjelenik a bérlők, amelynek Ön a globális rendszergazdája és azokkal, amelyek nem kapcsolódnak már egy előfizetéshez.
+Azure Active Directory B2C (Azure AD B2C) használati díjait egy Azure-előfizetésre számoljuk fel. Azure AD B2C bérlő létrehozásakor a bérlői rendszergazdának explicit módon kell összekapcsolnia a Azure AD B2C bérlőt egy Azure-előfizetéssel.
 
-Az Azure AD B2C-erőforrás nevét a rendszer megfelelően az Azure AD B2C-bérlő tartományneve előre kiválasztott.
+Az előfizetés hivatkozását úgy érheti el, hogy létrehoz egy Azure AD B2C *erőforrást* a cél Azure-előfizetésen belül. Több Azure AD B2C erőforrás is létrehozható egyetlen Azure-előfizetésben, valamint más Azure-erőforrásokkal, például a virtuális gépekkel, a Storage-fiókokkal és a Logic Appsokkal. Az előfizetésen belüli összes erőforrást megtekintheti az előfizetéshez társított Azure Active Directory (Azure AD) bérlőhöz.
 
-Az előfizetéshez válassza ki az aktív Azure-előfizetésre, amelynek Ön a rendszergazdája.
+Azure AD B2C bérlőhöz kapcsolódó előfizetés használható Azure AD B2C használat vagy más Azure-erőforrások, többek között a további Azure AD B2C erőforrások számlázására is. Nem használható további Azure-licenc-alapú szolgáltatások vagy Office 365-licencek hozzáadására a Azure AD B2C bérlőn belül.
 
-Válasszon egy erőforráscsoportot és az erőforráscsoport helyét. A kijelölt itt nem befolyásolja az Azure AD B2C-bérlő földrajzi, a teljesítmény vagy a számlázási állapota.
+### <a name="prerequisites"></a>Előfeltételek
 
-![A Azure Portal Azure AD B2C erőforrás-létrehozási lapja](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+* [Azure-előfizetés](https://azure.microsoft.com/free/)
+* Az előfizetéshez csatolni kívánt [Azure ad B2C bérlő](active-directory-b2c-get-started.md)
+  * Bérlői rendszergazdának kell lennie
+  * A bérlőnek még nincs előfizetéshez csatolva
 
-## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Az Azure AD B2C-bérlői erőforrások kezelése
+### <a name="create-the-link"></a>A hivatkozás létrehozása
 
-Az Azure AD B2C-erőforrás Azure-előfizetésen belül sikeres létrehozása után megtekintheti a típus "B2C-bérlő" mellett más Azure-erőforrások hozzá egy új erőforrást.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a használni kívánt Azure-előfizetést tartalmazza (*nem* pedig a Azure ad B2C bérlőt tartalmazó könyvtár).
+1. Válassza az **erőforrás létrehozása**lehetőséget, írja be a `Active Directory B2C` **kifejezést a keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
+1. Kattintson a **Létrehozás** elemre.
+1. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel**lehetőséget.
+1. Válasszon ki egy **Azure ad B2C bérlőt** a legördülő listából. Csak azok a bérlők jelennek meg, amelyekhez Ön globális rendszergazda, és amelyek még nem kapcsolódnak előfizetéshez. A **Azure ad B2C erőforrás neve** mező a kiválasztott Azure ad B2C-bérlő tartománynevével van feltöltve.
+1. Válasszon ki egy aktív Azure- **előfizetést** , amelynek Ön a rendszergazdája.
+1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, majd adja meg az **erőforráscsoport helyét**. Az erőforráscsoport beállításai nincsenek hatással a Azure AD B2C bérlői helyére, teljesítményére vagy számlázási állapotára.
+1. Kattintson a **Létrehozás** gombra.
+    ![a Azure AD B2C erőforrás-létrehozási lapot Azure Portal](./media/active-directory-b2c-how-to-enable-billing/portal-01-create-b2c-resource-page.png)
 
-Ehhez az erőforráshoz is használhatja:
+Miután elvégezte ezeket a lépéseket egy Azure AD B2C bérlő számára, az Azure-előfizetését az Azure Direct-ban vagy Nagyvállalati Szerződés-on alapuló adatok alapján számítjuk fel, ha van ilyen.
 
-- Keresse meg az előfizetés számlázási információk áttekintéséhez.
-- Nyissa meg az Azure AD B2C-bérlő
-- Támogatási kérés küldése
-- Helyezze át az Azure AD B2C-bérlő erőforrás, egy másik Azure-előfizetésre, vagy egy másik erőforráscsoportba.
+### <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Azure AD B2C bérlői erőforrások kezelése
 
-![A B2C erőforrás-beállítások lapja a Azure Portal](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
+Miután létrehozta a Azure AD B2C erőforrást egy Azure-előfizetésben, látnia kell egy "B2C-bérlő" típusú új erőforrást a többi Azure-erőforrással.
+
+Ezt az erőforrást a következő célra használhatja:
+
+* Keresse meg az előfizetést a számlázási adatok áttekintéséhez
+* Azure AD B2C bérlő bérlői AZONOSÍTÓjának beolvasása GUID formátumban
+* Ugrás a Azure AD B2C-bérlőre
+* Támogatási kérés küldése
+* Azure AD B2C bérlői erőforrás áthelyezése másik Azure-előfizetésre vagy-erőforráscsoporthoz
+
+![A B2C erőforrás-beállítások lapja a Azure Portal](./media/active-directory-b2c-how-to-enable-billing/portal-02-b2c-resource-overview.png)
+
+### <a name="regional-restrictions"></a>Regionális korlátozások
+
+Ha az előfizetésében regionális korlátozásokat hozott létre az Azure-erőforrások létrehozásához, akkor ez a korlátozás megakadályozhatja a Azure AD B2C erőforrás létrehozását.
+
+A probléma megoldásához lazítsa meg regionális korlátozásait.
+
+## <a name="azure-cloud-solution-providers-csp-subscriptions"></a>Azure Cloud Solution Providers (CSP) előfizetések
+
+A Azure AD B2C támogatja az Azure Cloud Solution Providers (CSP) előfizetéseket. A funkció API-kkal vagy a Azure AD B2Choz és az összes Azure-erőforráshoz Azure Portal érhető el. A CSP-előfizetések rendszergazdái kapcsolatokat kapcsolhatnak össze, helyezhetnek el és törölhetnek más Azure-erőforrásokkal végzett Azure AD B2Cokkal.
+
+A szerepköralapú hozzáférés-vezérlést használó Azure AD B2C felügyeletét a Azure AD B2C bérlő és az Azure CSP-előfizetés közötti társítás nem érinti. A szerepköralapú hozzáférés-vezérlés a bérlői alapú szerepkörök, nem előfizetés-alapú szerepkörök használatával érhető el.
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C bérlő számlázási előfizetésének módosítása
 
@@ -90,14 +138,6 @@ Ha szeretné megismerni, hogyan helyezhetők át az Azure-erőforrások, példá
 
 Mielőtt elkezdené az áthelyezést, olvassa el a teljes cikket, amely részletesen ismerteti az ilyen áthelyezésre vonatkozó korlátozásokat és követelményeket. Az erőforrások áthelyezésére vonatkozó utasítások mellett olyan kritikus információkat is tartalmaz, mint például az áthelyezés előtti ellenőrzőlista, valamint a mozgatási művelet ellenőrzése.
 
-## <a name="known-issues"></a>Ismert problémák
+## <a name="next-steps"></a>Következő lépések
 
-### <a name="self-imposed-restrictions"></a>Önálló kivetett korlátozásokat
-
-A felhasználó létrehozott egy regionális korlátozást az Azure-erőforrások létrehozásához. Ez a korlátozás előfordulhat, hogy az Azure AD B2C-erőforrás létrehozása. Megoldás érdekében adjon enyhíteni ezt a korlátozást.
-
-## <a name="next-steps"></a>További lépések
-
-Ha ezeket a lépéseket az Azure AD B2C-bérlők mindegyike befejeződött, az Azure-előfizetés elszámolási megfelelően az Azure Direct és a nagyvállalati szerződés adatait.
-
-A használati és számlázási adatait tekintheti meg a kiválasztott Azure-előfizetésen belül. Emellett áttekintheti a részletes-– napi használati jelentések használata a [reporting API használati](active-directory-b2c-reference-usage-reporting-api.md).
+A kiválasztott Azure-előfizetésen belüli használati és számlázási adatok áttekintésén kívül a napi használati jelentéseket a [használati jelentéskészítési API](active-directory-b2c-reference-usage-reporting-api.md)használatával tekintheti meg.

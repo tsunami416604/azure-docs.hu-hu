@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ec1baa8797935b76963025f82d6c7df43a2a7d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264408"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931562"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával
 
@@ -114,7 +114,7 @@ Jegyezze fel a `"modelId"` értéket. A következő lépésekhez szüksége lesz
 
 Ezután elemezni fog egy dokumentumot, és Kinyeri a kulcs-érték párokat és táblákat. A következő Python-szkript futtatásával hívja meg a **modell-elemzés API-** t. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le a `<Endpoint>` értéket arra a végpontra, amelyet az űrlap-felismerő előfizetési kulcsával kapott. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le a `<Endpoint>`t arra a végpontra, amelyet az űrlap-felismerő előfizetésével kapott.
 1. Cserélje le a `<path to your form>` értéket az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
 1. Cserélje le a `<modelID>` értéket az előző szakaszban kapott modell-AZONOSÍTÓra.
 1. Cserélje le a `<file type>` értéket a fájl típusára. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.

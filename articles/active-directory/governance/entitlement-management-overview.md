@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 136a9994415b42c456ebdb0caa8ed6edcc7b4534
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430300"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934382"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az az Azure AD-jogosultságkezelés? (Előzetes verzió)
 
@@ -121,6 +121,7 @@ A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez te
 | Erőforrás típusa | Az erőforrás típusa, amely magában foglalja a csoportokat, az alkalmazásokat és a SharePoint Online-webhelyeket. |
 | erőforrás-szerepkör | Egy erőforráshoz társított engedélyek gyűjteménye. |
 | erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
+| csatlakoztatott szervezet | Egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van. |
 | hozzárendelt felhasználók | Hozzáférési csomag hozzárendelése egy felhasználóhoz, így a felhasználó rendelkezik az adott hozzáférési csomag összes erőforrás-szerepkörével. |
 | Engedélyezése | Hozzáférési csomag elérhetővé tétele a felhasználók számára a kéréshez. |
 

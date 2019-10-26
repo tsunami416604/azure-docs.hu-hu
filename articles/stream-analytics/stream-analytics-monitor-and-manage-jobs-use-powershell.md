@@ -1,6 +1,6 @@
 ---
-title: Figyelése és felügyelete az Azure Stream Analytics-feladatok PowerShell-lel
-description: Ez a cikk ismerteti, hogyan használható az Azure PowerShell és a parancsmagok figyelése és felügyelete az Azure Stream Analytics-feladatok.
+title: Azure Stream Analytics feladatok figyelése és kezelése a PowerShell-lel
+description: Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell és a parancsmagok a Azure Stream Analytics feladatok figyeléséhez és kezeléséhez.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 57dee438dca81d46d2bdfda0c7f255f32f203d60
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67612302"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925129"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Figyelheti és kezelheti a Stream Analytics-feladatok az Azure PowerShell-parancsmagok
-Ismerje meg, hogyan figyelheti és a Stream Analytics-erőforrások kezelése a az Azure PowerShell-parancsmagok és a powershell-parancsprogramok, amelyek az alapszintű Stream Analytics-feladatok végrehajtásához.
+# <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Stream Analytics feladatok figyelése és kezelése Azure PowerShell-parancsmagokkal
+Megtudhatja, hogyan figyelheti és kezelheti Stream Analytics erőforrásait Azure PowerShell parancsmagokkal és PowerShell-parancsfájlokkal, amelyek alapszintű Stream Analytics feladatokat hajtanak végre.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Azure PowerShell-parancsmagok futtatása Stream Analytics előfeltételei
-* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. Az alábbiakban látható egy minta Azure PowerShell-parancsfájlt. Azure PowerShell-információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview);  
+## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Azure PowerShell-parancsmagok futtatásának előfeltételei a Stream Analytics
+* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. A következő egy minta Azure PowerShell szkript. Azure PowerShell információ: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview);  
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 # Log in to your Azure account
@@ -37,7 +37,7 @@ Select-AzureSubscription -SubscriptionName <subscription name>
 New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 ```
 
-Az Azure PowerShell 1.0-hoz:
+Azure PowerShell 1,0:
 
 ```powershell
 # Log in to your Azure account
@@ -52,502 +52,502 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Stream Analytics-feladatok programozott módon létrehozott nem rendelkezik a figyelés alapértelmezés szerint engedélyezve van.  Az Azure Portalon manuálisan engedélyezheti a figyelést, ha megnyitja a feladat figyelője lapját, és az Engedélyezés gombra kattint, vagy ezt programozott módon hajthatja végre a következő helyen található lépések végrehajtásával: [Azure stream Analytics-Monitor stream Analytics Jobs Programozott](stream-analytics-monitor-jobs.md)módon.
+> Stream Analytics a programozott módon létrehozott feladatok nem rendelkeznek alapértelmezett figyeléssel.  Az Azure Portalon manuálisan engedélyezheti a figyelést, ha megnyitja a feladat figyelője lapját, és az Engedélyezés gombra kattint, vagy ezt programozott módon hajthatja végre a következő helyen található lépések végrehajtásával: [Azure stream Analytics-Monitor stream Analytics Jobs Programozott](stream-analytics-monitor-jobs.md)módon.
 > 
 > 
 
-## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics az Azure PowerShell-parancsmagok
-A következő Azure PowerShell-parancsmagok segítségével figyelheti és kezelheti az Azure Stream Analytics-feladatok. Vegye figyelembe, hogy az Azure PowerShell rendelkezik-e a különböző verziók. 
-**Az első parancs van a felsorolt példák az Azure PowerShell 0.9.8-as verzióját használja, a második parancs van az Azure PowerShell 1.0-t.** A Azure PowerShell 1,0 parancsok mindig az "az" parancsot fogják tartalmazni a parancsban.
+## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>A Stream Analytics Azure PowerShell-parancsmagjai
+A következő Azure PowerShell parancsmagok használhatók Azure Stream Analytics feladatok figyelésére és kezelésére. Vegye figyelembe, hogy Azure PowerShell különböző verziókkal rendelkezik. 
+**Az első parancsban szereplő példákban Azure PowerShell 0.9.8, a második parancs a Azure PowerShell 1,0.** A Azure PowerShell 1,0 parancsok mindig az "az" parancsot fogják tartalmazni a parancsban.
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
-Felsorolja az összes Stream Analytics-feladatok az Azure-előfizetés vagy a megadott erőforráscsoportban, vagy egy adott feladat egy erőforráscsoporton belül feladat adatainak beolvasása.
+Felsorolja az Azure-előfizetésben vagy a megadott erőforráscsoportben definiált összes Stream Analytics feladatot, vagy az erőforráscsoport egy adott feladatával kapcsolatos információkat kap.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsJob
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsJob
 ```
 
-A PowerShell-parancsot az Azure-előfizetésben a Stream Analytics-feladatok adatait adja vissza.
+Ez a PowerShell-parancs az Azure-előfizetésben található összes Stream Analytics feladat adatait adja vissza.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 ```
 
-Ez a PowerShell-parancs StreamAnalytics-alapértelmezett – közép-USA erőforráscsoporthoz tartozik, a Stream Analytics-feladatok adatait adja vissza.
+Ez a PowerShell-parancs az StreamAnalytics-default-Central-USA nevű erőforráscsoport összes Stream Analytics feladatával kapcsolatos információkat ad vissza.
 
 **3. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob
 ```
 
-Ez a PowerShell-parancs StreamAnalytics-alapértelmezett – közép-USA erőforráscsoporthoz tartozik, a Stream Analytics-feladat StreamingJob adatait adja vissza.
+Ez a PowerShell-parancs az StreamAnalytics-default-Central-USA StreamingJob található Stream Analytics feladatra vonatkozó adatokat adja vissza.
 
 ### <a name="get-azurestreamanalyticsinput--get-azstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzStreamAnalyticsInput
-Felsorolja az összes bemenet, amely egy megadott Stream Analytics-feladat vannak definiálva, vagy egy meghatározott bevitel adatainak beolvasása.
+Felsorolja a megadott Stream Analytics feladatban definiált összes bemenetet, vagy lekéri egy adott bemenet adatait.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-A PowerShell-parancsot a feladat StreamingJob definiált összes bemeneti adatait adja vissza.
+Ez a PowerShell-parancs a StreamingJob megadott összes bemenet adatait adja vissza.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name EntryStream
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name EntryStream
 ```
 
-A PowerShell-parancsot a feladat StreamingJob meghatározott EntryStream nevű bemeneti adatait adja vissza.
+Ez a PowerShell-parancs a StreamingJob-ben definiált EntryStream nevű bemenettel kapcsolatos információkat adja vissza.
 
 ### <a name="get-azurestreamanalyticsoutput--get-azstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzStreamAnalyticsOutput
-Felsorolja az összes, a kimeneteket, amely egy megadott Stream Analytics-feladat vannak definiálva, vagy egy adott kimeneti adatainak beolvasása.
+Felsorolja a megadott Stream Analytics feladatban definiált összes kimenetet, vagy lekéri egy adott kimenet adatait.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-A PowerShell-parancsot a StreamingJob feladatban meghatározott kimenetek kapcsolatos információkat ad vissza.
+Ez a PowerShell-parancs a StreamingJob megadott kimenetekkel kapcsolatos információkat adja vissza.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name Output
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name Output
 ```
 
-A PowerShell-parancsot a kimeneti StreamingJob feladatban meghatározott nevű kimeneti adatait adja vissza.
+Ez a PowerShell-parancs a StreamingJob-ben definiált kimenetre vonatkozó adatokat adja vissza.
 
 ### <a name="get-azurestreamanalyticsquota--get-azstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzStreamAnalyticsQuota
-A kvóta a streamelési egységek számát egy adott régióban adatainak beolvasása.
+Beolvas egy adott régióban lévő folyamatos átviteli egységekre vonatkozó kvótát.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsQuota –Location "Central US" 
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsQuota –Location "Central US" 
 ```
 
-A PowerShell-parancsot a kvóta-és folyamatos átviteli egységek használati adatokat az USA középső régiójában adja vissza.
+Ez a PowerShell-parancs az USA középső régiójában lévő folyamatos átviteli egységek kvótáját és használatát adja vissza.
 
 ### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | Get-AzStreamAnalyticsTransformation
-Egy adott átalakítás definiálása a Stream Analytics-feladat adatainak beolvasása.
+Információ beolvasása egy Stream Analytics feladatban definiált adott transzformációról.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name StreamingJob
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name StreamingJob
 ```
 
-A PowerShell-parancsot az átalakítást a feladat StreamingJob StreamingJob nevű kapcsolatos információkat ad vissza.
+Ez a PowerShell-parancs a StreamingJob nevű átalakítással kapcsolatos információkat ad vissza a (StreamingJob) feladatban.
 
-### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzStreamAnalyticsInput
-Létrehoz egy új bemeneti Stream Analytics-feladat belül, vagy egy meglévő megadott bemeneti adatok frissítése.
+### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>Új – AzureStreamAnalyticsInput | Új – AzStreamAnalyticsInput
+Új bemenetet hoz létre egy Stream Analytics feladaton belül, vagy frissít egy meglévő megadott bemenetet.
 
-A bemeneti neve adható meg a .json fájlt, vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban a neve megegyezik egy, a fájl kell lennie.
+A bemenet neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
 
-Ha egy már létező bemeneti adja meg, és ne adja meg a – Force paraméterek, a parancsmag kéri-e a meglévő bemeneti cserélje le.
+Ha olyan bemenetet ad meg, amely már létezik, és nem adja meg a – Force paramétert, a parancsmag megkérdezi, hogy lecseréli-e a meglévő bemenetet.
 
-Ha megad a – Force paramétert, és adjon meg egy meglévő adjon meg nevet, a bemeneti váltja megerősítés nélkül.
+Ha a – Force paramétert adja meg, és megad egy meglévő bemeneti nevet, a rendszer megerősítés nélkül felülírja a bemenetet.
 
 A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg a [stream Analytics Management REST API hivatkozási könyvtár][stream.analytics.rest.api.reference] [bemenetének létrehozása (Azure stream Analytics)][msdn-rest-api-create-stream-analytics-input] szakaszát.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" 
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" 
 ```
 
-A PowerShell-parancsot egy új bemenet Input.json fájlból hoz létre. Ha egy meglévő bemeneti a bemeneti definíciós fájlban megadott névvel már meg van adva, a parancsmag kéri-e, cserélje le a.
+Ez a PowerShell-parancs új bemenetet hoz létre a input. JSON fájlból. Ha már meg van adva egy meglévő bemenet a bemeneti definíciós fájlban megadott névvel, akkor a parancsmag megkérdezi, hogy lecseréli-e a fájlt.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream
 ```
 
-A PowerShell-parancs hoz létre egy új bemenet a EntryStream nevű feladatban. Ha egy meglévő bemeneti ezen a néven már meg van adva, a parancsmag kéri-e, cserélje le a.
+Ez a PowerShell-parancs létrehoz egy új bemenetet a EntryStream nevű feladatban. Ha már definiálva van ilyen nevű meglévő bemenet, a parancsmag megkérdezi, hogy lecseréli-e vagy sem.
 
 **3. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream -Force
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream -Force
 ```
 
-A PowerShell-parancs lecseréli a meglévő bemeneti forrás a fájlból a definíció EntryStream nevű definíciója.
+Ez a PowerShell-parancs lecseréli a EntryStream nevű meglévő bemeneti forrás definícióját a fájl definíciója alapján.
 
-### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzStreamAnalyticsJob
-Létrehoz egy új Stream Analytics-feladatot a Microsoft Azure-ban, vagy egy meglévő megadott feladat definíciójának frissítése.
+### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>Új – AzureStreamAnalyticsJob | Új – AzStreamAnalyticsJob
+Új Stream Analytics-feladatot hoz létre a Microsoft Azureban, vagy egy meglévő megadott feladatok definícióját frissíti.
 
-A feladat nevére a .json fájlt, vagy a parancssorban adható meg. Ha mindkettő meg van adva, a parancssorban a neve megegyezik egy, a fájl kell lennie.
+A feladatok neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
 
-Ha egy már létező feladat nevét adja meg, és ne adja meg a – Force paraméterek, a parancsmag kéri-e cserélje le a meglévő feladat.
+Ha olyan feladatot ad meg, amely már létezik, és nem adja meg a – Force paramétert, a parancsmag megkérdezi, hogy lecseréli-e a meglévő feladatot.
 
-Ha megad a – Force paramétert, és adja meg egy meglévő feladat nevét, a feladat definíciója váltja megerősítés nélküli.
+Ha a – Force paramétert adja meg, és megadta a meglévő feladatnév nevet, a rendszer megerősítés nélkül lecseréli a feladatdefiníció értékét.
 
 A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg az [stream Analytics Management REST API hivatkozási könyvtárának][stream.analytics.rest.api.reference] [stream Analytics feladatok létrehozása][msdn-rest-api-create-stream-analytics-job] című szakaszát.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" 
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" 
 ```
 
-Ez a PowerShell-parancs létrehoz egy új feladatot a JobDefinition.json definícióból. Ha egy meglévő feladat a feladat-definíciós fájl a megadott néven már meg van adva, a parancsmag kéri-e, cserélje le a.
+Ez a PowerShell-parancs létrehoz egy új feladatot a feladatdefiníció. JSON definíciójában. Ha már meg van adva egy meglévő, a feladattípusban megadott nevű feladattípus, a parancsmag megkérdezi, hogy lecseréli-e a fájlt.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" –Name StreamingJob -Force
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" –Name StreamingJob -Force
 ```
 
-A PowerShell-parancsot a feladat definíciója StreamingJob váltja fel.
+Ez a PowerShell-parancs a StreamingJob tartozó feladatdefiníció helyébe lép.
 
-### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzStreamAnalyticsOutput
-Létrehoz egy új kimeneti Stream Analytics-feladat belül, vagy egy meglévő kimeneti frissítése.  
+### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>Új – AzureStreamAnalyticsOutput | Új – AzStreamAnalyticsOutput
+Létrehoz egy új kimenetet egy Stream Analytics feladatokon belül, vagy frissít egy meglévő kimenetet.  
 
-A kimenet a neve a .json fájlt, vagy a parancssorban adható meg. Ha mindkettő meg van adva, a parancssorban a neve megegyezik egy, a fájl kell lennie.
+A kimenet neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
 
-Ha egy már létező kimenetet adja meg, és ne adja meg a – Force paraméterek, a parancsmag kéri-e cserélje le a meglévő kimenet.
+Ha olyan kimenetet ad meg, amely már létezik, és nem adja meg a – Force paramétert, a parancsmag megkérdezi, hogy lecseréli-e a meglévő kimenetet.
 
-Ha megad a – Force paramétert, és adjon meg egy meglévő kimeneti név, a kimeneti váltja megerősítés nélkül.
+Ha a – Force paramétert adja meg, és megad egy meglévő kimeneti nevet, a rendszer megerősítés nélkül lecseréli a kimenetet.
 
 A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg a [stream Analytics Management REST API-függvénytár][stream.analytics.rest.api.reference] [kimenetének létrehozása (Azure stream Analytics)][msdn-rest-api-create-stream-analytics-output] szakaszát.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output
 ```
 
-A PowerShell-paranccsal hoz létre a feladatban StreamingJob "kimeneti" nevű új kimenet. Ha egy meglévő kimeneti ezen a néven már meg van adva, a parancsmag kéri-e, cserélje le a.
+Ez a PowerShell-parancs egy "output" nevű új kimenetet hoz létre a (z) StreamingJob feladatokban. Ha már meg van adva egy ilyen nevű meglévő kimenet, a parancsmag megkérdezi, hogy lecseréli-e vagy sem.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output -Force
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output -Force
 ```
 
-Ez a PowerShell-parancs a "kimeneti" definíciója a feladat StreamingJob váltja fel.
+Ez a PowerShell-parancs lecseréli a "output" definícióját a StreamingJob.
 
-### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzStreamAnalyticsTransformation
-Létrehoz egy új átalakítás belül egy Stream Analytics-feladatot, vagy frissíti a meglévő átalakítást.
+### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>Új – AzureStreamAnalyticsTransformation | Új – AzStreamAnalyticsTransformation
+Új átalakítást hoz létre egy Stream Analytics feladatokon belül, vagy frissíti a meglévő átalakítást.
 
-Az átalakítás neve adható meg a .json fájlt, vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban a neve megegyezik egy, a fájl kell lennie.
+Az átalakítás neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
 
-Ha egy már létező átalakítás adja meg, és ne adja meg a – Force paraméterek, a parancsmag kéri-e cserélje le a meglévő átalakítást.
+Ha olyan átalakítást ad meg, amely már létezik, és nem adja meg a – Force paramétert, a parancsmag megkérdezi, hogy lecseréli-e a meglévő átalakítást.
 
-Ha megad a – Force paramétert, és adjon meg egy meglévő transzformációjának a neve, az átalakítás váltja megerősítés nélkül.
+Ha a – Force paramétert adja meg, és megadta a meglévő átalakítás nevét, a rendszer megerősítés nélkül lecseréli az átalakítást.
 
 A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg a [stream Analytics felügyeleti REST API hivatkozási könyvtár][stream.analytics.rest.api.reference] [átalakításának létrehozása (Azure stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] szakaszát.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform
 ```
 
-A PowerShell-parancsot a feladat StreamingJob StreamingJobTransform nevű új átalakítást hoz létre. Ha egy meglévő átalakítást ezen a néven már definiálva van, a parancsmag kéri-e, cserélje le a.
+Ez a PowerShell-parancs létrehoz egy új, StreamingJobTransform nevű átalakítást a (StreamingJob) feladatokban. Ha már létezik ilyen nevű átalakítás, a parancsmag megkérdezi, hogy lecseréli-e vagy sem.
 
 **2. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform -Force
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform -Force
 ```
 
- A PowerShell-parancsot a feladat StreamingJob StreamingJobTransform definíciója váltja fel.
+ Ez a PowerShell-parancs a StreamingJobTransform definícióját váltja fel a StreamingJob.
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzStreamAnalyticsInput
-A Microsoft Azure Stream Analytics-feladat aszinkron módon törli egy meghatározott bevitel.  
-Ha megad a – Force paramétert a bemeneti megerősítés nélküli törlődni fog.
+Egy Stream Analytics feladatból aszinkron módon töröl egy adott bemenetet Microsoft Azure.  
+Ha a – Force paramétert adja meg, a rendszer megerősítés nélkül törli a bemenetet.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EventStream
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EventStream
 ```
 
-A PowerShell-parancs eltávolítja a bemeneti EventStream StreamingJob feladatban.  
+Ez a PowerShell-parancs eltávolítja a bemeneti EventStream a feladathoz tartozó StreamingJob.  
 
 ### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzStreamAnalyticsJob
-Aszinkron módon törli egy adott Stream Analytics-feladatot a Microsoft Azure-ban.  
-Ha megad a – Force paraméterek megerősítés nélküli törli a feladatot.
+Egy adott Stream Analytics-feladatot aszinkron módon töröl Microsoft Azure.  
+Ha megadja a – Force paramétert, a rendszer megerősítés nélkül törli a feladatot.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
 ```
 
-Ez a PowerShell-parancs eltávolítja a feladat StreamingJob.  
+Ez a PowerShell-parancs eltávolítja a StreamingJob feladatot.  
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzStreamAnalyticsOutput
-Aszinkron módon törli egy adott kimeneti Stream Analytics-feladat, a Microsoft Azure-ban.  
-Ha megad a – Force paraméterek megerősítés nélküli törli a kimenetet.
+Aszinkron módon töröl egy adott kimenetet egy Stream Analytics feladatokból a Microsoft Azureban.  
+Ha a – Force paramétert adja meg, a rendszer megerősítés nélkül törli a kimenetet.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
 ```
 
-A PowerShell paranccsal eltávolítja a kimenet a kimenetet a feldolgozás StreamingJob.  
+Ez a PowerShell-parancs eltávolítja a kimeneti kimenetet a StreamingJob.  
 
-### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzStreamAnalyticsJob
-Aszinkron módon telepíti, és a egy Stream Analytics-feladat elindul a Microsoft Azure-ban.
+### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start – AzureStreamAnalyticsJob | Start – AzStreamAnalyticsJob
+Aszinkron módon helyez üzembe és indít el egy Stream Analytics feladatot a Microsoft Azureban.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Start-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
 ```
 
-Ez a PowerShell-parancs elindítja a feladatot, 2012. December 12., 12:12:12 beállítása egy egyéni kimeneti kezdési időponttal StreamingJob (UTC).
+Ez a PowerShell-parancs elindítja a feladatot a StreamingJob egy egyéni kimeneti kezdési időponttal, amely 2012, 12:12:12 UTC értékre van állítva.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
-Aszinkron módon történik a Microsoft Azure-ban futó Stream Analytics-feladat leáll, és felszabadítása erőforrásokhoz, volt használatban. A feladatdefiníció és azok metaadatait továbbra is elérhető marad az Azure Portalon és a felügyeleti API-k, az adott előfizetéshez tartozó, hogy a feladat szerkeszthető és újraindul. Nem kell fizetni a leállított állapotú feladat.
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Leállítás – AzStreamAnalyticsJob
+Aszinkron módon leállít egy Stream Analytics feladatot a Microsoft Azure-ben való futtatásból, és lefoglalja a használatban lévő erőforrásokat. A feladatdefiníció és a metaadatok a Azure Portal és a felügyeleti API-kon keresztül is elérhetők maradnak az előfizetésen belül, így a feladatok szerkeszthetők és újraindíthatók. Leállított állapotban lévő feladatokért nem számítunk fel díjat.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
 ```
 
-Ez a PowerShell-parancs leállítja a feladatot StreamingJob.  
+Ez a PowerShell-parancs leállítja a StreamingJob feladatot.  
 
-### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzStreamAnalyticsInput
-Ellenőrzi a Stream Analytics egy megadott bemeneti adatok csatlakozni.
+### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Teszt – AzureStreamAnalyticsInput | Teszt – AzStreamAnalyticsInput
+Ellenőrzi, hogy Stream Analytics tud-e csatlakozni egy megadott bemenethez.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EntryStream
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EntryStream
 ```
 
-A PowerShell-parancs a kapcsolat állapota a bemeneti EntryStream szereplő StreamingJob teszteli.  
+Ez a PowerShell-parancs a StreamingJob bemeneti EntryStream a kapcsolatok állapotát teszteli.  
 
-### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzStreamAnalyticsOutput
-A Stream Analytics képessége szeretne csatlakozni a megadott kimeneti teszteli.
+### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Teszt – AzureStreamAnalyticsOutput | Teszt – AzStreamAnalyticsOutput
+Ellenőrzi, hogy Stream Analytics tud-e csatlakozni a megadott kimenethez.
 
 **1. példa**
 
-Az Azure PowerShell 0.9.8-as verzióját használja:  
+Azure PowerShell 0.9.8:  
 
 ```powershell
 Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
 ```
 
-Az Azure PowerShell 1.0-hoz:  
+Azure PowerShell 1,0:  
 
 ```powershell
 Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
 ```
 
-A PowerShell parancsot tesztek StreamingJob a kimenetet a kimeneti kapcsolati állapotát.  
+Ez a PowerShell-parancs teszteli a kimeneti kimenet StreamingJob való állapotát.  
 
 ## <a name="get-support"></a>Támogatás kérése
-További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
-## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+## <a name="next-steps"></a>Következő lépések
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

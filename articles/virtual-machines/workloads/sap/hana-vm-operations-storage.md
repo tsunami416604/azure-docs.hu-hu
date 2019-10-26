@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750342"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934924"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -40,7 +40,7 @@ A különböző tárolási típusok minimális SAP HANA tanúsított feltételei
 
 - Azure prémium SSD – a/Hana/log-t az Azure [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)-mel kell gyorsítótárazni. A/Hana/Data-kötetet prémium SSD Azure írásgyorsító vagy Ultra Disk nélkül helyezhető el
 - Legalább a/Hana/log-kötethez tartozó Azure Ultra Disk. A/Hana/Data-kötet az Azure írásgyorsító nélküli prémium SSD helyezhető el, vagy a gyorsabb újraindítási idő (Ultra Disk) használatával
-- A/Hana/log és a/Hana/Data Azure NetApp Files-re épülő **NFS v 4.1** **-** kötetek
+- A/Hana/log és a/Hana/Data. Azure NetApp Files-re épülő **NFS v 4.1** **-** kötetek A/Hana/Shared mennyisége NFS v3 vagy NFS v 4.1 protokollt használhat. Az NFS v 4.1 protokoll a/Hana/Data és/Hana/log kötetek esetében kötelező.
 
 Egyes tárolási típusok kombinálhatók. Például lehetséges, hogy a/Hana/Data-t a Premium Storageba helyezi, és a/Hana/log a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Nem ajánlott azonban az NFS-kötetek (például a/Hana/Data) összekeverése, és a/Hana/log-hez tartozó más hitelesített tárolási típusok egyikének használata.
 
@@ -230,10 +230,10 @@ Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek ugyanazon a lemeze
 A Microsoft a M416xx_v2 virtuális gépek típusát még nem tette elérhetővé a nyilvánosság számára. A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket. Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>NFS-v 4.1 kötetek Azure NetApp Files
-A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a/Hana/Shared, a/Hana/Data és a/Hana/log kötetek esetében használhatók. Ezeknek a köteteknek a ANF-alapú NFS-megosztások használata a v 4.1 NFS protokoll használatát igényli. az NFS-protokoll v3-as verziójának használata nem támogatott a HANA-vel kapcsolatos kötetek használatához a ANF-megosztások létrehozásakor. 
+A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a/Hana/Shared, a/Hana/Data és a/Hana/log kötetek esetében használhatók. A ANF-alapú NFS-megosztások használata a/Hana/Data és a/Hana/log kötetek esetében a v 4.1 NFS protokoll használatát igényli. A/Hana/Data és a/Hana/log kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
 
 > [!IMPORTANT]
-> a Azure NetApp Fileson implementált NFS v3 protokoll nem támogatott a/Hana/Shared, a/Hana/Data és a/Hana/log esetében.
+> A Azure NetApp Fileson implementált NFS v3 protokoll nem támogatott a/Hana/Data és a/Hana/log. Az NFS 4,1 használata kötelező a/Hana/Data és a/Hana/log kötetek számára a funkcionális szempontból. Míg a/Hana/Shared-kötet esetében az NFS v3 vagy az NFS v 4.1 protokoll használható a funkcionális nézetből.
 
 ### <a name="important-considerations"></a>Fontos szempontok
 Az SAP NetWeaver és SAP HANA Azure NetApp Filesének megfontolása során vegye figyelembe a következő fontos szempontokat:
@@ -270,21 +270,21 @@ A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://
 
 Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmények teljesítéséhez, valamint a `/hana/shared` iránymutatásainak megfelelően az ajánlott méretek a következőképpen néznek ki:
 
-| Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek |
+| Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB |
-| /hana/data | 6,3 TiB | 3,2 TiB |
-| /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
+| /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | v3 vagy v 4.1 |
 
 A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files Ultra Storage-rétegek használatával a következőképpen néz ki:
 
-| Kötet | Méret<br /> Ultra Storage-rétegek |
+| Kötet | Méret<br /> Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3,2 TiB |
-| /hana/data/mnt00002 | 3,2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
+| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
+| /hana/shared | 2 TiB | v3 vagy v 4.1 |
 
 > [!NOTE]
 > Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP expresss infrastruktúra-szolgáltatók felé irányuló minimális követelményeknek. A valós ügyfelek központi telepítései és munkaterhelési forgatókönyvek esetében nem lehet elég. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  

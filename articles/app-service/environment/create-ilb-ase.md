@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dad2841d680702786cfc1f175a70390158444e02
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069506"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928629"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Belső Load Balancer létrehozása és használata App Service Environment 
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy ILB ASE környezetet. A 
 
 ## <a name="overview"></a>Áttekintés 
 
-Az ASE környezetet közvetlenül az internethez csatlakozó végponttal vagy a virtuális hálózatán belüli IP-címmel is telepítheti. Ahhoz, hogy egy IP-címet hozzárendeljen egy virtuális hálózati címhez, az ASE környezetet ILB terheléskiegyenlítővel kell üzembe helyezni. Ha a ILB-mel telepíti a bevezetést, meg kell adnia a beadási pont nevét. A Bea benyújtó alkalmazásának tartomány-utótagjában a központjának nevét használjuk.  A ILB &lt;&gt;-alapú adatszolgáltatáshoz tartozó tartományi utótag a következő: "appservicewebsites.net". Az ILB-előkészítőben létrehozott alkalmazások nem kerülnek be a nyilvános DNS-be. 
+Az ASE környezetet közvetlenül az internethez csatlakozó végponttal vagy a virtuális hálózatán belüli IP-címmel is telepítheti. Ahhoz, hogy egy IP-címet hozzárendeljen egy virtuális hálózati címhez, az ASE környezetet ILB terheléskiegyenlítővel kell üzembe helyezni. Ha a ILB-mel telepíti a bevezetést, meg kell adnia a beadási pont nevét. A Bea benyújtó alkalmazásának tartomány-utótagjában a központjának nevét használjuk.  A ILB-be&lt;i a tartomány utótagja&gt;. appserviceenvironment.net. Az ILB-előkészítőben létrehozott alkalmazások nem kerülnek be a nyilvános DNS-be. 
 
 A ILB beadásának korábbi verzióiban meg kell adnia egy tartományi utótagot és egy alapértelmezett tanúsítványt a HTTPS-kapcsolatokhoz. A tartomány utótagját a rendszer már nem gyűjti a ILB-ben, és egy alapértelmezett tanúsítványt is már nem gyűjt. Ha most létrehoz egy ILB-beadást, az alapértelmezett tanúsítványt a Microsoft látja el, és a böngésző megbízhatónak tekinti. Továbbra is beállíthatja az egyéni tartományneveket a beadásban lévő alkalmazásokban, és beállíthat tanúsítványokat az egyéni tartománynevek számára. 
 
@@ -80,7 +80,7 @@ Az ILB ASE létrehozása:
 
 Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**webes** > **webes alkalmazás**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** > **webes** > **webalkalmazás**lehetőséget.
 
 1. Adja meg az alkalmazás nevét.
 
@@ -102,36 +102,37 @@ Az ILB ASE támogatja a Functionst és a WebJobs-feladatokat is, de ahhoz, hogy 
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció 
 
-Külső virtuális IP-cím használata esetén az Azure kezeli a DNS-t. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. A ILB-előállítók által használt tartomány utótagja a kiegészítő csomag nevétől függ. A tartomány utótagja  *&lt;a appserviceenvironment.net&gt;neve.* A ILB IP-címe a portálon az **IP-címek**területen található. 
+Külső virtuális IP-cím használata esetén az Azure kezeli a DNS-t. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. A ILB-előállítók által használt tartomány utótagja a kiegészítő csomag nevétől függ. A tartomány utótagja *&lt;&gt;. appserviceenvironment.net*. A ILB IP-címe a portálon az **IP-címek**területen található. 
 
 A DNS konfigurálása:
 
-- hozzon létre egy zónát a benyújtó  *&lt;&gt;neve számára. appserviceenvironment.net*
-- hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat. 
-- hozzon létre egy zónát a központhoz tartozó  *&lt;név&gt;. appserviceenvironment.net* neve: SCM
-- hozzon létre egy rekordot az SCM-zónában, amely a ILB IP-címére mutat.
+- zóna létrehozása *&lt;&gt;. appserviceenvironment.net*
+- hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
+- hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
+- hozzon létre egy zónát&lt;a (z *)&gt;. appserviceenvironment.net* nevű
+- hozzon létre egy olyan rekordot az SCM-zónában, amely * a ILB IP-címére mutat.
 
 ## <a name="publish-with-an-ilb-ase"></a>Közzététel ILB ASE környezetben
 
-Minden létrehozott alkalmazásnak két végpontja van. Egy ILB *&lt;&gt;-ben az alkalmazás neve szerepel.&lt; ILB&gt;* és *az alkalmazás&lt;neve&lt; .SCM&gt;. ILB&gt;* . 
+Minden létrehozott alkalmazásnak két végpontja van. Egy ILB-ben *&lt;alkalmazás neve&gt;.&lt;ILB-tartomány&gt;* és *&lt;alkalmazás neve&gt;. SCM.&lt;ILB-alapú tartomány&gt;* . 
 
 Az SCM helynév a Kudu konzolhoz irányítja, az Azure Portal **Speciális portál** részére. A Kudu konzol a környezeti változók megtekintését, a lemez vizsgálatát, a konzol használatát és még sok más funkciót kínál. További információ: kudu- [konzol a Azure app Servicehoz][Kudu]. 
 
 A GitHubhoz és az Azure DevOpshoz hasonló internetes alapú CI-rendszerek akkor is működnek az ILB ASE környezettel, ha a buildügynök elérhető az internetről, és ugyanazon a hálózaton található, mint az ILB ASE. Tehát az Azure DevOps esetében, ha a buildügynök ugyanazon a VNET-en lett létrehozva, mint az ILB ASE (lehet más alhálózat), képes lesz lekérni a kódot az Azure DevOps-gitről és telepíteni az ILB ASE-re. Ha nem szeretne létrehozni saját buildügynököt, egy lekérési modellt használó CI-rendszert kell használnia helyette, például a Dropboxot.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha van egy ILB, amely a (z  *&lt;&gt;) "appserviceenvironment.net*" nevű tartománynév-utótagot és egy *mytest*nevű alkalmazást használ, használja a *mytest.&lt; Bevezetési név&gt;. appserviceenvironment.net* FTP-hez és *mytest.SCM.contoso.net* webes telepítéshez.
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha van olyan ILB-szolgáltatója, amelynek tartomány-utótagja&lt;a (z *)&gt;. appserviceenvironment.net*és egy *mytest*nevű alkalmazás, használja a mytest.&lt;a ( *z)&gt;. appserviceenvironment.net. mytest.scm.contoso.net* a webes telepítéshez.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>ILB-beadás konfigurálása WAF-eszközzel ##
 
 A webalkalmazási tűzfal (WAF) és a ILB-elősegítő eszközök összevonásával csak az interneten található alkalmazásokat teheti elérhetővé, és a többiet csak a VNet érheti el. Ez lehetővé teszi, hogy többek között biztonságos többrétegű alkalmazásokat építsen ki.
 
-Ha többet szeretne megtudni arról, hogyan konfigurálhatja a ILB a WAF eszközzel, tekintse meg a webalkalmazási [tűzfal konfigurálása a app Service][ASEWAF]-környezettel című témakört. Ez a cikk leírja, hogyan használhatja együtt a Barracuda virtuális berendezést az ASE környezettel. Másik lehetőségként az Azure Application Gateway is használható. Az Application Gateway az alapvető OWASP-szabályokat használja a mögötte elhelyezett alkalmazások biztonságossá tételére. Az Application Gatewayról további információt [Az Azure webalkalmazási tűzfal bemutatása][AppGW]című témakörben talál.
+Ha többet szeretne megtudni arról, hogyan konfigurálhatja a ILB a WAF eszközzel, tekintse meg a [webalkalmazási tűzfal konfigurálása a app Service-környezettel][ASEWAF]című témakört. Ez a cikk leírja, hogyan használhatja együtt a Barracuda virtuális berendezést az ASE környezettel. Másik lehetőségként az Azure Application Gateway is használható. Az Application Gateway az alapvető OWASP-szabályokat használja a mögötte elhelyezett alkalmazások biztonságossá tételére. Az Application Gatewayról további információt [Az Azure webalkalmazási tűzfal bemutatása][AppGW]című témakörben talál.
 
 ## <a name="ilb-ases-made-before-may-2019"></a>ILB ASE a május 2019. előtt
 
 Az 2019. május előtt elkészített ILB-ASE a tartomány utótagjának a központilag történő létrehozása során történő beállításához szükséges. Emellett az adott tartományi utótagon alapuló alapértelmezett tanúsítvány feltöltésére is szükség van. Emellett egy régebbi ILB-benyújtó használatával nem végezheti el az egyszeri bejelentkezést a kudu-konzolon a ILB-elősegítő alkalmazásokkal. Ha a DNS-t egy régebbi ILB-alapú központhoz konfigurálja, akkor egy olyan rekordot kell beállítania egy olyan zónában, amely megfelel a tartomány utótagjának. 
 
-## <a name="get-started"></a>Bevezetés ##
+## <a name="get-started"></a>Az első lépések ##
 
 * A ASE használatának megkezdéséhez tekintse [meg a app Service környezetek bemutatása][Intro]című témakört. 
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264375"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931274"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával
 
@@ -38,7 +38,7 @@ Először is szüksége lesz egy Azure Storage-blobban található betanítási 
 
 Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, a következő cURL-parancs futtatásával hívja meg a **Train** API-t. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le a `<Endpoint>` értéket arra a végpontra, amelyet az űrlap-felismerő előfizetési kulcsával kapott. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le a `<Endpoint>`t arra a végpontra, amelyet az űrlap-felismerő előfizetésével kapott.
 1. Cserélje le a `<subscription key>` értéket az előző lépésből másolt előfizetési kulccsal.
 1. Cserélje le a `<SAS URL>` értéket az Azure Blob Storage-tároló közös hozzáférés-aláírási (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
@@ -46,7 +46,7 @@ Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani eg
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-@No__t-0 választ fog kapni a következő JSON-kimenettel:
+A következő JSON-kimenettel `200 (Success)` választ kap:
 
 ```json
 {
@@ -93,7 +93,7 @@ Jegyezze fel a `"modelId"` értéket. Ehhez a következő lépések szükségese
 
 Ezután elemezni fog egy dokumentumot, és Kinyeri a kulcs-érték párokat és táblákat. Hívja meg a **modell-elemzés API-** t az alábbi curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le a `<Endpoint>` értéket az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le a `<Endpoint>`t az űrlap-felismerő előfizetésből beszerzett végpontra.
 1. Cserélje le a `<modelID>` értéket az előző szakaszban kapott modell-AZONOSÍTÓra.
 1. Cserélje le a `<path to your form>` értéket az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
 1. Cserélje le a `<file type>` értéket a fájl típusára. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.

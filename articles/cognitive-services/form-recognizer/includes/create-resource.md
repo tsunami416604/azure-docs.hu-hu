@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: c2d3119283b5b75eeca6b0e0737f62eee00e81c6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 14740e780f6143f19f843891c16b25df761d0b4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72237370"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931253"
 ---
 Ha hozzáférést kap a használati űrlap-felismerőhöz, a rendszer egy üdvözlő e-mailt fog kapni, amely több hivatkozást és erőforrást is tartalmaz. Az üzenetben található "Azure Portal" hivatkozásra kattintva nyissa meg a Azure Portal, és hozzon létre egy űrlap-felismerő erőforrást. A **Létrehozás** ablaktáblán adja meg a következő adatokat:
 
@@ -25,4 +25,4 @@ Ha hozzáférést kap a használati űrlap-felismerőhöz, a rendszer egy üdvö
 > [!IMPORTANT]
 > Általában amikor a Azure Portal egy kognitív szolgáltatásbeli erőforrást hoz létre, lehetősége van egy több szolgáltatásból álló előfizetési kulcs (több kognitív szolgáltatásban használt) vagy egy egyszolgáltatásos előfizetési kulcs (csak egy adott kognitív szolgáltatás használatával) létrehozására. Mivel azonban az űrlap-felismerő egy előzetes kiadás, a többszolgáltatásos előfizetés nem tartalmazza, és nem hozhatja létre az egyszolgáltatásos előfizetést, kivéve, ha az üdvözlő e-mailben megadott hivatkozást használja.
 
-Ha az űrlap-felismerő erőforrás üzembe helyezése befejeződött, keresse meg és válassza ki a portál **minden erőforrás** listájából. Ezután válassza a **kulcsok** fület az előfizetési kulcsok megtekintéséhez. Bármelyik kulcs megadja az alkalmazásnak az erőforráshoz való hozzáférést. Másolja az 1. **kulcs**értékét.
+Ha az űrlap-felismerő erőforrás üzembe helyezése befejeződött, keresse meg és válassza ki a portál **minden erőforrás** listájából. Ezután válassza a **gyors üzembe helyezés** lapot az előfizetési adatai megtekintéséhez. Mentse a **Key1** és a **végpont** értékeit egy ideiglenes helyre. Ezeket a következő lépésekben fogja használni.

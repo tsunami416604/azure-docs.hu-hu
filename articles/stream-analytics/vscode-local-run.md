@@ -1,17 +1,17 @@
 ---
-title: Azure Stream Analytics lekérdezések tesztelése helyileg a Visual Studio Code-ban (előzetes verzió)
+title: Azure Stream Analytics lekérdezések tesztelése a Visual Studio Code-ban
 description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg tesztelni a Visual Studio Code-hoz készült Azure Stream Analytics eszközökkel.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 2791fb923f193815d718dbd2269cbcd11583a4ea
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673024"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924974"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>A Visual Studio Code-ban helyileg tesztelheti Stream Analytics lekérdezéseket
 
@@ -27,7 +27,7 @@ Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-vs-code.md) h
 
 A Visual Studio Code-hoz készült Azure Stream Analytics-bővítmény segítségével helyileg tesztelheti a Stream Analytics-feladatokat a mintaadatok használatával.
 
-1. Miután létrehozta a Stream Analytics feladatot, a Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt. Ezután írja be és válassza a **ASA: Adja hozzá a bemenet @ no__t-0 értéket.
+1. Miután létrehozta a Stream Analytics feladatot, a Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt. Ezután írja be és válassza az **ASA: bemenet hozzáadása**elemet.
 
     ![ASA-bemenet hozzáadása a Visual Studio Code-ban](./media/vscode-local-run/add-input.png)
 
@@ -51,7 +51,7 @@ A Visual Studio Code-hoz készült Azure Stream Analytics-bővítmény segítsé
 
     ![A lekérdezési szerkesztőben válassza a helyi Futtatás lehetőséget.](./media/vscode-local-run/run-locally.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)](quick-create-vs-code.md)
 

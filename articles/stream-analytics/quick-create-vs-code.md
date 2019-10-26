@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)
+title: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el az első lépéseket egy Stream Analytics feladatok létrehozásával, a bemenetek, a kimenetek konfigurálásával és a lekérdezés a Visual Studio Code használatával történő definiálásával.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 3301be3a067982cb90e663fe3782319eb0b90ba0
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 35e2711bbb3cd6dc0662146a566014dd65d879bc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673132"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935085"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Gyors útmutató: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathat egy Stream Analytics feladatot a Visual Studio Code-hoz készült Azure Stream Analytics bővítménnyel. A példában szereplő művelet beolvassa az adatfolyam-adatokat egy IoT Hub eszközről. Olyan feladatot határozhat meg, amely több mint 27 °-ban kiszámítja az átlagos hőmérsékletet, és az eredményül kapott kimeneti eseményeket egy új fájlba írja a blob Storage-ban.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 * Telepítse a [Visual Studio Code](https://code.visualstudio.com/)-ot.
 
@@ -46,13 +46,13 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathat egy Stream 
 
 > [!NOTE]
 > Azure Stream Analytics eszközök a következő alkalommal automatikusan bejelentkeznek, ha nem kijelentkezik. Ha a fiókja kétfaktoros hitelesítést használ, javasoljuk, hogy PIN-kód helyett telefonos hitelesítést használjon.
-> Ha problémák merülnek fel az erőforrások listázása során, a kijelentkezés és az újbóli bejelentkezés általában segít. A kijelentkezéshez írja be a következő parancsot: `Azure: Sign Out`.
+> Ha problémák merülnek fel az erőforrások listázása során, a kijelentkezés és az újbóli bejelentkezés általában segít. A kijelentkezéshez írja be a `Azure: Sign Out`parancsot.
 
 ## <a name="prepare-the-input-data"></a>A bemeneti adatok előkészítése
 
 A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az adatokat, amelyeket később a feladatként megadott bemenetként kell konfigurálni. A feladathoz szükséges bemeneti adatok előkészítéséhez végezze el a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **IoT Hub** elemet.
 
@@ -60,14 +60,14 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
    
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
-   |Subscription  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
-   |Resource group   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. |
-   |Régió  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a IoT Hub üzemeltetheti. Használja a felhasználókhoz legközelebb eső helyet. |
-   |Iot Hub-példány neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
+   |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
+   |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** lehetőséget, és adjon hozzá egy új erőforráscsoport-nevet a fiókhoz. |
+   |Region (Régió)  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a IoT Hub üzemeltetheti. Használja a felhasználókhoz legközelebb eső helyet. |
+   |IoT Hub neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
 
    ![IoT Hub létrehozása](./media/quick-create-vs-code/create-iot-hub.png)
 
-4. Válassza **a Next (tovább) lehetőséget: A méret és a skála beállítása @ no__t-0.
+4. Válassza **a Next (tovább) lehetőséget: a méret és a skála beállítása**.
 
 5. Válasszon **tarifacsomag és méretet**. Ebben a rövid útmutatóban válassza az **F1 – ingyenes** szintet, ha az előfizetése továbbra is elérhető. Ha az ingyenes szint nem érhető el, válassza ki az elérhető legalacsonyabb szintet. További információ: [IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -101,7 +101,7 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
 
 ## <a name="create-a-stream-analytics-project"></a>Stream Analytics-projekt létrehozása
 
-1. A Visual Studio Code-ban nyomja le a **CTRL + SHIFT + P** billentyűkombinációt a parancs paletta megnyitásához. Ezután írja be az **ASA** értéket, és válassza a **ASA: Hozzon létre egy új projektet @ no__t-0.
+1. A Visual Studio Code-ban nyomja le a **CTRL + SHIFT + P** billentyűkombinációt a parancs paletta megnyitásához. Ezután írja be az **ASA** értéket, és válassza az **ASA: új projekt létrehozása**lehetőséget.
 
    ![Új projekt létrehozása](./media/quick-create-vs-code/create-new-project.png)
 
@@ -139,9 +139,9 @@ További részletekért kövesse a [tesztelés a mintaadatok](vscode-local-run.m
 
  ![Mintaadatok tesztelése a VS Code-ban](./media/quick-create-vs-code/vscode-localrun.gif)
 
-## <a name="define-an-input"></a>Egy bemeneti definiálása
+## <a name="define-an-input"></a>Bemenet megadása
 
-1. Válassza a **CTRL + SHIFT + P** billentyűkombinációt a parancssor megnyitásához, majd írja be a **ASA: Adja hozzá a bemenet @ no__t-0 értéket.
+1. Válassza a **CTRL + SHIFT + P** billentyűkombinációt a Command paletta megnyitásához, majd írja be az **ASA: bemenet hozzáadása**elemet.
 
    ![Stream Analytics bemenet hozzáadása a VS Code-ban](./media/quick-create-vs-code/add-input.png)
 
@@ -159,17 +159,17 @@ További részletekért kövesse a [tesztelés a mintaadatok](vscode-local-run.m
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
-   |Name (Név)|Input (Bemenet)|Adja meg a feladat bemenetének azonosító nevét.|
+   |Név|Input (Bemenet)|Adja meg a feladat bemenetének azonosító nevét.|
    |IotHubNamespace|MyASAIoTHub|Válassza ki vagy adja meg a IoT Hub nevét. A rendszer automatikusan észleli a IoT Hub neveket, ha azok ugyanabban az előfizetésben jönnek létre.|
-   |SharedAccessPolicyName|iothubowner| |
+   |sharedAccessPolicyName|iothubowner| |
 
    ![A bemenet konfigurálása a Visual Studio Code-ban](./media/quick-create-vs-code/configure-input.png)
 
 
 
-## <a name="define-an-output"></a>Kimenet definiálása
+## <a name="define-an-output"></a>Kimenet meghatározása
 
-1. A parancs paletta megnyitásához kattintson a **CTRL + SHIFT + P** billentyűkombinációra. Ezután írja be a **ASA: Adja hozzá a kimenetet @ no__t-0.
+1. A parancs paletta megnyitásához kattintson a **CTRL + SHIFT + P** billentyűkombinációra. Ezután írja be az **ASA: kimenet hozzáadása**értéket.
 
    ![Stream Analytics kimenet hozzáadása a VS Code-ban](./media/quick-create-vs-code/add-output.png)
 
@@ -183,10 +183,10 @@ További részletekért kövesse a [tesztelés a mintaadatok](vscode-local-run.m
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
-   |Name (Név)|Output| Adjon meg egy nevet a feladatok kimenetének azonosításához.|
+   |Név|Kimenet| Adjon meg egy nevet a feladatok kimenetének azonosításához.|
    |Tárfiók|asaquickstartstorage|Válassza ki vagy adja meg a Storage-fiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.|
    |Tároló|container1|Válassza ki a tárfiókjában létrehozott meglévő tárolót.|
-   |Path Pattern (Elérésiút-minta)|kimenet|Adja meg a tárolón belül létrehozni kívánt elérési út nevét.|
+   |Path Pattern (Elérésiút-minta)|output|Adja meg a tárolón belül létrehozni kívánt elérési út nevét.|
 
  ![Kimenet konfigurálása a Visual Studio Code-ban](./media/quick-create-vs-code/configure-output.png)
 
@@ -253,17 +253,17 @@ A szkriptek fordítását kétféleképpen lehet elindítani:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a streamelési feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
+Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében válassza az **Erőforráscsoportok** menüpontot, majd válassza ki a létrehozott erőforrás nevét.  
 
 2. Az erőforráscsoport lapján válassza a **Törlés** elemet, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics feladatot telepített a Visual Studio Code használatával. Stream Analytics feladatokat a [Azure Portal](stream-analytics-quick-create-portal.md), a [PowerShell](stream-analytics-quick-create-powershell.md)és a Visual Studio (stream-Analytics-Quick-Create-vs.MD) használatával is üzembe helyezhet. 
 
 A Visual studióhoz készült Azure Stream Analytics Tools megismeréséhez folytassa a következő cikkel:
 
 > [!div class="nextstepaction"]
-> [A Visual Studio használata az Azure Stream Analytics-feladatok megtekintése](stream-analytics-vs-tools.md)
+> [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

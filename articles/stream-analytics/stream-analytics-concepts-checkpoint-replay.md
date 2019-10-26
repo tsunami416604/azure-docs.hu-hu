@@ -1,6 +1,6 @@
 ---
-title: Ellenőrzőpont és visszajátszás feladat-helyreállítással kapcsolatos fogalmakról, az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk ismerteti az ellenőrzőpont és visszajátszás feladat helyreállítással kapcsolatos fogalmakról az Azure Stream Analytics szolgáltatásban.
+title: Ellenőrzőpontok és újrajátszás helyreállítási fogalmak a Azure Stream Analytics
+description: Ez a cikk az ellenőrzőpontok és a Replay feladatok helyreállítási fogalmait ismerteti Azure Stream Analyticsban.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,67 +9,67 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26d8d8248c9dcc57edaaa4a90f87071ee61a70ce
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61361889"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935046"
 ---
-# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok ellenőrzőpont és visszajátszás fogalmak
-Ez a cikk a belső ellenőrzőpont és visszajátszás kapcsolatos fogalmakat ismerteti az Azure Stream Analytics és a hatás azokat, rendelkezik a helyreállítási feladat. Minden alkalommal, amikor egy Stream Analytics-feladat fut, állam tárolt adatok belső használatra. Adott állapot adatait rendszeresen menteni a egy ellenőrzőpontot. Bizonyos esetekben az ellenőrzőpont adatok feladat helyreállítási feladat hiba vagy frissítés esetén. Más esetekben az ellenőrzőpont nem használható helyreállításhoz, és a egy újrajátszás szükség.
+# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Ellenőrzőpont-és visszajátszás-fogalmak a Azure Stream Analytics-feladatokban
+Ez a cikk ismerteti a Azure Stream Analytics belső ellenőrzőpont-és újralejátszási fogalmait, valamint a feladatokra gyakorolt hatást. Minden alkalommal, amikor egy Stream Analytics feladatot futtat, az állapotadatok belsőleg maradnak. Az állapotadatok rendszeres időközönként kerülnek mentésre. Bizonyos esetekben az ellenőrzőpont-információk a feladatok helyreállítására szolgálnak, ha a feladattal kapcsolatos hiba vagy frissítés történik. Más esetekben az ellenőrzőpont nem használható a helyreállításhoz, és szükség van egy újrajátszásra.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
-Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezen operátorok mindegyike állapotadatokat megőrzi, a feladat futtatásakor. Ezen lekérdezési elemek maximális ablak mérete hét nap. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezési logika az időbeli elemekben
+Azure Stream Analytics feladatok egyik egyedi funkciója az állapot-nyilvántartó feldolgozás végrehajtása, például ablakos összesítések, időbeli illesztések és időbeli analitikai függvények. Ezek az operátorok a feladatok futtatásakor megőrzik az állapotadatok állapotát. A lekérdezési elemek maximális ablakméret hét nap. 
 
-A historikus időszak fogalma a több Stream Analytics lekérdezési elemeket jelenik meg:
-1. Aggregálást (csoport által az Átfedésmentes, segítségével tehetjük meg, és késleltetett windows)
+Az időszakos ablak fogalma számos Stream Analytics lekérdezési elemben jelenik meg:
+1. Ablakos összesítések (felhúzási, átugró és csúszó ablakok CSOPORTOSÍTÁSa)
 
-2. A historikus illesztések (DATEDIFF csatlakoztatás)
+2. Időbeli illesztések (csatlakozás DATEDIFF)
 
-3. A historikus elemzési funkciók (ISFIRST, utolsó és a LIMIT DURATION LAG)
+3. Időbeli elemzési függvények (ISFIRST, LAST és LAG a korlát IDŐTARTAMával)
 
 
-## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Tárolócsomópont-hiba, beleértve az operációs rendszer frissítése feladat helyreállítása
-Minden alkalommal, amikor egy Stream Analytics-feladat fut, belső, horizontálisan munka során több munkavégző csomóponton. Egyes feldolgozó csomópontok állapota alkulcsaihoz néhány percenként, ami segít, hogy a rendszer, ha hiba történik.
+## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Sikertelen volt a feladatok helyreállítása a csomópont meghibásodása esetén, beleértve az operációs rendszer frissítését
+Minden alkalommal, amikor egy Stream Analytics-feladatot futtat, belsőleg, hogy több munkavégző csomóponton végezze a munkát. Az egyes munkavégző csomópontok állapota néhány percenként ellenőrzőpontra kerül, ami segít a rendszer helyreállításában, ha hiba történik.
 
-Időnként adott munkavégző csomópont meghiúsulhat, vagy az operációs rendszer frissítése fordulhat elő, a feldolgozó csomóponton. Automatikus helyreállítás, a Stream Analytics egy új kifogástalan állapotú csomópontra beszerzi, és a korábbi munkavégző csomópont állapot a legújabb elérhető ellenőrzőpont visszaállítása megtörtént. Folytathatja a munkát, ismétlés kisebb mennyiségű szükség, az állapot visszaállítása az idő, amikor az ellenőrzőpont készül. A visszaállítási gap rendszerint csak néhány percig. Ha elegendő folyamatos átviteli egységek ki van jelölve, a feladat, a visszajátszás gyorsan kell elvégezni. 
+Időnként előfordulhat, hogy egy adott feldolgozó csomópont meghibásodik, vagy az adott munkavégző csomópont operációs rendszerének frissítése is előfordulhat. Az automatikus helyreállításhoz Stream Analytics új, kifogástalan állapotú csomópontot szerezhet be, és a rendszer visszaállítja az előző feldolgozói csomópont állapotát a legújabb elérhető ellenőrzőponton. A munka folytatásához kis mennyiségű újrajátszás szükséges ahhoz, hogy az állapotot az ellenőrzőpont elvégzésének időpontjában vissza lehessen állítani. A visszaállítási hézag általában néhány percet vesz igénybe. Ha a feladatokhoz elegendő folyamatos átviteli egység van kiválasztva, a visszajátszás gyorsan elvégezhető. 
 
-Egy teljes körűen párhuzamos lekérdezés ideig tart a munkavégző csomópont hibája után olvasásra arányos:
+Egy teljes mértékben párhuzamos lekérdezésben a munkavégző csomópont meghibásodása utáni felzárkózás ideje a következőhöz arányos:
 
-[a bemeneti események száma] x [gap hossza] / [a partíciók feldolgozása száma]
+[a bemeneti esemény sebessége] x [a térköz hossza]/[feldolgozási partíciók száma]
 
-Ha minden eddiginél megfigyelte jelentős feldolgozási késedelem miatt Csomóponthiba, és az operációs rendszer frissítése, a lekérdezés teljes mértékben teszi párhuzamos és méretezhető, több Streamelési egység lefoglalása a feladat. További információkért lásd: [méretezése az Azure Stream Analytics-feladat, növelheti a teljesítményt](stream-analytics-scale-jobs.md).
+Ha a csomópont meghibásodása és az operációs rendszer frissítése miatt már jelentős feldolgozási késleltetés figyelhető meg, vegye fontolóra a lekérdezés teljes párhuzamos kiosztását, és méretezze át a feladatot több folyamatos átviteli egység foglalásához. További információ: [Azure stream Analytics-feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md).
 
-Aktuális Stream Analytics nem egy jelentés megjelenítése, ha az ilyen helyreállítási folyamat lefolyása.
+A jelenlegi Stream Analytics nem jeleníti meg a jelentést, ha az ilyen típusú helyreállítási folyamat zajlik.
 
-## <a name="job-recovery-from-a-service-upgrade"></a>Feladat helyreállítás egy szolgáltatás frissítése 
-A Microsoft időnként a bináris fájlokat, amelyek a Stream Analytics-feladatok futnak az Azure-szolgáltatás frissíti. A következő esetekben felhasználók futó feladatok frissítése újabb verzióra, és a feladat automatikusan újraindul. 
+## <a name="job-recovery-from-a-service-upgrade"></a>A feladatok helyreállítása a szolgáltatás verziófrissítése után 
+A Microsoft alkalmanként frissíti a Stream Analytics feladatokat futtató bináris fájlokat az Azure szolgáltatásban. Ezen időpontokban a felhasználók futó feladatok újabb verzióra frissülnek, és a feladat automatikusan újraindul. 
 
-A helyreállítási ellenőrzőpont formátum jelenleg nem őrződnek meg frissítései között. Ennek eredményeképpen a streamelési lekérdezés állapotát vissza kell állítani visszajátszását módszer használatával. Annak érdekében, hogy a Stream Analytics-feladatok visszajátszani pontosan ugyanaz előtt fontos, hogy az adatforrás esetén a megtartási házirendben beállításban legalább a bemeneti adatok az ablak méreteit a lekérdezést. Ezt elmulasztja, akkor eredményezhet helytelen vagy részleges eredményeket szolgáltatás a frissítés során, mivel a forrásadatok nem tarthatók elegendő vissza a teljes méretének tartalmazza.
+Jelenleg a helyreállítási ellenőrzőpont formátuma nem marad meg a frissítések között. Ennek eredményeképpen az adatfolyam-lekérdezés állapotát teljes egészében vissza kell állítani a Replay Technique használatával. Ha engedélyezni szeretné, hogy Stream Analytics feladatok a korábban megadott adatokat újra visszajátszják, fontos, hogy a forrásadatok adatmegőrzési szabályát legalább a lekérdezésben szereplő ablakméret értékre állítsa. Ha ezt elmulasztja, a szolgáltatás frissítése során helytelen vagy részleges eredményeket eredményezhet, mivel előfordulhat, hogy a forrásadatok nem maradnak meg elég messzire, hogy belefoglalják a teljes ablak méretét.
 
-Általában a visszajátszás szükséges az események átlagos száma szorozva az ablak méretével arányos. Például, 1000 esemény / másodperc, a bemeneti sebesség feladat egy ablak mérete nagyobb, mint egy óra tekinthető nagy visszajátszását mérete. Legfeljebb egy órányi adat újra feldolgozott, így teljes eredményezhet, és megfelelő eredményeket, ami miatt késik a output (kimenet nincs) inicializálása az állapot néhány hosszabb időre lehet szükség lehet. Például a lekérdezések nem windows- vagy egyéb az ideiglenes operátorok `JOIN` vagy `LAG`, nulla visszajátszását lenne.
+Általánosságban elmondható, hogy az újraindításhoz szükséges mennyiség arányos az ablak méretével, szorozva az esemény átlagos értékével. Példaként egy olyan feladathoz, amely másodpercenként 1000 eseményt tartalmaz, az egy óránál hosszabb ablak mérete nagy újrajátszás méretének minősül. Előfordulhat, hogy akár egy órányi adat újrafeldolgozására is szükség lehet az állapot inicializálásához, hogy teljes és helyes eredményeket lehessen létrehozni, ami késleltetett kimenetet eredményezhet (nincs kimenet) egy hosszabb ideig. A Windows vagy más időbeli operátorok, például a `JOIN` vagy a `LAG`nélküli lekérdezések nulla ismétléssel járnak.
 
-## <a name="estimate-replay-catch-up-time"></a>Ismétlés utólagos idő becslése
-Megbecsülheti egy szolgáltatás frissítése miatt a késés hossza, kövesse ezt a módszert:
+## <a name="estimate-replay-catch-up-time"></a>Visszajátszási Felskálázási idő becslése
+A szolgáltatás verziófrissítése miatti késés hosszának becsléséhez kövesse ezt a technikát:
 
-1. Töltse be a bemeneti Event Hub elegendő adatokkal, hogy biztosítsák a legnagyobb ablakméret várt esemény mellett a lekérdezésben. Az események időbélyeg úgy kell megközelíti a valós idő, hogy bizonyos idő, egész, hogy a csatorna élő bemeneti. Például ha a lekérdezés egy 3 napos időszak, események küldése eseményközpontba három nap, és továbbra is küldje az eseményeket. 
+1. Töltse be a bemeneti esemény központját, és adjon meg elegendő adatot a lekérdezés legnagyobb méretének, a várt esemény díjszabása alapján. Az események időbélyegének közel kell lennie a fal órájához az adott időszak alatt, ahogy az élő bemeneti adatcsatorna. Ha például 3 napos ablaka van a lekérdezésben, az eseményeket három napig küldje el az Event hub számára, és folytassa az események küldését. 
 
-2. A feladat használatának megkezdéséhez **most** a kezdési idő szerint. 
+2. Indítsa el a feladatot **most** a kezdési időpont használatával. 
 
-3. A kezdési időpont, amikor jön létre az első kimeneti között eltelt idő mérjük. Az idő hozzávetőleges az mennyi késleltetési a feladat járna szolgáltatás frissítése során.
+3. A kezdési időpont és az első kimenet létrehozása közötti idő mérése. Az idő durva, hogy a szolgáltatás frissítése során mennyi késleltetéssel jár a feladatok.
 
-4. Ha a késleltetés túl hosszú, próbálja meg a feladat particionálja, és növelje az SUS-t, így a terhelés van terjednek több csomópontot. Azt is megteheti érdemes csökkenteni az ablak méretek a lekérdezésben, és hajtsa végre további összesítés vagy más állapotalapú, a kimenet a (például Azure SQL database-t használó) az alsóbb rétegbeli fogadó a Stream Analytics-feladat által előállított feldolgozását.
+4. Ha a késés túl hosszú, próbálja meg particionálni a feladatot, és növelje a SUs számát, így a terhelést több csomópontra is kiterjesztheti. Azt is megteheti, hogy csökkenti a lekérdezésben szereplő ablakméret méretét, és további összesítést vagy más állapot-nyilvántartó feldolgozást hajt végre az alsóbb rétegbeli fogadó Stream Analytics feladata által létrehozott kimeneten (például az Azure SQL Database használatával).
 
-Általános szolgáltatás stabilitásának szempont a működés szempontjából kritikus feladatok a frissítés során érdemes lehet az ismétlődő feladatok futtatása az Azure párosított régiók. További információkért lásd: [garancia Stream Analytics-feladat megbízhatóság szolgáltatás frissítései során](stream-analytics-job-reliability.md).
+A kritikus fontosságú feladatok frissítése során felmerülő általános szolgáltatási stabilitás érdekében érdemes lehet ismétlődő feladatokat futtatni a párosított Azure-régiókban. További információ: a [szolgáltatás frissítéseinek stream Analytics a feladatok megbízhatóságának garantálása](stream-analytics-job-reliability.md).
 
-## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>A helyreállítási feladat egy felhasználó által kezdeményezett leállítása és indítása
-A lekérdezés szintaxisa a folyamatos átviteli feladatok szerkesztheti, vagy módosíthatja a bemenetet és kimenetet, hajtsa végre a módosításokat, és frissítse a feladat tervezési le kell állítani a feladatnak szüksége van. Ilyen esetekben amikor a felhasználó a streamelési feladat leállítása, és ismét elindítja a helyreállítási forgatókönyvben hasonlít a szolgáltatás frissítése. 
+## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>A feladatok helyreállítása a felhasználó által kezdeményezett leállítás és indítás után
+A lekérdezési szintaxis egy folyamatos átviteli feladaton való szerkesztéséhez, illetve a bemenetek és kimenetek módosításához a feladatot le kell állítani a módosítások végrehajtásához és a feladatok kialakításának frissítéséhez. Ilyen esetekben, amikor egy felhasználó leállítja a folyamatos átviteli feladatot, és újra elindítja, a helyreállítási forgatókönyv hasonló a szolgáltatás verziófrissítéséhez. 
 
-Ellenőrzőpont-adatok nem használható a feladat felhasználó által kezdeményezett újraindítás. Kimenet késleltetése becsléséhez ilyen újraindítás során, használja ugyanazt az eljárást az előző szakaszban leírtak szerint, és hasonló a kockázatcsökkentés alkalmazni, ha a késleltetés túl hosszú.
+Ellenőrzőpont-adatok nem használhatók a felhasználó által kezdeményezett feladatok újraindításához. Az újraindításkor a kimenet késleltetésének megbecsléséhez használja ugyanazt az eljárást, mint az előző szakaszban leírtak szerint, és alkalmazzon hasonló mérséklést, ha a késés túl hosszú.
 
-## <a name="next-steps"></a>További lépések
-A megbízhatóság és méretezhetőség további információkért tanulmányozza a következő cikkeket:
-- [Oktatóanyag: Állítsa be a riasztásokat az Azure Stream Analytics-feladatok](stream-analytics-set-up-alerts.md)
-- [Azure Stream Analytics-feladat, növelheti a teljesítményt méretezése](stream-analytics-scale-jobs.md)
-- [Garantáljuk a Stream Analytics-feladatok megbízhatósága szolgáltatás frissítései során](stream-analytics-job-reliability.md)
+## <a name="next-steps"></a>Következő lépések
+A megbízhatósággal és a méretezhetőséggel kapcsolatos további információkért tekintse meg a következő cikkeket:
+- [Oktatóanyag: riasztások beállítása Azure Stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md)
+- [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)
+- [A szolgáltatás frissítéseinek Stream Analytics a feladatok megbízhatóságának garantálása](stream-analytics-job-reliability.md)

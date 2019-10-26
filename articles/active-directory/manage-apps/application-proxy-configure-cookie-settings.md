@@ -1,6 +1,6 @@
 ---
-title: Application Proxy cookie beállításai – Azure Active Directory |} A Microsoft Docs
-description: Az Azure Active Directory (Azure AD) rendelkezik hozzáférési és munkamenet-cookie-k elérése a helyszíni proxyn keresztül történő alkalmazás. Ebből a cikkből látni fogja, hogyan használhatja, és adja meg a cookie-beállításokat.
+title: Alkalmazásproxy cookie-beállításai – Azure Active Directory | Microsoft Docs
+description: Azure Active Directory (Azure AD) hozzáféréssel és munkamenet-cookie-kkal rendelkezik a helyszíni alkalmazások alkalmazás-proxyn keresztüli eléréséhez. Ebből a cikkből megtudhatja, hogyan használhatja és konfigurálhatja a cookie-beállításokat.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,64 +12,76 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca5f1b41e345caafdc465872c948be76c31d55e8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825745"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928871"
 ---
-# <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez
+# <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-beállítások a helyszíni alkalmazások eléréséhez Azure Active Directory
 
-Az Azure Active Directory (Azure AD) rendelkezik hozzáférési és munkamenet-cookie-k elérése a helyszíni proxyn keresztül történő alkalmazás. Ismerje meg, hogyan használható az Application Proxy cookie-k beállításairól. 
+Azure Active Directory (Azure AD) hozzáféréssel és munkamenet-cookie-kkal rendelkezik a helyszíni alkalmazások alkalmazás-proxyn keresztüli eléréséhez. Ismerje meg, hogyan használhatja az alkalmazásproxy cookie-beállításait. 
 
-## <a name="what-are-the-cookie-settings"></a>Mik azok a cookie-k beállításairól?
+## <a name="what-are-the-cookie-settings"></a>Mik a cookie-beállítások?
 
-[Az alkalmazásproxy](application-proxy.md) az alábbi hozzáférési és munkamenet cookie-k beállításait használja.
+Az [alkalmazásproxy](application-proxy.md) a következő hozzáférési és munkamenet-cookie-beállításokat használja.
 
-| Cookie-k beállítása | Alapértelmezett | Leírás | Javaslatok |
+| Cookie-beállítás | Alapértelmezett | Leírás | Ajánlatok |
 | -------------- | ------- | ----------- | --------------- |
-| Csak HTTP cookie-k használata | **Nem** | **Igen** lehetővé teszi, hogy tartalmazza a HTTPOnly jelző HTTP-válaszfejlécek az alkalmazásproxyt. Ez a jelző további biztonsági előnyökkel, például megakadályozza az ügyféloldali parancsfájl-kezelési (CSS) általi másolása, vagy a cookie-k módosítását.<br></br><br></br>Hogy támogatva a csak HTTP beállítás, az alkalmazásproxy titkosítva, és módosítás ellen védett SSL csatornán keresztül továbbít a cookie-kat. | Használat **Igen** a további biztonsági előnyök miatt.<br></br><br></br>Használat **nem** ügyfelek vagy felhasználói ügynökök, amelyek hozzáférést igényelnek a munkamenetcookie-t. Például **nem** egy RDP-n vagy MTSC ügyfél, amely csatlakozik egy távoli asztali átjárókiszolgálót alkalmazásproxyn keresztül.|
-| Biztonságos cookie-k használata | **Nem** | **Igen** lehetővé teszi, hogy tartalmazzák a biztonságos Application Proxy HTTP-válaszfejlécek jelölőjét. Biztonságos cookie-k fokozza a biztonságot, például a HTTPS TLS biztonságos csatornán keresztül történő továbbításával a cookie-kat. Ez megakadályozza, hogy a cookie-k szövegként megfigyelésének miatt a cookie-k továbbításának illetéktelen fél által létrehozottat. | Használat **Igen** a további biztonsági előnyök miatt.|
-| Állandó cookie-k használata | **Nem** | **Igen** lehetővé teszi, hogy a Application Proxy állítsa be a hozzáférési cookie-k nem járnak le, ha a böngésző be van zárva. Az adatmegőrzés tart, amíg a hozzáférési jogkivonat lejár, vagy a felhasználó manuálisan törölheti a maradandó cookie-k. | Használat **nem** miatt a biztonsági veszély a hitelesített felhasználók tartásával.<br></br><br></br>Javasoljuk, hogy csak a **Igen** a régebbi alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat. Érdemes frissíteni az alkalmazás megosztási cookie-k helyett maradandó cookie-k használatával folyamatok közötti kezeléséhez. Ha például szüksége lehet, hogy a felhasználó az Office-dokumentumok megnyitását az Intézőben egy SharePoint-webhelyről maradandó cookie-k. Maradandó cookie-k nélkül ez a művelet sikertelen lehet, ha a hozzáférési cookie-kat a böngészőben, a kezelő folyamat és az Office-folyamat között nem megosztott. |
+| Csak HTTP-cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a http-válasz fejlécekben. Ez a jelző további biztonsági előnyöket biztosít, például megakadályozza az ügyféloldali parancsfájlok (CSS) használatát a cookie-k másolásával vagy módosításával.<br></br><br></br>Mielőtt támogatjuk a csak HTTP-beállítást, az alkalmazásproxy titkosított és továbbított sütiket egy biztonságos SSL-csatornán keresztül a módosítás elleni védelem érdekében. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.<br></br><br></br>**Nem** használható olyan ügyfelek vagy felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Például a **nem** érték használata olyan RDP-vagy MTSC-ügyfél esetén, amely az alkalmazásproxy használatával csatlakozik egy távoli asztali átjáró-kiszolgálóhoz.|
+| Biztonságos cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a biztonságos jelölőt a http-válasz fejlécekben. A biztonságos cookie-k biztonságosabbá teszi a cookie-kat egy TLS-védelemmel ellátott csatornán keresztül, például a HTTPS-en keresztül. Ez megakadályozza, hogy a cookie-k a cookie-k egyszerű szövegben való továbbítása miatt ne legyenek megfigyelhetők a jogosulatlan felektől. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.|
+| Állandó cookie használata | **Nem** | **Igen** , az Application proxy lehetővé teszi, hogy a böngésző bezárásakor ne járjon le a hozzáférési cookie-k. Az adatmegőrzés addig tart, amíg a hozzáférési jogkivonat le nem jár, vagy amíg a felhasználó manuálisan nem törli az állandó cookie-kat. | A **nem** használható a felhasználók hitelesítésének megtartásához kapcsolódó biztonsági kockázat miatt.<br></br><br></br>Javasoljuk, hogy csak az **Igen értéket** használja olyan régebbi alkalmazásokhoz, amelyek nem oszthatják meg a sütiket a folyamatok között. Az állandó cookie-k használata helyett érdemes frissíteni az alkalmazást úgy, hogy kezelni tudja a különböző folyamatok közötti megosztási cookie-kat. Előfordulhat például, hogy állandó cookie-k szükségesek ahhoz, hogy a felhasználók egy SharePoint-webhelyről nyissák meg az Office-dokumentumokat a Explorer nézetben. Állandó cookie-k nélkül ez a művelet meghiúsulhat, ha a hozzáférési cookie-k nem vannak megosztva a böngésző, a Explorer folyamat és az Office-folyamat között. |
 
-## <a name="set-the-cookie-settings---azure-portal"></a>Állítsa be a cookie-beállítások – Azure portal
-A cookie-k beállításairól az Azure portal használatával beállítása:
+## <a name="samesite-cookies"></a>SameSite-cookie-k
+A [Chrome 80](https://support.google.com/chrome/a/answer/7679408?hl=en) -es és újabb verzióiban a [Chromium](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)-t kihasználó böngészőkben a [SameSite](https://web.dev/samesite-cookies-explained) attribútumot nem megadó cookie-k úgy lesznek kezelve, mintha a **SameSite = LAX**értékre lettek beállítva. A SameSite attribútum azt deklarálja, hogy a cookie-k hogyan korlátozhatók egy adott hely környezetére. Ha a LAX értékre van állítva, a cookie-t csak ugyanarra a helyre irányuló kérésekre vagy legfelső szintű navigálásra kell elküldeni. Az alkalmazásproxy azonban megköveteli, hogy ezek a cookie-k megmaradjanak a harmadik féltől származó környezetben annak érdekében, hogy a felhasználók a munkamenet során megfelelően bejelentkezve maradjanak. Ennek köszönhetően az Application proxy hozzáférési és munkamenet-cookie-jai frissülnek, hogy elkerülje a változás negatív hatását. A frissítések a következők:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Navigáljon a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**.
-3. Válassza ki az alkalmazást, amelynek szeretné engedélyezni, egy cookie-beállítást.
-4. Kattintson a **alkalmazásproxy**.
-5. A **további beállítás**, állítsa be a cookie-k **Igen** vagy **nem**.
-6. Kattintson a **mentése** alkalmazza a módosításokat. 
+* A **SameSite** attribútum beállítása **none**értékre – ez lehetővé teszi az alkalmazásproxy elérését és a munkamenetek cookie-jait, hogy megfelelően legyenek elküldve a harmadik féltől származó környezetben.
+* A **biztonságos cookie** -beállítás beállításával az **Igen** beállítást használhatja alapértelmezettként. A Chrome emellett megköveteli, hogy a cookie-k megadják a biztonságos jelzőt, vagy elutasítva lesznek. Ez a módosítás az Application proxyn keresztül közzétett összes meglévő alkalmazásra érvényes lesz. Vegye figyelembe, hogy az alkalmazásproxy-hozzáférési cookie-k mindig biztonságosak, és csak HTTPS protokollal továbbíthatók. Ez a módosítás csak a munkamenet-cookie-kra vonatkozik.
 
-## <a name="view-current-cookie-settings---powershell"></a>Megtekintheti az aktuális cookie beállításai – PowerShell
+Az alkalmazásproxy-cookie-k változásai az alábbi néhány héttel a Chrome 80 kiadási dátum előtt jelennek meg.
 
-Az alkalmazás aktuális cookie-k beállításainak megtekintéséhez használja a PowerShell-parancsot:  
+Továbbá, ha a háttérbeli alkalmazás olyan cookie-kkal rendelkezik, amelyeknek harmadik féltől származó kontextusban is elérhetőnek kell lenniük, explicit módon engedélyeznie kell az alkalmazást, hogy az SameSite = none beállítást használja a cookie-k használatához. Az alkalmazásproxy lefordítja a set-cookie fejlécet az URL-CÍMEKre, és tiszteletben tartja a háttér-alkalmazás által beállított cookie-k beállításait.
+
+
+
+## <a name="set-the-cookie-settings---azure-portal"></a>A cookie-beállítások beállítása – Azure Portal
+A cookie-beállítások beállítása a Azure Portal használatával:
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+2. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **az összes alkalmazást**.
+3. Válassza ki azt az alkalmazást, amelyhez engedélyezni kívánja a cookie-beállítást.
+4. Kattintson a **alkalmazásproxy**elemre.
+5. A **További beállítások**területen állítsa a cookie beállítást **Igen** vagy **nem**értékre.
+6. A módosítások alkalmazásához kattintson a **Mentés** gombra. 
+
+## <a name="view-current-cookie-settings---powershell"></a>Aktuális cookie-beállítások megtekintése – PowerShell
+
+Az alkalmazás aktuális cookie-beállításainak megtekintéséhez használja ezt a PowerShell-parancsot:  
 
 ```powershell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
-## <a name="set-cookie-settings---powershell"></a>Állítsa be a cookie-beállítások – PowerShell
+## <a name="set-cookie-settings---powershell"></a>Cookie-beállítások beállítása – PowerShell
 
-A következő PowerShell-parancsokat a ```<ObjectId>``` objectid azonosítóját, az alkalmazás van. 
+A következő PowerShell-parancsokban a ```<ObjectId>``` az alkalmazás ObjectId. 
 
-**Http-Only Cookie** 
+**Csak HTTP cookie** 
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $false 
 ```
 
-**Biztonságos cookie-k**
+**Biztonságos cookie**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
-**Maradandó cookie-k**
+**Állandó cookie-k**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 

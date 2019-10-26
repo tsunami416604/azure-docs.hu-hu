@@ -1,6 +1,6 @@
 ---
-title: CI/CD megvalósításához az Azure Stream Analytics az IoT Edge-ben REST API-k használatával
-description: Ismerje meg, hogy egy folyamatos integrációt és üzembe helyezési folyamat megvalósítása az Azure Stream Analytics – REST API-k használatával.
+title: A CI/CD használata a REST API-kkal IoT Edge-eszközökön futó Azure Stream Analytics
+description: Ismerje meg, hogyan valósítható meg a folyamatos integrációs és üzembe helyezési folyamat a REST API-k használatával történő Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 40beb620e037061b189762a51e3c29d0fd251b27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94f124a1b2571a685de9da7f37b2ed50a2860da7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61362076"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925649"
 ---
-# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD megvalósításához a Stream Analytics az IoT Edge-ben API-k használatával
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementálása IoT Edge Stream Analyticshoz API-k használatával
 
-Folyamatos integráció és üzembe helyezés az Azure Stream Analytics-feladatok REST API-k használatával engedélyezheti. Ez a cikk példákat a melyik API-k használatát, és azok használatát. REST API-k nem támogatottak az Azure Cloud Shellben.
+A REST API-k használatával lehetővé teheti a folyamatos integrációt és üzembe helyezést Azure Stream Analytics feladatokhoz. Ez a cikk példákat tartalmaz arra vonatkozóan, hogy mely API-k használhatók és hogyan használhatók. A REST API-k nem támogatottak Azure Cloud Shellon.
 
-## <a name="call-apis-from-different-environments"></a>API-k hívása a különböző környezetek
+## <a name="call-apis-from-different-environments"></a>API-k hívása különböző környezetekben
 
-REST API-k a Linux és a Windows nem hívható meg. Az alábbi parancsok mutatják be a helyes szintaxist az API-hívás. Ez a cikk későbbi szakaszaiban meghatározott API-használat ismerteti.
+A REST API-k Linux és Windows rendszerből is hívhatók. Az alábbi parancsok az API-hívás megfelelő szintaxisát szemléltetik. A jelen cikk későbbi szakaszaiban megadott API-használatot a rendszer ismerteti.
 
 ### <a name="linux"></a>Linux
 
-Linux rendszeren használható `Curl` vagy `Wget` parancsokat:
+Linux esetén `Curl` vagy `Wget` parancsokat is használhat:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” { <url> }   
@@ -37,7 +37,7 @@ wget -q -O- --{ <method> }-data="<request body>”--header=Content-Type:applicat
  
 ### <a name="windows"></a>Windows
 
-Windows a Powershell használata: 
+Windows esetén használja a PowerShellt: 
 
 ```powershell 
 $user = "<username>" 
@@ -52,21 +52,21 @@ $response = Invoke-RestMethod <url>-Method <method> -Body $content -Headers $Hea
 echo $response 
 ```
  
-## <a name="create-an-asa-job-on-edge"></a>Az ASA-feladat létrehozása az Edge-ben 
+## <a name="create-an-asa-job-on-edge"></a>ASA-feladatok létrehozása az Edge-ben 
  
-Stream Analytics-feladat létrehozásához hívja a PUT metódust a Stream Analytics API-val.
+Stream Analytics-feladatok létrehozásához hívja meg a PUT metódust a Stream Analytics API használatával.
 
 |Módszer|Kérés URL-címe|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**előfizetés-azonosító**} /resourcegroups/ {**erőforrás-csoportnevet**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**feladat neve**}? api-version = 2017-04-01-preview|
+|PUT|https://management.azure.com/subscriptions/{**előfizetés-azonosító**}/resourcegroups/{**Erőforrás-csoport neve**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**Job-Name**}? API-Version = 2017-04 -01-előzetes verzió|
  
-A parancs használatának példája **curl**:
+Példa a **curl**használatával történő parancsra:
 
 ```curl
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
 ``` 
  
-Példa a kéréstörzs JSON-fájlban:
+Példa a JSON-beli kérelem törzsére:
 
 ```json
 { 
@@ -137,42 +137,42 @@ Példa a kéréstörzs JSON-fájlban:
 } 
 ```
  
-További információkért lásd: a [API-dokumentáció](/rest/api/streamanalytics/stream-analytics-job).  
+További információ: [API-dokumentáció](/rest/api/streamanalytics/stream-analytics-job).  
  
 ## <a name="publish-edge-package"></a>Edge-csomag közzététele 
  
-Az IoT Edge-ben a Stream Analytics-feladat közzéteszi, hívja meg a POST metódus az Edge csomag közzé API-val.
+Ha Stream Analytics feladatot szeretne közzétenni IoT Edge, hívja meg a POST metódust a Edge Package publish API használatával.
 
 |Módszer|Kérés URL-címe|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**} /resourceGroups/ {**resourcegroupname**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**jobname**} / publishedgepackage? api-version = 2017-04-01 - előzetes verzió|
+|UTÁNI|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage? API-Version = 2017-04 -01-előzetes verzió|
 
-A aszinkron művelet egy 202 állapotát adja vissza, mindaddig, amíg a feladat közzététele sikeresen befejeződött. A válasz location fejlécet tartalmaz a folyamat állapotának lekéréséhez használt URI-ja. A folyamat futása közben az URI-t a location fejlécet hívása egy 202 állapotát adja vissza. A folyamat befejeződése után, az URI-t a location fejlécet a 200-as állapotát adja vissza. 
+Ez az aszinkron művelet a 202-es állapotot adja vissza, amíg a feladatot nem sikerült közzétenni. A hely válaszának fejléce tartalmazza a folyamat állapotának lekéréséhez használt URI-t. A folyamat futása közben a Location fejlécben lévő URI-hívás a 202-es állapotot adja vissza. A folyamat befejeződése után a Location fejlécben lévő URI a 200-es állapotot adja vissza. 
 
-Példa az Edge-csomag közzététele szkripthívásba az **curl**: 
+Példa az Edge-csomag közzétételi hívására a **curl**használatával: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
 ```
  
-Miután kiválasztotta a POST híváson, számíthat egy üres szövegtörzzsel választ. Keresse meg az URL-cím található a válasz vezetője, és jegyezze fel a további használatra.
+A POST hívása után egy üres törzstel rendelkező választ kell várnia. Keresse meg a válasz élén található URL-címet, és jegyezze fel további használatra.
  
-Példa a válasz a SORVEZETŐ az URL-cím:
+Példa a válasz vezetője URL-címére:
 
 ```
 https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/StreamingJobs/{**resourcename**}/OperationResults/023a4d68-ffaf-4e16-8414-cb6f2e14fe23?api-version=2017-04-01-preview 
 ```
-Egy API-hívás URL-címét a következő parancs futtatása előtt egy-két percig várjon, talált a válasz vezetője. Ha nem kap 200 választ, majd próbálja megismételni a parancsot.
+Várjon egy-két percet, mielőtt futtatja a következő parancsot egy API-hívás létrehozásához a válasz élén található URL-címmel. Ha nem kap 200 választ, próbálja megismételni a parancsot.
  
-Példa az, hogy az API-hívás URL-CÍMÉT adja vissza **curl**:
+Példa arra, hogy API-hívást adjon vissza a visszaadott URL-címmel a **curl**használatával:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
 ```
 
-A válasz hozzáadása az Edge üzembe helyezési parancsfájlhoz szükséges információkat tartalmazza. Az alábbi példák bemutatják, milyen információkat kell gyűjtenie, és adja hozzá a központi telepítésben lévő hol jegyzékfájl.
+A válasz tartalmazza azokat az információkat, amelyeket hozzá kell adni az Edge üzembehelyezési parancsfájlhoz. Az alábbi példák azt mutatják be, hogy milyen információkat kell összegyűjtenie, és hova kell hozzáadni a telepítési jegyzékben.
  
-Miután sikeresen közzétette példa a válasz törzse:
+Példa a válasz törzsére a sikeres közzététel után:
 
 ```json
 { 
@@ -183,7 +183,7 @@ Miután sikeresen közzétette példa a válasz törzse:
 } 
 ```
 
-Manifest Nasazení mintát: 
+Telepítési jegyzékfájl mintája: 
 
 ```json
 { 
@@ -253,11 +253,11 @@ Manifest Nasazení mintát:
 } 
 ```
 
-Manifest nasazení konfigurációját követően tekintse meg [üzembe helyezése az Azure IoT Edge-modulok az Azure CLI-vel](../iot-edge/how-to-deploy-modules-cli.md) üzembe helyezéshez.
+Az üzembe helyezési jegyzék konfigurálását követően tekintse át a [Azure IoT Edge-modulok üzembe helyezése az Azure CLI-vel üzembe helyezését ismertető témakört](../iot-edge/how-to-deploy-modules-cli.md) .
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
  
-* [Az Azure Stream Analytics az IoT Edge-ben](stream-analytics-edge.md)
-* [Az IoT Edge-oktatóanyag ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [A Visual Studio-eszközökkel Stream Analytics Edge-feladatok fejlesztése](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [IoT Edge-eszközökön futó Azure Stream Analytics](stream-analytics-edge.md)
+* [ASA IoT Edge oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Stream Analytics Edge-feladatok fejlesztése a Visual Studio Tools használatával](stream-analytics-tools-for-visual-studio-edge-jobs.md)

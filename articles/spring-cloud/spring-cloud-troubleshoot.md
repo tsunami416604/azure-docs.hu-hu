@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592481"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929150"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gyakori problémák hibaelhárítási útmutatója
 
@@ -119,7 +119,7 @@ Ha a lekérdezés megszakad, továbbra is használhatja a következő parancsot 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Győződjön meg arról, hogy az alkalmazás a megfelelő [végrehajtható jar-formátumban](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html)van csomagolva. Ha nem, akkor az alábbihoz hasonló hiba jelenik meg:
+Ellenőrizze, hogy az alkalmazás a megfelelő [végrehajtható JAR formátumba](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html) van-e csomagolva. Ha nem, akkor az alábbihoz hasonló hiba jelenik meg:
 
 `Error: Invalid or corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714`
 
@@ -165,7 +165,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
             </dependency>
         ```
 
-1. Ha engedélyezve van a Spring boot indítószerkezet végpontja, lépjen a Azure Portalra, és keresse meg az alkalmazás konfigurációs lapját.  Adja hozzá a (z) `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` * "nevű környezeti változót. 
+1. Ha engedélyezve van a Spring boot indítószerkezet végpontja, lépjen a Azure Portalra, és keresse meg az alkalmazás konfigurációs lapját.  Adjon hozzá egy `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` nevű környezeti változót és a `*` értéket. 
 
 1. Indítsa újra az alkalmazást.
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858986"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935396"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Mi a IoT Plug and Play előzetes verzió?
 
@@ -26,7 +26,7 @@ A IoT Plug and Play Preview lehetővé teszi, hogy a megoldások fejlesztői bá
 
 A felületeket újra felhasználhatja az eszköz képességeinek különböző modelljein, így egyszerűbbé és gyorsabbá teheti a fejlesztést.
 
-Ahhoz, hogy a IoT Plug and Play zökkenőmentesen működjön az [Azure digitális Twins](../digital-twins/about-digital-twins.md)szolgáltatással, a IoT Plug and Play séma a [Digital Twin Definition Language (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)használatával van definiálva. A IoT Plug and Play és a DTDL nyitva vannak a Közösség számára, és a Microsoft üdvözli az ügyfelekkel, partnerekkel és az iparággal való együttműködést. Mindkettő olyan nyílt W3C-szabványokon alapul, mint például a JSON-LD és az RDF, amelyek megkönnyítik a szolgáltatások és az eszközök egyszerűbb bevezetését. Emellett a IoT Plug and Play és a DTDL használata esetén nem kell külön fizetnie. Az Azure [IoT hub](../iot-hub/about-iot-hub.md), az [Azure IoT Central](../iot-central/overview-iot-central.md)és más Azure-szolgáltatások standard díjszabása változatlan marad.
+Ahhoz, hogy a IoT Plug and Play zökkenőmentesen működjön az [Azure digitális Twins](../digital-twins/about-digital-twins.md)szolgáltatással, a IoT Plug and Play séma a [Digital Twin Definition Language (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)használatával van definiálva. A IoT Plug and Play és a DTDL nyitva vannak a Közösség számára, és a Microsoft üdvözli az ügyfelekkel, partnerekkel és az iparággal való együttműködést. Mindkettő olyan nyílt W3C-szabványokon alapul, mint például a JSON-LD és az RDF, amelyek megkönnyítik a szolgáltatások és az eszközök egyszerűbb bevezetését. Emellett a IoT Plug and Play és a DTDL használata esetén nem kell külön fizetnie. Az Azure [IoT hub](../iot-hub/about-iot-hub.md), az [Azure IoT Central](../iot-central/core/overview-iot-central.md)és más Azure-szolgáltatások standard díjszabása változatlan marad.
 
 A IoT Hubra vagy IoT Centralra épülő megoldások a IoT Plug and Play számára is hasznosak lehetnek.
 
@@ -48,7 +48,7 @@ A IoT Plug and Play két típusú fejlesztő számára hasznos:
 
 Megoldás fejlesztőként olyan felhőalapú IoT-megoldást fejleszthet, amely IoT Plug and Play eszközöket használ. A következő Azure-szolgáltatások egyikét használhatja:
 
-- [IoT Central](../iot-central/overview-iot-central.md) – egy teljes körűen felügyelt IoT-szolgáltatás, amely megkönnyíti a fizikai és a digitális világok összekapcsolására szolgáló termékek létrehozását.
+- [IoT Central](../iot-central/core/overview-iot-central.md) – egy teljes körűen felügyelt IoT-szolgáltatás, amely megkönnyíti a fizikai és a digitális világok összekapcsolására szolgáló termékek létrehozását.
 - [IoT hub](../iot-hub/about-iot-hub.md) – egy felügyelt felhőalapú szolgáltatás, amely a IoT-alkalmazás és az eszközök közötti biztonságos, kétirányú kommunikációra szolgál.
 
 A IoT Plug and Play-eszközök az Azure Certified for IoT Device Catalog használatával találhatók meg. A rendszer ellenőrizte az összes IoT Plug and Play eszközt a katalógusban, és rendelkezik egy eszköz képesség modellel. Tekintse meg az eszköz képességeinek modelljét, hogy megismerje az eszköz funkcióit, vagy használja az eszköz Azure IoT Central-ban való szimulálása érdekében.
@@ -75,14 +75,14 @@ Eszköz-fejlesztőként IoT-termékeket küldhet a minősítéshez. Az IoT-eszk�
 - Az eszközre vonatkozó ellenőrzési tesztek automatizált készletének továbbítása.
 - Tegye közzé a minősítést a IoT-eszköz katalógusában.
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A nyilvános előzetes verzióban a IoT Plug and Play az Észak-Európában, az USA középső régiójában és a Kelet-japán régióban érhető el. Győződjön meg arról, hogy az egyik régióban hozza létre a hubot.
 
 ## <a name="message-quotas-in-iot-hub"></a>Üzenetek kvótái IoT Hub
 A nyilvános előzetes verzióban a IoT Plug and Play-eszközök külön üzeneteket küldenek egy felületen, ami növelheti az üzenetek számának az [üzenet-kvótába](../iot-hub/iot-hub-devguide-quotas-throttling.md)való számlálását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a IoT Plug and Play, a javasolt következő lépés az egyik rövid útmutató kipróbálása:
 

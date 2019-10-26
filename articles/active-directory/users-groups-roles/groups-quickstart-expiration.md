@@ -1,5 +1,5 @@
 ---
-title: Elévülési szabályzat a rövid útmutató az Office 365-csoportok – Azure Active Directory |} A Microsoft Docs
+title: Lejárati szabályzat – Office 365-csoportok – Azure Active Directory | Microsoft Docs
 description: Az Office 365-csoportok elévülési ideje – Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,41 +9,45 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 05/06/2019
+ms.date: 10/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: aabfe803a6ee40491dd95fe7def9a31838c80e65
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606183"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928973"
 ---
-# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Állítsa be az Office 365-csoportok az Azure Active Directoryban lejár
+# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Rövid útmutató: Az Office 365-csoportok elévülési idejének beállítása az Azure Active Directoryban
 
 Ennek a rövid útmutatónak a segítségével beállíthatja az Office 365-csoportjainak elévülési szabályzatát. Ha a felhasználók beállíthatják a saját csoportjaikat, megsokszorozódhatnak a nem használt csoportok. A nem használt csoportok kezelésének egy módja, ha elévülési időt állít be hozzájuk, ezzel csökkentve a csoportok manuális törléséhez szükséges karbantartási időt.
 
 Az elévülési szabályzat nem bonyolult:
 
-* A csoporttulajdonosok értesítést kapnak, hogy újítsák meg az elévülő csoportjukat
-* A meg nem újított csoport törlődik
-* A törölt Office 365-csoportot a csoporttulajdonosok vagy az Azure AD-rendszergazdák 30 napig még visszaállíthatják.
+- A felhasználói tevékenységgel rendelkező csoportok automatikusan megújulnak a közeljövőben (előzetes verzió)
+- A csoporttulajdonosok értesítést kapnak, hogy újítsák meg az elévülő csoportjukat
+- A meg nem újított csoport törlődik
+- A törölt Office 365-csoportot a csoporttulajdonosok vagy az Azure AD-rendszergazdák 30 napig még visszaállíthatják.
+
+> [!NOTE]
+> A csoportok mostantól automatikusan megújítják az Azure AD Intelligence-t attól függően, hogy a legutóbbi használatban vannak-e (jelenleg nyilvános előzetes verzióban), ezért nincs szükség regisztrációra. Ez a funkció az Office 365-szolgáltatásokban, például az Outlook, a SharePoint, a Teams, a Yammer és egyebek területén lévő csoportok felhasználói tevékenységén alapul.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
- Az alacsonyabb szintű szerepkör, csoport lejárati beállításához szükséges a szervezet felhasználói rendszergazdája lesz.
+ A csoport lejáratának beállításához szükséges legkevésbé Kiemelt szerepkör a szervezet felhasználói rendszergazdája.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Felhasználói létrehozás bekapcsolása a csoportokhoz
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) rendszergazdai felhasználói fiókkal.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy felhasználói rendszergazdai fiókkal.
 
 2. Válassza a **Csoportok**, majd az **Általános** elemet.
   
-   ![Önkiszolgáló csoport-beállítások lap](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![Önkiszolgáló csoport beállításai lap](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Állítsa **A felhasználók létrehozhatnak Office 365-csoportokat** elemet **Igen** értékűre.
 
@@ -51,9 +55,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="set-group-expiration"></a>Csoportok elévülésének beállítása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com)válassza **Azure Active Directory** > **csoportok** > **lejárati** , Nyissa meg a lejárati beállítások.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki **Azure Active Directory** > **csoportok** > **lejáratát** a lejárat beállításainak megnyitásához.
   
-   ![Csoport lejárati beállítások lap](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![A csoport lejárati beállításainak lapja](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. Állítsa be az elévülési intervallumot. Válasszon ki egy előre beállított értéket, vagy adjon meg egy 31 napon túli egyéni értéket. 
 
@@ -67,20 +71,20 @@ Ennyi az egész! Ebben a rövid útmutatóban sikeresen beállította az elévü
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-### <a name="to-remove-the-expiration-policy"></a>Az elévülési szabályzat eltávolítása
+### <a name="to-remove-the-expiration-policy"></a>A lejárati szabályzat eltávolítása
 
 1. Győződjön meg arról, hogy be van jelentkezve az [Azure Portalra](https://portal.azure.com) a bérlő globális rendszergazdai fiókjával.
 2. Válassza az **Azure Active Directory** > **Csoportok** > **Elévülés** elemet.
 3. Állítsa az **Elévülési idő engedélyezése ezekhez az Office 365-csoportokhoz** elemet **Egyik sem** értékűre.
 
-### <a name="to-turn-off-user-creation-for-groups"></a>Felhasználó létrehozása a csoportok kikapcsolása
+### <a name="to-turn-off-user-creation-for-groups"></a>A csoportok felhasználó általi létrehozásának kikapcsolása
 
 1. Válassza az **Azure Active Directory** > **Csoportok** > **Általános** elemet. 
 2. Állítsa be **A felhasználók létrehozhatnak Office 365-csoportokat az Azure-portálokon** elemet **Nem**értékűre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Többek között a PowerShell-utasítások és technikai korlátok miatt lejárati kapcsolatos további információkért lásd a következő cikket:
+További információ a Lejáratról, beleértve a PowerShell-utasításokat és a technikai korlátozásokat, lásd a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Elévülési szabályzatot PowerShell](groups-lifecycle.md)
+> [Elévülési szabályzat PowerShell](groups-lifecycle.md)

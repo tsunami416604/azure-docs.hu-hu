@@ -1,6 +1,6 @@
 ---
-title: Figyelése és felügyelete az Azure Stream Analytics-feladatok a Visual Studio használatával
-description: Ez a cikk ismerteti, hogyan használhatja a Visual Studio figyelése és felügyelete az Azure Stream Analytics-feladatok.
+title: Azure Stream Analytics monitorozása és kezelése a Visual Studióval
+description: Ez a cikk azt ismerteti, hogyan használható a Visual Studio Azure Stream Analytics feladatok figyelésére és felügyeletére.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,44 +9,44 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 684f034393dd3f53900100dd964d9ea07d200897
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479442"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934974"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Figyelheti és kezelheti a Stream Analytics-feladatok a Visual Studióval
+# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Stream Analytics feladatok figyelése és kezelése a Visual Studióval
 
-Ez a cikk bemutatja, hogyan figyelheti a Stream Analytics-feladatot a Visual Studióban. Az Azure Stream Analytics tools for Visual Studio anélkül, hogy az IDE az Azure portal hasonló figyelési élményt nyújt. Egy feladat figyeléséhez, hamarosan megkezdheti **elküldése az Azure-bA** a a **Script.asaql**, vagy figyelheti a meglévő feladatokat, függetlenül attól, hogy létrehozták őket. 
+Ez a cikk bemutatja, hogyan figyelheti meg a Stream Analytics-feladatot a Visual Studióban. A Visual studióhoz készült Azure Stream Analytics Tools a Azure Portalhoz hasonló figyelési élményt nyújt, anélkül, hogy el kellene hagynia az IDE-t. Megkezdheti a feladatok figyelését, amint az Azure-ba **küldi** a **szkriptből. asaql**, vagy a meglévő feladatokat a létrehozásuk módjától függetlenül is figyelheti. 
 
-## <a name="job-summary"></a>Feladat összegzése
+## <a name="job-summary"></a>Feladatok összegzése
 
-A **feladat összegzése** és **feladat metrikáinak** adni a feladat rövid pillanatképet. Egy pillanat alatt megadhatja, hogy egy feladat állapotát és az adatokat.]
+A feladatok **összegzése** és a **feladatok mérőszámai** gyors pillanatképet adnak a feladatról. Egy pillantással meghatározhatja a feladatok állapotát és az események adatait.]
 
 <img src="./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-job-summary-metrics.png" alt="Stream Analytics job summary and job metrics" width="300px"/> 
 
 
-## <a name="job-metrics"></a>A feladat metrikáit
+## <a name="job-metrics"></a>Feladatok metrikái
 
-Összecsukhatja a **feladat összegzése** , és kattintson a **feladat metrikáinak** lapon megtekintheti a fontos metrikákat. Ellenőrzés, és törölje metrikák típusok hozzáadása, és azokat eltávolítsa a gráf.
+Összecsukhatja a **feladatok összegzését** , és a **feladatok mérőszámai** lapra kattintva megtekintheti a fontos metrikákkal rendelkező diagramokat. A mérőszámok típusának bejelölésével és eltávolításával a diagramon adhatja hozzá és távolíthatja el azokat.
 
-![Stream Analytics mérőszámainak áttekintését, a Visual Studióban](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Metrikák Stream Analytics a Visual Studióban](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
-## <a name="error-monitoring"></a>Kivételfigyelés
+## <a name="error-monitoring"></a>Hiba figyelése
 
-Hibák kattintva is figyelheti a **hibák** fülre.
+A hibákat a **hibák** lapra kattintva is figyelheti.
 
-![Stream Analytics-hibák a Visual Studióban](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Hibák Stream Analytics a Visual Studióban](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Támogatás kérése
-További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
-## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
-* [Azure Stream Analytics-feladat létrehozása a Visual Studióban](stream-analytics-quick-create-vs.md)
-* [Az Azure Stream Analytics tools for Visual Studio telepítése](stream-analytics-tools-for-visual-studio-install.md) 
+## <a name="next-steps"></a>Következő lépések
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
+* [Azure Stream Analytics-feladatok létrehozása a Visual Studióval](stream-analytics-quick-create-vs.md)
+* [A Visual studióhoz készült Azure Stream Analytics-eszközök telepítése](stream-analytics-tools-for-visual-studio-install.md) 
 
 

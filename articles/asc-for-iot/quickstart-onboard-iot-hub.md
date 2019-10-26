@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 45eaa6d4c66c9ec8e25d728fb70f389912a00793
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551598"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928439"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Gyors útmutató: Azure Security Center a IoT Service-ben IoT Hub
 
@@ -43,13 +43,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a IoT szolgáltatás Azure Secu
 A IoT Hub biztonságának engedélyezése: 
 
 1. Nyissa meg a **IoT Hubt** Azure Portal. 
-1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele**lehetőségre.
-1. Hagyja bejelölve az **Engedélyezés** beállítást alapértelmezettként. 
-1. Válassza ki a log Analytics-munkaterületet.
-1. Adja meg a Log Analytics-munkaterület részleteit. 
-   - Úgy dönt, hogy engedélyezi a **Twin Collectiont** a **Twin Collection** **bekapcsolásának**bekapcsolása mellett.
-   - Úgy dönt, hogy a **nyers eseményeket** a tároló alapértelmezett adattípusain kívül tárolja, ha kiválasztja a **nyers eszköz biztonsági eseményeinek tárolása** log Analyticsban. Hagyja bekapcsolni a **nyers esemény** **bekapcsolását**. 
-    
+1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele**lehetőségre.    
 1. Kattintson a **Save** (Mentés) gombra. 
 
 Gratulálunk! Befejezte a IoT Azure Security Centerének engedélyezését a IoT Hub. 

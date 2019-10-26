@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453133"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933123"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Jelszóval nem rendelkező hitelesítési telepítés befejezése
 
@@ -185,7 +185,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 | A felhasználó bejelentkezhet a FIDO2 eszközzel (1809) | A felhasználó a bejelentkezési ablakban kiválaszthatja a biztonsági kulcsot, és sikeresen bejelentkezhet. |
 | A felhasználó regisztrálhat FIDO2 eszközt (1903) | A felhasználó regisztrálhat FIDO2-eszközt a beállítások > fiókok > bejelentkezési beállítások > biztonsági kulcs |
 | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt (1903) | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt a beállítások > fiókok > bejelentkezési beállítások > biztonsági kulcs |
-| A felhasználó bejelentkezhet a FIDO2 eszközzel (1809) | A felhasználó a bejelentkezési ablakban kiválaszthatja a biztonsági kulcsot, és sikeresen bejelentkezhet. |
+| A felhasználó bejelentkezhet a FIDO2 eszközzel (1903) | A felhasználó a bejelentkezési ablakban kiválaszthatja a biztonsági kulcsot, és sikeresen bejelentkezhet. |
 
 **Jelszó nélküli, bejelentkezés az Azure AD web appsbe**
 

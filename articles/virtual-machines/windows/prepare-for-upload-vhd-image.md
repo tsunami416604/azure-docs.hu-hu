@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d184201c21c31336e31dcba9884d84f6cc224ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285713"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924840"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -55,7 +55,7 @@ A lemez konvertálása után hozzon létre egy virtuális gépet, amely a lemezt
 1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet** > **lemez szerkesztése**lehetőséget.
 2. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
 3. A **művelet kiválasztása** lapon válassza a **Konvertálás** > **tovább**lehetőséget.
-4. Ha a VHDX-ből kell konvertálnia, válassza a **VHD**@no__t **-1 elemet**.
+4. Ha a VHDX-ből kell konvertálnia, válassza a **VHD** > **tovább**lehetőséget.
 5. Ha dinamikusan bővülő lemezről szeretne átalakítást végezni, válassza a **rögzített méret** > **tovább**lehetőséget.
 6. Keresse meg és válassza ki azt az elérési utat, amelybe menteni szeretné az új VHD-fájlt.
 7. Válassza a **Finish** (Befejezés) elemet.
@@ -421,7 +421,7 @@ Nem minden Windows-alapú számítógépre telepített szerepkör vagy alkalmaz�
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
 1. Futtassa a **parancssort** rendszergazdaként. 
-1. Módosítsa a könyvtárat a következőre: `%windir%\system32\sysprep`. Ez után futtassa a `sysprep.exe` parancsot.
+1. Módosítsa a könyvtárat `%windir%\system32\sysprep`ra. Ez után futtassa a `sysprep.exe` parancsot.
 1. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 
     ![Rendszerelőkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
@@ -446,7 +446,7 @@ A következő beállítások nem érintik a VHD feltöltését. Javasoljuk azonb
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
   Ha egy adatlemez csatlakozik a virtuális géphez, az ideiglenes meghajtó kötetének betűjele általában *D*. Ez a megjelölés eltérő lehet a beállításaitól és a rendelkezésre álló meghajtók számától függően.
-  * Javasoljuk, hogy tiltsa le a víruskereső szoftverek által biztosított parancsfájl-blokkolók letiltását. Előfordulhat, hogy az új virtuális gép lemezképből való üzembe helyezése során a Windows kiépítési ügynök parancsfájljait nem lehet megakadályozni és letiltani.
+  * Javasoljuk, hogy tiltsa le a víruskereső szoftverek által biztosított parancsfájl-blokkolók letiltását. Előfordulhat, hogy az új virtuális gép lemezképből való üzembe helyezése során a Windows kiépítési ügynök parancsfájljait nem zavarja és blokkolja.
   
 ## <a name="next-steps"></a>Következő lépések
 * [Windowsos virtuálisgép-rendszerkép feltöltése az Azure-ba Resource Manager-alapú üzembe helyezésekhez](upload-generalized-managed.md)
