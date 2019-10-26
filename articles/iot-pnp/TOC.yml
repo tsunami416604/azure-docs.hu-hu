@@ -12,7 +12,7 @@
     - name: Eszköz csatlakoztatása az IoT Hubhoz
       href: quickstart-connect-pnp-device.md
     - name: Eszköz csatlakoztatása az IoT Centralhoz
-      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Csatlakozás a megoldásban található eszközhöz
       href: quickstart-connect-pnp-device-solution.md
 - name: Oktatóanyagok

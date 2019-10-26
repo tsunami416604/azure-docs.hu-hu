@@ -120,7 +120,7 @@
         - name: 'REST API-minták C# nyelven'
           href: samples-rest.md
         - name: Egyéb Azure-minták
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'
     - name: Azure webinárium-sorozat
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Díjszabás és korlátok

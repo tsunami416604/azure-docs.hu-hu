@@ -11,12 +11,12 @@ metadata:
   author: jpconnock
   ms.author: jpconnock
   ms.date: 09/26/2019
-  ms.openlocfilehash: 0dcbe8d01761e8feb06cd5705a104d8c9e5196e0
-  ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+  ms.openlocfilehash: 671093610cc53fae3a06f9b185ef258ab2097305
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/08/2019
-  ms.locfileid: "72038601"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72933379"
 landingContent:
 - title: Az Azure Spring Cloud bemutatása
   linkLists:
@@ -38,6 +38,22 @@ landingContent:
     links:
     - text: Java Spring-alkalmazás előkészítése üzembe helyezéshez
       url: spring-cloud-tutorial-prepare-app-deployment.md
+- title: A szolgáltatás konfigurálása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Alkalmazáskonfiguráció megőrzése a Config Server használatával
+      url: spring-cloud-tutorial-config-server.md
+    - text: Alkalmazás manuális skálázása
+      url: spring-cloud-tutorial-scale-manual.md
+  - linkListType: how-to-guide
+    links:
+    - text: CI-/CD-folyamat automatizálása az Azure Spring Cloudban
+      url: spring-cloud-howto-cicd.md
+    - text: Kék-zöld üzembe helyezés engedélyezése az Azure Spring Cloud használatával
+      url: spring-cloud-howto-staging-environment.md
+    - text: Állandó tárolók használata az Azure Spring Cloudban
+      url: spring-cloud-howto-persistent-storage.md
 - title: Az alkalmazás monitorozása
   linkLists:
   - linkListType: tutorial
@@ -60,19 +76,3 @@ landingContent:
       url: spring-cloud-tutorial-bind-mysql.md
     - text: Alkalmazás kötése az Azure Cosmos DB-hez
       url: spring-cloud-tutorial-bind-cosmos.md
-- title: A szolgáltatás konfigurálása
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Alkalmazáskonfiguráció megőrzése a Config Server használatával
-      url: spring-cloud-tutorial-config-server.md
-    - text: Alkalmazás manuális skálázása
-      url: spring-cloud-tutorial-scale-manual.md
-  - linkListType: how-to-guide
-    links:
-    - text: CI-/CD-folyamat automatizálása az Azure Spring Cloudban
-      url: spring-cloud-howto-cicd.md
-    - text: Kék-zöld üzembe helyezés engedélyezése az Azure Spring Cloud használatával
-      url: spring-cloud-howto-staging-environment.md
-    - text: Állandó tárolók használata az Azure Spring Cloudban
-      url: spring-cloud-howto-persistent-storage.md
