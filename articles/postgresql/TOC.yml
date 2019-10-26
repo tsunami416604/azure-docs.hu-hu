@@ -251,6 +251,10 @@
           items:
             - name: Azure Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Hibaelhárítás
+          items:
+            - name: Csatlakozási hibák elhárítása
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Referencia
   items:
     - name: Azure CLI
