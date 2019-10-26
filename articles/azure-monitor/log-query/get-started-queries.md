@@ -1,24 +1,18 @@
 ---
 title: Ismerkedés a Azure Monitor-naplózási lekérdezésekkel | Microsoft Docs
 description: Ez a cikk egy oktatóanyagot tartalmaz a naplók Azure Monitorban való írásának első lépéseihez.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/09/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 05/09/2019
+ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076761"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894302"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
 
@@ -63,7 +57,7 @@ A fenti lekérdezés a *SecurityEvent* tábla 10 találatát adja vissza, a mega
 * A pipe (|) karakter elválasztja a parancsokat, így a kimenete az első a következő parancs bemenetében. Tetszőleges számú vezetékes elemet adhat hozzá.
 * A cső után a **Take** parancs, amely egy adott számú tetszőleges rekordot ad vissza a táblából.
 
-Gyakorlatilag még a Hozzáadás `| take 10` nélkül is futtathatjuk a lekérdezést, amely továbbra is érvényes lesz, de akár 10 000 eredményt is visszatérhet.
+A lekérdezést a `| take 10` hozzáadása nélkül is futtathatja, ami érvényes lesz, de akár 10 000 eredményt is visszatérhet.
 
 ### <a name="search-queries"></a>Keresési lekérdezések
 A keresési lekérdezések kevésbé strukturáltak, és általában alkalmasabbak arra, hogy olyan rekordokat keressenek, amelyek egy adott értéket tartalmaznak a saját oszlopaikban:
@@ -73,13 +67,13 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Ez a lekérdezés a "kriptográfia" kifejezést tartalmazó rekordokra keres rá a *SecurityEvent* táblában. Ezekből a rekordokból 10 rekordot ad vissza és jelenít meg. Ha kihagyja a `in (SecurityEvent)` részt, és csak `search "Cryptographic"`futtatja a parancsot, a Keresés az *összes* tábla fölé kerül, ami hosszabb ideig tart, és kevésbé hatékony.
+Ez a lekérdezés a "kriptográfia" kifejezést tartalmazó rekordokra keres rá a *SecurityEvent* táblában. Ezekből a rekordokból 10 rekordot ad vissza és jelenít meg. Ha kihagyja a `in (SecurityEvent)` részt, és csak `search "Cryptographic"`futtatja, akkor a Keresés az *összes* táblázat fölé kerül, ami hosszabb időt vesz igénybe, és kevésbé hatékony.
 
 > [!WARNING]
 > A keresési lekérdezések általában lassabbak, mint a tábla alapú lekérdezések, mert több adatfeldolgozást kell feldolgozniuk. 
 
 ## <a name="sort-and-top"></a>Rendezés és felül
-Habár hasznos lehet néhány rekord beszerzése, az eredmények ki lesznek választva, és nem jelennek meg külön sorrendben. Rendezett nézet beszerzéséhez az előnyben részesített oszlop szerint **rendezhet** :
+Habár **hasznos** lehet néhány rekord beszerzése, az eredmények ki lesznek választva, és nem jelennek meg külön sorrendben. Rendezett nézet beszerzéséhez az előnyben részesített oszlop szerint **rendezhet** :
 
 ```Kusto
 SecurityEvent   
@@ -116,10 +110,10 @@ A szűrési feltételek írásakor a következő kifejezéseket használhatja:
 |:---|:---|:---|
 | == | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `Level == 8` |
 | =~ | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
+| ! =, < > | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
 | *és*, *vagy* | Feltételek között szükséges| `Level == 16 or CommandLine != ""` |
 
-Ha több feltételt szeretne szűrni, használhatja akövetkezőt:
+Ha több feltételt szeretne szűrni, **használhatja a következőt:**
 
 ```Kusto
 SecurityEvent
@@ -135,14 +129,14 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Az értékek különböző típusokkal rendelkezhetnek, ezért előfordulhat, hogy a megfelelő típus összehasonlításához el kell végeznie őket. A SecurityEvent *szint* oszlop például karakterlánc típusú, ezért a numerikus operátorok használata előtt át kell őket adni egy numerikus típusba (például *int* vagy *Long*).`SecurityEvent | where toint(Level) >= 10`
+> Az értékek különböző típusokkal rendelkezhetnek, ezért előfordulhat, hogy a megfelelő típus összehasonlításához el kell végeznie őket. A SecurityEvent *szint* oszlop például karakterlánc típusú, ezért a numerikus operátorok használata előtt át kell őket adni egy numerikus típusra, például *int* vagy *Long*értékre: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Időtartomány megadásának időpontja
 
 ### <a name="time-picker"></a>Időválasztó
 Az időválasztó a Futtatás gomb mellett látható, és azt jelzi, hogy az elmúlt 24 órában csak rekordok vannak lekérdezve. Ez az összes lekérdezésre alkalmazott alapértelmezett időtartomány. Ha csak az elmúlt óra rekordjait szeretné lekérni, válassza az _elmúlt óra_ lehetőséget, majd futtassa újra a lekérdezést.
 
-![Időpontválasztó](media/get-started-queries/timepicker.png)
+![Időválasztó](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Időszűrő a lekérdezésben
@@ -154,7 +148,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-A fenti időpontnál `ago(30m)` a "30 perce" kifejezés azt jelenti, hogy ez a lekérdezés csak az elmúlt 30 perc rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
+A fenti Időszűrő `ago(30m)` azt jelenti, hogy "30 perccel ezelőtt", így ez a lekérdezés csak az elmúlt 30 percből származó rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt és bővítés: Select és számítási oszlopok
@@ -183,7 +177,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-a Kibővítés megtartja az eredményhalmaz összes eredeti oszlopát, és meghatározza a további beállításokat is. A következő lekérdezés a **kibővítést** használja a *EventCode* oszlop hozzáadásához. Vegye figyelembe, hogy ez az oszlop nem jeleníthető meg a tábla végén, amely esetben a rekordok részleteit ki kell bontani a megtekintéshez.
+a **kibővítés** megtartja az eredményhalmaz összes eredeti oszlopát, és meghatározza a további beállításokat is. A következő lekérdezés a **kibővítést** használja a *EventCode* oszlop hozzáadásához. Vegye figyelembe, hogy ez az oszlop nem jeleníthető meg a tábla végén, amely esetben a rekordok részleteit ki kell bontani a megtekintéshez.
 
 ```Kusto
 SecurityEvent
@@ -192,7 +186,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Összefoglalás: sorok összesített csoportjai
-Az **Összefoglalás** használatával azonosíthatja a rekordok csoportjait egy vagy több oszlop szerint, és összesítéseket alkalmazhat rájuk. Az összegzések leggyakoribb használata a *Count*, amely az egyes csoportok eredményeinek számát adja vissza.
+Az **Összefoglalás** használatával azonosíthatja a rekordok csoportjait egy vagy több oszlop szerint, és összesítéseket alkalmazhat rájuk. Az **összegzések** leggyakoribb használata a *Count*, amely az egyes csoportok eredményeinek számát adja vissza.
 
 A következő lekérdezés az elmúlt óra összes *teljesítményszámláló* -rekordját áttekinti, csoportosítja őket *ObjectName*szerint, és megszámolja az egyes csoportok rekordjait: 
 ```Kusto
@@ -226,9 +220,9 @@ Perf
 ```
 
 ### <a name="summarize-by-a-time-column"></a>Összesítés egy időoszlop alapján
-A csoportosítási eredmények egy időoszlopon vagy egy másik folytonos értéken is alapulhatnak. Egyszerűen Összefoglalva `by TimeGenerated` , bár az adott időtartományon belül minden egyes ezredmásodperchez létrehozhatnak csoportokat, mivel ezek egyedi értékek. 
+A csoportosítási eredmények egy időoszlopon vagy egy másik folytonos értéken is alapulhatnak. Egyszerűen összefoglalhatja `by TimeGenerated` azonban az időtartományon belül minden egyes ezredmásodperchez létrehozhat csoportokat, mivel ezek egyedi értékek. 
 
-Ha folytonos értékek alapján szeretne csoportokat létrehozni, érdemes lehet a tartományt a **bin**használatával felügyelt egységekre bontani. A következő lekérdezés az adott számítógépen a szabad memóriát (*rendelkezésre álló MB*-ot) mérni kívánó teljesítmény-rekordokat elemzi. Kiszámítja az 1 órás időszak átlagos értékét az elmúlt 7 napban:
+Ha folytonos értékek alapján szeretne csoportokat létrehozni, érdemes lehet a tartományt a **bin**használatával felügyelt egységekre bontani. A következő lekérdezés az adott számítógépen a szabad memóriát (*rendelkezésre álló MB*-ot) mérni kívánó teljesítmény *-rekordokat* elemzi. Kiszámítja az 1 órás időszak átlagos értékét az elmúlt 7 napban:
 
 ```Kusto
 Perf 
@@ -244,6 +238,6 @@ A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szere
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [keresési lekérdezések írásához](search-queries.md)

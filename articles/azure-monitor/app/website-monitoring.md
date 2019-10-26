@@ -1,21 +1,19 @@
 ---
 title: Webhelyek monitorozásának gyors üzembe helyezése az Azure Monitor Application Insights segítségével | Microsoft Docs
 description: Ez a cikk ismerteti, hogyan helyezhető gyorsan üzembe az ügyfél-/böngészőoldali webhely-monitorozás az Azure Monitor Application Insights használatával
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: f423e96055c23ae1521466f0e697d7ad2254f8c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eecc3d739cb5500abdbd04a9aaca1ddcf86e352b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813908"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899271"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
@@ -33,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -46,13 +44,13 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        | Érték           | Leírás  |
+    | Beállítások        | Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
+   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
-   | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="create-an-html-file"></a>HTML-fájl létrehozása
 
@@ -138,7 +136,7 @@ Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyago
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Teljesítményproblémák észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

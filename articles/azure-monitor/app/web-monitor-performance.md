@@ -1,152 +1,147 @@
 ---
-title: Az alkalmazás állapotának és az Application Insights használatának monitorozása
-description: Ismerkedés az Application Insights. Használat, a rendelkezésre állás és a teljesítményt a helyszíni vagy a Microsoft Azure-alkalmazások elemzése.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Az alkalmazás állapotának és használatának monitorozása Application Insights
+description: A Application Insights első lépései. A helyszíni vagy Microsoft Azure alkalmazások használatának, rendelkezésre állásának és teljesítményének elemzése.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373086"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899303"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
 
-Győződjön meg arról, hogy az alkalmazás jól teljesít-e, és ismerje meg gyorsan esetleges hibák. [Az Application Insights] [ start] mutassa be, semmilyen teljesítménybeli problémák és kivételek, és segítséget nyújtanak a észlelése és diagnosztizálása az alapvető okait.
+Győződjön meg arról, hogy az alkalmazás jól teljesít, és gyorsan tájékozódhat a hibákról. [Application Insights][start] közli a teljesítménnyel kapcsolatos problémákat és kivételeket, és segít megtalálni és diagnosztizálni a kiváltó okokat.
 
-Az Application Insights Java és az ASP.NET webes alkalmazások és szolgáltatások, WCF-szolgáltatások követheti nyomon. Ezek lehetnek üzemeltethető a helyszínen, a virtual machines, vagy a Microsoft Azure-webhelyeken. 
+A Application Insights Java-és ASP.NET-webalkalmazások és-szolgáltatások, WCF-szolgáltatások figyelésére is képes. Helyszíni, virtuális gépeken vagy Microsoft Azure webhelyeken is üzemeltethető. 
 
-Az ügyféloldalon Application Insights is igénybe vehet a weblapok és számos különböző eszközt, beleértve az iOS, Android és Windows Store apps telemetriai adatokat.
+Az ügyféloldali oldalon Application Insights a weblapokról és az iOS-, Android-és Windows áruházbeli alkalmazásokból származó telemetria is igénybe vehet.
 
-## <a name="setup"></a>Alkalmazásteljesítmény-figyelés beállítása
-Ha még nem még hozzáadta az Application Insights a projekthez (azaz, ha azt nem kell az applicationinsights.config fájlban), válasszon egyet az alábbi módszerrel lehet hozzálátni:
+## <a name="setup"></a>Teljesítményfigyelés beállítása
+Ha még nem adott hozzá Application Insightst a projekthez (azaz ha nem rendelkezik a ApplicationInsights. config fájlval), akkor az első lépésekhez válasszon a következő lehetőségek közül:
 
-* [ASP.NET-webalkalmazásokat](../../azure-monitor/app/asp-net.md)
-  * [Kivételfigyelés hozzáadása](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Adja hozzá a függőség figyelése](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [ASP.NET Web Apps](../../azure-monitor/app/asp-net.md)
+  * [Kivétel-figyelés hozzáadása](../../azure-monitor/app/asp-net-exceptions.md)
+  * [Függőség figyelésének hozzáadása](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Java EE-alapú webalkalmazások](../../azure-monitor/app/java-get-started.md)
-  * [Adja hozzá a függőség figyelése](../../azure-monitor/app/java-agent.md)
+  * [Függőség figyelésének hozzáadása](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>Teljesítmény-mérőszámokat derít fel
-A [az Azure Portalon](https://portal.azure.com), tallózással keresse meg az Application Insights-erőforrást, amely az alkalmazás beállítása. Az Áttekintés panelen az alapvető teljesítménymutatók adatokat jelenít meg:
+## <a name="view"></a>Teljesítmény-mérőszámok feltárása
+A [Azure Portal](https://portal.azure.com)tallózással keresse meg az alkalmazáshoz beállított Application Insights-erőforrást. Az Áttekintés panelen az alapvető teljesítményadatok láthatók:
 
-Kattintson valamely diagramra kattintva további részleteket tekinthet, és hosszabb ideig eredmények megtekintéséhez. Kattintson például a kérések csempére, és válassza ki egy időtartományt:
+Kattintson bármelyik diagramra a további részletek megtekintéséhez, valamint az eredmények hosszabb időszakra való megtekintéséhez. Kattintson például a kérések csempére, majd válassza ki az időtartományt:
 
-![Kattintson végig rajtuk a további adatokat, és jelöljön ki egy időtartományt](./media/web-monitor-performance/appinsights-48metrics.png)
+![Kattintson a Tovább gombra, és válassza ki az időtartományt](./media/web-monitor-performance/appinsights-48metrics.png)
 
-Kattintson egy diagramra, mely metrikákat azt jeleníti meg, vagy adjon hozzá egy új diagramot és a metrikák kiválasztása:
+A diagramra kattintva kiválaszthatja a megjelenített mérőszámokat, vagy hozzáadhat egy új diagramot, és kiválaszthatja annak metrikáit:
 
-![Kattintson egy diagramra metrikák kiválasztása](./media/web-monitor-performance/appinsights-61perfchoices.png)
+![Kattintson egy gráfra a metrikák kiválasztásához](./media/web-monitor-performance/appinsights-61perfchoices.png)
 
 > [!NOTE]
-> **Törölje a jelet a mérőszámok** a teljes kijelölt, amely érhető el. A mérőszám értéke csoportokba; Ha egy csoport bármely tagja van kijelölve, csak a többi a csoportnak a tagjaira jelennek meg.
+> **Törölje az összes mérőszámot** az elérhető teljes választék megjelenítéséhez. A metrikák csoportokba esnek; Ha a csoport bármelyik tagja ki van választva, csak a csoport többi tagja jelenik meg.
 
-## <a name="metrics"></a>Mi nem, minden mean? Teljesítmény-csempék és jelentések
-Számos különböző teljesítmény-mérőszámokat kaphat. Kezdjük azokkal, amelyek alapértelmezés szerint a az alkalmazás paneljén jelennek meg.
+## <a name="metrics"></a>Mit jelent mindez? Teljesítmény csempék és jelentések
+Számos teljesítmény-mérőszámot érhet el. Kezdjük azokkal, amelyek alapértelmezés szerint megjelennek az alkalmazás paneljén.
 
 ### <a name="requests"></a>Kérelmek
-Egy megadott időszakban kapott HTTP-kérések száma. Hasonlítsa ezt össze az eredményeket megtekintheti, ahogy a terhelés hogyan viselkedik az alkalmazás más jelentések változik.
+A megadott időszakban fogadott HTTP-kérelmek száma. Hasonlítsa össze a többi jelentés eredményét, hogy megtekintse, hogyan viselkedik az alkalmazás a terheléstől függően.
 
-HTTP-kérések minden GET vagy POST kéréseket az oldalak, az adatok és lemezképek tartalmazzák.
+A HTTP-kérelmek tartalmazzák a lapok, az adatfájlok és a képek összes GET vagy POST kérését.
 
-Kattintson a csempére kattintva számát adott URL-címek lekérése.
+A csempére kattintva megtekintheti az egyes URL-címek számát.
 
 ### <a name="average-response-time"></a>Átlagos válaszidő
-Írja be az alkalmazás és a visszaadott válasz webes kérelem között eltelt idő méri.
+Az alkalmazást és a visszaadott választ meghaladó webes kérelem közötti időt méri.
 
-A pontok megjelenítése egy mozgó átlag. Ha sok kérelem, van néhány eltérnek az átlagos egy nyilvánvaló csúcs nélkül, vagy a gráf mártsuk.
+A pontok mozgó átlagot mutatnak. Ha sok kérés van, előfordulhat, hogy néhány érték eltér az átlagtól, amely nem nyilvánvaló csúcs vagy DIP a gráfban.
 
-Keresse meg a szokatlan csúcsok. Általánosságban véve a várt válaszideje nőtt a kérelmeket a növekszik. Ha aránytalan az okot, előfordulhat, hogy az alkalmazás lenyomásával egy erőforráskorlátot, például a Processzor- vagy egy szolgáltatást, használja a kapacitását.
+Szokatlan csúcsokat keres. Általánosságban elmondható, hogy a válaszadási idő egyre nő a kérelmekben. Ha a növekedés aránytalan, előfordulhat, hogy az alkalmazás egy erőforrás-korlátot (például CPU-t) vagy az általa használt szolgáltatás kapacitását sújtja.
 
-Kattintson a csempére, és többször adott URL-címek lekérése.
+Kattintson a csempére adott URL-címek lekéréséhez.
 
 ![](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>Leglassabb kérelmek
 ![](./media/web-monitor-performance/appinsights-44slowest.png)
 
-Látható, hogy mely kérelmek szükség lehet a teljesítmény-finomhangolási.
+Megjeleníti, hogy mely kérelmekre lehet szükség a teljesítmény finomhangolásához.
 
 ### <a name="failed-requests"></a>Sikertelen kérelmek
 ![](./media/web-monitor-performance/appinsights-46failed.png)
 
-Nem kezelt kivételek által kiváltott kérelmek száma.
+A nem kezelt kivételeket kidobott kérelmek száma.
 
-Kattintson a csempére az adott hibákat a részletek megtekintéséhez, és a egy adott kérésre, hogy a részletek megtekintéséhez válassza ki. 
+A csempére kattintva megtekintheti az adott hibák részleteit, és kiválaszthat egy egyéni kérést a részletek megtekintéséhez. 
 
-Egyéni ellenőrzési hibák csak egy reprezentatív mintát megmarad.
+A rendszer csak a hibák reprezentatív mintáját őrzi meg az egyes ellenőrzésekhez.
 
-### <a name="other-metrics"></a>Egyéb metrika
-Mit megjeleníteni, kattintson egy diagramra, és törölje a jelölést a mérőszámok megtekintéséhez az összes rendelkezésre álló egyéb metrika értékre. (I) kattintva megtekintheti az egyes metrika definíciója.
+### <a name="other-metrics"></a>Egyéb mérőszámok
+Ha szeretné megtekinteni, hogy milyen egyéb mérőszámokat jeleníthet meg, kattintson egy gráfra, majd törölje az összes mérőszám kijelölését a teljes rendelkezésre álló készlet megtekintéséhez. Kattintson (i) az egyes mérőszámok definíciójának megjelenítéséhez.
 
-![Kapcsolja ki az összes metrikát, tekintse meg a teljes készletet](./media/web-monitor-performance/appinsights-62allchoices.png)
+![Az összes metrika kijelölésének kikapcsolása a teljes készlet megjelenítéséhez](./media/web-monitor-performance/appinsights-62allchoices.png)
 
-Bármelyik metrika kijelölése letiltja a többi, amely nem szerepelhet ugyanezen a diagramon.
+Bármely metrika kiválasztásával letilthatja azokat a többieket, amelyek nem szerepelhetnek ugyanazon a diagramon.
 
 ## <a name="set-alerts"></a>Riasztások beállítása
-Valamelyik metrika rendkívüli értékek az e-mailben értesítést kapjon, riasztás hozzáadásához. Választhat az e-mailt küldjön a fiók a rendszergazdák, vagy adott e-mail-címek.
+Ha bármilyen metrika szokatlan értékeit e-mailben szeretné értesíteni, adjon hozzá egy riasztást. Választhatja azt is, hogy az e-mailt a fiók rendszergazdái vagy adott e-mail-címei számára küldje el.
 
 ![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
-Állítsa be az erőforrást, mielőtt a többi tulajdonságot. Nem válassza ki a webteszt erőforrásokat, ha azt szeretné, a teljesítmény vagy a használati metrikákhoz riasztásokat állíthat be.
+Adja meg az erőforrást a többi tulajdonság előtt. Ne válassza a webteszt-erőforrásokat, ha riasztásokat szeretne beállítani a teljesítményre vagy a használati metrikára vonatkozóan.
 
-Ügyeljen arra, hogy vegye figyelembe az egységeket, amelyben kéri, hogy adja meg a küszöbértéket.
+Ügyeljen arra, hogy az egység, amelyben meg kell adnia a küszöbértéket.
 
-*A riasztás hozzáadása gomb nem látható.* -Van ez a csoport a fiók, amely csak olvasási hozzáféréssel rendelkezik? Ellenőrizze a fiók rendszergazdája.
+*Nem jelenik meg a riasztás hozzáadása gomb.* – Ez egy csoportfiók, amelyhez csak olvasási hozzáférése van? Forduljon a fiók rendszergazdájához.
 
 ## <a name="diagnosis"></a>Problémák diagnosztizálása
-Íme néhány tipp megtalálásához, és a teljesítménnyel kapcsolatos problémák diagnosztizálásához:
+Íme néhány tipp a teljesítménnyel kapcsolatos problémák megkereséséhez és diagnosztizálásához:
 
-* Állítsa be a [webes teszteket] [ availability] riasztani kell, ha a webhely leáll vagy nem megfelelően vagy lassan válaszol. 
-* Hasonlítsa össze más metrikákkal annak ellenőrzéséhez, hogy a kapcsolódó betöltése sikertelen vagy lassú válasz a kérések száma.
-* [Szúrjon be, és keresse meg a nyomkövetési utasításokat] [ diagnostic] segítségével azonosíthatja a problémákat a kódban.
-* A műveletet a webes alkalmazás figyelése [élő metrikák Stream][livestream].
-* A .NET-alkalmazás az állapotát [Snapshot Debugger][snapshot].
+* Beállíthatja, hogy a rendszer figyelmeztesse a [webteszteket][availability] , ha a webhely leáll, vagy helytelenül vagy lassan válaszol. 
+* Hasonlítsa össze a kérések darabszámát más metrikákkal, hogy ellenőrizze, hogy a hibák vagy a lassú válasz kapcsolódik-e a betöltéshez.
+* A problémák azonosításához [szúrjon be és keressen nyomkövetési utasításokat][diagnostic] a kódban.
+* A webalkalmazás figyelése a [élő metrikastreamsal][livestream]való működés közben.
+* Rögzítse a .NET-alkalmazás állapotát [Snapshot Debugger][snapshot]használatával.
 
-## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Megkeresheti és kijavíthatja a teljesítmény szűk teljesítményvizsgálati felület
+## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Teljesítménybeli szűk keresztmetszetek keresése és javítása a teljesítménnyel kapcsolatos vizsgálatokkal
 
-A teljesítményvizsgálati felület segítségével tekintse át a lassú művelet a webalkalmazásban. Gyorsan egy adott lassú művelet kiválasztása és használata [Profiler](../../azure-monitor/app/profiler.md) legfelső szintű kód le a lassú műveletek miatt. Használja az új időtartamok eloszlása látható a kijelölt művelet gyorsan egyetlen pillantással felmérheti milyen rossz tapasztalat van az ügyfelek számára. Láthatja, hogy hány felhasználó ügyfélkapcsolati érintett minden lassú művelet. A következő példában azt korábban úgy döntött, hogy közelebb tekintse meg a GET Customers/Details művelet nyújtotta felhasználói élmény. Az az időtartam terjesztés láthatjuk, hogy nincsenek-e három adatforgalmi csúcsokhoz. Bal szélső kiugrás körülbelül 400 MS, és rugalmas kiváló jelöli. Középső kiugrás van 1,2 s és jelöli egy közepes élményt. Végül, a 3.6-os s van egy másik kis kiugrás, amely nagy eséllyel eredményez elégedetlen vagyok velük, hogy ügyfeleink az esetek 99 % PERCENTILIS élmény jelöli. Ez a tapasztalat tízszer lassabb, mint a nagyszerű felhasználói élményt ugyanehhez a művelethez. 
+A teljesítmény-vizsgálati folyamattal ellenőrizheti a lassú teljesítményű műveleteket a webalkalmazásban. Gyorsan kiválaszthat egy adott lassú műveletet, és a [Profilert](../../azure-monitor/app/profiler.md) használhatja a root értékre, mert a lassú műveletek le lettek hajtva a kódban. A kiválasztott művelethez megjelenített új időtartam-eloszlás használatával gyorsan megtekintheti, hogy milyen rossz a felhasználói élmény. Láthatja, hogy a felhasználói interakciók közül hány lett hatással az egyes lassú működésekre. A következő példában úgy döntöttünk, hogy alaposabban szemügyre vesszük az ügyfelek/részletek beszerzésének élményét. Az időtartam eloszlása esetében láthatjuk, hogy három tüske van. A bal szélső tüske körülbelül 400 MS, és nagyszerűen reagáló élményt jelent. A középső tüske körülbelül 1,2 s, és közepes élményt jelent. Végül a 3,6 s-ben egy kis tüske is szerepel, amely a esetek 99% percentilis-élményt képviseli, ami valószínűleg azt eredményezi, hogy az ügyfelek nem maradnak meg. Ez a élmény tízszer lassabb, mint az azonos művelettel kapcsolatos nagy élmény. 
 
-![GET Customers/Details három időtartama adatforgalmi csúcsokhoz](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+![Ügyfelek/részletek beolvasása három időtartamra vonatkozó tüskék](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
-Nagyobb időtartomány kiválasztjuk a művelet a felhasználói élmény jobban érti lekéréséhez. Hogy majd is szűkíthető időben egy megadott idő ablak, ahol a művelet nem volt. A következő példában azt átállítását az alapértelmezett 24 óra és a 7 nap időtartomány időtartomány, és ezután nagyított Tue a 12. és szerda a 13. közötti 9:47, 12:47 idő ablakba. A időtartamok eloszlása és a minta és a profiler nyomkövetések számát is frissítve lett-e a jobb oldalon.
+A művelettel kapcsolatos felhasználói élmény jobb megismeréséhez kijelölhetünk egy nagyobb időtartományt. Ezután leszűkítheti az időt egy adott időablakban, ahol a művelet lassú volt. A következő példában az alapértelmezett 24 órás időtartományról a 7 napos időtartományra váltottunk át, majd a 9:47 – 12:47 időintervallumra nagyítottuk a 12. és a 13. közötti időszakot. A jobb oldalon az időtartam eloszlása és a minta-és Profiler-Nyomkövetések száma is frissült.
 
-![GET Customers/Details egy olyan időkeretet a tartomány három kiugrások időtartam 7 nap](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
-A lassú élményt szűkítéséhez azt ezután nagyíthatja a 95. és 99 közé eső időtartamának összegénél. Ezek képviselik a felhasználói tevékenységeket, amelyek lassú 4 %.
+A lassú élmények csökkentése érdekében legközelebb a 95. és a esetek 99% percentilis közötti időtartamokra nagyítjuk. Ezek a felhasználói interakciók 4%-át jelentik, ami lassú volt.
 
-![GET Customers/Details egy olyan időkeretet a tartomány három kiugrások időtartam 7 nap](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
-Azt is most már a reprezentatív mintát, vagy tekintse meg a Profiler nyomkövetések gombra kattintva a minták gombra, vagy a reprezentatív profiler hívásláncai gombra kattintva. Ebben a példában négy összegyűjtése a GET Customers/Details az ablakot, és a tartomány időtartamot a lényeges a nyomkövetési adatok vannak.
+Most már megnézheti a reprezentatív mintákat, ha a minták gombra kattint, vagy a képviselő Profiler-nyomkövetésben a Profiler Nyomkövetések gombra kattint. Ebben a példában négy nyomkövetést gyűjtöttünk be az ügyfelek/részletek beszerzésére az időablakban és a tartomány érdeklődési ideje alatt.
 
-Néha a probléma nem lesz a kódban, de függőségekben inkább a kód meghívja. Az ilyen lassú függőségek vizsgálata az osztályozási teljesítménye nézeten függőségek lapot válthat. Alapértelmezés szerint a teljesítmény nézet felkapott átlagok, de mi valóban szeretné megtekinteni a 95. percentilis (vagy a 99th abban az esetben, ha a figyelt érett szolgáltatás). Az alábbi példa azt a lassú Azure BLOB-függőség, ahol nevezzük PUT fabrikamaccount szóltak. A jó teljesen körülbelül 40 ms, fürt, míg a lassú hívások az ugyanazon függőségi háromszor lassabb, körülbelül 120 ms fürtszolgáltatás. Adja ki a megfelelő művelet észrevehetően lassítani hívásokat a számos nem használ. A reprezentatív mintát és a profiler hívásláncai, hasonlóan a Műveletek lap részletesen is.
+Előfordulhat, hogy a probléma nem szerepel a kódban, hanem a kód által megadotttól függ. A lassú függőségek kivizsgálásához váltson a teljesítmény-osztályozás nézet függőségek lapjára. Alapértelmezés szerint a teljesítmény nézet a trendek átlaga, de a 95. percentilis (vagy a esetek 99%, ha egy érett szolgáltatást figyel). A következő példában a lassú Azure BLOB-függőségre koncentráltunk, ahol a PUT fabrikamaccount-t hívjuk. A jó élmények a 40 MS körüli fürtök, míg a lassú hívások ugyanahhoz a függőséghez háromszor lassabbak, a 120 MS körüli fürtözést. Nem veszi igénybe a hívások nagy részét, hogy felvegye a megfelelő műveletet, ami észrevehetően lelassul. Az Operations (műveletek) lapon megtekintheti a reprezentatív mintákat és a Profiler-nyomkövetéseket.
 
-![GET Customers/Details egy olyan időkeretet a tartomány három kiugrások időtartam 7 nap](./media/web-monitor-performance/SlowDependencies95thTrend.png)
+![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/SlowDependencies95thTrend.png)
 
-A teljesítményvizsgálati felület jelentésvászon oldalán vonatkozó elemzéseket a minta-készlet, úgy döntött, hogy arra koncentrálhasson, jeleníti meg. A legjobb módszer esetén az összes rendelkezésre álló elemzések, hogy váltson át egy 30 napig időtartományt, és válassza a teljes insights megtekintéséhez a múlt hónapban az összes művelet között.
+A teljesítmény vizsgálatával kapcsolatos tapasztalatok az arra a példára összpontosító, a kiválasztott minta felé irányuló releváns elemzéseket mutatják be. Az összes rendelkezésre álló információ megtekinthető úgy, hogy 30 napos időtartományra váltson, majd az általános lehetőségre kattintva megtekintheti az elmúlt hónap összes műveletét.
 
-![GET Customers/Details egy olyan időkeretet a tartomány három kiugrások időtartam 7 nap](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Ügyfelek/részletek beolvasása három időtartammal 7 nap alatt, időintervallummal](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next"></a>Következő lépések
-[Webes teszteket] [ availability] -alkalmazását a világ különböző pontjain, rendszeres időközönként webes kéréseket rendelkezik.
+[Webes tesztek][availability] – a webes kérelmeket rendszeres időközönként, a világ minden tájáról küldik el az alkalmazásnak.
 
-[Diagnosztikai nyomkövetési rögzítése és keresése] [ diagnostic] – szúrja be a nyomkövetési és tagolása az eredményeket a felmerülő problémákat.
+[Diagnosztikai Nyomkövetések rögzítése és keresése][diagnostic] – nyomkövetési hívásokat szúrhat be, és átirányíthatja az eredményeket a problémák azonosításához.
 
-[Használat nyomon követése] [ usage] – ismerje meg, hogy a felhasználók miként használják alkalmazását.
+[Használat nyomon követése][usage] – Ismerje meg, hogy a felhasználók hogyan használják az alkalmazást.
 
-[Hibaelhárítási] [ qna] - és a Q & A
+[Hibaelhárítás][qna] – és Q & A
 
 
 

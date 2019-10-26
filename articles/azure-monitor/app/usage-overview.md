@@ -1,22 +1,18 @@
 ---
 title: Használat elemzése az Azure Application Insights használatával | Microsoft docs
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/19/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/19/2019
+ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128966"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899434"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -30,7 +26,7 @@ A legjobb megoldás a Application Insights telepítésével érhető el az App S
 
     * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Weblap kódja:** A Bezárás ``</head>``előtt adja hozzá a következő szkriptet a weboldalához. Cserélje le a rendszerállapot-kulcsot a Application Insights erőforrás megfelelő értékére:
+2. **Weblap kódja:** Adja hozzá a következő szkriptet a weboldalához a záró ``</head>``előtt. Cserélje le a rendszerállapot-kulcsot a Application Insights erőforrás megfelelő értékére:
     
     ```html
     <script type="text/javascript">
@@ -77,7 +73,7 @@ Az adatmegőrzés segítségével megismerheti, hogy a felhasználók milyen gya
 - A valós felhasználói adathalmazok alapján alkotott hipotézisek 
 - Annak megállapítása, hogy probléma van-e az adatmegőrzéssel a termékben 
 
-![Adatmegőrzés](./media/usage-overview/retention.png) 
+![Megőrzés](./media/usage-overview/retention.png) 
 
 A felső megőrzési vezérlők lehetővé teszik meghatározott események és időtartományok meghatározását a megőrzés kiszámításához. A középső gráf a megadott időtartomány alapján vizuálisan ábrázolja a teljes megőrzési arányt. Az alsó diagram az egyes adatmegőrzési időszakot jelöli. Ez a részletességi szint lehetővé teszi, hogy megtudja, mit csinálnak a felhasználók, és mi befolyásolhatja a visszatérő felhasználók részletesebb részletességét.  
 
@@ -111,7 +107,7 @@ Vagy a kiszolgáló oldalán:
 
 Ezekhez az eseményekhez tulajdonságokat is csatolhat, így szűrheti vagy feloszthatja az eseményeket a portálon való vizsgálat során. Emellett az egyes eseményekhez, például a névtelen felhasználói AZONOSÍTÓhoz is csatolni kell a tulajdonságok standard készletét, amely lehetővé teszi egy adott felhasználó tevékenységi sorrendjének nyomon követését.
 
-További információ az [Egyéni](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) eseményekről [](../../azure-monitor/app/api-custom-events-metrics.md#properties)és a tulajdonságokról.
+További információ az [Egyéni eseményekről](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) és a [tulajdonságokról](../../azure-monitor/app/api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Szeletek és kockák eseményei
 
@@ -159,9 +155,9 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 **Alkalmazások ASP.NET Core**
 
 > [!NOTE]
-> Az inicializálás `ApplicationInsights.config` a vagy a használatával `TelemetryConfiguration.Active` való hozzáadása ASP.net Core alkalmazások esetében nem érvényes. 
+> Az inicializálás `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával történő hozzáadása nem érvényes ASP.NET Core alkalmazásokhoz. 
 
-[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadását a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` `Startup.cs` osztály metódusában történik.
+[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadásához vegye fel azt a függőség-injektálási tárolóba, az alábbi ábrán látható módon. Ez a `Startup.cs` osztály `ConfigureServices` metódusában történik.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -174,7 +170,7 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
    - [Tölcsérek](usage-funnels.md)
    - [Megőrzés](usage-retention.md)

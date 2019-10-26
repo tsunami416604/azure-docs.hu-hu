@@ -1,21 +1,19 @@
 ---
 title: Egyéni irányítópultok létrehozása az Azure Application Insightsban | Microsoft Docs
 description: Oktatóanyag egyéni KPI-irányítópultok Azure Application Insights használatával való létrehozásához.
-keywords: ''
-services: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: fa91933c2243cd1a2737f93f796314330b6cf5a0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 47d8eaff5f154e198c277ec2b63a2d09e66f7180
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541511"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900508"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -26,7 +24,7 @@ Több irányítópultot is létrehozhat az Azure Portalon, amelyeknek a csempéi
 > * Csempe hozzáadása a csempekatalógusból
 > * Standard Application Insights-metrikák hozzáadása az irányítópulthoz
 > * Egyéni Application Insights-metrikadiagramok hozzáadása az irányítópulthoz
-> * A naplók (Analytics) lekérdezés eredményeit hozzáadása az irányítópulthoz
+> * Naplók (Analytics) lekérdezés eredményeinek hozzáadása az irányítópulthoz
 
 
 
@@ -42,58 +40,58 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="create-a-new-dashboard"></a>Új irányítópult létrehozása
 Egyazon irányítópult több alkalmazáshoz, erőforráscsoporthoz és előfizetéshez tartozó erőforrásokat is tartalmazhat.  Az oktatóanyag első lépéseként hozzon létre egy új irányítópultot az alkalmazásához.  
 
-1. Irányítópult panelen válassza ki a **új irányítópult**.
+1. Az irányítópult ablaktáblán válassza az **új irányítópult**lehetőséget.
 
    ![Új irányítópult](media/tutorial-app-dashboards/1newdashboard.png)
 
 1. Írja be az irányítópult nevét.
-1. Tekintse át a **Csempekatalógust**, amelyben az irányítópultra rögzíthető számos különböző csempe található.  Csempék hozzáadása a katalógusból, mellett diagramokat és egyéb nézeteket az irányítópultra közvetlenül az Application Insightsból is rögzíthet.
-1. Keresse meg a **Markdown** csempét, és húzza az irányítópultra.  Ez a csempe lehetővé teszi, ami ideális a leíró szövegekhez az irányítópultra, markdown-formátumú szövegeket adhat.
+1. Tekintse át a **Csempekatalógust**, amelyben az irányítópultra rögzíthető számos különböző csempe található.  A csempék katalógusból való hozzáadásán kívül a diagramokat és egyéb nézeteket is rögzíthet közvetlenül Application Insightsról az irányítópultra.
+1. Keresse meg a **Markdown** csempét, és húzza az irányítópultra.  Ez a csempe lehetővé teszi a Markdown-ben formázott szöveg hozzáadását, amely ideális a leíró szöveg az irányítópulthoz való hozzáadásához.
 1. Adjon hozzá szöveget a csempe tulajdonságaiban, és méretezze át a csempét az irányítópult vásznán.
     
     ![Markdown-csempe szerkesztése](media/tutorial-app-dashboards/2dashboard-text.png)
 
-1. Kattintson a **testreszabás kész** csempe testreszabási módból való kilépéshez a képernyő tetején.
+1. Kattintson a Testreszabás **kész** elemre a képernyő tetején a csempe testreszabási módjának kilépéséhez.
 
 ## <a name="add-health-overview"></a>Állapotáttekintés hozzáadása
-Statikus szöveget tartalmazó irányítópult nem valami érdekes, ezért most adjunk hozzá egy csempét az Application Insightsból az alkalmazás adatainak megjelenítéséhez.  Az Application Insights-csempéket hozzáadhatja a csempekatalógusból, vagy közvetlenül az Application Insights-képernyőkről is rögzítheti őket.  Így a már ismert diagramokat és nézeteket konfigurálhatja, mielőtt rögzítené őket az irányítópulton.  Először adja hozzá az alkalmazás standard állapotáttekintését.  Ez nem igényel konfigurálást, és minimális testreszabási lehetőségeket biztosít az irányítópulton.
+A statikus szöveget tartalmazó irányítópultok nem nagyon érdekesek, ezért az alkalmazással kapcsolatos információk megjelenítéséhez vegyen fel egy csempét a Application Insightsból.  Az Application Insights-csempéket hozzáadhatja a csempekatalógusból, vagy közvetlenül az Application Insights-képernyőkről is rögzítheti őket.  Így a már ismert diagramokat és nézeteket konfigurálhatja, mielőtt rögzítené őket az irányítópulton.  Először adja hozzá az alkalmazás standard állapotáttekintését.  Ez nem igényel konfigurálást, és minimális testreszabási lehetőségeket biztosít az irányítópulton.
 
 
-1. Válassza ki a **Application Insights** erőforrás a kezdőképernyőn.
-2. A a **áttekintése** ablaktáblán kattintson a rajzszög ikonra ![Gombostű ikon](media/tutorial-app-dashboards/pushpin.png) a csempe hozzáadása a legutóbb használt megtekintett irányítópulthoz.  
+1. Válassza ki az **Application Insights** erőforrást a kezdőképernyőn.
+2. Az **Áttekintés** ablaktáblán kattintson a rögzítés ikonra ![PIN-kód ikon](media/tutorial-app-dashboards/pushpin.png), hogy hozzáadja a csempét az utoljára megtekintett irányítópulthoz.  
  
-3. A jobb felső sarokban egy értesítés jelenik meg, hogy a csempét az irányítópulton rögzítve lett-e. Kattintson a **rögzítve az irányítópulton** lépjen vissza az irányítópultra, vagy az irányítópult ablaktábláját használja az értesítésben.
-4. A csempére most már hozzá van adva az irányítópulthoz. Válassza ki **szerkesztése** a jelentésvásznon való elhelyezését a csempe módosításához. Kattintson és az informatikai húzza a helyére, majd **testreszabás kész**. Az irányítópulton ezzel már van egy olyan csempe, amely hasznos információkat tartalmaz.
+3. A jobb felső sarokban egy értesítés jelenik meg, amelyet a csempe rögzített az irányítópulton. Kattintson a **rögzítve az irányítópultra** az értesítésben, hogy visszatérjen az irányítópulthoz, vagy használja az irányítópult ablaktáblát.
+4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Kattintson és húzza rá a helyére, majd kattintson a **Testreszabás kész**lehetőségre. Az irányítópulton ezzel már van egy olyan csempe, amely hasznos információkat tartalmaz.
 
     ![Áttekintő idővonal az irányítópulton](media/tutorial-app-dashboards/4dashboard-edit.png)
 
 ## <a name="add-custom-metric-chart"></a>Egyéni metrikadiagram hozzáadása
 A **Metrika** panel segítségével az Application Insights által gyűjtött metrikák időbeli alakulását mutató diagramokat készíthet választható szűrőkkel és csoportosítással.  Ahogy az Application Insights minden más elemét, ezt a diagramot is felveheti az irányítópultra.  Ehhez előbb szükség van némi testreszabásra.
 
-1. Válassza ki a **Application Insights** a kezdőképernyő-erőforrást.
+1. Válassza ki a **Application Insights** erőforrást a kezdőképernyőn.
 1. Válassza a **Metrika** lehetőséget.  
 2. Már létrejött egy üres diagram, és most a rendszer kéri, hogy adjon hozzá egy metrikát.  Adjon hozzá egy metrikát a diagramhoz, valamint igény szerint szűrőt és csoportosítást is.  Az alábbi példában a kiszolgálókérelmek száma látható sikeresség szerint csoportosítva.  Ez a sikeres és sikertelen kérelmek akkumulált nézetét mutatja.
 
     ![Metrika hozzáadása](media/tutorial-app-dashboards/metrics.png)
 
-4. Válassza ki **rögzítés az irányítópulton** a jobb oldalon. Ez hozzáadja a nézetet a legutóbb használt irányítópulthoz.
+4. A jobb oldalon válassza a **rögzítés az irányítópulton** lehetőséget. Ez hozzáadja a nézetet a legutóbb használt irányítópulthoz.
 
-3.  A jobb felső sarokban egy értesítés jelenik meg, hogy a csempét az irányítópulton rögzítve lett-e. Kattintson a **rögzítve az irányítópulton** lépjen vissza az irányítópultra, vagy az irányítópult panelen az értesítésben.
+3.  A jobb felső sarokban egy értesítés jelenik meg, amelyet a csempe rögzített az irányítópulton. Kattintson a **rögzítve az irányítópultra** az értesítésben, hogy visszatérjen az irányítópulthoz, vagy használja az irányítópult panelt.
 
-4. A csempére most már hozzá van adva az irányítópulthoz. Válassza ki **szerkesztése** a jelentésvásznon való elhelyezését a csempe módosításához. Kattintson és az informatikai húzza a helyére, majd **testreszabás kész**.
+4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Kattintson és húzza rá a helyére, majd kattintson a **Testreszabás kész**lehetőségre.
 
-## <a name="add-logs-analytics-query"></a>Naplók (Analytics) lekérdezés hozzáadása
-Az Azure Application Insights-Logs (Analytics) biztosít egy részletes lekérdezési nyelvet, amely lehetővé teszi, hogy az adatok elemzése az Application Insights által gyűjtött. Diagramok és egyéb nézetekhez hasonlóan naplók lekérdezés kimenete is hozzáadhat az irányítópulthoz.
+## <a name="add-logs-analytics-query"></a>Naplók hozzáadása (Analytics) lekérdezés
+Az Azure Application Insights-naplók (Analytics) sokoldalú lekérdezési nyelvet biztosítanak, amely lehetővé teszi az összes összegyűjtött adatok elemzését Application Insights. A diagramokhoz és egyéb nézetekhez hasonlóan a naplók kimenetét is hozzáadhatja az irányítópulthoz.
 
-Mivel Azure Applications Insights naplók (Analytics) egy különálló szolgáltatás, kell ahhoz, hogy a naplók lekérdezés az irányítópult megosztása. Ha megoszt egy Azure-irányítópultot, közzéteheti azt Azure-erőforrásként, amely elérhetővé teheti azt más felhasználók és erőforrások.  
+Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló szolgáltatás, meg kell osztania az irányítópultot, hogy tartalmazza a naplók lekérdezését. Amikor megoszt egy Azure-irányítópultot, azt Azure-erőforrásként teszi közzé, amely más felhasználók és erőforrások számára is elérhetővé válik.  
 
 1. Az irányítópult képernyőjének felső részén kattintson a **Megosztás** elemre.
 
     ![Irányítópult közzététele](media/tutorial-app-dashboards/8dashboard-share.png)
 
 2. Hagyja változatlanul az **Irányítópult nevét**, és válassza ki az **Előfizetés nevét** az irányítópult megosztásához.  Kattintson a **Publish** (Közzététel) gombra.  Az irányítópult mostantól elérhető más szolgáltatások és előfizetések számára.  Meghatározhat adott felhasználókat, akiknek hozzáférést kíván biztosítani az irányítópulthoz.
-1. Válassza ki a **Application Insights** a kezdőképernyő-erőforrást.
-2. Kattintson a **naplók (Analytics)** a bal oldalon, a naplók (Analytics) portál megnyitása figyelés alatt.
+1. Válassza ki a **Application Insights** erőforrást a kezdőképernyőn.
+2. Kattintson a **naplók (Analitika)** elemre a figyelés elemnél a naplók (Analytics) portál megnyitásához.
 3. Írja be a következő lekérdezést, amely a 10 leggyakrabban lekérdezett lapot és a kérelmek számát adja vissza:
 
     ``` Kusto
@@ -103,10 +101,10 @@ Mivel Azure Applications Insights naplók (Analytics) egy különálló szolgál
     | take 10
     ```
 
-4. Kattintson a **futtatása** érvényesítése a lekérdezés eredményeit.
-5. Kattintson a rajzszög ikonra ![Gombostű ikon](media/tutorial-app-dashboards/pushpin.png) és válassza ki az irányítópult nevét. Az oka, hogy ezzel a beállítással rendelkezik, válasszon egy irányítópultot, ahol az utolsó irányítópultot használták az előző lépésekkel ellentétben van, mert a naplók (Analytics) konzol egy külön szolgáltatás, és az összes elérhető megosztott irányítópult közül kell választania.
+4. A lekérdezés eredményeinek ellenőrzéséhez kattintson a **Futtatás** gombra.
+5. Kattintson a rögzítés ikonra ![Rögzítés ikon](media/tutorial-app-dashboards/pushpin.png) majd válassza ki az irányítópult nevét. Ennek a beállításnak az az oka, hogy egy irányítópultot olyan módon választ ki, amely a legutóbbi irányítópult használatának korábbi lépéseitől eltérően van, mivel a naplók (analitikai) konzol egy különálló szolgáltatás, és az összes elérhető megosztott irányítópult közül ki kell választania.
 
-5. Mielőtt visszalépne az irányítópultra, adjon hozzá egy másik lekérdezést, de ezúttal megjelenítenie azt egy diagram, így a különböző módon jeleníthetik meg a naplók lekérdezések irányítópulton látható. Indítsa el a következő lekérdezést, amely a 10 legtöbb kivétellel járó műveletet összesíti.
+5. Mielőtt visszalépjen az irányítópultra, adjon hozzá egy másik lekérdezést, de ezúttal diagramként jeleníti meg, így láthatja, hogyan jelenítheti meg a naplók lekérdezéseit az irányítópulton. Indítsa el a következő lekérdezést, amely a 10 legtöbb kivétellel járó műveletet összesíti.
 
     ``` Kusto
     exceptions
@@ -117,16 +115,16 @@ Mivel Azure Applications Insights naplók (Analytics) egy különálló szolgál
 
 6. Válassza a **Diagram** lehetőséget, majd váltson a **Perec** típusra a kimenet megjelenítéséhez.
 
-    ![Naplók (Analytics) diagram](media/tutorial-app-dashboards/11querychart.png)
+    ![Naplók (analitikai) diagram](media/tutorial-app-dashboards/11querychart.png)
 
-6. Kattintson a rajzszög ikonra ![Gombostű ikon](media/tutorial-app-dashboards/pushpin.png) a PIN-kód jobb felső sarokban lévő a diagramot az irányítópulton, és ezúttal válassza ki a hivatkozásra kattintva lépjen vissza az irányítópultra.
-4. A lekérdezések eredményei most megjelennek az irányítópulton a választott formátumban.  Kattintson és húzzon minden egy helyen, majd **testreszabás kész**.
-5. Kattintson a ceruza ikonra ![Ceruza ikon](media/tutorial-app-dashboards/pencil.png) minden egyes címére kattintva adjon mindegyiknek egy leíró címet.
+6. Kattintson a rögzítés ikonra ![Rögzítés ikon](media/tutorial-app-dashboards/pushpin.png) kattintson a jobb felső sarokban a diagram irányítópultra való rögzítéséhez, és ezúttal válassza a hivatkozást az irányítópultra való visszatéréshez.
+4. A lekérdezések eredményei most megjelennek az irányítópulton a választott formátumban.  Kattintson és húzza az egyeseket a pozícióba, majd kattintson a **Testreszabás kész**lehetőségre.
+5. Válassza a ceruza ikont ![Ceruza ikon](media/tutorial-app-dashboards/pencil.png) minden címben adjon meg egy leíró címet.
 
-5. Válassza ki **megosztás** való ismételt közzétételéhez az irányítópulton, amely mostantól tartalmazza a különböző diagramok és Vizualizációk az Application Insights szolgáltatásból a módosításokat.
+5. Válassza a **megosztás** lehetőséget, ha újra közzé szeretné tenni a módosításokat az irányítópulton, amely mostantól számos diagramot és vizualizációt tartalmaz a Application Insightsból.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekintse át az Application Insights dokumentációját, amely egy esettanulmányt is tartalmaz.
 
 > [!div class="nextstepaction"]

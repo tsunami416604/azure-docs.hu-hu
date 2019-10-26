@@ -1,25 +1,19 @@
 ---
 title: Irányítópultok létrehozása és megosztása Azure Log Analytics-adatokból | Microsoft Docs
 description: Ez az oktatóanyag segít megérteni, hogy Log Analytics irányítópultok hogyan láthatják el az összes mentett napló lekérdezését, így egyetlen lencsével megtekintheti a környezetét.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: tutorial
-ms.date: 06/19/2019
+author: mgoedtel
 ms.author: magoedte
+ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: c859fb9b8b3509e8369559a3a9a4d45cb4e34125
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: baa510e060a3bca46110842600262345072b1a18
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414174"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894795"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Irányítópultok létrehozása és megosztása Log Analytics-adatokból
 
@@ -33,13 +27,13 @@ Log Analytics irányítópultok képesek megjeleníteni az összes mentett napl�
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="create-a-shared-dashboard"></a>Megosztott irányítópult létrehozása
 Válassza az **irányítópult** lehetőséget az alapértelmezett [irányítópult](../../azure-portal/azure-portal-dashboards.md)megnyitásához. Az irányítópult az alábbi példától eltérően fog megjelenni.
 
-![Az Azure portal irányítópultján](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
+![Azure Portal irányítópult](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Itt összeállíthatók az informatikai szempontból legfontosabb működési adatok az összes Azure-erőforrásra vonatkozóan, beleértve az Azure Log Analyticsből származó telemetriákat.  Mielőtt megkezdené a naplózási lekérdezés megjelenítését, először hozzon létre egy irányítópultot, és ossza meg azt.  Ezután a példában szereplő Teljesítménynapló-lekérdezésre koncentrálunk, amely diagramként fog megjelenni, és hozzáadja az irányítópulthoz.  
 
@@ -75,7 +69,7 @@ Mentse a lekérdezést a lap tetején található **Save (Mentés** ) gombra kat
 
 ![Lekérdezés mentése](media/tutorial-logs-dashboards/save-query.png)
 
-A **lekérdezés mentése** panelen adjon meg egy olyan nevet, mint például *Az Azure virtuális gépek – processzor kihasználtsága* és egy kategória, például *irányítópultok* , majd kattintson a **Mentés**gombra.  Így létrehozhatja a használható és módosítható gyakori lekérdezések tárait.  Végül a lap jobb felső sarkában lévő **rögzítés** az irányítópultra gombra kattintva rögzítse a korábban létrehozott megosztott irányítópultra, majd válassza ki az irányítópult nevét.
+A **lekérdezés mentése** panelen adjon meg egy olyan nevet, mint például *Az Azure virtuális gépek – processzor kihasználtsága* és egy kategória, például *irányítópultok* , majd kattintson a **Mentés**gombra.  Így létrehozhatja a használható és módosítható gyakori lekérdezések tárait.  Végül a lap jobb felső sarkában lévő **rögzítés az irányítópultra** gombra kattintva rögzítse a korábban létrehozott megosztott irányítópultra, majd válassza ki az irányítópult nevét.
 
 Most, hogy rögzítettünk egy lekérdezést az irányítópulton, láthatja, hogy az irányítópult kapott egy általános címet és egy cím alatti megjegyzést.
 
@@ -85,7 +79,7 @@ Most, hogy rögzítettünk egy lekérdezést az irányítópulton, láthatja, ho
 
 ![A minta-irányítópult kész konfigurációja](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre irányítópultot a Azure Portalban, és hogyan adhat hozzá egy napló-lekérdezést.  Folytassa a következő oktatóanyaggal, amely a napló lekérdezési eredményei alapján megvalósítható különböző válaszokat ismerteti.  
 
 > [!div class="nextstepaction"]

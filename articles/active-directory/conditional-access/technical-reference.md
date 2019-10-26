@@ -4,19 +4,19 @@ description: Tekintse át a Azure Active Directory feltételes hozzáférési sz
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: reference
 ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274181"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893463"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory feltételes hozzáférési beállítások ismertetése
 
@@ -145,7 +145,7 @@ A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza l�
 | Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Név | 1 |
 | Type (Típus) | REG_SZ (karakterlánc) |
-| Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS @ no__t-0//clients2. Google. com/Service/Update2/CRX |
+| Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS\://clients2.google.com/service/update2/crx |
 
 A **Windows 8,1 és 7 rendszerhez**készült Chrome-támogatáshoz hozza létre a következő beállításkulcsot:
 

@@ -12,18 +12,18 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255014"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898945"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
 Ez az útmutató a JavaScript-Azure Functions írásának bonyolult adatait tartalmazza.
 
-A JavaScript-függvény egy olyan exportált @no__t – 0, amely az aktiváláskor fut ([a triggerek a function. JSON fájlban vannak konfigurálva](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
+A JavaScript-függvények olyan exportált `function`, amelyek indításkor futnak ([a triggerek a function. JSON fájlban vannak konfigurálva](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
 
 Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első függvény létrehozásához a [Visual Studio Code](functions-create-first-function-vs-code.md) használatával vagy [a portálon](functions-create-first-azure-function.md)hajtsa végre a functions rövid útmutatót.
 
@@ -50,7 +50,7 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-A projekt gyökerében található egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy, a saját programkódját (. js) és a kötési konfigurációs fájlt (function. JSON) tartalmazó mappa. @No__t-0 szülőjének neve mindig a függvény neve.
+A projekt gyökerében található egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy, a saját programkódját (. js) és a kötési konfigurációs fájlt (function. JSON) tartalmazó mappa. A `function.json`szülő könyvtárának neve mindig a függvény neve.
 
 A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak meghatározva, a `bin` mappában található tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
@@ -270,7 +270,7 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. @No__t – 0 esetén további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinteken való írását:
+Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. `context.log`on további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinteken való írását:
 
 
 | Módszer                 | Leírás                                |
@@ -397,9 +397,9 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Válasz csak]_ @No__t-2 meghívásával.** A rendszer egy HTTP-választ hoz létre a `body` bemenettel a válasz törzsében. a `context.done()` implicit módon van meghívva.
++ **_[Válasz csak]_ `context.res.send(body?: any)`meghívásával.** A rendszer egy HTTP-választ hoz létre a `body` bemenettel a válasz törzsében. a `context.done()` implicit módon van meghívva.
 
-+ **_[Válasz csak]_ @No__t-2 meghívásával.** A speciális HTTP-kötés a `context.done()` metódusnak átadott választ adja vissza. A következő HTTP kimeneti kötés a `$return` kimeneti paramétert definiálja:
++ **_[Válasz csak]_ `context.done()`meghívásával.** A speciális HTTP-kötés a `context.done()` metódusnak átadott választ adja vissza. A következő HTTP kimeneti kötés a `$return` kimeneti paramétert definiálja:
 
     ```json
     {
@@ -421,7 +421,7 @@ A következő táblázat a függvények futtatókörnyezetének egyes főbb verz
 | Függvények verziója | Node. js-verzió | 
 |---|---|
 | 1. x | 6.11.2 (a futtatókörnyezet zárolta) |
-| 2. x  | _Aktív LTS_ -és _karbantartási LTS_ Node. js-verziók (~ 10 ajánlott). A verzió megcélzása az Azure-ban a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás beállításának](functions-how-to-use-azure-function-app-settings.md#settings) `~10` értékre való beállításával.|
+| 2. x  | _Aktív LTS_ -és _karbantartási LTS_ Node. js-verziók (~ 10 ajánlott). A verzió megcélzása az Azure-ban a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás beállításának](functions-how-to-use-azure-function-app-settings.md#settings) `~10`re való beállításával.|
 
 A futtatókörnyezet által használt aktuális verziót úgy tekintheti meg, ha ellenőrzi a fenti alkalmazás beállítását, vagy a `process.version` bármely függvényből való nyomtatásával.
 
@@ -440,16 +440,16 @@ module.exports = function(context) {
 ```
 
 > [!NOTE]
-> @No__t-0 fájlt kell megadnia a függvényalkalmazás gyökerében. A fájl definiálása lehetővé teszi, hogy az alkalmazás összes funkciója ugyanazt a gyorsítótárazott csomagot használja, amely a legjobb teljesítményt biztosítja. Ha ütközés lép fel, azt megoldhatja egy `package.json` fájl hozzáadásával egy adott függvény mappájába.  
+> `package.json`-fájlt kell megadnia a függvényalkalmazás gyökerében. A fájl definiálása lehetővé teszi, hogy az alkalmazás összes funkciója ugyanazt a gyorsítótárazott csomagot használja, amely a legjobb teljesítményt biztosítja. Ha ütközés lép fel, azt megoldhatja egy `package.json` fájl hozzáadásával egy adott függvény mappájába.  
 
-Ha a forrásoldali vezérlőből telepíti a függvények alkalmazásait, a tárházban található bármelyik @no__t 0 fájl az üzembe helyezés során egy `npm install`-et indít el a mappájába. Ha azonban a portálon vagy a CLI-n keresztül végzi a telepítést, manuálisan kell telepítenie a csomagokat.
+Ha a forrásoldali vezérlőkből, a tárházban található összes `package.json` fájlból telepíti a függvények alkalmazásait, akkor a telepítés során egy `npm install` fog kiváltani a mappában. Ha azonban a portálon vagy a CLI-n keresztül végzi a telepítést, manuálisan kell telepítenie a csomagokat.
 
 A függvényalkalmazás kétféleképpen telepíthet csomagokat: 
 
 ### <a name="deploying-with-dependencies"></a>Üzembe helyezés függőségekkel
 1. Telepítse az összes szükséges csomagot helyileg a `npm install` futtatásával.
 
-2. Telepítse a kódot, és ellenőrizze, hogy a `node_modules` mappa szerepel-e a központi telepítésben. 
+2. Telepítse a kódot, és gondoskodjon arról, hogy a `node_modules` mappa szerepeljen a telepítésben. 
 
 
 ### <a name="using-kudu"></a>A kudu használata
@@ -465,7 +465,7 @@ A függvényalkalmazás kétféleképpen telepíthet csomagokat:
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezekhez a beállításokhoz `process.env` használatával férhet hozzá, ahogy az itt látható a második és harmadik hívásban `context.log()`, ahol a `AzureWebJobsStorage` és a `WEBSITE_SITE_NAME` környezeti változót naplózzák:
+A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezeket a beállításokat `process.env`használatával érheti el, ahogy az itt látható a második és harmadik hívásban, hogy `context.log()`, hol naplózzák a `AzureWebJobsStorage` és `WEBSITE_SITE_NAME` környezeti változókat:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -485,7 +485,7 @@ Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functio
 
 Az exportált függvény helyének és nevének konfigurálásához a `function.json` tulajdonságok `scriptFile` és a `entryPoint` használható. Ezek a tulajdonságok akkor lehetnek fontosak, ha a JavaScript transpiled.
 
-### <a name="using-scriptfile"></a>@No__t-0 használata
+### <a name="using-scriptfile"></a>`scriptFile` használata
 
 Alapértelmezés szerint a JavaScript-függvény `index.js`, egy olyan fájl, amely ugyanazokat a szülő könyvtárat osztja meg, mint a megfelelő `function.json`.
 
@@ -514,9 +514,9 @@ A `myNodeFunction` `function.json` értékének tartalmaznia kell egy `scriptFil
 }
 ```
 
-### <a name="using-entrypoint"></a>@No__t-0 használata
+### <a name="using-entrypoint"></a>`entryPoint` használata
 
-@No__t-0 (vagy `index.js`) esetében a függvényt az `module.exports` használatával kell exportálni, hogy azok megtalálhatók és fussanak. Alapértelmezés szerint az aktiváláskor végrehajtandó függvény az egyetlen Exportálás az adott fájlból, az `run` nevű exportálás, vagy a `index` nevű exportálás.
+`scriptFile` (vagy `index.js`) esetében a függvényt az `module.exports` használatával kell exportálni, hogy azok megtalálhatók és fussanak. Alapértelmezés szerint az aktiváláskor végrehajtandó függvény az egyetlen Exportálás az adott fájlból, az `run` nevű exportálás, vagy a `index` nevű exportálás.
 
 Ez a `function.json` `entryPoint` használatával konfigurálható, ahogy az alábbi példában is látható:
 
@@ -621,7 +621,7 @@ npm run build:production
 func azure functionapp publish <APP_NAME>
 ```
 
-Ebben a parancsban cserélje le a `<APP_NAME>` értéket a Function alkalmazás nevével.
+Ebben a parancsban cserélje le a `<APP_NAME>` nevet a Function alkalmazás nevével.
 
 ## <a name="considerations-for-javascript-functions"></a>A JavaScript-függvények szempontjai
 
@@ -639,13 +639,13 @@ Azure Functions a kiszolgáló nélküli üzemeltetési modellben való fejleszt
 
 Ha egy Azure Functions-alkalmazásban szolgáltatás-specifikus ügyfelet használ, ne hozzon létre új ügyfelet minden függvény meghívásával. Ehelyett hozzon létre egyetlen, statikus ügyfelet a globális hatókörben. További információ: [kapcsolatok kezelése Azure Functionsban](manage-connections.md).
 
-### <a name="use-async-and-await"></a>@No__t-0 és `await` használata
+### <a name="use-async-and-await"></a>`async` és `await` használata
 
 A JavaScript-Azure Functions írásakor a `async` és a `await` kulcsszó használatával kell kódot írnia. A kód `async` és `await` helyett a visszahívások vagy a `.then`, valamint a `.catch` használata az ígéretekkel segít elkerülni a két gyakori problémát:
  - [A Node. js folyamat összeomlása](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)miatt fellépő nem kezelt kivételek eldobása, ami hatással van más függvények végrehajtására.
  - Váratlan viselkedés, például hiányzó naplók a Context. log naplófájlból, a nem megfelelően várt aszinkron hívások miatt.
 
-Az alábbi példában a (z) `fs.readFile` aszinkron metódust egy hiba-első visszahívási függvény hívja meg második paramétereként. Ez a kód a fent említett problémákat is okozhatja. A megfelelő hatókörben nem kifejezetten bekövetkező kivétel összeomlott a teljes folyamaton (a probléma #1). A visszahívási függvény hatókörén kívüli @no__t – 0 hívása azt jelenti, hogy a függvény meghívása a fájl olvasása előtt megszűnik (probléma #2). Ebben a példában a `context.done()` túl korai eredményt hívja a hiányzó naplóbejegyzések `Data from file:` kezdetű bejegyzéseivel.
+Az alábbi példában a (z) `fs.readFile` aszinkron metódust egy hiba-első visszahívási függvény hívja meg második paramétereként. Ez a kód a fent említett problémákat is okozhatja. A megfelelő hatókörben nem kifejezetten bekövetkező kivétel összeomlott a teljes folyamaton (a probléma #1). A visszahívás funkció hatókörén kívüli `context.done()` hívása azt jelenti, hogy a függvény meghívása a fájl olvasása előtt megszűnik (probléma #2). Ebben a példában a `context.done()` túl korai eredményt hívja a hiányzó naplóbejegyzések `Data from file:` kezdetű bejegyzéseivel.
 
 ```javascript
 // NOT RECOMMENDED PATTERN
@@ -677,8 +677,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

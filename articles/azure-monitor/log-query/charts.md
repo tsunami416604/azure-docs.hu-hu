@@ -1,36 +1,30 @@
 ---
-title: Diagramok és ábrák létrehozása az Azure Monitor log-lekérdezések |} A Microsoft Docs
-description: Az Azure monitort a naplózási adatokat különböző módon különböző Vizualizációk ismerteti.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Diagramok és diagramok létrehozása Azure Monitor log-lekérdezésekből | Microsoft Docs
+description: Az Azure Monitor különböző vizualizációit ismerteti a naplózási információk különböző módokon történő megjelenítéséhez.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 34975a1752467c61ea5b329210473eee266c98d1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594026"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900401"
 ---
-# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Diagramok és ábrák létrehozása az Azure Monitor log-lekérdezések
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Diagramok és diagramok létrehozása Azure Monitor log-lekérdezésekből
 
 > [!NOTE]
-> Hajtsa végre [speciális összesítések az Azure Monitor log-lekérdezések](advanced-aggregations.md) ebben a leckében befejezése előtt.
+> A lecke elvégzése előtt hajtsa végre [a speciális összesítéseket Azure monitor-naplózási lekérdezésekben](advanced-aggregations.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk ismerteti az Azure monitort a naplózási adatokat különböző módon különféle vizualizációkat.
+Ez a cikk a különböző vizualizációkat ismerteti Azure Monitor a naplózási adatai különböző módokon történő megjelenítéséhez.
 
-## <a name="charting-the-results"></a>Az eredmények diagramkészítési
-Indítsa el vannak egy operációs rendszer, az elmúlt órában hány számítógép áttekintésével:
+## <a name="charting-the-results"></a>Az eredmények ábrázolása
+Először tekintse át, hogy hány számítógépen van operációs rendszer, az elmúlt órában:
 
 ```Kusto
 Heartbeat
@@ -38,17 +32,17 @@ Heartbeat
 | summarize count(Computer) by OSType  
 ```
 
-Alapértelmezés szerint eredmények táblázatos megjelenítéséhez:
+Alapértelmezés szerint az eredmények táblázatként jelennek meg:
 
-![Tábla](media/charts/table-display.png)
+![Table](media/charts/table-display.png)
 
-Jobb képet kaphat, jelölje be **diagram**, és válassza ki a **torta** beállítással megjelenítheti az eredményeket:
+Jobb nézet létrehozásához válassza a **diagram**lehetőséget, majd az eredmények megjelenítéséhez kattintson a **torta** lehetőségre:
 
 ![Tortadiagram](media/charts/charts-and-diagrams-pie.png)
 
 
 ## <a name="timecharts"></a>Timecharts
-Az átlag, a processzor kihasználtsága az 50, és a 95. percentilisei megjelenítése bins 1 óra. A lekérdezés több sorozat állít elő, és ezután kiválaszthatja, melyik sorozat a diagram megjelenítése:
+A processzoridő átlagos, 50 és 95. százalékos értékének megjelenítése 1 órás raktárhelyeken. A lekérdezés több adatsorozatot hoz létre, és kiválaszthatja az idődiagramban megjelenítendő sorozatot:
 
 ```Kusto
 Perf
@@ -57,13 +51,13 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-Válassza ki a **sor** diagram megjelenítési beállítás:
+Válassza ki **a diagram** megjelenítési beállítását:
 
 ![Vonaldiagram](media/charts/charts-and-diagrams-multiSeries.png)
 
-### <a name="reference-line"></a>Referenciavonal
+### <a name="reference-line"></a>Hivatkozási vonal
 
-Referenciavonalak segítségével egyszerűbb azonosításához, ha a metrika túllépte az egy adott küszöbértéket. Adjon hozzá egy sort egy diagramra, hogy az adatkészlet egy állandó oszloppal kiterjesztése:
+A viszonyítási sorok segítségével egyszerűen azonosítható, hogy a metrika túllépte-e a megadott küszöbértéket. Egy vonal diagramhoz való hozzáadásához bővítse az adatkészletet egy állandó oszloppal:
 
 ```Kusto
 Perf
@@ -73,10 +67,10 @@ Perf
 | extend Threshold = 20
 ```
 
-![Referenciavonal](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
+![Hivatkozási vonal](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
-## <a name="multiple-dimensions"></a>Több dimenzióban
-Több kifejezésének a `by` záradékában `summarize` hozzon létre több sort az eredmények között, egy az egyes kombinaci hodnot.
+## <a name="multiple-dimensions"></a>Több dimenzió
+A `summarize` `by` záradékában több kifejezés is több sort hoz létre az eredményekben, egyet pedig az értékek minden kombinációjára.
 
 ```Kusto
 SecurityEvent
@@ -84,21 +78,21 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Megtekintheti az eredményeket egy diagramon, az első oszlop, használja a `by` záradékban. Az alábbi példa bemutatja egy halmozott diagram használata a _eseményazonosító._ Kell lennie a `string` írja be, így ebben a példában a _eseményazonosító_ van folyamatban alakítható karakterlánccá. 
+Amikor diagramként jeleníti meg az eredményeket, a `by` záradék első oszlopát fogja használni. Az alábbi példában egy halmozott oszlopdiagram látható a _Napszállta használatával._ A dimenziónak `string` típusúnak kell lennie, ezért ebben a példában a _Napszállta_ a karakterláncba kerül. 
 
-![Sávdiagram eseményazonosító](media/charts/charts-and-diagrams-multiDimension1.png)
+![Oszlopdiagram Napszállta](media/charts/charts-and-diagrams-multiDimension1.png)
 
-Az az oszlop nevét a legördülő listára kattintva válthat között. 
+A közötti váltáshoz válassza ki a legördülő menüt az oszlop nevével. 
 
-![Sávdiagram AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
+![Oszlopdiagram AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg a többi leckéket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) használatát ismertető további leckéket a Azure monitor naplózási adataival:
 
 - [Karakterlánc-műveletek](string-operations.md)
-- [Dátum és idő műveletek](datetime-operations.md)
-- [Összesítésfüggvények](aggregations.md)
+- [Dátum-és időműveletek](datetime-operations.md)
+- [Összesítési függvények](aggregations.md)
 - [Speciális összesítések](advanced-aggregations.md)
-- [JSON és adatstruktúrák](json-data-structures.md)
+- [JSON-és adatstruktúrák](json-data-structures.md)
 - [Speciális lekérdezés írása](advanced-query-writing.md)
-- [Illesztés](joins.md)
+- [Csatlakozik](joins.md)

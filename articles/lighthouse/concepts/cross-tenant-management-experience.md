@@ -4,19 +4,19 @@ description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a tö
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 10/24/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598453"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901818"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
-Ez a cikk azokat a forgatókönyveket ismerteti, amelyeket Ön a szolgáltatóként használhat az [Azure-beli delegált erőforrás-kezeléssel](../concepts/azure-delegated-resource-management.md) , amellyel több ügyfél számára felügyelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com)saját bérlőn belülről.
+Szolgáltatóként az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md) használatával több ügyfél számára is kezelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com)a saját bérlőn belül. A legtöbb feladat és szolgáltatás elvégezhető delegált Azure-erőforrásokon a felügyelt bérlők között. Ez a cikk néhány olyan továbbfejlesztett forgatókönyvet ismertet, amelyekben az Azure-beli delegált erőforrás-kezelés hatékony lehet.
 
 > [!NOTE]
 > Az Azure-beli delegált erőforrás-kezelés egy olyan vállalaton belül is felhasználható, amely a saját több Bérlővel rendelkezik a több-bérlős felügyelet egyszerűsítése érdekében.
@@ -37,9 +37,15 @@ Az Azure delegált erőforrás-kezelés használatával a jogosult felhasználó
 
 ![Egy szolgáltatói bérlőn keresztül kezelt ügyfelek erőforrásai](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>Támogatott szolgáltatások és forgatókönyvek
+## <a name="apis-and-management-tool-support"></a>API-k és felügyeleti eszközök támogatása
 
-A több-bérlős felügyeleti felület jelenleg a következő forgatókönyveket támogatja a delegált ügyfél-erőforrásokkal kapcsolatban:
+A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával is elvégezheti a felügyeleti feladatokat. A rendszer minden meglévő API-t felhasználhat a delegált erőforrások használata esetén, ha a funkció támogatott a több-bérlős felügyelet esetében, és a felhasználó rendelkezik a megfelelő engedélyekkel.
+
+Az Azure-beli delegált erőforrás-kezelési feladatok végrehajtásához API-kat is biztosítunk. További információért lásd a **hivatkozási** szakaszt.
+
+## <a name="enhanced-services-and-scenarios"></a>Továbbfejlesztett szolgáltatások és forgatókönyvek
+
+A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrásain végezhető el. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet is hatásos lehet.
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
@@ -55,7 +61,7 @@ A több-bérlős felügyeleti felület jelenleg a következő forgatókönyveket
 
 [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Megtekintheti a Azure Portal delegált előfizetésekre vonatkozó riasztásokat, vagy programozott módon REST API-hívásokon keresztül, amelyekkel megtekintheti a riasztásokat az összes előfizetésben
+- Megtekintheti a delegált előfizetések riasztásait, és megtekintheti a riasztásokat az összes előfizetés között
 - A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
 - Log Analytics: adatok lekérdezése távoli ügyfelek munkaterületeiről több bérlőn
 - Hozzon létre riasztásokat az olyan ügyfelek bérlői számára, amelyek automatizálást indítanak, például Azure Automation runbookok vagy Azure Functionst a szolgáltató bérlője webhookok használatával
@@ -121,16 +127,9 @@ Támogatási kérelmek:
 Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásokat:
 
 - Az Azure Resource Manager által kezelt kérelmeket az Azure-beli delegált erőforrás-kezelés használatával lehet elvégezni. A kérések műveleti URI-je `https://management.azure.com` értékkel kezdődik. Az Azure-beli delegált erőforrás-kezelés nem támogatja azonban az erőforrástípus egy példánya által kezelt kérelmeket (például a kulcstartó-titkok elérését vagy a tárolási adatok elérését). Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például `https://myaccount.blob.core.windows.net` vagy `https://mykeyvault.vault.azure.net/`. Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek. 
-- A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg az összes beépített szerepkört támogatja, kivéve a tulajdonosi, a felhasználói hozzáférési rendszergazdai vagy a [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) engedéllyel rendelkező beépített szerepköröket. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) szintén nem támogatottak.
+- A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost vagy a [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) engedéllyel rendelkező beépített szerepköröket. A felhasználói hozzáférés rendszergazdai szerepköre csak korlátozott használat esetén támogatott a [szerepkörök hozzárendeléséhez a felügyelt identitásokhoz](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nem támogatottak.
 - Az Azure-beli delegált erőforrás-kezeléshez jelenleg nem lehet előfizetést (vagy erőforráscsoportot) előkészíteni, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha regisztrálva van egy előfizetés a **Microsoft. ManagedServices** erőforrás-szolgáltatóval való bevezetéshez, jelenleg nem fog tudni Databricks-munkaterületet létrehozni az adott előfizetéshez.
 - Míg az Azure-beli delegált erőforrás-kezeléshez az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok is bejelentkezhetnek, ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveleteket a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>API-k és felügyeleti eszközök használata a több-bérlős felügyelettel
-
-A fent felsorolt támogatott szolgáltatások és forgatókönyvek esetében közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával is elvégezheti a felügyeleti feladatokat. A rendszer minden meglévő API-t használhat a delegált erőforrások (támogatott szolgáltatások) használata esetén.
-
-Vannak olyan API-k is, amelyek az Azure-beli delegált erőforrás-kezelési feladatok végrehajtásához szükségesek. További információért lásd a **hivatkozási** szakaszt.
-
 
 ## <a name="next-steps"></a>Következő lépések
 

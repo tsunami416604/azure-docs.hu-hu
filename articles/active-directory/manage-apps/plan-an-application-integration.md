@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure AD integrálása-alkalmazásokba |} A Microsoft Docs
-description: Ez a cikk az első lépésekről szóló útmutatót az Azure Active Directory (AD) integrálása a helyszíni alkalmazások és a felhőalapú alkalmazások.
+title: Ismerkedés az Azure AD és az alkalmazások integrálásával | Microsoft Docs
+description: Ez a cikk egy első lépéseket ismertető útmutató a Azure Active Directory (AD) helyszíni alkalmazásokkal és felhőalapú alkalmazásokkal való integrálásához.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,87 +15,87 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11453ad9132664313df2b56cb3664512628a16ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108239"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895937"
 ---
-# <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása az alkalmazások első lépések útmutató
+# <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal
 
-Ez a témakör felsorolja az alkalmazások integrálása az Azure Active Directory (AD) a folyamat. Az alábbi szakaszokban mindegyike tartalmaz egy részletesebb témakör rövid összefoglalása, így azonosíthatja a kezdeti lépéseket ismertető útmutató mely részei az Ön számára.
+Ez a témakör összefoglalja az alkalmazások Azure Active Directory (AD) szolgáltatással való integrálásának folyamatát. Az alábbi részek egy részletesebb témakört tartalmaznak, amelyből megtudhatja, hogy az első lépéseket ismertető útmutató mely részeire vonatkozik.
 
-Részletes üzembe helyezési csomagok letöltéséhez lásd: [további lépések](#next-steps).
+A részletes telepítési csomagok letöltéséhez tekintse meg a [következő lépéseket](#next-steps).
 
-## <a name="take-inventory"></a>Leltározása
-Alkalmazások integrálása az Azure ad-ben, mielőtt fontos tudni, hogy hol vannak és hol szeretne belépni.  Az alábbi kérdések célja, hogy segítsen, gondolja át az Azure AD-integrációs projektet.
+## <a name="take-inventory"></a>Leltár készítése
+Az alkalmazások az Azure AD-vel való integrálása előtt fontos tudni, hogy hol van, és hová szeretne menni.  Az alábbi kérdések segítenek az Azure AD-alkalmazás-integrációs projekt meggondolása során.
 
-### <a name="application-inventory"></a>Alkalmazásleltár
-* Hol találhatók az alkalmazásokat? Kié őket?
-* Milyen típusú hitelesítést igényelnek az alkalmazások?
-* Ki kell, hogy mely alkalmazásokhoz való hozzáférés?
-* Szeretné üzembe helyezni egy új alkalmazást?
-  * Lesz, házon belül hozhat létre és hogyan telepítheti egy Azure-beli számítási példányon?
-  * Fog használni, amely az Azure Alkalmazásgyűjteményben érhető el?
+### <a name="application-inventory"></a>Alkalmazás leltározása
+* Hol találhatók az összes alkalmazás? Kik tulajdonosai?
+* Milyen típusú hitelesítésre van szükség az alkalmazásaiban?
+* Kinek van hozzáférése az alkalmazásokhoz?
+* Új alkalmazást kíván üzembe helyezni?
+  * Létrehozza a házat, és üzembe helyezi egy Azure számítási példányon?
+  * Ön az Azure Application Galleryben elérhetővé teszi az egyiket?
 
-### <a name="user-and-group-inventory"></a>Felhasználó- és szoftverleltár
-* Hol találhatók a a felhasználói fiókokat?
+### <a name="user-and-group-inventory"></a>Felhasználó és csoport leltára
+* Hol találhatók a felhasználói fiókjai?
   * Helyszíni Active Directory
   * Azure AD
-  * Egy különálló alkalmazás-adatbázis, amely a saját belül
-  * Nem engedélyezett alkalmazások
-  * A fentiek mindegyikét
-* Milyen engedélyeket és a szerepkör-hozzárendeléseket az egyes felhasználók jelenleg rendelkezik? Van szüksége, tekintse át a hozzáférésüket, vagy arra, hogy a felhasználói hozzáférés és a szerepkör-hozzárendelések megfelelő most már Ön?
-* Csoportok már meghatározott a helyszíni Active Directoryban?
+  * Egy külön saját alkalmazás-adatbázison belül
+  * A nem engedélyezett alkalmazásokban
+  * A fentiek mindegyike
+* Milyen engedélyek és szerepkör-hozzárendelések vannak jelenleg az egyes felhasználók számára? Ellenőriznie kell a hozzáférését, vagy biztos lehet benne, hogy a felhasználói hozzáférés és a szerepkör-hozzárendelések megfelelőek?
+* A csoportok már a helyszíni Active Directoryban vannak kialakítva?
   * Hogyan vannak rendszerezve a csoportok?
-  * Kik a csoport tagjai?
-  * Milyen engedélyek/szerepkör-hozzárendeléseit a csoportok jelenleg rendelkezik?
-* Kell felhasználó/csoport adatbázisok karbantartása előtt integrálása?  (Ez a kérdés meglehetősen fontos. Szemétgyűjtési a szemétgyűjtési ki.)
+  * Kik a csoporttagok?
+  * Milyen engedélyek/szerepkör-hozzárendelések vannak jelenleg a csoportok számára?
+* Az integrálás előtt törölnie kell a felhasználó/csoport adatbázisait?  (Ez egy nagyon fontos kérdés. Bekerülés a szemétbe.)
 
-### <a name="access-management-inventory"></a>Hozzáférés – leltár
-* Hogyan jelenleg kezelhetők az alkalmazásokhoz való felhasználói hozzáférést? Nem kell módosítani?  Tekintette kezelésére, mint például a más módon [RBAC](../../role-based-access-control/role-assignments-portal.md) például?
-* Akik milyen hozzáférésre van szüksége?
+### <a name="access-management-inventory"></a>Hozzáférés-kezelési leltár
+* Hogyan kezelheti jelenleg az alkalmazásokhoz való felhasználói hozzáférést? Ezt módosítani kell?  Más módszerekkel kezelheti a hozzáférést, például a [RBAC](../../role-based-access-control/role-assignments-portal.md) -mel?
+* Kinek van hozzáférése a következőhöz?
 
-Talán nem rendelkezik az összes ezekre a kérdésekre adott válaszokat meghozni, de ez nem probléma.  Ez az útmutató segítségével kérdések megválaszolásához és néhány megalapozottabb döntéseket hozhat.
+Lehet, hogy nem rendelkezik a válaszokkal az összes kérdésre előre, de ez rendben van.  Ez az útmutató segítséget nyújt néhány kérdés megválaszolásához, és megalapozott döntéseket hozhat.
 
-### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Keresse meg a Cloud Discovery nem engedélyezett felhőalkalmazások
+### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Nem engedélyezett felhőalapú alkalmazások keresése Cloud Discovery
 
-Ahogy említettük, az alkalmazásokat, amelyek még nem lett az eddig a szervezet által felügyelt lehet.  A hardverleltározási folyamatának részeként nem engedélyezett felhőalkalmazások megkereséséhez lehetőség. Lásd: [Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery).
+A fentiekben leírtaknak megfelelően előfordulhat, hogy a szervezet eddig nem kezelt alkalmazásokat.  A leltározási folyamat részeként meg lehet találni a nem engedélyezett felhőalapú alkalmazásokat. Lásd: [Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery).
 
-## <a name="integrating-applications-with-azure-ad"></a>Alkalmazások integrálása az Azure ad-ben
-Az alábbi cikkekben különböző módokon alkalmazások integrálása az Azure ad-ben, és útmutatást.
+## <a name="integrating-applications-with-azure-ad"></a>Alkalmazások integrálása az Azure AD-vel
+A következő cikkek ismertetik az alkalmazások és az Azure AD integrálásának különböző módjait, és útmutatást nyújtanak.
 
-* [Amely meghatározza, hogy mely Active Directory használata](../fundamentals/active-directory-administer.md)
-* [Az Azure alkalmazásgyűjteményben alkalmazások használata](what-is-single-sign-on.md)
-* [Integrálása az SaaS-alkalmazások oktatóanyagok listáját](../active-directory-saas-tutorial-list.md)
+* [A használni kívánt Active Directory meghatározása](../fundamentals/active-directory-administer.md)
+* [Alkalmazások használata az Azure Application Galleryben](what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása oktatóanyagok listája](../active-directory-saas-tutorial-list.md)
 
 ### <a name="authentication-types"></a>Hitelesítési típusok
-Különböző hitelesítési követelmények vonatkozhatnak a kulcsláncot. Az Azure AD-aláíró tanúsítványok használható SAML 2.0, WS-Federation, vagy OpenID Connect protokollok, valamint jelszó az egyszeri bejelentkezést használó alkalmazások. Alkalmazással kapcsolatos további információk használható az Azure AD-hitelesítési típusok: [tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](manage-certificates-for-federated-single-sign-on.md) és [jelszó alapján egyszeri bejelentkezési](what-is-single-sign-on.md).
+Egyes alkalmazásai eltérő hitelesítési követelményekkel rendelkezhetnek. Az Azure AD-vel az aláírási tanúsítványok az SAML 2,0, a WS-Federation vagy az OpenID Connect protokollokat használó alkalmazásokkal, valamint a jelszó egyszeri bejelentkezéssel használhatók. Az Azure AD-vel való használatra vonatkozó alkalmazás-hitelesítési típusokkal kapcsolatos további információkért lásd: [tanúsítványok kezelése összevont egyszeri bejelentkezéshez Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) és [jelszó-alapú egyszeri bejelentkezéssel](what-is-single-sign-on.md).
 
-### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Egyszeri bejelentkezés az Azure AD-alkalmazásproxy engedélyezése
-A Microsoft Azure AD-alkalmazásproxy található alkalmazások futnak a magánhálózaton belülről biztonságosan, bárhonnan, bármilyen eszközről hozzáférést biztosíthat. A környezetben egy alkalmazásproxy-összekötő telepítését követően, könnyen konfigurálható az Azure ad-ben.
+### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Egyszeri bejelentkezés engedélyezése Azure AD alkalmazás proxyval
+A Microsoft Azure AD alkalmazásproxy segítségével biztonságosan, bárhonnan és bármilyen eszközről biztosíthat hozzáférést a magánhálózaton belül található alkalmazásokhoz. Miután telepítette az alkalmazásproxy-összekötőt a környezetén belül, könnyen konfigurálható az Azure AD-vel.
 
 ### <a name="integrating-custom-applications"></a>Egyéni alkalmazások integrálása
-Ha egy új alkalmazást és a kívánt a fejlesztők kihasználva az Azure AD-ben talál [Guiding fejlesztők](../active-directory-applications-guiding-developers-for-lob-applications.md).
+Ha új alkalmazást ír, és szeretné segíteni a fejlesztőket az Azure AD hatékonyságának kihasználásában, tekintse meg a következő témakört: a [fejlesztők Guiding](../active-directory-applications-guiding-developers-for-lob-applications.md).
 
-Ha azt szeretné, adja hozzá az egyéni alkalmazást az Azure Alkalmazásgyűjteményben, lásd: ["Saját alkalmazások használata" Azure AD önkiszolgáló SAML-konfigurációja az](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Ha egyéni alkalmazását szeretné felvenni az Azure-alkalmazás-katalógusba, tekintse meg a ["saját alkalmazás használata" az Azure ad önkiszolgáló SAML-konfigurációval](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)című témakört.
 
-## <a name="managing-access-to-applications"></a>Alkalmazásokhoz való hozzáférés kezelése
-Az alábbi cikkek ismertetik, hogyan alkalmazásokhoz való hozzáférést kezelheti az Azure AD-bA az Azure AD-összekötők és az Azure AD integrálása után.
+## <a name="managing-access-to-applications"></a>Az alkalmazásokhoz való hozzáférés kezelése
+A következő cikkek az Azure AD-összekötők és az Azure ad-vel való integráció során az alkalmazásokhoz való hozzáférés kezelését ismertetik.
 
-* [Az Azure AD-vel az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
-* [Az Azure AD-összekötők automatizálása](user-provisioning.md)
+* [Az alkalmazásokhoz való hozzáférés kezelése az Azure AD-vel](what-is-access-management.md)
+* [Automatizálás az Azure AD-összekötők révén](user-provisioning.md)
 * [Felhasználók hozzárendelése egy alkalmazáshoz](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Csoportok hozzárendelése egy alkalmazáshoz](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [Fiókok megosztása](../active-directory-sharing-accounts.md)
 
-## <a name="next-steps"></a>További lépések
-Részletes információkért töltse le az Azure Active Directory központi telepítési csomagot a következőből [GitHub](https://aka.ms/deploymentplans). Katalógus-alkalmazások, központi telepítési csomagok egyszeri bejelentkezést, a feltételes hozzáférés és a felhasználói telepítés használatával letöltheti a [az Azure portal](https://portal.azure.com). 
+## <a name="next-steps"></a>Következő lépések
+Részletes információk a [githubról](https://aka.ms/deploymentplans)tölthetők le Azure Active Directory telepítési tervek. A Gallery-alkalmazások esetében az egyszeri bejelentkezéshez, a feltételes hozzáféréshez és a [Azure Portalon](https://portal.azure.com)keresztül történő felhasználói kiépítéshez is letölthetők a telepítési csomagok. 
 
-A központi telepítési csomag letöltése az Azure Portalról:
+Telepítési terv letöltése a Azure Portalról:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **vállalati alkalmazások** | **válasszon ki egy alkalmazást** | **telepítési tervének**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a **vállalati alkalmazások** lehetőséget | **válasszon ki egy alkalmazást** | **üzembe helyezési tervet**.
 
-Kérjük, jelezze a központi telepítési csomagok tovább a [központi telepítési csomag felmérés](https://aka.ms/DeploymentPlanFeedback).
+Kérjük, küldjön visszajelzést az üzembe helyezési tervekről az [üzembe helyezési terv felmérésének](https://aka.ms/DeploymentPlanFeedback)megadásával.

@@ -1,21 +1,19 @@
 ---
 title: 'Gyors útmutató: monitorozás az Azure Application Insights'
 description: A Node.js-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528871"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894942"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rövid útmutató: a Node. js-webalkalmazás figyelésének megkezdése az Azure Application Insights
 
@@ -92,7 +90,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Application Insights alkalmazás-hozzárendelés](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Válassza ki az **alkalmazás-elemzési** ikont ![Application Térkép ikont az elemzés ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **nézetben**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Válassza ki az **app Analytics** ikont, ![az alkalmazás-hozzárendelés ikon](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **a megtekintés az elemzésben**lehetőséget.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Application Insights elemzési gráfok](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 

@@ -1,34 +1,28 @@
 ---
-title: Speciális lekérdezések az Azure Monitor |} A Microsoft Docs
-description: Ez a cikk nyújt segítséget az Analytics-portál használatával kell lekérdezéseket írni az Azure monitorban.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Speciális lekérdezések a Azure Monitorban | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használható az elemzési portál a Azure Monitor lekérdezések írásához.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/15/2018
+ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589592"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894501"
 ---
-# <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések az Azure monitorban írása
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések írása a Azure Monitorban
 
 > [!NOTE]
-> Hajtsa végre [Ismerkedés az Azure Monitor Log-Analytics](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+> A lecke elvégzése előtt fejezze be [a Azure Monitor log Analytics](get-started-portal.md) és [a lekérdezések első](get-started-queries.md) lépéseit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-## <a name="reusing-code-with-let"></a>Újbóli felhasználása az lehetővé teszik a kódot
-Használat `let` eredmények hozzárendelése egy változóhoz, és később a lekérdezésben hivatkoznak rá:
+## <a name="reusing-code-with-let"></a>Kód újrafelhasználása a Let
+Az eredmények egy változóhoz való hozzárendeléséhez használja a `let`t, és a lekérdezés későbbi részében tekintse meg a következőt:
 
 ```Kusto
 // get all events that have level 2 (indicates warning level)
@@ -40,7 +34,7 @@ warning_events
 | summarize count() by Computer 
 ```
 
-Állandó értékek változókat is rendelhet. Ez támogat egy metódust, amely minden alkalommal, amikor a lekérdezés végrehajtása módosítani kell a mezők paramétereinek beállítása. Szükség szerint módosítsa ezeket a paramétereket. Ha például kiszámítása a szabad lemezterület és a szabad memória (a százalékos érték), egy adott időtartományban:
+A változókhoz állandó értékeket is hozzárendelhet. Ez a módszer lehetővé teszi, hogy beállítsa a paramétereket a lekérdezés minden egyes futtatásakor módosítani kívánt mezőkhöz. Szükség szerint módosítsa a paramétereket. Például a szabad lemezterület és a szabad memória (százalékban) kiszámításához egy adott időablakban:
 
 ```Kusto
 let startDate = datetime(2018-08-01T12:55:02);
@@ -58,10 +52,10 @@ Perf
 union FreeDiskSpace, FreeMemory
 ```
 
-Ez megkönnyíti a befejezési idő a lekérdezés a következő futtatásakor kezdete módosítása.
+Így egyszerűen megváltoztathatja a befejezési idő kezdetét a lekérdezés következő futtatásakor.
 
-### <a name="local-functions-and-parameters"></a>Helyi funkciók és paraméterek
-Használat `let` használható függvények létrehozása az ugyanabból a lekérdezés utasításokat. Például adja meg a függvény, amely egy dátum/idő mezőt (az UTC-formátum) tart, és a egy Egyesült Államokbeli szabványos formátumra konvertálja. 
+### <a name="local-functions-and-parameters"></a>Helyi függvények és paraméterek
+`let` utasítások használatával létrehozhat olyan függvényeket, amelyek ugyanabban a lekérdezésben használhatók. Definiáljon például egy olyan függvényt, amely egy datetime típusú mezőt (UTC formátumban) fogad, és átalakítja a standard US formátumra. 
 
 ```Kusto
 let utc_to_us_date_format = (t:datetime)
@@ -75,16 +69,16 @@ Event
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
 
-## <a name="print"></a>Nyomtatás
-`print` csak egy oszlop, és a egy számítás eredménye megjelenítése egyetlen sor tartalmazó táblát adja vissza. Ez azokban az esetekben, ahol meg kell egy egyszerű számítási gyakran használják. Ha például az aktuális idő PST megkereséséhez, és adjon hozzá egy oszlopot a keleti téli idő:
+## <a name="print"></a>Nyomtatási
+a `print` egy olyan táblát ad vissza, amely egyetlen oszlopból és egy sorból áll, amely a számítás eredményét jeleníti meg. Ezt gyakran használják olyan esetekben, amikor egyszerű számításra van szükség. Ha például az aktuális időt szeretné megkeresni a PST-ben, és hozzá szeretne adni egy oszlopot az EST használatával:
 
 ```Kusto
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
 
-## <a name="datatable"></a>A DataTable
-`datatable` lehetővé teszi, hogy meghatározza az adatok egy készletét. Adjon meg egy séma- és a egy értékhalmazt, és majd irányítsa a táblázat bármely más lekérdezés elemek be. Hozzon létre egy táblát a memóriahasználatot és azok óránkénti átlagos érték kiszámításához, például:
+## <a name="datatable"></a>DataTable
+`datatable` lehetővé teszi az adathalmazok meghatározását. Adjon meg egy sémát és egy értéket, majd a táblázatot a többi lekérdezési elembe. Például a RAM-használati táblázat létrehozásához és az átlagos érték óránkénti kiszámításához:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)
@@ -101,7 +95,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-DataTable szerkezeteket akkor is hasznos, ha egy keresési táblázat létrehozása. Például képezze le táblaadatok eseményazonosítók, például a _SecurityEvent_ tábla, eseménytípusok felsorolt máshol, hozzon létre egy keresési táblázat használatával eseménytípusokat `datatable` , és ez a datatable  _SecurityEvent_ adatokat:
+A DataTable-szerkezetek a keresési tábla létrehozásakor is hasznosak. Ha például a _SecurityEvent_ táblából származó táblázatos adatok (például eseményazonosító) leképezése a máshol felsorolt események típusaira, akkor hozzon létre egy keresési táblázatot az SecurityEvent `datatable` használatával, és csatlakozzon ehhez a DataTable adattáblához a -adatokkal:
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)
@@ -129,13 +123,13 @@ SecurityEvent
 | project TimeGenerated, Account, AccountType, Computer, EventType
 ```
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg a többi leckéket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) használatát ismertető további leckéket a Azure monitor naplózási adataival:
 
 - [Karakterlánc-műveletek](string-operations.md)
-- [Dátum és idő műveletek](datetime-operations.md)
-- [Összesítésfüggvények](aggregations.md)
+- [Dátum-és időműveletek](datetime-operations.md)
+- [Összesítési függvények](aggregations.md)
 - [Speciális összesítések](advanced-aggregations.md)
-- [JSON és adatstruktúrák](json-data-structures.md)
-- [Illesztés](joins.md)
+- [JSON-és adatstruktúrák](json-data-structures.md)
+- [Csatlakozik](joins.md)
 - [Diagramok](charts.md)

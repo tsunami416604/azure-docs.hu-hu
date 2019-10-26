@@ -6,25 +6,24 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 10/01/2019
+ms.topic: article
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
-ms.translationtype: HT
+ms.openlocfilehash: 4307c9036db45145a7c0e95cb5e55a667c6851eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803461"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893405"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -79,7 +78,7 @@ Válassza ki a `NameIdentifier` (vagy NameID) jogcím kívánt forrását. A kö
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |
 | onpremisessamaccount | A helyszíni Azure AD-ből szinkronizált SAM-fiók neve |
 | ObjectId | a felhasználó ObjectId az Azure AD-ben |
-| Alkalmazottkód | a felhasználó Alkalmazottkód |
+| Alkalmazottkód | A felhasználó alkalmazott azonosítója |
 | Címtárbővítmények | A helyszíni [Active Directory szinkronizált címtárszolgáltatás-bővítmények Azure ad Connect Sync használatával](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Bővítmény attribútumai 1-15 | Az Azure AD-séma kibővítéséhez használt helyszíni bővítmény attribútumai |
 
@@ -91,7 +90,7 @@ Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben defini
 
 1. Kattintson arra a szükséges jogcímere, amelyet módosítani szeretne.
 
-1. Adja meg az állandó értéket a **forrás attribútumban** a szervezetnek megfelelően, majd kattintson a **Mentés**gombra.
+1. Adja meg az állandó értéket idézőjelek nélkül a **forrás attribútumban** a szervezetnél, majd kattintson a **Save (Mentés**) gombra.
 
     ![Nyissa meg a felhasználói attribútumok & jogcímek szakaszt a Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
@@ -118,19 +117,27 @@ Alkalmazás-specifikus jogcímek hozzáadása:
 1. Adja meg a jogcímek **nevét** . Az értéknek nem feltétlenül kell követnie egy URI-mintát az SAML-specifikáció alapján. Ha URI-mintázatra van szüksége, azt a **névtér** mezőbe helyezheti.
 1. Válassza ki azt a **forrást** , ahol a jogcím le fogja kérdezni az értékét. Kiválaszthat egy felhasználói attribútumot a forrás attribútum legördülő menüből, vagy alkalmazhat egy átalakítást a felhasználói attribútumra, mielőtt jogcímet kibocsátja jogcímként.
 
-### <a name="application-specific-claims---transformations"></a>Alkalmazásspecifikus jogcímek – átalakítások
+### <a name="claim-transformations"></a>Jogcím-átalakítások
 
-Használhatja a jogcím-átalakítási funkciókat is.
+Átalakítás alkalmazása felhasználói attribútumra:
+
+1. A **jogcím kezelése**lapon válassza az *átalakítás* lehetőséget jogcím forrásaként az **átalakítás kezelése** lap megnyitásához.
+2. Válassza ki a függvényt az átalakítás legördülő listából. A kiválasztott függvénytől függően paramétereket és állandó értéket kell megadnia, hogy kiértékelje az átalakítást. Az elérhető funkciókkal kapcsolatos további információkért tekintse meg az alábbi táblázatot.
+3. Több átalakítás alkalmazásához kattintson az **átalakítás hozzáadása**lehetőségre. A jogcímek számára legfeljebb két átalakítás alkalmazható. Először kinyerheti például az `user.mail`e-mail-előtagját. Ezután végezze el a karakterláncot a nagybetűvel.
+
+   ![A NameID (Name Identifier) értékének szerkesztése](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+
+A jogcímek átalakításához a következő függvények használhatók.
 
 | Függvény | Leírás |
 |----------|-------------|
 | **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja át a joe_smith@contoso.comhelyett. |
-| **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. |
+| **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. A NameID-jogcím átalakításához az illesztés egy ellenőrzött tartományra korlátozódik. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mailt (joe_smith@contoso.com) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor a rendszer joe_smith@contoso.onmicrosoft.comt fog eredményezni. |
 | **ToLower ()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
 | **ToUpper()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
 | **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a "@contoso.com" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : user. e-mail<br/>*Érték*: "@contoso.com"<br/>2\. paraméter (kimenet): user. e-mail<br/>3\. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
-| **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó Alkalmazottkód értéke, ha az Alkalmazottkód "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : user. Alkalmazottkód<br/>*Érték*: "000"<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
-| **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például egy olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó Alkalmazottkód értéke, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben kimeneti attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : felhasználó. ország<br/>*Érték*: "US"<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
+| **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az alkalmazott azonosítója "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : user. Alkalmazottkód<br/>*Érték*: "000"<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
+| **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : felhasználó. ország<br/>*Érték*: "US"<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **Kinyerés () – a megfeleltetés után** | Azt az alsztringet adja vissza, amely a megadott értéknek felel meg.<br/>Ha például a bemeneti érték "Finance_BSimon", a megfelelő érték "Finance_", akkor a jogcím kimenete "BSimon". |
 | **Kinyerés () – a megfeleltetés előtt** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "BSimon_US", a megfelelő érték "_US", akkor a jogcím kimenete "BSimon". |
 | **Kinyerés () – megfeleltetések között** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "Finance_BSimon_US", az első egyező érték "Finance_", a második egyező érték "_US", akkor a jogcím kimenete "BSimon". |
@@ -138,10 +145,39 @@ Használhatja a jogcím-átalakítási funkciókat is.
 | **ExtractAlpha () – utótag** | A karakterlánc ábécé részét képező utótagot adja vissza.<br/>Ha például a bemeneti érték "123_Simon", akkor a "Simon" értéket adja vissza. |
 | **ExtractNumeric () – előtag** | A sztring numerikus részét adja vissza.<br/>Ha például a bemeneti érték "123_BSimon", a "123" értéket adja vissza. |
 | **ExtractNumeric () – utótag** | A karakterlánc numerikus részét adja vissza.<br/>Ha például a bemeneti érték "BSimon_123", a "123" értéket adja vissza. |
-| **IfEmpty()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet null értékű vagy üres.<br/>Ha például egy extensionattribute tárolt attribútumot szeretne kiállítani, ha egy adott felhasználó Alkalmazottkód értéke üres. Ehhez a következő értékeket kell konfigurálnia:<br/>1\. paraméter (bemenet): user. Alkalmazottkód<br/>2\. paraméter (kimenet): user. extensionAttribute1<br/>3\. paraméter (kimenet, ha nincs egyezés): user. Alkalmazottkód |
-| **IfNotEmpty()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet nem null vagy üres.<br/>Ha például egy extensionattribute tárolt attribútumot szeretne kiállítani, ha az adott felhasználóhoz tartozó Alkalmazottkód nem üres. Ehhez a következő értékeket kell konfigurálnia:<br/>1\. paraméter (bemenet): user. Alkalmazottkód<br/>2\. paraméter (kimenet): user. extensionAttribute1 |
+| **IfEmpty()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet null értékű vagy üres.<br/>Ha például egy extensionattribute tárolt attribútumot szeretne kiállítani, ha egy adott felhasználó alkalmazott azonosítója üres. Ehhez a következő értékeket kell konfigurálnia:<br/>1\. paraméter (bemenet): user. Alkalmazottkód<br/>2\. paraméter (kimenet): user. extensionAttribute1<br/>3\. paraméter (kimenet, ha nincs egyezés): user. Alkalmazottkód |
+| **IfNotEmpty()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet nem null vagy üres.<br/>Ha például egy extensionattribute tárolt attribútumot szeretne kiállítani, ha egy adott felhasználó alkalmazott azonosítója nem üres. Ehhez a következő értékeket kell konfigurálnia:<br/>1\. paraméter (bemenet): user. Alkalmazottkód<br/>2\. paraméter (kimenet): user. extensionAttribute1 |
 
 Ha további átalakításokra van szüksége, küldje el ötletét az [Azure ad visszajelzési fórumában](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) az *SaaS-alkalmazás* kategóriában.
+
+## <a name="emitting-claims-based-on-conditions"></a>Jogcímek kibocsátása feltételek alapján
+
+Megadhatja a jogcímek forrását felhasználói típus alapján, valamint azt a csoportot, amelyhez a felhasználó tartozik. 
+
+A felhasználó típusa a következő lehet:
+- **Any**: minden felhasználó hozzáférhet az alkalmazáshoz.
+- **Tagok**: a bérlő natív tagja
+- **Minden vendég**: a felhasználót az Azure ad-vel vagy anélkül egy külső szervezettől kezdeményezik.
+- **HRE vendégek**: a vendég felhasználó egy másik szervezethez tartozik az Azure ad használatával.
+- **Külső vendégek**: a vendég felhasználó olyan külső szervezethez tartozik, amely nem rendelkezik Azure ad-vel.
+
+
+Az egyik forgatókönyv, ahol ez hasznos lehet, ha a jogcím forrása eltér a vendég számára, és az alkalmazáshoz hozzáférő alkalmazott. Érdemes lehet megadnia, hogy ha a felhasználó egy alkalmazott, a NameID a User. e-mail címről származik, de ha a felhasználó vendég, akkor a NameID a User. extensionAttribute1 forrásból származik.
+
+Jogcím feltételének hozzáadása:
+
+1. A **jogcím kezelése**területen bontsa ki a jogcím feltételeit.
+2. Válassza ki a felhasználó típusát.
+3. Válassza ki azokat a csoportokat, amelyekhez a felhasználónak tartoznia kell. Egy adott alkalmazáshoz tartozó jogcímek között legfeljebb 10 egyedi csoportot választhat ki. 
+4. Válassza ki azt a **forrást** , ahol a jogcím le fogja kérdezni az értékét. Kiválaszthat egy felhasználói attribútumot a forrás attribútum legördülő menüből, vagy alkalmazhat egy átalakítást a felhasználói attribútumra, mielőtt jogcímet kibocsátja jogcímként.
+
+Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiértékeli a feltételeket felülről lefelé, hogy eldöntse, melyik értéket kell kibocsátania a jogcímben. 
+
+Például a Brita Simon egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációja alapján a Brita a fabrikam-be próbál bejelentkezni, és az Azure AD az alábbi feltételek szerint értékeli ki a feltételeket.
+
+Először is az Azure AD ellenőrzi, hogy a Brita felhasználói típusa `All guests`-e. Mivel ez igaz, az Azure AD hozzárendeli a jogcímek forrását `user.extensionattribute1`hoz. Másodszor, az Azure AD ellenőrzi, hogy a Brita felhasználói típusa `AAD guests`-e, mivel ez is igaz, az Azure AD a jogcímek forrását rendeli hozzá a `user.mail`hoz. Végezetül a rendszer kibocsátja a jogcímet a Brita `user.email` értékével.
+
+![Feltételes konfiguráció igénylése](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

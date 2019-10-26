@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173385"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897579"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Az eszközök IoT Hub Device Provisioning Service kapcsolatos fogalmak
 
@@ -44,7 +44,7 @@ Az eszköz titkai a szoftverben (memóriában) is tárolhatók, de ez a tárter�
 
 ## <a name="registration-id"></a>Regisztrációs azonosító
 
-A regisztrációs azonosító az eszköz kiépítési szolgáltatásban való egyedi azonosítására szolgál. A regisztrációs AZONOSÍTÓnak egyedinek kell lennie a kiépítési szolgáltatás [azonosítójának hatókörében](#id-scope). Minden eszköznek regisztrációs AZONOSÍTÓval kell rendelkeznie. A regisztrációs azonosító alfanumerikus, kisbetűs, és kötőjeleket is tartalmazhat.
+A regisztrációs azonosító az eszköz kiépítési szolgáltatásban való egyedi azonosítására szolgál. Az eszköz AZONOSÍTÓjának egyedinek kell lennie a létesítési szolgáltatás [azonosítójának hatókörében](#id-scope). Minden eszköznek regisztrációs AZONOSÍTÓval kell rendelkeznie. A regisztrációs azonosító alfanumerikus, kis-és nagybetű nem különbözik, és tartalmazhat speciális karaktereket, beleértve a kettőspontot, az időtartamot, az aláhúzást és a kötőjelet.
 
 * TPM esetén a regisztrációs azonosítót maga a TPM is megadja.
 * X. 509-alapú igazolás esetén a regisztrációs azonosító a tanúsítvány tulajdonosának neveként van megadva.

@@ -1,34 +1,28 @@
 ---
 title: Példák a Azure Monitor log lekérdezésre | Microsoft Docs
 description: Példák a Azure Monitor a Kusto lekérdezési nyelvét használó naplózási lekérdezésekre.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.openlocfilehash: 2ded97e427c8ecf4584ee486408de14a26f014eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718911"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900366"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
 Ez a cikk különféle példákat tartalmaz a [Kusto lekérdezési nyelvét](/azure/kusto/query/) használó [lekérdezések](log-query-overview.md) különböző típusú naplófájljainak lekérésére Azure monitorból. Az adatösszesítés és az elemzés különböző módszerekkel történik, így ezek a minták a saját igényeihez esetlegesen használt különböző stratégiák azonosítására használhatók.  
 
-A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](https://docs.microsoft.com/azure/kusto/query/) tekintheti meg. Áttekintheti [](get-started-queries.md) a lekérdezéseket, ha új Azure monitor.
+A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](https://docs.microsoft.com/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új Azure monitor.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Események
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>"Titkosítási"-ként leírt alkalmazás szintű események keresése
-Ez a példa olyan rekordokat keres az **Events** táblában, amelyekben az **EventLog** értéke _Application_, a **RenderedDescription** pedig tartalmazza a _cryptographic_ értéket. Az elmúlt 24 órában nyilvántartott rekordokat tartalmazza.
+Ez a példa az **Events (események** ) táblában keres olyan rekordokat, amelyekben az **Eseménynapló** _alkalmazás_ -és **RenderedDescription** _titkosítási_adatokat tartalmaz. Az elmúlt 24 órában nyilvántartott rekordokat tartalmazza.
 
 ```Kusto
 Event
@@ -79,7 +73,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Védett állapotüzenetek egyeztetése szívverési rekordokkal
 
 Ez a példa a kapcsolódó védelmi állapotokra vonatkozó rekordokat és szívverési rekordokat talál, amelyek a számítógép és az idő szerint egyeznek.
-Figyelje meg, hogy a Time mező a legközelebbi percre van kerekítve. A futásidejű raktárhely számítását a következőre használtuk `round_time=bin(TimeGenerated, 1m)`:.
+Figyelje meg, hogy a Time mező a legközelebbi percre van kerekítve. A futásidejű raktárhely számítását a következőre használtuk: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -208,7 +202,7 @@ Perf
 ## <a name="protection-status"></a>Védelmi állapot
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Nem jelentéskészítési védelmi állapottal rendelkező számítógépek
-Ez a példa felsorolja azokat a számítógépeket, amelyek védelmi állapota _Not Reporting_ volt, valamint az időtartamot, amíg ebben az állapotban voltak.
+Ez a példa azokat a számítógépeket sorolja fel, amelyek védelmi állapota _nem jelentett_ , és az adott állapotban lévő időtartam.
 
 ```Kusto
 ProtectionStatus
@@ -237,7 +231,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Biztonsági események száma tevékenység azonosítója szerint
 
 
-Ez a példa a **tevékenység** oszlop rögzített struktúrájára támaszkodik: \<Az\>azonosító-neve.\<\>
+Ez a példa a **tevékenység** oszlop rögzített struktúrájára támaszkodik: \<ID\>-\<Name\>.
 Elemzi a **tevékenység** értékét két új oszlopra, és megszámolja az egyes **tevékenységazonosító**előfordulását.
 
 ```Kusto
@@ -249,7 +243,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Az engedélyekkel kapcsolatos biztonsági események száma
-Ez a példa az olyan **securityEvent** rekordok számát jelenít meg, ahol az **Activity** oszlop a teljes _Permissions_ kifejezést tartalmazza. A lekérdezés az elmúlt 30 percben létrehozott rekordokra vonatkozik.
+Ebben a példában a **securityEvent** rekordok száma látható, amelyekben a **tevékenység** oszlop a teljes kifejezésre _vonatkozó engedélyeket_tartalmazza. A lekérdezés az elmúlt 30 percben létrehozott rekordokra vonatkozik.
 
 ```Kusto
 SecurityEvent
@@ -278,7 +272,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Elemzési tevékenység neve és azonosítója
-Az alábbi két példa a **tevékenység** oszlop rögzített struktúrájára támaszkodik: \<Az\>azonosító-neve.\<\> Az első példa az **elemzési** operátort használja az értékek két új oszlophoz való hozzárendeléséhez: **tevékenységazonosító** és **activityDesc**.
+Az alábbi két példa a **tevékenység** oszlop rögzített struktúrájára támaszkodik: \<ID\>-\<Name\>. Az első példa az **elemzési** operátort használja az értékek két új oszlophoz való hozzárendeléséhez: **tevékenységazonosító** és **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -436,7 +430,7 @@ Update
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A nyelvre vonatkozó részletekért tekintse meg a [Kusto nyelvi referenciáját](/azure/kusto/query) .
-- Végigvezeti a Azure Monitorban található [naplók írására](get-started-queries.md)szolgáló leckén.
+- Végigvezeti a [Azure monitorban található naplók írására szolgáló leckén](get-started-queries.md).

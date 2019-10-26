@@ -1,21 +1,19 @@
 ---
 title: Teljesítménybeli problémák diagnosztizálása az Azure Application Insights használatával | Microsoft Docs
 description: Oktatóanyag az alkalmazásában előforduló teljesítménybeli problémák észleléséhez és diagnosztizálásához az Azure Application Insights használatával.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69032130"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900460"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -79,7 +77,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 ## <a name="use-logs-data-for-server"></a>A kiszolgálók naplófájljainak használata
  A naplók részletes lekérdezési nyelvet biztosítanak, amely lehetővé teszi az Application Insights által összegyűjtött összes adatok elemzését. Ezzel a funkcióval részletes elemzéseket végezhet a kérések és a teljesítmény adatairól.
 
-1. Térjen vissza a művelet részletei panelre, és kattintson ![Logs ikon](media/tutorial-performance/app-viewinlogs-icon.png)**nézet a naplókban (Analitika)**
+1. Térjen vissza a művelet részletei panelre, és kattintson ![naplók ikon](media/tutorial-performance/app-viewinlogs-icon.png)**nézet a naplókban (Analitika)**
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél.  Ezeket a lekérdezéseket futtathatja alapértelmezetten, vagy módosíthat rajtuk az igényei szerint.  Az első lekérdezés megjeleníti ennek a műveletnek a teljes időtartamát.
 
@@ -100,7 +98,7 @@ Amellett, hogy azonosítja a kiszolgálói folyamatokat az optimalizálás érde
 ## <a name="use-logs-data-for-client"></a>Az ügyfél naplófájljainak használata
 A kiszolgáló teljesítményére gyűjtött adatokhoz hasonlóan a Application Insights az összes ügyfél-adat számára elérhetővé teszi a mélyreható elemzést a naplók használatával.
 
-1. Térjen vissza a böngésző összegzéséhez, és kattintson ![Logs ikonra ](media/tutorial-performance/app-viewinlogs-icon.png) **View in logs (Analytics)**
+1. Térjen vissza a böngésző összegzéséhez, és kattintson ![naplók ikon](media/tutorial-performance/app-viewinlogs-icon.png) **View in logs (Analitika)**
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél. Az első lekérdezés a különböző oldalmegtekintések időtartamát jeleníti meg az idő függvényében.
 

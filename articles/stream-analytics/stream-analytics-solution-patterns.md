@@ -1,26 +1,26 @@
 ---
-title: Azure Stream Analytics megoldás mintái
-description: Ismerkedjen meg a Azure Stream Analytics különböző gyakori megoldási mintázatával.
+title: Az Azure Stream Analytics megoldásmintái
+description: Ismerje meg a Azure Stream Analytics gyakori megoldási mintáit, például az irányítópultot, az események üzenetkezelését, az adattárakat, a hivatkozási adatelemzést és a figyelést.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173038"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901673"
 ---
-# <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics megoldás mintái
+# <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldásmintái
 
 Az Azure-ban számos más szolgáltatáshoz hasonlóan a Stream Analytics a legjobb megoldás, ha egy nagyobb végpontok közötti megoldást szeretne létrehozni a többi szolgáltatással. Ez a cikk az egyszerű Azure Stream Analytics megoldásokat és különböző építészeti mintákat tárgyalja. Ezeket a mintákat felépítve összetettebb megoldásokat fejleszthet. A cikkben ismertetett minták számos különböző forgatókönyvben használhatók. Példák a forgatókönyvekre jellemző mintákra az [Azure-megoldás architektúráján](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Stream Analytics-feladatok létrehozása a valós idejű irányítópult-létrehozási élmény érdekében
 
-A Azure Stream Analytics használatával gyorsan felállíthatók a valós idejű irányítópultok és riasztások. Egy egyszerű megoldás Event Hubs vagy IoT Hubból származó eseményeket tölt be, és [az Power bi irányítópultot adatfolyam](/power-bi/service-real-time-streaming)-adatkészlettel táplálja. További információkért tekintse meg a [telefonos hívások adatainak elemzése stream Analytics és az eredmények megjelenítése Power bi irányítópulton](stream-analytics-manage-job.md)című témakört.
+A Azure Stream Analytics használatával gyorsan felállíthatók a valós idejű irányítópultok és riasztások. Egy egyszerű megoldás Event Hubs vagy IoT Hubból származó eseményeket tölt be, és [az Power bi irányítópultot adatfolyam-adatkészlettel táplálja](/power-bi/service-real-time-streaming). További információkért tekintse meg a [telefonos hívások adatainak elemzése stream Analytics és az eredmények megjelenítése Power bi irányítópulton](stream-analytics-manage-job.md)című témakört.
 
 ![ASA Power BI irányítópult](media/stream-analytics-solution-patterns/pbidashboard.png)
 
@@ -68,11 +68,11 @@ A valós alkalmazásokban, ahol a feldolgozási logika összetett, és a logika 
 
 ![ASA komplex esemény-beszerzési alkalmazás](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
 
-Ez a minta javítja a rendszerek rugalmasságát és kezelhetőségét. Azonban bár a Stream Analytics pontosan egyszer garantálja a feldolgozást, némi esély van arra, hogy az ismétlődő események a közbenső Event Hubsban is megjelenhetnek. Fontos, hogy az alsóbb rétegbeli Stream Analytics feladatokhoz a logikai kulcsok használatával lookback az eseményeket. Az események kézbesítésével kapcsolatos további információkért lásd: [esemény](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) -kézbesítési garanciák referenciája.
+Ez a minta javítja a rendszerek rugalmasságát és kezelhetőségét. Azonban bár a Stream Analytics pontosan egyszer garantálja a feldolgozást, némi esély van arra, hogy az ismétlődő események a közbenső Event Hubsban is megjelenhetnek. Fontos, hogy az alsóbb rétegbeli Stream Analytics feladatokhoz a logikai kulcsok használatával lookback az eseményeket. Az események kézbesítésével kapcsolatos további információkért lásd: [esemény-kézbesítési garanciák](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) referenciája.
 
 ## <a name="use-reference-data-for-application-customization"></a>Referenciák használata az alkalmazások testreszabásához
 
-A Azure Stream Analytics hivatkozási adatszolgáltatása kifejezetten a végfelhasználói testreszabáshoz készült, például a riasztási küszöbérték, a feldolgozási szabályok és a [geofences](geospatial-scenarios.md). Az alkalmazási réteg elfogadhatja a paraméterek változásait, és tárolhatja őket egy SQL-adatbázisban. A Stream Analytics-feladatokban rendszeresen lekérdezéseket végeznek az adatbázis változásairól, és a testreszabási paramétereket elérhetővé teszik egy hivatkozással való összekapcsolással. Az alkalmazások testreszabásával kapcsolatos tudnivalókat lásd: [SQL](sql-reference-data.md) -referenciák és [hivatkozási](/stream-analytics-query/reference-data-join-azure-stream-analytics)adatok csatlakoztatása.
+A Azure Stream Analytics hivatkozási adatszolgáltatása kifejezetten a végfelhasználói testreszabáshoz készült, például a riasztási küszöbérték, a feldolgozási szabályok és a [geofences](geospatial-scenarios.md). Az alkalmazási réteg elfogadhatja a paraméterek változásait, és tárolhatja őket egy SQL-adatbázisban. A Stream Analytics-feladatokban rendszeresen lekérdezéseket végeznek az adatbázis változásairól, és a testreszabási paramétereket elérhetővé teszik egy hivatkozással való összekapcsolással. Az alkalmazások testreszabásával kapcsolatos tudnivalókat lásd: [SQL-referenciák](sql-reference-data.md) és [hivatkozási adatok csatlakoztatása](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
 Ez a minta olyan szabályok motorjának megvalósítására is használható, amelyekben a szabályok küszöbértékei a hivatkozási adatok alapján vannak meghatározva. További információ a szabályokról: [konfigurálható küszöbérték-alapú szabályok feldolgozása Azure stream Analyticsban](stream-analytics-threshold-based-rules.md).
 
@@ -92,7 +92,7 @@ Egy másik gyakori minta a valós idejű adattárház, más néven adatfolyam-ad
 
 ![ASA-adattárház](media/stream-analytics-solution-patterns/datawarehousing.png)
 
-Az átviteli sebesség és a késések növelésének egyik módja az, hogy archiválja az eseményeket az Azure Blob Storage-ba, majd [importálja őket a SQL Data Warehouseba a Base](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)használatával. [Az adatok](stream-analytics-custom-path-patterns-blob-storage-output.md) időbélyegzővel való archiválásával és az importálás időszakonkénti elküldésével manuálisan össze kell fűzve a stream Analyticsból a blob Storage-ba és a blob Storage-ból SQL Data Warehouse való adatbevitelt.
+Az átviteli sebesség és a késések növelésének egyik módja az, hogy archiválja az eseményeket az Azure Blob Storage-ba, majd [importálja őket a SQL Data Warehouseba a Base](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)használatával. [Az adatok időbélyegzővel való archiválásával és az](stream-analytics-custom-path-patterns-blob-storage-output.md) importálás időszakonkénti elküldésével manuálisan össze kell fűzve a stream Analyticsból a blob Storage-ba és a blob Storage-ból SQL Data Warehouse való adatbevitelt.
 
 Ebben a használati mintában a rendszer a közel valós idejű ETL-motorként használja Azure Stream Analytics. Az újonnan érkező eseményeket a rendszer folyamatosan átalakítja és tárolja az alsóbb rétegbeli elemzési szolgáltatások felhasználásához.
 
@@ -106,7 +106,7 @@ A legtöbb adatelemzési és elemzési tevékenység továbbra is offline állap
 
 ## <a name="use-reference-data-for-enrichment"></a>Referenciák használata a dúsításhoz
 
-Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja az adatok dúsítását [](stream-analytics-use-reference-data.md) az SQL Database és az Azure Blob Storage-ból származó adatokkal. Az adatgyűjtést a Azure Data Lake és SQL Data Warehouseban egyaránt megteheti.
+Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja az adatok dúsítását az SQL Database és az Azure Blob Storage [-ból származó adatokkal](stream-analytics-use-reference-data.md) . Az adatgyűjtést a Azure Data Lake és SQL Data Warehouseban egyaránt megteheti.
 
 ![ASA offline elemzés az adatgazdagítás használatával](media/stream-analytics-solution-patterns/offlineanalytics.png)
 
@@ -169,12 +169,12 @@ A backfill folyamatot egy offline batch-feldolgozó rendszerrel kell elvégezni,
 
 A visszatöltésére esetében továbbra is fontos, hogy legalább átmenetileg kiépítsen több erőforrást a kimeneti mosogatók számára, hogy a nagyobb átviteli sebességet kezeljék, mint a stabil állapot-feldolgozási igények.
 
-|Forgatókönyvek  |Újraindítás most már csak  |Újraindítás az utolsó leállítási időpontból |Újraindítás most + backfill archivált eseményekkel|
+|Alkalmazási helyzetek  |Újraindítás most már csak  |Újraindítás az utolsó leállítási időpontból |Újraindítás most + backfill archivált eseményekkel|
 |---------|---------|---------|---------|
 |**Irányítópult**   |Hézagot hoz létre    |Rövid leállás esetén OK    |Hosszú leállás esetén használható |
 |**Riasztások kezelése**   |Elfogadható |Rövid leállás esetén OK    |Nem szükséges |
 |**Event beszerzési alkalmazás** |Elfogadható |Rövid leállás esetén OK    |Hosszú leállás esetén használható |
-|**Adatraktározás**   |Adatvesztés  |Elfogadható |Nem szükséges |
+|**Adattárház**   |Adatvesztés  |Elfogadható |Nem szükséges |
 |**Offline Analitika**  |Adatvesztés  |Elfogadható |Nem szükséges|
 
 ## <a name="putting-it-all-together"></a>Végső összeállítás
@@ -183,7 +183,7 @@ Nem nehéz elképzelni, hogy az összes fent említett megoldási minta egyesít
 
 A legfontosabb, hogy megtervezze a rendszert a kiépíthető mintákban, így az egyes alrendszerek egymástól függetlenül létrehozhatók, vizsgálhatók, frissíthetők és helyreállíthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mostantól számos megoldási mintát látott Azure Stream Analytics használatával. Ezután megismerheti a részleteket, és létrehozhatja első Stream Analytics-feladatát:
 

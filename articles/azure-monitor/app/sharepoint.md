@@ -1,23 +1,18 @@
 ---
 title: SharePoint-hely megfigyelése az Application Insights segítségével
 description: Új alkalmazás figyelésének megkezdése új kialakítási kulccsal
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/11/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/11/2018
+ms.openlocfilehash: 271ef590d7cdbefc824a7f80aef110b0c08b6d6d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784598"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899872"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.
@@ -50,7 +45,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 </script>
 ```
 
-Szúrja be a szkriptet minden olyan lap &lt;/head&gt; címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
+Szúrja be a szkriptet közvetlenül az összes nyomon követni kívánt lap &lt;/Head&gt; címkéjébe. Ha a webhelynek van főoldala, akkor a parancsfájlt ott helyezheti el. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
 
 A szkript tartalmazza a kialakítási kulcsot, amely a telemetriát az Application Insights-erőforrásra irányítja.
 
@@ -143,7 +138,7 @@ function onRequestFail(sender, args) {
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) webhelye rendelkezésre állásának figyeléséhez.
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) más típusú alkalmazásokhoz.
 

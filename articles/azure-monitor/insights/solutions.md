@@ -1,24 +1,18 @@
 ---
 title: Figyelési megoldások a Azure Monitorban | Microsoft Docs
 description: A Azure Monitor figyelési megoldásai olyan logikai, vizualizációs és adatgyűjtési szabályok gyűjteményei, amelyek egy adott problémás terület körüli metrikákat biztosítanak.  Ez a cikk a figyelési megoldások telepítésével és használatával kapcsolatos információkat tartalmaz.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 08/13/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6932f9f302bf1816842d78a662f01ebaafed8686
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.date: 08/13/2019
+ms.openlocfilehash: 4006a3c66da9cb98db16b72da0b5fb7059affe22
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989214"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900664"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 A monitorozási megoldások kihasználják az Azure szolgáltatásait, hogy további információkat szolgáltassanak egy adott alkalmazás vagy szolgáltatás működéséről. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről.
@@ -26,9 +20,9 @@ A monitorozási megoldások kihasználják az Azure szolgáltatásait, hogy tov�
 > [!NOTE]
 > A figyelési megoldásokat korábban felügyeleti megoldásoknak nevezzük.
 
-A figyelési megoldások jellemzően gyűjtik a naplózási adatokat, és lekérdezéseket és nézeteket biztosítanak az összegyűjtött adatok elemzéséhez. Azure Automation és az alkalmazáshoz vagy szolgáltatáshoz kapcsolódó műveleteket, például más szolgáltatások is előfordulhat, hogy kihasználja.
+A figyelési megoldások jellemzően gyűjtik a naplózási adatokat, és lekérdezéseket és nézeteket biztosítanak az összegyűjtött adatok elemzéséhez. Más szolgáltatásokat is használhatnak, például az Azure Automation az alkalmazással vagy szolgáltatással kapcsolatos műveletek elvégzéséhez.
 
-A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Általában érhetők el, nem tudta meghívni a használati díjak költség azonban gyűjt adatokat. A Microsoft megoldásai mellett partnerei és ügyfelei is [felügyeleti megoldásokat hozhat létre](solutions-creating.md) saját környezetben használja, vagy szeretné elérhetővé tenni az ügyfelek számára, a közösségi.
+A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek. A Microsoft által biztosított megoldások mellett a partnerek és az ügyfelek is [létrehozhatnak olyan felügyeleti megoldásokat](solutions-creating.md) , amelyeket a saját környezetükben használhatnak, vagy amelyeket a Közösségen belül elérhetővé tehetnek az ügyfeleknek.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,80 +30,80 @@ A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáad
 Nyissa meg Azure Monitor **Áttekintés** lapját, és jelenítse meg a munkaterületen telepített összes megoldás csempéjét. 
 
 1. Jelentkezzen be az Azure Portalra.
-1. Nyissa meg **minden szolgáltatás** , és keresse meg **figyelő**.
-1. Alatt a **Insights** menüjében válassza **további**.
-1. A munkaterületet, vagy az időtartomány, a csempék használt módosításához használja a képernyő tetején a legördülő mezőkben.
-1. Kattintson a csempére a részletes elemzés tartalmazó nézet megnyitásához a megoldás az összegyűjtött adatokat.
+1. Nyissa meg **az összes szolgáltatást** és keresse meg a **figyelőt**.
+1. Az **áttekintések** menüben válassza a **továbbiak**lehetőséget.
+1. A képernyő felső részén található legördülő listák használatával módosíthatja a munkaterületet vagy a csempék időtartományát.
+1. Kattintson a csempére egy megoldás megnyitásához, amely részletesebb elemzést tartalmaz az összegyűjtött adatokról.
 
 ![Áttekintés](media/solutions/overview.png)
 
-A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, és a megoldáshoz tartozó összes erőforrást ugyanúgy megtekintheti, mint bármely más erőforrást. Például a megoldásban szereplő összes naplózási lekérdezés megjelenik a lekérdezési lekérdezésekben a [](../log-query/get-started-portal.md#load-queries) **megoldás-lekérdezések** területen, ha ad hoc elemzést végez a [naplók](../log-query/log-query-overview.md)lekérdezésével.
+A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, és a megoldáshoz tartozó összes erőforrást ugyanúgy megtekintheti, mint bármely más erőforrást. Például a megoldásban szereplő összes naplózási lekérdezés megjelenik a [lekérdezési](../log-query/get-started-portal.md#load-queries) lekérdezésekben a **megoldás-lekérdezések** területen, ha ad hoc elemzést végez a [naplók](../log-query/log-query-overview.md)lekérdezésével.
 
 ## <a name="list-installed-monitoring-solutions"></a>Telepített figyelési megoldások listázása 
 Az alábbi eljárás segítségével listázhatja az előfizetésében telepített figyelési megoldásokat.
 
 1. Jelentkezzen be az Azure Portalra.
-1. Nyissa meg **minden szolgáltatás** , és keresse meg **megoldások**.
-4. Minden olyan a munkaterületen telepített megoldások jelennek meg. A megoldás nevét a-ben telepített munkaterület neve követi.
-1. A képernyő tetején a legördülő mezőkben használatával vagy erőforráscsoportonként szűrés.
+1. Nyissa meg **az összes szolgáltatást** , és keresse meg a **megoldásokat**.
+4. Az összes munkaterületre telepített megoldások listája látható. A megoldás nevét a-ben telepített munkaterület neve követi.
+1. Az előfizetés vagy az erőforráscsoport alapján történő szűréshez használja a képernyő felső részén található legördülő listákat.
 
 
-![Az összes megoldáshoz listázása](media/solutions/list-solutions-all.png)
+![Az összes megoldás listázása](media/solutions/list-solutions-all.png)
 
-Kattintson az összefoglalás lapon nyissa meg a megoldás nevére. Ezen a lapon a megoldásban szereplő bármely nézetek megjelenítése, és a megoldás különböző lehetőségeket kínál a saját maga és a munkaterületen. A megoldás összefoglaló lapjának megtekintéséhez a fenti eljárásokat lista megoldások egyikének használatával, és kattintson a megoldás nevére.
+A megoldás nevére kattintva megnyithatja az összefoglalás lapját. Ezen a lapon láthatók a megoldásban szereplő összes nézet, és különböző lehetőségeket biztosít a megoldáshoz és a munkaterületéhez. Tekintse meg a megoldás Összegzés lapját a megoldások listázásához a fenti eljárások egyikével, majd kattintson a megoldás nevére.
 
 ![Megoldás tulajdonságai](media/solutions/solution-properties.png)
 
 
 
 ## <a name="install-a-monitoring-solution"></a>Figyelési megoldás telepítése
-A Microsoft és partnerei által kínált figyelési megoldások az [Azure piactéren](https://azuremarketplace.microsoft.com)érhetők el. Keresés az elérhető megoldások, és telepítse őket a következő eljárás használatával. Amikor telepít egy megoldást, ki kell választania egy [Log Analytics-munkaterület](../platform/manage-access.md) , a megoldás telepítve lesz, és az adatok hova legyenek összegyűjtve.
+A Microsoft és partnerei által kínált figyelési megoldások az [Azure piactéren](https://azuremarketplace.microsoft.com)érhetők el. A következő eljárással kereshet az elérhető megoldásokban, és telepítheti őket. Megoldás telepítésekor ki kell választania egy [log Analytics munkaterületet](../platform/manage-access.md) , ahol a megoldás telepítve lesz, és az adatok gyűjtése történik.
 
-1. Az a [az előfizetés-megoldások listája](#list-installed-monitoring-solutions), kattintson a **Hozzáadás**.
+1. Az [előfizetéshez tartozó megoldások listájában](#list-installed-monitoring-solutions)kattintson a **Hozzáadás**gombra.
 1. Válasszon ki egy megoldást, vagy keressen rá. [A keresési hivatkozáson](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)keresztül is böngészhet a megoldásokban.
 1. Keresse meg a kívánt figyelési megoldást, és olvassa el a leírását.
-1. Kattintson a **létrehozás** a telepítési folyamat elindításához.
+1. A telepítési folyamat elindításához kattintson a **Létrehozás** gombra.
 1. A telepítési folyamat indításakor a rendszer felszólítja, hogy adja meg a Log Analytics munkaterületet, és adja meg a megoldás szükséges konfigurációját.
 
-![A megoldás telepítése](media/solutions/install-solution.png)
+![Megoldás telepítése](media/solutions/install-solution.png)
 
-### <a name="install-a-solution-from-the-community"></a>A Közösségtől megoldás telepítése
-A Közösség tagjai küldhet az Azure gyorsindítási sablonok adatkezelési megoldásokat. Közvetlenül telepítheti ezeket a megoldásokat, vagy letöltheti a későbbi telepítési sablonok.
+### <a name="install-a-solution-from-the-community"></a>Megoldás telepítése a Közösségből
+A Közösség tagjai felügyeleti megoldásokat küldhetnek az Azure Gyorsindítás sablonjaiba. Ezeket a megoldásokat közvetlenül is telepítheti, vagy később is letöltheti a sablonokat.
 
-1. Kövesse az ismertetett folyamatot [Log Analytics-munkaterületet és Automation-fiók](#log-analytics-workspace-and-automation-account) összekapcsolása egy munkaterületet és fiókot.
-2. Lépjen a [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/). 
-3. Keressen olyan megoldás, amely érdekli.
-4. A részletek megtekintéséhez az eredmények közül válassza ki a megoldást.
-5. Kattintson a **üzembe helyezés az Azure** gombra.
-6. Kéri, hogy az erőforráscsoportot és helyet értékek mellett például információkat biztosítanak a paraméterek a megoldásban.
-7. Kattintson a **beszerzési** a megoldás telepítéséhez.
+1. A munkaterület és a fiók összekapcsolásához kövesse az [log Analytics munkaterület és az Automation-fiók](#log-analytics-workspace-and-automation-account) című témakörben leírt eljárást.
+2. Ugrás az [Azure Gyorsindítás sablonjaira](https://azure.microsoft.com/documentation/templates/). 
+3. Keressen egy olyan megoldást, amely érdekli.
+4. A részletek megtekintéséhez válassza ki a megoldást az eredmények közül.
+5. Kattintson az **üzembe helyezés az Azure-** ban gombra.
+6. A rendszer arra kéri, hogy adjon meg olyan információkat, mint például az erőforráscsoport és a hely a megoldás paramétereinek értékei mellett.
+7. A megoldás telepítéséhez kattintson a **vásárlás** gombra.
 
 
-## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-munkaterületet és Automation-fiók
-Minden figyelési megoldáshoz [log Analytics munkaterület](../platform/manage-access.md) szükséges a megoldás által gyűjtött adatok tárolásához, valamint a naplóbeli keresések és nézetek üzemeltetéséhez. Egyes megoldások is megkövetelheti egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak. A munkaterületet és fiókot az alábbi követelményeknek kell megfelelnie.
+## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és Automation-fiók
+Minden figyelési megoldáshoz [log Analytics munkaterület](../platform/manage-access.md) szükséges a megoldás által gyűjtött adatok tárolásához, valamint a naplóbeli keresések és nézetek üzemeltetéséhez. Néhány megoldáshoz szükség van egy [Automation-fiókra](../../automation/automation-security-overview.md#automation-account-overview) is, amely runbookok és kapcsolódó erőforrásokat is tartalmaz. A munkaterületnek és a fióknak meg kell felelnie az alábbi követelményeknek.
 
-* Minden egyes telepítéséhez, a megoldás csak egy Log Analytics-munkaterület és egy Automation-fiókot használhat. A megoldást külön-külön is telepítheti, több munkaterülettel.
-* Ha a megoldás egy Automation-fiókot igényel, majd a Log Analytics-munkaterületet és Automation-fiók össze kell kapcsolni egymással. Log Analytics-munkaterületet egy Automation-fiók csak lehetnek összekapcsolva, és a egy Automation-fiókot csak egy Log Analytics munkaterülettel lehetnek összekapcsolva.
-* Össze kell kapcsolni, a Log Analytics-munkaterületet és Automation-fióknak ugyanabban az erőforráscsoportban és régióban kell lennie. A kivétel az USA keleti régiójában egy munkaterületet és Automation-fiókot az USA 2. keleti régiója.
+* Egy megoldás telepítése csak egyetlen Log Analytics munkaterületet és egy Automation-fiókot használhat. A megoldást külön is telepítheti több munkaterületre.
+* Ha egy megoldáshoz Automation-fiókra van szükség, akkor a Log Analytics munkaterület és az Automation-fióknak egymáshoz kell kapcsolódnia. Log Analytics munkaterület csak egy Automation-fiókhoz kapcsolható, és egy Automation-fiók csak egy Log Analytics munkaterülethez kapcsolható.
+* A csatoláshoz a Log Analytics munkaterület és az Automation-fióknak ugyanabban az erőforráscsoporthoz és régióban kell lennie. A kivétel az USA keleti régiójában és az USA 2. keleti régiójában található Automation-fiókhoz tartozó munkaterület.
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Hozzon létre egy Log Analytics-munkaterületet és Automation-fiók közötti kapcsolat
-Hogyan adhatja meg a Log Analytics-munkaterületet és Automation-fiók attól függ, hogy a megoldás a telepítési módszer.
+### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és Automation-fiók közötti kapcsolat létrehozása
+A Log Analytics munkaterület és az Automation-fiók megadása a megoldás telepítési módjától függ.
 
-* Amikor telepít egy megoldást az Azure piactéren, a rendszer kéri egy munkaterületet és Automation-fiók. A hivatkozás között jön létre, ha már nincs csatolva.
-* Megoldások az Azure piactéren kívül hozzá kell rendelnie a Log Analytics-munkaterületet és Automation-fiók a megoldás telepítése előtt. Jelölje ki a megoldással az Azure piactéren, és a Log Analytics-munkaterületet és Automation-fiók kiválasztásával teheti. Nem kell ténylegesen telepíteni a megoldás, mert a kapcsolat létrejött, amint a Log Analytics-munkaterületet és Automation-fiók ki van jelölve. Ha a kapcsolat létrejött, majd használhatja a Log Analytics-munkaterületet és Automation-fiók bármilyen megoldáshoz rendelkezésre állnak.
+* Ha az Azure Marketplace-en keresztül telepít megoldást, a rendszer a munkaterület és az Automation-fiók megadását kéri. A közöttük létrejött kapcsolat akkor jön létre, ha még nincsenek összekapcsolva.
+* Az Azure Marketplace-en kívüli megoldások esetében a megoldás telepítése előtt össze kell kapcsolni a Log Analytics munkaterületet és az Automation-fiókot. Ezt úgy teheti meg, ha kijelöl egy megoldást az Azure piactéren, és kiválasztja a Log Analytics munkaterület és az Automation-fiók elemet. Nem kell ténylegesen telepítenie a megoldást, mert a hivatkozás akkor jön létre, amikor a Log Analytics munkaterület és az Automation-fiók van kiválasztva. A hivatkozás létrehozása után bármely megoldáshoz használhatja a Log Analytics munkaterület és Automation-fiókot.
 
-### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>A Log Analytics-munkaterületet és Automation-fiók közötti kapcsolat ellenőrzése
-Log Analytics-munkaterületet és Automation-fiók az alábbi eljárást követve közötti kapcsolat ellenőrzéséhez.
+### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és az Automation-fiók közötti kapcsolat ellenőrzése
+A következő eljárással ellenőrizheti, hogy Log Analytics munkaterület és egy Automation-fiók közötti kapcsolat látható-e.
 
-1. Válassza ki az Automation-fiókot az Azure Portalon.
-1. Görgessen a **kapcsolódó erőforrások** a menü részét.
-1. Ha a **munkaterület** beállítás engedélyezve van, akkor ezt a fiókot egy Log Analytics-munkaterülethez van csatolva. Kattintson a **munkaterület** a munkaterület részleteinek megtekintéséhez.
+1. Válassza ki az Automation-fiókot a Azure Portal.
+1. Görgessen a menü **kapcsolódó erőforrások** szakaszához.
+1. Ha a **munkaterület** -beállítás engedélyezve van, akkor ez a fiók egy log Analytics munkaterülethez van csatolva. A munkaterület részleteinek megtekintéséhez kattintson a **munkaterület** elemre.
 
 ## <a name="remove-a-monitoring-solution"></a>Figyelési megoldás eltávolítása
-Keresse meg a telepített megoldás eltávolításához a [telepített megoldások listája](#list-installed-monitoring-solutions). Kattintson az összefoglalás lapon megnyitásához, és kattintson a megoldás nevére a **törlése**.
+Egy telepített megoldás eltávolításához keresse meg a [telepített megoldások listájában](#list-installed-monitoring-solutions). Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés**gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Szerezze be a [Microsoft figyelési megoldásainak listáját](solutions-inventory.md).
 * Megtudhatja, hogyan [hozhat létre lekérdezéseket](../log-query/log-query-overview.md) a figyelési megoldások által gyűjtött adatok elemzéséhez.
 

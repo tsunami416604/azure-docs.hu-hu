@@ -1,26 +1,21 @@
 ---
 title: Az Azure Application Insights rendelkezésre állási tesztek megoldása | Microsoft Docs
 description: Webtesztek hibakeresése az Azure Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.author: lagayhar
-ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695041"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899530"
 ---
-# <a name="troubleshooting"></a>Hibaelhárítás
+# <a name="troubleshooting"></a>Hibakeresés
 
 Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetlegesen előforduló gyakori hibák elhárításához.
 
@@ -29,7 +24,7 @@ Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetleg
 |Tünet/hibaüzenet| Lehetséges okok|
 |--------|------|
 |Nem hozható létre SSL/TLS biztonságos csatorna  | Az SSL verziója. Csak a TLS 1,0, 1,1 és 1,2 támogatottak. **A SSLv3 nem támogatott.**
-|TLS 1.2 rekord réteg: Riasztás (szint: Végzetes, leírás: Rossz rekord MAC)| [További információért](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)lásd a StackExchange szálat.
+|TLS 1.2 rekord rétege: riasztás (szint: végzetes, leírás: hibás rekord MAC)| [További információért](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)lásd a StackExchange szálat.
 |A sikertelen URL-cím egy CDN (Content Delivery Network) | Ezt a CDN helytelen konfigurációja okozhatja |  
 
 ### <a name="possible-workaround"></a>Lehetséges Áthidaló megoldás
@@ -133,7 +128,7 @@ Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizál
 
 Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../platform/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Többlépéses webes tesztelés](availability-multistep.md)
 * [URL-ping tesztek](monitor-web-app-availability.md)

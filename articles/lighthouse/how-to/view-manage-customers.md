@@ -4,15 +4,15 @@ description: Az Azure-beli delegált erőforrás-kezelést használó szolgálta
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302742"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898911"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
@@ -20,7 +20,7 @@ Az Azure-beli [delegált erőforrás-kezelést](../concepts/azure-delegated-reso
 
 Ha a Azure Portal **saját ügyfelek** lapját szeretné elérni, válassza a **minden szolgáltatás**lehetőséget, majd keresse meg az **ügyfeleket** , és válassza ki azt. Azt is megteheti, hogy beírja az "ügyfelek" kifejezést a Azure Portal tetején található keresőmezőbe.
 
-Ne feledje, hogy a **saját ügyfelek** lap csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek információit jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](https://docs.microsoft.com/partner-center/csp-overview)keresztül), akkor ezekkel az ügyfelekkel kapcsolatos információk nem jelennek meg, hacsak nem készíti elő az erőforrásokat a delegált erőforrás-kezeléshez.
+Ne feledje, hogy a **saját ügyfelek** lap felső szakasza csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek információit jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](https://docs.microsoft.com/partner-center/csp-overview)keresztül), akkor ezekkel az ügyfelekkel kapcsolatos információk nem jelennek meg, hacsak nem készíti elő az erőforrásokat a delegált erőforrás-kezeléshez. A lap alsó részén a **Cloud Solution Provider (előzetes verzió)** szakasz a [Microsoft ügyfél-szerződést (MCA) aláíró](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ügyfeleinek számlázási információit és erőforrásait, valamint az Azure-csomag részét képezi, függetlenül attól, hogy be lett-e telepítve Az Azure-beli delegált erőforrás-kezeléshez. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
 > Az ügyfelek megtekinthetik a szolgáltatók adatait úgy, hogy a Azure Portalban **lévő szolgáltatókra** navigálnak. További információ: szolgáltatók [megtekintése és kezelése](view-manage-service-providers.md).

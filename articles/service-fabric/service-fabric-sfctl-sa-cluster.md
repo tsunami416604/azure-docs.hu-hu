@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI-sfctl SA-cluster | Microsoft Docs
 description: Ismerteti a Service Fabric CLI sfctl önálló fürtjének parancsait.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 902ebab5dc12d7649edd0ed6e594e663e5332ce3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035233"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901017"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-fürt
 Önálló Service Fabric-fürtök kezelése.
@@ -29,7 +30,7 @@ ms.locfileid: "69035233"
 | --- | --- |
 | config | A Service Fabric önálló fürt konfigurációjának beolvasása. |
 | konfiguráció – frissítés | Service Fabric önálló fürt konfigurációjának frissítése megkezdődött. |
-| upgrade-status | Service Fabric önálló fürthöz tartozó fürtkonfiguráció frissítési állapotának beolvasása. |
+| frissítés – állapot | Service Fabric önálló fürthöz tartozó fürtkonfiguráció frissítési állapotának beolvasása. |
 
 ## <a name="sfctl-sa-cluster-config"></a>sfctl SA – fürt konfigurációja
 A Service Fabric önálló fürt konfigurációjának beolvasása.
@@ -41,7 +42,7 @@ A fürtkonfiguráció olyan fürtöt tartalmaz, amely különböző csomópont-t
 |Argumentum|Leírás|
 | --- | --- |
 | --Configuration-API-Version [kötelező] | Az önálló fürt JSON-konfigurációjának API-verziója. |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -49,8 +50,8 @@ A fürtkonfiguráció olyan fürtöt tartalmaz, amely különböző csomópont-t
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-sa-cluster-config-upgrade"></a>sfctl SA – fürt konfigurációja – frissítés
@@ -63,15 +64,15 @@ Service Fabric önálló fürt konfigurációjának frissítése megkezdődött.
 |Argumentum|Leírás|
 | --- | --- |
 | --cluster-config [kötelező] | A fürtkonfiguráció. |
-| --application-health-policies | A hiba kiemelése előtt JSON-kódolású, az alkalmazásnév és a maximális százalékos arányt tartalmazó szótár. |
+| --alkalmazás-állapot-szabályzatok | A hiba kiemelése előtt JSON-kódolású, az alkalmazásnév és a maximális százalékos arányt tartalmazó szótár. |
 | --Delta-sérült-csomópontok | A Delta állapot csökkenésének maximális megengedett százaléka a frissítés során. Az engedélyezett értékek a nulla és a 100 közötti egész értékek. |
-| --health-check-retry | Az állapot-ellenőrzések elvégzésére irányuló kísérletek közötti időtartam, ha az alkalmazás vagy a fürt állapota nem kifogástalan.  Alapértelmezett\: PT0H0M0S. |
+| --állapot-pipa-újrapróbálkozás | Az állapot-ellenőrzések elvégzésére irányuló kísérletek közötti időtartam, ha az alkalmazás vagy a fürt állapota nem kifogástalan.  Alapértelmezett\: PT0H0M0S. |
 | --állapot-passzolás – stabil | Az az időtartam, ameddig az alkalmazásnak vagy a fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományba kerül.  Alapértelmezett\: PT0H0M0S. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| --health-check-wait | Az a várakozási idő, ameddig a frissítési tartomány befejezése után meg kell várni az állapot-ellenőrzési folyamat megkezdése előtt.  Alapértelmezett\: PT0H0M0S. |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --állapot-pipa-várakozás | Az a várakozási idő, ameddig a frissítési tartomány befejezése után meg kell várni az állapot-ellenőrzési folyamat megkezdése előtt.  Alapértelmezett\: PT0H0M0S. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
 | – nem megfelelő állapotú alkalmazások | A nem kifogástalan állapotú alkalmazások maximális megengedett százalékos aránya a frissítés során. Az engedélyezett értékek a nulla és a 100 közötti egész értékek. |
 | – nem megfelelő állapotú csomópontok | A nem kifogástalan állapotú csomópontok megengedett százalékos aránya a frissítés során. Az engedélyezett értékek a nulla és a 100 közötti egész értékek. |
-| --upgrade-domain-delta-unhealthy-nodes | A frissítési tartomány változási állapotának maximális megengedett százaléka a frissítés során. Az engedélyezett értékek a nulla és a 100 közötti egész értékek. |
+| --upgrade-domain-Delta-sérült-csomópontok | A frissítési tartomány változási állapotának maximális megengedett százaléka a frissítés során. Az engedélyezett értékek a nulla és a 100 közötti egész értékek. |
 | – frissítés – tartomány – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a FailureAction végrehajtása előtt kell végrehajtani.  Alapértelmezett\: PT0H0M0S. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
 | – frissítés – időtúllépés | Az a időtartam, ameddig a teljes frissítésnek a FailureAction végrehajtása előtt el kell végeznie.  Alapértelmezett\: PT0H0M0S. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
 
@@ -81,17 +82,16 @@ Service Fabric önálló fürt konfigurációjának frissítése megkezdődött.
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ### <a name="examples"></a>Példák
 
 Fürt konfigurációs frissítésének indítása
-
-```
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+``` 
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl SA – fürt frissítése – állapot
@@ -103,7 +103,7 @@ A fürtkonfiguráció frissítési állapotának beolvasása egy Service Fabric 
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -111,11 +111,11 @@ A fürtkonfiguráció frissítési állapotának beolvasása egy Service Fabric 
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

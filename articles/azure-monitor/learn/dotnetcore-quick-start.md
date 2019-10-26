@@ -1,21 +1,19 @@
 ---
 title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
 description: Útmutatást nyújt egy ASP.NET Core webalkalmazás gyors beállításához a figyeléshez Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 313e0c6cb487ed986c38610131c4bc19f2eeb846
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916185"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900571"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -39,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -52,13 +50,13 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-   | Beállítások        |  Value           | Leírás  |
+   | Beállítások        |  Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
+   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
-   | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="configure-app-insights-sdk"></a>Az App Insights SDK konfigurálása
 
@@ -70,7 +68,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 3. Válassza ki a fiókját és az előfizetést > Válassza ki a Azure Portal létrehozott **meglévő erőforrást** > kattintson a **regisztráció**elemre.
 
-4. Válassza a **projekt** > **NuGet-csomagok** > kezelése**csomag forrása: nuget.org** > **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
+4. Válassza a **projekt** > **NuGet-csomagok kezelése** > **csomag forrása: NUGET.org** > **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
 
 5. Az alkalmazás indításához válassza a **Hibakeresés** > **Indítás hibakeresés nélkül** (Ctrl+F5) elemet
 
@@ -89,7 +87,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Alkalmazástérkép](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Kattintson az **app Analytics** ikon ![alkalmazás-Térkép ikon](./media/dotnetcore-quick-start/006.png) **nézet az elemzés**elemre. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Kattintson az **app Analytics** ikonra ![az alkalmazás-hozzárendelés ikon](./media/dotnetcore-quick-start/006.png) **Megtekintés az elemzésekben**. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -99,7 +97,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 5. A bal oldali kattintson a **metrikák**elemre. Az erőforrás állapotának és kihasználtságának vizsgálatához használja a metrikák Explorert. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit. Létrehozhat például egy olyan diagramot, amely megjeleníti a böngésző átlagos betöltési idejét úgy, hogy kiveszi a "böngésző oldal betöltési ideje" lehetőséget a metrikák legördülő menüből és az "AVG" összesítésből való kiválasztásával. Ha többet szeretne megtudni az Azure Metrikaböngésző-ról, látogasson el [az azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md)használatába.
 
-     ![Metrikák lap: Böngésző átlagos betöltési idejének diagramja](./media/dotnetcore-quick-start/8metrics.png)
+     ![Metrikák lap: az átlagos böngészőbeli betöltési idő diagramja](./media/dotnetcore-quick-start/8metrics.png)
 
 ## <a name="video"></a>Videó
 
@@ -112,7 +110,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Futásidejű kivételek észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

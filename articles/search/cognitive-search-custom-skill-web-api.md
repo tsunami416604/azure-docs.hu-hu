@@ -1,23 +1,24 @@
 ---
-title: Egyéni webes API-képesség egy alkoholtartalom-növelési folyamatban
-titleSuffix: Azure Cognitive Search
-description: Kiterjesztheti az Azure Cognitive Search szakértelmével képességeit a webes API-k meghívásával. Egyéni kód integrálásához használja az egyéni webes API-képességet.
+title: Egyéni kognitív keresési képességek – Azure Search
+description: A kognitív keresési szakértelmével képességeinek kiterjesztése a webes API-k meghívásával
+services: search
 manager: nitinme
 author: luiscabrer
-ms.author: luisca
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: HT
+ms.date: 05/02/2019
+ms.author: luisca
+ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784892"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901321"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
+# <a name="custom-web-api-skill"></a>Egyéni webes API-képesség
 
-Az **egyéni webes API** -képesség lehetővé teszi, hogy kiterjessze az AI-bővítést úgy, hogy az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
+Az **egyéni webes API** -képesség lehetővé teszi a kognitív keresés kiterjesztését, ha az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
 
 A JSON-adattartalom szerkezetét részletesebben ismertetjük ebben a dokumentumban.
 
@@ -39,8 +40,9 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | URI | Annak a webes API-nak az URI-ja, amelybe a _JSON_ -tartalom el lesz küldve. Csak **https** URI-séma engedélyezett |
 | httpMethod | A hasznos adatok küldésekor használandó metódus. Az engedélyezett módszerek `PUT` vagy `POST` |
 | httpHeaders | Olyan kulcs-érték párok gyűjteménye, amelyekben a kulcsok fejléc-és értéknek felelnek meg, a webes API-ra és a hasznos adattartalommal együtt küldendő fejléc-értékeket. A következő fejlécek nem engedélyezettek ebben a gyűjteményben: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
-| timeout | Választható Ha meg van adva, az API-hívást készítő http-ügyfél időtúllépését jelzi. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). @No__t_0 például 60 másodpercig. Ha nincs beállítva, a rendszer egy alapértelmezett 30 másodperces értéket választ. Az időtúllépés legfeljebb 230 másodpercig és legalább 1 másodpercig állítható be. |
+| timeout | Választható Ha meg van adva, az API-hívást készítő http-ügyfél időtúllépését jelzi. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). `PT60S` például 60 másodpercig. Ha nincs beállítva, a rendszer egy alapértelmezett 30 másodperces értéket választ. Az időtúllépés legfeljebb 230 másodpercig és legalább 1 másodpercig állítható be. |
 | batchSize | Választható Azt jelzi, hogy hány "adatrekord" (lásd az alábbi _JSON_ -adattartalom-szerkezetet) egy API-hívás alapján lesz elküldve. Ha nincs beállítva, a rendszer alapértelmezett 1000-as értéket választ. Javasoljuk, hogy használja ezt a paramétert, hogy megfelelő kompromisszumot érjen el az indexelési teljesítmény és az API terhelése között |
+| Analyticsunits | Választható Ha meg van adva, az indexelő által az Ön által megadott végponttal párhuzamosan kezdeményezett hívások számát jelzi. Csökkentheti ezt az értéket, ha a végpont nem a kérelem terhelése alatt túl magas, vagy ha a végpont több kérést is képes fogadni, és az indexelő teljesítményének növelését szeretné.  Ha nincs beállítva, a rendszer az alapértelmezett 5 értéket használja. A Analyticsunits legfeljebb 10 és legalább 1 értékre állítható be. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
@@ -203,5 +205,5 @@ Azokban az esetekben, amikor a webes API nem érhető el vagy HTTP-hibát ad vis
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://aka.ms/powerskills)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
-+ [Példa: egyéni képesség létrehozása AI-bővítéshez (kognitív-Search-Create-Custom-skill-example.md)
++ [Egyéni szakértelem hozzáadása a kognitív kereséshez](cognitive-search-custom-skill-interface.md)
++ [Példa: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)

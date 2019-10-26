@@ -1,5 +1,5 @@
 ---
-title: Azure-beli erőforrás-szerepkörök kiosztása a PIM-Azure Active Directoryban | Microsoft Docs
+title: Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management-Azure Active Directoryban | Microsoft Docs
 description: Ismerje meg, hogyan rendelhet hozzá Azure-beli erőforrás-szerepköröket Azure AD Privileged Identity Management (PIM) szolgáltatáshoz.
 services: active-directory
 documentationcenter: ''
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2850f17c96ef031f9e1b8e11558ab369e4175b0
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804285"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895945"
 ---
-# <a name="assign-azure-resource-roles-in-pim"></a>Azure-beli erőforrás-szerepkörök kiosztása a PIM-ben
+# <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) felügyelheti a beépített Azure-erőforrás-szerepköröket, valamint az egyéni szerepköröket, beleértve a (de nem kizárólag):
 
 - Tulajdonos
-- Felhasználói hozzáférés adminisztrátora
+- Felhasználói hozzáférés rendszergazdája
 - Közreműködő
 - Biztonsági rendszergazda
-- Security Manager és egyéb
+- Security Manager
 
 > [!NOTE]
-> A tulajdonosi vagy felhasználói hozzáférés-rendszergazdai szerepkörökhöz hozzárendelt felhasználók vagy csoportok tagjai, valamint az előfizetés-kezelést az Azure AD-ben engedélyező globális rendszergazdák az erőforrás-rendszergazdák. Ezek a rendszergazdák szerepköröket rendelhetnek hozzá, konfigurálhatják a szerepkör beállításait, és áttekinthetik a hozzáférést az Azure-erőforrások PIM használatával. Ez a fiók nem rendelkezik jogosultsággal a PIM-erőforrások kezeléséhez, ha a felhasználónak nincs erőforrás-rendszergazdai szerepköre. Megtekintheti az [Azure-erőforrások beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)listáját.
+> A tulajdonos vagy a felhasználói hozzáférés rendszergazdai előfizetési szerepköreihez rendelt felhasználók vagy csoportok tagjai, valamint az Azure ad-előfizetések felügyeletét engedélyező globális rendszergazdák alapértelmezés szerint erőforrás-rendszergazdai jogosultságokkal rendelkeznek. Ezek a rendszergazdák szerepköröket oszthatnak ki, konfigurálják a szerepkör beállításait, és áttekinthetik a hozzáférést az Azure-erőforrások Privileged Identity Management használatával. A felhasználók nem kezelhetnek erőforrás-rendszergazdai jogosultságokkal nem rendelkező erőforrások Privileged Identity Management. Megtekintheti az [Azure-erőforrások beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)listáját.
 
 ## <a name="assign-a-role"></a>Szerepkör kiosztása
 
@@ -41,35 +41,33 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 
-    További információ a PIM felügyeletének másik rendszergazdai hozzáférésének megadásáról: [hozzáférés biztosítása más rendszergazdák számára a PIM kezeléséhez](pim-how-to-give-access-to-pim.md).
+    További információ a Privileged Identity Management kezeléséhez szükséges további rendszergazdai hozzáférésről: [hozzáférés biztosítása más rendszergazdák számára a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-    Ha még nem indította el a PIM-t a Azure Portalban, ugorjon a [PIM használatának megkezdése](pim-getting-started.md)lehetőségre.
-
-1. Kattintson az **Azure-erőforrások**elemre.
+1. Válassza ki az **Azure-erőforrásokat**.
 
 1. Az **Erőforrás-szűrő** használatával szűrheti a felügyelt erőforrások listáját.
 
     ![A felügyelni kívánt Azure-erőforrások listája](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Kattintson a kezelni kívánt erőforrásra, például egy előfizetésre vagy egy felügyeleti csoportra.
+1. Válassza ki a kezelni kívánt erőforrást, például egy előfizetést vagy egy felügyeleti csoportot.
 
-1. A kezelés alatt kattintson a **szerepkörök** elemre az Azure-erőforrások szerepköreinek megjelenítéséhez.
+1. A kezelés területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
 
     ![Azure-erőforrások szerepkörei](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Kattintson a **tag hozzáadása** elemre az új hozzárendelés ablaktábla megnyitásához.
+1. Válassza a **tag hozzáadása** lehetőséget az új hozzárendelés ablaktábla megnyitásához.
 
-1. A szerepkör kiválasztása ablaktábla megnyitásához kattintson **a szerepkör kiválasztása** elemre.
+1. Válassza a **szerepkör kiválasztása** lehetőséget a szerepkör kiválasztása ablaktábla megnyitásához.
 
     ![Új hozzárendelés ablaktábla](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Kattintson a hozzárendelni kívánt szerepkörre, majd a **kiválasztás**elemre.
+1. Válassza ki a hozzárendelni kívánt szerepkört, majd kattintson a **kiválasztás**gombra.
 
     Megnyílik a tag vagy csoport kiválasztása panel.
 
-1. Kattintson a szerepkörhöz hozzárendelni kívánt tagra vagy csoportra, majd a **kiválasztás**elemre.
+1. Válassza ki a szerepkörhöz hozzárendelni kívánt tagot vagy csoportot, majd kattintson a **kiválasztás**elemre.
 
     ![Tag vagy csoport ablaktábla kiválasztása](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
@@ -79,7 +77,7 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
     ![Tagságok beállításai panel](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
-    A PIM for Azure-erőforrások két különböző hozzárendelési típust biztosítanak:
+    Az Azure-erőforrások Privileged Identity Management két különböző hozzárendelési típust biztosít:
 
     - A **jogosult** hozzárendelésekhez a szerepkör tagjának kell lennie a szerepkör használatára vonatkozó művelet végrehajtásához. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik.
 
@@ -93,11 +91,11 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
     ![Tagsági beállítások – dátum és idő](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
 
-1. Ha végzett, kattintson a **Kész** gombra.
+1. Ha elkészült, válassza a **kész**gombot.
 
     ![Új hozzárendelés – Hozzáadás](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
-1. Az új szerepkör-hozzárendelés létrehozásához kattintson a **Hozzáadás**gombra. Megjelenik az állapot értesítése.
+1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás**lehetőséget. Megjelenik az állapot értesítése.
 
     ![Új hozzárendelés – értesítés](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,26 +105,26 @@ A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításáh
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson az **Azure-erőforrások**elemre.
+1. Válassza ki az **Azure-erőforrásokat**.
 
-1. Kattintson a kezelni kívánt erőforrásra, például egy előfizetésre vagy egy felügyeleti csoportra.
+1. Válassza ki a kezelni kívánt erőforrást, például egy előfizetést vagy egy felügyeleti csoportot.
 
-1. A kezelés alatt kattintson a **szerepkörök** elemre az Azure-erőforrások szerepköreinek megjelenítéséhez.
+1. A kezelés területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
 
     ![Azure-erőforrás szerepkörei – szerepkör kiválasztása](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 
-1. Kattintson a frissíteni vagy eltávolítani kívánt szerepkörre.
+1. Válassza ki a frissíteni vagy eltávolítani kívánt szerepkört.
 
 1. Keresse meg a szerepkör-hozzárendelést a **jogosult szerepkörök** vagy az **aktív szerepkörök** lapon.
 
     ![Szerepkör-hozzárendelés frissítése vagy eltávolítása](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
 
-1. A szerepkör-hozzárendelés frissítéséhez vagy eltávolításához kattintson a **frissítés** vagy az **Eltávolítás** elemre.
+1. A szerepkör-hozzárendelés frissítéséhez vagy eltávolításához válassza a **frissítés** vagy az **Eltávolítás** lehetőséget.
 
-    A szerepkör-hozzárendelés kiterjesztésével kapcsolatos információkért lásd: [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása a PIM-ben](pim-resource-roles-renew-extend.md).
+    További információ a szerepkör-hozzárendelés kibővítéséről: [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Managementban](pim-resource-roles-renew-extend.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure-erőforrás szerepköreinek kiterjesztése vagy megújítása a PIM-ben](pim-resource-roles-renew-extend.md)
-- [Az Azure erőforrás-szerepkör beállításainak konfigurálása a PIM-ben](pim-resource-roles-configure-role-settings.md)
-- [Azure AD-szerepkörök kiosztása a PIM-ben](pim-how-to-add-role-to-user.md)
+- [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Management](pim-resource-roles-renew-extend.md)
+- [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
+- [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)

@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor log lekérdezés nyelvi eltérései | Microsoft Docs
 description: Az Azure Monitor által használt Kusto-lekérdezési nyelvre vonatkozó információk. A Azure Monitor és a Azure Monitor napló lekérdezésekben nem támogatott elemek további elemeit tartalmazza.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 08/13/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d3c2daafc9116d23d837e86e60ca628bbe34647
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990184"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900389"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor a naplózási lekérdezés nyelvi különbségeit
 
@@ -36,11 +30,11 @@ A következő szakaszok ismertetik a Kusto lekérdezési nyelvének azon elemeit
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>A függvények nem támogatottak Azure Monitor
 
-* [cluster()](/azure/kusto/query/clusterfunction)
+* [fürt ()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current(), current_cursor()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [adatbázis ()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -59,10 +53,10 @@ A következő szakaszok ismertetik a Kusto lekérdezési nyelvének azon elemeit
 ## <a name="additional-operators-in-azure-monitor"></a>További operátorok a Azure Monitor
 A következő operátorok bizonyos Azure Monitor szolgáltatásokat támogatnak, és nem érhetők el Azure Monitoron kívül.
 
-* [app()](app-expression.md)
-* [workspace()](workspace-expression.md)
+* [alkalmazás ()](app-expression.md)
+* [munkaterület ()](workspace-expression.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A különböző erőforrásokra mutató hivatkozások beszerzése [Azure monitor napló lekérdezésének írásához](query-language.md).
-- A [Kusto lekérdezési nyelvének](/azure/kusto/query/)teljes dokumentációjának elérése.
+- A [Kusto lekérdezési nyelvének teljes dokumentációjának](/azure/kusto/query/)elérése.

@@ -1,59 +1,54 @@
 ---
-title: Az Azure Application Insights tölcsérek
-description: Ismerje meg, hogyan használhatja tölcsérek felderíteni az ügyfelek hogyan használja az alkalmazását.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights-csatornák
+description: Megtudhatja, hogyan használhatja a tölcséreket, hogy megtudja, hogyan kommunikálnak az ügyfelek az alkalmazással.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/17/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: d6a6e34f9688747891ac91401941a96b6e85d76a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372917"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899474"
 ---
-# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Fedezze fel, ügyfeleink miként használják alkalmazását az Application Insights tölcsérek
+# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Ismerje meg, hogy az ügyfelek hogyan használják az alkalmazást Application Insights Tölcsérekkel
 
-A felhasználói élmény ismertetése nem az üzleti kiemelt fontossággal bír. Az alkalmazás magában foglalja a több szakaszt, ha tudja, hogy a legtöbb ügyfél számára a teljes folyamat keresztül halad előre, hogy, vagy ha befejezése esetén a folyamat olyan pont van szükség. Egy webalkalmazás lépések sorozatát keresztül metódushívásainak néven egy *tölcsér*. Az Azure Application Insights tölcsérek segítségével betekintést nyerhet a felhasználók számára, és részletes konverziós figyelése. 
+A felhasználói élmény megismerése rendkívül fontos a vállalat számára. Ha az alkalmazás több fázist is magában foglal, tudnia kell, hogy a legtöbb ügyfél a teljes folyamaton halad-e, vagy ha egy adott időpontban befejezi a folyamatot. Egy webalkalmazás lépéseinek sorozatán keresztüli előrehaladást *tölcsérnek*nevezzük. Az Azure Application Insights Tölcsérekkel betekintést nyerhet a felhasználókba, és figyelemmel kísérheti a részletes konverziós arányt. 
 
 ## <a name="create-your-funnel"></a>A tölcsér létrehozása
-A tölcsér hoz létre, mielőtt a kérdést, hogy megválaszoljuk a dönt. Például érdemes tudni, hogy hány felhasználó tekinti meg a kezdőlapján a felhasználói profil megtekintése, és a egy a jegy létrehozása. Ebben a példában a Fabrikam-Fiber vállalati tulajdonosai szeretnék tudni, hogy az ügyfelek, akik sikeresen a felhasználói jegy létrehozása aránya.
+A tölcsér létrehozása előtt döntse el, hogy milyen kérdéssel szeretne válaszolni. Előfordulhat például, hogy tudni szeretné, hogy hány felhasználó tekinti meg a kezdőlapot, hogyan tekintheti meg az ügyfél profilját, és hogyan hozhat létre jegyet. Ebben a példában a fabrikam Fiber vállalat tulajdonosai szeretnék tudni, hogy az ügyfelek hány százalékát sikerült létrehozni az ügyfél-jegyet.
 
-Az alábbiakban a lépéseket, a tölcsér.
+Ezek a lépések a tölcsér létrehozásához szükségesek.
 
-1. Válassza ki az Application Insights tölcsérek eszközben **új**.
-1. Az a **időtartomány** legördülő menüjében válassza **utolsó 90 napban**. Ezek közül bármelyikre **saját tölcsérek** vagy **közös tölcsérek**.
-1. Az a **1. lépés** legördülő listában válassza **Index**. 
-1. Az a **2. lépés** listáról válassza ki **ügyfél**.
-1. Az a **3. lépés** listáról válassza ki **létrehozás**.
-1. A tölcsér név hozzáadása, és válassza ki **mentése**.
+1. A Application Insights tölcsérek eszközben válassza az **új**lehetőséget.
+1. Az **időtartomány** legördülő menüben válassza az **utolsó 90 nap**lehetőséget. Válassza **a saját tölcsérek vagy a** **közös tölcsérek**lehetőséget.
+1. Az **1. lépés** legördülő listából válassza ki az **index**elemet. 
+1. A **2. lépés** listából válassza az **ügyfél**lehetőséget.
+1. A **3. lépés** listából válassza a **Létrehozás**elemet.
+1. Adjon hozzá egy nevet a tölcsérhez, majd kattintson a **Mentés**gombra.
 
-A következő képernyőképen látható egy példa, hogy milyen típusú adatokat a tölcsérek eszközt hoz létre. A Fabrikam tulajdonosok láthatja, hogy az utolsó 90 napban, ügyfeleiknek a kezdőlap, létrehozott egy felhasználói jegy látogató 54.3 százaléka. Akkor is megtekintheti, hogy ügyfelei 2,700 származik az indexbe a kezdőlapon. Ez jelentheti a hibát egy frissítési probléma.
+Az alábbi képernyőképen egy példa látható a tölcsérek eszköz által generált adattípusra. A fabrikam tulajdonosai láthatják, hogy az elmúlt 90 napban a kezdőlapon meglátogatott ügyfeleinek 54,3 százaléka hozta létre az ügyfél-jegyet. Azt is láthatják, hogy az ügyfelek 2 700-as indexe a kezdőlapról érkezett. Ez frissítési problémát jelezhet.
 
 
-![Képernyőkép a tölcsérek eszköz adatokkal](media/usage-funnels/funnel1.png)
+![Képernyőfelvétel a tölcsérek eszközről az adattal](media/usage-funnels/funnel1.png)
 
-### <a name="funnels-features"></a>Tölcsérek funkciók
-Az előző képernyőképen látható öt kiemelt területet foglal magában. Ezek a tölcsérek funkcióját. Az alábbi lista további ismerteti a képernyőképen látható minden egyes megfelelő terület:
-1. Ha az alkalmazás feladata, látni fogja a mintavételi fejléc. Kontextuspanel, azzal az információval mintavételi kikapcsolása szalagcím kiválasztásával megnyílik. 
-2. Exportálhatja a tölcsér [Power BI](../../azure-monitor/app/export-power-bi.md ).
-3. Válasszon egy lépést, amely további részleteket a jobb oldalon. 
-4. A konvertálási előzményadatok grafikonja az átváltási árfolyamok az elmúlt 90 napban. 
-5. Ismerje meg a felhasználók jobb a felhasználók eszköz elérésével. Minden egyes lépésének szűrőket is használhatja. 
+### <a name="funnels-features"></a>A tölcsérek funkciói
+Az előző képernyőképen öt kiemelt terület szerepel. Ezek a tölcsérek funkciói. A következő lista részletesebben ismerteti a képernyőképen szereplő összes érintett régiót:
+1. Ha az alkalmazás mintául szolgál, egy mintavételi szalagcím jelenik meg. A szalagcím kiválasztásával megnyílik a helyi ablaktábla, amely ismerteti a mintavételezés kikapcsolásának módját. 
+2. A tölcsért [Power BIba](../../azure-monitor/app/export-power-bi.md )exportálhatja.
+3. Válasszon egy lépést a jobb oldalon található további részletek megtekintéséhez. 
+4. A korábbi konverziós gráf az elmúlt 90 napban mutatja be a konverziós arányt. 
+5. A felhasználók eszköz elérésével jobban megismerheti a felhasználókat. Az egyes lépésekben szűrőket is használhat. 
 
-## <a name="next-steps"></a>További lépések
-  * [Használat – áttekintés](usage-overview.md)
+## <a name="next-steps"></a>Következő lépések
+  * [A használat áttekintése](usage-overview.md)
   * [Felhasználók, munkamenetek és események](usage-segmentation.md)
   * [Megőrzés](usage-retention.md)
   * [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
-  * [Adja hozzá a felhasználói környezet](usage-send-user-context.md)
+  * [Felhasználói környezet hozzáadása](usage-send-user-context.md)
   * [Power BI-exportálás](../../azure-monitor/app/export-power-bi.md )
 

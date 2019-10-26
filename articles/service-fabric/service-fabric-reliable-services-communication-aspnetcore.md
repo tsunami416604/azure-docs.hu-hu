@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 39e6273382133493a77321deed2baec4718bc912
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b2a1b1426af3e72756a7a85a173ef4a2a5671b02
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383667"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900199"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
 
@@ -96,7 +96,7 @@ Az alábbi ábrán a kérelmek folyamata látható a middleware-mel engedélyezv
 
 ![Service Fabric ASP.NET Core integráció][2]
 
-A vércse és a HTTP. sys @no__t – 0 implementációk ezt a mechanizmust használják pontosan ugyanúgy. Bár a HTTP. sys belső módon megkülönböztetheti a kérelmeket az egyedi URL-elérési utak alapján, a mögöttes **http. sys** port megosztása funkciót használva, a http. sys `ICommunicationListener` implementáció *nem* használja ezt a funkciót. Ennek oka az, hogy a HTTP 503 és a HTTP 404 hibakódokat a korábban ismertetett forgatókönyvben eredményezi. Ezzel megnehezíti az ügyfelek számára a hiba szándékának meghatározását, mivel a HTTP 503 és a HTTP 404 általában más hibák jelzésére szolgál. 
+A vércse és a HTTP. sys `ICommunicationListener` implementációja pontosan ugyanúgy használja ezt a mechanizmust. Bár a HTTP. sys belső módon megkülönböztetheti a kérelmeket az egyedi URL-elérési utak alapján, a mögöttes **http. sys** port megosztása funkciót használva, a http. sys `ICommunicationListener` implementáció *nem* használja ezt a funkciót. Ennek oka az, hogy a HTTP 503 és a HTTP 404 hibakódokat a korábban ismertetett forgatókönyvben eredményezi. Ezzel megnehezíti az ügyfelek számára a hiba szándékának meghatározását, mivel a HTTP 503 és a HTTP 404 általában más hibák jelzésére szolgál. 
 
 Így a vércse és a HTTP. sys `ICommunicationListener` implementációk egységesítése az `UseServiceFabricIntegration` kiterjesztési módszer által biztosított middleware-ben. Ezért az ügyfeleknek csak egy szolgáltatási végpontot kell végrehajtaniuk a HTTP 410-válaszokon.
 
@@ -340,13 +340,16 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 
 Ebben a konfigurációban a `KestrelCommunicationListener` automatikusan kijelöl egy fel nem használt portot az alkalmazás portszáma alapján.
 
+HTTPS esetén a végpontnak a ServiceManifest. xml fájlban megadott port nélkül kell HTTPS protokollal konfigurálva lennie, és át kell adnia a végpont nevét a KestrelCommunicationListener konstruktornak.
+
+
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric konfigurációs szolgáltató
 ASP.NET Core alkalmazás-konfigurációja a konfigurációs szolgáltató által létesített kulcs-érték párokon alapul. Az általános ASP.NET Core-konfiguráció támogatásával kapcsolatos további információkért olvassa el [ASP.net Core konfigurációját](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) .
 
 Ez a szakasz azt ismerteti, hogyan integrálható a Service Fabric konfigurációs szolgáltató ASP.NET Core-konfigurációval a `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-csomag importálásával.
 
 ### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration indítási bővítmények
-A `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet csomag importálása után regisztrálnia kell a Service Fabric konfigurációs forrását ASP.NET Core Configuration API-val. Ehhez ellenőrizze a **AddServiceFabricConfiguration** -bővítményeket a `Microsoft.ServiceFabric.AspNetCore.Configuration` névtérben @no__t – 2.
+A `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet csomag importálása után regisztrálnia kell a Service Fabric konfigurációs forrását ASP.NET Core Configuration API-val. Ezt úgy teheti meg, hogy a `Microsoft.ServiceFabric.AspNetCore.Configuration` névtérben ellenőrzi a **AddServiceFabricConfiguration** -bővítményeket a `IConfigurationBuilder`.
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;

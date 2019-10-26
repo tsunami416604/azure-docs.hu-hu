@@ -1,24 +1,18 @@
 ---
 title: Azure Key Vault megoldás a Azure Monitorban | Microsoft Docs
 description: Azure Key Vault naplók áttekintéséhez használhatja a Azure Monitor Azure Key Vault megoldását.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/27/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 03/27/2019
+ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997692"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899218"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault elemzési megoldás a Azure Monitor
 
@@ -35,7 +29,7 @@ A megoldás használatához engedélyeznie kell a Azure Key Vault diagnosztika n
 >
 >
 
-## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
+## <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
 A Azure Key Vault megoldás telepítéséhez és konfigurálásához kövesse az alábbi utasításokat:
 
 1. A Azure Key Vault megoldás Log Analytics-munkaterülethez való hozzáadásához használja a [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md) a-ból című témakörben leírt eljárást.
@@ -47,7 +41,7 @@ A Azure Key Vault megoldás telepítéséhez és konfigurálásához kövesse az
 2. Válassza a *diagnosztikai beállítások* elemet a következő oldal megnyitásához
 
    ![Azure Key Vault csempe képe](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
-3. Kattintson a *diagnosztika* bekapcsolása elemre a következő oldal megnyitásához
+3. Kattintson a *diagnosztika bekapcsolása* elemre a következő oldal megnyitásához
 
    ![Azure Key Vault csempe képe](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Adjon nevet a diagnosztikai beállításnak.
@@ -57,7 +51,7 @@ A Azure Key Vault megoldás telepítéséhez és konfigurálásához kövesse az
 8. A *Mentés* gombra kattintva engedélyezheti a diagnosztika naplózását log Analytics munkaterületre.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Key Vault diagnosztika engedélyezése a PowerShell használatával
-A következő PowerShell-szkript bemutatja, hogyan `Set-AzDiagnosticSetting` engedélyezhető a Key Vault diagnosztikai naplózása:
+A következő PowerShell-szkript bemutatja, hogyan használható a `Set-AzDiagnosticSetting` a diagnosztikai naplózás engedélyezéséhez Key Vault számára:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -101,7 +95,7 @@ Miután rákattintott a **Key Vault Analytics** csempére, megtekintheti a napl�
     Bármelyik naplóbeli keresési oldalon megtekintheti az eredményeket idő szerint, részletes eredményekkel és a naplóbeli keresési előzményekkel. Az eredmények szűkítéséhez az aspektusok alapján is szűrheti az eredményeket.
 
 ## <a name="azure-monitor-log-records"></a>Naplóbejegyzések Azure Monitor
-A Azure Key Vault megoldás elemzi azokat a rekordokat, amelyek a Azure Diagnostics [AuditEvent](../../key-vault/key-vault-logging.md) -naplóiból gyűjtött típusú kulcstartókkal rendelkeznek.  A rekordok tulajdonságai a következő táblázatban találhatók:  
+A Azure Key Vault megoldás **elemzi azokat a** rekordokat, amelyek a Azure Diagnostics [AuditEvent-naplóiból](../../key-vault/key-vault-logging.md) gyűjtött típusú kulcstartókkal rendelkeznek.  A rekordok tulajdonságai a következő táblázatban találhatók:  
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
@@ -120,8 +114,8 @@ A Azure Key Vault megoldás elemzi azokat a rekordokat, amelyek a Azure Diagnost
 | `Resource` |A Key Vault neve |
 | `ResourceGroup` |A Key Vault erőforráscsoport |
 | `ResourceId` |Az Azure Resource Manager szerinti erőforrás-azonosító. Key Vault naplók esetében ez a Key Vault erőforrás-azonosító. |
-| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
-| `ResourceType` | *VAULTS* |
+| `ResourceProvider` |*Microsoft. KEYVAULT* |
+| `ResourceType` | *BOLTÍVEK* |
 | `ResultSignature` |HTTP-állapot (például *OK*) |
 | `ResultType` |REST API kérelem eredménye (például *sikeres*) |
 | `SubscriptionId` |Az Key Vaultt tartalmazó előfizetés Azure-előfizetési azonosítója |
@@ -138,19 +132,19 @@ A frissített megoldás használata:
 1. [A diagnosztika konfigurálása egy Log Analytics munkaterületre való közvetlen elküldése Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
 2. Engedélyezze a Azure Key Vault megoldást az [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md) című témakörben ismertetett eljárás használatával.
 3. A mentett lekérdezések, irányítópultok vagy riasztások frissítése az új adattípus használatára
-   + A típus a következőtől változik: Kulcstartók a AzureDiagnostics. A ResourceType használatával szűrheti Key Vault naplókat.
-   + A: `KeyVaults`helyett használja a`AzureDiagnostics | where ResourceType'=="VAULTS"`
-   + Mezők (A mezők nevei megkülönböztetik a kis-és nagybetűket)
-   + Minden olyan mezőnél, amely a névben \_s, \_d vagy \_g utótaggal rendelkezik, módosítsa az első karaktert a kisbetű értékre.
-   + Minden olyan mezőnél, amelynél a \_név utótagja szerepel, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva. A hívó egyszerű felhasználóneve például egy mezőben tárolódik.`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + A típus a következőtől változik: AzureDiagnostics. A ResourceType használatával szűrheti Key Vault naplókat.
+   + A: `KeyVaults`helyett használja a `AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Mezők: (a mezők nevei megkülönböztetik a kis-és nagybetűket)
+   + \_s, \_d vagy \_g utótaggal rendelkező mezőknél módosítsa az első karaktert a kisbetű értékre.
+   + Minden olyan mezőnél, amely \_o nevű utótaggal rendelkezik, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva. A hívó egyszerű felhasználóneve például egy mezőben tárolódik `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + A mező CallerIpAddress CallerIPAddress módosult
    + A RemoteIPCountry mező már nem létezik
-4. Távolítsa el a *Key Vault Analytics (elavult)* megoldást. Ha a PowerShellt használja, használja a`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Távolítsa el a *Key Vault Analytics (elavult)* megoldást. Ha a PowerShellt használja, használja a `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 A módosítás előtt gyűjtött adatok nem láthatók az új megoldásban. Továbbra is lekérdezheti ezeket az adattípusokat a régi típusú és mezőnevek használatával.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>További lépések
-* A részletes Azure Key Vault-információk megtekintéséhez használja [a Azure monitor](../../azure-monitor/log-query/log-query-overview.md) a naplózási lekérdezéseket.
+## <a name="next-steps"></a>Következő lépések
+* A részletes Azure Key Vault-információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../../azure-monitor/log-query/log-query-overview.md) .

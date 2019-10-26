@@ -1,24 +1,18 @@
 ---
 title: Erőforrások lekérdezése Azure Monitorsal | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet lekérdezéseket lekérdezni több munkaterületről és az App betekintő alkalmazásból származó erőforrásokról az előfizetésben.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 06/05/2019
+ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650157"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894492"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor  
 
@@ -124,7 +118,7 @@ app('Contoso-app5').requests
 
 
 
-Ezt a függvényt mostantól egy több erőforrást tartalmazó lekérdezésben is [használhatja](../../azure-monitor/log-query/functions.md#use-a-function) , például a következőhöz. A _applicationsScoping_ függvény alias a kérelmek tábla unióját adja vissza az összes megadott alkalmazásból. A lekérdezés ezután szűri a sikertelen kérelmeket, és alkalmazás szerint jeleníti meg a trendeket. Ebben a példában az _elemzési_ operátor nem kötelező. Kibontja az alkalmazás nevét a _SourceApp_ tulajdonságból.
+[Ezt a függvényt](../../azure-monitor/log-query/functions.md#use-a-function) mostantól egy több erőforrást tartalmazó lekérdezésben is használhatja, például a következőhöz. A _applicationsScoping_ függvény alias a kérelmek tábla unióját adja vissza az összes megadott alkalmazásból. A lekérdezés ezután szűri a sikertelen kérelmeket, és alkalmazás szerint jeleníti meg a trendeket. Ebben a példában az _elemzési_ operátor nem kötelező. Kibontja az alkalmazás nevét a _SourceApp_ tulajdonságból.
 
 ```Kusto
 applicationsScoping 
@@ -141,7 +135,7 @@ applicationsScoping
 
 ![Idődiagramját](media/cross-workspace-query/chart.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a naplófájlok [elemzését Azure monitor](log-query-overview.md) a naplók áttekintését, valamint a Azure monitor naplózási adatai strukturált módját.
 - Tekintse át [Azure monitor a napló lekérdezéseit](query-language.md) , és tekintse meg az összes erőforrást a Azure monitor log lekérdezésekhez.

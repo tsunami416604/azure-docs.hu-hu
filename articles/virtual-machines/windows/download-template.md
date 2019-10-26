@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 37e833e5ba2fcbc9fcfe0a27d5b607a5c6cdd55b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079537"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898873"
 ---
-# <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
+# <a name="download-the-template-for-a-vm"></a>Sablon letöltése virtuális géphez
 Amikor a portál vagy a PowerShell használatával hoz létre egy virtuális gépet az Azure-ban, a rendszer automatikusan létrehoz egy Resource Manager-sablont. A sablon használatával gyorsan duplikálhat egy központi telepítést. A sablon az erőforráscsoport összes erőforrásával kapcsolatos információkat tartalmaz. A virtuális gépek esetében ez azt jelenti, hogy a sablon tartalmaz mindent, ami az adott erőforráscsoporthoz tartozó virtuális gép támogatásában jön létre, beleértve a hálózati erőforrásokat is.
 
 ## <a name="download-the-template-using-the-portal"></a>A sablon letöltése a portál használatával
@@ -32,22 +32,18 @@ Amikor a portál vagy a PowerShell használatával hoz létre egy virtuális gé
 5. Válassza a **Letöltés** lehetőséget a felső menüben, és mentse a. zip fájlt a helyi számítógépre.
 6. Nyissa meg a. zip fájlt, és bontsa ki a fájlokat egy mappába. A. zip fájl a következőket tartalmazza:
    
-   * Deploy. ps1
-   * deploy.sh 
-   * Deploy. RB
-   * DeploymentHelper.cs
    * Parameters. JSON
-   * template.json
+   * sablon. JSON
 
 A sablon. JSON fájl a sablon.
 
 ## <a name="download-the-template-using-powershell"></a>Sablon letöltése a PowerShell használatával
-A. JSON sablonfájl az [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) parancsmaggal is letölthető. `-path` A paraméterrel megadhatja a. JSON fájl fájlnevét és elérési útját. Ebből a példából megtudhatja, hogyan töltheti le a **myResourceGroup** nevű erőforráscsoport sablonját a helyi számítógép **C:\users\public\downloads** mappájába.
+A. JSON sablonfájl az [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) parancsmaggal is letölthető. A. JSON fájl fájlnevének és elérési útjának megadásához a `-path` paramétert használhatja. Ebből a példából megtudhatja, hogyan töltheti le a **myResourceGroup** nevű erőforráscsoport sablonját a helyi számítógép **C:\users\public\downloads** mappájába.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az erőforrások sablonok használatával történő üzembe helyezésével kapcsolatos további információkért lásd: [Resource Manager-sablonok áttekintése](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 

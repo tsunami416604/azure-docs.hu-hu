@@ -1,64 +1,60 @@
 ---
-title: Az Azure Application Insights Snapshot Debugger kapcsolatos problémák elhárítása |} A Microsoft Docs
-description: Ez a cikk bemutatja a hibaelhárítási lépéseket és információk nyújtanak segítséget a fejlesztőknek szól, akik engedélyezése és használata az Application Insights Snapshot Debugger problémákat tapasztal, amikor.
-services: application-insights
-documentationcenter: ''
-author: brahmnes
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Az Azure Application Insights Snapshot Debugger problémáinak elhárítása | Microsoft Docs
+description: Ez a cikk hibaelhárítási lépéseket és információkat nyújt a Application Insights Snapshot Debugger engedélyezésével vagy használatával kapcsolatos problémákat okozó fejlesztőknek.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/07/2019
+author: brahmnes
 ms.author: mbullwin
-ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 03/07/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: ec70f202a496ec368a483278994c7c5ccb24f40b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444553"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899827"
 ---
-# <a id="troubleshooting"></a> Application Insights Snapshot Debugger engedélyezése és pillanatképek megtekintése kapcsolatos problémák elhárítása
-Ha engedélyezve van az Application Insights Snapshot Debugger az alkalmazáshoz, de nem jelennek meg a kivételek pillanatképeinek, ezek az utasítások segítségével hibaelhárítása. Számos különféle oka lehet, hogy miért pillanatképeket a rendszer nem hozza létre lehet. Egyes gyakori oka lehet az pillanatkép állapot-ellenőrzés futtatása.
+# <a id="troubleshooting"></a>A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
+Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő útmutatást használhatja a hibák megoldásához:. Számos különböző oka lehet annak, hogy a pillanatképek miért nem jönnek létre. A pillanatkép állapotának ellenőrzését futtatva azonosíthatja a lehetséges gyakori okok némelyikét.
 
-## <a name="use-the-snapshot-health-check"></a>Használja a pillanatkép állapotának ellenőrzése
-Számos gyakori problémára eredményez a hibakeresési pillanatfelvétel megnyitása nem jelenik meg. Egy elavult Snapshot Collector, például; használatával a napi feltöltési korlát elérése vagy esetleg a pillanatkép van csak hosszú ideig tart a feltöltendő. A pillanatkép állapotát ellenőrző használatával kapcsolatos gyakori problémák elhárítása.
+## <a name="use-the-snapshot-health-check"></a>A pillanatkép-állapot-ellenőrzési eszköz használata
+Számos gyakori probléma miatt az Open debug pillanatkép nem jelenik meg. Elavult Snapshot Collector használata, például:; a napi feltöltési korlát elérése; vagy lehet, hogy a pillanatkép csak hosszú időt vesz fel a feltöltéshez. Az általános problémák elhárításához használja a pillanatkép állapotának ellenőrzését.
 
-A teljes körű nyomkövetési nézet, amellyel a pillanatkép állapotának ellenőrzése a kivétel ablaktáblán egy kapcsolat áll fenn.
+A végpontok közötti nyomkövetés nézet kivétel ablaktábláján található egy hivatkozás, amely a pillanatkép állapotának ellenőrzését végzi.
 
-![Adja meg a pillanatkép-állapot-ellenőrzése](./media/snapshot-debugger/enter-snapshot-health-check.png)
+![Adja meg a pillanatkép állapotának ellenőrzését](./media/snapshot-debugger/enter-snapshot-health-check.png)
 
-Az interaktív, csevegés-szerű felületet keres a gyakori problémákat, és végigvezeti Önt felé azok javításához.
+Az interaktív, csevegéshez hasonló kezelőfelület gyakori problémákat keres, és végigvezeti Önt a hibák elhárításában.
 
-![Állapot-ellenőrzése](./media/snapshot-debugger/healthcheck.png)
+![Állapot-ellenőrzési](./media/snapshot-debugger/healthcheck.png)
 
-Ha ez nem oldja meg a problémát, majd tekintse meg a következő manuális hibaelhárítási lépéseket.
+Ha ez nem oldja meg a problémát, tekintse meg a következő kézi hibaelhárítási lépéseket.
 
 ## <a name="verify-the-instrumentation-key"></a>A kialakítási kulcs ellenőrzése
 
-Ellenőrizze, hogy a megfelelő kialakítási kulcsot használ a közzétett alkalmazásban. Általában a kialakítási kulcs az ApplicationInsights.config fájlban olvasható. Ellenőrizze, hogy értéke ugyanaz, mint a rendszerállapotkulcsot az Application Insights-erőforrás számára, a portálon.
+Győződjön meg arról, hogy a megfelelő kialakítási kulcsot használja a közzétett alkalmazásban. A rendszerállapot-kulcsot általában a ApplicationInsights. config fájlból olvassa be a rendszer. Ellenőrizze, hogy az érték megegyezik-e a portálon megjelenő Application Insights erőforrás rendszerállapot-kulcsával.
 
-## <a name="preview-versions-of-net-core"></a>A .NET Core előzetes verziók
-Ha az alkalmazás a .NET Core előzetes verzióját használja, és a pillanatkép-hibakereső keresztül lett engedélyezve az [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) a portálon, majd Snapshot Debugger nem indul el. Kövesse az utasításokat, [Snapshot Debugger engedélyezése más környezetek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) először felvenni a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban ***emellett*** keresztül engedélyezését a [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+## <a name="preview-versions-of-net-core"></a>A .NET Core előzetes verziói
+Ha az alkalmazás a .NET Core előzetes verzióját használja, és Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) keresztül volt engedélyezve, akkor előfordulhat, hogy Snapshot Debugger nem indul el. A [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet ***-*** csomagnak az alkalmazással való használatának [](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) [engedélyezéséhez kövesse az egyéb környezetek engedélyezése Snapshot Debugger. Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
 
-## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>A legújabb verzióra a NuGet-csomag frissítése
+## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Frissítés a NuGet csomag legújabb verziójára
 
-Ha Snapshot Debugger engedélyezve volt a [a portál Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), majd az alkalmazás már futniuk kell a legújabb NuGet-csomagot. Ha a pillanatkép-hibakereső engedélyezetté többek között a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot, használja a Visual Studio NuGet-Csomagkezelőt, hogy a legújabb verzióját használja-e Microsoft.ApplicationInsights.SnapshotCollector. Kibocsátási megjegyzések található https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Ha Snapshot Debugger engedélyezte a [portálon a Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), akkor az alkalmazásnak már a legújabb NuGet-csomagot kell futtatnia. Ha a Snapshot Debugger a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomaggal együtt engedélyezte, a Visual Studio NuGet csomagkezelő segítségével ellenőrizze, hogy a legújabb verzióját használja-e. Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag. A kibocsátási megjegyzések a következő címen találhatók: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
-## <a name="check-the-uploader-logs"></a>Az adatfeltöltő naplókat
+## <a name="check-the-uploader-logs"></a>A feltöltő naplók keresése
 
-Pillanatkép létrehozása után egy kis memóriakép-fájl (.dmp) jön létre a lemezen. Egy külön adatfeltöltő-folyamatot hoz létre a tömörített memóriaképet fájlt, és feltölti azt, együtt minden társított PDBs, az Application Insights Snapshot Debugger storage. Miután a tömörített memóriaképet sikeres feltöltését követően a lemezről törlődik. Az adatfeltöltő-folyamat a naplófájlok őrzi meg a lemezen. App Service Environment-környezetben, keresse meg ezeket a naplókat a `D:\Home\LogFiles`. A Kudu felügyeleti hely az App Service használatával kereshet ezekben a naplófájlokban.
+A pillanatkép létrehozása után létrejön egy minidump-fájl (. dmp) a lemezen. Egy külön feltöltő folyamat létrehozza a minidump-fájlt, és feltölti azt a kapcsolódó PDBs együtt, hogy Application Insights Snapshot Debugger tárterületet. Miután a minidump sikeresen feltöltötte, a rendszer törli a lemezről. A feltöltő folyamat naplófájljai a lemezen maradnak. App Service-környezetben ezek a naplók a `D:\Home\LogFiles`ban találhatók. A naplófájlok megkereséséhez használja a App Service kudu felügyeleti webhelyét.
 
-1. Nyissa meg az App Service-alkalmazás az Azure Portalon.
-2. Kattintson a **speciális eszközök**, vagy keressen **Kudu**.
-3. Kattintson a **Go**.
-4. Az a **hibakereső konzol** legördülő listában jelölje ki **CMD**.
-5. Kattintson a **LogFiles**.
+1. Nyissa meg a App Service alkalmazást a Azure Portalban.
+2. Kattintson a **speciális eszközök**elemre, vagy keressen rá a **kudu**.
+3. Kattintson az **Ugrás**gombra.
+4. A **hibakeresési konzol** legördülő listájában válassza a **cmd**elemet.
+5. Kattintson a **LogFiles**elemre.
 
-Legalább egy fájlt névvel kezdődő kell megjelennie `Uploader_` vagy `SnapshotUploader_` és a egy `.log` bővítmény. Kattintson a megfelelő ikonra, töltse le a naplófájlokat vagy a böngészőben megnyitja őket.
-A fájl nevét tartalmazza, amely azonosítja az App Service-példány egyedi utótagja. Az App Service-példányhoz egynél több gépen üzemel, van-e az egyes gépek külön naplófájlokat. Amikor a feltöltő egy új tömörített memóriaképet fájlt észlel, azt a naplófájl rögzíti. Íme egy példa a sikeres pillanatkép és a feltöltés:
+Meg kell jelennie legalább egy olyan nevű fájlnak, amelynek neve `Uploader_` vagy `SnapshotUploader_` és `.log` kiterjesztéssel kezdődik. Kattintson a megfelelő ikonra a naplófájlok letöltéséhez vagy a böngészőben való megnyitásához.
+A fájlnév egy egyedi utótagot tartalmaz, amely a App Service példányt azonosítja. Ha a App Service-példány több gépen üzemel, külön naplófájlok vannak az egyes gépekhez. Ha a feltöltő új minidump-fájlt észlel, azt a rendszer rögzíti a naplófájlban. Íme egy példa egy sikeres pillanatképre és feltöltésre:
 
 ```
 SnapshotUploader.exe Information: 0 : Received Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
@@ -86,12 +82,12 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> A fenti példában a Microsoft.ApplicationInsights.SnapshotCollector NuGet-csomag 1.2.0-s vagy annál újabb verziójából származik. A korábbi verziókban a adatfeltöltő folyamatot nevezik `MinidumpUploader.exe` és a napló kevésbé részletes.
+> A fenti példa a Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag NuGet csomag 1.2.0 verziója. A korábbi verziókban a feltöltő folyamat neve `MinidumpUploader.exe`, és a napló kevésbé részletes.
 
-Az előző példában a műszerezettségi kulcs jelenleg `c12a605e73c44346a984e00000000000`. Ezt az értéket meg kell egyeznie a kialakítási kulcsot az alkalmazáshoz.
-A tömörített memóriaképet társítva a Azonosítóval rendelkező pillanatkép `139e411a23934dc0b9ea08a626db16c5`. Keresse meg a kapcsolódó kivétel telemetriát az Application Insights-elemzési később használhatja ezt az Azonosítót.
+Az előző példában a kialakítási kulcs `c12a605e73c44346a984e00000000000`. Ennek az értéknek meg kell egyeznie az alkalmazás kialakítási kulcsával.
+A minidump egy `139e411a23934dc0b9ea08a626db16c5`AZONOSÍTÓval rendelkező pillanatképhez van társítva. Ezt az azonosítót később is használhatja, hogy megkeresse a társított kivétel telemetria Application Insights Analyticsben.
 
-Az adatfeltöltő új PDBs 15 percenként egyszer kapcsolatban keres. Például:
+A feltöltő 15 percenként megkeresi az új PDBs. Például:
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -104,24 +100,24 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-Alkalmazások, amelyek _nem_ adatfeltöltő naplók vannak az App Service-ben üzemeltetett, a tömörített memóriaképek ugyanabban a mappában: `%TEMP%\Dumps\<ikey>` (ahol `<ikey>` a kialakítási kulcs).
+A App Serviceban _nem_ üzemeltetett alkalmazások esetén a feltöltő naplók ugyanabban a mappában találhatók, mint a minidumps: `%TEMP%\Dumps\<ikey>` (ahol `<ikey>` a kialakítási kulcs).
 
-## <a name="troubleshooting-cloud-services"></a>A Cloud Services hibaelhárítása
-Szerepkörhöz a Felhőszolgáltatásokban az alapértelmezett ideiglenes mappa esetleg túl kicsi ahhoz, hogy a kis memóriaképfájl, vezető elveszett pillanatképek.
-A szükséges hely az alkalmazás és a párhuzamos pillanatképek számát teljes munkakészletének függ.
-32 bites ASP.NET webes szerepkör munkakészletének általában 200 MB-TAL és 500 MB között van.
-Legalább két egyidejű pillanatképek lehetővé.
-Például ha az alkalmazás használja a teljes munkakészletet az 1 GB, akkor gondoskodnia kell, hogy nincs-e tárolni a pillanatképek lemezterület legalább 2 GB.
-Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigurálása a pillanatképek egy dedikált helyi erőforrás.
+## <a name="troubleshooting-cloud-services"></a>Hibaelhárítási Cloud Services
+A Cloud Services szerepkörei esetében az alapértelmezett ideiglenes mappa túl kicsi lehet a minidump fájlok tárolására, ami az elveszett pillanatképeket eredményezi.
+A szükséges lemezterület az alkalmazás teljes munkakészletén és az egyidejű Pillanatképek számától függ.
+A 32 bites ASP.NET webes szerepkör munkakészlete általában 200 MB és 500 MB között van.
+Legalább két párhuzamos pillanatkép használatát teszi lehetővé.
+Ha például az alkalmazás 1 GB-nyi teljes munkakészletet használ, győződjön meg arról, hogy legalább 2 GB lemezterület van a pillanatképek tárolásához.
+Az alábbi lépéseket követve konfigurálhatja a Cloud Service-szerepkört egy dedikált helyi erőforrással a pillanatképekhez.
 
-1. Adjon hozzá egy új helyi erőforrást a Felhőszolgáltatás a felhőalapú szolgáltatás definíciós (.csdef) fájl szerkesztésével. Az alábbi példa meghatározza nevű erőforrás `SnapshotStore` 5 GB-os mérettel.
+1. Adjon hozzá egy új helyi erőforrást a Cloud Service-hez a Cloud Service Definition (. csdef) fájl szerkesztésével. Az alábbi példa egy `SnapshotStore` nevű erőforrást definiál, amelynek mérete 5 GB.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
    ```
 
-2. Módosítsa a szerepkör indítási kódot, amellyel hozzáadja egy környezeti változó, amely a `SnapshotStore` helyi erőforrás. A feldolgozói szerepkörök esetében a kód fel kell venni a szerepkör `OnStart` módszer:
+2. Módosítsa a szerepkör indítási kódját egy olyan környezeti változó hozzáadásához, amely a `SnapshotStore` helyi erőforrásra mutat. A feldolgozói szerepkörök esetében a kódot hozzá kell adni a szerepkör `OnStart` metódusához:
    ```csharp
    public override bool OnStart()
    {
@@ -129,7 +125,7 @@ Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigu
        return base.OnStart();
    }
    ```
-   A webes szerepkörök (ASP.NET), a kód hozzá kell adni a webalkalmazás `Application_Start` módszer:
+   Webes szerepkörök (ASP.NET) esetén a kódot hozzá kell adni a webalkalmazás `Application_Start` metódusához:
    ```csharp
    using Microsoft.WindowsAzure.ServiceRuntime;
    using System;
@@ -147,7 +143,7 @@ Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigu
    }
    ```
 
-3. A szerepkör ApplicationInsights.config fájl felülírásához használja az ideiglenes mappa frissítése `SnapshotCollector`
+3. Frissítse a szerepkör ApplicationInsights. config fájlját a `SnapshotCollector` által használt ideiglenes mappa helyének felülbírálásához.
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -160,23 +156,23 @@ Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigu
 
 ## <a name="overriding-the-shadow-copy-folder"></a>Az árnyékmásolat-mappa felülbírálása
 
-A Snapshot Collector indításakor próbál egy mappát a lemezen, amely lehetővé teszi a pillanatkép Adatfeltöltő folyamat futtatásához. A kiválasztott mappát a árnyékmásolat mappa néven ismert.
+A Snapshot Collector indításakor megpróbál olyan mappát találni a lemezen, amely alkalmas a pillanatkép-feltöltő folyamat futtatására. A kiválasztott mappát árnyékmásolat-mappaként nevezzük.
 
-A Snapshot Collector ellenőrzi néhány jól ismert helyek, gondoskodik róla, hogy a pillanatkép Adatfeltöltő bináris fájlok másolását engedélyekkel rendelkezik. Az alábbi környezeti változókat használják:
+A Snapshot Collector néhány jól ismert helyet ellenőriz, így biztos lehet benne, hogy rendelkezik a pillanatkép-feltöltő bináris fájljainak másolásához szükséges engedélyekkel. A következő környezeti változók használatosak:
 - Fabric_Folder_App_Temp
 - LOCALAPPDATA
 - APPDATA
-- TEMP
+- IDEIGLENES
 
-Nem található a megfelelő mappát, ha a Snapshot Collector egy hiba üzenettel jelentések _"Nem található a megfelelő árnyékmásolat mappa másolása."_
+Ha nem található megfelelő mappa, Snapshot Collector a következő hibaüzenetet jelenti: _"nem található a megfelelő árnyékmásolat-mappa."_
 
-Ha a példány nem sikerül, pillanatképek adatgyűjtője jelentések egy `ShadowCopyFailed` hiba.
+Ha a másolás sikertelen, Snapshot Collector `ShadowCopyFailed` hibát jelez.
 
-Ha nem lehet elindítani a feltöltő, pillanatképek adatgyűjtője jelentések egy `UploaderCannotStartFromShadowCopy` hiba. Az üzenet törzsében gyakran tartalmaznak `System.UnauthorizedAccessException`. Ez a hiba általában akkor fordul elő, mert az alkalmazás korlátozott engedélyekkel rendelkező fiókkal futtatja. A fiók az árnyékmásolat mappa másolása írási engedéllyel rendelkezik, de nem rendelkezik engedéllyel a kódot.
+Ha a feltöltőt nem lehet elindítani, Snapshot Collector `UploaderCannotStartFromShadowCopy` hibát jelez. Az üzenet törzse gyakran `System.UnauthorizedAccessException`tartalmaz. Ez a hiba általában azért fordul elő, mert az alkalmazás csökkentett engedélyekkel rendelkező fiók alatt fut. A fióknak van engedélye az árnyékmásolat mappájába való írásra, de nem rendelkezik a kód végrehajtásához szükséges engedéllyel.
 
-Ezek a hibák általában indítása során fordulhat elő, mert azok fog általában následovat egy `ExceptionDuringConnect` hiba üzenettel _"Feltöltése nem sikerült elindítani."_
+Mivel ezek a hibák általában az indítás során történnek, általában egy `ExceptionDuringConnect` hiba következik be, amely azt jelzi, _hogy a "feltöltő nem indult el."_
 
-Ezek a hibák megoldása, adja meg manuálisan keresztül mappa árnyékmásolat másolása a `ShadowCopyFolder` konfigurációs beállítást. Például az applicationinsights.config fájlban:
+A hibák megkerüléséhez manuálisan megadhatja az árnyékmásolat-mappát a `ShadowCopyFolder` konfigurációs lehetőséggel. Például a ApplicationInsights. config használatával:
 
    ```xml
    <TelemetryProcessors>
@@ -188,7 +184,7 @@ Ezek a hibák megoldása, adja meg manuálisan keresztül mappa árnyékmásolat
    </TelemetryProcessors>
    ```
 
-Vagy ha egy .NET Core-alkalmazást az appsettings.json használja:
+Vagy ha a appSettings. JSON fájlt .NET Core-alkalmazással használja:
 
    ```json
    {
@@ -201,26 +197,26 @@ Vagy ha egy .NET Core-alkalmazást az appsettings.json használja:
    }
    ```
 
-## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Az Application Insights keresés használatával pillanatképekkel kivételek keresése
+## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Kivételek keresése a pillanatképekkel a Application Insights Search használatával
 
-Egy pillanatkép jön létre, amikor a rtesítő kivétel van-e megjelölve a pillanatkép-azonosítót. A pillanatkép-azonosító alkalmazás egyéni tulajdonság része, a kivétel telemetriát az Application Insights jelentésekor. Használatával **keresési** az Application Insights, az összes telemetriai adat található a `ai.snapshot.id` egyéni tulajdonság.
+Pillanatkép létrehozásakor a throwing kivétel egy pillanatkép-AZONOSÍTÓval van megjelölve. Ez a Pillanatkép-azonosító egyéni tulajdonságként szerepel, ha a kivétel telemetria Application Insightsre jelent meg. A **Keresés** a Application Insights használatával megkeresheti az összes telemetria az `ai.snapshot.id` egyéni tulajdonsággal.
 
-1. Keresse meg az Application Insights-erőforrást az Azure Portalon.
-2. Kattintson a **Keresés** gombra.
-3. Típus `ai.snapshot.id` a keresőmezőbe, és nyomja le az Enter.
+1. Tallózással keresse meg Application Insights erőforrását a Azure Portalban.
+2. Kattintson a **Keresés**gombra.
+3. Írja be a `ai.snapshot.id` kifejezést a keresés szövegmezőbe, majd nyomja le az ENTER billentyűt.
 
-![Keresse meg a telemetriai adatok a portálon egy pillanatkép-azonosító](./media/snapshot-debugger/search-snapshot-portal.png)
+![Telemetria keresése pillanatkép-AZONOSÍTÓval a portálon](./media/snapshot-debugger/search-snapshot-portal.png)
 
-Ha a keresés eredménytelen, majd pillanatképek nem jelzett az Application insights szolgáltatásba az alkalmazás a kijelölt időtartományban található.
+Ha a keresés nem ad vissza találatot, a rendszer nem jelentett pillanatképeket az alkalmazáshoz a kijelölt időtartományban Application Insights.
 
-Keresse meg a naplók feltöltése egy adott pillanatkép-azonosító, a keresőmezőbe írja be Azonosítóval. Ha telemetriai adatokat, amelyeket feltöltött egy pillanatkép nem találja, kövesse az alábbi lépéseket:
+Ha meg szeretne keresni egy adott pillanatkép-azonosítót a feltöltő naplókból, írja be ezt az azonosítót a keresőmezőbe. Ha nem találja a telemetria olyan pillanatképet, amelyet korábban már feltöltött, kövesse az alábbi lépéseket:
 
-1. Ellenőrizze, hogy dolgozik a megfelelő Application Insights-erőforrást a kialakítási kulcsot ellenőrzésével.
+1. Ellenőrizze, hogy a megfelelő Application Insights erőforrást tekinti-e meg a kialakítási kulcs ellenőrzésével.
 
-2. Az időtartomány szűrő ahhoz, hogy biztosítsák az adott időtartományt a keresés használatával történő küldés időbélyegzője legyen a Adatfeltöltő-naplóból, állítsa be.
+2. A feltöltő napló időtartományát használva állítsa be a keresés időtartomány-szűrőjét, hogy az adott időtartományra vonatkozzon.
 
-Ha továbbra sem látja, hogy a pillanatkép-Azonosítóval rendelkező kivételt, a kivétel telemetriát az Application Insights nem jelentett. Ez a helyzet akkor fordulhat elő, ha az alkalmazás összeomlott ideig tartott a pillanatkép után, de mielőtt azt jelentette, hogy a kivétel telemetriát. Ebben az esetben ellenőrizze az App Service-naplók alatt `Diagnose and solve problems` megtekintéséhez, hogy voltak-e váratlan újraindítást vagy nem kezelt kivételeket.
+Ha továbbra sem jelenik meg kivétel a pillanatkép-AZONOSÍTÓval kapcsolatban, akkor a kivétel telemetria nem jelentett Application Insights. Ez akkor fordulhat elő, ha az alkalmazás a pillanatkép elvégzése után összeomlott, de a kivétel telemetria jelent meg. Ebben az esetben tekintse meg a App Service naplókat a `Diagnose and solve problems` területen, és ellenőrizze, hogy nem történt-e váratlan újraindítás vagy nem kezelt kivétel.
 
-## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy vagy tűzfal-szabályok szerkesztése
+## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy-vagy tűzfalszabályok szerkesztése
 
-Ha az alkalmazás csatlakozik az interneten keresztül proxy vagy tűzfal, szükség lehet ahhoz, hogy a pillanatkép-hibakereső szolgáltatással folytatott kommunikációhoz az alkalmazás a szabályok szerkesztése. Íme [IP-címek és a pillanatkép-hibakereső által használt portok listáját](../../azure-monitor/app/ip-addresses.md#snapshot-debugger).
+Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy a szabályokat úgy kell módosítania, hogy az alkalmazás kommunikáljon a Snapshot Debugger szolgáltatással. Itt látható az [Snapshot Debugger által használt IP-címek és portok listája](../../azure-monitor/app/ip-addresses.md#snapshot-debugger).

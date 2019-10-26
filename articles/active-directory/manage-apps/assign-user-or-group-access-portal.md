@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851699"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896475"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Felhasználó vagy csoport társítása vállalati alkalmazáshoz Azure Active Directory
 
-Ha felhasználót vagy csoportot szeretne hozzárendelni egy vállalati alkalmazáshoz, rendelkeznie kell a megfelelő engedélyekkel a vállalati alkalmazás felügyeletéhez, és globális rendszergazdai jogosultsággal kell rendelkeznie a címtárhoz. Microsoft-alkalmazások (például Office 365-alkalmazások) esetén a PowerShell használatával rendeljen felhasználókat a vállalati alkalmazásokhoz.
+Ha felhasználót vagy csoportot szeretne hozzárendelni egy vállalati alkalmazáshoz, a következő rendszergazdai szerepkörök bármelyikét hozzá kell rendelnie: globális rendszergazda, alkalmazás-rendszergazda, Felhőbeli alkalmazás rendszergazdája, vagy hozzá kell rendelni a vállalati alkalmazás tulajdonosaként.  Microsoft-alkalmazások (például Office 365-alkalmazások) esetén a PowerShell használatával rendeljen felhasználókat a vállalati alkalmazásokhoz.
 
 > [!NOTE]
 > Az ebben a cikkben tárgyalt funkciókra vonatkozó licencelési követelményekért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory).
@@ -67,7 +67,7 @@ A **felhasználó-hozzárendelés szükséges?** beállítás:
    > [!NOTE]
    > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD`). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
 
-1. Futtassa `Connect-AzureAD` a parancsot, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
+1. Futtasson `Connect-AzureAD`, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
 1. A következő parancsfájl használatával rendelhet hozzá felhasználót és szerepkört egy alkalmazáshoz:
 
     ```powershell
@@ -87,7 +87,7 @@ A **felhasználó-hozzárendelés szükséges?** beállítás:
 
 A felhasználók alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért látogasson el a [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) dokumentációjában
 
-Egy csoport vállalati alkalmazáshoz való hozzárendeléséhez a `Get-AzureADUser` `Get-AzureADGroup`következőt kell lecserélnie:.
+A csoportok vállalati alkalmazásokhoz való hozzárendeléséhez le kell cserélnie a `Get-AzureADUser`t `Get-AzureADGroup`.
 
 ### <a name="example"></a>Példa
 
@@ -109,11 +109,11 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Futtassa a parancsot `$sp.AppRoles` a munkahelyi elemzési alkalmazáshoz elérhető szerepkörök megjelenítéséhez. Ebben a példában a Britta Simon (korlátozott hozzáférés) szerepkört szeretnénk hozzárendelni.
+1. Futtassa a `$sp.AppRoles` parancsot a munkahelyi elemzési alkalmazáshoz elérhető szerepkörök megjelenítéséhez. Ebben a példában a Britta Simon (korlátozott hozzáférés) szerepkört szeretnénk hozzárendelni.
 
    ![A munkahelyi elemzési szerepkört használó felhasználó számára elérhető szerepkörök megjelenítése](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Rendelje hozzá a szerepkör nevét `$app_role_name` a változóhoz.
+1. Rendelje hozzá a szerepkör nevét a `$app_role_name` változóhoz.
 
     ```powershell
     # Assign the values to the variables
@@ -128,7 +128,7 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)

@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl tároló | Microsoft Docs
 description: Ismerteti a Service Fabric CLI sfctl-tároló parancsait.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 0ce6cf7c627657cf757b0c1ef9aa22428c17a7e7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 13de6ff7b3e5a41eced5ca49a3af38fab60ba0a0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036467"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901299"
 ---
 # <a name="sfctl-container"></a>sfctl-tároló
 Tárolóval kapcsolatos parancsok futtatása fürtcsomóponton.
@@ -27,8 +28,8 @@ Tárolóval kapcsolatos parancsok futtatása fürtcsomóponton.
 
 |Parancs|Leírás|
 | --- | --- |
-| invoke-api | A Container API meghívása egy Service Fabric csomóponton telepített tárolón az adott programkódhoz. |
-| logs | Beolvassa a tároló naplóit a Service Fabric csomóponton üzembe helyezett tárolóhoz az adott programkódhoz. |
+| meghívás – API | A Container API meghívása egy Service Fabric csomóponton telepített tárolón az adott programkódhoz. |
+| naplók | Beolvassa a Service Fabric csomóponton üzembe helyezett tároló naplófájljait. |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl-tároló meghívása – API
 A Container API meghívása egy Service Fabric csomóponton telepített tárolón az adott programkódhoz.
@@ -43,10 +44,10 @@ A Container API meghívása egy Service Fabric csomóponton telepített tároló
 | --Container-API-URI-elérési_út [kötelező] | Tároló REST API URI elérési útja, használja a (z) {ID} nevet a tároló neve/azonosítója helyett. |
 | --Node-Name [kötelező] | A csomópont neve. |
 | --Service-manifest-Name [kötelező] | Egy Service Fabric-fürtben egy alkalmazás típusának részeként regisztrált szolgáltatási jegyzékfájl neve. |
-| --container-api-body | A tároló REST API HTTP-kérelem törzse. |
-| --container-api-content-type | A tároló REST API tartalomtípusa alapértelmezett értéke az "Application/JSON". |
-| --container-api-http-verb | A tároló REST API HTTP-művelete alapértelmezett értéke a beolvasás. |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --Container-API-Body | A tároló REST API HTTP-kérelem törzse. |
+| --Container-API-Content-Type | A tároló REST API tartalomtípusa alapértelmezett értéke az "Application/JSON". |
+| --Container-API-http-művelet | A tároló REST API HTTP-művelete alapértelmezett értéke a beolvasás. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -54,12 +55,12 @@ A Container API meghívása egy Service Fabric csomóponton telepített tároló
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-container-logs"></a>sfctl-tároló naplói
-Beolvassa a tároló naplóit a Service Fabric csomóponton üzembe helyezett tárolóhoz az adott programkódhoz.
+Beolvassa a Service Fabric csomóponton üzembe helyezett tároló naplófájljait.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -71,7 +72,7 @@ Beolvassa a tároló naplóit a Service Fabric csomóponton üzembe helyezett t�
 | --Node-Name [kötelező] | A csomópont neve. |
 | --Service-manifest-Name [kötelező] | Egy Service Fabric-fürtben egy alkalmazás típusának részeként regisztrált szolgáltatási jegyzékfájl neve. |
 | – farok | A naplók végétől megjelenítendő sorok száma. Az alapértelmezett érték a 100. az "all" (összes) a teljes naplókat jeleníti meg. |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -79,11 +80,11 @@ Beolvassa a tároló naplóit a Service Fabric csomóponton üzembe helyezett t�
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

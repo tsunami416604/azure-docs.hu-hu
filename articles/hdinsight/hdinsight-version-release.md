@@ -1,18 +1,18 @@
 ---
 title: HDInsight 4,0 – Áttekintés – Azure
 description: A HDInsight 3.6 és a HDInsight 4.0 funkcióinak, korlátainak és frissítési ajánlásainak összehasonlítása.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 74cd6a6919db1c01535fb984d1e8e0d0ad2d5ade
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 10/22/2019
+ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879328"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901528"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -40,7 +40,7 @@ A Hive mostantól támogatja a dinamikus, tényleges táblán alapuló nézeteke
 
 A HDI 4.0 részét képezi az Apache Hive 3, amelynek használatához a Hive-adattárházban lévő tranzakciós tábláknak meg kell felelniük az atomitási, konzisztenciabeli, elkülönítési és tartóssági (ACID) követelményeknek. Az ACID-kompatibilis táblákat és táblaadatokat a Hive használja és felügyeli. A létrehozási, lekérési, frissítési és törlési (CRUD) táblákban lévő adatoknak az optimalizált sor oszlop (ORC) fájlformátumot kell követnie, a csak beszúrásos táblák azonban minden fájlformátumot támogatnak.
 
-* Az ACID 2-es verziójában a tárolási formátummal és a végrehajtómotorral kapcsolatos teljesítmény is javult. 
+* Az ACID 2-es verziójában a tárolási formátummal és a végrehajtómotorral kapcsolatos teljesítmény is javult.
 
 * Az ACID alapértelmezés szerint engedélyezve van az adatfrissítések teljes támogatása érdekében.
 
@@ -71,7 +71,6 @@ Nem kell amiatt aggódnia, hogy véletlenül közvetlenül éri el a tranzakció
 
 További tudnivalók az [Apache Sparkról](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
-
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Az Apache Oozie 4.3.1 a HDI 4.0 részét képezi az alábbi módosításokkal:
@@ -91,13 +90,13 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 ## <a name="limitations"></a>Korlátozások
 
 * A HDInsight 4,0 nem támogatja a Apache Hive MapReduce. Használja helyette az Apache TEZ. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
-* A HDInsight 4,0 nem támogatja a Apache Storm. 
-* A kaptár nézet már nem érhető el a HDInsight 4,0-ben. 
-* Spark- és interaktív lekérdezési fürtökben az Apache Zeppelin nem támogatja a parancshéj-értelmezők használatát.
+* A HDInsight 4,0 nem támogatja a Apache Storm.
+* A kaptár nézet már nem érhető el a HDInsight 4,0-ben.
+* Az Apache Zeppelin rendszerhéj-értelmező nem támogatott a Spark és az interaktív lekérdezési fürtökben.
 * Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Csak az LLAP kikapcsolására van lehetősége.
 * Az Azure Data Lake Storage Gen2 nem tud Juypter jegyzetfüzeteket menteni Spark-fürtökbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight – dokumentáció](index.yml)
 * [Kibocsátási megjegyzések](hdinsight-release-notes.md)

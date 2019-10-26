@@ -1,99 +1,93 @@
 ---
-title: Az Azure monitorral az SQL Server-környezet optimalizálása |} A Microsoft Docs
-description: Az Azure monitorral az SQL Health Check megoldás segítségével felmérheti a kockázatait és állapotát, a környezetek rendszeres időközönkénti.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Optimalizálja SQL Server-környezetét Azure Monitorkal | Microsoft Docs
+description: A Azure Monitor használatával az SQL Health-ellenőrzési megoldással rendszeres időközönként felmérhetővé teheti a környezetek kockázatait és állapotát.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/28/2019
+ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120631"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900683"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás az Azure monitorban
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
 
-![Symbol SQL állapotának ellenőrzése](./media/sql-assessment/sql-assessment-symbol.png)
+![SQL Health-ellenőrzési szimbólum](./media/sql-assessment/sql-assessment-symbol.png)
 
-Az SQL Health Check megoldás segítségével felmérheti a kockázatokat és a kiszolgáló-környezetek állapotát rendszeres időközönkénti. Ez a cikk segítséget nyújt a megoldás telepítése, hogy a potenciális problémákat korrekciós műveleteket hajthatja végre.
+Az SQL Health-ellenőrzési megoldással rendszeres időközönként felméri a kiszolgálói környezetek kockázatait és állapotát. Ez a cikk segítséget nyújt a megoldás telepítéséhez, hogy kijavítsa a lehetséges problémákra vonatkozó lépéseket.
 
-Ez a megoldás a telepített kiszolgálói infrastruktúrát vonatkozó javaslatok rangsorolt listáját tartalmazza. Az ajánlások szerint vannak kategóriába sorolva hat fókuszterületre vonatkozóan, amely segítségével gyorsan megismerheti a kockázatokat, és korrekciós műveletek.
+Ez a megoldás a telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza. A javaslatok 6 Kiemelt területre vannak kategorizálva, amelyek segítségével gyorsan megismerheti a kockázatokat, és elvégezheti a megfelelő lépéseket.
 
-Javaslatok útmutatóként tudással és ezer vevő a Microsoft mérnökei tapasztalatai alapulnak. Minden javaslat ismerteti, miért számít a probléma előfordulhat, hogy Önnek és a javasolt változások megvalósítása.
+A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatásból nyert ismeretekre és tapasztalatokra épülnek. Az egyes javaslatok útmutatást nyújtanak arról, hogy miért fontos a probléma, és hogyan valósítja meg a javasolt módosításokat.
 
-Kiválaszthatja, hogy a szervezet számára legfontosabb, és nyomon követheti az előrehaladást kockázati ingyenes és kifogástalan állapotú környezetét fókuszterületek.
+Kiválaszthatja a szervezete számára legfontosabb fókusz területeket, és nyomon követheti az előrehaladást a kockázatmentes és kifogástalan állapotú környezetek futtatásának irányába.
 
-Miután hozzáadta a megoldást, és az értékelés befejeződött, összefoglaló adatait fókuszterületek jelenik meg a **SQL állapotának ellenőrzése** a környezetében az infrastruktúra-irányítópulton. A következő szakaszok ismertetik az információk használata az a **SQL állapotának ellenőrzése** irányítópult, amelyen megtekintheti és megfelelő ajánlott műveletek az SQL Server-infrastruktúrához.
+A megoldás hozzáadása és az értékelés befejezése után a fókusz területekre vonatkozó összefoglaló információk az **SQL Health-ellenőrzés** irányítópulton jelennek meg a környezetében lévő infrastruktúrához. Az alábbi szakaszok azt ismertetik, hogyan használhatók az **SQL Health-ellenőrzési** irányítópulton található információk, ahol megtekintheti és elvégezheti az SQL Server-infrastruktúrával kapcsolatos ajánlott műveleteket.
 
-![SQL állapotának ellenőrzése csempét ábrázoló kép](./media/sql-assessment/sql-healthcheck-summary-tile.png)
+![SQL Health-ellenőrzési csempe képe](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
-![SQL állapotának ellenőrzése irányítópult képe](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
+![SQL Health-ellenőrzési irányítópult képe](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az SQL Health Check megoldás telepítve minden olyan számítógépen, a Microsoft Monitoring Agent (MMA) telepítve van a .NET-keretrendszer 4 támogatott verziója szükséges.  Az MMA-ügynök System Center 2016 – Operations Manager és az Operations Manager 2012 R2 és az Azure Monitor használják.  
-* A megoldás támogatja az SQL Server 2012, 2014 vagy 2016 verzióra.
-* Az SQL Health Check megoldás hozzáadása az Azure Portalon az Azure marketplace-ről Log Analytics-munkaterületet.  A megoldás telepítéséhez rendszergazdaként vagy az Azure-előfizetés közreműködőjének kell lennie.
+* Az SQL Health ellenőrzési megoldáshoz a .NET-keretrendszer 4-es verziójának támogatott verzióját kell telepíteni minden olyan számítógépre, amelyen telepítve van a Microsoft monitoring Agent (MMA).  Az MMA-ügynököt a System Center 2016-Operations Manager és az Operations Manager 2012 R2, valamint a Azure Monitor használja.  
+* A megoldás a 2012, 2014 és 2016 SQL Server verziót támogatja.
+* Log Analytics munkaterület az SQL Health-ellenőrzési megoldás az Azure Marketplace-en való hozzáadásához a Azure Portalban.  A megoldás telepítéséhez rendszergazdának vagy közreműködőnek kell lennie az Azure-előfizetésben.
 
   > [!NOTE]
-  > A megoldás hozzáadását követően a AdvisorAssessment.exe fájlt adnak hozzá, ügynökökkel kiszolgálókra. Konfigurációs adatok olvasása és feldolgozása a felhőben az Azure Monitor majd küldött. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
+  > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
   >
   >
 
-Hajtsa végre az állapot-ellenőrzés az SQL Server-kiszolgálók ellen, szükségük van egy ügynök és a kapcsolatot az Azure monitornak a következő támogatott módszerek egyikének használatával:
+A SQL Server-kiszolgálók állapot-ellenőrzésének végrehajtásához a következő támogatott módszerek egyikével kell ügynököt és kapcsolatot létesíteni a Azure Monitorhoz:
 
-1. Telepítse a [a Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , ha a kiszolgáló már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
-2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva az Azure Monitor szolgáltatással, a kiszolgáló is lehet, többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is a Log Analytics szolgáltatással az Operations Manager által figyelt.  
-3. Ellenkező esetben az Operations Manager felügyeleti csoport integrálva van a szolgáltatást, ha hozzá kell a tartományvezérlők, az adatgyűjtés a szolgáltatás a következő szakasz lépéseit [adja hozzá az ügynök által felügyelt számítógépek](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) engedélyezése után a megoldás a munkaterületén.  
+1. Telepítse a [Microsoft monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) programot, ha a kiszolgálót még nem figyeli a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
+2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitor-mel, a kiszolgáló többplatformos lehet a Log Analytics, hogy adatokat gyűjtsön és továbbítson a szolgáltatásnak, és továbbra is Operations Manager figyeli.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a következőben: munkaterület.  
 
-Az ügynököt az SQL Server, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálónak, és majd küld egy felügyeleti kiszolgálóról közvetlenül az Azure Monitor.  Az adatok nem szerepel, az Operations Manager-adatbázisokról.  
+A SQL Server ügynöke, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
-Ha az SQL Server rendszer Operations Manager által figyelt, kell konfigurálása egy Operations Manager futtató fiókot. Lásd: [az Operations Manager futtató fiókok az Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics) alatt további információt.
+Ha a SQL Server Operations Manager figyeli, konfigurálnia kell egy Operations Manager futtató fiókot. További információért tekintse [meg az alábbi Azure Monitor Operations Manager futtató fiókokat](#operations-manager-run-as-accounts-for-log-analytics) .
 
-## <a name="sql-health-check-data-collection-details"></a>Adatok gyűjtése részletek SQL állapotának ellenőrzése
-SQL állapotának ellenőrzése, hogy engedélyezte-ügynök használatával a következő forrásokból gyűjt adatokat:
+## <a name="sql-health-check-data-collection-details"></a>SQL Health-ellenőrzési adatok gyűjtésének részletei
+Az SQL Health-ellenőrzések a következő forrásokból gyűjtenek adatokat az Ön által engedélyezett ügynök használatával:
 
 * Windows Management Instrumentation (WMI)
-* Beállításjegyzék
+* Registry
 * Teljesítményszámlálók
-* Az SQL Server dinamikus felügyeleti eredmények megtekintése
+* A dinamikus felügyeleti nézet eredményeinek SQL Server
 
-Adatokat az SQL Server-kiszolgálón gyűjti, és továbbítja a Log Analytics hét naponta.
+Az adatok gyűjtése a SQL Server történik, és minden hét nap Log Analytics továbbítva.
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Az Operations Manager futtató fiókokat a Log Analytics
-A log Analytics az Operations Manager ügynök és a felügyeleti csoport gyűjteni, és adatokat küldeni a Log Analytics szolgáltatás használ. Log Analytics-buildek esetén a számítási feladatokhoz biztosít a felügyeleti csomagok értéknövelt szolgáltatásokat. Minden számítási feladathoz munkaterhelés-specifikus jogosultságokkal eltérő biztonsági környezetben, például a tartományi felhasználói fiók felügyeleti csomagjainak futtatásához szükséges. Meg kell adnia a hitelesítő adatokat az Operations Manager futtató fiók konfigurálásával.
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Operations Manager futtató fiókok Log Analytics
+Log Analytics az Operations Manager ügynök és a felügyeleti csoport használatával gyűjti és küldi az adatokat a Log Analytics szolgáltatásnak. A Log Analytics a felügyeleti csomagokon alapuló munkaterheléseket biztosít az értéknövelt szolgáltatások biztosításához. Minden munkaterheléshez a felügyeleti csomagok más biztonsági környezetben, például egy tartományi felhasználói fiókban való futtatásához munkaterhelés-specifikus jogosultságok szükségesek. A hitelesítő adatokat egy Operations Manager futtató fiók konfigurálásával kell megadnia.
 
-Az alábbi információk segítségével állítsa be az Operations Manager futtató fiókot az SQL állapotának ellenőrzése.
+Az alábbi információk segítségével állíthatja be az SQL Health-ellenőrzési Operations Manager futtató fiókot.
 
-### <a name="set-the-run-as-account-for-sql-health-check"></a>Állítsa be a futtató fiókot az SQL állapotának ellenőrzése
- Ha az SQL Server felügyeleti csomag már használ, ez a futtató konfiguráció kell használnia.
+### <a name="set-the-run-as-account-for-sql-health-check"></a>Az SQL Health-ellenőrzési futtató fiók beállítása
+ Ha már használja a SQL Server felügyeleti csomagot, akkor ezt a futtató konfigurációt kell használnia.
 
-#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Az operatív konzol az SQL futtató fiók konfigurálása
+#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Az SQL futtató fiók konfigurálása az operatív konzolon
 > [!NOTE]
-> Alapértelmezés szerint a felügyeleti csomag a munkafolyamatok a helyi rendszer fiók biztonsági környezetében fut. Ha használja a Microsoft Monitoring Agent közvetlenül csatlakozik a szolgáltatáshoz helyett közvetlenül jelentéskészítés az Operations Manager felügyeleti csoporthoz, 1 – 5. lépés kihagyható, és futtassa a T-SQL vagy a PowerShell-mintát, adja meg az NT AUTHORITY\SYSTEM, mint a a felhasználó neve.
+> A felügyeleti csomagban található alapértelmezett munkafolyamatok a helyi rendszerfiók biztonsági környezetében futnak. Ha a Microsoft monitoring agentet közvetlenül a szolgáltatáshoz csatlakoztatja ahelyett, hogy közvetlenül egy Operations Manager felügyeleti csoportnak kellene bejelentkeznie, hagyja ki az alábbi 1-5 lépéseket, és futtassa a T-SQL vagy a PowerShell mintát, és adja meg az NT AUTHORITY\SYSTEM Felhasználónév.
 >
 >
 
-1. Az Operations Manager rendszerben nyissa meg az operatív konzolt, és kattintson **felügyeleti**.
-2. A **futtató konfiguráció**, kattintson a **profilok**, és nyissa meg a **SQL Assessment futtató profil**.
-3. Az a **futtató fiókok** kattintson **Hozzáadás**.
-4. Válasszon ki egy Windows futtató fiókot, amely tartalmazza az SQL Serverhez szükséges hitelesítő adatokat, vagy kattintson **új** hozhat létre egyet.
+1. A Operations Managerban nyissa meg az operatív konzolt, majd kattintson az **Adminisztráció**elemre.
+2. A **futtató konfiguráció**alatt kattintson a **profilok**elemre, majd nyissa meg **SQL Assessment futtató profilt**.
+3. A **futtató fiókok** lapon kattintson a **Hozzáadás**gombra.
+4. Válasszon olyan Windows rendszerű futtató fiókot, amely tartalmazza a SQL Serverhoz szükséges hitelesítő adatokat, vagy kattintson az **új** elemre egy létrehozásához.
 
    > [!NOTE]
-   > A futtató fiók típusa Windows kell lennie. A futtató fiókot is kell lennie minden üzemeltető SQL Server-példányok Windows-kiszolgáló helyi Rendszergazdák csoport része.
+   > A futtató fiók típusának Windowsnak kell lennie. A futtató fióknak a helyi Rendszergazdák csoport részét kell képeznie a SQL Server példányokat üzemeltető összes Windows-kiszolgálón.
    >
    >
 5. Kattintson a **Save** (Mentés) gombra.
-6. Módosíthatja, és majd minden egyes SQL Server-példányon adja meg a futtató fiók az állapot-ellenőrzés végrehajtásához szükséges minimális engedélyeket, hajtsa végre a következő T-SQL-minta. Azonban nem szükséges ezt megtenni, ha a futtató fiók már része a sysadmin (rendszergazda) kiszolgálói szerepkör az SQL Server-példányokon.
+6. Módosítsa, majd hajtsa végre az alábbi T-SQL-mintát minden SQL Server példányon, hogy az állapot-ellenőrzés elvégzéséhez szükséges minimális engedélyeket adja meg a futtató fiók számára. Ezt azonban nem kell megtennie, ha egy futtató fiók már része a sysadmin (rendszergazda) kiszolgálói szerepkörnek SQL Server példányokon.
 
 ```
     ---
@@ -114,8 +108,8 @@ Az alábbi információk segítségével állítsa be az Operations Manager futt
 
 ```
 
-#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>A Windows PowerShell használatával az SQL futtató fiók konfigurálása
-Nyisson meg egy PowerShell-ablakot, és futtassa a következő szkriptet az információkkal már frissítése után:
+#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Az SQL futtató fiók konfigurálása a Windows PowerShell használatával
+Nyisson meg egy PowerShell-ablakot, és futtassa a következő parancsfájlt, miután frissítette az adatait:
 
 ```
     import-module OperationsManager
@@ -126,129 +120,129 @@ Nyisson meg egy PowerShell-ablakot, és futtassa a következő szkriptet az info
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Hogyan kerülnek előrébb a javaslatok megértése
-Minden végrehajtott javaslat, amely azonosítja a relatív fontosságát az ajánlás súlyozási értéket kap. Csak a tíz legfontosabb javaslatok láthatók.
+## <a name="understanding-how-recommendations-are-prioritized"></a>A javaslatok rangsorolásának ismertetése
+Minden javaslat egy súlyozási értéket kap, amely a javaslat relatív fontosságát azonosítja. Csak a tíz legfontosabb javaslat jelenik meg.
 
-### <a name="how-weights-are-calculated"></a>Hogyan számítják ki súlyok
-Súlyozás három fő tényezők alapján az összesített értékek:
+### <a name="how-weights-are-calculated"></a>A súlyok kiszámítása
+A súlyozások három fő tényezőn alapuló összesített értékek:
 
-* A *valószínűségi* , hogy az azonosított probléma problémákat okozhat. Nagyobb a valószínűsége annak használatára, az ajánlás nagyobb általános pontszámot.
-* A *hatás* a szervezet azt problémát okozni, ha a probléma. Egy újabb hatás-adatbázisnak felel meg az ajánlás nagyobb általános pontszámot.
-* A *erőfeszítés* történő megvalósításához szükséges. A javaslat egy kisebb összesített pontszám magasabb erőfeszítéssel állapotnak felel meg.
+* Az észlelt probléma valószínűleg problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
+* A probléma *hatása* a szervezeten belül, ha problémát okoz. A nagyobb hatás a javaslat nagyobb összesített pontszáma.
+* A javaslat megvalósításához szükséges *erőfeszítés* . A nagyobb erőfeszítés a javaslat kisebb összesített pontszámának felel meg.
 
-Az egyes javaslatok a súlyozás van a teljes elérhető egyes fókuszterület pontszám százalékban kifejezve. Például ha az adott javaslat a biztonság és megfelelőség fókuszterület 5 %-os pontszámot, a javaslat megvalósítása növeli az átfogó biztonsági és megfelelőségi pontszám szerint 5 %.
+Az egyes javaslatok súlyozása az egyes fókuszokhoz rendelkezésre álló teljes pontszám százalékában van kifejezve. Ha például egy, a biztonsági és megfelelőségi területen található javaslat 5%-os pontszámmal rendelkezik, akkor a javaslat megvalósítása 5%-kal növeli az általános biztonsági és megfelelőségi pontszámot.
 
-### <a name="focus-areas"></a>Fókuszterületek
-**Biztonsági és megfelelőségi** -e fókuszterület esetleges biztonsági fenyegetések és a problémák, a vállalati szabályzatok és a technikai, jogszabályi és szabályozásoknak való megfelelőség követelményeinek való javaslatait mutatja be.
+### <a name="focus-areas"></a>Fókusz terület
+**Biztonság és megfelelőség** – ez a kiemelt terület a lehetséges biztonsági fenyegetésekkel és szabálysértésekkel, a vállalati házirendekkel, valamint a technikai, jogi és szabályozási megfelelőségi követelményekkel kapcsolatos javaslatokat mutatja be.
 
-**Rendelkezésre állás és üzleti folytonosság** -e fókuszterület javaslatait a szolgáltatás rendelkezésre állása, az infrastruktúra és a vállalati védelme rugalmasságát mutatja be.
+**Rendelkezésre állás és Üzletmenet-folytonosság** – ez a fókusz a szolgáltatás rendelkezésre állására, az infrastruktúra rugalmasságára és az üzleti védelemre vonatkozó javaslatokat mutatja be.
 
-**Teljesítmény és méretezhetőség** -e fókuszterület látható ajánlásokat a szervezet IT-infrastruktúráját a növeléssel, ellenőrizze, hogy informatikai környezete megfelel az aktuális teljesítménykövetelményeknek, és tud válaszolni az infrastruktúra módosítása szüksége van.
+**Teljesítmény és méretezhetőség** – ez a fókusz a szervezet informatikai infrastruktúrájának növekedését segítő ajánlásokat mutat be, így biztosíthatja, hogy az informatikai környezet megfeleljen a jelenlegi teljesítménybeli követelményeknek, és képes legyen reagálni az infrastrukturális igények változására.
 
-**Frissítés, Migrálás és üzembe helyezés** -e fókuszterület segítséget frissítése, migrálása és üzembe helyezése az SQL Server a meglévő infrastruktúra javaslatait mutatja be.
+**Frissítés, áttelepítés és üzembe helyezés** – ez a fókusz olyan javaslatokat mutat be, amelyek segítséget nyújtanak a meglévő infrastruktúrához való SQL Server frissítéséhez, áttelepítéséhez és üzembe helyezéséhez.
 
-**Műveletek és a figyelés** -e fókuszterület leegyszerűsítheti az informatikai műveletek, és megelőző jellegű karbantartás végrehajtása és a teljesítmény maximalizálása érdekében javaslatait mutatja be.
+**Műveletek és monitorozás** – ez a fókusz az informatikai műveletek egyszerűsítését, a megelőző karbantartás megvalósítását és a teljesítmény maximalizálása érdekében ajánlásokat mutat be.
 
-**Változás- és konfigurációkezelés** -e fókuszterület segítenek védelmét mindennapos, győződjön meg arról, hogy ne negatívan befolyásolja az infrastruktúrák meg létrehozni a Változáskezelő eljárások, és a nyomon követése és naplózása javaslatait mutatja be. rendszer konfigurációját.
+**Módosítási és konfigurálási felügyelet** – ez a fókusz terület a napi műveletek védelmére vonatkozó ajánlásokat mutat be, hogy a változások ne legyenek negatív hatással az infrastruktúrára, a változás-ellenőrzési eljárások létrehozására, valamint a rendszer nyomon követésére és auditálására. konfigurációk.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Tárhelyeken minden fókuszterület a 100 %-os pontozása?
-Nem feltétlenül. A javaslatok tudással és több ezer ügyfél által a Microsoft mérnökei szerzett tapasztalatok alapulnak. Azonban nem két kiszolgáló infrastruktúrák azonosak, és lehet, hogy több vagy kevesebb releváns konkrét javaslatokért. Például bizonyos biztonsági javaslatok kevésbé fontos, ha a virtuális gépek nem jelennek meg az interneten a lehet. Lehet, hogy egyes rendelkezésre állási javaslatok kevesebb releváns alacsony prioritású alkalmi adatok összegyűjtésére és a reporting services esetén. Érett fontos problémák a kevésbé fontos, hogy egy indítási is lehet. Előfordulhat, hogy szeretné azonosítani, melyik fókuszterületek a munkájukhoz, és keresse meg, hogyan a pontszámokat az idő előrehaladtával változik.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Érdemes 100%-ot kimutatni minden fókuszban?
+Nem feltétlenül. A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatáson keresztül szerzett ismeretekre és tapasztalatokra épülnek. Azonban két kiszolgálói infrastruktúra sem azonos, és a konkrét javaslatok többé vagy kevésbé fontosak lehetnek. Előfordulhat például, hogy bizonyos biztonsági javaslatok kevésbé fontosak, ha a virtuális gépek nem lesznek elérhetők az internethez. Egyes rendelkezésre állási javaslatok kevésbé fontosak lehetnek az alacsony prioritású ad hoc adatgyűjtést és jelentéskészítést biztosító szolgáltatások esetében. Az érett üzleti tevékenység szempontjából fontos problémák kevésbé fontosak az indításhoz. Érdemes lehet azonosítani, hogy mely Kiemelt területek legyenek a prioritásai, és hogyan változnak meg a pontszámok időbeli változása.
 
-Minden javaslat, hogy miért fontos vonatkozó útmutatást tartalmaz. Ez az útmutató használjon kiértékelését, hogy a javaslat megvalósítása alkalmas, az informatikai szolgáltatások jellegét, és a szervezet igényeit.
+Minden javaslat tartalmaz útmutatást arról, hogy miért fontos. Ennek az útmutatónak a segítségével kiértékelheti, hogy az ajánlás alkalmazása megfelelő-e Önnek, az informatikai szolgáltatások természetétől és a szervezet üzleti igényeinek megfelelően.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Fókusz terület ajánlásokkal állapotának ellenőrzése
--Felmérési megoldást az Azure Monitor használata előtt rendelkeznie kell a telepített megoldás.  Azt követően, javaslatok összegzését az SQL állapotának ellenőrzése csempe használatával megtekintheti a **áttekintése** oldal az Azure Monitor az Azure Portalon.
+## <a name="use-health-check-focus-area-recommendations"></a>Az állapot-ellenőrzési fókusz területtel kapcsolatos javaslatok használata
+Mielőtt felhasználja a felmérési megoldást a Azure Monitorban, telepítenie kell a megoldást.  A telepítését követően megtekintheti a javaslatok összefoglalását az Azure Portal Azure Monitor **Áttekintés** LAPJÁN található SQL Health ellenőrzés csempével.
 
-Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-feltárás javaslatok megtekintése.
+Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, majd a részletes ajánlásokat.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Egy fókuszterület javaslatok megtekintése, és korrekciós műveletek
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>A fókusz területre vonatkozó javaslatok megtekintése és a kijavítani kívánt művelet elvégzése
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Monitorozás** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Monitorozás** lehetőséget.
-3. Az a **Insights** szakaszában a menüből válassza **további**.  
-4. Az a **áttekintése** lap, kattintson a **SQL állapotának ellenőrzése** csempére.
-5. Az a **állapotának ellenőrzése** lapon. tekintse át az összefoglaló adatokat az egyik a fókusz terület paneleket, majd kattintson egy adott fókuszterület javaslatok megtekintése.
-6. A bármelyik, fókusz terület megtekintheti a rangsorolt javaslatok arról, hogy a környezetben. Alatt egy javaslatra kattint **érintett objektumok** Miért jön létre a javaslat részleteinek megtekintéséhez.<br><br> ![SQL állapotának ellenőrzése javaslatok képe](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. Az ajánlott javítási műveleteket hajthatja végre **javasolt műveletek**. Az elem történnek, ha újabb értékelések, amely ajánlott műveletek származnak, és növeli a megfelelőségi pontszám lesz felvéve. Kijavított elemek jelennek meg **átadott objektumok**.
+3. **A menü áttekintések szakaszában válassza** a **továbbiak**lehetőséget.  
+4. Az **Áttekintés** lapon kattintson az **SQL Health-ellenőrzési** csempére.
+5. Az **Állapot ellenőrzése** oldalon tekintse át az összefoglaló információkat az egyik fókuszban lévő panelen, majd kattintson az egyikre a fókuszhoz tartozó javaslatok megtekintéséhez.
+6. A fókusz oldalain megtekintheti a környezetére vonatkozó rangsorolt javaslatokat. Az **érintett objektumok** alatt található javaslatra kattintva megtekintheti a javaslat hátterének részleteit.<br><br> az SQL Health-ellenőrzési javaslatok ![képe](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. A **javasolt műveletekben**javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi értékelések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként**jelennek meg.
 
-## <a name="ignore-recommendations"></a>Hagyja figyelmen kívül a javaslatok
-Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szövegfájlt, amely az Azure Monitor használatával fogja megakadályozása javaslatokat az értékelés eredményeinek parancsot.
+## <a name="ignore-recommendations"></a>Javaslatok mellőzése
+Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létrehozhat egy szövegfájlt, amelyet Azure Monitor fog használni, hogy megakadályozza a javaslatok megjelenését az értékelés eredményeiben.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>Javaslatok, amelyek figyelmen kívül hagyja majd azonosításához
-1. Az Azure Monitor menüjében kattintson **naplók**.
-2. A következő lista ajánlásokat, amelyek nem tudták lekérdezés használata a környezetében.
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>A figyelmen kívül hagyható javaslatok azonosítása
+1. A Azure Monitor menüben kattintson a **naplók**elemre.
+2. A következő lekérdezéssel listázhatja azokat a javaslatokat, amelyek a környezetében lévő számítógépeken sikertelenek voltak.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    Íme egy Képernyőkép a naplólekérdezés:<br><br> ![nem sikerült javaslatokat](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    A napló lekérdezését bemutató képernyőkép:<br><br> ![sikertelen javaslatok](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
-3. Válassza ki a javaslatok, amelyek figyelmen kívül kívánja. Szeretné használni az értékeket a RecommendationId az alábbi eljárás írja le.
+3. Válassza ki a figyelmen kívül hagyni kívánt ajánlásokat. A következő eljárásban a RecommendationId értékeit fogja használni.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Hozhat létre és használhat egy IgnoreRecommendations.txt szövegfájl
-1. Hozzon létre egy fájlt IgnoreRecommendations.txt.
-2. Illessze be, vagy írjon be minden egyes RecommendationId minden javaslat, amelyet az Azure Monitor figyelmen kívül, külön sorban, majd mentse és zárja be a fájlt.
-3. Helyezni a fájlt a következő mappában minden olyan számítógépen, ahová szeretné az Azure Monitor figyelmen kívül hagyja a javaslatokat.
-   * A Microsoft Monitoring Agent (közvetlenül vagy Operations Manager keresztül csatlakozik) – a számítógépeken *SystemDrive*: Monitoring Agent\Agent \Program Files\Microsoft
-   * Az Operations Manager felügyeleti kiszolgálón – *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
-   * Az Operations Manager 2016 felügyeleti kiszolgálón – *SystemDrive*: System Center 2016\Operations Manager\Server \Program Files\Microsoft
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations. txt szövegfájl létrehozása és használata
+1. Hozzon létre egy IgnoreRecommendations. txt nevű fájlt.
+2. Illessze be vagy írja be az egyes RecommendationId minden olyan javaslathoz, amelyet szeretne figyelmen kívül hagyni Azure Monitor külön sorban, majd mentse és zárjuk be a fájlt.
+3. Helyezze a fájlt a következő mappába az összes olyan számítógépen, amelyen Azure Monitor szeretné figyelmen kívül hagyni a javaslatokat.
+   * A Microsoft monitoring agenttel rendelkező számítógépeken (közvetlenül vagy Operations Manageron keresztül csatlakoztatott) – *SYSTEMDRIVE*: \Program Files\Microsoft monitoring Agent\Agent
+   * A Operations Manager felügyeleti kiszolgálón – *rendszermeghajtó*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * A Operations Manager 2016 felügyeleti kiszolgálón – *rendszermeghajtó*: \Program Files\Microsoft System Center 2016 \ Operations Manager\Server
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Győződjön meg arról, hogy a javaslatok figyelmen kívül hagyja a
-1. Után a következő ütemezett értékelési fut le, alapértelmezésben 7 naponta, a megadott ajánlásokat vannak megjelölve az figyelmen kívül hagyva, és nem jelenik meg az értékelés irányítópulton.
-2. A következő naplófájl-keresési lekérdezések segítségével a figyelmen kívül hagyott javaslatok listája.
+### <a name="to-verify-that-recommendations-are-ignored"></a>A javaslatok figyelmen kívül hagyása
+1. Miután a következő ütemezett értékelést futtatta, alapértelmezés szerint 7 naponta, a megadott javaslatok figyelmen kívül lesznek hagyva, és nem jelennek meg az értékelési irányítópulton.
+2. A következő naplóbeli keresési lekérdezésekkel listázhatja az összes figyelmen kívül hagyott javaslatot.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Ha később úgy dönt, hogy szeretné-e figyelmen kívül hagyott javaslatok, IgnoreRecommendations.txt fájlok eltávolítása, vagy távolíthatja el RecommendationIDs őket.
+3. Ha később úgy dönt, hogy szeretné látni a figyelmen kívül hagyott javaslatokat, távolítsa el az összes IgnoreRecommendations. txt fájlt, vagy távolítsa el a RecommendationIDs.
 
-## <a name="sql-health-check-solution-faq"></a>SQL Health Check megoldás – gyakori kérdések
-*Milyen gyakran fut a állapot-ellenőrzése?*
+## <a name="sql-health-check-solution-faq"></a>SQL Health-ellenőrzési megoldás – gyakori kérdések
+*Milyen gyakran fut az állapot-ellenőrzési funkció?*
 
-* Az ellenőrzés hét naponta fut.
+* Az ellenőrzési hét naponta fut.
 
-*Van mód konfigurálása, hogy milyen gyakran az ellenőrzés fut?*
+*Van mód arra, hogy beállítsa, milyen gyakran fusson az ellenőrzések?*
 
 * Jelenleg nem.
 
-*Ha egy másik kiszolgáló fel van derítve, miután hozzá van adva az SQL Health Check megoldás, azt ellenőrzött?*
+*Ha a rendszer felderít egy másik kiszolgálót az SQL Health Check megoldás hozzáadása után, akkor a rendszer ellenőrzi?*
 
-* Igen, ez be van jelölve, majd a hét naponta felderítése után.
+* Igen, a felderítés után a rendszer a hét minden napján ellenőrzi, hogy be van-e jelölve.
 
-*Ha egy kiszolgáló le van szerelve, amikor azt eltávolítjuk az állapot-ellenőrzés?*
+*Ha a kiszolgáló leszerelése megtörtént, akkor mikor lesz eltávolítva az állapot-ellenőrzési rendszerből?*
 
-* Ha a kiszolgáló nem küldenek adatokat a 3 hét, a rendszer eltávolítja.
+* Ha egy kiszolgáló 3 hétig nem küldi el az adatküldést, a rendszer eltávolítja.
 
-*Mi a neve, a folyamat, amely az adatgyűjtés?*
+*Mi az adatgyűjtés folyamatának neve?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
-*Mennyi ideig tart a gyűjtendő adatokat?*
+*Mennyi időt vesz igénybe az adatok gyűjtése?*
 
-* A tényleges adatok gyűjtése a kiszolgálón körülbelül 1 órát vesz igénybe. Ez hosszabb időt vehet igénybe, amelyek nagy számú SQL Server-példányok vagy adatbázisok kiszolgálókon.
+* A kiszolgálón a tényleges adatgyűjtés körülbelül 1 órát vesz igénybe. A nagy számú SQL-példánnyal vagy-adatbázissal rendelkező kiszolgálókon hosszabb időt is igénybe vehet.
 
 *Milyen típusú adatokat gyűjt?*
 
-* A következő típusú adatokat is gyűjti:
+* A rendszer a következő típusú adatokat gyűjti össze:
   * WMI
-  * Beállításjegyzék
+  * Registry
   * Teljesítményszámlálók
-  * Az SQL dinamikus felügyeleti nézetekkel (DMV).
+  * SQL dinamikus felügyeleti nézetek (DMV).
 
-*Van mód a konfigurálását, amikor az adatgyűjtés történik?*
+*Be lehet állítani az adatok gyűjtésének módját?*
 
 * Jelenleg nem.
 
-*Miért van a futtató fiók konfigurálása?*
+*Miért van szükség egy futtató fiók konfigurálására?*
 
-* Az SQL Server SQL-lekérdezések kis számú futnak. Ahhoz, hogy futtatni egy futtató fiókot, amely az SQL VIEW SERVER STATE engedélyeket kell használni.  Emellett lekérdezéséhez WMI, helyi rendszergazdai hitelesítő adatok szükségesek.
+* SQL Server esetében néhány SQL-lekérdezés fut. Ahhoz, hogy futtatni lehessen őket, az SQL-alapú futtató fiókot kell használni.  Emellett a WMI lekérdezéséhez helyi rendszergazdai hitelesítő adatokra van szükség.
 
-*Miért jelennek meg a csak az első 10-javaslatok?*
+*Miért csak az első 10 ajánlás jelenjen meg?*
 
-* Helyett így elsöprő teljesnek feladatot, azt javasoljuk, hogy arra összpontosítunk, először azoknak a rangsorolt javaslatok. Oldja meg őket, miután további javaslatokat is elérhetőek lesznek. Ha inkább a részletes listát, megtekintheti a Log Analytics naplóbeli keresés használatával összes javaslatot.
+* A feladatok teljes körű listájának megadása helyett javasoljuk, hogy először a rangsorolt javaslatok kezelésére koncentráljon. A megoldásuk után további javaslatok válnak elérhetővé. Ha szeretné megtekinteni a részletes listát, az összes javaslatot megtekintheti az Log Analytics log-keresés használatával.
 
-*Van mód figyelmen kívül hagyja a javaslatot?*
+*Van lehetőség arra, hogy figyelmen kívül hagyja a javaslatot?*
 
-* Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
+* Igen, lásd a fenti [javaslatok mellőzése](#ignore-recommendations) szakaszt.
 
-## <a name="next-steps"></a>További lépések
-* [Lekérdezések naplózását](../log-query/log-query-overview.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.
+## <a name="next-steps"></a>Következő lépések
+* A [lekérdezésekkel](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes SQL Health-ellenőrzési információkat és javaslatokat.

@@ -1,33 +1,29 @@
 ---
-title: Az Azure Application Insights kérelmek kód írása |} A Microsoft Docs
-description: Írja be a kódot, így profilok számára a kérelmek nyomon követéséhez a kérelmeket az Application insights segítségével.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Kód írása a kérelmek nyomon követéséhez az Azure Application Insights használatával | Microsoft Docs
+description: Kódot írhat a kérelmek Application Insights való nyomon követéséhez, így a kérésekhez profilokat kérhet le.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 3f449c98ed44f13fb6b3849ef2457cd8fbd916de
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730854"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900015"
 ---
-# <a name="write-code-to-track-requests-with-application-insights"></a>Az Application Insights kérelmek kód írása
+# <a name="write-code-to-track-requests-with-application-insights"></a>Kód írása a kérelmek nyomon követéséhez Application Insights
 
-A teljesítmény oldalon profilok az alkalmazás megtekintéséhez az Azure Application Insights nyomon kell követni az alkalmazásra vonatkozó kérések. Az Application Insights automatikusan követheti a beépített keretrendszereket már kiépített alkalmazások kéréseit. Két példa olyan ASP.NET és az ASP.NET Core. 
+Ha meg szeretné tekinteni az alkalmazás profilját a teljesítmény lapon, az Azure Application Insightsnak követnie kell az alkalmazásra vonatkozó kérelmeket. A Application Insights automatikusan nyomon követheti a már műszeres keretrendszerekre épülő alkalmazások kérelmeit. Két példa a ASP.NET és a ASP.NET Core. 
 
-Más alkalmazások, például az Azure Cloud Services feldolgozói szerepkörei és a Service Fabric állapotmentes API-k mondja el, ahol a kérelmek megkezdése az Application Insights és a záró kód írása kell. Miután ezt a kódot, kérelmek telemetriai adatokat küld az Application Insights. A Teljesítmény lapon megtekintheti a telemetriát, és a profilokat összegyűjtött ezeket a kérelmeket. 
+Más alkalmazások, például az Azure Cloud Services feldolgozói szerepkörök és a Service Fabric állapot nélküli API-k esetében kódot kell írnia ahhoz, hogy a kérések kezdete és vége legyen Application Insights. A kód megírása után a rendszer elküldi a telemetria-kérelmeket a Application Insightsnak. A telemetria megtekintheti a teljesítmény lapon, és a rendszer ezeket a kérelmeket gyűjti a profilokról. 
 
-A manuális kérések nyomon követésére, tegye a következőket:
+A kérelmek manuális nyomon követéséhez tegye a következőket:
 
-  1. Az alkalmazás élettartamának korai szakaszában adja meg a következő kódot:  
+  1. Az alkalmazás élettartama elején adja hozzá a következő kódot:  
 
         ```csharp
         using Microsoft.ApplicationInsights.Extensibility;
@@ -35,9 +31,9 @@ A manuális kérések nyomon követésére, tegye a következőket:
         // Replace with your own Application Insights instrumentation key.
         TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
         ```
-      A globális kialakítási kulcs konfigurálásával kapcsolatban további információkért lásd: [az Application Insights használata a Service Fabric](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
+      A globális rendszerállapot-konfigurációval kapcsolatos további információkért lásd: [a Service Fabric használata Application Insights használatával](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. A bármely alakítsa ki, a hozzáadni kívánt kódrészleteket egy `StartOperation<RequestTelemetry>` **használatával** utasítás körülötte, az alábbi példában látható módon:
+  1. Bármely olyan kódrészlethez, amelyet szeretne felvenni, vegyen fel egy `StartOperation<RequestTelemetry>` **az utasítás használatával** , az alábbi példában látható módon:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -51,7 +47,7 @@ A manuális kérések nyomon követésére, tegye a következőket:
         }
         ```
 
-        Hívó `StartOperation<RequestTelemetry>` belül egy másik `StartOperation<RequestTelemetry>` hatókör nem támogatott. Használhat `StartOperation<DependencyTelemetry>` beágyazott hatókör helyette. Példa:  
+        Egy másik `StartOperation<RequestTelemetry>` hatókörön belüli `StartOperation<RequestTelemetry>` hívása nem támogatott. Ehelyett a beágyazott hatókörben használhatja a `StartOperation<DependencyTelemetry>`. Példa:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

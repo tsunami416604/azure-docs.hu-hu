@@ -1,38 +1,32 @@
 ---
-title: Az Azure monitorban összesítések lekérdezések naplózását |} A Microsoft Docs
-description: Ismerteti, összesítési függvények az Azure Monitor log lekérdezések, amelyek kínálnak hasznos módszer az adatok elemzéséhez.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Összesítések a Azure Monitor log lekérdezésekben | Microsoft Docs
+description: Leírja az aggregációs függvényeket Azure Monitor napló lekérdezésekben, amelyek hasznos módszereket kínálnak az adatok elemzéséhez.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602735"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900412"
 ---
-# <a name="aggregations-in-azure-monitor-log-queries"></a>Az Azure monitorban összesítések lekérdezések naplózását.
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Összesítések Azure Monitor naplóbeli lekérdezésekben
 
 > [!NOTE]
-> Hajtsa végre [az Analytics-portál – első lépések](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+> A lecke elvégzése előtt fejezze be [az Analytics-portál és a](get-started-portal.md) [lekérdezések első](get-started-queries.md) lépéseit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk ismerteti az összesítő függvényektől az Azure Monitor log lekérdezések, amelyek kínálnak hasznos módszer az adatok elemzéséhez. Ezek a függvények minden dolgozni a `summarize` operátort, amelynek összesített eredmények a bemeneti tábla egy táblát hoz létre.
+Ez a cikk az összesítő függvényeket ismerteti Azure Monitor napló lekérdezésekben, amelyek hasznos módszereket kínálnak az adatok elemzéséhez. Ezek a függvények a `summarize` operátorral működnek, amely a bemeneti tábla összesített eredményeivel rendelkező táblázatot állít elő.
 
 ## <a name="counts"></a>Száma
 
 ### <a name="count"></a>count
-Szűrők alkalmazása után az eredményhalmazban sorok számát. Az alábbi példa adja vissza a sorok száma a _Teljesítményoptimalizált_ táblát az elmúlt 30 percben. Az eredményt adja vissza egy adott nevű oszlopban *count_* , kivéve, ha egy adott nevét rendelje hozzá:
+Az eredményhalmazban szereplő sorok számának megszámlálása a szűrők alkalmazása után. A következő példa a _perf_ táblában lévő sorok teljes számát adja vissza az elmúlt 30 percben. Az eredmény egy *count_* nevű oszlopban lesz visszaadva, kivéve, ha egy adott nevet rendel hozzá:
 
 
 ```Kusto
@@ -47,7 +41,7 @@ Perf
 | summarize num_of_records=count() 
 ```
 
-Lehet, hogy idővel a trendek kíváncsi idődiagramját Vizualizációk:
+A idődiagramját vizualizációk hasznosak lehetnek az időbeli tendenciák megjelenítéséhez:
 
 ```Kusto
 Perf 
@@ -56,13 +50,13 @@ Perf
 | render timechart
 ```
 
-A jelen példa kimenetében teljesítményoptimalizált rekordszám trendvonalat 5 perc időközök látható:
+A példa kimenete 5 perces időközökben mutatja be a Perf Records Count trendvonalat:
 
-![Száma – trendek](media/aggregations/count-trend.png)
+![Trend száma](media/aggregations/count-trend.png)
 
 
 ### <a name="dcount-dcountif"></a>DCount, dcountif
-Használat `dcount` és `dcountif` külön értékek egy adott oszlopban. A következő lekérdezés kiértékeli, hogy hány egyedi számítógépek számlálása az elmúlt órában:
+`dcount` és `dcountif` használatával megszámolhatja a különböző értékeket egy adott oszlopban. A következő lekérdezés kiértékeli, hogy hány különböző számítógép fogadta el a szívveréseket az elmúlt órában:
 
 ```Kusto
 Heartbeat 
@@ -70,7 +64,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Csak a Linux rendszerű számítógépek számlálása használjuk `dcountif`:
+Ha csak a szívverést küldő Linux rendszerű számítógépeket szeretné megszámolni, használja a `dcountif`:
 
 ```Kusto
 Heartbeat 
@@ -79,7 +73,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Alcsoportok kiértékelése
-Egy szám vagy más összesítéseket végre az adatok az alcsoportok, használja a `by` kulcsszót. Ha például a szívverések küldése minden ország/régió a különböző Linux-számítógépek számát:
+Az adatokban található alcsoportok számának vagy egyéb összesítésének végrehajtásához használja a `by` kulcsszót. Például az egyes országokban/régiókban szívverést küldő különböző Linux-számítógépek számának megszámlálásához:
 
 ```Kusto
 Heartbeat 
@@ -96,7 +90,7 @@ Heartbeat
 |Hollandia      | 2                   |
 
 
-Elemezheti az adatokat még kisebb alcsoportok, adjon hozzá további oszlopok az `by` szakaszban. Például előfordulhat, hogy szeretné az egyes országból/régióból OSType kiszolgálónként eltérő számítógépek száma:
+Ha még kisebb alcsoportokat szeretne elemezni az adataiban, adjon hozzá további oszlopokat a `by` szakaszhoz. Előfordulhat például, hogy az egyes országokból/régiókból származó különálló számítógépeket szeretné megszámlálni OSType:
 
 ```Kusto
 Heartbeat 
@@ -104,11 +98,11 @@ Heartbeat
 | summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry, OSType
 ```
 
-## <a name="percentiles-and-variance"></a>Percentiliseinek és eltérés
-Numerikus értékek kiértékelésekor általános gyakorlat, hogy azok átlagos használatával `summarize avg(expression)`. Átlagokat rendkívüli értékek csak néhány esetben írhatók le vannak hatással. A probléma megoldásához használhatja kevésbé érzékeny funkciók például `median` vagy `variance`.
+## <a name="percentiles-and-variance"></a>Percentilis és variancia
+A numerikus értékek kiértékelése során az általános gyakorlat az, hogy `summarize avg(expression)`használatával átlagot kell használni. Az átlagokat csak néhány esetben jellemző szélsőséges értékek érintik. A probléma megoldásához használhat kevésbé kényes funkciókat, például `median` vagy `variance`.
 
-### <a name="percentile"></a>PERCENTILIS
-A középérték megkereséséhez használja a `percentile` függvény megadása a PERCENTILIS értékkel:
+### <a name="percentile"></a>Percentilis
+A medián érték megkereséséhez használja a `percentile` függvényt egy értékkel a percentilis megadásához:
 
 ```Kusto
 Perf
@@ -117,7 +111,7 @@ Perf
 | summarize percentiles(CounterValue, 50) by Computer
 ```
 
-Megadhat egy összesített eredményre beolvasni az egyes különböző percentilisei is:
+Különböző percentilis-ket is megadhat, hogy összesíthető eredményt kapjon az egyes:
 
 ```Kusto
 Perf
@@ -126,10 +120,10 @@ Perf
 | summarize percentiles(CounterValue, 25, 50, 75, 90) by Computer
 ```
 
-Ez előfordulhat, hogy mutatja, hogy néhány számítógépen processzorok értékük hasonló medián, de néhány állandó középértékének körül, amíg más számítógépek jelentett sokkal kisebb és nagyobb CPU értékeket, ami azt jelenti, adatforgalmi csúcsokhoz lépett fel.
+Ez azt jelezheti, hogy egyes számítógép-processzorok hasonló medián értékekkel rendelkeznek, de míg egyesek a medián körül vannak, a többi számítógép sokkal alacsonyabb és magasabb CPU-értékeket jelentett, ami azt jelenti, hogy a tüskéket észleltek.
 
 ### <a name="variance"></a>Variancia
-Érték varianciáját közvetlenül kiértékelni, használja a szórás és eltérés módszerek:
+Egy érték eltérésének közvetlen kiértékeléséhez használja a szórás és a variancia módszert:
 
 ```Kusto
 Perf
@@ -138,7 +132,7 @@ Perf
 | summarize stdev(CounterValue), variance(CounterValue) by Computer
 ```
 
-Egy jó stabilitását, a CPU-használat elemzése módja stdev kombinálva a középérték számítás:
+A CPU-használat stabilitásának elemzése jó módszer a szórás a középértékes számítással való kombinálása:
 
 ```Kusto
 Perf
@@ -147,12 +141,12 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Tekintse meg a többi leckéket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
+Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) használatát ismertető további leckéket a Azure monitor naplózási adataival:
 
 - [Karakterlánc-műveletek](string-operations.md)
-- [Dátum és idő műveletek](datetime-operations.md)
+- [Dátum-és időműveletek](datetime-operations.md)
 - [Speciális összesítések](advanced-aggregations.md)
-- [JSON és adatstruktúrák](json-data-structures.md)
+- [JSON-és adatstruktúrák](json-data-structures.md)
 - [Speciális lekérdezés írása](advanced-query-writing.md)
-- [Illesztés](joins.md)
+- [Csatlakozik](joins.md)
 - [Diagramok](charts.md)

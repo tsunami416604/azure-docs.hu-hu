@@ -1,59 +1,58 @@
 ---
-title: .NET-alkalmazások az Azure Application Insights Snapshot Debugger frissítés |} A Microsoft Docs
-description: Hogyan frissítse a Snapshot Debuggert a legújabb verzióra, vagy az Azure App Services Nuget-csomagok
-services: application-insights
-author: MarioHewardt
-manager: carmonm
-ms.service: application-insights
+title: Azure Application Insights Snapshot Debugger .NET-alkalmazások frissítése | Microsoft Docs
+description: Snapshot Debugger frissítése az Azure App Services legújabb verziójára vagy Nuget-csomagokon keresztül
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: MarioHewardt
 ms.author: marioh
+ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2dcf719e6c276c5641dc4c0040d8d7a808eeb3f2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e2b21b7cbb6b04da0c93e73c0cacb8a05c338bde
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706369"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899839"
 ---
-# <a name="upgrading-the-snapshot-debugger"></a>A pillanatkép-hibakereső frissítése
+# <a name="upgrading-the-snapshot-debugger"></a>A Snapshot Debugger frissítése
 
-Adja meg a lehetséges legjobb biztonsági adataihoz, a Microsoft a távolodnak a TLS 1.0 és a TLS 1.1, amelyek sebezhetővé meghatározott lehet látható. Ha egy régebbi verzióját a webhely-bővítményt használ, ehhez szükség lesz a frissítés a munka folytatásához. Ez a dokumentum frissítése a legújabb verzióra a pillanatkép-hibakereső szükséges lépéseket ismerteti. Nincsenek két elsődleges frissítési útvonalak attól függően, ha engedélyezte a pillanatkép-hibakereső webhelybővítmény használatával, vagy ha az SDK/Nuget hozzáadása az alkalmazáshoz használt. Mindkét frissítési útvonalak az alábbiak ismertetik. 
+Az adatok lehető legjobb biztonságának biztosítása érdekében a Microsoft elmozdul a TLS 1,0 és a TLS 1,1 rendszertől, amelyek kimutatták, hogy sebezhetőek voltak a meghatározott támadók számára. Ha a hely bővítmény egy régebbi verzióját használja, akkor a működés folytatásához frissítésre van szükség. Ez a dokumentum a Snapshot Debugger legújabb verzióra való frissítéséhez szükséges lépéseket ismerteti. Ha engedélyezte a Snapshot Debuggert a hely kiterjesztése alapján, vagy ha az alkalmazáshoz hozzáadott SDK/Nuget használta, két elsődleges frissítési útvonal van. A frissítési útvonalakat az alábbiakban tárgyaljuk. 
 
-## <a name="upgrading-the-site-extension"></a>A site-bővítmény frissítése
+## <a name="upgrading-the-site-extension"></a>A hely kiterjesztésének frissítése
 
-Ha engedélyezte a pillanatkép-hibakereső a webhely-bővítménnyel, könnyen frissítheti az alábbi eljárást követve:
+Ha engedélyezte a pillanatkép-hibakeresőt a hely bővítmény használatával, a következő eljárással könnyedén frissítheti:
 
 1. Jelentkezzen be az Azure portálra.
-2. Keresse meg az erőforrás, amelynek az Application Insights és a pillanatkép-hibakereső engedélyezve van. Például egy Web App alkalmazásban nyissa meg az App Service-erőforrást:
+2. Navigáljon az erőforráshoz, amelyen engedélyezve van a Application Insights és a Snapshot Debugger. Egy webalkalmazás esetében például navigáljon a App Service erőforráshoz:
 
-   ![Képernyőkép az egyes App Service-erőforrások nevű DiagService01](./media/snapshot-debugger-upgrade/app-service-resource.png)
+   ![Képernyőkép a DiagService01 nevű egyéni App Service erőforrásról](./media/snapshot-debugger-upgrade/app-service-resource.png)
 
-3. Miután megnyit az erőforrást, az Áttekintés panelen kattintson az Application Insights:
+3. Miután megtörtént az erőforráshoz való navigálása, kattintson Application Insights az Áttekintés panelen:
 
-   ![Képernyőfelvétel a gombok három. Középső gomb az Application Insights neve van kiválasztva](./media/snapshot-debugger-upgrade/application-insights-button.png)
+   ![Képernyőfelvétel három gombról. Application Insights nevű középső gomb van kiválasztva](./media/snapshot-debugger-upgrade/application-insights-button.png)
 
-4. Új megnyílik egy panel az aktuális beállításokkal. Szeretnénk megragadni a lehetőséget a beállítások módosításáról, kivéve azokat, hagyhatja. A **alkalmaz** alapértelmezés szerint nincs engedélyezve a gombra a panel alján, és váltsa át a beállításokat a gomb aktiválásához egyik kell. Nem kell a tényleges beállítások módosításához, inkább a beállítást, és majd azonnal módosítsa azt vissza. Azt javasoljuk, hogy a beállítást, és válassza a Profiler vizualizációtól **alkalmaz**.
+4. Ekkor megnyílik egy új panel a jelenlegi beállításokkal. Hacsak nem szeretné módosítani a beállításokat, meghagyhatja őket. A panel alján található **Apply (alkalmaz** ) gomb alapértelmezés szerint nincs engedélyezve, és a gomb aktiválásához be kell váltania az egyik beállítást. Nem kell módosítania az aktuális beállításokat, hanem módosíthatja a beállítást, majd azonnal visszaállíthatja azt. Javasoljuk, hogy állítsa be a Profiler-beállítást, majd válassza az **alkalmaz**lehetőséget.
 
-   ![A vörös színnel alkalmaz gomb képernyőképe az Application Insights App Service konfigurációjának lap](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
+   ![Képernyőkép a Application Insights App Service konfigurációs oldaláról a piros színnel jelölt Apply (alkalmaz) gombbal](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
-5. Miután rákattint **alkalmaz**, meg kell adnia a hagyja jóvá a módosításokat.
+5. Miután rákattintott az **alkalmaz**gombra, a rendszer megkéri, hogy erősítse meg a módosításokat.
 
     > [!NOTE]
-    > A frissítési folyamat részeként újraindítja a helyet.
+    > A rendszer a frissítési folyamat részeként újraindítja a helyet.
 
-   ![Képernyőkép az App Service a alkalmazni figyelési parancssort. Szövegmező üzenetet jeleníti meg: "Azt fogja most alkalmazza az alkalmazásbeállítások módosításait és telepíti az eszközöket az Application Insights-erőforrás összekapcsolása a webalkalmazást. A művelet újraindítja a helyet. Biztosan folytatja?"](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
+   ![Képernyőfelvétel: App Service alkalmazás-figyelési kérése. A szövegmező üzenet jelenik meg: "mostantól alkalmazjuk az Alkalmazásbeállítások módosításait, és a Application Insights erőforrás a webalkalmazáshoz való összekapcsolására szolgáló eszközöket telepítjük. Ekkor a rendszer újraindítja a helyet. Folytatja? "](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
-6. Kattintson a **Igen** a módosítások életbe léptetéséhez. A folyamat során egy értesítés jelenik meg, hogy módosításai alkalmazásra kerülnek megjelenítése:
+6. A módosítások alkalmazásához kattintson az **Igen** gombra. A folyamat során egy értesítés jelenik meg, amely bemutatja, hogy a módosítások érvénybe lépnek:
 
-   ![Képernyőkép a módosítások alkalmazása – a jobb felső sarkában megjelenő üzenet bővítmények frissítése](./media/snapshot-debugger-upgrade/updating-extensions.png)
+   ![Képernyőkép a módosítások alkalmazása – bővítmények frissítése üzenet, amely megjelenik a jobb felső sarokban](./media/snapshot-debugger-upgrade/updating-extensions.png)
 
-Ha befejeződött, egy **"Lépnek életbe a módosítások"** értesítés jelenik meg.
+Ha elkészült, a rendszer a **"módosítások alkalmazása"** értesítést jeleníti meg.
 
-   ![Képernyőkép a üzenet figyelmezteti a módosítások alkalmazása](./media/snapshot-debugger-upgrade/changes-are-applied.png)
+   ![A módosítások érvénybe lépését jelző üzenet képernyőképe](./media/snapshot-debugger-upgrade/changes-are-applied.png)
 
-A hely frissítve lett, és készen áll a használatra.
+A hely már frissítve lett, és készen áll a használatra.
 
-## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>SDK-t és a Nugetet használó pillanatkép-hibakereső frissítése
+## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>Snapshot Debugger frissítése SDK/Nuget használatával
 
-Ha az alkalmazás egy verzióját `Microsoft.ApplicationInsights.SnapshotCollector` verziónál 1.3.1, el kell frissíteni, hogy egy [újabb verzióra](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a munka folytatásához.
+Ha az alkalmazás a 1.3.1-es verzió `Microsoft.ApplicationInsights.SnapshotCollector` verzióját használja, akkor a működés folytatásához frissítenie kell egy [újabb verzióra](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .

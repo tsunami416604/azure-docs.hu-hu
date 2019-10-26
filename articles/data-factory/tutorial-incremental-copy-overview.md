@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 51a6721c8bbac86e9c96ee392de3199b0456860f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140587"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901360"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Növekményes módon betölti az adatokat egy forrásadattárból egy céladattárba
 
@@ -54,12 +54,12 @@ Sablonok esetében tekintse meg a következőket:
 - [Új fájlok másolása a LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Új fájlok betöltése csak a Time particionált mappa vagy fájlnév használatával.
-Csak az új fájlokat másolhatja, ahol a fájlok vagy mappák már időben particionálva vannak a fájl-vagy timeslice részeként (például/yyyy/MM/DD/file.csv). Ez a legnagyobb teljesítménybeli megközelítés az új fájlok növekményes betöltéséhez. 
+Csak az új fájlokat másolhatja, ahol a fájlok vagy mappák már időben particionálva vannak a fájl-vagy timeslice részeként (például/yyyy/MM/DD/file.csv). Ez a legnagyobb teljesítményű megközelítés az új fájlok növekményes betöltéséhez. 
 
 A részletes utasításokhoz lásd a következő oktatóanyagot: <br/>
 - [Új fájlok növekményes másolása az Azure Blob Storage-ból az Azure Blob Storage-ba, az idő particionált mappája vagy fájlneve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Folytassa a következő oktatóanyaggal: 
 
 > [!div class="nextstepaction"]

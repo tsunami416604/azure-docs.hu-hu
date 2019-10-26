@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag az Azure AD Reporting API és a tanúsítványok használatával történő lekérdezéséről | Microsoft Docs
+title: Oktatóanyag az AD Reporting API-hoz tanúsítványok használatával | Microsoft Docs
 description: Ez az oktatóanyag azt ismerteti, hogy az Azure AD Reporting API és a tanúsítvány hitelesítő adatai segítségével hogyan kérhet le adatokat a címtárakból felhasználói beavatkozás nélkül.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989482"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895132"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: az adatlekérdezés a Azure Active Directory Reporting API és a tanúsítványok használatával
 
 Az [Azure Active Directory (Azure AD) Reporting API-k](concept-reporting-api.md) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. Ha felhasználói beavatkozás nélkül szeretné elérni az Azure AD Reporting API-t, konfigurálnia kell a hozzáférést a tanúsítványok használatához.
 
@@ -35,7 +35,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
 
 2. Hozzon létre vagy váltson át egy felhasználói fiókra a bérlő **globális rendszergazdája**, a **biztonsági rendszergazda**, a **biztonsági olvasó** vagy a **jelentéskészítő olvasó** szerepkörben. 
 
-3. Fejezze be a [Azure Active Directory jelentési API eléréséhez](howto-configure-prerequisites-for-reporting-api.md)szükséges előfeltételeket. 
+3. Fejezze be a [Azure Active Directory jelentési API eléréséhez szükséges előfeltételeket](howto-configure-prerequisites-for-reporting-api.md). 
 
 4. Töltse le és telepítse az [Azure ad PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md)-t.
 
@@ -44,7 +44,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
     - a felhasználó, alkalmazáskulcsok és tanúsítványok jogkivonatainak elérését az ADAL használatával,
     - a lapokra bontott eredményeket kezelő Graph API-t.
 
-6. Ha először használja a modult a **install-MSCloudIdUtilsModule**futtatásával, akkor az importálási modul PowerShell **-** paranccsal importálhatja azt. A munkamenetnek ehhez a képernyőhöz hasonlóan kell kinéznie: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Ha először használja a modult a **install-MSCloudIdUtilsModule**futtatásával, akkor az **importálási modul PowerShell-** paranccsal importálhatja azt. A munkamenetnek a következő képernyőhöz hasonlóan kell kinéznie: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Tesztelési tanúsítvány létrehozásához használja a **New-SelfSignedCertificate PowerShell-** parancsmagot.
 
@@ -63,7 +63,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com), válassza a **Azure Active Directory**lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget, és válassza ki az alkalmazást a listából. 
 
-2. Válassza a **Beállítások** > **kulcsok** lehetőséget, majd válassza a **nyilvános kulcs feltöltése**lehetőséget.
+2. Válassza a **beállítások** > **kulcsok** lehetőséget, majd válassza a **nyilvános kulcs feltöltése**lehetőséget.
 
 3. Válassza ki az előző lépésben megadott tanúsítványfájl, majd válassza a **Mentés**lehetőséget. 
 
@@ -89,17 +89,17 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
 
    ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. A Graph API lekérdezéséhez használja a PowerShell-parancsfájl hozzáférési tokenjét. A bejelentkezések és a directoryAudits végpont enumerálásához használja a MSCloudIDUtils meghívása **-MSCloudIdMSGraphQuery** parancsmagot. Ez a parancsmag több lapozható eredményt kezel, és elküldi ezeket az eredményeket a PowerShell-folyamatnak.
+8. A Graph API lekérdezéséhez használja a PowerShell-parancsfájl hozzáférési tokenjét. A bejelentkezések és a directoryAudits végpont enumerálásához használja a MSCloudIDUtils **meghívása-MSCloudIdMSGraphQuery** parancsmagot. Ez a parancsmag több lapozható eredményt kezel, és elküldi ezeket az eredményeket a PowerShell-folyamatnak.
 
 9. A naplók lekéréséhez kérdezze le a directoryAudits-végpontot. 
-   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure Portalra](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. A bejelentkezési naplók lekéréséhez kérdezze le a bejelentkezések-végpontot.
-    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure Portalra](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. Most már dönthet úgy is, hogy exportálja ezeket az adatfájlokat egy CSV-be, és ment egy SIEM rendszerbe. A szkriptet be is csomagolhatja egy ütemezett feladatba az Azure AD-adatok bérlőtől való időszakos lekérésére úgy is, hogy nem kell a forráskódban tárolnia az alkalmazáskulcsokat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a Reporting API-k működésével](concept-reporting-api.md)
 * [Naplózási API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 

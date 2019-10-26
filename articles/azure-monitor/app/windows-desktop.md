@@ -1,30 +1,25 @@
 ---
 title: Windowsos asztali alkalmazások használatának és teljesítményének figyelése
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 19040746-3315-47e7-8c60-4b3000d2ddc4
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/09/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/09/2019
+ms.openlocfilehash: 18681f7130b3706f846b031dbb4852cda8b90d39
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932337"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899247"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
 A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](../../azure-monitor/app/ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) használatát javasoljuk.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Klasszikus Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
-1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET-alkalmazás lehetőséget.
+1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET alkalmazás lehetőséget.
 2. Végezze el a kialakítási kulcs másolását. A kulcs az imént létrehozott új erőforrás Alapvető szolgáltatások legördülő menüjében található. 
 3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft.ApplicationInsights csomagot, ha csak az API-ra van szüksége a normál telemetriai adatgyűjtő modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
@@ -77,7 +72,7 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Metrikák böngészése](../../azure-monitor/app/metrics-explorer.md)

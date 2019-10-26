@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516521"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900934"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: IoT Hub- C# adatfolyamon keresztüli kommunikáció egy eszköz alkalmazásával (előzetes verzió)
 
@@ -33,6 +33,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 * Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
   * USA középső régiója
   * USA középső – EUAP
+  * Észak-Európa
+  * Délkelet-Ázsia
 
 * Az ebben a rövid útmutatóban futtatott két minta alkalmazás beírása folyamatban van C#. A fejlesztői gépen szükség van a .NET Core SDK 2.1.0 vagy újabb verzióra.
   * Töltse le a [.net Core SDKt több platformra a .net-ről](https://www.microsoft.com/net/download/all).

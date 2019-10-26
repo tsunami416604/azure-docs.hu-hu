@@ -1,86 +1,80 @@
 ---
-title: Figyelési megoldások az Azure-ban leltára |} A Microsoft Docs
-description: Monitorozás az Azure Monitor problémakörrel kapcsolatos egy adott területre metrikákat logikai, megjelenítési és adatgyűjtési szabályok gyűjteményei.  Ez a cikk a Microsoft és a metódus és adatok gyűjtésének gyakorisága elérhető megoldások monitorozása listáját tartalmazza.
-services: log-analytics
-documentationcenter: ''
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Monitorozási megoldások leltára az Azure-ban | Microsoft Docs
+description: A Azure Monitor figyelési megoldásai olyan logikai, vizualizációs és adatgyűjtési szabályok gyűjteményei, amelyek egy adott problémás terület körüli metrikákat biztosítanak.  Ez a cikk a Microsoft által elérhető figyelési megoldások listáját, valamint az adatgyűjtési módszerekkel és gyakorisággal kapcsolatos adatokat tartalmazza.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 06/26/2018
+author: MGoedtel
 ms.author: bwren
-ms.openlocfilehash: 9398815ea75c0eacd99a6e40c569254fac671cbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.date: 06/26/2018
+ms.openlocfilehash: 1f93ada1a6fb6b87c79a3713e80ebfefae9fe56f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234020"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900634"
 ---
-# <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Szoftverleltár és az adatok gyűjtemény adatait figyelési megoldások az Azure-ban
-[Figyelési megoldások](solutions.md) nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-szolgáltatások használhatja. Figyelési megoldások általában a naplóadatokat gyűjthet, és adja meg a lekérdezések és nézetek, elemezheti az összegyűjtött adatokat. Figyelési megoldások az Azure monitornak alkalmazások és szolgáltatások hozzáadása. Általában érhetők el, nem tudta meghívni a használati díjak költség azonban gyűjt adatokat.
+# <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Leltár-és adatgyűjtési részletek az Azure-beli monitorozási megoldásokhoz
+A [monitorozási megoldások](solutions.md) kihasználják az Azure szolgáltatásait, hogy további információkat szolgáltassanak egy adott alkalmazás vagy szolgáltatás működéséről. A figyelési megoldások jellemzően gyűjtik a naplózási adatokat, és lekérdezéseket és nézeteket biztosítanak az összegyűjtött adatok elemzéséhez. A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek.
 
-Ez a cikk tartalma [montioring megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és az Azure Monitor szolgáltatásba adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más figyelési megoldások data flow és a kapcsolat követelményeinek megismeréséhez.
+Ez a cikk a Microsoft által a részletes dokumentációra mutató hivatkozásokkal elérhető [montioring-megoldások](solutions.md) listáját tartalmazza.  Emellett információkat nyújt a módszerekről és az adatgyűjtés gyakoriságáról Azure Monitor.  A cikkben található információk alapján azonosíthatja az elérhető különböző megoldásokat, valamint megismerheti a különböző figyelési megoldások adatáramlási és kapcsolódási követelményeit.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="list-of-monitoring-solutions"></a>Figyelési megoldások listája
+## <a name="list-of-monitoring-solutions"></a>A figyelési megoldások listája
 
-A következő táblázat felsorolja a [figyelési megoldások](solutions.md) a Microsoft által biztosított Azure-ban. Egy bejegyzés az oszlopban azt jelenti, hogy, hogy a megoldás gyűjti az adatokat az Azure Monitor szolgáltatásba a módszer használatával.  Ha a megoldás nem tartalmaz oszlopokat kiválasztva, majd ír közvetlenül az Azure Monitor egy másik Azure szolgáltatás. A hivatkozásra vonatkozó további információ a részletes dokumentációt.
+A következő táblázat felsorolja az Azure-ban a Microsoft által biztosított [monitorozási megoldásokat](solutions.md) . Az oszlop egyik bejegyzése azt jelenti, hogy a megoldás adatokat gyűjt Azure Monitor az adott metódus használatával.  Ha egy megoldás nem jelölt ki oszlopokat, a rendszer közvetlenül egy másik Azure-szolgáltatásból Azure Monitor ír. További információért kövesse a hivatkozásokat a részletes dokumentációhoz.
 
-Magyarázat az oszlopok a következők:
+Az oszlopok magyarázatai a következők:
 
-- **A Microsoft-figyelőügynök** – az ügynököt az SCOM-ről futtatható a Management pack a Windows és Linux rendszereken használt, és figyelési megoldások az Azure-ból. Ebben a konfigurációban az ügynök közvetlenül kapcsolódik az Azure Monitor az Operations Manager felügyeleti csoporthoz való csatlakozás nélkül. 
-- **Az Operations Manager** -azonos a Microsoft monitoring agent ügynök. Ebben a konfigurációban van [egy Operations Manager felügyeleti csoporthoz csatlakoztatott](../platform/om-agents.md) , amely csatlakozik az Azure Monitor. 
--  **Az Azure Storage** -megoldás gyűjti az adatokat egy Azure storage-fiókot. 
-- **Az Operations Manager szükséges?** -Az Operations Manager csatlakoztatott felügyeleti csoport figyelési megoldás által adatgyűjtés szükség. 
-- **A felügyeleti csoport Operations Manager-ügynök adatok küldött** – Ha az ügynök [egy SCOM felügyeleti csoporthoz csatlakoztatott](../platform/om-agents.md), majd az adatokat az Azure monitornak is küld a felügyeleti kiszolgáló. Ebben az esetben az ügynök közvetlenül kapcsolódik az Azure Monitor nem szükséges. Ha a jelölőnégyzet nincs bejelölve, tartó adatküldést követően az ügynök közvetlenül az Azure Monitor akkor is, ha az ügynök csatlakozik egy SCOM felügyeleti csoport. El kell az Azure monitornak keresztül kommunikálnak a [Log Analytics-átjáró](../platform/gateway.md).
-- **Gyűjtés gyakorisága** – adja meg, hogy gyűjti össze az adatokat a megoldáshoz. 
+- **Microsoft monitoring Agent** – Windows és Linux rendszeren használt ügynök, amely az Azure-ból származó SCOM és monitorozási megoldásokból származó felügyeleti csomagokat futtat. Ebben a konfigurációban az ügynök közvetlenül csatlakozik Azure Monitorhoz anélkül, hogy Operations Manager felügyeleti csoporthoz kellene csatlakoznia. 
+- **Operations Manager** – azonos ügynök, mint a Microsoft monitoring Agent. Ebben a konfigurációban egy Azure Monitorhoz csatlakoztatott [Operations Manager felügyeleti csoporthoz csatlakozik](../platform/om-agents.md) . 
+-  **Azure Storage** – a megoldás adatokat gyűjt egy Azure Storage-fiókból. 
+- **Operations Manager kötelező?** -Egy csatlakoztatott Operations Manager felügyeleti csoport szükséges a figyelési megoldás által végzett adatgyűjtéshez. 
+- **Operations Manager a felügyeleti csoporton keresztül továbbított ügynök adatait** – ha az ügynök [egy SCOM-felügyeleti csoporthoz csatlakozik](../platform/om-agents.md), akkor a rendszer az adatok elküldését a felügyeleti kiszolgálótól a Azure monitor. Ebben az esetben az ügynöknek nem kell közvetlenül kapcsolódnia Azure Monitorhoz. Ha ez a jelölőnégyzet nincs bejelölve, akkor a rendszer közvetlenül az ügynöktől küldi el az adatok Azure Monitor akkor is, ha az ügynök SCOM-felügyeleti csoporthoz csatlakozik. A [log Analytics átjárón](../platform/gateway.md)keresztül képesnek kell lennie kommunikálni Azure monitor.
+- **Gyűjtés gyakorisága** – meghatározza, hogy a figyelési megoldás milyen gyakorisággal gyűjti az adatokat. 
 
 
 
-| **Figyelési megoldás** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |
+| **Figyelési megoldás** | **Platform** | **Microsoft monitoring Agent** | **Operations Manager ügynök** | **Azure Storage** | **Operations Manager kötelező?** | **A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés** | **Gyűjtés gyakorisága** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [A Log analytics tevékenység](../platform/activity-log-collect.md) | Azure | | | | | | az értesítés |
+| [Activity log Analytics](../platform/activity-log-collect.md) | Azure | | | | | | értesítéskor |
 | [AD-elemzés](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 nap |
 | [AD-replikáció állapota](ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 nap |
 | [Az ügynök állapota](solution-agenthealth.md) | Windows és Linux | &#8226; | &#8226; | | | &#8226; | 1 perc |
-| [Riasztás felügyeleti](../platform/alert-management-solution.md) (Nagios) |Linux |&#8226; | | | | |a beérkezéskor |
-| [Riasztás felügyeleti](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 perc |
-| [Riasztás felügyeleti](../platform/alert-management-solution.md) (az Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 perc |
-| [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | n/a |
-| [(Elavult az) Application Insights-összekötő](../platform/app-insights-connector.md) | Azure | | | |  |  | az értesítés |
-| [Automation hibrid feldolgozó](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | n/a |
-| [Az Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
-| **Figyelési megoldás** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |
-| [Azure-beli hálózati biztonsági csoport Analytics (elavult)](azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
-| [Az Azure SQL Analytics (előzetes verzió)](azure-sql.md) | Windows | | | | | | 1 perc |
-| [Biztonsági mentés](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | az értesítés |
-| [Kapacitás és teljesítmény (előzetes verzió)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |a beérkezéskor |
-| [Változáskövetés](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[Változó](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Változáskövetés](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[Változó](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Alert Management](../platform/alert-management-solution.md) (Nagios) |Linux |&#8226; | | | | |érkezéskor |
+| [Alert Management](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 perc |
+| [Alert Management](../platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 perc |
+| [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | – |
+| [Application Insights Connector (elavult)](../platform/app-insights-connector.md) | Azure | | | |  |  | értesítéskor |
+| [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | – |
+| [Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | értesítéskor |
+| **Figyelési megoldás** | **Platform** | **Microsoft monitoring Agent** | **Operations Manager ügynök** | **Azure Storage** | **Operations Manager kötelező?** | **A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés** | **Gyűjtés gyakorisága** |
+| [Azure Network Security Group Analytics (elavult)](azure-networking-analytics.md) | Azure |  |  |  |  |  | értesítéskor |
+| [Azure SQL Analytics (előzetes verzió)](azure-sql.md) | Windows | | | | | | 1 perc |
+| [Biztonsági mentés](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | értesítéskor |
+| [Capacity and Performance (előzetes verzió)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |érkezéskor |
+| [Változáskövetés](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[változik](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Változáskövetés](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[változik](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Containers](containers.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 3 perc |
-| [Key Vault-elemzés](azure-key-vault.md) |Windows | | | | | |az értesítés |
+| [Key Vault-elemzés](azure-key-vault.md) |Windows | | | | | |értesítéskor |
 | [Kártevőfelmérés](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |óránként |
-| [Hálózati teljesítményfigyelő](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP-kézfogások 5 másodpercenként, adatokat küld át 3 percenként |
-| [Az Office 365 Analytics (előzetes verzió)](solution-office-365.md) |Windows | | | | | |az értesítés |
-| **Figyelési megoldás** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |
+| [Hálózati teljesítményfigyelő](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | 5 másodpercenkénti TCP-kézfogások, az adatküldés 3 percenként |
+| [Office 365 Analytics (előzetes verzió)](solution-office-365.md) |Windows | | | | | |értesítéskor |
+| **Figyelési megoldás** | **Platform** | **Microsoft monitoring Agent** | **Operations Manager ügynök** | **Azure Storage** | **Operations Manager kötelező?** | **A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés** | **Gyűjtés gyakorisága** |
 | [Service Fabric-elemzés](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 perc |
 | [Szolgáltatástérkép](service-map.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 15 másodperc |
 | [SQL-elemzés](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 nap |
-| [SurfaceHub](surface-hubs.md) |Windows |&#8226; | | | | |a beérkezéskor |
-| [A System Center Operations Manager Assessment (előzetes verzió)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | hét napja |
-| [Frissítéskezelés](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |legalább 2 alkalommal naponta és a egy frissítés telepítése után 15 perc |
+| [SurfaceHub](surface-hubs.md) |Windows |&#8226; | | | | |érkezéskor |
+| [System Center Operations Manager Assessment (előzetes verzió)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | hét nap |
+| [Frissítéskezelés](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |naponta legalább 2 alkalommal és 15 perccel a frissítés telepítése után |
 | [Frissítési készültség](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 nap |
 | [VMware Monitoring (elavult)](vmware.md) | Linux | &#8226; |  |  |  |  | 3 perc |
-| [Wire Data 2.0 (előzetes verzió)](wire-data.md) |Windows (2012 R2 / 8.1-es vagy újabb) |&#8226; |&#8226; | | | | 1 perc |
+| [Wire Data 2.0 (előzetes verzió)](wire-data.md) |Windows (2012 R2/8,1 vagy újabb) |&#8226; |&#8226; | | | | 1 perc |
 
 
 
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [telepítési és figyelési megoldások használata](solutions.md).
-* Ismerje meg, hogyan [lekérdezések létrehozása](../log-query/log-query-overview.md) figyelési megoldások által gyűjtött adatok elemzéséhez.
+## <a name="next-steps"></a>Következő lépések
+* Ismerje meg a [figyelési megoldások telepítését és használatát](solutions.md).
+* Megtudhatja, hogyan [hozhat létre lekérdezéseket](../log-query/log-query-overview.md) a figyelési megoldások által gyűjtött adatok elemzéséhez.

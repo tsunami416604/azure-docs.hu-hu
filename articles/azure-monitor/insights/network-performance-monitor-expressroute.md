@@ -1,150 +1,144 @@
 ---
-title: Network Performance Monitor megoldás az Azure Log Analyticsben |} A Microsoft Docs
-description: A Network Performance Monitor az ExpressRoute-figyelő képesség segítségével figyelheti a végpontok közötti kapcsolatait és teljesítményét a fiókirodák és az Azure között az Azure expressroute-on keresztül.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Network Performance Monitor megoldás az Azure Log Analyticsban | Microsoft Docs
+description: A Network Performance Monitor ExpressRoute-figyelő funkciójának használatával figyelheti a végpontok közötti kapcsolatot és a teljesítményt a fiókirodák és az Azure között az Azure ExpressRoute-en keresztül.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/27/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/27/2018
+ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963876"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898883"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
-Az Azure ExpressRoute-figyelő a funkcióval a [Network Performance Monitor](network-performance-monitor.md) végpontok közötti kapcsolatait és teljesítményét a fiókirodák és az Azure közötti figyelése az Azure expressroute-on keresztül. Fő előnyei a következők: 
+A [Network Performance monitor](network-performance-monitor.md) Azure ExpressRoute monitor funkciójának használatával megfigyelheti a végpontok közötti kapcsolatot és a teljesítményt a fiókirodák és az Azure között, az Azure ExpressRoute-en keresztül. A legfontosabb előnyök a következők: 
 
-- Autodetection az ExpressRoute-kapcsolatcsoportokat az Ön előfizetéséhez rendelve.
-- Nyomon követését, a sávszélesség-használat, a veszteség és a késleltetés a kapcsolatcsoportot, a társviszony-létesítés és a Azure Virtual Network szintjén az expressroute-hoz.
-- Az ExpressRoute-Kapcsolatcsoportok hálózati topológiájának felderítése.
+- Az előfizetéshez társított ExpressRoute-áramkörök automatikus észlelése.
+- A sávszélesség-használat, a veszteségek és a késések nyomon követése az áramkörön, a ExpressRoute és az Azure Virtual Network szintjén.
+- A ExpressRoute-áramkörök hálózati topológiájának felderítése.
 
 ![ExpressRoute-figyelő](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfiguráció 
-Nyissa meg a Network Performance Monitor konfigurációját, nyissa meg a [Network Performance Monitor megoldás](network-performance-monitor.md) válassza **konfigurálása**.
+A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás**lehetőséget.
 
-### <a name="configure-network-security-group-rules"></a>Hálózatbiztonságicsoport-szabályok konfigurálása 
-Az Azure-ban használt kiszolgálók figyeléshez a Network Performance Monitor használatával konfigurálja a hálózati biztonsági csoport (NSG) szabályai a Network Performance Monitor használata szintetikus tranzakciókhoz használt porton a TCP-forgalom engedélyezéséhez. Az alapértelmezett port: 8084. Ez a konfiguráció lehetővé teszi, hogy a Log Analytics-ügynök kommunikáljon a helyszíni Azure virtuális gépeken telepített ügynök figyelése. 
+### <a name="configure-network-security-group-rules"></a>A hálózati biztonsági csoport szabályainak konfigurálása 
+Az Azure-ban a Network Performance Monitor-on keresztül történő figyelésre használt kiszolgálók esetében konfigurálja a hálózati biztonsági csoport (NSG) szabályait úgy, hogy engedélyezzék a TCP-forgalmat a Network Performance Monitor által a szintetikus tranzakciók esetében használt porton. Az alapértelmezett port a 8084. Ez a konfiguráció lehetővé teszi, hogy az Azure-beli virtuális gépeken telepített Log Analytics-ügynök kommunikáljon egy helyszíni figyelő ügynökkel. 
 
-NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md). 
-
->[!NOTE]
-> Mielőtt folytatja ezt a lépést, a helyszíni kiszolgáló az ügynök és az Azure-kiszolgáló ügynök telepítése, és futtassa az EnableRules.ps1 PowerShell-szkriptet. 
-
- 
-### <a name="discover-expressroute-peering-connections"></a>Fedezze fel a társviszony-létesítési ExpressRoute-kapcsolatok 
- 
-1. Válassza ki a **ExpressRoute-Társviszonyok** megtekintése.
-2. Válassza ki **felderítése most** felderítésére minden az ExpressRoute privát társviszony-létesítéseket, amely csatlakozik a virtuális hálózatok az Azure-előfizetésében csatolva az Azure Log Analytics-munkaterületet.
-
-    >[!NOTE]
-    > A megoldás jelenleg csak az ExpressRoute privát társviszony-létesítéseket deríti fel. 
-
-    >[!NOTE]
-    > Csak privát társviszony-létesítéseket a Log Analytics-munkaterülettel társított az előfizetéshez tartozó virtuális hálózatokhoz felderítése történik meg. Ha ExpressRoute kívül az előfizetés ehhez a munkaterülethez társított virtuális hálózatok csatlakoztatva van, hozzon létre egy Log Analytics-munkaterület ezen előfizetések. A Network Performance Monitor segítségével ezeket társviszony figyelése. 
-
-    ![ExpressRoute-figyelő konfigurálása](media/network-performance-monitor-expressroute/expressroute-configure.png)
- 
-   A felderítés befejeződése után egy táblázatban láthatók a felderített privát társviszony-kapcsolatokat. A társviszony-létesítéshez figyelési kezdetben letiltott állapotban van egy. 
-
-### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>A társviszony-létesítési ExpressRoute-kapcsolatok a figyelés engedélyezése 
-
-1. Válassza ki a figyelni kívánt privát társviszony-létesítési kapcsolat.
-2. A jobb oldali panelén válassza a **figyelheti a társviszony-létesítés** jelölőnégyzetet. 
-3. Ha azt tervezi, ehhez a kapcsolathoz hálózatállapot-események létrehozása, kiválasztása **egészségügyi figyelés engedélyezése a társviszony**. 
-4. Válassza ki a feltételek figyelése. Beállíthat egyedi küszöbértékeket egészségügyi eseménygenerálás küszöbértékek megadásával. Minden alkalommal, amikor a feltétel értéke a megadott küszöbértéknél, a társviszony-létesítési kapcsolat túllépik, állapottal kapcsolatos esemény jön létre. 
-5. Válassza ki **ügynökök hozzáadása** kiválasztása a monitorozási ügynökök, a társviszony-létesítési kapcsolat használni kíván. Győződjön meg arról, hogy a kapcsolat mindkét végén adjon hozzá ügynökök. Szüksége lesz legalább egy ügynök kapcsolódik a társviszony a virtuális hálózatban. Legalább egy helyi ügynök kapcsolódik a társviszony is szükséges. 
-6. Válassza ki **mentése** a konfiguráció mentéséhez. 
-
-   ![Az ExpressRoute-figyelési konfiguráció](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
-
-
-Miután engedélyezte a szabályok és a select értékek és az ügynökök, várjon 30 – 60 percet feltölti az értékek és a **az ExpressRoute monitorozása** csempék jelennek meg. Amikor megjelenik a figyelési csempék, az ExpressRoute-Kapcsolatcsoportok és kapcsolati erőforrás most által figyelt Network Performance Monitor. 
+További információ a NSG: [hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
-> Ez a funkció megbízhatóan működik, munkaterületek, akik frissítettek az új lekérdezési nyelvre.
+> A lépés folytatása előtt telepítse a helyszíni kiszolgáló ügynököt és az Azure Server Agent ügynököt, majd futtassa a EnableRules. ps1 PowerShell-szkriptet. 
+
+ 
+### <a name="discover-expressroute-peering-connections"></a>ExpressRoute-társítási kapcsolatok felderítése 
+ 
+1. Válassza ki a **ExpressRoute-társak** nézetet.
+2. A **felderítés most** lehetőség kiválasztásával felderítheti az Azure log Analytics-munkaterülettel társított Azure-előfizetésben található virtuális hálózatokhoz csatlakozó összes ExpressRoute.
+
+    >[!NOTE]
+    > A megoldás jelenleg csak privát ExpressRoute. 
+
+    >[!NOTE]
+    > A rendszer csak az ezzel a Log Analytics munkaterülettel társított előfizetéshez tartozó virtuális hálózatokhoz csatlakozó privát partnereket deríti fel. Ha a ExpressRoute a munkaterülethez kapcsolt előfizetésen kívüli virtuális hálózatokhoz csatlakozik, hozzon létre egy Log Analytics munkaterületet az előfizetésekben. Ezt követően a Network Performance Monitor használatával figyelheti ezeket a partnereket. 
+
+    ![ExpressRoute-figyelő konfigurációja](media/network-performance-monitor-expressroute/expressroute-configure.png)
+ 
+   A felderítés befejezése után a felderített magánhálózati kapcsolatok a táblázatban láthatók. Ezek a társítások figyelése kezdetben letiltott állapotban van. 
+
+### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>A ExpressRoute-társítási kapcsolatok figyelésének engedélyezése 
+
+1. Válassza ki a figyelni kívánt privát társ-összevonási kapcsolatot.
+2. A jobb oldali ablaktáblán jelölje be a társítás **figyelése** jelölőnégyzetet. 
+3. Ha a kapcsolódáshoz szeretné létrehozni az állapotfigyelő eseményeket, válassza **az állapot figyelésének engedélyezése ehhez a**társításhoz lehetőséget. 
+4. Válassza a figyelési feltételek lehetőséget. A küszöbértékek megadásával egyéni küszöbértékeket állíthat be az állapot-események generálásához. Ha a feltétel értéke a társítási kapcsolathoz megadott küszöbérték fölé esik, a rendszer egy állapottal kapcsolatos eseményt generál. 
+5. Az **ügynökök hozzáadása** lehetőség kiválasztásával válassza ki azokat a figyelési ügynököket, amelyeket használni szeretne a társ-kapcsolódás figyeléséhez. Győződjön meg arról, hogy a kapcsolatok mindkét végpontján ügynököket ad hozzá. Ehhez a társításhoz csatlakoztatott virtuális hálózatban legalább egy ügynökre van szükség. Ehhez a társításhoz is szükség van legalább egy helyszíni ügynökre. 
+6. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
+
+   ![ExpressRoute-figyelési konfiguráció](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
+
+
+Miután engedélyezte a szabályokat, és kijelöli az értékeket és az ügynököket, várjon 30 – 60 percet, hogy az értékek feltöltve legyenek, a **ExpressRoute-figyelési** csempék pedig megjelenjenek. Amikor megjelenik a figyelés csempék, a ExpressRoute-áramköröket és a kapcsolatok erőforrásait Network Performance Monitor figyeli. 
+
+>[!NOTE]
+> Ez a funkció megbízhatóan működik az új lekérdezési nyelvre frissített munkaterületeken.
 
 ## <a name="walkthrough"></a>Útmutatás 
 
-A Network Performance Monitor-irányítópult az ExpressRoute-Kapcsolatcsoportok és társviszony-kapcsolatok áttekintése látható. 
+Az Network Performance Monitor irányítópult áttekintést nyújt a ExpressRoute-áramkörök és a társ-létesítési kapcsolatok állapotáról. 
 
-![Network Performance Monitor-irányítópult](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
+![Network Performance Monitor irányítópult](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
-### <a name="circuits-list"></a>Kapcsolatcsoportok listája 
+### <a name="circuits-list"></a>Áramkörök listája 
 
-Az összes figyelt ExpressRoute-Kapcsolatcsoportok listájának megtekintéséhez válassza ki az ExpressRoute-Kapcsolatcsoportok csempe. Válassza ki egy kapcsolatcsoportot, és megtekintheti annak állapotát, trenddiagramok csomagvesztés, a sávszélesség kihasználtságát és a késés. A diagramok használata interaktív. Kiválaszthat egy küldik az ábrázolást a diagramok egyéni időtartományából. Húzza az egeret keresztül egy adott területre a diagram a nagyításra, és tekintse meg a részletes adatokat. 
+Az összes figyelt ExpressRoute-áramkör listájának megtekintéséhez válassza a ExpressRoute-áramkörök csempét. Kiválaszthat egy áramkört, megtekintheti az állapotot, a csomagok elvesztésével, a sávszélesség kihasználtságával és a késéssel kapcsolatos trend-diagramokat. A diagramok interaktívak. Kiválaszthat egy egyéni időablakot a diagramok ábrázolásához. Húzza az egeret a diagram egyik területére a nagyításhoz, és tekintse meg a részletes adatpontokat. 
 
-![Az ExpressRoute-Kapcsolatcsoportok listája](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
+![ExpressRoute-áramkörök listája](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
-### <a name="trends-of-loss-latency-and-throughput"></a>Az adatveszteség, késés és átviteli sebesség trendek 
+### <a name="trends-of-loss-latency-and-throughput"></a>A veszteség, a késés és az átviteli sebesség trendjei 
 
-A sávszélesség-kihasználtságáról, a késés és a veszteség diagramok használata interaktív. Szabadon nagyíthatja bármely szakaszt az ezekbe a diagramokba egér-vezérlők használatával. Is láthatja a sávszélesség, a késés és az adatveszteség-adatok a más időközönként. A bal felső sarokban a **műveletek** gombra, válassza **dátum/idő**. 
+A sávszélesség kihasználtsága, a késés és a veszteségek diagramjai interaktívak. Az egér-vezérlőelemek használatával a diagramok bármelyik szakaszára nagyíthat. Emellett megtekintheti a sávszélességet, a késést és az adatvesztést más intervallumok esetén is. A **műveletek** gomb bal felső részén válassza a **dátum/idő**lehetőséget. 
 
-![Az ExpressRoute késés](media/network-performance-monitor-expressroute/expressroute-latency.png) 
+![ExpressRoute késés](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
-### <a name="peerings-list"></a>Társviszony-Létesítéseket listája 
+### <a name="peerings-list"></a>Társítások listája 
 
-Magánhálózati társviszony-létesítésen keresztül csatlakozva a virtuális hálózatok felé irányuló összes kapcsolatot listáját, válassza ki a **privát társviszony létesítése** csempét az irányítópulton. Itt kiválaszthatja a virtuális hálózati kapcsolat, és megtekintheti annak állapotát, trenddiagramok csomagvesztés, a sávszélesség kihasználtságát és a késés. 
+Ha szeretné, hogy a virtuális hálózatok közötti összes kapcsolat összekapcsolva legyen, válassza ki a **privát társak** csempét az irányítópulton. Itt választhatja ki a virtuális hálózati kapcsolatokat, és megtekintheti az állapotát, a csomagok elvesztésének, a sávszélesség kihasználtságának és a késésnek a trend-diagramokat. 
 
-![ExpressRoute-társviszony](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
+![ExpressRoute-társítások](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
-### <a name="circuit-topology"></a>Kapcsolatcsoport topológia 
+### <a name="circuit-topology"></a>Áramköri topológia 
 
-Kapcsolatcsoport topológiájának megtekintéséhez jelölje ki a **topológia** csempére. Ezzel továbblép a topológia e nézetében a kiválasztott kapcsolatcsoporthoz vagy a társviszony-létesítés. A topológiadiagramot a minden egyes szegmens a késést biztosít a hálózaton található, és a egy csomópont a diagram egyes 3. rétegbeli ugrások képviseli. További információt a Ugrás hop kiválasztásával tárja fel. Látható-e a helyszíni útválasztók ugrásainak felvenni szintjének növeléséhez a csúszkát a **szűrők**. A csúszka sávjának áthelyezése a bal vagy jobb növekedése esetén, vagy a topológia Graph ugrások száma csökken. Minden egyes szegmens a késés akkor látható, amely lehetővé teszi a hálózat nagy késésű szegmensek gyorsabban elkülönítését.
+Az áramköri topológia megtekintéséhez válassza a **topológia** csempét. Ezzel a művelettel a kijelölt kör vagy társítás topológiájának nézete látható. A topológia diagramja biztosítja a hálózat minden szegmensének késését, és a 3. rétegbeli ugrásokat a diagram egy csomópontja jelképezi. Egy ugrás kiválasztásával további részleteket talál a hop-ról. A helyszíni ugrásokat tartalmazó láthatóság szintjének növeléséhez mozgassa a csúszkát a **szűrők**területen. A csúszka balra vagy jobbra való mozgatásával növelheti vagy csökkentheti a topológiai gráfban lévő ugrások számát. Az egyes szegmensek késése látható, ami lehetővé teszi a nagy késleltetésű szegmensek gyorsabb elkülönítését a hálózaton.
 
 ![ExpressRoute-topológia](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
-### <a name="detailed-topology-view-of-a-circuit"></a>A kapcsolatcsoport részletes topológia megtekintése 
+### <a name="detailed-topology-view-of-a-circuit"></a>Áramkör részletes topológiás nézete 
 
-Ebben a nézetben látható a virtuális hálózati kapcsolatok. 
+Ebben a nézetben láthatók a virtuális hálózati kapcsolatok. 
 
-![Az ExpressRoute virtuális hálózati kapcsolatok](media/network-performance-monitor-expressroute/expressroute-vnet.png)
+![ExpressRoute virtuális hálózati kapcsolatok](media/network-performance-monitor-expressroute/expressroute-vnet.png)
  
 ## <a name="diagnostics"></a>Diagnosztika 
 
-Több kapcsolatcsoportot kapcsolódási problémák diagnosztizálása a Network Performance Monitor segítségével. A problémák is látható, alább láthatók.
+Network Performance Monitor segítséget nyújt több áramköri kapcsolati probléma diagnosztizálásához. Az alábbi problémák némelyike alább látható.
 
-Tekintse meg az értesítés kódokat, és riasztásokat állíthat be a rajtuk keresztül **LogAnalytics**. Az a **NPM diagnosztikai** lapon láthatja minden aktivált diagnosztikai üzenet leírása.
+Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **LogAnalytics**-on keresztül. A **NPM diagnosztika** lapon az összes aktivált diagnosztikai üzenet leírását láthatja.
 
-| Értesítés kódot (naplók) | Leírás |
+| Értesítési kód (naplók) | Leírás |
 | --- | --- |
-| 5501 | Nem sikerült bejárni az ExpressRoute-kapcsolatcsoport másodlagos kapcsolatát |
-| 5502 | Nem sikerült bejárni az ExpressRoute-kapcsolatcsoport elsődleges kapcsolatát |
-| 5503 | Nincs kapcsolat a munkaterülethez társított előfizetés nem található | 
-| 5508 | Nem sikerült meghatározni e forgalmat a kapcsolatcsoport sem továbbítja az elérési út |
-| 5510 | A megfelelő kapcsolatcsoport nem továbbítja a forgalmat | 
-| 5511 | A megfelelő virtuális hálózat nem továbbítja a forgalmat | 
+| 5501 | A ExpressRoute áramkör másodlagos kapcsolata nem haladhat át |
+| 5502 | A ExpressRoute áramkör elsődleges kapcsolata nem haladhat át |
+| 5503 | Nem található áramkör a munkaterülethez kapcsolt előfizetéshez | 
+| 5508 | Nem sikerült megállapítani, hogy a forgalom áthalad-e az elérési utakhoz tartozó áramkör (ek) en keresztül |
+| 5510 | A forgalom nem halad át a kívánt áramkörön | 
+| 5511 | A forgalom nem halad át a kívánt virtuális hálózaton | 
 
-**Kapcsolatcsoport nem működik.** A Network Performance Monitor értesíti, amint az a helyszíni erőforrások és az Azure virtuális hálózatok közötti kapcsolat megszakad. Ez az értesítés segít proaktív művelet végrehajtása előtt a felhasználó eszkalálást kap, és csökkentheti az állásidőt.
+**Az áramkör nem áll le.** Network Performance Monitor értesíti, amint a helyszíni erőforrások és az Azure-beli virtuális hálózatok közötti kapcsolat megszakad. Ez az értesítés segítséget nyújt az előjelzéses műveletek elvégzéséhez a felhasználói Eszkalációk fogadása és az állásidő csökkentése érdekében.
 
-![ExpressRoute-kapcsolatcsoport nem működik](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
+![A ExpressRoute áramkör nem érhető el](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
-**Nem a megfelelő kapcsolatcsoport áthaladó forgalmat.** A Network Performance Monitor értesíti, amikor adatforgalommal nem a megfelelő ExpressRoute-kapcsolatcsoport keresztül. A probléma akkor fordulhat elő, ha a kapcsolatcsoport nem működik, és a forgalom áthaladnak a biztonsági mentési útvonal. Azt is történhet, ha egy útválasztási probléma. Ez az információ segít proaktív módon kezelheti az útválasztási házirend található a konfigurációs problémákat, és győződjön meg arról, hogy a legtöbb optimális és biztonságos útvonalat használja. 
-
- 
-
-**Nem az elsődleges kapcsolatcsoportot áthaladó forgalmat.** A Network Performance Monitor értesíti, ha adatforgalommal másodlagos ExpressRoute-kapcsolatcsoporton keresztül. Annak ellenére, hogy nem minden csatlakozási problémákba ebben az esetben, amelyek segítségével proaktív módon a hibák elhárításának az elsődleges kapcsolatcsoportot teszi azt jobban előkészített. 
-
- 
-![Az ExpressRoute-adatforgalmat](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
-
-
-**Kiugró mértékű kihasználtsága miatt teljesítménycsökkenést.** A sávszélesség kihasználtsági trendek azonosításához, hogy az Azure-beli számítási teljesítménycsökkenés miatt a sávszélesség-használatot egy csúcs-e a késés trendje a kapcsolhatja össze. Majd ennek megfelelően műveleteket végezheti el.
-
-![Az ExpressRoute sávszélesség-használat](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
+**A forgalom nem áramlik a kívánt áramkörön keresztül.** Network Performance Monitor értesíti, ha a forgalom nem áramlik át a kívánt ExpressRoute áramkörön. Ez a probléma akkor fordulhat elő, ha az áramkör nem működik, és a forgalom a biztonsági mentési útvonalon halad át. Akkor is előfordulhat, ha útválasztási probléma van. Ezen információk segítségével proaktív módon kezelheti az útválasztási házirendek konfigurációs problémáit, és gondoskodhat a legoptimálisabb és biztonságos útvonal használatáról. 
 
  
 
-## <a name="next-steps"></a>További lépések
-[Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.
+**Az elsődleges áramkörön keresztül nem áramló forgalom.** Network Performance Monitor értesíti, ha a forgalom a másodlagos ExpressRoute áramkörön keresztül áramlik. Bár ebben az esetben nem tapasztal semmilyen kapcsolódási problémát, proaktív módon elháríthatja az elsődleges áramkörrel kapcsolatos problémákat, így jobban felkészült. 
+
+ 
+![ExpressRoute forgalmi folyamat](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
+
+
+**Csökkenés a csúcsérték kihasználtsága miatt.** A sávszélesség-kihasználtsági trendet összekapcsolhatja a késési trendtel annak megállapítása érdekében, hogy az Azure munkaterhelés-romlása a sávszélesség kihasználtságának csúcsa vagy sem. Ezt követően elvégezheti a műveleteket.
+
+![ExpressRoute sávszélesség-kihasználtsága](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
+
+ 
+
+## <a name="next-steps"></a>Következő lépések
+[Keresési naplók](../../azure-monitor/log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.

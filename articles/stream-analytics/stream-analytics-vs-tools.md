@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics feladatok megtekintése a Visual Studióban
-description: Ez a cikk bemutatja, hogyan tekintheti meg és kezelheti Azure Stream Analytics feladatokat a Visual Studióban.
+description: Megtudhatja, hogyan tekintheti meg, indíthatja el és állíthatja le, tesztelheti a kapcsolatokat, ellenőrizheti az eredményeket, és exportálhatja a Azure Stream Analytics feladatokat a Visual Studióval.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173028"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893554"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez
 
@@ -38,8 +38,6 @@ A feladat nézettel a Visual studióból Azure Stream Analytics feladatokkal dol
 
     ![Stream Analytics Server Explorer-lista](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
 2. Bontsa ki a feladatok csomópontot, majd kattintson duplán a feladatok **nézet** csomópontra a feladatok nézet megnyitásához.
     
    ![Kibontott feladatok csomópontja](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
@@ -50,13 +48,11 @@ Azure Stream Analytics feladatok teljes mértékben kezelhetők a Visual Studió
     
    ![Stream Analytics feladatok vezérlői](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>A feladatok eredményeinek megtekintése
 
 A Stream Analytics Tools for Visual Studio jelenleg támogatja a Azure Data Lake Storage és a blob Storage kimeneti előnézetét. Az eredmény megtekintéséhez egyszerűen kattintson duplán a feladatütemezés kimenet csomópontjára a feladatok **nézetben** , és adja meg a megfelelő hitelesítő adatokat.
 
    ![Stream Analytics feladatok blobjának kimenete](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>Feladatok exportálása projektbe
 
@@ -70,7 +66,7 @@ A meglévő feladatok egy projektbe való exportálásának kétféleképpen leh
     
    ![Megoldás-tallózó](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. A feladatok nézetben válassza a **projekt**előállítása lehetőséget.
+2. A feladatok nézetben válassza a **projekt előállítása**lehetőséget.
     
    ![Projekt előállítása a feladatokból nézetből](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
@@ -84,7 +80,7 @@ A **tesztelési kapcsolatok** eredményei a **kimenet** ablakban jelennek meg.
 
    ![A kapcsolatok eredményeinek tesztelése](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics feladatok figyelése és kezelése a Visual Studióval](stream-analytics-monitor-jobs-use-vs.md)
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)

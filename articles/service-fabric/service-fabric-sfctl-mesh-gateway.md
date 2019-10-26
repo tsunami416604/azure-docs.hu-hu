@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl Mesh átjáró | Microsoft Docs
 description: Ismerteti a Service Fabric CLI sfctl Mesh-átjáró parancsait.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: b8acb23b274e6062ae3c50ab80220ab93297037e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e50dc6942163d8ea7926b468e66087e8d98775ee
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036418"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901244"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh átjárója
 Rácsvonal-átjáró erőforrásainak beolvasása és törlése.
@@ -27,8 +28,8 @@ Rácsvonal-átjáró erőforrásainak beolvasása és törlése.
 
 |Parancs|Leírás|
 | --- | --- |
-| törlés | Az átjáró erőforrásának törlése. |
-| list | Felsorolja az összes átjáró erőforrását. |
+| delete | Az átjáró erőforrásának törlése. |
+| lista | Felsorolja az összes átjáró erőforrását. |
 | megjelenítése | Az átjáró erőforrásának beolvasása a megadott névvel. |
 
 ## <a name="sfctl-mesh-gateway-delete"></a>sfctl rácsvonal-átjáró törlése
@@ -48,8 +49,8 @@ Törli a névvel azonosított átjáró-erőforrást.
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-gateway-list"></a>sfctl Mesh-átjárók listája
@@ -63,8 +64,8 @@ Az adott erőforráscsoport összes átjáró-erőforrásával kapcsolatos infor
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-gateway-show"></a>sfctl Mesh Gateway show
@@ -84,11 +85,11 @@ Az átjáró-erőforrással kapcsolatos információk beolvasása a megadott né
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

@@ -1,49 +1,43 @@
 ---
-title: Network Performance Monitor megoldás az Azure Log Analyticsben |} A Microsoft Docs
-description: A szolgáltatás Kapcsolatfigyelő funkció használata a Network Performance Monitor bármely végpont, amely egy nyitott TCP-port van hálózati kapcsolat figyeléséhez.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Network Performance Monitor megoldás az Azure Log Analyticsban | Microsoft Docs
+description: A Network Performance Monitor Service connectivity monitor funkciójának használatával figyelheti a hálózati kapcsolatot bármely olyan végponthoz, amely nyitott TCP-porttal rendelkezik.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/20/2018
+ms.openlocfilehash: dd02dad6d0f5b42181ad0bb27201384a6336ed6e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052087"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898824"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
-A szolgáltatás Kapcsolatfigyelő funkciót is használhatja [Network Performance Monitor](network-performance-monitor.md) bármely végpont, amely egy nyitott TCP-port van hálózati kapcsolat figyeléséhez. Ilyen végpontok közé tartoznak a websites, a SaaS-alkalmazások, a PaaS-alkalmazások és az SQL-adatbázisok. 
+A [Network Performance monitor](network-performance-monitor.md) Service connectivity monitor funkciójának használatával figyelheti a hálózati kapcsolatot bármely olyan végponthoz, amely nyitott TCP-porttal rendelkezik. Ilyen végpontok közé tartoznak a webhelyek, az SaaS-alkalmazások, a Pásti-alkalmazások és az SQL-adatbázisok. 
 
-A következő függvényeket, a szolgáltatás Kapcsolatfigyelő végezheti el: 
+A szolgáltatás-kapcsolódási figyelővel a következő függvényeket végezheti el: 
 
-- A hálózati kapcsolat, az alkalmazások és a hálózati szolgáltatások fiókirodákban vagy a helyek figyelése. Alkalmazások és a hálózati szolgáltatások közé tartozik az Office 365, Dynamics CRM, belső – üzletági alkalmazások és SQL Database-adatbázisok.
-- Használja az Office 365 és Dynamics 365-végpontokra irányuló hálózati kapcsolat figyeléséhez beépített tesztek. 
-- Határozza meg a válaszidőt, a hálózati késés és a csomagveszteség tapasztalt a végponthoz való csatlakozáskor.
-- Határozza meg, hogy gyenge teljesítményt miatt a hálózaton, vagy az alkalmazás szolgáltatója End néhány probléma miatt van-e.
-- A hotspotok a hálózaton, amelyek gyenge teljesítményt okozza az egyes ugrások meg topológia százalékaránya késés megtekintésével azonosíthatja.
+- Az alkalmazásokhoz és a hálózati szolgáltatásokhoz való hálózati kapcsolat figyelése több fiókirodából vagy helyről. Az alkalmazások és a hálózati szolgáltatások közé tartoznak az Office 365, a Dynamics CRM, a belső üzletági alkalmazások és az SQL-adatbázisok.
+- A beépített tesztek segítségével figyelheti a hálózati kapcsolatot az Office 365 és a Dynamics 365-végpontokkal. 
+- A végponthoz való csatlakozáskor a válaszidő, a hálózati késés és a csomagok elvesztésének meghatározása.
+- Annak megállapítása, hogy a gyenge alkalmazások teljesítménye a hálózat vagy az alkalmazás-szolgáltató végén lévő probléma miatt történt-e.
+- Azonosítsa a hálózatban lévő olyan gyors helyeket, amelyek az alkalmazások gyenge teljesítményét okozhatják, ha megtekinti a topológiai Térkép egyes ugrásai által biztosított késést.
 
 
 ![Szolgáltatáskapcsolati monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguráció 
-Nyissa meg a Network Performance Monitor konfigurációját, nyissa meg a [Network Performance Monitor megoldás](network-performance-monitor.md) válassza **konfigurálása**.
+A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás**lehetőséget.
 
 ![A Network Performance Monitor konfigurálása](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
-### <a name="configure-log-analytics-agents-for-monitoring"></a>Figyelés a Log Analytics-ügynökök konfigurálása
-A következő tűzfalszabályokat, hogy a megoldás képes felderíteni a topológia a csomópontból a szolgáltatási végpont monitorozásra szolgáló csomóponton engedélyezése: 
+### <a name="configure-log-analytics-agents-for-monitoring"></a>Log Analytics-ügynökök konfigurálása figyeléshez
+Engedélyezze a következő tűzfalszabályok használatát a figyeléshez használt csomópontokon, hogy a megoldás képes legyen felderíteni a csomópontok topológiáját a szolgáltatási végpontra: 
 
 ```
 netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
@@ -54,90 +48,90 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-connectivity-monitor-tests"></a>Szolgáltatás Kapcsolatfigyelő tesztek létrehozása 
+### <a name="create-service-connectivity-monitor-tests"></a>Szolgáltatás-kapcsolódási figyelő tesztek létrehozása 
 
-A tesztek a szolgáltatásvégpontokra irányuló hálózati kapcsolat figyeléséhez létrehozásának megkezdéséhez.
+Kezdje el a tesztek létrehozását a szolgáltatási végpontokhoz való hálózati kapcsolat figyelésére.
 
-1. Válassza ki a **szolgáltatás Kapcsolatfigyelő** fülre.
-2. Válassza ki **hozzáadása tesztelése**, és adja meg a teszt neve és leírása. Munkaállomásonként maximális 450 tesztet hozhat létre. 
+1. Válassza ki a **szolgáltatás-kapcsolódási figyelő** lapot.
+2. Válassza a **teszt hozzáadása**lehetőséget, és adja meg a teszt nevét és leírását. Munkaterületen legfeljebb 450 tesztet hozhat létre. 
 3. Válassza ki a teszt típusát:<br>
 
-    * Válassza ki **webes** , amely válaszol a HTTP-vagy Https-kérelmekre, például outlook.office365.com vagy a bing.com szolgáltatás kapcsolatának figyelése.<br>
-    * Válassza ki **hálózati** kapcsolat egy szolgáltatás, amely a TCP-kérelmekre reagál, de nem válaszol a HTTP-vagy Https-kérelmekre, például egy SQL server, az FTP-kiszolgáló vagy az SSH-port figyelésére. 
-    * Példa: Egy webes tesztet a blob storage-fiók létrehozásához válassza **webes** , és adja meg a cél, *yourstorageaccount*. blob.core.windows.net. Hasonlóképpen más a table storage, a queue storage és az Azure Files használatával tesztet hozhat létre [erre a hivatkozásra.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
-4. Ha nem szeretne végrehajtani a hálózati mérések, például a hálózati késés, a csomagvesztés és a topológia felderítése, törölje a jelet a **hálózati mérések végrehajtása** jelölőnégyzetet. Ez kiválasztva legnagyobb előny beolvasni a funkció a megtartása. 
-5. A **cél**, adja meg, amelyhez a hálózati kapcsolat figyelni kívánt URL-cím vagy teljes Tartománynevét vagy IP-címet.
-6. A **portszám**, adja meg a célként megadott szolgáltatás portszámát. 
-7. A **vizsgálati gyakoriság**, adjon meg egy értéket, hogy milyen gyakran kívánja futtatni a vizsgálatot. 
-8. Válassza ki a csomópontokat, ahonnan a szolgáltatás a hálózati kapcsolat figyeléséhez. Győződjön meg arról, hogy hozzá ügynökök száma kisebb, mint 150. Minden olyan ügynökre legfeljebb 150 végpontok/ügynökök tesztelheti.
+    * Válassza a **web** lehetőséget egy olyan szolgáltatáshoz való kapcsolódás figyelésére, amely válaszol a http/S kérelmekre, például outlook.office365.com vagy Bing.com.<br>
+    * Válassza a **hálózat** lehetőséget a TCP-kérelmekre válaszoló szolgáltatáshoz való kapcsolódás figyeléséhez, de nem válaszol a http/S kérelmekre, például az SQL Serverre, az FTP-kiszolgálóra vagy az SSH-portra. 
+    * Például: webteszt létrehozása blob Storage-fiókba válassza a **web** lehetőséget, és adja meg a TARGET értéket *yourstorageaccount*. blob.Core.Windows.net néven. Hasonlóképpen létrehozhat teszteket más Table Storage-hoz, üzenetsor-tároláshoz és Azure Files [a hivatkozás használatával.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
+4. Ha nem szeretne hálózati méréseket végrehajtani, például a hálózati késést, a csomagok elvesztését és a topológia felderítését, törölje a jelet a **hálózati mérések végrehajtása** jelölőnégyzetből. Hagyja kiválasztva, hogy a képességből maximális előnyt kapjon. 
+5. A **cél**mezőben adja meg azt az URL/FQDN/IP-címet, amelyre figyelni szeretné a hálózati kapcsolatot.
+6. A **portszám**mezőben adja meg a cél szolgáltatás portszámát. 
+7. A **tesztelési gyakoriság**mezőben adjon meg egy értéket, hogy milyen gyakran szeretné futtatni a tesztet. 
+8. Válassza ki azokat a csomópontokat, amelyeken figyelni szeretné a szolgáltatással létesített hálózati kapcsolatot. Győződjön meg arról, hogy a tesztek által hozzáadott ügynökök száma kisebb, mint 150. Bármelyik ügynök legfeljebb 150 végpontot/ügynököt tud tesztelni.
 
     >[!NOTE]
-    > A Windows server-alapú csomópontok esetében a funkció használatával a TCP-alapú kérelmeket a hálózati mérések végrehajtása. A Windows ügyfélalapú csomópontok esetében a funkció segítségével az ICMP-alapú kérelmeket a hálózati mérések végrehajtása. Bizonyos esetekben a célalkalmazás bejövő ICMP-alapú kérelmeket blokkol, amikor a csomópontok Windows ügyfél-alapú. A megoldás nem képes hálózati mérések végrehajtása. Azt javasoljuk, hogy ilyen esetekben használhatja a Windows server-alapú csomópontokat. 
+    > A Windows Server-alapú csomópontok esetében a képesség TCP-alapú kérelmeket használ a hálózati mérések végrehajtásához. A Windows ügyfél-alapú csomópontok esetében a képesség ICMP-alapú kérelmeket használ a hálózati mérések végrehajtásához. Bizonyos esetekben a célalkalmazás blokkolja a bejövő ICMP-alapú kérelmeket, amikor a csomópontok Windows ügyfél-alapúak. A megoldás nem tud hálózati méréseket végrehajtani. Javasoljuk, hogy ilyen esetekben a Windows Server-alapú csomópontokat használja. 
 
-9. Ha nem szeretné létrehozni az elemek hálózatállapot-események választja, törölje a jelet **egészségügyi figyelés engedélyezése a tárolók a teszt által kezelt**. 
-10. Válassza ki a feltételek figyelése. Beállíthat egyedi küszöbértékeket health-események létrehozása a küszöbértékek megadásával. Minden alkalommal, amikor a feltétel értéke a megadott küszöbértéknél, a kiválasztott hálózat vagy alhálózat pár túllépik, állapottal kapcsolatos esemény jön létre. 
-11. Válassza ki **mentése** a konfiguráció mentéséhez. 
+9. Ha nem szeretne állapotadatokat létrehozni a kiválasztott elemekhez, törölje **az állapot-figyelés engedélyezése beállítást a teszt által érintett célokban**. 
+10. Válassza a figyelési feltételek lehetőséget. A küszöbértékek megadásával egyéni küszöbértékeket állíthat be az állapot-események generálásához. Ha a feltétel értéke a kiválasztott hálózati vagy alhálózati pár esetén a kiválasztott küszöbérték fölé esik, a rendszer egy állapottal kapcsolatos eseményt generál. 
+11. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
 
-    ![Szolgáltatás Kapcsolatfigyelő tesztelési konfigurációkat](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
+    ![Szolgáltatás-csatlakozási figyelő – tesztelési konfigurációk](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
 ## <a name="walkthrough"></a>Útmutatás 
 
-A Network Performance Monitor irányítópult nézet megnyitása. A létrehozott különböző vizsgálatok állapotának összegzését lekéréséhez tekintse meg a **szolgáltatás Kapcsolatfigyelő** lap. 
+Lépjen a Network Performance Monitor irányítópult nézetre. A különböző létrehozott tesztek állapotának összefoglalásához tekintse meg a **szolgáltatás-kapcsolódási figyelő** lapot. 
 
-![Szolgáltatás Kapcsolatfigyelő lap](media/network-performance-monitor-service-endpoint/service-endpoint-blade.png)
+![Szolgáltatás-kapcsolódási figyelő lapja](media/network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
-Kattintson a csempére a teszt részleteinek megtekintéséhez a **tesztek** lapot. A bal oldalon található a táblázatban megtekintheti, időponthoz állapotát és a szolgáltatás válaszideje, hálózati késés és a vizsgálatok során a csomagvesztés értékét. A hálózat állapotát rögzítő vezérlő használatával megtekintheti a hálózati pillanatképet az elmúlt egy másik időpontban. Válassza ki a teszt a vizsgálni kívánt tábla. A jobb oldali panelen a diagramok és megtekintheti az adatveszteség, a késés és a válasz time típusú értékek előzményadatok trendjét. Válassza ki a **részletei** hivatkozásra kattintva ki minden csomópontból a teljesítményt.
+Válassza ki a csempét a **tesztek lapon a tesztek** részleteinek megtekintéséhez. A bal oldali táblázatban megtekintheti a szolgáltatás válaszideje, a hálózati késés és a csomagok elvesztésének időpontját az összes tesztnél. A hálózati állapot-rögzítő vezérlőelem használatával megtekintheti a hálózati pillanatképet a múltban egy másik időpontban. Válassza ki a vizsgálni kívánt táblát. A jobb oldali ablaktáblán található diagramoknál megtekintheti a veszteség, a késés és a válaszidő értékeinek korábbi tendenciáit. Az egyes csomópontok teljesítményének megtekintéséhez kattintson a **teszt részletei** hivatkozásra.
 
-![Szolgáltatás Kapcsolatfigyelő tesztek](media/network-performance-monitor-service-endpoint/service-endpoint-tests.png)
+![Szolgáltatás-kapcsolódási figyelő tesztek](media/network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
-Az a **Tesztcsomópontok** nézetben figyelheti, hogy az egyes csomópontok a hálózati kapcsolat. Válassza ki a csomópontot, a teljesítménycsökkenés rendelkezik. Ez az a csomópont, ahol az alkalmazás lassan fut, meg.
+A **csomópontok tesztelése** nézetben megfigyelheti az egyes csomópontok hálózati kapcsolatait. Válassza ki a teljesítmény romlását okozó csomópontot. Ez az a csomópont, ahol a rendszer lassú működést észlelt az alkalmazásban.
 
-Megállapításához, hogy a gyenge alkalmazásteljesítményt a hálózaton vagy az alkalmazás szolgáltatója End probléma miatt betartásával, amelynek a korrelációját keressük a válaszidő az alkalmazás és a hálózati késést. 
+Annak megállapítása, hogy a gyenge alkalmazások teljesítménye a hálózat vagy az alkalmazás szolgáltatójának hibája miatt történt-e, ha megfigyeli az alkalmazás válaszideje és a hálózati késés közötti korrelációt. 
 
-* **Alkalmazással kapcsolatos problémát:** A válaszidő ugrásszerű, de a hálózati késést a konzisztencia javasolja, hogy a hálózat megfelelően működik-e, és lehet, hogy a probléma a alkalmazás végén probléma miatt. 
+* **Alkalmazási probléma:** A válaszidő, de a hálózati késésben lévő konzisztencia azt sugallja, hogy a hálózat megfelelően működik, és a probléma oka az alkalmazás végén fellépő probléma lehet. 
 
-    ![Szolgáltatás Kapcsolatfigyelő alkalmazással kapcsolatos problémát](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
+    ![Szolgáltatás-kapcsolódási figyelő alkalmazásával kapcsolatos probléma](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
-* **Hálózati hiba:** Válaszidő, amely a hálózati késés megfelelő ugrásszerű ugrásszerű javasolja, hogy a hálózati késés növekedése miatt lehet a válaszidő növelése. 
+* **Hálózati probléma:** A hálózati késésben lévő megfelelő tüske kíséretében a válaszidő azt jelzi, hogy a válaszidő növekedésének oka a hálózati késés növekedése lehet. 
 
-    ![Kapcsolatfigyelő szolgáltatás hálózati hiba](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
+    ![Szolgáltatás-kapcsolódási figyelő hálózati problémája](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
-Miután azt állapítja meg, hogy van-e a probléma miatt a hálózaton, válassza ki a **topológia** megtekintése hivatkozásra a feladatátvételnek Ugrás a topológia-térképként azonosításához. Az alábbi képen egy példa látható. A 105-teljes késése (ms) között a csomópont és az alkalmazás végpontjának, kívül 96 ms miatt a pirossal kiemelt Ugrás van. Miután azonosította a feladatátvételnek Ugrás, korrekciós műveleteket végezheti el. 
+Miután meghatározta, hogy a probléma a hálózat miatt van-e, válassza a **topológia** nézet hivatkozását, és azonosítsa a topológiai Térkép kellemetlen ugrását. Az alábbi képen egy példa látható. A csomópont és az alkalmazás végpontja közötti 105 – MS teljes késés miatt a 96 MS az Ugrás vörös színnel van megjelölve. A fáradságos ugrás azonosítása után elvégezheti a javítási műveleteket. 
 
-![Szolgáltatás Kapcsolatfigyelő tesztek](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![Szolgáltatás-kapcsolódási figyelő tesztek](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnosztika 
 
-Ha egy rendellenesség megfigyelte, kövesse az alábbi lépéseket:
+Ha rendellenesség figyelhető meg, kövesse az alábbi lépéseket:
 
-* A szolgáltatás válaszideje, hálózati veszteségeket és késéseket NA jelennek meg, ha egy vagy több, a következő okok lehetnek a ok:
+* Ha a szolgáltatás válaszideje, a hálózati veszteség és a késés a NA-ban jelenik meg, a következő okok közül egy vagy több oka lehet:
 
-    - Az alkalmazás nem működik.
-    - A hálózati kapcsolat és a szolgáltatás ellenőrzésére használt csomópont nem működik.
-    - A cél a vizsgálati konfigurációjában megadott helytelen.
-    - A csomópont nem rendelkezik hálózati kapcsolattal.
+    - Az alkalmazás nem érhető el.
+    - A szolgáltatáshoz való hálózati kapcsolat ellenőrzéséhez használt csomópont nem érhető el.
+    - A teszt konfigurációjában megadott cél helytelen.
+    - A csomópontnak nincs hálózati kapcsolata.
 
-* Ha egy érvényes szolgáltatás válaszideje jelenik meg, de a hálózati veszteséget, valamint a késés NA jelennek meg, egy vagy több, a következő okok miatt is okozhatja:
+* Ha megjelenik egy érvényes szolgáltatás válaszideje, de a hálózati veszteség, valamint a késés a NA-ban jelenik meg, a következő okok közül egy vagy több oka lehet:
 
-    - Ha a hálózati kapcsolat és a szolgáltatás ellenőrzésére használt csomópontot egy Windows-ügyfélgép, vagy a célszolgáltatás blokkolja a kérelmeket az ICMP, vagy a hálózati tűzfal blokkolja a csomópont az ICMP-kérelmekkel.
-    - A **hálózati mérések végrehajtása** négyzet nincs bejelölve, a vizsgálati konfigurációjában. 
+    - Ha a szolgáltatáshoz való hálózati kapcsolat ellenőrzéséhez használt csomópont egy Windows-ügyfélszámítógép, vagy a célként megadott szolgáltatás blokkolja az ICMP-kéréseket, vagy a hálózati tűzfal blokkolja a csomóponttól származó ICMP-kérelmeket.
+    - A **hálózati mérések elvégzése** jelölőnégyzet üres a tesztelési konfigurációban. 
 
-* A szolgáltatás válaszideje NA, de a hálózati veszteséget, valamint a késés érvényesek, ha a célként megadott szolgáltatás nem feltétlenül egy webalkalmazást. A test-konfiguráció szerkesztése, és válassza ki a teszt típusát, **hálózati** helyett **webes**. 
+* Ha a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes, akkor előfordulhat, hogy a célként megadott szolgáltatás nem webalkalmazás. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a **web**helyett **hálózatként** . 
 
-* Ha az alkalmazás lassan fut, megállapítható, hogy van-e a gyenge alkalmazásteljesítményt a hálózaton vagy az alkalmazás szolgáltatója End probléma miatt.
+* Ha az alkalmazás lassan fut, állapítsa meg, hogy a gyenge alkalmazások teljesítménye a hálózat vagy az alkalmazás szolgáltatójának végén található-e.
 
-## <a name="gcc-office-urls-for-us-government-customers"></a>Az USA kormányzati ügyfeleinek GCC Office URL-címek
-US Government Virginia régióban csak DOD URL-címek olyan beépített npm-et. Hozzon létre egyéni teszteket, és adja hozzá a URL-CÍMEK külön-külön kell GCC URL-címeket használó ügyfelek.
+## <a name="gcc-office-urls-for-us-government-customers"></a>GCC Office-URL-címek az USA kormányzati ügyfelei számára
+Az USA-beli kormányzati Virginia régió esetében csak a DOD URL-címek beépített NPM. A GCC URL-címeket használó ügyfeleknek egyéni teszteket kell létrehozniuk, és egyenként hozzá kell adni az egyes URL-címeket.
 
 | Mező | GCC |
 |:---   |:--- |
-| Office 365 portál és megosztott | portal.apps.mil |
-| Az Office 365-hitelesítés és identitás | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
-| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www .office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
+| Office 365-portál és megosztott | portal.apps.mil |
+| Office 365-hitelesítés és-identitás | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
+| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www. office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
-| Az MS Teams | gov.teams.microsoft.us | 
+| MS-csapatok | gov.teams.microsoft.us | 
 
-## <a name="next-steps"></a>További lépések
-[Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.
+## <a name="next-steps"></a>Következő lépések
+[Keresési naplók](../../azure-monitor/log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.

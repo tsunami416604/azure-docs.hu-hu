@@ -1,21 +1,19 @@
 ---
 title: Az ügyfelek megismerése az Azure Application Insightsban | Microsoft Docs
 description: Oktatóanyag, amely bemutatja, hogy az Azure Application Insights használatával hogyan tudhatja meg, miként használják az ügyfelek az alkalmazását.
-keywords: ''
-services: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601560"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894666"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
@@ -35,7 +33,7 @@ Az Azure Application Insights használati adatokat gyűjt, amely alapján megism
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítés [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
+- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
@@ -59,11 +57,11 @@ A **Felhasználók** panelen különböző módokon fontos részleteket tudhat m
 
     ![Időtartomány módosítása](media/tutorial-users/TimeRange.png)
 
-4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A gráf ugyanazokat az adatokat tartalmaz, de lehetővé teszi, hogy információkat minden ország/régió a felhasználóknak a számát, a megtekintéséhez.
+4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A gráf ugyanazokat az adatmennyiségeket tartalmazza, de lehetővé teszi, hogy megtekintse az egyes országok/régiók felhasználói számának részletezését.
 
     ![Ország vagy régió grafikon](media/tutorial-users/CountryorRegion.png)
 
-5. Vigye a kurzort a diagram különböző sávok fölé, és figyelje meg, hogy minden ország/régió számát tükrözi csak az időtartomány, amely képviseli.
+5. Vigye a kurzort a diagram különböző bárjai fölé, és vegye figyelembe, hogy az egyes országok/régiók száma csak az adott sáv által jelzett időablakot tükrözi.
 6. Tekintse meg a jobb oldalon az **Elemzések** oszlopot, amely az adatokon végrehajtott elemzéseket tartalmazza.  Ez az időtartomány során bejelentkezett egyedi munkamenetek számát tartalmazza, valamint a gyakori tulajdonságokkal rendelkező rekordokat, amelyek a felhasználói adatok jelentős hányadában szerepelnek. 
 
     ![Elemzések oszlop](media/tutorial-users/insights.png)
@@ -86,7 +84,7 @@ A **Munkamenetek** panel a **Felhasználók** panelhez hasonló.  Míg a **Felha
     ![Munkamenetek idővonala](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Hasonló felhasználók csoportosítása
-A **Kohorsz** csoportosítja a hasonló jellemzőkkel felhasználók csoportja.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
+Az **kohorsz** a hasonló jellemzőkkel rendelkező felhasználók csoportja.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
 
 1.  Kattintson a **Kohorsz** elemre a menüben.
 2.  Kattintson az **Új** gombra egy új kohorsz létrehozásához.
@@ -163,7 +161,7 @@ A **munkafüzetek** adatvizualizációkat, Analytics-lekérdezéseket és szöve
 6.  A **Felhasználók hozzáadása** gombra kattintva adhat hozzá egy grafikont a felhasználóinformációkkal.  Igény szerint szerkessze a grafikon részleteit, majd kattintson a **Szerkesztés kész** gombra a mentéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy elsajátította, hogyan elemezheti a felhasználókat, térjen át a következő oktatóanyagra, amelyből elsajátíthatja az egyéni irányítópultok létrehozását, amelyek ezeket az információkat az alkalmazással kapcsolatos további hasznos adatokkal kombinálják.
 
 > [!div class="nextstepaction"]

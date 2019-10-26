@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 726ac906b5f237cfc40a8399b7b1bef3071f98f3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72035677"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901804"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -169,6 +169,8 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
     
 Most már rendelkezik egy operatív webszolgáltatással előrejelzések létrehozásához.
 
+Folytassa a [**következő lépésekkel**](#next-steps) , ha többet szeretne megtudni az új webszolgáltatás használatáról, és tesztelje a jóslatokat a Power BI beépített Azure Machine learning-támogatásával.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a kísérlet során használt fájlok. Csak a központi telepítési fájlokat törölje, hogy csökkentse a költségeket a fiókjához, vagy ha meg szeretné őrizni a munkaterületet és a kísérletet. Ellenkező esetben törölje a teljes erőforráscsoportot, ha nem tervezi az egyik fájl használatát.  
@@ -192,7 +194,7 @@ Ha az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltár
 Ebben az automatizált gépi tanulási oktatóanyagban a munkaterület kezdőlapját használta egy besorolási modell létrehozásához és üzembe helyezéséhez. További információkat és további lépéseket a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
-> [Webszolgáltatás felhasználása](how-to-consume-web-service.md)
+> [Webszolgáltatás felhasználása](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + További információ az [előfeldolgozásról](how-to-create-portal-experiments.md#preprocess).
 + További információ az [adatprofilkészítésről](how-to-create-portal-experiments.md#profile).

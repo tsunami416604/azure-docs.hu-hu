@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248307"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893435"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
 
 A Azure Active Directory Domain Services (Azure AD DS) felhasználói biztonságának kezeléséhez olyan részletes jelszóházirendek is megadhatók, amelyek a fiókzárolás beállításait vagy a jelszó minimális hosszát és összetettségét vezérlik. A rendszer az Azure AD DS felügyelt tartomány összes felhasználójára vonatkozóan létrehoz és alkalmaz egy alapértelmezett részletes jelszóházirendek-házirendet. A részletes szabályozás biztosításához és adott üzleti vagy megfelelőségi igények kielégítéséhez további szabályzatok hozhatók létre és alkalmazhatók a felhasználók bizonyos csoportjaira.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat részletes jelszóházirendek az Azure-AD DS a Active Directory felügyeleti központ használatával.
+
+> [!NOTE]
+> A jelszóházirend csak a Resource Manager-alapú üzemi modell használatával létrehozott Azure AD DS felügyelt tartományokhoz érhető el. A klasszikus használatával létrehozott régebbi felügyelt tartományok esetében [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
@@ -34,6 +37,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
   * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
   * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+  * Az Azure AD DS-példányt a Resource Manager-alapú üzemi modell használatával kell létrehozni. Szükség esetén [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
   * Ha szükséges, fejezze be az oktatóanyagot [egy felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
@@ -130,3 +134,4 @@ A jelszóházirend és a Active Directory felügyeleti központ használatával 
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

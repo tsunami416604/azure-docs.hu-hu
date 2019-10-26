@@ -1,24 +1,19 @@
 ---
 title: Telemetria mintavételezés az Azure Application Insightsban | Microsoft Docs
 description: A telemetria mennyiségének megtartása a vezérlés alatt.
-services: application-insights
-documentationcenter: windows
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.author: cithomas
-ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372564"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899862"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -33,7 +28,7 @@ A mintavétel csökkenti a forgalom és az adatforgalmi költségeket, és segí
 * Az adaptív mintavételezés alapértelmezés szerint engedélyezve van a ASP.NET legújabb verziójában, és ASP.NET Core szoftverfejlesztői készletek (SDK-k).
 * A mintavételt manuálisan is beállíthatja. Ez a portálon, a *használati és becsült költségek lapon*, a ASP.net SDK-ban, a ApplicationInsights. config fájlban, az ASP.net Core SDK-n keresztül, a ApplicationInsights. xml fájlban pedig a Java SDK-ban is konfigurálható.
 * Ha egyéni eseményeket naplóz, és meg kell győződnie arról, hogy az események egy csoportjának megőrzése vagy elvetése megtörtént, akkor az eseményeknek azonos OperationId értékkel kell rendelkezniük.
-* A mintavétel *n* minden olyan rekordban szerepel a (z) `itemCount` tulajdonságban, amely a keresésben a "kérések száma" vagy az "események száma" mezőben jelenik meg. @no__t – a 0when mintavételezése nem működik.
+* A mintavétel *n* minden olyan rekordban szerepel a (z) `itemCount` tulajdonságban, amely a keresésben a "kérések száma" vagy az "események száma" mezőben jelenik meg. `itemCount==1`, ha a mintavételezés nem működik.
 * Ha elemzési lekérdezéseket ír, [vegye figyelembe a mintavételezést](../../azure-monitor/log-query/aggregations.md). A rekordok egyszerűen számlálása helyett a `summarize sum(itemCount)` értéket kell használnia.
 
 ## <a name="types-of-sampling"></a>Mintavételi típusok
@@ -145,7 +140,7 @@ Az egyes telemetria-típusok mintavételi sebességét egyenként is beállítha
 
 ## <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>Az adaptív mintavételezés konfigurálása ASP.NET Core alkalmazásokhoz.
 
-ASP.NET Core alkalmazások esetében nincs @no__t – 0, így minden konfiguráció kód használatával történik.
+ASP.NET Core alkalmazások esetében nincs `ApplicationInsights.Config`, így minden konfiguráció kód használatával történik.
 Az adaptív mintavételezés alapértelmezés szerint engedélyezve van az összes ASP.NET Core alkalmazáshoz. Letilthatja vagy testreszabhatja a mintavételezési viselkedést.
 
 ### <a name="turning-off-adaptive-sampling"></a>Az adaptív mintavételezés kikapcsolása
@@ -381,7 +376,7 @@ A betöltési mintavételezés nem működik, ha az SDK-alapú adaptív vagy rö
 ## <a name="sampling-for-web-pages-with-javascript"></a>A JavaScripttel rendelkező weblapok mintavételezése
 Bármely kiszolgálóról konfigurálhat weblapokat rögzített arányú mintavételezéshez. 
 
-Ha [Application Insights weblapjait konfigurálja](../../azure-monitor/app/javascript.md), módosítsa a Application Insights portálról beolvasott JavaScript-kódrészletet. (A ASP.NET-alkalmazásokban a kódrészlet általában a _Layout. cshtml.)  Szúrjon be egy sort (például @no__t – 0) a kialakítási kulcs előtt:
+Ha [Application Insights weblapjait konfigurálja](../../azure-monitor/app/javascript.md), módosítsa a Application Insights portálról beolvasott JavaScript-kódrészletet. (A ASP.NET-alkalmazásokban a kódrészlet általában a _Layout. cshtml.)  Szúrjon be egy sort, például `samplingPercentage: 10,` a kialakítási kulcs előtt:
 
     <script>
     var appInsights= ... 

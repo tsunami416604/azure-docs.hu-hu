@@ -17,12 +17,12 @@ ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db7b794166126d54ede0ee8eb67653d006a1619
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: b47a96931cdf60eb40bd3d899dd7a6fb947ad553
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809959"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893295"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Python-konzol alkalmazásból az alkalmazás identitásával
 
@@ -141,10 +141,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 #### <a name="step-5-run-the-application"></a>5\. lépés: az alkalmazás futtatása
 
-Egyszer telepítenie kell a MSAL Pythont
+A minta függőségeit egyszer kell telepítenie
 
 ```console
-pip install msal
+pip install -r requirements.txt
 ```
 
 Ezután futtassa az alkalmazást a parancssorból vagy a konzolon keresztül:
@@ -167,7 +167,7 @@ A [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-
  A MSAL Python a következő pip parancs futtatásával telepíthető.
 
 ```powershell
-pip install -r requirements.txt
+pip install msal
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása

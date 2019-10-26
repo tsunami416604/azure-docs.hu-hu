@@ -1,5 +1,5 @@
 ---
-title: Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon | Microsoft Docs
+title: Kockázatos bejelentkezések jelentés a portálon | Microsoft Docs
 description: Tudnivalók a kockázatos bejelentkezésekre vonatkozó jelentésekről az Azure Active Directory portálon
 services: active-directory
 author: cawrites
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 31a002af32ac6c07e6358a3ccd0f1420d3e8c9ef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127420"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895188"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -52,7 +52,7 @@ Ha meg szeretné tudni, hogyan rendelhet hozzá rendszergazdai szerepköröket e
 
 Az Azure AD összes kiadása kockázatos bejelentkezési jelentéseket nyújt. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- A **ingyenes Azure Active Directory és**az alapszintű kiadásokban a kockázatos bejelentkezések listája jelenik meg. 
+- A **ingyenes Azure Active Directory és az alapszintű kiadásokban**a kockázatos bejelentkezések listája jelenik meg. 
 
 - Emellett a **prémium szintű Azure Active Directory 1** kiadás lehetővé teszi, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázati észlelést. 
 
@@ -72,7 +72,7 @@ Az Azure AD ingyenes és alapszintű kiadásai a felhasználók számára észle
 
 A kockázatos bejelentkezés vizsgálata alapján az alábbi műveletek elvégzésével visszajelzést küldhet az Azure AD-nek:
 
-- Megoldás
+- Feloldás
 - Megjelölés téves riasztásként
 - Kihagyás
 - Újraaktiválás
@@ -90,7 +90,7 @@ A jelentés a következő lehetőségeket is biztosítja:
 
 Az Azure AD prémium kiadásaiban a kockázatos bejelentkezésekről szóló jelentés a következőket tartalmazza:
 
-- Összesített információk a észlelt [kockázat](concept-risk-events.md) -észlelési típusokról. A **prémium szintű Azure ad P1 kiadással**a licenc által nem érintett észlelések nem jelennek meg, mivel a kockázatkezelési **szolgáltatás a további kockázatok**észlelésével jelentkezik. A **prémium szintű Azure ad P2 kiadással**a legrészletesebb információkat kapja meg az összes mögöttes észlelésről.
+- Összesített információk a észlelt [kockázat-észlelési típusokról](concept-risk-events.md) . A **prémium szintű Azure ad P1 kiadással**a licenc által nem érintett észlelések nem jelennek meg, mivel a kockázatkezelési **szolgáltatás a további kockázatok**észlelésével jelentkezik. A **prémium szintű Azure ad P2 kiadással**a legrészletesebb információkat kapja meg az összes mögöttes észlelésről.
 
 - Lehetőség a jelentés letöltésére
 
@@ -117,7 +117,7 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 
 - A felhasználói jelszó alaphelyzetbe állítását
 
-- Összes esemény bezárása
+- Az összes esemény elvetését
 
 - A jelentett kockázati észlelések vizsgálata a felhasználó számára. 
 
@@ -128,7 +128,7 @@ Ekkor megnyílik a kockázat észlelésének **részleteit tartalmazó panel** .
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/325.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
 - [A kockázatkezelési házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)

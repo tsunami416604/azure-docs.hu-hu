@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757468"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897262"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 
@@ -28,6 +28,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 | Változások | Részletek |
 | --- | --- |
+| **Tömeges erőforrás-szolgáltató regisztrációja** | Mostantól [tömegesen regisztrálhatja](virtual-machines-windows-sql-bulk-register-with-resource-provider.md) az SQL-alapú virtuális gépeket az erőforrás-szolgáltató használatával. | 
 | **Teljesítményre optimalizált tárolási konfiguráció** | Most már [teljes mértékben testreszabhatja a tárolási konfigurációt](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) új SQL Server VM létrehozásakor. |
 | **Prémium fájlmegosztás a következőhöz:.** | Mostantól a [közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)eredeti metódusa helyett egy [prémium fájlmegosztás](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) használatával is létrehozhat egy feladatátvevő fürtöt. 
 | &nbsp; | &nbsp; |

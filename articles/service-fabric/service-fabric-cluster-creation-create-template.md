@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599985"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901549"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric fürterőforrás-kezelő sablon létrehozása
 
@@ -33,12 +33,12 @@ Mielőtt éles környezetben üzembe helyezi a termelési feladatokat, először
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
-A minta Resource Manager-sablonok a GitHubon elérhető [Azure](https://github.com/Azure-Samples/service-fabric-cluster-templates)-mintákon érhetők el. Ezek a sablonok a fürt sablonjának kiindulási pontként használhatók.
+A minta Resource Manager-sablonok a [githubon elérhető Azure-mintákon](https://github.com/Azure-Samples/service-fabric-cluster-templates)érhetők el. Ezek a sablonok a fürt sablonjának kiindulási pontként használhatók.
 
 Ez a cikk az [öt csomópontos biztonságos fürt][service-fabric-secure-cluster-5-node-1-nodetype] – példa sablont és a sablon paramétereit használja. Töltse le a *azuredeploy. JSON* és a *azuredeploy. Parameters. JSON* fájlt a számítógépre, és nyissa meg mindkét fájlt a kedvenc szövegszerkesztőben.
 
 > [!NOTE]
-> Az országos felhők (Azure Government, az Azure China, az Azure Germany `fabricSettings` ) esetében a következőt is hozzá kell adnia a sablonhoz `AADCertEndpointFormat` `AADTokenEndpointFormat` : `AADLoginEndpoint`és.
+> Az országos felhők (Azure Government, az Azure China, az Azure Germany) esetében a következő `fabricSettings` is hozzá kell adnia a sablonhoz: `AADLoginEndpoint`, `AADTokenEndpointFormat` és `AADCertEndpointFormat`.
 
 ## <a name="add-certificates"></a>Tanúsítványok hozzáadása
 Tanúsítványokat adhat hozzá egy fürterőforrás-kezelő sablonhoz a tanúsítvány kulcsait tartalmazó kulcstartóra való hivatkozással. Adja hozzá ezeket a Key-Vault paramétereket és értékeket egy Resource Manager-sablon paramétereinek fájljában (*azuredeploy. Parameters. JSON*).
@@ -146,7 +146,7 @@ A fürt hitelesítési tanúsítványát mind a Service Fabric fürterőforrás 
 Adja hozzá az Azure AD-konfigurációt egy fürterőforrás-kezelő sablonhoz a tanúsítvány kulcsait tartalmazó kulcstartóra való hivatkozással. Adja hozzá ezeket az Azure AD-paramétereket és-értékeket egy Resource Manager-sablon paramétereinek fájljában (*azuredeploy. Parameters. JSON*). 
 
 > [!NOTE]
-> A fürt létrehozása előtt létre kell hozni az Azure AD-bérlőket és a felhasználókat.  További információért olvassa el az [Azure ad beállítása az ügyfelek hitelesítéséhez](service-fabric-cluster-creation-setup-aad.md)című témakört.
+> Linux rendszeren a fürt létrehozása előtt létre kell hozni az Azure AD-bérlőket és a felhasználókat.  További információért olvassa el az [Azure ad beállítása az ügyfelek hitelesítéséhez](service-fabric-cluster-creation-setup-aad.md)című témakört.
 
 ```json
 {
@@ -258,17 +258,17 @@ Az alábbi ábra azt szemlélteti, hogy a Key Vault és az Azure AD konfiguráci
 
 ![Resource Manager-függőségi Térkép][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy van egy sablonja a fürthöz, Ismerje meg, hogyan [helyezheti üzembe a fürtöt az Azure](service-fabric-cluster-creation-via-arm.md)-ban.  Ha még nem tette meg, olvassa el az [üzemi készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md) az éles fürt üzembe helyezése előtt.
 
 A cikkben üzembe helyezett erőforrások JSON-szintaxisáról és tulajdonságairól további információt a következő témakörben talál:
 
-* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
-* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
+* [Microsoft. ServiceFabric/fürtök](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft. számítás/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

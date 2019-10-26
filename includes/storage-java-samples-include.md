@@ -4,19 +4,19 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 41ec1940409953c7e12ffa9e919397a800591fed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 18c6929bba139a1307a5dacc8d773c988a9b060e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179330"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72902195"
 ---
-## <a name="java-sample-code-repositories"></a>Java-sample kódtárházak
+## <a name="java-sample-code-repositories"></a>Java-mintakód adattárak
 
-Itt látható az összes minta tárházakban az Azure Storage Java ügyféloldali kódtár listáját.
+Az alábbi lista felsorolja az Azure Storage Java ügyféloldali kódtár összes minta tárházát.
 
-* [Első lépések a Storage - Tárfiók javában kezelése](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
-* [Ismerkedés az Azure Blob Service-szel Javával](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
-* [Ismerkedés az Azure File Service-szel Javával](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
-* [Ismerkedés az Azure Queue szolgáltatás Java-környezetben](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
-* [Bevezetés az Azure Table Service használatába Javában](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
+* [Első lépések Storage-fiók kezelése a Javaban](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
+* [Első lépések az Azure Blob Service-ben Java-ban](https://github.com/Azure-Samples/storage-blob-java-getting-started)
+* [Első lépések az Azure file Service-ben Java-ban](https://github.com/Azure-Samples/storage-file-java-getting-started)
+* [Első lépések az Azure üzenetsor-szolgáltatással javában](https://github.com/Azure-Samples/storage-queue-java-getting-started)
+* [Bevezetés az Azure Table Service használatába Javában](https://github.com/Azure-Samples/storage-table-java-getting-started)

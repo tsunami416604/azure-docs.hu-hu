@@ -1,39 +1,33 @@
 ---
-title: Az Azure monitorban hatékony log-lekérdezések írása |} A Microsoft Docs
-description: Megtudhatja, hogyan kell lekérdezéseket írni a Log Analytics az erőforrásokhoz való hivatkozásokat.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Hatékony naplózási lekérdezések írása a Azure Monitorban | Microsoft Docs
+description: Az erőforrásokra mutató hivatkozások a Log Analytics lekérdezések írásához.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/17/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 25d6b582ed4d4e24df3841f4191471296e25abd8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/17/2019
+ms.openlocfilehash: a5ee03f6c42f076549856161a6ebe0b1888fe4aa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519373"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894135"
 ---
-# <a name="writing-efficient-log-queries-in-azure-monitor"></a>Az Azure monitorban hatékony log-lekérdezések írása
-Ez a cikk az Azure monitorban hatékony log lekérdezések írására vonatkozó javaslatokat nyújt. Ezek a stratégiák használ, biztosíthatja, hogy gyorsan fog futni, a lekérdezések, illetve a minimális overheard.
+# <a name="writing-efficient-log-queries-in-azure-monitor"></a>Hatékony naplózási lekérdezések írása a Azure Monitorban
+Ez a cikk a hatékony naplózási lekérdezéseknek a Azure Monitor-ben történő írásához nyújt javaslatokat. Ezen stratégiák használatával gondoskodhat arról, hogy a lekérdezések gyorsan és minimálisan meghallva fussanak.
 
-## <a name="scope-your-query"></a>A lekérdezés hatókörét
-A lekérdezések feldolgozásához ténylegesen szüksége több adatot egy hosszan futó lekérdezést vezetnek, és hatékonyan elemezheti az eredményeket a túl sok adatot gyakran eredményez. Szélsőséges esetben a lekérdezés időkorlátja még és sikertelen lesz.
+## <a name="scope-your-query"></a>A lekérdezés hatóköre
+Ha a lekérdezés több adattal rendelkezik, mint amennyit ténylegesen szüksége lehet, hosszú ideig futó lekérdezéshez vezethet, és gyakran túl sok adatmennyiséget eredményez az eredmények hatékony elemzése érdekében. Szélsőséges esetekben előfordulhat, hogy a lekérdezés még időtúllépést és hibát jelez.
 
-### <a name="specify-your-data-source"></a>Adja meg az adatforrás
-Az első lépés egy hatékony lekérdezések írása korlátozná a szükséges adatforrásokhoz hatókörében. Adjon meg egy tábla mindig előnyben részesített keresztül egy széles szöveges keresés, például a futó `search *`. Egy adott tábla lekérdezése, indítsa el a lekérdezést a tábla neve, ahogy a következő:
+### <a name="specify-your-data-source"></a>Adatforrás meghatározása
+Egy hatékony lekérdezés írásának első lépése a hatókörének korlátozása a szükséges adatforrásokra. A tábla meghatározása mindig előnyben részesített a széles szöveges keresés futtatásához, például `search *`. Egy adott tábla lekérdezéséhez indítsa el a lekérdezést a táblázat nevével a következő módon:
 
 ``` Kusto
 requests | ...
 ```
 
-Használhat [keresési](/azure/kusto/query/searchoperator) érték keresése több oszlopban az adott táblák használata a következőhöz hasonló lekérdezést:
+A [kereséssel](/azure/kusto/query/searchoperator) egy adott tábla több oszlopában is kereshet egy értéket, például a következőhöz hasonló lekérdezéssel:
 
 ``` Kusto
 search in (exceptions) "The server was not found"
@@ -41,14 +35,14 @@ search in (exceptions) "The server was not found"
 search in (exceptions, customEvents) "timeout"
 ```
 
-Használat [union](/azure/kusto/query/unionoperator) lekérdezése több táblát a következőhöz hasonló:
+A [Union](/azure/kusto/query/unionoperator) használatával több táblázatot is lekérdezheti, például az alábbiakat:
 
 ``` Kusto
 union requests, traces | ...
 ```
 
-### <a name="specify-a-time-range"></a>Adjon meg egy időtartományt
-A lekérdezés a szükséges adatok időtartománya is korlátozza. A lekérdezés alapértelmezés szerint az elmúlt 24 órában gyűjtött adatokat tartalmazza. Módosíthatja a megfelelő elemet a [tartomány időválasztó](get-started-portal.md#select-a-time-range) , vagy explicit módon felveheti a lekérdezést. A legjobb adja hozzá az Időszűrő közvetlenül a tábla neve után, hogy a lekérdezés részeit csak dolgozza fel az adatokat a tartományon belül:
+### <a name="specify-a-time-range"></a>Időtartomány megadásának időpontja
+A lekérdezést a szükséges időtartományra is korlátoznia kell. Alapértelmezés szerint a lekérdezés az elmúlt 24 órában gyűjtött adatokat is tartalmazza. Ezt a lehetőséget módosíthatja az [időtartomány-választóban](get-started-portal.md#select-a-time-range) , vagy explicit módon hozzáadhatja a lekérdezéshez. A táblázat neve után a legjobb lehetőség az Időszűrő hozzáadása, hogy a lekérdezés többi része csak az adott tartományon belüli adatok feldolgozását dolgozza fel:
 
 ``` Kusto
 requests | where timestamp > ago(1h)
@@ -56,9 +50,9 @@ requests | where timestamp > ago(1h)
 requests | where timestamp between (ago(1h) .. ago(30m))
 ```
    
-### <a name="get-only-the-latest-records"></a>Csak a legújabb bejegyzések beolvasása
+### <a name="get-only-the-latest-records"></a>Csak a legújabb rekordok beolvasása
 
-Csak a legújabb bejegyzések használja a *felső* bejelentkezve operátor, ahogy a következő lekérdezést, amely a legújabb 10 rekordjait adja vissza a *nyomkövetések* tábla:
+Ha csak a legújabb rekordokat szeretné visszaadni, használja a *felső* operátort a következő lekérdezésben, amely a *nyomkövetési* táblában naplózott legújabb 10 rekordot adja vissza:
 
 ``` Kusto
 traces | top 10 by timestamp
@@ -66,7 +60,7 @@ traces | top 10 by timestamp
 
    
 ### <a name="filter-records"></a>Rekordok szűrése
-Csak egy adott feltételnek megfelelő naplók áttekintéséhez használja az *ahol* operátor, ahogy a következő lekérdezést, amely csak a rekord visszaadása, amelyben a _err_ értéke 0-nál nagyobb:
+Ha csak az adott feltételnek megfelelő naplókat szeretné áttekinteni, használja a *Where* operátort a következő lekérdezésben, amely csak azokat a rekordokat adja vissza, amelyekben a _severityLevel_ értéke 0-nál nagyobb:
 
 ``` Kusto
 traces | where severityLevel > 0
@@ -74,12 +68,12 @@ traces | where severityLevel > 0
 
 
 
-## <a name="string-comparisons"></a>A karakterlánc-összehasonlítások
-Amikor [karakterláncok kiértékelése](/azure/kusto/query/datatypes-string-operators), általában használjon `has` helyett `contains` teljes jogkivonatok keresésekor. `has` még hatékonyabban, mivel nem rendelkezik a karakterláncrész kikeresése sikertelen volt.
+## <a name="string-comparisons"></a>Karakterlánc-összehasonlítások
+A [karakterláncok kiértékelése](/azure/kusto/query/datatypes-string-operators)során általában `has`t kell használnia `contains` helyett, amikor teljes tokeneket keres. `has` hatékonyabb, mert nem kell megkeresnie az alsztringeket.
 
 ## <a name="returned-columns"></a>Visszaadott oszlopok
 
-Használat [projekt](/azure/kusto/query/projectoperator) szűkítése csak azokat kell feldolgozott oszlopok:
+A [Project](/azure/kusto/query/projectoperator) használatával Szűkítse le a feldolgozott oszlopok készletét, hogy csak a szükségesek legyenek:
 
 ``` Kusto
 traces 
@@ -87,9 +81,9 @@ traces
 | ...
 ```
 
-Bár használhatja [kiterjesztése](/azure/kusto/query/extendoperator) értékeket számolnak ki, és saját oszlopok létrehozásához, általában hatékonyabb csak egy táblázatoszlop szűrés.
+Míg a [kibővítés](/azure/kusto/query/extendoperator) használatával kiszámíthatja az értékeket, és saját oszlopokat hozhat létre, általában hatékonyabb lesz a tábla oszlopainak szűrése.
 
-Például az első lekérdezés az alábbi, a szűrők _művelet\_neve_ hatékonyabb, mint a második, amely létrehoz egy új lenne _előfizetés_ oszlopot és a szűrők:
+Például az alábbi első lekérdezés, amely a szűrők _művelet\_a névben_ hatékonyabb lenne, mint a második, amely létrehoz egy új _előfizetési_ oszlopot és szűrőket a következőhöz:
 
 ``` Kusto
 customEvents 
@@ -101,8 +95,8 @@ customEvents
 ```
 
 ## <a name="using-joins"></a>Illesztések használata
-Használatakor a [illesztési](/azure/kusto/query/joinoperator) operátor szerinti szűrése, válassza a bal oldalon a lekérdezés kívánt kevesebb sort tartalmazó tábla.
+A [JOIN](/azure/kusto/query/joinoperator) operátor használatakor válassza ki azt a táblázatot, amelynek kevesebb sora van a lekérdezés bal oldalán.
 
 
-## <a name="next-steps"></a>További lépések
-Lekérdezés ajánlott eljárásokkal kapcsolatos további tudnivalókért lásd: [ajánlott eljárások lekérdezése](/azure/kusto/query/best-practices).
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni az ajánlott eljárások lekérdezéséről, olvassa el az [ajánlott eljárások lekérdezését](/azure/kusto/query/best-practices)ismertető témakört.

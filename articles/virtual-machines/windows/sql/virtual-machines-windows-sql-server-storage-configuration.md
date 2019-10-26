@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828610"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896958"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server virtuális gépek tárolási konfigurációja
 
@@ -83,7 +83,7 @@ Ha a következő Resource Manager-sablonokat használja, a rendszer alapértelme
 * [Automatikus javítással rendelkező virtuális gép létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Virtuális gép létrehozása AKV-integrációval](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
-### <a name="quickstart-template"></a>Gyorssablon
+### <a name="quickstart-template"></a>Gyorsindítási sablon
 
 A következő rövid útmutató sablon használatával telepítheti SQL Server VM a tárolási optimalizálással. 
 
@@ -96,7 +96,7 @@ A következő rövid útmutató sablon használatával telepítheti SQL Server V
 
 A meglévő SQL Server virtuális gépek esetében a Azure Portal egyes tárolási beállításait is módosíthatja. Nyissa meg az [SQL Virtual Machines-erőforrást](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), és válassza az **Áttekintés**lehetőséget. A SQL Server áttekintő oldal a virtuális gép aktuális tárterület-használatát jeleníti meg. Ebben a diagramban a virtuális gépen található összes meghajtó megjelenik. Az egyes meghajtók esetében a tárolóhely négy szakaszban jelenik meg:
 
-* SQL-adatok
+* SQL-adatszolgáltatások
 * SQL-napló
 * Egyéb (nem SQL-alapú tárolás)
 * Elérhető
@@ -111,7 +111,7 @@ Módosíthatja a SQL Server VM létrehozási folyamat során konfigurált meghaj
 
 
 
-## <a name="storage-configuration"></a>Tárolókonfiguráció
+## <a name="storage-configuration"></a>Tároló konfigurálása
 
 Ez a szakasz a tárolási konfiguráció változásairól nyújt hivatkozást, amelyeket az Azure automatikusan végrehajt az SQL virtuális gépek üzembe helyezése vagy konfigurálása során a Azure Portal.
 
@@ -124,35 +124,32 @@ A díjszabással kapcsolatos információkért tekintse meg a [Storage díjszab�
 
 Az Azure a következő beállítások használatával hozza létre a tárolót SQL Server virtuális gépeken.
 
-| Beállítás | Value |
+| Beállítás | Value (Díj) |
 | --- | --- |
 | Sáv mérete |256 KB (adattárház); 64 KB (tranzakciós) |
 | Lemezméretek |1 TB |
 | Gyorsítótár |Olvasás |
 | Foglalás mérete |64 KB NTFS-foglalási egység mérete |
-| Azonnali fájl inicializálása |Enabled |
-| Lapok zárolása a memóriában |Enabled |
-| Helyreállítás |Egyszerű helyreállítás (nincs rugalmasság) |
-| Oszlopok száma |Adatlemezek száma<sup>1</sup> |
-| TempDB helye |Adatlemezeken tárolva<sup>2</sup> |
+| Helyreállítás | Egyszerű helyreállítás (nincs rugalmasság) |
+| Oszlopok száma |Adatlemezek száma legfeljebb 8<sup>1</sup> |
+
 
 <sup>1</sup> a Storage-készlet létrehozása után nem módosítható a tárolóban lévő oszlopok száma.
 
-<sup>2</sup> ez a beállítás csak a tárolási konfigurációs szolgáltatással létrehozott első meghajtóra vonatkozik.
 
 ## <a name="workload-optimization-settings"></a>Munkaterhelés-optimalizálási beállítások
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Számítási feladat típusa | Leírás | Optimalizálás |
+| Munkaterhelés típusa | Leírás | Optimalizálás |
 | --- | --- | --- |
-| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincsenek |
+| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |None |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |
-| **Adatraktározás** |Optimalizálja a tárolót analitikai és jelentéskészítési számítási feladatokhoz |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
+| **Adattárház** |Optimalizálja a tárolót analitikai és jelentéskészítési számítási feladatokhoz |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
 
 > [!NOTE]
 > A számítási feladatok típusát csak akkor adhatja meg, ha kijelöli az SQL-alapú virtuális gépet a tárolási konfiguráció lépésben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).

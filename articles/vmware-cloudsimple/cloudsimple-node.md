@@ -8,55 +8,55 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845548"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899020"
 ---
 # <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
 
 A csomópontok a privát felhő építőelemei. Csomópont:
 
 * Dedikált operációs rendszer nélküli számítási gazdagép, amelyen telepítve van egy VMware ESXi hypervisor  
-* Saját felhők létrehozásához megvásárolt vagy fenntartott számítástechnikai egység
-* Megvásárolható vagy foglalható egy olyan régióban, ahol a CloudSimple szolgáltatás elérhető
+* Saját felhők létrehozásához vagy lefoglalásához használható számítási egység
+* Elérhető egy olyan régióban való üzembe helyezéshez vagy fenntartáshoz, ahol a CloudSimple szolgáltatás elérhető
 
-Hozzon létre egy privát felhőt a megvásárolt csomópontokból. Privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz. Privát felhő kibontásához adjon hozzá további csomópontokat.  Csomópontokat adhat hozzá egy meglévő fürthöz, vagy létrehozhat egy új fürtöt, ha megvásárolja a csomópontokat a Azure Portalban, és társítja őket a CloudSimple szolgáltatáshoz.  Az összes megvásárolt csomópont látható a CloudSimple szolgáltatás alatt.  
+Létre kell hoznia egy privát felhőt a kiépített csomópontokból. Privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz. Privát felhő kibontásához adjon hozzá további csomópontokat.  Csomópontokat adhat hozzá egy meglévő fürthöz, vagy létrehozhat egy új fürtöt a Azure Portal csomópontjainak kiépítés, és társíthatja őket a CloudSimple szolgáltatáshoz.  Az összes kiépített csomópont látható a CloudSimple szolgáltatás alatt.  
 
-## <a name="purchased-nodes"></a>Megvásárolt csomópontok
+## <a name="provisioned-nodes"></a>Kiépített csomópontok
 
-A megvásárolt csomópontok utólagos elszámolású kapacitást biztosítanak. A csomópontok megvásárlásával gyorsan méretezheti igény szerint a VMware-fürtöt. Szükség szerint csomópontokat adhat hozzá, vagy törölhet egy megvásárolt csomópontot a VMware-fürt méretezéséhez. A megvásárolt csomópontok számlázása havonta történik, és a megvásárolt előfizetés után kell fizetni.
+A kiépített csomópontok utólagos elszámolású kapacitást biztosítanak. A kiépítési csomópontok segítségével gyorsan méretezheti igény szerint a VMware-fürtöt. Szükség szerint csomópontokat adhat hozzá, vagy törölhet egy kiépített csomópontot a VMware-fürt méretezéséhez. A kiépített csomópontok számlázása havonta történik, és a kiépített előfizetéshez kell fizetni.
 
 * Ha hitelkártyával fizet az Azure-előfizetésért, a kártyát azonnal kiszámlázzák.
 * Ha számlán számlázunk, a díjak a következő számlán jelennek meg.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-megoldás CloudSimple-csomópontok SKU-ban
 
-A következő típusú csomópontok vásárolhatók meg vagy foglalhatók le.
+A következő típusú csomópontok érhetők el a kiépítés vagy a foglalás számára.
 
-| SKU           | CS28 – csomópont                 | CS36 – csomópont                 | CS36m – csomópont                |
+| SKU (Cikkszám)           | CS28 – csomópont                 | CS36 – csomópont                 | CS36m – csomópont                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
-| Régió        | USA keleti régiója, USA nyugati régiója            | USA keleti régiója, USA nyugati régiója            | Nyugat-Európa                 |
+| Region (Régió)        | USA keleti régiója, USA nyugati régiója            | USA keleti régiója, USA nyugati régiója            | Nyugat-Európa                 |
 | CPU           | 2x 2.2 GHz, 28 mag (56 HT) | 2x 2.3 GHz, 36 mag (72 HT) | 2x 2.3 GHz, 36 mag (72 HT) |
 | RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
 | Gyorsítótárlemez    | 1,6 – TB NVMe                 | 3,2 – TB NVMe                 | 3,2 – TB NVMe                 |
 | Kapacitás lemez | 5,625 TB nyers                | 11,25 TB nyers                | 15,36 TB nyers                |
-| Tárolótípus  | Minden Flash                   | Minden Flash                   | Minden Flash                   |
+| Tárolási típus  | Minden Flash                   | Minden Flash                   | Minden Flash                   |
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
 A következő csomópont-korlátok a privát felhőkre vonatkoznak.
 
-| Resource | Korlát |
+| Erőforrás | Korlát |
 |----------|-------|
 | A privát felhő létrehozásához szükséges csomópontok minimális száma | 3 |
 | Fürtben lévő csomópontok maximális száma egy privát felhőben | 16 |
 | A privát felhőben lévő csomópontok maximális száma | 64 |
 | Csomópontok minimális száma egy új fürtön | 3 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg, hogyan [vásárolhat csomópontokat](create-nodes.md)
+* További információ a [csomópontok](create-nodes.md) kiépítéséről
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

@@ -1,28 +1,22 @@
 ---
 title: erőforrás () kifejezés Azure Monitor napló lekérdezésében | Microsoft Docs
 description: Az erőforrás-kifejezés egy erőforrás-központú Azure Monitor-naplózási lekérdezésben használható több erőforrásból származó adatok lekérdezéséhez.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 09/10/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: deca6e7ef1c231a82a73067971d86a6e9cdd0599
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.date: 09/10/2018
+ms.openlocfilehash: 4787dc8a8cc06e0ad0be88597dab3481284fb58b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71817409"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900217"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>erőforrás () kifejezés Azure Monitor napló lekérdezésében
 
-A `resource` kifejezés egy olyan Azure Monitor-lekérdezésben szerepel, amely [egy erőforrásra terjed](scope.md#query-scope) ki, hogy más erőforrásokból kérje le az adatgyűjtést. 
+A `resource` kifejezés egy [erőforrásra hatókörön](scope.md#query-scope) belüli Azure monitor lekérdezésben szerepel, hogy más erőforrásokból származó adatok kérhetők le. 
 
 
 ## <a name="syntax"></a>Szintaxis
@@ -31,11 +25,11 @@ A `resource` kifejezés egy olyan Azure Monitor-lekérdezésben szerepel, amely 
 
 ## <a name="arguments"></a>Argumentumok
 
-- *Azonosító*: Egy erőforrás erőforrás-azonosítója.
+- *Azonosító*: erőforrás erőforrás-azonosítója.
 
-| azonosító | Leírás | Példa
+| Azonosító | Leírás | Példa
 |:---|:---|:---|
-| Resource | Az erőforráshoz tartozó adatforrásokat tartalmazza. | erőforrás ("/Subscriptions/xxxxxxx-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcesgroups/myresourcegroup/Providers/Microsoft.Compute/virtualmachines/myvm") |
+| Erőforrás | Az erőforráshoz tartozó adatforrásokat tartalmazza. | erőforrás ("/Subscriptions/xxxxxxx-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcesgroups/myresourcegroup/Providers/Microsoft.Compute/virtualmachines/myvm") |
 | Erőforráscsoport vagy előfizetés | Az erőforráshoz és a benne található összes erőforráshoz tartozó adattartalom.  | erőforrás ("/Subscriptions/xxxxxxx-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcesgroups/myresourcegroup") |
 
 
@@ -54,7 +48,7 @@ union (Heartbeat),(resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A lekérdezési hatókör részleteiért tekintse meg a [naplózási lekérdezés hatókörét és időtartományát Azure Monitor log Analytics](scope.md) .
 - A [Kusto lekérdezési nyelv](/azure/kusto/query/)teljes dokumentációjának elérése.

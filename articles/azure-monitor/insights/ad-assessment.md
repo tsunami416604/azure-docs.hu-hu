@@ -1,24 +1,18 @@
 ---
 title: Optimalizálja Active Directory-környezetét Azure Monitorkal | Microsoft Docs
 description: A Active Directory Health-ellenőrzési megoldással rendszeres időközönként felméri a környezetek kockázatait és állapotát.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/10/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883088"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899189"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizálja Active Directory-környezetét az Active Directory Health-ellenőrzési megoldással Azure Monitor
 
@@ -47,7 +41,7 @@ A megoldás hozzáadása és az ellenőrzések befejezése után a fókusz terü
 * Log Analytics munkaterület, amely az Azure Portal Azure Marketplace-en adja hozzá a Active Directory Health-ellenőrzési megoldást. Nincs szükség további konfigurációra.
 
   > [!NOTE]
-  > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
+  > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
   >
   >
 
@@ -63,7 +57,7 @@ A tartományvezérlőn az ügynök, amely egy Operations Manager felügyeleti cs
 
 Active Directory állapot-ellenőrzési adatokat gyűjt a következő forrásokból az engedélyezett ügynök használatával:
 
-- Beállításjegyzék
+- Registry
 - LDAP
 - .NET-keretrendszer
 - Eseménynapló
@@ -85,7 +79,7 @@ Minden javaslat egy súlyozási értéket kap, amely a javaslat relatív fontoss
 
 A súlyozások három fő tényezőn alapuló összesített értékek:
 
-* A probléma azonosításának valószínűsége problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
+* A probléma azonosításának *valószínűsége* problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
 * A probléma *hatása* a szervezeten belül, ha problémát okoz. A nagyobb hatás a javaslat nagyobb összesített pontszáma.
 * A javaslat megvalósításához szükséges *erőfeszítés* . A nagyobb erőfeszítés a javaslat kisebb összesített pontszámának felel meg.
 
@@ -191,7 +185,7 @@ A következő ütemezett állapot-ellenőrzés után, alapértelmezés szerint h
 
 *Mi az adatgyűjtés folyamatának neve?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
 *Mennyi időt vesz igénybe az adatok gyűjtése?*
 
@@ -209,6 +203,6 @@ A következő ütemezett állapot-ellenőrzés után, alapértelmezés szerint h
 
 * Igen, lásd a fenti [javaslatok mellőzése](#ignore-recommendations) szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure monitor log-lekérdezések](../log-query/log-query-overview.md) használatával megismerheti, hogyan elemezheti a részletes ad Health-ellenőrzési információkat és javaslatokat.

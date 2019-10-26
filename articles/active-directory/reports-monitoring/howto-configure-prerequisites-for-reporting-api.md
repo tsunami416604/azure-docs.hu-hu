@@ -1,5 +1,5 @@
 ---
-title: A Azure Active Directory jelentési API elérésének előfeltételei | Microsoft Docs
+title: Azure Active Directory jelentési API előfeltételei | Microsoft Docs
 description: Tudnivalók az Azure AD Reporting API elérésének előfeltételeiről
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b6fab4a4a36691bbdeb11975c7a93b97ab86cb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: af5e198a900241bc7bb0b6aff9a57eed59d1cd86
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241558"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895231"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
@@ -48,7 +48,7 @@ Ha a jelentéskészítési adathoz az API-n keresztül szeretne hozzáférni, a 
 - Globális rendszergazda
 
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 A regisztrációra akkor is szükség van, ha parancsfájl használatával éri el a jelentéskészítési API-t. A regisztráció egy alkalmazás- **azonosítót**ad meg, amely az engedélyezési hívásokhoz szükséges, és lehetővé teszi a kód számára a jogkivonatok fogadását.
 
@@ -76,11 +76,11 @@ Ha úgy szeretné konfigurálni a címtárat, hogy hozzáférhessen az Azure AD 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. A **név** szövegmezőbe írja be `Reporting API application`a következőt:.
+    a. A **név** szövegmezőbe írja be a következőt: `Reporting API application`.
 
     b. A **támogatott fiókok típusa**beállításnál válassza a **fiókok csak ebben a szervezetiben**lehetőséget.
 
-    c. Az **átirányítási URL-cím** kijelölése **webes** szövegmezőbe írja be a következőt `https://localhost`:.
+    c. Az **átirányítási URL-cím** kijelölése **webes** szövegmezőbe írja be a következőt: `https://localhost`.
 
     d. Kattintson a **Register** (Regisztrálás) elemre. 
 
@@ -118,7 +118,7 @@ A következő szakasz az API-k lépéseit sorolja fel. Ha nem szeretne hozzáfé
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. Megjegyzés: Az API-regisztráció során az **Microsoft Graph** alapértelmezés szerint hozzá lesz adva.
+5. Megjegyzés: az API-regisztráció során az **Microsoft Graph** alapértelmezés szerint hozzá lesz adva.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
@@ -128,7 +128,7 @@ Ez a szakasz bemutatja, hogyan kérheti le a következő beállításokat a cím
 
 - Tartománynév
 - Ügyfél-azonosító
-- Titkos ügyfélkód
+- Titkos ügyfélkulcs
 
 Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hívások konfigurálásakor. 
 
@@ -179,7 +179,7 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 5. Az **ügyfél titkos kulcsának hozzáadása** lapon adja hozzá a következőt:
 
-    a. A **Leírás** szövegmezőbe írja be `Reporting API`a következőt:.
+    a. A **Leírás** szövegmezőbe írja be a következőt: `Reporting API`.
 
     b. Ahogy **lejár**, válassza **a 2 év**lehetőséget.
 
@@ -195,34 +195,34 @@ Ez a szakasz azokat a gyakori hibaüzeneteket sorolja fel, amelyekkel az MS Grap
 
 Jelenleg nem támogatjuk a Microsoft Graph v2-végpontot – ügyeljen arra, hogy a Microsoft Graph v1-végpont használatával hozzáférhessen a tevékenység naplóihoz.
 
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Hiba: Nem sikerült beolvasni a felhasználói szerepköröket az AD Graph-ból
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Hiba: nem sikerült beolvasni a felhasználói szerepköröket az AD Graph-ból
 
  Jelentkezzen be a fiókjába a Graph Explorer felhasználói felületén található bejelentkezési gombok használatával, hogy elkerülje a hiba beolvasását a Graph Explorer használatával. 
 
 ![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Hiba: Nem sikerült a prémium szintű licenc-ellenőrzések végrehajtása az AD Graph-ból 
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Hiba: nem sikerült a prémium szintű licenc-ellenőrzések végrehajtása az AD Graph-ból 
 
 Ha ezt a hibaüzenetet akkor futtatja, amikor a Graph Explorer használatával próbál hozzáférni a bejelentkezésekhez, válassza a bal oldali navigációs menüben a fiók **módosítása** lehetőséget, majd válassza a **feladatok. READWRITE** és a **könyvtár. olvasás. összes**lehetőséget. 
 
 ![Engedélyek módosítása felhasználói felület](./media/troubleshoot-graph-api/modify-permissions.png)
 
 
-### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Hiba: A bérlő nem B2C vagy a bérlő nem rendelkezik prémium szintű licenccel
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Hiba: a bérlő nem B2C, vagy a bérlő nem rendelkezik prémium szintű licenccel
 
 A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1) licenc szükséges. Ha ez a hibaüzenet jelenik meg a bejelentkezések elérésekor, győződjön meg arról, hogy a bérlője Azure AD P1 licenccel rendelkezik.
 
-### <a name="error-the-allowed-roles-does-not-include-user"></a>Hiba: Az engedélyezett szerepkörök nem tartalmazzák a felhasználót. 
+### <a name="error-the-allowed-roles-does-not-include-user"></a>Hiba: az engedélyezett szerepkörök nem tartalmazzák a felhasználót. 
 
  Kerülje a naplókhoz vagy a bejelentkezéshez szükséges hibákat az API használatával. Győződjön meg arról, hogy a fiókja a Azure Active Directory bérlőn a **biztonsági olvasó** vagy a **jelentéskészítő olvasó** szerepkör részét képezi.
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: Az alkalmazásból hiányzik a HRE olvasása engedély 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: az alkalmazásból hiányzik a "HRE olvasása" engedély. 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Hiba: Az alkalmazás hiányzó MSGraph API "a naplózási napló összes adatszolgáltatásának olvasása" engedély
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Hiba: az alkalmazás hiányzó MSGraph API-je "a naplózási napló összes adatfájljának olvasása" engedély
 
 Az előfeltételekben ismertetett lépéseket követve [férhet hozzá a Azure Active Directory jelentési API](howto-configure-prerequisites-for-reporting-api.md) -hoz annak biztosításához, hogy az alkalmazás a megfelelő engedélyekkel fusson. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatlekérdezés a Azure Active Directory Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
 * [Naplózási API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 

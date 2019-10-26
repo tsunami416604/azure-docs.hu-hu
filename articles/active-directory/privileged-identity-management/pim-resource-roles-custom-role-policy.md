@@ -1,5 +1,5 @@
 ---
-title: Egyéni szerepkörök használata az Azure-erőforrásokhoz a PIM-Azure Active Directoryban | Microsoft Docs
+title: Egyéni szerepkörök használata az Azure-erőforrásokhoz a Privileged Identity Management-Azure Active Directoryban | Microsoft Docs
 description: Ismerje meg, hogyan használhatók az Azure-erőforrások egyéni szerepkörei a Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 03/30/2018
+ms.date: 10/23/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d36514c97cf1f45ee0a435d3b716019d2762e5a
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 8e940dd0e4c653ed4921a9e8f245aab34107ba95
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804189"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895712"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-pim"></a>Egyéni szerepkörök használata az Azure-erőforrásokhoz a PIM-ben
+# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>Egyéni szerepkörök használata az Azure-erőforrásokhoz Privileged Identity Management
 
-Előfordulhat, hogy szigorú Azure Active Directory (Azure AD) Privileged Identity Management (PIM) beállításokat kell alkalmaznia egy szerepkör egyes tagjaira, miközben nagyobb önállóságot biztosít mások számára. Vegyünk például egy olyan forgatókönyvet, amelyben a szervezet több szerződést bérel az Azure-előfizetésben futtatott alkalmazások fejlesztéséhez.
+Előfordulhat, hogy szigorú Privileged Identity Management (PIM) beállításokat kell alkalmaznia az Azure Active Directory (Azure AD) szervezet egyik kiemelt szerepkörű felhasználójának, ugyanakkor nagyobb önállóságot biztosít mások számára. Vegyünk például egy olyan forgatókönyvet, amelyben a szervezet több szerződést bérel az Azure-előfizetésben futtatott alkalmazások fejlesztésének segítésére.
 
 Erőforrás-rendszergazdaként azt szeretné, hogy az alkalmazottak jóváhagyás nélkül jogosultak legyenek a hozzáférésre. Azonban minden szerződéses társítást jóvá kell hagyni, amikor hozzáférést kérnek a szervezet erőforrásaihoz.
 
-Kövesse a következő szakaszban ismertetett lépéseket az Azure-erőforrások szerepköreihez tartozó célként megadott PIM-beállítások beállításához.
+Kövesse a következő szakaszban ismertetett lépéseket az Azure-beli erőforrás-szerepkörökhöz tartozó célként Privileged Identity Management beállítások beállításához.
 
 ## <a name="create-the-custom-role"></a>Az egyéni szerepkör létrehozása
 
@@ -40,15 +40,15 @@ Ha egyéni szerepkört hoz létre, akkor adjon meg egy leíró nevet, így könn
 
 ## <a name="apply-pim-settings"></a>PIM-beállítások alkalmazása
 
-Miután létrehozta a szerepkört a bérlőben, a Azure Portal nyissa meg a **Privileged Identity Management-Azure-erőforrások** ablaktáblát. Válassza ki azt az erőforrást, amelyre a szerepkör vonatkozik.
+Miután létrehozta a szerepkört az Azure AD-szervezetben, lépjen a Azure Portal **Privileged Identity Management-Azure-erőforrások** lapjára. Válassza ki azt az erőforrást, amelyre a szerepkör vonatkozik.
 
 ![A "Privileged Identity Management – Azure-erőforrások" panel](media/pim-resource-roles-custom-role-policy/aadpim-manage-azure-resource-some-there.png)
 
-[Konfigurálja a PIM szerepkör azon beállításait](pim-resource-roles-configure-role-settings.md) , amelyeket alkalmazni kell a szerepkör ezen tagjaira.
+[Konfigurálja Privileged Identity Management szerepkör azon beállításait](pim-resource-roles-configure-role-settings.md) , amelyek a szerepkör ezen tagjaira vonatkoznak.
 
 Végezetül [rendeljen hozzá szerepköröket](pim-resource-roles-assign-roles.md) azon tagok különálló csoportjához, amelyeket meg szeretne célozni ezekkel a beállításokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure erőforrás-szerepkör beállításainak konfigurálása a PIM-ben](pim-resource-roles-configure-role-settings.md)
+- [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
 - [Egyéni szerepkörök az Azure-ban](../../role-based-access-control/custom-roles.md)

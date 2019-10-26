@@ -1,23 +1,18 @@
 ---
-title: 'Azure Application Insights Agent API-referenciák: a konfiguráció beolvasása | Microsoft Docs'
+title: Az Azure Application Insights Agent API-referenciája
 description: Application Insights Agent API-referenciája. Get-ApplicationInsightsMonitoringConfig. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: e0b389dfb27443b9b26b8ed650399c641c55eb86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: 91e7bcbe79dfde8bbd4011748b40b692015af1c2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388263"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899733"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights ügynök API: Get-ApplicationInsightsMonitoringConfig
 

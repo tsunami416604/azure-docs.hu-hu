@@ -1,36 +1,30 @@
 ---
-title: Speciális összesítések az Azure Monitor log-lekérdezések |} A Microsoft Docs
-description: Az Azure Monitor log-lekérdezések számára elérhető speciális összesítési opciók egy része ismerteti.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Speciális összesítések Azure Monitor log-lekérdezésekben | Microsoft Docs
+description: Ismerteti a több speciális aggregációs lehetőséget, amelyek elérhetők Azure Monitor a naplók lekérdezéséhez.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551753"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900444"
 ---
-# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Speciális összesítések az Azure Monitor log-lekérdezések
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Speciális összesítések Azure Monitor log lekérdezésekben
 
 > [!NOTE]
-> Hajtsa végre [összesítések az Azure Monitor lekérdezések](./aggregations.md) ebben a leckében befejezése előtt.
+> A lecke elvégzése előtt [Azure monitor lekérdezések összesítéseit](./aggregations.md) kell végrehajtania.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk ismerteti az Azure Monitor lekérdezések számára elérhető fejlett összesítési opciók egy része.
+Ez a cikk ismerteti a Azure Monitor lekérdezések számára elérhető fejlettebb összesítési lehetőségeket.
 
-## <a name="generating-lists-and-sets"></a>Listák és a csoportok létrehozása
-Használhat `makelist` pivot adatok egy adott oszlopban lévő értékek sorrendje. Például előfordulhat, hogy szeretné a leggyakrabban használt sorrend események kerül sor a gépeken. Az adatok sorrendje EventIDs az összes olyan számítógépen forgáspont lényegében azt is. 
+## <a name="generating-lists-and-sets"></a>Listák és készletek létrehozása
+A `makelist` segítségével az adatokat egy adott oszlop értékeinek sorrendje alapján is elvégezheti. Előfordulhat például, hogy meg szeretné vizsgálni a leggyakrabban használt rendezési eseményeket a gépeken. Az adatmennyiséget lényegében az egyes gépek EventIDs sorrendjével lehet kimutatni. 
 
 ```Kusto
 Event
@@ -41,13 +35,13 @@ Event
 
 |Computer|list_EventID|
 |---|---|
-| computer1 | [704,701,1501,1500,1085,704,704,701] |
-| computer2 | [326,105,302,301,300,102] |
+| Számítógép1 | [704, 701, 1501, 1500, 1085, 704, 704, 701] |
+| számítógép2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-`makelist` adatok bele lett átadva a sorrendben álló listát hoz létre. Rendezze az eseményeket a legrégebbitől a legújabbig, használja a `asc` helyett a rendelés utasításban `desc`. 
+`makelist` létrehoz egy listát abban a sorrendben, ahogy a rendszer átadta az adatbevitelt. Ha az eseményeket a legrégebbitől a legújabbig szeretné rendezni, a `desc`helyett a Order utasításban használja a `asc`. 
 
-Emellett hasznos csak egyedi értékek listájának létrehozásához. Ezt nevezzük a _beállítása_ és készíthet `makeset`:
+Az is hasznos, ha csak a különböző értékek listáját szeretné létrehozni. Ezt egy _készletnek_ nevezzük, és a `makeset`használatával hozható létre:
 
 ```Kusto
 Event
@@ -58,14 +52,14 @@ Event
 
 |Computer|list_EventID|
 |---|---|
-| computer1 | [704,701,1501,1500,1085] |
-| computer2 | [326,105,302,301,300,102] |
+| Számítógép1 | [704, 701, 1501, 1500, 1085] |
+| számítógép2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-Például `makelist`, `makeset` is együttműködik rendezett adatok, és a diagrambeli a sorok bele átadott tömbök hoz létre.
+A `makelist`hoz hasonlóan a `makeset` is működik a rendezett adatmennyiséggel, és a tömböket az átadott sorok sorrendje alapján hozza majd ki.
 
-## <a name="expanding-lists"></a>Listák kibontása
-Más néven inverz működésének `makelist` vagy `makeset` van `mvexpand`, amely kibővíti a sorok értékek listáját. Kibővítheti, hogy a dinamikus oszlopok, mind a JSON-t, és a tömb bármennyi. Például, hogy sikerült ellenőrizni a *szívverés* tábla adatokat küldő számítógépek szívverés az elmúlt egy órában küldött megoldásokhoz:
+## <a name="expanding-lists"></a>Kiterjesztések listája
+`makelist` vagy `makeset` inverz művelete `mvexpand`, amely kibővíti az értékek listáját a sorok elkülönítéséhez. A JSON és a tömb tetszőleges számú dinamikus oszlopán kiterjeszthető. Például megtekintheti a *szívverési* táblázatot olyan megoldások esetében, amelyek az elmúlt órában szívverést küldő számítógépekről küldenek adatokat:
 
 ```Kusto
 Heartbeat
@@ -75,12 +69,12 @@ Heartbeat
 
 | Computer | Megoldások | 
 |--------------|----------------------|
-| computer1 | "security", "updates", "changeTracking" |
-| computer2 | "security", "updates" |
-| számítógép3 | "antiMalware", "changeTracking" |
+| Számítógép1 | "biztonság", "frissítések", "változáskövetési" |
+| számítógép2 | "biztonság", "frissítések" |
+| számítógép3 | "antimalware", "változáskövetési" |
 | ... | ... |
 
-Használat `mvexpand` egy külön sorban helyett egy vesszővel tagolt lista minden egyes érték megjelenítése:
+A `mvexpand` használatával a vesszővel tagolt lista helyett külön sorban jelenítheti meg az egyes értékeket:
 
 ```Kusto
 Heartbeat
@@ -91,17 +85,17 @@ Heartbeat
 
 | Computer | Megoldások | 
 |--------------|----------------------|
-| computer1 | "security" |
-| computer1 | "updates" |
-| computer1 | "Change tracking" |
-| computer2 | "security" |
-| computer2 | "updates" |
-| számítógép3 | "kártevőirtó" |
-| számítógép3 | "Change tracking" |
+| Számítógép1 | biztonsági |
+| Számítógép1 | frissítések |
+| Számítógép1 | Változáskövetési |
+| számítógép2 | biztonsági |
+| számítógép2 | frissítések |
+| számítógép3 | Kártevőirtó |
+| számítógép3 | Változáskövetési |
 | ... | ... |
 
 
-Ezt követően az `makelist` újra elemek csoportosítása együtt, és ezúttal megoldásonként számítógépek listájának megtekintéséhez:
+Ezután a `makelist` újra felhasználhatja az elemek csoportosításához, és ez alkalommal a számítógépek listáját tekintheti meg megoldásként:
 
 ```Kusto
 Heartbeat
@@ -113,14 +107,14 @@ Heartbeat
 
 |Megoldások | list_Computer |
 |--------------|----------------------|
-| "security" | ["számítógép1", "számítógép2"] |
-| "updates" | ["számítógép1", "számítógép2"] |
-| "Change tracking" | ["számítógép1", "számítógép3"] |
-| "kártevőirtó" | ["számítógép3"] |
+| biztonsági | ["Számítógép1", "számítógép2"] |
+| frissítések | ["Számítógép1", "számítógép2"] |
+| Változáskövetési | ["Számítógép1", "számítógép3"] |
+| Kártevőirtó | ["számítógép3"] |
 | ... | ... |
 
-## <a name="handling-missing-bins"></a>Hiányzik a bins kezelése
-Egy hasznos alkalmazásának `mvexpand` van szükség a hiányzó bins töltse ki alapértelmezett értékeket. Tegyük fel, hogy egy adott gép üzemideje szívverésével áttekintésével keres. Meg is át szeretné tekinteni a forrás, amely szívverés a _kategória_ oszlop. Normális esetben használjuk lenne egy egyszerű foglalják össze a következő utasítást:
+## <a name="handling-missing-bins"></a>Hiányzó raktárhelyek feldolgozása
+`mvexpand` hasznos alkalmazása a hiányzó raktárhelyekhez tartozó alapértelmezett értékek kitöltésének szükségessége. Tegyük fel például, hogy egy adott gép üzemidőét keresi a szívverésének vizsgálatával. Érdemes megtekinteni a szívverés forrását is, amely a category ( _Kategória_ ) oszlopban található. Általában egy egyszerű összefoglaló utasítást fogunk használni a következőképpen:
 
 ```Kusto
 Heartbeat
@@ -128,7 +122,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Category | TimeGenerated | count_ |
+| Kategória | TimeGenerated | száma |
 |--------------|----------------------|--------|
 | Közvetlen ügynök | 2017-06-06T17:00:00Z | 15 |
 | Közvetlen ügynök | 2017-06-06T18:00:00Z | 60 |
@@ -137,19 +131,19 @@ Heartbeat
 | Közvetlen ügynök | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-Ezeket az eredményeket, ha a gyűjtő társított "2017-06-06T19:00:00Z" hiányzik, mert nincs minden Szívveréses adatokat az adott órában. Használja a `make-series` függvény üres gyűjtők egy alapértelmezett értéket rendelni. A művelet létrehoz egy extra tömb két oszlopot tartalmazó kategóriákhoz, egy az értékek és a egy megfelelő idő gyűjtők a sort:
+Ezekben az eredményekben azonban a "2017-06-06T19:00:00Z" elemhez társított gyűjtő hiányzik, mert az adott órában nem található szívverési érték. Az `make-series` függvény használatával rendeljen hozzá egy alapértelmezett értéket az üres gyűjtőhöz. Ez egy sort hoz majd az egyes kategóriákhoz két extra tömb oszloppal, egyet az értékekhez, egyet pedig a megfelelő időgyűjtőhöz:
 
 ```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Category | count_ | TimeGenerated |
+| Kategória | száma | TimeGenerated |
 |---|---|---|
-| Közvetlen ügynök | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
+| Közvetlen ügynök | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-A harmadik eleme a *count_* tömbben 0 várt módon, és a megfelelő időbélyeg "2017-06-06T19:00:00.0000000Z" az a _TimeGenerated_ tömb. A tömb formátuma nehezen olvasható, ha. Használat `mvexpand` bontsa ki a tömbök és állítja elő a kimeneti által generált, ugyanazt a formátumot `summarize`:
+A *count_* tömb harmadik eleme a várt érték, és a _TimeGenerated_ tömbben a "2017-06-06T19:00:00.0000000 z" egyező időbélyeg szerepel. Ez a tömb formátuma nehezen olvasható. A `mvexpand` használatával bontsa ki a tömböket, és hozza létre a `summarize`által generált formátum kimenetét:
 
 ```Kusto
 Heartbeat
@@ -158,7 +152,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Category | TimeGenerated | count_ |
+| Kategória | TimeGenerated | száma |
 |--------------|----------------------|--------|
 | Közvetlen ügynök | 2017-06-06T17:00:00Z | 15 |
 | Közvetlen ügynök | 2017-06-06T18:00:00Z | 60 |
@@ -170,8 +164,8 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Szűkítheti az eredmények elemek körét: `let`, `makeset`, `toscalar`, `in`
-Gyakran előfordul, hogy válassza ki a különböző kritériumok alapján néhány egyedi entitások neve, és szűrjön rá, hogy entitáshalmazt le másik adatkészletet. Például előfordulhat, hogy ismert, hogy a hiányzó frissítések számítógépek keresése és azonosítása, amelyek ezeket a számítógépeket emelte ki az IP-címek:
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Eredmények szűkítése az elemek egy halmazára: `let`, `makeset`, `toscalar`, `in`
+Gyakori forgatókönyv, hogy bizonyos entitások nevét kijelöli a feltételek alapján, majd egy másik, az entitásokra vonatkozó adathalmazt szűr. Előfordulhat például, hogy olyan számítógépeket talál, amelyekről ismert, hogy hiányoznak a frissítések, és azonosítsa azokat az IP-címeket, amelyeket a számítógépek meghívtak:
 
 
 ```Kusto
@@ -184,14 +178,14 @@ WindowsFirewall
 | where Computer in (ComputersNeedingUpdate)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a többi leckéket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
+Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) használatát ismertető további leckéket a Azure monitor naplózási adataival:
 
 - [Karakterlánc-műveletek](string-operations.md)
-- [Dátum és idő műveletek](datetime-operations.md)
-- [Összesítésfüggvények](aggregations.md)
+- [Dátum-és időműveletek](datetime-operations.md)
+- [Összesítési függvények](aggregations.md)
 - [Speciális összesítések](advanced-aggregations.md)
-- [JSON és adatstruktúrák](json-data-structures.md)
-- [Illesztés](joins.md)
+- [JSON-és adatstruktúrák](json-data-structures.md)
+- [Csatlakozik](joins.md)
 - [Diagramok](charts.md)

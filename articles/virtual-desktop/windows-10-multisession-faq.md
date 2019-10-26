@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143660"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901607"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise multi-session GYIK
+# <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
 Ez a cikk a gyakori kérdések megválaszolásával és a Windows 10 Enterprise multi-Sessions szolgáltatással kapcsolatos ajánlott eljárásokat tárgyalja.
  
@@ -28,7 +28,7 @@ Hány interaktív munkamenet lehet aktív egyszerre a rendszer hardveres erőfor
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Miért jelent az alkalmazásom a Windows 10-es nagyvállalati többmunkamenetes kiszolgáló operációs rendszert?
 
-A Windows 10 Enterprise multi-session a Windows 10 Enterprise virtuális kiadása. Az egyik különbség az, hogy ez az operációs rendszer (OS) a [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) 2 értékkel, a Windows Serverrel megegyező értékkel jelenti. Ezzel a tulajdonsággal az operációs rendszer kompatibilis a meglévő RDSH-kezelési eszközökkel, RDSH több munkamenetet támogató alkalmazásokat, és többnyire alacsony szintű rendszerteljesítmény-optimalizálást biztosít a RDSH környezetekhez. Egyes alkalmazás-telepítők letilthatják a telepítést a Windows 10-es rendszeren attól függően, hogy a ProductType az ügyfélre van-e állítva. Ha az alkalmazás nem lesz telepítve, a frissített verzióért forduljon az alkalmazás forgalmazójához. 
+A Windows 10 Enterprise multi-session a Windows 10 Enterprise virtuális kiadása. Az egyik különbség az, hogy ez az operációs rendszer (OS) a [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) a 3 értékkel, a Windows Serverrel megegyező értékkel jelenti. Ezzel a tulajdonsággal az operációs rendszer kompatibilis a meglévő RDSH-kezelési eszközökkel, RDSH több munkamenetet támogató alkalmazásokat, és többnyire alacsony szintű rendszerteljesítmény-optimalizálást biztosít a RDSH környezetekhez. Egyes alkalmazás-telepítők letilthatják a telepítést a Windows 10-es rendszeren attól függően, hogy a ProductType az ügyfélre van-e állítva. Ha az alkalmazás nem lesz telepítve, a frissített verzióért forduljon az alkalmazás forgalmazójához. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Futtathatom a Windows 10 Enterprise multi-session szolgáltatást a helyszínen?
 
@@ -48,7 +48,7 @@ Bármilyen támogatott konfigurációs eszközt használhat, de azt javasoljuk, 
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Lehet a Windows 10 Enterprise multi-session Azure Active Directory (AD)-hez csatlakoztatva?
 
-A Windows 10 Enterprise multi-session jelenleg támogatott hibrid Azure AD-hez. Ha a Windows 10 Enterprise multi-session a tartományhoz van csatlakoztatva, a meglévő Csoportházirend objektum használatával engedélyezheti az Azure AD-regisztrációt. További információ: [a hibrid Azure Active Directory csatlakoztatásának](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)megtervezése.
+A Windows 10 Enterprise multi-session jelenleg támogatott hibrid Azure AD-hez. Ha a Windows 10 Enterprise multi-session a tartományhoz van csatlakoztatva, a meglévő Csoportházirend objektum használatával engedélyezheti az Azure AD-regisztrációt. További információ: [a hibrid Azure Active Directory csatlakoztatásának megtervezése](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Hol találhatom meg a Windows 10 Enterprise multi-session rendszerképet?
 
@@ -72,7 +72,7 @@ A FSLogix-profilok tárolójának konfigurálásával kapcsolatos további infor
 
 A megfelelő licencek teljes listáját a [Windows rendszerű virtuális asztali díjszabás](https://azure.microsoft.com/pricing/details/virtual-desktop/)című témakörben tekintheti meg.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Windows rendszerű virtuális asztali környezetről és a Windows 10-es nagyvállalati multi-session szolgáltatásról:
 

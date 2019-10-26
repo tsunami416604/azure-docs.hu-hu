@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597997"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901331"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Az előfeltételek teljes listájáért lásd: [Azure Disk Encryption Linux rend
 
 ## <a name="extension-schemata"></a>Bővítmény sémák
 
-Két sémák van a Azure Disk Encryption: v 1.1, egy újabb, ajánlott séma, amely nem használ Azure Active Directory (HRE) tulajdonságokat és v 0.1-et, amely egy régebbi, HRE-tulajdonságokat igénylő séma. Az Ön által használt bővítménynek megfelelő séma-verziót kell használnia: schema v 1.1 a AzureDiskEncryption Extension 1,1-es verziójához, a Schema v 0.1 a AzureDiskEncryption Extension 0,1-es verziójához.
+A Windows AzureDiskEncryption bővítményhez két sémák tartozik: v 2.2, egy újabb, ajánlott séma, amely nem használja a Azure Active Directory (HRE) tulajdonságokat és a v 1.1-et, egy régebbi, HRE-tulajdonságokat igénylő sémát. Az Ön által használt bővítménynek megfelelő séma-verziót kell használnia: schema v 2.2 a AzureDiskEncryption bővítmény 2,2-es verziójához, a Schema v 1.1-es verzióját a AzureDiskEncryption Extension 1,1-es verziójában.
 
-### <a name="schema-v11-no-aad-recommended"></a>Séma v 1.1: nincs HRE (ajánlott)
+### <a name="schema-v22-no-aad-recommended"></a>Schema v 2.2: nincs HRE (ajánlott)
 
-A v 1.1 séma használata javasolt, és nem igényel Azure Active Directory tulajdonságokat.
+A v 2.2 séma minden új virtuális gép esetében ajánlott, és nem igényel Azure Active Directory tulajdonságokat.
 
 ```json
 {
@@ -67,11 +67,11 @@ A v 1.1 séma használata javasolt, és nem igényel Azure Active Directory tula
 ```
 
 
-### <a name="schema-v01-with-aad"></a>A Schema v 0.1: a HRE 
+### <a name="schema-v11-with-aad"></a>Schema v 1.1: a HRE 
 
-Az 0,1 sémához `aadClientID` és `aadClientSecret` vagy `AADClientCertificate` szükséges.
+Az 1,1 sémához `aadClientID` és `aadClientSecret` vagy `AADClientCertificate` szükséges, és az új virtuális gépek esetében nem ajánlott.
 
-@No__t_0 használata:
+`aadClientSecret`használata:
 
 ```json
 {
@@ -101,7 +101,7 @@ Az 0,1 sémához `aadClientID` és `aadClientSecret` vagy `AADClientCertificate`
 }
 ```
 
-@No__t_0 használata:
+`AADClientCertificate`használata:
 
 ```json
 {
@@ -139,10 +139,10 @@ Az 0,1 sémához `aadClientID` és `aadClientSecret` vagy `AADClientCertificate`
 | apiVersion | 2015-06-15 | dátum |
 | Publisher | Microsoft. Azure. Security | sztring |
 | type | AzureDiskEncryptionForLinux | sztring |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (0,1 séma) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | GUID | 
-| (0,1 séma) AADClientSecret | jelszó | sztring |
-| (0,1 séma) AADClientCertificate | ujjlenyomat | sztring |
+| typeHandlerVersion | 1,1, 2,2 | sztring |
+| (1,1 séma) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | GUID | 
+| (1,1 séma) AADClientSecret | jelszó | sztring |
+| (1,1 séma) AADClientCertificate | ujjlenyomat | sztring |
 | DiskFormatQuery | {"dev_path": "", "Name": "", "file_system": ""} | JSON-szótár |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | sztring | 
 | KeyEncryptionAlgorithm | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | sztring |

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Fájlok és mappák helyreállítása Azure virtuális gépek biztonsági másolatából'
+title: 'Azure Backup: fájlok és mappák helyreállítása Azure virtuális gépek biztonsági másolatából'
 description: Fájlok helyreállítása Azure-beli virtuális gépek helyreállítási pontjából
 ms.reviewer: pullabhk
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210367"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900319"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -67,16 +67,16 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
     - download.microsoft.com
     - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
-        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.com (Azure nyilvános térségek)
-        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.cn (Azure China 21Vianet)
-        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.us (az USA kormányzati szervei számára)
-        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.de (az Azure Germany esetében)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (Azure nyilvános térségek)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (Azure China 21Vianet)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (Azure US government esetében)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (az Azure Germany esetében)
     - 3260-es kimenő port
 
 > [!Note]
 > 
-> * A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: A letöltött parancsfájl neve a következővel\'kezdődik\' \':\'VMname\_\'geoname _ GUID\', például ContosoVM_wcus_12345678....<br><br>
-> * Az URL-cím a következő:\/"https:/pod01-rec2.wcus.backup.windowsazure.com"
+> * A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve \'VMname\'\_\'geoname\'_\'GUID\', például ContosoVM_wcus_12345678....<br><br>
+> * Az URL-cím a következő lenne: "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
 
    Linux esetén a parancsfájl "Open-iSCSI" és "lshw" összetevőket igényel a helyreállítási ponthoz való kapcsolódáshoz. Ha az összetevők nem léteznek azon a számítógépen, amelyen a parancsfájl fut, a parancsfájl engedélyt kér az összetevők telepítésére. Adja meg a szükséges összetevők telepítésének jóváhagyását.
@@ -89,7 +89,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 #### <a name="for-windows"></a>Windows esetén
 
-A végrehajtható fájl futtatásakor az operációs rendszer csatlakoztatja az új köteteket, és hozzárendeli a meghajtóbetűjeleket. A meghajtók tallózásához használhatja a Windows Intézőt vagy a fájlkezelőt is. Előfordulhat, hogy a kötetekhez rendelt meghajtóbetűjelek nem azonosak az eredeti virtuális géppel. a kötet neve azonban megmarad. Ha például az eredeti virtuális gép kötete "adatlemez (E:`\`)" volt, akkor a kötet a helyi számítógépen "adatlemezként" ("bármely levél":`\`) csatolható. Tallózással keresse meg a parancsfájl kimenetében említett összes kötetet, amíg meg nem találja a fájlokat vagy mappát.  
+A végrehajtható fájl futtatásakor az operációs rendszer csatlakoztatja az új köteteket, és hozzárendeli a meghajtóbetűjeleket. A meghajtók tallózásához használhatja a Windows Intézőt vagy a fájlkezelőt is. Előfordulhat, hogy a kötetekhez rendelt meghajtóbetűjelek nem azonosak az eredeti virtuális géppel. a kötet neve azonban megmarad. Ha például az eredeti virtuális gép kötete "adatlemez (E:`\`)" volt, akkor a kötet a helyi számítógépen "adatlemezként" ("bármely levél":`\`) csatlakoztatható. Tallózással keresse meg a parancsfájl kimenetében említett összes kötetet, amíg meg nem találja a fájlokat vagy mappát.  
 
    ![Fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -168,7 +168,7 @@ A következő parancs az összes RAID-lemez részleteit jeleníti meg.
 $ mdadm –detail –scan
 ```
 
- A megfelelő RAID-lemez a következőképpen jelenik meg`/dev/mdm/<RAID array name in the protected VM>`
+ A megfelelő RAID-lemez `/dev/mdm/<RAID array name in the protected VM>`ként jelenik meg
 
 Ha a RAID-lemez fizikai kötetekkel rendelkezik, használja a csatlakoztatás parancsot.
 
@@ -185,12 +185,12 @@ Ha a RAID-lemezen van egy másik LVM konfigurálva, használja a fenti eljárás
 
 A következő táblázat a kiszolgáló és a számítógép operációs rendszerének kompatibilitását mutatja be. A fájlok helyreállításakor nem állíthatja vissza a fájlokat egy korábbi vagy későbbi verziójú operációs rendszerre. Nem lehet például visszaállítani egy fájlt egy Windows Server 2016 rendszerű virtuális gépről a Windows Server 2012-re vagy egy Windows 8 rendszerű számítógépre. A virtuális gépek fájljait visszaállíthatja ugyanarra a kiszolgálói operációs rendszerre vagy a kompatibilis ügyfél operációs rendszerre.
 
-|Server OS | Kompatibilis ügyfél operációs rendszer  |
+|Kiszolgáló operációs rendszere | Kompatibilis ügyfél operációs rendszer  |
 | --------------- | ---- |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7 rendszeren   |
 
 ### <a name="for-linux-os"></a>Linux operációs rendszer esetén
 
@@ -213,25 +213,54 @@ A Linux rendszerben a fájlok visszaállítására használt számítógép oper
 
 A parancsfájlnak a Python és a bash összetevők futtatására is szükség van, és biztonságosan csatlakozhat a helyreállítási ponthoz.
 
-|Összetevő | Version  |
+|Component (Összetevő) | Verzió  |
 | --------------- | ---- |
 | bash | 4 és újabb verziók |
 | python | 2.6.6 és újabb verziók  |
 | TLS | a 1,2 támogatottnak kell lennie  |
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>A fájlok helyreállítása a nagyméretű lemezekkel rendelkező virtuális gépekről
+
+Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása az Azure-beli virtuális gépekről, amelyek száma > 16, és az egyes lemezek mérete > 4 TB.
+
+Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági másolatból, nagy számú lemez (> 16) vagy nagy méretű lemez (> 4TB) esetén a következő műveleti pontok ajánlottak.
+
+- A fájlok helyreállításához külön helyreállítási kiszolgálót (Azure VM D2v3 virtuális gépeket) kell megőrizni. Ezt a fájlt csak akkor használhatja, ha nem szükséges, majd leállítja. Az eredeti gépen való visszaállítás nem ajánlott, mert jelentős hatással lesz a virtuális gépre.
+- Ezután futtassa egyszer a parancsfájlt annak vizsgálatához, hogy a fájl-helyreállítási művelet sikeres-e.
+- Ha a fájl-helyreállítási folyamat lefagy (a lemezek soha nincsenek csatlakoztatva, vagy csatlakoztatva vannak, de a kötetek nem jelennek meg), hajtsa végre a következő lépéseket.
+  - Ha a visszaállítási kiszolgáló egy Windows rendszerű virtuális gép
+    - Győződjön meg arról, hogy az operációs rendszer WS 2012 +.
+    - Győződjön meg arról, hogy a beállításjegyzék-kulcsok az alábbi módon vannak beállítva a visszaállítási kiszolgálón, és indítsa újra a kiszolgálót. A GUID melletti szám a 0001-0005-tól terjedhet. A következő példában ez a 0004. A parameters (paraméterek) szakaszig navigáljon a beállításkulcs elérési útjára.
+
+    ![iSCSI-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- Ha a visszaállítási kiszolgáló Linux rendszerű virtuális gép
+  - A fájl/etc/iSCSI/iscsid.conf módosítsa a beállítást a következőről:
+    - Node. Conn [0]. Timeo. noop_out_timeout = 5 – Node. Conn [0]. Timeo. noop_out_timeout = 30
+- A következő művelet végrehajtása után futtassa újra a parancsfájlt. Ezekkel a változásokkal nagyon valószínű, hogy a fájl helyreállítása sikeres.
+- Minden alkalommal, amikor a felhasználó letölt egy parancsfájlt, Azure Backup kezdeményezi a letöltéshez a helyreállítási pont előkészítésének folyamatát. Nagyméretű lemezek esetén ez jelentős időt vesz igénybe. Ha egymást követő kérések fordultak elő, a cél-előkészítés egy letöltés spirálba kerül. Ezért javasoljuk, hogy töltsön le egy parancsfájlt a portálról, a Powershellből vagy a CLI-ből, várjon 20-30 percre (egy heurisztikus), majd futtassa azt. Ez idő alatt a cél várhatóan készen áll a parancsfájlból való kapcsolódásra.
+- A fájlok helyreállítása után lépjen vissza a portálra, és kattintson a "lemezek leválasztása" elemre olyan helyreállítási pontok esetén, amelyeken nem sikerült csatlakoztatni a köteteket. Ez a lépés lényegében törli a meglévő folyamatokat/munkameneteket, és növeli a helyreállítás esélyét.
+
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha problémák merülnek fel a virtuális gépek fájljainak helyreállítása közben, további információkért tekintse meg a következő táblázatot.
 
 | Hibaüzenet/forgatókönyv | Lehetséges ok | Javasolt művelet |
 | ------------------------ | -------------- | ------------------ |
-| Exe-kimenet: *Kivétel a célhoz való csatlakozáshoz* |A parancsfájl nem fér hozzá a helyreállítási ponthoz    | Győződjön meg arról, hogy a gép megfelel-e az előző hozzáférési követelményeknek. |  
-| Exe-kimenet: *A cél már be van jelentkezve iSCSI-munkameneten keresztül.* | A parancsfájl már végre lett hajtva ugyanazon a gépen, és a meghajtók csatlakoztatva lettek | A helyreállítási pont kötetei már csatolva vannak. Előfordulhat, hogy a rendszer nem csatlakoztatja az eredeti virtuális gép ugyanazzal a meghajtóbetűjelével. Tallózással keresse meg a fájlhoz tartozó fájlkezelőben elérhető összes kötetet |
+| Exe-kimenet: *kivétel a célhoz való csatlakozáskor* |A parancsfájl nem fér hozzá a helyreállítási ponthoz    | Győződjön meg arról, hogy a gép megfelel-e az előző hozzáférési követelményeknek. |  
+| Exe-kimenet: *a cél már be van jelentkezve iSCSI-munkameneten keresztül.* | A parancsfájl már végre lett hajtva ugyanazon a gépen, és a meghajtók csatlakoztatva lettek | A helyreállítási pont kötetei már csatolva vannak. Előfordulhat, hogy a rendszer nem csatlakoztatja az eredeti virtuális gép ugyanazzal a meghajtóbetűjelével. Tallózással keresse meg a fájlhoz tartozó fájlkezelőben elérhető összes kötetet |
 | Exe-kimenet: *Ez a parancsfájl érvénytelen, mert a lemezek a portálon keresztül lettek leválasztva, vagy túllépte a 12 HR-korlátot. Töltsön le egy új parancsfájlt a portálról.* |    A lemezek le lettek választva a portálról, vagy a 12 órás HR-korlát túllépve | Ez az adott exe már érvénytelen, és nem futtatható. Ha szeretné elérni a helyreállítási pont fájljait, látogasson el az új exe-portálra|
-| Azon a gépen, amelyen az exe fut: Ha a Leválasztás gombra kattint, az új kötetek nem lesznek leválasztva | A gépen lévő iSCSI-kezdeményező nem válaszol, és nem frissíti a megcélzott kapcsolatát, és megtartja a gyorsítótárat. |  A **Leválasztás**gombra kattintva várjon néhány percet. Ha az új kötetek nincsenek leválasztva, böngésszen végig az összes köteten. Ha az összes kötetet megkeresi, a kezdeményező frissíti a csatlakozást, és a kötet le van választva, és a lemez nem érhető el.|
-| Exe-kimenet: A parancsfájl sikeresen fut, de az "új kötetek csatolva" elem nem jelenik meg a parancsfájl kimenetén. |    Ez egy átmeneti hiba    | A kötetek már csatlakoztatva lettek volna. Nyissa meg a Explorert a tallózáshoz. Ha ugyanazt a gépet használja a parancsfájlok futtatásához, érdemes megfontolni a gép újraindítását, és a listát a következő exe-futtatásokban kell megjeleníteni. |
-| Linux-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Előfordulhat, hogy a parancsfájlt futtató gép operációs rendszere nem ismeri fel a védett virtuális gép mögöttes fájlrendszerét | Győződjön meg arról, hogy a helyreállítási pont összeomlása konzisztens vagy fájl-konzisztens. Ha a fájl konzisztens, futtassa a parancsfájlt egy másik gépen, amelynek operációs rendszere felismeri a védett virtuális gép fájlrendszerét |
-| Windows-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg őket online állapotba helyezni, ha a jobb gombbal a lemezre kattint, és az "online" gombra kattint.|
+| Azon a gépen, amelyen az exe fut: az új kötetek nem lesznek leválasztva a Leválasztás gombra kattintás után | A gépen lévő iSCSI-kezdeményező nem válaszol, és nem frissíti a megcélzott kapcsolatát, és megtartja a gyorsítótárat. |  A **Leválasztás**gombra kattintva várjon néhány percet. Ha az új kötetek nincsenek leválasztva, böngésszen végig az összes köteten. Ha az összes kötetet megkeresi, a kezdeményező frissíti a csatlakozást, és a kötet le van választva, és a lemez nem érhető el.|
+| Exe-kimenet: a parancsfájl sikeresen fut, de az "új kötetek csatolva" nem jelenik meg a parancsfájl kimenetén. |    Ez egy átmeneti hiba    | A kötetek már csatlakoztatva lettek volna. Nyissa meg a Explorert a tallózáshoz. Ha ugyanazt a gépet használja a parancsfájlok futtatásához, érdemes megfontolni a gép újraindítását, és a listát a következő exe-futtatásokban kell megjeleníteni. |
+| Linux-specifikus: nem lehet megtekinteni a kívánt köteteket | Előfordulhat, hogy a parancsfájlt futtató gép operációs rendszere nem ismeri fel a védett virtuális gép mögöttes fájlrendszerét | Győződjön meg arról, hogy a helyreállítási pont összeomlása konzisztens vagy fájl-konzisztens. Ha a fájl konzisztens, futtassa a parancsfájlt egy másik gépen, amelynek operációs rendszere felismeri a védett virtuális gép fájlrendszerét |
+| Windows-specifikus: nem lehet megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg őket online állapotba helyezni, ha a jobb gombbal a lemezre kattint, és az "online" gombra kattint.|
 
 ## <a name="security"></a>Biztonság
 

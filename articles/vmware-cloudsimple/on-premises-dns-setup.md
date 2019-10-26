@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030409"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900902"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
 
@@ -23,7 +23,7 @@ Ha a vCenter-kiszolgálót a helyszíni munkaállomásokról származó CloudSim
 
 1. Jelentkezzen be a [CloudSimple-portálra](access-cloudsimple-portal.md).
 
-2. Navigáljon az **erőforrások**@no__t – 1**privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
+2. Navigáljon az **erőforrások** > **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
 3. Az **alapszintű információ**területen található privát felhő **Összegzés** lapján másolja a saját Felhőbeli DNS-kiszolgáló IP-címét.
 
@@ -80,7 +80,7 @@ zone “cloudsimple.io”
 
 A feltételes továbbító továbbítja a DNS-névfeloldási kérelmeket a kijelölt kiszolgálóra. Ezzel a beállítással a *. cloudsimple.io-re irányuló kérések a privát felhőben található DNS-kiszolgálókra lesznek továbbítva. Az alábbi példák bemutatják, hogyan állíthat be továbbítókat különböző típusú DNS-kiszolgálókon.
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>Feltételes továbbítás létrehozása egy kötési DNS-kiszolgálón
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Feltételes továbbító létrehozása egy kötési DNS-kiszolgálón
 
 A konfigurálandó fájl és paraméterek az egyéni DNS-beállítástól függően változhatnak.
 

@@ -1,102 +1,97 @@
 ---
-title: A felhasználói folyamatok az Azure Application insights szolgáltatásban felhasználói navigációs mintáinak elemzése |} A Microsoft docs
-description: Elemezheti, hogy a felhasználók hogyan navigálnak a lapjait és szolgáltatásait a webalkalmazás között.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Felhasználói navigációs minták elemzése az Azure Application Insights Felhasználókövetésával | Microsoft docs
+description: Elemezheti, hogy a felhasználók hogyan navigálnak a webalkalmazás oldalai és funkciói között.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 91274fad4e56c69777333c81ea3b32dccdcf64ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4ebdfa692bb8727556a37698e3a280f40bc1b0f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373306"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899487"
 ---
-# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>A felhasználói folyamatok az Application insights szolgáltatásban felhasználói navigációs mintáinak elemzése
+# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Felhasználói navigációs mintázatok elemzése Felhasználókövetésekkel Application Insights
 
-![Application Insights felhasználói folyamatok eszköz](./media/usage-flows/00001-flows.png)
+![Application Insights Felhasználókövetés eszköz](./media/usage-flows/00001-flows.png)
 
-A felhasználói folyamatok eszköz megjeleníti, hogy a felhasználók hogyan navigálnak a lapjait és szolgáltatásait a hely között. Itt a remek hasonló kérdések megválaszolásához:
+A Felhasználókövetés eszköz megjeleníti, hogyan navigálnak a felhasználók a webhely oldalai és funkciói között. A következő kérdésekre nagyszerű választ kaphat:
 
-* Tegye a felhasználók hogyan navigálnak a webhelyen lévő másik lapra?
-* Milyen Igen felhasználók kattintson egy oldalon, a webhelyen?
-* Hol találhatók azok a helyek, felhasználók churn leginkább a helyről?
-* Vannak-e helyeken, ahol a felhasználók ismétlődő ugyanaz a művelet újra és újra?
+* Hogyan navigálnak a felhasználók a webhelyén lévő lapokról?
+* Hogyan kattintanak a felhasználók a webhelyén lévő lapokra?
+* Hol vannak a felhasználók az Ön webhelyéről leginkább átesett helyek?
+* Vannak olyan helyek, ahol a felhasználók újra és újra megismétlik a műveletet?
 
-A felhasználói folyamatok eszköz elindul egy kezdeti oldalmegtekintést, egyéni esemény vagy megadott kivétel. Adja meg a kezdeti esemény, előtt, és ezt követően a felhasználói munkamenet során történt eseményeket felhasználói folyamatok jeleníti meg. Hány alkalommal mindegyik elérési út lett követni a felhasználók különböző vastagságú vonalak megjelenítése Speciális **munkamenet kezdete** csomópontok megjelenítése, ahol a többi csomópont megkezdte a munkamenet. **Munkamenet állapotig** csomópontok megjelenítése, hogy hány felhasználó küldött nincs Lapmegtekintések vagy egyéni események után az előző csomópont kiemelése, ahol felhasználók valószínűleg left webhelyét.
+A Felhasználókövetés eszköz a megadott kezdeti oldal nézetből, egyéni eseményből vagy kivételből indul el. A kezdeti esemény miatt Felhasználókövetés a felhasználói munkamenetek előtt és után megjelenő eseményeket jeleníti meg. A különböző vastagságú vonalak azt mutatják, hogy az egyes útvonalakat hány alkalommal követték a felhasználók. A speciális **munkamenet-elindított** csomópontok azt mutatják be, hogy a következő csomópontok mikor kezdték meg a munkamenetet A **munkamenet-befejező** csomópontok megmutatják, hány felhasználó nem adott meg oldalletöltések vagy egyéni eseményt az előző csomópont után, kiemelve, hogy a felhasználók valószínűleg otthagyták a helyet.
 
 > [!NOTE]
-> Az Application Insights-erőforrást kell tartalmaznia, Lapmegtekintések vagy egyéni események, a felhasználói folyamatok eszköz használata. [Ismerje meg, hogyan állíthat be az alkalmazás gyűjtése az Application Insights JavaScript SDK automatikusan a lapmegtekintések](../../azure-monitor/app/javascript.md).
+> A Application Insights-erőforrásnak az Felhasználókövetés eszköz használatára vonatkozó oldalletöltések vagy egyéni események között kell szerepelnie. [Megtudhatja, hogyan állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse a Application Insights JavaScript SDK-val](../../azure-monitor/app/javascript.md).
 >
 >
 
-## <a name="start-by-choosing-an-initial-event"></a>Kezdésképpen a kezdeti esemény
+## <a name="start-by-choosing-an-initial-event"></a>Kezdés: válasszon ki egy kezdeti eseményt
 
-![Kezdeti esemény, választhatja a felhasználói folyamatok](./media/usage-flows/00002-flows-initial-event.png)
+![Válasszon ki egy kezdeti eseményt Felhasználókövetés](./media/usage-flows/00002-flows-initial-event.png)
 
-Ha szeretné elkezdeni a felhasználói folyamatok eszköz kérdések megválaszolását, válassza ki egy kezdeti oldalmegtekintést, egyéni esemény vagy kivétel a Vizualizáció a kiindulási pontként szolgál:
+Ha meg szeretné kezdeni a Felhasználókövetés eszközzel kapcsolatos kérdések megválaszolását, válassza ki a kezdeti nézet, az egyéni esemény vagy a kivétel kiindulási pontként való kiszolgálását:
 
-1. Kattintson a hivatkozásra a **nincs felhasználói tevékenység után...?**  cím, vagy kattintson a **szerkesztése** gombra.
-2. Válasszon egy oldalmegtekintést, egyéni eseményt vagy kivételt a **kezdeti esemény** legördülő listából.
-3. Kattintson a **létrehozás graph**.
+1. Kattintson a mit csinál a **felhasználók számára...?** cím hivatkozásra, vagy kattintson a **Szerkesztés** gombra.
+2. Válassza ki az oldal nézetét, az egyéni eseményt vagy a kivételt a **kezdeti esemény** legördülő menüjéből.
+3. Kattintson a **Graph létrehozása**elemre.
 
-Az "1. lépés" oszlopot a Vizualizáció látható, milyen felhasználók tudta leggyakrabban csak a rendezett felülről lefelé a legtöbb legritkább, a kezdeti esemény után. A "2. lépés" és a következő oszlopok megjelenítése, mi felhasználók tette azt követően, az összes módon felhasználók van nyitva a webhelyen keresztül kép létrehozásához.
+A vizualizáció "1. lépés" oszlopa azt mutatja, hogy a kezdeti esemény után legtöbbször a legtöbbet a legtöbbet a legtöbbet a legtöbbet a legtöbbet a legtöbbször megrendelt A "2. lépés" és az azt követő oszlopok azt mutatják be, hogy mit tettek a felhasználók, és létrehoztak egy képet arról, hogy a felhasználók milyen módon navigáltak a webhelyen.
 
-Alapértelmezés szerint a felhasználói folyamatok eszköz véletlenszerűen minták csak az elmúlt 24 órában lapmegtekintés és egyéni esemény az webhelyről. Növelje az időtartományt, és módosítsa az egyenleg a teljesítmény és a pontosság véletlenszerű mintavételi a Szerkesztés menü.
+Alapértelmezés szerint a Felhasználókövetés eszköz véletlenszerűen mintákat csak az elmúlt 24 órában, a webhelyről származó egyéni eseményt. Megnövelheti az időtartományt, és megváltoztathatja a véletlenszerű mintavétel teljesítményének és pontosságának egyenlegét a szerkesztési menüben.
 
-Ha az Ön számára nem bizonyos az oldalmegtekintéseket, az egyéni eseményeket és a kivételeket, kattintson a **X** el szeretné rejteni a csomópontokon. Miután kiválasztotta a kívánt csomópontokat is elrejtése, kattintson a **létrehozás graph** gomb alatti a vizualizációt. Összes elrejtett csomópont megtekintéséhez kattintson a **szerkesztése** gombra, majd tekintse meg a **kizárt események** szakaszban.
+Ha az oldalletöltések, az egyéni események és a kivételek nem relevánsak, kattintson a elrejteni kívánt csomópontok **X** elemére. Miután kiválasztotta az elrejteni kívánt csomópontokat, kattintson a **diagram létrehozása** gombra a vizualizáció alatt. Ha meg szeretné tekinteni az összes rejtett csomópontot, kattintson a **Szerkesztés** gombra, majd tekintse meg a **kizárt események** szakaszt.
 
-Ha a lapmegtekintések vagy egyéni események, amelyek esetében hiányzik a várt a Vizualizáció:
+Ha olyan oldalletöltések vagy egyéni események hiányoznak, amelyeket a vizualizációban várhatóan látni fog:
 
-* Ellenőrizze a **kizárt események** című rész a **szerkesztése** menü.
-* Plusz gombok **mások** többek között a kevésbé gyakran használják események a Vizualizáció-csomópontokat.
-* Ha az oldal nézet vagy egyéni esemény várható ritkán küld a felhasználók, próbálkozzon az időtartomány, a Vizualizációk növelésével a **szerkesztése** menü.
-* Ellenőrizze, hogy a lap megtekintéséhez, egyéni eseményt vagy kivétel várt beállításáról gyűjti össze az Application Insights SDK a webhely a forráskódban. [További információ az egyéni események gyűjtése.](../../azure-monitor/app/api-custom-events-metrics.md)
+* A **Szerkesztés** menüben keresse meg a **kizárt események** szakaszt.
+* A **többi** csomóponton található plusz gombokkal a vizualizációban ritkábban előforduló eseményeket is tartalmazhat.
+* Ha a felhasználók nem ritkán küldik el az oldal nézetét vagy a várt egyéni eseményt, próbálja meg növelni a vizualizáció időtartományát a **szerkesztési** menüben.
+* Győződjön meg arról, hogy a várt oldal nézet, egyéni esemény vagy kivétel úgy van beállítva, hogy az Application Insights SDK gyűjtsön a hely forráskódjában. [További információ az egyéni események összegyűjtéséről.](../../azure-monitor/app/api-custom-events-metrics.md)
 
-Ha meg szeretné tekinteni a további lépéseket a vizualizációban, használja a **előző lépések** és **további lépések** legördülő menük, a Vizualizáció fölött.
+Ha további lépéseket szeretne látni a vizualizációban, használja az **előző lépéseket** és a **következő lépések** legördülő listát a vizualizáció felett.
 
-## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Weblap vagy szolgáltatás megtekintése, után tegye felhasználók hová, és mi tegye kattintanak?
+## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Egy oldal vagy szolgáltatás meglátogatása után hová mennek a felhasználók, és mire kattintanak?
 
-![Ismerje meg, ahol a felhasználók kattintanak a felhasználói folyamatok használatával](./media/usage-flows/00003-flows-one-step.png)
+![A Felhasználókövetés használatával megtudhatja, hogy a felhasználók hol kattintanak](./media/usage-flows/00003-flows-one-step.png)
 
-Ha a kezdeti esemény egy lapmegtekintés, az első oszlop ("1" lépés), a Vizualizáció gyorsan megismerheti, mit felhasználók közvetlenül az oldalra látogat után volt. Próbálja meg megnyitni a hely a felhasználói folyamatok képi megjelenítés mellett ablakban. Hasonlítsa össze az elvárásainak, a felhasználók hogyan használják az oldal az események az "1. lépés" oszlopban. Gyakran előfordul azon az oldalon, úgy tűnik, nem jelentős a csapata számára olyan felhasználói felületi elemek között a leggyakrabban használt a lapon lehet. Arculati fejlesztések a helyhez a remek kiindulási pont lehet.
+Ha a kezdeti esemény egy oldal nézet, a vizualizáció első oszlopa ("1. lépés") egy gyors módszer annak megismerésére, hogy a felhasználók Mikor voltak azonnal meglátogatva az oldalt. Próbálja meg megnyitni a webhelyet az Felhasználókövetés vizualizáció melletti ablakban. Hasonlítsa össze elvárásaival, hogy a felhasználók hogyan használják a lapot az "1. lépés" oszlopban szereplő események listájára. Gyakran előfordul, hogy a lap egyik felhasználói felületi eleme az oldal leggyakrabban használt része. Nagyszerű kiindulási pontként használható a webhelyének fejlesztése terén.
 
-A kezdeti esemény az egyéni esemény, ha az első oszlop mutatja, milyen felhasználók csak az adott művelet végrehajtása után volt. Lapmegtekintések, mint a fontolja meg, ha a felhasználók viselkedését a megfigyelt megfelel-e a csapat céljait és elvárásainak. Ha a kijelölt kezdeti esemény "Hozzáadott elem a vásárlás bevásárlókocsihoz", például nézzük meg, ha a Vizualizáció Röviddel ezután "Ugrás a Checkout" és "Beszerzési befejeződött" jelenik meg. Ha a felhasználói viselkedés eltér az elvárásainak, használja a Vizualizáció megérteni, hogyan felhasználók kihozhatják a hely jelenlegi kialakítás "találkozott".
+Ha a kezdeti esemény egy egyéni esemény, az első oszlop azt mutatja, hogy a felhasználók mit tettek a művelet végrehajtása után. Akárcsak az oldalletöltések esetében, gondolja át, hogy a felhasználók megfigyelt viselkedése megfelel-e a csapat céljainak és elvárásainak. Ha a kiválasztott kezdeti esemény "hozzáadott elem a bevásárlókocsi számára" (például: "Ugrás a pénztárhoz" és "befejezett vásárlás") nem sokkal később jelenik meg a vizualizációban. Ha a felhasználói viselkedés eltér az elvárásaitól, használja a vizualizációt, hogy megtudja, hogyan kezdik a felhasználók a hely aktuális tervének betöltését.
 
-## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Hol találhatók azok a helyek, felhasználók churn leginkább a helyről?
+## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Hol vannak a felhasználók az Ön webhelyéről leginkább átesett helyek?
 
-Tekintse meg a **munkamenet véget ért** csomópontok nagy mentési jelennek meg, a Vizualizáció egy folyamatban korai különösen oszlopban. Ez azt jelenti, hogy hány felhasználó után a következő lapokat és a felhasználói felület kölcsönhatások a fenti elérési út a webhelyek valószínűleg előforduló. Néha adatváltozás - elvégezte a beszerzés, egy e-kereskedelmi webhelyen például - várt, de általában a forgalom a tervezési problémákat, gyenge teljesítményt vagy egyéb problémák a hellyel, amely javítani lehet a jele.
+Figyelje meg, hogy a **munkamenet véget ért** -e olyan csomópontok, amelyek a vizualizáció egy oszlopában jelennek meg, különösen a folyamat elején. Ez azt jelenti, hogy sok felhasználó valószínűleg a webhelyről, a lapok és a felhasználói felület interakcióinak előző elérési útját követve lett kihasználva. Az adatforgalom időnként várható – miután a vásárlást egy e-kereskedelmi webhelyen elvégezte, például az adatforgalom a tervezési problémák, a gyenge teljesítmény vagy a webhellyel kapcsolatos egyéb problémák jele lehet.
 
-Vegye figyelembe, hogy **munkamenet véget ért** csomópontok csak az Application Insights-erőforrás által gyűjtött telemetria alapulnak. Az Application Insights telemetria bizonyos felhasználói interakció érdekében nem kap, ha felhasználók sikerült továbbra is rendelkezik kezelhetők a hely ezen a módon után a felhasználói folyamatok eszköz szerint a munkamenet véget ért.
+Ne feledje, hogy a **munkamenet-befejező** csomópontok csak a Application Insights erőforrás által gyűjtött telemetria alapulnak. Ha Application Insights nem kap telemetria az egyes felhasználói interakciók esetében, akkor a felhasználók továbbra is felhasználhatták a webhelyét azokon a módokon, amelyeket a Felhasználókövetés eszköz a munkamenet befejezését követően adott meg.
 
-## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Vannak-e helyeken, ahol a felhasználók ismétlődő ugyanaz a művelet újra és újra?
+## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Vannak olyan helyek, ahol a felhasználók újra és újra megismétlik a műveletet?
 
-Keressen egy oldal nézet vagy egyéni esemény, amelyek sok felhasználó között a vizualizációt a következő lépéseinek ismétlődik. Ez általában azt jelenti, hogy felhasználók ismétlődő műveleteket végez a webhelyen. Ha azt tapasztalja, ismétlődés, gondolja át a webhely kialakításának módosítása vagy hozzáadása ismétlési csökkentése érdekében új funkciókat. Tömeges szerkesztés funkció például hozzáadása, ha a felhasználók ismétlődő műveleteket végez egy elemet minden egyes sorára.
+Megkeresheti a vizualizációban a többi felhasználó által többször megismételhető oldal nézetet vagy egyéni eseményt. Ez általában azt jelenti, hogy a felhasználók ismétlődő műveleteket végeznek a webhelyén. Ha úgy találja, hogy ismétlődést talál, gondolja át a webhely kialakítását, vagy adjon hozzá új funkciókat az ismétlődés csökkentése érdekében. Ha például olyan felhasználókat talál, akik ismétlődő műveleteket végeznek a Table elem minden egyes sorában, a tömeges szerkesztési funkció hozzáadásával.
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
-### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>A kezdeti esemény jelölik az esemény egy munkamenet jelenik meg először nem, vagy minden alkalommal megjelenik egy munkamenetben?
+### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>A kezdeti esemény az esemény első indításakor jelenik meg egy munkamenetben, vagy amikor megjelenik egy munkamenetben?
 
-A Vizualizáció a kezdeti esemény csak az első alkalommal egy felhasználó adott oldal nézet vagy egyéni esemény egy munkamenet során küldött jelöli. Ha a felhasználók elküldhetik a kezdeti esemény többször is feldolgozza a munkamenet, majd az "1. lépés" oszlop csak bemutatja, hogyan viselkednek a felhasználók után a *első* kezdeti esemény példányát, nem minden példány.
+A vizualizáció kezdeti eseménye csak azt jelöli, hogy a felhasználó első alkalommal adta meg az adott nézetet vagy az egyéni eseményt egy munkamenet során. Ha a felhasználók többször is elküldhetik a kezdeti eseményt egy munkamenetben, akkor az "1. lépés" oszlop csak azt mutatja meg, hogy a felhasználók hogyan viselkedjenek a kezdeti esemény *első* példánya után, nem minden példánynál.
 
-### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>A csomópontok a Vizualizáció némelyike túl magas szintű. Ha például arról, hogy a csak "Gomb gombos. kattintással elérhető" csomópont Hogyan tudok oszthatja azt részletesebb csomópontok be?
+### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>A vizualizáció egyes csomópontjai túl magas szintűek. Például egy olyan csomópontot, amely csak azt mondja, hogy "gomb kattintott." Hogyan oszthatom le részletesebb csomópontokra?
 
-Használja a **felosztás** lehetőségei a a **szerkesztése** menüben:
+Használja a **Szerkesztés** menü **felosztás** lehetőségeit:
 
-1. Válassza ki a kívánt eseményt felosztania az **esemény** menü.
-2. Válasszon egy adott dimenzió a **dimenzió** menü. Ha egy esemény "Gombra kattint" nevű, próbáljon meg például a "Gomb neve." nevű egyéni tulajdonságot
+1. Válassza ki azt az eseményt, amelyet le szeretne bontani az **esemény** menüjében.
+2. Válasszon egy dimenziót a **dimenzió** menüben. Ha például egy "gomb rákattintáskor" nevű eseményre van szüksége, próbálja ki a "gomb neve" nevű egyéni tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Használat – áttekintés](usage-overview.md)
+* [A használat áttekintése](usage-overview.md)
 * [Felhasználók, munkamenetek és események](usage-segmentation.md)
 * [Megőrzés](usage-retention.md)
 * [Egyéni események hozzáadása az alkalmazáshoz](../../azure-monitor/app/api-custom-events-metrics.md)

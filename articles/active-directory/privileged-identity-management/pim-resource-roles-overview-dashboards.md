@@ -1,5 +1,5 @@
 ---
-title: Erőforrás-irányítópult használata hozzáférési felülvizsgálat végrehajtásához a PIM-Azure Active Directoryban | Microsoft Docs
+title: Egy erőforrás-irányítópult használata hozzáférési felülvizsgálat végrehajtásához a Privileged Identity Management-Azure Active Directoryban | Microsoft Docs
 description: Ismerteti, hogyan használható az erőforrás-irányítópult a Azure AD Privileged Identity Management (PIM) hozzáférési felülvizsgálatának végrehajtásához.
 services: active-directory
 documentationcenter: ''
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 03/30/2018
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e759ba47c16617aa1783ce6fb0e324aa62ee96d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: de2c04a0ea109046848d443db2e6ab9a9dd21ee0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804111"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895577"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Erőforrás-irányítópult használata hozzáférési felülvizsgálat végrehajtására a PIM-ben
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Egy erőforrás-irányítópult használata hozzáférési felülvizsgálat elvégzésére Privileged Identity Management
 
-Az erőforrás-irányítópult használatával hozzáférési felülvizsgálatot végezhet Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szolgáltatásban. A felügyeleti nézet irányítópultján három elsődleges összetevő van:
+Az erőforrás-irányítópult használatával hozzáférési felülvizsgálatot végezhet Privileged Identity Management (PIM) alkalmazásban. A Azure Active Directory (Azure AD) rendszergazdai nézetének irányítópultja három elsődleges összetevővel rendelkezik:
 
-- Az erőforrás-szerepkörök aktiválásának grafikus ábrázolása.
-- Két olyan diagram, amely a szerepkör-hozzárendelések hozzárendelési típus szerinti eloszlását jeleníti meg.
-- Az új szerepkör-hozzárendelésekhez tartozó adatterület.
+- Az erőforrás-szerepkörök aktiválásának grafikus ábrázolása
+- A szerepkör-hozzárendelések hozzárendelési típus szerinti eloszlását megjelenítő diagramok
+- Az új szerepkör-hozzárendelésekhez adatokat tartalmazó adatterület
 
 ![A felügyeleti nézet irányítópultjának képernyőképe, grafikonok és diagramok megjelenítése](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
@@ -37,10 +37,10 @@ Az erőforrás-irányítópult használatával hozzáférési felülvizsgálatot
 
 Az erőforrás-szerepkörök aktiválásának grafikus ábrázolása az elmúlt hét napban terjed ki. Ezek az információk a kiválasztott erőforrásra vonatkoznak, és megjelenítik a leggyakoribb szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés rendszergazdája) és az összes szerepkör együttes aktiválásait.
 
-Az aktiválási gráftól jobbra két diagram jeleníti meg a szerepkör-hozzárendelések hozzárendelési típus szerinti eloszlását mind a felhasználók, mind a csoportok esetében. A diagram egy szeletének kiválasztásával módosíthatja az értéket százalékra (vagy fordítva).
+Az aktiválási gráf egyik oldalán két diagram jeleníti meg a szerepkör-hozzárendelések hozzárendelési típus szerinti eloszlását mind a felhasználók, mind a csoportok esetében. A diagram egy szeletének kiválasztásával módosíthatja az értéket százalékra (vagy fordítva).
 
-A diagramok alatt az új szerepkör-hozzárendelésekkel rendelkező felhasználók és csoportok száma látható az elmúlt 30 napban, valamint a szerepkörök listáját a teljes hozzárendelések szerint rendezve (csökkenő sorrendben).
+A diagramok alatt az új szerepkör-hozzárendeléssel rendelkező felhasználók és csoportok száma látható az elmúlt 30 napban, a szerepkörök pedig az összes hozzárendelés szerint csökkenő sorrendben rendezve jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure-erőforrásszerepkörök hozzáférési felülvizsgálatának indítása a PIM szolgáltatásban](pim-resource-roles-start-access-review.md) 
+- [Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának elindítása Privileged Identity Management](pim-resource-roles-start-access-review.md)

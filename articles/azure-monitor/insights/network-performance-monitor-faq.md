@@ -1,23 +1,18 @@
 ---
 title: Gyakori kérdések – Network Performance Monitor megoldás az Azure-ban | Microsoft Docs
 description: Ez a cikk az Azure-Network Performance Monitorokkal kapcsolatos gyakori kérdéseket rögzíti. Network Performance Monitor (NPM) segít a hálózatok teljesítményének közel valós idejű figyelésében, valamint a hálózati teljesítmény szűk keresztmetszetének észlelésében és megkeresésében.
-services: log-analytics
-documentationcenter: ''
-author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/12/2018
+author: vinynigam
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: MT
+ms.date: 10/12/2018
+ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782112"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898852"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -25,7 +20,7 @@ ms.locfileid: "68782112"
 
 Ez a cikk az Azure-beli Network Performance Monitor (NPM) kapcsolatos gyakori kérdéseket (GYIK) rögzíti
 
-A [Network Performance monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózati figyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) -végpontok hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](../../azure-monitor/insights/network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
+A [Network Performance monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózati figyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás-végpontok](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](../../azure-monitor/insights/network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
 
 A Network Performance Monitor észleli a hálózati problémákat, például a forgalmi blackholing, az útválasztási hibákat, valamint azokat a problémákat, amelyeket a hagyományos hálózati figyelési módszerek nem képesek észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 
@@ -64,7 +59,7 @@ Ahhoz, hogy a csomópont támogassa a figyelést a TCP protokoll használatával
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan változtathatom meg a NPM által használt TCP-portot a figyeléshez?
-A NPM által a figyeléshez használt TCP-portot a [EnableRules. ps1](https://aka.ms/npmpowershellscript) parancsfájl futtatásával módosíthatja. Meg kell adnia a paraméterként használni kívánt portszámot. Ha például engedélyezni szeretné a TCP-t a 8060- `EnableRules.ps1 8060`as porton, futtassa a parancsot. Győződjön meg arról, hogy ugyanazt a TCP-portot használja a figyeléshez használt összes csomóponton.
+A NPM által a figyeléshez használt TCP-portot a [EnableRules. ps1](https://aka.ms/npmpowershellscript) parancsfájl futtatásával módosíthatja. Meg kell adnia a paraméterként használni kívánt portszámot. Ha például engedélyezni szeretné a TCP-t a 8060-as porton, futtassa `EnableRules.ps1 8060`. Győződjön meg arról, hogy ugyanazt a TCP-portot használja a figyeléshez használt összes csomóponton.
 
 A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályai vannak, győződjön meg arról, hogy engedélyezik a NPM által használt TCP-portra irányuló forgalmat.
 
@@ -74,7 +69,7 @@ Minden figyelni kívánt alhálózathoz legalább egy ügynököt kell használn
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Legfeljebb hány ügynököt használhatok, vagy hibaüzenetet látok. elérte a konfigurációs korlátot?
 A NPM az IP-címek számát 5000 IP-címekre korlátozza munkaterületen. Ha egy csomópont IPv4-és IPv6-címeket is tartalmaz, akkor ez a csomópont 2 IP-címének számít. Ezért a 5000 IP-cím korlátja határozza meg az ügynökök számának felső határát. A NPM > csomópontok lapján törölheti az inaktív ügynököket, > a konfigurálást. A NPM az összes olyan IP-cím előzményeit is fenntartja, amely az ügynököt futtató virtuális géphez lett társítva, és mindegyik külön IP-címmel van elfoglalva, amely a felső határ 5000 IP-címeihez járul hozzá. A munkaterülethez tartozó IP-címek felszabadításához használhatja a csomópontok lapot a nem használt IP-címek törléséhez.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
 ### <a name="how-are-loss-and-latency-calculated"></a>A veszteségek és a késések kiszámítása
 A forrásoldali ügynökök TCP SYN-kérelmeket küldenek (ha a TCP protokoll figyelésre van kiválasztva) vagy ICMP ECHO-kéréseket (ha az ICMP protokoll figyelésre van kiválasztva) a cél IP-címhez rendszeres időközönként, így biztosítva a forrás-cél IP-cím közötti összes elérési utat. a kombinációt a rendszer fedezi. Az egyes elérési utak elvesztésének és késésének kiszámításához a fogadott csomagok százalékos arányát és az oda-és bejárási időt kell mérni. Ezeket az adatokat a lekérdezési időköz és az összes elérési út alapján összesíti a rendszer az adott lekérdezési időközhöz tartozó IP-kombinációhoz tartozó veszteségek és késések összesített értékeinek beszerzéséhez.
@@ -165,17 +160,17 @@ A E2EMedianLatency a TCP ping tesztek eredményeinek összesítése után 3 perc
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Miért különböznek a HopLatencyValues a hop-by-hop késési számoktól 
 A HopLatencyValues forrása a végpont.
-Példa: Ugrások – A, B, C. AvgHopLatency-10, 15, 20. Ez azt jelenti, hogy A forrás a késés = 10, a forrás – B késés = 15, a forrás – C késés pedig 20. A felhasználói felület a-B ugrások késését 5-ként számítja ki a topológiában.
+Például: ugrások – A, B, C. AvgHopLatency-10, 15, 20. Ez azt jelenti, hogy A forrás a késés = 10, a forrás – B késés = 15, a forrás – C késés pedig 20. A felhasználói felület a-B ugrások késését 5-ként számítja ki a topológiában.
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>A megoldás 100%-os csökkenést mutat, de kapcsolat van a forrás és a cél között.
 Ez akkor fordulhat elő, ha a gazdagép tűzfala vagy a köztes tűzfal (hálózati tűzfal vagy Azure NSG) blokkolja a forrás-ügynök és a cél közötti kommunikációt a NPM figyeléséhez használt porton keresztül (alapértelmezés szerint a port 8084, kivéve, ha a az ügyfél megváltoztatta ezt).
 
-* Annak ellenőrzéséhez, hogy a gazdagép tűzfala nem blokkolja-e a kommunikációt a szükséges porton, tekintse meg a forrás-és a cél csomópontok állapotát a következő nézetből: Network Performance Monitor – > Konfiguráció – > csomópontok. 
+* Annak ellenőrzéséhez, hogy a gazdagép tűzfala nem blokkolja-e a kommunikációt a szükséges porton, tekintse meg a forrás és a cél csomópontok állapotát a következő nézetből: Network Performance Monitor-> Configuration-> csomópontok. 
   Ha nem kifogástalan állapotú, tekintse meg az utasításokat, és végezze el a megfelelő lépéseket. Ha a csomópontok állapota Kifogástalan, lépjen a b lépésre. az alábbiakban.
 * Annak ellenőrzéséhez, hogy a közbenső hálózati tűzfal vagy az Azure NSG nem blokkolja-e a szükséges porton keresztüli kommunikációt, használja a külső gyártótól származó PsPing segédprogramot az alábbi utasítások használatával:
   * a psping segédprogram letölthető [innen](https://technet.microsoft.com/sysinternals/psping.aspx) 
   * Futtassa a következő parancsot a forrás csomópontról.
-    * psping-n 15 \<cél csomópontjának\>IP-címe:p ortnumber alapértelmezett NPM a 8084 portot használja. Ha ezt explicit módon módosította a EnableRules. ps1 parancsfájllal, adja meg az Ön által használt egyéni portszámot. Ez a ping az Azure-gépről a helyi környezetbe
+    * psping-n 15 \<cél csomópontjának IP-címe\>:p ortNumber alapértelmezett NPM 8084 portot használ. Ha ezt explicit módon módosította a EnableRules. ps1 parancsfájllal, adja meg az Ön által használt egyéni portszámot. Ez a ping az Azure-gépről a helyi környezetbe
 * Ellenőrizze, hogy a pingek sikeresek-e. Ha nem, akkor azt jelzi, hogy egy közbenső hálózati tűzfal vagy az Azure NSG blokkolja a port forgalmát.
 * Most futtassa a parancsot a cél csomópontról a forrás csomópont IP-címére.
 
@@ -190,7 +185,7 @@ A NPM most felfedi a ExpressRoute-áramköröket és az összes olyan előfizet�
 
 Előfordulhat, hogy a helyszíni és az Azure-csomópontok közötti kapcsolat kifogástalan, de a forgalom nem halad át a NPM által figyelt ExpressRoute-áramkörön. 
 
-Ez akkor fordulhat elő, ha:
+Ez a következő esetekben fordulhat elő:
 
 * Az ER áramkör nem érhető el.
 * Az útválasztási szűrők úgy vannak konfigurálva, hogy elsőbbséget biztosítanak más útvonalaknak (például egy VPN-kapcsolatnak vagy egy másik ExpressRoute áramkörnek) a kívánt ExpressRoute áramkörön. 
@@ -219,7 +214,7 @@ Ez akkor fordulhat elő, ha egy vagy több igaz:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A szolgáltatás-kapcsolódási figyelő képességben a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes
 Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem webalkalmazás, de a teszt webes tesztként van konfigurálva. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a web helyett hálózatként.
 
-## <a name="miscellaneous"></a>Egyéb
+## <a name="miscellaneous"></a>Egyéb rendelkezések
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Hatással van-e a figyelésre használt csomópont teljesítményére?
 A NPM folyamat úgy van beállítva, hogy leálljon, ha a gazdagép CPU-erőforrásainak több mint 5%-át használja. Ezzel biztosíthatja, hogy a csomópontokat a szokásos számítási feladatokhoz a teljesítmény befolyásolása nélkül tudja használni.
@@ -228,11 +223,11 @@ A NPM folyamat úgy van beállítva, hogy leálljon, ha a gazdagép CPU-erőforr
 A NPM csak helyi Windows tűzfal-szabályt hoz létre azon csomópontokon, amelyeken a EnableRules. ps1 PowerShell-parancsfájl fut, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással a megadott porton. A megoldás nem módosítja a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályait.
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hogyan ellenőrizhetem a figyeléshez használt csomópontok állapotát?
-A figyeléshez használt csomópontok állapotát a következő nézetből tekintheti meg: Network Performance Monitor – > Konfiguráció – > csomópontok. Ha egy csomópont nem kifogástalan állapotú, megtekintheti a hiba részleteit, és elvégezheti a javasolt műveletet.
+A figyeléshez használt csomópontok állapotát a következő nézetből tekintheti meg: Network Performance Monitor-> Configuration-> csomópontok. Ha egy csomópont nem kifogástalan állapotú, megtekintheti a hiba részleteit, és elvégezheti a javasolt műveletet.
 
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.

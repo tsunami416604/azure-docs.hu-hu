@@ -1,25 +1,19 @@
 ---
 title: Eseményekre való válaszadás Azure Log Analytics-riasztásokkal | Microsoft Docs
 description: Az oktatóanyag segítségével megismerheti, hogyan lehet elérni, hogy a Log Analytics-riasztások azonosítsák a munkaterület fontos információit, és proaktívan értesítsék Önt a problémákról, vagy műveleteket indítsanak el ezek megoldására.
-services: log-analytics
-documentationcenter: log-analytics
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: tutorial
-ms.date: 10/05/2018
+author: MGoedtel
 ms.author: magoedte
+ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 6521688e595230951e0753fd67c2bf9b02e0a6ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a30b7569c14aaccb40b357cc5acb82b0e32d2895
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589893"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894661"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](tutorial-logs-dashboards.md) oktatóanyag folytatása.   
@@ -32,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
@@ -70,7 +64,7 @@ Most, hogy létrehozott egy riasztást, egyetlen panelen tekintheti meg az Azure
 
 Amikor egy riasztás aktiválódik, a táblázatban megjelenik az állapot, és hogy a választott időtartományon belül (alapértelmezés szerint az elmúlt hat óra) hányszor aktiválódott.  A beérkezett üzenetek között megjelenik egy, a következő példához hasonló e-mail, amely a küszöbértéket megsértő virtuális gépet mutatja és a keresési lekérdezésnek megfelelő első néhány eredményt.<br><br> ![Minta riasztási e-mail művelet](./media/tutorial-response/azure-alert-email-notification-01.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan képesek a riasztási szabályok proaktívan azonosítani a hibákat, valamint válaszolni rájuk, amikor az ütemezett naplókeresések futtatásakor az eredmények megfelelnek bizonyos feltételeknek.
 
 Kövesse ezt a hivatkozást az előre felépített Log Analytics-szkriptminták megtekintéséhez.  

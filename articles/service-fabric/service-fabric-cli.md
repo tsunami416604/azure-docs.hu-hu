@@ -2,18 +2,18 @@
 title: Az Azure Service Fabric parancssori felület használatának első lépései
 description: Ez a dokumentum ismerteti az Azure Service Fabric parancssori felület használatát. Megtudhatja, hogyan csatlakozhat fürtökhöz, és hogyan kezelheti alkalmazásait.
 services: service-fabric
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803248"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901366"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -25,7 +25,7 @@ Az Azure Service Fabric parancssori felület (CLI) egy parancssori eszköz a Ser
 
 A telepítés előtt győződjön meg arról, hogy a környezetben a Python és a pip is telepítve van. További információkért olvassa el a [pip rövid útmutató dokumentációját](https://pip.pypa.io/en/latest/quickstart/) és a hivatalos [Python-telepítési dokumentációt](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-A parancssori felület a Python 2.7, 3.5, 3.6-os és 3.7 verziókat támogatja. Python 3.x az ajánlott verzió, mivel a Python 2.7-es megszűnik a támogatás hamarosan.
+A CLI a 2,7, 3,5, 3,6 és 3,7 Python-verziókat támogatja. A Python 3. x a javasolt verzió, mivel a Python 2,7 hamarosan megszűnik a támogatás vége.
 
 ### <a name="service-fabric-target-runtime"></a>A Service Fabric cél futtatókörnyezete
 
@@ -33,7 +33,8 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 
 | Parancssori felület verziója   | támogatott futtatókörnyezet-verzió |
 |---------------|---------------------------|
-| Legújabb (~ = 7)  | Latest (~=6.4)            |
+| Legújabb (~ = 8)  | Legújabb (~ = 6,5)            |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -58,11 +59,11 @@ Sokféleképpen telepítheti a pipet és a Pythont a platformra. Itt találja a 
 
 Windows 10, Windows Server 2016 és Windows Server 2012 R2 esetén használja a normál telepítési utasításokat. A Python telepítője alapértelmezés szerint a pipet is telepíti.
 
-1. Látogasson el a hivatalos [Python letöltési oldalra](https://www.python.org/downloads/), és töltse le a Python 3.7 legújabb kiadását.
+1. Látogasson el a hivatalos [Python letöltési oldalra](https://www.python.org/downloads/), és töltse le a Python 3,7 legújabb kiadását.
 
 2. Indítsa el a telepítőt.
 
-3. A parancssor alján válassza **Python 3.7 adja hozzá az elérési út**.
+3. A parancssor alján válassza a **Python 3,7 hozzáadása az elérési útra**lehetőséget.
 
 4. Válassza az **Install Now** (Telepítés) lehetőséget, és fejezze be a telepítést.
 
@@ -73,7 +74,7 @@ python --version
 pip --version
 ```
 
-Ezután futtassa a következő parancsot az Azure Service Fabric parancssori felület (sfctl) telepítése, és megtekintése a CLI súgóoldalt:
+Ezután futtassa a következő parancsot az Azure Service Fabric CLI (sfctl) telepítéséhez, és tekintse meg a parancssori felület súgójának oldalát:
 
 ```bat
 pip install sfctl
@@ -115,7 +116,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
 
-Red hat Service Fabric parancssori felületének telepítéséhez futtassa a következő parancsokat:
+A következő parancsok futtatásával telepítheti Service Fabric CLI-t a Red Hat-on:
 
 ```bash
 sudo yum install -y python34
@@ -124,10 +125,10 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-A telepítés teszteléséhez, tekintse meg a lépéseket **Linux Ubuntu és a Windows alrendszere** szakasz
+A telepítés teszteléséhez tekintse meg az **Ubuntu és a Windows alrendszerek Linux** rendszeren című szakaszban említett lépéseket.
 
 <a name = "cli-mac"></a>
-### <a name="macos"></a>MacOS
+### <a name="macos"></a>macOS
 
 MacOS rendszeren javasoljuk, hogy a [HomeBrew csomagkezelőt](https://brew.sh) használja. Ha a HomeBrew még nincs telepítve, a következő parancs futtatásával telepítse:
 
@@ -135,7 +136,7 @@ MacOS rendszeren javasoljuk, hogy a [HomeBrew csomagkezelőt](https://brew.sh) h
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Ezután a terminálról telepítse Python 3.7-es verzióját, a pipet és a Service Fabric parancssori felület a következő parancsok futtatásával:
+Ezután a terminálról telepítse a Python 3,7, a pip és a Service Fabric parancssori felületet a következő parancsok futtatásával:
 
 ```bash
 brew install python3
@@ -241,7 +242,7 @@ Ellenőrizze, hogy a megadott fürtvégpont elérhető-e és figyel-e. Továbbá
 
 ### <a name="detailed-logs"></a>Részletes naplók
 
-A részletes naplók gyakran hasznosak a hibák javításához vagy a problémák jelentéséhez. A `--debug` jelző kimenetet eredményez.
+A részletes naplók gyakran hasznosak a hibák javításához vagy a problémák jelentéséhez. A `--debug` jelző növeli a kimenet részletességét.
 
 ### <a name="command-help-and-syntax"></a>Parancsok súgója és szintaxisa
 
@@ -266,7 +267,7 @@ pip uninstall sfctl
 pip install sfctl
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás üzembe helyezése az Azure Service Fabric parancssori felülettel](service-fabric-application-lifecycle-sfctl.md)
 * [A Service Fabric használatának első lépései Linuxon](service-fabric-get-started-linux.md)

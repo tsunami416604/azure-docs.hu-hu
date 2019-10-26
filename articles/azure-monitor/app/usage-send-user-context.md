@@ -1,64 +1,58 @@
 ---
-title: Felhasználói környezetben való használat engedélyezése azonosítók tapasztalat az Azure Application Insights küldése |} A Microsoft Docs
-description: Nyomon követheti, hogyan felhasználók át a szolgáltatáson keresztül teheti azok Application Insights egy egyedi, állandó azonosító karakterláncot.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
+title: Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure Application Insightsban | Microsoft Docs
+description: Nyomon követheti, hogy a felhasználók hogyan haladnak át a szolgáltatáson. ehhez Rendeljen hozzájuk egy egyedi, állandó azonosító karakterláncot a Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371835"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899362"
 ---
-# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Az Azure Application Insights használati bővítsék azonosítók felhasználói környezet küldése
+# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure-ban Application Insights
 
 ## <a name="tracking-users"></a>Felhasználók nyomon követése
 
-Az Application Insights lehetővé teszi, hogy figyelését és nyomon követheti a felhasználók a termék használati eszközöket keresztül:
+Application Insights lehetővé teszi a felhasználók figyelését és nyomon követését a termék használati eszközeinek használatával:
 
 - [Felhasználók, munkamenetek, események](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Tölcsérek](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Adatmegőrzési](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorszok
+- [Adatmegőrzés](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorszok
 - [Munkafüzetek](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-Nyomon követheti, mi a felhasználó időbeli végrehajtja, az Application Insights-azonosító az egyes felhasználók vagy a munkamenet van szüksége. Minden egyéni esemény vagy oldal nézet vegye fel a következő azonosítóval.
+A felhasználó által az idő múlásával nyomon követhető, Application Insights minden felhasználóhoz vagy munkamenethez szüksége van egy AZONOSÍTÓra. A következő azonosítókat adja meg minden egyéni esemény vagy lap nézetben.
 
-- Felhasználók, a tölcsérek, a megőrzési és a Kohorszok: Tartalmazza a felhasználói azonosítóját.
-- Munkamenetek: Tartalmazza a munkamenet-azonosítót.
+- Felhasználók, tölcsérek, megőrzés és kohorszok: felhasználói azonosító belefoglalása.
+- Munkamenetek: munkamenet-azonosító belefoglalása.
 
 > [!NOTE]
-> Ez a speciális cikk sbalování a manuális lépéseket az Application insights segítségével a felhasználói tevékenység nyomon követése. Számos webes alkalmazások **ezeket a lépéseket nem feltétlenül szükséges**, mint az alapértelmezett kiszolgálóoldali SDK-k együtt a [/böngésző ügyféloldali JavaScript SDK](../../azure-monitor/app/website-monitoring.md ), általában automatikusan követésére felhasználói tevékenység. Ha még nem konfigurálta [az ügyféloldali figyelés](../../azure-monitor/app/website-monitoring.md ) mellett a kiszolgálóoldali SDK-t, először hajtsa végre, és ellenőrizze, hogy ha a felhasználói viselkedés elemzőeszközök elvárt.
+> Ez egy speciális cikk, amely ismerteti a felhasználói tevékenység nyomon követésének manuális lépéseit Application Insights. Számos webalkalmazással **ezek a lépések nem szükségesek**, mivel az alapértelmezett kiszolgálóoldali SDK-k az [ügyfél/böngésző-oldal JavaScript SDK](../../azure-monitor/app/website-monitoring.md )-val együtt általában elegendőek a felhasználói tevékenységek automatikus követéséhez. Ha még nem konfigurálta az [ügyféloldali figyelést](../../azure-monitor/app/website-monitoring.md ) a kiszolgálóoldali SDK mellett, először is ellenőrizze, hogy a felhasználói viselkedés elemzési eszközei a várt módon működnek-e.
 
-## <a name="choosing-user-ids"></a>Felhasználók kiválasztása
+## <a name="choosing-user-ids"></a>Felhasználói azonosítók kiválasztása
 
-Felhasználói azonosítók a kell nyomon követheti, hogyan viselkednek a felhasználók idővel a felhasználói munkamenetek közötti megtartása. Nincsenek a különböző megközelítéseket megőrzése a azonosítója.
+A felhasználói azonosítóknak meg kell őrizniük a felhasználói munkamenetek között, hogy nyomon kövessék, hogyan viselkedjenek a felhasználók a Az azonosító megtartásának számos módja van.
 
-- A felhasználó a szolgáltatásban már meglévő definíciója.
-- Szolgáltatásnak van egy böngészőben a hozzáférést, ha, továbbíthatja a böngészőben a cookie-k azonosítójú abban. Az azonosító az addig megmarad, mindaddig, amíg a cookie-t a felhasználó böngészőjében.
-- Szükség esetén új Azonosítót minden egyes munkamenetnél is használhat, de a felhasználókra vonatkozó eredmények korlátozott lesz. Ha például nem tudja meg, hogyan változik a felhasználói viselkedés idővel.
+- A szolgáltatásban már meglévő felhasználó definíciója.
+- Ha a szolgáltatásnak van hozzáférése egy böngészőhöz, akkor a böngészőben egy olyan cookie-t adhat át, amely egy AZONOSÍTÓval rendelkezik. Az azonosító addig marad, amíg a cookie a felhasználó böngészőjében marad.
+- Ha szükséges, használhatja az egyes munkamenetek új AZONOSÍTÓját, de a felhasználókra vonatkozó eredmények korlátozottak lesznek. Például nem fogja tudni megtekinteni, hogyan változnak a felhasználók viselkedése az idő múlásával.
 
-Az azonosító egy GUID azonosítót vagy egy másik karakterláncra elég bonyolult minden felhasználóhoz egyedi azonosításához kell lennie. Például lehet a hosszú véletlen szám.
+Az AZONOSÍTÓnak GUID-ként vagy más karakterlánc-komplexnek kell lennie ahhoz, hogy az egyes felhasználók egyedileg azonosíthatók legyenek. Ez lehet például egy hosszú véletlenszerű szám.
 
-Ha az azonosító a felhasználó személyes azonosító információkat tartalmaz, azt nem megfelelő érték küldése az Application Insightsba, mint a felhasználói azonosítóját. Elküldheti az azonosítója, mint egy [hitelesített felhasználó azonosítója](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), de nem felel meg a felhasználói azonosító követelménye használati forgatókönyvek.
+Ha az azonosító a felhasználóval kapcsolatos személyazonosításra alkalmas adatokat tartalmaz, nem megfelelő érték, amelyet felhasználói AZONOSÍTÓként Application Insights küldeni. Ezt az azonosítót [hitelesített felhasználói azonosítóként](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users)is elküldheti, de nem teljesíti a használati forgatókönyvek felhasználói azonosítóra vonatkozó követelményeit.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-alkalmazások: A felhasználói környezet egy ITelemetryInitializer beállítása
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET alkalmazások: a felhasználói környezet beállítása egy ITelemetryInitializer
 
-Hozzon létre egy telemetriainicializáló részletesen ismertetett módon [Itt](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). A munkamenet-azonosító, a kérelmek telemetriai adatai keresztül adja át, és állítsa be a Context.User.Id és a Context.Session.Id.
+Hozzon létre egy telemetria inicializáló a részletek [itt](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)leírtak szerint. Adja át a munkamenet-azonosítót a kérelem telemetria, és állítsa be a Context.User.Id és a Context.Session.Id.
 
-Ebben a példában a felhasználói Azonosítót állít be egy azonosítóval, amely a munkamenet végeztével lejár. Ha lehetséges használjon egy felhasználói Azonosítót, amely továbbra is fennáll, munkamenetek között.
+Ez a példa a felhasználói azonosítót egy olyan azonosítóra állítja be, amely a munkamenet után lejár. Ha lehetséges, használjon olyan felhasználói azonosítót, amely a munkamenetek között megmarad.
 
-### <a name="telemetry-initializer"></a>Telemetriainicializáló
+### <a name="telemetry-initializer"></a>Telemetria inicializáló
 
 ```csharp
 using System;
@@ -134,11 +128,11 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Használati bővítsék küldésének megkezdése [egyéni események](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [Lapmegtekintések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Ha már küldhet egyéni eseményeket vagy lapmegtekintéseket, Fedezze fel az megtudhatja, hogy a felhasználók használni a szolgáltatást a Használatelemzési eszközben.
-    - [Használat – áttekintés](usage-overview.md)
+- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
+- Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
+    - [A használat áttekintése](usage-overview.md)
     - [Felhasználók, munkamenetek és események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)

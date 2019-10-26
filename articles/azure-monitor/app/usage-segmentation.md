@@ -1,73 +1,68 @@
 ---
-title: Az Azure Application insights szolgáltatásban felhasználói, munkamenet és esemény elemzése |} A Microsoft docs
-description: A felhasználók a webalkalmazás demográfiai elemzése.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Felhasználók, munkamenetek és események elemzése az Azure Application Insightsban | Microsoft docs
+description: A webalkalmazás felhasználóinak demográfiai elemzése.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16b0b734b6b680bea75786bfdbe77eac5e590cfe
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372285"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899401"
 ---
-# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése az Application insights szolgáltatásban
+# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése Application Insights
 
-Ismerje meg, amikor a felhasználók használják a webalkalmazásokat, milyen lapok, leginkább érdeklő, ahol a felhasználók is található, és milyen böngészőket és operációs rendszerek használata. Üzleti és a használati adatokat elemezhet [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Megtudhatja, hogy mikor használják a felhasználók a webalkalmazást, mely oldalakat érdeklik leginkább, hol találhatók a felhasználók, és milyen böngészőket és operációs rendszereket használnak. Az üzleti és a használati telemetria elemzése az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)használatával.
 
-![Application Insights felhasználók képernyőképe](./media/usage-segmentation/0001-users.png)
+![Képernyőkép Application Insights felhasználókról](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
-Ha még nem látható a felhasználók, munkamenetek és események paneleket az Application Insights portálon lévő adatok [megtudhatja, hogyan kezdheti el a használati eszközökkel](usage-overview.md).
+Ha még nem látja az adatokat a Application Insights-portálon található felhasználók, munkamenetek vagy események paneleken, [Ismerkedjen meg a használati eszközök használatának első lépéseivel](usage-overview.md).
 
-## <a name="the-users-sessions-and-events-segmentation-tool"></a>A felhasználók, munkamenetek és események Szegmentálás eszköz
+## <a name="the-users-sessions-and-events-segmentation-tool"></a>A felhasználók, munkamenetek és események szegmentálására szolgáló eszköz
 
-Három a használati paneleket a webes alkalmazás három perspektívából szeletelésére és feldarabolására használnak a telemetriai használni ugyanazzal a módszerrel. Szűréssel és az adatok felosztása, insights különböző lapjait és szolgáltatásait relatív használatát ismertető részletes elemzést.
+A használati pengék három szemszögből ugyanazt az eszközt használják a webalkalmazásból származó telemetria és-kockákra három perspektívából. Az adatok szűrésével és felosztásával feltárhatja a különböző lapok és szolgáltatások relatív használatát.
 
-* **Felhasználó-eszköz**: Hányan használják az alkalmazást és annak szolgáltatásait.  Felhasználók számítanak névtelen azonosítók tárolva a böngésző cookie-k használatával. A különböző böngészők vagy a gépek használata egyetlen személy szerint egynél több felhasználó beleszámítanak.
-* **Munkamenetek**: Felhasználói tevékenység, hogy hány munkamenetben vette az egyes oldalak és az alkalmazás funkcióit. A munkamenet akkor számít, felhasználói inaktivitás fél óra múlva, vagy 24 órányi folyamatos, becsült használat után.
-* **Események eszközének**: Milyen gyakran egyes oldalak és az alkalmazás funkcióit használja. Egy oldal nézet külön tranzakciónak minősül Ha egy böngészőben lap betöltésekor az alkalmazásból, amennyiben rendelkezik [kialakítva, hogy](../../azure-monitor/app/javascript.md). 
+* **Felhasználók eszköz**: hány ember használta az alkalmazást és annak funkcióit.  A felhasználókat a böngésző cookie-jai tárolt névtelen azonosítók használatával számoljuk el. A különböző böngészőket vagy számítógépeket használó egyetlen személy több felhasználónak is számít.
+* **Munkamenetek eszköz**: a felhasználói tevékenység hány munkamenete tartalmazta az alkalmazás egyes lapjait és funkcióit. A munkamenetek a felhasználói tétlenség fél órája vagy 24 órányi folyamatos használat után számítanak.
+* **Events Tool (események) eszköz**: az alkalmazás egyes oldalai és funkciói milyen gyakran használatosak. Az oldal nézet akkor számít, ha egy böngésző betölt egy oldalt az alkalmazásból, ha már van ilyen [eszköz](../../azure-monitor/app/javascript.md). 
 
-    Egyéni esemény több előfordulása hiba történik az alkalmazás, gyakran egy felhasználói beavatkozás, például egy gombra való kattintással vagy néhány tevékenység befejezése után a jelöli. Az alkalmazás szúr be kódot [egyéni események létrehozása](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Egy egyéni esemény az alkalmazásban előforduló egyik előfordulást jelképezi, gyakran egy felhasználói interakciót, például egy kattintással vagy egy feladat befejezését. Az alkalmazásban programkódot szúrhat be [Egyéni események létrehozásához](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-## <a name="querying-for-certain-users"></a>Az egyes felhasználókat kérdezi le
+## <a name="querying-for-certain-users"></a>Bizonyos felhasználók lekérdezése
 
-Ismerje meg a különböző felhasználói csoportokhoz a felhasználók eszköz tetején a lekérdezési beállítások módosításával:
+A felhasználók eszköz tetején található lekérdezési beállítások módosításával megismerheti a felhasználók különböző csoportjait:
 
-* Megjelenítés: Válassza ki a elemzéséhez felhasználói kohorsz a következő.
-* Használja ki: Válassza ki az egyéni események és Lapmegtekintések.
-* Során: Válasszon időtartományt.
-* Szerint: Válassza ki a gyűjtőbe az adatokat, vagy egy bizonyos idő, vagy egy másik tulajdonságot, mint például a böngészőben vagy az városa módját.
-* Felosztási szempont: Válassza ki egy tulajdonságot amely split vagy szegmens az adatokat. 
-* Szűrők hozzáadása: A lekérdezést, hogy bizonyos felhasználók, munkamenetek és események azok tulajdonságait, például a böngészőben vagy az városa alapján korlátozza. 
+* Megjelenítés: válassza ki az elemezni kívánt felhasználók kohorszát.
+* Ki használt: válassza az egyéni események és oldalletöltések lehetőséget.
+* Ideje: válasszon időtartományt.
+* Szerint: válassza ki, hogyan szeretné felvenni az adatgyűjtőt egy adott időtartam vagy egy másik tulajdonság (például böngésző vagy város) alapján.
+* Felosztási szempont: válasszon ki egy tulajdonságot, amellyel feloszthatja vagy szegmentálhatja az adatgyűjtést. 
+* Szűrők hozzáadása: a lekérdezés korlátozása bizonyos felhasználóknak, munkameneteknek vagy eseményeknek a tulajdonságaik (például böngésző vagy város) alapján. 
  
-## <a name="saving-and-sharing-reports"></a>És jelentések megosztása 
-A Mindenki más az Application Insights-erőforrást a megosztott jelentések szakasz hozzáféréssel rendelkező felhasználók jelentéseket, vagy a saját csak a saját jelentések szakaszban Ön, vagy megosztott mentheti.
+## <a name="saving-and-sharing-reports"></a>Jelentések mentése és megosztása 
+A felhasználók jelentéseit mentheti saját maga is a Saját jelentések szakaszban, vagy megoszthatja mindenki mással, hogy hozzáférjen ehhez a Application Insights erőforráshoz a megosztott jelentések szakaszban.
 
-A felhasználók, munkamenetek és események jelentés; mutató hivatkozás megosztása Kattintson a **megosztás** az eszköztáron, majd másolja a hivatkozást.
+Felhasználókra, munkamenetekre vagy eseményekre vonatkozó jelentésre mutató hivatkozás megosztása; kattintson az eszköztár **megosztás** elemére, majd másolja a hivatkozást.
 
-A felhasználók, munkamenetek és események jelentésben; másolatának megosztása Kattintson a **megosztás** az eszköztáron, majd kattintson a **Word ikon** az adatokat egy Word-dokumentum létrehozásához. Vagy kattintson a **Word ikon** a fő diagram felett.
+A felhasználók, munkamenetek vagy események jelentésében tárolt adatmásolatok megosztása; kattintson a **megosztás** lehetőségre az eszköztáron, majd kattintson a **Word ikonra** egy olyan Word-dokumentum létrehozásához, amely az adott adattal rendelkezik. Vagy kattintson a fő diagram fölötti **szó ikonra** .
 
-## <a name="meet-your-users"></a>Felel meg a felhasználók számára
+## <a name="meet-your-users"></a>Ismerkedjen meg a felhasználókkal
 
-A **felel meg a felhasználók** szakasz információkat jelenít meg az aktuális lekérdezés egyező nagyjából öt mintafelhasználók. Figyelembe véve, és felfedezése az egyének mellett összesítések, a viselkedés is vonatkozó adatokat a felhasználók miként ténylegesen használják az alkalmazást.
+A **felhasználók** betartása szakasz az aktuális lekérdezéssel megegyező öt minta felhasználó adatait jeleníti meg. Az összesítések mellett figyelembe kell venni és meg kell vizsgálni az egyének viselkedését, és betekintést nyerhet arról, hogy a felhasználók miként használják ténylegesen az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Használati bővítsék küldésének megkezdése [egyéni események](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [Lapmegtekintések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Ha már küldhet egyéni eseményeket vagy lapmegtekintéseket, Fedezze fel az megtudhatja, hogy a felhasználók használni a szolgáltatást a Használatelemzési eszközben.
+- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
+- Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
     - [Felhasználói folyamatok](usage-flows.md)
     - [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
-    - [Adja hozzá a felhasználói környezet](usage-send-user-context.md)
+    - [Felhasználói környezet hozzáadása](usage-send-user-context.md)

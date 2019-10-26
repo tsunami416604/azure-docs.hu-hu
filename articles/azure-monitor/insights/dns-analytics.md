@@ -1,40 +1,34 @@
 ---
 title: DNS Analytics megoldás a Azure Monitorban | Microsoft Docs
 description: A Azure Monitor DNS Analytics megoldásának beállítása és használata a DNS-infrastruktúra biztonságával, teljesítményével és műveleteivel kapcsolatos információk gyűjtésére.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/20/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.date: 03/20/2018
+ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316183"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899094"
 ---
-# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
+# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával
 
 ![DNS Analytics szimbólum](./media/dns-analytics/dns-analytics-symbol.png)
 
 Ez a cikk azt ismerteti, hogyan állíthatja be és használhatja a Azure Monitor Azure DNS elemzési megoldását, hogy betekintést gyűjtsön a DNS-infrastruktúrába a biztonság, a teljesítmény és a műveletek terén.
 
-DNS-elemzés révén:
+A DNS Analytics a következőket teszi lehetővé:
 
-- Azok az ügyfelek, kártékony tartománynevek azonosítása.
+- Azonosítsa azokat az ügyfeleket, akik kártékony tartományneveket próbálnak megoldani.
 - Elavult erőforrásrekordok azonosítása.
-- Gyakran lekérdezett tartománynevek és beszédes DNS-ügyfelek azonosítása.
-- Nézet kérelmek által generált terhelést a DNS-kiszolgálókon.
-- Dinamikus DNS-regisztrációs hibák megtekintése.
+- Azonosítsa a gyakran lekérdezett tartományneveket és a beszédes DNS-ügyfeleket.
+- A kérések terhelésének megtekintése a DNS-kiszolgálókon.
+- Dinamikus DNS-regisztráció meghibásodásának megtekintése.
 
-A megoldás gyűjti, elemzi és korrelációt keres a Windows DNS elemzési és auditnaplók és egyéb kapcsolódó adatait a DNS-kiszolgálók között.
+A megoldás gyűjti, elemzi és korrelálja a DNS-kiszolgálókkal kapcsolatos Windows DNS analitikai és naplózási naplókat, valamint az egyéb kapcsolódó adatokat.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
@@ -42,46 +36,46 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 | **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](../platform/agent-windows.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
-| [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
-| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | A megoldás az Azure storage nem használja. |
+| [Windows-ügynökök](../platform/agent-windows.md) | Igen | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
+| [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Igen | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | A megoldás nem használja az Azure Storage-t. |
 
-### <a name="data-collection-details"></a>Adatok gyűjtése részletei
+### <a name="data-collection-details"></a>Adatgyűjtés részletei
 
-A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. Ezt követően a rendszer feltölti ezeket az adatAzure Monitor, és megjeleníti a megoldás irányítópultján. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az esemény-kapcsolódó adatok gyűjtése történik, közel valós időben a [elemzési és auditnaplók](https://technet.microsoft.com/library/dn800669.aspx#enhanc) továbbfejlesztett DNS-naplózás és diagnosztika a Windows Server 2012 R2 által biztosított.
+A megoldás a DNS-leltár és a DNS-eseményekkel kapcsolatos adatokat gyűjti azokról a DNS-kiszolgálókról, amelyeken a Log Analytics-ügynök telepítve van. Ezt követően a rendszer feltölti ezeket az adatAzure Monitor, és megjeleníti a megoldás irányítópultján. A rendszer a leltárral kapcsolatos adatokat, például a DNS-kiszolgálók, zónák és erőforrásrekordok számát gyűjti össze a DNS PowerShell-parancsmagok futtatásával. Az Adatfrissítés két naponként történik. Az eseményekkel kapcsolatos adatokat a rendszer valós időben gyűjti a továbbfejlesztett DNS-naplózás és diagnosztika által biztosított [analitikai és naplózási naplókból](https://technet.microsoft.com/library/dn800669.aspx#enhanc) a Windows Server 2012 R2 rendszerben.
 
 ## <a name="configuration"></a>Konfiguráció
 
-A megoldás konfigurálásához kövesse az alábbi adatokat:
+A megoldás konfigurálásához használja a következő információkat:
 
-- Rendelkeznie kell egy [Windows](../platform/agent-windows.md) vagy [az Operations Manager](../platform/om-agents.md) ügynököt mindegyik figyelni kívánt DNS-kiszolgálón.
-- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Használhatja a [Solutions Gallery Azure monitor-megoldások hozzáadása](solutions.md)című részében ismertetett eljárást is.
+- A figyelni kívánt összes DNS-kiszolgálón [Windows](../platform/agent-windows.md) vagy [Operations Manager](../platform/om-agents.md) ügynöknek kell lennie.
+- Az [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace)-en felveheti a DNS Analytics megoldást az log Analytics-munkaterületre. Használhatja a [Solutions Gallery Azure monitor-megoldások hozzáadása](solutions.md)című részében ismertetett eljárást is.
 
-A megoldás elindult, nincs szükség további konfigurációs adatok gyűjtése. A következő konfiguráció használatával azonban adatgyűjtés testreszabása.
+A megoldás további konfigurálás nélkül elindítja az adatok gyűjtését. A következő konfigurációval azonban testre szabhatja az adatgyűjtés beállításait.
 
 ### <a name="configure-the-solution"></a>A megoldás konfigurálása
 
-A megoldás irányítópultján kattintson **konfigurációs** a DNS Analytics konfigurációs lap megnyitásához. Konfigurációs módosításokat végezhet két típusa van:
+A megoldás Irányítópultján kattintson a **konfiguráció** elemre a DNS Analytics konfiguráció lap megnyitásához. A következő két típusú konfigurációs módosítást teheti:
 
-- **Engedélyezett tartománynevek**. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket. A tartománynév-utótagokat tartalmazó engedélyezési listát tárol. A keresési lekérdezéseket, hogy a megfelelő tartománynév-utótagokat az engedélyezési listán szereplő tartománynevek nem dolgozza fel a megoldás. Az engedélyezett tartománynevek feldolgozásának mellőzése segít optimalizálni a Azure Monitor elküldhető adatátvitelt. Az alapértelmezett engedélyezési lista népszerű tartományneveket, mint például www.google.com, www.facebook.com és magában foglalja. Az alapértelmezett teljes lista megtekintéséhez görgetés.
+- **Engedélyezési tartomány neve**. A megoldás nem dolgozza fel az összes keresési lekérdezést. A tartománynév-utótagok engedélyezési listáját is fenntartja. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket, amelyek az adott engedélyezési listán szereplő tartománynév-utótagoknak megfelelő tartományneveket oldják fel. Az engedélyezett tartománynevek feldolgozásának mellőzése segít optimalizálni a Azure Monitor elküldhető adatátvitelt. Az alapértelmezett engedélyezési lista népszerű nyilvános tartományneveket tartalmaz, például www.google.com és www.facebook.com. A teljes alapértelmezett listát görgetve tekintheti meg.
 
-  Módosíthatja bármely tartománynév utótagja, hogy meg szeretné tekinteni a keresési insights hozzáadása a listában. Valamint eltávolíthatja bármely tartománynév utótagja nem szeretnénk a keresési elemzések megtekintése.
+  A lista módosításával bármely olyan tartománynév-utótagot hozzáadhat, amelyben meg szeretné tekinteni a keresési elemzéseket. Eltávolíthat olyan tartománynév-utótagot is, amelyről nem kívánja megtekinteni a keresési elemzéseket.
 
-- **"Beszédes ügyfél" küszöbérték**. DNS-ügyfelek, amelyek ki vannak emelve a keresési kérelmek száma meghaladja a küszöbértéket a **DNS-ügyfelek** panelen. Az alapértelmezett küszöbérték 1000. Szerkesztheti a küszöbértéket.
+- **Beszédes ügyfél küszöbértéke**. Azok a DNS-ügyfelek, amelyek túllépik a keresési kérelmek számának küszöbértékét, a **DNS-ügyfelek** panelen vannak kiemelve. Az alapértelmezett küszöbérték 1 000. Módosíthatja a küszöbértéket.
 
-    ![Engedélyezett tartománynevek](./media/dns-analytics/dns-config.png)
+    ![Engedélyezési tartományok nevei](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha a Microsoft Monitoring Agent a Log Analytics-munkaterülethez való kapcsolódáshoz használ, a következő felügyeleti csomag telepítve van:
+Ha a Microsoft monitoring agentet használja a Log Analytics munkaterülethez való kapcsolódáshoz, a következő felügyeleti csomag van telepítve:
 
 - Microsoft DNS-adatgyűjtő Intelligence Pack (Microsoft. IntelligencePacks. DNS)
 
-Ha az Operations Manager felügyeleti csoportban a Log Analytics-munkaterülethez van csatlakoztatva, a következő felügyeleti csomagokat az Operations Manager települnek, ha ez a megoldás hozzáadásakor. Ne legyen kötelező konfigurációs vagy karbantartási a felügyeleti csomagok:
+Ha a Operations Manager felügyeleti csoport csatlakozik a Log Analytics munkaterülethez, a megoldás hozzáadásakor a következő felügyeleti csomagok lesznek telepítve a Operations Manager. A következő felügyeleti csomagok nem szükségesek a konfiguráláshoz vagy karbantartáshoz:
 
 - Microsoft DNS-adatgyűjtő Intelligence Pack (Microsoft. IntelligencePacks. DNS)
-- Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
+- Microsoft System Center Advisor DNS Analytics konfiguráció (Microsoft. IntelligencePack. DNS. Configuration)
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../platform/om-agents.md).
 
@@ -90,97 +84,97 @@ A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Oper
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 
-A DNS-csempe tartalmazza azon DNS-kiszolgálók számát, amelyeken az adatok gyűjtése történik. Rosszindulatú tartományok feloldani az elmúlt 24 órában az ügyfelek által végrehajtott kérelmek száma is tartalmaz. Ha a csempére kattint, megnyílik a megoldás irányítópultján.
+A DNS-csempe tartalmazza azon DNS-kiszolgálók számát, amelyeken az adatok gyűjtése történik. Emellett az ügyfelek által az elmúlt 24 órában kártékony tartományok feloldására irányuló kérések számát is tartalmazza. A csempére kattintva megnyílik a megoldás irányítópultja.
 
-![DNS Analytics tile](./media/dns-analytics/dns-tile.png)
+![DNS Analytics csempe](./media/dns-analytics/dns-tile.png)
 
 ### <a name="solution-dashboard"></a>A megoldás irányítópultja
 
-A megoldás irányítópultján különböző funkcióhoz a megoldás összefoglaló információit jeleníti meg. A részletes nézet a törvényszéki elemzés és diagnosztika mutató hivatkozásokat is tartalmaz. Alapértelmezés szerint az elmúlt hét napban megjelennek az adatok. A dátum és idő tartomány használatával módosíthatja a **dátum és idő kiválasztása vezérlőelem**, ahogy az alábbi képen látható:
+A megoldás irányítópultja a megoldás különböző szolgáltatásaihoz tartozó összesített információkat jeleníti meg. Emellett a kriminalisztika elemzésére és diagnosztizálására szolgáló részletes nézetre mutató hivatkozásokat is tartalmaz. Alapértelmezés szerint az elmúlt hét napban megjelennek az adathalmazok. A dátum-és időtartomány a **dátum-idő kijelölési vezérlőelem**használatával módosítható, ahogy az alábbi képen is látható:
 
-![Kijelölt vezérlő](./media/dns-analytics/dns-time.png)
+![Idő kiválasztása vezérlő](./media/dns-analytics/dns-time.png)
 
-A megoldás irányítópultján a következő paneleken látható:
+A megoldás irányítópultja a következő lapokat jeleníti meg:
 
-**DNS-biztonság**. A jelentés a DNS-ügyfelek, amelyek próbál meg kommunikálni a rosszindulatú tartományokat. Használja a Microsoft fenyegetésészlelési intelligenciával foglalkozó hírcsatornákra, DNS-elemzés észlelni tudja az ügyfél IP-címek, amelyhez hozzá szeretne férni a rosszindulatú tartományokat. Sok esetben kártevők által fertőzött eszközök "tárcsázásával" a "parancs és vezérlés" center kártékony tartomány által a kártevő szoftver-tartománynév feloldására.
+**DNS-biztonság**. A kártékony tartományokkal kommunikálni próbáló DNS-ügyfeleket jelenti. A Microsoft Threat Intelligence-hírcsatornák használatával a DNS Analytics képes észlelni a kártékony tartományokhoz hozzáférni próbáló ügyfelek IP-címeit. A kártevők tartománynevének feloldásával sok esetben a kártevővel fertőzött eszközök kitárcsázása a kártékony tartomány "Command and Control" központjába.
 
-![DNS-biztonsági panel](./media/dns-analytics/dns-security-blade.png)
+![DNS-biztonság panel](./media/dns-analytics/dns-security-blade.png)
 
-Ha rákattint egy ügyfél IP-címet a listában, a naplóbeli keresés megnyitja, és a megfelelő lekérdezés keresési részleteit jeleníti meg. A következő példában a DNS Analytics azt észlelte, hogy a kommunikáció az egy [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot):
+Ha a listában egy ügyfél IP-címére kattint, megnyílik a naplóbeli keresés, és megjelenik a megfelelő lekérdezés keresési adatai. A következő példában a DNS Analytics észlelte, hogy a kommunikáció egy [IRCBot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot)történt:
 
-![A naplókeresések ircbot megjelenítése](./media/dns-analytics/ircbot.png)
+![A IRCBot mutató keresési eredmények naplózása](./media/dns-analytics/ircbot.png)
 
-Az információ segít azonosítani a:
+Az információ segítségével azonosíthatja a következőket:
 
-- Ügyfél által kezdeményezett kommunikáció IP-Címmel.
-- Tartomány neve, amelyet a rosszindulatú IP-cím.
-- A tartománynév feloldása egy olyan IP-címeket.
+- Az ügyfél IP-címe, amely kezdeményezte a kommunikációt.
+- A kártékony IP-címhez feloldani kívánt tartománynév.
+- Azok az IP-címek, amelyekre a tartománynév fel lett oldva.
 - Rosszindulatú IP-cím.
-- A probléma súlyosságát.
-- A kártékony IP-cím áruházat okát.
-- Észlelés ideje.
+- A probléma súlyossága.
+- A rosszindulatú IP-címek feketelistára helyezésének oka.
+- Észlelési idő.
 
-**Lekérdezett tartományok**. A leggyakoribb, a környezetben a DNS-ügyfelek által éppen lekérdezett tartománynevek biztosít. Megtekintheti a lekérdezett tartománynevek listája. Emellett részletezhet keresési kérelem adatait, a naplóbeli keresés egy adott tartománynév.
+**Lekérdezett tartományok**. A a leggyakoribb tartományneveket adja meg a környezetben lévő DNS-ügyfelek által lekérdezett lekérdezésekben. Megtekintheti a lekérdezett tartománynevek listáját. A naplóbeli keresés során megtekintheti egy adott tartománynév keresési kérelmének részleteit is.
 
-![Tartományok lekérdezett panel](./media/dns-analytics/domains-queried-blade.png)
+![Lekérdezett tartományok panel](./media/dns-analytics/domains-queried-blade.png)
 
-**A DNS-ügyfelek**. Az ügyfelek jelentések *a küszöbérték megszegéséhez* a választott időszakban lekérdezések száma. Megtekintheti a DNS-ügyfelek és a részletek a Naplókeresésben őket által végrehajtott lekérdezések listáját.
+**DNS-ügyfelek**. Azt jelenti, hogy az ügyfelek *megszegik a* kiválasztott időszakban a lekérdezések számának küszöbértékét. Megtekintheti az összes DNS-ügyfél listáját, valamint a naplózott keresés során általuk végzett lekérdezések részleteit.
 
-![A DNS-ügyfelek panel](./media/dns-analytics/dns-clients-blade.png)
+![DNS-ügyfelek panel](./media/dns-analytics/dns-clients-blade.png)
 
-**Dinamikus DNS-regisztráció**. Jelentések adjon nevet a regisztrációs hibák. Az összes regisztrációs hibák cím [erőforrásrekordok](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (írja be A és AAAA) az ügyfél IP-címek, a regisztrációs kérések fényében, amelyek együtt vannak kiemelve. Ezután használhatja ezeket az információkat az alapvető ok a regisztrációs hiba található a következő lépésekkel:
+**Dinamikus DNS-regisztrációk**. A jelentések nevének regisztrációja sikertelen. A cím- [erőforrásrekordok](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (a és AAAA típus) összes regisztrációs hibája ki van emelve a regisztrációs kérelmeket használó ügyfél IP-címeivel együtt. Ezt az információt ezután a következő lépésekkel keresheti meg a regisztrációs hiba kiváltó okát:
 
-1. Keresse meg a zóna mérvadó a neve, amely az ügyfél megpróbálja frissíteni.
+1. Keresse meg azt a zónát, amely mérvadó ahhoz a névhez, amelyet az ügyfél frissíteni próbál.
 
-1. A megoldás segítségével ellenőrizheti, hogy a zóna a leltáradatokat.
+1. A megoldás segítségével keresse meg a zóna leltározási adatait.
 
-1. Győződjön meg arról, hogy engedélyezve van-e a zóna a dinamikus frissítés.
+1. Ellenőrizze, hogy a zóna dinamikus frissítése engedélyezve van-e.
 
-1. Ellenőrizze, hogy e vagy sem a zóna van konfigurálva a biztonságos a dinamikus frissítés.
+1. Győződjön meg arról, hogy a zóna biztonságos dinamikus frissítésre van-e konfigurálva.
 
-    ![Dinamikus DNS-regisztráció panel](./media/dns-analytics/dynamic-dns-reg-blade.png)
+    ![Dinamikus DNS-regisztrációk panel](./media/dns-analytics/dynamic-dns-reg-blade.png)
 
-**Nevezze el regisztrációs kérelmeket**. A felső csempe sikeres és sikertelen DNS dinamikus frissítési kérelmek trendvonal jeleníti meg. Az alacsonyabb csempe felsorolja a felső 10 ügyfél küldő sikertelen DNS-frissítési kérelmek a DNS-kiszolgálók, a hibák száma szerint rendezve.
+**Név-regisztrációs kérelmek**. A felső csempe a sikeres és sikertelen DNS dinamikus frissítési kérelmek trendvonalát mutatja. Az alsó csempe felsorolja az első 10 ügyfelet, amely sikertelen DNS-frissítési kérelmeket küld a DNS-kiszolgálókra, a hibák száma alapján rendezve.
 
-![Név regisztrációs kérelmek panel](./media/dns-analytics/name-reg-req-blade.png)
+![Regisztrációs kérelmek neve panel](./media/dns-analytics/name-reg-req-blade.png)
 
-**Eszközillesztő elemzési lekérdezések minta**. A leggyakoribb keresési lekérdezések raw elemzési adatok közvetlenül listáját tartalmazza.
+**Példa DDI Analytics-lekérdezésekre**. Azokat a leggyakoribb keresési lekérdezéseket tartalmazza, amelyek közvetlenül beolvasják a nyers elemzési adatforrásokat.
 
 
-![Mintalekérdezések](./media/dns-analytics/queries.png)
+![Példák a lekérdezésekre](./media/dns-analytics/queries.png)
 
-Ezek a lekérdezések kiindulási pontként használható a saját testre szabott jelentéskészítési lekérdezések létrehozásáról. A lekérdezéseket a DNS Analytics naplóbeli keresés-oldalának hivatkozása, ahol eredmények jelennek meg:
+Ezeket a lekérdezéseket kiindulási pontként használhatja a testreszabott jelentéskészítéshez használható saját lekérdezések létrehozásához. A lekérdezések a DNS Analytics napló keresési oldalára mutatnak, ahol az eredmények megjelennek:
 
-- **DNS-kiszolgálók listájának**. Minden DNS-kiszolgálók, és azok kapcsolódó FQDN, tartománynév, erdő neve és a kiszolgáló IP-címek listája látható.
-- **DNS-zónák listája**. A társított zóna neve, a dinamikus frissítési állapot, a Névkiszolgálók és a DNSSEC-aláírási állapot az összes DNS-zónák listája látható.
-- **Nem használt erőforrásrekordok**. A fel nem használt és elavult erőforrás-rekordok listáját jeleníti meg. Ez a lista tartalmazza az erőforrás-rekord neve, erőforrásrekord típusa, a társított DNS-kiszolgáló, rekord létrehozási idő és zóna nevét. Ez a lista segítségével azonosíthatja a DNS-erőforrásrekordok már használatban van. Ezen információ alapján, majd eltávolíthatja ezeket a bejegyzéseket a DNS-kiszolgálókról.
-- **DNS-kiszolgálók lekérdezési terhelése**. Információkat jelenít meg, hogy kap egy-a DNS-terhelés szempontjából a DNS-kiszolgálókon. Ezek az információk alapján megtervezheti a kapacitást, a kiszolgálók. Megnyithatja a **metrikák** fülre, és módosítsa a nézet egy grafikus vizualizációt. Ez a nézet segítségével megismerheti, hogyan oszlik meg a DNS-betöltés a DNS-kiszolgálók között. DNS-lekérdezés arány trendek minden olyan kiszolgáló látható.
+- **A DNS-kiszolgálók listája**. Az összes olyan DNS-kiszolgáló listáját jeleníti meg, amelyek a hozzájuk társított teljes tartománynevet, tartománynevet, erdő nevét és kiszolgálói IP-címeket használják.
+- **DNS-zónák listája**. Megjeleníti az összes DNS-zóna listáját a társított zóna nevével, a dinamikus frissítési állapottal, a névkiszolgálók és a DNSSEC aláírási állapotával.
+- Nem **használt erőforrásrekordok**. A fel nem használt/Elavult erőforrásrekordok listáját jeleníti meg. Ez a lista tartalmazza az erőforrásrekord nevét, az erőforrásrekord típusát, a társított DNS-kiszolgálót, a rekord létrehozásának idejét és a zóna nevét. Ezt a listát használhatja azon DNS-erőforrásrekordok azonosítására, amelyek már nincsenek használatban. Ezen információk alapján eltávolíthatja ezeket a bejegyzéseket a DNS-kiszolgálókról.
+- **DNS-kiszolgálók lekérdezési terhelése**. Megjeleníti a DNS-kiszolgálók DNS-terhelésére vonatkozó perspektívát. Ezek az információk segíthetnek a kiszolgálók kapacitásának megtervezésében. A **metrikák** lapon megnyithatja a nézetet grafikus megjelenítésre. Ez a nézet segít megérteni, hogyan oszlik meg a DNS-terhelés a DNS-kiszolgálók között. A DNS-lekérdezés gyakoriságának tendenciáit mutatja az egyes kiszolgálókon.
 
-    ![DNS-kiszolgálók lekérdezések napló keresési eredményei](./media/dns-analytics/dns-servers-query-load.png)
+    ![DNS-kiszolgálók lekérdezési naplójának keresési eredményei](./media/dns-analytics/dns-servers-query-load.png)
 
-- **DNS-zónák lekérdezési terhelése**. Minden zóna DNS zóna lekérdezési – másodpercenkénti statisztikáit mutatja a megoldás által felügyelt DNS-kiszolgálókon. Kattintson a **metrikák** fülre, és módosítsa a nézet a részletes rekordok egy grafikus vizualizációt, az eredmények.
-- **Konfigurációs események**. A DNS a konfigurációmódosítási események és a kapcsolódó üzeneteket jeleníti meg. Ezután ezek az események az esemény, eseményazonosító, DNS-kiszolgáló ideje alapján szűrheti vagy Feladatkategória. Az adatok segítséget nyújtanak az adott DNS-kiszolgálók egy adott időpontban végzett módosítások naplózása.
-- **DNS-elemzési napló**. A megoldás által felügyelt DNS-kiszolgálók az elemzési eseményeket jeleníti meg. Ezek az események az esemény, eseményazonosító, DNS-kiszolgáló ideje alapján szűrheti majd a keresési lekérdezés és a lekérdezés típusa és a feladat kategóriája ügyfél IP-Címét. DNS-kiszolgáló elemzési eseményeket engedélyezze a műveletek nyomon követése a DNS-kiszolgálón. Egy elemző naplóz minden alkalommal, amikor a kiszolgáló DNS-információkat fogad vagy küld.
+- **DNS-zónák lekérdezés betöltése**. A DNS-zóna a megoldás által felügyelt DNS-kiszolgálókon lévő összes zónájának lekérdezése. Kattintson a **mérőszámok** lapra, hogy a részletes rekordok nézetét az eredmények grafikus megjelenítésére módosítsa.
+- **Konfigurációs események**. Megjeleníti az összes DNS-konfigurációs módosítási eseményt és a hozzá tartozó üzeneteket. Ezután szűrheti ezeket az eseményeket az esemény, az eseményazonosító, a DNS-kiszolgáló vagy a feladat kategóriája alapján. Az adatkezelési szolgáltatás az adott DNS-kiszolgálókon megadott időpontokban végrehajtott módosítások naplózását is lehetővé teszi.
+- **DNS analitikai napló**. Megjeleníti a megoldás által kezelt DNS-kiszolgálókon található összes analitikai eseményt. Ezután szűrheti ezeket az eseményeket az esemény, az eseményazonosító, a DNS-kiszolgáló, az ügyfél IP-címe és a lekérdezés típusa tevékenység kategóriája alapján. A DNS-kiszolgáló analitikus eseményei lehetővé teszik a tevékenységek nyomon követését a DNS-kiszolgálón. A rendszer minden alkalommal naplóz egy elemzési eseményt, amikor a kiszolgáló elküldi vagy fogadja a DNS-információkat.
 
-### <a name="search-by-using-dns-analytics-log-search"></a>DNS Analytics naplóbeli keresés használatával keresése
+### <a name="search-by-using-dns-analytics-log-search"></a>Keresés DNS Analytics naplóbeli keresés használatával
 
-A naplók keresése oldalát létrehozhat egy lekérdezést. A keresési eredményeket szűrheti értékkorlátozás vezérlők használatával. Átalakítás, szűrheti és jelentés speciális lekérdezéseket is létrehozhat az eredményeket. Indítsa el az alábbi lekérdezéseket:
+A naplók keresése lapon létrehozhat egy lekérdezést. A keresési eredményeket a Faces vezérlők használatával szűrheti. Emellett speciális lekérdezéseket is létrehozhat az eredmények átalakításához, szűréséhez és jelentéséhez. Kezdje a következő lekérdezések használatával:
 
-1. Az a **lekérdezés keresőmezőbe**, típus `DnsEvents` a megoldás által felügyelt DNS-kiszolgáló által létrehozott összes DNS-események megtekintése. Az eredményeket a keresési lekérdezéseket, a dinamikus regisztrációk és a konfigurációs módosítások kapcsolódó összes eseményt adatainak naplózása listája.
+1. A **keresési lekérdezés mezőbe**írja be a `DnsEvents` kifejezést a megoldás által kezelt DNS-kiszolgálók által generált összes DNS-esemény megtekintéséhez. Az eredmények felsorolják a keresési lekérdezésekkel, a dinamikus regisztrációkkal és a konfigurációs változásokkal kapcsolatos összes esemény naplózási adatát.
 
-    ![DnsEvents naplók keresése](./media/dns-analytics/log-search-dnsevents.png)  
+    ![DnsEvents-napló keresése](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a. A keresési lekérdezések adatainak megtekintéséhez jelölje ki **LookUpQuery** , a **altípus** szűrő a dimenzió vezérlőből, a bal oldalon. A keresési lekérdezés események a kiválasztott időszakra vonatkozó tartalmazó táblázat jelenik meg.
+    a. A keresési lekérdezések naplózási adatainak megtekintéséhez válassza a **LookUpQuery** lehetőséget a bal oldali dimenzió vezérlőelemben található **altípus** -szűrőként. Megjelenik egy tábla, amely felsorolja a kijelölt időszakra vonatkozó összes keresési lekérdezési eseményt.
 
-    b. A dinamikus regisztrációk adatainak megtekintéséhez jelölje ki **DynamicRegistration** , a **altípus** szűrő a dimenzió vezérlőből, a bal oldalon. Egy táblázat listázza az összes dinamikus regisztrációs események a kiválasztott időszakra vonatkozó jelenik meg.
+    b. A dinamikus regisztrációk naplózási adatainak megtekintéséhez válassza a **DynamicRegistration** lehetőséget a bal oldali dimenzió vezérlőelemben található **altípus** -szűrőként. Megjelenik egy tábla, amely felsorolja a kijelölt időszakra vonatkozó összes dinamikus regisztrációs eseményt.
 
-    c. A naplóadatok konfigurációs módosítások megtekintéséhez jelölje ki **ConfigurationChange** , a **altípus** szűrő a dimenzió vezérlőből, a bal oldalon. Egy táblát, amely a kijelölt időszakra vonatkozó összes a konfigurációmódosítási események listája jelenik meg.
+    c. A konfigurációs módosítások naplózási adatainak megtekintéséhez válassza a **konfigurációváltozás** lehetőséget a bal oldali dimenzió vezérlőelemben található **altípus** -szűrőként. Megjelenik egy tábla, amely felsorolja a kiválasztott időszak összes konfigurációs módosítási eseményét.
 
-1. Az a **lekérdezés keresőmezőbe**, típus `DnsInventory` összes DNS leltárhoz kapcsolódó adatok megtekintéséhez a megoldás által felügyelt DNS-kiszolgálók esetén. Az eredményeket a naplóadatok a DNS-kiszolgálók, DNS-zónák és rekordok listája.
+1. A **keresési lekérdezés mezőbe**írja be a `DnsInventory` kifejezést a megoldás által kezelt DNS-kiszolgálókon található összes DNS-leltárhoz kapcsolódó adat megtekintéséhez. Az eredmények felsorolják a DNS-kiszolgálók, a DNS-zónák és az erőforrásrekordok naplózási adatait.
 
-    ![DnsInventory naplók keresése](./media/dns-analytics/log-search-dnsinventory.png)
+    ![DnsInventory-napló keresése](./media/dns-analytics/log-search-dnsinventory.png)
     
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Gyakori hibaelhárítási lépések:
 
@@ -190,6 +184,6 @@ Gyakori hibaelhárítási lépések:
 
 A visszajelzések megadásához látogasson el a [log Analytics UserVoice oldalára](https://aka.ms/dnsanalyticsuservoice) , és tegye fel ötleteit DNS Analytics funkcióinak működéséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Lekérdezési naplók](../log-query/log-query-overview.md) a részletes DNS-naplóbejegyzések megtekintéséhez.

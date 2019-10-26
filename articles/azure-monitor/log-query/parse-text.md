@@ -1,75 +1,71 @@
 ---
-title: Az Azure Monitor naplóira szöveges adatok elemzése |} A Microsoft Docs
-description: Naplóadatok az Azure Monitor rekordok elemzéséhez, amikor betöltött adatokat, és összehasonlítja a relatív előnyeit minden lekérdezés lekéri azt a különböző lehetőségeket ismerteti.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
+title: Szöveges adatelemzés Azure Monitor naplókban | Microsoft Docs
+description: Ismerteti a naplózási adatok Azure Monitor rekordokban való elemzésének különböző lehetőségeit, ha az adatok betöltésére és a lekérdezésbe való beolvasására szolgálnak, összehasonlítva az egyes lehetőségek relatív előnyeit.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/04/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/04/2018
+ms.openlocfilehash: 5a3b6852563955bfac940073bdda7d0afa02e77f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61426731"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900249"
 ---
-# <a name="parse-text-data-in-azure-monitor-logs"></a>Az Azure Monitor naplóira szöveges adatok elemzése
-Bizonyos Azure Monitor által gyűjtött naplóadatok egyetlen tulajdonsággal több információt tartalmazza. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Szöveges adatelemzés Azure Monitor naplókban
+Néhány Azure Monitor által összegyűjtött naplózási adat több adatot is tartalmaz egyetlen tulajdonságban. Ha ezeket az adatelemzéseket több tulajdonságba elemezze, egyszerűbbé teheti a lekérdezésekben való használatát. Az általános példa egy olyan [Egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzést gyűjt több értékkel egyetlen tulajdonságban. A különböző értékek külön tulajdonságainak létrehozásával megkeresheti és összesítheti az egyes értékeket.
 
-Ez a cikk ismerteti a különböző lehetőségeket az Azure monitorban naplóadatok elemzéséhez, amikor betöltött adatokat, és összehasonlítja a relatív előnyeit minden lekérdezés lekéri azt.
+Ez a cikk különböző lehetőségeket ismertet a naplófájlok elemzéséhez Azure Monitor az adatfeldolgozás során, valamint a lekérdezésekben való lekéréskor, az egyes lehetőségek relatív előnyeinek összehasonlításával.
 
 
-## <a name="parsing-methods"></a>Elemzési módszer
-Betöltési idő, amikor az adatgyűjtés akár lekérdezés értelmezni tudja az adatokat meg, amikor az adatok elemzése az egy lekérdezést. Minden egyes stratégia rendelkezik egyedi előnyökkel, az alább ismertetett.
+## <a name="parsing-methods"></a>Elemzési módszerek
+Az adatokat betöltési időben is elemezheti, ha az adatok gyűjtése vagy lekérdezési ideje történik az adatok lekérdezéssel történő elemzésekor. Minden stratégia egyedi előnyökkel rendelkezik, az alábbiakban leírtak szerint.
 
-### <a name="parse-data-at-collection-time"></a>Adatok elemzése a gyűjtemény időpontban
-Adatok elemezni a gyűjtemény időpontban, amikor konfigurálja [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md) új tulajdonságok létrehozása, amely a táblában. Lekérdezések nem kell minden olyan elemzési logikát tartalmazó egyszerűen, és használja ezeket a tulajdonságokat a táblázat bármely más mező.
+### <a name="parse-data-at-collection-time"></a>Adatgyűjtés a gyűjtés időpontjában
+Amikor begyűjtési időpontban elemezi az adatelemzést, olyan [egyéni mezőket](../../log-analytics/log-analytics-custom-fields.md) állít be, amelyek új tulajdonságokat hoznak létre a táblában. A lekérdezéseknek nem kell semmilyen elemzési logikát tartalmazniuk, és egyszerűen ezeket a tulajdonságokat kell használniuk a tábla bármely más mezőjéhez.
 
-Ez a módszer előnyei a következők:
+A módszer előnyei többek között a következők:
 
-- A lekérdezés óta nem kell tartalmaznia az összegyűjtött adatok elemzése a lekérdezésben szereplő parancsok könnyebben.
-- A lekérdezés óta jobb lekérdezési teljesítmény-elemzés végrehajtásához nem szükséges.
+- Könnyebben lekérdezheti az összegyűjtött adatokat, mivel nem kell belefoglalnia az elemzési parancsokat a lekérdezésbe.
+- Jobb lekérdezési teljesítmény, mivel a lekérdezésnek nem kell végrehajtania az elemzést.
  
-Ezt a módszert hátrányai a következők:
+A módszer hátrányai a következők:
 
-- Meg kell határozni előre. Nem tartalmazzák a korábban gyűjtött adatokat.
-- Ha módosítja az elemzési logikát, azt csak az új adatokra vonatkozik.
-- Kevesebb elemzési lehetőségeket, mint amennyi a lekérdezésekben.
-- Várakozási idő adatok gyűjtésére szolgáló nő.
-- Hibák kezelése nehézkes lehet.
+- Előre kell definiálni. A már összegyűjtött adatok nem szerepelhetnek bele.
+- Ha megváltoztatja az elemzési logikát, akkor csak az új adatértékekre fog vonatkozni.
+- Kevesebb elemzési lehetőség a lekérdezésekben elérhetőnél.
+- Növeli az adatok gyűjtésének késleltetési idejét.
+- A hibák kezelése nehéz lehet.
 
 
-### <a name="parse-data-at-query-time"></a>Adatok elemzése a lekérdezéskor
-Amikor adatainak elemzése a lekérdezéskor, logikát tartalmazó adatok elemzése több mezőkbe a lekérdezésben. Maga a tényleges táblázat nem módosul.
+### <a name="parse-data-at-query-time"></a>Az adatelemzés lekérdezési időpontban
+Amikor lekérdezési időpontban elemezi az adatelemzést, a lekérdezésben logikát is tartalmaz, amely több mezőbe elemezi az adatelemzést. Maga a tényleges tábla nem módosul.
 
-Ez a módszer előnyei a következők:
+A módszer előnyei többek között a következők:
 
-- Minden olyan adatot, beleértve a korábban gyűjtött adatok is vonatkozik.
-- Logikai módosítások azonnal alkalmazhatók összes adatot.
-- A rugalmas elemzési lehetőségeket adott datové struktury előre meghatározott logikát.
+- Az adatokra vonatkozik, beleértve a már összegyűjtött adatokat is.
+- A Logic változásai azonnal alkalmazhatók az összes adattal.
+- Rugalmas elemzési lehetőségek, beleértve az előre definiált logikát az egyes adatstruktúrákhoz.
  
-Ezt a módszert hátrányai a következők:
+A módszer hátrányai a következők:
 
-- Több összetett lekérdezések szükségesek. Ez a enyhíthető [funkciók szimulálása a tábla](#use-function-to-simulate-a-table).
-- Több lekérdezés elemzés logikáját kell replikálni. Megoszthat egy logikai függvényeken keresztül.
-- Terhelés hozhat létre, ha nagyon nagy rekord összetett logikát futtat csoportokat (több milliárd rekordon,).
+- Összetettebb lekérdezésekre van szükség. Ez enyhíthető a [függvények használatával egy tábla szimulálása érdekében](#use-function-to-simulate-a-table).
+- Több lekérdezésben kell replikálni az elemzési logikát. Megoszthat valamilyen logikát a functions használatával.
+- Létrehozhat terhelést, ha összetett logikát futtat a nagyon nagy rekordhalmazok (több milliárd rekord) alapján.
 
-## <a name="parse-data-as-its-collected"></a>Mivel a begyűjtésük adatainak elemzése
-Lásd: [egyéni mezőket hozhat létre az Azure monitorban](../platform/custom-fields.md) adatok elemzésekor, mivel a begyűjtésük részleteiért. Ez a tábla, csakúgy, mint minden más tulajdonság lekérdezések által használható egyéni tulajdonságok hoz létre.
+## <a name="parse-data-as-its-collected"></a>Adatok elemzése az adatgyűjtés során
+A gyűjtött adatok elemzésével kapcsolatos részletekért lásd: [Egyéni mezők létrehozása a Azure monitorban](../platform/custom-fields.md) . Ez a tábla olyan egyéni tulajdonságokat hoz létre, amelyeket a lekérdezések a többi tulajdonsághoz hasonlóan használhatnak.
 
-## <a name="parse-data-in-query-using-patterns"></a>A minták használatával lekérdezés adatainak elemzése
-Elemezni kívánt adatokat a rekordok között ismétlődő minta segítségével azonosítható, ha a különböző operátorok használhatja a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) be egy vagy több új tulajdonságok a konkrét adat kibontásához.
+## <a name="parse-data-in-query-using-patterns"></a>Az adatelemzés a lekérdezésekben minták használatával
+Ha az elemezni kívánt adatok a rekordok között ismétlődő mintázattal azonosíthatók, akkor a [Kusto lekérdezési nyelvében](/azure/kusto/query/) különböző operátorok segítségével kinyerheti az adott adatokat egy vagy több új tulajdonságba.
 
-### <a name="simple-text-patterns"></a>Egyszerű szöveges mintákkal
+### <a name="simple-text-patterns"></a>Egyszerű szöveges minták
 
-Használja a [elemezni](/azure/kusto/query/parseoperator) operátor szerepel a lekérdezés egy vagy több egyéni tulajdonságot, amely egy karakterlánc-kifejezés kinyerésének létrehozásához. A minta azonosítását és a Tulajdonságok létrehozása a nevét kell megadni. Ez különösen hasznos adatokhoz hasonló módon a kulcs-érték karakterláncokkal _kulcs = érték_.
+A lekérdezésben szereplő [elemzési](/azure/kusto/query/parseoperator) operátor használatával létrehozhat egy vagy több olyan egyéni tulajdonságot, amely egy karakterlánc-kifejezésből kinyerhető. Meg kell adnia az azonosított mintát és a létrehozandó tulajdonságok nevét. Ez különösen hasznos a Key-Value sztringekkel rendelkező, a _Key = Value értékhez_hasonló formában.
 
-Fontolja meg egy egyéni naplót a következő formátumban adatokkal.
+Vegyünk fel egy egyéni naplófájlt az alábbi formátumban.
 
 ```
 Time=2018-03-10 01:34:36 Event Code=207 Status=Success Message=Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
@@ -79,7 +75,7 @@ Time=2018-03-10 01:38:22 Event Code=302 Status=Error Message=Application could n
 Time=2018-03-10 01:31:34 Event Code=303 Status=Error Message=Application lost connection to database
 ```
 
-A következő lekérdezés az egyes tulajdonságok szeretné elemezni ezeket az adatokat. Vonal rajzolása _projekt_ bekerül a visszaadandó egyetlen számított tulajdonságait, és nem _RawData_, amely az egyéni napló, az egész bejegyzésre egyetlen tulajdonságra.
+A következő lekérdezés az adatelemzést egyedi tulajdonságokra fogja elemezni. A _projekttel_ rendelkező sor csak a számított tulajdonságokat adja vissza, nem pedig a _RawData_, amely az egyéni napló teljes bejegyzését birtokló egyetlen tulajdonság.
 
 ```Kusto
 MyCustomLog_CL
@@ -87,7 +83,7 @@ MyCustomLog_CL
 | project EventTime, Code, Status, Message
 ```
 
-Az alábbiakban a egy másik példa, amely megtöri a felhasználó neve, az egyszerű felhasználónév a _AzureActivity_ tábla.
+A következő példa egy másik példát mutat be, amely kiszakítja egy egyszerű felhasználónév felhasználónevét a _AzureActivity_ táblában.
 
 ```Kusto
 AzureActivity
@@ -98,7 +94,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Reguláris kifejezések
-Ha az adatok egy reguláris kifejezéssel azonosíthatók, használhatja [reguláris kifejezéseket használó függvények](/azure/kusto/query/re2) egyéni értékeket kibontásához. Az alábbi példában [kinyerése](/azure/kusto/query/extractfunction) kezdetét vette az a _UPN_ mezőt _AzureActivity_ rögzíti, és visszatér a különböző felhasználók.
+Ha az adatok azonosíthatók reguláris kifejezéssel, az egyes értékek kinyeréséhez [reguláris kifejezéseket használó függvények](/azure/kusto/query/re2) is használhatók. A következő példa a [kinyerést](/azure/kusto/query/extractfunction) használja az _UPN_ mező kibontásához a _AzureActivity_ -rekordokból, majd a különböző felhasználókat adja vissza.
 
 ```Kusto
 AzureActivity
@@ -106,16 +102,16 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Ahhoz, hogy hatékony elemzési nagy méretekben Azure Monitor használja re2 verziója reguláris kifejezések, amely hasonló, de nem egyeznek, amelyek a reguláris kifejezés variantní hodnoty. Tekintse meg a [re2 kifejezés szintaxisa](https://aka.ms/kql_re2syntax) részleteiről.
+A hatékony, nagy méretekben történő elemzés engedélyezéséhez Azure Monitor a reguláris kifejezések RE2 verzióját használja, amely hasonló, de nem azonos a többi reguláris kifejezés változatával. A részletekért tekintse meg a [RE2 kifejezés szintaxisát](https://aka.ms/kql_re2syntax) .
 
 
-## <a name="parse-delimited-data-in-a-query"></a>A lekérdezésben tagolt adatainak elemzése
-Tagolt adatok mezőket egy vesszőt a CSV-fájl például közös karakterrel elválasztó. Használja a [felosztása](/azure/kusto/query/splitfunction) függvény elemezni a tagolt adatok egy Ön által megadott elválasztó használatával. Ez a [kiterjesztése](/azure/kusto/query/extendoperator) üzemeltető minden mező vissza az adatokat, vagy adja meg a kimenetben szereplő egyedi mezők.
+## <a name="parse-delimited-data-in-a-query"></a>Tagolt adatelemzés egy lekérdezésben
+A tagolt adat elválasztja a mezőket egy közös karakterrel, például egy CSV-fájlban található vesszőt. A [tagolt függvénnyel](/azure/kusto/query/splitfunction) elemezheti a tagolt fájlokat egy Ön által megadott határolójel használatával. Ezt a [kibővítési](/azure/kusto/query/extendoperator) operátorral végezheti el az adat összes mezőjének visszaadásához, vagy megadhatja a kimenetben szerepeltetni kívánt egyes mezőket.
 
 > [!NOTE]
-> Split egy dinamikus objektumot ad vissza, mert az eredményeket kell explicit módon konvertálható adattípusok karakterlánc például operátorok és szűrőkben használható.
+> Mivel a felosztás dinamikus objektumot ad vissza, előfordulhat, hogy az eredményeket explicit módon kell átadni olyan adattípusokhoz, mint például a kezelők és szűrők által használandó karakterlánc.
 
-Fontolja meg egy egyéni naplót a következő CSV formátumban adatokkal.
+Vegyünk fel egy egyéni naplófájlt az alábbi CSV-formátumban.
 
 ```
 2018-03-10 01:34:36, 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
@@ -125,7 +121,7 @@ Fontolja meg egy egyéni naplót a következő CSV formátumban adatokkal.
 2018-03-10 01:31:34, 303,Error,Application lost connection to database
 ```
 
-A következő lekérdezés az adatok elemzése és két a számított tulajdonságokat foglalják össze. Az első sor bontja a _RawData_ tulajdonság be egy karakterlánc-tömbben. A következő sorokban minden egyes nevet ad egyes tulajdonságokat, és hozzáadja őket a kimeneti függvények használata alakíthatja át őket a megfelelő adattípust.
+A következő lekérdezés elemezni fogja ezeket az adatelemzéseket, és összesíti a számított tulajdonságok közül kettőt. Az első sor a _RawData_ tulajdonságot egy karakterlánc-tömbre osztja fel. A következő sorok mindegyike egy nevet ad az egyes tulajdonságoknak, és hozzáadja őket a kimenethez függvények használatával, hogy a megfelelő adattípusra alakítsa őket.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -138,8 +134,8 @@ MyCustomCSVLog_CL
 | summarize count() by Status,Code
 ```
 
-## <a name="parse-predefined-structures-in-a-query"></a>A lekérdezésben előre meghatározott struktúrák elemzése
-Ha az adatok ismert szerkezetben vannak formázva, akkor lehet az a funkciók egyikét használhatják a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) előre meghatározott struktúrák elemzéséhez:
+## <a name="parse-predefined-structures-in-a-query"></a>Előre definiált struktúrák elemzése egy lekérdezésben
+Ha az adatok egy ismert struktúrában vannak formázva, az előre definiált struktúrák elemzéséhez használhatja a [Kusto lekérdezési nyelvének](/azure/kusto/query/) egyik függvényét is:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
@@ -150,7 +146,7 @@ Ha az adatok ismert szerkezetben vannak formázva, akkor lehet az a funkciók eg
 - [Felhasználói ügynök](/azure/kusto/query/parse-useragentfunction)
 - [Verzió karakterlánca](/azure/kusto/query/parse-versionfunction)
 
-A következő példalekérdezés elemzi a _tulajdonságok_ mezőjében a _AzureActivity_ táblában, amely a JSON-ban van strukturálva. Az eredményeket elmenti azt egy dinamikus nevű tulajdonsággal _parsedProp_, amely tartalmazza az egyes megnevezett érték a JSON-fájlban. Ezekkel az értékekkel szűrése és összegzése a lekérdezés eredményeit.
+A következő példa a _AzureActivity_ tábla _Tulajdonságok_ mezőjét elemzi, amely a JSON-ban van strukturálva. Az eredményeket egy _parsedProp_nevű dinamikus tulajdonságba menti, amely magában foglalja a JSON-ban megnevezett értékeket is. Ezek az értékek a lekérdezés eredményeinek szűrésére és összefoglalására szolgálnak.
 
 ```Kusto
 AzureActivity
@@ -159,9 +155,9 @@ AzureActivity
 | summarize count() by ResourceGroup, tostring(parsedProp.tags.businessowner)
 ```
 
-Ezen elemzési funkciók lehet processzorigényes, így azok kell használni, csak akkor, amikor a lekérdezést használ több tulajdonságot a formázott adatokból. Ellenkező esetben egyszerű a feldolgozás egyező minta gyorsabbak lesznek.
+Ezek az elemzési függvények felhasználhatják a processzort, ezért csak akkor használhatók, ha a lekérdezés több tulajdonságot használ a formázott adatokból. Ellenkező esetben az egyszerű minták egyeztetésének feldolgozása gyorsabb lesz.
 
-Az alábbi példa a tartományvezérlő TGT előhitelesítési típus bontását mutatja. A típus csak a EventData mező, amely XML-karakterlánc, létezik, de nem más, ebben a mezőben van volt szükség adatok. Ebben az esetben [elemezni](/azure/kusto/query/parseoperator) szolgál ki a szükséges adatot kivételezési.
+Az alábbi példa a tartományvezérlő TGT-előhitelesítési típusának lebontását mutatja be. A típus csak a EventData mezőben létezik, amely egy XML-karakterlánc, de a mezőtől eltérő adatok nem szükségesek. Ebben az esetben az [elemzés](/azure/kusto/query/parseoperator) a szükséges adat kiválasztására szolgál.
 
 ```Kusto
 SecurityEvent
@@ -170,10 +166,10 @@ SecurityEvent
 | summarize count() by PreAuthType
 ```
 
-## <a name="use-function-to-simulate-a-table"></a>Függvény használatával egy tábla szimulálása
-Előfordulhat, hogy több lekérdezés, amely egy adott tábla ugyanazon elemzés végrehajtásához. Ebben az esetben [függvény létrehozása](functions.md) , amelyek az elemzési lekérdezés logikai ahelyett elemzett adatait adja vissza. Ezután a függvény aliasa az eredeti tábla helyett használhatja más lekérdezések.
+## <a name="use-function-to-simulate-a-table"></a>Táblázat szimulálása függvény használatával
+Lehet, hogy több lekérdezés is van, amelyek egy adott tábla azonos elemzését végzik. Ebben az esetben [hozzon létre egy függvényt](functions.md) , amely visszaadja az elemzett adatok helyett az elemzési logika replikálását az egyes lekérdezésekben. Ezután használhatja a függvény aliasát az eredeti tábla helyett más lekérdezésekben.
 
-Fontolja meg a fenti példában az egyéni napló vesszővel tagolt. Több lekérdezés az elemzett adatok használatához hozzon létre egy függvényt, használja a következő lekérdezést, és mentse az alias _MyCustomCSVLog_.
+Vegye figyelembe a fenti példában szereplő, vesszővel tagolt egyéni naplót. Az elemzett adat több lekérdezésben való használatához hozzon létre egy függvényt a következő lekérdezés használatával, és mentse azt az alias _MyCustomCSVLog_.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -184,7 +180,7 @@ MyCustomCSVLog_CL
 | extend Message   = tostring(CSVFields[3]) 
 ```
 
-Most már használhatja az alias _MyCustomCSVLog_ helyett a tényleges tábla neve a következőhöz hasonló lekérdezést.
+Mostantól a _MyCustomCSVLog_ aliast is használhatja a tényleges táblanév helyett a következőhöz hasonló lekérdezésekben.
 
 ```Kusto
 MyCustomCSVLog
@@ -192,5 +188,5 @@ MyCustomCSVLog
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg [lekérdezések naplózását](log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+## <a name="next-steps"></a>Következő lépések
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](log-query-overview.md) .

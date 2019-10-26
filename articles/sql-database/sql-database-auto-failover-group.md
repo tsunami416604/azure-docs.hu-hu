@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/21/2019
-ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.openlocfilehash: bb47f0d2e02ce5cd055ebaae2e2a2f33ce77cd43
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750468"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901402"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -65,7 +65,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
   Ugyanazon a SQL Database kiszolgálón több önálló adatbázis is elhelyezhető ugyanabba a feladatátvételi csoportba. Ha egyetlen adatbázist ad hozzá a feladatátvételi csoporthoz, a automatikusan létrehoz egy másodlagos adatbázist ugyanazzal a kiadással és számítási mérettel a másodlagos kiszolgálón.  A kiszolgálót a feladatátvételi csoport létrehozásakor adta meg. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal a másodlagos kiszolgálón, a csoport örökli a földrajzi replikálási hivatkozást. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal egy olyan kiszolgálón, amely nem része a feladatátvételi csoportnak, akkor a rendszer egy új másodlagost hoz létre a másodlagos kiszolgálón.
   
   > [!IMPORTANT]
-  > Felügyelt példányokban az összes felhasználói adatbázis replikálódik. A feladatátvételi csoportban nem választhat felhasználói adatbázisok egy részhalmazát.
+  > Győződjön meg arról, hogy a másodlagos kiszolgálónak nincs azonos nevű adatbázisa, kivéve, ha egy meglévő másodlagos adatbázis. A felügyelt példány feladatátvételi csoportjaiban minden felhasználói adatbázis replikálódik. A feladatátvételi csoportban nem választhat felhasználói adatbázisok egy részhalmazát.
 
 - **Adatbázisok hozzáadása rugalmas készletből a feladatátvételi csoportba**
 
@@ -89,6 +89,9 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 - **Automatikus feladatátvételi szabályzat**
 
   Alapértelmezés szerint a feladatátvételi csoport automatikus feladatátvételi házirenddel van konfigurálva. A SQL Database szolgáltatás elindítja a feladatátvételt a hiba észlelése után, és a türelmi időszak lejárt. A rendszernek ellenőriznie kell, hogy a kiesést nem lehet-e enyhíteni a [SQL Database szolgáltatás beépített, magas rendelkezésre állású infrastruktúrája](sql-database-high-availability.md) által a hatás skálázása miatt. Ha az alkalmazásból szeretné vezérelni a feladatátvételi munkafolyamatot, kikapcsolhatja az automatikus feladatátvételt.
+  
+  > [!NOTE]
+  > Mivel a leállás skálázásának ellenőrzése és az, hogy milyen gyorsan lehet enyhíteni az operatív csapat által végzett emberi műveleteket, a türelmi időszak nem állítható be egy óra alatt.  Ez a korlátozás a feladatátvételi csoport összes adatbázisára vonatkozik, az adatszinkronizálási állapotuktól függetlenül. 
 
 - **Csak olvasási feladatátvételi szabályzat**
 
@@ -150,7 +153,7 @@ Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irány
   A különböző régiókban (elsődleges és másodlagos kiszolgálókon) lévő két kiszolgáló között egy vagy több feladatátvételi csoport is létrehozható. Az egyes csoportok tartalmazhatnak egy vagy több olyan adatbázist, amelyeket egységként állítanak be abban az esetben, ha az összes vagy néhány elsődleges adatbázis elérhetetlenné válik az elsődleges régióban bekövetkező leállás miatt. A feladatátvételi csoport a földrajzilag másodlagos adatbázist hozza létre ugyanazzal a szolgáltatási céllal, mint az elsődleges. Ha egy meglévő geo-replikációs kapcsolatot ad hozzá a feladatátvételi csoporthoz, győződjön meg arról, hogy a Geo-másodlagos kiszolgáló ugyanazzal a szolgáltatási réteggel és számítási mérettel van konfigurálva, mint az elsődleges.
   
   > [!IMPORTANT]
-  > Az önálló adatbázisok és a rugalmas készletek jelenleg nem támogatják a feladatátvételi csoportok létrehozását a különböző előfizetésekben található két kiszolgáló között.
+  > Az önálló adatbázisok és a rugalmas készletek jelenleg nem támogatják a feladatátvételi csoportok létrehozását a különböző előfizetésekben található két kiszolgáló között. Ha a feladatátvételi csoport létrehozása után áthelyezi az elsődleges vagy a másodlagos kiszolgálót egy másik előfizetésre, a feladatátvételi kérelmek és egyéb műveletek meghibásodását okozhatják.
 
 - **Olvasási és írási figyelő használata a OLTP számítási feladatokhoz**
 
@@ -326,7 +329,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 | Parancsmag | Leírás |
 | --- | --- |
-| [Új – AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
+| [Új – AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Eltávolítja a feladatátvételi csoportot a kiszolgálóról, és törli a csoportba tartozó összes másodlagos adatbázist. |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | A feladatátvételi csoport konfigurációjának beolvasása |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Módosítja a feladatátvételi csoport konfigurációját. |
@@ -342,7 +345,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 | Parancsmag | Leírás |
 | --- | --- |
-| [Új – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
+| [Új – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Módosítja a feladatátvételi csoport konfigurációját.|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |A feladatátvételi csoport konfigurációjának beolvasása|
 | [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Elindítja a feladatátvételi csoport feladatátvételét a másodlagos kiszolgálóra.|

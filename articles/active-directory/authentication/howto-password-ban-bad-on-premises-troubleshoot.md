@@ -4,19 +4,19 @@ description: Az Azure AD jelszavas védelem gyakori hibaelhárítása
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314937"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893283"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
 
@@ -40,7 +40,7 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
 1. A proxykiszolgáló blokkolja a proxy szolgáltatás által figyelt RPC-végponthoz (dinamikus vagy statikus) való hozzáférést.
 
-   Az Azure AD jelszavas védelmi proxy telepítője automatikusan létrehoz egy Windows tűzfal bejövő szabályt, amely lehetővé teszi az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portok elérését. Ha ezt a szabályt később törli vagy letiltja, a DC-ügynökök nem tudnak kommunikálni a proxy szolgáltatással. Ha a beépített Windows tűzfal egy másik tűzfal-termék helyett le van tiltva, akkor a tűzfalat úgy kell beállítania, hogy engedélyezze a hozzáférést az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portokhoz. Ez a konfiguráció konkrétabb lehet, ha a proxy szolgáltatás úgy van konfigurálva, hogy egy adott statikus RPC-portot figyeljen (a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával).
+   Az Azure AD jelszavas védelmi proxy telepítője automatikusan létrehoz egy Windows tűzfal bejövő szabályt, amely lehetővé teszi az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portok elérését. Ha ezt a szabályt később törli vagy letiltja, a DC-ügynökök nem tudnak kommunikálni a proxy szolgáltatással. Ha a beépített Windows tűzfal egy másik tűzfal-termék helyett le van tiltva, akkor a tűzfalat úgy kell beállítania, hogy engedélyezze a hozzáférést az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portokhoz. Ez a konfiguráció konkrétabb lehet, ha a proxy szolgáltatás úgy van konfigurálva, hogy egy adott statikus RPC-portot figyeljen (az `Set-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával).
 
 1. A proxykiszolgáló nem engedélyezi, hogy a tartományvezérlők be tudják jelentkezni a gépre. Ezt a viselkedést a "számítógép elérése a hálózatról" felhasználói jogosultságok kiosztása vezérli. Ezt a jogosultságot az erdő összes tartományának összes tartományvezérlőjén meg kell adni. Ezt a beállítást gyakran egy nagyobb hálózati megerősítési tevékenység részeként korlátozzák.
 
@@ -50,9 +50,9 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
 1. Győződjön meg arról, hogy az erdő és az összes proxykiszolgáló regisztrálva van ugyanazon az Azure-bérlőn.
 
-   Ezt a követelményt a és `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` a PowerShell-parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
+   Ezt a követelményt a `Get-AzureADPasswordProtectionProxy` és `Get-AzureADPasswordProtectionDCAgent` PowerShell-parancsmagok futtatásával, majd az egyes visszaadott elemek `AzureTenant` tulajdonságának összehasonlításával tekintheti meg. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
 
-   Ha egy Azure-bérlő regisztrációjának eltérési feltétele létezik, ezt a `Register-AzureADPasswordProtectionProxy` problémát a és/vagy `Register-AzureADPasswordProtectionForest` a PowerShell-parancsmagok igény szerint történő futtatásával lehet megállapítani, hogy az összes regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használja.
+   Ha egy Azure-bérlő regisztrációjának eltérő feltétele létezik, ezt a problémát kijavíthatja a `Register-AzureADPasswordProtectionProxy` és/vagy `Register-AzureADPasswordProtectionForest` PowerShell-parancsmagok igény szerinti futtatásával, így minden regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használhatja.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>A tartományvezérlő ügynöke nem tudja titkosítani vagy visszafejteni a jelszóházirend fájljait
 
@@ -166,7 +166,7 @@ Mivel a határidőt csak a kezdeti rendszerindítás során ellenőrzi a rendsze
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a lejárt nyilvános előzetes tartományvezérlő ügynökök azonnal frissítve legyenek a legújabb verzióra.
 
-A parancsmag futtatásával egyszerűen felderítheti az olyan tartományvezérlői ügynököket, amelyeket frissíteni kell, `Get-AzureADPasswordProtectionDCAgent` például a következő módon:
+Az `Get-AzureADPasswordProtectionDCAgent` parancsmag futtatásával egyszerűen felderítheti az olyan TARTOMÁNYVEZÉRLŐi ügynököket, amelyeket frissíteni kell a környezetben, például:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -187,7 +187,7 @@ PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-Az Azure AD jelszavas védelmi proxy szoftver semmilyen verzióban nem korlátozott. A Microsoft továbbra is javasolja a DC és a proxy ügynökök frissítését a legújabb verzióra, amint azok megjelentek. A `Get-AzureADPasswordProtectionProxy` parancsmagot a DC-ügynököknél a fenti példában szereplő, frissítést igénylő proxy ügynökök keresésére lehet használni.
+Az Azure AD jelszavas védelmi proxy szoftver semmilyen verzióban nem korlátozott. A Microsoft továbbra is javasolja a DC és a proxy ügynökök frissítését a legújabb verzióra, amint azok megjelentek. A `Get-AzureADPasswordProtectionProxy` parancsmag használatával a DC-ügynököknél a fenti példához hasonló, frissítést igénylő proxykat kereshet.
 
 Az adott frissítési eljárásokkal kapcsolatos további részletekért tekintse meg a [tartományvezérlő-ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) és [a proxy ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) ismertető témakört.
 
@@ -197,7 +197,7 @@ Ha olyan helyzet történik, ahol a tartományvezérlő ügynöke problémát ok
 
 Egy másik szervizelési mérték az engedélyezés mód beállítása a nem értékre az Azure AD jelszavas védelem portálon. Miután letöltötte a frissített szabályzatot, minden egyes tartományvezérlő ügynök-szolgáltatás nyugalmi módba kerül, ahol az összes jelszó elfogadva van. További információ: [érvényesítési mód](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
-## <a name="removal"></a>Eltávolítás
+## <a name="removal"></a>Eltávolítása
 
 Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét, és az összes kapcsolódó állapotot a tartomány (ok) és az erdő alapján végzi el, ez a feladat a következő lépések végrehajtásával valósítható meg:
 
@@ -216,7 +216,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
 
    Ne hagyja ki a csillagot ("*") a $keywords változó értékének végén.
 
-   Az eredményül kapott objektum (ok) megtalálhatók a `Get-ADObject` parancs `Remove-ADObject`segítségével, vagy manuálisan is törölhetők.
+   Az eredményül kapott objektum (ok) a `Get-ADObject` parancs használatával `Remove-ADObject`vagy manuálisan törölhető.
 
 4. Manuálisan távolítsa el az összes tartományvezérlői ügynök csatlakoztatási pontját az egyes tartománynév-névhasználati környezetekben. A szoftver központi telepítésének módjától függően előfordulhat, hogy az erdőn belül egy adott objektum egy tartományvezérlőn található. Az objektum helye a következő Active Directory PowerShell-paranccsal deríthető fel:
 
@@ -226,7 +226,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Az eredményül kapott objektum (ok) megtalálhatók a `Get-ADObject` parancs `Remove-ADObject`segítségével, vagy manuálisan is törölhetők.
+   Az eredményül kapott objektum (ok) a `Get-ADObject` parancs használatával `Remove-ADObject`vagy manuálisan törölhető.
 
    Ne hagyja ki a csillagot ("*") a $keywords változó értékének végén.
 
@@ -247,7 +247,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
 
    Ez az elérési út eltérő, ha a SYSVOL-megosztás nem alapértelmezett helyen van konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyakori kérdések az Azure AD jelszavas védelméről](howto-password-ban-bad-on-premises-faq.md)
 

@@ -1,25 +1,20 @@
 ---
 title: Azure Application Insights GYIK | Microsoft Docs
 description: Gyakori kérdések a Application Insightsról.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 09/16/2019
+ms.openlocfilehash: 55a096cd4971664e55bb2cfd17f9f8927d7c32f5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802291"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899522"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Application Insights: Gyakori kérdések
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights: gyakori kérdések
 
 ## <a name="configuration-problems"></a>Konfigurációs problémák
 *Nem sikerül beállítani a következőket:*
@@ -69,28 +64,28 @@ A részletek a projekt típusától függenek. Webalkalmazások esetén:
 
 * Hozzáadja ezeket a fájlokat a projekthez:
 
-  * ApplicationInsights.config.
+  * ApplicationInsights. config.
   * ai. js
 * A következő NuGet-csomagokat telepíti:
 
   * *Application INSIGHTS API* – a Core API
-  * *Application INSIGHTS API* webalkalmazásokhoz – telemetria küldésére szolgál a kiszolgálóról
-  * *Application INSIGHTS API JavaScript* -alkalmazásokhoz – telemetria küldésére szolgál az ügyféltől
+  * *Application INSIGHTS API webalkalmazásokhoz* – telemetria küldésére szolgál a kiszolgálóról
+  * *Application INSIGHTS API JavaScript-alkalmazásokhoz* – telemetria küldésére szolgál az ügyféltől
 
     A csomagok közé tartoznak a következő szerelvények:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
+  * Microsoft. ApplicationInsights
+  * Microsoft. ApplicationInsights. platform
 * Elemek beszúrása a következőkbe:
 
   * Web.config
-  * packages.config
+  * packages. config
 * (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a kód bekerül a mesterlap nézeteibe/Shared/_Layout. cshtml
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíteni a régebbi SDK-verziókról?
 Tekintse meg az SDK [kibocsátási megjegyzéseit](release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
 
 ## <a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
-A megoldáskezelő kattintson `ApplicationInsights.config` a jobb gombbal, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
+A Megoldáskezelő kattintson a jobb gombbal az `ApplicationInsights.config` elemre, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
 ## <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
 
@@ -103,13 +98,13 @@ Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Applica
 A Server Web appsből:
 
 * HTTP-kérések
-* [Függőségek](asp-net-dependencies.md). A következőre irányuló hívások: SQL-adatbázisok; HTTP-hívások külső szolgáltatásokhoz; Azure Cosmos DB, tábla, blob Storage és üzenetsor. 
+* [Függőségek](asp-net-dependencies.md). Hívások: SQL-adatbázisok; HTTP-hívások külső szolgáltatásokhoz; Azure Cosmos DB, tábla, blob Storage és üzenetsor. 
 * [Kivételek](asp-net-exceptions.md) és verem-Nyomkövetések.
-* [Teljesítményszámlálók](performance-counters.md) – ha Állapotmonitort használ [](monitor-performance-live-website-now.md), a [app Services Azure](azure-web-apps.md)-figyelést, a [virtuális gép vagy a virtuálisgép-méretezési csoport azure](azure-vm-vmss-apps.md)-figyelését, vagy a [Application Insights gyűjtött író](java-collectd.md).
+* [Teljesítményszámlálók](performance-counters.md) – ha [Állapotmonitort](monitor-performance-live-website-now.md)használ, a [app Services Azure-figyelést](azure-web-apps.md), a [virtuális gép vagy a virtuálisgép-méretezési csoport azure-figyelését](azure-vm-vmss-apps.md), vagy a [Application Insights gyűjtött író](java-collectd.md).
 * [Egyéni események és mérőszámok](api-custom-events-metrics.md) .
 * [Nyomkövetési naplók](asp-net-trace-logs.md) , ha a megfelelő gyűjtőt konfigurálja.
 
-Az [ügyfél](javascript.md)weblapjairól:
+Az [ügyfél weblapjairól](javascript.md):
 
 * [Oldalmegtekintések száma](usage-overview.md)
 * [Ajax-hívások](asp-net-dependencies.md) Futó parancsfájlból végrehajtott kérelmek.
@@ -137,22 +132,22 @@ További információ a [ASP.net](api-filtering-sampling.md) és a [Java](java-f
 
 A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megkeresjük a webes ügyfél IP-címét (IPv4 vagy IPv6).
 
-* Böngésző telemetria: Begyűjtjük a küldő IP-címét.
-* Kiszolgáló telemetria: A Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` be van állítva, a rendszer nem gyűjti.
+* Böngésző telemetria: összegyűjtjük a küldő IP-címét.
+* Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` van beállítva, a rendszer nem gyűjti.
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-Beállíthatja, hogy `ClientIpHeaderTelemetryInitializer` az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN `X-Originating-IP`helyezi át őket. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+A `ClientIpHeaderTelemetryInitializer` úgy is beállíthatja, hogy az IP-címet egy másik fejlécből hajtsa végre. Egyes rendszerekben például egy proxy, terheléselosztó vagy CDN áthelyezi a `X-Originating-IP`ba. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 A [Power bi](export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
 
 ## <a name="data"></a>Mennyi ideig tartanak a portálon tárolt adat? Biztonságos?
-Vessen egy pillantást az [adatok megőrzésére és][data]az adatvédelemre.
+Vessen egy pillantást az [adatok megőrzésére és az adatvédelemre][data].
 
 ## <a name="could-personal-data-be-sent-in-the-telemetry"></a>A személyes adatküldés a telemetria?
 
-Ez akkor lehetséges, ha a kód ilyen adatokat küld. Akkor is előfordulhat, ha a stack-nyomkövetésben szereplő változók személyes adatba tartoznak. A fejlesztési csapatnak kockázatértékelést kell végeznie, hogy a személyes adatai megfelelően legyenek kezelve. [További információ az adatmegőrzésről és](data-retention-privacy.md)az adatvédelemről.
+Ez akkor lehetséges, ha a kód ilyen adatokat küld. Akkor is előfordulhat, ha a stack-nyomkövetésben szereplő változók személyes adatba tartoznak. A fejlesztési csapatnak kockázatértékelést kell végeznie, hogy a személyes adatai megfelelően legyenek kezelve. [További információ az adatmegőrzésről és az adatvédelemről](data-retention-privacy.md).
 
 Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi hely attribútumainak megvizsgálása után.
 
@@ -165,7 +160,7 @@ Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi
 
 A következőket teheti:
 
-* Az ügyfél-és a kiszolgálói adatforrásokhoz két különálló rendszerkulcs (külön Application Insights erőforrás) használata szükséges. Vagy
+* Az ügyfél-és a kiszolgálói adatforrásokhoz két különálló rendszerkulcs (külön Application Insights erőforrás) használata szükséges. vagy
 * Írjon be egy proxyt, amely a kiszolgálón fut, és hogy a webes ügyfél az adott proxyn keresztül küldje el az adatait.
 
 ## <a name="post"></a>Hogyan lásd: az adatposta a diagnosztikai keresésben?
@@ -196,7 +191,7 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 | Rendelkezésre állási diagramok |[Webes tesztek](monitor-web-app-availability.md) |Ismerje meg a webalkalmazását |
 | Server app Perf: válaszidő,... |[Application Insights hozzáadása a projekthez](asp-net.md) vagy [AI-Állapotmonitor telepítése a kiszolgálón](monitor-performance-live-website-now.md) (vagy saját kód írása a [függőségek nyomon követéséhez](api-custom-events-metrics.md#trackdependency)) |A Teljesítményfigyelő hibáinak észlelése |
 | Függőségi telemetria |[AI-Állapotmonitor telepítése a kiszolgálón](monitor-performance-live-website-now.md) |Az adatbázisokkal vagy más külső összetevőkkel kapcsolatos problémák diagnosztizálása |
-| Verem nyomkövetésének lekérése kivételekről |[TrackException-hívások beszúrása a kódban](asp-net-exceptions.md) (néhányat azonban automatikusan jelentettek) |Kivételek észlelése és diagnosztizálása |
+| Verem nyomkövetésének lekérése kivételekről |[TrackException-hívások beszúrása a kódban](asp-net-exceptions.md) (de néhányat automatikusan kell jelenteni) |Kivételek észlelése és diagnosztizálása |
 | Keresési naplók nyomkövetése |[Naplózási adapter hozzáadása](asp-net-trace-logs.md) |Kivételek diagnosztizálása, Perf-problémák |
 | Az ügyfél használatának alapjai: oldalletöltések, munkamenetek,... |[JavaScript-inicializálás a weblapokon](javascript.md) |Használatelemzés |
 | Ügyfél egyéni metrikái |[Hívások követése a weblapokon](api-custom-events-metrics.md) |A felhasználói élmény fejlesztése |
@@ -206,7 +201,7 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 
 A [mintavétel](sampling.md) csökkenti az alkalmazásból a portálra ténylegesen küldött telemetria elemek (kérelmek, egyéni események stb.) számát. A keresés területen láthatja a ténylegesen fogadott elemek számát. Az események számát megjelenítő mérőszám-diagramoknál megtekintheti a bekövetkezett eredeti események számát. 
 
-Minden továbbított tétel egy olyan `itemCount` tulajdonságot hordoz, amely azt mutatja, hogy hány eredeti eseményt képvisel az adott tétel. A mintavétel működés közbeni megfigyeléséhez futtassa ezt a lekérdezést az Analyticsben:
+Minden továbbított tétel egy `itemCount` tulajdonságot jelenít meg, amely azt mutatja, hogy hány eredeti eseményt képvisel az adott tétel. A mintavétel működés közbeni megfigyeléséhez futtassa ezt a lekérdezést az Analyticsben:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -217,7 +212,7 @@ Minden továbbított tétel egy olyan `itemCount` tulajdonságot hordoz, amely a
 
 ### <a name="configuring-application-insights"></a>Application Insights konfigurálása
 
-A [PowerShell](powershell.md) -szkripteket az Azure Erőforrás-figyelő használatával is megírhatja:
+A PowerShell-szkripteket az Azure erőforrás-figyelő használatával is [megírhatja](powershell.md) :
 
 * Application Insights erőforrások létrehozása és frissítése.
 * Állítsa be a díjszabási tervet.
@@ -244,14 +239,14 @@ Ez nem függ attól, hogy hol található a Application Insights-erőforrás. Cs
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Küldhetek telemetria az Application Insights portálra?
 
-Javasoljuk, hogy használja az SDK-kat, és használja az [SDK API](api-custom-events-metrics.md)-t. Különböző platformokon léteznek az SDK különféle változatai. [](platforms.md) Ezek az SDK-k pufferelést, tömörítést, szabályozást, újrapróbálkozást és így tovább kezelik. A betöltési [séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és a [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) azonban nyilvános.
+Javasoljuk, hogy használja az SDK-kat, és használja az [SDK API](api-custom-events-metrics.md)-t. Különböző [platformokon](platforms.md)léteznek az SDK különféle változatai. Ezek az SDK-k pufferelést, tömörítést, szabályozást, újrapróbálkozást és így tovább kezelik. A betöltési [séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és a [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) azonban nyilvános.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Nyomon követhető az intranetes webkiszolgáló?
 
 Igen, de engedélyeznie kell a szolgáltatásoknak a tűzfal-kivételek vagy a proxy-átirányítások által nyújtott forgalmat.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Tekintse át a szolgáltatások és IP-címek teljes listáját [itt](../../azure-monitor/app/ip-addresses.md).
@@ -265,7 +260,7 @@ Lehetővé teszi, hogy a webkiszolgáló telemetria küldjön a végpontoknak.
 Átirányíthatja a forgalmat a kiszolgálóról az intranetes átjáróra a konfigurációban található végpontok felülírásával.
 Ha ezek a "végpont" tulajdonságok nem szerepelnek a konfigurációban, ezek az osztályok az alapértelmezett értékeket fogják használni az alábbi példában látható ApplicationInsights. config fájlban. 
 
-Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfigurációban cserélje le az alapértelmezett értékeket a `http://<your.gateway.address>/<relative path>`értékre.
+Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfigurációban cserélje le az alapértelmezett értékeket `http://<your.gateway.address>/<relative path>`ra.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Példa ApplicationInsights. config alapértelmezett végpontokkal:

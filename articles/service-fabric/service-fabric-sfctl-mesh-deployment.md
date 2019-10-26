@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl Mesh üzembe helyezése | Microsoft Do
 description: Ismerteti a Service Fabric CLI sfctl Mesh telepítési parancsait.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: b3f506b46ef563f47fc7c67b759d3fcd08b7509d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: dbecf8e96c6cb5d0d6d873309d848304fe33eaaa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035191"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901254"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh üzembe helyezése
 Hozzon létre Service Fabric Mesh-erőforrásokat.
@@ -27,7 +28,7 @@ Hozzon létre Service Fabric Mesh-erőforrásokat.
 
 |Parancs|Leírás|
 | --- | --- |
-| create | Service Fabric Mesh-erőforrások központi telepítését hozza létre. |
+| létrehozás | Service Fabric Mesh-erőforrások központi telepítését hozza létre. |
 
 ## <a name="sfctl-mesh-deployment-create"></a>sfctl háló üzembe helyezésének létrehozása
 Service Fabric Mesh-erőforrások központi telepítését hozza létre.
@@ -36,7 +37,7 @@ Service Fabric Mesh-erőforrások központi telepítését hozza létre.
 
 |Argumentum|Leírás|
 | --- | --- |
-| --input-YAML-Files [kötelező] | Az összes YAML-fájl vagy a YAML-fájlokat tartalmazó könyvtár relatív/abszolút elérési útjának vesszővel tagolt relatív/abszolút fájlelérési útja. |
+| --input-YAML-Files [kötelező] | Az összes YAML-fájl vagy a YAML-fájlokat tartalmazó könyvtár relatív/abszolút elérési útjának vesszővel elválasztott relatív/abszolút fájlelérési útja. |
 | – paraméterek | Egy relatív/abszolút elérési út a YAML fájlhoz vagy egy JSON-objektumhoz, amely tartalmazza azokat a paramétereket, amelyeket felül kell bírálni. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -45,33 +46,30 @@ Service Fabric Mesh-erőforrások központi telepítését hozza létre.
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ### <a name="examples"></a>Példák
 
 Összevonja és telepíti az összes erőforrást a fürtbe úgy, hogy felülbírálja a YAML fájlban említett paramétereket.
-
-```
-sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters
-./param.yaml
+``` 
+sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters  
+./param.yaml    
 ```
 
 A YAML fájlban említett paraméterek felülbírálásával összevonja és telepíti a címtárban lévő összes erőforrást a fürtbe.
 
-```
+``` 
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
-Egy címtárban lévő összes erőforrás konszolidálása és üzembe helyezése a fürthöz a közvetlenül JSON-objektumként továbbított paraméterek felülbírálásával
-
+Egy címtárban lévő összes erőforrás konszolidálása és telepítése a fürthöz a közvetlenül JSON-objektumként átadott paraméterek felülbírálásával
+``` 
+sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :    
+{'value' : 'my_value'} }"   
 ```
-sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :
-{'value' : 'my_value'} }"
-```
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

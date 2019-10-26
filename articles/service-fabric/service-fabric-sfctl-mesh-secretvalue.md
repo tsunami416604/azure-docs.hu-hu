@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl Mesh secretvalue | Microsoft Docs
 description: Ismerteti a Service Fabric CLI sfctl Mesh secretvalue parancsait.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035932"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901180"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh titkos kódjának értéke
 Háló secretvalue erőforrásainak beolvasása és törlése.
@@ -27,9 +28,9 @@ Háló secretvalue erőforrásainak beolvasása és törlése.
 
 |Parancs|Leírás|
 | --- | --- |
-| törlés | Törli a névvel ellátott titkos erőforrás megadott értékét. |
-| list | A megadott titkos erőforrás összes értékének listázása. |
-| megjelenítése | Egy titkos erőforrás megadott verziójának beolvasása. |
+| delete | Törli a névvel ellátott titkos erőforrás megadott értékét. |
+| lista | A megadott titkos erőforrás összes értékének listázása. |
+| megjelenítése | A titkos erőforrás megadott értékét listázza. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl Mesh secretvalue törlése
 Törli a névvel ellátott titkos erőforrás megadott értékét.
@@ -49,8 +50,8 @@ Törli a név alapján azonosított titkos érték erőforrást. Az erőforrás 
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-secretvalue-list"></a>sfctl Mesh secretvalue listája
@@ -70,12 +71,12 @@ Információk beolvasása a megadott titkos erőforrás minden titkos érték er
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl Mesh secretvalue show
-Egy titkos erőforrás megadott verziójának beolvasása.
+A titkos erőforrás megadott értékét listázza.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -91,11 +92,11 @@ Egy titkos erőforrás megadott verziójának beolvasása.
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

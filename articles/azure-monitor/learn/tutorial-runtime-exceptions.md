@@ -1,21 +1,19 @@
 ---
 title: Futásidejű kivételek diagnosztizálása az Azure Application Insights használatával | Microsoft Docs
 description: Oktatóanyag az alkalmazásában előforduló futásidejű kivételek észleléséhez és diagnosztizálásához az Azure Application Insights használatával.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 19455998ca13b9abf48bb1cb3856e38b5c47ef52
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595610"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900474"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -34,7 +32,7 @@ Az Azure Application Insights telemetriát gyűjt az alkalmazásából a futási
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítés [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
+- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
@@ -75,7 +73,7 @@ Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, �
     ![Kivétel részletei](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Sikertelen kód azonosítása
-A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezt követően lehetősége van a forráskód hibakeresése a pillanatfelvételt letöltve, és nyissa meg a Visual Studio 2019 Enterprise szerint.
+A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezt követően lehetősége van a forráskód hibakeresésére a pillanatkép letöltésével és a Visual Studio 2019 Enterprise-ban való megnyitásával.
 
 1. A kivétel tulajdonságaiban kattintson a **Hibakeresési pillanatfelvétel megnyitása** elemre.
 2. A **Hibakeresési pillanatfelvétel** panel a kérés hívásvermével nyílik meg.  Az egyes metódusokra kattintva megtekintheti az összes helyi változónak a kérés időpontjában rögzített értékeit.  Ebben a példában a legfelső metódustól kezdve olyan változókat láthatunk, amelyeknek nincs értéke.
@@ -86,9 +84,9 @@ A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekrő
 
     ![Hibakeresési pillanatkép](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Ezután vannak arra, hogy letöltse ezt a pillanatfelvételt a Visual studióba, ahol megkereshetjük a javításra szoruló kódot. Ehhez kattintson **Pillanatfelvétel letöltése**.
+4. Ezután letöltheti ezt a pillanatképet a Visual studióba, ahol megtalálhatja a javítani kívánt kódot. Ehhez kattintson a **Pillanatkép letöltése**elemre.
 5. A rendszer betölti a pillanatfelvételt a Visual Studióba.
-6. Most futtathatja a hibakeresési munkamenet a Visual Studio Enterprise, amely gyorsan azonosítja a kivételt okozó kódsorra.
+6. Most már futtathat egy hibakeresési munkamenetet a Visual Studio Enterprise-ban, amely gyorsan azonosítja a kivételt okozó kód sorát.
 
     ![Kivétel a kódban](media/tutorial-runtime-exceptions/exception-code.png)
 
@@ -111,7 +109,7 @@ Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, 
 
     ![Új munkaelem](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.
 
 > [!div class="nextstepaction"]

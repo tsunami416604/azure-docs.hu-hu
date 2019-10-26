@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262868"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900696"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>SQL Server virtuális gép licencelési modelljének módosítása az Azure-ban
 Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
@@ -31,7 +31,7 @@ Az utólagos elszámolású modell azt jelenti, hogy az Azure-beli virtuális g�
 
 Azure Hybrid Benefit lehetővé teszi a frissítési garanciával rendelkező SQL Server-licencek használatát az Azure-beli virtuális gépeken. A Azure Hybrid Benefit használata esetén az ügyfelek nem számítanak fel díjat a virtuális gépeken SQL Server licencek esetében. Azonban továbbra is fizetniük kell a mögöttes Felhőbeli számítás (azaz az alaparány), a tárterület és a biztonsági másolatok költségeiért. Emellett a szolgáltatások használatára vonatkozó I/O-díjat is fizetniük kell (ha vannak ilyenek).
 
-A Microsoft-termékek feltételeinek megfelelően: "A felhasználóknak jelezniük kell, hogy a Azure SQL Database (felügyelt példány, rugalmas készlet és önálló adatbázis), Azure Data Factory, SQL Server Integration Services vagy SQL Server Virtual Machines a konfigurálásakor Azure Hybrid Benefit SQL Server munkaterhelések az Azure-ban. "
+A Microsoft-termékek használati feltételei szerint: "a felhasználóknak jelezniük kell, hogy Azure SQL Database (felügyelt példány, rugalmas készlet és önálló adatbázis), Azure Data Factory, SQL Server Integration Services vagy SQL Server Azure-beli Virtual Machines használnak. Hibrid Benefit SQL Server az Azure-beli számítási feladatok konfigurálásakor. "
 
 Ha az Azure-beli virtuális gépen SQL Server Azure Hybrid Benefit használatát szeretné jelezni, és a megfelelőnek kell lennie, három lehetősége van:
 
@@ -51,7 +51,7 @@ Az SQL virtuális gép erőforrás-szolgáltatójának használatához a SQL Ser
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál már regisztrált virtuális gépek licencének módosítása 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -149,12 +149,12 @@ A SQL Server VM licencének típusa csak akkor módosítható, ha a SQL Server V
 
 ## <a name="known-errors"></a>Ismert hibák
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nem található a (z) "Microsoft.\<SqlVirtualMachine/SqlVirtualMachines/Resource-Group >"\<erőforrás a (z) "erőforrás-csoport >" erőforráscsoport alatt.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nem található a (z) "\<erőforráscsoport >" erőforráscsoport "Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<erőforrás-csoport >" erőforrása.
 Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítani a licencet, amely még nincs regisztrálva az SQL VM erőforrás-szolgáltatónál:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Regisztrálnia kell az erőforrás-szolgáltatót az [előfizetésében](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription), majd [regisztrálnia kell a SQL Server VM az erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). 
+Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [regisztrálnia kell a SQL Server VM az erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Az "SKU" paraméter argumentuma nem ellenőrizhető
 Ez a hiba akkor fordulhat elő, amikor a 4,0-nál újabb Azure PowerShell-verziókkal próbálja meg módosítani a SQL Server VM licenc modelljét:
@@ -176,7 +176,7 @@ A Azure PowerShell verziójának ellenőrzéséhez használja a következő kód
   Get-Module -ListAvailable -Name Azure -Refresh
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket: 
 

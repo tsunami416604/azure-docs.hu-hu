@@ -1,24 +1,18 @@
 ---
 title: Függvények a Azure Monitor log lekérdezésekben | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használhatók a függvények egy másik, Azure Monitorban található napló lekérdezésének meghívásához.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/15/2018
+ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076697"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894177"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
@@ -30,10 +24,10 @@ A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyt
 
 | Beállítás | Leírás |
 |:---|:---|
-| Name (Név)           | A lekérdezés megjelenített neve a **query Explorerben**. |
+| Név           | A lekérdezés megjelenített neve a **query Explorerben**. |
 | Mentés másként        | Függvény |
 | Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
-| Category       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |
+| Kategória       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |
 
 > [!NOTE]
 > Azure Monitor függvény nem tartalmazhat másik függvényt.
@@ -60,7 +54,7 @@ Hozzon létre egy másik lekérdezést, és hivatkozzon a _security_updates_last
 security_updates_last_day | where Title contains "SQL"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Monitor log-lekérdezések írásához további leckéket talál:
 
 - [Karakterlánc-műveletek](string-operations.md)

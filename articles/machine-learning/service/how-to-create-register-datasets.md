@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 10/10/2019
-ms.openlocfilehash: 54f8a1248688a6d62192e4f34cf6b98a94086da8
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a558658d7c853560f0939c99dc5dce739d985944
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274759"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900711"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Adatkészletek létrehozása és elérése (előzetes verzió) Azure Machine Learning
 
@@ -82,7 +82,7 @@ datastore = Datastore.get(workspace, datastore_name)
 ```
 #### <a name="create-tabulardatasets"></a>TabularDatasets létrehozása
 
-Használja az [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) metódust `TabularDatasetFactory` osztályban a CSV-vagy TSV-formátumú fájlok olvasásához, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlból olvas be adatokat, a rendszer összesíti az eredményeket egy táblázatos ábrázolásba.
+A `TabularDatasetFactory` osztály [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) metódusával olvassa be a CSV-vagy TSV-formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlból olvas be adatokat, a rendszer összesíti az eredményeket egy táblázatos ábrázolásba.
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -107,7 +107,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
 2|3|1|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
-A Azure SQL Databaseból való olvasáshoz használja az [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) metódust `TabularDatasetFactory` osztályban.
+A Azure SQL Databaseból való olvasáshoz használja a `TabularDatasetFactory` osztály [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) metódusát.
 
 ```Python
 
@@ -120,7 +120,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 A TabularDatasets az adatok egy oszlopában adhatók meg, vagy az elérési út mintájának adatait egy idősorozat-tulajdonság engedélyezésével lehet megadni, amely lehetővé teszi az egyszerű és hatékony szűrést az idő alapján.
 
-Használja az [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) metódust `TabularDataset` osztályban az időbélyegző oszlop megadásához és az idő szerinti szűrés engedélyezéséhez. További példákat és részleteket [itt](https://aka.ms/azureml-tsd-notebook)találhat.
+Használja a [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) metódust `TabularDataset` osztályban az időbélyegző oszlop megadásához és az idő szerinti szűrés engedélyezéséhez. További példákat és részleteket [itt](https://aka.ms/azureml-tsd-notebook)találhat.
 
 ```Python
 # create a TabularDataset with time series trait
@@ -141,7 +141,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-filedatasets"></a>FileDatasets létrehozása
 
-A fájlok bármilyen formátumban való betöltéséhez használja az [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) metódust `FileDatasetFactory` osztályban, és hozzon létre egy nem regisztrált FileDataset.
+A fájlok bármilyen formátumban való betöltéséhez használja a `FileDatasetFactory` osztály [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) metódusát, és hozzon létre egy nem regisztrált FileDataset.
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -187,11 +187,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="version-datasets"></a>Verziók adatkészletei
 
-Egy új verzió létrehozásával regisztrálhat egy új adatkészletet ugyanazon a néven. Az adatkészlet verziója lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így a kísérletezéshez vagy a későbbi sokszorosításhoz az adatkészlet adott verzióját is alkalmazhatja. A verziószámozást általában a következő esetekben érdemes figyelembe venni: 
-
-* Ha új adatgyűjtési lehetőség áll rendelkezésre.
-* Ha különböző adatelőkészítési vagy szolgáltatás-mérnöki módszereket alkalmaz.
-
+Egy új verzió létrehozásával regisztrálhat egy új adatkészletet ugyanazon a néven. Az adatkészlet verziója lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így a kísérletezéshez vagy a későbbi sokszorosításhoz az adatkészlet adott verzióját is alkalmazhatja. További információ az [adatkészletek verzióiról](how-to-version-track-datasets.md).
 ```Python
 # create a TabularDataset from Titanic training data
 web_paths = [
@@ -231,6 +227,6 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tudnivalók [az adatkészletek betanításáról](how-to-train-with-datasets.md)
+* Ismerje meg, [Hogyan lehet betanítani az adatkészleteket](how-to-train-with-datasets.md).
 * Az automatizált gépi tanulást a TabularDatasets-mel való [betanításhoz](https://aka.ms/automl-dataset)használhatja.
 * Az adatkészletek betanításával kapcsolatos további példákért tekintse meg a [minta jegyzetfüzeteket](https://aka.ms/dataset-tutorial).

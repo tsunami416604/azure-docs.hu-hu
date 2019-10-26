@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl Chaos-ütemterv | Microsoft Docs
 description: Ismerteti a Service Fabric CLI sfctl Chaos Schedule parancsait.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1664978110b7c700906cbf4e6c80806ac70f1f05
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036525"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897543"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl-káosz ütemterv
 A Chaos-ütemterv beolvasása és beállítása.
@@ -39,7 +40,7 @@ Beolvassa a használatban lévő Chaos-ütemterv verzióját, valamint azt a ká
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -47,24 +48,24 @@ Beolvassa a használatban lévő Chaos-ütemterv verzióját, valamint azt a ká
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl Chaos-ütemterv beállítása
 Állítsa be a káosz által használt ütemtervet.
 
-A Chaos automatikusan ütemezni fogja a futtatásokat a Chaos-ütemterv alapján. A megadott bemeneti ütemtervben szereplő verziónak meg kell egyeznie a kiszolgálón futó Chaos-ütemterv verziójával. Ha a megadott verzió nem egyezik meg a kiszolgáló verziójával, a káosz-ütemterv nem frissül. Ha a megadott verzió megegyezik a-kiszolgálón található verzióval, akkor a rendszer frissíti a Chaos-ütemtervet, és a kiszolgálón lévő káosz-ütemterv verzióját eggyel növeli, és a 2 147 483 647-as értéket 0-ra zárja vissza. Ha a káosz fut a híváskor, a hívás sikertelen lesz.
+A Chaos automatikusan ütemezni fogja a futtatásokat a Chaos-ütemterv alapján. A Chaos-ütemterv akkor frissül, ha a megadott verzió megegyezik a kiszolgálón található verzióval. A Chaos-ütemterv frissítésekor a kiszolgálón lévő verzió eggyel nő. A kiszolgáló verziószáma 0 lesz, miután elérte a nagy számot. Ha a káosz fut a híváskor, a hívás sikertelen lesz.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
 | --Chaos-Parameters-Dictionary | A JSON-kódolású lista a feladatok által használandó ChaosParameters karakterlánc-nevek hozzárendelését jelképezi. |
-| --expiry-date-utc | Az a dátum és idő, ameddig a rendszer leállítja a káoszt az ütemterv használatával.  Alapértelmezett\: 9999-12-31T23\:59\:59.999 z. |
+| --lejárat dátuma – UTC | Az a dátum és idő, ameddig a rendszer leállítja a káoszt az ütemterv használatával.  Alapértelmezett\: 9999-12-31T23\:59\:59.999 Z. |
 | – feladatok | JSON-kódolású ChaosScheduleJobs-lista, amely azt jelképezi, hogy mikor fusson a káosz, és hogy milyen paraméterekkel kell futtatni a Chaos-t |
-| --Start-Date-UTC | Annak a dátumnak és időpontnak a dátuma és ideje, hogy mikor kell elkezdeni az ütemtervet ütemezni.  Alapértelmezett\: 1601-01-01T00\:00\:00.000 z. |
-| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --Start-Date-UTC | Annak a dátumnak és időpontnak a dátuma és ideje, hogy mikor kell elkezdeni az ütemtervet ütemezni.  Alapértelmezett\: 1601-01-01T00\:00\:00.000 Z. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
 | --Version | Az ütemezett verzió verziószáma. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -73,8 +74,8 @@ A Chaos automatikusan ütemezni fogja a futtatásokat a Chaos-ütemterv alapján
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ### <a name="examples"></a>Példák
@@ -144,6 +145,6 @@ A következő parancs egy ütemtervet állít be (feltételezve, hogy az aktuál
     ]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

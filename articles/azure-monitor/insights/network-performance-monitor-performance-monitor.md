@@ -1,138 +1,132 @@
 ---
-title: Teljesítmény figyelése a szolgáltatás a Network Performance Monitor megoldás az Azure Log Analyticsben |} A Microsoft Docs
-description: A Teljesítményfigyelő funkció a Network Performance Monitor segítséget nyújt a hálózaton lévő különböző pontok hálózati kapcsolatait figyelheti. Figyelemmel kísérheti a magánfelhők számára, és a helyszíni helyeken, több adatközpontok és a fiókirodákban, és a többrétegű alkalmazások üzleti szempontból kritikus vagy mikroszolgáltatás-alapú.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Teljesítményfigyelő funkció az Azure Log Analytics Network Performance Monitor megoldásában | Microsoft Docs
+description: A Network Performance Monitor Teljesítményfigyelő funkciója segíti a hálózati kapcsolatok figyelését a hálózat különböző pontjai között. A Felhőbeli üzemelő példányokat, a helyszíni helyszíneket, több adatközpontot és fiókirodát, valamint a kritikus többrétegű alkalmazásokat és a-szolgáltatásokat is figyelheti.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: bb99689409ddff311e556250083b99842bc59927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/20/2018
+ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963471"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898837"
 ---
-# <a name="network-performance-monitor-solution-performance-monitoring"></a>Hálózati Teljesítményfigyelő megoldás: Teljesítményfigyelés
+# <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor megoldás: teljesítményfigyelés
 
-A Teljesítményfigyelő képesség [Network Performance Monitor](network-performance-monitor.md) segít nyomon, hogy a hálózat különböző pontok közötti hálózati kapcsolat. Figyelemmel kísérheti a magánfelhők számára, és a helyszíni helyeken, több adatközpontok és a fiókirodákban, és a többrétegű alkalmazások üzleti szempontból kritikus vagy mikroszolgáltatás-alapú. A Teljesítményfigyelő képes észlelni a hálózati problémákat, mielőtt felhasználói panaszok. Fő előnye, hogy a következők: 
+A [Network Performance monitor](network-performance-monitor.md) Teljesítményfigyelő funkciója segíti a hálózati kapcsolatok figyelését a hálózat különböző pontjai között. A Felhőbeli üzemelő példányokat, a helyszíni helyszíneket, több adatközpontot és fiókirodát, valamint a kritikus többrétegű alkalmazásokat és a-szolgáltatásokat is figyelheti. A Teljesítményfigyelő használatával észlelheti a hálózati problémákat, mielőtt a felhasználók panaszkodnak. A legfontosabb előnyök a következők lehetnek: 
 
-- Figyelheti a veszteséget és késéseket különböző alhálózatai között, és riasztásokat állíthat be.
-- A hálózaton (beleértve a redundáns elérési utak) összes útvonalának figyelése.
-- Végezzen hibaelhárítást a átmeneti és időponthoz – hálózati problémákat, amelyeket nehéz replikálni.
-- A hálózat, amely teljesítménycsökkenésért felelős konkrét szegmensét határozza meg.
-- Az SNMP protokollt kellene nélkül, a hálózat állapotának figyelése.
+- A különböző alhálózatokon és a riasztások beállításakor figyelje a veszteséget és a késést.
+- Figyelje a hálózaton lévő összes elérési utat (a redundáns elérési utakat is beleértve).
+- Az átmeneti és az időponthoz tartozó hálózati problémák elhárítása, amelyeket nehéz replikálni.
+- Határozza meg a hálózat adott szegmensét, amely a teljesítmény romlásának felel meg.
+- A hálózat állapotának figyelése anélkül, hogy SNMP-t kellene használnia.
 
 
 ![Hálózati teljesítményfigyelő](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfiguráció
-Nyissa meg a Network Performance Monitor konfigurációját, nyissa meg a [Network Performance Monitor megoldás](network-performance-monitor.md), és válassza ki **konfigurálása**.
+A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md), és válassza a **Konfigurálás**lehetőséget.
 
 ![A Network Performance Monitor konfigurálása](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Új hálózatok létrehozása
 
-A Network Performance Monitor egy hálózati az alhálózatok logikai tárolója. Ez segít a figyelést a hálózati infrastruktúra, igény szerint rendezheti. Hálózat létrehozása egy rövid nevet, és adjon hozzá alhálózatokat, hogy az üzleti logika alapján. Például hozzon létre egy hálózati London nevű, és adja hozzá az összes alhálózatot az adatközpontbeli London. Vagy létrehozhat egy hálózati nevű *ContosoFrontEnd* , és adja hozzá a hálózat összes alhálózatot Contoso nevű, az alkalmazás előtérrendszerét szolgálnak. A megoldás automatikusan létrehoz egy alapértelmezett hálózat, amely tartalmazza a környezetben észlelt összes alhálózatot. 
+A Network Performance Monitor egy hálózata az alhálózatok logikai tárolója. Ez segít a hálózati infrastruktúra figyelésének megszervezésében igényei szerint. Létrehozhat egy rövid névvel rendelkező hálózatot, és hozzáadhat alhálózatokat az üzleti logikája szerint. Létrehozhat például egy London nevű hálózatot, és hozzáadhatja az összes alhálózatot a londoni adatközpontban. Vagy létrehozhat egy *ContosoFrontEnd* nevű hálózatot, és hozzáadhatja ezt a hálózatot a contoso nevű alhálózathoz, amely az alkalmazás kezelőfelületét szolgálja ki. A megoldás automatikusan létrehoz egy alapértelmezett hálózatot, amely a környezetben felderített összes alhálózatot tartalmazza. 
 
-Minden alkalommal, amikor létrehoz egy hálózatot, adjon hozzá egy alhálózatot rá. Ezután az alhálózatban az alapértelmezett hálózat törlődik. Ha töröl egy hálózatot, összes alhálózatot automatikusan visszatér az alapértelmezett hálózat. Az alapértelmezett hálózat összes alhálózatot, amely nem található olyan felhasználó által definiált hálózati tárolójaként szolgál. Nem szerkeszthetők, és az alapértelmezett hálózat törlése. Mindig marad a rendszerben. Tetszőleges számú egyéni hálózatok igény szerint hozhat létre. A legtöbb esetben az alhálózatok a szervezetben egynél több hálózaton vannak elrendezve. Hozzon létre egy vagy több hálózatok alhálózatokat, az üzleti logikát a csoporthoz.
+Amikor hálózatot hoz létre, hozzá kell adnia egy alhálózatot. Ezt követően az alhálózat el lesz távolítva az alapértelmezett hálózatból. Ha töröl egy hálózatot, a rendszer az összes alhálózatát automatikusan visszaadja az alapértelmezett hálózatnak. Az alapértelmezett hálózat tárolóként működik az összes olyan alhálózat esetében, amely nem szerepel a felhasználó által megadott hálózatban. Az alapértelmezett hálózat nem szerkeszthető vagy törölhető. Mindig a rendszeren marad. Annyi egyéni hálózatot hozhat létre, amennyire csak szüksége van. A legtöbb esetben a szervezet alhálózatai több hálózaton vannak rendezve. Hozzon létre egy vagy több hálózatot az alhálózatok az üzleti logikához való csoportosításához.
 
-Új-hálózat létrehozása:
-
-
-1. Válassza ki a **hálózatok** fülre.
-1. Válassza ki **Hozzáadás hálózati**, majd adja meg a hálózat nevét és leírását. 
-2. Egy vagy több alhálózatot, majd válassza ki és **Hozzáadás**. 
-3. Válassza ki **mentése** a konfiguráció mentéséhez. 
+Új hálózat létrehozása:
 
 
-### <a name="create-monitoring-rules"></a>Figyelési szabály létrehozása 
+1. Válassza a **hálózatok** fület.
+1. Válassza a **hálózat hozzáadása**lehetőséget, majd írja be a hálózat nevét és leírását. 
+2. Válasszon ki egy vagy több alhálózatot, majd válassza a **Hozzáadás**lehetőséget. 
+3. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
 
-Teljesítményfigyelő állít elő, ha a hálózati kapcsolatok két alhálózatot vagy két hálózat között, a teljesítmény-küszöbértékének hálózatállapot-események. A rendszer automatikusan további ezeket a küszöbértékeket. Egyedi küszöbértékeket is megadhat. A rendszer automatikusan létrehoz egy alapértelmezett szabályt, amely állít elő, amikor veszteség vagy késés hálózat vagy alhálózat bármely párjai közötti hivatkozások megszegése állapottal kapcsolatos esemény a rendszer megtanult küszöbértéket. Ez az eljárás biztosítja a megoldás a hálózati infrastruktúra monitorozása, amíg explicit módon figyelési szabályokat hozott. Ha engedélyezve van az alapértelmezett szabályt, minden csomóponton szintetikus tranzakciók küldeni a többi csomópont, amely engedélyezve van a megfigyeléshez. Az alapértelmezett szabály hasznos kis hálózatokkal. Ilyen például, egy forgatókönyvet, ahol kis számú mikroszolgáltatások futtató kiszolgálók rendelkezik, és győződjön meg arról, hogy az összes kiszolgáló rendelkezik-e egymással való kapcsolatot szeretne.
+
+### <a name="create-monitoring-rules"></a>Figyelési szabályok létrehozása 
+
+A Teljesítményfigyelő állapotot állít elő, ha a két alhálózat vagy két hálózat közötti hálózati kapcsolatok teljesítményének küszöbértékét megszegik. A rendszer automatikusan tudja megtanulni ezeket a küszöbértékeket. Egyéni küszöbértékeket is megadhat. A rendszer automatikusan létrehoz egy alapértelmezett szabályt, amely egy állapotfigyelő eseményt állít elő, ha a hálózati vagy alhálózati kapcsolatok bármelyik párja vagy a késése megszegi a rendszer által megismert küszöbértéket. Ez a folyamat segít a megoldásnak megfigyelni a hálózati infrastruktúrát, amíg nem hozott létre explicit módon figyelési szabályokat. Ha az alapértelmezett szabály engedélyezve van, az összes csomópont szintetikus tranzakciókat küld az összes többi, a figyelésre engedélyezett csomópontnak. Az alapértelmezett szabály kis hálózatok esetén hasznos. Ilyen eset például, ha kis számú, a Service-t futtató kiszolgálóval rendelkezik, és biztosítani szeretné, hogy az összes kiszolgáló kapcsolatot létesítsen egymással.
 
 >[!NOTE]
-> Azt javasoljuk, hogy letiltja az alapértelmezett szabályt, és hozzon létre egyéni monitorozási szabályt, különösen olyan nagyobb hálózatok, ahol nagy számú csomópont használ a figyelést. Figyelési szabályok egyéni csökkentheti a megoldás és a Súgó, ahogy az a hálózat figyelése által generált forgalmat.
+> Javasoljuk, hogy tiltsa le az alapértelmezett szabályt, és hozzon létre egyéni figyelési szabályokat, különösen olyan nagyméretű hálózatokkal, amelyekben nagy számú csomópontot használ a figyeléshez. Az egyéni figyelési szabályok csökkenthetik a megoldás által generált forgalmat, és segítenek a hálózat figyelésének szervezésében.
 
-Az üzleti logika alapján figyelési szabályokat létrehozni. Ilyen például, hogy szeretné-e a hálózati kapcsolat a központtal két office webhelyek teljesítményének figyeléséhez. Csoport office site1 O1 hálózatban lévő összes alhálózathoz. Majd csoportosítson office site2 O2 hálózatban lévő összes alhálózathoz. Végül csoportban az összes alhálózatot a hálózati H. két figyelési szabályok létrehozása – egy O1 és óra között, és egy másik O2 és H. között az központjában 
+Az üzleti logikának megfelelően hozzon létre figyelési szabályokat. Ilyen eset például, ha két Office-hely hálózati kapcsolatának teljesítményét szeretné figyelni a központba. Csoportosítsa az Office hely1 összes alhálózatát az O1 hálózatban. Ezután csoportosítsa az összes alhálózatot az Office site2 az O2 hálózatban. Végül pedig csoportosítsa az összes alhálózatot a hálózati H hálózatban. hozzon létre két figyelési szabályt – egyet az O1 és a H, valamint a másikat az O2 és a H között. 
 
-Egyéni monitorozási szabályok létrehozásához:
+Egyéni figyelési szabályok létrehozása:
 
-1. Válassza ki **szabály hozzáadása** a a **figyelő** lapra, és adja meg a szabály nevét és leírását.
-2. Válassza ki a két hálózat vagy alhálózat hivatkozások a listákból figyeléséhez. 
-3. Válassza ki, amely tartalmazza a hálózati legördülő listából válassza ki a kívánt azoknak az alhálózatoknak a hálózaton. Ezután válassza ki azoknak az alhálózatoknak a megfelelő alhálózati legördülő listából. Ha egy hálózati kapcsolat az összes alhálózat figyelni szeretne, válassza ki **összes alhálózat**. Hasonlóképpen válassza ki azt szeretné, a más alhálózatokra. Válassza ki a kizárandó meg az adott alhálózati hivatkozások a kiválasztott beállítások figyelése, **kivétel hozzáadása**. 
-4. ICMP és a TCP protokollt szintetikus tranzakciók végrehajtásához választhat. 
-5. Ha nem szeretné létrehozni az elemek hálózatállapot-események választotta, törölje a jelet **egészségügyi figyelés engedélyezése a hivatkozások a szabály által kezelt**. 
-6. Válassza ki a feltételek figyelése. Health-esemény létrehozása egyéni küszöbértékek beállításához adja meg a küszöbérték. Ha a feltétel értéke meghaladja a megadott küszöbértéknél, a kiválasztott hálózat vagy alhálózat pár, állapottal kapcsolatos esemény jön létre. 
-7. Válassza ki **mentése** a konfiguráció mentéséhez. 
+1. A **figyelés** lapon válassza a **szabály hozzáadása** lehetőséget, és írja be a szabály nevét és leírását.
+2. Válassza ki a listából a figyeléshez használandó hálózati vagy alhálózati kapcsolatokat. 
+3. Válassza ki azt a hálózatot, amely a hálózat legördülő listából a kívánt alhálózatokat tartalmazza. Ezután válassza ki az alhálózatokat a megfelelő alhálózat legördülő listából. Ha egy hálózati kapcsolat összes alhálózatát figyelni szeretné, válassza az **összes alhálózat**lehetőséget. Hasonlóképpen válassza ki a többi kívánt alhálózatot. Ha ki szeretné zárni a megadott alhálózati kapcsolatok figyelését a kiválasztott beállítások közül, válassza a **kivétel hozzáadása**elemet. 
+4. Válasszon az ICMP és a TCP protokollok közül a szintetikus tranzakciók végrehajtásához. 
+5. Ha nem szeretne állapot-eseményeket létrehozni a kiválasztott elemekhez, törölje a jelet **az állapot-figyelés engedélyezése a szabály által érintett hivatkozásokra**. 
+6. Válassza a figyelési feltételek lehetőséget. Az állapot-események generálásához szükséges egyéni küszöbértékek megadásához adja meg a küszöbértékeket. Ha a feltétel értéke meghaladja a kiválasztott hálózati vagy alhálózati pár küszöbértékét, a rendszer egy állapottal kapcsolatos eseményt generál. 
+7. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
 
-Miután menti egy figyelési szabályt, is integrálhatja a szabályhoz a Riasztáskezelési kiválasztásával **riasztás létrehozása**. Riasztási szabály automatikusan létrejön a keresési lekérdezéssel. Egyéb szükséges paramétereket automatikusan kitölti. Egy riasztási szabályt használ, fogadhat e-mail alapú értesítések mellett a Network Performance Monitor meglévő riasztásokra. A riasztások is küldhetnek runbookokkal végrehajtott helyreigazító műveletekre, illetve azok integrálható a meglévő szolgáltatás-felügyeleti megoldások webhookok használatával. Válassza ki **riasztás kezelése** a riasztási beállítások konfigurálása. 
+A figyelési szabály mentését követően a **riasztás létrehozása**lehetőség kiválasztásával integrálhatja ezt a szabályt a Alert Management. A rendszer automatikusan létrehoz egy riasztási szabályt a keresési lekérdezéssel. A rendszer a többi szükséges paramétert automatikusan kitölti. A riasztási szabályok használatával e-mail-alapú riasztásokat fogadhat, a Network Performance Monitoron belüli meglévő riasztások mellett is. A riasztások a runbookok-mel is indíthatnak javító műveleteket, vagy webhookok használatával integrálhatók a meglévő Service Management-megoldásokkal. A riasztási beállítások szerkesztéséhez válassza a **riasztás kezelése** lehetőséget. 
 
-Most már Performance Monitor további szabályokat hozhat létre, vagy helyezze át a megoldás irányítópultjának a funkció használatához.
+Most már több Teljesítményfigyelő szabályt is létrehozhat, vagy áthelyezheti a megoldás irányítópultját a funkció használatára.
 
-### <a name="choose-the-protocol"></a>A protokoll kiválasztása
+### <a name="choose-the-protocol"></a>Válassza ki a protokollt
 
-A Network Performance Monitor szintetikus tranzakciók használja például a csomag szolgáltatáskimaradást és -kapcsolat késési hálózati teljesítmény-mérőszámok kiszámításához. A fogalom jobb megértéséhez, fontolja meg a Network Performance Monitor ügynök kapcsolódik a hálózati kapcsolat egyik végén. A Network Performance Monitor ügynök mintavételi csomagok küld egy második a hálózat egy másik végén csatlakozik a Network Performance Monitor-ügynököt. A második ügynök válaszok válasz csomagokkal. Ez a folyamat ismétlődik néhány alkalommal. Megvizsgálja, hogy hány válaszok és minden válasz fogadásához szükséges idő, az első a Network Performance Monitor ügynök kapcsolati késés értékeli, és nyújtása. 
+A Network Performance Monitor szintetikus tranzakciókat használ a hálózati teljesítmény metrikáinak kiszámításához, például a csomagok elvesztését és a kapcsolat késését. A koncepció jobb megismeréséhez vegye fontolóra Network Performance Monitor ügynök csatlakoztatását egy hálózati kapcsolat egyik végéhez. Ez a Network Performance Monitor ügynök mintavételi csomagokat küld egy második Network Performance Monitor ügynökhöz, amely a hálózat egy másik végéhez csatlakozik. A második ügynök válasz csomagokat választ. A folyamat néhányszor ismétlődik. A válaszok számának és az egyes válaszok fogadásának időtartamának mérésével az első Network Performance Monitor ügynök értékeli a kapcsolat késését és a csomagok elejtését. 
 
-A formátum, méretének és sorozata, ezek a csomagok a protokoll, amelyet úgy dönt, hogy figyelési szabályok létrehozásakor határozza meg. A csomagok által használt protokoll alapján, a közbenső hálózati eszközök, például az útválasztók és kapcsolók, előfordulhat, hogy fel ezek a csomagok eltérően. Ebből következően protokoll tetszőleges hatással van az eredmények pontosságát. Protokoll tetszőleges azt is meghatározza, hogy végre kell hajtania bármely manuális lépéseket a Network Performance Monitor megoldás üzembe helyezése után. 
+A csomagok formátumát, méretét és sorát a megfigyelési szabályok létrehozásakor választott protokoll határozza meg. A csomagok protokollja alapján a köztes hálózati eszközök, például az útválasztók és a kapcsolók is feldolgozhatják ezeket a csomagokat. Ennek következtében a protokoll választása befolyásolja az eredmények pontosságát. A protokoll választása azt is meghatározza, hogy a Network Performance Monitor megoldás telepítése után kell-e manuális lépéseket végrehajtania. 
 
-A Network Performance Monitor biztosít a szintetikus tranzakciók végrehajtásához az ICMP és a TCP protokoll közötti választás. Ha ICMP szintetikus tranzakció szabály létrehozásakor, a Network Performance Monitor-ügynökök az ICMP ECHO-üzenetek használatával számítsa ki a hálózati késés és a csomagveszteség. Az ICMP ECHO használja ugyanazt az üzenetet a hagyományos ping eszköz által küldött. A TCP protokoll használatakor a Network Performance Monitor ügynökök TCP SZIN csomagok küldése a hálózaton keresztül. Ebben a lépésben egy TCP-kézfogás befejezési követi, és a kapcsolatot eltávolította ÜZE csomagok használatával. 
+Network Performance Monitor a szintetikus tranzakciók végrehajtásához az ICMP és a TCP protokollok közül választhat. Ha a szintetikus tranzakciós szabály létrehozásakor az ICMP lehetőséget választja, a Network Performance Monitor ügynök ICMP ECHO-üzeneteket használ a hálózati késés és a csomagok elvesztésének kiszámításához. Az ICMP ECHO ugyanazt az üzenetet használja, amelyet a hagyományos ping segédprogram küld. Ha a TCP protokollt használja protokollként, Network Performance Monitor ügynökök TCP SYN csomagokat küldenek a hálózaton keresztül. Ezt a lépést a TCP-kézfogás befejezése követi, és a rendszer az első csomagok használatával eltávolítja a csatlakozást. 
 
-Mielőtt egy protokollt választja, vegye figyelembe a következőket: 
+A protokoll kiválasztása előtt vegye figyelembe a következő információkat: 
 
-* **Több hálózati útvonal felderítését.** TCP pontosabb, amikor több útvonal felderítése, és szüksége van mindegyik olyan alhálózatban, kevesebb ügynököt. Például egy vagy két olyan ügynökök, amelyek TCP felfedezheti az alhálózatok közötti összes redundáns elérési utat. Szüksége van több ügynökök, amelyek használják az ICMP hasonló eredmény elérése érdekében. ICMP Használatát, akkor használja, ha a két alhálózat közötti útvonalak száma, többre van szüksége, mint a forrás vagy cél alhálózat 5N ügynökök.
+* **Több hálózati útvonal felderítése.** A TCP pontosabb a több útvonal felfedése esetén, és az egyes alhálózatokon kevesebb ügynökre van szükség. Egy vagy két TCP-t használó ügynök például képes észlelni az alhálózatok közötti összes redundáns útvonalat. Hasonló eredmények eléréséhez több, ICMP protokollt használó ügynökre van szüksége. Ha az ICMP használatával több útvonal található két alhálózat között, akkor a forrás-vagy a cél alhálózatban több mint 5N-ügynökre van szükség.
 
-* **Az eredmények pontosságát.** Az útválasztók és kapcsolók általában az ICMP ECHO-csomagok TCP csomagok képest alacsonyabb prioritású hozzárendelése. Bizonyos helyzetekben amikor a hálózati eszközök vannak terhelve, a TCP jobban kapott megjelennek-e az adatvesztéssel és -alkalmazások által tapasztalt késés. Ennek oka az, hogy az alkalmazás forgalmának a legtöbb TCP protokollon keresztül zajlik. Ezekben az esetekben az ICMP TCP képest kevésbé pontos eredményeket biztosít. 
+* **Az eredmények pontossága.** Az útválasztók és kapcsolók általában alacsonyabb prioritást rendelnek hozzá az ICMP ECHO-csomagokhoz a TCP-csomagokhoz képest. Bizonyos helyzetekben, ha a hálózati eszközök nagy terheléssel vannak betöltve, a TCP által lekért adatvesztések az alkalmazások által tapasztalt veszteséget és késést tükrözik. Ennek az az oka, hogy az alkalmazás nagy része TCP-forgalomban van. Ilyen esetekben az ICMP kevésbé pontos eredményeket biztosít a TCP-hez képest. 
 
-* **Tűzfal-konfiguráció.** A TCP protokoll szükséges, hogy a TCP-csomagokat a célport kapnak. A Network Performance Monitor-ügynökök által használt alapértelmezett port 8084. A port módosítható, ha az ügynökök konfigurálása. Győződjön meg arról, hogy a tűzfalak vagy hálózati biztonsági csoport (NSG) szabályai (az Azure-ban) engedélyezik-e a forgalmat a porton. Szükség is győződjön meg arról, hogy azokon a számítógépeken, amelyeken telepítve vannak-e az ügynökök a helyi tűzfal engedélyezi a forgalmat az ezen a porton van konfigurálva. PowerShell-parancsfájlok segítségével tűzfalszabályok konfigurálása a Windows rendszerű számítógépeken, de kell manuálisan konfigurálnia a hálózati tűzfal. Ezzel szemben az ICMP-port használatával nem működik. A legtöbb nagyvállalati forgatókönyvekben ICMP-forgalom számára engedélyezett a tűzfalon keresztül lehetővé teszik, hogy hálózati diagnosztikai eszközök, mint például a ping segédprogramot. Ha egy gép egy másik pingelhető, a tűzfal kézi konfigurálása nélkül használhatja az ICMP protokollt.
+* **Tűzfal-konfiguráció.** A TCP protokoll megköveteli, hogy a TCP-csomagokat a rendszer egy célport számára küldje el. Network Performance Monitor ügynökök által használt alapértelmezett port 8084. Az ügynökök konfigurálásakor módosíthatja a portot. Győződjön meg arról, hogy a hálózati tűzfalak vagy a hálózati biztonsági csoport (NSG) szabályai (az Azure-ban) engedélyezik a forgalmat a porton. Emellett meg kell győződnie arról, hogy a helyi tűzfal azon a számítógépen, amelyen az ügynökök telepítve vannak, úgy van konfigurálva, hogy engedélyezzék a forgalmat ezen a porton. A Windows rendszerű számítógépeken a tűzfalszabályok konfigurálásához PowerShell-parancsfájlok használhatók, de a hálózati tűzfalat manuálisan kell konfigurálnia. Ezzel szemben az ICMP nem a port használatával működik. A legtöbb nagyvállalati forgatókönyvben az ICMP-forgalom a tűzfalakon keresztül engedélyezhető, hogy a hálózati diagnosztikai eszközöket, például a ping segédprogramot használja. Ha egy másik gép pingelését hajtja végre, akkor a tűzfalak manuális konfigurálása nélkül is használhatja az ICMP protokollt.
 
 >[!NOTE] 
-> Néhány tűzfalak blokkolhatják ICMP Használatát, amely, amely a biztonsági információk és az esemény a felügyeleti rendszer események nagy számú eredményez újraküldési vezethet. Ellenőrizze, hogy az Ön által választott protokoll NSG-t vagy hálózati tűzfal nem blokkolja-e. Ellenkező esetben a Network Performance Monitor nem figyelhető hálózati szegmenst. Azt javasoljuk, hogy a TCP figyelési használjon. Használja az ICMP forgatókönyvekben, ahol nem használható a TCP, például ha: 
+> Egyes tűzfalak letilthatják az ICMP-t, ami a biztonsági információk és az eseménykezelő rendszer nagy számú eseményének eredményét eredményezheti. Győződjön meg arról, hogy a választott protokollt nem blokkolja hálózati tűzfal vagy NSG. Ellenkező esetben a Network Performance Monitor nem tudja figyelni a hálózati szegmenst. Javasoljuk, hogy a TCP protokollt használja a figyeléshez. Használjon ICMP-t olyan helyzetekben, ahol nem használhatja a TCP-t, például: 
 >
-> - Windows-alapú ügyfél csomópontok esetén használható, mert a nyers TCP-szoftvercsatornák a Windows-ügyfelek számára nem engedélyezett.
-> - A hálózati tűzfal vagy az NSG blokkolja a TCP.
-> - Nem tudom, hogyan váltson a protokollt.
+> - Windows ügyfél-alapú csomópontokat használ, mivel a TCP RAW szoftvercsatornák használata nem engedélyezett a Windows-ügyfeleken.
+> - A hálózati tűzfal vagy NSG blokkolja a TCP-t.
+> - Nem tudja, hogyan kell váltani a protokollt.
 
-Ha üzembe helyezés során az ICMP használatát választja, átválthat a TCP bármikor azt az alapértelmezett szabály szerkesztésével.
+Ha az üzembe helyezés során az ICMP használatát választotta, akkor az alapértelmezett figyelési szabály szerkesztésével bármikor átválthat a TCP-re.
 
-1. Lépjen a **hálózati teljesítményt** > **figyelő** > **konfigurálása**   >  **Figyelő**. Válassza ki **alapértelmezett szabály**. 
-2. Görgessen a **protokoll** szakaszt, és válassza ki a használni kívánt protokollt. 
-3. Válassza ki **mentése** beállítás alkalmazása. 
+1. Lépjen a **hálózati teljesítmény** > **figyelő** > **konfigurálja** > **figyelőt**. Ezután válassza az **alapértelmezett szabály**lehetőséget. 
+2. Görgessen a **protokoll** szakaszhoz, és válassza ki a használni kívánt protokollt. 
+3. A beállítás alkalmazásához válassza a **Mentés** lehetőséget. 
 
-Akkor is, ha az alapértelmezett szabályt egy adott protokollt használja, létrehozhat új szabályokat eltérő protokollal rendelkező. Akkor is létrehozhat szabályokat, ha egyes szabályok használata ICMP és mások TCP Protokollt használ vegyesen. 
+Még ha az alapértelmezett szabály egy adott protokollt is használ, létrehozhat új szabályokat egy másik protokollal. Akár olyan szabályokat is létrehozhat, amelyekben bizonyos szabályok az ICMP protokollt használják, mások pedig TCP-t használnak. 
 
 ## <a name="walkthrough"></a>Útmutatás 
 
-Most nézzük meg állapottal kapcsolatos esemény alapvető oka egyszerű vizsgálatát.
+Most tekintse meg az állapotot kiváltó esemény egyszerű vizsgálatát.
 
-A megoldás irányítópultján állapottal kapcsolatos esemény látható, hogy egy hálózati kapcsolat nem kifogástalan. A probléma vizsgálatához válassza ki a **hálózati hivatkozásokat tartalmaz az éppen figyelt** csempére.
+A megoldás irányítópultján a Health esemény azt mutatja, hogy a hálózati kapcsolat nem megfelelő állapotú. A probléma kivizsgálásához válassza ki a **figyelni kívánt hálózati kapcsolatokat** .
 
-A részletezés oldal azt mutatja, hogy a **DMZ2-DMZ1** hálózati kapcsolat nem kifogástalan. Válassza ki **alhálózati hivatkozások megtekintése** a hálózati kapcsolathoz. 
+A részletezés oldalon látható, hogy az **DMZ2-DMZ1** hálózati kapcsolat nem kifogástalan. Válassza a hálózati kapcsolat **alhálózati hivatkozásainak megtekintése** lehetőséget. 
 
 
-A részletezés oldal bemutatja az alhálózati kapcsolatok a **DMZ2-DMZ1** hálózati kapcsolat. Mindkét alhálózati hivatkozások a várakozási ideje túllépte a küszöbértéket, ami lehetővé teszi a hálózati kapcsolat nem kifogástalan. Mindkét alhálózati kapcsolatok késés Trendy is láthatja. Használja a gráf összpontosíthat a szükséges időtartomány szabályozhatja az időbeállítást. Láthatja, hogy a késés elérésekor a maximális napi időpontot. Keresse meg a naplókat később ebben az időszakban a probléma kivizsgálására. Válassza ki **csomóponti hivatkozások megtekintése** további részletesen elemezheti. 
+A részletezés oldalon a **DMZ2-DMZ1** hálózati kapcsolat összes alhálózati kapcsolata látható. Mindkét alhálózati kapcsolat esetében a késés túllépte a küszöbértéket, ami miatt a hálózati kapcsolat nem megfelelő állapotú. Az alhálózati kapcsolatok késési trendje is látható. A gráf időkijelölési vezérlőjét használva a szükséges időtartományra koncentrálhat. Megtekintheti a nap azon időpontját, amikor a késés elérte a csúcspontját. A probléma kivizsgálásához keressen rá később a naplókra. További részletezéshez válassza a **csomópont-hivatkozások megtekintése** lehetőséget. 
  
- ![Alhálózati hivatkozások lap](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
+ ![Alhálózati kapcsolatok lapja](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
-Hasonló az előző oldalra, a részletezés oldal, az adott alhálózat-hivatkozás felsorolja a különböző csomóponti hivatkozások. Hasonló műveletek végezhetők el itt, ahogy az előző lépésben tette. Válassza ki **topológia megtekintése** a két csomópont közötti topológia megtekintéséhez. 
+Az előző oldalhoz hasonlóan az adott alhálózat hivatkozásának részletezési lapja az összetevő csomópontjának hivatkozásait sorolja fel. Az előző lépésben hasonló műveleteket is végrehajthat. A két csomópont közötti topológia megtekintéséhez válassza a **topológia megtekintése** lehetőséget. 
  
- ![Csomópont hivatkozások lap](media/network-performance-monitor-performance-monitor/node-links.png) 
+ ![Csomópont-hivatkozások lap](media/network-performance-monitor-performance-monitor/node-links.png) 
 
-A két kijelölt csomópont közötti összes elérési utat a topológia térkép is megjelennek. A Ugrás ugrásra felépülő topológiát a topológia-térképként két csomópont közötti útvonalak jelenítheti meg. Biztosít egy világos képet hány útvonalak léteznek között, illetve a két csomópont elérési utak adatcsomagok igénybe vehet. Hálózati teljesítmény szűk vörös színnel jelennek meg. Hibás hálózati kapcsolat vagy egy hibás hálózati eszköz megkereséséhez tekintse meg a piros elemeket a topológia-térképként. 
+A két kiválasztott csomópont közötti összes útvonal fel van rajzolva a topológiai térképen. A topológiai Térkép két csomópontja közötti útvonalak ugrások közötti topológiáját jelenítheti meg. Egyértelmű képet ad arról, hogy hány útvonal létezik a két csomópont között, és hogy milyen útvonalakat tart az adatcsomagok. A hálózati teljesítmény szűk keresztmetszetei piros színnel jelennek meg. Hibás hálózati vagy hibás hálózati eszköz kereséséhez tekintse meg a topológiai Térkép vörös elemeit. 
 
- ![A topológia topológiai irányítópult](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
+ ![Topológiai irányítópult topológiai térképpel](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
-Az adatveszteség, késés és az egyes útvonalán ugrások számát, áttekintheti a **művelet** ablaktáblán. A görgetősáv használatával a nem jó elérési utak részleteinek megtekintéséhez. A szűrők segítségével válassza ki a nem megfelelő állapotú Ugrás az elérési utakat úgy, hogy csak a kiválasztott elérési utak topológiájának ábrázolja. Nagyítás vagy a topológia térkép kívül, az egér kereke használja. 
+A **művelet** ablaktáblán áttekintheti a veszteséget, a késést és a ugrások számát az egyes útvonalakon. A nem megfelelő állapotú elérési utak részleteinek megtekintéséhez használja a görgetősávot. A szűrők segítségével kiválaszthatja az elérési utakat a nem megfelelő állapotú ugrással, hogy csak a kijelölt elérési utak topológiája legyen ábrázolva. A topológiai térkép nagyításához vagy kicsinyítéséhez használja az egér kerekét. 
 
-Az alábbi ábrán a problémás területek, az adott szakaszt az a hálózat kiváltó okának jelennek meg a piros elérési utak és az útválasztók ugrásainak. Válasszon ki egy csomópontot a topológia térképen, a csomópont, amely tartalmazza a teljes tartománynév és IP-cím tulajdonságainak megjelenítéséhez. Hop kiválasztásával tekinthet meg a következő ugrás IP-címét. 
+A következő ábrán a probléma területének kiváltó oka a hálózat adott szakasza a vörös elérési utakon és ugrásokban jelenik meg. Válasszon ki egy csomópontot a topológiai térképen a csomópont tulajdonságainak megjelenítéséhez, amely tartalmazza a teljes tartománynevet és az IP-címet. Egy ugrás kiválasztásakor megjelenik az ugrás IP-címe. 
  
-![Topológia térkép a kijelölt csomópont tulajdonságai](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
+![Topológiai Térkép a csomópont tulajdonságaival kiválasztva](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
-## <a name="next-steps"></a>További lépések
-[Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.
+## <a name="next-steps"></a>Következő lépések
+[Keresési naplók](../../azure-monitor/log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
