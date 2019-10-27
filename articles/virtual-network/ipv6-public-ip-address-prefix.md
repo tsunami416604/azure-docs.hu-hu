@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597957"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965172"
 ---
 # <a name="reserved-public-ipv6-address-prefix-preview"></a>Fenntartott nyilvános IPv6-cím előtagja (előzetes verzió)
 
@@ -46,7 +46,7 @@ Az előtag mérete osztály nélküli tartományok közötti útválasztási (CI
 Az Azure-beli nyilvános IP-címek, az egyedi IP-címek és az IP-címtartományok használatával kapcsolatos költségekért lásd: [nyilvános IP-cím díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
 ## <a name="limitations"></a>Korlátozások
-Az IPv6 az alapszintű nyilvános IP-címeknél csak a "dinamikus" kiosztással támogatott, ami azt jelenti, hogy az IPv6-cím akkor változik, ha törli és újból üzembe helyezi az alkalmazást (virtuális gép vagy terheléselosztó) az Azure-ban. Csak a standard IPv6 nyilvános IP-címek támogatják a dinamikus és a statikus (fenntartott) kiosztást.
+Az IPv6 az alapszintű nyilvános IP-címeknél csak a "dinamikus" kiosztással támogatott, ami azt jelenti, hogy az IPv6-cím akkor változik, ha törli és újból üzembe helyezi az alkalmazást (virtuális gép vagy terheléselosztó) az Azure-ban. A standard szintű IPv6 nyilvános IP-címek kizárólag statikus (fenntartott) foglalást támogatnak, bár a standard belső terheléselosztó a hozzájuk rendelt alhálózaton belül is támogatja a dinamikus kiosztást.  
 
 Ajánlott eljárásként javasoljuk, hogy szabványos nyilvános IP-címeket és standard Load Balancereket használjon IPv6-alkalmazásaihoz.
 

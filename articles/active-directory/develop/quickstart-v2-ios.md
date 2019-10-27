@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: a96aab3fc5dfa62039732f7860f1e96e3f60e445
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264171"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964034"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -62,7 +62,7 @@ Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány 
 >      - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, amikor bejelentkeznek vagy beleegyeznek az alkalmazásba.
 >      - Egyéb konfigurációk kihagyása ezen a lapon.
 >      - Válassza a(z) `Register` lehetőséget.
-> 1. A **kezelés** szakaszban válassza a `Authentication` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 elemet.
+> 1. A **kezelés** szakaszban válassza a `Authentication` > `Add Platform` > `iOS`lehetőséget.
 >      - Adja meg az alkalmazáshoz tartozó ***köteg azonosítóját*** . A köteg azonosítója csak egy egyedi karakterlánc, amely egyedileg azonosítja az alkalmazást, például `com.<yourname>.identitysample.MSALMacOS`. Jegyezze fel a használt értéket.
 >      - Vegye figyelembe, hogy az iOS-konfiguráció a macOS-alkalmazásokra is érvényes.
 > 1. Válassza a `Configure` lehetőséget, majd mentse a ***MSAL-konfiguráció*** részleteit a rövid útmutató későbbi részében.
@@ -124,7 +124,7 @@ Egy terminál ablakban navigáljon a letöltött mintakód nevű mappához, és 
 >    ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
 > 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza **a Megnyitás** > **forráskódként**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópontja alatt cserélje le a `Enter_the_bundle_Id_Here` értéket a portálon használt ***csomag-azonosítóra*** .
+> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le a `Enter_the_bundle_Id_Here`t a portálon használt ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -250,7 +250,7 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |Helyszín:||
 > |---------|---------|
-> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (`api://<Application ID>/access_as_user`) |
+> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` az egyéni webes API-khoz Microsoft Graph vagy `[ "<Application ID URL>/scope" ]`hoz (`api://<Application ID>/access_as_user`) |
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: hozzáférési token lekérése csendesen
 
@@ -265,7 +265,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 
 > |Helyszín: ||
 > |---------|---------|
-> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (`api://<Application ID>/access_as_user`) |
+> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` az egyéni webes API-khoz Microsoft Graph vagy `[ "<Application ID URL>/scope" ]`hoz (`api://<Application ID>/access_as_user`) |
 > | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia azt a logikát, amely meghatározza, hogy melyik fiókot használja a jogkivonat-kérelmekhez `applicationContext.account(forHomeAccountId: self.homeAccountId)` használatával |
 
 ## <a name="next-steps"></a>Következő lépések

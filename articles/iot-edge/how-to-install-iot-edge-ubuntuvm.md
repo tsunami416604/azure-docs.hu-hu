@@ -9,18 +9,18 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: f4bab6ab837b746c6a569cc6de95a95023bf83f4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0e5bec7d3e1ecd63541a319cd5a9151560ef4139
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986995"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964645"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
-Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-eszköz. A futtatókörnyezet kis Raspberry Pi-t vagy akkora, mint egy ipari kiszolgáló eszközökön is telepíthető. Miután egy eszközt az IoT Edge-futtatókörnyezet van beállítva, a üzembe helyezése a üzleti logika, hogy a felhőben is elindítható.
+Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Ha egy eszköz konfigurálva van a IoT Edge futtatókörnyezettel, megkezdheti az üzleti logika telepítését a felhőből.
 
-Az IoT Edge-futtatókörnyezet működését, és milyen összetevők járnak kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md).
+Ha többet szeretne megtudni arról, hogyan működik a IoT Edge futtatókörnyezet és milyen összetevőket tartalmaz, tekintse meg [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md)című témakört.
 
 Ez a cikk a Azure IoT Edge Runtime Ubuntu 16,04 virtuális gépen való futtatásának lépéseit sorolja fel az [Ubuntu Azure Marketplace-ajánlat](https://aka.ms/azure-iot-edge-ubuntuvm)előre konfigurált Azure IoT Edge használatával. 
 
@@ -33,10 +33,10 @@ Az első rendszerindítás során a Azure IoT Edge az Ubuntu rendszerű virtuál
     *   Ha első alkalommal próbál meg egy virtuális gépet kipróbálni, a legegyszerűbb, ha jelszót használ, és engedélyezi az SSH-t a nyilvános bejövő port menüjében. 
     *   Ha erőforrás-igényes számítási feladattal rendelkezik, a virtuális gép méretét további processzorok és/vagy memória hozzáadásával kell frissítenie.
 4.  A virtuális gép üzembe helyezését követően konfigurálja úgy, hogy az IoT Hubhoz kapcsolódjon:
-    1.  Másolja az eszköz-kapcsolódási karakterláncot a IoT Hub létrehozott IoT Edge eszközről (ha nem ismeri ezt a folyamatot, kövesse az [új Azure IoT Edge eszköz regisztrálása a Azure Portal](how-to-register-device-portal.md) útmutatóból útmutatót.)
+    1.  Másolja az eszköz-kapcsolatok sztringjét a IoT Hub létrehozott IoT Edge eszközről (ha nem ismeri ezt a folyamatot, kövesse a Azure Portal eljárásban a [kapcsolatok lekérése karakterláncot](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) )
     1.  Válassza ki az újonnan létrehozott virtuálisgép-erőforrást a Azure Portal, és nyissa meg a **parancs futtatása** lehetőséget.
     1.  Válassza a **RunShellScript** lehetőséget.
-    1.  Futtassa az alábbi szkriptet a parancssori ablakban az eszközhöz tartozó kapcsolási karakterlánccal:`/etc/iotedge/configedge.sh “{device_connection_string}”`
+    1.  Futtassa az alábbi szkriptet a parancssori ablakban a következő eszközzel: `/etc/iotedge/configedge.sh “{device_connection_string}”`
     1.  **Futtatás** kiválasztása
     1.  Várjon néhány percet, és a képernyőn meg kell adni egy sikert jelző üzenetet, amely jelzi, hogy a rendszer sikeresen beállította a kapcsolatok sztringjét.
 
@@ -85,21 +85,21 @@ A Azure Portal keressen rá a "Azure IoT Edge" kifejezésre, majd válassza az *
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
-1. Az eszköz kapcsolódási karakterláncának beállítása (az [új Azure IoT Edge eszköz regisztrálása az Azure CLI-vel](how-to-register-device-cli.md) – útmutató, ha nem ismeri ezt a folyamatot):
+1. Adja meg az eszköz csatlakoztatási karakterláncát (ha nem ismeri ezt a folyamatot, kövesse a [kapcsolatok karakterláncának lekérése az Azure CLI-vel](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) című eljárást):
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
-Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a publicIpAddress a következő paranccsal:`ssh azureuser@{publicIpAddress}`
+Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a publicIpAddress a következő paranccsal: `ssh azureuser@{publicIpAddress}`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md).
+Most, hogy már telepített egy IoT Edge eszközt a futtatott futtatókörnyezettel, telepítheti [IoT Edge modulokat](how-to-deploy-modules-portal.md).
 
 Ha problémákat tapasztal a IoT Edge futtatókörnyezet megfelelő telepítésével kapcsolatban, tekintse meg a [hibaelhárítási](troubleshoot.md) oldalt.
 
 Ha egy meglévő telepítést szeretne frissíteni a IoT Edge legújabb verziójára, tekintse meg [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakört.
 
-Ha meg szeretné nyitni a portokat a virtuális gép SSH-n vagy más bejövő kapcsolaton keresztüli eléréséhez, tekintse meg az Azure-beli virtuális gép dokumentációját a [portok és végpontok Linux rendszerű virtuális gépre](../virtual-machines/linux/nsg-quickstart.md) való megnyitásához
+Ha meg szeretné nyitni a portokat a virtuális gép SSH-n vagy más bejövő kapcsolaton keresztüli eléréséhez, tekintse meg az Azure-beli virtuális gép dokumentációját a [portok és végpontok Linux rendszerű virtuális gépre való megnyitásához](../virtual-machines/linux/nsg-quickstart.md)

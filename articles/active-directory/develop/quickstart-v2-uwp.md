@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46b2ec4a790b5425d837d6a5530b8562ce85ca38
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: efe6946a3de2a95f15e017dbd65e2ec84cc2f2f3
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852774"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964074"
 ---
-# <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Gyors útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
+# <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
 Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogyan jelentkezhet be egy Univerzális Windows-platform (UWP) alkalmazás személyes fiókkal, munkahelyi és iskolai fiókkal, hozzáférési jogkivonat beszerzésével és a Microsoft Graph API meghívásával.
 
@@ -34,16 +34,16 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > [!div renderon="docs" class="sxs-lookup"]
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
-> * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Kézi [2. lehetőség: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Kézi] [2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
 > 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) ablaktáblát.
 > 1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. lehetőség: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához kövesse az alábbi lépéseket:
@@ -77,7 +77,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 1. Nyissa meg a projektet a Visual Studióban. Előfordulhat, hogy a rendszer a UWP SDK telepítését kéri. Ebben az esetben fogadja el.
-1. Szerkessze a **MainPage.XAML.cs** , és cserélje le `ClientId` a mező értékét:
+1. Szerkessze a **MainPage.XAML.cs** , és cserélje le a `ClientId` mező értékét:
 
     ```csharp
     private const string ClientId = "Enter_the_Application_Id_here";
@@ -87,18 +87,18 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 > > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.    
 
 > [!div renderon="docs"]
-> Az elemek magyarázata:
+> Helyszín:
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 >
 > > [!TIP]
 > > Az *alkalmazás-azonosító*értékének megkereséséhez nyissa meg a portál **Áttekintés** szakaszát.
 
-#### <a name="step-4-run-your-application"></a>4\. lépés: Alkalmazás futtatása
+#### <a name="step-4-run-your-application"></a>4\. lépés: az alkalmazás futtatása
 
 Ha a Windowsos gépen szeretné kipróbálni a gyors útmutatót:
 
 1. A Visual Studio eszköztárán válassza ki a megfelelő platformot (valószínűleg **x64** vagy **x86**, nem ARM).
-   > Figyelje meg, hogy a cél eszköz az eszközről a *helyi gépre* változik
+   > Figyelje meg, hogy a cél eszköz az *eszközről* a *helyi gépre* változik
 1. Hibakeresés kiválasztása | **Indítás hibakeresés nélkül**
 
 ## <a name="more-information"></a>További információ
@@ -129,13 +129,13 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |Az elemek magyarázata: ||
+> |Helyszín: ||
 > |---------|---------|
 > | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)** . Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
-A MSAL két módszerrel szerezheti be a jogkivonatokat egy UWP- `AcquireTokenInteractive` alkalmazásban: és `AcquireTokenSilent`.
+A MSAL két módszerrel szerezheti be a jogkivonatokat egy UWP-alkalmazásban: `AcquireTokenInteractive` és `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
@@ -151,13 +151,13 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata:||
+> |Helyszín:||
 > |---------|---------|
 > | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A metódussal szerezhet be jogkivonatokat a védett erőforrásokhoz való hozzáféréshez a kezdeti `AcquireTokenInteractive` módszer után. `AcquireTokenSilent` Nem szeretné megkövetelni, hogy a felhasználó minden alkalommal érvényesítse a hitelesítő adataikat, amikor hozzá kell férniük egy erőforráshoz. A tokenek beszerzését és megújítását a legtöbb esetben felhasználói beavatkozás nélkül kell használni
+A `AcquireTokenSilent` metódussal szerezhet be jogkivonatokat a védett erőforrásokhoz való hozzáféréshez a kezdeti `AcquireTokenInteractive` metódus után. Nem szeretné megkövetelni, hogy a felhasználó minden alkalommal érvényesítse a hitelesítő adataikat, amikor hozzá kell férniük egy erőforráshoz. A tokenek beszerzését és megújítását a legtöbb esetben felhasználói beavatkozás nélkül kell használni
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -166,14 +166,14 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata: ||
+> |Helyszín: ||
 > |---------|---------|
 > | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
 > | `firstAccount` | Megadja az első felhasználói fiókot a gyorsítótárban (a MSAL több felhasználót is támogat egyetlen alkalmazásban) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

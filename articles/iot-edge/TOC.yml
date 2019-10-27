@@ -110,13 +110,7 @@
 - name: Útmutatók
   items:
     - name: IoT Edge-eszköz regisztrálása
-      items:
-        - name: Azure Portal
-          href: how-to-register-device-portal.md
-        - name: Azure CLI
-          href: how-to-register-device-cli.md
-        - name: Visual Studio Code
-          href: how-to-register-device-vscode.md
+      href: how-to-register-device.md
     - name: Az IoT Edge telepítése és kezelése
       items:
         - name: Linux

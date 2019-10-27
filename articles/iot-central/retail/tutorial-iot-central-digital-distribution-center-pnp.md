@@ -6,18 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 20ed04efc1d10e419148cb4f6c75c3eab4ab40a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d5b132be2a3719f746af253439f1d1bdff1c3c40
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957915"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965049"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
 
 Ez az oktatóanyag bemutatja, hogyan kezdheti el egy IoT Central **Digital Distribution Center** -alkalmazás sablonjának üzembe helyezését. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és hogy mit szeretne tenni a következő lépésekkel.
-
-## <a name="details"></a>Részletek
 
 Ebből az oktatóanyagból megtudhatja, hogyan, 
 * Digital Distribution Center-alkalmazás létrehozása 
@@ -47,16 +45,14 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
 > [!div class="mx-imgBorder"]
 > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
 
-## <a name="walk-through-the-application"></a>az alkalmazás végigvezeti 
-
-## <a name="dashboard"></a>Irányítópult 
+## <a name="walk-through-the-application-dashboard"></a>Az alkalmazás irányítópultjának átjárása 
 
 Az alkalmazás sablonjának sikeres üzembe helyezését követően az alapértelmezett irányítópult egy terjesztési központ operátorának célzott portálja. A Northwind Trader egy fiktív terjesztési központ megoldás-szolgáltatója, amely a továbbító rendszereket kezeli. 
 
-Ebben az irányítópultban egy peremhálózati átjárót és egy IoT-eszközként működő kamerát fog látni. Az átjáró olyan csomagokat biztosít a telemetria, mint például az érvényes, érvénytelen, azonosítatlan és méret, valamint a társított eszközök Twin tulajdonságai. Az összes alárendelt parancs a IoT-eszközökön, például egy kamerán fut. Ez az irányítópult előre konfigurálva van, hogy bemutassa a kritikus terjesztési központ működési tevékenységét.
+Ebben az irányítópultban egy átjárót és egy IoT-eszközként működő kamerát fog látni. Az átjáró olyan csomagokat biztosít a telemetria, mint például az érvényes, érvénytelen, azonosítatlan és méret, valamint a társított eszközök Twin tulajdonságai. Az összes alárendelt parancs a IoT-eszközökön, például egy kamerán fut. Ez az irányítópult előre konfigurálva van, hogy bemutassa a kritikus terjesztési központ működési tevékenységét.
 
-Az irányítópult a Azure IoT Edge átjáró és a IoT eszköz felügyeleti képességeinek megjelenítéséhez logikailag van rendszerezve.  
-   * Az Edge Gateway parancs végrehajtása & vezérlési feladatokat hajthat végre
+Az irányítópult logikailag úgy van rendszerezve, hogy megjelenjen az Azure IoT Gateway és a IoT eszköz eszköz-felügyeleti képességei.  
+   * Az átjáró parancs végrehajtása & vezérlési feladatokat hajthat végre
    * A megoldás részét képező összes kamera kezelése. 
 
 > [!div class="mx-imgBorder"]
@@ -64,36 +60,21 @@ Az irányítópult a Azure IoT Edge átjáró és a IoT eszköz felügyeleti ké
 
 ## <a name="device-template"></a>Eszköz sablonja
 
-Kattintson az **eszközök sablonok** lapra, és megtekintheti a Azure IoT Edge & kamera különböző sablonjait. 
-
-Azure IoT Edge átjáró-eszköz sablonja egy olyan tervet jelöl, amely meghatározza az Edge Gateway-eszközök jellemzőit és viselkedését. Egy peremhálózati eszköz egyes összetevői a következők,
-   * Üzembehelyezési jegyzék
-   * Kapcsolat alsóbb rétegbeli eszközökkel
-   * Szoftveres modulok
-   * Modulok tulajdonságai & parancsok 
-
-Az üzembe helyezési jegyzékfájl azon szoftverek listáját tartalmazza, amelyek a Azure IoT Edge eszközön futnak, és a kívánt tulajdonságokkal rendelkező & modul ikrek vannak konfigurálva. Az eszköz sablonjának részét képező központi telepítési jegyzékfájl használatával Azure IoT Edge futtatási ideje tudja, hogy mely modulok telepíthetők, és hogyan konfigurálhatja őket a közös munkához.
+Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képességének modelljét. A képességi modell két különböző interfész **kamera** és **digitális terjesztési átjáró** köré szerveződik
 
 > [!div class="mx-imgBorder"]
 > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
-Ebben az eszköz sablonban láthatja, hogy a modul-eszköz képességeinek modelljei a telepítési jegyzékből jönnek létre. 
+**Kamera** – ez a felület az összes kamera-specifikus parancssori funkciót rendszerezi 
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate2.png)
+> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
-Itt hozzáadhat alsóbb rétegbeli eszközöket, Felhőbeli tulajdonságokat, nézeteket hozhat létre a modul és az eszköz képességeinek testre szabása mellett.
-
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-moduletemplate.png)
-
-Kattintson az **eszköz** fülre, és válassza ki a Digital Distribution Center Azure IoT Edgehoz társított **ddcgateway** eszközt. Itt láthatja, hogy az egyéni peremhálózati modulok & alsóbb rétegbeli kamera, amely részét képezi az eszköz kapcsolatának. IoT Edge modulok a legkisebb számítási egység, és tartalmazhatnak Azure-szolgáltatásokat (például Azure Stream Analytics, AI-modulok) vagy a megoldásra vonatkozó kódokat.
+**Digital Distribution Gateway** – ez az interfész a fényképezőgépből, a felhőben definiált eszköz Twin tulajdonságaiból és az átjáró adataiból származó összes telemetria jelöli.
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-modules.png)
+> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-downstream.png)
 
 ## <a name="gateway-commands"></a>Átjáró parancsai
 Ez a felület az összes átjáró-parancs funkcióját rendszerezi
@@ -103,6 +84,7 @@ Ez a felület az összes átjáró-parancs funkcióját rendszerezi
 
 ## <a name="rules"></a>Szabályok
 Válassza a szabályok lapot az alkalmazás sablonjában található két különböző szabály megjelenítéséhez. Ezek a szabályok úgy vannak konfigurálva, hogy e-mail-értesítéseket küldjön a kezelőknek további vizsgálatokra.
+
  **Túl sok érvénytelen csomag-riasztás** – ez a szabály akkor aktiválódik, ha a kamera nagy mennyiségű érvénytelen csomagot észlel a továbbító rendszeren keresztül.
  
 **Nagyméretű csomag** – ez a szabály akkor aktiválódik, ha a kamera olyan hatalmas csomagot észlel, amely nem vizsgálható meg a minőség tekintetében. 

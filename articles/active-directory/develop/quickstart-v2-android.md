@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: twhitney
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e11e47952f70ce0cd212ca93eff1c38f2b3993a8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2704a6e1af2f06b49b1d3817ad7a30bf53419ffe
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678053"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964006"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
 Ez a rövid útmutató egy kód mintát használ annak bemutatására, hogy az Android-alkalmazások hogyan jelentkezhetnek be személyes, munkahelyi vagy iskolai fiókba, és hogyan kérhetnek hozzáférési jogkivonatot, és hívhatják meg a Microsoft Graph API-t.
 
@@ -34,11 +34,11 @@ Ez a rövid útmutató egy kód mintát használ annak bemutatására, hogy az A
 > * Android Studio 
 > * Android 16 + szükséges
 
-## <a name="step-1-get-the-sample-app"></a>1\. lépés: Mintaalkalmazás letöltése
+## <a name="step-1-get-the-sample-app"></a>1\. lépés: a minta alkalmazás beszerzése
 
 [A kód klónozása](https://github.com/Azure-Samples/ms-identity-android-java.git).
 
-## <a name="step-2-register-your-application"></a>2\. lépés: Alkalmazás regisztrálása
+## <a name="step-2-register-your-application"></a>2\. lépés: az alkalmazás regisztrálása
 
 Az alkalmazás-objektum regisztrálásához, majd az alkalmazás-objektum regisztrációs adatainak manuális hozzáadásához az alábbi lépéseket kell követnie:
 
@@ -54,12 +54,12 @@ Az alkalmazás-objektum regisztrálásához, majd az alkalmazás-objektum regisz
 
 1. Futtassa a Főeszköz parancsot, amelyet a portálról másolt egy terminál-ablakban.
 1. Adja meg a generált aláírási kivonatot a portálon az **aláírási kivonat**alatt.
-1. Kattintson a `Configure` lehetőségre, és készítsen másolatot a **MSAL-konfigurációról**. Másolja és illessze be ezt egy konfigurációs fájlba a következő lépésben. Kattintson a **Done** (Kész) gombra.
+1. Kattintson a `Configure` elemre, és készítsen másolatot a **MSAL-konfigurációról**. Másolja és illessze be ezt egy konfigurációs fájlba a következő lépésben. Kattintson a **Done** (Kész) gombra.
 
-## <a name="step-3-add-your-app-registration"></a>3\. lépés: Az alkalmazás regisztrációjának hozzáadása
+## <a name="step-3-add-your-app-registration"></a>3\. lépés: az alkalmazás regisztrációjának hozzáadása
 
 1. Nyissa meg a minta projektet Android Studioban.
-1. **Alkalmazáson**belül  > **res** > **RAW**, nyissa meg a **auth_config_multiple_account. JSON**fájlt.  Illessze be a MSAL-konfiguráció tartalmát. Ezzel hozzáadja az ügyfél-azonosítót, a bérlői azonosítót és a redirect_uri a portálról. Ehhez hasonlóan fog kinézni, de az ügyfél-azonosító, a bérlői azonosító és a redirect_uri esetében kitöltött értékekkel:
+1. Az **alkalmazáson** belül > **res** > **RAW**, nyissa meg a **auth_config_multiple_account. JSON**fájlt.  Illessze be a MSAL-konfiguráció tartalmát. Ezzel hozzáadja az ügyfél-azonosítót, a bérlői azonosítót és a redirect_uri a portálról. Ehhez hasonlóan fog kinézni, de az ügyfél-azonosító, a bérlői azonosító és a redirect_uri esetében kitöltött értékekkel:
 
     ```json
     {
@@ -81,7 +81,7 @@ Az alkalmazás-objektum regisztrálásához, majd az alkalmazás-objektum regisz
     ```
 
 1. Nyissa meg az **app** > **res** > **RAW**, nyissa meg a **auth_config_single_account. JSON**fájlt, és illessze be a MSAL-konfiguráció tartalmát. A fenti **auth_config_multiple_account. JSON** fájlhoz hasonlóan fog kinézni.
-1. Az **app** > **jegyzékfájlok** > **AndroidManifest. xml fájlban**keresse meg a `BrowserTabActivity` tevékenységet. Ez a bejegyzés lehetővé teszi, hogy a Microsoft visszahívjon az alkalmazásba a hitelesítés befejezése után:
+1. Az **alkalmazás** > **jegyzékfájlok** > **AndroidManifest. xml fájlban**keresse meg a `BrowserTabActivity` tevékenységet. Ez a bejegyzés lehetővé teszi, hogy a Microsoft visszahívjon az alkalmazásba a hitelesítés befejezése után:
 
     ```xml
     ...
@@ -110,14 +110,14 @@ Az alkalmazás-objektum regisztrálásához, majd az alkalmazás-objektum regisz
             </activity>
     ```
     
-1. Helyettesítse be a csomag nevét, hogy mit regisztrált a Azure Portalban a `android:host=` értékhez.  Ebben az esetben a következő lesz: `com.azuresamples.msalandroidapp`.
+1. Helyettesítse be a csomag nevét a `android:host=` értékhez tartozó Azure Portalban regisztrált névvel.  Ebben az esetben a következő lesz: `com.azuresamples.msalandroidapp`.
 
     > [!IMPORTANT]
     > Az **Android: Path** értékének kezdő "/" karakterrel **kell** rendelkeznie, vagy az érték alatti piros vonal jelenik meg, és a minta alkalmazás nem fog futni.
      
 1. Helyettesítse be a korábban futtatott és a Azure Portalban megadott kulcs-kivonatot a `android:path=` értékhez. Az aláírási kivonat nem lehet URL-kódolású.
 
-## <a name="step-4-run-the-sample-app"></a>4\. lépés: Mintaalkalmazás futtatása
+## <a name="step-4-run-the-sample-app"></a>4\. lépés: a minta alkalmazás futtatása
 
 Válassza ki az emulátort vagy az eszközt a Android Studio **elérhető eszközök** legördülő menüből, és futtassa az alkalmazást.
 
@@ -138,7 +138,7 @@ Több fiókos módban is megismételheti ugyanezeket a lépéseket.  Emellett el
 
 A kód töredékekre van rendezve, amelyek bemutatják, hogyan írhat egyetlen és több fiókot MSAL-alkalmazásba. A kód fájljai a következőképpen vannak rendszerezve:
 
-| Fájl  | Bemutatja  |
+| File  | Bemutatja  |
 |---------|---------|
 | MainActivity | A felhasználói felület kezelése |
 | MSGraphRequestWrapper  | A Microsoft Graph API meghívása a MSAL által biztosított jogkivonat használatával |
@@ -152,7 +152,7 @@ Most megtekintjük ezeket a fájlokat részletesebben, és megvizsgáljuk a MSAL
 
 ### <a name="add-msal-to-the-app"></a>MSAL hozzáadása az alkalmazáshoz
 
-A MSAL ([com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Gradle 3.0 + telepíti a könyvtárat, amikor hozzáadja a következőt a @no__t **Gradle**-1**Build. Gradle (modul: app)** elemhez a **függőségek**területen:
+A MSAL ([com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Gradle 3.0 + telepíti a könyvtárat, amikor hozzáadja a következőt a **Gradle parancsfájlokhoz** > **Build. Gradle (modul: app)** a **függőségek**területen:
 
 ```gradle  
 implementation 'com.microsoft.identity.client:msal:1.0.0'
@@ -172,7 +172,7 @@ Ez arra utasítja a Gradle, hogy töltsön le és építsen MSAL a Maven Central
 
 ### <a name="msal-imports"></a>MSAL-importálások
 
-A MSAL-könyvtárhoz tartozó importálások `com.microsoft.identity.client.*`.  Láthatja például, hogy `import com.microsoft.identity.client.PublicClientApplication;`, amely a `PublicClientApplication` osztály névtere, amely a nyilvános ügyfélalkalmazás.
+A MSAL-könyvtárhoz tartozó importálások `com.microsoft.identity.client.*`.  Láthatja például, hogy `import com.microsoft.identity.client.PublicClientApplication;`, amely a `PublicClientApplication` osztály névterét jelenti, amely a nyilvános ügyfélalkalmazás.
 
 ### <a name="singleaccountmodefragmentjava"></a>SingleAccountModeFragment. Java
 
@@ -182,7 +182,7 @@ Az egyfiókos alkalmazásokat csak egyetlen felhasználó használja.  Előfordu
 
 #### <a name="single-account-msal-initialization"></a>Egy fiók MSAL inicializálása
 
-@No__t – 0 esetében a `auth_config_single_account.json` fájlban tárolt konfigurációs adatok használatával létrejön egy fiók, `PublicClientApplication`.  Így inicializálhatja a MSAL-függvénytárat egy egyfiókos MSAL-alkalmazásban való használatra:
+`onCreateView()`a `auth_config_single_account.json` fájlban tárolt konfigurációs adatok használatával létrehozható egy fiók `PublicClientApplication`.  Így inicializálhatja a MSAL-függvénytárat egy egyfiókos MSAL-alkalmazásban való használatra:
 
 ```java
 ...
@@ -209,9 +209,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 #### <a name="sign-in-a-user"></a>Bejelentkezés felhasználóként
 
-A felhasználónak való bejelentkezéshez szükséges kód `initializeUI()`, a `signInButton` kattintson a kezelő elemre.
+A felhasználó bejelentkezési kódja `initializeUI()`, a `signInButton` kattintson a kezelő elemre.
 
-A tokenek beszerzése előtt hívja meg a `signIn()` értéket. a `signIn()` úgy viselkedik, mintha a `acquireToken()` meghívása megtörtént, ami interaktív kérést eredményez a felhasználónak a bejelentkezéshez.
+A tokenek beszerzése előtt hívja meg `signIn()`. `signIn()` úgy viselkedik, mintha a `acquireToken()` meghívása megtörtént, ami interaktív kérést biztosít a felhasználónak a bejelentkezéshez.
 
 A felhasználó bejelentkezése aszinkron művelet. A rendszer visszahívást küld, amely meghívja a Microsoft Graph API-t, és a felhasználó bejelentkezése után frissíti a felhasználói FELÜLETET:
 
@@ -240,7 +240,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 
 #### <a name="get-a-token-interactively-or-silently"></a>Jogkivonat interaktív vagy csendes beszerzése
 
-Ha a lehető legkevesebb kérést szeretné bemutatni a felhasználónak, akkor a rendszer általában csendes esetben lekérdezi a tokent. Ha hiba merül fel, próbálja meg interaktív módon beolvasni a tokent. Amikor az alkalmazás első alkalommal hívja meg a `signIn()` értéket, a `acquireToken()` hívásának megfelelően működik, amely felszólítja a felhasználót a hitelesítő adatok megadására.
+Ha a lehető legkevesebb kérést szeretné bemutatni a felhasználónak, akkor a rendszer általában csendes esetben lekérdezi a tokent. Ha hiba merül fel, próbálja meg interaktív módon beolvasni a tokent. Amikor az alkalmazás első alkalommal hívja meg a `signIn()`-t, az hatékonyan meghívja a `acquireToken()`, amely felszólítja a felhasználót a hitelesítő adatok megadására.
 
 Bizonyos esetekben előfordulhat, hogy a felhasználónak meg kell adnia a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás által kért engedélyeket:
 
@@ -251,7 +251,7 @@ Bizonyos esetekben előfordulhat, hogy a felhasználónak meg kell adnia a fiók
 * Ha az alkalmazás első alkalommal kér hozzáférést egy erőforráshoz
 * Ha MFA-vagy más feltételes hozzáférési szabályzatokra van szükség
 
-A token interaktív beszerzésére szolgáló kód, amely a felhasználót érintő felhasználói FELÜLETtel rendelkezik, `initializeUI()`, a `callGraphApiInteractiveButton` Click Handler:
+A token interaktív beszerzésére szolgáló kód, amely a felhasználót érintő felhasználói FELÜLETtel rendelkezik, `initializeUI()``callGraphApiInteractiveButton` kattintson a kezelő:
 
 ```java
 /**
@@ -266,7 +266,7 @@ A token interaktív beszerzésére szolgáló kód, amely a felhasználót érin
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetővé teszi, hogy az alkalmazások csendesen igényeljenek jogkivonatokat az `callGraphApiSilentButton` Click kezelőben, a `initializeUI()`.
+Ha a felhasználó már bejelentkezett, `acquireTokenSilentAsync()` lehetővé teszi az alkalmazások számára a tokenek kérését csendesen, ahogy az a `initializeUI()`ban is látható, a `callGraphApiSilentButton` kattintson a kezelő:
 
 ```java
 /**
@@ -278,7 +278,7 @@ Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetőv
 
 #### <a name="load-an-account"></a>Fiók betöltése
 
-A fiók betöltéséhez szükséges kód `loadAccount()`.  A felhasználó fiókjának betöltése aszinkron művelet, ezért a fiók betöltésének, módosításának vagy hibájának beolvasásakor visszahívást kell adni a MSAL.  A következő kód a `onAccountChanged()` értéket is kezeli, amely akkor fordul elő, ha egy fiókot eltávolítanak, a felhasználó másik fiókra vált, és így tovább.
+A fiók betöltésére szolgáló kód `loadAccount()`.  A felhasználó fiókjának betöltése aszinkron művelet, ezért a fiók betöltésének, módosításának vagy hibájának beolvasásakor visszahívást kell adni a MSAL.  A következő kód a `onAccountChanged()`t is kezeli, amely akkor fordul elő, ha egy fiókot eltávolítanak, a felhasználó másik fiókra vált, és így tovább.
 
 ```java
 private void loadAccount() {
@@ -308,7 +308,7 @@ private void loadAccount() {
 
 #### <a name="call-microsoft-graph"></a>Hívás Microsoft Graph
 
-Ha egy felhasználó be van jelentkezve, a Microsoft Graph hívása HTTP-kérelem alapján történik, `callGraphAPI()`. Ez a függvény egy burkoló, amely leegyszerűsíti a mintát olyan feladatok elvégzésével, mint például a hozzáférési jogkivonat lekérése a `authenticationResult` és a MSGraphRequestWrapper meghívása, valamint a hívás eredményének megjelenítése.
+Ha egy felhasználó be van jelentkezve, a Microsoft Graphre irányuló hívást egy `callGraphAPI()`HTTP-kérésen keresztül végzi el. Ez a függvény egy burkoló, amely leegyszerűsíti a mintát olyan feladatok elvégzésével, mint például a hozzáférési token beszerzése a `authenticationResult`, és a hívás becsomagolása a MSGraphRequestWrapper, valamint a hívás eredményének megjelenítése.
 
 ```java
 private void callGraphAPI(final IAuthenticationResult authenticationResult) {
@@ -338,7 +338,7 @@ Ez egy olyan MSAL-alkalmazás konfigurációs fájlja, amely egyetlen fiókot ha
 
 A mezők magyarázatát az [androidos MSAL konfigurációs fájljának megismerése](msal-configuration.md) című részben találja.
 
-Jegyezze fel `"account_mode" : "SINGLE"` jelenlétét, amely úgy konfigurálja ezt az alkalmazást, hogy egyetlen fiókot használjon.
+Jegyezze fel `"account_mode" : "SINGLE"`jelenlétét, amely az alkalmazást egyetlen fiók használatára konfigurálja.
 
 ```json
 {
@@ -367,7 +367,7 @@ Egy több fiókból álló alkalmazás például egy olyan levelező alkalmazás
 
 #### <a name="multiple-account-msal-initialization"></a>Több fiók MSAL inicializálása
 
-@No__t – 0, több Account app Object (`IMultipleAccountPublicClientApplication`) jön létre a (z) `auth_config_multiple_account.json file` fájlban tárolt konfigurációs adatok használatával:
+`onCreateView()`több Account app Object (`IMultipleAccountPublicClientApplication`) jön létre a `auth_config_multiple_account.json file`ban tárolt konfigurációs adatok használatával:
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
@@ -387,11 +387,11 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
         });
 ```
 
-A létrehozott `MultipleAccountPublicClientApplication` objektum egy Class tag-változóban van tárolva, így használható a MSAL-könyvtárral való interakcióra a tokenek beszerzéséhez és a felhasználói fiók betöltéséhez és eltávolításához.
+A létrehozott `MultipleAccountPublicClientApplication` objektum egy Class tag-változóban van tárolva, így a MSAL-könyvtárral folytatott kommunikációhoz a tokenek beszerzése és a felhasználói fiók betöltése és eltávolítása is használható.
 
 #### <a name="load-an-account"></a>Fiók betöltése
 
-A MSAL-műveletekhez használni kívánt fiók kiválasztásához több fiókos alkalmazás is hívja a `GetAccounts()` értéket. A fiók betöltéséhez szükséges kód `loadAccount()`.  A felhasználó fiókjának betöltése aszinkron művelet. Így a visszahívás a fiók betöltését, változásait vagy hiba esetén felmerülő helyzeteket kezeli.
+Az MSAL-műveletekhez használt fiók kiválasztásához több fiókos alkalmazás is hívja a `GetAccounts()`-t. A fiók betöltésére szolgáló kód `loadAccount()`.  A felhasználó fiókjának betöltése aszinkron művelet. Így a visszahívás a fiók betöltését, változásait vagy hiba esetén felmerülő helyzeteket kezeli.
 
 ```java
 /**
@@ -427,7 +427,7 @@ Bizonyos esetekben előfordulhat, hogy a felhasználónak meg kell adnia a fiók
 * Ha az alkalmazás első alkalommal kér hozzáférést egy erőforráshoz
 * Ha MFA-vagy más feltételes hozzáférési szabályzatokra van szükség
 
-A több fiókból álló alkalmazások általában interaktív módon szerzik be a jogkivonatokat, amely a felhasználót tartalmazó felhasználói FELÜLETtel rendelkezik, `acquireToken()` hívásával.  A jogkivonat interaktív beolvasására szolgáló kód `initializeUI()`, a `callGraphApiInteractiveButton` Click kezelőben:
+A több fiókból álló alkalmazások általában interaktív módon szerzik be a jogkivonatokat, amelyek a felhasználóval kapcsolatos felhasználói FELÜLETtel rendelkeznek, és meghívja a `acquireToken()`.  A jogkivonat interaktív beolvasására szolgáló kód `initializeUI()`, a `callGraphApiInteractiveButton` kattintson a kezelő:
 
 ```java
 /**
@@ -444,7 +444,7 @@ A több fiókból álló alkalmazások általában interaktív módon szerzik be
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Az alkalmazásoknak nem kell minden alkalommal bejelentkezniük, amikor jogkivonatot kérnek. Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetővé teszi, hogy az alkalmazások a felhasználó értesítése nélkül igényeljenek tokeneket, ahogy az a `callGraphApiSilentButton` Click kezelőben a `initializeUI()` elemben látható:
+Az alkalmazásoknak nem kell minden alkalommal bejelentkezniük, amikor jogkivonatot kérnek. Ha a felhasználó már bejelentkezett, `acquireTokenSilentAsync()` lehetővé teszi, hogy az alkalmazások a felhasználó értesítése nélkül igényeljenek jogkivonatokat, `initializeUI()` ahogy az `callGraphApiSilentButton` kattintson a kezelő:
 
 ```java
 /**
@@ -461,7 +461,7 @@ getAuthSilentCallback());
 
 #### <a name="remove-an-account"></a>Fiók eltávolítása
 
-A fiók eltávolításához és a fiókhoz tartozó gyorsítótárazott jogkivonatokhoz tartozó kód a fiók eltávolítása gomb kezelőjében @no__t – 0. Mielőtt eltávolít egy fiókot, szüksége lesz egy fiók objektumra, amelyet a MSAL függvényektől szerez be, például `getAccounts()` és `acquireToken()`. Mivel a fiókok eltávolítása aszinkron művelet, a rendszer a `onRemoved` visszahívást biztosítja a felhasználói felület frissítéséhez.
+A fiók eltávolításához és a fiókhoz tartozó gyorsítótárazott jogkivonatokhoz tartozó kód a fiók eltávolítása gomb kezelőjében `initializeUI()` található. Mielőtt eltávolít egy fiókot, szüksége lesz egy fiók objektumra, amelyet a MSAL függvények (például a `getAccounts()` és a `acquireToken()`) szerez be. Mivel a fiókok eltávolítása aszinkron művelet, a rendszer a `onRemoved` visszahívást a felhasználói felület frissítéséhez.
 
 ```java
 /**
@@ -489,7 +489,7 @@ Ez egy olyan MSAL-alkalmazás konfigurációs fájlja, amely több fiókot haszn
 
 A mezők magyarázatát az [androidos MSAL konfigurációs fájljának megismerése](msal-configuration.md) című részben találja.
 
-A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurációs fájllal ellentétben ez a konfigurációs fájl `"account_mode" : "MULTIPLE"`, @no__t – 2 helyett, mivel ez egy több fiókból álló alkalmazás.
+A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurációs fájllal ellentétben ez a konfigurációs fájl `"account_mode" : "MULTIPLE"` helyett `"account_mode" : "SINGLE"`, mert ez egy több fiókból álló alkalmazás.
 
 ```json
 {
@@ -510,7 +510,7 @@ A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurá
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
 

@@ -216,6 +216,8 @@
           href: managed-disks-overview.md
         - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
           href: disks-types.md
+        - name: Titkosítás
+          href: disk-encryption.md
         - name: Nagy teljesítményű rendszer tervezése
           href: premium-storage-performance.md
         - name: Lemezek skálázási célértékei

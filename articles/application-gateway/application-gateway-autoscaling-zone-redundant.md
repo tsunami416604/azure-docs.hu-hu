@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177452"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965117"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -41,8 +41,8 @@ A Standard_v2 és a WAF_v2 SKU a következő régiókban érhető el: az USA és
 
 A v2 SKU-val a díjszabási modellt a használat vezérli, és a rendszer már nem csatolja a példányszámot vagy a méretet. A v2 SKU díjszabása két összetevőből áll:
 
-- **Rögzített ár** – ez egy Standard_v2-vagy WAF_v2-átjáró kiépítésének óránkénti (vagy részleges órás) díja.
-- **Kapacitási egység díja** – ez a fogyasztáson alapuló költség, amelyet a rögzített költség mellett számítunk fel. A kapacitásegység díjait is óránkénti vagy részben óránkénti egységekben mérjük. A kapacitásegységek három összetevőből állnak: a számítási egység, az állandó kapcsolatok és az átviteli sebesség. A számítási egység a felhasznált processzorkapacitás mértékegysége. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-Újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.
+- **Rögzített ár** – ez egy Standard_v2-vagy WAF_v2-átjáró kiépítésének óránkénti (vagy részleges órás) díja. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva.
+- **Kapacitási egység díja** – ez egy fogyasztási alapú költség, amelyet a rögzített költség mellett számítunk fel. A kapacitásegység díjait is óránkénti vagy részben óránkénti egységekben mérjük. A kapacitásegységek három összetevőből állnak: a számítási egység, az állandó kapcsolatok és az átviteli sebesség. A számítási egység a felhasznált processzorkapacitás mértékegysége. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-Újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.  A számlázás a fenntartott példányok számának megfelelő kapacitás egység szintjén történik.
 
 Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
 
@@ -77,7 +77,7 @@ Teljes ár = $148,8 + $297,6 = $446,4
 
 **2. példa**
 
-Egy Application Gateway standard_v2 egy hónapig lett kiépítve, ezért 25 új SSL-kapcsolatot (/s) kap, átlagosan 8,88 MB/s adatátviteli sebesség. Ha a kapcsolatok rövid életűek, az ár a következő:
+Egy hónapra kiépített Application Gateway standard_v2, 0 minimális példánnyal, és ez idő alatt 25 új SSL-kapcsolatot kap/s, átlagosan 8,88 – Mbps adatátvitel. Ha a kapcsolatok rövid életűek, az ár a következő:
 
 Rögzített ár = 744 (óra) * $0,20 = $148,8
 
@@ -85,10 +85,37 @@ Kapacitási egység ára = 744 (óra) * Max (25/50 számítási egység kapcsola
 
 Teljes ár = $148.8 + 23.81 = $172,61
 
+Amint látható, csak 4 kapacitású egységért kell fizetnie, a teljes példány esetében nem. 
+
 > [!NOTE]
 > A Max függvény a legnagyobb értéket adja vissza egy értékben.
 
+
 **3. példa**
+
+Egy hónapra kiépített Application Gateway standard_v2 legalább 5 példánysal. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
+
+Rögzített ár = 744 (óra) * $0,20 = $148,8
+
+Kapacitási egység ára = 744 (óra) * Max (0/50 számítási egység a kapcsolatok/mp, 0/2.22 kapacitási egység az átviteli sebességhez) * $0,008 = 744 * 50 * 0,008 = $297,60
+
+Teljes ár = $148.80 + 297.60 = $446,4
+
+Ebben az esetben az 5 példány teljes összegét számítjuk fel, még akkor is, ha nincs forgalom.
+
+**4. példa**
+
+Egy Application Gateway standard_v2 egy hónapig van kiépítve, legalább 5 példánnyal, de ezúttal átlagosan 125 Mbps adatátviteli sebesség és 25 SSL-kapcsolat másodpercenként. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
+
+Rögzített ár = 744 (óra) * $0,20 = $148,8
+
+Kapacitási egység ára = 744 (óra) * Max (25/50 számítási egység kapcsolatokhoz/mp, 125/2.22 kapacitási egység az átviteli sebességhez) * $0,008 = 744 * 57 * 0,008 = $339,26
+
+Teljes ár = $148.80 + 339.26 = $488,06
+
+Ebben az esetben a teljes 5 példányra, valamint 7 kapacitású egységre (amely egy példány 7/10) számítunk fel díjat.  
+
+**5. példa**
 
 Egy adott hónapban egy Application Gateway WAF_v2 van kiépítve. Ebben az időszakban 25 új SSL-kapcsolat/másodperc, átlagosan 8,88 MB/s adatátviteli sebesség és a 80-es kérelem másodpercenkénti száma jelenik meg. Ha a kapcsolatok rövid életűek, és az alkalmazás számítási egységének kiszámítása a számítási egységenként 10 RPS-t támogat, a díj a következő lesz:
 
@@ -105,7 +132,7 @@ Teljes ár = $267,84 + $85,71 = $353,55
 
 A Application Gateway és a WAF két módban is konfigurálható:
 
-- Automatikus **skálázás** – ha engedélyezve van az automatikus skálázás, a Application Gateway és a WAF v2 SKU-ra vertikális fel-és leskálázás az alkalmazás-forgalmi követelmények alapján. Ez a mód jobb rugalmasságot biztosít az alkalmazás számára, és nem kell kitalálnia az Application Gateway-méretet vagy a példányszámot. Ez a mód lehetővé teszi a költségmegtakarítást úgy, hogy a várt maximális forgalmi terheléshez nem szükséges, hogy az átjáró kiosztott kapacitással fusson. Meg kell adnia a példányok minimális és opcionális maximális példányszámát. A minimális kapacitás biztosítja, hogy a Application Gateway és a WAF v2 ne érje el a megadott minimális példányszámot, még a forgalom hiányában is. Minden példány 10 további fenntartott kapacitási egységnek számít. 0 nem fenntartott kapacitást jelez, és tisztán automatikus méretezést jelent a természetben. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva. Megadhatja a példányok maximális számát is, ami garantálja, hogy a Application Gateway a megadott számú példányon túl nem méretezhető. Az átjáró által kiszolgált forgalom mennyiségét továbbra is számlázjuk. A példányok száma 0 és 125 között lehet. A példányok maximális számának alapértelmezett értéke 20, ha nincs megadva. 
+- Automatikus **skálázás** – ha engedélyezve van az automatikus skálázás, a Application Gateway és a WAF v2 SKU-ra vertikális fel-és leskálázás az alkalmazás-forgalmi követelmények alapján. Ez a mód jobb rugalmasságot biztosít az alkalmazás számára, és nem kell kitalálnia az Application Gateway-méretet vagy a példányszámot. Ez a mód lehetővé teszi a költségmegtakarítást úgy, hogy a várt maximális forgalmi terheléshez nem szükséges, hogy az átjáró kiosztott kapacitással fusson. Meg kell adnia a példányok minimális és opcionális maximális példányszámát. A minimális kapacitás biztosítja, hogy a Application Gateway és a WAF v2 ne érje el a megadott minimális példányszámot, még a forgalom hiányában is. Minden példány 10 további fenntartott kapacitási egységnek számít. 0 nem fenntartott kapacitást jelez, és tisztán automatikus méretezést jelent a természetben. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva. Megadhatja a példányok maximális számát is, ami garantálja, hogy a Application Gateway a megadott számú példányon túl nem méretezhető. Az átjáró által kiszolgált forgalom mennyiségét továbbra is számlázjuk. A példányok száma 0 és 125 között lehet. A példányok maximális számának alapértelmezett értéke 20, ha nincs megadva.
 - **Manuális** – választhatja azt a manuális módot is, amelyben az átjáró nem rendelkezik Automatikus méretezéssel. Ebben a módban, ha több forgalom van, mint amit a Application Gateway-vagy WAF tud kezelni, a forgalom elvesztését eredményezheti. A manuális mód megadása esetén kötelező megadni a példányszámot. A példányok száma 1 és 125 példány között lehet.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Szolgáltatások összehasonlítása v1 SKU és v2 SKU között

@@ -1,6 +1,6 @@
 ---
-title: IoT Edge telepítése Kubernetes |} A Microsoft Docs
-description: Ismerje meg az IoT Edge használatával egy helyi fejlesztési fürt környezet Kubernetes telepítése
+title: A IoT Edge telepítése a Kubernetes-on | Microsoft Docs
+description: Ismerje meg, hogyan telepítheti a IoT Edget a Kubernetes egy helyi fejlesztési fürt-környezet használatával
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -9,62 +9,62 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 66aca7be9a2df93d846d7e78bc64c93279afc2d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a453779ffe4ae20acf55510d0ac9f9483763af21
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160695"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964838"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>IoT Edge Kubernetes (előzetes verzió) telepítése
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>A IoT Edge telepítése a Kubernetes (előzetes verzió)
 
-IoT Edge használatával, egy rugalmas, magas rendelkezésre állású infrastruktúrát rétegként Kubernetes integrálható. Regisztrálja azokat az IoT Edge *egyéni erőforrás-definíció* (CRD) a Kubernetes API-kiszolgálóval. Emellett tartalmazza egy *operátor* (IoT Edge-ügynök), amely összehangolja ezzel a felhőben kezelt kívánt állapotát a helyi fürt állapota. 
+IoT Edge integrálható a Kubernetes a rugalmas, magasan elérhető infrastruktúra-rétegként használva. IoT Edge *egyéni erőforrás-definíciót* (CRD) regisztrál a Kubernetes API-kiszolgálóval. Emellett egy *operátort* (IoT Edge ügynököt) is biztosít, amely összehangolja a felhőben felügyelt kívánt állapotot a helyi fürt állapotával. 
 
-A modul élettartamát az ütemező Kubernetes, amely fenntartja a modul rendelkezésre állási, és úgy dönt, az elhelyezési kezeli. IoT Edge kezeli a képernyő felső részén futó edge alkalmazásplatform folyamatosan összeegyezteti az IoT Hub az edge-fürt állapotát a megadott állapothoz. Az edge alkalmazásmodell még mindig a jól ismert modellt az IoT Edge-modulok és útvonalak alapján. Az IoT Edge-ügynök operátor hajt végre *automatikus* a Kubernetes natives való hoz létre, mint például a podok, a központi telepítéseket és a szolgáltatások stb.
+A modul élettartamát a Kubernetes Scheduler kezeli, amely fenntartja a modul rendelkezésre állását, és kiválasztja az elhelyezést. IoT Edge felügyeli a fent futó Edge Application platformot, és folyamatosan összehangolja a IoT Hubban megadott kívánt állapotot a peremhálózati fürt állapotával. Az Edge-alkalmazás modellje továbbra is ismert modell IoT Edge modulok és útvonalak alapján. A IoT Edge ügynök operátora *automatikus* fordítást végez a Kubernetes-natív eszközökhöz, például hüvelyek, üzembe helyezések, szolgáltatások stb. alapján.
 
-Íme egy magas szintű architektúra ábrája:
+A magas szintű architektúra diagramja:
 
-![kubernetes arch](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
+![kubernetes Arch](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
 
-Az edge üzemelő példány minden összetevő egy Kubernetes-névtér az eszközre, az ugyanazon fürt erőforrások megosztása között több peremhálózati eszközökön és a központi telepítések lehetővé teszik adott hatókörét.
+Az Edge-telepítés minden összetevője az eszközre jellemző Kubernetes-névtérre van korlátozva, így több peremhálózati eszköz és a hozzájuk tartozó üzemelő példányok között is megosztható.
 
 >[!NOTE]
->Az IoT Edge a Kubernetes [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>A Kubernetes IoT Edge [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
 
-## <a name="install-locally-for-a-quick-test-environment"></a>A gyors tesztkörnyezetben helyi telepítése
+## <a name="install-locally-for-a-quick-test-environment"></a>Helyi telepítés gyors tesztelési környezethez
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Kubernetes 1.10 vagy újabb. Ha nem rendelkezik egy meglévő fürt beállítása, [Minikube](https://kubernetes.io/docs/setup/minikube/) helyi fürtkörnyezetre vonatkozóan. 
+* Kubernetes 1,10 vagy újabb. Ha nem rendelkezik meglévő fürttel, a [Minikube](https://kubernetes.io/docs/setup/minikube/) -t használhatja helyi fürt környezetéhez. 
 
-* [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), a Kubernetes-Csomagkezelőt.
+* [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), a Kubernetes csomagkezelő.
 
-* [a kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) megtekintését és a fürt számára.
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) a fürt megtekintésére és a velük való interakcióra.
 
-### <a name="setup-steps"></a>A telepítő lépéseit
+### <a name="setup-steps"></a>Telepítési lépések
 
-1. Indítsa el **Minikube**
+1. **Minikube** elindítása
 
     ``` shell
     minikube start
     ```
 
-1. Inicializálja a **Helm** kiszolgáló-összetevő (*a tiller valóban*) a fürtben
+1. A **Helm** Server összetevő (*kormányrúd*) inicializálása a fürtben
 
     ``` shell
     helm init
     ```
 
-1. Adja hozzá az IoT Edge-adattárat, és a helm-telepítés frissítése
+1. IoT Edge adattár hozzáadása és a Helm telepítésének frissítése
 
     ``` shell
     helm repo add edgek8s https://edgek8s.blob.core.windows.net/helm/
     helm repo update
     ```
 
-1. [Hozzon létre egy IoT hubot](../iot-hub/iot-hub-create-through-portal.md), [IoT Edge-eszköz regisztrálása](how-to-register-device-portal.md), és jegyezze fel a kapcsolati karakterláncot.
+1. [Hozzon létre egy IoT hub](../iot-hub/iot-hub-create-through-portal.md), [regisztráljon egy IoT Edge eszközt](how-to-register-device.md), és jegyezze fel a kapcsolati karakterláncát.
 
-1. A fürtbe való iotedged és az IoT Edge-ügynök telepítése
+1. A iotedged és a IoT Edge ügynök telepítése a fürtbe
 
     ```shell
     helm install \
@@ -72,28 +72,28 @@ Az edge üzemelő példány minden összetevő egy Kubernetes-névtér az eszkö
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
-1. A Kubernetes-irányítópult megnyitása a böngészőben
+1. Nyissa meg a Kubernetes-irányítópultot a böngészőben
 
     ```shell
     minikube dashboard
     ```
 
-    A fürt névterek alatt megjelenik egy, az IoT Edge-eszköz szabálya a következő *msiot -\<iothub-neve >-\<edgedevice-name >* . Az IoT Edge-ügynök és iotedged podok és legyen a névtér.
+    A fürt névterei alatt láthat egyet a IoT Edge eszközhöz a következő egyezményt követve: *msiot-\<iothub-name >-\<edgedevice-name >* . A IoT Edge-ügynöknek és a iotedged-hüvelynek ebben a névtérben kell futnia.
 
-1. Egy szimulált hőmérsékleti érzékelő modul használata a lépések hozzáadása a [modul üzembe helyezése](quickstart-linux.md#deploy-a-module) a rövid útmutató szakasza. IoT Edge-modul kezelése történik, csakúgy, mint bármely más IoT Edge-eszközt az IoT Hub portálról. A modul konfigurációs eszközök segítségével Kubernetes helyi módosítása nem ajánlott, mivel előfordulhat, hogy első felül.
+1. Vegyen fel egy szimulált hőmérséklet-érzékelő modult a gyors útmutató [modul telepítése](quickstart-linux.md#deploy-a-module) szakaszának lépéseit követve. IoT Edge modul felügyeletét a IoT Hub portálon végezheti el, ugyanúgy, mint bármely más IoT Edge eszköz. A modulok Kubernetes-eszközökön keresztüli helyi módosítása nem ajánlott, mert előfordulhat, hogy a rendszer felülírja a beállításokat.
 
-1. Néhány másodpercen belül frissítése a **Podok** a peremhálózati eszköz névtérben, az irányítópult lapon megjelennek az IoT Edge hubot és a szimulált érzékelő podok, mintha az az IoT Edge hub pod adatokat tölt be az IoT Hub.
+1. Néhány másodpercen belül az irányítópult Edge-eszköz névterében lévő **hüvelyek** oldal frissítése a IoT Edge hub és a szimulált érzékelő hüvelyét fogja kilistázni az IoT Edge hub Pod-val, amely az IoT Hubbe helyezi az adatot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az edge üzemelő példány által létrehozott összes erőforrás eltávolításához használja a következő parancsot az előző szakasz 5. lépésben használt nevét.
+Az Edge-telepítés által létrehozott összes erőforrás eltávolításához használja az alábbi parancsot az előző szakasz 5. lépésében használt névvel.
 
 ``` shell
 helm delete --purge k8s-edge1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Egy magas rendelkezésre állású edge-átjáró üzembe helyezése 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>Üzembe helyezés magasan elérhető peremhálózati átjáróként 
 
-A peremhálózati eszköz egy Kubernetes-fürtöt az alsóbb rétegbeli eszközök IoT-átjáróként is használható. Is Csomóponthiba, így biztosítva az edge-telepítések a magas rendelkezésre állású ellenáll konfigurálható. Ez [részletes bemutató](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) IoT Edge használata ebben a forgatókönyvben.
+A Kubernetes-fürt peremhálózati eszköze az alsóbb rétegbeli eszközök IoT-átjáróként is használható. Konfigurálható úgy, hogy rugalmas legyen a csomópontok meghibásodása esetén, így magas rendelkezésre állást biztosítson az Edge-környezetek számára. Ebben a forgatókönyvben a IoT Edge használatára vonatkozó [részletes útmutatóban](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) talál.

@@ -245,8 +245,12 @@
         - name: Függvény letiltása
           href: disable-function.md
     - name: Figyelés
-      href: functions-monitoring.md
-      displayName: 'App Insights, Application Insights, logs, logging'
+      items:
+        - name: Függvények figyelés
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: Naplók elemzése
+          href: functions-monitor-log-analytics.md
     - name: Biztonságos
       items:
         - name: SSL-tanúsítvány vásárlása

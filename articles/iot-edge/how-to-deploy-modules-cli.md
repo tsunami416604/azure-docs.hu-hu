@@ -1,6 +1,6 @@
 ---
-title: Modulok parancssorból – Azure IoT Edge üzembe helyezése |} A Microsoft Docs
-description: Az Azure CLI-hez az IoT-bővítmény használatával üzembe helyezhet modulok IoT Edge-eszköz
+title: Modulok üzembe helyezése a parancssorból – Azure IoT Edge | Microsoft Docs
+description: Modulok üzembe helyezése IoT Edge eszközön az Azure CLI IoT-bővítményének használatával
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,35 +10,35 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aa5c4747238b2f2427be3e57c3e84e03c81fd609
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c8cd6e2d13e252f9a7560b55eca58341e791db5a
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541761"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964936"
 ---
-# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Az Azure CLI-vel az Azure IoT Edge-modulok telepítése
+# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure IoT Edge-modulok üzembe helyezése az Azure CLI-vel
 
-Miután létrehozott egy IoT Edge modulok az üzleti logikával rendelkező, érdemes őket az eszközökre telepíteni kívánt megfelelően működjenek a peremhálózaton. Ha több modulokat, amelyek együttműködve gyűjtenek és dolgoznak fel adatokat, és egyszerre telepítheti őket, és deklarálja az útválasztási szabályokat, amelyek csatlakoztathatja őket.
+Miután létrehozta IoT Edge modulokat az üzleti logikával, üzembe helyezheti azokat az eszközökön a peremhálózat működéséhez. Ha több modullal is együttműködik az adatok gyűjtéséhez és feldolgozásához, egyszerre telepítheti őket, és deklarálhatja az azokat összekötő útválasztási szabályokat.
 
-[Az Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú közötti platform parancssori eszköz, például az IoT Edge Azure-erőforrások kezeléséhez. Lehetővé teszi, hogy az Azure IoT Hub-erőforrások, eszközregisztrációs szolgáltatáspéldányok és csatolt központok beépített kezelése. Az új IoT-bővítmény Azure CLI-vel bővíti, például az Eszközfelügyelet és teljes körű IoT Edge-képességek.
+Az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT Edge kezelésére. Lehetővé teszi az Azure IoT Hub-erőforrások, az eszközök kiépítési szolgáltatás példányainak és a kapcsolt hubok felügyeletét a dobozból. Az új IoT-bővítmény az Azure CLI-t az eszközök kezelésével és a teljes IoT Edge képességgel gazdagítja.
 
-Ez a cikk bemutatja, hogyan hozzon létre egy JSON-manifest nasazení, majd küldje le az üzembe helyezés IoT Edge-eszköz fájl használatával. A megosztott címkék alapján több eszköz célzó központi telepítés létrehozásával kapcsolatos információkért lásd: [üzembe helyezése és figyelése a nagy mennyiségű IoT Edge-modulok](how-to-deploy-monitor-cli.md)
+Ez a cikk bemutatja, hogyan hozhat létre JSON központi telepítési jegyzéket, majd ezzel a fájllal leküldheti a központi telepítést egy IoT Edge eszközre. További információ a megosztott címkék alapján több eszközt célzó központi telepítés létrehozásáról: [IoT Edge modulok üzembe helyezése és figyelése nagy léptékben](how-to-deploy-monitor-cli.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [az IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében.
-* Egy [IoT Edge-eszköz](how-to-register-device-cli.md) az telepítve van az IoT Edge-futtatókörnyezet.
-* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
-* A [IoT-bővítmény az Azure CLI-vel](https://github.com/Azure/azure-iot-cli-extension).
+* Egy [IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében.
+* [IoT Edge-eszköz](how-to-register-device.md#register-with-the-azure-cli) , amelyen telepítve van a IoT Edge futtatókörnyezet.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.24 vagy újabbnak kell lennie. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
+* Az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
+## <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
-A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. Hogyan alkalmazásjegyzékeket az üzembe helyezési a munkahelyi, és hogyan hozhat létre, azokat kapcsolatos további információkért lásd: [megismerheti, hogyan IoT Edge-modulok használják, konfigurálhatók, és újra felhasználható](module-composition.md).
+Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. Az üzembe helyezési jegyzékek működésével és létrehozásával kapcsolatos további információkért lásd: [IoT Edge modulok használatának, konfigurálásának és](module-composition.md)újbóli használatának ismertetése.
 
-Az Azure CLI-vel modulok üzembe helyezéséhez egy .JSON kiterjesztésű fájlt mentse helyileg manifest nasazení. A fájl elérési útja fogja használni a következő szakaszban, amikor futtatja a parancsot a alkalmazni a konfigurációt az eszközre.
+A modulok Azure CLI használatával történő üzembe helyezéséhez mentse a központi telepítési jegyzéket. JSON-fájlként. A fájl elérési útját a következő szakaszban fogja használni, amikor a parancs futtatásával alkalmazza a konfigurációt az eszközre.
 
-Íme egy modult az alapszintű üzemelő példányhoz jegyzék példaként:
+Íme egy alapszintű üzembe helyezési jegyzék egy modullal, például:
 
    ```json
    {
@@ -106,23 +106,23 @@ Az Azure CLI-vel modulok üzembe helyezéséhez egy .JSON kiterjesztésű fájlt
 
 ## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
 
-A modul információkkal konfigurált manifest nasazení alkalmazása modulok üzembe az eszközre.
+A modulok az eszközön való üzembe helyezéséhez alkalmazza a modul adataival konfigurált telepítési jegyzékfájlt.
 
-Módosítsa a könyvtárakat a mappát, ahol a manifest nasazení van. Ha a vs Code IoT Edge-sablonok egyikét használta, használja a `deployment.json` fájlját a megoldás könyvtárának **konfigurációs** mappájába, és ne `deployment.template.json` a fájlt.
+Módosítsa a címtárakat abba a mappába, ahová a telepítési jegyzékfájlt menti. Ha a VS Code IoT Edge-sablonok valamelyikét használta, használja a `deployment.json` fájlt a megoldás könyvtárának **konfigurációs** mappájába, és ne a `deployment.template.json` fájlt.
 
-A következő parancsot használja a alkalmazni a konfigurációt egy IoT Edge-eszközön:
+A következő parancs használatával alkalmazza a konfigurációt egy IoT Edge eszközre:
 
    ```cli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-Az eszköz azonosító paraméter értéke a kis-és nagybetűket. A tartalom paraméter mutat az üzembe helyezés manifest mentett fájlt.
+A Device ID paraméter megkülönbözteti a kis-és nagybetűket. A Content paraméter a mentett telepítési jegyzékfájlra mutat.
 
-   ![az iot edge set-modul kimenete](./media/how-to-deploy-cli/set-modules.png)
+   ![az IOT Edge set-modulok kimenete](./media/how-to-deploy-cli/set-modules.png)
 
-## <a name="view-modules-on-your-device"></a>Modulok megjelenítése az eszközön
+## <a name="view-modules-on-your-device"></a>Az eszközön található modulok megtekintése
 
-Miután telepítette a modulokat az eszközön, megtekintheti azokat a következő paranccsal:
+Miután telepítette a modulokat az eszközre, a következő paranccsal tekintheti meg az összeset:
 
 A modulok megtekintése az IoT Edge-eszközön:
 
@@ -130,10 +130,10 @@ A modulok megtekintése az IoT Edge-eszközön:
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-Az eszköz azonosító paraméter értéke a kis-és nagybetűket.
+A Device ID paraméter megkülönbözteti a kis-és nagybetűket.
 
-   ![az iot hub modul-identity list kimeneti](./media/how-to-deploy-cli/list-modules.png)
+   ![az IOT hub modul-Identity List output](./media/how-to-deploy-cli/list-modules.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [üzembe helyezése és figyelése a nagy mennyiségű IoT Edge-modulok](how-to-deploy-monitor.md)
+Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge modulokat a skálán](how-to-deploy-monitor.md)
