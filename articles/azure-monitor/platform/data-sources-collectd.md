@@ -1,27 +1,21 @@
 ---
 title: Adatgyűjtés a Azure Monitor gyűjtött adatokból | Microsoft Docs
 description: A Collected egy nyílt forráskódú linuxos démon, amely rendszeres időközönként adatokat gyűjt az alkalmazásokból és a rendszerszintű adatokból.  Ez a cikk a Azure Monitor gyűjtött adatok gyűjtésével kapcsolatos információkat tartalmazza.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/27/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 11/27/2018
+ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812557"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932527"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
-[](https://collectd.org/) A Collected egy nyílt forráskódú linuxos démon, amely rendszeresen gyűjti a teljesítmény-mérőszámokat az alkalmazásokból és a rendszerszintű információkból. Például az alkalmazások közé tartozik a Java virtuális gép (JVM), a MySQL-kiszolgáló és az Nginx. Ez a cikk a Azure Monitor gyűjtött teljesítményadatok gyűjtésével kapcsolatos információkat tartalmazza.
+A [Collected](https://collectd.org/) egy nyílt forráskódú linuxos démon, amely rendszeresen gyűjti a teljesítmény-mérőszámokat az alkalmazásokból és a rendszerszintű információkból. Például az alkalmazások közé tartozik a Java virtuális gép (JVM), a MySQL-kiszolgáló és az Nginx. Ez a cikk a Azure Monitor gyűjtött teljesítményadatok gyűjtésével kapcsolatos információkat tartalmazza.
 
 Az elérhető beépülő modulok teljes listája megtalálható a [plugins táblázatában](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
@@ -52,12 +46,12 @@ Emellett, ha a 5,5 előtt összegyűjtött verziót használ, a következő konf
        </URL>
     </Plugin>
 
-A gyűjtött konfiguráció az alapértelmezett @ no__t-0 beépülő modullal küldi el a teljesítmény-mérőszám adatait az 26000-as porton keresztül, hogy Log Analytics a Linux-ügynöknek. 
+A gyűjtött konfiguráció az alapértelmezett`write_http` beépülő modullal küldi el a teljesítmény-mérőszám adatait az 26000-as porton keresztül a Linux-ügynök Log Analytics. 
 
 > [!NOTE]
 > Ha szükséges, a port egy egyéni által megadott portra is konfigurálható.
 
-A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figyeli a begyűjtött metrikák esetében, majd átalakítja őket Azure Monitor séma-metrikára. A következő a Linux-konfiguráció Log Analytics ügynöke `collectd.conf`.
+A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figyeli a begyűjtött metrikák esetében, majd átalakítja őket Azure Monitor séma-metrikára. A következő a Linux konfigurációs `collectd.conf`Log Analytics ügynöke.
 
     <source>
       type http
@@ -86,7 +80,7 @@ Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurá
 
 ### <a name="configure-collectd-to-forward-data"></a>A begyűjtött adatok továbbításának beállítása 
 
-1. Ahhoz, hogy a gyűjtött adatokat a Linux Log Analytics ügynökéhez irányítsa, `oms.conf` értéket kell hozzáadni a begyűjtött konfigurációs könyvtárhoz. A fájl célja a számítógép linuxos disztribúciója.
+1. Ahhoz, hogy átirányítsa a gyűjtött adatokat a Linux rendszerhez készült Log Analytics-ügynöknek, `oms.conf` kell vennie a begyűjtött konfigurációs könyvtárba. A fájl célja a számítógép linuxos disztribúciója.
 
     Ha a gyűjtött konfigurációs könyvtár a/etc/collectd.d/-ben található:
 
@@ -97,7 +91,7 @@ Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurá
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >A 5,5 előtti összegyűjtött verzióknál a fent látható módon módosítania kell a címkéket `oms.conf`-ban.
+    >A 5,5 előtti összegyűjtött verzióknál módosítania kell a címkéket a `oms.conf` a fentiekben látható módon.
     >
 
 2. Másolja a Collected. conf fájlt a kívánt munkaterület omsagent-konfigurációs könyvtárába.
@@ -114,15 +108,15 @@ A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák 
 
 | Begyűjtött metrika mező | Azure Monitor mező |
 |:--|:--|
-| `host` | Számítógép |
-| `plugin` | Nincsenek |
+| `host` | Computer |
+| `plugin` | None |
 | `plugin_instance` | Példány neve<br>Ha a **plugin_instance** értéke *Null* , akkor példánynév = "*összesen*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>Ha a **type_instance** értéke *Null* , akkor a CounterName =**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | Nincsenek |
+| `dstypes` | None |
 | `values[]` | Kártyabirtokos számlájának megterhelését |
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
-* Használat [egyéni mezők](custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
+## <a name="next-steps"></a>Következő lépések
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
+* [Egyéni mezők](custom-fields.md) használatával elemezheti az adatokat a syslog-rekordokból az egyes mezőkbe.

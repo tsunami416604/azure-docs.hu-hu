@@ -1,23 +1,18 @@
 ---
 title: Adatfeldolgozási idő naplózása Azure Monitorban | Microsoft Docs
 description: Ismerteti azokat a különböző tényezőket, amelyek befolyásolják a naplózási adatok Azure Monitorban való gyűjtésének késését.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/18/2019
+ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639492"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932567"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Adatfeldolgozási idő naplózása Azure Monitor
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -81,7 +76,7 @@ Ez a folyamat jelenleg körülbelül 5 percet vesz igénybe, ha kevés az adatme
 ## <a name="checking-ingestion-time"></a>Betöltési idő ellenőrzése
 A betöltési idő különböző körülmények között eltérő lehet. A naplózási lekérdezések segítségével azonosíthatja a környezet adott viselkedését. A következő táblázat azt ismerteti, hogyan határozható meg a rekord különböző időpontja, amikor a rendszer létrehozta és elküldje Azure Monitor.
 
-| Lépés | Tulajdonság vagy függvény | Megjegyzések |
+| Lépés: | Tulajdonság vagy függvény | Megjegyzések |
 |:---|:---|:---|
 | Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived megegyező időpontra lesz beállítva. |
 | Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](log-standard-properties.md#_timereceived) | |
@@ -101,7 +96,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Az előző percentilis-ellenőrzések hasznosak a késés általános trendjeinek megkereséséhez. Ha egy rövid távú csúcsot szeretne meghatározni a késésben, a maximális`max()`() érték használata hatékonyabb lehet.
+Az előző percentilis-ellenőrzések hasznosak a késés általános trendjeinek megkereséséhez. Ha egy rövid távú csúcsot szeretne meghatározni a késésben, akkor a maximális (`max()`) használata hatékonyabb lehet.
 
 Ha egy adott számítógép betöltési idejét egy adott időszakon belül szeretné részletezni, használja a következő lekérdezést, amely a diagramon az elmúlt nap adatait is megjeleníti: 
 
@@ -147,6 +142,6 @@ Heartbeat
 | top 20 by NoHeartbeatPeriod desc 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Monitor [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) beolvasása.
 

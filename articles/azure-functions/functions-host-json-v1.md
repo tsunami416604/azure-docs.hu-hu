@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 3d6a28c8cdcf13dc805d70832ed65732911138cd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 89709edf085e1c424156fb68bd86fbc66b6ae8a7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263344"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934319"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>a Azure Functions 1. x gazdagép. JSON-referenciája
 
@@ -168,7 +168,7 @@ A gazdagép által futtatott függvények listája. Az üres tömb az összes f�
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Az összes függvény időtúllépési időtartamát jelzi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc. Egy App Service tervben nincs általános korlát, és az alapértelmezett érték a futásidejű verziótól függ.
+Az összes függvény időtúllépési időtartamát jelzi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc. Egy App Service tervben nincs általános korlát, és az alapértelmezett érték _Null_, amely nincs időkorlát.
 
 ```json
 {
@@ -276,7 +276,7 @@ A [tárolási várólista-eseményindítók és-kötések](functions-bindings-st
 |---------|---------|---------| 
 |maxPollingInterval|60000|A várólista-lekérdezések közötti maximális időköz ezredmásodpercben.| 
 |visibilityTimeout|0|Az újrapróbálkozások között eltelt idő az üzenet feldolgozásakor.| 
-|batchSize|16|Azoknak a üzenetsor-üzeneteknek a száma, amelyeket a függvények futtatókörnyezete egyszerre kér le, és párhuzamosan dolgozza fel a folyamatokat. Ha a feldolgozandó szám a `newBatchThreshold` értékre kerül, a futtatókörnyezet egy másik köteget kap, és elindítja az üzenetek feldolgozását. Így a függvények által feldolgozott egyidejű üzenetek maximális száma @no__t – 0, `newBatchThreshold`. Ez a korlát külön vonatkozik az egyes üzenetsor-vezérelt függvényekre. <br><br>Ha el szeretné kerülni az egyik várólistán fogadott üzenetek párhuzamos végrehajtását, beállíthatja `batchSize` és 1 közötti értéket. Ez a beállítás azonban csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen fut (VM). Ha a Function alkalmazás több virtuális gépre is kiterjed, minden egyes virtuális gép futtathatja az egyes üzenetsor által aktivált függvények egy példányát.<br><br>A maximális @no__t – 0 32. | 
+|batchSize|16|Azoknak a üzenetsor-üzeneteknek a száma, amelyeket a függvények futtatókörnyezete egyszerre kér le, és párhuzamosan dolgozza fel a folyamatokat. Ha a feldolgozandó szám a `newBatchThreshold` értékre kerül, a futtatókörnyezet egy másik köteget kap, és elindítja az üzenetek feldolgozását. Így a függvények által feldolgozott egyidejű üzenetek maximális száma `batchSize` plusz `newBatchThreshold`. Ez a korlát külön vonatkozik az egyes üzenetsor-vezérelt függvényekre. <br><br>Ha el szeretné kerülni az egyik várólistán fogadott üzenetek párhuzamos végrehajtását, beállíthatja `batchSize` és 1 közötti értéket. Ez a beállítás azonban csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen fut (VM). Ha a Function alkalmazás több virtuális gépre is kiterjed, minden egyes virtuális gép futtathatja az egyes üzenetsor által aktivált függvények egy példányát.<br><br>A maximális `batchSize` 32. | 
 |maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.| 
 |newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.| 
 

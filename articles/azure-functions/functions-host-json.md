@@ -1,20 +1,18 @@
 ---
 title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
 description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596859"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72927451"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
 
@@ -150,9 +148,7 @@ A gazdagép által futtatott függvények listája. Az üres tömb az összes f�
 ## <a name="functiontimeout"></a>functionTimeout
 
 Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterlánc-formátumát követi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc.  
-A dedikált (App Service) csomagban nincs általános korlát, és az alapértelmezett érték a futásidejű verziótól függ: 
-+ 1\. x verzió: az alapértelmezett érték *Null*, amely nem jelez időtúllépést.   
-+ 2\. x verzió: az alapértelmezett érték 30 perc. @No__t_0 értéke nem kötött végrehajtást jelez.
+A dedikált (App Service) csomagban nincs általános korlát, és az alapértelmezett érték 30 perc. `-1` értéke nem kötött végrehajtást jelez.
 
 ```json
 {

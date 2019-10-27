@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával Jira |} A Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat a Jira támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
+title: Adatok másolása a JIRA a Azure Data Factory használatával | Microsoft Docs
+description: Bemutatjuk, hogy miként másolhatók adatok a JIRA-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,21 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c6cf30a8d4f750aa8e1c2b7531c4a604642e88b4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c48533175d21475a1c42eddc9dc6123f8e4050fb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092025"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935554"
 ---
-# <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Jira
+# <a name="copy-data-from-jira-using-azure-data-factory"></a>Adatok másolása a JIRA a Azure Data Factory használatával
 
-Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Jira módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!IMPORTANT]
-> Ez az összekötő jelenleg előzetes verzióban érhető el. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok JIRA való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -33,30 +30,30 @@ Ez a JIRA-összekötő a következő tevékenységek esetén támogatott:
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Másolhat adatokat Jira bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az adatok a JIRA bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
+A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Jira összekötő-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük az JIRA-összekötőhöz tartozó Data Factory-entitások definiálásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Jira-beli társított szolgáltatás a következő tulajdonságok támogatottak:
+A JIRA társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Jira** | Igen |
-| host | Az IP-cím vagy a gazdagép a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
-| port | A Jira-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 443-as akkor, ha a kapcsolaton keresztül a HTTPS vagy a 8080-as, ha HTTP Protokollon keresztül csatlakozik.  | Nem |
-| username | Jira-szolgáltatás eléréséhez használt felhasználónév.  | Igen |
-| password | A felhasználónév mezőben megadott felhasználónév megfelelő jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: true.  | Nem |
-| useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: true.  | Nem |
-| usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: true.  | Nem |
+| type | A Type tulajdonságot a következőre kell beállítani: **JIRA** | Igen |
+| gazdagép | A JIRA szolgáltatás IP-címe vagy állomásneve. (például jira.example.com)  | Igen |
+| port | A JIRA-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Az alapértelmezett érték 443, ha HTTPS-kapcsolaton keresztül csatlakozik, vagy 8080, ha HTTP-n keresztül csatlakozik.  | Nem |
+| felhasználónév | A JIRA szolgáltatás eléréséhez használt Felhasználónév.  | Igen |
+| jelszó | A Felhasználónév mezőben megadott felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték TRUE (igaz).  | Nem |
+| useHostVerification | Azt adja meg, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték TRUE (igaz).  | Nem |
+| usePeerVerification | Meghatározza, hogy az SSL protokollon keresztüli kapcsolódáskor ellenőrizni kell-e a kiszolgáló identitását. Az alapértelmezett érték TRUE (igaz).  | Nem |
 
 **Példa**
 
@@ -80,14 +77,14 @@ Jira-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Jira adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a JIRA adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatmásolás Jira, állítsa be a type tulajdonság, az adatkészlet **JiraObject**. A következő tulajdonságok támogatottak:
+Az adatok JIRA való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **JiraObject**értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **JiraObject** | Igen |
-| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
 
@@ -108,18 +105,18 @@ Adatmásolás Jira, állítsa be a type tulajdonság, az adatkészlet **JiraObje
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Jira forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a JIRA forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="jirasource-as-source"></a>JiraSource forrásként
 
-Adatok másolása Jira, állítsa be a forrás típusaként a másolási tevékenység **JiraSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok JIRA való másolásához állítsa a forrás típusát a másolás tevékenység **JiraSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **JiraSource** | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -155,5 +152,5 @@ Adatok másolása Jira, állítsa be a forrás típusaként a másolási tevéke
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
-A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Következő lépések
+A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,24 +1,18 @@
 ---
 title: A Azure Monitor naplók üzembe helyezésének megtervezése | Microsoft Docs
 description: Ez a cikk azokat a szempontokat és javaslatokat ismerteti, amelyek a munkaterületek Azure Monitor való üzembe helyezésére készülnek.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/20/2019
+ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177594"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932355"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>A Azure Monitor naplók üzembe helyezésének megtervezése
 
@@ -63,7 +57,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 * A felügyeleti csoportnak jelentést küldő linuxos számítógépeket úgy kell konfigurálni, hogy közvetlenül egy Log Analytics munkaterületre jelentsenek. Ha a Linux rendszerű számítógépek már közvetlenül egy munkaterületre vannak bejelentve, és Operations Manager szeretné figyelni őket, kövesse az alábbi lépéseket [egy Operations Manager felügyeleti csoportnak való jelentéskészítéshez](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * Telepítheti a Log Analytics Windows-ügynököt a Windows rendszerű számítógépre, és jelentést készíthet mind a munkaterülettel integrált Operations Manager, mind pedig egy másik munkaterületről.
 
-## <a name="access-control-overview"></a>Hozzáférés-vezérlés áttekintése
+## <a name="access-control-overview"></a>A hozzáférés-vezérlés áttekintése
 
 A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével a felhasználók és csoportok csak a munkaterületen lévő figyelési adathoz szükséges hozzáférés mennyiségét biztosíthatják. Ez lehetővé teszi, hogy egyetlen munkaterülettel igazítsa az informatikai szervezet működési modelljéhez, hogy az összegyűjtött adatok az összes erőforráson engedélyezve legyenek. Például hozzáférést biztosíthat az Azure Virtual Machines szolgáltatásban üzemeltetett infrastruktúra-szolgáltatásokért felelős csapatának, és ennek eredményeképpen csak a virtuális gépek által létrehozott naplókhoz férhet hozzá. Ez az új erőforrás-kontextusú naplózási modellt követi. Ennek a modellnek az alapja az Azure-erőforrások által kibocsátott összes naplózási rekord, amelyet a rendszer automatikusan társít ehhez az erőforráshoz. A naplók továbbítása egy központi munkaterületre történik, amely az erőforrások alapján a hatókört és a RBAC is figyelembe veszi.
 

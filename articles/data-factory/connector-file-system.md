@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b1e1dfec69d73b7fe2648a1eb9ead2ae4622bc5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 39e1099f1700e9ade412bb4cb81bc38e814ecfae
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897751"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935645"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása fájlrendszerből vagy rendszerbe a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -100,21 +100,15 @@ A fájlrendszerhez társított szolgáltatás a következő tulajdonságokat tá
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. 
 
-- A **Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
-- Más formátumok, például az **ork formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú adatkészlet
-
-Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adatait szeretné másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészlet és a támogatott beállítások alapján. . A fájlrendszerben a következő tulajdonságok támogatottak `location` beállításokban a Format-alapú adatkészletben:
+A fájlrendszerben a következő tulajdonságok támogatottak `location` beállításokban a Format-alapú adatkészletben:
 
 | Tulajdonság   | Leírás                                                  | Szükséges |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Az adatkészletben található `location` típus tulajdonságot **FileServerLocation**értékre kell állítani. | Igen      |
 | folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
 | fileName   | A fájlnév a megadott folderPath alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
-
-> [!NOTE]
-> A következő szakaszban említett, a Parquet/Text formátumot tartalmazó **fájlmegosztás** -típus adatkészlete továbbra is támogatott a visszamenőleges kompatibilitás érdekében a másolási/keresési/GetMetaData tevékenységek esetében, de nem működik a leképezési adatfolyammal. Azt javasoljuk, hogy ezt az új modellt fogja használni, és az ADF szerzői felhasználói felülete átváltott az új típusok létrehozásához.
 
 **Példa**
 
@@ -142,9 +136,10 @@ Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adat
 }
 ```
 
-### <a name="other-format-dataset"></a>Egyéb formátumú adatkészlet
+### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
 
-Az adatoknak az **ork formátumba**és a fájlrendszerbe való másolásához a következő tulajdonságok támogatottak:
+>[!NOTE]
+>A következő adatkészlet-modell továbbra is támogatott, ha visszafelé kompatibilis. Javasoljuk, hogy használja a fenti szakaszban említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -198,12 +193,9 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="file-system-as-source"></a>Fájlrendszer forrásként
 
-- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátum forrása
-
-Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú másolási tevékenység forrásáról beállítások. A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` beállításokban a Format-alapú másolási forrásban:
+A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` beállításokban a Format-alapú másolási forrásban:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -214,9 +206,6 @@ Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adat
 | modifiedDatetimeStart    | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a `modifiedDatetimeStart` és `modifiedDatetimeEnd`közötti időtartományon belül van. Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok értéke lehet NULL, ami azt jelenti, hogy nem lesz alkalmazva a file Attribute szűrő az adatkészletre.  Ha `modifiedDatetimeStart` dátum datetime értékkel rendelkezik, de a `modifiedDatetimeEnd` NULL értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik, de a `modifiedDatetimeStart` NULL értékű, akkor azokat a fájlokat jelenti, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték. | Nem                                            |
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | Nem                                            |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem                                            |
-
-> [!NOTE]
-> A Parquet/tagolt szöveg formátuma esetén a következő szakaszban említett, **FileSystemSource** típusú másolási tevékenység továbbra is támogatott a visszafelé kompatibilitás érdekében. Azt javasoljuk, hogy ezt az új modellt fogja használni, és az ADF szerzői felhasználói felülete átváltott az új típusok létrehozásához.
 
 **Példa**
 
@@ -259,9 +248,10 @@ Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adat
 ]
 ```
 
-#### <a name="other-format-source"></a>Egyéb formátum forrása
+#### <a name="legacy-source-model"></a>Örökölt forrás modell
 
-Ha az adatok a fájlrendszerből az **ork formátumban**másolhatók, a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+>[!NOTE]
+>A következő másolási forrás modell továbbra is támogatott, ha visszafelé kompatibilis. Azt javasoljuk, hogy használja a fentiekben említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -303,21 +293,15 @@ Ha az adatok a fájlrendszerből az **ork formátumban**másolhatók, a másolá
 
 ### <a name="file-system-as-sink"></a>Fájlrendszer fogadóként
 
-- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumú mosogató](#format-based-sink) szakaszt.
-- Más formátumokba, például az **ork formátumba**való másoláshoz tekintse meg a [más Format mosogató](#other-format-sink) szakaszt.
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú fogadó
-
-Az adatgyűjtés a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**között, a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység fogadóján és a támogatott beállítások. A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` beállításokban a Format-alapú másolási fogadóban:
+A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` beállításokban a Format-alapú másolási fogadóban:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | A `storeSettings` alatti Type tulajdonságot **FileServerWriteSetting**értékre kell beállítani. | Igen      |
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem       |
 | maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem       |
-
-> [!NOTE]
-> A Parquet/tagolt szöveges formátum esetében a következő szakaszban említett, **FileSystemSink** típusú másolási tevékenység fogadója továbbra is támogatott a visszamenőleges kompatibilitás érdekében. Azt javasoljuk, hogy ezt az új modellt fogja használni, és az ADF szerzői felhasználói felülete átváltott az új típusok létrehozásához.
 
 **Példa**
 
@@ -354,9 +338,10 @@ Az adatgyűjtés a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris f
 ]
 ```
 
-#### <a name="other-format-sink"></a>Egyéb formátumú fogadó
+#### <a name="legacy-sink-model"></a>Örökölt fogadó modell
 
-Az adatfájlnak az **ork formátumba**való másolásához a **fogadó szakaszban a** következő tulajdonságok támogatottak:
+>[!NOTE]
+>A következő másolási fogadó modell továbbra is támogatott a visszamenőleges kompatibilitás érdekében. Azt javasoljuk, hogy használja a fentiekben említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147075"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933545"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V – Azure vész-helyreállítási architektúra
 
@@ -39,6 +39,8 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 ![Architektúra](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
+> [!WARNING]
+> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architektúra-összetevők – Hyper-V és VMM
 
@@ -70,13 +72,13 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
 2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
 3. A feladat elindítja a kezdeti replikációt a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
-4. A feladatot a **Feladatok** lapon követheti nyomon.      ![Feladatok listája](media/hyper-v-azure-architecture/image1.png) ![Védelem engedélyezésének részletei](media/hyper-v-azure-architecture/image2.png)
+4. A feladatot a **feladatok** lapon követheti nyomon.      ![feladatok listája](media/hyper-v-azure-architecture/image1.png) ![a védelem lefúrásának engedélyezése](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Kezdeti adatreplikálás
 
 1. A kezdeti replikáció indításakor a rendszer a [Hyper-V virtuális gép pillanatképének](https://technet.microsoft.com/library/dd560637.aspx) pillanatképét is elvégzi.
-2. A virtuális GÉPEN lévő virtuális merevlemezeket egyenként replikálja a rendszer, amíg az összes Azure-ba át nem másolja őket. A virtuális gép méretétől és a hálózati sávszélességtől függően ez eltarthat egy ideig. Megtudhatja, [Hogyan](https://support.microsoft.com/kb/3056159) növelheti a hálózati sávszélességet.
+2. A virtuális GÉPEN lévő virtuális merevlemezeket egyenként replikálja a rendszer, amíg az összes Azure-ba át nem másolja őket. A virtuális gép méretétől és a hálózati sávszélességtől függően ez eltarthat egy ideig. [Megtudhatja, hogyan](https://support.microsoft.com/kb/3056159) növelheti a hálózati sávszélességet.
 3. Ha a lemez megváltozik, miközben a kezdeti replikálás folyamatban van, a Hyper-V replika replikációs nyomon követése a változásokat Hyper-V replikációs naplókként (. HRL) követi nyomon. Ezek a naplófájlok ugyanabban a mappában találhatók, mint a lemezek. Minden lemezhez tartozik egy. HRL fájl, amelyet a rendszer a másodlagos tárolóba továbbít. A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
 4. A kezdeti replikáció befejeztével a rendszer törli a virtuális gép pillanatképét.
 5. A rendszer a naplózott lemezmódosításokat szinkronizálja, és egyesíti a szülőlemezzel.
@@ -105,7 +107,7 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
     - Egy rögzített blokkos adatdarabolási algoritmust használ, amelyben a forrás-és a célfájl rögzített adattömbökre van osztva.
     - Az egyes adattömbökhöz tartozó ellenőrzőösszegek jönnek létre. Ezeket a rendszer összehasonlítja azzal, hogy meghatározza, hogy a forrás mely blokkokat kell alkalmazni a célra.
 2. Az újraszinkronizálás befejezését követően folytatódik a normál változásreplikálás.
-3. Ha nem szeretné megvárni az alapértelmezett újraszinkronizálást a munkaidőn kívül, manuálisan is szinkronizálhatja a virtuális gépet. Ha például áramkimaradás történik. Ehhez a Azure Portal válassza ki a virtuális gépet > Újraszinkronizálás lehetőséget.
+3. Ha nem szeretné megvárni az alapértelmezett újraszinkronizálást a munkaidőn kívül, manuálisan is szinkronizálhatja a virtuális gépet. Ha például áramkimaradás történik. Ehhez a Azure Portal válassza ki a virtuális gépet > **Újraszinkronizálás**lehetőséget.
 
     ![Manuális újraszinkronizálás](./media/hyper-v-azure-architecture/image4-site.png)
 
@@ -131,9 +133,9 @@ Ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálko
 Miután a helyszíni infrastruktúra újra működik, visszatérhet. A feladat-visszavétel három szakaszban fordul elő:
 
 1. Indítsa el a tervezett feladatátvételt az Azure-ból a helyszíni helyre:
-    - **Csökkentse**az állásidőt: Ha ezt a beállítást használja, Site Recovery a feladatátvétel előtt szinkronizálja az adatokat. Ellenőrzi a módosított adatblokkokat, és letölti azokat a helyszíni helyre, míg az Azure-beli virtuális gép folyamatosan fut, és minimalizálja az állásidőt. Ha manuálisan megadja, hogy a feladatátvétel befejeződik, az Azure-beli virtuális gép leáll, a rendszer minden végső változást átmásol, és elindul a feladatátvétel.
-    - **Teljes letöltés**: Ezzel a beállítással a feladatátvétel során a rendszer szinkronizálja az adatokat. Ez a lehetőség letölti a teljes lemezt. Gyorsabb, mert nincs ellenőrzőösszeg kiszámítva, de több állásidő is van. Akkor használja ezt a beállítást, ha a replika Azure-beli virtuális gépeket egy ideig, vagy ha a helyszíni virtuális gépet törölték.
-    - **Virtuális gép létrehozása**: Kiválaszthatja, hogy a feladat-visszavétel ugyanarra a virtuális gépre vagy egy másik virtuális gépre történjen. Azt is megadhatja, hogy Site Recovery hozza létre a virtuális gépet, ha még nem létezik.
+    - Az **állásidő csökkentése**: Ha ezt a beállítást használja, site Recovery a feladatátvétel előtt szinkronizálja az adatokat. Ellenőrzi a módosított adatblokkokat, és letölti azokat a helyszíni helyre, míg az Azure-beli virtuális gép folyamatosan fut, és minimalizálja az állásidőt. Ha manuálisan megadja, hogy a feladatátvétel befejeződik, az Azure-beli virtuális gép leáll, a rendszer minden végső változást átmásol, és elindul a feladatátvétel.
+    - **Teljes letöltés**: ezzel a beállítással az adatokat szinkronizálja a rendszer a feladatátvétel során. Ez a lehetőség letölti a teljes lemezt. Gyorsabb, mert nincs ellenőrzőösszeg kiszámítva, de több állásidő is van. Akkor használja ezt a beállítást, ha a replika Azure-beli virtuális gépeket egy ideig, vagy ha a helyszíni virtuális gépet törölték.
+    - **Virtuális gép létrehozása**: kiválaszthatja, hogy a feladat-visszavétel ugyanarra a virtuális gépre vagy egy másik virtuális gépre történjen. Azt is megadhatja, hogy Site Recovery hozza létre a virtuális gépet, ha még nem létezik.
 
 2. A kezdeti szinkronizálás befejeződése után kiválaszthatja a feladatátvétel befejezését. A befejezést követően bejelentkezhet a helyszíni virtuális gépre, és megvizsgálhatja, hogy minden a várt módon működik-e. A Azure Portalban láthatja, hogy az Azure-beli virtuális gépek le lettek állítva.
 3.  Ezután véglegesíti a feladatátvételt a befejezésig, és ismét megkezdi a munkaterhelések elérését a helyszíni virtuális gépről.
@@ -141,7 +143,7 @@ Miután a helyszíni infrastruktúra újra működik, visszatérhet. A feladat-v
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [Ez az oktatóanyag](tutorial-prepare-azure.md) ismerteti a Hyper-V és az Azure közötti replikáció megkezdését.

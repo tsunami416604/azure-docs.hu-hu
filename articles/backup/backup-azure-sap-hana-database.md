@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273948"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931801"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA-adatbázis biztonsági mentése az Azure-ba
 
@@ -53,6 +53,9 @@ A biztonsági mentések konfigurálása előtt győződjön meg arról, hogy a k
     sudo zypper update
     sudo zypper install unixODBC
     ```
+
+    > [!NOTE]
+    > Ha nem frissíti a adattárakat, győződjön meg arról, hogy a unixODBC verziója min 2.3.4. A uniXODBC verziójának megismeréséhez futtassa a ```odbcinst -j``` root-ként
 
 2. Az [alábbi](#set-up-network-connectivity)eljárásban leírtak alapján engedélyezze a kapcsolatot a virtuális gépről az internetre, hogy az elérhető legyen az Azure-ban.
 
@@ -101,7 +104,7 @@ Most engedélyezze a biztonsági mentést.
 
 1. A 2. lépésben kattintson a **biztonsági mentés konfigurálása**elemre.
 2. Az **elemek kijelölése biztonsági mentéshez**területen jelölje ki az összes védelemmel ellátni kívánt adatbázist > **az OK gombra**.
-3. A **biztonsági mentési házirendben**@no__t – 1**válassza a biztonsági mentési szabályzat lehetőséget**, hozzon létre egy új biztonsági mentési szabályzatot az adatbázisokhoz az alábbi utasítások szerint.
+3. A **biztonsági mentési szabályzat** > **válassza a biztonsági mentési szabályzat lehetőséget**, hozzon létre egy új biztonsági mentési szabályzatot az adatbázisokhoz az alábbi utasítások szerint.
 4. A szabályzat létrehozása után a **biztonsági mentés** menüben kattintson a **biztonsági mentés engedélyezése**elemre.
 5. A biztonsági mentési konfiguráció előrehaladásának nyomon követése a portál **értesítések** területén.
 

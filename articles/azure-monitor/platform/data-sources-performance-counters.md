@@ -1,73 +1,67 @@
 ---
-title: Összegyűjtheti és elemezheti az Azure monitorban teljesítményszámlálók |} A Microsoft Docs
-description: Az Azure Monitor, elemezheti a teljesítményt, a Windows és Linux-ügynökök által gyűjtött teljesítményszámlálók.  Ez a cikk ismerteti mind a Windows teljesítményszámláló-gyűjtemény konfigurálása és a Linux-ügynökök, azok részleteit a munkaterületet, és hogyan elemezheti őket az Azure Portalon lesznek tárolva.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+title: Teljesítményszámlálók összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
+description: A teljesítményszámlálókat a Azure Monitor gyűjti a Windows-és Linux-ügynökök teljesítményének elemzéséhez.  Ez a cikk bemutatja, hogyan konfigurálhatja a teljesítményszámlálók gyűjteményét Windows-és Linux-ügynökökhöz, a munkaterületen tárolt adatokat, valamint azt, hogyan elemezheti őket a Azure Portalban.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205757"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932444"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások
-Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  Az Azure Monitor teljesítményszámlálók gyűjthet a teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzéshez gyakori időközönként.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
+A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
 
 ![Teljesítményszámlálók](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
-Teljesítményszámlálók konfigurálása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources).
+Teljesítményszámlálók konfigurálása a [Speciális beállítások adatok menüjében](agent-data-sources.md#configuring-data-sources).
 
-Amikor először konfigurálja egy új munkaterületet Windows vagy Linux-teljesítménye számlálói, akkor gyorsan létrehozhat több gyakran használt számlálót kapják meg.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy a rendszer ellenőrzi a kezdetben a létrehozni kívánt számlálókat, és kattintson a **a kijelölt teljesítményszámlálók felvétele**.
+Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat egy új munkaterülethez, lehetősége van számos gyakori számláló gyors létrehozására.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy a kezdetben létrehozni kívánt számlálók be vannak jelölve, majd kattintson **a kijelölt teljesítményszámlálók hozzáadása**lehetőségre.
 
-Windows-teljesítményszámlálókkal választhat egy adott példányt minden teljesítményszámláló esetében. Linuxos teljesítményszámlálókkal az Ön által választott átlagait példányát az összes gyermek-számlálók a szülő számláló vonatkozik. Az alábbi táblázat a Linux és a Windows-teljesítményszámlálók közös példányig.
+A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesítményszámlálók egy adott példányát. A Linux-teljesítményszámlálók esetében az egyes kiválasztott számlálók a szülő számláló összes alárendelt számlálóján érvényesek. A következő táblázat a Linux és a Windows teljesítményszámlálói számára elérhető általános példányokat mutatja be.
 
 | Példány neve | Leírás |
 | --- | --- |
-| \_Összesen |Összes példány összesen |
+| \_összesen |Összes példány összesen |
 | \* |Minden példány |
-| (/&#124;/var) |Megegyezik a tagok elnevezése printer0: / vagy /var |
+| (/&#124;/var) |A (z):/vagy a/var nevű példányokra illeszkedik |
 
 ### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
 
 ![Windows-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-windows.png)
 
-Az alábbi eljárás segítségével adjon hozzá egy új Windows teljesítményszámláló gyűjtése.
+Kövesse ezt az eljárást egy új Windows-teljesítményszámláló hozzáadásához a gyűjtéshez.
 
-1. Írja be a számláló nevét a szövegmezőbe, a következő formátumban *objektum (példányok) \counter*.  Amikor elkezdi beírni, gyakran használt számlálót egyező listája jelenik meg.  Egy számláló kiválaszthatja a listából, vagy írjon be egy saját.  Elemkészlet is visszaadható valamennyi példánya egy adott számlálóra megadásával *object\counter*.  
+1. Írja be a számláló nevét a Format *objektum (példány) \ számláló*szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  A *object\counter*megadásával egy adott számlálóhoz tartozó összes példányt is visszaadhat.  
 
-    Nevesített példány az SQL Server teljesítményszámlálói összegyűjtésekor összes nevű példány számlálók kezdés *MSSQL$* és a példány neve követ.  A napló gyorsítótár találati aránya teljesítményszámláló gyűjtése, minden adatbázis névvel ellátott SQL Database teljesítményét objektumból INST2 példányra vonatkozó, például adja meg a `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    SQL Server teljesítményszámlálók elnevezett példányokból való gyűjtésekor az összes elnevezett példány számlálója az *MSSQL $* értékkel kezdődik, amelyet a példány neve követ.  Ha például a log cache találati arány számlálóját szeretné összegyűjteni az SQL-példány INST2 tartozó adatbázis-teljesítmény objektumban található összes adatbázishoz, akkor a `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`t kell megadnia.
 
-2. Kattintson a **+** vagy nyomja le az **Enter** a Számláló hozzáadása a listához.
-3. Amikor hozzáad egy számlálót, használja az alapértelmezett 10 másodperces annak **mintavételi időköze**.  Módosíthatja ezt értéke legfeljebb 1800 másodperc (30 perc), ha azt szeretné, az összegyűjtött teljesítményadatok tárolási követelmények csökkentése érdekében.
-4. Számlálók hozzáadása elkészült, kattintson a **mentése** gombra a konfiguráció mentéséhez, a képernyő tetején.
+2. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló a listához való hozzáadásához.
+3. Számláló hozzáadásakor a rendszer az alapértelmezett 10 másodpercet használja a **mintavételi intervallumhoz**.  Ez a érték legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
+4. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
 
 ### <a name="linux-performance-counters"></a>Linux-teljesítményszámlálók
 
 ![Linux-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-linux.png)
 
-Az alábbi eljárás segítségével adjon hozzá egy új Linux teljesítményszámláló gyűjtése.
+Kövesse ezt az eljárást egy új Linux-teljesítményszámláló hozzáadásához a gyűjtéshez.
 
-1. Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt.  Linux-ügynökök a Fluentd adatgyűjtő küld egy konfigurációs fájl.  Ha szeretné módosítani ezt a fájlt minden egyes Linux-ügynök manuálisan, törölje a jelet *alkalmaz az alábbi konfiguráció Linuxos gépeimre* , és kövesse az alábbi útmutatást.
-2. Írja be a számláló nevét a szövegmezőbe, a következő formátumban *objektum (példányok) \counter*.  Amikor elkezdi beírni, gyakran használt számlálót egyező listája jelenik meg.  Egy számláló kiválaszthatja a listából, vagy írjon be egy saját.  
-3. Kattintson a **+** vagy nyomja le az **Enter** a Számláló hozzáadása a többi számlálók objektum listáját.
-4. Az adott objektumhoz tartozó összes számlálók használata azonos **mintavételi időköze**.  Az alapértelmezett érték 10 másodperc.  Módosítsa, értéke legfeljebb 1800 másodperc (30 perc), ha az összegyűjtött teljesítményadatok tárolási követelmények csökkentése érdekében.
-5. Számlálók hozzáadása elkészült, kattintson a **mentése** gombra a konfiguráció mentéséhez, a képernyő tetején.
+1. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek.  Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.  Ha ezt a fájlt manuálisan kívánja módosítani minden Linux-ügynökön, törölje a jelet az *alábbi konfiguráció alkalmazása a Linux rendszerű gépekre* lehetőségre, és kövesse az alábbi útmutatást.
+2. Írja be a számláló nevét a Format *objektum (példány) \ számláló*szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  
+3. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló az objektumhoz tartozó egyéb számlálók listájához való hozzáadásához.
+4. Egy objektum összes számlálója ugyanazt a **mintavételi időközt**használja.  Az alapértelmezett érték 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
+5. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
 
-#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linuxos teljesítményszámlálókkal konfigurálása a konfigurációs fájlban
-Így nem kell beállítani az Azure portal használatával Linux-teljesítményszámlálók, lehetősége van a Linux-ügynök a konfigurációs fájlok szerkesztésével.  Teljesítmény-mérőszámokat gyűjthet konfiguráció által vezérelt **/etc/opt/microsoft/omsagent/\<munkaterület-azonosítót\>/conf/omsagent.conf**.
+#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-teljesítményszámlálók konfigurálása a konfigurációs fájlban
+A Linux-teljesítményszámlálók a Azure Portal használatával történő konfigurálása helyett lehetősége van a konfigurációs fájlok szerkesztésére a Linux-ügynökön.  A gyűjteni kívánt teljesítmény-mérőszámokat a **/etc/opt/microsoft/omsagent/\<munkaterület-azonosító\>/conf/omsagent.conf**konfigurációja vezérli.
 
-Minden egyes objektumot, vagy a teljesítmény-mérőszámokat gyűjthet kategóriáját egy konfigurációs fájlban kell definiálni `<source>` elemet. A szintaxist az alábbi mintát követi.
+A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kategóriáját egyetlen `<source>` elemként kell definiálni a konfigurációs fájlban. A szintaxis az alábbi mintát követi.
 
     <source>
       type oms_omi  
@@ -78,76 +72,76 @@ Minden egyes objektumot, vagy a teljesítmény-mérőszámokat gyűjthet kategó
     </source>
 
 
-Ez az elem a paramétereket az alábbi táblázatban ismertetett.
+Az ebben az elemben található paramétereket a következő táblázat ismerteti.
 
 | Paraméterek | Leírás |
 |:--|:--|
-| objektum\_neve | A gyűjtemény objektum neve. |
-| példány\_reguláris kifejezés |  A *reguláris kifejezés* gyűjtéséhez előfordulások meghatározása. Az érték: `.*` adja meg az összes példányt. Processzor metrikáinak összegyűjtése csak a \_teljes példány megadhatja `_Total`. Csak a crond segédprogrammal együtt vagy sshd-példányok folyamat metrikák gyűjthetők, megadhatja: `(crond\|sshd)`. |
-| a számláló\_neve\_reguláris kifejezés | A *reguláris kifejezés* meghatározása, amely számlálóit (az objektum) gyűjtéséhez. Az objektum számlálói az összes gyűjteni, adja meg: `.*`. Csak lapozófájl-kapacitás terület számlálókat a memória objektumhoz tartozó gyűjthet, például megadhatja: `.+Swap.+` |
-| interval | A gyakoriság, amellyel a rendszer az objektum számlálókat gyűjti. |
+| objektum\_neve | A gyűjtemény objektumának neve. |
+| példány\_regex |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: `.*` az összes példányt megadja. Ha csak a \_összes példányához szeretné összegyűjteni a processzor metrikáit, megadhatja `_Total`. Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)`. |
+| számláló\_neve\_regexben | Egy *reguláris kifejezés* , amely meghatározza, hogy mely számlálókat (az objektumhoz) kell összegyűjteni. Az objektum összes számlálójának összegyűjtéséhez a következőt kell megadnia: `.*`. Ha csak a memória-objektum lapozófájl-számlálóit szeretné összegyűjteni, például megadhatja a következőket: `.+Swap.+` |
+| interval | Az objektum számlálóinak gyűjtésének gyakorisága. |
 
 
-A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése](data-sources-linux-applications.md).
+A következő táblázat felsorolja a konfigurációs fájlban megadható objektumokat és számlálókat.  Bizonyos alkalmazásokhoz további számlálók érhetők el, amelyek a következő témakörben olvashatók: a [teljesítményszámlálók összegyűjtése Linux-alkalmazásokhoz a Azure monitorban](data-sources-linux-applications.md).
 
 | Objektum neve | Számláló neve |
 |:--|:--|
-| Logikai lemez | Szabad Inode-OK |
-| Logikai lemez | % Szabad terület |
-| Logikai lemez | Foglalt Inode-OK % |
-| Logikai lemez | Foglalt hely % |
-| Logikai lemez | Lemezolvasási sebesség (bájt/s) |
-| Logikai lemez | Lemezolvasások/mp |
-| Logikai lemez | Átvitel/mp |
-| Logikai lemez | Lemezírási sebesség (bájt/s) |
-| Logikai lemez | Lemezírások/mp |
-| Logikai lemez | Szabad hely MB-ban |
-| Logikai lemez | Logikai lemez bájt/mp |
-| Memory (Memória) | Rendelkezésre álló memória % |
-| Memory (Memória) | Rendelkezésre álló Lapozóterület % |
-| Memory (Memória) | Foglalt memória % |
-| Memory (Memória) | Foglalt Lapozóterület % |
-| Memory (Memória) | Rendelkezésre álló memória |
-| Memory (Memória) | Rendelkezésre álló Lapozóterület |
-| Memory (Memória) | Olvasott lap/mp |
-| Memory (Memória) | Írt lap/mp |
-| Memory (Memória) | Lap/mp |
-| Memory (Memória) | Használt lapozási memória terület |
-| Memory (Memória) | Használt memória (MB) |
-| Network (Hálózat) | Küldött bájtok száma összesen |
-| Network (Hálózat) | Fogadott bájtok teljes száma |
-| Network (Hálózat) | Összes bájt |
-| Network (Hálózat) | Az összes csomag továbbított adatok köre |
-| Network (Hálózat) | Összes fogadott csomag |
-| Network (Hálózat) | Teljes Rx-hibák |
-| Network (Hálózat) | Teljes Tx-hibák |
-| Network (Hálózat) | Teljes ütközések |
-| Fizikai lemez | Átl. Lemez mp/Olvasás |
-| Fizikai lemez | Átl. Lemez mp/átvitel |
-| Fizikai lemez | Átl. Lemez mp/írás |
-| Fizikai lemez | Fizikai lemez bájt/mp |
-| Process | A PCT kiemelt idő |
-| Process | A PCT felhasználói idő |
-| Process | Használt memória mérete kilobájtban |
-| Process | A megosztott virtuális memória |
-| Processzor | DPC idő % |
-| Processzor | Inaktivitási idő % |
-| Processzor | Megszakítási idő % |
-| Processzor | A(z) % IO várakozási idő |
-| Processzor | Idő %-ban a processzoron |
-| Processzor | Védett módú használat % idő |
-| Processzor | Processzoridő |
-| Processzor | Felhasználói idő % |
+| Logikai lemez | Szabad inode%-ban |
+| Logikai lemez | Szabad terület (%) |
+| Logikai lemez | Felhasznált inode%-ban |
+| Logikai lemez | Felhasznált terület (%) |
+| Logikai lemez | Lemez olvasási sebessége (bájt/s) |
+| Logikai lemez | Olvasási sebesség (lemez/mp) |
+| Logikai lemez | Lemez átvitele másodpercenként |
+| Logikai lemez | Lemez írási sebessége (bájt/s) |
+| Logikai lemez | Írási sebesség (írás/mp) |
+| Logikai lemez | Szabad terület (MB) |
+| Logikai lemez | Logikai lemez sebessége (bájt/s) |
+| Memória | Rendelkezésre álló memória%-ban |
+| Memória | Rendelkezésre álló swap-terület (%) |
+| Memória | Felhasznált memória (%) |
+| Memória | Felhasznált swap-terület%-ban |
+| Memória | Rendelkezésre álló memória (MB) |
+| Memória | Rendelkezésre álló memória (MB) |
+| Memória | Olvasott lap/mp |
+| Memória | Írási idő/mp |
+| Memória | Lap/mp |
+| Memória | Felhasznált memória (MB) – lapozófájl |
+| Memória | Felhasznált memória (MB) |
+| Network (Hálózat) | Továbbított bájtok összesen |
+| Network (Hálózat) | Fogadott bájtok összesen |
+| Network (Hálózat) | Bájtok összesen |
+| Network (Hálózat) | Továbbított csomagok összesen |
+| Network (Hálózat) | Fogadott csomagok összesen |
+| Network (Hálózat) | Rx-hibák összesen |
+| Network (Hálózat) | TX-hibák összesen |
+| Network (Hálózat) | Ütközések összesen |
+| Fizikai lemez | Átlagos írási idő (mp/olvasás) |
+| Fizikai lemez | Átlagos műveleti idő (mp/átvitel) |
+| Fizikai lemez | Átlagos írási idő (mp/írás) |
+| Fizikai lemez | Fizikai lemez sebessége (bájt/s) |
+| Folyamat | PCT rendszerjogosultságú idő |
+| Folyamat | PCT felhasználói idő |
+| Folyamat | Felhasznált memória (kilobájt) |
+| Folyamat | Virtuális megosztott memória |
+| Processzor | % DPC idő |
+| Processzor | Üresjárati idő%-ban |
+| Processzor | Megszakítási idő%-ban |
+| Processzor | I/o várakozási idő%-ban |
+| Processzor | % Nice idő |
+| Processzor | %-Os privilegizált idő |
+| Processzor | Processzoridő (%) |
+| Processzor | Felhasználói idő%-ban |
 | Rendszer | Szabad fizikai memória |
-| Rendszer | Szabad hely a Lapozófájlokban |
+| Rendszer | Szabad terület a Lapozófájlokban |
 | Rendszer | Szabad virtuális memória |
 | Rendszer | Folyamatok |
-| Rendszer | A Lapozófájlokban tárolt méret |
-| Rendszer | Hasznos üzemidő |
+| Rendszer | Lapozófájlokban tárolt méret |
+| Rendszer | Üzemidő |
 | Rendszer | Felhasználók |
 
 
-Következő teljesítmény-mérőszámok az alapértelmezett konfigurációjának.
+A teljesítmény-metrikák alapértelmezett konfigurációja a következő:
 
     <source>
       type oms_omi
@@ -182,48 +176,48 @@ Következő teljesítmény-mérőszámok az alapértelmezett konfigurációjána
     </source>
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Az Azure Monitor adatokat gyűjt az összes megadott teljesítményszámlálók a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesítve, és a nyers adatok érhető el az összes napló lekérdezési nézeteket az előfizetés által megadott időtartama alatt.
+Azure Monitor a megadott mintavételi intervallumban gyűjti az összes megadott teljesítményszámlálókat az összes olyan ügynökön, amelyen telepítve van a számláló.  Az adatokat a rendszer nem összesíti, és a nyers adatokat az előfizetés által megadott időtartamra vonatkozóan az összes naplózási lekérdezési nézetben elérhetővé válik.
 
 ## <a name="performance-record-properties"></a>Teljesítmény rekord tulajdonságai
-Teljesítményrekordot rendelkezik olyan típusú **Teljesítményoptimalizált** , és a tulajdonságait az alábbi táblázatban.
+A teljesítményadatokat a teljesítmény **típusa és a** következő táblázatban szereplő tulajdonságok szerepelnek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény gyűjtötte a program a számítógép. |
+| Computer |Az a számítógép, amelyre az eseményt gyűjtötték. |
 | CounterName |A teljesítményszámláló neve |
-| Számláló_elérési_útja |Az űrlap a számláló a teljes elérési útja \\ \\ \<számítógép >\\objektum(példány)\\számlálót. |
-| CounterValue |A számláló számérték. |
-| Példánynév |Az esemény-példány nevét.  Üres, ha nincsenek példányok. |
-| Objektumnév |Teljesítményobjektum neve |
-| SourceSystem |Az adatgyűjtés ügynök típusa. <br><br>Csatlakozás OpsManager – Windows-ügynök, közvetlenül vagy SCOM <br> Linux – az összes Linux-ügynökök  <br> AzureStorage – az Azure Diagnostics |
-| TimeGenerated |Dátum és idő, az adatok mintavételezése volt. |
+| CounterPath |A számláló teljes elérési útja az űrlapon \\\\\<számítógép >\\objektum (példány)\\számláló. |
+| Kártyabirtokos számlájának megterhelését |A számláló numerikus értéke. |
+| InstanceName |Az esemény példányának neve.  Üres, ha nincs példány. |
+| ObjectName |A teljesítményobjektum neve |
+| SourceSystem |Az ügynök típusa, amelyből az adatokat gyűjtötték. <br><br>OpsManager – Windows-ügynök, közvetlen kapcsolat vagy SCOM <br> Linux – minden Linux-ügynök  <br> AzureStorage – Azure Diagnostics |
+| TimeGenerated |Az adatok mintavételezésének dátuma és időpontja. |
 
-## <a name="sizing-estimates"></a>Méretezési becslései
- Egy adott teljesítményszámláló-gyűjtemény 10 másodperces intervallumon durva becslést körülbelül 1 MB / nap példányonként.  Megbecsülheti egy adott számlálóra a következő képlettel tárolási követelményeit.
+## <a name="sizing-estimates"></a>Méretezési becslések
+ Egy adott számláló 10 másodperces időközönként történő gyűjtésének durva becslése napi 1 MB-onként történik.  Megbecsülheti egy adott számláló tárolási követelményeit a következő képlettel.
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-queries-with-performance-records"></a>Teljesítményrekordot log lekérdezéseket.
-Az alábbi táblázat példákat különböző teljesítményrekordot lekérő log lekérdezéseket.
+## <a name="log-queries-with-performance-records"></a>Lekérdezések naplózása a teljesítménnyel kapcsolatos rekordokkal
+Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatokat lekérő lekérdezések naplózására.
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| Perf |Minden teljesítményadat |
-| Teljesítményoptimalizált &#124; ahol számítógép == "Sajátgép" |Egy adott számítógép minden teljesítményadat |
-| Teljesítményoptimalizált &#124; ahol CounterName == "Lemezvárólista jelenlegi hossza" |Az egy adott számlálóra minden teljesítményadat |
-| Teljesítményoptimalizált &#124; ahol ObjectName == "Processzor" és a CounterName == "%-ban a processzoron" és a példánynév == "_Total" &#124; AVGCPU összefoglalója = avg(CounterValue) számítógépenként |Átlagos processzorhasználat az összes számítógép |
-| Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" &#124; summarize AggregatedValue = max(CounterValue) számítógépenként |Maximális processzorhasználat az összes számítógép |
-| Teljesítményoptimalizált &#124; ahol ObjectName == "Logikai lemez" és a CounterName == "Lemezvárólista jelenlegi hossza" és a számítógép == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) InstanceName szerint |Aktuální délka Fronty lemez átlagos egy adott számítógép összes példányra vetítve |
-| Teljesítményoptimalizált &#124; ahol CounterName == "Átvitel/mp" &#124; summarize AggregatedValue = PERCENTILIS (Avg, 95) számítógép szerint |95\. percentilis az átvitel/mp minden számítógépnél |
-| Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" és a InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), a számítógép által |CPU-használat minden óránkénti átlag |
-| Teljesítményoptimalizált &#124; ahol számítógép == "Sajátgép" és a CounterName startswith_cs "%" és a példánynév == "_Total" &#124; summarize AggregatedValue = (Avg, 70) PERCENTILIS szerint bin (TimeGenerated, 1 óra), CounterName | Egy adott számítógép minden % százalékos számláló óránkénti 70 PERCENTILIS |
-| Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" és a példánynév == "_Total" és a számítógép == "Sajátgép" &#124; összefoglalója ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] PERCENTILIS (Avg, 75) = ["max(CounterValue)"] = max(CounterValue) bin (TimeGenerated, 1 óra), a számítógép szerint |Óránkénti átlagos, minimális, maximális és 75 – PERCENTILIS CPU-használat egy adott számítógép |
-| Teljesítményoptimalizált &#124; ahol ObjectName == "MSSQL$ INST2: adatbázisok" és a InstanceName == "master" | Minden teljesítményadat a master adatbázisban az elnevezett SQL Server-példányban INST2 adatbázis-teljesítmény objektumból.  
+| Perf |Minden teljesítményadatok |
+| A &#124; Perf, ahol a Computer = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |
+| A &#124; Perf, ahol a CounterName = = "a lemez aktuális várólistájának hossza" |Egy adott számláló összes teljesítményadatokat |
+| A &#124; Perf, ahol a ObjectName = = "Processor" és a CounterName = = "% Processor Time" és a példánynév &#124; = = "összesen" összefoglalja a AVGCPU = AVG (kártyabirtokos számlájának megterhelését) számítógép szerint |A CPU átlagos kihasználtsága az összes számítógépen |
+| A &#124; Perf, ahol a CounterName = = "% &#124; Processor Time" összefoglalja a AggregatedValue = Max (kártyabirtokos számlájának megterhelését) t a számítógépen |Maximális CPU-kihasználtság az összes számítógépen |
+| Perf &#124; , ahol a ObjectName = = "LogicalDisk" és a CounterName = = "aktuális lemez várólistájának hossza" és a Computer &#124; = = "MyComputerName" összefoglaló AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by példánynév |Az aktuális Lemezvezérlő-várólista átlagos hossza egy adott számítógép összes példánya között |
+| A &#124; Perf, ahol a CounterName = = "Disk Transfers/mp" &#124; összefoglalja a AggregatedValue = percentilis (kártyabirtokos számlájának megterhelését, 95) a számítógépen |a 95. százalékos aránya/mp az összes számítógép között |
+| A &#124; Perf, ahol a CounterName = = "% Processor Time" és a példánynév = &#124; = "összesen" összefoglalja a AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), számítógép |A CPU-használat óránkénti átlaga az összes számítógépen |
+| A &#124; Perf, ahol a Computer = = "Sajátgép" és a CounterName startswith_cs "%" és példánynév = &#124; = "összesen" összefoglalása AggregatedValue = percentilis (kártyabirtokos számlájának megterhelését, 70) a bin (TimeGenerated, 1h), CounterName | Egy adott számítógép% százalékos számlálójának óránként 70 százalékos aránya |
+| A &#124; Perf, ahol a CounterName = = "% Processor Time" és a példánynév = = "összesen" és a Computer &#124; = = "Sajátgép" összegzése ["min (kártyabirtokos számlájának megterhelését)"] = min (kártyabirtokos számlájának megterhelését), ["AVG (kártyabirtokos számlájának megterhelését)"] = AVG (kártyabirtokos számlájának megterhelését), ["percentile75 (kártyabirtokos számlájának megterhelését)"] = percentilis (kártyabirtokos számlájának megterhelését, 75), ["Max (kártyabirtokos számlájának megterhelését)"] = Max (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), számítógép |Egy adott számítógép óránkénti átlaga, minimális, maximális és 75 – percentilis CPU-használata |
+| Perf &#124; , ahol ObjectName = = "MSSQL $ INST2: adatbázisok" és példánynév = = "Master" | Az adatbázis teljesítményobjektum a Master adatbázishoz tartozó összes teljesítményadatokat a megnevezett SQL Server példány INST2.  
 
 
 
 
-## <a name="next-steps"></a>További lépések
-* [Teljesítményszámlálók gyűjtése Linuxos alkalmazások](data-sources-linux-applications.md) többek között a MySQL és az Apache HTTP Server.
-* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
-* Az összegyűjtött adatok exportálása [Power BI](powerbi.md) további Vizualizációk és elemző.
+## <a name="next-steps"></a>Következő lépések
+* [Teljesítményszámlálók gyűjtése Linux-alkalmazásokból](data-sources-linux-applications.md) , beleértve a MySQL-t és az Apache HTTP-kiszolgálót.
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
+* Az összegyűjtött adatok [Power BIba](powerbi.md) való exportálása további vizualizációk és elemzések céljából.

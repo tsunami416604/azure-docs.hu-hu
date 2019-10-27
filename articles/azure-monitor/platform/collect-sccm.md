@@ -1,24 +1,18 @@
 ---
 title: Configuration Manager összekötése Azure Monitorhoz | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan csatlakozhat Configuration Manager a munkaterülethez Azure Monitor és megkezdheti az adatok elemzését.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/28/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: b4e6cc32b1d4392c63b7b236ab0df297849224c8
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/28/2019
+ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141111"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932637"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
 A System Center Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtemény adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
@@ -34,7 +28,7 @@ Azure Monitor támogatja System Center Configuration Manager aktuális ág, 1606
 
 A következő lépések összefoglalják a Configuration Manager integráció konfigurálásának lépéseit Azure Monitorokkal.  
 
-1. A Azure Active Directoryban regisztráljon Configuration Manager webalkalmazásként és/vagy webes API-alkalmazásként, és győződjön meg arról, hogy az ügyfél-azonosító és az ügyfél titkos kulcsa a regisztrációból a Azure Active Directory. Lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../../active-directory/develop/howto-create-service-principal-portal.md) ehhez a lépéshez részletes tájékoztatást.
+1. A Azure Active Directoryban regisztráljon Configuration Manager webalkalmazásként és/vagy webes API-alkalmazásként, és győződjön meg arról, hogy az ügyfél-azonosító és az ügyfél titkos kulcsa a regisztrációból a Azure Active Directory. A lépés végrehajtásával kapcsolatos részletes információkért tekintse meg a [portál használata Active Directory alkalmazás és egyszerű szolgáltatás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md) című témakört.
 
 2. A Azure Active Directoryban [adja meg a Configuration Manager (a regisztrált webalkalmazás) engedélyt a Azure monitor eléréséhez](#grant-configuration-manager-with-permissions-to-log-analytics).
 
@@ -44,27 +38,27 @@ A következő lépések összefoglalják a Configuration Manager integráció ko
 
 5. Azure Monitor a [gyűjtemények importálása Configuration Manager](#import-collections) számítógép-csoportokként.
 
-6. A Azure Monitorban az adatok megtekinthetők a Configuration Manager [számítógép](computer-groups.md)-csoportokként.
+6. A Azure Monitorban az adatok megtekinthetők a Configuration Manager [számítógép-csoportokként](computer-groups.md).
 
-## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Támogatás a Configuration Manager a Log Analyticshez való engedélyekkel
+## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Engedélyezési Configuration Manager engedélyezése Log Analytics
 
-A következő eljárásban biztosítson a *közreműködői* szerepkör a Log Analytics-munkaterület az AD-alkalmazás és egyszerű szolgáltatás korábban létrehozott a Configuration Manager. Ha még nem rendelkezik munkaterülettel, a folytatás előtt tekintse [meg a Munkaterületek létrehozása a Azure monitorban](../../azure-monitor/learn/quick-create-workspace.md) című témakört. Ez lehetővé teszi a Configuration Manager hitelesítéséhez és a Log Analytics-munkaterülethez csatlakozik.  
+A következő eljárásban a *közreműködő* szerepkört a log Analytics munkaterületen a Configuration Manager korábban létrehozott ad-alkalmazáshoz és egyszerű szolgáltatáshoz adja meg. Ha még nem rendelkezik munkaterülettel, a folytatás előtt tekintse [meg a Munkaterületek létrehozása a Azure monitorban](../../azure-monitor/learn/quick-create-workspace.md) című témakört. Ez lehetővé teszi, hogy a Configuration Manager hitelesítse és kapcsolódjon a Log Analytics-munkaterülethez.  
 
 > [!NOTE]
-> Configuration Manager esetében meg kell adnia az engedélyeket a Log Analytics munkaterületen. Ellenkező esetben hibaüzenet kap, a konfigurációs varázsló a Configuration Manager használata esetén.
+> Configuration Manager esetében meg kell adnia az engedélyeket a Log Analytics munkaterületen. Ellenkező esetben hibaüzenet jelenik meg, amikor a Configuration Manager konfigurációs varázslóját használja.
 >
 
 1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 
-2. A Log Analytics-munkaterületek listájában válassza ki a munkaterület módosításához.
+2. Log Analytics munkaterületek listájában válassza ki a módosítandó munkaterületet.
 
-3. A bal oldali panelen válassza ki a **hozzáférés-vezérlés (IAM)** .
+3. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 
-4. A hozzáférés-vezérlés (IAM) oldalon kattintson **szerepkör-hozzárendelés hozzáadása** és a **szerepkör-hozzárendelés hozzáadása** ablaktáblán jelenik meg.
+4. A hozzáférés-vezérlés (IAM) lapon kattintson a **szerepkör-hozzárendelés hozzáadása** elemre, és megjelenik a **szerepkör-hozzárendelés hozzáadása** panel.
 
-5. Az a **szerepkör-hozzárendelés hozzáadása** panel alatt a **szerepkör** legördülő listában válassza ki a **közreműködői** szerepkör.  
+5. A **szerepkör-hozzárendelés hozzáadása** ablaktáblán a **szerepkör** legördülő listában válassza ki a **közreműködő** szerepkört.  
 
-6. Alatt a **rendelhet hozzáféréseket** legördülő listában válassza ki a korábban létrehozott AD a Configuration Manager alkalmazást, és kattintson **OK**.  
+6. A **hozzáférés kiosztása** legördülő listáról válassza ki a korábban az ad-ben létrehozott Configuration Manager alkalmazást, majd kattintson **az OK**gombra.  
 
 ## <a name="download-and-install-the-agent"></a>Az ügynök letöltése és telepítése
 
@@ -82,13 +76,13 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 
 2. Kattintson a jobb gombbal az **Azure-szolgáltatások** elemre, majd válassza az **Azure-szolgáltatások konfigurálása**lehetőséget. Megjelenik az **Azure-szolgáltatások konfigurálása** oldal. 
    
-3. Az a **általános** képernyőjén ellenőrizze, hogy elvégezte-e az alábbi műveleteket, és, hogy rendelkezik az egyes elemek részleteit, majd válassza ki, **tovább**.
+3. Az **általános** képernyőn győződjön meg arról, hogy végrehajtotta a következő műveleteket, és hogy az egyes elemek részletei megtalálhatók, majd válassza a **tovább**lehetőséget.
 
 4. Az Azure-szolgáltatások varázsló Azure-szolgáltatások lapján:
 
     1. Adja meg az objektum **nevét** Configuration Managerban.
     2. A szolgáltatás azonosításának megkönnyítéséhez adja meg a nem kötelező **leírást** .
-    3. Válassza ki az Azure Service **OMS**-összekötőt.
+    3. Válassza ki az Azure Service **OMS-összekötőt**.
 
     >[!NOTE]
     >A OMS mostantól olyan Log Analytics néven is ismert, amely Azure Monitor egyik funkciója.
@@ -109,13 +103,13 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 
     5. A **titkos kulcs**megadásához a létrehozott Azure ad-alkalmazás ügyfél titkos kulcsa.
 
-    6. Adja meg a **titkos kulcs**lejárati idejét, a kulcs lejárati dátumát.
+    6. Adja meg a **titkos kulcs lejárati**idejét, a kulcs lejárati dátumát.
 
     7. Az **alkalmazás-azonosító URI**azonosítójának megadása a korábban létrehozott létrehozott Azure ad-alkalmazáshoz tartozó alkalmazás-azonosító URI-ja.
 
     8. Válassza az **ellenőrzés** lehetőséget, és a jobb oldalon a **sikeres ellenőrzésnek**megfelelő eredményeket kell megjeleníteni!.
 
-8. A **konfiguráció** lapon tekintse át az **Azure**-előfizetések, az **Azure-erőforráscsoport**és az **Operations Management Suite-munkaterület** mezőinek ellenőrzéséhez szükséges információkat, amelyek jelzik, hogy az Azure ad-alkalmazás megfelelő engedélyek az erőforráscsoporthoz. Ha a mezők üresek, azt jelzi, hogy az alkalmazás nem rendelkezik a szükséges jogosultságokkal. Válassza ki a gyűjteni kívánt és a munkaterületre továbbítandó eszközöket, majd válassza a **Hozzáadás**lehetőséget.
+8. A **konfiguráció** lapon tekintse át az **Azure-előfizetések**, az **Azure-erőforráscsoport**és az **Operations Management Suite-munkaterület** mezőinek ellenőrzéséhez szükséges információkat, amelyek jelzik, hogy az Azure ad-alkalmazás megfelelő engedélyek az erőforráscsoporthoz. Ha a mezők üresek, azt jelzi, hogy az alkalmazás nem rendelkezik a szükséges jogosultságokkal. Válassza ki a gyűjteni kívánt és a munkaterületre továbbítandó eszközöket, majd válassza a **Hozzáadás**lehetőséget.
 
 9. A kapcsolatok létrehozásának és konfigurálásának megkezdéséhez tekintse át a beállításokat a **Beállítások megerősítése** lapon, majd a **tovább** gombra kattintva.
 
@@ -128,32 +122,32 @@ Miután csatolta Configuration Managert a Azure Monitorhoz, hozzáadhat vagy elt
 Ha a jelszó vagy az ügyfél titkos kulcsa lejár vagy elveszett, manuálisan frissítenie kell a Log Analytics kapcsolati tulajdonságait.
 
 1. A Configuration Manager **Adminisztráció** munkaterületén válassza a **Cloud Services** , majd az **OMS-összekötő** lehetőséget a **OMS-kapcsolatok tulajdonságlapjának** megnyitásához.
-2. Ezen az oldalon kattintson a **Azure Active Directory** fülre kattintva megtekintheti a **bérlői**, **ügyfél-azonosító**, **ügyfél titkos kulcsának lejárati dátuma**. **Győződjön meg arról** a **titkos ügyfélkulcs** , ha már lejárt.
+2. Ezen az oldalon a **Azure Active Directory** lapra kattintva megtekintheti a **bérlőt**, az **ügyfél-azonosítót**, az **ügyfél titkos kulcsának lejárati**idejét. **Ellenőrizze** , hogy az **ügyfél titkos kulcsa** lejárt-e.
 
 ## <a name="import-collections"></a>Gyűjtemények importálása
 
 Miután hozzáadta Log Analytics kapcsolatát az Configuration Managerhoz, és telepítette az ügynököt a Configuration Manager Service kapcsolódási pontjának helyrendszer-szerepkörét futtató számítógépen, a következő lépés az Azure-beli Configuration Manager gyűjtemények importálása Számítógép-csoportok figyelése.
 
-Miután befejezte a kezdeti konfigurációt, hogy importálja az eszközöket a hierarchiából, a rendszer 3 óránként beolvassa a gyűjtemény információit a tagság aktuális állapotának megőrzéséhez. Ha szeretné, ezt bármikor letiltható.
+Miután befejezte a kezdeti konfigurációt, hogy importálja az eszközöket a hierarchiából, a rendszer 3 óránként beolvassa a gyűjtemény információit a tagság aktuális állapotának megőrzéséhez. Bármikor letilthatja ezt a lehetőséget.
 
-1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics**munkaterületek lehetőséget.
-2. A Log Analytics-munkaterületek listájában válassza ki a munkaterületet, a Configuration Manager regisztrálva van.  
+1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
+2. Log Analytics munkaterületek listájában válassza ki a munkaterületet, Configuration Manager regisztrálva van a-ben.  
 3. Válassza ki a **Speciális beállítások** elemet.
-4. Válassza ki **számítógépcsoportok** majd **SCCM**.  
-5. Válassza ki **importálása a Configuration Manager-gyűjteménytagságok** majd **mentése**.  
+4. Válassza ki a **számítógépcsoportok** elemet, majd válassza a **SCCM**lehetőséget.  
+5. Válassza az **importálás Configuration Manager gyűjtemény tagságok** lehetőséget, majd kattintson a **Mentés**gombra.  
    
     ![Számítógépcsoportok – SCCM lap](./media/collect-sccm/sccm-computer-groups01.png)
 
-## <a name="view-data-from-configuration-manager"></a>A Configuration Manager alkalmazásból adatok megtekintése
+## <a name="view-data-from-configuration-manager"></a>Adatok megtekintése Configuration Manager
 
-Miután hozzáadta Log Analytics kapcsolatát az Configuration Managerhoz, és telepítette az ügynököt a Configuration Manager Service kapcsolódási pont helyrendszer-szerepkört futtató számítógépen, a rendszer elküldi az ügynöktől az Azure Monitor Log Analytics munkaterületére. Azure Monitor a Configuration Manager gyűjtemények számítógépcsoportként jelennek [](../../azure-monitor/platform/computer-groups.md)meg. Megtekintheti a csoportok a **Configuration Manager** lap **Settings\Computer csoportok**.
+Miután hozzáadta Log Analytics kapcsolatát az Configuration Managerhoz, és telepítette az ügynököt a Configuration Manager Service kapcsolódási pont helyrendszer-szerepkört futtató számítógépen, a rendszer elküldi az ügynöktől az Azure Monitor Log Analytics munkaterületére. Azure Monitor a Configuration Manager gyűjtemények [számítógépcsoportként](../../azure-monitor/platform/computer-groups.md)jelennek meg. A csoportokat a **Configuration Manager** lapon tekintheti meg a **Settings\Computer csoportok**területen.
 
-Miután a gyűjtemények importálása, láthatja, hány csoporttagsággal rendelkező számítógépet észlelt. Megtekintheti az importált gyűjtemények száma is.
+A gyűjtemények importálása után láthatja, hány számítógépet észlelt a gyűjtemény tagsága. Az importált gyűjtemények számát is megtekintheti.
 
 ![Számítógépcsoportok – SCCM lap](./media/collect-sccm/sccm-computer-groups02.png)
 
 Ha rákattint valamelyikre, a naplófájl-szerkesztő megnyílik az összes importált csoport vagy az egyes csoportokhoz tartozó összes számítógép között. A [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md)használatával további részletes elemzéseket végezhet a gyűjtemény tagsági adataiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Használat [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) részletes információkat a Configuration Manager adatainak megtekintéséhez.
+A [naplók keresési](../../azure-monitor/log-query/log-query-overview.md) funkciójának használatával megtekintheti a Configuration Manager adataival kapcsolatos részletes információkat.

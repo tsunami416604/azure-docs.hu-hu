@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6276f347f0cc0ecc03acc95282e83c243679957a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802428"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934032"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítés paraméterei
 Ez a cikk az Azure Service Fabric-alkalmazások frissítésekor alkalmazandó különböző paramétereket ismerteti. Az alkalmazás-frissítési paraméterek vezérlik a frissítés során alkalmazott időtúllépési és állapot-ellenőrzéseket, és meghatározzák azokat a házirendeket, amelyeket a frissítés sikertelensége esetén alkalmazni kell. Az alkalmazás paramétereinek frissítése a következő használatával:
@@ -57,10 +57,6 @@ UnmonitoredManual | PS | Azt jelzi, hogy a frissítési mód a nem figyelt manu�
 ### <a name="optional-parameters"></a>Nem kötelező paraméterek
 
 Az állapot-értékelési paraméterek megadása nem kötelező. Ha az állapot-értékelési feltételek nincsenek megadva a frissítés indításakor, Service Fabric az alkalmazás-példány ApplicationManifest. XML fájljában megadott alkalmazás-állapot házirendeket használja.
-
-A teljes Leírás mezőt a táblázat alján található vízszintes görgetősáv használatával tekintheti meg.
-
-(PS = PowerShell, VS = Visual Studio)
 
 > [!div class="mx-tdBreakAll"]
 > | Paraméter | A következőkre vonatkozik | Leírás |

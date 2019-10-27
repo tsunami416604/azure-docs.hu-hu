@@ -1,24 +1,18 @@
 ---
 title: Egyéni naplók gyűjtése a Azure Monitorban | Microsoft Docs
 description: A Azure Monitor a Windows és Linux rendszerű számítógépeken is gyűjthet eseményeket a szöveges fájlokból.  Ez a cikk azt ismerteti, hogyan határozható meg az új egyéni napló és a Azure Monitorban létrehozott rekordok részletei.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/26/2019
+ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177617"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932513"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók a Azure Monitorban
 
@@ -57,7 +51,7 @@ Egyéni naplófájl definiálásához használja az alábbi eljárást.  Görges
 Az egyéni napló varázsló a Azure Portal fut, és lehetővé teszi, hogy megadjon egy új egyéni naplót a gyűjtéshez.
 
 1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
-2. Kattintson az **adat@no__t-** 1**egyéni naplók**elemre.
+2. Kattintson az **adat > ** **egyéni naplók**elemre.
 3. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
 4. Kattintson a **Hozzáadás +** elemre az egyéni napló varázsló megnyitásához.
 
@@ -83,7 +77,7 @@ A következő táblázat példákat tartalmaz a különböző naplófájlok mega
 
 | Leírás | Útvonal |
 |:--- |:--- |
-| A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa @ no__t-0\*.txt |
+| A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa\\\*. txt |
 | A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\ log\*.txt |
 | A */var/log/audit* összes fájlja. txt kiterjesztéssel a Linux-ügynökön |/var/log/audit/*. txt |
 | A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log\*.txt |
@@ -95,7 +89,7 @@ A következő táblázat példákat tartalmaz a különböző naplófájlok mega
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4\. lépés Adja meg a napló nevét és leírását
 A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig a _CL-vel végződik, hogy egyéni naplóként megkülönböztesse azt.
 
-1. Írja be a napló nevét.  A rendszer automatikusan megadja a **\_CL** utótagot.
+1. Írja be a napló nevét.  A rendszer automatikusan megadja a **\_CL** -utótagot.
 2. Adjon hozzá egy opcionális **leírást**.
 3. Az egyéni napló definíciójának mentéséhez kattintson a **tovább** gombra.
 
@@ -129,7 +123,7 @@ Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadot
 | TimeGenerated |A rekord Azure Monitor általi gyűjtésének dátuma és időpontja.  Ha a napló időalapú határolójelet használ, akkor ez a bejegyzésből begyűjtött idő. |
 | SourceSystem |Az ügynök típusa, amelyet a rendszer a rekordból gyűjtött. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy System Center Operations Manager <br> Linux – minden Linux-ügynök |
 | RawData |Az összegyűjtött bejegyzés teljes szövege. Valószínűleg ezeket az adatelemzéseket az [egyes tulajdonságokkal szeretné elemezni](../log-query/parse-text.md). |
-| ManagementGroupName |A System Center-műveletek felügyeleti csoportjának neve, ügynökök kezelése.  Más ügynökök esetében ez az AOI-\<workspace ID @ no__t-1 |
+| ManagementGroupName |A System Center-műveletek felügyeleti csoportjának neve, ügynökök kezelése.  Más ügynökök esetében ez az AOI-\<munkaterület-azonosító\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Példa egyéni napló hozzáadására
@@ -147,7 +141,7 @@ A naplófájlok egyikét biztosítjuk, és láthatjuk, hogy milyen események le
 ![Minta napló feltöltése és elemzése](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Napló-gyűjtemény elérési útjának hozzáadása
-A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  A naplóhoz elegendő minta lenne a *C:\MyApp\Logs @ no__t-1\*.log*.
+A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  Ehhez a naplóhoz megfelelő mintát kell *C:\MyApp\Logs\\\*. log*.
 
 ![Napló gyűjteményének elérési útja](media/data-sources-custom-logs/collection-path.png)
 

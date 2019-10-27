@@ -1,6 +1,6 @@
 ---
 title: Az Azure Storage biztonsági útmutatója | Microsoft Docs
-description: Részletesen ismerteti az Azure Storage biztonságossá tételének számos módszerét, beleértve a RBAC, a Storage Service Encryptiont, az ügyféloldali titkosítást, az SMB 3,0 és a Azure Disk Encryption.
+description: Részletes módszerek az Azure Storage-fiókok biztonságossá tételéhez, beleértve a felügyeleti sík biztonságát, az engedélyezést, a hálózati biztonságot, a titkosítást stb.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,54 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 15c59a29bff50f13eea104cb436d1a3764f6d713
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598093"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926722"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatója
 
-Az Azure Storage egy átfogó biztonsági képességeket kínál, amelyek lehetővé teszik a fejlesztők számára, hogy biztonságos alkalmazásokat hozzanak létre:
+Az Azure Storage olyan átfogó biztonsági képességeket kínál, amelyek lehetővé teszik a szervezetek számára, hogy biztonságos alkalmazásokat hozzanak létre és telepítsenek:
 
-- Az Azure Storage-ba írt összes adat (beleértve a metaadatokat is) [Storage Service encryption (SSE)](storage-service-encryption.md)használatával automatikusan titkosítva lesz. További információ: az [Azure Blobok, fájlok, táblák és Queue Storage alapértelmezett titkosításának bejelentése](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Az Azure Storage-ban a Azure Active Directory (Azure AD) és a szerepköralapú Access Control (RBAC) is támogatott az erőforrás-kezelési műveletek és az adatműveletek esetében, az alábbiak szerint:   
+- Az Azure Storage-ba írt összes adat (beleértve a metaadatokat is) [Storage Service encryption (SSE)](storage-service-encryption.md)használatával automatikusan titkosítva lesz. További információ: az [Azure-Blobok,-fájlok,-táblák és-várólisták alapértelmezett titkosításának bejelentése](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- A Azure Active Directory (Azure AD) és a szerepköralapú Access Control (RBAC) az erőforrás-kezelési műveletek és az adatsík-műveletek esetében egyaránt támogatottak:   
     - A RBAC szerepköröket hozzárendelheti a rendszerbiztonsági tagekhez, és az Azure AD használatával engedélyezheti az erőforrás-kezelési műveleteket, például a kulcskezelő műveleteket.
-    - Az Azure AD-integráció a blob-és üzenetsor-adatműveletek esetében támogatott. RBAC-szerepköröket rendelhet hozzá egy előfizetéshez, egy erőforráscsoporthoz, egy Storage-fiókhoz vagy egy adott tárolóhoz vagy várólistához egy rendszerbiztonsági tag vagy egy felügyelt identitás számára az Azure-erőforrások számára. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).   
-- Az alkalmazások és az Azure között az [ügyféloldali titkosítás](../storage-client-side-encryption.md), a HTTPS vagy az SMB 3,0 használatával lehet biztosítani az adatátvitelt.  
+    - Az Azure AD-integráció a blob-és üzenetsor-adatműveletek esetében támogatott. A RBAC szerepkörei egy előfizetésre, egy erőforráscsoport, egy Storage-fiókra, egy egyedi tárolóra vagy egy várólistára is kiterjednek. Szerepkörök hozzárendelhetők egy rendszerbiztonsági tag vagy egy felügyelt identitás számára az Azure-erőforrásokhoz. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
+- Az alkalmazások és az Azure [ügyféloldali titkosítás](../storage-client-side-encryption.md), HTTPS vagy SMB 3,0 használatával is biztonságossá teheti az adatátvitelt.  
 - Az Azure-beli virtuális gépek által használt operációs rendszer és adatlemezek [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)használatával titkosíthatók.
 - Az Azure Storage-beli adatobjektumokhoz delegált hozzáférés a közös hozzáférési aláírás használatával adható meg. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
+- Az alkalmazás-összetevők és a tároló hálózati rétegbeli biztonsága engedélyezhető a tárolási tűzfal, a szolgáltatási végpontok vagy a magánhálózati végpontok használatával.
 
-Ez a cikk áttekintést nyújt az Azure Storage szolgáltatással használható biztonsági funkciókról. A hivatkozások olyan cikkek számára érhetők el, amelyek részletesen ismertetik az egyes funkciók részleteit, így könnyebben végezhet további vizsgálatot az egyes témakörökben.
+Ez a cikk áttekintést nyújt az Azure Storage szolgáltatással használható biztonsági funkciókról. A cikkekre mutató hivatkozások további részleteket biztosítanak az egyes képességekről.
 
-A cikk a jelen cikkben tárgyalt témaköröket tartalmazza:
+A cikkben szereplő területek a következők:
 
-* [Felügyeleti sík biztonsága](#management-plane-security) – a Storage-fiók biztonságossá tétele
+* [Felügyeleti sík biztonsága](#management-plane-security) – erőforrás-szintű hozzáférés biztonságossá tétele a Storage-fiókhoz
 
-  A felügyeleti sík a Storage-fiók kezeléséhez használt erőforrásokból áll. Ez a szakasz ismerteti a Azure Resource Manager üzembe helyezési modellt, valamint a szerepköralapú Access Control (RBAC) használatát a Storage-fiókokhoz való hozzáférés szabályozásához. Emellett a Storage-fiók kulcsainak kezelésével és azok újralétrehozásával foglalkozik.
-* [Adatközpontok biztonsága](#data-plane-security) – az adataihoz való hozzáférés biztosítása
+  A felügyeleti síkon a Storage-fiók kezeléséhez használt műveletek állnak. Ez a szakasz ismerteti a Azure Resource Manager üzembe helyezési modellt, valamint a szerepköralapú Access Control (RBAC) használatát a Storage-fiókokhoz való hozzáférés szabályozásához. Emellett a Storage-fiók kulcsainak kezelésével és azok újralétrehozásával foglalkozik.
 
-  Ebben a szakaszban bemutatjuk, hogyan lehet hozzáférést engedélyezni a Storage-fiókban lévő tényleges adatobjektumokhoz, például blobokhoz, fájlokhoz, várólistákhoz és táblákhoz, közös hozzáférési aláírások és tárolt hozzáférési szabályzatok használatával. A szolgáltatási szintű SAS és a fiók szintű SAS is kiterjed. Azt is megtudhatja, hogyan korlátozhatja a hozzáférést egy adott IP-címhez (vagy IP-tartományhoz), hogyan korlátozhatja a HTTPS-hez használt protokollt, és hogyan vonhatja vissza a közös hozzáférésű aláírásokat anélkül, hogy a lejárat előtt kellene várnia.
+* [Hálózati biztonság](#network-security) – hálózati szintű hozzáférés biztonságossá tétele a Storage-fiókhoz
+
+  Ez a szakasz ismerteti, hogyan védheti meg a hálózati szintű hozzáférést a Storage Services-végpontokhoz. A cikk azt ismerteti, hogyan használható a Storage-tűzfal az adatokhoz adott virtuális hálózatokból vagy IP-címtartományokból való hozzáférés engedélyezéséhez. Emellett a szolgáltatási végpontok és a privát végpontok használatát is magában foglalja a Storage-fiókokkal.
+
+* [Engedélyezés](#authorization) – az adataihoz való hozzáférés engedélyezése
+
+  Ez a szakasz a Storage-fiókban lévő adatobjektumokhoz, például a blobokhoz, fájlokhoz, várólistákhoz és táblákhoz való hozzáférést ismerteti közös hozzáférésű aláírások és tárolt hozzáférési szabályzatok használatával. A szolgáltatási szintű SAS és a fiók szintű SAS is kiterjed. Azt is megtudhatja, hogyan korlátozhatja a hozzáférést egy adott IP-címhez (vagy IP-tartományhoz), hogyan korlátozhatja a HTTPS-hez használt protokollt, és hogyan vonhatja vissza a közös hozzáférésű aláírásokat anélkül, hogy a lejárat előtt kellene várnia.
+
 * [Titkosítás az átvitel során](#encryption-in-transit)
 
-  Ebből a szakaszból megtudhatja, hogyan védheti meg az adatok védelmét, ha az Azure Storage-ba vagy onnan helyezi át. A HTTPS javasolt használatát és az SMB 3,0 Azure-fájlmegosztás által használt titkosítását is tárgyaljuk. Emellett megtekintheti az ügyféloldali titkosítást is, amely lehetővé teszi az adattitkosítást, mielőtt a rendszer átmásolja az ügyfél-alkalmazásba a tárolóba, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
+  Ebből a szakaszból megtudhatja, hogyan védheti meg az adatok védelmét, ha az Azure Storage-ba vagy onnan helyezi át. A HTTPS javasolt használatát és az SMB 3,0 Azure-fájlmegosztás által használt titkosítását is tárgyaljuk. Emellett az ügyféloldali titkosításról is beszélünk, amely lehetővé teszi az adatok titkosítását a tárolóba való átvitel előtt, valamint az adatok visszafejtését, miután a tárolóból kikerült.
+
 * [Titkosítás inaktív állapotban](#encryption-at-rest)
 
   Az új és a meglévő Storage-fiókok számára automatikusan elérhetővé vált Storage Service Encryption (SSE). Azt is megvizsgáljuk, hogyan használhatók a Azure Disk Encryption és megismerhetik a lemez titkosításának alapvető különbségeit és eseteit, valamint az SSE-t és az ügyféloldali titkosítást. Röviden megvizsgáljuk az Egyesült államokbeli kormányzati számítógépek FIPS-megfelelőségét.
+
 * Az Azure Storage hozzáférésének naplózása [Storage Analytics](#storage-analytics) használatával
 
   Ez a szakasz azt ismerteti, hogyan lehet információt megkeresni a Storage Analytics naplóiban egy kérelemhez. Tekintse meg a valódi Storage Analytics-naplófájlok részletes ismertetését, és Ismerje meg, hogyan állapítható meg, hogy a rendszer a Storage-fiók kulcsával, közös hozzáférésű aláírással vagy névtelenül, illetve sikeres vagy sikertelen kéréssel kezdeményezett-e kérelmet.
+
 * [Böngészőalapú ügyfelek engedélyezése a CORS használatával](#cross-origin-resource-sharing-cors)
 
   Ez a szakasz a több eredetű erőforrás-megosztás (CORS) engedélyezését ismerteti. Az Azure Storage-ba épített CORS képességekkel foglalkozunk a tartományok közötti hozzáféréssel, valamint az azok kezelésével.
@@ -112,16 +122,16 @@ A Storage-fiók kulcsai az Azure által létrehozott 512 bites karakterláncok, 
 
 Minden egyes Storage-fiókhoz két kulcs tartozik: "Key 1" és "Key 2" a [Azure Portal](https://portal.azure.com/) és a PowerShell-parancsmagokban. Ezek manuálisan is újrahozhatók a több módszer egyikével, például a [Azure Portal](https://portal.azure.com/), a PowerShell, az Azure CLI vagy programozott módon, a .net Storage ügyféloldali kódtára vagy az Azure storage Services REST API használatával.
 
-A Storage-fiók kulcsainak újragenerálása tetszőleges számú oka lehet.
+A Storage-fiók kulcsainak újragenerálása számos okból lehetséges.
 
-* Biztonsági okokból rendszeres időközönként újra létrehozhatja őket.
-* A Storage-fiók kulcsainak újragenerálása akkor történik meg, ha valaki egy alkalmazásba próbál beolvasni, és beolvassa a konfigurációs fájlban hardcoded vagy mentett kulcsot, így teljes hozzáférést biztosít számukra a Storage-fiókhoz.
-* A kulcs újragenerálásának egy másik esete, ha a csapata olyan Storage Explorer alkalmazást használ, amely megőrzi a Storage-fiók kulcsát, és az egyik csapattag elhagyja a csapatot. Az alkalmazás továbbra is működni fog, és hozzáférést biztosít számukra a Storage-fiókhoz, miután elfogytak. Ez valójában az elsődleges ok, amiért fiók szintű közös hozzáférési aláírásokat hoztak létre – a hozzáférési kulcsok egy konfigurációs fájlban való tárolása helyett használhat fiók szintű SAS-t.
+* A biztonság érdekében időnként újra létrehozhatja őket.
+* Ha az alkalmazás vagy a hálózat biztonsága sérült, akkor előfordulhat, hogy újragenerálja a Storage-fiók kulcsait.
+* A kulcs újragenerálásának egy másik példánya, amikor a csapattagok hozzáférnek a kulcsokhoz. A közös hozzáférésű aláírásokat elsősorban e forgatókönyvek kezelésére tervezték – a hozzáférési kulcsok megosztása helyett egy fiók szintű SAS-kapcsolati karakterláncot vagy tokent kell megosztania, a legtöbb egyéni vagy alkalmazással.
 
 #### <a name="key-regeneration-plan"></a>Kulcs újragenerálási terve
-Nem szeretné, hogy csak az Ön által használt kulcsot újragenerálta a tervezés nélkül. Ha ezt teszi, kihasználhatja a Storage-fiókhoz való összes hozzáférést, ami jelentős fennakadást okozhat. Ezért van két kulcs. Egyszerre csak egy kulcsot kell újrakészítenie.
+A használat megtervezése nélkül nem lehet újragenerált hozzáférési kulcsot használni. A hirtelen kulcs újragenerálása letilthatja a meglévő alkalmazások Storage-fiókjához való hozzáférést, ami jelentős fennakadást okozhat. Az Azure Storage-fiókok két kulcsot biztosítanak, így egyszerre csak egy kulcsot lehet újragenerálni.
 
-A kulcsok újragenerálása előtt győződjön meg arról, hogy a Storage-fióktól függő összes alkalmazás, valamint az Azure-ban használt egyéb szolgáltatások listája szerepel. Ha például olyan Azure Media Services használ, amelyek a Storage-fióktól függenek, a kulcs újragenerálása után újra kell szinkronizálnia a hozzáférési kulcsokat a Media szolgáltatással. Ha olyan alkalmazásokat használ, mint például a Storage Explorer, az új kulcsokat is meg kell adnia az alkalmazások számára. Ha olyan virtuális gépekkel rendelkezik, amelyek VHD-fájljai a Storage-fiókban tárolódnak, a Storage-fiók kulcsainak újragenerálása nem érinti őket.
+A kulcsok újragenerálása előtt győződjön meg róla, hogy rendelkezik a Storage-fióktól függő összes alkalmazás listájával, valamint az Azure-ban használt többi szolgáltatással. Ha például Azure Media Services használja a Storage-fiókját, a kulcs újragenerálása után újra kell szinkronizálnia a hozzáférési kulcsokat a Media Service szolgáltatással. Ha olyan alkalmazást használ, mint például a Storage Explorer, új kulcsokat kell megadnia ezekhez az alkalmazásokhoz is. Ha olyan virtuális gépekkel rendelkezik, amelyek VHD-fájljai a Storage-fiókban tárolódnak, a Storage-fiók kulcsainak újragenerálása nem érinti őket.
 
 A kulcsok újragenerálása a Azure Portal. A kulcsok újragenerálása után akár 10 percet is igénybe vehet, hogy szinkronizálni lehessen a tárolási szolgáltatások között.
 
@@ -135,11 +145,11 @@ Ha jelenleg a 2. kulcsot használja, ugyanazt a folyamatot használhatja, de meg
 
 Több napig is áttelepítheti az alkalmazást, és az egyes alkalmazásokat az új kulcs használatára és közzétételre módosíthatja. Miután mindegyik elkészült, térjen vissza, és újból létrehozza a régi kulcsot, így már nem működik.
 
-Egy másik lehetőség, hogy a Storage-fiók kulcsát egy titkos [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) helyezi el, és az alkalmazásokból lekéri a kulcsot. Ezután a kulcs újbóli létrehozása és a Azure Key Vault frissítése után az alkalmazásoknak nem kell újratelepíteniük, mert az új kulcsot a Azure Key Vault automatikusan átveszik. Vegye figyelembe, hogy az alkalmazásnak minden alkalommal el kell olvasnia a kulcsot, vagy gyorsítótárazhatja a memóriában, és ha nem sikerül a használata során, kérje le újra a kulcsot a Azure Key Vault.
+Egy másik lehetőség, hogy a Storage-fiók kulcsát egy titkos [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) helyezi el, és az alkalmazásokból lekéri a kulcsot. Ezután a kulcs újbóli létrehozása és a Azure Key Vault frissítése után az alkalmazásoknak nem kell újratelepíteniük, mert az új kulcsot a Azure Key Vault automatikusan átveszik. Az alkalmazásnak minden alkalommal el kell olvasnia a kulcsot, vagy az alkalmazás gyorsítótárazhatja a memóriában, és ha ez nem sikerül, a kulcs újbóli beolvasása a Azure Key Vault.
 
-A Azure Key Vault használata emellett további biztonsági szintet is biztosít a tárolási kulcsok számára. Ha ezt a módszert használja, a hardcoded soha nem fog megjelenni a tárolási kulcs, ami eltávolítja azt a lehetőséget, hogy valaki hozzáférést kap a kulcsokhoz adott engedély nélkül.
+A Azure Key Vault használata emellett további biztonsági szintet is biztosít a tárolási kulcsok számára. A Key Vault használata lehetővé teszi, hogy elkerülje a tárolási kulcsok írását az alkalmazás konfigurációs fájljaiban. Emellett megakadályozza, hogy a kulcsok mindenki számára hozzáférjenek a konfigurációs fájlokhoz.
 
-A Azure Key Vault használatának egy másik előnye, hogy a kulcsok elérését Azure Active Directory használatával is szabályozhatja. Ez azt jelenti, hogy hozzáférést adhat a néhány olyan alkalmazáshoz, amelyeknek le kell kérnie a kulcsokat a Azure Key Vaultból, és tudnia kell, hogy más alkalmazások nem fognak tudni hozzáférni a kulcsokhoz anélkül, hogy az engedélyt kifejezetten megadják.
+A Azure Key Vault az Azure AD használatának előnyeit is kihasználhatja a kulcsok elérésének szabályozására. Megadhatja a hozzáférést azokhoz a konkrét alkalmazásokhoz, amelyeknek le kell kérnie a kulcsokat a Key Vaultból, anélkül, hogy azokat más alkalmazásokba kellene kitenni, amelyek nem igényelnek hozzáférést a kulcsokhoz.
 
 > [!NOTE]
 > A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egy alkalmazás elveszíti a hozzáférést.
@@ -149,7 +159,35 @@ A Azure Key Vault használatának egy másik előnye, hogy a kulcsok elérését
 * [Tárfiók beállításainak kezelése az Azure Portalon](storage-account-manage.md)
 * [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/mt163683.aspx)
 
-## <a name="data-plane-security"></a>Adatsík biztonsága
+## <a name="network-security"></a>Hálózati biztonság
+A hálózati biztonság lehetővé teszi, hogy az Azure Storage-fiókban lévő adatokhoz való hozzáférést a hálózatok kiválasztása után korlátozza. Az Azure Storage tűzfal használatával korlátozhatja az ügyfelek hozzáférését adott nyilvános IP-címtartományok alapján, kiválaszthatja a virtuális hálózatokat (virtuális hálózatok) az Azure-ban, illetve adott Azure-erőforrásokhoz is. Lehetősége van arra is, hogy a VNet olyan magánhálózati végpontot hozzon létre a Storage-fiókjához, amelynek hozzáférésre van szüksége, és blokkolja a nyilvános végponton keresztüli összes hozzáférést.
+
+A Storage-fiók hálózati hozzáférési szabályait a Azure Portal [tűzfalak és virtuális hálózatok](storage-network-security.md) lapján adhatja meg. A tárolási tűzfal használatával megtagadhatja a hozzáférést a nyilvános internetes forgalomhoz, és a konfigurált hálózati szabályok alapján engedélyezheti a hozzáférést az ügyfelek kiválasztásához.
+
+Privát [végpontokat](../../private-link/private-endpoint-overview.md) is használhat magánhálózati és biztonságos csatlakozáshoz egy VNet a [privát hivatkozások](../../private-link/private-link-overview.md)használatával.
+
+A tárolási tűzfalszabályok csak a Storage-fiók nyilvános végpontján érvényesek. A Storage-fiókhoz tartozó magánhálózati végpontot futtató alhálózat implicit módon hozzáfér a fiókhoz, amikor jóváhagyja a saját végpont létrehozását.
+
+> [!NOTE]
+> A tárolási tűzfalszabályok nem alkalmazhatók a Azure Portal és az Azure Storage Management API-n keresztül végrehajtott tárolási felügyeleti műveletekre.
+
+### <a name="access-rules-for-public-ip-address-ranges"></a>Nyilvános IP-címtartományok hozzáférési szabályai
+Az Azure Storage-tűzfal használatával korlátozhatja a Storage-fiókokhoz való hozzáférést adott nyilvános IP-címtartományok alapján. Az IP-cím szabályok használatával korlátozhatja a hozzáférést egy rögzített nyilvános IP-végponton kommunikáló, adott internetalapú szolgáltatásokhoz, vagy kiválaszthatja a helyszíni hálózatokat.
+
+### <a name="access-rules-for-azure-virtual-networks"></a>Azure-beli virtuális hálózatok hozzáférési szabályai
+Alapértelmezés szerint a Storage-fiókok minden hálózaton fogadják az ügyfelek kapcsolatait. A Storage-fiókban lévő, a tároló tűzfal használatával korlátozhatja az ügyfél hozzáférését a Storage-fiókok adataihoz. A [szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) lehetővé teszik az Azure-beli virtuális hálózatok forgalmának útválasztását a Storage-fiókba. 
+
+### <a name="granting-access-to-specific-trusted-resource-instances"></a>Hozzáférés biztosítása adott megbízható erőforrás-példányokhoz
+Lehetővé teheti, hogy az [Azure megbízható szolgáltatások egy részhalmaza](storage-network-security.md#trusted-microsoft-services) hozzáférhessen a Storage-fiókhoz a tűzfalon keresztül, erős hitelesítéssel a szolgáltatás erőforrástípus vagy egy erőforrás-példány alapján.
+
+Azon szolgáltatások esetében, amelyek a Storage-tűzfalon keresztül támogatják az erőforrás-példányon alapuló hozzáférést, csak a kiválasztott példány férhet hozzá a Storage-fiókban lévő adatforrásokhoz. Ebben az esetben a szolgáltatásnak támogatnia kell az erőforrás-példány hitelesítését a rendszer által hozzárendelt [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával.
+
+### <a name="using-private-endpoints-for-securing-connections"></a>Magánhálózati végpontok használata a kapcsolatok biztonságossá tételéhez
+Az Azure Storage támogatja a privát végpontokat, amelyek lehetővé teszik a Storage-fiók biztonságos elérését egy Azure-beli virtuális hálózatból. A privát végpontok magánhálózati IP-címet rendelhetnek a VNet a Storage szolgáltatáshoz. Privát végpontok használatakor a tárolási kapcsolódási karakterlánc átirányítja a Storage-fiók számára a magánhálózati IP-címhez irányuló forgalmat. A magánhálózati végpont és a Storage-fiók közötti kapcsolat privát hivatkozást használ. A privát végpontok használatával letilthatja a kiszűrése a VNet.
+
+A VPN-vagy [expressroute](../../expressroute/expressroute-locations.md) -kapcsolaton keresztül csatlakoztatott helyszíni hálózatok a privát végponton keresztül is hozzáférhetnek a Storage-fiókhoz. A Storage-fiókokhoz tartozó magánhálózati végpontok bármely régióban VNet hozhatók létre, így biztosítva a biztonságos globális elérhetőséget. Saját végpontokat is létrehozhat a Storage-fiókok számára más [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) bérlők számára.
+
+## <a name="authorization"></a>Engedélyezés
 Az adatsík biztonsága az Azure Storage-ban tárolt adatobjektumok (Blobok, várólisták, táblák és fájlok) védelméhez használt módszerekre utal. Láttuk az adatátvitel során az adatforgalom titkosítására és a biztonságra vonatkozó módszereket, de hogyan lehet az objektumokhoz való hozzáférés szabályozására?
 
 Három lehetőség közül választhat az Azure Storage-beli adatobjektumokhoz való hozzáférés engedélyezéséhez, beleértve a következőket:
@@ -159,8 +197,6 @@ Három lehetőség közül választhat az Azure Storage-beli adatobjektumokhoz v
 - Közös hozzáférésű aláírások használatával meghatározott időtartamra vonatkozó szabályozott engedélyeket adhat meg bizonyos adatobjektumokhoz.
 
 Emellett a Blob Storage esetében engedélyezheti a Blobok nyilvános elérését a blobokat tartalmazó tároló hozzáférési szintjének beállításával. Ha egy tárolóhoz hozzáférést állít be Blobhoz vagy tárolóhoz, az lehetővé teszi a nyilvános olvasási hozzáférést a tárolóban lévő blobokhoz. Ez azt jelenti, hogy a tárolóban lévő blobra mutató URL-címmel bárki megnyithatja azt egy böngészőben közös hozzáférési aláírás vagy a Storage-fiók kulcsainak használata nélkül.
-
-Az engedélyezéssel való hozzáférés korlátozása mellett a [tűzfalak és virtuális hálózatok](storage-network-security.md) használatával a hálózati szabályok alapján korlátozhatja a hozzáférést a Storage-fiókhoz.  Ez a megközelítés lehetővé teszi a nyilvános internetes forgalom elérésének megtagadását, és csak bizonyos Azure-beli virtuális hálózatokhoz vagy nyilvános internetes IP-címtartományok elérését.
 
 ### <a name="storage-account-keys"></a>Tárfiókkulcsok
 A Storage-fiók kulcsai az Azure által létrehozott 512 bites karakterláncok, amelyek a Storage-fiók nevével együtt használhatók a Storage-fiókban tárolt adatobjektumokhoz való hozzáféréshez.
@@ -236,6 +272,11 @@ A megosztott hozzáférési aláírások és a tárolt hozzáférési szabályza
     Ez a cikk példákat mutat be a Blobokkal, üzenetsor-üzenetekkel, táblázat-tartományokkal és fájlokkal rendelkező szolgáltatási szintű SAS használatára.
   * [Szolgáltatás SAS-építése](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Fiók SAS létrehozása](https://msdn.microsoft.com/library/mt584140.aspx)
+
+* Ez egy oktatóanyag a .NET-ügyfél függvénytárának használatához közös hozzáférési aláírások és tárolt hozzáférési szabályzatok létrehozásához.
+  * [Közös hozzáférésű aláírások (SAS) használata](../storage-dotnet-shared-access-signature-part-1.md)
+
+    Ez a cikk az SAS-modell ismertetését, példákat tartalmaz a közös hozzáférésű aláírásokra, valamint ajánlásokat nyújt az SAS használatának ajánlott gyakorlatához. A rendszer a megadott engedély visszavonását is tárgyalja.
 
 * Hitelesítés
 

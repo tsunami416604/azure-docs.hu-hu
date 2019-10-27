@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793896"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929339"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi az az automatizált gépi tanulás?
 
@@ -95,9 +95,7 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 
 További speciális előfeldolgozási és featurization is elérhetők, például a hiányzó értékek: imputálási, kódolás és átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess). A beállítás engedélyezése a következővel:
 
-+ Azure Portal: válassza az **előfeldolgozás** jelölőnégyzetet a **speciális beállításokban** az [alábbi lépésekkel](how-to-create-portal-experiments.md).
-
-+ Python SDK: `"preprocess": True` megadása a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Python SDK: `"feauturization": auto' / 'off' / FeaturizationConfig` megadása a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Idősoros előrejelzés

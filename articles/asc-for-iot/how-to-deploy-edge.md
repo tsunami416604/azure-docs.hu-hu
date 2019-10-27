@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176660"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934367"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -107,7 +107,7 @@ A IoT számára három lépésben hozhat létre IoT Edge központi Azure Securit
 1. Kattintson a **Save** (Mentés) gombra.
 1. Görgessen a lap aljára, majd válassza a **speciális Edge-futtatókörnyezet beállításainak konfigurálása**lehetőséget. 
    
-1. Módosítsa a **képet** az **Edge Hub** alatt a **MCR.microsoft.com/azureiotedge-hub:1.0.9-RC2**értékre.
+1. Módosítsa a **képet** az **Edge Hub** alatt a **MCR.microsoft.com/azureiotedge-hub:1.0.8.3**értékre.
 
 1. A **létrehozási beállítások** ellenőrzése a következőre van beállítva: 
          
@@ -169,7 +169,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    | Név | LEMEZKÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Ha a minimálisan szükséges tárolók nem jelennek meg, ellenőrizze, hogy a IoT Edge központi telepítési jegyzékfájlja az ajánlott beállításokkal van-e igazítva. További információ: [IoT Edge modul üzembe helyezése](#deployment-using-azure-portal).

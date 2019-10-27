@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8498346c5623913cb68c63e95a787f31c7d90cc0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 90c9d9be6f5a255a4ddd4f7fae7cf410e5b1f80d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901949"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934955"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL-alapú virtuális gépek tömeges regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
-Ez a cikk azt ismerteti, hogyan lehet tömegesen regisztrálni a SQL Server virtuális gépet (VM) az Azure-ban az SQL VM erőforrás-szolgáltató használatával a "Register-SqlVMs" PowerShell-parancsmaggal.
+Ez a cikk azt ismerteti, hogyan lehet tömegesen regisztrálni a SQL Server virtuális gépet (VM) az Azure-ban az SQL VM erőforrás-szolgáltatóval az `Register-SqlVMs` PowerShell-parancsmag használatával.
 
-A "Register-SqlVMs" parancsmag használatával az összes virtuális gép regisztrálható az előfizetések, az erőforráscsoportok vagy az adott virtuális gépek listája alapján. A parancsmag _egyszerűsített_ felügyeleti módban regisztrálja a virtuális gépeket, majd [jelentést és naplófájlt](#output-description)is hoz. 
+Az `Register-SqlVMs` parancsmag használatával az összes virtuális gép regisztrálható az előfizetések, az erőforráscsoportok vagy az adott virtuális gépek listája alapján. A parancsmag _egyszerűsített_ felügyeleti módban regisztrálja a virtuális gépeket, majd [jelentést és naplófájlt](#output-description)is hoz. 
 
 A regisztrációs folyamat nem jár kockázattal, nem rendelkezik állásidővel, és nem indítja újra SQL Server vagy a virtuális gépet. 
 

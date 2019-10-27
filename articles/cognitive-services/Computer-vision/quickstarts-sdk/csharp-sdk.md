@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A .NET-hez készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
+title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
 description: Ismerkedjen meg a .NET-hez készült Computer Vision ügyféloldali kódtáraval.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 27884d83b9ca828a81922d27fe958334665e664a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719521"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931781"
 ---
-# <a name="quickstart-computer-vision-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár Computer Vision
+# <a name="quickstart-computer-vision-client-library-for-net"></a>Rövid útmutató: a .NET-hez készült ügyféloldali kódtár Computer Vision
 
 Ismerkedjen meg a .NET-hez készült Computer Vision ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Computer Vision a képek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz.
 
@@ -25,7 +25,7 @@ A .NET-hez készült Computer Vision ügyféloldali kódtára a következőre ha
 * Elemezheti a címkéket, a szöveges leírást, az arcokat, a felnőtt tartalmakat és egyebeket.
 * A nyomtatott és a kézírásos szöveg felismerése a Batch olvasási API-val.
 
-[A dokumentációs](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  | [minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,13 +41,13 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs `COMPUTER_VISION_ENDPOINT`és a végpont URL-címéhez, amelynek neve és.
+A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`névvel.
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
 Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. 
 
-A konzol ablakban (például cmd, PowerShell vagy bash) `dotnet new` az paranccsal hozzon létre egy új, a nevű `computer-vision-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: *Program.cs*.
+Egy konzolablak (például cmd, PowerShell vagy bash) használatával hozzon létre egy új, `computer-vision-quickstart`nevű Console-alkalmazást a `dotnet new` paranccsal. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
 ```console
 dotnet new console -n computer-vision-quickstart
@@ -69,7 +69,7 @@ Build succeeded.
 ...
 ```
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a `using` következő irányelveket:
+A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using` irányelveket:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_using)]
 
@@ -91,7 +91,7 @@ Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuG
 
 A következő osztályok és felületek a Computer Vision .NET SDK főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatokkal hozza létre, és a legtöbb képművelet végrehajtásához használja.|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Ez az osztály további metódusokat tartalmaz a **ComputerVisionClient**.|
@@ -108,7 +108,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a ( `COMPUTER_VISION_SUBSCRIPTION_KEY`z) nevű Computer Vision kulcshoz.
+> Ez a rövid útmutató feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Computer Vision kulcshoz és végponthoz, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
 
 Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) objektum létrehozásához.
 
@@ -118,17 +118,17 @@ Valószínűleg ezt a metódust szeretné hívni a `Main` metódusban.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Rendszerkép elemzése
+## <a name="analyze-an-image"></a>Kép elemzése
 
-A következő kód egy metódust határoz `AnalyzeImageUrl`meg, amely az ügyfél-objektumot használja egy távoli rendszerkép elemzéséhez és az eredmények kinyomtatásához. A metódus a szöveges leírást, a kategorizálást, a címkék listáját, az észlelt arcokat, a felnőtt tartalom jelzőit, a fő színeket és a képtípust adja vissza.
+A következő kód egy metódust határoz meg, `AnalyzeImageUrl`, amely az ügyfél-objektumot használja egy távoli rendszerkép elemzéséhez és az eredmények kinyomtatásához. A metódus a szöveges leírást, a kategorizálást, a címkék listáját, az észlelt arcokat, a felnőtt tartalom jelzőit, a fő színeket és a képtípust adja vissza.
 
-Adja hozzá a metódus hívását `Main` a metódushoz.
+Adja hozzá a metódus hívását a `Main` metódushoz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyzeinmain)]
 
 ### <a name="set-up-test-image"></a>Tesztelési rendszerkép beállítása
 
-A **program** osztályban mentse a hivatkozást az elemezni kívánt rendszerkép URL-címére.
+A **program** osztályban mentse az elemezni kívánt rendszerkép URL-címére mutató hivatkozást.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyze_url)]
 
@@ -199,7 +199,7 @@ A következő kód az észlelt színattribútumokat nyomtatja ki a képen, péld
 
 ### <a name="get-domain-specific-content"></a>Tartományhoz tartozó tartalom beolvasása
 
-A Computer Vision speciális modellt használhat a képek további elemzéséhez. További részletekért tekintse meg a [tartományra vonatkozó tartalmat](../concept-detecting-domain-content.md) . 
+A Computer Vision speciális modelleket használhat a képek további elemzéséhez. További részletekért tekintse meg a [tartományra vonatkozó tartalmat](../concept-detecting-domain-content.md) . 
 
 A következő kód az észlelt hírességek adatait elemzi a képen.
 
@@ -211,15 +211,15 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a képtípussal&mdash;kapcsolatos információkat jeleníti meg, legyen szó ClipArt vagy vonalas rajzolásról.
+A következő kód a képtípussal kapcsolatos információkat jeleníti meg&mdash;legyen szó ClipArt vagy vonalas rajzról.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
-A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Az ebben a szakaszban szereplő kód olyan metódust `ExtractTextUrl`határoz meg, amely az ügyfél objektumával azonosítja és Kinyeri a nyomtatott vagy kézírásos szöveget a képen.
+A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Az ebben a szakaszban szereplő kód egy olyan metódust határoz meg, `ExtractTextUrl`, amely az ügyfél objektumával azonosítja és Kinyeri a nyomtatott vagy kézírásos szöveget a képen.
 
-Adja hozzá a metódus hívását `Main` a metódushoz.
+Adja hozzá a metódus hívását a `Main` metódushoz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extracttextinmain)]
 
@@ -252,7 +252,7 @@ Adja hozzá a következő kódot a beolvasott szöveges információk elemzésé
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást az alkalmazás könyvtárából `dotnet run` a paranccsal.
+Futtassa az alkalmazást az alkalmazás könyvtárából az `dotnet run` paranccsal.
 
 ```dotnet
 dotnet run
@@ -262,10 +262,10 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API-hivatkozás (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)

@@ -1,50 +1,44 @@
 ---
-title: az Azure Monitor naplólekérdezés Workspace() kifejezés |} A Microsoft Docs
-description: A munkaterület-kifejezés szerepel az Azure Monitor log-lekérdezés adatokat lekérni egy adott munkaterület ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést.
-services: log-analytics
-documentationcenter: ''
+title: munkaterület () kifejezés Azure Monitor napló lekérdezésében | Microsoft Docs
+description: A munkaterület kifejezés egy Azure Monitor napló lekérdezésében szerepel, hogy az adott erőforráscsoport, egy másik erőforráscsoport vagy egy másik előfizetés adott munkaterületéről olvassa be az adatok adatait.
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/10/2018
+ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785676"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932839"
 ---
-# <a name="workspace-expression-in-azure-monitor-log-query"></a>az Azure Monitor naplólekérdezés Workspace() kifejezés
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>munkaterület () kifejezés Azure Monitor napló lekérdezésében
 
-A `workspace` kifejezés szerepel az Azure Monitor lekérdezés adatokat lekérni egy adott munkaterület ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést. Ez akkor hasznos, foglalja több munkaterületről hajthat végre, a napló lekérdezésben Teljesítménynapló-adatok az Application Insights-lekérdezés, valamint a használatával adatokat lekérdezni.
+A `workspace` kifejezés egy Azure Monitor lekérdezésben van használatban, amely egy adott erőforráscsoport, egy másik erőforráscsoport vagy más előfizetés adott munkaterületéről származó adatok lekérésére szolgál. Ez hasznos lehet a naplózási adatApplication Insightsi lekérdezésekben, valamint az adatlekérdezés több munkaterületen is a napló lekérdezésében.
 
 
 ## <a name="syntax"></a>Szintaxis
 
-`workspace(`*Identifier*`)`
+`workspace(`*azonosító*`)`
 
 ## <a name="arguments"></a>Argumentumok
 
-- *Azonosító*: A munkaterület az alábbi táblázat a formátumok valamelyikével azonosítja.
+- *Azonosító*: a munkaterületet az alábbi táblázatban szereplő formátumok egyikének használatával azonosítja.
 
-| azonosító | Leírás | Példa
+| Azonosító | Leírás | Példa
 |:---|:---|:---|
-| Erőforrás neve | A munkaterület (AVAGY "összetevő neve") emberi olvasható neve | Workspace("contosoretail") |
-| Minősített név | A munkaterület az űrlap a teljes név: "subscriptionName/resourceGroup/componentName" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| azonosító | A munkaterület GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
-| Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
+| Erőforrás neve | A munkaterület emberi olvasási neve (más néven "összetevő neve") | munkaterület ("contosoretail") |
+| Minősített név | A munkaterület teljes neve a következő formában: "subscriptionName/resourceGroup/componentName" | munkaterület ("contoso/ContosoResource/ContosoWorkspace") |
+| ID (Azonosító) | A munkaterület GUID azonosítója | munkaterület ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója | munkaterület ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
 ## <a name="notes"></a>Megjegyzések
 
-* Olvasási hozzáféréssel kell rendelkeznie a munkaterületre.
-* Egy kapcsolódó kifejezés `app` , amely lehetővé teszi, hogy az Application Insights-alkalmazások lekérdezésére.
+* Olvasási hozzáféréssel kell rendelkeznie a munkaterülethez.
+* A kapcsolódó kifejezés `app`, amely lehetővé teszi Application Insights alkalmazások lekérdezését.
 
 ## <a name="examples"></a>Példák
 
@@ -69,8 +63,8 @@ union
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a [alkalmazás kifejezés](app-expression.md) hivatkozik egy Application Insights alkalmazást.
-- Megtudhatja, hogyan lehet [Azure Monitor adatok](log-query-overview.md) tárolja.
-- A teljes dokumentációt eléréséhez a [Kusto-lekérdezés nyelvi](/azure/kusto/query/).
+- Tekintse meg az [alkalmazás kifejezését](app-expression.md) Application Insights alkalmazásra való hivatkozáshoz.
+- További információ a [Azure monitor adatainak](log-query-overview.md) tárolásáról.
+- A [Kusto lekérdezési nyelv](/azure/kusto/query/)teljes dokumentációjának elérése.

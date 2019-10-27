@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása a Dynamics AX-ből Azure Data Factory használatával (előzetes verzió) | Microsoft Docs
+title: Adatok másolása a Dynamics AX-ból Azure Data Factory használatával | Microsoft Docs
 description: Megtudhatja, hogyan másolhat adatokat a Dynamics AX-ből a fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 39c03058970a412a9bc312f99c239377898e5073
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 02080388cdc6e408164de1eff208d19e4b5da60f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092103"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935671"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Adatok másolása a Dynamics AX-ből Azure Data Factory használatával (előzetes verzió)
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Adatok másolása a Dynamics AX-ból Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Dynamics AX-forrásból való másolásához. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Dynamics AX-forrásból való másolásához. A cikk a [másolási tevékenységre épül Azure Data Factoryban](copy-activity-overview.md), amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -30,14 +30,14 @@ Ez a Dynamics AX-összekötő a következő tevékenységek esetében támogatot
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az adatok a Dynamics AX-ből bármely támogatott fogadó adattárba másolhatók. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+Az adatok a Dynamics AX-ből bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként és a fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Pontosabban, ez a Dynamics AX-összekötő támogatja a Dynamics AX-adatok másolását a **OData protokoll** használatával az **egyszerű szolgáltatás hitelesítésével**.
 
 >[!TIP]
 >Ezzel az összekötővel az adatok a **Dynamics 365-pénzügyi és-műveletekből**is másolhatók. Tekintse át a Dynamics 365 [OData-támogatás](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) és- [hitelesítés módszerét](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -45,12 +45,12 @@ A következő szakaszokban részletesen ismertetjük a Dynamics AX-összekötőh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egyszerű szolgáltatásnév hitelesítése használatához kövesse az alábbi lépéseket:
+Az egyszerű szolgáltatás hitelesítésének használatához kövesse az alábbi lépéseket:
 
-1. Regisztráljon az Azure Active Directoryban (Azure AD) application entitás a következő [regisztrálja az alkalmazást az Azure AD-bérlő](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+1. Az alkalmazás [Azure ad-Bérlővel való regisztrálását](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)követően regisztráljon egy Azure Active Directory (Azure ad) alkalmazásbeli entitást. Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
 
     - Alkalmazásazonosító
-    - Alkalmazáskulcs
+    - Alkalmazás kulcsa
     - Bérlőazonosító
 
 2. Nyissa meg a Dynamics AX-t, és adjon neki megfelelő engedélyt a szolgáltatásnak a Dynamics AX eléréséhez.
@@ -63,11 +63,11 @@ A Dynamics AX társított szolgáltatás a következő tulajdonságokat támogat
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **DynamicsAX**értékre kell beállítani. |Igen |
 | url | A Dynamics AX (vagy a Dynamics 365 pénzügyi és műveleti) példányának OData-végpontja. |Igen |
-| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
-| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
-| aadResourceId | Határozza meg az HRE-erőforrást, amelyhez engedélyt kér. Ha például a Dynamics URL-cím `https://sampledynamics.sandbox.operations.dynamics.com/data/`, a megfelelő HRE-erőforrás általában. `https://sampledynamics.sandbox.operations.dynamics.com` | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Kiválaszthatja Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. A Azure Portal jobb felső sarkában lévő egér fölé helyezve lekéri. | Igen |
+| aadResourceId | Határozza meg az HRE-erőforrást, amelyhez engedélyt kér. Ha például a Dynamics URL-cím `https://sampledynamics.sandbox.operations.dynamics.com/data/`, a megfelelő HRE-erőforrás általában `https://sampledynamics.sandbox.operations.dynamics.com`. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Kiválaszthatja Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa**
 
@@ -99,14 +99,14 @@ A Dynamics AX társított szolgáltatás a következő tulajdonságokat támogat
 
 Ez a szakasz a Dynamics AX-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). 
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md). 
 
 Ha adatokat szeretne másolni a Dynamics AX-ból, állítsa az adatkészlet **Type (típus** ) tulajdonságát **DynamicsAXResource**értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet **Type** tulajdonságát **DynamicsAXResource**értékre kell állítani. | Igen |
-| path | A Dynamics AX OData entitás elérési útja. | Igen |
+| elérési útja | A Dynamics AX OData entitás elérési útja. | Igen |
 
 **Példa**
 
@@ -131,16 +131,16 @@ Ha adatokat szeretne másolni a Dynamics AX-ból, állítsa az adatkészlet **Ty
 
 Ez a szakasz a Dynamics AX-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
 
 ### <a name="dynamics-ax-as-source"></a>Dynamics AX forrásként
 
-Az adatok Dynamics AX-ből való másolásához állítsa a **forrás** típusát a másolás tevékenység **DynamicsAXSource**értékére. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok Dynamics AX-ből való másolásához állítsa a **forrás** típusát a másolás tevékenység **DynamicsAXSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának **Type** tulajdonságát **DynamicsAXSource**értékre kell állítani. | Igen |
-| query | OData-lekérdezési beállítások az adatszűréshez. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az összekötő a következő összevont URL-címről `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`másolja az adatait:. További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | OData-lekérdezési beállítások az adatszűréshez. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: az összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
@@ -179,6 +179,6 @@ Az adatok Dynamics AX-ből való másolásához állítsa a **forrás** típusá
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Másolási tevékenységet támogatja az adatforrások és az Azure Data Factoryban fogadók adattárak listáját lásd: [támogatott adattárak és formátumok](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md##supported-data-stores-and-formats)című témakörben.

@@ -3,26 +3,21 @@ title: Ismerkedés a Azure Monitor-naplózási lekérdezésekkel | Microsoft Doc
 description: Ez a cikk egy oktatóanyagot tartalmaz a naplók Azure Monitorban való írásának első lépéseihez.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894302"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933026"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
 
-
-> [!NOTE]
-> Az oktatóanyag elvégzése előtt fejezze be [a Azure Monitor log Analytics első lépéseit](get-started-portal.md) .
-
 > [!NOTE]
 > Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://portal.loganalytics.io/demo), amely rengeteg mintavételi adatmennyiséget tartalmaz.
-
 
 Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monitor. A következőket fogja megtanítani:
 
@@ -36,6 +31,10 @@ Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monito
 
 A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: az [Azure Monitor log Analytics használatának első lépései](get-started-portal.md).<br>
 További információ a Azure Monitor naplózott lekérdezésekről: [Azure monitor-lekérdezések áttekintése](log-query-overview.md).
+
+Kövesse az alábbi oktatóanyag videós verzióját:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Új lekérdezés írása
 A lekérdezések a táblanév vagy a *keresési* paranccsal kezdődhetnek. A táblázat nevével kell kezdődnie, mert egyértelmű hatókört határoz meg a lekérdezéshez, és javítja a lekérdezés teljesítményét és az eredmények relevanciáját.

@@ -3,16 +3,16 @@ title: Monitorozási megoldások leltára az Azure-ban | Microsoft Docs
 description: A Azure Monitor figyelési megoldásai olyan logikai, vizualizációs és adatgyűjtési szabályok gyűjteményei, amelyek egy adott problémás terület körüli metrikákat biztosítanak.  Ez a cikk a Microsoft által elérhető figyelési megoldások listáját, valamint az adatgyűjtési módszerekkel és gyakorisággal kapcsolatos adatokat tartalmazza.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: article
+ms.topic: conceptual
 author: MGoedtel
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 1f93ada1a6fb6b87c79a3713e80ebfefae9fe56f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 6012a74c00b64c818434ea1744d86c6cf67dd463
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900634"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931332"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Leltár-és adatgyűjtési részletek az Azure-beli monitorozási megoldásokhoz
 A [monitorozási megoldások](solutions.md) kihasználják az Azure szolgáltatásait, hogy további információkat szolgáltassanak egy adott alkalmazás vagy szolgáltatás működéséről. A figyelési megoldások jellemzően gyűjtik a naplózási adatokat, és lekérdezéseket és nézeteket biztosítanak az összegyűjtött adatok elemzéséhez. A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek.

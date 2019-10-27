@@ -1,24 +1,18 @@
 ---
 title: Útmutató az Azure-Log Analytics tárolt személyes adatszolgáltatásokhoz | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan kezelheti az Azure Log Analyticsban tárolt személyes információkat, valamint az azonosítására és eltávolítására szolgáló metódusokat.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617306"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932129"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és Application Insights tárolt személyes adatszolgáltatásokhoz
 
@@ -43,39 +37,39 @@ A Log Analytics egy rugalmas tároló, amely egy séma az adatokhoz való előí
 
 ### <a name="log-data"></a>Naplóadatok
 
-* *IP-címek*: A Log Analytics számos különböző típusú IP-információt gyűjt az egyes táblákon. Az alábbi lekérdezés például megjeleníti az összes olyan táblát, amelyben az IPv4-címek gyűjtése az elmúlt 24 órában megtörtént:
+* *IP-címek*: a log Analytics számos különböző típusú IP-információt gyűjt az egyes táblák között. Az alábbi lekérdezés például megjeleníti az összes olyan táblát, amelyben az IPv4-címek gyűjtése az elmúlt 24 órában megtörtént:
     ```
     search * 
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *Felhasználói azonosítók*: A felhasználói azonosítók számos különböző megoldásban és táblában találhatók. A keresési paranccsal kereshet egy adott felhasználónevet a teljes adatkészletben:
+* *Felhasználói azonosítók*: a felhasználói azonosítók számos különböző megoldásban és táblában találhatók. A keresési paranccsal kereshet egy adott felhasználónevet a teljes adatkészletben:
     ```
     search "[username goes here]"
     ```
   Ne felejtse el megkeresni, hogy ne csak az ember számára olvasható felhasználóneveket, hanem a GUID azonosítókat is, amelyek közvetlenül visszavezethetők egy adott felhasználó számára.
-* *Eszközök azonosítói*: A felhasználói azonosítók, például az eszközök azonosítói néha "privát" is tekinthetők. Használja ugyanazt a megközelítést, mint a fent felsorolt felhasználói azonosítók a táblák azonosításához, ahol ez problémát jelenthet. 
-* *Egyéni*adatértékek: A Log Analytics különböző módszerekkel teszi lehetővé a gyűjtemény használatát: egyéni naplók és egyéni mezők, a http-adatgyűjtő [API](../../azure-monitor/platform/data-collector-api.md) és a rendszer-eseménynaplók részeként gyűjtött egyéni adatok. Ezek mindegyike bizalmas személyes adatmennyiséget tartalmaz, és meg kell vizsgálni, hogy van-e ilyen adatmennyiség.
-* *Megoldás – rögzített*adatértékek: Mivel a megoldási mechanizmus egy nyílt végű, javasoljuk, hogy tekintse át a megoldások által generált összes táblázatot a megfelelőség biztosítása érdekében.
+* Az *eszközök*azonosítói: például a felhasználói azonosítók, az eszközök azonosítói esetenként "privát" is tekinthetők. Használja ugyanazt a megközelítést, mint a fent felsorolt felhasználói azonosítók a táblák azonosításához, ahol ez problémát jelenthet. 
+* *Egyéni adatok*: a log Analytics különböző módszerekkel teszi lehetővé a gyűjtemény használatát: az egyéni naplók és az egyéni mezők, a http-adatgyűjtő [API](../../azure-monitor/platform/data-collector-api.md) és a rendszer-eseménynaplók részeként gyűjtött egyéni adatok. Ezek mindegyike bizalmas személyes adatmennyiséget tartalmaz, és meg kell vizsgálni, hogy van-e ilyen adatmennyiség.
+* *Megoldás – rögzített adatértékek*: mivel a megoldási mechanizmus egy nyílt végű, javasoljuk, hogy tekintse át a megoldások által generált összes táblázatot a megfelelőség biztosítása érdekében.
 
 ### <a name="application-data"></a>Alkalmazásadatok
 
-* *IP-címek*: Míg a Application Insights alapértelmezés szerint az összes IP-cím mezőt "0.0.0.0"-re írja, ez egy meglehetősen gyakori minta, amely felülbírálja ezt az értéket a tényleges felhasználói IP-címmel a munkamenet-információk fenntartása érdekében. Az alábbi elemzési lekérdezés használatával bármely olyan tábla megkereshető, amely az elmúlt 24 órában a "0.0.0.0" értéktől eltérő IP-cím oszlopban található értékeket tartalmazza:
+* *IP-címek*: míg a Application Insights alapértelmezés szerint az összes IP-cím mezőt a "0.0.0.0" értékre írja, ez egy meglehetősen gyakori minta, amely felülbírálja ezt az értéket a tényleges felhasználói IP-címmel a munkamenet-információk fenntartása érdekében. Az alábbi elemzési lekérdezés használatával bármely olyan tábla megkereshető, amely az elmúlt 24 órában a "0.0.0.0" értéktől eltérő IP-cím oszlopban található értékeket tartalmazza:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Felhasználói azonosítók*: Alapértelmezés szerint a Application Insights véletlenszerűen generált azonosítókat fog használni a felhasználók és a munkamenetek nyomon követéséhez. Gyakori azonban, hogy ezek a mezők felülbírálva vannak az alkalmazáshoz tartozó AZONOSÍTÓk tárolására. Például: felhasználónevek, HRE GUID azonosítók stb. Ezeket az azonosítókat gyakran tekintik a személyes adatként való hatókörnek, ezért azokat megfelelően kell kezelni. Javasoljuk, hogy az ilyen azonosítók elolvasása vagy névtelenség érdekében mindig próbálkozzon. Ezek az értékek általában a következők: session_Id, user_Id, user_AuthenticatedId, user_AccountId, valamint customDimensions.
-* *Egyéni*adatértékek: Application Insights lehetővé teszi egyéni dimenziók egy csoportjának hozzáfűzését bármely adattípushoz. Ezek a méretek *bármilyen* adattal rendelkezhetnek. Az alábbi lekérdezés segítségével azonosíthatja az elmúlt 24 órában összegyűjtött egyéni dimenziókat:
+* *Felhasználói azonosítók*: alapértelmezés szerint a Application Insights véletlenszerűen generált azonosítókat fog használni a felhasználói és munkamenet-követéshez. Gyakori azonban, hogy ezek a mezők felülbírálva vannak az alkalmazáshoz tartozó AZONOSÍTÓk tárolására. Például: felhasználónevek, HRE GUID azonosítók stb. Ezeket az azonosítókat gyakran tekintik a személyes adatként való hatókörnek, ezért azokat megfelelően kell kezelni. Javasoljuk, hogy az ilyen azonosítók elolvasása vagy névtelenség érdekében mindig próbálkozzon. Ezek az értékek általában a következők: session_Id, user_Id, user_AuthenticatedId, user_AccountId, valamint customDimensions.
+* *Egyéni adatmennyiség*: a Application Insights lehetővé teszi egyéni dimenziók egy csoportjának hozzáfűzését bármely adattípushoz. Ezek a méretek *bármilyen* adattal rendelkezhetnek. Az alábbi lekérdezés segítségével azonosíthatja az elmúlt 24 órában összegyűjtött egyéni dimenziókat:
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Memóriában tárolt és*átvitt adatforgalom: Application Insights nyomon követi a kivételeket, a kérelmeket, a függőségi hívásokat és a nyomkövetéseket. A magánjellegű adatokat gyakran a kód és a HTTP-hívás szintjén lehet gyűjteni. Tekintse át a kivételeket, a kérelmeket, a függőségeket és a nyomkövetési táblázatokat az ilyen jellegű adat azonosításához. Ha lehetséges, használja a [telemetria](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) -inicializálást, ahol a lehető legtöbbet használhatja ezeket az adatfájlokat.
-* *Snapshot Debugger rögzítések*: A Application Insights [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) szolgáltatása lehetővé teszi a hibakeresési Pillanatképek gyűjtését, ha kivétel történik az alkalmazás éles példányán. A pillanatképek lehetővé teszik a teljes verem nyomon követését, amely a kivételekhez vezet, valamint a helyi változók értékeit a verem minden lépésében. Ez a funkció sajnos nem teszi lehetővé a Snap pontok szelektív törlését, illetve az adatokhoz való programozott hozzáférést a pillanatképen belül. Ezért ha az alapértelmezett pillanatkép-megőrzési arány nem felel meg a megfelelőségi követelményeknek, a javaslat a funkció kikapcsolására szolgál.
+* *Memóriában tárolt és átvitel*alatt álló adat: Application Insights a kivételeket, a kérelmeket, a függőségi hívásokat és a nyomkövetéseket fogja követni. A magánjellegű adatokat gyakran a kód és a HTTP-hívás szintjén lehet gyűjteni. Tekintse át a kivételeket, a kérelmeket, a függőségeket és a nyomkövetési táblázatokat az ilyen jellegű adat azonosításához. Ha lehetséges, használja a [telemetria-inicializálást](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) , ahol a lehető legtöbbet használhatja ezeket az adatfájlokat.
+* *Snapshot Debugger Captures*: a Application Insights [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) szolgáltatása lehetővé teszi a hibakeresési Pillanatképek gyűjtését, ha kivétel történik az alkalmazás éles példányán. A pillanatképek lehetővé teszik a teljes verem nyomon követését, amely a kivételekhez vezet, valamint a helyi változók értékeit a verem minden lépésében. Ez a funkció sajnos nem teszi lehetővé a Snap pontok szelektív törlését, illetve az adatokhoz való programozott hozzáférést a pillanatképen belül. Ezért ha az alapértelmezett pillanatkép-megőrzési arány nem felel meg a megfelelőségi követelményeknek, a javaslat a funkció kikapcsolására szolgál.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Magánjellegű adatexportálás és-törlés
 
@@ -95,7 +89,7 @@ Az adatkérések megtekintésére és exportálására a [log Analytics lekérde
 > [!WARNING]
 > A Log Analyticsban lévő törlés romboló és nem visszafordítható! A végrehajtás során rendkívül körültekintően járjon el.
 
-Elérhetővé tettük a *kiürítési* API elérési útját az adatvédelem részeként. Ezt az elérési utat takarékosan kell használni a művelethez kapcsolódó kockázat miatt, a lehetséges teljesítményre gyakorolt hatás, valamint a teljes összesítések, a mérések és a Log Analytics-adat egyéb szempontjainak eldöntése. Tekintse meg a [személyes](#strategy-for-personal-data-handling) adatkezeléssel foglalkozó témakört, amely a magánjellegű információk kezelésére szolgáló alternatív módszereket ismerteti.
+Elérhetővé tettük a *kiürítési* API elérési útját az adatvédelem részeként. Ezt az elérési utat takarékosan kell használni a művelethez kapcsolódó kockázat miatt, a lehetséges teljesítményre gyakorolt hatás, valamint a teljes összesítések, a mérések és a Log Analytics-adat egyéb szempontjainak eldöntése. Tekintse meg a [személyes adatkezeléssel](#strategy-for-personal-data-handling) foglalkozó témakört, amely a magánjellegű információk kezelésére szolgáló alternatív módszereket ismerteti.
 
 A kiürítés egy magas jogosultsági szintű művelet, amelyet az Azure-ban egyetlen alkalmazás vagy felhasználó sem tartalmaz (beleértve az erőforrás tulajdonosát is), anélkül, hogy külön szerepkört kellene kiadni a Azure Resource Managerban. Ez a szerepkör _Adattisztító_ , és az adatvesztés lehetősége miatt körültekintően kell delegálni. 
 
@@ -130,6 +124,6 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 > [!IMPORTANT]
 >  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, mivel jelentős hatással vannak az Application Insights által használt adatplatformra, **a törlési műveletek befejezésére vonatkozó formális SLA 30 napon belül be van állítva**.
 
-## <a name="next-steps"></a>További lépések
-- Ha többet szeretne megtudni a Log Analytics adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [log Analytics az](../../azure-monitor/platform/data-security.md)adatbiztonságot ismertető témakört.
-- Ha többet szeretne megtudni a Application Insights adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [Application Insights az](../../azure-monitor/app/data-retention-privacy.md)adatbiztonságot ismertető témakört.
+## <a name="next-steps"></a>Következő lépések
+- Ha többet szeretne megtudni a Log Analytics adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [log Analytics az adatbiztonságot](../../azure-monitor/platform/data-security.md)ismertető témakört.
+- Ha többet szeretne megtudni a Application Insights adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [Application Insights az adatbiztonságot](../../azure-monitor/app/data-retention-privacy.md)ismertető témakört.

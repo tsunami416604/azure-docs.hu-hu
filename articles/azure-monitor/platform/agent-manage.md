@@ -1,24 +1,18 @@
 ---
 title: Az Azure Log Analytics Agent kezelése | Microsoft Docs
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában a gépen üzembe helyezett Log Analytics Windows vagy Linux rendszerű ügynök életciklusa során fog elvégezni.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/14/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 06/14/2019
+ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67146291"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932789"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>A Windows és a Linux Log Analytics ügynökének kezelése és karbantartása
 
@@ -36,13 +30,13 @@ A Windows és a Linux rendszerhez készült Log Analytics ügynök manuálisan v
 
 ### <a name="upgrade-windows-agent"></a>Windows-ügynök frissítése 
 
-Ha egy Windows rendszerű virtuális gépen lévő ügynököt a log Analytics virtuálisgép-bővítmény használatával nem telepített legújabb verzióra szeretné frissíteni, akkor a parancssorból, parancsfájlból vagy más automatizálási megoldásból, vagy a\<MMASetup\>-platform. msi telepítő használatával futtathatja. Varázsló.  
+Ha a Windows rendszerű virtuális gépen lévő ügynököt a Log Analytics virtuálisgép-bővítmény használatával nem telepített legújabb verzióra szeretné frissíteni, akkor a parancssorból, a parancsfájlból vagy más automatizálási megoldásból, vagy a MMASetup-\<platform\>. msi telepítővarázslója használatával kell futtatnia.  
 
 Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb verzióját a Log Analytics munkaterületről.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics**munkaterületek lehetőséget.
+2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
 
 3. Log Analytics munkaterületek listájában válassza ki a munkaterületet.
 
@@ -58,11 +52,11 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. A telepítővarázsló elindításához futtassa a **MMASetup-\<platform\>. exe fájlt** .
+2. Futtassa a **MMASetup-\<platform\>. exe fájlt** a telepítővarázsló elindításához.
 
 3. A telepítővarázsló első lapján kattintson a **tovább**gombra.
 
-4. A **Microsoft monitoring Agent telepítése** párbeszédpanelen kattintson az Elfogadom gombra a licencszerződés elfogadásához.
+4. A **Microsoft monitoring Agent telepítése** **párbeszédpanelen kattintson az Elfogadom gombra a** licencszerződés elfogadásához.
 
 5. A **Microsoft monitoring Agent telepítése** párbeszédpanelen kattintson a **frissítés**elemre. Az állapot lapon a frissítés állapota látható.
 
@@ -72,7 +66,7 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Az ügynök telepítési fájljainak kibontásához emelt szintű parancssorból `MMASetup-<platform>.exe /c` futtassa a parancsot, és kérni fogja a fájlok kinyerésének elérési útját. Azt is megteheti, hogy az argumentumok `MMASetup-<platform>.exe /c /t:<Full Path>`átadásával megadhatja az elérési utat.
+2. Az ügynök telepítési fájljainak kibontásához egy rendszergazda jogú parancssorból futtassa `MMASetup-<platform>.exe /c`, és a rendszer kérni fogja a fájlok kinyerésének elérési útját. Másik lehetőségként megadhatja az elérési utat a `MMASetup-<platform>.exe /c /t:<Full Path>`argumentumok átadásával.
 
 3. Futtassa a következő parancsot, ahol a D:\ a frissítési naplófájl helye.
 
@@ -82,7 +76,7 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 ### <a name="upgrade-linux-agent"></a>Linux-ügynök frissítése 
 
-A korábbi verziókról (> 1.0.0-47) való frissítés támogatott. Ha a `--upgrade` paranccsal végrehajtja a telepítést, az a legújabb verzióra frissíti az ügynök összes összetevőjét.
+A korábbi verziókról (> 1.0.0-47) való frissítés támogatott. A `--upgrade` parancs telepítésének végrehajtása az ügynök összes összetevőjét frissíti a legújabb verzióra.
 
 Futtassa az alábbi parancsot az ügynök frissítéséhez.
 
@@ -137,7 +131,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Ha korábban már használta a parancssort vagy a parancsfájlt az ügynök telepítésére vagy konfigurálására, `EnableAzureOperationalInsights` a `AddCloudWorkspace` és `RemoveCloudWorkspace`a helyére váltott.
+>Ha korábban már használta a parancssort vagy a parancsfájlt az ügynök telepítésére vagy konfigurálására, `EnableAzureOperationalInsights` `AddCloudWorkspace` és `RemoveCloudWorkspace`váltotta fel.
 >
 
 ### <a name="linux-agent"></a>Linux-ügynök
@@ -244,16 +238,16 @@ A következő eljárások egyikével távolíthatja el a Windows-vagy Linux-ügy
 3. A **programok és szolgáltatások**területen kattintson a **Microsoft monitoring Agent**elemre, majd az **Eltávolítás**elemre, végül pedig az **Igen**gombra.
 
 >[!NOTE]
->Az ügynök telepítővarázslója a **MMASetup-\<platform\>. exe fájlra**duplán kattintva is futtatható, amely a Azure Portal munkaterületéről tölthető le.
+>Az ügynök telepítővarázslója a **MMASetup-\<platform\>. exe**fájlra duplán kattintva is futtatható, amely a Azure Portal munkaterületéről tölthető le.
 
 #### <a name="uninstall-from-the-command-line"></a>Eltávolítás a parancssorból
 Az ügynök letöltött fájlja egy, a IExpress-mel létrehozott, önálló telepítési csomag. Az ügynök és a támogató fájlok telepítőprogramja a csomagban található, és a megfelelő eltávolításhoz a következő példában látható parancssor használatával kell kinyerni.
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Az ügynök telepítési fájljainak kibontásához emelt szintű parancssorból `extract MMASetup-<platform>.exe` futtassa a parancsot, és kérni fogja a fájlok kinyerésének elérési útját. Azt is megteheti, hogy az argumentumok `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`átadásával megadhatja az elérési utat. A IExpress által támogatott parancssori kapcsolókról további információt a [IExpress parancssori kapcsolói](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) című témakörben talál, majd az igényeinek megfelelően frissítheti a példát.
+2. Az ügynök telepítési fájljainak kibontásához egy rendszergazda jogú parancssorból futtassa `extract MMASetup-<platform>.exe`, és a rendszer kérni fogja a fájlok kinyerésének elérési útját. Másik lehetőségként megadhatja az elérési utat a `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`argumentumok átadásával. A IExpress által támogatott parancssori kapcsolókról további információt a [IExpress parancssori kapcsolói](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) című témakörben talál, majd az igényeinek megfelelően frissítheti a példát.
 
-3. A parancssorba írja be `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`a következőt:.
+3. A parancssorba írja be a következőt: `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Linux-ügynök
 Az ügynök eltávolításához futtassa az alábbi parancsot a Linux rendszerű számítógépen. A *--purge* argumentum teljesen eltávolítja az ügynököt és annak konfigurációját.
@@ -292,14 +286,14 @@ A következő lépések végrehajtásával konfigurálhatja a Linux rendszerhez 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. A fájl szerkesztése`/etc/opt/omi/conf/omiserver.conf`
+1. A fájl szerkesztése `/etc/opt/omi/conf/omiserver.conf`
 
-2. Győződjön meg arról, hogy a `httpsport=` kezdetű sor a 1270-es portot határozza meg. Például:`httpsport=1270`
+2. Győződjön meg arról, hogy a `httpsport=`tól kezdődő vonal a 1270-es portot határozza meg. Például: `httpsport=1270`
 
-3. A (z) rendszer újraindítása:`sudo /opt/omi/bin/service_control restart`
+3. Indítsa újra a (z): `sudo /opt/omi/bin/service_control restart`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha problémák merülnek fel a Linux-ügynök telepítésekor vagy felügyeletekor, tekintse át [a Linux-ügynök hibaelhárítását](agent-linux-troubleshoot.md) ismertető témakört.
+- Ha problémák merülnek fel a Linux-ügynök telepítésekor vagy felügyeletekor, tekintse át [a Linux-ügynök hibaelhárítását ismertető témakört](agent-linux-troubleshoot.md) .
 
-- Ha problémák merülnek fel a Windows-ügynök telepítésekor vagy felügyeletekor, tekintse át [a Windows-ügynök hibaelhárítását](agent-windows-troubleshoot.md) ismertető témakört.
+- Ha problémák merülnek fel a Windows-ügynök telepítésekor vagy felügyeletekor, tekintse át [a Windows-ügynök hibaelhárítását ismertető témakört](agent-windows-troubleshoot.md) .

@@ -1,48 +1,42 @@
 ---
-title: Informatikai szolgáltatásfelügyeleti összekötő az Azure-ban kapcsolódni a Service Manager webes alkalmazás létrehozása a parancsfájl automatikus |} A Microsoft Docs
-description: Csatlakozás az IT Service Management-összekötő az Azure-ban, és központilag felügyelhető és kezelhető az ITSM-munkatétel egy automatizált szkript használatával a Service Manager webes alkalmazás létrehozása.
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Automatizált parancsfájl Service Manager webalkalmazás létrehozásához az Azure-beli IT-szolgáltatásmenedzsmenti csatolóhoz való kapcsolódáshoz | Microsoft Docs
+description: Hozzon létre egy Service Manager webalkalmazást automatikus parancsfájl használatával az Azure-beli IT-szolgáltatásmenedzsmenti csatolóhoz való kapcsolódáshoz, valamint a ITSM munkaelemek központi figyeléséhez és kezeléséhez.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: JYOTHIRMAISURI
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479704"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932247"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Az automatizált szkript használatával a Service Manager webes alkalmazás létrehozása
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
-A következő szkript használatával a webes alkalmazás a Service Manager-példány létrehozása. További információ a Service Manager-kapcsolat érhető el: [A Service Manager-webalkalmazás](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+A következő szkripttel hozza létre a webalkalmazást a Service Manager példányához. Service Manager kapcsolattal kapcsolatos további információkért tekintse meg a [következőt: Service Manager webalkalmazás](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Futtassa a parancsfájlt azáltal, hogy a következő szükséges adatokat:
+Futtassa a szkriptet a következő szükséges részletek megadásával:
 
 - Azure-előfizetés részletei
 - Erőforráscsoport neve
-- Location
-- A Service Manager-kiszolgálóadatok (kiszolgáló neve, tartomány, felhasználónév és jelszó)
-- A webalkalmazás-hely előtagja
-- A ServiceBus-Namespace.
+- Földrajzi egység
+- Service Manager kiszolgáló adatai (kiszolgáló neve, tartomány, Felhasználónév és jelszó)
+- A webalkalmazás helynév-előtagja
+- ServiceBus-névtér.
 
-A parancsfájl létrehozza a webalkalmazást (valamint néhány további karakterláncok egyedi legyen) megadott neve. Állít elő a **webes alkalmazás URL-cím**, **ügyfél-azonosító**, és **titkos Ügyfélkód**.
+A szkript létrehozza a webalkalmazást a megadott névvel (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét**, az **ügyfél-azonosítót**és az **ügyfél titkos kulcsát**.
 
-Mentse ezeket az értékeket szüksége lesz ezekre az értékekre a kapcsolatot az IT Service Management-összekötő létrehozásakor.
+Mentse ezeket az értékeket, ha IT-szolgáltatásmenedzsmenti csatoló-vel létesített kapcsolatokat hoz létre.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- Windows Management Framework 5.0-s vagy újabb.
-Windows 10-es 5.1 alapértelmezés szerint rendelkezik. Letöltheti a keretrendszer [Itt](https://www.microsoft.com/download/details.aspx?id=50395):
+ Windows Management Framework 5,0 vagy újabb verzió.
+A Windows 10 alapértelmezett értéke 5,1. A keretrendszert [innen](https://www.microsoft.com/download/details.aspx?id=50395)töltheti le:
 
 Használja a következő parancsfájlt:
 

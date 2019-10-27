@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169754"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928493"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a hüvelyek között hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan telepítheti a hálózati házirend-motort, és hogy
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 > [!TIP]
 > Ha az előzetes verzióban használta a hálózati házirend szolgáltatást, azt javasoljuk, hogy [hozzon létre egy új fürtöt](#create-an-aks-cluster-and-enable-network-policy).
@@ -69,7 +69,11 @@ Ha működés közben szeretné megtekinteni a hálózati házirendeket, hozzon 
 * Adatforgalom engedélyezése a pod-címkék alapján.
 * Adatforgalom engedélyezése a névtér alapján.
 
-Először hozzon létre egy AK-fürtöt, amely támogatja a hálózati házirendet. A hálózati házirend szolgáltatás csak akkor engedélyezhető, ha a fürt létrejött. A hálózati házirend nem engedélyezhető egy meglévő AK-fürtön.
+Először hozzon létre egy AK-fürtöt, amely támogatja a hálózati házirendet. 
+
+> [!IMPORTANT]
+>
+> A hálózati házirend szolgáltatás csak akkor engedélyezhető, ha a fürt létrejött. A hálózati házirend nem engedélyezhető egy meglévő AK-fürtön.
 
 Az Azure hálózati házirendjének használatához az [Azure CNI beépülő modult][azure-cni] kell használnia, és meg kell határoznia a saját virtuális hálózatát és alhálózatait. A szükséges alhálózati tartományok megtervezésével kapcsolatos részletes információkért lásd: [speciális hálózatkezelés konfigurálása][use-advanced-networking]. A tarka hálózati házirend ugyanazzal az Azure CNI beépülő modullal vagy a Kubenet CNI beépülő modullal is használható.
 

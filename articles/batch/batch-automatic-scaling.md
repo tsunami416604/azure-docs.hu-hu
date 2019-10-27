@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
-ms.date: 10/08/2019
+ms.date: 10/24/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: ab16fc959a332076cac1d615b86d37e8c66e2f67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286694"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933701"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -105,8 +105,8 @@ A szolgáltatás által definiált változók értékeit lekérheti és beállí
 | Olvasási és írási szolgáltatás által definiált változók | Leírás |
 | --- | --- |
 | $TargetDedicatedNodes |A készlet dedikált számítási csomópontjainak megcélzott száma. A dedikált csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például a dedikált csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. <br /><br /> Előfordulhat, hogy a Batch szolgáltatás konfigurációjával létrehozott fiók nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. Előfordulhat, hogy a felhasználói előfizetés-konfigurációval létrehozott fiókban lévő készlet nem éri el a célját, ha a cél meghaladja az előfizetés megosztott alapszintű kvótáját.|
-| $TargetLowPriorityNodes |A készlet alacsony prioritású számítási csomópontjainak megcélzott száma. Az alacsony prioritású csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például az alacsony prioritású csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. Előfordulhat, hogy a készlet nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. <br /><br /> Az alacsony prioritású számítási csomópontokkal kapcsolatos további információkért lásd: [alacsony prioritású virtuális gépek használata batch használatával (előzetes verzió)](batch-low-pri-vms.md). |
-| $NodeDeallocationOption |Az a művelet, amely akkor fordul elő, amikor a számítási csomópontok el lesznek távolítva a készletből. Lehetséges értékek:<ul><li>**újravárólista**– az alapértelmezett érték. Azonnal leállítja a feladatokat, és visszahelyezi őket a feladat-várólistába, hogy azok újra legyenek ütemezve. Ez a művelet biztosítja, hogy a csomópontok megcélzott száma a lehető leggyorsabban elérhető legyen, de kevésbé hatékony, mivel a futó feladatok megszakadnak, és újra kell indítani a már elvégzett munkát. <li>**megszakítás**– leállítja a feladatokat azonnal, és eltávolítja azokat a feladat-várólistából.<li>**taskcompletion**– megvárja, amíg a jelenleg futó feladatok befejeződik, majd eltávolítja a csomópontot a készletből. Ezzel a beállítással elkerülhető a feladatok megszakítása és újravárólistába helyezése, ami a feladat elvégzése után felhasználható. <li>**retaineddata**– megvárja a csomóponton a helyi feladat által megőrzött összes adat törlését, mielőtt eltávolítja a csomópontot a készletből.</ul> |
+| $TargetLowPriorityNodes |A készlet alacsony prioritású számítási csomópontjainak megcélzott száma. Az alacsony prioritású csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például az alacsony prioritású csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. Előfordulhat, hogy a készlet nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. <br /><br /> Az alacsony prioritású számítási csomópontokkal kapcsolatos további információkért lásd: [alacsony prioritású virtuális gépek használata a Batch használatával](batch-low-pri-vms.md). |
+| $NodeDeallocationOption |Az a művelet, amely akkor fordul elő, amikor a számítási csomópontok el lesznek távolítva a készletből. Lehetséges értékek:<ul><li>**újravárólista**– az alapértelmezett érték. Azonnal leállítja a feladatokat, és visszahelyezi őket a feladat-várólistába, hogy azok újra legyenek ütemezve. Ez a művelet biztosítja, hogy a csomópontok megcélzott száma a lehető leggyorsabban elérhető legyen, de kevésbé hatékony, mivel a futó feladatok megszakadnak, és újra kell indítani a már elvégzett munkát. <li>**megszakítás**– leállítja a feladatokat azonnal, és eltávolítja azokat a feladat-várólistából.<li>**taskcompletion**– megvárja, amíg a jelenleg futó feladatok befejeződik, majd eltávolítja a csomópontot a készletből. Ezzel a beállítással elkerülhető a feladatok megszakítása és újravárólistába helyezése, ami a feladat által végzett munka pazarlását okozhatja. <li>**retaineddata**– megvárja a csomóponton a helyi feladat által megőrzött összes adat törlését, mielőtt eltávolítja a csomópontot a készletből.</ul> |
 
 > [!NOTE]
 > A `$TargetDedicatedNodes` változó a (`$TargetDedicated`) alias használatával is megadható. Hasonlóképpen, a `$TargetLowPriorityNodes` változó megadható a `$TargetLowPriority` alias használatával. Ha a képlet a teljes névvel ellátott változót és annak aliasát is beállítja, akkor a teljes névvel ellátott változóhoz rendelt érték elsőbbséget élvez.
@@ -226,7 +226,7 @@ Az előző táblázatban leírt függvények némelyike argumentumként is elfog
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-A *doubleVecList* érték a kiértékelés előtt egyetlen *doubleVec* lesz konvertálva. Ha például `v = [1,2,3]`, akkor a `avg(v)` meghívása egyenértékű a `avg(1,2,3)` hívásával. A `avg(v, 7)` hívása egyenértékű a `avg(1,2,3,7)` hívásával.
+A *doubleVecList* érték a kiértékelés előtt egyetlen *doubleVec* lesz konvertálva. Ha például `v = [1,2,3]`, akkor a `avg(v)` meghívása egyenértékű a `avg(1,2,3)`meghívásával. A `avg(v, 7)` hívása egyenértékű a `avg(1,2,3,7)` hívásával.
 
 ## <a name="getsampledata"></a>Mintaadatok beszerzése
 
@@ -238,7 +238,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | Módszer | Leírás |
 | --- | --- |
-| GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`<br/>Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból.<br/><br/>@no__t – 0 – az utolsó elérhető mintát adja vissza. A (z) `$CPUPercent` mérőszámok esetében azonban ez nem használható, mert nem lehet tudni, hogy *Mikor* gyűjtötték be a mintát. Előfordulhat, hogy a legutóbbi vagy a rendszerproblémák miatt sokkal régebbi. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben.<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` érték 20 mintát ad vissza, ha az utolsó 10 perc összes mintája megtalálható a CPUPercent előzményeiben. Ha a korábbi előzmények nem voltak elérhetők, de csak 18 mintát ad vissza. Ebben az esetben:<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` művelet meghiúsul, mert a minták csak 90 százaléka érhető el.<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres lenne.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Megadja az adatgyűjtés időkeretét, a kezdési és befejezési időpontot is beleértve.<br/><br/>A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtését és a képletek számára elérhetővé tételét késlelteti. Ha a `GetSample` metódust használja, vegye figyelembe ezt a késleltetést. Lásd az alábbi `GetSamplePercent` értéket. |
+| GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`<br/>Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból.<br/><br/>`GetSample(1)` az utolsó elérhető mintát adja vissza. A (z) `$CPUPercent` mérőszámok esetében azonban ez nem használható, mert nem lehet tudni, hogy *Mikor* gyűjtötték be a mintát. Előfordulhat, hogy a legutóbbi vagy a rendszerproblémák miatt sokkal régebbi. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben.<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 mintát ad vissza, ha az utolsó 10 perc összes mintája megtalálható a CPUPercent előzményeiben. Ha a korábbi előzmények nem voltak elérhetők, de csak 18 mintát ad vissza. Ebben az esetben:<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` sikertelen, mert csak a minták 90 százaléka érhető el.<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Megadja az adatgyűjtés időkeretét, a kezdési és befejezési időpontot is beleértve.<br/><br/>A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtését és a képletek számára elérhetővé tételét késlelteti. Ha a `GetSample` metódust használja, vegye figyelembe ezt a késleltetést. Lásd az alábbi `GetSamplePercent` értéket. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
 | Darabszám () |A metrikus előzményekben szereplő minták teljes számát adja vissza. |
 | HistoryBeginTime() |A metrika legrégebbi rendelkezésre állási mintájának időbélyegét adja vissza. |
@@ -253,7 +253,7 @@ A Batch szolgáltatás rendszeres időközönként mintákat vesz fel a feladat-
 
 **Minta százaléka**
 
-Ha a rendszer @no__t – 0 értéket ad át a `GetSample()` metódusnak vagy a `GetSamplePercent()` metódusnak, a _százalék_ a Batch szolgáltatás által rögzített teljes lehetséges számú minta és az autoskála számára elérhető minták számának összehasonlítására utal. képlet.
+Ha a rendszer átadja a `samplePercent` a `GetSample()` metódusnak, vagy a `GetSamplePercent()` metódust hívja meg, a _százalék_ a Batch szolgáltatás által rögzített összes lehetséges számú minta és az általa elérhető minták számának összehasonlítására utal. a képletek autoskálázása.
 
 Tekintsük át például egy 10 perces TimeSpan. Mivel a mintákat 30 másodpercenként rögzítik egy 10 perces TimeSpan belül, a Batch által rögzített minták maximális száma 20 minta (2 percenként). A jelentéskészítési mechanizmus és az Azure-beli egyéb problémák miatt azonban csak 15 olyan minta lehet, amely az autoskálázási képlet számára elérhető az olvasáshoz. Tehát például az adott 10 perces időszakra vonatkozóan a képletnek csak a rögzített minták teljes számának 75%-a lehet elérhető.
 
@@ -281,7 +281,7 @@ A további biztonság érdekében kényszerítheti a képletek kiértékelését
 $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);
 ```
 
-Mivel előfordulhat, hogy a minta rendelkezésre állása késésben van, fontos, hogy mindig olyan időtartományt határozzon meg, amely egy percnél régebbi kezdési időpontot használ. Körülbelül egy percet vesz igénybe, hogy a minták propagálják a rendszert, ezért a `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` tartományon belüli minták nem érhetők el. Újra használhatja a `GetSample()` százalék paramétert egy adott minta százalékos követelményének kényszerítéséhez.
+Mivel előfordulhat, hogy a minta rendelkezésre állása késésben van, fontos, hogy mindig olyan időtartományt határozzon meg, amely egy percnél régebbi kezdési időpontot használ. Körülbelül egy percet vesz igénybe, hogy a minták a rendszeren keresztül propagálva legyenek, ezért előfordulhat, hogy a tartomány `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` nem érhető el. Újra használhatja a `GetSample()` százalék paramétert egy adott minta százalékos követelményének kényszerítéséhez.
 
 > [!IMPORTANT]
 > Azt **javasoljuk** , hogy **ne *csak* a `GetSample(1)` elemre támaszkodjon az autoscale-képletekben**. Ennek az az oka, hogy `GetSample(1)` alapvetően a Batch szolgáltatásnak szól, "adj nekem az utolsó mintát, függetlenül attól, hogy milyen régen lekérte." Mivel ez csak egyetlen minta, és lehet egy régebbi minta is, nem lehet reprezentatív a legutóbbi feladat vagy erőforrás állapotának nagyobb képére. Ha `GetSample(1)` értéket használ, győződjön meg arról, hogy az egy nagyobb utasítás része, és nem az egyetlen adatpont, amelyet a képlet támaszkodik.
@@ -527,7 +527,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 Kiértékelheti a képletet, mielőtt alkalmazná egy készletre. Ily módon tesztelheti a képletet, hogy megtudja, hogyan értékeli ki a képleteket, mielőtt a képletet éles környezetben helyezi el.
 
-Egy automatikus méretezési képlet kiértékeléséhez először engedélyeznie kell az automatikus skálázást a készleten érvényes képlettel. Ha olyan készlethez szeretne tesztelni egy képletet, amelyen még nincs engedélyezve az automatikus skálázás, az automatikus skálázás első engedélyezésekor használja az egysoros képletet @no__t – 0. Ezután a következők egyikével értékelje ki a tesztelni kívánt képletet:
+Egy automatikus méretezési képlet kiértékeléséhez először engedélyeznie kell az automatikus skálázást a készleten érvényes képlettel. Ha olyan készlethez szeretne tesztelni egy képletet, amelyen még nincs engedélyezve az automatikus skálázás, használja az egysoros képletet `$TargetDedicatedNodes = 0`, amikor először engedélyezi az automatikus skálázást. Ezután a következők egyikével értékelje ki a tesztelni kívánt képletet:
 
 * [BatchClient. PoolOperations. EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) vagy [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514756"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926655"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -150,7 +150,7 @@ A [mappa] helyőrző jobb megismeréséhez tekintse meg a https://docs.aws.amazo
 
 Másolja az összes gyűjtőt a Amazon Web Services (AWS) Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
 
 Másolja az összes gyűjtőt egy Amazon Web Services (AWS) régióból Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
@@ -172,7 +172,7 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 
 **--ellenőrzési hossz**                         Az átvitel után a célhelyen lévő fájl hosszának ellenőrzését. Ha eltérés van a forrás és a cél között, az átvitel sikertelenként van megjelölve. (alapértelmezett true)
 
-**--ellenőrzés-MD5** karakterlánc megadja, hogy a letöltéskor milyen szigorúan kell ellenőrizni az MD5-kivonatok érvényességét. Csak a letöltéskor érhető el. Elérhető lehetőségek: nincs vizsgálat, bejelentkezés, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett érték: "FailIfDifferent") (alapértelmezett "FailIfDifferent")
+**--ellenőrzés-MD5** karakterlánc megadja, hogy a letöltéskor milyen szigorúan kell ellenőrizni az MD5-kivonatok érvényességét. Csak a letöltéskor érhető el. Elérhető lehetőségek: nincs vizsgálat, bejelentkezés, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett "FailIfDifferent")
 
 **--Content-hajlam** sztring beállítja a Content-hajlam fejlécet. A letöltés után tért vissza.
 
@@ -204,15 +204,15 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 
 **--include-Pattern** sztring csak a másoláskor tartalmazza ezeket a fájlokat. Ez a beállítás támogatja a helyettesítő karaktereket (*). A fájlokat a ";" használatával válassza el.
 
-**--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett "INFO"). (alapértelmezett "információ")
+**--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett "információ")
 
 **--a metaadatok** karakterláncának feltöltése az Azure Storage-ba ezekkel a kulcs-érték párokkal.
 
 **--nem-GUESS-MIME-típus**                   Megakadályozza, hogy a AzCopy a fájl kiterjesztése vagy tartalma alapján észlelje a tartalom típusát.
 
-**– a karakterlánc felülírása** felülírja az ütköző fájlokat és blobokat a célhelyen, ha a jelző értéke TRUE (igaz). (alapértelmezett érték: "true") A lehetséges értékek a következők: "true", "false" és "prompt". (alapértelmezett érték: "true")
+**– a karakterlánc felülírása** felülírja az ütköző fájlokat és blobokat a célhelyen, ha a jelző értéke TRUE (igaz). A lehetséges értékek a következők: "true", "false" és "prompt". (alapértelmezett érték: "true")
 
-**--Page-blob-rétegbeli** karakterlánc feltöltése oldal blob az Azure Storage-ba ezen blob-réteg használatával. (alapértelmezett "nincs"). (alapértelmezett "nincs")
+**--Page-blob-rétegbeli** karakterlánc feltöltése oldal blob az Azure Storage-ba ezen blob-réteg használatával. (alapértelmezett "nincs")
 
 **--megőrzés-utolsó módosítás időpontja**          Csak akkor érhető el, ha a cél fájlrendszer.
 
@@ -222,9 +222,9 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 
 **--S2S-Detect-Source-changed**           Ellenőrizze, hogy a forrás módosult-e az enumerálás után.
 
-**--S2S-Handle-érvénytelen – a metaadatok** karakterlánca megadja, hogy a rendszer hogyan kezelje az érvénytelen metaadat-kulcsokat. Elérhető lehetőségek: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (alapértelmezett érték: "ExcludeIfInvalid"). (alapértelmezett "ExcludeIfInvalid")
+**--S2S-Handle-érvénytelen – a metaadatok** karakterlánca megadja, hogy a rendszer hogyan kezelje az érvénytelen metaadat-kulcsokat. Elérhető lehetőségek: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (alapértelmezett "ExcludeIfInvalid")
 
-**--S2S-megőrzés – hozzáférési réteg**             A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, használja a s2sPreserveAccessTier = false kapcsolót a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezés szerint igaz).  (alapértelmezett true)
+**--S2S-megőrzés – hozzáférési réteg**             A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, használja a s2sPreserveAccessTier = false kapcsolót a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett true)
 
 **--S2S-megőrzése-Properties**              A szolgáltatás és a szolgáltatás közötti másolás során megőrzi a teljes tulajdonságokat. Az AWS S3 és az Azure file nem single file Source esetében a List művelet nem ad vissza objektumok és fájlok teljes tulajdonságait. A teljes tulajdonságok megőrzése érdekében a AzCopy egy további kérelmet kell küldenie egy objektumra vagy fájlra vonatkozóan. (alapértelmezett true)
 

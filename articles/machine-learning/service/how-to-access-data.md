@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 07c23d3b93c85e3409814ab0eb635a51344e2ab2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436696"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929253"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 
@@ -61,9 +61,9 @@ A Register () metódus feltöltéséhez szükséges információk a [Azure Porta
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy Azure BLOB-tárolót vagy egy Azure-fájlmegosztást adattárként.
 
-+ **Azure Blob Container adattár**esetén használja a következőt: [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)
++ **Azure Blob Container adattár**esetén használja a [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)
 
-    A következő kód létrehozza és regisztrálja az adattárat (@no__t – 0) a munkaterületre, `ws`. Ez az adattár fér hozzá az Azure Blob-tárolóhoz (@no__t – 0) az Azure Storage-fiókban, `my_storage_account` a megadott fiók kulcsa alapján.
+    A következő kód létrehozza és regisztrálja az adattárat, `my_datastore`a munkaterületre, `ws`. Ez az adattár fér hozzá az Azure Blob-tárolóhoz, `my_blob_container`az Azure Storage-fiókhoz, `my_storage_account` a megadott fiók kulcsát használva.
 
     ```Python
        datastore = Datastore.register_azure_blob_container(workspace=ws, 
@@ -73,10 +73,11 @@ Az alábbi példák bemutatják, hogyan regisztrálhat egy Azure BLOB-tárolót 
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
+    Ha a Storage-fiókja egy VNET van, akkor csak az Azure Blob-adattár létrehozása támogatott. Állítsa be a paramétert, `grant_workspace_access` `True`, hogy a munkaterület hozzáférjen a Storage-fiókhoz.
 
-+ **Azure fájlmegosztás-adattár**esetén használja a következőt: [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). 
++ **Azure fájlmegosztás-adattár**esetén használja a [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). 
 
-    A következő kód létrehozza és regisztrálja az adattárat (@no__t – 0) a munkaterületre, `ws`. Ez az adattár fér hozzá az Azure-fájlmegosztás @no__t – 0, az Azure Storage-fiókhoz, `my_storage_account` a megadott fiók kulcsa alapján.
+    A következő kód létrehozza és regisztrálja az adattárat, `my_datastore`a munkaterületre, `ws`. Ez az adattár fér hozzá az Azure-fájlmegosztás `my_file_share`éhez az Azure Storage-fiókban, `my_storage_account` a megadott fiók kulcsa alapján.
 
     ```Python
        datastore = Datastore.register_azure_file_share(workspace=ws, 
@@ -161,9 +162,9 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-A `target_path` paraméter adja meg a feltöltendő fájlmegosztás (vagy blob-tároló) helyét. Alapértelmezett értéke @no__t – 0, amely esetben az adatfeltöltés a gyökérbe történik. Ha @no__t – 0 `target_path` meglévő adatértékét felülírja a rendszer.
+A `target_path` paraméter adja meg a feltöltendő fájlmegosztás (vagy blob-tároló) helyét. Az alapértelmezett érték `None`, amely esetben az adatfeltöltés a gyökérbe történik. Ha `overwrite=True`, `target_path` felülírja a meglévőket.
 
-Vagy töltse fel az egyes fájlok listáját az adattárba a `upload_files()` metódus használatával.
+Vagy az `upload_files()` metódussal feltöltheti az egyes fájlok listáját az adattárba.
 
 ### <a name="download"></a>Letöltés
 
@@ -188,7 +189,7 @@ A következő táblázat felsorolja azokat a módszereket, amelyekkel a számít
 Módon|Módszer|Leírás|
 ----|-----|--------
 Csatlakoztatás| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| A használatával csatlakoztathatja az adattárt a számítási célhoz.
-Letöltés|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|A használatával letöltheti az adattár tartalmát a `path_on_compute` által megadott helyre. <br><br> Ez a letöltés a Futtatás előtt történik.
+Letöltés|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Ezzel a paranccsal töltheti le az adattár tartalmát `path_on_compute`által megadott helyre. <br><br> Ez a letöltés a Futtatás előtt történik.
 Feltöltés|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Ezzel a paranccsal tölthet fel egy fájlt a `path_on_compute` által megadott helyről az adattárba. <br><br> Ez a feltöltés a Futtatás után következik be.
 
 Ha egy adott mappát vagy fájlt szeretne hivatkozni az adattárában, és elérhetővé szeretné tenni a számítási célra, használja az adattár [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) metódusát.
@@ -201,13 +202,13 @@ datastore.as_mount()
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
-> Bármely megadott `datastore` vagy `datastore.path` objektum a (z) `"$AZUREML_DATAREFERENCE_XXXX"` formátum környezeti változójának egyikét oldja fel, amelynek értéke a cél számításhoz tartozó csatlakoztatási/letöltési útvonal. Előfordulhat, hogy az adattár elérési útja nem egyezik meg a betanítási parancsfájl végrehajtási útjával.
+> Minden megadott `datastore` vagy `datastore.path` objektum a formátum `"$AZUREML_DATAREFERENCE_XXXX"`egy környezeti változó nevével oldható fel, amelynek értéke a cél számításhoz tartozó csatlakoztatási/letöltési útvonal. Előfordulhat, hogy az adattár elérési útja nem egyezik meg a betanítási parancsfájl végrehajtási útjával.
 
 ### <a name="examples"></a>Példák 
 
 A következő példák a [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályra vonatkoznak az adatok betanítás közbeni eléréséhez. 
 
-a `script_params` egy olyan szótár, amely paramétereket tartalmaz a entry_script. Ezzel a művelettel továbbíthatja az adattárolót, és leírhatja, hogyan történik az adatok elérhetővé tétele a számítási célra. További információt a teljes körű [oktatóanyagban](tutorial-train-models-with-aml.md)olvashat.
+`script_params` egy olyan szótár, amely paramétereket tartalmaz a entry_script. Ezzel a művelettel továbbíthatja az adattárolót, és leírhatja, hogyan történik az adatok elérhetővé tétele a számítási célra. További információt a teljes körű [oktatóanyagban](tutorial-train-models-with-aml.md)olvashat.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -243,16 +244,16 @@ Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a k�
 |Számítási szolgáltatások|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
 | Helyi|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|–         |–                                                                         |
-| Azure Machine Learning számítás |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4pipelines](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4pipelines](concept-ml-pipelines.md)|–         |–                                                                         |
+| Azure Machine Learning számítás |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml&nbsp;folyamatok](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml&nbsp;folyamatok](concept-ml-pipelines.md)|–         |–                                                                         |
 | Virtual machines (Virtuális gépek)               |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |–         |–                                                                         |
 | HDInsight                      |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |–         |–                                                                         |
-| Adatátvitel                  |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)                                               |–                                           |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)            |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)                                                                            |
-| Databricks                     |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)                                              |–                                           |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)             |–                                                                         |
-| Azure Batch                    |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)                                               |–                                           |–         |–                                                                         |
-| Azure DataLake-elemzés       |–                                           |–                                           |[ML @ no__t – 1pipelines](concept-ml-pipelines.md)             |–                                                                         |
+| Adatátvitel                  |[ML&nbsp;folyamatok](concept-ml-pipelines.md)                                               |–                                           |[ML&nbsp;folyamatok](concept-ml-pipelines.md)            |[ML&nbsp;folyamatok](concept-ml-pipelines.md)                                                                            |
+| Databricks                     |[ML&nbsp;folyamatok](concept-ml-pipelines.md)                                              |–                                           |[ML&nbsp;folyamatok](concept-ml-pipelines.md)             |–                                                                         |
+| Azure Batch                    |[ML&nbsp;folyamatok](concept-ml-pipelines.md)                                               |–                                           |–         |–                                                                         |
+| Azure DataLake-elemzés       |–                                           |–                                           |[ML&nbsp;folyamatok](concept-ml-pipelines.md)             |–                                                                         |
 
 > [!NOTE]
-> Előfordulhatnak olyan forgatókönyvek, amelyekben a nagy mértékben ismétlődő, nagyméretű adatfolyamatok gyorsabban futnak @no__t – 0 helyett `as_mount()`; ezt a kísérlettel lehet ellenőrizni.
+> Előfordulhatnak olyan forgatókönyvek, amelyekben a nagy mértékben ismétlődő, nagyméretű adatfolyamatok gyorsabban futnak `as_download()` a `as_mount()`helyett. ezt a kísérlettel lehet ellenőrizni.
 
 ### <a name="accessing-source-code-during-training"></a>Forráskód elérése a betanítás során
 

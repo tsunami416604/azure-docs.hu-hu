@@ -1,24 +1,18 @@
 ---
 title: Splunk a Azure Monitor log lekérdezéshez | Microsoft Docs
 description: Súgó olyan felhasználók számára, akik már ismerik a splunk a Azure Monitor log-lekérdezések megismerésében.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 03a0d755cf6d099f07a7c6d853e1d747908eec05
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 08/21/2018
+ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177636"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932950"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk Azure Monitor naplózási lekérdezés
 
@@ -60,7 +54,7 @@ A következő táblázat a splunk függvényekkel egyenértékű Azure Monitor f
 | searchmatch | == | A splunk `searchmatch` lehetővé teszi a pontos karakterlánc keresését.
 | véletlenszerű | rand ()<br>rand (n) | A splunk függvény nulla és 2<sup>31</sup>– 1 közötti számot ad vissza. A Azure Monitor "egy 0,0 és 1,0 közötti számot ad vissza, vagy ha a megadott paraméter 0 és n – 1 között van.
 | most | now() | 1
-| relative_time | totimespan() | 1<br>Azure Monitor a splunk egyenértékű a relative_time (datetimeVal, offsetVal) a datetimeVal + ToTimeSpan (offsetVal).<br>A <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> például <code>...  &#124; extend myTime = now() - totimespan("1d")</code> lesz.
+| relative_time | totimespan() | 1<br>Azure Monitor a splunk egyenértékű a relative_time (datetimeVal, offsetVal) a datetimeVal + ToTimeSpan (offsetVal).<br>A <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> például <code>...  &#124; extend myTime = now() - totimespan("1d")</code>válik.
 
 (1) a splunk a függvényt a `eval` operátor hívja meg. A Azure Monitor `extend` vagy `project` részeként használatos.<br>(2) a splunk a függvényt a `eval` operátor hívja meg. A Azure Monitor a `where` operátorral használható.
 
@@ -82,7 +76,7 @@ A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem ta
 | | |
 
 ### <a name="filter"></a>Szűrő
-Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezdődik, ahol a szűrő. A splunk-ben a szűrés az aktuális index alapértelmezett művelete. @No__t-0 operátort is használhat a splunk-ben, de nem ajánlott.
+Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezdődik, ahol a szűrő. A splunk-ben a szűrés az aktuális index alapértelmezett művelete. Használhatja `where` operátort is a splunk-ben, de nem ajánlott.
 
 | |  | |
 |:---|:---|:---|

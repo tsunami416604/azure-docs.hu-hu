@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2f9d2cea7adaf2e46feb0417ea9631ce02478f80
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772901"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934141"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 
@@ -41,12 +41,12 @@ Emellett, ha manuálisan hozza létre az [Azure Cosmos db SDK-ügyfél](./sql-ap
 
 Az Azure-függvény a következő hibaüzenettel meghiúsul: "vagy" a forrás gyűjteménye "(adatbázis neve"), vagy a (z) "collection2-Name" címbérleti gyűjtemény (adatbázis: "Adatbázis2") nem létezik. Mindkét gyűjteménynek léteznie kell a figyelő elindítása előtt. A címbérleti gyűjtemény automatikus létrehozásához állítsa a "CreateLeaseCollectionIfNotExists" értéket "true" értékre.
 
-Ez azt jelenti, hogy a trigger működéséhez szükséges Azure Cosmos-tárolók egyike vagy mindkettő nem létezik, vagy nem érhető el az Azure-függvény számára. **A hiba maga tájékoztatja arról, hogy mely Azure Cosmos-adatbázis és-tárolók a** konfiguráció alapján megkeresett triggerek.
+Ez azt jelenti, hogy a trigger működéséhez szükséges Azure Cosmos-tárolók egyike vagy mindkettő nem létezik, vagy nem érhető el az Azure-függvény számára. **A hiba maga tájékoztatja arról, hogy mely Azure Cosmos-adatbázis és-tárolók a konfiguráció alapján megkeresett triggerek** .
 
-1. Ellenőrizze az `ConnectionStringSetting` attribútumot, és hogy az **Azure-függvényalkalmazás található beállításokra hivatkozik-** e. Az attribútum értéke nem lehet maga a kapcsolatok karakterlánca, hanem a konfigurációs beállítás neve.
-2. Győződjön meg arról `databaseName` , `collectionName` hogy a és létezik az Azure Cosmos-fiókjában. Ha automatikus érték-helyettesítést használ (mintázatok használatával `%settingName%` ), győződjön meg arról, hogy a beállítás neve létezik az Azure-függvényalkalmazás.
-3. Ha nem ad meg értéket `LeaseCollectionName/leaseCollectionName`, az alapértelmezett érték a "bérletek". Ellenőrizze, hogy létezik-e ilyen tároló. Opcionálisan beállíthatja az `CreateLeaseCollectionIfNotExists` `true` triggerben lévő attribútumot az automatikus létrehozásához.
-4. Ellenőrizze az [Azure Cosmos-fiókja tűzfal](how-to-configure-firewall.md) -konfigurációját, és győződjön meg róla, hogy nem blokkolja az Azure-függvényt.
+1. Ellenőrizze a `ConnectionStringSetting` attribútumot, és hogy az **Azure-függvényalkalmazás található beállításokra hivatkozik-** e. Az attribútum értéke nem lehet maga a kapcsolatok karakterlánca, hanem a konfigurációs beállítás neve.
+2. Győződjön meg arról, hogy a `databaseName` és a `collectionName` létezik az Azure Cosmos-fiókjában. Ha automatikus érték-helyettesítést használ (`%settingName%` mintázatok használatával), győződjön meg arról, hogy a beállítás neve létezik az Azure-függvényalkalmazásban.
+3. Ha nem ad meg `LeaseCollectionName/leaseCollectionName`, az alapértelmezett érték a "bérletek". Ellenőrizze, hogy létezik-e ilyen tároló. Igény szerint beállíthatja a trigger `CreateLeaseCollectionIfNotExists` attribútumát, hogy `true` automatikusan létrehozza azt.
+4. Ellenőrizze az [Azure Cosmos-fiókja tűzfal-konfigurációját](how-to-configure-firewall.md) , és győződjön meg róla, hogy nem blokkolja az Azure-függvényt.
 
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Az Azure-függvény nem indul el "a megosztott átviteli sebességű gyűjteménynek rendelkeznie kell partíciós kulccsal"
 
@@ -54,40 +54,40 @@ A Azure Cosmos DB bővítmény korábbi verziói nem támogatják a [megosztott 
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Az Azure-függvény nem indul el a következővel: "a bérlet gyűjteménye, ha particionálva van, az azonosítóval megegyező partíciós kulcsnak kell lennie."
 
-Ez a hiba azt jelenti, hogy az aktuális címbérleti tároló particionálva van, de a partíciós `/id`kulcs elérési útja nem. A probléma megoldásához újra létre kell hoznia a bérletek tárolót `/id` a partíciós kulccsal.
+Ez a hiba azt jelenti, hogy az aktuális címbérleti tároló particionálva van, de a partíciós kulcs elérési útja nem `/id`. A probléma megoldásához újra létre kell hoznia a bérletek tárolót a `/id` partíciós kulcsként.
 
 ### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Az érték nem lehet null. Paraméter neve: o "a Azure Functions naplókban, amikor megpróbálja futtatni az triggert
 
 Ez a probléma akkor jelenik meg, ha a Azure Portal használja, és az triggert használó Azure-függvény vizsgálatakor megpróbálja kiválasztani a **Futtatás** gombot a képernyőn. Az trigger nem igényli, hogy válassza a Futtatás az indításhoz lehetőséget, a rendszer automatikusan elindul az Azure-függvény telepítésekor. Ha szeretné ellenőrizni az Azure-függvény naplózási streamjét a Azure Portalon, csak nyissa meg a figyelt tárolót, és szúrjon be néhány új elemet, automatikusan megjelenik az indítást végrehajtó művelet.
 
-### <a name="my-changes-take-too-long-be-received"></a>A módosítások túl sokáig tartanak
+### <a name="my-changes-take-too-long-to-be-received"></a>A módosítások túl sokáig tartanak
 
 Ennek a forgatókönyvnek több oka is lehet, és mindegyiket ellenőrizni kell:
 
-1. Az Azure-függvény üzembe helyezése ugyanabban a régióban történik, mint az Azure Cosmos-fiókja? Az optimális hálózati késés érdekében mind az Azure-függvénynek, mind az Azure Cosmos-fióknak ugyanabban az Azure-régióban kell elhelyezkednie.
-2. A változások az Azure Cosmos-tárolóban folyamatosan vagy szórványosan történnek?
-Ha ez utóbbi, lehet némi késés a tárolt változtatások és az Azure-függvény felszedése között. Ez azért van így, mert belsőleg, amikor a trigger ellenőrzi az Azure Cosmos-tárolóban bekövetkező változásokat, és a rendszer egy nem függőben lévő értéket keres, egy konfigurálható időt (alapértelmezés szerint 5 másodperc) fog alvó állapotba helyezni az új módosítások ellenőrzése előtt (a magas RU-használat elkerüléséhez). Ezt az alvó időt a trigger `FeedPollDelay/feedPollDelay` konfigurációjának beállításán keresztül [](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) állíthatja be (az érték várhatóan ezredmásodpercben).
+1. Azure-függvénye ugyanabban a régióban található, mint az Azure Cosmos-fiókja? Az optimális késéshez az Azure-függvénynek és az Azure Cosmos-fióknak ugyanabban az Azure-régióban kell lennie.
+2. A változások folyamatosan vagy szórványosan történnek az Azure Cosmos-tárolójában?
+Ha ez utóbbi, akkor késés fordulhat elő a módosítások tárolása és azok az Azure-függvény általi felvétele között. Ez azért van így, mert belsőleg, amikor az eseményindító ellenőrzi az Azure Cosmos-tároló változásait, és nem talál függőben lévő elemet, egy személyre szabható ideig (alapértelmezés szerint 5 másodpercig) alvó módban lesz a következő ellenőrzésig (a magas RU-használat elkerülése végett). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
 3. Előfordulhat, hogy az Azure Cosmos [-tárolók száma korlátozott](./request-units.md).
-4. A `PreferredLocations` triggerben található attribútum segítségével megadhatja az Azure-régiók vesszővel tagolt listáját az egyéni előnyben részesített kapcsolódási sorrend meghatározásához.
+4. A trigger `PreferredLocations` attribútumával megadhatja az Azure-régiók vesszővel tagolt listáját az egyéni előnyben részesített kapcsolódási sorrend meghatározásához.
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Néhány módosítás hiányzik a saját triggerben
 
 Ha azt tapasztalja, hogy az Azure Cosmos-tárolóban történt módosítások közül néhányat nem az Azure-függvény vette fel, akkor a kezdeti vizsgálati lépésnek kell megtörténnie.
 
-Amikor az Azure-függvény megkapja a módosításokat, gyakran dolgozza fel őket, és igény szerint elküldheti az eredményt egy másik célhelyre. Ha a hiányzó módosításokat vizsgálja, győződjön meg arról, hogy a betöltési **ponton milyen változások érkeznek** (az Azure-függvény indításakor), nem a célhelyen.
+Amikor az Azure-függvény megkapja a módosításokat, gyakran dolgozza fel őket, és igény szerint elküldheti az eredményt egy másik célhelyre. Ha a hiányzó módosításokat vizsgálja, győződjön meg arról, hogy a **betöltési ponton milyen változások érkeznek** (az Azure-függvény indításakor), nem a célhelyen.
 
 Ha néhány módosítás hiányzik a célhelyről, ez azt jelentheti, hogy hiba történt az Azure-függvény végrehajtása során a módosítások fogadása után.
 
-Ebben az esetben a legjobb művelet az, ha `try/catch blocks` a kódot és azon belül a hurkokat, amelyek feldolgozzák a módosításokat, felderíti az elemek adott részhalmaza meghibásodását, és ennek megfelelően kezeli őket (küldje el egy másik tárolóba további elemzés vagy újrapróbálkozás). 
+Ebben az esetben a legjobb megoldás az, ha `try/catch` blokkokat ad hozzá a kódban, és azon a hurkon belül, amelyik feldolgozhatja a módosításokat, hogy észlelje az elemek adott részhalmazával kapcsolatos esetleges hibát, és ennek megfelelően kezeli őket (küldje el őket egy másik tárolóba további elemzés vagy újrapróbálkozás). 
 
 > [!NOTE]
 > A Cosmos DB Azure Functions-triggere alapértelmezés szerint nem próbálkozik újra egy köteg változásával, ha nem kezelt kivétel történt a kód végrehajtása során. Ez azt jelenti, hogy a módosítások nem érkeznek meg a célhelyre, mert nem kell feldolgoznia azokat.
 
 Ha azt tapasztalja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely helyileg fut egy fejlesztői gépen, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanaz a figyelt és a bérlet tároló), és ez az Azure-függvény ellopja a módosítások egy részhalmazát. várhatóan feldolgozza az Azure-függvényt.
 
-Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérleti elemek számát, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint az ismert Azure függvényalkalmazás-példányok, az azt jelenti, hogy ezek a további tulajdonosok a módosítások ellopása.
+Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérletek számát a n belül, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint ismert Azure-függvényalkalmazáspéldány, az azt jelenti, hogy ezek a további tulajdonosok „lopják” a módosításokat.
 
-A helyzet megkerülő megoldásának egyik egyszerű módja, ha `LeaseCollectionPrefix/leaseCollectionPrefix` a függvényt egy új/eltérő értékkel alkalmazza, vagy Alternatív megoldásként egy új bérletek tárolóval kell tesztelni.
+Az ilyen helyzetek megkerülő megoldásának egyik egyszerű módja, ha egy új/eltérő értékkel `LeaseCollectionPrefix/leaseCollectionPrefix`t alkalmaz a függvényre, vagy egy új bérletek tárolóval teszteli.
 
 ### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Újra kell indítania és újra fel kell dolgoznia a tárolóban lévő összes elemet az elejéről 
 Egy tároló összes elemének újbóli feldolgozása az elejétől:
@@ -104,7 +104,7 @@ Ez a hiba akkor fordul elő, ha a Azure Functions projekt (vagy bármely hivatko
 
 Ennek a helyzetnek a megkerülő megoldásához távolítsa el a hozzáadott manuális NuGet-hivatkozást, és hagyja meg a Azure Cosmos DB SDK-referenciát a Azure Functions Cosmos DB kiterjesztési csomagon keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Functions figyelésének engedélyezése](../azure-functions/functions-monitoring.md)
 * [A .NET SDK Azure Cosmos DB hibaelhárítása](./troubleshoot-dot-net-sdk.md)

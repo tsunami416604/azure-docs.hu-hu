@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: 6279b5c9022b448aea9b33a94fc1b2b35b6d23de
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 325a029a9ea1c0102dad0e970f177e7ba7db6d52
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169853"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934195"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Virtuálisgép-fürt létrehozása a Terraformmal a Modul Registryvel
 
@@ -63,7 +63,7 @@ module mycompute {
     remote_port = "3389"
     nb_instances = 2
     public_ip_dns = ["unique_dns_name"]
-    vnet_subnet_id = "${module.network.vnet_subnets[0]}"
+    vnet_subnet_id = module.network.vnet_subnets[0]
 }
 
 module "network" {
@@ -73,15 +73,15 @@ module "network" {
 }
 
 output "vm_public_name" {
-    value = "${module.mycompute.public_ip_dns_name}"
+    value = module.mycompute.public_ip_dns_name
 }
 
 output "vm_public_ip" {
-    value = "${module.mycompute.public_ip_address}"
+    value = module.mycompute.public_ip_address
 }
 
 output "vm_private_ips" {
-    value = "${module.mycompute.network_interface_private_ip}"
+    value = module.mycompute.network_interface_private_ip
 }
 ```
 
@@ -102,7 +102,7 @@ Futtassa a `terraform apply` parancsot a virtuális gépek kiépítéséhez az A
 
 ![Terraform alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure Terraform-modulok](https://registry.terraform.io/modules/Azure) listájának áttekintése
 - Hozzon létre egy [virtuálisgép-méretezési csoportot a Terraformmal](terraform-create-vm-scaleset-network-disks-hcl.md)

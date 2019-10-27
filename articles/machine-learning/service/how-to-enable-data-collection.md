@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330738"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929365"
 ---
 # <a name="collect-data-for-models-in-production"></a>Adatok gyűjtése a termelési modellekhez
 
@@ -47,9 +47,12 @@ A kimenet egy Azure-blobban lesz mentve. Mivel az Azure-Blobba bekerül az adatg
 A blob kimeneti adatelérési útja a következő szintaxist követi:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> Az SDK verziójában `0.1.0a16` előtt a `designation` argumentum neve `identifier`. Ha a kódot egy korábbi verzióval fejlesztették ki, akkor ennek megfelelően frissítenie kell.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,8 +83,8 @@ Az engedélyezéséhez a következőket kell tennie:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     A *correlationId* egy opcionális paraméter, nem kell beállítania, ha a modell nem igényli. Ha a correlationId a helyén van, a könnyebben kitérképezhető más adattal. (Ilyenek például a következők: LoanNumber, Vevőkód stb.)
@@ -122,7 +125,7 @@ Ha már van olyan szolgáltatás, amelynek függőségei a **környezet fájljá
 
 1. A **Speciális beállítások**területen törölje a **modell adatgyűjtésének engedélyezése**beállítást. 
 
-    [@no__t – 1check-adatgyűjtés](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [Adatgyűjtés![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    Ebben az ablakban a szolgáltatás állapotának nyomon követéséhez a "Appinsights-diagnosztika engedélyezése" lehetőséget is választhatja.  
 
@@ -139,11 +142,11 @@ Bármikor leállíthatja az adatgyűjtést. Az adatgyűjtés letiltásához hasz
 
   1. Lépjen az **üzembe helyezések** ->  Select Service  -> **Szerkesztés** **elemre**.
 
-     [@no__t – 1Edit beállítás](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [![szerkesztési lehetőség](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. A **Speciális beállítások**területen törölje a **modell adatgyűjtésének engedélyezése**beállítást. 
 
-     [@no__t – 1Uncheck-adatgyűjtés](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [Az adatgyűjtési![törlése](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. A módosítás alkalmazásához válassza a **frissítés** elemet.
 
@@ -165,12 +168,12 @@ A blob adatainak gyors elérése:
 1. Nyissa meg a munkaterületet.
 1. Kattintson a **tárterület**elemre.
 
-    [@no__t – 1Storage](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [![Storage](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Kövesse a blobban lévő kimeneti adatokat az alábbi szintaxissal:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -181,26 +184,26 @@ A blob adatainak gyors elérése:
 
 1. Válassza **az adatlekérdezés** lehetőséget, majd kattintson az [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources)lehetőségre.
 
-    [@no__t – 1PBI blob beállítása](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [![PBI blob beállítása](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Adja meg a Storage-fiók nevét, és adja meg a Storage-kulcsát. Ezeket az információkat a blob **beállításaiban** találja > > hozzáférési kulcsokat. 
 
 1. Válassza ki a tároló **modeldata** , és kattintson a **Szerkesztés**gombra. 
 
-    [@no__t – 1PBI-navigátor](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [![PBI-navigátor](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. A lekérdezés-szerkesztőben kattintson a "Name" (név) oszlop alatt található, és adja hozzá az 1. Storage-fiókot. A modell elérési útja a szűrőbe. Megjegyzés: Ha csak egy adott évből vagy hónapból származó fájlokat szeretne megtekinteni, egyszerűen bontsa ki a szűrő elérési útját. Például tekintse meg a márciusi adatvesztést:/modeldata/subscriptionid >/resourcegroupname >/workspacename >/webservicename >/modelname >/modelversion >/Identifier >/év >/3
+1. A lekérdezés-szerkesztőben kattintson a "Name" (név) oszlop alatt található, és adja hozzá az 1. Storage-fiókot. A modell elérési útja a szűrőbe. Megjegyzés: Ha csak egy adott évből vagy hónapból származó fájlokat szeretne megtekinteni, egyszerűen bontsa ki a szűrő elérési útját. Például tekintse meg a márciusi adatvesztést:/modeldata/subscriptionid >/resourcegroupname >/workspacename >/webservicename >/modelname >/modelversion > alapanyagok/megjelölés >/év >/3
 
 1. A **név**alapján szűrheti a megfelelő adatokat. A **jóslatok** és a **bemenetek**tárolásához létre kell hoznia egy lekérdezést.
 
 1. Kattintson a dupla nyílra félretéve a **tartalom** oszlopban a fájlok egyesítéséhez. 
 
-    [@no__t – 1PBI tartalom](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [![PBI tartalma](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. Kattintson az OK gombra, és az adatküldés megtörténik.
 
-    [@no__t – 1pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
 1. Most kattintson **a Bezárás gombra, és alkalmazza a** t.
 
@@ -217,11 +220,11 @@ A blob adatainak gyors elérése:
 
 1. A databricks munkaterületen válassza az **adatok feltöltése**lehetőséget.
 
-    [@no__t – 1DB feltöltése](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [ADATBÁZIS![feltöltése](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Hozzon létre új táblát, és válassza az **egyéb adatforrások** – > Azure Blob Storage-> CREATE TABLE in notebook (jegyzetfüzetben) elemet.
 
-    [@no__t – 1DB tábla](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [![DB tábla](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. Frissítse az adatai helyét. Például:
 
@@ -230,7 +233,7 @@ A blob adatainak gyors elérése:
     file_type = "csv"
     ```
  
-    [@no__t – 1DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+    [![Dbsetup program](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. Az adatai megtekintéséhez és elemzéséhez kövesse a sablon lépéseit. 
 

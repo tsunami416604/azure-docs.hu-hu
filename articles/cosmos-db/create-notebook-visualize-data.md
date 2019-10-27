@@ -5,14 +5,14 @@ author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
 ms.date: 09/25/2019
-ms.author: de
+ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 05c9558479e0ad0bf9e05c8f5cae25d7fce6be42
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023841"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931505"
 ---
 # <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Jegyzetfüzet létrehozása Azure Cosmos DB az adat elemzéséhez és megjelenítéséhez
 
@@ -28,7 +28,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő.**
 
-1. Lépjen a **jegyzetfüzetek** lapra, válassza a **jegyzetfüzetek** melletti `…` lehetőséget, és hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
+1. Lépjen a **jegyzetfüzetek** lapra, válassza a **saját jegyzetfüzetek** melletti `…` lehetőséget, és hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
 
    ![Új jegyzetfüzet létrehozása](./media/create-notebook-visualize-data/create-new-notebook.png)
 
@@ -47,7 +47,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
    print('Container WebsiteData created')
    ```
 
-   Cella futtatásához válassza a `Shift + Enter` elemet, vagy válassza ki a cellát, és válassza az **aktív cella futtatása** lehetőséget az adatkezelő navigációs sávján.
+   Cella futtatásához válassza a `Shift + Enter` lehetőséget, vagy válassza ki a cellát, és válassza az **aktív cella futtatása** lehetőséget az adatkezelő navigációs sávján.
 
    ![Az aktív cella futtatása](./media/create-notebook-visualize-data/run-active-cell.png)
 
@@ -121,7 +121,7 @@ Mielőtt lekérdezéseket futtasson az adatok elemzéséhez, olvassa el az adato
 {Query text}
 ```
 
-További információért lásd a [beépített notebook-parancsokat és-szolgáltatásokat Azure Cosmos db](use-notebook-features-and-commands.md) cikkben. Futtatja a lekérdezést – `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Az eredmények a df_cosmos nevű Panda DataFrame lesznek mentve. Illessze be a következő parancsot egy új jegyzetfüzet-cellába, és futtassa azt:
+További információért lásd a [beépített notebook-parancsokat és-szolgáltatásokat Azure Cosmos db](use-notebook-features-and-commands.md) cikkben. A lekérdezés `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`fog futni. Az eredmények a df_cosmos nevű Panda DataFrame lesznek mentve. Illessze be a következő parancsot egy új jegyzetfüzet-cellába, és futtassa azt:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -288,6 +288,6 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    ![Vásárlási konverziós arány megjelenítése](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a notebook-parancsokról: a [beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-notebook-features-and-commands.md) cikkben.

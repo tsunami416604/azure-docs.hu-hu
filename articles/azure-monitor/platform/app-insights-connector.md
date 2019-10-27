@@ -1,24 +1,18 @@
 ---
-title: Az Azure Application Insights-alkalmazások adatainak megtekintése |} A Microsoft Docs
-description: Az Application Insights-összekötő megoldás segítségével diagnosztizálhatja a teljesítménybeli problémákat, és megismerheti, mit a felhasználók az alkalmazását, amikor az Application insights segítségével figyeli.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure Application Insights-alkalmazásadatok megtekintése | Microsoft Docs
+description: A Application Insights Connector megoldással diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat, és megtudhatja, hogy a felhasználók hogyan használják az alkalmazást a Application Insights figyelésével.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 02/13/2019
+ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849191"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932742"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
@@ -33,244 +27,244 @@ ms.locfileid: "68849191"
 >
 > 
 
-A Applications Insights Connector megoldás segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémák, és megismerheti, mit a felhasználók az alkalmazását, amikor a figyelhető [Application Insights](../../azure-monitor/app/app-insights-overview.md). Az ugyanazon alkalmazás telemetriát az Application Insightsban a fejlesztőknek nézet áll rendelkezésre a Log Analyticsben. Azonban az Application Insights-alkalmazások integrálása a Log Analytics-szel, az alkalmazások láthatóságát emelkedett üzemeltetési és alkalmazásadatokat létesíteni egy helyen. Az azonos nézetek kellene megismerheti, hogyan működhet együtt az alkalmazásfejlesztőknek. Az Általános nézetek segítségével csökkentheti az időt, és oldja meg az alkalmazás és a platformmal.
+Az Applications-alapú adatelemzési összekötő megoldásával diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat, és megismerheti, hogy a felhasználók milyen műveleteket végeznek az alkalmazással, ha [Application Insights](../../azure-monitor/app/app-insights-overview.md)figyelik. Ugyanazon alkalmazás-telemetria nézetei, amelyekben a fejlesztők megtekintenek a Application Insightsban Log Analytics érhetők el. Ha azonban a Application Insights-alkalmazásait Log Analytics integrálja, az alkalmazások láthatósága egyre nagyobb mértékben megnövekszik azzal, hogy a művelet-és alkalmazásadatok egy helyen vannak. Ugyanezek a nézetek segítenek az alkalmazás-fejlesztőknek való együttműködésben. A közös nézetek segítségével csökkentheti az alkalmazás-és platformokkal kapcsolatos problémák észlelésének és megoldásának idejét.
 
-A megoldás használata esetén is:
+A megoldás használatakor a következőket teheti:
 
-- Megtekintése az Application Insights-alkalmazások egy helyen tudhatja, akkor is, ha azokat az Azure-előfizetések
-- Az alkalmazásadatok infrastruktúra adatait
-- A naplókeresésben szolgáltatva az alkalmazások adatainak megjelenítéséhez
-- Forgáspont a Log Analytics-adatok az Application Insights alkalmazáshoz az Azure Portalon
+- Egyetlen helyen tekintheti meg az összes Application Insights alkalmazást, még akkor is, ha azok különböző Azure-előfizetésekben találhatók
+- Az infrastruktúra-adathalmazok korrelációja az alkalmazásadatok között
+- Alkalmazásadatok megjelenítése a naplóbeli keresés perspektívái alapján
+- Kimutatás Log Analytics adatokról a Application Insights alkalmazásba az Azure Portal
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjtve az Application Insights-összekötő az ügynökök által. A megoldás által használt összes adat közvetlenül az Azure-ból származik.
+A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjtenek adatokat az Application Insights Connector. A megoldás által használt összes adatok közvetlenül az Azure-ból származnak.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
-| [Az SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
-| [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem az Azure storage-ból nem gyűjteményadatokat. |
+| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
+| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
+| [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Application Insights-összekötő adatainak eléréséhez Azure-előfizetéssel kell rendelkeznie
-- Rendelkeznie kell legalább egy beállított Application Insights-erőforrást.
-- A tulajdonos vagy közreműködő szerepkörrel az Application Insights-erőforrást kell lennie.
+- Application Insights Connector információk eléréséhez Azure-előfizetéssel kell rendelkeznie
+- Legalább egy konfigurált Application Insights erőforrással kell rendelkeznie.
+- A Application Insights erőforrás tulajdonosának vagy közreműködőnek kell lennie.
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../../azure-monitor/insights/solutions.md).
-2. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Application Insights megnyitásához. Ezután keresse meg az Application Insights. 
-3. A **előfizetések**, válasszon ki egy előfizetést, amely rendelkezik az Application Insights-erőforrást, majd a **neve**, válassza ki egy vagy több alkalmazás.
+1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárást.
+2. Keresse fel az [Azure Portalt](https://portal.azure.com). Application Insights megnyitásához válassza **az összes szolgáltatás** elemet. Ezután keressen rá Application Insights. 
+3. Az **előfizetések**területen válasszon ki egy Application Insights erőforrásokkal rendelkező előfizetést, majd a **név**területen válasszon ki egy vagy több alkalmazást.
 4. Kattintson a **Save** (Mentés) gombra.
 
-Körülbelül 30 percet, az adatok elérhetővé válnak, és az Application Insights csempe frissül, az adatok, például a következő képen:
+Körülbelül 30 perc alatt az adatok elérhetővé válnak, és a Application Insights csempe frissül az adatokkal, például a következő képpel:
 
-![Az Application Insights-csempe](./media/app-insights-connector/app-insights-tile.png)
+![Application Insights csempe](./media/app-insights-connector/app-insights-tile.png)
 
-Egyéb szempontok figyelembe kell venni:
+További tudnivalók:
 
-- Application Insights-alkalmazások csak kapcsolat egy Log Analytics-munkaterülethez.
-- Csak kapcsolat [alapszintű vagy vállalati Application Insights-erőforrások](https://azure.microsoft.com/pricing/details/application-insights) a Log Analytics szolgáltatásba. A Log Analytics ingyenes szintjét is használhatja.
+- Application Insights alkalmazásokat csak egyetlen Log Analytics munkaterülethez csatolhat.
+- Log Analyticshoz csak az [alapszintű vagy a Nagyvállalati Application Insights erőforrásokat](https://azure.microsoft.com/pricing/details/application-insights) lehet összekapcsolni. A Log Analytics ingyenes szintjét azonban használhatja.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ez a megoldás nem telepíti a csatlakoztatott felügyeleti csoportok minden olyan felügyeleti csomagot.
+Ez a megoldás nem telepít felügyeleti csomagokat a csatlakoztatott felügyeleti csoportokban.
 
-## <a name="use-the-solution"></a>A megoldás használatához
+## <a name="use-the-solution"></a>A megoldás használata
 
-A következő szakaszok ismertetik, hogyan használhatja a paneleket, látható az Application Insights irányítópult megtekintéséhez és az alkalmazásokból származó adatok kezeléséhez.
+A következő szakaszok azt ismertetik, hogyan használhatók a Application Insights irányítópultján látható pengék az alkalmazások adatainak megtekintéséhez és használatához.
 
-### <a name="view-application-insights-connector-information"></a>Application Insights-összekötő adatainak megtekintése
+### <a name="view-application-insights-connector-information"></a>Application Insights Connector információk megtekintése
 
-Kattintson a **Application Insights** csempére kattintva nyissa meg a **Application Insights** irányítópultján megtekintheti a következő paneleket.
+A **Application Insights** csempére kattintva nyissa meg a **Application Insights** irányítópultot, és tekintse meg a következő pengéket.
 
 ![Application Insights irányítópult](./media/app-insights-connector/app-insights-dash01.png)
 
 ![Application Insights irányítópult](./media/app-insights-connector/app-insights-dash02.png)
 
-Az irányítópult tartalmaz a paneleket a táblázatban látható. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. Naplókeresést, amely az összes olyan rekord visszaadása kattintva futtathatja **összes** alján a panel, vagy ha a panel fejlécére kattint.
+Az irányítópulton szerepelnek a táblázatban látható pengék. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. Futtathat egy olyan naplóbeli keresést, amely az összes rekordot visszaadja, amikor az **összes** megjelenítése gombra kattint a panel alján, vagy amikor rákattint a panel fejlécére.
 
 
 | **Oszlop** | **Leírás** |
 | --- | --- |
-| Alkalmazások – alkalmazások száma | Alkalmazás-erőforrásokat az alkalmazások számát jeleníti meg. Felsorolja az alkalmazásnevek és az egyes alkalmazás-rekordok számát. Kattintson a számra a Naplókeresés futtatásához <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kattintson az alkalmazás nevét, amely megjeleníti a gazdagép, valamint a rekordok a telemetriai adatok típusa szerint és minden adat (az elmúlt nap alapján) típus szerint alkalmazás bejegyzéseket Naplókeresés futtatásához. |
-| Adatmennyiség – adatokat továbbító gazdagépek | Adatokat küldő számítógép-állomások számát jeleníti meg. Számítógép-gazdagépek és -rekordok száma minden állomás számára is megjeleníti. Kattintson a számra a Naplókeresés futtatásához <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kattintson a számítógép nevét, a gazdagép, amely megjeleníti a gazdagép, valamint a rekordok a telemetriai adatok típusa szerint és minden adat (az elmúlt nap alapján) típus szerint alkalmazásrekordok Naplókeresés futtatásához. |
-| Rendelkezésre állás – Webtesztek eredményei | A webes teszt eredményei, pass vagy sikertelen jelző perecdiagram mutatja. Kattintson a diagramra a Naplókeresés futtatásához <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Eredmények megjelenítése a műveletek és az összes teszt fellépő hibák száma. Azt mutatja be minden Web Apps, a forgalom az elmúlt percben. Kattintson az alkalmazás nevét, egy naplóbeli keresés sikertelen webes tesztek részleteit megjelenítő megtekintéséhez. |
-| Kiszolgálói kérelmek – kérelmek száma óránként | A különböző alkalmazások az óránként kiszolgálókérelmek egy vonaldiagram látható. A 3 leggyakoribb alkalmazások pont kérések fogadása szerinti megtekintéséhez a diagramban a sor fölé. A fogadása a kérelmek és a kérések száma a kijelölt időszak alkalmazások listáját is tartalmazza. <br><br>Kattintson a diagramra a Naplókeresés futtatásához <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> azt mutatjuk be, a kiszolgálói kérelmek óránkénti különféle alkalmazások részletesebb vonaldiagram. <br><br> Kattintson a listában egy alkalmazást egy Naplókeresés futtatásához a <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , amelyek listáját jeleníti meg a kérelmek, a kérések teljes ideje és kérelem időtartama a diagramokban és a kérés listáját válaszkódot.   |
-| Hiba – a sikertelen kérelmek száma óránként | Alkalmazás sikertelen kérelmek száma óránként egy vonaldiagram látható. A kurzort a diagram a sikertelen kérelmek pont 3 legnépszerűbb alkalmazása időben. Sikertelen kérelmek száma az egyes alkalmazások listáját is tartalmazza. Kattintson a diagramra a Naplókeresés futtatásához <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> azt mutatjuk be, a sikertelen alkalmazáskérések egy részletesebb vonaldiagram. <br><br>A Naplókeresés futtatásához a lista egy elemére kattintva <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , hogy mutat be sikertelen kérések, diagramokon a sikertelen kérelmek ideje és kérelem időtartama, valamint a sikertelen kérelmek válaszkódot listáját. |
-| Kivételek – a kivételek száma óránként | Kivételek száma óránként egy vonaldiagram látható. A kurzort a diagram pont kivételekkel 3 legnépszerűbb alkalmazása időben. Az egyes kivételek számát az alkalmazások listáját is tartalmazza. Kattintson a diagramra a Naplókeresés futtatásához <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , amely látható a részletesebb hivatkozás kivételek. <br><br>A Naplókeresés futtatásához a lista egy elemére kattintva <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> , kivételek, a kivételek az idő és a sikertelen kérelmek függvényében diagramok és kivételtípusok listáját listája látható.  |
+| Alkalmazások – alkalmazások száma | Az alkalmazás erőforrásaiban található alkalmazások számát jeleníti meg. Az alkalmazások neveinek, valamint az alkalmazások rekordjainak számát is felsorolja. Kattintson a számra a <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> naplózásának futtatásához <br><br>  Kattintson egy alkalmazás nevére, és futtassa az alkalmazás rekordjait a gazdagépen, a telemetria típusú rekordok és az összes adat típus szerint (az elmúlt nap alapján). |
+| Adatmennyiség – adatok küldésére szolgáló gazdagépek | Az adatokat küldő számítógép-gazdagépek számát jeleníti meg. Az egyes gazdagépek számítógép-gazdagépeit és rekordjainak darabszámát is felsorolja. Kattintson a számra a <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> naplózásának futtatásához <br><br> Kattintson egy számítógépnévre, és futtassa a naplót a gazdagépen, amely a gazdagépen, a rekordok szerint telemetria és az összes adat típus szerint (az elmúlt nap alapján) jeleníti meg az adatokat. |
+| Rendelkezésre állás – webteszt eredményei | Megjelenít egy perecdiagram a webes tesztek eredményeihez, amely jelzi a pass vagy a Fail argumentumot. Kattintson a diagramra, és futtassa a naplóbeli keresést <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Az eredmények az összes teszt menetének és hibáinak számát mutatják. Ez az összes Web Apps az elmúlt percben forgalmas forgalmat mutatja. Az alkalmazás nevére kattintva megtekintheti a naplóbeli keresést, amely a sikertelen webes tesztek részleteit jeleníti meg. |
+| Kiszolgálói kérelmek – kérelmek/óra | Megjeleníti a kiszolgálói kérelmek óránkénti sorát a különböző alkalmazásokhoz. Vigye a kurzort a diagram egyik sorára, és tekintse meg az adott időpontra vonatkozó kérelmeket fogadó első 3 alkalmazást. A kérelmeket fogadó alkalmazások és a kijelölt időszakra vonatkozó kérelmek számát is megjeleníti. <br><br>Kattintson a gráfra egy olyan <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> naplójának kereséséhez, amely a különböző alkalmazások óránkénti kiszolgálói kéréseinek részletesebb táblázatát jeleníti meg. <br><br> Kattintson egy alkalmazásra a listában egy olyan <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> naplójának kereséséhez, amely megjeleníti a kérelmek listáját, a kérelmekre vonatkozó diagramokat, valamint a kérelmek időtartamát és a kérelmekre adott válaszok listáját.   |
+| Hibák – sikertelen kérelmek/óra | Megjeleníti a sikertelen alkalmazás-kérelmek óránkénti diagramját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást egy adott időpontra vonatkozó sikertelen kérelmekkel. Az egyes alkalmazásokhoz tartozó sikertelen kérelmek számát tartalmazó alkalmazások listáját is megjeleníti. Kattintson a diagramra egy olyan <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> naplójának kereséséhez, amely a sikertelen kérelmek részletesebb táblázatát jeleníti meg. <br><br>Kattintson a lista egyik elemére a sikertelen kérelmeket, a sikertelen kérelmekre vonatkozó diagramokat és a kérelmek időtartamát, valamint a sikertelen kérelmekre vonatkozó hibakódok listáját futtató <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> naplójának kereséséhez. |
+| Kivételek – kivételek óránként | Megjeleníti a kivételek óránkénti grafikonját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást, amely egy adott időpontra vonatkozó kivételeket mutat. Megjeleníti az alkalmazások listáját is, amely az egyes kivételek számát tartalmazza. Kattintson a diagramra egy olyan <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> naplójának kereséséhez, amely részletesebb diagramot jelenít meg a kivételekről. <br><br>Kattintson a lista egyik elemére egy olyan <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> naplójának kereséséhez, amely megjeleníti a kivételek listáját, a kivételek diagramját az idő és a sikertelen kérelmek esetében, valamint a kivételek listáját.  |
 
-### <a name="view-the-application-insights-perspective-with-log-search"></a>Az Application Insights-perspektíva naplókeresési megtekintése
+### <a name="view-the-application-insights-perspective-with-log-search"></a>A Application Insights perspektívájának megtekintése a naplóbeli kereséssel
 
-Ha az irányítópult valamely elemére kattint, egy keresési látható az Application Insights-perspektíva láthatja. A perspektíva biztosít egy kiterjesztett képi megjelenítés, a kiválasztott telemetriai adatok típusa alapján. Igen, képi megjelenítés a tartalmi változások különféle telemetriai esetében.
+Ha az irányítópult bármely elemére kattint, megjelenik egy Application Insights perspektíva a keresésben. A perspektíva kiterjesztett vizualizációt biztosít a kiválasztott telemetria-típus alapján. Így a vizualizációk tartalma megváltozik a különböző telemetria-típusoknál.
 
-Amikor az alkalmazások panelen bárhol kattint, láthatja, az alapértelmezett **alkalmazások** szempontjából.
+Ha az alkalmazások panelen bárhová kattint, megjelenik az alapértelmezett **alkalmazások** perspektívája.
 
-![Application Insights-alkalmazások perspektíva](./media/app-insights-connector/applications-blade-drill-search.png)
+![Application Insights alkalmazások perspektívája](./media/app-insights-connector/applications-blade-drill-search.png)
 
-A perspektíva a kiválasztott alkalmazás áttekintése látható.
+A perspektíva a kiválasztott alkalmazás áttekintését jeleníti meg.
 
-A **rendelkezésre állási** panelen jelenik meg egy másik szempont nézet, ahol megtekintheti webes teszt eredményeit és a kapcsolódó sikertelen kérelmek.
+A **rendelkezésre állás** panel egy másik nézőpont-nézetet mutat be, ahol megtekintheti a webes tesztek eredményeit és a kapcsolódó sikertelen kérelmeket.
 
-![Application Insights rendelkezésre állási szempontból](./media/app-insights-connector/availability-blade-drill-search.png)
+![Application Insights rendelkezésre állási perspektíva](./media/app-insights-connector/availability-blade-drill-search.png)
 
-Kattintva bárhol a **kiszolgálói kérelmek** vagy **hibák** paneleken a perspektíva összetevők módosítása, hogy egy vizualizációt, amely a kapcsolódó kéréseket.
+Ha a **kiszolgálói kérelmek** vagy **hibák** paneleken bárhová kattint, a perspektíva összetevői változnak, hogy a kérésekhez kapcsolódó vizualizációt adjanak.
 
-![Application Insights-hibák panelen](./media/app-insights-connector/server-requests-failures-drill-search.png)
+![Application Insights hibák panel](./media/app-insights-connector/server-requests-failures-drill-search.png)
 
-Kattintva bárhol a **kivételek** kivételek igényeinek megfelelő Vizualizációk panelen láthatók.
+Ha a **kivételek** panelen bárhová kattint, a rendszer a kivételekhez igazított vizualizációt jeleníti meg.
 
-![Application Insights-kivételek panel](./media/app-insights-connector/exceptions-blade-drill-search.png)
+![Application Insights kivételek panel](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-Függetlenül attól, hogy valami valamelyik gombra a **Application Insights-összekötő** irányítópulton belül, a **keresési** lapon, Application Insights-adatok az alkalmazás látható visszaadó lekérdezés Insights-perspektívát. Ha az Application Insights-adatokat, például egy **&#42;** lekérdezés is megjeleníti a perspektíva lapon a következő képhez hasonlóan:
+Függetlenül attól, hogy rákattint-e a **Application Insights Connector** -irányítópultra, a **keresési** oldalon belül minden olyan lekérdezés, amelyik Application Insights az adatmennyiséget adja vissza, megjeleníti a Application Insights perspektívát. Ha például Application Insights-adatok megtekintését szeretné megtekinteni **&#42;** , egy lekérdezés a perspektíva fület is megjeleníti a következő képhez hasonlóan:
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
-Perspektíva összetevők frissülnek, attól függően, a keresési lekérdezésben. Ez azt jelenti, hogy az eredményeket szűrheti bármely, amely felkínálja az adatokat megtekinthetik keresési mező használatával:
+A perspektíva összetevői a keresési lekérdezéstől függően frissülnek. Ez azt jelenti, hogy az eredményeket bármely olyan keresési mező használatával szűrheti, amely lehetővé teszi az adatok megtekintését:
 
-- Az alkalmazások
+- Minden alkalmazás
 - Egyetlen kiválasztott alkalmazás
-- Alkalmazások egy csoportja
+- Alkalmazások csoportja
 
-### <a name="pivot-to-an-app-in-the-azure-portal"></a>Kimutatás az alkalmazás az Azure Portalon
+### <a name="pivot-to-an-app-in-the-azure-portal"></a>Kimutatás egy alkalmazáshoz a Azure Portal
 
-Application Insights-összekötő panelek úgy tervezték, hogy lehetővé teszi a kiválasztott Application Insights alkalmazáshoz forgáspont *használhatja az Azure Portalon*. A megoldás magas szintű felügyeleti platform, amely segít egy alkalmazás hibaelhárításával foglalkozó szakaszt is használhatja. Amikor megjelenik a csatlakoztatott alkalmazások valamelyikében egy potenciális problémát, vagy részletes elemzéseket készíthet, a Log Analytics-keresést is, vagy Ön is kimutatás, közvetlenül az Application Insights alkalmazást az.
+A Application Insights Connector-lapok úgy lettek kialakítva, hogy a *Azure Portal használatakor*a kiválasztott Application Insights alkalmazáshoz lehessen eldönteni. A megoldás magas szintű figyelési platformként használható, amely segít az alkalmazások hibakeresésében. Ha valamelyik csatlakoztatott alkalmazásban potenciális probléma jelenik meg, akkor Log Analytics kereshet, vagy közvetlenül a Application Insights alkalmazáshoz is elvégezhető.
 
-Forgáspont, kattintson a három pontra ( **...** ), amely akkor jelenik meg az egyes sorok végén található, és válassza ki **nyissa meg az Application Insights**.
+A kimutatáshoz kattintson az egyes sorok végén megjelenő három pontra ( **...** ), majd válassza a **Megnyitás Application Insightsban**lehetőséget.
 
 >[!NOTE]
->**Nyissa meg az Application Insights** nem érhető el az Azure Portalon.
+>A **megnyitás Application Insightsban** nem érhető el a Azure Portal.
 
-![Megnyitás az Application Insightsban](./media/app-insights-connector/open-in-app-insights.png)
+![Megnyitás Application Insights](./media/app-insights-connector/open-in-app-insights.png)
 
-### <a name="sample-corrected-data"></a>Minta – korrigált adatok
+### <a name="sample-corrected-data"></a>Minta – javított adatértékek
 
-Az Application Insights nyújt *[javítás mintavételi](../../azure-monitor/app/sampling.md)* telemetriai forgalom csökkentése érdekében. Mintavételi engedélyezi az Application Insights alkalmazást, kap egy Application Insights és a Log Analytics szolgáltatásban tárolt bejegyzések csökkentett száma. Amíg megőrzi az adatkonzisztencia magyarázata a **Application Insights-összekötő** oldal és a perspektívák kézzel korrigálja mintavételezett adatokat az egyéni lekérdezések.
+A Application Insights *[mintavételi korrekciót](../../azure-monitor/app/sampling.md)* biztosít a telemetria-forgalom csökkentése érdekében. Ha engedélyezi a mintavételezést a Application Insights alkalmazásban, a Application Insights és a Log Analyticsban tárolt bejegyzések száma kevesebb. Míg az adatkonzisztencia megmarad a **Application Insights Connector** oldalon és perspektívákban, manuálisan kell megadnia az egyéni lekérdezésekhez tartozó mintavételes adatok helyességét.
 
-Íme egy példa, egy naplóbeli keresési lekérdezés a mintavételi korrekciós:
+Itt látható egy példa a naplóbeli keresési lekérdezésben a mintavételezési korrekcióra:
 
 ```
 ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
-A **mintavételezés száma** mező szerepel az összes bejegyzést, és a bejegyzést képviselő adatpontok számát jeleníti meg. Ha az Application Insights-alkalmazások esetén mintavételezés bekapcsolása **mintavételezés száma** 1-nél nagyobb. Az alkalmazás által létrehozott bejegyzéseket tényleges számát, a sum a **mintavételezés száma** mezőket.
+A **mintavételes darabszám** mező minden bejegyzésben megtalálható, és a bejegyzés által reprezentált adatpontok számát jeleníti meg. Ha bekapcsolja a mintavételezést a Application Insights alkalmazáshoz, a mintavételi **szám** nagyobb, mint 1. Az alkalmazás által generált bejegyzések tényleges számának megszámlálásához összesítse a **mintavételes darabszám** mezőket.
 
-Mintavételezés csak a bejegyzések száma összesen az alkalmazás által létrehozott van hatással. Javítsa ki a mintavételt a metrikaalapú mezők, például nem kell **RequestDuration** vagy **AvailabilityDuration** mivel ezek a mezők megjelenítése az átlagos képviselt bejegyzések.
+A mintavételezés csak az alkalmazás által generált bejegyzések teljes számát befolyásolja. Nem kell kijavítania a mintavételezést a metrika mezőihez (például **RequestDuration** vagy **AvailabilityDuration** ), mert ezek a mezők a megjelenített bejegyzések átlagát mutatják.
 
 ## <a name="input-data"></a>Bemeneti adatok
 
-A megoldás a következő telemetriai típusú adatokat fogad a csatlakoztatott Application Insights-alkalmazások:
+A megoldás a következő telemetria-típusokat fogadja a csatlakoztatott Application Insights-alkalmazásokból:
 
-- Rendelkezésre állás
+- Elérhetőség
 - Kivételek
 - Kérelmek
-- Lapmegtekintések – a munkaterület fogadni a lapmegtekintések, konfigurálnia kell az alkalmazásokat, adatokat gyűjthet. További információkat lásd: [Oldalmegtekintések](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Egyéni események – az egyéni eseményeket szeretne fogadni. a munkaterület konfigurálnia kell az alkalmazások, adatok gyűjtéséhez. További információkat lásd: [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Oldalletöltések – a munkaterülete számára az oldalmegtekintések fogadásához konfigurálnia kell az alkalmazásokat az információk összegyűjtéséhez. További információ: [oldalmegtekintések](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
+- Egyéni események – a munkaterület egyéni események fogadásához konfigurálnia kell az alkalmazásokat az információk összegyűjtéséhez. További információ: [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-Érkezik adat az Application Insights szolgáltatásból a Log Analytics által elérhetővé váló.
+Az adatok a Log Analyticstól érkeznek a Application Insights, mert elérhetővé válnak.
 
 ## <a name="output-data"></a>Kimeneti adatok
 
-Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti adatokat. Applicationinsights – rekordokat az alábbiakban látható jellemzőkkel rendelkeznek:
+Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú* rekord. A ApplicationInsights-rekordok tulajdonságai az alábbi fejezetekben láthatók:
 
 ### <a name="generic-fields"></a>Általános mezők
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Típus | ApplicationInsights |
-| ClientIP |   |
+| Type (Típus) | ApplicationInsights |
+| Ügyfélip |   |
 | TimeGenerated | A rekord létrehozásának időpontja |
-| Alkalmazásazonosító | Az Application Insights-alkalmazás kialakítási kulcs |
-| Alkalmazásnév | Neve az Application Insights alkalmazást |
-| RoleInstance | Kiszolgáló állomás azonosítója |
-| DeviceType | Ügyféleszközök |
+| applicationId | A Application Insights alkalmazás kialakítási kulcsa |
+| applicationName | A Application Insights alkalmazás neve |
+| RoleInstance | A kiszolgáló gazdagépének azonosítója |
+| deviceType | Ügyféleszközök |
 | ScreenResolution |   |
-| Kontinens | Kontinens, amelyben adja meg a kérelem |
-| Country | Az ország/régió, ahol a kérés származik |
-| Megye | Tartomány, állapot vagy a területi beállítás, amelyben adja meg a kérelem |
-| Város | Város vagy a város, amelyben adja meg a kérelem |
-| isSynthetic | Azt jelzi, hogy a kérelem egy felhasználó által vagy automatikus módon hozták-e. True = automatizált metódus vagy hamis = felhasználó által generált |
-| Érvénytelen a SamplingRate | A telemetriát a portálra küldött SDK által generált százalékos értéke. Tartomány 0,0-100.0. |
-| SampledCount | 100/(SamplingRate). Ha például 4 =&gt; 25 %-kal |
-| IsAuthenticated | Igaz vagy hamis |
-| Műveletazonosító: | Olyan elemek, amelyek ugyanazt a műveletet azonosító kapcsolódó elemek jelennek meg a portálon. Általában a kérelem azonosítója |
-| ParentOperationID | A szülőművelet azonosítója |
+| Kontinens | Az a kontinens, ahol a kérelem származik |
+| Ország/régió | Az ország/régió, ahol a kérés származik |
+| Tartomány | Tartomány, állam vagy területi beállítás, ahol a kérelem származik |
+| Város | A kérést kezdeményező város vagy város |
+| isSynthetic | Azt jelzi, hogy a kérést egy felhasználó vagy egy automatikus metódus hozta-e létre. True = automatizált metódus vagy hamis = felhasználó által generált |
+| SamplingRate | A portálra eljuttatott SDK által generált telemetria százalékos aránya. Tartomány 0,0 – 100.0. |
+| SampledCount | 100/(SamplingRate). Például: 4 =&gt; 25% |
+| IsAuthenticated | igaz vagy hamis |
+| OperationID | Az azonos műveleti AZONOSÍTÓval rendelkező elemek a portálon kapcsolódó elemként jelennek meg. Általában a kérelem azonosítója |
+| ParentOperationID | A szülő művelet azonosítója |
 | OperationName |   |
-| munkamenet-azonosító | GUID egyedi azonosítására szolgál a munkamenet, ahol a kérelmet létrehozták. |
+| sessionId | A kérést létrehozó munkamenet egyedi azonosítására szolgáló GUID |
 | SourceSystem | ApplicationInsights |
 
-### <a name="availability-specific-fields"></a>Rendelkezésre állási-specifikus mezők
+### <a name="availability-specific-fields"></a>Rendelkezésre állásra vonatkozó mezők
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| TelemetryType | Rendelkezésre állás |
+| TelemetryType | Elérhetőség |
 | AvailabilityTestName | A webes teszt neve |
 | AvailabilityRunLocation | Http-kérelem földrajzi forrása |
-| AvailabilityResult | Azt jelzi, hogy a webes teszt a sikeres művelet |
-| AvailabilityMessage | Az üzenet csatlakozik a webes teszt |
-| AvailabilityCount | 100 /(Sampling Rate). Ha például 4 =&gt; 25 %-kal |
-| DataSizeMetricValue | 1.0-s vagy 0,0 |
-| DataSizeMetricCount | 100 /(Sampling Rate). Ha például 4 =&gt; 25 %-kal |
-| AvailabilityDuration | Idő, a webes teszt futtatásának időtartama ezredmásodpercben |
-| AvailabilityDurationCount | 100 /(Sampling Rate). Ha például 4 =&gt; 25 %-kal |
+| AvailabilityResult | A webes teszt sikerességének eredményét jelzi. |
+| AvailabilityMessage | A webes teszthez csatolt üzenet |
+| AvailabilityCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| DataSizeMetricValue | 1,0 vagy 0,0 |
+| DataSizeMetricCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| AvailabilityDuration | A webes teszt időtartamának ideje (ezredmásodpercben) |
+| AvailabilityDurationCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
-| AvailabilityTestId | A webteszt egyedi GUID azonosítója |
-| AvailabilityTimestamp | A rendelkezésre állási teszt pontos időbélyegét |
-| AvailabilityDurationMin | A mintavételezett rögzíti ezt a mezőt a minimális webes teszt futtatásának időtartama (ezredmásodpercben) a képviselt adatpontokhoz mutatja be |
-| AvailabilityDurationMax | A mintavételezett rögzíti ezt a mezőt a maximális webes teszt futtatásának időtartama (ezredmásodpercben) a képviselt adatpontokhoz mutatja be |
-| AvailabilityDurationStdDev | A mintavételezett rögzíti ezt a mezőt a szórás között minden webes teszt időtartamát (ezredmásodperc) a képviselt adatpontokhoz mutatja be |
+| AvailabilityTestId | A webes teszt egyedi GUID azonosítója |
+| AvailabilityTimestamp | A rendelkezésre állási teszt pontos időbélyege |
+| AvailabilityDurationMin | A mintául szolgáló rekordok esetében ebben a mezőben a képmegjelenített adatpontok minimális webes tesztelési időtartama (ezredmásodperc) látható. |
+| AvailabilityDurationMax | A mintául szolgáló rekordok esetében ebben a mezőben a megjelenített adatpontok maximális webes tesztelési időtartama (ezredmásodperc) látható. |
+| AvailabilityDurationStdDev | A mintául szolgáló rekordok esetében ebben a mezőben az összes webes teszt időtartama (ezredmásodpercben) közötti szórás látható a képviselt adatpontok esetében. |
 | AvailabilityMin |   |
 | AvailabilityMax |   |
 | AvailabilityStdDev | &nbsp;  |
 
 ### <a name="exception-specific-fields"></a>Kivétel-specifikus mezők
 
-| Típus | ApplicationInsights |
+| Type (Típus) | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Kivétel |
 | ExceptionType | A kivétel típusa |
-| ExceptionMethod | A metódus a kivételt létrehozó |
-| ExceptionAssembly | Szerelvény tartalmazza a keretrendszert és verziója, valamint a nyilvános kulcs jogkivonata |
+| ExceptionMethod | A kivételt létrehozó metódus |
+| ExceptionAssembly | A szerelvény tartalmazza a keretrendszert és a verziót, valamint a nyilvános kulcs tokenjét. |
 | ExceptionGroup | A kivétel típusa |
-| ExceptionHandledAt | Azt jelzi, hogy a szintet, amelyet a kivétel kezelve |
-| ExceptionCount | 100 /(Sampling Rate). Ha például 4 =&gt; 25 %-kal |
-| ExceptionMessage | A kivétel üzenet |
-| ExceptionStack | A kivétel teljes verem |
-| ExceptionHasStack | IGAZ, ha kivétel a verem |
+| ExceptionHandledAt | Azt a szintet jelzi, amely a kivételt kezelte |
+| ExceptionCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| ExceptionMessage | A kivétel üzenete |
+| ExceptionStack | A kivétel teljes vereme |
+| ExceptionHasStack | Igaz, ha a kivétel veremmel rendelkezik |
 
 
 
 ### <a name="request-specific-fields"></a>Kérelem-specifikus mezők
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Típus | ApplicationInsights |
-| TelemetryType | Kérés |
+| Type (Típus) | ApplicationInsights |
+| TelemetryType | Kérelem |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
-| RequestSuccess | Azt jelzi, hogy sikeres vagy sikertelen. IGAZ vagy hamis. |
-| Kérelemazonosító: | Egyedi azonosítására szolgál a kérelem azonosítója |
-| RequestName | GET/POST + alap URL-je |
-| RequestDuration | A kérelem időtartama másodpercben |
-| URL-cím | A kérelem nem többek között a gazdagép URL-címe |
-| Gazdagép | Web server-gazdagép |
-| URLBase | A kérelem teljes URL-cím |
-| ApplicationProtocol | Az alkalmazás által használt protokoll típusát |
-| RequestCount | 100 /(Sampling Rate). Ha például 4 =&gt; 25 %-kal |
-| RequestDurationCount | 100 /(Sampling Rate). Ha például 4 =&gt; 25 %-kal |
-| RequestDurationMin | A mintavételezett rekordok ebben a mezőben a képviselt adatpontokhoz a minimális kérés időtartama (ezredmásodpercben) látható. |
-| RequestDurationMax | A mintavételezett rekordok Ez a mező mutatja be, a kérelem maximális időtartama (ezredmásodpercben) a képviselt adatpontokhoz |
-| RequestDurationStdDev | A mintavételezett rekordok ebben a mezőben a szórást az összes kérelem időtartama (ezredmásodpercben) között látható a képviselt adatpontokhoz |
+| RequestSuccess | Sikert vagy hibát jelez. Igaz vagy hamis. |
+| Kérelemazonosító | AZONOSÍTÓ a kérelem egyedi azonosításához |
+| RequestName | GET/POST + URL-cím alapja |
+| RequestDuration | A kérelem időtartamának ideje (másodpercben) |
+| URL-cím | A kérelem URL-címe nem tartalmazza a gazdagépet |
+| Gazdagép | Webkiszolgáló-gazdagép |
+| URLBase | A kérelem teljes URL-címe |
+| ApplicationProtocol | Az alkalmazás által használt protokoll típusa |
+| requestCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| RequestDurationCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| RequestDurationMin | A mintául szolgáló rekordok esetében ebben a mezőben a bejelölt adatpontok minimális kérésének időtartama (ezredmásodpercben) látható. |
+| RequestDurationMax | A mintául szolgáló rekordok esetében ebben a mezőben a kérelmek maximális időtartama (ezredmásodpercben) látható a képviselt adatpontok esetében. |
+| RequestDurationStdDev | A mintául szolgáló rekordok esetében ebben a mezőben az összes kérelem időtartama (ezredmásodpercben) közötti szórás látható a képviselt adatpontok esetében. |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
-Ez a megoldás nem rendelkezik az irányítópulton látható naplókeresési mintákat egy készletét. Minta naplóbeli keresési lekérdezések leírásokat tartalmazó látható azonban a [nézet Application Insights-összekötő információk](#view-application-insights-connector-information) szakaszban.
+Ez a megoldás nem rendelkezik az irányítópulton megjelenített minta napló-keresések készletével. A példákat tartalmazó naplóbeli keresési lekérdezések azonban a [Application Insights Connector információk megtekintése](#view-application-insights-connector-information) szakaszban láthatók.
 
 ## <a name="removing-the-connector-with-powershell"></a>Az összekötő eltávolítása a PowerShell-lel
 A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. A meglévő kapcsolatokat a következő PowerShell-parancsfájl használatával távolíthatja el. A művelet végrehajtásához a munkaterület tulajdonosának vagy közreműködője, Application Insights erőforrás-olvasójának kell lennie.
@@ -323,6 +317,6 @@ Lekérheti az alkalmazások listáját is, ha egy napló lekérdezést használ:
 ApplicationInsights | summarize by ApplicationName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Használat [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) részletes információk az Application Insights-alkalmazások megtekintéséhez.
+- A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../../azure-monitor/log-query/log-query-overview.md) .

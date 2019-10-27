@@ -1,24 +1,18 @@
 ---
 title: A Azure Monitor for VMs függőségi ügynök frissítése | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet frissíteni a Azure Monitor for VMs függőségi ügynököt a parancssori, a telepítővarázsló és más módszerek használatával.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/30/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 37dcd21e17a47827f9bd4f6e5a756b321cf94495
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 09/30/2019
+ms.openlocfilehash: f062dead8d479fe4da5de46b76b82cee9207bd83
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809837"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933719"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>A Azure Monitor for VMs függőségi ügynök frissítése
 

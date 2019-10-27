@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813731"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933511"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektúra – Hyper-V replikáció másodlagos helyre
 
 Ez a cikk azokat az összetevőket és folyamatokat ismerteti, amelyek részt vesznek a System Center Virtual Machine Manager- (VMM-) felhőkben lévő helyszíni Hyper-V virtuális gépeknek (VM-eknek) az Azure Portalon elérhető [Azure Site Recovery](site-recovery-overview.md) szolgáltatással egy másodlagos VMM-helyre történő replikációjában.
 
+> [!WARNING]
+> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
@@ -56,7 +58,7 @@ A következő táblázat és ábra a Hyper-V-replikáció másodlagos helyre tö
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [Ezt az oktatóanyagot](hyper-v-vmm-disaster-recovery.md) követve engedélyezheti a Hyper-V replikálását a VMM-felhők között.

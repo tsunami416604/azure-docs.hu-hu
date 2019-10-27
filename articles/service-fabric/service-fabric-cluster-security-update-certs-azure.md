@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599952"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934018"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Service Fabric-fürthöz tartozó tanúsítványok hozzáadása vagy eltávolítása az Azure-ban
 Javasoljuk, hogy ismerkedjen meg a Service Fabric X. 509 tanúsítványokkal, és Ismerje meg a [fürt biztonsági forgatókönyveit](service-fabric-cluster-security.md). A folytatás előtt meg kell ismernie, hogy mi a fürt tanúsítványa, és mire használható.
@@ -53,13 +53,13 @@ Ha a cél az elsődlegesként megjelölt tanúsítvány eltávolítása, akkor e
 Ezek a lépések feltételezik, hogy tisztában van azzal, hogy a Resource Manager hogyan működik, és legalább egy Service Fabric-fürtöt üzembe helyezett egy Resource Manager-sablon használatával, és a sablont, amelyet a fürt kézi beállításához használt. Azt is feltételezi, hogy a JSON-t használja.
 
 > [!NOTE]
-> Ha egy minta sablont és paramétereket keres, amelyekkel követheti nyomon vagy kiindulási pontként, letöltheti azt ebből a [git-](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)adattárból. 
+> Ha egy minta sablont és paramétereket keres, amelyekkel követheti nyomon vagy kiindulási pontként, letöltheti azt ebből a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)adattárból. 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>A Resource Manager-sablon szerkesztése
 
-Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. JSON tartalmazza az összes módosítást. a minta a [git-](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)tárházban érhető el.
+Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. JSON tartalmazza az összes módosítást. a minta a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)tárházban érhető el.
 
 **Ügyeljen arra, hogy kövesse az összes lépést**
 
@@ -117,7 +117,7 @@ Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. J
          }
     ``` 
 
-4. Módosítsa az **összes** **Microsoft. számítási/virtualMachineScaleSets** erőforrás-definíciót – keresse meg a Microsoft. számítás/virtualMachineScaleSets erőforrás-definíciót. Görgessen a "kiadó" kifejezésre: "Microsoft. Azure. ServiceFabric", a "virtualMachineProfile" alatt.
+4. Módosítsa az **összes** **Microsoft. számítási/virtualMachineScaleSets** erőforrás-definíciót – keresse meg a Microsoft. számítás/virtualMachineScaleSets erőforrás-definíciót. Görgessen a "kiadó": "Microsoft. Azure. ServiceFabric" kifejezésre a "virtualMachineProfile" alatt.
 
     A Service Fabric közzétevő beállításainál ehhez hasonlóan kell megjelennie.
     
@@ -178,7 +178,7 @@ Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Szerkessze a sablon fájlját, hogy tükrözze a fent hozzáadott új paramétereket
-Ha a [git-](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) tárházban található mintát használja a követéshez, megkezdheti a változtatásokat a 5., VM-1-NodeTypes-Secure. PARAMETERS_STEP2. JSON fájlban. 
+Ha a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) tárházban található mintát használja a követéshez, megkezdheti a változtatásokat a 5., VM-1-NodeTypes-Secure. PARAMETERS_STEP2. JSON fájlban. 
 
 Szerkessze a Resource Manager-sablon paraméterét tartalmazó fájlt, adja hozzá a két új paramétert a secCertificateThumbprint és a secCertificateUrlValue. 
 
@@ -288,7 +288,7 @@ tetszőleges számú ügyféltanúsítványt is megadhat. Minden hozzáadás/tö
 
 Ha el szeretne távolítani egy másodlagos tanúsítványt a fürt biztonságához, navigáljon a biztonság szakaszhoz, és válassza a Törlés lehetőséget az adott tanúsítvány helyi menüjében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fürtözéssel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)

@@ -1,6 +1,6 @@
 ---
-title: Fordítottproxy-diagnosztika az Azure Service Fabric |} A Microsoft Docs
-description: Ismerje meg, hogyan figyelheti és diagnosztizálhatja a fordított proxy, a kérelem feldolgozása.
+title: Azure Service Fabric fordított proxy diagnosztika | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a kérelmek feldolgozását a fordított proxyn.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
@@ -13,36 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726842"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933974"
 ---
-# <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Figyelheti és diagnosztizálhatja a kérelem feldolgozását, a fordított proxy
+# <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>A kérelmek feldolgozásának figyelése és diagnosztizálása fordított proxyn
 
-A Service Fabric 5.7 kiadásával kezdődően, fordított proxy események érhetők el a gyűjteményhez. Az események két csatornákon, a kérelem feldolgozása sikertelen, a fordított proxy és a részletes események és a sikeres és a sikertelen kéréseket tartalmazó második csatorna kapcsolatos hibaeseményeket csak egy érhető el.
+A Service Fabric 5,7-es kiadásával kezdődően a fordított proxy eseményei gyűjteményhez érhetők el. Az események két csatornán érhetők el, amelyek közül az egyik csak a kérelem feldolgozási hibával kapcsolatos, a fordított proxyn és a második csatornán, amely a sikeres és a sikertelen kérelmek bejegyzéseihez tartalmaz részletes eseményeket.
 
-Tekintse meg [fordított proxy eseményeinek gyűjtése](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) ahhoz, hogy ezek a csatornák a helyi és Azure Service Fabric-fürtök események gyűjtését.
+A [fordított proxyval kapcsolatos események](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) összegyűjtéséhez tekintse át a helyi és az Azure Service Fabric-fürtökben lévő események összegyűjtésének engedélyezését.
 
-## <a name="troubleshoot-using-diagnostics-logs"></a>Hibaelhárítás a diagnosztikai naplók használatával
-Szívesen adunk néhány ötletet a merülhetnek fel az egyik gyakori hiba naplók értelmezése:
+## <a name="troubleshoot-using-diagnostics-logs"></a>Hibakeresés diagnosztikai naplók használatával
+Íme néhány példa arra, hogyan lehet értelmezni a gyakori meghibásodási naplókat, amelyeket az egyik találkozhat:
 
-1. Fordított proxy válasz állapotkód: 504 (időtúllépés) adja vissza.
+1. A fordított proxy visszaadja a válasz állapotkódot (504) (időtúllépés).
 
-    Egyik oka a szolgáltatás nem a kérés megadott időn belül érkezik válasz okozhatja.
-   Az alábbi naplók első esemény a kérelem részleteit a fordított proxy kézbesítve. 
-   A második esemény azt jelzi, hogy a kérelem nem sikerült Service, továbbítás közben: "belső hiba = ERROR_WINHTTP_TIMEOUT" 
+    Ennek oka az lehet, hogy a szolgáltatás nem válaszol a kérés időkorlátján belül.
+   Az alábbi első esemény naplózza a fordított proxyn fogadott kérelem részleteit. 
+   A második esemény azt jelzi, hogy a kérés meghiúsult a szolgáltatásra való továbbítás során, a "belső hiba = ERROR_WINHTTP_TIMEOUT" miatt 
 
-    A hasznos adatokat tartalmazza:
+    A hasznos adatok a következők:
 
-   * **traceId**: A GUID korrelációját, ha egy kérelemhez tartozó összes esemény használható. Az az alább két események, a traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, ami azt jelenti, az azonos kéréshez tartoznak.
-   * **requestUrl**: Az URL-címe (fordított proxy URL-cím), amelyhez a kérés érkezett.
-   * **verb**: HTTP-műveletet.
-   * **remoteAddress**: A kérést küldő ügyfél címe.
-   * **resolvedServiceUrl**: Végpont URL-címe, amelyhez a bejövő kérelem lett megoldva. 
-   * **errorDetails**: A hibával kapcsolatos további információkat.
+   * **traceId**: Ez a GUID az egyetlen kérelemnek megfelelő összes esemény összekapcsolására használható. Az alábbi két eseményben a traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, ami azt jelenti, hogy ugyanahhoz a kéréshez tartoznak.
+   * **requestUrl**: a kérés elküldésének URL-címe (fordított proxy URL-címe).
+   * **művelet**: http-művelet.
+   * **remoteAddress**: a kérést küldő ügyfél címe.
+   * **resolvedServiceUrl**: a szolgáltatás végpontjának URL-címe, amelyhez a bejövő kérelem meg lett oldva. 
+   * **errorDetails**: További információ a hibáról.
 
      ```
      {
@@ -81,12 +81,12 @@ Szívesen adunk néhány ötletet a merülhetnek fel az egyik gyakori hiba napl�
      }
      ```
 
-2. Fordított proxy válasz állapotkódja 404 (nem található) adja vissza. 
+2. A fordított proxy visszaadja a 404-es válasz-állapotkódot (nem található). 
     
-    Íme egy példa esemény, amelyeken fordított proxy visszaadja-e 404-es óta nem sikerült az egyező-szolgáltatásvégpont megkeresése.
-    A mondanivalóját adattartalom-bejegyzések a következők:
-   * **processRequestPhase**: Azt jelzi, hogy a hiba történt, amikor a kérelem feldolgozása közben a fázis ***TryGetEndpoint*** azaz úgy, hogy továbbítsa a szolgáltatásvégpont beolvasása közben. 
-   * **errorDetails**: A végpont keresési feltételek sorolja fel. Itt láthatja, hogy a listenerName megadott = **FrontEndListener** , mivel a replika végponti listában csak a figyelő, amelynek a neve tartalmazza **OldListener**.
+    Itt látható egy példa arra az esetre, amikor a fordított proxy a 404 értéket adja vissza, mert nem találta meg a megfelelő szolgáltatási végpontot.
+    A hasznos adattartalom-bejegyzések a következők:
+   * **processRequestPhase**: azt jelzi, hogy a kérelem feldolgozása során milyen fázisban történt a hiba, a ***TryGetEndpoint*** , azaz a szolgáltatás végpontjának beolvasására irányuló kísérlet során. 
+   * **errorDetails**: a végpontok keresési feltételeit sorolja fel. Itt láthatja, hogy a megadott listenerName = **FrontEndListener** , míg a replika-végpontok listája csak a **OldListener**nevű figyelőt tartalmazza.
     
      ```
      {
@@ -104,16 +104,16 @@ Szívesen adunk néhány ötletet a merülhetnek fel az egyik gyakori hiba napl�
      }
      }
      ```
-     Egy másik példa, ahol adhatnak vissza fordított proxy 404 nem található van: ApplicationGateway\Http konfigurációs paraméter **SecureOnlyMode** fordított proxyt az igaz értékre kell állítani a figyelést **HTTPS**, azonban a replika végpontok összes nem biztonságos (http-figyelés).
-     Fordított proxy értéket ad vissza 404-es, mert nem található a figyelő továbbítja a kérést a HTTPS végpont. A paraméterek elemzése, abban az esetben, ha a probléma szűkítéséhez segítségével hasznos:
+     Egy másik példa, ahol a fordított proxy a 404 nem található értéket adja vissza: a ApplicationGateway\Http konfigurációs paraméter értéke TRUE (igaz), a fordított proxy pedig a **https** **-t figyeli** , de az összes replika-végpont nem biztonságos ( HTTP-figyelés).
+     A fordított proxy a 404 értéket adja vissza, mert nem talál a HTTPS-t figyelő végpontot a kérelem továbbítására. Az esemény-adattartalomban található paraméterek elemzése segít a probléma szűkítéséhez:
     
      ```
       "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
      ```
 
-3. A fordított proxy irányuló kérelem sikertelen, és egy időtúllépés. 
-    Az eseménynaplókban egy esemény (itt nem látható) érkezett kérés részleteit.
-    A következő esemény mutatja, hogy a 404-es állapotkódot válaszolt a szolgáltatás és a fordított proxy kezdeményezi újra feloldani. 
+3. A fordított proxyra irányuló kérelem időtúllépési hiba miatt meghiúsul. 
+    Az eseménynaplók olyan eseményt tartalmaznak, amely tartalmazza a kapott kérelem részleteit (itt nem látható).
+    A következő esemény azt mutatja, hogy a szolgáltatás egy 404-es állapotkód és fordított proxy miatt válaszol egy ismételt feloldásra. 
 
     ```
     {
@@ -134,11 +134,11 @@ Szívesen adunk néhány ötletet a merülhetnek fel az egyik gyakori hiba napl�
       }
     }
     ```
-    Gyűjtött összes eseményt, amikor a vonat események minden megoldása és a továbbítás kísérlet láthatja.
-    Az utolsó esemény a sorozat bemutatja a kérelem feldolgozása sikertelen volt az időtúllépés, valamint feloldása sikeres kísérletek száma.
+    Az összes esemény összegyűjtésekor megjelenik egy esemény, amely minden feloldási és továbbítási kísérletet megjelenít.
+    Az adatsorozat utolsó eseménye azt mutatja, hogy a kérelmek feldolgozása időtúllépéssel meghiúsult, valamint a sikeres feloldási kísérletek száma.
     
     > [!NOTE]
-    > Azt Javasoltjuk, védheti meg a részletes csatorna eseménygyűjtés alapértelmezés szerint le van tiltva, és engedélyezze a hibaelhárítás szükségességét alapon.
+    > Javasoljuk, hogy a részletes csatorna-események gyűjtését alapértelmezés szerint letiltsa, és szükség esetén engedélyezze a hibaelhárítást.
 
     ```
     {
@@ -157,13 +157,13 @@ Szívesen adunk néhány ötletet a merülhetnek fel az egyik gyakori hiba napl�
     }
     ```
     
-    Ha a gyűjtemény csak a kritikus hiba/események engedélyezve van, megjelenik egy eseményt az adatait az időkorlátot és a feloldás kísérletek száma. 
+    Ha a gyűjtemény csak a kritikus/hibák eseményeire van engedélyezve, akkor egy esemény jelenik meg, amely részletesen ismerteti az időtúllépést és a feloldási kísérletek számát. 
     
-    Szolgáltatások, amelyek 404-es állapotkódot küldi vissza a felhasználó kívánja hozzá kell adnia egy "X-ServiceFabric" fejlécet a válaszban. A válasz a fejlécet ad hozzá, miután fordított proxy továbbítja az állapotkódot az ügyfélnek.  
+    Azok a szolgáltatások, amelyek 404 állapotkódot küldenek vissza a felhasználónak, adjon hozzá egy "X-ServiceFabric" fejlécet a válaszban. Miután hozzáadta a fejlécet a válaszhoz, a fordított proxy visszaküldi az állapotkódot az ügyfélnek.  
 
-4. Olyan esetekben, amikor az ügyfél megszakította a kérelmet.
+4. Olyan esetek, amikor az ügyfél leválasztta a kérést.
 
-    Következő eseményt rögzít a fordított proxy továbbító ügyfél válasz, de az ügyfél bontja a kapcsolatot:
+    A következő esemény akkor kerül rögzítésre, ha a fordított proxy továbbítja a választ az ügyfélnek, de az ügyfél bontja a kapcsolatot:
 
     ```
     {
@@ -181,24 +181,24 @@ Szívesen adunk néhány ötletet a merülhetnek fel az egyik gyakori hiba napl�
       }
     }
     ```
-5. Reverse Proxy returns 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
+5. Fordított proxy visszatérési értéke 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    FABRIC_E_SERVICE_DOES_NOT_EXIST hibát ad vissza, ha a szolgáltatásjegyzékben a szolgáltatásvégpont nincs megadva az URI-séma.
+    FABRIC_E_SERVICE_DOES_NOT_EXIST hiba, ha a szolgáltatási jegyzékfájlban nincs megadva URI-séma a szolgáltatási végponthoz.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
     ```
 
-    A probléma megoldása érdekében adja meg az URI-séma a jegyzékfájlban.
+    A probléma megoldásához az URI-sémát a jegyzékfájlban kell megadni.
     ```
     <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
     ```
 
 > [!NOTE]
-> Websocket-kérés feldolgozási kapcsolatos események jelenleg nem jelentkezett. Ez a következő kiadásban fog bővülni.
+> A WebSocket-kérelmek feldolgozásával kapcsolatos események jelenleg nincsenek naplózva. Ez a következő kiadásban lesz hozzáadva.
 
-## <a name="next-steps"></a>További lépések
-* [Esemény összesítésére és a Windows Azure Diagnostics segítségével gyűjteményt](service-fabric-diagnostics-event-aggregation-wad.md) Azure fürtök Erőforrásnapló-gyűjtés engedélyezéséhez.
-* Service Fabric-események megtekintése a Visual Studióban: [figyelése és diagnosztizálása helyileg](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-* Tekintse meg [fordított proxy konfigurálása biztonságos serviceshez való csatlakozáshoz](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) az Azure Resource Manager sablonminták konfigurálása védelmét a különböző szolgáltatási tanúsítvány a fordított proxy ellenőrzési lehetőségeit.
-* Olvasási [Service Fabric fordított proxyja](service-fabric-reverseproxy.md) további.
+## <a name="next-steps"></a>Következő lépések
+* [Események összesítése és gyűjtése a Windows Azure Diagnostics használatával](service-fabric-diagnostics-event-aggregation-wad.md) a naplók Azure-fürtökön való engedélyezéséhez.
+* A Visual Studióban Service Fabric események megtekintéséhez lásd: [helyi figyelés és Diagnosztizálás](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+* Tekintse meg a [fordított proxy konfigurálása a biztonságos szolgáltatások](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) Azure Resource Manager-sablonokhoz való csatlakozáshoz című témakört a biztonságos fordított proxy konfigurálásához a különböző szolgáltatás-tanúsítvány ellenőrzési lehetőségeivel.
+* További információért olvassa el [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) .

@@ -1,82 +1,76 @@
 ---
-title: Az Azure Monitor nézetekben szűrők |} A Microsoft Docs
-description: Az Azure Monitor nézetben szűrő lehetővé teszi a felhasználóknak az adatok nézetben található szűrés egy adott tulajdonságának értéke maga a nézet módosítása nélkül.  Ez a cikk bemutatja, hogyan használhatja egy szűrőt, és adjon hozzá egyet, egyéni nézet.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Szűrők Azure Monitor nézetekben | Microsoft Docs
+description: A Azure Monitor nézetben lévő szűrők lehetővé teszik a felhasználók számára, hogy egy adott tulajdonság értékét a nézet módosítása nélkül szűrhetik.  Ez a cikk azt ismerteti, hogyan használható egy szűrő, és hogyan adhat hozzá egyet egyéni nézethez.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/22/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/22/2018
+ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551726"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931982"
 ---
-# <a name="filters-in-azure-monitor-views"></a>Az Azure Monitor nézetekben szűrők
-A **szűrő** a egy [megtekintése az Azure Monitor](view-designer.md) lehetővé teszi a felhasználóknak az adatok nézetben található szűrés egy adott tulajdonságának értéke maga a nézet módosítása nélkül.  Például az adatok csak egy adott számítógép a nézet szűréséhez a nézet felhasználókat vagy számítógépeket sikerült engedélyezése.  Az, hogy a felhasználók több tulajdonság szerinti szűréshez használandó egyetlen nézetben több szűrőt is létrehozhat.  Ez a cikk bemutatja, hogyan használhatja egy szűrőt, és adjon hozzá egyet, egyéni nézet.
+# <a name="filters-in-azure-monitor-views"></a>Szűrők Azure Monitor nézetekben
+A [Azure monitor nézetben](view-designer.md) lévő **szűrők** lehetővé teszik a felhasználók számára, hogy egy adott tulajdonság értékét a nézet módosítása nélkül szűrhetik.  Például engedélyezheti a nézet felhasználói számára, hogy csak egy adott számítógépről vagy számítógépekről származó adatokra szűrje a nézetet.  Egyetlen nézetben több szűrőt is létrehozhat, így a felhasználók több tulajdonság alapján szűrhetők.  Ez a cikk azt ismerteti, hogyan használható egy szűrő, és hogyan adhat hozzá egyet egyéni nézethez.
 
-## <a name="using-a-filter"></a>A szűrők használatával
-Kattintson egy nézetre annak megnyitásához, ahol módosíthatja a dátum időtartomány, a nézet legördülő tetején dátumtartomány idő.
+## <a name="using-a-filter"></a>Szűrő használata
+Kattintson a nézet tetején látható dátum időtartományra a legördülő lista megnyitásához, ahol módosíthatja a nézet dátum-időtartományát.
 
-![Példa szűrése](media/view-designer-filters/filters-example-time.png)
+![Példa szűrésre](media/view-designer-filters/filters-example-time.png)
 
-Kattintson a **+** használatával egyéni szűrőket a nézet szűrő hozzáadásához. Vagy válassza ki a szűrő egy értéket a legördülő listából, vagy írjon be egy értéket. Szűrők hozzáadása gombra kattintva folytassa a **+** . 
+A **+ra** kattintva hozzáadhat egy szűrőt a nézethez definiált egyéni szűrők használatával. Válasszon egy értéket a szűrőhöz a legördülő listából, vagy írjon be egy értéket. A **+ra** kattintva folytassa a szűrők hozzáadásával. 
 
 
-![Példa szűrése](media/view-designer-filters/filters-example-custom.png)
+![Példa szűrésre](media/view-designer-filters/filters-example-custom.png)
 
-Ha eltávolítja az összes szűrő értékeit, majd a szűrő már nem lépnek érvénybe.
+Ha eltávolít egy szűrő összes értékét, akkor a szűrő többé nem lesz alkalmazva.
 
 
 ## <a name="creating-a-filter"></a>Szűrő létrehozása
 
-A szűrő létrehozása a **szűrők** lapon mikor [szerkesztési nézet](view-designer.md).  A szűrő a nézet globális, és a nézetben minden részére vonatkozik.  
+Hozzon létre egy szűrőt a **szűrők** lapról a [nézet szerkesztésekor](view-designer.md).  A szűrő globális a nézet számára, és a nézet összes részére érvényes.  
 
-![Szűrés beállításai](media/view-designer-filters/filters-settings.png)
+![Szűrési beállítások](media/view-designer-filters/filters-settings.png)
 
-A következő táblázat ismerteti az egy szűrő beállításait.
+A következő táblázat a szűrők beállításait ismerteti.
 
 | Beállítás | Leírás |
 |:---|:---|
-| Mezőnév | A szűréshez használt mező neve.  Ebben a mezőben meg kell egyeznie a summarize mezője **értékek lekérdezése**. |
-| Értékek lekérdezése | A lekérdezés futtatása a felhasználói szűrő legördülő lista feltöltéséhez.  Ez a lekérdezés kell használnia, vagy [összefoglalója](/azure/kusto/query/summarizeoperator) vagy [különböző](/azure/kusto/query/distinctoperator) egyedi értékeket jelentenek a mezőt, és meg kell egyeznie a **mezőnév**.  Használhat [rendezési](/azure/kusto/query/sortoperator) rendezheti az értékeket, a felhasználó számára megjelenített. |
-| Címke | Lekérdezések támogatása a szűrő van használatban, és a felhasználó számára is megjelenik a mező nevét. |
+| Mezőnév | A szűréshez használt mező neve.  Ennek a mezőnek egyeznie kell az összesítő mezővel az **értékek lekérdezéséhez**. |
+| Értékek lekérdezése | A felhasználó számára a szűrő legördülő listájának feltöltéséhez futtatandó lekérdezés.  A lekérdezésnek [összegzést](/azure/kusto/query/summarizeoperator) vagy [megkülönböztetést](/azure/kusto/query/distinctoperator) kell használnia egy adott mező egyedi értékeinek megadásához, és meg kell egyeznie a **mező nevével**.  A [Rendezés](/azure/kusto/query/sortoperator) lehetőséggel rendezheti a felhasználó számára megjelenített értékeket. |
+| Címke | A szűrőt támogató lekérdezésekben használt mező neve, amely a felhasználó számára is megjelenik. |
 
 ### <a name="examples"></a>Példák
 
-Az alábbi táblázatban néhány példa a gyakran alkalmazott szűrőket tartalmaz.  
+Az alábbi táblázat néhány példát tartalmaz a gyakori szűrőkre.  
 
 | Mezőnév | Értékek lekérdezése | Címke |
 |:--|:--|:--|
-| Computer   | Szívverés &#124; distinct Computer &#124; számítógép növekvő rendezés | Számítógépek |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; különböző err | Severity |
-| SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
+| Computer   | Szívverés &#124; különböző számítógépének &#124; rendezése számítógép ASC szerint | Számítógépek |
+| EventLevelName | Esemény &#124; eltérő EventLevelName | Súlyosság |
+| SeverityLevel | Syslog &#124; – különböző SeverityLevel | Súlyosság |
+| SvcChangeType | Konfigurációváltozás &#124; – eltérő svcChangeType | ChangeType |
 
 
-## <a name="modify-view-queries"></a>Módosítsa a nézet lekérdezéseit
+## <a name="modify-view-queries"></a>View lekérdezések módosítása
 
-Szűrők csak lépnek érvénybe módosítania kell a nézetben a kiválasztott értékek szűrés lekérdezéseket.  Ha nem módosítja a nézet a lekérdezésekre, majd a felhasználó kiválasztja az értékeket nem lesz hatása.
+Ahhoz, hogy egy szűrő bármilyen hatással legyen, módosítania kell a nézet összes lekérdezését a kiválasztott értékek szűréséhez.  Ha nem módosítja a nézet egyik lekérdezését sem, akkor a felhasználó által választott értékek nincsenek hatással.
 
-A szűrő értékét a lekérdezés szintaxisa: 
+Egy lekérdezésben a szűrő értékének szintaxisa a következő: 
 
     where ${filter name}  
 
-Például, ha egy lekérdezést, amely eseményeket ad vissza, és a egy nevű szűrőt használ a nézetben _számítógépek_, használhatja a következő lekérdezést.
+Ha például a nézet olyan lekérdezést tartalmaz, amely eseményeket ad vissza, és a _számítógépek_nevű szűrőt használja, a következő lekérdezést használhatja.
 
     Event | where ${Computers} | summarize count() by EventLevelName
 
-Ha adott súlyossági nevű másik szűrőt, a következő lekérdezés segítségével mindkét szűrők használata.
+Ha egy súlyosság nevű másik szűrőt adott hozzá, akkor a következő lekérdezéssel mindkét szűrőt használhatja.
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet a [Vizualizáció részek](view-designer-parts.md) adhat hozzá az egyéni nézet.
+## <a name="next-steps"></a>Következő lépések
+* További információ az egyéni nézetbe felvehető [vizualizációs részekről](view-designer-parts.md) .

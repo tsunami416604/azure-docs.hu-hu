@@ -1,24 +1,18 @@
 ---
 title: Operations Manager összekötése Azure Monitorhoz | Microsoft Docs
 description: Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja munkaterületével.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: c8d6e949722e291eab4ac45f6abb610acfa10d68
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 08/13/2019
+ms.openlocfilehash: c5ac8cfe2971d1163c00383b4604a9a5b49558b0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532404"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932163"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -357,7 +351,7 @@ Ha törölni szeretné a két összekötőt (a Microsoft.SystemCenter.Advisor.Da
 Ha a felügyeleti csoport Log Analytics munkaterületre való újrakapcsolódását tervezi, akkor újra kell importálnia a `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` felügyeleti csomag fájlját. A környezetében telepített System Center Operations Manager verziójától függően a fájlt a következő helyen találja:
 
 * A forrás-adathordozón a `\ManagementPacks` System Center 2016 – Operations Manager mappában vagy felette.
-* A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. Operations Manager 2012 esetében a forrás mappája `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és 2012 R2, `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` található.
+* A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. Operations Manager 2012 esetében a forrás mappája `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és 2012 R2, `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`található.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,35 +1,29 @@
 ---
-title: A log Analytics intelligens elemzési példák |} A Microsoft Docs
-description: Példák, használó intelligens elemzési funkciók a Log Analytics felhasználói tevékenység elemzését.
-services: log-analytics
-documentationcenter: ''
+title: Intelligens analitikai példák Log Analytics | Microsoft Docs
+description: A Log Analytics Smart Analytics-függvényeit használó példák a felhasználói tevékenységek elemzésének elvégzéséhez.
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/15/2019
 ms.author: bwren
-ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/15/2019
+ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61425846"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932962"
 ---
-# <a name="log-analytics-smart-analytics-examples"></a>A log Analytics intelligens elemzési példák
-Ez a cikk példákat intelligens elemzési funkciók használata a Log Analytics felhasználói tevékenység elemzését. Ezek a példák segítségével elemezheti a saját Application Insights által figyelt alkalmazások, vagy használja ezeket a lekérdezéseket a fogalmak hasonló egyéb adatok elemzése. 
+# <a name="log-analytics-smart-analytics-examples"></a>Intelligens elemzési példák Log Analytics
+Ez a cikk olyan példákat tartalmaz, amelyek a Log Analytics Smart Analytics-függvényeit használják a felhasználói tevékenységek elemzésének végrehajtásához. Ezekkel a példákkal elemezheti Application Insights által figyelt saját alkalmazásait, vagy használhatja az ezekben a lekérdezésekben szereplő fogalmakat a hasonló elemzésekhez más adatain. 
 
-Tekintse meg a [Kusto nyelvi referencia](https://docs.microsoft.com/azure/kusto/query/) használja ezeket a mintákat a különböző kulcsszavak részleteiért. Olvassa el a [leckében a lekérdezések létrehozásáról](get-started-queries.md) Ha most ismerkedik a Log Analytics szolgáltatásba.
+A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](https://docs.microsoft.com/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új log Analytics.
 
-## <a name="cohorts-analytics"></a>Kohorszok analytics
+## <a name="cohorts-analytics"></a>Kohorszok elemzése
 
-Kohorsz elemzési nyomon követi az adott csoportok felhasználói, úgynevezett kohorszok tevékenységét. Megkísérli mérheti, hogy viszont a "szolgáltatás" megvizsgálja, hogy a felhasználók visszatérő aránya. A felhasználó először használta azokat a szolgáltatás az idő szerint vannak csoportosítva. Kohorszok elemzésekor várhatóan keresse meg a tevékenység az első követett időszakokra csökkenését. Minden egyes kohorsz a hét első alkalommal észlelt a tagjai által címe.
+A kohorsz-elemzés nyomon követi a felhasználók adott csoportjai, más néven kohorszok tevékenységeit. Kísérletet tesz a szolgáltatás fellebbezésének mérésére a felhasználók visszaküldési sebességének mérésével. A felhasználók a szolgáltatás első használatba vett ideje szerint vannak csoportosítva. A kohorszok elemzésekor a tevékenység csökkenését várjuk az első követett időszakokban. Az egyes kohorszokat a hét tagjainak első alkalommal megfigyelték.
 
-Az alábbi példa elemzi a felhasználók végre 5 hét folyamán első használata során a szolgáltatás a következő tevékenységek számát.
+Az alábbi példa azt elemzi, hogy a felhasználók hányan hajtják végre az 5 hetes tanfolyamot a szolgáltatás első használata után.
 
 ```Kusto
 let startDate = startofweek(bin(datetime(2017-01-20T00:00:00Z), 1d));
@@ -90,12 +84,12 @@ week
           p4 = todouble(r4)/todouble(r0)*100 
 | sort by Cohort asc
 ```
-Ebben a példában a következő kimenetet eredményezi.
+Ez a példa a következő kimenetet eredményezi.
 
-![Elemzés kimeneti kohorsz](media/smart-analytics/cohorts.png)
+![Kohorsz analízis kimenete](media/smart-analytics/cohorts.png)
 
-## <a name="rolling-monthly-active-users-and-user-stickiness"></a>A havi aktív felhasználók és felhasználói megtartásának működés közbeni
-Az alábbi példák az idősorozat-elemzési használja a [series_fir](/azure/kusto/query/series-firfunction) függvény, amely lehetővé teszi a mozgó ablak számítások végrehajtásához. A mintaalkalmazás figyelt egy online áruházból, amely nyomon követi a felhasználói tevékenység, egyéni események keresztül. A lekérdezés nyomon követi a felhasználói tevékenységek két típusú _AddToCart_ és _kivétele_, és határozza meg, _aktív felhasználók_ , azok számára, akik egy adott nap alatt legalább egyszer végre a kivétel.
+## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Havi aktív felhasználók és felhasználói stickies működés
+Az alábbi példák idősorozat-elemzést alkalmaznak a [series_fir](/azure/kusto/query/series-firfunction) függvénnyel, amely lehetővé teszi a csúszó ablakos számítások végrehajtását. A figyelt minta alkalmazás egy online áruház, amely egyéni eseményeken követi nyomon a felhasználók tevékenységeit. A lekérdezés két különböző típusú felhasználói tevékenységet nyomon követ: a _AddToCart_ és a _pénztárat_, valamint azokat az _aktív felhasználókat_ határozza meg, akik egy adott napon legalább egyszer kijelentkezést végeztek.
 
 
 
@@ -138,11 +132,11 @@ customEvents
 | render timechart
 ```
 
-Ebben a példában a következő kimenetet eredményezi.
+Ez a példa a következő kimenetet eredményezi.
 
-![A működés közbeni havi felhasználók kimenet](media/smart-analytics/rolling-mau.png)
+![A havi működést használó felhasználók kimenete](media/smart-analytics/rolling-mau.png)
 
-Az alábbi példa bekapcsolja a fentebbi lekérdezés újrafelhasználható függvénybe, és a működés közbeni felhasználói megtartásának kiszámításához használja. Aktív felhasználók ebben a lekérdezésben definiált, csak az adott felhasználók által végrehajtott kijelentkezési legalább egyszer az adott napon.
+A következő példa egy újrafelhasználható függvénybe helyezi át a fenti lekérdezést, és a használatával kiszámítja a működés közbeni használatot. A lekérdezésben szereplő aktív felhasználók csak azokat a felhasználókat határozzák meg, akik legalább egyszer elvégezték a kijelentkezést egy adott napon.
 
 ``` Kusto
 let rollingDcount = (sliding_window_size: int, event_name:string)
@@ -180,17 +174,17 @@ on Timestamp
 | render timechart
 ```
 
-Ebben a példában a következő kimenetet eredményezi.
+Ez a példa a következő kimenetet eredményezi.
 
-![Felhasználói a tartós használat kimenet](media/smart-analytics/user-stickiness.png)
+![Felhasználói stickiy kimenet](media/smart-analytics/user-stickiness.png)
 
-## <a name="regression-analysis"></a>Regressziós elemzést
-Ez a példa bemutatja, hogyan hozhat létre egy automatizált detector használatával a szolgáltatáskimaradásokat kizárólag egy alkalmazás nyomkövetési naplók alapján. Az érzékelő kívánja hiba relatív mennyisége a rendellenes hirtelen növekedése és a figyelmeztető nyomkövetéseket az alkalmazásban.
+## <a name="regression-analysis"></a>Regressziós elemzés
+Ebből a példából megtudhatja, hogyan hozhat létre automatikus detektort a szolgáltatás-megszakításokra kizárólag az alkalmazás nyomkövetési naplói alapján. A detektor rendellenes hirtelen növekedést keres az alkalmazásban a hibák és a figyelmeztetési Nyomkövetések relatív mennyiségében.
 
-A szolgáltatás állapotát a nyomkövetési naplók adatai alapján kiértékelheti, hogy két módszerek használhatók:
+A szolgáltatás állapotának kiértékelésére két módszer használható a nyomkövetési naplókból származó adat alapján:
 
-- Használja [márka sorozat](/azure/kusto/query/make-seriesoperator) félig strukturált szöveges nyomkövetési naplók alakítható át egy pozitív és negatív nyomkövetési sorok hányadosa képviselő metrikát.
-- Használat [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) és [series_fit_line](/azure/kusto/query/series-fit-linefunction) speciális. lépés – jump észlelési idősorozat-elemzési az egy 2 – sor lineáris regressziós módszerrel történő végrehajtásához.
+- A [make-sorozat](/azure/kusto/query/make-seriesoperator) használatával a félig strukturált szöveges nyomkövetési naplókat egy olyan mérőszámba alakíthatja át, amely a pozitív és negatív nyomkövetési sorok arányát jelöli.
+- A [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) és a [series_fit_line](/azure/kusto/query/series-fit-linefunction) használatával speciális lépésenkénti észlelést végezhet az idősorozat-elemzés és a 2 soros lineáris regresszió használatával.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));
@@ -219,7 +213,7 @@ traces
 | project PatternMatch = iff(RSquare2 > minRsquare and Slope>0, "Spike detected", "No Match")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a [adatkezelő nyelvi referencia](/azure/kusto/query) nyelv részleteiért.
-- Végig egy [leckében a Log Analytics lekérdezések írásáról](get-started-queries.md).
+- A nyelvre vonatkozó részletekért tekintse meg a [adatkezelő nyelvi referenciáját](/azure/kusto/query) .
+- Útmutató a [lekérdezéseknek a log Analyticsban való írásához](get-started-queries.md).

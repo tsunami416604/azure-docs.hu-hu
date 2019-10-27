@@ -1,53 +1,49 @@
 ---
-title: Az Azure Monitor log Microsoft Flow-folyamatok automatizálása
-description: Ismerje meg, hogyan használhatja fel a Microsoft Flow megismételhető folyamatok gyors automatizálása az Azure Log Analytics-összekötő használatával.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-ms.service: log-analytics
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
+title: Azure Monitor naplózási folyamatok automatizálása a Microsoft Flow
+description: Megtudhatja, hogyan használhatja a Microsoft Flow az ismételhető folyamatok gyors automatizálására az Azure Log Analytics-összekötő használatával.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/29/2017
+author: MGoedtel
 ms.author: bwren
-ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.date: 09/29/2017
+ms.openlocfilehash: c74ff0f4d23df8f906870c3810a699db254d70b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807038"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932316"
 ---
-# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő az Azure Monitor log-folyamatok automatizálása a Microsoft Flow
-[Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletek használatával a különböző szolgáltatások, automatizált munkafolyamatokat hozhat létre. Egy művelet kimenete egy másik lehetővé teszi, hogy hozzon létre a különböző szolgáltatások közötti integráció bemeneteként használható.  Az Azure Log Analytics-összekötő a Microsoft Flow lehetővé teszi a Log Analytics-munkaterületet az Azure Monitor log-lekérdezések által beolvasott adatokat tartalmazó munkafolyamatokat építhet rájuk.
+# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Azure Monitor-naplózási folyamatok automatizálása a Microsoft Flow összekötővel
+A [Microsoft flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre számos szolgáltatáshoz. Az egyik művelet kimenete bemenetként is használható, így a különböző szolgáltatások közötti integrációt hozhat létre.  A Microsoft Flow Azure Log Analytics-összekötője lehetővé teszi olyan munkafolyamatok összeállítását, amelyek egy Azure Monitor Log Analytics munkaterületéről származó lekérdezések által beolvasott adatokkal rendelkeznek.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Használhatja például a Microsoft Flow e-mail-értesítést, az Office 365-ből az Azure Monitor log adatok felhasználásához, hibajelentés létrehozása az Azure DevOps, vagy egy Slack-üzenet küldése.  Egy munkafolyamat olyan egyszerű ütemezés szerint vagy néhány művelet, például a levelezés, vagy a tweet érkezésekor egy csatlakoztatott szolgáltatásban is indíthat.  
+Használhatja például a Microsoft Flow-t az Office 365-e-mailes értesítésben szereplő Azure Monitor naplózási adatok használatára, az Azure DevOps-beli hiba létrehozására, vagy egy Slack-üzenet közzétételére.  A munkafolyamatot egy egyszerű vagy egy csatlakoztatott szolgáltatás egyes műveleteiből is elindíthatja, például e-mail vagy Tweet érkezésekor.  
 
-Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, amely automatikusan elküldi az e-mailhez, csupán egy példa, hogyan használhatja a Log Analytics-összekötő a Microsoft Flow az Azure Monitor log-lekérdezés eredményeit. 
-
-
-## <a name="step-1-create-a-flow"></a>1\. lépés: Folyamat létrehozása
-1. Jelentkezzen be a [Microsoft Flow](https://flow.microsoft.com), és válassza ki **saját folyamatok**.
-2. Kattintson a **+ üres folyamat létrehozása**.
-
-## <a name="step-2-create-a-trigger-for-your-flow"></a>2\. lépés: A folyamat eseményindító létrehozása
-1. Kattintson a **keresés több száz összekötő és trigger között**.
-2. Típus **ütemezés** kifejezést a keresőmezőbe.
-3. Válassza ki **ütemezés**, majd válassza ki **ütemezés – ismétlődés**.
-4. Az a **gyakorisága** mezőben jelölje be **nap** és a a **időköz** mezőbe írja be **1**.<br><br>![Microsoft Flow-eseményindító párbeszédpanel](media/flow-tutorial/flow01.png)
+A cikkben szereplő oktatóanyag bemutatja, hogyan hozhat létre olyan folyamatot, amely automatikusan elküldi egy Azure Monitor log-lekérdezés eredményét e-mailben, csupán egy példát arra, hogyan használhatja a Log Analytics-összekötőt a Microsoft Flow. 
 
 
-## <a name="step-3-add-a-log-analytics-action"></a>3\. lépés: A Log Analytics művelet hozzáadása
-1. Kattintson a **+ új lépés**, és kattintson a **művelet hozzáadása**.
-2. Keresse meg **Log Analytics**.
-3. Kattintson a **Azure Log Analytics-lekérdezés futtatásához és eredményeinek képi megjelenítése**.<br><br>![A log Analytics lekérdezési ablakban futtassa](media/flow-tutorial/flow02.png)
+## <a name="step-1-create-a-flow"></a>1\. lépés: folyamat létrehozása
+1. Jelentkezzen be [Microsoft Flowba](https://flow.microsoft.com), és válassza **a saját folyamatok**lehetőséget.
+2. Kattintson **a + létrehozás üresből**elemre.
 
-## <a name="step-4-configure-the-log-analytics-action"></a>4\. lépés: Konfigurálja a Log Analytics-műveletet
+## <a name="step-2-create-a-trigger-for-your-flow"></a>2\. lépés: trigger létrehozása a folyamathoz
+1. Kattintson **a Keresés több száz összekötő és eseményindító között**lehetőségre.
+2. Írja be az **Schedule** kifejezést a keresőmezőbe.
+3. Válassza az **ütemezése**, majd az **ütemezése-ismétlődés**lehetőséget.
+4. A **gyakoriság** mezőben válassza a **nap** lehetőséget, majd az **intervallum** mezőben adja meg az **1**értéket.<br><br>![Microsoft Flow trigger párbeszédpanel](media/flow-tutorial/flow01.png)
 
-1. Adja meg a munkaterület, beleértve az előfizetés Azonosítóját, erőforráscsoport, és a munkaterület neve.
-2. Adja hozzá a következő log lekérdezés a **lekérdezés** ablak.  Ez a mintalekérdezés, és lecserélheti bármely más, amely adatokat ad vissza.
+
+## <a name="step-3-add-a-log-analytics-action"></a>3\. lépés: Log Analytics művelet hozzáadása
+1. Kattintson az **+ új lépés**, majd **a művelet hozzáadása**lehetőségre.
+2. **Log Analytics**keresése.
+3. Kattintson **Az Azure log Analytics – lekérdezés futtatása elemre, és jelenítse meg az eredményeket**.<br><br>![Log Analytics a lekérdezési ablak futtatása](media/flow-tutorial/flow02.png)
+
+## <a name="step-4-configure-the-log-analytics-action"></a>4\. lépés: a Log Analytics művelet konfigurálása
+
+1. Adja meg a munkaterület részleteit, beleértve az előfizetés-azonosítót, az erőforráscsoportot és a munkaterület nevét.
+2. Adja hozzá a következő naplózási lekérdezést a **lekérdezési** ablakhoz.  Ez csak egy minta lekérdezés, és bármely más, az adatok visszaadása után helyettesíthető.
    ```
     Event
     | where EventLevelName == "Error" 
@@ -56,31 +52,31 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
     | sort by Computer
    ```
 
-2. Válassza ki **HTML-táblázat** számára a **diagramtípus**.<br><br>![Log Analytics művelet](media/flow-tutorial/flow03.png)
+2. Válassza ki a **diagram típusához**tartozó **HTML-táblázatot** .<br><br>![Log Analytics művelet](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>5\. lépés: E-mail küldése a flow konfigurálása
+## <a name="step-5-configure-the-flow-to-send-email"></a>5\. lépés: a folyamat konfigurálása e-mailek küldéséhez
 
-1. Kattintson a **új lépés**, és kattintson a **+ művelet hozzáadása**.
-2. Keresse meg **az Office 365 Outlook**.
-3. Kattintson a **Office 365 Outlook – e-mail küldése**.<br><br>![Az Office 365 Outlook-kiválasztási ablaka](media/flow-tutorial/flow04.png)
+1. Kattintson az **új lépés**, majd **a + művelet hozzáadása**lehetőségre.
+2. Keresse meg az **Office 365 Outlook alkalmazást**.
+3. Kattintson **az Office 365 Outlook – E-mail küldése**elemre.<br><br>![Office 365 Outlook kiválasztási ablak](media/flow-tutorial/flow04.png)
 
-4. A címzett e-mail-címét adja meg a **való** ablakot, és az e-mail tárgyát **tulajdonos**.
-5. Kattintson bárhová a **törzs** mezőbe.  A **dinamikus tartalom** ablak nyílik meg a korábbi műveletek értékeket.  
-6. Válassza ki **törzs**.  Ez az a Log Analytics-műveletet a lekérdezés eredményeit.
-6. Kattintson a **speciális beállítások megjelenítése**.
-7. Az a **HTML** jelölje ki **Igen**.<br><br>![Az Office 365 e-mailek konfigurációs ablaka](media/flow-tutorial/flow05.png)
+4. **A címzett ablakban és** **a tárgyban**lévő e-mail-cím tulajdonosának megadása.
+5. Kattintson bárhová a **törzs** mezőben.  Megnyílik egy **dinamikus tartalom** ablak a korábbi műveletek értékeivel.  
+6. Válassza a **törzs**lehetőséget.  Ez a lekérdezés eredménye a Log Analytics műveletben.
+6. Kattintson a **Speciális beállítások megjelenítése**elemre.
+7. A **HTML** mezőben válassza az **Igen**lehetőséget.<br><br>![Office 365 e-mail konfigurációs ablak](media/flow-tutorial/flow05.png)
 
-## <a name="step-6-save-and-test-your-flow"></a>6\. lépés: Mentés és a folyamat tesztelése
-1. Az a **Folyamatnév** mezőben, adja hozzá a folyamat nevét, és kattintson **folyamat létrehozása**.<br><br>![Folyamat mentése](media/flow-tutorial/flow06.png)
-2. A folyamat létrehozása megtörtént, és a egy nap, amely megadott ütemezés fog futni. 
-3. A folyamat teszteléséhez azonnal, kattintson a **Futtatás most** , majd **folyamat futtatása**.<br><br>![Folyamat futtatása](media/flow-tutorial/flow07.png)
-3. A folyamat befejezését követően ellenőrizze az e-mailt a megadott címzettnek.  Kell egy e-mail az alábbihoz hasonló szervezethez érkezett:<br><br>![Példa e-mailre](media/flow-tutorial/flow08.png)
+## <a name="step-6-save-and-test-your-flow"></a>6\. lépés: a folyamat mentése és tesztelése
+1. A **folyamat neve** mezőben adja meg a folyamat nevét, majd kattintson a **folyamat létrehozása**elemre.<br><br>![folyamat mentése](media/flow-tutorial/flow06.png)
+2. A folyamat már létre lett hozva, és egy nap után fog futni, amely a megadott ütemterv. 
+3. A folyamat azonnali teszteléséhez kattintson a **Futtatás most** lehetőségre, majd a **folyamat futtatása**parancsra.<br><br>![folyamat futtatása](media/flow-tutorial/flow07.png)
+3. Amikor a folyamat befejeződik, tekintse meg a megadott címzett e-mail-címeit.  A következőhöz hasonló törzstel rendelkező e-mailt kell kapnia:<br><br>![Minta e-mail](media/flow-tutorial/flow08.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tudjon meg többet [lekérdezések jelentkezzen be az Azure Monitor](../log-query/log-query-overview.md).
-- Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).
+- További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
+- További információ a [Microsoft Flowról](https://ms.flow.microsoft.com).
 
 
 

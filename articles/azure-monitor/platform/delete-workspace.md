@@ -1,24 +1,18 @@
 ---
 title: Az Azure Log Analytics munkaterület törlése és visszaállítása | Microsoft Docs
 description: Megtudhatja, hogyan törölheti Log Analytics munkaterületét, ha létrehozott egy személyes előfizetést, vagy átalakította a munkaterület modelljét.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299285"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932371"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és visszaállítása
 
@@ -52,9 +46,9 @@ A munkaterületeket a [PowerShell](https://docs.microsoft.com/powershell/module/
 1. A bejelentkezéshez nyissa meg a [Azure Portal](https://portal.azure.com). 
 2. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
 3. A Log Analytics munkaterületek listájában válasszon ki egy munkaterületet, majd kattintson a középső ablaktábla tetején található **Törlés** elemre.
-   ![Delete beállítás a munkaterület tulajdonságok paneljén @ no__t-1
+   ![törlési lehetőség a munkaterület tulajdonságai ablaktáblán](media/delete-workspace/log-analytics-delete-workspace.png)
 4. Amikor megjelenik a megerősítő üzenet ablak, amely a munkaterület törlésének megerősítését kéri, kattintson az **Igen**gombra.
-   @no__t – a munkaterület @ no__t-1 0Confirm törlése
+   ![a munkaterület törlésének megerősítése](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
 ## <a name="recover-workspace"></a>Munkaterület helyreállítása
 

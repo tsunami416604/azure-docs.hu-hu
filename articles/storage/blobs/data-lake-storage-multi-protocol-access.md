@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9767282b3dd764a45f25a14d62af70a13c80b0ac
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300270"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933133"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Több protokollos hozzáférés Azure Data Lake Storage (előzetes verzió)
 
@@ -35,7 +35,7 @@ Ez magában foglalja a harmadik féltől származó eszközöket és alkalmazás
 
 ## <a name="use-all-blob-storage-features"></a>A blob Storage összes funkciójának használata
 
-A blob Storage olyan funkciói, mint a [diagnosztikai naplózás](../common/storage-analytics-logging.md), a [hozzáférési szintek](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési szabályzatai](storage-lifecycle-management-concepts.md) mostantól hierarchikus névtérrel rendelkező fiókokkal működnek. Ezért a blob Storage-fiókok hierarchikus névtereit a fontos funkciók elérésének elvesztése nélkül is engedélyezheti. 
+A blob Storage olyan funkciói, mint a [diagnosztikai naplózás](../common/storage-analytics-logging.md), a [hozzáférési szintek](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési szabályzatai](storage-lifecycle-management-concepts.md) mostantól hierarchikus névtérrel rendelkező fiókokkal működnek. Ezért a blob Storage-fiókokban is engedélyezheti a hierarchikus névtereket anélkül, hogy ezekhez a fontos funkciókhoz kellene hozzáférni. 
 
 > [!NOTE]
 > A korlátozások áttekintéséhez tekintse meg az [ismert problémákkal foglalkozó](data-lake-storage-known-issues.md) cikket.

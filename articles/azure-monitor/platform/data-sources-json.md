@@ -1,41 +1,35 @@
 ---
-title: Az Azure monitorban egyéni JSON-adatok gyűjtése |} A Microsoft Docs
-description: Egyéni JSON-adatforrások gyűjthetők be az Azure Monitor használatával a Log Analytics-ügynök Linux rendszeren.  Ezek az egyéni adatforrások JSON visszaadó curl vagy valamelyik, a FluentD mint 300 beépülő modulok például egyszerű parancsfájlokat is lehet. Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+title: Egyéni JSON-adatok gyűjtése a Azure Monitorban | Microsoft Docs
+description: Az egyéni JSON-adatforrások begyűjthetők Azure Monitorba a Linux-alapú Log Analytics-ügynök használatával.  Ezek az egyéni adatforrások olyan egyszerű parancsfájlok lehetnek, mint például a curl, vagy az egyik a több mint 300 + beépülő modul. Ez a cikk az adatgyűjtés szükséges konfigurációját ismerteti.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 101719668fee155e84b7a767647a662ca845f0f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: c7628badb993c26b989c1fe610d2360ff466de39
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804648"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932472"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON adatforrások az Azure monitorban Linuxhoz készült Log Analytics-ügynökkel rendelkező gyűjtése
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült Log Analytics-ügynökkel Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Egyéni JSON-adatforrások gyűjthetők be [Azure Monitor](data-platform.md) a Log Analytics ügynökét használja a Linux rendszerre.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](https://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
+Az egyéni JSON-adatforrások begyűjthetők [Azure monitorba](data-platform.md) a Linux-alapú log Analytics-ügynök használatával.  Ezek az egyéni adatforrások olyan egyszerű parancsfájlok lehetnek, mint például a [curl](https://curl.haxx.se/) , vagy az egyik a több mint [300 + beépülő](https://www.fluentd.org/plugins/all)modul. Ez a cikk az adatgyűjtés szükséges konfigurációját ismerteti.
 
 
 > [!NOTE]
-> Log Analytics-ügynököket Linux v1.1.0-217 + kötelező megadni egyéni JSON-adatok
+> A Linux v 1.1.0-217 + Log Analytics ügynöke az egyéni JSON-adatvédelemhez szükséges
 
 ## <a name="configuration"></a>Konfiguráció
 
-### <a name="configure-input-plugin"></a>A bemeneti beépülő modul konfigurálása
+### <a name="configure-input-plugin"></a>Bemeneti beépülő modul konfigurálása
 
-Az Azure monitorban JSON-adatokat gyűjteni, adjon hozzá `oms.api.` egy FluentD címkét egy bemeneti beépülő modul elejére.
+A JSON-adatok Azure Monitorba való gyűjtéséhez vegyen fel `oms.api.`t egy, a bemeneti beépülő modulban található, egy Fluent címkével rendelkező címke elejére.
 
-Ha például az alábbiakban a különálló konfigurációs fájlt `exec-json.conf` a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Ez a FluentD beépülő modul használja `exec` 30 másodpercenként a curl-parancs futtatásához.  Ez a parancs kimenete a JSON-kimenet beépülő modul gyűjti.
+Például a következő egy különálló konfigurációs fájl `exec-json.conf` `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Ez a folyékonyan működő beépülő `exec` modult használja, hogy 30 másodpercenként futtasson egy cURL-parancsot.  A parancs kimenetét a JSON kimeneti beépülő modulja gyűjti.
 
 ```
 <source>
@@ -59,12 +53,12 @@ Ha például az alábbiakban a különálló konfigurációs fájlt `exec-json.c
   retry_wait 30s
 </match>
 ```
-A konfigurációs fájl alapján hozzáadott `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` a tulajdonosa, a következő paranccsal módosítani kell.
+A `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` alatt hozzáadott konfigurációs fájlnak az alábbi paranccsal kell megváltoztatnia a tulajdonosát.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Kimeneti beépülő modul konfigurálása 
-Adja hozzá a következő kimeneti beépülő modul konfiguráció a fő konfigurációhoz a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy különálló konfigurációs fájlt helyezni `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Adja hozzá a következő kimeneti beépülőmodul-konfigurációt a fő konfigurációhoz `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy különálló konfigurációs fájlként `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -81,19 +75,19 @@ Adja hozzá a következő kimeneti beépülő modul konfiguráció a fő konfigu
 </match>
 ```
 
-### <a name="restart-log-analytics-agent-for-linux"></a>Indítsa újra a Linuxhoz készült Log Analytics-ügynök
-Indítsa újra a Log Analytics-ügynök Linux-szolgáltatás a következő paranccsal.
+### <a name="restart-log-analytics-agent-for-linux"></a>A Linux-ügynök újraindítása Log Analytics
+Indítsa újra a Linux rendszerhez készült Log Analytics Agent ügynököt a következő paranccsal.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Kimenet
-Az adatgyűjtést az Azure monitorban típusú rekord `<FLUENTD_TAG>_CL`.
+Az adatokat a rendszer a Azure Monitor a `<FLUENTD_TAG>_CL`egy bejegyzéstípusával gyűjti.
 
-Ha például az egyéni címke `tag oms.api.tomcat` az Azure monitorban típusú rekord `tomcat_CL`.  A típus a következő naplófájl-lekérdezést az összes rekord beolvasása.
+Például az egyéni címke Azure Monitor `tag oms.api.tomcat` a `tomcat_CL`bejegyzéstípussal.  Az ilyen típusú rekordokat a következő napló lekérdezéssel kérheti le.
 
     Type=tomcat_CL
 
-Beágyazott JSON-adatok források támogatottak, de az indexelt minden szülő mező alapján. Például a következő JSON-adatokat a log-lekérdezéshez, mivel visszaadott `tag_s : "[{ "a":"1", "b":"2" }]`.
+A beágyazott JSON-adatforrások támogatottak, de a szülő mező alapján indexelve vannak. Például a rendszer a következő JSON-adatokkal tér vissza a napló lekérdezésében `tag_s : "[{ "a":"1", "b":"2" }]`ként.
 
 ```
 {
@@ -105,5 +99,5 @@ Beágyazott JSON-adatok források támogatottak, de az indexelt minden szülő m
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+## <a name="next-steps"></a>Következő lépések
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 

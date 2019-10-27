@@ -3,16 +3,16 @@ title: Figyelési megoldások a Azure Monitorban | Microsoft Docs
 description: A Azure Monitor figyelési megoldásai olyan logikai, vizualizációs és adatgyűjtési szabályok gyűjteményei, amelyek egy adott problémás terület körüli metrikákat biztosítanak.  Ez a cikk a figyelési megoldások telepítésével és használatával kapcsolatos információkat tartalmaz.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: article
+ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 4006a3c66da9cb98db16b72da0b5fb7059affe22
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: b5304f2f9af3f3dac5a1259669cdd78548c2e832
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900664"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933725"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 A monitorozási megoldások kihasználják az Azure szolgáltatásait, hogy további információkat szolgáltassanak egy adott alkalmazás vagy szolgáltatás működéséről. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről.

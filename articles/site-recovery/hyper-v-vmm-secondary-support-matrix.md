@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813625"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933814"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek másodlagos helyre történő helyreállításának támogatási mátrixa
 
@@ -21,7 +21,9 @@ Ez a cikk összefoglalja, hogy mi támogatott, ha a [Azure site Recovery](site-r
 > [!NOTE]
 > Csak másodlagos helyre replikálhat, ha a Hyper-V-gazdagépek kezelése a VMM-felhőkben történik.
 
-  
+> [!WARNING]
+> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
+
 
 ## <a name="host-servers"></a>Gazdagép-kiszolgálók
 
@@ -65,7 +67,7 @@ Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Adattárolás
 
 ### <a name="host-storage"></a>Gazdagép tárterülete
 
@@ -113,7 +115,7 @@ A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
 

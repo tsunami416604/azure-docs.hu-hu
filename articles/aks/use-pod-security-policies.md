@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 131a71e27bba1c37b6d50b718b8eac788109a59f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058324"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933761"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -24,11 +24,11 @@ Az AK-fürt biztonságának növelése érdekében korlátozhatja, hogy a hüvel
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
@@ -106,10 +106,10 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-A *Privileged* Pod biztonsági szabályzatot az AK-fürt bármely hitelesített felhasználója alkalmazza. Ezt a hozzárendelést a ClusterRoles és a ClusterRoleBindings vezérli. Használja a [kubectl Get clusterrolebindings][kubectl-get] parancsot, és keresse meg az *alapértelmezett: jogosultságú:* kötés:
+A *Privileged* Pod biztonsági szabályzatot az AK-fürt bármely hitelesített felhasználója alkalmazza. Ezt a hozzárendelést a ClusterRoles és a ClusterRoleBindings vezérli. Használja a [kubectl Get clusterrolebindings][kubectl-get] parancsot, és keresse meg az *alapértelmezett: privilegizált* : kötés:
 
 ```console
-kubectl get clusterrolebindings default:priviledged -o yaml
+kubectl get clusterrolebindings default:privileged -o yaml
 ```
 
 Ahogy az a következő tömörített kimenetben látható, a *PSP: korlátozott* ClusterRole bármely rendszerhez van rendelve *: hitelesített* felhasználók. Ez a képesség alapvető szintű korlátozásokat biztosít a saját szabályzatok meghatározása nélkül.
@@ -119,12 +119,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:priviledged
+  name: default:privileged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:priviledged
+  name: psp:privileged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -135,7 +135,7 @@ Fontos megérteni, hogy ezek az alapértelmezett házirendek hogyan használják
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>Tesztelési felhasználó létrehozása AK-fürtben
 
-Alapértelmezés szerint az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancs használatakor a rendszer `kubectl` hozzáadja az AK-fürthöz tartozó *rendszergazdai* hitelesítő adatokat a konfigurációhoz. A rendszergazda felhasználó megkerüli a pod biztonsági szabályzatok kényszerítését. Ha Azure Active Directory-integrációt használ az AK-fürtökhöz, bejelentkezhet a nem rendszergazda felhasználó hitelesítő adataival, hogy megtekintse a házirendek kényszerítését működés közben. Ebben a cikkben hozzunk létre egy tesztelési felhasználói fiókot az AK-fürtben, amelyet használhat.
+Alapértelmezés szerint az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancs használatakor a rendszer HOZZÁADJA az AK-fürthöz tartozó *rendszergazdai* hitelesítő adatokat a `kubectl`-konfigurációhoz. A rendszergazda felhasználó megkerüli a pod biztonsági szabályzatok kényszerítését. Ha Azure Active Directory-integrációt használ az AK-fürtökhöz, bejelentkezhet a nem rendszergazda felhasználó hitelesítő adataival, hogy megtekintse a házirendek kényszerítését működés közben. Ebben a cikkben hozzunk létre egy tesztelési felhasználói fiókot az AK-fürtben, amelyet használhat.
 
 Hozzon létre egy *PSP-AK* nevű minta névteret az erőforrások teszteléséhez a [kubectl Create Namespace][kubectl-create] parancs használatával. Ezután hozzon létre egy nem *rendszergazda* nevű szolgáltatásfiókot a [kubectl Create ServiceAccount][kubectl-create] parancs használatával:
 
@@ -156,7 +156,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Alias-parancsok létrehozása a rendszergazda és a nem rendszergazda felhasználók számára
 
-Hozzon létre két parancssori aliast a normál rendszergazda felhasználó `kubectl` és az előző lépésben létrehozott nem rendszergazda felhasználó közötti különbség kiemeléséhez:
+Ha a `kubectl` és az előző lépésekben létrehozott nem rendszergazda felhasználó használatával szeretné kiemelni a normál rendszergazda felhasználó közötti különbséget, hozzon létre két parancssori aliast:
 
 * A **kubectl-rendszergazdai** alias a normál rendszergazda felhasználóhoz tartozik, és a *PSP-Kabai* névtérre van kiterjedően.
 * Az **kubectl-nonadminuser** alias az előző lépésben létrehozott nem *rendszergazda felhasználóhoz* tartozik, és a *PSP-Kabai* névtérre van korlátozva.
@@ -170,7 +170,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Emelt szintű Pod létrehozásának tesztelése
 
-Első lépésként tesztelje, mi történik, ha egy Pod-t a biztonsági `privileged: true`környezetével ütemezhet. Ez a biztonsági környezet a pod jogosultságait bővíti. Az előző szakaszban, amely az alapértelmezett AK Pod biztonsági házirendeket mutatta, a *korlátozott* szabályzatnak meg kell tagadnia ezt a kérést.
+Először tesztelje, mi történik, ha egy Pod-t a `privileged: true`biztonsági környezetével ütemezhet. Ez a biztonsági környezet a pod jogosultságait bővíti. Az előző szakaszban, amely az alapértelmezett AK Pod biztonsági házirendeket mutatta, a *korlátozott* szabályzatnak meg kell tagadnia ezt a kérést.
 
 Hozzon létre egy `nginx-privileged.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
 
@@ -226,7 +226,7 @@ Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-A Kubernetes Scheduler elfogadja a pod-kérelmet. Ha azonban a pod állapotát használja `kubectl get pods`, a következő hibaüzenet jelenik meg:
+A Kubernetes Scheduler elfogadja a pod-kérelmet. Ha azonban `kubectl get pods`használatával tekinti meg a pod állapotát, a következő hibaüzenet jelenik meg:
 
 ```console
 $ kubectl-nonadminuser get pods
@@ -267,7 +267,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>A pod egy adott felhasználói környezettel való létrehozásának tesztelése
 
-Az előző példában a tároló képe automatikusan megpróbálta a root használatával kötni a NGINX-et a 80-es portra. Ezt a kérést az alapértelmezett *korlátozott* Pod biztonsági házirend megtagadta, így a pod nem indul el. Most próbálja meg ugyanezt az NGINX Pod-t `runAsUser: 2000`egy adott felhasználói környezettel, például:.
+Az előző példában a tároló képe automatikusan megpróbálta a root használatával kötni a NGINX-et a 80-es portra. Ezt a kérést az alapértelmezett *korlátozott* Pod biztonsági házirend megtagadta, így a pod nem indul el. Most próbálja meg ugyanezt az NGINX Pod-t egy adott felhasználói környezettel, például `runAsUser: 2000`.
 
 Hozzon létre egy `nginx-unprivileged-nonroot.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
 
@@ -290,7 +290,7 @@ Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-A Kubernetes Scheduler elfogadja a pod-kérelmet. Ha azonban megtekinti a pod állapotát a használatával `kubectl get pods`, az előző példától eltérő hiba történt:
+A Kubernetes Scheduler elfogadja a pod-kérelmet. Ha azonban `kubectl get pods`használatával tekinti meg a pod állapotát, az előző példától eltérő hiba történt:
 
 ```console
 $ kubectl-nonadminuser get pods
@@ -445,7 +445,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>A nem privilegizált Pod létrehozásának tesztelése
 
-Ha az egyéni Pod biztonsági szabályzatot alkalmazta, és a felhasználói fiókra vonatkozó kötést használ a szabályzat használatára, próbálkozzon újra egy nem védett Pod létrehozásával. Használja ugyanazt `nginx-privileged.yaml` a jegyzékfájlt a pod létrehozásához a [kubectl Apply][kubectl-apply] parancs használatával:
+Ha az egyéni Pod biztonsági szabályzatot alkalmazta, és a felhasználói fiókra vonatkozó kötést használ a szabályzat használatára, próbálkozzon újra egy nem védett Pod létrehozásával. Használja ugyanazt a `nginx-privileged.yaml` jegyzékfájlt a pod létrehozásához a [kubectl Apply][kubectl-apply] parancs használatával:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -498,7 +498,7 @@ Végezetül törölje a *PSP-Kabai* névteret:
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Pod biztonsági házirendet, hogy megakadályozza a privilegizált hozzáférés használatát. A szabályzatok számos funkciót kikényszerítenek, például a kötet típusát vagy a futtató felhasználót. Az elérhető beállításokkal kapcsolatos további információkért tekintse meg az [Kubernetes Pod biztonsági szabályzatának dokumentációját][kubernetes-policy-reference].
 

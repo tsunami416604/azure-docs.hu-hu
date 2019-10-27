@@ -1,24 +1,18 @@
 ---
 title: Karakterláncok használata Azure Monitor log-lekérdezésekben | Microsoft Docs
 description: Leírja, hogyan szerkesztheti, hasonlíthatja össze, keresheti meg és végezheti el számos más műveletet a sztringeken Azure Monitor a naplók lekérdezéseit.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 08/16/2018
+ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741465"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932930"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Karakterláncok használata Azure Monitor naplózási lekérdezésekben
 
@@ -34,7 +28,7 @@ A karakterlánc minden karakterének indexe a helye alapján történik. Az els�
 
 
 ## <a name="strings-and-escaping-them"></a>Karakterláncok és Escape-szövegek
-A karakterlánc-értékek egy vagy két idézőjeles karakterrel vannak becsomagolva. A fordított\\perjel () használatával a karakterek az azt követő karaktereken (például \t: Tab, \n a sortöréshez és \" maga az idézőjelben) használhatók.
+A karakterlánc-értékek egy vagy két idézőjeles karakterrel vannak becsomagolva. A fordított perjel (\\) a karakterek a következő karakterrel való Escape-karakterekkel való elírására szolgál: például \t for Tab, \n for sortörés, és maga az idézőjel karakter \".
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -44,7 +38,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-A ""\\Escape-karakterként való működésének megakadályozásához\@adja hozzá a "" karakterláncot előtagként a következő sztringhez:
+A "\\" Escape-karakterként való működésének megakadályozásához adja hozzá a "\@" előtagot a következő sztringhez:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -53,7 +47,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Karakterlánc-összehasonlítások
 
-Operator       |Leírás                         |Kis-és nagybetűk megkülönböztetése|Példa (hozamok `true`)
+Művelet       |Leírás                         |Kis-és nagybetűk megkülönböztetése|Példa (hozamok `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Egyenlő                              |Igen           |`"aBc" == "aBc"`
 `!=`           |Nem egyenlő                          |Igen           |`"abc" != "ABC"`
@@ -98,11 +92,11 @@ countof(text, search [, kind])
 ```
 
 ### <a name="arguments"></a>Argumentumok
-- `text`– A bemeneti sztring 
-- `search`– Egyszerű karakterlánc vagy reguláris kifejezés, amely a szövegen belüli egyezést adja meg.
-- `kind` - normál | _regex_ (alapértelmezett: normál).
+- `text` – a bemeneti sztring 
+- `search` – egyszerű karakterlánc vagy reguláris kifejezés, amely a szövegen belüli egyezést adja meg.
+- `kind` - _normál_ | _regex_ (alapértelmezett: normál).
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Adja vissza
 
 Az a szám, ahányszor a keresési karakterlánc összehasonlítható a tárolóban. Az egyszerű karakterlánc-egyezések átfedésben lehetnek, amíg a regex-egyezések nem.
 
@@ -139,12 +133,12 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumentumok
 
-- `regex`– Reguláris kifejezés.
-- `captureGroup`– A kinyerni kívánt rögzítési csoportot jelző pozitív egész konstans. 0 a teljes egyezés esetében 1 a reguláris kifejezésben szereplő első "(" zárójel ")" értékkel egyeztetve, a későbbi zárójelek esetében pedig 2 vagy több.
-- `text`– A keresendő karakterlánc.
-- `typeLiteral`-Egy nem kötelező típusú literál (például typeof (Long)). Ha meg van adni, a kibontott alkarakterlánc erre a típusra lesz konvertálva.
+- `regex` – reguláris kifejezés.
+- `captureGroup` – a kinyerni kívánt rögzítési csoportot jelző pozitív egész konstans. 0 a teljes egyezés esetében 1 a reguláris kifejezésben szereplő első "(" zárójel ")" értékkel egyeztetve, a későbbi zárójelek esetében pedig 2 vagy több.
+- `text` – A keresendő karakterlánc.
+- `typeLiteral` – nem kötelező típusú literál (például typeof (Long)). Ha meg van adni, a kibontott alkarakterlánc erre a típusra lesz konvertálva.
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Adja vissza
 Az alkarakterlánc egyeztetve lett a jelzett rögzítési csoport captureGroup, és igény szerint typeLiteral konvertálható.
 Ha nincs egyezés, vagy a típus konvertálása sikertelen, a null értéket adja vissza.
 
@@ -246,11 +240,11 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumentumok
 
-- `regex`– Az egyeztetendő reguláris kifejezés. Tartalmazhat rögzítési csoportokat a (z) "(zárójelek") ".
-- `rewrite`– A helyettesítési regex a megfelelő regexben való egyezéshez. A \ 0 paranccsal hivatkozhat a teljes egyezésre, \ 1 az első rögzítési csoporthoz, \ 2 és így tovább a következő rögzítési csoportokhoz.
-- `input_text`– A keresendő bemeneti sztring.
+- `regex` – az egyeztetendő reguláris kifejezés. Tartalmazhat rögzítési csoportokat a (z) "(zárójelek") ".
+- `rewrite` – a behelyettesítési regex, amely a megfelelő regexnek felel meg. A \ 0 paranccsal hivatkozhat a teljes egyezésre, \ 1 az első rögzítési csoporthoz, \ 2 és így tovább a következő rögzítési csoportokhoz.
+- `input_text` – a keresendő bemeneti karakterlánc.
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Adja vissza
 A regex összes egyezésének az újraírás értékelését követő szövege. A egyezések nem fedik át egymást.
 
 ### <a name="examples"></a>Példák
@@ -266,10 +260,10 @@ A következő eredményekkel rendelkezhet:
 
 Tevékenység                                        |helyébe
 ------------------------------------------------|----------------------------------------------------------
-4663 – kísérlet történt egy objektum elérésére  |4663-as AZONOSÍTÓJÚ tevékenység: Kísérlet történt egy objektum elérésére.
+4663 – kísérlet történt egy objektum elérésére  |4663-as AZONOSÍTÓJÚ tevékenység: kísérlet történt egy objektum elérésére.
 
 
-## <a name="split"></a>split
+## <a name="split"></a>felosztás
 
 Egy adott karakterláncot egy megadott elválasztó alapján feldarabol, és az eredményül kapott alsztringek tömbjét adja vissza.
 
@@ -280,9 +274,9 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="arguments"></a>Argumentumok
 
-- `source`– A megosztva kívánt karakterlánc a megadott elválasztó karakternek megfelelően.
-- `delimiter`– A forrás sztring felosztásához használni kívánt elválasztó karakter.
-- `requestedIndex`– Nem kötelező nulla alapú index. Ha meg van jelölve, a visszaadott karakterlánc-tömb csak az adott elem (ha létezik) marad.
+- `source` – a megosztva kívánt karakterlánc a megadott elválasztó karakternek megfelelően.
+- `delimiter` – a forrás sztring felosztásához használandó elválasztó karakter.
+- `requestedIndex` – nem kötelező nulla alapú index. Ha meg van jelölve, a visszaadott karakterlánc-tömb csak az adott elem (ha létezik) marad.
 
 
 ### <a name="examples"></a>Példák
@@ -337,9 +331,9 @@ substring(source, startingIndex [, length])
 
 ### <a name="arguments"></a>Argumentumok
 
-- `source`– Az a forrás sztring, amelyet a rendszer az alsztringből fog venni.
-- `startingIndex`– A kért alsztring nulla alapú kiindulási karakterének pozíciója.
-- `length`– Opcionális paraméter, amely a visszaadott alsztring kért hosszának megadására használható.
+- `source` – az a forrás sztring, amelyet az alsztring el fog venni.
+- `startingIndex` – a kért alsztring nulla alapú kiindulási karakterének pozíciója.
+- `length` – nem kötelező paraméter, amely a visszaadott alsztring kért hosszának megadására használható.
 
 ### <a name="examples"></a>Példák
 ```Kusto
@@ -368,7 +362,7 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Folytassa a speciális oktatóanyagokkal:
 * [Összesítési függvények](aggregations.md)
 * [Speciális összesítések](advanced-aggregations.md)

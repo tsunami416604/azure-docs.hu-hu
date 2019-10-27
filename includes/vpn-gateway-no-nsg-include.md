@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8ac976e8c186add7a4f0901047fa5d36b51781dd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bbd443c13ac0b79c434d294ecd69a64941ab0d36
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67178946"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935527"
 ---
 > [!IMPORTANT]
-> Átjáróalhálózatokkal való munka esetén ne társítsa a hálózati biztonsági csoportot (NSG) az átjáróalhálózathoz. A hálózati biztonsági csoportok és az alhálózat társítása esetén előfordulhat, hogy a VPN Gateway nem fog a várt módon működni. További információ a hálózati biztonsági csoportokról: [What is a Network Security Group?](../articles/virtual-network/security-overview.md) (Mi az a hálózati biztonsági csoport?)
+> Átjáróalhálózatokkal való munka esetén ne társítsa a hálózati biztonsági csoportot (NSG) az átjáróalhálózathoz. Ha hálózati biztonsági csoportot társít ehhez az alhálózathoz, előfordulhat, hogy az Virtual Network átjáró (VPN, Express Route Gateway) leállítja a várt működést. További információ a hálózati biztonsági csoportokról: [What is a Network Security Group?](../articles/virtual-network/security-overview.md) (Mi az a hálózati biztonsági csoport?)
 > 
 > 

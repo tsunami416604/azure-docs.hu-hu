@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 13b0952f38fb0c8c922be415f782b3a0a0861729
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757318"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931740"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rövid útmutató: a képek elemzése a kifogásolható tartalomhozC#
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Content Moderator előfizetői azonosítója. A Content Moderatorra történő előfizetéshez és az előfizetői azonosító beszerzéséhez kövesse a [Cognitive Services-fiók létrehozásával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kapcsolatos szakaszban található utasításokat.
+- A Content Moderator előfizetői azonosítója. A Content Moderatorra való előfizetéshez kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, amelynek neve `CONTENT_MODERATOR_SUBSCRIPTION_KEY` és `CONTENT_MODERATOR_ENDPOINT`.
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
 
@@ -49,20 +49,20 @@ Következő lépésként másolja és illessze be az ebben az útmutatóban tal�
 
 Adja hozzá az alábbi `using` utasításokat a *Program.cs* fájl elejéhez.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_using)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy Content Moderator-ügyfélszolgáltatót az előfizetéséhez. Adja hozzá a kódot a **Program** osztály mellett, ugyanabban a névtérben. Frissítenie kell a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
+Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy Content Moderator-ügyfélszolgáltatót az előfizetéséhez. Adja hozzá a osztályt a **program** osztály mellett ugyanabban a névtérben. A **AzureBaseURL** és a **CMSubscriptionKey** mezőket frissítenie kell a végpont URL-címének és az előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_client)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
 Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők határozzák meg a bemeneti kép tartalmának és a kimenet JSON-tartalmának fájljait.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_fields)]
 
 Létre kell hoznia a *ImageFiles. txt* bemeneti fájlt, és ennek megfelelően frissítenie kell annak elérési útját (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak). Nyissa meg az _ImageFiles.txt_ fájlt, és adja hozzá a moderálni kívánt képek URL-címét. Ez a rövid útmutató a következő URL-címeket használja bemeneti mintaként.
 
@@ -75,20 +75,20 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Adja hozzá a következő kódot a *Program.cs* fájlhoz a **Program** osztály mellett, ugyanabban a névtérben. Ennek az osztálynak egy-egy példányát fogja használni az egyes ellenőrzött képek moderálási eredményeinek rögzítéséhez.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_dataclass)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>A képértékelő módszer meghatározása
 
 Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer három különböző módon értékel egyetlen képet, majd visszaadja az értékelés eredményét. Ha többet szeretne megtudni arról, hogy mit hajtanak végre az egyes műveletek, kattintson a [További lépések](#next-steps) szakaszban található hivatkozásra.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_evaluate)]
 
 ### <a name="load-the-input-images"></a>A bemeneti képek betöltése
 
 Adja hozzá a következő kódot a **Main** metódushoz a **Program** osztályban. Ez a kód állítja be a programot, hogy beolvassa a bemeneti fájlban található egyes rendszerképek URL-címére vonatkozó értékelési adatokat. Ezután a program ezeket az adatokat egy kimeneti fájlba írja.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_main)]
 
 ## <a name="run-the-program"></a>A program futtatása
 

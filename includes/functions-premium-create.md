@@ -5,50 +5,61 @@ services: functions
 author: jeffhollan
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/01/2019
+ms.date: 10/25/2019
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: 9bac92bc1cc94b88dc694b468b795049db4ac9df
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 911db285d1ca885142e8a80345926ce76379e3bc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443984"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958612"
 ---
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. A Azure Portal megnyitása [https://portal.azure.com](https://portal.azure.com)
 
-1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali oldalon, majd válassza a **Function app**elemet.
+1. Válassza az **erőforrás létrehozása** gombot
 
-1. A **üzemeltetési csomag**területen válassza a **app Service terv**, majd a **app Service terv/hely**lehetőséget.
+    ![Erőforrás létrehozása](./media/functions-create-function-app-portal/function-app-create-resource.png)
 
-    ![Függvényalkalmazás létrehozása](./media/functions-premium-create/create-function-app-resource.png)
+1. Válassza a **számítási** > **függvényalkalmazás**lehetőséget.
 
-1. Válassza **az új létrehozása**elemet, írja be a **app Servicei csomag** nevét, válasszon egy **helyet** az Ön közelében lévő [régióban](https://azure.microsoft.com/regions/) vagy a funkciókhoz hozzáférő egyéb szolgáltatások közelében, majd válassza az **árképzési szintet**.
+    ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-premium-create/function-app-create-start.png)
 
-    ![App Service-csomag létrehozása](./media/functions-premium-create/new-app-service-plan.png)
+1. Használja az ábra alatti táblázatban megadott függvényalkalmazás-beállításokat.
 
-1. Válassza ki a **EP1** (rugalmas prémium) csomagot, majd válassza az **alkalmaz**lehetőséget.
+    ![Alapvető beállítások](./media/functions-premium-create/function-app-create-basics.png)
 
-    ![Prémium csomag kiválasztása](./media/functions-premium-create/hosting-plan.png) 
-
-1. A terv létrehozásához kattintson az **OK gombra** , majd használja a fennmaradó Function App-beállításokat a rendszerkép alatti táblázatban megadott módon. 
-
-    ![Elkészült az App Service-csomag](./media/functions-premium-create/create-function-app.png)  
-
-    | Beállítás      | Ajánlott érték  | Leírás                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a-z`, `0-9` és `-`.  | 
+    | Beállítás      | Ajánlott érték  | Leírás |
+    | ------------ | ---------------- | ----------- |
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
-    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Használhatja a javasolt értéket is. |
-    | **OS** | Előnyben részesített operációs rendszer | A prémium csomagon a Linux és a Windows is támogatott. |
-    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. Csak a kiválasztott **operációs rendszeren** támogatott nyelvek jelennek meg. |
-    | **[Tárolás](../articles/storage/common/storage-quickstart-create-account.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Alapértelmezett | Létrehoz egy Application Insights erőforrást ugyanahhoz az *alkalmazáshoz* a legközelebbi támogatott régióban. A beállítás kibontásával módosíthatja az **új erőforrás nevét** , vagy kiválaszthat egy másik **helyet** egy olyan [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -földrajzban, ahol az adatait tárolni szeretné. |
+    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
+    | **függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Az érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9`és `-`.  |
+    |**Közzététel**| Kód | Kód vagy Docker-tároló közzétételének lehetősége. |
+    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
+    |**Régió**| Előnyben részesített régió | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
 
-1. A Beállítások ellenőrzése után válassza a **Létrehozás**lehetőséget.
+    Válassza a **következő: > üzemeltetése** gombot.
 
-1. Válassza a portál jobb felső sarkában található Értesítések ikont, és várja meg az **üzembe helyezés sikerességét** jelző üzenetet.
+1. Adja meg a következő üzemeltetési beállításokat.
 
-    ![Új függvényalkalmazás-beállítások megadása](./media/functions-premium-create/function-app-create-notification.png)
+    ![Üzemeltetés](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
-1. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget. Kiválaszthatja **a rögzítés az irányítópulton**lehetőséget is. A rögzítéssel egyszerűbbé válik a Function app-erőforráshoz való visszatérés az irányítópultról.
+    | Beállítás      | Ajánlott érték  | Leírás |
+    | ------------ | ---------------- | ----------- |
+    | **[Tárfiók](../articles/storage/common/storage-quickstart-create-account.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Operációs rendszer**| Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
+    | **[Csomag](../articles/azure-functions/functions-scale.md)** | Prémium | A csomag típusa beállításnál válassza a **prémium (előzetes verzió)** lehetőséget, majd válassza a *Windows-csomag* és az *SKU és a méret* kiválasztásának alapértelmezett értékeit. |
+
+    Kattintson a **Tovább: figyelés >** gombra.
+
+1. Adja meg a következő figyelési beállításokat.
+
+    ![Monitoring](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+
+    | Beállítás      | Ajánlott érték  | Leírás |
+    | ------------ | ---------------- | ----------- |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Alapértelmezett | Létrehoz egy Application Insights erőforrást ugyanahhoz az *alkalmazáshoz* a legközelebbi támogatott régióban. A beállítás kibontásával módosíthatja az **új erőforrás nevét** , vagy kiválaszthat egy másik **helyet** egy olyan [Azure-földrajzban](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol az adatait tárolni szeretné. |
+
+    Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
+
+1. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.

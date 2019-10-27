@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0948edec05b97dd604393218e3eeb3302548af82
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099013"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933558"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Erőforrás-állapotra vonatkozó riasztások konfigurálása Resource Manager-sablonok használatával
 
@@ -31,19 +31,19 @@ Az oldalon található utasítások követéséhez előre be kell állítania n�
 1. Telepítenie kell a [Azure PowerShell modult](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [Létre kell hoznia vagy újra kell használnia egy](../azure-monitor/platform/action-groups.md) , az értesítésre konfigurált műveleti csoportot.
 
-## <a name="instructions"></a>Útmutatás
+## <a name="instructions"></a>Utasítások
 1. A PowerShell használatával jelentkezzen be az Azure-ba a fiókjával, és válassza ki a használni kívánt előfizetést
 
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > A használatával `Get-AzSubscription` listázhatja azokat az előfizetéseket, amelyekhez hozzáfér.
+    > A `Get-AzSubscription` használatával listázhatja azokat az előfizetéseket, amelyekhez hozzá tud férni.
 
 2. A műveleti csoport teljes Azure Resource Manager-AZONOSÍTÓjának megkeresése és mentése
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Hozzon létre és mentsen egy Resource Manager-sablont a `resourcehealthalert.json` Resource Health riasztásokhoz ([lásd az alábbi részleteket](#resource-manager-template-options-for-resource-health-alerts))
+3. Hozzon létre és mentsen egy Resource Manager-sablont Resource Health riasztásokhoz `resourcehealthalert.json`ként ([lásd az alábbi részleteket](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Új Azure Resource Manager központi telepítés létrehozása a sablon használatával
 
@@ -147,7 +147,7 @@ Resource Health riasztások beállítható úgy, hogy három különböző ható
  * Erőforráscsoport szintje
  * Erőforrás szintje
 
-A riasztási sablon az előfizetés szintjén van konfigurálva, de ha úgy szeretné konfigurálni a riasztást, hogy csak bizonyos erőforrásokról vagy erőforrás-csoportokon belüli erőforrásokról kapjon értesítést, egyszerűen módosítania kell a `scopes` fenti szakaszt. sablon.
+A riasztási sablon az előfizetés szintjén van konfigurálva, de ha úgy szeretné konfigurálni a riasztást, hogy csak bizonyos erőforrásokról vagy erőforrás-csoportokon belüli erőforrásokról kapjon értesítést, egyszerűen módosítania kell a fenti sablon `scopes` szakaszát.
 
 Erőforráscsoport-szintű hatókör esetén a hatókörök szakasznak az alábbihoz hasonlóan kell kinéznie:
 ```json
@@ -170,7 +170,7 @@ Például:`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/m
 
 ### <a name="adjusting-the-resource-types-which-alert-you"></a>A riasztást igénylő erőforrástípusok módosítása
 
-Az előfizetés vagy az erőforráscsoport szintjén lévő riasztások különböző típusú erőforrásokkal rendelkezhetnek. Ha korlátozni szeretné a riasztásokat, hogy csak az erőforrástípusok bizonyos részhalmazára érkezzenek, megadhatja, hogy a `condition` sablon szakaszában a következőhöz hasonló legyen:
+Az előfizetés vagy az erőforráscsoport szintjén lévő riasztások különböző típusú erőforrásokkal rendelkezhetnek. Ha korlátozni szeretné a riasztásokat, hogy csak az erőforrástípusok bizonyos részhalmazára érkezzenek, a sablon `condition` szakaszában megadhatja, hogy a következőhöz hasonló legyen:
 
 ```json
 "condition": {
@@ -195,12 +195,12 @@ Az előfizetés vagy az erőforráscsoport szintjén lévő riasztások különb
 },
 ```
 
-Itt a `anyOf` burkoló segítségével engedélyezheti, hogy az erőforrás-állapot riasztása megfeleljen az általunk megadott feltételeknek, ami lehetővé teszi, hogy a riasztások adott típusú erőforrásokra legyenek érvényesek.
+Itt a `anyOf` burkoló használatával engedélyezheti, hogy az erőforrás-állapot riasztása megfeleljen az általunk megadott feltételeknek, ami lehetővé teszi, hogy a riasztások konkrét erőforrástípusok legyenek megcélozva.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>A Resource Health riasztási események módosítása
-Ha az erőforrások bekerülnek az állapotba, akkor a következő állapotot képviselő szakaszok egy sorozatán keresztül haladnak: `Active` `InProgress` `Updated`,, és `Resolved`.
+Ha az erőforrások bekerülnek az állapotba, akkor a következő állapottal rendelkező fázisok sorozatán keresztül juthatnak el: `Active`, `In Progress`, `Updated`és `Resolved`.
 
-Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás nem `status` `Active`megfelelő állapotba kerül, ebben az esetben a riasztást úgy kell konfigurálni, hogy csak akkor kapjon értesítést, ha a. Ha azonban más fázisokban is értesítést szeretne kapni, az alábbihoz hasonló adatokat is hozzáadhat:
+Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás nem megfelelő állapotba kerül, ebben az esetben a riasztást úgy kell konfigurálni, hogy csak akkor kapjon értesítést, ha a `status` `Active`. Ha azonban más fázisokban is értesítést szeretne kapni, az alábbihoz hasonló adatokat is hozzáadhat:
 
 ```json
 "condition": {
@@ -214,7 +214,7 @@ Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás 
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -230,11 +230,11 @@ Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás 
 }
 ```
 
-Ha az állapotadatok mind a négy fázisa esetében értesítést szeretne kapni, ezt a feltételt egyszerre távolíthatja el, a riasztás pedig a `status` tulajdonságtól függetlenül értesíti Önt.
+Ha az állapotadatok mind a négy fázisa esetében értesítést szeretne kapni, akkor a feltételt együttesen távolíthatja el, a riasztás pedig a `status` tulajdonságtól függetlenül értesíti Önt.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>A Resource Health riasztások módosítása az "ismeretlen" események elkerüléséhez
 
-Azure Resource Health az erőforrások legújabb állapotát a tesztelési futók használatával folyamatosan felügyelheti. A kapcsolódó jelentett állapotok a következők: "Elérhető", "nem érhető el" és "csökkentett teljesítményű". Azonban olyan helyzetekben, amikor a futó és az Azure-erőforrás nem tud kommunikálni, "ismeretlen" állapotot jelent az erőforrás, és az "aktív" állapotú eseménynek számít.
+Azure Resource Health az erőforrások legújabb állapotát a tesztelési futók használatával folyamatosan felügyelheti. A kapcsolódó jelentett állapotok a következők: "elérhető", "nem érhető el" és "csökkentett teljesítményű". Azonban olyan helyzetekben, amikor a futó és az Azure-erőforrás nem tud kommunikálni, "ismeretlen" állapotot jelent az erőforrás, és az "aktív" állapotú eseménynek számít.
 
 Ha azonban egy erőforrás jelentése "ismeretlen", az állapota valószínűleg nem módosult az utolsó pontos jelentés óta. Ha el szeretné távolítani a riasztásokat az "ismeretlen" eseményekről, megadhatja azt a következő sablonban:
 
@@ -409,7 +409,7 @@ Az előző szakaszban leírt különböző beállítások használatával itt l�
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {
@@ -436,7 +436,7 @@ Az előző szakaszban leírt különböző beállítások használatával itt l�
 
 Azonban tudni fogja, hogy milyen konfigurációk érvényesek az Ön számára, ezért használja a dokumentációban ismertetett eszközöket a saját testreszabásának elvégzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Resource Healthról:
 -  [Azure Resource Health áttekintése](Resource-health-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Office 365, Azure Data Factory használatával |} A Microsoft Docs
-description: 'Útmutató: adatok másolása az Office 365-höz a támogatott fogadó adattárakba az Azure Data Factory-folyamatot másolási tevékenység használatával.'
+title: Adatok másolása az Office 365-ből a Azure Data Factory használatával | Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat az Office 365-ból egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,86 +10,86 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7290a7a2f0bf6e12234ff3c09f5c5211dcaeba2d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475665"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931049"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory használatával
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-ba Azure Data Factory használatával
 
-Integrálható az Azure Data Factory [csatlakoztatása a Microsoft Graph adatváltozásainak](https://docs.microsoft.com/graph/data-connect-concept-overview), így ahhoz, hogy a szervezeti adatokat az Office 365 bérlői az Azure-ba, skálázható módon, valamint analytics alkalmazások gazdag és az elemzések alapján ezek értékes adatvagyon. Integráció a Privileged Access Management az értékes összeválogatott adatokat, az Office 365-ben a biztonságos hozzáférés-vezérlést biztosít.  Tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-concept-overview) áttekintését a Microsoft Graph adatváltozásainak csatlakozzon és tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-policies#licensing) licencelési információkat.
+A Azure Data Factory integrálható [Microsoft Graph](https://docs.microsoft.com/graph/data-connect-concept-overview)adatkapcsolattal, ami lehetővé teszi, hogy méretezhető módon hozza létre az Office 365-bérlő gazdag szervezeti adatait az Azure-ba, és elemzési alkalmazásokat építsen ki, és elemzéseket nyerjen az értékes adatok alapján. eszközök. Az Privileged Access Management integrációja biztonságos hozzáférés-vezérlést biztosít az Office 365 értékes, kiszolgált adataihoz.  Tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-concept-overview) a Microsoft Graph adatok összekapcsolásának áttekintéséhez, és tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-policies#licensing) a licencelési információkhoz.
 
-Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása az Office 365-höz. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az Office 365-ból származó adatok másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
-ADF Office 365-összekötő és a Microsoft Graph adatváltozásainak csatlakozás gyűjtése a különböző típusú adathalmazok, lehetővé teszi, hogy engedélyezve van az Exchange e-mailek postaládájából, beleértve a címjegyzékében szereplő, naptárbeli események, e-mailek, felhasználói adatok, postafiók beállításait, és így tovább.  Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-datasets) adathalmazlistából teljes listájának megtekintéséhez.
+Az ADF Office 365 Connector és a Microsoft Graph adatok összekötése lehetővé teszi az Exchange e-mailes postaládáinak különböző típusú adatkészletek, például a címjegyzék névjegyeinek, a naptári események, az e-mail üzenetek, a felhasználói adatok, a postaláda-beállítások és a így tovább.  A rendelkezésre álló adatkészletek teljes listáját [itt](https://docs.microsoft.com/graph/data-connect-datasets) tekintheti meg.
 
-Most egy másolási tevékenységgel belül is csak **adatok másolása az Office 365-ből [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), és [Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) JSON formátumban** (setOfObjects típusa). Ha azt szeretné, az Office 365-ba való betöltésének egyéb típusú adattárakban vagy más formátumú, láncolhatja össze az adatokat további tölthet be bármelyikét későbbi másolási tevékenységgel rendelkező első másolási tevékenység a [ADF céltárolót támogatott](copy-activity-overview.md#supported-data-stores-and-formats) (lásd a" fogadóként támogatott"oszlop a"Támogatott adattárak és formázza az"tábla).
+Egyelőre egyetlen másolási tevékenységen belül csak az **Office 365 adatait másolhatja át az [Azure Blob Storageba](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1ba](connector-azure-data-lake-store.md)és JSON formátumban [Azure Data Lake Storage Gen2ba](connector-azure-data-lake-storage.md)**  (setOfObjects típus). Ha az Office 365-et más típusú adattárakba vagy más formátumba kívánja betölteni, az első másolási tevékenységet egy későbbi másolási tevékenységgel is felhasználhatja, hogy az összes [támogatott ADF-tárolóba](copy-activity-overview.md#supported-data-stores-and-formats) betöltse az adatmennyiséget (lásd a "fogadóként támogatott" oszlopot). a "támogatott adattárak és-formátumok" táblában).
 
 >[!IMPORTANT]
->- A data factory és a fogadó adattár tartalmazó Azure-előfizetés, az Office 365-bérlő ugyanahhoz az Azure Active Directory (Azure AD) bérlőhöz kell tartozniuk.
->- Győződjön meg, hogy a másolási tevékenységhez használt Azure integrációs modul régióban, valamint a cél van ugyanabban a régióban, ahol az Office 365 bérlői felhasználói postaláda. Tekintse meg [Itt](concepts-integration-runtime.md#integration-runtime-location) megérteni, hogyan határozza meg, az Azure integrációs modul helye. Tekintse meg [itt tábla](https://docs.microsoft.com/graph/data-connect-datasets#regions) támogatott Office-régiók és a megfelelő Azure-régiók listáját.
->- Egyszerű szolgáltatás hitelesítése az Azure Blob Storage, Azure Data Lake Storage Gen1 és az Azure Data Lake Storage Gen2 való céltárolót is támogatott, egyetlen hitelesítési mechanizmusa.
+>- Az adat-előállítót és a fogadó adattárat tartalmazó Azure-előfizetésnek ugyanannak a Azure Active Directory (Azure AD) Bérlőnek kell lennie, mint az Office 365-bérlőnek.
+>- Győződjön meg arról, hogy a másolási tevékenységhez használt Azure Integration Runtime régió, valamint a célhely abban a régióban van, ahol az Office 365 bérlő felhasználói postaládája található. A Azure IR hely meghatározásának megismeréséhez [tekintse meg a](concepts-integration-runtime.md#integration-runtime-location) következőt:. A támogatott Office-régiók és a hozzájuk tartozó Azure-régiók listájáért tekintse meg a [táblázatot](https://docs.microsoft.com/graph/data-connect-datasets#regions) .
+>- Az egyszerű szolgáltatás hitelesítése az Azure Blob Storage, Azure Data Lake Storage Gen1 és Azure Data Lake Storage Gen2 számára támogatott hitelesítési mechanizmus.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adatok másolása az Office 365-ből az Azure-ba, a következő előfeltételként szükséges lépéseket kell:
+Az Office 365-ből az Azure-ba másolt adatok másolásához a következő előfeltételek szükségesek:
 
-- Az Office 365-bérlői rendszergazdai leírtak szerint kell végeznie az előkészítési művelet [Itt](https://docs.microsoft.com/graph/data-connect-get-started).
-- Hozzon létre, és a egy Azure AD-webalkalmazás konfigurálása az Azure Active Directoryban.  Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
-- Jegyezze fel a következő értékeket, és az Office 365-höz, a társított szolgáltatás definiálásához használhat:
-    - Bérlő azonosítója. Útmutatásért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-    - Alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-- Adja hozzá a felhasználó identitását, aki a hozzáférési kérelem végez a tulajdonosa, az Azure AD-webalkalmazás (az Azure AD-ből a webes alkalmazás > Beállítások > tulajdonosok > Hozzáadás tulajdonosa). 
-    - A felhasználói identitás az Office 365-szervezethez kihozhatják származó adatokat, és nem lehet a vendégfelhasználó kell lennie.
+- Az Office 365-bérlői rendszergazdának be kell fejeznie az [itt](https://docs.microsoft.com/graph/data-connect-get-started)leírtak szerint végrehajtandó műveleteket.
+- Azure AD-Webalkalmazás létrehozása és konfigurálása Azure Active Directoryban.  Útmutatásért lásd: [Azure ad-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
+- Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához fog használni az Office 365-hoz:
+    - Bérlő azonosítója. Útmutatásért lásd: [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+    - Az alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd az [alkalmazás-azonosító és a hitelesítési kulcs beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)című témakört.
+- Adja hozzá azt a felhasználói identitást, aki az adatelérési kérelmet az Azure AD-webalkalmazás tulajdonosaként hozza létre (az Azure AD webalkalmazás > Beállítások > tulajdonos > tulajdonos hozzáadása). 
+    - A felhasználói identitásnak az Office 365 szervezetben kell lennie, és nem lehet vendég felhasználó.
 
-## <a name="approving-new-data-access-requests"></a>Hozzáférési kérelmek jóváhagyásáról az új adatok
+## <a name="approving-new-data-access-requests"></a>Új Adathozzáférési kérelmek jóváhagyása
 
-Ha első alkalommal a kért adatokat az ebben a környezetben (kombinációjával, hogy mely tábla folyamatban van a hozzáférés, mely cél fiók be az adatokat, és mely felhasználói identitás, hogy így az adatok hozzáférési kérés), megjelenik a másolási tevékenység állapota "Folyamatban", és csak akkor, ha a megoldásra kattint ["Details" hivatkozásra a műveletek](copy-activity-overview.md#monitoring) , megjelenik az állapot szerint "RequestingConsent".  Az adatelérési jóváhagyó csoportja tagjának kell jóváhagyhatja a kérést a Privileged Access Management, mielőtt konfigurálhatná az adatok kinyerése.
+Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (az adattábla kombinációja, amelynek a rendeltetési helye a betöltésre kerül, és amely felhasználói identitása az adatelérési kérelem), megjelenik a másolási tevékenység. "folyamatban" állapotú, és csak akkor, ha a [Műveletek területen a "Részletek" hivatkozásra](copy-activity-overview.md#monitoring) kattint, a "RequestingConsent" állapot jelenik meg.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
-Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) hogyan hagyhatja jóvá, a jóváhagyó a az adatok eléréséhez a kérelmet, és tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-pam) általában véve az integrációra, a Privileged Access Management a magyarázat, többek között az adatok beállítása hozzáférés-jóváhagyója csoport.
+Tekintse [át,](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) hogy a jóváhagyó hogyan hagyja jóvá az adatelérési kérelmet, és tekintse át a Privileged Access Managementával [való általános](https://docs.microsoft.com/graph/data-connect-pam) integrációval kapcsolatos magyarázatot, beleértve az adathozzáférés jóváhagyó csoportjának beállítását is.
 
-## <a name="policy-validation"></a>Házirend érvényesítése
+## <a name="policy-validation"></a>Szabályzat érvényesítése
 
-Ha a felügyeleti csoporton belüli erőforrásokon végrehajtott Azure szabályzatok hozzárendeléseinek felügyelt alkalmazás részeként jön létre az ADF, majd minden másolási tevékenység futtatása, ADF ellenőrzi, győződjön meg arról, hogy a szabályzat-hozzárendelések érvényben vannak. Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-policies#policies) támogatott szabályzatok listája.
+Ha az ADF-t egy felügyelt alkalmazás részeként hozza létre, és az Azure házirendek hozzárendelései a felügyeleti erőforráscsoport erőforrásain találhatók, akkor minden másolási tevékenység esetében az ADF ellenőrzi, hogy a szabályzat-hozzárendelések érvénybe léptetése megtörtént-e. A támogatott szabályzatok listáját [itt](https://docs.microsoft.com/graph/data-connect-policies#policies) találja.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 >[!TIP]
->Az Office 365-összekötő használatával, olvassa [adatok betöltése az Office 365](load-office-365-data.md) cikk.
+>Az Office 365 Connector használatának áttekintését lásd: [adatok betöltése az office 365-ből](load-office-365-data.md) című cikk.
 
-A másolási tevékenységgel rendelkező folyamatot hozhat létre egyet a következő eszközök és az SDK-k használatával. Nyissa meg egy másolási tevékenységgel rendelkező folyamat létrehozása a részletes oktatóanyag mutató hivatkozás kiválasztása. 
+A másolási tevékenységgel rendelkező folyamatokat a következő eszközök vagy SDK-k egyikével hozhatja létre. Válasszon egy hivatkozást, amely részletes utasításokat tartalmaz egy másolási tevékenységgel rendelkező folyamat létrehozásához. 
 
-- [Azure Portal](quickstart-create-data-factory-portal.md)
+- [Azure Portalra](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST API](quickstart-create-data-factory-rest-api.md)
-- [Az Azure Resource Manager-sablon](quickstart-create-data-factory-resource-manager-template.md). 
+- [Azure Resource Manager sablon](quickstart-create-data-factory-resource-manager-template.md). 
 
-A következő szakaszok segítségével határozhatók meg a Data Factory-entitások adott, az Office 365-összekötő-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük az Office 365-összekötőhöz tartozó Data Factory entitások definiálásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Office 365-beli társított szolgáltatás a következő tulajdonságok támogatottak:
+Az Office 365 társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Office365** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Office 365** | Igen |
 | office365TenantId | Az Azure-bérlő azonosítója, amelyhez az Office 365-fiók tartozik. | Igen |
-| servicePrincipalTenantId | Adja meg a bérlő adatokat, amely alatt az Azure AD webes alkalmazás található. | Igen |
-| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
-| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. | Igen |
-| connectVia | Az integrációs modul az adattárban való kapcsolódáshoz használandó.  Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem |
+| servicePrincipalTenantId | Adja meg a bérlői adatokat, amelyek alatt az Azure AD-webalkalmazás található. | Igen |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt Integration Runtime.  Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem |
 
 >[!NOTE]
-> A különbség a között **office365TenantId** és **servicePrincipalTenantId** és a megfelelő értéket adjon meg:
->- Ha Ön egy vállalati fejlesztői Office 365-adatokat a saját szervezet használati, szemben az alkalmazások fejlesztése, akkor meg kell adnia a ugyanazt bérlőhöz mindkét tulajdonság, amely a szervezet AAD-bérlő azonosítója azonosítóját.
->- Egy független Szoftverszállító fejlesztők az alkalmazások fejlesztése az ügyfelek számára, akkor office365TenantId lesz az ügyfél (az alkalmazástelepítő) AAD-Bérlőazonosítóval és servicePrincipalTenantId lesz a vállalati AAD-bérlő azonosítója.
+> A **office365TenantId** és a **servicePrincipalTenantId** és a megfelelő érték közötti különbség:
+>- Ha Ön nagyvállalati fejlesztő, aki az Office 365-adatok alapján fejleszti az alkalmazást a saját szervezete használatára, akkor mindkét tulajdonsághoz ugyanazt a bérlői azonosítót kell megadnia, amely a szervezet HRE-bérlői azonosítója.
+>- Ha Ön egy ISV-fejlesztő, aki egy alkalmazást fejleszt ügyfelei számára, akkor a office365TenantId lesz az ügyfél (Application Installer) HRE-bérlő azonosítója, és a servicePrincipalTenantId a vállalat HRE-bérlője lesz.
 
 **Példa**
 
@@ -113,19 +113,16 @@ Office 365-beli társított szolgáltatás a következő tulajdonságok támogat
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz az Office 365-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az Office 365 adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak:
+Az Office 365-ből származó adatok másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **Office365Table** | Igen |
-| tableName | Az adatkészlet nevét a Office 365-ből kibontásához. Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-datasets#datasets) kinyerési érhető el az Office 365-adatkészletek listáját. | Igen |
-| allowedGroups | Csoport kiválasztása predikátum.  Ez a tulajdonság legfeljebb 10 felhasználói csoportokat, akik számára az adatok lekérésének kiválasztásához használja.  Ha nincsenek csoportok meg van adva, majd az adatok visszaadásához fog a teljes cég számára. | Nem |
-| userScopeFilterUri | Amikor `allowedGroups` tulajdonság nincs megadva, használhat egy predikátum kifejezés, a teljes bérlő kibontani az Office 365-höz adott sorok szűrése a alkalmazni. A predikátum formátum meg kell egyeznie a lekérdezési formátumban a Microsoft Graph API-k, például `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nem |
-| dateFilterColumn | A dátum/idő szűrőoszlop neve. Ez a tulajdonság segítségével korlátozhatja az időtartományt, mely Office 365-höz készült adatok ki kell olvasni. | Igen, ha az adatkészlet egy vagy több dátum/idő-oszlop rendelkezik. Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-filtering#filtering) igénylő Ez a DateTime típusú szűrő az adatkészletek listáját. |
-| startTime | Indítsa el a szűréshez használandó dátum/idő értéket. | Igen, ha `dateFilterColumn` van megadva |
-| endTime | Záró dátum és idő szűréshez használandó értéket. | Igen, ha `dateFilterColumn` van megadva |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Office365Table** | Igen |
+| tableName | Az Office 365-ből kinyerni kívánt adatkészlet neve. [Itt](https://docs.microsoft.com/graph/data-connect-datasets#datasets) tekintheti meg a kinyeréshez elérhető Office 365-adatkészletek listáját. | Igen |
+
+Ha `dateFilterColumn`, `startTime`, `endTime`és `userScopeFilterUri`t állított be az adatkészletben, akkor továbbra is támogatott, miközben az új modellt a tevékenység forrásában fogja használni.
 
 **Példa**
 
@@ -138,189 +135,9 @@ Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak
             "referenceName": "<Office 365 linked service name>",
             "type": "LinkedServiceReference"
         },
-        "structure": [
-            {
-                "name": "Id",
-                "type": "String",
-                "description": "The unique identifier of the event."
-            },
-            {
-                "name": "CreatedDateTime",
-                "type": "DateTime",
-                "description": "The date and time that the event was created."
-            },
-            {
-                "name": "LastModifiedDateTime",
-                "type": "DateTime",
-                "description": "The date and time that the event was last modified."
-            },
-            {
-                "name": "ChangeKey",
-                "type": "String",
-                "description": "Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object."
-            },
-            {
-                "name": "Categories",
-                "type": "String",
-                "description": "The categories associated with the event. Format: ARRAY<STRING>"
-            },
-            {
-                "name": "OriginalStartTimeZone",
-                "type": "String",
-                "description": "The start time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
-            },
-            {
-                "name": "OriginalEndTimeZone",
-                "type": "String",
-                "description": "The end time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
-            },
-            {
-                "name": "ResponseStatus",
-                "type": "String",
-                "description": "Indicates the type of response sent in response to an event message. Format: STRUCT<Response: STRING, Time: STRING>"
-            },
-            {
-                "name": "iCalUId",
-                "type": "String",
-                "description": "A unique identifier that is shared by all instances of an event across different calendars."
-            },
-            {
-                "name": "ReminderMinutesBeforeStart",
-                "type": "Int32",
-                "description": "The number of minutes before the event start time that the reminder alert occurs."
-            },
-            {
-                "name": "IsReminderOn",
-                "type": "Boolean",
-                "description": "Set to true if an alert is set to remind the user of the event."
-            },
-            {
-                "name": "HasAttachments",
-                "type": "Boolean",
-                "description": "Set to true if the event has attachments."
-            },
-            {
-                "name": "Subject",
-                "type": "String",
-                "description": "The text of the event's subject line."
-            },
-            {
-                "name": "Body",
-                "type": "String",
-                "description": "The body of the message associated with the event.Format: STRUCT<ContentType: STRING, Content: STRING>"
-            },
-            {
-                "name": "Importance",
-                "type": "String",
-                "description": "The importance of the event: Low, Normal, High."
-            },
-            {
-                "name": "Sensitivity",
-                "type": "String",
-                "description": "Indicates the level of privacy for the event: Normal, Personal, Private, Confidential."
-            },
-            {
-                "name": "Start",
-                "type": "String",
-                "description": "The start time of the event. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
-            },
-            {
-                "name": "End",
-                "type": "String",
-                "description": "The date and time that the event ends. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
-            },
-            {
-                "name": "Location",
-                "type": "String",
-                "description": "Location information of the event. Format: STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>>"
-            },
-            {
-                "name": "IsAllDay",
-                "type": "Boolean",
-                "description": "Set to true if the event lasts all day. Adjusting this property requires adjusting the Start and End properties of the event as well."
-            },
-            {
-                "name": "IsCancelled",
-                "type": "Boolean",
-                "description": "Set to true if the event has been canceled."
-            },
-            {
-                "name": "IsOrganizer",
-                "type": "Boolean",
-                "description": "Set to true if the message sender is also the organizer."
-            },
-            {
-                "name": "Recurrence",
-                "type": "String",
-                "description": "The recurrence pattern for the event. Format: STRUCT<Pattern: STRUCT<Type: STRING, `Interval`: INT, Month: INT, DayOfMonth: INT, DaysOfWeek: ARRAY<STRING>, FirstDayOfWeek: STRING, Index: STRING>, `Range`: STRUCT<Type: STRING, StartDate: STRING, EndDate: STRING, RecurrenceTimeZone: STRING, NumberOfOccurrences: INT>>"
-            },
-            {
-                "name": "ResponseRequested",
-                "type": "Boolean",
-                "description": "Set to true if the sender would like a response when the event is accepted or declined."
-            },
-            {
-                "name": "ShowAs",
-                "type": "String",
-                "description": "The status to show: Free, Tentative, Busy, Oof, WorkingElsewhere, Unknown."
-            },
-            {
-                "name": "Type",
-                "type": "String",
-                "description": "The event type: SingleInstance, Occurrence, Exception, SeriesMaster."
-            },
-            {
-                "name": "Attendees",
-                "type": "String",
-                "description": "The collection of attendees for the event. Format: ARRAY<STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>, Status: STRUCT<Response: STRING, Time: STRING>, Type: STRING>>"
-            },
-            {
-                "name": "Organizer",
-                "type": "String",
-                "description": "The organizer of the event. Format: STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>>"
-            },
-            {
-                "name": "WebLink",
-                "type": "String",
-                "description": "The URL to open the event in Outlook Web App."
-            },
-            {
-                "name": "Attachments",
-                "type": "String",
-                "description": "The FileAttachment and ItemAttachment attachments for the message. Navigation property. Format: ARRAY<STRUCT<LastModifiedDateTime: STRING, Name: STRING, ContentType: STRING, Size: INT, IsInline: BOOLEAN, Id: STRING>>"
-            },
-            {
-                "name": "BodyPreview",
-                "type": "String",
-                "description": "The preview of the message associated with the event. It is in text format."
-            },
-            {
-                "name": "Locations",
-                "type": "String",
-                "description": "The locations where the event is held or attended from. The location and locations properties always correspond with each other. Format:  ARRAY<STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>, LocationEmailAddress: STRING, LocationUri: STRING, LocationType: STRING, UniqueId: STRING, UniqueIdType: STRING>>"
-            },
-            {
-                "name": "OnlineMeetingUrl",
-                "type": "String",
-                "description": "A URL for an online meeting. The property is set only when an organizer specifies an event as an online meeting such as a Skype meeting"
-            },
-            {
-                "name": "OriginalStart",
-                "type": "DateTime",
-                "description": "The start time that was set when the event was created in UTC time."
-            },
-            {
-                "name": "SeriesMasterId",
-                "type": "String",
-                "description": "The ID for the recurring series master item, if this event is part of a recurring series."
-            }
-        ],
+        "schema": [],
         "typeProperties": {
-            "tableName": "BasicDataSet_v0.Event_v1",
-            "dateFilterColumn": "CreatedDateTime",
-            "startTime": "2019-04-28T16:00:00.000Z",
-            "endTime": "2019-05-05T16:00:00.000Z",
-            "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'"
+            "tableName": "BasicDataSet_v0.Event_v1"
         }
     }
 }
@@ -328,11 +145,21 @@ Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az Office 365-forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz az Office 365-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="office-365-as-source"></a>Az Office 365 forrásként
+### <a name="office-365-as-source"></a>Office 365 forrásként
 
-Adatok másolása az Office 365-höz, állítsa be a forrás típusaként a másolási tevékenység **Office365Source**. Nincsenek további tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban.
+Az Office 365-ből származó adatok másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Office365Source** | Igen |
+| allowedGroups | Csoport kiválasztási predikátuma  Ezzel a tulajdonsággal legfeljebb 10 olyan felhasználói csoportot választhat ki, amelyekhez az adott adatlekérdezést kéri.  Ha nincsenek megadva csoportok, akkor a rendszer az összes szervezetre vonatkozó adatvisszaadás után visszaadja az értékeket. | Nem |
+| userScopeFilterUri | Ha `allowedGroups` tulajdonság nincs megadva, a teljes bérlőn alkalmazott predikátum kifejezés használatával szűrheti az Office 365-ből kinyerni kívánt sorokat. A predikátum formátumának meg kell egyeznie Microsoft Graph API-k lekérdezési formátumával, például `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nem |
+| dateFilterColumn | A DateTime szűrő oszlop neve. Ezzel a tulajdonsággal korlátozhatja azt az időtartományt, amelyre az Office 365-adatkivonatot ki kell olvasni. | Igen, ha az adatkészlet egy vagy több DateTime oszloppal rendelkezik. [Itt](https://docs.microsoft.com/graph/data-connect-filtering#filtering) tekintse meg a DateTime típusú szűrőt igénylő adatkészletek listáját. |
+| startTime | A szűréshez kezdjen el DateTime értéket. | Igen, ha `dateFilterColumn` van megadva |
+| endTime | A szűréshez záró DateTime érték. | Igen, ha `dateFilterColumn` van megadva |
+| outputColumns | A fogadóba másolandó oszlopok tömbje. | Nem |
 
 **Példa**
 
@@ -355,7 +182,118 @@ Adatok másolása az Office 365-höz, állítsa be a forrás típusaként a más
         ],
         "typeProperties": {
             "source": {
-                "type": "Office365Source"
+                "type": "Office365Source",
+                "dateFilterColumn": "CreatedDateTime",
+                "startTime": "2019-04-28T16:00:00.000Z",
+                "endTime": "2019-05-05T16:00:00.000Z",
+                "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'",
+                "outputColumns": [
+                    {
+                        "name": "Id"
+                    },
+                    {
+                        "name": "CreatedDateTime"
+                    },
+                    {
+                        "name": "LastModifiedDateTime"
+                    },
+                    {
+                        "name": "ChangeKey"
+                    },
+                    {
+                        "name": "Categories"
+                    },
+                    {
+                        "name": "OriginalStartTimeZone"
+                    },
+                    {
+                        "name": "OriginalEndTimeZone"
+                    },
+                    {
+                        "name": "ResponseStatus"
+                    },
+                    {
+                        "name": "iCalUId"
+                    },
+                    {
+                        "name": "ReminderMinutesBeforeStart"
+                    },
+                    {
+                        "name": "IsReminderOn"
+                    },
+                    {
+                        "name": "HasAttachments"
+                    },
+                    {
+                        "name": "Subject"
+                    },
+                    {
+                        "name": "Body"
+                    },
+                    {
+                        "name": "Importance"
+                    },
+                    {
+                        "name": "Sensitivity"
+                    },
+                    {
+                        "name": "Start"
+                    },
+                    {
+                        "name": "End"
+                    },
+                    {
+                        "name": "Location"
+                    },
+                    {
+                        "name": "IsAllDay"
+                    },
+                    {
+                        "name": "IsCancelled"
+                    },
+                    {
+                        "name": "IsOrganizer"
+                    },
+                    {
+                        "name": "Recurrence"
+                    },
+                    {
+                        "name": "ResponseRequested"
+                    },
+                    {
+                        "name": "ShowAs"
+                    },
+                    {
+                        "name": "Type"
+                    },
+                    {
+                        "name": "Attendees"
+                    },
+                    {
+                        "name": "Organizer"
+                    },
+                    {
+                        "name": "WebLink"
+                    },
+                    {
+                        "name": "Attachments"
+                    },
+                    {
+                        "name": "BodyPreview"
+                    },
+                    {
+                        "name": "Locations"
+                    },
+                    {
+                        "name": "OnlineMeetingUrl"
+                    },
+                    {
+                        "name": "OriginalStart"
+                    },
+                    {
+                        "name": "SeriesMasterId"
+                    }
+                ]
             },
             "sink": {
                 "type": "BlobSink"
@@ -365,5 +303,5 @@ Adatok másolása az Office 365-höz, állítsa be a forrás típusaként a más
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
-A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Következő lépések
+A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

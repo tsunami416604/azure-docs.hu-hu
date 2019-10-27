@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával Xero |} A Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat a Xero támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
+title: Adatok másolása a Xero a Azure Data Factory használatával | Microsoft Docs
+description: Bemutatjuk, hogy miként másolhatók adatok a Xero-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,21 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ac8b4577b50ad9daa8d8da3cdb79120b961f55b
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 59b9ecb7af53468dc18cf47d2e0510a48d07f925
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089040"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930960"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Xero
+# <a name="copy-data-from-xero-using-azure-data-factory"></a>Adatok másolása a Xero a Azure Data Factory használatával
 
-Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Xero módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!IMPORTANT]
-> Ez az összekötő jelenleg előzetes verzióban érhető el. Próbálja ki, és visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Xero való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -33,34 +30,34 @@ Ez a Xero-összekötő a következő tevékenységek esetén támogatott:
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Másolhat adatokat Xero bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az adatok a Xero bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-A Xero-összekötőt, a következőket támogatja:
+Ez a Xero-összekötő a következőket támogatja:
 
 - Xero [privát alkalmazás](https://developer.xero.com/documentation/getting-started/api-application-types) , de nem nyilvános alkalmazás.
-- "Reports" kivételével az összes Xero táblák (API-végpontok). 
+- Minden Xero-tábla (API-végpont) a "jelentések" kivételével. 
 
-Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
+A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Xero-összekötő-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük az Xero-összekötőhöz tartozó Data Factory-entitások definiálásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Xero-beli társított szolgáltatás a következő tulajdonságok támogatottak:
+A Xero társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Xero** | Igen |
-| host | A végpont a Xero-kiszolgáló (`api.xero.com`).  | Igen |
-| consumerKey | A Xero-alkalmazáshoz társított fogyasztói kulcs. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| privateKey | A titkos kulcsot a .pem fájl jött létre a Xero magánhálózati alkalmazáshoz, tekintse meg [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Vegye figyelembe, hogy **készítése a privatekey.pem az 512 numbits** használatával `openssl genrsa -out privatekey.pem 512`; 1024 nem támogatott. A .pem-fájlt, többek között a Unix sor endings(\n) minden szöveget tartalmaznak, tekintse meg az alábbi mintát.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: true.  | Nem |
-| useHostVerification | Itt adhatja meg, e a gazdagép nevét kötelező megadni a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: true.  | Nem |
-| usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: true.  | Nem |
+| gazdagép | A Xero-kiszolgáló végpontja (`api.xero.com`).  | Igen |
+| consumerKey | A Xero alkalmazáshoz társított fogyasztói kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| privateKey | A Xero privát alkalmazásához létrehozott. PEM fájl titkos kulcsa. a [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)című témakörben talál további információt. Vegye figyelembe, hogy **a privatekey. PEM előállításához a 512-es numbits-t** használja `openssl genrsa -out privatekey.pem 512`; a 1024 nem támogatott. Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n), lásd az alábbi mintát.<br/><br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték TRUE (igaz).  | Nem |
+| useHostVerification | Megadja, hogy az állomásnév kötelező-e a kiszolgáló tanúsítványában, hogy az megfeleljen a kiszolgáló állomásneve, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték TRUE (igaz).  | Nem |
+| usePeerVerification | Meghatározza, hogy az SSL protokollon keresztüli kapcsolódáskor ellenőrizni kell-e a kiszolgáló identitását. Az alapértelmezett érték TRUE (igaz).  | Nem |
 
 **Példa**
 
@@ -84,9 +81,9 @@ Xero-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 }
 ```
 
-**Minta titkos kulcs értéke:**
+**Minta titkos kulcsának értéke:**
 
-A .pem-fájlt a Unix sor endings(\n) többek között az összes szöveget is.
+Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n).
 
 ```
 "-----BEGIN RSA PRIVATE KEY-----\nMII***************************************************P\nbu****************************************************s\nU/****************************************************B\nA*****************************************************W\njH****************************************************e\nsx*****************************************************l\nq******************************************************X\nh*****************************************************i\nd*****************************************************s\nA*****************************************************dsfb\nN*****************************************************M\np*****************************************************Ly\nK*****************************************************Y=\n-----END RSA PRIVATE KEY-----"
@@ -94,14 +91,14 @@ A .pem-fájlt a Unix sor endings(\n) többek között az összes szöveget is.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Xero-adathalmaz által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Xero adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObject**. A következő tulajdonságok támogatottak:
+Az adatok Xero való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **XeroObject**értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **XeroObject** | Igen |
-| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
 
@@ -122,16 +119,16 @@ Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObje
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Xero-forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Xero forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="xero-as-source"></a>Xero forrásként
 
-Adatok másolása a Xero, állítsa be a forrás típusaként a másolási tevékenység **XeroSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok Xero való másolásához állítsa a forrás típusát a másolás tevékenység **XeroSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Contacts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Contacts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -165,13 +162,13 @@ Adatok másolása a Xero, állítsa be a forrás típusaként a másolási tevé
 ]
 ```
 
-A Xero-lekérdezés megadása közben, vegye figyelembe a következőket:
+A Xero-lekérdezés megadásakor vegye figyelembe a következőket:
 
-- Összetett elemek rendelkező táblák szét lesznek osztva a több táblájához. Például banki tranzakciók rendelkezik-e összetett adatstruktúra "Sorelemek", így a banki tranzakciók adatait le van képezve táblához `Bank_Transaction` és `Bank_Transaction_Line_Items`, a `Bank_Transaction_ID` kapcsolja össze a külső kulcsként.
+- Az összetett elemeket tartalmazó táblák több táblára lesznek felosztva. A banki tranzakciók például a "listaelemek" nevű összetett adatstruktúrával rendelkeznek, így a banki tranzakciós adat a táblázat `Bank_Transaction` és `Bank_Transaction_Line_Items`, a `Bank_Transaction_ID` mint idegen kulcs használatával együtt.
 
-- Xero-adatok két sémák keresztül érhető el: `Minimal` (alapértelmezett), és `Complete`. A teljes séma előfeltétel hívás táblák ehhez szükséges további adatokat (például az azonosító oszlop) tartalmaz a kívánt lekérdezés végrehajtása előtt.
+- A Xero-adatkészletek két sémán keresztül érhetők el: `Minimal` (alapértelmezett) és `Complete`. A teljes séma olyan előfeltételként szükséges hívási táblákat tartalmaz, amelyek további adatértékeket igényelnek (például azonosító oszlop) a kívánt lekérdezés végrehajtása előtt.
 
-Az alábbi táblázatok a minimális és teljes körű sémában ugyanazokat az információkat tartalmaznak. API-hívások számának csökkentése érdekében használja a minimális séma (alapértelmezett).
+Az alábbi táblázatokban ugyanazok az adatok szerepelnek a minimális és a teljes sémában. Az API-hívások számának csökkentéséhez használja a minimális sémát (alapértelmezett).
 
 - Bank_Transactions
 - Contact_Groups 
@@ -186,43 +183,43 @@ Az alábbi táblázatok a minimális és teljes körű sémában ugyanazokat az 
 - Expense_Claim_Validation_Errors
 - Számlák 
 - Invoices_Credit_Notes
-- Invoices_ előre befizetett 
+- Invoices_ előfizetések 
 - Invoices_Overpayments 
 - Manual_Journals 
-- Túl 
+- Túlfizetések 
 - Overpayments_Allocations 
-- Előre befizetett 
+- Előlegek 
 - Prepayments_Allocations 
-- Befizetések 
+- Bevételek 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
-Az alábbi táblázatok a teljes séma csak kérdezhetők le:
+A következő táblázatok csak a teljes sémával kérhetők le:
 
-- Complete.Bank_Transaction_Line_Items 
-- Complete.Bank_Transaction_Line_Item_Tracking 
-- Complete.Contact_Group_Contacts 
-- Complete.Contacts_Contact_ személyek 
-- Complete.Credit_Note_Line_Items 
-- Complete.Credit_Notes_Line_Items_Tracking 
-- Complete.Expense_Claim_ kifizetések 
-- Complete.Expense_Claim_Receipts 
-- Complete.Invoice_Line_Items 
-- Complete.Invoices_Line_Items_Tracking
-- Complete.Manual_Journal_Lines 
-- Complete.Manual_Journal_Line_Tracking 
-- Complete.Overpayment_Line_Items 
-- Complete.Overpayment_Line_Items_Tracking 
-- Complete.Prepayment_Line_Items 
-- Complete.Prepayment_Line_Item_Tracking 
-- Complete.Receipt_Line_Items 
-- Complete.Receipt_Line_Item_Tracking 
-- Complete.Tracking_Category_Options
+- Befejezve. Bank_Transaction_Line_Items 
+- Befejezve. Bank_Transaction_Line_Item_Tracking 
+- Befejezve. Contact_Group_Contacts 
+- Kész. Contacts_Contact_ személyek 
+- Befejezve. Credit_Note_Line_Items 
+- Befejezve. Credit_Notes_Line_Items_Tracking 
+- Teljesített. Expense_Claim_ kifizetések 
+- Befejezve. Expense_Claim_Receipts 
+- Befejezve. Invoice_Line_Items 
+- Befejezve. Invoices_Line_Items_Tracking
+- Befejezve. Manual_Journal_Lines 
+- Befejezve. Manual_Journal_Line_Tracking 
+- Befejezve. Overpayment_Line_Items 
+- Befejezve. Overpayment_Line_Items_Tracking 
+- Befejezve. Prepayment_Line_Items 
+- Befejezve. Prepayment_Line_Item_Tracking 
+- Befejezve. Receipt_Line_Items 
+- Befejezve. Receipt_Line_Item_Tracking 
+- Befejezve. Tracking_Category_Options
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység által támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

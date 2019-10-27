@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 51202597aaee2940a764d0385d4d93c7409f4905
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757225"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935923"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rövid útmutató: Szöveg tartalmának elemzése kifogásolható tartalom felismeréséhez C# nyelven
 
@@ -24,7 +24,7 @@ Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhesse
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- A Content Moderator előfizetői azonosítója. A Content Moderatorra történő előfizetéshez és az előfizetői azonosító beszerzéséhez kövesse a [Cognitive Services-fiók létrehozásával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kapcsolatos szakaszban található utasításokat.
+- A Content Moderator előfizetői azonosítója. A Content Moderatorra való előfizetéshez kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, amelynek neve `CONTENT_MODERATOR_SUBSCRIPTION_KEY` és `CONTENT_MODERATOR_ENDPOINT`.
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
 > [!NOTE]
@@ -48,19 +48,19 @@ Következő lépésként másolja és illessze be az ebben az útmutatóban tal�
 
 Adja hozzá az alábbi `using` utasításokat a *Program.cs* fájl elejéhez.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_using)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy Content Moderator-ügyfélszolgáltatót az előfizetéséhez. Adja hozzá a kódot a **Program** osztály mellett, ugyanabban a névtérben. Frissítenie kell a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
+Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy Content Moderator-ügyfélszolgáltatót az előfizetéséhez. Adja hozzá a osztályt a **program** osztály mellett ugyanabban a névtérben. A **AzureBaseURL** és a **CMSubscriptionKey** mezőket frissítenie kell a végpont URL-címének és az előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_client)]
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
 Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők határozzák meg a bemeneti szöveges tartalom és a kimeneti JSON-tartalom fájljait.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_fields)]
 
 Létre kell hoznia a *TextFile. txt* bemeneti fájlt, és frissítenie kell annak elérési útját (a paths a végrehajtási könyvtárhoz viszonyítva). Nyissa meg a _TextFile.txt_ fájlt, és adja hozzá a moderálandó szöveget. Ez a rövid útmutató a következő mintaszöveget használja:
 
@@ -80,7 +80,7 @@ Adja hozzá az alábbi kódot a **Main** metódushoz. A **ScreenText** metódus 
 
 Ha többet szeretne megtudni arról, mire szolgálnak ezek a műveletek, kattintson a [További lépések](#next-steps) szakaszban található hivatkozásra.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=23-48)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_main)]
 
 ## <a name="run-the-program"></a>A program futtatása
 

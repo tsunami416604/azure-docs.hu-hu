@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a20ff526ba00f5b6521198122972071360bb58d6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392513"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934499"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -70,11 +70,9 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
     ![Hozzárendelések – felhasználó hozzáadása a csomag eléréséhez](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Kattintson a **felhasználók hozzáadása** elemre azon felhasználók kiválasztásához, akiknek a hozzáférési csomagot hozzá szeretné rendelni.
+1. Kattintson a **felhasználók hozzáadása** elemre azon felhasználók kiválasztásához, akik számára a hozzáférési csomagot hozzá szeretné rendelni.
 
-1. A **házirend kiválasztása** listából válassza ki azt a szabályzatot, amelynek [nincs (csak a rendszergazda közvetlen hozzárendelései)](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) beállítása.
-
-    Ha ez a hozzáférési csomag nem rendelkezik ilyen típusú házirenddel, kattintson az **új házirend létrehozása** lehetőségre, ha hozzá szeretne adni egyet.
+1. A **házirend kiválasztása** listából válassza ki azt a szabályzatot, amelyet a felhasználók jövőbeli kéréseinek és életciklusának szabályozására és nyomon követésére fog alkalmazni. Ha azt szeretné, hogy a kiválasztott felhasználók különböző házirend-beállításokkal rendelkezzenek, kattintson az **új házirend létrehozása** lehetőségre új szabályzat hozzáadásához.
 
 1. Adja meg azt a dátumot és időpontot, ameddig a kiválasztott felhasználók hozzárendelésének kezdési és befejezési időpontja. Ha nincs megadva befejezési dátum, a rendszer a szabályzat életciklus-beállításait fogja használni.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166576"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933899"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
 A fordított proxy egy opcionális Azure Service Fabric szolgáltatás, amely segít a Service Fabric-fürtökön futó, a http-végpontokkal rendelkező más szolgáltatásokkal való kommunikációban. További információ: [fordított proxy az Azure Service Fabricban](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be és konfigurálhatja a fordított proxykat a fürtben. 
@@ -44,7 +44,7 @@ Az Azure-beli fürtök esetében a Azure Resource Manager sablonnal engedélyezh
 
 Egy új fürthöz [létrehozhat egy egyéni Resource Manager-sablont](service-fabric-cluster-creation-via-arm.md) , vagy használhat egy minta sablont is. 
 
-Olyan Resource Manager-sablonokat talál, amelyek segítségével biztonságos fordított proxyt konfigurálhat egy Azure-fürthöz a GitHubon található [biztonságos fordított proxy-sablonokban](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) . A biztonságos fordított proxy tanúsítványokkal történő konfigurálásához és a tanúsítványok átváltásának kezeléséhez tekintse meg a [https fordított proxy konfigurálása biztonságos fürtben](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) című témakört a readme fájlban.
+Olyan Resource Manager-sablonokat talál, amelyek segítségével biztonságos fordított proxyt konfigurálhat egy Azure-fürthöz a GitHubon található [biztonságos fordított proxy-sablonokban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) . A biztonságos fordított proxy tanúsítványokkal történő konfigurálásához és a tanúsítványok átváltásának kezeléséhez tekintse meg a [https fordított proxy konfigurálása biztonságos fürtben](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) című témakört a readme fájlban.
 
 Meglévő fürt esetén a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)vagy az [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli)használatával exportálhatja a fürt erőforráscsoport Resource Manager-sablonját.
 

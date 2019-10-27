@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: aba3dd34383edbfb555adcc2063e4a2b76af1959
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389297"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934743"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
 Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő felhasználók számára a hozzáférési csomag igénylését. A kérelem szabályzatának meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal**.  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
 
-1. Azon felhasználók esetében, **akik hozzáférhetnek a hozzáférési** listához, válassza a **címtárban lévő felhasználók**lehetőséget.
+1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban lévő felhasználók**elemre.
 
     Ha ezt a beállítást választja, az új beállítások úgy jelennek meg, hogy tovább pontosítsa, hogy kik a címtárban is igényelhetik ezt a hozzáférési csomagot.
 
@@ -52,7 +52,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 > [!NOTE]
 > Egy vendég felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait. További információ a vendég felhasználói objektumról: [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../articles/active-directory/b2b/user-properties.md).
 
-1. Azon felhasználók esetében, **akik hozzáférhetnek a hozzáférési** listához, válassza a **címtárban nem szereplő felhasználók**lehetőséget.
+1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban nem szereplő felhasználók**elemre.
 
     Ha ezt a beállítást választja, az új beállítások jelennek meg.
 
@@ -65,20 +65,20 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
     | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. |
     | **Minden csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy az összes csatlakoztatott szervezet összes felhasználója hozzáférhessen a hozzáférési csomaghoz. |
 
-    A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyet gyakran együtt kell működnie.
+    A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
 
 1. Ha az **adott csatlakoztatott szervezetek**lehetőséget választotta, kattintson a **címtárak hozzáadása** lehetőségre a rendszergazda által korábban hozzáadott csatlakoztatott szervezetek listájából való kiválasztáshoz.
 
-1. Adja meg a tartománynevet egy olyan csatlakoztatott szervezet kereséséhez, amelynek a tartományneve a neve.
+1. A korábban csatlakoztatott szervezet kereséséhez írja be a név vagy a tartomány nevét.
 
     ![Hozzáférési csomag – kérelmek – könyvtárak kiválasztása](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Ha a szervezet, amely együttműködik a-val, nem szerepel a listában, megkérheti a rendszergazdát, hogy a hozzá csatlakoztatott szervezetként vegye fel. 
+    Ha a szervezet, amely együttműködik a-val, nem szerepel a listában, megkérheti a rendszergazdát, hogy a hozzá csatlakoztatott szervezetként vegye fel. További információt a [csatlakoztatott szervezet hozzáadása](../articles/active-directory/governance/entitlement-management-organization.md)című témakörben talál.
 
 1. Miután kiválasztotta az összes csatlakoztatott szervezetet, kattintson a **kiválasztás**elemre.
 
     > [!NOTE]
-    > A kiválasztott csatlakoztatott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ide tartoznak a csatlakoztatott szervezetekhez társított összes altartományból származó felhasználók.
+    > A kiválasztott csatlakoztatott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a szervezethez társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási listája blokkolja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Ugorjon a [jóváhagyás](#approval) szakaszra.
 
@@ -86,11 +86,11 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
 Kövesse az alábbi lépéseket, ha szeretné megkerülni a hozzáférési kérelmeket, és lehetővé teszi, hogy a rendszergazdák közvetlenül rendeljenek hozzá konkrét felhasználókat a hozzáférési csomaghoz. A felhasználóknak nem kell a hozzáférési csomagot igényelnie. Továbbra is beállíthatja az életciklus-beállításokat, de nincsenek a kérelmek beállításai.
 
-1. Azon felhasználók esetében, **akik hozzáférhetnek a hozzáférés** listához, válassza a **nincs (csak rendszergazdai közvetlen hozzárendelések**lehetőséget.
+1. A **hozzáférést kérő felhasználók** részen kattintson a **nincs (csak rendszergazdai közvetlen hozzárendelések**elemre.
 
     ![Hozzáférési csomag – kérelmek – nincsenek rendszergazdai közvetlen hozzárendelések](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    A hozzáférési csomag létrehozása után közvetlenül rendelhet hozzá konkrét belső és külső felhasználókat a hozzáférési csomaghoz. Ha külső felhasználót ad meg, a rendszer létrehoz egy vendég felhasználói fiókot a címtárban. A felhasználók közvetlen hozzárendelésével kapcsolatos információkért tekintse meg a [hozzáférési csomag hozzárendeléseinek megtekintése és módosítása](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)című témakört.
+    A hozzáférési csomag létrehozása után közvetlenül rendelhet hozzá konkrét belső és külső felhasználókat a hozzáférési csomaghoz. Ha külső felhasználót ad meg, a rendszer létrehoz egy vendég felhasználói fiókot a címtárban. A felhasználók közvetlen hozzárendelésével kapcsolatos információkért tekintse meg a [hozzáférési csomag hozzárendelésének megtekintése, hozzáadása és eltávolítása](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)című témakört.
 
 1. Ugorjon le a [kérelmek engedélyezése](#enable-requests) szakaszra.
 
@@ -100,6 +100,8 @@ A jóváhagyás szakaszban megadhatja, hogy szükség van-e jóváhagyásra, ha 
 
 - Csak az egyik kiválasztott jóváhagyó vagy tartalék jóváhagyónak kell jóváhagynia a kérelmet. Az összes jóváhagyó jóváhagyása nem szükséges.
 - A jóváhagyási döntés azon alapul, hogy bármelyik jóváhagyó megtekinti-e először a kérést.
+
+Kövesse az alábbi lépéseket a korábban kiválasztott felhasználók jóváhagyási beállításainak megadásához.
 
 1. A kiválasztott felhasználóktól érkező kérések jóváhagyásának megköveteléséhez állítsa az **Igen**értékre a **jóváhagyás megkövetelése** kapcsolót. Ha szeretné, hogy a rendszer automatikusan jóváhagyja a kéréseket, állítsa a kapcsolót a **nem**értékre.
 

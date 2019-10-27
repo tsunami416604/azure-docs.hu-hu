@@ -1,23 +1,18 @@
 ---
 title: OMS-portál áthelyezése az Azure-ba | Microsoft Docs
 description: A OMS-portál a Azure Portalra áthelyezett összes funkcióval elérhetővé vált. Ez a cikk az áttérés részleteit ismerteti.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 08/22/2019
+ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915869"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932150"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portál áthelyezése az Azure-ba
 
@@ -110,5 +105,5 @@ Továbbra is használhatja a diagnosztikai beállításokat, hogy NSG-naplókat 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
 Ha [log Analyticshoz csatlakoztatta a Operations Manager felügyeleti csoportot](om-agents.md), akkor továbbra is a módosítások nélkül fog működni. Az új kapcsolatok esetében azonban az [Operations Management Suite konfigurálásához követnie kell a Microsoft System Center Operations Manager felügyeleti csomag](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)útmutatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a [OMS Portálról való áttérés gyakori kérdéseit, hogy Azure Portal log Analytics felhasználók](oms-portal-faq.md) számára a OMS Portálról a Azure Portalre való áthelyezéshez.

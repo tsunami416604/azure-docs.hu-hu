@@ -8,18 +8,81 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1df1d5180d951e7a720ec82c548438892a47a426
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881864"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933189"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
 A BlockBlobStorage fiók típusa lehetővé teszi, hogy a prémium szintű teljesítménnyel rendelkező blokk blobokat hozzon létre. Ez a típusú Storage-fiók olyan számítási feladatokhoz van optimalizálva, amelyek nagy tranzakciós díjszabással rendelkeznek, vagy amelyek nagyon gyors hozzáférési időt igényelnek. Ez a cikk bemutatja, hogyan hozhat létre BlockBlobStorage-fiókot a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával.
 
 A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Nincs.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Ez a cikk a Azure PowerShell modult igényli az az Version 1.2.0 vagy újabb verzióra. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen:
+
+- A CLI-parancsokat a Azure Cloud Shell Azure Portal belül is futtathatja.
+- Telepítheti a CLI-t, és helyileg is futtathatja a CLI-parancsokat.
+
+### <a name="use-azure-cloud-shell"></a>Az Azure Cloud Shell használata
+
+Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. Az Azure CLI előre telepítve és konfigurálva van a fiókjával való használatra. Kattintson a **Cloud Shell** gombra a Azure Portal jobb felső részén található menüben:
+
+[![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
+
+A gomb egy interaktív felületet indít el, amelyet a jelen útmutatóban ismertetett lépések futtatására használhat:
+
+[![Képernyőkép a Portalon lévő Cloud Shell-ablakról](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+
+### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
+
+Az Azure CLI-t helyben is telepítheti és használhatja. Ehhez a cikkhez az Azure CLI 2.0.46 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+---
+
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
+
+```powershell
+Connect-AzAccount
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure Cloud Shell indításához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+
+A CLI helyi telepítésére való bejelentkezéshez futtassa az az [login](/cli/azure/reference-index#az-login) parancsot:
+
+```cli
+az login
+```
+
+---
+
+## <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
 ## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
@@ -118,6 +181,8 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
     --kind "BlockBlobStorage" \
     --sku "Premium_LRS"
    ```
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: fbc024b6ae6e3ebfed6f64067158352e8201aef5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e0ac349554fa580c4ac88b26e76d0bea1ecf738b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642564"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932707"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>A klasszikus riasztási szabályok automatikus áttelepítési folyamatának megismerése
 
@@ -29,7 +29,7 @@ Ez a cikk végigvezeti az automatikus áttelepítési folyamaton, és segít meg
 - **2019. szeptember 1-től**kezdődően a klasszikus riasztások áttelepítése a klasszikus riasztásokkal rendelkező ügyfelek kötegében aktiválódik.
 - Hasonlóan az önkéntes áttelepítési eszközhöz, bizonyos klasszikus riasztási szabályok, amelyek nem telepíthetők át, maradnak. A klasszikus riasztási szabályokat a 2020-ig továbbra is támogatja a rendszer. Azonban minden érvénytelen klasszikus riasztási szabály törlődik, mivel azok nem működőképesek.
 A törölt cél erőforrásokat vagy a [már nem támogatott metrikákat](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) figyelő klasszikus riasztási szabályok érvénytelennek tekintendők.
-- Ha az előfizetés áttelepítése megkezdődik, hacsak nincs probléma, az áttelepítés egy órán belül befejeződik. Az áttelepítés állapotát a [Azure monitor](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)áttelepítési paneljén is figyelheti.
+- Ha az előfizetés áttelepítése megkezdődik, hacsak nincs probléma, az áttelepítés egy órán belül befejeződik. Az áttelepítés állapotát a [Azure monitor áttelepítési](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)paneljén is figyelheti.
 - Az előfizetés tulajdonosai e-mailt kapnak az áttelepítés sikeres befejezéséről.
 - Ha az áttelepítés során problémák merülnek fel, az előfizetések tulajdonosai is kapnak egy e-mailt, amely arról tájékoztatja őket. Az ügyfelek az áttelepítési panelen tekinthetik meg a probléma részletes adatait.
 - Ha az ügyfélnek olyan beavatkozásra van szüksége, mint például egy erőforrás zárolásának ideiglenes letiltása vagy egy szabályzat-hozzárendelés módosítása, az ügyfeleknek az 2019. október 31-ig kell megszüntetniük az esetleges problémákat. Ha a problémákat nem oldja meg, a klasszikus riasztások sikeres áttelepítése nem garantálható.
@@ -41,9 +41,9 @@ A törölt cél erőforrásokat vagy a [már nem támogatott metrikákat](alerts
 
 Az áttelepítési folyamat a klasszikus riasztási szabályokat új, egyenértékű riasztási szabályokra konvertálja, és műveleti csoportokat hoz létre. Az előkészítés során vegye figyelembe a következő szempontokat:
 
-- Az új riasztási szabályokhoz tartozó értesítési hasznos formátumok eltérnek a klasszikus riasztási szabályoktól, mert több funkciót támogatnak. Ha olyan logikai alkalmazásokkal, runbookok vagy webhookokkal rendelkezik, amelyeket klasszikus riasztási szabály indít el, akkor előfordulhat, hogy az áttelepítést követően az áttelepítés befejeződése után leáll a várt működés. [Ismerje meg, hogyan készítheti elő az](alerts-prepare-migration.md)áttelepítést.
+- Az új riasztási szabályokhoz tartozó értesítési hasznos formátumok eltérnek a klasszikus riasztási szabályoktól, mert több funkciót támogatnak. Ha olyan logikai alkalmazásokkal, runbookok vagy webhookokkal rendelkezik, amelyeket klasszikus riasztási szabály indít el, akkor előfordulhat, hogy az áttelepítést követően az áttelepítés befejeződése után leáll a várt működés. [Ismerje meg, hogyan készítheti elő az áttelepítést](alerts-prepare-migration.md).
 
-- Néhány klasszikus riasztási szabályt nem lehet áttelepíteni az eszköz használatával. Megtudhatja, [hogy mely szabályok nem telepíthetők át, és mire használhatók](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+- Néhány klasszikus riasztási szabályt nem lehet áttelepíteni az eszköz használatával. [Megtudhatja, hogy mely szabályok nem telepíthetők át, és mire használhatók](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
 
     > [!NOTE]
     > Az áttelepítési folyamat nem befolyásolja a klasszikus riasztási szabályok kiértékelését. A rendszer továbbra is futtatja és riasztásokat küld, amíg át nem telepíti őket, és az új riasztási szabályok érvénybe lépnek.
@@ -57,7 +57,7 @@ Az áttelepítés során esetlegesen felmerülő problémákkal kapcsolatos seg�
   > [!NOTE]
   > Ha az ügyfélnek olyan beavatkozásra van szüksége, mint például egy erőforrás zárolásának ideiglenes letiltása vagy egy szabályzat-hozzárendelés módosítása, az ügyfeleknek az 2019. október 31-ig kell megszüntetniük az esetleges problémákat. Ha a problémákat nem oldja meg, a klasszikus riasztások sikeres áttelepítése nem garantálható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés az áttelepítésre](alerts-prepare-migration.md)
 - [A migrálási eszköz működésének ismertetése](alerts-understand-migration.md)
