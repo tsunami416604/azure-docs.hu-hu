@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390700"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965979"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állás és Azure SQL Database
 
@@ -89,12 +89,14 @@ A magas rendelkezésre állású architektúra zóna redundáns verzióját a k�
 
 A [gyorsított adatbázis-helyreállítás (ADR)](sql-database-accelerated-database-recovery.md) egy új SQL Database motor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében. Az ADR jelenleg egyazon adatbázisok, rugalmas készletek és Azure SQL Data Warehouse számára érhető el.
 
-## <a name="testing-database-fault-resiliency"></a>Adatbázis-hibatűrési rugalmasság tesztelése
+## <a name="testing-application-fault-resiliency"></a>Az alkalmazás hibatűrési rugalmasságának tesztelése
 
-A magas rendelkezésre állás a Azure SQL Database platform fundamenental része, és az adatbázis-alkalmazás számára transzparens módon működik. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra az éles környezetbe történő üzembe helyezése előtt. Meghívhat egy speciális API-t az adatbázis vagy a rugalmas készlet újraindításához, ami viszont elindítja a feladatátvételt. A zóna redundáns adatbázisa vagy a rugalmas készlet esetében az API-hívás azt eredményezi, hogy az ügyfélkapcsolatok átirányítása az új elsődlegesre egy másik az alkalmazásban. Tehát azon kívül, hogy a feladatátvétel milyen hatással van a meglévő adatbázis-munkamenetekre, azt is ellenőrizheti, hogy az hatással van-e a végpontok közötti teljesítményre. Mivel az újraindítási művelet zavaró, és nagy számú közülük kiemelheti a platformot, minden adatbázishoz vagy rugalmas készlethez 30 percenként csak egy feladatátvételi hívás engedélyezett. Részletekért lásd: [adatbázis-feladatátvételi](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) és [rugalmas készlet feladatátvétele](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+A magas rendelkezésre állás a Azure SQL Database platform alapvető része, amely transzparens módon működik az adatbázis-alkalmazás számára. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra, mielőtt üzembe helyezné az éles környezetben. Meghívhat egy speciális API-t egy adatbázis vagy egy rugalmas készlet újraindításához, amely a feladatátvételt is elindítja. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platformot, az egyes adatbázisok vagy rugalmas készletek esetében 30 percenként csak egy feladatátvételi hívás engedélyezett. 
+
+A feladatátvételt REST API vagy PowerShell használatával lehet kezdeményezni. REST API esetében lásd: [adatbázis-feladatátvételi](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) és [rugalmas készlet feladatátvétele](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover). A PowerShell esetében tekintse meg a következőt: [meghívás-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) és [meghívása – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover). Az REST API-hívások az Azure CLI-ből is elindíthatók az [az Rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) paranccsal.
 
 > [!IMPORTANT]
-> A feladatátvételi parancs jelenleg nem érhető el Hypescale-adatbázisokhoz és felügyelt instancses.  
+> A feladatátvételi parancs jelenleg nem érhető el a nagy kapacitású szolgáltatási szintjében és a felügyelt példányok esetében.
 
 ## <a name="conclusion"></a>Összegzés
 

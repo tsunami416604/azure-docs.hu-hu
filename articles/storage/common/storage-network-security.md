@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 908e44ef17dcfcf7042eab32cfd6d1fc3a565ac7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927117"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965505"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -358,14 +358,14 @@ A Storage-fiókok IP-hálózati szabályait a Azure Portal, a PowerShell vagy a 
 
 ## <a name="exceptions"></a>Kivételek
 
-A hálózati szabályok segítenek a biztonságos környezet létrehozásában az alkalmazások és az adatok közötti hozzáféréshez a legtöbb esetben. Egyes alkalmazások azonban olyan szolgáltatásokat használnak, amelyek nem különíthetők el egyedileg a virtuális hálózaton vagy az IP-címek szabályain keresztül. Az alkalmazások teljes funkcionalitásának engedélyezéséhez azonban az ilyen szolgáltatásokat meg kell adni a Storage-fiók számára. Használhatja a ***megbízható Microsoft-szolgáltatások engedélyezése...*** kivételt az adatokhoz, naplókhoz vagy elemzésekhez való hozzáférési forgatókönyvek engedélyezéséhez.
+A hálózati szabályok segítenek a biztonságos környezet létrehozásában az alkalmazások és az adatok közötti kapcsolatokhoz a legtöbb esetben. Egyes alkalmazások azonban olyan szolgáltatásokat használnak, amelyek nem különíthetők el egyedileg a virtuális hálózaton vagy az IP-címek szabályain keresztül. Az alkalmazások teljes funkcionalitásának lehetővé tételéhez azonban az ilyen szolgáltatásokat biztosítani kell a tároláshoz. Ilyen helyzetekben a ***megbízható Microsoft-szolgáltatások engedélyezése...*** beállítást használhatja az adataihoz, naplóihoz vagy elemzéséhez való hozzáférés engedélyezéséhez.
 
 ### <a name="trusted-microsoft-services"></a>Megbízható Microsoft-szolgáltatások
 
-Bizonyos Microsoft-szolgáltatások hálózatról való működéséről nem lehet hozzáférést biztosítani a meglévő hálózati szabályokon keresztül. Lehetővé teheti, hogy az ilyen megbízható Microsoft-szolgáltatások egy részhalmaza hozzáférhessen a Storage-fiókhoz, miközben más alkalmazások hálózati szabályait is megtartja. Ezek a szolgáltatások erős hitelesítést használhatnak a Storage-fiókhoz való kapcsolódáshoz. A Microsoft-szolgáltatásokhoz két típusú megbízható hozzáférést engedélyezünk.
+Bizonyos Microsoft-szolgáltatások olyan hálózatokból működnek, amelyek nem vehetők fel a hálózati szabályokba. Lehetővé teheti, hogy az ilyen megbízható Microsoft-szolgáltatások egy részhalmaza hozzáférhessen a Storage-fiókhoz, miközben más alkalmazások hálózati szabályait is megtartja. Ezek a szolgáltatások az erős hitelesítés használatával biztonságosan csatlakozhatnak a Storage-fiókhoz. A Microsoft-szolgáltatásokhoz két típusú megbízható hozzáférést engedélyezünk.
 
 - Egyes szolgáltatások erőforrásai hozzáférhetnek a Select műveletekhez, például a naplók írásához vagy a biztonsági mentéshez.
-- Egyes szolgáltatások egy adott példánya elérhetővé teheti a hozzáférést, ha [hozzárendel egy RBAC-szerepkört](storage-auth-aad.md#assign-rbac-roles-for-access-rights) az erőforrás-példányhoz.
+- Egyes szolgáltatások egy adott példánya hozzáférést biztosíthat [egy RBAC-szerepkör hozzárendelésével](storage-auth-aad.md#assign-rbac-roles-for-access-rights) az erőforrás-példányhoz.
 
 
 Ha engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezése...** kivételt, akkor a következő szolgáltatások (ha regisztrálva van az előfizetésben) hozzáférést kapnak a Storage-fiókhoz a kiválasztott műveletekhez a leírtak szerint:
@@ -384,7 +384,7 @@ Ha engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezése...**
 | Azure-hálózatok         | Microsoft.Network          | Hálózati forgalmi naplók tárolása és elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Engedélyezze a replikációt az Azure IaaS-alapú virtuális gépek vész-helyreállításához, ha tűzfalon alapuló gyorsítótár-, forrás-vagy tároló-fiókot használ.  [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
-A **megbízható Microsoft-szolgáltatások engedélyezése...** a kivétel lehetővé teszi, hogy ezeknek a szolgáltatásoknak adott példányai hozzáférjenek a Storage-fiókhoz, ha a példány [rendszerhez rendelt felügyelt identitása](../../active-directory/managed-identities-azure-resources/overview.md) egy RBAC szerepkörhöz van rendelve.
+A **megbízható Microsoft-szolgáltatások engedélyezése...** a kivétel lehetővé teszi, hogy ezeknek a szolgáltatásoknak bizonyos példányai hozzáférjenek a Storage-fiókhoz, ha a példány [rendszerhez rendelt felügyelt identitása](../../active-directory/managed-identities-azure-resources/overview.md) egy RBAC szerepkörhöz van rendelve.
 
 | Szolgáltatás                  | Erőforrás-szolgáltató neve          | Rendeltetés                            |
 | :----------------------- | :------------------------------ | :--------------------------------- |
@@ -396,7 +396,7 @@ A **megbízható Microsoft-szolgáltatások engedélyezése...** a kivétel lehe
 
 ### <a name="storage-analytics-data-access"></a>Storage Analytics-adathozzáférés
 
-Bizonyos esetekben a hálózati határon kívülről kell hozzáférni a diagnosztikai naplók és mérőszámok olvasásához. A megbízható szolgáltatások a Storage-fiókhoz való hozzáférésének konfigurálásakor engedélyezheti az olvasási hozzáférést a naplófájlokhoz, a metrikák tábláihoz vagy mindkettőhöz. [További információ a Storage Analytics használatáról.](/azure/storage/storage-analytics)
+Bizonyos esetekben a hálózati határon kívülről kell hozzáférni a diagnosztikai naplók és a metrikák olvasásához. A megbízható szolgáltatások a Storage-fiókhoz való hozzáférésének konfigurálásakor engedélyezheti az olvasási hozzáférést a naplófájlokhoz, a metrikák tábláihoz vagy mindkettőhöz. [További információ a Storage Analytics használatáról.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Kivételek kezelése
 

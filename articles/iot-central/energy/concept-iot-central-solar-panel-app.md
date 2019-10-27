@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: afb6b0a5dc2204686872abb65666e6cdaab081a8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 61a2b00bee7b16e3cc62a010ca454466cb0292a0
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958055"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965586"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central – napelemes alkalmazások architektúrája
 
@@ -26,7 +26,7 @@ Az architektúra az alábbi összetevőkből áll. Nem minden alkalmazáshoz sz�
 
 ## <a name="solar-panels-and-connectivity"></a>Napelemek és kapcsolatok 
 
-A napelemes panelek a megújuló energiaforrások egyik jelentős forrása. A napelemek típusától és beállítástól függően az átjárón vagy más köztes eszközökön és a védett rendszereken keresztül is csatlakozhat. Előfordulhat, hogy az eszközök csatlakoztatásához létre kell hoznia IoT Central Device Bridge eszközt, amely nem csatlakoztatható közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge)találja a teljes részleteket. 
+A napelemes panelek a megújuló energiaforrások egyik jelentős forrása. A napelemek típusától és beállítástól függően az átjárón vagy más köztes eszközökön és a védett rendszereken keresztül is csatlakozhat. Előfordulhat, hogy az eszközök csatlakoztatásához létre kell hoznia IoT Central Device Bridge eszközt, amely nem csatlakoztatható közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)találja a teljes részleteket. 
 
 
 
@@ -40,4 +40,4 @@ A IoT Central platform két bővíthetőségi lehetőséget kínál: folyamatos 
 ## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy megismerte az architektúrát, [hozzon létre ingyen a Solar panel alkalmazást](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)

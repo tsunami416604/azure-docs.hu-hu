@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 979fa8bed99a8244e9ebae9de4b615bfac4bd773
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949716"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72966464"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -33,7 +33,7 @@ A felügyelt lemezek integrálva vannak a rendelkezésre állási csoportokkal a
 
 ### <a name="integration-with-availability-zones"></a>Integráció a Availability Zones
 
-A Managed Disks támogatja a [Availability Zonest](../articles/availability-zones/az-overview.md), amely egy magas rendelkezésre állású ajánlat, amely védelmet nyújt az alkalmazásoknak az adatközpont hibáiból. A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára.
+A Managed Disks támogatja a [Availability Zonest](../articles/availability-zones/az-overview.md), amely egy magas rendelkezésre állású ajánlat, amely védelmet nyújt az alkalmazásoknak az adatközpont hibáiból. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára.
 
 ### <a name="azure-backup-support"></a>Azure Backup támogatás
 
@@ -49,13 +49,13 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles/role-bas
 
  A VHD-k Azure-ba történő átviteléről a [parancssori](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) felület vagy a [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) cikkeiben talál további információt.
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>Titkosítás
 
-A felügyelt lemezek két különböző típusú titkosítást kínálnak. Az első Storage Service Encryption (SSE), amelyet a Storage szolgáltatás hajt végre. A második Azure Disk Encryption (ADE), amelyet engedélyezheti a virtuális gépek operációsrendszer-és adatlemezei számára.
+A felügyelt lemezek két különböző típusú titkosítást kínálnak. Az első a kiszolgálóoldali titkosítás (SSE), amelyet a Storage szolgáltatás hajt végre. A második Azure Disk Encryption (ADE), amelyet engedélyezheti a virtuális gépek operációsrendszer-és adatlemezei számára.
 
-### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+### <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
 
-Az [Azure Storage Service encryption](../articles/storage/common/storage-service-encryption.md) titkosítást biztosít, és gondoskodik az adatok védelméről a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. Az SSE alapértelmezés szerint engedélyezve van minden felügyelt lemez, pillanatkép és rendszerkép számára az összes olyan régióban, ahol a felügyelt lemezek elérhetők. További részletekért látogasson el a [Managed Disks GYIK oldalára](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+Az [Azure kiszolgálóoldali titkosítása](../articles/storage/common/storage-service-encryption.md) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. A kiszolgálóoldali titkosítás alapértelmezés szerint engedélyezve van minden felügyelt lemez, pillanatkép és rendszerkép számára az összes olyan régióban, ahol a felügyelt lemezek elérhetők. További részletekért látogasson el a [Managed Disks GYIK oldalára](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -92,7 +92,7 @@ Ha szeretne többet megtudni arról, hogyan hozhat létre pillanatképeket a fel
 * [Felügyelt lemezként tárolt VHD másolatának létrehozása Pillanatképek használatával a Windowsban](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Képek
+### <a name="images"></a>Lemezképek
 
 A felügyelt lemezek támogatják a felügyelt Egyéni rendszerképek létrehozását is. Létrehozhat egy rendszerképet az egyéni VHD-ből egy Storage-fiókban, vagy közvetlenül egy általánosított (Sysprep használatával létrehozott) virtuális gépről. Ez a folyamat egyetlen lemezképet rögzít. Ez a rendszerkép a virtuális géphez társított összes felügyelt lemezt tartalmazza, beleértve az operációs rendszert és az adatlemezeket is. Ez a felügyelt egyéni rendszerkép lehetővé teszi több száz virtuális gép létrehozását az egyéni rendszerkép használatával anélkül, hogy bármilyen Storage-fiókot kellene másolni vagy kezelnie.
 
@@ -125,6 +125,6 @@ Az Azure rangsorolt hálózati csatornát használ a lemezes forgalomhoz, ami el
 
 Tekintse meg a [nagy teljesítményű cikk kialakítását](../articles/virtual-machines/windows/premium-storage-performance.md) ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-ajánlatok egyes típusairól, amelyek típusa jól illeszkedik az igényeihez, és megismerheti a teljesítményre vonatkozó célokat a lemez típusainak leírásában.

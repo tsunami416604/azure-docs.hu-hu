@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675633"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965595"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -43,7 +43,7 @@ Előfordulhat, hogy egy kísérletet csak olyan adatkészletet szeretne futtatni
  
 A javítás előtt összekapcsolhatjuk az adatkészletet bármely Adatátalakítási modulhoz (oszlop kijelölése az adatkészletben, a metaadatok szerkesztése, adatok felosztása stb.), és futtathatja a kísérletet. Ezután megjelenítheti az adatkészletet. 
 
-Az alábbi képen látható, hogyan: ![visulize adat](./media/resource-known-issues/aml-visualize-data.png)
+Az alábbi képen látható, hogyan: ![visulize](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK-telepítési problémák
 
@@ -86,6 +86,16 @@ A tenser flow automatikus gépi tanulása jelenleg nem támogatja a 1,13-es két
 ### <a name="experiment-charts"></a>Kísérleti diagramok
 
 A bináris besorolási diagramok (a pontosság-visszahívás, a ROC, a nyereség görbéje stb.) az automatizált ML-kísérletek iterációjában nem megfelelően jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
+
+## <a name="datasets-and-data-preparation"></a>Adatkészletek és adat-előkészítés
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nem sikerült beolvasni a Parquet-fájlt a HTTP vagy a ADLS Gen 2 használatával
+
+Létezik egy ismert probléma a AzureML Adatelőkészítés SDK verziójának 1.1.25, amely meghibásodást okoz az adatkészlet létrehozásakor, ha a HTTP vagy a ADLS Gen 2 fájlból olvassa be a parketta-fájlokat. A probléma megoldásához frissítsen a 1.1.26-nál magasabb verzióra, vagy a 1.1.24-nél alacsonyabb verzióra.
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Databricks
 
@@ -136,7 +146,7 @@ Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani
 
 Ha Azure Databricks fürtön lévő adatolvasáskor `FailToSendFeather` hibaüzenet jelenik meg, tekintse meg a következő megoldásokat:
 
-* @No__t_0 csomag frissítése a legújabb verzióra.
+* `azureml-sdk[automl]` csomag frissítése a legújabb verzióra.
 * Adja hozzá a `azure-dataprep` 1.1.8 vagy újabb verziót.
 * Adja hozzá `pyarrow` 0,11-es vagy újabb verziót.
 
@@ -224,7 +234,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. A titkos kód `cert.pem` és `key.pem` 64-összetevőjét a `attach_config.enable_ssl` megadását megelőzően el kell végeznie. 
+>A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. A titkos kód `cert.pem` és `key.pem` 64-összetevőjét a `attach_config.enable_ssl`megadását megelőzően el kell végeznie. 
 
 ## <a name="recommendations-for-error-fix"></a>Hibajavítási javaslatok
 Az általános megfigyelésen alapuló Azure ML-javaslatok az Azure ML gyakori hibáinak kijavítására szolgálnak.
@@ -232,7 +242,7 @@ Az általános megfigyelésen alapuló Azure ML-javaslatok az Azure ML gyakori h
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (nincs nevű modul)
 Ha a ModuleErrors-ben futtatja a kísérleteket az Azure ML-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML a betanításhoz használt környezetben fogja telepíteni a csomagot. 
 
-Ha a [becslések](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` vagy `conda_packages` paraméterrel a kalkulátor alapján, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőséggel `conda_dependencies_file`or a `pip_requirements_file` paraméter használatával egy txt-fájlban lévő összes pip-követelményt listázhatja.
+Ha a [becslések](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` vagy `conda_packages` paraméterrel a kalkulátor alapján, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségével `conda_dependencies_file`vagy a `pip_requirements_file` paraméter használatával egy txt-fájlban lévő összes pip-követelmény felsorolásával.
 
 Az Azure ML a Tensorflow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy a keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
  

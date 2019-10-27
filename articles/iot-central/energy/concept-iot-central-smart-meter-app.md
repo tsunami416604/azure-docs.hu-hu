@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: af84f55e61e8f7a9148ba68be97e23873be434f3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f87e1a7893fa8c2ea22711f90696a5d2836eb3ac
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957642"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965610"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – intelligens fogyasztásmérő alkalmazás architektúrája
 
@@ -26,12 +26,12 @@ Az architektúra az alábbi összetevőkből áll. Előfordulhat, hogy egyes meg
 
 ## <a name="smart-meters-and-connectivity"></a>Intelligens mérőórák és kapcsolat 
 
-Egy intelligens fogyasztásmérő az összes energiaellátási eszköz egyik legfontosabb eszköze. Az energiafogyasztással kapcsolatos adatokat rögzíti és közli a segédprogramokkal a figyelési és más használati esetekre, például a számlázásra és az igényre adott válaszra vonatkozóan. A mérési típus alapján a IoT Central átjárón keresztül, vagy más köztes eszközökön vagy rendszereken, például az Edge-eszközökön és a fő rendszereken keresztül is csatlakozhat. Hozzon létre IoT Central Device Bridge-et az eszközök csatlakoztatásához, amelyek nem csatlakoztathatók közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge)találja a teljes részleteket. 
+Egy intelligens fogyasztásmérő az összes energiaellátási eszköz egyik legfontosabb eszköze. Az energiafogyasztással kapcsolatos adatokat rögzíti és közli a segédprogramokkal a figyelési és más használati esetekre, például a számlázásra és az igényre adott válaszra vonatkozóan. A mérési típus alapján a IoT Central átjárón keresztül, vagy más köztes eszközökön vagy rendszereken, például az Edge-eszközökön és a fő rendszereken keresztül is csatlakozhat. Hozzon létre IoT Central Device Bridge-et az eszközök csatlakoztatásához, amelyek nem csatlakoztathatók közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)találja a teljes részleteket. 
 
 
 ## <a name="iot-central-platform"></a>IoT Central platform
 
-Az Azure IoT Central egy olyan platform, amely leegyszerűsíti a IoT-megoldás felépítését, és segít csökkenteni a IoT-kezelés, a műveletek és a fejlesztés terheit és költségeit. A IoT Central használatával könnyedén csatlakoztathatók, figyelhetők és kezelhetők a eszközök internetes hálózata (IoT) eszközei a skálán. Az intelligens mérőszámok IoT Centralhoz csatlakoztatása után az alkalmazás-sablon beépített funkciókat használ, mint például az eszközök modelljei, parancsai és irányítópultok. Az alkalmazás sablonja a IoT Central tárolót is használja a meleg elérési utakhoz, például a közel valós idejű mérési adatok figyeléséhez, elemzéséhez, szabályaihoz és vizualizációhoz.
+Az Azure IoT Central egy olyan platform, amely leegyszerűsíti a IoT-megoldás felépítését, és segít csökkenteni a IoT-kezelés, a műveletek és a fejlesztés terheit és költségeit. A IoT Central használatával könnyedén csatlakoztathatók, figyelhetők és kezelhetők a eszközök internetes hálózata (IoT) eszközei a skálán. Az intelligens mérőszámok IoT Centralhoz csatlakoztatása után az alkalmazás-sablon beépített funkciókat használ, mint például az eszközök modelljei, parancsai és irányítópultok. Az alkalmazás sablonja a IoT Central tárolót is használja a meleg elérési utakhoz, például a közel valós idejű mérési adatok figyeléséhez, elemzéséhez, szabályaihoz és vizualizációhoz. 
 
 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>Bővíthetőségi lehetőségek a IoT Central létrehozásához
@@ -40,5 +40,4 @@ A IoT Central platform két bővíthetőségi lehetőséget kínál: folyamatos 
 ## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy megismerte az architektúrát, [ingyenes Smart Meter-alkalmazást készíthet](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
-
+* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)

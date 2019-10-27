@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: e1120abb06ec2c777114703cfe3fc7334477aecc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 10/26/2019
+ms.openlocfilehash: 327e4d46ba2bb6cfbf8b7e4a151cc246df2e03c2
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592945"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965316"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra online a DMS használatával
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Azure Database Migration Service-példány létrehozása.
 > * Hozzon létre egy áttelepítési projektet, és indítsa el az online áttelepítést Azure Database Migration Service használatával.
 > * A migrálás monitorozása.
-> * Átállás a migrálás elkészültekor.
+> * Ha elkészült, hajtsa végre az áttelepítési átváltás.
 
 > [!IMPORTANT]
 > Az SQL Serverról SQL Database felügyelt példányra Azure Database Migration Service használatával történő online áttelepítéshez meg kell adnia a teljes adatbázis biztonsági mentését és az azt követő biztonsági másolatokat abban az SMB-hálózati megosztásban, amelyet a szolgáltatás az adatbázisok áttelepítésére használhat. A Azure Database Migration Service nem kezdeményez biztonsági mentést, hanem meglévő biztonsági mentéseket használ, amelyek már a vész-helyreállítási terv részeként is megjelenhetnek az áttelepítés során.
@@ -44,7 +44,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Ez a cikk a SQL Server SQL Database felügyelt példányra történő online áttelepítését ismerteti. Offline áttelepítés esetén lásd: [SQL Server áttelepítése Azure SQL Database felügyelt példányra a DMS használatával](tutorial-sql-server-to-managed-instance.md).
+Ez a cikk a SQL Server SQL Database felügyelt példányra történő online áttelepítését ismerteti. Offline áttelepítés esetén lásd: [SQL Server áttelepítése SQL Database felügyelt példányra a DMS használatával](tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,7 +79,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Hozzon létre egy Azure Active Directory alkalmazás-azonosítót, amely létrehoz egy olyan alkalmazás-azonosító kulcsot, amelyet a Azure Database Migration Service használhat a cél Azure Database felügyelt példányához és az Azure Storage-tárolóhoz való kapcsolódáshoz. További információ: [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
   > [!NOTE]
-  > Azure Database Migration Service a megadott alkalmazás-AZONOSÍTÓhoz a közreműködői engedélyt kell adni az előfizetéshez. Aktívan dolgozunk azon, hogy csökkentse az engedélyek követelményeit.
+  > Azure Database Migration Service a megadott alkalmazás-AZONOSÍTÓhoz a közreműködői engedélyt kell adni az előfizetéshez. Azt is megteheti, hogy egyéni szerepköröket hoz létre, amelyek megadják a Azure Database Migration Service által igényelt konkrét engedélyeket. Az egyéni szerepkörök használatával kapcsolatos részletes útmutatásért tekintse meg a [felügyelt példányok online áttelepítésének SQL Database SQL Server egyéni szerepkörei](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)című cikket.
 
 * Hozzon létre vagy jegyezzen fel egy **standard teljesítményszintű** Azure Storage-fiókot, amelybe a DMS-szolgáltatás feltöltheti az adatbázis biztonsági mentési fájljait, majd felhasználhatja azokat az adatbázisok migrálásakor.  Győződjön meg arról, hogy az Azure Storage-fiókot abban a régióban hozza létre, ahol a Azure Database Migration Service példányt létrehozták.
 

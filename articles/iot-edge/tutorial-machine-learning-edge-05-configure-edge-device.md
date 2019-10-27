@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja az IoT Edge-eszköz – Machine Learning az Azure IoT Edge |} A Microsoft Docs
-description: Állítsa be egy Azure virtuális gép Linux rendszerű, Azure IoT Edge-eszköz, amely transzparens átjáróként üzemel.
+title: Machine Learning IoT Edge eszköz konfigurálása a Azure IoT Edgeon | Microsoft Docs
+description: Konfiguráljon egy Linux rendszerű Azure-beli virtuális gépet olyan Azure IoT Edge eszközként, amely transzparens átjáróként működik.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,138 +8,138 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155629"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965394"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
 > [!NOTE]
-> Ez a cikk egy sorozat része az IoT Edge-ben az Azure Machine Learning használatával kapcsolatos oktatóanyagot. Ha érkezett, ez a cikk közvetlenül, javasoljuk, hogy először a [először cikk](tutorial-machine-learning-edge-01-intro.md) a sorozat a legjobb eredmények.
+> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ez a cikk egy Azure virtuális gépet az Azure IoT Edge-eszköz, amely transzparens átjáróként lehet Linux operációs rendszert futtató konfiguráljuk. A transzparens átjáró konfigurációja lehetővé teszi, hogy az eszközök csatlakoztatása az Azure IoT hubba anélkül, hogy az átjárón keresztül, hogy az átjáró létezik. Egy időben az eszközöket az IoT Hub használata a felhasználók nem észleli a a köztes átjáróeszközt. Végső soron használjuk a transzparens átjáró peremhálózati elemzési hozzáadása a rendszer az átjáró, IoT Edge-modulok hozzáadásával.
+Ebben a cikkben egy Linux rendszerű Azure-beli virtuális gépet konfigurálunk olyan Azure IoT Edge eszközként, amely transzparens átjáróként működik. Az átlátszó átjáró konfigurációja lehetővé teszi az eszközök számára, hogy az átjárón keresztül csatlakozzanak az Azure IoT Hubhoz anélkül, hogy az átjáró létezik. Ugyanakkor a IoT Hub eszközzel kommunikáló felhasználók nem ismerik a köztes átjáró eszközét. Végső soron az átlátszó átjáróval vesszük fel a peremhálózat-elemzéseket a rendszerbe azáltal, hogy IoT Edge modulokat adnak hozzá az átjáróhoz.
 
-Ez a cikk lépéseit egy felhőszolgáltatás-fejlesztői általában végzi.
+A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
 
 ## <a name="generate-certificates"></a>Tanúsítványok előállítása
 
-Egy eszköz működéséhez, átjáróként, képesnek kell lennie, biztonságosan csatlakozhat az alsóbb rétegbeli eszközök. Az Azure IoT Edge lehetővé teszi, hogy a nyilvános kulcsokra épülő infrastruktúrájú (PKI) eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni. Ésszerű biztonságának fenntartása érdekében az alsóbb rétegbeli eszközök kell erősítse meg az IoT Edge-eszköz identitását. IoT Edge-eszközök tanúsítványok használatával kapcsolatos további információkért lásd: [Azure IoT Edge használatának Tanúsítványadatok](iot-edge-certs.md).
+Ahhoz, hogy egy eszköz átjáróként működjön, képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie a IoT Edge eszköz identitását. További információ arról, hogy IoT Edge eszközök hogyan használják a tanúsítványokat: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
 
-Ebben a szakaszban létrehozunk, hogy Ezután létrehozhatja és futtathatja egy Docker-rendszerkép használata az önaláírt tanúsítványokat. Docker-rendszerkép használata jelentősen csökken a tanúsítványok a Windows fejlesztői gépen való létrehozásához szükséges lépéseket a lépés végrehajtásához választottuk. Lásd: [Windows-tanúsítványok létrehozása](how-to-create-transparent-gateway.md#generate-certificates-with-windows) a részletes tájékoztatás a tanúsítványok előállításához egy tároló használata nélkül. [Linux-tanúsítványok létrehozása](how-to-create-transparent-gateway.md#generate-certificates-with-linux) az utasításokat, hogy a Docker-rendszerkép az automatikus rendelkezik.
+Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-rendszerkép használatával, amelyet aztán kiépítünk és futtatunk. Úgy döntöttünk, hogy egy Docker-rendszerképet használunk ennek a lépésnek a végrehajtásához, mert jelentősen csökkentette a tanúsítványok a Windows fejlesztői gépen való létrehozásához szükséges lépések számát. A tanúsítványok tároló nélküli létrehozásával kapcsolatos részleteket lásd: [tanúsítványok létrehozása a Windowsban](how-to-create-transparent-gateway.md#generate-certificates-with-windows) . A Linux-alapú [tanúsítványok létrehozása](how-to-create-transparent-gateway.md#generate-certificates-with-linux) olyan utasításokat tartalmaz, amelyeket a Docker-rendszerképpel automatizálunk.
 
-1. Jelentkezzen be a fejlesztési virtuális gépre.
+1. Jelentkezzen be a fejlesztői virtuális gépre.
 
-2. Nyisson meg egy parancssort, és futtassa a következő parancsot egy könyvtár létrehozására a virtuális gépen.
+2. Nyisson meg egy parancssort, és futtassa a következő parancsot egy könyvtár létrehozásához a virtuális gépen.
 
     ```cmd
     mkdir c:\edgeCertificates
     ```
 
-3. Indítsa el **Docker for Windows** a Windows Start menüjében.
+3. A Windows Start menüjéből indítsa el a **Docker for Windows** programot.
 
 4. Nyissa meg a Visual Studio Code-ot.
 
-5. Válassza ki **fájl** > **mappa megnyitása...**  válassza **C:\\forrás\\IoTEdgeAndMlSample\\CreateCertificates**.
+5. Válassza a **fájl** > **mappa megnyitása..** . lehetőséget, és válassza a **C:\\forrás\\IoTEdgeAndMlSample\\CreateCertificates**elemet.
 
-6. Kattintson a jobb gombbal a docker-fájlban, és válassza a **létrehozása lemezkép**.
+6. Kattintson a jobb gombbal a Docker, és válassza a **rendszerkép létrehozása**lehetőséget.
 
-7. A párbeszédpanelen fogadja el az alapértelmezett érték a rendszerkép nevét és címkéjét: **createcertificates:latest**.
+7. A párbeszédpanelen fogadja el az alapértelmezett értéket a rendszerkép neve és a címke: **createcertificates: Latest**.
 
-8. Várjon, amíg befejeződik a build.
+8. Várjon, amíg a Build befejeződik.
 
     > [!NOTE]
-    > A hiányzó nyilvános kulccsal kapcsolatos figyelmeztetés jelenhet meg. Már biztonságosan figyelmen kívül hagyható. Hasonlóképpen látni fogja a biztonsági figyelmeztetést, amely javasolja, hogy ellenőrzés/reset a rendszerképhez, amelyet biztonsággal figyelmen kívül hagyhatja ezt a képet az engedélyek.
+    > Előfordulhat, hogy megjelenik egy figyelmeztetés a hiányzó nyilvános kulcsról. Ezt a figyelmeztetést nyugodtan figyelmen kívül hagyhatja. Hasonlóképpen egy biztonsági figyelmeztetés is megjelenik, amely azt javasolja, hogy ellenőrizze/állítsa vissza a rendszerkép engedélyeit, ami nyugodtan figyelmen kívül hagyhatja ezt a rendszerképet.
 
-9. A Visual Studio Code terminálablakban futtassa a createcertificates tárolót.
+9. A Visual Studio Code Terminal ablakban futtassa a createcertificates tárolót.
 
     ```cmd
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker fogja kérni a hozzáférést a **c:\\**  meghajtót. Válassza ki **megoszthatja azt**.
+10. A Docker kérni fogja a (z) **c:\\** meghajtó elérését. Válassza a **megosztás**lehetőséget.
 
-11. Adja meg a hitelesítő adatait, amikor a rendszer kéri.
+11. Ha a rendszer kéri, adja meg a hitelesítő adatait.
 
-12. Egyszer a tároló végeztével fut, a következő fájlok keresése **c:\\edgeCertificates**:
+12. Ha a tároló futása befejeződött, keresse meg a következő fájlokat a **c:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
-    * C:\\edgeCertificates\\privát\\új edge device.key.pem
+    * c:\\edgeCertificates\\certs\\Azure-IOT-test-only. root. ca. CERT. PEM
+    * c:\\edgeCertificates\\certs\\New-Edge-Device-Full-Chain. CERT. PEM
+    * c:\\edgeCertificates\\certs\\New-Edge-Device. CERT. PEM
+    * c:\\edgeCertificates\\certs\\New-Edge-Device. CERT. pfx
+    * c:\\edgeCertificates\\Private\\New-Edge-Device. key. PEM
 
-## <a name="upload-certificates-to-azure-key-vault"></a>Tanúsítványok feltöltése az Azure Key Vaultba
+## <a name="upload-certificates-to-azure-key-vault"></a>Tanúsítványok feltöltése a Azure Key Vaultba
 
-A tanúsítványokat tárolja biztonságos helyen, és elérhetővé teheti őket a több eszközre, az Azure Key Vault fel fogja a tanúsítványokat. Amint láthatja, hogy a fenti listából, kétféle típusú tanúsítvány van: PFX és PEM. A PFX, Key Vault Certificates a Key Vaultba feltölteni kívánt kezeljük. A PEM-fájlok egyszerű szöveges és kezeljük őket Key Vault titkos kódként. A Key Vault az Azure Machine Learning-szolgáltatás futtatásával létrehozott munkaterület társítva ezzel a [Azure notebookok](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
+Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről is elérhetővé kívánja tenni őket, feltöltjük a tanúsítványokat a Azure Key Vaultba. Ahogy az a fenti listából is látható, két típusú tanúsítványfájl létezik: PFX és PEM. A PFX-t Key Vault, Key Vaultre feltöltött tanúsítványként kezeljük. A PEM-fájlok egyszerű szövegként jelennek meg, és Key Vault titokként kezeljük őket. A [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)futtatásával létrehozott Azure Machine learning szolgáltatás munkaterülethez társított Key Vault fogjuk használni.
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg az Azure Machine Learning szolgáltatás munkaterületet.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a Azure Machine learning szolgáltatás munkaterületére.
 
-2. Az Azure Machine Learning szolgáltatás munkaterület áttekintése lapon keresse meg a **Key Vault**.
+2. A Azure Machine Learning szolgáltatás munkaterület áttekintés lapján keresse meg a **Key Vault**nevét.
 
-    ![Másolja a kulcstároló nevét](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
+    ![Key Vault-név másolása](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
-3. A fejlesztői gépen a tanúsítványok feltöltése a Key Vaulthoz. Cserélje le **\<subscriptionId\>** és **\<keyvaultname\>** erőforrás adataival.
+3. A fejlesztői gépen töltse fel a tanúsítványokat Key Vaultba. Cserélje le **\<subscriptionId\>** és **\<keyvaultname\>** az erőforrás adataira.
 
     ```powershell
     c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
     ```
 
-4. Ha a rendszer kéri, jelentkezzen be az Azure-bA.
+4. Ha a rendszer kéri, jelentkezzen be az Azure-ba.
 
-5. A parancsprogram futtatása néhány percet, amely felsorolja az új Key Vault-bejegyzések kimenettel.
+5. A szkript néhány percig fut az új Key Vault bejegyzéseket felsoroló kimenettel.
 
-    ![A Key Vault parancsprogram kimenete](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
+    ![Key Vault parancsfájl kimenete](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
 
 ## <a name="create-iot-edge-device"></a>IoT Edge-eszköz létrehozása
 
-Az Azure IoT Edge-eszköz csatlakozik az IoT hub, először létrehozzuk az identitás, az eszköz az agyban. Azt a kapcsolati karakterláncra az eszközidentitást is a felhőben, és ezzel a futtatókörnyezet konfigurálása az IoT Edge-eszközön. Ha az eszközük lett konfigurálva, és csatlakozik a hubhoz, tudjuk, hogyan helyezhet üzembe modulokat, és üzeneteket küldeni. A fizikai IoT Edge-eszköz konfigurációjának módosításával, hogy a megfelelő eszközidentitást az IoT hub konfigurációját is módosítható.
+Ha Azure IoT Edge eszközt szeretne csatlakoztatni egy IoT hubhoz, először létre kell hoznia egy identitást az eszközhöz a központban. A kapcsolódási karakterláncot a felhőben található eszköz-identitásból fogjuk használni, hogy a futtatókörnyezetet a IoT Edge eszközön konfigurálja. Ha az eszköz konfigurálva lett, és csatlakozik a központhoz, a modulok üzembe helyezésére és üzenetek küldésére van lehetőség. A fizikai IoT Edge eszköz konfigurációját a IoT hub megfelelő eszköz-identitásának konfigurációjának módosításával is megváltoztathatja.
 
-Ebben az oktatóanyagban a Visual Studio Code használatával új eszközidentitást hozunk létre. Ezeket a lépéseket használatával is elvégezhetik az [az Azure portal](how-to-register-device-portal.md), vagy [Azure CLI-vel](how-to-register-device-cli.md).
+Ebben az oktatóanyagban létrehozjuk az új eszköz identitását a Visual Studio Code használatával. Ezeket a lépéseket a [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)vagy az [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)használatával is elvégezheti.
 
-1. A fejlesztői gépén nyissa meg a Visual Studio Code-ot.
+1. A fejlesztői gépen nyissa meg a Visual Studio Code-ot.
 
-2. Nyissa meg a **Azure IoT Hub-eszközök** keretet, a Visual Studio Code Explorerben nézetből.
+2. Nyissa meg az **Azure IoT hub eszközök** keretét a Visual Studio Code Explorer nézetből.
 
-3. Kattintson a három pontra, majd válassza a **IoT Edge-eszköz létrehozása**.
+3. Kattintson a három pontra, majd válassza az **IoT Edge eszköz létrehozása**lehetőséget.
 
-4. Nevezze el az eszközt. Az egyszerűség kedvéért használjuk **aaTurbofanEdgeDevice** így segítségével kihasználhatja a Tesztadatok küldhet eszköz korábban létrehozott összes ügyfél előre rendezi.
+4. Adja meg az eszköz nevét. A kényelmes használat érdekében a **aaTurbofanEdgeDevice** használjuk, így a korábban az eszköz-hám használatával létrehozott összes ügyféleszközök elküldheti a tesztelési adatmennyiséget.
 
-5. Az új eszközt az eszközlistáról megjelennek.
+5. Az új eszköz megjelenik az eszközök listájában.
 
     ![Új aaTurbofanEdgeDevice megtekintése a VS Code Explorerben](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
 
-## <a name="deploy-azure-virtual-machine"></a>Az Azure virtuális gép üzembe helyezése
+## <a name="deploy-azure-virtual-machine"></a>Azure-beli virtuális gép üzembe helyezése
 
-Használjuk a [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) kép az IoT Edge-eszköz létrehozásához ebben az oktatóanyagban az Azure piactérről. Az Azure IoT Edge Ubuntu-képre az indítási telepíti a legújabb Azure IoT Edge-futtatókörnyezet és annak függőségeit. A virtuális gép, egy PowerShell-parancsprogram segítségével üzembe helyezzük `Create-EdgeVM.ps1`; egy Resource Manager-sablon `IoTEdgeVMTemplate.json`; és a egy héjparancsfájlt `install packages.sh`.
+Az Azure Marketplace-en az Ubuntu-rendszerképeken a [Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) segítségével hozhatja létre IoT Edge eszközét ehhez az oktatóanyaghoz. Az Ubuntu-lemezkép Azure IoT Edge telepíti a legújabb Azure IoT Edge futtatókörnyezetet és annak függőségeit az indításkor. A virtuális gépet egy PowerShell-szkripttel telepítjük, `Create-EdgeVM.ps1`; Resource Manager-sablon, `IoTEdgeVMTemplate.json`; és egy rendszerhéj-parancsfájl, `install packages.sh`.
 
-### <a name="enable-programmatic-deployment"></a>Programozott üzembe helyezés engedélyezése
+### <a name="enable-programmatic-deployment"></a>Programozott telepítés engedélyezése
 
-A rendszerkép használata egy parancsfájlokkal történő üzembe helyezéséhez a piactérről, szükségünk ahhoz, hogy a kép programozott telepítés.
+Ha a piactéren parancsfájl-alapú telepítésben szeretné használni a rendszerképet, engedélyeznie kell a programozott üzembe helyezést a rendszerképhez.
 
 1. Jelentkezzen be az Azure portálra.
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-1. A keresősávba írja be, és válassza ki **Marketplace**.
+1. A keresősáv mezőben adja meg és válassza ki a **piactér**lehetőséget.
 
-1. A keresősávba írja be, és válassza ki **Ubuntu rendszeren az Azure IoT Edge**.
+1. A keresősáv mezőben adja meg és válassza ki **a Azure IoT Edge Ubuntun**.
 
-1. Válassza ki a **történő programozott telepítését? Első lépések** hivatkozás.
+1. Bejelöli a **kívánt programozott üzembe helyezést? Első lépések** hivatkozása.
 
-1. Válassza ki a **engedélyezése** gombra, majd **mentése**.
+1. Kattintson az **Engedélyezés** gombra, majd a **Mentés**elemre.
 
-    ![Virtuális gép programozott üzembe helyezés engedélyezése](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
+    ![Programozott telepítés engedélyezése virtuális géphez](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
 
-1. A sikeres címtármódosítást jelző értesítés jelenik meg.
+1. Ekkor megjelenik egy sikeres értesítés.
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Ezután futtassa a szkriptet a virtuális gép számára az IoT Edge-eszköz létrehozása.
+Ezután futtassa a parancsfájlt a IoT Edge eszközhöz tartozó virtuális gép létrehozásához.
 
-1. Nyisson meg egy PowerShell-ablakot, és keresse meg a **EdgeVM** könyvtár.
+1. Nyisson meg egy PowerShell-ablakot, és navigáljon a **EdgeVM** könyvtárba.
 
     ```powershell
     cd c:\source\IoTEdgeAndMlSample\EdgeVM
@@ -151,72 +151,72 @@ Ezután futtassa a szkriptet a virtuális gép számára az IoT Edge-eszköz lé
     .\Create-EdgeVm.ps1
     ```
 
-3. Amikor a rendszer kéri, adja meg az egyes paraméterek értékeit. Előfizetést erőforráscsoportot és helyet, azt javasoljuk, használja ugyanazt, hogy ez az oktatóanyag során az összes erőforrás.
+3. Ha a rendszer kéri, adja meg az egyes paraméterek értékeit. Az előfizetés, az erőforráscsoport és a hely esetében javasoljuk, hogy a jelen oktatóanyagban szereplő összes erőforráshoz ugyanazt használja.
 
-    * **Az Azure előfizetés-azonosító**: az Azure Portalon található
-    * **Erőforráscsoport-nevet**: könnyen megjegyezhető nevet az erőforrások csoportosítása ehhez az oktatóanyaghoz
-    * **Hely**: Azure-beli hely, ahol a virtuális gép létrejön. Ha például westus2 vagy northeurope. További információkért lásd: az összes [Azure-helyen](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **AdminUsername**: a nevét, a rendszergazdai fiók használatával jelentkezzen be a virtuális gép
-    * **AdminPassword**: a jelszó beállítása a AdminUsername a virtuális gépen
+    * **Azure-előfizetés azonosítója**: a Azure Portal található
+    * **Erőforráscsoport neve**: emlékezetes név az oktatóanyag erőforrásainak csoportosításához
+    * **Hely**: az az Azure-hely, ahol a virtuális gép létre lesz hozva. Például: westus2 vagy northeurope. További információkért tekintse meg az összes [Azure-helyet](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **AdminUsername**: annak a rendszergazdai fióknak a neve, amelyet a virtuális gépre való bejelentkezéshez használni fog
+    * **AdminPassword**: a virtuális gépen a AdminUsername beállított jelszó
 
-4. A parancsfájl a virtuális Gépet is beállíthatók jelentkezzen be az Azure-bA a hitelesítő adatokat használ az Azure-előfizetéséhez társított kell.
+4. Ahhoz, hogy a parancsfájl be tudja állítani a virtuális gépet, be kell jelentkeznie az Azure-ba az Ön által használt Azure-előfizetéshez társított hitelesítő adatokkal.
 
-5. A parancsfájl megerősíti, hogy az adatokat a virtuális gép létrehozásához. Válassza ki **y** vagy **Enter** folytatásához.
+5. A parancsfájl megerősíti a virtuális gép létrehozásához szükséges információkat. Válassza az **y** vagy az **ENTER billentyűt** a folytatáshoz.
 
-6. A szkript futtatása több percig, mert a következő lépések végrehajtása:
+6. A szkript több percig fut, ahogy a következő lépéseket hajtja végre:
 
-    * Ha már nem létezik, hozza létre az erőforráscsoportot
+    * Hozzon létre egy erőforráscsoportot, ha az már nem létezik
     * A virtuális gép létrehozása
-    * NSG-kivételek bővíteni a virtuális gép port 22-es (SSH), 5671-es (AMQP), 5672 (AMPQ), és a 443-as (SSL)
-    * Telepítse a [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest))
+    * NSG-kivételek hozzáadása a virtuális géphez a 22-es (SSH), a 5671 (AMQP), a 5672 (AMPQ) és a 443 (SSL) portok esetében
+    * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)telepítése)
 
-7. A parancsfájl kimenetének a csatlakozni a virtuális Géphez tartozó SSH kapcsolati karakterláncot. Másolja a kapcsolati karakterláncot a következő lépéshez.
+7. A parancsfájl az SSH kapcsolati karakterláncot adja meg a virtuális géphez való csatlakozáshoz. Másolja a következő lépéshez tartozó kapcsolatok karakterláncát.
 
-    ![Virtuális gép SSH-kapcsolati karakterlánc másolása](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
+    ![SSH-kapcsolatok karakterláncának másolása virtuális géphez](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
-## <a name="connect-to-your-iot-edge-device"></a>Csatlakozás az IoT Edge-eszköz
+## <a name="connect-to-your-iot-edge-device"></a>Kapcsolódás a IoT Edge eszközhöz
 
-A következő néhány szakaszban állítsa be a létrehozott Azure virtuális gép. Az első lépés a virtuális gép kapcsolódni fog.
+A következő néhány szakaszban az általunk létrehozott Azure-beli virtuális gépet konfiguráljuk. Az első lépés a virtuális géphez való kapcsolódás.
 
-1. Nyisson meg egy parancssort, és illessze be a kimásolt a parancsfájl kimenetében SSH kapcsolati karakterláncot. Adja meg a felhasználónév, utótag és régió szerint a megadott értékeket a saját adatait a PowerShell-parancsfájlt az előző szakaszban.
+1. Nyisson meg egy parancssort, és illessze be a szkript kimenetéről másolt SSH-kapcsolatok karakterláncát. Adja meg saját adatait a Felhasználónév, az utótag és a régió számára az előző szakaszban a PowerShell-szkriptnek megadott értékek alapján.
 
     ```cmd
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Amikor a rendszer kéri, a gazdagép hitelességének ellenőrzése, írja be a **Igen** válassza **Enter**.
+2. Amikor a rendszer felszólítja a gazdagép hitelességének ellenőrzésére, írja be az **Igen** értéket, és válassza az **ENTER billentyűt**.
 
-3. Amikor a rendszer kéri, adja meg a jelszót.
+3. Ha a rendszer kéri, adja meg a jelszavát.
 
-4. Ubuntu egy üdvözlő üzenetben majd, és megjelenik egy kérdés jellegű `<username>@<machinename>:~$`.
+4. Az Ubuntu megjeleníti az üdvözlő üzenetet, és megjelenik egy üzenet, például `<username>@<machinename>:~$`.
 
-## <a name="download-key-vault-certificates"></a>Letölti a tanúsítványokat a Key Vault
+## <a name="download-key-vault-certificates"></a>Key Vault tanúsítványok letöltése
 
-Ez a cikk a korábbi Key Vault az elérhetővé tételükhöz az IoT Edge-eszköz és az alsóbb rétegbeli használó eszközökön az IoT Edge-eszközt átjáróként az IoT hubbal való kommunikációhoz van levél eszköz tanúsítványok feltölti azt. A levél eszköz azt fogja foglalkozik, az oktatóanyag későbbi részében. Ebben a szakaszban töltse le a tanúsítványokat az IoT Edge-eszköz.
+A cikk korábbi szakaszaiban a tanúsítványokat a Key Vault, hogy elérhetővé tegyék azokat a IoT Edge eszközön és a levélben lévő eszközön, amely egy olyan alsóbb rétegbeli eszköz, amely az IoT Edge eszközt használja átjáróként az IoT Hubsal való kommunikációhoz. Az oktatóanyagban később fogunk foglalkozni a levél eszközzel. Ebben a szakaszban a tanúsítványokat a IoT Edge eszközre kell letölteni.
 
-1. Az SSH-munkamenetből a Linux rendszerű virtuális gépen jelentkezzen be az Azure-bA az Azure CLI használatával.
+1. Jelentkezzen be az Azure-ba az Azure CLI-vel a Linux rendszerű virtuális gépen futó SSH-munkamenetből.
 
     ```bash
     az login
     ```
 
-1. Egy böngészőben nyissa meg a kéri <https://microsoft.com/devicelogin> , és adja meg egy egyedi kódot. Végrehajthatja ezeket a lépéseket a helyi gépen. Ha elkészült, zárja be a böngészőablakot hitelesítő.
+1. A rendszer megkéri, hogy nyisson meg egy böngészőt <https://microsoft.com/devicelogin> és adjon meg egy egyedi kódot. Ezeket a lépéseket a helyi gépen hajthatja végre. A hitelesítés befejezése után zárd be a böngészőablakot.
 
-1. Sikeres hitelesítést, amikor a Linux rendszerű virtuális gép jelentkezzen be, és listázása az Azure-előfizetést.
+1. Sikeres hitelesítés esetén a Linux rendszerű virtuális gép bejelentkezik, és kilistázza az Azure-előfizetéseit.
 
-1. Az Azure parancssori felület parancsai használni kívánt Azure-előfizetés ASet.
+1. ASet az Azure CLI-parancsokhoz használni kívánt Azure-előfizetést.
 
     ```bash
     az account set --subscription <subscriptionId>
     ```
 
-1. Hozzon létre egy könyvtárat, a tanúsítványok a virtuális gépen.
+1. Hozzon létre egy könyvtárat a virtuális gépen a tanúsítványok számára.
 
     ```bash
     sudo mkdir /edgeMlCertificates
     ```
 
-1. Töltse le a tanúsítványokat a key vaultban tárolt: új – edge-eszközök – teljes-chain.cert.pem, új edge device.key.pem és az azure-iot-teszt – only.root.ca.cert.pem
+1. Töltse le a Key vaultban tárolt tanúsítványokat: New-Edge-Device-Full-Chain. CERT. PEM, New-Edge-Device. key. PEM, és Azure-IOT-test-only. root. ca. CERT. PEM
 
     ```bash
     key_vault_name="<key vault name>"
@@ -225,35 +225,35 @@ Ez a cikk a korábbi Key Vault az elérhetővé tételükhöz az IoT Edge-eszkö
     sudo az keyvault secret download --vault-name $key_vault_name --name azure-iot-test-only-root-ca-cert-pem -f /edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem
     ```
 
-## <a name="update-the-iot-edge-device-configuration"></a>Az IoT Edge-eszköz konfigurációjának frissítése
+## <a name="update-the-iot-edge-device-configuration"></a>A IoT Edge eszköz konfigurációjának frissítése
 
-Az IoT Edge-futtatókörnyezet használ a fájl /etc/iotedge/config.yaml megőrizni annak konfigurációját. Ez a fájl adatainak művelethez három adatra frissíteni kell:
+Az IoT Edge Runtime a fájl/etc/iotedge/config.YAML használja a konfiguráció megőrzéséhez. A fájlban háromféle információt kell frissíteni:
 
-* **Eszköz kapcsolati karakterláncának**: az eszközidentitást az IoT Hub kapcsolati sztring
-* **Tanúsítványok:** a tanúsítványok, a kapcsolatok alsóbb rétegbeli eszközök használata
-* **Állomásnév:** a virtuális gép IoT Edge-eszköz teljes tartománynevét (FQDN).
+* **Eszköz-összekapcsolási karakterlánc**: az eszköz identitásának IoT hub
+* **Tanúsítványok:** az alsóbb rétegbeli eszközökkel létesített kapcsolatokhoz használandó tanúsítványok
+* **Állomásnév:** a virtuális gép IoT Edge eszköz teljes TARTOMÁNYNEVE (FQDN).
 
-A *Ubuntu rendszeren az Azure IoT Edge* egy héjparancsfájlt, amely frissíti a config.yaml a kapcsolati karakterláncot tartalmaz, amely azt az IoT Edge virtuális gép létrehozásához használt lemezkép.
+A IoT Edge virtuális gép létrehozásához használt Ubuntu-rendszerkép *Azure IoT Edge* egy olyan rendszerhéj-parancsfájlt tartalmaz, amely frissíti a config. YAML fájlt a kapcsolódási karakterlánccal.
 
-1. A Visual Studio Code-ban kattintson a jobb gombbal az IoT Edge-eszközön, majd válassza ki **másolás eszköz kapcsolati karakterláncának**.
+1. A Visual Studio Code-ban kattintson a jobb gombbal a IoT Edge eszközre, majd válassza az **eszköz csatlakoztatási karakterláncának másolása**lehetőséget.
 
-    ![Másolja a kapcsolati karakterláncot a Visual Studio Code-ból](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
+    ![A Visual Studio Code-ból származó kapcsolatok karakterláncának másolása](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
 
-2. Az SSH-munkamenetben futtassa a parancsot a config.yaml fájl frissítése az eszköz kapcsolati karakterlánccal.
+2. Az SSH-munkamenetben futtassa a parancsot, hogy frissítse a config. YAML fájlt az eszköz kapcsolati karakterláncával.
 
     ```bash
     sudo /etc/iotedge/configedge.sh "<your_iothub_edge_device_connection_string>"
     ```
 
-Ezután frissítjük a tanúsítványok és az állomásnév a config.yaml közvetlen szerkesztésével.
+A következő lépésben frissíteni fogjuk a tanúsítványokat és a gazdagépet a config. YAML fájl közvetlen szerkesztésével.
 
-1. Nyissa meg a config.yaml fájlt.
+1. Nyissa meg a config. YAML fájlt.
 
     ```bash
     sudo nano /etc/iotedge/config.yaml
     ```
 
-2. Frissítse a config.yaml tanúsítványok szakaszában a vezető eltávolításával `#` és a következő példához hasonlóan jelenik meg a fájlt a beállításnak az elérési út:
+2. Frissítse a config. YAML tanúsítványok szakaszát a vezető `#` eltávolításával, és állítsa be az elérési utat úgy, hogy a fájl a következő példához hasonlóan néz ki:
 
     ```yaml
     certificates:
@@ -262,43 +262,43 @@ Ezután frissítjük a tanúsítványok és az állomásnév a config.yaml közv
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    Győződjön meg arról, hogy a "tanúsítványok:" nem rendelkezik megelőző szóközöket és, hogy a tanúsítványok mindegyike előzi meg két szóközt.
+    Győződjön meg arról, hogy a "tanúsítványok:" nem rendelkezik korábbi szóközökkel, és hogy mindegyik tanúsítvány két szóköz előtt van.
 
-    Kattintson a jobb gombbal a nano fog illessze be a jelenlegi kurzor pozíciójával a vágólap tartalmát. Cserélje le a karakterláncot, a billentyűzet nyilak használatával keresse meg a karakterláncot szeretne cserélni, törölje a karakterláncot, majd kattintson a jobb gombbal a buffer szolgáltatásból származó beilleszteni.
+    A nano-on a jobb gombbal kattintva beillesztheti a vágólap tartalmát az aktuális kurzor pozícióba. A karakterlánc cseréjéhez a nyílbillentyűk segítségével navigáljon a lecserélni kívánt karakterláncra, törölje a karakterláncot, majd kattintson a jobb gombbal a pufferből való beillesztéshez.
 
-3. Az Azure Portalon lépjen a virtuális gép. A DNS-név (a gép teljes Tartományneve) másolja a **áttekintése** szakaszban.
+3. A Azure Portal navigáljon a virtuális géphez. Másolja a DNS-nevet (a gép teljes tartománynevét) az **Áttekintés** szakaszból.
 
-4. Illessze be a teljes Tartománynevet a config.yml állomásnév szakaszában. Győződjön meg arról, hogy az összes betűjét.
+4. Illessze be a teljes tartománynevet a config. YML állomásnév szakaszába. Győződjön meg arról, hogy a név mind kisbetűs.
 
     ```yaml
     hostname: '<machinename>.<region>.cloudapp.azure.com'
     ```
 
-5. Mentse és zárja be a fájlt (`Ctrl + X`, `Y`, `Enter`).
+5. Mentse és zárjuk be a fájlt (`Ctrl + X`, `Y`, `Enter`).
 
-6. A iotedge démon újraindításához.
+6. Indítsa újra a iotedge démont.
 
     ```bash
     sudo systemctl restart iotedge
     ```
 
-7. Az IoT Edge-démon állapotának ellenőrzése (a parancs után írja be a ": q" való kilépéshez).
+7. Győződjön meg arról, hogy a IoT Edge démon állapota (a parancs után írja be a ": q" parancsot a kilépéshez).
 
     ```bash
     systemctl status iotedge
     ```
 
-8. Ha hibába ütközik (színes előtaggal szöveg "\[hiba\]") a naplókban állapot vizsgálja meg démon a hibával kapcsolatos részletes információk.
+8. Ha hibák jelennek meg (a "\[hiba\]" előtaggal ellátott színes szöveg), akkor a rendszer részletes információt tartalmaz a következő helyen: a Daemon-naplók.
 
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Csak befejeződött az Azure IoT Edge-transzparens átjáró konfigurálása egy Azure virtuális Gépen. Megkezdtük hogy azt az Azure Key Vaultba feltöltött teszttanúsítványokat létrehozásával. Ezután használtuk parancsfájlt és a Resource Manager-sablon üzembe helyezéséhez a virtuális Gépet az "Ubuntu Server 16.04 LTS + az Azure IoT Edge-futtatókörnyezet" a rendszerképet az Azure marketplace-ről. A szkript az Azure CLI telepítése, a további lépés tartott ([Azure CLI telepítése az Apt használatával](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)). A virtuális gép mentése és futó azt SSH-n keresztül csatlakozik, az Azure-bA regisztrált, letölti a tanúsítványokat a Key Vaultból és végrehajtott frissítéseket az IoT Edge-futtatókörnyezet konfigurációját a config.yaml fájl frissítésével. Átjáróként az IoT Edge használatával kapcsolatos további információkért lásd: [hogyan az IoT Edge-eszközt átjáróként használható](iot-edge-as-gateway.md). Az IoT Edge-eszköz konfigurálása transzparens átjáróként további információkért lásd: [a transzparens átjáróként működő IoT Edge-eszköz konfigurálása](how-to-create-transparent-gateway.md).
+Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Először a Azure Key Vaultba feltöltött tesztelési tanúsítványok létrehozásával kezdtük el. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. A szkript az Azure CLI telepítésének további lépéseit vette igénybe (az[Azure CLI telepítése az apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)használatával). Az SSH-n keresztül csatlakoztatott virtuális gépekkel, az Azure-ba való bejelentkezéssel, a Key Vault tanúsítványok letöltésével, valamint az IoT Edge Runtime konfigurációjának számos frissítését a config. YAML fájl frissítésével végezheti el. További információ a IoT Edge átjáróként való használatáról: [IoT Edge eszköz átjáróként](iot-edge-as-gateway.md)való használata. Az IoT Edge eszköz transzparens átjáróként való konfigurálásával kapcsolatos további információkért lásd: [IoT Edge-eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)működéshez.
 
-Folytassa a következő cikk IoT Edge-modulok készítése.
+IoT Edge modulok létrehozásához folytassa a következő cikkel.
 
 > [!div class="nextstepaction"]
-> [Hozhat létre és telepíthet egyéni IoT Edge-modulok](tutorial-machine-learning-edge-06-custom-modules.md)
+> [Egyéni IoT Edge-modulok létrehozása és üzembe helyezése](tutorial-machine-learning-edge-06-custom-modules.md)

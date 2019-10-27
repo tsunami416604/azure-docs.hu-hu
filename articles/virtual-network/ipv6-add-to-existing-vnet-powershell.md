@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 47f73ca8ece8db5fad3f8a7709d8787db42626f4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791201"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965238"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>IPv4-alkalmazás frissítése az IPv6-ra az Azure Virtual Networkben – PowerShell (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan adhat IPv6-címeket olyan alkalmazáshoz, amely IPv4 nyilvános IP-címet használ egy standard Load Balancer Azure-beli virtuális hálózatban. A helyben történő frissítés magában foglalja a virtuális hálózatot és az alhálózatot standard Load Balancer, az IPv4 + IPV6-alapú előtér-konfigurációval rendelkező virtuális gépeket, valamint az IPv4 + IPv6-konfigurációval, a hálózati biztonsági csoporttal és a nyilvános IP-címmel rendelkező virtuális gépeket
+Ez a cikk bemutatja, hogyan adhat IPv6-kapcsolatot egy meglévő IPv4-alkalmazáshoz egy standard Load Balancer és egy nyilvános IP-címmel rendelkező Azure-beli virtuális hálózaton. A helyben történő frissítés a következőket tartalmazza:
+- IPv6-címtartomány a virtuális hálózathoz és az alhálózathoz
+- IPv4-és IPV6-alapú előtér-konfigurációval rendelkező standard Load Balancer
+- Az IPv4 + IPv6-konfigurációt is tartalmazó hálózati adapterekkel rendelkező virtuális gépek
+- IPv nyilvános IP-címe, hogy a terheléselosztó internetkapcsolattal rendelkező IPv6-kapcsolattal rendelkezik
 
 > [!Important]
 > Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -66,7 +70,7 @@ A kettős veremből származó virtuális hálózat létrehozása előtt le kell
 
 ## <a name="create-an-ipv6-ip-addresses"></a>IPv6 IP-címek létrehozása
 
-Hozzon létre egy nyilvános IPv6-cím a standard Load Balancer [új AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) . Az alábbi példa egy *PublicIP_v6* nevű IPv6 nyilvános IP-címet hoz létre a *myresourcegroupslb erőforráscsoportban* erőforráscsoporthoz:
+Hozzon létre egy nyilvános IPv6-címeket a standard Load Balancer [új AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) . Az alábbi példa egy *PublicIP_v6* nevű IPv6 nyilvános IP-címet hoz létre a *myresourcegroupslb erőforráscsoportban* erőforráscsoporthoz:
 
 ```azurepowershell
   
@@ -81,7 +85,7 @@ Hozzon létre egy nyilvános IPv6-cím a standard Load Balancer [új AzPublicIpA
 
 ## <a name="configure-load-balancer-frontend"></a>A Load Balancer felületének konfigurálása
 
-Kérje le a meglévő terheléselosztó-konfigurációt, majd konfigurálja az új IPv6 IP-címmel az [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) használatával a következőképpen:
+Kérje le a meglévő terheléselosztó-konfigurációt, majd adja hozzá az új IPv6 IP-címet az [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) használatával az alábbiak szerint:
 
 ```azurepowershell
 # Retrieve the load balancer configuration
@@ -124,7 +128,7 @@ $lb | Set-AzLoadBalancer
 ```
 ## <a name="add-ipv6-address-ranges"></a>IPv6-címtartományok hozzáadása
 
-Adja hozzá az IPv6-címtartományt a virtuális hálózathoz és a terheléselosztó-t futtató alhálózathoz az alábbiak szerint:
+Adja hozzá az IPv6-címtartományt a virtuális hálózathoz és a virtuális gépeket üzemeltető alhálózathoz az alábbiak szerint:
 
 ```azurepowershell
 #Add IPv6 ranges to the VNET and subnet
@@ -145,7 +149,7 @@ $vnet |  Set-AzVirtualNetwork
 ```
 ## <a name="add-ipv6-configuration-to-nic"></a>IPv6-konfiguráció hozzáadása a hálózati adapterhez
 
-Konfigurálja mindkét virtuálisgép-hálózati adaptert IPv6-cím használatával az [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) segítségével a következőképpen:
+Konfigurálja az összes virtuálisgép-hálózati adaptert IPv6-cím használatával az [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) segítségével a következőképpen:
 
 ```azurepowershell
 
@@ -185,4 +189,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben frissített egy meglévő standard Load Balancer IPv4-es előtér-IP-konfigurációval egy kettős verem (IPv4 és IPv6) konfigurációra. Az IPv6-konfigurációkat a háttér-készletben található virtuális gépek hálózati adapterei számára is felvette. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)
+Ebben a cikkben frissített egy meglévő standard Load Balancer IPv4-es előtér-IP-konfigurációval egy kettős verem (IPv4 és IPv6) konfigurációra. Az IPv6-konfigurációkat a háttér-készletben található virtuális gépek hálózati adapterei és az azokat üzemeltető Virtual Network is felvette. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

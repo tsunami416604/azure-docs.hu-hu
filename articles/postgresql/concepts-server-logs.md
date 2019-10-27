@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 10/25/2019
+ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331294"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965935"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL lehetővé teszi a postgres szabványos naplófájljainak konfigurálását és elérését. A naplók használatával azonosíthatja, elháríthatja és kijavíthatja a konfigurációs hibákat és az optimális teljesítményt. A konfigurálható és elérhető naplózási információk közé tartoznak a hibák, a lekérdezési információk, az autoporszívós rekordok, a kapcsolatok és az ellenőrzőpontok. (A tranzakciós naplókhoz való hozzáférés nem érhető el).
@@ -40,11 +40,11 @@ Az alapértelmezett naplózási formátum a Azure Database for PostgreSQL. log. 
 
 Azure Database for PostgreSQL rövid távú tárolási helyet biztosít a. log fájlok számára. Egy új fájl 1 óránként vagy 100 MB-ban kezdődik, attól függően, hogy melyik érkezik először. A rendszer a naplófájlokat a postgres-ből kibocsátva az aktuális fájlhoz fűzi.  
 
-Az `log_retention_period` paraméterrel állíthatja be az ehhez a rövid távú naplófájlhoz tartozó megőrzési időtartamot. Az alapértelmezett érték 3 nap; a maximális érték 7 nap. A rövid távú tárolási hely legfeljebb 1 GB naplófájlt tud tárolni. 1 GB után a rendszer törli a legrégebbi fájlokat a megőrzési időtartamtól függetlenül, hogy helyet szabadítson fel az új naplók számára. 
+A `log_retention_period` paraméterrel állíthatja be a rövid távú naplózás megőrzési időtartamát. Az alapértelmezett érték 3 nap; a maximális érték 7 nap. A rövid távú tárolási hely legfeljebb 1 GB naplófájlt tud tárolni. 1 GB után a rendszer törli a legrégebbi fájlokat a megőrzési időtartamtól függetlenül, hogy helyet szabadítson fel az új naplók számára. 
 
 A naplók és a napló-elemzések hosszú távú megőrzése érdekében letöltheti a. log fájlokat, és áthelyezheti azokat egy külső szolgáltatásba. A fájlokat a [Azure Portal](howto-configure-server-logs-in-portal.md), az [Azure CLI](howto-configure-server-logs-using-cli.md)használatával töltheti le. Azt is megteheti, hogy Azure Monitor diagnosztikai beállításokat konfigurál, amelyek automatikusan kibocsátják a naplókat (JSON formátumban) a hosszú távú helyekre. Erről a lehetőségről az alábbi részben olvashat bővebben. 
 
-A. log fájlok létrehozásához állítsa a (z) @no__t – 0 paramétert a kikapcsolt értékre. A kikapcsolás. a naplófájl létrehozása ajánlott, ha Azure Monitor diagnosztikai beállításokat használ. Ez a konfiguráció csökkenti a további naplózás teljesítményére gyakorolt hatást.
+A. log fájlok létrehozásához állítsa a (z) paramétert `logging_collector` kikapcsolva értékre. A kikapcsolás. a naplófájl létrehozása ajánlott, ha Azure Monitor diagnosztikai beállításokat használ. Ez a konfiguráció csökkenti a további naplózás teljesítményére gyakorolt hatást.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 A Azure Database for PostgreSQL Azure Monitor diagnosztikai beállításokkal van integrálva. A diagnosztikai beállítások lehetővé teszik, hogy JSON formátumban küldje el a postgres-naplókat, hogy Azure Monitor naplókat az elemzéshez és a riasztásokhoz, Event Hubs a folyamatos átvitelhez és az Azure Storage-hoz az archiváláshoz. 
@@ -82,12 +82,13 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-A munkaterületen található összes postgres-kiszolgáló összes hibájának keresése az elmúlt 6 órában
+Az összes nem localhost csatlakozási kísérlet keresése
 ```
 AzureDiagnostics
-| where errorLevel_s == "error" and category == "PostgreSQLogs"
-| where TimeGenerated > ago(6h)
+| where Message contains "connection received" and Message !contains "host=127.0.0.1"
+| where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
+A fenti lekérdezés a munkaterület összes postgres-kiszolgálójának utolsó 6 órájában megjeleníti az eredményeket.
 
 ### <a name="log-format"></a>Napló formátuma
 
@@ -98,10 +99,10 @@ A következő táblázat a **PostgreSQLLogs** típusának mezőit ismerteti. A k
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
-| Type (Típus) | A napló típusa. Mindig @no__t – 0 |
+| Type (Típus) | A napló típusa. Mindig `AzureDiagnostics` |
 | SubscriptionId | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | ResourceGroup | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
+| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Erőforrás URI-ja |
 | Erőforrás | A kiszolgáló neve |

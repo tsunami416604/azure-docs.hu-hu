@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: a8b380355d7eee6b79bff01d29160fdd3b42800d
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40e556b5d0fe22629eeca9a088d10ea5fc9b95ac
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285816"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965503"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Speciális adatbiztonság a Azure SQL Database
 
@@ -26,7 +26,7 @@ A speciális adatbiztonság a speciális SQL-alapú biztonsági képességek egy
 
 A speciális adatbiztonság (ADS) fejlett SQL biztonsági képességeket biztosít, beleértve az adatfelderítési & besorolást, a sebezhetőségi felmérést és az összetett veszélyforrások elleni védelmet.
 
-- Az [adatfelderítési & besorolása](sql-database-data-discovery-and-classification.md) (jelenleg előzetes verzióban érhető el) olyan képességeket biztosít Azure SQL Database számára, amelyek a bizalmas adatoknak az adatbázisokban való felderítéséhez, besorolásához, címkézéséhez &. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
+- Az [adatfelderítési & besorolása](sql-database-data-discovery-and-classification.md) Azure SQL Database számára beépített képességeket biztosít az adatbázisok bizalmas adatainak észleléséhez, besorolásához, címkézéséhez &. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
 - A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
 - A komplex [veszélyforrások elleni védelem](sql-database-threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázis eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A komplex veszélyforrások elleni védelemre vonatkozó riasztások a gyanús tevékenységek részleteit tartalmazzák, és a fenyegetés kivizsgálásával és enyhítésével kapcsolatos teendőket javasolnak.
 

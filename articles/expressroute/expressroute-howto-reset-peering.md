@@ -1,37 +1,37 @@
 ---
-title: 'Új kapcsolatcsoport – társviszony-létesítés ExpressRoute:  Azure | Microsoft Docs'
-description: Hogyan letiltása és engedélyezése az ExpressRoute-kapcsolatcsoport társviszony.
+title: 'Áramkör-társítás alaphelyzetbe állítása – ExpressRoute: Azure | Microsoft Docs'
+description: ExpressRoute-áramköri kapcsolatok letiltása és engedélyezése.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 10/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 841c68b43e7f31693863268c3a7b2bd544c5e7ae
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366300"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965348"
 ---
-# <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-kapcsolatcsoport társviszony alaphelyzetbe állítása
+# <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-áramköri társítások alaphelyzetbe állítása
 
-Ez a cikk bemutatja, hogyan letiltása és engedélyezése a PowerShell használatával egy ExpressRoute-kapcsolatcsoport társviszony-létesítéseket. Ha letilt egy társviszony-létesítés, a BGP-munkamenetben az elsődleges kapcsolat és az ExpressRoute-kapcsolatcsoport másodlagos kapcsolati is leáll. Megszakad a kapcsolat a Microsoft-társviszony segítségével. Ha engedélyezi a társviszonyt, a BGP-munkamenetben az elsődleges kapcsolat és az ExpressRoute-kapcsolatcsoport másodlagos kapcsolati kerül. Akkor lesz között visszaáll a kapcsolat a Microsoft-társviszony segítségével. Engedélyezze, és tiltsa le a Microsoft-Peering és az Azure privát társviszony-létesítés az ExpressRoute-kapcsolatcsoport egymástól függetlenül. Amikor először konfigurálja a az ExpressRoute-kapcsolatcsoport társviszony-létesítések, a társviszony-létesítések alapértelmezés szerint engedélyezve vannak.
+Ez a cikk bemutatja, hogyan tilthatja le és engedélyezheti egy ExpressRoute-áramkör társítását a PowerShell használatával. Ha letilt egy társítást, akkor a BGP-munkamenet mind az elsődleges, mind a ExpressRoute áramkör másodlagos kapcsolata le lesz állítva. Ezzel a kapcsolattal elveszti a kapcsolatot a Microsofttal. Ha engedélyezi a társítást, akkor a BGP-munkamenet az elsődleges kapcsolaton és a ExpressRoute áramkör másodlagos kapcsolatán is megjelenik. Ezzel a kapcsolattal visszanyerheti a kapcsolatot a Microsofttal. A Microsoft-és az Azure-beli privát ExpressRoute egymástól függetlenül engedélyezheti és tilthatja le. Amikor először konfigurálja a társításokat a ExpressRoute-áramkörön, a rendszer alapértelmezés szerint engedélyezi a társításokat.
 
-Van néhány olyan forgatókönyvek, ahol, hasznos lehet az ExpressRoute-társviszonyok alaphelyzetbe állítása.
-* Tesztelje a katasztrófa utáni helyreállítás megtervezéséhez és implementációjához. Ha például két ExpressRoute-kapcsolatcsoporttal rendelkezik. Egy kapcsolatcsoport társviszony-létesítések letilthatja, és az egyéb kapcsolatcsoporthoz feladatátvételét a hálózati forgalom kényszerített.
-* Kétirányú továbbítás észlelése (BFD) az Azure privát társviszony-létesítés, az ExpressRoute-kapcsolatcsoport engedélyezése. BFD alapértelmezés szerint engedélyezve van, ha az ExpressRoute-kapcsolatcsoport 2018. augusztus 1. után készült. Ha a kapcsolatcsoport, amely előtt lett létrehozva, BFD nem volt engedélyezve. A társviszony-létesítés letiltása és újbóli engedélyezésére, BFD engedélyezheti. Megjegyzendő, hogy BFD támogatott az Azure privát társviszony-létesítés csak.
+Van néhány olyan forgatókönyv, ahol hasznos lehet a ExpressRoute-társítások alaphelyzetbe állítása.
+* Tesztelje a vész-helyreállítási tervét és megvalósítását. Tegyük fel, hogy két ExpressRoute-áramkörrel rendelkezik. Letilthatja egy áramkör társításait, és kényszerítheti a hálózati forgalmat, hogy átadja a feladatátvételt a másik áramkörnek.
+* Engedélyezze a kétirányú továbbítási észlelést (BFD) a ExpressRoute-áramkör Azure-beli privát vagy Microsoft-hálózatán. A BFD alapértelmezés szerint engedélyezve van az Azure-beli privát kapcsolatok esetében, ha a ExpressRoute-áramkört a 1 2018-es és a Microsoft-partneri kapcsolat alapján hozza létre, ha az ExpressRoute-áramkört október 1 2019 után hozták létre. Ha az áramkört korábban már létrehozták, a BFD nem volt engedélyezve. A BFD engedélyezéséhez tiltsa le a társítást, és engedélyezze újra. 
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="reset-a-peering"></a>Visszaállítása egy társviszony-létesítés
+## <a name="reset-a-peering"></a>Társítás alaphelyzetbe állítása
 
-1. Ha Ön helyileg futtatja a Powershellt, nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
+1. Ha helyileg futtatja a PowerShellt, nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és kapcsolódjon a fiókjához. A következő példa segít a kapcsolódásban:
 
    ```azurepowershell
    Connect-AzAccount
@@ -46,12 +46,12 @@ Van néhány olyan forgatókönyvek, ahol, hasznos lehet az ExpressRoute-társvi
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-4. Futtassa az alábbi parancsokat az ExpressRoute-kapcsolatcsoport lekéréséhez.
+4. Futtassa az alábbi parancsokat a ExpressRoute áramkör beolvasásához.
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. Azonosítsa a társviszonyt szeretne engedélyezése vagy letiltása. *Társviszony-Létesítéseket* egy tömb. A következő példában a [0] Társviszonyok Azure privát társviszony-létesítés és a Microsoft-társviszony-Létesítéseket [1] Peering.
+5. Azonosítsa a letiltani vagy engedélyezni kívánt társítást. A *társak* tömb. A következő példában a [0] társak az Azure privát társ-és társai [1] Microsoft-társak.
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -134,15 +134,15 @@ Van néhány olyan forgatókönyvek, ahol, hasznos lehet az ExpressRoute-társvi
    AllowClassicOperations           : False
    GatewayManagerEtag               :
    ```
-6. Futtassa az alábbi parancsokat a társviszony állapotának módosítása.
+6. Futtassa a következő parancsokat a társítás állapotának módosításához.
 
    ```azurepowershell-interactive
    $ckt.Peerings[0].State = "Disabled"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
-   A társviszony-létesítés beállított állapotban kell lennie. 
+   A társításnak beállított állapotban kell lennie. 
 
-## <a name="next-steps"></a>További lépések
-Ha egy ExpressRoute-probléma megoldásához segítségre van szüksége, tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>Következő lépések
+Ha segítségre van szüksége egy ExpressRoute-probléma elhárításához, tekintse meg a következő cikkeket:
 * [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
 * [A hálózati teljesítmény hibaelhárítása](expressroute-troubleshooting-network-performance.md)

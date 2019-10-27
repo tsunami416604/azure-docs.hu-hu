@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8ec05db9bf372f31b6c3cfadf1eda75ba8f7d2b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756058"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965191"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -580,13 +580,13 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure Machine Learning adat-előkészítési SDK v 1.1.8
 
 + **Új funkciók**
- + A adatfolyam objektumok mostantól megadhatók, és rekordokat hozhatnak létre. Lásd: `Dataflow.to_record_iterator`dokumentációja.
+  + A adatfolyam objektumok mostantól megadhatók, és rekordokat hozhatnak létre. Lásd: `Dataflow.to_record_iterator`dokumentációja.
 
 + **Hibajavítások és javítások**
- + Növelte a Adatelőkészítés SDK megbízhatóságát.
- + A pandák DataFrames jobb kezelését a nem karakterlánc típusú oszlop indexekkel.
- + Az adatkészletek `to_pandas_dataframe` teljesítményének javítása.
- + Kijavítva egy olyan hibát, amelyben az adathalmazok Spark-végrehajtása nem sikerült, ha több csomópontos környezetben futnak.
+  + Növelte a Adatelőkészítés SDK megbízhatóságát.
+  + A pandák DataFrames jobb kezelését a nem karakterlánc típusú oszlop indexekkel.
+  + Az adatkészletek `to_pandas_dataframe` teljesítményének javítása.
+  + Kijavítva egy olyan hibát, amelyben az adathalmazok Spark-végrehajtása nem sikerült, ha több csomópontos környezetben futnak.
 
 ## <a name="2019-07-01"></a>2019-07-01
 
