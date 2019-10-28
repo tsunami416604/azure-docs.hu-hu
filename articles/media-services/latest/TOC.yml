@@ -5,6 +5,7 @@
     - name: A Media Services ismertetése
       href: media-services-overview.md
     - name: Újdonságok a Media Servicesben
+      displayName: release notes
       href: release-notes.md
 - name: Oktatóanyagok
   expanded: true

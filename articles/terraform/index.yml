@@ -4,18 +4,17 @@ summary: Útmutató a Terraform használatához virtuális gépek és egyéb inf
 metadata:
   title: Terraform az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
   description: Útmutató a Terraform használatához virtuális gépek és egyéb infrastruktúra megbízható kiépítéséhez az Azure-ban.
-  services: azure
   ms.service: terraform
-  ms.topic: landing-page
   author: TomArcherMsft
   ms.author: tarcher
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 35391f886d473b91ab99d27bff64d64903ba0545
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.topic: landing-page
+  ms.date: 10/26/2019
+  ms.openlocfilehash: dbc4ed58b32312023b3248662357777d8567fff9
+  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173532"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72969506"
 landingContent:
 - title: Az Azure-on futtatott Terraform ismertetése
   linkLists:
@@ -34,7 +33,7 @@ landingContent:
     - text: A Terraform telepítése és konfigurálása
       url: /azure/virtual-machines/linux/terraform-install-configure?/azure/terraform/toc.json&bc=/azure/bread/toc.json
     - text: Terraform-konfiguráció létrehozása Azure-hoz
-      url: terrafom-quickstart.md
+      url: terraform-create-configuration.md
     - text: A Visual Studio Code Terraform bővítményének telepítése
       url: terraform-vscode-extension.md
     - text: Alapszintű Terraform-sablon létrehozása a Yeoman használatával
@@ -58,7 +57,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
-      url: terraform-vm-msi.md
+      url: terraform-vm-managed-identities-for-azure-resources.md
     - text: Virtuálisgép-fürt létrehozása Terraform-modulokkal
       url: terraform-create-vm-cluster-module.md
     - text: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
