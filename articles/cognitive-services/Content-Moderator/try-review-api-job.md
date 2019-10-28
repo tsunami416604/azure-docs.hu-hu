@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 4eded22d5f7a8f19f286f9e90185d695b4c28fc6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755282"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935941"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Moderálási feladatok definiálása és használata (REST)
 
@@ -28,7 +28,7 @@ A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderál�
 
 ## <a name="create-a-job"></a>Feladat létrehozása
 
-A moderálási feladatok létrehozásához nyissa meg a [feladathoz](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) tartozó API-referenciát, és válassza ki a kulcs régiójához tartozó gombot (ezt a végpont URL-címében találja a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) **hitelesítő adatok** lapján). Ezzel elindítja az API-konzolt, ahol könnyedén hozhat létre és futtathat REST API hívásokat.
+A moderációs feladatok létrehozásához nyissa meg az API [-hivatkozás létrehozása](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) lapot, és válassza ki az előfizetési régióhoz tartozó gombot (ezt a végpont URL-címében találja a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) **hitelesítő adatok** lapján). Ezzel elindítja az API-konzolt, ahol könnyedén hozhat létre és futtathat REST API hívásokat.
 
 ![Feladatok – oldal régiójának kiválasztása](images/test-drive-job-1.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Mérsékelt Facebook-tartalom – Content Moderator'
+title: 'Oktatóanyag: mérsékelt Facebook-tartalom – Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható a gépi tanuláson alapuló Content Moderator a Facebook-bejegyzések és-megjegyzések moderálásának megkönnyítésére.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564935"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936010"
 ---
-# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: Közepes méretű Facebook-bejegyzések és-parancsok az Azure Content Moderator
+# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Content Moderatort a hozzászólások és megjegyzések moderálásához egy Facebook-oldalon. A Facebook elküldi a látogatók által közzétett tartalmat a Content Moderator szolgáltatásnak. Ezután a Content Moderator-munkafolyamatok közzéteszik a tartalmat, vagy a felülvizsgálati eszközön hozhatnak létre felülvizsgálatokat a tartalom pontszámai és a küszöbértékek függvényében. Ennek a forgatókönyvnek a működéséhez tekintse meg a [Build 2017 bemutató videóját](https://channel9.msdn.com/Events/Build/2017/T6033) .
 
@@ -44,11 +44,11 @@ Ez az ábra a forgatókönyv egyes összetevőit szemlélteti:
 
 ## <a name="create-a-review-team"></a>Felülvizsgálati csapat létrehozása
 
-Tekintse át a [Content moderator kipróbálása a webes](quick-start.md) útmutatóban című témakört, amely útmutatást nyújt a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) regisztrálásához és egy felülvizsgálati csapat létrehozásához. Jegyezze fel a **csoport azonosító** értékét a hitelesítő **adatok** lapon.
+Tekintse át a [Content moderator kipróbálása a webes](quick-start.md) útmutatóban című témakört, amely útmutatást nyújt a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) regisztrálásához és egy felülvizsgálati csapat létrehozásához. Jegyezze fel a **csoport azonosító** értékét a **hitelesítő adatok** lapon.
 
 ## <a name="configure-image-moderation-workflow"></a>Képek moderálási munkafolyamatának konfigurálása
 
-Egyéni rendszerkép-munkafolyamatok létrehozásához tekintse [meg a Definiálás, tesztelés és használat](review-tool-user-guide/workflows.md) munkafolyamatok útmutatót. A Content Moderator ezt a munkafolyamatot fogja használni a képek Facebookban való automatikus ellenőrzéséhez és a felülvizsgálati eszköz elküldéséhez. Jegyezze fel a munkafolyamat **nevét**.
+Egyéni rendszerkép-munkafolyamatok létrehozásához tekintse [meg a Definiálás, tesztelés és használat munkafolyamatok](review-tool-user-guide/workflows.md) útmutatót. A Content Moderator ezt a munkafolyamatot fogja használni a képek Facebookban való automatikus ellenőrzéséhez és a felülvizsgálati eszköz elküldéséhez. Jegyezze fel a munkafolyamat **nevét**.
 
 ## <a name="configure-text-moderation-workflow"></a>Szöveges moderálási munkafolyamat konfigurálása
 
@@ -68,11 +68,11 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 1. Nyissa meg az újonnan létrehozott függvényalkalmazás.
 1. Az alkalmazáson belül lépjen a **platform szolgáltatások** lapra, és válassza a **konfiguráció**lehetőséget. A következő lap **Alkalmazásbeállítások** szakaszában válassza az **új Alkalmazásbeállítás** lehetőséget a következő kulcs/érték párok hozzáadásához:
     
-    | Alkalmazás-beállítás neve | value   | 
+    | Alkalmazás-beállítás neve | érték   | 
     | -------------------- |-------------|
     | cm:TeamId   | A Content Moderator csapatazonosítójának beállítása  | 
     | cm:SubscriptionKey | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) |
-    | cm:Region | A Content Moderator-régió neve szóközök nélkül. |
+    | cm:Region | A Content Moderator-régió neve szóközök nélkül. Ez az Azure-erőforrás **Áttekintés** lapjának **hely** mezőjében található.|
     | cm:ImageWorkflow | A képek esetében futtatandó munkafolyamat neve |
     | cm:TextWorkflow | A szövegek esetében futtatandó munkafolyamat neve |
     | cm:CallbackEndpoint | Az útmutatóban később létrehozandó CMListener-függvényalkalmazás URL-címe |
@@ -81,13 +81,13 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
     Kattintson a **Save (Mentés** ) gombra az oldal tetején.
 
-1. Lépjen vissza a **platform szolgáltatásai** lapra. A bal oldali ablaktábla  **gombjánakhasználatávalhozzalétreazújfüggvényablaktáblát+** . A létrehozandó függvény a Facebooktól érkező eseményeket fogja kapni.
+1. Lépjen vissza a **platform szolgáltatásai** lapra. a bal oldali ablaktábla **+** gombjával hozza létre az **új függvény** ablaktáblát. A létrehozandó függvény a Facebooktól érkező eseményeket fogja kapni.
 
     ![Azure Functions panel a funkció hozzáadása gomb kiemelve.](images/new-function.png)
 
-    1. Kattintson a **http**-triggert tartalmazó csempére.
+    1. Kattintson a **http-triggert**tartalmazó csempére.
     1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
-    1. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a  **Create** (Létrehozás) gombra.
     1. Cserélje le a **Run. CSX** tartalmát a **FbListener/Run. CSX** tartalmára.
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
@@ -108,8 +108,8 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
     1. Kattintson a **My Apps** (Saját alkalmazások) elemre.
     1. Adjon hozzá egy új alkalmazást.
     1. nevezze el valamit
-    1. Webhookok kiválasztása **– > beállítása**
-    1. Válassza az **oldal** lehetőséget a legördülő menüből, és válassza az **előfizetés erre** az objektumra lehetőséget.
+    1. **Webhookok kiválasztása – > beállítása**
+    1. Válassza az **oldal** lehetőséget a legördülő menüből, és válassza az **előfizetés erre az objektumra** lehetőséget.
     1. Visszahívási URL-címként adja meg **FBListener URL**-címét, valamint a **Függvényalkalmazás beállításai** területen konfigurált **Ellenőrzési jogkivonatot**.
     1. Ha a feliratkozás megtörtént, görgessen le a hírcsatornához, és kattintson a **Feliratkozás** gombra.
     1. Kattintson a **hírcsatorna** -sor **tesztelés** gombjára, hogy tesztüzenet küldjön a FBListener Azure-függvénynek, majd nyomja meg a **Küldés a saját kiszolgálóra** gombot. Ekkor meg kell jelennie a FBListener érkező kérésnek.
@@ -144,7 +144,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json) (Postman-környezet)       
     3. Frissítse a következő környezeti változókat:
     
-        | Kulcs | Value   | 
+        | Jelmagyarázat | Value (Díj)   | 
         | -------------------- |-------------|
         | appId   | Ide szúrja be a Facebook-alkalmazás azonosítóját  | 
         | appSecret | Ide szúrja be a Facebook-alkalmazás titkos kódját | 
@@ -157,7 +157,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
 A megoldás a Facebook-oldalon közzétett összes képet és szöveget elküldi a Content Moderatornek. Ezután meghívja a korábban konfigurált munkafolyamatokat. A munkafolyamatokban definiált feltételeknek nem megfelelő tartalom a felülvizsgálati eszközön belüli felülvizsgálatokra lesz átadva. A tartalom többi része automatikusan közzé lesz téve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan programot állít be, amely a termékek rendszerképeinek elemzésére szolgál, és lehetővé teszi a felülvizsgálati csapat számára, hogy megalapozott döntéseket hozhasson a tartalom moderálásával kapcsolatban. Következő lépésként tekintse meg a képek moderálásának részleteit.
 
