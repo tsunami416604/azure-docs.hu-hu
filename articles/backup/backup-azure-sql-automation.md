@@ -1,5 +1,5 @@
 ---
-title: SQL-adatbázisok biztonsági mentése és visszaállítása Azure-beli virtuális gépeken PowerShell-Azure Backup
+title: SQL-adatbázis az Azure-beli virtuális gép biztonsági mentésében & Visszaállítás a PowerShell használatával – Azure Backup
 description: Az SQL-adatbázisok biztonsági mentése és visszaállítása Azure-beli virtuális gépeken Azure Backup és PowerShell használatával.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249055"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969098"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
 Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy Azure-beli virtuális gépen található SQL-adatbázis biztonsági mentésére és helyreállítására [Azure Backup](backup-overview.md) Recovery Services-tároló használatával.
 
@@ -471,7 +471,7 @@ Ha a kimenet elvész, vagy ha a megfelelő AZONOSÍTÓJÚ feladatot szeretné be
 
 ### <a name="change-policy-for-backup-items"></a>Biztonsági mentési elemek szabályzatának módosítása
 
-A felhasználó módosíthatja a meglévő szabályzatot, vagy megváltoztathatja a biztonsági másolatban szereplő elem házirendjét a Házirend1 és a Policy2 között. Ha egy biztonsági másolati elemhez szeretne házirendeket váltani, egyszerűen olvassa le a megfelelő házirendet, és készítsen biztonsági másolatot az elemről, és használja az [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsot a Backup elem paraméterként.
+A felhasználó módosíthatja a meglévő szabályzatot, vagy megváltoztathatja a biztonsági másolatban szereplő elem házirendjét a Házirend1 és a Policy2 között. Ha egy biztonsági másolati elemhez szeretne házirendeket váltani, olvassa be a vonatkozó házirendet, és készítsen biztonsági másolatot az elemről, és használja az [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsot a biztonsági mentési elemmel paraméterként.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

@@ -3,7 +3,7 @@ title: A szabályozás figyelése és csökkentése a Azure Time Series Insights
 description: Ez a cikk bemutatja, hogyan figyelheti, diagnosztizálhatja és csökkentheti a késést és a szabályozást okozó teljesítménnyel kapcsolatos problémákat a Azure Time Series Insightsban.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332971"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990149"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
 
@@ -44,15 +44,15 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
 
 1. A Azure Portal válassza a **riasztások**elemet.
 
-   [@no__t – 1Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [Riasztások![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
 
-   [@no__t – 1Add riasztás](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![riasztás hozzáadása](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Ezután konfigurálja a jel logikájának pontos feltételeit.
 
-   [@no__t – 1Configure jel logikája](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [![a jel logikájának konfigurálása](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Innentől kezdve a következő feltételek valamelyikével konfigurálhatja a riasztásokat:
 
@@ -62,15 +62,15 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
    |**A bejövő forgalom érvénytelen üzeneteket kapott**     | Az összes Azure-Event Hubs vagy az Azure IoT Hub-eseményforrás által beolvasott érvénytelen üzenetek száma.      |
    |**Bejövő fogadott üzenetek**   | Az összes Event Hubs vagy IoT hub-eseményforrás által olvasott üzenetek száma.        |
    |**Bejövő forgalomban tárolt bájtok**     | A lekérdezéshez tárolt és elérhető események teljes mérete. A méret kiszámítása csak a tulajdonság értékén történik.        |
-   |**Beáramló tárolt események** @no__t – 1 |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
+   |**Beáramló tárolt események**     |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
    |**Bejövő fogadott üzenet Időeltolódása**    |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
-   |**Bejövő fogadott üzenetek száma – késés** @no__t – 1|  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
+   |**Bejövő fogadott üzenetek számának késése**    |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
 
    Válassza a **Done** (Kész) lehetőséget.
 
 1. A kívánt jel logikájának konfigurálása után vizuálisan tekintse át a kiválasztott riasztási szabályt.
 
-   [@no__t – 1Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [Bejövő![](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Szabályozás és bejövő forgalom kezelése
 

@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése az Azure Backup szolgáltatás használatával
+title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése az Azure Backup szolgáltatással
 description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuális gépek biztonsági mentéseit a Azure Backup szolgáltatás használatával.
 ms.reviewer: sogup
 author: dcurwin
@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029256"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969234"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
 Ez a cikk azt ismerteti, hogyan kezelhetők az Azure-beli virtuális gépek (VM-EK) a [Azure Backup szolgáltatással](backup-overview.md)készített biztonsági mentéssel. A cikk a tároló irányítópultján található biztonsági mentési információkat is összegzi.
-
 
 A Azure Portal a Recovery Services-tároló irányítópultja hozzáférést biztosít a tár adataihoz, beleértve a következőket:
 
@@ -35,7 +34,7 @@ A biztonsági mentéseket az irányítópult használatával és az egyes virtu�
 
 Virtuális gépek megtekintése a tároló irányítópultján:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A központi menüben válassza a **Tallózás**lehetőséget. Az erőforrások listájába írja be a következőt: **Recovery Services**. A beíráskor a lista a bemenet alapján szűrve lesz. Válassza ki **Recovery Services**tárolókat.
 
     ![Recovery Services-tároló létrehozása](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -61,7 +60,7 @@ Virtuális gépek megtekintése a tároló irányítópultján:
 
 Biztonsági mentési szabályzat kezelése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
 2. A **biztonsági mentési elemek** csempén válassza az **Azure Virtual Machines**elemet.
 
     ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -77,11 +76,12 @@ Biztonsági mentési szabályzat kezelése:
      ![Biztonsági mentési szabályzat kiválasztása](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
 ## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
+
 A virtuális gép igény szerinti biztonsági mentését a védelem beállítása után is futtathatja. Tartsa szem előtt az alábbi adatokat:
 
-- Ha a kezdeti biztonsági mentés függőben van, az igény szerinti biztonsági mentés a virtuális gép teljes másolatát hozza létre a Recovery Services-tárolóban.
-- Ha a kezdeti biztonsági mentés elkészült, az igény szerinti biztonsági mentés csak az előző pillanatképből származó módosításokat küldi el a Recovery Services-tárolónak. Ez a későbbi biztonsági másolatok mindig növekményes.
-- Az igény szerinti biztonsági mentés megőrzési tartománya a biztonsági mentés indításakor megadott megőrzési érték.
+* Ha a kezdeti biztonsági mentés függőben van, az igény szerinti biztonsági mentés a virtuális gép teljes másolatát hozza létre a Recovery Services-tárolóban.
+* Ha a kezdeti biztonsági mentés elkészült, az igény szerinti biztonsági mentés csak az előző pillanatképből származó módosításokat küldi el a Recovery Services-tárolónak. Ez a későbbi biztonsági másolatok mindig növekményes.
+* Az igény szerinti biztonsági mentés megőrzési tartománya a biztonsági mentés indításakor megadott megőrzési érték.
 
 Igény szerinti biztonsági mentés elindítása:
 
@@ -147,32 +147,32 @@ A virtuális gép védelmének folytatása:
 
 A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölheti:
 
-- A tároló elem irányítópultján válassza a biztonsági mentés leállítása lehetőséget, és kövesse a [védelem leállítása és a biztonsági mentési adatok törlése](#stop-protection-and-delete-backup-data) beállítás utasításait.
+* A tároló elem irányítópultján válassza a biztonsági mentés leállítása lehetőséget, és kövesse a [védelem leállítása és a biztonsági mentési adatok törlése](#stop-protection-and-delete-backup-data) beállítás utasításait.
 
   ![Válassza a biztonsági mentés leállítása lehetőséget.](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
-- A tároló elem irányítópultján válassza a biztonsági másolatok adatainak törlése lehetőséget. Ez a beállítás akkor engedélyezett, ha a virtuálisgép-védelem leállításakor a [védelem leállítását és a biztonsági mentési adat megőrzése](#stop-protection-and-retain-backup-data) beállítást választotta
+* A tároló elem irányítópultján válassza a biztonsági másolatok adatainak törlése lehetőséget. Ez a beállítás akkor engedélyezett, ha a virtuálisgép-védelem leállításakor a [védelem leállítását és a biztonsági mentési adat megőrzése](#stop-protection-and-retain-backup-data) beállítást választotta
 
   ![Válassza a biztonsági mentés törlése lehetőséget.](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-  - A tároló [elem irányítópultján](#view-vms-on-the-dashboard)válassza a **biztonsági másolati elemek törlése**lehetőséget.
-  - Írja be a biztonsági mentési tétel nevét annak megerősítéséhez, hogy törölni kívánja a helyreállítási pontokat.
+  * A tároló [elem irányítópultján](#view-vms-on-the-dashboard)válassza a **biztonsági másolati elemek törlése**lehetőséget.
+  * Írja be a biztonsági mentési tétel nevét annak megerősítéséhez, hogy törölni kívánja a helyreállítási pontokat.
 
     ![Biztonsági mentési adatok törlése](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-  - Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
+  * Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
 
   > [!NOTE]
   > Ha törli a biztonsági mentési adatmennyiséget, az összes kapcsolódó helyreállítási pontot törli. A törlendő helyreállítási pontok nem választhatók ki.
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Olyan biztonsági mentési elem, amelyben az elsődleges adatforrás már nem létezik
 
-- Ha az Azure Backup szolgáltatáshoz konfigurált Azure-beli virtuális gépeket törölték vagy áthelyezik a védelem leállítása nélkül, akkor az ütemezett biztonsági mentési feladatok és az igény szerinti (ad-hoc) biztonsági mentési feladatok sikertelenek lesznek a hiba UserErrorVmNotFoundV2. A biztonsági mentés előzetes ellenőrzési művelete csak a sikertelen ad hoc biztonsági mentési feladatok esetében kritikusként jelenik meg (sikertelen ütemezett feladatok nem jelennek meg). 
-- Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam alapján törlődnek.
-- A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mert az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a következőképpen számítjuk fel: a biztonsági mentés díjszabása érvényes.
+* Ha az Azure Backup szolgáltatáshoz konfigurált Azure-beli virtuális gépeket törölték vagy áthelyezik a védelem leállítása nélkül, akkor az ütemezett biztonsági mentési feladatok és az igény szerinti (ad-hoc) biztonsági mentési feladatok sikertelenek lesznek a hiba UserErrorVmNotFoundV2. A biztonsági mentés előzetes ellenőrzési művelete csak a sikertelen ad hoc biztonsági mentési feladatok esetében kritikusként jelenik meg (sikertelen ütemezett feladatok nem jelennek meg).
+* Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam alapján törlődnek.
+* A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mert az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a következőképpen számítjuk fel: a biztonsági mentés díjszabása érvényes.
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
-- Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).
-- Ismerje meg, hogyan [figyelheti az Azure virtuális gépek biztonsági másolatait](backup-azure-monitor-vms.md).
+* Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
+* Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).
+* Ismerje meg, hogyan [figyelheti az Azure virtuális gépek biztonsági másolatait](backup-azure-monitor-vms.md).

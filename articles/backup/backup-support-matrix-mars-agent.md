@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Azure Recovery Services-(MARS-) ügynök támogatási mátrixa
+title: A Microsoft Azure Recovery Services-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 author: dcurwin
 ms.service: backup
@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 1559bb096baaa8f19718bf0c3bcd6b2dc767235b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210125"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968387"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -21,15 +21,16 @@ A [Azure Backup szolgáltatás](backup-overview.md) segítségével biztonsági 
 ## <a name="the-mars-agent"></a>A MARS-ügynök
 
 Azure Backup a MARS-ügynök használatával készít biztonsági másolatot a helyszíni gépekről és az Azure-beli virtuális gépekről az Azure-beli biztonsági mentési Recovery Services-tárolóba. A MARS-ügynök a következőket teheti:
+
 - A helyszíni Windows rendszerű gépeken futtathatók, így közvetlenül biztonsági mentést készíthetnek az Azure Backup Recovery Services-tárolójába.
 - Futtassa a Windows rendszerű virtuális gépeken, hogy közvetlenül a tárolóba lehessen biztonsági mentést készíteni.
 - Futtatás Microsoft Azure Backup-kiszolgálón (MABS) vagy a System Center Data Protection Manager (DPM) kiszolgálón. Ebben a forgatókönyvben a gépek és a számítási feladatok biztonsági mentést készítenek a MABS vagy a DPM-kiszolgálóra. A MARS-ügynök ezután biztonsági másolatot készít a kiszolgálóról egy Azure-tárolóba.
 
-A biztonsági mentési lehetőségek attól függnek, hogy hol van telepítve az ügynök. További információ: [Azure Backup architektúra a Mars-ügynök használatával](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). A MABS és a DPM biztonsági mentési architektúrával kapcsolatos információkért lásd: [biztonsági mentés DPM vagy MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Lásd még [](backup-support-matrix-mabs-dpm.md) a biztonsági mentési architektúra követelményeit is.
+A biztonsági mentési lehetőségek attól függnek, hogy hol van telepítve az ügynök. További információ: [Azure Backup architektúra a Mars-ügynök használatával](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). A MABS és a DPM biztonsági mentési architektúrával kapcsolatos információkért lásd: [biztonsági mentés DPM vagy MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Lásd még a biztonsági mentési architektúra [követelményeit](backup-support-matrix-mabs-dpm.md) is.
 
 **Telepítés** | **Részletek**
 --- | ---
-A legújabb MARS-ügynök letöltése | Az ügynök legújabb verzióját letöltheti a tárolóból, vagy [közvetlenül](https://aka.ms/azurebackup_agent)is letöltheti.
+A legújabb MARS-ügynök letöltése | Az ügynök legújabb verzióját letöltheti a tárolóból, vagy [közvetlenül is letöltheti](https://aka.ms/azurebackup_agent).
 Telepítés közvetlenül a gépen | A MARS-ügynököt közvetlenül egy helyszíni Windows Serverre vagy egy [támogatott operációs rendszert](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)futtató Windows rendszerű virtuális gépre is telepítheti.
 Telepítés biztonsági mentési kiszolgálóra | A DPM vagy a MABS Azure-ba való biztonsági mentésének beállításakor letöltheti és telepítheti a MARS-ügynököt a kiszolgálón. A biztonsági mentési kiszolgáló támogatási mátrixában az ügynököt a [támogatott operációs rendszerekre](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) is telepítheti.
 
@@ -37,17 +38,16 @@ Telepítés biztonsági mentési kiszolgálóra | A DPM vagy a MABS Azure-ba val
 > Alapértelmezés szerint a biztonsági mentésre engedélyezett Azure-beli virtuális gépekhez Azure Backup bővítmény telepítése szükséges. Ez a bővítmény biztonsági mentést készít a teljes virtuális gépről. A MARS-ügynököt telepítheti és futtathatja egy Azure-beli virtuális gépen a bővítmény mellett, ha a teljes virtuális gép helyett konkrét mappákról és fájlokról szeretne biztonsági mentést készíteni.
 > Ha egy Azure-beli virtuális gépen futtatja a MARS-ügynököt, a biztonsági mentést készít a virtuális gépen lévő ideiglenes tárolóban található fájlokról vagy mappákról. A biztonsági mentések sikertelenek, ha a fájlok vagy mappák törlődnek az ideiglenes tárolóból, vagy ha az ideiglenes tároló el lett távolítva.
 
-
 ## <a name="cache-folder-support"></a>Gyorsítótár-mappák támogatása
 
 Ha a MARS-ügynököt használja az adatok biztonsági mentésére, az ügynök pillanatképet készít az adatokról, és egy helyi gyorsítótár-mappában tárolja azt, mielőtt elküldi az adatokat az Azure-ba. A gyorsítótár (Scratch) mappája több követelményt is tartalmaz:
 
-**Cache** | **Részletek**
+**Gyorsítótár** | **Részletek**
 --- | ---
-Size |  A gyorsítótár mappában lévő szabad területnek legalább 5 – 10%-ának kell lennie a biztonsági mentési adatai teljes méretének.
-Location | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.
+Méret |  A gyorsítótár mappában lévő szabad területnek legalább 5 – 10%-ának kell lennie a biztonsági mentési adatai teljes méretének.
+Földrajzi egység | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.
 Mappa | A gyorsítótár mappájának titkosítása deduplikált köteten, vagy egy tömörített mappában, amely ritka, vagy újraelemzési ponttal rendelkezik.
-Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési`net stop bengine`motort (), és átmásolja a gyorsítótár mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation**) elemre az új helyre, és indítsa újra a motort.
+Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési motort (`net stop bengine`), és átmásolja a gyorsítótár-mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation**) elemre az új helyre, és indítsa újra a motort.
 
 ## <a name="networking-and-access-support"></a>Hálózatkezelés és hozzáférés támogatása
 
@@ -58,8 +58,8 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 - http://www.msftncsi.com/ncsi.txt
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *.MicrosoftOnline.com
-- *.Windows.net
+- *. MicrosoftOnline.com
+- *. Windows.net
 
 ### <a name="throttling-support"></a>Szabályozás támogatása
 
@@ -78,16 +78,15 @@ Windows 10 (Enterprise, Pro, Home) | Igen | Nem |  A szoftver/modul követelmén
 Windows 8,1 (Enterprise, Pro)| Igen |Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 8 (Enterprise, Pro) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
-Windows Server 2016 (Standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Igen | Igen | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Igen | Nem | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
+Windows Server 2016 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
+Windows Server 2008 R2 (standard, Enterprise, Datacenter, Foundation) | Igen | Igen | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
+Windows Server 2008 SP2 (standard, Datacenter, Foundation) | Igen | Nem | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 (standard, munkacsoport) | Igen | Nem | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 
 További információ: [támogatott MABS és DPM operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
-
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok
 
@@ -95,38 +94,37 @@ Azure Backup korlátozza a biztonsági mentésre használható fájl vagy mappa 
 
 **Operációs rendszer** | **Méretkorlát**
 --- | ---
-Windows Server 2012 vagy újabb |  54 400 GB
-Windows Server 2008 R2 SP1 |    1 700 GB
-Windows Server 2008 SP2 | 1 700 GB
-Windows 8 vagy újabb  | 54 400 GB
-Windows 7   | 1 700 GB
-
+Windows Server 2012 vagy újabb |54 400 GB
+Windows Server 2008 R2 SP1 |1 700 GB
+Windows Server 2008 SP2| 1 700 GB
+Windows 8 vagy újabb| 54 400 GB
+Windows 7 rendszeren| 1 700 GB
 
 ## <a name="supported-file-types-for-backup"></a>A biztonsági mentéshez támogatott fájltípusok
 
 **Típus** | **Támogatás**
 --- | ---
-Titkosítva   | Támogatott.
+Titkosított| Támogatott.
 Tömörített | Támogatott.
 Ritka | Támogatott.
-Tömörített és ritka | Támogatott.
-Rögzített hivatkozások  | Nem támogatott. Kimarad.
-Újraelemzési pont   | Nem támogatott. Kimarad.
-Titkosított és ritka |  Nem támogatott. Kimarad.
-Tömörített Stream   | Nem támogatott. Kimarad.
-Ritka adatfolyam   | Nem támogatott. Kimarad.
-OneDrive (a szinkronizált fájlok ritka adatfolyamok)  | Nem támogatott.
+Tömörített és ritka |Támogatott.
+Rögzített hivatkozások| Nem támogatott. Kimarad.
+Újraelemzési pont| Nem támogatott. Kimarad.
+Titkosított és ritka |Nem támogatott. Kimarad.
+Tömörített Stream| Nem támogatott. Kimarad.
+Ritka adatfolyam| Nem támogatott. Kimarad.
+OneDrive (a szinkronizált fájlok ritka adatfolyamok)| Nem támogatott.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>A biztonsági mentéshez támogatott meghajtók vagy kötetek
 
 **Meghajtó/kötet** | **Támogatás** | **Részletek**
 --- | --- | ---
-Írásvédett kötetek   | Nem támogatott | A kötet másolási árnyékmásolata szolgáltatás (VSS) csak akkor működik, ha a kötet írható.
-Offline kötetek | Nem támogatott |   A VSS csak akkor működik, ha a kötet online állapotban van.
-Hálózati megosztás   | Nem támogatott |   A kötetnek helyinek kell lennie a kiszolgálón.
-BitLocker által védett kötetek | Nem támogatott |   A biztonsági mentés megkezdése előtt a kötetet fel kell oldani.
-Fájlrendszer azonosítása  | Nem támogatott |   Csak az NTFS használata támogatott.
-Cserélhető adathordozó | Nem támogatott |   Az összes biztonságimásolat-tétel forrásának *rögzített* állapottal kell rendelkeznie.
+Írásvédett kötetek| Nem támogatott | A kötet másolási árnyékmásolata szolgáltatás (VSS) csak akkor működik, ha a kötet írható.
+Offline kötetek| Nem támogatott |A VSS csak akkor működik, ha a kötet online állapotban van.
+Hálózati megosztás| Nem támogatott |A kötetnek helyinek kell lennie a kiszolgálón.
+BitLocker által védett kötetek| Nem támogatott |A biztonsági mentés megkezdése előtt a kötetet fel kell oldani.
+Fájlrendszer azonosítása| Nem támogatott |Csak az NTFS használata támogatott.
+Cserélhető adathordozó| Nem támogatott |Az összes biztonságimásolat-tétel forrásának *rögzített* állapottal kell rendelkeznie.
 Deduplikált meghajtók | Támogatott | Azure Backup a deduplikált adatmennyiséget a normál adatértékre konvertálja. Optimalizálja, titkosítja, tárolja és elküldi az adatokat a tárolónak.
 
 ## <a name="support-for-initial-offline-backup"></a>A kezdeti offline biztonsági mentés támogatása
@@ -144,6 +142,7 @@ Azure Backup [azonnali visszaállítási](backup-instant-restore-capability.md) 
 
 A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági mentés visszaállítható a Windows 8 vagy újabb verzióra. A Windows 8 rendszert futtató számítógépekről azonban nem lehet visszaállítani a Windows 7 rendszert futtató számítógépeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 - További információ [a Mars-ügynököt használó biztonsági mentési architektúráról](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Ismerje meg, hogy mi támogatott [a Mars-ügynök MABS vagy DPM-kiszolgálón való futtatásakor](backup-support-matrix-mabs-dpm.md).

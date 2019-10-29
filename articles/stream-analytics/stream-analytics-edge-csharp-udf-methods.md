@@ -1,6 +1,6 @@
 ---
-title: .NET Standard függvények fejlesztése Azure Stream Analytics Edge-feladatokhoz
-description: Megtudhatja, hogyan fejleszthet .NET felhasználó által definiált függvényeket Azure Stream Analytics feladatokhoz a CodeBehind, egy meglévő csomag vagy egy helyi projekt használatával.
+title: .NET-es szabványos függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
+description: Útmutató c# felhasználó által definiált függvények írásához Stream Analytics feladatokhoz.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -10,16 +10,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: cdfe4d2ccc39385b4020f60905b12c4683b1758c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 835eeaa0036d824a65918102ab7a00c3cf236931
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935026"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988394"
 ---
-# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>.NET-szabványnak megfelelő, felhasználó által definiált függvények fejlesztése Azure Stream Analytics Edge-feladatokhoz (előzetes verzió)
+# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>.NET-es szabványos felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
 
-A Azure Stream Analytics SQL-szerű lekérdezési nyelvet kínál az adatstreamek közötti átalakítások és számítások végrehajtásához. Számos beépített függvény létezik, de bizonyos összetett forgatókönyvek további rugalmasságot igényelnek. A .NET Standard felhasználó által definiált függvények (UDF) használatával meghívhatja a saját függvényeit bármely .NET Standard nyelven (C#, F#stb.), hogy kiterjessze a stream Analytics lekérdezési nyelvet. A UDF lehetővé teszi összetett matematikai számítások végrehajtását, egyéni ML-modellek importálását a ML.NET használatával, és a hiányzó adatokhoz egyéni imputálási logikát használhat. A Stream Analytics-feladatokhoz használható UDF funkció jelenleg előzetes verzióban érhető el, így használata nem javasolt éles környezetekben.
+A Azure Stream Analytics SQL-szerű lekérdezési nyelvet kínál az adatstreamek közötti átalakítások és számítások végrehajtásához. Számos beépített függvény létezik, de bizonyos összetett forgatókönyvek további rugalmasságot igényelnek. A .NET Standard felhasználó által definiált függvények (UDF) használatával meghívhatja a saját függvényeit bármely .NET Standard nyelven (C#, F#stb.), hogy kiterjessze a stream Analytics lekérdezési nyelvet. A UDF lehetővé teszi összetett matematikai számítások végrehajtását, egyéni ML-modellek importálását a ML.NET használatával, és a hiányzó adatokhoz egyéni imputálási logikát használhat. Stream Analytics feladatok UDF-funkciója jelenleg előzetes verzióban érhető el, ezért nem használható éles környezetben.
 
 ## <a name="overview"></a>Áttekintés
 A Visual Studio Tools for Azure Stream Analytics megkönnyíti a UDF írását, a feladatok helyi tesztelését (még kapcsolat nélküli üzemmódban), és a Stream Analytics feladat közzétételét az Azure-ban. Miután közzétette az Azure-ban, üzembe helyezheti a feladatot, hogy IoT az eszközöket IoT Hub használatával.
@@ -65,7 +65,7 @@ Helyi projektre való hivatkozás:
 
 ### <a name="example"></a>Példa
 
-Ebben a példában a **UDFTest** egy C# **ASAEdgeUDFDemo** -projekt, amely az Azure stream Analytics Edge-projekt, amely a **UDFTest**-ra hivatkozik.
+Ebben a példában a **UDFTest** egy C# **ASAUDFDemo** -projekt, amely a **UDFTest**-ra hivatkozó Azure stream Analytics projekt.
 
 ![Azure Stream Analytics IoT Edge-projekt a Visual Studióban](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png)
 
@@ -73,7 +73,7 @@ Ebben a példában a **UDFTest** egy C# **ASAEdgeUDFDemo** -projekt, amely az Az
     
    ![Azure Stream Analytics IoT Edge-projekt létrehozása a Visual Studióban](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png)
 
-2. Adja hozzá a hivatkozást a C# projekthez az ASA Edge-projektben. Kattintson a jobb gombbal a hivatkozások csomópontra, majd válassza a hivatkozás hozzáadása parancsot.
+2. Adja hozzá a C# projektre mutató HIVATKOZÁST az ASA projektben. Kattintson a jobb gombbal a hivatkozások csomópontra, majd válassza a hivatkozás hozzáadása parancsot.
 
    ![Hivatkozás hozzáadása egy C# projekthez a Visual Studióban](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png)
 
@@ -97,7 +97,7 @@ Ebben a példában a **UDFTest** egy C# **ASAEdgeUDFDemo** -projekt, amely az Az
 
    ![C Sharp Function konfiguráció a Visual Studióban](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
 
-8. A C# függvény konfigurációjában válassza a **BEtöltés az ASA-projekthez** és a kapcsolódó szerelvény, osztály és metódus nevét a legördülő listából. Az Stream Analytics Edge-lekérdezés módszereire, típusaira és funkcióihoz való hivatkozáshoz az osztályokat *nyilvánosként* kell definiálni, és az objektumokat *statikus nyilvánosként*kell definiálni.
+8. A C# függvény konfigurációjában válassza a **BEtöltés az ASA-projekthez** és a kapcsolódó szerelvény, osztály és metódus nevét a legördülő listából. A Stream Analytics lekérdezés módszereire, típusaira és funkcióira vonatkozóan az osztályokat *nyilvánosként* kell definiálni, és az objektumokat *statikus nyilvánosként*kell definiálni.
 
    ![Stream Analytics C Sharp függvény konfigurálása](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
 
@@ -105,26 +105,25 @@ Ebben a példában a **UDFTest** egy C# **ASAEdgeUDFDemo** -projekt, amely az Az
 
 Bármilyen IDE-ban létrehozhat .NET Standard szintű UDF, és meghívhatja őket a Azure Stream Analytics-lekérdezésből. Először fordítsa le a kódot, és csomagolja ki a DLL-eket. A csomag formátuma `/UserCustomCode/CLR/*`. Ezután töltse fel `UserCustomCode.zip`t az Azure Storage-fiókjában található tároló gyökerébe.
 
-Miután feltöltötte az összeállítási zip-csomagokat az Azure Storage-fiókjába, használhatja Azure Stream Analytics lekérdezések funkcióit. Mindössze annyit kell tennie, hogy tartalmazza a tárolási adatokat az Stream Analytics Edge-feladatok konfigurációjában. Ezzel a beállítással helyileg nem tesztelheti a függvényt, mert a Visual Studio-eszközök nem töltik le a csomagot. A csomag elérési útját közvetlenül a szolgáltatásra kell elemezni. 
+Miután feltöltötte az összeállítási zip-csomagokat az Azure Storage-fiókjába, használhatja Azure Stream Analytics lekérdezések funkcióit. Mindössze annyit kell tennie, hogy tartalmazza a tárolási adatokat a Stream Analytics feladatok konfigurációjában. Ezzel a beállítással helyileg nem tesztelheti a függvényt, mert a Visual Studio-eszközök nem töltik le a csomagot. A csomag elérési útját közvetlenül a szolgáltatásra kell elemezni. 
 
 A szerelvény elérési útjának konfigurálásához a feladatok konfigurációs fájljában `JobConfig.json`:
 
 Bontsa ki a **Felhasználói kód konfigurációja** szakaszt, és töltse ki a konfigurációt az alábbi javasolt értékekkel:
 
- |**Beállítás**  |**Ajánlott érték**  |
- |---------|---------|
- |Szerelvény forrása  | Meglévő szerelvény-csomagok a felhőből    |
- |Erőforrás  |  Válassza ki az adatokat az aktuális fiókból   |
- |Előfizetés  |  Válassza ki az előfizetését.   |
- |Tárfiók  |  Válassza ki a tárfiókját.   |
- |Tároló  |  Válassza ki a tárfiókjában létrehozott tárolót.   |
-
-![Azure Stream Analytics Edge-projekt konfigurálása a Visual Studióban](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+   |**Beállítás**|**Ajánlott érték**|
+   |-------|---------------|
+   |Globális tárolási beállítások erőforrás|Choose data source from current account (Adatforrás kiválasztása az aktuális fiókból)|
+   |Globális tárolási beállítások előfizetése| < az előfizetést >|
+   |Globális tárolási beállítások Storage-fiókja| < a Storage-fiókját >|
+   |Egyéni kód tárolási beállításainak erőforrása|Choose data source from current account (Adatforrás kiválasztása az aktuális fiókból)|
+   |Egyéni kód tárolási beállításainak Storage-fiókja|< a Storage-fiókját >|
+   |Egyéni kód tárolási beállításainak tárolója|< a Storage-tárolót >|
+   |Egyéni kód szerelvényének forrása|Meglévő szerelvény-csomagok a felhőből|
+   |Egyéni kód szerelvényének forrása|UserCustomCode. zip|
 
 ## <a name="limitations"></a>Korlátozások
 Az UDF előzetes verziója jelenleg a következő korlátozásokkal rendelkezik:
-
-* A .NET Standard nyelveket csak IoT Edge-eszközökön futó Azure Stream Analyticshoz lehet használni. A felhőalapú feladatokhoz JavaScript felhasználó által definiált függvényeket írhat. További tudnivalókért tekintse meg a [Azure stream Analytics JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) oktatóanyagot.
 
 * A .NET Standard UDF csak a Visual Studióban hozhatók létre és tehetők közzé az Azure-ban. A .NET Standard UDF csak olvasható verzióit tekintheti meg a Azure Portal **függvények** területén. A .NET Standard függvények készítése nem támogatott a Azure Portalban.
 
@@ -134,6 +133,6 @@ Az UDF előzetes verziója jelenleg a következő korlátozásokkal rendelkezik:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Oktatóanyag: C# felhasználó által definiált függvény írása Azure stream Analytics Edge-feladathoz (előzetes verzió)](stream-analytics-edge-csharp-udf.md)
+* [Oktatóanyag: C# felhasználó által definiált függvény írása egy Azure stream Analytics feladathoz (előzetes verzió)](stream-analytics-edge-csharp-udf.md)
 * [Oktatóanyag: Azure Stream Analytics JavaScript felhasználó által definiált függvények](stream-analytics-javascript-user-defined-functions.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

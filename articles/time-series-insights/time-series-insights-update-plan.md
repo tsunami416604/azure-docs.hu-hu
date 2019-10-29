@@ -1,32 +1,32 @@
 ---
 title: A Azure Time Series Insights előzetes verzió környezetének megtervezése | Microsoft Docs
 description: Tervezze meg Azure Time Series Insights előnézeti környezetét.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dc4336629a4c3b9da906daefca160c5a305603dc
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550178"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990846"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
-Ez a cikk azt ismerteti, hogyan lehet gyorsan megtervezni és megkezdeni az első lépéseket a Azure Time Series Insights előzetes verziójának használatával.
+Ez a cikk azt ismerteti, hogyan lehet gyorsan megtervezni és megkezdeni az első lépéseket Azure Time Series Insights előzetes verzió használatával.
 
 > [!NOTE]
 > Az általánosan elérhető Time Series Insights-példány megtervezéséhez ajánlott eljárásokat a [Azure Time Series Insights általános elérhetőségi környezet megtervezése](time-series-insights-environment-planning.md)című témakörben talál.
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások a tervezéshez és előkészítéshez
 
-A Time Series Insights első lépéseihez érdemes megismernie a következőket:
+A környezet tervezésével és előkészítésével kapcsolatos ajánlott eljárásokat a következő cikkekben találja:
 
 * Mit kap, ha [kiépít egy Time Series Insights előnézeti környezetet](#the-preview-environment).
 * Az [idősorozat-azonosítók és az időbélyeg tulajdonságai](#configure-time-series-ids-and-timestamp-properties).
@@ -43,11 +43,22 @@ Time Series Insights előnézeti környezet kiépítésekor két Azure-erőforr�
 * Azure Time Series Insights előnézeti környezet
 * Azure Storage általános célú v1-fiók
 
+A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyezni a meleg tárolót. A meleg tárolás többplatformos lekérdezési élményt biztosít. Ha engedélyezve van, meg kell adnia egy 7 és 30 nap közötti megőrzési időtartamot. A meleg tárolási megőrzési időszakon belül végrehajtott lekérdezések általában gyorsabb válaszidőt biztosítanak. Ha egy lekérdezés a meleg tároló megőrzési idejére nyúlik át, a rendszer a hűtőházi tárolóból kézbesíti.
+
+A melegen tárolt lekérdezések ingyenesek, míg a hűtőházi tárolással kapcsolatos lekérdezések költségekkel járnak. Fontos megérteni a lekérdezési mintákat, és ennek megfelelően tervezze meg a meleg tároló konfigurációját. Azt javasoljuk, hogy az interaktív elemzések a legújabb, a meleg áruházban található és a minták elemzése, valamint a hosszú távú trendek esetében is naprakészek legyenek.
+
+> [!NOTE]
+> A meleg tárolással jelenleg legfeljebb 1 000 tulajdonságot támogatunk.
+
 A kezdéshez három további elemre van szükség:
 
 * Egy [Idősorozat-modell](./time-series-insights-update-tsm.md)
 * [Time Series Insightshoz csatlakoztatott eseményforrás](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * [Az eseményforrás](./time-series-insights-send-events.md) , amely a modellhez van rendelve, és érvényes JSON formátumú.
+
+## <a name="review-preview-limits"></a>Előzetes verzió korlátainak áttekintése
+
+[!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
 
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>Idősorozat-azonosítók és időbélyeg-tulajdonságok konfigurálása
 
@@ -58,7 +69,7 @@ A kezdéshez három további elemre van szükség:
 
 Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító](./time-series-insights-update-how-to-id.md) és a [tárolás és a bejövő](./time-series-insights-update-storage-ingress.md)adatok kiválasztásához.
 
-Az időbélyeg tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
+Az **időbélyeg** tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
 
 > [!TIP]
 > Ellenőrizze az eseményforrás formázásának és elemzésének követelményeit.
@@ -80,7 +91,7 @@ Ellenőrizheti, hogy az események hogyan küldhetők Time Series Insightsba. Id
 Egy jó ökölszabály:
 
 * Az idősorozat-modellben tárolja a metaadatokat.
-* Az idősorozat mód, a példány mezői és az események csak a szükséges információkat tartalmazzák, például egy idősorozat-azonosítót vagy egy időbélyeg-t.
+* Győződjön meg arról, hogy az idősoros mód, a példány mezői és az események csak a szükséges információkat tartalmazzák, például egy idősorozat-azonosítót vagy egy időbélyeg-tulajdonságot.
 
 További információ: [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
 
@@ -89,7 +100,5 @@ További információ: [Shape Events](./time-series-insights-send-events.md#supp
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
-
 - További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.
-
 - Tudnivalók az [adatmodellezésről](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziójában.

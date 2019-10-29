@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389087"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990742"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -58,12 +58,13 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 
 1. Keresse meg a hozzáférési csomagot a listában.  Ha szükséges, a kereséshez írja be a keresési karakterláncot, majd válassza ki a **nevet**, a **katalógust**vagy az **erőforrások** szűrőt.
 
-    ![Saját hozzáférési portál – erőforrás-keresés](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![Saját hozzáférési portál – erőforrás-keresés](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. Kattintson a pipa jelre a hozzáférési csomag kiválasztásához.
 
-    ![Hozzáférési portál – hozzáférési csomagok](./media/entitlement-management-shared/my-access-access-packages.png)
-
 1. Kattintson a **hozzáférés kérése** elemre a hozzáférés kérése panel megnyitásához.
+
+    ![Hozzáférési portál – hozzáférési csomagok](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. Ha megjelenik az **üzleti indoklás** mező, írja be a hozzáféréshez szükséges indoklást.
 
@@ -78,6 +79,12 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 1. Kattintson a kérelmek **előzményei** gombra a kérések és az állapot listájának megtekintéséhez.
 
     Ha a hozzáférési csomag jóváhagyást igényel, a kérelem már függőben lévő jóváhagyási állapotban van.
+
+### <a name="select-a-policy"></a>Szabályzat kiválasztása
+
+Ha olyan hozzáférési csomaghoz kér hozzáférést, amelyhez több szabályzat is tartozik, akkor előfordulhat, hogy ki kell választania egy szabályzatot. A hozzáférési csomag kezelője például két, belső alkalmazottak két csoportjára vonatkozó házirendet konfigurálhat. Az első szabályzat 60 napig is engedélyezheti a hozzáférést, és jóváhagyást igényelhet. A második szabályzat 2 napig is engedélyezheti a hozzáférést, és nem igényel jóváhagyást. Ha ebben a forgatókönyvben találkozik, ki kell választania a használni kívánt szabályzatot.
+
+![Hozzáférési portál – hozzáférés kérése – több szabályzat](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>Kérelem megszakítása
 
@@ -94,12 +101,6 @@ Ha hozzáférési kérelmet küld be, és a kérés még mindig a **függőben l
     ![Saját hozzáférési portál – kérelem megszakítása](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. Kattintson a **kérelmek előzményei** elemre a kérelem törlésének megerősítéséhez.
-
-## <a name="select-a-policy"></a>Szabályzat kiválasztása
-
-Ha olyan hozzáférési csomaghoz kér hozzáférést, amelyhez több szabályzat is tartozik, akkor előfordulhat, hogy ki kell választania egy szabályzatot. A hozzáférési csomag kezelője például két, belső alkalmazottak két csoportjára vonatkozó házirendet konfigurálhat. Az első szabályzat 60 napig is engedélyezheti a hozzáférést, és jóváhagyást igényelhet. A második szabályzat 2 napig is engedélyezheti a hozzáférést, és nem igényel jóváhagyást. Ha ebben a forgatókönyvben találkozik, ki kell választania a használni kívánt szabályzatot.
-
-**Előfeltételként szükséges szerepkör:** Kérelmező
 
 ## <a name="next-steps"></a>Következő lépések
 

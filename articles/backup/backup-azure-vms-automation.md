@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219452"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969062"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -24,13 +24,13 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 > * Hozzon létre egy Recovery Services-tárolót, és állítsa be a tár környezetét.
 > * Biztonsági mentési szabályzat meghatározása
 > * A biztonsági mentési szabályzat alkalmazása több virtuális gép védelme érdekében
-> * Egy igény szerinti biztonsági mentési feladatot indít el a védett virtuális gépek számára, mielőtt biztonsági másolatot készít (vagy véd) egy virtuális gépet, el kell végeznie az előfeltételeket, hogy előkészítse a környezetet a virtuális gépek védelmére. [](backup-azure-arm-vms-prepare.md)
+> * Egy igény szerinti biztonsági mentési feladatot indít el a védett virtuális gépek számára, mielőtt biztonsági másolatot készít (vagy véd) egy virtuális gépet, el kell végeznie az [előfeltételeket](backup-azure-arm-vms-prepare.md) , hogy előkészítse a környezetet a virtuális gépek védelmére.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- [További](backup-azure-recovery-services-vault-overview.md) információ a Recovery Services-tárolókkal kapcsolatban.
-- [Tekintse át](backup-architecture.md#architecture-direct-backup-of-azure-vms) az Azure-beli virtuális gépek biztonsági mentésének architektúráját, [Ismerkedjen meg](backup-azure-vms-introduction.md) a biztonsági mentési folyamattal, és [tekintse át](backup-support-matrix-iaas.md) a támogatás, a korlátozások és az Előfeltételek
-- Tekintse át Recovery Services PowerShell-objektumának hierarchiáját.
+* [További](backup-azure-recovery-services-vault-overview.md) információ a Recovery Services-tárolókkal kapcsolatban.
+* [Tekintse át](backup-architecture.md#architecture-direct-backup-of-azure-vms) az Azure-beli virtuális gépek biztonsági mentésének architektúráját, [Ismerkedjen meg](backup-azure-vms-introduction.md) a biztonsági mentési folyamattal, és [tekintse át](backup-support-matrix-iaas.md) a támogatás, a korlátozások és az Előfeltételek
+* Tekintse át Recovery Services PowerShell-objektumának hierarchiáját.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services objektum-hierarchia
 
@@ -61,7 +61,7 @@ Kezdés:
 3. Jelentkezzen be az Azure-fiókjába a **AzAccount**használatával. Ez a parancsmag egy weblapot hoz létre a fiók hitelesítő adatainak megadásához:
 
     * Másik lehetőségként a fiók hitelesítő adatait a **kapcsolat-AzAccount** parancsmag paraméterként is hozzáadhatja a **-hitelesítőadat** paraméter használatával.
-    * Ha a CSP-partner bérlő nevében dolgozik, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Példa: **Kapcsolat – AzAccount – bérlő "fabrikam.com"**
+    * Ha a CSP-partner bérlő nevében dolgozik, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Például: **kapcsolat-AzAccount-bérlő "fabrikam.com"**
 
 4. Társítsa a fiókhoz használni kívánt előfizetést, mivel egy fiók több előfizetéssel is rendelkezhet:
 
@@ -83,7 +83,6 @@ Kezdés:
 
     A parancs kimenetében a **RegistrationState** a **regisztrált**értékre kell váltania. Ha nem, egyszerűen futtassa újra a **[Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** parancsmagot.
 
-
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A következő lépések végigvezetik a Recovery Services-tároló létrehozásának lépésein. Egy Recovery Services-tár nem azonos a Backup-tárolóval.
@@ -93,11 +92,13 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
+
 2. A [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) parancsmag használatával hozza létre a Recovery Services-tárolót. Ügyeljen arra, hogy ugyanazt a helyet határozza meg a tárolóhoz, mint amelyet az erőforráscsoport használ.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
+
 3. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy-lrs.md) vagy a [geo redundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testvault beállításnál a GeoRedundant értékre.
 
     ```powershell
@@ -130,7 +131,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 ## <a name="back-up-azure-vms"></a>Azure-beli virtuális gépek biztonsági mentése
 
 Használjon Recovery Services tárolót a virtuális gépek biztonságának biztosítása érdekében. A védelem alkalmazása előtt állítsa be a tár környezetét (a tárolóban védett adattípust), és ellenőrizze a védelmi házirendet. A védelmi házirend a biztonsági mentési feladatok futtatása és az egyes biztonsági mentési Pillanatképek megtartásának időpontja.
@@ -151,7 +151,8 @@ A tár környezeti beállítását a Azure PowerShell irányelvek alapján terve
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
 $targetVault.ID
 ```
-Vagy
+
+vagy
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -193,10 +194,10 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 
 A biztonsági mentési védelmi szabályzat legalább egy adatmegőrzési szabályzattal van társítva. A megőrzési házirend határozza meg, hogy a rendszer mennyi ideig tart a helyreállítási pontok törlése előtt.
 
-- A [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) használatával megtekintheti az alapértelmezett adatmegőrzési szabályt.
-- Hasonlóképpen használhatja a [Get-AzRecoveryServicesBackupSchedulePolicyObject-](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) t az alapértelmezett ütemezett házirend beszerzéséhez.
-- A [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) parancsmag egy PowerShell-objektumot hoz létre, amely a biztonsági mentési szabályzat adatait tárolja.
-- Az ütemezett és adatmegőrzési házirend objektumai bemenetként használatosak a New-AzRecoveryServicesBackupProtectionPolicy parancsmaghoz.
+* A [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) használatával megtekintheti az alapértelmezett adatmegőrzési szabályt.
+* Hasonlóképpen használhatja a [Get-AzRecoveryServicesBackupSchedulePolicyObject-](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) t az alapértelmezett ütemezett házirend beszerzéséhez.
+* A [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) parancsmag egy PowerShell-objektumot hoz létre, amely a biztonsági mentési szabályzat adatait tárolja.
+* Az ütemezett és adatmegőrzési házirend objektumai bemenetként használatosak a New-AzRecoveryServicesBackupProtectionPolicy parancsmaghoz.
 
 Alapértelmezés szerint a rendszer a kezdési időt határozza meg az ütemezett házirend objektumban. A következő példa használatával módosíthatja a kezdési időt a kívánt kezdési időpontra. A kívánt kezdési időpontnak UTC-ként is kell lennie. Az alábbi példa feltételezi, hogy a várt kezdési idő a napi biztonsági másolatok 01:00-as UTC-értéke.
 
@@ -371,7 +372,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="stop-protection"></a>Védelem leállítása
 
-#### <a name="retain-data"></a>Adatok megőrzése
+#### <a name="retain-data"></a>Adat megőrzése
 
 Ha a felhasználó le szeretné állítani a védelmet, használhatja a [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS parancsmagot. Ezzel leállítja az ütemezett biztonsági mentéseket, de a biztonsági mentés egészen addig, amíg a rendszer örökre megőrzi az adatokat.
 
@@ -380,7 +381,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Biztonsági másolat adatainak törlése
+#### <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
 
 Ahhoz, hogy teljesen el lehessen távolítani a tárolt biztonsági mentési fájlokat a tárolóban, egyszerűen adja hozzá a "-RemoveRecoveryPoints" jelzőt, vagy váltson a ["letiltás" védelmi parancsra](#retain-data).
 
@@ -419,7 +420,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Válasszon helyreállítási pontot
+### <a name="choose-a-recovery-point"></a>Helyreállítási pont kiválasztása
 
 A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) parancsmag használatával listázhatja a biztonsági mentési elemek összes helyreállítási pontját. Ezután válassza ki a visszaállítani kívánt helyreállítási pontot. Ha nem tudja biztosan, hogy melyik helyreállítási pontot szeretné használni, érdemes kiválasztani a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
@@ -473,7 +474,6 @@ Adjon meg egy további paramétert, amely meghatározza, hogy a rendszer mely **
 >
 >
 
-
 ```powershell
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
@@ -507,10 +507,9 @@ A lemezek visszaállítása után lépjen a következő szakaszra a virtuális g
 
 A lemezek és a konfigurációs adatok cseréjéhez hajtsa végre az alábbi lépéseket:
 
-- 1\. lépés: [A lemezek visszaállítása](backup-azure-vms-automation.md#restore-the-disks)
-- 2\. lépés: [Adatlemez leválasztása a PowerShell használatával](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-- 3\. lépés: [Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
-
+* 1\. lépés: [a lemezek visszaállítása](backup-azure-vms-automation.md#restore-the-disks)
+* 2\. lépés: [az adatlemez leválasztása a PowerShell használatával](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* 3\. lépés: [adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps) lel
 
 ## <a name="create-a-vm-from-restored-disks"></a>Virtuális gép létrehozása visszaállított lemezekről
 
@@ -647,6 +646,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
       ```
+
    Ha a **kulcs/titkos kulcsok elérhetők** , és a titkosítási adatok az operációs rendszer blobján vannak beállítva, csatolja a lemezeket az alább megadott parancsfájllal.
 
     Ha a forrás kulcstartó/kulcs/titkos kódok elérhetők, akkor a fenti szkriptet nem kell végrehajtani.
@@ -747,9 +747,9 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 > [!NOTE]
 > Győződjön meg arról, hogy manuálisan törli a titkosított virtuális gép visszaállítási lemezének folyamata során létrehozott JASON-fájlokat.
-
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Fájlok visszaállítása Azure-beli virtuális gépek biztonsági másolatából
 
@@ -758,7 +758,7 @@ A lemezek visszaállítása mellett az egyes fájlokat is visszaállíthatja egy
 A fájlok Azure-beli virtuális gépekről történő biztonsági mentésének alapszintű lépései a következők:
 
 * Válassza ki a virtuális gépet
-* Válasszon helyreállítási pontot
+* Helyreállítási pont kiválasztása
 * A helyreállítási pont lemezének csatlakoztatása
 * A szükséges fájlok másolása
 * Lemez leválasztása
@@ -772,7 +772,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Válasszon helyreállítási pontot
+### <a name="choose-a-recovery-point"></a>Helyreállítási pont kiválasztása
 
 A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) parancsmag használatával listázhatja a biztonsági mentési elemek összes helyreállítási pontját. Ezután válassza ki a visszaállítani kívánt helyreállítási pontot. Ha nem tudja biztosan, hogy melyik helyreállítási pontot szeretné használni, érdemes kiválasztani a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
@@ -832,6 +832,6 @@ A szükséges fájlok másolását követően a [disable-AzRecoveryServicesBacku
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $targetVault.ID
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha inkább a PowerShell-lel szeretné használni az Azure-erőforrásokat, tekintse meg a PowerShell-cikket, a [Windows Server biztonsági mentésének központi telepítését és kezelését](backup-client-automation.md)ismertető témakört. Ha DPM biztonsági mentéseket kezel, tekintse [meg a DPM biztonsági mentésének üzembe helyezése és kezelése](backup-dpm-automation.md)című cikket.

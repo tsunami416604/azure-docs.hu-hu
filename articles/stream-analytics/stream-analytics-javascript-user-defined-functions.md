@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935003"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990225"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei
  
@@ -71,6 +71,9 @@ Az alábbi lépéseket követve hozhat létre egyszerű JavaScript felhasználó
 6.  Kattintson a **Mentés** gombra. A függvény megjelenik a függvénylistában.
 7.  Válassza ki az új **hex2int** függvényt, és ellenőrizze a függvény definícióját. Minden függvény az aliasához hozzáadott **UDF** előtaggal rendelkezik. Ezt az *előtagot meg kell adni*, amikor a Stream Analytics-lekérdezésben meghívja a függvényt. Ebben az esetben az **UDF.hex2Int** függvényt hívjuk meg.
 
+## <a name="testing-javascript-udfs"></a>JavaScript-UDF tesztelése 
+A JavaScript UDF-logikát bármely böngészőben tesztelheti és hibakeresést végezhet. A felhasználó által definiált függvények logikájának hibakeresése és tesztelése jelenleg nem támogatott a Stream Analytics portálon. Ha a függvény a várt módon működik, a fentiekben leírtak szerint adhatja hozzá a Stream Analytics feladathoz, majd közvetlenül a lekérdezésből hívhatja meg.
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Felhasználói JavaScript-függvény meghívása lekérdezésben
 
 1. A lekérdezés-szerkesztőben a **feladatok topológiájának** fejléce alatt válassza a **lekérdezés**lehetőséget.
@@ -125,7 +128,6 @@ A JavaScript-nyelv megkülönbözteti a kis-és nagybetűket, és a JavaScript-k
 
 ## <a name="troubleshooting"></a>Hibakeresés
 A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységnaplóban tekinthetők meg. A napló lekéréséhez lépjen a feladatra az Azure Portalon, és válassza a **Tevékenységnapló** elemet.
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Egyéb felhasználói JavaScript-függvényminták
 

@@ -4,14 +4,14 @@ description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes m�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: de1b5080e72f79626ca0c749efe4122721f14922
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 03e91e4be967e822d17144af848f51e73851b1e6
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528583"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969181"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -61,7 +61,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft. Tárolószolgáltatás](#microsoftcontainerservice)
-> - [Microsoft. ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft. CostManagement](#microsoftcostmanagement)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
@@ -277,6 +276,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | dataAliases | Nem |
 > | denyAssignments | Nem |
 > | elevateAccess | Nem |
+> | findOrphanRoleAssignments | Nem |
 > | zárak | Nem |
 > | Engedélyek | Nem |
 > | policyAssignments | Nem |
@@ -394,6 +394,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingAccounts/createBillingRoleAssignment | Nem |
 > | billingAccounts/createInvoiceSectionOperations | Nem |
 > | billingAccounts/ügyfelek | Nem |
+> | billingAccounts/ügyfelek/billingPermissions | Nem |
 > | billingAccounts/ügyfelek/billingSubscriptions | Nem |
 > | billingAccounts/ügyfelek/initiateTransfer | Nem |
 > | billingAccounts/ügyfelek/szabályzatok | Nem |
@@ -451,6 +452,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | blockchainMembers | Igen |
+> | cordaMembers | Igen |
 > | néző | Igen |
 
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
@@ -641,6 +643,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | proximityPlacementGroups | Igen |
 > | restorePointCollections | Igen |
 > | restorePointCollections/restorePoints | Nem |
+> | sharedVMExtensions | Igen |
+> | sharedVMExtensions/verziók | Nem |
 > | sharedVMImages | Igen |
 > | sharedVMImages/verziók | Nem |
 > | pillanatképek | Igen |
@@ -700,6 +704,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kibocsátásiegység-forgalmi jegyzékek/buildTasks | Igen |
 > | kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/eventGridFilters | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/generateCredentials | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/getBuildSourceUploadUrl | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/GetCredentials | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/importImage | Nem |
@@ -710,7 +715,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kibocsátásiegység-forgalmi jegyzékek/futtatások | Nem |
 > | nyilvántartások/futtatások/megszakítás | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/scheduleRun | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/scopeMaps | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/jogkivonatok | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/updatePolicies | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen |
 > | kibocsátásiegység-forgalmi jegyzékek/webhookok/getCallbackConfig | Nem |
@@ -724,14 +731,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | containerServices | Igen |
 > | managedClusters | Igen |
 > | openShiftManagedClusters | Igen |
-
-## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Törlés Teljes mód esetén |
-> | ------------- | ----------- |
-> | alkalmazás | Igen |
-> | updateCommunicationPreference | Nem |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
@@ -821,8 +820,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | datacatalogs/adatforrások/vizsgálatok | Nem |
 > | datacatalogs/adatforrások/vizsgálatok/adatkészletek | Nem |
 > | datacatalogs/adatforrások/vizsgálatok/triggerek | Nem |
-> | datacatalogs/scantargets | Nem |
-> | datacatalogs/scantargets/adatkészletek | Nem |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
@@ -887,6 +884,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | Kiszolgálók | Igen |
 > | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/privateEndpointConnectionProxies | Nem |
+> | kiszolgálók/privateEndpointConnections | Nem |
+> | kiszolgálók/privateLinkResources | Nem |
 > | kiszolgálók/queryTexts | Nem |
 > | kiszolgálók/recoverableServers | Nem |
 > | kiszolgálók/topQueryStatistics | Nem |
@@ -900,6 +900,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | Kiszolgálók | Igen |
 > | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/privateEndpointConnectionProxies | Nem |
+> | kiszolgálók/privateEndpointConnections | Nem |
+> | kiszolgálók/privateLinkResources | Nem |
 > | kiszolgálók/queryTexts | Nem |
 > | kiszolgálók/recoverableServers | Nem |
 > | kiszolgálók/topQueryStatistics | Nem |
@@ -914,6 +917,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | serverGroups | Igen |
 > | Kiszolgálók | Igen |
 > | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/kulcsok | Nem |
 > | kiszolgálók/privateEndpointConnectionProxies | Nem |
 > | kiszolgálók/privateEndpointConnections | Nem |
 > | kiszolgálók/privateLinkResources | Nem |
@@ -943,6 +947,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | applicationgroups | Igen |
 > | applicationgroups/alkalmazások | Nem |
+> | applicationgroups/asztali számítógépek | Nem |
 > | applicationgroups/startmenuitems | Nem |
 > | hostpools | Igen |
 > | hostpools/sessionhosts | Nem |
@@ -1088,6 +1093,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | autoManagedVmConfigurationProfiles | Igen |
+> | configurationProfileAssignments | Nem |
 > | guestConfigurationAssignments | Nem |
 > | szoftver | Nem |
 > | softwareUpdateProfile | Nem |
@@ -1129,6 +1135,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | gépek | Igen |
+> | gépek/bővítmények | Igen |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
@@ -1235,6 +1242,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | munkaterületek | Igen |
 > | munkaterületek/számítások | Nem |
+> | munkaterületek/eventGridFilters | Nem |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -1322,6 +1330,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Mediaservices/liveEvents | Igen |
 > | Mediaservices/liveEvents/liveOutputs | Nem |
 > | Mediaservices/liveOutputOperations | Nem |
+> | Mediaservices/mediaGraphs | Nem |
 > | Mediaservices/streamingEndpointOperations | Nem |
 > | Mediaservices/streamingEndpoints | Igen |
 > | Mediaservices/streamingLocators | Nem |
@@ -1520,6 +1529,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | policyEvents | Nem |
+> | policyMetadata | Nem |
 > | policyStates | Nem |
 > | policyTrackedResources | Nem |
 > | szervizelések | Nem |
@@ -1610,6 +1620,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | Központi telepítések | Nem |
 > | üzembe helyezések/műveletek | Nem |
+> | deploymentScripts | Igen |
+> | deploymentScripts/naplók | Nem |
 > | linkek | Nem |
 > | notifyResourceJobs | Nem |
 > | szolgáltatók | Nem |
@@ -1659,6 +1671,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | applicationWhitelistings | Nem |
 > | assessmentMetadata | Nem |
 > | értékelések | Nem |
+> | automatizálások szabványának létrehozásában | Igen |
 > | AutoProvisioningSettings | Nem |
 > | Felelésről | Nem |
 > | dataCollectionAgents | Nem |

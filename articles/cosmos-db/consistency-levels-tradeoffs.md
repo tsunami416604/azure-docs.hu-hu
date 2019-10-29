@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755188"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990623"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
@@ -62,6 +62,10 @@ Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti ka
 *K* = egy elem *"k"* verziója (azaz frissítései) száma.
 
 *T* = a legutóbbi frissítés óta eltelt idő *"t"* .
+
+## <a name="strong-consistency-and-multi-master"></a>Erős konzisztencia és több főkiszolgáló
+
+A több főkiszolgálós rendszerhez konfigurált Cosmos-fiókok nem konfigurálhatók erős konzisztencia használatára, mert az elosztott rendszerek nem képesek nulla RPO és nulla RTO. Emellett nincs olyan írási késési előny, amely a több főkiszolgálóval való erős konzisztencia használatával történik, mivel bármely régióba való írást replikálni kell, és el kell véglegesíteni a fiókban lévő összes konfigurált régióban. Ez ugyanazokat az írási késést eredményezi, mint egyetlen fő fiók.
 
 ## <a name="next-steps"></a>Következő lépések
 

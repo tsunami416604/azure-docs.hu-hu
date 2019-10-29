@@ -2,19 +2,19 @@
 title: Ajánlott eljárások a JSON formázásához Azure Time Series Insights lekérdezésekben | Microsoft Docs
 description: Ismerje meg, hogyan javíthatja Azure Time Series Insights lekérdezési hatékonyságát.
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274398"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990288"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>A lekérdezési teljesítmény maximalizálása a JSON alakzat használatával 
 
@@ -35,6 +35,9 @@ Gondolja át, hogyan küldi el az eseményeket Time Series Insightsba. Tehát mi
 1. Győződjön meg arról, hogy nem éri el a maximálisan megengedett Time Series Insights:
    - 600 tulajdonságok (oszlopok) S1 környezetekhez.
    - 800 tulajdonságok (oszlopok) S2 környezetekhez.
+
+> [!TIP]
+> Tekintse át a [korlátozásokat és a tervezést](time-series-insights-update-plan.md) Azure Time Series Insights előzetes verzióban.
 
 A következő útmutató segítséget nyújt a lehető legjobb lekérdezési teljesítmény biztosításához:
 
@@ -58,7 +61,7 @@ A példák olyan forgatókönyveken alapulnak, ahol több eszköz is küld mér�
 
 A következő példában egyetlen Azure IoT Hub üzenet jelenik meg, amelyben a külső tömb a közös dimenzió értékeinek közös szakaszát tartalmazza. A külső tömb a hivatkozási adatmennyiséget használja az üzenet hatékonyságának növelésére. A hivatkozási adatok olyan eszköz-metaadatokat tartalmaznak, amelyek nem változnak minden eseménnyel, de hasznos tulajdonságokat biztosítanak az adatok elemzéséhez. A közös dimenzióértékeket és a hivatkozásokat használó adatmennyiségeket a rendszer a huzalon küldött bájtok alapján menti, így hatékonyabbá válik az üzenet.
 
-Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer a JSON-ba küldött [IoT-üzenet-objektummal](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) küld a Time Series Insights GA-környezetre:
+Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-felhőbe való küldéskor JSON-ként szerializált [IoT-üzenetet](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) küld a Time Series Insights GA-környezetnek:
 
 
 ```JSON
@@ -94,16 +97,16 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer a JSON-ba
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LINE @ no__t – 0DATA | EU |
-   | FYYY | LINE @ no__t – 0DATA | Egyesült Államok |
+   | FXXX | SOROK\_ | EU |
+   | FYYY | SOROK\_ | Egyesült Államok |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | messageId | deviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LINE @ no__t – 0DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | LINE @ no__t – 0DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | LINE @ no__t – 0DATA | Egyesült Államok | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | SOROK\_ | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | SOROK\_ | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | SOROK\_ | Egyesült Államok | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - A **deviceId** oszlop a flotta különböző eszközeinek oszlop fejlécét szolgálja. A **deviceId** értékének kiszámításához a saját tulajdonságnév korlátozza a teljes eszközt 595 (S1 környezet esetén) vagy 795 (S2 környezet esetén) a másik öt oszloppal.
@@ -164,21 +167,21 @@ Példa JSON-adattartalomra:
 
    | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | egység |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE @ no__t – 0DATA | EU | Áramlási sebesség | FT3/s |
-   | FXXX | oilPressure | LINE @ no__t – 0DATA | EU | Motor olajnyomás | psi |
-   | FYYY | pumpRate | LINE @ no__t – 0DATA | Egyesült Államok | Áramlási sebesség | FT3/s |
-   | FYYY | oilPressure | LINE @ no__t – 0DATA | Egyesült Államok | Motor olajnyomás | psi |
+   | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s |
+   | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi |
+   | FYYY | pumpRate | SOROK\_ | Egyesült Államok | Áramlási sebesség | FT3/s |
+   | FYYY | oilPressure | SOROK\_ | Egyesült Államok | Motor olajnyomás | psi |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | egység | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE @ no__t – 0DATA | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LINE @ no__t – 0DATA | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | LINE @ no__t – 0DATA | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LINE @ no__t – 0DATA | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | LINE @ no__t – 0DATA | Egyesült Államok | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE @ no__t – 0DATA | Egyesült Államok | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | SOROK\_ | Egyesült Államok | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | SOROK\_ | Egyesült Államok | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - A **deviceId** és a **Series. tagId** oszlopok a különböző eszközök és címkék oszlopaiként szolgálnak a flottában. A saját attribútumaik használatával a lekérdezés a 594 (S1 környezetek esetén) vagy a 794 (S2 környezet esetén) értékre van korlátozva a többi hat oszloppal rendelkező összes eszköz esetében.
@@ -195,7 +198,7 @@ A nagy mennyiségű lehetséges értéket tartalmazó tulajdonság esetében ér
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ [a IoT hub eszköz üzeneteinek a felhőbe való](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)küldéséről.
+- További információ [a IoT hub eszköz üzeneteinek a felhőbe való](../iot-hub/iot-hub-devguide-messages-construct.md)küldéséről.
 
 - A Time Series Insights adatelérési REST API lekérdezési szintaxisával kapcsolatos további információért olvassa el [Azure Time Series Insights lekérdezési szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
 

@@ -1,22 +1,19 @@
 ---
-title: Terraform-modulok tesztelése az Azure-ban a Terratest használatával
+title: Oktatóanyag – Terraform-modulok tesztelése az Azure-ban a Terratest használatával
 description: Ismerje meg, hogyan használható a Terratest a Terraform-modulok tesztelésére.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, tárfiók, azure, terratest, egységteszt, integrációs teszt
+ms.service: terraform
 author: tomarchermsft
-manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: e4965ba47a99e3cd189763d994bef6381badd9ba
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881778"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969221"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terraform-modulok tesztelése az Azure-ban a Terratest használatával
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Oktatóanyag: Terraform-modulok tesztelése az Azure-ban a Terratest használatával
 
 > [!NOTE]
 > A cikkben szereplő mintakód nem működik a 0,12-es (és újabb) verzióval.
@@ -40,7 +37,7 @@ A Kezdés előtt telepítse a következő szoftvereket:
 
 - **Go programozási nyelv**: a Terraform-tesztelési esetek a [Go](https://golang.org/dl/)-ban íródnak.
 - **dep**: [dep](https://github.com/golang/dep#installation) a GO nyelvhez készült függőségkezelő eszköz.
-- **Azure CLI**: az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) egy parancssori eszköz, amely az Azure-erőforrások kezelésére használható. (A Terraform támogatja az Azure-ban való hitelesítést az egyszerű szolgáltatásnév vagy [Az Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)használatával.)
+- **Azure CLI**: az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) egy parancssori eszköz, amely az Azure-erőforrások kezelésére használható. (A Terraform támogatja az Azure-ban való hitelesítést az egyszerű szolgáltatásnév vagy [Az Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)használatával.)
 - **mágus**: a [mágus végrehajtható fájl](https://github.com/magefile/mage/releases) használatával megmutatjuk, hogyan egyszerűsíthető a futó Terratest-esetek futtatása. 
 
 ## <a name="create-a-static-webpage-module"></a>Statikus weblap modul létrehozása
@@ -91,7 +88,7 @@ A cikkben korábban említettek szerint ez a modul a `./outputs.tf`ban deklarál
 
 ```hcl
 output "homepage_url" {
-  value = "${azurerm_storage_blob.homepage.url}"
+  value = azurerm_storage_blob.homepage.url
 }
 ```
 
@@ -106,30 +103,30 @@ A statikus weblap modul logikát a `./main.tf` valósítja meg:
 ```hcl
 resource "azurerm_resource_group" "main" {
   name     = "${var.website_name}-staging-rg"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "main" {
   name                     = "${lower(replace(var.website_name, "/[[:^alnum:]]/", ""))}data001"
-  resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "${azurerm_resource_group.main.location}"
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "main" {
   name                  = "wwwroot"
-  resource_group_name   = "${azurerm_resource_group.main.name}"
-  storage_account_name  = "${azurerm_storage_account.main.name}"
+  resource_group_name   = azurerm_resource_group.main.name
+  storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "blob"
 }
 
 resource "azurerm_storage_blob" "homepage" {
   name                   = "index.html"
-  resource_group_name    = "${azurerm_resource_group.main.name}"
-  storage_account_name   = "${azurerm_storage_account.main.name}"
-  storage_container_name = "${azurerm_storage_container.main.name}"
-  source                 = "${var.html_path}"
+  resource_group_name    = azurerm_resource_group.main.name
+  storage_account_name   = azurerm_storage_account.main.name
+  storage_container_name = azurerm_storage_container.main.name
+  source                 = var.html_path
   type                   = "block"
   content_type           = "text/html"
 }
@@ -173,7 +170,7 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
   html_path    = "empty.html"
 }
 ```
@@ -317,11 +314,11 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
 }
 
 output "homepage" {
-  value = "${module.staticwebpage.homepage_url}"
+  value = module.staticwebpage.homepage_url
 }
 ```
 
@@ -521,5 +518,5 @@ A tesztek előtt végzett `az login` végrehajtása helyett az Azure-hitelesít�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A Terratest kapcsolatos további információkért tekintse meg a [Terratest GitHub oldalát](https://github.com/gruntwork-io/terratest).
-* A Mágussal kapcsolatos információkért tekintse meg a [mágus GitHub oldalát](https://github.com/magefile/mage) és a [mágus webhelyét](https://magefile.org/).
+> [!div class="nextstepaction"] 
+> [Terratest GitHub-oldal](https://github.com/gruntwork-io/terratest).

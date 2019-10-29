@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489001"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990711"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -48,7 +48,7 @@ A hozzáférési kérelmek jóváhagyásának vagy megtagadásának első lépé
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja a jóváhagyásra váró hozzáférési kérelmeket.
 
-1. Jelentkezzen be a saját hozzáférési portálján a [https://myaccess.microsoft.com](https://myaccess.microsoft.com)következő címen:.
+1. Jelentkezzen be a saját hozzáférési portálra a [https://myaccess.microsoft.com](https://myaccess.microsoft.com)címen.
 
 1. A bal oldali menüben kattintson a **jóváhagyások** elemre, hogy megtekintse a hozzáférési kérelmek függőben lévő jóváhagyásának listáját.
 
@@ -70,7 +70,7 @@ Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti a
 
 1. Szükség esetén adjon meg egy okot.
 
-    ![Hozzáférési portál – hozzáférési kérelem](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Hozzáférési portál – hozzáférési kérelem](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. A döntés elküldéséhez kattintson a **Submit (Küldés** ) gombra.
 
@@ -78,7 +78,7 @@ Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti a
 
     Ha a konfigurált jóváhagyók egyike sem tudja jóváhagyni vagy megtagadni a hozzáférési kérelmet, a kérelem érvényessége a konfigurált kérelem időtartama után lejár. A felhasználó értesítést kap arról, hogy a hozzáférési kérelem lejárt, és újra el kell küldenie a hozzáférési kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

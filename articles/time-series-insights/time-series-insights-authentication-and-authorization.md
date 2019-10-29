@@ -3,7 +3,7 @@ title: Hitelesítés és engedélyezés a Azure Time Series Insights API haszná
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hitelesítés és engedélyezés egy olyan egyéni alkalmazáshoz, amely meghívja a Azure Time Series Insights API-t.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e98c004b802711c83558bf4d7ec86c418679836b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4fd68f770cbe48b15646ec41c0bf94be5e760a50
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981148"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990184"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés Azure Time Series Insights API-hoz
 
 Ez a dokumentum azt ismerteti, hogyan regisztrálhat egy alkalmazást Azure Active Directory az új Azure Active Directory panel használatával. A Azure Active Directory regisztrált alkalmazások lehetővé teszik a felhasználók számára, hogy hitelesítsék magukat a Time Series Insights-környezethez társított Azure Time Series Insight API használatával.
 
-## <a name="service-principal"></a>Szolgáltatásnév
+## <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
 Az alábbi szakaszok azt ismertetik, hogyan konfigurálható egy alkalmazás a Time Series Insights API-nak egy alkalmazás nevében való eléréséhez. Előfordulhat, hogy az alkalmazás a saját alkalmazás hitelesítő adataival lekérdezi vagy közzéteszi a Time Series Insights környezetben a Azure Active Directory használatával.
 
@@ -33,7 +33,7 @@ A Azure Active Directory alkalmazás regisztrációs folyamata három fő lépé
 
 1. [Alkalmazás regisztrálása](#azure-active-directory-app-registration) Azure Active Directoryban.
 1. Engedélyezze, hogy az alkalmazás [hozzáférjen a Time Series Insights-környezethez](#granting-data-access).
-1. Az **alkalmazás-azonosító** és az **ügyfél titka** segítségével szerezzen be egy jogkivonatot az [ügyfélalkalmazás](#client-app-initialization)`https://api.timeseries.azure.com/`-ből. A jogkivonat ezután felhasználható a Time Series Insights API meghívásához.
+1. Az **alkalmazás-azonosító** és az **ügyfél titka** segítségével szerezzen be egy jogkivonatot az [ügyfélalkalmazás](#client-app-initialization)`https://api.timeseries.azure.com/`ból. A jogkivonat ezután felhasználható a Time Series Insights API meghívásához.
 
 A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkülönítése lehetővé teszi a következőket:
 
@@ -59,15 +59,15 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
 1. Az Time Series Insights-környezethez válassza az **adatelérési házirendek** elemet, majd válassza a **Hozzáadás**lehetőséget.
 
-   [@no__t – új adathozzáférési szabályzat 1Add a Time Series Insights-környezethez](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![új adatelérési házirend hozzáadása a Time Series Insights-környezethez](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
 1. A **felhasználó kiválasztása** párbeszédpanelen illessze be az **alkalmazás nevét** vagy az **alkalmazás azonosítóját** a Azure Active Directory-alkalmazás regisztrációja szakaszba.
 
-   [@no__t – 1Find egy alkalmazást a felhasználó kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [alkalmazás keresése![a felhasználó kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
 1. Válassza ki a szerepkört. Válassza ki az **olvasót** az adatlekérdezéshez vagy a **közreműködőhöz** az adatgyűjtés és a hivatkozási adatváltozások lekérdezéséhez. Kattintson az **OK** gombra.
 
-   [![Pick olvasó vagy közreműködő a felhasználói szerepkör kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [a felhasználói szerepkör kiválasztása párbeszédpanel![válassza az olvasó vagy közreműködő elemet](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
 1. Mentse a szabályzatot az **OK gombra**kattintva.
 
@@ -105,13 +105,13 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
 Ez a szakasz a gyakori HTTP-kérelmek fejléceit és paramétereit ismerteti a Time Series Insights GA és az előzetes verziójú API-k használatával végzett lekérdezések végrehajtásához. Az API-specifikus követelmények részletesebben szerepelnek a [Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/)dokumentációjában.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Ha hitelesített lekérdezéseket szeretne végrehajtani a [Time Series INSIGHTS REST API](https://docs.microsoft.com/rest/api/time-series-insights/)-kkal szemben, egy érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az [engedélyezési fejlécben](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) az Ön által választott Rest-ügyfél C#(Poster, JavaScript,) használatával. 
 
 > [!IMPORTANT]
 > A jogkivonatot pontosan ki kell adni a `https://api.timeseries.azure.com/` erőforrásnak (más néven a token célközönségének).
-> * A [Poster](https://www.getpostman.com/) **AuthURL** ezért megfelel a következőnek: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> * A [Poster](https://www.getpostman.com/) **AuthURL** ezért megfelel a következőknek: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
 > Tekintse meg az üzemeltetett Azure Time Series Insights [ügyfél SDK-minta vizualizációját](https://tsiclientsample.azurewebsites.net/) , amelyből megtudhatja, hogyan végezheti el a hitelesítést az Time Series Insights API-kkal programozott módon a [JavaScript ügyféloldali SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) -val a diagramok és a diagramok használatával.
@@ -120,19 +120,19 @@ Ha hitelesített lekérdezéseket szeretne végrehajtani a [Time Series INSIGHTS
 
 Szükséges kérések fejlécei:
 
-- @no__t – 0 a hitelesítéshez és az engedélyezéshez érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az engedélyezési fejlécben. A jogkivonatot pontosan ki kell adni a `https://api.timeseries.azure.com/` erőforrásnak (más néven a token célközönségének).
+- `Authorization` a hitelesítéshez és az engedélyezéshez érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az engedélyezési fejlécben. A jogkivonatot pontosan ki kell adni a `https://api.timeseries.azure.com/` erőforrásnak (más néven a token célközönségének).
 
 Nem kötelező kérelmek fejlécei:
 
-- @no__t – 0 – csak `application/json` támogatott.
-- @no__t – 0 – ügyfél-kérelem azonosítója. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi, hogy a szolgáltatás nyomkövetési műveletet végez a szolgáltatások között.
-- @no__t – 0 – ügyfél-munkamenet-azonosító. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi, hogy a szolgáltatás a kapcsolódó műveletek egy csoportját nyomon követhessék a szolgáltatások között.
-- @no__t – 0 – a kérelmet létrehozó alkalmazás neve. A szolgáltatás rögzíti ezt az értéket.
+- csak `Content-type` `application/json` támogatott.
+- `x-ms-client-request-id` – ügyfél-kérelem azonosítója. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi, hogy a szolgáltatás nyomkövetési műveletet végez a szolgáltatások között.
+- `x-ms-client-session-id` – ügyfél-munkamenet-azonosító. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi, hogy a szolgáltatás a kapcsolódó műveletek egy csoportját nyomon követhessék a szolgáltatások között.
+- `x-ms-client-application-name` – a kérelmet létrehozó alkalmazás neve. A szolgáltatás rögzíti ezt az értéket.
 
 Válasz fejlécei:
 
-- @no__t – 0 – csak `application/json` támogatott.
-- @no__t – 0 – kiszolgáló által generált kérelem azonosítója. Felhasználható arra, hogy felvegye a kapcsolatot a Microsofttal egy kérelem kivizsgálására.
+- csak `Content-type` `application/json` támogatott.
+- `x-ms-request-id` kiszolgáló által generált kérelem azonosítója. Felhasználható arra, hogy felvegye a kapcsolatot a Microsofttal egy kérelem kivizsgálására.
 
 ### <a name="http-parameters"></a>HTTP-paraméterek
 
@@ -143,9 +143,9 @@ Szükséges URL-lekérdezési karakterlánc paraméterei:
 
 Nem kötelező URL-lekérdezési karakterlánc paraméterei:
 
-- @no__t – 0 – kiszolgálóoldali időtúllépés a kérelem végrehajtásához. Csak a [környezeti események beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) és a [környezeti összesítések API-k beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) esetén alkalmazható. Az időtúllépési értéknek ISO 8601 időtartam formátumúnak kell lennie, például @no__t – 0, és a következő tartományba kell esnie: `1-30 s`. Az alapértelmezett érték `30 s`.
+- `timeout=<timeout>` – kiszolgálóoldali időtúllépés a kérelem végrehajtásához. Csak a [környezeti események beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) és a [környezeti összesítések API-k beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) esetén alkalmazható. Az időtúllépési értéknek ISO 8601 időtartam formátumúnak kell lennie, például `"PT20S"`, és a tartományba kell esnie `1-30 s`. Az alapértelmezett érték `30 s`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A GA Time Series Insights API-t meghívó mintakód: az [adatlekérdezés a C#használatával ](./time-series-insights-query-data-csharp.md).
 

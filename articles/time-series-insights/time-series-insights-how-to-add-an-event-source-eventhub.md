@@ -3,7 +3,7 @@ title: Event Hubs eseményforrás hozzáadása a Azure Time Series Insightshoz |
 description: Ez a cikk azt ismerteti, hogyan adható hozzá az Azure Event Hubshoz csatlakoztatott eseményforrás a Time Series Insights-környezethez.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3adf8b71d264b01f13f5aac7002b7ec455a31d60
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274355"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990079"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -40,7 +40,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg az Event hub-t az Event hub névterében.
 
-    [@no__t – 1Nyissuk meg az Event hub-névteret](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
+    [![az Event hub-névtér megnyitása](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
 1. Az **entitások**területen válassza a **fogyasztói csoportok**lehetőséget, majd válassza a **fogyasztói csoport**elemet.
 
@@ -58,7 +58,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. A **környezeti topológia**területen válassza az **eseményforrás**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 
-   [@no__t – 1Under az események forrásaként válassza a Hozzáadás gombot](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+   [![az eseményforrás területen válassza a Hozzáadás gombot](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
 1. Adjon meg egy értéket az **eseményforrás neve** számára, amely egyedi a Time Series Insights környezetben, például: **Event-stream**.
 
@@ -68,11 +68,11 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
    * Ha az egyik előfizetésében van egy meglévő Event hub, válassza az **Event hub használata az elérhető előfizetések közül**lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
 
-     [@no__t – 1. eseményforrás-importálási beállítás](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
+     [![válasszon egy eseményforrás-importálási lehetőséget](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
     *  A következő táblázat az **Event hub elérhető előfizetések** lehetőségből való használatának kötelező tulajdonságait ismerteti:
 
-       [@no__t – a 1Subscription és az Event hub részletei](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
+       [az előfizetés és az Event hub![részletei](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
        | Tulajdonság | Leírás |
        | --- | --- |

@@ -1,24 +1,21 @@
 ---
 title: A Terraform használata az Azure-ral
 description: Bevezetés a Terraform használatára és az Azure-infrastruktúra üzembe helyezésére.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, áttekintés, megtervezés, alkalmazás, automatizálás
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 4e51b8b5aa1cd00fcdd2481d73c40458d01d38c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.topic: overview
+ms.date: 10/26/2019
+ms.openlocfilehash: 1c6ac9b67f556b039b9ffd5ed725ea1f24aeeb3a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173071"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969242"
 ---
 # <a name="terraform-with-azure"></a>A Terraform használata az Azure-ral
 
-A [Hashicorp Terraform](https://www.terraform.io/) egy nyílt forráskódú eszköz, amely felhőinfrastruktúra kiépítésére és kezelésére használható. Kodifikálja az infrastruktúrát a felhőerőforrások (például virtuális gépek, tárfiókok, hálózati adapter) topológiáját leíró konfigurációs fájlokban. A Terraform parancssori felülete (CLI) egy egyszerű mechanizmust biztosít a konfigurációs fájlok üzembe helyezéséhez és a verziókezeléshez az Azure-ban vagy más támogatott felhőszolgáltatásban.
+A [Hashicorp Terraform](https://www.terraform.io/) egy nyílt forráskódú eszköz, amely felhőinfrastruktúra kiépítésére és kezelésére használható. A kodifikálja az infrastruktúrát a felhőalapú erőforrások topológiáját leíró konfigurációs fájlokban. Ezek az erőforrások a következők: Virtual Machines, Storage-fiókok és hálózati adapterek. A Terraform CLI egyszerű mechanizmust biztosít a konfigurációs fájlok Azure-ba történő üzembe helyezéséhez és verziójának telepítéséhez.
 
 Ez a cikk az Azure-infrastruktúra Terraformmal végzett felügyeletének előnyeit ismerteti.
 
@@ -30,23 +27,22 @@ A Terraform sablonalapú konfigurációs fájljai lehetővé teszik Azure-erőfo
 - Ugyanazt a sablont helyezi többször üzembe, ezzel azonos fejlesztési, tesztelési és éles környezetet hoz létre.
 - Csökkenti a fejlesztési és tesztelési környezetek költségeit, mivel igény szerint hozza létre őket.
 
-## <a name="understand-infrastructure-changes-before-they-are-applied"></a>Az infrastruktúra módosításainak megismerése azok alkalmazása előtt 
+## <a name="understand-infrastructure-changes-before-being-applied"></a>Az infrastruktúra változásainak megismerése az alkalmazás előtt
 
 Ahogy az erőforrás-topológia összetetté válik, az infrastruktúra-módosítások jelentésének és hatásának megértése bonyolult lehet.
 
-A Terraform olyan parancssori felületet (CLI) biztosít, amellyel a felhasználók érvényesíthetik és előnézetben megtekinthetik az infrastruktúra módosításait még azok üzembe helyezése előtt. Az infrastruktúra-módosítások biztonságos és hatékony előzetes megtekintésének számos előnye van:
+A Terraform CLI lehetővé teszi, hogy a felhasználók érvényesítsék és előtekintsenek az infrastruktúra változásait az alkalmazás előtt. Az infrastrukturális változások biztonságos módon történő megtekintésének számos előnye van:
 - A javasolt módosítások és azok hatásainak gyors megismerésével a csoporttagok közötti együttműködés hatékonyabb lehet.
 - A nem szándékos módosítások a fejlesztési folyamat korai szakaszában észrevehetők
 
-
 ## <a name="deploy-infrastructure-to-multiple-clouds"></a>Infrastruktúra üzembe helyezése több felhőbe
 
-A Terraform egy népszerű eszköz többfelhős forgatókönyvek esetében, amelyekben hasonló infrastruktúra van üzembe helyezve az Azure-ban és további felhőszolgáltatókon vagy helyszíni adatközpontokban. Lehetővé teszi a fejlesztők számára, hogy ugyanazokat az eszközöket és konfigurációs fájlokat használják az infrastruktúra kezelésére több felhőszolgáltatón is.
+A Terraform egy infrastruktúra üzembe helyezése több felhőalapú szolgáltatón keresztül. Lehetővé teszi, hogy a fejlesztők konzisztens eszközöket használjanak az egyes infrastruktúra-definíciók kezeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a Terraformot és előnyeit, tekintse meg a javasolt következő lépéseket:
 
-- Első lépésként a [telepítse a Terraformot, majd konfigurálja az Azure használatához](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
-- [Hozzon létre egy Azure-beli virtuális gépet a Terraformmal](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm).
+- Első lépésként a [telepítse a Terraformot, majd konfigurálja az Azure használatához](/azure/virtual-machines/linux/terraform-install-configure).
+- [Hozzon létre egy Azure-beli virtuális gépet a Terraformmal](/azure/virtual-machines/linux/terraform-create-complete-vm).
 - Fedezze fel a [Terraform Azure Resource Manager-modulját](https://www.terraform.io/docs/providers/azurerm/). 

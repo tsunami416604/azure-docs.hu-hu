@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 2174e359f739cfdf3791c8ec64d1a95be2873555
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930916"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990646"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -556,7 +556,7 @@ Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok á
    | 4 |2016-11-16T03:00:00 |2016-11-16 -03. txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
 
-    Ne feledje, hogy a bemeneti mappában lévő összes fájl egy szelet részét képezi a fent említett kezdési időpontokban. A szelet feldolgozásakor az egyéni tevékenység átvizsgálja az egyes fájlokat, és létrehoz egy sort a kimeneti fájlban a keresési kifejezés ("Microsoft") előfordulásának számával. Ha a inputfolder három fájl található, a kimeneti fájlban három sor található minden óránkénti szelethez: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt stb.
+    Ne feledje, hogy a bemeneti mappában lévő összes fájl egy szelet részét képezi a fent említett kezdési időpontokban. A szelet feldolgozásakor az egyéni tevékenység átvizsgálja az egyes fájlokat, és létrehoz egy sort a kimeneti fájlban a keresési kifejezés ("Microsoft") előfordulásának számával. Ha a bemeneti mappában három fájl található, a kimeneti fájlban három sor található minden óránkénti szelethez: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt stb.
 3. A **OutputDataset**üzembe helyezéséhez kattintson a parancssáv **Deploy (üzembe helyezés** ) elemére.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Egyéni tevékenységet használó folyamat létrehozása és futtatása

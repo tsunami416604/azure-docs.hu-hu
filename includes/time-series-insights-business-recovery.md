@@ -1,15 +1,16 @@
 ---
 ms.topic: include
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.date: 10/09/2019
-ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72259098"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990872"
 ---
 ## <a name="business-disaster-recovery"></a>Üzleti katasztrófák helyreállítása
 
@@ -23,7 +24,7 @@ Az Azure-on keresztül elérhető további magas rendelkezésre állási funkci�
 
 - **Feladatátvétel**: az Azure [geo-replikációt és terheléselosztást](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)biztosít.
 - **Adatok helyreállítása** és **tárolása – helyreállítás**: [Az Azure számos lehetőséget kínál az adatok megőrzésére és helyreállítására](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Site Recovery**: az Azure a site Recovery szolgáltatásait [Azure site Recoveryon](https://docs.microsoft.com/azure/site-recovery/)keresztül biztosítja.
+- **Azure site Recovery**: az Azure a site Recovery szolgáltatásait [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/)használatával biztosítja.
 - **Azure Backup**: a [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) az Azure-beli virtuális gépek helyszíni és felhőalapú biztonsági mentését is támogatja.
 
 Győződjön meg arról, hogy a megfelelő Azure-funkciók lehetővé teszik, hogy globális, régiók közötti magas rendelkezésre állást biztosítson az eszközök és a felhasználók számára.
@@ -35,8 +36,8 @@ Győződjön meg arról, hogy a megfelelő Azure-funkciók lehetővé teszik, ho
 
 Néhány Azure IoT-szolgáltatás beépített üzleti katasztrófa-helyreállítási funkciókat is tartalmaz:
 
-- [Magas rendelkezésre állású vész-helyreállítás IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), beleértve a régión belüli redundanciát is
-- [Event Hubs házirendek](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Azure IoT hub magas rendelkezésre állású vész-helyreállítás](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), amely a régión belüli redundanciát is magában foglalja
+- [Azure Event Hubs házirendek](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 - [Azure Storage-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 A Time Series Insights más szolgáltatásokkal való integrálása további vész-helyreállítási lehetőségeket biztosít. Előfordulhat például, hogy az telemetria eljuttatott értesítéseket a Backup Azure Blob Storage-adatbázisa őrzi meg.
@@ -50,13 +51,13 @@ Azonban előfordulhat, hogy az Azure Time Series-környezet teljes biztonsági m
 - Az adatok és a forgalom átirányításához a Time Series Insights kifejezetten *feladatátvételi példányként*
 - Az adatok és a naplózási információk megőrzése
 
-Általánosságban elmondható, hogy a Time Series Insights-környezet duplikálása a legjobb módszer, ha egy második Time Series Insights-környezetet hoz létre egy biztonsági mentési Azure-régióban. Az eseményeket az elsődleges esemény forrásaként is elküldi erre a másodlagos környezetre. Győződjön meg arról, hogy egy második, dedikált fogyasztói csoportot használ. Kövesse a forrás üzleti katasztrófák helyreállítási irányelveit a korábban leírtak szerint.
+Általánosságban elmondható, hogy a Time Series Insights-környezet duplikálása a legjobb módszer, ha egy második Time Series Insights-környezetet hoz létre egy biztonsági mentési Azure-régióban. Az eseményeket az elsődleges esemény forrásaként is elküldi erre a másodlagos környezetre. Győződjön meg arról, hogy egy második dedikált fogyasztói csoportot használ. Kövesse a forrás üzleti katasztrófák helyreállítási irányelveit a korábban leírtak szerint.
 
 Ismétlődő környezet létrehozásához:
 
 1. Hozzon létre egy környezetet egy második régióban. További információ: [új Time Series Insights-környezet létrehozása a Azure Portalban](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 1. Hozzon létre egy második dedikált fogyasztói csoportot az eseményforrás számára.
-1. Az eseményforrás összekötése az új környezettel. Győződjön meg arról, hogy a második, dedikált fogyasztói csoportot jelölte ki.
+1. Az eseményforrás összekötése az új környezettel. Győződjön meg arról, hogy a második dedikált fogyasztói csoportot jelölte ki.
 1. Tekintse át a Time Series Insights [IoT hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) és [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) dokumentációját.
 
 Ha egy esemény következik be:

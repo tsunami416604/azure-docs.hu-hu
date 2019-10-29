@@ -3,7 +3,7 @@ title: Problémák diagnosztizálása, hibaelhárítása és megoldása a Azure 
 description: Ez a cikk a Azure Time Series Insights-környezetben felmerülő gyakori problémák diagnosztizálását, hibaelhárítását és megoldását ismerteti.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330873"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991268"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet problémáinak diagnosztizálása és megoldása
 
@@ -40,11 +40,11 @@ A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták 
 
 * Az Azure IoT Hub IoT hub esetében meg kell adnia a **szolgáltatás-csatlakozási** engedélyekkel rendelkező kulcsot. A **iothubowner** vagy a **szolgáltatási** házirendek egyike is működni fog, mivel mindkettőnek van **Service-csatlakozási** engedélye.
 
-   [@no__t – 1IoT hub szolgáltatás csatlakozási engedélyei](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [![IoT Hub szolgáltatás csatlakozási engedélyei](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * Az Azure Event Hubsban található Event hub esetében meg kell adnia a **figyelési** engedélyekkel rendelkező kulcsot. Az **olvasási** vagy a **kezelési** szabályzatok egyike sem fog működni, mert mindkettő **figyelési** engedéllyel rendelkezik.
 
-   [@no__t – 1Event hub figyelési engedélyei](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [az Event hub figyelési engedélyeinek![](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>C: a megadott fogyasztói csoport nem kizárólag Time Series Insights
 
@@ -69,7 +69,7 @@ A szabályozási korlátot a környezet SKU-típusa és kapacitása alapján ké
 
 Az alábbi ábrán egy olyan Time Series Insights-környezet látható, amely egy S1-es SKU-t és 3 kapacitást tartalmaz. Naponta 3 000 000 eseményt tud beáramlani.
 
-[@no__t – 1Environment SKU jelenlegi kapacitása](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[![környezeti SKU jelenlegi kapacitása](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Tegyük fel például, hogy egy környezet az Event hub üzeneteit tölti be. A napi bejövő forgalom aránya ~ 67 000 üzenet. Ez a sebesség percenként körülbelül 46 üzenetet fordít. 
 

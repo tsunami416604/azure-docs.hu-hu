@@ -1,6 +1,6 @@
 ---
 title: Korlátok és konfiguráció – Azure Logic Apps
-description: A Azure Logic Apps szolgáltatási korlátai és konfigurációs értékei
+description: A szolgáltatás korlátai, például az időtartam, az átviteli sebesség és a kapacitás, valamint a konfigurációs értékek, például az engedélyezni kívánt IP-címek, Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799364"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968604"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -35,9 +35,9 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 | Váltás hatóköri eseteinek korlátja | 25 | |
 | Változók száma munkafolyamatban | 250 | |
 | Karakter/kifejezés | 8,192 | |
-| @No__t_0 maximális mérete | 16 000 karakter |
-| @No__t_0 vagy `trigger` neve | 80 karakter | |
-| @No__t_0 hossza | 256 karakter | |
+| `trackedProperties` maximális mérete | 16 000 karakter |
+| `action` vagy `trigger` neve | 80 karakter | |
+| `description` hossza | 256 karakter | |
 | Maximális `parameters` | 50 | |
 | Maximális `outputs` | 10 | |
 ||||
@@ -146,7 +146,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 | Név | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | Üzenet mérete | 100 MB | 200 MB | A korlát megkerüléséhez lásd: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják a darabolást, vagy akár az alapértelmezett korlátot is. |
-| Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p>Az integrációs szolgáltatási környezet esetében a Logic Apps motor támogatja ezt a korlátot, de az összekötők a motor korlátján belül saját darabolási korlátokkal rendelkeznek, például: [Azure Blob Storage-összekötő](/connectors/azureblob/). További információk a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
+| Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p>Az integrációs szolgáltatási környezet esetében a Logic Apps motor támogatja ezt a korlátot, de az összekötők a motor korlátján belül saját darabolási korlátokkal rendelkeznek, például lásd: az [Azure Blob Storage CONNECTOR API-referenciája](https://docs.microsoft.com/connectors/azureblob/). További információk a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
 | Kifejezés kiértékelési korlátja | 131 072 karakter | 131 072 karakter | A `@concat()`, `@base64()`, `@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
 |||||
 

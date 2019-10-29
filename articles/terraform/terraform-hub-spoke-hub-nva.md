@@ -1,22 +1,19 @@
 ---
-title: Hub virtuális hálózati berendezés létrehozása Terraform az Azure-ban
+title: Oktatóanyag – hub virtuális hálózati berendezés létrehozása az Azure-ban a Terraform használatával
 description: Az oktatóanyag olyan hub-VNet létrehozását valósítja meg, amely az összes többi hálózat között közös kapcsolódási pontként működik
-services: terraform
-ms.service: azure
-keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, VNet peering, hub küllős, hub.
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 5696ee20f6f306d45c5d7ba04552b9206f2a5429
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173413"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969374"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Oktatóanyag: Hub virtuális hálózati berendezés létrehozása Terraform az Azure-ban
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Oktatóanyag: hub virtuális hálózati berendezés létrehozása az Azure-ban a Terraform használatával
 
 A **VPN-eszköz** olyan eszköz, amely külső kapcsolatot biztosít a helyszíni hálózattal. A VPN-eszköz lehet hardveres eszköz vagy szoftveres megoldás. Egy szoftveres megoldás például az Útválasztás és távelérés szolgáltatás (RRAS) a Windows Server 2012 rendszerben. A VPN-készülékekről további információt a [helyek közötti VPN Gateway kapcsolatok VPN-eszközeinek ismertetése](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)című témakörben talál.
 
@@ -58,9 +55,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="declare-the-hub-network-appliance"></a>A hub hálózati berendezés deklarálása
 
-Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigurációs fájlt.
+Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform-konfigurációs fájlt.
 
-1. A Cloud Shellban hozzon létre egy nevű `hub-nva.tf`új fájlt.
+1. Cloud Shell hozzon létre egy `hub-nva.tf`nevű új fájlt.
 
     ```bash
     code hub-nva.tf
@@ -77,37 +74,37 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
 
     resource "azurerm_resource_group" "hub-nva-rg" {
       name     = "${local.prefix-hub-nva}-rg"
-      location = "${local.hub-nva-location}"
+      location = local.hub-nva-location
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_network_interface" "hub-nva-nic" {
       name                 = "${local.prefix-hub-nva}-nic"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
       enable_ip_forwarding = true
 
       ip_configuration {
-        name                          = "${local.prefix-hub-nva}"
-        subnet_id                     = "${azurerm_subnet.hub-dmz.id}"
+        name                          = local.prefix-hub-nva
+        subnet_id                     = azurerm_subnet.hub-dmz.id
         private_ip_address_allocation = "Static"
         private_ip_address            = "10.0.0.36"
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine" "hub-nva-vm" {
       name                  = "${local.prefix-hub-nva}-vm"
-      location              = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name   = "${azurerm_resource_group.hub-nva-rg.name}"
-      network_interface_ids = ["${azurerm_network_interface.hub-nva-nic.id}"]
-      vm_size               = "${var.vmsize}"
+      location              = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name   = azurerm_resource_group.hub-nva-rg.name
+      network_interface_ids = [azurerm_network_interface.hub-nva-nic.id]
+      vm_size               = var.vmsize
 
       storage_image_reference {
         publisher = "Canonical"
@@ -125,8 +122,8 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
 
       os_profile {
         computer_name  = "${local.prefix-hub-nva}-vm"
-        admin_username = "${var.username}"
-        admin_password = "${var.password}"
+        admin_username = var.username
+        admin_password = var.password
       }
 
       os_profile_linux_config {
@@ -134,15 +131,15 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine_extension" "enable-routes" {
       name                 = "enable-iptables-routes"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
-      virtual_machine_name = "${azurerm_virtual_machine.hub-nva-vm.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
+      virtual_machine_name = azurerm_virtual_machine.hub-nva-vm.name
       publisher            = "Microsoft.Azure.Extensions"
       type                 = "CustomScript"
       type_handler_version = "2.0"
@@ -157,14 +154,14 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
     SETTINGS
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_route_table" "hub-gateway-rt" {
       name                          = "hub-gateway-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -188,20 +185,20 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "hub-gateway-rt-hub-vnet-gateway-subnet" {
-      subnet_id      = "${azurerm_subnet.hub-gateway-subnet.id}"
-      route_table_id = "${azurerm_route_table.hub-gateway-rt.id}"
+      subnet_id      = azurerm_subnet.hub-gateway-subnet.id
+      route_table_id = azurerm_route_table.hub-gateway-rt.id
       depends_on = ["azurerm_subnet.hub-gateway-subnet"]
     }
 
     resource "azurerm_route_table" "spoke1-rt" {
       name                          = "spoke1-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -218,26 +215,26 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke1-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-mgmt.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke1-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-workload.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-workload"]
     }
 
     resource "azurerm_route_table" "spoke2-rt" {
       name                          = "spoke2-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -254,19 +251,19 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke2-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-mgmt.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke2-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-workload.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-workload"]
     }
 
@@ -274,7 +271,7 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigur�
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Küllős virtuális hálózatok létrehozása a Terraform az Azure-ban](./terraform-hub-spoke-spoke-network.md)

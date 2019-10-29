@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: a4811da398fde869d8eb5457db11a592006c59a9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/28/2019
+ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934273"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988235"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A folyamatos átviteli egységek ismertetése és módosítása
 
@@ -34,6 +34,7 @@ A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, 
     ![Azure Portal Stream Analytics feladatok konfigurálása][img.stream.analytics.preview.portal.settings.scale]
     
 4. A feladatokhoz tartozó SUs beállításához használja a csúszkát. Figyelje meg, hogy az adott SU-beállításokra korlátozódik. 
+5. Megváltoztathatja a feladathoz hozzárendelt SUs számát még akkor is, ha fut. Ez nem lehetséges, ha a feladattípus [nem particionált kimenetet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) használ, vagy [több lépésből álló lekérdezéssel rendelkezik, és értékek alapján eltérő partíciót](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)tartalmaz. A feladatoknak legalább 6 SUs-vel kell rendelkezniük ahhoz, hogy ezt a beállítást a feladatok futtatásakor módosítani lehessen. Lehet, hogy a feladatok futtatásakor a SU értékek közül választhat. 
 
 ## <a name="monitor-job-performance"></a>Feladatok teljesítményének figyelése
 A Azure Portal használatával nyomon követheti a feladatok átviteli sebességét:

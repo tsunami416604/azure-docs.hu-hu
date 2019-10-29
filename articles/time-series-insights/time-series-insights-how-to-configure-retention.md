@@ -3,20 +3,19 @@ title: Az adatmegőrzés konfigurálása a Azure Time Series Insights-környezet
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a megőrzés a Azure Time Series Insights környezetben.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330881"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990058"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Adatmegőrzés konfigurálása Time Series Insights
 
@@ -41,7 +40,7 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 1. A **Beállítások** fejléc alatt válassza a **Konfigurálás**lehetőséget.
 
-    [@no__t – 1. beállítások, majd konfigurálás](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![válassza a beállítások, majd a Konfigurálás lehetőséget.](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 1. Válassza ki az **adatmegőrzési időt (napokban)** az adatmegőrzés konfigurálásához a csúszka sáv használatával, vagy írjon be egy számot a szövegmezőbe.
 
@@ -49,7 +48,7 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 1. A **tárolási korlát túllépte a viselkedési** beállítást. Válassza a **régi adattörlés** vagy a **Bejövő forgalom szüneteltetése** lehetőséget.
 
-    [@no__t – 1Data megőrzése – elfogadás és mentés.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![adatok megőrzése – elfogadás és mentés.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. A jelölőnégyzet bejelölésével megtekintheti, hogy áttekintette a dokumentációt, és megértette az adatvesztés lehetséges kockázatait. A módosítások konfigurálásához válassza a **Mentés** lehetőséget.
 

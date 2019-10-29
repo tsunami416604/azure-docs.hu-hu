@@ -3,7 +3,7 @@ title: A Azure Time Series Insights-környezet kezelése Azure Resource Manager-
 description: Ez a cikk azt ismerteti, hogyan felügyelheti Azure Time Series Insights környezetét programozott módon Azure Resource Manager használatával.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274799"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991220"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -64,8 +64,8 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      | eventHubNamespaceName | A forrás-esemény központja névterét. |
      | eventHubName | A forrás-esemény hub neve. |
      | consumerGroupName | Annak a fogyasztói csoportnak a neve, amelyet a Time Series Insights szolgáltatás az Event hub adatainak beolvasásához használ majd. **Megjegyzés:** Az erőforrás-tartalom elkerüléséhez ezt a fogyasztói csoportot a Time Series Insights szolgáltatásnak kell elosztania, és nem kell más olvasókkal megosztania. |
-     | environmentName | A környezet neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` és bármely vezérlő karakter. Minden egyéb karakter engedélyezett.|
-     | eventSourceName | Az eseményforrás alárendelt erőforrásának neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` és bármely vezérlő karakter. Minden egyéb karakter engedélyezett. |
+     | environmentName | A környezet neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`és bármely vezérlő karakter. Minden egyéb karakter engedélyezett.|
+     | eventSourceName | Az eseményforrás alárendelt erőforrásának neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`és bármely vezérlő karakter. Minden egyéb karakter engedélyezett. |
 
     <div id="optional-parameters"></div>
 

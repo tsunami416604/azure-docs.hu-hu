@@ -1,5 +1,5 @@
 ---
-title: Hibák elhárítása SAP HANA adatbázisok Azure Backup használatával történő biztonsági mentése során | Microsoft Docs
+title: SAP HANA adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása – Azure Backup
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954452"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968453"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -32,13 +32,13 @@ Az Előregisztráció szkriptje:
     - Katalógus OLVASása: a biztonsági mentési katalógus beolvasása.
     - SAP_INTERNAL_HANA_SUPPORT: néhány privát tábla eléréséhez.
 2. Feltesz egy kulcsot a HANA beépülő modul Hdbuserstore az összes művelet (adatbázis-lekérdezések, visszaállítási műveletek, a biztonsági mentés konfigurálása és futtatása) kezelésére.
-   
+
    A kulcs létrehozásának megerősítéséhez futtassa a HDBSQL parancsot a HANA gépen a SIDADM hitelesítő adataival:
 
     ``` hdbsql
     hdbuserstore list
     ```
-    
+
     A parancs kimenetének meg kell jelennie a {SID} {DBNAME} kulcsnak, amely a felhasználó AZUREWLBACKUPHANAUSER jelenik meg.
 
 > [!NOTE]
@@ -49,8 +49,8 @@ Az Előregisztráció szkriptje:
 Miután kiválasztott egy adatbázist a biztonsági mentéshez, a Azure Backup szolgáltatás az backInt-paramétereket az adatbázis szintjén konfigurálja:
 
 - [catalog_backup_using_backint: true]
-- [enable_accumulated_catalog_backup:false]
-- [parallel_data_backup_backint_channels:1]
+- [enable_accumulated_catalog_backup: FALSE]
+- [parallel_data_backup_backint_channels: 1]
 - [log_backup_timeout_s: 900)]
 - [backint_response_timeout: 7200]
 
@@ -67,7 +67,8 @@ Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. 
 
 ![SDC-visszaállítási bemenetek](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-Vegye figyelembe a következőket
+Vegye figyelembe a következő szempontokat:
+
 - Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve, azaz H21 (SDC)
 - A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC esetében a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
 - Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzetre kattintva engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
@@ -81,12 +82,12 @@ A HANA-hoz készült több Container Database-ben a standard konfiguráció SYST
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-data| Hibaüzenet | A lehetséges okok | Javasolt művelet |
+adatok| Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Nem sikerült csatlakozni a HANA rendszerhez. Ellenőrizze, hogy a rendszer működik-e.| A Azure Backup szolgáltatás nem tud csatlakozni a HANA-hoz, mert a HANA-adatbázis nem működik. Vagy a HANA fut, de nem engedélyezi a Azure Backup szolgáltatás kapcsolódását. | Győződjön meg arról, hogy a HANA-adatbázis vagy-szolgáltatás nem áll le. Ha a HANA-adatbázis vagy-szolgáltatás fut, ellenőrizze, hogy az [összes engedély be](#setting-up-permissions)van-e állítva. Ha a kulcs hiányzik, futtassa újra az előregisztrációi parancsfájlt egy új kulcs létrehozásához. |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| Hibaüzenet | A lehetséges okok | Javasolt művelet |
+| Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
 | A rendszer érvénytelen Backint-konfigurációt észlelt. Állítsa le a védelmet, és konfigurálja újra az adatbázist.| A backInt paraméterek helytelenül vannak megadva a Azure Backuphoz. | Győződjön [meg arról, hogy a paraméterek be vannak állítva](#setting-up-backint-parameters). Ha backInt paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a **védelem leállítása és a biztonsági mentési adatok megőrzése** a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget.|

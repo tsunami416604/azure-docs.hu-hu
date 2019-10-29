@@ -10,25 +10,31 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672658"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968716"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
-Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
+A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
 
-* A legújabb kiadásaihoz.
+* A legújabb kiadások
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
 
-## <a name="september-2019"></a>Szeptember 2019
+## <a name="october-2019"></a>Október 2019
+ 
+* Animált karakterek keresése a gyűjteményben
+
+    Az animált karakterek indexelése mostantól megkeresheti őket a fiók videós hasábjában. További információ: [animált karakterek felismerése](animated-characters-recognition.md).
+
+## <a name="september-2019"></a>2019. szeptember
  
 Több előrelépés is jelent meg az IBC 2019-ben:
  
@@ -37,7 +43,7 @@ Több előrelépés is jelent meg az IBC 2019-ben:
     Lehetővé teszi a csoportos hirdetések felismerési karaktereinek észlelését az animált tartalomban az egyéni jövőképtel való integráción keresztül. További információ: [animált karakterek észlelése](animated-characters-recognition.md).
 * Többnyelvű azonosítás (nyilvános előzetes verzió)
 
-    A hangsávokban több nyelven is felderítheti a szegmenseket, és a rajtuk alapuló többnyelvű átiratot hozhat létre. Kezdeti támogatás: Angol, spanyol, német és francia. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
+    A hangsávokban több nyelven is felderítheti a szegmenseket, és a rajtuk alapuló többnyelvű átiratot hozhat létre. Kezdeti támogatás: angol, spanyol, német és francia. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
 * Elnevezett entitások kinyerése személyekhez és helyekhez
 
     Természetes nyelvi feldolgozás (NLP) használatával kinyerheti a márkákat, a helyszíneket és a beszéd-és vizualizációs szövegből származó személyeket.
@@ -48,7 +54,7 @@ Több előrelépés is jelent meg az IBC 2019-ben:
     
     A "viszonyítási modell" példa mostantól támogatja az IPTC-rendszertan mélyebb részletességét. Olvassa el részletesen [Azure Media Services új AI-alapú innovációt](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
-## <a name="august-2019"></a>Augusztus 2019
+## <a name="august-2019"></a>2019. augusztus
  
 ### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer üzembe helyezése Egyesült Királyság déli régiója
 
@@ -85,7 +91,7 @@ A videó indexeléséhez a 4096-es URL-lekérdezési karakterlánc (2048 helyett
 
 A projektek mostantól különböző nyelveken indexelt videók alapján is létrehozhatók (csak API-val).
 
-## <a name="july-2019"></a>Július 2019
+## <a name="july-2019"></a>2019. július
 
 ### <a name="editor-as-a-widget"></a>Szerkesztő widgetként
 
@@ -95,7 +101,7 @@ A Video Indexer AI-Editor mostantól elérhető widgetként, amely beágyazható
 
 Az ügyfelek a portál Testreszabás lapján VTT, SRT és TTML fájlformátumokat is biztosíthatnak a nyelvi modellekhez.
 
-## <a name="june-2019"></a>Június 2019
+## <a name="june-2019"></a>2019. június
 
 ### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer üzembe helyezése Kelet-Japánban
 
@@ -129,6 +135,6 @@ Az [Update video ÁTIRAT API](https://api-portal.videoindexer.ai/docs/services/O
 
 A már támogatott lezárt feliratozási formátum (SRT, VTT és TTML) mellett a Video Indexer mostantól támogatja az átirat TXT-és CSV-formátumokban való letöltését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](video-indexer-overview.md)

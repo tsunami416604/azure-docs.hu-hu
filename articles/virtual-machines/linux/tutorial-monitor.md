@@ -16,10 +16,10 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/28/2019
 ms.locfileid: "71680077"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gép figyelése az Azure-ban
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
 > * Virtuálisgép-gazda metrikáinak megtekintése
-> * Az Azure Monitor engedélyezése a virtuális gépeknek
+> * Azure Monitor for VMs engedélyezése
 > * VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 > * Riasztás létrehozása
 
@@ -129,13 +129,13 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor fo
 
 1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
-2. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
+2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
-3. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
+3. Az **áttekintések (előzetes verzió)** lapon válassza a **kipróbálás most**lehetőséget.
 
-    ![A virtuális gépek az Azure Monitor engedélyezése a virtuális gép](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Virtuális gép Azure Monitor for VMsának engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. Az a **Azure Monitor Insights felvételi** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben, válassza a legördülő listában.  
+4. Ha egy meglévő Log Analytics munkaterülettel rendelkezik ugyanabban az előfizetésben, akkor a **Azure monitor** megállapítások bevezetése lapon válassza ki azt a legördülő listából.  
 
     A lista előjelöli az alapértelmezett munkaterületet és helyet, ahol a virtuális gép üzembe lett helyezve az előfizetésben. 
 
@@ -144,7 +144,7 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor fo
 
 Ha engedélyezte a figyelést, előfordulhat, hogy néhány percet várnia kell, amíg meg nem tekinti a virtuális gép teljesítmény-metrikáit.
 
-![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Azure Monitor for VMs figyelés telepítésének engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 
@@ -152,7 +152,7 @@ Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több f�
 
 1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
-2. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
+2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
 3. Válassza a **teljesítmény** fület.
 
@@ -176,7 +176,7 @@ A következő példában az átlagos processzorhasználat alapján hozunk létre
 
 6. Kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép teljesítményét. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -185,7 +185,7 @@ Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép telje
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
 > * Gazdagép metrikáinak megtekintése
-> * Az Azure Monitor engedélyezése a virtuális gépeknek
+> * Azure Monitor for VMs engedélyezése
 > * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 

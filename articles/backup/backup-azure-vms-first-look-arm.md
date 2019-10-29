@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gép biztonsági mentése a virtuálisgép-beállításokkal a Azure Backup szolgáltatással
+title: Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból Azure Backup
 description: Ismerje meg, hogyan készíthet biztonsági mentést Azure-beli virtuális gépekről a Azure Backup szolgáltatással
 author: dcurwin
 manager: carmonm
@@ -7,21 +7,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639770"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969049"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
 
 Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről a [Azure Backup](backup-overview.md) szolgáltatással. Az Azure-beli virtuális gépek biztonsági mentését több módszer használatával végezheti el:
 
-- Egyetlen Azure-beli virtuális gép: A cikkben szereplő utasítások azt ismertetik, hogyan lehet biztonsági másolatot készíteni egy Azure-beli virtuális gépről közvetlenül a virtuális gép beállításairól.
-- Több Azure-beli virtuális gép: Beállíthat egy Recovery Services-tárolót, és konfigurálhatja a biztonsági mentést több Azure-beli virtuális gép számára. Ehhez a forgatókönyvhöz kövesse az [ebben a cikkben](backup-azure-arm-vms-prepare.md) szereplő utasításokat.
-
-
+- Egyetlen Azure-beli virtuális gép: a cikk utasításai azt írják le, hogyan lehet biztonsági másolatot készíteni egy Azure-beli virtuális gépről közvetlenül a virtuális gép beállításairól.
+- Több Azure-beli virtuális gép: beállíthat egy Recovery Services-tárolót, és konfigurálhat több Azure-beli virtuális gép biztonsági mentését. Ehhez a forgatókönyvhöz kövesse az [ebben a cikkben](backup-azure-arm-vms-prepare.md) szereplő utasításokat.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -32,13 +30,12 @@ Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az Azur
 
 Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít egy bővítményt a gépen futó virtuálisgép-ügynökön. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, az ügynök futni fog. Bizonyos esetekben például létrehozhat egy egyéni virtuális gépet, vagy áttelepítheti a gépet a helyszínről. Előfordulhat, hogy manuálisan kell telepítenie az ügynököt.
 
-- Ha manuálisan kell telepítenie a virtuálisgép-ügynököt, kövesse a [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) rendszerű virtuális gépekre vonatkozó utasításokat.
+- Ha manuálisan kell telepítenie a virtuálisgép-ügynököt, kövesse a Windows vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) [rendszerű](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) virtuális gépekre vonatkozó utasításokat.
 - Miután telepítette az ügynököt, a biztonsági mentés engedélyezésekor Azure Backup telepíti a biztonsági mentési bővítményt az ügynöknek. A felhasználó beavatkozása nélkül frissíti és kibővíti a bővítményt.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Biztonsági mentés az Azure-beli virtuális gép beállításaiból
 
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Kattintson a **minden szolgáltatás** elemre, majd a szűrő mezőbe írja be a **virtuális gépeket**, majd kattintson a **virtuális gépek**elemre.
 3. A virtuális gépek listájából válassza ki azt a virtuális gépet, amelyről biztonsági másolatot szeretne készíteni.
 4. A virtuális gép menüben kattintson a **biztonsági mentés**elemre.
@@ -69,15 +66,13 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
     - A kezdeti biztonsági mentés befejezéséig a **legutóbbi biztonsági mentés állapota** **Figyelmeztetés (kezdeti biztonsági mentés függőben)** .
     - Ha meg szeretné tekinteni, hogy mikor fog futni a következő ütemezett biztonsági mentés, kattintson a biztonsági mentési szabályzat nevére.
 
-
 > [!NOTE]
-> Azure Backup szolgáltatás létrehoz egy különálló erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) a pillanatkép tárolására a **AzureBackupRG_geography_number** elnevezési formátumával (példa: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési házirendjének "az azonnali helyreállítási pillanatkép megtartása" szakaszában megadott időtartam alatt lesznek tárolva. Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet.<br>
+> Azure Backup szolgáltatás létrehoz egy különálló erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) a pillanatkép tárolására a **AzureBackupRG_geography_number** elnevezési formátumával (például: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési házirendjének "az azonnali helyreállítási pillanatkép megtartása" szakaszában megadott időtartam alatt lesznek tárolva. Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet.<br>
 Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
-
 
 ## <a name="run-a-backup-immediately"></a>Biztonsági mentés azonnali futtatása
 
-1. A biztonsági mentés azonnali futtatásához a virtuális gép menüjében kattintson a **biztonsági** > Mentés**most**lehetőségre.
+1. A biztonsági mentés azonnali futtatásához a virtuális gép menüjében kattintson a **biztonsági** mentés > **biztonsági mentés most**lehetőségre.
 
     ![Biztonsági mentés futtatása](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
@@ -87,14 +82,11 @@ Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból
 
 3. A portál értesítéseiből megtudhatja, hogy a biztonsági mentési feladatok aktiválva lettek. A biztonsági mentés előrehaladásának figyeléséhez kattintson az **összes feladat megtekintése**elemre.
 
-
-
-
 ## <a name="back-up-from-the-recovery-services-vault"></a>Biztonsági mentés a Recovery Services-tárból
 
 A cikk utasításait követve engedélyezheti az Azure-beli virtuális gépek biztonsági mentését egy Azure Backup Recovery Services-tároló beállításával, valamint a biztonsági mentés engedélyezésével a tárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a jelen cikkben ismertetett eljárások valamelyikével kapcsolatban nehézségekbe ütközik, tekintse meg a [hibaelhárítási útmutatót](backup-azure-vms-troubleshoot.md).
 - [További](backup-azure-manage-vms.md) információ a biztonsági másolatok kezeléséről.

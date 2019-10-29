@@ -3,7 +3,7 @@ title: Azure Time Series Insights-környezet létrehozása | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy új Time Series Insights-környezet létrehozásához.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1956fd9eaaa537d7ffa992070fc5cffd567954ce
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274813"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991227"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Új Time Series Insights-környezet létrehozása az Azure Portalon
 
@@ -34,13 +34,13 @@ A következő lépések végrehajtásával hozhat létre környezetet:
 
 1. Válassza ki a **eszközök internetes hálózata** kategóriát, és válassza a **Time Series Insights**lehetőséget.
 
-   [@no__t – a Time Series Insights-környezet 1Create](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
+   [![a Time Series Insights-környezet létrehozása](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
 
 1. A **Time Series Insights** lapon válassza a **Létrehozás**lehetőséget.
 
 1. Adja meg a szükséges paramétereket. Az alábbi táblázat az egyes paramétereket ismerteti:
    
-   [@no__t – a Time Series Insights 1Create](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![az Time Series Insights erőforráscsoport létrehozása](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
    
    Beállítás|Ajánlott érték|Leírás
    ---|---|---
@@ -55,13 +55,13 @@ A következő lépések végrehajtásával hozhat létre környezetet:
 
 1. Az üzembe helyezési folyamat figyeléséhez válassza az **értesítések** szimbólumot (harang ikon).
 
-   [@no__t – 1Watch az értesítéseket](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [![tekintse meg az értesítéseket](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
 
     Ha az üzembe helyezés sikeres, a további tulajdonságok konfigurálásához válassza az **erőforrás** megnyitása lehetőséget, állítsa be a biztonságot az adatelérési házirendekkel, az eseményforrás hozzáadásával és egyéb műveletekkel.
 
 1. Az erőforrás- **Áttekintés**lapon válassza a jobb felső sarokban található **rögzítés ikont** , hogy a későbbiekben könnyen hozzáférhessen a Time Series Insights-környezethez.
 
-   [@no__t – a Time Series Insights 1Create rögzítése az irányítópulton](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+   [![az Time Series Insights PIN-kód létrehozása az irányítópulton](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 

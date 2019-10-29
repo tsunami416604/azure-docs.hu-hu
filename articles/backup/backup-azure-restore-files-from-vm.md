@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: fájlok és mappák helyreállítása Azure virtuális gépek biztonsági másolatából'
+title: 'Azure Backup: fájlok és mappák helyreállítása az Azure virtuális gép biztonsági másolatából'
 description: Fájlok helyreállítása Azure-beli virtuális gépek helyreállítási pontjából
 ms.reviewer: pullabhk
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900319"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968490"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -74,10 +74,9 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
     - 3260-es kimenő port
 
 > [!Note]
-> 
-> * A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve \'VMname\'\_\'geoname\'_\'GUID\', például ContosoVM_wcus_12345678....<br><br>
-> * Az URL-cím a következő lenne: "https:\//pod01-rec2.wcus.backup.windowsazure.com"
-
+>
+> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve \'VMname\'\_\'geoname\'_\'GUID\', például ContosoVM_wcus_12345678....<br><br>
+> - Az URL-cím a következő lenne: "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
    Linux esetén a parancsfájl "Open-iSCSI" és "lshw" összetevőket igényel a helyreállítási ponthoz való kapcsolódáshoz. Ha az összetevők nem léteznek azon a számítógépen, amelyen a parancsfájl fut, a parancsfájl engedélyt kér az összetevők telepítésére. Adja meg a szükséges összetevők telepítésének jóváhagyását.
 
@@ -223,7 +222,7 @@ A parancsfájlnak a Python és a bash összetevők futtatására is szükség va
 
 Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása az Azure-beli virtuális gépekről, amelyek száma > 16, és az egyes lemezek mérete > 4 TB.
 
-Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági másolatból, nagy számú lemez (> 16) vagy nagy méretű lemez (> 4TB) esetén a következő műveleti pontok ajánlottak.
+Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági másolatból, nagy számú lemez (> 16) vagy nagy méretű lemez (> 4 TB) esetén a következő műveleti pontok ajánlottak.
 
 - A fájlok helyreállításához külön helyreállítási kiszolgálót (Azure VM D2v3 virtuális gépeket) kell megőrizni. Ezt a fájlt csak akkor használhatja, ha nem szükséges, majd leállítja. Az eredeti gépen való visszaállítás nem ajánlott, mert jelentős hatással lesz a virtuális gépre.
 - Ezután futtassa egyszer a parancsfájlt annak vizsgálatához, hogy a fájl-helyreállítási művelet sikeres-e.

@@ -1,5 +1,5 @@
 ---
-title: Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
+title: Exchange-kiszolgáló biztonsági mentése Azure Backup a System Center DPM használatával
 description: Ismerje meg, hogyan készíthet biztonsági mentést egy Exchange-kiszolgálóról a System Center 2012 R2 DPM használatával Azure Backup
 ms.reviewer: kasinh
 author: dcurwin
@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c8975aed79e78b4bb66ce1516b85ceeb78628e8
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689426"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968510"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
+
 Ez a cikk azt ismerteti, hogyan konfigurálható a System Center 2012 R2 Data Protection Manager (DPM) kiszolgáló a Microsoft Exchange Server biztonsági mentésére Azure Backup.  
 
 ## <a name="updates"></a>Frissítések
+
 A DPM-kiszolgáló Azure Backuphoz való sikeres regisztrálásához telepítenie kell a System Center 2012 R2 DPM legújabb kumulatív frissítését és a Azure Backup-ügynök legújabb verzióját. Szerezze be a legújabb kumulatív frissítést a [Microsoft Catalog](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager)webhelyről.
 
 > [!NOTE]
@@ -27,7 +29,8 @@ A DPM-kiszolgáló Azure Backuphoz való sikeres regisztrálásához telepíteni
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
-A folytatás előtt győződjön meg arról, hogy teljesülnek a Microsoft Azure Backup használatának előfeltételei a munkaterhelések megóvása érdekében. [](backup-azure-dpm-introduction.md#prerequisites-and-limitations) Az előfeltételek közé tartoznak a következők:
+
+A folytatás előtt győződjön meg arról, hogy teljesülnek a Microsoft Azure Backup használatának [előfeltételei](backup-azure-dpm-introduction.md#prerequisites-and-limitations) a munkaterhelések megóvása érdekében. Az előfeltételek közé tartoznak a következők:
 
 * Létrehozott egy backup-tárolót az Azure-webhelyen.
 * Az ügynök és a tároló hitelesítő adatai le lettek töltve a DPM-kiszolgálóra.
@@ -36,19 +39,21 @@ A folytatás előtt győződjön meg arról, hogy teljesülnek a Microsoft Azure
 * Ha az Exchange 2016-et védi, frissítsen a DPM 2012 R2 UR9 vagy újabb verzióra
 
 ## <a name="dpm-protection-agent"></a>DPM védelmi ügynök
+
 Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
 1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Telepítse az ügynököt az Exchange-kiszolgálóra, ehhez kattintson a **felügyeleti > ügynökök** elemre, > telepítse a DPM felügyeleti konzol. A részletes lépésekért lásd [a DPM védelmi ügynök telepítése](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
+
 1. A DPM Felügyeleti konzol kattintson a **védelem**elemre, majd kattintson az eszköz menüszalagjának **új** elemére az **új védelmi csoport létrehozása** varázsló megnyitásához.
 2. A varázsló **üdvözlő** képernyőjén kattintson a **tovább**gombra.
 3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **tovább**gombra.
 4. Válassza ki a védelemmel ellátni kívánt Exchange Server-adatbázist, és kattintson a **tovább**gombra.
 
    > [!NOTE]
-   > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013](https://technet.microsoft.com/library/dn751029.aspx)előfeltételeit.
+   > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013 előfeltételeit](https://technet.microsoft.com/library/dn751029.aspx).
    >
    >
 
@@ -103,20 +108,22 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
 19. Kattintson a **Bezárás** gombra.
 
 ## <a name="recover-the-exchange-database"></a>Az Exchange-adatbázis helyreállítása
+
 1. Exchange-adatbázis helyreállításához kattintson a DPM Felügyeleti konzol **helyreállítás** elemére.
 2. Keresse meg a helyreállítani kívánt Exchange-adatbázist.
 3. Válasszon ki egy online helyreállítási pontot a *helyreállítási idő* legördülő listából.
-4. Kattintson **a** helyreállítás gombra a **helyreállítási varázsló**elindításához.
+4. Kattintson **a helyreállítás gombra** a **helyreállítási varázsló**elindításához.
 
 Az online helyreállítási pontok esetében öt helyreállítási típus létezik:
 
 * **Helyreállítás az eredeti Exchange-kiszolgáló helyére:** A rendszer az eredeti Exchange-kiszolgálóra állítja vissza az adatgyűjtést.
 * **Helyreállítás egy másik adatbázisba egy Exchange-kiszolgálón:** Az adatgyűjtést egy másik Exchange-kiszolgálón lévő másik adatbázisba fogja helyreállítani.
-* **Helyreállítás helyreállítási adatbázisba:** Az adatgyűjtés egy Exchange helyreállítási adatbázisba (RDB) lesz helyreállítva.
+* Helyreállítás **helyreállítási adatbázisba:** Az adatgyűjtés egy Exchange helyreállítási adatbázisba (RDB) lesz helyreállítva.
 * **Másolás hálózati mappába:** Az Adathelyreállítás egy hálózati mappába történik.
 * **Másolás szalagra:** Ha szalagos kódtár vagy önálló szalagos meghajtó van csatlakoztatva és konfigurálva a DPM-kiszolgálón, a helyreállítási pont egy szabad szalagra lesz másolva.
 
     ![Online replikáció kiválasztása](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 * [Azure Backup GYIK](backup-azure-backup-faq.md)

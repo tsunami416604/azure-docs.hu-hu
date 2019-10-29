@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/28/2019
+ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105473"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991353"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Az Apache Ambari webes felhasználói felületének, a JobHistory, a NameNode, az Apache Oozie és más felületének eléréséhez használja az SSH-bújtatást
 
@@ -56,10 +56,10 @@ A [Secure Shell (SSH) bújtatás](https://en.wikipedia.org/wiki/Tunneling_protoc
 
 ## <a name="usessh"></a>Alagút létrehozása az SSH parancs használatával
 
-Az alábbi parancs használatával hozzon létre egy SSH-alagutat `ssh` a paranccsal. Cserélje `sshuser` le egy SSH-felhasználót a HDInsight-fürtre, `clustername` és cserélje le a nevet a HDInsight-fürt nevére:
+Az alábbi parancs használatával hozzon létre egy SSH-alagutat a `ssh` paranccsal. Cserélje le a `sshuser`t egy SSH-felhasználóval a HDInsight-fürthöz, és cserélje le a `CLUSTERNAME`t a HDInsight-fürt nevére:
 
 ```cmd
-ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
 Ezzel a paranccsal olyan kapcsolat jön létre, amely a 9876-as helyi portra irányítja át a forgalmat az SSH-val a fürtre. A következő lehetőségek közül választhat:
@@ -68,9 +68,9 @@ Ezzel a paranccsal olyan kapcsolat jön létre, amely a 9876-as helyi portra ir�
 * **C** – az összes adatok tömörítése, mivel a webes forgalom többnyire szöveg.
 * **2** – az SSH csak a 2-es verziójú protokoll kipróbálására kényszeríthető.
 * **q** -csendes mód.
-* Nem kell letiltani a **pszeudo-TTY** kiosztást, mivel csak egy portot továbbít.
+* Nem kell letiltani a **pszeudo-TTY** kiosztást, mivel éppen csak egy portot továbbít.
 * **n** – az stdin olvasásának tiltása, mivel csak egy portot továbbít.
-* **N** – ne hajtson végre távoli parancsot, mert csak egy portot továbbít.
+* **N** – ne hajtson végre távoli parancsot, mert éppen csak egy portot továbbít.
 * **f** – Futtatás a háttérben.
 
 A parancs befejezése után a rendszer a helyi számítógépen a 9876-es portra eljuttatott forgalmat a fürt fő csomópontjára irányítja.
@@ -84,11 +84,14 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
 1. Nyissa meg a PuTTY eszközt, és győződjön meg arról, hogy a bal oldali menüben a **munkamenet** be van jelölve. Ha már mentett egy munkamenetet, válassza ki a munkamenet nevét a **mentett munkamenetek** listából, és válassza a **Betöltés**lehetőséget.
 
 1. Ha még nem rendelkezik mentett munkamenettel, adja meg a kapcsolati adatait:
-    * **Állomásnév (vagy IP-cím)** – a HDInsight-fürthöz tartozó SSH-cím. Például: **mycluster-SSH.azurehdinsight.net**
-    * **Port** -22
-    * **Kapcsolattípus** – SSH
 
-1. Válassza ki **mentése**
+    |Tulajdonság |Value (Díj) |
+    |---|---|
+    |Állomásnév (vagy IP-cím)|A HDInsight-fürt SSH-címe. Például: **mycluster-ssh.azurehdinsight.net**.|
+    |Port|22|
+    |Kapcsolattípus|SSH|
+
+1. Kattintson a **Mentés** gombra
 
     ![HDInsight-munkamenet létrehozása](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -96,15 +99,15 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
 
 1. Adja meg az alábbi információkat az **SSH-port továbbítási formáját vezérlő beállításokhoz** :
 
-   * **Source port** (Forrásport) - Az ügyfélen az a port, amelyet továbbítani szeretne. Például **9876**.
+    |Tulajdonság |Value (Díj) |
+    |---|---|
+    |Forrásport|Az ügyfélen továbbítani kívánt port. Például **9876**.|
+    |Cél|A HDInsight-fürt SSH-címe. Például: **mycluster-ssh.azurehdinsight.net**.|
+    |Dinamikus|Engedélyezi a dinamikus SOCKS proxy útválasztását.|
 
-   * **Cél** – a HDInsight-fürthöz tartozó SSH-címet. Például: **mycluster-ssh.azurehdinsight.net**.
+    ![Putty konfigurációs bújtatási beállítások](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-   * **Dynamic** (Dinamikus) - Lehetővé teszi a dinamikus SOCKS proxy útválasztást.
-
-     ![Putty konfigurációs bújtatási beállítások](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
-
-1. A beállítások hozzáadásához válassza a **Hozzáadás** lehetőséget, majd kattintson a **Megnyitás** lehetőségre egy SSH-kapcsolatok megnyitásához.
+1. A beállítások hozzáadásához válassza a **Hozzáadás** lehetőséget, majd válassza a **Megnyitás** lehetőséget egy SSH-kapcsolatok megnyitásához.
 
 1. Ha a rendszer kéri, jelentkezzen be a kiszolgálóra.
 
@@ -120,16 +123,16 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
    > [!NOTE]  
    > A **távoli DNS** lehetőség kiválasztásával a rendszer a DNS-kérelmeket a HDInsight-fürt használatával oldja fel. Ez a beállítás a fürt fő csomópontjának használatával oldja fel a DNS-t.
 
-2. Ellenőrizze, hogy az alagút működik-e úgy, hogy [https://www.whatismyip.com/](https://www.whatismyip.com/)meglátogat egy webhelyet, például:. A visszaadott IP-címet a Microsoft Azure adatközpontnak kell használnia.
+2. Ellenőrizze, hogy az alagút úgy működik-e, hogy felkeres egy webhelyet, például [https://www.whatismyip.com/](https://www.whatismyip.com/). A visszaadott IP-címet a Microsoft Azure adatközpontnak kell használnia.
 
 ## <a name="verify-with-ambari-web-ui"></a>Ellenőrzés Ambari webes felhasználói felülettel
 
 A fürt létrejötte után a következő lépésekkel ellenőrizheti, hogy elérhető-e a szolgáltatás webes felülete a Ambari web használatával:
 
-1. A böngészőben nyissa `http://headnodehost:8080`meg a következőt:. A `headnodehost` rendszer az alagúton keresztül továbbítja a-címeket a fürthöz, és az Ambari-on futó fő csomópontra oldja fel. Ha a rendszer kéri, adja meg a fürt rendszergazdai felhasználónevét és jelszavát. A Ambari webes felhasználói felülete másodszor is kérheti a kérést. Ha igen, adja meg újra az adatokat.
+1. A böngészőben nyissa meg a `http://headnodehost:8080`. Az `headnodehost`-címeket a rendszer az alagúton keresztül továbbítja a fürthöz, és a Ambari-on futó fő csomópontra oldja fel. Ha a rendszer kéri, adja meg a fürt rendszergazdai felhasználónevét és jelszavát. A Ambari webes felhasználói felülete másodszor is kérheti a kérést. Ha igen, adja meg újra az adatokat.
 
    > [!NOTE]  
-   > Ha a `http://headnodehost:8080` címeket a fürthöz való csatlakozáshoz használja, az alagúton keresztül csatlakozik. A kommunikáció a HTTPS-kapcsolat helyett az SSH-alagút használatával védett. Ha HTTPS- `https://clustername.azurehdinsight.net`kapcsolaton keresztül szeretne csatlakozni az interneten keresztül `clustername` , akkor a a (z), ahol a a fürt neve.
+   > Ha a `http://headnodehost:8080`-címeket használja a fürthöz való csatlakozáshoz, az alagúton keresztül csatlakozik. A kommunikáció a HTTPS-kapcsolat helyett az SSH-alagút használatával védett. Ha HTTPS-kapcsolaton keresztül csatlakozik az internethez, használja a `https://clustername.azurehdinsight.net`, ahol a `clustername` a fürt neve.
 
 2. A Ambari webes felhasználói felületén válassza a HDFS lehetőséget a lap bal oldalán található listából.
 
@@ -149,9 +152,9 @@ A fürt létrejötte után a következő lépésekkel ellenőrizheti, hogy elér
     ![A Hadoop NameNode felhasználói felületének képe](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
-    > Figyelje meg az oldal URL-címét; a `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`következőhöz hasonlónak kell lennie:. Ez az URI a csomópont belső teljesen minősített tartománynevét (FQDN) használja, és csak SSH-alagút használata esetén érhető el.
+    > Figyelje meg az oldal URL-címét; a `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`hoz hasonlónak kell lennie. Ez az URI a csomópont belső teljesen minősített tartománynevét (FQDN) használja, és csak SSH-alagút használata esetén érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre és használhat egy SSH-alagutat, tekintse meg a következő dokumentumot a Ambari használatának egyéb módjaihoz:
 

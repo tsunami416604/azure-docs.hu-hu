@@ -1,26 +1,23 @@
 ---
-title: A Terraform és az Azure-szolgáltatók üzembehelyezési pontjai
+title: Oktatóanyag – infrastruktúra kiépítése az Azure üzembe helyezési pontjaival a Terraform használatával
 description: Oktatóanyag a Terraform az Azure-szolgáltatók üzembehelyezési pontjaival való használatáról
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuális gép, Azure, üzembehelyezési pontok
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924989"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969291"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>A Terraform használata infrastruktúra kiépítésére az Azure üzembehelyezési pontjaival
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Oktatóanyag: infrastruktúra kiépítése az Azure üzembe helyezési pontjaival a Terraform használatával
 
 Az [Azure üzembehelyezési pontjainak](/azure/app-service/deploy-staging-slots) használatával válthat az alkalmazások különböző verziói között. Ennek köszönhetően minimalizálhatja a nem működő üzemelő példányok okozta hatásokat. 
 
-Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és végigvezeti két alkalmazás a GitHub és az Azure segítségével való üzembe helyezésére. Az egyik alkalmazás egy éles üzemi, a másik pedig egy előkészítési ponton fut. (A "termelés" és az "előkészítés" név tetszőleges, és bármit is megadhat, ami az Ön forgatókönyvét jelképezi.) Az üzembe helyezési pontok konfigurálása után a Terraform segítségével igény szerint válthat a két tárolóhely között.
+Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és végigvezeti két alkalmazás a GitHub és az Azure segítségével való üzembe helyezésére. Az egyik alkalmazás egy éles üzemi, a másik pedig egy előkészítési ponton fut. (A "termelés" és az "előkészítés" név tetszőleges. A forgatókönyvnek megfelelő lehet.) Az üzembe helyezési pontok konfigurálása után a Terraform segítségével felcserélheti a két tárolóhely közötti váltást igény szerint.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,13 +61,11 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
     cd deploy
     ```
 
-1. A [VI-szerkesztő](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) használatával hozzon létre egy fájlt `deploy.tf` néven. Ez a fájl tartalmazza majd a [Terraform-konfigurációt](https://www.terraform.io/docs/configuration/index.html).
+1. Hozzon létre egy `deploy.tf` nevű fájlt a Cloud Shellben.
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
@@ -109,13 +104,7 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
     }
     ```
 
-1. Az Esc billentyűvel lépjen ki a beszúrás módból.
-
-1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
-
-    ```bash
-    :wq
-    ```
+1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
 
 1. A fájl létrehozását követően ellenőrizze annak tartalmát.
 
@@ -207,7 +196,7 @@ A tesztprojektadattár leágaztatását követően az üzembehelyezési pontokat
 
 1. Az **Üzembehelyezési beállítás** lapon kattintson az **OK** gombra.
 
-Ezen a ponton üzembe helyezte az éles üzemi pontot. Az előkészítési pont üzembe helyezéséhez hajtsa végre az ebben a szakaszban eddig ismertetett lépéseket a következő módosításokkal:
+Ezen a ponton üzembe helyezte az üzemi tárolóhelyet. Az átmeneti tárolóhely üzembe helyezéséhez hajtsa végre az előző lépéseket a következő módosításokkal:
 
 - A 3. lépésben válassza a **slotAppServiceSlotOne** erőforrást.
 
@@ -219,8 +208,6 @@ Ezen a ponton üzembe helyezte az éles üzemi pontot. Az előkészítési pont 
 
 Az előző szakaszokban két pontot (**slotAppService** és **slotAppServiceSlotOne**) hoztunk létre a különböző GitHub-ágakról való üzembe helyezéshez. Lássuk a webalkalmazások előnézetét, hogy ellenőrizhessük, sikeresen települtek-e.
 
-A következő lépéseket kétszer hajtsa végre. A 3. lépésben első alkalommal a **slotAppService**, második alkalommal a **slotAppServiceSlotOne** lehetőséget válassza.
-
 1. Az Azure Portalon főmenüjében válassza az **Erőforráscsoportok** lehetőséget.
 
 1. Válassza a **slotDemoResourceGroup** lehetőséget.
@@ -231,18 +218,15 @@ A következő lépéseket kétszer hajtsa végre. A 3. lépésben első alkalomm
 
     ![Az alkalmazás megjelenítése az áttekintő oldal URL elemére kattintva](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Néhány percet igénybe vehet, amíg az Azure a GitHubról összeállítja és üzembe helyezi a webhelyet.
->
->
+1. A kiválasztott alkalmazástól függően a következő eredmények láthatók:
+    - **slotAppService** Web App – kék oldal, amelyen az 1. **bővítőhely bemutató alkalmazás**oldal címe szerepel. 
+    - **slotAppServiceSlotOne** Web App – zöld oldal, a **2. bővítőhely bemutató alkalmazás**oldalának címével.
 
-A **slotAppService** webalkalmazás esetében egy kék oldal jelenik meg a **Slot Demo App 1** (1. pontbemutató alkalmazás) oldalcímmel. A **slotAppServiceSlotOne** webalkalmazás esetében egy zöld oldal jelenik meg a **Slot Demo App 2** (2. pontbemutató alkalmazás) oldalcímmel.
-
-![Az alkalmazások megfelelő üzembe helyezésének ellenőrzése az előnézeteik megtekintésével](./media/terraform-slot-walkthru/app-preview.png)
+    ![Az alkalmazások megfelelő üzembe helyezésének ellenőrzése az előnézeteik megtekintésével](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Váltás a két üzembehelyezési pont között
 
-A kér üzembehelyezési pont közti váltás teszteléséhez hajtsa végre a következő lépéseket:
+A két üzembe helyezési pont lecserélésének teszteléséhez hajtsa végre a következő lépéseket:
  
 1. Váltson a böngésző **slotAppService** alkalmazást (a kék oldalt) megjelenítő lapjára. 
 
@@ -256,13 +240,11 @@ A kér üzembehelyezési pont közti váltás teszteléséhez hajtsa végre a k�
     cd clouddrive/swap
     ```
 
-1. A VI-szerkesztő használatával hozzon létre egy fájlt `swap.tf` néven.
+1. Hozzon létre egy `swap.tf` nevű fájlt a Cloud Shellben.
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. Az I billentyű lenyomásával lépjen beszúrási módba.
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
@@ -278,13 +260,7 @@ A kér üzembehelyezési pont közti váltás teszteléséhez hajtsa végre a k�
     }
     ```
 
-1. Az Esc billentyűvel lépjen ki a beszúrás módból.
-
-1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
-
-    ```bash
-    :wq
-    ```
+1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
 
 1. Inicializálja a Terraformot.
 
@@ -304,7 +280,7 @@ A kér üzembehelyezési pont közti váltás teszteléséhez hajtsa végre a k�
     terraform apply
     ```
 
-1. Miután a Terraform befejezte a pontok felcserélését, lépjen vissza a böngésző **slotAppService** webalkalmazást megjelenítő lapjára, és frissítse az oldalt. 
+1. Miután a Terraform felcserélte a tárolóhelyeket, térjen vissza a böngészőbe. Frissítse az oldalt. 
 
 A **slotAppServiceSlotOne** előkészítési ponton lévő webalkalmazás le lett cserélve az éles üzembehelyezési pontra, és most zöld színnel jelenik meg. 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 Az alkalmazás cseréjét követően az eredeti konfiguráció látható.
+
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"] 
+> [Terraform az Azure-ban](/azure/ansible/)

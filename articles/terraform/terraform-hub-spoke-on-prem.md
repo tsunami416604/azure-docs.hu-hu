@@ -1,26 +1,23 @@
 ---
-title: Helyszíni virtuális hálózat létrehozása az Azure-beli Terraform
+title: Oktatóanyag – helyszíni virtuális hálózat létrehozása az Azure-ban a Terraform használatával
 description: Oktatóanyag, amely bemutatja, hogyan valósítható meg egy helyszíni VNet az Azure-ban, amely helyi erőforrásokat ad
-services: terraform
-ms.service: azure
-keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, VNet-alapú peering, helyszíni
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: df96b9340e9961387fd727eba898fe4db6a18821
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169781"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969387"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Helyszíni virtuális hálózat létrehozása az Azure-beli Terraform
+# <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>Oktatóanyag: helyszíni virtuális hálózat létrehozása az Azure-ban a Terraform használatával
 
-Ebben az oktatóanyagban egy helyszíni hálózatot valósít meg egy Azure Virtual Network (VNet) használatával. Az Azure-VNet saját privát virtuális hálózata is lecserélhető. Ehhez rendelje hozzá a megfelelő IP-címeket az alhálózatokban.
+Ez az oktatóanyag bemutatja, hogyan valósítható meg egy helyszíni hálózat egy Azure Virtual Network (VNet) használatával. Az Azure-VNet saját privát virtuális hálózata is lecserélhető. Ehhez rendelje hozzá a megfelelő IP-címeket az alhálózatokban.
 
-Ez az oktatóanyag a következő feladatokat mutatja be:
+A következő feladatok magyarázata:
 
 > [!div class="checklist"]
 > * A HCL (HashiCorp Language) használata helyszíni VNet megvalósításához sugaras topológiában
@@ -34,7 +31,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
-Helyszíni hálózat szimulálásához hozzon létre egy Azure-beli virtuális hálózatot. A bemutató VNet egy tényleges helyszíni hálózat helyét veszi igénybe. Ha ugyanezt a meglévő helyszíni hálózattal szeretné elvégezni, képezze le a megfelelő IP-címeket az alhálózatokban.
+Helyszíni hálózat szimulálásához hozzon létre egy Azure-beli virtuális hálózatot. A bemutató VNet egy tényleges helyszíni hálózat helyét veszi igénybe. Ha ugyanezt a meglévő helyszíni hálózattal is el szeretné végezni, a megfelelő IP-címeket az alhálózatokban is leképezheti.
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
@@ -58,7 +55,7 @@ Helyszíni hálózat szimulálásához hozzon létre egy Azure-beli virtuális h
 
 Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
 
-1. A Cloud Shellban nyisson meg egy nevű `on-prem.tf`új fájlt.
+1. A Cloud Shellban nyisson meg egy `on-prem.tf`nevű új fájlt.
 
     ```bash
     code on-prem.tf
@@ -74,65 +71,65 @@ Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
     }
 
     resource "azurerm_resource_group" "onprem-vnet-rg" {
-      name     = "${local.onprem-resource-group}"
-      location = "${local.onprem-location}"
+      name     = local.onprem-resource-group
+      location = local.onprem-location
     }
 
     resource "azurerm_virtual_network" "onprem-vnet" {
       name                = "onprem-vnet"
-      location            = "${azurerm_resource_group.onprem-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.onprem-vnet-rg.name}"
+      location            = azurerm_resource_group.onprem-vnet-rg.location
+      resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
       address_space       = ["192.168.0.0/16"]
 
       tags {
-        environment = "${local.prefix-onprem}"
+        environment = local.prefix-onprem
       }
     }
 
     resource "azurerm_subnet" "onprem-gateway-subnet" {
       name                 = "GatewaySubnet"
-      resource_group_name  = "${azurerm_resource_group.onprem-vnet-rg.name}"
-      virtual_network_name = "${azurerm_virtual_network.onprem-vnet.name}"
+      resource_group_name  = azurerm_resource_group.onprem-vnet-rg.name
+      virtual_network_name = azurerm_virtual_network.onprem-vnet.name
       address_prefix       = "192.168.255.224/27"
     }
 
     resource "azurerm_subnet" "onprem-mgmt" {
       name                 = "mgmt"
-      resource_group_name  = "${azurerm_resource_group.onprem-vnet-rg.name}"
-      virtual_network_name = "${azurerm_virtual_network.onprem-vnet.name}"
+      resource_group_name  = azurerm_resource_group.onprem-vnet-rg.name
+      virtual_network_name = azurerm_virtual_network.onprem-vnet.name
       address_prefix       = "192.168.1.128/25"
     }
 
     resource "azurerm_public_ip" "onprem-pip" {
         name                         = "${local.prefix-onprem}-pip"
-        location            = "${azurerm_resource_group.onprem-vnet-rg.location}"
-        resource_group_name = "${azurerm_resource_group.onprem-vnet-rg.name}"
+        location            = azurerm_resource_group.onprem-vnet-rg.location
+        resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
         allocation_method   = "Dynamic"
 
         tags {
-            environment = "${local.prefix-onprem}"
+            environment = local.prefix-onprem
         }
     }
 
     resource "azurerm_network_interface" "onprem-nic" {
       name                 = "${local.prefix-onprem}-nic"
-      location             = "${azurerm_resource_group.onprem-vnet-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.onprem-vnet-rg.name}"
+      location             = azurerm_resource_group.onprem-vnet-rg.location
+      resource_group_name  = azurerm_resource_group.onprem-vnet-rg.name
       enable_ip_forwarding = true
 
       ip_configuration {
-        name                          = "${local.prefix-onprem}"
-        subnet_id                     = "${azurerm_subnet.onprem-mgmt.id}"
+        name                          = local.prefix-onprem
+        subnet_id                     = azurerm_subnet.onprem-mgmt.id
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id          = "${azurerm_public_ip.onprem-pip.id}"
+        public_ip_address_id          = azurerm_public_ip.onprem-pip.id
       }
     }
 
     # Create Network Security Group and rule
     resource "azurerm_network_security_group" "onprem-nsg" {
         name                = "${local.prefix-onprem}-nsg"
-        location            = "${azurerm_resource_group.onprem-vnet-rg.location}"
-        resource_group_name = "${azurerm_resource_group.onprem-vnet-rg.name}"
+        location            = azurerm_resource_group.onprem-vnet-rg.location
+        resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
 
         security_rule {
             name                       = "SSH"
@@ -152,16 +149,16 @@ Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
     }
 
     resource "azurerm_subnet_network_security_group_association" "mgmt-nsg-association" {
-      subnet_id                 = "${azurerm_subnet.onprem-mgmt.id}"
-      network_security_group_id = "${azurerm_network_security_group.onprem-nsg.id}"
+      subnet_id                 = azurerm_subnet.onprem-mgmt.id
+      network_security_group_id = azurerm_network_security_group.onprem-nsg.id
     }
 
     resource "azurerm_virtual_machine" "onprem-vm" {
       name                  = "${local.prefix-onprem}-vm"
-      location              = "${azurerm_resource_group.onprem-vnet-rg.location}"
-      resource_group_name   = "${azurerm_resource_group.onprem-vnet-rg.name}"
-      network_interface_ids = ["${azurerm_network_interface.onprem-nic.id}"]
-      vm_size               = "${var.vmsize}"
+      location              = azurerm_resource_group.onprem-vnet-rg.location
+      resource_group_name   = azurerm_resource_group.onprem-vnet-rg.name
+      network_interface_ids = [azurerm_network_interface.onprem-nic.id]
+      vm_size               = var.vmsize
 
       storage_image_reference {
         publisher = "Canonical"
@@ -179,8 +176,8 @@ Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
 
       os_profile {
         computer_name  = "${local.prefix-onprem}-vm"
-        admin_username = "${var.username}"
-        admin_password = "${var.password}"
+        admin_username = var.username
+        admin_password = var.password
       }
 
       os_profile_linux_config {
@@ -188,22 +185,22 @@ Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
       }
 
       tags {
-        environment = "${local.prefix-onprem}"
+        environment = local.prefix-onprem
       }
     }
 
     resource "azurerm_public_ip" "onprem-vpn-gateway1-pip" {
       name                = "${local.prefix-onprem}-vpn-gateway1-pip"
-      location            = "${azurerm_resource_group.onprem-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.onprem-vnet-rg.name}"
+      location            = azurerm_resource_group.onprem-vnet-rg.location
+      resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
 
       allocation_method = "Dynamic"
     }
 
     resource "azurerm_virtual_network_gateway" "onprem-vpn-gateway" {
       name                = "onprem-vpn-gateway1"
-      location            = "${azurerm_resource_group.onprem-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.onprem-vnet-rg.name}"
+      location            = azurerm_resource_group.onprem-vnet-rg.location
+      resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
 
       type     = "Vpn"
       vpn_type = "RouteBased"
@@ -214,9 +211,9 @@ Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
 
       ip_configuration {
         name                          = "vnetGatewayConfig"
-        public_ip_address_id          = "${azurerm_public_ip.onprem-vpn-gateway1-pip.id}"
+        public_ip_address_id          = azurerm_public_ip.onprem-vpn-gateway1-pip.id
         private_ip_address_allocation = "Dynamic"
-        subnet_id                     = "${azurerm_subnet.onprem-gateway-subnet.id}"
+        subnet_id                     = azurerm_subnet.onprem-gateway-subnet.id
       }
       depends_on = ["azurerm_public_ip.onprem-vpn-gateway1-pip"]
 
@@ -225,7 +222,7 @@ Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hub virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-hub-network.md)

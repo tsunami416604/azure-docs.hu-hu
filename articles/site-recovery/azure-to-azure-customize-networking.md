@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293462"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968904"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
@@ -31,15 +31,12 @@ Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-k
 - [Nyilvános IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) mind az alhálózathoz, mind a hálózati adapterhez
 
- > [!IMPORTANT]
-  > Ezek a beállítások csak a feladatátvételi művelet esetében támogatottak, nem a feladatátvételi teszthez.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Győződjön meg arról, hogy előre tervezi a helyreállítási oldal konfigurációit.
 - Előre hozza létre a hálózati erőforrásokat. Adja meg bemenetként, hogy Azure Site Recovery szolgáltatás tiszteletben tartsák ezeket a beállításokat, és győződjön meg arról, hogy a feladatátvételi virtuális gép megfelel ezeknek a beállításoknak.
 
-## <a name="customize-failover-networking-configurations"></a>Feladatátvételi hálózati konfigurációk testreszabása
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>Feladatátvételi és tesztelési feladatátvételi hálózati konfigurációk testreszabása
 
 1. Nyissa meg a **replikált elemeket**. 
 2. Válassza ki a kívánt Azure-beli virtuális gépet.
@@ -47,13 +44,16 @@ Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-k
 
      ![A feladatátvételi hálózati konfigurációk testreszabása](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Válassza a **Szerkesztés** lehetőséget a konfigurálni kívánt hálózati adapter közelében. A megnyíló következő panelen válassza ki a cél megfelelő előre létrehozott erőforrásait.
+4. Válassza ki a feladatátvételi teszt virtuális hálózatot. Dönthet úgy is, hogy üresen hagyja, és kijelöli a feladatátvételi teszt időpontját.
+5. A feladatátvételi hálózat a konfigurálni kívánt hálózati adapter közelében válassza a **Szerkesztés** lehetőséget. A megnyíló következő panelen válassza ki a megfelelő előre létrehozott erőforrásokat a feladatátvételi teszt és a feladatátvételi hely között.
 
     ![A NIC-konfiguráció szerkesztése](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. Kattintson az **OK** gombra.
+6. Kattintson az **OK** gombra.
 
 Site Recovery most megtartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételi virtuális gép a megfelelő hálózati adapteren keresztül kapcsolódjon a kiválasztott erőforráshoz.
+
+Ha helyreállítási terv használatával indítja el a feladatátvételi tesztet, az mindig az Azure-beli virtuális hálózatot fogja kérni. Ezt a virtuális hálózatot fogja használni a feladatátvételi teszthez azon gépek esetében, amelyek nem rendelkeznek előre konfigurált feladatátvételi beállításokkal.
 
 ## <a name="troubleshooting"></a>Hibakeresés
 
@@ -72,9 +72,8 @@ Belső terheléselosztó érvényessége:
 - Ha a célként megadott virtuális gép egy rendelkezésre állási zónában van beállítva, akkor ellenőrizze, hogy a terheléselosztó zóna redundáns vagy bármely rendelkezésre állási zóna része-e. (Az alapszintű SKU Load Balancer nem támogatja a zónákat, és ebben az esetben nem jelennek meg a legördülő listában.)
 - Győződjön meg arról, hogy a belső terheléselosztó előre létrehozott háttér-készlettel és előtér-konfigurációval rendelkezik.
 
-
 Nyilvános IP-cím:
-    
+
 - A nyilvános IP-cím és a célként megadott virtuális gép előfizetésének és régiójának azonosnak kell lennie.
 - A célként megadott virtuális gép nyilvános IP-címe és a belső terheléselosztó SKU-jának azonosnak kell lennie.
 

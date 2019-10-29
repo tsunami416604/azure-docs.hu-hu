@@ -1,5 +1,5 @@
 ---
-title: 'Hibaelhárítás Azure Backup hiba: a vendég ügynök állapota nem érhető el'
+title: 'Azure Backup hibával kapcsolatos hibák elhárítása: ügynök-és bővítményekkel kapcsolatos problémák'
 description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Backup hibák tünetei, okai és megoldása.
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533716"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969087"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -58,7 +58,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 Javasolt művelet:<br>
 A probléma megoldásához távolítsa el a virtuális gép erőforráscsoport zárolását, majd próbálja megismételni a műveletet a tisztítás elindításához.
 > [!NOTE]
-> A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_ `<Geo>`_ `<number>` például: AzureBackupRG_northeurope_1
+> A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>` például: AzureBackupRG_northeurope_1
 
 **1. lépés: [a zárolás eltávolítása a visszaállítási pont erőforráscsoporthoz](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. lépés: a [visszaállítási pontok gyűjtésének tisztítása](#clean_up_restore_point_collection)**<br>
@@ -225,7 +225,7 @@ Ezeknek a lépéseknek a végrehajtásával a bővítmény újratelepíthető a 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>A helyreállítási pont erőforráscsoporthoz tartozó zárolás eltávolítása
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>`_ `<number>`.
+2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`.
 3. A zárolások megjelenítéséhez a **Beállítások** szakaszban válassza a **zárolások** lehetőséget.
 4. A zárolás eltávolításához válassza a három pontot, majd kattintson a **Törlés**gombra.
 
@@ -254,12 +254,12 @@ A zárolás eltávolítását követően aktiválja az ad hoc/manuális biztons�
 Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, amely az erőforráscsoport zárolása miatt nem törlődik, próbálkozzon a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>`_ `<number>`, ahol a virtuális gép található.
+2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>` ahol a virtuális gép található.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kattintson az erőforráscsoport elemre, és megjelenik az **Áttekintés** panel.
-4. Válassza a **rejtett típusok megjelenítése** lehetőséget az összes rejtett erőforrás megjelenítéséhez. Válassza ki a visszaállítási pontok gyűjteményeit a következő formátumban AzureBackupRG_ `<VMName>`_ `<number>`.
+4. Válassza a **rejtett típusok megjelenítése** lehetőséget az összes rejtett erőforrás megjelenítéséhez. Válassza ki a visszaállítási pontok gyűjteményeit a következő formátumban AzureBackupRG_`<VMName>`_`<number>`.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

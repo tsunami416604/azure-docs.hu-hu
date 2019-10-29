@@ -1,22 +1,19 @@
 ---
-title: Virtuálisgép-fürt létrehozása az Azure-ban Terraform-modulokkal
+title: Oktatóanyag – Azure virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
 description: Megtudhatja, hogyan használhatók a Terraform-modulok Windows rendszerű virtuálisgép-fürtök létrehozásra az Azure-ban
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuális gép, hálózat, modulok
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 325a029a9ea1c0102dad0e970f177e7ba7db6d52
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: ba99f9cdc20448398b339041aeab41fb75495e5d
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934195"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969493"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Virtuálisgép-fürt létrehozása a Terraformmal a Modul Registryvel
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
 
 Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre kisméretű virtuálisgép-fürt a Terraform [Azure Compute-moduljával](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ezen oktatóanyag segítségével megtanulhatja a következőket: 
 
@@ -104,5 +101,5 @@ Futtassa a `terraform apply` parancsot a virtuális gépek kiépítéséhez az A
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az [Azure Terraform-modulok](https://registry.terraform.io/modules/Azure) listájának áttekintése
-- Hozzon létre egy [virtuálisgép-méretezési csoportot a Terraformmal](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [Az Azure Terraform-modulok listájának tallózása](https://registry.terraform.io/modules/Azure)

@@ -3,20 +3,19 @@ title: Az Azure Time Series Insights egyéni nézeteinek megosztása paramétere
 description: Ez a cikk bemutatja, hogyan lehet paraméteres URL-címeket fejleszteni az Azure Time Series Insightsban az ügyfélnézetek egyszerű megosztásához.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675830"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991115"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -114,11 +113,11 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 A fenti URL-cím leírja és létrehozza a Time Series Insights Explorer nézetet:
 
-[![Time Series bepillantást a Explorer használati feltételei](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[![Time Series Insights Explorer használati feltételei](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 A teljes nézet (beleértve a diagramot is):
 
-[![Chart nézet](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[![diagram nézet](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 

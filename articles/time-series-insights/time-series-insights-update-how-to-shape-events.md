@@ -1,21 +1,21 @@
 ---
 title: Alakzat eseményei a Azure Time Series Insights Preview-val | Microsoft Docs
 description: Megtudhatja, hogyan formázhatja az eseményeket Azure Time Series Insights előzetes verzióval.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed0594373c8702ab01b50facaf0ef5ece2d6c7e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f8a50e062d2dac1f30f8b745f351570262daac53
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274269"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990897"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Események Azure Time Series Insights előzetes verzióval
 
@@ -28,10 +28,10 @@ Gondolja át, hogyan küldi el az eseményeket Time Series Insights előzetes ve
 * Az adatküldés a hálózaton keresztül a lehető leghatékonyabban.
 * Az adatokat olyan módon tárolhatja, amely segít az adott forgatókönyvnek megfelelően összesíteni.
 
-A lehető legjobb lekérdezési teljesítmény érdekében tegye a következőket:
+A legjobb lekérdezési teljesítmény érdekében tegye a következőket:
 
 * Ne küldjön felesleges tulajdonságokat. Time Series Insights előzetes verzióra vált a használat során. A legjobb megoldás a lekérdezni kívánt adatfeldolgozások tárolása és feldolgozása.
-* A statikus adathoz használjon példány mezőket. Ez a gyakorlat segít elkerülni a statikus adatok hálózaton keresztüli küldését. A példány mezői, az idősorozat-modell egyik összetevője, a Time Series Insights általánosan elérhető szolgáltatásban található hivatkozási adatokhoz hasonlóan működnek. Ha többet szeretne megtudni a példány mezőiről, tekintse meg a [Time Series models](./time-series-insights-update-tsm.md)című témakört.
+* A statikus adathoz használjon példány mezőket. Ez a gyakorlat segít elkerülni a statikus adatok hálózaton keresztüli küldését. A példány mezői, az idősorozat-modell egyik összetevője, például a Time Series Insights szolgáltatásban általánosan elérhető hivatkozási adat. Ha többet szeretne megtudni a példány mezőiről, tekintse meg a [Time Series Model](./time-series-insights-update-tsm.md)című témakört.
 * Dimenzió tulajdonságainak megosztása két vagy több esemény között. Ezzel a gyakorlattal hatékonyabban küldhet adatküldést a hálózaton keresztül.
 * Ne használjon mély tömbös beágyazást. Time Series Insights az előzetes verzió legfeljebb két olyan beágyazott tömböt támogat, amelyek objektumokat tartalmaznak. Time Series Insights az előnézet az üzenetekben található tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
 * Ha csak néhány mérték létezik az összes vagy a legtöbb eseménynél, érdemes elküldenie ezeket a mértékeket különálló tulajdonságokként ugyanazon az objektumon belül. A küldésük külön csökkenti az események számát, és növelheti a lekérdezési teljesítményt, mert kevesebb eseményt kell feldolgozni.
@@ -40,7 +40,9 @@ A lehető legjobb lekérdezési teljesítmény érdekében tegye a következőke
 
 A következő példa egy olyan forgatókönyvön alapul, amelyben a két vagy több eszköz méréseket vagy jeleket küld. A mérések vagy jelek *áramlási sebessége*, a *motor*olajnyomás, a *hőmérséklet*és a *páratartalom*lehet.
 
-A következő példában egyetlen Azure IoT Hub üzenet jelenik meg, amelyben a külső tömb a közös dimenzió értékeinek közös szakaszát tartalmazza. A külső tömb a Time Series-példányok adatmennyiségét használja az üzenet hatékonyságának növeléséhez. Az idősorozat-példány olyan eszköz-metaadatokat tartalmaz, amelyek nem változnak minden eseménnyel, de hasznos tulajdonságokat biztosítanak az adatok elemzéséhez. Ha menteni szeretné a huzalon küldött bájtokat, és hatékonyabbá teszi az üzenetet, fontolja meg a közös dimenzió értékek feldolgozását és a Time Series-példány metaadatainak alkalmazását.
+A példában egyetlen Azure IoT Hub üzenet jelenik meg, amelyben a külső tömb a közös dimenzió értékeinek közös szakaszát tartalmazza. A külső tömb a Time Series-példányok adatmennyiségét használja az üzenet hatékonyságának növeléséhez. 
+
+Az idősorozat-példány eszköz-metaadatokat tartalmaz. Ez a metaadatok nem változnak minden eseménnyel, de hasznos tulajdonságokat biztosít az adatok elemzéséhez. Ha menteni szeretné a huzalon küldött bájtokat, és hatékonyabbá teszi az üzenetet, érdemes lehet a közös dimenzió értékeit és az idősorozat-példányok metaadatait használni.
 
 ### <a name="example-json-payload"></a>Példa JSON-adattartalomra
 
@@ -119,15 +121,15 @@ Time Series Insights az előnézet Összekapcsol egy táblát (az összeolvaszt�
 Az előző példában vegye figyelembe a következő szempontokat:
 
 * A statikus tulajdonságok Time Series Insights előzetes verzióban tárolódnak, hogy optimalizálják a hálózaton keresztül továbbított adatátvitelt.
-* Time Series Insights előnézet adatai a példányban definiált idősorozat-azonosító használatával csatlakoznak a lekérdezési időponthoz.
-* Két beágyazási réteg van használatban, ami az Time Series Insights Preview által támogatott legnagyobb. Fontos, hogy elkerülje a mélyen beágyazott tömböket.
+* Time Series Insights az előnézeti idő a példányban definiált idősorozat-AZONOSÍTÓn keresztül csatlakozik a lekérdezési időponthoz.
+* Két beágyazási réteg van használatban. Ez a szám a legtöbbet Time Series Insights előzetes verzió támogatja. Fontos, hogy elkerülje a mélyen beágyazott tömböket.
 * Mivel a rendszer néhány mértéket használ, ezeket külön tulajdonságokként küldik el ugyanazon az objektumon belül. A példában a **sorozat. Áramlási sebesség PSI**, **sorozat. A motor olajnyomás PSI**és **adatsorozatok. A flow Rate FT3/s** egyedi oszlopok.
 
 >[!IMPORTANT]
-> A példány mezői nem tárolódnak a telemetria. A rendszer metaadatokat tárol a **Time Series-modellben**.
+> A példány mezői nem tárolódnak a telemetria. A rendszer metaadatokat tárol a Time Series-modellben.
 > Az előző táblázat a lekérdezés nézetet jelöli.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az irányelvek gyakorlatba való helyezéséhez lásd: [Azure Time Series Insights előnézeti lekérdezés szintaxisa](./time-series-insights-query-data-csharp.md). További információ a Time Series Insights Preview adatelérési REST API lekérdezési szintaxisáról.
+- Az irányelvek gyakorlatba való helyezéséhez lásd: [Azure Time Series Insights előnézeti lekérdezés szintaxisa](./time-series-insights-query-data-csharp.md). A lekérdezési szintaxissal kapcsolatos további információkért tekintse meg az adatelérés Time Series Insights előzetes verzió REST APIét.
 - A támogatott JSON-alakzatokkal kapcsolatos további tudnivalókért lásd a [támogatott JSON-alakzatokat](./time-series-insights-send-events.md#supported-json-shapes).

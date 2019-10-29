@@ -1,22 +1,19 @@
 ---
-title: Hub-és küllős hálózat ellenőrzése az Azure-beli Terraform
+title: Oktatóanyag – hub és küllős hálózat ellenőrzése az Azure-ban a Terraform használatával
 description: Oktatóanyag a hub és a küllős hálózati topológia ellenőrzéséhez az összes, egymáshoz csatlakoztatott virtuális hálózattal.
-services: terraform
-ms.service: azure
-keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, vnet-társítás,
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169712"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969338"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Oktatóanyag: Hub-és küllős hálózat ellenőrzése az Azure-beli Terraform
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Oktatóanyag: hub és küllős hálózat ellenőrzése az Azure-ban a Terraform használatával
 
 Ebben a cikkben a sorozat előző cikkében létrehozott Terraform-fájlokat hajtja végre. Ennek eredményeképpen a bemutató virtuális hálózatok közötti kapcsolat érvényesítése történik.
 
@@ -59,7 +56,7 @@ Az [Előfeltételek](#prerequisites)teljesítése után ellenőrizze, hogy a meg
     cd hub-spoke
     ```
 
-1. A parancs futtatásával ellenőrizze, hogy `.tf` az előző oktatóanyagokban létrehozott konfigurációs fájlok szerepelnek-e a listáján: `ls`
+1. A `ls` parancs futtatásával ellenőrizze, hogy az előző oktatóanyagokban létrehozott `.tf` konfigurációs fájlok szerepelnek-e a listáján:
 
     ![Terraform bemutató konfigurációs fájljai](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
@@ -73,7 +70,7 @@ Az [Előfeltételek](#prerequisites)teljesítése után ellenőrizze, hogy a meg
     
     ![Példa a "Terraform init" parancs eredményeire](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. A következő `terraform plan` parancs futtatásával tekintheti meg a telepítés hatását a végrehajtás előtt:
+1. Futtassa a `terraform plan` parancsot, hogy megtekintse a telepítés hatását a végrehajtás előtt:
 
     ```bash
     terraform plan
@@ -87,7 +84,7 @@ Az [Előfeltételek](#prerequisites)teljesítése után ellenőrizze, hogy a meg
     terraform apply
     ```
     
-    `yes` Ha a rendszer kéri, hogy erősítse meg a telepítést.
+    Ha a rendszer felszólítja, hogy erősítse meg a telepítést, adja meg `yes`.
 
     ![Példa a "Terraform Apply" parancs eredményeire](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
@@ -103,7 +100,7 @@ Ez a szakasz bemutatja, hogyan tesztelheti a kapcsolatot a szimulált helyszíni
 
 1. A **virtuális gép helyi fiókja használatával**történő szövegbevitel mellett másolja az **SSH** -parancsot a vágólapra.
 
-1. A Linux. Ehhez futtassa `ssh` csatlakozhat a szimulált helyszíni környezetet. Használja a `on-prem.tf` paraméter fájlban megadott jelszót.
+1. Linux-parancssorból futtassa `ssh` a szimulált helyszíni környezethez való kapcsolódáshoz. Használja a `on-prem.tf` paraméter fájlban megadott jelszót.
 
 1. Futtassa a `ping` parancsot a Jumpbox virtuális géphez való kapcsolat teszteléséhez a hub VNet:
 
@@ -111,14 +108,14 @@ Ez a szakasz bemutatja, hogyan tesztelheti a kapcsolatot a szimulált helyszíni
    ping 10.0.0.68
    ```
 
-1. Futtassa a `ping` parancsot a Jumpbox virtuális gépekkel való kapcsolat teszteléséhez minden egyes küllőn:
+1. Futtassa az `ping` parancsot az egyes küllők Jumpbox virtuális gépekkel való kapcsolatának teszteléséhez:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. Az SSH-munkamenetből a **helyszíni-VM** virtuális gépen való kilépéshez írja &lt;be `exit` a parancsot, majd nyomja le az ENTER billentyűt >.
+1. Ha ki szeretné lépni az SSH-munkamenetet a **helyszíni-VM** virtuális gépen, írja be `exit`, majd nyomja meg &lt;> megadása lehetőséget.
 
 ## <a name="troubleshoot-vpn-issues"></a>VPN-problémák elhárítása
 
@@ -134,7 +131,7 @@ Ha már nincs rá szükség, törölje az oktatóanyag-sorozatban létrehozott e
     terraform destroy
     ```
 
-    Ha `yes` a rendszer felszólítja az erőforrások eltávolításának megerősítésére, írja be a következőt:.
+    Ha a rendszer felszólítja, hogy erősítse meg az erőforrások eltávolítását, adja meg `yes`.
 
 1. Könyvtárak módosítása a szülő könyvtárba:
 
@@ -148,7 +145,7 @@ Ha már nincs rá szükség, törölje az oktatóanyag-sorozatban létrehozott e
     rm -r hub-spoke
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [További információ a Terraform Azure-beli használatáról](/azure/terraform)

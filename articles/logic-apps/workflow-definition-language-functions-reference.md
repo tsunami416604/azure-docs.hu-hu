@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679038"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968924"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Útmutató a függvények kifejezésekben való használatához Azure Logic Apps és Microsoft Flow
 
@@ -252,7 +252,7 @@ Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [bet�
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Egy művelet adott részének törzsét adja vissza egy olyan kimenetben, amely több részből áll. |
 | [kimenetek](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Egy művelet kimenetének visszaadása futásidőben. |
 | [paraméterek](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | A munkafolyamat-definícióban leírt paraméterek értékének visszaadása. |
-| [találat](../logic-apps/workflow-definition-language-functions-reference.md#result) | A megadott hatókörű műveletben lévő összes művelet bemeneteit és kimeneteit adja vissza, például `For_each`, `Until` és `Scope`. |
+| [találat](../logic-apps/workflow-definition-language-functions-reference.md#result) | A megadott hatókörű műveletben lévő összes művelet bemeneteit és kimeneteit adja vissza, például `For_each`, `Until`és `Scope`. |
 | [eseményindító](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Egy trigger kimenetének visszaadása futásidőben vagy más JSON-név és érték párokból. Lásd még: [triggerOutputs](#triggerOutputs) és [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Egy trigger `body` kimenetének visszaadása futásidőben. Lásd: [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Egy olyan értéket adjon vissza, amely megfelel egy kulcsnévnek a *Form-* vagy az *űrlap-kódolású* trigger kimenetében. |
@@ -336,7 +336,7 @@ action().outputs.body.<property>
 ### <a name="actionbody"></a>actionBody
 
 Egy művelet `body` kimenetének visszaadása futásidőben.
-@No__t_0 rövidítése.
+`actions('<actionName>').outputs.body`rövidítése.
 Lásd: [Body ()](#body) és [Actions ()](#actions).
 
 ```
@@ -491,7 +491,7 @@ add(<summand_1>, <summand_2>)
 
 | Paraméter | Szükséges | Type (Típus) | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2* > | Igen | Egész szám, lebegőpontos vagy vegyes | A hozzáadandó számok |
+| <*summand_1*>, <*summand_2*> | Igen | Egész szám, lebegőpontos vagy vegyes | A hozzáadandó számok |
 |||||
 
 | Visszatérési érték | Type (Típus) | Leírás |
@@ -1035,7 +1035,7 @@ binary('hello')
 ### <a name="body"></a>törzse
 
 Egy művelet `body` kimenetének visszaadása futásidőben.
-@No__t_0 rövidítése.
+`actions('<actionName>').outputs.body`rövidítése.
 Lásd: [actionBody ()](#actionBody) és [műveletek ()](#actions).
 
 ```
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Paraméter | Szükséges | Type (Típus) | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp* > | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*destinationTimeZone* > | Igen | Sztring | A cél időzóna neve. További információ az időzóna-nevekről: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*destinationTimeZone* > | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátum* > | Nem | Sztring | [Egyetlen formátum](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: ss: fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Paraméter | Szükséges | Type (Típus) | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp* > | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*sourceTimeZone* > | Igen | Sztring | A forrás időzóna neve. További információ az időzóna-nevekről: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*destinationTimeZone* > | Igen | Sztring | A cél időzóna neve. További információ az időzóna-nevekről: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
+| <*destinationTimeZone* > | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátum* > | Nem | Sztring | [Egyetlen formátum](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: ss: fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Paraméter | Szükséges | Type (Típus) | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp* > | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*sourceTimeZone* > | Igen | Sztring | A forrás időzóna neve. További információ az időzóna-nevekről: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátum* > | Nem | Sztring | [Egyetlen formátum](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: ss: fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
@@ -1574,7 +1574,7 @@ dayOfYear('2018-03-15T13:27:36Z')
 ### <a name="decodebase64"></a>decodeBase64
 
 Egy Base64 kódolású karakterlánc karakterlánc-verziójának visszaadása, amely hatékonyan dekódolja a Base64-karakterláncot.
-@No__t_1 helyett vegye fontolóra a [base64ToString ()](#base64ToString) használatát.
+`decodeBase64()`helyett vegye fontolóra a [base64ToString ()](#base64ToString) használatát.
 Habár mindkét függvény ugyanúgy működik, `base64ToString()` előnyben részesített.
 
 ```
@@ -1606,7 +1606,7 @@ decodeBase64('aGVsbG8=')
 ### <a name="decodedatauri"></a>decodeDataUri
 
 Az adategységes erőforrás-azonosító (URI) bináris verziójának visszaadása.
-@No__t_1 helyett vegye fontolóra a [dataUriToBinary ()](#dataUriToBinary)használatát.
+`decodeDataUri()`helyett vegye fontolóra a [dataUriToBinary ()](#dataUriToBinary)használatát.
 Habár mindkét függvény ugyanúgy működik, `dataUriToBinary()` előnyben részesített.
 
 ```
@@ -1706,7 +1706,7 @@ div(11, 5)
 ### <a name="encodeuricomponent"></a>encodeUriComponent
 
 Egy egységes erőforrás-azonosító (URI) kódolású verziót ad vissza egy karakterlánchoz az URL-nem biztonságos karakterek lecserélése Escape-karakterekkel.
-@No__t_1 helyett vegye fontolóra a [uriComponent ()](#uriComponent)használatát.
+`encodeUriComponent()`helyett vegye fontolóra a [uriComponent ()](#uriComponent)használatát.
 Habár mindkét függvény ugyanúgy működik, `uriComponent()` előnyben részesített.
 
 ```
@@ -3026,7 +3026,7 @@ or(equals(1, 2), equals(1, 3))
 
 ### <a name="outputs"></a>kimenetek
 
-Egy művelet kimenetének visszaadása futásidőben. @No__t_0 helyett használja ezt a függvényt, amely a Logic app Designerben való `outputs()` feloldására szolgál. Habár mindkét függvény ugyanúgy működik, `outputs()` előnyben részesített.
+Egy művelet kimenetének visszaadása futásidőben. `actionOutputs()`helyett használja ezt a függvényt, amely a Logic app Designerben való `outputs()` feloldására szolgál. Habár mindkét függvény ugyanúgy működik, `outputs()` előnyben részesített.
 
 ```
 outputs('<actionName>')
@@ -3318,7 +3318,7 @@ Itt látható a frissített JSON-objektum:
 
 ### <a name="result"></a>Találat
 
-A megadott hatókörű műveletben lévő összes művelet bemeneteit és kimeneteit adja vissza, például `For_each`, `Until` vagy `Scope` művelet. Ez a függvény akkor hasznos, ha egy sikertelen művelet eredményét adja vissza, így diagnosztizálhatja és kezelheti a kivételeket. További információ: [a környezet és a hibák eredményeinek beolvasása](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+A megadott hatókörű műveletben lévő összes művelet bemeneteit és kimeneteit adja vissza, például `For_each`, `Until`vagy `Scope` művelet. Ez a függvény akkor hasznos, ha egy sikertelen művelet eredményét adja vissza, így diagnosztizálhatja és kezelheti a kivételeket. További információ: [a környezet és a hibák eredményeinek beolvasása](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -4017,7 +4017,7 @@ trigger()
 ### <a name="triggerbody"></a>triggerBody
 
 Egy trigger `body` kimenetének visszaadása futásidőben.
-@No__t_0 rövidítése.
+`trigger().outputs.body`rövidítése.
 Lásd: [trigger ()](#trigger).
 
 ```
@@ -4115,7 +4115,7 @@ triggerMultipartBody(<index>)
 ### <a name="triggeroutputs"></a>triggerOutputs
 
 Egy trigger kimenetének visszaadása futásidőben vagy más JSON-név és érték párokból származó értékek alapján.
-@No__t_0 rövidítése.
+`trigger().outputs`rövidítése.
 Lásd: [trigger ()](#trigger).
 
 ```

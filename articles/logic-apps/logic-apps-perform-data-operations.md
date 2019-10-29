@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309392"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990609"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -33,7 +33,7 @@ Ezek a táblázatok összefoglalják a felhasználható adatműveleteket, amelye
 
 Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésében.
 
-| Action | Leírás |
+| Műveletek | Leírás |
 |--------|-------------|
 | [**CSV-tábla létrehozása**](#create-csv-table-action) | Hozzon létre egy vesszővel tagolt (CSV) táblázatot egy tömbből. |
 | [**HTML-tábla létrehozása**](#create-html-table-action) | Hozzon létre egy HTML-táblázatot egy tömbből. |
@@ -46,7 +46,7 @@ Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésébe
 
 Ezek a műveletek segítenek JavaScript Object Notation (JSON) formátumban tárolt adatmennyiségek kezelésében.
 
-| Action | Leírás |
+| Műveletek | Leírás |
 |--------|-------------|
 | [**Compose**](#compose-action) | Hozzon létre egy üzenetet vagy karakterláncot több olyan bemenetből, amely különböző adattípusokkal rendelkezhet. Ezt a karakterláncot ezután egyetlen bemenetként használhatja, és nem kell ismételten megadnia ugyanazt a bemenetet. Létrehozhat például egy JSON-üzenetet különböző bemenetekről. |
 | [**JSON-elemzés**](#parse-json-action) | Felhasználóbarát adattokeneket hozhat létre a JSON-tartalmak tulajdonságaihoz, így könnyebben használhatja a logikai alkalmazásaiban található tulajdonságokat. |
@@ -60,7 +60,7 @@ Ezek a műveletek segítenek JavaScript Object Notation (JSON) formátumban tár
 
 * Az a logikai alkalmazás, amelyre szüksége van az adatkezelési műveletre
 
-  Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md) és [a gyors útmutató: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását.
+  Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: hozza létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Egy [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás első lépéseként 
 
@@ -80,35 +80,35 @@ Például létrehozhat egy JSON-üzenetet több változóból, például karakte
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Egy példa kipróbálásához kövesse az alábbi lépéseket a Logic app Designer használatával. Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a példa összeállítási és **inicializálási változóit** . [Példák az adatműveletek kódjának összeállítására](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Egy példa kipróbálásához kövesse az alábbi lépéseket a Logic app Designer használatával. Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a példa **összeállítási** és **inicializálási változóit** : az [adatműveleti kódokra vonatkozó példák – Összeállítás](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-   Ez a példa a Azure Portalt és egy logikai alkalmazást használ egy ismétlődési eseményindítóval és számos **inicializálási változó** művelettel. Ezek a műveletek két karakterlánc-változó és egy egész szám típusú változó létrehozásához vannak beállítva. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy meg kellene várnia a triggert.
+   Ez a példa a Azure Portalt és egy logikai alkalmazást használ egy **ismétlődési** eseményindítóval és számos **inicializálási változó** művelettel. Ezek a műveletek két karakterlánc-változó és egy egész szám típusú változó létrehozásához vannak beállítva. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy meg kellene várnia a triggert.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   ![Minta logikai alkalmazás indítása a "levélírás" művelethez](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
 1. Kövesse az alábbi lépések egyikét abban a logikai alkalmazásban, amelyben létre szeretné hozni a kimenetet: 
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     ![Válassza az "új lépés" lehetőséget a "levélírás" művelethez](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen, a keresőmezőbe írja be `compose` szűrőként a kifejezést. A műveletek listából válassza ki az **összeállítás** műveletet.
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `compose` szűrőt. A műveletek listából válassza ki az **összeállítás** műveletet.
 
    ![A "levélírás" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
 1. A **bemenetek** mezőben adja meg a kimenet létrehozásához használni kívánt bemeneteket.
 
-   Ha ebben a példában a bemenetek mezőbe kattint , a dinamikus tartalom lista jelenik meg, így kiválaszthatja a korábban létrehozott változókat:
+   Ha ebben a példában a **bemenetek** mezőbe kattint, a dinamikus tartalom lista jelenik meg, így kiválaszthatja a korábban létrehozott változókat:
 
-   ![A komponálni kívánt bemenetek kiválasztása](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   ![Válassza ki a "levélírás" művelethez használandó bemeneteket](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
    A következő példában a kész példa az **összeállítás** művelet: 
 
-   ![A "levélírás" művelet befejeződött](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   ![Példa az "összeállítás" műveletre](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -124,7 +124,7 @@ Annak ellenőrzéséhez, hogy az **összeállítás** művelet létrehozza-e a v
 
    Ez a példa az **E-mail küldése** műveletet használja, és tartalmazza az e-mail szövegtörzsében található **kimeneti** mezőket, valamint a tárgyat:
 
-   !["Output" mezők az "e-mail küldése" művelethez](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   !["Output" mezők a "levélírás" művelethez](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
 1. Most manuálisan futtassa a logikai alkalmazást. A tervező eszköztárán válassza a **Futtatás**lehetőséget.
 
@@ -138,23 +138,23 @@ Annak ellenőrzéséhez, hogy az **összeállítás** művelet létrehozza-e a v
 
 Egy olyan vesszővel tagolt (CSV) tábla létrehozásához, amely egy tömb JavaScript Object Notation (JSON) objektumainak tulajdonságait és értékeit tartalmazza, használja a **CSV-táblázat létrehozása** műveletet. Ezután használhatja az eredményül kapott táblázatot a **CSV-táblázat létrehozása** műveletet követő műveletekben.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [Példák az adatművelet-kódokra – CSV-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [adatműveleti kód példák – CSV-tábla létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a Azure Portal és egy logikai alkalmazást használ **ismétlődési** eseményindítóval és **inicializálási változó** művelettel. A művelet egy olyan változó létrehozásához van beállítva, amelynek a kezdeti értéke egy olyan tömb, amely tartalmaz néhány tulajdonságot és értéket JSON formátumban. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy meg kellene várnia a triggert.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Minta logikai alkalmazás indítása a "CSV-táblázat létrehozása" művelethez](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. Kövesse az alábbi lépések egyikét abban a logikai alkalmazásban, amelyben létre kívánja hozni a CSV-táblázatot: 
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Válassza az "új lépés" lehetőséget a "CSV-táblázat létrehozása" művelethez](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen, a keresőmezőbe írja be `create csv table` szűrőként a kifejezést. A műveletek listából válassza a CSV- **táblázat létrehozása** műveletet.
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `create csv table` szűrőt. A műveletek listából válassza a CSV- **táblázat létrehozása** műveletet.
 
    ![Válassza a "CSV-táblázat létrehozása" műveletet.](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -169,7 +169,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-
 
    Az alábbi példában a **CSV-táblázat létrehozása** műveletet végezheti el: 
 
-   ![A "CSV-táblázat létrehozása" művelet befejeződött](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
+   ![Példa a "CSV-táblázat létrehozása" műveletre](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -183,7 +183,7 @@ Alapértelmezés szerint az **oszlopok** tulajdonság úgy van beállítva, hogy
 
 1. Az **érték** tulajdonságnál válassza a használni kívánt egyéni értéket.
 
-Ha értékeket szeretne visszaadni a tömbből, a [ `item()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#item) használhatja a **CSV-táblázat létrehozása** művelettel. Egy `For_each` hurokban használhatja a [ `items()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#items).
+Ha értékeket szeretne visszaadni a tömbből, használhatja a [`item()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#item) a **CSV-táblázat létrehozása** művelettel. `For_each` hurokban használhatja a [`items()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#items).
 
 Tegyük fel például, hogy olyan tábla oszlopokat szeretne, amelyeknek csak a tulajdonsága van, és nem a tulajdonságok nevei tömbből. Ha csak ezeket az értékeket szeretné visszaadni, hajtsa végre a következő lépéseket a Tervező nézetben vagy a kód nézetben való munkához. A példa a következő eredményt adja vissza:
 
@@ -209,25 +209,25 @@ A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszl
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![A dereference tulajdonság kifejezése](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+   !["Description" kifejezés a "CSV-táblázat létrehozása" kifejezésre](./media/logic-apps-perform-data-operations/csv-table-expression.png)
 
 1. Ismételje meg az előző lépéseket minden kívánt tömb-tulajdonság esetében. Ha elkészült, a művelet a következő példához hasonlóan néz ki:
 
-   ![Befejezett kifejezések](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+   !["Item ()" függvény a "CSV-táblázat létrehozása"](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
 
 1. Ha több leíró verzióra szeretné feloldani a kifejezéseket, váltson kód nézetre, és vissza a Tervező nézetre, majd nyissa meg újra az összecsukott műveletet:
 
    A **CSV-táblázat létrehozása** művelet most a következő példához hasonlóan jelenik meg:
 
-   !["CSV-táblázat létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["CSV-táblázat létrehozása" – megoldott kifejezések, nincsenek fejlécek](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 #### <a name="work-in-code-view"></a>Munka kód nézetben
 
-A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden `value` tulajdonság esetében az összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
+A művelet JSON-definíciójában a `columns` tömbben állítsa be a `header` tulajdonságot üres karakterláncra. Minden egyes `value` tulajdonság esetében az összes kívánt tömb tulajdonságot el kell, hogy hivatkozzon.
 
 1. A tervező eszköztárán válassza a **kód nézet**lehetőséget.
 
-1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt `value` a kifejezést a kívánt tömbképlet minden oszlopához:
+1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és a `value` kifejezést minden olyan oszlophoz, amelyet szeretne:
 
    ```json
    {
@@ -261,7 +261,7 @@ A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `heade
 
    A **CSV-táblázat létrehozása** művelet most az alábbi példához hasonlóan jelenik meg, és a kifejezések több leíró verzióra vannak feloldva:
 
-   !["CSV-táblázat létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["CSV-táblázat létrehozása" – megoldott kifejezések és nincsenek fejlécek](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 További információ erről a műveletről a mögöttes munkafolyamat-definícióban: [tábla művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -275,7 +275,7 @@ Annak ellenőrzéséhez, hogy a **CSV-táblázat létrehozása** művelet létre
 
    Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és tartalmazza az e-mail szövegtörzsének **output (kimenet** ) mezőjét:
 
-   !["Output" mezők az "e-mail küldése" művelethez](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+   !["Output" mezők a "CSV-táblázat létrehozása" művelethez](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
 1. Most manuálisan futtassa a logikai alkalmazást. A tervező eszköztárán válassza a **Futtatás**lehetőséget.
 
@@ -289,23 +289,23 @@ Annak ellenőrzéséhez, hogy a **CSV-táblázat létrehozása** művelet létre
 
 Ha olyan HTML-táblázatot szeretne létrehozni, amely egy tömb JavaScript Object Notation (JSON) objektumainak tulajdonságait és értékeit tartalmazza, használja a **HTML-táblázat létrehozása** műveletet. Ezután használhatja az eredményül kapott táblázatot a **HTML-táblázat létrehozása** műveletet követő műveletekben.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben található példa **HTML-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [Példák az adatművelet-kódokra – HTML-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben található példa **HTML-táblázat létrehozása** és a változó műveleti definíciók **inicializálása** a saját logikai alkalmazás mögöttes munkafolyamat-definíciója szerint: [adatműveleti kód példák – HTML-tábla létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a Azure Portal és egy logikai alkalmazást használ **ismétlődési** eseményindítóval és **inicializálási változó** művelettel. A művelet egy olyan változó létrehozásához van beállítva, amelynek a kezdeti értéke egy olyan tömb, amely tartalmaz néhány tulajdonságot és értéket JSON formátumban. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy meg kellene várnia a triggert.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Minta logikai alkalmazás indítása a "HTML-tábla létrehozása"](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. A logikai alkalmazásban, ahol létre szeretne hozni egy HTML-táblázatot, kövesse az alábbi lépések egyikét:
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Válassza az "új lépés" lehetőséget a "HTML-tábla létrehozása" művelethez](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen, a keresőmezőbe írja be `create html table` szűrőként a kifejezést. A műveletek listából válassza a HTML- **táblázat létrehozása** műveletet.
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `create html table` szűrőt. A műveletek listából válassza a HTML- **táblázat létrehozása** műveletet.
 
    ![Válassza a "HTML-tábla létrehozása" műveletet.](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -320,7 +320,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben
 
    A következő példában a **HTML-táblázat létrehozása** művelet elkészült:
 
-   ![A "HTML-tábla létrehozása" művelet befejeződött](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
+   ![A "HTML-táblázat létrehozása" című példa elkészült](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -334,7 +334,7 @@ Alapértelmezés szerint az **oszlopok** tulajdonság úgy van beállítva, hogy
 
 1. Az **érték** tulajdonságnál válassza a használni kívánt egyéni értéket.
 
-Ha értékeket szeretne visszaadni a tömbből, használhatja a [ `item()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#item) a **HTML-táblázat létrehozása** művelettel. Egy `For_each` hurokban használhatja a [ `items()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#items).
+Ha értékeket szeretne visszaadni a tömbből, használhatja a [`item()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#item) a **HTML-táblázat létrehozása** művelettel. `For_each` hurokban használhatja a [`items()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#items).
 
 Tegyük fel például, hogy olyan tábla oszlopokat szeretne, amelyeknek csak a tulajdonsága van, és nem a tulajdonságok nevei tömbből. Ha csak ezeket az értékeket szeretné visszaadni, hajtsa végre a következő lépéseket a Tervező nézetben vagy a kód nézetben való munkához. A példa a következő eredményt adja vissza:
 
@@ -360,25 +360,25 @@ A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszl
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![A dereference tulajdonság kifejezése](./media/logic-apps-perform-data-operations/html-table-expression.png)
+   ![A (z) "HTML-tábla létrehozása" művelet dereference tulajdonsága](./media/logic-apps-perform-data-operations/html-table-expression.png)
 
 1. Ismételje meg az előző lépéseket minden kívánt tömb-tulajdonság esetében. Ha elkészült, a művelet a következő példához hasonlóan néz ki:
 
-   ![Befejezett kifejezések](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+   !["Item ()" függvény a "HTML-tábla létrehozása"](./media/logic-apps-perform-data-operations/finished-html-expression.png)
 
 1. Ha több leíró verzióra szeretné feloldani a kifejezéseket, váltson kód nézetre, és vissza a Tervező nézetre, majd nyissa meg újra az összecsukott műveletet:
 
    A **HTML-táblázat létrehozása** művelet most a következő példához hasonlóan jelenik meg:
 
-   !["HTML-tábla létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["HTML-táblázat létrehozása" – megoldott kifejezések, nincs fejléc](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 #### <a name="work-in-code-view"></a>Munka kód nézetben
 
-A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden `value` tulajdonság esetében az összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
+A művelet JSON-definíciójában a `columns` tömbben állítsa be a `header` tulajdonságot üres karakterláncra. Minden egyes `value` tulajdonság esetében az összes kívánt tömb tulajdonságot el kell, hogy hivatkozzon.
 
 1. A tervező eszköztárán válassza a **kód nézet**lehetőséget.
 
-1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt `value` a kifejezést a kívánt tömbképlet minden oszlopához:
+1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és a `value` kifejezést minden olyan oszlophoz, amelyet szeretne:
 
    ```json
    {
@@ -412,7 +412,7 @@ A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `heade
 
    A **HTML-táblázat létrehozása** művelet most a példához hasonlóan jelenik meg, és a kifejezések több leíró verzióra vannak feloldva:
 
-   !["HTML-tábla létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["HTML-tábla létrehozása" – megoldott kifejezések és nincsenek fejlécek](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 További információ erről a műveletről a mögöttes munkafolyamat-definícióban: [tábla művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -426,8 +426,8 @@ Annak ellenőrzéséhez, hogy a **HTML-táblázat létrehozása** művelet létr
 
    Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és tartalmazza az e-mail szövegtörzsének **output (kimenet** ) mezőjét:
 
-   !["Output" mezők az "e-mail küldése" művelethez](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
-   
+   !["Output" mezők a "HTML-tábla létrehozása"](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+
    > [!NOTE]
    > Ha belefoglalja a HTML-táblázat kimenetét egy e-mail-műveletbe, ügyeljen arra, hogy a a **HTML** tulajdonság értéke **Igen** legyen az e-mail művelet speciális beállításai között. Így az e-mail-művelet helyesen formázza a HTML-táblázatot.
 
@@ -435,7 +435,7 @@ Annak ellenőrzéséhez, hogy a **HTML-táblázat létrehozása** művelet létr
 
    Az Ön által használt e-mail-összekötő alapján a következő eredmények érhetők el:
 
-   ![E-mail-cím "HTML-táblázat létrehozása" művelet eredményei](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   ![E-mail a "HTML-táblázat létrehozása" eredményeivel](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
@@ -446,9 +446,9 @@ Ha olyan kisebb tömböt szeretne létrehozni, amely meghatározott feltételekn
 > [!NOTE]
 > A feltételben használt bármely szűrési szöveg megkülönbözteti a kis-és nagybetűket. Emellett ez a művelet nem változtathatja meg a tömbben lévő elemek formátumát vagy összetevőit. 
 > 
-> Ha a tömb kimenetét a tömb szűrése művelettel szeretné használni, akkor a műveleteknek el kell fogadniuk a tömböket bemenetként, vagy esetleg át kell alakítania a kimeneti tömböt egy másik kompatibilis formátumba.
+> Ha a tömb kimenetét a tömb **szűrése** művelettel szeretné használni, akkor a műveleteknek el kell fogadniuk a tömböket bemenetként, vagy esetleg át kell alakítania a kimeneti tömböt egy másik kompatibilis formátumba.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a példa **szűrő tömbjét** és az **inicializálás változó** műveleti definícióit: [Példa az adatműveleti kódokra – tömb szűrése](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a példa **szűrő tömbjét** és az **inicializálás változó** műveleti definícióit: az [adatműveleti kódokra vonatkozó példák – Tömb szűrése](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -457,17 +457,17 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben
    > [!NOTE]
    > Bár ez a példa egy egyszerű egész tömböt használ, ez a művelet különösen a JSON-objektumok tömböknél hasznos, ahol az objektumok tulajdonságai és értékei alapján szűrheti.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   ![Minta logikai alkalmazás indítása a "tömb szűrése" művelethez](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
 1. Kövesse az alábbi lépések egyikét abban a logikai alkalmazásban, amelyben létre kívánja hozni a szűrt tömböt: 
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     ![Válassza az "új lépés" lehetőséget a "tömb szűrése" művelethez](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A keresőmezőbe írja be `filter array` szűrőként a kifejezést. A műveletek listából válassza a **tömb szűrése** műveletet.
+1. A keresőmezőbe írja be a `filter array` szűrőt. A műveletek listából válassza a **tömb szűrése** műveletet.
 
    ![A "tömb szűrése" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -479,9 +479,9 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben
 
 1. A feltétel beállításnál adja meg az összehasonlítani kívánt tömböt, válassza ki az összehasonlító operátort, és adja meg az összehasonlítási értéket.
 
-   Ez a példa a `item()` függvényt használja a tömb egyes elemeinek eléréséhez, miközben a tömb **szűrése** művelet megkeresi azokat a tömb elemeket, amelyek értéke nagyobb, mint egy:
-   
-   ![A "tömb szűrése" művelet befejeződött](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+   Ez a példa a `item()` függvényt használja a tömb egyes elemeinek eléréséhez, miközben a **szűrő tömb** művelet megkeresi azokat a tömböket, amelyek értéke nagyobb, mint egy:
+
+   ![Példa a "tömb szűrése" műveletre](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -499,7 +499,7 @@ Annak ellenőrzéséhez, hogy a **tömb szűrése** művelet létrehozza-e a vá
 
    Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és tartalmazza a **ActionBody ("Filter_array")** kifejezés kimeneteit az e-mail törzsében:
 
-   ![Művelet kimenetei az "e-mail küldése" műveletben](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   ![A "tömb szűrése" művelet kimenetei](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
 1. Most manuálisan futtassa a logikai alkalmazást. A tervező eszköztárán válassza a **Futtatás**lehetőséget.
 
@@ -513,25 +513,25 @@ Annak ellenőrzéséhez, hogy a **tömb szűrése** művelet létrehozza-e a vá
 
 Ha egy tömb összes elemét tartalmazó sztringet szeretne létrehozni, és az elemeket egy adott elválasztó karakterrel választja el, használja az **illesztési** műveletet. Ezután használhatja a karakterláncot az **illesztési** művelet után következő műveletekben.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a következő példát: **JOIN** and **inicializálás változó** művelet-definíciók: [Példák az adatművelet-kódokra – csatlakozás](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen cikkben szereplő, a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a következő példában szereplő **illesztési** és **inicializálási** művelet-definíciókat: az [adatműveleti kódok példái – csatlakozás](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a Azure Portal és egy logikai alkalmazást használ **ismétlődési** eseményindítóval és **inicializálási változó** művelettel. Ez a művelet olyan változó létrehozásához van beállítva, amelynek a kezdeti értéke egy olyan tömb, amely néhány minta egész számmal rendelkezik. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy a triggert tüzet kellene várnia.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   ![Minta logikai alkalmazás indítása a "Join" művelethez](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
 1. A logikai alkalmazásban, ahol létre szeretné hozni a karakterláncot egy tömbből, kövesse az alábbi lépések egyikét:
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-join-action.png)
+     ![SSelect "új lépés" a "Join" művelethez](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A keresőmezőbe írja be `join` szűrőként a kifejezést. A műveletek listából válassza ki ezt a műveletet: **Csatlakozás**
+1. A keresőmezőbe írja be a `join` szűrőt. A műveletek listából válassza a következő műveletet: **Csatlakozás**
 
-   ![A "Join" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-join-action.png)
+   ![A "Join" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
 1. A **from (forrás** ) mezőben adja meg azt a tömböt, amely tartalmazza a karakterláncként csatlakoztatni kívánt elemeket.
 
@@ -559,13 +559,13 @@ Annak ellenőrzéséhez, hogy a **JOIN** művelet létrehozza-e a várt eredmén
 
    Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és tartalmazza az e-mail szövegtörzsének **output (kimenet** ) mezőjét:
 
-   !["Output" mezők az "e-mail küldése" művelethez](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   !["Output" mezők a "Join" művelethez](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
 1. Most manuálisan futtassa a logikai alkalmazást. A tervező eszköztárán válassza a **Futtatás**lehetőséget.
 
    Az Ön által használt e-mail-összekötő alapján a következő eredmények érhetők el:
 
-   ![E-mail-cím "Join" művelet eredményei](./media/logic-apps-perform-data-operations/join-email-results.png)
+   ![E-mail-cím "Join" művelet eredményei](./media/logic-apps-perform-data-operations/join-send-email-results.png)
 
 <a name="parse-json-action"></a>
 
@@ -573,23 +573,23 @@ Annak ellenőrzéséhez, hogy a **JOIN** művelet létrehozza-e a várt eredmén
 
 JavaScript Object Notation-(JSON-) tartalomban lévő tulajdonságok hivatkozásához vagy eléréséhez a **JSON** elemzése művelettel létrehozhat felhasználóbarát mezőket vagy jogkivonatokat ezekhez a tulajdonságokhoz. Így kiválaszthatja ezeket a tulajdonságokat a dinamikus tartalmak listájából, ha a logikai alkalmazás bemeneteit adja meg. Ehhez a művelethez egy JSON-sémát adhat meg, vagy létrehozhat egy JSON-sémát a mintául szolgáló JSON-tartalomból vagy adattartalomból.
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, a cikkből átmásolhatja a **JSON** -t, és **inicializálhatja a változó** műveleti definícióit ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciójában: [Példák az adatműveleti kódokra – JSON-elemzés](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Ha inkább a Code View Editor használatával szeretne dolgozni, a cikkből átmásolhatja a **JSON** -t, és **inicializálhatja a változó** műveleti definícióit ebből a cikkből a saját logikai alkalmazás mögöttes munkafolyamat-definíciójában: [adatműveleti kódok példái – elemzés JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a Azure Portal és egy logikai alkalmazást használ **ismétlődési** eseményindítóval és **inicializálási változó** művelettel. A művelet egy olyan változó létrehozásához van beállítva, amelynek a kezdeti értéke egy olyan JSON-objektum, amelynek tulajdonságai és értékei vannak. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy meg kellene várnia a triggert.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   ![Minta logikai alkalmazás indítása a "JSON értelmezése" művelethez](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
 1. Kövesse az alábbi lépések egyikét a logikai alkalmazásban, ahol elemezni szeretné a JSON-tartalmat:
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     ![Válassza az "új lépés" lehetőséget a "JSON-elemzés" művelethez](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A keresőmezőbe írja be `parse json` szűrőként a kifejezést. A műveletek listából válassza a JSON- **elemzés** műveletet.
+1. A keresőmezőbe írja be a `parse json` szűrőt. A műveletek listából válassza a JSON- **elemzés** műveletet.
 
    ![A "JSON-elemzés" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -631,13 +631,13 @@ Annak ellenőrzéséhez, hogy a **JSON-elemzés** művelet létrehozza-e a várt
 
    Itt látható a kész e-mail művelet:
 
-   ![Befejezett e-mail művelet](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![Példa az e-mail műveletre](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
 1. Most manuálisan futtassa a logikai alkalmazást. A tervező eszköztárán válassza a **Futtatás**lehetőséget. 
 
    Az Ön által használt e-mail-összekötő alapján a következő eredmények érhetők el:
 
-   ![E-mail-cím "Join" művelet eredményei](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   ![E-mail-cím "JSON-elemzés" művelet eredményei](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
@@ -648,23 +648,23 @@ Egy meglévő tömb értékeiből származó JSON-objektumokat tartalmazó tömb
 > [!NOTE]
 > A **Select** művelet által a tömb kimenetét használó műveletekhez a műveleteknek el kell fogadniuk a tömböket bemenetként, vagy esetleg át kell alakítania a kimeneti tömböt egy másik kompatibilis formátumba. 
 
-Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a jelen cikk **változó** műveleti definícióit a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba: [Példák az adatművelet-kódokra – kijelölés](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a jelen cikk **változó** műveleti definícióit a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba: [adatműveleti kódokra vonatkozó példák – kiválasztás ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a Azure Portal és egy logikai alkalmazást használ **ismétlődési** eseményindítóval és **inicializálási változó** művelettel. A művelet egy olyan változó létrehozásához van beállítva, amelynek a kezdeti értéke egy olyan tömb, amely néhány minta egész számot tartalmaz. Ha később teszteli a logikai alkalmazást, az alkalmazást manuálisan is futtathatja anélkül, hogy meg kellene várnia a triggert.
 
-   ![Minta logikai alkalmazás indítása](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   ![Minta logikai alkalmazás indítása a "Select" művelethez](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
 1. Kövesse az alábbi lépések egyikét abban a logikai alkalmazásban, amelyben létre kívánja hozni a tömböt: 
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-select-action.png)
+     ![Válassza az "új lépés" lehetőséget a "Select" művelethez](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel **+** (). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `select` szűrőként a kifejezést. A műveletek listából válassza a **kijelölés** műveletet.
+1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `select` szűrőt. A műveletek listából válassza a **kijelölés** műveletet.
 
    ![Válassza a "kiválasztás" műveletet](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -676,13 +676,13 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a j
 
 1. A **Térkép** mező bal oldali oszlopában adja meg a forrás tömbben az egyes értékek hozzárendeléséhez használni kívánt tulajdonság nevét. A jobb oldali oszlopban adjon meg egy kifejezést, amely a tulajdonságot hozzárendelni kívánt értéket jelöli.
 
-   Ez a példa a "Product_ID" nevet adja meg a tulajdonság neveként az egész tömbben lévő értékek hozzárendeléséhez `item()` az egyes tömbökhöz hozzáférő kifejezésben található függvény használatával. 
+   Ez a példa a "Product_ID" tulajdonságot adja meg az egész tömbben lévő értékek hozzárendeléséhez, az egyes tömbökhöz hozzáférő kifejezésben a `item()` függvény használatával. 
 
-   ![A létrehozni kívánt tömb JSON-objektum tulajdonságának és értékeinek megadása](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![A JSON-objektum tulajdonságainak és értékeinek meghatározása tömb létrehozásához](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
    Itt látható a befejezett művelet:
 
-   ![Befejezett Select művelet](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   ![Befejezett példa a "Select" műveletre](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -698,9 +698,9 @@ Annak ellenőrzéséhez, hogy a **Select** művelet létrehozza-e a várt eredm�
 
    `@actionBody('Select')`
 
-   Ez a példa az Office 365 Outlook **e-mail küldése** műveletét használja, és az e-mail `@actionBody('Select')` -szövegtörzsben szereplő kifejezés kimeneteit tartalmazza:
+   Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és a `@actionBody('Select')` kifejezés kimeneteit tartalmazza az e-mail törzsében:
 
-   ![Művelet kimenetei az "e-mail küldése" műveletben](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   ![Művelet kimenetei a "Select" műveletből](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
 1. Most manuálisan futtassa a logikai alkalmazást. A tervező eszköztárán válassza a **Futtatás**lehetőséget.
 
@@ -708,6 +708,6 @@ Annak ellenőrzéséhez, hogy a **Select** művelet létrehozza-e a várt eredm�
 
    ![E-mailek a "Select" művelet eredményeivel](./media/logic-apps-perform-data-operations/select-email-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Logic apps-összekötőről](../connectors/apis-list.md)

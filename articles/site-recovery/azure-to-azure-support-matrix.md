@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: raynew
-ms.openlocfilehash: f0b66806138311508725d377b59b83c1b1365674
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d689d25b9c9c7704047ccd3cfc98aa2ea583d20b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553545"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968807"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
@@ -47,7 +47,7 @@ A virtuális gépeket replikálhatja és helyreállíthatja az azonos földrajzi
 **Földrajzi fürt** | **Azure-régiók**
 -- | --
 Államok | Kelet-Kanada, Közép-Kanada, az USA déli középső régiója, az USA nyugati középső régiója, az USA keleti régiója, USA 2. keleti régiója, USA nyugati régiója, USA 2. középső régiója, USA
-Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Közép-Franciaország, Dél-Franciaország, Dél-Afrika nyugati régiója, Dél-Afrika északi régiója
+Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Közép-Franciaország, Dél-Franciaország, Dél-Afrika nyugati régiója, Dél-Afrika északi régiója, Kelet-Norvégia, Norvégia nyugati régiója
 Ázsia | Dél-India, Közép-India, Nyugat-India, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Egyesült Arab Emírségek, Észak-Ausztrália
 Ausztrália   | Kelet-Ausztrália, Délkelet-Ausztrália, Ausztrália középső régiója, Ausztrália 2. középső régiója
 Azure Government    | USA-beli államigazgatás – Virginia, USA-beli államigazgatás, Egyesült Államok 
@@ -162,7 +162,7 @@ Méret | Bármely Azure-beli VM-méret legalább 2 CPU-maggal és 1 GB RAM-mal |
 Rendelkezésre állási csoportok | Támogatott | Ha az alapértelmezett beállításokkal engedélyezi egy Azure-beli virtuális gép replikálását, a rendszer automatikusan létrehoz egy rendelkezésre állási készletet a forrás régió beállításai alapján. Ezek a beállítások módosíthatók.
 Rendelkezésre állási zónák | Támogatott |
 Hybrid use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gépen engedélyezve van a HUB-licenc, a feladatátvételi teszt vagy a feladatátvételi művelet a HUB-licencet is használja.
-Virtuális gépek méretezési csoportjai | Nem támogatott |
+Virtual Machine Scale Sets | Nem támogatott |
 Azure Gallery-lemezképek – Microsoft published | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Azure Gallery-rendszerképek – harmadik féltől származó közzététel | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Egyéni rendszerképek – harmadik féltől származó közzététel | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.

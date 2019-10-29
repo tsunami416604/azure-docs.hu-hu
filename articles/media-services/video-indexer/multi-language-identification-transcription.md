@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862043"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968743"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Többnyelvű tartalom automatikus azonosítása és átírása (előzetes verzió)
 
@@ -39,7 +39,7 @@ A videó feltöltésekor és indexelése során a **többnyelvű észlelést** i
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Többnyelvű azonosítás kiválasztása API-val való indexeléshez
 
-Amikor az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `multi-language detection` `sourceLanguage` paraméterben található lehetőséget.
+Amikor az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `multi-language detection` lehetőséget a `sourceLanguage` paraméterben.
 
 ### <a name="model-output"></a>Modell kimenete
 
@@ -75,7 +75,7 @@ Emellett az átírási szakasz minden példánya tartalmazza azt a nyelvet, amel
 
 ## <a name="guidelines-and-limitations"></a>Irányelvek és korlátozások
 
-* Támogatott nyelvek készlete: Angol, francia, német, spanyol.
+* Támogatott nyelvek készlete: angol, francia, német, spanyol.
 * Többnyelvű tartalom támogatása legfeljebb három támogatott nyelvvel.
 * Ha a hang a fenti támogatott listán kívül más nyelveket is tartalmaz, az eredmény nem várt.
 * A szegmens minimális hossza az egyes nyelvek észleléséhez – 15 másodperc.
@@ -86,10 +86,9 @@ Emellett az átírási szakasz minden példánya tartalmazza azt a nyelvet, amel
 * A projekt létrehozása és szerkesztése jelenleg nem érhető el többnyelvű videókhoz.
 * A többnyelvű észlelés használata esetén az egyéni nyelvi modellek nem érhetők el.
 * A kulcsszavak hozzáadása nem támogatott.
-* "az átirat frissítése" API nem támogatott.
 * A lezárt képaláírás-fájlok exportálásakor a nyelvi jelzés nem fog megjelenni.
+* A frissítési átirat API nem támogatja több nyelvi fájl használatát.
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

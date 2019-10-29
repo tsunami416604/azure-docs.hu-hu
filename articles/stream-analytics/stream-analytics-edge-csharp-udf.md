@@ -1,6 +1,6 @@
 ---
-title: Felhasználó C# által definiált függvények írása Azure stream Analytics Edge-feladatokhoz
-description: Megtudhatja, hogyan írhat felhasználói C# függvényt Azure Stream Analytics Edge-feladathoz a Visual Studióban.
+title: Felhasználó C# által definiált függvények írása Azure stream Analytics feladatokhoz a Visual Studióban (előzetes verzió)
+description: Megtudhatja, hogyan írhat c# felhasználó által definiált függvényeket Stream Analytics feladatokhoz a Visual Studióban.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,23 +9,23 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ddb5f6c57c49b33c992b13f38c969cbc5e91225
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d6cf420c8baceb243e8c4d70c8bcbc95ec626c3a
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925619"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990248"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Oktatóanyag: C# felhasználó által definiált függvény írása Azure stream Analytics Edge-feladathoz (előzetes verzió)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Oktatóanyag: C# felhasználó által definiált függvény írása Azure stream Analytics feladathoz (előzetes verzió)
 
-A Visual Studióban létrehozott felhasználói C# függvényekkel (UDF-ekkel) kiterjesztheti az Azure Stream Analytics lekérdezéseinek nyelvét a saját függvényeire. A C#-pal meglévő kódokat használhat újra (így DLL-eket is), valamint matematikai vagy összetett logikát alkalmazhat. Az UDF-ek implementálásának három módja van: CodeBehind-fájlok egy Stream Analytics-projektben, UDF-ek egy helyi C#-projektből, valamint UDF-ek egy tárfiók meglévő csomagjából. Ez az oktatóanyag a CodeBehind metódussal implementál egy alapszintű C# függvényt. A Stream Analytics-feladatokhoz használható UDF funkció jelenleg előzetes verzióban érhető el, így használata nem javasolt éles környezetekben.
+A Visual Studióban létrehozott felhasználói C# függvényekkel (UDF-ekkel) kiterjesztheti az Azure Stream Analytics lekérdezéseinek nyelvét a saját függvényeire. A C#-pal meglévő kódokat használhat újra (így DLL-eket is), valamint matematikai vagy összetett logikát alkalmazhat. Az UDF-ek implementálásának három módja van: CodeBehind-fájlok egy Stream Analytics-projektben, UDF-ek egy helyi C#-projektből, valamint UDF-ek egy tárfiók meglévő csomagjából. Ez az oktatóanyag a CodeBehind metódussal implementál egy alapszintű C# függvényt. Stream Analytics feladatok UDF-funkciója jelenleg előzetes verzióban érhető el, ezért nem használható éles környezetben.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Felhasználói C# függvény létrehozása CodeBehinddal.
-> * A Stream Analytics Edge-feladat helyi tesztelése.
-> * Az Edge-feladat közzététele az Azure-ban.
+> * A Stream Analytics-feladatok helyi tesztelése.
+> * Tegye közzé a feladatot az Azure-ban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,19 +33,19 @@ Mielőtt hozzálátna, győződjön meg róla, hogy megfelel az alábbi előfelt
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Stream Analytics Tools for Visual Studiót](stream-analytics-tools-for-visual-studio-install.md) és az **Azure-fejlesztési** vagy az **Adattárolási és -feldolgozási** számítási feladatokat.
-* Vessen egy pillantást a meglévő [Stream Analytics Edge fejlesztési útmutatóra](stream-analytics-tools-for-visual-studio-edge-jobs.md).
+* Tekintse meg a meglévő [Stream Analytics Edge fejlesztői útmutatót], ha IoT Edge feladatot (stream-Analytics-Tools-for-Visual-Studio-Edge-jobs.md) hoz létre.
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Tároló létrehozása az Azure Storage-fiókban
 
-A létrehozott tárolóban tárolja majd a kész C# csomagot, amelyet az IoT Edge-eszközön helyezhet üzembe. A Stream Analytics-feladathoz dedikált tárolót használjon. Ugyanazt a tárolót nem használhatja több Stream Analytics Edge-feladathoz. Ha már van egy meglévő tárolókat tartalmazó tárfiókja, használhatja azokat. Ha nincs, [hozzon létre egy új tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). 
+A létrehozott tárolót a rendszer a lefordított C# csomag tárolására fogja használni. Ha létrehoz egy Edge-feladatot, a rendszer ezt a Storage-fiókot is felhasználja a csomag IoT Edge eszközre való telepítéséhez. A Stream Analytics-feladathoz dedikált tárolót használjon. Ugyanazt a tárolót nem használhatja több Stream Analytics Edge-feladathoz. Ha már van egy meglévő tárolókat tartalmazó tárfiókja, használhatja azokat. Ha nincs, [hozzon létre egy új tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). 
 
-## <a name="create-a-stream-analytics-edge-project-in-visual-studio"></a>Stream Analytics Edge-projekt létrehozása a Visual Studióban
+## <a name="create-a-stream-analytics-project-in-visual-studio"></a>Stream Analytics-projekt létrehozása a Visual Studióban
 
 1. Indítsa el a Visual Studiót.
 
 2. Válassza a **Fájl > Új projekt** lehetőséget.
 
-3. A bal oldali sablonlistában válassza ki a **Stream Analytics**, majd az **Azure Stream Analytics-alkalmazás** elemet.
+3. A bal oldali sablonok listájában válassza a **stream Analytics**lehetőséget, majd válassza ki **Azure stream Analytics Edge alkalmazást** vagy **Azure stream Analytics alkalmazást**.
 
 4.  Adja meg az alkalmazás **nevét**, **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 
@@ -59,19 +59,18 @@ A létrehozott tárolóban tárolja majd a kész C# csomagot, amelyet az IoT Edg
 
 3. Bontsa ki a **Felhasználói kód konfigurációja** szakaszt, és töltse ki a konfigurációt az alábbi javasolt értékekkel:
 
-    |**Beállítás**  |**Ajánlott érték**  |
-    |---------|---------|
-    |Szerelvény forrása  |  A helyi projekt referenciája vagy a CodeBehind   |
-    |Erőforrás  |  Válassza ki az adatokat az aktuális fiókból   |
-    |Előfizetés  |  Válassza ki az előfizetését.   |
-    |Tárfiók  |  Válassza ki a tárfiókját.   |
-    |Tároló  |  Válassza ki a tárfiókjában létrehozott tárolót.   |
-
-    ![Azure Stream Analytics Edge-projekt konfigurálása a Visual Studióban](./media/stream-analytics-edge-csharp-udf/stream-analytics-edge-job-config.png)
+   |**Beállítás**|**Ajánlott érték**|
+   |-------|---------------|
+   |Globális tárolási beállítások erőforrás|Choose data source from current account (Adatforrás kiválasztása az aktuális fiókból)|
+   |Globális tárolási beállítások előfizetése| < az előfizetést >|
+   |Globális tárolási beállítások Storage-fiókja| < a Storage-fiókját >|
+   |Egyéni kód tárolási beállításainak erőforrása|Choose data source from current account (Adatforrás kiválasztása az aktuális fiókból)|
+   |Egyéni kód tárolási beállításainak Storage-fiókja|< a Storage-fiókját >|
+   |Egyéni kód tárolási beállításainak tárolója|< a Storage-tárolót >|
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>C# UDF írása a CodeBehind segítségével
-A CodeBehind egy olyan C#-fájl, amely egyetlen ASA Edge-beli lekérdezésszkripthez van rendelve. A Visual Studio eszközei automatikusan tömörítik a CodeBehind fájlt, majd a beküldés után feltöltik az Azure Storage-fiókba. Minden osztályt *nyilvánosként*, minden objektumot pedig *statikus nyilvánosként* kell definiálni.
+A CodeBehind-fájlok egyetlen C# ASA-lekérdezési parancsfájlhoz társított fájlok. A Visual Studio eszközei automatikusan tömörítik a CodeBehind fájlt, majd a beküldés után feltöltik az Azure Storage-fiókba. Minden osztályt *nyilvánosként*, minden objektumot pedig *statikus nyilvánosként* kell definiálni.
 
 1. A **Megoldáskezelőben** bontsa ki a **Script.asql** fájlt a **Script.asaql.cs** CodeBehind fájl megkereséséhez.
 
@@ -111,7 +110,7 @@ A CodeBehind egy olyan C#-fájl, amely egyetlen ASA Edge-beli lekérdezésszkrip
 
 ## <a name="local-testing"></a>Helyi tesztelés
 
-1. Töltse le az Edge [hőmérsékletszimulátor mintaadatfájlját](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json).
+1. Töltse le a [hőmérséklet-szimulátor minta adatfájlját](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json).
 
 2. A **Megoldáskezelőben** bontsa ki a **Bemenetek** csomópontot, majd kattintson a jobb gombbal az **Input.json** fájlra, és válassza a **Helyi bemenet hozzáadása** lehetőséget.
 
@@ -146,13 +145,13 @@ A lekérdezés helyi tesztelése után válassza a szkriptszerkesztő **Küldés
 ![A Stream Analytics Edge-feladat Azure-ban való közzététele a Visual Studióból](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>Üzembe helyezés IoT Edge-eszközökön
-A Stream Analytics-feladat most már üzembe helyezhető IoT Edge-modulként. Az [IoT Edge – gyors üzembe helyezés](https://docs.microsoft.com/azure/iot-edge/quickstart) lépéseit követve létrehozhat egy IoT Hubot, regisztrálhat egy IoT Edge-eszközt, majd telepítheti és elindíthatja az IoT Edge-futtatókörnyezetet a eszközön. Ezután [A feladat üzembe helyezése](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job) oktatóanyagot követve üzembe helyezheti a Stream Analytics-feladatot IoT Edge-modulként. 
+Ha úgy dönt, hogy létrehoz egy Stream Analytics Edge-feladatot, ez mostantól IoT Edge modulként is telepíthető. Az [IoT Edge – gyors üzembe helyezés](https://docs.microsoft.com/azure/iot-edge/quickstart) lépéseit követve létrehozhat egy IoT Hubot, regisztrálhat egy IoT Edge-eszközt, majd telepítheti és elindíthatja az IoT Edge-futtatókörnyezetet a eszközön. Ezután [A feladat üzembe helyezése](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job) oktatóanyagot követve üzembe helyezheti a Stream Analytics-feladatot IoT Edge-modulként. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy egyszerű, felhasználói C# függvényt a CodeBehinddal, közzétette a feladatot az Azure-ban, majd üzembe helyezte azt az IoT Edge-eszközein az IoT Hub portáljával. 
+Ebben az oktatóanyagban egy egyszerű C# , felhasználó által definiált függvényt hozott létre az Codebehind használatával, közzétette a feladatot az Azure-ban, és üzembe helyezte a feladatot az Azure-ban vagy IoT Edge eszközön. 
 
-Ha többet szeretne megtudni a felhasználói C# függvények Stream Analytics-feladatokban történő alkalmazásának módjairól, tekintse meg a következő cikket:
+Ha többet szeretne megtudni a felhasználó által definiált C# függvények stream Analytics feladatokhoz való használatának különböző módjairól, folytassa a következő cikkel:
 
 > [!div class="nextstepaction"]
 > [Írási C# függvények a Azure stream Analyticshoz](stream-analytics-edge-csharp-udf-methods.md)

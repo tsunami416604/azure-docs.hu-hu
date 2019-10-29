@@ -1,35 +1,34 @@
 ---
-title: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
-description: Linux rendszerű virtuális gép létrehozása egy terheléselosztóval az Azure-ban a Terraform és a HashiCorp konfigurációs nyelv (HCL) használatával
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuális gép, hálózat, modulok
+title: Oktatóanyag – Azure-beli virtuálisgép-fürt létrehozása a Terraform és a HCL-val
+description: A Terraform és a HCL használatával hozzon létre egy linuxos virtuálisgép-fürtöt az Azure-beli terheléselosztó segítségével
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7adf3afe993a01357abcae846f19f602a49862bc
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173463"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969473"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform és a HCL-val
 
-Ez az oktatóanyag egy kisméretű számítási fürt létrehozását mutatja be a [HashiCorp konfigurációs nyelv](https://www.terraform.io/docs/configuration/syntax.html) (HCL) használatával. A konfiguráció egy terheléselosztót és két Linux rendszerű virtuális gépet hoz létre egy [rendelkezésre állási csoportban](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy), valamint az összes szükséges hálózati erőforrást.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy kis számítási fürtöt a [HCl](https://www.terraform.io/docs/configuration/syntax.html)használatával. 
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Azure-beli hitelesítés beállítása
-> * Terraform konfigurációs fájl létrehozása
-> * A Terraform inicializálása
-> * Terraform végrehajtási terv létrehozása
-> * A Terraform végrehajtási terv alkalmazása
+> * Azure-hitelesítés beállítása.
+> * Hozzon létre egy Terraform-konfigurációs fájlt.
+> * Terheléselosztó létrehozásához használjon egy Terraform-konfigurációs fájlt.
+> * Terraform-konfigurációs fájl használatával két linuxos virtuális gépet telepíthet egy rendelkezésre állási csoportba.
+> * Inicializálja a Terraformot.
+> * Hozzon létre egy Terraform végrehajtási tervet.
+> * Az Azure-erőforrások létrehozásához alkalmazza a Terraform végrehajtási tervét.
 
-## <a name="1-set-up-azure-authentication"></a>1. Azure-beli hitelesítés beállítása
+## <a name="1-set-up-azure-authentication"></a>1. Azure-hitelesítés beállítása
 
 > [!NOTE]
 > Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure), vagy az [Azure Cloud Shellben](terraform-cloud-shell.md) futtatja ezt az oktatóanyagot, ugorja át ezt a szakaszt.
@@ -53,16 +52,16 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
-6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. A Terraform-változók fájlját szokás a `terraform.tfvars` néven elnevezni, mivel a Terraform automatikusan betölti a `terraform.tfvars` (vagy a `*.auto.tfvars` mintát követő) nevű fájlt, ha az aktuális könyvtárban található ilyen fájl. 
+6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. Gyakran előfordul, hogy a `terraform.tfvars` Terraform nevet adja a Terraform, mivel a automatikusan betölt minden `terraform.tfvars` nevű fájlt (vagy `*.auto.tfvars`), ha az aktuális könyvtárban van. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy a helyőrzőket a következőképpen cserélje le: A `subscription_id`esetében használja a futtatáskor `az account set`megadott Azure-előfizetés azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -71,7 +70,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
    client_secret = "<password-returned-from-creating-a-service-principal>"
    ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Terraform konfigurációs fájl létrehozása
+## <a name="2-create-a-terraform-configuration-file"></a>2. Terraform-konfigurációs fájl létrehozása
 
 Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-definícióinak tárolására.
 
@@ -88,60 +87,60 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -218,9 +217,9 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
    }
    ```
 
-## <a name="3-initialize-terraform"></a>3. A Terraform inicializálása 
+## <a name="3-initialize-terraform"></a>3. Terraform inicializálása 
 
-A [terraform init parancs](https://www.terraform.io/docs/commands/init.html) egy könyvtárat inicializál, amely a Terraform konfigurációs fájljait tartalmazza – azaz az előző szakaszokban létrehozott fájlokat. Az új Terraform-konfigurációk összeállítása után mindig érdemes futtatni a `terraform init` parancsot. 
+A [terraform init parancs](https://www.terraform.io/docs/commands/init.html) egy könyvtárat inicializál, amely a Terraform konfigurációs fájljait tartalmazza – azaz az előző szakaszokban létrehozott fájlokat. Az új Terraform-konfiguráció megírása után érdemes mindig a `terraform init` parancsot futtatni. 
 
 > [!TIP]
 > A `terraform init` parancs idempotens, tehát többször is meghívható, és mindig ugyanazt az eredményt adja. Tehát ha együttműködési környezetben dolgozik, és úgy gondolja, hogy a konfigurációs fájlok esetleg módosultak, célszerű minden esetben meghívni a `terraform init` parancsot a tervek végrehajtása vagy alkalmazása előtt.
@@ -237,27 +236,44 @@ A Terraform inicializálásához futtassa az alábbi parancsot:
 
 A [terraform plan parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási tervet hoz létre. A végrehajtási terv összeállításához a Terraform összesíti az összes `.tf` fájlt az aktuális könyvtárban. 
 
-Ha együttműködési környezetben dolgozik, ahol a konfiguráció a végrehajtási terv létrehozásának és alkalmazásának időpontja között módosulhat, a [terraform plan parancs -out paraméterével](https://www.terraform.io/docs/commands/plan.html#out-path) egy fájlba mentheti a végrehajtási tervet. Amennyiben azonban csak egyszemélyes környezetben dolgozik, ki is hagyhatja az `-out` paramétert.
+A [-out paraméter](https://www.terraform.io/docs/commands/plan.html#out-path) elmenti a végrehajtási tervet egy kimeneti fájlba. Ez a funkció a többplatformos környezetekben gyakran előforduló párhuzamossági problémákat tárgyalja. A kimeneti fájl által megoldott egyik ilyen probléma a következő eset:
 
-Ha a Terraform-változók fájljának neve nem `terraform.tfvars`, és nem követi az `*.auto.tfvars` mintát sem, a fájlnevet is meg kell adnia a [-var-file paraméter](https://www.terraform.io/docs/commands/plan.html#var-file-foo) használatával a `terraform plan` parancs futtatásakor.
+1. A dev 1 létrehozza a konfigurációs fájlt.
+1. A dev 2 módosítja a konfigurációs fájlt.
+1. A dev 1 a konfigurációs fájlt alkalmazza (futtatja).
+1. A dev 1 váratlan eredménnyel nem tudta, hogy a fejlesztői 2 módosította a konfigurációt.
 
-A `terraform plan` parancs feldolgozásakor a Terraform végrehajt egy frissítést, és meghatározza a konfigurációs fájlokban megadott célállapot eléréséhez szükséges műveleteket.
+A dev 1 kimeneti fájl megadásával megakadályozhatja, hogy a dev 2 a dev 1-et befolyásolja. 
 
-Ha a végrehajtási tervet nem szükséges mentenie, futtassa a következő parancsot:
+Ha nem kell mentenie a végrehajtási tervet, futtassa a következő parancsot:
 
   ```bash
   terraform plan
   ```
 
-Ha a végrehajtási tervet menteni kell, a következő parancsot futtassa (és cserélje le a &lt;path> helyőrzőt a kívánt mentési hely elérési útjára):
+Ha mentenie kell a végrehajtási tervet, futtassa a következő parancsot. Cserélje le a helyőrzőket a környezetének megfelelő értékekkel.
 
   ```bash
   terraform plan -out=<path>
   ```
 
+Egy másik hasznos paraméter a [-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+
+Alapértelmezés szerint a Terraform a következőképpen próbálta megkeresni a változók fájlját:
+- `terraform.tfvars` nevű fájl
+- A nevű fájl a következő minta használatával: `*.auto.tfvars`
+
+Azonban a változók fájljának nem kell követnie az előző két konvenció egyikét sem. Ebben az esetben adja meg a változók fájlnevét a `-var-file` paraméterrel. A következő példa szemlélteti ezt a pontot:
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+A Terraform meghatározza azokat a műveleteket, amelyek szükségesek a konfigurációs fájlban megadott állapot eléréséhez.
+
 ![Terraform végrehajtási terv létrehozása](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. A Terraform végrehajtási terv alkalmazása
+## <a name="5-apply-the-terraform-execution-plan"></a>5. a Terraform végrehajtási terv alkalmazása
 
 A jelen oktatóanyag utolsó lépéseként a [terraform apply parancs](https://www.terraform.io/docs/commands/apply.html) használatával alkalmazzuk a `terraform plan` paranccsal összeállított műveleteket.
 
@@ -267,7 +283,7 @@ Ha a legfrissebb végrehajtási tervet szeretné alkalmazni, futtassa a követke
   terraform apply
   ```
 
-Ha egy korábban mentett végrehajtási tervet szeretne alkalmazni, a következő parancsot futtassa (és cserélje le a &lt;path> helyőrzőt a mentett végrehajtási terv elérési útjára):
+Ha egy korábban mentett végrehajtási tervet szeretne alkalmazni, futtassa a következő parancsot. Cserélje le a helyőrzőket a környezet megfelelő értékeire:
 
   ```bash
   terraform apply <path>
@@ -275,7 +291,7 @@ Ha egy korábban mentett végrehajtási tervet szeretne alkalmazni, a következ�
 
 ![Terraform végrehajtási terv alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az [Azure Terraform-modulok](https://registry.terraform.io/modules/Azure) listájának áttekintése
-- Hozzon létre egy [virtuálisgép-méretezési csoportot a Terraformmal](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [Azure virtuálisgép-méretezési csoport létrehozása a Terraform használatával](terraform-create-vm-scaleset-network-disks-hcl.md)

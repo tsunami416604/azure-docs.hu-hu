@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 4add98ae092359c6f070bfc93b69257894f44e48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596421"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991459"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -47,7 +47,7 @@ A klasszikus virtuális hálózatok nem támogatottak új központi telepítése
 Igen. Azure AD Domain Services engedélyezhető Azure Resource Manager virtuális hálózaton. Új felügyelt tartomány létrehozásakor a klasszikus Azure-beli virtuális hálózatok már nem támogatottak.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Áttelepíthetem a meglévő felügyelt tartományt egy klasszikus virtuális hálózatról egy Resource Manager-alapú virtuális hálózatra?
-Igen, ez a funkció előzetes verzióban érhető el. További információ: [Azure AD Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe (előzetes verzió)] [Migrálás a Klasszikusból-vnet.md]
+Igen, ez a funkció előzetes verzióban érhető el. További információ: [Azure ad Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe (előzetes verzió)](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Engedélyezhető a Azure AD Domain Services egy Azure CSP-előfizetésben?
 Igen. További információ: [Azure ad Domain Services engedélyezése az Azure CSP-előfizetésekben](csp.md).

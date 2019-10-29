@@ -1,22 +1,19 @@
 ---
-title: Sugaras hibrid hálózati topológia létrehozása az Azure-beli Terraform
+title: Oktatóanyag – hub és küllős hibrid hálózati topológia létrehozása az Azure-ban az Terraform használatával
 description: Az oktatóanyag bemutatja, hogyan hozhat létre egy teljes hibrid hálózati hivatkozási architektúrát az Azure-ban a Terraform használatával
-services: terraform
-ms.service: azure
-keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gép, Azure, vnet-társítás, hálózati virtuális berendezés
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173454"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969397"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Oktatóanyag: Sugaras hibrid hálózati topológia létrehozása az Azure-beli Terraform
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Oktatóanyag: hub és küllős hibrid hálózati topológia létrehozása az Azure-ban a Terraform használatával
 
 Ez az oktatóanyag-Sorozat azt mutatja be, hogyan használható a Terraform az Azure-ban [sugaras hálózati topológia](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)megvalósítására. 
 
@@ -34,9 +31,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**: Ha még nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+- **Azure-előfizetés**: Ha még nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a Kezdés előtt.
 
-- **A Terraform telepítése és konfigurálása**: Virtuális gépek és egyéb infrastruktúra kiépítése az Azure-ban, [Terraform telepítése és konfigurálása](/azure/virtual-machines/linux/terraform-install-configure)
+- A **Terraform telepítése és konfigurálása**: virtuális gépek és más infrastruktúra kiépítése az Azure-ban, a [Terraform telepítése és konfigurálása](/azure/virtual-machines/linux/terraform-install-configure)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Hub és küllős topológia architektúrája
 
@@ -48,7 +45,7 @@ A hub és a küllős topológiában a hub egy VNet. A VNet központi kapcsolód�
 
 A sugaras hálózati topológia lehetővé teszik a számítási feladatok elkülönítését a közös szolgáltatások megosztása során. Ezek a szolgáltatások identitást és biztonságot tartalmaznak. A hub egy VNet, amely központi kapcsolódási pontként funkcionál egy helyszíni hálózat számára. A küllők az agyhoz kapcsolódó virtuális hálózatok. A megosztott szolgáltatások üzembe helyezése a központban történik, míg az egyes számítási feladatok a küllős hálózatokon belül vannak telepítve. Íme néhány előny a hub és a küllő hálózati topológiához:
 
-- Költségmegtakarítás a szolgáltatások központosításával egyetlen helyen, amely több munkaterheléssel is megosztható. Ezek a számítási feladatok közé tartoznak a hálózati virtuális berendezések és a DNS-kiszolgálók.
+- **Költségmegtakarítás a** szolgáltatások központosításával egyetlen helyen, amely több munkaterheléssel is megosztható. Ezek a számítási feladatok közé tartoznak a hálózati virtuális berendezések és a DNS-kiszolgálók.
 - **Az előfizetési korlátok leküzdése** a különböző előfizetésekből virtuális társhálózatok létesítésével a központi agyhoz.
 - **Kockázatok elkülönítése** a központi IT (SecOps, InfraOps) és a számítási feladatok között (DevOps).
 
@@ -109,7 +106,7 @@ Hozza létre azt a könyvtárat, amely a Terraform konfigurációs fájljait tar
 
 Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájlt.
 
-1. A Cloud Shellban nyisson meg egy nevű `main.tf`új fájlt.
+1. A Cloud Shellban nyisson meg egy `main.tf`nevű új fájlt.
 
     ```bash
     code main.tf
@@ -129,7 +126,7 @@ Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájl
 
 Hozza létre a Terraform konfigurációs fájlját a különböző parancsfájlokban használt általános változókhoz.
 
-1. A Cloud Shellban nyisson meg egy nevű `variables.tf`új fájlt.
+1. A Cloud Shellban nyisson meg egy `variables.tf`nevű új fájlt.
 
     ```bash
     code variables.tf
@@ -161,7 +158,7 @@ Hozza létre a Terraform konfigurációs fájlját a különböző parancsfájlo
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Helyszíni virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md)

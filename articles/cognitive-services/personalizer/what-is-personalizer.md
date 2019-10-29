@@ -10,22 +10,21 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203788"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989594"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
-Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
+Az Azure személyre szabott felhőalapú API-szolgáltatás lehetővé teszi a felhasználók számára a legjobb felhasználói élmény kiválasztását, a közös valós idejű viselkedésük megismerését.
 
 * Adja meg a felhasználókkal és a tartalommal kapcsolatos információkat, és fogadja a legfontosabb műveletet a felhasználók megjelenítéséhez. 
 * A személyre szabás használata előtt nem kell megtisztítani és címkéznie az adatfeliratot.
 * Visszajelzés küldése a személyre szabáshoz, ha az kényelmes Önnek. 
 * Valós idejű elemzések megtekintése. 
-* A meglévő kísérletek ellenőrzéséhez használja a személyre szabást egy nagyobb adatelemzési tevékenység részeként.
 
 ## <a name="how-does-personalizer-work"></a>Hogyan működik a személyre szabás?
 
@@ -37,9 +36,9 @@ A személyre szabott gépi tanulási modellekkel megismerheti, hogy milyen műve
 
 1. A személyre szabáshoz válasszon egy felhasználói élményt az alkalmazásban.
 1. Hozza létre és konfigurálja a megszemélyesítési szolgáltatás egy példányát a Azure Portal. Minden példány egy személyre szabott hurok.
-1. Az SDK használatával meghívhatja a személyre szabott információkat (_szolgáltatásokat_) a felhasználókkal és a tartalommal (_műveletekkel_). A személyre szabás előtt nem kell megadnia tiszta, címkézett adattípust. 
+1. A [Rank API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) -val a felhasználókra vonatkozó információkkal (_funkciókkal_) és a tartalommal (_műveletekkel_) hívhat személyre. A személyre szabás előtt nem kell megadnia tiszta, címkézett adattípust. Az API-k hívhatók közvetlenül vagy különböző programozási nyelvekhez elérhető SDK-k használatával.
 1. Az ügyfélalkalmazás megjeleníti a felhasználó által a személyre szabott művelet által kiválasztott műveletet.
-1. Az SDK használatával visszajelzést küldhet a személyre szabott személynek, amely azt jelzi, hogy a felhasználó kiválasztotta-e a testreszabott műveletet. Ez egy _[jutalom pontszám](concept-rewards.md)_ .
+1. A [jutalmazási API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) -val visszajelzést adhat a személyre szabott személynek, amely jelzi, hogy a felhasználó kiválasztotta-e a testreszabási műveletet. Ez egy _[jutalom pontszám](concept-rewards.md)_ .
 1. Megtekintheti az elemzéseket a Azure Portalban annak kiértékeléséhez, hogy a rendszer hogyan működik, és hogyan segíti az adatai személyre szabását.
 
 ## <a name="where-can-i-use-personalizer"></a>Hol használhatom a személyre szabott szolgáltatást?
@@ -64,7 +63,7 @@ A személyre szabott szolgáltatás két API-val rendelkezik:
 
 ![Személyre szabott események alapszintű eseménysorozat](media/what-is-personalizer/personalization-intro.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A személyre szabás újdonságai](whats-new.md)
 * [Hogyan működik a megszemélyesítő?](how-personalizer-works.md)

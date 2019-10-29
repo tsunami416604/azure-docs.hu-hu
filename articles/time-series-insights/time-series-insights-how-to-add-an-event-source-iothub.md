@@ -3,7 +3,7 @@ title: IoT hub-eseményforrás hozzáadása a Azure Time Series Insightshoz | Mi
 description: Ez a cikk azt ismerteti, hogyan adható hozzá egy IoT hub-hoz csatlakoztatott eseményforrás a Time Series Insights-környezethez.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaac2e3e2fc489b364729711da151c28cde86d6c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f9dd79bacf2d21e0c7e7681e5217d5e874b2b30e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274706"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991200"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT hub-esemény forrásának hozzáadása a Time Series Insights-környezethez
 
@@ -42,7 +42,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. A **Beállítások**területen válassza a **beépített végpontok**lehetőséget, majd válassza ki az **események** végpontot.
 
-   [@no__t – 1On a beépített végpontok lapon válassza az események gombot](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
+   [![a beépített végpontok lapon kattintson az események gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
 
 1. A **fogyasztói csoportok**területen adjon meg egy egyedi nevet a fogyasztói csoport számára. Az új eseményforrás létrehozásakor használja ugyanazt a nevet a Time Series Insights-környezetben.
 
@@ -56,7 +56,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. A **környezeti topológia**területen válassza az **eseményforrás**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 
-   [![. eseményforrás, majd válassza a Hozzáadás gombot](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
+   [![válassza az eseményforrás lehetőséget, majd kattintson a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
 
 1. Az **új eseményforrás** ablaktáblán az **eseményforrás neve**mezőben adjon meg egy egyedi nevet a Time Series Insights környezetben. Adja meg például az **Event-stream**értéket.
 
@@ -66,11 +66,11 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
    * Ha az egyik előfizetésében már van egy IoT hub, válassza a **IoT hub használata az elérhető előfizetések közül**lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
    
-     [@no__t – 1. lehetőség az új eseményforrás ablaktáblán](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
+     [![válassza a beállítások lehetőséget az új esemény forrása ablaktáblán](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
 
     * A következő táblázat azokat a tulajdonságokat ismerteti, amelyek szükségesek az **elérhető előfizetések IoT Hubának használata az elérhető előfizetések közül** :
 
-       [@no__t – 1New-esemény forrásának panelje – az elérhető előfizetések IoT Hub használatban beállításához megadott tulajdonságok](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
+       [![új eseményforrás ablaktábla – az elérhető előfizetések IoT Hub használata az elérhető előfizetések között beállításhoz megadott tulajdonságok](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
 
        | Tulajdonság | Leírás |
        | --- | --- |

@@ -9,18 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 759be3691ba44c92033ec71fd031f9c6e47d6cb4
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: ac6354c96035689dd12b7e86f9b9b0e44ad9c1ae
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311895"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968575"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
 Ez a cikk azt ismerteti, hogyan állíthatja vissza az Azure-beli virtuális gépek adatait a [Azure Backup](backup-overview.md) Recovery Services-tárolókban tárolt helyreállítási pontokból.
-
-
 
 ## <a name="restore-options"></a>Visszaállítási beállítások
 
@@ -31,7 +29,6 @@ A Azure Backup számos módszert biztosít a virtuális gépek visszaállítás�
 **Új virtuális gép létrehozása** | Gyorsan létrehoz és lekéri egy alapszintű virtuális gépet egy visszaállítási pontról.<br/><br/> Megadhatja a virtuális gép nevét, kiválaszthatja azt az erőforráscsoportot és virtuális hálózatot (VNet), amelyben a rendszer elhelyezi, majd megadhat egy Storage-fiókot a visszaállított virtuális géphez. Az új virtuális gépet a forrásoldali virtuális géppel azonos régióban kell létrehozni.
 **Lemez visszaállítása** | Visszaállítja a virtuális gép lemezét, amely azután új virtuális gép létrehozásához használható.<br/><br/> Azure Backup biztosít egy sablont, amely segítséget nyújt a virtuális gépek testreszabásához és létrehozásához. <br/><br> A visszaállítási feladattípus létrehoz egy sablont, amelyet letöltheti, és használhatja az egyéni virtuálisgép-beállítások megadására és a virtuális gép létrehozásához.<br/><br/> A lemezeket a rendszer a megadott Storage-fiókba másolja.<br/><br/> Azt is megteheti, hogy csatlakoztatja a lemezt egy meglévő virtuális géphez, vagy létrehozhat egy új virtuális gépet a PowerShell használatával.<br/><br/> Ez a beállítás akkor hasznos, ha testre szeretné szabni a virtuális gépet, olyan konfigurációs beállításokat ad hozzá, amelyek nem voltak a biztonsági mentés idején, vagy olyan beállításokat adhatnak hozzá, amelyeket a sablon vagy a PowerShell használatával kell konfigurálni.
 **Meglévő cseréje** | Visszaállíthat egy lemezt, és lecserélheti a meglévő virtuális gép lemezét.<br/><br/> Az aktuális virtuális gépnek léteznie kell. Ha törölték, ez a beállítás nem használható.<br/><br/> Azure Backup a lemez cseréje előtt pillanatképet készít a meglévő virtuális gépről, és a megadott átmeneti helyen tárolja azt. A virtuális géphez csatlakoztatott meglévő lemezeket a rendszer a kijelölt visszaállítási pontra cseréli.<br/><br/> A rendszer átmásolja a pillanatképet a tárolóba, és megőrzi a megőrzési szabályzatnak megfelelően. <br/><br/> A meglévő cseréje a nem titkosított felügyelt virtuális gépek esetében támogatott. Nem felügyelt lemezek, [általánosított virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)vagy [Egyéni lemezképek használatával létrehozott](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)virtuális gépek esetén nem támogatott.<br/><br/> Ha a visszaállítási pont több vagy kevesebb lemezzel rendelkezik, mint az aktuális virtuális gép, akkor a visszaállítási pontban lévő lemezek száma csak a virtuális gép konfigurációját fogja tükrözni.<br/><br/>
-
 
 > [!NOTE]
 > Az Azure-beli virtuális gépeken meghatározott fájlokat és mappákat is helyreállíthatja. [További információk](backup-azure-restore-files-from-vm.md).
@@ -47,11 +44,10 @@ A Storage-fiókok részletei:
 - **Lemez cseréje**: Ha egy meglévő virtuális gépen lévő lemezt cserél le, Azure Backup a lemez cseréje előtt pillanatképet készít a meglévő virtuális gépről. A pillanatképet a megadott átmeneti helyen (Storage-fiókban) tárolja a rendszer. A rendszer ezt a Storage-fiókot használja a pillanatkép ideiglenes tárolására a visszaállítási folyamat során, ezért javasoljuk, hogy hozzon létre egy új fiókot, amely ezt követően könnyen eltávolítható.
 - **Storage-fiók helye**: a Storage-fióknak ugyanabban a régióban kell lennie, mint a tárolónak. Csak ezek a fiókok jelennek meg. Ha a helyen nincsenek Storage-fiókok, létre kell hoznia egyet.
 - **Tárolás típusa**: a blob Storage nem támogatott.
-- **Tárolási redundancia**: a zóna redundáns tárolási (ZRS) nem támogatott. A fiók replikációs és redundancia-információi a fiók neve után zárójelben jelennek meg. 
+- **Tárolási redundancia**: a zóna redundáns tárolási (ZRS) nem támogatott. A fiók replikációs és redundancia-információi a fiók neve után zárójelben jelennek meg.
 - **Prémium szintű Storage**:
-    - A nem prémium szintű virtuális gépek visszaállításakor a Premium Storage-fiókok nem támogatottak.
-    - A felügyelt virtuális gépek visszaállításakor a hálózati szabályokkal konfigurált Premium Storage-fiókok nem támogatottak.
-
+  - A nem prémium szintű virtuális gépek visszaállításakor a Premium Storage-fiókok nem támogatottak.
+  - A felügyelt virtuális gépek visszaállításakor a hálózati szabályokkal konfigurált Premium Storage-fiókok nem támogatottak.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -59,11 +55,9 @@ Ha egy virtuális gépet szeretne visszaállítani (hozzon létre egy új virtu�
 
 Ha nem rendelkezik megfelelő engedélyekkel, [visszaállíthat egy lemezt](#restore-disks), majd a lemez visszaállítása után a visszaállítási művelet részeként létrehozott [sablont használhatja](#use-templates-to-customize-a-restored-vm) új virtuális gép létrehozásához.
 
-
-
 ## <a name="select-a-restore-point"></a>Válasszon egy visszaállítási pontot
 
-1. A visszaállítani kívánt virtuális géphez társított **tárolóban kattintson a biztonsági másolati elemek**@no__t – 1 Azure-beli**virtuális gép**elemre.
+1. A visszaállítani kívánt virtuális géphez társított **tárolóban kattintson a biztonsági másolati elemek** > Azure-beli **virtuális gép**elemre.
 2. Kattintson egy virtuális gépre. Alapértelmezés szerint a virtuális gép irányítópultján az utolsó 30 nap helyreállítási pontjai jelennek meg. 30 napnál régebbi helyreállítási pontokat jeleníthet meg, vagy szűréssel megkeresheti a dátumokon, időtartományokon és a pillanatkép-konzisztencia különböző típusain alapuló helyreállítási pontokat.
 3. A virtuális gép visszaállításához kattintson a **virtuális gép visszaállítása**elemre.
 
@@ -94,7 +88,6 @@ A [visszaállítási lehetőségek](#restore-options)egyike gyorsan létrehozhat
     ![Konfiguráció visszaállítása varázsló](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 6. A **visszaállítási konfiguráció**területen kattintson **az OK gombra**. A **visszaállítás**elemre **kattintva aktiválja a visszaállítási** műveletet.
-
 
 ## <a name="restore-disks"></a>Lemezek visszaállítása
 
@@ -135,7 +128,6 @@ A lemez visszaállítása után használja a visszaállítási művelet részek�
 
    ![Sablon központi telepítésének elküldése](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
-
 ## <a name="replace-existing-disks"></a>Meglévő lemezek cseréje
 
 A [visszaállítási lehetőségek](#restore-options)egyike lecserélheti a meglévő virtuálisgép-lemezeket a kijelölt visszaállítási pontra. [Tekintse át](#restore-options) az összes visszaállítási beállítást.
@@ -145,7 +137,6 @@ A [visszaállítási lehetőségek](#restore-options)egyike lecserélheti a megl
 3. Az **előkészítési hely**területen adja meg, hogy az aktuális felügyelt lemezek pillanatképei a visszaállítási folyamat során legyenek mentve. [További információk](#storage-accounts).
 
    ![Konfiguráció visszaállítása varázsló meglévő cseréje](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
-
 
 ## <a name="restore-vms-with-special-configurations"></a>Virtuális gépek visszaállítása speciális konfigurációkkal
 
@@ -164,6 +155,7 @@ Számos gyakori forgatókönyv létezik, amelyekben szükség lehet a virtuális
 **Zónában rögzített virtuális gépek** | Azure Backup támogatja a zónázott rögzített virtuális gépek biztonsági mentését és visszaállítását. [További információ](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>A visszaállítási művelet nyomon követése
+
 A visszaállítási művelet elindítását követően a Backup szolgáltatás létrehoz egy feladatot a követéshez. A Azure Backup megjeleníti a feladatokkal kapcsolatos értesítéseket a portálon. Ha nem láthatók, kattintson az **értesítések** szimbólumra, majd válassza az **összes feladat megtekintése** lehetőséget a visszaállítási folyamat állapotának megtekintéséhez.
 
 ![A visszaállítás aktiválva](./media/backup-azure-arm-restore-vms/restore-notification1.png)
@@ -188,12 +180,12 @@ A virtuális gépek visszaállítása után számos dolgot érdemes megjegyezni:
 - Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címmel rendelkezik, a visszaállított virtuális gép dinamikus IP-címmel fog rendelkezni, hogy elkerülje az ütközést. [Statikus IP-címet adhat hozzá a visszaállított virtuális géphez](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - A helyreállított virtuális gépek nem rendelkeznek rendelkezésre állási csoporttal. Ha a lemez visszaállítása lehetőséget használja, [megadhat egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md) , ha a megadott sablonnal vagy PowerShell-lel hozza létre a virtuális gépet a lemezről.
 - Ha felhő-init-alapú Linux-disztribúciót, például Ubuntut használ, biztonsági okokból a rendszer letiltja a jelszót a visszaállítás után. A [jelszó alaphelyzetbe állításához](../virtual-machines/linux/reset-password.md)használja a VISSZAÁLLÍTOTT virtuális gép VMAccess bővítményét. Javasoljuk, hogy SSH-kulcsokat használjon ezeken a disztribúciókban, így a visszaállítás után nem kell alaphelyzetbe állítania a jelszót.
-- Ha a virtuális gép a tartományvezérlővel való megszakadt kapcsolat miatt nem fér hozzá a virtuális géphez, akkor a virtuális gép üzembe helyezéséhez kövesse az alábbi lépéseket:
-    - OPERÁCIÓSRENDSZER-lemez csatlakoztatása adatlemezként egy helyreállított virtuális géphez.
-    - Manuálisan telepítse a virtuálisgép-ügynököt, ha az Azure-ügynök nem válaszol a [hivatkozás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)követésével.
-    - A soros konzol elérésének engedélyezése a virtuális gépen a parancssori hozzáférés engedélyezése a virtuális gépen
-    
-  ```
+- Ha a virtuális gép a tartományvezérlővel megszakadt kapcsolat miatt nem fér hozzá a virtuális géphez, akkor az alábbi lépéseket követve hozza létre a virtuális gépet:
+  - OPERÁCIÓSRENDSZER-lemez csatlakoztatása adatlemezként egy helyreállított virtuális géphez.
+  - Manuálisan telepítse a virtuálisgép-ügynököt, ha az Azure-ügynök nem válaszol a [hivatkozás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)követésével.
+  - A soros konzol elérésének engedélyezése a virtuális gépen a virtuális gép parancssori elérésének engedélyezéséhez
+
+  ```cmd
     bcdedit /store <drive letter>:\boot\bcd /enum
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
@@ -201,11 +193,12 @@ A virtuális gépek visszaállítása után számos dolgot érdemes megjegyezni:
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
-    - A virtuális gép újraépítése Azure Portal a helyi rendszergazdai fiók és a jelszó alaphelyzetbe állításához
-    - A virtuális gép leválasztása Serial console hozzáférés és a CMD használatával a tartományból
 
-    ```
-    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+  - A virtuális gép újraépítése Azure Portal a helyi rendszergazdai fiók és a jelszó alaphelyzetbe állításához
+  - A virtuális gép leválasztása Serial console hozzáférés és a CMD használatával a tartományból
+
+    ```cmd
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
 - A virtuális gép leválasztása és újraindítása után a virtuális gép a helyi rendszergazdai hitelesítő adatokkal sikeresen újraindulhat, és a virtuális gépet sikeresen újra csatlakoztathatja a tartományhoz.

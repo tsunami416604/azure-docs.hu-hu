@@ -8,33 +8,37 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 89ad5cac462384e8c688ae9ca68c5ae309249a71
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ed88f069c110795c2c5561196c41d3d75640bd53
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689287"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968468"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
+
 Ez a cikk azt ismerteti, hogyan konfigurálható a Microsoft Azure Backup-kiszolgáló (MABS) a Microsoft Exchange Serverről az Azure-ba történő biztonsági mentéshez.  
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A folytatás előtt győződjön meg arról, hogy a Azure Backup Server [telepítve és előkészített](backup-azure-microsoft-azure-backup.md)állapotban van.
 
 ## <a name="mabs-protection-agent"></a>MABS védelmi ügynök
+
 Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
 1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Telepítse az ügynököt az Exchange-kiszolgálóra, ehhez kattintson a **felügyeleti > ügynökök elemre > install** in MABS felügyeleti konzol. A részletes lépésekért lásd [a MABS védelmi ügynök telepítése](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
+
 1. A MABS felügyeleti konzol kattintson a **védelem**elemre, majd kattintson az **új** elemre az eszköz menüszalagján az **új védelmi csoport létrehozása** varázsló megnyitásához.
 2. A varázsló **üdvözlő** képernyőjén kattintson a **tovább**gombra.
 3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **tovább**gombra.
 4. Válassza ki a védelemmel ellátni kívánt Exchange Server-adatbázist, és kattintson a **tovább**gombra.
 
    > [!NOTE]
-   > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013](https://technet.microsoft.com/library/dn751029.aspx)előfeltételeit.
+   > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013 előfeltételeit](https://technet.microsoft.com/library/dn751029.aspx).
    >
    >
 
@@ -89,20 +93,22 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
 19. Kattintson a **Bezárás** gombra.
 
 ## <a name="recover-the-exchange-database"></a>Az Exchange-adatbázis helyreállítása
+
 1. Exchange-adatbázis helyreállításához kattintson a **helyreállítás** elemre a MABS felügyeleti konzol.
 2. Keresse meg a helyreállítani kívánt Exchange-adatbázist.
 3. Válasszon ki egy online helyreállítási pontot a *helyreállítási idő* legördülő listából.
-4. Kattintson **a** helyreállítás gombra a **helyreállítási varázsló**elindításához.
+4. Kattintson **a helyreállítás gombra** a **helyreállítási varázsló**elindításához.
 
 Az online helyreállítási pontok esetében öt helyreállítási típus létezik:
 
 * **Helyreállítás az eredeti Exchange-kiszolgáló helyére:** A rendszer az eredeti Exchange-kiszolgálóra állítja vissza az adatgyűjtést.
 * **Helyreállítás egy másik adatbázisba egy Exchange-kiszolgálón:** Az adatgyűjtést egy másik Exchange-kiszolgálón lévő másik adatbázisba fogja helyreállítani.
-* **Helyreállítás helyreállítási adatbázisba:** Az adatgyűjtés egy Exchange helyreállítási adatbázisba (RDB) lesz helyreállítva.
+* Helyreállítás **helyreállítási adatbázisba:** Az adatgyűjtés egy Exchange helyreállítási adatbázisba (RDB) lesz helyreállítva.
 * **Másolás hálózati mappába:** Az Adathelyreállítás egy hálózati mappába történik.
 * **Másolás szalagra:** Ha szalagos kódtár vagy önálló szalagos meghajtó van csatlakoztatva és konfigurálva a MABS-on, a helyreállítási pont egy szabad szalagra lesz másolva.
 
     ![Online replikáció kiválasztása](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 * [Azure Backup GYIK](backup-azure-backup-faq.md)

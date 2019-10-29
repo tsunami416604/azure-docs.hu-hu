@@ -3,7 +3,7 @@ title: Az adatelemzés a Azure Time Series Insights Explorer használatával | M
 description: Ez a cikk azt ismerteti, hogyan használható a webböngészőben a Azure Time Series Insights Explorer, hogy gyorsan megtekintse a big data globális nézetét, és érvényesítse a IoT-környezetet.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa04b2508f89b9658d904624e884bf9133caf3b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 25f2c07678217b69699b881d53ee9d5f92f84be1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299539"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990106"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -57,7 +57,7 @@ Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását
 
 1. Az Azure Cloud ikon a Azure Portalban található környezetére viszi.
 
-   [@no__t – 1Time adatsorozat-adatfelismerési környezet](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
+   [![Time Series Insights-környezet](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
 
 1. Ezután megjelenik egy diagram, amely megjeleníti az összes esemény számát a kiválasztott TimeSpan. Itt számos vezérlőelem van:
 
@@ -67,7 +67,7 @@ Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását
       - Engedélyezheti a lépésenkénti interpolációt, megtekintheti a minimális és a maximális értéket, és módosíthatja az y tengelyt a vezérlő paneljén a **mérték**elem mellett. Azt is beállíthatja, hogy a megjelenített adatmennyiség darabszám, átlag vagy összeg-e.
       - Akár öt kifejezést is hozzáadhat ugyanazon az x tengelyen. A **Másolás** gomb használatával adjon hozzá egy további kifejezést, vagy válassza a **Hozzáadás** lehetőséget a friss kifejezés hozzáadásához.
 
-        [@no__t – 1Terms-szerkesztő panel](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [![feltételek szerkesztője panel](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
       - **Predikátum**: a predikátum használatával gyorsan szűrheti az eseményeket az alábbi táblázatban felsorolt operandusok használatával. Ha a keresést úgy végzi, hogy kiválasztja vagy rákattint a gombra, a rendszer a keresés alapján automatikusan frissíti a predikátumot. A támogatott operandusok típusai a következők:
 
@@ -80,7 +80,7 @@ Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását
 
       - **Példák a lekérdezésekre**
 
-         [@no__t – 1Example lekérdezések](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
+         [Példa![lekérdezésekre](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
 
 1. Az **intervallum mérete** csúszka eszköz használatával nagyíthatja és kicsinyítheti az intervallumokat ugyanazon a TimeSpan. A csúszka a nagy szeletek közötti mozgás pontosabb szabályozását teszi lehetővé, amely a rugalmas trendeket a szeletekre csökkenti, mint az ezredmásodpercet, ami lehetővé teszi, hogy megtekintse az adatainak részletes, nagy felbontású mennyiségét. A csúszka alapértelmezett kiindulási pontja úgy van beállítva, hogy a kiválasztásból származó adatok legalkalmasabb nézete legyen a felbontás, a lekérdezés sebessége és a részletesség.
 
@@ -88,13 +88,13 @@ Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását
 
 1. A **Save** paranccsal mentheti az aktuális lekérdezést, és megoszthatja azt a környezet más felhasználóival. Ha a **Open (Megnyitás**) lehetőséget használja, az összes mentett lekérdezést és a többi felhasználó megosztott lekérdezéseit az Ön számára elérhető környezetekben tekintheti meg.
 
-   [@no__t – 1Queries](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
+   [Lekérdezések![](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 
 1. A **perspektíva nézet** eszközzel akár négy egyedi lekérdezés egyidejű nézetét is használhatja. A **perspektíva nézet** gomb a diagram jobb felső sarkában található.
 
-   [@no__t – 1Perspective nézet](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
+   [![perspektíva nézet](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
 
 1. Megtekintheti a diagramot, hogy vizuálisan vizsgálja meg az adatait, és használja a **diagram** -eszközöket:
 
@@ -104,22 +104,22 @@ Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását
     - A diagram bal oldalán található szűrő területen az összes megjelenített adatsorozat és az átrendezés érték vagy név szerint látható. Az összes adatsorozatot vagy bármely rögzített vagy nem rögzített adatsorozatot is megtekintheti. Kiválaszthat egy adatsorozatot, és feloszthatja az adatsorozatot egy másik oszlop alapján, hozzáadhatja a sorozatot új kifejezésként, csak a kiválasztott adatsorozatot, kizárhatja a kiválasztott adatsorozatot, rögzítheti a sorozatot, vagy megtekintheti az eseményeket a kiválasztott adatsorozatból.
     - Ha egyszerre több kifejezést tekint meg, a verem, a leválasztás és az adatsorozatok további adatait is megtekintheti, és az összes kifejezésben ugyanazt az y tengelyt használhatja. Használja a diagram jobb felső sarkában lévő gombokat.
 
-    [@no__t – 1Chart eszköz](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
+    [![diagram eszköz](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
 
 1. A **hő** segítségével gyorsan kipróbálhatja az egyedi vagy rendellenes adatsorozatokat egy adott lekérdezésben. Hő csak egy keresési kifejezés látható.
 
-    [@no__t – 1Heatmap](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
+    [![hő](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
 
 1. Ha az eseményeket a jobb gombbal kattintva tárja fel, az **események** panel elérhetővé válik. Itt láthatja az összes nyers eseményt, és exportálhatja az eseményeket JSON-vagy CSV-fájlként. Time Series Insights az összes nyers adathalmazt tárolja.
 
-    [@no__t – 1Events](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
+    [Események![](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
 
 1. Válassza a **stats (statisztika** ) lapot, miután megvizsgálta az eseményeket a minták és az oszlopok statisztikáinak megjelenítéséhez.
 
     - **Mintázatok**: Ez a funkció proaktív módon felfedi a legtöbb statisztikailag jelentős mintát egy kiválasztott adatterületen. Nem kell több ezer eseményt megvizsgálnia, hogy megértsük, milyen mintázatok szükségesek a legtöbb időt és energiát. A Time Series Insights segítségével közvetlenül a statisztikailag jelentős mintákba ugorhat, így folytathatja az elemzést. Ez a funkció hasznos lehet a múltbeli adatfeldolgozást követő vizsgálatok során is.
     - **Oszlop statisztikái**: az oszlop statisztikái olyan diagramokat és táblákat biztosítanak, amelyek a kijelölt adatsorozat egyes oszlopaiból származó adatokkal bontják le a kiválasztott TimeSpan.
 
-      [@no__t – 1STATS](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+      [![statisztika](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
 
 Most már látta a Time Series Insights Explorer webalkalmazáson belül elérhető különböző funkciókat és lehetőségeket.
 

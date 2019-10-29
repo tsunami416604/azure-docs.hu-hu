@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: c39a2e8daf9ca46902cf1a1fac89c59918a6854d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b261594076857b841ba288dfaba8b5b8e9250065
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934349"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987933"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Service Bus
 
@@ -61,7 +61,7 @@ Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md)
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
-    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
     string myQueueItem,
     Int32 deliveryCount,
     DateTime enqueuedTimeUtc,
@@ -74,12 +74,6 @@ public static void Run(
     log.LogInformation($"MessageId={messageId}");
 }
 ```
-
-Ez a példa Azure Functions 1. x verzióra mutat. A kód 2. x-re való működésének megtételéhez:
-
-- [a hozzáférési jogok paraméter kihagyása](#trigger---configuration)
-- módosítsa a log paraméter típusát `TraceWriter`ról `ILogger`
-- `log.Info` módosítása `log.LogInformation`
 
 ### <a name="trigger---c-script-example"></a>Trigger – C# parancsfájl-példa
 
