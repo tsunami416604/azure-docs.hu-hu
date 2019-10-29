@@ -2,7 +2,7 @@
 title: A Custom Vision dokumentációja
 summary: A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
 metadata:
-  title: A Custom Vision dokumentációja
+  title: A Custom Vision dokumentációja – Gyorsútmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
   description: A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176167"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931644"
 landingContent:
 - title: Tudnivalók a Custom Visionről
   linkLists:
@@ -128,3 +128,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure parancssori felület (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Súgó és visszajelzés
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

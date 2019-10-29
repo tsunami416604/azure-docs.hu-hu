@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell használatával
           href: virtual-machines-windows-ps-sql-create.md
-    - name: Regisztráció az erőforrás-szolgáltatónál
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Licencelési modell módosítása
-      href: virtual-machines-windows-sql-ahb.md
-    - name: Kiadás módosítása
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: Regisztrálás az SQL VM erőforrás-szolgáltatónál
+      displayName: 'resource provider, registration'
+      items:
+        - name: Egyetlen virtuális gép
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: Több virtuális gép tömeges regisztrálása
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: Kezelés
+      items:
+        - name: Licencelési modell
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: Kiadás
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: Az Azure Storage használata biztonsági mentéshez és visszaállításhoz
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: Migrate (Áttelepítés)
       items:
-        - name: Microsoft SQL Server-adatbázis áttelepítése
+        - name: SQL Server-adatbázis virtuális gépre
           href: virtual-machines-windows-migrate-sql.md
         - name: Virtuális gép új régióba
           href: virtual-machines-windows-sql-move-different-region.md
     - name: Magas rendelkezésre állás konfigurálása
       items:
-        - name: Az Azure Storage használata biztonsági mentéshez és helyreállításhoz
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: Always On rendelkezésre állási csoport
           items:
             - name: Azure SQL VM CLI

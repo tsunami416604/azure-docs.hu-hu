@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Event Grid az IoT Edge-en – dokumentáció
+summary: Megtudhatja, hogyan használhatja az IoT Edge-en működő Event Gridet arra, hogy szinte azonnal válaszolhasson a peremhálózati eszközökön létrehozott releváns eseményekre.
+metadata:
+  title: Event Grid az IoT Edge-en – dokumentáció
+  description: Megtudhatja, hogyan használhatja az IoT Edge-en működő Event Gridet arra, hogy szinte azonnal válaszolhasson a peremhálózati eszközökön létrehozott releváns eseményekre.
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/28/2019
+  ms.locfileid: "72991613"
+landingContent:
+- title: További információ az IoT Edge-en használt Event Gridről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Event Grid az IoT Edge-en?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Az Event Griddel kapcsolatos fogalmak
+      url: concepts.md
+    - text: Eseménysémák
+      url: event-schemas.md
+    - text: Kimenet kötegelése
+      url: delivery-output-batching.md
+    - text: Speciális szűrés
+      url: advanced-filtering.md
+    - text: Teljesítés és újrapróbálkozás
+      url: delivery-retry.md
+- title: Forgatókönyvek
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Események közzététele és regisztráció helyben
+      url: pub-sub-events-webhook-local.md
+    - text: Események közzététele és regisztráció a felhőben
+      url: pub-sub-events-webhook-cloud.md
+    - text: Események továbbítása az Azure Event Gridbe
+      url: forward-events-event-grid-cloud.md
+    - text: Események továbbítása az Azure IoT Hubba
+      url: forward-events-event-grid-cloud.md
+    - text: Reagálás Azure Blob Storage-eseményekre helyben
+      url: react-blob-storage-events-locally.md
+- title: Biztonság
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Biztonság és hitelesítés
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ügyfél-hitelesítés konfigurálása
+      url: configure-client-auth.md
+    - text: Webhook-előfizetők hitelesítésének konfigurálása
+      url: configure-webhook-subscriber-auth.md
+    - text: Identitáshitelesítés konfigurálása
+      url: configure-identity-auth.md

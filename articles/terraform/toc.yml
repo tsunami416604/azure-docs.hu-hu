@@ -10,13 +10,19 @@
     - name: A Terraform telepítése és konfigurálása
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
-    - name: Több előfizetéses alkalmazás létrehozása
-      href: terrafom-quickstart.md
+    - name: Terraform-konfiguráció létrehozása
+      href: terraform-create-configuration.md
     - name: Linux rendszerű virtuális gép létrehozása
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
 - name: Oktatóanyagok
   items:
+    - name: Telepítés és konfigurálás
+      items:
+        - name: Terraform-állapot tárolása az Azure Storage-ban
+          href: terraform-backend.md
+        - name: Az Azure Cloud Shell konfigurálása a Terraformhoz
+          href: terraform-cloud-shell.md
     - name: App Service
       items:
         - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
@@ -29,8 +35,8 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastruktúra
       items:
-        - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
-          href: terraform-vm-msi.md
+        - name: Terraform virtuális gép létrehozása az Azure-erőforrásokhoz engedélyezett felügyelt identitásokkal
+          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
           href: terraform-create-vm-cluster-module.md
         - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
@@ -67,10 +73,6 @@
   items:
     - name: Konfigurációs sablonok
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Útmutatók
-  items:
-    - name: Állapot tárolása az Azure Storage-ban
-      href: terraform-backend.md
 - name: Referencia
   items:
     - name: Azure-modulok beállításjegyzéke

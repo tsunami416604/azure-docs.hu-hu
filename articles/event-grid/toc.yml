@@ -1,5 +1,7 @@
-- name: Az Event Grid dokumentációja
+- name: Az Azure Event Grid dokumentációja
   href: index.yml
+- name: Váltás az Event Gridre az IoT Edge-en – dokumentáció
+  href: edge/pub-sub-events-webhook-local.md
 - name: Áttekintés
   items:
     - name: Mi az Event Grid?

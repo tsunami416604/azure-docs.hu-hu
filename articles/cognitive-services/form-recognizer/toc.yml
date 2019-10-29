@@ -23,6 +23,10 @@
               href: quickstarts/python-receipts.md
     - name: A .NET SDK használata
       href: quickstarts/dotnet-sdk.md
+- name: Oktatóanyagok
+  items:
+    - name: A Form Recognizer használata a Logic Appsszel
+      href: tutorial-form-recognizer-with-logic-apps.md
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása

@@ -2,7 +2,7 @@
 title: A Form Recognizer dokumentációja
 summary: Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézé, valamint intenzív kódolás és karbantartás nélkül megértse az elrendezést, illetve a mezők és bejegyzések közötti kapcsolatokat.
 metadata:
-  title: A Form Recognizer dokumentációja
+  title: A Form Recognizer dokumentációja – Gyorsútmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
   description: Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézé, valamint intenzív kódolás és karbantartás nélkül megértse az elrendezést, illetve a mezők és bejegyzések közötti kapcsolatokat.
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: 3a3146c6a918916792a331c0dab74683db82a02d
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70931827"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931307"
 landingContent:
 - title: Tudnivalók a Form Recognizerről
   linkLists:
@@ -76,3 +76,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure parancssori felület (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: Súgó és visszajelzés
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://go.microsoft.com/fwlink/?linkid=2090535
+    - text: Stack Overflow
+      url: https://go.microsoft.com/fwlink/?linkid=2087186

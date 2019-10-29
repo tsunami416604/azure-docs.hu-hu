@@ -2,7 +2,7 @@
 title: A Computer Vision dokumentációja
 summary: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
 metadata:
-  title: A Computer Vision dokumentációja
+  title: A Computer Vision dokumentációja – Gyorsútmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
   description: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 8c09125fde66c62ecbb1560d2327c6b9671accf8
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 115f02f82e598db227541c44f69954b1f3805f71
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176279"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931795"
 landingContent:
 - title: Tudnivalók a Computer Visionről
   linkLists:
@@ -44,6 +44,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: A Node SDK használata
       url: quickstarts-sdk/node-sdk.md
+    - text: A Go SDK használata
+      url: quickstarts-sdk/go-sdk.md
 - title: Objektumok észlelése képeken
   linkLists:
   - linkListType: concept
@@ -60,6 +62,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: A Node SDK használata
       url: quickstarts-sdk/node-sdk.md
+    - text: A Go SDK használata
+      url: quickstarts-sdk/go-sdk.md
 - title: Tartalomcímkék alkalmazása képekre
   linkLists:
   - linkListType: concept
@@ -76,6 +80,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: A Node SDK használata
       url: quickstarts-sdk/node-sdk.md
+    - text: A Go SDK használata
+      url: quickstarts-sdk/go-sdk.md
 - title: Tárolók használata
   linkLists:
   - linkListType: get-started
@@ -108,6 +114,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: A Node SDK használata
       url: quickstarts-sdk/node-sdk.md
+    - text: A Go SDK használata
+      url: quickstarts-sdk/go-sdk.md
 - title: Referencia
   linkLists:
   - linkListType: reference
@@ -132,3 +140,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure parancssori felület (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: Súgó és visszajelzés
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

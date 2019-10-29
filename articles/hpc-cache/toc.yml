@@ -32,9 +32,13 @@
                   href: hpc-cache-ingest-manual.md
     - name: Csatlakozás a gyorsítótárhoz
       href: hpc-cache-mount.md
+    - name: A gyorsítótár kezelése
+      href: hpc-cache-manage.md
 - name: További források
   items:
     - name: Támogatási jegy megnyitása
       href: hpc-cache-support-ticket.md
     - name: Helyreállítás regionális kimaradás után
       href: hpc-region-recovery.md
+    - name: Az Azure NetApp Files használata az Azure HPC Cache-sel
+      href: hpc-cache-netapp.md

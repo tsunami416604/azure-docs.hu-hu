@@ -1,0 +1,105 @@
+### YamlMime:Landing
+title: Dokumentáció kiskereskedelmi Azure IoT Central-megoldások létrehozásához
+summary: Ismerje meg, hogyan hozhat létre, szabhat testre és kezelhet kiskereskedelmi IoT-megoldásokat IoT Central-alkalmazássablonokkal.
+metadata:
+  title: Dokumentáció kiskereskedelmi Azure IoT Central-megoldások létrehozásához
+  description: Ismerje meg, hogyan hozhat létre, szabhat testre és kezelhet kiskereskedelmi IoT-megoldásokat IoT Central-alkalmazássablonokkal.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: 59372e07cb9e85e28b9762775f533bf93a5ee603
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72937559"
+landingContent:
+- title: Kiskereskedelmi megoldások létrehozása
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Kiskereskedelmi Azure IoT Central-megoldások
+      url: overview-iot-central-retail-pnp.md
+  - linkListType: tutorial
+    links:
+    - text: 1 – Kiskereskedelmi alkalmazás létrehozása
+      url: tutorial-in-store-analytics-create-app-pnp.md
+    - text: 2 – Az operátori irányítópult testreszabása
+      url: tutorial-in-store-analytics-customize-dashboard-pnp.md
+    - text: 3 – Adatok exportálása és megállapítások megjelenítése
+      url: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+    - text: Intelligens készletkezelési alkalmazás létrehozása
+      url: tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: Összekapcsolt logisztikai alkalmazás létrehozása
+      url: tutorial-iot-central-connected-logistics-pnp.md
+    - text: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
+      url: tutorial-iot-central-digital-distribution-center-pnp.md
+  - linkListType: how-to-guide
+    links:
+    - text: Rigado Cascade 500 csatlakoztatása
+      url: ../core/howto-connect-rigado-cascade-500-pnp.md
+- title: Csatlakozás
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Eszközsablon beállítása
+      url: ../core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: IoT Plug and Play-eszköz csatlakoztatása
+      url: ../core/tutorial-add-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: MX Chip IoT DevKit előkészítése és csatlakoztatása
+      url: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Más IoT-felhők csatlakoztatása
+      url: ../core/howto-build-iotc-device-bridge.md
+- title: A kapcsolat fenntartása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Eszközcsoportok használata
+      url: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Eszközök kezelése
+      url: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Feladat futtatása
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Eszközadatok elemzése
+      url: ../core/howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Átalakítás
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Szabály létrehozása
+      url: ../core/quick-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Telemetriaszabályok létrehozása
+      url: ../core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Exportálás a Blob Storage-ba
+      url: ../core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni szabályok létrehozása
+      url: ../core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Egyéni elemzések létrehozása
+      url: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Adminisztráció
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az alkalmazás felügyelete
+      url: ../core/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Felhasználók és szerepkörök kezelése
+      url: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Számla megtekintése
+      url: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Az alkalmazás felhasználói felületének testreszabása
+      url: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Személyes irányítópultok konfigurálása
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Irányítópult-csempék használata
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Alkalmazássablonok használata
+      url: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json

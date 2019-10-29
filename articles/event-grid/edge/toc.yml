@@ -1,0 +1,62 @@
+- name: Event Grid IoT Edge-dokumentáció
+  href: index.yml
+- name: Váltás az Azure Event Gridre – dokumentáció
+  href: ../overview.md
+- name: Áttekintés
+  items:
+    - name: Mi az Event Grid az IoT Edge-en?
+      href: overview.md
+- name: Oktatóanyagok
+  items:
+    - name: Események közzététele és regisztráció helyben
+      href: pub-sub-events-webhook-local.md
+    - name: Események közzététele és regisztráció a felhőben
+      href: pub-sub-events-webhook-cloud.md
+    - name: Események továbbítása az Azure Event Gridbe
+      href: forward-events-event-grid-cloud.md
+    - name: Események továbbítása az Azure IoT Hubba
+      href: forward-events-iothub.md
+    - name: Reagálás Blob Storage-eseményekre helyben
+      href: react-blob-storage-events-locally.md
+- name: Példák
+  href: 'https://github.com/Azure/event-grid-iot-edge'
+- name: Alapelvek
+  items:
+    - name: Az Event Griddel kapcsolatos fogalmak
+      href: concepts.md
+    - name: Biztonság és hitelesítés
+      href: security-authentication.md
+    - name: Eseménysémák
+      href: event-schemas.md
+    - name: Teljesítés és újrapróbálkozás
+      href: delivery-retry.md
+    - name: Kimenet kötegelése
+      href: delivery-output-batching.md
+    - name: Speciális szűrés
+      href: advanced-filtering.md
+- name: Útmutatók
+  items:
+    - name: Állapot megőrzése
+      items:
+        - name: Linux
+          href: persist-state-linux.md
+        - name: Windows
+          href: persist-state-windows.md
+    - name: API-protokollok konfigurálása
+      href: configure-api-protocol.md
+    - name: Ügyfél-hitelesítés konfigurálása
+      href: configure-client-auth.md
+    - name: Webhook-előfizetők hitelesítésének konfigurálása
+      href: configure-webhook-subscriber-auth.md
+    - name: Identitáshitelesítés konfigurálása
+      href: configure-identity-auth.md
+    - name: Hibaelhárítás
+      href: troubleshoot.md
+- name: Referencia
+  items:
+    - name: REST API
+      href: api.md
+    - name: Event Grid konfigurálása
+      href: configure-event-grid.md
+    - name: Ikermodul konfigurációs sémája
+      href: twin-json.md

@@ -55,6 +55,8 @@
       href: pre-reqs.md
     - name: Hálózati topológiák felügyelt Azure SQL DB-példányok migrálásához
       href: resource-network-topologies.md
+    - name: Egyéni szerepkörök SQL Serverről felügyelt Azure SQL DB-példányba történő online migráláshoz
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: Hibaelhárítás és ismert problémák
       items:
         - name: Forrásadatbázis csatlakozási problémáinak hibaelhárítása

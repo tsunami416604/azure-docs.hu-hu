@@ -42,6 +42,8 @@
           items:
             - name: Delegálás katalóguskészítőknek
               href: entitlement-management-delegate-catalog.md
+            - name: Csatlakoztatott szervezet hozzáadása
+              href: entitlement-management-organization.md
             - name: Külső felhasználók hozzáférésének szabályozása
               href: entitlement-management-external-users.md
             - name: Jelentések és naplók megtekintése

@@ -27,8 +27,10 @@
       href: stream-analytics-javascript-user-defined-functions.md
     - name: 4 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 – C# UDF futtatása az IoT Edge-ben'
+    - name: '5 - C# UDF futtatása'
       href: stream-analytics-edge-csharp-udf.md
+    - name: 6 – Egyéni .NET-deszerializáló létrehozása
+      href: custom-deserializer.md
 - name: Példák
   items:
     - name: Kódminták
@@ -47,6 +49,8 @@
           href: stream-analytics-define-inputs.md
         - name: Referenciaadat típusú bemenetek
           href: stream-analytics-use-reference-data.md
+        - name: Egyéni .NET-deszerializálók írása
+          href: custom-deserializer-examples.md
     - name: Feladatok kimenettípusai
       items:
         - name: Kimenetek áttekintése
@@ -173,7 +177,7 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: CI-/CD-folyamat beállítása
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: .NET UDF írása az Edge-hez
+        - name: .NET UDF írása
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:

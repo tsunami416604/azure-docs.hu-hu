@@ -1,101 +1,164 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: A Tartalommoderátor dokumentációja
+### YamlMime:Landing
+title: A Content Moderator dokumentációja
+summary: Az Azure Content Moderator API egy olyan Cognitive Services-szolgáltatás, amely esetlegesen sértő, kockázatos vagy egyéb nem kívánt anyagokat keres a szövegekben, képeken és videókban. Ha ilyen anyagot talál, a szolgáltatás megfelelő címkéket (jelölőket) alkalmaz a tartalomra. Az alkalmazás ezután kezelheti a megjelölt tartalmakat, így betarthatja az előírásokat, és fenntarthatja a felhasználók számára kívánt környezetet.
 metadata:
-  title: 'A Content Moderator dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
-  description: 'Megismerheti, hogyan használható a Content Moderator esetlegesen sértő, kockázatos vagy egyéb nem kívánt anyagok keresésére szövegekben, képeken és videókban.'
+  title: A Content Moderator dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
+  description: Az Azure Content Moderator API egy olyan Cognitive Services-szolgáltatás, amely esetlegesen sértő, kockázatos vagy egyéb nem kívánt anyagokat keres a szövegekben, képeken és videókban. Ha ilyen anyagot talál, a szolgáltatás megfelelő címkéket (jelölőket) alkalmaz a tartalomra. Az alkalmazás ezután kezelheti a megjelölt tartalmakat, így betarthatja az előírásokat, és fenntarthatja a felhasználók számára kívánt környezetet.
   services: cognitive-services
-  author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.topic: landing-page
-  ms.date: 12/20/2018
-  ms.author: nitinme
-abstract:
-  description: 'Az Azure Content Moderator API egy olyan Cognitive Services-szolgáltatás, amely esetlegesen sértő, kockázatos vagy egyéb nem kívánt anyagokat keres a szövegekben, képeken és videókban. Ha ilyen anyagot talál, a szolgáltatás megfelelő címkéket (jelölőket) alkalmaz a tartalomra. Az alkalmazás ezután kezelheti a megjelölt tartalmakat, így betarthatja az előírásokat, és fenntarthatja a felhasználók számára kívánt környezetet.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/content-moderator-landing-page-video.png
-      width: 250
-    title: 'Videomoderálás a Content Moderatorral (15:42)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/content-moderator/overview
-            html: <p>Megismerheti a Content Moderator API használatát.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi a Content Moderator?
-          - href: /azure/cognitive-services/content-moderator/text-moderation-api
-            html: <p>Megismerkedhet a szövegmoderálással.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Text Moderation API
-          - href: /azure/cognitive-services/content-moderator/image-moderation-api
-            html: <p>Megismerheti a képmoderálást.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Image Moderation API
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: Az egyes nyilak hivatkozására kattintva megismerheti a Content Moderator használatának első lépéseit <img src="images/index/link.jpg" height="15" width="15"></img>.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: images/index/i_portal.svg
-          - image:
-              src: images/index/logo_csharp.svg
-          - image:
-              src: images/index/logo_python.svg
-        rows:
-          - title: Szöveges tartalmak elemzése
-            values:
-              - href: quick-start
-              - href: text-moderation-quickstart-dotnet
-              - href: text-moderation-quickstart-python
-          - title: Képtartalmak elemzése
-            values:
-              - href: null
-              - href: image-moderation-quickstart-dotnet
-              - href: null
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'További információ a Content Moderatort használó alkalmazások fejlesztéséről:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="ecommerce-retail-catalog-moderation.md">E-kereskedelmi termékek képeinek moderálása</a>
-  - title: Példák
-    items:
-      - type: paragraph
-        text: 'Példák keresése a Content Moderator API-hoz:'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator&sort=Relevance">Kódminták</a>'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API-k
-            html: '<p><a href="https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference">REST API</a></p>'
-          - title: SDK-k
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator">Go</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: parancssori felület
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 486badfa18f461a8dce9733593a8979318364e12
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931725"
+landingContent:
+- title: A tartalommoderátor ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Content Moderator?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Videómoderálás a Content Moderatorral
+      url: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+- title: Képtartalmak elemzése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Képmoderálás
+      url: image-moderation-api.md
+  - linkListType: quickstart
+    links:
+    - text: A .NET SDK használata
+      url: image-moderation-quickstart-dotnet.md
+    - text: A Python SDK használata
+      url: python-sdk-quickstart.md
+    - text: A Java SDK használata
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az API-konzol használata
+      url: try-image-api.md
+  - linkListType: tutorial
+    links:
+    - text: E-kereskedelmi termékek képeinek moderálása
+      url: ecommerce-retail-catalog-moderation.md
+- title: Egyéni képlisták használata
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A .NET SDK használata
+      url: image-lists-quickstart-dotnet.md
+    - text: A Python SDK használata
+      url: python-sdk-quickstart.md
+    - text: A Java SDK használata
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az API-konzol használata
+      url: try-image-list-api.md
+- title: Szöveges tartalmak elemzése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Szövegmoderálás
+      url: text-moderation-api.md
+  - linkListType: quickstart
+    links:
+    - text: A .NET SDK használata
+      url: text-moderation-quickstart-dotnet.md
+    - text: A Python SDK használata
+      url: python-sdk-quickstart.md
+    - text: A Java SDK használata
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az API-konzol használata
+      url: try-text-api.md
+- title: Egyéni kifejezéslisták használata
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A .NET SDK használata
+      url: term-lists-quickstart-dotnet.md
+    - text: A Python SDK használata
+      url: python-sdk-quickstart.md
+    - text: A Java SDK használata
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az API-konzol használata
+      url: try-terms-list-api.md
+- title: Videótartalom elemzése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A .NET SDK használata
+      url: video-moderation-api.md
+  - linkListType: tutorial
+    links:
+    - text: Videók és átiratok moderálása
+      url: video-transcript-moderation-review-tutorial-dotnet.md
+  - linkListType: video
+    links:
+    - text: Videómoderálás a Content Moderatorral
+      url: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+- title: Felülvizsgálatok, munkafolyamatok és feladatok használata
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Felülvizsgálati eszköz
+      url: Review-Tool-User-Guide/human-in-the-loop.md
+    - text: Felülvizsgálatok, munkafolyamatok és feladatok
+      url: review-api.md
+  - linkListType: quickstart
+    links:
+    - text: Felülvizsgálatok létrehozása a Python SDK-val
+      url: python-sdk-quickstart.md
+    - text: Felülvizsgálatok létrehozása a Java SDK-val
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Felülvizsgálatok meghatározása és használata (felülvizsgálati eszköz)
+      url: Review-Tool-User-Guide/review-moderated-images.md
+    - text: Munkafolyamatok meghatározása és használata (felülvizsgálati eszköz)
+      url: Review-Tool-User-Guide/workflows.md
+    - text: Feladatok meghatározása és használata (API-konzol)
+      url: try-review-api-job.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Content Moderator API
+      url: https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet
+    - text: Python SDK
+      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure parancssori felület (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Súgó és visszajelzés
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/559960-content-moderator
+    - text: Tudásbázis
+      url: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive
