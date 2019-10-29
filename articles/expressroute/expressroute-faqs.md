@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 50617eda56c2eaec9fac315013114f173e85edbc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990795"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027785"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – gyakori kérdések
 
@@ -312,7 +312,7 @@ Igen. A prémium szintű ExpressRoute díjait a ExpressRoute áramköri díjakra
 
 ## <a name="expressroute-local"></a>Helyi ExpressRoute
 ### <a name="what-is-expressroute-local"></a>Mi az a ExpressRoute local?
-A ExpressRoute local a [ExpressRoute Direct](expressroute-erdirect-about.md)szolgáltatásban elérhető ExpressRoute-áramkör SKU-je. A helyi legfontosabb funkciója, hogy egy ExpressRoute-társítási helyen lévő helyi áramkör csak egy vagy két Azure-régióhoz fér hozzá, vagy közel azonos metróhoz. Ezzel szemben a standard szintű áramkör hozzáférést biztosít a geopolitikai területeken lévő összes Azure-régióhoz, valamint egy prémium szintű áramkört az összes Azure-régióhoz. 
+A helyi ExpressRoute a standard SKU és a prémium SKU mellett a ExpressRoute áramkör SKU-jának. A helyi legfontosabb funkciója, hogy egy ExpressRoute-társítási helyen lévő helyi áramkör csak egy vagy két Azure-régióhoz fér hozzá, vagy közel azonos metróhoz. Ezzel szemben a standard szintű áramkör hozzáférést biztosít a geopolitikai területeken lévő összes Azure-régióhoz, valamint egy prémium szintű áramkört az összes Azure-régióhoz. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Milyen előnyökkel jár a ExpressRoute helyi?
 A standard vagy prémium szintű ExpressRoute-áramkör esetében a kimenő adatforgalomért nem kell külön fizetnie a kimenő adatforgalomért a ExpressRoute helyi áramköre számára. Más szóval a ExpressRoute helyi díja adatátviteli díjakat is tartalmaz. A helyi ExpressRoute sokkal gazdaságosabb megoldás, ha nagy mennyiségű adat átvitelére van szükség, és az adatokhoz privát kapcsolaton keresztül kapcsolódhat a kívánt Azure-régiók közelében lévő ExpressRoute-partneri helyhez. 
@@ -323,9 +323,6 @@ A standard ExpressRoute áramkörhöz képest a helyi áramkör ugyanazokkal a s
 * A ExpressRoute Global Reach helyi rendszeren nem érhető el
 
 A helyi ExpressRoute is ugyanazok a korlátozások vonatkoznak az erőforrásokra (például a virtuális hálózatok száma) a standard értékre. 
-
-### <a name="how-to-configure-expressroute-local"></a>A ExpressRoute helyi konfigurálása 
-A ExpressRoute local csak a ExpressRoute Direct szolgáltatásban érhető el. Először konfigurálnia kell a ExpressRoute Direct portot. Miután létrehozta a közvetlen portot, létrehozhat egy helyi áramkört, amely az [itt](expressroute-howto-erdirect.md)található utasításokat követi.
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Hol van a ExpressRoute helyi elérhetősége, és mely Azure-régiók vannak leképezve az összes társítási helyhez?
 A ExpressRoute local (helyi) lehetőség azon a társítási helyeken érhető el, ahol egy vagy két Azure-régiót zártak be. Nem érhető el olyan egyenrangú helyen, ahol az adott államban, tartományban vagy országban nem található Azure-régió. Tekintse meg a pontos leképezéseket a [helyszínek lapon](expressroute-locations-providers.md).  

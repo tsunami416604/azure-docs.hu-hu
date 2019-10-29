@@ -1,5 +1,5 @@
 ---
-title: Java-felhasználó által definiált függvény (UDF) a HDInsight-ban Apache Hiveval – Azure
+title: Java-felhasználó által definiált függvény (UDF) Apache Hive Azure HDInsight
 description: Megtudhatja, hogyan hozhat létre olyan Java-alapú, felhasználó által definiált függvényt (UDF), amely együttműködik a Apache Hiveokkal. Ez a példa az UDF a szöveges karakterláncok táblázatát kisbetűsre alakítja át.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181186"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044780"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Java UDF használata Apache Hive HDInsight
 
@@ -24,7 +24,7 @@ Megtudhatja, hogyan hozhat létre olyan Java-alapú, felhasználó által defini
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
-* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az `wasbs://`URI a következő lesz:.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI `wasbs://`lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 * Egy szövegszerkesztő vagy Java IDE
 
@@ -49,22 +49,22 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Ez a parancs létrehoz egy nevű `exampleudf`könyvtárat, amely tartalmazza a Maven-projektet.
+    Ez a parancs létrehoz egy `exampleudf`nevű könyvtárat, amely tartalmazza a Maven-projektet.
 
-2. A projekt létrehozása után törölje a `exampleudf/src/test` projekt részeként létrehozott könyvtárat a következő parancs beírásával:
+2. A projekt létrehozása után törölje a projekt részeként létrehozott `exampleudf/src/test` könyvtárat a következő parancs beírásával:
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. A `pom.xml` megnyitásához írja be az alábbi parancsot:
+3. Nyissa meg a `pom.xml` parancsot az alábbi parancs megadásával:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Ezután cserélje le a `<dependencies>` meglévő bejegyzést a következő XML-fájlra:
+    Ezután cserélje le a meglévő `<dependencies>` bejegyzést a következő XML-fájlra:
 
     ```xml
     <dependencies>
@@ -85,7 +85,7 @@ cd C:\HDI
 
     Ezek a bejegyzések határozzák meg a Hadoop és a struktúra HDInsight 3,6-es verzióját. A [HDInsight-összetevő verziószámozási](../hdinsight-component-versioning.md) dokumentumának HDInsight által biztosított Hadoop és kaptár verzióit a következő témakörben találja:.
 
-    Vegyen `<build>` fel egy szakaszt `</project>` a fájl végén található sor elé. Ez a szakasz a következő XML-kódot tartalmazza:
+    Vegyen fel egy `<build>` szakaszt a fájl végén található `</project>` sor elé. Ez a szakasz a következő XML-kódot tartalmazza:
 
     ```xml
     <build>
@@ -143,7 +143,7 @@ cd C:\HDI
 
     A módosítások elvégzése után mentse a fájlt.
 
-4. Új fájl `ExampleUDF.java`létrehozásához és megnyitásához írja be az alábbi parancsot:
+4. Az alábbi parancs megadásával hozzon létre és nyisson meg egy új fájlt `ExampleUDF.java`:
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -180,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>Az UDF létrehozása és telepítése
 
-Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhasználónevet, ha más. Cserélje `mycluster` le a nevet a tényleges fürt nevére.
+Az alábbi parancsokban cserélje le a `sshuser`t a tényleges felhasználónévvel, ha más. Cserélje le a `mycluster`t a tényleges fürt nevére.
 
 1. Fordítsa le és csomagolja ki az UDF-t a következő parancs beírásával:
 
@@ -188,9 +188,9 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
     mvn compile package
     ```
 
-    Ez a parancs létrehozza és becsomagolja az `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` UDF-t a fájlba.
+    Ez a parancs az UDF-t az `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` fájlba építi és csomagolja.
 
-2. `scp` A paranccsal másolja a fájlt a HDInsight-fürtre a következő parancs beírásával:
+2. A `scp` parancs használatával másolja a fájlt a HDInsight-fürtre a következő parancs beírásával:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
@@ -218,7 +218,7 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
 
     Ez a parancs feltételezi, hogy a fürthöz tartozó bejelentkezési fiók alapértelmezett **rendszergazdai** jogosultságát használta.
 
-2. Miután megérkezett `jdbc:hive2://localhost:10001/>` a parancssorba, adja meg a következő parancsot az UDF struktúrához való hozzáadásához és funkcióként való megjelenítéséhez.
+2. Miután megérkezett a `jdbc:hive2://localhost:10001/>` parancssorba, adja meg a következő parancsot az UDF struktúrához való hozzáadásához és funkcióként való megjelenítéséhez.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -248,7 +248,7 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
         | colorado      | Colorado      |
         +---------------+---------------+--+
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 A kaptár-feladatok futtatásakor az alábbi szöveghez hasonló hibaüzenet jelenhet meg:
 
@@ -264,7 +264,7 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A struktúra használatának egyéb módjaival kapcsolatban lásd: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
 

@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858531"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025003"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -186,7 +187,7 @@ Lásd [a feldolgozási szabályok sorrendjét](https://docs.microsoft.com/azure/
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Az egyéni mintavételek esetében Mit jelent a gazdagép mező?
 
-A gazdagép mező azt a nevet adja meg, amelyet a mintavétel elküldéséhez a többhelyes Application Gatewayn konfigurált. Ellenkező esetben használja a "127.0.0.1" kulcsszót. Ez az érték eltér a virtuális gép gazdagépének nevétől. A formátuma \<az\>://\<Host\>:\<port\>elérési\>útja.\<
+A gazdagép mező azt a nevet adja meg, amelyet a mintavétel elküldéséhez a többhelyes Application Gatewayn konfigurált. Ellenkező esetben használja a "127.0.0.1" kulcsszót. Ez az érték eltér a virtuális gép gazdagépének nevétől. Formátuma \<protokoll\>://\<gazdagép\>:\<port\>\<Path\>.
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Engedélyezhető Application Gateway csak néhány forrás IP-cím eléréséhez?
 
@@ -269,7 +270,7 @@ A Application Gateway legfeljebb 100 SSL-tanúsítványt támogat.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Hány hitelesítési tanúsítvány használható a háttérbeli újratitkosításhoz Application Gateway?
 
-A Application Gateway legfeljebb 10 hitelesítési tanúsítványt támogat. Az alapértelmezett érték az 5.
+A Application Gateway legfeljebb 100 hitelesítési tanúsítványt támogat.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway natív módon integrálható a Azure Key Vaultrel?
 
@@ -333,15 +334,15 @@ Igen. Részletekért lásd: az [Azure Application Gateway és a webalkalmazási 
 
 A Application Gateway három naplót biztosít: 
 
-* **ApplicationGatewayAccessLog**: A hozzáférési napló tartalmazza az Application Gateway előtér-felületére küldött összes kérelmet. Az adat magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a bejövő és kimenő bájtokat. A hozzáférési napló gyűjtése 300 másodpercenként történik. Egy-egy rekordot tartalmaz az Application Gateway-ben.
-* **ApplicationGatewayPerformanceLog**: A teljesítmény napló rögzíti az egyes Application Gateway-átjárók teljesítményadatait. Az adatok közé tartozik az átviteli sebesség, a kiszolgált kérelmek száma, a sikertelen kérelmek száma, valamint az állapot és a nem kifogástalan háttérbeli példányok száma.
-* **ApplicationGatewayFirewallLog**: A WAF-vel konfigurált Application Gateway-átjárók esetén a tűzfal naplója az észlelési mód vagy a megelőzési mód használatával naplózott kérelmeket tartalmaz.
+* **ApplicationGatewayAccessLog**: a hozzáférési napló tartalmazza az Application Gateway-felületre küldött összes kérelmet. Az adat magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a bejövő és kimenő bájtokat. A hozzáférési napló gyűjtése 300 másodpercenként történik. Egy-egy rekordot tartalmaz az Application Gateway-ben.
+* **ApplicationGatewayPerformanceLog**: a Teljesítménynapló rögzíti az egyes Application Gateway-átjárók teljesítményadatait. Az adatok közé tartozik az átviteli sebesség, a kiszolgált kérelmek száma, a sikertelen kérelmek száma, valamint az állapot és a nem kifogástalan háttérbeli példányok száma.
+* **ApplicationGatewayFirewallLog**: a WAF-mel konfigurált Application Gateway átjárók esetén a tűzfal naplója az észlelési mód vagy a megelőzési mód használatával naplózott kérelmeket tartalmaz.
 
 További információ: [a háttér állapota, a diagnosztikai naplók és a metrikák a Application Gatewayhoz](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Hogyan tudni, hogy a háttér-készlet tagjainak állapota Kifogástalan-e?
 
-Ellenőrizze az állapotot a PowerShell- `Get-AzApplicationGatewayBackendHealth` parancsmag vagy a portál használatával. További információ: [Application Gateway diagnosztika](application-gateway-diagnostics.md).
+Ellenőrizze az állapotot a PowerShell-parancsmag `Get-AzApplicationGatewayBackendHealth` vagy a portál használatával. További információ: [Application Gateway diagnosztika](application-gateway-diagnostics.md).
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Mi a diagnosztikai naplók adatmegőrzési szabályzata?
 
@@ -372,6 +373,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

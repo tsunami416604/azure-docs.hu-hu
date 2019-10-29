@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933777"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024791"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok elévülési szabályzatának konfigurálása
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Office 365-csoportok életcik
 
 Miután beállított egy csoportot a lejárat után:
 
-- A felhasználói tevékenységgel rendelkező csoportok automatikusan megújulnak a közeljövőben (előzetes verzió)
+- A felhasználói tevékenységgel rendelkező csoportok automatikusan megújulnak a közeljövőben
 - A csoport tulajdonosai értesítést kapnak a csoport megújításáról, ha a csoport nincs automatikusan újítva
 - A nem megújított csoportok törlődnek
 - A törölt Office 365-csoportok 30 napon belül visszaállíthatók a csoport tulajdonosai vagy a rendszergazda
@@ -40,7 +40,7 @@ Jelenleg csak egy lejárati szabályzat konfigurálható az összes Office 365-c
 
 További információ az Azure AD PowerShell-parancsmagok letöltéséről és telepítéséről: [Azure Active Directory PowerShell a Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-## <a name="activity-based-automatic-renewal-preview"></a>Tevékenység-alapú automatikus megújítás (előzetes verzió)
+## <a name="activity-based-automatic-renewal"></a>Tevékenység-alapú automatikus megújítás
 
 Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak attól függően, hogy a közelmúltban használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai általi manuális beavatkozást, mert az Office 365-szolgáltatások, például az Outlook, a SharePoint, a Teams vagy a Yammer különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a rendszer automatikusan megújítja a csoportot, és a tulajdonos nem kap megújítási értesítéseket.
 

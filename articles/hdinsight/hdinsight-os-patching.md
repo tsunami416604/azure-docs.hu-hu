@@ -1,5 +1,5 @@
 ---
-title: A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása – Azure
+title: OPERÁCIÓSRENDSZER-javítási ütemterv konfigurálása az Azure HDInsight-fürtökhöz
 description: Útmutató a Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálásához.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d0a490fd3b23c96923af10db3c1f9ee9ea0dfad5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076861"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044886"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása 
 
@@ -35,7 +35,7 @@ A cikkben ismertetett parancsfájl-műveletek használatával a következőképp
 
 A szkriptek használatához a következő információk szükségesek:
 
-- A Install-Updates-Schedule-reboots parancsfájl helye https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh:.
+- A Install-Updates-Schedule-reboots parancsfájl helye: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
     
    A HDInsight ezzel az URI-val keresi és futtatja a parancsfájlt a fürtön lévő összes virtuális gépen. Ez a parancsfájl a frissítések telepítésére és a virtuális gép újraindítására vonatkozó beállításokat tartalmaz.
   
@@ -62,7 +62,7 @@ A szkriptek használatához a következő információk szükségesek:
 > Azt követően, hogy egy meglévő fürtre alkalmazza, meg kell jelölnie egy parancsfájlt. Ellenkező esetben a skálázási műveletekkel létrehozott új csomópontok az alapértelmezett javítási ütemtervet fogják használni. Ha a parancsfájlt a fürt létrehozási folyamatának részeként alkalmazza, a rendszer automatikusan megőrzi azt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A parancsfájl-műveletek használatával kapcsolatos konkrét lépésekért tekintse meg a [Linux-alapú HDInsight-fürtök testre szabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md)című szakaszt a következő részekben:
 

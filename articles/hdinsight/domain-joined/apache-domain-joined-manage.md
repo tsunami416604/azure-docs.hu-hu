@@ -1,5 +1,5 @@
 ---
-title: HDInsight-fürtök kezelése nagyvállalati biztonsági nagyvállalattal – Azure
+title: Enterprise Security Package-fürtök kezelése – Azure HDInsight
 description: Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket Enterprise Security Packageokkal.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 35accc587fe197da751a8695e3ec0b21ea9fbbd4
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034122"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044920"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és szerepköreit, valamint az ESP-fürtök kezelését.
@@ -22,7 +22,7 @@ Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és s
 
 Az Apache Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Apache Hadoop fürtöt.
 
-1. Nyissa meg a parancssort a **CTRL + SHIFT + P billentyűkombinációval**, **majd írja be a HDInsight: Fürt**csatolása.
+1. Nyissa meg a parancssort a **CTRL + SHIFT + P billentyűkombinációval**, majd írja be a **HDInsight: fürt csatolása**lehetőséget.
 
    ![parancs-paletta, fürt csatolása](./media/apache-domain-joined-manage/link-cluster-command.png)
 
@@ -35,13 +35,13 @@ Az Apache Ambari Managed username használatával összekapcsolhat egy normál f
 
 3. Egy csatolt fürtöt a parancssori **fürt**használatával tekinthet meg. Most elküldhet egy parancsfájlt ehhez a csatolt fürthöz.
 
-   a ![cluster parancs kimeneti ellenőrzésének listázása](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "csatolt fürt")
+   ![a cluster parancs kimeneti ellenőrzésének listázása](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "csatolt fürt")
 
-4. A fürtöket a HDInsight bevitelével **is leválaszthatja: Fürt** leválasztása a parancssorból.
+4. Azt is megteheti, hogy leválasztja a fürtöt a HDInsight bevitelével **: fürt leválasztása** a parancssorból.
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>IntelliJ használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
+A Ambari által felügyelt Felhasználónév használatával összekapcsolhat egy normál fürtöt, és tartományi Felhasználónév használatával is összekapcsolhat egy biztonsági Hadoop-fürtöt (például: `user1@contoso.com`).
 
 1. Kattintson **a fürt csatolása** az **Azure Explorerben**elemre.
 
@@ -66,7 +66,7 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
+A Ambari által felügyelt Felhasználónév használatával összekapcsolhat egy normál fürtöt, és tartományi Felhasználónév használatával is összekapcsolhat egy biztonsági Hadoop-fürtöt (például: `user1@contoso.com`).
 
 1. Kattintson **a fürt csatolása** az **Azure Explorerben**elemre.
 
@@ -95,13 +95,13 @@ Enterprise Security Package (korábbi nevén HDInsight Premium) többfelhasznál
 
 A biztonság és a felhasználók elkülönítése a HDInsight-fürtök esetében fontos a Enterprise Security Package. A követelmények teljesítése érdekében az SSH-hozzáférés a fürthöz Enterprise Security Package blokkolva van. Az alábbi táblázat az egyes fürtök ajánlott hozzáférési módszereit mutatja be:
 
-|Számítási feladat|Forgatókönyv|Hozzáférési módszer|
+|Számítási feladat|Alkalmazási helyzet|Hozzáférési módszer|
 |--------|--------|-------------|
-|Apache Hadoop|Struktúra – interaktív feladatok/lekérdezések  |<ul><li>[Beeline](#beeline)</li><li>[Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Apache Spark|Interaktív feladatok/lekérdezések, interaktív PySpark|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin és Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Hadoop|Struktúra – interaktív feladatok/lekérdezések  |<ul><li>[Beeline](#beeline)</li><li>[Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio-eszközök](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|Interaktív feladatok/lekérdezések, interaktív PySpark|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin és Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio-eszközök](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Batch-forgatókönyvek – Spark beküldés, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
-|Interaktív lekérdezés (LLAP)|Interaktív|<ul><li>[Beeline](#beeline)</li><li>[Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Any|Egyéni alkalmazás telepítése|<ul><li>[Parancsfájlok műveletei](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+|Interaktív lekérdezés (LLAP)|Interaktív|<ul><li>[Beeline](#beeline)</li><li>[Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio-eszközök](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Bármelyik|Egyéni alkalmazás telepítése|<ul><li>[Parancsfájlok műveletei](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
    > [!NOTE]  
    > A Jupyter nincs telepítve/nem támogatott a Enterprise Security Packageban.
@@ -146,12 +146,12 @@ A átjárócsomóponthoz teljes tartománynevének megkereséséhez használja a
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>ESP-vel rendelkező HDInsight-fürtök felhasználói
 A nem ESP-alapú HDInsight-fürtök két, a fürt létrehozása során létrehozott felhasználói fiókkal rendelkeznek:
 
-* **Ambari-rendszergazda**: Ezt a fiókot *Hadoop-felhasználóként* vagy *http-felhasználóként*is nevezzük. Ez a fiók használható a Ambari-be való bejelentkezéshez a&lt;következő helyen: https://clustername >. azurehdinsight. net. Emellett a Ambari-nézeteken végzett lekérdezések futtatására, a feladatok külső eszközökön (például a PowerShell, a Templeton, a Visual Studio) keresztül történő végrehajtására, valamint a kaptár ODBC-illesztővel és BI-eszközökkel való hitelesítésére is használható (például Excel, Power BI vagy tabló).
+* **Ambari-rendszergazda**: Ez a fiók *Hadoop felhasználóként* vagy *http-felhasználóként*is ismert. Ez a fiók használható a Ambari-be való bejelentkezéshez a következő helyen: https://&lt;clustername >. azurehdinsight. net. Emellett a Ambari-nézeteken végzett lekérdezések futtatására, a feladatok külső eszközökön (például a PowerShell, a Templeton, a Visual Studio) keresztül történő végrehajtására, valamint a kaptár ODBC-illesztővel és BI-eszközökkel való hitelesítésére is használható (például Excel, Power BI vagy tabló).
 
 Az ESP-vel rendelkező HDInsight-fürtök három új felhasználóval rendelkeznek a Ambari-rendszergazda mellett.
 
-* **Ranger rendszergazdája**:  Ez a fiók a helyi Apache Ranger-rendszergazdai fiók. Nem Active Directory tartományi felhasználó. Ezzel a fiókkal házirendeket állíthat be, és más felhasználók rendszergazdáit vagy delegált rendszergazdáit is elvégezheti (így a felhasználók kezelhetik a szabályzatokat). Alapértelmezés szerint a Felhasználónév a *rendszergazda* , és a jelszó megegyezik a Ambari rendszergazdai jelszavával. A jelszót a Ranger beállítások lapján lehet frissíteni.
-* **Fürt rendszergazdai tartományának felhasználója**: Ez a fiók egy Active Directory tartományi felhasználó, amely Hadoop-fürtként van kijelölve, beleértve a Ambari és a Rangert is. A fürt létrehozása során meg kell adnia a felhasználó hitelesítő adatait. Ez a felhasználó a következő jogosultságokkal rendelkezik:
+* **Ranger-rendszergazda**: Ez a fiók a helyi Apache Ranger-rendszergazdai fiók. Nem Active Directory tartományi felhasználó. Ezzel a fiókkal házirendeket állíthat be, és más felhasználók rendszergazdáit vagy delegált rendszergazdáit is elvégezheti (így a felhasználók kezelhetik a szabályzatokat). Alapértelmezés szerint a Felhasználónév a *rendszergazda* , és a jelszó megegyezik a Ambari rendszergazdai jelszavával. A jelszót a Ranger beállítások lapján lehet frissíteni.
+* **Fürt rendszergazdai tartományi felhasználója**: Ez a fiók egy Active Directory tartományi felhasználó, amely Hadoop-fürtként van kijelölve, beleértve a Ambari és a Rangert is. A fürt létrehozása során meg kell adnia a felhasználó hitelesítő adatait. Ez a felhasználó a következő jogosultságokkal rendelkezik:
 
   * Csatlakoztassa a gépeket a tartományhoz, és helyezze őket a fürt létrehozása során megadott szervezeti egységbe.
   * Hozzon létre egyszerű szolgáltatásokat a fürt létrehozása során megadott szervezeti egységen belül.
@@ -160,7 +160,7 @@ Az ESP-vel rendelkező HDInsight-fürtök három új felhasználóval rendelkezn
     Vegye figyelembe, hogy a többi AD-felhasználó is rendelkezik ezekkel a jogosultságokkal.
 
     A fürtön belül vannak olyan végpontok (például Templeton), amelyeket nem a Ranger felügyel, ezért nem biztonságos. Ezek a végpontok minden felhasználó számára le vannak zárva, kivéve a fürt rendszergazdai tartományi felhasználóját.
-* **Normál**: A fürt létrehozása során több Active Directory-csoportot is megadhat. A csoportok felhasználói szinkronizálva vannak a Ranger és a Ambari között. Ezek a felhasználók tartományi felhasználók, és csak a Ranger által felügyelt végpontokhoz férnek hozzá (például Hiveserver2). Az összes RBAC szabályzat és naplózás a felhasználókra érvényes lesz.
+* **Normál**: a fürt létrehozása során több Active Directory-csoportot is megadhat. A csoportok felhasználói szinkronizálva vannak a Ranger és a Ambari között. Ezek a felhasználók tartományi felhasználók, és csak a Ranger által felügyelt végpontokhoz férnek hozzá (például Hiveserver2). Az összes RBAC szabályzat és naplózás a felhasználókra érvényes lesz.
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>Az ESP-vel rendelkező HDInsight-fürtök szerepkörei
 A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkezik:
@@ -224,6 +224,6 @@ A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkez
 2. A bal oldali menüben kattintson a **szerepkörök**elemre.
 3. A felhasználók és csoportok különböző szerepkörökhöz való hozzárendeléséhez kattintson a **felhasználó hozzáadása** vagy a **Csoport hozzáadása** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A HDInsight-fürtök Enterprise Security Package-vel való konfigurálásával kapcsolatban lásd: [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md).
 * A kaptár-házirendek konfigurálásához és a kaptár-lekérdezések futtatásához lásd: [Apache Hive házirendek konfigurálása HDInsight-fürtökhöz ESP-vel](apache-domain-joined-run-hive.md).

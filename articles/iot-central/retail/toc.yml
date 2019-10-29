@@ -37,7 +37,9 @@
     - name: Az üzlethelyiség-elemzés architektúrája
       href: store-analytics-architecture.md
     - name: Kapcsolatok
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Mik azok az alkalmazássablonok?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Útmutatók
   items:
     - name: Eszközök csatlakoztatása
@@ -72,8 +74,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Egyéni szabályok létrehozása
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-        - name: Egyéni elemzések létrehozása a Databricksszel
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Adminisztráció

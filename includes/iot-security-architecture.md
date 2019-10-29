@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789104"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034546"
 ---
 A rendszer tervezésekor fontos megérteni a rendszer potenciális veszélyforrásait, és ennek megfelelően hozzá kell adnia a megfelelő védelmi lehetőségeket, ahogy a rendszert tervezték és felépíteni. Fontos, hogy megtervezze a terméket a kezdetektől a biztonsággal szem előtt tartva, mert megértette, hogy a támadók hogyan veszélyeztethetik a rendszereket, így biztosítható, hogy a megfelelő enyhítések a kezdetektől fogva megtörténjenek.
 
@@ -253,7 +253,7 @@ Minden eszköz és mező átjárója rendelkezik valamilyen tárolási formával
 
 ### <a name="device-and-event-processingcloud-gateway-zone"></a>Eszköz-és esemény-feldolgozás/Felhőbeli átjáró zóna
 
-A Felhőbeli átjáró olyan rendszer, amely lehetővé teszi a távoli kommunikációt több különböző helyről az eszközökre vagy a helyszíni átjáróra a nyilvános hálózati térben, jellemzően a felhőalapú vezérlési és adatelemzési rendszer, az ilyen rendszerek összevonása felé. Bizonyos esetekben előfordulhat, hogy a Cloud Gateway azonnal megkönnyíti a speciális célú eszközökhöz, például a tablettákhoz vagy telefonokhoz való hozzáférést. Az itt tárgyalt kontextusban a "Cloud" kifejezés arra szolgál, hogy egy dedikált adatfeldolgozó rendszerre hivatkozzon, amely nem ugyanahhoz a helyhez van kötve, mint a csatlakoztatott eszközök vagy a helyszíni átjárók, és ahol a működési intézkedések meggátolják a célzott fizikai hozzáférést, de nem feltétlenül a " nyilvános felhő "infrastruktúra. Előfordulhat, hogy egy Felhőbeli átjáró egy hálózati virtualizálási átfedésben van, hogy elszigetelje a felhő-átjárót és annak összes csatlakoztatott eszközét vagy helyszíni átjáróját bármilyen más hálózati forgalomból. Maga a Felhőbeli átjáró nem eszköz-vagy adatfeldolgozási vagy-tárolási létesítmény; Ezek a létesítmények a Cloud Gateway felülettel rendelkeznek. A felhőalapú átjáró zónája magába foglalja a felhő-átjárót, valamint az összes helyszíni átjárót és eszközt, amely közvetlenül vagy közvetve hozzá van rendelve.
+A Cloud Gateway egy olyan rendszer, amely lehetővé teszi a távoli kommunikációt több különböző helyről az eszközökre vagy a helyszíni átjáróra a nyilvános hálózati térben, jellemzően a felhőalapú vezérlési és adatelemzési rendszer, az ilyen rendszerek összevonása felé. Bizonyos esetekben előfordulhat, hogy a Cloud Gateway azonnal megkönnyíti a speciális célú eszközökhöz, például a tablettákhoz vagy telefonokhoz való hozzáférést. Az itt tárgyalt kontextusban a "Cloud" kifejezés arra szolgál, hogy egy dedikált adatfeldolgozó rendszerre hivatkozzon, amely nem ugyanahhoz a helyhez van kötve, mint a csatlakoztatott eszközök vagy a helyszíni átjárók, és ahol a működési intézkedések meggátolják a célzott fizikai hozzáférést, de nem feltétlenül a " nyilvános felhő "infrastruktúra. Előfordulhat, hogy egy Felhőbeli átjáró egy hálózati virtualizálási átfedésben van, hogy elszigetelje a felhő-átjárót és annak összes csatlakoztatott eszközét vagy helyszíni átjáróját bármilyen más hálózati forgalomból. Maga a Felhőbeli átjáró nem eszköz-vagy adatfeldolgozási vagy-tárolási létesítmény; Ezek a létesítmények a Cloud Gateway felülettel rendelkeznek. A felhőalapú átjáró zónája magába foglalja a felhő-átjárót, valamint az összes helyszíni átjárót és eszközt, amely közvetlenül vagy közvetve hozzá van rendelve.
 
 A Cloud Gateway többnyire a kihelyezett végpontokkal rendelkező, a helyszíni átjáró és az eszközök csatlakoztatására szolgáló, beépített szoftvereket futtató szolgáltatás. Ennek megfelelően a biztonságot szem előtt tartva kell tervezni. A szolgáltatás tervezéséhez és létrehozásához kövesse az [SDL](https://www.microsoft.com/sdl) -folyamatot.
 

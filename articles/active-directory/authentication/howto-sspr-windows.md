@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab46bd29aef2fab26c744e1e4c199f6c9a9fff1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304197"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042066"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: Új jelszó kérésének engedélyezése a Windows bejelentkezési képernyőjéről
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: a jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
 
 A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasználók számára, hogy új jelszót állítsanak be a Windows bejelentkezési képernyőjén. A felhasználóknak már nem kell megkeresniük egy webböngészővel rendelkező eszközt a [SSPR-portál](https://aka.ms/sspr)eléréséhez.
 
@@ -30,15 +30,14 @@ A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasz
 - **A funkció használata előtt a felhasználóknak regisztrálniuk kell a SSPR**
 - Hálózati proxyra vonatkozó követelmények
    - Windows 10-es eszközök 
-       - A 443- `passwordreset.microsoftonline.com` es port a és a`ajax.aspnetcdn.com`
+       - 443-es port `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com`
        - A Windows 10 rendszerű eszközök csak a gépi szintű proxy konfigurációját támogatják
    - Windows 7, 8 és 8,1 rendszerű eszközök
-       - 443-es port`passwordreset.microsoftonline.com`
+       - 443-es port `passwordreset.microsoftonline.com`
 
 ## <a name="general-limitations"></a>Általános korlátozások
 
 - A jelszó alaphelyzetbe állítása jelenleg nem támogatott Távoli asztal vagy Hyper-V bővített munkamenetekben.
-- A fiók feloldása, a Mobile App Notification és a Mobile App Code nem támogatott.
 - Ez a funkció a 802.1 x hálózati hitelesítéssel rendelkező hálózatok esetében nem működik, és a "azonnali végrehajtás a felhasználó bejelentkezése előtt" beállítást. A 802.1 x hálózati hitelesítéssel telepített hálózatok esetében ajánlott a számítógép-hitelesítés használata a funkció engedélyezéséhez.
 
 ## <a name="windows-10-password-reset"></a>Windows 10 jelszó alaphelyzetbe állítása
@@ -51,15 +50,15 @@ A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasz
 - A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz.
 - Ha rendszerképet használ, a Sysprep futtatása előtt győződjön meg arról, hogy a webes gyorsítótár törlődik a beépített rendszergazda számára a profilmásolási lépés végrehajtása előtt. A lépéssel kapcsolatos további információkért tekintse meg az [Egyéni alapértelmezett felhasználói profil használata esetén](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)a terméktámogatási cikkben.
 - A következő beállítások ismertek a Windows 10-es eszközökön található jelszavak használatának és alaphelyzetbe állításának megakadályozása érdekében
-    - Ha a v1809 előtt a Windows 10-es verziójában a Ctrl + Alt + Del billentyűkombináció szükséges, a **jelszó** alaphelyzetbe állítása nem fog működni.
-    - Ha a zárolási képernyő értesítései ki vannak kapcsolva, a **jelszó** alaphelyzetbe állítása nem fog működni.
+    - Ha a v1809 előtt a Windows 10-es verziójában a Ctrl + Alt + Del billentyűkombináció szükséges, a **jelszó alaphelyzetbe állítása** nem fog működni.
+    - Ha a zárolási képernyő értesítései ki vannak kapcsolva, a **jelszó alaphelyzetbe állítása** nem fog működni.
     - Az HideFastUserSwitching értéke engedélyezve vagy 1
     - Az DontDisplayLastUserName értéke engedélyezve vagy 1
     - Az NoLockScreen értéke engedélyezve vagy 1
     - A EnableLostMode be van állítva az eszközön
     - Az Explorer. exe helyére egyéni rendszerhéj van lecserélve
 - A következő adott három beállítás kombinációja miatt a funkció nem működik.
-    - Interaktív bejelentkezés: Nem szükséges a CTRL + ALT + DEL = letiltva
+    - Interaktív bejelentkezés: nem szükséges a CTRL + ALT + DEL = letiltva
     - DisableLockScreenAppNotifications = 1 vagy engedélyezve
     - IsContentDeliveryPolicyEnforced = 1 vagy igaz 
 
@@ -84,7 +83,7 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
       - Állítsa az **Érték** beállítást **1** értékre
       - Kattintson az **OK** gombra
    - Kattintson az **OK** gombra
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra
 1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információt a következő cikkben talál: [Microsoft Intune felhasználói és eszköz profiljának társítása](https://docs.microsoft.com/intune/device-profile-assign).
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Windows 10 engedélyezése a beállításjegyzék használatával
@@ -102,14 +101,14 @@ Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyf�
 
 ![Windows 7 jelszó alaphelyzetbe állítása az Azure AD naplójában](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről állítja vissza a jelszavát, a `defaultuser1` rendszer egy alacsony jogosultságú ideiglenes fiókot hoz létre. Ezzel a fiókkal a jelszó-visszaállítási folyamat biztonságos marad. Maga a fiók véletlenszerűen generált jelszót tartalmaz, nem jelenik meg az eszköz bejelentkezéséhez, és automatikusan el lesz távolítva, miután a felhasználó alaphelyzetbe állítja a jelszavát. Több `defaultuser` profil is létezik, de nyugodtan figyelmen kívül hagyható.
+Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről állítja vissza a jelszavát, a rendszer létrehoz egy alacsony jogosultságú ideiglenes, `defaultuser1` nevű fiókot. Ezzel a fiókkal a jelszó-visszaállítási folyamat biztonságos marad. Maga a fiók véletlenszerűen generált jelszót tartalmaz, nem jelenik meg az eszköz bejelentkezéséhez, és automatikusan el lesz távolítva, miután a felhasználó alaphelyzetbe állítja a jelszavát. Előfordulhat, hogy több `defaultuser` profil is létezik, de nyugodtan figyelmen kívül hagyható.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 és 8,1 jelszó alaphelyzetbe állítása
 
 ### <a name="windows-7-8-and-81-specific-prerequisites"></a>Windows 7, 8 és 8,1 speciális előfeltételek
 
 - Javított Windows 7 vagy Windows 8,1 operációs rendszer.
-- TLS 1,2 engedélyezve a [Transport Layer Security (TLS) beállításjegyzék](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)-beállításokban található útmutatás használatával.
+- TLS 1,2 engedélyezve a [Transport Layer Security (TLS) beállításjegyzék-beállításokban](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)található útmutatás használatával.
 - Ha a gépen több külső hitelesítő adat-szolgáltató van engedélyezve, a felhasználók több felhasználói profilt is láthatnak a bejelentkezési képernyőn.
 
 > [!WARNING]
@@ -118,7 +117,7 @@ Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről �
 ### <a name="install"></a>Telepítés
 
 1. Töltse le a megfelelő telepítőt az engedélyezni kívánt Windows-verzióhoz.
-   - A szoftver a Microsoft letöltőközpontban érhető el[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+   - A szoftverek a Microsoft letöltőközpontban, a következő címen érhetők el: [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Jelentkezzen be arra a gépre, amelyre telepíteni szeretné, majd futtassa a telepítőt.
 1. A telepítés után az újraindítás kifejezetten ajánlott.
 1. Az újraindítás után a bejelentkezési képernyőn válasszon ki egy felhasználót, és kattintson a "Elfelejtett jelszó" lehetőségre. a jelszó-visszaállítási munkafolyamat elindításához.
@@ -141,8 +140,8 @@ Ha további naplózásra van szükség, a számítógépen található beállít
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- A részletes naplózás engedélyezéséhez hozzon létre `REG_DWORD: “EnableLogging”`egy értéket, és állítsa 1 értékre.
-- A részletes naplózás letiltásához módosítsa a `REG_DWORD: “EnableLogging”` értéket 0-ra.
+- A részletes naplózás engedélyezéséhez hozzon létre egy `REG_DWORD: “EnableLogging”`, és állítsa 1 értékre.
+- A részletes naplózás letiltásához módosítsa a `REG_DWORD: “EnableLogging”` 0-ra.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 
@@ -154,7 +153,7 @@ Amikor a felhasználók megpróbálnak bejelentkezni, mostantól egy **új jelsz
 
 A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az engedélyezéshez szükséges hitelesítési módszerek megtervezése](concept-authentication-methods.md)
 

@@ -8,14 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 5c0c4d8f8f69941d182ff5e35d4e32d29efdf869
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf4b29274bbd62aa8c78fc2907a20165280ce08
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958020"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026325"
 ---
 # <a name="in-store-analytics-architecture"></a>Áruházbeli elemzési architektúra
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Az áruházbeli elemzési megoldások lehetővé teszik a kiskereskedelmi tárolási környezet különböző feltételeinek figyelését. Ezek a megoldások a IoT Centralon belüli alkalmazások egyikének kihasználásával és az alábbi architektúra útmutatásként használhatók.
 

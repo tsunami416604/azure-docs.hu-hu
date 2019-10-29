@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958511"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025384"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés a Azure SQL Database felügyelt példányok naplózásával
 
@@ -59,7 +59,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
         ![BLOB-tároló tulajdonságai gomb](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. Másolja a tároló URL-címét a másolás ikonra kattintva, és mentse az URL-címet (például a Jegyzettömbben) későbbi használatra. A tároló URL-formátumának`https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Másolja a tároló URL-címét a másolás ikonra kattintva, és mentse az URL-címet (például a Jegyzettömbben) későbbi használatra. A tároló URL-formátumának `https://<StorageName>.blob.core.windows.net/<ContainerName>` kell lennie
 
         ![BLOB-tároló másolási URL-címe](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -73,7 +73,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
         - Konfigurálja az SAS-t a következőképpen:
 
-          - **Engedélyezett szolgáltatások**: Blob
+          - **Engedélyezett szolgáltatások**: blob
 
           - **Kezdési dátum**: az időzónával kapcsolatos problémák elkerülése érdekében ajánlott a tegnapi dátum használata
 
@@ -104,7 +104,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
         GO
         ```
 
-     1. A következő T-SQL-utasítás végrehajtásával hozzon létre egy új kiszolgáló-naplózást (válassza ki a saját napló nevét, használja az előző lépésekben létrehozott tároló URL-címét). Ha nincs megadva, `RETENTION_DAYS` az alapértelmezett érték a 0 (korlátlan megőrzés):
+     1. A következő T-SQL-utasítás végrehajtásával hozzon létre egy új kiszolgáló-naplózást (válassza ki a saját napló nevét, használja az előző lépésekben létrehozott tároló URL-címét). Ha nincs megadva, `RETENTION_DAYS` alapértelmezett értéke 0 (korlátlan megőrzés):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -153,7 +153,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
 További információ:
 
-- [Az önálló adatbázisok, rugalmas készlet, s és felügyelt példányok közötti különbségek naplózása Azure SQL Database és adatbázisaiban SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [Az önálló adatbázisok, rugalmas készletek és felügyelt példányok közötti különbségek naplózása Azure SQL Database és adatbázisaiban SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [KISZOLGÁLÓ NAPLÓZÁSÁNAK LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -214,7 +214,7 @@ Az Event hub naplózási adatainak felhasználása érdekében be kell állítan
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Azure Monitor-naplókban tárolt naplók felhasználása és elemzése
 
-Ha a naplókat Azure Monitor naplókba írja a rendszer, azok a Log Analytics munkaterületen érhetők el, ahol a naplózási adatként speciális kereséseket futtathat. Kiindulási pontként lépjen a log Analytics munkaterületre, és az *általános* szakaszban kattintson a *naplók* elemre, és adjon meg egy `search "SQLSecurityAuditEvents"` egyszerű lekérdezést, például: a naplók megtekintéséhez.  
+Ha a naplókat Azure Monitor naplókba írja a rendszer, azok a Log Analytics munkaterületen érhetők el, ahol a naplózási adatként speciális kereséseket futtathat. Kiindulási pontként lépjen a Log Analytics munkaterületre, és az *általános* szakaszban kattintson a *naplók* elemre, és adjon meg egy egyszerű lekérdezést, például: `search "SQLSecurityAuditEvents"` a naplók megtekintéséhez.  
 
 A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -224,21 +224,20 @@ A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak 
 
 A Azure SQL Database és a SQL Server adatbázisaiban található adatbázisok naplózása közötti fő különbségek a következők:
 
-- A Azure SQL Database felügyelt példányok központi telepítésének beállításával a naplózás a kiszolgáló szintjén működik `.xel` , és az Azure Blob Storage-ban tárolja a naplófájlokat.
-- A Azure SQL Database az önálló adatbázis és a rugalmas készlet üzembe helyezési lehetőségeivel a naplózás az adatbázis szintjén működik.
+- A Azure SQL Database felügyelt példányok központi telepítésének beállításával a naplózás a kiszolgáló szintjén működik, és `.xel` naplófájlokat tárol az Azure Blob Storage-ban.
 - SQL Server helyszíni/virtuális gépek esetében a naplózás a kiszolgáló szintjén működik, de az eseményeket a fájlrendszer/Windows eseménynaplókban tárolja.
 
 A felügyelt példány XEvent-naplózása támogatja az Azure Blob Storage-célokat. A fájl-és Windows-naplók **nem támogatottak**.
 
-Az Azure Blob Storage- `CREATE AUDIT` ba való naplózás szintaxisának főbb eltérései a következők:
+Az Azure Blob Storage-ba történő naplózás `CREATE AUDIT` szintaxisának főbb eltérései a következők:
 
-- A rendszer új `TO URL` szintaxist biztosít, és lehetővé teszi az Azure Blob Storage-tároló URL-címének megadását, ahol a `.xel` fájlok el vannak helyezve.
-- A rendszer egy `TO EXTERNAL MONITOR` új szintaxist biztosít, amely lehetővé teszi, hogy még a hub és a Azure monitor naplózza a célokat.
-- A szintaxis `TO FILE` **nem támogatott** , mert SQL Database nem fér hozzá a Windows-fájlmegosztást.
+- A rendszer új szintaxist `TO URL` biztosít, és lehetővé teszi az Azure Blob Storage-tároló URL-címének megadását, ahol a `.xel` fájlok vannak elhelyezve.
+- A rendszer új szintaxist `TO EXTERNAL MONITOR` biztosít ahhoz, hogy még a hub és a Azure Monitor naplózza a naplózási célokat.
+- A `TO FILE` szintaxis **nem támogatott** , mert SQL Database nem fér hozzá a Windows-fájlmegosztás számára.
 - A Leállítás beállítás **nem támogatott**.
-- `queue_delay`a 0 érték **nem támogatott**.
+- a 0 `queue_delay` **nem támogatott**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának első lépéseivel](sql-database-auditing.md)foglalkozó témakört.
 - A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi tanúsítványok legújabb listáját.

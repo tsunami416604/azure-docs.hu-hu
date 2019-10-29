@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327146"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043493"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -140,7 +140,7 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 * BATCH – csak nem naplózott parancsok használata támogatott 
 * DELETE
 
-Az CQLV4-kompatibilis SDK-n keresztül végrehajtott összes szifiliszi művelet további információkat ad vissza a hibáról, a kért egységeket. A törlési és frissítési parancsokat az erőforrás-szabályozással kell kezelni, figyelembe véve a kiépített átviteli sebesség megfelelő használatát. 
+Az CQLV4-kompatibilis SDK-n keresztül végrehajtott összes szifiliszi művelet további információkat ad vissza a hibáról, a kért egységeket. A törlési és frissítési parancsokat az erőforrás-szabályozással kell kezelni, hogy figyelembe lehessen venni a kiosztott átviteli sebesség megfelelő használatát. 
 * Ügyeljen arra, hogy a gc_grace_seconds értékének nullának kell lennie, ha meg van adva.
 
 ```csharp

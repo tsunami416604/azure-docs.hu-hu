@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 90c9d9be6f5a255a4ddd4f7fae7cf410e5b1f80d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3a8cfeb237b0e5e662f8fbaef4347f4346db1787
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934955"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045119"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL-alapú virtuális gépek tömeges regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -219,17 +219,12 @@ A hibák naplózása a `VMsNotRegisteredDueToError<Timestamp>.log` nevű naplóf
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ha SQL Server virtuális gépeket regisztrál az erőforrás-szolgáltatóval a megadott parancsfájllal, vegye figyelembe a következőket:
+Ha a megadott parancsfájllal regisztrálja SQL Server virtuális gépeket az erőforrás-szolgáltatón keresztül, vegye figyelembe a következőket:
 
 - Az erőforrás-szolgáltatóval való regisztrációhoz a SQL Server VM futó vendég ügynöknek kell futnia. A Windows Server 2008-lemezképek nem rendelkeznek vendég ügynökkel, így ezek a virtuális gépek sikertelenek lesznek, és manuálisan kell regisztrálni a nem [ügynök-felügyeleti mód](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)használatával.
 - A beépített újrapróbálkozási logika az átlátható hibák elhárítására szolgál. Ha a virtuális gép regisztrálása sikeresen megtörtént, akkor gyors művelet. Ha azonban a regisztráció meghiúsul, minden egyes virtuális gép újra próbálkozik.  Ezért jelentős időt kell biztosítani a regisztrációs folyamat befejezéséhez – bár a tényleges idő követelménye a hibák típusától és számától függ. 
 
 ## <a name="full-script"></a>Teljes szkript
-
-Másolja a teljes parancsfájlt, és mentse `RegisterSqLVMs.psm1`ként.
-
-[!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
-
 A GitHub teljes parancsfájlját lásd: az [SQL-alapú virtuális gépek tömeges regisztrálása az az PowerShell-lel](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
 
 

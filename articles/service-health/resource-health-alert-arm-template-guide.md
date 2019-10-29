@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 0948edec05b97dd604393218e3eeb3302548af82
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 10a940e43b2ab4dff1b7c90aa7d6d274ddef82d9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933558"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023914"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Erőforrás-állapotra vonatkozó riasztások konfigurálása Resource Manager-sablonok használatával
 
@@ -180,12 +180,12 @@ Az előfizetés vagy az erőforráscsoport szintjén lévő riasztások különb
             "anyOf": [
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Compute/virtualMachines",
+                    "equals": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
                     "containsAny": null
                 },
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Storage/storageAccounts",
+                    "equals": "MICROSOFT.STORAGE/STORAGEACCOUNTS",
                     "containsAny": null
                 },
                 ...

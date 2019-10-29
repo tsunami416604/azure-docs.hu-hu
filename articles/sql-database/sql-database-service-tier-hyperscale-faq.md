@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: a5daac9fb34f36620176111e866f493d47f63bba
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513927"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044979"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 
@@ -46,9 +46,9 @@ A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban le�
 | **Számítási méret**|Önálló adatbázis/rugalmas készlet * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
 | |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Tárolás típusa** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
-| **Tárterület mérete** | Önálló adatbázis/rugalmas készlet | 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
+| **Tárterület mérete** | Önálló adatbázis/rugalmas készlet *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **IOPS** | Önálló adatbázis * * | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
+| **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
 | | Felügyelt példány | Fájlmérettől függ | – | 1375 IOPS/virtuális mag |
 |**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
 |**Mentések**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
@@ -363,7 +363,7 @@ Az eredmény `READ_ONLY`, ha egy írásvédett másodlagos replikához csatlakoz
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-a-read-scale-out-replica"></a>Létrehozhatok dedikált végpontot egy olvasási kibővíthető replika számára
 
-Nem. @No__t_0 megadásával csak a kibővített replikák olvasására tud csatlakozni.
+Nem. `ApplicationIntent=ReadOnly`megadásával csak a kibővített replikák olvasására tud csatlakozni.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Az olvasási feladat intelligens terheléselosztása a rendszeren történik
 

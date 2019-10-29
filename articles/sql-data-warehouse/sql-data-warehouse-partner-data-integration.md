@@ -1,6 +1,6 @@
 ---
-title: Az SQL Data Warehouse-adatok az integrációs partnerek |} A Microsoft Docs
-description: Adatintegrációs megoldásokat, amelyek támogatják az Azure SQL Data Warehouse a külső partnerek listája.
+title: Adatintegrációs partnerek SQL Data Warehouse | Microsoft Docs
+description: A Azure SQL Data Warehouset támogató adatintegrációs megoldásokkal rendelkező harmadik féltől származó partnerek listája.
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,37 +10,38 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ffeb12413f236ca0c131051245306ae16d4288
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873799"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045173"
 ---
-# <a name="sql-data-warehouse-data-integration-partners"></a>Az SQL Data Warehouse-adatok az integrációs partnerek
-Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk a Microsoft partnervállalatokban hivatalos adatintegrációs megoldásokat támogató Azure SQL Data Warehouse-emeli ki.
+# <a name="sql-data-warehouse-data-integration-partners"></a>Adatintegrációs partnerek SQL Data Warehouse
+Az adattárház-megoldás létrehozásához válasszon az piacvezető eszközök széles választékával. Ez a cikk a Azure SQL Data Warehouset támogató hivatalos adatintegrációs megoldásokkal rendelkező Microsoft-partneri vállalatokat emeli ki.
 
-## <a name="data-integration-partners"></a>Adatok az integrációs partnerek
-| Partner | Leírás | Webhely és a termék hivatkozása |
+## <a name="data-integration-partners"></a>Adatintegrációs partnerek
+| Partnerek | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
-| ![Alooma][7] |**Alooma**<br> Alooma ETL megoldás, amely lehetővé teszi az adatok csapatok integrálása, bővítését és a különböző megváltozott az SQL Data Warehouse minden adat valós idejű adatfolyam is. |[Termék oldalát][alooma_website] |
-| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer munkafolyamatokat lehetővé teszi, hogy részletesebb elemzéseket, nem a hagyományos megközelítés tipikus hetek helyett órák alatt önkiszolgáló data analytics! Alteryx Designer adatelemzők lehetővé adat-előkészítés, adatok keverési és analytics – prediktív, statisztikai és térbeli – az azonos intuitív felhasználói felületén. |[Termék oldalát][alteryx_designer_website]<br>[Az Azure Marketplace-en][alteryx_marketplace]<br>|
-| ![Az Attunity][2] |**Az Attunity (CloudBeam)**<br>Az Attunity CloudBeam egy automatizált megoldást nyújt az adatok betöltése az SQL Data Warehouse-bA. Kötegelt betöltés és az adatok számos forrásból – SQL Server, Oracle, DB2, Sybase, MySQL és további inkrementális replikálási egyszerűbbé téve. |[Termék oldalát][attunity_cloudbeam_website]<br>[Az Azure Marketplace-en][attunity_marketplace]<br> |
-| ![Denodo][3] |**Denodo**<br>Denodo adatok valós idejű hozzáférést biztosítanak a szervezet különböző adatforrások között. Adatok virtualizálási bridge-adatok között számos forrásból replikációs nélkül használ. A vállalati, a big Data jellegű adatok és a batch és a valós idejű felhőbeli forrásokból levő strukturált és strukturálatlan adatok széles körű hozzáférést biztosít.|[Termék oldalát][denodo_website]<br>[Az Azure Marketplace-en][denodo_marketplace]<br> |
-| ![Fivetran][8] |**Fivetran**<br>Fivetran segítséget nyújt a különféle forrásokból származó adatok központosítása. Egy nulla karbantartási jellemzői nulla konfigurációs adatok folyamat-és az összes népszerű adatforrásokhoz a beépített összekötőkkel egyre bővülő listája. A telepítő az adatforrásokat és a cél data warehouse-ba való hitelesítés után öt percet vesz igénybe.|[Termék oldalát][fivetran_website]<br> |
-| ![Informatica][4] |**1. az Informatica Cloud Services, Azure-beli használatra**<br> Az Informatica Cloud önkiszolgáló áttelepítési, integráció és felügyeleti funkciókat a kategóriaelső megoldást kínál. Ügyfelek gyorsan és megbízhatóan importálása és exportálása az Azure-ban több petabájtnyi adat különböző forrásokból. Az Informatica Cloud Services, Azure-natív, magas kötet, nagy teljesítményű Azure SQL Data Warehouse, az SQL Database, a Blob Storage, a Data Lake Store és a Azure Cosmos DB kapcsolatot biztosít. <br><br> **2. az Informatica PowerCenter** PowerCenter-metaadatok által meghatározott adatok integrációs platform adott jumpstarts és adatintegrációs projektek gyorsítja annak érdekében, hogy továbbítja az adatokat az üzleti gyorsabban manuális aktuális kódolása. Az integrációs befektetéseit alapjaként szolgál |**Az Informatica Cloud services, Azure-beli használatra**<br>[Termék oldalát][informatica_Cloud_Services_website]<br>[Az Azure Marketplace-en][informatica_Cloud_Services_marketplace]<br><br> **Az Informatica PowerCenter**<br>[Termék oldalát][informatica_PowerCenter_website]<br> [Az Azure Marketplace-en][informatica_PowerCenter_byol]<br>|
-| ![Információ kapcsolat építői][5] |**Információk létrehozói (Omni – általános adatok kezelése)**<br>Információk Builder Omni – általános felügyeleti adatplatform Adatintegráció, adatminőség és adatkezelési megoldások fő biztosít. Lehetővé teszi, hogy könnyen eléréséhez, áthelyezése és kombinálhatja az összes adatot, függetlenül attól, formátum, a hely, a kötet vagy a késés.|[Termék oldalát][omnifocus_website]<br> [Az Azure Marketplace-en][omnigen_marketplace] |
-| ![Qubole][9] |**Qubole**<br>Qubole egy natív felhőalapú platformot kínál, amely lehetővé teszi a felhasználók ETL, elemzések és mesterséges Intelligencia/gépi tanulás számítási feladatok elvégzéséhez. Támogatja a nyílt forráskódú motor - Apache Spark, TensorFlow, Presto, légmozgás, Hadoop-, Hive, és több különböző. Könnyen használható végfelhasználói eszközöket biztosít a notebookok és az irányítópultok, melyek hatékony nyílt forráskódú motor, az SQL query tools, adatfeldolgozási.|[Termék oldalát][qubole_website]<br> [Az Azure Marketplace-en][qubole_marketplace] |
-| ![Szegmens][10] |**Szegmens**<br>Szegmens pedig az adatok felügyeleti és a különböző forrásokból származó ügyféladatok bírnak, amelynek segítségével elemzési megoldásokat. Lehetővé teszi, hogy az adatok jobb döntéseket hozhat, termékek és megoldások létrehozása több mint 200 eszközök csatlakoztatása. Szegmens átalakítása lesz, és több adatforrás töltse be az adattárház, a beépített adatösszekötők használatával|[Termék oldalát][segment_website]<br> |
-| ![Skyvia][11] |**Skyvia (Adatintegráció)**<br>Adatintegráció Skyvia biztosít egy varázslót, amely automatizálja az adatok Importálja. A varázsló lehetővé teszi az adatok többféle forrásból – CRM, alkalmazás-adatbázis, CSV-fájlok és több közötti áttelepítéséhez. |[Termék oldalát][segment_website]<br> |
-| ![SnapLogic][6] |**SnapLogic**<br>A SnapLogic Platform lehetővé teszi, hogy az ügyfelek számára az adatok gyors átvitelére bA és a Microsoft Azure SQL Data Warehouse-ból. Kínál az alkalmazások, szolgáltatások és az egyik megoldásban az IoT-forgatókönyvek a több száz integrálható.|[Termék oldalát][snaplogic_website]<br>[Az Azure Marketplace-en][snaplogic_marketplace]<br> |
-| ![Talend][12] |**Talend felhő**<br>Talend felhőalapú a egy interprise adatok integrációs platformja csatlakozzon, elérni, és minden olyan adatok átalakítása a felhőben vagy helyszíni között. Egy integrációs platform--szolgáltatásként (iPaaS) szolgáltatás, amely széles körű kapcsolat, beépített minőségét, valamint natív támogatást nyújt a legújabb big Data jellegű adatok és a felhőalapú technológiák |[Termék oldalát][talend_website]<br> [Az Azure Marketplace-en][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta segít az egyéni felhasználók számára és a szervezetek ismerje meg, és csatlakozzon együtt a különböző adatok elemzéséhez. Adatok intelligenciával számítási feladatok kezelésére, amely támogatja a méretezési csoport és a végfelhasználók számára sok adatokat kell Trifacta Wrangler tervezték.|[Termék oldalát][trifacta_website]<br> [Az Azure Marketplace-en][trifacta_marketplace] |
-| ![WhereScape][14] |**PIROS Wherescape**<br> WhereScape RED, amely az csapatok nyújt automatizálási eszközöket, leegyszerűsítheti az ETL-munkafolyamatok IDE. Az IDE ismerteti az ajánlott eljárást, a népszerű adatait targets natív kódu. WhereScape RED használatával Kivágás fejlesztése, telepítése és üzemeltetése az adatok infrastruktúra időt.|[Termék oldalát][wherescape_website]<br> [Az Azure Marketplace-en][wherescape_marketplace] |
+| ![Alooma][7] |**Alooma**<br> A Alooma egy ETL-megoldás, amely lehetővé teszi, hogy az adatcsapatok a különféle adatsilók adatait integrálják, gazdagítsák és továbbítsák SQL Data Warehouse valós időben. |[Termék lap][alooma_website] |
+| ![Alteryx][1] |**Alteryx**<br> A Alteryx Designer egy ismételhető munkafolyamatot biztosít az önkiszolgáló adatelemzéshez, amely több órán keresztül mélyebb elemzéseket eredményez, nem pedig a hagyományos megközelítésekre jellemző heteket! A Alteryx Designer lehetővé teszi az adatelemzők számára az adatelőkészítés, az adatkeverés és az elemzés – prediktív, statisztikai és térbeli – használatát ugyanazzal az intuitív felhasználói felülettel. |[Termék lap][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
+| ![Attunity][2] |**Attunity (CloudBeam)**<br>A Attunity CloudBeam automatizált megoldást kínál az adatSQL Data Warehouseba való betöltésére. Leegyszerűsíti a kötegelt betöltést és a több forrásból származó adatok növekményes replikálását – SQL Server, Oracle, DB2, Sybase, MySQL és sok más. |[Termék lap][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
+| ![Denodo][3] |**Denodo**<br>A Denodo valós idejű hozzáférést biztosítanak a szervezet különböző adatforrásaiban lévő adatforrásokhoz. Az adatvirtualizálás használatával több, replikáció nélküli adatforráson keresztül is áthidalhatja az adatmennyiséget. Széles körű hozzáférést biztosít a nagyvállalati, big datai és Felhőbeli erőforrások strukturált és strukturálatlan adataihoz mind a Batch, mind a valós időben.|[Termék lap][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
+| ![Fivetran][8] |**Fivetran**<br>A Fivetran megkönnyíti a különböző forrásokból származó adatok központosított kezelését. A szolgáltatás nulla karbantartást, nulla konfigurációs adatcsatorna-terméket tartalmaz, és a beépített összekötők egyre bővülő listáját tartalmazza az összes népszerű adatforráshoz. A telepítő öt percet vesz igénybe az adatforrások és az adatraktár megcélzása után.|[Termék lap][fivetran_website]<br> |
+| ![Informatica][4] |**1. Informatica Cloud Services az Azure-hoz**<br> A Informatica Cloud kiváló megoldást kínál az önkiszolgáló adatáttelepítési, integrációs és felügyeleti funkciók kezelésére. Ügyfeleink gyorsan és megbízhatóan importálhatók és exportálhatók az Azure-ba különböző forrásokból származó petabájt. Az Azure-hoz készült Informatica Cloud Services natív, nagy mennyiségű, nagy teljesítményű kapcsolatot biztosít Azure SQL Data Warehouse, SQL Database, Blob Storage, Data Lake Store és Azure Cosmos DB számára. <br><br> **2. Informatica PowerCenter** A PowerCenter egy metaadat-vezérelt adatintegrációs platform, amely az adatintegrációs projektek megvalósítását szorgalmazza, és gyorsabban továbbítja az adatokat az üzleti adatokhoz, mint a manuális kézi kódolás. A szolgáltatás az adatintegrációs beruházások alapjaként szolgál |**Informatica Cloud Services az Azure-hoz**<br>[Termék lap][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[Termék lap][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
+| ![Információs építők][5] |**Információs építők (omni-gen adatkezelés)**<br>Az Information Builder omni-gen adatkezelési platformja adatintegrációt, adatminőséget és Master adatkezelési megoldásokat biztosít. Megkönnyíti az összes információ elérését, áthelyezését és keverését, függetlenül a formátumtól, a helytől, a kötettől vagy a késéstől.|[Termék lap][omnifocus_website]<br> [Azure Marketplace][omnigen_marketplace] |
+| ![Qubole][9] |**Qubole**<br>A Qubole olyan felhőalapú platformot biztosít, amely lehetővé teszi a felhasználók számára, hogy ETL, analitikai és AI/ML számítási feladatokat végezzenek. Számos nyílt forráskódú motort támogat – a Apache Spark, a TensorFlow, a Presto, a légáram, a Hadoop, a kaptár és sok más. Könnyen használható végfelhasználói eszközöket biztosít az SQL-lekérdezési eszközök, a jegyzetfüzetek és a nagy teljesítményű nyílt forráskódú motorokat használó irányítópultok adatfeldolgozásához.|[Termék lap][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
+| ![Szegmens][10] |**Szegmens**<br>A szegmens egy adatkezelési és elemzési megoldás, amely segít megérteni a különböző forrásokból érkező ügyféladatokat. Lehetővé teszi az adatai több mint 200 eszközhöz való összekapcsolását jobb döntések, termékek és tapasztalatok létrehozásához. A szegmens a beépített adatösszekötők használatával több adatforrást helyez át a tárházba, és betölti azt.|[Termék lap][segment_website]<br> |
+| ![Skyvia][11] |**Skyvia (Adatintegráció)**<br>A Skyvia adatintegrációja olyan varázslót biztosít, amely automatizálja az adatimportálást. Ez a varázsló lehetővé teszi az adatáttelepítés különböző forrásokból – CRM, alkalmazás-adatbázis és CSV-fájlok között. |[Termék lap][segment_website]<br> |
+| ![SnapLogic][6] |**SnapLogic**<br>A SnapLogic platform lehetővé teszi, hogy az ügyfelek gyorsan át lehessen vinni az adatátvitelt Microsoft Azure SQL Data Warehouseba. Lehetővé teszi több száz alkalmazás, szolgáltatás és IoT integrálását egyetlen megoldásban.|[Termék lap][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
+| ![StreamSets][15] |**StreamSets**<br>A StreamSets adatintegrációs platformot biztosít a DataOps számára. Ez a teljes körű operationalizes az adatAzure SQL Data Warehouseba való integrálásához. Az adatok gyors betöltése és integrálása nem végezhető el a raktárból, a folyamatos átvitel, a Batch vagy az adatváltozások rögzítése adattovábbítási módszerekkel, de a folyamatos működést olyan intelligens adatfolyamatokkal is biztosíthatja, amelyek teljes körű adatáramlást biztosítanak rugalmasság.|[Termék lap][streamsets_website]|
+| ![Talend][12] |**Tehetség-felhő**<br>A tehetség Cloud egy nagyvállalati adatintegrációs platform, amely a felhőben vagy a helyszínen lévő összes adatkapcsolathoz, hozzáféréshez és átalakításhoz biztosít hozzáférést. Ez egy szolgáltatásként nyújtott integrációs platform (iPaaS), amely széles körű kapcsolódást, beépített adatminőséget és natív támogatást nyújt a legújabb big data és felhőalapú technológiákhoz |[Termék lap][talend_website]<br> [Azure Marketplace][talend_marketplace] |
+| ![Trifacta][13] |**Trifacta Wrangler**<br> A Trifacta segítségével a magánszemélyek és a szervezetek is megismerhetik és összekapcsolhatók különböző adatelemzési adataikkal. A Trifacta Wrangler úgy van kialakítva, hogy kezelje az olyan huzavona-munkaterheléseket, amelyeknek a nagy mennyiségű felhasználót kell támogatniuk.|[Termék lap][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
+| ![WhereScape][14] |**Wherescape piros**<br> A WhereScape RED egy IDE, amely automatizálási eszközökkel segíti a csapatok számára az ETL-munkafolyamatok egyszerűsítését. Az IDE ajánlott eljárás, optimalizált natív kód a népszerű adatcélokhoz. A WhereScape RED használatával csökkentheti az adatinfrastruktúra fejlesztéséhez, üzembe helyezéséhez és üzemeltetéséhez szükséges időt.|[Termék lap][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 
 
-## <a name="next-steps"></a>További lépések
-Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelligencia partnerek] [ bi_partners] és [adatkezelési partnerek][dm_partners].
+## <a name="next-steps"></a>Következő lépések
+A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia-partnerek][bi_partners] és a [adatkezelés partnerek][dm_partners]témakört.
 
 <!--Article links-->
 
@@ -64,6 +65,8 @@ Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelli
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
 [13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
 [14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+
 
 
 <!--Website Links -->
@@ -84,6 +87,7 @@ Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelli
 [talend_website]:https://www.talend.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
+[streamsets_website]:https://streamsets.com/partners/microsoft
 
 <!--Marketplace Links -->
 

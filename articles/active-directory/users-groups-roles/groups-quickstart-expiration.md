@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aabfe803a6ee40491dd95fe7def9a31838c80e65
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928973"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024614"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Rövid útmutató: Az Office 365-csoportok elévülési idejének beállítása az Azure Active Directoryban
 
@@ -27,13 +27,13 @@ Ennek a rövid útmutatónak a segítségével beállíthatja az Office 365-csop
 
 Az elévülési szabályzat nem bonyolult:
 
-- A felhasználói tevékenységgel rendelkező csoportok automatikusan megújulnak a közeljövőben (előzetes verzió)
+- A felhasználói tevékenységgel rendelkező csoportok automatikusan megújulnak a közeljövőben
 - A csoporttulajdonosok értesítést kapnak, hogy újítsák meg az elévülő csoportjukat
 - A meg nem újított csoport törlődik
 - A törölt Office 365-csoportot a csoporttulajdonosok vagy az Azure AD-rendszergazdák 30 napig még visszaállíthatják.
 
 > [!NOTE]
-> A csoportok mostantól automatikusan megújítják az Azure AD Intelligence-t attól függően, hogy a legutóbbi használatban vannak-e (jelenleg nyilvános előzetes verzióban), ezért nincs szükség regisztrációra. Ez a funkció az Office 365-szolgáltatásokban, például az Outlook, a SharePoint, a Teams, a Yammer és egyebek területén lévő csoportok felhasználói tevékenységén alapul.
+> A csoportok mostantól az Azure AD Intelligence használatával automatikusan megújulnak, függetlenül attól, hogy a legutóbbi használatban vannak-e. Ez a megújítási döntés az Office 365-szolgáltatásokban, például az Outlook, a SharePoint, a Teams, a Yammer és egyebek területén lévő csoportok felhasználói tevékenységén alapul.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 

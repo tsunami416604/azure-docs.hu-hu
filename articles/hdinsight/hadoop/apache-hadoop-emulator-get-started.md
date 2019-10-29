@@ -1,5 +1,5 @@
 ---
-title: Ismerje meg, hogyan használhat egy Apache Hadoop homokozó-emulátort – Azure HDInsight
+title: Ismerje meg, hogyan használhat egy Apache Hadoop Sandboxot, Emulator-Azure HDInsight
 description: 'Az Apache Hadoop ökoszisztéma használatának megismeréséhez beállíthatja, hogy egy Azure-beli virtuális gépen Hadoop-munkaterületet állítson be a Hortonworks-ben. '
 keywords: Hadoop Emulator, Hadoop homokozó
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066691"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044770"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 
@@ -51,7 +51,7 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
 1. A Hortonworks-munkaterületének első **lépések** lépése lapon válassza a **Speciális beállítások megjelenítése**lehetőséget. Az oldalon található információk használatával jelentkezzen be a homokozóba az SSH használatával. Használja a megadott nevet és jelszót.
 
    > [!NOTE]
-   > Ha nem telepített SSH-ügyfelet, használhatja a virtuális gép **http://localhost:4200/** által biztosított webalapú SSH-t.
+   > Ha nem telepített SSH-ügyfelet, akkor a virtuális gép által a **http://localhost:4200/** címen elérhető webalapú SSH-t használhatja.
 
     Amikor először csatlakozik az SSH-val, a rendszer felszólítja a root fiók jelszavának módosítására. Adjon meg egy új jelszót, amelyet az SSH használatával történő bejelentkezéskor használ.
 
@@ -73,7 +73,7 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
 
         select * from sample_07 limit 10;
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan használhatja a Visual studiót a Hortonworks homokozóval](../hdinsight-hadoop-emulator-visual-studio.md)
 

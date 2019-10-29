@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5d221664669e9af647cca4e242d7763ed74cd3c9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786986"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023960"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -87,7 +87,11 @@ A DNS-név következő korlátozásai is érvényesek:
 Az Azure AD DS-példány létrehozásához a Azure Portal *alapismeretek* ablakában végezze el a következő mezőket:
 
 1. Adja meg a felügyelt tartományhoz tartozó **DNS-tartománynevet** , figyelembe véve az előző pontokat.
-1. Válassza ki azt az Azure- **helyet** , amelyben létre kívánja hozni a felügyelt tartományt.
+1. Válassza ki azt az Azure- **helyet** , amelyben létre kívánja hozni a felügyelt tartományt. Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
+
+    A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban.
+
+    Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azure platform automatikusan kezeli az erőforrások zónájának eloszlását. További információért és a régiók rendelkezésre állásának megtekintéséhez lásd: [Mi a Availability Zones az Azure-ban?][availability-zones]
 
     ![Azure AD Domain Services-példány alapvető beállításainak konfigurálása](./media/tutorial-create-instance/basics-window.png)
 
@@ -117,7 +121,7 @@ A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány ko
 
     ![Tartományi szolgáltatások állapota sikeres kiépítés után](./media/tutorial-create-instance/successfully-provisioned.png)
 
-Kiépítjük Azure AD Domain Services a Azure Active Directory bérlőre, és a szolgáltatás Azure AD Domain Services erőforrását a társított Azure-előfizetésen belül hozza létre. A kiépítési folyamat során az Azure AD DS két, *tartományvezérlői szolgáltatásokat* és *AzureActiveDirectoryDomainControllerServices* nevű vállalati alkalmazást hoz létre az Azure Active Directory-példányban, ahol engedélyezte az Azure-t AD tartományi szolgáltatások. Ezek a vállalati alkalmazások a felügyelt tartomány kiszolgálásához szükségesek.  Fontos, hogy ezeket az alkalmazásokat bármikor ne törölje.
+A felügyelt tartomány társítva van az Azure AD-bérlőhöz. A kiépítési folyamat során az Azure AD DS két, *tartományvezérlői szolgáltatásokat* és *AzureActiveDirectoryDomainControllerServices* nevű vállalati alkalmazást hoz létre az Azure ad-bérlőben. Ezek a vállalati alkalmazások a felügyelt tartomány kiszolgálásához szükségesek. Ne törölje ezeket az alkalmazásokat.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Az Azure virtuális hálózat DNS-beállításainak frissítése
 
@@ -188,6 +192,7 @@ A tartományhoz csatlakozó virtuális gépek és az Azure AD DS felügyelt tart
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

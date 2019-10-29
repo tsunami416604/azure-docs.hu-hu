@@ -3,8 +3,8 @@ title: Log ML-kísérletek & metrikák
 titleSuffix: Azure Machine Learning
 description: Figyelje az Azure ML-kísérleteit, és figyelje a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. Vegyen fel naplózást a betanítási parancsfájlba, és tekintse meg a Futtatás naplózott eredményeit.  Használja a Run. log, a Run. start_logging vagy a ScriptRunConfig parancsot.
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002706"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045212"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML-kísérletek futtatásának és metrikáinak monitorozása
 
@@ -28,31 +28,31 @@ A kísérletek és a figyelési futtatási metrikák nyomon követésével növe
 
 ## <a name="available-metrics-to-track"></a>A nyomon követett elérhető metrikák
 
-A következő metrikák hozzáadhat egy Futtatás betanítási kísérlet során. Mi a Futtatás követhető részletes listáját, tekintse meg a [osztály dokumentációja futtatása](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
+A következő metrikák adhatók hozzá egy futtatáshoz a kísérlet betanítása közben. A futtatások nyomon követésére szolgáló részletes lista megtekintéséhez tekintse meg a [futtatási osztály referenciájának dokumentációját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Típus| Funkce Pythonu | Megjegyzések|
+|Type (Típus)| Python-függvény | Megjegyzések|
 |----|:----|:----|
-|Skaláris értékek |Függvény:<br>`run.log(name, value, description='')`<br><br>Példa:<br>Run.log ("pontossággal", 0,95) |Napló egy numerikus vagy karakterlánc értéket, a Futtatás a megadott névvel. Ennek a mutatónak tárolhatók a kísérletben a futtatási rekord a naplózási a metrika a futtató okoz.  Az azonos metrika futtató, az eredmény egy adott mérőszám vektor fontolóra belül több alkalommal bejelentkezhet.|
-|Listák|Függvény:<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run.log_list ("pontosságú", [a 0.6-os, 0,7, 0.87]) | Jelentkezzen a Futtatás a megadott nevű értékek listáját.|
-|Sor|Függvény:<br>`run.log_row(name, description=None, **kwargs)`<br>Példa:<br>Run.log_row ("Keresztül X Y", x = 1, y = 0,4) | Használatával *log_row* hoz létre egy metrika több oszlopból álló kwargs leírtak szerint. Minden elnevezett paraméter generálja egy oszlop megadott értékkel.  *log_row* egyszer hívható egy hurkot, és a egy teljes táblát hozzon létre egy tetszőleges rekord, vagy több alkalommal bejelentkezni.|
-|Tábla|Függvény:<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Run.log_table ("Keresztül X Y", {"x": [1, 2, 3], "y": [a 0.6-os, 0,7, 0.89]}) | Jelentkezzen a szótárobjektum a Futtatás a megadott névvel. |
-|Képek|Függvény:<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>`run.log_image("ROC", plt)` | Jelentkezzen egy képet a futtatási rekord. Be-vagy képfájl a matplotlib log_image használatával a Futtatás rajz.  Ezek a lemezképek lesz látható, és a futtatási rekord összehasonlítható.|
-|Futtatás címkézése|Függvény:<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run.tag ("kijelölt", "yes") | A Futtatás egy karakterláncot és egy opcionális karakterláncértéket a címkékkel.|
-|Töltse fel a fájl vagy könyvtár|Függvény:<br>`run.upload_file(name, path_or_stream)`<br> <br> Példa:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Töltse fel egy fájlt a futtatási rekord. Futtatások automatikusan rögzítheti a megadott kimeneti könyvtár, amely alapértelmezés szerint a fájl ". / kimenete" legtöbb Futtatás típusok esetében.  Upload_file csak akkor használja további fájlokat szeretne feltölteni, vagy nincs megadva egy kimeneti könyvtárat. Javasoljuk, hogy hozzáadása `outputs` a nevéhez, így az informatikai részleg által feltöltött lekérdezi a kimeneti könyvtár. Listázhatja az összes kapcsolódó fájlt a futtatási rekord által nevű `run.get_file_names()`|
+|Skaláris értékek |Függvény<br>`run.log(name, value, description='')`<br><br>Példa:<br>Run. log ("pontosság", 0,95) |Egy numerikus vagy sztring értéket adjon meg a futtatáshoz a megadott névvel. Egy metrika futtatási állapotba való naplózása azt eredményezi, hogy a metrika a kísérlet futtatási rekordjában tárolódik.  Ugyanazon metrika többször is naplózható egy futtatáson belül, mert az eredmény az adott metrika vektorának tekintendő.|
+|Felsorolja|Függvény<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run. log _list ("pontosság", [0,6, 0,7, 0,87]) | A megadott névvel naplózza az értékek listáját a futtatáshoz.|
+|sor|Függvény<br>`run.log_row(name, description=None, **kwargs)`<br>Példa:<br>Futtassa a. log _row ("Y over X", X = 1, y = 0,4) | A *log_row* használatával a kwargs-ben leírtak szerint több oszloppal rendelkező mérőszámot hoz létre. Minden elnevezett paraméter létrehoz egy oszlopot a megadott értékkel.  a *log_row* egy tetszőleges rekord naplózására, vagy egy hurokban többször is meghívható egy teljes tábla létrehozásához.|
+|Table|Függvény<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Futtassa a. log _table ("Y over X", {"X": [1, 2, 3], "Y": [0.6, 0,7, 0,89]}) | Egy szótár objektum naplózása a futtatáshoz a megadott névvel. |
+|Lemezképek|Függvény<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>`run.log_image("ROC", plt)` | Rendszerkép naplózása a futtatási rekordba. A log_image használatával naplózhat egy képfájlt vagy egy matplotlib-rajzot a futtatáshoz.  Ezek a képek láthatók és összehasonlíthatók lesznek a futtatási rekordban.|
+|Futtatás címkézése|Függvény<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run. tag ("kiválasztott", "yes") | Címkézse a futtatást egy karakterlánc-kulccsal és egy opcionális karakterlánc-értékkel.|
+|Fájl vagy könyvtár feltöltése|Függvény<br>`run.upload_file(name, path_or_stream)`<br> <br> Példa:<br>Run. upload_file ("best_model. PKL", "./Model.PKL") | Töltsön fel egy fájlt a futtatási rekordba. Futtatja az automatikus rögzítési fájlt a megadott kimeneti könyvtárban, amely alapértelmezés szerint "./outputs" a legtöbb futtatási típushoz.  A upload_file csak akkor használja, ha további fájlokat kell feltölteni, vagy nincs megadva kimeneti könyvtár. Javasoljuk `outputs` hozzáadását a névhez, hogy az a kimenet könyvtárba legyen feltöltve. A futtatási rekordhoz társított összes fájlt megtekintheti a következő néven: `run.get_file_names()`|
 
 > [!NOTE]
-> Metrikák fejlécekké, a listákat, a sorok és a táblák rendelkezhet típusa: lebegőpontos, egész szám vagy karakterlánc.
+> A skaláris, a listához, a sorokhoz és a táblákhoz tartozó mérőszámok a következő típusúak lehetnek: float, integer vagy string.
 
 ## <a name="choose-a-logging-option"></a>Naplózási lehetőség kiválasztása
 
-Ha szeretné nyomon követni vagy figyelése is futtathatja a kísérletet, hozzá kell adnia a naplózása, amikor a Futtatás küld kódot. A futtatási küldésének aktiválásához módjai a következők:
-* __Run.start_logging__ – a naplózási szolgáltatások hozzáadása a tanítási szkriptet, és a egy interaktív naplózási munkamenet elindításához a megadott kísérletben. **start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.
-* __ScriptRunConfig__ – a naplózási szolgáltatások hozzáadása a tanítási szkriptet, és a teljes parancsfájl mappát a Futtatás tölthető be.  **ScriptRunConfig** beállítása szkript konfigurációi fut egy osztály van. Ezzel a beállítással adhat hozzá figyelés kódja befejezéséről értesítést, vagy egy vizuális widget figyelése lekéréséhez.
+Ha nyomon szeretné követni vagy figyelni a kísérletet, hozzá kell adnia egy kódot a naplózás elindításához, amikor elküldi a futtatást. A futtatási beküldést az alábbi módokon aktiválhatja:
+* __Run. start_logging__ – naplózási függvények hozzáadása a betanítási parancsfájlhoz, és egy interaktív naplózási munkamenet elindítása a megadott kísérletben. a **start_logging** egy interaktív futtatást hoz létre, amely olyan forgatókönyvekben használható, mint a jegyzetfüzetek. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához.
+* __ScriptRunConfig__ – adja hozzá a naplózási funkciókat a betanítási parancsfájlhoz, és töltse be a teljes parancsfájl-mappát a futtatással.  A **ScriptRunConfig** a parancsfájlok futtatásához szükséges konfigurációk beállításának osztálya. Ezzel a beállítással adhat hozzá figyelési kódot, hogy értesítést kapjon a befejezésről, vagy egy vizuális widgetet a figyeléshez.
 
 ## <a name="set-up-the-workspace"></a>A munkaterület beállítása
-Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell állítania a munkaterületen.
+A naplózás hozzáadása és a kísérlet elküldése előtt be kell állítania a munkaterületet.
 
-1. Töltse be a munkaterület. A munkaterület-konfiguráció beállításával kapcsolatos további tudnivalókért lásd a [munkaterület konfigurációs fájlját](how-to-configure-environment.md#workspace).
+1. Töltse be a munkaterületet. A munkaterület-konfiguráció beállításával kapcsolatos további tudnivalókért lásd a [munkaterület konfigurációs fájlját](how-to-configure-environment.md#workspace).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -61,13 +61,13 @@ Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell áll
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-start_logging"></a>1\. lehetőség: Start_logging használata
+## <a name="option-1-use-start_logging"></a>1\. lehetőség: a start_logging használata
 
-**start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.
+a **start_logging** egy interaktív futtatást hoz létre, amely olyan forgatókönyvekben használható, mint a jegyzetfüzetek. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához.
 
-Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyter notebook betanítja. A kísérletek különböző környezetekben történő elküldésével kapcsolatos további tudnivalókért lásd: [számítási célok beállítása a modell betanításához Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Az alábbi példában egy egyszerű sklearn Ridge-modellt végezünk helyileg egy helyi Jupyter notebookon. A kísérletek különböző környezetekben történő elküldésével kapcsolatos további tudnivalókért lásd: [számítási célok beállítása a modell betanításához Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
-1. Helyi Jupyter notebook létrehozása egy tanítási szkriptet. 
+1. Hozzon létre egy képzési parancsfájlt egy helyi Jupyter jegyzetfüzetben. 
 
    ```python
    # load diabetes dataset, a well-known small dataset that comes with scikit-learn
@@ -91,7 +91,7 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. A Azure Machine Learning SDK használatával vegyen fel kísérlet-követést, és töltsön fel egy megőrzött modellt a kísérlet futtatása rekordba. Az alábbi kód felveszi a címkéket, naplók, a, és feltölti egy modellfájl futtassa a kísérletet.
+2. A Azure Machine Learning SDK használatával vegyen fel kísérlet-követést, és töltsön fel egy megőrzött modellt a kísérlet futtatása rekordba. A következő kód címkéket és naplókat helyez el, és feltölti a modell-fájlt a kísérlet futtatásához.
 
    ```python
     # Get an experiment object from Azure Machine Learning
@@ -123,15 +123,15 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
     run.complete()
    ```
 
-    A parancsfájl végződik ```run.complete()```, amely jelöli meg a futtatást, befejezettként.  Ezt a funkciót általában interaktív notebook olyan forgatókönyvekben használatos.
+    A parancsfájl ```run.complete()```tel végződik, amely a futtatást befejezettként jelöli meg.  Ez a függvény általában interaktív jegyzetfüzet-forgatókönyvekben használatos.
 
-## <a name="option-2-use-scriptrunconfig"></a>2\. lehetőség: ScriptRunConfig használata
+## <a name="option-2-use-scriptrunconfig"></a>2\. lehetőség: a ScriptRunConfig használata
 
-A [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) a parancsfájlok futtatásához szükséges konfigurációk beállításának osztálya. Ezzel a beállítással adhat hozzá figyelés kódja befejezéséről értesítést, vagy egy vizuális widget figyelése lekéréséhez.
+A [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) a parancsfájlok futtatásához szükséges konfigurációk beállításának osztálya. Ezzel a beállítással adhat hozzá figyelési kódot, hogy értesítést kapjon a befejezésről, vagy egy vizuális widgetet a figyeléshez.
 
-Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel bővítjük. Egy egyszerű paraméter Ismétlés az ismétlés metrikákat rögzítheti a modell és a kísérlet alatt fut, a betanított modellek az alfa értékeknek keresztül hajtja végre. A példában helyben fut egy felhasználó által felügyelt környezetben. 
+Ez a példa az alapszintű sklearn Ridge-modellből bővül. Ez egy egyszerű paramétert eredményez, amely a modell alfa-értékeit lesöpörve rögzíti a mérőszámokat és a betanított modelleket a kísérlet alatt. A példa helyileg fut egy felhasználó által felügyelt környezetben. 
 
-1. Hozzon létre egy `train.py`képzési parancsfájlt.
+1. Hozzon létre egy képzési parancsfájlt `train.py`.
 
    ```python
    # train.py
@@ -185,7 +185,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
   
    ```
 
-2. A `train.py` szkriptek `mylib.py` hivatkozásai lehetővé teszik, hogy lekérje a Ridge-modellben használandó alfa-értékek listáját.
+2. A `train.py` parancsfájl hivatkozik `mylib.py`, amely lehetővé teszi a Ridge-modellben használandó alfa-értékek listájának lekérését.
 
    ```python
    # mylib.py
@@ -197,7 +197,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
       return np.arange(0.0, 1.0, 0.05)
    ```
 
-3. Állítsa be a felhasználó által felügyelt helyi környezetben.
+3. Felhasználó által felügyelt helyi környezet konfigurálása.
 
    ```python
    from azureml.core import Environment
@@ -211,7 +211,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
    #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
    ```
 
-4. Küldje el a ```train.py``` parancsfájl a felhasználó által felügyelt környezetben való futtatásához. Ez a mappa teljes szkript elküldésekor a betanításhoz, beleértve a ```mylib.py``` fájlt.
+4. Küldje el a ```train.py``` parancsfájlt a felhasználó által felügyelt környezetben való futtatáshoz. Ez a teljes parancsfájl-mappa betanításra kerül, beleértve a ```mylib.py``` fájlt is.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -226,19 +226,19 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
 
 A [képzések indítása, figyelése és megszakítása című](how-to-manage-runs.md) cikk kiemeli a kísérletek kezeléséhez kapcsolódó Azure Machine learning munkafolyamatokat.
 
-## <a name="view-run-details"></a>Futtatás részletei nézet
+## <a name="view-run-details"></a>Futtatási részletek megtekintése
 
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>A monitor futtatása a Jupyter notebook widgettel
 Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás folyamatát egy [Jupyter widgettel](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
 
-1. A Jupyter widget tekintse meg a Futtatás befejeződik várakozás közben.
+1. Tekintse meg a Jupyter widgetet a Futtatás befejeződésére való várakozás közben.
 
    ```python
    from azureml.widgets import RunDetails
    RunDetails(run).show()
    ```
 
-   ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/run-details-widget.png)
+   ![Képernyőkép a Jupyter notebook widgetről](./media/how-to-track-experiments/run-details-widget.png)
 
 A munkaterületen megjelenő megjelenítésre mutató hivatkozást is kaphat.
 
@@ -246,7 +246,7 @@ A munkaterületen megjelenő megjelenítésre mutató hivatkozást is kaphat.
 print(run.get_portal_url())
 ```
 
-2. **[Automatikus machine learning futtatások]**  Az előző menetből a diagramok eléréséhez. Cserélje `<<experiment_name>>` le a nevet a megfelelő kísérlet nevére:
+2. **[Automatikus gépi tanulás futtatásához]** A diagramok egy korábbi futtatásból való elérése. Cserélje le a `<<experiment_name>>`t a megfelelő kísérlet nevére:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -258,58 +258,58 @@ print(run.get_portal_url())
    RunDetails(run).show()
    ```
 
-   ![A Machine Learning automatikus Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![Automatikus Machine Learning Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-További részleteit a folyamat kattintson a folyamat a megtekintéséhez, amelyet szeretne Fedezze fel a táblázatban, és a diagramok az Azure-portálról egy előugró ablak jelenik meg.
+Ha meg szeretné tekinteni a folyamat további részleteit, kattintson arra a folyamatra, amelyet fel szeretne venni a táblázatban, és a diagramok a Azure Portal előugró ablakában jelennek meg.
 
 ### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
-Modell betanítása és figyelési fordulnak elő a háttérben, hogy a várakozás közben egyéb feladatokat is futtathat. Azt is, amíg a modell több kód futtatása előtt képzési befejeződéséig. Ha használ **ScriptRunConfig**, használható ```run.wait_for_completion(show_output = True)``` megjelenítése, ha a modell betanítása befejeződött. A ```show_output``` jelző biztosít részletes kimenet. 
+A modell betanítása és monitorozása a háttérben történik, így a várakozás közben más feladatokat is futtathat. Azt is megvárhatja, amíg a modell befejezte a betanítást, mielőtt több kódot futtasson. A **ScriptRunConfig**használatakor a ```run.wait_for_completion(show_output = True)``` segítségével megtekintheti, hogy mikor fejeződik be a modell betanítása. A ```show_output``` jelző részletes kimenetet biztosít. 
 
 
-### <a name="query-run-metrics"></a>A lekérdezés futtatása a metrikák
+### <a name="query-run-metrics"></a>Lekérdezés-futtatási metrikák
 
-Megtekintheti a metrikákat egy betanított modell használatával ```run.get_metrics()```. Most már beszerezheti az összes naplózott határozza meg a legjobb modellt a fenti példában a metrikákat.
+```run.get_metrics()```használatával megtekintheti a betanított modell mérőszámait. Mostantól a fenti példában naplózott összes mérőszámot lekérheti a legjobb modell meghatározásához.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>A kísérlet megtekintése a Azure Portal vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)
 
-Amikor egy kísérlet befejezését követően, megnyithatja a futtatási rekord rögzített kísérletet. Az előzményeket kétféleképpen érheti el:
+Ha egy kísérlet befejezte a futását, keresse meg a rögzített kísérlet futtatási rekordját. Az előzményeket kétféleképpen érheti el:
 
-* Első futtatás URL-CÍMÉT közvetlenül ```print(run.get_portal_url())```
-* A Futtatás neve elküldésével részleteinek megtekintése (ebben az esetben ```run```). Ezzel a módszerrel a kísérlet neve, azonosítója, típus, állapot, részleteit megjelenítő oldalon, egy hivatkozást az Azure Portalra és dokumentáció mutató hivatkozás mutat.
+* A futtatáshoz tartozó URL-cím lekérése közvetlenül ```print(run.get_portal_url())```
+* Tekintse meg a Futtatás részleteit a Futtatás nevének elküldésével (ebben az esetben ```run```). Így a kísérlet neve, az azonosító, a típus, az állapot, a részletek oldal, a Azure Portalre mutató hivatkozás, valamint a dokumentációra mutató hivatkozás található.
 
-A hivatkozás a Futtatás méretezhetőséget kínál, közvetlenül a futtatási Részletek lap az Azure Portalon. Itt láthatja, bármely tulajdonságai, a nyomon követett metrikák, lemezképek és bejelentkezett a kísérlet diagram. Ebben az esetben azt naplózza, MSE és az alfa értékeknek.
+A Futtatás hivatkozása közvetlenül a Azure Portal Futtatás részletek lapjára mutat. Itt láthatja a kísérletben naplózott tulajdonságokat, nyomon követett mérőszámokat, képeket és diagramokat. Ebben az esetben naplózta az MSE és az Alpha értékeket.
 
-  ![Futtatás részletei az Azure Portalon](./media/how-to-track-experiments/run-details-page.png)
+  ![Futtassa a részleteket a Azure Portal](./media/how-to-track-experiments/run-details-page.png)
 
-Bármely kimenetek vagy a naplók a Futtatás megtekintéséhez, vagy töltse le a kísérlet, így a kísérlet mappa másokkal is megoszthat küldte el a pillanatkép is.
+Megtekintheti a futtatáshoz tartozó összes kimenetet vagy naplót, vagy letöltheti az elküldött kísérlet pillanatképét, így megoszthatja a kísérlet mappáját másokkal.
 
-### <a name="viewing-charts-in-run-details"></a>Diagramok részleteinek megtekintése
+### <a name="viewing-charts-in-run-details"></a>Diagramok megtekintése a Futtatás részleteiben
 
-Különféle módon használhatja a naplózási metrikák rekord különböző típusú API-kat a futtatás során, és megtekintheti őket, mint a diagramok az Azure Portalon. 
+A naplózási API-k többféle módon rögzíthetik a különböző típusú metrikákat a Futtatás során, és diagramként megtekinthetik őket a Azure Portalban. 
 
-|A naplózott érték|Példakód| A portál megtekintése|
+|Naplózott érték|Példa kódja| Megtekintés a portálon|
 |----|----|----|
-|Napló numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Single-variable vonaldiagram|
-|Az azonos nevű metrika ismételten használt egyetlen numerikus érték naplózása (hasonló belül egy "for" ciklus)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Single-variable vonaldiagram|
-|Jelentkezzen egy sor 2 numerikus oszlopok ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonaldiagram|
-|A numerikus oszlopok 2 naplótábláját|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonaldiagram|
+|Numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Egyváltozós vonalas diagram|
+|Egy numerikus értéket többször is felhasználhat ugyanazzal a metrikai névvel (például a cikluson belül)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Egyváltozós vonalas diagram|
+|Sor naplózása 2 numerikus oszloppal ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonalas diagram|
+|Táblázat két numerikus oszloppal|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonalas diagram|
 
 
-## <a name="example-notebooks"></a>Példa notebookok
-A következő notebookok a jelen cikk fogalmait bemutatása:
-* [How-to-use-azureml/Training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [How-to-use-azureml/Training/train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
+A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
+* [használati útmutató – azureml/képzés/vonat – jegyzetfüzeten belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [használati útmutató – azureml/képzés/helyi betanítás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/Training/Logging-API/Logging-API. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Próbálja ki a következő lépések megtudhatja, hogyan használható az Azure Machine Learning SDK Pythonhoz készült:
+Próbálja ki a következő lépéseket a Pythonhoz készült Azure Machine Learning SDK használatának megismeréséhez:
 
-* Lásd a példa bemutatja, hogyan regisztrálja a legjobb modellt, és az oktatóanyagban üzembe [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md).
+* Megtudhatja, hogyan regisztrálhat a legjobb modellt, és hogyan helyezheti üzembe az oktatóanyagban, hogyan [taníthatja be a rendszerképek besorolási modelljét Azure Machine learning](tutorial-train-models-with-aml.md).
 
-* Ismerje meg, hogyan [PyTorch modellek az Azure Machine Learning](how-to-train-pytorch.md).
+* Megtudhatja, hogyan [taníthat PyTorch-modelleket Azure Machine learning](how-to-train-pytorch.md)használatával.

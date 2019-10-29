@@ -1,5 +1,5 @@
 ---
-title: Biztonságos átvitelű tárfiókokkal rendelkező Hadoop-fürt létrehozása az Azure HDInsightban
+title: Apache Hadoop & biztonságos Trans Storage – Azure HDInsight
 description: Megtudhatja, hogyan hozhat létre biztonságos átvitelű Azure-tárfiókokkal rendelkező HDInsight-fürtöket.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: d182ca9f74f86922a4d8c94c9b3557f6111b7d53
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b8a5d48e977009cf592f271760232a3b0138c8c5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098758"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044950"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű Storage-fiókkal rendelkező Apache Hadoop-fürt létrehozása az Azure HDInsight
 
@@ -23,7 +23,7 @@ A [biztonságos átvitelt szükséges](../storage/common/storage-require-secure-
 
 A cikk elkezdése előtt a következőket kell tennie:
 
-* **Azure-előfizetés**: Ha ingyenes, egy hónapos próbaverziós fiókot szeretne létrehozni, keresse meg a [Azure.microsoft.com/Free](https://azure.microsoft.com/free).
+* **Azure-előfizetés**: egy ingyenes egy hónapos próbafiók létrehozásához keresse fel az [azure.microsoft.com/free](https://azure.microsoft.com/free) webhelyet.
 * **Engedélyezett biztonságos átvitellel rendelkező Azure-tárfiók** Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat.
 * **Blobtároló a tárfiókon**.
 
@@ -60,7 +60,7 @@ További, biztonságos átvitel használatára képes tárfiókok hozzáadásár
 - Egy fürt létrehozása az [Azure Portal](https://portal.azure.com) használatával és a kapcsolódó tárfiók megadása.
 - Szkriptműveleteket használata további, biztonságos átvitel használatára képes tárfiókok meglévő HDInsight-fürthöz történő hozzáadásához. További információkért lásd: [Add additional storage accounts to HDInsight](hdinsight-hadoop-add-storage.md) (További tárfiókok hozzáadása a HDInsighthoz).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan hozhat létre egy HDInsight-fürtöt, és hogyan engedélyezheti a biztonságos átvitelt a Storage-fiókokra.
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:

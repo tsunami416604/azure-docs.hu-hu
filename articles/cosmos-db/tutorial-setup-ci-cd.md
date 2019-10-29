@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28c7166c3569505d595c55178cf721ee432bd642
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597667"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024162"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -39,7 +39,7 @@ Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítmén
 
 Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába, és keresse meg a projektet a projektek irányítópultján. Hozzáadhat egy új [buildfolyamatot](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) a projekthez, vagy módosíthat egy meglévőt is. Ha már rendelkezik buildfolyamattal, továbbléphet [az Emulator buildelési feladatának hozzáadása egy builddefinícióhoz](#addEmulatorBuildTaskToBuildDefinition) részre.
 
-1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza a **+New** (+Új) lehetőséget. \>**Új build-folyamat**
+1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza a **+New** (+Új) lehetőséget. **új build-folyamat** \>
 
    ![Új buildfolyamat létrehozása](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
@@ -50,7 +50,7 @@ Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába,
 3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. 
 
 > [!NOTE]
-> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) által üzemeltetett ügynökökkel foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a `Hosted VS2017` következővel: vagy `Hosted VS2019`. 
+> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft által üzemeltetett ügynökökkel](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a `Hosted VS2017`.
 
 Most már van buildfolyamatunk, amelyet beállíthatunk az Azure Cosmos DB emulátor buildelési feladatának használatára. 
 
@@ -68,7 +68,7 @@ Ebben az oktatóanyagban a feladatot a legelején adjuk hozzá, hogy biztosítsu
 
 Most konfigurálni fogjuk a tesztjeinket az emulátor használatához. Az emulátor buildelési feladata exportál egy környezeti változót (CosmosDbEmulator.Endpoint), amelyre a buildfolyamat összes további feladata küldhet kéréseket. 
 
-Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt. A dokumentumban használt teljes Todo-alkalmazás kódjának mintája elérhető a githubon [](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
+Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt. A dokumentumban használt teljes Todo-alkalmazás kódjának mintája elérhető a [githubon](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
 
 Az alábbiakban mutatunk egy példát a **.runsettings** fájlra, amely definiálja egy alkalmazás egységtesztjeibe továbbítandó paramétereket. Figyelje meg, hogy a használt `authKey` változó az emulátor [jól ismert kulcsa](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests). Az `authKey` az emulátor buildelési feladatának várt kulcsa, és definiálva kell lennie a **.runsettings** fájlban.
 
@@ -151,7 +151,7 @@ Miután a build létrejött, láthatja, hogy a buildelési feladatból a Cosmos 
 
 ![A build mentése és futtatása](./media/tutorial-setup-ci-cd/buildComplete_1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az emulátor helyi fejlesztéshez és teszteléshez való használatáról: [Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 

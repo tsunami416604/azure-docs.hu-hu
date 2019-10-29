@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675689"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042236"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése Azure Logic Apps
 
@@ -89,15 +89,15 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 1. A telepítő megnyitása után kattintson a **Tovább gombra**.
 
-   ![A telepítő bemutatása](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Az átjáró telepítőjének bevezető képernyője](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. Válassza **a helyszíni adatátjáró (ajánlott)** lehetőséget, amely standard mód, majd válassza a **tovább**lehetőséget.
 
-   ![Átjáró mód kiválasztása](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![Az adatátjáró futtatási módjának kiválasztása](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. Tekintse át a minimális követelményeket, tartsa meg az alapértelmezett telepítési útvonalat, fogadja el a használati feltételeket, majd válassza a **telepítés**lehetőséget.
 
-   ![A követelmények áttekintése és a használati feltételek elfogadása](./media/logic-apps-gateway-install/accept-terms.png)
+   ![A követelmények áttekintése és a használati feltételek elfogadása](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. Az átjáró sikeres telepítése után adja meg az Azure-fiókhoz tartozó e-mail-címet, majd válassza a **Bejelentkezés**lehetőséget, például:
 
@@ -107,7 +107,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 1. Válassza **az új átjáró regisztrálása ezen a számítógépen** > **elemet.** Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
 
-   ![Átjáró regisztrálása](./media/logic-apps-gateway-install/register-gateway.png)
+   ![Átjáró regisztrálása helyi számítógépen](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. Adja meg az átjáró telepítéséhez szükséges információkat:
 
@@ -115,7 +115,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
    * A használni kívánt helyreállítási kulcsnak legalább nyolc karakterből kell állnia.
    * A helyreállítási kulcs megerősítése
 
-   ![Átjáró beállítása](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![Adja meg az átjáró telepítésének adatait](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > Mentse és őrizze meg a helyreállítási kulcsot biztonságos helyen. Erre a kulcsra akkor van szükség, ha módosítani szeretné az átjárók helyét, áthelyezését, helyreállítását vagy átvételét.
@@ -124,7 +124,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 1. Keresse meg az átjáró felhőalapú szolgáltatásának régióját, és [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) , amelyet az átjáró telepítése használ. Alapértelmezés szerint ez a régió ugyanaz a hely, mint az Azure AD-bérlő az Azure-fiókjához.
 
-   ![Régió ellenőrzési területe](./media/logic-apps-gateway-install/check-region.png)
+   ![Az átjáró szolgáltatás és a Service Bus régiójának megerősítése](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. Az alapértelmezett régió elfogadásához válassza a **Konfigurálás**lehetőséget. Ha azonban az alapértelmezett régió nem az Önhöz legközelebb eső, akkor módosíthatja a régiót.
 
@@ -134,15 +134,15 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
    1. Az aktuális régió mellett válassza a **régió módosítása**lehetőséget.
 
-      ![Régió módosítása](./media/logic-apps-gateway-install/change-region.png)
+      ![Az aktuális átjáró régiójának módosítása](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. A következő lapon nyissa meg a **régió kiválasztása** listát, válassza ki a kívánt régiót, majd válassza a **kész**lehetőséget.
 
-      ![Válasszon másik régiót](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Válasszon másik régiót az átjáró szolgáltatáshoz](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
 1. Tekintse át a végső megerősítési ablakban található információkat. Ez a példa ugyanazt a fiókot használja Logic Apps, Power BI, PowerApps és Microsoft Flow esetében, így az átjáró elérhető az összes szolgáltatáshoz. Ha elkészült, válassza a **Bezárás**lehetőséget.
 
-   ![Befejezett átjáró](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Az adatátjáró adatainak megerősítése](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. Most [hozza létre az Azure-erőforrást az átjáró telepítéséhez](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -185,7 +185,7 @@ Ha módosítania kell az átjáró helyét, helyezze át az átjáró telepíté
 
 1. Válasszon a rendelkezésre álló fürtök és átjárók közül, és adja meg a kiválasztott átjáró helyreállítási kulcsát, például:
 
-   ![Átjáró kiválasztása](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Átjáró kiválasztása és helyreállítási kulcs megadása](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. A régió módosításához válassza a **régió módosítása**lehetőséget, és válassza ki az új régiót.
 
@@ -270,9 +270,9 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 
 További információkért tekintse meg a következő témaköröket:
 
-* [Helyszíni adatátjáró – GYIK](/data-integration/gateway/service-gateway-onprem-faq)
-* [Helyszíni adatátjáróval kapcsolatos hibák](/data-integration/gateway/service-gateway-tshoot)
-* [Az átjáró teljesítményének figyelése és optimalizálása](/data-integration/gateway/service-gateway-performance)
+* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Helyszíni adatátjáróval kapcsolatos hibák](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Az átjáró teljesítményének figyelése és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Következő lépések
 

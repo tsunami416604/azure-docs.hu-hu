@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821140"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025278"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-teljesítési API-k, 2-es verzió 
 
@@ -87,7 +87,7 @@ A következő táblázat a teljesítési API-k által használt általános para
 | `offerId`                | Minden ajánlat egyedi karakterlánc-azonosítója (például: "offer1").  |
 | `planId`                 | Minden csomag/SKU egyedi karakterlánc-azonosítója (például: "Silver"). |
 | `operationId`            | Egy adott művelet GUID-azonosítója.  |
-|  `action`                | Az erőforráson végrehajtott művelet `unsubscribe`, `suspend`, `reinstate` vagy `changePlan`, `changeQuantity`, `transfer`.  |
+|  `action`                | Az erőforráson végrehajtott művelet `Unsubscribe`, `Suspend`, `Reinstate`vagy `ChangePlan`, `ChangeQuantity`, `Transfer`. |
 |   |   |
 
 A globálisan egyedi azonosítók ([GUID azonosítók](https://en.wikipedia.org/wiki/Universally_unique_identifier)) a jellemzően automatikusan generált 128 bites (32-hexadecimális) számok. 
@@ -707,7 +707,7 @@ Belső kiszolgálóhiba.
 
 #### <a name="get-operation-status"></a>Művelet állapotának beolvasása
 
-Lehetővé teszi a közzétevő számára a megadott aktivált aszinkron művelet (például `subscribe`, `unsubscribe`, `changePlan` vagy `changeQuantity`) állapotának nyomon követését.
+Lehetővé teszi a közzétevő számára a megadott aktivált aszinkron művelet (például `Subscribe`, `Unsubscribe`, `ChangePlan`vagy `ChangeQuantity`) állapotának nyomon követését.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Beszerzés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,11 +850,11 @@ A közzétevőnek be kell vezetnie egy webhookot ebben az SaaS-szolgáltatásban
 }
 ```
 Ahol a művelet a következők egyike lehet: 
-- `unsubscribe` (az erőforrás törlése után)
-- `changePlan` (a változási terv műveletének befejezése után)
-- `changeQuantity` (ha a mennyiség módosítása művelet befejeződött)
-- `suspend` (ha az erőforrást felfüggesztették)
-- `reinstate` (ha az erőforrást a felfüggesztést követően állították vissza)
+- `Unsubscribe` (az erőforrás törlése után)
+- `ChangePlan` (a változási terv műveletének befejezése után)
+- `ChangeQuantity` (ha a mennyiség módosítása művelet befejeződött)
+- `Suspend` (ha az erőforrást felfüggesztették)
+- `Reinstate` (ha az erőforrást a felfüggesztést követően állították vissza)
 
 Ahol az állapot a következők egyike lehet: 
 - **NotStarted** <br>

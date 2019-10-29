@@ -9,14 +9,17 @@ ms.service: iot-central
 services: iot-central
 ms.custom:
 - iot-p0-scenario
-ms.openlocfilehash: 5db494b17b131e79bc84ccd6cfa2888bf3632e1d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b0200be389e6f0d59690f041695da368de6828ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957453"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027394"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások fejlesztése az Azure IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Az Azure IoT Central egy eszközök internetes hálózata (IoT) alkalmazás-platform a megoldás-építők számára, amely leegyszerűsíti a méretezhető alkalmazások kiépítésével kapcsolatos kihívásokat &. Ebben a cikkben több, a IoT Centralon belüli, kiskereskedelemmel kapcsolatos alkalmazás-sablont fogunk kiemelni. A megoldás-építők kihasználhatják a közzétett sablonokat, hogy IoT megoldásokat hozzanak létre az ellátási lánc optimalizálásához, az ügyfelek által nyújtott élmény javításához és a leltár hatékonyabb nyomon követéséhez.
 
 > [!div class="mx-imgBorder"]

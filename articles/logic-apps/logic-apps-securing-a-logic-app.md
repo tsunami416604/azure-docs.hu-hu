@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: f9b23e00c954e8babb1fe920bca1aa2ea5f9298e
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799487"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045015"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -266,11 +266,11 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-   ![Minta logikai alkalmazás megnyitása](./media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+   ![Logikai alkalmazás megnyitása a Logic app Designerben](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
 1. Az aktiválás vagy művelet esetében, ahol az adatvédelmet szeretné biztosítani, kattintson a három pontra ( **..** .), majd válassza a **Beállítások**lehetőséget.
 
-   ![A "beállítások" megnyitása](./media/logic-apps-securing-a-logic-app/open-settings.png)
+   ![Trigger vagy művelet beállításainak megnyitása](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. Kapcsolja be a **biztonságos bemeneteket**, a **biztonságos kimeneteket**vagy mindkettőt. Ha elkészült, válassza a **Kész** lehetőséget.
 
@@ -278,11 +278,11 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
    A művelet vagy az aktiválás mostantól egy lakat ikont jelenít meg a címsorban.
 
-   ![A címsor ikonjának zárolása](./media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+   ![A művelet vagy az trigger címsorában a zárolás ikon látható](./media/logic-apps-securing-a-logic-app/lock-icon-action-trigger-title-bar.png)
 
    A korábbi műveletekből származó biztonságos kimeneteket képviselő tokenek a zárolási ikonokat is megjelenítik. Ha például egy ilyen kimenetet választ ki a dinamikus tartalmak listájából egy műveletben való használatra, akkor a jogkivonat zárolási ikont jelenít meg.
 
-   ![Kimenet kiválasztása](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
+   ![Válassza ki a tokent a biztonságos kimenethez](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
 
 1. A logikai alkalmazás futtatása után megtekintheti a futtatási előzményeket.
 
@@ -292,7 +292,7 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
       Ha úgy döntött, hogy mindkét bemenetet és kimenetet is biztonságossá teszi, akkor ezek az értékek már rejtve maradnak.
 
-      ![Rejtett adatértékek a futtatási előzményekben](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+      ![Rejtett bemenetek és kimenetek a futtatási előzményekben](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
@@ -349,7 +349,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
   Ha manuálisan kapcsolja be a **biztonságos bemeneteket** egy triggerben vagy műveletben, a Logic apps a futtatási előzményekben rögzíti ezeket a bemeneteket. Ha egy alsóbb rétegbeli művelet explicit módon az adott triggerből vagy műveletből származó látható kimeneteket használ bemenetként, Logic Apps elrejti ezt az alsóbb rétegbeli műveletet a futtatási előzményekben, de *nem engedélyezi* a **biztonságos bemeneteket** ebben a műveletben, és nem rejti el a műveletet kimenetek.
 
-  ![A legtöbb művelethez kapcsolódó biztonságos bemenetek és alsóbb rétegbeli hatások](./media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+  ![A legtöbb művelethez kapcsolódó biztonságos bemenetek és alsóbb rétegbeli hatások](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
   Ha az összeállítás, a JSON és a Response művelet explicit módon használja az triggerből vagy a biztonságos bemenetekkel rendelkező műveletből származó látható kimeneteket, Logic Apps elrejti ezeket a műveleteket a bemeneteken és kimeneteken, de *nem engedélyezi* a művelet **biztonságos bemeneteit** . beállítás. Ha egy alsóbb rétegbeli művelet explicit módon felhasználja a rejtett kimeneteket az összeállítás, az elemzés JSON-vagy a válasz-műveletekből bemenetként, Logic Apps *nem rejti el az alsóbb rétegbeli művelet bemeneteit és kimeneteit*.
 

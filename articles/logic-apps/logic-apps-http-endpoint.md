@@ -12,12 +12,12 @@ ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: 6e5a8eda3891b3b356e0cbd7b6d2e22e4a70c278
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4fc20c4b1314d953ea979192c81b2c264292d3af
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799723"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73041937"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTP-végpontok használatával Azure Logic Apps
 
@@ -62,7 +62,7 @@ HTTP-végpont létrehozásához adjon hozzá egy triggert, amely fogadja a bejö
     }
     ```
 
-   ![A kérés művelet hozzáadása](./media/logic-apps-http-endpoint/manualtrigger.png)
+   ![JSON-séma megadása a kérelem műveletéhez](./media/logic-apps-http-endpoint/manual-request-trigger-schema.png)
 
    > [!TIP]
    >
@@ -95,7 +95,7 @@ HTTP-végpont létrehozásához adjon hozzá egy triggert, amely fogadja a bejö
 
    Ez az URL-cím a hitelesítéshez használt lekérdezési paraméterek közös hozzáférésű aláírási (SAS) kulcsát tartalmazza. A HTTP-végpont URL-címét a logikai alkalmazás áttekintésében is lekérheti a Azure Portal. Az **aktiválási előzmények**területen válassza ki az triggert:
 
-   ![HTTP-végpont URL-címének lekérése Azure Portal](./media/logic-apps-http-endpoint/manualtriggerurl.png)
+   ![HTTP-végpont URL-címének lekérése Azure Portal](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
    Az URL-címet a következő hívással kérheti le:
 
@@ -117,7 +117,7 @@ Alapértelmezés szerint a **kérelem** TRIGGERE http post-kérést vár, de má
    > [!NOTE]
    > Kiválaszthat bármilyen más HTTP-metódust, vagy egyéni módszert is megadhat saját logikai alkalmazásához.
 
-   ![HTTP-metódus módosítása](./media/logic-apps-http-endpoint/change-method.png)
+   ![Válassza ki a kérelemhez használni kívánt HTTP-metódust](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>Paraméterek elfogadása a HTTP-végpont URL-címén keresztül
 
@@ -132,7 +132,7 @@ Ha azt szeretné, hogy a HTTP-végpont URL-címe fogadja a paramétereket, szabj
 
 3. A **relatív elérési út**alatt adja meg a paraméter relatív elérési útját, amelyet az URL-címnek el kell fogadnia, például `customers/{customerID}`.
 
-   ![A HTTP-metódus és a relatív elérési út megadása a paraméterhez](./media/logic-apps-http-endpoint/relativeurl.png)
+   ![A HTTP-metódus és a relatív elérési út megadása a paraméterhez](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 4. A paraméter használatához adjon hozzá egy **Response** műveletet a logikai alkalmazáshoz. (Az trigger alatt válassza az **új lépés**  > **művelet hozzáadása**  > **Válasz**) lehetőséget. 
 
@@ -140,11 +140,11 @@ Ha azt szeretné, hogy a HTTP-végpont URL-címe fogadja a paramétereket, szabj
 
    Például `Hello {customerID}` visszaküldéséhez frissítse a válasz **törzsét** a `Hello {customerID token}`. A dinamikus tartalom lista ekkor megjelenik, és megjeleníti a kiválasztható `customerID` tokent.
 
-   ![Paraméter hozzáadása a válasz törzséhez](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+   ![Paraméter hozzáadása a válasz törzséhez](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
 
    A **törzsnek** a következő példához hasonlóan kell kinéznie:
 
-   ![Válasz törzse paraméterrel](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+   ![Példa válasz törzsére paraméterrel](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. Mentse a logikai alkalmazást. 
 
@@ -194,7 +194,7 @@ Itt látható a teljes JSON-séma:
 
 A munkafolyamatokat a logikai alkalmazásban úgy ágyazhatja be, hogy más, a kérelmeket fogadó logikai alkalmazásokat is felvesz. A logikai alkalmazások belefoglalásához adja hozzá a **Azure Logic apps – válasszon egy Logic apps munkafolyamat-** műveletet az triggerhez. Ezután választhat a jogosult logikai alkalmazások közül.
 
-![Újabb logikai alkalmazás hozzáadása](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+![Logikai alkalmazás beágyazása az aktuális logikai alkalmazásba](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
 ## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>Logikai alkalmazások hívása vagy elindítása HTTP-végpontokon keresztül
 
@@ -233,7 +233,7 @@ Előfordulhat, hogy válaszolni szeretne bizonyos, a logikai alkalmazást elind�
 
 A válasz törzsében több fejlécet és bármilyen típusú tartalmat is felvehet. A példában szereplő válaszban a fejléc azt adja meg, hogy a válasz tartalomtípusa `application/json`. a törzs pedig `title` és `name` tartalmaz a **kérelem** -triggerhez korábban frissített JSON-séma alapján.
 
-![HTTP-válasz művelet](./media/logic-apps-http-endpoint/response.png)
+![Adja meg a válasz tartalmát a HTTP-válasz művelethez](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 A válaszok a következő tulajdonságokkal rendelkeznek:
 

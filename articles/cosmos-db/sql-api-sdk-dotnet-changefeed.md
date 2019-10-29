@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637750"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023894"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna processzorának SDK-je: Megjegyzések letöltése és kibocsátási megjegyzései
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
 
 > [!div class="op_single_selector"]
 >
@@ -37,11 +37,20 @@ ms.locfileid: "68637750"
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-dokumentáció**|[A hírcsatorna-feldolgozó függvénytár API-referenciájának módosítása – dokumentáció](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Első lépések**|[Ismerkedés a Change feed Processor .NET SDK-val](change-feed.md)|
-|**Aktuális támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Jelenleg támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET mag](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 – buildek
+
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+* A stabilitás és a diagnosztizálás fejlesztése:
+  * Az olvasási változási csatorna hosszú idő alatt történő észlelésének támogatása. Ha a `ChangeFeedProcessorOptions.ChangeFeedTimeout` tulajdonságban megadott értéknél hosszabb időt vesz igénybe, a következő lépéseket kell elvégeznie:
+    * Megszakadt a módosítási hírcsatorna olvasási művelete a problémás partíción.
+    * A hírcsatorna-feldolgozó példány módosítása elveszíti a problémás bérlet tulajdonjogát. Az eldobott bérlet a következő címbérleti beolvasási lépés során lesz felhasználva, amelyet az azonos vagy eltérő módosítási hírcsatorna-feldolgozó példány hajt végre. Így a változási hírcsatorna olvasása megkezdődik.
+    * Probléma jelent meg az állapotfigyelő szolgáltatásban. Az alapértelmezett egészségügyi figyelő az összes jelentett problémát a nyomkövetési naplóba küldi.
+  * Új nyilvános tulajdonság hozzáadva: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Ennek a tulajdonságnak az alapértelmezett értéke 10 perc.
+  * Új nyilvános enumerálási érték lett hozzáadva: `Monitoring.MonitoredOperation.ReadChangeFeed`. Ha a `HealthMonitoringRecord.Operation` értéke `Monitoring.MonitoredOperation.ReadChangeFeed`, az azt jelzi, hogy az állapot probléma a változási csatorna olvasásával kapcsolatos.
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * Jobb terheléselosztási stratégia, ha az összes bérlet beolvasása hosszabb időt vesz igénybe, mint a bérlet lejárati időtartama, például hálózati problémák miatt:
@@ -61,14 +70,14 @@ ms.locfileid: "68637750"
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Új ChangeFeedProcessorOptions. StartContinuation tulajdonság hozzáadva, amely támogatja a változási hírcsatorna megkezdését a kérelem folytatási jogkivonata alapján. Ezt csak akkor használja a rendszer, ha a címbérleti gyűjtemény üres, vagy a bérlet nem rendelkezik Continuationtoken argumentumot használja-készlettel. A Continuationtoken argumentumot használja készlettel rendelkező bérlet gyűjteményben lévő bérletek esetében a rendszer a Continuationtoken argumentumot használja használja, és a ChangeFeedProcessorOptions. StartContinuation figyelmen kívül hagyja.
 
-### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+### <a name="a-name223223"></a>2\.2.3 <a name="2.2.3"/>
 * További támogatás az egyéni tároló használatával a folytatási tokenek partíción való megőrzéséhez.
   * Egy egyéni címbérleti tároló például lehet Azure Cosmos DB bármely egyéni módon particionált bérlet gyűjteménye.
   * Az egyéni címbérleti tárolók a ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) és a ILeaseStoreManager Public Interface új bővíthetőségi ponttal rendelkezhetnek.
   * A ILeaseManager felületet több szerepkör-interfészre is átalakítja.
 * Másodlagos feltörési változás: eltávolította a ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager) bővíthetőségi pontot, használja helyette a ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) metódust.
 
-### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 * Ez a kiadás javít egy olyan problémát, amely a megfigyelt gyűjtemények és a particionált bérletek gyűjteményének feldolgozása során következik be. A felosztott partíciók bérletének feldolgozásakor előfordulhat, hogy a partíciónak megfelelő bérlet nem törölhető. A probléma ebben a kiadásban van kijavítva.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
@@ -80,7 +89,7 @@ ms.locfileid: "68637750"
 * Kisebb diagnosztika fejlesztése.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Új API hozzáadása, feladat&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Ez az egyes partíciók becsült munkájának lekérésére használható.
+* Új API hozzáadása, feladat&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Ez az egyes partíciók becsült munkájának lekérésére használható.
 * A támogatja a Microsoft. Azure. DocumentDB SDK 2,0-es verziója. A Microsoft. Azure. DocumentDB 2,0-es vagy újabb verziójára van szükség.
 
 ### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
@@ -98,10 +107,10 @@ ms.locfileid: "68637750"
   * A GetEstimatedRemainingWork API 0 értéket adott vissza, ha nem találhatók bérletek a címbérleti gyűjteményben.
 
 * A következő kivételek nyilvánosak. A IPartitionProcessor megvalósító bővítmények kihasználhatják ezeket a kivételeket.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. LeaseLostException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionNotFoundException.
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2 – előzetes verzió
 * Másodlagos API-változások:
@@ -142,7 +151,7 @@ ms.locfileid: "68637750"
 * Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1,21-es vagy újabb verziójával.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* A .NET Standard 2,0 támogatásának támogatása. A csomag mostantól `netstandard2.0` támogatja `net451` és a keretrendszer monikereit.
+* A .NET Standard 2,0 támogatásának támogatása. A csomag mostantól támogatja a `netstandard2.0` és a `net451` keretrendszer monikereit.
 * Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.17.0 és újabb verzióival.
 * Kompatibilis az [SQL .net Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1-es és újabb verzióival.
 
@@ -160,17 +169,18 @@ ms.locfileid: "68637750"
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
 
-A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
+A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
 
 <br/>
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [2.2.7](#2.2.7) |Május 14., 2019 |--- |
+| [2.2.8](#2.2.8) |Október 28., 2019 |--- |
+| [2.2.7](#2.2.7) |2019. május 14. |--- |
 | [2.2.6](#2.2.6) |2019. január 29. |--- |
 | [2.2.5](#2.2.5) |December 13., 2018 |--- |
 | [2.2.4](#2.2.4) |November 29., 2018 |--- |
@@ -185,10 +195,10 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [1.1.0](#1.1.0) |Augusztus 13., 2017 |--- |
 | [1.0.0](#1.0.0) |2017. július 7. |--- |
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

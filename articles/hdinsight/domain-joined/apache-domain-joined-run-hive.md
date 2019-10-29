@@ -1,5 +1,5 @@
 ---
-title: HDInsight-szabályzatok konfigurálása a Enterprise Security Package-Azure-ban
+title: Az Apache Ranger Apache Hive házirendjei – Azure HDInsight
 description: Ismerje meg, hogyan konfigurálhatja az Apache Ranger-szabályzatokat a Kaptárhoz egy Azure HDInsight-szolgáltatásban Enterprise Security Package használatával.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0213fc1a96b38b615cbd8b7b6374a6716b9f840
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e49e2d103fd9c91824c8e8a1603cddddf16366e1
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918183"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044877"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 Megtudhatja, hogyan konfigurálhatja a Apache Hive Apache Ranger-szabályzatait. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
@@ -84,7 +84,7 @@ Az utasítások a [Hive ODBC-adatforrás létrehozása](../hadoop/apache-hadoop-
  | Mechanizmus | Válassza ki az **Azure HDInsight szolgáltatást** |
  | HTTP elérési útja | Hagyja üresen. |
  | Felhasználónév | Írja be a hiveuser1@contoso158.onmicrosoft.com (igen) kifejezést. Ha az eltérő, frissítse a tartománynevet. |
- | Windows 10 | Adja meg a hiveuser1 jelszavát. |
+ | Jelszó | Adja meg a hiveuser1 jelszavát. |
 
 Az adatforrás mentése előtt kattintson a **Tesztelés** gombra.
 
@@ -101,7 +101,7 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 6. Válassza ki a **hivesampletable** táblát, majd kattintson a **Tovább** gombra.
 7. Kattintson a **Finish** (Befejezés) gombra.
 8. Az **Adatok importálása** párbeszédpanelen módosíthatja vagy megadhatja a lekérdezést. Ehhez kattintson a **Tulajdonságok** elemre. Ez eltarthat néhány másodpercig.
-9. Kattintson a **Definíció** fülre. A parancs szövege a következő:
+9. Kattintson a **definíció** fülre. A parancs szövege:
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
@@ -128,7 +128,7 @@ A második szabályzat (read-hivesampletable-devicemake) teszteléséhez, amelye
 
     Amikor kész van, két importáltadat-oszlopnak kell megjelennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A HDInsight-fürtök Enterprise Security Package-vel való konfigurálásával kapcsolatban lásd: [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md).
 * Az ESP-vel rendelkező HDInsight-fürtök kezelésével kapcsolatban lásd: [HDInsight-fürtök kezelése az ESP-vel](apache-domain-joined-manage.md).
 * A HDInsight-fürtök SSH-val való futtatásához az ESP használatával: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

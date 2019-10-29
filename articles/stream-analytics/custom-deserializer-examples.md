@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6c7d94761e4c5d5087dc8ac4e10854989a18f0fc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992105"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024940"
 ---
 # <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>.NET-deszerializálók használata Azure Stream Analytics feladatokhoz
 
@@ -40,7 +40,7 @@ A kihagyható hibákat a `UserDefinedOperator`inicializálási metódusával `IS
 
 1. A T egy osztály vagy egy struct.
 1. A T összes nyilvános mezője a következők egyike:
-    1. A [hosszú, DateTime, string, Double] vagy a nullával egyenértékű értékek egyike.
+    1. Az egyik a [sbyte érték, a byte, a short, a ushort, az int, a uint, a Long, a DateTime, a string, a float, a Double] vagy a nullával egyenértékű.
     1. Egy másik Struct vagy osztály, amely ugyanezeket a szabályokat követi.
     1. `T2` típusú tömb, amely ugyanazokat a szabályokat követi.
     1. IList`T2`, ahol a T2 ugyanazokat a szabályokat követi.
@@ -226,12 +226,12 @@ a `serializationClassName` `StreamDeserializer<T>`t megvalósító osztálynak k
 
 Ez a funkció a következő régiókban érhető el:
 
-* Nyugat-Európa
-* USA keleti régiója
-* Észak-Európa
-* USA nyugati régiója
-* USA 2. keleti régiója
-* USA nyugati középső régiója
+* USA nyugati középső régiója (elérhető)
+* Észak-Európa (elérhető)
+* USA keleti régiója (elérhető)
+* USA nyugati régiója (hamarosan elérhető)
+* USA 2. keleti régiója (hamarosan kivezetve)
+* Nyugat-Európa (hamarosan kivezetve)
 
 További régiók [támogatását is kérheti](https://aka.ms/ccodereqregion) .
 
@@ -244,10 +244,6 @@ Ez a funkció 6 régióban érhető el (#region támogatással). Ha egy másik r
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Hozzáférhetek a MetadataPropertyValue a saját bemenetekhez a GetMetadataPropertyValue függvényhez hasonló módon?
 
 Ez a funkció nem támogatott. Ha erre a képességre van szüksége, szavazzon erre a kérelemre a [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
-
-### <a name="streamdeserializer-deserializes-a-stream-into-object-of-type-t-can-the-public-fields-in-t-be-any-supported-type-in-net"></a>A StreamDeserializer deszerializálja az adatfolyamot a T típusú objektumba. A T-ben a nyilvános mezők a .NET-ben bármilyen támogatott típussal rendelkezhetnek?
-
-A .NET összes támogatott típusának támogatása az ütemterv szerint történik.
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Megoszthatom a deszerializáló implementációját a Közösséggel, hogy mások is részesülhessenek?
 

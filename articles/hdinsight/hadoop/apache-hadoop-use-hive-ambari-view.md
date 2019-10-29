@@ -1,5 +1,5 @@
 ---
-title: Az Apache Ambari-nézetek használata a kaptárral való együttműködéshez a HDInsight (Apache Hadoop) – Azure
+title: Az Apache Ambari kaptár nézet használata az Azure HDInsight Apache Hadoop
 description: Megtudhatja, hogyan használhatja a kaptár nézetet a webböngészőjéből a kaptár-lekérdezések elküldéséhez. A kaptár nézet a Linux-alapú HDInsight-fürthöz elérhető Ambari webes felhasználói felület részét képezi.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077016"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044812"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari kaptár nézet használata a HDInsight Apache Hadoop
 
@@ -30,7 +30,7 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  Útmutatásért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) . A fürt megnyílik egy új portálon.
 
-2. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer kéri a hitelesítést, használja a fürt létrehozásakor `admin`megadott bejelentkezési (alapértelmezett) fióknevet és jelszót.
+2. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer felszólítja a hitelesítésre, használja a fürt létrehozásakor megadott bejelentkezési (alapértelmezett `admin`) fióknevet és jelszót.
 
 3. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
 
@@ -61,16 +61,16 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
 
     Ezek az utasítások a következő műveleteket hajtják végre:
 
-   * `DROP TABLE`: Törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.
+   * `DROP TABLE`: törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.
 
-   * `CREATE EXTERNAL TABLE`: Létrehoz egy új "külső" táblát a kaptárban.
+   * `CREATE EXTERNAL TABLE`: új "külső" táblát hoz létre a kaptárban.
      A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.
 
-   * `ROW FORMAT`: Megjeleníti az adat formázásának módját. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
+   * `ROW FORMAT`: az adatformátumok megjelenítése. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
 
-   * `STORED AS TEXTFILE LOCATION`: Megjeleníti az adattárolás helyét, valamint a szövegként tárolt fájlokat.
+   * `STORED AS TEXTFILE LOCATION`: megjeleníti az adattárolás helyét, valamint azt, hogy a szövegként van tárolva.
 
-   * `SELECT`: Kiválasztja az összes olyan sor számát, ahol a T4 oszlop tartalmazza a [hiba] értéket.
+   * `SELECT`: kiválasztja az összes olyan sor számát, ahol a T4 oszlop tartalmazza a [ERROR] értéket.
 
    > [!IMPORTANT]  
    > Hagyja meg az __adatbázis__ __alapértelmezett__beállítását. A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
@@ -119,7 +119,7 @@ A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdez
 ![Apache Hive mentett lekérdezések lap megtekintése](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út `/user/<username>/hive/scripts`alatt találja. Ezeket egyszerű szöveges `.hql` fájlként tárolja a rendszer.
+> A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út `/user/<username>/hive/scripts`alatt találja. Ezeket egyszerű szöveges `.hql` fájlokként tárolja a rendszer.
 >
 > Ha törli a fürtöt, de megtartja a tárolót, használhat olyan segédprogramot, mint a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) vagy a Data Lake Storage Explorer (az [Azure Portalról](https://portal.azure.com)) a lekérdezések lekéréséhez.
 

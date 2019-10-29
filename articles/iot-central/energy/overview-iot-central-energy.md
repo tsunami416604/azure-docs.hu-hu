@@ -8,14 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965544"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027655"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Energetikai megoldások készítése IoT Central 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Az intelligens mérőszámok és a napelemes panelek fontos szerepet játszanak az energetikai átalakításban. Az intelligens mérőszámok további szabályozást és valós idejű elemzéseket biztosítanak az energiafogyasztással és a napelemek növekedésével kapcsolatban a megújuló energia-létrehozásban. Az intelligens fogyasztásmérő és a napelemek figyelésére szolgáló alkalmazások példák a különböző funkciók megjelenítésére. A partnerek kihasználhatják ezeket a sablonokat úgy, hogy az adott igényeknek megfelelően IoT Central energiát hozzanak létre. Nincsenek új kódolások, és az alkalmazások telepítéséhez és használatához nincs szükség további díjakra. További információ az energetikai alkalmazások sablonjairól és képességeiről.
 
 
@@ -36,8 +40,8 @@ Az [intelligens fogyasztásmérőt figyelő alkalmazást](https://apps.azureiotc
 
 Az alkalmazás üzembe helyezése után a szimulált mérési adat az irányítópulton látható, az alábbi ábrán látható módon. Ez a sablon egy minta alkalmazás, amellyel könnyedén bővíthetők és testreszabhatók a konkrét használati esetek.
 
-> [!div class="mx-imgBorder"]
-> ![intelligens fogyasztásmérő alkalmazás irányítópultja](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
+[!div class="mx-imgBorder"]
+![intelligens fogyasztásmérő alkalmazás irányítópultja](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Mi a napelemes figyelő alkalmazás?

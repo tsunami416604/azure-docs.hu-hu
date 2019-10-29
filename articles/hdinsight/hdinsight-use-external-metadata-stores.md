@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: a495935216cb91a282cc3dbabafbc96a531dde91
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800136"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027706"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadat-tárolók használata az Azure HDInsight
 
@@ -83,7 +83,7 @@ Az alábbi általános HDInsight Hive-metaadattár ajánlott eljárások:
 
 * Ha új, újabb Azure HDInsight-verziót hoz létre egy meglévő egyéni metaadattár-adatbázison, a rendszer frissíti a metaadattár sémáját, amely az adatbázis biztonsági másolatból való visszaállítása nélkül visszafordíthatatlan.
 
-* Ha több fürtön keresztül oszt meg egy metaadattár, győződjön meg arról, hogy az összes fürt ugyanazt a HDInsight-verziót használja. A különböző kaptár-verziók eltérő metaadattár-adatbázis-sémákat használnak. Például nem oszthat meg metaadattár a kaptár 1,2 és a kaptár 2,1 verziójú fürtök között.
+* Ha több fürtön keresztül oszt meg egy metaadattár, győződjön meg arról, hogy az összes fürt ugyanazt a HDInsight-verziót használja. A különböző kaptár-verziók eltérő metaadattár-adatbázis-sémákat használnak. Például nem oszthat meg metaadattár a kaptár 2,1 és a kaptár 3,1 verziójú fürtök között.
 
 * A HDInsight 4,0-ben a Spark és a kaptár független katalógusokat használ a SparkSQL-vagy kaptár-táblák eléréséhez. A Spark katalógusában a Spark által létrehozott tábla található. Egy struktúra által létrehozott tábla a kaptár-katalógusban található. Ez eltér a HDInsight 3,6-nél, ahol a kaptár és a Spark közös közös katalógusa. A HDInsight 4,0 struktúra és Spark integrációja a kaptár Warehouse-összekötőre (ÜZEMELTETHETŐ WEBMAG) támaszkodik. A ÜZEMELTETHETŐ WEBMAG a Spark és a kaptár közötti hídként működik. Tudnivalók [a kaptár-tárház összekötőről](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
 

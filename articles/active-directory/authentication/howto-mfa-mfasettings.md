@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ceff25b022866e47e6fdd488b01dd647cf550f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808201"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042097"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -114,6 +114,8 @@ Adja meg az e-mail-címeket azon felhasználók számára, akik csalási értes�
 
 >[!NOTE]
 >Ha Multi-Factor Authentication hívásokat a nyilvános telefonos hálózaton keresztül helyezi át, időnként olyan szolgáltatón keresztül irányítja őket, amely nem támogatja a hívó AZONOSÍTÓját. Emiatt a hívó azonosítója nem garantált, noha a Multi-Factor Authentication rendszer mindig elküldi.
+
+Ha a Egyesült Államok nem konfigurálta az MFA-hívó AZONOSÍTÓját, a Microsoft hanghívásai a következő számokból származnak: + 1 (866) 539 4191, + 1 (855) 330 8653 és + 1 (877) 668 6536. Ha levélszemét-szűrőket használ, ügyeljen arra, hogy kizárják ezeket a számokat.
 
 ### <a name="custom-voice-messages"></a>Egyéni hangüzenetek
 
@@ -387,7 +389,7 @@ A hitelesítési módszerek használatával kapcsolatos további információk a
 A felhasználó által megbízhatónak tartott eszközök és böngészők _megjegyzés multi-Factor Authentication_ funkciója az összes multi-Factor Authentication felhasználó számára ingyenes szolgáltatás. A felhasználók a megadott számú napra kihagyhatják a későbbi ellenőrzéseket, miután Multi-Factor Authentication használatával sikeresen bejelentkezett az eszközre. A szolgáltatás javítja a használhatóságot azáltal, hogy minimalizálja azt a számot, ahányszor a felhasználónak két lépésből álló ellenőrzést kell végrehajtania ugyanazon az eszközön.
 
 >[!IMPORTANT]
->Ha egy fiók vagy eszköz biztonsága sérül, a megbízható eszközök Multi-Factor Authenticationának megjegyzése hatással lehet a biztonságra. Ha egy vállalati fiók biztonsága sérül, vagy egy megbízható eszköz elveszett vagy ellopták, akkor [minden eszközön vissza kell állítania multi-Factor Authentication](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
+>Ha egy fiók vagy eszköz biztonsága sérül, a megbízható eszközök Multi-Factor Authenticationának megjegyzése hatással lehet a biztonságra. Ha egy vállalati fiók biztonsága sérül, vagy egy megbízható eszköz elveszett vagy ellopták, akkor [vissza kell vonnia az MFA-munkameneteket](howto-mfa-userdevicesettings.md).
 >
 >A visszaállítási művelet visszavonja a megbízható állapotot az összes eszközről, és a felhasználónak újra kell végrehajtania a kétlépéses ellenőrzést. Azt is megteheti, hogy a felhasználók a saját eszközökön is visszaállítják Multi-Factor Authentication a [beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)című részben leírtak szerint.
 

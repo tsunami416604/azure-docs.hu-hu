@@ -9,16 +9,16 @@ ms.author: karler
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172842"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025368"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Gyors útmutató: Blobok feltöltése, listázása és törlése a böngészőben az Azure Storage v10 SDK-val a JavaScript/HTML használatával
+# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Rövid útmutató: Blobok feltöltése, listázása és törlése a böngészőben az Azure Storage v10 SDK-val a JavaScripthez/HTML-hez
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti az [Azure Storage SDK-t a JavaScript-blob-](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) kódtár használatával a Blobok a böngészőben teljes egészében futó JavaScript-kódból való kezeléséhez. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében.
 
@@ -32,7 +32,7 @@ A hibakeresés lépéseinek követéséhez szüksége lesz a [Visual Studio Code
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Tárfiók CORS-szabályainak beállítása
 
-Ahhoz, hogy a webalkalmazás hozzáférhessen a blob Storage-hoz az ügyféltől, konfigurálnia kell a fiókját, hogy engedélyezze a [több eredetű erőforrás](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)-megosztást vagy a CORS.
+Ahhoz, hogy a webalkalmazás hozzáférhessen a blob Storage-hoz az ügyféltől, konfigurálnia kell a fiókját, hogy engedélyezze a [több eredetű erőforrás-megosztást](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)vagy a CORS.
 
 Lépjen vissza az Azure Portalra, és válassza ki a tárfiókot. Új CORS-szabály definiálásához navigáljon a **Beállítások** szakaszra, és kattintson a **CORS** hivatkozásra. Ezután kattintson a **Hozzáadás** gombra a **CORS-szabály hozzáadása** ablak megnyitásához. Ebben a rövid útmutatóban egy nyitott CORS-szabályt hozunk létre:
 
@@ -40,7 +40,7 @@ Lépjen vissza az Azure Portalra, és válassza ki a tárfiókot. Új CORS-szab�
 
 A következő tábla az egyes CORS-beállításokat írja le, és ismerteti a szabály meghatározásához használt értékeket.
 
-|Beállítás  |Érték  | Leírás |
+|Beállítás  |Value (Díj)  | Leírás |
 |---------|---------|---------|
 | Engedélyezett eredetek | * | Elfogadható eredetekként beállított tartományok vesszővel tagolt listáját fogadja el. A `*` érték beállításakor minden tartomány hozzáfér a tárfiókhoz. |
 | Engedélyezett műveletek     | törlés, lekérés, fej, egyesítés, közzététel, beállítások és áthelyezés | A tárfiókon futtatható HTTP-műveleteket listázza. Ebben a rövid útmutatóban válassza ki az összes elérhető beállítást. |
@@ -81,13 +81,13 @@ az storage account generate-sas \
 
 A paraméterek után szereplő értékek nehezen érthetőek lehetnek. Ezek a paraméterértékek a megfelelő engedélyek első betűiből vannak összeállítva. A következő táblázat az értékek eredetét írja le:
 
-| Paraméter        | Value   | Leírás  |
+| Paraméter        | Value (Díj)   | Leírás  |
 |------------------|---------|---------|
-| *engedélyek*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
+| *permissions*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
 | *resource-types* | sco     | Az SAS a *szolgáltatás*, a *tároló* és az *objektum* erőforrásokra van hatással. |
 | *services*       | b       | Az SAS a *Blob* szolgáltatásra van hatással. |
 
-Most, hogy létrehozta az SAS-t, másolja át a visszaadott értéket, és mentse valahova egy későbbi lépésben való használatra. Ha az SAS-t az Azure CLI-től eltérő módszerrel hozta létre, akkor a kezdeti `?` állapotot el kell távolítania. Ez a karakter egy URL-elválasztó, amely már szerepel az URL-sablonban a témakör későbbi részében, ahol a SAS használatban van.
+Most, hogy létrehozta az SAS-t, másolja át a visszaadott értéket, és mentse valahova egy későbbi lépésben való használatra. Ha az SAS-t az Azure CLI-től eltérő módszerrel hozta létre, akkor el kell távolítania a kezdeti `?`, ha van ilyen. Ez a karakter egy URL-elválasztó, amely már szerepel az URL-sablonban a témakör későbbi részében, ahol a SAS használatban van.
 
 > [!IMPORTANT]
 > Éles környezetben mindig SSL használatával adja át az SAS-jogkivonatot. Ezenkívül az SAS-jogkivonatokat a kiszolgálón kell létrehozni, és a HTML-oldalra kell küldeni, hogy a rendszer visszaadja azokat az Azure Blob Storage-ba. Érdemes például kiszolgáló nélküli függvényt használni SAS-jogkivonatok létrehozásához. Az Azure Portal olyan függvénysablonokat tartalmaz, amelyekkel JavaScript-függvény használatával hozható létre SAS.
@@ -126,7 +126,7 @@ Először hozzon létre egy *Azure-Blobs-JavaScript* nevű új mappát, és nyis
 
 A Debugger bővítmény a VS Code-ban való beállításához válassza a **hibakeresés > konfiguráció hozzáadása...** lehetőséget, majd a **Chrome** vagy a **Edge**lehetőséget, attól függően, hogy az előfeltételek szakaszban milyen bővítményt telepített. Ez a művelet létrehoz egy *Launch. JSON* fájlt, és megnyitja a szerkesztőben.
 
-Ezután módosítsa a *Launch. JSON* fájlt úgy, hogy az `url` érték `/index.html` az alábbiak szerint jelenjen meg:
+Ezután módosítsa a *Launch. JSON* fájlt úgy, hogy az `url` érték tartalmazza a `/index.html` az alábbiak szerint:
 
 ```json
 {
@@ -168,27 +168,27 @@ Ha módosítja az *index. html fájlt*, ne felejtse el újra a lapot a böngész
 
 ### <a name="add-the-blob-storage-client-library"></a>A blob Storage ügyféloldali kódtár hozzáadása
 
-A blob Storage API meghívásának engedélyezéséhez először [töltse le a JavaScript-blob ügyféloldali kódtár Azure Storage SDK-](https://aka.ms/downloadazurestoragejsblob)ját, bontsa ki a zip tartalmát, majd helyezze a *Azure-Storage. blob. js* fájlt az *Azure-Blobok-JavaScript* mappába.
+A blob Storage API meghívásának engedélyezéséhez először [töltse le a JavaScript-blob ügyféloldali kódtár Azure Storage SDK-](https://aka.ms/downloadazurestoragejsblob)ját, bontsa ki a zip tartalmát, majd helyezze el a *Azure-Storage-blob. js* fájlt az *Azure-Blobs-JavaScript* mappába.
 
 Ezután illessze be a következő HTML-kódot az *index. html* fájlba a `</body>` záró címke után, és cserélje le a helyőrző megjegyzését.
 
 ```html
-<script src="azure-storage.blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 
 <script>
 // You'll add code here in the following sections.
 </script>
 ```
 
-Ez a kód egy hivatkozást ad hozzá a parancsfájlhoz, és helyet biztosít a saját JavaScript-kódjához. Ebben a rövid útmutatóban a *Azure-Storage. blob. js* parancsfájlt használjuk, hogy megnyissa a vs Code-ban, olvassa be a tartalmát, és állítsa be a töréspontokat. Éles környezetben a zip-fájlban is megadott Compact *Azure-Storage. blob. min. js* fájlt kell használnia.
+Ez a kód egy hivatkozást ad hozzá a parancsfájlhoz, és helyet biztosít a saját JavaScript-kódjához. Ebben a rövid útmutatóban a *Azure-Storage-blob. js* parancsfájlt használjuk, hogy megnyissa a vs Code-ban, olvassa be a tartalmát, és állítsa be a töréspontokat. Éles környezetben a zip-fájlban is megadott Compact *Azure-Storage. blob. min. js* fájlt kell használnia.
 
-Az egyes blob Storage-függvényekről a dokumentációban talál további [](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)információt. Vegye figyelembe, hogy az SDK egyes funkciói csak a Node. js-ben vagy csak a böngészőben érhetők el.
+Az egyes blob Storage-függvényekről a [dokumentációban](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)talál további információt. Vegye figyelembe, hogy az SDK egyes funkciói csak a Node. js-ben vagy csak a böngészőben érhetők el.
 
-A *Azure-Storage. blob. js* fájlban található kód egy nevű `azblob`globális változót exportál, amelyet a JavaScript-kódban fog használni a blob Storage API-k eléréséhez.
+A *Azure-Storage-blob. js* fájlban található kód egy `azblob`nevű globális változót exportál, amelyet a JavaScript-kódban fog használni a blob Storage API-k eléréséhez.
 
 ### <a name="add-the-initial-javascript-code"></a>A kezdeti JavaScript-kód hozzáadása
 
-Ezután illessze be a következő kódot `<script>` az előző kódrészletben látható elembe, és cserélje le a helyőrző megjegyzését.
+Ezután illessze be a következő kódot az előző kódrészletben látható `<script>` elembe, és cserélje le a helyőrző megjegyzését.
 
 ```javascript
 const createContainerButton = document.getElementById("create-container-button");
@@ -206,7 +206,7 @@ const reportStatus = message => {
 }
 ```
 
-Ez a kód mezőket hoz létre minden olyan HTML-elemhez, amelyet a következő kód fog használni `reportStatus` , és végrehajt egy függvényt a kimenet megjelenítéséhez.
+Ez a kód mezőket hoz létre minden olyan HTML-elemhez, amelyet a következő kód fog használni, és végrehajt egy `reportStatus` függvényt a kimenet megjelenítéséhez.
 
 A következő részekben adja hozzá a JavaScript-kód minden új blokkját az előző blokk után.
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Ez a kód meghívja a ContainerURL [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) és [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) függvényt [](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) a megszakítási példányok használata nélkül. Ha a rövid útmutatóhoz egyszerűen szeretné megtartani a dolgokat, ez a kód feltételezi, hogy a Storage-fiók létrejött, és engedélyezve van. Az éles kódban a megszakító példány használatával adja hozzá az időtúllépési funkciót.
+Ez a kód meghívja a ContainerURL [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) és [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) függvényt a [megszakítási](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) példányok használata nélkül. Ha a rövid útmutatóhoz egyszerűen szeretné megtartani a dolgokat, ez a kód feltételezi, hogy a Storage-fiók létrejött, és engedélyezve van. Az éles kódban a megszakító példány használatával adja hozzá az időtúllépési funkciót.
 
 ### <a name="list-blobs"></a>Blobok listázása
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Ez a kód csatlakoztatja a **fájlok kiválasztása és feltöltése** gombot a `file-input` rejtett elemhez. Így a Button `click` esemény elindítja a fájl bemeneti `click` eseményét, és megjeleníti a fájl-választót. Miután kiválasztotta a fájlokat, és bezárta a `input` párbeszédpanelt, az esemény `uploadFiles` bekövetkezik, és meghívja a függvényt. Ez a függvény meghívja a csak böngészőalapú [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) függvényt minden kiválasztott fájlhoz. Minden hívás egy ígéretet ad vissza, amely egy listához kerül, így egyszerre csak egyszer lehet várni, így a fájlok párhuzamosan tölthetők fel.
+Ez a kód csatlakoztatja a **fájlok kiválasztása és feltöltése** gombot a rejtett `file-input` elemhez. Így a gomb `click` esemény elindítja a fájl bemeneti `click` eseményét, és megjeleníti a fájl-választót. Miután kiválasztotta a fájlokat, és bezárta a párbeszédpanelt, a `input` esemény bekövetkezik, és a rendszer meghívja a `uploadFiles` függvényt. Ez a függvény meghívja a csak böngészőalapú [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) függvényt minden kiválasztott fájlhoz. Minden hívás egy ígéretet ad vissza, amely egy listához kerül, így egyszerre csak egyszer lehet várni, így a fájlok párhuzamosan tölthetők fel.
 
 ### <a name="delete-blobs"></a>Blobok törlése
 
@@ -346,7 +346,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-Ez a kód meghívja a [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) függvényt, hogy eltávolítsa a listában kijelölt összes fájlt. Ezután meghívja a `listFiles` korábban bemutatott függvényt a **fájlok** listájának tartalmának frissítéséhez.
+Ez a kód meghívja a [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) függvényt, hogy eltávolítsa a listában kijelölt összes fájlt. Ezután meghívja a korábban bemutatott `listFiles` függvényt a **fájlok** listájának tartalmának frissítéséhez.
 
 ### <a name="run-and-test-the-web-application"></a>A webalkalmazás futtatása és tesztelése
 
@@ -356,7 +356,7 @@ Ezen a ponton elindíthatja a lapot, és kísérletet tehet a blob Storage műk�
 
 A rövid útmutató során létrehozott erőforrások törléséhez nyissa meg a [Azure Portal](https://portal.azure.com) , és törölje az előfeltételek szakaszban létrehozott erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű webhelyet, amely hozzáfér a blob Storage-hoz a böngésző alapú JavaScriptből. Ha szeretné megtudni, hogyan üzemeltetheti a webhelyeket a blob Storage szolgáltatásban, folytassa a következő oktatóanyaggal:
 
