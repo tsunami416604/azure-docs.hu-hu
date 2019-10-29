@@ -1,36 +1,132 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Central dokumentáció
+### YamlMime:Hub
+title: Az IoT Central-megoldások dokumentációja
+summary: Fedezze fel az Azure IoT Central szolgáltatás és megoldásainak dokumentációját.
+brand: azure
 metadata:
-  title: Az Azure IoT Central dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Az Azure IoT Central egy teljes körűen felügyelt SaaS (szoftverszolgáltatási) megoldás, amely megkönnyíti az IoT-eszközök méretezhető csatlakoztatását, monitorozását és felügyeletét. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.'
-  author: dominicbetts
-  ms.topic: landing-page
-  ms.date: 11/08/2017
-  ms.author: dobett
+  title: Az Azure IoT Central dokumentációs központja
+  description: Fedezze fel az Azure IoT Central szolgáltatás és megoldásainak dokumentációját.
   ms.service: iot-central
-  services: iot-central
-  manager: timlt
-abstract:
-  description: 'Az Azure IoT Central egy teljes körűen felügyelt SaaS (szoftverszolgáltatási) megoldás, amely megkönnyíti az IoT-eszközök méretezhető csatlakoztatását, monitorozását és felügyeletét. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.'
-sections:
-  - title: Szolgáltatásra vonatkozó fontos értesítés
-    items:
-      - type: paragraph
-        text: 'Az Azure IoT Central minden eszközkapcsolata átváltott az Azure IoT Hub Device Provisioning szolgáltatás (DPS) használatára. A DPS SDK segítségével kell majd regisztrálnia és csatlakoztatnia az eszközeit az Azure IoT Central alkalmazáshoz. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">További információ az eszközök csatlakoztatásáról az Azure IoT Centralban.</a> A folyamatos adatexportálási funkciót és/vagy a Power BI-megoldássablont használó minden alkalmazás esetében módosítani kell majd a céltárolót és egy új megoldássablont kell létrehozni.'
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: <a href="quick-deploy-iot-central">Új Azure IoT Central alkalmazás létrehozása</a>.
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: Azure IoT Central alkalmazás testreszabása és használata.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-define-device-type">Új eszköztípus definiálása</a>
-          - html: <a href="tutorial-configure-rules">Szabályok konfigurálása</a>
-          - html: <a href="tutorial-customize-operator">Operátori nézet testreszabása</a>
-          - html: <a href="tutorial-monitor-devices">Eszközök monitorozása</a>
-          - html: <a href="tutorial-add-device">Valós eszköz hozzáadása</a>
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965891"
+highlightedContent:
+  items:
+  - title: Mi az az IoT Central?
+    itemType: overview
+    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Mik azok az alkalmazássablonok?
+    itemType: concept
+    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Az Azure IoT Central architektúrája
+    itemType: architecture
+    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Új alkalmazás létrehozása
+    itemType: quickstart
+    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Eszköztípus meghatározása és eszköz hozzáadása
+    itemType: tutorial
+    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Eszközök monitorozása
+    itemType: tutorial
+    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+conceptualContent:
+  items:
+  - title: Csatlakozás (előzetes verziójú funkciók)
+    links:
+    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Eszközsablon beállítása
+    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: tutorial
+      text: IoT Plug and Play-eszköz csatlakoztatása
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Részletek
+  - title: A kapcsolat fenntartása (előzetes verziójú funkciók)
+    links:
+    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Eszközcsoportok használata
+    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Eszközök kezelése
+    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: concept
+      text: Feladat futtatása
+    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Eszközadatok elemzése
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Részletek
+  - title: Átalakítás (előzetes verziójú funkciók)
+    links:
+    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Telemetriaszabály létrehozása
+    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Folyamatos adatexportálás konfigurálása
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Részletek
+productDirectory:
+  title: Kezdje meg az alkotást iparági alkalmazássablonokkal
+  summary: Készen áll az alkotásra? Tekintse meg a megoldáskészítők számára létrehozott, adott iparágakhoz kapcsolódó alkalmazássablonjainkat.
+  items:
+  - title: Kiskereskedelmi megoldások
+    imageSrc: ./retail/media/index/iot-central-retail.svg
+    links:
+    - text: Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
+      url: ./retail/overview-iot-central-retail-pnp.md
+    - text: Kiskereskedelmi alkalmazás létrehozása
+      url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
+    - text: Intelligens készletkezelési alkalmazás létrehozása
+      url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: Összekapcsolt logisztikai alkalmazás létrehozása
+      url: ./retail/tutorial-iot-central-connected-logistics-pnp.md
+    - text: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
+      url: ./retail/tutorial-iot-central-digital-distribution-center-pnp.md
+  - title: Egészségügyi megoldások
+    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
+    links:
+    - url: ./healthcare/overview-iot-central-healthcare.md
+      text: Egészségügyi megoldások létrehozása az IoT Centrallal
+    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
+      text: Folyamatos betegfigyelési alkalmazás létrehozása
+  - title: Energiaipari megoldások
+    imageSrc: ./energy/media/index/iot-central-energy.svg
+    links:
+    - url: ./energy/overview-iot-central-energy.md
+      text: Energiaipari megoldások létrehozása az IoT Centrallal
+    - url: ./energy/tutorial-smart-meter-app.md
+      text: Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása
+    - url: ./energy/tutorial-solar-panel-app.md
+      text: Napelempanel monitorozására szolgáló alkalmazás létrehozása
+  - title: Kormányzati megoldások
+    imageSrc: ./government/media/index/iot-central-government.svg
+    links:
+    - url: ./government/overview-iot-central-government.md
+      text: Kormányzati megoldások létrehozása az IoT Centrallal
+    - url: ./government/tutorial-water-quality-monitoring.md
+      text: Vízminőség-monitorozási alkalmazás létrehozása
+    - url: ./government/tutorial-water-consumption-monitoring.md
+      text: Vízfogyasztás-monitorozási alkalmazás létrehozása
+    - url: ./government/tutorial-connected-waste-management.md
+      text: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
+additionalContent:
+  sections:
+  - items:
+    - title: IoT Central API-k
+      summary: Ismerje meg az IoT Central API-kat.
+      url: https://docs.microsoft.com/rest/api/azure/
+    - title: Az IoT Central a Microsoft Learnön
+      summary: Ismerje meg az IoT Centralt az ingyenes tesztkörnyezetben.
+      url: https://aka.ms/iotcentralapimslearnjourney

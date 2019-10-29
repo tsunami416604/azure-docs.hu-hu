@@ -40,8 +40,8 @@
               href: data-lake-analytics-manage-use-nodejs.md
         - name: Felhasználók hozzáadása
           href: data-lake-analytics-add-users.md
-        - name: Házirendek
-          href: data-lake-analytics-policies.md
+        - name: Fiókszabályzatok
+          href: data-lake-analytics-account-policies.md
         - name: Biztonságos feladatmappák
           href: data-lake-analytics-secure.md
         - name: Diagnosztikai naplók elérése
@@ -118,6 +118,14 @@
           href: data-lake-analytics-cicd-test.md
         - name: U-SQL SDK
           href: data-lake-analytics-u-sql-sdk.md
+    - name: Az Apache Spark ismertetése U-SQL-fejlesztőknek
+      items:
+        - name: Az Apache Spark ismertetése U-SQL-fejlesztőknek
+          href: data-lake-analytics-understand-spark-for-usql-developers.md
+        - name: Az Apache Spark adatformátumainak ismertetése
+          href: data-lake-analytics-understand-spark-data-formats.md
+        - name: Az Apache Spark kódolási alapelveinek ismertetése
+          href: data-lake-analytics-understand-spark-code-concepts.md
 - name: Referencia
   items:
     - name: Azure PowerShell

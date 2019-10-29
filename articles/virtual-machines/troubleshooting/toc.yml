@@ -65,10 +65,12 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Gyakori hibaüzenetek
   href: error-messages.md
-- name: Virtuális gépek teljesítményproblémái
-  href: performance-diagnostics.md
-- name: 'Általános, teljesítménnyel kapcsolatos hibaelhárítás Linux vagy Windows rendszeren futó Azure virtuális gépekhez'
-  href: troubleshoot-performance-virtual-machine-linux-windows.md
+- name: Azure-beli virtuális gép teljesítményproblémáinak hibaelhárítása
+  items:
+    - name: Teljesítményproblémák Linuxon vagy Windowson
+      href: troubleshoot-performance-virtual-machine-linux-windows.md
+    - name: Teljesítménydiagnosztika
+      href: performance-diagnostics.md
 - name: 32 bites operációs rendszerek támogatása
   href: support-32-bit-operating-systems-virtual-machines.md
 - name: PerfInsights

@@ -1,45 +1,45 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Advisor-dokumentáció
+### YamlMime:Landing
+title: Az Azure Advisor dokumentációja
+summary: Az Azure Advisor megvizsgálja az Azure-konfigurációt, és módosításokat javasol az üzemelő példányok optimalizálása, a biztonság fokozása és a költségek csökkentése érdekében.
 metadata:
-  title: Azure Advisor-dokumentáció | Microsoft Docs
-  description: null
+  title: Az Azure Advisor dokumentációja
+  description: Az Azure Advisor egy személyre szabott felhőtanácsadó, amely segít az ajánlott eljárások alkalmazásában az Azure-környezetek optimalizálása érdekében. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, és a teljesítményt, a biztonságot és az erőforrások magas rendelkezésre állását elősegítő megoldásokat javasol, valamint az Azure-költségek csökkentésére törekszik.
   services: advisor
-  author: rboucher
-  layout: LandingPage
   ms.service: advisor
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 02/01/2019
+  author: rboucher
   ms.author: robb
-abstract:
-  description: 'Az Azure Advisor egy személyre szabott felhőtanácsadó, amely segít az ajánlott eljárások alkalmazásában az Azure-környezetek optimalizálása érdekében. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, és a teljesítményt, a biztonságot és az erőforrások magas rendelkezésre állását elősegítő megoldásokat javasol, valamint az Azure-költségek csökkentésére törekszik.'
-sections:
-  - title: null
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Az Azure Advisor ismertetése
-            href: /azure/advisor/advisor-overview
-            image:
-              src: media/index/advisor.svg
-              href: /azure/advisor/advisor-overview
-          - title: Ismerkedés az Azure Advisor szolgáltatással
-            href: /azure/advisor/advisor-get-started
-            image:
-              src: media/index/get-started.svg
-              href: /azure/advisor/advisor-get-started
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/advisor/">REST API-referencia</a></p>'
-          - title: Parancssor
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">Közös nyelvi felület (CLI)</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>'
+  ms.date: 10/16/2019
+  ms.openlocfilehash: d0a5dc66a752e49dd32cd742e3856d7edac0d879
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72963981"
+landingContent:
+- title: Tudnivalók az Azure Advisorról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Advisor ismertetése
+      url: advisor-overview.md
+  - linkListType: video
+    links:
+    - text: Azure Advisor-videók
+      url: https://azure.microsoft.com/resources/videos/index/?services=advisor
+- title: Bevezetés
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Ismerkedés az Azure Advisor szolgáltatással
+      url: advisor-get-started.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Közös nyelvi felület (CLI)
+      url: /cli/azure/advisor?view=azure-cli-latest
+    - text: PowerShell
+      url: /powershell/module/az.advisor/?view=azps-1.2.0"
+    - text: REST API
+      url: /rest/api/advisor/

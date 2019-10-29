@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: Naplólekérdezések
           href: log-query/get-started-queries.md
-        - name: Naplóadatok megjelenítése
+        - name: Irányítópult naplóadatokkal
           href: learn/tutorial-logs-dashboards.md
         - name: Riasztás naplóadatok alapján
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: Az alkalmazásfelhasználók megismerése
           href: learn/tutorial-users.md
-        - name: Egyéni irányítópultok létrehozása
+        - name: Irányítópult alkalmazásadatokkal
           href: learn/tutorial-app-dashboards.md
     - name: Platformmetrikák és naplóadatok archiválása
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: Munkafüzetek
           href: app/usage-workbooks.md
         - name: Irányítópultok
-          href: app/app-insights-dashboards.md
+          items:
+            - name: Naplóadatokat használó irányítópult
+              href: learn/tutorial-logs-dashboards.md
+            - name: Alkalmazásadatokat használó irányítópult
+              href: learn/tutorial-app-dashboards.md
         - name: Adatok küldése a Grafana számára
           href: platform/grafana-plugin.md
     - name: Riasztások kezelése
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: Újabb riasztások támogatott metrikái
           href: platform/alerts-metric-near-real-time.md
-    - name: Diagnosztikai naplók
-      items:
-        - name: 'Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
-          href: platform/diagnostic-logs-schema.md
+    - name: 'Erőforrásnaplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
+      href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI – Application Insights (előzetes verzió)
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 'Riasztások, metrikák, tevékenységnapló, automatikus skálázás'
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Naplók
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST API
       items:

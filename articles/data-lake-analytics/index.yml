@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 59f8fcefd48425fb49d6a828046764a213bea18f
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71220017"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965719"
 landingContent:
 - title: Tudnivalók a Data Lake Analyticsről
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
     - text: Felhasználó hozzáadása az Azure Portalon
       url: data-lake-analytics-add-users.md
     - text: Az Azure Data Lake Analytics kezelése szabályzatokkal
-      url: data-lake-analytics-policies.md
+      url: data-lake-analytics-account-policies.md
 - title: Folyamatos integráció és folyamatos üzembe helyezés
   linkLists:
   - linkListType: how-to-guide
@@ -89,3 +89,13 @@ landingContent:
       url: data-lake-analytics-cicd-test.md
     - text: U-SQL SDK használata
       url: data-lake-analytics-u-sql-sdk.md
+- title: A Spark ismertetése U-SQL-fejlesztőknek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Apache Spark ismertetése U-SQL-fejlesztőknek
+      url: data-lake-analytics-understand-spark-for-usql-developers.md
+    - text: Az Apache Spark adatformátumainak ismertetése
+      url: data-lake-analytics-understand-spark-data-formats.md
+    - text: Az Apache Spark kódolási alapelveinek ismertetése
+      url: data-lake-analytics-understand-spark-code-concepts.md
