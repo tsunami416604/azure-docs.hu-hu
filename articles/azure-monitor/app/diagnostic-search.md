@@ -1,29 +1,24 @@
 ---
 title: Keresés használata az Azure Application Insightsban | Microsoft Docs
 description: A webalkalmazás által eljuttatott nyers telemetria keresése és szűrése.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/30/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
-ms.translationtype: HT
+ms.date: 07/30/2019
+ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705423"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678070"
 ---
 # <a name="using-search-in-application-insights"></a>Keresés használata a Application Insightsban
 
 A keresés a [Application Insights](../../azure-monitor/app/app-insights-overview.md) egyik funkciója, amellyel megkeresheti és megismerheti az egyes telemetria-elemeket, például a lapok nézeteit, a kivételeket vagy a webes kérelmeket. És megtekintheti a kódolt naplókat és eseményeket.
 
-(Az adatelemzéshez [használja az](../../azure-monitor/log-query/get-started-portal.md)összetettebb lekérdezéseket.)
+(Az [adatelemzéshez használja az](../../azure-monitor/log-query/get-started-portal.md)összetettebb lekérdezéseket.)
 
 ## <a name="where-do-you-see-search"></a>Hol látja a keresést?
 
@@ -67,10 +62,10 @@ Az események típusai a következők:
 
 * **Nyomkövetési** - [diagnosztikai naplók](../../azure-monitor/app/asp-net-trace-logs.md) , beleértve a TrackTrace, a log4Net, a NLog és a System. Diagnostics. Trace hívásokat.
 * **Kérelem** – a kiszolgálói alkalmazás által fogadott HTTP-kérelmek, beleértve a lapokat, a parancsfájlokat, a képeket, a stíluslapokat és az adatfájlokat. Ezek az események a kérések és válaszok áttekintő diagramjainak létrehozására használhatók.
-* A webes[ügyfél által elküldett telemetria](../../azure-monitor/app/javascript.md), amely az oldal nézet jelentéseinek létrehozására szolgál. - 
+* Az **oldal nézete - ** [a webes ügyfél által elküldett telemetria](../../azure-monitor/app/javascript.md), amelyet a rendszer az oldalmegtekintési jelentések létrehozásához használ.
 * **Egyéni esemény** – ha a TrackEvent () hívásait beszúrta a [használat figyeléséhez](../../azure-monitor/app/api-custom-events-metrics.md), itt kereshet.
 * **Kivétel** – nem kezelt [Kivételek a kiszolgálón](../../azure-monitor/app/asp-net-exceptions.md), és a TrackException () használatával bejelentkezett.
-* **Függőségi** - [hívások a kiszolgálói alkalmazástól](../../azure-monitor/app/asp-net-dependencies.md) más szolgáltatásokra, például REST API-kra vagy adatbázisokra, valamint az [ügyfél kódjából](../../azure-monitor/app/javascript.md)származó Ajax-hívásokra.
+* A **függőség** - [a kiszolgálói alkalmazástól](../../azure-monitor/app/asp-net-dependencies.md) más szolgáltatásokra, például REST API-kra vagy adatbázisokra irányuló hívásokat, valamint az [ügyfél kódjából](../../azure-monitor/app/javascript.md)származó Ajax-hívásokat.
 * **Rendelkezésre állás** – a [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md)eredményei.
 
 ## <a name="filter-on-property-values"></a>Tulajdonság értékeinek szűrése
@@ -101,9 +96,9 @@ Előfordulhat, hogy meg szeretné határozni az időtartományt, mivel a rövide
 
 A teljes szavakat, nem alsztringeket is megkeresheti. Használjon idézőjeleket speciális karakterek befoglalásához.
 
-| Sztring | *Nem* található | Találat |
+| Sztring | *Nem* található | Található |
 | --- | --- | --- |
-| HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
+| HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Egyesült Államok|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Az alábbi keresési kifejezéseket használhatja:
@@ -115,7 +110,7 @@ Az alábbi keresési kifejezéseket használhatja:
 | `apple OR banana` |Olyan események keresése, amelyek bármelyik szót tartalmaznak. Használja a "vagy a", nem "vagy" lehetőséget. |
 | `apple NOT banana` |Olyan eseményeket kereshet, amelyek egyetlen szót tartalmaznak, a másikat azonban nem. |
 
-## <a name="sampling"></a>Mintavételezés
+## <a name="sampling"></a>Mintavétel
 
 Ha az alkalmazás nagy mennyiségű telemetria hoz létre (és a ASP.NET SDK 2.0.0-beta3 vagy újabb verzióját használja), az adaptív mintavételi modul automatikusan csökkenti a portálra küldött kötetet, és csak az események egy reprezentatív hányadát küldi el. Azonban az ugyanahhoz a kéréshez kapcsolódó események ki vannak választva vagy ki lesznek választva egy csoportként, így a kapcsolódó események között lehet navigálni.
 
@@ -125,7 +120,7 @@ Ha az alkalmazás nagy mennyiségű telemetria hoz létre (és a ASP.NET SDK 2.0
 
 A GitHubon vagy az Azure DevOps-ban is létrehozhat egy hibát bármely telemetria-elem részleteivel.
 
-A végpontok közötti tranzakció részletes nézetéhez kattintson bármelyik telemetria elemre, majd válassza a munkaelem **létrehozása**lehetőséget.
+A végpontok közötti tranzakció részletes nézetéhez kattintson bármelyik telemetria elemre, majd válassza a **munkaelem létrehozása**lehetőséget.
 
 ![Kattintson az új munkaelem lehetőségre, szerkessze a mezőket, majd kattintson az OK gombra.](./media/diagnostic-search/work-item.png)
 
@@ -140,7 +135,7 @@ Az Application Insights SDK által eljuttatott beépített telemetria mellett a 
 * Rögzítse a log nyomkövetést a kedvenc naplózási keretrendszerében a [.net](../../azure-monitor/app/asp-net-trace-logs.md) -ben vagy a [Java](../../azure-monitor/app/java-trace-logs.md)-ban. Ez azt jelenti, hogy megkeresheti a napló-nyomkövetéseket, és összekapcsolhatja őket az oldalletöltések, a kivételek és a más események használatával.
 * [Kód írása](../../azure-monitor/app/api-custom-events-metrics.md) egyéni események, oldalmegtekintések és kivételek küldéséhez.
 
-Megtudhatja, [hogyan küldhet naplókat és egyéni telemetria Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+[Megtudhatja, hogyan küldhet naplókat és egyéni telemetria Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
 
 ## <a name="questions"></a>Q & A
 
@@ -157,4 +152,4 @@ Az adatposta automatikus naplózása nem történik meg, de a [TrackTrace vagy a
 * [Összetett lekérdezések írása az elemzésekben](../../azure-monitor/log-query/get-started-portal.md)
 * [Naplók és egyéni telemetria küldése Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Rendelkezésre állási és válaszadási tesztek beállítása](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)
+* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)

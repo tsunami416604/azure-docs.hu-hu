@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699352"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333177"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files-megosztási Pillanatképek áttekintése 
 Azure Files lehetővé teszi a fájlmegosztás pillanatképének megosztását. A megosztási Pillanatképek a megosztás állapotát az adott időpontban rögzítik. Ebben a cikkben bemutatjuk, hogy milyen képességeket oszthat meg a pillanatképek, és hogyan használhatja fel őket az egyéni használati esetekben.
@@ -28,7 +28,7 @@ Képzelje el, hogy egy fájlmegosztás szövegfájljában dolgozik. A szövegfá
 ### <a name="general-backup-purposes"></a>Általános biztonsági mentési célok
 Miután létrehozott egy fájlmegosztást, rendszeres időközönként létrehozhat egy megosztási pillanatképet a fájlmegosztás számára az adatok biztonsági mentésére való használatra. A megosztási pillanatkép, amely rendszeres időközönként elvégezte az adatok korábbi verzióinak fenntartását, amelyek a jövőbeli auditálási követelményekhez vagy a vész-helyreállításhoz használhatók.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 A megosztási pillanatkép az adatok egy időponthoz tartozó, írásvédett másolata. A pillanatképeket a REST API használatával hozhatja létre, törölheti és kezelheti. Ugyanezek a képességek az ügyféloldali függvénytárban, az Azure CLI-ben és a Azure Portal is elérhetők. 
 
 A megosztások pillanatképeit a REST API és az SMB használatával is megtekintheti. Lekérheti a címtár vagy a fájl verzióinak listáját, és közvetlenül meghajtóként is csatlakoztathat egy adott verziót (csak Windows – lásd: [korlátozások](#limits)). 
@@ -37,7 +37,7 @@ A megosztási pillanatkép létrehozása után a fájl olvasható, másolható v
 
 A megosztott Pillanatképek funkció a fájlmegosztás szintjén van megadva. A lekérést az egyes fájlok szintjén kell megadnia, hogy lehetővé váljon az egyes fájlok visszaállítása. A teljes fájlmegosztást az SMB, a REST API, a portál, az ügyféloldali kódtár vagy a PowerShell/CLI-eszközök használatával állíthatja vissza.
 
-A fájlmegosztás megosztási pillanatképe megegyezik az alapfájl-megosztással. Az egyetlen különbség, hogy egy **datetime** érték van hozzáfűzve a megosztási URI-hoz, hogy jelezze a megosztási pillanatkép készítésének időpontját. Ha például egy fájlmegosztás URI http://storagesample.core.file.windows.net/myshare -ja, a megosztási pillanatkép URI-ja a következőhöz hasonló:
+A fájlmegosztás megosztási pillanatképe megegyezik az alapfájl-megosztással. Az egyetlen különbség, hogy egy **datetime** érték van hozzáfűzve a megosztási URI-hoz, hogy jelezze a megosztási pillanatkép készítésének időpontját. Ha például egy fájlmegosztási URI http://storagesample.core.file.windows.net/myshare, a megosztási pillanatkép URI-ja a következőhöz hasonló:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -57,7 +57,7 @@ Annak ellenére, hogy a megosztási Pillanatképek Növekményesen vannak mentve
 
 A pillanatképek nem számítanak bele az 5 TB-os megosztási korlátba. A tárolóhelyek megosztási pillanatképei összesen nem megengedettek. A Storage-fiókra vonatkozó korlátozások továbbra is érvényesek.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 A Azure Files ma 200-es megosztási Pillanatképek maximális száma. A 200-es megosztási pillanatképek létrehozása után törölni kell a régebbi megosztási pillanatképeket, hogy újakat hozzon létre. 
 
 A megosztási Pillanatképek létrehozásának egyidejű hívása nincs korlátozva. Az adott fájlmegosztás pillanatképeit használó tárterületnek nincs korlátja. 
@@ -71,7 +71,7 @@ A fájlmegosztás pillanatképében lévő egyes fájlokat átmásolhatja az ala
 
 A megosztási pillanatkép a másolás után érintetlen marad, de az alap fájlmegosztás felül van írva a megosztási pillanatképben elérhető adatok másolatával. Az összes visszaállított fájl a "módosított tartalom" értékre változik.
 
-A megosztási pillanatképben lévő fájlokat más néven is másolhatja a célhelyre. Az eredményül kapott célfájl egy írható fájl, nem megosztási pillanatkép.
+A megosztási pillanatképekben lévő fájlokat más néven is átmásolhatja egy másik célhelyre. Az eredményül kapott célfájl egy írható fájl, nem megosztási pillanatkép. Ebben az esetben az alapfájl megosztása érintetlen marad.
 
 Ha a célfájl egy másolattal van felülírva, az eredeti célhelyhez társított megosztási Pillanatképek érintetlenek maradnak.
 
@@ -82,7 +82,7 @@ A megosztási pillanatkép-ütemező üzembe helyezése előtt körültekintően
 
 A megosztási Pillanatképek csak a fájl szintű védelmet biztosítják. A megosztási Pillanatképek nem akadályozzák meg a FAT-Finger törlését egy fájlmegosztás vagy egy Storage-fiók esetében. A Storage-fiók véletlen törlések elleni védelmének biztosításához zárolhatja a Storage-fiókot vagy az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A megosztási Pillanatképek használata a ben:
     - [PowerShell](storage-how-to-use-files-powershell.md)
     - [Parancssori felület](storage-how-to-use-files-cli.md)

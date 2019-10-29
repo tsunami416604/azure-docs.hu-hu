@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: HT
+ms.openlocfilehash: ea979731c27a8d332102c3215e80510994f2ab3f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678091"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430239"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Az Azure AD-jogosultságok felügyeletének (előzetes verzió) hibáinak megoldása
 
@@ -45,7 +45,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * A SharePoint Online-dokumentumtárak és az egyes dokumentumok nem vehetők fel erőforrásként.  Ehelyett hozzon létre egy Azure AD biztonsági csoportot, amely tartalmazza azt a csoportot és egy hely szerepkört a hozzáférési csomagban, a SharePoint Online-ban pedig ezt a csoportot használja a dokumentumtárhoz vagy dokumentumhoz való hozzáférés szabályozásához.
 
-* Ha vannak olyan felhasználók, akik már hozzá vannak rendelve egy hozzáférési csomaggal felügyelni kívánt erőforráshoz, akkor győződjön meg arról, hogy a felhasználók a megfelelő házirenddel vannak hozzárendelve a hozzáférési csomaghoz. Előfordulhat például, hogy egy olyan csoportot szeretne felvenni egy olyan hozzáférési csomagba, amely már rendelkezik a csoport felhasználóinak. Ha a csoportban lévő felhasználók folyamatos hozzáférést igényelnek, akkor megfelelő szabályzattal kell rendelkezniük a hozzáférési csomagokhoz, hogy ne veszítsék el a csoporthoz való hozzáférésüket. A hozzáférési csomagot úgy rendelheti hozzá, hogy kéri a felhasználókat, hogy kérjenek az adott erőforrást tartalmazó hozzáférési csomagot, vagy közvetlenül hozzárendelik azokat a hozzáférési csomaghoz. További információ: [meglévő hozzáférési csomag szerkesztése és kezelése](entitlement-management-access-package-edit.md).
+* Ha vannak olyan felhasználók, akik már hozzá vannak rendelve egy hozzáférési csomaggal felügyelni kívánt erőforráshoz, akkor győződjön meg arról, hogy a felhasználók a megfelelő házirenddel vannak hozzárendelve a hozzáférési csomaghoz. Előfordulhat például, hogy egy olyan csoportot szeretne felvenni egy olyan hozzáférési csomagba, amely már rendelkezik a csoport felhasználóinak. Ha a csoportban lévő felhasználók folyamatos hozzáférést igényelnek, akkor megfelelő szabályzattal kell rendelkezniük a hozzáférési csomagokhoz, hogy ne veszítsék el a csoporthoz való hozzáférésüket. A hozzáférési csomagot úgy rendelheti hozzá, hogy kéri a felhasználókat, hogy kérjenek az adott erőforrást tartalmazó hozzáférési csomagot, vagy közvetlenül hozzárendelik azokat a hozzáférési csomaghoz. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
 
 ## <a name="checklist-for-providing-external-users-access"></a>Ellenőrzőlista külső felhasználók hozzáférésének biztosításához
 
@@ -55,16 +55,17 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 ## <a name="checklist-for-request-issues"></a>Ellenőrzőlista a kérelmekkel kapcsolatos problémákhoz
 
-* Ha a felhasználó hozzáférést szeretne kérni egy hozzáférési csomaghoz, győződjön meg róla, hogy a hozzáférési csomaghoz tartozó **saját hozzáférési portál hivatkozást** használja. További információ: [a hozzáférési portál másolása hivatkozás](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Ha egy külső felhasználó meglátogatja a **myaccess.microsoft.com**-t, akkor a saját szervezete számára elérhető hozzáférési csomagokat fogja látni.
+* Ha a felhasználó hozzáférést szeretne kérni egy hozzáférési csomaghoz, győződjön meg róla, hogy a hozzáférési csomaghoz tartozó **saját hozzáférési portál hivatkozást** használja. További információ: [megosztási hivatkozás a hozzáférési csomag igényléséhez](entitlement-management-access-package-settings.md).  Ha egy külső felhasználó meglátogatja a **myaccess.microsoft.com**-t, akkor a saját szervezete számára elérhető hozzáférési csomagokat fogja látni.
 
 * Ha egy olyan felhasználó, aki még nem szerepel a címtárban, bejelentkezik a saját hozzáférési portálra egy hozzáférési csomag igényléséhez, akkor győződjön meg arról, hogy az a szervezeti fiók használatával végzi a hitelesítést. A szervezeti fiók lehet egy fiók az erőforrás-címtárban, vagy egy olyan címtárban, amely a hozzáférési csomag egyik szabályzatában szerepel. Ha a felhasználó fiókja nem szervezeti fiók, vagy a hitelesítést végző címtár nem szerepel a szabályzatban, akkor a felhasználó nem fogja látni a hozzáférési csomagot. További információ: hozzáférés [kérése egy hozzáférési csomaghoz](entitlement-management-request-access.md).
 
-* Ha a felhasználó nem tud bejelentkezni az erőforrás-könyvtárba, nem fog tudni hozzáférést kérni a saját hozzáférési portálon. Mielőtt a felhasználó hozzáférést igényelhet, el kell távolítania a bejelentkezési blokkot a felhasználó profiljából. A bejelentkezési blokk eltávolításához kattintson a Azure Portal **Azure Active Directory**, majd a **felhasználók**elemre, majd a felhasználó elemre, végül a **profil**elemre. Szerkessze a Settings ( **Beállítások** ) szakaszt, és módosítsa a **Letiltás bejelentkezést** a **nem**értékre. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../fundamentals/active-directory-users-profile-azure-portal.md).  Azt is megtekintheti, hogy a felhasználó blokkolva lett-e egy [Identity Protection-házirend](../identity-protection/howto-unblock-user.md)miatt.
+* Ha a felhasználó nem tud bejelentkezni az erőforrás-könyvtárba, nem fog tudni hozzáférést kérni a saját hozzáférési portálon. Mielőtt a felhasználó hozzáférést igényelhet, el kell távolítania a bejelentkezési blokkot a felhasználó profiljából. A bejelentkezési blokk eltávolításához kattintson a Azure Portal **Azure Active Directory**, majd a **felhasználók**elemre, majd a felhasználó elemre, végül a **profil**elemre. Szerkessze a **Settings (beállítások** ) szakaszt, és módosítsa a **Letiltás bejelentkezést** a **nem**értékre. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../fundamentals/active-directory-users-profile-azure-portal.md).  Azt is megtekintheti, hogy a felhasználó blokkolva lett-e egy [Identity Protection-házirend](../identity-protection/howto-unblock-user.md)miatt.
 
-* Ha a saját hozzáférési portálon, ha a felhasználó egy kérelmező és egy jóváhagyó is, a jóváhagyások lapon nem fogja látni a hozzáférési csomagra vonatkozó kérelmét . Ez szándékos viselkedés – a felhasználók nem hagyhatják jóvá a saját kérésükre. Győződjön meg arról, hogy a kért hozzáférési csomaghoz további jóváhagyók vannak konfigurálva a szabályzatban. További információ: [meglévő szabályzat szerkesztése](entitlement-management-access-package-edit.md#edit-an-existing-policy).
+* Ha a saját hozzáférési portálon, ha a felhasználó egy kérelmező és egy jóváhagyó is, a **jóváhagyások** lapon nem fogja látni a hozzáférési csomagra vonatkozó kérelmét. Ez szándékos viselkedés – a felhasználók nem hagyhatják jóvá a saját kérésükre. Győződjön meg arról, hogy a kért hozzáférési csomaghoz további jóváhagyók vannak konfigurálva a szabályzatban. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
 
 * Ha egy olyan új külső felhasználó, amely korábban még nem jelentkezett be a címtárba, olyan hozzáférési csomagot kap, amely tartalmazza a SharePoint Online-webhelyet, a hozzáférési csomagja nem teljes kézbesítésre kerül, amíg a fiók a SharePoint Online-ban nincs kiépítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználók hozzáférési jogosultságok kezelésével kapcsolatos jelentések megtekintése](entitlement-management-reports.md)
+- [Hozzáférés szabályozása külső felhasználók számára](entitlement-management-external-users.md)

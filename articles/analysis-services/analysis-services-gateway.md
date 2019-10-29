@@ -2,18 +2,17 @@
 title: Helyszíni adatátjáró a Azure Analysis Serviceshoz | Microsoft Docs
 description: A helyszíni átjáróra akkor van szükség, ha az Azure-beli Analysis Services-kiszolgáló a helyszíni adatforrásokhoz csatlakozik.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b783e6b709700104985ef3f052443cf1284bf2d6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: HT
+ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678394"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294937"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
 
@@ -27,29 +26,29 @@ Azure Analysis Services esetén a telepítő az átjáróval való első alkalom
 
 - **Átjáró-erőforrás létrehozása az Azure** -ban – ebben a lépésben létrehoz egy átjáró-erőforrást az Azure-előfizetésében.
 
-- **Csatlakoztassa a kiszolgálókat az átjáró** -erőforráshoz – ha rendelkezik az előfizetésben található átjáró-erőforrással, megkezdheti a kiszolgálók csatlakoztatását. Több kiszolgálót és más erőforrást is összekapcsolhat, ha azok ugyanahhoz az előfizetéshez és régióhoz tartoznak.
+- **Csatlakoztassa a kiszolgálókat az átjáró-erőforráshoz** – ha rendelkezik az előfizetésben található átjáró-erőforrással, megkezdheti a kiszolgálók csatlakoztatását. Több kiszolgálót és más erőforrást is összekapcsolhat, ha azok ugyanahhoz az előfizetéshez és régióhoz tartoznak.
 
 ## <a name="how-it-works"> </a>Működés
-A szervezet egyik számítógépén telepített átjáró Windows **-** szolgáltatásként, helyszíni adatátjáróként fut. Ez a helyi szolgáltatás a Azure Service Buson keresztül regisztrálva van az átjáró Cloud Service-ben. Ezután létrehoz egy helyszíni adatátjáró-erőforrást az Azure-előfizetéséhez. Az Azure Analysis Services-kiszolgálók ezután csatlakoznak az Azure Gateway-erőforráshoz. Ha a kiszolgálón lévő modelleknek lekérdezésekhez vagy feldolgozáshoz kell csatlakozniuk a helyszíni adatforrásokhoz, a lekérdezés és az adatfolyam áthalad az átjáró erőforrásán, Azure Service Bus, a helyi helyszíni adatátjáró szolgáltatáson és az adatforrásokon. 
+A szervezet egyik számítógépén telepített átjáró Windows-szolgáltatásként, helyszíni **adatátjáróként**fut. Ez a helyi szolgáltatás a Azure Service Buson keresztül regisztrálva van az átjáró Cloud Service-ben. Ezután létrehoz egy helyszíni adatátjáró-erőforrást az Azure-előfizetéséhez. Az Azure Analysis Services-kiszolgálók ezután csatlakoznak az Azure Gateway-erőforráshoz. Ha a kiszolgálón lévő modelleknek lekérdezésekhez vagy feldolgozáshoz kell csatlakozniuk a helyszíni adatforrásokhoz, a lekérdezés és az adatfolyam áthalad az átjáró erőforrásán, Azure Service Bus, a helyi helyszíni adatátjáró szolgáltatáson és az adatforrásokon. 
 
-![Működés](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![Működési elv](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Lekérdezések és adatfolyamok:
 
 1. A felhőalapú szolgáltatás létrehoz egy lekérdezést a helyszíni adatforráshoz tartozó titkosított hitelesítő adatokkal. Ezt követően a rendszer elküldje a várólistára az átjáró feldolgozásához.
-2. Az átjáró Cloud Service elemzi a lekérdezést, és leküldi a kérést [](https://azure.microsoft.com/documentation/services/service-bus/)a Azure Service Busnak.
+2. Az átjáró Cloud Service elemzi a lekérdezést, és leküldi a kérést a [Azure Service Busnak](https://azure.microsoft.com/documentation/services/service-bus/).
 3. A helyszíni adatátjáró lekérdezi a függőben lévő kérelmek Azure Service Busét.
 4. Az átjáró lekéri a lekérdezést, visszafejti a hitelesítő adatokat, és az adatforrásokhoz csatlakozik a hitelesítő adatokkal.
 5. Az átjáró elküldi a lekérdezést az adatforrásnak a végrehajtáshoz.
 6. Az eredményeket az adatforrásból, vissza az átjáróba, majd a Cloud Service-be és a-kiszolgálóra küldi a rendszer.
 
-## <a name="installing"></a>Telepítés
+## <a name="installing"></a>Telepítése
 
 Azure Analysis Services környezet telepítésekor fontos, hogy kövesse a helyszíni [adatátjáró telepítése és konfigurálása a Azure Analysis Services számára](analysis-services-gateway-install.md)című témakörben ismertetett lépéseket. Ez a cikk Azure Analysis Servicesra vonatkozik. További lépéseket is tartalmaz, amelyek szükségesek egy helyszíni adatátjáró-erőforrás beállításához az Azure-ban, és a Azure Analysis Services-kiszolgáló összekapcsolása az erőforrással.
 
 ## <a name="ports-and-communication-settings"></a>Portok és kommunikációs beállítások
 
-Az átjáró létrehoz egy kimenő kapcsolódást Azure Service Bushoz. A következő kimenő portokon kommunikál: TCP 443 (alapértelmezett), 5671, 5672, 9350 az 9354-n keresztül.  Az átjáró nem igényel bejövő portokat.
+Az átjáró létrehoz egy kimenő kapcsolódást Azure Service Bushoz. A következő kimenő portokon kommunikál: TCP 443 (alapértelmezett), 5671, 5672, 9350 – 9354.  Az átjáró nem igényel bejövő portokat.
 
 Előfordulhat, hogy az adatterületéhez tartozó IP-címeket kell megadnia a tűzfalban. Letöltheti az [Microsoft Azure Datacenter IP-listáját](https://www.microsoft.com/download/details.aspx?id=41653). A lista hetente frissül. Az Azure-adatközpont IP-listájában felsorolt IP-címek CIDR-jelöléssel rendelkeznek. További információ: osztály nélküli [tartományok közötti útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
@@ -57,22 +56,22 @@ A következő az átjáró által használt teljes tartománynevek.
 
 | Tartománynevek | Kimenő portok | Leírás |
 | --- | --- | --- |
-| *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP. |
-| *.powerbi.com |443 |HTTPS |
-| *.analysis.windows.net |443 |HTTPS |
+| *. powerbi.com |80 |A telepítő letöltéséhez használt HTTP. |
+| *. powerbi.com |443 |HTTPS |
+| *. analysis.windows.net |443 |HTTPS |
 | *. login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |Advanced Message Queueing Protocol (AMQP) |
 | *.servicebus.windows.net |443, 9350-9354 |Service Bus Relay figyelő a TCP protokollon keresztül (az Access Control token beszerzéséhez 443 szükséges) |
-| *.frontend.clouddatahub.net |443 |HTTPS |
-| *.core.windows.net |443 |HTTPS |
+| *. frontend.clouddatahub.net |443 |HTTPS |
+| *. core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Az internetkapcsolat tesztelésére szolgál, ha az átjáró nem érhető el a Power BI szolgáltatás. |
-| *.microsoftonline-p.com |443 |Hitelesítéshez használatos a konfigurációtól függően. |
+| *. msftncsi.com |443 |Az internetkapcsolat tesztelésére szolgál, ha az átjáró nem érhető el a Power BI szolgáltatás. |
+| *. microsoftonline-p.com |443 |Hitelesítéshez használatos a konfigurációtól függően. |
 | dc.services.visualstudio.com  |443 |A AppInsights használja a telemetria gyűjtésére. |
 
 ### <a name="force-https"></a>HTTPS-kommunikáció kényszerítése Azure Service Bus
 
-Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS használatával kommunikáljon Azure Service Busekkel. Ez azonban nagy mértékben csökkentheti a teljesítményt. Módosítsa a *Microsoft. PowerBI. DataMovement. pipeline. GatewayCore. dll. config* fájlt úgy, `AutoDetect` hogy `Https`az értéket a értékre módosítja. Ez a fájl általában a *C:\Program Files\On-premises*adatátjáróban található.
+Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS használatával kommunikáljon Azure Service Busekkel. Ez azonban nagy mértékben csökkentheti a teljesítményt. A *Microsoft. PowerBI. DataMovement. pipeline. GatewayCore. dll. config* fájlt úgy módosíthatja, hogy az értéket a `AutoDetect` értékről `Https`ra módosítja. Ez a fájl általában a *C:\Program Files\On-premises adatátjáróban*található.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -80,7 +79,7 @@ Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS haszná
 </setting>
 ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 A következő cikkek tartalmazzák a helyszíni adatátjáró általános tartalmát, amely az átjáró által támogatott összes szolgáltatásra vonatkozik:
 

@@ -1,18 +1,18 @@
 ---
 title: Az Azure Cosmos DB élettartama lejár
 description: A TTL esetében a Microsoft Azure Cosmos DB lehetővé teszi a dokumentumok automatikus kiürítését a rendszerből egy adott idő elteltével.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c3e1c4f56c641bf5bfa189836a4bcdf99672a3c1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597486"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756848"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) Azure Cosmos DB 
 
@@ -24,7 +24,7 @@ A lejárt elemek törlése olyan háttérbeli feladat, amely felhasználja a [k�
 
 Az élettartam értéke másodpercben van megadva, és a rendszer az elem utolsó módosításának időpontjában változásként értelmezi. Beállíthatja, hogy az élettartam egy tárolón vagy egy elemen belül legyen:
 
-1. A **tárolón való működés ideje** (a használatával `DefaultTimeToLive`állítható be):
+1. A **tárolón való működés ideje** (a `DefaultTimeToLive`használatával állítható be):
 
    - Ha hiányzik (vagy NULL értékre van állítva), az elemek nem lesznek automatikusan lejáratva.
 
@@ -32,11 +32,11 @@ Az élettartam értéke másodpercben van megadva, és a rendszer az elem utols�
 
    - Ha van, és az érték egy *"n"* számra van beállítva, az elemek az utolsó módosítás időpontja után az *"n"* másodpercet fogják lejárni.
 
-2. **Az elem élettartama** (a használatával `ttl`állítható be):
+2. **Az elem** élettartama (a `ttl`használatával állítható be):
 
-   - Ez a tulajdonság csak akkor alkalmazható `DefaultTimeToLive` , ha létezik, és a szülő tárolóban nem null értékre van állítva.
+   - Ez a tulajdonság csak akkor alkalmazható, ha `DefaultTimeToLive` van, és a szülő tárolóban nem null értékre van állítva.
 
-   - Ha van ilyen, felülbírálja `DefaultTimeToLive` a szülő tároló értékét.
+   - Ha van ilyen, felülbírálja a szülő tároló `DefaultTimeToLive` értékét.
 
 ## <a name="time-to-live-configurations"></a>Élettartam-konfigurációk
 
@@ -84,7 +84,7 @@ A tárolón lévő TTL értéke 1000 (DefaultTimeToLive = 1000)
 |TTL =-1   |Az élettartam engedélyezve van. Az adott tétel soha nem jár le.|
 |TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan konfigurálhatja az élettartamot a következő cikkekben:
 

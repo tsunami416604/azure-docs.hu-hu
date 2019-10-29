@@ -1,17 +1,17 @@
 ---
 title: Particionálás Azure Cosmos DB
 description: A particionálás áttekintése Azure Cosmos DBban.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: HT
+ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717558"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753246"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Particionálás Azure Cosmos DB
 
@@ -19,7 +19,7 @@ A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat
 
 Egy tároló például elemeket tárol. Minden egyes tétel egyedi értékkel rendelkezik a `UserID` tulajdonsághoz. Ha `UserID` a tárolóban lévő elemek partíciós kulcsaként szolgál, és 1 000 egyedi `UserID` érték van, akkor a rendszer 1 000 logikai partíciókat hoz létre a tárolóhoz.
 
-Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az elem AZONOSÍTÓjának kombinálásával létrejön azelem indexe, amely egyedileg azonosítja az adott tételt.
+Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az elem AZONOSÍTÓjának kombinálásával létrejön az elem *indexe*, amely egyedileg azonosítja az adott tételt.
 
 [A partíciós kulcs kiválasztása](partitioning-overview.md#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
 
@@ -47,7 +47,7 @@ A következő hasznos útmutatást nyújt a partíciós kulcs kiválasztásához
 
 * A partíciós kulcsok pályázói tartalmazhatnak olyan tulajdonságokat, amelyek gyakran megjelennek szűrőként a lekérdezésekben. A lekérdezések hatékonyan irányíthatók úgy, hogy a Filter predikátumban található partíciós kulcsot is megadhatják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [particionálásról és a horizontális skálázásról Azure Cosmos db](partition-data.md).
 * További információ [a kiépített átviteli sebességről Azure Cosmos db](request-units.md).
