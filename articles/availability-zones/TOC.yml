@@ -81,6 +81,10 @@
           items:
             - name: Zónaredundáns virtuális hálózati átjáró létrehozása
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Identitás
+          items:
+            - name: Azure Active Directory Domain Services-példány létrehozása
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: Vészhelyreállítás
   items:
     - name: Az Azure Site Recovery használata

@@ -18,6 +18,8 @@
       href: advisor-performance-recommendations.md
     - name: Szolgáltatási díjak csökkentése
       href: advisor-cost-recommendations.md
+    - name: Működésbeli kiválóság elérése
+      href: advisor-operational-excellence-recommendations.md
     - name: Javaslatok konfigurálása
       href: view-recommendations.md
     - name: Engedélyek és letiltott műveletek

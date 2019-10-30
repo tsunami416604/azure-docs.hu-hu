@@ -188,6 +188,8 @@
               href: high-availability-guide-suse-pacemaker.md
             - name: Pacemaker on RHEL
               href: high-availability-guide-rhel-pacemaker.md
+            - name: Az Azure Standard Load Balancert használó virtuális gépek nyilvános végpontkapcsolatai a magas rendelkezésre állási SAP-forgatókönyvekben
+              href: high-availability-guide-standard-load-balancer-outbound-connections.md
         - name: SAP-telepítés
           items:
             - name: Windows közös lemezzel (A)SCS példányhoz

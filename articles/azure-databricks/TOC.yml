@@ -37,6 +37,9 @@
         - name: Bevezetés az Azure Databricks használatába
           href: /azure/databricks/getting-started/quick-start
           maintainContext: true
+        - name: Adatok áttekintése
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: Azure Databricks-fogalmak
           href: /azure/databricks/getting-started/concepts
           maintainContext: true
@@ -72,6 +75,425 @@
         - name: Támogatott böngészők
           href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
+    - name: Databricks-futtatókörnyezetek
+      items:
+        - name: Futtatókörnyezet áttekintése
+          href: /azure/databricks/runtime/index
+          maintainContext: true
+        - name: A Databricks futtatókörnyezete
+          href: /azure/databricks/runtime/dbr
+          maintainContext: true
+        - name: Databricks-futtatókörnyezet a Condával
+          href: /azure/databricks/runtime/conda
+          maintainContext: true
+        - name: Machine Learninghez készült Databricks-futtatókörnyezet
+          href: /azure/databricks/runtime/mlruntime
+          maintainContext: true
+        - name: Genomics szolgáltatáshoz készült Databricks-futtatókörnyezet
+          href: /azure/databricks/runtime/genomicsruntime
+          maintainContext: true
+        - name: Databricks Light
+          href: /azure/databricks/runtime/light
+          maintainContext: true
+    - name: Munkaterület
+      items:
+        - name: A Databricks-munkaterület megismerése
+          href: /azure/databricks/workspace/index
+          maintainContext: true
+        - name: Munkaterület adategységei
+          href: /azure/databricks/workspace/workspace-assets
+          maintainContext: true
+        - name: Munkaterület-objektumok használata
+          href: /azure/databricks/workspace/workspace-objects
+          maintainContext: true
+        - name: 'Munkaterület-, fürt-, jegyzetfüzet- és feladatazonosítók beszerzése'
+          href: /azure/databricks/workspace/workspace-details
+          maintainContext: true
+    - name: Fürtök
+      items:
+        - name: A fürtök áttekintése
+          href: /azure/databricks/clusters/index
+          maintainContext: true
+        - name: Fürt létrehozása
+          href: /azure/databricks/clusters/create
+          maintainContext: true
+        - name: Fürtök kezelése
+          href: /azure/databricks/clusters/clusters-manage
+          maintainContext: true
+        - name: Fürtök konfigurálása
+          href: /azure/databricks/clusters/configure
+          maintainContext: true
+        - name: Fürtcsomópontok inicializálása
+          href: /azure/databricks/clusters/init-scripts
+          maintainContext: true
+        - name: Egyéni tárolók
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
+        - name: GPU-kompatibilis fürtök
+          href: /azure/databricks/clusters/gpu
+          maintainContext: true
+        - name: Készletek
+          items:
+            - name: Készletek áttekintése
+              href: /azure/databricks/clusters/instance-pools/index
+              maintainContext: true
+            - name: Készletek megjelenítése
+              href: /azure/databricks/clusters/instance-pools/display
+              maintainContext: true
+            - name: Készlet létrehozása
+              href: /azure/databricks/clusters/instance-pools/create
+              maintainContext: true
+            - name: Készlet konfigurálása
+              href: /azure/databricks/clusters/instance-pools/configure
+              maintainContext: true
+            - name: Készlet szerkesztése
+              href: /azure/databricks/clusters/instance-pools/edit
+              maintainContext: true
+            - name: Készlet törlése
+              href: /azure/databricks/clusters/instance-pools/delete
+              maintainContext: true
+            - name: Készlet használata
+              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
+              maintainContext: true
+    - name: Notebooks
+      items:
+        - name: Jegyzetfüzetek áttekintése
+          href: /azure/databricks/notebooks/index
+          maintainContext: true
+        - name: Jegyzetfüzetek kezelése
+          href: /azure/databricks/notebooks/notebooks-manage
+          maintainContext: true
+        - name: Jegyzetfüzetek használata
+          href: /azure/databricks/notebooks/notebooks-use
+          maintainContext: true
+        - name: Verziókövetés
+          items:
+            - name: Verziókövetés az Azure DevOpsszal
+              href: /azure/databricks/notebooks/azure-devops-services-version-control
+              maintainContext: true
+            - name: Verziókövetés a Bitbucket Clouddal
+              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
+              maintainContext: true
+            - name: Verziókövetés a GitHubbal
+              href: /azure/databricks/notebooks/github-version-control
+              maintainContext: true
+        - name: Vizualizációk
+          items:
+            - name: Adatok vizualizációja
+              href: /azure/databricks/notebooks/visualizations/index
+              maintainContext: true
+            - name: Elavult vonaldiagramok migrálása
+              href: /azure/databricks/notebooks/visualizations/migrate-charts
+              maintainContext: true
+            - name: Vizualizáció részletes bemutatása Python nyelven
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
+              maintainContext: true
+            - name: Vizualizáció részletes bemutatása Scala nyelven
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
+              maintainContext: true
+            - name: 'HTML, D3 és SVG használata jegyzetfüzetekben'
+              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
+              maintainContext: true
+            - name: Bokeh a Python-jegyzetfüzetekben
+              href: /azure/databricks/notebooks/visualizations/bokeh
+              maintainContext: true
+            - name: Matplotlib és ggplot a Python-jegyzetfüzetekben
+              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
+              maintainContext: true
+            - name: htmlwidgets az R-jegyzetfüzetekben
+              href: /azure/databricks/notebooks/visualizations/htmlwidgets
+              maintainContext: true
+            - name: Plotly a Python- és az R-jegyzetfüzetekben
+              href: /azure/databricks/notebooks/visualizations/plotly
+              maintainContext: true
+        - name: Irányítópultok
+          href: /azure/databricks/notebooks/dashboards
+          maintainContext: true
+        - name: Vezérlők
+          href: /azure/databricks/notebooks/widgets
+          maintainContext: true
+        - name: Jegyzetfüzet-munkafolyamatok
+          href: /azure/databricks/notebooks/notebook-workflows
+          maintainContext: true
+        - name: Csomagcellák
+          href: /azure/databricks/notebooks/package-cells
+          maintainContext: true
+    - name: Feladatok
+      href: /azure/databricks/jobs
+      maintainContext: true
+    - name: Kódtárak
+      href: /azure/databricks/libraries
+      maintainContext: true
+    - name: Adatok
+      items:
+        - name: Databricks fájlrendszer
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: Adatbázisok és táblák
+          href: /azure/databricks/data/tables
+          maintainContext: true
+        - name: Metaadattárak
+          items:
+            - name: Külső Hive-metaadattár
+              href: /azure/databricks/data/metastores/external-hive-metastore
+              maintainContext: true
+        - name: Adatforrások
+          items:
+            - name: JDBC-t használó SQL-adatbázisok
+              href: /azure/databricks/data/data-sources/sql-databases
+              maintainContext: true
+            - name: Az Apache Spark-összekötőt használó Azure SQL Database
+              href: /azure/databricks/data/data-sources/sql-databases-azure
+              maintainContext: true
+            - name: Azure Blob Storage
+              href: /azure/databricks/data/data-sources/azure/azure-storage
+              maintainContext: true
+            - name: 2. generációs Azure Data Lake Storage
+              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
+              maintainContext: true
+            - name: Azure Data Lake Storage
+              href: /azure/databricks/data/data-sources/azure/azure-datalake
+              maintainContext: true
+            - name: Azure Data Lake Storage-átengedés
+              href: /azure/databricks/data/data-sources/azure/adls-passthrough
+              maintainContext: true
+            - name: Cosmos DB
+              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
+              maintainContext: true
+            - name: SQL Data Warehouse
+              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
+              maintainContext: true
+            - name: Bináris fájlok
+              href: /azure/databricks/data/data-sources/binary-file
+              maintainContext: true
+            - name: Cassandra
+              href: /azure/databricks/data/data-sources/cassandra
+              maintainContext: true
+            - name: Couchbase
+              href: /azure/databricks/data/data-sources/couchbase
+              maintainContext: true
+            - name: Rugalmas keresés
+              href: /azure/databricks/data/data-sources/elasticsearch
+              maintainContext: true
+            - name: Képek
+              href: /azure/databricks/data/data-sources/image
+              maintainContext: true
+            - name: Hive-táblák
+              href: /azure/databricks/data/data-sources/hive-tables
+              maintainContext: true
+            - name: MLflow-kísérlet
+              href: /azure/databricks/data/data-sources/mlflow-experiment
+              maintainContext: true
+            - name: MongoDB
+              href: /azure/databricks/data/data-sources/mongodb
+              maintainContext: true
+            - name: Neo4j
+              href: /azure/databricks/data/data-sources/neo4j
+              maintainContext: true
+            - name: Avro-fájlok
+              href: /azure/databricks/data/data-sources/read-avro
+              maintainContext: true
+            - name: CSV-fájlok
+              href: /azure/databricks/data/data-sources/read-csv
+              maintainContext: true
+            - name: JSON-fájlok
+              href: /azure/databricks/data/data-sources/read-json
+              maintainContext: true
+            - name: Tömörített LZO-fájlok
+              href: /azure/databricks/data/data-sources/read-lzo
+              maintainContext: true
+            - name: Parquet-fájlok
+              href: /azure/databricks/data/data-sources/read-parquet
+              maintainContext: true
+            - name: Redis
+              href: /azure/databricks/data/data-sources/redis
+              maintainContext: true
+            - name: Riak Time Series
+              href: /azure/databricks/data/data-sources/riak-ts
+              maintainContext: true
+            - name: Snowflake
+              href: /azure/databricks/data/data-sources/snowflake
+              maintainContext: true
+            - name: ZIP-fájlok
+              href: /azure/databricks/data/data-sources/zip-files
+              maintainContext: true
+        - name: FileStore
+          href: /azure/databricks/data/filestore
+          maintainContext: true
+    - name: Üzletiintelligencia-eszközök
+      items:
+        - name: BI-eszközök csatlakoztatása
+          href: /azure/databricks/bi/jdbc-odbc-bi
+          maintainContext: true
+        - name: Tableau
+          href: /azure/databricks/bi/tableau
+          maintainContext: true
+        - name: Power BI
+          href: /azure/databricks/bi/power-bi
+          maintainContext: true
+        - name: Alteryx
+          href: /azure/databricks/bi/alteryx
+          maintainContext: true
+        - name: Looker
+          href: /azure/databricks/bi/looker
+          maintainContext: true
+        - name: SQL Workbench/J
+          href: /azure/databricks/bi/workbenchj
+          maintainContext: true
+    - name: Delta Lake
+      items:
+        - name: A Delta Lake bemutatása
+          href: /azure/databricks/delta/delta-intro
+          maintainContext: true
+        - name: Bevezetés a Delta Lake használatába
+          href: /azure/databricks/delta/quick-start
+          maintainContext: true
+        - name: Bevezető jegyzetfüzetek
+          href: /azure/databricks/delta/intro-notebooks
+          maintainContext: true
+        - name: Táblaolvasási és írási kötegműveletek
+          href: /azure/databricks/delta/delta-batch
+          maintainContext: true
+        - name: Táblastreamelési olvasási és írási műveletek
+          href: /azure/databricks/delta/delta-streaming
+          maintainContext: true
+        - name: 'Tábla törlése, frissítése és egyesítése'
+          href: /azure/databricks/delta/delta-update
+          maintainContext: true
+        - name: Tábla segédprogramparancsai
+          href: /azure/databricks/delta/delta-utility
+          maintainContext: true
+        - name: Delta Lake API-referencia
+          href: /azure/databricks/delta/delta-apidoc
+          maintainContext: true
+        - name: Egyidejűség-vezérlés
+          href: /azure/databricks/delta/concurrency-control
+          maintainContext: true
+        - name: Optimalizálás
+          items:
+            - name: Optimalizálás áttekintése
+              href: /azure/databricks/delta/optimizations/index
+              maintainContext: true
+            - name: Teljesítmény optimalizálása fájlkezeléssel
+              href: /azure/databricks/delta/optimizations/file-mgmt
+              maintainContext: true
+            - name: Automatikus optimalizálás
+              href: /azure/databricks/delta/optimizations/auto-optimize
+              maintainContext: true
+            - name: Teljesítmény optimalizálása gyorsítótárazással
+              href: /azure/databricks/delta/optimizations/delta-cache
+              maintainContext: true
+            - name: Elkülönítési szintek
+              href: /azure/databricks/delta/optimizations/isolation-level
+              maintainContext: true
+            - name: MySQL-táblák replikálása Delta Lake-táblákba
+              href: /azure/databricks/delta/optimizations/mysql-delta
+              maintainContext: true
+            - name: Csatlakozási teljesítmény optimalizálása
+              items:
+                - name: Csatlakozási teljesítmény optimalizálásának áttekintése
+                  href: /azure/databricks/delta/join-performance/index
+                  maintainContext: true
+                - name: Tartomány – csatlakozás optimalizálása
+                  href: /azure/databricks/delta/join-performance/range-join
+                  maintainContext: true
+                - name: Döntés – csatlakozás optimalizálása
+                  href: /azure/databricks/delta/join-performance/skew-join
+                  maintainContext: true
+            - name: Optimalizált adatátalakítás
+              items:
+                - name: Optimalizált adatátalakítás áttekintése
+                  href: /azure/databricks/delta/data-transformation/index
+                  maintainContext: true
+                - name: Magasabb rendű függvények
+                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+                  maintainContext: true
+                - name: Összetett adattípusok átalakítása
+                  href: /azure/databricks/delta/data-transformation/complex-types
+                  maintainContext: true
+            - name: Ajánlott eljárások
+              href: /azure/databricks/delta/best-practices
+              maintainContext: true
+            - name: Tábla verziószámozása
+              href: /azure/databricks/delta/optimizations/versioning
+              maintainContext: true
+            - name: Optimalizálási példák
+              href: /azure/databricks/delta/optimizations/optimization-examples
+              maintainContext: true
+        - name: Gyakori kérdések
+          href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: További Delta-erőforrások
+          href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Adatkeretek és adathalmazok
+      items:
+        - name: Adatkeretek és adathalmazok áttekintése
+          href: /azure/databricks/spark/latest/dataframes-datasets/index
+          maintainContext: true
+        - name: A Python-adatkeretek bemutatása
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
+          maintainContext: true
+        - name: A Scala-adatkeretek bemutatása
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
+          maintainContext: true
+        - name: Az adathalmazok bemutatása
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
+          maintainContext: true
+        - name: Összetett és beágyazott adatok
+          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
+          maintainContext: true
+        - name: Összesítők
+          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
+          maintainContext: true
+    - name: Strukturált streamelés
+      items:
+        - name: Strukturált streamelés – áttekintés
+          href: /azure/databricks/spark/latest/structured-streaming/index
+          maintainContext: true
+        - name: Bevezető jegyzetfüzetek
+          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
+          maintainContext: true
+        - name: Adatforrások és -fogadók streamelése
+          items:
+            - name: Források és fogadók áttekintése
+              href: /azure/databricks/spark/latest/structured-streaming/data-sources
+              maintainContext: true
+            - name: Apache Kafka
+              href: /azure/databricks/spark/latest/structured-streaming/kafka
+              maintainContext: true
+            - name: Azure Event Hubs
+              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
+              maintainContext: true
+            - name: Delta Lake-táblák
+              href: /azure/databricks/spark/latest/structured-streaming/delta
+              maintainContext: true
+            - name: Avro-adatok adatkeretekkel történő streamelésének olvasási és írási műveletei
+              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
+              maintainContext: true
+            - name: Írás tetszőleges adatfogadókba
+              href: /azure/databricks/spark/latest/structured-streaming/foreach
+              maintainContext: true
+            - name: Optimalizált Azure Blob Storage Azure Queue Storage szolgáltatással
+              href: /azure/databricks/spark/latest/structured-streaming/aqs
+              maintainContext: true
+        - name: Strukturált streamelés éles környezetben
+          href: /azure/databricks/spark/latest/structured-streaming/production
+          maintainContext: true
+        - name: Streamelési példák
+          href: /azure/databricks/spark/latest/structured-streaming/examples
+          maintainContext: true
+        - name: Spark Streaming (örökölt)
+          items:
+            - name: Spark Streaming (örökölt) – áttekintés
+              href: /azure/databricks/spark/latest/rdd-streaming/index
+              maintainContext: true
+            - name: Spark Streaming-alkalmazások hibakeresése
+              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
+              maintainContext: true
+            - name: Ajánlott eljárások a streamelési alkalmazások fejlesztéséhez
+              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
+              maintainContext: true
     - name: SQL
       items:
         - name: Az SQL áttekintése
@@ -115,7 +537,7 @@
             - name: Create View
               href: /azure/databricks/spark/latest/spark-sql/language-manual/create-view
               maintainContext: true
-            - name: Delete from (Delta Lake az Azure Databricksben)
+            - name: Delete From (Delta Lake az Azure Databricksben)
               href: /azure/databricks/spark/latest/spark-sql/language-manual/delete-from
               maintainContext: true
             - name: Describe Database
@@ -273,422 +695,6 @@
         - name: RStudio az Azure Databricksen
           href: /azure/databricks/spark/latest/sparkr/rstudio
           maintainContext: true
-    - name: Databricks-futtatókörnyezetek
-      items:
-        - name: Futtatókörnyezet áttekintése
-          href: /azure/databricks/runtime/index
-          maintainContext: true
-        - name: A Databricks futtatókörnyezete
-          href: /azure/databricks/runtime/dbr
-          maintainContext: true
-        - name: Databricks-futtatókörnyezet a Condával
-          href: /azure/databricks/runtime/conda
-          maintainContext: true
-        - name: Machine Learninghez készült Databricks-futtatókörnyezet
-          href: /azure/databricks/runtime/mlruntime
-          maintainContext: true
-        - name: Egészségügyi és élettudományok számára készült Databricks-futtatókörnyezet
-          href: /azure/databricks/runtime/hlsruntime
-          maintainContext: true
-        - name: Databricks Light
-          href: /azure/databricks/runtime/light
-          maintainContext: true
-    - name: Munkaterület
-      items:
-        - name: A Databricks-munkaterület megismerése
-          href: /azure/databricks/workspace/index
-          maintainContext: true
-        - name: 'Munkaterület-, fürt-, jegyzetfüzet- és feladatazonosítók beszerzése'
-          href: /azure/databricks/workspace/workspace-details
-          maintainContext: true
-        - name: Munkaterület-objektumok használata
-          href: /azure/databricks/workspace/workspace-objects
-          maintainContext: true
-    - name: Fürtök
-      items:
-        - name: A fürtök áttekintése
-          href: /azure/databricks/clusters/index
-          maintainContext: true
-        - name: Fürtök kezelése
-          href: /azure/databricks/clusters/clusters-manage
-          maintainContext: true
-        - name: Fürt létrehozása
-          href: /azure/databricks/clusters/create
-          maintainContext: true
-        - name: Fürtök konfigurálása
-          href: /azure/databricks/clusters/configure
-          maintainContext: true
-        - name: Fürtcsomópontok inicializálása
-          href: /azure/databricks/clusters/init-scripts
-          maintainContext: true
-        - name: Egyéni tárolók
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
-        - name: GPU-kompatibilis fürtök
-          href: /azure/databricks/clusters/gpu
-          maintainContext: true
-        - name: Készletek
-          items:
-            - name: Készletek áttekintése
-              href: /azure/databricks/clusters/instance-pools/index
-              maintainContext: true
-            - name: Készletek megjelenítése
-              href: /azure/databricks/clusters/instance-pools/display
-              maintainContext: true
-            - name: Készlet létrehozása
-              href: /azure/databricks/clusters/instance-pools/create
-              maintainContext: true
-            - name: Készlet konfigurálása
-              href: /azure/databricks/clusters/instance-pools/configure
-              maintainContext: true
-            - name: Készlet szerkesztése
-              href: /azure/databricks/clusters/instance-pools/edit
-              maintainContext: true
-            - name: Készlet törlése
-              href: /azure/databricks/clusters/instance-pools/delete
-              maintainContext: true
-            - name: Készlet használata
-              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
-              maintainContext: true
-    - name: Notebooks
-      items:
-        - name: Jegyzetfüzetek áttekintése
-          href: /azure/databricks/notebooks/index
-          maintainContext: true
-        - name: Jegyzetfüzetek használata
-          href: /azure/databricks/notebooks/notebooks-use
-          maintainContext: true
-        - name: Jegyzetfüzetek kezelése
-          href: /azure/databricks/notebooks/notebooks-manage
-          maintainContext: true
-        - name: Verziókövetés
-          items:
-            - name: Verziókövetés az Azure DevOpsszal
-              href: /azure/databricks/notebooks/azure-devops-services-version-control
-              maintainContext: true
-            - name: Verziókövetés a Bitbucket Clouddal
-              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
-              maintainContext: true
-            - name: Verziókövetés a GitHubbal
-              href: /azure/databricks/notebooks/github-version-control
-              maintainContext: true
-        - name: Vizualizációk
-          items:
-            - name: Adatok vizualizációja
-              href: /azure/databricks/notebooks/visualizations/index
-              maintainContext: true
-            - name: Elavult vonaldiagramok migrálása
-              href: /azure/databricks/notebooks/visualizations/migrate-charts
-              maintainContext: true
-            - name: Vizualizáció részletes bemutatása Python nyelven
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
-              maintainContext: true
-            - name: Vizualizáció részletes bemutatása Scala nyelven
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
-              maintainContext: true
-            - name: 'HTML, D3 és SVG használata jegyzetfüzetekben'
-              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
-              maintainContext: true
-            - name: Bokeh a Python-jegyzetfüzetekben
-              href: /azure/databricks/notebooks/visualizations/bokeh
-              maintainContext: true
-            - name: Matplotlib és ggplot a Python-jegyzetfüzetekben
-              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
-              maintainContext: true
-            - name: htmlwidgets az R-jegyzetfüzetekben
-              href: /azure/databricks/notebooks/visualizations/htmlwidgets
-              maintainContext: true
-            - name: Plotly a Python- és az R-jegyzetfüzetekben
-              href: /azure/databricks/notebooks/visualizations/plotly
-              maintainContext: true
-        - name: Irányítópultok
-          href: /azure/databricks/notebooks/dashboards
-          maintainContext: true
-        - name: Bemeneti vezérlők
-          href: /azure/databricks/notebooks/widgets
-          maintainContext: true
-        - name: Jegyzetfüzet-munkafolyamatok implementálása
-          href: /azure/databricks/notebooks/notebook-workflows
-          maintainContext: true
-        - name: Csomagcellák
-          href: /azure/databricks/notebooks/package-cells
-          maintainContext: true
-    - name: Azure Databricks-feladatok használata
-      href: /azure/databricks/jobs
-      maintainContext: true
-    - name: Azure Databricks-kódtárak használata
-      href: /azure/databricks/libraries
-      maintainContext: true
-    - name: Adatok
-      items:
-        - name: Databricks fájlrendszer
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
-        - name: Adatok elérése
-          href: /azure/databricks/data/access-data
-          maintainContext: true
-        - name: Adatbázisok és táblák használata
-          href: /azure/databricks/data/tables
-          maintainContext: true
-        - name: FileStore
-          href: /azure/databricks/data/filestore
-          maintainContext: true
-        - name: Adatforrások
-          items:
-            - name: Bináris fájlok
-              href: /azure/databricks/data/data-sources/binary-file
-              maintainContext: true
-            - name: Cassandra
-              href: /azure/databricks/data/data-sources/cassandra
-              maintainContext: true
-            - name: Couchbase
-              href: /azure/databricks/data/data-sources/couchbase
-              maintainContext: true
-            - name: Rugalmas keresés
-              href: /azure/databricks/data/data-sources/elasticsearch
-              maintainContext: true
-            - name: Képek
-              href: /azure/databricks/data/data-sources/image
-              maintainContext: true
-            - name: Hive-táblák importálása
-              href: /azure/databricks/data/data-sources/importing-hive-tables
-              maintainContext: true
-            - name: MLflow-kísérlet
-              href: /azure/databricks/data/data-sources/mlflow-experiment
-              maintainContext: true
-            - name: MongoDB
-              href: /azure/databricks/data/data-sources/mongodb
-              maintainContext: true
-            - name: Neo4j
-              href: /azure/databricks/data/data-sources/neo4j
-              maintainContext: true
-            - name: Avro-fájlok
-              href: /azure/databricks/data/data-sources/read-avro
-              maintainContext: true
-            - name: CSV-fájlok
-              href: /azure/databricks/data/data-sources/read-csv
-              maintainContext: true
-            - name: JSON-fájlok
-              href: /azure/databricks/data/data-sources/read-json
-              maintainContext: true
-            - name: Tömörített LZO-fájlok
-              href: /azure/databricks/data/data-sources/read-lzo
-              maintainContext: true
-            - name: Parquet-fájlok
-              href: /azure/databricks/data/data-sources/read-parquet
-              maintainContext: true
-            - name: Redis
-              href: /azure/databricks/data/data-sources/redis
-              maintainContext: true
-            - name: Riak Time Series
-              href: /azure/databricks/data/data-sources/riak-ts
-              maintainContext: true
-            - name: Snowflake
-              href: /azure/databricks/data/data-sources/snowflake
-              maintainContext: true
-            - name: Azure SQL Database
-              href: /azure/databricks/data/data-sources/sql-databases-azure
-              maintainContext: true
-            - name: SQL Database-adatbázisok
-              href: /azure/databricks/data/data-sources/sql-databases
-              maintainContext: true
-            - name: ZIP-fájlok
-              href: /azure/databricks/data/data-sources/zip-files
-              maintainContext: true
-            - name: Azure Data Lake Storage-átengedés
-              href: /azure/databricks/data/data-sources/azure/adls-passthrough
-              maintainContext: true
-            - name: 2. generációs Azure Data Lake Storage
-              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
-              maintainContext: true
-            - name: Azure Data Lake Storage
-              href: /azure/databricks/data/data-sources/azure/azure-datalake
-              maintainContext: true
-            - name: Azure Storage tárterület
-              href: /azure/databricks/data/data-sources/azure/azure-storage
-              maintainContext: true
-            - name: Cosmos DB-összekötő
-              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
-              maintainContext: true
-            - name: SQL Data Warehouse
-              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
-              maintainContext: true
-        - name: Metaadattárak
-          items:
-            - name: Külső Hive-metaadattár
-              href: /azure/databricks/data/metastores/external-hive-metastore
-              maintainContext: true
-    - name: Üzletiintelligencia-eszközök
-      items:
-        - name: BI-eszközök csatlakoztatása
-          href: /azure/databricks/bi/jdbc-odbc-bi
-          maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
-    - name: Delta Lake
-      items:
-        - name: A Delta Lake bemutatása
-          href: /azure/databricks/delta/delta-intro
-          maintainContext: true
-        - name: Bevezetés a Delta Lake használatába
-          href: /azure/databricks/delta/quick-start
-          maintainContext: true
-        - name: Bevezető jegyzetfüzetek
-          href: /azure/databricks/delta/intro-notebooks
-          maintainContext: true
-        - name: Táblaolvasási és írási kötegműveletek
-          href: /azure/databricks/delta/delta-batch
-          maintainContext: true
-        - name: Táblastreamelési olvasási és írási műveletek
-          href: /azure/databricks/delta/delta-streaming
-          maintainContext: true
-        - name: 'Tábla törlése, frissítése és egyesítése'
-          href: /azure/databricks/delta/delta-update
-          maintainContext: true
-        - name: Tábla segédprogramparancsai
-          href: /azure/databricks/delta/delta-utility
-          maintainContext: true
-        - name: Delta Lake API-referencia
-          href: /azure/databricks/delta/delta-apidoc
-          maintainContext: true
-        - name: Egyidejűség-vezérlés
-          href: /azure/databricks/delta/concurrency-control
-          maintainContext: true
-        - name: Optimalizálás
-          items:
-            - name: Optimalizálás áttekintése
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Teljesítmény optimalizálása fájlkezeléssel
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Automatikus optimalizálás
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Teljesítmény optimalizálása gyorsítótárazással
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Elkülönítési szintek
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: MySQL-táblák replikálása Delta Lake-táblákba
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Csatlakozási teljesítmény optimalizálása
-              items:
-                - name: Csatlakozási teljesítmény optimalizálásának áttekintése
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: Tartomány – csatlakozás optimalizálása
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: Döntés – csatlakozás optimalizálása
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: Optimalizált adatátalakítás
-              items:
-                - name: Optimalizált adatátalakítás áttekintése
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Magasabb rendű függvények
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Összetett adattípusok átalakítása
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: Tábla verziószámozása
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: Optimalizálási példák
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
-        - name: Gyakori kérdések
-          href: /azure/databricks/delta/delta-faq
-          maintainContext: true
-        - name: További Delta-erőforrások
-          href: /azure/databricks/delta/delta-resources
-          maintainContext: true
-    - name: Adatkeretek és adathalmazok
-      items:
-        - name: Adatkeretek és adathalmazok áttekintése
-          href: /azure/databricks/spark/latest/dataframes-datasets/index
-          maintainContext: true
-        - name: A Python-adatkeretek bemutatása
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
-          maintainContext: true
-        - name: A Scala-adatkeretek bemutatása
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
-          maintainContext: true
-        - name: Az adathalmazok bemutatása
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
-          maintainContext: true
-        - name: Összetett és beágyazott adatok
-          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
-          maintainContext: true
-        - name: Összesítők
-          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
-          maintainContext: true
-    - name: Strukturált streamelés
-      items:
-        - name: Strukturált streamelés – áttekintés
-          href: /azure/databricks/spark/latest/structured-streaming/index
-          maintainContext: true
-        - name: Bevezető jegyzetfüzetek
-          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
-          maintainContext: true
-        - name: Adatforrások és -fogadók streamelése
-          items:
-            - name: Források és fogadók áttekintése
-              href: /azure/databricks/spark/latest/structured-streaming/data-sources
-              maintainContext: true
-            - name: Apache Kafka
-              href: /azure/databricks/spark/latest/structured-streaming/kafka
-              maintainContext: true
-            - name: Azure Event Hubs
-              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
-              maintainContext: true
-            - name: Delta Lake-táblák
-              href: /azure/databricks/spark/latest/structured-streaming/delta
-              maintainContext: true
-            - name: Avro-adatok adatkeretekkel történő streamelésének olvasási és írási műveletei
-              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
-              maintainContext: true
-            - name: Írás tetszőleges adatfogadókba
-              href: /azure/databricks/spark/latest/structured-streaming/foreach
-              maintainContext: true
-            - name: Optimalizált Azure Blob Storage Azure Queue Storage szolgáltatással
-              href: /azure/databricks/spark/latest/structured-streaming/aqs
-              maintainContext: true
-        - name: Strukturált streamelés éles környezetben
-          href: /azure/databricks/spark/latest/structured-streaming/production
-          maintainContext: true
-        - name: Streamelési példák
-          href: /azure/databricks/spark/latest/structured-streaming/examples
-          maintainContext: true
-        - name: Spark Streaming (örökölt)
-          items:
-            - name: Spark Streaming (örökölt) – áttekintés
-              href: /azure/databricks/spark/latest/rdd-streaming/index
-              maintainContext: true
-            - name: Spark Streaming-alkalmazások hibakeresése
-              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
-              maintainContext: true
-            - name: Ajánlott eljárások a streamelési alkalmazások fejlesztéséhez
-              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
-              maintainContext: true
     - name: Gépi tanulás
       items:
         - name: Gépi tanulás – áttekintés
@@ -708,7 +714,7 @@
             - name: Speciális MLlib-példa
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: Auto ML
+        - name: Automatikus gépi tanulás
           items:
             - name: Hyperopt
               items:
@@ -823,21 +829,6 @@
         - name: Bevezetés az MLflow használatába
           href: /azure/databricks/applications/mlflow/quick-start
           maintainContext: true
-        - name: A gépi tanulás betanítási futtatásainak nyomon követése
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: Nyomon követés külső hozzáférése
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
-        - name: 'Modellek mentése, betöltése és üzembe helyezése'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: Futtatások reprodukálása MLflow-projektekkel
-          href: /azure/databricks/applications/mlflow/projects
-          maintainContext: true
-        - name: Példák MLflow-modellekre
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
         - name: Bevezetés az MLflow Java és Scala használatába
           href: /azure/databricks/applications/mlflow/quick-start-java-scala
           maintainContext: true
@@ -847,8 +838,23 @@
         - name: Bevezetés az MLflow R használatába
           href: /azure/databricks/applications/mlflow/quick-start-r
           maintainContext: true
+        - name: A gépi tanulás betanítási futtatásainak nyomon követése
+          href: /azure/databricks/applications/mlflow/tracking
+          maintainContext: true
         - name: Példák az MLflow általi nyomon követésre
           href: /azure/databricks/applications/mlflow/tracking-examples
+          maintainContext: true
+        - name: Nyomon követés külső hozzáférése
+          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
+          maintainContext: true
+        - name: 'Modellek mentése, betöltése és üzembe helyezése'
+          href: /azure/databricks/applications/mlflow/models
+          maintainContext: true
+        - name: Példák MLflow-modellekre
+          href: /azure/databricks/applications/mlflow/model-examples
+          maintainContext: true
+        - name: Futtatások reprodukálása MLflow-projektekkel
+          href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
     - name: Gráfelemzés
       items:
@@ -937,10 +943,13 @@
             - name: Python-statisztikatárak
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
+            - name: SAIGE
+              href: /azure/databricks/applications/genomics/tertiary/saige
+              maintainContext: true
             - name: Hail 0.2
               href: /azure/databricks/applications/genomics/tertiary/hail
               maintainContext: true
-    - name: Migrálási útmutatók
+    - name: Migrálás
       items:
         - name: Éles számítási feladatok migrálása
           href: /azure/databricks/migration/production
@@ -951,7 +960,7 @@
         - name: Számítási feladatok migrálása a Delta Lake-be
           href: /azure/databricks/delta/porting
           maintainContext: true
-    - name: Biztonság
+    - name: Biztonság és adatvédelem
       items:
         - name: Biztonsági áttekintés
           href: /azure/databricks/security/index
@@ -976,9 +985,6 @@
             - name: Példa titkos munkafolyamatra
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
-    - name: Hitelesítés delegálása külső szolgáltatásoknak
-      href: /azure/databricks/delegated-auth
-      maintainContext: true
     - name: Adminisztráció
       items:
         - name: Az adminisztráció áttekintése
@@ -1136,6 +1142,9 @@
             - name: Váratlan fürtleállás
               href: /azure/databricks/kb/clusters/termination-reasons
               maintainContext: true
+            - name: Az Apache Spark felhasználói felülete nem jeleníti meg a teljes csomópont-memóriát
+              href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
         - name: Adatkezelés
           items:
             - name: Hozzáfűzés DataFrame-hez
@@ -1227,6 +1236,9 @@
               maintainContext: true
             - name: Felügyelt Delta Lake-táblázat eltávolítása
               href: /azure/databricks/kb/delta/drop-delta-table
+              maintainContext: true
+            - name: Az UPDATE lekérdezés IllegalStateException hibával meghiúsul
+              href: /azure/databricks/kb/delta/update-query-fails
               maintainContext: true
         - name: Fejlesztői eszközök
           items:
@@ -1358,6 +1370,14 @@
             - name: Nem lehet jegyzetfüzetet futtatni a cellastreamelés megszakítása után
               href: /azure/databricks/kb/notebooks/streaming-notebook-stuck
               maintainContext: true
+            - name: A Mégse parancs hibaelhárítása
+              href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
+              maintainContext: true
+        - name: Biztonság és engedélyek
+          items:
+            - name: Táblalétrehozási hiba biztonsági kivétellel
+              href: /azure/databricks/kb/security/table-create-security-exception
+              maintainContext: true
         - name: Python
           items:
             - name: Fürt létrehozása az Anacondával
@@ -1420,8 +1440,8 @@
             - name: A tábla vagy a nézet nem található
               href: /azure/databricks/kb/sql/global-temp-view-not-found
               maintainContext: true
-            - name: Streamelés
-              items: null
+        - name: Streamelés
+          items:
             - name: Helyreállítás ellenőrzőpont vagy kimeneti könyvtár módosítása után
               href: /azure/databricks/kb/streaming/file-sink-streaming
               maintainContext: true
@@ -1436,7 +1456,7 @@
     - name: Fejlesztői eszközök
       items:
         - name: Databricks-kapcsolat
-          href: /azure/databricks/dev-tools/db-connect
+          href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
         - name: Adatfolyamatokban lévő függőségek kezelése
           href: /azure/databricks/dev-tools/data-pipelines
@@ -1486,14 +1506,14 @@
             - name: Munkaterület
               href: /azure/databricks/dev-tools/api/latest/workspace
               maintainContext: true
-        - name: Futásidejű verzió sztringje REST API-hívásokhoz
-          href: /azure/databricks/dev-tools/api/latest/runtime-version-string
-          maintainContext: true
+            - name: Futásidejű verzió sztringje REST API-hívásokhoz
+              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
+              maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
           maintainContext: true
     - name: Databricks-segédprogramok
-      href: /azure/databricks/dev-tools/dbutils
+      href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: A Databricks parancssori felülete
       href: /azure/databricks/dev-tools/databricks-cli
@@ -1503,10 +1523,8 @@
       maintainContext: true
     - name: Azure Databricks REST API
       href: /azure/databricks//rest/api/databricks
-      maintainContext: true
     - name: Resource Manager-sablon
       href: /azure/databricks//azure/templates/microsoft.databricks/workspaces
-      maintainContext: true
 - name: További források
   items:
     - name: Kibocsátási megjegyzések
@@ -1515,6 +1533,9 @@
           items:
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019. október
+              href: /azure/databricks/release-notes/product/2019/october
               maintainContext: true
             - name: 2019. szeptember
               href: /azure/databricks/release-notes/product/2019/september
@@ -1683,7 +1704,6 @@
           maintainContext: true
     - name: R fejlesztői útmutató
       href: /azure/machine-learning/r-developers-guide
-      maintainContext: true
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Díjszabás

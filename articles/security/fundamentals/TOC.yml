@@ -1,5 +1,5 @@
 - name: Az alapok dokumentációja
-  href: index.md
+  href: index.yml
 - name: Architektúra és kialakítás
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: Inaktív adatok titkosítása
           href: encryption-atrest.md
-        - name: Azure Disk Encryption virtuális gépekhez és virtuálisgép-méretezési csoportokhoz
+        - name: Azure Disk Encryption virtuális gépekhez
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: Biztonsági útmutató a tároláshoz
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'

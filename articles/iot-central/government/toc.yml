@@ -6,14 +6,12 @@
       href: overview-iot-central-government.md
 - name: Oktatóanyagok
   items:
-    - name: Üzlethelyiség-elemzés – pénztárrészleg
-      items:
-        - name: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
-          href: tutorial-connected-waste-management.md
-        - name: Vízfogyasztás-monitorozási alkalmazás létrehozása
-          href: tutorial-water-consumption-monitoring.md
-        - name: Vízminőség-monitorozási alkalmazás létrehozása
-          href: tutorial-water-quality-monitoring.md
+    - name: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
+      href: tutorial-connected-waste-management.md
+    - name: Vízfogyasztás-monitorozási alkalmazás létrehozása
+      href: tutorial-water-consumption-monitoring.md
+    - name: Vízminőség-monitorozási alkalmazás létrehozása
+      href: tutorial-water-quality-monitoring.md
 - name: Alapelvek
   items:
     - name: Az összekapcsolt hulladékmonitorozás referenciaarchitektúrája
@@ -22,10 +20,10 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: A vízminőség-monitorozás referenciaarchitektúrája
       href: concepts-waterqualitymonitoring-architecture.md
-    - name: Kapcsolatok
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
 - name: Útmutatók
   items:
+    - name: Az alkalmazás csatlakoztatása a Dynamics 365 Field Serviceshez
+      href: how-to-configure-connected-field-services.md
     - name: Eszközök csatlakoztatása
       items:
         - name: MXChip IoT DevKit előkészítése és csatlakoztatása
@@ -56,8 +54,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Egyéni szabályok létrehozása
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-        - name: Egyéni elemzések létrehozása a Databricksszel
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Adminisztráció
