@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.openlocfilehash: 7f2a8ead8195328552a138b71e304c5f5a0857e2
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043493"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064051"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -157,7 +157,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konzisztencialeképezés 
 
-Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  [Itt](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping)részletesen ismertetjük a konzisztencia-hozzárendelést.
+Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  [Itt](consistency-levels-across-apis.md#cassandra-mapping)részletesen ismertetjük a konzisztencia-hozzárendelést.
 
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
@@ -165,7 +165,7 @@ A Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC)
 
 ## <a name="keyspace-and-table-options"></a>A térköz és a tábla beállításai
 
-Jelenleg a rendszer figyelmen kívül hagyja a régió neve, osztály, replication_factor és Datacenter beállításait a "Create Space" parancsban. A rendszer az alapul szolgáló Azure Cosmos DB [globális terjesztési](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) replikációs módszerét használja a régiók hozzáadásához. Ha szüksége van az adatrégiók közötti adatmennyiségre, a PowerShell, a CLI vagy a portál használatával engedélyezheti a fiók szintjén, és további információt a [régiók hozzáadása](how-to-manage-database-account.md#addremove-regions-from-your-database-account) című cikkben talál. A Durable_writes nem tiltható le, mert Azure Cosmos DB biztosítja, hogy minden írás tartós legyen. Azure Cosmos DB minden régióban replikálja az adathalmazt, amely 4 replikaből áll, és ez a replikakészlet- [konfiguráció](global-dist-under-the-hood.md) nem módosítható.
+Jelenleg a rendszer figyelmen kívül hagyja a régió neve, osztály, replication_factor és Datacenter beállításait a "Create Space" parancsban. A rendszer az alapul szolgáló Azure Cosmos DB [globális terjesztési](global-dist-under-the-hood.md) replikációs módszerét használja a régiók hozzáadásához. Ha szüksége van az adatrégiók közötti adatmennyiségre, a PowerShell, a CLI vagy a portál használatával engedélyezheti a fiók szintjén, és további információt a [régiók hozzáadása](how-to-manage-database-account.md#addremove-regions-from-your-database-account) című cikkben talál. A Durable_writes nem tiltható le, mert Azure Cosmos DB biztosítja, hogy minden írás tartós legyen. Azure Cosmos DB minden régióban replikálja az adathalmazt, amely 4 replikaből áll, és ez a replikakészlet- [konfiguráció](global-dist-under-the-hood.md) nem módosítható.
  
 A rendszer a tábla létrehozásakor figyelmen kívül hagyja az összes beállítást, kivéve azokat a gc_grace_seconds, amelyeknek nulla értékűnek kell lenniük.
 A térköznek és a táblának a "cosmosdb_provisioned_throughput" nevű extra opcióval kell rendelkeznie, amelynek minimális értéke 400 RU/s. A térköz átviteli sebessége lehetővé teszi a több tábla közötti adatforgalom megosztását, és olyan helyzetekben hasznos, amikor az összes tábla nem használja a kiépített átviteli sebességet. Az ALTER TABLE parancs lehetővé teszi a kiépített átviteli sebesség módosítását a régiók között. 
