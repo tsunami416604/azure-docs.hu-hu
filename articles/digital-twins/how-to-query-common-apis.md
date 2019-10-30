@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/29/2019
-ms.openlocfilehash: 1d1c0e2f12d5a971cf08933e5d469093eb1f6d52
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/27/2019
+ms.openlocfilehash: ef9e7a41f1de05e4d21a9ad7b45ed2b99885b6b8
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949876"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044440"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Azure digitális Twins API-k lekérdezése gyakori feladatokhoz
 
@@ -56,7 +56,7 @@ Ez a szakasz példákat mutat be a kiépített területekre vonatkozó további 
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Szerezzen be szóközöket a *AreaInSqMeters* nevű tulajdonsággal, értéke pedig 30. Karakterlánc-műveleteket is végrehajthat, például beolvashatja a `name = X contains Y` tulajdonságot tartalmazó szóközöket.
+- Szerezzen be szóközöket a *AreaInSqMeters* nevű tulajdonsággal, értéke pedig 30. Karakterlánc-műveleteket is végrehajthat, például lekérheti a `name = X contains Y`kal rendelkező tulajdonságértékeket tartalmazó szóközöket.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
@@ -234,7 +234,7 @@ Ez a szakasz néhány példa API-lekérdezést mutat be a felhasználók Azure d
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan végezhet hitelesítést a felügyeleti API-val, olvassa el [a hitelesítés API](./security-authenticating-apis.md)-kkal című témakört.
 

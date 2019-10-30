@@ -4,27 +4,27 @@ description: Megtudhatja, mit érdemes figyelembe venni Azure Files központi te
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/7/2019
+ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7dfd7e29b119b5fe98b649b2e5f5f45b422c4634
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061737"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053423"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
 
-Ez a cikk Azure File Sync központi telepítésének fontos szempontjait ismerteti. Javasoljuk, hogy olvassa el [a Azure Files központi telepítésének](storage-files-planning.md)megtervezését is. 
+Ez a cikk Azure File Sync központi telepítésének fontos szempontjait ismerteti. Javasoljuk, hogy olvassa el [a Azure Files központi telepítésének megtervezését](storage-files-planning.md)is. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="azure-file-sync-terminology"></a>Azure File Sync terminológia
 Mielőtt beolvassa a Azure File Sync központi telepítés tervezésének részleteit, fontos megérteni a terminológiát.
 
-### <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
+### <a name="storage-sync-service"></a>Storage Sync szolgáltatás
 A Storage Sync szolgáltatás a legfelső szintű Azure-erőforrás a Azure File Sync számára. A Storage Sync szolgáltatás erőforrása a Storage-fiók erőforrásának egyik társa, és hasonló módon telepíthető Azure-erőforráscsoportok számára is. A Storage-fiók erőforrásának külön legfelső szintű erőforrására van szükség, mert a Storage Sync szolgáltatás több szinkronizálási csoporton keresztül több Storage-fiókkal is létrehozhat szinkronizálási kapcsolatokat. Egy előfizetés több Storage Sync Service-erőforrást is üzembe helyezhet.
 
 ### <a name="sync-group"></a>Szinkronizálási csoport
@@ -35,14 +35,14 @@ A regisztrált kiszolgáló objektum megbízhatósági kapcsolatot képvisel a k
 
 ### <a name="azure-file-sync-agent"></a>Azure File Sync ügynök
 Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Windows Server szinkronizálását Azure-fájlmegosztással. A Azure File Sync ügynöknek három fő összetevője van: 
-- **FileSyncSvc.exe**: A háttérben futó Windows-szolgáltatás, amely a kiszolgálók végpontjai változásainak figyelésére, valamint a szinkronizálási munkamenetek Azure-ba való indítására felelős.
-- **StorageSync.sys**: A Azure File Sync fájlrendszer-szűrő, amely felelős a fájlok Azure Files (a felhőalapú rétegek engedélyezésekor).
-- **PowerShell-felügyeleti parancsmagok**: PowerShell-parancsmagok, amelyek a Microsoft. StorageSync Azure-erőforrás-szolgáltatóval való kommunikációhoz használhatók. Ezeket a következő (alapértelmezett) helyeken találja:
+- **FileSyncSvc. exe**: a háttérben futó Windows-szolgáltatás, amely a kiszolgálók végpontjai változásainak figyelésére, valamint a szinkronizálási munkamenetek Azure-ba való indítására felelős.
+- **StorageSync. sys**: a Azure file Sync fájlrendszer-szűrő, amely a fájlok Azure Files (a felhőalapú rétegek engedélyezése esetén) felelős.
+- **PowerShell-kezelési parancsmagok**: a Microsoft. StorageSync Azure erőforrás-szolgáltatóval való interakcióhoz használt PowerShell-parancsmagok. Ezeket a következő (alapértelmezett) helyeken találja:
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Kiszolgálói végpont
-A kiszolgálói végpont a regisztrált kiszolgálón egy konkrét helyet jelöl, például egy mappát egy kiszolgálói köteten. Ugyanazon a köteten több kiszolgálói végpont is létezhet, `F:\sync1` ha a névterek nem fedik át egymást (például és `F:\sync2`). A felhő-előállítók házirendjeit egyenként is konfigurálhatja az egyes kiszolgálói végpontokhoz. 
+A kiszolgálói végpont a regisztrált kiszolgálón egy konkrét helyet jelöl, például egy mappát egy kiszolgálói köteten. Ugyanazon a köteten több kiszolgálói végpont is létezhet, ha a névterek nem fedik át egymást (például `F:\sync1` és `F:\sync2`). A felhő-előállítók házirendjeit egyenként is konfigurálhatja az egyes kiszolgálói végpontokhoz. 
 
 Csatlakoztatási pont használatával létrehozhat egy kiszolgálói végpontot. Vegye figyelembe, hogy a kiszolgálói végponton belüli csatolási kimaradnak.  
 
@@ -71,7 +71,7 @@ Ez a szakasz Azure File Sync ügynök rendszerkövetelményeit, valamint a Windo
 ### <a name="evaluation-cmdlet"></a>Próbaverziós parancsmag
 Azure File Sync telepítése előtt ki kell értékelnie, hogy kompatibilis-e a rendszerrel a Azure File Sync próbaverziós parancsmag használatával. Ez a parancsmag ellenőrzi a fájlrendszerrel és az adatkészlettel kapcsolatos lehetséges problémákat, például a nem támogatott karaktereket vagy az operációs rendszer nem támogatott verzióját. Vegye figyelembe, hogy az ellenőrzések a legtöbbet, de nem az összes alább említett funkciót lefedik. Javasoljuk, hogy alaposan olvassa el a szakasz további részeit, és győződjön meg arról, hogy az üzembe helyezés zökkenőmentesen működik. 
 
-Az értékelési parancsmag az az PowerShell-modul telepítésével telepíthető, amely az alábbi útmutatás szerint telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+A kiértékelési parancsmag az az PowerShell-modul telepítésével telepíthető, amely az alábbi utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 #### <a name="usage"></a>Használat  
 A kiértékelési eszközt többféleképpen is meghívhatja: elvégezheti a rendszer-ellenőrzéseket, az adatkészlet-ellenőrzéseket vagy mindkettőt. A rendszerek és az adatkészlet ellenőrzésének elvégzéséhez tegye a következőket: 
@@ -97,13 +97,16 @@ Az eredmények CSV-ben való megjelenítéséhez:
 ```
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
-- Egy Windows Server 2012 R2, Windows Server 2016 vagy Windows Server 2019 rendszert futtató kiszolgáló:
+- A következő operációsrendszer-verziók egyikét futtató kiszolgáló:
 
-    | Version | Támogatott SKU-i | Támogatott üzembe helyezési lehetőségek |
+    | Verzió | Támogatott SKU-i | Támogatott üzembe helyezési lehetőségek |
     |---------|----------------|------------------------------|
-    | A Windows Server 2019 | Datacenter és standard | Teljes és alapvető |
+    | Windows Server 2019 | Datacenter és standard | Teljes és alapvető |
     | Windows Server 2016 | Datacenter és standard | Teljes és alapvető |
     | Windows Server 2012 R2 | Datacenter és standard | Teljes és alapvető |
+    | Windows Server IoT 2019 a Storage-hoz| Datacenter és standard | Teljes és alapvető |
+    | Windows Storage Server 2016| Datacenter és standard | Teljes és alapvető |
+    | Windows Storage Server 2012 R2| Datacenter és standard | Teljes és alapvető |
 
     A rendszer a Windows Server jövőbeli verzióit adja hozzá a kiadásuk után.
 
@@ -119,14 +122,14 @@ Az eredmények CSV-ben való megjelenítéséhez:
 
 ### <a name="file-system-features"></a>Fájlrendszer-funkciók
 
-| Funkció | Támogatási állapot | Megjegyzések |
+| Szolgáltatás | Támogatási állapot | Megjegyzések |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési listák (ACL-ek) | Teljes mértékben támogatott | A Windows ACL-eket a Azure File Sync megőrzi, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. A Windows ACL-ek (még) a Azure Files által támogatottak, ha a fájlok közvetlenül a felhőben érhetők el. |
-| Rögzített hivatkozások | Kihagyva | |
-| Szimbolikus hivatkozások | Kihagyva | |
+| Rögzített hivatkozások | Kimarad | |
+| Szimbolikus hivatkozások | Kimarad | |
 | Csatlakoztatási pontok | Részlegesen támogatott | A csatlakoztatási pontok lehetnek a kiszolgálói végpontok gyökeré, de a rendszer kihagyja őket, ha egy kiszolgálói végpont névterében szerepelnek. |
-| Csomópontok | Kihagyva | Például elosztott fájlrendszer DfrsrPrivate és DFSRoots mappákat. |
-| Újraelemzési pontok | Kihagyva | |
+| Csomópontok | Kimarad | Például elosztott fájlrendszer DfrsrPrivate és DFSRoots mappákat. |
+| Újraelemzési pontok | Kimarad | |
 | NTFS-tömörítés | Teljes mértékben támogatott | |
 | Ritka fájlok | Teljes mértékben támogatott | A ritka fájlok szinkronizálása (nincs letiltva), de teljes fájlként szinkronizálja őket a felhőbe. Ha a fájl tartalma megváltozik a felhőben (vagy egy másik kiszolgálón), a fájl már nem ritka, amikor a módosítás le van töltve. |
 | Alternatív adatfolyamok (ADS) | Megőrzött, de nincs szinkronizálva | A fájl besorolási infrastruktúrája által létrehozott besorolási címkék például nem szinkronizálhatók. Az egyes kiszolgálói végpontokon található fájlokra vonatkozó meglévő besorolási címkék érintetlenek maradnak. |
@@ -139,12 +142,12 @@ Az eredmények CSV-ben való megjelenítéséhez:
 | Fájl/mappa | Megjegyzés |
 |-|-|
 | Desktop. ini | A rendszerfájlra vonatkozó fájl |
-| ethumbs.db$ | Ideiglenes fájl a miniatűrökhöz |
-| ~$\*.\* | Ideiglenes Office-fájl |
+| ethumbs. db $ | Ideiglenes fájl a miniatűrökhöz |
+| ~$ \*. \* | Ideiglenes Office-fájl |
 | \*. tmp | Ideiglenes fájl |
-| \*.laccdb | ADATBÁZIS-zárolási fájl elérése|
+| \*. laccdb | ADATBÁZIS-zárolási fájl elérése|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Belső szinkronizáló fájl|
-| \\Rendszerkötet adatai | A kötethez tartozó mappa |
+| rendszerkötet-információk \\ | A kötethez tartozó mappa |
 | $RECYCLE. BIN| Mappa |
 | \\SyncShareState | A szinkronizáláshoz használt mappa |
 
@@ -171,21 +174,21 @@ Azoknál a köteteknél, amelyeken nincs engedélyezve a felhőalapú rétegek h
     - A szabad terület házirendje a hő használatával továbbra is a köteten lévő szabad területtel rendelkező fájlokat fogja használni.
     - A Date Policy kihagyja a fájlokhoz hozzáférő, a deduplikálás optimalizálási feladata miatt esetlegesen felhasználható fájlok leválasztását.
 - A folyamatban lévő deduplikálás optimalizációs feladatokhoz a dátummal ellátott felhő-előfizetések késleltetve lesznek az adatok deduplikálása [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) beállítással, ha a fájl még nincs feltömörítve. 
-    - Példa: Ha a MinimumFileAgeDays-beállítás 7 nap, a felhő-előállítási dátum házirendje pedig 30 nap, a dátum-és 37 nap után a rendszer a fájlokat.
-    - Megjegyzés: Ha Azure File Sync a fájlt, akkor a deduplikálás optimalizálási feladata kihagyja a fájlt.
+    - Példa: Ha a MinimumFileAgeDays beállítás értéke 7 nap, a felhő-előállítási dátum házirendje pedig 30 nap, a dátum-és 37 nap után a rendszer a fájlokat is felveszi.
+    - Megjegyzés: Ha egy fájlt Azure File Sync, akkor a deduplikálás optimalizálási feladata kihagyja a fájlt.
 - Ha a telepített Azure file Sync ügynökkel rendelkező Windows Server 2012 R2 rendszert futtató kiszolgáló a Windows Server 2016 vagy a Windows Server 2019 rendszerre frissül, a következő lépéseket kell végrehajtani az deduplikálás és a felhőalapú rétegek egyazon köteten történő támogatásához:  
     - Távolítsa el a Windows Server 2012 R2 Azure File Sync Agent ügynököt, és indítsa újra a kiszolgálót.
-    - Töltse le a Azure File Sync-ügynököt az új kiszolgáló operációs rendszerének verziójára (Windows Server 2016 vagy Windows Server 2019).
+    - Töltse le az Azure File Sync-ügynököt az új kiszolgáló operációs rendszerének verziójára (Windows Server 2016 vagy Windows Server 2019).
     - Telepítse a Azure File Sync ügynököt, és indítsa újra a kiszolgálót.  
     
-    Megjegyzés: Az ügynök eltávolítása és újratelepítése után a rendszer megőrzi a Azure File Sync konfigurációs beállításait a kiszolgálón.
+    Megjegyzés: az ügynök eltávolítása és újratelepítése után a rendszer megőrzi a Azure File Sync konfigurációs beállításait a kiszolgálón.
 
 ### <a name="distributed-file-system-dfs"></a>Elosztott fájlrendszer (DFS)
 Azure File Sync támogatja az elosztott fájlrendszerbeli névterek (DFS-N) és a Elosztott fájlrendszer replikációs szolgáltatása (DFS-R) közötti együttműködési lehetőséget.
 
-**Elosztott fájlrendszerbeli névterek (DFS-N)** : A Azure File Sync teljes mértékben támogatott a DFS-N kiszolgálókon. Az Azure File Sync-ügynököt telepítheti egy vagy több elosztott fájlrendszerbeli tagon, hogy szinkronizálja az adatkapcsolatot a kiszolgálói végpontok és a felhő végpontja között. További információ: az [elosztott fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Elosztott fájlrendszerbeli névterek (DFS-n)** : a Azure file Sync teljes mértékben támogatott a DFS-n kiszolgálókon. Az Azure File Sync-ügynököt telepítheti egy vagy több elosztott fájlrendszerbeli tagon, hogy szinkronizálja az adatkapcsolatot a kiszolgálói végpontok és a felhő végpontja között. További információ: az [elosztott fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)** : Mivel a DFS-R és a Azure File Sync mindkét replikációs megoldás, a legtöbb esetben azt javasoljuk, hogy a DFS-R-t a Azure File Syncával cserélje le. A DFS-R és a Azure File Sync együttes használata azonban több esetben is lehetséges:
+**Elosztott fájlrendszer replikációs szolgáltatása (DFS-r)** : mivel a DFS-r és a Azure file Sync egyaránt replikációs megoldás, a legtöbb esetben azt javasoljuk, hogy a DFS-r-t Azure file Sync-re cserélje. A DFS-R és a Azure File Sync együttes használata azonban több esetben is lehetséges:
 
 - Egy DFS-R üzemelő példányról telepít át egy Azure File Sync központi telepítésre. További információ: [elosztott fájlrendszer replikációs szolgáltatása (DFS-R) központi telepítésének áttelepítése Azure file Syncre](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Nem minden helyszíni kiszolgálónak, amelyhez a fájl adatai másolata szükséges, közvetlenül kapcsolódhat az internethez.
@@ -241,22 +244,22 @@ Nem kell más HSM-megoldásokat használni a Azure File Synchoz.
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 Azure File Sync csak a következő régiókban érhető el:
 
-| Régió | Adatközpont helye |
+| Region (Régió) | Adatközpont helye |
 |--------|---------------------|
-| Kelet-Ausztrália | Új-Dél-Wales |
+| Ausztrália keleti régiója | Új-Dél-Wales |
 | Délkelet-Ausztrália | Victoria |
 | Dél-Brazília | Sao Paulo állam |
 | Közép-Kanada | Toronto |
-| Kelet-Kanada | Quebec város |
+| Kelet-Kanada | Quebec City |
 | Közép-India | Pune |
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong (KKT) |
-| East US | Virginia |
+| USA keleti régiója | Virginia |
 | USA 2. keleti régiója | Virginia |
 | Közép-Franciaország | Párizs |
 | Dél-Franciaország * | Marseille |
 | Korea középső régiója | Szöul |
-| Korea déli régiója | Busan |
+| Dél-Korea | Puszan |
 | Kelet-Japán | Tokió, Szaitama |
 | Nyugat-Japán | Oszaka |
 | USA északi középső régiója | Illinois |
@@ -266,15 +269,15 @@ Azure File Sync csak a következő régiókban érhető el:
 | USA déli középső régiója | Texas |
 | Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
-| Az Egyesült Királyság déli régiója | London |
-| Az Egyesült Királyság nyugati régiója | Cardiff |
-| USA-beli államigazgatás – Arizona | Arizona |
-| USA-beli államigazgatás – Texas | Texas |
-| USA-beli államigazgatás – Virginia | Virginia |
+| Egyesült Királyság déli régiója | London |
+| Egyesült Királyság nyugati régiója | Cardiff |
+| US Gov Arizona | Arizona |
+| US Gov Texas | Texas |
+| US Gov Virginia | Virginia |
 | Nyugat-Európa | Hollandia |
 | USA nyugati középső régiója | Wyoming |
 | USA nyugati régiója | Kalifornia |
-| USA nyugati régiója, 2. | Washington |
+| USA 2. nyugati régiója | Washington |
 
 A Azure File Sync csak olyan Azure-fájlmegosztás szinkronizálását támogatja, amely ugyanabban a régióban található, mint a Storage Sync szolgáltatás.
 
@@ -290,22 +293,22 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 
 | Elsődleges régió      | Párosított régió      |
 |---------------------|--------------------|
-| Kelet-Ausztrália      | Délkelet-Ausztrália|
-| Délkelet-Ausztrália | Kelet-Ausztrália     |
+| Ausztrália keleti régiója      | Délkelet-Ausztrália|
+| Délkelet-Ausztrália | Ausztrália keleti régiója     |
 | Dél-Brazília        | USA déli középső régiója   |
 | Közép-Kanada      | Kelet-Kanada        |
 | Kelet-Kanada         | Közép-Kanada     |
 | Közép-India       | Dél-India        |
 | USA középső régiója          | USA 2. keleti régiója          |
 | Kelet-Ázsia           | Délkelet-Ázsia     |
-| East US             | USA nyugati régiója            |
+| USA keleti régiója             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
 | Közép-Franciaország      | Dél-Franciaország       |
 | Dél-Franciaország        | Közép-Franciaország     |
 | Kelet-Japán          | Nyugat-Japán         |
 | Nyugat-Japán          | Kelet-Japán         |
-| Korea középső régiója       | Korea déli régiója        |
-| Korea déli régiója         | Korea középső régiója      |
+| Korea középső régiója       | Dél-Korea        |
+| Dél-Korea         | Korea középső régiója      |
 | Észak-Európa        | Nyugat-Európa        |
 | USA északi középső régiója    | USA déli középső régiója   |
 | Dél-Afrika északi régiója  | Dél-Afrika nyugati régiója  |
@@ -313,20 +316,20 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 | USA déli középső régiója    | USA északi középső régiója   |
 | Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
-| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
-| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
-| USA-beli államigazgatás – Arizona      | USA-beli államigazgatás – Texas       |
-| US Gov Iowa         | USA-beli államigazgatás – Virginia    |
-| USA-beli államigazgatás – Virginia      | USA-beli államigazgatás – Texas       |
+| Egyesült Királyság déli régiója            | Egyesült Királyság nyugati régiója            |
+| Egyesült Királyság nyugati régiója             | Egyesült Királyság déli régiója           |
+| US Gov Arizona      | US Gov Texas       |
+| US Gov Iowa         | US Gov Virginia    |
+| US Gov Virginia      | US Gov Texas       |
 | Nyugat-Európa         | Észak-Európa       |
-| USA nyugati középső régiója     | USA nyugati régiója, 2.          |
-| USA nyugati régiója             | East US            |
-| USA nyugati régiója, 2.           | USA nyugati középső régiója    |
+| USA nyugati középső régiója     | USA 2. nyugati régiója          |
+| USA nyugati régiója             | USA keleti régiója            |
+| USA 2. nyugati régiója           | USA nyugati középső régiója    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 * [Azure Files üzembe helyezése](storage-files-deployment-guide.md)

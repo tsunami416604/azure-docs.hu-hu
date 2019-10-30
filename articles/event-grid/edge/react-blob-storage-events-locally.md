@@ -9,18 +9,15 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d61dc9d49053cb8a125362ac492f354fb64b79a5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992170"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043171"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
-
-Ebből a cikkből megtudhatja, hogyan reagálhat helyileg a blob-létrehozási és a blob-törlési eseményekre IoT Edge a Event Grid használatával.
-
-Az általános blob Storage-események közé tartozik például a képek vagy a videók feldolgozása, a keresések indexelése vagy bármilyen fájl alapú munkafolyamat. Az aszinkron fájlfeltöltés nagyszerű illeszkedést biztosít az eseményekhez. Ha a módosítások nem ritkák, de a forgatókönyvnek azonnali reagálásra van szüksége, az eseményvezérelt architektúra különösen hatékony lehet.
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az Azure Blob Storaget a IoT modulban, amely Event Grid közzétevőként fog működni a Blobok létrehozásával és a Blobok törlésével kapcsolatos események Event Grid.  
 
 A IoT Edge Azure Blob Storageának áttekintését lásd: [azure blob Storage on IoT Edge](../../iot-edge/how-to-store-data-blob.md) és annak szolgáltatásai.
 

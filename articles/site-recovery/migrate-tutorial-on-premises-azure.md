@@ -1,19 +1,19 @@
 ---
-title: Helyszíni gépek migrálása az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
+title: Helyszíni gépek migrálása az Azure-ba Azure Site Recovery
 description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Azure-ba az Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 10/29/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873361"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053050"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -26,14 +26,13 @@ Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket 
 > [!div class="checklist"]
 > * A forrás-és a célként megadott környezet beállítása az áttelepítéshez
 > * Replikációs szabályzat beállítása
-> * Replikáció engedélyezése
+> * A replikáció engedélyezése
 > * A várnak megfelelő működés ellenőrzése egy áttelepítési teszt futtatásával
 > * Azure-ba irányuló egyszeri feladatátvételi teszt futtatása
 
 
 > [!TIP]
-> A Azure Migrate szolgáltatás a VMware virtuális gépek Azure-ba való áttelepítésének új, ügynök nélküli élményét kínálja. [További információ](https://aka.ms/migrateVMs-signup).
-
+> Most már áttelepítheti a helyszíni kiszolgálókat az Azure-ba a Azure Migrate szolgáltatás használatával. [További információ](../migrate/migrate-services-overview.md)
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -52,9 +51,9 @@ Válassza ki, hogy mit szeretne replikálni, és hová.
 1. Kattintson a **Helyreállítási tárak** > tár elemre.
 2. Az Erőforrás menüben kattintson a **Site Recovery** > **Az infrastruktúra előkészítése** > **Védelmi cél** lehetőségre.
 3. A **Védelmi cél** ablakban válassza ki, hogy mit szeretne migrálni.
-    - **VMware**: Válassza **Az Azure** > **Igen lehetőséget a VMware vSphere hypervisor**használatával.
-    - **Fizikai gép**: Válassza **Az Azure** > -ba**nem virtualizált/egyéb**lehetőséget.
-    - **Hyper-V**: Válassza **Az Azure** > **Igen lehetőséget a Hyper-V**használatával. Ha a Hyper-V virtuális gépeket egy VMM kezeli, válassza az **Igen** lehetőséget.
+    - **VMware**: Válassza az **Azure-ba** > **Igen, a következővel: VMWare vSphere hipervizorral** lehetőséget.
+    - **Fizikai gép**: Válassza az **Azure-ba** > **Nem virtualizált/egyéb** lehetőséget.
+    - **Hyper-V**: Válassz az **Azure-ba** > **Igen, a következővel: Hyper-V** lehetőséget. Ha a Hyper-V virtuális gépeket egy VMM kezeli, válassza az **Igen** lehetőséget.
 
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
@@ -84,7 +83,7 @@ VMware | Hozzon létre egy [replikációs házirendet](vmware-azure-set-up-repli
 Fizikai gép | Állítsa be a [replikációs szabályzatot](physical-azure-disaster-recovery.md#create-a-replication-policy) a fizikai gépekhez.
 Hyper-V | [Replikációs házirend](hyper-v-azure-tutorial.md#set-up-a-replication-policy) beállítása<br/><br/> Hozzon létre egy [replikációs házirendet](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy) a System Center VMM üzembe helyezett Hyper-V-hez.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 **Forgatókönyv** | **Részletek**
 --- | --- 
@@ -112,11 +111,11 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
    - Befejezi az áttelepítési folyamatot, leállítja a helyszíni virtuális gép replikálását, és leállítja Site Recovery a virtuális gép számlázását.
    - Ezzel a lépéssel megtisztítja a replikációs adatvédelmet. Nem törli az áttelepített virtuális gépeket.
 
-     ![Migrálás befejezése](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Az áttelepítés befejezése](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A virtuális gép replikációja a feladatátvétel megkezdése előtt leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A feladatátvétel indítása előtt a virtuális gép replikációja leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
 
 Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Észreveheti, hogy a feladatátvételi idő a fizikai kiszolgálók, a VMware Linux-gépek, a VMware virtuális gépek, amelyeken nincs engedélyezve a DHCP-szolgáltatás, valamint a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépek: storvsc, VMBus, storflt, Intelide, ATAPI.
 
@@ -157,9 +156,9 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most
+Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. most
 
 > [!div class="nextstepaction"]
 > [Állítsa be](azure-to-azure-replicate-after-migration.md) a vész-helyreállítást egy másodlagos Azure-régióba az Azure-beli virtuális gépek számára.

@@ -1,18 +1,18 @@
 ---
-title: A helyszíni feladat-visszavétel hibakeresése a VMware virtuális gép vész-helyreállításával az Azure-ba Azure Site Recovery használatával | Microsoft Docs
+title: A helyszíni feladat-visszavétel hibakeresése a VMware virtuális gép vész-helyreállításával az Azure-ba Azure Site Recovery
 description: Ez a cikk bemutatja, hogyan lehet elhárítani a feladat-visszavétel és az ismételt védelem hibáit a VMware virtuális gépek vész-helyreállítás közben az Azure-ba Azure Site Recovery használatával
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970859"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053855"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>A vCenter-felderítési hibák elhárítása
 
@@ -20,7 +20,7 @@ Ez a cikk segítséget nyújt a VMware vCenter-felderítési hibák miatt előfo
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Nem numerikus értékek a maxSnapShots tulajdonságban
 
-A 9,20 előtti verziókban a vCenter bontja a kapcsolatot, ha nem numerikus értéket kér le egy virtuális gép `snapshot.maxSnapShots` tulajdonságához.
+A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, ha nem numerikus értéket kér le a virtuális gép `snapshot.maxSnapShots` tulajdonságához.
 
 Ezt a problémát a 95126-es AZONOSÍTÓJÚ hiba azonosítja.
 
@@ -34,7 +34,7 @@ A probléma megoldásához:
 
 - Azonosítsa a virtuális gépet, és állítsa be az értéket egy numerikus értékre (a virtuális gép szerkesztési beállításai a vCenter-ben).
 
-Vagy
+vagy
 
 - Frissítse a konfigurációs kiszolgálót a 9,20-es vagy újabb verzióra.
 
@@ -46,8 +46,8 @@ a vCenter-felderítés tiszteletben tartja a rendszerfelhasználó által konfig
 
 A probléma előfordulásakor a következő helyzetek történnek:
 
-- A vCenter Server \<vCenter > nem érhető el a következő hiba miatt: A távoli kiszolgáló hibát adott vissza: (503) a kiszolgáló nem érhető el
-- A vCenter Server \<vCenter > nem érhető el a következő hiba miatt: A távoli kiszolgáló hibát adott vissza: Nem lehet csatlakozni a távoli kiszolgálóhoz.
+- A vCenter-kiszolgáló \<vCenter > nem érhető el a következő hiba miatt: a távoli kiszolgáló hibát jelzett: (503) a kiszolgáló nem érhető el.
+- A vCenter-kiszolgáló \<vCenter > nem érhető el a következő hiba miatt: a távoli kiszolgáló hibát jelzett: nem sikerült csatlakozni a távoli kiszolgálóhoz.
 - Nem lehet csatlakozni a vCenter/ESXi-kiszolgálóhoz.
 
 A probléma megoldásához:
@@ -60,7 +60,7 @@ Felderítési proxy konfigurálásához:
 
 1. Nyissa meg az IE-t a rendszer felhasználói környezetében a PsExec eszközzel.
     
-    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+    PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 
 2. Módosítsa a proxybeállításokat az Internet Explorerben a vCenter IP-cím megkerüléséhez.
 3. Indítsa újra a tmanssvc szolgáltatást.
@@ -77,6 +77,6 @@ DRA-proxy konfigurálásához:
 
 4. Indítsa újra a DRA Provider szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

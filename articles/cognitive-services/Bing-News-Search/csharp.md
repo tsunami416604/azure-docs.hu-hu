@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 10/28/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c6b050a9637046a8703dd7aaf1d5ac7f1ad1a5da
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 427cf87a8907482ae5346372c2997ce6e01084d0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423798"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027098"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a és C# a Bing News Search használatával REST API
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a C# és a Bing News Search használatával REST API
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az C# egyszerű alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta teljes kódja a githubon érhető el. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az C# egyszerű alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta teljes kódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)érhető el.
 
 Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
@@ -32,7 +32,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
@@ -46,7 +46,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     using System.Collections.Generic;
     ```
 
-2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést.
+2. Hozza létre az API-végpont, az előfizetési kulcs és a keresett fogalom változóit.
 
     ```csharp
     const string accessKey = "enter key here";
@@ -85,25 +85,6 @@ Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, ma
     request.Headers["Ocp-Apim-Subscription-Key"] = subscriptionKey;
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-    ```
-
-3. Hozza létre a keresési eredmény objektumát, és nyerje ki a Bing HTTP-fejléceit. Ezután küldje vissza a `searchResult` elemet.
-
-    ```csharp
-    // Create the result object for return
-    var searchResult = new SearchResult()
-    {
-        jsonResult = json,
-        relevantHeaders = new Dictionary<String, String>()
-    };
-
-    // Extract Bing HTTP headers
-    foreach (String header in response.Headers)
-    {
-        if (header.StartsWith("BingAPIs-") || header.StartsWith("X-MSEdge-"))
-            searchResult.relevantHeaders[header] = response.Headers[header];
-    }
-    return searchResult;
     ```
 
 3. Hozza létre a keresési eredmény objektumát, és nyerje ki a Bing HTTP-fejléceit. Ezután küldje vissza a `searchResult` elemet.
@@ -231,7 +212,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

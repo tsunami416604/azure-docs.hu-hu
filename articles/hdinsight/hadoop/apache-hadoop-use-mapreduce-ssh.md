@@ -1,6 +1,6 @@
 ---
-title: Az Apache Hadoop, a HDInsight - Azure MapReduce és SSH-kapcsolat
-description: Útmutató az SSH használata a HDInsight segítségével az Apache Hadoop MapReduce-feladatok futtatásához.
+title: MapReduce és SSH-kapcsolatok Apache Hadoop-Azure HDInsight
+description: Ismerje meg, hogy az SSH használatával hogyan futtathat MapReduce-feladatokat a HDInsight Apache Hadoop használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,76 +8,76 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5eac6cd60b9e58dea8901fad076bb481d5f2eb06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4075de1a184896d598c11d09ae2b2bda5e257ed
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078296"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044511"
 ---
-# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Az ssh-val a HDInsight az Apache Hadoop MapReduce használata
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>A MapReduce használata a HDInsight-mel az SSH-val Apache Hadoop
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Ismerje meg, hogyan lehet elküldeni a HDInsight a Secure Shell (SSH) kapcsolat MapReduce-feladatok.
+Ismerje meg, hogyan küldhet MapReduce-feladatokat egy Secure Shell-(SSH-) kapcsolatból a HDInsight-be.
 
 > [!NOTE]
-> Ha már ismeri a Linux-alapú Apache Hadoop-kiszolgálók használata, de még nem ismeri a HDInsight: [Linux-alapú HDInsight-tippek](../hdinsight-hadoop-linux-information.md).
+> Ha már ismeri a Linux-alapú Apache Hadoop-kiszolgálók használatát, de most ismerkedik a HDInsight-mel, tekintse meg a [Linux-alapú HDInsight kapcsolatos tippeket](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Előfeltételek
 
-* Egy Linux-alapú HDInsight (Hadoop on HDInsight)-fürt
+* Linux-alapú HDInsight (Hadoop on HDInsight)-fürt
 
-* Egy SSH-ügyfél. További információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a id="ssh"></a>Kapcsolódás az ssh-val
+## <a id="ssh"></a>Az SSH-val való kapcsolat
 
-Csatlakozhat a fürthöz SSH használatával. Az alábbi parancs például nevű fürthöz csatlakozó **myhdinsight** , a **sshuser** fiók:
+Kapcsolódjon a fürthöz SSH használatával. Például a következő parancs egy **myhdinsight** nevű fürthöz csatlakozik a **sshuser** fiókban:
 
 ```bash
 ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Ha az SSH-hitelesítési tanúsítvány kulcs használata**, szükség lehet adja meg a titkos kulcs helyét az ügyfél rendszeren:
+**Ha az SSH-hitelesítéshez tanúsítvány-kulcsot használ**, előfordulhat, hogy meg kell adnia a titkos kulcs helyét az ügyfél rendszerén, például:
 
 ```bash
 ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Ha az SSH-hitelesítést használhat olyan jelszót**, meg kell adnia a jelszót, amikor a rendszer kéri.
+**Ha az SSH-hitelesítéshez jelszót használ**, meg kell adnia a jelszót, amikor a rendszer kéri.
 
-Az SSH és a HDInsight további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Az SSH és a HDInsight használatával kapcsolatos további információkért lásd: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a id="hadoop"></a>Hadoop parancsok használata
 
-1. Miután csatlakozott a HDInsight-fürthöz, használja a következő parancsot a MapReduce feladat indításához:
+1. Miután csatlakozott a HDInsight-fürthöz, a következő paranccsal indíthatja el a MapReduce-feladatot:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Ez a parancs elindítja a `wordcount` osztály, amely tartalmazza a `hadoop-mapreduce-examples.jar` fájlt. Használja a `/example/data/gutenberg/davinci.txt` kimenetként, és a dokumentum tárolt `/example/data/WordCountOutput`.
+    Ez a parancs elindítja a `wordcount` osztályt, amely a `hadoop-mapreduce-examples.jar` fájlban található. A `/example/data/gutenberg/davinci.txt`-dokumentumot bemenetként használja, és a kimenetet `/example/data/WordCountOutput`tárolja.
 
     > [!NOTE]
-    > A MapReduce-feladatot, és a példaadatokat kapcsolatos további információkért lásd: [a HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md).
+    > További információ erről a MapReduce-feladatról és a példában szereplő adatokról: a [MapReduce használata a HDInsight-on Apache Hadoop](hdinsight-use-mapreduce.md).
 
-2. A feladat részletei bocsát ki, feldolgozza, és azt hasonló információt ad vissza a következő szöveget a feladat befejezése után:
+2. A feladatnak a folyamat során kibocsátja a részleteket, és a következő szöveghez hasonló adatokat ad vissza, amikor a feladatok befejeződik:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
 
-3. Ha a feladat befejeződik, használja a következő parancsot a kimeneti fájlok listázásához:
+3. Amikor a feladatok befejeződik, a következő paranccsal listázhatja ki a kimeneti fájlokat:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Ez a parancs két fájlt megjelenítéséhez `_SUCCESS` és `part-r-00000`. A `part-r-00000` fájl tartalmazza a feladat kimenetét.
+    Ez a parancs két fájlt jelenít meg, `_SUCCESS` és `part-r-00000`. A `part-r-00000` fájl tartalmazza a feladatokhoz tartozó kimenetet.
 
     > [!NOTE]  
-    > Bizonyos MapReduce-feladatok az eredmények lehet, hogy elosztja a több **. rész – az r-###** fájlokat. Ha igen, használja a ### utótagot a fájlok sorrendjét.
+    > Egyes MapReduce-feladatok több **rész-r-#** # # # # fájlra oszthatják meg az eredményeket. Ha igen, használja a # # # # # utótagot, hogy jelezze a fájlok sorrendjét.
 
 4. A kimenet megtekintéséhez használja a következő parancsot:
 
@@ -85,7 +85,7 @@ Az SSH és a HDInsight további információkért lásd: [az SSH használata a H
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Ez a parancs az abban található szavak listáját jeleníti meg a **wasb://example/data/gutenberg/davinci.txt** fájl- és, hogy hányszor történt az egyes szavak. A következő szöveg egy példa a fájlban lévő adatok:
+    Ez a parancs megjeleníti a **wasb://example/Data/Gutenberg/DaVinci.txt** fájlban található szavak listáját, valamint az egyes szavak előfordulási idejét. A következő szöveg egy példa a fájlban található fájlokra:
 
         wreathed        3
         wreathing       1
@@ -97,15 +97,15 @@ Az SSH és a HDInsight további információkért lásd: [az SSH használata a H
 
 ## <a id="summary"></a>Summary (Összefoglalás)
 
-Ahogy láthatjuk, a Hadoop-parancsokat a MapReduce-feladatok futtatása HDInsight-fürtben, és nézze meg a feladat kimenetének egyszerű módot biztosítanak.
+Amint láthatja, a Hadoop parancsai egyszerűen futtathatják a MapReduce-feladatokat egy HDInsight-fürtön, majd megtekinthetik a feladat kimenetét.
 
 ## <a id="nextsteps"></a>Következő lépések
 
-HDInsight MapReduce-feladatok általános tájékoztatást:
+Általános információk a MapReduce-feladatokról a HDInsight-ben:
 
-* [HDInsight hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight-Hadoop](hdinsight-use-mapreduce.md)
 
-Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
+További információ a Hadoop a HDInsight-ben való használatával kapcsolatos egyéb módszerekről:
 
-* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight Apache Hadoop használatával](hdinsight-use-hive.md)
+* [Az Apache Pig használata a Apache Hadoop on HDInsight](hdinsight-use-pig.md)

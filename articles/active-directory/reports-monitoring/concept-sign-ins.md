@@ -3,7 +3,7 @@ title: Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Di
 description: A bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon – bevezetés
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
-ms.author: markvi
+ms.date: 10/28/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6121ca6c1636c8839110712310a1b94fe7fada49
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 553d882600203d0fa01cd876562d9ced7985d7a8
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619264"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043761"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -30,22 +30,24 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
-    - **A naplók** - naplózása rendszertevékenység-[információkat biztosít a](concept-audit-logs.md) felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
+    - **Naplók** - a [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtár-tevékenységekről.
 - **Biztonság** 
-    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek.
-    - Kockázatnak kitett **felhasználók** – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
+    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
-Ez a témakör áttekintést nyújt a bejelentkezési jelentésről.
+Ez a cikk áttekintést nyújt a bejelentkezési jelentésről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
-* A biztonsági rendszergazda, a biztonsági olvasó és a jelentéskészítő olvasó szerepköreinek felhasználói
+
+* A biztonsági rendszergazda, a biztonsági olvasó és a jelentéskészítő-olvasó szerepkörrel rendelkező felhasználók
 * Globális rendszergazdák
-* Emellett a felhasználók (nem rendszergazdák) is hozzáférhetnek a saját bejelentkezésekhez 
+* Bármely (nem rendszergazda jogosultságú) felhasználó hozzáfér a saját bejelentkezéseihez 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
-* A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa az összes bejelentkezési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. Vegye figyelembe, hogy ha a frissítés előtt nem rendelkezik tevékenységi adataival, a rendszer több napot is igénybe vesz, hogy az adatai megjelenjenek a jelentésekben a prémium szintű licencre való frissítés után.
+
+* A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa az összes bejelentkezési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. A frissítés előtt néhány napig is eltarthat, hogy az adatai megjelenjenek a jelentésekben, miután a frissítés előtt adattevékenység nélküli prémium szintű licencre frissít.
 
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
@@ -55,9 +57,9 @@ A felhasználói bejelentkezések jelentése a következő kérdésekre ad vála
 * Hány felhasználó jelentkezett be egy adott héten?
 * Milyen állapotúak ezek a bejelentkezések?
 
-A bejelentkezési jelentést a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **tevékenységek** szakaszában található bejelentkezések lehetőség kiválasztásával érheti el. Vegye figyelembe, hogy egyes bejelentkezési rekordok esetében akár két órát is igénybe vehet, hogy megjelenjenek a portálon.
+Kezdje [Azure Portal](https://portal.azure.com). A bejelentkezési jelentés eléréséhez válassza a **bejelentkezések**lehetőséget, folytassa a **figyeléssel.** Néhány bejelentkezési rekord esetében akár két órát is igénybe vehet, hogy megjelenjenek a portálon.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/61.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Bejelentkezési tevékenység")
 
 > [!IMPORTANT]
 > A bejelentkezési jelentés csak azokat az **interaktív** bejelentkezéseket jeleníti meg, amelyek a felhasználók saját felhasználónevével és jelszavával történő manuális bejelentkezéssel jelentkeznek be. A nem interaktív bejelentkezések, mint például a szolgáltatások közötti hitelesítés, nem jelennek meg a bejelentkezési jelentésben. 
@@ -71,19 +73,19 @@ A bejelentkezési napló alapértelmezett listanézete az alábbi adatokat jelen
 - A kockázatészlelés állapota
 - A többtényezős hitelesítési (MFA-) követelmény állapota
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/01.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/sign-in-activity.png "Bejelentkezési tevékenység")
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/19.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/19.png "Bejelentkezési tevékenység")
 
-További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített mezőket.
+További mezőket vagy a már megjelenített mezők eltávolítását jeleníti meg.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/02.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/02.png "Bejelentkezési tevékenység")
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/03.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/basic-sign-in.png "Bejelentkezési tevékenység")
 
 > [!NOTE]
 > Az ügyfelek mostantól a bejelentkezési jelentéseken keresztül is elhárítják a feltételes hozzáférési házirendeket. Ha a bejelentkezési rekord **feltételes hozzáférés** lapjára kattint, az ügyfelek áttekinthetik a feltételes hozzáférési állapotot, és bemutatják a bejelentkezésre alkalmazott szabályzatok részleteit, valamint az egyes házirendek eredményét.
@@ -93,9 +95,9 @@ Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
 ## <a name="filter-sign-in-activities"></a>A bejelentkezési tevékenységek szűrése
 
-A jelentett adatok leszűkíthető egy olyan szintre, amely az Ön számára működik, a Date (dátum) mező használatával szűrheti a bejelentkezési adatok alapértelmezett szűrőként való szűrését. Az Azure AD emellett számos további szűrőt is beállíthat.
+Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön számára működik. Másodszor, a Date mezőt használó bejelentkezési adatok szűrése alapértelmezett szűrőként. Az Azure AD a további beállítható szűrők széles választékát kínálja.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/04.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/04.png "Bejelentkezési tevékenység")
 
 A **Felhasználó** szűrővel egy konkrét felhasználó nevét vagy egyszerű felhasználónevét (UPN) adhatja meg.
 
@@ -103,21 +105,21 @@ Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
 
 A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
 
-- Összes
+- Mind
 - Sikeres
 - Hiba
 
 A **feltételes hozzáférés** szűrővel kiválaszthatja a bejelentkezéshez használt hitelesítésszolgáltatói házirend állapotát:
 
-- Összes
-- Nem alkalmazott
-- Siker
+- Mind
+- Nincs alkalmazva
+- Sikeres
 - Hiba
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek a következők:
+Lehetséges értékek:
 
-- 1 hónap
+- Egy hónap
 - 7 nap
 - 24 óra
 - Egyéni időintervallum
@@ -125,41 +127,41 @@ Lehetséges értékek a következők:
 Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
 Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatikusan hozzáadja a mezőket a szűrőlistához. Például az **Ügyfélalkalmazás** mező listához való hozzáadásával kap egy további szűrőlehetőséget, amellyel a következő szűrőket állíthatja be:  
-![Bejelentkezési tevékenység](./media/concept-sign-ins/12.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/12.png "Bejelentkezési tevékenység")
 
 - **Böngésző**  
-    Ez a szűrő minden olyan eseményt megjelenít, amelyben a bejelentkezési kísérletek a böngészőalapú folyamatokkal lettek elvégezve.
+    Ez a szűrő megjeleníti az összes olyan eseményt, amelyben a bejelentkezési kísérletek a böngészőalapú folyamatokkal próbálkoztak.
 - **Exchange ActiveSync (támogatott)**  
     Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az Exchange ActiveSync (EAS) protokoll a támogatott platformokon, például az iOS, az Android és a Windows Phone-telefon által lett megkísérelve.
 - **Exchange ActiveSync (nem támogatott)**  
     Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az EAS protokollt a nem támogatott platformok, például a Linux-disztribúciók próbálták meg.
-- **Mobile apps és asztali ügyfelek** Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, amely nem használ böngészőalapú folyamatokat. A mobil alkalmazások bármely platformról használhatók bármilyen protokoll vagy asztali ügyfélalkalmazások, például az Office Windows vagy MacOS rendszeren való használatával.
+- **Mobile apps és asztali ügyfelek** A szűrő az összes olyan bejelentkezési kísérletet megjeleníti, amely nem használ böngészőalapú folyamatokat. Például a Mobile apps bármely platformról bármely protokoll használatával vagy asztali ügyfélalkalmazások, például az Office Windows vagy MacOS rendszeren.
   
 - **Egyéb ügyfelek**
     - **IMAP**  
         Egy örökölt levelezési ügyfélprogram, amely az IMAP használatával kéri le az e-maileket.
     - **MAPI**  
         Office 2013, ahol a ADAL engedélyezve van, és a MAPI-t használja.
-    - **Régebbi Office-ügyfelek**  
+    - **Régi Office-ügyfelek**  
         Az Office 2013 az alapértelmezett konfigurációban, ahol a ADAL nincs engedélyezve, és a MAPI vagy az Office 2016, ahol a ADAL le van tiltva.
     - **POP**  
         Egy örökölt levelezési ügyfélprogram, amely a POP3 használatával kéri le az e-maileket.
-    - **SMTP**  
+    - **SMTP-**  
         Egy örökölt levelezési ügyfélprogram, amely az SMTP protokollal küld e-mailt.
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
 
-Ha a Azure Portalon kívül szeretné használni, akkor [letöltheti a bejelentkezési](quickstart-download-sign-in-report.md) adatmennyiséget. A **Letöltés** lehetőségre kattintva LÉTREHOZHAT egy CSV-vagy JSON-fájlt a legfrissebb 250 000-rekordokhoz.  
+Kattintson a **Letöltés** lehetőségre a legfrissebb 250 000-rekordok CSV-vagy JSON-fájljának létrehozásához. Ha a Azure Portalon kívül szeretne dolgozni vele, kezdje [a bejelentkezési adatszolgáltatások letöltésével](quickstart-download-sign-in-report.md) .  
 
 ![Letöltés](./media/concept-sign-ins/71.png "Letöltés")
 
 > [!IMPORTANT]
-> A letöltendő rekordok számát a [Azure Active Directory jelentés](reference-reports-data-retention.md)adatmegőrzési szabályzata korlátozza.  
+> A letöltendő rekordok számát a [Azure Active Directory jelentés adatmegőrzési szabályzata](reference-reports-data-retention.md)korlátozza.  
 
 
 ## <a name="sign-ins-data-shortcuts"></a>Bejelentkezési adathivatkozások
 
-Az Azure AD mellett a Azure Portal további belépési pontokat biztosít a bejelentkezési adatokhoz:
+Az Azure AD és a Azure Portal egyaránt biztosít további belépési pontokat a bejelentkezési adathoz:
 
 - Az Identitáskezelés biztonsági védelme – áttekintés
 - Felhasználók
@@ -168,9 +170,9 @@ Az Azure AD mellett a Azure Portal további belépési pontokat biztosít a beje
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>Felhasználói bejelentkezések adatai az Identity Security Protectionben
 
-A felhasználó bejelentkezési diagramja az **Identitáskezelés biztonsági védelme** áttekintő oldalon az adott időszakban az összes felhasználóhoz tartozó bejelentkezések heti összesítéseit jeleníti meg. Az alapértelmezett időszak 30 nap.
+A felhasználói bejelentkezési gráf a **személyazonosság biztonsági védelme** áttekintése oldalon a bejelentkezések heti összesítéseit jeleníti meg. Az időtartam alapértelmezett értéke 30 nap.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/06.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/06.png "Bejelentkezési tevékenység")
 
 A bejelentkezési grafikon egyik napjára kattintva áttekintést kap az adott nap bejelentkezési tevékenységeiről.
 
@@ -183,16 +185,16 @@ A bejelentkezési tevékenységek listájának minden sora a következőkről ad
 
 Az elemekre kattintva részletes információk érhetők el a bejelentkezési műveletről:
 
-- Felhasználói azonosító
+- Felhasználóazonosító
 - Felhasználó
 - Felhasználónév
 - Alkalmazásazonosító
-- Alkalmazás
+- Jelentkezés
 - Ügyfél
-- Location
+- Földrajzi egység
 - IP-cím
-- Date
-- MFA szükséges
+- Dátum
+- Az MFA megadása kötelező
 - Bejelentkezési állapot
 
 > [!NOTE]
@@ -200,41 +202,39 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 
 A **Felhasználók** oldalon teljes körű áttekintést kaphat az összes felhasználói bejelentkezésről a **Tevékenységek** szakaszban található **Bejelentkezések** elemre kattintva.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/08.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/08.png "Bejelentkezési tevékenység")
 
 ## <a name="usage-of-managed-applications"></a>Felügyelt alkalmazások használati adatai
 
 A bejelentkezési információk alkalmazás-központú nézetével az alábbi kérdésekre kaphat választ:
 
 * Ki használja az alkalmazásaimat?
-* Melyik a szervezet 3 legnépszerűbb alkalmazása?
-* Nemrégiben új alkalmazást adtam ki. Mennyire sikeres?
+* Mi a szervezet első három alkalmazása?
+* Hogyan csinálom a legújabb alkalmazást?
 
-Az adatok megtekintését a szervezet az elmúlt 30 nap alatt legnépszerűbb 3 alkalmazásáról szóló jelentéssel kezdheti az **Áttekintés** szakaszban, a **Vállalati alkalmazások** területen.
+Ezen adat beléptetési pontja a szervezet első három alkalmazása. Az adat a **vállalati alkalmazások** **Áttekintés** szakaszában, az elmúlt 30 nap jelentésében található.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/10.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/10.png "Bejelentkezési tevékenység")
 
-Az alkalmazás-használati gráf hetente összesíti az első 3 alkalmazáshoz tartozó bejelentkezési adatokat egy adott időszakban. Az alapértelmezett időszak 30 nap.
+Az alkalmazás-használati gráfok hetente összesítik az első három alkalmazás bejelentkezéseit egy adott időszakban. Az alapértelmezett időszak 30 nap.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/47.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/concept-sign-ins/graph-chart.png "Bejelentkezési tevékenység")
 
 Igény esetén egy adott alkalmazást is kiemelhet.
 
-![Jelentéskészítés](./media/concept-sign-ins/single_spp_usage_graph.png "Jelentéskészítés")
+![Jelentéskészítés](./media/concept-sign-ins/single-app-usage-graph.png "Jelentések")
 
 Az alkalmazáshasználati grafikon egyik napjára kattintva részletes listát kap a bejelentkezési tevékenységekről.
 
 A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési eseményének teljes körű áttekintését biztosítja.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/11.png "Sign-in activity")
-
 ## <a name="office-365-activity-logs"></a>Office 365-tevékenységek naplói
 
-Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)központból tekintheti meg. Annak ellenére, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenységek naplóiról. 
+Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központból](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)tekintheti meg. Vegye figyelembe, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói jelentős számú címtár-erőforrást osztanak meg. Csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenység naplóiról. 
 
 Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
 * [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)

@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2f9d2cea7adaf2e46feb0417ea9631ce02478f80
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934141"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053299"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 
@@ -103,6 +103,9 @@ A [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trig
 Ez a hiba akkor fordul elő, ha a Azure Functions projekt (vagy bármely hivatkozott projekt) manuális NuGet hivatkozást tartalmaz az Azure Cosmos DB SDK-ra, amely az [Azure Functions Cosmos db bővítmény](./troubleshoot-changefeed-functions.md#dependencies)által megadott verziótól eltérő verziójú.
 
 Ennek a helyzetnek a megkerülő megoldásához távolítsa el a hozzáadott manuális NuGet-hivatkozást, és hagyja meg a Azure Cosmos DB SDK-referenciát a Azure Functions Cosmos DB kiterjesztési csomagon keresztül.
+
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Az Azure-függvény lekérdezési intervallumának módosítása a változások észleléséhez
+Ahogy azt fentebb említettük, hogy a [módosítások túl sokáig tartanak](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), az Azure Function (alapértelmezés szerint 5 másodperc) az új módosítások ellenőrzése előtt alvó állapotba lép (a magas ru-használat elkerüléséhez). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
 
 ## <a name="next-steps"></a>Következő lépések
 

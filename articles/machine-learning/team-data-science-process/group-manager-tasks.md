@@ -1,6 +1,6 @@
 ---
-title: Adatelemzési folyamat manager feladatok csapata
-description: Az adatelemzési csapat projektjein a Group Manager feladatainak részletes áttekintése.
+title: Csoportos adatelemzési folyamat csoport-kezelő feladatai
+description: Kövesse ezt a részletes útmutatót a Group Manager egy adatelemzési csapat projekten végzett feladatairól.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326800"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053311"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Adatelemzési folyamat manager feladatok csapata
+# <a name="team-data-science-process-group-manager-tasks"></a>Csoportos adatelemzési folyamat csoport-kezelő feladatai
 
 Ez a cikk azokat a feladatokat ismerteti, amelyekkel egy *csoport-kezelő* befejeződik egy adatelemző szervezet számára. A Group Manager a teljes adatelemzési egységet egy vállalaton belül kezeli. Az adatelemzési egységek több csapattal is rendelkezhetnek, amelyek mindegyike különböző üzleti vertikális adatelemzési projekteken dolgozik. A Group Manager célja egy együttműködésen alapuló csoportos környezet létrehozása, amely a csoportos [adatelemzési folyamat](overview.md) (TDSP) szabványosítására szolgál. Az adatelemzési csapat által a TDSP szabványosított, az összes személyzeti szerepkör és kapcsolódó feladat áttekintését lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
@@ -57,7 +57,7 @@ Az alábbi oktatóanyag részletesen ismerteti a lépéseket.
    
    ![Projekt létrehozása](./media/group-manager-tasks/create-project.png)
 
-Megnyílik az **GroupCommon** projekt **Összefoglaló** lapja. A lap URL-címe *https: \/ @ no__t-2 @ no__t-3servername >/\<organization-name >/GroupCommon*.
+Megnyílik az **GroupCommon** projekt **Összefoglaló** lapja. A lap URL-címe *https:\//\<servername >/\<szervezet neve >/GroupCommon*.
 
 ![Projekt összegzése lap](./media/group-manager-tasks/project-summary.png)
 
@@ -65,9 +65,9 @@ Megnyílik az **GroupCommon** projekt **Összefoglaló** lapja. A lap URL-címe 
 
 Az Azure Repos a következő típusú tárházat üzemelteti a csoport számára:
 
-- **Közös Tárházak csoportosítása**: Általános célú adattárak, amelyek egy adattudományi egységen belül több csapatot is elfogadnak számos adatelemzési projekt esetében. 
-- **Csapat adattárai**:  Adatelemzési egységben lévő adott csapatok tárházai. Ezek a Tárházak egyediek a csapat igényeihez, és az adott csapaton belüli több projekthez is használhatók, de nem elég általánosak ahhoz, hogy egy adattudományi egységen belül több csapaton lehessen használni.
-- **Projekt-Tárházak**: Adott projektekhez tartozó Tárházak. Előfordulhat, hogy az ilyen adattárak nem elég általánosak a csapaton belüli több projekthez, illetve az adatelemzési egységben lévő más csapatokhoz.
+- **Közös adattárak**: általános célú adattárak, amelyekben az adatelemzési egységek több csapata is elfogadhat számos adatelemzési projektet. 
+- **Csapat adattárai**: adatelemző egységen belüli adott csapatokhoz tartozó adattárak. Ezek a Tárházak egyediek a csapat igényeihez, és az adott csapaton belüli több projekthez is használhatók, de nem elég általánosak ahhoz, hogy egy adattudományi egységen belül több csapaton lehessen használni.
+- **Projekt-Tárházak**: adott projektekhez tartozó Tárházak. Előfordulhat, hogy az ilyen adattárak nem elég általánosak a csapaton belüli több projekthez, illetve az adatelemzési egységben lévő más csapatokhoz.
 
 A csoport közös tárházának beállításához a következőket kell tennie: 
 - Az alapértelmezett **GroupCommon** -tárház átnevezése **GroupProjectTemplate**
@@ -121,13 +121,13 @@ A TDSP-csoport adattárainak importálása:
    
    ![Importálás kiválasztása](./media/group-manager-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd írja be a *https: \//GitHub. com/Azure/Azure-TDSP-ProjectTemplate. git* elemet a **klón URL-címére**. Ezután válassza az **Importálás**lehetőséget. A Microsoft TDSP Team ProjectTemplate adattárának tartalmát a rendszer a GroupProjectTemplate adattárba importálja. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd írja be a *https:\//GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* értéket a **klónozási URL-címhez**. Ezután válassza az **Importálás**lehetőséget. A Microsoft TDSP Team ProjectTemplate adattárának tartalmát a rendszer a GroupProjectTemplate adattárba importálja. 
    
    ![Microsoft TDSP-csoport adattárának importálása](./media/group-manager-tasks/import-repo-2.png)
    
 1. A **reposs** oldal tetején válassza a legördülő listát, és válassza ki a **GroupUtilities** -tárházat.
    
-1. Ismételje meg az importálási folyamatot a Microsoft TDSP Team **Utilities** adattár, *https: \//GitHub. com/Azure/Azure-TDSP-Utilities. git*fájl tartalmának importálásához a **GroupUtilities** adattárba. 
+1. Az importálási folyamat megismétlésével importálja a Microsoft TDSP Team **Utilities** adattár, a *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.git*tartalmát a **GroupUtilities** adattárba. 
    
 A két csoport összes tárháza már tartalmazza az összes fájlt, kivéve a *. git* könyvtárában lévő fájlokat a Microsoft TDSP csapatának megfelelő tárházában. 
 
@@ -166,7 +166,7 @@ A tárház tartalmának testreszabása:
 Ha a helyi géppel vagy DSVM szeretné végrehajtani a módosításokat, és leküldi a módosításokat a csoport adattárakba, ellenőrizze, hogy rendelkezik-e a git és a Dsvm használatához szükséges előfeltételekkel:
 
 - Azure-előfizetés, ha DSVM szeretne létrehozni.
-- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
 - Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a `git commit` *User. e-mailben.* Futtassa az alábbi két parancsot:
+> Ha első alkalommal hajt végre egy git-tárházat, előfordulhat, hogy a `git commit` parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* Futtassa a következő két parancsot:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -254,10 +254,10 @@ A tagok engedélyeinek konfigurálása:
    
    ![Engedélyek megadása a tagoknak](./media/group-manager-tasks/grant-permissions.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozások a csoportos adatelemzési folyamat egyéb szerepköreinek és feladatainak részletes leírására mutatnak:
 
-- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
-- [Érdeklődő tevékenységeket az adatelemzési csapatával](project-lead-tasks.md)
+- [A csapat vezető feladatai egy adattudományi csapat számára](team-lead-tasks.md)
+- [Az adatelemzési csapat projekt-vezető feladatai](project-lead-tasks.md)
 - [Az adatelemzési csapat egyedi közreműködő feladatainak projektje](project-ic-tasks.md)

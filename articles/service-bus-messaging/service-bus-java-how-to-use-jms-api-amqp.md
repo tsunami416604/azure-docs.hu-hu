@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f1a679deca8ee33bb4801eb1d1023684a37d0f59
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c0c7e8b6066626966e2a72d474306bae4ead14c2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793166"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027225"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>A Java Message Service (JMS) használata a Azure Service Bus és a AMQP 1,0
 Ez a cikk azt ismerteti, hogyan használhatók a Java-alkalmazások Azure Service Bus üzenetkezelési funkciói (Queues and publish/subscribe) a népszerű Java Message Service-(JMS-) API-szabvány használatával. Ez a [cikk](service-bus-amqp-dotnet.md) azt ismerteti, hogyan végezheti el ugyanezt a Azure Service Bus .NET API használatával. A két útmutató együttes használatával megismerheti a AMQP 1,0-et használó platformok közötti üzenetkezelést.
@@ -344,7 +344,7 @@ MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ## <a name="jms-topics-vs-service-bus-topics"></a>JMS témakörök és Service Bus témakörök
 A Azure Service Bus témakörök és előfizetések használata a Java Message Service (JMS) API-n keresztül alapvető küldési és fogadási képességeket biztosít. Kényelmes választás, ha más JMS-kompatibilis API-kkal rendelkező alkalmazásokat portolnak, bár a Service Bus témakörök eltérnek a JMS Témaköröktől, és néhány módosítást igényelnek. 
 
-Azure Service Bus témakörök üzeneteket továbbítanak az Azure Resource Management felületen, az Azure parancssori eszközein vagy a Azure Portal keresztül felügyelt, névvel ellátott, megosztott és tartós előfizetésekben. Az egyes előfizetések legfeljebb 2000 kiválasztási szabályt tesznek lehetővé, amelyek mindegyike tartalmaz egy szűrési feltételt, és az SQL-szűrők esetében metaadat-átalakítási műveletet is végezhet. Az egyes Szűrőfeltételek egyeztetése kiválasztja a tehj-előfizetésbe másolandó bemeneti üzenetet.  
+Azure Service Bus témakörök üzeneteket továbbítanak az Azure Resource Management felületen, az Azure parancssori eszközein vagy a Azure Portal keresztül felügyelt, névvel ellátott, megosztott és tartós előfizetésekben. Az egyes előfizetések legfeljebb 2000 kiválasztási szabályt tesznek lehetővé, amelyek mindegyike tartalmaz egy szűrési feltételt, és az SQL-szűrők esetében metaadat-átalakítási műveletet is végezhet. Az egyes Szűrőfeltételek egyeztetése kiválasztja az előfizetésbe másolandó bemeneti üzenetet.  
 
 Az előfizetésből érkező üzenetek fogadása azonos a várólistákból érkező üzenetek fogadásával. Minden előfizetéshez tartozik egy kézbesítetlen levelek várólistája, valamint az üzenetek automatikus továbbításának lehetősége egy másik várólistába vagy témakörbe. 
 

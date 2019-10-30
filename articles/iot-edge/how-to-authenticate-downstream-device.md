@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1e184691ebbd34de0f69e93419d9c34ab18edbe6
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266128"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025939"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -24,7 +24,7 @@ A sikeres transzparens átjáró-kapcsolatok létrehozásához három általáno
 
 1. Az átjáró-eszköznek képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra, az alárendelt eszközökről érkező kommunikáció fogadására és az üzenetek megfelelő célhelyre való továbbítására. További információ: [IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)használatra.
 2. **Az alsóbb rétegbeli eszköznek rendelkeznie kell egy eszköz-identitással, hogy képes legyen hitelesíteni a IoT Hub, és tudnia kell kommunikálni az átjáró eszközén keresztül.**
-3. Az alsóbb rétegbeli eszköznek képesnek kell lennie az átjáró eszközéhez való biztonságos kapcsolódásra. További információkért lásd: [egy alsóbb rétegbeli eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md).
+3. Az alsóbb rétegbeli eszköznek képesnek kell lennie az átjáró eszközéhez való biztonságos kapcsolódásra. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
 
 Az alsóbb rétegbeli eszközök a következő három módszer egyikével hitelesíthetők a IoT Hub használatával: szimmetrikus kulcsok (más néven közös hozzáférési kulcsok), X. 509 önaláírt tanúsítvány vagy X. 509 hitelesítésszolgáltató (CA) által aláírt tanúsítvány. A hitelesítési lépések hasonlók a nem IoT-eszközök IoT Hub-vel való beállításához használt lépésekhez, és kisebb eltéréseket jelentenek az átjáró kapcsolatának bejelentéséhez.
 
@@ -72,10 +72,10 @@ Miután létrehozta a IoT-eszköz identitását a portálon, lekérheti az első
 
 Az alsóbb rétegbeli eszközök szimmetrikus kulcsú kapcsolatainak karakterláncai a következő összetevőket igényelik: 
 
-* Az a IoT hub, amelyhez az eszköz csatlakozik:`Hostname={iothub name}.azure-devices.net`
-* A központban regisztrált eszköz azonosítója:`DeviceID={device ID}`
-* Vagy az elsődleges vagy a másodlagos kulcs:`SharedAccessKey={key}`
-* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz config. YAML fájljában:`GatewayHostName={gateway hostname}`
+* Az a IoT hub, amelyhez az eszköz csatlakozik: `Hostname={iothub name}.azure-devices.net`
+* A központban regisztrált eszköz azonosítója: `DeviceID={device ID}`
+* Vagy az elsődleges vagy a másodlagos kulcs: `SharedAccessKey={key}`
+* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz config. YAML fájljában: `GatewayHostName={gateway hostname}`
 
 Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőképpen néz ki:
 
@@ -101,7 +101,7 @@ A IoT Hub X. 509 hitelesítés használatával kapcsolatos további információ
 
 Az X. 509 önaláírt hitelesítés (más néven ujjlenyomatos hitelesítés) esetében új tanúsítványokat kell létrehoznia a IoT-eszközre való elhelyezéshez. Ezek a tanúsítványok olyan ujjlenyomattal rendelkeznek, amelyet IoT Hub a hitelesítéshez. 
 
-A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a  **\<WRKDIR >** hívunk a tanúsítványok tárolására. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
+A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a tanúsítványok tárolására **\<WRKDIR >** hívunk. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
 
 1. Navigáljon a munkakönyvtárhoz egy bash-vagy PowerShell-ablakban. 
 
@@ -155,12 +155,12 @@ Az X. 509 hitelesítésszolgáltató (CA) által aláírt hitelesítéshez szük
 
 Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](../iot-hub/iot-hub-security-x509-get-started.md)IoT hub cikkében részletesen ismertetett utasításokon alapul. Az ebben a szakaszban ismertetett lépéseket követve megtudhatja, hogy mely értékeket kell használni egy átjárón keresztül csatlakozó alsóbb rétegbeli eszköz beállításához. 
 
-A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a  **\<WRKDIR >** hívunk a tanúsítványok tárolására. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
+A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a tanúsítványok tárolására **\<WRKDIR >** hívunk. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
 
 1. Kövesse az x [. 509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) -ban című szakasz utasításait az *x. 509 szintű biztonság beállítása az Azure IoT hub-ban*. Ebben a szakaszban a következő lépéseket hajtja végre: 
 
-   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha az átlátszó átjárón létrehozott tanúsítványokat használja, töltse fel a  **\<WRKDIR >/certs/Azure-IOT-test-only.root.ca.CERT.PEM** nevű főtanúsítvány-fájlként. 
-   2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa. A WRKDIR > tanúsítvány- \<eszközeivel ellenőrizheti a tulajdonjogot. 
+   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a transzparens Gateway-cikkben létrehozott tanúsítványokat használja, töltse fel **\<WRKDIR >/certs/Azure-IOT-test-only.root.ca.CERT.PEM** a főtanúsítvány-fájlként. 
+   2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa. \<WRKDIR >jában ellenőrizheti a tanúsítvány-ellenőrzési eszközöket. 
 
       ```powershell
       New-CACertsVerificationCert "<verification code from Azure portal>"
@@ -246,7 +246,7 @@ catch (Exception ex)
 }
 ```
 
-#### <a name="c"></a>C
+#### <a name="c"></a>C#
 
 Ha például az X. 509 tanúsítvánnyal IoT Hub hitelesítő C programra van hitelesítés, tekintse meg a C IoT SDK [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) -mintáját. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
 
@@ -386,6 +386,6 @@ private static String privateKeyString =
 DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCertificateString, false, privateKeyString, false);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ennek a cikknek a végrehajtásával rendelkeznie kell egy IoT Edge eszközzel, amely transzparens átjáróként és egy IoT hub-ban regisztrált alsóbb rétegbeli eszközként működik. Ezután be kell állítania az alsóbb rétegbeli eszközöket, hogy megbízzon az átjáró-eszközön, és üzeneteket küldjön neki. További információkért lásd: [egy alsóbb rétegbeli eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md).
+Ennek a cikknek a végrehajtásával rendelkeznie kell egy IoT Edge eszközzel, amely transzparens átjáróként és egy IoT hub-ban regisztrált alsóbb rétegbeli eszközként működik. Ezután be kell állítania az alsóbb rétegbeli eszközöket, hogy megbízzon az átjáró-eszközön, és üzeneteket küldjön neki. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).

@@ -1,5 +1,5 @@
 ---
-title: Apache Hive a Visual Studio Data Lake Tools szolgáltatásával – Azure HDInsight
+title: Apache Hive & Data Lake Tools for Visual Studio – Azure HDInsight
 description: Ismerje meg, hogy a Visual studióhoz készült Data Lake Tools segítségével hogyan futtathat Apache Hive-lekérdezéseket az Azure HDInsight Apache Hadoop használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 37652a8ca9750e6b33bd2744bda386eaba92b025
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076285"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044528"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával
 
@@ -61,17 +61,17 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
     ![Képernyőkép Hive-lekérdezés futtatásáról](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) `SELECT * FROM`értéket adja meg, az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
+    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például beírja a `SELECT * FROM`, az IntelliSense a javasolt táblanév összes nevét listázza. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
 
-    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 1. példájáról](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+    ![Képernyőkép egy HDInsight Visual Studio-eszközökről, IntelliSense-példa 1](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
    
-    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 2. példájáról](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 2. példáról](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
 
 7. Kattintson a **Submit** (Küldés) vagy a **Submit (Advanced)** (Küldés (Speciális)) elemre.
 
    A speciális küldési lehetőséggel konfigurálja a szkript **Job Name** (Feladat neve), **Arguments** (Argumentumok), **Additional Configurations** (További konfigurációk) és **Status Directory** (Állapot könyvtár) elemeit:
 
-    ![Képernyőkép egy HDInsight Hadoop Hive-lekérdezésről](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Lekérdezések küldése")
+    ![Képernyőkép egy HDInsight Hadoop-struktúra lekérdezéséről](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Lekérdezések beküldése")
 
 ### <a name="hive-application"></a>Struktúra alkalmazása
 
@@ -79,7 +79,7 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
 2. A menüsávban navigáljon a **fájl** > **új** > **projekt**elemre.
 
-3. Az **új projekt** ablakban navigáljon a **sablonok** > **Azure Data Lake** > **struktúra (HDInsight)**  > **struktúra alkalmazáshoz**. 
+3. Az **új projekt** ablakban navigáljon a **sablonok** > **Azure Data Lake** > **kaptár (HDInsight)**  > **kaptár alkalmazáshoz**. 
 
 4. Adja meg a projekt nevét, majd kattintson **az OK gombra**.
 
@@ -98,20 +98,20 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
    * `DROP TABLE`: Ha a tábla létezik, az utasítás törli.
 
-   * `CREATE EXTERNAL TABLE`: Létrehoz egy új "külső" táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják (az eredeti helyen maradnak).
+   * `CREATE EXTERNAL TABLE`: új "külső" táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják (az eredeti helyen maradnak).
 
      > [!NOTE]  
      > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy MapReduce-feladatot vagy egy Azure-szolgáltatást.
      >
      > Egy külső tábla eldobása **nem** törli az adatforrást, csak a tábla definícióját.
 
-   * `ROW FORMAT`: Azt jelzi, hogyan történik az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
+   * `ROW FORMAT`: az adat formázásának elolvasása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
 
-   * `STORED AS TEXTFILE LOCATION`: Azt jelzi, hogy a struktúra a példa/adatkönyvtárban tárolja az adattárolási struktúrát, és azt szövegként tárolja.
+   * `STORED AS TEXTFILE LOCATION`: azt jelzi, hogy a struktúra a példában/adatkönyvtárban tárolja az adattárolási struktúrát, és azt szövegként tárolja.
 
-   * `SELECT`: Válassza ki az összes olyan sor számát, `t4` amelyben az oszlop `[ERROR]`tartalmazza az értéket. Ez az utasítás egy értéket ad `3` vissza, mert három sor tartalmazza ezt az értéket.
+   * `SELECT`: válassza ki az összes olyan sor számát, amelyben az oszlop `t4` a `[ERROR]`értéket tartalmazza. Ez az utasítás `3` értéket ad vissza, mert három sor tartalmazza ezt az értéket.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`– A struktúra azt jelzi, hogy csak a. log fájlban végződő fájlok adatait kell visszaadnia. Ez a záradék korlátozza a keresést a sample. log fájlban, amely tartalmazza az adathalmazt.
+   * `INPUT__FILE__NAME LIKE '%.log'` – arra utasítja a kaptárt, hogy csak a. log fájlban végződő fájlokból származó adatok legyenek visszaadva. Ez a záradék korlátozza a keresést a sample. log fájlban, amely tartalmazza az adathalmazt.
 
 6. Az eszköztáron válassza ki a lekérdezéshez használni kívánt **HDInsight-fürtöt** . Válassza a **Submit (Küldés** ) lehetőséget az utasítások struktúra-feladatokként való futtatásához.
 
@@ -121,11 +121,11 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
    ![befejezett feladatot megjelenítő feladatok összegzése](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-8. A feladatok kimenetének megtekintéséhez használja a **feladatok kimeneti** hivatkozását. Ekkor megjelenik `[ERROR] 3`a lekérdezés által visszaadott érték.
+8. A feladatok kimenetének megtekintéséhez használja a **feladatok kimeneti** hivatkozását. Megjeleníti `[ERROR] 3`, amely a lekérdezés által visszaadott érték.
 
 ### <a name="additional-example"></a>További példa
 
-Ez a példa az `log4jLogs` előző lépésben létrehozott táblára támaszkodik.
+Ez a példa az előző lépésben létrehozott `log4jLogs` táblára támaszkodik.
 
 1. A **Server Explorerben**kattintson a jobb gombbal a fürtre, és válassza a **kaptár-lekérdezés írása**lehetőséget.
 
@@ -139,18 +139,18 @@ Ez a példa az `log4jLogs` előző lépésben létrehozott táblára támaszkodi
 
     Ezek az utasítások a következő műveleteket hajtják végre:
 
-    * `CREATE TABLE IF NOT EXISTS`: Létrehoz egy táblát, ha még nem létezik. Mivel a `EXTERNAL` kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblákat a rendszer a struktúra adattárházában tárolja, és a struktúra kezeli.
+    * `CREATE TABLE IF NOT EXISTS`: létrehoz egy táblát, ha még nem létezik. Mivel a `EXTERNAL` kulcsszó nincs használatban, ez az utasítás belső táblát hoz létre. A belső táblákat a rendszer a struktúra adattárházában tárolja, és a struktúra kezeli.
     
     > [!NOTE]  
-    > A `EXTERNAL` táblákkal ellentétben a belső táblák eldobása is törli az alapul szolgáló adatokat.
+    > A `EXTERNAL` tábláktól eltérően a belső tábla eldobása a mögöttes adatokat is törli.
 
-    * `STORED AS ORC`: Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
+    * `STORED AS ORC`: az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
     
-    * `INSERT OVERWRITE ... SELECT`: Kiválasztja azokat a sorokat `log4jLogs` , amelyek tartalmazzák `[ERROR]`a táblát, majd beszúrja az `errorLogs` adatait a táblába.
+    * `INSERT OVERWRITE ... SELECT`: kiválasztja a `[ERROR]`t tartalmazó `log4jLogs` táblázat sorait, majd beszúrja az adatait a `errorLogs` táblába.
 
 3. Futtassa a lekérdezést **Batch** módban.
 
-4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, használja a **Server Explorert** , és bontsa ki az **Azure** > **HDInsight** > a HDInsight-fürtöt > **kaptár-adatbázisok** > **alapértelmezésben** Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
+4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, használja a **Server Explorert** , és bontsa ki az **Azure** > **HDInsight** > a HDInsight-fürt > **kaptár-adatbázisok** > **alapértelmezett beállítást**. Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
 
 ## <a id="nextsteps"></a>Következő lépések
 

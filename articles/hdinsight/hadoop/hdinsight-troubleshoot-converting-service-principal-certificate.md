@@ -1,5 +1,5 @@
 ---
-title: Egyszerű tanúsítvány tartalmának konvertálása Base-64 – Azure HDInsight
+title: A tanúsítvány tartalmának konvertálása Base-64-Azure HDInsight
 description: Egyszerű tanúsítvány tartalmának konvertálása Base-64 kódolású karakterlánc-formátumra az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 0f9158164ec598682841b217b9954145f8540c6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ad41ef464f592fd09b070ab6f715e9a07fb3cf21
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087433"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044491"
 ---
 # <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>Egyszerű tanúsítvány tartalmának konvertálása Base-64 kódolású karakterlánc-formátumra a HDInsight-ben
 
@@ -26,7 +26,7 @@ Hibaüzenet jelenik meg, amely szerint a bemenet nem érvényes Base-64 karakter
 
 Ha a PowerShell vagy az Azure template üzembe helyezésével fürtöket hoz létre Data Lake elsődlegesként vagy további tárolóként, akkor az Data Lake Storage-fiók eléréséhez megadott egyszerű szolgáltatás tanúsítványa a Base-64 formátumban van. A pfx-tanúsítvány tartalmának a Base-64 kódolású sztringre való helytelen átalakítása ehhez a hibához vezethet.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Felbontás
 
 Ha az egyszerű szolgáltatás tanúsítványa pfx formátumban van (lásd [itt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) az egyszerű minta-létrehozási lépéseknél), használja a következő PowerShell- C# parancsot vagy kódrészletet a tanúsítvány tartalmának Base-64 formátumra való átalakításához.
 
@@ -52,12 +52,12 @@ namespace ConsoleApplication
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Csatlakozás az Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők. [@AzureSupport](https://twitter.com/azuresupport)
+* Csatlakozás a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiók a felhasználói élmény javításához az Azure-Közösség és a megfelelő erőforrások összekapcsolásával: válaszok, támogatás és szakértők.
 
 * Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

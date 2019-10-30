@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757240"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043948"
 ---
 # <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
 
@@ -184,4 +184,4 @@ A Content Moderator egy [kifejezés-lista API](https://westus.dev.cognitive.micr
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tesztelje a [text moderációs API-konzolt](try-text-api.md) , és használja a REST API-kód mintáit. Ha már ismeri a Visual studiót és a- C#t, tekintse meg a [szöveges moderálási .net](text-moderation-quickstart-dotnet.md) gyors útmutatóját is.
+Tesztelje a [text moderációs API-konzolt](try-text-api.md) , és használja a REST API-kód mintáit. Tekintse meg a [.net SDK](dotnet-sdk-quickstart.md) gyors útmutató szöveg moderálás szakaszát is, ha már ismeri a Visual studiót C#és a-t.

@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: dd7e3ed767539f8de46e5f77a39b1e7bac0cb3b0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b408d2cc0754cc1f2dd8671d037d4f9d348e883b
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965819"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027636"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Oktatóanyag: létrehozás és útmutató a napelemek figyelésére szolgáló alkalmazás sablonja 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Ez az oktatóanyag végigvezeti Önt a napelemes figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
@@ -41,8 +43,8 @@ Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
 
 2. Válassza **az energia** fület, majd kattintson az alkalmazás **létrehozása** elemre a **napelem figyelése** alkalmazás csempén. 
 
-    > [!div class="mx-imgBorder"]
-    > ![az alkalmazás létrehozása](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    [!div class="mx-imgBorder"]
+    ![az alkalmazás létrehozása](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
 3. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a kért adatokat az alábbi ábrán látható módon:
     * **Alkalmazás neve**: válasszon egy nevet a IoT Central alkalmazás számára. 
@@ -70,37 +72,37 @@ A adatum egy fiktív energetikai cég, aki figyeli és kezeli a napelemeket. A n
 * Az energia teljes generációjának nyomon követése tervezési és számlázási célokra
 * Parancs-és vezérlési műveletek, például aktiválási panel és a belső vezérlőprogram verziójának frissítése. A sablonban a parancsgombok a lehetséges funkciókat mutatják, és nem küldenek valós parancsokat.
 
-> [!div class="mx-imgBorder"]
-> ![a Solar panel monitorozási irányítópultja](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+[!div class="mx-imgBorder"]
+![a Solar panel monitorozási irányítópultja](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Eszközök
 Az alkalmazás egy minta napelemes eszközt tartalmaz. Az eszköz adatait a **Devices (eszközök** ) lapra kattintva tekintheti meg.
 
-> [!div class="mx-imgBorder"]
-> ![napelemes eszközök](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+[!div class="mx-imgBorder"]
+![napelemes eszközök](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
 
 Az eszköz részleteinek megtekintéséhez kattintson a minta eszköz **SP0123456789** hivatkozására. A **frissítés tulajdonságai** lapon frissítheti az eszköz írható tulajdonságait, és megjelenítheti a frissített értékeket az irányítópulton. 
 
-> [!div class="mx-imgBorder"]
-> ![napelemek tulajdonságai](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+[!div class="mx-imgBorder"]
+![napelemek tulajdonságai](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Eszköz sablonja
 A napelemes eszköz modell megjelenítéséhez kattintson az **eszköz sablonok** lapfülre. A modell előre definiált felületet tartalmaz az adattípushoz, a tulajdonsághoz, a parancsokhoz és a nézetekhez.
 
-> [!div class="mx-imgBorder"]
-> ![napelemes eszközök sablonja](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+[!div class="mx-imgBorder"]
+![napelemes eszközök sablonja](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alkalmazást a következő lépésekkel:
 
-1. A bal oldali menüben nyissa meg az adminisztráció lapot.
+1. A bal oldali ablaktáblában nyissa meg az adminisztráció lapot.
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
-    > [!div class="mx-imgBorder"]
-    > ![alkalmazás törlése](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
+    [!div class="mx-imgBorder"]
+    ![alkalmazás törlése](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
 
 ## <a name="next-steps"></a>Következő lépések

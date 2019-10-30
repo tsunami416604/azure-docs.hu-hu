@@ -1,5 +1,6 @@
 ---
 title: 'Rövid útmutató: a Pythonhoz készült ügyféloldali kódtár Content Moderator | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Ismerkedés a Content Moderator a Pythonhoz készült ügyféloldali kódtáraval.
 services: cognitive-services
 author: PatrickFarley
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755256"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044038"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rövid útmutató: Content Moderator a Pythonhoz készült ügyféloldali kódtár
 
@@ -44,7 +45,7 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
 
-A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, `CONTENT_MODERATOR_SUBSCRIPTION_KEY` és `CONTENT_MODERATOR_ENDPOINT` névvel.
+A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, `CONTENT_MODERATOR_SUBSCRIPTION_KEY` és `CONTENT_MODERATOR_ENDPOINT`névvel.
  
 ### <a name="create-a-python-script"></a>Python-szkript létrehozása
 
@@ -295,7 +296,7 @@ A következő kód használatával törölheti az adott rendszerkép listáját.
 
 ## <a name="create-a-review"></a>Felülvizsgálat létrehozása
 
-A Content Moderator Python SDK használatával tartalmat adhat a [felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com) , így az emberi moderátorok áttekinthetik azt. Ha többet szeretne megtudni a felülvizsgálati eszközről, tekintse meg a [fogalmi útmutatót](./review-tool-user-guide/human-in-the-loop.md).
+A Content Moderator Python SDK használatával tartalmat adhat a [felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com) , így az emberi moderátorok áttekinthetik azt. További információ a felülvizsgálati eszközről: a [felülvizsgálati eszköz fogalmi útmutatója](./review-tool-user-guide/human-in-the-loop.md).
 
 A következő kód a [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) osztályt használja a felülvizsgálat létrehozásához, az azonosító lekéréséhez, valamint az adatoknak a felülvizsgálati eszköz webportálon való fogadását követően az emberi bevitel megérkezése után.
 
@@ -312,7 +313,7 @@ Adja hozzá a következő kódot az adott rendszerkép URL-címéhez tartozó fe
 
 ### <a name="get-review-details"></a>Áttekintés részleteinek beolvasása
 
-A következő kód használatával ellenőrizheti egy adott áttekintés részleteit. A felülvizsgálat létrehozása után megnyithatja a felülvizsgálati eszközt, és használhatja a tartalmat. Ha elkészült, újra futtathatja ezt a kódot, és lekéri a felülvizsgálati folyamat eredményét is.
+A következő kód használatával ellenőrizheti egy adott áttekintés részleteit. A felülvizsgálat létrehozása után megnyithatja a felülvizsgálati eszközt, és használhatja a tartalmat. Ennek módjáról további információt a következő témakörben talál: [útmutató](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Ha elkészült, újra futtathatja ezt a kódot, és lekéri a felülvizsgálati folyamat eredményét is.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

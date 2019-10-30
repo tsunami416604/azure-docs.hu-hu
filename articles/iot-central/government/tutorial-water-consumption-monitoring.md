@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 543d019628e0f3c8423a71a4aa8d5b24a60e82e3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956718"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026566"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Oktatóanyag: vízfelhasználást figyelő alkalmazás létrehozása IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Ebből az oktatóanyagból megtekintheti, hogyan hozhat létre Azure IoT Central vízfelhasználás-figyelési alkalmazást a IoT Central Water-felhasználás figyelése alkalmazás sablonjában. 
 
@@ -47,7 +49,7 @@ Ebben a szakaszban az Azure IoT Central Water-használat **figyelési sablonját
 
     ![Lépjen a céges fiókjába](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-2. Kattintson a **Létrehozás** elemre a bal oldali navigációs menüből, és válassza a **kormányzat** fület. A kormányzat oldalon számos kormányzati alkalmazás-sablon látható.
+2. Kattintson a **Létrehozás** elemre a bal oldali ablaktáblán, és válassza a **kormányzat** fület. A kormányzat oldalon számos kormányzati alkalmazás-sablon látható.
 
    ![Kormányzati alkalmazás-sablonok készítése](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
@@ -241,7 +243,7 @@ IoT Central a feladatok lehetővé teszik, hogy az eszköz vagy a Felhőbeli tul
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 
-1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali navigációs menüjében. 
+1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali paneljén. 
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
 

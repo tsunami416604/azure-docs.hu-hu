@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c2e68e83999ace4094d060a21e91b87347b03e9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955108"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026530"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Oktatóanyag: a víz minőségének monitorozására szolgáló alkalmazás létrehozása IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Ez az oktatóanyag végigvezeti egy Azure IoT Central Water minőség-figyelési alkalmazás létrehozásában a IoT Central Water Quality monitoring Application sablonból. 
 
@@ -50,7 +52,7 @@ Ebben a szakaszban az Azure IoT Central **Water minőség-figyelési sablont** f
 
     ![Lépjen a céges fiókjába](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-2. Kattintson a **Létrehozás** elemre a bal oldali navigációs menüből, és válassza a **kormányzat** fület. A kormányzat oldalon számos kormányzati alkalmazás-sablon látható.
+2. Kattintson a **Létrehozás** elemre a bal oldali ablaktáblán, és válassza a **kormányzat** fület. A kormányzat oldalon számos kormányzati alkalmazás-sablon látható.
 
     ![Kormányzati alkalmazás-sablonok készítése](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
@@ -254,8 +256,8 @@ IoT Central a feladatok lehetővé teszik az eszköz vagy a felhő tulajdonsága
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 
-1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali navigációs menüjében. 
-2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
+1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali paneljén.
+2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra.
 
     ![Alkalmazás törlése](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
 

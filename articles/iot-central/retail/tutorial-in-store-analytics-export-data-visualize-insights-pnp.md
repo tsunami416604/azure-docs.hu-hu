@@ -10,12 +10,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: b982956af276eaba31be52ba426562f9fc5137dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956494"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026378"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Az előző két oktatóanyag elvégzéséhez [hozzon létre egy áruházbeli elemzési alkalmazást az azure IoT Centralban](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) , és [szabja testre az operátor irányítópultját, és kezelje az eszközöket az Azure IoT Centralban](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+* Az előző két oktatóanyag elvégzéséhez [hozzon létre egy áruházbeli elemzési alkalmazást az azure IoT Centralban](./tutorial-in-store-analytics-create-app-pnp.md) , és [szabja testre az operátor irányítópultját, és kezelje az eszközöket az Azure IoT Centralban](./tutorial-in-store-analytics-customize-dashboard-pnp.md).
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 * Egy Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
 
@@ -149,7 +149,7 @@ Most már rendelkezik egy harmadik adatfolyam-adatkészlettel, amely az értéke
 
 Ebben a megoldásban a logikai alkalmazás beolvassa az telemetria az Event hub-ból, elemzi az adatokat, majd elküldi a létrehozott Power BI streaming adatkészleteknek.
 
-A logikai alkalmazás létrehozása előtt szüksége lesz az IoT Central-alkalmazáshoz csatlakoztatott két RuuviTag-érzékelő eszköz-azonosítójának [használatára az Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) oktatóanyag:
+A logikai alkalmazás létrehozása előtt szüksége lesz az IoT Central-alkalmazáshoz csatlakoztatott két RuuviTag-érzékelő eszköz-azonosítójának [használatára az Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) oktatóanyag:
 
 1. Jelentkezzen be az **áruházbeli elemzés-** IoT Central alkalmazásba.
 1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán. Ezután válassza a **RuuviTag**lehetőséget.

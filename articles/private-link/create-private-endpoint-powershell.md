@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 91670d51328b3adb67ba8b2ed05d3b86f9bc0010
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376166"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053929"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-Az Azure egy Virtual Networkon belüli alhálózatra helyezi az erőforrásokat, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy *mySubnet* nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)paranccsal. A következő példa létrehoz egy *mySubnet* nevű alhálózatot a privát végpont hálózati házirendjének jelzővel, amely **le van tiltva**.
+Az Azure egy Virtual Networkon belüli alhálózatra helyezi az erőforrásokat, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy *mySubnet* nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)paranccsal. A következő példa létrehoz egy *mySubnet* nevű alhálózatot a privát végpont hálózati házirendjének jelzővel, amely **le van tiltva**.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -62,7 +62,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Az alhálózat hozzárendelése a Virtual Networkhoz
 
-Az alhálózat konfigurációját a [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)használatával írhatja be a Virtual Network. Ez a parancs az alhálózatot hozza létre:
+Az alhálózat konfigurációját a [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)használatával írhatja be a Virtual Network. Ez a parancs az alhálózatot hozza létre:
 
 ```azurepowershell
 $virtualNetwork | Set-AzVirtualNetwork
@@ -164,10 +164,10 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
 } 
 } 
 ``` 
-  
+  
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Használja a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) TO a virtuális gép nyilvános IP-címét. Ez a példa a *myVM* virtuális gép nyilvános IP-címét adja vissza:
+A [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) használatával visszaállíthatja egy virtuális gép nyilvános IP-címét. Ez a példa a *myVM* virtuális gép nyilvános IP-címét adja vissza:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -175,7 +175,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje le a @ no__t-0 @ no__t-1with az utolsó lépésből visszaadott nyilvános IP-címet: 
+Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje le a <publicIpAddress>t az utolsó lépésből visszaadott nyilvános IP-címmel: 
 
 
 > [!NOTE]
@@ -195,7 +195,7 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database kiszolgáló magánhálózati elérése a virtuális gépről
 
 1. A myVM Távoli asztal nyissa meg a PowerShellt.
-2. Adja meg a @ no__t-0 értéket. 
+2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. 
 
     Ehhez hasonló üzenet jelenik meg:
     ```azurepowershell

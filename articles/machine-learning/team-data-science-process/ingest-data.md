@@ -1,6 +1,6 @@
 ---
-title: Adatok betöltése az Azure storage-környezetek – csoportos adatelemzési folyamat
-description: Adatok áthelyezése Azure Blob Storage-tárolóba vagy onnan máshová
+title: Betöltés az Azure Storage-környezetbe – csoportos adatelemzési folyamat
+description: Megtudhatja, hogyan lehet az adatgyűjtést különböző célpont-környezetekben tárolni és feldolgozni.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56c45bf6db79ded64574a44399712951e82c1c3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 515decfafe46ad0c1b5b90743688abc26a975903
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303587"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053260"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Adatok betöltése a tárolási környezetekbe elemzés céljából
 
-A csoportos adatelemzési folyamat szükséges adatok betöltött vagy betölti a dolgozhatók fel és elemzi a legmegfelelőbb módon, a folyamat minden egyes szakaszhoz különböző tárolási környezetben. Feldolgozási gyakran használt adatok célok közé tartozik az Azure Blob Storage, SQL Azure adatbázis, SQL Server Azure virtuális Gépen, a HDInsight (Hadoop) és az Azure Machine Learning. 
+A csoportos adatelemzési folyamat megköveteli, hogy az adatmennyiség különböző tárolási környezetbe kerüljön, illetve a folyamat egyes szakaszaiban a legmegfelelőbb módon legyen feldolgozható vagy elemezhető. A feldolgozásra gyakran használt adatcélállomások közé tartoznak az Azure Blob Storage, a SQL Azure SQL Server-adatbázisok, az Azure-beli virtuális gépek, a HDInsight (Hadoop) és a Azure Machine Learning. 
 
-A következő cikkek betölteni az adatokat különböző célkörnyezetekben, ahol az adatok tárolása és feldolgozása az ismertetik.
+Az alábbi cikkek azt ismertetik, hogyan lehet az adatgyűjtést különböző célpont-környezetekben tárolni és feldolgozni.
 
-* A tárolókról [Azure Blob Storage](move-azure-blob.md)
-* A [SQL Server Azure virtuális gépen](move-sql-server-virtual-machine.md)
-* A [Azure SQL-adatbázis](move-sql-azure.md)
-* A [Hive-táblákban](move-hive-tables.md)
-* A [SQL particionált táblák](parallel-load-sql-partitioned-tables.md)
-* A [a helyszíni SQL Server](move-sql-azure-adf.md)
+* [Azure-Blob Storage](move-azure-blob.md)
+* SQL Server az Azure-beli [virtuális gépen](move-sql-server-virtual-machine.md)
+* Az [Azure SQL Database](move-sql-azure.md) -be
+* A [struktúra tábláiba](move-hive-tables.md)
+* [SQL-particionálású táblákhoz](parallel-load-sql-partitioned-tables.md)
+* Helyszíni [SQL Server](move-sql-azure-adf.md)
 
-Technikai és üzleti igények, valamint a kezdeti helyen, formázhatja, és az adatok mérete határozza meg a cél környezetekben, amelybe az adatokat kell megoldás elkezdi feldolgozni az elemzési a célok eléréséhez. Már nem ritka, hogy az esetet helyezhetők át a prediktív modell összeállításához szükséges feladatok számos eléréséhez több környezet szükséges. Ezen feladatok sorozatát lehetnek például adatfeltárás, az előfeldolgozásához, a tisztítás, a le-mintavételi és a modell betanítása.
+A technikai és üzleti igények, valamint az adatmennyiség kezdeti helye, formátuma és mérete határozza meg azokat a célcsoportokat, amelyekben az elemzés céljainak eléréséhez meg kell adni az adatot. Nem ritka, hogy egy olyan forgatókönyv esetében, amely a prediktív modell létrehozásához szükséges különböző feladatok eléréséhez több környezet között áthelyezett adatok megkövetelését igényli. A feladatok ezen sorozata magában foglalhatja például az adatok feltárását, az előfeldolgozást, a tisztítást, a le-mintavételezést és a modellek betanítását.

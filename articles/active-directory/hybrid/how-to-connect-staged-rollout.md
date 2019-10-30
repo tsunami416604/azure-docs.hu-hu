@@ -10,12 +10,12 @@ ms.date: 10/28/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254fa924ea2104e76a475c106f16f4672dd1eec1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 9c8f4250d2df7703ad2960c2d68cd015cb6ec2bc
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033315"
+ms.locfileid: "73052878"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Felhőalapú hitelesítés: szakaszos bevezetés (nyilvános előzetes verzió)
 
@@ -80,6 +80,8 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel
 
 Ha a jelszó-kivonatolási szinkronizálást (PHS) a szakaszos bevezetéssel szeretné tesztelni, végezze el az alábbi előtti lépéseket a jelszó-kivonat szinkronizálásának szakaszos bevezetésének engedélyezéséhez.
+
+A használt PowerShell-parancsmagokkal kapcsolatos további információkért lásd: [AzureAD 2,0 előzetes](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout) verzió
 
 ## <a name="pre-work-for-password-hash-sync"></a>A jelszó-kivonat szinkronizálásának előzetes munkája
 
@@ -239,3 +241,6 @@ Az alábbi lépésekkel követheti nyomon, hogy a felhasználói bejelentkezése
 -   **K: használhatom a PowerShellt a szakaszos bevezetéshez?**
 
 -   Válasz: igen, keresse meg a dokumentációt, hogy a PowerShell használatával hajtsa végre a szakaszos bevezetést itt.
+
+## <a name="next-steps"></a>Következő lépések
+- [AzureAD 2,0 előzetes verzió](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

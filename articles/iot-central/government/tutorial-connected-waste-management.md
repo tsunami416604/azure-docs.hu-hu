@@ -7,14 +7,17 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9af8a94953d7893c71cfc413f9259ec8582a8899
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a0bf3b555334b67659975c150711eab02b957c6e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955150"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026602"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure IoT Central csatlakoztatott hulladékgazdálkodási alkalmazást a IoT Central **csatlakoztatott hulladékkezelési** alkalmazás sablonból. 
 
 Az oktatóanyag a következőket ismerteti: 
@@ -45,7 +48,7 @@ Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodás
 
     ![Lépjen a céges fiókjába](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. Kattintson a **Létrehozás** elemre a bal oldali navigációs menüből, és válassza a **kormányzat** fület. A kormányzat oldalon számos kormányzati alkalmazás-sablon látható.
+2. Kattintson a **Létrehozás** elemre a bal oldali ablaktáblán, és válassza a **kormányzat** fület. A kormányzat oldalon számos kormányzati alkalmazás-sablon látható.
 
     ![Kormányzati alkalmazás-sablonok készítése](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
@@ -255,8 +258,8 @@ IoT Central a feladatok lehetővé teszik az eszköz vagy a felhő tulajdonsága
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 
-1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali navigációs menüjében. 
-2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
+1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali paneljén.
+2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra.
 
   
 

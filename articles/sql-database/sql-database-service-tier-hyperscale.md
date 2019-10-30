@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428038"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053903"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -38,7 +38,7 @@ A Azure SQL Database nagy kapacitású szolgáltatási szintje a következő kie
 
 - Akár 100 TB-os adatbázis-méret támogatása
 - Szinte azonnali adatbázis-biztonsági másolatok (az Azure Blob Storage-ban tárolt fájl-Pillanatképek alapján), függetlenül a számítási erőforrásokra vonatkozó IO-hatás nélküli mérettől  
-- Gyors adatbázis-visszaállítások (fájl-Pillanatképek alapján) percek és napok helyett (nem az adatműveletek mérete)
+- Gyors adatbázis-időponthoz tartozó visszaállítás (fájl-Pillanatképek alapján) percek alatt, nem pedig óra vagy nap (nem az adatművelet mérete)
 - Nagyobb általános teljesítmény a nagyobb naplózási átviteli sebesség és a gyorsabb tranzakció-végrehajtási idő miatt, függetlenül az adatmennyiségtől
 - Gyors kibővítés – kiépíthető egy vagy több írásvédett csomópont az olvasási számítási feladat kiszervezéséhez és a meleg készenléti használatra
 - Gyors vertikális felskálázás – állandó időben, a számítási erőforrások vertikális felskálázásával nagy mennyiségű számítási feladathoz is alkalmazkodhat, és szükség esetén a számítási erőforrások méretezése nem szükséges.
@@ -241,7 +241,7 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | A logikai kiszolgáló biztonsági mentések ablaktáblája nem jeleníti meg a nagy kapacitású-adatbázisok szűrését az SQL Server rendszerből  | A nagy kapacitású külön módszert biztosít a biztonsági mentések kezeléséhez, így a hosszú távú megőrzési és időponthoz kötött biztonsági mentési adatmegőrzési beállítások nem érvényesek/érvénytelenítve vannak. Ennek megfelelően a nagy kapacitású-adatbázisok nem jelennek meg a biztonsági mentés kezelése ablaktáblán. |
 | Időponthoz kötött visszaállítás | Miután áttelepítette az adatbázist a nagy kapacitású szolgáltatási szintjére, a Migrálás előtti időpontban történő visszaállítás nem támogatott.|
 | Nem nagy kapacitású adatbázis visszaállítása Hypserscale és fordítva | A nagy kapacitású-adatbázisok nem állíthatók vissza nem nagy kapacitású adatbázisba, és nem állíthatók vissza egy nem nagy kapacitású adatbázis egy nagy kapacitású-adatbázisba.|
-| Ha egy adatbázis 1 TB-nál nagyobb adatfájllal rendelkezik, az áttelepítés meghiúsul | Bizonyos esetekben előfordulhat, hogy a probléma megoldásához a nagyméretű fájlokat 1 TB-nál kisebbre kell csökkenteni. Ha az áttelepítési folyamat során használt adatbázist telepít át, győződjön meg arról, hogy egyetlen fájl sem lesz nagyobb 1 TB-nál. Az adatbázisfájlok méretének meghatározásához használja az alábbi lekérdezést. @no__t – 0;|
+| Ha egy adatbázis 1 TB-nál nagyobb adatfájllal rendelkezik, az áttelepítés meghiúsul | Bizonyos esetekben előfordulhat, hogy a probléma megoldásához a nagyméretű fájlokat 1 TB-nál kisebbre kell csökkenteni. Ha az áttelepítési folyamat során használt adatbázist telepít át, győződjön meg arról, hogy egyetlen fájl sem lesz nagyobb 1 TB-nál. Az adatbázisfájlok méretének meghatározásához használja az alábbi lekérdezést. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Felügyelt példány | Azure SQL Database felügyelt példány jelenleg nem támogatott a nagy kapacitású-adatbázisokban. |
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak SQL Database nagy kapacitású.|
 | A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Ha egy adatbázis át lett telepítve a nagy kapacitású-be, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a BACPAC-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik.|

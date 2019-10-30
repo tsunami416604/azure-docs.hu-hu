@@ -1,7 +1,7 @@
 ---
 title: Python Machine learning-parancsfájlok végrehajtása
 titleSuffix: Azure Machine Learning Studio
-description: Ismerje meg, hogyan használható a Python a Azure Machine Learning Studioban.
+description: Ismerje meg, hogyan használhatja a Python-szkriptek végrehajtása a Python-kódokat Machine Learning Studio (klasszikus) kísérletekben és webszolgáltatásokban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308862"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053786"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan használható a Python-szkript végrehajtása a 
 
 ## <a name="using-the-execute-python-script-module"></a>A Python-parancsfájl végrehajtása modul használata
 
-A Studióban a Pythonhoz készült elsődleges felület a [Python parancsfájl][execute-python-script] -futtatási modulján keresztül történik. Legfeljebb három bemenetet fogad el, és legfeljebb két kimenetet hoz létre, hasonlóan az [R-szkript végrehajtása][execute-r-script] modulhoz. A Python-kód bekerül a paraméter mezőbe egy speciális névvel ellátott belépési pont `azureml_main`nevű függvénnyel.
+A Studióban a Pythonhoz készült elsődleges felület a [Python parancsfájl][execute-python-script] -futtatási modulján keresztül történik. Legfeljebb három bemenetet fogad el, és legfeljebb két kimenetet hoz létre, hasonlóan az [R-szkript végrehajtása][execute-r-script] modulhoz. A Python-kód bekerül a paraméter mezőbe egy `azureml_main`nevű, külön névvel ellátott belépési pont függvénnyel.
 
 ![Python parancsfájl-modul végrehajtása](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -33,7 +33,7 @@ A Studióban a Pythonhoz készült elsődleges felület a [Python parancsfájl][
 
 ### <a name="input-parameters"></a>Bemeneti paraméterek
 
-A Python-modul bemenetei pandák DataFrames jelennek meg. A `azureml_main` függvény legfeljebb két opcionális pandák DataFrames-t fogad el paraméterként.
+A Python-modul bemenetei pandák DataFrames jelennek meg. A `azureml_main` függvény legfeljebb két opcionális pandák DataFrames fogad el paraméterként.
 
 A bemeneti portok és a függvények paramétereinek megfeleltetése a pozíció:
 
@@ -41,13 +41,13 @@ A bemeneti portok és a függvények paramétereinek megfeleltetése a pozíció
 - A második bemenet (ha csatlakoztatva van) a függvény második paraméterére van leképezve.
 - A harmadik bemenet [további Python-modulok importálására](#import-modules)szolgál.
 
-Alább láthatók a részletes szemantika arról, hogy a bemeneti portok hogyan lesznek leképezve a `azureml_main` függvény paramétereinek.
+Alább láthatók a `azureml_main` függvény paraméterei által leképezett bemeneti portok.
 
 ![Bemeneti portok konfigurációjának és a létrejövő Python-aláírásnak a táblázata](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>Kimeneti visszatérési értékek
 
-A `azureml_main` függvénynek egy Python- [sorozatba](https://docs.python.org/2/c-api/sequence.html) (például egy rekord, lista vagy NumPy tömbbe) csomagolt, egyetlen pandák DataFrame kell visszaadnia. A rendszer az első elemet adja vissza a modul első kimeneti portjához. A modul második kimeneti portja a [vizualizációk](#visualizations) esetében használatos, és nem igényel visszatérési értéket. Ez a séma alább látható.
+A `azureml_main` függvénynek egy Python- [sorozatba](https://docs.python.org/2/c-api/sequence.html) , például egy rekordba, listához vagy NumPy tömbbe csomagolt, egyetlen Panda DataFrame kell visszaadnia. A rendszer az első elemet adja vissza a modul első kimeneti portjához. A modul második kimeneti portja a [vizualizációk](#visualizations) esetében használatos, és nem igényel visszatérési értéket. Ez a séma alább látható.
 
 ![Bemeneti portok hozzárendelése paraméterekhez és visszatérési érték a kimeneti porthoz](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -60,16 +60,16 @@ A Studio-adatkészletek nem egyeznek a Panda DataFrames. Ennek eredményeképpen
 | Karakterláncok és numerikus számok| Lefordítva |
 | Panda ' NA ' | Lefordítva "hiányzó érték" |
 | Indexelő vektorok | Támogatott |
-| Nem karakterláncos oszlopnevek | Oszlop `str` nevének meghívása |
-| Ismétlődő oszlopnevek | Numerikus utótag hozzáadása: (1), (2), (3) és így tovább.
+| Nem karakterláncos oszlopnevek | Az oszlopnevek meghívása `str` |
+| Ismétlődő oszlopnevek | Adja hozzá a numerikus utótagot: (1), (2), (3) és így tovább.
 
-**A Python-64 függvény összes bemeneti adatkeretének értéke a 0 és az 1 közötti számú numerikus index.*
+**a Python függvényben lévő összes bemeneti adatkeretnek a 0 és a 0 közötti numerikus indexnek kell 64 lennie, a sorok száma mínusz 1*
 
 ## <a id="import-modules"></a>Meglévő Python parancsfájl-modulok importálása
 
 A Python végrehajtásához használt háttér a [anaconda](https://www.anaconda.com/distribution/), egy széles körben használt tudományos Python-disztribúción alapul. Az adat-központú számítási feladatokban használt leggyakoribb Python-csomagok 200-es közelségbe kerül. A Studio jelenleg nem támogatja az olyan csomagkezelő rendszerek használatát, mint a PIP vagy a Conda a külső könyvtárak telepítéséhez és kezeléséhez.  Ha a további kódtárak beépítésének szükségességét tapasztalja, használja a következő forgatókönyvet útmutatóként.
 
-Gyakori használati eset a meglévő Python-parancsfájlok Studio-kísérletekbe való beépítése. A [Python-szkript végrehajtása][execute-python-script] modul egy, a harmadik bemeneti porton található Python-modulokat tartalmazó zip-fájlt fogad el. A fájlt a végrehajtási keretrendszer kibontja a futtatókörnyezetben, és a rendszer hozzáadja a tartalmat a Python-tolmács könyvtári elérési útjához. A `azureml_main` belépési pont függvény ezután közvetlenül importálhatja ezeket a modulokat. 
+Gyakori használati eset a meglévő Python-parancsfájlok Studio-kísérletekbe való beépítése. A [Python-szkript végrehajtása][execute-python-script] modul egy, a harmadik bemeneti porton található Python-modulokat tartalmazó zip-fájlt fogad el. A fájlt a végrehajtási keretrendszer kibontja a futtatókörnyezetben, és a rendszer hozzáadja a tartalmat a Python-tolmács könyvtári elérési útjához. A `azureml_main` belépési pont funkció ezután közvetlenül importálhatja ezeket a modulokat. 
 
 Tegyük fel például, hogy a fájl Hello.py egy egyszerű "Helló, világ" függvényt tartalmaz.
 
@@ -85,7 +85,7 @@ Töltse fel a zip-fájlt adatkészletként a studióba. Ezután hozzon létre é
 
 ![Felhasználó által definiált Python-kód zip-fájlként feltöltve](./media/execute-python-scripts/figure6b.png)
 
-A modul kimenete azt mutatja, hogy a zip-fájl kicsomagolása megtörtént `print_hello` , és a függvény futtatása megtörtént.
+A modul kimenete azt mutatja, hogy a zip-fájl kicsomagolása megtörtént, és a függvény `print_hello` futtatva.
 
 ![Felhasználó által definiált függvényt megjelenítő modul kimenete](./media/execute-python-scripts/figure7.png)
 
@@ -95,7 +95,7 @@ Az Azure Blob Storage-fiókban tárolt adatai a következő lépésekkel érhet�
 
 1. Töltse le helyileg a [Pythonhoz készült Azure Blob Storage csomagot](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) .
 1. Töltse fel a zip-fájlt a Studio-munkaterületre adatkészletként.
-1. Hozza létre a BlobService objektumot a`protocol='http'`
+1. Hozza létre a BlobService objektumot `protocol='http'`
 
 ```
 from azure.storage.blob import BlockBlobService
@@ -114,7 +114,7 @@ A pontozási kísérletekben használt összes [Python parancsfájl][execute-pyt
 
 ![Webszolgáltatások Studio-munkaterülete](./media/execute-python-scripts/figure3a.png)
 
-![Python Pandas expression](./media/execute-python-scripts/python-script-with-python-pandas.png)
+![Python-pandák kifejezés](./media/execute-python-scripts/python-script-with-python-pandas.png)
 
 A kísérletből létrehozott webszolgáltatás a következő műveleteket végzi el:
 
@@ -179,7 +179,7 @@ A Python belépési pontja csak egy adatkeret kimenetként való visszaküldés�
 
 Jelenleg az egyéni Python-modulok hozzáadásának egyetlen módja a korábban ismertetett zip-fájl mechanizmuson keresztül. Habár ez a kis modulok esetében is lehetséges, nehézkes a nagyméretű modulok (különösen a natív DLL-eket tartalmazó modulok) vagy nagy számú modul használata esetén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
 

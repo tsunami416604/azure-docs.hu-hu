@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: fd6062250b288f9c1f04b7e7853e7fdd84d612c0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965832"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026742"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának létrehozása és végigvezeti 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Ez az oktatóanyag végigvezeti az intelligens mérőműszer-figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
@@ -39,8 +41,8 @@ Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
 
 2. Válassza **az energia** fület, majd kattintson az alkalmazás **létrehozása** elemre az **intelligens fogyasztásmérő figyelése** alkalmazás csempén.
 
-    > [!div class="mx-imgBorder"]
-    > ![az alkalmazás létrehozása](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    [!div class="mx-imgBorder"]
+    ![az alkalmazás létrehozása](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
 3. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a kért adatokat az alábbi ábrán látható módon:
@@ -70,31 +72,31 @@ A adatum egy kitalált energetikai vállalat, amely figyeli és felügyeli az in
 * A teljes energiafogyasztás nyomon követése tervezési és számlázási célokra
 * Parancs-és vezérlési műveletek, például újrakapcsolási mérő és a belső vezérlőprogram frissítése. A sablonban a parancsgombok a lehetséges funkciókat mutatják, és nem küldenek valós parancsokat. 
 
-> [!div class="mx-imgBorder"]
-> ![intelligens fogyasztásmérő monitorozási irányítópultja](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+[!div class="mx-imgBorder"]
+![intelligens fogyasztásmérő monitorozási irányítópultja](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Eszközök
 Az alkalmazás egy minta intelligens mérőszám-eszközt tartalmaz. Az eszköz adatait a **Devices (eszközök** ) lapra kattintva tekintheti meg.
 
-> [!div class="mx-imgBorder"]
-> ![Smart Meter-eszközök](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+[!div class="mx-imgBorder"]
+![Smart Meter-eszközök](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Az eszköz részleteinek megtekintéséhez kattintson a minta eszköz **SM0123456789** hivatkozására. Frissítheti az eszköz írható tulajdonságait a **frissítés tulajdonságai** lapon, és megjelenítheti a frissített értékeket az irányítópulton.
 
-> [!div class="mx-imgBorder"]
-> ![az intelligens fogyasztásmérő tulajdonságai](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+[!div class="mx-imgBorder"]
+![az intelligens fogyasztásmérő tulajdonságai](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Eszköz sablonja
 Az intelligenskártya-modell megjelenítéséhez kattintson az **eszköz sablonok** lapfülre. A modell előre definiált felületet tartalmaz az adattípushoz, a tulajdonsághoz, a parancsokhoz és a nézetekhez.
 
-> [!div class="mx-imgBorder"]
-> ![Smart Meter-eszközök sablonjai](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+[!div class="mx-imgBorder"]
+![Smart Meter-eszközök sablonjai](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alkalmazást a következő lépésekkel:
 
-1. A bal oldali menüben nyissa meg az adminisztráció lapot.
+1. A bal oldali ablaktáblában nyissa meg az adminisztráció lapot.
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
     > [!div class="mx-imgBorder"]

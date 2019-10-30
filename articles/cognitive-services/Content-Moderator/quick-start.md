@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757361"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044055"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
@@ -68,6 +68,6 @@ Vagy folytassa a következő lépésekkel a kód moderálási API-jai használat
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
-- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) [ C# vagy a gyors](image-moderation-quickstart-dotnet.md) üzembe helyezéssel ellenőrizheti a képeket, és felderítheti a potenciális felnőtt és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
-- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy [ C# a rövid](text-moderation-quickstart-dotnet.md) útmutató segítségével vizsgálja meg a szöveges tartalmat a lehetséges káromkodás, a gépi támogatással nem kívánt szöveges besorolás (előzetes verzió) és a személyes adatokat.
+- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy a [.net SDK](dotnet-sdk-quickstart.md) gyors üzembe helyezésével ellenőrizheti a képeket, és felderítheti a potenciális felnőtteket és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
+- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy használja a [.net SDK](dotnet-sdk-quickstart.md) gyors verzióját a szöveges tartalom vizsgálatához a lehetséges trágárság, a gépi támogatású nemkívánatos szöveg besorolása (előzetes verzió) és a személyes adatokat.
 - Videó-moderálás implementálása. Kövesse a [videó moderálásának útmutatóját C# ](video-moderation-api.md) a videók vizsgálatához és a potenciális felnőtt és a zamatos tartalmak észleléséhez. 

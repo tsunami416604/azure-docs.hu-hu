@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Hozza létre az első ML-kísérletét: Beállítás'
+title: 'Oktatóanyag: az első ML-kísérlet létrehozása: telepítés'
 titleSuffix: Azure Machine Learning
-description: Ebben az oktatóanyag-sorozatban elvégezheti a teljes körű lépéseket a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdéséhez.  Az első rész egy felhőalapú notebook-kiszolgáló környezet létrehozását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK-t.  Az 1. részben létrehoz egy munkaterületet, amelyben a kísérleteket és a ML-modelleket fogja kezelni.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fc26b224a2af6ab4f1f6bf5551381d4739831351
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828038"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053873"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával a Python SDK-val
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 
 Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdését. Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat első része**, amely a Python környezet beállítását és konfigurálását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti. A második [**rész**](tutorial-1st-experiment-sdk-train.md) erre épít több gépi tanulási modell betanításához, és a Azure Portal és az SDK használatával is bevezeti a modell felügyeleti folyamatát.
 
@@ -30,7 +30,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-## <a name="create-a-workspace"></a>Munkaterület létrehozása
+## <a name="create-a-workspace"></a>Munkaterületek létrehozása
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
 
@@ -62,7 +62,7 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
 
 1. Minden olyan felhasználó számára megjelenik egy mappa, aki hozzáfér a munkaterülethez.  Válassza ki azt a mappát, amelybe be szeretné választani az **oktatóanyag** mappáját.
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a>@no__t – virtuális gép 0Select a notebook futtatásához
+## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">válasszon ki egy virtuális gépet a jegyzetfüzet futtatásához
 
 1. A **felhasználói fájlok** területen nyissa meg a mappát, majd nyissa meg a klónozott **oktatóanyagok** mappát.
 
@@ -86,17 +86,17 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
 1. Miután a virtuális gép elérhetővé válik, megjelenik a felső eszköztáron.  Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a jegyzetfüzet kódjának **SHIFT + ENTER** billentyűkombinációjának használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
 * Létrehozott egy Azure Machine Learning munkaterületet.
 * Létrehozott és konfigurált egy felhőalapú notebook-kiszolgálót a munkaterületen.
 
-Az oktatóanyag **második részében** futtatja a kódot a Machine `tutorial-1st-experiment-sdk-train.ipynb` learning-modellek betanításához. 
+Az oktatóanyag **második részében** a `tutorial-1st-experiment-sdk-train.ipynb` kódot futtatva elvégezheti a Machine learning-modellek betanítását. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az első modell betanítása](tutorial-1st-experiment-sdk-train.md)
+> [Oktatóanyag: az első modell betanítása](tutorial-1st-experiment-sdk-train.md)
 
 > [!IMPORTANT]
 > Ha nem tervezi az oktatóanyag vagy más oktatóanyagok 2. részét, akkor [állítsa le a Felhőbeli notebook Server-alapú virtuális gépet](tutorial-1st-experiment-sdk-train.md#clean-up-resources) , ha nem használja azt a Cost csökkentése érdekében.

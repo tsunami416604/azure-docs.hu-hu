@@ -1,19 +1,19 @@
 ---
-title: Gyakori kérdések a VMware – Azure vész-helyreállítással kapcsolatban Azure Site Recovery használatával | Microsoft Docs
+title: Gyakori kérdések a VMware – Azure vész-helyreállítással kapcsolatban Azure Site Recovery
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 06/27/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002280"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053686"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések a VMware-ről az Azure-ba történő replikálásra
 
@@ -104,7 +104,7 @@ Minden replikálni kívánt virtuális gépen telepítse a szolgáltatást több
 - [Manuális telepítés](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) a felhasználói felületen vagy a PowerShellben
 - Üzembe helyezés egy központi telepítési eszköz használatával, például [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
 
-## <a name="managed-disks"></a>Felügyelt lemezek
+## <a name="managed-disks"></a>Managed Disks
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Hová Site Recovery az adatreplikálás?
 
@@ -123,7 +123,7 @@ Az új virtuális gépek Storage-fiókba való replikálása csak a PowerShell v
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Milyen előnyökkel jár a felügyelt lemezekre való replikálás?
 
-[](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/) Útmutató Site Recovery leegyszerűsíti a felügyelt lemezekkel való vész-helyreállítást.
+[Útmutató](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/) Site Recovery leegyszerűsíti a felügyelt lemezekkel való vész-helyreállítást.
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Módosíthatom a felügyelt lemez típusát a gép védelme után?
 
@@ -138,7 +138,7 @@ Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](https://docs.mic
 
 Nem. A felügyelt és a nem felügyelt közötti váltás nem támogatott.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik a replikált virtuális gépekre vonatkozó követelmények?
 
@@ -189,7 +189,7 @@ Nem, Site Recovery nem támogatja az Azure Storage-ba való replikálást a virt
 
 ## <a name="component-upgrade"></a>Összetevő frissítése
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mit tegyek?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mi a teendő?
 
 Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr_support_statement) információ a nagyon régi verziókról való frissítésről.
 
@@ -227,7 +227,7 @@ A konfigurációs kiszolgálóhoz egyetlen, magasan elérhető helyszíni VMware
 
 ### <a name="what-do-i-need-for-the-configuration-server"></a>Mire van szükségem a konfigurációs kiszolgálóhoz?
 
-Tekintse [](vmware-azure-deploy-configuration-server.md#prerequisites)át az előfeltételeket.
+Tekintse át az [előfeltételeket](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Manuálisan is beállítható a konfigurációs kiszolgáló a sablon használata helyett?
 
@@ -287,7 +287,7 @@ Igen, de vegye figyelembe, hogy a fizikai gép csak a VMware virtuális gépeken
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Honnan tölthetők le a tároló regisztrációs kulcsai?
 
-A Recovery Services-tárolóban válassza a **konfigurációs kiszolgálók** lehetőséget **site Recovery infrastruktúra** > **kezelése**elemnél. Ezután a **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
+A Recovery Services-tárolóban válassza a **konfigurációs kiszolgálók** lehetőséget **site Recovery infrastruktúra** > **kezelés**elemre. Ezután a **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Használható egyetlen konfigurációs kiszolgáló a több vCenter-példány védeleméhez?
 
@@ -297,7 +297,7 @@ Igen, egyetlen konfigurációs kiszolgáló is képes a virtuális gépeket töb
 
 Igen, Azure Site Recovery képes a virtuális gépeket különböző fürtökön keresztül védelemmel ellátni.
 
-## <a name="process-server"></a>Folyamatkiszolgáló
+## <a name="process-server"></a>Kiszolgáló feldolgozása
 
 ### <a name="why-am-i-unable-to-select-the-process-server-when-i-enable-replication"></a>Miért nem tudom kiválasztani a Process Servert a replikálás engedélyezésekor?
 
@@ -361,7 +361,7 @@ Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhat
 
 Igen. [További információk](site-recovery-plan-capacity-vmware.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](vmware-physical-azure-support-matrix.md) a támogatási követelményeket.
 - [Beállítás](vmware-azure-tutorial.md) VMware – Azure replikálás.

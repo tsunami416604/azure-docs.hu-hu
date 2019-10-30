@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8ae5c9b6b52ea13e3d0981664e8c920cc5b47a01
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2e96a2a2dd5504c906b5fb84b643467a83518f21
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263559"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027583"
 ---
 # <a name="overview-custom-rules-for-web-application-firewall-v2"></a>Áttekintés: webalkalmazási tűzfal v2 egyéni szabályai
 
@@ -32,6 +32,9 @@ Ha két különböző feltételt *szeretne használni,* a két feltételnek kül
 > Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../azure-subscription-service-limits.md#application-gateway-limits)című témakört.
 
 A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, mint az alapvető szabálykészlet esetében. Ezekre a szabályokra példákat a "3. példa" és az "example 5" című témakörben talál az [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md)című részben.
+
+> [!NOTE]
+> Az egyéni szabályok nem érhetők el a v1 SKU-WAF.
 
 ## <a name="allowing-or-blocking-traffic"></a>Forgalom engedélyezése vagy letiltása
 

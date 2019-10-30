@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f85dd3abae8f6e4b3ccc10654e6da8363e80b3d3
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968273"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053383"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek vészhelyreállítási próbájának végrehajtása egy másodlagos Azure-régióba
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállít�
 > * Feladatátvételi teszt futtatása egyetlen virtuális gép esetén
 
 > [!NOTE]
-> Ennek az oktatóanyagnak a célja, hogy végigvezesse a felhasználót a vészhelyreállítási próba folyamatán a lehető legkevesebb lépésben. Ha részletesebben szeretné megismerni a vészhelyreállítási próba végrehajtásával kapcsolatos különféle szempontokat, beleértve a hálózatkezelést, az automatizálást és a hibaelhárítást, tekintse meg az Azure-beli virtuális gépekre vonatkozó útmutatók között található dokumentációt.
+> Ez az oktatóanyag segítséget nyújt a DR működésének minimális lépéseivel való elvégzéséhez. Ha többet szeretne megtudni a DR működéssel kapcsolatos különböző szempontokról, beleértve a hálózati szempontokat, az automatizálást és a hibaelhárítást, tekintse meg az Azure-beli virtuális gépekhez tartozó "útmutató" című dokumentumot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,9 +42,10 @@ Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállít�
 
 2. A **Feladatátvételi teszt** területen válasszon ki egy helyreállítási pontot a feladatátvétel végrehajtásához:
 
-   - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
+    - **Legutóbb**: feldolgozza site Recovery összes információját, és megadja a legalacsonyabb RTO (helyreállítási idő célkitűzés).
+    - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
    - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
-   - **Egyéni**: Bármelyik helyreállítási pontot kiválaszthatja.
+   - **Egyéni**: feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem a helyreállítási tervekkel való feladatátvételre.
 
 3. Válassza ki, hogy az Azure-beli virtuális gépek mely másodlagos régióban található cél Azure-beli virtuális hálózathoz csatlakozzanak majd a feladatátvételt követően.
 

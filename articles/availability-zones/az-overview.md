@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2019
+ms.date: 10/17/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1a8ac8746cda786d8651b4e3606756a76a80441c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cfe7374525486f7b4fc1b6cb89e40f2eaeff6737
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928350"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027162"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Mi Availability Zones az Azure-ban?
 A Availability Zones egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében. Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
@@ -72,8 +72,8 @@ A Availability Zones támogató Azure-szolgáltatások és-régiók kombináció
 | **Integrációs**                     |            |              |           |           |                |              |          |             |            |                |
 | Service Bus (csak prémium szint esetén) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
-
-
+| **Identitáskezelés**                     |            |              |           |           |                |              |          |             |            |                |
+| Azure AD tartományi szolgáltatások | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 
 ## <a name="services-resiliency"></a>Szolgáltatások rugalmassága
 Az összes Azure-beli felügyeleti szolgáltatás a régió szintű hibáktól való ellenálló képességnek számít. A hibák spektrumában egy vagy több rendelkezésre állási zónának a régión belüli meghibásodása kisebb meghibásodási sugarú, mint a teljes régió meghibásodása. Az Azure a régióban vagy egy másik Azure-régión belüli felügyeleti szolgáltatások zóna szintű meghibásodásával állítható helyre. Az Azure a régión belül egyszerre végzi el a kritikus karbantartást, így megakadályozva, hogy az adott régión belül üzembe helyezett felhasználói erőforrásokkal kapcsolatos hibák ne legyenek Availability Zones.
@@ -95,6 +95,7 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Zónaredundáns virtuális hálózati átjáró létrehozása](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 - [Zóna redundáns régiójának hozzáadása Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
 - [Azure cache Első lépések Redis Availability Zones](https://aka.ms/redis/az/getstarted)
+- [Azure Active Directory Domain Services példány létrehozása](../active-directory-domain-services/tutorial-create-instance.md)
 
 ## <a name="next-steps"></a>Következő lépések
 - [Gyorsindítási sablonok](https://aka.ms/azqs)

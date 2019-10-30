@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814512"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053823"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure-beli virtuális gép feladatátvétele Azure-régiók között
 
@@ -46,9 +46,9 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
 
 2. A **replikált elemek**területen válassza ki a virtuális gépet, majd válassza a **feladatátvétel**lehetőséget.
 3. A **feladatátvétel**területen válasszon ki egy helyreállítási pontot a feladatátvételhez:
-    - **Legutóbbi (alapértelmezett)** : Feldolgozza a Site Recovery szolgáltatás összes információját, és a legalacsonyabb helyreállítási időpontot (RPO) biztosítja.
-    - **Legutóbb feldolgozott**: Visszaállítja a virtuális gépet a Site Recovery által feldolgozott legutóbbi helyreállítási pontra.
-    - **Egyéni**: Feladatátvétel egy adott helyreállítási pontra. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
+    - **Legutóbbi (alapértelmezett)** : feldolgozza a site Recovery szolgáltatásban lévő összes értéket, és a legalacsonyabb helyreállítási időpontot (RPO) biztosítja.
+    - **Legutóbb feldolgozott**: visszaállít egy virtuális gépet a site Recovery által feldolgozott legutóbbi helyreállítási pontra.
+    - **Egyéni**: a feladatátvétel egy adott helyreállítási pontra történik. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
 4. Válassza a **gép leállítása a feladatátvétel** megkezdése előtt lehetőséget, ha azt szeretné, hogy a site Recovery megkísérelje a virtuális gépek leállítását a Dr régióban a feladatátvétel elindítása előtt. A feladatátvétel akkor is folytatódik, ha a Leállítás sikertelen. 
 5. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 6. A feladatátvétel befejeződése után ellenőrizze a virtuális gépet a bejelentkezéshez. Igény szerint módosíthatja a helyreállítási pontot.
@@ -57,6 +57,9 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
 
     ![Virtuális gép elsődleges és másodlagos régiókban](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> A Site Recovery Extension 9.28. x. x verziót futtató gépek esetében a 40-es [kumulatív frissítéssel](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery a másodlagos vész-helyreállítási régióban lévő gépek tisztítása, a nafter feladat-visszavétel befejeződött, és a virtuális gépek újbóli védelme megtörténik. Nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket.
+
+## <a name="next-steps"></a>Következő lépések
 
 [További](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) információ az ismételt védelem folyamatáról.

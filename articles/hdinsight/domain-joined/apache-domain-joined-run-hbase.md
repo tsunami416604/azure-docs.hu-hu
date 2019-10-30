@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Apache HBase konfigurálása Enterprise Security Package-Azure-ban
+title: Apache HBase & Enterprise Security Package – Azure HDInsight
 description: Oktatóanyag – megtudhatja, hogyan konfigurálhatja az Apache Ranger-szabályzatokat az Azure HDInsight-ben való HBase az Enterprise Security Package használatával.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597937"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044647"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
@@ -95,7 +95,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 
 Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1**számára.
 
-1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson **\<ClusterName > _hbase** a **hbase**területen.
+1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson **\<ClusterName > _hbase** elemre a **hbase**alatt.
 
    ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

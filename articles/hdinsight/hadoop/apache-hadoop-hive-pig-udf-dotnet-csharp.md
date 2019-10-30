@@ -1,5 +1,5 @@
 ---
-title: Használat C# a Apache Hive és az Apache Pig használatával Apache Hadoop HDInsight-Azure-ban
+title: C#, Apache Hive & Apache Pig on Apache Hadoop – Azure HDInsight
 description: Ismerje meg, hogyan C# használhatók a felhasználó által definiált függvények (UDF) Apache Hive és Apache Pig streamingtel az Azure HDInsight-ben.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066921"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044594"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Felhasználó C# által definiált függvények használata az Apache Hive és az Apache Pig használatával Apache Hadoop HDInsight
 
@@ -22,7 +22,7 @@ Ismerje meg, hogyan C# használhatók a felhasználó által definiált függvé
 > [!IMPORTANT]
 > A jelen dokumentumban ismertetett lépések a Linux-alapú és a Windows-alapú HDInsight-fürtökkel is működnek. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: HDInsight- [összetevő verziószámozása](../hdinsight-component-versioning.md).
 
-A kaptár és a Pig is továbbíthat az adatfeldolgozásra külső alkalmazásoknak. Ezt a folyamatot _adatfolyamként_nevezzük. .NET-alkalmazás használatakor a rendszer az adatok átadását a STDIN-re továbbítja az alkalmazásnak, és az alkalmazás az STDOUT-on lévő eredményeket adja vissza. Az stdin-ből és az stdout `Console.ReadLine()` -ból való olvasásra és írásra használhatja a és `Console.WriteLine()` a konzolt.
+A kaptár és a Pig is továbbíthat az adatfeldolgozásra külső alkalmazásoknak. Ezt a folyamatot _adatfolyamként_nevezzük. .NET-alkalmazás használatakor a rendszer az adatok átadását a STDIN-re továbbítja az alkalmazásnak, és az alkalmazás az STDOUT-on lévő eredményeket adja vissza. Az STDIN-ből és az STDOUT-ból való olvasásra és írásra a `Console.ReadLine()` és a `Console.WriteLine()` használható a konzolos alkalmazásokból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ A kaptár és a Pig is továbbíthat az adatfeldolgozásra külső alkalmazások
 
 ## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
-* __Linux-alapú HDInsight-__ fürtök [mono használatával https://mono-project.com) (](https://mono-project.com) .NET-alkalmazások futtatásához). A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját.
+* __Linux-alapú HDInsight-__ fürtök [Mono használatával (https://mono-project.com)](https://mono-project.com) .NET-alkalmazások futtatásához. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját.
 
     További információ a .NET-keretrendszer verzióival való monó kompatibilitásról: [monó kompatibilitás](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -147,7 +147,7 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
     }
     ```
 
-    Ez a kód elemzi a sertésből eljuttatott sorokat, és újraformázza a `java.lang.Exception`-val kezdődő sorokat.
+    Ez a kód elemzi a sertésből eljuttatott sorokat, és újraformázza a `java.lang.Exception`kezdődő sorokat.
 
 3. Mentse a **program.cs**, majd hozza létre a projektet.
 
@@ -203,9 +203,9 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
     ```
 
     > [!IMPORTANT]
-    > A fürthöz `add file` használt alapértelmezett tároló típusának megfelelő utasítás megjegyzésének visszaírása.
+    > A `add file` utasítás megjegyzésének visszaírása, amely megegyezik a fürthöz használt alapértelmezett tároló típusával.
 
-    Ez a lekérdezés kiválasztja `clientid`a `devicemake`, a `devicemodel` és a `hivesampletable`mezőket a ból, majd átadja a mezőket a HiveCSharp. exe alkalmazásnak. A lekérdezés azt várja, hogy az alkalmazás három mezőt ad vissza, amelyek a `clientid`következő `phoneLabel`módon vannak `phoneHash`tárolva:, és. A lekérdezés a HiveCSharp. exe fájlt is megkeresi az alapértelmezett tároló gyökerében.
+    Ez a lekérdezés kiválasztja a `clientid`, `devicemake`és `devicemodel` mezőket a `hivesampletable`ból, és átadja a mezőket a HiveCSharp. exe alkalmazásnak. A lekérdezés azt várja, hogy az alkalmazás három mezőt ad vissza, amelyek `clientid`, `phoneLabel`és `phoneHash`ként vannak tárolva. A lekérdezés a HiveCSharp. exe fájlt is megkeresi az alapértelmezett tároló gyökerében.
 
 5. Kattintson a **Submit (Küldés** ) gombra a HDInsight-fürthöz való elküldéséhez. Megnyílik a **kaptár-feladatok összegző** ablaka.
 
@@ -226,7 +226,7 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
     > bin\pig
     > ```
 
-    Egy `grunt>` üzenet jelenik meg.
+    Megjelenik egy `grunt>` prompt.
 
 3. A .NET-keretrendszer alkalmazást használó Pig-feladatok futtatásához adja meg a következőt:
 
@@ -236,10 +236,10 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    Az `DEFINE` utasítás `CACHE` aliast hoz létre a pigudf. exe alkalmazásokhoz, és betölti azt az alapértelmezett tárolóból a fürt számára. `streamer` Később a `STREAM` kezelővel együtt feldolgozza a naplóban szereplő egyetlen sort, és az adatsorokat oszlopként jeleníti meg. `streamer`
+    A `DEFINE` utasítás a pigudf. exe alkalmazáshoz `streamer` aliast hoz létre, és `CACHE` betölti azt a fürt alapértelmezett tárterületéről. Később `streamer` a rendszer a `STREAM` operátorral dolgozza fel a NAPLÓban szereplő egyetlen sort, és az adatsorokat oszlopként jeleníti meg.
 
     > [!NOTE]
-    > A folyamatos átvitelhez használt alkalmazás nevének a (z) (kezdő) \` karakternek kell lennie, ha az alias, a (z) pedig a ( `SHIP`z) használatakor a (z).
+    > A folyamatos átvitelhez használt alkalmazás nevének a \` (kezdő) karakternek kell lennie, ha a rendszer aliast használ, és "(szimpla idézőjelet"), ha `SHIP`.
 
 4. Az utolsó sor megadása után a feladattípusnak indulnia kell. Az alábbi szöveghez hasonló kimenetet ad vissza:
 
@@ -249,7 +249,7 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
         (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1737534798)
         (2012-02-03 20:11:56 SampleClass7 [DEBUG] detail for id 1475865947)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használható a .NET-keretrendszer alkalmazása a kaptárból és a Pig on HDInsight. Ha szeretné megtudni, hogyan használhatja a Pythont a kaptárral és a Malactal, tekintse meg [a Python használata Apache Hive és az Apache Pig használatát a HDInsight-ben](python-udf-hdinsight.md)című témakört.
 

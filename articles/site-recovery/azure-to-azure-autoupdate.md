@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933933"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053536"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>A mobilitási szolgáltatás automatikus frissítése az Azure-ról az Azure-ba történő replikációra
 
@@ -31,7 +31,7 @@ Ha a Site Recovery használatával kezeli a frissítéseket, az az Azure-szolgá
 Az alapértelmezett runbook a replikált virtuális gép földrajzi helyének időzónájában naponta ismétlődik a 12:00-es időpontban. A runbook-ütemtervet az Automation-fiók használatával is módosíthatja.
 
 > [!NOTE]
-> A 35-es kumulatív frissítéstől kezdve kiválaszthatja a frissítésekhez használandó meglévő Automation-fiókot. A frissítés előtt Site Recovery alapértelmezés szerint létrehozta ezt a fiókot. Ez a beállítás akkor érhető el, ha engedélyezi a virtuális gép replikálását. Ha módosítja a beállítást, a rendszer az azonos tárolóban lévő összes Azure-beli virtuális gép esetében alkalmazza.
+> A 35-es kumulatív frissítéstől kezdve kiválaszthatja a frissítésekhez használandó meglévő Automation-fiókot. A frissítés előtt Site Recovery alapértelmezés szerint létrehozta ezt a fiókot. Vegye figyelembe, hogy ezt a beállítást csak akkor válassza ki, ha engedélyezi egy virtuális gép replikálását. Nem érhető el replikáló virtuális gép esetén. A kiválasztott beállítás az azonos tárolóban védett összes Azure-beli virtuális gépre érvényes lesz.
  
 > Az automatikus frissítések bekapcsolása nem igényli az Azure-beli virtuális gépek újraindítását, vagy a folyamatban lévő replikációt is befolyásolja.
 

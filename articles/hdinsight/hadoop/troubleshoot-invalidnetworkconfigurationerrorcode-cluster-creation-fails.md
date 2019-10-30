@@ -1,5 +1,5 @@
 ---
-title: InvalidNetworkConfigurationErrorCode az Azure HDInsight
+title: InvalidNetworkConfigurationErrorCode-hiba – Azure HDInsight
 description: Az Azure HDInsight InvalidNetworkConfigurationErrorCode-beli sikertelen fürtök létrehozásának különböző okai
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: a6b207086325018deb63383a0775af8dfe195ac4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5b8d031af9dbe6019d71e2a1caa3d3f25d4024ea
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091719"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044469"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása nem sikerül a InvalidNetworkConfigurationErrorCode az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-Ha a "Virtual Network konfiguráció `InvalidNetworkConfigurationErrorCode` nem kompatibilis a HDInsight-követelménysel" leírásban látható hibakód jelenik meg, általában a fürt [virtuális hálózati konfigurációjával](../hdinsight-plan-virtual-network-deployment.md) kapcsolatos problémát jelez. A hiba további leírása alapján a probléma megoldásához kövesse az alábbi szakaszokat.
+Ha a "Virtual Network konfiguráció nem kompatibilis a HDInsight-követelménynek" leírással `InvalidNetworkConfigurationErrorCode` hibakód jelenik meg, akkor általában a fürt [virtuális hálózati konfigurációjával](../hdinsight-plan-virtual-network-deployment.md) kapcsolatos problémát jelez. A hiba további leírása alapján a probléma megoldásához kövesse az alábbi szakaszokat.
 
 ## <a name="hostname-resolution-failed"></a>"Az állomásnév feloldása sikertelen"
 
@@ -30,13 +30,13 @@ A hiba leírása tartalmazza az "állomásnév feloldása sikertelen" kifejezés
 
 Ez a hiba az egyéni DNS-konfigurációval kapcsolatos problémára mutat. A virtuális hálózaton belüli DNS-kiszolgálók továbbítják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához (a részletekért lásd: [névfeloldás a virtuális](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) hálózatokban). Az Azure rekurzív feloldóit a virtuális IP-168.63.129.16 keresztül érheti el. Ez az IP-cím csak az Azure-beli virtuális gépekről érhető el. Így nem fog működni, ha helyszíni DNS-kiszolgálót használ, vagy a DNS-kiszolgáló egy Azure-beli virtuális gép, amely nem része a fürt vNet.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
-1. SSH-t a fürt részét képező virtuális gépre, és futtassa a parancsot `hostname -f`. Ezzel visszaadja a gazdagép teljes tartománynevét ( `<host_fqdn>` az alábbi útmutatásnak megfelelően).
+1. SSH-t a fürt részét képező virtuális gépre, és futtassa a parancsot `hostname -f`. Ezzel visszaadja a gazdagép teljes tartománynevét (az alábbi utasításokban `<host_fqdn>` néven).
 
-1. Ezután futtassa a parancsot `nslookup <host_fqdn>` ( `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`például:). Ha a parancs feloldja a nevet egy IP-címhez, az azt jelenti, hogy a DNS-kiszolgáló megfelelően működik. Ebben az esetben az HDInsight-mel támogatási esetet kell megvizsgálni, és a probléma megvizsgálható. A támogatási esetben adja meg a végrehajtott hibaelhárítási lépéseket. Ez segít a probléma gyorsabb megoldásában.
+1. Ezután futtassa a parancsot `nslookup <host_fqdn>` (például `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Ha a parancs feloldja a nevet egy IP-címhez, az azt jelenti, hogy a DNS-kiszolgáló megfelelően működik. Ebben az esetben az HDInsight-mel támogatási esetet kell megvizsgálni, és a probléma megvizsgálható. A támogatási esetben adja meg a végrehajtott hibaelhárítási lépéseket. Ez segít a probléma gyorsabb megoldásában.
 
-1. Ha a fenti parancs nem ad vissza IP-címet, futtassa `nslookup <host_fqdn> 168.63.129.16` a parancsot ( `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`például:). Ha ez a parancs képes az IP-cím feloldására, az azt jelenti, hogy a DNS-kiszolgáló nem továbbítja a lekérdezést az Azure DNS-re, vagy nem egy olyan virtuális gép, amely a fürttel azonos vNet részét képezi.
+1. Ha a fenti parancs nem ad vissza IP-címet, akkor futtassa `nslookup <host_fqdn> 168.63.129.16` (például `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Ha ez a parancs képes az IP-cím feloldására, az azt jelenti, hogy a DNS-kiszolgáló nem továbbítja a lekérdezést az Azure DNS-re, vagy nem egy olyan virtuális gép, amely a fürttel azonos vNet részét képezi.
 
 1. Ha nem rendelkezik olyan Azure-beli virtuális géppel, amely egyéni DNS-kiszolgálóként működhet a fürt vNet, előbb fel kell vennie ezt. Hozzon létre egy virtuális gépet a vNet, amely DNS-továbbítóként lesz konfigurálva.
 
@@ -56,7 +56,7 @@ A hiba leírása a következőt tartalmazza: "nem sikerült csatlakozni az Azure
 
 Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért engedélyeznie kell a kimenő kapcsolatokat az összes IP-címhez a szolgáltatások elérésének engedélyezéséhez. A pontos megoldási lépések attól függnek, hogy beállította-e a hálózati biztonsági csoportot (NSG) vagy a felhasználó által definiált szabályokat (UDR). A konfigurációk részletes ismertetését lásd: a [hálózati forgalom szabályozása hálózati biztonsági csoportokkal és felhasználó által megadott útvonalakkal HDInsight](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) .
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 * Ha a fürt [hálózati biztonsági csoportot (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)használ.
 
@@ -70,12 +70,12 @@ Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért enged
 
 ---
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Csatlakozás az Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők. [@AzureSupport](https://twitter.com/azuresupport)
+* Csatlakozás a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiók a felhasználói élmény javításához az Azure-Közösség és a megfelelő erőforrások összekapcsolásával: válaszok, támogatás és szakértők.
 
 * Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -5,7 +5,7 @@ description: Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkez�
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
+keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6, mobil, IOT
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274983"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025808"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
 
@@ -28,12 +28,14 @@ ms.locfileid: "68274983"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Sablon](load-balancer-ipv6-internet-template.md)
 
+>[! Megjegyzés: az IPv6-os ajánlott eljárás módosítása esetén ez a cikk egy bevezető IPv6-funkciót ismertet, amely lehetővé teszi az alapszintű terheléselosztó számára az IPv4-és IPv6-alapú kapcsolatok biztosítását.  A átfogóbb IPv6-kapcsolat mostantól elérhető az [IPv6 for Azure virtuális hálózatok](../virtual-network/ipv6-overview.md) , amely integrálja az IPv6-kapcsolatot a virtuális hálózatokkal, és olyan főbb funkciókat tartalmaz, mint például az IPv6 hálózati biztonsági csoport szabályai, IPv6 felhasználó által megadott útválasztás, IPv6 alapszintű és Standard szintű terheléselosztás és egyebek.  Az Azure virtuális hálózatok-hez készült IPv6 az ajánlott eljárás az IPv6-alkalmazások számára az Azure-ban. 
+>Lásd: [IPv6 az Azure VNET PowerShell üzembe helyezéséhez](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A terheléselosztó a felhőszolgáltatások vagy virtuális gépek kifogástalan állapotú szolgáltatási példányai között osztja meg a bejövő forgalmat egy terheléselosztói készletben, és ezáltal biztosítja a magas rendelkezésre állást. Az Azure Load Balancer a szolgáltatásokat több portra vagy több IP-címre, illetve portokra és IP-címekre egyaránt továbbíthatja.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="example-deployment-scenario"></a>A példában üzembe helyezési forgatókönyv
+## <a name="example-deployment-scenario"></a>Példa telepítési forgatókönyv
 
 A következő ábra szemlélteti a cikkben üzembe helyezett terheléselosztási megoldást.
 
@@ -79,7 +81,7 @@ Győződjön meg arról, hogy rendelkezik a PowerShell Azure Resource Manager mo
     Get-AzSubscription
     ```
 
-3. Válassza ki, hogy melyik Azure előfizetést fogja használni.
+3. Válassza ki, hogy melyek Azure-előfizetését használja.
 
     ```azurepowershell-interactive
     Select-AzSubscription -SubscriptionId 'GUID of subscription'
@@ -100,7 +102,7 @@ Győződjön meg arról, hogy rendelkezik a PowerShell Azure Resource Manager mo
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Azure nyilvános IP-cím (PIP) erőforrások létrehozása az előtér-IP-címkészlet számára. Ügyeljen arra, hogy a következő parancsok `-DomainNameLabel` futtatása előtt módosítsa az értéket. Az értéknek egyedinek kell lennie az Azure-régión belül.
+2. Azure nyilvános IP-cím (PIP) erőforrások létrehozása az előtér-IP-címkészlet számára. A következő parancsok futtatása előtt ne felejtse el módosítani a `-DomainNameLabel` értékét. Az értéknek egyedinek kell lennie az Azure-régión belül.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
@@ -230,10 +232,4 @@ A virtuális gépek létrehozásával kapcsolatos további információkért lá
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>További lépések
 
-[Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
-
-[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
-
-[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

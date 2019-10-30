@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A PostgreSQL online áttelepítésének elvégzéséhez használja a Azure Database Migration Service Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Oktatóanyag: a PostgreSQL online áttelepítésének elvégzése a Azure Database Migration Service használatával Azure Database for PostgreSQL | Microsoft Docs'
 description: Ismerje meg, hogyan végezheti el a helyszíni PostgreSQL-ről való online áttelepítést Azure Database Migration Service használatával Azure Database for PostgreSQL.
 services: dms
 author: HJToland3
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/06/2019
-ms.openlocfilehash: 5888555e93c28c96445bed1936deda022b0a4b94
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/28/2019
+ms.openlocfilehash: 1b4eebafadcdbebfc89ce7265f4d4f77f4f5ac8c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734586"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043234"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Oktatóanyag: PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával
 
@@ -63,7 +63,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Hozzon létre egy kiszolgálói szintű Azure Database for PostgreSQL [Tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) , amely lehetővé teszi, hogy a Azure Database Migration Service hozzáférjen a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt VNet alhálózati tartományát.
 * A CLI meghívásának két módja van:
 
-  * Az Azure portál jobb felső sarkában kattintson a Cloud Shell gombra:
+  * A Azure Portal jobb felső sarkában válassza a Cloud Shell gombot:
 
        ![Cloud Shell gomb a Microsoft Azure Portal-on](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
@@ -208,10 +208,10 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
 
    Például a következő parancs szolgáltatást hoz létre az alábbi helyen:
 
-   * Helyen USA 2. keleti régiója
+   * Hely: az USA 2. keleti régiója
    * Előfizetés: 97181df2-909d-420b-ab93-1bff15acb6b7
    * Erőforráscsoport neve: PostgresDemo
-   * DMS szolgáltatás neve: PostgresCLI
+   * DMS-szolgáltatás neve: PostgresCLI
 
    ```
    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
@@ -257,12 +257,12 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
 
     Például a következő parancs létrehoz egy projektet az alábbi paraméterek használatával:
 
-   * Helyen USA nyugati középső régiója
+   * Hely: az USA nyugati középső régiója
    * Erőforráscsoport neve: PostgresDemo
    * Szolgáltatás neve: PostgresCLI
    * Projekt neve: PGMigration
-   * Forrásoldali platform: PostgreSQL
-   * Cél platform: AzureDbForPostgreSql
+   * Forrásplatform: PostgreSQL
+   * Célplatform: AzureDbForPostgreSql
 
      ```
      az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
@@ -519,7 +519,7 @@ Ha valamelyik DMS-feladat, -projekt vagy -szolgáltatás megszakítására vagy 
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

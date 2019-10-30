@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Database Migration Service használata az RDS MySQL online áttelepítéséhez a Azure Database for MySQLba | Microsoft Docs'
+title: 'Oktatóanyag: a Azure Database Migration Service használata az RDS MySQL online áttelepítéséhez a Azure Database for MySQLba | Microsoft Docs'
 description: Megtudhatja, hogyan hajthat végre egy online áttelepítést az RDS MySQL-ről Azure Database for MySQLre a Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/21/2019
-ms.openlocfilehash: 9bd620ef9664e921aa88792017585b02e44387f8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/28/2019
+ms.openlocfilehash: 2df76c5906037fc5ce35e0c3a6558b0240c4b2be
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172707"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043306"
 ---
-# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: Az RDS MySQL migrálása Azure Database for MySQL online-ba a DMS használatával
+# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: az RDS MySQL migrálása Azure Database for MySQL online-ba a DMS használatával
 
 A Azure Database Migration Service segítségével telepíthet át adatbázisokat egy RDS MySQL-példányból, hogy [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) , amíg a forrásadatbázis online állapotban marad az áttelepítés során. Más szóval a Migrálás az alkalmazás minimális állásidővel is elérhető. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta adatbázisát az RDS MySQL egy példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
@@ -56,11 +56,8 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Töltse le és telepítse a [MySQL **Employees** mintaadatbázis-adatbázist](https://dev.mysql.com/doc/employee/en/employees-installation.html).
 * [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)-példány létrehozása.
 * Hozzon létre egy Azure-Virtual Network (VNet) a Azure Database Migration Servicehez a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN használatával ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). A VNet létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
-* Győződjön meg arról, hogy a virtuális hálózat hálózati biztonsági csoportjának (NSG) szabályai nem blokkolják az Azure Database Migration Service bejövő kommunikációs portokat: 443, 53, 9354, 445 és 12000. Az Azure VNet NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+* Győződjön meg arról, hogy a VNet hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portokat a Azure Database Migration Service: 443, 53, 9354, 445 és 12000. Az Azure VNet NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
 * Konfigurálja a [Windows tűzfalat](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (vagy a Linux tűzfalat) az adatbázismotor-hozzáférés engedélyezéséhez. A MySQL-kiszolgáló esetében engedélyezze a 3306-es portot a kapcsolathoz.
-* Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás MySQL-kiszolgálóhoz (az alapértelmezett TCP-port 3306).
-* Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
-* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a Azure Database for MySQL kiszolgáló számára, amely lehetővé teszi Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt VNet alhálózati tartományát.
 
 > [!NOTE]
 > Azure Database for MySQL csak a InnoDB táblákat támogatja. A MyISAM-táblák InnoDB való átalakításához tekintse meg a [táblák konvertálása a MyISAM-](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html) ből a InnoDB-be című cikket.
@@ -72,6 +69,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     * binlog_format = sor
     * binlog_checksum = nincs
 3. Mentse az új paraméter csoportot.
+4. Társítsa az új paraméter csoportot az RDS MySQL-példánnyal. Lehetséges, hogy újraindítás szükséges.
 
 ## <a name="migrate-the-schema"></a>A séma migrálása
 
@@ -152,7 +150,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
-    ![Azure Marketplace](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-marketplace.png)
+    ![Azure Piactér](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 
@@ -168,7 +166,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
     További információ a VNet létrehozásáról a Azure Portalban: [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet).
 
-6. Válasszon árképzési szintet; az online áttelepítés esetében ügyeljen arra, hogy a prémium lehetőséget válassza: 4vCores díjszabási szintje.
+6. Válasszon árképzési szintet; az online áttelepítés esetében ügyeljen arra, hogy a prémium: 4vCores díjszabási szintet válassza.
 
     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-settings3.png)
 
@@ -261,7 +259,7 @@ A kezdeti teljes terhelés befejezése után az adatbázisok **készen**állnak 
 
 A Azure Database for MySQL MySQL helyi példányának online áttelepítése most már befejeződött.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 * További információ a Azure Database for MySQLről: mi a [Azure Database for MySQL?](https://docs.microsoft.com/azure/mysql/overview).

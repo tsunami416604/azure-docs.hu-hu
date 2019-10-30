@@ -1,5 +1,5 @@
 ---
-title: Javaslatok készítése az Apache Mahout és a HDInsight (SSH) használatával – Azure
+title: Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
 description: Megtudhatja, hogyan hozhatja ki a HDInsight (Hadoop) a filmkészítési javaslatokat az Apache Mahout Machine learning-kódtár használatával.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881974"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044566"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Filmkészítési javaslatok előállítása az Apache Mahout és az Apache Hadoop HDInsight (SSH) használatával
 
@@ -35,23 +35,23 @@ A HDInsight-ben található Mahout verziójával kapcsolatos további informáci
 
 ## <a name="recommendations"></a>A javaslatok ismertetése
 
-A Mahout által biztosított függvények egyike egy ajánlási motor. Ez a motor a `userID`, `itemId`a és `prefValue` a (az elemre vonatkozó beállítások) formátumban fogadja el az adatmennyiséget. A Mahout Ezután elvégezheti a közös előfordulási elemzést annak megállapításához, hogy az adott *elemhez előnyben részesített felhasználók is rendelkeznek-e ezekkel a többi elemmel*. A Mahout ezután meghatározza a hasonló elemekkel rendelkező felhasználókat, amelyekkel ajánlásokat lehet tenni.
+A Mahout által biztosított függvények egyike egy ajánlási motor. Ez a motor `userID`, `itemId`és `prefValue` formátumban fogadja el az adatmennyiséget (az elemre vonatkozó beállítás). A Mahout Ezután elvégezheti a közös előfordulási elemzést annak megállapításához, hogy az adott *elemhez előnyben részesített felhasználók is rendelkeznek-e ezekkel a többi elemmel*. A Mahout ezután meghatározza a hasonló elemekkel rendelkező felhasználókat, amelyekkel ajánlásokat lehet tenni.
 
 A következő munkafolyamat egy egyszerűsített példa, amely a Movie-adatbevitelt használja:
 
-* **Közös előfordulás**: Joe, Alice és Bob minden tetszett *Star Wars*, *a birodalom visszatért*, és *visszatér a jedihöz*. A Mahout határozza meg, hogy a fenti filmek egyike, a másik kettőhöz hasonlóan a felhasználók is hasonlóak.
+* **Közös előfordulás**: Joe, Alice és Bob minden tetszett *Star Wars*, *a birodalom*visszatér, és *visszaküldi a jedit*. A Mahout határozza meg, hogy a fenti filmek egyike, a másik kettőhöz hasonlóan a felhasználók is hasonlóak.
 
-* **Közös előfordulás**: Bob és Alice is tetszett *a Phantom árnyak*, a *klónok támadása*és *a Sith bosszúja*. A Mahout határozza meg, hogy az előző három filmhez hasonló felhasználók is szeretik a három filmet.
+* **Együttes előfordulás**: Bob és Alice is tetszett *a Phantom árnyak*, *a klónok támadása*és *a Sith bosszúja*. A Mahout határozza meg, hogy az előző három filmhez hasonló felhasználók is szeretik a három filmet.
 
-* **Hasonlósági javaslat**: Mivel Joe tetszett az első három film, a Mahout olyan filmeket keres, amelyeket mások hasonló beállításokkal szerettek, de Joe nem néztem (tetszett/értékelt). Ebben az esetben a Mahout *a Phantom árnyak*, a *klónok támadását*és *a Sith bosszúját*javasolja.
+* **Hasonlósági javaslat**: mivel Joe tetszett az első három film, a Mahout megtekinti a hasonló beállításokkal rendelkező filmeket, de Joe nem néztem (tetszett/értékelt). Ebben az esetben a Mahout *a Phantom árnyak*, a *klónok támadását*és *a Sith bosszúját*javasolja.
 
 ### <a name="understanding-the-data"></a>Az adatgyűjtés ismertetése
 
-A [GroupLens Research](https://grouplens.org/datasets/movielens/) kényelmesen, a Mahout-mel kompatibilis formátumban biztosítja a filmek minősítési információit. Ezek az adatkészletek a fürt alapértelmezett tárolójában `/HdiSamples/HdiSamples/MahoutMovieData`érhetők el.
+A [GroupLens Research](https://grouplens.org/datasets/movielens/) kényelmesen, a Mahout-mel kompatibilis formátumban biztosítja a filmek minősítési információit. Ezek az adatkészletek a fürt alapértelmezett tárolójában érhetők el `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Két fájl `moviedb.txt` és `user-ratings.txt`. A `user-ratings.txt` fájl az elemzés során használatos. A `moviedb.txt` a használatával felhasználóbarát szöveges adatokat biztosít az eredmények megtekintésekor.
+Két fájl, `moviedb.txt` és `user-ratings.txt`. Az elemzés során a rendszer a `user-ratings.txt` fájlt használja. A `moviedb.txt` a felhasználóbarát szöveges információk megadására szolgál az eredmények megtekintésekor.
 
-A User-Ratings. txt fájlban található adat a, a, `userID`és `movieID` `timestamp`a `userRating`szerkezetét mutatja be, amely azt jelzi, hogy az egyes felhasználók milyen arányban értékelték a filmet. Íme egy példa az adatmennyiségre:
+A User-Ratings. txt fájlban található adat `userID`, `movieID`, `userRating`és `timestamp`szerkezetét mutatja be, amely azt jelzi, hogy az egyes felhasználók milyen jól értékelték a filmet. Íme egy példa az adatmennyiségre:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -85,7 +85,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
         3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    Az első oszlop a `userID`. A (z) "[" és "]" fájlban `movieId`szereplő`recommendationScore`értékek a következők:.
+    Az első oszlop a `userID`. A (z) "[" és "]" fájlban található értékek `movieId`:`recommendationScore`.
 
 2. A MovieDB. txt fájllal együtt a kimenetet is használhatja, hogy további információkat szolgáltasson a javaslatokról. Először másolja a fájlokat helyileg a következő parancsok használatával:
 
@@ -178,7 +178,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
 ## <a name="delete-temporary-data"></a>Ideiglenes adatmennyiség törlése
 
-A Mahout feladatok nem távolítják el a feladat feldolgozása során létrehozott ideiglenes adatok körét. A `--tempDir` példában a paramétert úgy adja meg, hogy a rendszer elkülönítse az ideiglenes fájlokat egy adott elérési útra az egyszerű törlés érdekében. Az ideiglenes fájlok eltávolításához használja a következő parancsot:
+A Mahout feladatok nem távolítják el a feladat feldolgozása során létrehozott ideiglenes adatok körét. Az `--tempDir` paraméter meg van adva a példa feladatokban, hogy az ideiglenes fájlokat egy adott elérési útra különítse el az egyszerű törlés érdekében. Az ideiglenes fájlok eltávolításához használja a következő parancsot:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
@@ -190,7 +190,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan használhatja a Mahout-t, Fedezze fel a HDInsight-on tárolt adatkezelés egyéb módszereit:
 

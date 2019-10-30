@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 61149392368fc34fe388709dd5867250f3542fbc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935987"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044094"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Gyors útmutató: Content Moderator a Javához készült ügyféloldali kódtár
 
@@ -125,14 +125,14 @@ Az alkalmazás `main` metódusában hozzon létre egy [ContentModeratorClient](h
 
 ### <a name="get-images"></a>Rendszerképek beolvasása
 
-A projekt **src/Main/** mappájában hozzon létre egy **erőforrás** mappát, és navigáljon hozzá. Ezután hozzon létre egy új szövegfájlt, a *ImageFiles. txt*fájlt. Ebben a fájlban a rendszerképek URL-címeinek hozzáadásával elemezheti&mdash;egy URL-címet az egyes sorokon. A következő minta tartalmakat használhatja:
+A projekt **src/Main/** mappájában hozzon létre egy **erőforrás** mappát, és navigáljon hozzá. Ezután hozzon létre egy új szövegfájlt, a *ImageFiles. txt*fájlt. Ebben a fájlban a rendszerképek URL-címeinek hozzáadásával elemezheti&mdash;egy URL-címet az egyes sorokon. A következő minta lemezképeket használhatja:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="use-helper-class"></a>Segítő osztály használata
+### <a name="define-helper-class"></a>Segítő osztály definiálása
 
 Ezután adja hozzá a *ContentModeratorQuickstart. Java* fájlban a következő osztály-definíciót a **ContentModeratorQuickstart** osztályban. Ezt a belső osztályt a rendszer a képmoderálási folyamat későbbi részében fogja használni.
 

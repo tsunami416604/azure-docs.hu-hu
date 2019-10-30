@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240406"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053743"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -32,13 +32,13 @@ A HDInsight [virtuális hálózatokon](../hdinsight-plan-virtual-network-deploym
 
 A VNET telepített összes fürt egy privát végponttal is rendelkezik, amely a VNET belüli magánhálózati IP-címekre oldja fel a fürt átjáróinak magánhálózati HTTP-hozzáférését.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A HDInsight [Enterprise Security Package](apache-domain-joined-architecture.md) Active Directory-alapú hitelesítést, többfelhasználós támogatást és szerepköralapú hozzáférés-vezérlést biztosít. A Active Directory integrációja [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)használatával érhető el. Ezekkel a képességekkel a felügyelt Active Directory tartományhoz csatlakoztatott HDInsight-fürtöt hozhat létre. Ezután konfigurálhatja azon vállalat alkalmazottainak listáját, akik hitelesíthetők és be tudnak jelentkezni a fürtbe.
 
 Ezzel a beállítással a vállalati alkalmazottak tartományi hitelesítő adataikkal jelentkezhetnek be a fürt csomópontjaira. A tartományi hitelesítő adataikat is használhatják a más jóváhagyott végpontok, például az Apache Ambari views, az ODBC, a JDBC, a PowerShell és a REST API-k hitelesítésére a fürttel való kommunikációhoz. 
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Engedélyezés
 
 A legtöbb vállalat által követett ajánlott eljárás biztosítja, hogy nem minden alkalmazott férhet hozzá az összes vállalati erőforráshoz. Hasonlóképpen a rendszergazda szerepköralapú hozzáférés-vezérlési házirendeket is meghatározhat a fürterőforrások számára. Ez csak az ESP-fürtökben érhető el.
 
@@ -54,11 +54,15 @@ A rendszergazda megtekintheti és jelentheti az összes hozzáférést a HDInsig
 
 Az Apache Ranger és a Ambari naplóinak, valamint az SSH-hozzáférési naplók eléréséhez [engedélyezze Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) és tekintse meg a naplózási rekordokat biztosító táblákat.
 
-### <a name="encryption"></a>Encryption
+### <a name="encryption"></a>Titkosítás
 
 Az adatok védelme fontos a szervezeti biztonsági és megfelelőségi követelmények teljesítéséhez. A jogosulatlan alkalmazottaktól származó adatokhoz való hozzáférés korlátozásával együtt érdemes titkosítani.
 
 A HDInsight-fürtök, az Azure Blob Storage és a Azure Data Lake Storage Gen1/Gen2 mindkét adattárolója támogatja az inaktív adatok transzparens kiszolgálóoldali [titkosítását](../../storage/common/storage-service-encryption.md) . A biztonságos HDInsight-fürtök zökkenőmentesen együttműködnek ezzel a képességgel az inaktív adatok kiszolgálóoldali titkosításával.
+
+### <a name="compliance"></a>Megfelelőség
+
+Az Azure megfelelőségi ajánlatai különféle típusú garancián alapulnak, többek között a formális tanúsítványok, a tanúsítványok, a minősítések, az engedélyek és a független külső könyvvizsgáló cégek által készített értékelések, valamint a szerződéses módosítások alapján. a Microsoft által készített önértékelések és ügyfél-útmutató dokumentumok. A HDInsight vonatkozó megfelelőségi információkért tekintse meg a [Microsoft adatvédelmi központot](https://www.microsoft.com/trust-center) , és [tekintse át Microsoft Azure megfelelőségét](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
 
 ## <a name="shared-responsibility-model"></a>Megosztott felelősségi modell
 
@@ -87,7 +91,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Virtualizált infrastruktúra | – | HDInsight (felhőalapú szolgáltató) |
 | Fizikai infrastruktúra biztonsága | – | HDInsight (felhőalapú szolgáltató) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az ESP-vel rendelkező HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md)

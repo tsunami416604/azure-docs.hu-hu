@@ -2,18 +2,18 @@
 title: Lekérdezés Apache Hive a JDBC-illesztőn keresztül – Azure HDInsight
 description: Egy Java-alkalmazásból származó JDBC-illesztőprogrammal küldhet Apache Hive lekérdezéseket a HDInsight Hadoop. Programozott módon és a mókus SQL-ügyfélről is kapcsolódhat.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.author: hrasheed
-ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 10/24/2019
+ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058617"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053809"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Apache Hive a HDInsight JDBC-illesztőn keresztül
 
@@ -37,7 +37,7 @@ Az Azure-beli HDInsight-fürtökkel létesített JDBC-kapcsolatok az 443-as port
 
 Cserélje le a `CLUSTERNAME` kifejezést a HDInsight-fürt nevére.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 A csatlakozás létrehozásakor a HDInsight-fürt rendszergazdájának felhasználónevét és jelszavát kell használnia a fürt átjárójának hitelesítéséhez. Ha olyan JDBC-ügyfelekről csatlakozik, mint például a mókus SQL, meg kell adnia a rendszergazda nevét és jelszavát az ügyfél beállításai között.
 
@@ -53,7 +53,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 1. Hozzon létre egy könyvtárat, amely bizonyos, a fürtből másolandó fájlokat tartalmaz.
 
-2. A következő parancsfájlban cserélje le `sshuser` a parancsot a fürthöz tartozó SSH-felhasználói fiók nevére.  Cserélje `CLUSTERNAME` le a nevet a HDInsight-fürt nevére.  A parancssorban módosítsa a munkahelyi könyvtárat az előző lépésben létrehozottra, majd írja be a következő parancsot a fájlok HDInsight-fürtből való másolásához:
+2. A következő parancsfájlban cserélje le a `sshuser`t a fürthöz tartozó SSH-felhasználói fiók nevére.  Cserélje le a `CLUSTERNAME`t a HDInsight-fürt nevére.  A parancssorban módosítsa a munkahelyi könyvtárat az előző lépésben létrehozottra, majd írja be a következő parancsot a fájlok HDInsight-fürtből való másolásához:
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -65,16 +65,18 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
     ![Illesztőprogramok lap az ablak bal oldalán](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. Az **illesztőprogramok** párbeszédpanel tetején található ikonok közül válassza az **+** ikont az illesztőprogram létrehozásához.
+4. Az **illesztőprogramok** párbeszédpanel tetején található ikonok közül válassza a **+** ikont az illesztőprogram létrehozásához.
 
     ![Mókus SQL Application-illesztőprogramok ikon](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. Az illesztőprogram hozzáadása párbeszédpanelen adja meg a következő adatokat:
 
-    * **Név**: Hive
-    * **Példa URL-címére**:`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra osztály elérési útja**: A **Hozzáadás** gomb használatával adja hozzá a korábban letöltött összes jar-fájlt
-    * **Osztály neve**: org. Apache. kaptár. JDBC. HiveDriver
+    |Tulajdonság | Value (Díj) |
+    |---|---|
+    |Név|Hive|
+    |Példa URL-címére|JDBC: hive2://localhost: 443/default; transportMode = http; SSL = True; httpPath =/hive2|
+    |Extra osztály elérési útja|A **Hozzáadás** gomb használatával adja hozzá a korábban letöltött összes jar-fájlt.|
+    |Osztály neve|org. Apache. kaptár. JDBC. HiveDriver|
 
    ![illesztőprogram-párbeszédpanel hozzáadása paraméterekkel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
@@ -84,30 +86,26 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
     ![Mókus SQL új alias hozzáadása párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
-7. Használja az alábbi értékeket az **alias hozzáadása** párbeszédpanelen.
+7. Használja az alábbi értékeket az **alias hozzáadása** párbeszédpanelen:
 
-    * **Név**: Struktúra a HDInsight
+    |Tulajdonság |Value (Díj) |
+    |---|---|
+    |Név|Struktúra a HDInsight|
+    |Illesztőprogram|A **struktúra** -illesztőprogram kiválasztásához használja a legördülő listát.|
+    |URL-cím|JDBC: hive2://CLUSTERNAME.azurehdinsight.net: 443/default; transportMode = http; SSL = True; httpPath =/hive2. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.|
+    |Felhasználónév|A fürt bejelentkezési fiókjának neve a HDInsight-fürthöz. Az alapértelmezett érték a **rendszergazda**.|
+    |Jelszó|A fürt bejelentkezési fiókjának jelszava.|
 
-    * **Illesztőprogram**: A **struktúra** illesztőprogramjának kiválasztásához használja a legördülő listát.
-
-    * **URL-CÍM**:`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-
-        Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
-
-    * **Felhasználónév**: A fürt bejelentkezési fiókjának neve a HDInsight-fürthöz. A mező alapértelmezett értéke: `admin`.
-
-    * **Jelszó**: A fürt bejelentkezési fiókjának jelszava.
-
-   ![alias hozzáadása párbeszédpanel paraméterekkel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    ![alias hozzáadása párbeszédpanel paraméterekkel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
-    > A **teszt** gomb használatával ellenőrizze, hogy a kapcsolódás működik-e. **Kapcsolódás a következőhöz: Ekkor megjelenik a** kaptár a HDInsight párbeszédpanelen, és válassza a **Kapcsolódás** lehetőséget a teszt végrehajtásához. Ha a teszt sikeres, a **sikeres kapcsolatok** párbeszédpanel jelenik meg. Ha hiba történik, tekintse meg a [Hibaelhárítás](#troubleshooting)című témakört.
+    > A **teszt** gomb használatával ellenőrizze, hogy a kapcsolódás működik-e. Ha a **Csatlakozás a következőhöz: struktúra a HDInsight** párbeszédpanelen megjelenik, válassza a **Csatlakozás** lehetőséget a teszt végrehajtásához. Ha a teszt sikeres, a **sikeres kapcsolatok** párbeszédpanel jelenik meg. Ha hiba történik, tekintse meg a [Hibaelhárítás](#troubleshooting)című témakört.
 
     A kapcsolódási alias mentéséhez használja az **alias hozzáadása** párbeszédpanel alján található **OK** gombot.
 
-8. A mókus SQL-oldal tetején található **Kapcsolódás** legördülő listáról válassza a **kaptár elemet a HDInsight**. Amikor a rendszer kéri, válassza ki a **Connect**.
+8. A mókus SQL-oldal tetején található **Kapcsolódás** legördülő listáról válassza a **kaptár elemet a HDInsight**. Ha a rendszer kéri, válassza a **Csatlakozás**lehetőséget.
 
-    ![a kapcsolatok párbeszédpanel paramétereit tartalmazó párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![paraméterekkel rendelkező kapcsolatok párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Ha csatlakoztatva van, adja meg a következő lekérdezést az SQL-lekérdezés párbeszédpanelen, majd válassza a **Futtatás** ikont (egy futó személy). Az eredmények területnek a lekérdezés eredményét kell megjelenítenie.
 
@@ -119,13 +117,13 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 ## <a name="connect-from-an-example-java-application"></a>Csatlakozási példa Java-alkalmazásból
 
-A (z) HDInsight található struktúra lekérdezése Java-ügyféllel című példa a [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)következő címen érhető el:. A minta létrehozásához és futtatásához kövesse az adattár utasításait.
+Egy Java-ügyfél a HDInsight-on való lekérdezésére szolgáló példa a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc). A minta létrehozásához és futtatásához kövesse az adattár utasításait.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Váratlan hiba történt az SQL-kapcsolatok megnyitására tett kísérlet során.
 
-**Tünetek**: Az 3,3-es vagy annál újabb verziójú HDInsight-fürtökhöz való kapcsolódáskor hibaüzenetet kaphat, ha váratlan hiba történt. A hiba verem-nyomkövetése a következő sorokkal kezdődik:
+**Tünetek**: a 3,3-es vagy annál újabb verziójú HDInsight-fürtökhöz való kapcsolódáskor hibaüzenetet kaphat, ha váratlan hiba történt. A hiba verem-nyomkövetése a következő sorokkal kezdődik:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -133,17 +131,17 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**Ok**: Ezt a hibát a mókus által tartalmazott Commons-codec. jar fájl régebbi verziója okozta.
+**OK**: ezt a hibát a mókushoz tartozó Commons-codec. jar fájl régebbi verziója okozta.
 
-**Feloldási**: A hiba elhárításához kövesse az alábbi lépéseket:
+**Megoldás**: a hiba elhárításához kövesse az alábbi lépéseket:
 
-1. Lépjen ki a Mókusból, majd nyissa meg azt a könyvtárat, ahol a mókus telepítve van a rendszeren. A mókus könyvtárában a `lib` könyvtár alatt cserélje le a meglévő Commons-codec. jar fájlt a HDInsight-fürtről letöltöttre.
+1. Lépjen ki a Mókusból, majd nyissa meg azt a könyvtárat, ahol a mókus telepítve van a rendszeren, talán `C:\Program Files\squirrel-sql-4.0.0\lib`. A mókus könyvtárában a `lib` könyvtár alatt cserélje le a meglévő Commons-codec. jar fájlt a HDInsight-fürtről letöltöttre.
 
-2. Indítsa újra a mókust. A hiba többé nem fordulhat elő, amikor a HDInsight-beli struktúrához csatlakozik.
+1. Indítsa újra a mókust. A hiba többé nem fordulhat elő, amikor a HDInsight-beli struktúrához csatlakozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megtanulta, hogyan használhatja a JDBC-t a kaptár használatára, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight való munkát.
+Most, hogy megismerte, hogyan használhatja a JDBC-t a kaptár használatára, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight való munkavégzés egyéb módszereit.
 
 * Az [Azure HDInsight-ban a Microsoft Power BI Apache Hivei az adatmegjelenítést](apache-hadoop-connect-hive-power-bi.md).
 * [Interaktív lekérdezési struktúra-adatmegjelenítés az Azure HDInsight Power BIával](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

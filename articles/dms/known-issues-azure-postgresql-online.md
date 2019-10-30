@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 10/27/2019
+ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802588"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043204"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online Migrálás és az Azure DB for PostgreSQL – egyetlen kiszolgáló között
 
@@ -81,15 +81,15 @@ A PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra tör
 
 ## <a name="datatype-limitations"></a>Adattípus-korlátozások
 
-- **Korlátozás**: Ha ENUMERÁLÁSi adattípus szerepel a forrás PostgreSQL-adatbázisban, az áttelepítés a folyamatos szinkronizálás során sikertelen lesz.
+- **Korlátozás**: Ha enumerálási adattípus szerepel a forrás PostgreSQL-adatbázisban, akkor az áttelepítés a folyamatos szinkronizálás során meghiúsul.
 
-    **Áthidaló megoldás**: Módosítsa az ENUMERÁLÁSi adattípust a Azure Database for PostgreSQL eltérő karakterre.
+    **Megkerülő megoldás**: módosítsa az enumerálási adattípust a Azure Database for PostgreSQL eltérő karakterre.
 
-- **Korlátozás**: Ha a táblákban nincs elsődleges kulcs, a folyamatos szinkronizálás sikertelen lesz.
+- **Korlátozás**: Ha nincs elsődleges kulcs a táblákon, a folyamatos szinkronizálás sikertelen lesz.
 
-    **Áthidaló megoldás**: A folytatáshoz átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
+    **Megkerülő megoldás**: átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez a folytatáshoz. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
 
-- **Korlátozás**: A JSONB adattípusa nem támogatott Migrálás esetén.
+- **Korlátozás**: a JSONB adattípusa nem támogatott Migrálás esetén.
 
 ## <a name="lob-limitations"></a>LOB-korlátozások
 
@@ -97,7 +97,7 @@ A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek nagy mennyiség
 
 - **Korlátozás**: Ha a LOB-adattípusok elsődleges kulcsként használatosak, az áttelepítés sikertelen lesz.
 
-    **Áthidaló megoldás**: Cserélje le az elsődleges kulcsot más adattípusokra vagy nem LOB oszlopokra.
+    **Áthidaló megoldás**: cserélje le az elsődleges kulcsot más adattípusokra vagy nem LOB oszlopokra.
 
 - **Korlátozás**: Ha a nagyméretű objektum (LOB) oszlop hossza meghaladja a 32 KB-ot, a rendszer az adatmennyiséget csonkolja a célhelyen. A LOB-oszlop hosszát a következő lekérdezéssel tekintheti meg:
 
@@ -105,11 +105,11 @@ A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek nagy mennyiség
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Áthidaló megoldás**: Ha 32 KB-nál nagyobb LOB-objektummal rendelkezik, forduljon a mérnöki csapathoz az [Azure-adatbázis áttelepítésekor](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Megkerülő megoldás**: Ha olyan LOB-objektummal rendelkezik, amely meghaladja a 32 KB-ot, forduljon az [Azure-adatbázis áttelepítésének kérdéseit](mailto:AskAzureDatabaseMigrations@service.microsoft.com)ismertető csapathoz.
 
-- **Korlátozás**: Ha a tábla tartalmaz LOB-oszlopokat, és nincs elsődleges kulcs beállítva a táblához, előfordulhat, hogy a rendszer nem telepíti át az adatátviteli kulcsot ehhez a táblához.
+- **Korlátozás**: Ha LOB-oszlopok vannak a táblában, és nincs elsődleges kulcs beállítva a táblához, előfordulhat, hogy a rendszer nem telepíti át az adatátviteli kulcsot ehhez a táblához.
 
-    **Áthidaló megoldás**: A folytatáshoz átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
+    **Áthidaló megoldás**: átmenetileg állítsa be a tábla elsődleges kulcsát a folytatáshoz. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 megkerülő megoldás
 
@@ -153,16 +153,19 @@ ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
 COMMIT;
 ```
 
+  > [!NOTE]
+  > Az előző szkriptben a "PG_User" az áttelepítési forráshoz való kapcsolódáshoz használt felhasználónévre hivatkozik.
+
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Az AWS RDS PostgreSQL-ről történő online áttelepítés korlátozásai
 
 Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online áttelepítést végezni, a következő hibák merülhetnek fel.
 
-- **Hiba**: A(z) „{database}” adatbázisban található „{table}” tábla „{column}” oszlopának alapértelmezett értéke eltérő a forrás- és a célkiszolgálón. Az érték „{value on source}” a forráson és „{value on target}” a célon.
+- **Hiba**: a (z) {Database} adatbázisban a (z) {Table} tábla {Column} oszlopának alapértelmezett értéke eltér a forrás-és a célkiszolgálón. Az érték „{value on source}” a forráson és „{value on target}” a célon.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha egy oszlop sémájának alapértelmezett értéke eltér a forrás-és a cél-adatbázisok között.
   **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Hiba**: A(z) „{database}” céladatbázis „{number of tables}” táblával rendelkezik, a(z) „{database}” forrásadatbázisban azonban „{number of tables}” tábla található. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
+- **Hiba**: a (z) {Database} céladatbázis {number of Tables} táblát tartalmaz, ahol a (z) {Database} forrásoldali adatbázis {number of Tables} táblát tartalmaz. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a táblák száma eltér a forrás-és a cél-adatbázis között.
   **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
@@ -170,7 +173,7 @@ Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online 
 - **Hiba:** A forrás-adatbázis ({Database}) üres.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a forrásadatbázis üres. Ennek az lehet az oka, hogy rossz adatbázist választott ki forrásként.
-  **Áthidaló megoldás**: Ellenőrizze az áttelepítéshez kiválasztott forrás-adatbázist, majd próbálkozzon újra.
+  **Áthidaló megoldás**: Ellenőrizze az áttelepítéshez kiválasztott forrásadatbázis-adatbázist, majd próbálkozzon újra.
 
 - **Hiba:** A célként megadott adatbázis ({Database}) üres. Migrálja a sémát.
 

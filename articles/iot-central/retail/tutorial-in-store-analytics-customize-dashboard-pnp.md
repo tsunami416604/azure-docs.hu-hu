@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 02d9a33018f87e6dbb9c7a797c16e5484c523b11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 81a31c0a03ef836d95a5a4f3cd4f4cd7b7e113e2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955101"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027349"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Oktatóanyag: az operátor irányítópultjának testreszabása és az eszközök kezelése az Azure-ban IoT Central
 
@@ -36,14 +36,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag megkezdése előtt a szerkesztőnek el kell végeznie az első oktatóanyagot az Azure IoT Central Store Analytics-alkalmazás létrehozásához és az eszközök hozzáadásához:
 
-* [Áruházbeli elemzési alkalmazás létrehozása az Azure IoT Centralban](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) (kötelező)
+* [Áruházbeli elemzési alkalmazás létrehozása az Azure IoT Centralban](./tutorial-in-store-analytics-create-app-pnp.md) (kötelező)
 
 ## <a name="change-the-dashboard-name"></a>Irányítópult nevének módosítása
 Az operátor irányítópultjának testreszabásához szerkessze az alapértelmezett irányítópultot az alkalmazásban. Szükség esetén további új irányítópultokat is létrehozhat. Az irányítópult az alkalmazásban való testreszabásának első lépése a név módosítása.
 
 1. Navigáljon az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyére.
 
-1. Nyissa meg az [Azure IoT Central in store Analytics-alkalmazás létrehozása az Azure-](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) ban című oktatóanyagban létrehozott feltételt figyelő alkalmazást.
+1. Nyissa meg az [Azure IoT Central in store Analytics-alkalmazás létrehozása az Azure-](./tutorial-in-store-analytics-create-app-pnp.md) ban című oktatóanyagban létrehozott feltételt figyelő alkalmazást.
 
 1. Válassza a **Szerkesztés** lehetőséget az irányítópult eszköztárán. Szerkesztési módban testreszabhatja az irányítópult megjelenését, elrendezését és tartalmát.
 
@@ -142,7 +142,7 @@ A fennmaradó csempék átrendezése:
 ## <a name="add-telemetry-tiles-to-display-conditions"></a>Telemetria csempe hozzáadása a feltételek megjelenítéséhez
 Miután testreszabta az irányítópult elrendezését, készen áll a csempék hozzáadására a telemetria megjelenítéséhez. Telemetria csempe létrehozásához válassza ki az eszköz sablonját és az eszköz példányát, majd válassza ki az eszközre jellemző telemetria a csempén való megjelenítéshez. Az **in-store Analytics-Checkout** alkalmazás sablonja több telemetria-csempét is tartalmaz az irányítópulton. A két pénztári zóna négy csempéje a szimulált telemetria jeleníti meg. A **People Traffic** csempén a két pénztár zónában láthatók a számok. 
 
-Ebben a szakaszban két további telemetria-csempét ad hozzá, amelyek a RuuviTag-érzékelőkből származó környezeti telemetria jelenítik meg, amelyek az Azure IoT Central-oktatóanyagban az [in-store Analytics-alkalmazás létrehozása](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) című cikkben lettek hozzáadva. 
+Ebben a szakaszban két további telemetria-csempét ad hozzá, amelyek a RuuviTag-érzékelőkből származó környezeti telemetria jelenítik meg, amelyek az Azure IoT Central-oktatóanyagban az [in-store Analytics-alkalmazás létrehozása](./tutorial-in-store-analytics-create-app-pnp.md) című cikkben lettek hozzáadva. 
 
 Csempék hozzáadása a környezeti adatok RuuviTag-érzékelőkből való megjelenítéséhez:
 
@@ -259,4 +259,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy testre szabta az irányítópultot az Azure IoT Central in-store Analytics-alkalmazásban, itt látható a következő lépés:
 
 > [!div class="nextstepaction"]
-> [Az adatexportálás és az elemzések megjelenítése](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Az adatexportálás és az elemzések megjelenítése](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md)

@@ -1,18 +1,18 @@
 ---
-title: Az Azure Log Analytics munkaterület törlése és visszaállítása | Microsoft Docs
+title: Az Azure Log Analytics munkaterület törlése és helyreállítása | Microsoft Docs
 description: Megtudhatja, hogyan törölheti Log Analytics munkaterületét, ha létrehozott egy személyes előfizetést, vagy átalakította a munkaterület modelljét.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/11/2019
-ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/28/2019
+ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932371"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044241"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és visszaállítása
 
@@ -54,12 +54,14 @@ A munkaterületeket a [PowerShell](https://docs.microsoft.com/powershell/module/
 
 Ha közreműködői engedélyekkel rendelkezik ahhoz az előfizetéshez és erőforráscsoporthoz, amelyben a munkaterület a törlési művelet előtt hozzá volt rendelve, akkor helyreállíthatja azt a puha törlési időszakban, beleértve az adatokat, a konfigurációt és a csatlakoztatott ügynököket. A törlési időtartam után a munkaterület nem helyreállítható és végleges törléshez van rendelve. A törölt munkaterületek nevei a Soft-delete időszakban megmaradnak, és nem használhatók új munkaterületek létrehozására tett kísérlet során.  
 
-A munkaterületet úgy állíthatja helyre, hogy a munkaterület Create Methods [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) vagy a [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) használatával újra létrehozza a munkaterületet, feltéve, hogy ezek a tulajdonságok a törölt munkaterület részleteivel vannak feltöltve, beleértve a következőket:
+A munkaterületet a következő munkaterület-létrehozási metódusok használatával állíthatja helyre: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) vagy [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , ha a következő tulajdonságok vannak feltöltve a törölt munkaterület részleteivel:
 
 * Subscription ID (Előfizetés azonosítója)
 * Erőforráscsoport neve
 * Munkaterület neve
 * Region (Régió)
+
+A rendszer a helyreállítási művelet után visszaküldi a munkaterületet és az összes adatforrást. A megoldások és a társított szolgáltatások véglegesen el lettek távolítva a munkaterületről a törlés után, és ezeket újra kell konfigurálni, hogy a munkaterület a korábban konfigurált állapotba kerüljön. Előfordulhat, hogy egyes adatmennyiségek nem állnak rendelkezésre a lekérdezéshez a munkaterület helyreállítása után, amíg a társított megoldások újra nem települnek, és a sémáik hozzá lettek adva a munkaterülethez.
 
 > [!NOTE]
 > * A munkaterület helyreállítása nem támogatott a [Azure Portalban](https://portal.azure.com). 

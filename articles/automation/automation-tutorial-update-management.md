@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: a2d13833b60076caa371a7fa8a696ab5964a28e3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376084"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044403"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -169,7 +169,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
   * Ha a karbantartási időszakot túllépik a Windowson, gyakran egy szervizcsomag-frissítés miatt sok időt vesz igénybe a telepítés.
 
   > [!NOTE]
-  > "Az adatok nem kritikus fontosságúak a taskTo, így elkerülhető, hogy a frissítések az Ubuntu karbantartási időszakán kívül is érvényesüljenek, konfigurálja újra a felügyelet nélküli frissítési csomagot az automatikus frissítések letiltásához. A csomag konfigurálásával kapcsolatos további információkért lásd [az Ubuntu Server útmutatójának automatikus frissítések témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+  > Ha el szeretné kerülni, hogy a frissítések ne legyenek alkalmazva az Ubuntu karbantartási időszakán kívül, konfigurálja újra a felügyelet nélküli frissítési csomagot az automatikus frissítések letiltásához. A csomag konfigurálásával kapcsolatos további információkért lásd [az Ubuntu Server útmutatójának automatikus frissítések témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 * **Újraindítási beállítások**: Ez a beállítás határozza meg az újraindítások kezelésének módját. Az elérhető lehetőségek:
   * Újraindítás szükség esetén (alapértelmezett beállítás)

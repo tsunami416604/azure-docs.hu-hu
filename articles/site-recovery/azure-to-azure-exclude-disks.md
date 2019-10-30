@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 317a8ba48851ebf65fe52e79f6cf9d9c45786f6f
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147050"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053413"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Lemezek kizárása az Azure-beli virtuális gépek PowerShell-replikálásával
 
@@ -29,11 +29,12 @@ Előkészületek:
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](azure-to-azure-support-matrix.md).
 - Győződjön meg arról, hogy az AzureRm PowerShell "az" modulja van. A PowerShell telepítéséhez vagy frissítéséhez tekintse meg [a Azure PowerShell modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps)ismertető témakört.
 - Győződjön meg arról, hogy legalább egyszer létrehozta a Recovery Services-tárolót és a védett virtuális gépeket. Ha még nem tette meg ezeket a dolgokat, kövesse az [Azure-beli virtuális gépek vész-helyreállításának beállítása Azure PowerShell használatával](azure-to-azure-powershell.md)című eljárást.
+- Ha további információt szeretne arról, hogyan adhat hozzá lemezeket egy replikációra alkalmas Azure-beli virtuális géphez, [tekintse át ezt a cikket](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Miért kell a lemezeket kizárni a replikációból
 Előfordulhat, hogy ki kell zárnia a lemezeket a replikációból, mert:
 
-- A virtuális gép elérte [Azure site Recovery korlátot az](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)adatváltozások arányának replikálásához.
+- A virtuális gép elérte [Azure site Recovery korlátot az adatváltozások arányának replikálásához](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
 
 - A kizárt lemezen lévő adatforgalom nem fontos, vagy nem kell replikálni.
 
@@ -135,6 +136,6 @@ A replikálási folyamat a helyreállítási régióban található virtuális g
 
 A kezdeti replikálás befejeződése után a replikálás a különbözeti szinkronizálási fázisra lép. Ezen a ponton a virtuális gép védett. A védett virtuális gép kiválasztásával ellenőrizze, hogy a lemezek ki vannak-e zárva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a feladatátvételi teszt futtatásáról](site-recovery-test-failover-to-azure.md).

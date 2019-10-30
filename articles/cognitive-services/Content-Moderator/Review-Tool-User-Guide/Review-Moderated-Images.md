@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754264"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044116"
 ---
 # <a name="create-human-reviews"></a>Emberi felülvizsgálatok létrehozása
 
@@ -56,4 +56,4 @@ A szöveges értékelések hasonlóan működnek a képelemzésekhez. A tartalom
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az útmutatóban megtanulta, hogyan állíthat be és használhat felülvizsgálatokat a Content Moderator [felülvizsgálati eszközből](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-review.md) vagy a [.net SDK útmutatóját](../moderation-reviews-quickstart-dotnet.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon az értékeléseket.
+Ebben az útmutatóban megtanulta, hogyan állíthat be és használhat felülvizsgálatokat a Content Moderator [felülvizsgálati eszközből](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-review.md) vagy a [.net SDK](../dotnet-sdk-quickstart.md) gyors útmutatóját, amelyből megtudhatja, hogyan hozhat létre programozott módon az értékeléseket.

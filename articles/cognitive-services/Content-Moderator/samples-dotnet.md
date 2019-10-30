@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 23ef7b515f5391a30f6d1fa9fce1dcb856643c69
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5a8deed7fa12688ee0d252ef0707be7a6b633e50
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757284"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043989"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>.NET SDK-minták Content Moderator
 
@@ -23,15 +23,15 @@ A következő felsorolás a .NET-hez készült Azure Content Moderator SDK haszn
 
 ## <a name="moderation"></a>Moderálás
 
-- **Képmoderálás**: [Felnőtteknek szóló és kényes tartalom, szöveg és arcok észlelése a képeken](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageModeration/Program.cs). Lásd a [rövid útmutatót](image-moderation-quickstart-dotnet.md).
-- **Egyéni képek**: [Moderálás egyéni képlistákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageListManagement/Program.cs). Lásd a [rövid útmutatót](image-lists-quickstart-dotnet.md).
+- **Képmoderálás**: [Felnőtteknek szóló és kényes tartalom, szöveg és arcok észlelése a képeken](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageModeration/Program.cs). Tekintse meg a [.net SDK](dotnet-sdk-quickstart.md)gyors útmutatóját.
+- **Egyéni képek**: [Moderálás egyéni képlistákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageListManagement/Program.cs). Tekintse meg a[.net SDK](dotnet-sdk-quickstart.md)gyors útmutatóját.
 
 > [!NOTE]
 > A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 >
 
-- **Szöveges moderálás**: [képernyő szövege a káromkodáshoz és a személyes adatértékekhez](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Lásd a [rövid útmutatót](text-moderation-quickstart-dotnet.md).
-- **Egyéni kifejezések**: [Moderálás egyéni kifejezéslistákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs). Lásd a [rövid útmutatót](term-lists-quickstart-dotnet.md).
+- **Szöveges moderálás**: [képernyő szövege a káromkodáshoz és a személyes adatértékekhez](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Tekintse meg a[.net SDK](dotnet-sdk-quickstart.md)gyors útmutatóját.
+- **Egyéni kifejezések**: [Moderálás egyéni kifejezéslistákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs). Tekintse meg a [.net SDK](dotnet-sdk-quickstart.md)gyors útmutatóját.
 
 > [!NOTE]
 > A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
@@ -42,7 +42,7 @@ A következő felsorolás a .NET-hez készült Azure Content Moderator SDK haszn
 ## <a name="review"></a>Áttekintés
 
 - **Képekkel kapcsolatos feladatok**: [Moderálási feladat indítása, amely átvizsgálást végez, és felülvizsgálatokat hoz létre](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageJobs/Program.cs). Lásd a [rövid útmutatót](moderation-jobs-quickstart-dotnet.md).
-- **Képek felülvizsgálata**: [Felülvizsgálatok létrehozása az emberi irányítás számára](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageReviews/Program.cs). Lásd a [rövid útmutatót](moderation-reviews-quickstart-dotnet.md).
+- **Képek felülvizsgálata**: [Felülvizsgálatok létrehozása az emberi irányítás számára](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageReviews/Program.cs). Lásd a [rövid útmutatót](dotnet-sdk-quickstart.md).
 - **Videók felülvizsgálata**: [Videó-felülvizsgálatok létrehozása az emberi irányítás számára](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/VideoReviews/Program.cs). Lásd a [rövid útmutatót](video-reviews-quickstart-dotnet.md).
 - **Videóátiratok felülvizsgálata**: [Videóátirat-felülvizsgálatok létrehozása az emberi irányítás számára](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/VideoTranscriptReviews/Program.cs). Lásd a [rövid útmutatót](video-reviews-quickstart-dotnet.md)
 
