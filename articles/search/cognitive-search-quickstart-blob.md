@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 28d813e2f137ecf721165e9ea5af2e36efee872a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809667"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053483"
 ---
 # <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Rövid útmutató: AI-bővítési folyamat létrehozása a kognitív képességek használatával Azure Search
 
-A Azure Search a [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), a tartalom kinyerését, a természetes nyelvi feldolgozást (NLP) és a képfeldolgozási képességeket egy Azure Search indexelési folyamatba integrálja, így a kereshető vagy strukturálatlan tartalmak kereshetők. 
+A Azure Search a [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), a tartalom kinyerésének, a természetes nyelvi feldolgozás (NLP) és a képfeldolgozás (Képcímkéző, objektumok észlelése, OCR) képességeinek a Azure Search indexelési folyamathoz való integrálásával, így nem kereshetővé vagy strukturálatlan tartalom kereshető. 
 
-Számos Cognitive Services erőforrás – például az [OCR](cognitive-search-skill-ocr.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md), az [entitások felismerése](cognitive-search-skill-entity-recognition.md) , hogy a név néhány – egy indexelési folyamathoz csatolható. A Cognitive Services AI-algoritmusai olyan minták, funkciók és tulajdonságok keresésére szolgálnak, amelyek a forrásadatok, a visszatérő struktúrák és a szöveges tartalom alapján használhatók, amelyek Azure Search alapján teljes szöveges keresési megoldásokban használhatók.
+Számos Cognitive Services erőforrás – mint például a [képcímkézés](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images), az [objektumok észlelése](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-object-detection), az [OCR](cognitive-search-skill-ocr.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md), az [entitások felismerése](cognitive-search-skill-entity-recognition.md) , hogy néhány – egy indexelési folyamathoz csatolhatók. A Cognitive Services AI-algoritmusai olyan minták, funkciók és tulajdonságok keresésére szolgálnak, amelyek a forrásadatok, a visszatérő struktúrák és a szöveges tartalom alapján használhatók, amelyek Azure Search alapján teljes szöveges keresési megoldásokban használhatók.
 
 Ebben a rövid útmutatóban létrehozza az első alkoholtartalom-növelési folyamatát a [Azure Portalban](https://portal.azure.com) , mielőtt egyetlen sor kódot írna elő:
 

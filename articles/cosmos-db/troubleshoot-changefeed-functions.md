@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: 7a9f726273dc3c5b336b22588d49704ffc2d8192
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053299"
+ms.locfileid: "73043376"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 
@@ -105,7 +105,7 @@ Ez a hiba akkor fordul elő, ha a Azure Functions projekt (vagy bármely hivatko
 Ennek a helyzetnek a megkerülő megoldásához távolítsa el a hozzáadott manuális NuGet-hivatkozást, és hagyja meg a Azure Cosmos DB SDK-referenciát a Azure Functions Cosmos DB kiterjesztési csomagon keresztül.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Az Azure-függvény lekérdezési intervallumának módosítása a változások észleléséhez
-Ahogy azt fentebb említettük, hogy a [módosítások túl sokáig tartanak](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), az Azure Function (alapértelmezés szerint 5 másodperc) az új módosítások ellenőrzése előtt alvó állapotba lép (a magas ru-használat elkerüléséhez). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
+Ahogy azt korábban már említettük, a [# # # a módosítások túl sokáig tartanak](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-be-received), az Azure Function (alapértelmezés szerint 5 másodperc) az új módosítások ellenőrzése előtt alvó állapotba kerül (a magas ru-használat elkerüléséhez). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
 
 ## <a name="next-steps"></a>Következő lépések
 

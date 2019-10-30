@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f248fe125873b4ed1e930e56865e4e403bcceea6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529014"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053845"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -87,7 +87,7 @@ Mentse a mainTemplate.json fájlt.
 
 ## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>A létrehozási élmény meghatározása a CreateUiDefinition. JSON használatával
 
-Közzétevőként a létrehozási élményt a **createUiDefinition. JSON** fájl használatával határozhatja meg, amely a felügyelt alkalmazásokat létrehozó felhasználók felületét hozza létre. Azt határozza meg, hogy a felhasználók hogyan biztosítanak bemenetet az egyes paraméterekhez [vezérlő elemek] (create-uidefinition-elements.md), beleértve a legördülő listákat, a szövegmezőket és a jelszó mezőket.
+Közzétevőként a létrehozási élményt a **createUiDefinition. JSON** fájl használatával határozhatja meg, amely a felügyelt alkalmazásokat létrehozó felhasználók felületét hozza létre. Meghatározhatja, hogy a felhasználók hogyan biztosítanak bemenetet az egyes paraméterekhez a [vezérlési elemek](create-uidefinition-elements.md) , például a legördülő listák, a szövegmezők és a jelszó mezők használatával.
 
 Hozzon létre egy **createUiDefinition. JSON** nevű fájlt (ez a név megkülönbözteti a kis-és nagybetűket)
 

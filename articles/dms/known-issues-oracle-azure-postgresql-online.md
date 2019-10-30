@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/03/2019
-ms.openlocfilehash: bc37c7cb11b973f89695b5631ec9569ff6b94608
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71801787"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053650"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások az Oracle-ből az Azure-ba való online áttelepítéssel a PostgreSQL-hez – egyetlen kiszolgáló
 
@@ -39,7 +39,7 @@ Azure Database Migration Service támogatja az áttelepítést a Azure Database 
 
 A következő adattípusok **nem** lesznek áttelepítve:
 
-- BFILE
+- BFÁJL
 - ROWID
 - REF
 - UROWID
@@ -63,7 +63,7 @@ Továbbá üres BLOB-/CLOB-oszlopok vannak leképezve NULL értékre a célhelye
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-- Az ügyfeleknek SYSDB kell használniuk az Oracle-hez való kapcsolódáshoz.
+- Az ügyfeleknek SYSDBA kell használniuk az Oracle-hez való kapcsolódáshoz.
 - A partíció/alpartíciós műveletek (Hozzáadás, eldobás, EXCHANGE és CSONKÍTás) miatti adatváltozások nem lesznek áttelepítve, és a következő hibákhoz vezethetnek:
   - A HOZZÁADÁSi műveletekhez a hozzáadott adatokhoz tartozó frissítések és törlések "0 sor érintett" figyelmeztetést adhatnak vissza.
   - A DROP és a CSONKÍTás műveletekhez az új beszúrások "duplikált" hibákat okozhatnak.

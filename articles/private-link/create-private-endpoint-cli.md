@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376312"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053507"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI-vel
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépeket egy virtuális hálózaton, egy SQL Database-kiszolgálót az Azure CLI használatával. Ezután elérheti a virtuális gépet, és biztonságosan hozzáférhet a privát kapcsolati erőforráshoz (ebben a példában egy privát Azure SQL Database-kiszolgáló). 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alhálózat magánhálózati végponti házirendjeinek letiltása 
-Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok hálózati házirendjeinek letiltásához. Frissítsen egy *mySubnet* with [az Network vnet subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)nevű alhálózati konfigurációt:
+Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok hálózati házirendjeinek letiltásához. Frissítsen egy *mySubnet* nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,7 +49,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása 
-Hozzon létre egy virtuális gépet az az VM Create paranccsal. Ha a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használandó jelszót. Ez a példa egy *myVm*nevű virtuális gépet hoz létre: 
+Hozzon létre egy virtuális gépet az az VM Create paranccsal. Ha a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használandó jelszót. Ez a példa egy *myVm*nevű virtuális gépet hoz létre: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-Vegye figyelembe, hogy a SQL Server-azonosító a @ no__t-0 értékhez hasonlóan a SQL Server azonosítót fogja használni a következő lépésben. 
+Vegye figyelembe, hogy a SQL Server azonosítója hasonló ahhoz, ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` a következő lépésben a SQL Server azonosítót fogja használni. 
 
 ## <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása 
 Hozzon létre egy privát végpontot a Virtual Network SQL Database-kiszolgálóhoz: 
@@ -136,7 +136,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget**kell választania @no__t **-1.**
+        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** kell kiválasztania > **eltérő fiókot használjon**.
 
 1. Kattintson az **OK** gombra.
 
@@ -148,8 +148,8 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 Ebben a szakaszban a virtuális gépről a magánhálózati végpont használatával fog csatlakozni a SQL Database-kiszolgálóhoz.
 
- 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
- 2. Adja meg az nslookup MyServer. database. Windows. net @ no__t-0 a következőhöz hasonló üzenetet fog kapni: 
+ 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+ 2. Adja meg az nslookup myserver.database.windows.net  a következőhöz hasonló üzenetet fog kapni: 
 
 ```
       Server:  UnKnown 
@@ -165,7 +165,7 @@ Ebben a szakaszban a virtuális gépről a magánhálózati végpont használat�
  Password (jelszó): adja meg a létrehozás során megadott jelszót.
  Jelszó megjegyzése: válassza az Igen lehetőséget.
  
- 5. Válassza a **kapcsolat**lehetőséget.
+ 5. Kattintson a **Csatlakozás** gombra.
  6. A bal oldali menüben lévő **adatbázisok** tallózása.
  7. Opcionálisan Információk létrehozása vagy lekérdezése a *mydatabase*
  8. A távoli asztali kapcsolat bezárásával *myVm*.

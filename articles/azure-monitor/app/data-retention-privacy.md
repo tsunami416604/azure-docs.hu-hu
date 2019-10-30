@@ -6,31 +6,32 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/22/2019
-ms.openlocfilehash: 62758ef82b074e093e837b2095dd9f27ab31657b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 09/29/2019
+ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678098"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052491"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
 Ha telepíti az [Azure Application Insights][start] SDK-t az alkalmazásban, az telemetria küld az alkalmazásról a felhőre. Természetesen a felelős fejlesztők pontosan tudni szeretnék, hogy milyen adat érkezik, mi történik az adatmennyiséggel, és hogyan tarthatják kézben az irányítást. Különösen a bizalmas adatok küldhetők, hol tárolják, és mennyire biztonságosak? 
 
 Először is a rövid választ:
 
 * A "kívülről" futó szabványos telemetria-modulok nem valószínű, hogy bizalmas adatokat küldjenek a szolgáltatásnak. A telemetria a terheléssel, a teljesítménnyel és a használattal kapcsolatos metrikákkal, a kivételekkel és egyéb diagnosztikai adatokkal foglalkozik. A diagnosztikai jelentésekben látható fő felhasználói adatértékek URL-címek; az alkalmazás azonban nem tartalmazhat bizalmas adatokat egyszerű szövegként egy URL-címben.
-* Írhat olyan kódot, amely további egyéni telemetria küld a diagnosztika és a figyelés használatának elősegítése érdekében. (Ez a bővíthetőség a Application Insights nagyszerű funkciója.) A kód megírása lehetséges, ha a személyes és más bizalmas adatokat is tartalmaz. Ha az alkalmazás együttműködik ilyen adattal, alaposan tekintse át az összes írni kívánt kódot.
+* Írhat olyan kódot, amely további egyéni telemetria küld a diagnosztika és a figyelés használatának elősegítése érdekében. (Ez a bővíthetőség a Application Insights nagyszerű funkciója.) A kód megírása lehetséges, ha a személyes és más bizalmas adatokat is tartalmaz. Ha az alkalmazása ilyen jellegű adatkezelési művelettel működik, alapos felülvizsgálati folyamatot kell alkalmaznia az összes írt kódra.
 * Az alkalmazás fejlesztése és tesztelése során könnyen megvizsgálhatja, hogy mi történik az SDK-ban. Az adatokat az IDE és böngésző kimeneti ablakában jeleníti meg. 
 * Az adattárolást az Egyesült Államokban vagy Európában [Microsoft Azure](https://azure.com) -kiszolgálók tárolják. (De az alkalmazás bárhol futhat.) Az Azure [erős biztonsági folyamatokkal rendelkezik, és megfelel a megfelelőségi szabványok széles skálájának](https://azure.microsoft.com/support/trust-center/). Csak Ön és a kijelölt csapat férhet hozzá az adataihoz. A Microsoft munkatársai csak bizonyos korlátozott körülmények között érhetik el a hozzáférést az Ön számára. Az átvitel és a nyugalmi állapotban is titkosítva van.
+*   Tekintse át az összegyűjtött adatokat, mivel ez tartalmazhat olyan adatokat, amelyek bizonyos esetekben megengedettek, de mások nem.  Jó példa erre az eszköz nevére. A kiszolgáló eszközének neve nem befolyásolja az adatvédelmet, és hasznos lehet, de egy telefonról vagy laptopról származó eszköz neve adatvédelmi következményekkel járhat, és kevésbé hasznos lehet. Az SDK elsődlegesen a célkiszolgáló számára lett kifejlesztve, így az eszköz neve alapértelmezés szerint összegyűjthető, és előfordulhat, hogy a normál eseményeken és kivételeken felül kell írni.
 
 A cikk további részében részletesen ismertetjük a válaszokat. Úgy tervezték, hogy önálló legyen, így megjelenítheti azokat a munkatársakat, akik nem részei a közvetlen csapatának.
 
 ## <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az [Azure Application Insights][start] a Microsoft által biztosított szolgáltatás, amely segít az élő alkalmazások teljesítményének és használhatóságának javításában. Az alkalmazást folyamatosan figyeli az alkalmazás futása során, a tesztelés során, illetve a közzététel vagy a telepítés után. A Application Insights diagramokat és táblákat hoz létre, amelyek megmutatják, hogy a legtöbb felhasználó mikor kapja meg a legtöbb felhasználót, hogyan reagál az alkalmazásra, és milyen jól szolgálja ki azokat a külső szolgáltatások, amelyektől függenek. Ha összeomlik, hiba vagy teljesítménnyel kapcsolatos probléma merül fel, részletesen megkeresheti a telemetria adatokat az OK diagnosztizálásához. A szolgáltatás pedig e-maileket küld az alkalmazás rendelkezésre állásának és teljesítményének változásairól.
 
-Ennek a funkciónak a beszerzéséhez telepítenie kell egy Application Insights SDK-t az alkalmazásba, amely a kód részévé válik. Ha az alkalmazás fut, az SDK figyeli a műveletét, és elküldi a telemetria a Application Insights szolgáltatásnak. Ez egy [Microsoft Azure](https://azure.com)által üzemeltetett felhőalapú szolgáltatás. (A Application Insights azonban bármilyen alkalmazás esetében működik, nem csak az Azure-ban üzemeltetett alkalmazásokat.)
+Ennek a funkciónak a beszerzéséhez telepítenie kell egy Application Insights SDK-t az alkalmazásba, amely a kód részévé válik. Ha az alkalmazás fut, az SDK figyeli a műveletét, és elküldi a telemetria a Application Insights szolgáltatásnak. Ez egy [Microsoft Azure](https://azure.com)által üzemeltetett felhőalapú szolgáltatás. (A Application Insights azonban bármely alkalmazás esetében működik, nem csak az Azure-ban üzemeltetett alkalmazások esetében.)
 
 A Application Insights szolgáltatás a telemetria tárolja és elemzi. Ha meg szeretné tekinteni az elemzést, vagy keresést végez a tárolt telemetria, jelentkezzen be az Azure-fiókjába, és nyissa meg az alkalmazás Application Insights erőforrását. Megoszthatja az adataihoz való hozzáférést is a csapat más tagjaival vagy a megadott Azure-előfizetőkkel.
 
@@ -39,7 +40,6 @@ A Application Insights szolgáltatásból exportálhatja az adatait, például e
 Application Insights SDK-k számos különböző típusú alkalmazáshoz érhetők el: a saját Java EE-vagy ASP.NET-kiszolgálókon üzemeltetett webszolgáltatások vagy az Azure-ban. webes ügyfelek – vagyis a weblapokon futó kód asztali alkalmazások és szolgáltatások; eszköz-alkalmazások, például Windows Phone-telefon, iOS és Android. Minden telemetria ugyanarra a szolgáltatásra küldenek.
 
 ## <a name="what-data-does-it-collect"></a>Milyen adatokat gyűjt?
-### <a name="how-is-the-data-is-collected"></a>Hogyan történik az adatok gyűjtése?
 Három adatforrás található:
 
 * Az SDK, amelyet [fejlesztési](../../azure-monitor/app/asp-net.md) vagy [futtatási időben](../../azure-monitor/app/monitor-performance-live-website-now.md)integrálhat az alkalmazásba. Különböző SDK-k léteznek különböző típusú alkalmazásokhoz. Emellett van egy [SDK a weblapokhoz](../../azure-monitor/app/javascript.md)is, amelyek betöltődik a végfelhasználó böngészőjébe az oldallal együtt.
@@ -52,11 +52,11 @@ Három adatforrás található:
 ### <a name="what-kinds-of-data-are-collected"></a>Milyen típusú adatokat gyűjt a rendszer?
 A fő kategóriák a következők:
 
-* [Webkiszolgáló telemetria](../../azure-monitor/app/asp-net.md) – HTTP-kérelmek.  URI, a kérelem feldolgozásához szükséges idő, válasz kódja, ügyfél IP-címe. Munkamenet-azonosító.
+* [Webkiszolgáló telemetria](../../azure-monitor/app/asp-net.md) – HTTP-kérelmek.  URI, a kérelem feldolgozásához szükséges idő, válasz kódja, ügyfél IP-címe. `Session id` kérdésre adott válaszban foglalt lépéseket.
 * [Weblapok](../../azure-monitor/app/javascript.md) – oldal, felhasználói és munkamenetek száma. Oldal betöltési ideje Kivételek. Ajax-hívások.
 * Teljesítményszámlálók – memória, CPU, IO, hálózati kihasználtság.
 * Ügyfél-és kiszolgálói környezet – operációs rendszer, területi beállítás, eszköz típusa, böngésző, képernyőfelbontás.
-* [Kivételek](../../azure-monitor/app/asp-net-exceptions.md) és összeomlások – **verem-memóriaképek**, LÉTREHOZÁSi azonosító, CPU-típus. 
+* [Kivételek](../../azure-monitor/app/asp-net-exceptions.md) és összeomlások – **verem-memóriaképek**, `build id`, CPU-típus. 
 * [Függőségek](../../azure-monitor/app/asp-net-dependencies.md) – külső szolgáltatásokra irányuló hívások, például REST, SQL, Ajax. URI vagy a kapcsolatok karakterlánca, időtartam, sikeres, parancs.
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) – a tesztelés és a lépések időtartama, válaszok.
 * A [nyomkövetési naplók](../../azure-monitor/app/asp-net-trace-logs.md) és az [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)  - **a naplókban vagy telemetria lévő bármit**.
@@ -84,7 +84,7 @@ Az 90 napnál hosszabb ideig tartott adatok mellett további díjak is felmerül
 
 Az összesített adatokat (azaz a számításokat, az átlagokat és az egyéb statisztikai adatokat, amelyek a metrika Explorerben láthatók) a 90 napos gabona 1 percen belül őrzi meg.
 
-A [hibakeresési Pillanatképek](../../azure-monitor/app/snapshot-debugger.md) tárolása tizenöt napig történik. Ez az adatmegőrzési szabályzat az alkalmazáson belüli alapon van beállítva. Ha ezt az értéket kell megnövelni, akkor a Azure Portal támogatási esetének megnyitásával növelheti a növekedést.
+A [hibakeresési Pillanatképek](../../azure-monitor/app/snapshot-debugger.md) tárolása 15 napig tart. Ez az adatmegőrzési szabályzat az alkalmazáson belüli alapon van beállítva. Ha ezt az értéket kell megnövelni, akkor a Azure Portal támogatási esetének megnyitásával növelheti a növekedést.
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 Az adatai láthatók az Ön számára, és ha van szervezeti fiókja, a csapattagok. 
@@ -103,7 +103,7 @@ A Microsoft csak a szolgáltatás nyújtásához használja fel az adatgyűjtés
 ## <a name="how-secure-is-my-data"></a>Mennyire biztonságos az adataim?
 Application Insights egy Azure-szolgáltatás. A biztonsági szabályzatokat az [Azure biztonsági, adatvédelmi és megfelelőségi tanulmányai](https://go.microsoft.com/fwlink/?linkid=392408)tárgyalják.
 
-Az adattárolás Microsoft Azure-kiszolgálókon történik. Az Azure Portalon lévő fiókok esetében a fiókok korlátozásait az [Azure biztonsági, adatvédelmi és megfelelőségi dokumentuma](https://go.microsoft.com/fwlink/?linkid=392408)tárgyalja.
+Az adattárolás Microsoft Azure-kiszolgálókon történik. A Azure Portal lévő fiókok esetében a fiókokra vonatkozó korlátozásokat az [Azure biztonsági, adatvédelmi és megfelelőségi dokumentuma](https://go.microsoft.com/fwlink/?linkid=392408)tárgyalja.
 
 A Microsoft munkatársai korlátozott mértékben férhetnek hozzá adataihoz. Csak az Ön engedélyével férhet hozzá az adataihoz, és a Application Insights használatának támogatásához szükséges. 
 
@@ -118,7 +118,7 @@ Ha más projektekkel oszt meg kódot, ne felejtse el eltávolítani a kialakít�
 Az összes adatok titkosítva maradnak, és az adatközpontok között mozognak.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>A rendszer az alkalmazásból a Application Insights kiszolgálókra titkosítja az adatok átvitelét?
-Igen, a https használatával az adatoknak a portálra való küldését szinte minden SDK-ból, beleértve a webkiszolgálókat, az eszközöket és a HTTPS-weblapokat is. Az egyetlen kivétel az egyszerű HTTP-weblapokról érkező adatok.
+Igen, a https használatával az adatoknak a portálra történő küldése szinte minden SDK-ból, beleértve a webkiszolgálókat, az eszközöket és a HTTPS-weblapokat is. Az egyetlen kivétel az egyszerű HTTP-weblapokról érkező adatok.
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>Az SDK ideiglenes helyi tárolót hoz létre?
 
@@ -126,13 +126,13 @@ Igen, bizonyos telemetria csatornák helyileg is megőrzik az adattárolást, ha
 
 A helyi tárolót használó telemetria-csatornák ideiglenes fájlokat hoznak létre a TEMP vagy az APPDATA címtárakban, amelyek az alkalmazást futtató adott fiókra korlátozódnak. Ez akkor fordulhat elő, ha egy végpont átmenetileg nem érhető el, vagy elérte a szabályozási korlátot. A probléma megoldása után a telemetria-csatorna folytatja az új és megőrzött adatok küldését.
 
-Ez a megőrzött adatbázis nem titkosított helyileg. Ha ez aggodalomra ad okot, tekintse át az adatgyűjtést, és korlátozza a személyes adataik gyűjteményét. (További információért lásd [a magánjellegű adatok exportálását és törlését](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) ismertető témakört.)
+Ez a megőrzött adatbázis nem titkosított helyileg. Ha ez aggodalomra ad okot, tekintse át az adatgyűjtést, és korlátozza a személyes adataik gyűjteményét. (További információ: [személyes adatok exportálása és törlése](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data).)
 
-Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurálnia ezt a könyvtárat, akkor az egy keretrendszer szerint konfigurálható. Győződjön meg arról, hogy az alkalmazás futtatására szolgáló folyamat rendelkezik írási hozzáféréssel ehhez a címtárhoz, de győződjön meg arról, hogy a könyvtár védett, hogy elkerülje a nem kívánt felhasználók által beolvasott telemetria.
+Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurálnia ezt a könyvtárat, akkor az egy-egy keretrendszer szerint konfigurálható. Győződjön meg arról, hogy az alkalmazás futtatására szolgáló folyamat rendelkezik írási hozzáféréssel ehhez a címtárhoz, de győződjön meg arról, hogy a könyvtár védett, hogy elkerülje a nem kívánt felhasználók által beolvasott telemetria.
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp` az adatmegőrzésre szolgál. Ez a hely nem konfigurálható a konfigurációs könyvtárból, és a mappa elérésére vonatkozó engedélyek az adott felhasználóra korlátozódnak a szükséges hitelesítő adatokkal. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) itt.)
+`C:\Users\username\AppData\Local\Temp` az adatmegőrzésre szolgál. Ez a hely nem konfigurálható a konfigurációs könyvtárból, és a mappa elérésére vonatkozó engedélyek az adott felhasználóra korlátozódnak a szükséges hitelesítő adatokkal. (További információ: [implementáció](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
 ###  <a name="net"></a>.NET
 
@@ -167,7 +167,7 @@ A következő kódrészlet bemutatja, hogyan állíthatja be a `ServerTelemetryC
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
-(További információért lásd a [AspNetCore egyéni konfigurációját](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) ismertető témakört. )
+(További információ: [AspNetCore egyéni konfiguráció](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).)
 
 ### <a name="nodejs"></a>Node.js
 
@@ -183,7 +183,7 @@ Az Application Insights-végpontok felé irányuló adatátvitel biztonságának
 
 A [PCI biztonsági szabványoknak szóló Tanács](https://www.pcisecuritystandards.org/) a TLS/SSL régebbi verzióinak letiltására, valamint a biztonságosabb protokollokra való frissítésre vonatkozó [határidő 2018. június 30-ig](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) érvényes. Ha az Azure elveszíti az örökölt támogatást, ha az alkalmazás vagy az ügyfelek nem tudnak kommunikálni legalább TLS 1,2-ben, akkor nem fog tudni adatküldeni a Application Insightsba. Az alkalmazás TLS-támogatásának teszteléséhez és ellenőrzéséhez szükséges módszer az operációs rendszertől/platformtól, valamint az alkalmazás által használt nyelvtől/keretrendszertől függően változhat.
 
-Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS 1,2-et használja, kivéve, ha ez nem feltétlenül szükséges, mert ez a platform szintű biztonsági funkciókat is lehetővé teszi, amelyekkel automatikusan észlelhetők és kihasználhatják az újabb biztonságosabb protokollokat. elérhető, például TLS 1,3. Javasoljuk, hogy az alkalmazás kódjának alapos vizsgálatával ellenőrizze az adott TLS/SSL-verziók rögzítjük.
+Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS 1,2-et használja, kivéve, ha ez megszakíthatja a platform szintű biztonsági funkciókat, amelyek lehetővé teszik az új, biztonságosabb protokollok automatikus észlelését és kihasználását, mint például TLS 1,3. Javasoljuk, hogy az alkalmazás kódjának alapos vizsgálatával ellenőrizze az adott TLS/SSL-verziók rögzítjük.
 
 ### <a name="platformlanguage-specific-guidance"></a>Platform/nyelvspecifikus útmutató
 
@@ -191,7 +191,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | --- | --- | --- |
 | Azure App Services  | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt.  |
 | Azure Function-alkalmazások | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt. |
-|.NET | Támogatott, a konfiguráció a verziótól függően változik. | A .NET 4,7-es és korábbi verziók részletes konfigurációs adatai a [következő útmutatókban találhatók](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|.NET | Támogatott, a konfiguráció a verziótól függően változik. | A .NET 4,7-es és korábbi verzióival kapcsolatos részletes konfigurációs információkhoz tekintse meg [ezeket az utasításokat](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Állapotmonitor | Támogatott, konfigurálás szükséges | A Állapotmonitor a TLS 1,2-es verziójának támogatásához az [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  + [.net-konfigurációra](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) támaszkodik.
 |Node.js |  A v 10.5.0-ben támogatott konfigurációra lehet szükség. | Bármely alkalmazásspecifikus konfigurációhoz használja a [hivatalos Node. js TLS/SSL-dokumentációt](https://nodejs.org/api/tls.html) . |
 |Java | Támogatott, a TLS 1,2-es JDK-támogatása a [jdk 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html)verzióban lett hozzáadva. | A JDK 8 [alapértelmezés szerint a TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)-et használja.  |
@@ -212,7 +212,7 @@ openssl version -a
 
 ### <a name="run-a-test-tls-12-transaction-on-linux"></a>Teszt TLS 1,2-tranzakció futtatása Linux rendszeren
 
-Egy alapszintű előzetes teszt futtatásával ellenőrizheti, hogy a Linux rendszer képes-e kommunikálni a TLS 1,2-en keresztül. Nyissa meg a terminált, és futtassa a következőket:
+Egy előzetes teszt futtatásával ellenőrizheti, hogy a Linux rendszer képes-e kommunikálni a TLS 1,2-vel. Nyissa meg a terminált, és futtassa a következőt:
 
 ```terminal
 openssl s_client -connect bing.com:443 -tls1_2
@@ -251,9 +251,9 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Összegyűjtött adatosztály | Tartalmazza (nem kimerítő lista) |
 | --- | --- |
 | **Tulajdonságok** |**A kód által meghatározott összes adattal** |
-| DeviceContext |Azonosító, IP, területi beállítás, eszköz modell, hálózat, hálózat típusa, SZÁMÍTÓGÉPGYÁRTÓ neve, képernyőfelbontás, szerepkör-példány, szerepkör neve, eszköz típusa |
+| DeviceContext |`Id`, IP, területi beállítás, eszköz modell, hálózat, hálózat típusa, OEM-név, képernyőfelbontás, szerepkör-példány, szerepkör neve, eszköz típusa |
 | ClientContext |Operációs rendszer, területi beállítás, nyelv, hálózat, ablak felbontása |
-| Munkamenet |Munkamenet-azonosító |
+| Munkamenet |`session id` |
 | ServerContext |Számítógépnév, területi beállítás, operációs rendszer, eszköz, felhasználói munkamenet, felhasználói környezet, művelet |
 | Következtetni |földrajzi hely az IP-címről, időbélyeg, operációs rendszer, böngésző |
 | Metrikák |Metrika neve és értéke |
@@ -262,9 +262,9 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Ügyfél-Teljesítményfigyelő |URL-cím/oldal neve, böngésző betöltési ideje |
 | Ajax |HTTP-hívások a weblapokról a kiszolgálóra |
 | Kérelmek |URL-cím, időtartam, válasz kódja |
-| Függőségek |Type (SQL, HTTP,...), kapcsolatok karakterlánca vagy URI, szinkronizálás/aszinkron, időtartam, sikeres, SQL-utasítás (Állapotmonitor) |
-| **Kivételek** |Típus, **üzenet**, hívási verem, forrásfájl és sor száma, szál azonosítója |
-| Összeomlik |Folyamat azonosítója, szülő folyamat azonosítója, összeomlási szál azonosítója; alkalmazás-javítás, azonosító, Build;  Kivétel típusa, címe, ok; eltorzított szimbólumok és regiszterek, bináris kezdő és záró címek, bináris név és elérési út, processzor típusa |
+| Függőségek |Type (SQL, HTTP,...), kapcsolatok karakterlánca, vagy URI, szinkronizálás/aszinkron, időtartam, sikeres, SQL-utasítás (Állapotmonitor) |
+| **Kivételek** |Típus, **üzenet**, hívási verem, forrásfájl, sorszám, `thread id` |
+| Összeomlik |`Process id`, `parent process id`, `crash thread id`; alkalmazás-javítás, `id`, Build;  Kivétel típusa, címe, ok; eltorzított szimbólumok és regiszterek, bináris kezdő és záró címek, bináris név és elérési út, processzor típusa |
 | Nyomkövetés |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálók |Processzoridő, rendelkezésre álló memória, kérelmek gyakorisága, kivételek száma, a folyamat saját bájtjai, i/o-sebesség, kérelem időtartama, kérelmek várólistájának hossza |
 | Elérhetőség |Webteszt-válasz kódja, az egyes tesztelési lépések időtartama, teszt neve, időbélyeg, sikeres, válaszidő, tesztelési hely |

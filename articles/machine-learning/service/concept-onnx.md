@@ -1,7 +1,7 @@
 ---
 title: Nagy teljesítményű, több platformos következtetés a ONNX
 titleSuffix: Azure Machine Learning
-description: Tudnivalók a ONNX és a ONNX Futtatókörnyezetről a felgyorsuló modellekhez
+description: Ismerje meg, hogyan használható a nyílt neurális hálózati Exchange (ONNX) a gépi tanulási modell következtetésének optimalizálásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: dc4a5984f42e87aa42c6873bb1ee63d66744e633
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035411"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053587"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: ML modellek létrehozása és felgyorsítása
 
@@ -32,19 +32,19 @@ A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, példá
 
 [![ONNX-folyamatábra, amely bemutatja a képzést, a konvertereket és az üzembe helyezést](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
-## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
+## <a name="get-onnx-models"></a>ONNX-modellek beolvasása
 
-ONNX-modellekkel többféle módon szerezheti be:
+A ONNX-modelleket többféleképpen is beszerezheti:
 + Új ONNX-modell betanítása Azure Machine Learningban (lásd a cikk alján található példákat)
 + Meglévő modell átalakítása más formátumból ONNX (lásd az [oktatóanyagokat](https://github.com/onnx/tutorials)) 
 + Egy előre betanított ONNX-modell beszerzése a [ONNX Model Zoo](https://github.com/onnx/models) -ból (lásd a cikk alján található példákat)
-+ Hozzon létre egy testre szabott ONNX-modellt a [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Testreszabott ONNX-modell létrehozása az [Azure Custom Vision szolgáltatásból](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
 
 Számos modell, beleértve a képbesorolást, az objektumok észlelését és a ONNX modellként is megjeleníthető. Előfordulhat azonban, hogy egyes modellek nem alakíthatók át sikeresen. Ha ebben a helyzetben fut, a megfelelő konverter GitHubján egy problémát kell megadnia. A probléma megoldása előtt továbbra is használhatja a meglévő Format modellt.
 
-## <a name="deploy-onnx-models-in-azure"></a>Az Azure-ban az ONNX-modellek üzembe helyezése
+## <a name="deploy-onnx-models-in-azure"></a>ONNX-modellek üzembe helyezése az Azure-ban
 
-A Azure Machine Learning segítségével üzembe helyezheti, kezelheti és figyelheti a ONNX-modelljeit. A standard használatával [üzembe helyezést megvalósító munkafolyamat](concept-model-management-and-deployment.md) ONNX-futtatókörnyezet, hozhat létre a felhőben üzemeltetett REST-végponton. Tekintse meg a cikk végén található példa Jupyter jegyzetfüzeteket a kipróbáláshoz. 
+A Azure Machine Learning segítségével üzembe helyezheti, kezelheti és figyelheti a ONNX-modelljeit. A normál [üzembe helyezési munkafolyamat](concept-model-management-and-deployment.md) és a ONNX futtatókörnyezet használatával létrehozhat egy felhőben üzemeltetett Rest-végpontot. Tekintse meg a cikk végén található példa Jupyter jegyzetfüzeteket a kipróbáláshoz. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>A ONNX Runtime telepítése és használata a Python használatával
 
@@ -56,41 +56,41 @@ pip install onnxruntime       # CPU build
 pip install onnxruntime-gpu   # GPU build
 ```
 
-Az ONNX-futtatókörnyezet hívja meg a Python-szkript, használja:    
+A ONNX Runtime a Python-szkriptben való meghívásához használja a következőt:    
 ```python
 import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-A dokumentáció a modell általában kísérő kiderül, hogy a bemeneteit és kimeneteit a modell használatával. Például egy vizualizációs eszköz is használható [Netron](https://github.com/lutzroeder/Netron) a modell megtekintéséhez. Az ONNX-modul is lehetővé teszi a modell metaadatainak lekérdezés, bemenetek és kimenetek:    
+A modellt kísérő dokumentáció általában megadja a modell használatának bemeneteit és kimeneteit. A modell megjelenítéséhez olyan vizualizációs eszközt is használhat, mint például a [Netron](https://github.com/lutzroeder/Netron) . A ONNX Runtime lehetővé teszi a modell metaadatainak, bemenetének és kimenetének lekérdezését is:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-A következtetésekhez a modellt, a használat `run` és kimenetei visszaadott (hagyja üres, ha azt szeretné, hogy ezek mindegyike) és a egy térképet, a bemeneti értékek listáját adja át. Ez a kimenetek listáját.  
+A modell kiszámításához használja a `run` és a pass értéket a visszaadott kimenetek listájában (hagyja üresen, ha az összeset meg szeretné jeleníteni) és a bemeneti értékek egy térképét. Az eredmény a kimenetek listája.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadokumentumok](https://aka.ms/onnxruntime-python).    
+A Python API teljes leírását a [ONNX futásidejű](https://aka.ms/onnxruntime-python)dokumentációjában találhatja meg.    
 
 ## <a name="examples"></a>Példák
 
-Lásd: [útmutatóval-to-használat-azureml/üzembe helyezés/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) létrehozásáért és ONNX-modellekkel például jegyzetfüzeteket.
+Lásd: [útmutató – azureml/Deployment/Onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) , például Onnx-modelleket létrehozó és telepítő jegyzetfüzetek.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>További információ
 
-További információ az ONNX vagy járulnak hozzá a projekthez:
-+ [Az ONNX-projekt webhelyének](https://onnx.ai)
-+ [Az ONNX-kódját a Githubon](https://github.com/onnx/onnx)
+További információ a ONNX vagy a projekthez való hozzájárulásról:
++ [ONNX projekt webhelye](https://onnx.ai)
++ [ONNX-kód a GitHubon](https://github.com/onnx/onnx)
 
-További információ az ONNX-futtatókörnyezet, illetve járulnak hozzá a projekthez:
+További információ a ONNX Futtatókörnyezetről vagy a projekthez való hozzájárulásról:
 + [ONNX futásidejű GitHub-tárház](https://github.com/Microsoft/onnxruntime)
 
 

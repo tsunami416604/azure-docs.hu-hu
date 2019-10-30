@@ -1,7 +1,7 @@
 ---
 title: Python fejlesztői környezet beállítása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan konfigurálhat fejlesztési környezetet a Azure Machine Learning használatakor. Ebből a cikkből megtudhatja, hogyan használhatja a Conda-környezeteket, hogyan hozhat létre konfigurációs fájlokat, és hogyan konfigurálhatja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, a Azure Databricksokat, az ide-ket, a Code Editort és a Data Science Virtual Machine.
+description: Ismerje meg, hogyan konfigurálhatja Azure Machine Learning fejlesztési környezetét. Használjon Conda-környezeteket, hozzon létre konfigurációs fájlokat, és konfigurálja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, az Azure Databricks, az ide, a Code Editort és a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ad9d721b102ab48f2ebb9c0361153bc3974492a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804149"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053573"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 

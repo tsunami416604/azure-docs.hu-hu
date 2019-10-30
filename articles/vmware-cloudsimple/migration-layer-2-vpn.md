@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 37f337f158c3ca53170d963f1304801a12b732da
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72376309"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053889"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
 
@@ -137,7 +137,7 @@ A következő lépések bemutatják, hogyan lehet beolvasni a Tier0 DR logikai �
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>A L2VPN számára szükséges logikai kapcsoló AZONOSÍTÓjának beolvasása
 
 1. Jelentkezzen be a [NSX-T kezelőjébe](https://nsx-t-manager-ip-address).
-2. Válassza a **hálózatkezelés**  > **váltás**  > **kapcsolók** > * * < \Logical kapcsolót \> * * > **Áttekintés**elemet.
+2. Válassza a **hálózatkezelés** > **váltás** > **kapcsolók** >  **< \Logical kapcsolót\>**  > **Áttekintés**elemet.
 3. Jegyezze fel a stretch logikai kapcsoló UUID-azonosítóját, amely a L2VPN konfigurálásakor szükséges.
 
     ![logikai útválasztó kimenetének beolvasása](media/l2vpn-fetch-switch01.png)
@@ -165,7 +165,7 @@ Az NSX-T Tier0-útválasztó és az önálló NSX Edge-ügyfél közötti IPsec-
 
 4. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Routing** > **BGP**1**szomszédok**lehetőséget. Válassza ki az első szomszédot. Kattintson a **szerkesztés**  >  a**családok kezelése**elemre. Az IPv4-család esetében szerkessze a **kimeneti szűrő** oszlopot, és válassza ki a létrehozott IP-előtagot. Kattintson a **Save** (Mentés) gombra. Ismételje meg ezt a lépést a második szomszédnál.
 
-    ![Attach IP-előtag lista 1 ](media/l2vpn-routing-security03.png) ![Attach IP-előtag listája 2 ](media/l2vpn-routing-security04.png)
+    ![csatolja az IP-előtag listáját 1](media/l2vpn-routing-security03.png) ![csatolja a 2. IP-előtag-listát](media/l2vpn-routing-security04.png)
 
 5. Terjessze újra a null értékű statikus útvonalat a BGP-be. Ha a visszacsatolási felületet szeretné reklámozni az alátéthez, újra kell terjesztenie a null statikus útvonalat a BGP-be. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Routing** > **útvonal újraterjesztés**1**szomszédok**lehetőséget. Válassza a **Provider-LR-Route_Redistribution** elemet, majd kattintson a **Szerkesztés**gombra. Jelölje be a **statikus** jelölőnégyzetet, majd kattintson a **Mentés**gombra.
 
@@ -430,7 +430,7 @@ A telepítés előtt ellenőrizze, hogy a helyszíni tűzfalszabályok engedély
 
 2. Nyissa meg a mappát az összes kibontott fájllal. Válassza ki az összes VMDK (NSX-l2t-Client-Large. MF és NSX-l2t-client-large. OVF nagyméretű berendezés méretéhez vagy NSX-l2t-Client-XLarge. MF és NSX-l2t-client-Xlarge. OVF a nagy méretű készülék méretéhez). Kattintson a **Tovább** gombra.
 
-    ![Select sablon ](media/l2vpn-deploy-client02.png) ![Select sablon ](media/l2vpn-deploy-client03.png)
+    ![válassza a sablon lehetőséget](media/l2vpn-deploy-client02.png) ![válassza a sablon lehetőséget](media/l2vpn-deploy-client03.png)
 
 3. Adja meg a NSX-T önálló ügyfél nevét, és kattintson a **tovább**gombra.
 
@@ -460,8 +460,8 @@ A telepítés előtt ellenőrizze, hogy a helyszíni tűzfalszabályok engedély
     * **Előtag hossza** Adja meg a kimenő VLAN/alhálózat előtagjának hosszát.
     * **CLI-rendszergazda/engedélyezés/gyökér felhasználói jelszó**. Állítsa be a rendszergazdai/Enable/root-fiók jelszavát.
 
-      ![Customize sablon ](media/l2vpn-deploy-client08.png)
-       ![Customize sablon – további ](media/l2vpn-deploy-client09.png)
+      ![sablon testreszabása](media/l2vpn-deploy-client08.png)
+      ![a sablon testreszabása – több](media/l2vpn-deploy-client09.png)
 
 7. Tekintse át a beállításokat, majd kattintson a **Befejezés**gombra.
 

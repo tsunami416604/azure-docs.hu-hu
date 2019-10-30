@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/15/2019
+ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597223"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052201"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -223,7 +223,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. A nevet a folyamat YAML fájlban megadott név határozza meg.  Ekkor létrejön egy Storage-fiók.  A Storage-fiók neve a **tárolóval**kezdődik.
 1. Válassza ki a Storage-fiók nevét a megnyitásához.
-1. Válassza ki a **Tulajdonságok** elemet. Figyelje meg, hogy az **SKU** a **Standard_LRS**.
+1. Válassza ki a **Tulajdonságok** elemet. Figyelje meg, hogy a **replikáció** **helyileg redundáns tárolást (LRS)** .
 
     ![Azure Resource Manager Azure DevOps Azure-folyamatok portáljának ellenőrzése](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
@@ -250,7 +250,7 @@ Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba
 
     A távoli tárház főágának frissítése után a folyamat újra bekerül.
 
-A módosítások ellenőrzéséhez ellenőrizze a Storage-fiók SKU-át.  Lásd: [a központi telepítés ellenőrzése](#verify-the-deployment).
+A módosítások ellenőrzéséhez ellenőrizze a Storage-fiók replikáció tulajdonságát.  Lásd: [a központi telepítés ellenőrzése](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
