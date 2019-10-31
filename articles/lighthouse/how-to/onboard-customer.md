@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 10/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 882afb83aa2a9bad9633df43b29e00b43162bf87
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 95bcf863e53572160f389d66d94900cf82c71819
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595663"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177107"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -110,6 +110,8 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+> [!TIP]
+> Javasoljuk, hogy a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) a felhasználó bevezetéséhez rendelje hozzá, hogy a bérlő felhasználói szükség esetén később is [el tudják távolítani a delegáláshoz való hozzáférést](#remove-access-to-a-delegation) . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager sablon létrehozása
 
@@ -271,6 +273,70 @@ Get-AzContext
 # Log in first with az login if you're not using Cloud Shell
 
 az account list
+```
+
+## <a name="remove-access-to-a-delegation"></a>Delegáláshoz való hozzáférés eltávolítása
+
+Alapértelmezés szerint az ügyfél bérlője, aki rendelkezik a megfelelő engedélyekkel, el tudja távolítani a hozzáférést a szolgáltatónak a Azure Portal [szolgáltatói lapján](view-manage-service-providers.md#add-or-remove-service-provider-offers) delegált erőforrásokhoz.
+
+Ha a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörével](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) rendelkező felhasználók belefoglalják az ügyfelet az Azure által delegált erőforrás-kezeléshez, a bérlőben lévő felhasználók is eltávolíthatják a delegálást. Ha ezt teszi, a szolgáltató bérlője egyik felhasználója sem férhet hozzá a korábban delegált erőforrásokhoz.
+
+Az alábbi példa egy olyan hozzárendelést mutat be, amely megadja a **felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét** , amely szerepelhet egy paraméter-fájlban:
+
+```json
+    "authorizations": [ 
+        { 
+            "principalId": "cfa7496e-a619-4a14-a740-85c5ad2063bb", 
+            "principalIdDisplayName": "MSP Operators", 
+            "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c" 
+        } 
+    ] 
+```
+
+Az ezzel az engedéllyel rendelkező felhasználók a következő módszerek egyikével törölhetik a delegálást.
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+# Sign in as a user from the managing tenant directory 
+
+Login-AzAccount
+
+# Select the subscription that is delegated - or contains the delegated resource group(s)
+
+Select-AzSubscription -SubscriptionName "<subscriptionName>"
+
+# Get the registration assignment
+
+Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}"
+
+# Delete the registration assignment
+
+Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
+```
+
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+# Sign in as a user from the managing tenant directory
+
+az login
+
+# Select the subscription that is delegated – or contains the delegated resource group(s)
+
+az account set -s <subscriptionId/name>
+
+# List registration assignments
+
+az managedservices assignment list
+
+# Delete the registration assignment
+
+az managedservices assignment delete –assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>Következő lépések

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175161"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200222"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
@@ -91,7 +91,7 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
 
 * **Fokozott biztonság** – ez a belépési szintű, védett megoldás jó választás az otthoni felhasználók, a kisvállalkozások és az általános fejlesztők számára.
 
-   A továbbfejlesztett munkaállomás egy házirend-alapú módszer az alacsony biztonsági profil biztonságának növelésére. Biztonságos eszközöket biztosít az ügyféladatok használatához, miközben olyan hatékonyságnövelő eszközöket is használhat, mint az e-mailek és a webböngészés. A naplózási házirendekkel és az Intune-nal figyelheti a felhasználók viselkedésére és a profilok használatára szolgáló bővített munkaállomást. Üzembe helyezi a továbbfejlesztett munkaállomás-profilt a Windows10 (1809) parancsfájllal, és kihasználhatja a fejlett kártevők elleni védelem előnyeit a komplex [veszélyforrások elleni védelem (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp)használatával.
+   A továbbfejlesztett munkaállomás egy házirend-alapú módszer az alacsony biztonsági profil biztonságának növelésére. Biztonságos eszközöket biztosít az ügyféladatok használatához, miközben olyan hatékonyságnövelő eszközöket is használhat, mint az e-mailek és a webböngészés. A naplózási házirendekkel és az Intune-nal figyelheti a felhasználók viselkedésére és a profilok használatára szolgáló bővített munkaállomást. Üzembe helyezi a továbbfejlesztett munkaállomás-profilt a Windows10 (1809) parancsfájllal, és kihasználhatja a fejlett kártevők elleni védelem előnyeit a komplex [veszélyforrások elleni védelem (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)használatával.
 
 * **Magas biztonság** – a leghatékonyabb módszer a munkaállomás támadási felületének csökkentésére, hogy eltávolítsa a munkaállomás önálló felügyeletének képességét. A helyi rendszergazdai jogosultságok eltávolítása egy olyan lépés, amely javítja a biztonságot, de a hatékonyságot nem megfelelően implementálja. A magas biztonsági profil a fokozott biztonsági profilra épít egy jelentős módosítással: a helyi rendszergazda eltávolításával. Ez a profil nagy horderejű felhasználók számára készült: vezetők, bérszámfejtés és bizalmas adatok felhasználói, a szolgáltatásokhoz és folyamatokhoz tartozó jóváhagyók.
 

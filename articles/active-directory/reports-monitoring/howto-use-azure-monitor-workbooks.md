@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175920"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200134"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
 
@@ -77,23 +77,17 @@ A következő szerepkörök egyikének kell lennie, valamint hozzáféréssel ke
 -   Jelentés olvasója
 -   Alkalmazás-rendszergazda
 
-
 ## <a name="workbook-access"></a>Munkafüzet-hozzáférés 
 
 A munkafüzetek eléréséhez:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Navigáljon **Azure Active Directory** >  > **munkafüzetek** **figyelése** . 
 
-3. A **figyelés** szakaszban válassza a **munkafüzetek**elemet. 
+1. Válasszon ki egy jelentést vagy sablont, vagy kattintson a **Megnyitás**gombra az eszköztáron. 
 
-    ![Áttekintések kiválasztása](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Válasszon ki egy jelentést vagy sablont, vagy kattintson a **Megnyitás**gombra az eszköztáron. 
-
-    ![Válassza a Megnyitás lehetőséget](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![A Azure Monitor-munkafüzetek keresése az Azure AD-ben](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Bejelentkezési elemzés
 

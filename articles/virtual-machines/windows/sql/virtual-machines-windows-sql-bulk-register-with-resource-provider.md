@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b9d4b99447e7c814d737def54dce03c4acc0e5ca
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 80a1ac3ebe5f49d6a63f47e08e0b16114d75e91f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172965"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199221"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL-alapú virtuális gépek tömeges regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -37,6 +37,7 @@ A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a követk
 - Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van az erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
 - A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő RBAC-szerepkörök bármelyikében léteznek: **virtuális gép közreműködői**, **közreműködő**vagy **tulajdonos**. 
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
+- Az [az. SqlVirtualMachine] legújabb verziója (https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0.
 
 ## <a name="getting-started"></a>Bevezetés
 
@@ -228,6 +229,7 @@ Ha a megadott parancsfájllal regisztrálja SQL Server virtuális gépeket az er
 
 A GitHub teljes parancsfájlját lásd: az [SQL-alapú virtuális gépek tömeges regisztrálása az az PowerShell-lel](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
 
+Másolja a teljes parancsfájlt, és mentse `RegisterSqLVMs.psm1`ként.
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
 

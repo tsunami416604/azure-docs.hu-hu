@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173463"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199801"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
@@ -35,7 +35,7 @@ A hozzáférési kérelmek jóváhagyásának vagy megtagadásának első lépé
 
 1. Keressen olyan Microsoft Azure e-mailt, amely arra kéri, hogy hagyja jóvá vagy tagadja meg a kérést. Példa erre az e-mail címre:
 
-    ![Hozzáférési kérelem jóváhagyása a csomag e-mail-címéhez](./media/entitlement-management-shared/email-approve-request.png)
+    ![Hozzáférési kérelem jóváhagyása a csomag e-mail-címéhez](./media/entitlement-management-shared/approver-request-email.png)
 
 1. A hozzáférési kérelem megnyitásához kattintson a **jóváhagyás vagy a Megtagadás kérelem** hivatkozásra.
 

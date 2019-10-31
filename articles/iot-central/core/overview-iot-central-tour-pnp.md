@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0bd078e8c920ca1ebe01767915036ca84650aadd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e012f595dbd12ba3f85045293420329352d30373
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958195"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176232"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Ismerkedjen meg az Azure IoT Central felhasználói felületével (előzetes verziójú funkciók)
 
@@ -138,7 +138,7 @@ További információt az [eszközök figyelése](tutorial-monitor-devices.md?to
 > [!div class="mx-imgBorder"]
 > ![eszközcsoport lap](media/overview-iot-central-tour-pnp/device-groups-pnp.png)
 
-Az eszközcsoport kapcsolódó eszközök gyűjteménye. A *megoldás-szerkesztő* egy lekérdezést határoz meg az eszközcsoport részét képező eszközök azonosításához. Az erőforráscsoportok használatával tömeges műveleteket hajthat végre az alkalmazásban. További tudnivalókat az [eszközök használata az Azure IoT Central alkalmazásban](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) című cikkben talál.
+Az eszközcsoport kapcsolódó eszközök gyűjteménye. A *megoldás-szerkesztő* egy lekérdezést határoz meg az eszközcsoport részét képező eszközök azonosításához. Az erőforráscsoportok használatával tömeges műveleteket hajthat végre az alkalmazásban. További tudnivalókat az [eszközök használata az Azure IoT Central alkalmazásban](tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) című cikkben talál.
 
 ### <a name="rules"></a>Szabályok
 > [!div class="mx-imgBorder"]
@@ -151,7 +151,7 @@ A szabályok lapon megadhatja az eszközök telemetria, állapotának vagy esem�
 > [!div class="mx-imgBorder"]
 > ![Analytics-lap](media/overview-iot-central-tour-pnp/analytics-pnp.png)
 
-Az Analytics lehetővé teszi, hogy egyéni nézeteket hozzon létre az eszköz adatain az alkalmazásból származó elemzések kinyeréséhez. További tudnivalókért lásd az [egyéni elemzések az Azure IoT Central-alkalmazásokban történő létrehozását](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) ismertető szakaszt.
+Az Analytics lehetővé teszi, hogy egyéni nézeteket hozzon létre az eszköz adatain az alkalmazásból származó elemzések kinyeréséhez. További tudnivalókat az [Azure IoT Central-alkalmazás elemzésének létrehozása](howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) című cikkben talál.
 
 ### <a name="jobs"></a>Feladatok
 

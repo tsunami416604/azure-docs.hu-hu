@@ -1,5 +1,5 @@
 ---
-title: Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
+title: Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-Graf ügynökkel
 description: Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883241"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200520"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 
@@ -21,7 +21,7 @@ A Azure Monitor használatával egyéni metrikákat gyűjthet az alkalmazás tel
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData-s Grafi ügynök 
 
-[](https://docs.influxdata.com/telegraf/v1.7/) A-ben egy olyan beépülő modulra épülő ügynök, amely lehetővé teszi a metrikák több mint 150 különböző forrásból való gyűjtését. Attól függően, hogy milyen számítási feladatok futnak a virtuális gépen, beállíthatja, hogy az ügynök speciális bemeneti beépülő modulokat használjanak a metrikák összegyűjtéséhez. Ilyenek például a MySQL, az NGINX és az Apache. A kimeneti beépülő modulok használatával az ügynök írhat a kiválasztott célhelyekre. A Grafi ügynök közvetlenül integrált Azure Monitor egyéni metrikák REST API. Támogatja Azure Monitor kimeneti beépülő modult. Ennek a beépülő modulnak a használatával az ügynök a Linux rendszerű virtuális gépen gyűjthet munkaterhelés-specifikus mérőszámokat, és beküldheti azokat egyéni metrikáként Azure Monitorba. 
+A-ben egy olyan beépülő modulra [épülő](https://docs.influxdata.com/telegraf/v1.7/) ügynök, amely lehetővé teszi a metrikák több mint 150 különböző forrásból való gyűjtését. Attól függően, hogy milyen számítási feladatok futnak a virtuális gépen, beállíthatja, hogy az ügynök speciális bemeneti beépülő modulokat használjanak a metrikák összegyűjtéséhez. Ilyenek például a MySQL, az NGINX és az Apache. A kimeneti beépülő modulok használatával az ügynök írhat a kiválasztott célhelyekre. A Grafi ügynök közvetlenül integrált Azure Monitor egyéni metrikák REST API. Támogatja Azure Monitor kimeneti beépülő modult. Ennek a beépülő modulnak a használatával az ügynök a Linux rendszerű virtuális gépen gyűjthet munkaterhelés-specifikus mérőszámokat, és beküldheti azokat egyéni metrikáként Azure Monitorba. 
 
  ![A távíró-ügynök áttekintése](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -29,7 +29,7 @@ A Azure Monitor használatával egyéni metrikákat gyűjthet az alkalmazás tel
 
 Ebben az oktatóanyagban egy Linux rendszerű virtuális gépet telepítünk, amely az Ubuntu 16,04 LTS operációs rendszert futtatja. A-ben a legtöbb Linux operációs rendszer támogatja a a Grafi ügynököt. A Debian és az RPM csomagok is elérhetők a [InfluxData letöltési portálján](https://portal.influxdata.com/downloads)a kicsomagolt linuxos bináris fájlokkal együtt. További telepítési utasításokért és beállításokért tekintse meg ezt a [Grafi telepítési útmutatót](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 Új linuxos virtuális gép létrehozása: 
 
@@ -37,7 +37,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg a **virtuális gépet**.  
 1. Válassza az **Ubuntu 16,04 LTS** elemet, és válassza a **Létrehozás**lehetőséget. 
 1. Adja meg a virtuális gép nevét, például **MyTelegrafVM**.  
-1. Hagyja meg a lemez típusát **SSD**-ként. Ezután adjon megegy felhasználónevet, például: **azureuser**. 
+1. Hagyja meg a lemez típusát **SSD**-ként. Ezután adjon meg egy **felhasználónevet**, például: **azureuser**. 
 1. A **Hitelesítés típusa**mezőben válassza a **jelszó**lehetőséget. Ezután adjon meg egy jelszót, amelyet később az SSH-ba fog használni a virtuális gépen. 
 1. **Új erőforráscsoport létrehozásához**válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ezután kattintson az **OK** gombra. 
 
@@ -47,13 +47,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     ![Virtuálisgép-méret távíró-ügynök áttekintése](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. A **hálózati** > hálózati biztonsági csoport beállítások lapján**válassza a nyilvános bejövő portok lehetőséget**, majd válassza a http és az **SSH (22)** lehetőséget. >  Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra. 
+1. A **hálózati** > **hálózati biztonsági csoport** **Beállítások** lapján > válassza a **nyilvános bejövő portok lehetőséget**, és válassza a **http** és az **SSH (22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra. 
 
 1. Az Összefoglalás lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez. 
 
 1. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeződése után a virtuális gép összegzése automatikusan megnyílik. 
 
-1. A virtuális gép ablaktáblán navigáljon az **Identity (identitás** ) lapra. Győződjön **meg**arról, hogy a virtuális gépnek van-e beállítva a rendszerhez rendelt identitás. 
+1. A virtuális gép ablaktáblán navigáljon az **Identity (identitás** ) lapra. Ellenőrizze, hogy a virtuális gépnek van **-e beállítva**rendszerhez rendelt identitása. 
  
     ![A Graf VM-identitás előzetes verziója](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -106,9 +106,9 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>A saját Graf metrikáinak ábrázolása a Azure Portalban 
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
 
-1. Navigáljon az új **figyelő** lapra. Ezután válasszaa metrikák lehetőséget.  
+1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
 
      ![Figyelő-metrikák (előzetes verzió)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -122,7 +122,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="additional-configuration"></a>További konfiguráció 
 
-Az előző útmutató arról nyújt tájékoztatást, hogyan konfigurálható a (z)-ben a (z) A Grafi ügynök több mint 150 bemeneti beépülő modult támogat, néhány további konfigurációs lehetőséggel. A InfluxData közzétette a [támogatott beépülő modulok listáját](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) , és [](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)útmutatást ad a konfigurálásához.  
+Az előző útmutató arról nyújt tájékoztatást, hogyan konfigurálható a (z)-ben a (z) A Grafi ügynök több mint 150 bemeneti beépülő modult támogat, néhány további konfigurációs lehetőséggel. A InfluxData közzétette a [támogatott beépülő modulok listáját](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) , és útmutatást ad a [konfigurálásához](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
 
 Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üzembe helyezéséhez használt virtuális géppel kapcsolatos metrikák A Grafi ügynök más erőforrásokhoz tartozó mérőszámok gyűjtőként és továbbítóként is használható. Ha szeretné megtudni, hogyan konfigurálhatja az ügynököt más Azure-erőforrások metrikáinak kibocsátására, tekintse meg a [Azure monitor egyéni metrika kimenete a következőben](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md):.  
 
@@ -130,7 +130,7 @@ Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üz
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
 
 

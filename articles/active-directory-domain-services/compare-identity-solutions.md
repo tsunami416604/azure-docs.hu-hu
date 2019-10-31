@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042261"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173166"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
 
-Az alkalmazások, szolgáltatások vagy eszközök központi identitáshoz való hozzáférésének három gyakori módja van az Azure-ban Active Directory-alapú szolgáltatások használatának. Ez a választási lehetőség az Identity Solutions szolgáltatásban rugalmasságot biztosít a szervezet igényeinek legmegfelelőbb címtár használatához. Ha például többnyire csak a csak felhőalapú felhasználókat felügyeli, akkor előfordulhat, hogy nem érdemes saját Active Directory tartományi szolgáltatások-identitási megoldást létrehoznia és futtatnia. Ehelyett egyszerűen használhatja a Azure Active Directory.
+Az alkalmazások, szolgáltatások vagy eszközök központi identitáshoz való hozzáférésének három gyakori módja van az Azure-ban Active Directory-alapú szolgáltatások használatának. Ez a választási lehetőség az Identity Solutions szolgáltatásban rugalmasságot biztosít a szervezet igényeinek legmegfelelőbb címtár használatához. Ha például többnyire csak a csak felhőalapú felhasználókat felügyeli, akkor előfordulhat, hogy nem érdemes saját Active Directory tartományi szolgáltatások (AD DS) identitás-megoldást létrehoznia és futtatnia. Ehelyett egyszerűen használhatja a Azure Active Directory.
 
 Habár a három Active Directory-alapú identitási megoldás közös nevet és technológiát használ, úgy tervezték, hogy olyan szolgáltatásokat nyújtsanak, amelyek megfelelnek a különböző felhasználói igényeknek. Ezek az identitás-megoldások és-funkciók magas szinten a következők:
 
@@ -36,12 +36,16 @@ Ez az áttekintő cikk összehasonlítja, hogy ezek az identitás-megoldások ho
 
 Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek olyan hagyományos hitelesítési mechanizmusokhoz férnek hozzá, mint például a Kerberos vagy az NTLM, kétféleképpen biztosíthat Active Directory tartományi szolgáltatások a felhőben:
 
-* Azure Active Directory Domain Services használatával létrehozott *felügyelt* tartomány. A Microsoft létrehozza és kezeli a szükséges erőforrásokat.
-* Olyan *önállóan felügyelt* tartomány, amelyet a hagyományos erőforrások, például a virtuális gépek (VM), a Windows Server vendég operációs rendszer és a Active Directory tartományi szolgáltatások használatával hozhat létre és konfigurálhat. Ezután továbbra is felügyelheti ezeket az erőforrásokat.
+* Azure Active Directory Domain Services (Azure AD DS) használatával létrehozott *felügyelt* tartomány. A Microsoft létrehozza és kezeli a szükséges erőforrásokat.
+* Olyan *önállóan felügyelt* tartomány, amelyet a hagyományos erőforrások, például a virtuális gépek (VM), a Windows Server vendég operációs rendszer és a Active Directory tartományi szolgáltatások (AD DS) használatával hozhat létre és konfigurálhat. Ezután továbbra is felügyelheti ezeket az erőforrásokat.
 
-Az Azure AD DS az alapvető szolgáltatási összetevőket a Microsoft *felügyelt* tartományi felhasználói felületként telepíti és tartja karban. Nem kell telepítenie, felügyelni, javítani és biztonságossá tenni a AD DS infrastruktúrát olyan összetevőkhöz, mint a virtuális gépek, a Windows Server operációs rendszer vagy a tartományvezérlők. Az Azure AD DS szolgáltatások kisebb részhalmazát kínálja a hagyományos, önfelügyelt AD DS-környezet számára, ami csökkenti a tervezési és a felügyeleti komplexitást. Például nincs olyan AD-erdő, tartomány, hely, és replikációs hivatkozás a tervezéshez és a karbantartáshoz. A felhőben futó alkalmazások és szolgáltatások esetében, valamint a hagyományos hitelesítési mechanizmusokhoz (például Kerberos vagy NTLM) való hozzáférésre van szükség, az Azure AD DS felügyelt tartományi élményt biztosít a minimális adminisztratív terhelésnek megfelelően.
+Az Azure AD DS az alapvető szolgáltatási összetevőket a Microsoft *felügyelt* tartományi felhasználói felületként telepíti és tartja karban. Nem kell telepítenie, felügyelni, javítani és biztonságossá tenni a AD DS infrastruktúrát olyan összetevőkhöz, mint a virtuális gépek, a Windows Server operációs rendszer vagy a tartományvezérlők.
 
-Ha önálló felügyelet alatt álló AD DS környezetet telepít és futtat, meg kell őriznie az összes kapcsolódó infrastruktúrát és címtár-összetevőt. Az önfelügyelt AD DS-környezetek További karbantartási terheléssel rendelkeznek, azonban további feladatokat is végrehajthat, például kiterjesztheti a sémát, vagy erdőszintű megbízhatósági kapcsolatot hozhat létre. Közös üzembe helyezési modellek olyan önfelügyelt AD DS környezetekhez, amelyek identitást biztosítanak a Felhőbeli alkalmazásokhoz és szolgáltatásokhoz, többek között a következők:
+ Az Azure AD DS szolgáltatások kisebb részhalmazát kínálja a hagyományos, önfelügyelt AD DS-környezet számára, ami csökkenti a tervezési és a felügyeleti komplexitást. Például nincs olyan AD-erdő, tartomány, hely, és replikációs hivatkozás a tervezéshez és a karbantartáshoz. A felhőben futó alkalmazások és szolgáltatások esetében, valamint a hagyományos hitelesítési mechanizmusokhoz (például Kerberos vagy NTLM) való hozzáférésre van szükség, az Azure AD DS felügyelt tartományi élményt biztosít a minimális adminisztratív terhelésnek megfelelően.
+
+Ha önálló felügyelet alatt álló AD DS környezetet telepít és futtat, meg kell őriznie az összes kapcsolódó infrastruktúrát és címtár-összetevőt. Az önfelügyelt AD DS-környezetek További karbantartási terheléssel rendelkeznek, azonban további feladatokat is végrehajthat, például kiterjesztheti a sémát, vagy erdőszintű megbízhatósági kapcsolatot hozhat létre.
+
+Közös üzembe helyezési modellek olyan önfelügyelt AD DS környezetekhez, amelyek identitást biztosítanak a Felhőbeli alkalmazásokhoz és szolgáltatásokhoz, többek között a következők:
 
 * **Önálló felhőalapú AD DS** – az Azure-beli virtuális gépek tartományvezérlőként vannak konfigurálva, és egy különálló, csak felhőalapú AD DS környezet jön létre. Ez a AD DS környezet nem integrálható helyszíni AD DS környezettel. A virtuális gépek Felhőbeli beadására és felügyeletére a hitelesítő adatok egy másik halmaza használható.
 * **Erőforrás-erdő üzembe helyezése** – az Azure-beli virtuális gépek tartományvezérlőként vannak konfigurálva, és egy AD DS tartomány jön létre egy meglévő erdő részeként. Ezt követően a rendszer egy helyszíni AD DS-környezethez konfigurálja a megbízhatósági kapcsolatot. Más Azure-beli virtuális gépek tartományhoz csatlakozhatnak a felhőben található erőforrás-erdőhöz. A felhasználói hitelesítés VPN-/ExpressRoute-kapcsolaton keresztül történik a helyszíni AD DS környezettel.
@@ -70,9 +74,11 @@ Az alábbi táblázat néhány olyan funkciót vázol fel, amelyek a szervezet s
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS és Azure AD
 
-Az Azure AD segítségével kezelheti a szervezet által használt eszközök identitását, és szabályozhatja a vállalati erőforrásokhoz való hozzáférést ezekből az eszközökről. A felhasználók az Azure AD-vel regisztrálhatják személyes eszközeiket (saját vagy BYO, modell), amely az eszközt identitással látja el. Az Azure AD ezután hitelesítheti az eszközt, amikor egy felhasználó bejelentkezik az Azure AD-be, és az eszköz használatával fér hozzá a biztonságos erőforrásokhoz. Az eszköz a mobileszköz-felügyeleti (MDM) szoftverek, például a Microsoft Intune használatával felügyelhető. Ez a kezelési képesség lehetővé teszi a bizalmas erőforrásokhoz való hozzáférést a felügyelt és a szabályzatoknak megfelelő eszközökre.
+Az Azure AD segítségével kezelheti a szervezet által használt eszközök identitását, és szabályozhatja a vállalati erőforrásokhoz való hozzáférést ezekből az eszközökről. A felhasználók az Azure AD-vel is regisztrálhatják személyes eszközeiket (saját vagy BYO, modell), amely identitást biztosít az eszköz számára. Az Azure AD ezt követően hitelesíti az eszközt, amikor egy felhasználó bejelentkezik az Azure AD-be, és az eszköz használatával fér hozzá a biztonságos erőforrásokhoz. Az eszköz a mobileszköz-felügyeleti (MDM) szoftverek, például a Microsoft Intune használatával felügyelhető. Ez a kezelési képesség lehetővé teszi a bizalmas erőforrásokhoz való hozzáférést a felügyelt és a szabályzatoknak megfelelő eszközökre.
 
-A hagyományos számítógépek és laptopok is csatlakozhatnak az Azure AD-hez. Ez a mechanizmus ugyanazokat az előnyöket nyújtja, mint a személyes eszközök Azure AD-vel való regisztrálásának, például a felhasználók számára, hogy a vállalati hitelesítő adataik használatával bejelentkezzenek az eszközre. Az Azure AD-hez csatlakoztatott eszközök a következő előnyöket nyújtják:
+A hagyományos számítógépek és laptopok is csatlakozhatnak az Azure AD-hez. Ez a mechanizmus ugyanazokat az előnyöket nyújtja, mint a személyes eszközök Azure AD-vel való regisztrálásának, például a felhasználók számára, hogy a vállalati hitelesítő adataik használatával bejelentkezzenek az eszközre.
+
+Az Azure AD-hez csatlakoztatott eszközök a következő előnyöket nyújtják:
 
 * Egyszeri bejelentkezés (SSO) az Azure AD által védett alkalmazásokhoz.
 * Vállalati házirend-kompatibilis barangolás a felhasználói beállítások között az eszközökön.
@@ -88,7 +94,9 @@ Az eszközök csatlakoztathatók az Azure AD-hez olyan hibrid üzembe helyezéss
 | A szervezet tulajdonában lévő eszköz nincs a helyszíni AD DShoz csatlakoztatva | Windows 10                       | Azure AD-hez csatlakoztatott        |
 | Helyszíni AD DShoz csatlakoztatott szervezet tulajdonában lévő eszköz  | Windows 10                       | Hibrid Azure AD-csatlakozás |
 
-Egy Azure AD-hez csatlakoztatott vagy regisztrált eszközön a felhasználói hitelesítés a modern OAuth/OpenID Connect-alapú protokollok használatával történik. Ezek a protokollok úgy lettek kialakítva, hogy az interneten keresztül működjenek, ezért kiválóan alkalmasak a mobil környezetekhez, ahol a felhasználók bárhonnan hozzáférhetnek a vállalati erőforrásokhoz Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az NTLM protokollt használhatják a hitelesítéshez, így az Azure-beli virtuális gépeken való futtatásra áttelepített örökölt alkalmazások a lift és a SHIFT stratégia részeként is támogatottak. Az alábbi táblázat az eszközök megjelenítésének és hitelesítésének különbségeit vázolja fel a címtárban:
+Egy Azure AD-hez csatlakoztatott vagy regisztrált eszközön a felhasználói hitelesítés a modern OAuth/OpenID Connect-alapú protokollok használatával történik. Ezek a protokollok úgy lettek kialakítva, hogy az interneten keresztül működjenek, ezért kiválóan alkalmasak a mobil környezetekhez, ahol a felhasználók bárhonnan hozzáférhetnek a vállalati erőforrásokhoz
+
+Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az NTLM protokollt használhatják a hitelesítéshez, így az Azure-beli virtuális gépeken való futtatásra áttelepített örökölt alkalmazások a lift és a SHIFT stratégia részeként is támogatottak. Az alábbi táblázat az eszközök megjelenítésének és hitelesítésének különbségeit vázolja fel a címtárban:
 
 | **Aspektusa**                      | **Azure AD-hez csatlakoztatott**                                 | **Azure AD DS-csatlakozás**                                                    |
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |

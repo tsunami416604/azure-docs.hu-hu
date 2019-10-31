@@ -447,7 +447,11 @@
         - name: Magas rendelkezésre állás
           href: manage-availability.md
         - name: Közelségi elhelyezési csoport létrehozása
-          href: proximity-placement-groups.md
+          items:
+            - name: Portál
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: Függőleges skálázás
           items:
             - name: PowerShell

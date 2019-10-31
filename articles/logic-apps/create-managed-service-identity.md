@@ -9,16 +9,16 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: fdc5340c9affa7137815577af842aa8b43a552a8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799602"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200626"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
-Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz szeretne hozzáférni, és a bejelentkezés nélkül hitelesíti az identitást, a logikai alkalmazás a rendszerhez rendelt [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhatja, nem pedig hitelesítő adatok vagy titkos kódok. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. Ez a cikk bemutatja, hogyan állíthatja be és használhatja a rendszerhez rendelt felügyelt identitást a logikai alkalmazásban.
+Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz szeretne hozzáférni, és a bejelentkezés nélkül hitelesíti az identitást, a logikai alkalmazás a rendszerhez rendelt [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhatja, nem pedig hitelesítő adatok vagy titkos kódok. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. Ez a cikk bemutatja, hogyan állíthatja be és használhatja a rendszerhez rendelt felügyelt identitást a logikai alkalmazásban. A felügyelt identitások jelenleg csak [meghatározott beépített eseményindítókkal és műveletekkel](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)működnek, nem felügyelt összekötőket és kapcsolatokat.
 
 További információkért tekintse meg a következő témaköröket:
 
@@ -155,7 +155,7 @@ Miután beállította egy felügyelt identitást a logikai alkalmazáshoz, megad
 
 ## <a name="authenticate-access-with-managed-identity"></a>Hozzáférés hitelesítése felügyelt identitással
 
-Miután [engedélyezte a logikai alkalmazás felügyelt identitását](#azure-portal-system-logic-app) , és lehetővé teszi, [hogy az identitás hozzáférhessen a célként megadott erőforráshoz](#access-other-resources), ezt az identitást használhatja az [eseményindítókban és a felügyelt identitásokat támogató műveletekben](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+Miután [engedélyezte a logikai alkalmazás felügyelt identitását](#azure-portal-system-logic-app) , és lehetővé teszi, [hogy az identitás hozzáférjen a célként megadott erőforráshoz vagy entitáshoz](#access-other-resources), a [felügyelt identitásokat támogató eseményindítókban és műveletekben](logic-apps-securing-a-logic-app.md#managed-identity-authentication)is használhatja ezt az identitást.
 
 > [!IMPORTANT]
 > Ha rendelkezik olyan Azure-függvénnyel, ahol a rendszer által hozzárendelt identitást szeretné használni, először [engedélyezze az Azure functions hitelesítést](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
@@ -164,27 +164,34 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha még nem tette meg, adja hozzá a [felügyelt identitásokat támogató](logic-apps-securing-a-logic-app.md#managed-identity-authentication)triggert vagy műveletet.
+1. Ha még nem tette meg, adja hozzá a [felügyelt identitásokat támogató triggert vagy műveletet](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
-   Tegyük fel például, hogy az Azure Storage-fiókban lévő blobon szeretné futtatni a [Pillanatkép-blob műveletet](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) , ahol korábban már beállította a hozzáférést az identitásához, de az [Azure Blob Storage-összekötő](/connectors/azureblob/) jelenleg nem nyújtja ezt a műveletet. Ehelyett a [http-művelettel](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) futtathatja a műveletet vagy bármely más [blob Service REST API műveletet](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs). A hitelesítéshez a HTTP-művelet a logikai alkalmazáshoz engedélyezett rendszerhez rendelt identitást használhatja. A HTTP-művelet ezeket a tulajdonságokat is használja az elérni kívánt erőforrás megadásához:
+   A HTTP-trigger vagy a művelet például használhatja a logikai alkalmazáshoz engedélyezett rendszer által hozzárendelt identitást. Általánosságban elmondható, hogy a HTTP-trigger vagy-művelet ezeket a tulajdonságokat használja az elérni kívánt erőforrás vagy entitás megadásához:
 
-   * Az **URI** tulajdonság a cél Azure-erőforrás eléréséhez használt végpont URL-címét adja meg. Ez az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) .
+   | Tulajdonság | Szükséges | Leírás |
+   |----------|----------|-------------|
+   | **Metódus** | Igen | A futtatni kívánt művelet által használt HTTP-metódus |
+   | **URI** | Igen | A cél Azure-erőforrás vagy-entitás eléréséhez használt végpont URL-címe. Az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) . |
+   | **Fejlécek** | Nem | Minden szükséges vagy a kimenő kérelembe belefoglalni kívánt fejléc-érték, például a tartalom típusa |
+   | **Lekérdezések** | Nem | A kérelembe belefoglalni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy a futtatni kívánt művelet API-verzióját |
+   | **Hitelesítés** | Igen | A célként megadott erőforráshoz vagy entitáshoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
+   ||||
 
-   * A **headers (fejlécek** ) tulajdonság megadja a kívánt fejléc-értékeket, vagy a kérelembe belefoglalni kívánja őket, például a cél erőforráson futtatni kívánt művelet API-verzióját.
+   Tegyük fel, hogy a [Pillanatkép-blob műveletet](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) egy olyan Azure Storage-fiókban lévő blobon szeretné futtatni, amelyben korábban beállította a hozzáférést az identitásához. Az [Azure Blob Storage-összekötő](https://docs.microsoft.com/connectors/azureblob/) azonban jelenleg nem nyújtja ezt a műveletet. Ehelyett ezt a műveletet a [http-művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) vagy egy másik [blob Service REST API művelet](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)használatával futtathatja.
 
-   * A **lekérdezések** tulajdonság megadja a kérelemben szerepeltetni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy egy adott API-verziót, ha szükséges.
+   > [!IMPORTANT]
+   > Ha a tűzfal mögötti Azure Storage-fiókokat HTTP-kérések és felügyelt identitások használatával szeretné elérni, ügyeljen arra, hogy a Storage-fiókját a [megbízható Microsoft-szolgáltatások általi hozzáférést lehetővé tevő kivételt](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)is állítsa be.
 
-   A [Pillanatkép-blob művelet](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)futtatásához a http-művelet a következő tulajdonságokat adja meg:
+   A pillanatkép- [blob művelet](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)futtatásához a http-művelet a következő tulajdonságokat adja meg:
 
-   * **Metódus**: a `PUT` műveletet adja meg.
-
-   * **URI**: egy Azure Blob Storage-fájl erőforrás-azonosítóját adja meg az Azure globális (nyilvános) környezetben, és ezt a szintaxist használja:
-
-     `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}`
-
-   * **Headers (fejlécek**): meghatározza a pillanatkép-blob művelethez `x-ms-blob-type` `BlockBlob` és `2019-02-02` `x-ms-version`ként. További információkért lásd: [fejlécek kérése – pillanatkép-blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) és [verziószámozás az Azure Storage-szolgáltatásokhoz](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services).
-
-   * **Lekérdezések**: megadja `comp` a lekérdezési paraméter neve és a paraméter értékeként `snapshot`.
+   | Tulajdonság | Szükséges | Példaérték | Leírás |
+   |----------|----------|---------------|-------------|
+   | **Metódus** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
+   | **URI** | Igen | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
+   | **Fejlécek** | Igen, az Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Az Azure Storage-műveletekhez szükséges `x-ms-blob-type` és `x-ms-version` fejléc-értékek. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-hoz kapcsolódó műveleti kérelmekben a fejlécben a futtatni kívánt művelet `x-ms-version` tulajdonsága és API-verziója szükséges. <p>További információkért tekintse meg a következő témaköröket: <p><p>- [kérések fejlécei – pillanatkép-blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>[Az Azure Storage szolgáltatásainak - verziószámozása](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Lekérdezések** | Igen, ehhez a művelethez | `comp` = `snapshot` | A lekérdezési paraméter neve és értéke a pillanatkép-blob művelethez. |
+   | **Hitelesítés** | Igen | `Managed Identity` | Az Azure-blobhoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
+   |||||
 
    Az alábbi példa HTTP-művelet az összes tulajdonság értékét megjeleníti:
 

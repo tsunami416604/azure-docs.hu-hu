@@ -379,7 +379,11 @@
         - name: Magas rendelkezésre állás
           href: manage-availability.md
         - name: Közelségi elhelyezési csoport létrehozása
-          href: proximity-placement-groups.md
+          items:
+            - name: parancssori felület
+              href: proximity-placement-groups.md
+            - name: Portál
+              href: ../windows/proximity-placement-groups-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Virtuális gép létrehozása rendelkezésre állási zónában
           href: create-cli-availability-zone.md
     - name: Automatizálási eszközök használata

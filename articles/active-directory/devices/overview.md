@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851768"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175039"
 ---
 # <a name="what-is-a-device-identity"></a>Mi az az eszközidentitás?
 
@@ -41,7 +41,7 @@ Az eszköz Azure AD-ben való beszerzéséhez több lehetőség közül választ
       - Windows 10
       - iOS
       - Android
-      - MacOS
+      - macOS
 - **Azure AD-hez csatlakoztatott**
    - Az Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában állnak, és bejelentkeznek az adott szervezethez tartozó Azure AD-fiókkal. Csak a felhőben vannak.
       - Windows 10 
@@ -52,7 +52,7 @@ Az eszköz Azure AD-ben való beszerzéséhez több lehetőség közül választ
 
 ![Az Azure AD-eszközök panelen megjelenő eszközök](./media/overview/azure-ad-devices-all-devices-overview.png)
 
-## <a name="device-management"></a>Eszközkezelés
+## <a name="device-management"></a>Eszközfelügyelet
 
 Az Azure AD-ban található eszközök a mobileszköz-kezelési (MDM) eszközök, például a Microsoft Intune, a System Center Configuration Manager, a Csoportházirend (hibrid Azure AD JOIN), a Mobile Application Management (MAM) eszközei vagy más, harmadik féltől származó eszközök használatával kezelhetők.
 
@@ -60,24 +60,24 @@ Az Azure AD-ban található eszközök a mobileszköz-kezelési (MDM) eszközök
 
 A regisztrálás és a csatlakozás lehetővé teszi a felhasználók számára, hogy zökkenőmentesen jelentkezzenek be a felhőalapú erőforrásokra és a rendszergazdákra, hogy feltételes hozzáférési szabályzatokat alkalmazzanak ezekre az erőforrásokra. 
 
-Az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott eszközök az SSO-t a szervezet helyi erőforrásaihoz és a felhőalapú erőforrásokhoz is igénybe vehetik. További információt a cikkben talál, hogyan működik az SSO a helyszíni erőforrásokkal az [Azure ad-hez csatlakoztatott eszközökön](azuread-join-sso.md).
+Az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott eszközök az SSO-t a szervezet helyi erőforrásaihoz és a felhőalapú erőforrásokhoz is igénybe vehetik. További információt a cikkben talál, [Hogyan működik az SSO a helyszíni erőforrásokkal az Azure ad-hez csatlakoztatott eszközökön](azuread-join-sso.md).
 
 ## <a name="device-security"></a>Eszköz biztonsága
 
 - Az **Azure ad-ban regisztrált eszközök** a végfelhasználó által kezelt fiókot használják, ez a fiók vagy egy Microsoft-fiók, vagy egy másik helyileg felügyelt hitelesítő adat, amely az alábbiak közül eggyel vagy többet biztosít.
-   - Windows 10
-   - PIN kód
-   - Pattern
+   - Jelszó
+   - PIN
+   - Mintázat
    - Windows Hello
 - Az Azure ad- **hez csatlakoztatott vagy hibrid Azure ad-hez csatlakoztatott eszközök** szervezeti fiókot használnak az Azure ad-ben az alábbiak közül egyet vagy többet.
-   - Windows 10
+   - Jelszó
    - Vállalati Windows Hello
 
 ## <a name="provisioning"></a>Kiépítés
 
 Az eszközök Azure AD-be való beszerzése önkiszolgáló módon vagy a rendszergazdák által felügyelt kiépítési folyamattal végezhető el.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az eszközök Identitáskezelés az Azure AD-ben a következőket teheti:
 
@@ -88,7 +88,7 @@ Az eszközök Identitáskezelés az Azure AD-ben a következőket teheti:
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure ad regisztrált eszközeiről](concept-azure-ad-register.md)
 - További információ az [Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join.md)

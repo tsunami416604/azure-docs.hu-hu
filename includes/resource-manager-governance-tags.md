@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/11/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: a9a837d8a486e10ea2a62be69b889e657b1dbc05
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c141e67157f3ec17d475062ec76406ec765c4f50
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600983"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199144"
 ---
 Címkéket alkalmazhat az Azure-erőforrásokhoz, így a metaadatok logikailag rendszerezve lesznek a besorolásban. Minden címke egy nevet és egy érték párokat tartalmaz. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
@@ -24,7 +24,7 @@ A besorolásnak egy önkiszolgáló metaadat-címkézési stratégiát kell figy
 Az alábbi korlátozások érvényesek a címkékre:
 
 * Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](../articles/azure-resource-manager/tag-support.md)ismertető témakört.
-* Minden erőforrás vagy erőforráscsoport legfeljebb 50 címke név/érték párokat tartalmazhat. Jelenleg a Storage-fiókok csak 15 címkét támogatnak, de ez a korlát a következő kiadásban 50-ra lesz felemelve. Ha a maximálisan megengedettnél több címkét kell alkalmaznia, használjon egy JSON-karakterláncot a címke értékhez. A JSON-sztring sok olyan értéket tartalmazhat, amelyek egyetlen címkenévre vannak alkalmazva. Az erőforráscsoportok számos olyan erőforrást tartalmazhatnak, amelyek mindegyike 50 címke név/érték párokat tartalmaz.
+* Minden erőforrás vagy erőforráscsoport legfeljebb 50 címke név/érték párokat tartalmazhat. Ha a maximálisan megengedettnél több címkét kell alkalmaznia, használjon egy JSON-karakterláncot a címke értékhez. A JSON-sztring sok olyan értéket tartalmazhat, amelyek egyetlen címkenévre vannak alkalmazva. Az erőforráscsoportok számos olyan erőforrást tartalmazhatnak, amelyek mindegyike 50 címke név/érték párokat tartalmaz.
 * A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
 * Az általánosított virtuális gépek nem támogatják a címkéket.
 * Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.custom: ''
-ms.openlocfilehash: d1b6444b8512b1b55ac46370e805f8f662f5f555
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070687"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199494"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
 
@@ -40,8 +40,8 @@ Ha úgy dönt, hogy egy központi telepítési forrást választ, a következő 
 
 Az üzembe helyezési mechanizmus az a művelet, amellyel a létrehozott alkalmazást a webalkalmazás */Home/site/wwwroot* könyvtárába helyezheti. A */wwwroot* könyvtár a webalkalmazás összes példánya által megosztott csatlakoztatott tárolási hely. Ha az üzembe helyezési mechanizmus ezen a címtáron helyezi el az alkalmazást, a példányok értesítést kapnak az új fájlok szinkronizálásáról. App Service a következő üzembe helyezési mechanizmusokat támogatja:
 
-- Kudu-végpontok: A [kudu](https://github.com/projectkudu/kudu/wiki) a nyílt forráskódú fejlesztői hatékonyságnövelő eszköz, amely külön folyamatként fut a Windows app Serviceban, és a Linux app Service második tárolója. A kudu kezeli a folyamatos üzembe helyezéseket, és HTTP-végpontokat biztosít a központi telepítéshez, például zipdeploy.
-- FTP és webtelepítés: A [webhely vagy a felhasználói hitelesítő adatok](deploy-configure-credentials.md)használatával [FTP-n](deploy-ftp.md) vagy webalkalmazáson keresztül tölthet fel fájlokat. Ezek a mechanizmusok nem haladnak át a kudu.  
+- Kudu-végpontok: a [kudu](https://github.com/projectkudu/kudu/wiki) a nyílt forráskódú fejlesztői hatékonyságnövelő eszköz, amely külön folyamatként fut a Windows app Serviceban, és a Linux app Service második tárolója. A kudu kezeli a folyamatos üzembe helyezéseket, és HTTP-végpontokat biztosít a központi telepítéshez, például zipdeploy.
+- FTP és webtelepítés: a [webhely vagy a felhasználói hitelesítő adatok](deploy-configure-credentials.md)használatával [FTP-n keresztül](deploy-ftp.md) vagy webtelepítéssel tölthet fel fájlokat. Ezek a mechanizmusok nem haladnak át a kudu.  
 
 Az olyan üzembe helyezési eszközök, mint például az Azure-folyamatok, a Jenkins és a szerkesztő beépülő modulok, a következő telepítési mechanizmusok valamelyikét használják.
 
@@ -53,11 +53,11 @@ Használja a kudu [zipdeploy/](deploy-zip.md) API-t a jar-alkalmazások üzembe 
 
 ### <a name="node"></a>Csomópont
 
-Alapértelmezés szerint a kudu végrehajtja a Node-alkalmazás (`npm install`) létrehozási lépéseit. Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy `SCM_DO_BUILD_DURING_DEPLOYMENT`alkalmazás-beállítást, amelynek `false`értéke a következő:.
+Alapértelmezés szerint a kudu végrehajtja a Node-alkalmazás (`npm install`) létrehozási lépéseit. Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy `SCM_DO_BUILD_DURING_DEPLOYMENT``false`értékkel rendelkező alkalmazás-beállítást.
 
 ### <a name="net"></a>.NET 
 
-Alapértelmezés szerint a kudu végrehajtja a .NET-alkalmazás (`dotnet build`) létrehozási lépéseit. Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy `SCM_DO_BUILD_DURING_DEPLOYMENT`alkalmazás-beállítást, amelynek `false`értéke a következő:.
+Alapértelmezés szerint a kudu végrehajtja a .NET-alkalmazás (`dotnet build`) létrehozási lépéseit. Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy `SCM_DO_BUILD_DURING_DEPLOYMENT``false`értékkel rendelkező alkalmazás-beállítást.
 
 ## <a name="other-deployment-considerations"></a>Egyéb üzembe helyezési megfontolások
 
@@ -69,7 +69,7 @@ Amikor csak lehetséges, használja az [üzembe helyezési](deploy-staging-slots
 
 Azure App Service tartalom tárolása az Azure Storage-ban történik, és tartós módon van felkészülve, mint a tartalom megosztása. Egyes alkalmazások esetében azonban csak nagy teljesítményű, írásvédett, magas rendelkezésre állású tartalom-tárolóra lehet szükség. Ezek az alkalmazások kihasználhatják a [helyi gyorsítótár](overview-local-cache.md)használatát. A helyi gyorsítótár nem ajánlott olyan tartalomkezelési webhelyekhez, mint a WordPress.
 
-Az állásidő megelőzése érdekében mindig a helyi gyorsítótárat használja az [üzembe helyezési pontok] (üzembe helyezési bővítőhelyek MD) együttes használatával. A szolgáltatások együttes használatával kapcsolatos információkért tekintse meg [ezt a szakaszt](overview-local-cache.md#best-practices-for-using-app-service-local-cache) .
+A leállás megakadályozása érdekében mindig a helyi gyorsítótárat használja az [üzembe helyezési tárolóhelyekkel](deploy-staging-slots.md) együtt. A szolgáltatások együttes használatával kapcsolatos információkért tekintse meg [ezt a szakaszt](overview-local-cache.md#best-practices-for-using-app-service-local-cache) .
 
 ### <a name="high-cpu-or-memory"></a>Magas CPU vagy memória
 

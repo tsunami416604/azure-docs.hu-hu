@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/07/2019
+ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72023083"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182222"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute Direct?
 
@@ -25,31 +25,7 @@ Az ügyfeleknek a helyi szolgáltatók és a közös telephelyek használatával
 
 ### <a name="what-locations-currently-support-expressroute-direct"></a>Milyen helyszínek támogatják a ExpressRoute Direct szolgáltatást? 
 
-A rendelkezésre álló portok dinamikusak lesznek, és a PowerShell elérhetővé válik a kapacitás megtekintéséhez. A helyek közé tartoznak a következők, és a *rendelkezésre állás alapján változhatnak*:
-
-* Amszterdam
-* Amszterdam2
-* Auckland 
-* Chicago
-* Dallas
-* Dublin
-* Hongkong (KKT)
-* London
-* London2
-* Melbourne
-* New York City
-* Perth
-* San Antonio
-* Seattle
-* Szöul
-* Szilícium-völgy
-* Szingapúr2 
-* Sydney
-* Tajpej
-* Tokió
-* Toronto
-* Washington, D.C.
-* Washington DC2
+Tekintse meg a rendelkezésre állást a [hely lapon](../articles/expressroute/expressroute-locations-providers.md). 
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi a ExpressRoute Direct SLA-ja?
 
@@ -57,7 +33,7 @@ A közvetlen ExpressRoute ugyanazt a [nagyvállalati szintű ExpressRoute](https
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen forgatókönyveket érdemes figyelembe venni az ügyfelek a ExpressRoute Directtel?  
 
-A ExpressRoute Direct 100-es vagy 10 GB/s-os portszámú ügyfeleket biztosít a Microsoft globális gerincének. Az ügyfelek számára a legjobb előnyökkel járó forgatókönyvek a következők: Nagy mennyiségű adat betöltése, fizikai elkülönítés a szabályozott piacokon, valamint dedikált kapacitás a burst forgatókönyvhöz, például a rendereléshez. 
+A ExpressRoute Direct 100-es vagy 10 GB/s-os portszámú ügyfeleket biztosít a Microsoft globális gerincének. Az ügyfelek számára a legnagyobb előnyökkel járó forgatókönyvek a következők: nagy mennyiségű adatfeldolgozás, a szabályozott piacok fizikai elkülönítése, valamint dedikált kapacitás a burst forgatókönyvhöz, például a rendereléshez. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Mi a ExpressRoute Direct számlázási modellje? 
 

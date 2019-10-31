@@ -16,19 +16,19 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9efe76f15e2f07495a9d95f69b0c21d2bca4ea8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180549"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199827"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Munkaterületek létrehozása a saját alkalmazások (előzetes verzió) portálon
 
 A felhasználók a My apps (előzetes verzió) portálon megtekinthetik és elindíthatják azokat a felhőalapú alkalmazásokat, amelyekhez hozzáféréssel rendelkeznek. Alapértelmezés szerint az összes felhasználó számára elérhető alkalmazás egyetlen oldalon van felsorolva. Ha prémium szintű Azure AD P1 vagy P2 licenccel rendelkezik, hogy jobban meg tudja szervezni ezt a lapot a felhasználók számára, beállíthat munkaterületeket. A munkaterületen csoportosíthatja a kapcsolódó alkalmazásokat (például feladat-szerepkör, feladat vagy projekt), és külön lapon jelenítheti meg őket. A munkaterületek alapvetően egy szűrőt alkalmaznak azokra az alkalmazásokra, amelyeket a felhasználó már elérhet, így a felhasználó csak azokat az alkalmazásokat látja, amelyek hozzá vannak rendelve a munkaterülethez.
 
 > [!NOTE]
-> Ez a cikk azt ismerteti, hogyan engedélyezheti és hozhat létre munkaterületeket a rendszergazda. További információ a saját alkalmazások portál és munkaterületek használatáról: a [munkaterületek elérése és használata](https://docs.microsoft.com/azure/active-directory/user-help/).
+> Ez a cikk azt ismerteti, hogyan engedélyezheti és hozhat létre munkaterületeket a rendszergazda. További információ a saját alkalmazások portál és munkaterületek használatáról: a [munkaterületek elérése és használata](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
 ## <a name="enable-my-apps-preview-features"></a>Saját alkalmazások előnézeti funkcióinak engedélyezése
 

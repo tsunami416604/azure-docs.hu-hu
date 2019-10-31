@@ -1,5 +1,5 @@
 ---
-title: Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel | Microsoft Docs
+title: Interaktív jelentések létrehozása Azure Monitor for VMs munkafüzetekkel | Microsoft Docs
 description: Egyszerűsítse az összetett jelentéskészítést az előre definiált és az egyéni paraméteres munkafüzetekkel a Azure Monitor for VMs számára.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553735"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200543"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása Azure Monitor for VMs munkafüzetekkel
 
 A munkafüzetek szövegeket, [naplókat](../log-query/query-language.md), metrikákat és paramétereket egyesítenek gazdag interaktív jelentésekben. A munkafüzetek szerkeszthető más csapattagok számára, akik ugyanahhoz az Azure-erőforrásokhoz férnek hozzá.
 
@@ -105,7 +105,7 @@ Adatok befoglalása más Log Analytics munkaterületekről vagy egy adott Applic
 
 ### <a name="advanced-analytic-query-settings"></a>Speciális analitikus lekérdezési beállítások
 
-Mindegyik szakasz saját speciális beállításokkal rendelkezik, amelyek a **Paraméterek hozzáadása** gombtól jobbra található beállítások ![Workbooks szakasz szerkesztése ](media/vminsights-workbooks/006-settings.png) ikonra kattintva érhetők el.
+Mindegyik szakasz saját speciális beállításokat tartalmaz, amelyek a **Paraméterek hozzáadása** gombtól jobbra található beállítások ![munkafüzetek](media/vminsights-workbooks/006-settings.png) szakaszban találhatók.
 
 ![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/007-settings-expanded.png)
 

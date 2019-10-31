@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529164"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200587"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitásának megtervezése
 
@@ -68,13 +68,7 @@ Minden egyes fürt típusa csomópont típusú, és mindegyik csomópont típusa
 
 Az alkalmazás optimális méretének meghatározásához a fürt kapacitásának teljesítménytesztét és a jelzett méret növelését is megnövelheti. Használhat például egy szimulált munkaterhelést vagy egy *Kanári-lekérdezést*is. Szimulált számítási feladatok esetén a várt számítási feladatok különböző méretű fürtökön futnak, és a kívánt teljesítmény eléréséig fokozatosan megnő a méret. Egy Kanári-lekérdezést időnként beillesztheti a többi éles lekérdezésbe, hogy megjelenjen-e elegendő erőforrás a fürtben.
 
-A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a RAM mérete és a hálózati késés határozza meg:
-
-* CPU: a virtuális gép mérete a magok számát határozza meg. Minél több magot használ, annál nagyobb az egyes csomópontok párhuzamos számítási foka. Emellett egyes virtuálisgép-típusok gyorsabb magokkal rendelkeznek.
-
-* RAM: a virtuális gép mérete is a virtuális gépen elérhető RAM mennyiségét határozza meg. Olyan munkaterhelések esetében, amelyek a memóriában tárolt adatok feldolgozására, nem pedig a lemezről való olvasásra vonatkoznak, győződjön meg arról, hogy a feldolgozó csomópontok rendelkeznek elegendő memóriával az adatokhoz.
-
-* Hálózat: a legtöbb fürt típusa esetén a fürt által feldolgozott adattípusok nem helyi lemezen, hanem külső tárolási szolgáltatásban, például Data Lake Storage vagy az Azure Storage-ban találhatók. Vegye figyelembe a hálózati sávszélességet és az átviteli sebességet a csomópont virtuális gépe és a Storage szolgáltatás között. A virtuális gépek számára elérhető hálózati sávszélesség általában nagyobb méretekben nő. Részletekért lásd: virtuálisgép- [méretek áttekintése](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+A számítási feladatok megfelelő virtuálisgép-családjának kiválasztásával kapcsolatos további információkért lásd: [a fürt megfelelő virtuálisgép-méretének kiválasztása](hdinsight-selecting-vm-size.md).
 
 ## <a name="choose-the-cluster-scale"></a>A fürt méretének kiválasztása
 
@@ -104,10 +98,11 @@ A célként megadott fürt virtuálisgép-méretének, méretezésének és típ
 1. A lap bal alsó részén kattintson a **Súgó és támogatás** elemre.
 1. Válassza az **Új támogatási kérelem** lehetőséget.
 1. Az **új támogatási kérelem** oldal **alapismeretek** lapján válassza a következő beállításokat:
+
    - **Probléma típusa**: **szolgáltatás-és előfizetési korlátok (kvóták)**
    - **Előfizetés**: a módosítani kívánt előfizetés
    - **Kvóta típusa**: **HDInsight**
-    
+
      ![Támogatási kérelem létrehozása az HDInsight Core-kvóta növeléséhez](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Válassza a **Tovább: megoldások > >** .

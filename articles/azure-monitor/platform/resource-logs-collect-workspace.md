@@ -1,5 +1,5 @@
 ---
-title: Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
+title: Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen
 description: Ismerje meg, hogyan továbbíthatja az Azure-erőforrás-naplókat Log Analytics munkaterületre Azure Monitorban.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 2f5dba7c36ec04263f6d227d82b9fc50b82890a3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262439"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200500"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
 Az Azure-beli [erőforrás-naplók](resource-logs-overview.md) részletes és gyakori információkat biztosítanak az Azure-erőforrások belső működéséről. Ez a cikk ismerteti az erőforrás-naplók összegyűjtését egy Log Analytics munkaterületen, amely lehetővé teszi, hogy a rendszer hatékony naplók használatával elemezze Azure Monitor naplókban gyűjtött más figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk. 
@@ -51,14 +51,14 @@ Vegye figyelembe a következő példát, ahol a diagnosztikai beállítások gy�
 
 A AzureDiagnostics táblázat a következőképpen jelenik meg:  
 
-| ResourceProvider    | Category     | A  | B  | C  | D  | E  | P  | C  | H  | I  |
+| ResourceProvider    | Kategória     | A  | B  | C#  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. service1 | Naplók    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | q1 | W1 | E1 csomag |    |    |    |
-| Microsoft. service2 | Naplók    |    |    |    |    |    |    | j1 | K1 csomag | l1 |
-| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | Q2 | w2 | E2 |    |    |    |
-| Microsoft. service2 | Naplók    |    |    |    |    |    |    | J3 | k3 | l3 |
-| Microsoft. service1 | Naplók    | x5 | y5 | z5 |    |    |    |    |    |    |
+| Microsoft. service1 | AuditLogs    | X1 | y1 | Z1 |    |    |    |    |    |    |
+| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | első | W1 | E1 csomag |    |    |    |
+| Microsoft. service2 | AuditLogs    |    |    |    |    |    |    | J1 | K1 csomag | L1 |
+| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | Q2 | W2 | E2 |    |    |    |
+| Microsoft. service2 | AuditLogs    |    |    |    |    |    |    | J3 | K3 | L3 |
+| Microsoft. service1 | AuditLogs    | x5 | y5 | Z5 |    |    |    |    |    |    |
 | ... |
 
 ### <a name="resource-specific"></a>Erőforrás-specifikus
@@ -68,26 +68,26 @@ A fenti példa három tábla létrehozását eredményezi:
  
 - A tábla *Service1AuditLogs* a következőképpen történik:
 
-    | Erőforrás-szolgáltató | Category | A | B | C |
+    | Erőforrás-szolgáltató | Kategória | A | B | C# |
     | -- | -- | -- | -- | -- |
-    | Service1 | Naplók | x1 | y1 | z1 |
-    | Service1 | Naplók | x5 | y5 | z5 |
+    | Service1 | AuditLogs | X1 | y1 | Z1 |
+    | Service1 | AuditLogs | x5 | y5 | Z5 |
     | ... |
 
 - A tábla *Service1ErrorLogs* a következőképpen történik:  
 
-    | Erőforrás-szolgáltató | Category | D | E | P |
+    | Erőforrás-szolgáltató | Kategória | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | Alkalmazásnaplókat |  q1 | W1 | E1 csomag |
-    | Service1 | Alkalmazásnaplókat |  Q2 | w2 | E2 |
+    | Service1 | Alkalmazásnaplókat |  első | W1 | E1 csomag |
+    | Service1 | Alkalmazásnaplókat |  Q2 | W2 | E2 |
     | ... |
 
 - A tábla *Service2AuditLogs* a következőképpen történik:  
 
-    | Erőforrás-szolgáltató | Category | C | H | I |
+    | Erőforrás-szolgáltató | Kategória | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | Naplók | j1 | K1 csomag | l1|
-    | Service2 | Naplók | J3 | k3 | l3|
+    | Service2 | AuditLogs | J1 | K1 csomag | L1|
+    | Service2 | AuditLogs | J3 | K3 | L3|
     | ... |
 
 
@@ -118,7 +118,7 @@ Azure Data Factory a naplók nagyon részletes készlete miatt egy olyan szolgá
 A naplók áttelepíthetők az erőforrás-specifikus mód használatára a lehető leghamarabb. Ha ezt azonnal nem tudja elvégezni, egy ideiglenes alternatíva az, hogy elkülönítse Azure Data Factory naplókat a saját munkaterületére, hogy csökkentse annak esélyét, hogy ezek a naplók a munkaterületeken gyűjtött más naplózási típusokra is hatással legyenek.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure erőforrás-naplókkal kapcsolatos további információkért lásd: [Az Azure-erőforrások naplófájljainak áttekintése](resource-logs-overview.md).
 * Ha diagnosztikai beállítást szeretne létrehozni az erőforrás-naplók Log Analytics munkaterületre való gyűjtéséhez, olvassa el a [diagnosztikai beállítás létrehozása naplók és mérőszámok az Azure-ban való gyűjtéséhez](diagnostic-settings.md)című témakört.

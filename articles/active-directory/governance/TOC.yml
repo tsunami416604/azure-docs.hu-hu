@@ -5,7 +5,7 @@
   items:
     - name: Mi az az Identity Governance?
       href: identity-governance-overview.md
-    - name: Mi az a jogosultságkezelés? (Előzetes verzió)
+    - name: Mi az a jogosultságkezelés?
       href: entitlement-management-overview.md
     - name: Mik azok a hozzáférési felülvizsgálatok?
       href: access-reviews-overview.md

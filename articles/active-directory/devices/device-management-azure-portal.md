@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860904"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200238"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
@@ -34,11 +34,11 @@ Az Azure AD-portál központi helyet biztosít az eszköz identitásának kezel�
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
 2. A bal oldali navigációs sávon kattintson a **Active Directory**elemre.
 
-   ![Eszközbeállítások megadása](./media/device-management-azure-portal/01.png)
+   ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/01.png)
 
 3. A **kezelés** szakaszban kattintson az **eszközök**elemre.
 
-   ![Eszközbeállítások megadása](./media/device-management-azure-portal/74.png)
+   ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/74.png)
 
 Az **eszközök** lap a következőket teszi lehetővé:
 
@@ -47,11 +47,11 @@ Az **eszközök** lap a következőket teszi lehetővé:
 - Eszközállapot-kezelési feladatok végrehajtása
 - Az eszközhöz kapcsolódó naplók áttekintése  
   
-## <a name="configure-device-settings"></a>Eszközbeállítások megadása
+## <a name="configure-device-settings"></a>Eszközbeállítások konfigurálása
 
 Az eszköz identitásának Azure AD-portálon való kezeléséhez az eszközöknek [regisztrálva](overview.md) kell lenniük, vagy hozzá kell csatlakozniuk az Azure ad-hez. Rendszergazdaként az eszközbeállítások konfigurálásával részletesen beállíthatja az eszközök regisztrálásának és csatlakoztatásának folyamatát.
 
-![Eszközbeállítások megadása](./media/device-management-azure-portal/22.png)
+![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/22.png)
 
 Az eszközbeállítások oldalon a következőket konfigurálhatja:
 
@@ -136,6 +136,7 @@ Az eszközök engedélyezéséhez vagy letiltásához két lehetőség közül v
 
 - Az eszközök engedélyezéséhez vagy letiltásához globális rendszergazdai vagy felhőalapú eszköz-rendszergazdának kell lennie az Azure AD-ben. 
 - Az eszköz letiltásával megakadályozható, hogy az eszköz sikeresen hitelesítse az Azure AD-t, így megakadályozva, hogy az eszköz hozzáférjen az eszköz HITELESÍTÉSSZOLGÁLTATÓja által védett Azure AD-erőforrásokhoz vagy a WH4B hitelesítő adataihoz.
+- Ha letiltja az eszközt, az az elsődleges frissítési tokent (PRT) és a frissítési tokeneket (RT) is visszavonja az eszközön.
 
 ### <a name="delete-an-azure-ad-device"></a>Azure AD-eszköz törlése
 
@@ -173,9 +174,9 @@ Megtekintheti és átmásolhatja a BitLocker-kulcsokat, hogy a felhasználók he
 
 A BitLocker-kulcsok megtekintéséhez vagy másolásához az eszköz tulajdonosának kell lennie, vagy egy olyan felhasználónak, amely legalább az alábbi szerepkörök valamelyikével rendelkezik:
 
-- Felhőeszköz-rendszergazda
+- Felhőalapú eszköz rendszergazdája
 - Globális rendszergazda
-- Ügyfélszolgálati adminisztrátor
+- Segélyszolgálat rendszergazdája
 - Intune szolgáltatás rendszergazdája
 - Biztonsági rendszergazda
 - Biztonsági olvasó
@@ -210,17 +211,17 @@ A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szab
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
-- Category
+- Kategória
 - Tevékenység erőforrástípusa
 - Tevékenység
 - Dátumtartomány
-- Target
+- Cél
 - Kezdeményező (színész)
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
 ![Naplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

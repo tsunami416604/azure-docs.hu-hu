@@ -4,14 +4,14 @@ description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások sz�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146842"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199140"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -21,7 +21,7 @@ Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználóna
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="policies"></a>Házirendek
+## <a name="policies"></a>Irányelvek
 
 A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
 
@@ -117,7 +117,7 @@ foreach ($g in $groups)
 }
 ```
 
-Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket a nem duplikált erőforrásokon*szeretné megtartani, használja a következő parancsfájlt:
+Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket a nem duplikált erőforrásokon szeretné megtartani*, használja a következő parancsfájlt:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -151,7 +151,7 @@ Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -180,13 +180,13 @@ Ha egy erőforrás-gyűjteményen keresztüli hurkot szeretne használni, érdem
 az resource show --id <resource-id> --query tags
 ```
 
-Adott címkével rendelkező erőforráscsoportok lekéréséhez használja `az group list`a következőt:
+Adott címkével rendelkező erőforráscsoportok lekéréséhez használja a `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Az adott címkével és értékkel rendelkező erőforrások beszerzéséhez használja `az resource list`a következőt:
+Az adott címkével és értékkel rendelkező összes erőforrás beszerzéséhez használja a `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -230,7 +230,7 @@ do
 done
 ```
 
-Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket szeretné megőrizni*az erőforrásokon, használja a következő parancsfájlt:
+Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket szeretné megőrizni az erőforrásokon*, használja a következő parancsfájlt:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -250,7 +250,7 @@ done
 
 ## <a name="templates"></a>Sablonok
 
-Ha egy erőforrást az üzembe helyezés során szeretne `tags` felcímkézni, adja hozzá az elemet az üzembe helyezett erőforráshoz. Adja meg a címke nevét és értékét.
+Ha egy erőforrást az üzembe helyezés során szeretne címkézni, adja hozzá a `tags` elemet a telepíteni kívánt erőforráshoz. Adja meg a címke nevét és értékét.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Szövegkonstansérték alkalmazása a címkenévre
 
@@ -361,7 +361,7 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
 
 ### <a name="apply-tags-from-resource-group"></a>Címkék alkalmazása az erőforrás-csoportból
 
-Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasása során `tags.[tag-name]` a szintaxis helyett `tags.tag-name` használja a szintaxist, mert néhány karakter nem megfelelően van értelmezve a dot jelölésben.
+Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasásakor használja a `tags.[tag-name]` szintaxist a `tags.tag-name` szintaxis helyett, mert egyes karaktereket nem megfelelően értelmezi a pont jelölése.
 
 ```json
 {
@@ -399,7 +399,7 @@ Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, h
 
 ## <a name="rest-api"></a>REST API
 
-A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) használja a jelenetek mögött. Ha a címkézést egy másik környezetbe kell integrálnia, az erőforrás-azonosító lekérése lehetőséggel beolvashatja a címkéket, és frissítheti a címkék készletét egy **javítási** hívás használatával.
+A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) használja a jelenetek mögött. Ha a címkézést egy másik környezetbe kell integrálnia, az erőforrás-azonosító **lekérése** lehetőséggel beolvashatja a címkéket, és frissítheti a címkék készletét egy **javítási** hívás használatával.
 
 ## <a name="tags-and-billing"></a>Címkék és számlázás
 
@@ -409,7 +409,7 @@ A címkékre vonatkozó információkat az [Azure erőforrás-használat és a R
 
 REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
 * A portál használatának bevezetését lásd: [a Azure Portal használata az Azure-erőforrások kezeléséhez](manage-resource-groups-portal.md).  

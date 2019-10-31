@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cf384f29bcc82c80c94e1408f535c592b8b728cb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285728"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182226"
 ---
 ## <a name="rootcert"></a>Önaláírt főtanúsítvány létrehozása
 
@@ -58,7 +58,7 @@ Ha további ügyféltanúsítványt hoz létre, vagy nem ugyanazt a PowerShell-m
 1. Azonosítsa a számítógépen telepített önaláírt főtanúsítványt. Ez a parancsmag a számítógépre telepített tanúsítványok listáját adja vissza.
 
    ```powershell
-   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
 2. Keresse meg a tulajdonos nevét a visszaadott listából, majd másolja a mellette található ujjlenyomatot egy szövegfájlba. A következő példában két tanúsítvány van. A CN Name annak az önaláírt főtanúsítványnak a neve, amelyből alárendelt tanúsítványt szeretne előállítani. Ebben az esetben a "P2SRootCert".
 

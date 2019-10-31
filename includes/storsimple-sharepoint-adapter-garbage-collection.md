@@ -4,55 +4,55 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b5d9deacdd4266da30f17c95b6e575a652d2f76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179161"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182227"
 ---
-Ebben az eljárásban fogja végrehajtani:
+Ebben az eljárásban a következőket kell tennie:
 
-1. [Készítse elő a karbantartó végrehajtható fájl futtatásához](#to-prepare-to-run-the-maintainer) .
-2. [A tartalom-adatbázist és a Lomtár előkészítése a megfelelő árva Blobok azonnali törlésre](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).
-3. [Futtassa a Maintainer.exe](#to-run-the-maintainer).
-4. [A tartalom-adatbázist és a Lomtár beállításainak visszaállítása](#to-revert-the-content-database-and-recycle-bin-settings).
+1. [Felkészülés a karbantartó végrehajtható fájl futtatására](#to-prepare-to-run-the-maintainer) .
+2. [Készítse elő a tartalom-adatbázist és a Lomtárat az árva Blobok azonnali törléséhez](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).
+3. [Futtassa a karbantartó. exe fájlt](#to-run-the-maintainer).
+4. [A tartalom-adatbázis és a Lomtár beállításainak visszaállítása](#to-revert-the-content-database-and-recycle-bin-settings).
 
-#### <a name="to-prepare-to-run-the-maintainer"></a>A karbantartó futtatni előkészítése
-1. A webes kezelőfelületet futtató kiszolgálón nyissa meg rendszergazdaként a SharePoint 2013 felügyeleti rendszerhéjat.
-2. Lépjen abba a mappába *rendszerindítási meghajtó*: az SQL távoli Blob Storage 10.50\Maintainer \Program Files\Microsoft\.
-3. Nevezze át **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** való **web.config**.
-4. Használat `aspnet_regiis -pdf connectionStrings` visszafejteni a web.config fájlt.
-5. A visszafejtett web.config fájl mellett a `connectionStrings` csomópont, az SQL server-példány és a tartalom-adatbázis neve a kapcsolati karakterlánc hozzáadása. Tekintse meg a következő példát.
+#### <a name="to-prepare-to-run-the-maintainer"></a>Felkészülés a karbantartó futtatására
+1. A webes előtér-kiszolgálón nyissa meg a SharePoint 2013 felügyeleti rendszerhéjt rendszergazdaként.
+2. Navigáljon a mappa *rendszerindítási meghajtó*: \PROGRAM Files\Microsoft SQL távoli Blob Storage 10.50 \ karbantartó\.
+3. Nevezze át a Microsoft. Rea. **SqlRemoteBlobs. karbantartó. exe. config fájlt** a **web. config**fájlra.
+4. A web. config fájl visszafejtéséhez használja a `aspnet_regiis -pdf connectionStrings`.
+5. A visszafejtett web. config fájlban a `connectionStrings` csomópont alatt adja hozzá az SQL Server-példányhoz tartozó kapcsolati karakterláncot és a tartalom-adatbázis nevét. Tekintse meg a következő példát.
    
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
-6. Használat `aspnet_regiis –pef connectionStrings` újratitkosítása a web.config fájlt. 
-7. Rename web.config to Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config. 
+    `<add name="RBSMaintainerConnectionWSSContent" connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
+6. A web. config fájl ismételt titkosításához használja a `aspnet_regiis –pef connectionStrings`. 
+7. Nevezze át a web. config fájlt a Microsoft. SqlRemoteBlobs. karbantartó. exe. config fájlra. 
 
-#### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>A tartalom előkészítése, adatbázis, és azonnal törli a Lomtár árva Blobok
-1. Az SQL Server az SQL Management Studióban futtassa a következő frissítés lekérdezéseket a cél tartalom-adatbázist: 
+#### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>A tartalom-adatbázis és a Lomtár előkészítése az árva Blobok azonnali törléséhez
+1. Az SQL Management Studio SQL Server futtassa a következő frissítési lekérdezéseket a célként megadott tartalom-adatbázishoz: 
    
        `use WSS_Content`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
-2. A webes kezelőfelületet futtató kiszolgálón alatt **központi adminisztrációs**, szerkesztheti a **webalkalmazás általános beállítások** a kívánt tartalom-adatbázist ideiglenesen letilthatja a Lomtár. Ez a művelet is üres a Lomtár, az összes webhelycsoportban vonatkozó. Ehhez kattintson **központi adminisztrációs** -> **Alkalmazáskezelés** -> **webalkalmazások (kezelés webes alkalmazások)**  ->  **SharePoint – 80-as** -> **általános Alkalmazásbeállítások**. Állítsa be a **Recycle Bin állapot** való **OFF**.
+2. A webes előtér-kiszolgálón a **központi felügyelet**területen szerkessze a **webalkalmazás általános beállításait** a kívánt tartalom-adatbázishoz a Lomtár ideiglenes letiltásához. Ez a művelet a kapcsolódó webhelycsoportok esetében is üresen fogja hagyni a Lomtár használatát. Ehhez kattintson a **központi felügyelet** -> alkalmazás- **kezelés** -> **webalkalmazások (webalkalmazások kezelése)**  -> **SharePoint-80** -> **általános Alkalmazásbeállítások**elemre. Állítsa ki a **Lomtár állapotát** **ki**értékre.
    
-    ![Webes alkalmazás általános beállításai](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
+    ![Webalkalmazás általános beállításai](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
-#### <a name="to-run-the-maintainer"></a>A karbantartó futtatni
-* A webes kezelőfelületet futtató kiszolgálón a SharePoint 2013 felügyeleti rendszerhéjban futtassa a karbantartó futtatni a következő:
+#### <a name="to-run-the-maintainer"></a>A karbantartó futtatása
+* A webes előtér-kiszolgálón a SharePoint 2013 felügyeleti rendszerhéjban futtassa a karbantartót a következő módon:
   
       `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
   
   > [!NOTE]
-  > Csak a `GarbageCollection` művelet StorSimple jelenleg támogatott. Azt is vegye figyelembe, hogy a kiadott Microsoft.Data.SqlRemoteBlobs.Maintainer.exe paraméterei kis-és nagybetűket. 
+  > Jelenleg csak a `GarbageCollection` művelet támogatott a StorSimple. Azt is vegye figyelembe, hogy a Microsoft. adat. SqlRemoteBlobs. karbantartó. exe esetében kiadott paraméterek kis-és nagybetűket érintenek. 
   > 
   > 
 
-#### <a name="to-revert-the-content-database-and-recycle-bin-settings"></a>A tartalom-adatbázist és a Lomtár beállításainak visszaállítása
-1. Az SQL Server az SQL Management Studióban futtassa a következő frissítés lekérdezéseket a cél tartalom-adatbázist:
+#### <a name="to-revert-the-content-database-and-recycle-bin-settings"></a>A tartalom-adatbázis és a Lomtár beállításainak visszaállítása
+1. Az SQL Management Studio SQL Server futtassa a következő frissítési lekérdezéseket a célként megadott tartalom-adatbázishoz:
    
       `use WSS_Content`
    
@@ -61,5 +61,5 @@ Ebben az eljárásban fogja végrehajtani:
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. A webes kezelőfelületet futtató kiszolgálón a **központi adminisztrációs**, szerkesztheti a **webalkalmazás általános beállítások** számára kívánja újból engedélyezni a Lomtár a kívánt tartalom-adatbázist. Ehhez kattintson **központi adminisztrációs** -> **Alkalmazáskezelés** -> **webalkalmazások (kezelés webes alkalmazások)**  ->  **SharePoint – 80-as** -> **általános Alkalmazásbeállítások**. A Lomtár Bin állapotának beállítása **ON**.
+2. A webes előtér-kiszolgálón a **központi felügyelet**lapon szerkessze a **webalkalmazás általános beállításait** a kívánt tartalom-adatbázishoz a Lomtár újbóli engedélyezéséhez. Ehhez kattintson a **központi felügyelet** -> alkalmazás- **kezelés** -> **webalkalmazások (webalkalmazások kezelése)**  -> **SharePoint-80** -> **általános Alkalmazásbeállítások**elemre. A Lomtár állapotának beállítása **a**következőre:.
 

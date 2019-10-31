@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fd2b3a8a09ce69c07cc7d4715a4aaeacf64f0817
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273862"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200648"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban
 
@@ -44,7 +44,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
    
-2. Nyisson meg egy parancssori ablakot rendszergazdaként. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd `sysprep.exe`futtassa a parancsot.
+2. Nyisson meg egy parancssori ablakot rendszergazdaként. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a `sysprep.exe`.
    
 3. A **rendszerelőkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása** jelölőnégyzetet, és jelölje be az **általánosítás** jelölőnégyzetet.
    
@@ -56,10 +56,21 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 6. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
 
+> [!TIP]
+> Nem **kötelező** A [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) használatával optimalizálja a rendszerképet, és csökkentse a virtuális gép első indításának idejét.
+>
+> A rendszerkép optimalizálásához csatlakoztassa a virtuális merevlemezt úgy, hogy duplán rákattint rá a Windows Intézőben, majd futtassa a DISM eszközt a `/optimize-image` paraméterrel.
+>
+> ```cmd
+> DISM /image:D:\ /optimize-image /boot
+> ```
+> Ahol D: a csatlakoztatott virtuális merevlemez elérési útja.
+>
+> A `DISM /optimize-image` futtatása a virtuális merevlemez utolsó módosításának kell lennie. Ha az üzembe helyezés előtt módosítja a virtuális merevlemezt, `DISM /optimize-image` újra futtatnia kell.
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Felügyelt rendszerkép létrehozása a portálon 
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
 2. A bal oldali menüben válassza a **virtuális gépek** lehetőséget, majd válassza ki a virtuális gépet a listából.
 
@@ -87,11 +98,11 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 A rendszerkép közvetlenül a virtuális gépről való létrehozása biztosítja, hogy a lemezkép tartalmazza a virtuális géphez társított összes lemezt, beleértve az operációsrendszer-lemezt és az adatlemezeket. Ebből a példából megtudhatja, hogyan hozhat létre felügyelt rendszerképeket egy felügyelt lemezeket használó virtuális gépről.
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a Azure PowerShell modul legújabb verziójával. A verzió megkereséséhez futtassa `Get-Module -ListAvailable Az` a parancsot a PowerShellben. Ha frissítenie kell, tekintse [meg a Azure PowerShell telepítése Windows rendszerre a PowerShellGet](/powershell/azure/install-az-ps)használatával című témakört. Ha helyileg futtatja a PowerShellt, `Connect-AzAccount` futtassa a parancsot az Azure-beli kapcsolatok létrehozásához.
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a Azure PowerShell modul legújabb verziójával. A verzió megkereséséhez futtassa a `Get-Module -ListAvailable Az` a PowerShellben. Ha frissítenie kell, tekintse [meg a Azure PowerShell telepítése Windows rendszerre a PowerShellGet](/powershell/azure/install-az-ps)használatával című témakört. Ha helyileg futtatja a PowerShellt, futtassa a `Connect-AzAccount` alkalmazást az Azure-beli kapcsolatok létrehozásához.
 
 
 > [!NOTE]
-> Ha a rendszerképet a zóna redundáns tárolójában szeretné tárolni, létre kell hoznia egy olyan régióban, amely támogatja a [rendelkezésre állási zónákat](../../availability-zones/az-overview.md) , `-ZoneResilient` és tartalmazza a paramétert a`New-AzImageConfig` rendszerkép-konfigurációban (parancs).
+> Ha a rendszerképet a zóna redundáns tárolójában szeretné tárolni, akkor létre kell hoznia egy olyan régióban, amely támogatja a [rendelkezésre állási zónákat](../../availability-zones/az-overview.md) , és tartalmazza a `-ZoneResilient` paramétert a rendszerkép-konfigurációban (`New-AzImageConfig` parancs).
 
 Virtuálisgép-rendszerkép létrehozásához kövesse az alábbi lépéseket:
 
@@ -207,7 +218,7 @@ A következő lépések végrehajtásával hozhat létre felügyelt rendszerkép
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Rendszerkép létrehozása a Storage-fiókot használó virtuális gépről
 
-Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, amely nem felügyelt lemezeket használ, a Storage-fiókban a következő formátumban kell megadnia az operációs rendszer virtuális merevlemezének URI-JÁT: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* /  *vhdfilename. vhd*. Ebben a példában a VHD a *mystorageaccount*, egy *vhdcontainer*nevű TÁROLÓban, a VHD-fájl pedig *vhdfilename. vhd*.
+Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, amely nem felügyelt lemezeket használ, akkor a Storage-fiókban a következő formátumban kell megadnia az operációs rendszer virtuális merevlemezének URI-JÁT: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. vhd* . Ebben a példában a VHD a *mystorageaccount*, egy *vhdcontainer*nevű TÁROLÓban, a VHD-fájl pedig *vhdfilename. vhd*.
 
 
 1.  Hozzon létre néhány változót.
@@ -239,6 +250,6 @@ Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, ame
     ```
 
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy virtuális gépet egy felügyelt rendszerképből](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
 

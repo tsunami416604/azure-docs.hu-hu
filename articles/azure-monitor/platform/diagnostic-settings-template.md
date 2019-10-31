@@ -1,5 +1,5 @@
 ---
-title: Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával | Microsoft Docs
+title: Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
 description: Diagnosztikai beállítások létrehozása Resource Manager-sablonnal az Azure platform naplófájljainak továbbításához Azure Monitor naplók, Azure Storage vagy Azure Event Hubs számára.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597287"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200493"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
 Az Azure [platform-naplói](platform-logs-overview.md) részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk részletesen ismerteti, hogyan lehet [Azure Resource Manager sablont](../../azure-resource-manager/resource-group-authoring-templates.md) használni a diagnosztikai beállítások konfigurálásához, hogy különböző célhelyekre gyűjtsön platform-naplókat. Ez lehetővé teszi, hogy automatikusan elindítsa a platform-naplók gyűjtését egy erőforrás létrehozásakor.
@@ -59,7 +59,7 @@ A diagnosztikai beállítás [célhelyei](diagnostic-settings.md#destinations) a
 ```
 
 ### <a name="resources"></a>Segédanyagok és eszközök
-Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné hozni, adjon hozzá `[resource namespace]/providers/diagnosticSettings` típusú erőforrást. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
+Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné hozni, adjon hozzá `[resource namespace]/providers/diagnosticSettings`típusú erőforrást. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
    
 ```json
 "resources": [

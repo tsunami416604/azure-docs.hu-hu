@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391663"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182229"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -140,7 +140,7 @@ Az i/o-kérések az alkalmazás által elvégezhető bemeneti/kimeneti művelete
 Az IO-méret az egyik legfontosabb tényező. Az i/o-méret az alkalmazás által generált bemeneti/kimeneti műveletre vonatkozó kérelem mérete. Az i/o-méret jelentős hatással van a teljesítményre, különösen a IOPS és a sávszélességre, amelyet az alkalmazás képes elérni. A következő képlet a IOPS, az i/o-méret és a sávszélesség/átviteli sebesség közötti kapcsolatot mutatja.  
     ![](media/premium-storage-performance/image1.png)
 
-Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [db @ no__t-1BLOCK @ no__t-2SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
+Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [DB\_blokk\_méret](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
 
 Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Például:
 
@@ -189,15 +189,15 @@ Tegyük fel például, hogy egy alkalmazásra vonatkozó követelmény legfeljeb
 *Működési díj*  
 Sok esetben előfordulhat, hogy az Premium Storage használatával járó általános üzemeltetési díj alacsonyabb, mint a standard Storage használata.
 
-Vegyünk például egy 16 000-IOPS igénylő alkalmazást. A teljesítmény eléréséhez szüksége lesz egy standard @ no__t-0D14 Azure IaaS VM-re, amely maximális 16 000 IOPS biztosít a 32 standard Storage 1 TB-os lemezek használatával. Mindegyik 1 TB-os standard Storage-lemez legfeljebb 500 IOPS érhet el. A virtuális gép havi becsült díja $1 570 lesz. A standard szintű Storage-lemezek havi 32 díja $1 638. A becsült teljes havi költség $3 208 lesz.
+Vegyünk például egy 16 000-IOPS igénylő alkalmazást. A teljesítmény eléréséhez szüksége lesz egy standard\_D14 Azure IaaS VM-re, amely maximális IOPS biztosít a 16 000-es 32 standard Storage 1 TB-os lemez használatával. Mindegyik 1 TB-os standard Storage-lemez legfeljebb 500 IOPS érhet el. A virtuális gép havi becsült díja $1 570 lesz. A standard szintű Storage-lemezek havi 32 díja $1 638. A becsült teljes havi költség $3 208 lesz.
 
-Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virtuális gép mérete és a kevesebb prémium szintű Storage-lemez szükséges, így csökkentve a teljes költségeket. A standard @ no__t-0DS13 virtuális gép négy P30-lemezzel képes megfelelni a 16 000 IOPS-követelménynek. A DS13 virtuális gép 25 600 maximális IOPS rendelkezik, és az egyes P30-lemezek maximális IOPS 5 000. Ez a konfiguráció összességében elérheti a 5 000 x 4 = 20 000 IOPS. A virtuális gép havi becsült díja $1 003 lesz. A négy P30 Premium Storage-lemez havi díja $544,34 lesz. A becsült teljes havi költség $1 544 lesz.
+Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virtuális gép mérete és a kevesebb prémium szintű Storage-lemez szükséges, így csökkentve a teljes költségeket. A standard szintű\_DS13-alapú virtuális gépek négy P30-lemez használatával tudják kielégíteni a 16 000-es IOPS követelményt. A DS13 virtuális gép 25 600 maximális IOPS rendelkezik, és az egyes P30-lemezek maximális IOPS 5 000. Ez a konfiguráció összességében elérheti a 5 000 x 4 = 20 000 IOPS. A virtuális gép havi becsült díja $1 003 lesz. A négy P30 Premium Storage-lemez havi díja $544,34 lesz. A becsült teljes havi költség $1 544 lesz.
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
 | &nbsp; | **Standard** | **Prémium** |
 | --- | --- | --- |
-| **Virtuális gép ára havonta** |$1 570,58 (szabványos @ no__t-0D14) |$1 003,66 (szabványos @ no__t-0DS13) |
+| **Virtuális gép ára havonta** |$1 570,58 (standard\_D14) |$1 003,66 (standard\_DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
 | **Teljes díj havonta** |$3 208,98 |$1 544,34 |
 
@@ -298,12 +298,12 @@ A verziók némelyike az Azure-hoz készült legújabb Linux Integration Service
 | SUSE | SLES 12 vagy újabb| 3.12.36-38.1 + | SUSE-SLES-12-priority-v20150213 <br> SUSE-SLES-12 – v20150213 |
 | SUSE | SLES 11 SP4 vagy újabb| 3.0.101-0.63.1 + | &nbsp; |
 | CoreOS | 584.0.0 + vagy újabb| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 vagy újabb| &nbsp; | [LIS4 szükséges](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Lásd: Megjegyzés a következő szakaszban* |
-| CentOS | 7.1 + vagy újabb| 3.10.0-229.1.2. el7 + | [LIS4 ajánlott](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Lásd: Megjegyzés a következő szakaszban* |
+| CentOS | 6,5, 6,6, 6,7, 7,0 vagy újabb| &nbsp; | [LIS4 szükséges](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Lásd: Megjegyzés a következő szakaszban* |
+| CentOS | 7.1 + vagy újabb| 3.10.0-229.1.2. el7 + | [LIS4 ajánlott](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Lásd: Megjegyzés a következő szakaszban* |
 | Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + vagy újabb | &nbsp; | &nbsp; |
 | Oracle | 6.0 +, 7.2 + vagy újabb | &nbsp; | UEK4 vagy RHCK |
-| Oracle | 7.0 – 7.1 vagy újabb | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) ) |
-| Oracle | 6.4 – 6,7 vagy újabb | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) ) |
+| Oracle | 7.0 – 7.1 vagy újabb | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) ) |
+| Oracle | 6.4 – 6,7 vagy újabb | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) ) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-illesztőprogramok a OpenLogic CentOS-hez
 
