@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab7c3699abdd5c094b1b14cd53f76023fa8c1ac
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 641f71f6111930b54d0a2bd548f16d3cb0c07189
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309601"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175259"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Felhasználók számára bejelentkező webalkalmazás – alkalmazás regisztrálása
 
@@ -56,8 +56,8 @@ Ha megnyitja ezt a hivatkozást, létrehozhat rendszerindítást a webalkalmazá
    1. A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-WebApp`).
    1. Az **átirányítási URI**-ban adja meg az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után fogadja a visszaadott jogkivonat-válaszokat. Például: `https://localhost:44321/`.  Kattintson a **Register** (Regisztrálás) elemre.
 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
-   1. A **Válasz URL**-címe `https://localhost:44321/signin-oidc` mezőben adja hozzá a "web" típusú kifejezést.
-   1. A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a `https://localhost:44321/signout-oidc`következőre:.
+   1. A **Válasz URL-címe**mezőben adja hozzá a "web" típusú `https://localhost:44321/signin-oidc`.
+   1. A **Speciális beállítások** szakaszban állítsa be `https://localhost:44321/signout-oidc`a **KIJELENTKEZÉSI URL-címet** .
    1. Az **implicit támogatás szakaszban adja**meg az **azonosító jogkivonatokat**.
    1. Kattintson a **Mentés** gombra.
 
@@ -69,20 +69,29 @@ Ha megnyitja ezt a hivatkozást, létrehozhat rendszerindítást a webalkalmazá
    - Az átirányítási URI (nem kötelező) szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-ket: `https://localhost:44326/`.
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
-   - A **Speciális beállítások** | **implicit engedélyezése** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
+   - A **Speciális beállítások** | **implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
 1. Kattintson a **Mentés** gombra.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 4. Amikor megjelenik az **alkalmazás regisztrálása lap** , adjon meg egy felhasználóbarát nevet az alkalmazásnak, például "Java-WebApp", válassza a "fiókok bármely szervezeti címtárban és személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)" lehetőséget, és válassza a "webalkalmazás /API-t az *alkalmazás típusaként*.
 1. Az alkalmazás regisztrálásához kattintson a **regisztráció** gombra.
-1. A bal oldali menüben kattintson a **hitelesítés**elemre, majd az *átirányítási URI*-k területen válassza a "web" lehetőséget. Két különböző átirányítási URI-t kell megadnia: egyet a bejelentkezési laphoz, egyet pedig a Graph Users oldalhoz. Mindkettő esetében ugyanazt a gazdagépet és portszámot kell használnia, majd a bejelentkezési oldalon és a "msal4jsample/Graph/Users" (felhasználók) lapon a "/msal4jsample/Secure/aad" értéket kell követnie.
- Alapértelmezés szerint a minta a következőket használja: 
+1. A bal oldali menüben kattintson a **hitelesítés**elemre, majd az *átirányítási URI*-k területen válassza a "web" lehetőséget. Két különböző átirányítási URI-t kell megadnia: egyet a bejelentkezési laphoz, egyet pedig a Graph laphoz. Mindkét esetben ugyanazt a gazdagépet és portszámot kell használnia, majd utána a bejelentkezési oldal "/msal4jsample/Secure/aad" és "msal4jsample/Graph/Me" elemét kell megjelennie a felhasználói adatok lapon.
+ Alapértelmezés szerint a minta a következőket használja:
 
-    - `http://localhost:8080/msal4jsample/secure/aad`. 
-    - `http://localhost:8080/msal4jsample/graph/users`
+    - `http://localhost:8080/msal4jsample/secure/aad` kérdésre adott válaszban foglalt lépéseket.
+    - `http://localhost:8080/msal4jsample/graph/me`
 
-Kattintson a **Save (Mentés**) gombra.
+    A **Speciális beállítások** szakaszban állítsa be `http://localhost:8080/msal4jsample/sign_out`a **KIJELENTKEZÉSI URL-címet** .
+
+     Kattintson a **Save (Mentés**) gombra.
+
+1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
+
+    - Írja be a kulcs leírását
+    - Válassza ki a kulcs időtartamát **1 év**múlva.
+    - A kulcs értéke a **Hozzáadás**gombra kattintva fog megjelenni.
+    - Másolja később a kulcs értékét. Ez a kulcs nem jelenik meg újra, és semmilyen más módon nem kérhető le, ezért jegyezze fel, amint a Azure Portal látható.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -93,9 +102,15 @@ Kattintson a **Save (Mentés**) gombra.
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
 1. Az alkalmazás áttekintés lapján válassza a **hitelesítés** szakaszt.
-   - A **Speciális beállítások** szakaszban a **KIJELENTKEZÉSI URL-cím** beállítása`http://localhost:5000/logout`
-1. Kattintson a **Mentés** gombra.
+   - A **Speciális beállítások** szakaszban a **KIJELENTKEZÉSI URL-cím** beállítása `http://localhost:5000/logout`
 
+  Kattintson a **Mentés** gombra.
+1. A bal oldali menüben válassza a **tanúsítványok & Secrets** elemet, majd kattintson az **új ügyfél titkára** az **ügyfél titkai** szakaszban:
+
+      - Írja be a kulcs leírását
+      - Adja **meg az 1 év**kulcsának időtartamát.
+      - Ha a **Hozzáadás**gombra kattint, megjelenik a kulcs értéke.
+      - Másolja a kulcs értékét. Erre később még szüksége lesz.
 ---
 
 ## <a name="register-an-app-using-powershell"></a>Alkalmazás regisztrálása a PowerShell-lel
@@ -106,9 +121,9 @@ Kattintson a **Save (Mentés**) gombra.
 > - MyOrg (csak ebben a szervezeti könyvtárban lévő fiókok)
 > - AnyOrg (fiókok bármely szervezeti címtárban).
 >
-> Ha olyan alkalmazást szeretne létrehozni, amely a felhasználók személyes Microsoft-fiókjaival (például Skype, XBox, Outlook.com) jelentkezik be, először hozzon létre egy több-bérlős alkalmazást (támogatott fióktípus = fiókok bármely szervezeti címtárban), majd módosítsa az alkalmazás jegyzékfájljának tulajdonsága a Azure Portalból. `signInAudience` Ezt részletesen ismerteti a ASP.NET Core oktatóanyag [1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) . lépésében (és bármilyen nyelven általánosítható a webalkalmazások számára).
+> Ha olyan alkalmazást szeretne létrehozni, amely a felhasználók személyes Microsoft-fiókjaival (például Skype, XBox, Outlook.com) jelentkezik be, először hozzon létre egy több-bérlős alkalmazást (támogatott fióktípus = fiókok bármely szervezeti címtárban), majd módosítsa az alkalmazás jegyzékfájljának `signInAudience` tulajdonsága a Azure Portalból. Ezt részletesen ismerteti a ASP.NET Core oktatóanyag [1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) . lépésében (és bármilyen nyelven általánosítható a webalkalmazások számára).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás kódjának konfigurálása](scenario-web-app-sign-user-app-configuration.md)

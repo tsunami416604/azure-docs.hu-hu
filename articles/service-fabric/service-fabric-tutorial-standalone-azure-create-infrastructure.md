@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385028"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177726"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Azure VM-infrastruktúra létrehozása Service Fabric-fürt üzemeltetéséhez
 
@@ -52,7 +52,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
 
 4. Módosítsa a **rendszerkép** típusát a **Windows Server 2016 Datacenter**értékre. 
  
-5. Módosítsa a példány **méretét** a **standard DS2 v2**értékre. Állítsa be a  rendszergazda felhasználónevét és **jelszavát**, és adja meg, hogy mi is az.
+5. Módosítsa a példány **méretét** a **standard DS2 v2**értékre. Állítsa be a rendszergazda **felhasználónevét** és **jelszavát**, és adja meg, hogy mi is az.
 
 6. Hagyja letiltva a **bejövő portok szabályait** . ezeket a következő szakaszban fogjuk konfigurálni.
 
@@ -63,16 +63,16 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
    ![SF – bejövő][sf-inbound]
 
    * Port `3389`, RDP és ICMP esetén (alapszintű kapcsolat).
-   * Portok `19000-19003`Service Fabric.
-   * Portok `19080-19081`Service Fabric.
-   * Port `8080`, webböngésző-kérelmek esetén.
+   * A Service Fabrichoz `19000-19003`portok.
+   * A Service Fabrichoz `19080-19081`portok.
+   * `8080`port a webböngésző kéréseire.
 
    > [!TIP]
    > A Service Fabricben a virtuális gépek összekapcsolásához az infrastruktúrát futtató virtuális gépeknek ugyanazokkal a hitelesítő adatokkal kell rendelkezniük.  Két gyakori módja van a konzisztens hitelesítő adatok elérésének: csatlakoztassa mindet ugyanahhoz a tartományhoz, vagy állítsa be ugyanazt a rendszergazdai jelszót az összes virtuális gépen. Szerencsére az Azure lehetővé teszi, hogy az ugyanazon a **virtuális hálózaton** lévő összes virtuális gép könnyedén kapcsolódjon, így minden példányunk ugyanazon a hálózaton lesz.
 
 9. Adjon hozzá egy másik szabályt. Állítsa a forrást a **szolgáltatás címkére** , és állítsa a forrás szolgáltatás címkéjét **VirtualNetwork**értékre. Service Fabric a következő portok megnyitását igényli a fürtön belüli kommunikációhoz: 135137-139, 445, 20001-20031, 20606-20861.
 
-   ![vnet-inbound][vnet-inbound]
+   ![vnet – bejövő][vnet-inbound]
 
 10. A többi lehetőség is elfogadható az alapértelmezett állapotukban. Ha szeretné, tekintse át őket, majd indítsa el a virtuális gépet.
 
@@ -90,27 +90,21 @@ Indítsa el a két további **Virtual Machines**, és ügyeljen rá, hogy az el�
  
 4. Nyissa meg az RDP-fájlt, és amikor a rendszer kéri, adja meg a virtuális gép beállításában megadott felhasználónevet és jelszót.
 
-5. Miután kapcsolódott egy példányhoz, ellenőriznie kell, hogy fut-e a távoli beállításjegyzék, engedélyezze az SMB-t, majd nyissa meg a szükséges portokat az SMB és a távoli beállításjegyzék számára.
-
-   Az SMB engedélyezéséhez ez a PowerShell-parancs:
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. Miután kapcsolódott egy példányhoz, ellenőriznie kell, hogy a távoli beállításjegyzék fut-e, majd nyissa meg a szükséges portokat.
 
 6. A tűzfalban lévő portok megnyitására ez a PowerShell-parancs szolgál:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. Ismételje meg ezt a folyamatot a többi példány esetében, és a magánhálózati IP-címeket is megjegyezve.
 
-## <a name="verify-your-settings"></a>A beállítások ellenőrzése
+## <a name="verify-your-settings"></a>A Beállítások ellenőrzése
 
 1. Az alapszintű kapcsolat ellenőrzéséhez az RDP használatával csatlakozzon az egyik virtuális géphez.
 
-2. Nyissa meg  a parancssort a virtuális gépről, majd a ping parancs használatával kapcsolódjon az egyik virtuális gépről egy másikhoz, és cserélje le az alábbi IP-címet a korábban feljegyzett MAGÁNHÁLÓZATI IP-címek egyikére (nem pedig a virtuális gép IP-címére, amelyhez már csatlakozik).
+2. Nyissa meg a **parancssort** a virtuális gépről, majd a ping parancs használatával kapcsolódjon az egyik virtuális gépről egy másikhoz, és cserélje le az alábbi IP-címet a korábban feljegyzett MAGÁNHÁLÓZATI IP-címek egyikére (nem pedig a virtuális gép IP-címére, amelyhez már csatlakozik).
 
    ```
    ping 172.31.20.163
@@ -118,18 +112,9 @@ Indítsa el a két további **Virtual Machines**, és ügyeljen rá, hogy az el�
 
    Ha a kimenetben a `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` szöveg ismétlődik négyszer, akkor a példányok közötti kapcsolat működik.
 
-3. Most ellenőrizze az SMB-megosztás működését a következő paranccsal:
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   A parancs kimenetének a következőnek kell lennie: `Drive Z: is now connected to \\172.31.20.163\c$.`.
-
-
    A példányok most már készen állnak a Service Fabricra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat első részében megtanulta, hogyan indíthat el három Azure-beli virtuálisgép-példányt, és hogyan konfigurálhatja őket a Service Fabric telepítéséhez:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: fdf4b68bfb10ff02ae4f90ee4c1668274ed30e79
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f4bb7bd3b1cd024c71d5c1ab7329437716755f88
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957033"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177201"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képességi modell használata IoT-Plug and Play eszköz létrehozásához és a IoT Central-alkalmazáshoz való csatlakoztatásához
 
@@ -191,4 +191,4 @@ Ebben az oktatóanyagban megtanulta, hogyan csatlakoztatható egy IoT Plug and P
 Ha többet szeretne megtudni a DCMs és a saját modelljeinek létrehozásáról, folytassa a következő útmutatóval:
 
 > [!div class="nextstepaction"]
-> [Eszköz sablonjának beállítása és kezelése](./howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Eszközcsoport létrehozása](./tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

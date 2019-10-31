@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1be70d3eb74d3a8f0eddb1e5c22e4234987276b3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073689"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176833"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
@@ -37,8 +37,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
-+ Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Új verzió hozzáadása
 
@@ -94,13 +94,12 @@ Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy **te
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 
 1. A felső menüben kattintson a **Fejlesztői portál** elemre.
-2. Válassza az **API-k** lehetőséget, ahol láthatja, hogy a **Demo Conference API** alatt az **Eredeti** és a **v1** verziók láthatók.
-3. Válassza a **v1** lehetőséget.
-4. Figyelje meg a lista első műveletének **Kérés URL-címe** értékét. Azt mutatja, hogy az API URL-címe tartalmazza a **v1** tagot.
+2. Válassza az **API** -k lehetőséget, majd kattintson a **bemutató konferencia API**-ra.
+3. Az API neve mellett több verziót tartalmazó legördülő listát kell látnia.
+4. Válassza a **v1** lehetőséget.
+5. Figyelje meg a lista első műveletének **Kérés URL-címe** értékét. Azt mutatja, hogy az API URL-címe tartalmazza a **v1** tagot.
 
-    ![Az API helyi menüje – Verzió hozzáadása](media/api-management-getstarted-publish-versions/developer_portal.png)
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

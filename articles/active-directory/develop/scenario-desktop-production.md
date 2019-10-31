@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268333"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175547"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó asztali alkalmazás – áttérés éles környezetbe
 
@@ -41,10 +41,10 @@ A Microsoft Identity platform (v 2.0) végpontja nem teszi lehetővé, hogy egys
 
 Ha például két erőforrással rendelkezik, amelyek mindegyike két hatókörrel rendelkezik:
 
-- `https://mytenant.onmicrosoft.com/customerapi`-2 hatókörrel `customer.read` és`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`-2 hatókörrel `vendor.read` és`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` – 2 hatókörökkel `customer.read` és `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` – 2 hatókörökkel `vendor.read` és `vendor.write`
 
-A `.WithAdditionalPromptToConsent` `extraScopesToConsent` paraméterrel rendelkező módosítót kell használnia.
+A `extraScopesToConsent` paraméterrel rendelkező `.WithAdditionalPromptToConsent`-módosítót kell használnia.
 
 Például:
 
@@ -76,10 +76,10 @@ Objective-C:
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
                                 @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
-    
+
 NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                               @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-    
+
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
 interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
@@ -90,10 +90,10 @@ Swift
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
                             "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
-        
+
 let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                           "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-        
+
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
 interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
@@ -101,7 +101,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Ez a hívás kap egy hozzáférési jogkivonatot az első webes API-hoz.
 
-Ha meg kell hívnia a második webes API-t, akkor `AcquireTokenSilent` az API-t hívhatja:
+Ha meg kell hívnia a második webes API-t, hívja meg `AcquireTokenSilent` API-t:
 
 ```CSharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
@@ -111,6 +111,6 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 A személyes Microsoft-fiókok felhasználói számára a kívánt viselkedést az összes natív ügyfél (asztali/mobil alkalmazás) hívása esetén a rendszer az engedélyezéshez kéri. A natív ügyfél-identitás eredendően nem biztonságos (ellentétben a bizalmas ügyfélalkalmazás, amely a Microsoft Identity platform titkát cseréli a személyazonosságának bizonyítására). A Microsoft Identity platform úgy döntött, hogy a felhasználó hozzájárulásának megadásával csökkenti a fogyasztói szolgáltatások biztonságát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

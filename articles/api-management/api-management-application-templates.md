@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: efb668971bc4a8c5a0968836aab71107aa6b88d5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072652"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176905"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Alkalmazás-sablonok az Azure API Management
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
@@ -32,12 +32,14 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 > [!NOTE]
 >  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="ProductList"></a>Alkalmazások listája  
  Az **alkalmazás-lista** sablon lehetővé teszi a fejlesztői portálon az alkalmazás-lista oldal törzsének testreszabását.  
   
- Az ![alkalmazások listája lap fejlesztői portál sablonjai](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM a fejlesztői portál sablonjait tartalmazó lapján")  
+ ![Az alkalmazások listája lap fejlesztői portál sablonjai](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM a fejlesztői portál sablonjait tartalmazó lapján")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -71,18 +73,18 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 </div>  
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  A `Product list` sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [Lapozás – vezérlés](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Type (Típus)|Leírás|  
 |--------------|----------|-----------------|  
 |`Paging`|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|Az alkalmazások gyűjteményének lapozási adatai.|  
 |`Applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó számára látható alkalmazások.|  
-|`CategoryName`|Karakterlánc|Az alkalmazás kategóriája.|  
+|`CategoryName`|sztring|Az alkalmazás kategóriája.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -178,7 +180,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  A `Application` sablon nem teszi lehetővé az [oldal vezérlőelemek](api-management-page-controls.md)használatát.  
   
 ### <a name="data-model"></a>Adatmodell  
@@ -221,5 +223,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

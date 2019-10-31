@@ -1,6 +1,6 @@
 ---
-title: Az Azure Import/Export használatával való adatátvitel Azure-Blobok |} A Microsoft Docs
-description: Ismerje meg, hogyan importálás létrehozni és exportálni a feladatokat az Azure Portalon, és az Azure-Blobokból adatok átviteléhez.
+title: Az Azure import/export használata az adatok Azure-Blobokra történő átviteléhez | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre importálási és exportálási feladatokat Azure Portal az Azure-Blobokra irányuló és onnan érkező adatok átviteléhez.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,144 +8,144 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808583"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73178018"
 ---
-# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
+# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
-Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használata biztonságosan importálása az Azure Blob storage nagy mennyiségű adat. Az adatok importálása az Azure-Blobok, a szolgáltatás megköveteli, hogy az adatok az Azure-adatközpont tartalmazó titkosított meghajtók szállításra.  
+Ez a cikk részletesen ismerteti, hogyan használható az Azure import/export szolgáltatás a nagy mennyiségű, az Azure Blob Storage-ba való biztonságos importáláshoz. Az Azure-Blobokra történő adatimportáláshoz a szolgáltatáshoz az adatait tartalmazó titkosított lemezmeghajtókat kell szállítani egy Azure-adatközpontba.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adatok átviteléhez az Azure Blob Storage-bA importálási feladat létrehozása, előtt gondosan tekintse át, és hajtsa végre az alábbi listában szereplő Előfeltételek ezt a szolgáltatást. Tegye a következőket:
+Mielőtt létrehoz egy importálási feladatot az adatok Azure Blob Storageba való átviteléhez, gondosan tekintse át és végezze el az alábbi, a szolgáltatásra vonatkozó előfeltételeket tartalmazó listát. A következőket kell tennie:
 
-- Egy aktív Azure-előfizetéssel rendelkezik az Import/Export szolgáltatás használható.
-- Legalább egy tárolót az Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). 
-    - Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md). 
-    - Információk a storage-tárolóba, [hozzon létre egy storage-tárolóba](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
-- A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
-- A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems). 
-- Engedélyezi a Bitlockert a Windows rendszeren. Lásd: [BitLocker engedélyezésének módja](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-- [Töltse le az 1. verziójának WAImportExport](https://aka.ms/waiev1) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexportv1`. Például: `C:\WaImportExportV1`.
-- FedEx/DHL fiókkal rendelkeznie. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, forduljon a az Azure Data Box műveletek csapatának `adbops@microsoft.com`.  
-    - A fiók érvényesnek kell lennie, kell rendelkeznie az egyenleg és visszaszállítási képességek kell rendelkeznie.
-    - Követési szám az exportálási feladat létrehozása.
-    - Minden feladat rendelkeznie kell egy külön követési szám. Több feladat egy követési szám nem támogatottak.
-    - Ha nem rendelkezik egy szállítmányozói fiókjára, Ugrás:
-        - [Hozzon létre egy FedEX fiókot](https://www.fedex.com/en-us/create-account.html), vagy 
-        - [Hozzon létre egy DHL fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+- Az import/export szolgáltatáshoz használható aktív Azure-előfizetéssel rendelkezik.
+- Rendelkeznie kell legalább egy Azure Storage-fiókkal tárolóval. Tekintse meg a [támogatott Storage-fiókok és tárolási típusok listáját az importálási/exportálási szolgáltatáshoz](storage-import-export-requirements.md). 
+    - További információ az új Storage-fiókok létrehozásáról: [Storage-fiók létrehozása](storage-quickstart-create-account.md). 
+    - A Storage-tárolóval kapcsolatos információkért nyissa meg a Storage-tároló [létrehozása](../blobs/storage-quickstart-blobs-portal.md#create-a-container)című témakört.
+- Megfelelő számú lemezzel rendelkezik a [támogatott típusok](storage-import-export-requirements.md#supported-disks)közül. 
+- Egy [támogatott operációsrendszer-verzióval](storage-import-export-requirements.md#supported-operating-systems)rendelkező Windows rendszerre van telepítve. 
+- Engedélyezze a BitLockert a Windows rendszeren. Lásd: [a BitLocker engedélyezése](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+- [Töltse le a WAImportExport 1-es verzióját](https://www.microsoft.com/download/details.aspx?id=42659) a Windows rendszerre. Bontsa ki az alapértelmezett mappát `waimportexportv1`. Például: `C:\WaImportExportV1`.
+- Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations csapatával a következő címen: `adbops@microsoft.com`.  
+    - A fióknak érvényesnek kell lennie, egyensúlyt kell tartalmaznia, és vissza kell adni a szállítási képességeket.
+    - Nyomkövetési szám létrehozása az exportálási feladatokhoz.
+    - Minden feladattípusnak külön nyomkövetési számmal kell rendelkeznie. Nem támogatott több feladat ugyanazzal a követési számmal.
+    - Ha nem rendelkezik Carrier-fiókkal, lépjen a következőre:
+        - [Hozzon létre egy FedEx-fiókot](https://www.fedex.com/en-us/create-account.html), vagy 
+        - [Hozzon létre egy DHL-fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-prepare-the-drives"></a>1\. lépés: A meghajtó előkészítése
+## <a name="step-1-prepare-the-drives"></a>1\. lépés: a meghajtók előkészítése
 
-Ebben a lépésben létrehoz egy naplót fájlt. A naplófájl alapvető információkat, például a meghajtó sorozatszáma, a titkosítási kulcsot és a storage-fiók adatait tárolja. 
+Ez a lépés egy naplófájlt hoz létre. A naplófájl olyan alapvető adatokat tárol, mint például a meghajtó sorozatszáma, a titkosítási kulcs és a Storage-fiók adatai. 
 
-Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajtókat.
+A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
-1.  A lemezmeghajtók kapcsolódni a Windows rendszer SATA-összekötők használatával.
-1.  Hozzon létre egy NTFS-kötetet egyes meghajtókon. A kötet rendeljen hozzá meghajtóbetűjelet. Ne használjon akkor csatlakozási.
-2.  A BitLocker titkosítást az NTFS-köteten. Ha a Windows Server rendszert használ, kövesse az utasításokat a [hogyan engedélyezheti a Bitlockert a Windows Server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-3.  Adatok másolása a titkosított kötetek. Húzza és dobja el vagy a Robocopy vagy bármely ilyen fájlmásoló eszközt használja.
-4.  Nyissa meg a PowerShell vagy a parancssori ablakot rendszergazdai jogosultságokkal. A kicsomagolt mappába könyvtár módosításához futtassa a következő parancsot:
+1.  Csatlakoztathatja a lemezmeghajtókat a Windows rendszerhez a SATA-összekötők használatával.
+1.  Hozzon létre egyetlen NTFS-kötetet az egyes meghajtókon. Rendeljen meghajtóbetűjelet a kötethez. Ne használja a csatolási.
+2.  Engedélyezze a BitLocker-titkosítást az NTFS-köteten. Ha Windows Server rendszert használ, használja a [Windows server 2012 R2 rendszeren a BitLocker engedélyezésének](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)útmutatását.
+3.  Az Adatmásolás titkosított kötetre. A drag and drop vagy a Robocopy vagy bármely ilyen másolási eszköz használatával.
+4.  Nyisson meg egy PowerShell-vagy parancssori ablakot rendszergazdai jogosultságokkal. Ha a könyvtárat a kibontott mappára szeretné módosítani, futtassa a következő parancsot:
     
     `cd C:\WaImportExportV1`
-5.  A BitLocker-kulcs a meghajtón futtassa a következő parancsot:
+5.  A meghajtó BitLocker-kulcsának beszerzéséhez futtassa a következő parancsot:
     
     `manage-bde -protectors -get <DriveLetter>:`
-6.  Készítse elő a lemezen, futtassa a következő parancsot. **Az adatok méretétől függően ez eltarthat néhány órát napra.** 
+6.  A lemez előkészítéséhez futtassa a következő parancsot. **Az adatmérettől függően ez több órát is igénybe vehet.** 
 
     ```
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite 
     ```
-    Egy journal-fájl jön létre ugyanabban a mappában, ahol az eszközt futtatta. Két más fájlok is létrejönnek - egy *.xml* fájlt (a mappa, ahol futtatja az eszközt) és a egy *meghajtó-manifest.xml* fájlt (adatokat tartalmazó mappát).
+    A rendszer ugyanabban a mappában hozza létre a naplófájlt, ahol az eszközt futtatta. Két másik fájl is létrejön – egy *. XML* fájl (az eszközt futtató mappa) és egy *Drive-manifest. XML* fájl (a mappa, ahol az adat található).
     
-    Használt paraméterek a következő táblázat ismerteti:
+    A használt paramétereket a következő táblázat ismerteti:
 
-    |Beállítás  |Leírás  |
+    |Lehetőség  |Leírás  |
     |---------|---------|
-    |/j:     |A napló .jrn kiterjesztésű fájl neve. A naplófájl meghajtónkénti jön létre. Azt javasoljuk, hogy a lemez sorozatszáma használjon a napló-fájl neve.         |
-    |/ ID:     |A munkamenet-azonosítót. A parancs minden példánya esetében egyedi munkamenet több használ.      |
-    |/t:     |A meghajtóbetűjel, a lemez szállításra. Ha például meghajtó `D`.         |
-    |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: `manage-bde -protectors -get D:`      |
-    |/srcdir:     |A lemez szállításra meghajtóbetűjelének követ `:\`. Például: `D:\`.         |
-    |/dstdir:     |Az Azure Storage-ban a cél tároló neve.         |
-    |/blobtype:     |Ez a beállítás határozza meg az adatokat importálni kívánt blobok. A blokkblobok esetében ez a `BlockBlob` , a lapblobokhoz, pedig `PagaBlob`.         |
-    |/skipwrite:     |A beállítást, amely megadja, hogy nem szükséges átmásolni új adatokat és a lemezen található meglévő adatokat, hogy elő kell készíteni.          |
-    |/enablecontentmd5:     |A beállítást, ha engedélyezve van, biztosítja, hogy MD5 számított és állítja be `Content-md5` minden egyes blob tulajdonsága. Használja ezt a beállítást csak akkor, ha használni szeretné a `Content-md5` mező követően az adatok az Azure-bA. <br> Ez a beállítás nincs hatással az adatok integritás-ellenőrzése (amely alapértelmezés szerint történik). A beállítás növelheti az adatok felhőbe való feltöltéséhez szükséges idő.          |
-7. Ismételje meg minden egyes szállításra lemezt az előző lépésben. A megadott nevű napló fájl jön létre minden egyes futtatáskor a parancssor.
+    |/j     |A naplófájl neve, a. jrn kiterjesztéssel. Egy naplófájl jön létre egy meghajtón. Javasoljuk, hogy a lemez sorozatszámát használja a naplófájl neveként.         |
+    |/ID     |A munkamenet-azonosító. A parancs minden példányához használjon egyedi munkamenet-számot.      |
+    |/t     |A szállítandó lemez meghajtóbetűjele. Például: meghajtó `D`.         |
+    |BK     |A meghajtó BitLocker-kulcsa. A `manage-bde -protectors -get D:` kimenetének numerikus jelszava      |
+    |/srcdir:     |A szállítandó lemez meghajtóbetűjele, majd `:\`. Például: `D:\`.         |
+    |/dstdir:     |A cél tároló neve az Azure Storage-ban.         |
+    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez `BlockBlob`, és az oldal Blobok esetében `PagaBlob`.         |
+    |/skipwrite:     |Ez a beállítás azt határozza meg, hogy nincs szükség új adatmásolásra és a lemezen lévő meglévő adatfeldolgozásra.          |
+    |/enablecontentmd5:     |Ha a beállítás engedélyezve van, biztosítja, hogy az MD5 kiszámításra kerüljön, és az egyes blobokon `Content-md5` tulajdonságként legyen beállítva. Ezt a lehetőséget csak akkor használja, ha a `Content-md5` mezőt szeretné használni az Azure-ba való feltöltés után. <br> Ez a beállítás nincs hatással az adatintegritás-ellenőrzésre (alapértelmezés szerint ez történik). A beállítással megnövelhető az adatok felhőbe való feltöltéséhez szükséges idő.          |
+7. Ismételje meg az előző lépést minden egyes leszállításra szoruló lemez esetében. A rendszer a megadott névvel rendelkező naplófájlt hoz létre a parancssor minden futtatásához.
     
     > [!IMPORTANT]
-    > - A naplófájl együtt egy `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájl is létrejön ugyanabban a mappában, amelyben az eszköz található. Az XML-fájl használja journal-fájl helyett a feladat létrehozásakor, ha a napló-fájl túl nagy. 
+    > - A Journal-fájllal együtt a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájl is ugyanabban a mappában jön létre, ahol az eszköz található. Ha a naplófájl túl nagy, a rendszer a naplófájl helyett a. xml fájlt használja. 
 
-## <a name="step-2-create-an-import-job"></a>2\. lépés: Importálási feladat létrehozása
+## <a name="step-2-create-an-import-job"></a>2\. lépés: importálási feladatok létrehozása
 
-A következő lépésekkel importálási feladat létrehozása az Azure Portalon.
+Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 
-1. Jelentkezzen be https://portal.azure.com/.
-2. Lépjen a **minden szolgáltatás > tárolás > importálási/exportálási feladatok**. 
+1. Jelentkezzen be https://portal.azure.com/ -ra.
+2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**. 
     
-    ![Ugrás az importálási és exportálási feladatokhoz](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Kattintson a **importálási/exportálási feladat létrehozása**.
+3. Kattintson az **importálási/exportálási feladatok létrehozása**lehetőségre.
 
-    ![Kattintson a létrehozás importálási/exportálási feladat](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Kattintson az importálási/exportálási feladatok létrehozása lehetőségre.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. A **alapjai**:
+4. Az **alapjaiban**:
 
-   - Válassza ki **Azure-ba való importálásuk**.
-   - Adjon meg egy leíró nevet az importálási feladatot. A név használatával a feladatok előrehaladását úgy követheti nyomon.
+   - Válassza **az Importálás az Azure-ba**lehetőséget.
+   - Adjon meg egy leíró nevet az importálási feladatokhoz. A név használatával követheti nyomon a feladatok állapotát.
        - A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
        - A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
-   - Válasszon egy előfizetést.
-   - Adja meg, vagy válasszon ki egy erőforráscsoportot.  
+   - Válasszon előfizetést.
+   - Adjon meg vagy válasszon ki egy erőforráscsoportot.  
 
-     ![Importálási feladat létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. A **feladat részletei**:
+3. A **feladatok részletei**:
 
-    - Töltse fel a meghajtó Adatbázisnapló-fájlok a meghajtó előkészítési lépés során beszerzett. Ha `waimportexport.exe version1` volt használja, töltse fel minden meghajtó előkészített egy fájlt. Ha a napló mérete meghaladja a 2 MB, akkor használhatja a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` is létrejön, a naplófájl. 
-    - Válassza ki a cél tárfiók adatait tároló. 
-    - Dropoff helyét a rendszer automatikusan kitölti a kiválasztott tárfiók a régióhoz igazodik.
+    - Töltse fel a meghajtó-előkészítési lépés során beszerzett meghajtó-napló fájljait. Ha `waimportexport.exe version1` volt használatban, töltsön fel egy fájlt minden előkészített meghajtóra. Ha a naplófájl mérete meghaladja a 2 MB-ot, akkor a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` is létrehozhatja a naplófájl használatával. 
+    - Válassza ki a cél Storage-fiókot, ahol az adat található. 
+    - A lemorzsolódási helye automatikusan kitöltődik a kiválasztott Storage-fiók régiója alapján.
    
-   ![Importálási feladat létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. A **szállítási adatok visszaadása**:
+4. **Visszaszállítási adatok**:
 
-   - A legördülő listából válassza ki a szolgáltató. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, válasszon egy meglévő lehetőséget a legördülő listából. A csapat kapcsolattartási Azure Data Box Operations `adbops@microsoft.com` együtt tervezi használni a szállítmányozó vonatkozó információkat.
-   - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. Ha nincs egy fiók száma, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Szállítmányozói fiókjára.
-   - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió. 
+   - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Vegye fel a kapcsolatot Azure Data Box operatív csapattal a `adbops@microsoft.com` címen a használni kívánt szolgáltatóval kapcsolatos információkkal.
+   - Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
+   - Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót. 
         
        > [!TIP] 
-       > Helyett adjon meg egy e-mail címet, egy-egy felhasználóhoz, adjon meg egy csoport e-mail-címet. Ez biztosítja, értesítések fogadására, még akkor is, ha egy rendszergazda hagyja.
+       > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
 
-     ![Importálási feladat létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
-5. Az a **összefoglalás**:
+5. Az **összegzésben**:
 
-   - Tekintse át az összefoglalást a feladat információk. Jegyezze fel a feladat neve és a szállítási cím tehetnek a lemezeket az Azure-bA az Azure-adatközpontba. Ez az információ később használják a szállítási címkét.
-   - Kattintson a **OK** az importálási feladat létrehozása.
+   - Tekintse át az összegzésben megadott feladattal kapcsolatos információkat. Jegyezze fel a feladatok nevét és az Azure-adatközpontok szállítási címeit, hogy a lemezeket vissza lehessen szállítani az Azure-ba. Ezeket az információkat később a szállítási címkén lehet használni.
+   - Az importálási feladatok létrehozásához kattintson **az OK** gombra.
 
-     ![Importálási feladat létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>3\. lépés: A meghajtók szállításra 
+## <a name="step-3-ship-the-drives"></a>3\. lépés: a meghajtók szállítása 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>4\. lépés: A nyomkövetési adatokat a feladat frissítése
+## <a name="step-4-update-the-job-with-tracking-information"></a>4\. lépés: a feladatok frissítése a követési adatokkal
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>5\. lépés: Az Azure-ba történő adatfeltöltés ellenőrzése
+## <a name="step-5-verify-data-upload-to-azure"></a>5\. lépés: az adatok feltöltésének ellenőrzése az Azure-ban
 
-Nyomon követheti a feladat befejezését. A feladat befejeződése után győződjön meg arról, hogy az adatok feltöltötte-e az Azure-bA. Törli a helyszíni adatokat, csak azt követően, ha megbizonyosodott arról, hogy a feltöltés sikeres volt.
+A feladatot nyomon követheti befejezésre. A feladatok befejezése után ellenőrizze, hogy az adatok fel lettek-e töltve az Azure-ba. Csak a feltöltés sikeres ellenőrzése után törölje a helyszíni adatok törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A feladat és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
-* [Importálási/exportálási követelményeinek áttekintése](storage-import-export-requirements.md)
+* [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
+* [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)
 
 

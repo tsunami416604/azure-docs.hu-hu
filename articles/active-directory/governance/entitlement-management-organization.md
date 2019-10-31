@@ -1,5 +1,5 @@
 ---
-title: Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
+title: Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében – Azure Active Directory
 description: Megtudhatja, hogyan engedélyezheti a szervezeten kívüli felhasználók számára a hozzáférési csomagok bekérését, így dolgozhat a projekteken.
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d45db1f62b370a2692ed932572e16c247b8903
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952484"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174142"
 ---
-# <a name="add-a-connected-organization-in-azure-ad-entitlement-management-preview"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében (előzetes verzió)
+# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
 Az Azure AD-jogosultságok kezelése lehetővé teszi, hogy együttműködjön a szervezeten kívüli személyekkel. Ha gyakran dolgozik együtt a külső Azure AD-címtárban vagy-tartományban lévő felhasználókkal, csatlakoztatott szervezetként is hozzáadhatja őket. Ez a cikk azt ismerteti, hogyan adhat hozzá egy csatlakoztatott szervezetet, hogy lehetővé tegye a szervezeten kívüli felhasználók számára az erőforrások kérését a címtárban.
 
@@ -39,11 +39,9 @@ Két csatlakoztatott szervezetet is beállíthat – egyet a Graphic Design Inst
 
 Az Azure AD-címtár vagy-tartomány felhasználóinak hitelesítése a hitelesítés típusától függ. A csatlakoztatott szervezetek hitelesítési típusai a következők:
 
-| Hitelesítés típusa | Állapot |
-| --- | --- |
-| Azure AD | Támogatott |
-| [Közvetlen összevonás](../b2b/direct-federation.md) | Előzetes verzió |
-| [Egyszeri jelszó](../b2b/one-time-passcode.md) (tartomány) | Előzetes verzió |
+- Azure AD
+- [Közvetlen összevonás](../b2b/direct-federation.md)
+- [Egyszeri jelszó](../b2b/one-time-passcode.md) (tartomány)
 
 ## <a name="add-a-connected-organization"></a>Csatlakoztatott szervezet hozzáadása
 

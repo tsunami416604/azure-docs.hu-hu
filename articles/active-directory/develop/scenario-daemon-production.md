@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056325"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175395"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe
 
@@ -38,7 +38,7 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Íme néhány hivatkozás, amely további információkat tartalmaz:
 
@@ -51,23 +51,22 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 - Egyéb minták/oktatóanyagok:
   - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) egy egyszerű .net Core Daemon Console-alkalmazás, amely megjeleníti a bérlő felhasználóit, és lekérdezi a Microsoft Graph.
 
-    ![topológia](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![topology](media/scenario-daemon-app/daemon-app-sample.svg)
 
     Ugyanez a minta is szemlélteti a tanúsítványokkal való változást.
 
-    ![topológia](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![topology](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
   - a [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) egy ASP.net MVC-webalkalmazást tartalmaz, amely az alkalmazás identitásával szinkronizálja az Microsoft Graph adatait a felhasználó nevében. A minta a rendszergazdai engedélyezési folyamatot is szemlélteti.
 
-    ![topológia](media/scenario-daemon-app/damon-app-sample-web.svg)
+    ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-A MSAL Python jelenleg nyilvános előzetes verzióban érhető el.
-További információ: [MSAL Python in-repository Samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
+Próbálja ki [, hogyan szerezzen be tokent, és hívja meg Microsoft Graph API-t egy Python-konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-python-daemon.md).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j (MSAL. A Java) jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Java in-repository Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+A MSAL Java jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562173"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175161"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
@@ -31,7 +31,7 @@ Ez a dokumentum ismerteti, hogy mire van szüksége a biztonságos munkaállomá
 
 A Cloud Services gyors bevezetése és a bárhonnan végzett munka lehetősége új kiaknázási módszert hozott létre. Gyenge biztonsági vezérlők kiaknázásával olyan eszközökön, ahol a rendszergazdák dolgoznak, a támadók hozzáférhetnek a Kiemelt erőforrásokhoz.
 
-A magas jogosultsági szintű visszaélések és az ellátási lánc elleni támadások a támadók által a szervezeteknek felhasználható öt módszer közé tartoznak. A második leggyakrabban észlelt incidensek a 2018-as, a [Verizon Threat](https://enterprise.verizon.com/resources/reports/dbir/)-jelentésnek és a [biztonsági intelligencia jelentésnek](https://aka.ms/sir)megfelelően jelentett incidensek esetében is.
+A magas jogosultsági szintű visszaélések és az ellátási lánc elleni támadások a támadók által a szervezeteknek felhasználható öt módszer közé tartoznak. A második leggyakrabban észlelt incidensek a 2018-as, a [Verizon Threat-jelentésnek](https://enterprise.verizon.com/resources/reports/dbir/)és a [biztonsági intelligencia jelentésnek](https://aka.ms/sir)megfelelően jelentett incidensek esetében is.
 
 A legtöbb támadó a következő lépéseket hajtja végre:
 
@@ -85,7 +85,7 @@ A biztonságos munkaállomás esetében elengedhetetlen egy olyan ellátási Lá
 ## <a name="device-roles-and-profiles"></a>Eszközök szerepkörei és profiljai
 
 Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, amelyek segítségével biztonságosabb megoldásokat hozhat létre a felhasználók, a fejlesztők és az informatikai szakemberek számára. Ezek a profilok kiegyensúlyozzák a használhatóságot és a kockázatokat olyan gyakori felhasználók számára, akik kihasználhatják a bővített vagy biztonságos munkaállomásokat. Az itt megadott beállítások az iparág által elfogadott szabványokon alapulnak. Ez az útmutató bemutatja, hogyan erősítheti meg a Windows 10 rendszert, és csökkentheti az eszköz vagy a felhasználó biztonságával kapcsolatos kockázatokat. Ezt a házirend és a technológia segítségével végezheti el a biztonsági funkciók és kockázatok kezeléséhez.
-![Biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/seccon-levels.png)
+![biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/seccon-levels.png)
 
 * **Alacsony biztonság** – a felügyelt, szabványos munkaállomás jó kiindulási pontot biztosít a legtöbb otthoni és kisméretű üzleti használathoz. Ezek az eszközök regisztrálva vannak az Azure AD-ben, és az Intune-nal kezelhetők. Ez a profil lehetővé teszi, hogy a felhasználók bármilyen alkalmazást futtassanak, és böngésszenek bármely webhelyen. Egy kártevő szoftver, például a [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) engedélyezése szükséges.
 
@@ -110,6 +110,6 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
   * [Intune hálózati kommunikációs követelmények](https://docs.microsoft.com/intune/network-bandwidth-use)
   * [ATP hálózati kommunikációs követelmények](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Biztonságos Azure által felügyelt munkaállomás üzembe helyezése](howto-azure-managed-workstation.md).

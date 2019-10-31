@@ -19,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514a74ed0ae52fb7f2a7b7d7f19c0b364dc2ba91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8ccf88bcffdf484772f5f3ad35316d2c74fb104e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934865"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175643"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Alkalmazások migrálása MSAL iOS és macOS rendszerű eszközökre
 

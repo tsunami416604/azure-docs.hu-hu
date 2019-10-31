@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás, hogy a hívások webes API-k (webes API hívása) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást, amely meghívja a webes API-k (webes API hívása)
+title: Webes API-kat meghívó webalkalmazás (webes API meghívása) – Microsoft Identity platform
+description: Ismerje meg, hogyan készíthet olyan webalkalmazást, amely webes API-kat hív meg (webes API-t hív meg)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785464"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175303"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webes API-hívás, amely meghívja a webes API - webalkalmazás
+# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webes API-kat meghívó webalkalmazás – webes API meghívása
 
-Most, hogy megkapta a jogkivonatot, meghívhatja egy védett webes API-t.
+Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
 
-## <a name="aspnet-core"></a>ASP.NET-mag
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A művelet az egy egyszerűsített kódja a `HomeController`. Ez a kód beolvassa egy tokent a Microsoft Graph meghívásához. Ez alkalommal a kód lett hozzáadva, a REST API-ként Microsoft Graph meghívásához bemutató. A graph API URL-címe megtalálható a `appsettings.json` fájlt, és olvassa el a nevű változóban `webOptions`:
+Itt látható a `HomeController`műveletének egyszerűsített kódja. Ez a kód a Microsoft Graph meghívására szolgáló tokent kap. Ez az időkód lett hozzáadva, amely bemutatja, hogyan hívható meg a Microsoft Graph REST APIként. A Graph API URL-címe a `appsettings.json` fájlban van megadva, és a `webOptions`nevű változóban olvasható:
 
 ```JSon
 {
@@ -83,11 +83,54 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Használhatja ugyanezt az elvet minden webes API meghívásához.
+> Ugyanezt az elvet használhatja bármely webes API meghívásához.
 >
-> A legtöbb Azure webes API-k egy SDK-t, amely leegyszerűsíti a hívó azt adja meg. Ez egyben a kis-és a Microsoft Graph. A következő cikkben bemutatjuk, hogy hol található a ezeket a szempontokat bemutató oktatóanyag.
+> A legtöbb Azure-beli webes API egy SDK-t biztosít, amely leegyszerűsíti a hívását. Ez a Microsoft Graph esetében is. A következő cikkből megtudhatja, hol talál egy oktatóanyagot, amely bemutatja ezeket a szempontokat.
 
-## <a name="next-steps"></a>További lépések
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+private String getUserInfoFromGraph(String accessToken) throws Exception {
+    // Microsoft Graph user endpoint
+    URL url = new URL("https://graph.microsoft.com/v1.0/me");
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+    // Set the appropriate header fields in the request header.
+    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+    conn.setRequestProperty("Accept", "application/json");
+
+    String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+    int responseCode = conn.getResponseCode();
+    if(responseCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException(response);
+    }
+
+    JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+    return responseObject.toString();
+}
+
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Helyezze át az éles környezetbe](scenario-web-app-call-api-production.md)
+> [Áthelyezés éles környezetbe](scenario-web-app-call-api-production.md)

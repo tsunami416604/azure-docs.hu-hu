@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan kérhet hozzáférést egy hozzáférési csomaghoz a Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban a saját hozzáférési portál használatával.
+title: Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan kérhet hozzáférést egy hozzáférési csomaghoz Azure Active Directory jogosultságok kezelése a saját hozzáférési portál használatával.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990742"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173700"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében
 
 Az Azure AD-jogosultságok kezelésével a hozzáférési csomag lehetővé teszi az erőforrások és házirendek egyszeri beállítását, amely automatikusan felügyeli a hozzáférést a hozzáférési csomag élettartamához. 
 

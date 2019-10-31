@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: f1c5bb6f8a4c7705940f8659575690939c3e5433
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 603c407f93294f2c9697dcee4c3d5d829033d5d9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964991"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176955"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage üzembe helyezése IoT Edge modulon az eszközön
 
@@ -78,7 +78,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
    - Cserélje le a `<your storage account name>`t egy megjegyezhető névre. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
 
-   - Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
+   - Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
 
    - Cserélje le a `<storage mount>`t a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy a IoT Edge eszköz egyik könyvtárának abszolút elérési útját, amelyen a blob-modul adatait tárolni szeretné. A Storage-csatlakoztatás leképezi az eszközön az Ön által megadott helyet a modul egy készletének megfelelő helyére.
 
@@ -191,7 +191,7 @@ A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segíten
 
 1. Cserélje le a `<your storage account name>`t egy megjegyezhető névre. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
 
-1. Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
+1. Cserélje le a `<your storage account key>`t egy 64 bájtos Base64-kulcsra. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
 
 1. Cserélje le a `<storage mount>`t a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy a IoT Edge eszköz egyik könyvtárának abszolút elérési útját, amelyen a blob-modul adatait tárolni szeretné. A Storage-csatlakoztatás leképezi az eszközön az Ön által megadott helyet a modul egy készletének megfelelő helyére.  
 

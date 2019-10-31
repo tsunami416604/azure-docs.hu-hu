@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193958"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176737"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
 
@@ -61,11 +61,11 @@ Az első telepítési példában az összes API-t csak a Virtual Networkon belü
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Mi szükséges a API Management és Application Gateway közötti integráció létrehozásához?
 
 * **Háttér-kiszolgáló készlete:** Ez a API Management szolgáltatás belső virtuális IP-címe.
-* **Háttérbeli kiszolgáló készletének beállításai:** Minden készlet rendelkezik olyan beállításokkal, mint a port, a protokoll és a cookie-alapú affinitás. Ezeket a beállításokat a rendszer a készletben lévő összes kiszolgálóra alkalmazza.
+* **Háttér-kiszolgálókészlet beállításai:** Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezeket a beállításokat a rendszer a készletben lévő összes kiszolgálóra alkalmazza.
 * **Előtér-port:** Ez az Application gatewayen megnyitott nyilvános port. A forgalom a háttér-kiszolgálók egyikére lesz átirányítva.
-* **Hallgató** A figyelő egy előtérbeli porttal, egy protokollal (http vagy https, a kis-és nagybetűk megkülönböztetésével) és az SSL-tanúsítvány nevével rendelkezik (SSL-kiszervezés konfigurálásakor).
-* **Szabály** A szabály egy figyelőt hoz létre egy háttér-kiszolgáló készlethez.
-* **Egyéni állapot mintavétele:** Application Gateway alapértelmezés szerint az IP-címeken alapuló mintavételeket használja annak megállapítására, hogy a BackendAddressPool mely kiszolgálók aktívak. A API Management szolgáltatás csak a megfelelő állomásfejléc-fejlécre vonatkozó kérelmekre válaszol, ezért az alapértelmezett mintavételek sikertelenek lesznek. Meg kell határozni egy egyéni állapot-mintavételt, hogy az Application Gateway megtudja, hogy a szolgáltatás életben van, és továbbítania kell a kérelmeket.
+* **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, a kis- és a nagybetűk megkülönböztetésével) és SSL tanúsítványnévvel rendelkezik (SSL-kiszervezés konfigurálásakor).
+* **Szabály:** A szabály egy figyelőt hoz létre egy háttér-kiszolgáló készlethez.
+* **Egyéni állapot** mintavétele: Application Gateway alapértelmezés szerint az IP-címeken alapuló mintavételeket használja annak megállapítására, hogy a BackendAddressPool mely kiszolgálók aktívak. A API Management szolgáltatás csak a megfelelő állomásfejléc-fejlécre vonatkozó kérelmekre válaszol, ezért az alapértelmezett mintavételek sikertelenek lesznek. Meg kell határozni egy egyéni állapot-mintavételt, hogy az Application Gateway megtudja, hogy a szolgáltatás életben van, és továbbítania kell a kérelmeket.
 * **Egyéni tartományi tanúsítványok:** Az internetről API Management eléréséhez létre kell hoznia az állomásnév CNAME hozzárendelését az Application Gateway előtér-DNS-névre. Ezzel biztosíthatja, hogy a API Management Application Gateway küldött állomásnév fejléce és tanúsítványa egy APIM legyen felismerhető. Ebben a példában két tanúsítványt fogunk használni – a háttérrendszer és a fejlesztői portál számára.  
 
 ## <a name="overview-steps"></a> API Management és Application Gateway integrálásához szükséges lépések
@@ -86,7 +86,7 @@ Ebben az útmutatóban a **fejlesztői portált** külső célközönségeknek i
 > Ha az Azure AD-t vagy harmadik féltől származó hitelesítést használ, engedélyezze Application Gateway a [cookie-alapú munkamenet-affinitás](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) funkciót.
 
 > [!WARNING]
-> Ha meg szeretné akadályozni, hogy Application Gateway WAF a OpenAPI-specifikáció letöltését a fejlesztői portálon, le kell tiltania a tűzfalszabályok `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`listáját.
+> Ha meg szeretné akadályozni, hogy Application Gateway WAF a OpenAPI-specifikáció letöltését a fejlesztői portálon, le kell tiltania a tűzfalszabály `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 
@@ -119,7 +119,7 @@ $location = "West US"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Hozzon létre egy Virtual Network és egy alhálózatot az Application Gateway számára
 
@@ -187,7 +187,7 @@ A fenti parancs sikeres végrehajtásához tekintse meg a [belső VNET elérés�
 
 ### <a name="step-1"></a>1\. lépés
 
-Inicializálja a következő változókat a tartományokhoz tartozó titkos kulcsokkal rendelkező tanúsítványok részleteivel. Ebben a példában a és `api.contoso.net` `portal.contoso.net`a-t fogjuk használni.  
+Inicializálja a következő változókat a tartományokhoz tartozó titkos kulcsokkal rendelkező tanúsítványok részleteivel. Ebben a példában a `api.contoso.net` és a `portal.contoso.net`t fogjuk használni.  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -208,12 +208,15 @@ Hozza létre és állítsa be a proxyhoz tartozó állomásnév-konfigurációs 
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> Az örökölt fejlesztői portál kapcsolatának konfigurálásához a `-HostnameType DeveloperPortal` és a `-HostnameType Portal`cseréjére van szükség.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
@@ -273,10 +276,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>6\. lépés
 
-Hozzon létre egyéni mintavételeket a API Management `ContosoApi` Service proxy tartomány végpontján. Az elérési út `/status-0123456789abcdef` a API Management összes szolgáltatásán üzemeltetett alapértelmezett állapot-végpont. Egyéni `api.contoso.net` mintavételi állomásnévként állítsa be az SSL-tanúsítvánnyal való biztonságossá tételét.
+Hozzon létre egyéni mintavételeket a API Management Service `ContosoApi` proxy tartomány végpontján. Az elérési út `/status-0123456789abcdef` az összes API Management szolgáltatásban üzemeltetett alapértelmezett állapot-végpont. Állítsa be `api.contoso.net` egyéni mintavételi állomásnévként az SSL-tanúsítvánnyal biztonságossá tételéhez.
 
 > [!NOTE]
-> Az állomásnév `contosoapi.azure-api.net` az alapértelmezett proxy állomásnév, amelyet a `contosoapi` rendszer a nyilvános Azure-ban létrehozott szolgáltatás létrehozásakor konfigurált.
+> A hostname `contosoapi.azure-api.net` az alapértelmezett proxy állomásnév, amelyet a rendszer a `contosoapi` nevű szolgáltatás nyilvános Azure-ban való létrehozásakor konfigurált.
 >
 
 ```powershell
@@ -350,7 +353,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Az átjáró létrehozása után a következő lépés a kommunikációra szolgáló előtér konfigurálása. Nyilvános IP-cím használata esetén a Application Gateway dinamikusan hozzárendelt DNS-nevet igényel, amely nem könnyen használható.
 
-A Application Gateway DNS-nevét olyan CNAME rekord létrehozásához kell használni, amely a APIM-proxy állomásnevét (például `api.contoso.net` a fenti példákban) erre a DNS-névre mutat. Az előtérbeli IP CNAME rekordjának konfigurálásához kérje le a Application Gateway és a hozzá tartozó IP/DNS-név részleteit a PublicIPAddress elem használatával. A-Records használata nem ajánlott, mert a virtuális IP-cím az átjáró újraindításakor változhat.
+A Application Gateway DNS-nevét olyan CNAME rekord létrehozásához kell használni, amely a APIM-proxy állomásnevét (például a fenti példákban `api.contoso.net`) erre a DNS-névre mutat. Az előtérbeli IP CNAME rekordjának konfigurálásához kérje le a Application Gateway és a hozzá tartozó IP/DNS-név részleteit a PublicIPAddress elem használatával. A-Records használata nem ajánlott, mert a virtuális IP-cím az átjáró újraindításakor változhat.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

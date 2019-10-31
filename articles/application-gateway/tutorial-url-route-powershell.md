@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6a8c68edd658e5c207b88b48ee09c6472441e78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: MT
+ms.openlocfilehash: f8a9d9e8a3d2b69d846bc4f4bc1750e6d23aaab4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688162"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176590"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webes forgalom irányítása URL-cím alapján az Azure PowerShell használatával
 
@@ -38,11 +38,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Login-AzAccount` kapcsolat létrehozása az Azure-ral.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Login-AzAccount` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 
 Az erőforrások létrehozásához szükséges idő miatt az eljárás végrehajtása akár 90 percet is igénybe vehet.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot, amely az alkalmazás összes erőforrását tartalmazza. 
 
@@ -81,7 +81,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
 
 Ebben a szakaszban az alkalmazásátjárót támogató erőforrásokat, majd az átjárót hozza létre. A létrehozott erőforrások a következők:
 
@@ -119,13 +119,13 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>Az alapértelmezett készlet létrehozása és beállítása
 
-Hozza létre a *appGatewayBackendPool* nevű alapértelmezett háttér-készletet az Application gatewayhez a [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)használatával. Konfigurálja a háttér-készlet beállításait a [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)használatával.
+Hozza létre a *appGatewayBackendPool* nevű alapértelmezett háttér-készletet az Application gatewayhez a [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)használatával. Konfigurálja a háttér-készlet beállításait a [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)használatával.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool
 
-$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSetting `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -246,7 +246,7 @@ $appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$poolSettings = Get-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = Get-AzApplicationGatewayBackendHttpSetting `
   -ApplicationGateway $appgw `
   -Name myPoolSettings
 
@@ -313,7 +313,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A létrehozott méretezési csoportok neve *myvmss1*, *myvmss2* és *myvmss3*. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -412,9 +412,9 @@ for ($i=1; $i -le 3; $i++)
 }
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
-Az Application Gateway nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`,, vagy `http://52.168.55.24:8080/video/test.htm`.
+Az Application Gateway nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`vagy `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -422,13 +422,13 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/images/test.htm értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet a http://&lt;IP-cím&gt;: 8080/images/test.htm, és cserélje le az IP-címet &lt;IP-cím&gt;, és az alábbi példához hasonlóan kell megjelennie:
 
-![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
+![Tesztképek URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/video/test.htm értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet a http://&lt;IP-cím&gt;: 8080/video/test.htm, és cserélje le az IP-címet &lt;IP-cím&gt;, és az alábbi példához hasonlóan kell megjelennie:
 
-![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
+![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -438,6 +438,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Forgalom átirányítása URL-cím alapján](./tutorial-url-redirect-powershell.md)

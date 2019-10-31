@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980495"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175779"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -31,11 +31,11 @@ Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminol�
 
 Új szabályzat létrehozásakor nincsenek kiválasztva felhasználók, csoportok, alkalmazások vagy hozzáférés-vezérlések.
 
-![Felhőalkalmazások](./media/best-practices/02.png)
+![Felhőalapú alkalmazások](./media/best-practices/02.png)
 
 A szabályzat működéséhez konfigurálnia kell a következőket:
 
-| Mi:           | Hogyan                                  | miért |
+| Mi           | Hogyan                                  | miért |
 | :--            | :--                                  | :-- |
 | **Felhőalapú alkalmazások** |Válasszon ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
 | **Felhasználók és csoportok** | Válasszon ki legalább egy olyan felhasználót vagy csoportot, amely jogosult a kiválasztott felhőalapú alkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
@@ -108,9 +108,9 @@ A környezetében el kell kerülnie a következő konfigurációkat:
 **Minden felhasználó, minden felhőalapú alkalmazás:**
 
 - **Hozzáférés letiltása** – ez a konfiguráció blokkolja a teljes szervezetet, ami biztosan nem jó ötlet.
-- **Megfelelő eszköz** megkövetelése – azoknál a felhasználóknál, akik még nem regisztrálták az eszközeiket, ez a szabályzat blokkolja az összes hozzáférést, beleértve az Intune-portálhoz való hozzáférést is. Ha a rendszergazda regisztrált eszköz nélkül van, akkor ez a szabályzat megakadályozza, hogy visszalépjen a Azure Portal a szabályzat módosításához.
-- **Tartományhoz való csatlakozás** megkövetelése – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha még nem rendelkezik tartományhoz csatlakoztatott eszközzel.
-- **Alkalmazás-védelmi házirend** megkövetelése – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha nem rendelkezik Intune-házirenddel. Ha Ön az Intune app Protection-szabályzattal nem rendelkező ügyfélalkalmazás, akkor ez a szabályzat megakadályozza, hogy visszajusson a portálokra, például az Intune-ba és az Azure-ba.
+- **Megfelelő eszköz megkövetelése** – azoknál a felhasználóknál, akik még nem regisztrálták az eszközeiket, ez a szabályzat blokkolja az összes hozzáférést, beleértve az Intune-portálhoz való hozzáférést is. Ha a rendszergazda regisztrált eszköz nélkül van, akkor ez a szabályzat megakadályozza, hogy visszalépjen a Azure Portal a szabályzat módosításához.
+- **Tartományhoz való csatlakozás megkövetelése** – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha még nem rendelkezik tartományhoz csatlakoztatott eszközzel.
+- **Alkalmazás-védelmi házirend megkövetelése** – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha nem rendelkezik Intune-házirenddel. Ha Ön az Intune app Protection-szabályzattal nem rendelkező ügyfélalkalmazás, akkor ez a szabályzat megakadályozza, hogy visszajusson a portálokra, például az Intune-ba és az Azure-ba.
 
 **Minden felhasználó, minden felhőalapú alkalmazás, minden eszköz platform:**
 
@@ -142,9 +142,9 @@ Ajánlott eljárásként hozzon létre egy felhasználói fiókot:
 
 További információ: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha tudni szeretné:
 
-- Feltételes hozzáférési szabályzat konfigurálása: a többtényezős hitelesítés megkövetelése [adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md).
-- A feltételes hozzáférési szabályzatok megtervezése: a [feltételes hozzáférési](plan-conditional-access.md)környezet megtervezése Azure Active Directoryban.
+- Feltételes hozzáférési szabályzat konfigurálása: a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md).
+- A feltételes hozzáférési szabályzatok megtervezése: a [feltételes hozzáférési környezet megtervezése Azure Active Directoryban](plan-conditional-access.md).

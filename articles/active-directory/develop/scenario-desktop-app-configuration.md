@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268417"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175437"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó asztali alkalmazás – kód konfigurálása
 
@@ -28,13 +28,22 @@ Most, hogy létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a k
 
 ## <a name="msal-libraries"></a>MSAL-kódtárak
 
-Az egyetlen MSAL-függvénytár, amely több platformon támogatja az asztali alkalmazásokat, jelenleg a MSAL.NET.
+Az asztali alkalmazásokat támogató Microsoft-kódtárak a következők:
 
-Az iOS-és macOS-MSAL csak macOS rendszeren futó asztali alkalmazásokat támogat. 
+  MSAL-könyvtár | Leírás
+  ------------ | ----------
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások létrehozását több platformon – Linux, Windows és MacOS
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását. Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A támogatja az asztali alkalmazások több platformon történő összeállítását. Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Csak macOS rendszeren futó asztali alkalmazások támogatása
 
-## <a name="public-client-application-with-msalnet"></a>Nyilvános ügyfélalkalmazás MSAL.NET
+## <a name="public-client-application"></a>Nyilvános ügyfélalkalmazás
 
-A kód szempontjából az asztali alkalmazások nyilvános ügyfélalkalmazások, ezért a MSAL.NET `IPublicClientApplication`létrehozása és kezelése. A dolgok újbóli megegyeznek, függetlenül attól, hogy interaktív hitelesítést használ-e, vagy sem.
+A kód szempontjából az asztali alkalmazások nyilvános ügyfélalkalmazások. A konfiguráció egy kicsit különbözik attól függően, hogy interaktív hitelesítést használ-e, vagy sem.
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+Létre kell hoznia és módosítania kell a MSAL.NET `IPublicClientApplication`.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -47,7 +56,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Ha az interaktív hitelesítést vagy az eszköz kódját szeretné használni, a fentieknek megfelelően a `.WithRedirectUri` módosítót kell használnia:
+Ha az interaktív hitelesítést vagy az eszköz kódját szeretné használni, a fentiekben leírtak szerint a `.WithRedirectUri` módosítót kell használnia:
 
 ```CSharp
 IPublicClientApplication app;
@@ -98,16 +107,16 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+### <a name="learn-more"></a>További információ
 
 További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 
-- Az összes elérhető módosító listájának megtekintéséhez tekintse `PublicClientApplicationBuilder`meg a Reference dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- A `PublicClientApplicationOptions` [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)-ben elérhető összes beállítás leírását a dokumentációban találja
+- A `PublicClientApplicationBuilder`on elérhető összes módosító listáját a dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) ismertető cikk tartalmazza.
+- A `PublicClientApplicationOptions`ban elérhető összes beállítás leírását lásd: [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), a hivatkozási dokumentációban
 
-## <a name="complete-example-with-configuration-options"></a>Példa teljes konfigurációs beállításokkal
+### <a name="complete-example-with-configuration-options"></a>Példa teljes konfigurációs beállításokkal
 
-Képzeljünk el egy .net Core Console-alkalmazást, amely `appsettings.json` a következő konfigurációs fájllal rendelkezik:
+Képzeljen el egy olyan .NET Core Console-alkalmazást, amely a következő `appsettings.json` konfigurációs fájllal rendelkezik:
 
 ```JSon
 {
@@ -175,9 +184,32 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-a `.Build()` metódus hívása előtt pedig felülbírálhatja a konfigurációt a korábban látott `.WithXXX` metódusok hívásával.
+és a `.Build()` metódus meghívása előtt felülbírálhatja a konfigurációt a korábban látott `.WithXXX` metódusok hívásával.
 
-## <a name="public-client-application-with-msal-for-ios-and-macos"></a>Nyilvános ügyfélalkalmazás iOS és macOS rendszerű MSAL
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_COMMON)
+        .build();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
 A következő kód egy nyilvános ügyfélalkalmazás, a Microsoft Azure nyilvános felhőben, munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiók való beléptetését hozza létre a felhasználók számára.
 
@@ -187,7 +219,7 @@ Objective-C:
 
 ```objc
 NSError *msalError = nil;
-    
+
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
@@ -210,12 +242,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -225,12 +257,13 @@ Swift
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
+---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Jogkivonat beszerzése asztali alkalmazáshoz](scenario-desktop-acquire-token.md)

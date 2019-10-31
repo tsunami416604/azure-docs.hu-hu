@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7dfd7e29b119b5fe98b649b2e5f5f45b422c4634
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 698702e24f1f6dfc6b94b75de77c08156832e566
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053423"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177842"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -159,11 +159,14 @@ A Windows Server feladatátvételi fürtszolgáltatást Azure File Sync támogat
 
 ### <a name="data-deduplication"></a>Az deduplikálás
 **Ügynök verziója 5.0.2.0 vagy újabb**   
-Az deduplikálás támogatott a Windows Server 2016 és a Windows Server 2019 rendszeren engedélyezett felhőalapú rétegekből származó kötetek esetében. Ha engedélyezi az deduplikálás szolgáltatást egy olyan köteten, amelyen engedélyezve van a felhőalapú réteg, a további tárhelyek kiépítésének hiányában további fájlokat is gyorsítótárazhat a helyszínen. 
+Az deduplikálás olyan köteteken támogatott, amelyeken engedélyezve van a felhőalapú rétegek használata a Windows Server 2016 rendszeren. Ha engedélyezi az deduplikálás szolgáltatást egy olyan köteten, amelyen engedélyezve van a felhőalapú réteg, a további tárhelyek kiépítésének hiányában további fájlokat is gyorsítótárazhat a helyszínen. 
 
 Ha az adatok deduplikálása engedélyezve van egy olyan köteten, amelyen engedélyezve van a felhőalapú rétegek használata, a deduplikáció optimalizált fájlokat a rendszer a felhőre vonatkozó házirend-beállítások alapján a normál fájlhoz hasonló módon fogja összeállítani. Ha a deduplikáció optimalizált fájlok lettek kiválasztva, az adatok deduplikálása adatgyűjtési feladatsor automatikusan lefuttatja a lemezterület felszabadítását a köteten lévő más fájlok által már nem hivatkozott felesleges adattömbök eltávolításával.
 
 Vegye figyelembe, hogy a mennyiségi megtakarítás csak a kiszolgálón érvényes. Az Azure-fájlmegosztás adatait nem törli a rendszer.
+
+> [!Note]  
+> Az deduplikálás és a felhőalapú rétegek jelenleg nem támogatottak ugyanazon a köteten a 2019-as kiszolgálón, mert egy jövőbeli frissítésben kijavított hiba történik.
 
 **Windows Server 2012 R2 vagy régebbi verziójú ügynök**  
 Azoknál a köteteknél, amelyeken nincs engedélyezve a felhőalapú rétegek használata, Azure File Sync támogatja a Windows Server-alapú Adatmásolást a köteten.
@@ -274,6 +277,8 @@ Azure File Sync csak a következő régiókban érhető el:
 | US Gov Arizona | Arizona |
 | US Gov Texas | Texas |
 | US Gov Virginia | Virginia |
+| Egyesült Arab Emírségek északi régiója | Dubai |
+| Az Egyesült Arab Emírségek középső régiója * | Abu Dzabi |
 | Nyugat-Európa | Hollandia |
 | USA nyugati középső régiója | Wyoming |
 | USA nyugati régiója | Kalifornia |

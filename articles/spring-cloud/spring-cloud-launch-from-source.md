@@ -4,24 +4,34 @@ description: Ismerje meg, hogyan indíthat Azure Spring Cloud-alkalmazást közv
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170534"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177973"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>A Spring Cloud-alkalmazás elindítása forráskódból
 
+Az Azure Spring Cloud lehetővé teszi, hogy könnyedén futtasson Spring Cloud-alapú Service-alkalmazásokat az Azure-ban.
+
 Az Azure Spring Cloud lehetővé teszi, hogy az alkalmazást közvetlenül a Java-forráskódból vagy egy előre elkészített JAR-ból indítsa el. Ez a cikk végigvezeti a szükséges lépéseken.
+
+Ez a rövid útmutató a következőket ismerteti:
+
+> [!div class="checklist"]
+> * Szolgáltatási példány kiépítése
+> * Konfigurációs kiszolgáló beállítása egy példányhoz
+> * A Services-alkalmazások helyi létrehozása
+> * Az egyes szolgáltatások üzembe helyezése
+> * Nyilvános végpont kiosztása az alkalmazáshoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként azt javasoljuk, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként azt javasoljuk, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Habár az Azure Spring Cloud előzetes verzióban érhető el, a Microsoft korlátozott támogatást biztosít SLA nélkül.  Az előzetes verziókkal kapcsolatos támogatásról további információt ebben a [támogatási gyikban](https://azure.microsoft.com/support/faq/)találhat.
 
 Mielőtt elkezdené, győződjön meg arról, hogy az Azure-előfizetése rendelkezik a szükséges függőségekkel:
 

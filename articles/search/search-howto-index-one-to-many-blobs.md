@@ -1,19 +1,20 @@
 ---
 title: Egy blob indexelése számos keresési indexelő dokumentumba az Azure Blob Indexer-ből a teljes szöveges kereséshez
-description: Azure-Blobok bejárása a szöveges tartalomhoz az Azure Cognitive Search blob indexelő használatával. Az egyes Blobok egy vagy több keresési indexelési dokumentumot is tartalmazhatnak.
-manager: nitinme
+description: Azure-Blobok bejárása a szöveges tartalomhoz a Azure Search blob indexelő használatával. Minden blob egy vagy több Azure Search indexelő dokumentumot eredményezhet.
+ms.date: 05/02/2019
 author: arv100kri
+manager: nitinme
 ms.author: arjagann
+services: search
+ms.service: search
 ms.devlang: rest-api
-ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ec7796f19df8d58831b442adeae02b54223799c1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d58be681c6a3e609712f9b0206de69f01d6a35f6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793733"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177998"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobok indexelése több keresési dokumentum létrehozásához
 Alapértelmezés szerint a blob indexelő egyetlen keresési dokumentumként fogja kezelni a blob tartalmát. Bizonyos **parsingMode** -értékek olyan forgatókönyveket támogatnak, amelyekben egy adott blob több keresési dokumentumot is eredményezhet. A különböző típusú **parsingMode** , amelyek lehetővé teszik, hogy az indexelő több keresési dokumentumot is kinyerjen a blobból:
@@ -22,11 +23,11 @@ Alapértelmezés szerint a blob indexelő egyetlen keresési dokumentumként fog
 + `jsonLines`
 
 ## <a name="one-to-many-document-key"></a>Egy-a-többhöz dokumentum kulcsa
-Az Azure Cognitive Search indexben megjelenített minden dokumentumot egyedileg azonosít egy dokumentum kulcsa. 
+A Azure Search indexben megjelenített minden dokumentumot egyedileg azonosít egy dokumentum kulcsa. 
 
-Ha nincs megadva elemzési mód, és ha nincs explicit leképezés az Azure-beli kulcs mezőjére, akkor a Cognitive Search a kulcsként automatikusan [leképezi](search-indexer-field-mappings.md) a `metadata_storage_path` tulajdonságot. Ez a leképezés biztosítja, hogy az egyes Blobok külön keresési dokumentumként jelenjenek meg.
+Ha nincs megadva elemzési mód, és ha nincs explicit leképezés a kulcs mezőhöz az indexben, Azure Search automatikusan [leképezi](search-indexer-field-mappings.md) a `metadata_storage_path` tulajdonságot kulcsként. Ez a leképezés biztosítja, hogy az egyes Blobok külön keresési dokumentumként jelenjenek meg.
 
-A fent felsorolt elemzési módok bármelyikének használatakor az egyik blob a "sok" keresési dokumentumra mutat, így a dokumentum kulcsa kizárólag a blob metaadatainak alapján használható. Ennek a korlátozásnak a leküzdéséhez az Azure Cognitive Search képes a blobokból kinyert egyes entitások "egy a többhöz" dokumentum-kulcsának generálására. Ez a tulajdonság neve `AzureSearch_DocumentKey`, és hozzá lesz adva a blobból kinyert egyes entitásokhoz. Ennek a tulajdonságnak az értéke garantáltan egyedi a _Blobok közötti_ egyes entitások esetében, és az entitások külön keresési dokumentumokként jelennek meg.
+A fent felsorolt elemzési módok bármelyikének használatakor az egyik blob a "sok" keresési dokumentumra mutat, így a dokumentum kulcsa kizárólag a blob metaadatainak alapján használható. Ennek a korlátozásnak a leküzdéséhez Azure Search képes "egy-a-többhöz" dokumentum-kulcsot generálni a blobból kinyert egyes entitásokhoz. Ez a tulajdonság neve `AzureSearch_DocumentKey`, és hozzá lesz adva a blobból kinyert egyes entitásokhoz. Ennek a tulajdonságnak az értéke garantáltan egyedi a _Blobok közötti_ egyes entitások esetében, és az entitások külön keresési dokumentumokként jelennek meg.
 
 Alapértelmezés szerint, ha nincs megadva explicit mező a Key index mezőhöz, a `AzureSearch_DocumentKey` a `base64Encode` mező-leképezési függvény használatával lesz leképezve.
 
@@ -57,7 +58,7 @@ Amikor létrehoz egy indexelő, és a **parsingMode** úgy állítja be, hogy `j
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-Ez a beállítás azt eredményezi, hogy az Azure Cognitive Search index a következő adatokat tartalmazza (a Base64 kódolású azonosító lerövidíti a rövid időpontot)
+Ez a beállítás azt eredményezi, hogy a Azure Search index a következő adatokat tartalmazza (a Base64 kódolású azonosító lerövidíti a rövid időpontot)
 
 | id | hőmérséklet | pressure | időbélyeg |
 |----|-------------|----------|-----------|
@@ -98,7 +99,7 @@ Ha explicit mező-hozzárendelést szeretne beállítani, győződjön meg arró
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az Azure [blob Storage indexelését az Azure Cognitive Search szolgáltatással](search-howto-index-json-blobs.md) . A különböző blob conten-típusok elemzési módjairól a következő cikkekben olvashat bővebben.
+Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az [Azure Blob Storage indexelését Azure Search](search-howto-index-json-blobs.md) első lépéseit. A különböző blob-tartalomtípusok elemzési módjaival kapcsolatos további információkért tekintse át a következő cikkeket.
 
 > [!div class="nextstepaction"]
 > [CSV-Blobok indexelése](search-howto-index-csv-blobs.md) 

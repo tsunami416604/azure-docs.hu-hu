@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0823b4b7e19bec9d8efc83dbb3996076425cb4f1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756883"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176931"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek használata Azure Cosmos DBban
 
@@ -122,7 +122,7 @@ Minden Azure Cosmos-eleme a következő, rendszerszintű tulajdonságokkal rende
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |
 |\_TS | Rendszer által generált | Az elemek utolsó frissítésének időbélyege | Igen | Nem | Nem | Nem | Nem |
 |\_saját | Rendszer által generált | Az elemek címezhető URI-ja | Igen | Nem | Nem | Nem | Nem |
-|id | Vagy | A felhasználó által definiált egyedi név logikai partícióban. Ha a felhasználó nem határozza meg az azonosítót, a rendszer automatikusan létrehoz egyet. | Igen | Igen | Igen | Igen | Igen |
+|id | Vagy | A felhasználó által definiált egyedi név logikai partícióban. | Igen | Igen | Igen | Igen | Igen |
 |Tetszőleges felhasználó által definiált tulajdonságok | Felhasználó által megadott | A felhasználó által definiált tulajdonságok az API-natív ábrázolásban (beleértve a JSON-t, a BSON és a CQL) | Igen | Igen | Igen | Igen | Igen |
 
 > [!NOTE]

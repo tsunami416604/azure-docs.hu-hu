@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1131cba204b7b7af33cc0441ee455b6e333aba20
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310085"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175316"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webalkalmazás – kód konfigurálása
 
@@ -38,8 +38,8 @@ A webalkalmazások engedélyezési kódját támogató kódtárak a következők
 | MSAL-könyvtár | Leírás |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A támogatott platformok a .NET-keretrendszer és a .NET Core platform (a UWP, a Xamarin. iOS és a Xamarin. Android), mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. |
-| ![MSAL.Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Fejlesztés folyamatban – nyilvános előzetes verzió |
-| ![MSAL.Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Fejlesztés folyamatban – nyilvános előzetes verzió |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Fejlesztés folyamatban – nyilvános előzetes verzió |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Fejlesztés folyamatban – nyilvános előzetes verzió |
 
 Válassza ki az Önt érdeklő platformhoz tartozó fület:
 
@@ -70,8 +70,8 @@ A cikkben szereplő kódrészletek és a következők a [ASP.net Web App mintáb
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ebben a cikkben a kódrészleteket és az alábbi kódrészleteket a Microsoft Graph msal4j webalkalmazás-mintát meghívó [Java-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-java-webapp) nyeri ki a rendszer.
-A minta jelenleg lehetővé teszi, hogy a msal4j előállítsák az engedélyezési kód URL-címét, és kezeli a navigációt a Microsoft Identity platform engedélyezés végpontján. A Sprint Security használatával is bejelentkezhet a felhasználóba. Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
+A cikkben szereplő kódrészletek és az alábbiak a [Java-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-java-webapp) származnak, amely a Microsoft Graph MSAL Java Web App-mintát hívja meg.
+A minta jelenleg lehetővé teszi, hogy a MSAL Java előállítsák az engedélyezési kód URL-címét, és kezeli a navigációt a Microsoft Identity platform engedélyezés végpontján. A Sprint Security használatával is bejelentkezhet a felhasználóba. Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -86,11 +86,11 @@ A minta jelenleg lehetővé teszi a MSAL. A Python előkészíti az engedélyez�
 
 ### <a name="startupcs"></a>Startup.cs
 
-ASP.net Core a `Startup.cs` fájlban a fájl elve. Elő kell fizetnie az `OnAuthorizationCodeReceived` Open ID csatlakozási eseményre, és ebből az eseményből hívja meg a MSAL. A net metódusa `AcquireTokenFromAuthorizationCode`, amely a jogkivonat-gyorsítótárban való tárolást, a kért `scopes`hozzáférési jogkivonatot, valamint egy frissítési tokent tartalmaz, amelyet a hozzáférési jogkivonat frissítéséhez fog használni a lejárati időponthoz, vagy ha egy jogkivonatot kap ugyanazon felhasználó nevében , de egy másik erőforráshoz.
+A ASP.NET Core a `Startup.cs` fájlban. Elő kell fizetnünk a `OnAuthorizationCodeReceived` Open ID csatlakozási eseményre, és ebből az eseményből hívja meg a MSAL. A NET metódusa `AcquireTokenFromAuthorizationCode`, amely a jogkivonat-gyorsítótárban való tárolást, a kért `scopes`hozzáférési jogkivonatát, valamint egy frissítési jogkivonatot tartalmaz, amelyet a hozzáférési jogkivonat frissítéséhez fog használni a lejárati időponthoz képest, vagy ha egy jogkivonatot kap ugyanazon felhasználó nevében , de egy másik erőforráshoz.
 
 A gyakorlatban a [ASP.net Core webalkalmazás-oktatóanyag](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) megkísérli a webalkalmazások újrafelhasználható kódjának megadását.
 
-Itt látható a [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) kód, amely a `AddMicrosoftIdentityPlatformAuthentication` metódus meghívásával biztosítja a webalkalmazáshoz való hitelesítést, valamint `AddMsal` a webes API-k meghívásának képességét. A következő hívás `AddInMemoryTokenCaches` a jogkivonat-gyorsítótár implementációjának kiválasztására vonatkozik a lehetséges lehetőségek közül:
+Itt látható a [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) kód, amely a webalkalmazáshoz való hitelesítést `AddMsal` és a webes API-k meghívásához szükséges képességet biztosító `AddMicrosoftIdentityPlatformAuthentication` metódus meghívását adja meg. A `AddInMemoryTokenCaches` hívása a jogkivonat-gyorsítótár implementációjának kiválasztására vonatkozik a lehetséges lehetőségek közül:
 
 ```CSharp
 public class Startup
@@ -110,7 +110,7 @@ public class Startup
 }
 ```
 
-`Constants.ScopeUserRead`Konstansokban van definiálva [. cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
+a `Constants.ScopeUserRead` Konstansokban van definiálva [. cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
 ```CSharp
 public static class Constants
@@ -119,11 +119,11 @@ public static class Constants
 }
 ```
 
-Már megvizsgálta a `AddMicrosoftIdentityPlatformAuthentication` [webes alkalmazásban lévő, a felhasználók által használt kód konfigurációjának](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code) tartalmát
+Már tanulmányozta `AddMicrosoftIdentityPlatformAuthentication` tartalmát a [webalkalmazásban, amely bejelentkezik a felhasználók számára – kód konfiguráció](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code)
 
 ### <a name="the-addmsal-method"></a>A AddMsal metódus
 
-A kód a `AddMsal` következő helyen található: [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159).
+`AddMsal` kódja a [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)helyen található.
 
 ```CSharp
 
@@ -182,21 +182,21 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-A `AddMsal` metódus a következőket biztosítja:
+A `AddMsal` módszer biztosítja a következőket:
 
-- a ASP.NET Core webalkalmazás a felhasználó IDToken és egy hitelesítési kódot (`options.ResponseType = OpenIdConnectResponseType.CodeIdToken`) is kér.
+- a ASP.NET Core webalkalmazás a felhasználó IDToken és egy hitelesítési kódot (`options.ResponseType = OpenIdConnectResponseType.CodeIdToken`) is kér
 - a `offline_access` hatókör hozzá van adva. Szükség van rá, hogy a felhasználó hozzájáruljon ahhoz, hogy az alkalmazás megkapja a frissítési tokent.
-- az alkalmazás előfizet a OIDC `OnAuthorizationCodeReceived` eseményre, és beváltja a hívást a MSAL.NET használatával, amely itt van beágyazva egy újrafelhasználható összetevő megvalósítására. `ITokenAcquisition`
+- az alkalmazás előfizet a OIDC `OnAuthorizationCodeReceived` eseményre, és beváltja a hívást a MSAL.NET használatával, amely egy újrafelhasználható, `ITokenAcquisition`t megvalósító összetevőbe van ágyazva.
 
 ### <a name="the-tokenacquisitionaddaccounttocachefromauthorizationcodeasync-method"></a>A TokenAcquisition. AddAccountToCacheFromAuthorizationCodeAsync metódus
 
-A `TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` metódus a [Microsoft. Identity. Web/TokenAcquisition. cs # L101-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145)mappában található. A következőket biztosítja:
+A `TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` módszer a [Microsoft. Identity. Web/TokenAcquisition. cs # L101-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145)mappában található. A következőket biztosítja:
 
-- A ASP.NET nem kísérli meg a MSAL.NET (`context.HandleCodeRedemption();`) párhuzamosan a hitelesítési kód beváltását.
+- A ASP.NET nem kísérli meg a hitelesítési kód beváltását párhuzamosan a MSAL.NET (`context.HandleCodeRedemption();`)
 - A IDToken lévő jogcímek a MSAL számára elérhetők a felhasználó fiókjához tartozó jogkivonat-gyorsítótár kiszámításához
 - Ha szükséges, a rendszer létrehozza a MSAL.NET alkalmazást.
 - a MSAL.NET alkalmazás beváltja a kódot
-- Az új azonosító jogkivonat meg `context.HandleCodeRedemption(null, result.IdToken);`van osztva ASP.net Core (a hívás során). A hozzáférési token nincs megosztva ASP.NET Coreval. A felhasználóhoz társított MSAL.NET-jogkivonat-gyorsítótárban marad, ahol készen áll a ASP.NET Core vezérlőkben való használatra.
+- Az új azonosító jogkivonatot a ASP.NET Core (`context.HandleCodeRedemption(null, result.IdToken);`) hívása során megosztják. A hozzáférési token nincs megosztva ASP.NET Coreval. A felhasználóhoz társított MSAL.NET-jogkivonat-gyorsítótárban marad, ahol készen áll a ASP.NET Core vezérlőkben való használatra.
 
 ```csharp
 public class TokenAcquisition : ITokenAcquisition
@@ -246,10 +246,10 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>A TokenAcquisition. BuildConfidentialClientApplication metódus
 
-ASP.NET Core a bizalmas ügyfélalkalmazás felépítése a HttpContext található információkat használja. A tulajdonsággal, a kérelemhez társított HttpContext, a webalkalmazás URL-címével és a bejelentkezett felhasználóval (a `ClaimsPrincipal`) érhető el. `CurrentHttpContext` A `BuildConfidentialClientApplication` a ASP.net Core konfigurációt is használja, amelynek "AzureAD" szakasza van, és amely a következőhöz van kötve:
+ASP.NET Core a bizalmas ügyfélalkalmazás felépítése a HttpContext található információkat használja. A `CurrentHttpContext` tulajdonságon keresztül érhető el, amely a kérelemhez társított HttpContext, ismeri a webalkalmazás URL-címét és a bejelentkezett felhasználót (`ClaimsPrincipal`). A `BuildConfidentialClientApplication` a ASP.NET Core konfigurációt is használja, amelynek "AzureAD" szakasza van, és amely a következőhöz van kötve:
 
-- a `_applicationOptions` [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) típusú adatstruktúra
-- a `azureAdOptions` ASP.net Coreben `Authentication.AzureAD.UI`definiált [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) típusú példány. Végül az alkalmazásnak meg kell őriznie a jogkivonat-gyorsítótárat. Erről bővebben a következő szakaszban olvashat.
+- a [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) típusú `_applicationOptions` adatstruktúra
+- a ASP.NET Core `Authentication.AzureAD.UI`ban definiált [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) típusú `azureAdOptions` példány. Végül az alkalmazásnak meg kell őriznie a jogkivonat-gyorsítótárat. Erről bővebben a következő szakaszban olvashat.
 
 A `GetOrBuildConfidentialClientApplication()` metódus kódja a [Microsoft. Identity. Web/TokenAcquisition. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333). Olyan tagokat használ, amelyek függőségi befecskendezéssel lettek bevezetve (a [Microsoft. Identity. Web/TokenAcquisition. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59)) a TokenAcquisition konstruktorában lett átadva.
 
@@ -314,13 +314,13 @@ public class TokenAcquisition : ITokenAcquisition
 
 ```
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
-Az összefoglaláshoz a `AcquireTokenByAuthorizationCode` ASP.net által kért hitelesítési kódot tényleg beváltja, és beolvassa a MSAL.net felhasználói jogkivonat-gyorsítótárhoz hozzáadott jogkivonatokat. Innentől kezdve a ASP.NET Core vezérlőkben lesznek használatban.
+Az összegzéshez `AcquireTokenByAuthorizationCode` valóban beváltja a ASP.NET által kért hitelesítési kódot, és beolvassa a MSAL.NET felhasználói jogkivonat-gyorsítótárhoz hozzáadott jogkivonatokat. Innentől kezdve a ASP.NET Core vezérlőkben lesznek használatban.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.net által kezelt dolgok ugyanúgy hasonlítanak a ASP.net Corehoz, azzal a különbséggel, hogy a [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) - `OnAuthorizationCodeReceived` fájlban a OpenIdConnect konfigurációja és az eseményre való előfizetés történik. Hasonló fogalmakat talál, mint a ASP.NET Coreban, a ASP.NET azonban meg kell adnia a RedirectUri a [web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint amit a ASP.NET Core végez, mivel az alkalmazás telepítésekor módosítania kell azt.
+A ASP.NET által kezelt dolgok ugyanúgy hasonlítanak a ASP.NET Corehoz, azzal a különbséggel, hogy a [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban a OpenIdConnect konfigurációja és az `OnAuthorizationCodeReceived` eseményre való előfizetés történik. Hasonló fogalmakat talál, mint a ASP.NET Coreban, a ASP.NET azonban meg kell adnia a RedirectUri a [web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint amit a ASP.NET Core végez, mivel az alkalmazás telepítésekor módosítania kell azt.
 
 ```CSharp
 public partial class Startup
@@ -370,14 +370,14 @@ public partial class Startup
         }
       });
   }
-  
+
   private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification context)
   {
       // Upon successful sign in, get the access token & cache it using MSAL
       IConfidentialClientApplication clientApp = MsalAppBuilder.BuildConfidentialClientApplication(new ClaimsPrincipal(context.AuthenticationTicket.Identity));
       AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "Mail.Read" }, context.Code).ExecuteAsync();
   }
-  
+
   private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
   {
       notification.HandleResponse();
@@ -389,7 +389,7 @@ public partial class Startup
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Tekintse meg a következőt: [webalkalmazás, amely bejelentkezik a felhasználóknál – a kód konfigurációjában](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) megismerheti, hogy a Java-minta hogyan kapja meg az engedélyezési kódot Az alkalmazástól kapott kérés után a [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) delegálja a metódust a [AuthHelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97), majd meghívja `getAuthResultByAuthCode`a `AuthHelper.processAuthenticationCodeRedirect` következőt:
+Tekintse meg a következőt: [webalkalmazás, amely bejelentkezik a felhasználóknál – a kód konfigurációjában](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) megismerheti, hogy a Java-minta hogyan kapja meg az engedélyezési kódot Az alkalmazástól kapott kérés után a [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) delegálja `AuthHelper.processAuthenticationCodeRedirect` a [AuthHelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97), majd meghívja `getAuthResultByAuthCode`:
 
 ```Java
 class AuthHelper {
@@ -411,7 +411,7 @@ class AuthHelper {
 }
 ```
 
-A `getAuthResultByAuthCode` metódus definiálva van a [AuthHelper. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176). Létrehoz egy MSAL `ConfidentialClientApplication` , és a `acquireToken()` `AuthorizationCodeParameters` létrehozott hívásokat az engedélyezési kódból hozza létre.
+A `getAuthResultByAuthCode` metódus a [AuthHelper. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176)van definiálva. Létrehoz egy MSAL `ConfidentialClientApplication`, és meghívja az engedélyezési kódból létrehozott `AuthorizationCodeParameters` `acquireToken()`.
 
 ```Java
    private IAuthenticationResult getAuthResultByAuthCode(
@@ -455,7 +455,7 @@ A `getAuthResultByAuthCode` metódus definiálva van a [AuthHelper. Java # L176]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Miután a rendszer az engedélyezési kód folyamatát kéri a [webalkalmazásban, amely bejelentkezik a felhasználói kód konfigurációjában](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code), az engedélyezési kód a/getAToken `authorized` URL-címéről érkező, a lombik útvonalait tartalmazó függvényhez érkezik. Lásd: [app. a # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
+Miután az engedélyezési kód megadását kéri a [webalkalmazásban, amely bejelentkezik a felhasználói kód konfigurációjában](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code), az engedélyezési kód a `authorized` függvényben érkezik, amely a lombik útvonalait a/getAToken URL-címéről kapja. Lásd: [app. a # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
 
 ```python
  @app.route("/getAToken")  # Its absolute URL must match your app's redirect_uri set in AAD
@@ -478,7 +478,7 @@ def authorized():
 ---
 
 Az ügyfél titkos kulcsa helyett a bizalmas ügyfélalkalmazás is igazolhatja személyazonosságát egy ügyféltanúsítvány vagy egy ügyfél-tanúsítvány használatával.
-Az ügyfél-kijelentések használata egy speciális forgatókönyv, amely részletesen szerepel az [ügyfél](msal-net-client-assertions.md) -kijelentésekben
+Az ügyfél-kijelentések használata egy speciális forgatókönyv, amely részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md)
 
 ## <a name="token-cache"></a>Jogkivonat-gyorsítótár
 
@@ -521,7 +521,7 @@ További információ a jogkivonat-gyorsítótár-szolgáltatókkal kapcsolatban
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A Web Apps (vagy a webes API-k) esetében a jogkivonat-gyorsítótár implementációja eltér az asztali alkalmazások jogkivonat-gyorsítótárának implementációjában (amelyek gyakran [fájl](scenario-desktop-acquire-token.md#file-based-token-cache)-alapúak. Használhatja a ASP.NET-munkamenetet vagy a kiszolgáló memóriáját. A MSAL.NET alkalmazás létrehozása után a [MsalAppBuilder. cs # L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Utils/MsalAppBuilder.cs#L39-L51) című témakörben láthatja, hogy a gyorsítótár implementációja hogyan csatlakoztatható.
+A Web Apps (vagy a webes API-k) esetében a jogkivonat-gyorsítótár implementációja eltér az asztali alkalmazások jogkivonat-gyorsítótárának implementációjában (amelyek gyakran [fájl-alapúak](scenario-desktop-acquire-token.md#file-based-token-cache). Használhatja a ASP.NET-munkamenetet vagy a kiszolgáló memóriáját. A MSAL.NET alkalmazás létrehozása után a [MsalAppBuilder. cs # L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Utils/MsalAppBuilder.cs#L39-L51) című témakörben láthatja, hogy a gyorsítótár implementációja hogyan csatlakoztatható.
 
 ```csharp
 public static class MsalAppBuilder
@@ -534,17 +534,17 @@ public static class MsalAppBuilder
             .WithRedirectUri(AuthenticationConfig.RedirectUri)
             .WithAuthority(new Uri(AuthenticationConfig.Authority))
             .Build();
-  
+
       // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache with our implementation
       MSALPerUserMemoryTokenCache userTokenCache = new MSALPerUserMemoryTokenCache(clientapp.UserTokenCache, currentUser ?? ClaimsPrincipal.Current);
-  
+
       return clientapp;
   }
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-a msal4j a jogkivonat-gyorsítótár szerializálására és deszerializálására szolgáló metódusokat biztosít. A Java-minta kezeli a szerializálást a munkamenetből, ahogyan az a `getAuthResultBySilentFlow` [AuthHelper. Java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122) metódusban látható.
+A MSAL Java a jogkivonat-gyorsítótár szerializálására és deszerializálására szolgáló metódusokat biztosít. A Java-minta kezeli a szerializálást a munkamenetből, ahogy az a `getAuthResultBySilentFlow` metódusban látható a [AuthHelper. Java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122)
 
 ```Java
 IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
@@ -560,7 +560,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
   }
 
   SilentParameters parameters = SilentParameters.builder(
-          Collections.singleton("User.ReadBasic.All"),
+          Collections.singleton("User.Read"),
           result.account()).build();
 
   CompletableFuture<IAuthenticationResult> future = app.acquireTokenSilently(parameters);
@@ -573,7 +573,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-Az `SessionManagementHelper` osztály részletes adatai itt vannak megadva:[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)
+A `SessionManagementHelper` osztály részletes adatai itt vannak megadva:[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -610,7 +610,7 @@ def _build_msal_app(cache=None):
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezen a ponton, amikor a felhasználó bejelentkezik a jogkivonat-gyorsítótárba, a rendszer a tokent tárolja. Lássuk, hogyan használják majd a webalkalmazás más részeiben.
 

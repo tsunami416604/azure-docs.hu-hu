@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598878"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177990"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszerű Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszert futtató Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
 
 Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan helyezhet üzembe Windows rendszerű Azure Service Fabric-fürtöt egy Azure-beli [virtuális hálózatban](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-networks-nsg.md) a PowerShell és egy sablon használatával. Ha elkészült, egy olyan fürt fut a felhőben, amelybe alkalmazásokat telepíthet. Az Azure CLI-t használó linuxos fürtök létrehozásával kapcsolatban lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)-ban.
 
@@ -80,7 +80,7 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban egy Windows-fürt az aláb
 
 * Három csomópont-típus.
 * Az elsődleges csomópont típusának öt csomópontja (a sablon paramétereinek megfelelően konfigurálható), a másik két csomópontban pedig egy csomópont található.
-* OS: Windows Server 2016 Datacenter tárolókkal (konfigurálható a sablon paraméterei között).
+* Operációs rendszer: Windows Server 2016 Datacenter tárolókkal (konfigurálható a sablon paraméterei között).
 * A tanúsítvány védett (a sablon paramétereinek megfelelően konfigurálható).
 * A [fordított proxy](service-fabric-reverseproxy.md) engedélyezve van.
 * A [DNS-szolgáltatás](service-fabric-dnsservice.md) engedélyezve van.
@@ -94,29 +94,28 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban egy Windows-fürt az aláb
 A **Microsoft. Network/loadBalancers** erőforrásban a terheléselosztó konfigurálva van. A mintavételek és szabályok a következő portokra vannak beállítva:
 
 * Ügyfélkapcsolati végpont: 19000
-* HTTP-átjáró végpontja: 19080
+* HTTP-átjáró végpontja: 19080;
 * Alkalmazás portja: 80
 * Alkalmazás portja: 443
-* Fordított proxy Service Fabric: 19081
+* Service Fabric fordított proxyja: 19081.
 
 Ha más alkalmazás-portok is szükségesek, akkor módosítania kell a **Microsoft. Network/loadBalancers** erőforrást és a **Microsoft. Network/networkSecurityGroups** erőforrást a forgalom engedélyezéséhez.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuális hálózat, alhálózat és hálózati biztonsági csoport
 
-A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva. A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
+A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva. A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg, és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
 * Virtuális hálózati címtartomány: 172.16.0.0/20
-* Alhálózati címterület Service Fabric: 172.16.2.0/23
+* Service Fabric-alhálózat címtere: 172.16.2.0/23.
 
 Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Network/networkSecurityGroups** erőforrásban. A portok értékét a sablon változóinak módosításával módosíthatja.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB 445
 * Internodecommunication: 1025, 1026, 1027
-* Időszakos porttartomány: 49152 – 65534 (legalább 256 portnak kell lennie).
-* Alkalmazások által használt portok: 80 és 443
-* Alkalmazási porttartomány: 49152 – 65534 (a szolgáltatás és a szolgáltatás közötti kommunikációhoz használatos. Más portok nincsenek megnyitva a terheléselosztó esetében).
+* Ideiglenes porttartomány: 49152 – 65534 (legalább 256 portnak kell lennie).
+* alkalmazások által használható portok: 80 és 443,
+* Alkalmazás-porttartomány: 49152 – 65534 (a szolgáltatás és a szolgáltatás közötti kommunikációhoz használatos). Más portok nincsenek megnyitva a terheléselosztó esetében).
 * összes többi port letiltása.
 
 Ha más alkalmazás-portok is szükségesek, akkor módosítania kell a **Microsoft. Network/loadBalancers** erőforrást és a **Microsoft. Network/networkSecurityGroups** erőforrást a forgalom engedélyezéséhez.
@@ -154,14 +153,14 @@ Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/sec
 
 A [azuredeploy. Parameters. JSON][parameters] paraméterek fájlja deklarálja a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt számos értéket. A következő paramétereket kell módosítani a telepítéshez:
 
-**A paraméter** | **Példa értéke** | **Megjegyzések** 
+**Paraméter** | **Példa értéke** | **Megjegyzések** 
 |---|---|---|
 |adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [A virtuális gép felhasználónévre vonatkozó követelményei](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [A virtuális gép jelszavára vonatkozó követelmények](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| A fürt neve. Csak betűket és számokat tartalmazhat. 3–23 karakter hosszú lehet.|
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány SHA1 ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3”</p> |
-|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory ügyfél-hitelesítés beállítása
@@ -183,7 +182,7 @@ Az Azure AD Service Fabric-fürttel való konfigurálásának lépéseinek egysz
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD-alkalmazások létrehozása és felhasználók szerepkörökhöz rendelése
 Hozzon létre két Azure AD-alkalmazást a fürt elérésének vezérléséhez: egy webalkalmazást és egy natív alkalmazást. Miután létrehozta az alkalmazásokat a fürt képviseletére, rendelje hozzá a felhasználókat a [Service Fabric által támogatott szerepkörökhöz](service-fabric-cluster-security-roles.md): csak olvasható és rendszergazda.
 
-Futtassa `SetupApplications.ps1`a parancsot, és adja meg a bérlő azonosítóját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként. Felhasználónevek és jelszavak megadása a felhasználók számára. Példa:
+Futtassa a `SetupApplications.ps1`alkalmazást, és adja meg a bérlő AZONOSÍTÓját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként. Felhasználónevek és jelszavak megadása a felhasználók számára. Példa:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -192,20 +191,20 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Az országos felhőknél (például Azure Government, Azure China, Azure Germany) a `-Location` paramétert kell megadnia.
+> Az országos felhőknél (például Azure Government, Azure China, Azure Germany) válassza a `-Location` paramétert.
 
-A *TenantId*vagy a könyvtár azonosítóját a Azure Portalban találja. [](https://portal.azure.com) Válassza ki **Azure Active Directory** > **tulajdonságokat** , és másolja a **címtár-azonosító** értékét.
+A *TenantId*vagy a könyvtár azonosítóját a [Azure Portalban](https://portal.azure.com)találja. Válassza ki **Azure Active Directory** > **tulajdonságokat** , és másolja a **címtár-azonosító** értékét.
 
 A *ClusterName* a parancsfájl által létrehozott Azure ad-alkalmazások előtagját használja. Nem kell pontosan megegyeznie a fürt tényleges nevével. Ez a művelet csak az Azure AD-összetevők leképezését teszi lehetővé a használatban lévő Service Fabric-fürthöz.
 
 A *WebApplicationReplyUrl* az az alapértelmezett végpont, amelyet az Azure ad visszaküld a felhasználóknak a bejelentkezés befejezését követően. Állítsa ezt a végpontot a fürt Service Fabric Explorer végpontjának, amely alapértelmezés szerint a következő:
 
-https://&lt;cluster_domain&gt;:19080/Explorer
+https://&lt;cluster_domain&gt;: 19080/Explorer
 
 A rendszer arra kéri, hogy jelentkezzen be egy olyan fiókba, amely rendszergazdai jogosultságokkal rendelkezik az Azure AD-bérlőhöz. A bejelentkezést követően a parancsfájl létrehozza a webes és natív alkalmazásokat, hogy az Service Fabric-fürtöt képviseljék. A [Azure Portal](https://portal.azure.com)bérlő alkalmazásaiban két új bejegyzést kell látnia:
 
-   * ClusterName\_-fürt
-   * ClusterName\_-ügyfél
+   * *ClusterName*\_-fürt
+   * *ClusterName*\_-ügyfél
 
 A parancsfájl a fürt létrehozásakor kinyomtatja a Resource Manager-sablon által megkövetelt JSON-t, ezért érdemes megnyitnia a PowerShell ablakát.
 
@@ -444,7 +443,7 @@ A EventStore szolgáltatás fürtön való engedélyezéséhez adja hozzá a kö
 
 Azure Monitor naplókat ajánljuk a fürt szintű események figyelésére. Ha Azure Monitor naplókat szeretne beállítani a fürt figyeléséhez, engedélyezni kell a [diagnosztika szolgáltatást a fürt szintű események megtekintéséhez](#configure-diagnostics-collection-on-the-cluster).  
 
-A munkaterület csatlakoztatva kell lennie a fürt származó diagnosztikai adatokhoz.  A rendszer a *applicationDiagnosticsStorageAccountName* a WADServiceFabric * EventTable, a WADWindowsEventLogsTable és a WADETWEventTable táblákban tárolja.
+A munkaterületet a fürtről érkező diagnosztikai adatokhoz kell csatlakoztatni.  A rendszer a *applicationDiagnosticsStorageAccountName* a WADServiceFabric * EventTable, a WADWindowsEventLogsTable és a WADETWEventTable táblákban tárolja.
 
 Adja hozzá az Azure Log Analytics munkaterületet, és adja hozzá a megoldást a munkaterülethez:
 
@@ -716,7 +715,7 @@ Get-ServiceFabricClusterHealth
 
 Az oktatóanyag-Sorozat további cikkei a létrehozott fürtöt használják. Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan méretezheti a fürtöt.
 

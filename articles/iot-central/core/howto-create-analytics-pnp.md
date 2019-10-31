@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 040874f0ba5e2766aab8aa399bcae65a6676fa53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bcf19956d998ace88efbd4e1c9d787f1baeef642
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951132"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177387"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Az eszköz-adatelemzés használata az eszközökön
 
@@ -39,7 +39,7 @@ Az elemzési felhasználói felület három fő összetevőből áll:
 
 Először ki kell választania egy telemetria, és az elemezni kívánt **eszközöket**. Ha elkészült, válassza az **elemzés** lehetőséget az adatai megjelenítésének megkezdéséhez.
 
-- **Eszközcsoport:** Az [eszközcsoport](howto-use-device-groups-pnp.md) egy felhasználó által definiált eszköz. Például az összes hűtőszekrény a Oaklandben, vagy az összes 2,0-es szélturbinák.
+- **Eszközcsoport:** Az [eszközcsoport](tutorial-use-device-groups-pnp.md) egy felhasználó által definiált eszköz. Például az összes hűtőszekrény a Oaklandben, vagy az összes 2,0-es szélturbinák.
 
 - **Telemetria:** Válassza ki az elemezni és felderíteni kívánt telemetria. Egyszerre több telemetriáiról is kiválaszthat. Az alapértelmezett összesítési módszer az átlag értékre van állítva, amely numerikus és darabszám típusú. A numerikus adattípusok támogatott összesítési módszerei az átlag, a maximum, a minimum, a darabszám és a összeg.  A karakterlánc adattípusának támogatott összesítési módszerei a darabszám.
 

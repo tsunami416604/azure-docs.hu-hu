@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568983"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177713"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke
 
@@ -33,9 +33,9 @@ Az adatszinkronizálási ügynök letöltéséhez lépjen a [SQL Azure adatszink
 
 Ha az adatszinkronizálási ügynököt csendesen szeretné telepíteni a parancssorból, adjon meg egy, az alábbi példához hasonló parancsot. Keresse meg a letöltött. msi fájl fájlnevét, és adja meg a saját értékeit a **TARGETDIRCDotNet** és a **SERVICEACCOUNT** argumentumhoz.
 
-- Ha nem ad meg értéket a **TARGETDIRCDotNet**, az alapértelmezett érték `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`:.
+- Ha nem ad meg értéket a **TARGETDIRCDotNet**, az alapértelmezett érték `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
 
-- Ha a `LocalSystem` **SERVICEACCOUNT**értékeként adja meg, akkor SQL Server hitelesítést kell használnia, ha úgy konfigurálja az ügynököt, hogy a helyszíni SQL Serverhoz kapcsolódjon.
+- Ha a `LocalSystem` a **SERVICEACCOUNT**értékeként adja meg, akkor a SQL Server hitelesítést akkor használja, ha úgy konfigurálja az ügynököt, hogy a helyszíni SQL Serverhoz kapcsolódjon.
 
 - Ha a **SERVICEACCOUNT**értékeként tartományi felhasználói fiókot vagy helyi felhasználói fiókot ad meg, akkor a **SERVICEPASSWORD** argumentummal is meg kell adnia a jelszót. Például: `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -51,7 +51,7 @@ Az adatszinkronizálási ügynök konfigurálásához, hogy szinkronizálja az a
 
 ### <a name="why-do-i-need-a-client-agent"></a>Miért van szükségem ügyfél-ügynökre
 
-A SQL-adatszinkronizálás szolgáltatás az ügyfél ügynökén keresztül kommunikál SQL Server adatbázisokkal. Ez a biztonsági szolgáltatás megakadályozza a közvetlen kommunikációt a tűzfal mögötti adatbázisokkal. Ha a SQL-adatszinkronizálás szolgáltatás kommunikál az ügynökkel, a titkosított kapcsolatokat és egyedi tokent vagy ügynököt használ. A SQL Server adatbázisok hitelesítik az ügynököt a kapcsolatok karakterláncának és az ügynök kulcsának használatával. Ez a kialakítás magas szintű biztonságot nyújt az adatai számára.
+A SQL-adatszinkronizálás szolgáltatás az ügyfél ügynökén keresztül kommunikál SQL Server adatbázisokkal. Ez a biztonsági szolgáltatás megakadályozza a közvetlen kommunikációt a tűzfal mögötti adatbázisokkal. Ha a SQL-adatszinkronizálás szolgáltatás kommunikál az ügynökkel, a titkosított kapcsolatokat és egyedi tokent vagy *ügynököt*használ. A SQL Server adatbázisok hitelesítik az ügynököt a kapcsolatok karakterláncának és az ügynök kulcsának használatával. Ez a kialakítás magas szintű biztonságot nyújt az adatai számára.
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>A helyi ügynök felhasználói felületének több példánya is futtatható
 
@@ -99,10 +99,10 @@ Ha a helyi ügynököt egy másik számítógépről szeretné futtatni, mint am
 
 - **OK**. Ennek a hibának számos oka lehet. A hiba konkrét okának meghatározásához tekintse meg a naplókat.
 
-- **Megoldás**. A hiba konkrét okának megállapításához állítson elő és tekintse meg a Windows Installer naplókat. A naplózást bekapcsolhatja a parancssorba. Ha például a letöltött telepítőfájl `SQLDataSyncAgent-2.0-x86-ENU.msi`, a naplófájlokat a következő parancssorok segítségével hozhatja meg és vizsgálhatja meg:
+- **Megoldás**. A hiba konkrét okának megállapításához állítson elő és tekintse meg a Windows Installer naplókat. A naplózást bekapcsolhatja a parancssorba. Ha például a letöltött telepítőfájl `SQLDataSyncAgent-2.0-x86-ENU.msi`, a naplófájlokat a következő parancssorok segítségével hozhatja meg és vizsgálja meg:
 
-  - Telepítés esetén:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - Eltávolítások esetén:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Telepítésekhez: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Eltávolítás esetén: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Bekapcsolhatja a naplózást is a Windows Installer által végrehajtott összes telepítéshez. A Microsoft Tudásbázis cikke a [Windows Installer naplózásának engedélyezéséhez](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) egy kattintással elérhető megoldást biztosít a Windows Installer naplózásának bekapcsolásához. A naplófájlok helyét is megadja.
 
@@ -115,7 +115,7 @@ Az ügyfél ügynöke nem működik, még az eltávolításának megszakítása 
 - **Megoldás**. A következő két megoldás kipróbálására van lehetősége:
 
     -   A Services. msc segítségével adja meg újra az ügyfél ügynökének hitelesítő adatait.
-    -   Távolítsa el ezt az ügynököt, majd telepítsen egy újat. Töltse le és telepítse a legújabb ügyfél-ügynököt a [letöltőközpontból](https://go.microsoft.com/fwlink/?linkid=221479).
+    -   Távolítsa el ezt az ügynököt, majd telepítsen egy újat. Töltse le és telepítse a legújabb ügyfél-ügynököt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=27693).
 
 ### <a name="agent-list"></a>Az adatbázis nem szerepel az ügynökök listáján
 
@@ -138,7 +138,7 @@ A probléma a következő esetekben fordulhat elő:
 
 ### <a name="agent-start"></a>Az ügyfél ügynöke nem indul el (1069-es hiba)
 
-Felderíti, hogy az ügynök nem fut SQL Server üzemeltető számítógépen. Amikor megkísérli manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely megjeleníti az üzenetet, "hiba 1069: A szolgáltatás bejelentkezési hiba miatt nem indult el. "
+Felderíti, hogy az ügynök nem fut SQL Server üzemeltető számítógépen. Amikor megkísérli manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amelyen a "hiba 1069: a szolgáltatás nem indult el a bejelentkezési hiba miatt." hibaüzenet jelenik meg.
 
 ![Adatszinkronizálási hiba 1069 párbeszédpanel](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -147,7 +147,7 @@ Felderíti, hogy az ügynök nem fut SQL Server üzemeltető számítógépen. A
 - **Megoldás**. Frissítse az ügynök jelszavát az aktuális kiszolgáló jelszavára:
 
   1. Keresse meg az SQL-adatszinkronizálás ügyfél-ügynök szolgáltatást.  
-    a. Válassza ki **Start**.  
+    a. Válassza az **Indítás**lehetőséget.  
     b. A keresőmezőbe írja be a **Services. msc**kifejezést.  
     c. A keresési eredmények között válassza a **szolgáltatások**lehetőséget.  
     d. A **szolgáltatások** ablakban görgessen a **SQL-adatszinkronizálás-ügynök**bejegyzéséhez.  
@@ -190,7 +190,7 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
 
   1. A Fájlkezelőben lépjen az ügynök telepítési könyvtárába. Az alapértelmezett telepítési könyvtár a C:\\Program Files (x86)\\Microsoft SQL-adatszinkronizálás.
   1. Kattintson duplán a bin alkönyvtárra.
-  1. Open the SqlAzureDataSyncAgent application.
+  1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
   1. Válassza a **küldési ügynök kulcsa**lehetőséget.
   1. A rendelkezésre álló helyen illessze be a kulcsot a vágólapról.
   1. Kattintson az **OK** gombra.
@@ -205,7 +205,7 @@ Ha egy SQL-adatszinkronizálás ügyfél-ügynökkel regisztrált helyi végpont
 - **Megoldás**. Törölje a nem elérhető adatbázist a "kényszerített Törlés" paranccsal.
 
 > [!NOTE]
-> Ha a szinkronizálási metaadatok táblái a "kényszerített Törlés" után `deprovisioningutil.exe` is megmaradnak, használja a (z) t a (z) használatával
+> Ha a szinkronizálási metaadatokat tartalmazó táblák a "kényszerített Törlés" után is megmaradnak, a `deprovisioningutil.exe` használatával törölje őket.
 
 ### <a name="agent-connect"></a>A helyi szinkronizáló ügynök alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatáshoz
 
@@ -314,19 +314,19 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -databaseName testdb -authentication windows -encryption true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: Az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizálás SQL-adatszinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
-        -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
 -   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-database-sync-monitor-oms.md)
--   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás](sql-database-troubleshoot-data-sync.md) hibáinak elhárítása
+-   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése
     -   A Transact-SQL- [ben – automatizálja a séma változásainak az Azure-ban való replikálását SQL-adatszinkronizálás](sql-database-update-sync-schema.md)
     -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/sql-database-sync-update-schema.md) .

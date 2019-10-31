@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882002"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177796"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -131,14 +131,14 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |AppEtwTraceDeletionAgeInDays |Int, az alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük az Application ETW-nyomkövetést tartalmazó régi ETL-fájlokat. |
 |ApplicationLogsFormatVersion |int, az alapértelmezett érték 0 | Dinamikus |Az Application logs formátumának verziója. A támogatott értékek: 0 és 1. Az 1. verzió több mezőt is tartalmaz a ETW-esemény rekordjából, mint a 0. verzió. |
 |AuditHttpRequests |Bool, az alapértelmezett érték false | Dinamikus | A HTTP-naplózás be-és kikapcsolása. A naplózás célja, hogy megtekintse a fürtön végrehajtott tevékenységeket. beleértve a kérelmet kezdeményező személyeket is. Vegye figyelembe, hogy ez a legjobb kísérlet a naplózásra; és a nyomkövetés elvesztése is előfordulhat. A "user" hitelesítéssel rendelkező HTTP-kérelmek nincsenek rögzítve. |
-|CaptureHttpTelemetry|Bool, az alapértelmezett érték false | Dinamikus | A HTTP-telemetria be-vagy kikapcsolása. A Service Fabric telemetria célja, hogy a telemetria-adat rögzíthető legyen a jövőbeli munka megtervezése és a problémás területek azonosítása érdekében. A telemetria nem rögzíti a személyes adatok vagy a kérés törzsét. A telemetria csak akkor rögzíti az összes HTTP-kérelmet, ha másként van konfigurálva. |
+|CaptureHttpTelemetry|Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | A HTTP-telemetria be-vagy kikapcsolása. A Service Fabric telemetria célja, hogy a telemetria-adat rögzíthető legyen a jövőbeli munka megtervezése és a problémás területek azonosítása érdekében. A telemetria nem rögzíti a személyes adatok vagy a kérés törzsét. A telemetria csak akkor rögzíti az összes HTTP-kérelmet, ha másként van konfigurálva. |
 |ClusterId |Sztring | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
 |ConsumerInstances |Sztring | Dinamikus |A DCA-fogyasztói példányok listája. |
 |DiskFullSafetySpaceInMB |Int, alapértelmezett érték 1024 | Dinamikus |A fennmaradó lemezterület MB-ban, a DCA általi használat elleni védelem érdekében. |
 |EnableCircularTraceSession |Bool, az alapértelmezett érték false | Statikus |A jelző jelzi, hogy a körkörös nyomkövetési munkameneteket kell-e használni. |
 |EnablePlatformEventsFileSink |Bool, az alapértelmezett érték false | Statikus |A lemezre írt platform eseményeinek engedélyezése/letiltása |
 |EnableTelemetry |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |A telemetria engedélyezése vagy letiltása folyamatban van. |
-|FailuresOnlyHttpTelemetry | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a sikertelen kérelmek rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
+|FailuresOnlyHttpTelemetry | Bool, az alapértelmezett érték false | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a sikertelen kérelmek rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
 |HttpTelemetryCapturePercentage | int, alapértelmezett érték 50 | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a kérések véletlenszerű százalékos arányának rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
 |MaxDiskQuotaInMB |Int, alapértelmezett érték 65536 | Dinamikus |Windows Fabric naplófájlok esetében a lemezkvóta MB-ban. |
 |ProducerInstances |Sztring | Dinamikus |A DCA-előállító példányainak listája. |

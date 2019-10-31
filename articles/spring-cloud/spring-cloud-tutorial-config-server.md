@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.reviewer: jeconnoc
 ms.author: v-vasuke
 author: v-vasuke
-ms.date: 08/08/2019
-ms.openlocfilehash: 31ef82976a1c6938ae0bf591b2f8c8b1a0040466
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/18/2019
+ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928938"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177922"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Oktatóanyag: rugós Felhőbeli konfigurációs kiszolgáló beállítása a szolgáltatáshoz
 
@@ -52,7 +52,7 @@ Nyilvános tárház használata esetén a konfigurálható tulajdonságok korlá
 A nyilvános `Git` adattár beállításához használt összes konfigurálható tulajdonság alább látható.
 
 > [!NOTE]
-> Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használja például a `default-label` nem `defaultLabel`.
+> Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használhatja például a `default-label`, de nem `defaultLabel`.
 
 | Tulajdonság        | Szükséges | Szolgáltatás                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
@@ -67,7 +67,7 @@ A nyilvános `Git` adattár beállításához használt összes konfigurálható
 Az alábbi lista a privát `Git` adattár beállításához használt összes konfigurálható tulajdonságot tartalmazza `Ssh`.
 
 > [!NOTE]
-> Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használja például a `default-label` nem `defaultLabel`.
+> Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használhatja például a `default-label`, de nem `defaultLabel`.
 
 | Tulajdonság                   | Szükséges | Szolgáltatás                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
@@ -121,10 +121,6 @@ Az alábbi listában a git-adattárak beállításához használt összes konfig
 | `repos."host-key-algorithm"`       | `no`             | A gazda kulcs algoritmusának `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`vagy `ecdsa-sha2-nistp521`nak kell lennie. Csak akkor __szükséges__ , ha `host-key` létezik. |
 | `repos."strict-host-key-checking"` | `no`             | Azt jelzi, hogy a konfigurációs kiszolgáló a magánhálózati `host-key`kihasználása esetén nem fog-e elindulni. `true` (alapértelmezett érték) vagy `false`kell lennie. |
 
-### <a name="import-applicationyml-file-from-spring-cloud-config"></a>`application.yml` fájl importálása a Spring Cloud config-ból
-
-Az alapértelmezett konfigurációs kiszolgáló beállításait közvetlenül a [Spring Cloud config](https://spring.io/projects/spring-cloud-config) webhelyről importálhatja. Ezt közvetlenül a Azure Portal teheti meg, így nem kell végrehajtania a konfigurációs kiszolgáló fájljainak vagy tárházának előkészítéséhez szükséges lépéseket.
-
 ## <a name="attaching-your-config-server-repository-to-azure-spring-cloud"></a>A konfigurációs kiszolgáló adattárának csatlakoztatása az Azure Spring Cloud-hoz
 
 Most, hogy a konfigurációs fájlokat mentette egy adattárba, hozzá kell csatlakoznia az Azure Spring Cloud-hoz.
@@ -135,19 +131,60 @@ Most, hogy a konfigurációs fájlokat mentette egy adattárba, hozzá kell csat
 
 1. Nyissa meg a **konfigurációs kiszolgáló** fület a **Beállítások** fejléc alatt a bal oldali menüben.
 
-### <a name="public-repository"></a>Nyilvános tárház
+![ablak képernyőképe](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
-Ha a tárház nyilvános, egyszerűen kattintson a **nyilvános** gombra, és illessze be az URL-címet.
+### <a name="input-repository-information-directly-to-the-azure-portal"></a>Bemeneti adattár adatai közvetlenül a Azure Portal
 
-### <a name="private-repository"></a>Privát tárház
+#### <a name="default-repository"></a>Alapértelmezett adattár
 
-Az Azure Spring Cloud támogatja az SSH-hitelesítést. Kövesse a Azure Portal útmutatását, és adja hozzá a nyilvános kulcsot a tárházhoz. Ezt követően ügyeljen arra, hogy a konfigurációs fájlban szerepeljen a titkos kulcs.
+* Nyilvános tárház: az **alapértelmezett adattár** szakaszban illessze be az adattár URI-ját az **URI** szakaszba, és győződjön meg arról, hogy a **hitelesítési** beállítás **nyilvános**. Ezután kattintson az **alkalmaz** gombra. 
 
-Kattintson az **alkalmaz** gombra a konfigurációs kiszolgáló beállításának befejezéséhez.
+* Privát tárház: az Azure Spring Cloud támogatja az alapszintű jelszó/jogkivonat-alapú hitelesítést és az SSH-t.
+
+    * Alapszintű hitelesítés: az **alapértelmezett adattár** szakaszban illessze be az adattár URI-ját az **URI** szakaszban, majd kattintson a **hitelesítésre**. Válassza az **alapszintű** **hitelesítési típust** , és adja meg felhasználónevét és jelszavát/jogkivonatát az Azure Spring Cloud elérésének biztosításához. Kattintson **az OK gombra** , és **alkalmazza** a konfigurációs kiszolgáló beállításának befejezéséhez.
+
+    ![ablak képernyőképe](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    
+    > [!CAUTION]
+    > Egyes git-tárház-kiszolgálók, például a GitHub egy `personal-token` vagy egy `access-token`, például az **egyszerű hitelesítéshez**használt jelszót használják. Ezt a tokent jelszóként használhatja az Azure Spring Cloud-ban, mivel a rendszer soha nem jár le. Más git-tárház-kiszolgálók, például a BitBucket és az Azure DevOps esetében azonban a `access-token` egy vagy két órán belül lejár. Ez azt jelenti, hogy ez a lehetőség nem életképes, ha ezeket az adattár-kiszolgálókat az Azure Spring Cloud használatával használja.]
+
+    * SSH: az **alapértelmezett adattár** szakaszban illessze be az adattár URI-ját az **URI** szakaszban, majd kattintson a **hitelesítésre**. A **hitelesítési típusként** válassza az **SSH** lehetőséget, és adja meg a **titkos kulcsát**. Opcionálisan megadhatja a **gazdagép kulcsát** és a **gazdagép kulcsának algoritmusát**is. Ügyeljen arra, hogy a nyilvános kulcsot a konfigurációs kiszolgáló adattárában is tartalmazza. Kattintson **az OK gombra** , és **alkalmazza** a konfigurációs kiszolgáló beállításának befejezéséhez.
+
+    ![ablak képernyőképe](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+
+#### <a name="pattern-repository"></a>Minta adattár
+
+Ha a szolgáltatás konfigurálásához egy opcionális **minta-tárházat** szeretne használni, adja meg az **URI** -t és a **hitelesítést** ugyanúgy, mint az **alapértelmezett tárházat**. Ügyeljen arra, hogy tartalmazza a minta **nevét** , majd kattintson az **alkalmaz** gombra, hogy csatolja a példányhoz. 
+
+### <a name="enter-repository-information-into-a-yaml-file"></a>Adja meg a tárház adatait egy YAML-fájlba
+
+Ha YAML-fájlt írt az adattár beállításaival, a YAML-fájlt közvetlenül a helyi gépről importálhatja az Azure Spring Cloud-ba. Az alapszintű hitelesítéssel rendelkező privát tárház egyszerű YAML-fájlja a következőképpen fog kinézni:
+
+```yml
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/azure-spring-cloud-samples/config-server-repository.git
+                    username: <username>
+                    password: <password/token>
+
+```
+
+Kattintson az **importálási beállítások** gombra, majd válassza ki a `.yml` fájlt a projekt könyvtárából. Kattintson az **Importálás**elemre, majd az **értesítések** `async` művelet jelenik meg. 1-2 perc elteltével a sikeres jelentésnek kell lennie.
+
+![ablak képernyőképe](media/spring-cloud-tutorial-config-server/local-yml-success.png)
+
+
+Ekkor meg kell jelennie a Azure Portalban megjelenő YAML-fájl információinak. A befejezéshez kattintson az **alkalmaz** gombra. 
+
 
 ## <a name="delete-your-app-configuration"></a>Az alkalmazás konfigurációjának törlése
 
 A konfigurációs fájl mentése után megjelenik az alkalmazás- **konfiguráció törlése** gomb a **konfiguráció** lapon. Ezzel a művelettel teljesen törli a meglévő beállításokat. Ezt akkor kell megtennie, ha a konfigurációs kiszolgálót más forráshoz kívánja kapcsolni, például a GitHubról az Azure DevOps-ra való áttéréssel.
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

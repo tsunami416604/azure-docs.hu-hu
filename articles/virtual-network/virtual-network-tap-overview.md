@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676912"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177423"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
 Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé teszi a virtuális gép hálózati forgalmának folyamatos továbbítását egy hálózati csomag gyűjtője vagy analitikai eszköze számára. A gyűjtő vagy az elemzési eszközt egy [hálózati virtuális berendezési](https://azure.microsoft.com/solutions/network-appliances/) partner kapja meg. A virtuális hálózati KOPPINTÁSsal való együttműködéshez ellenőrzött partneri megoldások listáját a [partneri megoldások](#virtual-network-tap-partner-solutions)című témakörben találja.
 
 > [!IMPORTANT]
-> A Virtual Network TAP jelenleg előzetes verzióban érhető el az összes Azure-régióban. A virtuális hálózati KOPPINTÁS használatához regisztrálnia kell az előzetes verzióban egy e-mailt a @ no__t-0 címre az előfizetés-azonosítójával. Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. Tekintse meg a Microsoft Azure  for részleteinek [kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Virtual Network TAP jelenleg előzetes verzióban érhető el az összes Azure-régióban. A virtuális hálózati KOPPINTÁS használatához regisztrálnia kell az előzetes verzióban, ha az előfizetés azonosítójával <azurevnettap@microsoft.com> e-mailt küld. Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További részletekért tekintse meg a [Microsoft Azure előzetesek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Virtuális hálózati KOPPINTson partneri megoldások
 
@@ -43,13 +43,13 @@ Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé tes
 - [Biztonság – ébren](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch-felhő](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop-megjelenítés (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop-megjelenítés (x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis kiberbiztonsági](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [NetScout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
-- [RSA NetWitness® Platform](https://www.rsa.com/azure)
+- [RSA NetWitness® platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
 Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS. A virtuális hálózatban üzembe helyezett virtuális gépekhez csatlakoztatott [hálózati adapterekre](virtual-network-network-interface.md) koppinthat. A cél egy virtuális hálózati IP-cím ugyanabban a virtuális hálózatban, mint a figyelt hálózati adapter vagy egy [társ virtuális](virtual-network-peering-overview.md) hálózat. A virtuális hálózatra KOPPINTó gyűjtő megoldás a magas rendelkezésre állás érdekében üzembe helyezhető egy [Azure belső terheléselosztó](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) mögött. Az egyes megoldások üzembe helyezési lehetőségeinek kiértékeléséhez tekintse meg a [partneri megoldások](#virtual-network-tap-partner-solutions)című témakört.
@@ -64,12 +64,12 @@ A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy mege
 
 A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához használt fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Action | Name (Név) |
+| Műveletek | Név |
 |---|---|
-| Microsoft.Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
-| Microsoft.Network/networkInterfaces/read | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
+| Microsoft. Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
+| Microsoft. Network/networkInterfaces/READ | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
 | Microsoft. Network/tapConfigurations/* | A TAP-konfiguráció hálózati adapteren való létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre virtuális hálózatokat](tutorial-tap-virtual-network-cli.md).

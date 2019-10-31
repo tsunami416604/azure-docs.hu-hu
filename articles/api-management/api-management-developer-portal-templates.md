@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073771"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176818"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Az Azure API Management fejlesztői portál testreszabása sablonok használatával
 
@@ -26,15 +26,17 @@ A fejlesztői portál három alapvető módon szabható testre az Azure API Mana
 
 * [A statikus oldalak tartalmának és oldalelrendezési elemeinek szerkesztése][modify-content-layout]
 * [Az oldal elemeihez használt stílusok frissítése a fejlesztői portálon][customize-styles]
-* A [portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (magyarázat az útmutatóban)
+* A [portál által létrehozott lapokhoz használt sablonok módosítása][portal-templates] (az útmutatóban ismertetett)
 
 A sablonok segítségével testre szabhatja a rendszer által létrehozott fejlesztői portál lapjainak tartalmát (például API-dokumentumok, termékek, felhasználói hitelesítés stb.). A [DotLiquid](http://dotliquidmarkup.org/) szintaxissal, valamint a honosított karakterlánc-erőforrások, ikonok és lapok vezérlőelemek egy adott halmazával nagy rugalmassággal konfigurálhatja a lapok tartalmát, ahogy az illik.
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>A fejlesztői portál sablonjainak áttekintése
 
-A sablonok szerkesztését a **fejlesztői portálon** végezheti el, miközben rendszergazdaként jelentkezett be. Első lépésként nyissa meg az Azure Portalt, és kattintson a **fejlesztői portál** lehetőségre a API Management példányának szolgáltatás eszköztárán.
+A sablonok szerkesztését a **fejlesztői portálon** végezheti el, miközben rendszergazdaként jelentkezett be. Először nyissa meg a Azure Portal, majd kattintson a **fejlesztői portál** elemre az API Management példányának szolgáltatás eszköztárán.
 
 A fejlesztői portál sablonjainak eléréséhez kattintson a bal oldali Testreszabás ikonra a Testreszabás menü megjelenítéséhez, majd kattintson a **sablonok**elemre.
 
@@ -100,7 +102,7 @@ Az előző példában két olyan termék jelenik meg a fejlesztői portálon, am
 }
 ```
 
-A **Terméklista** sablonban szereplő jelölés feldolgozza az adatokat, hogy a termékek gyűjteményén keresztül megismételve adja meg a kívánt kimenetet, valamint az egyes termékekre mutató hivatkozást. Jegyezze fel `<search-control>` a `<page-control>` és a Markup elemeit. Ezek vezérlik a keresés és a lapozás vezérlőelem megjelenítését az oldalon. `ProductsStrings|PageTitleProducts`egy honosított karakterlánc-hivatkozás, amely tartalmazza `h2` az oldal fejlécének szövegét. A fejlesztői portál sablonjaiban használható karakterlánc-erőforrások, oldal-vezérlőelemek és ikonok listáját itt tekintheti meg: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
+A **Terméklista** sablonban szereplő jelölés feldolgozza az adatokat, hogy a termékek gyűjteményén keresztül megismételve adja meg a kívánt kimenetet, valamint az egyes termékekre mutató hivatkozást. Jegyezze fel a jelölés `<search-control>` és `<page-control>` elemeit. Ezek vezérlik a keresés és a lapozás vezérlőelem megjelenítését az oldalon. `ProductsStrings|PageTitleProducts` egy honosított karakterlánc-hivatkozás, amely az oldal `h2` fejlécének szövegét tartalmazza. A fejlesztői portál sablonjaiban használható karakterlánc-erőforrások, oldal-vezérlőelemek és ikonok listáját itt tekintheti meg: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>
@@ -144,7 +146,7 @@ Az **Igen** gombra kattintva erősítse meg, hogy a sablon élő legyen a fejles
 
 ![Közzététel megerősítése][api-management-publish-template-confirm]
 
-A jelenleg közzé nem tett sablonok összes verziójának közzétételéhez kattintson a **Közzététel** elemre a sablonok listájában. A nem közzétett sablonokat a sablon nevét követő csillag jelöli. Ebben a példában a **Terméklista** és a sablonfájlok közzététel alatt állnak.
+A jelenleg közzé nem tett sablonok összes verziójának közzétételéhez kattintson a **Közzététel** elemre a sablonok listájában. A nem közzétett sablonokat a sablon nevét követő csillag jelöli. Ebben a példában a **Terméklista** **és a** sablonfájlok közzététel alatt állnak.
 
 ![Sablonok közzététele][api-management-publish-templates]
 
@@ -182,7 +184,7 @@ Ha az összes sablont az alapértelmezett verzióra szeretné visszaállítani, 
 
 A visszaállított sablonokat ezután egyenként vagy egyszerre kell közzétenni a [sablon közzétételéhez](#to-publish-a-template)szükséges lépések követésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fejlesztői portál sablonjaival, karakterlánc-erőforrásaival, ikonjaival és oldal-vezérlőelemekkel kapcsolatos információkért lásd: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
 
 [modify-content-layout]: api-management-modify-content-layout.md

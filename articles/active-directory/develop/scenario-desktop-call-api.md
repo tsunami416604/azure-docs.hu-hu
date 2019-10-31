@@ -11,32 +11,64 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56d3d01e39adfeb6bf2ef5e7e7d595f49c90f5a5
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 8160ec489f891764b102b5ba23a687b53376f738
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268279"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175363"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás – webes API meghívása
 
 Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
 
-## <a name="calling-a-web-api-from-net"></a>Webes API meghívása a .NET-ről
+## <a name="calling-a-web-api"></a>Webes API hívása
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+endpoint = "url to the API"
+http_headers = {'Authorization': 'Bearer ' + result['access_token'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'}
+data = requests.get(endpoint, headers=http_headers, stream=False).json()
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+// Set the appropriate header fields in the request header.
+conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+conn.setRequestProperty("Accept", "application/json");
+
+String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+int responseCode = conn.getResponseCode();
+if(responseCode != HttpURLConnection.HTTP_OK) {
+    throw new IOException(response);
+}
+
+JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
 ## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>Webes API meghívása iOS és macOS rendszerű MSAL
 
-A jogkivonatok beszerzésének módszerei `MSALResult` egy objektumot adnak vissza. `MSALResult`egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A hozzáférési jogkivonatot fel kell venni a HTTP-engedélyezési fejlécbe, mielőtt a rendszer meghívja a védett webes API-hoz való hozzáférést.
+A jogkivonatok beszerzésének módszerei egy `MSALResult` objektumot adnak vissza. a `MSALResult` a webes API-k meghívásához használható `accessToken` tulajdonságot teszi elérhetővé. A hozzáférési jogkivonatot fel kell venni a HTTP-engedélyezési fejlécbe, mielőtt a rendszer meghívja a védett webes API-hoz való hozzáférést.
 
 Objective-C:
 
@@ -45,7 +77,7 @@ NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
 urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
 urlRequest.HTTPMethod = @"GET";
 urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
-        
+
 NSURLSessionDataTask *task =
 [[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
@@ -59,14 +91,14 @@ let urlRequest = NSMutableURLRequest()
 urlRequest.url = URL(string: "https://contoso.api.com")!
 urlRequest.httpMethod = "GET"
 urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
-     
+
 let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
 task.resume()
 ```
 
 ## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Több API meghívása – növekményes hozzájárulás és feltételes hozzáférés
 
-Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor az első API-hoz kapott token után meghívhatja `AcquireTokenSilent`a többi API-tokent, és a legtöbb időt csendesen lekérdezheti.
+Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor az első API-hoz tartozó jogkivonattal meghívhatja a `AcquireTokenSilent`t, és a többi API-hoz az idő nagy részében csendes tokent kap.
 
 ```CSharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -97,8 +129,9 @@ catch(MsalUiRequiredException ex)
                   .ExecuteAsync();
 }
 ```
+---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Áthelyezés éles környezetbe](scenario-desktop-production.md)

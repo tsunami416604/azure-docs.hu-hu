@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 147d3dba2e2dc271d5b7422d7ba2b28c04f583af
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330640"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177114"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Tesztkörnyezet beállítása a rendszerhéj-parancsfájlok Linuxon való tanításához
 Ez a cikk bemutatja, hogyan állíthat be egy labort a rendszerhéj-parancsfájlok Linuxon való tanításához. A parancsfájlok hasznos részét képezik a rendszerfelügyeletnek, amely lehetővé teszi a rendszergazdák számára az ismétlődő feladatok elkerülését. Ebben a példában az osztály a hagyományos bash-parancsfájlokat és a továbbfejlesztett parancsfájlokat tartalmazza. A továbbfejlesztett parancsfájlok olyan parancsfájlok, amelyek a bash-parancsokat és a Ruby-t ötvözik. Ez a módszer lehetővé teszi a Ruby számára, hogy a Shell használatával kommunikáljon a környékre és bash-parancsokra. 
@@ -32,19 +32,19 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ----------- | ------------ |  
-| Marketplace-rendszerképek | Engedélyezze az [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) -rendszerkép használatát a labor-fiókjában. További információ: a [piactéren elérhető rendszerképek megadása a labor-készítők](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) számára | 
+| Marketplace-rendszerképek | Engedélyezze az [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -rendszerkép használatát a labor-fiókjában. További információ: a [piactéren elérhető rendszerképek megadása a labor-készítők](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) számára | 
 
 [Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, és alkalmazza a következő beállításokat:
 
 | Tesztkörnyezet beállításai | Érték/utasítások | 
 | ------------ | ------------------ |
 | Virtuális gép (VM) mérete | Kicsi  |
-| VM-rendszerkép | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) |
+| VM-rendszerkép | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
 | Távoli asztali kapcsolat engedélyezése | Engedélyezése. <p>A beállítás engedélyezése lehetővé teszi, hogy a tanárok és a diákok a távoli asztal (RDP) használatával csatlakozzanak a virtuális gépekhez. További információ: a [Távoli asztal engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Services tesztkörnyezetben](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Az asztali és a xrdp telepítése
-Az [ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) -rendszerkép alapértelmezés szerint nem települ a távoli asztali kiszolgálóval. Az [Azure-beli Linux rendszerű virtuális géphez való kapcsolódáshoz a telepítés és konfigurálás távoli asztal](../../virtual-machines/linux/use-remote-desktop.md) utasításait követve telepítse a sablonhoz szükséges csomagokat a távoli asztal protokollon keresztül történő kapcsolódáshoz.
+Az [ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -rendszerkép alapértelmezés szerint nem települ a távoli asztali kiszolgálóval. Az [Azure-beli Linux rendszerű virtuális géphez való kapcsolódáshoz a telepítés és konfigurálás távoli asztal](../../virtual-machines/linux/use-remote-desktop.md) utasításait követve telepítse a sablonhoz szükséges csomagokat a távoli asztal protokollon keresztül történő kapcsolódáshoz.
 
 ## <a name="install-ruby"></a>A Ruby telepítése
 A Ruby egy nyílt forráskódú dinamikus nyelv, amely bash-parancsfájlok használatával kombinálható. Ez a szakasz bemutatja, hogyan használható a `apt-get` a [Ruby](https://www.ruby-lang.org/)legújabb verziójának telepítéséhez.

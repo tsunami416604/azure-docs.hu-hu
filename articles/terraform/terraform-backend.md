@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 2e76da32e25451084d595b10698fe663c55b6a4b
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969525"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177806"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Oktatóanyag: Terraform-állapot tárolása az Azure Storage-ban
 
@@ -70,7 +70,7 @@ Hozzon létre egy `ARM_ACCESS_KEY` nevű környezeti változót az Azure Storage
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Az Azure Storage-fiók elérési kulcsának további védeleméhez tárolja azt Azure Key Vault. Ezután a környezeti változó a következőhöz hasonló paranccsal állítható be. További információ a Azure Key Vaultről: [Azure Key Vault dokumentáció] [.. /key-vault/quick-create-cli.md].
+Az Azure Storage-fiók elérési kulcsának további védeleméhez tárolja azt Azure Key Vault. Ezután a környezeti változó a következőhöz hasonló paranccsal állítható be. A Azure Key Vaultről a [Azure Key Vault dokumentációjában](../key-vault/quick-create-cli.md)talál további információt.
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
@@ -110,7 +110,7 @@ Most megtalálhatja az állapot fájlt a Azure Storage Blobban.
 
 Az Azure Storage-Blobok automatikusan zárolva vannak, mielőtt bármilyen művelet beírja az állapotot. Ez a minta megakadályozza az egyidejű állapotú műveleteket, ami sérülést okozhat. 
 
-További információ: [State locking] [https://www.terraform.io/docs/state/locking.html ] a Terraform dokumentációjában.
+További információkért lásd: az [állapot zárolása](https://www.terraform.io/docs/state/locking.html) a Terraform dokumentációjában.
 
 A zárolás látható a blob Azure Portal vagy más Azure Management-eszközön keresztüli vizsgálatakor.
 
@@ -120,7 +120,7 @@ A zárolás látható a blob Azure Portal vagy más Azure Management-eszközön 
 
 Az Azure-Blobokban tárolt adatforgalom titkosítva marad. Ha szükséges, a Terraform lekéri az állapotot a háttérből, és a helyi memóriában tárolja azt. A minta használatával az állapot soha nem íródik a helyi lemezre.
 
-Az Azure Storage titkosításával kapcsolatos további információkért lásd: [Azure Storage Service Encryption for inaktív adatok] [.. /storage/common/storage-service-encryption.md].
+Az Azure Storage titkosításával kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](../storage/common/storage-service-encryption.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

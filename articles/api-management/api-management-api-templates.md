@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073826"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176874"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
 
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
-  
+
 Az ebben a szakaszban található sablonok segítségével testre szabhatja az API-lapok tartalmát a fejlesztői portálon.  
   
 -   [API-lista](#APIList)  
@@ -40,6 +40,8 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 
 > [!NOTE]
 >  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -78,16 +80,16 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 </div>  
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  A `API list` sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [Lapozás – vezérlés](api-management-page-controls.md#paging-control)  
   
 -   [Keresés – vezérlés](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Type (Típus)|Leírás|  
 |--------------|----------|-----------------|  
 |`apis`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitások gyűjteménye.|Az aktuális felhasználó számára látható API-k.|  
   
@@ -337,21 +339,21 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 </div>  
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  A `Operation` sablon nem teszi lehetővé az [oldal vezérlőelemek](api-management-page-controls.md)használatát.  
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Type (Típus)|Leírás|  
 |--------------|----------|-----------------|  
-|`apiId`|Karakterlánc|Az aktuális API azonosítója.|  
-|`apiName`|Karakterlánc|Az API neve.|  
-|`apiDescription`|Karakterlánc|Az API leírása.|  
+|`apiId`|sztring|Az aktuális API azonosítója.|  
+|`apiName`|sztring|Az API neve.|  
+|`apiDescription`|sztring|Az API leírása.|  
 |`api`|[API összegző](api-management-template-data-model-reference.md#APISummary) entitás.|Az aktuális API.|  
 |`operation`|[Művelet](api-management-template-data-model-reference.md#Operation)|Az aktuálisan megjelenített művelet.|  
-|`sampleUrl`|Karakterlánc|Az aktuális művelet URL-címe.|  
+|`sampleUrl`|sztring|Az aktuális művelet URL-címe.|  
 |`operationMenu`|[Művelet menü](api-management-template-data-model-reference.md#Menu)|Az API műveleteinek menüje.|  
-|`consoleUrl`|URI|A kipróbálási gomb URI-ja.|  
+|`consoleUrl`|URI|A **kipróbálási** gomb URI-ja.|  
 |`samples`|[Mintakód](api-management-template-data-model-reference.md#Sample) -entitások gyűjteménye.|Az aktuális művelet kódjának mintái...|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
@@ -680,7 +682,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
   
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -715,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="CSharp"></a> C#  
+### <a name="CSharp"></a>C#  
  A **DocumentationSamplesCsharp** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -859,7 +861,7 @@ namespace CSHttpClientSample
 }     
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -955,7 +957,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -1044,7 +1046,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -1156,7 +1158,7 @@ int main(int argc, const char * argv[])
   
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -1246,7 +1248,7 @@ catch (HttpException $ex)
 ?>  
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -1364,7 +1366,7 @@ except Exception as e:
 ####################################  
 ```
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -1399,7 +1401,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="Ruby"></a> Ruby  
+### <a name="Ruby"></a>Ruby  
  A **DocumentationSamplesRuby** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -1435,7 +1437,7 @@ puts response.body
   
 ```  
   
-#### <a name="controls"></a>Szabályzók  
+#### <a name="controls"></a>Vezérlők  
  A kód minta sablonjai nem engedélyezik a [lapok vezérlőinek](api-management-page-controls.md)használatát.  
   
 #### <a name="data-model"></a>Adatmodell  
@@ -1470,5 +1472,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

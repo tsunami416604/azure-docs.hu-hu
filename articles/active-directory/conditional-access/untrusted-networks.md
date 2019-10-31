@@ -1,6 +1,6 @@
 ---
-title: Többtényezős hitelesítés (MFA) megkövetelése a hozzáféréshez a nem megbízható hálózatok az Azure Active Directory (Azure AD) feltételes hozzáférés hogyan |} A Microsoft Docs
-description: Ismerje meg, hogyan egy feltételes hozzáférési szabályzat konfigurálása az Azure Active Directoryban (Azure AD) való hozzáférési kísérleteket a nem megbízható hálózatokon.
+title: A többtényezős hitelesítés (MFA) megkövetelése a nem megbízható hálózatokról való hozzáféréshez Azure Active Directory (Azure AD) feltételes hozzáféréssel | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat feltételes hozzáférési szabályzatot Azure Active Directoryban (Azure AD) a nem megbízható hálózatok hozzáférési kísérleteinek eléréséhez.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,62 +11,62 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b75e9aa3c588f5046ec55c0d809ca74060ad9c2
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509338"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175685"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Útmutató: Többtényezős hitelesítés megkövetelése a hozzáféréshez a nem megbízható hálózatokhoz, a feltételes hozzáférés   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Útmutató: az MFA megkövetelése a nem megbízható hálózatokból való hozzáféréshez feltételes hozzáféréssel   
 
-Az Azure Active Directory (Azure AD) lehetővé teszi az egyszeri bejelentkezést az eszközök, alkalmazások és szolgáltatások bárhonnan. Felhasználói bármikor hozzáférhetnek a felhőbeli alkalmazásokat, nem csak a vállalati hálózaton, hanem nem megbízható internetes bárhonnan. Hozzáférést a nem megbízható hálózatokon általános ajánlott eljárás, akkor a multi-factor authentication (MFA) kötelező.
+Azure Active Directory (Azure AD) lehetővé teszi az egyszeri bejelentkezést az eszközökre, alkalmazásokra és szolgáltatásokra bárhonnan. A felhasználók nem csak a szervezet hálózatáról, hanem bármely nem megbízható internetes helyről is hozzáférhetnek a felhőalapú alkalmazásokhoz. A nem megbízható hálózatokból való hozzáférésre vonatkozó gyakori ajánlott eljárás a többtényezős hitelesítés (MFA) megkövetelése.
 
-Ez a cikk a feltételes hozzáférési szabályzatot, amely többtényezős Hitelesítést követel meg a hozzáférést a nem megbízható hálózatok konfigurálásához szükséges információkat biztosít. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat olyan feltételes hozzáférési szabályzatot, amely az MFA használatát igényli a nem megbízható hálózatokról való hozzáféréshez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy Ön ismeri a: 
+Ez a cikk azt feltételezi, hogy ismeri a következőket: 
 
-- A [alapvető fogalmait](overview.md) Azure AD feltételes hozzáférés 
-- A [ajánlott eljárások](best-practices.md) a feltételes hozzáférési szabályzatok konfigurálása az Azure Portalon
+- Az Azure AD feltételes hozzáférés [alapvető fogalmai](overview.md) 
+- A feltételes hozzáférési házirendek konfigurálásának [ajánlott eljárásai](best-practices.md) a Azure Portal
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Szakértőjévé válhat biztonság és hatékonyság közötti egyensúly, azt is elegendő lehet, hogy csak a vállalati hálózaton történő bejelentkezések a jelszó szükséges. Hozzáférés egy nem megbízható hálózati helyről, van azonban egy megnövekedett kockázata, hogy a bejelentkezések, amelyek nem megbízható a felhasználók által végrehajtott. Ezen probléma megoldásának, hogy akkor képes blokkolni a hozzáférést a nem megbízható hálózatokon. Azt is megteheti többtényezős hitelesítés (MFA) történt kísérlet, a fiók jogos tulajdonosa vissza további frissítési garanciát biztosító próbál a jeggyel is megkövetelheti. 
+A biztonság és a termelékenység egyensúlyának elsajátításához elegendő lehet a szervezet hálózatán lévő bejelentkezések jelszavának megkövetelése. A nem megbízható hálózati helyről való hozzáféréshez azonban nagyobb a kockázata, hogy a bejelentkezéseket nem a legitim felhasználók hajtják végre. A probléma megoldása érdekében letilthatja a nem megbízható hálózatokból való hozzáférést. Azt is megteheti, hogy többtényezős hitelesítést (MFA) is megkövetelheti, hogy további garanciát szerezzen a fiók jogos tulajdonosa által történt kísérletekhez. 
 
-Az Azure AD feltételes hozzáférés meg lehet oldani ezt a követelményt, egy egyetlen szabályzattal, amely engedélyezi a hozzáférést: 
+Az Azure AD feltételes hozzáférésével ezt a követelményt egyetlen, hozzáférést biztosító szabályzattal kezelheti: 
 
 - A kiválasztott felhőalapú alkalmazások
-- A kijelölt felhasználók és csoportok  
+- A kiválasztott felhasználók és csoportok esetében  
 - Többtényezős hitelesítés megkövetelése 
-- Ha hozzáférést naplózásból származnak: 
-   - Egy helyet, amely nem megbízható
+- Ha a hozzáférés a következőkből származik: 
+   - Nem megbízható hely
 
 ## <a name="implementation"></a>Megvalósítás
 
-Az ebben a forgatókönyvben a kihívás abban áll lefordítani *hozzáférést egy nem megbízható hálózati helyről* , a feltételes hozzáférés egy feltétele. A feltételes hozzáférési szabályzat, konfigurálhatja a [helyek feltétel](location-condition.md) helyzetekre kapcsolódó hálózati helyeket. A helyek feltétel lehetővé teszi, hogy válassza ki a nevesített helyek, amely az IP-címtartományok, országok és régiók logikai csoportosításán alapulnak.  
+Ennek a forgatókönyvnek a feladata a nem *megbízható hálózati helyről való hozzáférés* feltételes hozzáférési feltételre való lefordítása. A feltételes hozzáférési házirendben beállíthatja a [helyszínek feltételét](location-condition.md) a hálózati telephelyekhez kapcsolódó forgatókönyvek kezeléséhez. A helyszínek feltétele lehetővé teszi az elnevezett helyszínek kiválasztását, amelyek az IP-címtartományok, országok és régiók logikai csoportjai.  
 
-Általában a szervezete tulajdonában van egy vagy több-címtartományokat, például 199.30.16.0 - 199.30.16.24.
-Konfigurálhat egy elnevezett helye szerint:
+A szervezet általában egy vagy több címtartományt birtokol, például: 199.30.16.0-199.30.16.15.
+Megnevezett helyet az alábbiak szerint állíthat be:
 
-- Ez a tartomány (199.30.16.0/24) megadása 
-- Egy leíró nevet például hozzárendelése **vállalati hálózat** 
+- A tartomány meghatározása (199.30.16.0/28) 
+- Leíró név, például **vállalati hálózat** kiosztása 
 
-Helyett adja meg, mi minden hely, amelyek nem megbízható, a következőket teheti:
+Ahelyett, hogy az összes olyan helyet meg kellene határozni, amely nem megbízható, a következőket teheti:
 
-- Minden hely felvétele 
+- Bármely hely belefoglalása 
 
    ![Feltételes hozzáférés](./media/untrusted-networks/02.png)
 
-- Minden megbízható hely kizárása 
+- Az összes megbízható helyszín kizárása 
 
    ![Feltételes hozzáférés](./media/untrusted-networks/01.png)
 
 ## <a name="policy-deployment"></a>Házirend központi telepítése
 
-A következő cikkben ismertetett módszert használja nem megbízható helyekre vonatkozó feltételes hozzáférési szabályzat most konfigurálhatja. Győződjön meg arról, hogy a szabályzat a várt módon működik-e, hogy az ajánlott eljárás tesztelése, mielőtt éles környezetben megvalósítaná. Ideális esetben egy tesztelési bérlőn használatával győződjön meg arról, hogy az új szabályzat helyesen működik-e. További információkért lásd: [hogyan helyezhet üzembe egy új szabályzat](best-practices.md#how-should-you-deploy-a-new-policy). 
+A jelen cikkben ismertetett megközelítéssel mostantól konfigurálhat feltételes hozzáférési szabályzatot nem megbízható helyszínekhez. Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információ: [új szabályzat üzembe helyezése](best-practices.md#how-should-you-deploy-a-new-policy). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha szeretne további információ a feltételes hozzáférésről, lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](../active-directory-conditional-access-azure-portal.md)
+Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [Mi a feltételes hozzáférés Azure Active Directory?](../active-directory-conditional-access-azure-portal.md) című témakört.

@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 10/16/2019
-ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550702"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177651"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -208,7 +208,7 @@ Az alábbi két eljárás bemutatja, hogyan építhet ki Azure Active Directory 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. A [Azure Portal](https://portal.azure.com/)jobb felső sarokban válassza ki a kapcsolódást a lehetséges aktív könyvtárak listájának legördülő listához. Válassza ki a megfelelő Active Directory alapértelmezett Azure AD-ként. Ez a lépés összekapcsolja az előfizetéshez kapcsolódó Active Directory az Azure SQL Serverrel, és gondoskodik arról, hogy ugyanazt az előfizetést használja az Azure AD és a SQL Server esetében is. (Az Azure SQL Server Azure SQL Database vagy Azure SQL Data Warehouse is üzemeltethető.)  ![choose – ad ][8]
+1. A [Azure Portal](https://portal.azure.com/)jobb felső sarokban válassza ki a kapcsolódást a lehetséges aktív könyvtárak listájának legördülő listához. Válassza ki a megfelelő Active Directory alapértelmezett Azure AD-ként. Ez a lépés összekapcsolja az előfizetéshez kapcsolódó Active Directory az Azure SQL Serverrel, és gondoskodik arról, hogy ugyanazt az előfizetést használja az Azure AD és a SQL Server esetében is. (Az Azure SQL Server Azure SQL Database vagy Azure SQL Data Warehouse is üzemeltethető.) ![válassza a-ad][8]
 
 2. A bal oldali szalagcímben válassza a **minden szolgáltatás**lehetőséget, majd a szűrő típusát az **SQL Serverben**. Válassza az **SQL-kiszolgálók**lehetőséget.
 
@@ -218,13 +218,13 @@ Az alábbi két eljárás bemutatja, hogyan építhet ki Azure Active Directory 
     > Ezen az oldalon az **SQL-kiszolgálók**kiválasztása előtt kiválaszthatja a név melletti **csillagot** a kategória *kedvencéhez* , és hozzáadhat **SQL-kiszolgálókat** a bal oldali navigációs sávon.
 
 3. **SQL Server** lapon válassza a **Active Directory rendszergazda**lehetőséget.
-4. A **Active Directory-rendszergazda** lapon válassza a **rendszergazda beállítása**lehetőséget.   ![select Active Directory ](./media/sql-database-aad-authentication/select-active-directory.png)  
+4. A **Active Directory-rendszergazda** lapon válassza a **rendszergazda beállítása**lehetőséget.  ![válassza az Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
 
 5. A rendszergazda **hozzáadása** lapon keressen rá egy felhasználóra, válassza ki a felhasználót vagy csoportot, majd válassza a **kiválasztás**lehetőséget. (A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert nem támogatottak az Azure AD-rendszergazdák. (Tekintse meg a támogatott rendszergazdák listáját az **Azure ad-szolgáltatások és-korlátozások** című szakaszban [Azure Active Directory hitelesítés használata SQL Database vagy SQL Data Warehouse használatával történő hitelesítéshez](sql-database-aad-authentication.md).) A szerepköralapú hozzáférés-vezérlés (RBAC) csak a portálra vonatkozik, és nincs propagálva a SQL Server.
-    ![select felügyeleti ](./media/sql-database-aad-authentication/select-admin.png)  
+    ![válassza a rendszergazda](./media/sql-database-aad-authentication/select-admin.png)  
 
 6. A **Active Directory-rendszergazda** lap tetején válassza a **Mentés**lehetőséget.
-    ![save felügyeleti ](./media/sql-database-aad-authentication/save-admin.png)
+    ![a felügyeleti](./media/sql-database-aad-authentication/save-admin.png) mentése
 
 A rendszergazda módosításának folyamata több percet is igénybe vehet. Ezután megjelenik az új rendszergazda a **Active Directory admin** mezőben.
 
@@ -465,7 +465,7 @@ További információ: [SQL Server biztonsági blog](https://blogs.msdn.microsof
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-A következő utasítások az Sqlcmd 13,1-es verziójának használatával csatlakoznak, amely a [letöltőközpontból](https://go.microsoft.com/fwlink/?LinkID=825643)érhető el.
+A következő utasítások az Sqlcmd 13,1-es verziójának használatával csatlakoznak, amely a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=53591)érhető el.
 
 > [!NOTE]
 > a `sqlcmd` a `-G` paranccsal nem működik a rendszeridentitásokkal, és felhasználói egyszerű bejelentkezést igényel.

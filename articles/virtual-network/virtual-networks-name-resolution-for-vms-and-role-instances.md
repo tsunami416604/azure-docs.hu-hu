@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 64f79b3e72a8655f8d704ffd531d9e34485832b0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570607"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176043"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Az Azure Virtual Networks erőforrásainak névfeloldása
 
@@ -26,21 +26,21 @@ Attól függően, hogyan használja az Azure-t a IaaS, a Pásti és a hibrid meg
 A virtuális hálózatokon üzembe helyezett erőforrások két metódust használhatnak tartománynevek belső IP-címekre történő feloldásához:
 
 * [Azure által biztosított névfeloldás](#azure-provided-name-resolution)
-* [Saját DNS-kiszolgálót használó](#name-resolution-that-uses-your-own-dns-server) névfeloldás (amely a lekérdezéseket az Azure által biztosított DNS-kiszolgálókra továbbíthatja)
+* [A saját DNS-kiszolgálót használó](#name-resolution-that-uses-your-own-dns-server) névfeloldás (amely a lekérdezéseket az Azure által biztosított DNS-kiszolgálókra továbbítja)
 
-A használt névfeloldás típusa attól függ, hogy az erőforrások hogyan kell kommunikálni egymással. Az alábbi táblázat a forgatókönyveket és a hozzájuk tartozó névfeloldási megoldásokat szemlélteti:
+A használt névfeloldási típus attól függ, hogy az erőforrásoknak hogyan kell kommunikálniuk egymással. Az alábbi táblázat a forgatókönyveket és a hozzájuk tartozó névfeloldási megoldásokat szemlélteti:
 
 > [!NOTE]
 > A forgatókönyvtől függően érdemes lehet használni a Azure DNS Private Zones funkciót, amely jelenleg nyilvános előzetes verzióban érhető el. További információkat az [Azure DNS privát tartományokhoz való használatát](../dns/private-dns-overview.md) ismertető cikkben olvashat.
 >
 
-| **Forgatókönyv** | **Megoldás** | **Suffix** |
+| **Forgatókönyv** | **Megoldás** | **Utótag** |
 | --- | --- | --- |
 | Az azonos virtuális hálózatban található virtuális gépek és az Azure Cloud Services szerepkör példányai közötti névfeloldás ugyanazon a felhőalapú szolgáltatásban. | [Azure DNS Private Zones](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás |Állomásnév vagy FQDN |
 | Névfeloldás a különböző virtuális hálózatokban lévő virtuális gépek és a különböző felhőalapú szolgáltatások szerepkör-példányai között. |[Azure DNS Private Zones](../dns/private-dns-overview.md) vagy, az ügyfél által felügyelt DNS-kiszolgálók a virtuális hálózatok közötti lekérdezéseket továbbítják az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Névfeloldás egy Azure App Serviceból (webalkalmazás, függvény vagy bot) virtuális hálózati integráció használatával egy adott virtuális hálózatban lévő szerepkör-példányokhoz vagy virtuális gépekhez. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | A App Service Web Apps névfeloldása ugyanazon a virtuális hálózaton lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
-| Az egyik virtuális hálózatban található App Service Web Apps névfeloldása egy másik virtuális hálózatban lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: névfeloldás a saját DNS-kiszolgáló használatával. |Csak FQDN |
+| Az egyik virtuális hálózatban található App Service Web Apps névfeloldása egy másik virtuális hálózatban lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | A helyszíni számítógépek és szolgáltatások neveinek feloldása az Azure-beli virtuális gépek vagy szerepkör-példányok között. |Ügyfél által felügyelt DNS-kiszolgálók (helyszíni tartományvezérlő, helyi írásvédett tartományvezérlő vagy a zónaletöltés használatával szinkronizált másodlagos DNS-kiszolgáló). Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Az Azure-beli állomásnevek feloldása a helyszíni számítógépekről. |Továbbítsa a lekérdezéseket egy ügyfél által felügyelt DNS-proxykiszolgálóhoz a megfelelő virtuális hálózatban, a proxykiszolgáló lekérdezéseket továbbít az Azure-nak a feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Fordított DNS a belső IP-címekhez. |Névfeloldás [saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Nem alkalmazható |
@@ -55,7 +55,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 >
 >
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Jellemzők
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
 * Egyszerű használat. Nincs szükség konfigurációra.
@@ -89,19 +89,19 @@ Az alapértelmezett Windows DNS-ügyfél beépített DNS-gyorsítótárral rende
 Számos különböző DNS-gyorsítótárazási csomag elérhető (például DNSMasq). A következőképpen telepítheti a DNSMasq a leggyakoribb disztribúciók esetében:
 
 * **Ubuntu (resolvconf-t használ)** :
-  * Telepítse a DNSMasq csomagot a `sudo apt-get install dnsmasq`-val.
+  * Telepítse a DNSMasq csomagot a `sudo apt-get install dnsmasq`.
 * **SUSE (netconf használ)** :
-  * Telepítse a DNSMasq csomagot a `sudo zypper install dnsmasq`-val.
-  * Engedélyezze a DNSMasq szolgáltatást a `systemctl enable dnsmasq.service`szolgáltatással. 
-  * Indítsa el a DNSMasq szolgáltatást `systemctl start dnsmasq.service`a szolgáltatással. 
+  * Telepítse a DNSMasq csomagot a `sudo zypper install dnsmasq`.
+  * Engedélyezze a DNSMasq szolgáltatást a `systemctl enable dnsmasq.service`. 
+  * Indítsa el a DNSMasq szolgáltatást a `systemctl start dnsmasq.service`. 
   * Szerkessze a **/etc/sysconfig/network/config**, és módosítsa a *NETCONFIG_DNS_FORWARDER = ""* *DNSMasq*.
-  * Frissítse a resolv. conf `netconfig update`fájlt a használatával a gyorsítótár helyi DNS-feloldóként való beállításához.
+  * Frissítse a resolv. conf fájlt a `netconfig update`használatával a gyorsítótár helyi DNS-feloldóként való beállításához.
 * **CentOS (hálózatkezelő használ)** :
-  * Telepítse a DNSMasq csomagot a `sudo yum install dnsmasq`-val.
-  * Engedélyezze a DNSMasq szolgáltatást a `systemctl enable dnsmasq.service`szolgáltatással.
-  * Indítsa el a DNSMasq szolgáltatást `systemctl start dnsmasq.service`a szolgáltatással.
+  * Telepítse a DNSMasq csomagot a `sudo yum install dnsmasq`.
+  * Engedélyezze a DNSMasq szolgáltatást a `systemctl enable dnsmasq.service`.
+  * Indítsa el a DNSMasq szolgáltatást a `systemctl start dnsmasq.service`.
   * Adja *hozzá* a **/etc/dhclient-eth0.conf**.
-  * Indítsa újra a hálózati szolgáltatást `service network restart`a használatával, hogy a gyorsítótárat a helyi DNS-feloldóként állítsa be.
+  * Indítsa újra a hálózati szolgáltatást a `service network restart`ával, hogy a gyorsítótárat a helyi DNS-feloldóként állítsa be.
 
 > [!NOTE]
 > A DNSMasq-csomag csak a Linuxon elérhető számos DNS-gyorsítótár egyike. A használata előtt győződjön meg arról, hogy megfelel az igényeinek, és győződjön meg arról, hogy nincs telepítve más gyorsítótár.
@@ -115,23 +115,23 @@ A DNS elsődlegesen UDP protokoll. Mivel az UDP protokoll nem garantálja az üz
 * A Windows operációs rendszer újrapróbálkozik egy másodperc elteltével, majd ismét egy másik két másodperc, négy másodperc és egy másik négy másodperc után. 
 * Az alapértelmezett Linux-telepítő öt másodperc elteltével próbálkozik újra. Javasoljuk, hogy az újrapróbálkozási specifikációkat ötször, egy másodperces időközönként módosítsa.
 
-A Linux rendszerű virtuális `cat /etc/resolv.conf`gépek aktuális beállításainak megtekintése a következővel:. Tekintse meg a *Beállítások* sort, például:
+A Linux rendszerű virtuális gépek aktuális beállításait `cat /etc/resolv.conf`. Tekintse meg a *Beállítások* sort, például:
 
 ```bash
 options timeout:1 attempts:5
 ```
 
-Az resolv. conf fájl általában automatikusan jön létre, és nem szerkeszthető. Az Options ( *Beállítások* ) sor hozzáadásának konkrét lépései a terjesztés szerint változnak:
+Az resolv. conf fájl általában automatikusan jön létre, és nem szerkeszthető. Az *Options (beállítások* ) sor hozzáadásának konkrét lépései a terjesztés szerint változnak:
 
-* **Ubuntu** (a resolvconf használja):
-  1. Adja hozzá a Options sort a következőhöz: **/etc/resolvconf/resolv.conf.d/tail**.
-  2. A `resolvconf -u` frissítéshez futtassa a parancsot.
-* **SUSE** (a netconf használja):
+* **Ubuntu** (resolvconf-t használ):
+  1. Adja hozzá a *Options* sort a következőhöz: **/etc/resolvconf/resolv.conf.d/tail**.
+  2. `resolvconf -u` futtatása a frissítéshez.
+* **SUSE** (netconf használ):
   1. *Időkorlát hozzáadása: 1 kísérlet: 5* a **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** paraméterhez a **/etc/sysconfig/network/config**.
-  2. A `netconfig update` frissítéshez futtassa a parancsot.
-* **CentOS** (a hálózatkezelő használja):
+  2. `netconfig update` futtatása a frissítéshez.
+* **CentOS** (hálózatkezelő használ):
   1. Adja hozzá az *echo "Options timeout: 1 kísérlet: 5"* **/etc/NetworkManager/Dispatcher.d/11-dhclient**.
-  2. Frissítés a `service network restart`szolgáltatással.
+  2. `service network restart`frissítéssel.
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Saját DNS-kiszolgálót használó névfeloldás
 
@@ -143,7 +143,7 @@ A névfeloldási igények az Azure által biztosított funkciókon túl is megje
 
 A virtuális hálózaton belüli DNS-kiszolgálók továbbítják a DNS-lekérdezéseket az Azure rekurzív feloldóinak. Ez lehetővé teszi az adott virtuális hálózaton belüli állomásnevek feloldását. Az Azure-ban futó tartományvezérlők például a tartományokra vonatkozó DNS-lekérdezésekre tudnak válaszolni, és az összes többi lekérdezést az Azure-ba továbbítják. A továbbítási lekérdezések lehetővé teszik a virtuális gépek számára a helyszíni erőforrások (a TARTOMÁNYVEZÉRLŐn keresztül) és az Azure által biztosított állomásnevek (a továbbítón keresztüli) megtekintését. Az Azure-ban lévő rekurzív feloldók elérését a virtuális IP-168.63.129.16 keresztül biztosítjuk.
 
-A DNS-továbbítás lehetővé teszi a DNS-feloldást a virtuális hálózatok között, és lehetővé teszi a helyszíni gépek számára az Azure által biztosított állomásnevek feloldását. A virtuális gép állomásneve feloldásához a DNS-kiszolgáló virtuális gépnek ugyanabban a virtuális hálózatban kell lennie, és konfigurálni kell az állomásnév-lekérdezések Azure-ba való továbbítását. Mivel a DNS-utótag különbözik az egyes virtuális hálózatokban, a feltételes továbbítási szabályok segítségével a megfelelő virtuális hálózatra küldhet DNS-lekérdezéseket a megoldáshoz. A következő kép két virtuális hálózatot és egy helyszíni hálózatot mutat be, amely a virtuális hálózatok közötti DNS-feloldást hajtja végre ezzel a módszerrel. Egy példa a DNS-továbbítóra az [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) katalógusában és [](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder)a githubban.
+A DNS-továbbítás lehetővé teszi a DNS-feloldást a virtuális hálózatok között, és lehetővé teszi a helyszíni gépek számára az Azure által biztosított állomásnevek feloldását. A virtuális gép állomásneve feloldásához a DNS-kiszolgáló virtuális gépnek ugyanabban a virtuális hálózatban kell lennie, és konfigurálni kell az állomásnév-lekérdezések Azure-ba való továbbítását. Mivel a DNS-utótag különbözik az egyes virtuális hálózatokban, a feltételes továbbítási szabályok segítségével a megfelelő virtuális hálózatra küldhet DNS-lekérdezéseket a megoldáshoz. A következő kép két virtuális hálózatot és egy helyszíni hálózatot mutat be, amely a virtuális hálózatok közötti DNS-feloldást hajtja végre ezzel a módszerrel. Egy példa a DNS-továbbítóra az [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) katalógusában és a [githubban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
 
 > [!NOTE]
 > A szerepkör-példányok az ugyanazon a virtuális hálózaton belüli virtuális gépek névfeloldását is elvégezhetik. Ezt a teljes tartománynevet használja, amely a virtuális gép állomásnevét és **Internal.cloudapp.net** DNS-utótagját tartalmazza. Ebben az esetben azonban a névfeloldás csak akkor sikeres, ha a szerepkör-példány rendelkezik a [szerepkör-sémában (. cscfg fájlban)](https://msdn.microsoft.com/library/azure/jj156212.aspx)definiált virtuálisgép-névvel.
@@ -176,20 +176,20 @@ Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igénye
 ### <a name="web-apps"></a>Webalkalmazások
 Tegyük fel, hogy névfeloldást kell végeznie a webalkalmazásból, amelyet a virtuális hálózathoz kapcsolódó App Service használatával kell létrehozni az azonos virtuális hálózatban lévő virtuális gépekhez. Olyan egyéni DNS-kiszolgáló beállításán kívül, amely DNS-továbbítóval továbbítja a lekérdezéseket az Azure-nak (virtuális IP-168.63.129.16), hajtsa végre a következő lépéseket:
 1. Engedélyezze a virtuális hálózatok integrálását a webalkalmazáshoz, ha azt már nem tette meg, az [alkalmazás integrálása virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakörben leírtak szerint.
-2. A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása** a hálózatban, **Virtual Network az integráció**lehetőséget.
+2. A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása a hálózatban** , **Virtual Network** **az**integráció lehetőséget.
 
     ![Képernyőfelvétel a virtuális hálózat névfeloldásáról](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
 Ha olyan névfeloldást kell elvégeznie a webalkalmazásból, amely a App Service használatával készült, egy virtuális hálózathoz kapcsolt virtuális hálózatban lévő virtuális gépekhez, a következőképpen kell egyéni DNS-kiszolgálókat használnia mindkét virtuális hálózaton:
 
-* Állítson be egy DNS-kiszolgálót a célként megadott virtuális hálózatban egy olyan virtuális gépen, amely az Azure rekurzív feloldójának lekérdezéseit is továbbítja (virtuális IP-168.63.129.16). Egy példa a DNS-továbbítóra az [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) katalógusában és [](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder)a githubban. 
+* Állítson be egy DNS-kiszolgálót a célként megadott virtuális hálózatban egy olyan virtuális gépen, amely az Azure rekurzív feloldójának lekérdezéseit is továbbítja (virtuális IP-168.63.129.16). Egy példa a DNS-továbbítóra az [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) katalógusában és a [githubban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder). 
 * Hozzon létre egy DNS-továbbítót a forrás virtuális hálózaton egy virtuális gépen. Konfigurálja a DNS-továbbítót úgy, hogy továbbítsa a lekérdezéseket a célként megadott virtuális hálózatban lévő DNS-kiszolgálónak.
 * Konfigurálja a forrás DNS-kiszolgálót a forrásként szolgáló virtuális hálózat beállításaiban.
 * Engedélyezze a virtuális hálózatok integrálását a webalkalmazáshoz a forrás virtuális hálózatra való hivatkozáshoz, kövesse az [alkalmazás integrálása virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakör utasításait.
-* A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása** a hálózatban, **Virtual Network az integráció**lehetőséget.
+* A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása a hálózatban** , **Virtual Network** **az**integráció lehetőséget.
 
 ## <a name="specify-dns-servers"></a>DNS-kiszolgálók meghatározása
-Ha saját DNS-kiszolgálókat használ, az Azure lehetővé teszi, hogy virtuális hálózatonként több DNS-kiszolgálót is megadhat. Megadhat több DNS-kiszolgálók száma hálózati adapterenként (az Azure Resource Manager) vagy egy (esetén a klasszikus üzemi modellhez) is. A hálózati adapterhez vagy a felhőalapú szolgáltatáshoz megadott DNS-kiszolgálók elsőbbséget élveznek a virtuális hálózathoz megadott DNS-kiszolgálókkal szemben.
+Ha saját DNS-kiszolgálókat használ, az Azure lehetővé teszi, hogy virtuális hálózatonként több DNS-kiszolgálót is megadhat. Hálózati adapterenként (az Azure Resource Manager esetében) vagy felhőszolgáltatásonként (a klasszikus üzemi modell esetében) is megadhat több DNS-kiszolgálót. A hálózati adapterhez vagy a felhőalapú szolgáltatáshoz megadott DNS-kiszolgálók elsőbbséget élveznek a virtuális hálózathoz megadott DNS-kiszolgálókkal szemben.
 
 > [!NOTE]
 > A hálózati kapcsolatok tulajdonságait, például a DNS-kiszolgáló IP-címeit nem szabad közvetlenül a virtuális gépeken belül szerkeszteni. Ennek az az oka, hogy a szolgáltatás meggyógyítása során előfordulhat, hogy a virtuális hálózati adapter helyére kerül. Ez a Windows és a Linux rendszerű virtuális gépekre is vonatkozik.
@@ -210,7 +210,7 @@ A klasszikus üzemi modell használatakor megadhatja a virtuális hálózat DNS-
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Resource Manager telepítési modell:
 

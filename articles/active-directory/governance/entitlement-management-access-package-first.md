@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához a Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
+title: Oktatóanyag – az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25213305e2bf73bfe6980c0a09ffc73bd4f94ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893650"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174873"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
 A szervezetek számára fontos funkció az összes erőforráshoz, például a csoportokhoz, alkalmazásokhoz és webhelyekhez való hozzáférés kezelése. Azt szeretné, hogy az alkalmazottak a megfelelő szintű hozzáférést biztosítsanak a hatékonysághoz, és el kell távolítaniuk a hozzáférést, ha már nincs rá szükség.
 
@@ -49,7 +44,7 @@ Az Azure Active Directory jogosultságok felügyeletének üzembe helyezési fol
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-jogosultságok felügyeletének (előzetes verzió) használatához a következő licencek egyike szükséges:
+Az Azure AD-jogosultságok felügyeletének használatához a következő licencek egyike szükséges:
 
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5-licenc

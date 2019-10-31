@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 168fbb275f70acd229dfd8f2e3f0d4c325db0f94
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0d0550dd92b786ec540bae6ae6da7322d4fb629
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678017"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175479"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó mobil alkalmazás – kód konfigurálása
 
@@ -40,7 +40,7 @@ A Mobile Apps szolgáltatást támogató Microsoft-kódtárak a következők:
 
 ### <a name="android"></a>Android
 
-A Mobile Applications `PublicClientApplication` az osztályt használja. A következő módon hozhatja létre:
+A mobil alkalmazások a `PublicClientApplication` osztályt használják. A következő módon hozhatja létre:
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -50,7 +50,7 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-Az iOS-hez készült Mobile-alkalmazásoknak `MSALPublicClientApplication` az osztályt kell létrehozniuk.
+Az iOS-hez készült Mobile-alkalmazásoknak a `MSALPublicClientApplication` osztályt kell létrehozniuk.
 
 Objective-C:
 
@@ -75,7 +75,7 @@ A következő bekezdés ismerteti, hogyan hozható létre az alkalmazás a Xamar
 
 #### <a name="instantiating-the-application"></a>Az alkalmazás példányának példánya
 
-A Xamarin vagy UWP az alkalmazás létrehozásának legegyszerűbb módja a következő, ahol a `ClientId` a regisztrált alkalmazás GUID-azonosítója.
+A Xamarin vagy UWP az alkalmazás létrehozásának legegyszerűbb módja a következő, ahol a `ClientId` a regisztrált alkalmazás GUID azonosítója.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -94,7 +94,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-Az Androidon az `CurrentActivityPlugin` [itt](https://github.com/jamesmontemagno/CurrentActivityPlugin)ajánlott használni.  Ezt követően `PublicClientApplication` a Builder-kód így fog kinézni:
+Androidon [a `CurrentActivityPlugin` használatát](https://github.com/jamesmontemagno/CurrentActivityPlugin)javasoljuk.  Ezt követően a `PublicClientApplication` Builder-kód így fog kinézni:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -106,14 +106,14 @@ var pca = PublicClientApplicationBuilder
 
 ##### <a name="more-app-building-parameters"></a>További alkalmazás-létrehozási paraméterek
 
-- Az összes elérhető módosító listájának megtekintéséhez tekintse `PublicClientApplicationBuilder`meg a Reference dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- A `PublicClientApplicationOptions` [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)-ben elérhető összes beállítás leírását a dokumentációban találja
+- A `PublicClientApplicationBuilder`on elérhető összes módosító listáját a dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) ismertető cikk tartalmazza.
+- A `PublicClientApplicationOptions`ban elérhető összes beállítás leírását lásd: [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), a hivatkozási dokumentációban
 
 ## <a name="xamarin-ios-specific-considerations"></a>Xamarin iOS-specifikus megfontolások
 
 A Xamarin iOS esetében több szempontot is figyelembe kell venni a MSAL.NET használatakor:
 
-1. [A `OpenUrl` függvény felülbírálása és implementálása a`AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
+1. [A `OpenUrl` függvény felülbírálása és implementálása a `AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
 1. [Kulcstartó-csoportok engedélyezése](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 1. [Jogkivonat-gyorsítótár megosztásának engedélyezése](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
 1. [Kulcstartó-hozzáférés engedélyezése](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
@@ -135,7 +135,7 @@ Az alábbi Xamarin Android-specifikusak:
 - [Annak biztosítása, hogy a vezérlés visszakerüljön a MSAL, amint a hitelesítési folyamat interaktív része véget ér](msal-net-xamarin-android-considerations.md#ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends)
 - [Az Android-jegyzékfájl frissítése](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
 - [A beágyazott webes nézet használata (nem kötelező)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
-- [Hibaelhárítás](msal-net-xamarin-android-considerations.md#troubleshooting)
+- [hibaelhárítással](msal-net-xamarin-android-considerations.md#troubleshooting)
 
 A részletek a [Xamarin Android-megfontolásokban](msal-net-xamarin-android-considerations.md) érhetők el
 
@@ -157,7 +157,7 @@ Az Android és az iOS rendszeren a brókerek a következőket teszik lehetővé:
 
 ### <a name="enable-the-broker-on-xamarin"></a>A közvetítő engedélyezése a Xamarin
 
-Ezen funkciók egyikének engedélyezéséhez használja a `WithBroker()` paramétert a `PublicClientApplicationBuilder.CreateApplication` metódus meghívásakor. `.WithBroker()`Alapértelmezés szerint True (igaz) értékre van állítva. Kövesse az alábbi lépéseket a [Xamarin. iOS](#brokered-authentication-for-xamarinios)-hez.
+Ezen funkciók egyikének engedélyezéséhez használja a `WithBroker()` paramétert a `PublicClientApplicationBuilder.CreateApplication` metódus meghívásakor. az `.WithBroker()` alapértelmezés szerint True (igaz) értékre van állítva. Kövesse az alábbi lépéseket a [Xamarin. iOS](#brokered-authentication-for-xamarinios)-hez.
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>Az Android rendszerhez készült MSAL-ügynök engedélyezése
 
@@ -171,9 +171,9 @@ A felügyelt hitelesítés alapértelmezés szerint engedélyezve van az iOS és
 
 Az alábbi lépéseket követve engedélyezheti a Xamarin. iOS-alkalmazásnak, hogy beszéljen a [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) alkalmazással.
 
-#### <a name="step-1-enable-broker-support"></a>1\. lépés: A közvetítő támogatásának engedélyezése
+#### <a name="step-1-enable-broker-support"></a>1\. lépés: a közvetítő támogatásának engedélyezése
 
-A közvetítői támogatás alapja az engedélyezett`PublicClientApplication` . Alapértelmezés szerint le van tiltva. A (z) `WithBroker()` paramétert kell használnia (alapértelmezés szerint igaz értékre `PublicClientApplication` állítva) `PublicClientApplicationBuilder`a (z) használatával.
+A közvetítői támogatás`PublicClientApplication` alapon engedélyezett. Alapértelmezés szerint le van tiltva. A `PublicClientApplication` a `PublicClientApplicationBuilder`használatával történő létrehozásakor a `WithBroker()` paramétert kell használnia (alapértelmezés szerint igaz értékre állítva).
 
 ```CSharp
 var app = PublicClientApplicationBuilder
@@ -183,9 +183,9 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 
-#### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>2\. lépés: AppDelegate frissítése a visszahívás kezeléséhez
+#### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>2\. lépés: a visszahívást kezelő AppDelegate frissítése
 
-Ha a MSAL.net meghívja a közvetítőt, akkor a közvetítő a `AppDelegate.OpenUrl` metódussal hívja vissza az alkalmazást. Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Ezt úgy teheti meg, `AppDelegate.cs` hogy a fájl frissítésével felülbírálja az alábbi metódust.
+Ha a MSAL.NET meghívja a közvetítőt, akkor a közvetítő a `AppDelegate.OpenUrl` metódussal hívja vissza az alkalmazást. Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Ezt úgy teheti meg, hogy a `AppDelegate.cs` fájl frissítésével felülbírálja az alábbi metódust.
 
 ```CSharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -209,14 +209,14 @@ Ezt a metódust az alkalmazás minden indításakor meghívja a rendszer, és le
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>3\. lépés: UIViewController () beállítása
 
-A Xamarin iOS esetében általában nem kell beállítania egy objektum-ablakot, ebben az esetben azonban a brókertől érkező válaszok küldésére és fogadására van szükség. Még mindig `AppDelegate.cs`a-ben állítson be egy ViewController.
+A Xamarin iOS esetében általában nem kell beállítania egy objektum-ablakot, ebben az esetben azonban a brókertől érkező válaszok küldésére és fogadására van szükség. Még `AppDelegate.cs`, állítson be egy ViewController.
 
 Az objektum ablakának beállításához tegye a következőket:
 
-1) A `AppDelegate.cs`ben állítsa be `App.RootViewController` a-t `UIViewController()`egy új értékre. Ez gondoskodik arról `UIViewController` , hogy a közvetítő meghívása legyen. Ha nincs megfelelően beállítva, a következő hibaüzenet jelenhet meg:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-2) A AcquireTokenInteractive-hívásban használja a `.WithParentActivityOrWindow(App.RootViewController)` és a pass hivatkozást a használni kívánt Object (objektum) ablakra.
+1) A `AppDelegate.cs`ban állítsa be a `App.RootViewController` egy új `UIViewController()`. Ez gondoskodik arról, hogy `UIViewController` a közvetítő meghívásával. Ha nincs megfelelően beállítva, akkor a következő hibaüzenet jelenhet meg: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+2) A AcquireTokenInteractive-hívásban használja a `.WithParentActivityOrWindow(App.RootViewController)` és adja át a hivatkozást a használni kívánt objektum-ablakra.
 
-**Példa:**
+**Például:**
 
 Az `App.cs` szkriptben:
 ```CSharp
@@ -236,9 +236,9 @@ result = await app.AcquireTokenInteractive(scopes)
 
 #### <a name="step-4-register-a-url-scheme"></a>4\. lépés: URL-séma regisztrálása
 
-A MSAL.NET URL-címeket használ a közvetítő meghívásához, majd visszaküldi a közvetítői választ az alkalmazásnak. A kör alakú utazás befejezéséhez regisztrálnia kell egy URL-sémát az alkalmazásához a `Info.plist` fájlban.
+A MSAL.NET URL-címeket használ a közvetítő meghívásához, majd visszaküldi a közvetítői választ az alkalmazásnak. A kerekítés befejezéséhez regisztrálnia kell egy URL-sémát az alkalmazáshoz a `Info.plist` fájlban.
 
-Előtag a `CFBundleURLSchemes` - `msauth`val. Ezután adja `CFBundleURLName` hozzá a végéhez.
+A `CFBundleURLSchemes` előtagja a `msauth`. Ezután adja hozzá a `CFBundleURLName`t a végéhez.
 
 `$"msauth.(BundleId)"`
 
@@ -264,11 +264,11 @@ Előtag a `CFBundleURLSchemes` - `msauth`val. Ezután adja `CFBundleURLName` hoz
     </array>
 ```
 
-#### <a name="step-5-lsapplicationqueriesschemes"></a>5\. lépés: Összes
+#### <a name="step-5-lsapplicationqueriesschemes"></a>5\. lépés: összes
 
-A MSAL `–canOpenURL:` használatával ellenőrizhető, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verziójában az Apple zárolta, hogy az alkalmazás milyen sémákat tud lekérdezni.
+A MSAL `–canOpenURL:` használatával ellenőrizze, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verziójában az Apple zárolta, hogy az alkalmazás milyen sémákat tud lekérdezni.
 
-**Hozzáadás** **`msauthv2`** a fájl`Info.plist` szakaszához. `LSApplicationQueriesSchemes`
+**`msauthv2`** hozzáadása az `Info.plist` fájl `LSApplicationQueriesSchemes` szakaszához.
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -281,9 +281,9 @@ A MSAL `–canOpenURL:` használatával ellenőrizhető, hogy a közvetítő tel
 
 A HRE-forgatókönyvek esetében a felügyelt hitelesítés alapértelmezés szerint engedélyezve van.
 
-#### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>1\. lépés: AppDelegate frissítése a visszahívás kezeléséhez
+#### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>1\. lépés: a visszahívást kezelő AppDelegate frissítése
 
-Ha az iOS-és MacOS-MSAL meghívja a közvetítőt, akkor a közvetítő a `openURL` metódussal hívja vissza az alkalmazást. Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL visszahívásához. Ezt úgy teheti meg, `AppDelegate.m` hogy a fájl frissítésével felülbírálja az alábbi metódust.
+Ha az iOS-és macOS-MSAL meghívja a közvetítőt, akkor a közvetítő a `openURL` metódussal hívja vissza az alkalmazást. Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL visszahívásához. Ezt úgy teheti meg, hogy a `AppDelegate.m` fájl frissítésével felülbírálja az alábbi metódust.
 
 Objective-C:
 
@@ -310,13 +310,13 @@ Swift
     }
 ```
 
-Vegye figyelembe, hogy ha a UISceneDelegate-t iOS 13 +-on fogadta el, akkor a `scene:openURLContexts:` MSAL visszahívást a UISceneDelegate kell helyezni (lásd az [Apple dokumentációját](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). Az `handleMSALResponse:sourceApplication:` MSAL csak egyszer hívható meg minden URL-címhez.
+Vegye figyelembe, hogy ha a UISceneDelegate-t iOS 13 +-on fogadta el, akkor a MSAL visszahívást a UISceneDelegate `scene:openURLContexts:`ba kell helyezni (lásd az [Apple dokumentációját](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). Az MSAL `handleMSALResponse:sourceApplication:` csak egyszer hívható meg minden URL-címhez.
 
 #### <a name="step-2-register-a-url-scheme"></a>2\. lépés: URL-séma regisztrálása
 
-Az iOS és a macOS rendszerhez készült MSAL URL-címeket használ a közvetítő meghívásához, majd visszaküldi a közvetítői választ az alkalmazásnak. A kör alakú utazás befejezéséhez regisztrálnia kell egy URL-sémát az alkalmazásához a `Info.plist` fájlban.
+Az iOS és a macOS rendszerhez készült MSAL URL-címeket használ a közvetítő meghívásához, majd visszaküldi a közvetítői választ az alkalmazásnak. A kerekítés befejezéséhez regisztrálnia kell egy URL-sémát az alkalmazáshoz a `Info.plist` fájlban.
 
-Előtagként adja meg az egyéni `msauth`URL-sémáját. Ezután adja hozzá a **köteg-azonosítót** a végéhez.
+Előtagként adja meg az egyéni URL-sémát `msauth`. Ezután adja hozzá a **köteg-azonosítót** a végéhez.
 
 `msauth.(BundleId)`
 
@@ -324,7 +324,7 @@ Előtagként adja meg az egyéni `msauth`URL-sémáját. Ezután adja hozzá a *
 `msauth.com.yourcompany.xforms`
 
 > [!NOTE]
-> Ez az URL-séma az alkalmazás egyedi azonosításához használt RedirectUri részévé válik a közvetítő válaszának fogadásakor. Győződjön meg arról, hogy az `msauth.(BundleId)://auth` [Azure Portalon](https://portal.azure.com)az alkalmazáshoz tartozó RedirectUri van regisztrálva.
+> Ez az URL-séma az alkalmazás egyedi azonosításához használt RedirectUri részévé válik a közvetítő válaszának fogadásakor. Győződjön meg arról, hogy az [Azure Portalon](https://portal.azure.com)az alkalmazáshoz `msauth.(BundleId)://auth` RedirectUri van regisztrálva.
 
 ```XML
 <key>CFBundleURLTypes</key>
@@ -338,9 +338,9 @@ Előtagként adja meg az egyéni `msauth`URL-sémáját. Ezután adja hozzá a *
 </array>
 ```
 
-#### <a name="step-3-lsapplicationqueriesschemes"></a>3\. lépés: Összes
+#### <a name="step-3-lsapplicationqueriesschemes"></a>3\. lépés: összes
 
-**A `LSApplicationQueriesSchemes` hozzáadásával** engedélyezheti, hogy a rendszer meghívja a Microsoft Authenticator, ha telepítve van.
+**`LSApplicationQueriesSchemes`hozzáadásával** engedélyezheti, hogy a rendszer meghívja a Microsoft Authenticator, ha telepítve van.
 Vegye figyelembe, hogy a "msauthv3" sémára akkor van szükség, amikor az alkalmazást a Xcode 11-ös vagy újabb verziójával együtt fordítja 
 
 ```XML 
@@ -355,7 +355,7 @@ Vegye figyelembe, hogy a "msauthv3" sémára akkor van szükség, amikor az alka
 
 A MSAL.NET még nem támogatja az Android rendszerhez készült közvetítőket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Token beszerzése](scenario-mobile-acquire-token.md)

@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 811591a3340f07b08b3a954ccd475e926b73a9cf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072562"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176771"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
 Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -36,8 +36,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
-+ Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Új változat hozzáadása
 
@@ -83,7 +83,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 2. Nyissa meg a **2. változat** helyi menüjét ( **...** ).
 3. Kattintson a **Legyen ez az aktuális** elemre.
-4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adja meg a változás leírását, amelyet a fejlesztők látnak, például: **Tesztelési változatok. Új „test” művelet hozzáadva.**
+4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adja meg a változás leírását, amelyet a fejlesztők látnak, például: **tesztelési változatok. Új "teszt" művelet lett hozzáadva.**
 5. Most már a **2. változat** az aktuális.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez
@@ -92,12 +92,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 2. A felső menüben kattintson a **Fejlesztői portál** elemre.
 3. Kattintson az **API-k** elemre, majd válassza a **Demo Conference API** lehetőséget.
 4. Figyelje meg, hogy az új **test** művelet már elérhető.
-5. Kattintson az **API-változások nyomon követése** elemre az API neve alatt.
+5. Kattintson az API neve közelében található **changelog** elemre.
 6. Figyelje meg, hogy a módosításinapló-bejegyzés megjelenik a listában.
 
-    ![Fejlesztői portál](media/api-management-getstarted-revise-api/developer_portal.PNG)
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

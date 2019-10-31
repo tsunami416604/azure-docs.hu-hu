@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f52fc70b54c27362575bef00c39a93d13e77cc2e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596728"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175350"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Felhasználói bejelentkezést használó webalkalmazás – kód konfigurálása
 
@@ -34,7 +34,7 @@ A webalkalmazások (és a webes API-k) elleni védelemhez használt kódtárak a
 | Platform | Részletes ismertetés | Leírás |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Extensions for .NET azt javasolja, hogy a .NET-keretrendszer és a .NET Core rendszerű DLL-eket is használják. Egy ASP.NET/ASP.NET Core-webalkalmazásból a jogkivonat-érvényesítés a **TokenValidationParameters** osztály használatával szabályozható (különösen bizonyos ISV-forgatókönyvekben). |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-MSAL – jelenleg nyilvános előzetes verzióban érhető el |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-MSAL – jelenleg nyilvános előzetes verzióban érhető el |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL for Python – jelenleg nyilvános előzetes verzióban érhető el |
 
 Válassza ki az Önt érdeklő platformhoz tartozó fület:
@@ -53,7 +53,7 @@ A cikkben szereplő kódrészletek és a következők a [ASP.net Web App Sample]
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A cikkben szereplő kódrészletek és a következők a [Java-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-java-webapp) származnak, amely a Microsoft Graph msal4j Web App-mintát hívja meg
+A cikkben szereplő kódrészletek és az alábbiak a [Java-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-java-webapp) származnak, amely a Microsoft Graph MSAL Java Web App-mintát hívja meg
 
 Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
 
@@ -137,7 +137,7 @@ ASP.NET Core egy másik [properties\launchSettings.JSON](https://github.com/Azur
 ```
 
 A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az URL-címekkel. Ez azt eredményezi, hogy a fenti két konfigurációs fájl `https://localhost:44321/signin-oidc`, mert a applicationUrl `http://localhost:3110`, de a `sslPort` meg van adva (44321), és a `CallbackPath` `/signin-oidc` a `appsettings.json`.
-  
+
 Ugyanígy a kijelentkezési URI-t is `https://localhost:44321/signout-callback-oidc` értékre kell állítani.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
@@ -175,10 +175,10 @@ aad.clientId=Enter_the_Application_Id_here
 aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 aad.secretKey=Enter_the_Client_Secret_Here
 aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
+aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI azonosítónak meg kell egyeznie az alkalmazás által meghatározott redirectUris, amely `http://localhost:8080/msal4jsample/secure/aad` és `http://localhost:8080/msal4jsample/graph/users`
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI azonosítónak meg kell egyeznie az alkalmazás által meghatározott redirectUris, amely `http://localhost:8080/msal4jsample/secure/aad` és `http://localhost:8080/msal4jsample/graph/me`
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,8 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> Ez a rövid útmutató azt javasolja, hogy az egyszerűség kedvéért a konfigurációs fájlban tárolja az ügyfél titkos kulcsát. Az éles alkalmazásban a titkos kód (például a kulcstartó vagy egy környezeti változó) más módon történő tárolását szeretné használni a lombik dokumentációjában leírtak szerint: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+> Ez a rövid útmutató azt javasolja, hogy az egyszerűség kedvéért a konfigurációs fájlban tárolja az ügyfél titkos kulcsát.
+> Az éles alkalmazásban a titkos kód (például a kulcstartó vagy egy környezeti változó) más módon történő tárolását szeretné használni a lombik dokumentációjában leírtak szerint: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -215,7 +216,7 @@ ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert `
   > [!NOTE]
   > Ha a projektet a Visual Studióban az alapértelmezett ASP.NET alapszintű webes projekttel indítja el, vagy a `dotnet new mvc` a metódust használja, `AddAzureAD` alapértelmezés szerint elérhető, mert a kapcsolódó csomagok automatikusan betöltődik.
   > Ha azonban teljesen új projektet hoz létre, és az alábbi kódot próbálja használni, javasoljuk, hogy a `AddAzureAD` metódus elérhetővé tételéhez adja hozzá a **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** NuGet-csomagot a projekthez.
-  
+
 A következő kód érhető el az [indításból. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)
 
 ```CSharp
@@ -229,7 +230,7 @@ public class Startup
     ...
       // Sign-in users with the Microsoft identity platform
       services.AddMicrosoftIdentityPlatformAuthentication(Configuration);
-  
+
       services.AddMvc(options =>
       {
           var policy = new AuthorizationPolicyBuilder()
@@ -247,7 +248,7 @@ A `AddMicrosoftIdentityPlatformAuthentication` a [Microsoft. Identity. Web/WebAp
 - a konfigurációs fájl olvasásához szükséges beállítások konfigurálása
 - az OpenID Connect beállításainak konfigurálása, hogy a használt szolgáltató a Microsoft Identity platform (korábbi nevén Azure AD v 2.0) végpont
 - a jogkivonat kiállítója érvényesítve van
-- a névnek megfelelő jogcímek a "preferred_username" jogcím alapján vannak leképezve az azonosító jogkivonatban. 
+- a névnek megfelelő jogcímek a "preferred_username" jogcím alapján vannak leképezve az azonosító jogkivonatban.
 
 A konfiguráció mellett a `AddMicrosoftIdentityPlatformAuthentication` meghívásakor megadhatja a következőt:
 
@@ -347,7 +348,7 @@ A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert egy `
 
 - ellenőrzi, hogy a felhasználó hitelesítve van-e (`isAuthenticated()` metódus)
 - Ha a felhasználó nincs hitelesítve, kiszámítja az Azure AD engedélyezési végpontok URL-címét, és átirányítja a böngészőt erre az URI-ra.
-- a válasz megérkezése után az Auth Code folyamatát tartalmazó msal4j a jogkivonat beszerzését teszi lehetővé.
+- a válasz megérkezése után a MSAL Java használatával szerzi be a tokent.
 - Amikor végül megkapja a tokent a jogkivonat-végponttól (az átirányítási URI-n), a felhasználó bejelentkezett.
 
 További részletekért tekintse meg a [AuthFilter. java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) `doFilter()` metódusát.

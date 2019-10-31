@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan engedélyezheti vagy tagadhatja meg a hozzáférési csomagra irányuló kéréseket a Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
+title: Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan engedélyezheti vagy tagadhatja meg a hozzáférési csomagra irányuló kérelmeket Azure Active Directory jogosultságok kezelésében a saját hozzáférési portál használatával.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: MT
+ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990711"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173463"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
 Az Azure AD-jogosultságok kezelésével házirendeket állíthat be a hozzáférési csomagok jóváhagyásának megköveteléséhez, és egy vagy több jóváhagyót is választhat. Ez a cikk azt ismerteti, hogyan hagyhatják jóvá vagy tagadhatják meg a kijelölt jóváhagyók a hozzáférési csomagok kérelmeit.
 

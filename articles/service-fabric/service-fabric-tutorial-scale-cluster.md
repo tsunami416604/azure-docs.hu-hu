@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6b1f226fba43428cdf5f46d41425ac534219de7f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619059"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177744"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt méretezése az Azure-ban
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
 Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan méretezheti a meglévő fürtöt és a-t. Az oktatóanyag végére elsajátíthatja a fürtök skálázásának és a hátramaradt erőforrások eltávolításának módját.  Az Azure-ban futó fürtök méretezésével kapcsolatos további információkért olvassa el [Service Fabric fürtök méretezését](service-fabric-cluster-scaling.md)ismertető témakört.
 
@@ -56,7 +56,7 @@ Az oktatóanyag elkezdése előtt:
 
 Az alkalmazások számítási feladatainak időbeli változása idővel megváltoznak, a meglévő szolgáltatásainak több (vagy kevesebb) erőforrásra van szüksége?  Csomópontok [hozzáadásával vagy eltávolításával](#add-nodes-to-or-remove-nodes-from-a-node-type) növelheti vagy csökkentheti a fürt erőforrásait.
 
-Hozzá kell adnia több mint 100 csomópontot a fürthöz?  Egyetlen Service Fabric csomópont típusa/méretezési csoport legfeljebb 100 csomópontot/virtuális gépet tartalmazhat.  A fürt 100 csomóponton túli méretezéséhez [adjon hozzá további csomópont](#add-nodes-to-or-remove-nodes-from-a-node-type)-típusokat.
+Hozzá kell adnia több mint 100 csomópontot a fürthöz?  Egyetlen Service Fabric csomópont típusa/méretezési csoport legfeljebb 100 csomópontot/virtuális gépet tartalmazhat.  A fürt 100 csomóponton túli méretezéséhez [adjon hozzá további csomópont-típusokat](#add-nodes-to-or-remove-nodes-from-a-node-type).
 
 Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie?  A tipikus alkalmazások olyan előtér-átjáró szolgáltatást tartalmaznak, amely egy ügyféltől érkező adatokat fogad, valamint egy vagy több háttér-szolgáltatást, amely az előtér-szolgáltatásokkal kommunikál. Ebben az esetben javasoljuk, hogy [legalább két csomópont-típust adjon hozzá](#add-nodes-to-or-remove-nodes-from-a-node-type) a fürthöz.  
 
@@ -65,7 +65,7 @@ A szolgáltatásai eltérő infrastrukturális igényekkel rendelkeznek, példá
 Egy Azure-fürt skálázásakor tartsa szem előtt a következő irányelveket:
 
 * Egyetlen Service Fabric csomópont típusa/méretezési csoport legfeljebb 100 csomópontot/virtuális gépet tartalmazhat.  A fürt 100 csomóponton túli méretezéséhez adjon hozzá további csomópont-típusokat.
-* Az éles munkaterheléseket futtató elsődleges csomópontok esetében [][durability] az arany vagy ezüst tartóssági szintnek kell lennie, és mindig legalább öt csomópontnak kell lennie.
+* Az éles munkaterheléseket futtató elsődleges csomópontok esetében az arany vagy ezüst [tartóssági szintnek][durability] kell lennie, és mindig legalább öt csomópontnak kell lennie.
 * Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
 * Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 * Az arany vagy ezüst [tartóssági szintjének][durability] minden csomópont-típusának mindig öt vagy több csomóponttal kell rendelkeznie.
@@ -110,7 +110,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 
 ## <a name="add-a-node-type-to-the-cluster"></a>Csomópont típusának hozzáadása a fürthöz
 
-Minden, az Azure-ban futó Service Fabric-fürtben definiált csomópont-típus [külön virtuálisgép](service-fabric-cluster-nodetypes.md)-méretezési csoportként van beállítva. Ezután mindegyik csomópont-típust külön lehet kezelni. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, különböző portokat nyitnak meg, és különböző kapacitási metrikákat használhatnak. Külön is megváltoztathatja az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t, de vegye figyelembe, hogy a minta fürtben nem lehet a Windows és a Linux együttes használata. Egyetlen csomópont típusú/méretezési csoport legfeljebb 100 csomópontot tartalmazhat.  További csomópont-típusok/méretezési csoportok hozzáadásával vízszintesen méretezheti a fürtöt több mint 100 csomópontra. A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.
+Minden, az Azure-ban futó Service Fabric-fürtben definiált csomópont-típus [külön virtuálisgép-méretezési csoportként](service-fabric-cluster-nodetypes.md)van beállítva. Ezután mindegyik csomópont-típust külön lehet kezelni. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, különböző portokat nyitnak meg, és különböző kapacitási metrikákat használhatnak. Külön is megváltoztathatja az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t, de vegye figyelembe, hogy a minta fürtben nem lehet a Windows és a Linux együttes használata. Egyetlen csomópont típusú/méretezési csoport legfeljebb 100 csomópontot tartalmazhat.  További csomópont-típusok/méretezési csoportok hozzáadásával vízszintesen méretezheti a fürtöt több mint 100 csomópontra. A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
@@ -387,20 +387,6 @@ A *template. JSON* fájlban vegyen fel új hálózati biztonsági csoportot és 
     },
     "properties": {
         "securityRules": [
-            {
-                "name": "allowSvcFabSMB",
-                "properties": {
-                    "access": "Allow",
-                    "destinationAddressPrefix": "*",
-                    "destinationPortRange": "445",
-                    "direction": "Inbound",
-                    "priority": 3950,
-                    "protocol": "*",
-                    "sourceAddressPrefix": "VirtualNetwork",
-                    "sourcePortRange": "*",
-                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
-                }
-            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -850,7 +836,7 @@ Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt cso
 > Azt javasoljuk, hogy ne változtassa meg a méretezési csoport/csomópont típusa virtuálisgép-SKU-jának használatát, kivéve, ha az ezüst tartósságon vagy annál nagyobb mértékben fut. A VM SKU méretének módosítása egy adatpusztító helyi infrastruktúra-művelet. A módosítás késleltetése vagy monitorozása nélkül lehetséges, hogy a művelet adatvesztést okozhat az állapot-nyilvántartó szolgáltatások számára, vagy más, előre nem látható működési problémákat okozhat, még az állapot nélküli munkaterhelések esetében is.
 
 > [!WARNING]
-> Azt javasoljuk, hogy ne változtassa meg az elsődleges csomópont típusú virtuálisgép-SKU-t, amely egy veszélyes művelet, és nem támogatott.  Ha nagyobb kapacitásra van szüksége, további virtuálisgép-példányokat vagy további csomópont-típusokat adhat hozzá.  Ha ez nem lehetséges, létrehozhat egy új fürtöt, és visszaállíthatja az [alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből.  Ha ez nem lehetséges, módosíthatja [az elsődleges csomópont típusú](service-fabric-scale-up-node-type.md)VIRTUÁLISGÉP-SKU-t.
+> Azt javasoljuk, hogy ne változtassa meg az elsődleges csomópont típusú virtuálisgép-SKU-t, amely egy veszélyes művelet, és nem támogatott.  Ha nagyobb kapacitásra van szüksége, további virtuálisgép-példányokat vagy további csomópont-típusokat adhat hozzá.  Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja az alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből.  Ha ez nem lehetséges, módosíthatja [az elsődleges csomópont típusú](service-fabric-scale-up-node-type.md)VIRTUÁLISGÉP-SKU-t.
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
@@ -871,7 +857,7 @@ Vagy az alábbi Azure CLI-paranccsal:
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

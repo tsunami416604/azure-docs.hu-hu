@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: 7e155df62d05045ceed4479643ed13a8ba6fa06d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958300"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176995"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Oktatóanyag: űrlap-felismerő használata a Azure Logic Apps a számlák elemzéséhez
 
@@ -62,7 +62,7 @@ Ezt a tárolót használja a modell betanításához szükséges mintaadatok fel
 
 Töltse le a [githubon](https://go.microsoft.com/fwlink/?linkid=2090451)elérhető mintaadatok letöltését. Bontsa ki az adatok mappát egy helyi mappába, és töltse fel a **/Train** mappa tartalmát a korábban létrehozott **formrecocontainer** . Az adatok tárolóba való feltöltéséhez kövesse az alábbi utasításokat: [Block blob feltöltése](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) .
 
-Másolja a tároló URL-címét. Erre az oktatóanyag későbbi részében szüksége lesz. Ha létrehozta a Storage-fiókot és a tárolót az ebben az oktatóanyagban felsorolt névvel, akkor az URL-cím *https://formrecostorage.blob.core.windows.net/formrecocontainer/* .
+Másolja a tároló URL-címét. Erre az oktatóanyag későbbi részében szüksége lesz. Ha létrehozta a Storage-fiókot és a tárolót az ebben az oktatóanyagban felsorolt nevekkel, akkor az URL-cím *https:\//formrecostorage.blob.Core.Windows.net/formrecocontainer/* lesz.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 

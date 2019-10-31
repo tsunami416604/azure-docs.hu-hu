@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b94d376ee107f9acd45dff5b96fc43722f2fe208
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965464"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176163"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Privát végpontok használata az Azure Storage-hoz (előzetes verzió)
 
@@ -48,7 +48,7 @@ A magánhálózati végpont létrehozásakor meg kell adnia a Storage-fiókot é
 > [!TIP]
 > Hozzon létre egy külön privát végpontot a Storage szolgáltatás másodlagos példányához az RA-GRS-fiókok jobb olvasási teljesítményéhez.
 
-Ha olvasási hozzáférésre van szüksége egy [írásvédett földrajzi redundáns Storage-fiókhoz](storage-redundancy-grs.md#read-access-geo-redundant-storage), külön magánhálózati végpontokra van szükség a szolgáltatás elsődleges és másodlagos példányai esetében is. A feladatátvételhez nem kell létrehoznia privát végpontot a másodlagos példányhoz. A magánhálózati végpont automatikusan csatlakozni fog az új elsődleges példányhoz a feladatátvétel után.
+Ha olvasási hozzáférésre van szüksége egy [írásvédett földrajzi redundáns Storage-fiókhoz](storage-redundancy-grs.md#read-access-geo-redundant-storage), külön magánhálózati végpontokra van szükség a szolgáltatás elsődleges és másodlagos példányai esetében is. A **feladatátvételhez**nem kell létrehoznia privát végpontot a másodlagos példányhoz. A magánhálózati végpont automatikusan csatlakozni fog az új elsődleges példányhoz a feladatátvétel után. git 
 
 #### <a name="resources"></a>Segédanyagok és eszközök
 
@@ -91,14 +91,14 @@ Ez a megközelítés lehetővé teszi a Storage-fiók elérését a privát vég
 
 A tárolási szolgáltatásokhoz tartozó magánhálózati végpontok ajánlott DNS-zónák neve a következő:
 
-| Tárolási szolgáltatás       | Zóna neve                          |
-| :-------------------- | :--------------------------------- |
-| Blob service          | privatelink.blob.core.windows.net  |
-| Data Lake fájlrendszer | privatelink.dfe.core.windows.net   |
-| Fájlszolgáltatások          | privatelink.file.core.windows.net  |
-| Queue szolgáltatás         | privatelink.queue.core.windows.net |
-| Table service         | privatelink.table.core.windows.net |
-| Statikus webhelyek       | privatelink.web.core.windows.net   |
+| Tárolási szolgáltatás        | Zóna neve                            |
+| :--------------------- | :----------------------------------- |
+| Blob service           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Fájlszolgáltatások           | `privatelink.file.core.windows.net`  |
+| Queue szolgáltatás          | `privatelink.queue.core.windows.net` |
+| Table service          | `privatelink.table.core.windows.net` |
+| Statikus webhelyek        | `privatelink.web.core.windows.net`   |
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -119,6 +119,6 @@ A meglévő privát végpontokkal rendelkező virtuális hálózatok-ügyfelek m
 
 Ez a megkötés a DNS-módosítások eredményeként történt, amikor az A2-es fiók létrehoz egy magánhálózati végpontot.
 
-### <a name="network-security-group-rules-on-subnets-with-private-endpoints"></a>Hálózati biztonsági csoportra vonatkozó szabályok magánhálózati végpontokkal rendelkező alhálózatokon
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Hálózati biztonsági csoportra vonatkozó szabályok privát végpontokkal rendelkező alhálózatokhoz
 
-A [hálózati biztonsági csoport](../../virtual-network/security-overview.md) (NSG) szabályai jelenleg nem konfigurálhatók privát végpontokkal rendelkező alhálózatokhoz. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
+Jelenleg nem lehet konfigurálni a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) (NSG) szabályait privát végpontokkal rendelkező alhálózatokhoz. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
