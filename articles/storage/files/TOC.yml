@@ -27,6 +27,8 @@
       href: storage-files-planning.md
     - name: Az Azure File Sync üzembe helyezésének megtervezése
       href: storage-sync-files-planning.md
+    - name: A közvetlen hozzáféréssel kapcsolatos hálózati megfontolások
+      href: storage-files-networking-overview.md
     - name: A felhőbeli rétegzés ismertetése
       href: storage-sync-cloud-tiering.md
     - name: A tárfiókok bemutatása
@@ -101,6 +103,8 @@
           href: storage-sync-files-deployment-guide.md
         - name: A File Sync proxy- és tűzfalbeállításainak konfigurálása
           href: storage-sync-files-firewall-and-proxy.md
+        - name: SQL Server FCI prémium fájlmegosztásokkal
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Csatlakoztatás
       items:
         - name: Az Azure Files használata Windows rendszerrel
@@ -109,6 +113,14 @@
           href: storage-how-to-use-files-linux.md
         - name: Az Azure Files használata macOS rendszerrel
           href: storage-how-to-use-files-mac.md
+    - name: Network (Hálózat)
+      items:
+        - name: Helyek közötti VPN konfigurálása
+          href: storage-files-configure-s2s-vpn.md
+        - name: Pont–hely típusú VPN-átjáró konfigurálása Windowson
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Pont–hely típusú VPN-átjáró konfigurálása Linuxon
+          href: storage-files-configure-p2s-vpn-linux.md
     - name: Kezelés
       items:
         - name: Kiszolgáló regisztrálása az Azure File Sync használatával
@@ -169,6 +181,8 @@
           href: storage-troubleshooting-files-performance.md
         - name: Azure-fájlok szinkronizálásának hibaelhárítása
           href: storage-sync-files-troubleshoot.md
+        - name: Az Azure Files törlésével kapcsolatos hibák elhárítása
+          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: Referencia
   items:
     - name: Azure PowerShell

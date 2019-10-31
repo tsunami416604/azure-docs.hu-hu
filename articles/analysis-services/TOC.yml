@@ -68,7 +68,7 @@
       items:
         - name: Táblázatos modellezés
           href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
-        - name: Üzembe helyezés a Visual Studióból (SSDT)
+        - name: Üzembe helyezés a Visual Studióból
           href: analysis-services-deploy.md
         - name: Frissítés a REST API-val
           href: analysis-services-async-refresh.md

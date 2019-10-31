@@ -137,6 +137,8 @@
               href: ./hdinsight-autoscale-clusters.md
             - name: Külső metaadat-tárolók használata
               href: ./hdinsight-use-external-metadata-stores.md
+            - name: Egyéni Ambari-adatbázis
+              href: ./hdinsight-custom-ambari-db.md
             - name: HDInsight-fürt naplóinak kezelése
               href: ./hdinsight-log-management.md
             - name: Tárfiókok hozzáadása

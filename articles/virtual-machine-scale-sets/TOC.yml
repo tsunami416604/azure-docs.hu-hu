@@ -125,6 +125,8 @@
     - name: Karbantartás és frissítések
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: Vezénylési módok
+      href: orchestration-modes.md
     - name: Lemezes tárolás
       items:
         - name: Felügyelt lemezek

@@ -232,6 +232,8 @@
           href: backup-azure-restore-windows-server.md
         - name: A Windows Server rendszerállapotának visszaállítása
           href: backup-azure-restore-system-state.md
+        - name: Windows Server-fájlok és -mappák biztonsági másolatának kezelése
+          href: backup-azure-manage-mars.md
     - name: Recovery Services-tároló
       items:
         - name: A Recovery Services-tárolók áttekintése

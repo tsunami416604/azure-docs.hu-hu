@@ -81,6 +81,8 @@
           href: how-to/upgrade-tools.md
         - name: A CI/CD és az Azure Dev Spaces használata
           href: how-to/setup-cicd.md
+        - name: GitHub-műveletek használata az Azure Dev Space-szel (előzetes verzió)
+          href: how-to/github-actions.md
         - name: Azure Dev Spaces beépülő modul használata Jenkinshez
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Üzletmenet-folytonosság és vészhelyreállítás az Azure Dev Spaceshez
@@ -89,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Traefik használata egyéni bejövő és HTTPS-kapcsolatokhoz
           href: how-to/ingress-https-traefik.md
+        - name: Az Azure Dev Spaces Connect használata (előzetes verzió)
+          href: how-to/connect.md
     - name: Hibaelhárítás
       href: troubleshooting.md
     - name: GYIK

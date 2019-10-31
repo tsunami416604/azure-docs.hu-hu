@@ -49,6 +49,8 @@
       href: manage-stale-devices.md
     - name: Az Enterprise State Roaming engedélyezése
       href: enterprise-state-roaming-enable.md
+    - name: Microsoft Azure-beli virtuális gépek és az Azure AD
+      href: howto-vm-sign-in-azure-ad-windows.md
     - name: Virtuális asztali infrastruktúra
       href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: Azure által felügyelt munkaállomások üzembe helyezése
