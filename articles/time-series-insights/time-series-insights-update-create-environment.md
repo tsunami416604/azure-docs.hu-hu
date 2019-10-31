@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1af622f4b483abec757d1392bfa4fefe91c8bc49
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 840280eecce60ac74514404497b857cd5362c9a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990010"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171647"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előzetes verziójú környezet beállítása
 
@@ -89,7 +89,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
    
    Válassza a Next (tovább) lehetőséget **: eseményforrás**.
 
-   [Time Series Insights környezet létrehozásához![panel](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
+   [Time Series Insights környezet létrehozásához ![panel](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
 
 1. Az **eseményforrás** lapon adja meg a következő paramétereket:
 
@@ -107,7 +107,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
 
    Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-   [Eseményforrás konfigurálása![](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
+   [Eseményforrás konfigurálása ![](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
 
 1. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget.
 
@@ -139,7 +139,7 @@ Most, hogy üzembe helyezte a Time Series Insights-környezetet, adatfolyamként
 
 1. Váltson vissza az [Azure IoT megoldás-gyorsítók lapjára](https://www.azureiotsolutions.com/Accelerators). Keresse meg a megoldást a megoldás-gyorsító irányítópultján. Ezután válassza az **Indítás**lehetőséget:
 
-    [az eszköz-szimulációs megoldás![elindítása](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+    [az eszköz-szimulációs megoldás ![elindítása](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
 
 1. A rendszer átirányítja a **Microsoft Azure IoT-eszköz szimulációs** lapjára. Az oldal jobb felső sarkában válassza az **új szimuláció**lehetőséget.
 
@@ -155,7 +155,7 @@ Most, hogy üzembe helyezte a Time Series Insights-környezetet, adatfolyamként
     | **Eszközmodell** | **Név**: írja be a **hűtőt**. <br />**Mennyiség**: írja be a **3**értéket. |
     | **Cél IoT Hub** | Az **előre kiépített IoT hub használatára**van beállítva. |
 
-    [a beállítani kívánt paraméterek![](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+    [a beállítani kívánt paraméterek ![](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
 
     Válassza a **Szimuláció indítása**lehetőséget.
 
@@ -169,19 +169,19 @@ Ebben a szakaszban az idősorozat-adatokra vonatkozó alapszintű elemzéseket a
 
 1. A [Azure Portal](https://portal.azure.com/)erőforrás oldaláról válassza ki az URL-címet a Azure Time Series Insights előnézeti Explorerben.
 
-    [a Time Series Insights Preview Explorer URL-címének![](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
+    [a Time Series Insights Preview Explorer URL-címének ![](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
 
 1. Az Explorerben válassza ki az **Idősorozat-példányok** csomópontot a környezetben található összes Azure Time Series Insights-előnézeti példány megtekintéséhez.
 
-    [nem szülő példányok![listája](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
+    [nem szülő példányok ![listája](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
 
 1. Válassza ki az első idősorozat-példányt. Ezután válassza a **nyomás megjelenítése**lehetőséget.
 
-    [az átlagos nyomás megjelenítéséhez![kiválasztott idősorozat-példány a Menu paranccsal](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
+    [az átlagos nyomás megjelenítéséhez ![kiválasztott idősorozat-példány a Menu paranccsal](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
 
     Ekkor megjelenik egy idősorozat-diagram. Módosítsa az **intervallumot** a **15s**értékre.
 
-    [idősorozat-diagram![](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
+    [idősorozat-diagram ![](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
 
 1. Ismételje meg a 3. lépést a másik két idősorozat-példánnyal. Az összes idősorozat-példányt megtekintheti, ahogy az a következő ábrán is látható:
 
@@ -201,7 +201,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
 1. Típus hozzáadásához válassza a **Hozzáadás** lehetőséget:
 
-   [a Hozzáadás gomb![típusokhoz](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
+   [a Hozzáadás gomb ![típusokhoz](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
 
 1. Ezután három változót határozhat meg a következő típushoz: *nyomás*, *hőmérséklet*és *páratartalom*. A **típus hozzáadása** panelen állítsa be a következő paramétereket:
 
@@ -218,7 +218,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
      | **Érték** | Válassza a **nyomás (Double)** lehetőséget. Az **érték** automatikus kitöltése eltarthat néhány percig, miután Azure Time Series Insights előnézet megkezdi az események fogadását. |
      | **Összesítési művelet** | Válassza az **AVG**elemet. |
 
-      [a nyomás meghatározásának![kiválasztása](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
+      [a nyomás meghatározásának ![kiválasztása](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
 
       A következő változó hozzáadásához válassza a **változó hozzáadása**elemet.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
      | **Érték** | Válassza a **hőmérséklet (Double)** lehetőséget. Az **érték** automatikus kitöltése eltarthat néhány percig, miután Azure Time Series Insights előnézet megkezdi az események fogadását. |
      | **Összesítési művelet** | Válassza az **AVG**elemet.|
 
-      [a hőmérséklet definiálásának![kiválasztása](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
+      [a hőmérséklet definiálásának ![kiválasztása](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
 
       A következő változó hozzáadásához válassza a **változó hozzáadása**elemet.
 
@@ -242,13 +242,13 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
       | **Érték** | Válassza a **páratartalom (dupla)** lehetőséget. Az **érték** automatikus kitöltése eltarthat néhány percig, miután Azure Time Series Insights előnézet megkezdi az események fogadását. |
       | **Összesítési művelet** | Válassza a **Max**lehetőséget.|
 
-      [a hőmérséklet definiálásának![kiválasztása](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
+      [a hőmérséklet definiálásának ![kiválasztása](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
 
     Kattintson a **Létrehozás** gombra.
 
     A hozzáadott típust láthatja:
 
-    [a hozzáadott típussal kapcsolatos![](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
+    [a hozzáadott típussal kapcsolatos ![](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
 
 1. A következő lépés egy hierarchia hozzáadása. A **hierarchiák**területen válassza a **Hozzáadás**lehetőséget:
 
@@ -269,7 +269,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
    A létrehozott hierarchiát a következő helyen tekintheti meg:
 
-    [a hierarchiával![információk](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
+    [a hierarchiával ![információk](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
 
 1. Válassza a **példányok**lehetőséget. Válassza ki az első példányt, majd válassza a **Szerkesztés**lehetőséget:
 
@@ -316,7 +316,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
 1. Válassza az **elemzés** fület, majd frissítse az oldalt. Az idősorozat-példányok megjelenítéséhez a **hely hierarchiája**alatt bontsa ki az összes hierarchia szintet:
 
-   [Az elemzés lap![](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
+   [Az elemzés lap ![](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
 
 1. Az idősorozat-példányok az elmúlt órában való megismeréséhez módosítsa a **gyors** időt az **elmúlt órában**:
 
@@ -324,11 +324,11 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
 1. A **Pacific Science Center**területen válassza ki az idősorozat-példányt, majd válassza a **maximális páratartalom megjelenítése**lehetőséget.
 
-    [a kiválasztott idősorozat-példány és a maximális páratartalom megjelenítése menü kijelölése![](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
+    [a kiválasztott idősorozat-példány és a maximális páratartalom megjelenítése menü kijelölése ![](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
 
 1. A **maximális páratartalom** idősorozata **1 perces** intervallummal megnyitva. Egy tartomány szűréséhez válasszon ki egy régiót. Az időkeretben lévő események elemzéséhez kattintson a jobb gombbal a diagramra, majd válassza a **Nagyítás**lehetőséget:
 
-   [a kijelölt tartomány![a nagyítási paranccsal egy helyi menüben](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
+   [a kijelölt tartomány ![a nagyítási paranccsal egy helyi menüben](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
 
 1. Az esemény részleteinek megtekintéséhez válasszon ki egy régiót, majd kattintson a jobb gombbal a diagramra:
 

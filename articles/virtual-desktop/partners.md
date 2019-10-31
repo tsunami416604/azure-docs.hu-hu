@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300158"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171604"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -71,6 +71,16 @@ a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgált
 a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek. 
 
 - [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
+
+## <a name="ivanti"></a>Ivanti
+
+![Ivanti embléma](./media/partners/ivanti.png)
+
+A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti segítségével a felhasználók olyan összetett projekteket tehetnek elérhetővé, mint például a Windows 10-es verzióra való áttérés, az Office 365 bevezetése vagy a szolgáltatások felhőbe való áthelyezése. 
+
+A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok megszüntetését. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát. 
+
+- [Lépjen a partner webhelyére](https://www.ivanti.com/products/user-workspace-manager).
 
 ## <a name="lakeside-software"></a>Tóparti szoftverek
 
@@ -133,6 +143,26 @@ SaaS-ként vagy webes veremként érhető el a saját privát felhőben, a Print
 
 - [Lépjen a partner webhelyére](https://www.printerlogic.com).
 
+## <a name="numecent"></a>Numecent
+
+![Numecent embléma](./media/partners/numecent.png)
+
+A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a szükséges konfigurációs felhasználók mennyiségét, csökkenti az alkalmazások frissítéseit, és egyszerűbbé teszi az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
+
+A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést azáltal, hogy valós időben, a Windows rendszerű virtuális asztali környezetekben igény szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
+
+- [Lépjen a partner webhelyére](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
+## <a name="rdpsoft"></a>RDPSoft
+
+![RDPSoft embléma](./media/partners/rdpsoft.png)
+
+A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatékony és költséges monitorozási, felügyeleti és jelentéskészítési megoldásokat kínál. A Távoli asztal Commander-ajánlatok lehetővé teszik az informatikai szakemberek számára, hogy betekintést kapjanak a Windows rendszerű virtuális asztali környezetek állapotával, teljesítményével, felhasználói tevékenységével, licencelésével és biztonságával. 
+ 
+A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményéről és terheléséről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL-alkalmazásba az adatbázis-példány áttekintése. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
+
+- [Ugrás a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
 ## <a name="thinprint"></a>ThinPrint
 
 ![ThinPrint embléma](./media/partners/thinprint.png)
@@ -143,6 +173,16 @@ A ThinPrint ezeep-megoldása a meglévő vállalati nyomtatási infrastruktúrá
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [Lépjen a partner webhelyére](https://www.ezeep.com/wvd-printing).
+
+## <a name="tricerat"></a>Tricerat
+
+![Tricerat embléma](./media/partners/tricerat.png)
+
+A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuális asztali és egyéb asztali platformokhoz. A Tricerat szoftver robusztus funkcionalitással rendelkezik, és jobb felhasználói élményt nyújt mind a felhasználók, mind a rendszergazdák számára. A rendszergazdák a teljes illesztőprogram-felügyelettel, a nyomtatási várólisták egyszerűsített üzembe helyezésével és a hibrid platformok közötti konzisztens felügyelettel szereznek hatékonyságot. A felhasználói élmény a rövidebb bejelentkezési idő, a felhasználó, az eszköz és a hálózati hely alapján történő intelligens nyomtatási várólisták, valamint az önkiszolgáló lehetőségek a gyors nyomtató kiválasztásához. 
+
+A Tricerat esetében a nyomtatás zökkenőmentes a Windows rendszerű virtuális asztal és azon kívül is. A Tricerat szoftver lehetővé teszi a rendszergazdák számára a helyszíni nyomtatók egyszerű összekapcsolását a felhővel, a hagyományos környezetek vállalati nyomtatási felügyeletének bővítését új, modern munkaterületekre.
+
+- [Lépjen a partner webhelyére](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 

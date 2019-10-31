@@ -8,22 +8,22 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260140"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176523"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
 > [!Important] 
-> A App Service és Azure Functions felügyelt identitásai nem a várt módon fognak működni, ha az alkalmazást áttelepítik az előfizetések/bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció letiltásával és újbóli engedélyezésével végezhető el. Lásd [az](#remove) alábbi identitások eltávolítását ismertető szakaszt. Az alárendelt erőforrásoknak is szükségük lesz a hozzáférési szabályzatok frissítésére az új identitás használatához.
+> A App Service és Azure Functions felügyelt identitásai nem a várt módon fognak működni, ha az alkalmazást áttelepítik az előfizetések/bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció letiltásával és újbóli engedélyezésével végezhető el. Lásd [az alábbi identitások eltávolítását](#remove) ismertető szakaszt. Az alárendelt erőforrásoknak is szükségük lesz a hozzáférési szabályzatok frissítésére az új identitás használatához.
 
-Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelt identitást App Service és Azure Functions alkalmazásokhoz, és hogyan használhatja azt más erőforrásokhoz való hozzáféréshez. Az Azure Active Directoryben a felügyelt identitás lehetővé teszi, hogy az alkalmazás egyszerűen hozzáférhessen az AAD által védett más erőforrásokhoz is, például az Azure Key Vaulthoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ a HRE felügyelt identitásokról: [felügyelt identitások az Azure](../active-directory/managed-identities-azure-resources/overview.md)-erőforrásokhoz.
+Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelt identitást App Service és Azure Functions alkalmazásokhoz, és hogyan használhatja azt más erőforrásokhoz való hozzáféréshez. Az Azure Active Directoryben a felügyelt identitás lehetővé teszi, hogy az alkalmazás egyszerűen hozzáférhessen az AAD által védett más erőforrásokhoz is, például az Azure Key Vaulthoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ a HRE felügyelt identitásokról: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
 Az alkalmazás két típusú identitást biztosíthat: 
 - A **rendszer által hozzárendelt identitás** az alkalmazáshoz van kötve, és törlődik, ha az alkalmazás törölve lett. Egy alkalmazásnak csak egy rendszerhez rendelt identitása lehet.
@@ -43,17 +43,17 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 3. Válassza a **felügyelt identitás**elemet.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva értékre. Kattintson a **Save** (Mentés) gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra.
 
-![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Felügyelt identitás Azure CLI használatával történő beállításához a `az webapp identity assign` parancsot egy meglévő alkalmazáshoz kell használnia. Ebben a szakaszban három lehetőség van a példák futtatására:
+Felügyelt identitás Azure CLI használatával történő beállításához a `az webapp identity assign` parancsot kell használnia egy meglévő alkalmazáshoz. Ebben a szakaszban három lehetőség van a példák futtatására:
 
 - Használja [Azure Cloud Shell](../cloud-shell/overview.md) a Azure Portal.
 - A beágyazott Azure Cloud Shell az alábbi, az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-- [Az Azure CLI legújabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 vagy újabb) Ha inkább egy helyi CLI-konzolt szeretne használni. 
+- [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 vagy újabb), ha helyi CLI-konzolt szeretne használni. 
 
 A következő lépések végigvezetik a webalkalmazások létrehozásán és az identitás a CLI használatával történő hozzárendelésén.
 
@@ -70,7 +70,7 @@ A következő lépések végigvezetik a webalkalmazások létrehozásán és az 
     az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. Futtassa a `identity assign` parancsot az alkalmazás identitásának létrehozásához:
+3. Futtassa az `identity assign` parancsot az alkalmazás identitásának létrehozásához:
 
     ```azurecli-interactive
     az webapp identity assign --name myApp --resource-group myResourceGroup
@@ -97,7 +97,7 @@ A következő lépések végigvezetik a webalkalmazások létrehozásán és az 
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Futtassa a `Set-AzWebApp -AssignIdentity` parancsot az alkalmazás identitásának létrehozásához:
+3. Futtassa az `Set-AzWebApp -AssignIdentity` parancsot az alkalmazás identitásának létrehozásához:
 
     ```azurepowershell-interactive
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -107,7 +107,7 @@ A következő lépések végigvezetik a webalkalmazások létrehozásán és az 
 
 Az Azure-erőforrások üzembe helyezésének automatizálásához Azure Resource Manager sablon használható. Ha többet szeretne megtudni a App Service és a függvények üzembe helyezéséről, olvassa el az [erőforrás-telepítés automatizálása app Service](../app-service/deploy-complex-application-predictably.md) és az [erőforrás-telepítés automatizálása a Azure functions-ben](../azure-functions/functions-infrastructure-as-code.md)című témakört.
 
-Bármely típusú `Microsoft.Web/sites` erőforrás létrehozható identitással, az erőforrás-definícióban a következő tulajdonsággal együtt:
+Minden `Microsoft.Web/sites` típusú erőforrást identitással lehet létrehozni az erőforrás-definícióban a következő tulajdonsággal együtt:
 ```json
 "identity": {
     "type": "SystemAssigned"
@@ -115,7 +115,7 @@ Bármely típusú `Microsoft.Web/sites` erőforrás létrehozható identitással
 ```
 
 > [!NOTE] 
-> Egy alkalmazáshoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság `type` a következő:`SystemAssigned,UserAssigned`
+> Egy alkalmazáshoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a `type` tulajdonság `SystemAssigned,UserAssigned`
 
 A rendszer által hozzárendelt típus hozzáadásával az Azure létrehozza és kezeli az alkalmazás identitását.
 
@@ -151,7 +151,7 @@ A hely létrehozásakor a következő tulajdonságokkal rendelkezik:
 }
 ```
 
-A `<TENANTID>` és`<PRINCIPALID>` a helyettesítése GUID azonosítókkal. A tenantId tulajdonság azt határozza meg, hogy az identitás melyik HRE-bérlőhöz tartozik. A principalId az alkalmazás új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
+Ahol a `<TENANTID>` és `<PRINCIPALID>` GUID azonosítókkal lesznek lecserélve. A tenantId tulajdonság azt határozza meg, hogy az identitás melyik HRE-bérlőhöz tartozik. A principalId az alkalmazás új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
 
 
 ## <a name="adding-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
@@ -172,15 +172,15 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 5. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
 
-6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás**lehetőségre.
+6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
 
-![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-user.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 
 Az Azure-erőforrások üzembe helyezésének automatizálásához Azure Resource Manager sablon használható. Ha többet szeretne megtudni a App Service és a függvények üzembe helyezéséről, olvassa el az [erőforrás-telepítés automatizálása app Service](../app-service/deploy-complex-application-predictably.md) és az [erőforrás-telepítés automatizálása a Azure functions-ben](../azure-functions/functions-infrastructure-as-code.md)című témakört.
 
-Bármely típusú `Microsoft.Web/sites` erőforrás létrehozható identitással, az erőforrás-definíció következő blokkjának beírásával, a kívánt `<RESOURCEID>` identitás erőforrás-azonosítójával lecserélve:
+Az `Microsoft.Web/sites` típusú erőforrások identitással hozhatók létre, beleértve az erőforrás-definícióban szereplő következő blokkot is, a `<RESOURCEID>` a kívánt identitás erőforrás-azonosítójával helyettesítve:
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -191,7 +191,7 @@ Bármely típusú `Microsoft.Web/sites` erőforrás létrehozható identitással
 ```
 
 > [!NOTE] 
-> Egy alkalmazáshoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság `type` a következő:`SystemAssigned,UserAssigned`
+> Egy alkalmazáshoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a `type` tulajdonság `SystemAssigned,UserAssigned`
 
 A felhasználó által hozzárendelt típus hozzáadása és az Azure megjelölése az alkalmazás identitásának létrehozásához és kezeléséhez.
 
@@ -235,7 +235,7 @@ A hely létrehozásakor a következő tulajdonságokkal rendelkezik:
 }
 ```
 
-A `<PRINCIPALID>` és`<CLIENTID>` a helyettesítése GUID azonosítókkal. A principalId a HRE felügyeletéhez használt identitás egyedi azonosítója. A clientId az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívásokban használandó identitás megadására szolgál.
+Ahol a `<PRINCIPALID>` és `<CLIENTID>` GUID azonosítókkal lesznek lecserélve. A principalId a HRE felügyeletéhez használt identitás egyedi azonosítója. A clientId az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívásokban használandó identitás megadására szolgál.
 
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Jogkivonatok beszerzése az Azure-erőforrásokhoz
@@ -245,55 +245,7 @@ Az alkalmazás az identitásával lekérheti a jogkivonatokat a HRE által véde
 > [!IMPORTANT]
 > Előfordulhat, hogy a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést. Ha például jogkivonatot kér Key Vault, meg kell győződnie arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service és Azure Functions. A .NET-alkalmazások esetében a Microsoft. Azure. Services. AppAuthentication könyvtár egy absztrakciót biztosít a protokollon keresztül, és támogatja a helyi fejlesztési élményt.
-
-### <a name="asal"></a>A Microsoft. Azure. Services. AppAuthentication kódtár használata a .NET-hez
-
-A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](/cli/azure)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft.Azure.Services.AppAuthentication reference]talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
-
-1. Adjon hozzá hivatkozásokat a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és minden más szükséges NuGet-csomaghoz az alkalmazásához. Az alábbi példa a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)kulcstartót is használja.
-
-2. Adja hozzá a következő kódot az alkalmazáshoz, amely úgy van módosítva, hogy a megfelelő erőforrást célozza meg. Ez a példa két módszert mutat be a Azure Key Vaultsal való együttműködésre:
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.KeyVault;
-// ...
-var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
-// OR
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-```
-
-Ha többet szeretne megtudni a Microsoft. Azure. Services. AppAuthentication és az általa közzétett műveletekről, tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference] , valamint a app Service és a KULCSTARTÓT [MSI .net-minta](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)használatával.
-
-
-### <a name="using-the-azure-sdk-for-java"></a>A Javához készült Azure SDK használata
-
-A Java-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java). Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
-
-1. Adjon hozzá egy hivatkozást az [Azure SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure)-könyvtárhoz. A Maven-projektek esetében ezt a kódrészletet a projekt `dependencies` Pom-fájljának szakaszába is hozzáadhatja:
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>azure</artifactId>
-    <version>1.23.0</version>
-</dependency>
-```
-
-2. Használja az `AppServiceMSICredentials` objektumot a hitelesítéshez. Ez a példa azt mutatja be, hogyan használható ez a mechanizmus a Azure Key Vaulthoz való munkavégzéshez:
-
-```java
-import com.microsoft.azure.AzureEnvironment;
-import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.keyvault.Vault
-//...
-Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
-        .withSubscription(subscriptionId);
-Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
-
-```
+Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service és Azure Functions. Ezt minden alkalmazáshoz és nyelvhez használhatja. Egyes .NET-és Java-alkalmazások esetében az Azure SDK absztrakciót biztosít a protokollon keresztül, és megkönnyíti a helyi fejlesztési élményt.
 
 ### <a name="using-the-rest-protocol"></a>A REST protokoll használata
 
@@ -306,9 +258,9 @@ A **MSI_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat i
 
 > |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
-> |resource|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
-> |api-version|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
-> |secret|Fejléc|A MSI_SECRET környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.|
+> |Erőforrás|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
+> |API-Version|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
+> |titkos kód|Fejléc|A MSI_SECRET környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.|
 > |ClientID|Lekérdezés|(Nem kötelező, kivéve, ha felhasználó által hozzárendelt) A használni kívánt felhasználó által hozzárendelt identitás azonosítója. Ha nincs megadva, a rendszer hozzárendelt identitást használja.|
 
 > [!IMPORTANT]
@@ -320,13 +272,13 @@ A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajd
 > |-------------|----------|
 > |access_token|A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.|
 > |expires_on|A hozzáférési jogkivonat lejáratának időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. Ez az érték a gyorsítótárazott tokenek élettartamának meghatározására szolgál.|
-> |resource|A fogadó webszolgáltatás alkalmazás-azonosító URI-ja.|
-> |token_type|Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse [meg a OAuth 2,0 engedélyezési keretrendszert: Tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |Erőforrás|A fogadó webszolgáltatás alkalmazás-azonosító URI-ja.|
+> |token_type|Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg [a OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Ez a válasz megegyezik a [HRE szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelemre adott válaszával](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 > [!NOTE]
-> A környezet változói a folyamat első indításakor jönnek létre, így az alkalmazás felügyelt identitásának engedélyezése után előfordulhat, hogy újra kell indítania az alkalmazást, vagy újra kell telepítenie a `MSI_ENDPOINT` kódját `MSI_SECRET` , mielőtt a kód elérhetővé válik.
+> A folyamat első elindításakor a környezeti változók úgy vannak beállítva, hogy az alkalmazás felügyelt identitásának engedélyezése után újra kell indítania az alkalmazást, vagy újból telepítenie kell a kódját, mielőtt `MSI_ENDPOINT` és `MSI_SECRET` elérhetővé válik a kód számára.
 
 ### <a name="rest-protocol-examples"></a>REST protokoll – példák
 
@@ -354,26 +306,29 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Példák a kódokra
 
-<a name="token-csharp"></a>A kérelem elvégzése C#a következőben:
-
-```csharp
-public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
-    HttpClient client = new HttpClient();
-    client.DefaultRequestHeaders.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
-    return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
-}
-```
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > A .NET nyelveken a [Microsoft. Azure. Services. AppAuthentication](#asal) is használhatja a kérelem elvégzése helyett.
 
-<a name="token-js"></a>A Node. JS-ben:
+```csharp
+private readonly HttpClient _client;
+// ...
+public async Task<HttpResponseMessage> GetToken(string resource)  {
+    var request = new HttpRequestMessage(HttpMethod.Get, 
+        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
+    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+    return await _client.SendAsync(request);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
-const getToken = function(resource, apiver, cb) {
+const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
+        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
         headers: {
             'Secret': process.env["MSI_SECRET"]
         }
@@ -383,7 +338,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-<a name="token-python"></a>Pythonban:
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -392,8 +347,8 @@ import requests
 msi_endpoint = os.environ["MSI_ENDPOINT"]
 msi_secret = os.environ["MSI_SECRET"]
 
-def get_bearer_token(resource_uri, token_api_version):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+def get_bearer_token(resource_uri):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
     head_msi = {'Secret':msi_secret}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
@@ -402,15 +357,64 @@ def get_bearer_token(resource_uri, token_api_version):
     return access_token
 ```
 
-<a name="token-powershell"></a>A PowerShellben:
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-$apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVersion"
+$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+---
+
+### <a name="asal"></a>A Microsoft. Azure. Services. AppAuthentication kódtár használata a .NET-hez
+
+A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](/cli/azure)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication – dokumentáció]talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
+
+1. Adjon hozzá hivatkozásokat a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és minden más szükséges NuGet-csomaghoz az alkalmazásához. Az alábbi példa a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)kulcstartót is használja.
+
+2. Adja hozzá a következő kódot az alkalmazáshoz, amely úgy van módosítva, hogy a megfelelő erőforrást célozza meg. Ez a példa két módszert mutat be a Azure Key Vaultsal való együttműködésre:
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+
+Ha többet szeretne megtudni a Microsoft. Azure. Services. AppAuthentication és az általa közzétett műveletekről, tekintse meg a [Microsoft. Azure. Services. AppAuthentication – dokumentáció] , valamint a app Service és a KULCSTARTÓT [MSI .net-minta](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)használatával.
+
+### <a name="using-the-azure-sdk-for-java"></a>A Javához készült Azure SDK használata
+
+A Java-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java). Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
+
+1. Adjon hozzá egy hivatkozást az [Azure SDK-könyvtárhoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure). A Maven-projektek esetében ezt a kódrészletet a projekt POM-fájljának `dependencies` szakaszába is felveheti:
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure</artifactId>
+        <version>1.23.0</version>
+    </dependency>
+    ```
+
+2. A hitelesítéshez használja a `AppServiceMSICredentials` objektumot. Ez a példa azt mutatja be, hogyan használható ez a mechanizmus a Azure Key Vaulthoz való munkavégzéshez:
+
+    ```java
+    import com.microsoft.azure.AzureEnvironment;
+    import com.microsoft.azure.management.Azure;
+    import com.microsoft.azure.management.keyvault.Vault
+    //...
+    Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+            .withSubscription(subscriptionId);
+    Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+    ```
+
 
 ## <a name="remove"></a>Identitás eltávolítása
 
@@ -427,9 +431,9 @@ A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is tör�
 > [!NOTE]
 > Létezik egy olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Biztonságos hozzáférés SQL Database felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md)
 
-[Microsoft.Azure.Services.AppAuthentication reference]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Microsoft. Azure. Services. AppAuthentication – dokumentáció]: https://go.microsoft.com/fwlink/p/?linkid=862452

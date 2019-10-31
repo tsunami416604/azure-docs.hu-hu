@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0eaeaf915ad480306c114d7ab79e88e95c336eb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893909"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175460"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás – jogkivonat beszerzése
 
-Miután létrehozta `IPublicClientApplication`ét, felhasználhatja egy olyan token beszerzéséhez, amelyet később a webes API-k meghívásához fog használni.
+Miután létrehozta a nyilvános ügyfélalkalmazás egy példányát, a használatával megvásárolhatja azt a tokent, amelyet aztán a webes API-k meghívásához fog használni.
 
 ## <a name="recommended-pattern"></a>Javasolt minta
 
@@ -32,6 +32,8 @@ A webes API-t a `scopes`határozza meg. Függetlenül attól, hogy milyen élmé
 
 - A jogkivonat-gyorsítótárból a `AcquireTokenSilent` meghívásával szisztematikusan próbálkozik a jogkivonat lekérésével
 - Ha a hívás sikertelen, használja a használni kívánt `AcquireToken` folyamatot (itt `AcquireTokenXX`által képviselt)
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="in-msalnet"></a>A MSAL.NET
 
@@ -52,16 +54,67 @@ catch(MsalUiRequiredException ex)
                     .ExecuteAsync();
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+        return "Unknown!";
+    }
+
+    Collection<IAccount> accounts = app.getAccounts().join();
+
+    CompletableFuture<IAuthenticationResult> future1;
+    try {
+        future1 = app.acquireTokenSilently
+                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                        accounts.iterator().next())
+                        .forceRefresh(true)
+                        .build());
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+        throw new RuntimeException();
+    }
+
+    future1.join();
+    IAccount account = app.getAccounts().join().iterator().next();
+    app.removeAccount(account).join();
+
+    return res;
+}).join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_xxx(scopes=config["scope"])
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
 ### <a name="in-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL
 
 Objective-C:
 
 ```objc
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-    
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -75,14 +128,14 @@ Swift
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
         if (nsError.domain == MSALErrorDomain &&
             nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
         }
@@ -90,6 +143,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
     }
 }
 ```
+---
 
 Itt láthatja a jogkivonatok asztali alkalmazásokban való beszerzésének különböző módszereit.
 
@@ -97,6 +151,7 @@ Itt láthatja a jogkivonatok asztali alkalmazásokban való beszerzésének kül
 
 Az alábbi példa azt mutatja be, hogy a jogkivonat interaktív beolvasása a felhasználó profiljának Microsoft Graph használatával történő olvasásához szükséges minimális kód.
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>A MSAL.NET
 
 ```CSharp
@@ -114,40 +169,6 @@ catch(MsalUiRequiredException)
  result = await app.AcquireTokenInteractive(scopes)
              .ExecuteAsync();
 }
-```
-
-### <a name="in-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL
-
-Objective-C:
-
-```objc
-MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
-[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
-    {
-        // You'll want to get the account identifier to retrieve and reuse the account
-        // for later acquireToken calls
-        NSString *accountIdentifier = result.account.identifier;
-            
-        NSString *accessToken = result.accessToken;
-    }
-}];
-```
-
-Swift
-
-```swift
-let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
-application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
-    guard let authResult = result, error == nil else {
-        print(error!.localizedDescription)
-        return
-    }
-                
-    // Get access token from result
-    let accessToken = authResult.accessToken
-})
 ```
 
 ### <a name="mandatory-parameters"></a>Kötelező paraméterek
@@ -179,7 +200,7 @@ Megjegyzéseket tartalmazó
 - A .NET Standard verzióban a várt `Activity` `object` az Androidon, a `UIViewController` iOS-en, egy `NSWindow` MAC gépen, valamint egy `IWin32Window` vagy `IntPr` Windows rendszeren.
 - Windows rendszeren a felhasználói felületi szálból kell meghívnia `AcquireTokenInteractive`t, hogy a beágyazott böngésző megkapja a megfelelő felhasználói felületi szinkronizálási környezetet.  Ha a felhasználói felületi szál nem hívja meg a hívást, az üzenetek nem tudnak megfelelően és/vagy holtpontra jutni a felhasználói felületen. A MSAL a felhasználói felületi szálból való meghívásának egyik módja, ha a felhasználói felületi szálon már nem a `Dispatcher` a WPF rendszeren.
 - Ha WPF-t használ, a WPF-vezérlőkből származó ablak beszerzéséhez `WindowInteropHelper.Handle` osztályt használhat. A hívást ezután egy WPF-vezérlőből (`this`):
-  
+
   ```CSharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
@@ -213,16 +234,16 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 #### <a name="withcustomwebui"></a>WithCustomWebUi
 
 A webes felhasználói felület egy böngésző meghívására szolgáló mechanizmus. Ez a mechanizmus lehet dedikált felhasználói felületi WebBrowser vezérlő vagy a böngésző megnyitásának delegálására szolgáló módszer.
-A MSAL webes felhasználói felületi implementációkat biztosít a legtöbb platformhoz, de továbbra is előfordulhatnak olyan esetek, amikor a böngészőt saját maga szeretné üzemeltetni: 
+A MSAL webes felhasználói felületi implementációkat biztosít a legtöbb platformhoz, de továbbra is előfordulhatnak olyan esetek, amikor a böngészőt saját maga szeretné üzemeltetni:
 
 - a MSAL által kifejezetten nem érintett platformok, például a Blazer, az Unity, a Mono on Desktop
-- szeretné tesztelni az alkalmazást, és egy olyan automatizált böngészőt szeretne használni, amely a szelén segítségével használható 
+- szeretné tesztelni az alkalmazást, és egy olyan automatizált böngészőt szeretne használni, amely a szelén segítségével használható
 - a böngésző és a MSAL-t futtató alkalmazás külön folyamatokban van
 
 ##### <a name="at-a-glance"></a>Áttekintés
 
 Ennek eléréséhez meg kell adnia egy `start Url`MSAL, amelyet egy tetszőleges böngészőben kell megjeleníteni, hogy a felhasználó megadhatja a felhasználónevét stb. A hitelesítés befejeződése után az alkalmazásnak vissza kell térnie a `end Url`MSAL, amely tartalmazza az Azure AD által biztosított kódot.
-A `end Url` gazdagépe mindig a `redirectUri`. A `end Url` elfogásához a következőket teheti: 
+A `end Url` gazdagépe mindig a `redirectUri`. A `end Url` elfogásához a következőket teheti:
 
 - a böngésző átirányításának figyelése, amíg a `redirect Url` el nem éri a találatot, vagy
 - a böngésző átirányítja az URL-címre, amelyet figyel
@@ -238,7 +259,7 @@ a `WithCustomWebUi` egy olyan bővíthetőségi pont, amely lehetővé teszi saj
 ##### <a name="how-to-use-withcustomwebui"></a>A WithCustomWebUi használata
 
 A `.WithCustomWebUI`használatához a következőket kell tennie:
-  
+
   1. A `ICustomWebUi` felület implementálása (lásd [itt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Alapvetően egy metódust kell megvalósítani `AcquireAuthorizationCodeAsync` az engedélyezési kód URL-címének (MSAL.NET alapján számított) elfogadását, hogy a felhasználó átugorjon az identitás-szolgáltatóval való interakcióra, majd visszaadja az URL-címet, amellyel az identitás szolgáltatója lenne a megvalósítást vissza kell hívni (beleértve az engedélyezési kódot is). Ha problémák merülnek fel, a megvalósításnak `MsalExtensionException` kivételt kell eldobnia, hogy szépen működjenek együtt a MSAL-mel.
   2. A `AcquireTokenInteractive`-hívásban használhatja `.WithCustomUI()` módosítót az egyéni webes felhasználói felület példányának átadásával
 
@@ -282,17 +303,108 @@ var result = app.AcquireTokenInteractive(scopes)
 
 További információ a [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) -hez készült dokumentációban `AcquireTokenInteractive` további opcionális paraméterekről
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A MSAL Java nem biztosít közvetlenül egy interaktív beszerzési jogkivonat-metódust. Ehelyett az alkalmazásnak engedélyezési kérelmet kell küldenie a felhasználói interakciós folyamat megvalósításában egy olyan engedélyezési kód beszerzéséhez, amely átadható a `acquireToken` metódusnak a jogkivonat lekéréséhez.
+
+```java
+AuthorizationCodeParameters parameters =  AuthorizationCodeParameters.builder(
+                authorizationCode, redirectUri)
+                .build();
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+        return "Unknown!";
+    }
+
+    Collection<IAccount> accounts = app.getAccounts().join();
+
+    CompletableFuture<IAuthenticationResult> future1;
+    try {
+        future1 = app.acquireTokenSilently
+                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                        accounts.iterator().next())
+                        .forceRefresh(true)
+                        .build());
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+        throw new RuntimeException();
+    }
+
+    future1.join();
+    IAccount account = app.getAccounts().join().iterator().next();
+    app.removeAccount(account).join();
+
+    return res;
+}).join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A MSAL Python nem biztosít közvetlenül egy interaktív beszerzési jogkivonat-metódust. Ehelyett az alkalmazásnak engedélyezési kérelmet kell küldenie a felhasználói interakciós folyamat megvalósításában egy olyan engedélyezési kód beszerzéséhez, amely átadható a `acquire_token_by_authorization_code` metódusnak a jogkivonat lekéréséhez.
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_authorization_code(
+         request.args['code'],
+         scopes=config["scope"])    
+
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+### <a name="in-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL
+
+Objective-C:
+
+```objc
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
+    if (!error)
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+
+        NSString *accessToken = result.accessToken;
+    }
+}];
+```
+
+Swift
+
+```swift
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+
+    guard let authResult = result, error == nil else {
+        print(error!.localizedDescription)
+        return
+    }
+
+    // Get access token from result
+    let accessToken = authResult.accessToken
+})
+```
+---
+
 ## <a name="integrated-windows-authentication"></a>Integrált Windows-hitelesítés
 
-Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy Azure AD-hez csatlakoztatott gépre, a következőt kell használnia:
-
-```csharp
-AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
-```
+Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy Azure AD-hez csatlakoztatott gépen, akkor integrált Windows-hitelesítést kell használnia.
 
 ### <a name="constraints"></a>Korlátozások
 
-- A AcquireTokenByIntegratedWindowsAuth (IWA) csak **összevont** felhasználók esetében használható, azaz a felhasználók egy Active Directoryban létrehozott és Azure Active Directory által támogatottak. A közvetlenül a HRE-ben létrehozott felhasználók AD-alapú, **felügyelt** felhasználók nélkül nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nem befolyásolja a Felhasználónév/jelszó folyamatát.
+- Az integrált Windows-hitelesítés (IWA) csak **összevont** felhasználók esetében használható, azaz a Active Directoryban létrehozott felhasználók és Azure Active Directory által támogatottak. A közvetlenül a HRE-ben létrehozott felhasználók AD-alapú, **felügyelt** felhasználók nélkül nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nem befolyásolja a Felhasználónév/jelszó folyamatát.
 - A IWA a .NET-keretrendszer, a .NET Core és a UWP platformokhoz írt alkalmazások esetében használható.
 - A IWA nem kerüli el az MFA-t (többtényezős hitelesítés). Ha az MFA konfigurálva van, a IWA sikertelen lehet, ha MFA-kihívásra van szükség, mert az MFA felhasználói beavatkozást igényel.
   > [!NOTE]
@@ -312,13 +424,21 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
     - vagy lehetősége van arra, hogy a felhasználók beleegyeznek az alkalmazásba (lásd: [egyéni felhasználói engedély kérése](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent))
     - vagy megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba (lásd: [rendszergazdai engedély](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant))
 
-- Ez a folyamat engedélyezve van a .net Desktop, a .net Core és a Windows Universal (UWP) alkalmazásokhoz. A .NET Core-on csak a Felhasználónév elérhető túlterhelése érhető el, mivel a .NET Core platform nem tudja megkérni a felhasználónevet az operációs rendszernek.
-  
+- Ez a folyamat engedélyezve van a .net Desktop, a .net Core és a Windows Universal (UWP) alkalmazásokhoz.
+
 További információ a beleegyező adatokról: a [Microsoft Identity platform engedélyei és beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
 ### <a name="how-to-use-it"></a>Használat
 
-Általában csak egy paraméterre van szükség (`scopes`). Azonban attól függően, hogy a Windows-rendszergazda milyen módon beállította a házirendeket, lehetséges, hogy a Windows-gépen lévő alkalmazások nem tudják megkeresni a bejelentkezett felhasználót. Ebben az esetben használjon egy második módszert `.WithUsername()` és adja át a bejelentkezett felhasználó felhasználónevét UPN formátumként – `joe@contoso.com`.
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+A MSAL.NET-ben a következőt kell használnia:
+
+```csharp
+AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
+```
+
+Általában csak egy paraméterre van szükség (`scopes`). Azonban attól függően, hogy a Windows-rendszergazda milyen módon beállította a házirendeket, lehetséges, hogy a Windows-gépen lévő alkalmazások nem tudják megkeresni a bejelentkezett felhasználót. Ebben az esetben használjon egy második módszert `.WithUsername()` és adja át a bejelentkezett felhasználó felhasználónevét UPN formátumként – `joe@contoso.com`. A .NET Core-on csak a Felhasználónév elérhető túlterhelése érhető el, mivel a .NET Core platform nem tudja megkérni a felhasználónevet az operációs rendszernek.
 
 A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a lekérhető kivételek típusára és azok enyhítésére
 
@@ -401,6 +521,38 @@ static async Task GetATokenForGraph()
 
 A AcquireTokenByIntegratedWindowsAuthentication lehetséges módosítók listájáért lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Ez a [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)kivonata. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+         .authority(TestData.AUTHORITY_ORGANIZATION)
+         .telemetryConsumer(new Telemetry.MyTelemetryConsumer().telemetryConsumer)
+         .build();
+
+ IntegratedWindowsAuthenticationParameters parameters =
+         IntegratedWindowsAuthenticationParameters.builder(
+                 Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE), TestData.USER_NAME)
+                 .build();
+
+ Future<IAuthenticationResult> future = app.acquireToken(parameters);
+
+ IAuthenticationResult result = future.get();
+
+ return result;
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ez a folyamat még nem támogatott a MSAL Pythonban.
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+Ez a folyamat nem vonatkozik a MacOS-re.
+
+---
+
 ## <a name="username--password"></a>Felhasználónév/jelszó
 
 A tokent a Felhasználónév és a jelszó megadásával is megvásárolhatja. Ez a folyamat korlátozott, és nem ajánlott, de továbbra is használhatók a szükséges esetek.
@@ -409,10 +561,10 @@ A tokent a Felhasználónév és a jelszó megadásával is megvásárolhatja. E
 
 Ez a folyamat **nem ajánlott** , mert az alkalmazás arra kéri a felhasználót, hogy a jelszava ne legyen biztonságos. A problémával kapcsolatos további információkért tekintse meg [ezt a cikket](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). A tokenek Windows-tartományhoz csatlakoztatott gépeken való csendes beszerzésének előnyben részesített folyamata [integrált Windows-hitelesítés](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Ellenkező esetben használhatja az [eszköz kódját](https://aka.ms/msal-net-device-code-flow) is
 
-> [!NOTE] 
+> [!NOTE]
 > Bár ez bizonyos esetekben hasznos lehet (DevOps forgatókönyvek), ha olyan interaktív helyzetekben szeretné használni a felhasználónevet és a jelszót, ahol a saját felhasználói felületét adja meg, érdemes meggondolni, hogyan helyezheti el onnan. A Felhasználónév/jelszó használatával számos dolgot ad meg:
 >
-> - a modern identitás alapbérlői: a jelszó bekerül, majd újra lejátszhatók. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja.
+> - a modern identitás alapvető alapelvei: a jelszó bekerül, majd újra lejátszva. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja.
 > Ez nem kompatibilis a jelszóval.
 > - az MFA-t igénylő felhasználóknak nem lehet bejelentkezniük (mivel nincs interakció)
 > - A felhasználók nem tudják elvégezni az egyszeri bejelentkezést
@@ -423,13 +575,15 @@ A következő korlátozások is érvényesek:
 
 - A Felhasználónév/jelszó folyamat nem kompatibilis a feltételes hozzáféréssel és a többtényezős hitelesítéssel: Ha az alkalmazás egy Azure AD-bérlőben fut, ahol a bérlői rendszergazda a többtényezős hitelesítést igényli, nem használhatja ezt a folyamatot. Számos szervezet ezt teszi.
 - Csak munkahelyi és iskolai fiókokhoz használható (nem MSA)
-- A folyamat elérhető a .net Desktopban és a .net Core-on, de nem a UWP-on
+- A folyamat elérhető a .net Desktopban és a .net Core-on, de nem a UWP-on.
 
 ### <a name="b2c-specifics"></a>B2C-sajátosságok
 
 [További információ a ROPC a B2C-vel való használatáról](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics#resource-owner-password-credentials-ropc-with-b2c).
 
 ### <a name="how-to-use-it"></a>Hogyan kell használni?
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 a `IPublicClientApplication`a metódust tartalmazza `AcquireTokenByUsernamePassword`
 
@@ -638,11 +792,94 @@ static async Task GetATokenForGraph()
 
 A `AcquireTokenByUsernamePassword`alkalmazható módosítókkal kapcsolatos részletekért lásd: [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Ez a [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)kivonata. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_ORGANIZATION)
+        .build();
+
+UserNamePasswordParameters parameters = UserNamePasswordParameters.builder(
+        Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+        TestData.USER_NAME,
+        TestData.USER_PASSWORD.toCharArray())
+        .build();
+
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+        return "Unknown!";
+    }
+
+    Collection<IAccount> accounts = app.getAccounts().join();
+
+    CompletableFuture<IAuthenticationResult> future1;
+    try {
+        future1 = app.acquireTokenSilently
+                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                        accounts.iterator().next())
+                        .forceRefresh(true)
+                        .build());
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+        throw new RuntimeException();
+    }
+
+    future1.join();
+
+    IAccount account = app.getAccounts().join().iterator().next();
+    app.removeAccount(account).join();
+
+    return res;
+}).join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ez a [MSAL Python dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)kivonata.
+
+```Python
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# The pattern to acquire a token looks like this.
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    logging.info("Account(s) exists in cache, probably with token too. Let's try.")
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+    # See this page for constraints of Username Password Flow.
+    # https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Username-Password-Authentication
+    result = app.acquire_token_by_username_password(
+        config["username"], config["password"], scopes=config["scope"])
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+Ez a folyamat nem támogatott a macOS rendszerhez készült MSAL.
+
+---
+
 ## <a name="command-line-tool-without-web-browser"></a>Parancssori eszköz (webböngésző nélkül)
 
-### <a name="device-code-flow-why-and-how"></a>Miért van az eszköz kódjának folyamata? és hogyan?
+### <a name="device-code-flow"></a>Eszköz kódjának folyamata
 
-Ha olyan parancssori eszközt írunk (amely nem rendelkezik webvezérlőkkel), és nem szeretné használni az előző folyamatokat, akkor a `AcquireTokenWithDeviceCode`t kell használnia.
+Ha olyan parancssori eszközt írunk (amely nem rendelkezik webvezérlőkkel), és nem szeretné használni az előző folyamatokat, az eszköz kódját kell használnia.
 
 Az Azure AD-vel való interaktív hitelesítéshez webböngészőre van szükség (részletekért lásd: [böngészők használata](https://aka.ms/msal-net-uses-web-browser)). Ha azonban a felhasználókat olyan eszközökön vagy operációs rendszereken szeretné hitelesíteni, amelyek nem biztosítanak webböngészőt, az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt (például egy másik számítógépet vagy egy mobiltelefont) használjon az interaktív bejelentkezéshez. Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, kifejezetten ezekhez az eszközökhöz/operációs rendszerekhez. Ilyen alkalmazások például a iOT-on vagy parancssori eszközökön (CLI) futó alkalmazások. Az a gondolat, hogy:
 
@@ -650,7 +887,9 @@ Az Azure AD-vel való interaktív hitelesítéshez webböngészőre van szüksé
 
 2. A sikeres hitelesítés után a parancssori alkalmazás egy visszaadott csatornán keresztül kapja meg a szükséges jogkivonatokat, és ezt fogja használni a webes API-hívások igény szerinti elvégzéséhez.
 
-### <a name="code"></a>Kód
+### <a name="how-to-use"></a>Hogyan használható?
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 a `IPublicClientApplication`egy `AcquireTokenWithDeviceCode` nevű metódust tartalmaz.
 
@@ -680,7 +919,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
             .WithAuthority(Authority)
             .WithDefaultRedirectUri()
             .Build();
-           
+
     var accounts = await pca.GetAccountsAsync();
 
     // All AcquireToken* methods store the tokens in the cache, so check the cache first
@@ -692,7 +931,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
     catch (MsalUiRequiredException ex)
     {
         // No token found in the cache or AAD insists that a form interactive auth is required (e.g. the tenant admin turned on MFA)
-        // If you want to provide a more complex user experience, check out ex.Classification 
+        // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
     }         
@@ -705,11 +944,11 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
         var result = await pca.AcquireTokenWithDeviceCode(scopes,
             deviceCodeResult =>
             {
-                    // This will print the message on the console which tells the user where to go sign-in using 
+                    // This will print the message on the console which tells the user where to go sign-in using
                     // a separate browser and the code to enter once they sign in.
                     // The AcquireTokenWithDeviceCode() method will poll the server after firing this
                     // device code callback to look for the successful login of the user via that browser.
-                    // This background polling (whose interval and timeout data is also provided as fields in the 
+                    // This background polling (whose interval and timeout data is also provided as fields in the
                     // deviceCodeCallback class) will occur until:
                     // * The user has successfully logged in via browser and entered the proper code
                     // * The timeout specified by the server for the lifetime of this code (typically ~15 minutes) has been reached
@@ -735,16 +974,16 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
         // AADSTS90133: Device Code flow is not supported under /common or /consumers endpoint.
         // Mitigation: as explained in the message from Azure AD, the authority needs to be tenanted
 
-        // AADSTS90002: Tenant <tenantId or domain you used in the authority> not found. This may happen if there are 
+        // AADSTS90002: Tenant <tenantId or domain you used in the authority> not found. This may happen if there are
         // no active subscriptions for the tenant. Check with your subscription administrator.
-        // Mitigation: if you have an active subscription for the tenant this might be that you have a typo in the 
+        // Mitigation: if you have an active subscription for the tenant this might be that you have a typo in the
         // tenantId (GUID) or tenant domain name.
     }
     catch (OperationCanceledException ex)
     {
         // If you use a CancellationToken, and call the Cancel() method on it, then this *may* be triggered
-        // to indicate that the operation was cancelled. 
-        // See https://docs.microsoft.com/dotnet/standard/threading/cancellation-in-managed-threads 
+        // to indicate that the operation was cancelled.
+        // See https://docs.microsoft.com/dotnet/standard/threading/cancellation-in-managed-threads
         // for more detailed information on how C# supports cancellation in managed threads.
     }
     catch (MsalClientException ex)
@@ -755,6 +994,95 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
     }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Ez a [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)kivonata. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_COMMON)
+        .build();
+
+Consumer<DeviceCode> deviceCodeConsumer = (DeviceCode deviceCode) -> {
+    System.out.println(deviceCode.message());
+};
+
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(
+        DeviceCodeFlowParameters.builder(
+                Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                deviceCodeConsumer)
+                .build());
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception of type - " + ex.getClass());
+        System.out.println("message - " + ex.getMessage());
+        return "Unknown!";
+    }
+    System.out.println("Returned ok - " + res);
+
+    return res;
+});
+
+future.join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ez a [MSAL Python dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)kivonata.
+
+```Python
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# The pattern to acquire a token looks like this.
+result = None
+
+# Note: If your device-flow app does not have any interactive ability, you can
+#   completely skip the following cache part. But here we demonstrate it anyway.
+# We now check the cache to see if we have some end users signed in before.
+accounts = app.get_accounts()
+if accounts:
+    logging.info("Account(s) exists in cache, probably with token too. Let's try.")
+    print("Pick the account you want to use to proceed:")
+    for a in accounts:
+        print(a["username"])
+    # Assuming the end user chose this one
+    chosen = accounts[0]
+    # Now let's try to find a token in cache for this account
+    result = app.acquire_token_silent(config["scope"], account=chosen)
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+
+    flow = app.initiate_device_flow(scopes=config["scope"])
+    if "user_code" not in flow:
+        raise ValueError(
+            "Fail to create device flow. Err: %s" % json.dumps(flow, indent=4))
+
+    print(flow["message"])
+    sys.stdout.flush()  # Some terminal needs this to ensure the message is shown
+
+    # Ideally you should wait here, in order to save some unnecessary polling
+    # input("Press Enter after signing in from another device to proceed, CTRL+C to abort.")
+
+    result = app.acquire_token_by_device_flow(flow)  # By default it will block
+        # You can follow this instruction to shorten the block time
+        #    https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow
+        # or you may even turn off the blocking behavior,
+        # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+Ez a folyamat nem vonatkozik a MacOS-re.
+
+---
 
 ## <a name="file-based-token-cache"></a>Fájl alapú jogkivonat-gyorsítótár
 

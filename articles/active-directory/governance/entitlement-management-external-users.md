@@ -1,5 +1,5 @@
 ---
-title: A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
+title: A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében – Azure Active Directory
 description: További információ a Azure Active Directory jogosultságok kezelésében a külső felhasználókhoz való hozzáférés szabályozásához megadható beállításokról.
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934390"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174180"
 ---
-# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
 Az Azure AD-jogosultságok kezelése az [Azure ad vállalatközi (B2B)](../b2b/what-is-b2b.md) szolgáltatásával együttműködik a szervezeten kívüli személyekkel egy másik címtárban. Az Azure AD B2B-vel a külső felhasználók a saját címtárában hitelesítik magukat, de rendelkeznek egy képviselettel a címtárban. A címtárban lévő ábrázolás lehetővé teszi, hogy a felhasználó hozzáférjen az erőforrásokhoz.
 
@@ -74,6 +69,52 @@ A következő ábra és lépések áttekintést nyújtanak arról, hogy a küls�
 
 1. A külső felhasználók beállításainak életciklusa alapján, ha a külső felhasználó már nem rendelkezik hozzáférési csomag-hozzárendelésekkel, a rendszer letiltja a külső felhasználót a bejelentkezéstől, és eltávolítja a vendég felhasználói fiókot a címtárból.
 
+## <a name="settings-for-external-users"></a>Külső felhasználók beállításai
+
+Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáférhessenek a hozzáférési csomagokhoz, és hozzáférjenek a hozzáférési csomagok erőforrásaihoz, bizonyos beállításoknak megfelelően be kell jelentkeznie.
+
+### <a name="enable-catalog-for-external-users"></a>Katalógus engedélyezése külső felhasználók számára
+
+- Alapértelmezés szerint az [új katalógus](entitlement-management-catalog-create.md)létrehozásakor engedélyezve van a külső felhasználók számára a hozzáférési csomagok kérése a katalógusban. Győződjön meg arról, hogy a **külső felhasználók számára engedélyezve** van-e az **Igen**érték.
+
+    ![Katalógus beállításainak szerkesztése](./media/entitlement-management-shared/catalog-edit.png)
+
+### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>Az Azure AD B2B külső együttműködési beállításainak konfigurálása
+
+- Lehetővé teszi, hogy a vendégek meghívjanak más vendégeket a címtárba, ami azt jelenti, hogy a vendég meghívása a jogosultsági felügyeleten kívül történhet Azt javasoljuk, hogy a **vendégek meghívhatják** a **nem** értéket, hogy csak a megfelelően szabályozott meghívókat engedélyezzék.
+- Ha a B2B engedélyezési listát használja, gondoskodnia kell arról, hogy minden olyan tartomány hozzá legyen adva a jogosultságok kezelése szolgáltatással, amelyet a listához felvesznek. Ha a B2B megtagadási listát használja, meg kell győződnie arról, hogy a partnerrel nem rendelkező tartomány nincs felvéve a listára.
+- Ha az **összes felhasználóra** vonatkozóan létrehoz egy jogosultsági felügyeleti szabályzatot (minden csatlakoztatott szervezet + bármely új külső felhasználó), akkor a vállalatközi engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek. Ezért ügyeljen arra, hogy a szabályzatban szerepeltetni kívánt tartományokat az engedélyezési listára vegye fel, ha Ön használ egyet, és kizárhatja őket a megtagadási listáról, ha megtagadási listát használ.
+- Ha olyan jogosultság-kezelési szabályzatot szeretne létrehozni, amely **minden felhasználót** tartalmaz (minden csatlakoztatott szervezet + bármely új külső felhasználó), először engedélyeznie kell az e-mailek egyszeri jelszavas hitelesítését a címtárban. További információ: az [e-mailek egyszeri jelszavas hitelesítése (előzetes verzió)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
+- Az Azure AD B2B külső együttműködési beállításaival kapcsolatos további információkért lásd: [B2B külső együttműködés engedélyezése és a vendégek meghívása](../b2b/delegate-invitations.md)a felhasználók számára.
+
+    ![Az Azure AD külső együttműködési beállításai](./media/entitlement-management-external-users/collaboration-settings.png)
+
+### <a name="review-your-conditional-access-policies"></a>A feltételes hozzáférési szabályzatok áttekintése
+
+- Ügyeljen arra, hogy kizárják a vendégeket minden olyan feltételes hozzáférési szabályzatból, amelyet az új vendég felhasználók nem fognak tudni kielégíteni, mert ezzel letiltja, hogy be tudja jelentkezni a címtárba. Előfordulhat például, hogy a vendégek nem rendelkeznek regisztrált eszközzel, és nem szeretnének újra regisztrálni a többtényezős hitelesítésre (MFA), ezért a feltételes hozzáférési házirendben szereplő követelmények hozzáadásával letiltja a vendégek számára a jogosultságok használatát. felügyeleti. További információ: [Mi a feltételek a Azure Active Directory feltételes hozzáférésben?](../conditional-access/conditions.md).
+
+    ![Az Azure AD feltételes hozzáférési szabályzata kizárja a beállításokat](./media/entitlement-management-external-users/conditional-access-exclude.png)
+
+### <a name="review-your-sharepoint-online-external-sharing-settings"></a>A SharePoint Online külső megosztási beállításainak áttekintése
+
+- Ha a külső felhasználók hozzáférési csomagjaiban szeretné felvenni a SharePoint Online-webhelyeket, győződjön meg arról, hogy a szervezeti szintű külső megosztási beállítás **mindenki** számára be van állítva (a felhasználóknak nincs szükségük a bejelentkezésre) vagy **az új és a meglévő vendégekre** (a vendégeknek be kell jelentkezniük vagy adja meg az ellenőrző kódot). További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Ha korlátozni szeretné a jogosultsági felügyeleten kívüli külső megosztást, megadhatja a külső megosztási beállítást a **meglévő vendégek**számára. Ezt követően csak a jogosultságok kezelésével meghívott új felhasználók férhetnek hozzá ezekhez a webhelyekhez. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Győződjön meg arról, hogy a hely szintű beállítások lehetővé teszik a vendég hozzáférését (ugyanazokat a beállításokat a korábban felsoroltak szerint). További információ: [külső megosztás be-és kikapcsolása egy adott helyen](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+
+### <a name="review-your-office-365-group-sharing-settings"></a>Tekintse át az Office 365 csoport megosztási beállításait
+
+- Ha az Office 365-csoportokat a külső felhasználók hozzáférési csomagjaiban szeretné felvenni, akkor győződjön **meg** arról, hogy a **felhasználók az új vendégek hozzáadása a szervezethez** beállítás be értékre van állítva a vendég hozzáférésének engedélyezéséhez. További információ: a [vendég hozzáférésének kezelése az Office 365-csoportokhoz](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups).
+
+- Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és az Office 365-csoporthoz kapcsolódó erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- További információ arról, hogyan állíthatja be az Office 365-csoportok vendég házirendjét a PowerShell címtár szintjén, lásd [: példa a csoportházirendek konfigurálására a címtár szintjén](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+
+### <a name="review-your-teams-sharing-settings"></a>A csapatok megosztási beállításainak áttekintése
+
+- Ha a külső felhasználók hozzáférési csomagjaiban csapatokat kíván felvenni, győződjön **meg** arról, hogy a vendég hozzáférés engedélyezése a **Microsoft Teams** szolgáltatásban beállítás engedélyezve értékre van állítva. További információ: [a vendég hozzáférésének konfigurálása a Microsoft Teams felügyeleti központban](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+
 ## <a name="manage-the-lifecycle-of-external-users"></a>A külső felhasználók életciklusának kezelése
 
 Kiválaszthatja, hogy mi történjen, ha egy külső felhasználó, aki egy, a hozzáférési csomagra vonatkozó kérelem jóváhagyásával meghívta a címtárat, már nem rendelkezik hozzáférési csomag-hozzárendeléssel. Ez akkor fordulhat elő, ha a felhasználó lemond az összes hozzáférési csomagra vonatkozó hozzárendeléséről, vagy az utolsó hozzáférési csomag hozzárendelésének érvényessége lejár. Alapértelmezés szerint, ha egy külső felhasználó már nem rendelkezik hozzáférési csomag hozzárendeléseivel, a rendszer letiltja a címtárba való bejelentkezést. 30 nap elteltével a vendég felhasználói fiókja törlődik a címtárból.
@@ -104,20 +145,8 @@ Kiválaszthatja, hogy mi történjen, ha egy külső felhasználó, aki egy, a h
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="enable-a-catalog-for-external-users"></a>Katalógus engedélyezése külső felhasználók számára
-
-[Új katalógus](entitlement-management-catalog-create.md)létrehozásakor engedélyezheti, hogy a külső címtárakban lévő felhasználók a katalógusban hozzáférési csomagokat kérjenek. Ha nem szeretné, hogy a külső felhasználók jogosultak legyenek hozzáférési csomagok igénylésére a katalógusban, akkor a **külső felhasználók számára engedélyezze** a **nem**beállítást.
-
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
-
-![Új katalógus panel](./media/entitlement-management-shared/new-catalog.png)
-
-Ezt a beállítást a katalógus létrehozása után is módosíthatja.
-
-![Katalógus beállításainak szerkesztése](./media/entitlement-management-shared/catalog-edit.png)
-
 ## <a name="next-steps"></a>Következő lépések
 
 - [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md)
 - [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
-- [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)
+- [Hibaelhárítás](entitlement-management-troubleshoot.md)

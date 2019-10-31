@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan módosíthatja egy meglévő hozzáférési csomag erőforrás-szerepköreit Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
+title: Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan módosíthatja egy meglévő hozzáférési csomag erőforrás-szerepköreit Azure Active Directory jogosultságok felügyelete alatt.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429808"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174659"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
 
 Hozzáférés-csomagkezelőként bármikor módosíthatja egy hozzáférési csomag erőforrásait anélkül, hogy aggódnia kellene a felhasználó új erőforrásaihoz való hozzáférésének kiosztásával vagy az előző erőforrásokból való hozzáférés eltávolításával. Ez a cikk azt ismerteti, hogyan lehet módosítani egy meglévő hozzáférési csomag erőforrás-szerepköreit.
 

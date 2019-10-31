@@ -1,6 +1,6 @@
 ---
-title: Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan hozhat létre egy új, az Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban megosztani kívánt erőforrás-hozzáférési csomagot.
+title: Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan hozhat létre olyan új erőforrás-hozzáférési csomagot, amelyet meg szeretne osztani a Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b8a2752302e5f6c3428139a0faa30ce347fc21f2
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934643"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174928"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
 Egy hozzáférési csomag lehetővé teszi az erőforrások és házirendek egyszeri beállítását, amely automatikusan felügyeli a hozzáférést a hozzáférési csomag élettartamához. Ez a cikk azt ismerteti, hogyan hozható létre új hozzáférési csomag.
 

@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193324"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172790"
 ---
-# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
+# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
 A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománysal való kommunikációhoz a Lightweight Directory Access Protocol (LDAP) használatos. Alapértelmezés szerint az LDAP-forgalom nincs titkosítva, ami biztonsági szempontból fontos a sok környezetben. Az Azure AD DS használatával a felügyelt tartományt biztonságos Lightweight Directory Access Protocol (LDAPs) használatára állíthatja be. A biztonságos LDAP használata esetén a rendszer titkosítja a forgalmat. Secure LDAP más néven LDAP SSL (SSL)/Transport Layer Security (TLS) protokollon keresztül.
 
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 * Aktív Azure-előfizetés.
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
 * Az *Ldp. exe* eszköz telepítve van a számítógépen.
@@ -47,7 +47,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Ebben az oktatóanyagban a biztonságos LDAP-t konfigurálja az Azure AD DS felügyelt tartományhoz a Azure Portal használatával. Első lépésként jelentkezzen be a Azure Portalba [](https://portal.azure.com).
+Ebben az oktatóanyagban a biztonságos LDAP-t konfigurálja az Azure AD DS felügyelt tartományhoz a Azure Portal használatával. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="create-a-certificate-for-secure-ldap"></a>Tanúsítvány létrehozása a biztonságos LDAP-hez
 
@@ -68,7 +68,7 @@ A kért vagy létrehozott tanúsítványnak meg kell felelnie az alábbi követe
 * **Kulcshasználat** – a tanúsítványt a *digitális aláírásokhoz* és a *kulcsfontosságú titkosítási*kell konfigurálni.
 * **Tanúsítvány célja** – a tanúsítványnak érvényesnek kell lennie az SSL-kiszolgáló hitelesítéséhez.
 
-Ebben az oktatóanyagban hozzunk létre egy önaláírt tanúsítványt a biztonságos LDAP-hez a PowerShell használatával. Nyisson meg egy PowerShell- ablakot rendszergazdaként, és futtassa a következő parancsokat. Cserélje le a *$dnsName* változót a saját felügyelt tartománya által használt DNS-névre, például *contoso.com*:
+Ebben az oktatóanyagban hozzunk létre egy önaláírt tanúsítványt a biztonságos LDAP-hez a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag használatával. Nyisson meg egy PowerShell-ablakot **rendszergazdaként** , és futtassa a következő parancsokat. Cserélje le a *$dnsName* változót a saját felügyelt tartománya által használt DNS-névre, például *contoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -102,10 +102,10 @@ Thumbprint                                Subject
 A biztonságos LDAP használatához a hálózati forgalom a nyilvános kulcsokra épülő infrastruktúra (PKI) használatával titkosítva van.
 
 * A **titkos** kulcsot az Azure AD DS felügyelt tartományra alkalmazza a rendszer.
-    * Ez a titkos kulcs a biztonságos LDAP-forgalom visszafejtésére szolgál. A titkos kulcsot csak az Azure AD DS felügyelt tartományra kell alkalmazni, és nem kell széles körben terjeszteni az ügyfélszámítógépekre.
+    * Ez a titkos kulcs a biztonságos LDAP-forgalom *visszafejtésére* szolgál. A titkos kulcsot csak az Azure AD DS felügyelt tartományra kell alkalmazni, és nem kell széles körben terjeszteni az ügyfélszámítógépekre.
     * A titkos kulcsot tartalmazó tanúsítvány a-t használja *. PFX* -fájlformátum.
 * A rendszer egy **nyilvános** kulcsot alkalmaz az ügyfélszámítógépekre.
-    * Ez a nyilvános kulcs a biztonságos LDAP-forgalom titkosítására szolgál. A nyilvános kulcs terjeszthető az ügyfélszámítógépekre.
+    * Ez a nyilvános kulcs a biztonságos LDAP-forgalom *titkosítására* szolgál. A nyilvános kulcs terjeszthető az ügyfélszámítógépekre.
     * A titkos kulcs nélküli tanúsítványok a-t használják *. CER* -fájlformátum.
 
 Ez a két kulcs, a *privát* és a *nyilvános* kulcs, győződjön meg arról, hogy csak a megfelelő számítógépek tudnak kommunikálni egymással. Ha nyilvános HITELESÍTÉSSZOLGÁLTATÓT vagy vállalati HITELESÍTÉSSZOLGÁLTATÓT használ, akkor olyan tanúsítvánnyal rendelkezik, amely tartalmazza a titkos kulcsot, és alkalmazható egy Azure AD DS által felügyelt tartományra. A nyilvános kulcsot már ismerni és megbízhatónak kell tekinteni az ügyfélszámítógépek számára. Ebben az oktatóanyagban létrehozott egy önaláírt tanúsítványt a titkos kulccsal, ezért exportálnia kell a megfelelő magán-és nyilvános összetevőket.
@@ -115,7 +115,7 @@ Ez a két kulcs, a *privát* és a *nyilvános* kulcs, győződjön meg arról, 
 Ahhoz, hogy használni tudja az előző lépésben létrehozott digitális tanúsítványt az Azure AD DS felügyelt tartományához, exportálja a tanúsítványt a-ba *.* A titkos kulcsot tartalmazó pfx-tanúsítványfájl.
 
 1. A *Futtatás* párbeszédpanel megnyitásához válassza a **Windows** és az **R** kulcsok elemet.
-1. Nyissa meg a Microsoft Management Console (MMC) beépülő modult a *Futtatás* párbeszédpanelen, majd kattintson **az OK gombra**.
+1. Nyissa meg a Microsoft Management Console (MMC) beépülő **modult** a *Futtatás* párbeszédpanelen, majd kattintson **az OK gombra**.
 1. A **felhasználói fiókok felügyelete** üzenetben kattintson az **Igen** gombra az MMC rendszergazdaként való indításához.
 1. A **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása...** elemre.
 1. A **Tanúsítványkezelő beépülő modul** varázslóban válassza a **számítógépfiók**lehetőséget, majd kattintson a **Tovább gombra**.
@@ -141,7 +141,7 @@ Ahhoz, hogy használni tudja az előző lépésben létrehozott digitális tanú
 
 1. Mivel ez a tanúsítvány az adatvisszafejtéshez használatos, alaposan meg kell határoznia a hozzáférést. A tanúsítvány használatához jelszó használható. A megfelelő jelszó nélkül nem alkalmazható a tanúsítvány a szolgáltatásra.
 
-    A **Biztonság** lapon válassza a **jelszó** megadását a védelméhez *. PFX* -tanúsítványfájl. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább**gombra. Ezt a jelszót a következő szakaszban lehet használni az Azure AD DS felügyelt tartományának biztonságos LDAP-szolgáltatásának engedélyezéséhez.
+    A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább**gombra. Ezt a jelszót a következő szakaszban lehet használni az Azure AD DS felügyelt tartományának biztonságos LDAP-szolgáltatásának engedélyezéséhez.
 1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*.
 1. Az Áttekintés lapon válassza a **Befejezés** lehetőséget a tanúsítvány exportálásához *. PFX* -tanúsítványfájl. A tanúsítvány sikeres exportálását megerősítő párbeszédpanel jelenik meg.
 1. Hagyja nyitva az MMC-t a következő szakaszban való használatra.
@@ -169,20 +169,20 @@ A *. A CER* -tanúsítványfájl mostantól terjeszthető olyan ügyfélszámít
     ![Válassza ki a tanúsítványt a helyi számítógép tárolójába való importálásának lehetőségét.](./media/tutorial-configure-ldaps/import-cer-file.png)
 
 1. Ha a rendszer kéri, válassza az **Igen** lehetőséget a számítógép módosításának engedélyezéséhez.
-1. Válassza ki a tanúsítványtároló automatikus kiválasztását a **tanúsítvány típusa alapján**, majd kattintson a **tovább**gombra.
+1. Válassza ki a tanúsítványtároló **automatikus kiválasztását a tanúsítvány típusa alapján**, majd kattintson a **tovább**gombra.
 1. Az Áttekintés lapon válassza a **Befejezés** lehetőséget az importálásához *. CER* -tanúsítvány. a tanúsítvány sikeres importálása után A rendszer megerősítő párbeszédpanelt jelenít meg.
 
 ## <a name="enable-secure-ldap-for-azure-ad-ds"></a>Biztonságos LDAP engedélyezése az Azure-ban AD DS
 
 A titkos kulcsot tartalmazó és exportált digitális tanúsítvánnyal, valamint a kapcsolat megbízhatóságához beállított ügyfélszámítógéptel engedélyezze a Secure LDAP szolgáltatást az Azure AD DS felügyelt tartományán. A Secure LDAP Azure AD DS felügyelt tartományon való engedélyezéséhez hajtsa végre a következő konfigurációs lépéseket:
 
-1. A [Azure Portalban](https://portal.azure.com)keressen a *tartományi szolgáltatások* kifejezésre a **keresési erőforrások** mezőben. A keresési eredmények közül válassza a **Azure ad Domain Services** lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)írja be a *tartományi szolgáltatások* kifejezést az **erőforrások keresése** mezőbe. A keresési eredmények közül válassza a **Azure ad Domain Services** lehetőséget.
 
     ![Keresse meg és válassza ki az Azure AD DS felügyelt tartományt a Azure Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
 1. Válassza ki a felügyelt tartományt, például *contoso.com*.
 1. Az Azure AD DS ablak bal oldalán válassza a **Secure LDAP**lehetőséget.
-1. Alapértelmezés szerint a felügyelt tartományhoz való biztonságos LDAP-hozzáférés le van tiltva. **Secure LDAP** váltásaaz engedélyezéshez.
+1. Alapértelmezés szerint a felügyelt tartományhoz való biztonságos LDAP-hozzáférés le van tiltva. **Secure LDAP** váltása az **engedélyezéshez**.
 1. A felügyelt tartományhoz való Secure LDAP az interneten keresztüli hozzáférés alapértelmezés szerint le van tiltva. Ha engedélyezi a nyilvános biztonságos LDAP-hozzáférést, a tartománya feltehetően az interneten keresztül fellépő jelszó-kényszerített támadásokra. A következő lépésben a hálózati biztonsági csoport úgy van konfigurálva, hogy csak a szükséges forrás IP-címtartományok elérését zárolja.
 
     Az **engedélyezéshez**kapcsolja be **a biztonságos LDAP-hozzáférés engedélyezése az interneten keresztül lehetőséget** .
@@ -207,21 +207,21 @@ Ha engedélyezi az Azure AD DS felügyelt tartományának biztonságos LDAP-hozz
 Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hozzáférést a 636-as TCP-porton az IP-címek megadott készletéről. Az alacsonyabb prioritású alapértelmezett *DenyAll* -szabály az internetről érkező összes többi bejövő forgalomra vonatkozik, így csak a megadott címek érhetik el az Azure AD DS felügyelt TARTOMÁNYT biztonságos LDAP használatával.
 
 1. A Azure Portal válassza az *erőforráscsoportok* lehetőséget a bal oldali navigációs sávon.
-1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki a hálózati biztonsági csoportot, például a *AADDS-contoso.com-NSG*.
+1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki a hálózati biztonsági csoportot, például a *aaads-NSG*.
 1. Megjelenik a meglévő bejövő és kimenő biztonsági szabályok listája. A hálózati biztonsági csoport ablak bal oldalán válassza a **biztonság > a bejövő biztonsági szabályok**elemet.
 1. Válassza a **Hozzáadás**lehetőséget, majd hozzon létre egy szabályt a *636*-es *TCP* -port engedélyezéséhez. A fokozott biztonság érdekében válassza ki a forrást *IP-címként* , majd adja meg a saját érvényes IP-címét vagy tartományát a szervezet számára.
 
-    | Beállítás                           | Value        |
+    | Beállítás                           | Value (Díj)        |
     |-----------------------------------|--------------|
-    | Source                            | IP-címek |
+    | Forrás                            | IP-címek |
     | Forrás IP-címeinek/CIDR tartományai | Érvényes IP-cím vagy tartomány a környezet számára |
-    | Source port ranges                | *            |
-    | Cél                       | Any          |
+    | Forrásporttartományok                | *            |
+    | Cél                       | Bármelyik          |
     | Célporttartományok           | 636          |
-    | Protocol                          | TCP          |
-    | Action                            | Allow        |
-    | Priority                          | 401          |
-    | Name (Név)                              | AllowLDAPS   |
+    | Protocol (Protokoll)                          | TCP          |
+    | Műveletek                            | Engedélyezés        |
+    | Prioritás                          | 401          |
+    | Név                              | AllowLDAPS   |
 
 1. Ha elkészült, kattintson a **Hozzáadás** gombra a szabály mentéséhez és alkalmazásához.
 
@@ -233,7 +233,7 @@ Az interneten keresztüli biztonságos LDAP-hozzáférés használatával friss�
 
 ![Tekintse meg az Azure AD DS felügyelt tartomány Secure LDAP külső IP-címét a Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Konfigurálja a külső DNS-szolgáltatót egy olyan gazda rekord létrehozásához, mint például az LDAPS, hogy feloldja ezt a külső IP-címet. Ha először szeretné tesztelni a gépet a gépen, létrehozhat egy bejegyzést a Windows-gazdagépek fájljában. A gazdagépek fájljának a helyi gépen való sikeres szerkesztéséhez nyissa meg rendszergazdaként a jegyzettömböt, majd nyissa meg a *C:\Windows\System32\drivers\etc* fájlt.
+Konfigurálja a külső DNS-szolgáltatót egy olyan gazda rekord létrehozásához, mint például az *LDAPS*, hogy feloldja ezt a külső IP-címet. Ha először szeretné tesztelni a gépet a gépen, létrehozhat egy bejegyzést a Windows-gazdagépek fájljában. A gazdagépek fájljának a helyi gépen való sikeres szerkesztéséhez nyissa meg rendszergazdaként a *jegyzettömböt* , majd nyissa meg a *C:\Windows\System32\drivers\etc* fájlt.
 
 A következő példában szereplő DNS-bejegyzés a külső DNS-szolgáltatóval vagy a helyi gazdagépek fájljával oldja fel a *LDAPS.contoso.com* a *40.121.19.239*külső IP-címére irányuló forgalmat:
 
@@ -253,7 +253,7 @@ Ezután kösse az Azure AD DS felügyelt tartományhoz. A felhasználók (és a 
 
 1. Válassza a **kapcsolatok** menüpontot, majd válassza a **kötés...** lehetőséget.
 1. Adja meg az *HRE tartományvezérlő rendszergazdák* csoportjába tartozó felhasználói fiók hitelesítő adatait, például *contosoadmin*. Adja meg a felhasználói fiók jelszavát, majd adja meg a tartományt (például *contoso.com*).
-1. A **kötés típusa**beállításnál válassza a *kötés*a hitelesítő adatokkal lehetőséget.
+1. A **kötés típusa**beállításnál válassza a *kötés a hitelesítő adatokkal*lehetőséget.
 1. Válassza **az OK** gombot az Azure AD DS felügyelt tartományhoz való kötéshez.
 
 Az Azure AD DS felügyelt tartományban tárolt objektumok megtekintéséhez:
@@ -271,11 +271,11 @@ Egy adott tároló közvetlen lekérdezéséhez a **nézet > fa** menüjében me
 
 Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzést az oktatóanyag kapcsolatának teszteléséhez, távolítsa el ezt a bejegyzést, és adjon hozzá egy formális rekordot a DNS-zónához. Ha el szeretné távolítani a bejegyzést a helyi gazdagépek fájljából, hajtsa végre a következő lépéseket:
 
-1. A helyi gépen nyissa meg a Jegyzettömböt rendszergazdaként
+1. A helyi gépen nyissa meg a *jegyzettömböt* rendszergazdaként
 1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc* fájlt.
-1. Törölje a hozzáadott rekordhoz tartozó sort, például:`40.121.19.239    ldaps.contoso.com`
+1. Törölje a hozzáadott rekordhoz tartozó sort, például `40.121.19.239    ldaps.contoso.com`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -297,3 +297,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

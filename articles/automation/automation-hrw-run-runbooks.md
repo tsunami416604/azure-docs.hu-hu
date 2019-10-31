@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 83c185a6ba8f1c5e6edf095db5baf575f750fa3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372843"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176468"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
 A runbookok struktúrája nem különbözik a hibrid Runbook-feldolgozón futó Azure Automation-és runbookok. Az egyes legvalószínűbben használt runbookok jelentősen eltérnek. Ez a különbség azért van, mert a hibrid Runbook-feldolgozót célzó runbookok jellemzően a helyi számítógépen lévő erőforrásokat, vagy a helyi környezetben lévő erőforrásokat kezelik. A Azure Automation runbookok általában az Azure-felhőben lévő erőforrásokat kezelik.
 
-Ha hibrid Runbook-feldolgozón futtatja a runbookok-t, akkor a hibrid feldolgozót üzemeltető gépen belül kell szerkesztenie és tesztelni a runbookok. A gazdagépen minden PowerShell-modul és hálózati hozzáférés szükséges a helyi erőforrások kezeléséhez és eléréséhez. Miután tesztelte a runbook a hibrid munkavégző gépen, feltöltheti azt a Azure Automation-környezetbe, ahol a hibrid feldolgozón futtatható. Fontos tudni, hogy a Windows rendszerhez tartozó helyi rendszerfiókban futó feladatok, illetve a Linuxon `nxautomation` speciális felhasználói fiók esetén. Linux rendszeren ez azt jelenti, hogy a `nxautomation` fióknak hozzáféréssel kell rendelkeznie ahhoz a helyhez, ahol a modulokat tárolja. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, akkor a `-Scope` paraméter **AllUsers** megadása után ellenőrizze, hogy a `naxautomation` fiók rendelkezik-e hozzáféréssel.
+Ha hibrid Runbook-feldolgozón futtatja a runbookok-t, akkor a hibrid feldolgozót üzemeltető gépen belül kell szerkesztenie és tesztelni a runbookok. A gazdagépen minden PowerShell-modul és hálózati hozzáférés szükséges a helyi erőforrások kezeléséhez és eléréséhez. Miután tesztelte a runbook a hibrid munkavégző gépen, feltöltheti azt a Azure Automation-környezetbe, ahol a hibrid feldolgozón futtatható. Fontos tudni, hogy a Windows rendszerhez tartozó helyi rendszerfiókban futó feladatok, illetve a Linuxon `nxautomation` speciális felhasználói fiók esetén. Linux rendszeren ez azt jelenti, hogy a `nxautomation` fióknak hozzáféréssel kell rendelkeznie ahhoz a helyhez, ahol a modulokat tárolja. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, akkor a `-Scope` paraméter **AllUsers** megadása után ellenőrizze, hogy a `nxautomation`-fiók rendelkezik-e hozzáféréssel.
 
 A Linux PowerShell-lel kapcsolatos további információkért lásd: [ismert problémák a PowerShell számára a nem Windows platformokon](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
@@ -260,7 +260,7 @@ Ha Linux hibrid Runbook-feldolgozón szeretné aláírni a runbookok, a hibrid R
 
 A kulcstartó és a kulcspár létrehozásához a hibrid Runbook Worker-fiókot kell használnia `nxautomation`.
 
-@No__t-1 fiókkal való bejelentkezéshez használja a `sudo` értéket.
+A `sudo` használatával jelentkezzen be `nxautomation`-fiókkal.
 
 ```bash
 sudo su – nxautomation
@@ -284,7 +284,7 @@ sudo chown -R nxautomation ~/.gnupg
 
 #### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>A kulcstartó elérhetővé tétele a hibrid Runbook Worker számára
 
-A kulcstartó létrehozása után elérhetővé kell tennie a hibrid Runbook Worker számára. Módosítsa a `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` beállítási fájlt a következő példának a `[worker-optional]` szakaszban való belefoglalásához.
+A kulcstartó létrehozása után elérhetővé kell tennie a hibrid Runbook Worker számára. Módosítsa a Settings (beállítások) `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`, hogy a következő példát tartalmazza a szakasz `[worker-optional]`
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx

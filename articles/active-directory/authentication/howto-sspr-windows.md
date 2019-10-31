@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042066"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171867"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: a jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
 
@@ -24,29 +24,10 @@ A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasz
 
 ![Példa a Windows 7 és a 10 bejelentkezési képernyőre a SSPR hivatkozás látható](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>Általános előfeltételek
-
-- A rendszergazdának engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítást a Azure Portal.
-- **A funkció használata előtt a felhasználóknak regisztrálniuk kell a SSPR**
-- Hálózati proxyra vonatkozó követelmények
-   - Windows 10-es eszközök 
-       - 443-es port `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com`
-       - A Windows 10 rendszerű eszközök csak a gépi szintű proxy konfigurációját támogatják
-   - Windows 7, 8 és 8,1 rendszerű eszközök
-       - 443-es port `passwordreset.microsoftonline.com`
-
 ## <a name="general-limitations"></a>Általános korlátozások
 
 - A jelszó alaphelyzetbe állítása jelenleg nem támogatott Távoli asztal vagy Hyper-V bővített munkamenetekben.
 - Ez a funkció a 802.1 x hálózati hitelesítéssel rendelkező hálózatok esetében nem működik, és a "azonnali végrehajtás a felhasználó bejelentkezése előtt" beállítást. A 802.1 x hálózati hitelesítéssel telepített hálózatok esetében ajánlott a számítógép-hitelesítés használata a funkció engedélyezéséhez.
-
-## <a name="windows-10-password-reset"></a>Windows 10 jelszó alaphelyzetbe állítása
-
-### <a name="windows-10-specific-prerequisites"></a>A Windows 10 konkrét előfeltételei
-
-- Futtassa legalább a Windows 10 2018-es verzióját (v1803), és az eszközöknek a következőknek kell lenniük:
-    - Azure AD-hez csatlakoztatott
-    - Hibrid Azure AD-csatlakozás
 - A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz.
 - Ha rendszerképet használ, a Sysprep futtatása előtt győződjön meg arról, hogy a webes gyorsítótár törlődik a beépített rendszergazda számára a profilmásolási lépés végrehajtása előtt. A lépéssel kapcsolatos további információkért tekintse meg az [Egyéni alapértelmezett felhasználói profil használata esetén](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)a terméktámogatási cikkben.
 - A következő beállítások ismertek a Windows 10-es eszközökön található jelszavak használatának és alaphelyzetbe állításának megakadályozása érdekében
@@ -60,7 +41,21 @@ A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasz
 - A következő adott három beállítás kombinációja miatt a funkció nem működik.
     - Interaktív bejelentkezés: nem szükséges a CTRL + ALT + DEL = letiltva
     - DisableLockScreenAppNotifications = 1 vagy engedélyezve
-    - IsContentDeliveryPolicyEnforced = 1 vagy igaz 
+    - IsContentDeliveryPolicyEnforced = 1 vagy igaz
+
+## <a name="windows-10-password-reset"></a>Windows 10 jelszó alaphelyzetbe állítása
+
+### <a name="windows-10-prerequisites"></a>Windows 10 előfeltételek
+
+- A rendszergazdának engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítást a Azure Portal.
+- **A funkció használata előtt a felhasználóknak regisztrálniuk kell a SSPR**
+- Hálózati proxyra vonatkozó követelmények
+   - Windows 10-es eszközök 
+       - 443-es port `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com`
+       - A Windows 10 rendszerű eszközök csak a gépi szintű proxy konfigurációját támogatják
+- Futtassa legalább a Windows 10 2018-es verzióját (v1803), és az eszközöknek a következőknek kell lenniük:
+    - Azure AD-hez csatlakoztatott
+    - Hibrid Azure AD-csatlakozás
 
 ### <a name="enable-for-windows-10-using-intune"></a>Windows 10 engedélyezése az Intune használatával
 
@@ -94,7 +89,6 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Windows 10 jelszó-visszaállítás hibaelhárítása
 
 Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
@@ -105,8 +99,13 @@ Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről �
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 és 8,1 jelszó alaphelyzetbe állítása
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Windows 7, 8 és 8,1 speciális előfeltételek
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 és 8,1 előfeltételek
 
+- A rendszergazdának engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítást a Azure Portal.
+- **A funkció használata előtt a felhasználóknak regisztrálniuk kell a SSPR**
+- Hálózati proxyra vonatkozó követelmények
+   - Windows 7, 8 és 8,1 rendszerű eszközök
+       - 443-es port `passwordreset.microsoftonline.com`
 - Javított Windows 7 vagy Windows 8,1 operációs rendszer.
 - TLS 1,2 engedélyezve a [Transport Layer Security (TLS) beállításjegyzék-beállításokban](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)található útmutatás használatával.
 - Ha a gépen több külső hitelesítő adat-szolgáltató van engedélyezve, a felhasználók több felhasználói profilt is láthatnak a bejelentkezési képernyőn.
@@ -151,7 +150,7 @@ Most, hogy beállította a jelszó-visszaállítást a Windows-eszközökön, mi
 
 Amikor a felhasználók megpróbálnak bejelentkezni, mostantól egy **új jelszó** kérése vagy **elfelejtett jelszó** hivatkozás jelenik meg, amely megnyitja az önkiszolgáló jelszó-visszaállítási funkciót a bejelentkezési képernyőn. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
 
-A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
+A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md) témakörben találhatnak útmutatást.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,20 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278577"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175799"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Feltételes hozzáférés hibaelhárítása a What If eszköz használatával
 
 A feltételes hozzáférés [What if eszköze](what-if-tool.md) nagy teljesítményű, amikor megpróbálják megérteni, hogy egy adott házirend miért lett vagy nem lett alkalmazva a felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
 
-A What if eszköz a **Azure Portal** > **Azure Active Directory** > **feltételes hozzáférési** > **What Ifban**található.
+A What If eszköz a **Azure Portal** > **Azure Active Directory** > **feltételes hozzáférési** > **What if**található.
 
 ![Feltételes hozzáférés What If eszköz alapértelmezett állapotban](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> A What If eszköz jelenleg csak jelentési módban értékeli ki a házirendeket.
 
 ## <a name="gathering-information"></a>Adatgyűjtés
 
@@ -34,7 +37,7 @@ A következő további információk nem kötelezőek, de bizonyos esetekben a h
 
 * Felhőalapú alkalmazások vagy műveletek
 * IP-cím 
-* Country
+* Ország/régió
 * Eszköz platformja
 * Ügyfélalkalmazások (előzetes verzió)
 * Eszköz állapota (előzetes verzió) 
@@ -46,7 +49,7 @@ Ezeket az információkat a felhasználó, az eszköz vagy az Azure AD bejelentk
 
 Adja meg az előző szakaszban összegyűjtött feltételeket, és válassza a **What if** lehetőséget az eredmények listájának létrehozásához. 
 
-Az alaphelyzetbe **állítás** lehetőség kiválasztásával törölheti a feltételek bemenetét, és visszatérhet az alapértelmezett állapotba.
+Az **Alaphelyzetbe állítás** lehetőség kiválasztásával törölheti a feltételek bemenetét, és visszatérhet az alapértelmezett állapotba.
 
 ## <a name="evaluating-results"></a>Eredmények kiértékelése
 
@@ -70,9 +73,9 @@ Ebben az esetben a felhasználónak le kell tiltania a felhőalapú alkalmazáso
 
 Ez a teszt kiterjeszthető úgy, hogy más adatpontokat is egyesítse a hatókör szűkítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a feltételes hozzáférés?](overview.md)
 * [Mi az Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Mi az az eszköz identitása?](../devices/overview.md)
-* [Működés: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Az Azure Multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md)

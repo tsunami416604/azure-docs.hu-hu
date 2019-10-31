@@ -1,6 +1,6 @@
 ---
-title: Az új fejlesztői portál elérése és testreszabása – Azure API Management | Microsoft Docs
-description: Ismerje meg, hogyan használhatja az új fejlesztői portált API Management.
+title: Az Azure API Management fejlesztői portál áttekintése – Azure API Management | Microsoft Docs
+description: Ismerje meg API Management fejlesztői portálját.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -10,105 +10,122 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672789"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176654"
 ---
-# <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Az új fejlesztői portál elérése és testreszabása az Azure-ban API Management
+# <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
-Ez a cikk bemutatja, hogyan érheti el az új Azure API Management fejlesztői portált. Végigvezeti a vizualizációs szerkesztő felhasználói felületén – a tartalmak hozzáadásával és szerkesztésével, valamint a webhely megjelenésének testreszabásával.
+A fejlesztői portál egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza. Ahol az API-felhasználók felfedezhetik az API-kat, megtudhatják, hogyan használhatják őket, hozzáférést igényelhetnek, és kipróbálhatja őket.
 
-![Új API Management fejlesztői portál](media/api-management-howto-developer-portal/cover.png)
+Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felügyelt verziói közötti különbségeket ismerteti. Emellett ismerteti az architektúráját, és választ ad a gyakori kérdésekre.
 
-## <a name="prerequisites"></a> Előfeltételek
+> [!IMPORTANT]
+> [Megtudhatja, hogyan telepítheti át az előzetes verzióról a fejlesztői portál általánosan elérhető verziójára](#preview-to-ga) .
 
-- Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
-- Azure API Management-példány importálása és közzététele. További információ: [Importálás és közzététel](import-and-publish.md).
+![API Management fejlesztői portál](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
-
-> [!NOTE]
-> Az új fejlesztői portál jelenleg előzetes verzióban érhető el.
 
 ## <a name="managed-vs-self-hosted"></a>Felügyelt és saját üzemeltetésű verziók
 
 A fejlesztői portált kétféleképpen is létrehozhatja:
 
-- **Felügyelt verzió** – a portál szerkesztésével és testreszabásával, amely a API Management-példányba van építve, és az URL-címen keresztül érhető el `<your-api-management-instance-name>.developer.azure-api.net`.
-- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódjának][1]használatával.
+- **Felügyelt verzió** – az API Management-példányba épített portál szerkesztésével és testreszabásával, és az URL-`<your-api-management-instance-name>.developer.azure-api.net`keresztül érhető el. A [jelen dokumentációs cikkből](api-management-howto-developer-portal-customize.md) megtudhatja, hogyan érheti el és szabhatja testre a felügyelt portált.
+- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A portált a legújabb verzióra is frissítenie kell. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódjának][1]használatával. A [felügyelt verzió oktatóanyaga](api-management-howto-developer-portal-customize.md) végigvezeti a portál felügyeleti paneljén, amely a saját üzemeltetésű verzióban is szerepel.
 
-## <a name="managed-access"></a>A portál felügyelt verziójának elérése
+## <a name="portal-architectural-concepts"></a>Portál építészeti fogalmak
 
-Kövesse az alábbi lépéseket a portál felügyelt verziójának eléréséhez.
+A portál összetevői logikailag két kategóriába sorolhatók: *kód* és *tartalom*.
 
-1. Nyissa meg a Azure Portal API Management Service-példányát.
-1. Kattintson a felső navigációs sávban az **új fejlesztői portál (előzetes verzió)** gombra. Megnyílik a portál felügyeleti verzióját tartalmazó új böngésző lap. Ha első alkalommal éri el a portált, az alapértelmezett tartalom automatikusan kiépítve lesz.
+A *kód* [a GitHub-tárházban][1] van fenntartva, és a következőket tartalmazza:
 
-## <a name="managed-tutorial"></a>A portál felügyelt verziójának szerkesztése és testreszabása
+- Widgetek – amelyek vizuális elemeket és HTML-, JavaScript-, formázási képességeket, beállításokat és tartalom-hozzárendelést képviselnek. Ilyenek például a képek, a szöveges bekezdések, az űrlapok, az API-k listája stb.
+- Formázási definíciók – a widgetek stílusának meghatározása
+- Motor – amely statikus weblapokat hoz létre a portál tartalmából, és JavaScript nyelven íródott
+- Vizuális szerkesztő – lehetővé teszi a böngészőn belüli testreszabást és a szerzői műveletek elvégzését
 
-Az alábbi videóban bemutatjuk, hogyan szerkesztheti a portál tartalmát, testreszabhatja a webhely megjelenését, és közzéteheti a módosításokat.
+A *tartalom* két alkategóriára oszlik: a *portál tartalma* és a *API Management tartalma*.
 
-> [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
+A *portál tartalma* a portálra vonatkozik, és a következőket tartalmazza:
+
+- Lapok – például Kezdőlap, API-oktatóanyagok, blogbejegyzések
+- Média – képek, animációk és egyéb fájl alapú tartalmak
+- Elrendezések – sablonok, amelyek megfelelnek egy URL-címnek, és megadják a lapok megjelenítésének módját
+- Stílusok – a formázási definíciók értékei, például betűtípusok, színek, szegélyek
+- Beállítások – konfiguráció, például favicon, webhely metaadatainak
+
+A *portál tartalma*, a média kivételével, JSON-dokumentumként van megadva.
+
+*API Management tartalom* olyan entitásokat tartalmaz, mint az API-k, a műveletek, a termékek és az előfizetések.
+
+A portál a [Paperbits-keretrendszer](https://paperbits.io/)adaptált villáján alapul. Az eredeti Paperbits funkció kibővült a API Management-specifikus widgetek (például az API-k listája, a termékek listája) és egy összekötő API Management szolgáltatás számára a tartalmak mentéséhez és lekéréséhez.
 
 ## <a name="faq"></a>Gyakori kérdések
 
-Ebben a szakaszban az új fejlesztői portál általános kérdéseivel kapcsolatos gyakori kérdésekre fogunk válaszolni. A saját üzemeltetésű verzióra vonatkozó kérdésekért tekintse meg a [GitHub-adattár wiki szakaszát](https://github.com/Azure/api-management-developer-portal/wiki).
+Ebben a szakaszban az új fejlesztői portál általános kérdéseivel kapcsolatos gyakori kérdéseket választjuk. A saját üzemeltetésű verzióra vonatkozó kérdésekért tekintse meg a [GitHub-adattár wiki szakaszát](https://github.com/Azure/api-management-developer-portal/wiki).
 
-### <a name="how-can-i-migrate-content-from-the-old-developer-portal-to-the-new-one"></a>Hogyan telepíthetek tartalmat a régi fejlesztői portálról az újat?
+### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> hogyan telepíthetek át a portál előzetes verziójáról?
 
-Nem. A portálok nem kompatibilisek.
+A fejlesztői portál előzetes verziójának használatával kiépített egy előnézeti tartalmat a API Management szolgáltatásban. Az alapértelmezett tartalom jelentősen módosult az általánosan elérhető verzióban a jobb felhasználói élmény érdekében. Emellett új widgeteket is tartalmaz.
 
-### <a name="when-will-the-portal-become-generally-available"></a>Mikor lesz általánosan elérhető a portál?
+Ha felügyelt verziót használ, állítsa alaphelyzetbe a portál tartalmát az **Operations** ( **tartalom visszaállítása** ) lehetőségre kattintva. A művelet megerősítése eltávolítja a portál összes tartalmát, és kiépíti az új alapértelmezett tartalmat. A portál motorja automatikusan frissült a API Management szolgáltatásban.
 
-A portál jelenleg előzetes verzióban érhető el, és a naptári év végén általánosan elérhető lesz (2019). Az előzetes verzió nem használható éles környezetben.
+![Portál tartalmának visszaállítása](media/api-management-howto-developer-portal/reset-content.png)
 
-### <a name="will-the-old-portal-be-deprecated"></a>A régi portál elavult lesz?
+Ha a saját üzemeltetésű verziót használja, a GitHub-tárház `scripts/cleanup.bat` és `scripts/generate.bat` használatával távolítsa el a meglévő tartalmakat, és hozzon létre új tartalmakat. Győződjön meg róla, hogy a legújabb kiadásra frissíti a portál kódját a GitHub-adattárból.
 
-Igen, az új szolgáltatás általánosan elérhetővé válása után elavulttá válik. Ha problémái vannak, emelje fel őket [egy dedikált GitHub-problémával](https://github.com/Azure/api-management-developer-portal/issues/121).
+Ha nem szeretné alaphelyzetbe állítani a portál tartalmát, érdemes lehet az újonnan elérhető widgeteket használni az összes oldalon. A meglévő widgetek automatikusan frissültek a legújabb verzióra.
+
+Ha a portál az általános elérhetőségi bejelentés után lett kiépítve, akkor már az új alapértelmezett tartalmat is be kell építenie. Az oldaláról nincs szükség beavatkozásra.
+
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Hogyan telepíthetek át a régi fejlesztői portálról az új fejlesztői portálra?
+
+A portálok nem kompatibilisek, és manuálisan kell áttelepíteni a tartalmat.
 
 ### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Az új portál rendelkezik a régi portál összes szolgáltatásával?
 
-Az általános elérhetőség célja, hogy egy forgatókönyv-alapú szolgáltatási paritást biztosítson a régi portálon. Addig is előfordulhat, hogy az előzetes verzió nem rendelkezik a kiválasztott funkciókkal.
+Az új fejlesztői portál nem támogatja az *alkalmazásokat* és a *problémákat*. Ha a régi portálon *problémák* léptek fel, és szükség van rájuk az újat, tegye fel a megjegyzést [egy dedikált GitHub-problémába](https://github.com/Azure/api-management-developer-portal/issues/122).
 
-A kivételek a régi portálon *futó alkalmazások* és *problémák* , amelyek nem lesznek elérhetők az új portálon. Ha *problémákat* használ a régi portálon, és szükség van rájuk az újat, tegye fel a megjegyzést [egy dedikált GitHub-problémába](https://github.com/Azure/api-management-developer-portal/issues/122).
+### <a name="has-the-old-portal-been-deprecated"></a>Elavult a régi portál?
 
-### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Hibákat és/vagy szolgáltatást szeretnék igényelni.
+A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új szolgáltatások csak az új fejlesztői portálon lesznek implementálva.
 
-Remek! [A GitHub-tárház problémái című szakaszában](https://github.com/Azure/api-management-developer-portal/issues)megadhatja a visszajelzéseket, elküldheti a szolgáltatásra vonatkozó kéréseket, illetve hibajelentéseket is küldhet. Itt is Köszönjük visszajelzését a `community` címkével jelölt problémákkal kapcsolatban.
+Az örökölt portálok elavulása külön lesz bejelentve. Ha kérdése, problémája vagy megjegyzése van, emelje fel őket [egy dedikált GitHub-problémával](https://github.com/Azure/api-management-developer-portal/issues/121).
 
-### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Szeretném áthelyezni az új portál tartalmát a környezetek között. Hogyan tehetem ezt meg, és szükségem van a saját üzemeltetésű verzióra?
+### <a name="how-can-i-automate-portal-deployments"></a>Hogyan automatizálható a portál üzembe helyezése?
 
-Ezt megteheti mind a portálon, mind a felügyelt, mind a saját üzemeltetésű kiszolgálón. Az új fejlesztői portál a API Management szolgáltatás felügyeleti API-jával támogatja a tartalmak kinyerését. Az API-kat a [GitHub-adattár wiki szakaszában](https://github.com/Azure/api-management-developer-portal/wiki/)dokumentáljuk. [Egy szkriptet](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat)is írtunk, amely segíthet az első lépések megtételében.
+A REST API keresztül programozott módon érheti el és kezelheti a fejlesztői portál tartalmát, függetlenül attól, hogy felügyelt vagy saját üzemeltetésű verziót használ-e.
 
-Továbbra is dolgozunk ennek a folyamatnak a API Management DevOps Resource Kit-vel való összehangolásán.
+Az API-t [a GitHub-adattár wiki szakasza ismerteti][2]. A portál tartalmának a környezetek közötti áttelepítésének automatizálására is használható – például egy tesztkörnyezetben az éles környezetbe. Erről a folyamatról a GitHubról szóló [cikkben](https://aka.ms/apimdocs/migrateportal) olvashat bővebben.
 
-### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Hogyan kell konfigurálni az új portált, hogy működjön a VNET-ben API Management szolgáltatásban?
+### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Támogatja a portál a Azure Resource Manager sablonokat, és/vagy kompatibilis-e a API Management DevOps Resource Kit-vel?
 
-Habár az új fejlesztői portál előzetes verzióban érhető el, engedélyeznie kell az Azure Storage-szolgáltatásokhoz való kapcsolódást az USA nyugati régiójában, hogy a felügyelt portál működjön a VNET API Management szolgáltatásában. További információkat a [Storage dokumentációjában talál](../storage/common/storage-network-security.md#available-virtual-network-regions).
+Nem.
 
-Az új portál általánosan elérhetővé válása után a fenti beállítás többé nem lesz szükséges.
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Engedélyezni kell további VNET-kapcsolatot a felügyelt portál függőségeihez?
 
-A portál saját üzemeltetésű verziója további kapcsolódási konfigurációt igényelhet a telepítéstől függően.
+Nem.
 
-### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Hogyan választhatok ki egy *elrendezést* új *lap*létrehozásakor?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>CORS hibaüzenetet kapok az interaktív konzol használatakor. Mit tegyek?
 
-A rendszer egy *elrendezést* alkalmaz egy lapra úgy, hogy az URL-sablonját a *lap* URL-címéhez társítja. A `/wiki/*` URL-sablonnal rendelkező *elrendezés* például a `/wiki/` szegmenst tartalmazó összes *oldalra* vonatkozik: `/wiki/getting-started`, `/wiki/styles` stb.
+Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) az API (ok) ra. Manuálisan is megadhatja az összes paramétert (például a forrást https://contoso.com) ként, vagy helyettesítő karaktert `*` értéket használhat.
 
-### <a name="why-doesnt-the-interactive-developer-console-work"></a>Miért nem működik az interaktív fejlesztői konzol?
-
-Valószínűleg a CORS kapcsolódik. Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) az API (ok) ra. Manuálisan is megadhatja az összes paramétert (például a forrást https://contoso.com) értékre, vagy helyettesítő karaktert `*` értéket használhat.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az új fejlesztői portálról:
 
+- [A felügyelt fejlesztői portál elérése és testreszabása](api-management-howto-developer-portal-customize.md)
+- [A portál saját üzemeltetésű verziójának beállítása][2]
+
+Egyéb erőforrások tallózása:
+
 - [GitHub-adattár a forráskódtal][1]
-- [Útmutató a portál önálló üzemeltetéséhez][2]
 - [A projekt nyilvános ütemterve][3]
 
 [1]: https://aka.ms/apimdevportal

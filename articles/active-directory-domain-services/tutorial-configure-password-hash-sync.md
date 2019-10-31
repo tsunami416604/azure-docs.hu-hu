@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f2edd99c50de332890fe862e7fb5e2405e2d369
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 41e61376d12d447dd480a39ef7200db6af7cca89
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014033"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172862"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: A jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: a jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
 
 Hibrid környezetek esetén egy Azure Active Directory (Azure AD) bérlő konfigurálható úgy, hogy Azure AD Connect használatával szinkronizáljon a helyszíni Active Directory tartományi szolgáltatások (AD DS) környezettel. Alapértelmezés szerint a Azure AD Connect nem szinkronizálja az Azure Active Directory Domain Services (Azure AD DS) számára szükséges örökölt NT LAN Manager-(NTLM-) és Kerberos-jelszavak kivonatait.
 
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra lesz szüksége:
 * Aktív Azure-előfizetés.
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, amely Azure AD Connect használatával szinkronizálva van egy helyszíni címtárral.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
     * Ha szükséges, [engedélyezze a jelszó-kivonatok szinkronizálását Azure ad Connect][enable-azure-ad-connect].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
@@ -50,7 +50,7 @@ A Azure AD Connect objektumok, például felhasználói fiókok és csoportok sz
 
 A felügyelt tartományon lévő felhasználók hitelesítéséhez az Azure AD DS az NTLM-és Kerberos-hitelesítéshez megfelelő formátumú jelszó-kivonatokat kell használnia. Az Azure AD nem az NTLM-vagy Kerberos-hitelesítéshez szükséges formátumban tárolja a jelszó-kivonatokat, amíg nem engedélyezi az Azure-AD DS a bérlő számára. Biztonsági okokból az Azure AD nem tárolja a jelszó hitelesítő adatait a tiszta szöveges formában. Ezért az Azure AD nem tudja automatikusan előállítani ezeket az NTLM-vagy Kerberos-jelszó-kivonatokat a felhasználók meglévő hitelesítő adatai alapján.
 
-A Azure AD Connect konfigurálható úgy, hogy szinkronizálja az Azure-AD DS szükséges NTLM-vagy Kerberos-jelszavak kivonatait. Győződjön meg arról, hogy elvégezte a [jelszó][enable-azure-ad-connect]-kivonatok szinkronizálásához szükséges Azure ad Connect engedélyezésének lépéseit. Ha Azure AD Connect meglévő példányát használta, [töltse le és frissítse a legújabb verzióra][azure-ad-connect-download] , és győződjön meg róla, hogy szinkronizálni tudja az NTLM-és Kerberos-alapú örökölt jelszavak kivonatait. Ez a funkció nem érhető el a Azure AD Connect korábbi kiadásaiban vagy az örökölt rSync eszközzel. Azure AD Connect *1.1.614.0* vagy újabb verzió szükséges.
+A Azure AD Connect konfigurálható úgy, hogy szinkronizálja az Azure-AD DS szükséges NTLM-vagy Kerberos-jelszavak kivonatait. Győződjön meg arról, hogy elvégezte a [jelszó-kivonatok szinkronizálásához szükséges Azure ad Connect engedélyezésének][enable-azure-ad-connect]lépéseit. Ha Azure AD Connect meglévő példányát használta, [töltse le és frissítse a legújabb verzióra][azure-ad-connect-download] , és győződjön meg róla, hogy szinkronizálni tudja az NTLM-és Kerberos-alapú örökölt jelszavak kivonatait. Ez a funkció nem érhető el a Azure AD Connect korábbi kiadásaiban vagy az örökölt rSync eszközzel. Azure AD Connect *1.1.614.0* vagy újabb verzió szükséges.
 
 ## <a name="enable-synchronization-of-password-hashes"></a>Jelszó-kivonatok szinkronizálásának engedélyezése
 
@@ -68,7 +68,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
     * Az Azure AD-összekötő neve *contoso.onmicrosoft.com-HRE*
     * A helyszíni AD DS-összekötő neve *onprem.contoso.com*
 
-1. Másolja és illessze be a következő PowerShell-parancsfájlt a számítógépre, amelyen Azure AD Connect telepítve van. A parancsfájl egy teljes jelszó-szinkronizálást indít el, amely örökölt jelszó-kivonatokat tartalmaz. Frissítse a `$azureadConnector` és `$adConnector` a változókat az előző lépésből származó összekötők neveivel.
+1. Másolja és illessze be a következő PowerShell-parancsfájlt a számítógépre, amelyen Azure AD Connect telepítve van. A parancsfájl egy teljes jelszó-szinkronizálást indít el, amely örökölt jelszó-kivonatokat tartalmaz. Frissítse a `$azureadConnector` és az `$adConnector` változókat az előző lépésben szereplő összekötők neveivel.
 
     Futtassa ezt a szkriptet minden egyes AD-erdőben, hogy szinkronizálja a helyszíni fiók NTLM-és Kerberos-jelszavas kivonatait az Azure AD-be.
 
@@ -94,7 +94,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
 
     A címtár méretétől függően a fiókok és csoportok száma alapján a régi jelszó-kivonatok Azure AD-ba való szinkronizálása hosszabb időt is igénybe vehet. A rendszer ezután szinkronizálja a jelszavakat az Azure AD DS felügyelt tartományba az Azure AD-vel való szinkronizálás után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta a következőket:
 

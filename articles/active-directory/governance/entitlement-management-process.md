@@ -1,6 +1,6 @@
 ---
-title: Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Ismerje meg a hozzáférési csomag kérelmezési folyamatát, valamint azt, hogy a rendszer mikor küldjön e-mail-értesítéseket Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
+title: Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Ismerje meg a hozzáférési csomag kérelmezési folyamatát, valamint azt, hogy a rendszer mikor küldjön e-mail-értesítéseket Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.openlocfilehash: 6a1ce3b2cb72a7b57e556e09264cb5bd421eda0f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678133"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173757"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében
 
 Amikor egy felhasználó kérelmet küld egy hozzáférési csomagnak, a rendszer elindít egy folyamatot a kérelem kézbesítéséhez. Az Azure AD-jogosultságok kezelése az e-mailes értesítéseket is elküldi a jóváhagyóknak és a kérelmezőknek, ha a folyamat során fontos események történnek.
 
@@ -40,19 +35,19 @@ Egy hozzáférési csomaghoz hozzáféréssel rendelkező felhasználónak hozz�
 
 ![Jóváhagyási folyamat diagramja](./media/entitlement-management-process/request-process.png)
 
-| Állapot | Leírás |
+| Állami | Leírás |
 | --- | --- |
-| Elküldve | A felhasználó kérelmet küld. |
-| Jóváhagyásra váró elemek | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
-| Elévült | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
-| Elutasítva | A jóváhagyó megtagadja a kérelmet. |
-| Jóváhagyva | A jóváhagyó jóváhagyja a kérelmet. |
-| Kézbesítés | A felhasználó **nem** rendelt hozzá hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, akkor előfordulhat, hogy a felhasználó még nem fér hozzá az erőforrás-címtárhoz, és elfogadta a hozzájárulási kérést. |
+| Beküldött | A felhasználó kérelmet küld. |
+| Jóváhagyás függőben | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
+| Lejárt | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
+| Megtagadva | A jóváhagyó megtagadja a kérelmet. |
+| Approved | A jóváhagyó jóváhagyja a kérelmet. |
+| Szállít | A felhasználó **nem** rendelt hozzá hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, akkor előfordulhat, hogy a felhasználó még nem fér hozzá az erőforrás-címtárhoz, és elfogadta a hozzájárulási kérést. |
 | Kézbesítve | A felhasználó hozzá lett rendelve a hozzáférési csomag összes erőforrásához. |
 | Hozzáférés kiterjesztve | Ha a házirendben engedélyezve vannak a bővítmények, a felhasználó kibővítette a hozzárendelést. |
 | A hozzáférés lejárt | A felhasználó hozzáférési csomaghoz való hozzáférése lejárt. Ha újra szeretné elérni a hozzáférést, a felhasználónak el kell küldenie egy kérést. |
 
-## <a name="email-notifications"></a>E-mail értesítés
+## <a name="email-notifications"></a>E-mail-értesítések
 
 Ha Ön jóváhagyó, a rendszer e-mail-értesítéseket küld, amikor a hozzáférési kérést jóvá kell hagynia, és a hozzáférési kérelem befejeződik. Ha Ön a kérelmező, a rendszer e-mail-értesítéseket küld, amelyek jelzik a kérés állapotát. Az alábbi ábra az e-mail-értesítések elküldésének időpontját mutatja be.
 
@@ -62,8 +57,8 @@ Az alábbi táblázat részletesebben ismerteti az e-mail-értesítéseket.
 
 | # | E-mail tárgya | Küldésekor | Címzett |
 | --- | --- | --- | --- |
-| 1 | Szükséges művelet: A [ *kérelmező]* hozzáférési kérelmének áttekintése a [ *hozzáférési csomag]* számára a következő szerint: *[date]* | Ha egy kérelmező hozzáférési csomagra vonatkozó kérelmet küld | Minden jóváhagyó |
-| 2 | Szükséges művelet: A [ *kérelmező]* hozzáférési kérelmének áttekintése a [ *hozzáférési csomag]* számára a következő szerint: *[date]* | A jóváhagyási kérelem időtúllépését megelőző X nap | Minden jóváhagyó |
+| 1 | Szükséges művelet: Tekintse át a [ *kérelmező]* hozzáférési kérelmét a [ *hozzáférési csomag* ] [ *date]* értékkel. | Ha egy kérelmező hozzáférési csomagra vonatkozó kérelmet küld | Minden jóváhagyó |
+| 2 | Szükséges művelet: Tekintse át a [ *kérelmező]* hozzáférési kérelmét a [ *hozzáférési csomag* ] [ *date]* értékkel. | A jóváhagyási kérelem időtúllépését megelőző X nap | Minden jóváhagyó |
 | 3 | Állapotjelző értesítés: *[kérelmező]* hozzáférési kérelme *[hozzáférési csomag]* lejárt | Ha a jóváhagyók nem hagyják jóvá vagy nem tagadják meg a kérés időtartamán belüli hozzáférési kérelmet | Kérelmező |
 | 4 | Állapotjelentés-értesítés: *[kérelmező]* a (z) *[hozzáférési csomag]* hozzáférési kérelme befejeződött | Ha az első jóváhagyó jóváhagyja vagy megtagadja a hozzáférési kérelmet | Minden jóváhagyó |
 | 5 | *[Hozzáférési csomag]* hozzáférése megtagadva | Ha egy kérelmező megtagadta a hozzáférést a hozzáférési csomaghoz | Kérelmező |
@@ -91,7 +86,7 @@ A kérelmező értesítést kap, ha a hozzáférési kérelem lejárt. Ha egy k�
 
 ![Lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/email-expired-access-request.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
 - [Hozzáférési kérelmek jóváhagyása vagy megtagadása](entitlement-management-request-approve.md)

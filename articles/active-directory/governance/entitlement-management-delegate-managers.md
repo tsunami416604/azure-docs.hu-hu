@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
+title: Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében a Package managerek eléréséhez – Azure Active Directory
 description: Megtudhatja, hogyan delegálhat hozzáférési szabályozást a rendszergazdáktól a csomagkezelő és a projektmenedzserek eléréséhez, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170736"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174358"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Hozzáférési szabályozás delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében lévő csomagkezelő hozzáféréséhez
 
 Ha a katalógusban lévő hozzáférési csomagok létrehozását és felügyeletét szeretné delegálni, adja hozzá a felhasználókat az Access Package Manager szerepkörhöz. A hozzáférési csomag kezelőjének tisztában kell lennie azzal, hogy a felhasználóknak hozzáférést kell kérniük a katalógus erőforrásaihoz. Ha például egy projekthez katalógust használ, akkor a projekthez tartozó érdeklődő a katalógushoz tartozó Access Package Manager lehet.  Az Access Package Managers nem tud erőforrásokat felvenni a katalógusba, de a hozzáférési csomagokat és házirendeket egy katalógusban kezelheti.  A hozzáférési csomag kezelőjének delegálásakor az adott személy a következőkért felelős:
 

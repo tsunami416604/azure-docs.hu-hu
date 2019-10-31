@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d2cd080602ec879affb3ece978f14d5afc33ef9d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373498"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173087"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
 
@@ -83,7 +83,7 @@ A modern vállalatoknál az IT-részlegek gyakran nem ismerik az összes olyan f
 
 [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) segítségével azonosíthatja azokat a hasznos alkalmazásokat, amelyek népszerűek a felhasználók számára, és hozzáadhatja őket a vállalati alkalmazások katalógusához, így a felhasználók az egyszeri bejelentkezést és a feltételes hozzáférést is igénybe vehetik.
 
-<em>"**Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelmére szolgáló alapvető biztonsági házirendeket."</em>@no__t – 0[John Blasi, ügyvezető igazgató, információbiztonság, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelmére szolgáló alapvető biztonsági házirendeket."</em> --- [John Blasi, ügyvezető igazgató, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Az árnyék észlelése mellett a MCAS is meghatározhatja az alkalmazások kockázati szintjét, megakadályozhatja a vállalati adatokhoz való jogosulatlan hozzáférést, az esetleges adatszivárgást és az alkalmazásokban rejlő egyéb biztonsági kockázatokat.
 
@@ -200,7 +200,7 @@ Ha a jelen cikkben ismertetett módon implementál egy hibrid identitási megold
 
 Ha nem veszi figyelembe a támogatási hívások csökkentését, javasoljuk, hogy elemezze a támogatási hívás illesztőprogramjait, hogy megerősítse, hogy a SSPR vagy az önkiszolgáló alkalmazás-hozzáférés megfelelően van-e konfigurálva, illetve hogy van-e olyan új probléma, amely rendszeresen alkalmazható címzett.
 
-*"A digitális átalakítási úton egy megbízható identitás-és hozzáférés-kezelési szolgáltatóra volt szükségünk, amely lehetővé teszi az USA, a partnerek és a felhőalapú szolgáltatók zökkenőmentes, mégis biztonságos integrációját a hatékony ökoszisztéma érdekében; Az Azure AD volt a legjobb megoldás, amely a kockázatok észlelésére és reagálására szolgáló szükséges képességeket és láthatóságot kínálja számunkra. "*@no__t – 0[almasri, globális Információbiztonsági igazgató, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"A digitális átalakítási úton egy megbízható identitás-és hozzáférés-kezelési szolgáltatóra volt szükségünk, amely lehetővé teszi az USA, a partnerek és a felhőalapú szolgáltatók zökkenőmentes, mégis biztonságos integrációját a hatékony ökoszisztéma érdekében; Az Azure AD volt a legjobb megoldás, amely a kockázatok észlelésére és reagálására szolgáló szükséges képességeket és láthatóságot kínálja számunkra. "* --- [almasri, globális Információbiztonsági igazgató, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
 ### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Az alkalmazások használatának figyelése az adatok átvezetéséhez
 

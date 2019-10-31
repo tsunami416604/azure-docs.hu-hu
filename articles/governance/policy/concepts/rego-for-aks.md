@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254738"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176321"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service Azure Policy megismerése
 
@@ -164,7 +164,7 @@ A bővítmény 5 percenként meghívja a fürt teljes vizsgálatát. Miután ös
 
 Az AK kezelésének Azure Policy nyelvi szerkezete a meglévő szabályzatokat követi. A _EnforceRegoPolicy_ hatására a rendszer az AK-fürtök kezelésére szolgál, és _részletesen ismerteti_ az OPA és a forgalomirányító használatára vonatkozó tulajdonságokat. További részletekért és példákért tekintse meg a [EnforceRegoPolicy](effects.md#enforceregopolicy) hatást.
 
-A _details. Policy_ tulajdonság részeként Azure Policy átadja egy Rego-házirend URI-ját a bővítménynek. A Rego az a nyelv, amelyet az OPA és a forgalomirányító támogat a Kubernetes-fürtre irányuló kérelem érvényesítéséhez vagy átváltoztatásához. A Kubernetes-kezelés meglévő szabványának támogatásával a Azure Policy lehetővé teszi a meglévő szabályok újbóli használatát, és azok párosítását Azure Policy egy egységes Felhőbeli megfelelőségi jelentéskészítési élmény érdekében. További információ: [What is Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
+A _details. Policy_ tulajdonság részeként Azure Policy átadja egy Rego-házirend URI-ját a bővítménynek. A Rego az a nyelv, amelyet az OPA és a forgalomirányító támogat a Kubernetes-fürtre irányuló kérelem érvényesítéséhez vagy átváltoztatásához. A Kubernetes-kezelés meglévő szabványának támogatásával a Azure Policy lehetővé teszi a meglévő szabályok újbóli használatát, és azok párosítását Azure Policy egy egységes Felhőbeli megfelelőségi jelentéskészítési élmény érdekében. További információ: [What is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
 ## <a name="built-in-policies"></a>Beépített szabályzatok
 

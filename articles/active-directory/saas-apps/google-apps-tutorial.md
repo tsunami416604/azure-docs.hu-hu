@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e4449ac3519757bb9670d2d7fec53cb5f3ce152
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 540dbc3605cfddc9b8d83eceeae8407848f1a91e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948295"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a G Suite-nal
 
@@ -42,38 +42,38 @@ Első lépésként a következő elemeket kell megadnia:
 - Google Apps-előfizetés vagy Google Cloud Platform-előfizetés.
 
 > [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja. Ez a dokumentum az új felhasználói egyszeri bejelentkezés használatával lett létrehozva. Ha továbbra is a régit használja, a telepítő eltérő lesz. A G-Suite alkalmazás egyszeri bejelentkezés beállításaiban engedélyezheti az új felhasználói élményt. Nyissa meg az **Azure ad-t, a vállalati alkalmazásokat**, válassza a **G Suite**lehetőséget, válassza az **egyszeri bejelentkezés** lehetőséget, majd kattintson az **új felhasználói élmény kipróbálása**lehetőségre.
+> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát. Ez a dokumentum az új felhasználói egyszeri bejelentkezés használatával lett létrehozva. Ha továbbra is a régit használja, a telepítő eltérő lesz. A G-Suite alkalmazás egyszeri bejelentkezés beállításaiban engedélyezheti az új felhasználói élményt. Nyissa meg az **Azure ad-t, a vállalati alkalmazásokat**, válassza a **G Suite**lehetőséget, válassza az **egyszeri bejelentkezés** lehetőséget, majd kattintson az **új felhasználói élmény kipróbálása**lehetőségre.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
-- Ne használja az éles környezetben, csak szükség esetén.
+- Ne használja éles környezetét, ha szükséges.
 - Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-1. **K: Támogatja az integráció az Azure AD-vel való Google Cloud Platform SSO-integrációt?**
+1. **K: az integráció támogatja az Azure AD-vel való Google Cloud Platform SSO-integrációt?**
 
     V: Igen. A Google Cloud Platform és a Google Apps ugyanazt a hitelesítési platformot használja. Így a GCP-integrációhoz konfigurálnia kell az egyszeri bejelentkezést a Google Apps szolgáltatásban.
 
-2. **K: Az Azure AD egyszeri bejelentkezéssel kompatibilisek-e a Chromebook és más Chrome-eszközök?**
+2. **K: az Azure AD egyszeri bejelentkezéssel kompatibilis Chromebook és más Chrome-eszközök?**
   
-    V: Igen, a felhasználók Azure AD-beli hitelesítő adataikkal tudnak bejelentkezni a Chromebook-eszközeibe. Tekintse meg ezt a [G Suite támogatási cikket](https://support.google.com/chrome/a/answer/6060880) , amely arról nyújt tájékoztatást, hogy a felhasználók miért kapják meg kétszer a hitelesítő adatokat.
+    Válasz: igen, a felhasználók Azure AD-beli hitelesítő adataikkal jelentkezhetnek be a Chromebook-eszközökre. Tekintse meg ezt a [G Suite támogatási cikket](https://support.google.com/chrome/a/answer/6060880) , amely arról nyújt tájékoztatást, hogy a felhasználók miért kapják meg kétszer a hitelesítő adatokat.
 
-3. **K: Ha engedélyezem az egyszeri bejelentkezést, a felhasználók Azure AD-beli hitelesítő adataikkal jelentkezhetnek be bármely Google-termékbe, például a Google Tanteremba, a GMailbe, a Google Drive-ba vagy a YouTube-ra, és így tovább?**
+3. **K: ha engedélyezem az egyszeri bejelentkezést, a felhasználók Azure AD-beli hitelesítő adataikkal jelentkezhetnek be bármely Google-termékbe, például a Google Tanteremba, a GMailbe, a Google Drive-ba, a YouTube-ra stb.**
 
-    V: Igen, attól függően, hogy [melyik G csomaggal](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) szeretné engedélyezni vagy letiltani a szervezetét.
+    Válasz: igen, attól függően, hogy [melyik G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) -t szeretné engedélyezni vagy letiltani a szervezet számára.
 
-4. **K: Engedélyezhető az egyszeri bejelentkezés a G Suite-felhasználók csak egy részhalmaza számára?**
+4. **K: engedélyezhető az egyszeri bejelentkezés a G Suite-felhasználók csak egy részhalmaza számára?**
 
-    V: Nem, az egyszeri bejelentkezés azonnali bekapcsolása esetén az összes G Suite-felhasználónak hitelesítenie kell magát az Azure AD-beli hitelesítő adataival. Mivel a G Suite nem támogatja több identitás-szolgáltató használatát, a G Suite-környezet identitás-szolgáltatója az Azure AD vagy a Google is lehet, de egyszerre nem.
+    A: nem, az egyszeri bejelentkezés azonnali bekapcsolása esetén az összes G Suite-felhasználónak hitelesítenie kell magát az Azure AD-beli hitelesítő adataival. Mivel a G Suite nem támogatja több identitás-szolgáltató használatát, a G Suite-környezet identitás-szolgáltatója az Azure AD vagy a Google is lehet, de egyszerre nem.
 
-5. **K: Ha a felhasználó a Windowson keresztül jelentkezik be, a rendszer automatikusan hitelesíti a G Suite-t anélkül, hogy jelszót kellene megadnia?**
+5. **K: Ha a felhasználó a Windowson keresztül jelentkezik be, a rendszer automatikusan hitelesíti a G Suite-t a jelszó kérése nélkül?**
 
-    V: Ennek a forgatókönyvnek a engedélyezésére két lehetőség áll rendelkezésre. Először is a felhasználók bejelentkezhetnek a Windows 10-es eszközökre [Azure Active Directory JOIN](../device-management-introduction.md)használatával. Azt is megteheti, hogy a felhasználók bejelentkezhetnek olyan Windows-eszközökre, amelyek tartományhoz csatlakoznak egy olyan helyszíni Active Directoryhoz, amely engedélyezve van az Azure AD-be való egyszeri bejelentkezésre egy [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) üzemelő példányon keresztül. Mindkét beállításhoz szükség van az alábbi oktatóanyag lépéseinek elvégzésére az Azure AD és a G Suite közötti egyszeri bejelentkezés engedélyezéséhez.
+    A: két lehetőség van ennek a forgatókönyvnek a engedélyezésére. Először is a felhasználók bejelentkezhetnek a Windows 10-es eszközökre [Azure Active Directory JOIN](../device-management-introduction.md)használatával. Azt is megteheti, hogy a felhasználók bejelentkezhetnek olyan Windows-eszközökre, amelyek tartományhoz csatlakoznak egy olyan helyszíni Active Directoryhoz, amely engedélyezve van az Azure AD-be való egyszeri bejelentkezésre egy [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) üzemelő példányon keresztül. Mindkét beállításhoz szükség van az alábbi oktatóanyag lépéseinek elvégzésére az Azure AD és a G Suite közötti egyszeri bejelentkezés engedélyezéséhez.
 
-6. **K: Mit tegyek, ha "érvénytelen e-mail" hibaüzenet jelenik meg?**
+6. **K: mit tegyek, ha "érvénytelen e-mail" hibaüzenet jelenik meg?**
 
-    V: Ehhez a beállításhoz az e-mail-attribútum szükséges ahhoz, hogy a felhasználók be tudják jelentkezni. Ez az attribútum nem állítható be manuálisan.
+    A: ehhez a beállításhoz az e-mail-attribútum szükséges ahhoz, hogy a felhasználók be tudják jelentkezni. Ez az attribútum nem állítható be manuálisan.
 
     Az e-mail-attribútum minden érvényes Exchange-licenccel rendelkező felhasználó számára automatikusan fel van töltve. Ha a felhasználó nem rendelkezik e-mail-üzenettel, akkor a rendszer ezt a hibaüzenetet kapja, mivel az alkalmazásnak hozzáférést kell adnia ehhez az attribútumhoz.
 
@@ -125,9 +125,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha a **Gmail** konfigurálását szeretné elvégezni, hajtsa végre a következő lépéseket:
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | |
     |--|
@@ -138,9 +138,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha az **alapszintű SAML-konfiguráció** szakaszban szeretné konfigurálni a **Google Cloud platform** , hajtsa végre a következő lépéseket:
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
     | |
     |--|
@@ -150,7 +150,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | `https://google.com/a/<yourdomain.com>` |
     
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A G Suite nem biztosít entitás-azonosító/azonosító értéket az egyszeri bejelentkezés konfigurációjában, így ha törli a **tartományi specifikus kiállítói** beállítást, az azonosító értéke `google.com` lesz. Ha bejelöli a **tartományi specifikus kiállítói** beállítást, `google.com/a/<yourdomainname.com>` lesz. A **tartomány-specifikus kiállítói** lehetőség bejelöléséhez vagy kikapcsolásához lépjen a **G Suite SSO konfigurálása** szakaszra, amelyet az oktatóanyag későbbi részében ismertet. További információért forduljon a [G Suite ügyfél-támogatási csapatához](https://www.google.com/contact/).
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A G Suite nem biztosít entitás-azonosító/azonosító értéket az egyszeri bejelentkezés konfigurációjában, így ha törli a **tartományi specifikus kiállítói** beállítást, az azonosító értéke `google.com`lesz. Ha bejelöli a **tartományi specifikus kiállítói** beállítást, `google.com/a/<yourdomainname.com>`lesz. A **tartomány-specifikus kiállítói** lehetőség bejelöléséhez vagy kikapcsolásához lépjen a **G Suite SSO konfigurálása** szakaszra, amelyet az oktatóanyag későbbi részében ismertet. További információért forduljon a [G Suite ügyfél-támogatási csapatához](https://www.google.com/contact/).
 
 1. A G Suite-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. A következő képernyőképen egy példa látható. Az **egyedi felhasználói azonosító** alapértelmezett értéke a **User. userPrincipalName** , de a G Suite azt várja, hogy a felhasználó e-mail-címével legyen leképezve. Ehhez használhatja a **User. mail** attribútumot a listából, vagy használhatja a megfelelő attribútumot a szervezeti konfiguráció alapján.
 
@@ -158,7 +158,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------------- |
     | Egyedi felhasználói azonosító | User. mail |
 
@@ -176,31 +176,31 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson a **Ok**
+    f. Kattintson **az OK** gombra
 
     g. Kattintson a **Save** (Mentés) gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
 1. A **G Suite beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát a G Suite elérésének biztosításával.
 
@@ -208,7 +208,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Az alkalmazások listában válassza a **G Suite**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -222,7 +222,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzolra](https://admin.google.com/) a rendszergazdai fiók használatával.
 
-2. Kattintson a **biztonsági**. Ha nem látja a hivatkozást, akkor előfordulhat, hogy a képernyő alján található **további vezérlők** menü alatt rejtve van.
+2. Kattintson a **Biztonság**elemre. Ha nem látja a hivatkozást, akkor előfordulhat, hogy a képernyő alján található **további vezérlők** menü alatt rejtve van.
 
     ![Kattintson a Security (Biztonság) elemre.][10]
 
@@ -250,7 +250,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="create-g-suite-test-user"></a>G Suite tesztelési felhasználó létrehozása
 
-Ennek a szakasznak a célja, hogy egy B. Simon nevű felhasználót hozzon létre a G Suite szoftverben. A G Suite támogatja az automatikus kiépítés használatát, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs művelet. Ha egy felhasználó még nem létezik a G Suite szoftverben, a rendszer létrehoz egy újat, amikor megpróbál hozzáférni a G Suite szoftverhez.
+Ennek a szakasznak a célja, hogy a "B. Simon" nevű [felhasználót hozzon létre a G Suite-ben](https://support.google.com/a/answer/33310?hl=en) . Miután a felhasználó manuálisan létrejött a G Suite-ban, a felhasználó már bejelentkezhet az Office 365 bejelentkezési hitelesítő adataival.
+
+A G Suite támogatja az automatikus felhasználó-kiépítés használatát is. Az automatikus felhasználó-kiépítés konfigurálásához először [a G Suite-t kell konfigurálnia a felhasználók automatikus kiépítési felállításához](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
 > Győződjön meg arról, hogy a felhasználó már létezik a G Suite-ban, ha az Azure AD-ben való kiépítés nincs bekapcsolva az egyszeri bejelentkezés tesztelése előtt.
@@ -260,7 +262,7 @@ Ennek a szakasznak a célja, hogy egy B. Simon nevű felhasználót hozzon létr
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a G Suite csempére kattint, automatikusan be kell jelentkeznie arra a G csomagba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

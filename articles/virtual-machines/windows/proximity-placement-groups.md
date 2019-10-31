@@ -1,35 +1,28 @@
 ---
-title: Földrajzi elhelyezési csoportok használata Windows rendszerű virtuális gépekhez | Microsoft Docs
+title: Földrajzi elhelyezési csoportok használata Windows rendszerű virtuális gépekhez
 description: További információ az Azure-beli Windows rendszerű virtuális gépekhez elérhető közelségi csoportok létrehozásáról és használatáról.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088824"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171221"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>Előzetes verzió: Virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával
 
 
-Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést [](co-location.md#preview-proximity-placement-groups)kell megvalósítania, egy közelségi elhelyezési csoporton belül kell telepítenie.
+Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](co-location.md#proximity-placement-groups)belül kell telepítenie.
 
 A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. A közelségi csoportok olyan munkaterhelések esetén hasznosak, ahol az alacsony késés követelmény.
-
-> [!IMPORTANT]
-> A közelségi elhelyezési csoportok jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> A közelségi elhelyezési csoportok ezekben a régiókban nem érhetők el az előzetes verzió alatt: **Kelet-japán**, **Kelet-Ausztrália** és **Közép-India**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Közelségi elhelyezési csoport létrehozása
@@ -58,7 +51,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet a közelségi elhelyezési csoportban a használatával `-ProximityPlacementGroup $ppg.Id` , hogy a virtuális gép létrehozásához használja a [AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) .
+Hozzon létre egy virtuális gépet a közelségi elhelyezési csoportban a `-ProximityPlacementGroup $ppg.Id` használatával, és tekintse meg az elhelyezési csoport AZONOSÍTÓját, amikor a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) használatával hozza létre a virtuális gépet.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -79,12 +72,12 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
 ```
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt `-ProximityPlacementGroup` a paramétert a [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) parancsmaggal, és hozzon létre egy rendelkezésre állási csoportot, és a rendelkezésre állási csoportban létrehozott összes virtuális gép ugyanazon a közelségi elhelyezési csoportban is létre lesz hozva.
+A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt a `-ProximityPlacementGroup` paramétert a [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) parancsmaggal, és hozzon létre egy rendelkezésre állási csoportot, és a rendelkezésre állási csoportban létrehozott összes virtuális gép is ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
 ## <a name="scale-sets"></a>Méretezési csoportok
 
-Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. A `-ProximityPlacementGroup` [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) ugyanezzel a paraméterrel hozzon létre egy méretezési csoportot, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt a `-ProximityPlacementGroup` paramétert a [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) használatával egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure CLI](../linux/proximity-placement-groups.md) -vel közelségi elhelyezési csoportokat is létrehozhat.

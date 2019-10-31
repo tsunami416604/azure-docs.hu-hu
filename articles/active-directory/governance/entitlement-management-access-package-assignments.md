@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan tekintheti meg, adhatja hozzá és távolíthat el egy hozzáférési csomaghoz tartozó hozzárendeléseket Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
+title: Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan tekintheti meg, adhatja hozzá és távolíthat el egy hozzáférési csomaghoz tartozó hozzárendeléseket Azure Active Directory jogosultságok felügyeletében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20ff526ba00f5b6521198122972071360bb58d6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934499"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174914"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
 
 Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy kinek van hozzárendelve hozzáférési csomagokhoz, azok házirendjéhez és állapotához. Ha egy hozzáférési csomag megfelelő szabályzattal rendelkezik, közvetlenül is hozzárendelheti a felhasználót egy hozzáférési csomaghoz. Ez a cikk a hozzáférési csomagok hozzárendeléseinek megtekintését, hozzáadását és eltávolítását ismerteti.
 

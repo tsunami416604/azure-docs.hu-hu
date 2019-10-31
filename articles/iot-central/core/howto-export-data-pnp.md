@@ -8,12 +8,12 @@ ms.date: 10/15/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: bc78f11d4f61c46e2ad4f7143fe8b3af6762b0b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 118d2b42bc14a943aa3fa60b34aa1c151d5dea4c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950417"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176304"
 ---
 # <a name="export-your-azure-iot-central-datapreview-features"></a>Azure IoT Central-beli adatszolgáltatások exportálása (előzetes verzió)
 
@@ -195,7 +195,7 @@ A pillanatképben szereplő minden üzenet vagy rekord az eszköz egy vagy több
 
 - az eszköz `@id` IoT Central
 - az eszköz `name`
-- `deviceId` a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
+- `deviceId` a [Device kiépítési szolgáltatásból](/azure/iot-central/core/howto-connect-nodejs)
 - Eszköz sablonjának adatai
 - Tulajdonságértékek
 

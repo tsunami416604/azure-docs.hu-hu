@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: twhitney
+ms.date: 10/29/2019
+ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a30f792a74ffc3aa983d84d902fa736a3f9b015
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802958"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175597"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -36,12 +36,13 @@ Ez az oldal a 3. x MSAL. Ha érdekli a 2. x MSAL, tekintse meg [a Azure ad B2C a
 
 ## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C bérlő és házirend szolgáltatója
 
-A használandó szolgáltató `https://login.microsoftonline.com/tfp/{tenant}/{policyName}`, ahol:
+A használandó szolgáltató `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`, ahol:
 
-- `tenant` az Azure AD B2C bérlő neve, 
-- `policyName` az alkalmazandó szabályzat nevét (például "b2c_1_susi" a bejelentkezéshez/regisztrációhoz).
+- `azureADB2CHostname` a Azure AD B2C bérlő és a gazdagép neve (például `{your-tenant-name}.b2clogin.com`),
+- `tenant` a Azure AD B2C bérlő teljes neve (például `{your-tenant-name}.onmicrosoft.com`) vagy a bérlő GUID azonosítója, 
+- `policyName` a használni kívánt házirend vagy felhasználói folyamat nevét (például: "b2c_1_susi" a regisztrációhoz/bejelentkezéshez).
 
-A Azure AD B2C aktuális útmutatója, hogy a `b2clogin.com` használja a szolgáltatóként. Például: `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"`. További információkért tekintse meg ezt a [dokumentációt](/azure/active-directory-b2c/b2clogin).
+A Azure AD B2C-hatóságokkal kapcsolatos további információkért tekintse meg ezt a [dokumentációt](/azure/active-directory-b2c/b2clogin).
 
 ## <a name="instantiating-the-application"></a>Az alkalmazás példányának példánya
 
@@ -50,12 +51,13 @@ Az alkalmazás létrehozásakor meg kell adnia a szolgáltatót.
 ```csharp
 // Azure AD B2C Coordinates
 public static string Tenant = "fabrikamb2c.onmicrosoft.com";
+public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.com";
 public static string ClientID = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
 public static string PolicySignUpSignIn = "b2c_1_susi";
 public static string PolicyEditProfile = "b2c_1_edit_profile";
 public static string PolicyResetPassword = "b2c_1_reset";
 
-public static string AuthorityBase = $"https://fabrikamb2c.b2clogin.com/tfp/{Tenant}/";
+public static string AuthorityBase = $"https://{AzureADB2CHostname}/tfp/{Tenant}/";
 public static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
 public static string AuthorityEditProfile = $"{AuthorityBase}{PolicyEditProfile}";
 public static string AuthorityPasswordReset = $"{AuthorityBase}{PolicyResetPassword}";
@@ -71,14 +73,16 @@ A nyilvános ügyfélalkalmazás Azure AD B2C védett API-hoz való jogkivonatá
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
+AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
                                             .WithAccount(GetAccountByPolicy(accounts, policy))
+                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
                                             .ExecuteAsync();
 ```
 
 a következőre:
 
 - `policy` a korábbi karakterláncok egyike (például `PolicySignUpSignIn`).
+- `ParentActivityOrWindow` szükséges az Androidhoz (a tevékenységhez), és nem kötelező a szülő felhasználói felületet támogató egyéb platformokhoz, például a Windows rendszerhez és az iOS-UIViewController. További információt [itt talál a felhasználói felület párbeszédpanelen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)` egy olyan metódus, amely megkeresi az adott szabályzathoz tartozó fiókot. Példa:
 
   ```csharp
@@ -94,11 +98,11 @@ a következőre:
   }
   ```
 
-A szabályzat alkalmazása (például a végfelhasználók saját profiljának szerkesztése vagy jelszavának alaphelyzetbe állítása) jelenleg a `AcquireTokenInteractive`meghívásával történik. Ezen két házirend esetében nem a visszaadott jogkivonat/hitelesítés eredményét használja.
+A házirend vagy a felhasználói folyamat alkalmazása (például a végfelhasználói profil szerkesztése vagy a jelszó alaphelyzetbe állítása) jelenleg a `AcquireTokenInteractive`meghívásával történik. A két házirend esetében nem használja a visszaadott jogkivonat/hitelesítési eredményt.
 
 ## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>EditProfile-és ResetPassword metódusát-szabályzatok speciális esete
 
-Ha olyan felhasználói élményt szeretne biztosítani, amelyben a végfelhasználók bejelentkeznek a közösségi identitásba, majd szerkeszthetik azt a profilt, amelyre alkalmazni szeretné a Azure AD B2C EditProfile szabályzatot. Ennek a módja, ha meghívja a `AcquireTokenInteractive`t a házirend adott hatóságánál, és a rendszer felszólítja, hogy `Prompt.NoPrompt` a fiók kiválasztása párbeszédpanel megjelenítésének elkerüléséhez (mivel a felhasználó már be van jelentkezve)
+Ha olyan felhasználói élményt szeretne biztosítani, amelyben a végfelhasználók bejelentkeznek a közösségi identitással, majd szerkeszthetik a profiljaikat, alkalmazni kívánja a profil szerkesztése Azure AD B2C. Ezt úgy teheti meg, hogy meghívja a `AcquireTokenInteractive`t a házirend adott hatóságánál, és a rendszer felszólítja, hogy `Prompt.NoPrompt`, hogy ne jelenjen meg a fiók kiválasztása párbeszédpanel (mivel a felhasználó már be van jelentkezve, és aktív cookie-munkamenettel rendelkezik).
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -124,8 +128,8 @@ A ROPC folyamattal kapcsolatos további részletekért tekintse meg ezt a [dokum
 
 Ez a folyamat **nem ajánlott** , mert az alkalmazás a jelszót kérő felhasználó nem biztonságos. A problémával kapcsolatos további információkért tekintse meg [ezt a cikket](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
-A Felhasználónév/jelszó használatával számos dolgot ad meg:
-- a modern identitás alapbérlői: a jelszó bekerül, majd újra lejátszhatók. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja. Ez nem kompatibilis a jelszóval.
+A Felhasználónév/jelszó használatával több dolgot is megadhat:
+- a modern identitás alapvető alapelvei: a jelszó bekerül, majd újra lejátszva. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja. Ez nem kompatibilis a jelszóval.
 - Az MFA-t igénylő felhasználóknak nem lehet bejelentkezniük (mivel nincs interakció).
 - A felhasználók nem tudnak egyszeri bejelentkezést végezni.
 
@@ -149,13 +153,12 @@ Ne felejtse el használni a ROPC házirendet tartalmazó szolgáltatót.
 
 ### <a name="limitations-of-the-ropc-flow"></a>A ROPC folyamat korlátai
  - A ROPC folyamat **csak helyi fiókoknál működik** (a Azure ad B2C e-mailben vagy felhasználónévvel való regisztrálásakor). Ez a folyamat nem működik, ha a Azure AD B2C (Facebook, Google stb.) által támogatott egyesítő.
- - Jelenleg **nem tért vissza id_token a Azure ad B2C** a ROPC folyamat MSAL-ből való megvalósítása során. Ez azt jelenti, hogy a fiók objektum nem hozható létre, tehát a gyorsítótárban nem lesz fiók, és nincs felhasználó. Ebben a forgatókönyvben a AcquireTokenSilent folyamat nem fog működni. A ROPC azonban nem jeleníti meg a felhasználói FELÜLETET, így nem lesz hatással a felhasználói élményre.
 
 ## <a name="google-auth-and-embedded-webview"></a>Google-hitelesítés és beágyazott webnézet
 
 Ha Ön egy Azure AD B2C fejlesztő, aki a Google-t használja identitás-szolgáltatóként, a rendszerböngészőt használja, mivel a Google nem engedélyezi a [hitelesítést a beágyazott webnézetekben](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Jelenleg `login.microsoftonline.com` egy megbízható szolgáltató a Google-ban. A szolgáltató használata a beágyazott webnézettel fog működni. A `b2clogin.com` használata azonban nem megbízható a Google-vel, így a felhasználók nem fognak tudni hitelesítést végezni.
 
-Egy frissítést biztosítunk a wikihöz, és ezt a [problémát](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) a dolgok megváltozásakor.
+Ha változnak a dolgok, a [probléma](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) frissítését biztosítjuk.
 
 ## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Azure AD B2C gyorsítótárazása a MSAL.Net-ben 
 

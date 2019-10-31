@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan módosíthatja a hozzáférési csomagokra vonatkozó kérelmeket és jóváhagyási beállításokat a Azure Active Directory jogosultságok kezelése (előzetes verzió) szolgáltatásban.
+title: Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan módosíthatja a hozzáférési csomagokra vonatkozó kérelmeket és jóváhagyási beállításokat Azure Active Directory jogosultságok kezelése során.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b060a17d9e7f795b6aad7df0e3e6349bbbd81b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392500"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174674"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében (előzetes verzió)
-
-> [!IMPORTANT]
-> A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében
 
 Hozzáférés-csomagkezelőként módosíthatja azokat a felhasználókat, akik bármikor igényelhetnek hozzáférési csomagot a szabályzat szerkesztésével vagy új szabályzat hozzáadásával. A jóváhagyási beállításokat is módosíthatja.
 

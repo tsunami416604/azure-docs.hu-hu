@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619095"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172337"
 ---
-# <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
+# <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
 A Azure Active Directory Domain Services (AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezt a felügyelt tartományt ugyanazzal a Távoli kiszolgálófelügyelet eszközei (RSAT) felügyelheti, mint a helyszíni Active Directory tartományi szolgáltatások tartománnyal. Mivel az Azure AD DS felügyelt szolgáltatás, bizonyos adminisztratív feladatok nem hajthatók végre, például a távoli asztal protokoll (RDP) használata a tartományvezérlőkre való kapcsolódáshoz.
 
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 * Aktív Azure-előfizetés.
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services példányt hoz létre és konfigurál][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server-alapú virtuális gép.
@@ -47,7 +47,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Ebben az oktatóanyagban egy felügyeleti virtuális gépet hoz létre és konfigurál a Azure Portal használatával. Első lépésként jelentkezzen be a Azure Portalba [](https://portal.azure.com).
+Ebben az oktatóanyagban egy felügyeleti virtuális gépet hoz létre és konfigurál a Azure Portal használatával. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="available-administrative-tasks-in-azure-ad-ds"></a>Elérhető felügyeleti feladatok az Azure AD DS
 
@@ -84,7 +84,7 @@ Az előző oktatóanyagban egy Windows Server rendszerű virtuális gép lett l�
 Első lépésként kapcsolódjon a Windows Server rendszerű virtuális géphez a következő módon:
 
 1. A Azure Portal válassza az **erőforráscsoportok** lehetőséget a bal oldalon. Válassza ki azt az erőforráscsoportot, amelyben a virtuális gép létrejött, például *myResourceGroup*, majd válassza ki a virtuális gépet, például *myVM*.
-1. A virtuális gép áttekintő ablakában válassza a **kapcsolat**lehetőséget.
+1. A virtuális gép **áttekintő** ablakában válassza a **kapcsolat**lehetőséget.
 
     ![Kapcsolódás a Windows rendszerű virtuális géphez a Azure Portal](./media/tutorial-create-management-vm/connect-vm.png)
 
@@ -101,9 +101,9 @@ Az Azure AD DS felügyelt tartományait ugyanazok a felügyeleti eszközök hasz
 
 A Active Directory felügyeleti eszközök tartományhoz csatlakoztatott virtuális gépekre való telepítéséhez hajtsa végre a következő lépéseket:
 
-1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő**lehetőséget.
+1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
 1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek lapján kattintson a **Tovább gombra**.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
 1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
 1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.contoso.com*, majd kattintson a **tovább**gombra.
 1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
@@ -131,15 +131,17 @@ Ha a felügyeleti eszközök telepítve vannak, lássuk, hogyan használhatja ő
 
 1. Az Azure AD DS felügyelt tartományhoz tartozó felhasználók és csoportok megtekintéséhez válassza a **AADDC Users** tárolót. Az Azure AD-bérlőből származó felhasználói fiókok és csoportok szerepelnek ebben a tárolóban.
 
-    A következő példában a tárolóban megjelenik egy *contosoadmin* nevű felhasználói fiók és egy *HRE DC-rendszergazdák* csoportja.
+    A következő példában a tárolóban megjelenik egy *contoso admin* nevű felhasználói fiók és egy *HRE DC-rendszergazdák* csoportja.
 
     ![Az Azure AD DS tartományi felhasználók listájának megtekintése a Active Directory felügyeleti központ](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. Az Azure AD DS felügyelt tartományhoz csatlakoztatott számítógépek megtekintéséhez válassza a **AADDC Computers** tárolót. Megjelenik egy bejegyzés az aktuális virtuális géphez (például *myVM*). Az Azure AD DS felügyelt tartományhoz csatlakoztatott összes számítógép számítógépfiókja a *AADDC Computers* tárolóban történik.
 
-Az általános Active Directory felügyeleti központ műveletek, például a felhasználói fiók jelszavának alaphelyzetbe állítása vagy a csoporttagság kezelése elérhető. A felügyeleti eszközök részeként telepített *Windows PowerShell Active Directory modulját*is használhatja az Azure AD DS felügyelt tartomány általános műveleteinek kezeléséhez.
+Az általános Active Directory felügyeleti központ műveletek, például a felhasználói fiók jelszavának alaphelyzetbe állítása vagy a csoporttagság kezelése elérhető. Ezek a műveletek csak az Azure AD DS felügyelt tartományában közvetlenül létrehozott felhasználók és csoportok esetében működnek. Az azonosító adatok csak az Azure AD- *ről* az Azure AD DS-ra szinkronizálhatók. Az Azure AD DSról az Azure AD-re nem írható vissza. Az Azure AD-ből szinkronizált felhasználók jelszavait vagy a felügyelt csoporttagság nem módosítható, és a módosítások szinkronizálva lesznek.
 
-## <a name="next-steps"></a>További lépések
+A felügyeleti eszközök részeként telepített *Windows PowerShell Active Directory modulját*is használhatja az Azure AD DS felügyelt tartomány általános műveleteinek kezeléséhez.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
