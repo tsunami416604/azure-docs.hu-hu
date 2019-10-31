@@ -13,35 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9ed2d00d6f229d958e0df024c70381051840548c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726999"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162744"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
 Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgáltatásokról és szolgáltatásokról az Azure Cloud Services és a Virtual Machines felügyeletének és figyelésének támogatásához.
-
-## <a name="shared-responsibility"></a>Közös felelősség
-
-A Microsoft Cloud Services biztonsága az Ön és a Microsoft közötti együttműködés és közös felelősség. A Microsoft feladata az Azure platform és az adatközpontok fizikai biztonsága (olyan biztonsági védelemmel, mint a zárolt jelvény – belépési ajtók, kerítések és védőburkolatok). Az Azure magas szintű felhőalapú biztonságot nyújt a szoftverek szintjén, amely megfelel az ügyfelei biztonsági, adatvédelmi és megfelelőségi igényeinek.
-
-Ön rendelkezik saját adataival és identitásával, a védelemért, a helyszíni erőforrások biztonságával, valamint az Ön által felügyelt felhőalapú összetevők biztonságával. A Microsoft biztonsági vezérlőket és képességeket biztosít az adatai és alkalmazásai védelméhez. A biztonsággal kapcsolatos felelőssége a felhőalapú szolgáltatás típusától függ.
-
-A következő táblázat összefoglalja a Microsoft és az ügyfél közötti felelősségi egyensúlyt.
-
-![Közös felelősség](./media/management-monitoring-overview/shared-responsibility.png)
-
-A biztonság kezelésével kapcsolatos további információkért lásd: [a biztonság kezelése az Azure-ban](management.md).
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
 A szerepköralapú Access Control (RBAC) részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. A RBAC használatával csak a feladataik elvégzéséhez szükséges hozzáférés mennyiségét adhatja meg a felhasználóknak. A RBAC segítségével biztosíthatja, hogy amikor a felhasználók elhagyják a szervezetet, elvesztik a felhőben lévő erőforrásokhoz való hozzáférést.
 
-További információ:
+Részletek:
 
 * [Active Directory csapat blogja a RBAC-on](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md)
@@ -56,7 +44,7 @@ Mély integrációt is kínálunk a trend [mély biztonsági](https://www.trendm
 
 A Symantec Endpoint Protection (SEP) az Azure-ban is támogatott. A portál integrációja segítségével megadhatja, hogy a SEP-et egy virtuális gépen kívánja használni. A SEP a Azure Portalon keresztül telepíthető egy új virtuális gépre, vagy a PowerShell használatával telepíthető egy meglévő virtuális gépre.
 
-További információ:
+Részletek:
 
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Microsoft antimalware az Azure Cloud Services és Virtual Machines](antimalware.md)
@@ -64,17 +52,17 @@ További információ:
 * [Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen](/azure/virtual-machines/windows/classic/install-symantec)
 * [Új antimalware-beállítások az Azure-Virtual Machines védelméhez](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
-Az Azure multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli. Kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra.
+Az Azure Multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli. Kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra.
 
-A többtényezős hitelesítés segítségével biztosítható a hozzáférés az adatkezeléshez és az alkalmazásokhoz, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést biztosít számos ellenőrzési lehetőség (telefonhívás, szöveges üzenet vagy Mobile App Notification vagy ellenőrző kód) és harmadik féltől származó eskü-tokenek használatával.
+Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamaton keresztül teljesíti. Erős hitelesítést biztosít számos ellenőrzési lehetőség (telefonhívás, szöveges üzenet vagy Mobile App Notification vagy ellenőrző kód) és harmadik féltől származó eskü-tokenek használatával.
 
-További információ:
+Részletek:
 
-* [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+* [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Mi az az Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Az Azure multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -86,7 +74,7 @@ Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a M
 
 A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosíthatnak, mint az interneten keresztüli szokásos kapcsolatok.
 
-További információ:
+Részletek:
 
 * [ExpressRoute – technikai áttekintés](../../expressroute/expressroute-introduction.md)
 
@@ -94,7 +82,7 @@ További információ:
 
 A VPN-átjárók, más néven Azure-beli virtuális hálózati átjárók a virtuális hálózatok és a helyszíni telephelyek közötti hálózati adatforgalom elküldésére szolgálnak. Az Azure-ban több virtuális hálózat között is küldenek forgalmat (hálózatról hálózatra). A VPN-átjárók biztonságos, létesítmények közötti kapcsolatot biztosítanak az Azure és az infrastruktúra között.
 
-További információ:
+Részletek:
 
 * [Tudnivalók a VPN-átjárók használatáról](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [Az Azure hálózati biztonság áttekintése](network-overview.md)
@@ -107,12 +95,12 @@ Ez egyre nagyobb biztonsági kockázatot jelent a felhőben üzemeltetett erőfo
 
 Privileged Identity Management bevezeti egy adott szerepkörhöz tartozó ideiglenes rendszergazda fogalmát, vagy az "időben" rendszergazdai hozzáférést. Ez a rendszergazda olyan felhasználó, akinek az adott szerepkörhöz tartozó aktiválási folyamatot kell végrehajtania. Az aktiválási folyamat egy adott időszakra módosítja a felhasználó hozzárendelését egy Azure AD-beli szerepkörben az inaktívról aktívra.
 
-További információ:
+Részletek:
 
 * [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Ismerkedés a Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Identitásvédelem
+## <a name="identity-protection"></a>Identity Protection
 
 Azure AD Identity Protection a gyanús bejelentkezési tevékenységek és a lehetséges sebezhetőségek összevont nézetét biztosítja a vállalata védelmének elősegítése érdekében. Az Identity Protection gyanús tevékenységeket észlel a felhasználók és a privilegizált (rendszergazdai) identitások számára a következő jelek alapján:
 
@@ -122,10 +110,10 @@ Azure AD Identity Protection a gyanús bejelentkezési tevékenységek és a leh
 
 Az értesítések és az ajánlott szervizelés biztosításával a személyazonosság védelme segít a kockázatok valós idejű enyhítésében. Kiszámítja a felhasználói kockázati súlyosságot. A kockázatalapú házirendeket beállíthatja úgy, hogy automatikusan segítse az alkalmazások hozzáférését a jövőbeli fenyegetésektől.
 
-További információ:
+Részletek:
 
 * [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
-* [Channel 9: Azure AD-és identitás-megjelenítés: Identity Protection – előzetes verzió](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [9. csatorna: Azure AD-és identitás-megjelenítés: Identity Protection előnézet](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
@@ -139,7 +127,7 @@ A Security Center segítségével optimalizálhatja és figyelheti az Azure-erő
 * Azure-beli virtuális gépek, Hálózatkezelés és alkalmazások állapotának monitorozása.
 * A rangsorolt biztonsági riasztások listája, beleértve az integrált partneri megoldások riasztásait is. Emellett biztosítja a támadás gyors kivizsgálásához és a megoldási javaslatokhoz szükséges információkat.
 
-További információ:
+Részletek:
 
 * [Az Azure Security Center bemutatása](../../security-center/security-center-intro.md)
 * [Javítsa a biztonságos pontszámot Azure Security Center](../../security-center/security-center-secure-score.md)
@@ -150,3 +138,7 @@ A Intelligens biztonsági gráf valós idejű veszélyforrások elleni védelmet
 
 * [Intelligens biztonsági gráf](https://www.microsoft.com/security/intelligence)
 
+## <a name="next-steps"></a>Következő lépések
+Ismerje meg a [megosztott felelősségi modellt](shared-responsibility.md) , valamint azt, hogy mely biztonsági feladatokat kezeli a Microsoft, és mely feladatokat kezeli.
+
+A biztonság kezelésével kapcsolatos további információkért lásd: [a biztonság kezelése az Azure-ban](management.md).

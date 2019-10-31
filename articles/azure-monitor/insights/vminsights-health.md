@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162289"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának megismerése
 
@@ -339,7 +339,7 @@ Az alábbi példa azt mutatja be, hogyan lehet lekérdezni az adott *monitorId* 
 2. Adja meg a következő parancsot az adott virtuális gépen aktív összes állapotra vonatkozó feltétel lekéréséhez, és a *monitorId* tulajdonság értékének azonosításához:
 
     ```
-    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview"
     ```
 
     A következő példa a *ARMCLIENT Get* parancs kimenetét mutatja be. Jegyezze fel a *MonitorId*értékét. Ezt az értéket kötelező megadni a következő lépéshez, ahol meg kell adni az állapotra vonatkozó feltételek AZONOSÍTÓját, és módosítania kell a tulajdonságát, hogy riasztást hozzon létre.

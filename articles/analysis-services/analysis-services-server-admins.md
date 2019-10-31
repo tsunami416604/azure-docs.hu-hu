@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelheti az Azure-beli Analysis Services kiszo
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301093"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146273"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 

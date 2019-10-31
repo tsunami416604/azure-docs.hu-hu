@@ -1,34 +1,34 @@
 ---
-title: API megfontolások |} Az Azure Marketplace-en
-description: Verziókezelés, hibakezelési és engedélyezési problémák esetén a Marketplace-en API-k használatával.
+title: API-megfontolások | Azure piactér
+description: Verziószámozás, hibakezelés és engedélyezési problémák a Marketplace API-k használatakor.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6bf27db27daee50f78552344ae1b2b116d48a5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 762c90b62ed2a9347ae88a50a11bfe02f3b23ba4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935576"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162665"
 ---
-# <a name="api-considerations"></a>API kapcsolatos szempontok
+# <a name="api-considerations"></a>API-megfontolások
 
 
 <a name="api-versioning"></a>API-verziószámozás
 --------------
 
-Előfordulhat, hogy az API több verziójának érhetők el egyszerre. Ügyfelek történő használatát indítása azáltal, hogy melyik verziót meg kell jelölnie a `api-version` paraméter a lekérdezési karakterlánc részeként.
+Előfordulhat, hogy az API több verziója is elérhető. Az ügyfeleknek jelezniük kell, hogy melyik verziót szeretnék használni, ha a lekérdezési karakterlánc részeként megadja a `api-version` paramétert.
 
    `GET https://cloudpartner.azure.com/api/offerTypes?api-version=2017-10-31`
 
-A válasz a kérésekre, és a egy ismeretlen vagy érvénytelen API-verzió egy 400-as HTTP-kód. Ez a hiba a válasz törzse ismert API-verziók gyűjteményét adja vissza.
+Az ismeretlen vagy érvénytelen API-verzióra irányuló kérelemre adott válasz egy 400-es HTTP-kód. Ez a hiba a válasz törzsében lévő ismert API-verziók gyűjteményét adja vissza.
 
 ``` json
     {
-        "error”: { 
+        "error": { 
             "code":"InvalidAPIVersion",
             "message":"Invalid api version. Allowed values are [2016-08-01-preview]"
         }
@@ -38,13 +38,13 @@ A válasz a kérésekre, és a egy ismeretlen vagy érvénytelen API-verzió egy
 <a name="errors"></a>Hibák
 ------
 
-Hibák a megfelelő HTTP-állapotkódok és szükség esetén további információt a válaszban szerializált JSON-fájlként válaszol az API-t.
-Hibaüzenet, különösen egy 400-as szintű hiba, amikor nem próbálja meg újra a kérelmet az alapul szolgáló ok javítása előtt. Ha például a fenti példa válaszban az API-version paramétert újraküldés előtt javítsa a kérelmet.
+Az API a hibákat a megfelelő HTTP-állapotkódok és opcionálisan a JSON-ként szerializált válaszban található további információk alapján válaszolja meg.
+Ha hibaüzenetet kap, különösen a 400 osztályú hibát, ne próbálja megismételni a kérést az alapul szolgáló ok kijavítása előtt. A fenti mintában például javítsa ki az API Version paramétert a kérelem újraküldése előtt.
 
-<a name="authorization-header"></a>Engedélyeztetési fejléc
+<a name="authorization-header"></a>Engedélyezési fejléc
 --------------------
 
-Minden az API-t a jelen útmutatóban akkor meg kell adnia az engedélyezési fejléc tulajdonosi jogkivonattal az Azure Active Directory (Azure AD) származó együtt. Ez a fejléc szükséges kapott érvényes választ; Ha nem található, egy `401 Unauthorized` hibát akkor adja vissza. 
+Az ebben a hivatkozásban található összes API esetében át kell adni az engedélyezési fejlécet a Azure Active Directory (Azure AD) által beszerzett tulajdonosi jogkivonattal együtt. Ez a fejléc érvényes válasz fogadásához szükséges. Ha nincs jelen, a rendszer `401 Unauthorized` hibát ad vissza. 
 
 ``` HTTP
   GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview

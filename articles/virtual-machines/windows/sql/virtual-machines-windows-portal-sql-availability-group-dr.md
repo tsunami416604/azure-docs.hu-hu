@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100671"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159748"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Always On rendelkezésre állási csoport konfigurálása az Azure-beli virtuális gépeken különböző régiókban
 
@@ -32,7 +32,7 @@ Az alábbi képen egy rendelkezésre állási csoport általános telepítése l
 
    ![Rendelkezésreállási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
-Ebben az üzembe helyezésben minden virtuális gép egy Azure-régióban található. A rendelkezésre állási csoport replikái szinkron véglegesítve lehetnek az SQL-1 és az SQL-2 automatikus feladatátvételével. Az architektúra létrehozásához tekintse meg a [rendelkezésre állási csoport sablonját vagy](virtual-machines-windows-portal-sql-availability-group-overview.md)az oktatóanyagot.
+Ebben az üzembe helyezésben minden virtuális gép egy Azure-régióban található. A rendelkezésre állási csoport replikái szinkron véglegesítve lehetnek az SQL-1 és az SQL-2 automatikus feladatátvételével. Az architektúra létrehozásához tekintse meg a [rendelkezésre állási csoport sablonját vagy az oktatóanyagot](virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 Ez az architektúra a leállás esetén is sebezhető, ha az Azure-régió elérhetetlenné válik. A biztonsági rés megszüntetéséhez adjon hozzá egy replikát egy másik Azure-régióban. Az alábbi ábra az új architektúra megjelenését mutatja be:
 
@@ -123,14 +123,14 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
    >[!IMPORTANT]
    >A fürterőforrás-csoport mindkét IP-címet tartalmazza. Mindkét IP-cím a figyelő ügyfél-hozzáférési pontjának függőségei. Használja a **vagy** az operátort a fürt függőségi konfigurációjában.
 
-1. [A fürt paramétereinek beállítása](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam)a PowerShellben.
+1. [A fürt paramétereinek beállítása a PowerShellben](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam).
 
 Futtassa a PowerShell-parancsfájlt az új régióban a terheléselosztó által konfigurált fürthálózat-névvel, IP-címmel és mintavételi porttal.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
-   $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
+   $ILBIP = "<n.n.n.n>" # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
    [int]$ProbePort = <nnnnn> # The probe port you set on the ILB.
 
    Import-Module FailoverClusters
@@ -142,7 +142,7 @@ Futtassa a PowerShell-parancsfájlt az új régióban a terheléselosztó által
 
 A távoli adatközpontban lévő replika a rendelkezésre állási csoport része, de egy másik alhálózaton van. Ha ez a replika az elsődleges replika lesz, akkor előfordulhat, hogy az alkalmazás kapcsolatainak időtúllépése. Ez a viselkedés megegyezik a helyszíni rendelkezésre állási csoporttal a több alhálózaton üzemelő példányokban. Az ügyfélalkalmazások közötti kapcsolatok engedélyezéséhez frissítse az ügyfélkapcsolatot, vagy konfigurálja a névfeloldás gyorsítótárazását a fürt hálózatnév-erőforrásán.
 
-Lehetőleg frissítse az ügyfélkapcsolati karakterláncokat a beállításhoz `MultiSubnetFailover=Yes`. Lásd: [Csatlakozás a MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0)-hoz.
+Lehetőleg frissítse az ügyfélkapcsolati karakterláncokat a `MultiSubnetFailover=Yes`beállítására. Lásd: [Csatlakozás a MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0)-hoz.
 
 Ha nem tudja módosítani a kapcsolatok karakterláncait, beállíthatja a névfeloldás gyorsítótárazását. Tekintse [meg az időtúllépési hibát, és nem tud csatlakozni egy SQL Server 2012 AlAlwaysOnon rendelkezésre állási csoport figyelőhöz egy több alhálózattal rendelkező környezetben](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
@@ -164,11 +164,11 @@ Ha tesztelni szeretné a figyelőt a távoli régióval, feladatátvételt hajth
 
 A kapcsolat tesztelése után helyezze vissza az elsődleges replikát az elsődleges adatközpontba, és állítsa vissza a rendelkezésre állási módot a normál működési beállításokra. A következő táblázat a jelen dokumentumban ismertetett architektúra normál működési beállításait mutatja be:
 
-| Location | Kiszolgálópéldány | Role | Rendelkezésre állási mód | Feladatátvételi mód
+| Földrajzi egység | Kiszolgálópéldány | Szerepkör | Rendelkezésre állási mód | Feladatátvételi mód
 | ----- | ----- | ----- | ----- | -----
 | Elsődleges adatközpont | SQL-1 | Elsődleges | Szinkron | Automatikus
 | Elsődleges adatközpont | SQL-2 | Másodlagos | Szinkron | Automatikus
-| Másodlagos vagy távoli adatközpont | SQL-3 | Másodlagos | Aszinkron | Manuális
+| Másodlagos vagy távoli adatközpont | SQL-3 | Másodlagos | Aszinkron | Kézi
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>További információ a tervezett és kényszerített manuális feladatátvételről

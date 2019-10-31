@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Ív közzétételi – egyszeri bejelentkezés az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Arc - SSO között.
+title: 'Oktatóanyag: Azure Active Directory integráció az arc-Közzétételsel – SSO | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az arc-közzététel – SSO között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,231 +16,231 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb088af37133269977c1f8ae9a5ad19a3b3e4513
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6969cfe7627b3cceb531ca3829f4103de4813195
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106771"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152748"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Ív közzétételi – egyszeri bejelentkezés az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Azure Active Directory integráció az arc-Közzétételsel – SSO
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja ív közzétételi – egyszeri bejelentkezés az Azure Active Directoryval (Azure AD).
-Ív közzététel – az Azure AD SSO integrálása nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az arc Publishing-SSO-t a Azure Active Directory (Azure AD) szolgáltatással.
+Az arc Publishing-SSO és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá ív közzétételi – egyszeri bejelentkezés az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve ív közzétételi – egyszeri bejelentkezés (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá az arc Publishing-SSO-hoz.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az arc Publishing-SSO (egyszeri bejelentkezés) Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ív közzétételi - SSO, Azure AD-integráció konfigurálása a következőkre van szükség:
+Az Azure AD-integráció az arc Publishing-SSO-vel való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Ív közzététele – egyszeri bejelentkezés az egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Arc-közzététel – egyszeri bejelentkezéses egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Közzétételi arc - támogatja az egyszeri bejelentkezés **SP és IDP** által kezdeményezett egyszeri bejelentkezés
-* Közzétételi arc - támogatja az egyszeri bejelentkezés **igény szerinti** felhasználók átadása
+* Arc-közzététel – az SSO támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* Arc-közzététel – **az SSO csak időben támogatja a** felhasználók üzembe helyezését
 
-## <a name="adding-arc-publishing---sso-from-the-gallery"></a>Ív közzététel – egyszeri bejelentkezés a katalógusból hozzáadása
+## <a name="adding-arc-publishing---sso-from-the-gallery"></a>Arc-közzététel hozzáadása – SSO a katalógusból
 
-Ív közzétételi – egyszeri bejelentkezés az Azure ad-ben, az integráció konfigurálásához hozzá kell ív közzétételi - SSO a galériából a felügyelt SaaS-alkalmazások listájára.
+Az arc Publishing-SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az arc Publishing-SSO elemet a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ív közzétételi - katalógusból, egyszeri bejelentkezés hozzáadása hajtsa végre az alábbi lépéseket:**
+**Ha arc-közzétételt szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **ív közzétételi – egyszeri bejelentkezés**, jelölje be **ív közzétételi – egyszeri bejelentkezés** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **arc Publishing-SSO**, válassza az **arc Publishing-SSO** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Közzététel – egyszeri bejelentkezés az eredménylistában ívvé](common/search-new-app.png)
+     ![Arc-közzététel – SSO az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az ív közzétételi – egyszeri bejelentkezés alapján nevű tesztfelhasználó **Britta Simon**.
-Egyszeri bejelentkezés munkahelyi, az Azure AD-felhasználót és a kapcsolódó felhasználó a közzétételi Arc - hivatkozás kapcsolata az egyszeri bejelentkezés kell hozható létre.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az arc Publishing-SSO-val konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolatra van szükség az arc Publishing-SSO-ben.
 
-Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés az ív közzétételi - SSO, szüksége a következő építőelemeit végrehajtásához:
+Az Azure AD egyszeri bejelentkezés az arc Publishing-SSO használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Ív közzétételének - SSO egyszeri bejelentkezés konfigurálása](#configure-arc-publishing---sso-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Ív közzététel létrehozása – egyszeri bejelentkezés tesztelése felhasználói](#create-arc-publishing---sso-test-user)**  – egy megfelelője a Britta Simon ív közzétételi –, amely kapcsolódik a felhasználói reprezentációja az Azure AD egyszeri bejelentkezés van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. Az **[arc-közzététel konfigurálása – egyszeri](#configure-arc-publishing---sso-single-sign-on)** bejelentkezéses bejelentkezés – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Arc-közzététel létrehozása – SSO-teszt felhasználó](#create-arc-publishing---sso-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó, Britta Simon-hoz tartozó, az arc Publishing-SSO-ba való kapcsolódáshoz.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Ív közzétételi - SSO, az Azure AD egyszeri bejelentkezés konfigurálásához hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés az arc Publishing-SSO használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **ív közzétételi – egyszeri bejelentkezés** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az [Azure Portal](https://portal.azure.com/)az **arc Publishing-SSO-** alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Ív közzététel – egyszeri bejelentkezés tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![Arc-közzététel – egyszeri bejelentkezéses tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.okta.com/saml2/service-provider/<Unique ID>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.okta.com/saml2/service-provider/<Unique ID>`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Ív közzététel – egyszeri bejelentkezés tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+    ![Arc-közzététel – egyszeri bejelentkezéses tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [ív közzétételi - SSO ügyfél-támogatási csapatának](mailto:inf@washpost.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot az [arc Publishing-SSO ügyfél-támogatási csapatával](mailto:inf@washpost.com) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Közzétételi arc - alkalmazás egyszeri bejelentkezés a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. Arc-közzététel – az SSO-alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+7. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------------- |    
-    | Keresztnév | user.givenname |
-    | Vezetéknév | user.surname |
-    | email | user.mail |
-    | groups | user.assignedroles |
+    | firstName | User. givenName |
+    | lastName | felhasználó. vezetéknév |
+    | e-mail | User. mail |
+    | csoportok | User. assignedroles |
 
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson a **Ok**
+    f. Kattintson **az OK** gombra
 
     g. Kattintson a **Save** (Mentés) gombra.
 
     > [!NOTE]
-    > Itt a **csoportok** attribútum van leképezve a **user.assignedroles**. Ezek a leképezéséhez a csoportnevek vissza az alkalmazás Azure AD-ben létrehozott egyéni szerepkörök. További útmutatás található [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) egyéni szerepkörök létrehozásával az Azure ad-ben. 
+    > Itt a **groups** attribútum a **User. assignedroles**leképezéssel van leképezve. Ezek az Azure AD-ben létrehozott egyéni szerepkörök, amelyek a csoportok nevét visszaképezik az alkalmazásba. [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) további útmutatást talál az egyéni szerepkörök létrehozásáról az Azure ad-ben. 
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. Az a **ív közzétételi – egyszeri bejelentkezés beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az **arc Publishing-SSO beállítása** szakaszban másolja a megfelelő URL-címet (ka) t a követelmény szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Bejelentkezési URL-cím
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-arc-publishing---sso-single-sign-on"></a>Ív közzétételének - SSO egyszeri bejelentkezés konfigurálása
+### <a name="configure-arc-publishing---sso-single-sign-on"></a>Arc-közzététel konfigurálása – egyszeri bejelentkezéses egyszeri bejelentkezés
 
-Az egyszeri bejelentkezés konfigurálása **ív közzétételi - SSO** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [ív közzétételi – egyszeri bejelentkezés támogatási csoport](mailto:inf@washpost.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés az **arc Publishing-SSO-** ben való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról az [ív Publishing-SSO támogatási csapatához](mailto:inf@washpost.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés ív közzétételi - SSO Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést az arc Publishing-SSO elérésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ív közzétételi – egyszeri bejelentkezés**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **arc Publishing-SSO**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **ív közzétételi - SSO**.
+2. Az alkalmazások listában válassza az **arc Publishing-SSO**elemet.
 
-    ![A Arc közzétételi – az alkalmazások listáját az egyszeri bejelentkezés hivatkozás](common/all-applications.png)
+    ![Az arc Publishing-SSO hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-arc-publishing---sso-test-user"></a>Ív közzététel – egyszeri bejelentkezés tesztfelhasználó létrehozása
+### <a name="create-arc-publishing---sso-test-user"></a>Arc-közzététel létrehozása – SSO-teszt felhasználó
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó az ív Publishing – egyszeri bejelentkezés jön létre. Ív közzététel – egyszeri Bejelentkezést támogatja just-in-time felhasználókiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik az ív Publishing – egyszeri bejelentkezés, hitelesítés után egy új jön létre.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre az arc Publishing-SSO-ben. Arc-közzététel – az SSO támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az arc Publishing-SSO-ban, akkor a hitelesítés után létrejön egy újat.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ív közzétételi - SSO támogatási csapatának](mailto:inf@washpost.com).
+> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba az [arc Publishing-SSO támogatási csapatával](mailto:inf@washpost.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Kattintva a ív közzétételi - SSO csempe a hozzáférési panelen, kell lehet automatikusan bejelentkezett a ív közzétételi – egyszeri bejelentkezés, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen rákattint az ív Publishing-SSO csempére, automatikusan be kell jelentkeznie az arc Publishing-SSO-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

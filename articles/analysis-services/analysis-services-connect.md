@@ -4,25 +4,25 @@ description: Útmutató az Azure-beli Analysis Services-kiszolgálóról való k
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295183"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147311"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
-Ez a cikk a kiszolgálóhoz való csatlakozást ismerteti adatmodellezési és-kezelési alkalmazások (például SQL Server Management Studio (SSMS) vagy SQL Server Data Tools (SSDT) használatával. Vagy az ügyfél jelentéskészítési alkalmazásaival (például Microsoft Excel, Power BI Desktop vagy egyéni alkalmazásokkal). A Azure Analysis Serviceshoz való csatlakozás HTTPS protokollt használ.
+Ez a cikk a kiszolgálókhoz való csatlakozást ismerteti adatmodellezési és-kezelési alkalmazások, például a SQL Server Management Studio (SSMS) vagy a Visual Studio Analysis Services-projektekkel, valamint a Microsoft Excelben, például a Microsoft Excel alkalmazással Power BI Asztali vagy egyéni alkalmazások. A Azure Analysis Serviceshoz való csatlakozás HTTPS protokollt használ.
 
 ## <a name="client-libraries"></a>Klienskódtárak
 
 [A legújabb ügyféloldali kódtárak beszerzése](analysis-services-data-providers.md)
 
-A kiszolgálóhoz való minden kapcsolat, a típustól függetlenül, frissített AMO-, ADOMD.NET-és OLEDB-ügyféloldali kódtárak szükségesek a Analysis Services-kiszolgálóval való csatlakozáshoz és az ahhoz való kapcsolódáshoz. A SSMS, a SSDT, az Excel 2016-es és újabb verzióiban, valamint Power BI a legújabb ügyféloldali kódtárakat a rendszer a havi kiadásokkal telepíti vagy frissíti. Bizonyos esetekben azonban lehetséges, hogy egy alkalmazás nem rendelkezik a legújabbal. Például ha a házirendek késleltetik a frissítéseket, vagy az Office 365 frissítései a késleltetett csatornán vannak.
+A kiszolgálóhoz való minden kapcsolat, a típustól függetlenül, frissített AMO-, ADOMD.NET-és OLEDB-ügyféloldali kódtárak szükségesek a Analysis Services-kiszolgálóval való csatlakozáshoz és az ahhoz való kapcsolódáshoz. A SSMS, a Visual studióhoz, az Excel 2016-es és újabb verzióihoz, valamint Power BI a legújabb ügyféloldali kódtárakat a rendszer a havi kiadásokkal telepíti vagy frissíti. Bizonyos esetekben azonban lehetséges, hogy egy alkalmazás nem rendelkezik a legújabbal. Például ha a házirendek késleltetik a frissítéseket, vagy az Office 365 frissítései a késleltetett csatornán vannak.
 
 ## <a name="server-name"></a>Kiszolgálónév
 
@@ -35,7 +35,7 @@ Amikor létrehoz egy Analysis Services kiszolgálót az Azure-ban, meg kell adni
 
 ### <a name="get-the-server-name"></a>Kiszolgáló nevének lekérése
 
-A **Azure Portal** > Server > **Áttekintés**@no__t – 2**kiszolgáló neve mezőben**másolja a teljes kiszolgálónevet. Ha a szervezet többi felhasználója is csatlakozik ehhez a kiszolgálóhoz, ezt a kiszolgálónevet megoszthatja velük. A kiszolgáló nevének megadásakor a teljes elérési utat kell használni.
+A **Azure Portal** > Server > **Áttekintés** > **kiszolgáló neve mezőben**másolja a teljes kiszolgálónevet. Ha a szervezet többi felhasználója is csatlakozik ehhez a kiszolgálóhoz, ezt a kiszolgálónevet megoszthatja velük. A kiszolgáló nevének megadásakor a teljes elérési utat kell használni.
 
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 

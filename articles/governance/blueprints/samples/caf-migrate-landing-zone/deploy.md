@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4693959a2b4f0638caea57fb97796faf62aba9a0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298025"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163568"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
 
@@ -120,7 +120,7 @@ Most, hogy áttekintette a CAF Migrálás bevezetési zóna üzembe helyezésén
 > [!div class="nextstepaction"]
 > [A CAF migrációs leszállási zóna tervezete – áttekintés](./index.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervrajzokról és azok használatáról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

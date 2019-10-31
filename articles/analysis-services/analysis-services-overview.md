@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c7cd377929d1dd6d2e6ed8831597695ae02d21c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512609"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146248"
 ---
 # <a name="what-is-azure-analysis-services"></a>Az Azure Analysis Services ismertetése
 
@@ -200,9 +200,9 @@ További információk az Azure Securityről: [Microsoft biztonsági és adatkez
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Az ingyenes [Visual Studióhoz készült SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) használatával modelleket fejleszthet és helyezhet üzembe. Az SSDT Analysis Services-projektsablonokat is tartalmaz a gyors üzembe állítás érdekében. A SSDT mostantól tartalmazza a modern Get adatforrások lekérdezését és az adategyesítési funkciókat táblázatos 1400-modellekhez. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. 
+Modellek fejlesztése és üzembe helyezése a Visual Studióval Analysis Services-projektekkel. A Analysis Services projects bővítmény olyan sablonokat és varázslókat tartalmaz, amelyekkel gyorsan elvégezheti a munkát. A Visual Studióban a Model authoring Environment mostantól tartalmazza a modern Get adatforrások lekérdezését és az adategyesítési funkciókat a táblázatos 1400 és a magasabb modellekhez. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. 
 
-Ha a Visual Studio 2017-es vagy újabb verzióját használja, a Microsoft Analysis Services projektek ingyenes telepíthető VSIX-csomagként érhetők el. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+A Microsoft Analysis Services projektek ingyenes telepíthető VSIX-csomagként érhetők el. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). A bővítmény a Visual Studio 2017-es és újabb verzióival működik együtt, beleértve az ingyenes közösségi kiadást is.
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 

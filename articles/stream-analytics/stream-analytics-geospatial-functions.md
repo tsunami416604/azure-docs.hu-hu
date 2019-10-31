@@ -1,6 +1,6 @@
 ---
-title: A térinformatikai függvények az Azure Stream Analytics bemutatása
-description: Ez a cikk ismerteti az Azure Stream Analytics-feladatok által használt térinformatikai függvényeket.
+title: Azure Stream Analytics térinformatikai függvények bemutatása
+description: Ez a cikk a Azure Stream Analytics feladatokban használt térinformatikai függvényeket ismerteti.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,32 +8,32 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dfbe7e607395006f9bd7da0be0d5673353e2801f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620930"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162589"
 ---
-# <a name="introduction-to-stream-analytics-geospatial-functions"></a>Bevezetés a Stream Analytics a térinformatikai függvények
+# <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics térinformatikai függvények bemutatása
 
-A térinformatikai függvények az Azure Stream Analytics szolgáltatásban engedélyezze a streamelési térinformatikai adatok valós idejű elemzését. Mindössze néhány sornyi kóddal összetett forgatókönyvek termelési szintű megoldást fejleszthet. 
+A Azure Stream Analytics térinformatikai funkciói lehetővé teszik a valós idejű elemzést a térinformatikai adatok folyamatos átviteléhez. Mindössze néhány sornyi kóddal, összetett forgatókönyvekhez fejlesztheti az éles környezet kialakítására szolgáló megoldást. 
 
-A térinformatikai függvények is kihasználó forgatókönyvek például:
+Példa a térinformatikai függvények előnyeit kihasználó forgatókönyvekre:
 
-* Autómegosztások
+* Ride-Sharing
 * Flottakezelés
 * Eszközkövetés
-* Geokerítés-
-* Telefonos követési cella helyek között
+* Földrajzi kerítés
+* Telefonos nyomon követés a cella helyei között
 
-Stream Analytics lekérdezési nyelv hét beépített térinformatikai függvényekkel rendelkezik: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_ Metszi saját**, és **ST_WITHIN**.
+Stream Analytics lekérdezési nyelv hét beépített térinformatikai funkcióval rendelkezik: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**és **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 
-A `CreateLineString` függvény elfogad pontok, és adja vissza egy GeoJSON LineString, amely egy térképen vonal algoritmus. Hozhat létre egy LineString legalább két pontból kell rendelkeznie. A LineString pontok csatlakozik ahhoz.
+A `CreateLineString` függvény fogadja a pontokat, és egy GeoJSON-LineString ad vissza, amely egy Térkép vonalának ábrázolására szolgál. LineString létrehozásához legalább két pontnak kell lennie. A LineString pontok sorrendben lesznek csatlakoztatva.
 
-Az alábbi lekérdezés használja `CreateLineString` hozhat létre egy LineString, három pontot használ. Az első pont létrehozása a streamadatok bemeneti, míg a másik két kézzel létrehozott.
+A következő lekérdezés a `CreateLineString` használatával hoz létre egy LineString három ponttal. Az első pont a streaming bemeneti adatokból jön létre, míg a másik kettő manuálisan jön létre.
 
 ```SQL 
 SELECT  
@@ -41,26 +41,26 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>A bemeneti példa  
+### <a name="input-example"></a>Példa bemenetre  
   
-|Szélesség|Hosszúság|  
+|szélesség|hosszúság|  
 |--------------|---------------|  
-|3.0|-10.2|  
-|-87.33|20.2321|  
+|3.0|– 10,2|  
+|– 87,33|20,2321|  
   
-### <a name="output-example"></a>Példa a kimenetre  
+### <a name="output-example"></a>Példa kimenetre  
 
- {"type": "LineString", "koordináták": [[-10.2, 3.0-s], [10.0, 10.0-s verzióját], [10,5, 10,5]]}
+ {"type": "LineString", "koordináták": [[-10,2, 3,0], [10,0, 10,0], [10,5, 10,5]]}
 
- {"type": "LineString", "koordináták": [[20.2321,-87.33], [10.0, 10.0-s verzióját], [10,5, 10,5]]}
+ {"type": "LineString", "koordináták": [[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5]]}
 
-További tudnivalókért látogasson el a [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) hivatkozást.
+További tudnivalókért tekintse meg a [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) -referenciát.
 
 ## <a name="createpoint"></a>CreatePoint
 
-A `CreatePoint` függvény elfogad egy szélességi és hosszúsági, és adja vissza egy GeoJSON-pont, amely egy térképen algoritmus. A földrajzi szélességet és hosszúságot kell lennie egy **lebegőpontos** adattípus.
+A `CreatePoint` függvény a szélességet és a hosszúságot fogadja, és egy GeoJSON pontot ad vissza, amely egy térképen ábrázolható. A szélességi és hosszúsági köröknek **lebegőpontos** adattípusnak kell lenniük.
 
-Használja a következő példalekérdezés `CreatePoint` földrajzi szélesség és hosszúság a bemeneti adatok streaming használatával pont létrehozásához.
+A következő példa a `CreatePoint` használatával hoz létre egy pontot a szélességi és hosszúsági szinteken a bemeneti adatok továbbításához.
 
 ```SQL 
 SELECT  
@@ -68,26 +68,26 @@ SELECT
 FROM input 
 ```  
 
-### <a name="input-example"></a>A bemeneti példa  
+### <a name="input-example"></a>Példa bemenetre  
   
-|Szélesség|Hosszúság|  
+|szélesség|hosszúság|  
 |--------------|---------------|  
-|3.0|-10.2|  
-|-87.33|20.2321|  
+|3.0|– 10,2|  
+|– 87,33|20,2321|  
   
-### <a name="output-example"></a>Példa a kimenetre
+### <a name="output-example"></a>Példa kimenetre
   
- {"type": "Pont", "koordináták": [-10.2, 3.0-s]}  
+ {"type": "pont", "koordináták": [-10,2, 3,0]}  
   
- {"type": "Pont", "koordináták": [20.2321,-87.33]}  
+ {"type": "pont", "koordináták": [20,2321,-87,33]}  
 
-További tudnivalókért látogasson el a [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) hivatkozást.
+További tudnivalókért tekintse meg a [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) -referenciát.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
-A `CreatePolygon` függvény pontok fogad és a egy GeoJSON-poligon rekordot ad vissza. A pontok sorrendje kell követnie a kör jobb tájolású, vagy az óramutató járásával ellentétes irányban. Az Imagine walking egyik helyről egy másikra a sorrendben megadva azok. A sokszög középpontjának a bal oldali lenne, a teljes időt.
+A `CreatePolygon` függvény fogadja a pontokat, és egy GeoJSON-sokszöget ad vissza. A pontok sorrendjének a jobb oldali gyűrű tájolását kell követnie, vagy az óramutató járásával ellentétes irányban kell állnia. Képzelje el, hogy az egyik pontról a másikra mutat a deklarált sorrendben. A sokszög középpontja a teljes idő alatt marad.
 
-Használja a következő példalekérdezés `CreatePolygon` sokszög a három pont létrehozásához. Az első két pontot hoz létre manuálisan, és a legutóbbi pont jön létre a bemeneti adatok.
+A következő példában a lekérdezés a `CreatePolygon` használatával hoz létre egy sokszöget három pontból. Az első két pont létrehozása manuálisan történik, és a rendszer az utolsó pontot hozza létre a bemeneti adatokból.
 
 ```SQL 
 SELECT  
@@ -95,26 +95,26 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>A bemeneti példa  
+### <a name="input-example"></a>Példa bemenetre  
   
-|Szélesség|Hosszúság|  
+|szélesség|hosszúság|  
 |--------------|---------------|  
-|3.0|-10.2|  
-|-87.33|20.2321|  
+|3.0|– 10,2|  
+|– 87,33|20,2321|  
   
-### <a name="output-example"></a>Példa a kimenetre  
+### <a name="output-example"></a>Példa kimenetre  
 
- {"type": "Sokszög", "koordináták": [[[-10.2, 3.0-s], [10.0, 10.0-s verzióját], [10,5, 10,5], [-10.2, 3.0-s]]]}
+ {"type": "sokszög", "koordináták": [[[-10,2, 3,0], [10,0, 10,0], [10,5, 10,5], [-10,2, 3,0]]]}
  
- {"type": "Sokszög", "koordináták": [[[20.2321,-87.33], [10.0, 10.0-s verzióját], [10,5, 10,5], [20.2321,-87.33]]]}
+ {"type": "sokszög", "koordináták": [[[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5], [20,2321,-87,33]]]}
 
-További tudnivalókért látogasson el a [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) hivatkozást.
+További tudnivalókért tekintse meg a [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) -referenciát.
 
 
-## <a name="stdistance"></a>ST_DISTANCE
-A `ST_DISTANCE` függvény méterben két pont közötti távolságot adja vissza. 
+## <a name="st_distance"></a>ST_DISTANCE
+A `ST_DISTANCE` függvény a két pont közötti távolságot adja vissza méterben. 
 
-Az alábbi lekérdezés használja `ST_DISTANCE` egy eseményt, amikor egy benzinkutat kevesebb mint 10 km-re az autó létrehozásához.
+A következő lekérdezés `ST_DISTANCE`t használ egy esemény előállításához, amikor egy benzinkútnál kevesebb, mint 10 km az autótól.
 
 ```SQL
 SELECT Cars.Location, Station.Location 
@@ -122,12 +122,12 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-További tudnivalókért látogasson el a [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) hivatkozást.
+További tudnivalókért tekintse meg a [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) -referenciát.
 
-## <a name="stoverlaps"></a>ST_OVERLAPS
-A `ST_OVERLAPS` függvény két poligonok hasonlítja össze. Ha a sokszög átfedésben vannak, a függvény egy 1 adja vissza. A függvény 0 adja vissza, ha a poligonok nem lehetnek átfedésben. 
+## <a name="st_overlaps"></a>ST_OVERLAPS
+A `ST_OVERLAPS` függvény két sokszöget hasonlít össze. Ha a sokszögek átfedésben vannak, a függvény egy 1 értéket ad vissza. A függvény a 0 értéket adja vissza, ha a sokszögek nem fedik át egymást. 
 
-Az alábbi lekérdezés használja `ST_OVERLAPS` létrehozni egy eseményt, amikor egy épület-elárasztás zóna lehetséges belül van.
+A következő lekérdezés a `ST_OVERLAPS` használatával hoz létre egy eseményt, amikor egy épület egy lehetséges árvízi zónán belül van.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -135,7 +135,7 @@ FROM Building b
 JOIN Flooding f ON ST_OVERLAPS(b.Polygon, b.Polygon) 
 ```
 
-A következő példalekérdezés generál egy eseményt, amikor egy storm felé egy autó fejléc.
+A következő példa egy eseményt hoz létre, amikor egy Storm egy autó irányába mutat.
 
 ```SQL
 SELECT Cars.Location, Storm.Course
@@ -143,12 +143,12 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-További tudnivalókért látogasson el a [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) hivatkozást.
+További tudnivalókért tekintse meg a [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) -referenciát.
 
-## <a name="stintersects"></a>ST_INTERSECTS
-A `ST_INTERSECTS` függvény két LineString hasonlítja össze. Ha a LineString metszetoszlop, a függvény 1 adja vissza. A függvény 0 adja vissza, ha a LineString nem átfedésben.
+## <a name="st_intersects"></a>ST_INTERSECTS
+A `ST_INTERSECTS` függvény összehasonlítja a két LineString. Ha a LineString metszi egymást, akkor a függvény az 1 értéket adja vissza. A függvény a 0 értéket adja vissza, ha a LineString nem metszi egymást.
 
-Használja a következő példalekérdezés `ST_INTERSECTS` meghatározni, ha egy kövezett utat metszi a terepmotor úton.
+Az alábbi példában szereplő lekérdezés a `ST_INTERSECTS` segítségével határozza meg, hogy egy burkolt út egy Dirt Roadot használ-e.
 
 ```SQL 
 SELECT  
@@ -156,25 +156,25 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>A bemeneti példa  
+### <a name="input-example"></a>Példa bemenetre  
   
 |datacenterArea|stormArea|  
 |--------------------|---------------|  
-|{"type": "LineString", "koordináták": [[-10.0, 0.0], [0.0, 0.0], [10.0, 0.0]]}|{"type": "LineString", "koordináták": [[0.0, 10.0], [0.0, 0.0], [0.0,-10.0]]}|  
-|{"type": "LineString", "koordináták": [[-10.0, 0.0], [0.0, 0.0], [10.0, 0.0]]}|{"type": "LineString", "koordináták": [[-10.0, 10.0-s verzióját], [0.0, 10.0], [10.0, 10.0-s verzióját]]}|  
+|{"type": "LineString", "koordináták": [[-10,0, 0,0], [0,0, 0,0], [10,0, 0,0]]}|{"type": "LineString", "koordináták": [[0,0, 10,0], [0,0, 0,0], [0,0,-10,0]]}|  
+|{"type": "LineString", "koordináták": [[-10,0, 0,0], [0,0, 0,0], [10,0, 0,0]]}|{"type": "LineString", "koordináták": [[-10,0, 10,0], [0,0, 10,0], [10,0, 10,0]]}|  
   
-### <a name="output-example"></a>Példa a kimenetre  
+### <a name="output-example"></a>Példa kimenetre  
 
  1  
   
  0  
 
-További tudnivalókért látogasson el a [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) hivatkozást.
+További tudnivalókért tekintse meg a [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) -referenciát.
 
-## <a name="stwithin"></a>ST_WITHIN
-A `ST_WITHIN` függvény meghatározza, hogy egy pontot vagy a sokszög egy sokszög belül. Ha a sokszög pont vagy sokszög tartalmazza, a függvény 1 adja vissza. A függvény 0 vissza, ha a pont és a sokszög nem a deklarált sokszög belül található.
+## <a name="st_within"></a>ST_WITHIN
+A `ST_WITHIN` függvény határozza meg, hogy egy pont vagy sokszög egy sokszögen belül van-e. Ha a sokszög a pontot vagy a sokszöget tartalmazza, a függvény 1 értéket ad vissza. A függvény 0 értéket ad vissza, ha a pont vagy a sokszög nem a deklarált sokszögen belül található.
 
-Használja a következő példalekérdezés `ST_WITHIN` meghatározni, hogy a megadott adatraktár sokszög belül van-e a tartalomkézbesítési célhelyre.
+A következő példa `ST_WITHIN` használatával határozza meg, hogy a kézbesítési célhely a megadott raktári sokszögen belülre esik-e.
 
 ```SQL 
 SELECT  
@@ -182,24 +182,24 @@ SELECT
 FROM input 
 ```  
 
-### <a name="input-example"></a>A bemeneti példa  
+### <a name="input-example"></a>Példa bemenetre  
   
 |deliveryDestination|adatraktár|  
 |-------------------------|---------------|  
-|{"type": "Pont", "koordináták": [76.6, 10.1]}|{"type": "Sokszög", "koordináták": [[0.0, 0.0], [10.0, 0.0], [10.0, 10.0-s verzióját], [0.0, 10.0], [0.0, 0.0]]}|  
-|{"type": "Pont", "koordináták": [15.0, 15.0]}|{"type": "Sokszög", "koordináták": [[10.0, 10.0-s verzióját], [20,0, 10.0], [20.0, 20.0], [10.0, 20,0], [10.0, 10.0-s verzióját]]}|  
+|{"type": "pont", "koordináták": [76,6, 10,1]}|{"type": "sokszög", "koordináták": [[0,0, 0,0], [10,0, 0,0], [10,0, 10,0], [0,0, 10,0], [0,0, 0,0]]}|  
+|{"type": "pont", "koordináták": [15,0, 15,0]}|{"type": "sokszög", "koordináták": [[10,0, 10,0], [20,0, 10,0], [20,0, 20,0], [10,0, 20,0], [10,0, 10,0]]}|  
   
-### <a name="output-example"></a>Példa a kimenetre  
+### <a name="output-example"></a>Példa kimenetre  
 
  0  
   
  1  
 
-További tudnivalókért látogasson el a [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) hivatkozást.
+További tudnivalókért tekintse meg a [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) -referenciát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

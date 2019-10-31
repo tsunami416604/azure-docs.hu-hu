@@ -1,33 +1,33 @@
 ---
-title: Az ajánlat közzétételi automatizálása |} Az Azure Marketplace-en
-description: Programozott módon automatizálhatja a virtuális gép közzétételi munkafolyamatot ismerteti.
+title: Ajánlat-közzététel automatizálása | Azure piactér
+description: Ismerteti, hogyan lehet programozott módon automatizálni a virtuális gépek közzétételi munkafolyamatát.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 0a927c72a82c6aa3c79988c599ea8b840821a2b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50b785ed9456b0b112dea01a219e988b81094571
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935903"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154641"
 ---
-<a name="automate-offer-publishing"></a>Az ajánlat közzétételi automatizálása
+<a name="automate-offer-publishing"></a>Ajánlat-közzététel automatizálása
 =========================
 
-A virtuális gép közzététele a munkafolyamat, az API-k használatával programozott módon is automatizálható a [API-referencia](./cloud-partner-portal-api-overview.md) szakaszban. Automation tervezése közben vegye figyelembe, hogy két különböző forgatókönyv közül választhat: kezdeti közzétételt és az ezt követő ajánlat közzététele.
+A virtuális gép közzétételi munkafolyamatát programozott módon is automatizálhatja az API-k használatával az [API-referenciák](./cloud-partner-portal-api-overview.md) szakaszban. Az automatizálás megtervezése során két különböző forgatókönyvnek kell megfontolnia: az ajánlat kezdeti közzététele és a további ajánlatok közzététele.
 
 
-<a name="offer-initial-publishing"></a>Ajánlat az első közzététel
+<a name="offer-initial-publishing"></a>Ajánlat kezdeti közzététele
 -------------------------
 
-Ha közzéteszi első alkalommal egy ajánlatra, néhány további lépések szükségesek a Marketplace-en való feltöltés előtt.  Például kell előkészíteni a metaadatok, és hozzon létre egy ajánlatot piszkozat. A kezdeti közzétételi munkafolyamatot az alábbi ábrán látható.
+Amikor első alkalommal tesz közzé egy ajánlatot, néhány további lépést is igényel a piactérre való feltöltés előtt.  Elő kell készíteni például a metaadatokat, és létre kell hoznia egy ajánlat tervezetét. A kezdeti közzétételi munkafolyamat a következő ábrán látható.
 
-![Interakciók kiindulási kiadvány ajánlat](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![A kezdeti ajánlat közzétételének interakciói](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-Az alábbi mintakód bemutatja ezeket a lépéseket.
+Az alábbi mintakód ezeket a lépéseket mutatja be.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -55,7 +55,7 @@ Az alábbi mintakód bemutatja ezeket a lépéseket.
   ValidateAndGoLive()    
   {
       // Confirm the version in preview slot is the version that needs to go live
-      offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+      offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
       if(!offer[skuName].containsVersion(VMDisk.Version))
       {
           UpdateOfferAndPublish()
@@ -74,12 +74,12 @@ Az alábbi mintakód bemutatja ezeket a lépéseket.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>Ezt követő ajánlat közzététele
+<a name="subsequent-offer-publishing"></a>További ajánlatok közzététele
 ---------------------------
 
-Miután a virtuális gép (VM) az ajánlat integrálva van egy folyamatos integrációs folyamat, automatizálhatja a közzétételi munkafolyamat futtatását minden alkalommal, amikor létrejön egy új virtuális merevlemez (VHD).  Ezt a munkafolyamatot az alábbi ábra és a mintául szolgáló kód mutatja be.
+Miután a virtuális gép (VM) ajánlata integrálva van egy folyamatos integrációs folyamatba, automatizálhatja a közzétételi munkafolyamatot, hogy minden alkalommal fusson, amikor új virtuális merevlemezt (VHD-t) hoz létre.  Ezt a munkafolyamatot a következő diagram és mintakód szemlélteti.
 
-![Az ezt követő ajánlat kiadványok interakciók](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Az ajánlatok további kiadványainak interakciói](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()
@@ -127,7 +127,7 @@ Miután a virtuális gép (VM) az ajánlat integrálva van egy folyamatos integr
     ValidateAndGoLive()
     {
         // Confirm the version in preview slot is the version that needs to go live
-        offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+        offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
         if(!offer[skuName].containsVersion(VMDisk.Version))
         {
             UpdateOfferAndPublish()

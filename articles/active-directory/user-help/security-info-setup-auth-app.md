@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 101d478d37055a08a5ced9113e070bf826613bd3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616138"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160771"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>A biztonsági adatok (előzetes verzió) beállítása a hitelesítő alkalmazás használatára
 
@@ -36,7 +36,7 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás beállítása
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
 
     ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
@@ -44,11 +44,11 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza a hitelesítő **alkalmazás** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
+3. A **metódus hozzáadása** lapon válassza a **hitelesítő alkalmazás** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
 
     ![A Method Box hozzáadása a hitelesítő alkalmazás kiválasztásával](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. Az **alkalmazás** beszerzése lapon válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább**lehetőséget.
+4. Az **alkalmazás beszerzése** lapon válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább**lehetőséget.
 
     További információ az alkalmazás letöltéséről és telepítéséről: [a Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md).
 
@@ -119,7 +119,7 @@ Ha azt szeretné, hogy a hitelesítő alkalmazás az alapértelmezett módszer l
 
     ![Az alapértelmezett bejelentkezési módszer hivatkozásának módosítása](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 
-2. Válassza az **Microsoft Authenticator – értesítés** lehetőséget az elérhető módszerek legördülő listájából. Ha nem használja a Microsoft Authenticator alkalmazást, válassza a hitelesítő **alkalmazás vagy a hardver token** lehetőséget.
+2. Válassza az **Microsoft Authenticator – értesítés** lehetőséget az elérhető módszerek legördülő listájából. Ha nem használja a Microsoft Authenticator alkalmazást, válassza a **hitelesítő alkalmazás vagy a hardver token** lehetőséget.
 
     ![Válassza ki a metódust az alapértelmezett bejelentkezéshez](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
@@ -144,10 +144,10 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Jelentkezzen be a Microsoft Authenticator alkalmazással, a [Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával](security-info-setup-signin.md) című szakaszának lépéseit követve.
 
-- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 
 - Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

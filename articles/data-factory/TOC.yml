@@ -82,7 +82,7 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: Adatok átalakítása adatfolyam-leképezéssel
       href: tutorial-data-flow.md
-    - name: Adatok átalakítása a felhőben
+    - name: Külső átalakítások
       items:
         - name: HDInsight Spark
           items:
@@ -94,7 +94,7 @@
           items:
             - name: Felhasználói felület (UI)
               href: transform-data-using-databricks-notebook.md
-    - name: Adatok átalakítása virtuális hálózatban
+    - name: Hive-átalakítás virtuális hálózatban
       items:
         - name: Felhasználói felület (UI)
           href: tutorial-transform-data-hive-virtual-network-portal.md
@@ -622,6 +622,8 @@
       items:
         - name: Rögzített szélességű szövegfájlok feldolgozása
           href: how-to-fixed-width.md
+        - name: Hibát tartalmazó sorok kezelése
+          href: how-to-data-flow-error-rows.md
     - name: SSIS-migrálás helyszínről
       items:
         - name: SSIS-migrálás áttekintése

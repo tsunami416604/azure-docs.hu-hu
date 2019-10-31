@@ -1,5 +1,5 @@
 ---
-title: Tokenek kezelése (Microsoft Authentication Library)
+title: Tokenek beszerzése és gyorsítótárazása a MSAL használatával
 titleSuffix: Microsoft identity platform
 description: További információ a tokenek beszerzéséről és gyorsítótárazásáról a Microsoft Authentication Library (MSAL) használatával.
 services: active-directory
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0d47fa92de8365ed3a5e0349b78899ff7fde1375
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150646"
 ---
-# <a name="acquiring-and-caching-tokens-using-msal"></a>Tokenek beszerzése és gyorsítótárazása a MSAL használatával
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
+
 A [hozzáférési tokenek](access-tokens.md) lehetővé teszik az ügyfelek számára az Azure által védett webes API-k biztonságos meghívását. A Microsoft Authentication Library (MSAL) segítségével többféleképpen is beszerezheti a jogkivonatokat. A felhasználók egy webböngészőn keresztüli interakciót igényelnek. Némelyikhez nincs szükség felhasználói beavatkozásra. Általánosságban elmondható, hogy a token beszerzésének módja attól függ, hogy az alkalmazás egy nyilvános ügyfélalkalmazás (asztali vagy mobil alkalmazás) vagy egy bizalmas ügyfélalkalmazás (webalkalmazás, webes API vagy démon alkalmazás, például Windows-szolgáltatás).
 
 A MSAL a beszerzését követően gyorsítótárazza a tokent.  Az alkalmazás kódjának csendesen (a gyorsítótárból) meg kell próbálnia a token lekérését, mielőtt más módon beszerezze a jogkivonatot.

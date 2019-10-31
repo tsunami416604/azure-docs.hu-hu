@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az Adobe Creative Cloud |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Adobe Creative Cloud és az Azure Active Directory között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Adobe Creative Cloudtal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Adobe Creative Cloud között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,258 +16,258 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f3fdd1aa4fa655cfffb9e9a2f29d551133613a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107351"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154012"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Az Adobe Creative Cloud az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Azure Active Directory integráció a Adobe Creative Cloud
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható az Adobe Creative Cloud szolgáltatásban az Azure Active Directoryval (Azure AD).
-Az Adobe Creative Cloud szolgáltatásban integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Adobe Creative Cloudt Azure Active Directory (Azure AD) használatával.
+A Adobe Creative Cloud az Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* Szabályozhatja, aki hozzáféréssel rendelkezik az Adobe Creative cloud szolgáltatásban az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett az Adobe Creative cloud szolgáltatásban (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá Adobe Creative Cloudhoz.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Adobe Creative Cloudba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az Adobe Creative Cloud, a következőkre van szükség:
+Az Azure AD-integráció Adobe Creative Cloudval való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Az Adobe Creative Cloud szolgáltatásban egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Adobe Creative Cloud egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja az Adobe Creative Cloud **SP** által kezdeményezett egyszeri bejelentkezés
+* Adobe Creative Cloud támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Az Adobe Creative Cloud szolgáltatásban hozzáadása a katalógusból
+## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Adobe Creative Cloud hozzáadása a gyűjteményből
 
-Az Adobe Creative Cloud szolgáltatásban integrálása az Azure AD beállítása, hozzá kell az Adobe Creative Cloud szolgáltatásban a galériából a felügyelt SaaS-alkalmazások listájára.
+Adobe Creative Cloud az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia Adobe Creative Cloud a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Az Adobe Creative Cloud szolgáltatásban hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha Adobe Creative Cloud szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Adobe Creative Cloud**, jelölje be **Adobe Creative Cloud** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Adobe Creative Cloud**kifejezést, válassza a **Adobe Creative Cloud** az eredmények paneljén, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az Adobe Creative Cloud szolgáltatásban a találatok listájában](common/search-new-app.png)
+    ![Adobe Creative Cloud az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és az Adobe Creative Cloud szolgáltatásban a kapcsolódó felhasználó közötti kapcsolat kapcsolatot kell hozható létre.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését Adobe Creative Cloud a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Adobe Creative Cloud kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés Adobe Creative Cloud használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Adobe Creative Cloud egyszeri bejelentkezés konfigurálása](#configure-adobe-creative-cloud-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre az Adobe Creative Cloud szolgáltatásban tesztfelhasználót](#create-adobe-creative-cloud-test-user)**  - a-megfelelője a Britta Simon szerepel az Adobe Creative Cloud szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Adobe Creative Cloud egyszeri bejelentkezés konfigurálása](#configure-adobe-creative-cloud-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre Adobe Creative Cloud test User](#create-adobe-creative-cloud-test-user)** -t, hogy a Britta Simon partnere legyen a Adobe Creative Cloud, amely a felhasználó Azure ad-képviseletéhez van csatolva.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés Adobe Creative Cloud használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Adobe Creative Cloud** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/) **Adobe Creative Cloud** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Az Adobe Creative Cloud tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
+    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak Adobe Creative Cloud](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-** szöveg írja be az értéket: `https://adobe.com`.
+    a. A **bejelentkezési URL** szövegmezőbe írja be az értéket a következőre: `https://adobe.com`.
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.okta.com/saml2/service-provider/<token>`
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [az Adobe Creative Cloud ügyfél-támogatási csapatának](https://www.adobe.com/au/creativecloud/business/teams/plans.html) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval. Az érték beszerzéséhez vegye fel a kapcsolatot [Adobe Creative Cloud ügyfél-támogatási csapattal](https://www.adobe.com/au/creativecloud/business/teams/plans.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az Adobe Creative Cloudba feltöltött alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Adobe Creative Cloud alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Név | Forrás attribútum|
     |----- | --------- |
-    | FirstName | user.givenname |
-    | LastName | user.surname |
-    | E-mail | user.mail
+    | firstName | User. givenName |
+    | lastName | felhasználó. vezetéknév |
+    | E-mail cím | User. mail
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson a **Ok**
+    f. Kattintson **az OK** gombra
 
     g. Kattintson a **Save** (Mentés) gombra.
 
     > [!NOTE]
-    > Felhasználók kell licenccel kell rendelkeznie egy érvényes Office 365 ExO e-mailek jogcím értéke a SAML-válasz kell feltöltenie.
+    > A felhasználóknak érvényes Office 365 ExO-licenccel kell rendelkezniük az SAML-válaszban az e-mail-jogcím értékének kitöltéséhez.
 
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-8. Az a **beállítása az Adobe Creative Cloud** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. A **Adobe Creative Cloud beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Bejelentkezési URL-cím
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-adobe-creative-cloud-single-sign-on"></a>Az Adobe Creative Cloud szolgáltatásban egyszeri bejelentkezés konfigurálása
+### <a name="configure-adobe-creative-cloud-single-sign-on"></a>Adobe Creative Cloud egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban, jelentkezzen be [Adobe felügyeleti konzol](https://adminconsole.adobe.com) rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az [Adobe felügyeleti konzolra](https://adminconsole.adobe.com) .
 
-2. Lépjen a **beállítások** a felső navigációs sávot, és válassza a **identitás**. Megnyílik a tartományok listáját. Kattintson a **konfigurálása** hivatkozásra a tartomány alapján. Hajtsa végre az alábbi lépéseket a **egyszeri bejelentkezést a konfiguráció szükséges** szakaszban. További információkért lásd: [tartomány beállítása](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+2. A felső navigációs sávon kattintson a **Beállítások** elemre, majd válassza az **identitás**elemet. Megnyílik a tartományok listája. Kattintson a kapcsolat **konfigurálása** a tartományhoz lehetőségre. Ezután hajtsa végre az alábbi lépéseket az **egyszeri bejelentkezés konfigurálásához szükséges** szakaszban. További információ: [tartomány beállítása](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 
-    ![Beállítások](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "beállításai")
+    ![Beállítások](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Beállítások")
 
-    a. Kattintson a **Tallózás** feltöltése az Azure AD-ből a letöltött tanúsítvány **Identitásszolgáltató tanúsítvány**.
+    a. Kattintson a **Tallózás** gombra a letöltött tanúsítvány az Azure ad-ből **identitásszolgáltató-tanúsítványba**való feltöltéséhez.
 
-    b. Az a **Identitásszolgáltató kibocsátója** szövegmezőbe put értékét **SAML entitásazonosító** a másolt **bejelentkezés konfigurálása** szakaszban az Azure Portalon.
+    b. A **identitásszolgáltató kiállító** szövegmezőbe írja be az **SAML-entitás azonosítójának** értékét, amelyet a Azure Portal-ben a **Bejelentkezés konfigurálása** szakaszban másolt.
 
-    c. Az a **Identitásszolgáltató bejelentkezési URL-cím** szövegmezőbe put értékét **SAML egyszeri bejelentkezési szolgáltatás URL-címe** a másolt **bejelentkezés konfigurálása** szakaszban az Azure Portalon.
+    c. A **identitásszolgáltató bejelentkezési URL-címe** szövegmezőbe írja be az **SAML SSO szolgáltatás URL-címének** értékét, amelyet a Azure Portal-ben a **Bejelentkezés konfigurálása** szakaszban másolt.
 
-    d. Válassza ki **HTTP - átirányítási** , **Identitásszolgáltató kötés**.
+    d. Válassza a **http-átirányítás identitásszolgáltató-** **Kötésként**lehetőséget.
 
-    e. Válassza ki **E-mail-cím** , **felhasználói bejelentkezési beállítás**.
+    e. Válassza ki az **E-mail címet** **felhasználói bejelentkezési beállításként**.
 
-    f. Kattintson a **mentése** gombra.
+    f. Kattintson a **Save (Mentés** ) gombra.
 
-3. Az irányítópulton, most már megjelenik az XML-fájl **"Metaadatok letöltése"** fájlt. Adobe EntityDescriptor és AssertionConsumerService URL-címe tartalmazza. Nyissa meg a fájlt, és konfigurálja őket az Azure AD-alkalmazás.
+3. Az irányítópult mostantól a **"metaadatok letöltése"** fájlt fogja bemutatni. Az Adobe EntityDescriptor URL-címét és AssertionConsumerService URL-címét tartalmazza. Nyissa meg a fájlt, és konfigurálja őket az Azure AD-alkalmazásban.
 
-    ![Egyszeri bejelentkezés az alkalmazás oldalán konfigurálása](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. Használja az Adobe a megadott EntityDescriptor értéket **azonosító** a a **Alkalmazásbeállítások konfigurálása** párbeszédpanel.
+    a. Használja az EntityDescriptor értéket az Adobe által megadott **azonosítóhoz** az **Alkalmazásbeállítások konfigurálása** párbeszédpanelen.
 
-    b. Használja az Adobe a megadott AssertionConsumerService értéket **válasz URL-cím** a a **Alkalmazásbeállítások konfigurálása** párbeszédpanel.
+    b. Használja az AssertionConsumerService értéket az Adobe által megadott **Válasz URL-címére** az **Alkalmazásbeállítások konfigurálása** párbeszédpanelen.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezést a hozzáférés biztosításával az Adobe Creative cloud szolgáltatásban.
+Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést az Adobe Creative Cloud elérésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Adobe Creative Cloud**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Adobe Creative Cloud**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Adobe Creative Cloud**.
+2. Az alkalmazások listában válassza a **Adobe Creative Cloud**lehetőséget.
 
-    ![Az alkalmazások listáját az Adobe Creative Cloud hivatkozásra](common/all-applications.png)
+    ![Az alkalmazások lista Adobe Creative Cloud hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-adobe-creative-cloud-test-user"></a>Az Adobe Creative Cloud szolgáltatásban tesztfelhasználó létrehozása
+### <a name="create-adobe-creative-cloud-test-user"></a>Adobe Creative Cloud tesztelési felhasználó létrehozása
 
-Ahhoz, hogy jelentkezzen be Adobe Creative Cloud az Azure AD-felhasználók, akkor ki kell építeni az Adobe Creative Cloud szolgáltatásban. Az Adobe Creative Cloud, esetén kézi tevékenység kiépítése.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Adobe Creative Cloudba, Adobe Creative Cloud kell kiépíteni őket. Adobe Creative Cloud esetén a kiépítés manuális feladat.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>A felhasználói fiókok kiépítése, hajtsa végre az alábbi lépéseket:
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Felhasználói fiókok kiépítéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be a [Adobe felügyeleti konzol](https://adminconsole.adobe.com) hely rendszergazdaként.
+1. Jelentkezzen be rendszergazdaként az [Adobe felügyeleti konzol](https://adminconsole.adobe.com) webhelyére.
 
-2. Összevont ID Adobe konzolon belül a felhasználó hozzáadása, és hozzárendelheti őket egy termék profilt. Felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [-felhasználók hozzáadása az Adobe felügyeleti konzol](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
+2. Vegye fel a felhasználót az Adobe konzolján összevont AZONOSÍTÓként, és rendelje hozzá egy termék profiljához. A felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [felhasználók hozzáadása az Adobe felügyeleti konzolon](https://helpx.adobe.com/enterprise/using/users.html#Addusers) . 
 
-3. Ezen a ponton az Adobe bejelentkezési űrlapot, nyomja le a tab, írjon be az e-mail cím egyszerű és kell összevonva az Azure AD vissza:
-   * A webes elérés: www\.Adobe.com webhelyre > jelentkezzen be
-   * Az asztali alkalmazás segédprogram belül > jelentkezzen be
-   * Az alkalmazáson belül > Súgó > jelentkezzen be
+3. Ezen a ponton írja be az e-mail-címét/UPN-t az Adobe bejelentkezési űrlapba, nyomja le a TAB billentyűt, és az Azure AD-be való összevonáshoz:
+   * Webes elérés: www\.adobe.com > bejelentkezés
+   * Az asztali alkalmazás segédprogram > bejelentkezés
+   * Az alkalmazáson belül > Súgó > bejelentkezéshez
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen az Adobe Creative Cloud csempére kattint, akkor kell automatikusan megtörténik a az Adobe Creative cloud szolgáltatásban, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Adobe Creative Cloud csempére kattint, automatikusan be kell jelentkeznie arra a Adobe Creative Cloudra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
   
-- [Tartomány (Adobe.com webhelyre) beállítása](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [Tartomány beállítása (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
   
-- [Az Adobe egyszeri bejelentkezés (Adobe.com webhelyre) való használatra Azure konfigurálása](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
+- [Az Azure konfigurálása az Adobe SSO (adobe.com) szolgáltatással való használatra](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)

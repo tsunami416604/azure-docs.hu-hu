@@ -7,18 +7,18 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 72b7b370158f228d725e9c6970dfcffb09e7986b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297115"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162959"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
 A következő cikk azt ismerteti, hogyan jelennek meg az Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei az Egyesült Királyság hivatalos és egyesült királysági NHS-vezérlőinek. További információ a vezérlőelemekről: [Egyesült Királyság hivatalos](https://www.gov.uk/government/publications/government-security-classifications).
 
-Az alábbi hozzárendelések az **Egyesült Királyság hivatalos** és **Egyesült Királysági NHS** -vezérlőinek. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[Preview @ no__t-2 audit uk hivatalos és az Egyesült királyságbeli NHS-vezérlőt, és helyezzen üzembe speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+Az alábbi hozzárendelések az **Egyesült Királyság hivatalos** és **Egyesült Királysági NHS** -vezérlőinek. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[előzetes verzióját\] a naplózási Egyesült Királyság hivatalos és az Egyesült királyságbeli NHS-vezérlőket, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezés támogatására
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
@@ -90,27 +90,27 @@ Ez a terv Azure Policy definíciókat is hozzárendeli a naplózási fiókokhoz,
 
 Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
 
-- \[Preview @ no__t-1: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása 0644 értékre van állítva
+- \[előzetes verzió\]: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása a 0644 értékre van állítva.
 
 Ez a terv segít az erős jelszavak betartatásában olyan Azure Policy-definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
 
-- \[Preview @ no__t-1: követelmények központi telepítése a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához
-- \[Preview @ no__t-1: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyeknek nincs maximális jelszava (70 nap)
-- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
-- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
-- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
-- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
-- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeknek nincs maximális jelszava (70 nap)
-- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeknek nincs legalább 1 napos jelszava
-- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- \[Preview @ no__t-1: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[előzetes verzió\]: követelmények központi telepítése a jelszó bonyolultsága beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához
+- \[előzetes verzió\]: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
+- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
+- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
+- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
+- \[előzetes verzió\]: olyan Windowsos virtuális gépek naplózása, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem rendelkeznek minimális jelszóval (1 nap)
+- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
+- \[előzetes verzió\]: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
 
 A terv az Azure-erőforrásokhoz való hozzáférés szabályozását is lehetővé teszi Azure Policy definíciók hozzárendelésével. Ezek a házirendek olyan erőforrástípusok és konfigurációk használatát naplózzák, amelyek lehetővé tehetik az erőforrásokhoz való hozzáférést. A szabályzatok megsértése miatti erőforrások megismerése segíthet az Azure-erőforrások elérését engedélyező, a jogosult felhasználókra korlátozódó kijavítási műveletek elvégzésében.
 
-- \[Preview @ no__t-1: követelmények telepítése a jelszavak nélküli fiókokkal rendelkező linuxos virtuális gépek naplózására
-- \[Preview @ no__t-1: követelmények telepítése a Linux rendszerű virtuális gépek naplózására, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
-- \[Preview @ no__t-1: jelszó nélküli fiókkal rendelkező linuxos virtuális gépek naplózása
-- \[Preview @ no__t-1: olyan Linux rendszerű virtuális gépek naplózása, amelyek engedélyezik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
+- \[előzetes verzió\]: követelmények telepítése a jelszavak nélküli fiókokkal rendelkező linuxos virtuális gépek naplózására
+- \[előzetes verzió\]: követelmények telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózására
+- \[előzetes verzió\]: Linux rendszerű virtuális gépek naplózása jelszavak nélkül
+- \[előzetes verzió\]: a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
 - A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
 - A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
 - Felügyelt lemezeket nem használó virtuális gépek naplózása
@@ -147,7 +147,7 @@ Ez a terv Azure Policy-definíciókat is hozzárendeli a naplózási fiókokhoz,
 
 Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
 
-- \[Preview @ no__t-1: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása 0644 értékre van állítva
+- \[előzetes verzió\]: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása a 0644 értékre van állítva.
 
 ## <a name="13-audit-information-for-users"></a>13 naplózási információ a felhasználók számára
 
@@ -156,8 +156,8 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
-- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 - A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
 
 ## <a name="next-steps"></a>Következő lépések
@@ -165,9 +165,10 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 Most, hogy áttekintette az Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 
 > [!div class="nextstepaction"]
-> [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – áttekintés](./index.md)@no__t – 1[Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetek – a lépések üzembe helyezése](./deploy.md)
+> [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – áttekintés](./index.md)
+> [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervrajzokról és azok használatáról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

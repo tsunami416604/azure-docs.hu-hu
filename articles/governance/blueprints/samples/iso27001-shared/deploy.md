@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 3a58894f8033e1f837a3b8ac64438337c3a7f0a5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 43b3eb76de4e180f002379198d363a6852ab9e3b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299100"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162490"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Shared Services Blueprint minta üzembe helyezése
 
@@ -106,10 +106,10 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux-VM Scale Sets (VMSS)|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
-|\[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
-|\[Preview @ no__t-1: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
-|\[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
 |Engedélyezett erőforrástípusok|Szabályzat-hozzárendelés|Engedélyezett erőforrástípusok|Az üzembe helyezhető erőforrástípusok listája. Ez a lista a megosztott szolgáltatásokban üzembe helyezett összes erőforrás-típusból tevődik össze.|
 |Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett tárolási SKU-ket|A diagnosztikai naplók Storage-fiókjának SKU-ban engedélyezett listája. Az alapértelmezett érték: _["Standard_LRS"]_ .|
 |Engedélyezett virtuális gépek SKU-i|Szabályzat-hozzárendelés|A telepítendő virtuálisgép-SKU-ket tartalmazó lista. Az alapértelmezett érték a következő: _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
@@ -163,7 +163,7 @@ Most, hogy áttekintette az ISO 27001 Shared Services Blueprint-minta üzembe he
 > [Iso 27001 megosztott szolgáltatások tervrajza – áttekintés](./index.md)
 > [ISO 27001 megosztott szolgáltatások tervezete – vezérlés leképezése](./control-mapping.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervrajzokról és azok használatáról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

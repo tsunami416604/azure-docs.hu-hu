@@ -38,6 +38,8 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud-metrikák ismertetése
       href: spring-cloud-concept-metrics.md
+    - name: Vészhelyreállítás megtervezése
+      href: disaster-recovery.md
 - name: Útmutatók
   items:
     - name: 'Azure Spring Cloud-alkalmazás indítása, leállítása és törlése'

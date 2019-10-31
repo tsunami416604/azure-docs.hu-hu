@@ -14,19 +14,19 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ac548a4b7599857b116e8059acc51c21fdf4e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8965f4872ac88601a4a77dc48ba430c2f419250f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160575"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>A PowerShell és a Graph példák az Azure AD-beli csoportos licencelésre
 
 A csoport alapú licencelés teljes funkcionalitása a [Azure Portalon](https://portal.azure.com)keresztül érhető el, és jelenleg a PowerShell és a Microsoft Graph támogatás csak olvasási műveletekre korlátozódik. Vannak azonban olyan hasznos feladatok, amelyek a meglévő [MSOnline PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és Microsoft Graphekkel végezhetők el. Ez a dokumentum példákat tartalmaz a lehetséges lehetőségek közül.
 
 > [!NOTE]
-> Mielőtt megkezdené a parancsmagok futtatását, először a `Connect-MsolService`  parancsmag futtatásával győződjön meg arról, hogy csatlakozik a szervezethez.
+> Mielőtt megkezdené a parancsmagok futtatását, először a `Connect-MsolService` parancsmag futtatásával ellenőrizze, hogy a szervezethez csatlakozik-e.
 
 > [!WARNING]
 > Ez a kód példaként szolgál a bemutató céljára. Ha a környezetében szeretné használni, érdemes lehet kis méretekben, vagy egy külön tesztelési bérlőn tesztelni. Előfordulhat, hogy az adott környezet igényeinek megfelelően módosítania kell a kódot.
@@ -59,9 +59,9 @@ Kimenet:
 ```
 HTTP/1.1 200 OK
 {
-  “value”: [
+  "value": [
 {
-  “assignedLicenses”: [
+  "assignedLicenses": [
      {
           "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
           "skuId":"c7df2760-2c81-4ef7-b578-5b5392b571df",
@@ -406,7 +406,7 @@ HTTP/1.1 200 OK
       "id": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
       "licenseAssignmentState":[
         {
-          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d”,
+          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d",
           "disabledPlans":[],
           "assignedByGroup": null, # assigned directly.
           "state": "Active",
@@ -415,7 +415,7 @@ HTTP/1.1 200 OK
         {
           "skuId": "1f3174e2-ee9d-49e9-b917-e8d84650f895",
           "disabledPlans":[],
-          "assignedByGroup": “e61ff361-5baf-41f0-b2fd-380a6a5e406a”, # assigned by this group.
+          "assignedByGroup": "e61ff361-5baf-41f0-b2fd-380a6a5e406a", # assigned by this group.
           "state": "Active",
           "error": "None"
         },
@@ -617,9 +617,9 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Frissítse a változók `$skuId` értékeit, és `$groupId`  azt célozza meg, hogy a fenti szkript futtatása előtt a rendszer a közvetlen licenceket a tesztkörnyezet alapján távolítsa el. 
+> Frissítse a változók értékeit `$skuId` és `$groupId` , amelynek célja a közvetlen licencek eltávolítása a tesztkörnyezetben a fenti szkript futtatása előtt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a csoportokon keresztüli licencelési szolgáltatásról, tekintse meg a következő cikkeket:
 
@@ -627,6 +627,6 @@ Ha többet szeretne megtudni a csoportokon keresztüli licencelési szolgáltat�
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
-* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)
+* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

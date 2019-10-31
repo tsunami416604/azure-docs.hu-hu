@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383082"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160766"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **:** alkalmazások és csoportok hozzáférési felülvizsgálatai. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **: alkalmazások és csoportok hozzáférési felülvizsgálatai** . Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -39,7 +39,7 @@ Attól függően, hogy a szervezet mit választott a **saját alkalmazások** po
 
 2. Az **alkalmazások** lapon válassza ki a profil képét a jobb felső sarokban, ahol a nevét és a szervezetét, majd válassza a **profil**lehetőséget.
 
-    Megjelenik a **profil lap,** amely megjeleníti a profil adatait.
+    Megjelenik a **profil lap, amely megjeleníti a profil** adatait.
 
     ![Profil lap, amely az összes rendelkezésre álló információt megjeleníti](media/my-apps-portal/my-apps-portal-profile-page.png)
 
@@ -71,13 +71,13 @@ Ha módosítani szeretné a munkahelyi vagy iskolai fiókjához tartozó jelszó
 
 ### <a name="to-change-your-password"></a>A jelszó módosítása
 
-1. A profil **kezelése lap fiók** területén válassza  a **jelszó módosítása**lehetőséget.
+1. A profil **kezelése lap fiók** területén válassza a **jelszó módosítása**lehetőséget.
 
 2. A **jelszó módosítása** lapon ellenőrizze, hogy helyes-e a felhasználói azonosító, majd írja be a régi jelszót és az új jelszót a mezőkbe.
 
     ![Jelszó módosítása lap](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Válassza ki **elküldése**.
+3. Válassza a **Küldés**lehetőséget.
 
     A jelszó módosítása megtörténik. Be kell jelentkeznie minden olyan alkalmazásba, amelyre korábban bejelentkezett a munkahelyi vagy iskolai fiókjával.
 
@@ -86,13 +86,13 @@ Ha módosítani szeretné a munkahelyi vagy iskolai fiókjához tartozó jelszó
 Ha elfelejtette a jelszavát, soha nem kapta meg a cég informatikai támogatási szolgálatát, vagy a fiókját kizárták, visszaállíthatja a saját jelszavát.
 
 >[!Important]
->A rendszergazdának be kell kapcsolnia ezt a funkciót, és regisztrálnia kell a részvételhez. A jelszó regisztrálásával és alaphelyzetbe állításával kapcsolatos további információkért lásd: [regisztráció az önkiszolgáló jelszó](active-directory-passwords-reset-register.md) -visszaállításhoz és [a munkahelyi vagy iskolai jelszavának](user-help-reset-password.md)alaphelyzetbe állítása.
+>A rendszergazdának be kell kapcsolnia ezt a funkciót, és regisztrálnia kell a részvételhez. A jelszó regisztrálásával és alaphelyzetbe állításával kapcsolatos további információkért lásd: [regisztráció az önkiszolgáló jelszó-visszaállításhoz](active-directory-passwords-reset-register.md) és [a munkahelyi vagy iskolai jelszavának alaphelyzetbe](active-directory-passwords-update-your-own-password.md)állítása.
 
 ## <a name="change-your-security-verification-information"></a>Biztonsági ellenőrzési információk módosítása
 
 Ha a szervezete megköveteli a kétfaktoros ellenőrzés használatát, a **további biztonsági ellenőrzés** lapon hozzáadhatja, frissítheti és törölheti a kapcsolódó biztonsági információkat.
 
-A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és PIN-kódot kell használnia, mielőtt beolvassa a fiókját vagy a szervezete adatait. A kétfaktoros ellenőrzéssel kapcsolatos további információkért lásd: [saját fiók beállítása](multi-factor-authentication-end-user-first-time.md)kétlépéses ellenőrzéshez.
+A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és PIN-kódot kell használnia, mielőtt beolvassa a fiókját vagy a szervezete adatait. A kétfaktoros ellenőrzéssel kapcsolatos további információkért lásd: [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="to-change-your-security-information"></a>Biztonsági adatok módosítása
 
@@ -108,13 +108,13 @@ A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és
 
     - **A Microsoft Authenticator alkalmazás beállítása.** Beállíthatja, hogy a Microsoft Authenticator alkalmazás az ellenőrzési módszerként működjön. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md)
 
-3. Válassza ki **mentése** a módosítások mentéséhez.
+3. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Tekintse át a szervezet használati feltételeinek utasításait
 
 Dönthet úgy, hogy megtekinti a szervezet használati feltételeinek nyilatkozatát, ha az elérhető.
 
-1. A profil **kezelése lap fiók** területén válassza  a **használati feltételek áttekintése**elemet.
+1. A profil **kezelése lap fiók** területén válassza a **használati feltételek áttekintése**elemet.
 
 2. Tekintse át a szervezet használati feltételeit, és válassza az **elfogadás** lehetőséget, és erősítse meg, hogy elolvasta és megértette a szervezet használati feltételeit.
 
@@ -132,7 +132,7 @@ Dönthet úgy is, hogy kijelentkezik a saját munkahelyi vagy iskolai fiókjáva
 
 2. A **kijelentkezés bárhová** megerősítő mezőben válassza az **Igen** lehetőséget annak megerősítéséhez, hogy ki szeretné jelentkezni az összes munkamenetből és eszközről. Ha meggondolja magát, válassza a **nem** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután befejezte a frissítéseket a **profil** lapon, a következőket teheti:
 

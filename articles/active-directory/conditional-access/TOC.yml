@@ -50,6 +50,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: MFA megkövetelése az Azure-beli felügyelethez
           href: howto-conditional-access-policy-azure-management.md
+        - name: MFA megkövetelése minden felhasználótól
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: Régi hitelesítési folyamat letiltása
           href: howto-conditional-access-policy-block-legacy.md
         - name: Kockázatalapú feltételes hozzáférés

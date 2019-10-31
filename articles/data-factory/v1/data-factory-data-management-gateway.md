@@ -1,6 +1,6 @@
 ---
-title: Adatkezelési átjárót a Data Factory |} A Microsoft Docs
-description: Állítsa be a data gateway adatok áthelyezése a helyszíni és a felhő között. Az Azure Data Factoryban az adatkezelési átjáró segítségével az adatok áthelyezése.
+title: Data Factory adatkezelés átjárója | Microsoft Docs
+description: Állítson be egy adatátjárót a helyszíni és a felhő közötti adatáthelyezéshez. Az adatáthelyezéshez használja a Azure Data Factory adatkezelés átjáróját.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -13,200 +13,200 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e4cf8802f9f12774f03199b76b58cb494f1c439
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143305"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162730"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [saját üzemeltetésű integrációs modul az](../create-self-hosted-integration-runtime.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a saját üzemeltetésű [integrációs modul](../create-self-hosted-integration-runtime.md)című részét.
 
 > [!NOTE]
-> Az adatkezelési átjáró most lett nevezve, helyi Integration Runtime.
+> Adatkezelés-átjárót már saját üzemeltetésű Integration Runtime-ként lett átnevezve.
 
-Az adatkezelési átjáró egy ügyfélügynök, amely telepítenie kell másolni a helyszíni környezetben, felhőbeli és helyszíni adattárak közötti. A Data Factory által támogatott adattárak szerepel a helyszíni adatokhoz a [támogatott adatforrások](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szakaszban.
+Az adatkezelési átjáró egy olyan ügyfél-ügynök, amelyet a helyszíni környezetbe kell telepítenie a Felhőbeli és a helyszíni adattárak közötti adatmásoláshoz. A Data Factory által támogatott helyszíni adattárak listája a [támogatott adatforrások](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szakaszban található.
 
-Ebben a cikkben található útmutatások követéséhez egészíti ki a [között a helyszíni és felhőbeli adatok áthelyezése adattárak](data-factory-move-data-between-onprem-and-cloud.md) cikk. A forgatókönyv az adatok áthelyezése a helyszíni SQL Server-adatbázisból Azure-blobba az átjárót használó folyamatot hoz létre. Ez a cikk a data management gateway részletes részletes információkat nyújt.
+Ez a cikk az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között című cikk lépéseit](data-factory-move-data-between-onprem-and-cloud.md) egészíti ki. Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez. Ez a cikk részletes információkat tartalmaz az adatkezelési átjáróról.
 
-Adatkezelési átjáró méretezése több helyszíni gépek társítását az átjáró. Méretezhető beállítása növelje a csomóponton egyidejűleg futtatható adatok mozgását feladatok számát. Ez a funkció egy egyetlen csomóponttal logikai átjáró is érhető el. Lásd: [adatkezelési átjáró méretezés az Azure Data Factoryban](data-factory-data-management-gateway-high-availability-scalability.md) részleteivel.
+Egy adatkezelési átjárót úgy méretezheti fel, hogy több helyszíni gépet társít az átjáróhoz. Az adatáthelyezési feladatok növekvő száma növelhető, amely egyidejűleg futhat egy csomóponton. Ez a funkció egyetlen csomóponttal rendelkező logikai átjáró esetén is elérhető. Részletekért lásd: az [adatkezelési átjáró skálázása Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) cikkben.
 
 > [!NOTE]
-> Jelenleg átjáró támogatja a csak a másolási tevékenység és a tárolt eljárási tevékenység adat-előállítóban. Nem alkalmas az átjáró az egyéni tevékenységek használata a helyszíni adatforrások eléréséhez.
+> Az átjáró jelenleg csak a másolási tevékenységet és a tárolt eljárási tevékenységet támogatja Data Factoryban. A helyszíni adatforrásokhoz való hozzáféréshez nem lehetséges egyéni tevékenység átjáróját használni.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
-### <a name="capabilities-of-data-management-gateway"></a>Az adatkezelési átjáró képességeit
-Az adatkezelési átjáró az alábbi képességeket biztosítja:
+### <a name="capabilities-of-data-management-gateway"></a>Az adatkezelési átjáró képességei
+Az adatkezelési átjáró a következő képességeket biztosítja:
 
-* Modell a helyszíni adatforrások és a data factory és a move-adatok felhőalapú adatforrásai.
-* A monitorozás és kezelés az átjáró állapota az adat-előállító lapon betekintést tekinthesse egyetlen ablaktábla rendelkezik.
-* Biztonságosan kezelheti a helyszíni adatforrásokhoz való hozzáférés.
-  * Nincs szükség a vállalati tűzfalon módosítására. Átjáró csak lehetővé teszi a HTTP-alapú kimenő kapcsolatokat, az internet megnyitásához.
-  * A tanúsítvány a helyi adattárak hitelesítő adatok titkosításához.
-* Adatok áthelyezése a hatékony – adatok továbbítása párhuzamosan, az automatikus rugalmas az időszakos hálózati problémák újrapróbálkozási logika.
+* A helyszíni adatforrások és a Felhőbeli adatforrások modellezése ugyanazon az adatgyáron belül és az adatáthelyezés.
+* Az átjáró állapotának ellenőrzéséhez és kezeléséhez a Data Factory oldaláról egyetlen üvegtábla áll rendelkezésre.
+* Biztonságosan kezelheti a helyszíni adatforrásokhoz való hozzáférést.
+  * Nincs szükség módosításra a vállalati tűzfalon. Az átjáró csak a kimenő HTTP-alapú kapcsolatokat teszi lehetővé az Internet megnyitásához.
+  * A tanúsítványával titkosíthatja a helyszíni adattárak hitelesítő adatait.
+* Az adatáthelyezés hatékony – az adatátvitelt párhuzamosan, rugalmasan, az automatikus újrapróbálkozási logikával megszakított hálózati problémák okozhatja.
 
-### <a name="command-flow-and-data-flow"></a>Parancsot a folyamat és az adatfolyam
-A másolási tevékenység használatával másolja az adatokat a helyszíni és a felhő között, amikor a tevékenység használja az átjáró át helyszíni adatforrásból származó adatok felhőbeli futtatását.
+### <a name="command-flow-and-data-flow"></a>A parancs folyamata és adatfolyama
+Ha másolási tevékenységet használ a helyszíni és a felhő közötti adatmásoláshoz, a tevékenység átjáró használatával továbbítja az adatok átvitelét a helyszíni adatforrásból a felhőbe, és fordítva.
 
-A következő magas szintű adatfolyam és az átjáróval másolására szolgáló lépések összefoglalása: ![Az adatfolyam-átjáró használatával](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Itt látható az adatátjáróval való másolás lépéseinek áttekintése és összefoglalása: ![adatforgalom átjáró használatával](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
-1. Adatok fejlesztői átjárót hoz létre egy Azure Data Factory segítségével a [az Azure portal](https://portal.azure.com) vagy [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.datafactory/).
-2. Adatok fejlesztői egy helyszíni adattár társított szolgáltatás létrehoz az átjáró megadásával. A társított szolgáltatás beállításának részeként az adatok fejlesztői hitelesítési típusok és a hitelesítő adatok megadásához hitelesítő adatok beállítása alkalmazást használja. A hitelesítő adatok beállítása párbeszédpanel kommunikál az adattár tesztelheti a kapcsolatot és az átjáró a hitelesítő adatok mentéséhez.
-3. Átjáró (adatok fejlesztő által megadott), az átjáró társított tanúsítvány a hitelesítő adatok a felhőben a hitelesítő adatok mentése előtt titkosítja.
-4. A Data Factory szolgáltatás kommunikál az átjáró az ütemezés és a egy vezérlőcsatorna által használt megosztott Azure service bus-üzenetsor-feladatok kezelését. Egy másolási tevékenység feladat kell lennie kezdődjön, amikor a Data Factory együtt hitelesítő adatokat a kérelem várólistára helyezi. A feldolgozás után a várólista lekérdezési átjáró elindít.
-5. Az átjáró visszafejti a hitelesítő adatokat, az ugyanazt a tanúsítványt, és ezután csatlakozik a helyi adattár megfelelő hitelesítési típust és a hitelesítő adatokat.
-6. Az átjáró adatokat másol egy helyszíni adattár, a felhőalapú tárolást, vagy fordítva az adatok folyamatban, a másolási tevékenység konfigurációjától függően. Ehhez a lépéshez az átjáró közvetlenül kommunikál a felhőalapú tárolási szolgáltatások az Azure Blob Storage például egy biztonságos csatornán (HTTPS).
+1. Az adatfejlesztő létrehoz egy átjárót egy Azure Data Factoryhoz a [Azure Portal](https://portal.azure.com) vagy a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.datafactory/)használatával.
+2. Az adatfejlesztő létrehoz egy társított szolgáltatást a helyszíni adattárakhoz az átjáró megadásával. A társított szolgáltatás beállításának részeként az adat-fejlesztő a hitelesítő adatok beállítása alkalmazás használatával határozza meg a hitelesítési típusokat és a hitelesítő adatokat. A hitelesítő adatok beállítása párbeszédpanel kommunikál az adattárral a kapcsolatok teszteléséhez és az átjáróhoz a hitelesítő adatok mentéséhez.
+3. Az átjáró a hitelesítő adatoknak a felhőben való mentése előtt titkosítja a hitelesítő adatokat az átjáróhoz társított tanúsítvánnyal (az adatfejlesztő által szolgáltatott).
+4. Data Factory a szolgáltatás az átjáróval kommunikál a feladatok & kezeléséhez egy olyan vezérlési csatornán keresztül, amely megosztott Azure Service Bus-várólistát használ. Ha egy másolási tevékenységre vonatkozó feladatot ki kell rúgni, Data Factory a kérést a hitelesítő adatokkal együtt. Az átjáró lekéri a feladatot a várólista lekérdezése után.
+5. Az átjáró visszafejti a hitelesítő adatokat ugyanazzal a tanúsítvánnyal, majd a megfelelő hitelesítési típussal és hitelesítő adatokkal kapcsolódik a helyszíni adattárolóhoz.
+6. Az átjáró átmásolja a helyszíni tárolóból a Felhőbeli tárhelyre, vagy fordítva, attól függően, hogy a másolási tevékenység hogyan lett konfigurálva az adatfolyamatban. Ebben a lépésben az átjáró közvetlenül kommunikál a felhőalapú tárolási szolgáltatásokkal, például az Azure Blob Storage egy biztonságos (HTTPS-) csatornán keresztül.
 
-### <a name="considerations-for-using-gateway"></a>Átjáró használatának szempontjai
-* Az adatkezelési átjáró egyetlen példánya több helyszíni adatforrás is használható. Azonban **egyetlen átjárópéldány vannak kötve, csak egy Azure data factory** és a egy másik data factory nem osztható.
-* Rendelkezhet **adatkezelési átjárót csak egy példánya** egyetlen gépen telepítve van. Tegyük fel, a helyszíni adatforrások elérését igénylő két adat-előállítók rendelkezik, a két helyszíni számítógépeken átjárók telepítenie kell. Más szóval az átjáró egy adott adat-előállító kötődik
-* A **átjáró nem kell ugyanarra a gépre adatforrásként**. Az adatforráshoz közelebb átjáró kellene azonban csökkenti az idő az átjáró csatlakozik az adatforráshoz. Azt javasoljuk, hogy az átjáró telepítését olyan számítógépen, amelyen eltér a, amelyen a helyszíni adatforráshoz. Ha az átjáró és az adatforrás különböző gépeken vannak, az átjáró nem versengenek adatforrás erőforrás esetén.
-* Rendelkezhet **több átjárót ugyanazon a helyszíni adatforráshoz csatlakozik, különböző gépeken**. Például előfordulhat, hogy adat-előállítók két kiszolgáló két átjárót, de ugyanazon a helyszíni adatforrás regisztrálva van a mindkét az adat-előállítók.
-* Ha már rendelkezik egy átjáró telepítve a számítógépre a(z) egy **Power BI** forgatókönyvben telepítse egy **különálló átjáróra, az Azure Data Factoryhoz** egy másik gépen.
-* Átjáró kell használni, akkor is, ha használ **ExpressRoute**.
-* Forrásként való kezelése az adatforrás egy a helyszíni adatok (azaz a tűzfal mögött található) is használhatja **ExpressRoute**. A szolgáltatás és az adatforrás közötti kapcsolatot létesíteni az átjáró használatára.
-* Meg kell **az átjáró használatára** akkor is, ha az adattárban a felhőben található egy **Azure IaaS virtuális gépek**.
+### <a name="considerations-for-using-gateway"></a>Az átjáró használatának szempontjai
+* Az adatkezelési átjáró egy példánya több helyszíni adatforráshoz is használható. **Egy átjáró-példány azonban csak egy Azure-beli adatgyárhoz van kötve** , és nem osztható meg másik adatelőállítóval.
+* **Az adatkezelési átjáró csak egyetlen példányát** telepítheti egyetlen gépre. Tegyük fel, hogy két, a helyszíni adatforrásokhoz hozzáférő adatgyárral rendelkezik, két helyszíni számítógépre kell telepítenie az átjárókat. Más szóval az átjáró egy adott adatgyárhoz van kötve
+* Az **átjárónak nem kell ugyanazon a gépen lennie, mint az adatforrásnak**. Ugyanakkor az adatforráshoz közelebbi átjáró használata csökkenti az átjárónak az adatforráshoz való kapcsolódáshoz szükséges időt. Azt javasoljuk, hogy az átjárót olyan gépre telepítse, amely eltér a helyszíni adatforrást futtató gépről. Ha az átjáró és az adatforrás különböző gépeken található, az átjáró nem versenyez az adatforrással rendelkező erőforrások esetében.
+* **A különböző gépeken több átjáró is lehet ugyanahhoz a helyszíni adatforráshoz csatlakozni**. Előfordulhat például, hogy két, két adatgyárat kiszolgáló átjáróval rendelkezik, de ugyanaz a helyszíni adatforrás is regisztrálva van az adatelőállítókkal.
+* Ha a számítógépen már telepítve van egy **Power bi** forgatókönyvet kiszolgáló átjáró, telepítsen egy **külön átjárót a Azure Data Factory** egy másik gépen.
+* Az átjárót akkor is használni kell, ha a **ExpressRoute**-t használja.
+* Az adatforrást helyszíni adatforrásként (tűzfal mögött) kezelheti, még akkor is, ha a **ExpressRoute**-t használja. Az átjáró használatával kapcsolatot létesíthet a szolgáltatás és az adatforrás között.
+* **Az átjárót** akkor is kell használnia, ha az adattár a felhőben van egy **Azure IaaS virtuális gépen**.
 
 ## <a name="installation"></a>Telepítés
 ### <a name="prerequisites"></a>Előfeltételek
-* A támogatott **operációs rendszer** Windows 7, Windows 8 és 8.1, Windows 10, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 verziók a következők. Az adatkezelési átjáró a tartományvezérlő telepítése jelenleg nem támogatott.
-* .NET-keretrendszer 4.5.1-es vagy újabb verziója szükséges. Ha az átjáró Windows 7 gépre telepíti, telepítse a .NET-keretrendszer 4.5-ös vagy újabb. Lásd: [.NET-keretrendszer követelményei a System](https://msdn.microsoft.com/library/8z6watww.aspx) részleteiről.
-* Az ajánlott **konfigurációs** az átjáró a gép legalább 2 GHz-es, 4 mag, 8 GB RAM és 80 GB-os lemezt.
-* A gazdagép frissítéséből szeretnénk, ha az átjáró nem fog válaszolni kérelmek. Ezért a megfelelő konfigurálása **energiaséma** azon a számítógépen az átjáró telepítése előtt. Ha a számítógép hibernált állapotba van konfigurálva, az átjáró telepítése kéri egy üzenetet.
-* Egy rendszergazda a gépen telepítheti, és sikeresen konfigurálja az adatkezelési átjárót kell lennie. További felhasználók is hozzáadhat a **adatkezelési átjáró felhasználók** helyi Windows-csoport. Ez a csoport tagjai egyaránt használhatják a **Data Management Gateway Configuration Manager** eszköz az átjáró konfigurálásához.
+* A támogatott **operációsrendszer** -verziók a Windows 7, a Windows 8/8.1, a Windows 10, a windows Server 2008 R2, a windows Server 2012, a windows Server 2012 R2. Az adatkezelési átjáró tartományvezérlőn való telepítése jelenleg nem támogatott.
+* A .NET-keretrendszer 4.5.1-es vagy újabb verziójának megadása kötelező. Ha Windows 7 rendszerű gépen telepíti az átjárót, telepítse a .NET-keretrendszer 4,5-es vagy újabb verzióját. A részletekért lásd a [.NET-keretrendszer rendszerkövetelményeit](https://msdn.microsoft.com/library/8z6watww.aspx) ismertető témakört.
+* Az átjárót tartalmazó számítógép ajánlott **konfigurációja** legalább 2 GHz, 4 mag, 8 GB RAM és 80 GB-os lemez.
+* Ha a gazdaszámítógép hibernált állapotba kerül, az átjáró nem válaszol az adatkérelmekre. Ezért konfigurálja a megfelelő **energiasémát** a számítógépen az átjáró telepítése előtt. Ha a gép hibernált állapotra van állítva, az átjáró telepítése üzenetet kér.
+* Az adatkezelési átjáró sikeres telepítéséhez és konfigurálásához rendszergazdának kell lennie a gépen. További felhasználókat adhat hozzá az **adatkezelési átjáró felhasználói** helyi Windows-csoportjához. Ennek a csoportnak a tagjai a **adatkezelés gateway Configuration Manager** eszköz használatával konfigurálhatják az átjárót.
 
-Másolási tevékenység-végrehajtás egy adott gyakoriságát fordulhat elő, mert az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, csúcs-és üresjárati. Erőforrás-használat is nagyban függ az áthelyezett adatok mennyisége. Amikor több másolási feladat van folyamatban, erőforrás-használat csúcsidőben feljebb görgetünk láthatja.
+Ha a másolási tevékenység futása egy adott gyakoriságon történik, az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, mint a csúcs és az üresjárati idő. Az erőforrás-használat az áthelyezett adatok mennyiségétől függ. Ha több másolási feladat van folyamatban, az erőforrás-használat a csúcs idején jelenik meg.
 
 ### <a name="installation-options"></a>Telepítési beállítások
-Az adatkezelési átjáró a következő módokon telepíthető:
+Az adatkezelési átjárót a következő módokon lehet telepíteni:
 
-* Töltse le az MSI-telepítő csomag a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Az MSI a meglévő a legújabb verzióra, az adatkezelési átjáró frissítése megőrzi a beállításokkal is használható.
-* Kattintva **töltse le és telepítse az adatátjáró** manuális telepítés alatti hivatkozásra vagy **telepítheti közvetlenül a számítógépre** EXPRESSZ telepítés alatt. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) gyors telepítés használatával részletesen ismertető cikket. A manuális lépés végigvezeti a letöltőközpontból. A következő útmutatót: letöltése és telepítése az átjáró a letöltőközpontból a következő szakaszban találhatók.
+* Egy MSI-telepítőcsomagot a [Microsoft letöltőközpontból töltheti](https://www.microsoft.com/download/details.aspx?id=39717)le. Az MSI használatával a meglévő adatkezelési átjárót a legújabb verzióra is frissítheti, minden beállítás megőrzött.
+* Az **adatátjáró letöltéséhez és telepítéséhez** kattintson a manuális telepítés lehetőségre, vagy **telepítse közvetlenül ezen a számítógépen** az expressz beállítás alatt. Az expressz telepítéssel kapcsolatos részletes utasításokért tekintse [meg az adatáthelyezés a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikket. A manuális lépés a letöltőközpontból lép. Az átjáró a letöltőközpontból való letöltésére és telepítésére vonatkozó utasítások a következő szakaszban találhatók.
 
-### <a name="installation-best-practices"></a>Gyakorlati tanácsok a telepítéshez:
-1. A gazdagépen az átjáró energiasémát beállítani, hogy a gép hibernálásra nem. A gazdagép frissítéséből szeretnénk, ha az átjáró nem fog válaszolni kérelmek.
-2. Készítsen biztonsági másolatot az átjáró társított tanúsítvány.
+### <a name="installation-best-practices"></a>Ajánlott eljárások a telepítéshez:
+1. Konfigurálja az energiagazdálkodási tervet a gazdagépen az átjáróhoz, hogy a gép ne legyen hibernálva. Ha a gazdaszámítógép hibernált állapotba kerül, az átjáró nem válaszol az adatkérelmekre.
+2. Az átjáróhoz társított tanúsítvány biztonsági mentése.
 
 ### <a name="install-the-gateway-from-download-center"></a>Az átjáró telepítése a letöltőközpontból
-1. Navigáljon a [Microsoft Data Management Gateway letöltési oldal](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Kattintson a **letöltése**, jelölje be a **64 bites** verzió (32 bites nincs több támogatott), és kattintson a **tovább**.
-3. Futtassa a **MSI** közvetlenül, vagy mentse a merevlemezen, és futtassa.
-4. Az a **üdvözlő** lapon válassza ki a **nyelvi** kattintson **tovább**.
-5. **Fogadja el** a végfelhasználói licencszerződést, majd kattintson **tovább**.
-6. Válassza ki **mappa** telepítse az átjárót, és kattintson a **tovább**.
-7. Az a **készen áll a telepítésre** kattintson **telepítése**.
-8. Kattintson a **Befejezés** telepítésének befejezéséhez.
-9. A kulcs lekérése az Azure Portalról. A részletes útmutatást a következő szakaszban talál.
-10. Az a **Register átjáró** lapján **Data Management Gateway Configuration Manager** fut a gépen, kövesse az alábbi lépéseket:
-    1. Illessze be a kulcs szövegét.
-    2. Másik lehetőségként kattinthat **Show átjáró kulcs** , tekintse meg a kulcs szövegét.
-    3. Kattintson a **regisztrálása**.
+1. Navigáljon a [Microsoft adatkezelés átjáró letöltési oldalára](https://www.microsoft.com/download/details.aspx?id=39717).
+2. Kattintson a **Letöltés**lehetőségre, válassza ki a **64 bites** verziót (a 32 bites verzió nem támogatott), és kattintson a **tovább**gombra.
+3. Futtassa közvetlenül az **MSI** -t, vagy mentse a merevlemezre, és futtassa a parancsot.
+4. Az **üdvözlőlapon** válassza ki a kívánt **nyelvet** , majd kattintson a **tovább**gombra.
+5. **Fogadja el** a végfelhasználói licencszerződést, és kattintson a **tovább**gombra.
+6. Válassza ki az átjáró telepítéséhez szükséges **mappát** , majd kattintson a **tovább**gombra.
+7. A **telepítésre kész** lapon kattintson a **telepítés**gombra.
+8. A telepítés befejezéséhez kattintson a **Befejezés** gombra.
+9. Szerezze be a kulcsot a Azure Portal. A Részletes utasításokért tekintse meg a következő szakaszt.
+10. A számítógépen futó **adatkezelés gateway Configuration Manager** átjárójának **regisztrálása** lapon végezze el a következő lépéseket:
+    1. Illessze be a kulcsot a szövegbe.
+    2. Ha szeretné megtekinteni a kulcs szövegét, kattintson az **átjáró kulcsának megjelenítése** lehetőségre.
+    3. Kattintson a **regisztrálás**gombra.
 
-### <a name="register-gateway-using-key"></a>Kulcs használatával átjáró regisztrálása
-#### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Ha még nem hozott létre egy logikai átjárót a portálon
-Az átjáró létrehozása a portálon, és a kulcs lekérése a **konfigurálása** lapon, a forgatókönyv a következő lépésekben a [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk.
+### <a name="register-gateway-using-key"></a>Átjáró regisztrálása kulcs használatával
+#### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Ha még nem hozott létre logikai átjárót a portálon
+Ha átjárót szeretne létrehozni a portálon, és a configure ( **Konfigurálás** ) lapon le szeretné kérni a kulcsot, kövesse az [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című témakör lépéseit.
 
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>Ha már létrehozta a logikai átjárót a portálon
-1. Az Azure Portalon lépjen a **adat-előállító** lapon, és kattintson a **társított szolgáltatások** csempére.
+1. A Azure Portal területen navigáljon a **Data Factory** lapra, és kattintson a **társított szolgáltatások** csempére.
 
-    ![Adat-előállító lap](media/data-factory-data-management-gateway/data-factory-blade.png)
-2. Az a **társított szolgáltatások** lapon, válassza ki a logikai **átjáró** a portálon létrehozott.
+    ![Data Factory lap](media/data-factory-data-management-gateway/data-factory-blade.png)
+2. A **társított szolgáltatások** lapon válassza ki a portálon létrehozott logikai **átjárót** .
 
     ![logikai átjáró](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
-3. Az a **adatátjáró** kattintson **töltse le és telepítse az adatátjáró**.
+3. Az **adatátjáró** lapon kattintson a **letöltés és az adatátjáró telepítése**elemre.
 
     ![Letöltési hivatkozás a portálon](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
-4. Az a **konfigurálása** kattintson **hozza létre újra kulcs**. Kattintson az Igen gombra a figyelmeztető üzenetet, gondosan elolvasása után.
+4. A **configure (Konfigurálás** ) lapon kattintson a **kulcs újbóli létrehozása**elemre. A figyelmeztetés elolvasása után kattintson az Igen gombra a figyelmeztető üzenetben.
 
-    ![Hozza létre újra a kulcsot](media/data-factory-data-management-gateway/recreate-key-button.png)
-5. Kattintson a kulcs melletti Másolás gombra. A kulcs a vágólapra másolja.
+    ![Kulcs újbóli létrehozása](media/data-factory-data-management-gateway/recreate-key-button.png)
+5. Kattintson a kulcs melletti Másolás gombra. A kulcsot a rendszer a vágólapra másolja.
 
     ![Kulcs másolása](media/data-factory-data-management-gateway/copy-gateway-key.png)
 
-### <a name="system-tray-icons-notifications"></a>Rendszer ikony hlavního panelu és értesítések
-Az alábbi képen láthatja, amelyeket ikony hlavního panelu némelyike.
+### <a name="system-tray-icons-notifications"></a>Rendszertálca ikonjai/értesítései
+Az alábbi képen a megjelenő tálca ikonjai láthatók.
 
-![rendszer ikony hlavního panelu](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+![rendszertálca ikonjai](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
 
-Ha a rendszer tálcai ikon/értesítési üzenet fölé viszi a kurzort, egy felugró ablakban az átjáró/frissítés művelet állapotának részleteit láthatja.
+Ha áthelyezi a kurzort a rendszertálca ikon/értesítési üzenet fölé, az átjáró/frissítési művelet állapotát egy előugró ablakban tekintheti meg.
 
 ### <a name="ports-and-firewall"></a>Portok és tűzfal
-Nincsenek a két tűzfal figyelembe kell vennie: **vállalati tűzfal** fut a szervezet a központi útválasztón és **Windows tűzfal** démon a helyi gépen, amelyen az átjáró van konfigurálva telepítve van.
+Két tűzfalat kell figyelembe vennie: a **vállalati tűzfal** a szervezet központi útválasztóján fut, a **Windows tűzfal** pedig démonként van konfigurálva azon a helyi gépen, amelyen az átjáró telepítve van.
 
 ![tűzfalak](./media/data-factory-data-management-gateway/firewalls2.png)
 
-Vállalati tűzfalon szinten kell konfigurálnia a következő tartományok és a kimenő portokat:
+A vállalati tűzfal szintjén a következő tartományokat és kimenő portokat kell konfigurálnia:
 
 | Tartománynevek | Portok | Leírás |
 | --- | --- | --- |
-| *.servicebus.windows.net |443 |Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos |
-| *.core.windows.net |443 |Használja a szakaszos másolás az Azure Blob használatával (Ha be van állítva)|
-| *.frontend.clouddatahub.net |443 |Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos |
-| *.servicebus.windows.net |9350-9354, 5671 |Nem kötelező a service bus relay a másolás varázsló által használt TCP-n keresztül |
+| *.servicebus.windows.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
+| *. core.windows.net |443 |Szakaszos másoláshoz használatos az Azure Blob használatával (ha be van állítva)|
+| *. frontend.clouddatahub.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
+| *.servicebus.windows.net |9350-9354, 5671 |Opcionális Service Bus Relay a másolási varázsló által használt TCP protokollon keresztül |
 
-Windows tűzfal szinten a kimenő portokon általában engedélyezve. Ha nem, konfigurálhatja, hogy a tartományok portok ennek megfelelően átjárót tartalmazó számítógépen.
-
-> [!NOTE]
-> 1. Az adatforrás alapján / fogadóként, előfordulhat, hogy az engedélyezési lista további tartományokkal és a kimenő portok tartalmaz a vállalati Windows/tűzfal.
-> 2. Az egyes felhőalapú adatbázisok (például: [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [az Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)használatához és így tovább), szükség lehet a tűzfal-konfiguráció az átjárót tartalmazó számítógépen engedélyezett IP-címét.
->
->
-
-#### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Adatokat másol egy forrásadattárból egy fogadó adattárba
-Győződjön meg arról, hogy a tűzfalszabályok megfelelően engedélyezve vannak a vállalati tűzfalon, a Windows tűzfal az átjárót tartalmazó számítógépen, és az adattároló magát. Ezek a szabályok lehetővé teszi, hogy az átjáró mindkét forrás csatlakozhat, és a fogadó sikeresen megtörtént. Egyes adattároló, amely részt vesz a másolási művelet szabályok engedélyezése.
-
-Például, hogy a Másolás **egy helyszíni adattár egy Azure SQL Database fogadó vagy egy Azure SQL Data Warehouse fogadó**, tegye a következőket:
-
-* Engedélyezi a kimenő **TCP** kommunikációs port **1433-as** Windows tűzfal és a vállalati tűzfalon.
-* A tűzfalbeállítások konfigurálása az Azure SQL server adja hozzá az átjárót tartalmazó számítógép IP-címét az engedélyezett IP-címek listájához.
+A Windows tűzfal szintjén ezek a kimenő portok általában engedélyezve vannak. Ha nem, a tartományokat és a portokat a megfelelő módon konfigurálhatja az átjárót használó gépen.
 
 > [!NOTE]
-> Ha a tűzfal nem engedélyezi a 1433-as kimenő porton, átjáró közvetlenül az Azure SQL nem tud hozzáférni. Ebben az esetben használhatja [szakaszos Másolás](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) az SQL Azure Database és SQL Azure DW. Ebben a forgatókönyvben csak a adatáthelyezéskor lenne szükség HTTPS (443-as porton).
+> 1. A forrás/elsüllyedés alapján előfordulhat, hogy a vállalati vagy a Windows tűzfalon további tartományokat és kimenő portokat kell bejelentkeznie.
+> 2. Egyes felhőalapú adatbázisok esetében (például: [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)stb.), előfordulhat, hogy az ÁTJÁRÓT tartalmazó számítógép IP-címét meg kell adni a tűzfal konfigurációjában.
 >
 >
 
-### <a name="proxy-server-considerations"></a>Proxy server kapcsolatos szempontok
-Ha a vállalati hálózati környezet az egy proxykiszolgálón keresztül csatlakozik az internetre, konfigurálja az adatkezelési átjárót a megfelelő proxykiszolgáló-beállításokat használja. A proxy állíthatja be a kezdeti regisztrációs fázis során.
+#### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Adatok másolása a forrás adattárból a fogadó adattárba
+Győződjön meg arról, hogy a tűzfalszabályok megfelelően engedélyezve vannak a vállalati tűzfalon, a Windows tűzfalon az átjáró gépen, valamint magát az adattárat. Ezeknek a szabályoknak a engedélyezése lehetővé teszi, hogy az átjáró sikeresen kapcsolódjon a forráshoz és a fogadóhoz. Engedélyezze a szabályokat a másolási műveletben érintett összes adattárhoz.
+
+Ha például egy helyszíni **adattárból egy Azure SQL Database fogadóba vagy egy Azure SQL Data Warehouse**fogadóba szeretne másolni, hajtsa végre a következő lépéseket:
+
+* Engedélyezze a kimenő **TCP** -kommunikációt az **1433** -as porton a Windows tűzfal és a vállalati tűzfal esetében is.
+* Az Azure SQL Server tűzfalbeállítások konfigurálásával adja hozzá az átjáró-számítógép IP-címét az engedélyezett IP-címek listájához.
+
+> [!NOTE]
+> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, az átjáró nem fér hozzá közvetlenül az Azure SQL-hez. Ebben az esetben a [szakaszos másolás](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) használatával SQL Azure adatbázis/SQL Azure DW. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
+>
+>
+
+### <a name="proxy-server-considerations"></a>A proxykiszolgáló szempontjai
+Ha a vállalati hálózati környezet proxykiszolgálót használ az Internet eléréséhez, konfigurálja az adatkezelési átjárót a megfelelő proxybeállítások használatára. A proxyt a kezdeti regisztrációs fázisban állíthatja be.
 
 ![Proxy beállítása a regisztráció során](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
 
-Átjáró a proxykiszolgáló használatával csatlakozik a felhőszolgáltatáshoz. Kattintson a **módosítása** hivatkozásra a kezdeti beállítás során. Megjelenik a **proxybeállítást** párbeszédpanel.
+Az átjáró a proxykiszolgálót használja a felhőalapú szolgáltatáshoz való csatlakozáshoz. Kattintson a hivatkozás **módosítása** gombra a kezdeti beállítás során. Megjelenik a **Proxybeállítások** párbeszédpanel.
 
-![A Konfigurációkezelő használatával set-proxy](media/data-factory-data-management-gateway/SetProxySettings.png)
+![Proxy beállítása a config Manager használatával](media/data-factory-data-management-gateway/SetProxySettings.png)
 
-Három konfigurációs lehetőség áll rendelkezésre:
+Három konfigurációs lehetőség közül választhat:
 
-* **Proxy használatának mellőzése**: Átjáró nem explicit módon használja bármely proxy a cloud serviceshez való csatlakozáshoz.
-* **Rendszerproxy használata**: Átjáró használja a proxybeállítást a diahost.exe.config és diawp.exe.config konfigurált. Ha nincs proxy van konfigurálva a diahost.exe.config és diawp.exe.config, átjáró felhőszolgáltatásához csatlakozva közvetlenül a proxy áthaladás nélkül.
-* **Egyéni proxy használatát**: A beállítás használata az átjáró diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása. Cím és Port is szükséges. Felhasználónév és jelszó megadása nem kötelező, attól függően, a proxy hitelesítési beállítást. Minden beállítás titkosítva az átjáró hitelesítőadat-tanúsítványa és az állomás átjárót tartalmazó számítógépen helyben tárolja.
+* Ne **használja a proxyt**: az átjáró nem használ explicit módon semmilyen proxyt a Cloud Serviceshez való csatlakozáshoz.
+* A **System proxy használata**: az átjáró a diahost. exe. config és a diawp. exe. config fájlban konfigurált proxy-beállítást használja. Ha nincs proxy konfigurálva a diahost. exe. config és a diawp. exe. config fájlban, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
+* **Egyéni proxy használata**: konfigurálja az átjáróhoz használni kívánt http-proxy beállítást a diahost. exe. config és a diawp. exe. config fájlban található konfigurációk használata helyett. A címnek és a portnak kötelező megadni. A proxy hitelesítési beállításától függően a Felhasználónév és a jelszó nem kötelező. Minden beállítás titkosítva van az átjáró hitelesítő adataival, és helyileg tárolódik az átjáró gazdagépén.
 
-Az adatkezelési átjárót gazdaszolgáltatása automatikusan újraindul, miután mentette a frissített proxybeállításokat.
+Az adatkezelési átjáró gazdagép-szolgáltatása automatikusan újraindul a frissített proxybeállítások mentése után.
 
-Miután az átjáró sikeresen regisztrálva lett, ha szeretné megtekintheti vagy frissítheti a webproxy beállításai, használja a Data Management Gateway Configuration Manager.
+Miután sikeresen regisztrálta az átjárót, ha szeretné megtekinteni vagy frissíteni a proxybeállításokat, használja adatkezelés átjáró Configuration Manager.
 
-1. Indítsa el a **Data Management Gateway Configuration Manager**.
+1. **Adatkezelés átjáró Configuration Manager**elindítása.
 2. Váltson a **Settings** (Beállítások) lapra.
-3. Kattintson a **módosítása** hivatkozásra **HTTP-Proxy** indítsa el a szakasz a **állítsa be a HTTP-Proxy** párbeszédpanel.
-4. Miután rákattintott a **tovább** gombra, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállításokat, és indítsa újra a gazdagépet a engedélyt kér.
+3. A http-proxy **beállítása** párbeszédpanel megnyitásához kattintson a hivatkozás **módosítása** a **http-proxyn** szakaszra.
+4. Miután rákattintott a **tovább** gombra, megjelenik egy figyelmeztető párbeszédpanel, amely arra kéri az engedélyt, hogy mentse a proxybeállításokat, és indítsa újra az átjáró szolgáltatást.
 
-Megtekintheti, és a HTTP-proxy frissítése a Configuration Manager eszközzel.
+Configuration Manager eszköz használatával megtekintheti és frissítheti a HTTP-proxyt.
 
-![A Konfigurációkezelő használatával set-proxy](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+![Proxy beállítása a config Manager használatával](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
 
 > [!NOTE]
-> Ha az NTLM-hitelesítés proxykiszolgálót állít be, átjáró Gazdaszolgáltatásának a tartományi fiók alatt fut. Ha módosítja a később a tartományi fiók jelszavát, ne felejtse el frissíteni a szolgáltatás konfigurációs beállításait, és ennek megfelelően indítsa újra. Ez a követelmény miatt javasoljuk, hogy a proxykiszolgálóhoz, hogy a jelszó frissítése gyakran nem igényel dedikált tartományi fiókot használhatja.
+> Ha NTLM-hitelesítéssel rendelkező proxykiszolgálót állít be, az átjáró szolgáltatás a tartományi fiók alatt fut. Ha később módosítja a tartományi fiók jelszavát, ne felejtse el frissíteni a szolgáltatás konfigurációs beállításait, majd indítsa újra. Ennek a követelménynek köszönhetően javasoljuk, hogy egy dedikált tartományi fiókot használjon a proxykiszolgáló eléréséhez, amely nem igényli a jelszó gyakori frissítését.
 >
 >
 
-### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló-beállításainak konfigurálása
-Ha **rendszerproxy használata** átjáró használja a HTTP-proxy beállítása, a proxybeállítást diahost.exe.config és diawp.exe.config. Ha nincs proxy diahost.exe.config és diawp.exe.config van megadva, átjáró felhőszolgáltatásához csatlakozva közvetlenül a proxy áthaladás nélkül. Az alábbi eljárás ismerteti a diahost.exe.config fájl frissítése.
+### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló beállításainak konfigurálása
+Ha a HTTP-proxyhoz a **rendszerproxy használata** beállítást választja, az átjáró a diahost. exe. config és a diawp. exe. config fájl proxybeállításait használja. Ha nincs megadva proxy a diahost. exe. config és a diawp. exe. config fájlban, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost. exe. config fájl frissítéséhez.
 
-1. A Fájlkezelőben, győződjön meg arról, biztonságos másolatát *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\megosztott\\diahost.exe.config* , Készítsen biztonsági másolatot az eredeti fájlt.
-2. Indítsa el a Notepad.exe rendszergazdaként futtatja, és nyissa meg a szöveges fájl *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\megosztott\\ diahost.exe.config*. Az alapértelmezett címke a system.net található, az alábbi kódban látható módon:
+1. A Fájlkezelőben készítsen biztonsági másolatot a *C:\\\\Program Files\\Microsoft adatkezelés Gateway\\2,0\\megosztott\\diahost. exe. config* fájlt az eredeti fájl biztonsági mentéséhez.
+2. Indítsa el a Notepad. exe alkalmazást rendszergazdaként, és nyissa meg a *C:\\\\Program Files\\Microsoft adatkezelés Gateway\\2,0\\megosztott\\diahost. exe. config fájlt*. A system.net alapértelmezett címkéjét az alábbi kódban látható módon találja:
 
     ```
     <system.net>
@@ -214,7 +214,7 @@ Ha **rendszerproxy használata** átjáró használja a HTTP-proxy beállítása
     </system.net>
     ```
 
-    Ezután hozzáadhatja a proxykiszolgáló adatai az alábbi példában látható módon:
+    Ezután a következő példában látható módon adhatja hozzá a proxykiszolgáló adatait:
 
     ```
     <system.net>
@@ -224,235 +224,235 @@ Ha **rendszerproxy használata** átjáró használja a HTTP-proxy beállítása
     </system.net>
     ```
 
-    További tulajdonságok, adja meg a szükséges beállításokat, például a scriptLocation engedélyezettek a proxy címkén belül. Tekintse meg [elem (hálózati beállítások) proxy](https://msdn.microsoft.com/library/sa91de1e.aspx) szintaxisról.
+    A proxy címkén belül további tulajdonságok is megadhatók a szükséges beállítások, például a scriptLocation számára. A szintaxisban tekintse meg a [proxy elemet (hálózati beállítások)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
 
     ```
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. A konfigurációs fájlt az eredeti helyre mentse, majd indítsa újra a Data Management Gateway gazdagép szolgáltatást, amely szerzi be a módosításokat. A szolgáltatás újraindításához: használja a Vezérlőpult, vagy a szolgáltatások kisalkalmazás a **Data Management Gateway Configuration Manager** > kattintson a **szolgáltatás leállítása** gombra, majd kattintson a **indítása Szolgáltatás**. Ha a szolgáltatás nem indul el, valószínű, hogy hozzáadta-e egy XML-címke helytelen szintaxis szerkesztettek alkalmazás konfigurációs fájlba.
+3. Mentse a konfigurációs fájlt az eredeti helyre, majd indítsa újra a adatkezelés átjáró-gazdagép szolgáltatást, amely felveszi a módosításokat. A szolgáltatás újraindítása: a Vezérlőpulton vagy a **adatkezelés átjáróból** válassza a szolgáltatások kisalkalmazása elemet Configuration Manager > kattintson a **szolgáltatás leállítása** gombra, majd kattintson a **Start Service**(szolgáltatás indítása) elemre. Ha a szolgáltatás nem indul el, valószínűleg helytelen XML-címke-szintaxis lett hozzáadva a szerkesztett alkalmazás konfigurációs fájljához.
 
 > [!IMPORTANT]
-> Ne felejtse el frissíteni a **mindkét** diahost.exe.config és diawp.exe.config.
+> Ne felejtse el frissíteni a diahost. exe. config és a diawp. exe. config fájlt **is** .
 
-Ezeken a pontokon kívül is szüksége, hogy a Microsoft Azure, amely a vállalat engedélyezési lista. Érvényes Microsoft Azure IP-címek listájának letölthető a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+Ezeken a pontokon kívül meg kell győződnie arról is, Microsoft Azure a vállalat engedélyezési listájában szerepel. Az érvényes Microsoft Azure IP-címek listáját a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=41653)töltheti le.
 
-#### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges tünetek
-Ha a következő hasonló hibákat észlel, akkor valószínű, a tűzfal vagy proxy kiszolgálóra, amely blokkolja az átjárót a Data Factory kapcsolódni önmaga hitelesítéséhez a helytelen konfiguráció miatt. Tekintse át a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően legyenek konfigurálva.
+#### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>A tűzfal és a proxykiszolgáló szolgáltatással kapcsolatos problémák lehetséges tünetei
+Ha a következőhöz hasonló hibák fordulnak elő, valószínűleg a tűzfal vagy a proxykiszolgáló helytelen konfigurációja miatt következik be, ami blokkolja az átjárót, hogy csatlakozzon a Data Factoryhoz a hitelesítéshez. Az előző szakaszban megtekintheti, hogy a tűzfal és a proxykiszolgáló megfelelően van-e konfigurálva.
 
-1. Amikor megpróbálja regisztrálni az átjáró, a következő hibaüzenetet kapja: "Nem sikerült regisztrálni az átjáró-kulcsot. Regisztrálja újra az átjáró kulcs előtt győződjön meg arról, hogy az adatkezelési átjárót egy csatlakoztatott állapotban van, és a Data Management Gateway szolgáltatás elindult."
-2. A Configuration Manager megnyitásakor állapotot látja "Leválasztott" vagy "Csatlakozás". Ha Windows-eseménynaplók, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Adatkezelési átjáró", hibaüzenetek jelennek meg például a következő hiba: `Unable to connect to the remote server`
+1. Amikor megpróbálja regisztrálni az átjárót, a következő hibaüzenet jelenik meg: "nem sikerült regisztrálni az átjáró kulcsát. Mielőtt ismét megpróbálja regisztrálni az átjáró kulcsát, győződjön meg róla, hogy az adatkezelési átjáró csatlakoztatott állapotban van, és a adatkezelés átjáró-gazdagép szolgáltatás elindult. "
+2. Configuration Manager megnyitásakor a "leválasztott" vagy "kapcsolódás" állapot jelenik meg. A Windows-eseménynaplók megtekintésekor a "Eseménynapló" > "alkalmazás-és szolgáltatások naplói" > "adatkezelés átjáró" résznél hibaüzenetek jelennek meg, például a következő hiba miatt: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
-### <a name="open-port-8050-for-credential-encryption"></a>Nyissa meg a hitelesítő adatok titkosításához 8050 port
-A **hitelesítő adatok beállítása** alkalmazás használja a bejövő portot **8050** relay hitelesítő adatait az átjáróhoz, az Azure Portalon egy helyszíni társított szolgáltatás üzembe helyezésekor meg. Átjáró telepítésekor alapértelmezés szerint az átjáró telepítése megnyitja az átjárót tartalmazó számítógépen.
+### <a name="open-port-8050-for-credential-encryption"></a>Az 8050-es port megnyitása a hitelesítő adatok titkosításához
+A **hitelesítő adatok beállítása** alkalmazás a **8050** bejövő portot használja a hitelesítő adatok továbbítására az átjáróhoz, amikor helyi társított szolgáltatást állít be a Azure Portal. Az átjáró telepítése során az átjáró telepítése alapértelmezés szerint megnyitható az átjáró számítógépen.
 
-Ha egy külső tűzfalat használ, a portot 8050 manuálisan is megnyithatja. Ha tűzfal probléma átjáró telepítése során, próbálja meg a következő paranccsal telepítse az átjárót a tűzfal konfigurálása nélkül.
+Ha külső gyártótól származó tűzfalat használ, a 8050-es portot manuálisan is megnyithatja. Ha tűzfalon futtatja a problémát az átjáró telepítésekor, a következő parancs használatával telepítheti az átjárót a tűzfal konfigurálása nélkül.
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Ha nem kíván nyissa meg a-8050 az átjárót tartalmazó számítógépen, eltérő használatával mechanizmusok használata a **hitelesítő adatok beállítása** alkalmazás konfigurálása az adattár hitelesítő adatait. Használhat például [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell-parancsmagot. Tekintse meg, hogyan tárolhatja az adatokat a hitelesítő adatok a hitelesítő adatok beállítása és biztonsági szakaszban beállíthatja.
+Ha úgy dönt, hogy nem nyitja meg az 8050-as portot az átjárót tartalmazó gépen, használja a **hitelesítő adatok beállítása** az adattároló hitelesítő adatainak beállításához használt mechanizmusokat. Használhatja például a [New-AzDataFactoryEncryptValue PowerShell-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) parancsmagot. Lásd: a hitelesítő adatok és a Biztonság beállítása szakasz, amely az adattár hitelesítő adatainak beállítását ismerteti.
 
-## <a name="update"></a>frissítés
-Alapértelmezés szerint az adatkezelési átjáró automatikusan frissül, ha az átjáró egy újabb verziója érhető el. Az átjáró nem frissül, amíg az ütemezett feladatokat kell elvégezni. Nincsenek további tevékenységeket dolgozza fel az átjáró a frissítési művelet befejeződéséig. Ha a frissítés sikertelen, átjáró, a régi verziót vissza lesz állítva.
+## <a name="update"></a>Frissítés
+Alapértelmezés szerint az adatkezelési átjáró automatikusan frissül, amikor az átjáró újabb verziója érhető el. Az átjáró addig nem frissül, amíg az összes ütemezett feladat be nem fejeződik. Az átjáró nem dolgozza fel további feladatokat, amíg a frissítési művelet be nem fejeződik. Ha a frissítés meghiúsul, az átjáró vissza lesz állítva a régi verzióra.
 
-Az ütemezett frissítés ideje jelenik meg a következő helyeken:
+Az ütemezett frissítési idő a következő helyeken jelenik meg:
 
-* Az átjáró tulajdonságai lap az Azure Portalon.
-* A Data Management Gateway Configuration Manager kezdőlapja
-* Rendszer tálca értesítési üzenetet.
+* A Azure Portal átjáró tulajdonságai lapja.
+* Az adatkezelés átjáró kezdőlapja Configuration Manager
+* A rendszertálca értesítési üzenete.
 
-Kezdőlap lapján a Data Management Gateway Configuration Manager megjeleníti a frissítési ütemezés és a legutóbbi alkalommal az átjáró telepítése/frissítése.
+A adatkezelés átjáró kezdőlapja Configuration Manager megjeleníti a frissítési ütemtervet, valamint az átjáró legutóbbi telepítésének vagy frissítésének utolsó időpontját.
 
 ![Frissítések ütemezése](media/data-factory-data-management-gateway/UpdateSection.png)
 
-Azonnal telepítse a frissítést, vagy várja meg az ütemezett időpontban automatikusan frissíteni kell az átjárót. Ha például az alábbi képen látható, az értesítési üzenet jelenik meg a Gateway Configuration Manager és a frissítés gomb, amelyre kattintva közvetlenül telepítheti.
+A frissítést azonnal telepítheti, vagy megvárhatja, hogy az átjáró automatikusan frissüljön az ütemezett időpontban. Az alábbi képen például az átjáró Configuration Manager látható értesítési üzenet jelenik meg, amelyen a frissítés gombra kattintva azonnal telepítheti.
 
-![Frissítés a DMG Configuration Managerben](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
+![Frissítés a DMG Configuration Manager](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
 
-Az értesítési üzenet oznamovací oblasti hlavního jelenne meg, az alábbi képen látható módon:
+A rendszertálcán lévő értesítési üzenet a következő képen látható módon jelenik meg:
 
-![Rendszerüzenet tálca](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
+![Rendszertálca üzenete](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
 
-Frissítési művelet (Manuális vagy automatikus) v oznamovací oblasti hlavního állapotának megtekintéséhez. Átjáró a Configuration Manager indítása következő alkalommal, amikor egy üzenet jelenik meg az értesítési sávban, hogy az átjáró együtt mutató hivatkozás lett frissítve a [Mi az új témakör](data-factory-gateway-release-notes.md).
+A frissítési művelet állapota (manuális vagy automatikus) a tálcán látható. Amikor a következő alkalommal indítja el az átjárót Configuration Manager az értesítési sávon megjelenik egy üzenet, amely az [új témakörre](data-factory-gateway-release-notes.md)mutató hivatkozást tartalmaz.
 
-### <a name="to-disableenable-auto-update-feature"></a>Tiltsa le/engedélyezze az automatikus frissítés funkció
-Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a következő lépések végrehajtásával:
+### <a name="to-disableenable-auto-update-feature"></a>Az automatikus frissítési funkció letiltása/engedélyezése
+A következő lépések végrehajtásával letilthatja/engedélyezheti az automatikus frissítés funkciót:
 
-[Az egyetlen csomópontos átjárót]
-1. Indítsa el a Windows Powershellt az átjárót tartalmazó számítógépen.
-2. Váltson a *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  mappát.
-3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
+[Egyetlen csomópontos átjáróhoz]
+1. Indítsa el a Windows PowerShellt az átjáró-gépen.
+2. Váltson a *C:\\\\Program Files\\Microsoft Integration Runtime\\3,0\\PowerShellScript\\* mappájára.
+3. A következő parancs futtatásával kapcsolja ki az automatikus frissítés funkciót (Letiltás).
 
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
-4. Kapcsolja be újra be:
+4. Visszakapcsolás:
 
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
-   [Több csomópontos magas rendelkezésre állású és méretezhető átjáró](data-factory-data-management-gateway-high-availability-scalability.md)
-1. Indítsa el a Windows Powershellt az átjárót tartalmazó számítógépen.
-2. Váltson a *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  mappát.
-3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
+   [Több csomópontos, magasan elérhető és méretezhető átjáró esetén](data-factory-data-management-gateway-high-availability-scalability.md)
+1. Indítsa el a Windows PowerShellt az átjáró-gépen.
+2. Váltson a *C:\\\\Program Files\\Microsoft Integration Runtime\\3,0\\PowerShellScript\\* mappájára.
+3. A következő parancs futtatásával kapcsolja ki az automatikus frissítés funkciót (Letiltás).
 
-    Átjáró magas rendelkezésre állású szolgáltatás egy extra AuthKey param szükség.
+    A magas rendelkezésre állási funkcióval rendelkező átjáró esetén extra AuthKey paraméter szükséges.
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
-4. Kapcsolja be újra be:
+4. Visszakapcsolás:
 
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
 ## <a name="configuration-manager"></a>Configuration Manager
-Miután telepítette az átjárót, a következő módszerek valamelyikével indíthatja el Data Management Gateway Configuration Manager:
+Miután telepítette az átjárót, a következő módszerek egyikével indíthatja el adatkezelés átjáró Configuration Manager:
 
-1. Az a **keresési** ablakot, írja be **adatkezelési átjáró** elérni ezt a segédprogramot.
-2. Futtassa a végrehajtható fájlt *ConfigManager.exe* mappában: *C:\\\\programfájljainak\\a Microsoft adatkezelési átjáró\\2.0\\megosztott*.
+1. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez.
+2. Futtassa a végrehajtható *ConfigManager. exe* fájlt a mappában: *C:\\\\Program Files\\Microsoft adatkezelés Gateway\\2,0\\megosztott*.
 
 ### <a name="home-page"></a>Kezdőlap
-A kezdőlap lehetővé teszi, hogy a következő műveleteket:
+A kezdőlapon a következő műveletek végezhetők el:
 
-* (Csatlakozva a felhőszolgáltatáshoz stb.) az átjáró állapotának megtekintése.
-* **Regisztráljon** egy kulccsal a portálról.
-* **Állítsa le** indítsa el a **Data Management Gateway gazdaszolgáltatása** az átjárót tartalmazó számítógépen.
-* **Frissítések ütemezése** a nap egy adott időpontban.
-* A dátum, amikor az átjáró volt megtekintése **utolsó frissítés**.
+* Az átjáró állapotának megtekintése (a felhőalapú szolgáltatáshoz csatlakoztatva stb.).
+* **Regisztráljon** egy kulcs használatával a portálon.
+* **Állítsa le** és indítsa el a **adatkezelés Gateway Host szolgáltatást** az átjárót futtató számítógépen.
+* **Frissítéseket ütemezhet** a napok adott időpontjában.
+* Megtekintheti az átjáró **utolsó frissítésének**dátumát.
 
 ### <a name="settings-page"></a>Beállítások lap
-A beállítások lapon tegye a következőket teszi lehetővé:
+A beállítások lapon a következő műveleteket hajthatja végre:
 
-* Megtekintése, módosítása és exportálása **tanúsítvány** az átjáró által használt. Ezt a tanúsítványt az adatforráshoz tartozó hitelesítő adatok titkosításához használatos.
-* Változás **HTTPS-port** a végponthoz. Az átjáró megnyit egy portot az adatforrás hitelesítő adatainak beállításához.
-* **Állapot** a végpont
-* Nézet **SSL-tanúsítvány** adatforrásokhoz tartozó hitelesítő adatok beállítása a portál és az átjáró közötti SSL-kommunikációra szolgál.
+* Az átjáró által használt **tanúsítvány** megtekintése, módosítása és exportálása. Ez a tanúsítvány az adatforrás hitelesítő adatainak titkosítására szolgál.
+* A végpont **https-portjának** módosítása Az átjáró megnyit egy portot az adatforrás hitelesítő adatainak beállításához.
+* A végpont **állapota**
+* Az SSL- **tanúsítvány** megtekintése a portál és az ÁTJÁRÓ közötti SSL-kommunikációhoz használható az adatforrások hitelesítő adatainak beállításához.
 
-### <a name="remote-access-from-intranet"></a>Az intranetes távoli hozzáférés
-Ez a funkció a jövőben engedélyezve lesz. Az az elkövetkező frissítések (v3.4 vagy újabb) tudatjuk, engedélyezése / letiltása a távoli kapcsolat, amely még ma történik (lásd fent) 8050 portot használja a hitelesítő adatok titkosításához a PowerShell vagy a hitelesítőadat-kezelő alkalmazás használatakor.
+### <a name="remote-access-from-intranet"></a>Távoli elérés az intranetről
+Ez a funkció a jövőben is engedélyezve lesz. A következő frissítésekben (v 3.4 vagy újabb) engedélyezheti vagy letilthatja a jelenleg a 8050-es portot használó távoli kapcsolatokat a hitelesítő adatok titkosításához a PowerShell vagy a Hitelesítőadat-kezelő alkalmazás használatakor.
 
 ### <a name="diagnostics-page"></a>Diagnosztika lap
-A Diagnosztika lap lehetővé teszi, hogy a következő műveleteket:
+A diagnosztika lapon a következő műveleteket hajthatja végre:
 
-* A részletes engedélyezés **naplózás**naplóinak megtekintése az eseménynaplóban és naplók küldése a Microsoftnak, ha hiba lépett fel.
-* **Kapcsolat tesztelése** egy adatforrásba.
+* Engedélyezze a részletes **naplózást**, tekintse meg a naplókat az eseménynaplóban, és küldjön naplókat a Microsoftnak, ha hiba történt.
+* Az adatforráshoz való **Kapcsolódás tesztelése** .
 
-### <a name="help-page"></a>Súgóoldalt
-A következő súgóoldalt az alábbi információkat jeleníti meg:
+### <a name="help-page"></a>Súgó oldal
+A Súgó oldal a következő információkat jeleníti meg:
 
 * Az átjáró rövid leírása
 * Verziószám
-* Online súgó, az adatvédelmi nyilatkozat és a licencszerződés mutató hivatkozásokat tartalmaz.
+* Az online súgóra, az adatvédelmi nyilatkozatra és a licencszerződésre mutató hivatkozások.
 
-## <a name="monitor-gateway-in-the-portal"></a>A figyelő átjárót a portálon
-Az Azure Portalon megtekintheti közel valós idejű pillanatképét erőforrás-használat (CPU, memória, network(in/out), stb.) egy átjárót tartalmazó számítógépen.
+## <a name="monitor-gateway-in-the-portal"></a>Átjáró figyelése a portálon
+A Azure Portal az erőforrás-kihasználtság (CPU, memória, hálózat (in/out), valamint az átjárót tartalmazó gépek közel valós idejű pillanatképét tekintheti meg.
 
-1. Az Azure Portalon keresse meg az adat-előállító kezdőlapja, és kattintson **társított szolgáltatásokat** csempére.
+1. A Azure Portalban navigáljon a saját adatelőállítójának kezdőlapjára, és kattintson a **társított szolgáltatások** csempére.
 
     ![Data factory kezdőlap](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
-2. Válassza ki a **átjáró** a a **társított szolgáltatásokat** lapot.
+2. Válassza ki az **átjárót** a **társított szolgáltatások** lapon.
 
     ![Társított szolgáltatások lap](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
-3. Az a **átjáró** lapon láthatja a memória és CPU-használat az átjáró.
+3. Az **átjáró** lapon láthatja az átjáró memória-és CPU-használatát.
 
-    ![Átjáró CPU és memória kihasználtsága](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
-4. Engedélyezése **speciális beállítások** például a hálózati forgalom további részletek megtekintéséhez.
+    ![Az átjáró processzor-és memóriahasználat](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
+4. A **Speciális beállítások** lehetővé teszik a további részletek, például a hálózati használat megjelenítését.
     
-    ![Speciális monitorozás átjáró](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+    ![Az átjáró speciális monitorozása](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
 
-Az alábbi táblázat ismerteti az oszlopok a **Átjárócsomópontok** lista:
+Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlopok leírását tartalmazza:
 
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
-Name (Név) | A logikai átjáró és a csomópontok kívánt átjáróval társított neve. Csomópont egy helyszíni Windows-gépen, amelyen az átjáró telepítve. Egynél több csomópont (legfeljebb négy csomópont) az egyetlen logikai átjáró, amely további információkért lásd: [Data Management Gateway - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
-Állapot | A logikai átjáró és az átjáró csomópontok állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [átjáró állapota](#gateway-status) szakaszban.
-Version | A logikai átjáró, és minden egyes átjárócsomópont verzióját mutatja. A logikai átjáró verziója határozza meg a csoport csomópontjának többsége verzióján alapul. Ha nincs a logikai átjáró beállításai, és verzió száma azonos a logikai átjáró függvény csak a csomópontok különböző verziójú csomópontok megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik).
-Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet.
-Processzorkihasználtság | CPU-kihasználtság egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet.
-Hálózatkezelés (In/Out) | A hálózathasználat egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet.
-Egyidejű feladatok (futó / Limit) | Feladatok és minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyidejű feladatok maximális száma minden egyes csomópont esetében. Ez az érték van megadva a mérete alapján. A vertikális felskálázása speciális esetekben, ahol CPU/memória/hálózati kevésbé használt, de tevékenységek időkorlátja egyidejű feladat-végrehajtási korlát növeléséhez. Ez a funkció egy egycsomópontos átjárón (akkor is, ha a skálázhatóság és rendelkezésre állás funkció nincs engedélyezve) is érhető el.
-Szerepkör | Dispatcher és feldolgozói szerepkörök a több csomópontos átjárót – két típusa van. Minden csomópont a dolgozók, ami azt jelenti, hogy az összes felhasználásuk feladatok végrehajtásához. Nincs dispatcher csak egy csomópont, amely lekéréses feladatok/feladatok a cloud servicesből, és melyik másik munkavégző csomópontok (beleértve a saját maga) használható.
+Név | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
+Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
+Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul).
+Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép.
+CPU-kihasználtság | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
+Hálózatkezelés (be/ki) | Átjáró-csomópontok hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
+Egyidejű feladatok (futó/korlát) | Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti speciális forgatókönyvekben, ahol a CPU/memória/hálózat nincs használatban, a tevékenységek azonban időtúllépést okozhatnak. Ez a funkció egy egycsomópontos átjáróval is elérhető (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve).
+Szerepkör | A több csomópontos átjárók és a feldolgozók két típusú szerepkört használnak. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére, valamint a különböző munkavégző csomópontokra (beleértve a saját magára) történő küldésére szolgál.
 
-Ezen a lapon láthatja bizonyos beállítások, amelyek több értelme, ha az átjáró legalább két csomóponttal (horizontális felskálázás forgatókönyv). Lásd: [Data Management Gateway - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md) több csomópontos átjáró beállítása részleteit.
+Ezen a lapon néhány olyan beállítás látható, amely több értelmet mutat, ha két vagy több csomópont van (kibővíthető forgatókönyv) az átjárón. Lásd: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md) a több csomópontos átjáró beállításával kapcsolatos részletekért.
 
 ### <a name="gateway-status"></a>Átjáró állapota
-Az alábbi táblázat ismerteti a lehetséges állapotok egy **átjárócsomópont**:
+Az alábbi táblázat egy **átjáró-csomópont**lehetséges állapotát tartalmazza:
 
-Állapot  | Megjegyzések és forgatókönyvek
+Állapot  | Megjegyzések/forgatókönyvek
 :------- | :------------------
-Online | Csomópont csatlakoztatva a Data Factory szolgáltatásban.
-Offline | Csomópont offline állapotban.
-A frissítés | A csomópont automatikus frissítése folyamatban van.
-Korlátozott | Kapcsolat nem látható probléma miatt. HTTP-port 8050 probléma, a service bus kapcsolódási probléma vagy a hitelesítő adatok szinkronizálási problémája miatt lehet.
-Inaktív | Csomópontnak számít eltér a többi legtöbb csomópont konfigurációjának konfigurációban.<br/><br/> Egy csomópont inaktív lehet, ha a többi csomópont nem tud kapcsolódni.
+Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
+Offline | A csomópont offline állapotban van.
+Frissítése | A csomópont automatikus frissítése folyamatban van.
+Korlátozott | Kapcsolódási probléma miatt. A hiba oka lehet a 8050-es HTTP-port, a Service Bus-csatlakozási probléma vagy a hitelesítő adatok szinkronizálása.
+Inaktív | A csomópont más többségi csomópontok konfigurációjától eltérő konfigurációban található.<br/><br/> Egy csomópont inaktív lehet, ha nem tud csatlakozni más csomópontokhoz.
 
-Az alábbi táblázat ismerteti a lehetséges állapotok egy **logikai átjáró**. Az átjáró állapotának ellenőrzéséhez az átjárócsomópontok állapotainak függ.
+A következő táblázat a **logikai átjáró**lehetséges állapotait tartalmazza. Az átjáró állapota az átjáró csomópontjainak állapotától függ.
 
 Állapot | Megjegyzések
 :----- | :-------
-Regisztrálni kell | Nem csomópont még regisztrálva van a logikai átjáró
-Online | Az Átjárócsomópontok online állapotban.
-Offline | Nincsenek csomópont online állapotú.
-Korlátozott | Ezt az átjárót nem minden csomópontja kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti, hogy egyes csomópontok esetleg nem működik! <br/><br/>Hitelesítő adatok szinkronizálási problémát a kezelő/munkavégző csomópont okozhatja.
+Regisztráció szükséges | Ehhez a logikai átjáróhoz még nincs regisztrálva csomópont
+Online | Az átjáró-csomópontok online állapotban vannak
+Offline | Nincs online állapotú csomópont.
+Korlátozott | Az átjáró nem minden csomópontja kifogástalan állapotban van. Ez az állapot arra figyelmeztet, hogy egyes csomópontok leállnak. <br/><br/>A hitelesítőadat-szinkronizálási probléma oka lehet a diszpécser/feldolgozó csomóponton.
 
-## <a name="scale-up-gateway"></a>Vertikális felskálázás átjáró
-Beállíthatja, hogy hány **egyidejű adatok mozgását feladatok** , amely képes futni a csomóponton, vertikális felskálázása az adatok áthelyezését a helyszíni és a felhő között a funkció adattárakban.
+## <a name="scale-up-gateway"></a>Átjáró vertikális felskálázása
+Konfigurálhatja a csomóponton futtatható **egyidejű** adatáthelyezési feladatok számát úgy, hogy a helyszíni és a Felhőbeli adattárak közötti adatátviteli képességet bővítse.
 
-A rendelkezésre álló memória és a Processzor nem használhatók jól, de a kihasználatlan kapacitásért értéke 0, érdemes a vertikális felskálázáshoz, amely képes futni a csomóponton egyidejű feladatok számának növelése. Érdemes azt is, vertikális felskálázás akár, amikor a tevékenységek időtúllépésekbe ütközzenek, mert az átjáró túl van terhelve. Az átjáró csomópont speciális beállításait a maximális kapacitás egy csomópont lehet növelni.
+Ha a rendelkezésre álló memória és a CPU nem jól működik, de az üresjárati kapacitás 0, akkor a csomóponton futtatható egyidejű feladatok számának növelésével növelje a skálázást. Érdemes lehet vertikális felskálázást végezni, ha a tevékenységek időtúllépés miatt megtörténik, mert az átjáró túlterhelt. Az átjárók csomópontjának speciális beállításaiban növelheti a csomópontok maximális kapacitását.
 
-## <a name="troubleshooting-gateway-issues"></a>Átjáró kapcsolatos hibák elhárítása
-Lásd: [hibaelhárítási kérdéseket](data-factory-troubleshoot-gateway-issues.md) cikk információk/tippek kapcsolatos hibák elhárításának az adatkezelési átjáró segítségével.
+## <a name="troubleshooting-gateway-issues"></a>Átjáróval kapcsolatos problémák elhárítása
+Az adatkezelési átjáró használatával kapcsolatos hibák elhárításával kapcsolatos információkért tekintse meg a [hibaelhárítási átjáróval kapcsolatos problémákat](data-factory-troubleshoot-gateway-issues.md) ismertető cikket.
 
-## <a name="move-gateway-from-one-machine-to-another"></a>Átjáró áthelyezése egyik gépről egy másikra
-Ez a szakasz lépéseit mozgó átjáró ügyfél egyik gépről egy másik számítógépre.
+## <a name="move-gateway-from-one-machine-to-another"></a>Átjáró áthelyezése egyik gépről a másikra
+Ez a szakasz az átjáró-ügyfelek egyik gépről egy másik gépre való áthelyezésének lépéseit ismerteti.
 
-1. A portálon lépjen a **adat-előállító kezdőlapja**, és kattintson a **társított szolgáltatásokat** csempére.
+1. A portálon navigáljon a **Data Factory kezdőlapjára**, és kattintson a **társított szolgáltatások** csempére.
 
-    ![Átjárók adatkapcsolat](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
-2. Válassza ki az átjáró a **DATA GATEWAYS** szakaszában a **társított szolgáltatások** lap.
+    ![Adatátjárók hivatkozása](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+2. Válassza ki az átjárót a **társított szolgáltatások** lap **adatátjárók** szakaszában.
 
-    ![A kiválasztott átjáró társított szolgáltatások lap](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. Az a **adatátjáró** kattintson **töltse le és telepítse az adatátjáró**.
+    ![Társított szolgáltatások lap kijelölt átjáróval](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+3. Az **adatátjáró** lapon kattintson a **letöltés és az adatátjáró telepítése**elemre.
 
-    ![Töltse le az átjáró-hivatkozás](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. Az a **konfigurálása** kattintson **töltse le és telepítse az adatátjáró**, és kövesse az utasításokat követve telepítse az átjárót a gépen.
+    ![Átjáró hivatkozásának letöltése](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+4. A **configure (Konfigurálás** ) lapon kattintson az **adatátjáró letöltése és telepítése**lehetőségre, majd kövesse az utasításokat az adatátjáró számítógépen való telepítéséhez.
 
-    ![Lapjának konfigurálása](./media/data-factory-data-management-gateway/ConfigureBlade.png)
-5. Tartsa a **Microsoft Data Management Gateway Configuration Manager** megnyitásához.
+    ![Lap konfigurálása](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+5. Tartsa meg a **Microsoft adatkezelés átjáró Configuration Manager** megnyitását.
 
     ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
-6. Az a **konfigurálása** oldalra a portálon, kattintson a **hozza létre újra kulcs** a parancssávon, majd kattintson a **Igen** a figyelmeztető üzenet. Kattintson a **Másolás gombbal** mellett kulcsfontosságú, hogy a kulcs másolása a vágólapra. A régi gépen az átjáró nem működik, mert hamarosan hozza létre a kulcsot.
+6. A portálon a **configure (Konfigurálás** ) lapon kattintson a parancssorban a **kulcs újbóli létrehozása** elemre, majd kattintson az **Igen** gombra a figyelmeztető üzenethez. Kattintson a **Másolás gombra** a kulcsot tartalmazó szöveg mellett, amely a vágólapra másolja a kulcsot. A régi gépen lévő átjáró működése leáll, amint újra létrehozza a kulcsot.
 
-    ![Hozza létre újra a kulcsot](./media/data-factory-data-management-gateway/RecreateKey.png)
-7. Illessze be a **kulcs** a szövegmezőbe írja be a **átjáró regisztrálása** lapján a **Data Management Gateway Configuration Manager** a gépen. (nem kötelező) Kattintson a **Show átjáró kulcs** melletti jelölőnégyzetet, hogy tekintse meg a kulcs szövegét.
+    ![Kulcs újbóli létrehozása](./media/data-factory-data-management-gateway/RecreateKey.png)
+7. Illessze be a **kulcsot** a **adatkezelés átjáró Configuration Manager** a gépen lévő átjáró **regisztrálása** oldalán található szövegmezőbe. választható Kattintson az **átjáró kulcsának megjelenítése** jelölőnégyzetre a kulcs szövegének megtekintéséhez.
 
     ![Kulcs másolása és regisztrálása](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
-8. Kattintson a **regisztrálása** , regisztrálja az átjárót a felhőszolgáltatáshoz.
-9. A a **beállítások** lapra, majd **módosítása** válassza ki ugyanazt a tanúsítványt, amelyet a régi átjáróval használt, adja meg a **jelszó**, és kattintson a **Befejezés**.
+8. Kattintson a **regisztráció** elemre az átjáró felhőalapú szolgáltatásban való regisztrálásához.
+9. A **Beállítások** lapon kattintson a **módosítás** gombra a régi átjáróval használt tanúsítvány kiválasztásához, írja be a **jelszót**, majd kattintson a **Befejezés**gombra.
 
-   ![Adja meg a tanúsítvány](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
+   ![Tanúsítvány meghatározása](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   Exportálhatja a tanúsítványt a régi átjáró a következő lépések végrehajtásával: Indítsa el a Data Management Gateway Configuration Manager a régi gépen, váltson át a **tanúsítvány** lapra, majd **exportálása** gombra, és kövesse az utasításokat.
-10. Ha az átjáró sikeres regisztráció esetén jelenik meg a **regisztrációs** beállítása **regisztrált** és **állapota** beállítása **elindítva** a kezdőlapon az átjáró a Configuration Manager.
+   A következő lépések végrehajtásával exportálhatja a tanúsítványt a régi átjáróról: indítsa el adatkezelés átjáró Configuration Manager a régi gépen, váltson a **tanúsítvány** lapra, kattintson az **Exportálás** gombra, és kövesse az utasításokat.
+10. Az átjáró sikeres regisztrálását követően a **regisztrációhoz** **regisztrált** és **állapotra** vonatkozó beállítás jelenik meg, amely az átjáró Configuration Manager kezdőlapján **indul** .
 
 ## <a name="encrypting-credentials"></a>Hitelesítő adatok titkosítása
-A Data Factory Editorban hitelesítő adatok titkosításához, tegye a következőket:
+A hitelesítő adatok a Data Factory-szerkesztőben való titkosításához hajtsa végre a következő lépéseket:
 
-1. A webböngésző indítása a **átjárót tartalmazó számítógépen**, navigáljon a [az Azure portal](https://portal.azure.com). Az adat-előállító keresése, ha szükséges, nyissa meg az adat-előállítóhoz a **adat-előállító** lapon, majd kattintson **létrehozás és üzembe helyezés** Data Factory Editor elindításához.
-2. Kattintson egy meglévő **társított szolgáltatás** a fanézetben megtekintheti a JSON-definíciójában, vagy létrehoz egy társított szolgáltatást, amely egy adatkezelési átjárón igényel (például: Az SQL Server vagy Oracle).
-3. A JSON-szerkesztőben a a **átjárónév** tulajdonság, adja meg az átjárója nevére.
-4. Adja meg a kiszolgáló nevét a **adatforrás** tulajdonságot a **connectionString**.
-5. Adja meg az adatbázisnév a **Initial Catalog** tulajdonságot a **connectionString**.
-6. Kattintson a **titkosítása** gombra a parancssávon kattintson a indító – Miután **hitelesítőadat-kezelő** alkalmazás. Megtekintheti a **hitelesítő adatok beállítása** párbeszédpanel bezárásához.
+1. Indítsa el a webböngészőt az **átjárót tartalmazó számítógépen**, és navigáljon [Azure Portal](https://portal.azure.com). Ha szükséges, keresse meg az adatelőállítót, nyissa meg az adatelőállítót az **adatfeldolgozó** lapon, majd kattintson a **Szerző & üzembe helyezés** elemre Data Factory szerkesztő elindításához.
+2. Kattintson egy meglévő **társított szolgáltatásra** a fanézetben, és tekintse meg a JSON-definícióját, vagy hozzon létre egy olyan társított szolgáltatást, amelyhez adatkezelési átjáró szükséges (például: SQL Server vagy Oracle).
+3. A JSON-szerkesztőben a **átjáró neve** tulajdonságnál adja meg az átjáró nevét.
+4. Adja meg a **ConnectionString**nevű **adatforrás** -tulajdonság kiszolgálójának nevét.
+5. Adja meg az adatbázis nevét a **ConnectionString** **kezdeti katalógus** tulajdonságához.
+6. A parancssorban kattintson a **titkosítás** gombra, amely elindítja a Click-Once **Hitelesítőadat-kezelő** alkalmazást. Ekkor megjelenik a **hitelesítő adatok beállítása** párbeszédpanel.
 
-    ![A beállítás hitelesítő adatok párbeszédpanel](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-7. Az a **hitelesítő adatok beállítása** párbeszédpanelen tegye a következőket:
-   1. Válassza ki **hitelesítési** , amelyet a Data Factory szolgáltatás csatlakozik az adatbázishoz.
-   2. Adjon meg nevet a felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz tartozó a **felhasználónév** beállítás.
-   3. Adja meg a jelszót a felhasználó a **jelszó** beállítás.
-   4. Kattintson a **OK** hitelesítő adatok titkosításához, és zárja be a párbeszédpanelt.
-8. Megjelenik egy **encryptedCredential** tulajdonságot a **connectionString** most.
+    ![Hitelesítő adatok beállítása párbeszédpanel](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+7. A **hitelesítő adatok beállítása** párbeszédpanelen hajtsa végre a következő lépéseket:
+   1. Válassza ki azt a **hitelesítést** , amelyet a Data Factory szolgáltatásnak használnia kell az adatbázishoz való kapcsolódáshoz.
+   2. Adja meg annak a felhasználónak a nevét, aki hozzáfér az adatbázishoz a **Felhasználónév** beállításnál.
+   3. Adja **meg a jelszó beállításhoz** tartozó felhasználó jelszavát.
+   4. A hitelesítő adatok titkosításához és a párbeszédpanel bezárásához kattintson **az OK** gombra.
+8. Ekkor egy **encryptedCredential** tulajdonságot kell megjelennie a **ConnectionString** -ben.
 
     ```JSON
     {
@@ -467,36 +467,36 @@ A Data Factory Editorban hitelesítő adatok titkosításához, tegye a követke
         }
     }
     ```
-   Ha a portálon, amely eltér az átjárót tartalmazó számítógépen gépről éri el, győződjön meg arról, hogy a hitelesítő adatok kezelőjének alkalmazás képes-e csatlakozni az átjárót tartalmazó számítógépen. Ha az alkalmazás nem tudja elérni az átjárót tartalmazó számítógépen, azt nem teszi lehetővé az adatforráshoz tartozó hitelesítő adatok beállítása és az adatforrás kapcsolat ellenőrzéséhez.
+   Ha az átjárótól eltérő gépről fér hozzá a portálhoz, meg kell győződnie arról, hogy a hitelesítő adatok kezelője alkalmazás tud csatlakozni az átjáró számítógéphez. Ha az alkalmazás nem tudja elérni az átjárót, nem teszi lehetővé az adatforrás hitelesítő adatainak megadását és az adatforrás kapcsolatának tesztelését.
 
-Használatakor a **hitelesítő adatok beállítása** alkalmazás, a portál titkosítja a hitelesítő adatokat a megadott tanúsítvány a **tanúsítvány** lapján a **Gateway Configuration Manager**  az átjárót tartalmazó számítógépen.
+Ha a **hitelesítő adatok beállítása** alkalmazást használja, a portál titkosítja a hitelesítő adatokat az **átjáró** számítógépének Configuration Manager **tanúsítvány** lapján megadott tanúsítvánnyal.
 
-Ha a hitelesítő adatok titkosításához egy API-alapú módszert keres, akkor használhatja a [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) hitelesítő adatainak titkosítása PowerShell-parancsmagot. A parancsmag a tanúsítványt használja, hogy az átjáró a hitelesítő adatok titkosításához használatára van konfigurálva. A titkosított hitelesítő adatok hozzáadása a **EncryptedCredential** eleme a **connectionString** a JSON-fájlban. A JSON-t használ a [New-AzDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactorylinkedservice) parancsmag vagy a Data Factory szerkesztőjében.
+Ha API-alapú megközelítést keres a hitelesítő adatok titkosításához, a [New-AzDataFactoryEncryptValue PowerShell-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) parancsmagot használhatja a hitelesítő adatok titkosításához. A parancsmag azt a tanúsítványt használja, amelyet az átjáró a hitelesítő adatok titkosítására való használatra konfigurált. A rendszer titkosított hitelesítő adatokat ad hozzá a **EncryptedCredential** - **elemhez a JSON-ban** . A JSON-t a [New-AzDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactorylinkedservice) parancsmaggal vagy a Data Factory-szerkesztőben használhatja.
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 ```
 
-Van egy további megközelítés a Data Factory Editor használatával hitelesítő adatok beállítása. Ha létrehoz egy SQL Server társított szolgáltatást a szerkesztő használatával, és adja meg hitelesítő adatait egyszerű szövegként, a hitelesítő adatok titkosítottak egy tanúsítvánnyal, amely a Data Factory szolgáltatás tulajdonosa. Ez a tanúsítvány nem használható, hogy az átjáró használatára van konfigurálva. Lehet, hogy ez a módszer bizonyos esetekben egy kicsit gyorsabb, míg a kevésbé biztonságos. Ezért azt javasoljuk, hogy kövesse ezt a megközelítést csak fejlesztési-tesztelési célokra.
+A hitelesítő adatoknak a Data Factory Editor használatával történő beállításának még egy megközelítése van. Ha SQL Server társított szolgáltatást hoz létre a szerkesztővel, és egyszerű szövegként adja meg a hitelesítő adatokat, a hitelesítő adatok titkosítva lesznek a Data Factory szolgáltatás tulajdonosa által használt tanúsítvánnyal. NEM használja azt a tanúsítványt, amelyet az átjáró a használatára konfigurált. Habár ez a megközelítés némileg gyorsabb lehet bizonyos esetekben, kevésbé biztonságos. Ezért javasoljuk, hogy ezt a megközelítést csak fejlesztési/tesztelési célokra kövesse.
 
-## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
-Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy átjárót, az Azure PowerShell-parancsmagok használatával.
+## <a name="powershell-cmdlets"></a>PowerShell-parancsok
+Ez a szakasz azt ismerteti, hogyan lehet átjárót létrehozni és regisztrálni Azure PowerShell-parancsmagok használatával.
 
-1. Indítsa el a **Azure PowerShell-lel** rendszergazdai módban.
-2. Jelentkezzen be az Azure-fiókjába a következő parancs futtatásával, és az Azure hitelesítő adatok megadása.
+1. **Azure PowerShell** elindítása rendszergazdai módban.
+2. Jelentkezzen be az Azure-fiókjába a következő parancs futtatásával és az Azure-beli hitelesítő adatok megadásával.
 
     ```powershell
     Connect-AzAccount
     ```
-3. Használja a **New-AzDataFactoryGateway** logikai-átjárók létrehozására a következő parancsmagot:
+3. A **New-AzDataFactoryGateway** parancsmag használatával hozzon létre egy logikai átjárót a következő módon:
 
     ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
-    **A példában szereplő parancs és a kimeneti**:
+    **Példa parancs és kimenet**:
 
     ```
-    PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+    PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
 
     Name              : MyGateway
     Description       : gateway for walkthrough
@@ -511,7 +511,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Az Azure PowerShellben váltson arra a mappára: *C:\\\\programfájljainak\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* . Futtatás *RegisterGateway.ps1* a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
+1. A Azure PowerShellban váltson a következő mappára: *C:\\\\Program Files\\Microsoft Integration Runtime\\3,0\\PowerShellScript\\* . Futtassa a *RegisterGateway. ps1* parancsot a helyi változóhoz **$Key** az alábbi parancsban látható módon. Ez a parancsfájl regisztrálja a gépen a korábban létrehozott logikai átjáróval telepített ügyfél-ügynököt.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -519,29 +519,29 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     ```
     Agent registration is successful!
     ```
-    Az átjáró egy távoli gépen a IsRegisterOnRemoteMachine paraméter használatával regisztrálhatja. Példa:
+    Az átjárót egy távoli gépen is regisztrálhatja a IsRegisterOnRemoteMachine paraméter használatával. Példa:
 
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. Használhatja a **Get-AzDataFactoryGateway** az átjárók listájának beolvasása a data Factory-parancsmagot. Ha a **állapot** látható **online**, ez azt jelenti, hogy az átjáró készen áll a használatra.
+2. A **Get-AzDataFactoryGateway** parancsmag használatával lekérheti az átjárók listáját az adatgyárban. Ha az **állapota online állapotú** , az azt jelenti, hogy az átjáró használatra kész.
 
     ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-   Egy átjáró használatával eltávolíthatja a **Remove-AzDataFactoryGateway** egy átjáró használatával a parancsmag és a frissítés leírását a **Set-AzDataFactoryGateway** parancsmagok. Szintaxist és egyéb részletek ezekről a parancsmagokról lásd: a Data Factory parancsmagjainak leírása.  
+   Az átjárót a **Remove-AzDataFactoryGateway** parancsmaggal, a **set-AzDataFactoryGateway** parancsmagok használatával pedig az átjáró frissítésének leírásával távolíthatja el. A parancsmagok szintaxisát és egyéb részleteit lásd: Data Factory parancsmag referenciája.  
 
-### <a name="list-gateways-using-powershell"></a>Lista átjárókon a PowerShell használatával
+### <a name="list-gateways-using-powershell"></a>Átjárók listázása a PowerShell használatával
 
 ```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
-### <a name="remove-gateway-using-powershell"></a>Távolítsa el a gatewayen a PowerShell használatával
+### <a name="remove-gateway-using-powershell"></a>Átjáró eltávolítása a PowerShell használatával
 
 ```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 
-## <a name="next-steps"></a>További lépések
-* Lásd: [közötti a helyszíni és felhőalapú adattárak](data-factory-move-data-between-onprem-and-cloud.md) cikk. A forgatókönyv az adatok áthelyezése a helyszíni SQL Server-adatbázisból Azure-blobba az átjárót használó folyamatot hoz létre.
+## <a name="next-steps"></a>Következő lépések
+* Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez.

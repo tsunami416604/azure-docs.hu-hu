@@ -1,108 +1,107 @@
 ---
-title: Az Azure MFA-verziók és a használatalapú csomagok – Azure Active Directory
-description: A multi-factor Authentication-ügyfél és a különböző módszerek és elérhető verziók vonatkozó adatokat.
+title: Azure MFA-verziók és-fogyasztási csomagok – Azure Active Directory
+description: Információk a multi-Factor Authentication-ügyfélről, valamint az elérhető különböző módszerekről és verziókról.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2018
+ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1ee55dd3aebca869da47bbc994f546aa4fe528
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78e34e0433dd362150680046c2f0ca53996063c4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496770"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151746"
 ---
-# <a name="how-to-get-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication beszerzése
+# <a name="how-to-get-azure-multi-factor-authentication"></a>Azure-Multi-Factor Authentication beszerzése
 
-Esetén, a fiókok védelmét, a kétlépéses ellenőrzés kell standard a szervezetben. Ez a szolgáltatás különösen fontos az fiókra, amelyet a privilegizált erőforrásokhoz való hozzáférést. Ebből kifolyólag a Microsoft alapvető kétlépéses ellenőrzési funkciókat kínál az Office 365 és az Azure Active Directory (Azure AD) a rendszergazdák nem kapcsolódik további költség. Ha azt szeretné, a rendszergazdák számára a szolgáltatások frissítésével, vagy a többi felhasználó kétlépéses ellenőrzés kiterjesztése, az Azure multi-factor Authentication többféle módon is vásárolhat.
+A fiókok védelme érdekében a kétlépéses ellenőrzésnek standard szintűnek kell lennie a szervezeten belül. Ez a funkció különösen fontos olyan fiókoknál, amelyek privilegizált hozzáféréssel rendelkeznek az erőforrásokhoz. Emiatt a Microsoft az Office 365 és a Azure Active Directory (Azure AD) rendszergazdái számára alapszintű kétlépéses ellenőrzési funkciókat kínál, többletköltség nélkül. Ha szeretné frissíteni a rendszergazdák szolgáltatásait, vagy a kétlépéses ellenőrzést a többi felhasználóra is kiterjesztheti, az Azure Multi-Factor Authentication többféleképpen is megvásárolhatja.
 
 > [!IMPORTANT]
-> Ez a cikk szinkronban kell lennie egy útmutató segítségével megismerheti az Azure multi-factor Authentication szolgáltatás vásárlása különböző módjait. Díjszabás és számlázás kapcsolatos részleteket, mindig tekintse át a [a multi-factor Authentication szolgáltatás díjszabási oldalán](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+> A cikk célja, hogy segítséget nyújtson az Azure-Multi-Factor Authentication megvásárlásának különböző módjairól. A díjszabással és a számlázással kapcsolatos részletes információkért tekintse meg a [multi-Factor Authentication díjszabási oldalát](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 >
 
-## <a name="available-versions-of-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication elérhető verzióinak
+## <a name="available-versions-of-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication elérhető verziói
 
-A következő táblázat ismerteti a multi-factor authentication szolgáltatás három verziója közötti különbségek:
+A következő táblázat a többtényezős hitelesítés verziói közötti különbségeket ismerteti:
 
-| Version | Leírás |
+| Verzió | Leírás |
 | --- | --- |
-| Multi-Factor Authentication az Office 365-höz <br> Microsoft 365 Business | Ez a verzió az Office 365 vagy a Microsoft 365 portáljáról felügyelhető. A rendszergazdák is [védheti az Office 365-erőforrásokat az kétlépéses ellenőrzés](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ez a verzió az Office 365 vagy a Microsoft 365 Business-előfizetés részét képezi. |
-| Többtényezős hitelesítés az Azure AD-rendszergazdák | Az Azure AD-bérlőt az Azure AD globális rendszergazdai szerepkörrel rendelkező engedélyezheti a kétlépéses ellenőrzés további költségek nélkül. |
-| Azure Multi-Factor Authentication | A "teljes" verziója más néven, az Azure multi-factor Authentication a képességek richest készletét kínálja. Elérhető további konfigurációs lehetőségeket biztosít a [az Azure portal](https://portal.azure.com), speciális jelentéskészítés és a helyszíni széles körű támogatása és a felhőbeli alkalmazásokhoz. Az Azure multi-factor Authentication csak a [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features). |
+| Ingyenes lehetőség | Az Azure AD ingyenes előnyeit kihasználó ügyfelek [biztonsági alapértékekkel](../conditional-access/concept-conditional-access-security-defaults.md) engedélyezhetik a többtényezős hitelesítést a környezetében. |
+| Multi-Factor Authentication for Office 365 | Ezt a verziót az Office 365 vagy Microsoft 365 portálon kezelheti. A rendszergazdák [kétlépéses ellenőrzéssel biztonságossá tehetik az Office 365-erőforrásokat](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ez a verzió egy Office 365-előfizetés részét képezi. |
+| Multi-Factor Authentication az Azure AD-rendszergazdák számára | Az Azure ad-bérlők Azure AD globális rendszergazdai szerepkörét hozzárendelő felhasználók további díjak nélkül engedélyezhetik a kétlépéses ellenőrzést. |
+| Azure Multi-Factor Authentication | Gyakran a "teljes" verziónak nevezik, az Azure Multi-Factor Authentication a funkciók legszélesebb körét kínálja. További konfigurációs lehetőségeket biztosít a [Azure Portalon](https://portal.azure.com), a speciális jelentéskészítésen, valamint számos helyszíni és felhőalapú alkalmazás támogatásán keresztül. Az Azure Multi-Factor Authentication [prémium szintű Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features) és [Microsoft 365 vállalati verzió](https://www.microsoft.com/microsoft-365/business)szolgáltatás. |
 
 > [!NOTE]
-> Új ügyfeleket már nem vásárolhat Azure multi-factor Authentication kínál hatékony 1-től, 2018 szeptember önálló. A multi-factor authentication továbbra is elérhető az Azure AD Premium-licencet.
+> Az új ügyfelek már nem vásárolhatják meg az Azure Multi-Factor Authentication önálló ajánlatként, amely 2018. szeptember 1-től érvényes. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD vagy Microsoft 365 Vállalati verzió licencek szolgáltatásában.
 
-## <a name="feature-comparison-of-versions"></a>Verzió szolgáltatásainak összehasonlítása
+## <a name="feature-comparison-of-versions"></a>A verziók összehasonlítása
 
-Az alábbi táblázat az Azure multi-factor Authentication szolgáltatás különféle verzióihoz elérhető funkciók listáját tartalmazza.
+A következő táblázat felsorolja az Azure Multi-Factor Authentication különböző verzióiban elérhető funkciókat.
 
 > [!NOTE]
-> Az összehasonlító táblázatot a többtényezős hitelesítés minden verziója részét képező funkciókat ismerteti. Ha a teljes Azure multi-factor Authentication szolgáltatás, bizonyos szolgáltatások nem lesznek elérhetők, ha használja [MFA a felhőben vagy MFA helyszíni](concept-mfa-whichversion.md).
+> Ez az összehasonlító táblázat a Multi-Factor Authentication egyes verziói részét képező szolgáltatásokat ismerteti. Ha rendelkezik a teljes Azure Multi-Factor Authentication szolgáltatással, előfordulhat, hogy egyes funkciók nem lesznek elérhetők attól függően, hogy az MFA-t a [felhőben vagy a helyszíni MFA-ban használja-](concept-mfa-whichversion.md)e.
 >
 
-| Funkció | Multi-Factor Authentication az Office 365-höz | Többtényezős hitelesítés az Azure AD-rendszergazdák | Azure Multi-Factor Authentication |
-| --- |:---:|:---:|:---:|
-| MFA-val az Azure AD rendszergazdai fiókok védelme |● |● (csak az Azure AD globális rendszergazdai fiókok esetében) |● |
-| Mobilalkalmazás második tényezőként |● |● |● |
-| Telefonhívás második tényezőként |● |● |● |
-| SMS második tényezőként |● |● |● |
-| Alkalmazásjelszavak az MFA-t nem támogató ügyfelek |● |● |● |
-| Hitelesítési módszerek rendszergazdai szabályozása |● |● |● |
-| MFA-val nem rendszergazdai fiókok védelme |● | |● |
-| PIN-mód | | |● |
-| Csalási riasztás | | |● |
-| MFA-jelentések | | |● |
-| Egyszeri mellőzés | | |● |
-| Egyéni üdvözlések a telefonhívásokhoz | | |● |
-| Egyéni Hívóazonosító a telefonhívásokhoz | | |● |
-| Megbízható IP-címek | | |● |
-| MFA megjegyzése megbízható eszközökön |● |● |● |
-| MFA helyszíni alkalmazások | | |● |
+| Szolgáltatás | Multi-Factor Authentication for Office 365 | Multi-Factor Authentication az Azure AD-rendszergazdák számára | Azure Multi-Factor Authentication | Alapértelmezett biztonsági szabályok | 
+| --- |:---:|:---:|:---:|:---:|
+| Azure AD-rendszergazdai fiókok biztosítása MFA-val |● |● (Csak Azure AD globális rendszergazdai fiókok) |● |● |
+| Mobile App második tényezőként |● |● |● |● |
+| Telefonhívás második tényezőként |● |● |● |   |
+| SMS második tényezőként |● |● |● |   |
+| Az MFA-t nem támogató ügyfelekhez tartozó alkalmazások jelszavai |● |● |● |   |
+| Az ellenőrzési módszerek rendszergazdai ellenőrzése |● |● |● |   |
+| A nem rendszergazdai fiókok hitelesítése MFA-val |● | |● |● |
+| PIN-mód | | |● |   |
+| Csalási riasztás | | |● |   |
+| MFA-jelentések | | |● |   |
+| Egyszeri mellőzés | | |● |   |
+| Egyéni üdvözlések a telefonhívásokhoz | | |● |   |
+| Telefonos hívások egyéni hívóazonosító | | |● |   |
+| Megbízható IP-címek | | |● |   |
+| MFA megjegyzése megbízható eszközökön |● |● |● |   |
+| MFA helyszíni alkalmazásokhoz | | |● |   |
 
 > [!IMPORTANT]
-> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
+> Az 2019-as naptól kezdve a telefonhívási lehetőségek nem lesznek elérhetők az MFA és a SSPR felhasználók számára ingyenes/próbaverziós Azure AD-bérlők esetében. Ez a változás nem érinti az SMS-üzeneteket. A telefonos hívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a változás csak az ingyenes/próbaverziós Azure AD-bérlőket befolyásolja.
 
-## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Az Azure AD-rendszergazdák az Azure multi-factor Authentication bekapcsolása
+## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Azure-Multi-Factor Authentication bekapcsolása az Azure AD-rendszergazdák számára
 
-Az Azure AD-bérlő globális rendszergazdai szerepkörrel rendelkező engedélyezheti a kétlépéses ellenőrzést, az Azure AD globális rendszergazdai fiókok további költségek nélkül. Ha Microsoft-Account használ, a multi-factor authentication a Microsoft fiók támogatási cikkben található útmutató segítségével regisztrálhatja [tudnivalók a kétlépéses ellenőrzés](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). Ha nem használ egy Microsoft-Account, kapcsolja be a többtényezős hitelesítést a globális rendszergazdák, a cikkben található útmutató segítségével [igénylése a kétlépéses ellenőrzés egy felhasználó vagy csoport](howto-mfa-userstates.md).
+A globális rendszergazdai szerepkörrel rendelkező felhasználók az Azure AD-bérlők számára lehetővé teszik az Azure AD-beli globális rendszergazdai fiókok kétlépéses ellenőrzését további díjak nélkül. Microsoft-fiók használata esetén regisztrálhat a többtényezős hitelesítésre a Microsoft-fiók támogatási cikkben található útmutatás alapján, a [kétlépéses ellenőrzésről](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). Ha nem Microsoft-fiókot használ, kapcsolja be a többtényezős hitelesítést a globális rendszergazdák számára a következő cikkben található útmutatás használatával: a [felhasználó vagy csoport kétlépéses ellenőrzésének megkövetelése](howto-mfa-userstates.md).
 
-## <a name="how-to-purchase-azure-multi-factor-authentication"></a>Hogyan vásárolhatja meg az Azure multi-factor Authentication
+## <a name="how-to-purchase-azure-multi-factor-authentication"></a>Azure-Multi-Factor Authentication vásárlása
 
-Vásároljon licencet, amely tartalmazza az Azure multi-factor Authentication, mint például az Azure Active Directory Premium, vagy egy licenc-csomagot, amely tartalmazza az Azure AD prémium vagy a feltételes hozzáférés, és hozzárendelheti azokat a felhasználók számára az Azure Active Directoryban.
+Vásárolhat olyan licenceket, amelyek tartalmazzák az Azure Multi-Factor Authentication, például a prémium szintű Azure Active Directory, vagy egy olyan licencet, amely prémium szintű Azure AD vagy feltételes hozzáférést tartalmaz, és hozzárendeli azokat a felhasználókhoz Azure Active Directory.
 
-### <a name="consumption-based-licensing"></a>Consumption-alapú licencelés
+### <a name="consumption-based-licensing"></a>Fogyasztáson alapuló licencelés
 
-Licencelési fogyasztásalapú már nem érhető el az új ügyfelek számára hatékony 2018. szeptember 1.
+A fogyasztáson alapuló licencelés az új ügyfelek számára már nem érhető el, 2018. szeptember 1-től érvényes.
 
-Hatékony 2018. szeptember 1. új auth-szolgáltatók többé nem hozható létre. Meglévő hitelesítésszolgáltatók előfordulhat, hogy továbbra is használja, és frissítve. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
+Az új hitelesítési szolgáltatók már nem hozhatók létre. szeptember 1., 2018. A meglévő hitelesítési szolgáltatók továbbra is használhatók és frissíthetők. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencekben.
 
-Azure multi-factor Authentication-szolgáltatót használ, ha van elérhető az Azure-előfizetés díjszabása vonatkozik, amely két használati modellekről:
+Azure Multi-Factor Authentication-szolgáltató használata esetén két, az Azure-előfizetésen keresztül számlázott használati modell érhető el:
 
-1. **Engedélyezett felhasználónként** – vállalatok számára szeretné engedélyezni a kétlépéses ellenőrzés egy rögzített számú alkalmazottak, akik rendszeresen hitelesítésre van szükség. Felhasználóalapú számlázás az Azure AD-bérlőhöz, és az Azure MFA-kiszolgáló az MFA engedélyezett felhasználók számát alapul. Felhasználók engedélyezve vannak-e a multi-factor Authentication két Azure AD-ben és az Azure MFA-kiszolgáló és a tartomány-szinkronizáló (Azure AD Connect) engedélyezve van, akkor azt száma, hogy a felhasználók nagyobb készlete. Ha tartományi szinkronizálás nincs engedélyezve, akkor azt a count összege az összes olyan felhasználó, az Azure AD MFA engedélyezett, és Azure MFA-kiszolgáló. A számlázás napokra és a kereskedelmi rendszer jelentett naponta.
-
-   > [!NOTE]
-   > A számlázás 1. példa: 5000 felhasználó MFA-kiszolgáló jelenleg engedélyezve van. Az MFA-rendszer elosztja ezt a számot 31, és a jelentések 161.29 felhasználók az adott napra. Holnap engedélyezése további 15 felhasználót, így az MFA jelenti 161.77 felhasználók az adott napra. Az elszámolási időszakban a végén az Azure-előfizetés terhére felhasználók teljes száma ad legfeljebb 5000 körül.
-   >
-   > A számlázás 2. példa: Licenccel rendelkező felhasználók és a felhasználók anélkül, így van egy felhasználónkénti Azure MFA-szolgáltató a különbség a létre rendelkezik. Nincsenek 4500 Enterprise Mobility + Security-licencek a bérlő, de 5000 felhasználó engedélyezve van az MFA-hoz. Az Azure-előfizetés 500 felhasználónak kell fizetnie, napokra és más 16.13 felhasználói naponta jelentett.
-   >
-
-1. **Hitelesítésenként** – a nagyvállalatoknak, amely engedélyezi a felhasználók, akik ritkábban hitelesítésre van szükség nagyszámú kétlépéses ellenőrzést. A kétlépéses ellenőrzési kérelmeket, függetlenül attól, hogy ezen ellenőrzések sikeres, vagy a rendszer megtagadta a száma alapján számoljuk. A számlázás az Azure-használati utasítás a csomagokban 10 hitelesítésből álló megjelenik, és naponta jelentett.
+1. **Engedélyezett felhasználó** – olyan vállalatok számára, amelyek a hitelesítéshez rendszeresen szükséges, rögzített számú alkalmazottra szeretnének engedélyezni a kétlépéses ellenőrzést. A felhasználónkénti számlázás az MFA-ban az Azure AD-bérlőben és az Azure MFA-kiszolgálón engedélyezett felhasználók számán alapul. Ha a felhasználók számára engedélyezve van az MFA az Azure AD-ben és az Azure MFA-kiszolgálón, és a tartomány-szinkronizálás (Azure AD Connect) engedélyezve van, akkor a felhasználók nagyobb készletét számoljuk el. Ha a tartomány szinkronizálása nincs engedélyezve, akkor az Azure AD-ben és az Azure MFA-kiszolgálón az MFA számára engedélyezett összes felhasználó összegét számoljuk fel. A számlázás napi rendszerességgel van elszámolva és jelenteni a kereskedelmi rendszernek.
 
    > [!NOTE]
-   > A számlázás 3. példa: Jelenleg az Azure MFA szolgáltatás kapott 3,105 kétlépéses ellenőrzési kérelmeket. Az Azure-előfizetés elszámolási 310.5 hitelesítési csomagokat.
+   > 1\. számlázási példa: jelenleg 5 000 felhasználó engedélyezett az MFA-hoz. Az MFA-rendszer 31-re osztja ezt a számot, és az adott napra vonatkozóan 161,29 jelentést küld. Holnap további 15 felhasználót engedélyez, így az MFA-rendszerjelentések az adott napon 161,77 felhasználókat. A számlázási ciklus végére az Azure-előfizetéssel számlázott felhasználók teljes száma körülbelül 5 000-ra növelhető.
+   >
+   > 2\. számlázási példa: licencekkel és felhasználókkal rendelkező felhasználók vegyesen rendelkeznek, így a különbség a felhasználónkénti Azure MFA-szolgáltatón keresztül végezhető el. A bérlőn 4 500 Enterprise Mobility + Security licenc található, de a 5 000-es felhasználók engedélyezve vannak az MFA-hoz. Az Azure-előfizetése 500-felhasználók számára lett kiszámlázva, és naponta, a 16,13 felhasználóként számolt be.
    >
 
-Fontos megjegyezni, hogy Ön is rendelkezik licencekkel, de továbbra is díjat kell fizetnie a használat alapú konfigurálást. Ha beállította a hitelesítés az Azure MFA-szolgáltató, számlázzuk ki minden kétlépéses ellenőrzési kérelmet, még akkor is ezeket a műveleteket a licenccel rendelkező felhasználók. Ha egy tartományhoz, amely az Azure AD-bérlő nem kapcsolódik a beállítva a felhasználónkénti Azure MFA-szolgáltató, használatáért engedélyezett felhasználónként akkor is, ha a felhasználók rendelkeznek licenccel az Azure ad-ben.
+1. **Hitelesítéssel** – olyan vállalatok számára, amelyeknek engedélyezni kívánják a kétlépéses ellenőrzést olyan felhasználók nagy csoportja számára, akik ritkán igényelnek hitelesítést. A számlázás a kétlépéses ellenőrzési kérelmek száma alapján történik, függetlenül attól, hogy az ellenőrzések sikeresek vagy megtagadva. Ez a számlázás a 10 hitelesítés csomagjában megjelenik az Azure használati utasításban, és naponta jelentést küld.
 
-## <a name="next-steps"></a>További lépések
+   > [!NOTE]
+   > 3\. számlázási példa: az Azure MFA szolgáltatás jelenleg 3 105 2-es ellenőrzési kérést kapott. Az Azure-előfizetése 310,5-es hitelesítési csomagra van kiszámlázva.
+   >
 
-- További díjszabási információkért tekintse meg a [Azure MFA szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+Fontos megjegyezni, hogy a licenccel rendelkezhet, de továbbra is kiszámlázható a használaton alapuló konfiguráció. Ha létrehoz egy hitelesítési Azure MFA-szolgáltatót, akkor a kétlépéses ellenőrzési kérelemért, valamint a licenccel rendelkező felhasználók által végrehajtott kérelmekért kell fizetnie. Ha a felhasználónkénti Azure MFA-szolgáltatót olyan tartományon állítja be, amely nincs az Azure AD-bérlőhöz társítva, akkor is engedélyezett felhasználóként kell fizetnie, ha a felhasználók licenccel rendelkeznek az Azure AD-ben.
 
-- Döntse el, hogy üzembe helyezése az Azure MFA [a felhőben vagy helyszíni](concept-mfa-whichversion.md)
+## <a name="next-steps"></a>Következő lépések
+
+- A díjszabással kapcsolatos további információkért lásd: az [Azure MFA díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).

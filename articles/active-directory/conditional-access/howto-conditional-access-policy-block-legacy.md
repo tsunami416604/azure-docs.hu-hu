@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef8ab4b24d223f372ae3704b00ba6ff090fb039
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b992973beb7cb132075e47e104733d812dc06ca0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169990"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151084"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
 
@@ -34,7 +34,7 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, és válassza ki azokat a fiókokat, amelyeknek fenn kell tartaniuk a régi hitelesítés használatát. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy actions**@no__t-**1 területen válassza a** **minden felhőalapú alkalmazás**lehetőséget.
+1. A **Cloud apps vagy a műveletek** > a **következők**közül válassza a **minden felhőalapú alkalmazás**lehetőséget.
    1. Ha ki kell zárnia bizonyos alkalmazásokat a szabályzatból, kiválaszthatja őket a **kizárás lapon** a **kizárt felhőalapú alkalmazások kiválasztása** területen, majd válassza a **kiválasztás**lehetőséget.
    1. Válassza a **Done** (Kész) lehetőséget.
 1. Az  > **ügyfélalkalmazások (előzetes verzió)** **feltételek**alatt állítsa az **Igen**értékre a **konfigurálást** .

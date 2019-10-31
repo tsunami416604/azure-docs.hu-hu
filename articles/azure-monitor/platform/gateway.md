@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/24/2019
-ms.openlocfilehash: ba0ee29b48be259bddd898c3d1119b77f6ee5228
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/30/2019
+ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932306"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162018"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932306"
 
 Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Automation és a Azure Monitor kommunikációja a Log Analytics átjáróval, ha a közvetlenül csatlakoztatott vagy a Operations Manager által figyelt számítógépek nem rendelkeznek internet-hozzáféréssel. 
 
-A Log Analytics átjáró egy http-továbbítási proxy, amely támogatja a http-bújtatást a HTTP-kapcsolat parancs használatával. Ez az átjáró adatokat küld Azure Automation és egy Log Analytics munkaterületre az Azure Monitor azon számítógépek nevében, amelyek nem tudnak közvetlenül csatlakozni az internethez. Nem gyorsítótárazza az ügynökök adatait, az ügynök ebben a helyzetben kezeli a gyorsítótárazási adatait, amíg a rendszer visszaállítja a kommunikációt.
+A Log Analytics átjáró egy http-továbbítási proxy, amely támogatja a http-bújtatást a HTTP-kapcsolat parancs használatával. Ez az átjáró adatokat küld Azure Automation és egy Log Analytics munkaterületre az Azure Monitor azon számítógépek nevében, amelyek nem tudnak közvetlenül csatlakozni az internethez. 
 
 A Log Analytics átjáró a következőket támogatja:
 
@@ -33,7 +33,7 @@ A Log Analytics átjáró a következőket támogatja:
 
 Bizonyos informatikai biztonsági házirendek nem engedélyezik a hálózati számítógépek internetkapcsolatát. Ezek a nem csatlakoztatott számítógépek lehetnek például a POS-eszközök vagy az informatikai szolgáltatásokat támogató kiszolgálók. Ahhoz, hogy az eszközöket Azure Automation vagy egy Log Analytics munkaterülethez lehessen kapcsolni, így kezelheti és figyelheti őket, és úgy is beállíthatja őket, hogy közvetlenül kommunikáljanak az Log Analytics-átjáróval. A Log Analytics átjáró konfigurációs adatokat fogadhat és továbbíthatja az adatokat a nevükben. Ha a számítógépek a Log Analytics ügynökkel vannak konfigurálva Log Analytics munkaterülethez való közvetlen kapcsolódáshoz, a számítógépek ehelyett a Log Analytics átjáróval kommunikálnak.  
 
-A Log Analytics átjáró közvetlenül az ügynökökről továbbítja az adatok átvitelét a szolgáltatásba. Nem elemzi a tranzitban lévő összes adatforgalmat.
+A Log Analytics átjáró közvetlenül az ügynökökről továbbítja az adatok átvitelét a szolgáltatásba. Nem elemzi az átvitel során felmerülő összes adatforgalmat, és az átjáró nem gyorsítótárazza az adatgyorsítótárat, amikor elveszti a kapcsolatot a szolgáltatással. Ha az átjáró nem tud kommunikálni a szolgáltatással, az ügynök továbbra is futni fog, és a figyelt számítógép lemezén várólistára helyezi az összegyűjtött adatokat. Ha a rendszer visszaállítja a csatlakozást, az ügynök elküldi a Azure Monitorba gyűjtött gyorsítótárazott adatokat.
 
 Ha egy Operations Manager felügyeleti csoport integrálva van Log Analyticsrel, a felügyeleti kiszolgálók konfigurálhatók úgy, hogy az Log Analytics átjáróhoz csatlakozzanak a konfigurációs adatok fogadásához és az összegyűjtött adatok elküldéséhez az engedélyezett megoldástól függően .  Operations Manager ügynökök küldenek egyes adatfájlokat a felügyeleti kiszolgálónak. Az ügynökök például küldhetnek Operations Manager riasztásokat, a konfigurációs felmérési és a példányok adatterületét, valamint a kapacitási adatkészleteket. A rendszer az egyéb nagy mennyiségű, például Internet Information Services (IIS) naplókat, teljesítményadatokat és biztonsági eseményeket közvetlenül a Log Analytics átjárónak küldi el. 
 
@@ -167,7 +167,7 @@ Az alábbi táblázat a telepítő által támogatott paramétereket mutatja be.
 Ha az átjárót csendesen szeretné telepíteni, és egy adott proxy-címnek, portszámot kell konfigurálnia, írja be a következőt:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 A/Qn parancssori kapcsoló elrejti a telepítőt, a/QB a telepítést a csendes telepítés során mutatja.  
@@ -175,7 +175,7 @@ A/Qn parancssori kapcsoló elrejti a telepítőt, a/QB a telepítést a csendes 
 Ha hitelesítő adatokat kell megadnia a proxyval történő hitelesítéshez, írja be a következőt:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 A telepítés után ellenőrizheti a beállításokat (exlcuding a felhasználónevet és a jelszót) a következő PowerShell-parancsmagok használatával:

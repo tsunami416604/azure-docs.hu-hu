@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coralogix |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Coralogix között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Coralogix-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Coralogix között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba79bfc1-992e-4924-b76a-8eb0dfb97724
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,99 +16,99 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 721e0c40ec2e02dabee0681e01fea4182b906183
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8589c366c029ab51c7cd740a1b63cff7c0481a51
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104645"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158467"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coralogix
+# <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Oktatóanyag: Azure Active Directory integráció a Coralogix
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Coralogix integrálása az Azure Active Directory (Azure AD).
-Coralogix integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Coralogix a Azure Active Directory (Azure AD) szolgáltatással.
+A Coralogix és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Coralogix Azure AD-ben.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be Coralogix (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Coralogix.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Coralogix (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Coralogix az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció Coralogix való konfigurálásához a következő elemek szükségesek:
 
-- Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [egy havi próbalehetőség](https://azure.microsoft.com/pricing/free-trial/).
-- Single-sign-on egy Coralogix előfizetés engedélyezve van. 
+- Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, egy [hónapos próbaverziót](https://azure.microsoft.com/pricing/free-trial/)is beszerezhet.
+- Coralogix egyszeri bejelentkezésre alkalmas előfizetés. 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Coralogix SP által kezdeményezett egyszeri Bejelentkezést támogatja.
+* A Coralogix támogatja az SP által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="add-coralogix-from-the-gallery"></a>Coralogix hozzáadása a katalógusból
+## <a name="add-coralogix-from-the-gallery"></a>Coralogix hozzáadása a gyűjteményből
 
-Először hozzá Coralogix a galériából a felügyelt SaaS-alkalmazások listájában konfigurálhatja Coralogix integrálása az Azure AD-ben.
+A Coralogix Azure AD-ba való integrálásának konfigurálásához először adja hozzá a Coralogix a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-A katalógusból Coralogix hozzáadásához tegye a következőket:
+Ha Coralogix szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra.
+1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza a **Azure Active Directory** ikont.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Coralogix**. Válassza ki **Coralogix** az eredmények ablaktáblájában, és válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Coralogix**kifejezést. Válassza az **Coralogix** lehetőséget az eredmények ablaktábláján, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában Coralogix](common/search-new-app.png)
+     ![Coralogix az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Coralogix Britta Simon nevű tesztfelhasználó alapján.
-Az egyszeri bejelentkezés működéséhez Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolatot létesít a Coralogix kell.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Coralogix-mel konfigurálja és teszteli a Britta Simon nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Coralogix-ben.
 
-Az Azure AD egyszeri bejelentkezés az Coralogix tesztelése és konfigurálása, először hajtsa végre a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés Coralogix való konfigurálásához és teszteléséhez először végezze el a következő építőelemeket:
 
-1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. [Coralogix egyszeri bejelentkezés konfigurálása](#configure-coralogix-single-sign-on) az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-3. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. [Hozzon létre egy Coralogix tesztfelhasználót](#create-a-coralogix-test-user) van egy megfelelője a Britta Simon Coralogix, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. Az [Azure ad egyszeri bejelentkezés konfigurálásával](#configure-azure-ad-single-sign-on) engedélyezheti a felhasználók számára a funkció használatát.
+2. [Konfigurálja az Coralogix egyszeri bejelentkezést](#configure-coralogix-single-sign-on) az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
+3. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
+5. [Hozzon létre egy Coralogix-tesztelési felhasználót](#create-a-coralogix-test-user) , hogy a Britta Simon a Coralogix-hoz tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó partnere legyen.
+6. Az [egyszeri bejelentkezés tesztelésével](#test-single-sign-on) ellenőrizheti, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coralogix, tegye a következőket:
+Az Azure AD egyszeri bejelentkezés Coralogix való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Coralogix** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/) **Coralogix** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML** egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri **Bejelentkezés módszerének kiválasztása** párbeszédpanelen válassza az **SAML** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel bezárásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel mezőbe az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Coralogix tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![Coralogix tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-CÍMÉT a következő mintának: `https://<SUBDOMAIN>.coralogix.com`
+    a. A **bejelentkezési URL-** cím mezőbe írjon be egy URL-címet a következő mintával: `https://<SUBDOMAIN>.coralogix.com`
 
-    b. Az a **azonosító (entityid)** szöveg mezőbe írjon be egy URL-címet, például:
+    b. Az **azonosító (Entity ID)** szövegmezőben adjon meg egy URL-címet, például:
     
     `https://api.coralogix.com/saml/metadata.xml`
 
@@ -116,107 +117,107 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coralogix, tegye a k
     `https://aws-client-prod.coralogix.com/saml/metadata.xml` 
 
     > [!NOTE]
-    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Forduljon a [Coralogix ügyfél-támogatási csapatának](mailto:info@coralogix.com) a gépkulcsengedélyek értékének. Emellett tekintse meg a mintákat a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > A bejelentkezési URL-cím értéke nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Coralogix ügyfél-támogatási csapatával](mailto:info@coralogix.com) . A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának mintázatait is megtekintheti.
 
-5. A Coralogix alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakaszban az alkalmazás integrációs oldalán található. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel bezárásához.
+5. A Coralogix alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon lévő **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** című rész a **felhasználói attribútumok** párbeszédpanelen szerkessze a jogcímek használatával a **szerkesztése** ikonra. Azt is megteheti a jogcímek használatával **hozzáadása új jogcímet** konfigurálása az SAML-jogkivonat attribútum, az előző képen látható módon. Ezután az alábbi lépéseket:
+6. A felhasználói **jogcímek** szakaszban a **felhasználói attribútumok** párbeszédpanelen szerkessze a jogcímeket a **Szerkesztés** ikon használatával. A jogcímeket az **új jogcím hozzáadása** lehetőséggel is hozzáadhatja az SAML-jogkivonat attribútum konfigurálásához az előző képen látható módon. Ezután hajtsa végre a következő lépéseket:
     
-    a. Válassza ki a **Szerkesztés ikon** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel bezárásához.
+    a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![kép](./media/coralogix-tutorial/tutorial_usermail.png) ![kép](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![rendszerkép](./media/coralogix-tutorial/tutorial_usermail.png) ![rendszerkép](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
-    b. Az a **válasszon azonosító formátuma** listáról válassza ki **E-mail-cím**.
+    b. A **név-azonosító formátum kiválasztása** listából válassza az **e-mail cím**elemet.
 
-    c. Az a **forrásattribútum** listáról válassza ki **user.mail**.
+    c. A **forrás attribútum** listából válassza a **User. mail**elemet.
 
     d. Kattintson a **Mentés** gombra.
 
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** letöltéséhez a **összevonási metaadatainak XML**  az igényeknek megfelelően a megadott lehetőségek közül. Mentse a számítógépre.
+7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget az **összevonási metaadatok XML-** fájljának az adott beállítások alapján való letöltéséhez. Ezután mentse a számítógépére.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-8. Az a **Coralogix beállítása** területén másolja a megfelelő URL-címe.
+8. A **Coralogix beállítása** szakaszban másolja a megfelelő URL-címeket (ka) t.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Bejelentkezési URL-cím
 
     b. Azure AD-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezési URL-cím
 
 ### <a name="configure-coralogix-single-sign-on"></a>Coralogix egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a **Coralogix** oldalán, a letöltött küldése **összevonási metaadatainak XML** másolt URL-címek az Azure Portalról, és a [Coralogix támogatási csapatának](mailto:info@coralogix.com). Akkor győződjön meg arról, hogy a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
+Ha az egyszeri bejelentkezést az **Coralogix** oldalon szeretné konfigurálni, küldje el a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt, és másolja a Azure Portal a [Coralogix támogató csapatának](mailto:info@coralogix.com)URL-címét. Gondoskodnak arról, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza ki a képernyő tetején lévő **új felhasználó**.
+2. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
+3. A **felhasználó** párbeszédpanelen hajtsa végre a következő lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőben adja meg "brittasimon@yourcompanydomain.extension." Ebben az esetben, előfordulhat, hogy adja meg például "brittasimon@contoso.com."
+    b. A **Felhasználónév** mezőben adja meg a "brittasimon@yourcompanydomain.extension" értéket. Ebben az esetben például megadhatja a "brittasimon@contoso.com" értéket.
 
-    c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
     d. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Coralogix Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Coralogix hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **Coralogix**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Coralogix**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Coralogix**.
+2. Az alkalmazások listában válassza a **Coralogix**lehetőséget.
 
-    ![Az alkalmazások listáját a Coralogix hivatkozásra](common/all-applications.png)
+    ![Az Coralogix hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Válassza ki a **felhasználó hozzáadása** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+4. Válassza a **felhasználó hozzáadása** gombot. Ezután válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában. Kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listában. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az a SAML-előfeltétel szerepkör értéket vár a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-állításban a szerepkör értékét várja, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-a-coralogix-test-user"></a>Coralogix tesztfelhasználó létrehozása
+### <a name="create-a-coralogix-test-user"></a>Coralogix-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Coralogix hoz létre. Együttműködik a [Coralogix támogatási csapatának](mailto:info@coralogix.com) a felhasználók hozzáadása az Coralogix platformon. Kell létrehozni, és aktiválja a felhasználók egyszeri bejelentkezés használata előtt.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Coralogix-ben. Együttműködik a [Coralogix támogatási csapatával](mailto:info@coralogix.com) , hogy hozzáadja a felhasználókat a Coralogix platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hoznia és aktiválnia kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a MyApps portálról segítségével tesztelheti.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a MyApps-portál használatával.
 
-A Coralogix csempe kiválasztásakor a MyApps portálról, érdemes lehet automatikusan bejelentkezett Coralogix. A MyApps portálról kapcsolatos további információkért lásd: [Mi az a MyApps portálról?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Coralogix csempét a MyApps-portálon, automatikusan be kell jelentkeznie a Coralogix-be. További információ a MyApps-portálról: [Mi a MyApps-portál?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

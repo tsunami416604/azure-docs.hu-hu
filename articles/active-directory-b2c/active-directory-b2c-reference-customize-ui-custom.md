@@ -1,6 +1,6 @@
 ---
-title: Egyéni házirendek felhasználói út, a felhasználói felület testreszabása |} A Microsoft Docs
-description: Ismerje meg az Azure Active Directory B2C-vel egyéni szabályzatok.
+title: Felhasználói út felhasználói FELÜLETének testreszabása Egyéni szabályzatokkal | Microsoft Docs
+description: Ismerkedjen meg Azure Active Directory B2C egyéni szabályzatokkal.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7053f5b0211878d2f0b9d810fc3f4c0b9361e6f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e4714de9868dbd540e2e662b22a22da6df6514b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509594"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147536"
 ---
-# <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egyéni házirendek felhasználói út, a felhasználói felület testreszabása
+# <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Felhasználói kezelőfelület felhasználói felületének testreszabása Egyéni szabályzatokkal
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> Ez a cikk egy speciális leírása felhasználói felületének testreszabását működése és engedélyezése az Azure AD B2C-vel egyéni szabályzatok, az identitás-kezelőfelületi keretrendszer használatával.
+> Ez a cikk részletesen ismerteti, hogyan működik a felhasználói felület testreszabása, és hogyan engedélyezhető a Azure AD B2C egyéni szabályzatok használata az Identity Experience Framework használatával.
 
 
-Zökkenőmentes felhasználói élményt az üzleti és ügyfél-megoldással a kulcs. Zökkenőmentes felhasználói élményt felületet nyújt, az eszközön vagy böngészőben, ahol a szolgáltatás egy felhasználó tevékenysége az, hogy az általuk használt ügyfélszolgálati megkülönböztetni.
+A zökkenőmentes felhasználói élmény minden vállalat és fogyasztó közötti megoldás kulcsa. A zökkenőmentes felhasználói élmény olyan élmény, amely az eszközön vagy a böngészőben van, ahol a felhasználó a szolgáltatáson keresztüli útvonala nem különböztethető meg az általuk használt ügyfél-szolgáltatástól.
 
-## <a name="understand-the-cors-way-for-ui-customization"></a>Felhasználói felület testreszabása a CORS módjának ismertetése
+## <a name="understand-the-cors-way-for-ui-customization"></a>A felhasználói felület testreszabásának CORS módjának megismerése
 
-Az Azure AD B2C segítségével-és-megjelenésének felhasználói felület (UX) a különböző oldalakon szolgálja ki és az Azure AD B2C által megjelenített testreszabhatja az egyéni szabályzatok használatával.
+Azure AD B2C lehetővé teszi a felhasználói élmény (UX) megjelenését a kiszolgált és az egyéni szabályzatok által Azure AD B2C által megjelenített különböző lapokon.
 
-Erre a célra az Azure AD B2C-t futtatja a kódot a fogyasztói böngészőben, és a modern és szabványos megközelítést használ [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/) átirányítása egyéni szabályzatokban megadott konkrét URL-címről egyéni tartalom betöltése a HTML5-alapú/CSS-sablonokat. A CORS olyan mechanizmus, amely lehetővé teszi, hogy a korlátozott erőforrások, például a betűtípus, egy weblap, egy másik tartomány, amelyből az erőforrás adja meg a tartományon kívüli kell kérni a rendszer.
+Erre a célra Azure AD B2C kódot futtat a felhasználó böngészőjében, és a modern és standard megközelítést használja az eltérő [eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/) használatával, hogy egyéni tartalmat töltsön be egy egyéni szabályzatban megadott URL-címről, hogy a HTML5/CSS-re mutasson. sablonok. A CORS olyan mechanizmus, amely lehetővé teszi a korlátozott erőforrások, például a betűkészletek használatát egy olyan weblapon, amely egy másik tartományon kívül esik azon a tartományon, amelyről az erőforrás származik.
 
-A régi hagyományos módszerétől, ahol sablon oldalak tulajdonosa a megoldás, ahol a megadott korlátozott szöveget és képeket, ahol az elrendezés és működését érintő korlátozott szabályozása a CORS módja egy zökkenőmentes eléréséhez több mint nehézségek vezető által kínált támogatja a HTML5- és CSS, és lehetővé teszi:
+A régi hagyományos módszerhez képest, ahol a sablon lapjait a megoldás birtokolja, ahol korlátozott számú szöveget és képet biztosított, és az elrendezés korlátozott vezérlését kínáljuk, ami több mint nehézséget jelent a zökkenőmentes működés érdekében, a CORS módot támogatja a HTML5 és a CSS használatát, és lehetővé teszi a következőket:
 
-- A tartalom tárolására, és a megoldás kódtárba annak vezérlőelemeinek ügyféloldali parancsfájlok használatával.
-- Elrendezés és működését érintő minden képpont teljes hozzáféréssel rendelkeznek.
+- Tárolja a tartalmat, és a megoldás ügyféloldali parancsfájl használatával szúrja be a vezérlőket.
+- Teljes körű vezérlést tesznek az elrendezés és a működés minden képpontján.
 
-Megadhatja, hogy annyi tartalom oldalak tetszés szerint elvégezte a megfelelő HTML5/CSS-fájlokat.
+A HTML5/CSS fájlok megfelelő módon történő elvégzésével tetszőleges számú tartalmi oldalt biztosíthat.
 
 > [!NOTE]
-> Biztonsági okokból JavaScript használata jelenleg le van tiltva a testreszabáshoz. 
+> Biztonsági okokból a JavaScript használata jelenleg le van tiltva a testreszabáshoz. 
 
-Minden, a HTML5-alapú/CSS-sablonok, adjon meg egy *forráshorgony* elem, amely megfelel a szükséges `<div id=”api”>` elem a HTML-kódot vagy a tartalom lap, a továbbiakban mutatják be. Az Azure AD B2C megköveteli, hogy minden tartalom lap az adott div.
+Minden HTML5/CSS-sablonban meg kell adnia egy *horgony* elemet, amely megfelel a HTML vagy a tartalom lap kötelező `<div id="api">` elemének, ahogy az a következő ábrán látható. Azure AD B2C megköveteli, hogy az összes tartalmi oldalnak legyen ez a megadott div-je.
 
 ```
 <!DOCTYPE html>
@@ -57,115 +57,115 @@ Minden, a HTML5-alapú/CSS-sablonok, adjon meg egy *forráshorgony* elem, amely 
 </html>
 ```
 
-Az oldal az Azure AD B2C-vel kapcsolatos tartalom a kártevő program férkőzik be a div közben az oldal többi valóban az Öné szabályozhatja. Az Azure AD B2C-vel JavaScript-kód lekéri a tartalmat a, és HTML kódtárba be az adott div elembe. Az Azure AD B2C-kódtárba szükség szerint a következő vezérlőkre: fiók kiválasztásakor vezérlő, jelentkezzen be a vezérlőket, multi-factor Authentication (jelenleg telefonos alapú) vezérlőkkel és attribútum gyűjtemény. Az Azure AD B2C biztosítja, hogy minden a vezérlők, amelyek HTML5 megfelelő és elérhető-e az összes vezérlő teljes stílusának és, amely egy vezérlő verziója nem amelyikre.
+Az oldal Azure AD B2C kapcsolódó tartalma ebbe a div-be kerül, míg az oldal többi része a tiéd. A Azure AD B2C JavaScript-kód lekéri a tartalmat, és HTML-kódot szúr be ebbe az adott div elembe. Azure AD B2C a következő vezérlőket adja meg a megfelelő módon: Account Chooser Control, log in Controls, multi-Factor (jelenleg telefon-alapú) vezérlők és attribútum-gyűjtemény vezérlők. Azure AD B2C biztosítja, hogy az összes vezérlő a HTML5-kompatibilis és elérhető legyen, és az összes vezérlő teljes stílusú legyen, és hogy a vezérlő verziója ne visszafejlődés.
 
-Az egyesített tartalmat végül a fogyasztó a dinamikus dokumentum jelenik meg.
+Az egyesített tartalmat a rendszer végül dinamikus dokumentumként jeleníti meg a fogyasztó számára.
 
-Annak érdekében, hogy minden megfelelően működik-e, tegye a következőket:
+Annak biztosítása érdekében, hogy minden a várt módon működjön, a következőket kell tennie:
 
-- Győződjön meg, hogy a tartalom HTML5 megfelelő és elérhető-e
-- Győződjön meg arról, a webtartalom-kiszolgáló a CORS engedélyezve van.
-- HTTPS-kapcsolaton keresztül tartalmat szolgálnak ki.
-- Használjon abszolút URL-CÍMEK például `https://yourdomain/content` hivatkozások és a CSS-tartalom.
-
-> [!TIP]
-> Ellenőrizze, hogy a hely üzemelteti a tartalmat a CORS-támogatással rendelkezik-e, és tesztelése a CORS-kérések, használhatja a hely https://test-cors.org/. Ez a hely köszönhetően is a CORS-kérést küld egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS-kérést küld a kiszolgáló (az egyes CORS funkcióinak bemutatása).
+- Győződjön meg arról, hogy a tartalom HTML5-kompatibilis és elérhető
+- Győződjön meg arról, hogy a CORS engedélyezve van a Content Server.
+- Tartalom kézbesítése HTTPS-kapcsolaton keresztül.
+- Használjon abszolút URL-címeket, például a `https://yourdomain/content` az összes hivatkozáshoz és a CSS-tartalomhoz.
 
 > [!TIP]
-> A hely https://enable-cors.org/ egy több, mint a CORS hasznos forrásokat is jelent.
+> Annak ellenőrzéséhez, hogy az a hely, amelyen a tartalmat üzemelteti, engedélyezve van-e a CORS, és tesztelje a CORS kérelmeket, használhatja a site https://test-cors.org/. Ennek a helynek köszönhetően elküldheti a CORS kérést egy távoli kiszolgálónak (ha tesztelni szeretné, hogy a CORS támogatott-e), vagy elküldheti a CORS kérelmet egy tesztelési kiszolgálónak (a CORS bizonyos funkcióinak megismeréséhez).
 
-Köszönhetően ez a CORS-alapú megközelítés a végfelhasználók rendelkezik az alkalmazás és az Azure AD B2C által üzemeltetett oldalak közötti egységes felületeket.
+> [!TIP]
+> A webhely https://enable-cors.org/ több mint hasznos erőforrást is jelent a CORS-on.
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+Ennek a CORS megközelítésnek köszönhetően a végfelhasználók konzisztens tapasztalatokkal rendelkeznek az alkalmazás és a Azure AD B2C által kiszolgált lapok között.
 
-Előfeltételként hozzon létre egy tárfiókot kell. Azure-előfizetéssel, hozzon létre egy Azure Blob Storage-fiók van szüksége. Regisztrálhat egy ingyenes próbaidőszakot a [Azure-webhelyen](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="create-a-storage-account"></a>Create a storage account
 
-1. Nyisson meg egy böngészési munkamenetet, és keresse meg a [az Azure portal](https://portal.azure.com).
+Előfeltételként létre kell hoznia egy Storage-fiókot. Azure Blob Storage-fiók létrehozásához Azure-előfizetésre van szükség. Az [Azure webhelyén](https://azure.microsoft.com/pricing/free-trial/)regisztrálhat egy ingyenes próbaverziót.
+
+1. Nyisson meg egy böngészési munkamenetet, és navigáljon a [Azure Portal](https://portal.azure.com).
 2. Jelentkezzen be a rendszergazdai hitelesítő adataival.
-3. Kattintson a **erőforrás létrehozása** > **tárolási** > **tárfiók**.  A **storage-fiók létrehozása** panel megnyílik.
-4. A **neve**, adja meg például a tárfiók nevét *contoso369b2c*. Ezt az értéket később a neve, *storageAccountName*.
-5. Válassza ki a tarifacsomagot, az erőforráscsoport és az előfizetés a szükséges beállításokat. Győződjön meg arról, hogy rendelkezik-e a **kezdőpulton rögzít** lehetőség be van jelölve. Kattintson a **Create** (Létrehozás) gombra.
-6. Lépjen vissza a kezdőpulton, és kattintson a létrehozott tárfiókot.
-7. Az a **szolgáltatások** területén kattintson **Blobok**. A **Blob service panel** nyit meg.
-8. Kattintson a **+ tároló**.
-9. A **neve**, adja meg például a tároló nevét *b2c*. Ezt az értéket később nevezzük *containerName*.
-9. Válassza ki **Blob** , a **típus eléréséhez**. Kattintson a **Create** (Létrehozás) gombra.
-10. A listában megjelenik a létrehozott tárolót a **Blob service panel**.
-11. Zárja be a **Blobok** ablaktáblán.
-12. Az a **storage-fiók panelen**, kattintson a **kulcs** ikonra. Egy **hozzáférési kulcsok panel** nyit meg.  
-13. Jegyezze fel az értékét **key1**. Ezt az értéket később nevezett *key1*.
+3. Kattintson **az erőforrás létrehozása** > **Storage** - > **Storage-fiók**elemre.  Megnyílik A **Storage-fiók létrehozása** panel.
+4. A **név mezőben**adja meg a Storage-fiók nevét (például *contoso369b2c*). Ezt az értéket később a *storageAccountName*-nek nevezzük.
+5. Válassza ki a megfelelő beállításokat a díjszabási csomaghoz, az erőforráscsoporthoz és az előfizetéshez. Győződjön meg arról, hogy a **PIN-kód kezdőpulton** beállítás be van jelölve. Kattintson a  **Create** (Létrehozás) gombra.
+6. Lépjen vissza a Kezdőpulton, és kattintson a létrehozott Storage-fiókra.
+7. A **szolgáltatások** szakaszban kattintson a **Blobok**elemre. Megnyílik egy **blob Service panel** .
+8. Kattintson a **+ tároló**elemre.
+9. A **név mezőben**adja meg a tároló nevét, például: *B2C*. Ezt az értéket később *containerName*-ként nevezzük.
+9. Válassza a **blob** lehetőséget **hozzáférési típusként**. Kattintson a  **Create** (Létrehozás) gombra.
+10. A létrehozott tároló megjelenik a **blob Service panel**listájában.
+11. A **Blobok** panel bezárásához.
+12. A **Storage-fiók ablaktáblán**kattintson a **kulcs** ikonra. Megnyílik a **hozzáférési kulcsok panel** .  
+13. Jegyezze fel a **key1**értékét. Ez az érték később *key1*néven is ismert.
 
-## <a name="downloading-the-helper-tool"></a>A segédeszköz letöltése
+## <a name="downloading-the-helper-tool"></a>A segítő eszköz letöltése
 
-1.  Töltse le a segítő eszközt [GitHub](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
-2.  Mentse a *B2C-Azure BLOB Storage szolgáltatásról-ügyfél-master.zip* fájlt a helyi gépen.
-3.  A tartalom a B2C-Azure BLOB Storage szolgáltatásról-ügyfél-master.zip fájl a helyi lemezen lévő például alatt bontsa ki a **felhasználói felület-testreszabási-csomag** mappába, amely létrehoz egy *B2C-Azure BLOB Storage szolgáltatásról – ügyfél-master*mappa alatt.
-4.  Megnyithatja a mappát, és a tartalom az archív fájl kibontása *B2CAzureStorageClient.zip* benne.
+1.  Töltse le a segítő eszközt a [githubról](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
+2.  Mentse a *B2C-AzureBlobStorage-Client-Master. zip* fájlt a helyi gépre.
+3.  Bontsa ki a B2C-AzureBlobStorage-Client-master. zip fájl tartalmát a helyi lemezen, például a **UI-customization-Pack** mappában, amely egy *B2C-AzureBlobStorage-Client-Master* mappát hoz létre az alatta.
+4.  Nyissa meg a mappát, és bontsa ki a *B2CAzureStorageClient. zip* fájl tartalmát.
 
-## <a name="upload-the-ui-customization-pack-sample-files"></a>A felhasználói felület-testreszabási-csomag minta fájlok feltöltése
+## <a name="upload-the-ui-customization-pack-sample-files"></a>A felhasználói felület testreszabása – csomag minta fájljainak feltöltése
 
-1.  A Windows Intézővel keresse meg a mappát *B2C-Azure BLOB Storage szolgáltatásról – ügyfél-master* alatt a *felhasználói felület-testreszabási-csomag* az előző szakaszban létrehozott mappára.
-2.  Futtassa a *B2CAzureStorageClient.exe* fájlt. Ezt a programot, hogy adja meg, hogy a tárfiók, és engedélyezze a CORS-elérését az ilyen fájlok a könyvtárban lévő összes fájlt tölt fel.
-3.  Amikor a rendszer kéri, adja meg: egy.  A tárfiók nevére *storageAccountName*, például *contoso369b2c*.
-    b.  Az elsődleges elérési kulcsot az azure blob Storage *key1*, például *contoso369b2c*.
-    c.  A storage blob storage-tároló, neve *containerName*, például *b2c*.
-    d.  Az elérési útját a *-Kezdőcsomag* fájlok, például minta *... \B2CTemplates\wingtiptoys*.
+1.  A Windows Intéző segítségével navigáljon az előző szakaszban létrehozott *UI-customization-Pack* mappában található *B2C-AzureBlobStorage-Client-Master* mappára.
+2.  Futtassa a *B2CAzureStorageClient. exe* fájlt. A program feltölti az Ön által megadott könyvtárban lévő összes fájlt a Storage-fiókjába, és engedélyezi a CORS hozzáférését a fájlokhoz.
+3.  Ha a rendszer kéri, válassza a következőket: a.  A Storage-fiók neve, *storageAccountName*, például *contoso369b2c*.
+    b.  Az Azure Blob Storage ( *key1*) elsődleges hozzáférési kulcsa, például *contoso369b2c*.
+    c.  A tárolási blob Storage-tároló neve, *containerName*, például *B2C*.
+    d.  Az *indító-Pack* minta fájljainak elérési útja, például *.. \B2CTemplates\wingtiptoys*.
 
-Ha követte a fenti lépéseket, a HTML5- és CSS-fájlok, a *felhasználói felület-testreszabási-csomag* fiktív cég **tartománynév** a tárfiók már mutat-e.  Ellenőrizheti, hogy a tartalom megfelelően lett feltöltve az Azure Portalon nyissa meg a kapcsolódó tároló panelen. Másik lehetőségként ellenőrizheti, hogy a tartalom megfelelően lett feltöltve az oldal egy böngészőben elérésével. További információkért lásd: [Azure Active Directory B2C: Egy lap felhasználói felületének (UI) testreszabási funkcióról bemutatható segédeszköze](active-directory-b2c-reference-ui-customization-helper-tool.md).
+Ha követte a fenti lépéseket, a kitalált vállalati **wingtiptoys** tartozó *felhasználói felület – Testreszabás – csomag* HTML5-és CSS-fájljai mostantól a Storage-fiókra mutatnak.  A Azure Portal kapcsolódó tároló paneljének megnyitásával ellenőrizheti, hogy a tartalom megfelelően lett-e feltöltve. Azt is megteheti, hogy a tartalom megfelelően lett feltöltve, ha a lapot egy böngészőből éri el. További információ [: Azure Active Directory B2C: egy segítő eszköz, amely az oldal felhasználói felületének (UI) testreszabási funkciójának bemutatására szolgál](active-directory-b2c-reference-ui-customization-helper-tool.md).
 
-## <a name="ensure-the-storage-account-has-cors-enabled"></a>A storage-fiók rendelkezzen a CORS-támogatással
+## <a name="ensure-the-storage-account-has-cors-enabled"></a>Győződjön meg arról, hogy a Storage-fiók CORS engedélyezve van
 
-A végponthoz tartozó tartalom betöltése az Azure AD B2C CORS (eltérő eredetű erőforrások megosztása) engedélyezni kell. Ennek oka az, a tartalmat egy másik tartományban a tartományhoz, az oldal az Azure AD B2C-vel fog szolgáltató-ban üzemel.
+A CORS (több eredetű erőforrás-megosztás) engedélyezni kell a végponton Azure AD B2C a tartalom betöltéséhez. Ennek az az oka, hogy a tartalom egy másik tartományban található, mint a tartomány Azure AD B2C a lapot fogja kiszolgálni.
 
-Annak ellenőrzéséhez, hogy rendelkezik-e a tárterület üzemelteti a tartalmat a CORS-támogatással, folytassa a következő lépéseket:
+A következő lépésekkel ellenőrizheti, hogy a tartalmat üzemeltető tárolón engedélyezve van-e a CORS:
 
-1. Nyisson meg egy böngészési munkamenetet, és nyissa meg a lapot *unified.html* használatával a teljes URL-címét a helyet a tárfiókban lévő `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Például: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Nyissa meg a https://test-cors.org címet. Ez a hely ellenőrizze, hogy használja az oldal rendelkezik-e a CORS-támogatással teszi lehetővé.  
+1. Nyisson meg egy tallózási munkamenetet, és a Storage-fiókjában lévő hely teljes URL-címével nyissa meg a *Unified. html* oldalt, `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Például: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
+2. Navigáljon https://test-cors.org. Ezen a helyen ellenőrizheti, hogy a használt lapon engedélyezve van-e a CORS.  
    <!--
    ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
    -->
 
-3. A **távoli URL-cím**, adja meg a teljes URL-címet a unified.html tartalom, és kattintson a **kérés küldése**.
-4. Ellenőrizze, hogy a kimenetet a a **eredmények** szakasz tartalmaz *XHR állapota: 200-as*, ami azt jelenti, hogy a CORS engedélyezve van-e.
+3. A **távoli URL-cím**mezőben adja meg az egyesített. html-tartalom teljes URL-címét, majd kattintson a **kérelem küldése**gombra.
+4. Ellenőrizze, hogy az **eredmények** szakasz kimenete tartalmazza-e az x/o- *állapotot: 200*, amely azt jelzi, hogy a CORS engedélyezve van.
    <!--
    ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
    -->
-   A storage-fiókot most tartalmaznia kell egy blobtárolót *b2c* az ábrán is látható, amely tartalmazza az alábbi, a tartománynév-sablonok a *-Kezdőcsomag*.
+   A Storage-fióknak ekkor tartalmaznia kell egy *B2C* nevű BLOB-tárolót az ábrán, amely a következő wingtiptoys-sablonokat tartalmazza az *alapszintű csomagból*.
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)
 -->
 
-A következő táblázat ismerteti az előző HTML5-oldalak célját.
+Az alábbi táblázat az előző HTML5-lapok célját ismerteti.
 
 | HTML5-sablon | Leírás |
 |----------------|-------------|
-| *phonefactor.html* | Ezen a lapon a multi-factor authentication-oldal sablonként használható. |
-| *resetpassword.html* | Ezen a lapon is használható a sablont egy elfelejtett jelszó oldal. |
-| *selfasserted.html* | Ezen a lapon egy sablont a közösségi fiók regisztráció oldal, egy helyi fiók regisztrációs oldala vagy egy helyi fiók bejelentkezési oldala is használhatók. |
-| *unified.html* | Ezen a lapon egy egyesített regisztrációs vagy bejelentkezési oldal sablonként is használható. |
-| *updateprofile.html* | Ezen a lapon egy frissítés profillapján sablonként használható. |
+| *phonefactor. html* | Ez a lap sablonként használható a multi-Factor Authentication oldalon. |
+| *ResetPassword metódusát. html* | Ez az oldal sablonként használható az elfelejtett jelszó oldalához. |
+| *selfasserted. html* | Ez a lap sablonként használható a közösségi fiók regisztrálása oldal, egy helyi fiók regisztrálása oldalon vagy egy helyi fiók bejelentkezési oldalán. |
+| *egyesített. html* | Ez az oldal sablonként használható az egyesített regisztrációs vagy bejelentkezési oldalhoz. |
+| *updateprofile. html* | Ez az oldal sablonként használható a profil frissítése oldalhoz. |
 
-## <a name="add-a-link-to-your-html5css-templates-to-your-user-journey"></a>A felhasználói út a HTML5-alapú/CSS sablonokat mutató hivatkozás hozzáadása
+## <a name="add-a-link-to-your-html5css-templates-to-your-user-journey"></a>A HTML5/CSS-sablonokra mutató hivatkozás hozzáadása a felhasználói útra
 
-Is hozzáadhat egy hivatkozást a HTML5-alapú/CSS-sablonok a felhasználói interakciósorozat egy egyéni házirendet közvetlen szerkesztésével.
+A HTML5/CSS-sablonokra mutató hivatkozást a felhasználói útra is hozzáadhat, ha közvetlenül szerkeszt egy egyéni szabályzatot.
 
-Az egyéni HTML5/CSS sablonok használata a felhasználói interakciósorozatban szereplő kell tartalomdefiníciók használható az adott felhasználói utak listájának adható meg. Erre a célra egy nem kötelező  *\<ContentDefinitions >* XML-elem alatt kell deklarálni a  *\<BuildingBlocks >* az egyéni XML-házirendfájl szakaszában.
+A felhasználói úton használni kívánt egyéni HTML5/CSS-sablonokat meg kell adni a felhasználói útvonalakban használható tartalmi definíciók listájában. Erre a célra egy opcionális *\<ContentDefinitions >* XML-elemet az egyéni házirend XML-fájljának *\<BuildingBlocks >* szakaszában kell deklarálnia.
 
-A következő táblázat ismerteti a szerepkördefiníció-azonosítók ismeri fel az Azure AD B2C identitáskezelési élmény motor és a hozzájuk kapcsolódó oldalak típusa tartalom készletét.
+A következő táblázat ismerteti a Azure AD B2C Identity Experience motor által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapok típusát.
 
-| Tartalomdefiníció azonosítója | Leírás |
+| Tartalom definíciójának azonosítója | Leírás |
 |-----------------------|-------------|
-| *api.error* | **Hibalap**. Ez az oldal jelenik meg kivételt vagy hibát észlelt. |
-| *api.idpselections* | **Identitásszolgáltató kiválasztása oldal**. Ezen a lapon identitásszolgáltatókat, amelyek a felhasználó kiválaszthat a bejelentkezés során listáját tartalmazza. Ezek a szolgáltatók a következők: vagy a vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook és a Google + vagy a helyi fiókok (e-mail-cím vagy a felhasználó neve alapján). |
-| *api.idpselections.signup* | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ezen a lapon identitásszolgáltatókat, amelyek a felhasználók választhatnak a regisztráció során listáját tartalmazza. Ezek a szolgáltatók a következők: vagy a vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook és a Google + vagy a helyi fiókok (e-mail-cím vagy a felhasználó neve alapján). |
-| *api.localaccountpasswordreset* | **Elfelejtett jelszó oldal**. Ezen az oldalon, amely a felhasználó adja meg a jelszó-visszaállítás kezdeményezése űrlapot tartalmaz.  |
-| *api.localaccountsignin* | **Helyi fiók bejelentkezési oldal**. Ez az oldal tartalmaz egy bejelentkezési képernyő, meg kell adni egy e-mail-cím vagy felhasználónév alapján helyi fiókkal való bejelentkezéskor a felhasználó rendelkezik. Az űrlap egy bemeneti szövegmezőt és a jelszó mező tartalmazhat. |
-| *api.localaccountsignup* | **Helyi fiók regisztrálási oldala**. Ezen az oldalon, amely a felhasználónak meg kell adni egy helyi fiók egy e-mail-cím vagy felhasználónév alapján való feliratkozáskor van regisztrációs űrlapot tartalmaz. Az űrlap különböző bemeneti vezérlőelemekből, például a bemeneti szövegmezőt, bejegyzés mezőben, választógomb, egyszeri kiválasztásos legördülő listák és többszörös kiválasztási jelölőnégyzetet is tartalmazhat. |
-| *api.phonefactor* | **A multi-factor authentication-oldal**. Ezen a lapon felhasználók regisztrálási vagy bejelentkezési alatt ellenőrizheti azok telefonszámok (a szöveges vagy szóbeli). |
-| *api.selfasserted* | **Közösségi fiók regisztrálására szolgáló oldal**. Ezen az oldalon, amely a felhasználónak meg kell adni egy meglévő fiókkal egy közösségi identitásszolgáltatót például Facebook vagy a Google + a feliratkozáskor van regisztrációs űrlapot tartalmaz. Ezen a lapon a hasonló az előző közösségi fiók regisztrálására szolgáló oldal a jelszó számbeviteli mezők kivételével. |
-| *api.selfasserted.profileupdate* | **Frissítés profillapján**. Ez az oldal, amely a felhasználó használhatja, hogy a profil frissítése űrlapot tartalmaz. Ezen a lapon a hasonló az előző közösségi fiók regisztrálására szolgáló oldal a jelszó számbeviteli mezők kivételével. |
-| *api.signuporsignin* | **Egyesített regisztrálási vagy bejelentkezési oldal**.  Ezen a lapon mindkét regisztrációs kezeli, és jelentkezzen be a vállalati identitás-szolgáltatóktól, például Facebook vagy a Google + vagy a helyi fiókok közösségi identitásszolgáltatókat használó felhasználók.
+| *API. error* | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. |
+| *API. idpselections* | **Identitás-szolgáltató kiválasztása lap**. Ez az oldal azon identitás-szolgáltatók listáját tartalmazza, amelyeket a felhasználó a bejelentkezés során választhat. Ezek a szolgáltatók vállalati identitás-szolgáltatók, közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy helyi fiókok (e-mail-cím vagy Felhasználónév alapján). |
+| *API. idpselections. regisztráció* | **Az identitás-szolgáltató kiválasztása a regisztrációhoz**. Ez az oldal azon identitás-szolgáltatók listáját tartalmazza, amelyeket a felhasználó a regisztráció során választhat. Ezek a szolgáltatók vállalati identitás-szolgáltatók, közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy helyi fiókok (e-mail-cím vagy Felhasználónév alapján). |
+| *API. localaccountpasswordreset* | **Elfelejtett jelszó lap**. Ez a lap egy űrlapot tartalmaz, amelyet a felhasználónak ki kell töltenie a jelszó-visszaállítás megkezdéséhez.  |
+| *API. localaccountsignin* | **Helyi fiók bejelentkezési lapja**. Ez az oldal olyan bejelentkezési űrlapot tartalmaz, amelyet a felhasználónak ki kell töltenie, amikor helyi fiókkal jelentkezik be egy e-mail-cím vagy egy Felhasználónév alapján. Az űrlap tartalmazhatja a szövegbeviteli és a jelszó-beviteli mezőt is. |
+| *API. localaccountsignup* | **Helyi fiók regisztrációjának lapja**. Ez az oldal olyan regisztrációs űrlapot tartalmaz, amelyet a felhasználónak ki kell töltenie, amikor regisztrál egy olyan helyi fiókra, amely e-mail-cím vagy Felhasználónév alapján van regisztrálva. Az űrlap különböző beviteli vezérlőket tartalmazhat, mint például a szövegbeviteli mező, a jelszó-beviteli mező, a választógomb, az egyszeres kijelölés legördülő lista és a többszörös kijelölés jelölőnégyzet. |
+| *API. phonefactor* | **Multi-Factor Authentication oldal**. Ezen a lapon a felhasználók a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
+| *API. selfasserted* | **Közösségi fiók regisztrálása oldal**. Ez az oldal egy olyan regisztrációs űrlapot tartalmaz, amelyet a felhasználónak ki kell töltenie, amikor regisztrál egy olyan meglévő fiókot egy közösségi identitás-szolgáltatóról, mint például a Facebook vagy a Google +. Ez az oldal hasonló az előző közösségi fiók regisztrációs oldalához, a jelszó-beviteli mezők kivételével. |
+| *API. selfasserted. profileUpdate* | **Profil frissítése lap**. Ez a lap egy űrlapot tartalmaz, amelyet a felhasználó a profiljának frissítéséhez használhat. Ez az oldal hasonló az előző közösségi fiók regisztrációs oldalához, a jelszó-beviteli mezők kivételével. |
+| *API. signuporsignin* | **Egyesített regisztrációs vagy bejelentkezési oldal**.  Ez a lap a felhasználók bejelentkezési &EIT is kezeli, akik vállalati identitás-szolgáltatókat, például Facebook-vagy Google + vagy helyi fiókokat használhatnak.
 
-## <a name="next-steps"></a>További lépések
-[Hivatkozás: Egyéni szabályzatok ismertetése dolgozhat a B2C-ben az identitás-kezelőfelületi keretrendszer](active-directory-b2c-reference-custom-policies-understanding-contents.md)
+## <a name="next-steps"></a>Következő lépések
+[Hivatkozás: az egyéni szabályzatok működése a B2C-beli Identity Experience keretrendszerrel](active-directory-b2c-reference-custom-policies-understanding-contents.md)

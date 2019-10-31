@@ -7,18 +7,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297198"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163059"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
 A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervrajzok PCI-DSS v 3.2.1 terv mintája a PCI-DSS v 3.2.1 vezérlőkhöz. További információ a vezérlőelemekről: [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[Preview @ no__t-2 audit PCI v 3.2.1:2018 vezérlőket, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[előzetes verzió\] a PCI v 3.2.1:2018 vezérlőt, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
@@ -100,12 +100,12 @@ Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amelly
 
 Ez a terv segít az erős jelszavak betartatásában olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
 
-- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeknek nincs maximális jelszava (70 nap)
-- \[Preview @ no__t-1: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyeknek nincs maximális jelszava (70 nap)
-- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
-- \[Preview @ no__t-1: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
-- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
+- \[előzetes verzió\]: olyan Windowsos virtuális gépek naplózása, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[előzetes verzió\]: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
+- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
+- \[előzetes verzió\]: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 és 10.5.4 naplózási generáció
 
@@ -134,7 +134,7 @@ Most, hogy áttekintette a PCI-DSS v 3.2.1 terv vezérlési leképezését, a k�
 > [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
 > [PCI-DSS v 3.2.1 Blueprint – lépések üzembe helyezése](./deploy.md)
 
-## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>További cikkek a tervekről és azok használatáról:
+További cikkek a tervrajzokról és azok használatáról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

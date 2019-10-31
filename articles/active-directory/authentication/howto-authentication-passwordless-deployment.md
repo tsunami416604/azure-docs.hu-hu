@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933123"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151627"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Jelszóval nem rendelkező hitelesítési telepítés befejezése
 
@@ -104,18 +104,27 @@ A biztonsági kulcsok lehetővé teszik az erőforrások elérését, és meg ke
 
 Ahhoz, hogy a Windows 10-es bejelentkezés engedélyezve legyen a FIDO2 biztonsági kulcsaival, engedélyezni kell a hitelesítő adatok szolgáltatójának működését a Windows 10 rendszerben. A két módszer egyikének engedélyezése:
 
-- [Hitelesítő adatok szolgáltatójának engedélyezése a célként megadott Intune-telepítés használatával](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - Az Intune üzembe helyezése az ajánlott lehetőség Azure Active Directory csatlakoztatott gépekhez.
-- [Hitelesítőadat-szolgáltató engedélyezése a kiépítési csomag használatával](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Hitelesítőadat-szolgáltató engedélyezése az Intune-nal](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - Az Intune üzembe helyezése az ajánlott lehetőség.
+- [Hitelesítőadat-szolgáltató engedélyezése kiépítési csomaggal](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Ha az Intune üzembe helyezése nem lehetséges, a rendszergazdáknak minden gépen telepíteniük kell egy csomagot, hogy engedélyezze a hitelesítő adatok szolgáltatójának működőképességét. A csomag telepítését a következő lehetőségek egyikével végezheti el:
       - Csoportházirend vagy System Center Configuration Manager (SCCM)
       - Helyi telepítés Windows 10 rendszerű gépen
+- [Hitelesítőadat-szolgáltató engedélyezése Csoportházirend](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Csak hibrid Azure AD-hez csatlakoztatott eszközök esetén támogatott.
+
+#### <a name="enable-on-premises-integration"></a>Helyszíni integráció engedélyezése
+
+A helyszíni erőforrásokhoz való hozzáférés engedélyezéséhez kövesse a következő cikkben ismertetett lépéseket: [jelszó nélküli biztonsági kulcs engedélyezése a helyszíni erőforrásokhoz (előzetes verzió)](howto-authentication-passwordless-security-key-on-premises.md) .
+
+> [!IMPORTANT]
+> Ezeket a lépéseket minden hibrid Azure AD-hez csatlakoztatott eszközhöz is el kell végezni, hogy FIDO2 biztonsági kulcsokat lehessen használni a Windows 10-es bejelentkezéshez.
 
 ### <a name="register-security-keys"></a>Biztonsági kulcsok regisztrálása
 
 A felhasználóknak regisztrálniuk kell a biztonsági kulcsot minden Azure Active Directory csatlakoztatott Windows 10 rendszerű gépen.
 
-További információ: [a FIDO2 biztonsági kulcsainak felhasználói regisztrálása és kezelése](howto-authentication-passwordless-security-key.md).
+További információ: [a FIDO2 biztonsági kulcsainak felhasználói regisztrálása és kezelése](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys).
 
 ### <a name="licensing-for-passwordless-authentication"></a>Licencelés jelszavas hitelesítéshez
 
@@ -257,7 +266,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli bejelentkezést a
 ### <a name="deploy-fido2-security-key-sign-in"></a>FIDO2 biztonsági kulcsának üzembe helyezése
 
 Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs bejelentkezését az Azure ad](howto-authentication-passwordless-security-key.md) -be, hogy a FIDO2 biztonsági kulcsokat jelszó nélküli hitelesítési módszerként engedélyezze a szervezetben.
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>Telefonos bejelentkezés – problémamegoldás
 
 | Alkalmazási helyzet | Megoldás |

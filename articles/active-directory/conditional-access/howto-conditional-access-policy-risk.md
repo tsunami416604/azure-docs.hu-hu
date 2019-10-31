@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 102371f8af45a1a51715dbfb11afc3f0f4e457d7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125434"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150699"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Feltételes hozzáférés: Kockázatalapú feltételes hozzáférés
+# <a name="conditional-access-risk-based-conditional-access"></a>Feltételes hozzáférés: kockázatalapú feltételes hozzáférés
 
 A prémium szintű Azure AD P2 licenccel rendelkező szervezetek létrehozhatnak Azure AD Identity Protection kockázati észleléseket tartalmazó feltételes hozzáférési szabályzatokat. Három alapértelmezett szabályzatot lehet engedélyezni a jelölőnégyzetből. 
 
@@ -30,7 +30,7 @@ A prémium szintű Azure AD P2 licenccel rendelkező szervezetek létrehozhatnak
 
 Ha engedélyezi ezt a házirendet, az összes felhasználónak 14 napon belül regisztrálnia kell az Azure-Multi-Factor Authentication. 
 
-1. Jelentkezzen be az **Azure Portalra**.
+1. Jelentkezzen be az **Azure portálra**.
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Azure AD Identity Protection** szolgáltatást.
 1. Kattintson az **MFA-regisztráció** lehetőségre.
 1. A **hozzárendelések**alatt válassza a **felhasználók**lehetőséget.
@@ -44,7 +44,7 @@ Ha engedélyezi ezt a házirendet, az összes felhasználónak 14 napon belül r
 
 A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső biztonsági csapatokkal és egyéb megbízható forrásokkal együttműködve keres felhasználónév–jelszó párokat. Ha az ilyen párok valamelyike egyezik a környezetében lévő valamelyik fiókkal, a rendszer kockázatalapú jelszómódosítást indíthat a következő szabályzat használatával.
 
-1. Jelentkezzen be az **Azure Portalra**.
+1. Jelentkezzen be az **Azure portálra**.
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Azure AD Identity Protection** szolgáltatást.
 1. Kattintson a **felhasználói kockázati házirend**elemre.
 1. A **hozzárendelések**alatt válassza a **felhasználók** lehetőséget.
@@ -53,7 +53,7 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
    1. Válassza a **Done** (Kész) lehetőséget.
 1. A **feltételek**területen válassza a **felhasználói kockázat**lehetőséget, majd válassza a **magas**lehetőséget.
    1. Kattintson a **kiválasztás** , majd a **kész**gombra.
-1. A**hozzáférés**- **vezérlés** > területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának**megkövetelése jelölőnégyzetet.
+1. A **vezérlők** > **hozzáférés**területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése**jelölőnégyzetet.
    1. Kattintson a **Kiválasztás** gombra.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
 1. Kattintson a **Save** (Mentés) gombra.
@@ -62,7 +62,7 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
 
 A legtöbb felhasználó viselkedése normális, amely követhető, és amikor eltérnek a normálistól, kockázatos lehet engedni, hogy egyszerűen bejelentkezzenek. Érdemes lehet letiltani ezt a felhasználót, vagy lehet, hogy csak a többtényezős hitelesítés végrehajtására kéri őket. Ha egy olyan szabályzatot szeretne engedélyezni, amely a kockázatos bejelentkezések alkalmával megköveteli a többtényezős hitelesítést, engedélyezze a következő szabályzatot.
 
-1. Jelentkezzen be az **Azure Portalra**.
+1. Jelentkezzen be az **Azure portálra**.
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Azure AD Identity Protection** szolgáltatást.
 1. Kattintson a **bejelentkezési kockázati házirend** elemre.
 1. A **hozzárendelések**alatt válassza a **felhasználók** lehetőséget.
@@ -71,17 +71,17 @@ A legtöbb felhasználó viselkedése normális, amely követhető, és amikor e
    1. Válassza a **Done** (Kész) lehetőséget.
 1. A **feltételek**területen válassza a **bejelentkezési kockázat**lehetőséget, majd válassza a **közepes vagy újabb**lehetőséget.
    1. Kattintson a **kiválasztás** , majd a **kész**gombra.
-1. A**hozzáférés**- **vezérlés** > területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a többtényezős **hitelesítés**megkövetelése jelölőnégyzetet.
+1. A **vezérlők** > **hozzáférés**területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
    1. Kattintson a **Kiválasztás** gombra.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
 1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
-[Működés: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+[Az Azure Multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md)
 
 [Mi az Azure Active Directory Identity Protection?](../identity-protection/overview.md)

@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299043"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163036"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 terv üzembe helyezése minta
 
@@ -97,7 +97,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Preview @ no__t-1 naplózási PCI v 3.2.1:2018 a naplózási követelmények támogatására szolgáló virtuálisgép-bővítmények szabályozása és üzembe helyezése|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
+|\[előzetes verzió\] a PCI v 3.2.1:2018-as verziójának ellenőrzése és speciális virtuálisgép-bővítmények telepítése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
 |Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyszínek listája|A alkalmazásba telepítendő összes erőforráshoz engedélyezett adatközpont-helyszínek listája. Ez a lista globálisan testreszabható a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyet.| 
 |Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A Geo-megfelelőségi követelmények betartatására használható.| 
 |Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Adatmegőrzés a napok száma szerint. Az alapértelmezett érték 180, de a PCI esetében 365.| 
@@ -111,7 +111,7 @@ Most, hogy áttekintette a PCI-DSS v 3.2.1 Blueprint minta üzembe helyezéséne
 > [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
 > [PCI-DSS v 3.2.1 terv – vezérlés leképezése](./control-mapping.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervrajzokról és azok használatáról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

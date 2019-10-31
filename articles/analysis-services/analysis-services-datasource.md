@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512457"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146941"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -97,12 +97,12 @@ Ha helyszíni SQL Server Analysis Services táblázatos modellt telepít át Azu
 
 **Szolgáltató megadásához**
 
-1. A SSDT > **táblázatos modell Explorer** > **adatforrások**elemnél kattintson a jobb gombbal az adatforrás-kapcsolatok elemre, majd kattintson **az Adatforrás szerkesztése**elemre.
+1. A Visual Studióban > **táblázatos modell Explorer** > **adatforrások**területen kattintson a jobb gombbal az adatforrás-kapcsolatok elemre, majd kattintson az **Adatforrás szerkesztése**elemre.
 2. A **Kapcsolódás szerkesztése**ablakban kattintson a **speciális** elemre az előzetes Tulajdonságok ablak megnyitásához.
 3. A **Speciális tulajdonságok beállítása**  > **szolgáltatók**elemnél válassza ki a megfelelő szolgáltatót.
 
 ## <a name="impersonation"></a>Megszemélyesítési
-Bizonyos esetekben szükség lehet egy másik megszemélyesítési fiók megadására. A megszemélyesítési fiók megadható a Visual Studióban (SSDT) vagy a SSMS.
+Bizonyos esetekben szükség lehet egy másik megszemélyesítési fiók megadására. A megszemélyesítési fiók megadható a Visual Studióban vagy a SSMS.
 
 Helyszíni adatforrások esetén:
 

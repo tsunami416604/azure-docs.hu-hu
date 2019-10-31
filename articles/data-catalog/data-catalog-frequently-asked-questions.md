@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898716"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152054"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog gyakori kérdések
 Ez a cikk a Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
@@ -25,19 +25,19 @@ Data Catalog az adatforrások felderítése és a "sötét adatok" kihívásaiva
 ## <a name="what-are-its-target-audiences"></a>Mik a célközönségek?
 A Data Catalog műszaki és nem műszaki felhasználók számára készült, beleértve a következőket:
 
-* Adatfejlesztők és BI-és elemzési szakemberek: Azok a személyek, akik felelősek az adat-és elemzési tartalmak létrehozásához mások számára.
-* Adatkezelők: Azok a személyek, akik ismerik az információkat, mit jelentenek, és hogyan használják őket.
-* Adatfogyasztók: Azokat a személyeket, akiknek szükségük van a feladataik elvégzéséhez szükséges adatok egyszerű felderítésére, megismerésére és a hozzájuk való kapcsolódásra.
-* Központi IT: Azok a személyek, akiknek több száz adatforrást kell megismerniük az üzleti felhasználók számára, és meg kell őrizniük az információk felhasználásának és a kinek a felügyeletét.
+* Adatfejlesztők és BI-és elemzési szakemberek: azok a személyek, akik az adatokat és az elemzési tartalmakat használják másoknak.
+* Adatkezelők: azok, akik ismerik az információkat, mit jelent, és hogyan kívánják használni őket.
+* Adatfogyasztók: azok a felhasználók, akik számára szükségük van a feladataik elvégzéséhez szükséges adatok egyszerű felderítésére, megismerésére és a hozzájuk való kapcsolódásra.
+* Központi IT: azok a személyek, akiknek több száz adatforrást kell felismerniük az üzleti felhasználók számára, és ki kell tartaniuk az információk felhasználásának és a kinek a felügyeletét.
 
 ## <a name="what-is-its-availability-by-region"></a>Mi a rendelkezésre állás régiónként?
 Data Catalog szolgáltatások jelenleg a következő adatközpontokban érhetők el:
 
 * USA nyugati régiója
-* East US
+* USA keleti régiója
 * Nyugat-Európa
 * Észak-Európa
-* Kelet-Ausztrália
+* Ausztrália keleti régiója
 * Délkelet-Ázsia
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>Milyen korlátai vannak az adategységek számának?
@@ -75,7 +75,7 @@ Az Data Catalog-ban lévő adatai regisztrálása:
 Az adott tulajdonságok eltérnek az adatforrástól az adatforrástól, de általánosságban a Data Catalog közzétételi szolgáltatás a következő információkat bontja ki:
 
 * Eszköz neve
-* Eszköztípus
+* Eszköz típusa
 * Eszköz leírása
 * Attribútum/oszlopnevek
 * Attribútum/oszlop adattípusai
@@ -87,7 +87,7 @@ Az adott tulajdonságok eltérnek az adatforrástól az adatforrástól, de ált
 >
 
 > [!NOTE]
-> Az olyan adatforrások esetében, mint az első osztályú Description tulajdonsággal rendelkező SQL Server Analysis Services, a Data Catalog adatforrás-regisztrációs eszköz kibontja a tulajdonság értékét. SQL Server olyan, a Data Catalog adatforrás-regisztrációs eszköz, amely nem rendelkezik első osztályú **leírási** tulajdonsággal, kibontja az értéket az objektumok és oszlopok **ms_description** kiterjesztett tulajdonságában. További információ: [kiterjesztett tulajdonságok használata adatbázis-objektumokon](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Az olyan adatforrások esetében, mint az első osztályú **description** tulajdonsággal rendelkező SQL Server Analysis Services, a Data Catalog adatforrás-regisztrációs eszköz kibontja a tulajdonság értékét. A *helyszíni SQL Server olyan, a (* z) Data Catalog adatforrás-regisztrációs eszköz kibontja az **ms_description** kiterjesztett tulajdonság értékét az objektumok és oszlopok számára, és nem rendelkezik első osztályú **leírási** tulajdonsággal. További információ: [kiterjesztett tulajdonságok használata adatbázis-objektumokon](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515256"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161715"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: fordítás
 
@@ -23,7 +23,7 @@ Lefordítja a szöveget.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-@No__t_0 kérelem küldése a következőnek:
+`POST` kérelem küldése a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
@@ -372,10 +372,10 @@ Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, 
   <tr>
     <td><code>Marked</code></td>
     <td>A profán szavakat a kimenet jelölője váltja fel. A jelölő a <code>ProfanityMarker</code> paramétertől függ.<br/><br/>
-@No__t_0 esetén a profán szavak helyébe <code>***</code>:<br/>
+<code>ProfanityMarker=Asterisk</code>esetén a profán szavak helyébe <code>***</code>:<br/>
     <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
     <strong>Példa fordítás (angol)</strong>: \* \* \*.<br/><br/>
-@No__t_0 a profán szavakat az XML-címkék veszik körül &lt;profanity &gt; és &lt;/profanity &gt;:<br/>
+<code>ProfanityMarker=Tag</code>a profán szavakat az XML-címkék veszik alapul &lt;káromkodás&gt; és &lt;/profanity&gt;:<br/>
     <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
     <strong>Példa fordítás (angol)</strong>: &lt;profanity &gt;jackass &lt;/profanity &gt;.
   </tr>
@@ -510,7 +510,7 @@ Ha már tudja, hogy milyen fordítást szeretne alkalmazni egy szóhoz vagy kife
 Az ellátási kód a következő szintaxist használja.
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 Tegyük fel például, hogy a "The Word wordomatic egy szótár bejegyzés" angol mondatot. Ha meg szeretné őrizni a fordítás _wordomatic_ a szót, küldje el a kérelmet:
@@ -525,7 +525,7 @@ Az eredmény a következőket eredményezi:
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]

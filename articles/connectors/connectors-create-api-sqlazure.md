@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: conceptual
 tags: connectors
 ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311951"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161618"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -68,7 +68,7 @@ Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logi
 
 1. Adja meg az **intervallum** és a **gyakoriság** tulajdonságait, amely meghatározza, hogy a logikai alkalmazás milyen gyakran ellenőrizze a táblát.
 
-   Ez az trigger csak egy sort ad vissza a kijelölt táblából, semmi más. Egyéb feladatok elvégzéséhez vegyen fel további műveleteket, amelyek végrehajtják a kívánt feladatokat. Ha például meg szeretné tekinteni az ebben a sorban lévő adatok megjelenítését, hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, majd e-mail-riasztásokat küldenek. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/).
+   Ez az trigger csak egy sort ad vissza a kijelölt táblából, semmi más. Egyéb feladatok elvégzéséhez vegyen fel további műveleteket, amelyek végrehajtják a kívánt feladatokat. Ha például meg szeretné tekinteni az ebben a sorban lévő adatok megjelenítését, hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, majd e-mail-riasztásokat küldenek. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -84,7 +84,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. Az aktiválás vagy művelet alatt, ahol az SQL-műveletet hozzá szeretné adni, válassza az **új lépés**lehetőséget.
 
-   ![Válassza az "új lépés" lehetőséget](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![Új lépés hozzáadása a logikai alkalmazáshoz](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
@@ -92,13 +92,13 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
    Ez a példa a **sor beolvasása** műveletet használja, amely egyetlen rekordot kap.
 
-   ![Az SQL "sor beolvasása" művelet megkeresése és kiválasztása](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![Az SQL "sor beolvasása" művelet megkeresése és kiválasztása](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Ez a művelet csak egy sort ad vissza a kijelölt táblából, semmi más. Az ebben a sorban lévő adatok megtekintéséhez hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, és a fájlt egy felhőalapú Storage-fiókban tárolják. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/).
+   Ez a művelet csak egy sort ad vissza a kijelölt táblából, semmi más. Az ebben a sorban lévő adatok megtekintéséhez hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, és a fájlt egy felhőalapú Storage-fiókban tárolják. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
 
 1. Ha a rendszer kéri, hogy hozzon létre egy-egy kapcsolódást, [hozzon létre most egy SQL-kapcsolódást](#create-connection). Ha a hálózat már létezik, válassza ki a **Táblanév nevet**, és adja meg a kívánt rekordhoz tartozó **sort** .
 
-   ![Adja meg a tábla nevét és a sor AZONOSÍTÓját](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![Adja meg a tábla nevét és a sor AZONOSÍTÓját](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -132,7 +132,7 @@ Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/).
+Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
 
 ## <a name="next-steps"></a>Következő lépések
 

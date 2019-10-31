@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35a6ac955ade3eab77f01c4e234b35744f0a7be3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170086"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151188"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Feltételes hozzáférés: MFA megkövetelése rendszergazdák számára
 
@@ -66,8 +66,8 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
       * Felhasználói rendszergazda
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy actions**@no__t-**1 területen válassza a** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
-1. A **hozzáférés-vezérlés**@no__t-**1 támogatás**területen válassza a **hozzáférés engedélyezése**, a **többtényezős hitelesítés megkövetelése**és a **kiválasztás**lehetőséget.
+1. A **felhőalapú alkalmazások vagy műveletek** > a **következők**közül válassza a **minden felhőalapú alkalmazás**lehetőséget, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés** > a **támogatás**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**és a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 

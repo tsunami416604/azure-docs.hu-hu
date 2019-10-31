@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301185"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146443"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
@@ -138,7 +138,7 @@ A kiszolgáló áttekintő oldalán két kiszolgálónév található. Ha még n
 
 A végfelhasználói ügyfélkapcsolatok, például az Power BI Desktop, az Excel és az egyéni alkalmazások esetében használja a **kiszolgálónév nevet**. 
 
-A PowerShell, az Azure Function apps és az AMO SSMS, SSDT és kapcsolatok karakterláncai esetében használja a **felügyeleti kiszolgáló nevét**. A felügyeleti kiszolgáló neve speciális `:rw` (írható-olvasható) minősítőt tartalmaz. Az összes feldolgozási művelet az (elsődleges) felügyeleti kiszolgálón történik.
+A SSMS, a Visual Studio és a kapcsolatok karakterláncai a PowerShellben, az Azure Function Appsben és az AMO-ben a **felügyeleti kiszolgáló nevét**használják. A felügyeleti kiszolgáló neve speciális `:rw` (írható-olvasható) minősítőt tartalmaz. Az összes feldolgozási művelet az (elsődleges) felügyeleti kiszolgálón történik.
 
 ![Kiszolgálók nevei](media/analysis-services-scale-out/aas-scale-out-name.png)
 
@@ -148,13 +148,13 @@ Az árképzési szintet egy több replikával rendelkező kiszolgálón is módo
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-**Probléma:** A felhasználók hibaüzenete **nem találja a (z) @no__t kiszolgáló > példányának 2Name a (z) "ReadOnly" csatlakoztatási módban.**
+**Probléma:** A felhasználó által beolvasott hiba **nem találja a kiszolgáló "\<neve a (z) > példányhoz a (z)" ReadOnly "kapcsolatok módban.**
 
-**Megoldás:** Amikor kiválasztja a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** lehetőséget, a rendszer az alapértelmezett kapcsolati karakterláncot (@no__t – 2) használó ügyfélkapcsolatokat átirányítja a lekérdezési készlet replikáinak. Ha a lekérdezési készlet replikái még nincsenek online állapotban, mert a szinkronizálás még nem fejeződött be, az átirányított ügyfélkapcsolatok sikertelenek lehetnek. A sikertelen kapcsolatok megelőzése érdekében a lekérdezési készletben legalább két kiszolgálónak kell lennie a szinkronizálás végrehajtásához. Minden kiszolgáló külön van szinkronizálva, míg mások online állapotban maradnak. Ha úgy dönt, hogy nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készletben a feldolgozás során, dönthet úgy, hogy a készletből eltávolítja a feldolgozást, majd a feldolgozás befejezése után visszaadja azt a készletbe, de a szinkronizálás előtt. A szinkronizálási állapot figyeléséhez használja a memória és a QPU metrikáját.
+**Megoldás:** Ha kiválasztja a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** lehetőséget, akkor az alapértelmezett kapcsolati karakterláncot (`:rw`nélkül) használó ügyfélkapcsolatokat a rendszer átirányítja a lekérdezési készlet replikái számára. Ha a lekérdezési készlet replikái még nincsenek online állapotban, mert a szinkronizálás még nem fejeződött be, az átirányított ügyfélkapcsolatok sikertelenek lehetnek. A sikertelen kapcsolatok megelőzése érdekében a lekérdezési készletben legalább két kiszolgálónak kell lennie a szinkronizálás végrehajtásához. Minden kiszolgáló külön van szinkronizálva, míg mások online állapotban maradnak. Ha úgy dönt, hogy nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készletben a feldolgozás során, dönthet úgy, hogy a készletből eltávolítja a feldolgozást, majd a feldolgozás befejezése után visszaadja azt a készletbe, de a szinkronizálás előtt. A szinkronizálási állapot figyeléséhez használja a memória és a QPU metrikáját.
 
 
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-[Kiszolgáló metrikáinak figyelése](analysis-services-monitor.md)@no__t – 1  
+[Kiszolgáló metrikáinak figyelése](analysis-services-monitor.md)   
 [Azure Analysis Services kezelése](analysis-services-manage.md) 

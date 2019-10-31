@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 82e59d90135d6bdeb2d4ee1ad0e9a64ef0489cbc
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: 2bb8932ec60c614870f669b4ee98f3800abfe202
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101263"
+ms.locfileid: "73163652"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával
 
@@ -34,8 +34,7 @@ Ez a rövid útmutató a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként azt javasoljuk, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként azt javasoljuk, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Habár az Azure Spring Cloud előzetes verzióban érhető el, a Microsoft korlátozott támogatást biztosít SLA nélkül.  Az előzetes verziókkal kapcsolatos támogatásról további információt ebben a [támogatási gyikban](https://azure.microsoft.com/support/faq/)találhat.
 
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
@@ -125,9 +124,6 @@ az spring-cloud app create --name gateway
 az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
-
->[!NOTE]
-> Az alkalmazás nevének meg kell egyeznie az adattégelyek neveivel, hogy a megadott konfigurációs kiszolgáló megfelelően működjön.
 
 ## <a name="deploy-applications-and-set-environment-variables"></a>Alkalmazások központi telepítése és környezeti változók beállítása
 

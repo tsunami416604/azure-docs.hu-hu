@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512771"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147078"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Az Azure Analysis Serviceshoz való csatlakozáshoz használható ügyféloldali kódtárak
 
-Az ügyfélalkalmazások és eszközök Analysis Services kiszolgálókhoz való kapcsolódáshoz szükségesek. A Microsoft-ügyfélalkalmazások, például az Power BI Desktop, az Excel, a SQL Server Management Studio (SSMS) és a SQL Server Data Tools (SSDT) mind a három ügyféloldali kódtárat telepítik, és a rendszeres alkalmazás-frissítésekkel együtt frissítik azokat. Bizonyos esetekben előfordulhat, hogy az ügyféloldali kódtárak újabb verzióit kell telepítenie. Az egyéni ügyfélalkalmazások esetében az ügyféloldali kódtárak is telepítve vannak.
+Az ügyfélalkalmazások és eszközök Analysis Services kiszolgálókhoz való kapcsolódáshoz szükségesek. A Visual studióhoz készült Microsoft-ügyfélalkalmazások, például az Power BI Desktop, az Excel, a SQL Server Management Studio (SSMS) és a Analysis Services projects Extension mind a három ügyféloldali kódtárat telepítik, és a rendszeres alkalmazás-frissítésekkel együtt frissítik azokat. Bizonyos esetekben előfordulhat, hogy az ügyféloldali kódtárak újabb verzióit kell telepítenie. Az egyéni ügyfélalkalmazások esetében az ügyféloldali kódtárak is telepítve vannak.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>A legújabb ügyféloldali kódtárak letöltése (Windows Installer)  
 
@@ -58,7 +58,7 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
 
 ### <a name="amo"></a>AMO  
 
- Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok általában minimálisak, `"data source=\<servername>"`-ból állnak. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A SSDT és a SSMS egyaránt az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
+ Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok általában minimálisak, `"data source=\<servername>"`-ból állnak. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A Visual Studio és a SSMS is az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
 
   
 ### <a name="adomd"></a>ADOMD

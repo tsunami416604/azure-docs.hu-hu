@@ -1,12 +1,13 @@
 ---
-title: Jira való Atlassian/összefolyás felett rendszergazdai útmutatója – Azure Active Directory |} A Microsoft Docs
-description: Rendszergazdai útmutató az Azure Active Directory (Azure AD) Atlassian Jira és való összefolyás felett használandó...
+title: Atlassian JIRA/torkolati felügyeleti útmutató – Azure Active Directory | Microsoft Docs
+description: Felügyeleti útmutató a Atlassian-JIRA és a Azure Active Directory (Azure AD) összefolyásánál való használatához.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,230 +15,230 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60935780"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161210"
 ---
-# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Az Azure Active Directory Atlassian Jira és való összefolyás felett rendszergazdai útmutatója
+# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian-JIRA és-összefolyásánál felügyeleti útmutató a Azure Active Directory
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Active Directory (Azure AD) egyszeri bejelentkezés (SSO) beépülő modul használatát teszi lehetővé a Microsoft Azure AD Atlassian Jira és való összefolyás felett Server-alapú termékeknél való bejelentkezéshez használja a munkahelyi vagy iskolai fiókjával. SAML 2.0-alapú egyszeri bejelentkezés valósítja meg.
+A Azure Active Directory (Azure AD) egyszeri bejelentkezés (SSO) beépülő modulja lehetővé teszi, hogy a Microsoft Azure AD ügyfelei munkahelyi vagy iskolai fiókjával jelentkezzenek be a Atlassian JIRA és a torkolatánál kiszolgáló-alapú termékekbe. SAML 2,0-alapú egyszeri bejelentkezést valósít meg.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
-Amikor a felhasználók szeretne bejelentkezni az Atlassian Jira vagy való összefolyás felett alkalmazásba, akkor látni fogja a **az Azure AD bejelentkezési** gomb a bejelentkezési oldalon. Amikor kiválasztják, hogy kell jelentkezzen be az Azure AD szervezeti bejelentkezési oldal (vagyis munkahelyi vagy iskolai fiókjuk) használatával.
+Amikor a felhasználók be szeretnének jelentkezni a Atlassian JIRA vagy a torkolatánál futó alkalmazásba, a bejelentkezési oldalon megjelennek a **Bejelentkezés az Azure ad-vel** gomb. Ha kijelölik, akkor be kell jelentkezniük az Azure AD-szervezet bejelentkezési oldala (azaz munkahelyi vagy iskolai fiókja) használatával.
 
-A felhasználók hitelesítése után kell tudni bejelentkezni az alkalmazásba. Már hitelesített azonosítója és a munkahelyi vagy iskolai fiók jelszavát, majd közvetlenül bejelentkeznek az alkalmazásba. 
+A felhasználók hitelesítése után képesnek kell lenniük az alkalmazásba való bejelentkezésre. Ha már hitelesítve vannak a munkahelyi vagy iskolai fiókjához tartozó AZONOSÍTÓval és jelszóval, akkor közvetlenül bejelentkeznek az alkalmazásba. 
 
-Jelentkezzen be egyaránt működik Jira és való összefolyás felett. Ha a Jira alkalmazáshoz be van jelentkezve a felhasználói és való összefolyás felett böngészőablakban nyílik meg, nincs szükség a hitelesítő adatok megadása céljából a többi alkalmazás. 
+A bejelentkezés JIRA és torkolatánál is működik. Ha a felhasználók bejelentkeznek a JIRA alkalmazásba, és a torkolatánál ugyanabban a böngészőablakban van megnyitva, nem kell megadniuk a másik alkalmazás hitelesítő adatait. 
 
-Felhasználók a munkahelyi vagy iskolai fiók Atlassian termék saját alkalmazásokon keresztül is elérhető. Akkor kell jelentkeznie a anélkül, hogy a rendszer a hitelesítő adatokat.
+A felhasználók a munkahelyi vagy iskolai fiókkal is elérhetik a Atlassian terméket az alkalmazásaikban. A hitelesítő adatok kérése nélkül kell bejelentkezniük.
 
 > [!NOTE]
-> Felhasználók átadása nem történik a beépülő modul használatával.
+> A felhasználó üzembe helyezése nem a beépülő modulon keresztül történik.
 
-## <a name="audience"></a>Célközönség
+## <a name="audience"></a>Közönség
 
-Jira és való összefolyás felett is segítségével a rendszergazdák a beépülő modul az Azure AD egyszeri bejelentkezés engedélyezése.
+A JIRA és a torkolatánál lévő rendszergazdák a beépülő modullal engedélyezhetik az egyszeri bejelentkezést az Azure AD használatával.
 
-## <a name="assumptions"></a>Előfeltételek
+## <a name="assumptions"></a>Feltételezések
 
-* Jira és való összefolyás felett példányai HTTPS-kompatibilis.
-* Felhasználók már létrehozása Jira vagy való összefolyás felett.
-* Felhasználók Jira vagy való összefolyás felett hozzárendelt szerepkörök rendelkeznek.
-* Rendszergazdák hozzáférhetnek a beépülő modul konfigurálásához szükséges információkat.
-* Jira vagy való összefolyás felett érhető el, valamint a vállalati hálózaton kívülről.
-* A beépülő modul működését csak a helyszíni verzióval, Jira és való összefolyás felett.
+* A JIRA és a torkolatánál lévő példányok HTTPS-kompatibilisek.
+* A felhasználók már létre lettek hozva a JIRA vagy a torkolatánál.
+* A felhasználók JIRA vagy összefolyásánál vannak hozzárendelve a szerepkörökhöz.
+* A rendszergazdák hozzáférhetnek a beépülő modul konfigurálásához szükséges adatokhoz.
+* A JIRA vagy a torkolatánál a vállalati hálózaton kívül is elérhető.
+* A beépülő modul csak a JIRA és a torkolatánál található helyszíni verzióval működik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A beépülő modul telepítése előtt, vegye figyelembe a következő információkat:
+A beépülő modul telepítése előtt jegyezze fel a következő információkat:
 
-* Jira és való összefolyás felett a Windows 64 bites verziója van telepítve.
-* Jira és való összefolyás felett edmversion HTTPS-kompatibilis.
-* Jira és való összefolyás felett érhetők el az interneten.
-* Rendszergazdai hitelesítő adatok vannak érvényben a Jira és való összefolyás felett.
-* Rendszergazdai hitelesítő adatok az Azure ad vannak érvényben.
-* WebSudo le van tiltva, a Jira és való összefolyás felett.
+* A JIRA és a torkolatánál a Windows 64 bites verziója van telepítve.
+* A JIRA és a torkolatánál lévő verziók HTTPS-kompatibilisek.
+* A JIRA és a torkolatánál elérhető az interneten.
+* Rendszergazdai hitelesítő adatok állnak rendelkezésre a JIRA és a torkolatánál.
+* Rendszergazdai hitelesítő adatok vannak érvényben az Azure AD-hez.
+* A websudo le van tiltva a JIRA és a torkolatánál.
 
-## <a name="supported-versions-of-jira-and-confluence"></a>Jira és való összefolyás felett támogatott verziói
+## <a name="supported-versions-of-jira-and-confluence"></a>A JIRA és a torkolatánál támogatott verziói
 
-A beépülő modul Jira és való összefolyás felett alábbi verzióit támogatja:
+A beépülő modul a JIRA és a torkolatánál következő verzióit támogatja:
 
-* Jira Core és a szoftvereket: a 7.12 6.0
-* Jira Service Desk: 3.0.0-s való 3.5.0
-* JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Való összefolyás felett: 5.0-s az 5.10.
-* Való összefolyás felett: 6.0.1
-* Való összefolyás felett: 6.1.1
-* Való összefolyás felett: 6.2.1
-* Való összefolyás felett: 6.3.4
-* Való összefolyás felett: 6.4.0
-* Való összefolyás felett: 6.5.0
-* Való összefolyás felett: 6.6.2
-* Való összefolyás felett: 6.7.0
-* Való összefolyás felett: 6.8.1
-* Való összefolyás felett: 6.9.0
-* Való összefolyás felett: 6.10.0
-* Való összefolyás felett: 6.11.0
-* Való összefolyás felett: 6.12.0
+* JIRA Core és Software: 6,0 – 7,12
+* JIRA Service Desk: 3.0.0 – 3.5.0
+* A JIRA a 5,2-es frissítést is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* Összefolyásánál: 5,0 – 5,10
+* Torkolatánál: 6.0.1
+* Torkolatánál: 6.1.1
+* Torkolatánál: 6.2.1
+* Torkolatánál: 6.3.4
+* Torkolatánál: 6.4.0
+* Torkolatánál: 6.5.0
+* Torkolatánál: 6.6.2
+* Torkolatánál: 6.7.0
+* Torkolatánál: 6.8.1
+* Torkolatánál: 6.9.0
+* Torkolatánál: 6.10.0
+* Torkolatánál: 6.11.0
+* Torkolatánál: 6.12.0
 
 ## <a name="installation"></a>Telepítés
 
 A beépülő modul telepítéséhez kövesse az alábbi lépéseket:
 
-1. A Jira vagy való összefolyás felett példány jelentkezzen be rendszergazdaként.
+1. Jelentkezzen be a JIRA vagy az összefolyásánál-példányba rendszergazdaként.
 
-2. A Jira/való összefolyás felett felügyeleti konzolon, és válassza ki **bővítmények**.
+2. Nyissa meg a JIRA/torkolatánál felügyeleti konzolt, és válassza a **bővítmények**lehetőséget.
 
-3. A Microsoft Download Center, töltse le a [Microsoft SAML SSO beépülő modulja a Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML SSO beépülő modulja való összefolyás felett](https://www.microsoft.com/download/details.aspx?id=56503).
+3. A Microsoft letöltőközpontból töltse le a Microsoft [SAML SSO beépülő modult a Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML SSO beépülő modult a torkolatánál](https://www.microsoft.com/download/details.aspx?id=56503).
 
-   A beépülő modul a megfelelő verzióját a keresési eredmények között megjelenik.
+   A beépülő modul megfelelő verziója megjelenik a keresési eredmények között.
 
-4. Válassza ki a beépülő modult, és az univerzális Plug-in Manager (UPM) telepíti azt.
+4. Válassza ki a beépülő modult, és az univerzális beépülőmodul-kezelő (UPM) telepíti azt.
 
-A beépülő modul telepítése után megjelenik a **felhasználói telepített bővítmények** szakaszában **bővítmények kezelése**.
+A beépülő modul telepítését követően megjelenik a **Bővítmények kezelése**a **felhasználók által telepített bővítmények** szakaszban.
 
 ## <a name="plug-in-configuration"></a>Beépülő modul konfigurálása
 
-A beépülő modul használata előtt konfigurálnia kell azt. Válassza ki a beépülő modult, válassza a **konfigurálása** gombra, és adja meg a konfigurációs adatokat.
+A beépülő modul használatának megkezdése előtt konfigurálnia kell azt. Válassza ki a beépülő modult, kattintson a **Konfigurálás** gombra, és adja meg a konfigurációs adatokat.
 
-Az alábbi képen látható Jira és való összefolyás felett is a következő konfigurációs képernyőjén:
+Az alábbi képen a JIRA és a torkolatánál található konfigurációs képernyő látható:
 
-![Beépülő modul konfigurációs képernyőjén](./media/ms-confluence-jira-plugin-adminguide/jira.png)
+![Beépülő modul konfigurációs képernyője](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Metaadatok URL-címe**: Az Azure AD összevonási metaadatok beolvasása az URL-címe.
+* **Metaadatok URL-címe**: az összevonási metaadatok Azure ad-ből való lekérésére szolgáló URL-cím.
 
-* **Azonosítók**: Az URL-címet használó Azure ad-ben a forrás, a kérelem ellenőrzése. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *\<tartomány és a portszám >* /.
+* **Azonosítók**: az az URL-cím, amelyet az Azure ad a kérelem forrásának ellenőrzésére használ. Az Azure AD **azonosító** eleméhez rendeli hozzá. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<tartományként: port >* /.
 
-* **Válasz URL-cím**: Az identitásszolgáltató (IdP) kezdeményező SAML bejelentkezési válasz URL-cím. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *\<tartomány és a portszám >* /plugins/servlet/saml/auth.
+* **Válasz URL-címe**: a válasz URL-címe a identitásszolgáltató, amely kezdeményezi az SAML-bejelentkezést. Leképezi az Azure AD **Válasz URL-** elemét. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<tartomány: port >* /plugins/servlet/SAML/auth.
 
-* **Bejelentkezési URL-cím**: A bejelentkezési URL-címet az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *\<tartomány és a portszám >* /plugins/servlet/saml/auth.
+* **Bejelentkezési URL-cím**: a identitásszolgáltató bejelentkezési URL-címe, amely az SAML-bejelentkezést kezdeményezi. Leképezi az Azure AD **bejelentkezési** elemét. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<tartomány: port >* /plugins/servlet/SAML/auth.
 
-* **Identitásszolgáltató Entitásazonosító**: Az entitás azonosítója, amely az identitásszolgáltató használja. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe.
+* **Identitásszolgáltató-entitás azonosítója**: a identitásszolgáltató által használt entitás azonosítója. Ez a mező a metaadatok URL-címének feloldásakor töltődik fel.
 
-* **Bejelentkezési URL-cím**: A bejelentkezési URL-cím az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+* **Bejelentkezési URL-cím**: a bejelentkezési URL-cím a identitásszolgáltató. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
 
-* **Kijelentkezési URL-címe**: A kijelentkezési URL-címe az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+* **Kijelentkezési URL-cím**: a identitásszolgáltató kijelentkezési URL-címe. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
 
-* **X.509-tanúsítvány**: Az IdP X.509-tanúsítvány. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+* **X. 509 tanúsítvány**: a identitásszolgáltató X. 509 tanúsítványa. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
 
-* **Bejelentkezési gomb neve**: A bejelentkezés gombot, amely a szervezet azt szeretné, a bejelentkezési lapon látható, hogy a felhasználók neve.
+* **Bejelentkezési gomb neve**: annak a bejelentkezési gombnak a neve, amelyet a szervezet a felhasználók számára látni szeretne a bejelentkezési oldalon.
 
-* **SAML-felhasználói azonosító helyek**: A hely, ahol a Jira vagy való összefolyás felett felhasználói azonosítónak a SAML-válasz. Is lehet **NameID** vagy egy egyéni attribútum nevében.
+* **SAML felhasználói azonosító**helye: az SAML-válaszban a JIRA vagy az összefolyásánál felhasználói azonosító helyét kell megvárni. Ez lehet a **NameID** vagy egy egyéni attribútum neve.
 
-* **Attribútum neve**: A nevét, ahol a felhasználói azonosítónak.
+* **Attribútum neve**: annak az attribútumnak a neve, amelybe a rendszer a felhasználói azonosítót várta.
 
-* **A Kezdőtartomány felderítésének engedélyezése kezdőlap**: A kijelölést, győződjön meg arról, ha a vállalat használ az Active Directory összevonási szolgáltatások (AD FS) - alapú bejelentkezést - a.
+* A **Kezdőlap tartomány felderítésének engedélyezése**: a kijelölés, hogy a vállalat Active Directory összevonási szolgáltatások (AD FS) (AD FS) alapú bejelentkezést használjon.
 
-* **Tartománynév**: A tartománynév, ha be-e az AD FS-alapú.
+* **Tartománynév**: a tartomány neve, ha a bejelentkezés AD FS alapul.
 
-* **Engedélyezze az egyszeri Kijelentkezés**: Győződjön meg arról, ha azt szeretné, jelentkezzen ki, amikor egy felhasználó kijelentkezik a Jira vagy való összefolyás felett az Azure AD-ből a kijelölést.
+* **Egyszeri kijelentkezés engedélyezése**: ezt a lehetőséget kell választania, ha ki szeretne jelentkezni az Azure ad-ből, amikor egy felhasználó kijelentkezik a JIRA vagy a torkolatánál.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-* **Több tanúsítvány hibákat kap**: Jelentkezzen be Azure ad-ben, és távolítsa el a több tanúsítványt, az alkalmazás elleni elérhető. Győződjön meg arról, hogy csak egy tanúsítványra jelen.
+* **Több tanúsítvány-hibaüzenetet kap**: Jelentkezzen be az Azure ad-be, és távolítsa el az alkalmazáson keresztül elérhető több tanúsítványt. Győződjön meg arról, hogy csak egy tanúsítvány van jelen.
 
-* **A tanúsítvány érvényessége hamarosan lejár az Azure ad-ben**: A bővítmények a tanúsítvány automatikus helyettesítő gondoskodik. Ha egy tanúsítvány hamarosan lejár, új tanúsítványt kell megjelölni aktív, és fel nem használt tanúsítványok azt törölni kell. Amikor egy felhasználó megpróbál bejelentkezni a Jira ebben a forgatókönyvben a beépülő modul fetches, és menti az új tanúsítványt.
+* **A tanúsítvány hamarosan lejár az Azure ad-ben**: a bővítmények gondoskodnak a tanúsítvány automatikus átváltásáról. Ha egy tanúsítvány hamarosan lejár, egy új tanúsítványt kell megjelölni, és törölni kell a használaton kívüli tanúsítványokat. Ha a felhasználó ebben az esetben megpróbál bejelentkezni a JIRA, a beépülő modul lekéri és menti az új tanúsítványt.
 
-* **Le kívánja tiltani (tiltsa le a biztonságos felügyeleti munkamenet) WebSudo**:
+* **Szeretné letiltani a websudo-t (a biztonságos rendszergazdai munkamenet letiltása)** :
 
-  * A Jira biztosíthat a rendszergazda alapértelmezés szerint engedélyezve vannak a munkamenetek (vagyis a jelszó megerősítése felügyeleti funkciók elérése előtt). Ha el kívánja távolítani ezt a lehetőséget a Jira-példányban, adja meg a következő sort a jira-config.properties fájlt: `ira.websudo.is.disabled = true`
+  * A JIRA esetében a biztonságos rendszergazdai munkamenetek (azaz jelszó-megerősítés a felügyeleti funkciók elérése előtt) alapértelmezés szerint engedélyezve vannak. Ha el szeretné távolítani ezt a képességet a JIRA-példányban, adja meg a következő sort a JIRA-config. properties fájlban: `ira.websudo.is.disabled = true`
 
-  * A való összefolyás felett, kövesse a lépéseket a [való összefolyás felett támogatási oldalunkra](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
+  * A torkolatánál való összefolyásánál kövesse az [összefolyásánál támogatási webhelyének](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)lépéseit.
 
-* **Feltölthető a metaadatok URL-CÍMÉT kell menteniük mezők nem kerülnek első**:
+* **A metaadatok URL-címével kitöltendő mezők nem lesznek feltöltve**:
 
-  * Ellenőrizze, ha az URL-cím helyes-e. Ellenőrizze, hogy ha képezett le a megfelelő bérlői és az alkalmazás azonosítóját.
+  * Ellenőrizze, hogy helyes-e az URL-cím. Ellenőrizze, hogy a megfelelő bérlő és alkalmazás-azonosító van-e leképezve.
 
-  * Adja meg az URL-címet egy böngészőben, és tekintse meg a kap, ha az összevonási metaadatok XML.
+  * Adja meg az URL-címet egy böngészőben, és ellenőrizze, hogy az összevonási metaadatok XML-fájlja megjelenik-e.
 
-* **Belső hiba történt**: Tekintse át a naplókat a telepítési naplófájl könyvtárában. Amikor a felhasználó próbál jelentkezzen be az Azure AD SSO használatával a hibát kap, ha a naplók megoszthatja a csapatával.
+* **Belső kiszolgálóhiba történt**: Ellenőrizze a naplókat a telepítés naplózási könyvtárában. Ha olyan hibaüzenetet kap, amikor a felhasználó az Azure AD SSO használatával próbál bejelentkezni, megoszthatja a naplókat a támogatási csapattal.
 
-* **Van egy "Felhasználói azonosító nem található" hiba történt, amikor a felhasználó megpróbál bejelentkezni**: A felhasználói azonosító létrehozása Jira vagy való összefolyás felett.
+* **"Felhasználói azonosító nem található" hibaüzenet jelenik meg, amikor a felhasználó megpróbál bejelentkezni**: hozza létre a felhasználói azonosítót a JIRA vagy a torkolatánál.
 
-* **"Az alkalmazás nem található" hiba van az Azure ad-ben**: Tekintse meg, ha a megfelelő URL-cím van rendelve az alkalmazás Azure AD-ben.
+* **"Az alkalmazás nem található" hibaüzenet jelenik meg az Azure ad-ben**: Ellenőrizze, hogy a megfelelő URL-cím van-e leképezve az alkalmazáshoz az Azure ad-ben.
 
-* **Támogatásra van szüksége**: Keresse fel a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). A csapat változásokhoz üzleti 24-48 órában.
+* **Támogatásra van szüksége**: az [Azure ad SSO integrációs csapatának](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)elérhetősége. A csapat 24-48 munkaidőben válaszol.
 
-  Az Azure portal csatornán keresztül a Microsoft támogatási jegyet is tehet.
+  A Microsoft támogatási jegyét a Azure Portal csatornán keresztül is megteheti.
 
 ## <a name="plug-in-faq"></a>Beépülő modul – gyakori kérdések
 
-Olvassa el alább – gyakori kérdések, ha minden lekérdezés felvegye beépülő modult.
+Ha bármilyen lekérdezésre van szüksége a beépülő modullal kapcsolatban, tekintse meg az alábbi gyakori kérdéseket.
 
-### <a name="what-does-the-plug-in-do"></a>A beépülő modul ne funkciója?
+### <a name="what-does-the-plug-in-do"></a>Mit tesz a beépülő modul?
 
-A beépülő modul egyszeri bejelentkezés (SSO) képességet nyújt Atlassian Jira (beleértve a Jira-Core, a Jira Software, a Jira ügyfélszolgálat) és a telephelyi szoftverek való összefolyás felett. A beépülő modul működését az Azure Active Directoryval (Azure AD) Identitásszolgáltatóként (IdP).
+A beépülő modul egyszeri bejelentkezéses (SSO) képességet biztosít a Atlassian JIRA (beleértve a JIRA Core-t, a JIRA szoftvert, a JIRA-szolgáltatást és a helyszíni szoftvereket). A beépülő modul Azure Active Directory (Azure AD) identitás-szolgáltatóként (identitásszolgáltató) működik.
 
-### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Mely Atlassian termékek a beépülő modul működik az?
+### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Mely Atlassian-termékek működnek a beépülő modullal?
 
-A beépülő modul működését Jira és való összefolyás felett helyszíni verzióival.
+A beépülő modul a JIRA és a torkolatánál helyszíni verzióival működik.
 
-### <a name="does-the-plug-in-work-on-cloud-versions"></a>A beépülő modul működik a felhő-verziókról?
+### <a name="does-the-plug-in-work-on-cloud-versions"></a>Működik a beépülő modul a felhőalapú verziókon?
 
-Nem. A beépülő modul által támogatott csak a helyszíni verzióit Jira és való összefolyás felett.
+Nem. A beépülő modul csak a JIRA és a torkolatánál helyszíni verzióit támogatja.
 
-### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Jira és való összefolyás felett melyik verziója támogatja a beépülő modul?
+### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>A JIRA és a torkolatánál mely verziói támogatják a beépülő modult?
 
-A beépülő modul alábbi verzióit támogatja:
+A beépülő modul a következő verziókat támogatja:
 
-* Jira Core és a szoftvereket: a 7.12 6.0
-* Jira Service Desk: 3.0.0-s való 3.5.0
-* JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Való összefolyás felett: 5.0-s az 5.10.
-* Való összefolyás felett: 6.0.1
-* Való összefolyás felett: 6.1.1
-* Való összefolyás felett: 6.2.1
-* Való összefolyás felett: 6.3.4
-* Való összefolyás felett: 6.4.0
-* Való összefolyás felett: 6.5.0
-* Való összefolyás felett: 6.6.2
-* Való összefolyás felett: 6.7.0
-* Való összefolyás felett: 6.8.1
-* Való összefolyás felett: 6.9.0
-* Való összefolyás felett: 6.10.0
-* Való összefolyás felett: 6.11.0
-* Való összefolyás felett: 6.12.0
+* JIRA Core és Software: 6,0 – 7,12
+* JIRA Service Desk: 3.0.0 – 3.5.0
+* A JIRA a 5,2-es frissítést is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* Összefolyásánál: 5,0 – 5,10
+* Torkolatánál: 6.0.1
+* Torkolatánál: 6.1.1
+* Torkolatánál: 6.2.1
+* Torkolatánál: 6.3.4
+* Torkolatánál: 6.4.0
+* Torkolatánál: 6.5.0
+* Torkolatánál: 6.6.2
+* Torkolatánál: 6.7.0
+* Torkolatánál: 6.8.1
+* Torkolatánál: 6.9.0
+* Torkolatánál: 6.10.0
+* Torkolatánál: 6.11.0
+* Torkolatánál: 6.12.0
 
-### <a name="is-the-plug-in-free-or-paid"></a>A beépülő modul ingyenes vagy fizetős?
+### <a name="is-the-plug-in-free-or-paid"></a>Ingyenes vagy fizetős a beépülő modul?
 
-Egy ingyenes bővítményről.
+Ez egy ingyenes bővítmény.
 
-### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Szükséges indítsa újra a Jira vagy való összefolyás felett után üzembe helyezhetem a beépülő modul?
+### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>A beépülő modul üzembe helyezése után újra kell indítani a JIRA vagy a torkolatánál?
 
-A számítógép újraindítását, nem szükséges. Meg azonnal a beépülő modul használatának megkezdéséhez.
+Újraindítás nem szükséges. Azonnal elkezdheti használni a beépülő modult.
 
-### <a name="how-do-i-get-support-for-the-plug-in"></a>Hogyan kérhet támogatást a beépülő modul?
+### <a name="how-do-i-get-support-for-the-plug-in"></a>Hogyan kap támogatást a beépülő modulhoz?
 
-Elérheti hogy a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) támogatás számára szükséges a beépülő modul. A csapat változásokhoz üzleti 24-48 órában.
+Az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) elérheti a beépülő modulhoz szükséges támogatást. A csapat 24-48 munkaidőben válaszol.
 
-Az Azure portal csatornán keresztül a Microsoft támogatási jegyet is tehet.
+A Microsoft támogatási jegyét a Azure Portal csatornán keresztül is megteheti.
 
-### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>A Mac- vagy Ubuntu-telepítésen Jira és való összefolyás felett beépülő modul munka volna?
+### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Működik-e a beépülő modul a JIRA és a torkolatánál futó Mac vagy Ubuntu rendszeren?
 
-Általunk tesztelt, a beépülő modul csak a 64 bites Windows Server-példányok Jira és való összefolyás felett.
+A beépülő modult csak a JIRA és a torkolatánál elérhető, 64 bites Windows Server-példányokon teszteltük.
 
-### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>A beépülő modul működik az Azure AD-től eltérő identitásszolgáltató használatát?
+### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Működik a beépülő modul az Azure AD-től eltérő IDP?
 
-Nem. Csak az Azure ad-vel működik.
+Nem. Csak az Azure AD-vel működik.
 
-### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Milyen SAML-verziót a beépülő modul működik az?
+### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Az SAML milyen verziója működik a beépülő modullal?
 
-Az SAML 2.0-val működik.
+Az SAML 2,0-mel működik.
 
-### <a name="does-the-plug-in-do-user-provisioning"></a>A beépülő modul feladata felhasználókiépítése?
+### <a name="does-the-plug-in-do-user-provisioning"></a>A beépülő modul a felhasználó üzembe helyezését végzi?
 
-Nem. A beépülő modul csak SAML 2.0-alapú egyszeri Bejelentkezést biztosít. A felhasználók számára az alkalmazás Egyszeri bejelentkezési előtt ki kell építeni.
+Nem. A beépülő modul csak SAML 2,0-alapú egyszeri bejelentkezést biztosít. A felhasználót az egyszeri bejelentkezéses bejelentkezés előtt kell kiépíteni az alkalmazásban.
 
-### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>A beépülő modul támogatása fürtverziók Jira és való összefolyás felett nem?
+### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Támogatja a beépülő modul a JIRA és a torkolatánál a fürt verzióját?
 
-Nem. A beépülő modul működését Jira és való összefolyás felett helyszíni verzióival.
+Nem. A beépülő modul a JIRA és a torkolatánál helyszíni verzióival működik.
 
-### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>A beépülő modul működik az Jira és való összefolyás felett HTTP-verziók?
+### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Működik a beépülő modul a JIRA és a torkolatánál HTTP-verzióival?
 
-Nem. A beépülő modul csak a HTTPS használatára konfigurált rendszerek együttműködik.
+Nem. A beépülő modul csak HTTPS-kompatibilis telepítésekkel működik.

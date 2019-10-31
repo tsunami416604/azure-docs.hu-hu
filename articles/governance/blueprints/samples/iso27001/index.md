@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: ccfd782d375de9d3a39cac20b1e48e16cc40d2f7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fb66c971a9d5f0dfde4c46ab92bda896670d3c5d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297388"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161433"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>Az ISO 27001-tervminta áttekintése
 
@@ -30,7 +30,7 @@ Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőel
 > [ISO 27001-terv – Vezérlőelem-leképezés](./control-mapping.md)
 > [ISO 27001-terv – Üzembehelyezési lépések](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

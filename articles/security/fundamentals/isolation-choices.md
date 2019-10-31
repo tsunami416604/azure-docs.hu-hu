@@ -1,10 +1,10 @@
 ---
 title: Elkülönítés az Azure nyilvános felhőben | Microsoft Docs
-description: Ismerkedjen meg a felhőalapú számítástechnikai szolgáltatásokkal, amelyek számos számítási példányt tartalmaznak, & olyan szolgáltatásokat, amelyek automatikusan fel-és leskálázást tesznek lehetővé az alkalmazás vagy a vállalat igényeinek megfelelően.
+description: Ismerje meg, hogyan biztosítja az Azure a kártékony és a nem rosszindulatú felhasználók elkülönítését, és különböző elkülönítési lehetőségeket kínál az építészek számára.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123056"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159760"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
-##  <a name="introduction"></a>Bevezetés
-### <a name="overview"></a>Áttekintés
-A Microsoft a különböző, az Azure platformon elérhető, biztonsággal kapcsolatos képességek megismerésére és felhasználására képes az aktuális és jövőbeli Azure-ügyfelek számára, és számos tanulmányt, biztonsági áttekintést, ajánlott eljárásokat és gyakorlati tanácsokat fejlesztett ki. Feladatlisták.
-A témakörök köre a szélesség és a mélység tekintetében, és rendszeres időközönként frissül. Ez a dokumentum a sorozat részét képezi, az alábbi absztrakt szakaszban Összefoglalva.
+Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
 
-### <a name="azure-platform"></a>Azure-platform
-Az Azure egy nyílt és rugalmas felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Megteheti például a következőt:
-- Linux-tárolók futtatása a Docker-integrációval;
-- Alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node. js használatával és
-- Az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer.
-
-A Microsoft Azure több millió fejlesztőt és informatikai szakembereket is támogat.
-
-Ha a-t vagy a-t egy nyilvános felhőalapú szolgáltatóra építi, vagy áttelepíti az informatikai eszközöket, akkor az adott szervezet képességei a szolgáltatások és az adatok védelmére támaszkodnak a felhőalapú eszközök biztonságának kezeléséhez.
-
-Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Számos konfigurálható biztonsági beállítással is rendelkezik, amelyek testreszabásával a különböző környezetek egyedi követelményeinek megfelelő biztonsági megoldások alakíthatók ki. Ez a dokumentum segít megfelelni ezeket a követelményeket.
-
-### <a name="abstract"></a>Absztrakt
-
-Microsoft Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
-
-Ez a cikk azt ismerteti, hogy a Microsoft Azure hogyan biztosít elkülönítést a kártékony és a nem rosszindulatú felhasználókkal szemben, és útmutatást nyújt a felhőalapú megoldások tervezéséhez azáltal, hogy különböző elkülönítési lehetőségeket kínál az építészek számára. Ez a tanulmány az Azure platform és az ügyfelek felé irányuló biztonsági szabályozások technológiáját tárgyalja, és nem kísérli meg a SLA-kat, a díjszabási modelleket és a DevOps gyakorlattal kapcsolatos szempontokat.
+Ez a cikk bemutatja, hogyan biztosítja az Azure a kártékony és a nem rosszindulatú felhasználók elkülönítését, és útmutatást nyújt a felhőalapú megoldások tervezéséhez azáltal, hogy különféle elkülönítési lehetőségeket kínál az építészek számára.
 
 ## <a name="tenant-level-isolation"></a>Bérlői szint elkülönítése
 A felhő-számítástechnika egyik legfőbb előnye, hogy egy közös, közös infrastruktúrát használ egyszerre számos ügyfélen, ami a méretgazdaságosságot eredményezi. Ezt a koncepciót több-bérlőnek nevezzük. A Microsoft folyamatosan gondoskodik arról, hogy a Microsoft Cloud Azure több-bérlős architektúrája támogassa a biztonságot, a titkosságot, az adatvédelmet, az integritást és a rendelkezésre állási szabványokat.
@@ -176,7 +157,7 @@ Alapértelmezés szerint a rendszer a virtuális gép létrehozásakor letiltja 
 
 A szabályok két kategóriába sorolhatók:
 
--   **A számítógép konfigurációja vagy az infrastruktúra szabályai:** Alapértelmezés szerint minden kommunikáció le van tiltva. Kivételt képeznek a virtuális gépek számára a DHCP-és DNS-forgalom küldésének és fogadásának engedélyezése. A virtuális gépek forgalmat is küldhetnek a "nyilvános" internetre, és az ugyanazon Azure-Virtual Network és az operációs rendszer aktiválási kiszolgálóján belüli más virtuális gépekre is küldhetnek forgalmat. A virtuális gépek engedélyezett kimenő célhelyek listája nem tartalmazza az Azure útválasztó alhálózatait, az Azure-felügyeletet és a Microsoft egyéb tulajdonságait.
+-   A **Számítógép konfigurációja vagy az infrastruktúra szabályai:** Alapértelmezés szerint minden kommunikáció le van tiltva. Kivételt képeznek a virtuális gépek számára a DHCP-és DNS-forgalom küldésének és fogadásának engedélyezése. A virtuális gépek forgalmat is küldhetnek a "nyilvános" internetre, és az ugyanazon Azure-Virtual Network és az operációs rendszer aktiválási kiszolgálóján belüli más virtuális gépekre is küldhetnek forgalmat. A virtuális gépek engedélyezett kimenő célhelyek listája nem tartalmazza az Azure útválasztó alhálózatait, az Azure-felügyeletet és a Microsoft egyéb tulajdonságait.
 
 -   **Szerepkör-konfigurációs fájl:** Ez határozza meg a beérkező Access Control listákat (ACL-eket) a bérlő szolgáltatási modellje alapján.
 
@@ -213,7 +194,7 @@ Tűzfalat hozhat létre, és meghatározhatja a megbízható ügyfelek IP-címta
 
 Az IP-tárolási adatokat olyan hálózati mechanizmussal lehet védeni a jogosulatlan felhasználóktól, amely az IP-tárolóra irányuló dedikált vagy dedikált bújtatási alagút kiosztására szolgál.
 
-### <a name="encryption"></a>Encryption
+### <a name="encryption"></a>Titkosítás
 Az Azure a következő titkosítási típusokat biztosítja az adatvédelem érdekében:
 -   Titkosítás átvitel közben
 
@@ -245,7 +226,7 @@ A Windows rendszerhez készült lemez-titkosítási megoldás a [Microsoft BitLo
 A megoldás a következő forgatókönyveket támogatja a IaaS virtuális gépekhez, amikor azok engedélyezve vannak Microsoft Azureban:
 -   Integráció a Azure Key Vault
 
--   Standard szintű virtuális gépek: A, D, DS, G, GS és így tovább, sorozat IaaS virtuális gépek
+-   Standard szintű virtuális gépek: A, D, DS, G, GS, és így tovább, sorozatú IaaS virtuális gépek
 
 -   Titkosítás engedélyezése Windows és Linux rendszerű IaaS virtuális gépeken
 
@@ -284,7 +265,7 @@ Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motoro
 
 [Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Az adatbázis egy SQL Server technológiákra épülő, felhőalapú, összefüggő, a szolgáltatásra épülő adatbázis-szolgáltatás. A Microsoft a felhőben üzemeltetett, magasan elérhető, skálázható, több-bérlős adatbázis-szolgáltatást nyújt.
 
-Az alkalmazás szempontjából SQL Azure a következő hierarchiát biztosítja: Az egyes szinteken az alábbi szintek egy-a-többhöz vannak elfoglalva.
+Az alkalmazás szempontjából SQL Azure a következő hierarchiát biztosítja: az egyes szinteken az egyes szintek egy-a-többhöz a következők lehetnek.
 
 ![SQL Azure alkalmazás modellje](./media/isolation-choices/azure-isolation-fig10.png)
 
@@ -337,7 +318,7 @@ Az Azure-beli üzembe helyezés több rétegű hálózati elkülönítéssel ren
 
 Az [alhálózat](../../virtual-network/virtual-networks-overview.md) egy további elkülönítési réteget biztosít a virtuális hálózaton az IP-címtartomány alapján. A virtuális hálózat IP-címei a virtuális hálózatok több alhálózatra oszthatók a szervezet és a biztonság érdekében. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. A [hálózati biztonsági csoport (NSG)](../../virtual-network/virtual-networks-overview.md) konfigurálható úgy is, hogy engedélyezze vagy megtagadja a virtuálisgép-példányok hálózati FORGALMÁT a NSG hozzáférés-vezérlési listájában (ACL) konfigurált szabályok alapján. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati elkülönítési beállítások a Windows Azure virtuális hálózatokban található gépekhez](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
@@ -350,4 +331,3 @@ A Microsoft Azure különböző felhőalapú számítástechnikai szolgáltatás
 - [Tároló elkülönítése](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure elkülöníti az ügyfél virtuális gépeken alapuló számításait a tárterületről. Ez a szétválasztás lehetővé teszi, hogy a számítások és a tárolók egymástól függetlenül méretezhetők legyenek, így könnyebben biztosítható több-bérlő és elkülönítés. Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az Azure számítási feladatokkal, kivéve a logikailag. Minden kérelem HTTP-n vagy HTTPS-en keresztül fut az ügyfél választása alapján.
-

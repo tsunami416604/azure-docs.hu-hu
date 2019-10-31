@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382924"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160751"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>A biztonsági adatok (előzetes verzió) beállítása telefonhívások használatához
 
@@ -41,7 +41,7 @@ A szervezet beállításaitól függően előfordulhat, hogy telefonos hívások
 
 ### <a name="to-set-up-phone-calls"></a>Telefonhívások beállítása
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
 
     ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
@@ -53,7 +53,7 @@ A szervezet beállításaitól függően előfordulhat, hogy telefonos hívások
 
     ![Hozzáadás a Method Box-hoz, a kiválasztott telefonnal](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. A **telefon** lapon írja be a mobileszköz telefonszámát, válassza a Hívjon meg lehetőséget, majd kattintson a **tovább**gombra.
+4. A **telefon** lapon írja be a mobileszköz telefonszámát, válassza a **hívjon**meg lehetőséget, majd kattintson a **tovább**gombra.
 
     ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
@@ -113,8 +113,8 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 
 - Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

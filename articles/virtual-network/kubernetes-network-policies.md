@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494950"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159695"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendjeinek áttekintése
 
@@ -51,7 +51,7 @@ Az alábbi JSON-példa egy új virtuális hálózatot és alhálózatot hoz lét
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },
@@ -89,7 +89,7 @@ Az alábbi JSON-példa egy új virtuális hálózatot és alhálózatot hoz lét
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Saját Kubernetes-fürt létrehozása az Azure-ban
 A megvalósítás használatával hálózati házirendeket biztosíthat a hüvelyek számára a saját maga által üzembe helyezett Kubernetes-fürtökön anélkül, hogy olyan eszközöket kellene használnia, mint például az ACS-motor. Ebben az esetben először telepítenie kell a CNI beépülő modult, és engedélyeznie kell azt a fürt összes virtuális gépén. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
-Miután telepítette a fürtöt, futtassa a `kubectl` következő parancsot az Azure hálózati házirend *daemonset elemet* a fürtre való letöltéséhez és alkalmazásához.
+Miután telepítette a fürtöt, futtassa a következő `kubectl` parancsot az Azure hálózati házirend *daemonset elemet* a fürtre való letöltéséhez és alkalmazásához.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml
@@ -99,7 +99,7 @@ A megoldás szintén nyílt forráskódú, és a kód elérhető az [Azure Conta
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További tudnivalók az [Azure Kubernetes szolgáltatásról](../aks/intro-kubernetes.md).
 -  A [tároló hálózatkezelésének](container-networking-overview.md)megismerése.
 - [Telepítse a beépülő](deploy-container-networking.md) modult a Kubernetes-fürtök vagy a Docker-tárolók számára.

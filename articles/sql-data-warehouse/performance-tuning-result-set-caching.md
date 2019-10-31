@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: c659db91b8ca1ad65b00124bed347b8046328d2e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045010"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163194"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-Finomhangolás az eredményhalmaz gyorsítótárazásával  
 Ha engedélyezve van az eredményhalmaz gyorsítótárazása, Azure SQL Data Warehouse automatikusan gyorsítótárazza a lekérdezés eredményeit a felhasználói adatbázisban ismétlődő használatra.  Ez lehetővé teszi, hogy a későbbi lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így az újraszámításra nincs szükség.   Az eredményhalmaz gyorsítótárazása javítja a lekérdezési teljesítményt, és csökkenti a számítási erőforrások használatát.  Emellett a gyorsítótárazott eredményeket használó lekérdezések nem használnak párhuzamossági tárolóhelyeket, így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor érhetik el a gyorsítótárazott eredményeket, ha ugyanazokat az adatelérési engedélyeket használják, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
@@ -37,7 +37,24 @@ Ha az eredményhalmaz gyorsítótárazása be van kapcsolva egy adatbázishoz, a
 - A sor szintű biztonsági vagy az oszlop szintű biztonsággal rendelkező táblákat használó lekérdezések
 - Az 64 kb nagyobb sorszámú adatvisszaadó lekérdezések
 
-A nagyméretű eredményhalmaz lekérdezései (például > 1 000 000 sor) az első futtatás során lassabb teljesítményt tapasztalhatnak az eredmények gyorsítótárának létrehozásakor.
+> [!IMPORTANT]
+> Az eredményhalmaz gyorsítótárának létrehozásához és az adatok a gyorsítótárból való lekéréséhez szükséges műveletek egy adatraktár-példány vezérlési csomópontján történnek. Ha a eredményhalmaz gyorsítótárazása be van kapcsolva, akkor a nagyméretű eredményhalmaz (például > 1 millió sor) lekérdezése nagy CPU-használatot okozhat a vezérlési csomóponton, és lelassíthatja a példányon a lekérdezésre adott teljes választ.  Ezeket a lekérdezéseket általában az adatfelderítési vagy ETL-műveletek során használják. A vezérlő csomópontjának kihangsúlyozása és a teljesítménnyel kapcsolatos probléma elkerülése érdekében a felhasználóknak ki kell kapcsolniuk az eredményhalmaz gyorsítótárazását az adatbázison az ilyen típusú lekérdezések futtatása előtt.  
+
+Futtassa ezt a lekérdezést az eredményhalmaz gyorsítótárazási műveletei által a lekérdezéshez megadott időtartamra:
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+Az alábbi példa egy, az eredményhalmaz gyorsítótárazásával letiltott lekérdezés kimenetét jeleníti meg.
+
+![Lekérdezés – Steps-with-RSC – letiltva](media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+Az alábbi példa egy, az eredményhalmaz gyorsítótárazásával végrehajtott lekérdezés kimenetét jeleníti meg.
+
+![Query-Steps-with-RSC-enabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>A gyorsítótárazott eredmények használatakor
 

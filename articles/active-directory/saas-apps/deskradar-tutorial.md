@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Deskradar |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Deskradar között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Deskradar-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Deskradar között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 5ff3e014-b79f-4a6c-bb0b-38462bea5d10
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,188 +16,188 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95451bff6074c0beb220bf3c6edb5570a5258b1a
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: dd5e3d6f8763af8c14d189321c6129876f48ab85
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310295"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158331"
 ---
-# <a name="tutorial-integrate-deskradar-with-azure-active-directory"></a>Oktatóanyag: Deskradar integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-deskradar-with-azure-active-directory"></a>Oktatóanyag: a Deskradar és a Azure Active Directory integrálása
 
-Ebben az oktatóanyagban elsajátíthatja a Deskradar integrálása az Azure Active Directory (Azure AD) lesz. Deskradar integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Deskradar a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Deskradar-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá Deskradar Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Deskradar az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A Deskradar-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Deskradar az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* Deskradar egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
+* Deskradar egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Deskradar **SP és IDP** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A Deskradar **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
 
-## <a name="adding-deskradar-from-the-gallery"></a>Deskradar hozzáadása a katalógusból
+## <a name="adding-deskradar-from-the-gallery"></a>Deskradar hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a Deskradar konfigurálásához hozzá kell Deskradar a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Deskradar Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Deskradar a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **Deskradar** kifejezést a keresőmezőbe.
-1. Válassza ki **Deskradar** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Deskradar** kifejezést a keresőmezőbe.
+1. Válassza ki a **Deskradar** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Deskradar **B.Simon**. Az SSO működjön kell Deskradar az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a Deskradar a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Deskradar-ben.
 
-Az Azure AD SSO Deskradar tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a Deskradar konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Deskradar egyszeri bejelentkezést](#configure-deskradar-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Deskradar tesztfelhasználót](#create-deskradar-test-user)**  – egy megfelelője a Britta Simon Deskradar, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[DESKRADAR SSO konfigurálása](#configure-deskradar-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre Deskradar-teszt felhasználót](#create-deskradar-test-user)** – hogy a Deskradar Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Deskradar** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/) **Deskradar** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://YOURDOMAIN.deskradar.cloud`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://YOURDOMAIN.deskradar.cloud`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/consume`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/consume`
 
-1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/login`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/login`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Cserélje le **TARTOMANYNEV** a Deskradar példány tartománnyal. Kapcsolattartó [Deskradar ügyfél-támogatási csapatának](mailto:support@deskradar.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Cserélje le a **SajátTartomány** -t a Deskradar-példány tartományára. Az értékek lekéréséhez forduljon a Deskradar ügyfélszolgálati [csapatához](mailto:support@deskradar.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Deskradar alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+1. A Deskradar alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-1. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------- |
-    | FirstName | user.givenname |
-    | LastName | user.surname |
-    | E-mail | user.userprincipalname |
+    | firstName | User. givenName |
+    | lastName | felhasználó. vezetéknév |
+    | E-mail cím | User. userPrincipalName |
     | | |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson az **OK** gombra.
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+   ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. Az a **Deskradar beállítása** területén másolja a megfelelő URL-címe szerint.
+1. A **Deskradar beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-deskradar-sso"></a>Deskradar egyszeri bejelentkezés konfigurálása
+### <a name="configure-deskradar-sso"></a>Deskradar SSO konfigurálása
 
-1. Automatizálhatja a Deskradar konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
+1. A Deskradar belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. A felvett bővítmény a böngészőre, kattintson a **telepítő Deskradar** fog irányítja át a Deskradar alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni Deskradar. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3-7 lépések automatizálásához.
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés Deskradar** gombra a Deskradar alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a Deskradar való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
 
-    ![Konfiguráció beállítása](common/setup-sso.png)
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
-1. Ha azt szeretné, manuálisan állíthatja be az Deskradar, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati Deskradar webhelyét, és hajtsa végre az alábbi lépéseket:
+1. Ha manuálisan szeretné beállítani a Deskradar, nyisson meg egy új böngészőablakot, és jelentkezzen be a Deskradar vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. Nyissa meg **csapat** panelen kattintson az ikonra az oldalsávon.
+1. Nyissa meg a **csapat** panelt az oldalsáv ikonjára kattintva.
 
-1. Váltson **hitelesítési** fülre.
+1. Váltson a **hitelesítés** lapra.
 
-1. Az a **SAML 2.0** fülre, hajtsa végre az alábbi lépéseket:
+1. Az **SAML 2,0** lapon hajtsa végre a következő lépéseket:
 
-    ![Deskradar konfiguráció](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![Deskradar-konfiguráció](./media/deskradar-tutorial/14-paste-urls.jpg)
 
-    a. Engedélyezése **SAML** hitelesítési módszert.
+    a. **SAML** -alapú hitelesítési módszer engedélyezése.
 
-    b. Az a **SAML egyszeri bejelentkezési URL-cím** szövegmezőbe írja be a **bejelentkezési URL-cím** érték, amely az Azure Portalról másolt.
+    b. Az **SAML SSO URL** szövegmezőbe írja be a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
 
-    c. Az a **identitásszolgáltató kibocsátója** szövegmezőbe írja be a **az Azure AD-azonosító** érték, amely az Azure Portalról másolt.
+    c. Az **Identity Provider kiállító** szövegmezőben adja meg az **Azure ad-azonosító** értékét, amelyet a Azure Portal másolt.
 
-1. Nyissa meg a letöltött **tanúsítvány (Base64)** -fájlt egy szövegszerkesztőben, és másolja és illessze be a tartalom **nyilvános tanúsítvány** Deskradar mezőbe.
+1. Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt egy szövegszerkesztőben, és másolja ki és illessze be a tartalmát a Deskradar **nyilvános tanúsítvány** mezőjébe.
 
-    ![Deskradar konfiguráció](./media/deskradar-tutorial/15-paste-certificate.jpg)
+    ![Deskradar-konfiguráció](./media/deskradar-tutorial/15-paste-certificate.jpg)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban B.Simon által biztosított hozzáférés Deskradar Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Deskradar.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **Deskradar**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Deskradar**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-deskradar-test-user"></a>Deskradar tesztfelhasználó létrehozása
+### <a name="create-deskradar-test-user"></a>Deskradar-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Deskradar hoz létre. Együttműködve [Deskradar ügyfél-támogatási csapatának](mailto:support@deskradar.com) a felhasználók hozzáadása az Deskradar platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Deskradar-ben. Együttműködik a [Deskradar ügyfélszolgálati csapatával](mailto:support@deskradar.com) a felhasználók Deskradar-platformban való hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-A Deskradar csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Deskradar, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Deskradar csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Deskradar, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

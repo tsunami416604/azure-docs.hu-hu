@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS) |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Symantec a webes biztonsági szolgáltatás (VSS) között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Symantec Web Security szolgáltatással (WSS) | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Symantec Web Security szolgáltatás (WSS) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d6e4d893-1f14-4522-ac20-0c73b18c72a5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,183 +16,183 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ce68547ca13d2395fcd447990c42c48c04eb5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d496015440deb80a0159ed0ec234ae60c2c64a66
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089386"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159944"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Az Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS)
+# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Azure Active Directory integráció a Symantec Web Security szolgáltatással (WSS)
 
-Ebben az oktatóanyagban, megtudhatja, hogyan integrálható a Symantec a webes biztonsági szolgáltatás (VSS) fiók az Azure Active Directory (Azure AD-) fiókkal, hogy a WSS hitelesítheti a végfelhasználó az SAML-hitelesítés használata az Azure AD-ben üzembe helyezett és kényszerítése a felhasználói vagy csoport-szintű szabályzat előírásainak.
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Symantec Web Security szolgáltatás (WSS) fiókját a Azure Active Directory (Azure AD) fiókkal, hogy a WSS hitelesítse az Azure AD-ben kiépített végfelhasználót az SAML-hitelesítéssel, és kényszerítse a felhasználót vagy Csoport szintjének házirend-szabályai
 
-A Symantec a webes biztonsági szolgáltatás (VSS) integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+A Symantec Web Security szolgáltatás (WSS) és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-- Kezelheti a végfelhasználók és a csoportok az Azure AD portálon WSS fiókját használják.
+- Kezelheti az Azure AD-portálon a WSS-fiók által használt összes végfelhasználót és csoportot.
 
-- Lehetővé teszi a végfelhasználók számára, hogy az Azure AD hitelesítő adataikkal WSS hitelesítik magukat.
+- Lehetővé teszi a végfelhasználók számára, hogy saját Azure AD-beli hitelesítő adataikat használva hitelesítsék magukat a WSS-ben.
 
-- Annak érdekében, a felhasználó engedélyezése, és csoportosíthatja a WSS-fiókban megadott szintű szabályzat előírásainak.
+- A WSS-fiókban definiált felhasználói és csoportszint házirend-szabályok betartatásának engedélyezése.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Symantec webes biztonsági szolgáltatás (VSS), a következőkre van szükség:
+Az Azure AD-integráció a Symantec Web Security szolgáltatással (WSS) való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* A Symantec a webes biztonsági szolgáltatás (VSS) egy bejelentkezés engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Symantec Web Security szolgáltatás (WSS) egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Symantec a webes biztonsági szolgáltatás (VSS) támogatja a **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A Symantec Web Security szolgáltatás (WSS) támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>A Symantec a webes biztonsági szolgáltatás (VSS) hozzáadása a katalógusból
+## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>Symantec Web Security szolgáltatás (WSS) hozzáadása a katalógusból
 
-Az Azure AD-be a Symantec webes biztonsági szolgáltatás (VSS) integráció konfigurálásához, hozzá kell a Symantec a webes biztonsági szolgáltatás (VSS) a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Symantec Web Security szolgáltatás (WSS) Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Symantec Web Security szolgáltatást (WSS) a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Symantec a webes biztonsági szolgáltatás (VSS) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A Symantec Web Security szolgáltatás (WSS) katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Symantec webes biztonsági szolgáltatás (VSS)** , jelölje be **Symantec webes biztonsági szolgáltatás (VSS)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+4. A keresőmezőbe írja be a **Symantec Web Security szolgáltatás (WSS)** kifejezést, válassza a **Symantec Web Security szolgáltatás (WSS)** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Symantec webes biztonsági szolgáltatás (VSS) a találatok listájában](common/search-new-app.png)
+     ![Symantec Web Security szolgáltatás (WSS) az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Symantec webes biztonsági szolgáltatás (WSS) nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a Symantec webhelyén biztonsági szolgáltatás (WSS) közötti kapcsolat kapcsolatot kell hozható létre.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Symantec Web Security szolgáltatással (WSS) a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Symantec Web Security szolgáltatásban (WSS) kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés Symantec webes biztonsági szolgáltatás (VSS) tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés a Symantec Web Security szolgáltatással (WSS) való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **A Symantec a webes biztonsági szolgáltatás (VSS) egyszeri bejelentkezés konfigurálása** – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[A Symantec a webes biztonsági szolgáltatás (VSS) tesztfelhasználó létrehozása](#create-symantec-web-security-service-wss-test-user)**  – egy megfelelője a Britta Simon kell a Symantec webes biztonsági szolgáltatás (WSS), amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. A **Symantec Web Security szolgáltatás (WSS) egyszeri bejelentkezésének konfigurálása** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. A **[Symantec Web Security szolgáltatás (WSS) tesztelési felhasználójának létrehozása](#create-symantec-web-security-service-wss-test-user)** – hogy a Britta Simon a Symantec Web Security szolgáltatásban (WSS) legyen, amely a felhasználó Azure ad-képviseletéhez van társítva.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés beállítása a Symantec webes biztonsági szolgáltatás (VSS), hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés a Symantec Web Security szolgáltatással (WSS) való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Symantec webes biztonsági szolgáltatás (VSS)** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/)a **Symantec webes biztonsági szolgáltatás (WSS)** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![A Symantec a webes biztonsági szolgáltatás (VSS) tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![A Symantec Web Security szolgáltatás (WSS) tartománya és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. Az **azonosító** szövegmezőbe írja be a következő URL-címet: `https://saml.threatpulse.net:8443/saml/saml_realm`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    b. A **Válasz URL-címe** szövegmezőbe írja be a következő URL-címet: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
-    > Ügyfél [Symantec webes biztonsági szolgáltatás (VSS) ügyfél-támogatási csapatának](https://www.symantec.com/contact-us) f a tartozó értékeket. a **azonosító** és **válasz URL-cím** valamilyen okból nem működnek... Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Kapcsolatfelvétel a [Symantec Web Security szolgáltatás (WSS) ügyfél-támogatási csapatával](https://www.symantec.com/contact-us) f az **azonosító** és a **Válasz URL-címének** értékei nem működnek valamilyen okból. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>Symantec-Web Security szolgáltatás (VSS) egyszeri bejelentkezés konfigurálása
+### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>A Symantec Web Security szolgáltatás (WSS) egyszeri bejelentkezésének konfigurálása
 
-Egyszeri bejelentkezés beállítása a Symantec a webes biztonsági szolgáltatás (VSS) oldalon, tekintse meg a WSS online dokumentációt. A letöltött **összevonási metaadatainak XML** a WSS-portálon importálni kell. Forduljon a [Symantec webes biztonsági szolgáltatás (VSS) támogatási csoportjának](https://www.symantec.com/contact-us) kaphat segítséget a konfigurációval a WSS-portálon.
+Ha az egyszeri bejelentkezést a Symantec Web Security szolgáltatás (WSS) oldalán szeretné konfigurálni, tekintse meg a WSS online dokumentációját. A letöltött **összevonási metaadatok XML-fájlját** importálni kell a WSS-portálra. Ha segítségre van szüksége a WSS-portálon való konfiguráláshoz, forduljon a [Symantec Web Security szolgáltatás (WSS) támogatási csapatához](https://www.symantec.com/contact-us) .
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés hozzáférést biztosít a Symantec webes biztonsági szolgáltatás (VSS) használja.
+Ebben a szakaszban lehetővé teszi, hogy Simon Britta az Azure egyszeri bejelentkezés használatára a Symantec Web Security szolgáltatás (WSS) hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Symantec webes biztonsági szolgáltatás (VSS)** .
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd kattintson a **Symantec Web Security szolgáltatás (WSS)** elemre.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **Symantec webes biztonsági szolgáltatás (VSS)** .
+2. Az alkalmazások listában írja be és válassza a **Symantec Web Security szolgáltatás (WSS)** elemet.
 
-    ![A Symantec a webes biztonsági szolgáltatás (VSS) hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A Symantec Web Security szolgáltatás (WSS) hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-symantec-web-security-service-wss-test-user"></a>A Symantec a webes biztonsági szolgáltatás (VSS) tesztfelhasználó létrehozása
+### <a name="create-symantec-web-security-service-wss-test-user"></a>Symantec Web Security szolgáltatás (WSS) tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon a Symantec webhelyén biztonsági szolgáltatás (WSS) nevű felhasználó létrehozásához. A megfelelő teljes felhasználónevet manuálisan létrehozott a WSS-portálon, vagy várja meg, néhány perc (~ 15 perc) után szinkronizálni kell a WSS-portálon az Azure AD-ben üzembe helyezett felhasználók/csoportok. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. A végfelhasználói gép, webhelyek, tallózással használandó nyilvános IP-címét is szükség lesz a Symantec a webes biztonsági szolgáltatás (VSS) portálon.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Symantec Web Security szolgáltatásban (WSS). A megfelelő végfelhasználói Felhasználónév manuálisan hozható létre a WSS-portálon, vagy megvárhatja, hogy az Azure AD-ben kiépített felhasználók/csoportok néhány perc múlva (~ 15 perc) szinkronizálva legyenek a WSS Portalon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. A végfelhasználói számítógép nyilvános IP-címe, amelyet a webhelyek tallózásához kell használni, a Symantec Web Security szolgáltatás (WSS) portálon is üzembe kell helyezni.
 
 > [!NOTE]
-> Kattintson a [Itt](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) a gépet a nyilvános IP-cím.
+> Kattintson [ide](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) a gép nyilvános IP-címe beszerzéséhez.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni fogja az egyszeri bejelentkezés funkció most, hogy konfigurálta a WSS fiókkal az Azure AD a SAML-hitelesítés.
+Ebben a szakaszban tesztelheti az egyszeri bejelentkezés funkcióját most, hogy konfigurálta a WSS-fiókját az Azure AD-t az SAML-hitelesítéshez.
 
-Miután konfigurálta a proxy-forgalom WSS, a böngészőben nyissa meg a webböngészőjét, és tallózással keresse meg a helyet próbál majd átirányítjuk az Azure bejelentkezési oldala. Adja meg a felhasználó hitelesítő adatait, a tesztelési célból, amelyet az Azure ad (azaz BrittaSimon) és a társított jelszót. A hitelesítést követően lesz a választott webhelyre navigálhat. Érdemes olyan szabályt hoz létre szabályzat BrittaSimon megakadályozza a böngészés egy adott helyre, majd lapnak kell megjelennie a WSS letiltása, tallózással keresse meg a helyet BrittaSimon felhasználóként megkísérlésekor a WSS oldalon.
+Miután konfigurálta a webböngészőt a WSS-alapú forgalomra, amikor megnyitja a webböngészőt, és megpróbál megkeresni egy webhelyet, a rendszer átirányítja az Azure bejelentkezési oldalára. Adja meg az Azure AD-ben (azaz BrittaSimon) és a társított jelszóban kiépített tesztelési végfelhasználó hitelesítő adatait. A hitelesítés után megkeresheti a kiválasztott webhelyet. Ha olyan házirend-szabályt hoz létre a WSS oldalon, amely letiltja a BrittaSimon egy adott helyhez való böngészést, akkor a WSS-blokk lapot kell látnia, amikor a webhelyet felhasználói BrittaSimon próbálja meg megkeresni.
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

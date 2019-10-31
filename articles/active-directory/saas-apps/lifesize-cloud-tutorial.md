@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció Lifesize felhővel |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Lifesize felhő között.
+title: 'Oktatóanyag: Azure Active Directory integráció a életnagyságú-felhővel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a életnagyságú-felhő között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,227 +16,227 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f751eb9dfb8ef65bea80993ddbd3a682b1d47111
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e886a1fa3f590ac94dbf088520e6770690ee21ac
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098054"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159573"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció Lifesize felhővel
+# <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Oktatóanyag: Azure Active Directory integráció a életnagyságú-felhővel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Lifesize Felhőbeli integrálása az Azure Active Directory (Azure AD).
-Lifesize Felhőbeli integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a életnagyságú-felhőt Azure Active Directory (Azure AD-val).
+A életnagyságú Cloud és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Az Azure ad-ben Lifesize felhőbe való hozzáféréssel rendelkező szabályozhatja.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett Lifesize felhőbe (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A életnagyságú-felhőhöz hozzáférő Azure AD-ben is szabályozható.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a életnagyságú felhőbe (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Lifesize felhőalapú Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció életnagyságú-felhővel való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Lifesize felhőalapú egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Életnagyságú-alapú felhőalapú egyszeri bejelentkezéses előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Lifesize felhőalapú támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+* A életnagyságú-felhő támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-* Lifesize felhőalapú támogatja **automatikus** felhasználók átadása
+* A életnagyságú Cloud támogatja a felhasználók **automatikus** üzembe helyezését
 
-## <a name="adding-lifesize-cloud-from-the-gallery"></a>Lifesize felhő hozzáadása a katalógusból
+## <a name="adding-lifesize-cloud-from-the-gallery"></a>Életnagyságú-felhő hozzáadása a gyűjteményből
 
-Lifesize Felhőbeli integrálása az Azure AD beállítása, hozzá kell Lifesize felhőalapú a galériából a felügyelt SaaS-alkalmazások listájára.
+A életnagyságú Cloud Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a életnagyságú-felhőt a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Lifesize felhő hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A életnagyságú-felhőnek a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Lifesize felhőalapú**, jelölje be **Lifesize felhőalapú** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **életnagyságú Cloud**kifejezést, válassza a **életnagyságú Cloud** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában Lifesize felhő](common/search-new-app.png)
+     ![Életnagyságú felhő az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálni és Lifesize felhővel az Azure AD egyszeri bejelentkezés tesztelése alapján nevű tesztfelhasználó **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Lifesize felhőben hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a életnagyságú-felhővel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a életnagyságú-felhőben lévő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés Lifesize felhővel tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés életnagyságú-felhővel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Felhőalapú Lifesize egyszeri bejelentkezés konfigurálása](#configure-lifesize-cloud-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Lifesize felhőalapú tesztfelhasználót](#create-lifesize-cloud-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása Lifesize felhőben.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Életnagyságú Felhőbeli egyszeri bejelentkezés konfigurálása](#configure-lifesize-cloud-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre egy életnagyságú Cloud test User](#create-lifesize-cloud-test-user)** -t, hogy a életnagyságú-felhőben található, a felhasználó Azure ad-beli Britta kapcsolt,
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Lifesize felhő, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés a életnagyságú-felhővel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Lifesize felhőalapú** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/)a **életnagyságú Cloud** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Lifesize felhőalapú tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier-relay.png)
+    ![Életnagyságú felhőalapú tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-relay.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.lifesizecloud.com/ls/?acs`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.lifesizecloud.com/<companyname>`
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.lifesizecloud.com/<companyname>`
 
-    c. Kattintson a **további URL-címet beállítani**.
+    c. Kattintson a **további URL-címek beállítása**elemre.
 
-    d. Az a **továbbítási állapot** szövegmezőbe írja be a következő minta használatával URL-cím: `https://webapp.lifesizecloud.com/?ent=<identifier>`
+    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-azonosító és továbbítási állapot ezeket az értékeket. Kapcsolattartó [Lifesize felhőalapú ügyfél-támogatási csapatának](https://www.lifesize.com/en/support) bejelentkezési URL-CÍMÉT, és azonosító értéket, és beszerezheti a továbbítási állapot értékét az oktatóanyag későbbi részében kifejtett egyszeri bejelentkezés konfigurálása. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és továbbítási állapottal. Vegye fel a kapcsolatot a [életnagyságú felhőalapú](https://www.lifesize.com/en/support) ügyfélszolgálatával a bejelentkezési URL-cím és az azonosító értékek beszerzéséhez, és a továbbítási állapot értékének beolvasása az oktatóanyag későbbi részében ismertetett SSO-konfigurációból. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. Az a **Lifesize felhő beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **életnagyságú-felhő beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Bejelentkezési URL-cím
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-lifesize-cloud-single-sign-on"></a>Lifesize felhőalapú egyszeri bejelentkezés konfigurálása
+### <a name="configure-lifesize-cloud-single-sign-on"></a>Életnagyságú Felhőbeli egyszeri bejelentkezés konfigurálása
 
-1. Egyszeri bejelentkezés az alkalmazáshoz, jelentkezzen be a rendszergazdai jogosultságokat Lifesize felhőalkalmazásba konfigurált beolvasása.
+1. Ha be szeretné állítani az egyszeri bejelentkezést az alkalmazáshoz, jelentkezzen be a életnagyságú Cloud alkalmazásba rendszergazdai jogosultságokkal.
 
-2. A jobb felső sarokban kattintson a nevére, és kattintson a a **speciális beállítások**.
+2. A jobb felső sarokban kattintson a nevére, majd az **előre megadott beállítások**elemre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
-3. A most kattintson a speciális beállításokban az **egyszeri bejelentkezési konfiguráció** hivatkozásra. Megnyílik a példány SSO konfigurálási lapjához.
+3. Az előzetes beállítások lehetőségnél kattintson az **egyszeri bejelentkezés konfigurációs** hivatkozására. Ekkor megnyílik a példány SSO konfigurációs lapja.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
-4. Most konfigurálja a következő értékeket a SSO-konfigurációs felhasználói felületen.
+4. Most konfigurálja a következő értékeket az SSO konfigurációs felhasználói felületén.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
-    a. A **identitásszolgáltató kibocsátója** szövegmezőjébe illessze be az értéket a **Azure Ad-azonosító** Azure Portalról másolt.
+    a. Az **Identity Provider kiállító** szövegmezőben illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    b.  A **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
+    b.  A **bejelentkezési URL** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
-    c. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure-portálról letöltött, a tartalmát a vágólapra másolja és illessze be azt a **X.509-tanúsítvány** szövegmezőbe.
+    c. Nyissa meg az alap-64 kódolású tanúsítványt a Jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
   
-    d. Adja meg az értéket az SAML attribútumleképezések Utónév szövegmező `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    d. Az utónév szövegmezőhöz tartozó SAML attribútum-hozzárendelések mezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    e. Az attribútum a SAML-leképezés az a **Vezetéknév** szövegmezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    e. Az SAML attribútum a **vezetéknévhez** való leképezése mezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    f. Az attribútum a SAML-leképezés az a **E-mail** szövegmezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    f. Az **e-mailek** szövegmezőhöz tartozó SAML-attribútumhoz adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-5. A kattintson a konfiguráció ellenőrzéséhez a **teszt** gombra.
+5. A konfiguráció ellenőrzéséhez kattintson a **teszt** gombra.
 
     >[!NOTE]
-    >A sikeres teszteléséhez szüksége a konfigurációs varázsló befejezéséhez az Azure ad-ben, és hozzáférést is biztosít a felhasználók vagy csoportok, akiknek a tesztet hajthat végre.
+    >A sikeres teszteléshez el kell végeznie a konfigurációs varázslót az Azure AD-ben, és hozzáférést kell biztosítania azokhoz a felhasználókhoz vagy csoportokhoz, akik elvégezhetik a tesztet.
 
-6. Az egyszeri bejelentkezés engedélyezése ehhez a a **SSO engedélyezése** gombra.
+6. Engedélyezze az egyszeri bejelentkezést az egyszeri **bejelentkezés engedélyezése** gomb ellenőrzésével.
 
-7. Ezután a **frissítés** gombot, amellyel az összes a beállítások lesznek mentve. Ezt a paramétert értéket hoz létre. Másolása paramétert értékét, ami akkor jön létre, a szövegmezőbe, illessze be a **továbbítási állapot** szövegmező alatt **Lifesize felhőalapú tartomány és URL-címek** szakaszban.
+7. Most kattintson a **frissítés** gombra, hogy minden beállítás mentve legyen. Ezzel létrehozza a RelayState értéket. Másolja a szövegmezőbe létrehozott RelayState értéket, illessze be a **Relay State** szövegmezőbe a **életnagyságú Cloud domain és URLs** szakaszban.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával Lifesize felhőbe Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a életnagyságú-felhőhöz.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Lifesize felhőalapú**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **életnagyságú-felhő**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Lifesize felhőalapú**.
+2. Az alkalmazások listában válassza a **életnagyságú-felhő**elemet.
 
-    ![Az alkalmazások listáját a Lifesize felhőalapú hivatkozás](common/all-applications.png)
+    ![Az életnagyságú Felhőbeli hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-lifesize-cloud-test-user"></a>Tesztfelhasználó Lifesize felhő létrehozása
+### <a name="create-lifesize-cloud-test-user"></a>Életnagyságú Cloud test-felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Lifesize felhőbeli felhasználó hoz létre. Lifesize felhő támogatja a felhasználók automatikus átadása. Az Azure ad a sikeres hitelesítés után a felhasználó automatikusan kiépítheti az alkalmazásban.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a életnagyságú-felhőben. A életnagyságú-felhő támogatja a felhasználók automatikus üzembe helyezését. Az Azure AD-beli sikeres hitelesítés után a rendszer automatikusan kiépíti a felhasználót az alkalmazásba.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Lifesize felhőalapú csempére kattint, Lifesize felhőalkalmazás bejelentkezési lapjának szerezheti be. Itt meg kell adnia a felhasználónevét, és ezt követően átirányítja az alkalmazás kezdőlapjára mutató.
+Ha a hozzáférési panelen a életnagyságú Cloud (felhő) csempére kattint, akkor a életnagyságú Cloud Application bejelentkezési lapját kell beolvasnia. Itt meg kell adnia a felhasználónevét, majd ezután átirányítjuk az alkalmazást a kezdőlapra.
 
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

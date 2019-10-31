@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ebcfa9da8fc8760fa4c13cec1a8921c4ecef5691
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101946"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162527"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 
@@ -31,7 +31,7 @@ Az [Azure Premium SSD](../disks-types.md) -k a tárterület következő generác
 > [!IMPORTANT]
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
-Ez a cikk a SQL Server rendszert futtató virtuális gépek Premium Storage használatára való áttelepítésének tervezését és útmutatását ismerteti. Ez magában foglalja az Azure-infrastruktúrát (Hálózatkezelés, tárolás) és a vendég Windowsos virtuális gép lépéseit. A függelékben szereplő [](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) példa átfogó teljes körű áttelepítést mutat be, amellyel a nagyobb méretű virtuális gépeket áthelyezheti a továbbfejlesztett helyi SSD-tároló kihasználása érdekében a PowerShell használatával.
+Ez a cikk a SQL Server rendszert futtató virtuális gépek Premium Storage használatára való áttelepítésének tervezését és útmutatását ismerteti. Ez magában foglalja az Azure-infrastruktúrát (Hálózatkezelés, tárolás) és a vendég Windowsos virtuális gép lépéseit. A [függelékben](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) szereplő példa átfogó teljes körű áttelepítést mutat be, amellyel a nagyobb méretű virtuális gépeket áthelyezheti a továbbfejlesztett helyi SSD-tároló kihasználása érdekében a PowerShell használatával.
 
 Fontos megérteni az Azure-Premium Storage az IAAS-alapú virtuális gépekkel való SQL Serverának teljes körű folyamatát. Az érintett műveletek közé tartoznak az alábbiak:
 
@@ -43,7 +43,7 @@ Fontos megérteni az Azure-Premium Storage az IAAS-alapú virtuális gépekkel v
 
 Az Azure Virtual Machines SQL Serverával kapcsolatos további háttérinformációk: [SQL Server az azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 
-**Szerző** Daniel Sol **technikai felülvizsgálók:** Luis Carlos Vargas hering, Sanjay, Juergen Thomas, Gonzalo Ruiz.
+**Szerző:** Daniel Sol **technikai felülvizsgálók:** Luis Carlos Vargas hering, Sanjay, Juergen Thomas, Gonzalo Ruiz.
 
 ## <a name="prerequisites-for-premium-storage"></a>Az Premium Storage előfeltételei
 
@@ -68,7 +68,7 @@ A DS * virtuális gépek esetében konfigurálnia kell a virtuális gépeket üz
 
 ![RegionalVNET][1]
 
-A Microsoft támogatási jegyét a regionális VNET való Migrálás céljából teheti fel. A Microsoft ezután megváltoztatja a változást. A regionális virtuális hálózatok való áttelepítés befejezéséhez módosítsa a AffinityGroup tulajdonságot a hálózati konfigurációban. Először exportálja a hálózati konfigurációt a PowerShellben, majd cserélje le a **AffinityGroup** tulajdonságot a **VirtualNetworkSite** elemre egy **Location** tulajdonsággal. Itt `Location = XXXX` adhatja `XXXX` meg, hogy hol található az Azure-régió. Ezután importálja az új konfigurációt.
+A Microsoft támogatási jegyét a regionális VNET való Migrálás céljából teheti fel. A Microsoft ezután megváltoztatja a változást. A regionális virtuális hálózatok való áttelepítés befejezéséhez módosítsa a AffinityGroup tulajdonságot a hálózati konfigurációban. Először exportálja a hálózati konfigurációt a PowerShellben, majd cserélje le a **AffinityGroup** tulajdonságot a **VirtualNetworkSite** elemre egy **Location** tulajdonsággal. Itt adhatja meg, hogy `Location = XXXX` hol `XXXX` egy Azure-régió. Ezután importálja az új konfigurációt.
 
 Például a következő VNET-konfigurációt figyelembe véve:
 
@@ -114,7 +114,7 @@ A virtuális merevlemezek csatolása után a gyorsítótár beállítása nem m�
 
 ### <a name="windows-storage-spaces"></a>Windows-tárolóhelyek
 
-A [Windows tárolóhelyeket](https://technet.microsoft.com/library/hh831739.aspx) a korábbi szabványos tárolók használatával is használhatja, így egy olyan virtuális gépet telepíthet át, amely már használja a tárolóhelyeket. A függelékben [](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) szereplő példa (9. lépés és továbbítás) azt mutatja be, hogy a PowerShell-kód több csatlakoztatott VHD-vel rendelkező virtuális gép kinyerésére és importálására használható.
+A [Windows tárolóhelyeket](https://technet.microsoft.com/library/hh831739.aspx) a korábbi szabványos tárolók használatával is használhatja, így egy olyan virtuális gépet telepíthet át, amely már használja a tárolóhelyeket. A [függelékben](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) szereplő példa (9. lépés és továbbítás) azt mutatja be, hogy a PowerShell-kód több csatlakoztatott VHD-vel rendelkező virtuális gép kinyerésére és importálására használható.
 
 A Storage-készleteket standard Azure Storage-fiókkal használták az átviteli sebesség növelése és a késés csökkentése érdekében. Előfordulhat, hogy az új központi telepítések esetében a Premium Storage a tárolási készletek teszteléséhez szükséges értéket, de további bonyolultságot biztosít a tárterület beállításával.
 
@@ -199,7 +199,7 @@ $newxiostorageaccountname = "danspremsams"
 New-AzureStorageAccount -StorageAccountName $newxiostorageaccountname -Location $location -Type "Premium_LRS"  
 ```
 
-#### <a name="step-2-create-a-new-cloud-service"></a>2\. lépés: Új felhőalapú szolgáltatás létrehozása
+#### <a name="step-2-create-a-new-cloud-service"></a>2\. lépés: új felhőalapú szolgáltatás létrehozása
 
 ```powershell
 $destcloudsvc = "danNewSvcAms"
@@ -212,11 +212,11 @@ New-AzureService $destcloudsvc -Location $location
 #check exisitng reserved VIP
 Get-AzureReservedIP
 
-$reservedVIPName = “sqlcloudVIP”
+$reservedVIPName = "sqlcloudVIP"
 New-AzureReservedIP –ReservedIPName $reservedVIPName –Label $reservedVIPName –Location $location
 ```
 
-#### <a name="step-4-create-a-vm-container"></a>4\. lépés: Virtuálisgép-tároló létrehozása
+#### <a name="step-4-create-a-vm-container"></a>4\. lépés: virtuálisgép-tároló létrehozása
 
 ```powershell
 #Generate storage keys for later
@@ -230,7 +230,7 @@ $containerName = 'vhds'
 New-AzureStorageContainer -Name $containerName -Context $xioContext
 ```
 
-#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>5\. lépés: Operációs rendszer virtuális merevlemezének elhelyezése standard vagy Premium Storage
+#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>5\. lépés: az operációs rendszer virtuális merevlemezének elhelyezése standard vagy Premium Storage
 
 ```powershell
 #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
@@ -244,7 +244,7 @@ $standardstorageaccountname = "danstdams"
 Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $standardstorageaccountname
 ```
 
-#### <a name="step-6-create-vm"></a>6\. lépés: Virtuális gép létrehozása
+#### <a name="step-6-create-vm"></a>6\. lépés: virtuális gép létrehozása
 
 ```powershell
 #Get list of available SQL Server Images from the Azure Image Gallery.
@@ -293,7 +293,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 Ez a forgatókönyv azt mutatja be, hogy hol találhatók a standard Storage-fiókban meglévő testreszabott lemezképek. Ahogy azt említettük, hogy az operációs rendszer virtuális merevlemezét Premium Storage kell helyeznie, át kell másolnia a standard Storage-fiókban található rendszerképet, és a használat előtt át kell vinnie egy Premium Storage. Ha a helyszíni rendszerképtel rendelkezik, ezt a módszert is használhatja, ha közvetlenül a Premium Storage fiókba másolja.
 
-#### <a name="step-1-create-storage-account"></a>1\. lépés: Storage-fiók létrehozása
+#### <a name="step-1-create-storage-account"></a>1\. lépés: a Storage-fiók létrehozása
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -314,7 +314,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-3-use-existing-image"></a>3\. lépés: Meglévő rendszerkép használata
+#### <a name="step-3-use-existing-image"></a>3\. lépés: meglévő rendszerkép használata
 
 Használhat meglévő rendszerképet is. Vagy [egy meglévő gépről](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)is készíthet képet. Vegye figyelembe, hogy a rendszerképnek nem kell DS * számítógépnek lennie. Miután elvégezte a rendszerképet, a következő lépések bemutatják, hogyan másolhatja át a Premium Storage-fiókba a **Start-AzureStorageBlobCopy PowerShell-** parancsmagot.
 
@@ -330,7 +330,7 @@ $origContext = New-AzureStorageContext  –StorageAccountName $origstorageaccoun
 $destContext = New-AzureStorageContext  –StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
 ```
 
-#### <a name="step-4-copy-blob-between-storage-accounts"></a>4\. lépés: BLOB másolása a Storage-fiókok között
+#### <a name="step-4-copy-blob-between-storage-accounts"></a>4\. lépés: blob másolása a Storage-fiókok között
 
 ```powershell
 #Get Image VHD
@@ -343,13 +343,13 @@ $blob = Start-AzureStorageBlobCopy -SrcBlob $myImageVHD -SrcContainer $container
 -Context $origContext -DestContext $destContext  
 ```
 
-#### <a name="step-5-regularly-check-copy-status"></a>5\. lépés: A másolási állapot rendszeres megtekintése:
+#### <a name="step-5-regularly-check-copy-status"></a>5\. lépés: a másolási állapot rendszeres ellenőrzését:
 
 ```powershell
 $blob | Get-AzureStorageBlobCopyState
 ```
 
-#### <a name="step-6-add-image-disk-to-azure-disk-repository-in-subscription"></a>6\. lépés: Rendszerkép-lemez hozzáadása az Azure Disk adattárhoz az előfizetésben
+#### <a name="step-6-add-image-disk-to-azure-disk-repository-in-subscription"></a>6\. lépés: lemezkép-lemez hozzáadása az Azure Disk adattárhoz az előfizetésben
 
 ```powershell
 $imageMediaLocation = $destContext.BlobEndPoint+"/"+$myImageVHD
@@ -361,7 +361,7 @@ Add-AzureVMImage -ImageName $newimageName -MediaLocation $imageMediaLocation
 > [!NOTE]
 > Előfordulhat, hogy annak ellenére, hogy az állapotjelentés sikeresnek minősülnek, továbbra is kaphat lemez címbérleti hibát. Ebben az esetben várjon körülbelül 10 percet.
 
-#### <a name="step-7--build-the-vm"></a>7\. lépés:  A virtuális gép létrehozása
+#### <a name="step-7--build-the-vm"></a>7\. lépés: a virtuális gép létrehozása
 
 Itt épít a virtuális gépet a lemezképből, és két Premium Storage virtuális merevlemezt csatol:
 
@@ -384,7 +384,7 @@ $availabilitySet = "cloudmigAVAMS3"
 
 #Machine User Credentials
 $userName = "myadmin"
-$pass = "theM)stC0mplexP@ssw0rd!”
+$pass = "theM)stC0mplexP@ssw0rd!"
 
 
 #Create VM Config
@@ -403,7 +403,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 > [!NOTE]
 > A meglévő központi telepítések esetében először tekintse meg a jelen cikk [Előfeltételek](#prerequisites-for-premium-storage) című szakaszát.
 
-Az Always On rendelkezésre állási csoportokkal és azokkal nem rendelkező SQL Server központi telepítések esetében különböző szempontokat érdemes figyelembe venni. Ha nem az Always on-t használja, és rendelkezik egy meglévő önálló SQL Server, akkor a Premium Storage új felhőalapú szolgáltatás-és Storage-fiókkal frissíthet. Vegye figyelembe a következő lehetőségeket:
+Az Always On rendelkezésre állási csoportokkal és azokkal nem rendelkező SQL Server központi telepítések esetében különböző szempontokat érdemes figyelembe venni. Ha nem az Always on-t használja, és rendelkezik egy meglévő önálló SQL Server, akkor a Premium Storage új felhőalapú szolgáltatás-és Storage-fiókkal frissíthet. vegye figyelembe a következő lehetőségeket:
 
 * **Hozzon létre egy új SQL Server VM**. Létrehozhat egy új SQL Server VM, amely egy Premium Storage-fiókot használ az új központi telepítésekben dokumentált módon. Ezután biztonsági mentést készíthet, és visszaállíthatja SQL Server konfigurációját és felhasználói adatbázisait. Az alkalmazást úgy kell frissíteni, hogy az új SQL Serverre hivatkozzon, ha a belső vagy külső elérésű. Ha párhuzamosan (SxS) SQL Server áttelepítést végez, az összes "db" objektumot át kell másolnia. Ide tartoznak az olyan objektumok, mint a bejelentkezések, a tanúsítványok és a csatolt kiszolgálók.
 * **Meglévő SQL Server VM migrálása**. Ehhez a SQL Server VM offline állapotba kell helyezni, majd át kell vinni egy új felhőalapú szolgáltatásba, amely magában foglalja az összes csatlakoztatott virtuális merevlemez másolását a Premium Storage-fiókba. Amikor a virtuális gép online állapotba kerül, az alkalmazás a kiszolgáló állomásneve a korábbi módon hivatkozik. Vegye figyelembe, hogy a meglévő lemez mérete befolyásolja a teljesítmény jellemzőit. Például egy 400 GB méretű lemez fel lesz kerekítve egy P20. Ha tudja, hogy nincs szüksége a lemez teljesítményére, akkor újra létrehozhatja a virtuális gépet DS-sorozatú virtuális gépként, és csatolhatja Premium Storage VHD-t a szükséges mérethez/teljesítményhez. Ezután leválaszthatja és újracsatolhatja az SQL DB-fájlokat.
@@ -438,7 +438,7 @@ Az egyes állásidőket engedélyező központi telepítések esetén két strat
 1. **További másodlagos replikák hozzáadása egy meglévő always on-fürthöz**
 2. **Migrálás új always on-fürtre**
 
-#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. További másodlagos replikák hozzáadása egy meglévő always on-fürthöz
+#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. további másodlagos replikák hozzáadása egy meglévő always on-fürthöz
 
 Az egyik stratégia az Always On rendelkezésre állási csoport további formátumú másodlagos zónák hozzáadása. Ezeket hozzá kell adnia egy új felhőalapú szolgáltatáshoz, és frissítenie kell a figyelőt az új Load Balancer IP-címmel.
 
@@ -460,7 +460,7 @@ Olyan időt kell kialakítania, ahol manuális feladatátvételi és káosz-tesz
 >
 
 1. Hozzon létre két új SQL-kiszolgálót az új Cloud Service-ben csatolt Premium Storageokkal.
-2. Másolja át a teljes biztonsági mentést, és állítsa vissza a helyreállítást.
+2. Másolja át a teljes biztonsági mentést **, és állítsa vissza a**helyreállítást.
 3. Másolás a felhasználói adatbázis függő objektumaira (például bejelentkezések stb.)
 4. Hozzon létre új belső Load Balancer-t (ILB), vagy használjon külső Load Balancer (ELB), majd állítsa be az elosztott terhelésű végpontokat mindkét új csomópontra.
 
@@ -473,13 +473,13 @@ Olyan időt kell kialakítania, ahol manuális feladatátvételi és káosz-tesz
 7. Új csomópontok hozzáadása a fürthöz és a teljes ellenőrzés futtatása.
 8. Az ellenőrzés sikerességét követően indítsa el az összes SQL Server szolgáltatást.
 9. A biztonsági mentési tranzakciós naplók és a felhasználói adatbázisok visszaállítása.
-10. Vegyen fel új csomópontokat az Always On rendelkezésre állásicsoportba, és helyezze a replikálást szinkronba.
+10. Vegyen fel új csomópontokat az Always On rendelkezésre állási csoportba, és helyezze a replikálást **szinkronba**.
 11. Adja hozzá az új Cloud Service ILB/ELB IP-cím erőforrását a PowerShell-en keresztül, hogy mindig a (z) [függelékben](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)található többhelyes példa alapján. A Windows-fürtszolgáltatásban állítsa be az **IP-cím** erőforrás **lehetséges tulajdonosait** az új csomópontok régi értékére. Tekintse meg a [függelék](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)"IP-cím erőforrásának hozzáadása ugyanazon alhálózaton" szakaszát.
 12. Feladatátvétel az egyik új csomópontra.
 13. Tegye elérhetővé az új csomópontok automatikus feladatátvételi partnereit és a feladatátvételi teszteket.
 14. Az eredeti csomópontok eltávolítása a rendelkezésre állási csoportból.
 
-##### <a name="advantages"></a>Előnyök
+##### <a name="advantages"></a>Előnyei
 
 * Új SQL Server-kiszolgálókat lehet tesztelni (SQL Server és az alkalmazás), mielőtt hozzáadja őket az Always On értékhez.
 * Módosíthatja a virtuális gép méretét, és testre szabhatja a tárterületet a pontos követelmények szerint. Azonban hasznos lenne az összes SQL-fájl elérési útjának megtartása.
@@ -503,7 +503,7 @@ Az alkalmazásoknak és a felhasználóknak az új always on-figyelőre való á
 * A tranzakciós naplók végső biztonsági mentésének visszaállítása az új kiszolgálókon lévő adatbázisokra.
 * Az ügyfélalkalmazások új always on Listener használatára való frissítéséhez szükséges idő.
 
-##### <a name="advantages"></a>Előnyök
+##### <a name="advantages"></a>Előnyei
 
 * Tesztelheti a tényleges éles környezetet, a SQL Server és az operációsrendszer-Build módosításait.
 * Lehetősége van testreszabni a tárolót és a virtuális gép méretének csökkentését. Ez a költséghatékonyság csökkenését eredményezheti.
@@ -520,10 +520,10 @@ Az alkalmazásoknak és a felhasználóknak az új always on-figyelőre való á
 
 Az Always On üzemelő példányok minimális állásidőre való áttelepítésének két stratégiája van:
 
-1. **Meglévő másodlagos érték kihasználása: Egy hely**
-2. **Meglévő másodlagos replika (ok) kihasználtsága: Több hely**
+1. **Meglévő másodlagos: egy hely kihasználása**
+2. **Meglévő másodlagos replikák (k) kihasználtsága: több hely**
 
-#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. Meglévő másodlagos érték kihasználása: Egy hely
+#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. meglévő másodlagos: egy-hely kihasználása
 
 Egy stratégia a minimális állásidőhez a meglévő Felhőbeli másodlagos, és az aktuális felhőalapú szolgáltatásból való eltávolítása. Ezután másolja a virtuális merevlemezeket az új Premium Storage-fiókba, és hozza létre a virtuális gépet az új felhőalapú szolgáltatásban. Ezután frissítse a figyelőt a fürtözésben és a feladatátvételben.
 
@@ -536,7 +536,7 @@ Egy stratégia a minimális állásidőhez a meglévő Felhőbeli másodlagos, �
 > [!NOTE]
 > Ha azt szeretné, hogy a hozzáadott csomópont mindig feladatátvételi partnerként vegyen részt, hozzá kell adnia egy Azure-végpontot, amely a terheléselosztási készletre mutató hivatkozást tartalmaz. Az **Add-AzureEndpoint** parancs futtatásakor a jelenlegi kapcsolatok nyitva maradnak, de a figyelőhöz való új kapcsolatok nem hozhatók létre, amíg a terheléselosztó nem frissült. A tesztelés során ez az utolsó 90-120seconds volt látható.
 
-##### <a name="advantages"></a>Előnyök
+##### <a name="advantages"></a>Előnyei
 
 * Az áttelepítés során felmerülő extra költségek nem merültek fel.
 * Egy az egyhez Migrálás.
@@ -570,7 +570,7 @@ Ez a dokumentum nem mutatja be a teljes végpontok közötti példát, azonban a
 * Ha a 5ii lépések használata esetén a SQL1 lehetőséget adja hozzá lehetséges tulajdonosként a hozzáadott IP-cím erőforráshoz
 * Feladatátvételi teszt.
 
-#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2. Meglévő másodlagos replika (ok) kihasználtsága: Többhelyes kapcsolat
+#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2. a meglévő másodlagos replikák (k) kihasználtsága: több hely
 
 Ha több Azure-adatközpontban (DC) is rendelkezik csomópontokkal, vagy ha hibrid környezete van, akkor az állásidő csökkentése érdekében a környezet minden always on konfigurációját használhatja.
 
@@ -583,7 +583,7 @@ Vegye figyelembe a következő példát a hibrid always on konfigurációra:
 
 ![MultiSite1][9]
 
-##### <a name="advantages"></a>Előnyök
+##### <a name="advantages"></a>Előnyei
 
 * A meglévő infrastruktúrát is használhatja.
 * Lehetősége van az Azure Storage előzetes frissítésére a DR Azure DC-ben.
@@ -617,25 +617,25 @@ Ez a forgatókönyv feltételezi, hogy a telepítésének dokumentálása és a 
 * Feladatátvételi teszt.
 * Állítsa vissza az AFP-t SQL1 és SQL2
 
-## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Függelék Többhelyes rendszer áttelepítése mindig a fürtön Premium Storage
+## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Függelék: több hely áttelepítése mindig a fürtön Premium Storage
 
 A cikk további részében részletesen ismertetjük a többhelyes always on fürtön a Premium Storage-ra való átalakítás részleteit. Emellett átalakítja a figyelőt külső terheléselosztó (ELB) és belső terheléselosztó (ILB) használatával.
 
 ### <a name="environment"></a>Környezet
 
-* Windows 2k12 / SQL 2k12
+* Windows 2k12/SQL 2k12
 * 1 DB-fájl az SP-ben
 * 2 x tárolási készlet/csomópont
 
 ![Appendix1][11]
 
-### <a name="vm"></a>VM:
+### <a name="vm"></a>VM
 
 Ebben a példában egy ELB ILB-re való áthelyezését mutatjuk be. A ELB a ILB előtt volt elérhető, ezért ez azt mutatja be, hogyan válthat a ILB az áttelepítés során.
 
 ![Appendix2][12]
 
-### <a name="pre-steps-connect-to-subscription"></a>Előzetes lépések: Kapcsolódás az előfizetéshez
+### <a name="pre-steps-connect-to-subscription"></a>Előzetes lépések: csatlakozás az előfizetéshez
 
 ```powershell
 Add-AzureAccount
@@ -644,7 +644,7 @@ Add-AzureAccount
 Get-AzureSubscription
 ```
 
-#### <a name="step-1-create-new-storage-account-and-cloud-service"></a>1\. lépés: Új Storage-fiók és felhőalapú szolgáltatás létrehozása
+#### <a name="step-1-create-new-storage-account-and-cloud-service"></a>1\. lépés: új Storage-fiók és felhőalapú szolgáltatás létrehozása
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2\. lépés: Az erőforrások \<megengedett hibáinak növelését opcionálisan >
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2\. lépés: növelje a megengedett hibákat az erőforrásokon \<opcionális >
 
 Az Always On rendelkezésre állási csoportba tartozó egyes erőforrásokon korlátok vannak attól függően, hogy hány hiba fordulhat elő egy adott időszakban, ahol a fürtszolgáltatás megkísérli újraindítani az erőforráscsoportot. Javasoljuk, hogy ezt az eljárást csak akkor növelje, ha a folyamat leállításával nem végez manuálisan feladatátvételt, és nem indítja el a feladatátvételt. ehhez a korláthoz közelebb kerülhet.
 
@@ -691,7 +691,7 @@ Az Always On rendelkezésre állási csoportba tartozó egyes erőforrásokon ko
 
 Módosítsa a maximális hibákat 6-ra.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3\. lépés: További IP-cím erőforrás a fürtözött \<csoport számára opcionális >
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3\. lépés: a fürthöz tartozó IP-cím erőforrás hozzáadása \<választható >
 
 Ha a fürthöz csak egy IP-cím tartozik, és ez a Felhőbeli alhálózathoz van igazítva, ügyeljen arra, hogy ha véletlenül offline állapotba helyezi az összes fürtcsomópontot a felhőben ezen a hálózaton, akkor a fürt IP-erőforrása és a fürt hálózati neve nem fog tudni online állapotba helyezni. Ebben az esetben megakadályozza a más fürterőforrás-erőforrások frissítését.
 
@@ -730,7 +730,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter RegisterAllProvidersIP  
 
 Egy későbbi áttelepítési lépésben frissítenie kell az Always On figyelőt egy olyan frissített IP-címmel, amely egy Load balancerre hivatkozik. Ez magában foglalja az IP-címek erőforrás-eltávolítását és hozzáadását. Az IP-frissítés után győződjön meg arról, hogy az új IP-cím frissült a DNS-zónában, és hogy az ügyfelek frissítik a helyi DNS-gyorsítótárat.
 
-Ha az ügyfelek egy másik hálózati szegmensben találhatók, és egy másik DNS-kiszolgálóra hivatkoznak, akkor meg kell fontolnia, hogy mi történik a DNS-zónaletöltés áttelepítése során az áttelepítés során, mivel az alkalmazás újrakapcsolódási idejének korlátozásához legalább az új IP-cím zónaletöltés-ideje van korlátozva. a figyelő címei. Ha itt van az időkorlátja, érdemes megbeszélni és tesztelni a növekményes zónaletöltést a Windows-csapatokkal, és a DNS-gazdagép rekordját is egy alacsonyabb élettartamra (TTL) kell helyeznie, így az ügyfelek frissülnek. További információ: növekményes [zónaletöltések](https://technet.microsoft.com/library/cc958973.aspx) és [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
+Ha az ügyfelek egy másik hálózati szegmensben találhatók, és egy másik DNS-kiszolgálóra hivatkoznak, akkor meg kell fontolnia, hogy mi történik a DNS-zónaletöltés áttelepítése során az áttelepítés során, mivel az alkalmazás újrakapcsolódási idejének korlátozásához legalább az új IP-cím zónaletöltés-ideje van korlátozva. a figyelő címei. Ha itt van az időkorlátja, érdemes megbeszélni és tesztelni a növekményes zónaletöltést a Windows-csapatokkal, és a DNS-gazdagép rekordját is egy alacsonyabb élettartamra (TTL) kell helyeznie, így az ügyfelek frissülnek. További információ: [növekményes zónaletöltések](https://technet.microsoft.com/library/cc958973.aspx) és [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
 
 Alapértelmezés szerint a figyelőhöz társított DNS-rekord ÉLETTARTAMa az Azure-ban mindig 1200 másodperc. Előfordulhat, hogy csökkenteni kívánja ezt, ha az áttelepítés során időkorlátot tapasztal, így biztosítva, hogy az ügyfelek a figyelőhöz tartozó frissített IP-címmel frissítik a DNS-t. A konfigurációt a VNN konfigurációjának kiírásával tekintheti meg és módosíthatja:
 
@@ -753,7 +753,7 @@ Ha az SQL-ügyfélalkalmazás támogatja a .NET 4,5 SQLClient, akkor a "MULTISUB
 
 További információ az előző beállításokról: [MultiSubnetFailover kulcsszó és társított szolgáltatások](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Lásd még: [SqlClient-támogatás a magas rendelkezésre álláshoz, vész-helyreállításhoz](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
 
-#### <a name="step-5-cluster-quorum-settings"></a>5\. lépés: Fürt Kvórumának beállításai
+#### <a name="step-5-cluster-quorum-settings"></a>5\. lépés: a fürt Kvórumának beállításai
 
 Mivel legalább egy SQL Server le lesz állítva egyszerre, módosítania kell a fürt Kvórumának beállítását, ha a tanúsító fájlmegosztás (FSW) használata két csomóponttal történik, a kvórumot úgy kell beállítania, hogy engedélyezze a csomópontok többségét, és a dinamikus szavazást használja , amely lehetővé teszi, hogy egyetlen csomópont álljon továbbra is.
 
@@ -763,7 +763,7 @@ Set-ClusterQuorum -NodeMajority
 
 A fürt Kvórumának kezelésével és konfigurálásával kapcsolatos további információkért lásd: [a kvórum konfigurálása és kezelése Windows Server 2012 feladatátvevő fürtben](https://technet.microsoft.com/library/jj612870.aspx).
 
-#### <a name="step-6-extract-existing-endpoints-and-acls"></a>6\. lépés: Meglévő végpontok és ACL-ek kinyerése
+#### <a name="step-6-extract-existing-endpoints-and-acls"></a>6\. lépés: meglévő végpontok és ACL-ek kibontása
 
 ```powershell
 #GET Endpoint info
@@ -774,13 +774,13 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConf
 
 Mentse ezt a szöveget egy fájlba.
 
-#### <a name="step-7-change-failover-partners-and-replication-modes"></a>7\. lépés: Feladatátvételi partnerek és replikációs módok módosítása
+#### <a name="step-7-change-failover-partners-and-replication-modes"></a>7\. lépés: a feladatátvételi partnerek és a replikációs módok módosítása
 
 Ha több mint két SQL-kiszolgálója van, akkor egy másik másodlagos TARTOMÁNYVEZÉRLŐn vagy a helyszínen a "szinkron" értékre kell váltania, és ezt egy automatikus feladatátvételi partnernek (AFP) kell megadnia, így Ön is megtartja, amíg a módosítások végrehajtása folyamatban van. Ezt megteheti a módosítás TSQL, de a SSMS:
 
 ![Appendix6][16]
 
-#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>8\. lépés: Másodlagos virtuális gép eltávolítása a Cloud Service-ből
+#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>8\. lépés: a másodlagos virtuális gép eltávolítása a Cloud Service-ből
 
 Először a Felhőbeli másodlagos csomópontok áttelepítését kell megtervezni. Ha ez a csomópont jelenleg elsődleges, akkor manuális feladatátvételt kell kezdeményezni.
 
@@ -799,7 +799,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | stop-AzureVM
 ##Building Existing Data Disk Configuration
 $file = "C:\Azure Storage Testing\mydiskconfig_$vmNameToMigrate.csv"
 $datadisks = @(Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | Get-AzureDataDisk )
-Add-Content $file “lun, vhdname, hostcaching, disklabel, diskName”
+Add-Content $file "lun, vhdname, hostcaching, disklabel, diskName"
 foreach ($disk in $datadisks)
 {
     $vhdname = $disk.MediaLink.AbsolutePath -creplace  "/vhds/"
@@ -833,7 +833,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name  $vmNameToMigrate
 Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 ```
 
-#### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>9\. lépés: Lemezes gyorsítótárazási beállítások módosítása a CSV-fájlban és mentés
+#### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>9\. lépés: a lemez gyorsítótárazási beállításainak módosítása CSV-fájlban és mentés
 
 Az adatkötetek esetében ezeket csak ReadOnly értékre kell beállítani.
 
@@ -841,7 +841,7 @@ A TLOG kötetek esetében ezeket a NONE értékre kell állítani.
 
 ![Appendix7][17]
 
-#### <a name="step-10-copy-vhds"></a>10. lépés: Virtuális merevlemezek másolása
+#### <a name="step-10-copy-vhds"></a>10. lépés: virtuális merevlemezek másolása
 
 ```powershell
 #Ensure you have created the container for these:
@@ -897,7 +897,7 @@ Egyéni Blobokkal kapcsolatos információk:
 Get-AzureStorageBlobCopyState -Blob "blobname.vhd" -Container $containerName -Context $xioContext
 ```
 
-#### <a name="step-11-register-os-disk"></a>11. lépés: OPERÁCIÓSRENDSZER-lemez regisztrálása
+#### <a name="step-11-register-os-disk"></a>11. lépés: operációsrendszer-lemez regisztrálása
 
 ```powershell
 #Change storage account
@@ -914,7 +914,7 @@ $xioDiskName = $osdiskforbuild + "xio"
 Add-AzureDisk -DiskName $xioDiskName -MediaLocation  "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$osvhd"  -Label "BootDisk" -OS "Windows"
 ```
 
-#### <a name="step-12-import-secondary-into-new-cloud-service"></a>12. lépés: Másodlagos importálása az új Cloud Service-be
+#### <a name="step-12-import-secondary-into-new-cloud-service"></a>12. lépés: másodlagos importálása az új Cloud Service-be
 
 Az alábbi kód a hozzáadott lehetőséget is használja, amely importálhatja a gépet, és használhatja a megőrzött VIP-t is.
 
@@ -952,7 +952,7 @@ ForEach ( $attachdatadisk in $datadiskimport)
 $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)
 ```
 
-#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>13. lépés: ILB létrehozása új Felhőbeli SVC-vel, elosztott terhelésű végpontok és ACL-ek hozzáadása
+#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>13. lépés: ILB létrehozása új Felhőbeli SVC-ben, elosztott terhelésű végpontok és ACL-ek hozzáadása
 
 ```powershell
 #Check for existing ILB
@@ -977,7 +977,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 ```
 
-#### <a name="step-14-update-always-on"></a>14. lépés: Frissítés always on
+#### <a name="step-14-update-always-on"></a>14. lépés: a frissítés mindig bekapcsolva
 
 ```powershell
 #Code to be executed on a Cluster Node
@@ -1006,15 +1006,15 @@ Most távolítsa el a régi felhőalapú szolgáltatás IP-címét.
 
 ![Appendix10][20]
 
-#### <a name="step-15-dns-update-check"></a>15. lépés: DNS-frissítés-ellenőrzési
+#### <a name="step-15-dns-update-check"></a>15. lépés: DNS-frissítések keresése
 
 Most ellenőriznie kell a DNS-kiszolgálókat a SQL Server-ügyfélszámítógépeken, és győződjön meg arról, hogy a fürtözés hozzá lett adva a további IP-címhez tartozó további gazdagép-rekordhoz. Ha ezek a DNS-kiszolgálók nem frissültek, vegye fontolóra a DNS-zónaletöltések kényszerítését, és gondoskodjon arról, hogy az ott lévő alhálózaton lévő ügyfelek képesek legyenek feloldani a mindig IP-címekre, így nem kell megvárnia az automatikus DNS-replikációt.
 
-#### <a name="step-16-reconfigure-always-on"></a>16. lépés: AlwaysOn újrakonfigurálás
+#### <a name="step-16-reconfigure-always-on"></a>16. lépés: AlwaysOn újrakonfigurálása
 
 Ekkor megvárja, amíg a másodlagos csomópontot áttelepítette, hogy teljesen újraszinkronizálja a helyszíni csomópontot, és váltson szinkron replikálási csomópontra, és állítsa be az AFP-t.  
 
-#### <a name="step-17-migrate-second-node"></a>17. lépés: Második csomópont migrálása
+#### <a name="step-17-migrate-second-node"></a>17. lépés: a második csomópont migrálása
 
 ```powershell
 $vmNameToMigrate="dansqlams1"
@@ -1032,7 +1032,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | stop-AzureVM
 #Building Existing Data Disk Configuration
 $file = "C:\Azure Storage Testing\mydiskconfig_$vmNameToMigrate.csv"
 $datadisks = @(Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | Get-AzureDataDisk )
-Add-Content $file “lun, vhdname, hostcaching, disklabel, diskName”
+Add-Content $file "lun, vhdname, hostcaching, disklabel, diskName"
 foreach ($disk in $datadisks)
 {
     $vhdname = $disk.MediaLink.AbsolutePath -creplace  "/vhds/"
@@ -1066,7 +1066,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name  $vmNameToMigrate
 Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 ```
 
-#### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>18. lépés: Lemezes gyorsítótárazási beállítások módosítása a CSV-fájlban és mentés
+#### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>18. lépés: a lemez gyorsítótárazási beállításainak módosítása CSV-fájlban és mentés
 
 Az adatkötetek esetében a gyorsítótár beállításait ReadOnly értékre kell beállítani.
 
@@ -1074,7 +1074,7 @@ A TLOG kötetek esetében a gyorsítótár beállításait a NONE értékre kell
 
 ![Appendix11][21]
 
-#### <a name="step-19-create-new-independent-storage-account-for-secondary-node"></a>19. lépés: Új, független Storage-fiók létrehozása a másodlagos csomóponthoz
+#### <a name="step-19-create-new-independent-storage-account-for-secondary-node"></a>19. lépés: új, független Storage-fiók létrehozása másodlagos csomóponthoz
 
 ```powershell
 $newxiostorageaccountnamenode2 = "danspremsams2"
@@ -1094,7 +1094,7 @@ Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount $
 Select-AzureSubscription -SubscriptionName $mysubscription -Current
 ```
 
-#### <a name="step-20-copy-vhds"></a>20. lépés: Virtuális merevlemezek másolása
+#### <a name="step-20-copy-vhds"></a>20. lépés: virtuális merevlemezek másolása
 
 ```powershell
 #Ensure you have created the container for these:
@@ -1155,7 +1155,7 @@ Egyéni Blobokkal kapcsolatos információk:
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 ```
 
-#### <a name="step-21-register-os-disk"></a>21. lépés: OPERÁCIÓSRENDSZER-lemez regisztrálása
+#### <a name="step-21-register-os-disk"></a>21. lépés: operációsrendszer-lemez regisztrálása
 
 ```powershell
 #change storage account to the new XIO storage account
@@ -1202,7 +1202,7 @@ ForEach ( $attachdatadisk in $datadiskimport)
 $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet -Verbose
 ```
 
-#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>22. lépés: Elosztott terhelésű végpontok és ACL-ek hozzáadása
+#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>22. lépés: elosztott terhelésű végpontok és ACL-ek hozzáadása
 
 ```powershell
 #Endpoints
@@ -1220,13 +1220,13 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 #https://msdn.microsoft.com/library/azure/dn495192.aspx
 ```
 
-#### <a name="step-23-test-failover"></a>23. lépés: Feladatátvételi teszt
+#### <a name="step-23-test-failover"></a>23. lépés: feladatátvételi teszt
 
 Várjon, amíg az áttelepített csomópont szinkronizálva van a helyszíni always on csomóponttal. Helyezze szinkron replikálási módba, és várjon, amíg a szinkronizálás be nem fejeződik. Ezután a helyszíni feladatátvételt az első áttelepített csomópontra, amely az AFP. A munka után módosítsa az utolsó áttelepített csomópontot az AFP-be.
 
 Tesztelje a feladatátvételt az összes csomópont között, és futtassa a Chaos-teszteket annak érdekében, hogy a feladatátvételek a várt módon működjenek, és egy időben a kastélyban.
 
-#### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>24. lépés: Fürt Kvórumának beállításai/DNS-TTL/feladatátvételi Pntrs/szinkronizálási beállítások
+#### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>24. lépés: a fürt Kvórumának beállítása/DNS TTL/feladatátvételi Pntrs/szinkronizálási beállítások
 
 ##### <a name="adding-ip-address-resource-on-same-subnet"></a>IP-cím erőforrásának hozzáadása ugyanazon az alhálózaton
 
@@ -1249,7 +1249,7 @@ Az IP-cím hozzáadásához tekintse meg a következő függeléket: 14. lépés
 ## <a name="additional-resources"></a>További források
 
 * [Azure-Premium Storage](../disks-types.md)
-* [Virtuális gépek](https://azure.microsoft.com/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [SQL Server az Azure-ban Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->

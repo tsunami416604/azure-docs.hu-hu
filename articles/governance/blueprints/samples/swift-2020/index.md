@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 73d89240f31f73ec980b19c75ff31e8702b8c112
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: a0d8a9b1a35ab58db566b395f5d108a0c27c51ec
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248812"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162969"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020-tervminta áttekintése
 
@@ -29,7 +29,7 @@ A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben
 > [SWIFT CSP-CSCF v2020-terv – Vezérlőelem-leképezés](./control-mapping.md)
 > [SWIFT CSP-CSCF v2020-terv – Üzembehelyezési lépések](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

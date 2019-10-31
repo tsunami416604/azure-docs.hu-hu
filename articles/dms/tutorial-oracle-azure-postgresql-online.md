@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Oracle online áttelepítésének elvégzéséhez használja a Azure Database Migration Servicet Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Oktatóanyag: az Oracle online áttelepítésének elvégzéséhez Azure Database Migration Service használata az Azure Database for PostgreSQLba | Microsoft Docs'
 description: Megtudhatja, hogyan hajthat végre egy online áttelepítést a helyszíni Oracle-ből vagy a virtuális gépekről, hogy Azure Database Migration Service használatával Azure Database for PostgreSQL.
 services: dms
 author: HJToland3
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 8944a5adbe1b9e129b4a95c64aaa7a75fb96ac82
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845581"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163432"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
 
@@ -84,7 +84,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Várja meg a megerősítést `'ORACLE instance shut down'`.
+      Várjon a megerősítő `'ORACLE instance shut down'`ra.
 
     * Indítsa el az új példányt, és csatlakoztassa (de ne nyissa meg) az adatbázist az alábbi parancsot futtató Bu-archiválás engedélyezéséhez vagy letiltásához:
 
@@ -114,12 +114,12 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       SELECT log_mode FROM v$database;
       ```
 
-      Meg kell kapnia egy `'ARCHIVELOG'`választ. Ha a válasz `'NOARCHIVELOG'`, akkor a követelmény nem teljesül.
+      `'ARCHIVELOG'`választ kap. Ha a válasz `'NOARCHIVELOG'`, akkor a követelmény nem teljesül.
 
   * A következő lehetőségek egyikének használatával engedélyezheti a kiegészítő naplózást a replikáláshoz.
 
     * **1. lehetőség**.
-      Módosítsa az adatbázis-szint kiegészítő naplózását úgy, hogy az az összes táblát lefedje a PK és az egyedi index használatával. A rendszer visszaküldi `'IMPLICIT'`az észlelési lekérdezést.
+      Módosítsa az adatbázis-szint kiegészítő naplózását úgy, hogy az az összes táblát lefedje a PK és az egyedi index használatával. Az észlelési lekérdezés `'IMPLICIT'`ad vissza.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
@@ -132,7 +132,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       ```
 
     * **2. lehetőség**.
-      Módosítsa az adatbázis szintjének kiegészítő naplózását az összes táblára, az észlelési lekérdezés pedig `'YES'`visszaadja.
+      Módosítsa az adatbázis szintjének kiegészítő naplózását az összes táblázatra, és az észlelési lekérdezés `'YES'`adja vissza.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
@@ -164,7 +164,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    Meg kell kapnia egy `'YES'`választ.
+    `'YES'`választ kap.
 
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Az Oracle Azure Database for PostgreSQL áttelepítésre vonatkozó erőfeszítésének felmérése
 
@@ -172,11 +172,11 @@ Javasoljuk, hogy a ora2pg használatával mérje fel az Oracle-ből a Azure Data
 
 A legtöbb ügyfelünk jelentős időt tölt az értékelési jelentés áttekintésével, és figyelembe veszi az automatikus és a manuális átalakítási erőfeszítést.
 
-A ora2pg konfigurálásához és futtatásához értékelési jelentés létrehozásához tekintse **meg az előtelepítést: Az** Oracle értékelésének szakasza [Azure Database for PostgreSQL szakácskönyvhez](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). [Itt](http://ora2pg.darold.net/report.html)a minta ora2pg-értékelő jelentés is elérhető.
+A ora2pg konfigurálásához és futtatásához értékelési jelentés létrehozásához tekintse meg az Oracle előzetes **áttelepítését: Assessment** című szakaszát, [hogy Azure Database for PostgreSQL a Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). [Itt](http://ora2pg.darold.net/report.html)a minta ora2pg-értékelő jelentés is elérhető.
 
 ## <a name="export-the-oracle-schema"></a>Az Oracle-séma exportálása
 
-Javasoljuk, hogy a ora2pg használatával alakítsa át az Oracle-sémát és más Oracle-objektumokat (típusokat, eljárásokat, függvényeket stb.) olyan sémára, amely kompatibilis a Azure Database for PostgreSQLokkal. a ora2pg számos irányelvet tartalmaz, amelyek segítségével előre definiálhatja bizonyos adattípusokat. Az direktívával például lecserélheti `DATA_TYPE` az összes számot (*, 0) a bigint és nem numerikus (38) értékre.
+Javasoljuk, hogy a ora2pg használatával alakítsa át az Oracle-sémát és más Oracle-objektumokat (típusokat, eljárásokat, függvényeket stb.) olyan sémára, amely kompatibilis a Azure Database for PostgreSQLokkal. a ora2pg számos irányelvet tartalmaz, amelyek segítségével előre definiálhatja bizonyos adattípusokat. A `DATA_TYPE` direktívával például lecserélheti az összes számot (*, 0) a bigint és nem numerikus (38) értékre.
 
 A ora2pg futtatásával exportálhatja az egyes adatbázis-objektumokat. SQL-fájlokba. Ezután áttekintheti az. SQL-fájlokat, mielőtt az psql használatával Azure Database for PostgreSQL importálni őket, vagy végrehajthatja a következőt:. SQL-szkript a PgAdmin-ben.
 
@@ -190,7 +190,7 @@ Példa:
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-A ora2pg konfigurálásához és futtatásához tekintse meg az **áttelepítést: Az Oracle sémája és** adatszakasza [Azure Database for PostgreSQL Cookbook-hoz](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf).
+A ora2pg konfigurálásához és futtatásához tekintse meg az Oracle **áttelepítési: séma és információ** szakaszát, [hogy Azure Database for PostgreSQL a szakácskönyvet](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf).
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Séma beállítása Azure Database for PostgreSQL
 
@@ -219,7 +219,7 @@ Ha a PostgreSQL-sémát olyan eszközökkel hozza létre, mint például a ora2p
     ![Portál-előfizetések megtekintése](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Ha különböző névvel rendelkező táblákhoz szeretné leképezni a forrástábla nevét, e [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) -mail-címet, és a folyamat automatizálására szolgáló parancsfájlt is megadhat.
+> Ha a forrástábla neveit különböző nevekkel, e-mail- [dmsfeedback@microsoft.comokkal](mailto:dmsfeedbac@microsoft.com) szeretné leképezni, és megadhatunk egy parancsfájlt a folyamat automatizálására.
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>Ha a PostgreSQL-tábla sémája nem létezik
 
@@ -247,7 +247,7 @@ Első lépések:
     | HR | targetHR.HR | "HR". " ORSZÁGOK "." COUNTRY_ID" |
     | HR | targetHR.Hr | \* Nem sikerült leképezni a vegyes eseteket |
 
-    \* Ha vegyes eseti sémát és táblanév nevet szeretne létrehozni a cél [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)PostgreSQL-ben, forduljon a következőhöz:. Megadhatunk egy parancsfájlt a vegyes Case Table séma beállításához a cél PostgreSQL-adatbázisban.
+    \* Ha vegyes eseti sémát és táblanév nevet szeretne létrehozni a cél PostgreSQL-ben, forduljon a [dmsfeedback@microsoft.comhoz ](mailto:dmsfeedback@microsoft.com). Megadhatunk egy parancsfájlt a vegyes Case Table séma beállításához a cél PostgreSQL-adatbázisban.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
@@ -267,7 +267,7 @@ Első lépések:
 
 1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
-    ![Azure Marketplace](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
+    ![Azure Piactér](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 
@@ -320,7 +320,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCI-illesztőprogram feltöltése
 
-1. Válassza a **Mentés**lehetőséget, majd a **OCI-illesztőprogram telepítése** képernyőn jelentkezzen be az Oracle-fiókjába, és töltse le a **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bájt) (SHA1 ellenőrzőösszeg: 865082268) innen [.](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)
+1. Válassza a **Mentés**lehetőséget, majd a **OCI-illesztőprogram telepítése** képernyőn jelentkezzen be az Oracle-fiókjába, és töltse le a **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bájt) (SHA1 ellenőrzőösszeg: 865082268) [illesztőprogramot innen ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
 2. Töltse le az illesztőprogramot egy megosztott mappába.
 
    Győződjön meg arról, hogy a mappa meg van osztva a minimális írásvédett hozzáféréssel megadott felhasználónévvel. Azure Database Migration Service hozzáfér a megosztáshoz, és beolvassa a OCI-illesztőprogramot az Azure-ba, ha megszemélyesíti a megadott felhasználónevet.
@@ -381,7 +381,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
  > [!NOTE]
  > Mivel a PostgreSQL alapértelmezés szerint a Schema. table. Column altípust használja, a jelen cikk korábbi részében a **Azure Database for PostgreSQL séma beállítása a sémában** című részében található parancsfájl használatával visszaállíthatja a nagybetűs esetről a kisbetűsre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * A Azure Database Migration Service kapcsolatos információkért tekintse meg a [Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview)című cikket.

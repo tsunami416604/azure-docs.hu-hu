@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Üzembe helyezése egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával'
-description: Ez az oktatóanyag azt ismerteti, hogyan építse ki és automatizálhatja Azure Database for MySQL-kiszolgálói konfigurációk mellett az Azure Resource Manager-sablon használatával.
+title: 'Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával'
+description: Ez az oktatóanyag azt ismerteti, hogyan lehet kiépíteni és automatizálni Azure Database for MySQL Server-telepítéseket Azure Resource Manager sablon használatával.
 author: savjani
 ms.author: pariks
 ms.service: mysql
@@ -8,23 +8,23 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e4bb7622fe51c0cab4fc45e945e5bb07b1d32f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925842"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163904"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Üzembe helyezése egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával
 
-A [, Azure Database for MySQL REST API-val](https://docs.microsoft.com/rest/api/mysql/) lehetővé teszi, hogy a fejlesztő és üzemeltető mérnököknek automatizálása és integrálása a kiépítés, konfigurációs és műveletek felügyelt MySQL-kiszolgálók és adatbázisok az Azure-ban.  Az API lehetővé teszi a létrehozási, enumerálás, felügyeleti és MySQL-kiszolgálók és adatbázisok törlése az Azure Database for MySQL-szolgáltatás.
+A [Azure Database for MySQL REST API](https://docs.microsoft.com/rest/api/mysql/) lehetővé teszi, hogy a DevOps-mérnökök automatizálják és integrálják a felügyelt MySQL-kiszolgálók és adatbázisok üzembe helyezését, konfigurálását és működését az Azure-ban.  Az API lehetővé teszi a MySQL-kiszolgálók és-adatbázisok létrehozását, számbavételét, kezelését és törlését a Azure Database for MySQL szolgáltatásban.
 
-Az Azure Resource Manager használhatja az alapul szolgáló REST API-t deklarálja és az Azure-erőforrások az infrastruktúra mint kód fogalma igazodó méretű központi telepítéséhez szükséges programot. A sablon az Azure-erőforrás nevét, SKU, hálózati, tűzfal-konfiguráció felparaméterezi és beállítások, lehetővé téve, hogy hozható létre egy időben, és több alkalommal használva.  Az Azure Resource Manager-sablonok egyszerűen hozható létre [az Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) vagy [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). A használatukkal az alkalmazások csomagolása, szabványügyi szervezet és üzembe helyezési automatizálást, amely integrálható a fejlesztési és üzemeltetési CI/CD-folyamat.  Például ha szeretne gyorsan üzembe helyezhet egy webalkalmazást az Azure Database for MySQL háttér, is végezhet a teljes körű üzembe helyezési ez [gyorsindítási sablon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) a GitHub-katalógusból.
+Azure Resource Manager kihasználja az alapul szolgáló REST APIt, hogy az üzembe helyezéshez szükséges Azure-erőforrásokat kinyilvánítsa és bemutasson, és az infrastruktúrát a kód koncepciójának megfelelően hangolja össze. A sablon felparaméterezi az Azure-erőforrás nevét, az SKU-t, a hálózatot, a tűzfal konfigurációját és a beállításokat, ami lehetővé teszi, hogy egyszerre legyen létrehozva, és többször is használható legyen.  Azure Resource Manager sablonok könnyen létrehozhatók [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) vagy [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI)használatával. Lehetővé teszik az alkalmazások csomagolását, a szabványosítást és az üzembe helyezés automatizálását, amely integrálható az DevOps CI/CD-folyamatba.  Ha például gyorsan szeretne üzembe helyezni egy webalkalmazást Azure Database for MySQL háttérrel, akkor a GitHub-galériából elvégezheti a végpontok közötti telepítést a gyors üzembe helyezési [sablon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) használatával.
 
-Ebben az oktatóanyagban használja az Azure Resource Manager-sablon és más segédprogramok megtudhatja, hogyan lehet:
+Ebben az oktatóanyagban Azure Resource Manager sablonnal és más segédprogramokkal megismerheti a következőket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával szolgáltatásvégpont
+> * Azure Database for MySQL kiszolgáló létrehozása a VNet szolgáltatás-végponttal Azure Resource Manager sablon használatával
 > * Adatbázis létrehozása a [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
@@ -32,9 +32,9 @@ Ebben az oktatóanyagban használja az Azure Resource Manager-sablon és más se
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával szolgáltatásvégpont
+## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Azure Database for MySQL kiszolgáló létrehozása a VNet szolgáltatás-végponttal Azure Resource Manager sablon használatával
 
-A JSON-sablon hivatkozás egy Azure Database for MySQL-kiszolgáló esetében, keresse fel [Microsoft.DBforMySQL kiszolgálók](/azure/templates/microsoft.dbformysql/servers) tárfióksablonok referenciáját. Alább a minta egy JSON-sablon, amely segítségével hozzon létre egy új kiszolgálót, Azure Database for MySQL-szolgáltatásvégpont futtatása van.
+A Azure Database for MySQL-kiszolgáló JSON-sablonjának hivatkozását a [Microsoft. DBforMySQL-kiszolgálók](/azure/templates/microsoft.dbformysql/servers) sablonjának hivatkozása alatt érheti el. Az alábbiakban látható a JSON-sablon, amely egy Azure Database for MySQL rendszert futtató új kiszolgáló létrehozásához használható VNet szolgáltatás-végponttal.
 ```json
 {
   "apiVersion": "2017-12-01",
@@ -75,37 +75,37 @@ A JSON-sablon hivatkozás egy Azure Database for MySQL-kiszolgáló esetében, k
   ]
 }
 ```
-Ezt a kérelmet az értékek, amelyek testre kell szabni a következők:
-+   `name` -Adja meg a MySQL-kiszolgáló (nélkül tartománynév) nevét.
-+   `location` -Adjon meg egy érvényes Azure adatközponti régió a MySQL-kiszolgálóhoz. Ha például westus2.
-+   `properties/version` -Adja meg a MySQL-kiszolgáló verzióját üzembe helyezéséhez. Ha például 5.6-os vagy 5.7.
-+   `properties/administratorLogin` -Adja meg a kiszolgálóhoz a MySQL rendszergazdai bejelentkezési nevét. A rendszergazdai bejelentkezési név nem lehet azure_superuser, a rendszergazdai, a rendszergazda, a legfelső szintű, a Vendég vagy a nyilvános.
-+   `properties/administratorLoginPassword` -Adja meg a fent megadott, a MySQL rendszergazdai felhasználó jelszavát.
-+   `properties/sslEnforcement` -Adjon meg engedélyezési/letiltási sslEnforcement engedélyezése vagy letiltása.
-+   `storageProfile/storageMB` -Adja meg a maximális kiépített tárhely méretére (MB) a kiszolgáló szükséges. Ha például 5120.
-+   `storageProfile/backupRetentionDays` -Adja meg a kívánt biztonsági másolat megőrzési időszak napban. Ha például a 7. 
-+   `storageProfile/geoRedundantBackup` -Adjon meg engedélyezési/letiltási Geo-DR-követelményeitől függően.
-+   `sku/tier` -Adja meg az üzembe helyezés alap-, GeneralPurpose vagy MemoryOptimized szint.
-+   `sku/capacity` -Adja meg a virtuális mag kapacitását. Lehetséges értékek a következők: 2, 4, 8, 16, 32 vagy 64.
-+   `sku/family` -Adja meg a Gen5, válassza ki a kiszolgáló központi telepítésének hardver generációja.
-+   `sku/name` -Adja meg a TierPrefix_family_capacity. Például B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [tarifacsomagok](./concepts-pricing-tiers.md) tudni, hogy az érvényes értékek régiónként és / csomag dokumentációja.
-+   `resources/properties/virtualNetworkSubnetId` -Adja meg az alhálózati azonosítóját az Azure virtuális hálózatban, ahol az Azure MySQL-kiszolgálót kell elhelyezni. 
-+   `tags(optional)` -Adja meg, nem kötelező a címkék olyan kulcs-érték párok, melyek szeretné használni a számlázási az erőforrások kategorizálása stb.
+Ebben a kérésben a testre szabható értékek a következők:
++   `name` – adja meg a MySQL-kiszolgáló nevét (tartománynév nélkül).
++   `location` – adja meg a MySQL-kiszolgáló érvényes Azure-beli adatközpont-régióját. Például: westus2.
++   `properties/version` – Itt adhatja meg a telepíteni kívánt MySQL-kiszolgáló verzióját. Például 5,6 vagy 5,7.
++   `properties/administratorLogin` – Itt adhatja meg a kiszolgáló MySQL-rendszergazdai bejelentkezését. A rendszergazdai bejelentkezési név nem lehet azure_superuser, admin, Administrator, root, Guest vagy Public.
++   `properties/administratorLoginPassword` – adja meg a fent megadott MySQL-rendszergazda felhasználó jelszavát.
++   `properties/sslEnforcement` – engedélyezett/letiltott érték megadása a sslEnforcement engedélyezéséhez vagy letiltásához.
++   `storageProfile/storageMB` – Itt adhatja meg a kiszolgáló megabájtban megadott maximális kiépített tárolási méretét. Például 5120.
++   `storageProfile/backupRetentionDays` – a biztonsági másolat megőrzési idejének megadására szolgáló idő (nap). Például: 7. 
++   `storageProfile/geoRedundantBackup` – a Geo-DR követelményektől függően engedélyezhető/letiltva adható meg.
++   `sku/tier` – alapszintű, GeneralPurpose vagy MemoryOptimized szint megadása az üzembe helyezéshez.
++   `sku/capacity` – megadja a virtuális mag kapacitását. A lehetséges értékek a következők: 2, 4, 8, 16, 32 vagy 64.
++   `sku/family` – adja meg a Gen5 a kiszolgáló telepítéséhez.
++   `sku/name` – TierPrefix_family_capacity meghatározása. Például: B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [díjszabási szintek](./concepts-pricing-tiers.md) dokumentációját, hogy megértse az érvényes értékeket régiónként és szintenként.
++   `resources/properties/virtualNetworkSubnetId` – megadhatja annak az alhálózatnak az Azure-azonosítóját a VNet, ahol az Azure MySQL-kiszolgálót el kell helyezni. 
++   `tags(optional)` – a választható címkék megadása olyan kulcs-érték párok, amelyeket a számlázási erőforrások kategorizálásához kíván használni.
 
-Hozhat létre az Azure Resource Manager-sablonnal automatizálhatja az Azure Database MySQL központi telepítésekhez a szervezet számára szeretne, ha a javaslat a minta kezdő lenne [Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) az Azure-ban A rövid útmutató GitHub katalógus első épülnek, és. 
+Ha olyan Azure Resource Manager sablont szeretne létrehozni, amely automatizálja Azure Database for MySQL üzemelő példányait a szervezet számára, akkor a javaslat az Azure rövid útmutató GitHub-katalógusában található minta [Azure Resource Manager sablonból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) indul el. Először is építsen rá. 
 
-Ha nem ismeri az Azure Resource Manager-sablonok, és próbálja ki szeretné, elkezdheti az alábbi lépéseket:
-+   Klónozás vagy letöltés a minta [Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) az Azure gyorsindítási galéria.  
-+   Módosítsa az azuredeploy.parameters.json frissíti a beállítások alapján paraméter értékét, és mentse a fájlt. 
-+   Az alábbi parancsokkal az Azure MySQL-kiszolgáló létrehozása az Azure CLI használatával
+Ha új Azure Resource Manager sablonokat, és szeretné kipróbálni, az alábbi lépéseket követve kezdheti el:
++   A minta [Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) klónozása vagy letöltése az Azure Gyorsindítás galériából.  
++   Módosítsa a azuredeploy. Parameters. JSON fájlt a paraméterek értékének a preferencia alapján történő frissítéséhez, és mentse a fájlt. 
++   Az Azure MySQL-kiszolgáló létrehozása az Azure CLI használatával az alábbi parancsokkal
 
-Előfordulhat, hogy az Azure Cloud Shellt a böngészőben, vagy az Azure CLI telepítése a saját számítógépén futtatásához használt a kódblokkok ebben az oktatóanyagban.
+Használhatja a Azure Cloud Shellt a böngészőben, vagy telepítheti az Azure CLI-t a saját számítógépére, és futtathatja a kód blokkokat ebben az oktatóanyagban.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 ```azurecli-interactive
 az login
-az group create -n ExampleResourceGroup  -l “West US2”
+az group create -n ExampleResourceGroup  -l "West US2"
 az group deployment create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
 ```
 
@@ -199,10 +199,10 @@ A sor az adatok lekérésekor megfelelően frissül.
 SELECT * FROM inventory;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
-> * Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával szolgáltatásvégpont
+> * Azure Database for MySQL kiszolgáló létrehozása a VNet szolgáltatás-végponttal Azure Resource Manager sablon használatával
 > * Adatbázis létrehozása a [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
 > * Mintaadatok betöltése
 > * Adatok lekérdezése

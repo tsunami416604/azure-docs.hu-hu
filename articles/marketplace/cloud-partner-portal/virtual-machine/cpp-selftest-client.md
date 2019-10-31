@@ -1,53 +1,53 @@
 ---
-title: Ügyfél teszteléséhez való használatát a virtuális gépek |} Az Azure Marketplace-en
-description: Hogyan teszteléséhez ügyfél létrehozása előre ellenőrzése a virtuálisgép-lemezkép az Azure Marketplace-en.
+title: Önteszt ügyfél a virtuális gép előzetes érvényesítéséhez | Azure piactér
+description: Önteszt ügyfél létrehozása az Azure Marketplace-hez készült virtuálisgép-rendszerkép előzetes érvényesítéséhez.
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 117249feea04381b34f8fc1d95f77c2c1a567dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938723"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163256"
 ---
-# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Hozzon létre egy teszteléséhez ügyfél való használatát egy Azure-beli virtuálisgép-lemezkép
+# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Önteszt ügyfél létrehozása Azure-beli virtuális gépek rendszerképének előzetes érvényesítéséhez
 
-Ez a cikk egy útmutató, amely egy ügyfél szolgáltatás létrehozására szolgáló használ fel, a teszteléséhez API-t használja. A helyi tesztelése API segítségével elővalidálási egy virtuális gépet (VM) annak érdekében, hogy megfelelnek-e a legújabb Azure Marketplace közzétételi követelményeknek. Az ügyfél szolgáltatás lehetővé teszi, hogy tesztelje egy virtuális Gépet, mielőtt elküldi az ajánlat a Microsoft általi hitelesítésre.
+Ez a cikk útmutatóként szolgál az önteszt API-t használó ügyfélszolgáltatás létrehozásához. Az önteszt API-val előre érvényesítheti a virtuális gépet (VM), így biztosítva, hogy az megfeleljen az Azure Marketplace legújabb közzétételi követelményeinek. Ez az ügyfélszolgáltatás lehetővé teszi a virtuális gépek tesztelését, mielőtt elküldi a Microsoft minősítési ajánlatát.
 
-## <a name="development-and-testing-overview"></a>Fejlesztési és tesztelési áttekintése
+## <a name="development-and-testing-overview"></a>Fejlesztés és tesztelés áttekintése
 
-A teszteléséhez folyamat részeként a helyi ügyfél, amely csatlakozik egy virtuális Gépet az Azure-előfizetés ellenőrzése az Azure Marketplace-en fogja létrehozni. A virtuális Géphez a Windows vagy Linux operációs rendszert futtathat.
+Az önteszt folyamat részeként létre fog hozni egy helyi ügyfelet, amely csatlakozik az Azure Marketplace-hez az Azure-előfizetésében futó virtuális gépek érvényesítéséhez. A virtuális gép a Windows vagy Linux operációs rendszert is futtathatja.
 
-A helyi ügyfél fut egy parancsfájl, amely hitelesíti a teszteléséhez API-val, kapcsolati adatokat küld és kap a vizsgálati eredmények.
+A helyi ügyfél egy olyan parancsfájlt futtat, amely az önteszt API-val hitelesít, a kapcsolati adatokat küld, és a teszt eredményeit fogadja.
 
-A magas szintű lépések teszteléséhez ügyfél létrehozásához a következők:
+Az önteszt ügyfelek létrehozásának magas szintű lépései a következők:
 
-1. Válassza ki az Azure Active Directory (AD) bérlő az alkalmazás.
-2. Az ügyfél alkalmazás regisztrálásához.
-3. Hozzon létre egy tokent, az ügyfél Azure AD-alkalmazás.
-4. Adja meg a jogkivonatot a teszteléséhez API-t.
+1. Válassza ki az alkalmazás Azure Active Directory (AD) bérlőjét.
+2. Az ügyfélalkalmazás regisztrálása.
+3. Hozzon létre egy tokent az ügyfél Azure AD-alkalmazáshoz.
+4. Adja át a tokent az önteszt API-nak.
 
-Miután létrehozta az ügyfél, tesztelheti a virtuális gép ellen.
+Az ügyfél létrehozása után tesztelheti a virtuális gépre.
 
-### <a name="self-test-client-authorization"></a>Ügyfél-hitelesítés teszteléséhez
+### <a name="self-test-client-authorization"></a>Ügyfél-hitelesítés önellenőrzése
 
-Az alábbi ábrán látható, az engedélyezés működése a szolgáltatások közötti hívások ügyfél-hitelesítő adatokkal (közös titkos kulcsot vagy tanúsítvány).
+Az alábbi ábra azt mutatja be, hogyan működik a hitelesítés a szolgáltatás és az ügyfél hitelesítő adatai (közös titok vagy tanúsítvány) használatával.
 
-![Ügyfél-hitelesítési folyamat](./media/stclient-dev-process.png)
+![Ügyfél-engedélyezési folyamat](./media/stclient-dev-process.png)
 
-## <a name="the-self-test-client-api"></a>A helyi tesztelése ügyfél API
+## <a name="the-self-test-client-api"></a>Az önellenőrzés ügyfél API-ját
 
-A teszteléséhez API tartalmaz egy végpontot, amely támogatja a POST-metódus.  Az alábbi struktúrával rendelkezik.
+Az önteszt API egyetlen végpontot tartalmaz, amely csak a POST metódust támogatja.  A következő szerkezettel rendelkezik.
 
 ```
 Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
-Request Header:  Content-Type: “application/json”
-Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
+Request Header:  Content-Type: "application/json"
+Authorization:   "Bearer xxxx-xxxx-xxxx-xxxxx"
 Request body:    The Request body parameters should use the following JSON format:
                  {
                    "DNSName":"XXXX.westus.cloudapp.azure.com",
@@ -59,35 +59,35 @@ Request body:    The Request body parameters should use the following JSON forma
                  }
 ```
 
-A következő táblázat ismerteti az API-mezők.
+Az alábbi táblázat az API-mezőket ismerteti.
 
 
 |      Mező         |    Leírás    |
 |  ---------------   |  ---------------  |
-|  Engedélyezés     |  A "Tulajdonosi xxxx-xxxx-xxxx-xxxxx" karakterláncot tartalmazza az Azure Active Directory (AD) ügyfél jogkivonatot, amely PowerShell-lel hozható létre.          |
-|  DNSName           |  DNS-név a virtuális gép tesztelése    |
-|  Felhasználó              |  A virtuális géppel aláíráshoz felhasználónév         |
-|  Jelszó          |  Jelentkezzen be a virtuális gép jelszava          |
-|  Operációs rendszer                |  A virtuális gép operációs rendszerének: vagy `Linux` vagy `Windows`          |
-|  PortNo            |  Nyissa meg a port számát a virtuális Géphez való csatlakozáshoz. A portszám általában van `22` Linux- és `5986` for Windows.          |
+|  Engedélyezés     |  A "Bearer xxxx-xxxx-xxxx-xxxxx" karakterlánc tartalmazza a Azure Active Directory (AD) ügyfél-jogkivonatot, amely a PowerShell használatával hozható létre.          |
+|  DNSName           |  A tesztelni kívánt virtuális gép DNS-neve    |
+|  Felhasználó              |  A virtuális gépre való bejelentkezéshez használt Felhasználónév         |
+|  Jelszó          |  A virtuális gépre való bejelentkezéshez használt jelszó          |
+|  Operációs rendszer                |  A virtuális gép operációs rendszere: vagy `Linux` vagy `Windows`          |
+|  PortNo            |  Nyissa meg a virtuális géphez való csatlakozáshoz szükséges portszámot. A portszám általában a Linux és a Windows `5986` `22`.          |
 |  |  |
 
-## <a name="consuming-the-api"></a>Az API-t használ
+## <a name="consuming-the-api"></a>Az API fogyasztása
 
-A PowerShell vagy a cURL használatával teszteléséhez API használhatja fel.
+Az önteszt API-t használhatja a PowerShell vagy a cURL használatával.
 
-### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Az API-t a Linux operációs rendszer használata a PowerShell használatával
+### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Az API használata a Linux operációs rendszeren a PowerShell használatával
 
-Az API meghívása a PowerShellben, kövesse az alábbi lépéseket:
+Az API PowerShellben való meghívásához kövesse az alábbi lépéseket:
 
-1. Használja a `Invoke-WebRequest` parancsot az API-t.
-2. A módszer a következő bejegyzés és tartalomtípus pedig JSON-t, ahogyan az az alábbi kód példa és a képernyő rögzítése.
-3. Az üzenettörzs-paraméterek JSON formátumban kell megadni.
+1. A `Invoke-WebRequest` parancs használatával hívja meg az API-t.
+2. A metódus a post és a Content típus JSON, ahogy az alábbi kódrészletben látható.
+3. A szövegtörzs paramétereit JSON formátumban kell megadni.
 
-Az alábbi példakód bemutatja a PowerShell az API meghívásához.
+Az alábbi kódrészlet egy PowerShell-hívást mutat be az API-nak.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -102,11 +102,11 @@ $Body = @{
 $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
-Az alábbi képernyőfelvételen látható az API hívásakor a PowerShellben.
+Az alábbi képernyőfelvételen egy példa látható az API PowerShellben való meghívására.
 
-![A PowerShell-lel API hívása a Linux operációs rendszer](./media/stclient-call-api-ps-linuxvm.png)
+![API meghívása Linux operációs rendszerhez készült PowerShell-lel](./media/stclient-call-api-ps-linuxvm.png)
 
-Az előző példát, beolvashatja a JSON és elemezni, hogy a következő adatokat:
+Az előző példa használatával lekérheti a JSON-t, és elemezheti a következő részletek beszerzéséhez:
 
 ```powershell
 $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
@@ -125,23 +125,23 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-Az alábbi képernyőfelvétel, amelyen `$res.Content`, a műveletről a vizsgálati eredmények JSON formátumban.
+A következő képernyőfelvétel, amely a `$res.Content`mutatja, a teszt eredményét JSON formátumban adja meg.
 
-![Linux PowerShell hívásából származó JSON-eredmények](./media/stclient-pslinux-rescontent-json.png)
+![JSON-eredmények a PowerShell-hívástól a Linuxra](./media/stclient-pslinux-rescontent-json.png)
 
-Az alábbi képernyőfelvétel-készítés JSON terhelésiteszt-eredményei egy online JSON-megjelenítő megtekinteni egy példát mutat be (például [kód Beautify](https://codebeautify.org/jsonviewer) vagy [JSON-megjelenítő](https://jsonformatter.org/json-viewer)).
+Az alábbi képernyőfelvételen egy példa látható a JSON-teszt eredményeire egy online JSON-megjelenítőben (például [Code szépít](https://codebeautify.org/jsonviewer) vagy [JSON Viewer](https://jsonformatter.org/json-viewer)).
 
-![Linux rendszerű virtuális gép PowerShell hívásából származó JSON-eredmények](./media/stclient-consume-api-pslinux-json.png)
+![JSON-eredmények a PowerShell-hívástól a linuxos virtuális géphez](./media/stclient-consume-api-pslinux-json.png)
 
-### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Felhasználása az API-t a Windows operációs rendszereken a PowerShell használatával
+### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Az API használata a Windows operációs rendszeren a PowerShell használatával
 
-Az API meghívása a PowerShellben, kövesse az alábbi lépéseket:
+Az API PowerShellben való meghívásához kövesse az alábbi lépéseket:
 
-1. Használja a `Invoke-WebRequest` parancsot az API-t.
-2. A módszer a következő bejegyzés és tartalomtípus pedig JSON-t, ahogyan az az alábbi kód példa és a képernyő rögzítése.
-3. Hozzon létre az üzenettörzs-paraméterek JSON formátumban.
+1. A `Invoke-WebRequest` parancs használatával hívja meg az API-t.
+2. A metódus a post és a Content típus JSON, ahogy az alábbi kódrészletben látható.
+3. Hozza létre a törzs paramétereit JSON formátumban.
 
-Az alábbi példakód bemutatja a PowerShell az API meghívásához.
+Az alábbi kódrészlet egy PowerShell-hívást mutat be az API-nak.
 
 ```powershell
 $accesstoken = “Get token for your Client AAD App”
@@ -160,11 +160,11 @@ $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "appl
 $Content = $res | ConvertFrom-Json
 ```
 
-Az alábbi képernyőfelvételen látható az API hívásakor a PowerShellben.
+Az alábbi képernyőfelvételen egy példa látható az API PowerShellben való meghívására.
 
-![A PowerShell-lel API hívása Windows virtuális gép számára](./media/stclient-call-api-ps-windowsvm.png)
+![API meghívása a PowerShell-lel Windows rendszerű virtuális géphez](./media/stclient-call-api-ps-windowsvm.png)
 
-Az előző példát, beolvashatja a JSON és elemezni, hogy a következő adatokat:
+Az előző példa használatával lekérheti a JSON-t, és elemezheti a következő részletek beszerzéséhez:
 
 ```powershell
 $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
@@ -183,131 +183,131 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-Az alábbi képernyőfelvétel, amelyen `$res.Content`, a műveletről a vizsgálati eredmények JSON formátumban.
+A következő képernyőfelvétel, amely a `$res.Content`mutatja, a teszt eredményét JSON formátumban adja meg.
 
-![Windows PowerShell JSON eredményeinek hívása](./media/stclient-pswindows-rescontent-json.png)
+![JSON-eredmények a Windows PowerShell-hívásból](./media/stclient-pswindows-rescontent-json.png)
 
-Az alábbi képernyőfelvétel-készítés képe egy online JSON-megjelenítő a teszt eredménye látható.
-(például [kód Beautify](https://codebeautify.org/jsonviewer), [JSON-megjelenítő](https://jsonformatter.org/json-viewer))
+Az alábbi képernyőfelvételen egy online JSON-megjelenítőben megtekintett teszt eredményei láthatók.
+(például: [Code szépít](https://codebeautify.org/jsonviewer), [JSON Viewer](https://jsonformatter.org/json-viewer))
 
-![Windows virtuális gép PowerShell hívásából származó JSON-eredmények](./media/stclient-consume-api-pswindows-json.png)
+![JSON-eredmények a PowerShell-hívásról a Windows rendszerű virtuális gépre](./media/stclient-consume-api-pswindows-json.png)
 
-### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Az API-t a Linux operációs rendszer által a cURL használatával
+### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Az API használata a Linux operációs rendszeren a cURL használatával
 
-A curl használatával az API meghívása, kövesse az alábbi lépéseket:
+Az API fürtön való meghívásához kövesse az alábbi lépéseket:
 
-1. A curl-parancs segítségével az API-t.
-2. A módszer a következő bejegyzés és tartalomtípus pedig JSON-t, az alábbi kódrészletben látható módon.
+1. Hívja meg az API-t a curl parancs használatával.
+2. A metódus a post és a Content típus JSON, ahogy az a következő kódrészletben látható.
 
 ```
 CURL POST -H "Content-Type:application/json"
--H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
+-H "Authorization: Bearer XXXXXX-Token-XXXXXXXX"
 https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 ```
 
-A következő képernyő egy példa az API-t a curl használatával mutatja.
+Az alábbi képernyőn egy példa látható a curl használatára az API meghívásához.
 
-![A curl-paranccsal API meghívása](./media/stclient-consume-api-curl.png)
+![API meghívása a curl paranccsal](./media/stclient-consume-api-curl.png)
 
-Az alábbi képernyőfelvételen látható a JSON a curl-hívás eredményei.
+Az alábbi képernyőfelvételen a curl-hívásból származó JSON-eredmények láthatók.
 
-![A curl-hívás eredményei JSON](./media/stclient-consume-api-curl-json.png)
+![JSON-eredmények a curl-hívásból](./media/stclient-consume-api-curl-json.png)
 
 
-## <a name="choose-the-azure-ad-tenant-for-the-app"></a>Válassza ki az alkalmazás Azure AD-bérlő
+## <a name="choose-the-azure-ad-tenant-for-the-app"></a>Válassza ki az alkalmazáshoz tartozó Azure AD-bérlőt
 
-Használatával a következő lépéseket az Azure AD-bérlőjében válassza ki kívánja az alkalmazás létrehozása.
+A következő lépésekkel kiválaszthatja azt az Azure AD-bérlőt, amelyben létre szeretné hozni az alkalmazást.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A felső menüsávon válassza ki a fiókját, és a Directory listája alatt válassza ki az Active Directory-bérlővel, ahol regisztrálja az alkalmazást szeretné. Vagy válassza ki a **címtár és előfizetés** ikonra kattintva megtekintheti a globális előfizetés-szűrőt. Az alábbi képernyőfelvétel-készítés Ez a szűrő egy példát mutat be.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. A felső menüsorban válassza ki a fiókját, és a címtár listáról válassza ki azt a Active Directory bérlőt, ahová regisztrálni kívánja az alkalmazást. Vagy válassza a **címtár + előfizetés** ikont a globális előfizetés-szűrő megjelenítéséhez. Az alábbi képernyőfelvételen egy példa látható erre a szűrőre.
 
-   ![Válassza ki az előfizetés-szűrő](./media/stclient-subscription-filter.png)
+   ![Előfizetés-szűrő kiválasztása](./media/stclient-subscription-filter.png)
 
-3. A bal oldali navigációs sávján válassza **minden szolgáltatás** majd **Azure Active Directory**.
+3. A bal oldali navigációs sávon válassza a **minden szolgáltatás** lehetőséget, majd válassza a **Azure Active Directory**lehetőséget.
 
-   A következő lépésekben szükség lehet a bérlő nevét (vagy a könyvtár neve), vagy a bérlő azonosítója (vagy a címtár-azonosító).
+   A következő lépésekben szükség lehet a bérlő nevére (vagy a könyvtár nevére) vagy a bérlői AZONOSÍTÓra (vagy a címtár-AZONOSÍTÓra).
 
-   **Bérlő információk lekéréséhez:**
+   **Bérlői információk beszerzése:**
 
-   A **Azure Active Directory áttekintése**, keressen a "Tulajdonságok", majd **tulajdonságok**. Az alábbi képernyőfelvétel-készítés példaként használva:
+   **Azure Active Directory áttekintés**lapon keressen rá a "tulajdonságok" kifejezésre, majd válassza a **Tulajdonságok**lehetőséget. A következő képernyőfelvétel használata példaként:
 
-   - **Név** – a bérlő nevét vagy a könyvtár neve
-   - **Címtár-azonosító** – a bérlői azonosító vagy a címtár-azonosító vagy használja a görgetősáv tulajdonságainak megkereséséhez.
+   - **Név** – a bérlő neve vagy a könyvtár neve
+   - **Címtár-azonosító** – a bérlő azonosítója vagy könyvtára, vagy használja a görgetősávot a tulajdonságok megkereséséhez.
 
-   ![Az Azure Active Directory-tulajdonságok lap](./media/stclient-aad-properties.png)
+   ![Azure Active Directory Tulajdonságok lap](./media/stclient-aad-properties.png)
 
-## <a name="register-the-client-app"></a>Az ügyféloldali alkalmazás regisztrálása
+## <a name="register-the-client-app"></a>Az ügyfélalkalmazás regisztrálása
 
-A következő lépések segítségével regisztrálja az ügyfélalkalmazás.
+Az ügyfélalkalmazás regisztrálásához kövesse az alábbi lépéseket.
 
-1. A bal oldali navigációs sávján válassza **minden szolgáltatás** majd **alkalmazásregisztrációk**.
-2. A **alkalmazásregisztrációk**válassza **+ új alkalmazásregisztráció**.
-3. A **létrehozás**, adja meg a következő mezőket a szükséges adatokat:
+1. A bal oldali navigációs sávon válassza a **minden szolgáltatás** lehetőséget, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
+2. A **Alkalmazásregisztrációk**területen válassza az **+ új alkalmazás regisztrálása**lehetőséget.
+3. A **Létrehozás**területen adja meg a következő mezőkhöz szükséges adatokat:
 
-   - **Név** – adjon egy rövid nevet az alkalmazáshoz. Például "SelfTestClient."
-   - **Az alkalmazástípus** : Adja meg, **Web App és az API**
-   - **Bejelentkezés URL-cím** – típusa "https:\//isvapp.azurewebsites.net/selftest-vm"
+   - **Név** – adjon meg egy felhasználóbarát nevet az alkalmazásnak. Például: "SelfTestClient".
+   - **Alkalmazás típusa** – a **Web App/API** kiválasztása
+   - **Bejelentkezési URL-cím** – típus: "https:\//isvapp.azurewebsites.net/selftest-VM"
 
 4. Kattintson a **Létrehozás** gombra.
-5. A **alkalmazásregisztrációk** vagy **regisztrált alkalmazás**, másolatot a **Alkalmazásazonosító**.
+5. Az **Alkalmazásregisztrációk** vagy a **regisztrált alkalmazás**területen másolja az **alkalmazás azonosítóját**.
 
-   ![Az Alkalmazásazonosító beszerzése](./media/stclient-app-id.png)
+   ![Az alkalmazás AZONOSÍTÓjának beolvasása](./media/stclient-app-id.png)
 
-6. Válassza ki a regisztrált alkalmazás eszköztár **beállítások**.
-7. Válassza ki **szükséges engedélyek** az alkalmazás engedélyeit.
-8. A **szükséges engedélyek**válassza **+ Hozzáadás**.
-9. A **API-hozzáférés hozzáadása**, válasszon **API kiválasztása**.
-10. A **API kiválasztása**, írja be a "Windows klasszikus Azure üzemi modellből", keresse meg az API-t.
-11. A keresési eredmények között, válassza ki a **Windows Azure klasszikus üzemi modellben** majd **kiválasztása**.
+6. A regisztrált alkalmazás eszköztárán válassza a **Beállítások**lehetőséget.
+7. Az alkalmazás engedélyeinek konfigurálásához válassza a **szükséges engedélyek** lehetőséget.
+8. A **szükséges engedélyek**területen válassza a **+ Hozzáadás**lehetőséget.
+9. Az **API-hozzáférés hozzáadása**területen **válassza ki az API**-t.
+10. Az API **kiválasztása**területen írja be a "Windows Azure klasszikus üzembehelyezési modellje" kifejezést az API megkereséséhez.
+11. A keresési eredmények között válassza a **klasszikus Windows Azure üzembehelyezési modell** lehetőséget, majd kattintson a **kiválasztás**elemre.
 
     ![Több-bérlős alkalmazás konfigurálása](./media/stclient-select-api.png)
 
-12. A **API-hozzáférés hozzáadása**, válasszon **engedélyek kiválasztása**.
-13. Válassza ki **"Windows Azure Service Management API-t" eléréséhez**.
+12. Az **API-hozzáférés hozzáadása**területen **válassza az engedélyek kiválasztása lehetőséget**.
+13. Válassza a **hozzáférés a "Windows Azure Service Management API"** lehetőséget.
 
-    ![Alkalmazás API-hozzáférés engedélyezése](./media/stclient-enable-api-access.png)
+    ![API-hozzáférés engedélyezése az alkalmazáshoz](./media/stclient-enable-api-access.png)
 
 14. Kattintson a **Kiválasztás** gombra.
 15. Válassza a **Done** (Kész) lehetőséget.
-16. A **beállítások**válassza **tulajdonságok**.
-17. A **tulajdonságok**, görgessen le a **több-bérlős**. Válassza ki **Igen**.
+16. A **Beállítások** alatt válassza a **Tulajdonságok** elemet.
+17. A **Tulajdonságok**területen görgessen le a **több-bérlős**elemre. Válassza az **Igen** lehetőséget.
 
     ![Több-bérlős alkalmazás konfigurálása](./media/stclient-yes-multitenant.png)
 
 18. Kattintson a **Mentés** gombra.
-19. A **beállítások**válassza **kulcsok**.
-20. Hozzon létre egy titkos kulcsot a kulcs kiválasztásával **leírás** szövegmezőbe. Adja meg a következő mezőket:
+19. A **Beállítások**területen válassza a **kulcsok**elemet.
+20. Hozzon létre egy titkos kulcsot a Key **description** (kulcs leírása) szövegmező kiválasztásával. Konfigurálja a következő mezőket:
 
-    - Írja be a kulcs nevét. Ha például a "selftestclient"
-    - Az a **LEJÁRAT** legördülő listában válassza a "az 1 év".
-    - Válassza ki **mentése** a kulcs létrehozásához.
-    - A **érték**, másolja a kulcsot.
+    - Írja be a kulcs nevét. Például: "selftestclient"
+    - A **lejárati** legördülő listában válassza az "1 év" lehetőséget.
+    - A kulcs létrehozásához válassza a **Mentés** lehetőséget.
+    - Az **érték**alatt másolja a kulcsot.
 
       >[!Important]
-      >Nem láthatja a kulcs értékét, miután kilépett a **kulcsok** űrlap.
+      >A **kulcsok** űrlapból való kilépés után nem fogja tudni megtekinteni a kulcs értékét.
 
-    ![Kulcsérték űrlap](./media/stclient-create-key.png)
+    ![Kulcs értékének űrlapja](./media/stclient-create-key.png)
 
-## <a name="create-the-token-for-the-client-app"></a>A jogkivonatot az ügyfél-alkalmazás létrehozása
+## <a name="create-the-token-for-the-client-app"></a>Az ügyfélalkalmazás jogkivonatának létrehozása
 
-A következő programok bármelyikét használhatja hozhat létre, és az OAuth-REST API-val egy token beszerzéséhez:
+A következő programok bármelyikével létrehozhat és lekérhet jogkivonatot a OAuth REST API használatával:
 
 - Postman
-- a Linux cURL
+- cURL Linuxon
 - C&#35;
 - PowerShell
 
-### <a name="to-create-and-get-a-token-using-postman"></a>Hozhat létre, és a Postman segítségével egy token beszerzése
+### <a name="to-create-and-get-a-token-using-postman"></a>Token létrehozása és lekérése a Poster használatával
 
- Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST műveletnek a [ https://login.microsoftonline.com/common/oauth2/token ](https://login.microsoftonline.com/common/oauth2/token) koncového bodu egy hasznos adat a következő formátumban:
+ Ahhoz, hogy Auth0 kérdezzen a jogkivonatok bármelyikének a jogosult alkalmazásaihoz, hajtson végre egy POST műveletet a [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) -végponton egy hasznos adattartalommal a következő formátumban:
 
 ```
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
 
-A kérelem törzsében adja át a következő paraméterekkel:
+Adja át a következő paramétereket a kérelem törzsében:
 
 ```
 Body Content-Type: x-www-form-urlencoded
@@ -317,19 +317,19 @@ client_secret: XXX (Paste your Secret Key of Web App/API Type client AD App)
 resource: https://management.core.windows.net
 ```
 
-A kérelem fejlécében adja át a következő paraméterekkel:
+Adja át a következő paramétereket a kérelem fejlécében:
 
 ```
 Content-Type: application/x-www-form-urlencoded
 ```
 
-A következő képernyőfelvétel egy jogkivonat beszerzéséhez a postmannel példát mutat be.
+Az alábbi képernyőfelvételen egy példa látható a Poster-token beszerzésére.
 
-![Szerezze be a tokent a postman használatával](./media/stclient-postman-get-token.png)
+![Token beszerzése a Poster-vel](./media/stclient-postman-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Hozhat létre, és a egy Linux a cURL használatával token beszerzése
+### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Token létrehozása és lekérése a cURL használatával Linuxon
 
-Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST műveletnek a [ https://login.microsoftonline.com/common/oauth2/token ](https://login.microsoftonline.com/common/oauth2/token) koncového bodu egy hasznos adat a következő formátumban:
+Ahhoz, hogy Auth0 kérdezzen a jogkivonatok bármelyikének a jogosult alkalmazásaihoz, hajtson végre egy POST műveletet a [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) -végponton egy hasznos adattartalommal a következő formátumban:
 
 ```
 Request:
@@ -344,13 +344,13 @@ Response:
 {"token":"UClCUUKxUlkdbhE1cHLz3kyjbIZYVh9eB34A5Q21Y3FPqKGSJs","expires":"2014-02-17 18:46:08"}
 ```
 
-Az alábbi képernyőfelvétel-készítés mutat példát a curl-parancs használatával a jogkivonat beszerzéséhez.
+Az alábbi képernyőfelvételen egy példa látható a curl parancs használatára a jogkivonat lekéréséhez.
 
-![A curl paranccsal token beszerzése](./media/stclient-curl-get-token.png)
+![Token beolvasása a curl paranccsal](./media/stclient-curl-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-c35"></a>Hozhat létre, és a C használatával egy token beszerzése&#35;
+### <a name="to-create-and-get-a-token-using-c35"></a>Token létrehozása és lekérése a C használatával&#35;
 
-Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST művelet a https:\//soamtenant.auth0.com/oauth/token koncového bodu egy hasznos adat a következő formátumban:
+Ahhoz, hogy Auth0 kérdezzen a jogkivonatok bármelyikének a jogosult alkalmazásaihoz, hajtson végre egy POST műveletet a https:\//soamtenant.auth0.com/oauth/token végponton egy hasznos adattartalommal a következő formátumban:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -371,9 +371,9 @@ var content = response.Content;
 var token = JObject.Parse(content)["access_token"];
 ```
 
-### <a name="to-create-and-get-a-token-using-powershell"></a>Hozhat létre, és a egy PowerShell-lel token beszerzése
+### <a name="to-create-and-get-a-token-using-powershell"></a>Token létrehozása és lekérése a PowerShell használatával
 
-Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST művelet a https:\//soamtenant.auth0.com/oauth/token koncového bodu egy hasznos adat a következő formátumban:
+Ahhoz, hogy Auth0 kérdezzen a jogkivonatok bármelyikének a jogosult alkalmazásaihoz, hajtson végre egy POST műveletet a https:\//soamtenant.auth0.com/oauth/token végponton egy hasznos adattartalommal a következő formátumban:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
@@ -392,9 +392,9 @@ $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
 ```
 
-## <a name="pass-the-client-app-token-to-the-api"></a>Alkalmazás-jogkivonatára az ügyfél át az API-hoz
+## <a name="pass-the-client-app-token-to-the-api"></a>Adja át az ügyfélalkalmazás tokenjét az API-nak
 
-Adja át a jogkivonatot a helyi tesztelése API, az engedélyezési fejléc a következő kód használatával:
+Adja át a jogkivonatot az önteszt API-nak az alábbi kód használatával az engedélyezési fejlécben:
 
 ```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
@@ -417,19 +417,19 @@ Write-Output 'Test Results:'
 $result.Content
 ```
 
-## <a name="test-your-self-test-client"></a>A helyi tesztelése ügyfél tesztelése
+## <a name="test-your-self-test-client"></a>Az önteszt ügyfél tesztelése
 
-Ha tesztelni szeretné az ügyfelet, kövesse az alábbi lépéseket:
+Az ügyfél teszteléséhez kövesse az alábbi lépéseket:
 
-1. A vizsgálni kívánt virtuális gép üzembe helyezése.
-2. Hívja meg az teszteléséhez API-t az ügyféloldali alkalmazás-jogkivonatára használ a hitelesítéshez.
-3. A vizsgálati eredmények lekérése JSON formátumban.
+1. Telepítse a tesztelni kívánt virtuális gépet.
+2. Az ügyfél-alkalmazási jogkivonat használatával hívja meg az önteszt API-t az engedélyezéshez.
+3. A teszt eredményének lekérdezése JSON formátumban.
 
-### <a name="test-result-examples"></a>Példák a teszt eredménye
+### <a name="test-result-examples"></a>Példa tesztelési eredményekre
 
-Az alábbi kódrészletek megjelenítése a vizsgálati eredmények JSON formátumban.
+A következő kódrészletek a teszt eredményét JSON formátumban jelenítik meg.
 
-**Vizsgálati eredmények egy Windows virtuális gép számára:**
+**Windows rendszerű virtuális gép tesztelési eredményei:**
 
 ```json
 {
@@ -468,7 +468,7 @@ Az alábbi kódrészletek megjelenítése a vizsgálati eredmények JSON formát
     },
 ```
 
-**Vizsgálati eredmények Linux rendszerű virtuális gép számára:**
+**A Linux rendszerű virtuális gépek tesztelési eredményei:**
 
 ```json
 {
@@ -507,6 +507,6 @@ Az alábbi kódrészletek megjelenítése a vizsgálati eredmények JSON formát
     },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután az Azure virtuális gép sikeresen tesztelését, [az ajánlat közzététele](./cpp-publish-offer.md).
+Az Azure-beli virtuális gép sikeres tesztelése után közzé teheti [az ajánlatot](./cpp-publish-offer.md).

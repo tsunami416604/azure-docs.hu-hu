@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 066c154c0ba3e62ac4f441e268c657dd5e991220
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 452dfcc04d9fc9048493222ad2a82a5bcc8b78f4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102119"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162862"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizált Backup v2 Azure Virtual Machineshoz (Resource Manager)
 
@@ -41,8 +41,8 @@ Az automatikus biztonsági mentés v2-es verziójának használatához tekintse 
 
 **SQL Server verzió/kiadás**:
 
-- SQL Server 2016: Fejlesztő, standard vagy Enterprise
-- SQL Server 2017: Fejlesztő, standard vagy Enterprise
+- SQL Server 2016: fejlesztő, standard vagy Enterprise
+- SQL Server 2017: fejlesztő, standard vagy Enterprise
 
 > [!IMPORTANT]
 > Az automatizált Backup v2 SQL Server 2016-es vagy újabb verziójával működik. Ha a SQL Server 2014-es verzióját használja, az adatbázisok biztonsági mentéséhez használhatja az automatizált Backup v1-et is. További információ: [SQL Server 2014 Azure Virtual Machines automatikus biztonsági mentése](virtual-machines-windows-sql-automated-backup.md).
@@ -59,7 +59,7 @@ Az automatikus biztonsági mentés v2-es verziójának használatához tekintse 
 ## <a name="settings"></a>Beállítások
 A következő táblázat az automatikus Backup v2-hez konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
-### <a name="basic-settings"></a>Alapbeállítások
+### <a name="basic-settings"></a>Alapszintű beállítások
 
 | Beállítás | Tartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ A következő táblázat az automatikus Backup v2-hez konfigurálható beállít
 
 | Beállítás | Tartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
-| **Rendszeradatbázis biztonsági mentései** | Engedélyezés/letiltás (letiltva) | Ha ez a beállítás engedélyezve van, a szolgáltatás a rendszeradatbázisokat is biztonsági mentést készít: Master, MSDB és Model. A MSDB és a Model-adatbázisok esetében ellenőrizze, hogy a rendszer teljes helyreállítási módban van-e, ha a naplók biztonsági mentését szeretné elvégezni. A rendszer nem készít biztonsági másolatokat a Master szolgáltatáshoz. És nem készül biztonsági másolat a TempDB. |
+| **Rendszeradatbázis biztonsági mentései** | Engedélyezés/letiltás (letiltva) | Ha engedélyezve van, ez a szolgáltatás biztonsági másolatot készít a rendszeradatbázisokról is: Master, MSDB és Model. A MSDB és a Model-adatbázisok esetében ellenőrizze, hogy a rendszer teljes helyreállítási módban van-e, ha a naplók biztonsági mentését szeretné elvégezni. A rendszer nem készít biztonsági másolatokat a Master szolgáltatáshoz. És nem készül biztonsági másolat a TempDB. |
 | **Biztonsági mentés ütemterve** | Manuális/automatizált (automatizált) | Alapértelmezés szerint a rendszer automatikusan meghatározza a biztonsági mentési ütemtervet a naplózási növekedés alapján. A manuális biztonsági mentési ütemezés lehetővé teszi a felhasználó számára a biztonsági mentések időablakának megadását. Ebben az esetben a biztonsági mentések csak a megadott gyakorisággal és az adott nap megadott időablakában helyezhetők el. |
 | **Teljes biztonsági mentés gyakorisága** | Napi/heti | A teljes biztonsági mentés gyakorisága. Mindkét esetben a teljes biztonsági mentés a következő ütemezett időszakban kezdődik. Ha a hetente van kiválasztva, a biztonsági mentések több napig is elterjedhetnek, amíg az összes adatbázis biztonsági mentése sikeresen megtörtént. |
 | **Teljes biztonsági mentés kezdési ideje** | 00:00 – 23:00 (01:00) | Egy adott nap kezdési időpontja, amely alatt a teljes biztonsági mentés elvégezhető. |
@@ -83,13 +83,13 @@ A következő táblázat az automatikus Backup v2-hez konfigurálható beállít
 ## <a name="understanding-full-backup-frequency"></a>A teljes biztonsági mentés gyakoriságának ismertetése
 Fontos megérteni a napi és heti teljes biztonsági mentések közötti különbséget. Vegye figyelembe a következő két példa forgatókönyvet.
 
-### <a name="scenario-1-weekly-backups"></a>forgatókönyv 1: Heti biztonsági másolatok
+### <a name="scenario-1-weekly-backups"></a>1\. eset: heti biztonsági másolatok
 Számos nagyméretű adatbázist tartalmazó SQL Server VM rendelkezik.
 
 Hétfőn a következő beállításokkal engedélyezheti az automatikus Backup v2-t:
 
-- Biztonsági mentési ütemterv: **Kézi**
-- Teljes biztonsági mentés gyakorisága: **Heti**
+- Biztonsági mentés időpontja: **manuális**
+- Teljes biztonsági mentés gyakorisága: **hetente**
 - Teljes biztonsági mentés kezdő időpontja: **01:00**
 - Teljes biztonsági mentés időablaka: **1 óra**
 
@@ -101,13 +101,13 @@ Miután a kedd ismét eléri az automatikus biztonsági mentést, megkezdi az ö
 
 Ez a forgatókönyv azt mutatja be, hogy az automatikus biztonsági mentés csak a megadott időszakon belül működik, és minden adatbázis hetente egyszer biztonsági mentést készít. Ez azt is jelenti, hogy a biztonsági másolatok több napig is elterjedhetnek, ha az összes biztonsági mentést egyetlen nap alatt nem lehet elvégezni.
 
-### <a name="scenario-2-daily-backups"></a>2\. forgatókönyv: Napi biztonsági mentések
+### <a name="scenario-2-daily-backups"></a>2\. forgatókönyv: napi biztonsági másolatok
 Számos nagyméretű adatbázist tartalmazó SQL Server VM rendelkezik.
 
 Hétfőn a következő beállításokkal engedélyezheti az automatikus Backup v2-t:
 
-- Biztonsági mentési ütemterv: Manuális
-- Teljes biztonsági mentés gyakorisága: Napi
+- Biztonsági mentés időpontja: manuális
+- Teljes biztonsági mentés gyakorisága: naponta
 - Teljes biztonsági mentés kezdő időpontja: 22:00
 - Teljes biztonsági mentés időablaka: 6 óra
 
@@ -156,7 +156,7 @@ A PowerShell segítségével konfigurálhatja az automatikus biztonsági mentés
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-iaas-extension"></a>Az SQL IaaS bővítmény telepítése
-Ha kiépített egy SQL Server virtuális gépet a Azure Portalból, a SQL Server IaaS bővítménynek már telepítve kell lennie. A **Get-AzVM** parancs meghívásával és a bővítmények tulajdonság vizsgálatával megállapíthatja, hogy a virtuális géphez van-e telepítve.
+Ha kiépített egy SQL Server virtuális gépet a Azure Portalból, a SQL Server IaaS bővítménynek már telepítve kell lennie. A **Get-AzVM** parancs meghívásával és a **bővítmények** tulajdonság vizsgálatával megállapíthatja, hogy a virtuális géphez van-e telepítve.
 
 ```powershell
 $vmname = "vmname"
@@ -170,7 +170,7 @@ Ha a SQL Server IaaS-ügynök bővítmény telepítve van, akkor az "SqlIaaSAgen
 Ha nincs telepítve vagy nem sikerült kiépíteni, akkor a következő paranccsal telepítheti. A virtuális gép neve és az erőforráscsoport mellett azt a régiót ( **$region**) is meg kell adnia, amelyben a virtuális gép található.
 
 ```powershell
-$region = “EASTUS2”
+$region = "EASTUS2"
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region 
@@ -211,7 +211,7 @@ A PowerShell használatával engedélyezheti az automatikus biztonsági mentést
 Először válasszon ki vagy hozzon létre egy Storage-fiókot a biztonságimásolat-fájlokhoz. A következő parancsfájl kiválasztja a Storage-fiókot, vagy létrehozza, ha nem létezik.
 
 ```powershell
-$storage_accountname = “yourstorageaccount”
+$storage_accountname = "yourstorageaccount"
 $storage_resourcegroupname = $resourcegroupname
 
 $storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
@@ -276,8 +276,8 @@ A következő parancsfájl egy olyan változót biztosít, amely testreszabható
 ```powershell
 $vmname = "yourvmname"
 $resourcegroupname = "vmresourcegroupname"
-$region = “Azure region name such as EASTUS2”
-$storage_accountname = “storageaccountname”
+$region = "Azure region name such as EASTUS2"
+$storage_accountname = "storageaccountname"
 $storage_resourcegroupname = $resourcegroupname
 $retentionperiod = 10
 $backupscheduletype = "Manual"
@@ -315,7 +315,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
 A SQL Server 2016/2017-es automatikus biztonsági mentés figyeléséhez két fő lehetőség közül választhat. Mivel az automatikus biztonsági mentés a SQL Server felügyelt biztonsági mentési szolgáltatást használja, ugyanaz a figyelési módszer is érvényes mindkét eszközre.
 
@@ -329,10 +329,10 @@ Egy másik lehetőség, hogy kihasználja az értesítések beépített Database
 1. [Konfigurálja SQL Server Agent Database mail használatára](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).
 1. Győződjön meg arról, hogy az SMTP-port engedélyezve van a helyi virtuálisgép-tűzfalon és a virtuális gép hálózati biztonsági csoportján keresztül.
 
-## <a name="next-steps"></a>További lépések
-Az automatizált Backup v2 a felügyelt biztonsági mentést konfigurálja az Azure-beli virtuális gépeken. Ezért fontos, hogy áttekintse [a felügyelt biztonsági mentés dokumentációját](https://msdn.microsoft.com/library/dn449496.aspx) a viselkedés és a következmények megismerése érdekében.
+## <a name="next-steps"></a>Következő lépések
+Az automatizált Backup v2 a felügyelt biztonsági mentést konfigurálja az Azure-beli virtuális gépeken. Ezért fontos, hogy [áttekintse a felügyelt biztonsági mentés dokumentációját](https://msdn.microsoft.com/library/dn449496.aspx) a viselkedés és a következmények megismerése érdekében.
 
-A következő cikkben további biztonsági mentési és visszaállítási útmutatást talál az Azure-beli virtuális gépek SQL Serverához: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machinesban](virtual-machines-windows-sql-backup-recovery.md).
+A következő cikkben további biztonsági mentési és visszaállítási útmutatást talál az Azure-beli virtuális gépek SQL Serverához: [SQL Server Azure-beli Virtual Machines biztonsági mentése és visszaállítása](virtual-machines-windows-sql-backup-recovery.md).
 
 További információ az egyéb rendelkezésre álló automatizálási feladatokról: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
 

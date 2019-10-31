@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c104af3bcfddb4b0863f69b6571d4cd62ca9c2b8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295039"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147113"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
@@ -45,7 +45,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
    * **Biztonsági tárhely beállítása**: Nem kötelező. Ha már rendelkezik [tárfiókkal](../storage/common/storage-introduction.md), megadhatja azt a modelladatbázisok biztonsági másolatainak alapértelmezett tárolójaként. Később is megadhatja a [biztonsági mentés és visszaállítás](analysis-services-backup.md) beállításait.
    * **Tárkulcs lejárata**: Nem kötelező. Adjon meg egy tárkulcslejárati időszakot.
 
-A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Az **Összes szolgáltatás** > **Analysis Services** területre lépve is ellenőrizheti, hogy készen áll-e a kiszolgáló. A kiszolgálók a 1200-es és magasabb kompatibilitási szinteken található táblázatos modelleket támogatják. A modell kompatibilitási szintje a SSDT vagy a SSMS értékben van megadva.
+A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Az **Összes szolgáltatás** > **Analysis Services** területre lépve is ellenőrizheti, hogy készen áll-e a kiszolgáló. A kiszolgálók a 1200-es és magasabb kompatibilitási szinteken található táblázatos modelleket támogatják. A modell kompatibilitási szintje a Visual Studióban vagy a SSMS van megadva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -1,5 +1,5 @@
 ---
-title: Védett webes API – az alkalmazás kódjának konfigurálása Active Directory
+title: Hatókörök és alkalmazás-szerepkörök ellenőrzése védett webes API-val
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre védett webes API-t, és hogyan konfigurálhatja az alkalmazás kódját.
 services: active-directory
@@ -17,14 +17,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7044180c72f92b70e0c3a2085eca043f44da45f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4340d92bdfe871010021edcbefcde62ab8202462
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803632"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149236"
 ---
-# <a name="protected-web-api-adding-authorization-to-your-api"></a>Védett webes API: Engedélyezés hozzáadása az API-hoz
+# <a name="protected-web-api-verify-scopes-and-app-roles"></a>Védett webes API: hatókörök és alkalmazás-szerepkörök ellenőrzése
 
 Ez a cikk azt ismerteti, hogyan adhat hozzá engedélyt a webes API-hoz. Ez a védelem biztosítja, hogy az API-t csak a következő hívja meg:
 

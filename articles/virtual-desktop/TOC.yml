@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: Sávszélességgel kapcsolatos javaslatok távoli munkamenetekhez
       href: bandwidth-recommendations.md
+    - name: Felhasználói kapcsolat késleltetésének meghatározása
+      href: connection-latency.md
     - name: Delegált hozzáférés a Windows Virtual Desktopon
       href: delegated-access-virtual-desktop.md
     - name: Gazdagépcsoport terheléselosztási módszerei

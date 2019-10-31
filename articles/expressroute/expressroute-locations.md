@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: 187034956de6c55c2fcbb5da1ea87c5eb22b84e6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b91309d070aee1497bdc30656459dbe775b41f4e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901733"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154619"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -43,9 +43,9 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- |
 | **Ausztrália kormánya** |Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
-| **Európa** | Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |Amszterdam, Amsterdam2, Koppenhága, Dublin, Frankfurt, London, London2, Marseille, Newport (Wales), Párizs, Stockholm, Zürich |
+| **Európa** | Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |Amszterdam, Amsterdam2, Koppenhága, Dublin, Frankfurt, Genf, London, London2, Marseille, Milánó, München, Newport (Wales), Párizs, Stavanger, Stockholm, Zürich |
 | **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2, Montreal, Québec város, Toronto |
-| **Ázsia** | Kelet-Ázsia, Délkelet-Ázsia |Hongkong KKT, Kuala Lumpur, Szingapúr, Szingapúr2, Taipei |
+| **Ázsia** | Kelet-Ázsia, Délkelet-Ázsia |Hongkong KKT, Jakarta, Kuala Lumpur, Szingapúr, Szingapúr2, Taipei |
 | **India** | Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
 | **Oceania** | Délkelet-Ausztrália, Kelet-Ausztrália |Auckland, Melbourne, Perth, Sydney |

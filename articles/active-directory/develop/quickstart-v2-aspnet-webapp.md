@@ -17,18 +17,18 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1b4d33ca5f195d7b4aabc1bc905bd8db1406e8f
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d03bb9ede4bbbfdc1c902fec755425a433fea07a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964099"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149465"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rövid útmutató: Microsoft-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
+# <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-webalkalmazásba való bejelentkezéshez személyes fiókok (hotmail.com, outlook.com stb.) és munkahelyi és iskolai fiókok bármilyen Azure Active Directory- (Azure AD-) példányból.
+Ebben a rövid útmutatóban engedélyezi, hogy egy ASP.NET-webalkalmazás a személyes fiókokat (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat jelentkezzen be bármely Azure Active Directory (Azure AD) példányból.
 
 ![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 

@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968387"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162121"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -25,6 +25,9 @@ Azure Backup a MARS-ügynök használatával készít biztonsági másolatot a h
 - A helyszíni Windows rendszerű gépeken futtathatók, így közvetlenül biztonsági mentést készíthetnek az Azure Backup Recovery Services-tárolójába.
 - Futtassa a Windows rendszerű virtuális gépeken, hogy közvetlenül a tárolóba lehessen biztonsági mentést készíteni.
 - Futtatás Microsoft Azure Backup-kiszolgálón (MABS) vagy a System Center Data Protection Manager (DPM) kiszolgálón. Ebben a forgatókönyvben a gépek és a számítási feladatok biztonsági mentést készítenek a MABS vagy a DPM-kiszolgálóra. A MARS-ügynök ezután biztonsági másolatot készít a kiszolgálóról egy Azure-tárolóba.
+
+> [!NOTE]
+>A Azure Backup nem támogatja az óra automatikus beállítását a nyári időszámításhoz (DST). Módosítsa úgy a szabályzatot, hogy a nyári időmegtakarítást figyelembe vegyék a tényleges idő és az ütemezett biztonsági mentés időbeli eltérésének megelőzése érdekében.
 
 A biztonsági mentési lehetőségek attól függnek, hogy hol van telepítve az ügynök. További információ: [Azure Backup architektúra a Mars-ügynök használatával](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). A MABS és a DPM biztonsági mentési architektúrával kapcsolatos információkért lásd: [biztonsági mentés DPM vagy MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Lásd még a biztonsági mentési architektúra [követelményeit](backup-support-matrix-mabs-dpm.md) is.
 

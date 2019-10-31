@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502fb8b49770b4933c44aa1eb447abb746943c0d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554824"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151223"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -32,7 +32,7 @@ A következő biztonsági konfigurációk lesznek bekapcsolva a bérlőben.
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Egységesített Multi-Factor Authentication regisztráció
 
-A bérlő összes felhasználójának regisztrálnia kell a többtényezős hitelesítésre (MFA) az Azure Multi-Factor Authentication szolgáltatás formájában. A felhasználók 14 napon belül regisztrálhatnak Multi-Factor Authenticationre a Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem fog tudni bejelentkezni, amíg Multi-Factor Authentication regisztráció be nem fejeződik.
+A bérlő összes felhasználójának regisztrálnia kell a többtényezős hitelesítést (MFA) az Azure Multi-Factor Authentication szolgáltatás formájában. A felhasználók 14 napon belül regisztrálhatnak Multi-Factor Authenticationre a Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem fog tudni bejelentkezni, amíg Multi-Factor Authentication regisztráció be nem fejeződik.
 
 Tisztában vagyunk azzal, hogy előfordulhat, hogy egyes felhasználók házon kívül vannak, vagy nem jelentkeznek be a biztonsági beállítások engedélyezése után 14 napon belül. Annak biztosítása érdekében, hogy minden felhasználó számára elegendő idő legyen a Multi-Factor Authentication regisztrálására, a 14 napos időszak minden felhasználó esetében egyedi. A felhasználók 14 napos időszaka az első sikeres interaktív bejelentkezés után kezdődik, miután engedélyezte a biztonsági beállításokat.
 
@@ -113,6 +113,7 @@ Az alábbi lépések részletesen ismertetik, hogyan használható a feltételes
 - [MFA megkövetelése rendszergazdák számára](howto-conditional-access-policy-admin-mfa.md)
 - [MFA megkövetelése az Azure-felügyelethez](howto-conditional-access-policy-azure-management.md)
 - [Örökölt hitelesítés tiltása](howto-conditional-access-policy-block-legacy.md)
+- [MFA megkövetelése minden felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)
 
 ## <a name="enabling-security-defaults"></a>Biztonsági alapértékek engedélyezése
 

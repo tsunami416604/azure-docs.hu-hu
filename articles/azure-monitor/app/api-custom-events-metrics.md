@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: ca77cf6b838d2e10eab422f37ff55fbb43a2dba0
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677846"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161572"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és mérőszámokhoz
 
@@ -58,7 +58,7 @@ Ha még nincs hivatkozása Application Insights SDK-ra:
 
 ## <a name="get-a-telemetryclient-instance"></a>TelemetryClient-példány beolvasása
 
-@No__t_0-példány beszerzése (kivéve a weblapokon található JavaScriptet):
+`TelemetryClient`-példány beszerzése (kivéve a weblapokon található JavaScriptet):
 
 A .NET/.NET Core-alkalmazások esetében [ASP.net Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) alkalmazások és [nem http/feldolgozók](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) esetében ajánlott a függőségi injektálási tárolóból beolvasni a `TelemetryClient` egy példányát a megfelelő dokumentációban leírtak szerint.
 
@@ -614,7 +614,7 @@ Ha a [mintavételezés](../../azure-monitor/app/sampling.md) folyamatban van, a 
 
 ## <a name="trackdependency"></a>TrackDependency
 
-A TrackDependency hívásával követheti a külső kódrészletre irányuló hívások válaszideje és sikerességi arányát. Az eredmények a portál függőségi diagramjaiban jelennek meg.
+A TrackDependency hívásával követheti a külső kódrészletre irányuló hívások válaszideje és sikerességi arányát. Az eredmények a portál függőségi diagramjaiban jelennek meg. Az alábbi kódrészletet fel kell venni, ahol függőségi hívás történik.
 
 *C#*
 
@@ -1011,7 +1011,7 @@ Az egyes telemetria-hívások felülbírálják a tulajdonságok szótárában l
 
 Az SDK-ból való elküldése előtt kódot írhat a telemetria feldolgozásához. A feldolgozás a szabványos telemetria-modulokból, például a HTTP-kérelmek gyűjtésével és a függőségek gyűjtésével elküldett adatokra vonatkozik.
 
-@No__t_1 bevezetésével [hozzáadhat tulajdonságokat](../../azure-monitor/app/api-filtering-sampling.md#add-properties) a telemetria. Felveheti például a más tulajdonságok alapján számított verziószámokat vagy értékeket.
+`ITelemetryInitializer`bevezetésével [hozzáadhat tulajdonságokat](../../azure-monitor/app/api-filtering-sampling.md#add-properties) a telemetria. Felveheti például a más tulajdonságok alapján számított verziószámokat vagy értékeket.
 
 A [szűrés](../../azure-monitor/app/api-filtering-sampling.md#filtering) módosíthatja vagy elvetheti a telemetria, mielőtt ELKÜLDI az SDK-nak az `ITelemetryProcessor` megvalósításával. Ön határozza meg, hogy mi történjen az elküldésen vagy elvetve, de a metrikák hatásait kell figyelembe vennie. Az elemek elvetésének módjától függően elveszítheti a kapcsolódó elemek közötti váltás lehetőségét.
 

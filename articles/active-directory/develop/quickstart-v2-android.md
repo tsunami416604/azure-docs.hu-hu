@@ -16,16 +16,16 @@ ms.date: 09/16/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2704a6e1af2f06b49b1d3817ad7a30bf53419ffe
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 01c45c3f90fd1c9bf457f5c4024d029bf3819813
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964006"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149488"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
-Ez a rövid útmutató egy kód mintát használ annak bemutatására, hogy az Android-alkalmazások hogyan jelentkezhetnek be személyes, munkahelyi vagy iskolai fiókba, és hogyan kérhetnek hozzáférési jogkivonatot, és hívhatják meg a Microsoft Graph API-t.
+Ez a rövid útmutató egy kód mintát használ annak bemutatására, hogy az Android-alkalmazások hogyan jelentkezhetnek be személyes, munkahelyi vagy iskolai fiókjaikat a Microsoft Identity platform használatával, majd szerezzen be egy hozzáférési jogkivonatot, és hívja meg a Microsoft Graph API-t.
 
 ![A minta alkalmazás Screenshoft](media/quickstart-v2-android/android-intro.svg)
 

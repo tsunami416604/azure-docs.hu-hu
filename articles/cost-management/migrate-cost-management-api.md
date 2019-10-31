@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 53c171df47dde58b264b354eea5ff1ccca9f5256
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee4b2196240ceff1351b7ea310d9660ed613d075
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374728"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152076"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrálás Nagyvállalati Szerződésról a Microsoft Customer Agreement API-khoz
 
@@ -59,7 +59,7 @@ Az EA API-k egy API-kulcsot használnak a hitelesítéshez és az engedélyezés
 | Számlázási időszakok | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft. Billing/billingAccounts/billingProfiles/számlák |
 | Árlista | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft. Billing/billingAccounts/billingProfiles/árlista/alapértelmezett/letöltési formátum = JSON|CSV Microsoft. Billing/billingAccounts/.../billingProfiles/.../számlák/... /pricesheet/default/Download formátum = JSON|CSV Microsoft. Billing/billingAccounts/.. /billingProfiles/.. /providers/Microsoft.Consumption/pricesheets/download  |
 | Foglalásvásárlások | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft. Billing/billingAccounts/billingProfiles/Transactions |
-| Foglalási javaslatok | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[@no__t – 2](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft. fogyasztás/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
+| Foglalási javaslatok | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations) [/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) [SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft. fogyasztás/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
 | Foglalás használata | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft. fogyasztás/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft. fogyasztás/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
 <sup>1</sup> az Azure szolgáltatás és a harmadik féltől származó piactér használata a [használati adatok API](/rest/api/consumption/usagedetails)-val érhető el.
@@ -352,15 +352,15 @@ Kérjen meg egy másik hívást a helyhez. A GET hívásra adott válasz ugyanaz
 ```
 HTTP Status 200
 
-                                    {
-                            “id”: “providers/Microsoft.Consumption/operationresults/{operationId}”,
-                            “name”: {operationId},
-                           “type”: “Microsoft.Consumption/operationResults”,
-                           “properties” : {
-                                  “downloadUrl”: {urltoblob},
-                                  “vaildTill”: “Date”
+{
+  "id": "providers/Microsoft.Consumption/operationresults/{operationId}",
+  "name": {operationId},
+  "type": “Microsoft.Consumption/operationResults",
+  "properties" : {
+    "downloadUrl": {urltoblob},
+    "validTill": "Date"
+  }
 }
-                     }
 ```
 
 Az ügyfél lekéréses hívást is végezhet a `Azure-AsyncOperation` értékkel. A végpont a művelet állapotát adja vissza.

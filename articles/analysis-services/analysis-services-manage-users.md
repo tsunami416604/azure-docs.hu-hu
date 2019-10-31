@@ -4,15 +4,15 @@ description: Tudnivalók a hitelesítésről és a felhasználói engedélyekrő
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc66b34492b34a6e0f239d19ee10fbd79b683a14
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294922"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146875"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
@@ -28,11 +28,11 @@ Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyfé
 
 Mindhárom ügyfél-függvénytár támogatja az Azure AD interaktív folyamatot és a nem interaktív hitelesítési módszereket. A AMOMD-t és MSOLAP-t használó alkalmazásokban a két nem interaktív módszer, Active Directory jelszó és a Active Directory integrált hitelesítési módszer is használható. Ez a két módszer soha nem eredményez előugró párbeszédpanelt.
 
-Az olyan ügyfélalkalmazások, mint az Excel és a Power BI Desktop, valamint az olyan eszközök, mint a SSMS és a SSDT, a legújabb verzióra való frissítéskor telepítik a kódtárak legújabb verzióit. A Power BI Desktop, a SSMS és a SSDT havonta frissülnek. Az Excel [frissítve van az Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)-mel. Az Office 365 frissítései kevésbé gyakoriak, és egyes szervezetek a késleltetett csatornát használják, azaz a frissítések három hónapra vannak késleltetve.
+Az olyan ügyfélalkalmazások, mint az Excel és a Power BI Desktop, valamint a Visual studióhoz készült SSMS és Analysis Services projects bővítmény a legújabb verzióra való frissítéskor telepíti a kódtárak legújabb verzióit. A Power BI Desktop, a SSMS és a Analysis Services projects bővítmény havonta frissül. Az Excel [frissítve van az Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)-mel. Az Office 365 frissítései kevésbé gyakoriak, és egyes szervezetek a késleltetett csatornát használják, azaz a frissítések három hónapra vannak késleltetve.
 
 Az ügyfélalkalmazás vagy az Ön által használt eszköztől függően a hitelesítés típusa és a bejelentkezés módja eltérő lehet. Az egyes alkalmazások különböző funkciókat is támogatnak a felhőalapú szolgáltatásokhoz, például a Azure Analysis Serviceshoz való csatlakozáshoz.
 
-Power BI Desktop, SSDT és SSMS támogatja Active Directory univerzális hitelesítést, amely az Azure Multi-Factor Authentication (MFA) támogató interaktív metódust is támogatja. Az Azure MFA lehetővé teszi az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben egyszerű bejelentkezési folyamatot biztosít. Erős hitelesítést biztosít több ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártya vagy mobil alkalmazás értesítése). Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti. **Az univerzális hitelesítés ajánlott**.
+A Power BI Desktop, a Visual Studio és a SSMS támogatja a Active Directory univerzális hitelesítést, amely az Azure Multi-Factor Authentication (MFA) támogató interaktív metódust is támogatja. Az Azure MFA lehetővé teszi az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben egyszerű bejelentkezési folyamatot biztosít. Erős hitelesítést biztosít több ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártya vagy mobil alkalmazás értesítése). Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti. **Az univerzális hitelesítés ajánlott**.
 
 Ha Windows-fiókkal jelentkezik be az Azure-ba, és az univerzális hitelesítés nincs kiválasztva vagy elérhető (Excel), [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) szükséges. Az összevonás, az Azure AD és az Office 365-felhasználók hitelesítése a helyszíni hitelesítő adatok használatával történik, és hozzáférhet az Azure-erőforrásokhoz.
 
@@ -46,9 +46,9 @@ Azure Analysis Services-kiszolgálók támogatják a [SSMS v 17.1](https://docs.
 
 *  Támogatja a Multi-Factor Authentication (MFA) használatát. Az Azure MFA számos ellenőrzési lehetőséggel segíti az adatelérést és az alkalmazásokat, valamint a telefonhívást, a szöveges üzenetet, a PIN-kóddal ellátott intelligens kártyákat vagy a Mobile apps-értesítéseket. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
 
-### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-A SSDT az MFA-támogatással rendelkező Active Directory univerzális hitelesítés használatával csatlakozik a Azure Analysis Serviceshoz. A rendszer felkéri a felhasználókat, hogy jelentkezzenek be az Azure-ba az első telepítéskor. A felhasználóknak be kell jelentkezniük az Azure-ba egy olyan fiókkal, amely kiszolgálói rendszergazdai jogosultságokkal rendelkezik azon a kiszolgálón, amelyre telepítik. Amikor első alkalommal jelentkezik be az Azure-ba, a rendszer tokent rendel hozzá. A SSDT gyorsítótárazza a memóriában lévő tokent a jövőbeli újrakapcsolatokhoz.
+A Visual Studio az MFA-támogatással Active Directory univerzális hitelesítés használatával csatlakozik a Azure Analysis Serviceshoz. A rendszer felkéri a felhasználókat, hogy jelentkezzenek be az Azure-ba az első telepítéskor. A felhasználóknak be kell jelentkezniük az Azure-ba egy olyan fiókkal, amely kiszolgálói rendszergazdai jogosultságokkal rendelkezik azon a kiszolgálón, amelyre telepítik. Amikor első alkalommal jelentkezik be az Azure-ba, a rendszer tokent rendel hozzá. A token memóriában van gyorsítótárazva a jövőbeli újrakapcsolásokhoz.
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
 
@@ -60,7 +60,7 @@ Az Excel-felhasználók Windows-fiókkal, szervezeti AZONOSÍTÓval (e-mail-cím
 
 ## <a name="user-permissions"></a>Felhasználói engedélyek
 
-A **kiszolgálói rendszergazdák** egy Azure Analysis Services Server-példányra jellemzőek. Olyan eszközökkel csatlakoznak, mint például a Azure Portal, a SSMS és a SSDT olyan feladatok elvégzéséhez, mint például az adatbázisok hozzáadása és a felhasználói szerepkörök kezelése. Alapértelmezés szerint a kiszolgálót létrehozó felhasználó automatikusan Analysis Services kiszolgáló rendszergazdája lesz hozzáadva. Más rendszergazdák is hozzáadhatók Azure Portal vagy SSMS használatával. A kiszolgáló rendszergazdáinak ugyanahhoz az előfizetéshez tartozó fiókkal kell rendelkezniük az Azure AD-bérlőben. További információ: a [kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md). 
+A **kiszolgálói rendszergazdák** egy Azure Analysis Services Server-példányra jellemzőek. Olyan eszközökkel csatlakoznak, mint például a Azure Portal, a SSMS és a Visual Studio, hogy olyan feladatokat hajtsanak végre, mint például az adatbázisok hozzáadása és a felhasználói szerepkörök kezelése. Alapértelmezés szerint a kiszolgálót létrehozó felhasználó automatikusan Analysis Services kiszolgáló rendszergazdája lesz hozzáadva. Más rendszergazdák is hozzáadhatók Azure Portal vagy SSMS használatával. A kiszolgáló rendszergazdáinak ugyanahhoz az előfizetéshez tartozó fiókkal kell rendelkezniük az Azure AD-bérlőben. További információ: a [kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md). 
 
 Az **adatbázis-felhasználók** olyan ügyfélalkalmazások használatával csatlakoznak a modell-adatbázisokhoz, mint az Excel vagy a Power bi. A felhasználókat hozzá kell adni az adatbázis-szerepkörökhöz. Az adatbázis-szerepkörök rendszergazdai, feldolgozási vagy olvasási engedélyeket határoznak meg egy adatbázishoz. Fontos megérteni, hogy az adatbázis felhasználói a rendszergazdai engedélyekkel rendelkező szerepkörben nem különböznek a kiszolgálói rendszergazdáktól. Alapértelmezés szerint azonban a kiszolgálói rendszergazdák is adatbázis-rendszergazdák. További információ: az [adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md).
 
@@ -74,7 +74,7 @@ Az ezen a szinten lévő szerepkörök azokra a felhasználókra vagy fiókokra 
 
  A táblázatos modellhez definiált szerepkörök adatbázis-szerepkörök. Ez a szerepkör olyan tagokat tartalmaz, amelyek Azure AD-felhasználókból és biztonsági csoportokból állnak, és amelyek meghatározott engedélyekkel rendelkeznek, amelyek meghatározzák, hogy a tagok milyen műveleteket végezhetnek a modell-adatbázisokban. A rendszer az adatbázis-szerepkört külön objektumként hozza létre az adatbázisban, és csak arra az adatbázisra vonatkozik, amelyben az adott szerepkör létre lett hozva.   
   
- Alapértelmezés szerint, amikor új táblázatos modell-projektet hoz létre, a modell projektnek nincsenek szerepkörei. A szerepköröket a SSDT szerepkör-kezelő párbeszédpanelének használatával lehet meghatározni. Ha a szerepkörök a modell tervezése során vannak meghatározva, csak a modell munkaterület-adatbázisra lesznek alkalmazva. A modell telepítésekor ugyanazok a szerepkörök lesznek alkalmazva az üzembe helyezett modellre. A modell telepítése után a kiszolgáló-és adatbázis-rendszergazdák a SSMS használatával kezelhetik a szerepköröket és a tagokat. További információ: az [adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md).
+ Alapértelmezés szerint, amikor új táblázatos modell-projektet hoz létre, a modell projektnek nincsenek szerepkörei. A szerepkörök a Visual Studióban a szerepkör-kezelő párbeszédpanel használatával definiálhatók. Ha a szerepkörök a modell tervezése során vannak meghatározva, csak a modell munkaterület-adatbázisra lesznek alkalmazva. A modell telepítésekor ugyanazok a szerepkörök lesznek alkalmazva az üzembe helyezett modellre. A modell telepítése után a kiszolgáló-és adatbázis-rendszergazdák a SSMS használatával kezelhetik a szerepköröket és a tagokat. További információ: az [adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md).
   
 ## <a name="next-steps"></a>Következő lépések
 

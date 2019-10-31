@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091482"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162881"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
@@ -24,20 +24,20 @@ A [Apache Hadoop](https://hadoop.apache.org/) két alapvető összetevőből ál
 
 Ez a cikk a FONALat mutatja be, valamint azt, hogyan koordinálja az alkalmazások végrehajtását a HDInsight-on.
 
-## <a name="apache-hadoop-yarn-basics"></a>A fonal Apache Hadoop alapjai 
+## <a name="apache-hadoop-yarn-basics"></a>A fonal Apache Hadoop alapjai
 
-A fonal a Hadoop-ben szabályozza és koordinálja az adatfeldolgozást. A fonal két fő szolgáltatással rendelkezik, amelyek folyamatokként futnak a fürt csomópontjain: 
+A fonal a Hadoop-ben szabályozza és koordinálja az adatfeldolgozást. A fonal két fő szolgáltatással rendelkezik, amelyek folyamatokként futnak a fürt csomópontjain:
 
-* ResourceManager 
+* Erőforráskezelő
 * NodeManager
 
-A erőforráskezelő a fürt számítási erőforrásait a MapReduce-feladatokhoz hasonló alkalmazások számára biztosítja. A erőforráskezelő tárolóként engedélyezi ezeket az erőforrásokat, ahol mindegyik tároló a CPU-magok és a memória memóriájának kiosztását tartalmazza. Ha kombinálja a fürtben rendelkezésre álló összes erőforrást, majd a magok és a memória blokkokban való elosztását, minden egyes blokk erőforrás egy tároló. A fürt minden csomópontja rendelkezik bizonyos számú tároló kapacitásával, ezért a fürtnek van rögzített korlátja a rendelkezésre álló tárolók számánál. A tárolóban lévő erőforrások kiosztása konfigurálható. 
+A erőforráskezelő a fürt számítási erőforrásait a MapReduce-feladatokhoz hasonló alkalmazások számára biztosítja. A erőforráskezelő tárolóként engedélyezi ezeket az erőforrásokat, ahol mindegyik tároló a CPU-magok és a memória memóriájának kiosztását tartalmazza. Ha kombinálja a fürtben rendelkezésre álló összes erőforrást, majd a magok és a memória blokkokban való elosztását, minden egyes blokk erőforrás egy tároló. A fürt minden csomópontja rendelkezik bizonyos számú tároló kapacitásával, ezért a fürtnek van rögzített korlátja a rendelkezésre álló tárolók számánál. A tárolóban lévő erőforrások kiosztása konfigurálható.
 
-Amikor egy MapReduce-alkalmazás egy fürtön fut, a erőforráskezelő biztosítja az alkalmazást, hogy mely tárolók futnak. A erőforráskezelő nyomon követi a futó alkalmazások állapotát, a rendelkezésre álló szektorcsoportok kapacitását, és nyomon követi az alkalmazásokat, és felszabadítja az erőforrásokat. 
+Amikor egy MapReduce-alkalmazás egy fürtön fut, a erőforráskezelő biztosítja az alkalmazást, hogy mely tárolók futnak. A erőforráskezelő nyomon követi a futó alkalmazások állapotát, a rendelkezésre álló szektorcsoportok kapacitását, és nyomon követi az alkalmazásokat, és felszabadítja az erőforrásokat.
 
 A erőforráskezelő egy webkiszolgáló-folyamatot is futtat, amely webes felhasználói felületet biztosít az alkalmazások állapotának figyeléséhez.
 
-Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri (*egyezteti*) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni. 
+Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri (*egyezteti*) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni.
 
 A Csomópontkezelők futtatják az alkalmazást alkotó feladatokat, majd jelentést készítenek az előrehaladásról és az állapotról a ApplicationMaster. A ApplicationMaster visszaküldi az alkalmazás állapotát a erőforráskezelő. A erőforráskezelő bármilyen eredményt ad vissza az ügyfélnek.
 
@@ -47,7 +47,7 @@ Az összes HDInsight-fürt a FONALat helyezi üzembe. A erőforráskezelő a mag
 
 ![Apache-fonal az Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A MapReduce használata a HDInsight-alapú Apache Hadoopban](hadoop/hdinsight-use-mapreduce.md)
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)

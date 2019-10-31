@@ -4,15 +4,15 @@ description: A helyszíni átjáróra akkor van szükség, ha az Azure-beli Anal
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294937"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146850"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
 
@@ -50,7 +50,7 @@ Azure Analysis Services környezet telepítésekor fontos, hogy kövesse a helys
 
 Az átjáró létrehoz egy kimenő kapcsolódást Azure Service Bushoz. A következő kimenő portokon kommunikál: TCP 443 (alapértelmezett), 5671, 5672, 9350 – 9354.  Az átjáró nem igényel bejövő portokat.
 
-Előfordulhat, hogy az adatterületéhez tartozó IP-címeket kell megadnia a tűzfalban. Letöltheti az [Microsoft Azure Datacenter IP-listáját](https://www.microsoft.com/download/details.aspx?id=41653). A lista hetente frissül. Az Azure-adatközpont IP-listájában felsorolt IP-címek CIDR-jelöléssel rendelkeznek. További információ: osztály nélküli [tartományok közötti útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalon. Letöltheti az [Microsoft Azure Datacenter IP-listáját](https://www.microsoft.com/download/details.aspx?id=41653). A lista hetente frissül. Az Azure-adatközpont IP-listájában felsorolt IP-címek CIDR-jelöléssel rendelkeznek. További információ: osztály nélküli [tartományok közötti útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 A következő az átjáró által használt teljes tartománynevek.
 

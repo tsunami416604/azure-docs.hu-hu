@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan lehet az aszinkron frissítést a REST API hasz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301156"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147369"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
 
@@ -110,7 +110,7 @@ A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméret
 > [!NOTE]
 > Az írás időpontjában a köteg mérete a MaxParallelism érték, de ez az érték változhat.
 
-## <a name="get-refreshesrefreshid"></a>/Refreshes/beolvasása @no__t – 0refreshId >
+## <a name="get-refreshesrefreshid"></a>/Refreshes/beolvasása\<refreshId >
 
 A frissítési művelet állapotának megtekintéséhez használja a GET műveletet a frissítési AZONOSÍTÓban. Íme egy példa a válasz törzsére. Ha a művelet folyamatban **van, a rendszer az** állapotot adja vissza.
 
@@ -160,7 +160,7 @@ A modell korábbi frissítési műveleteinek listájának lekéréséhez haszná
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>/Refreshes/törlése @no__t – 0refreshId >
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/törlése\<refreshId >
 
 A folyamatban lévő frissítési művelet megszakításához használja a frissítési AZONOSÍTÓban a DELETE műveletet.
 
@@ -183,7 +183,7 @@ Egy szinkronizálási művelet állapotának megtekintéséhez használja a GET 
 }
 ```
 
-@No__t-0 értékek:
+`syncstate`értékei:
 
 - 0: replikálás. Az adatbázisfájlok replikálódnak a célmappába.
 - 1: rehidratálás. Az adatbázis a csak olvasható kiszolgálói példány (ok) ra lesz kiszáradva.

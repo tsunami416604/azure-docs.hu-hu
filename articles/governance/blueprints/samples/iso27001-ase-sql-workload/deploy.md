@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: bd85a65d3e4d8aa1a16bb57dc5981d661a83d412
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4836287f5308ffb11bf145b715dfd6f73672c038
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297630"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163459"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database munkaterhelés tervrajzi minta üzembe helyezése
 
@@ -155,7 +155,7 @@ Most, hogy áttekintette az ISO 27001 App Service Environment/SQL Database munka
 > [Iso 27001 app Service Environment/SQL Database munkaterhelés-tervezet – áttekintés](./index.md)
 > [ISO 27001 app Service Environment/SQL Database munkaterhelés-terv – vezérlés leképezése](./control-mapping.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervrajzokról és azok használatáról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

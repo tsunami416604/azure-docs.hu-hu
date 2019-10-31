@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c8f5590cb528082a73cbdf92850218993a1a6b95
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382895"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161020"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>A biztonsági adatok (előzetes verzió) beállítása az e-mail-cím használatára
 
@@ -36,7 +36,7 @@ A szervezet beállításaitól függően előfordulhat, hogy az e-mail-címét a
 
 ### <a name="to-set-up-your-email-address"></a>Az e-mail-cím beállítása
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
 
     ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
@@ -48,7 +48,7 @@ A szervezet beállításaitól függően előfordulhat, hogy az e-mail-címét a
 
     ![Hozzáadási mód mező, e-mailben kiválasztva](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. Az **e-mail** lapon írja be az e-mail-címét (például alain@gmail.com:), majd kattintson a **tovább**gombra.
+4. Az **e-mail** lapon adja meg az e-mail-címét (például alain@gmail.com), majd kattintson a **tovább**gombra.
 
     ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-emailaddress.png)
 
@@ -93,8 +93,8 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 
 - Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

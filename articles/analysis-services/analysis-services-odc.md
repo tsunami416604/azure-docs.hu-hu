@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre egy Office-adatkapcsolati fájlt 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e12717b37171df55c7559bb1b05c467f332236bc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294836"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146686"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office-adatkapcsolatok fájljának létrehozása
 
@@ -23,13 +23,13 @@ A cikkben található információk azt ismertetik, hogyan hozhat létre Office-
 
 2. A `odc:ConnectionString` értéknél módosítsa a következő tulajdonságokat:
 
-    *   @No__t – 0 értéknél módosítsa a `<region>` értéket a Analysis Services-kiszolgáló régiójába, és `<servername>` értéket a kiszolgálójának nevére.
+    *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` változás `<region>` a Analysis Services-kiszolgáló régiójában, és `<servername>` a kiszolgáló nevéhez.
 
-    *   @No__t – 0 értéknél módosítsa a `<database>` értéket az adatbázis nevére.
+    *   A `Initial Catalog=<database>;` változás `<database>` az adatbázis nevére.
 
-3. @No__t-0 értéknél módosítsa a `Model` értéket a modell vagy perspektíva nevére. 
+3. A `<odc:CommandText>Model</odc:CommandText>` módosítsa a modell vagy perspektíva nevét `Model`. 
 
-4. Mentse a fájlt egy `.odc` kiterjesztéssel a C:\Users @ no__t-1*Felhasználónév*\Documents\My adatforrások mappájába.
+4. Mentse a fájlt `.odc` kiterjesztéssel a C:\Users\\*username*\Documents\My adatforrások mappájába.
 
 5. Kattintson a jobb gombbal a fájlra, majd kattintson a **Megnyitás az Excelben**elemre. Vagy **az Excelben az adatszalagon** kattintson a **létező kapcsolatok**elemre, jelölje ki a fájlt, majd kattintson a **Megnyitás**gombra.
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e05515c2fd118c21f891be86fae6423affab0324
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985983"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160894"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása a bejelentkezési oldal parancssorában
 
@@ -40,7 +40,7 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 >[!Important]
 >Ez csak egy példa a folyamatra. A szervezet követelményeitől függően előfordulhat, hogy a rendszergazda különböző ellenőrzési módszereket állított be, amelyeket be kell állítania a folyamat során. Ebben a példában két módszert igényelünk, a Microsoft Authenticator alkalmazást és egy mobiltelefon-számot a hitelesítési hívásokhoz vagy szöveges üzenetekhez.
 
-1. Miután kiválasztotta a következőt a parancssorból, megjelenik a **fiók biztonságos létrehozása varázsló** , amely az első olyan metódust mutatja be, amelyet a rendszergazdának és a szervezetnek be kell állítania. Ebben a példában ez a Microsoft Authenticator alkalmazás.
+1. Miután kiválasztotta a **következőt** a parancssorból, megjelenik a **fiók biztonságos létrehozása varázsló** , amely az első olyan metódust mutatja be, amelyet a rendszergazdának és a szervezetnek be kell állítania. Ebben a példában ez a Microsoft Authenticator alkalmazás.
 
    > [!Note]
    > Ha a Microsoft Authenticator alkalmazástól eltérő hitelesítő alkalmazást szeretne használni, válassza a **másik hitelesítő alkalmazás használata** hivatkozást.
@@ -68,7 +68,7 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 
 6. Az 5. lépésben a munkahelyi vagy iskolai fiók létrehozása után a megadott kód beolvasásával megjelentek a Microsoft Authenticator alkalmazás QR-kód olvasója, amely megjelent a mobileszközön.
 
-    A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia. Ha azonban a QR-kód olvasója nem tudja beolvasni a kódot, akkor a **nem tudja beolvasni a QR** -rendszerképet, és manuálisan adja meg a kódot és az URL-címet a Microsoft Authenticator alkalmazásban. A kódok manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
+    A hitelesítő alkalmazásnak sikeresen hozzá kell adnia a munkahelyi vagy iskolai fiókját anélkül, hogy további adatokat kellene megadnia. Ha azonban a QR-kód olvasója nem tudja beolvasni a kódot, akkor a **nem tudja beolvasni a QR-rendszerképet** , és manuálisan adja meg a kódot és az URL-címet a Microsoft Authenticator alkalmazásban. A kódok manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
 7. Kattintson a **Tovább gombra** a **QR-kód vizsgálata** lapon a számítógépen.
 
@@ -124,7 +124,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
 1. Miután befejezte a varázsló előző szakaszait, kattintson a **Tovább gombra** , és fejezze be az **alkalmazás jelszavának** szakaszát.
 
-2. Írja be a jelszót igénylő alkalmazás nevét, például `Outlook 2010`, majd kattintson a **tovább**gombra.
+2. Írja be annak az alkalmazásnak a nevét, amelyhez a jelszó szükséges, például `Outlook 2010`, majd válassza a **tovább**lehetőséget.
 
     ![Adja hozzá az alkalmazás jelszava nevet a varázslóban.](media/security-info/app-password-app-password.png)
 
@@ -136,7 +136,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
     ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A biztonsági adatok alapértelmezett módszereinek módosításához, törléséhez vagy frissítéséhez lásd:
 
@@ -152,6 +152,6 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
 - További információ a bejelentkezés módjáról a megadott módszer használatával: [Bejelentkezés](user-help-sign-in.md).
 
-- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 
 - Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

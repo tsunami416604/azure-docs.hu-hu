@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: cf84d685bf20f1117aa2378cf2e2696cb78a46a5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a669c6fe0ffd6ff1c4d4613a91074edfe9fa87e9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076149"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162655"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön a HDInsight-ben
 
@@ -34,7 +34,7 @@ A fürt létrehozásakor hozzáadhat egy üres peremhálózati csomópontot egy 
                         "name": "edgenode",
                         "targetInstanceCount": 1,
                         "hardwareProfile": {
-                            "vmSize": "Standard_D3"
+                            "vmSize": "{}"
                         }
                     }]
                 },
@@ -62,13 +62,13 @@ Miután létrehozott egy peremhálózati csomópontot, az SSH használatával ka
 > * [MSDN-fórum a HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> Ha Apache-technológiát használ, lehet, hogy az Apache [https://apache.org](https://apache.org)-projekt webhelyein, például a [Apache Hadoop](https://hadoop.apache.org/) webhelyen tud segítséget találni.
+> Ha Apache-technológiát használ, előfordulhat, hogy a [https://apache.org on ](https://apache.org), például a [Apache Hadoop](https://hadoop.apache.org/) webhelyen található Apache Project-webhelyeken tud segítséget nyújtani.
 
 > [!IMPORTANT]
 > Az Ubuntu-lemezképek elérhetővé válnak az új HDInsight-fürt létrehozásakor a közzétételtől számított 3 hónapon belül. Január 2019-ig a fürtök (beleértve az Edge-csomópontokat is) **nem** automatikus javítással működnek. Az ügyfeleknek parancsfájl-műveleteket vagy más mechanizmusokat kell használniuk a futó fürtök javításához.  További információ: operációsrendszer- [javítás a HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Peremhálózati csomópont hozzáadása meglévő fürthöz
-Ebben a szakaszban egy Resource Manager-sablon használatával ad hozzá egy peremhálózati csomópontot egy meglévő HDInsight-fürthöz.  A Resource Manager-sablon a [githubon](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)érhető el. A Resource Manager-sablon egy parancsfájl-műveletet hív https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh meg, amely a következő helyen található:. A parancsfájl nem hajt végre műveleteket.  Ez egy Resource Manager-sablonban történő hívás parancsfájl-műveletének bemutatása.
+Ebben a szakaszban egy Resource Manager-sablon használatával ad hozzá egy peremhálózati csomópontot egy meglévő HDInsight-fürthöz.  A Resource Manager-sablon a [githubon](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)érhető el. A Resource Manager-sablon meghívja a https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh címen található parancsfájl-műveletet. A parancsfájl nem hajt végre műveleteket.  Ez egy Resource Manager-sablonban történő hívás parancsfájl-műveletének bemutatása.
 
 **Üres peremhálózati csomópont hozzáadása meglévő fürthöz**
 
@@ -77,20 +77,20 @@ Ebben a szakaszban egy Resource Manager-sablon használatával ad hozzá egy per
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 3. Konfigurálja a következő tulajdonságokat:
    
-   * **Előfizetés**: Válassza ki a fürt létrehozásához használt Azure-előfizetést.
-   * **Erőforráscsoport**: Válassza ki a meglévő HDInsight-fürthöz használt erőforráscsoportot.
-   * **Hely**: Válassza ki a meglévő HDInsight-fürt helyét.
-   * **Fürt neve**: Adja meg egy meglévő HDInsight-fürt nevét.
-   * **Peremhálózati csomópont mérete**: Válasszon egy virtuálisgép-méretet. A virtuális gép méretének meg kell felelnie a munkavégző csomópont virtuálisgép-méretére vonatkozó követelményeknek. A munkavégző csomópontok ajánlott virtuálisgép-méreteit lásd: [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
-   * **Peremhálózati csomópont előtagja**: Az alapértelmezett érték az **új**.  Az alapértelmezett érték használatával a peremhálózati csomópont neve **New-élcsomópontok**.  A portálon testreszabhatja az előtagot. A sablon teljes nevét testre is szabhatja.
+   * **Előfizetés**: válassza ki a fürt létrehozásához használt Azure-előfizetést.
+   * **Erőforráscsoport**: válassza ki a meglévő HDInsight-fürthöz használt erőforráscsoportot.
+   * **Hely**: válassza ki a meglévő HDInsight-fürt helyét.
+   * **Fürt neve**: adja meg egy meglévő HDInsight-fürt nevét.
+   * **Peremhálózati csomópont mérete**: válasszon ki egy virtuálisgép-méretet. A virtuális gép méretének meg kell felelnie a munkavégző csomópont virtuálisgép-méretére vonatkozó követelményeknek. A munkavégző csomópontok ajánlott virtuálisgép-méreteit lásd: [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+   * **Peremhálózati csomópont előtagja**: az alapértelmezett érték az **új**.  Az alapértelmezett érték használatával a peremhálózati csomópont neve **New-élcsomópontok**.  A portálon testreszabhatja az előtagot. A sablon teljes nevét testre is szabhatja.
 
 4. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd kattintson a **vásárlás** elemre a peremhálózati csomópont létrehozásához.
 
 >[!IMPORTANT]  
-> Ügyeljen arra, hogy kiválassza a meglévő HDInsight-fürthöz tartozó Azure-erőforráscsoportot.  Ellenkező esetben a következő hibaüzenet jelenik meg: "nem lehet végrehajtani a kért műveletet a beágyazott erőforráson. A (&lt;z) "ClusterName > szülő erőforrás nem található."
+> Ügyeljen arra, hogy kiválassza a meglévő HDInsight-fürthöz tartozó Azure-erőforráscsoportot.  Ellenkező esetben a következő hibaüzenet jelenik meg: "nem lehet végrehajtani a kért műveletet a beágyazott erőforráson. A (z) "&lt;ClusterName >" fölérendelt erőforrás nem található. "
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Peremhálózati csomópont hozzáadása fürt létrehozásakor
-Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtöt hoz létre egy peremhálózati csomóponttal.  A Resource Manager-sablon az [Azure gyorsindítási sablonok galériájában](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)található. A Resource Manager-sablon egy parancsfájl-műveletet hív https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh meg, amely a következő helyen található:. A parancsfájl nem hajt végre műveleteket.  Ez egy Resource Manager-sablonban történő hívás parancsfájl-műveletének bemutatása.
+Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtöt hoz létre egy peremhálózati csomóponttal.  A Resource Manager-sablon az [Azure gyorsindítási sablonok galériájában](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)található. A Resource Manager-sablon meghívja a https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh címen található parancsfájl-műveletet. A parancsfájl nem hajt végre műveleteket.  Ez egy Resource Manager-sablonban történő hívás parancsfájl-műveletének bemutatása.
 
 **HDInsight-fürt létrehozása peremhálózati csomóponttal**
 
@@ -100,17 +100,17 @@ Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtö
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 3. Konfigurálja a következő tulajdonságokat:
    
-   * **Előfizetés**: Válassza ki a fürt létrehozásához használt Azure-előfizetést.
-   * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot a fürthöz.
+   * **Előfizetés**: válassza ki a fürt létrehozásához használt Azure-előfizetést.
+   * **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot a fürthöz.
    * **Hely**: Válasszon egy helyet az erőforráscsoportnak.
-   * **Fürt neve**: Adja meg a létrehozandó új fürt nevét.
-   * **Fürt bejelentkezési felhasználónevének neve**: Adja meg a Hadoop HTTP-felhasználónevét.  Az alapértelmezett név az **admin**.
-   * **Fürt bejelentkezési jelszava**: Adja meg a Hadoop HTTP-felhasználói jelszavát.
-   * **SSH-Felhasználónév**: Adja meg az SSH-Felhasználónév nevét. Az alapértelmezett név a **sshuser**.
-   * **SSH-jelszó**: Adja meg az SSH-felhasználó jelszavát.
-   * **Parancsfájl telepítése művelet**: Tartsa meg az alapértelmezett értéket a jelen cikkben leírtak szerint.
+   * **Fürt neve**: adjon meg egy nevet a létrehozandó új fürt számára.
+   * **Fürt bejelentkezési felhasználóneve**: adja meg a Hadoop http-felhasználónevét.  Az alapértelmezett név az **admin**.
+   * **Fürt bejelentkezési jelszava**: adja meg a Hadoop http-felhasználói jelszavát.
+   * **SSH-Felhasználónév**: adja meg az SSH-felhasználónevet. Az alapértelmezett név a **sshuser**.
+   * **SSH-jelszó**: adja meg az ssh-felhasználó jelszavát.
+   * **Parancsfájl telepítése művelet**: tartsa meg az alapértelmezett értéket a jelen cikkben leírtak szerint.
      
-     Néhány tulajdonságot a sablon hardcoded: A fürt típusa, a fürt munkavégző csomópontjának száma, az Edge-csomópont mérete és a peremhálózati csomópont neve.
+     Egyes tulajdonságok a következő sablonban lettek hardcoded: fürt típusa, fürt munkavégző csomópontok száma, Edge-csomópont mérete és peremhálózati csomópont neve.
 4. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd kattintson a **vásárlás** gombra a fürt peremhálózati csomóponttal való létrehozásához.
 
 ## <a name="add-multiple-edge-nodes"></a>Több peremhálózati csomópont hozzáadása
@@ -118,7 +118,7 @@ Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtö
 Több peremhálózati csomópontot is hozzáadhat egy HDInsight-fürthöz.  A többoldalas csomópontok konfigurálása csak Azure Resource Manager sablonok használatával végezhető el.  A cikk elején tekintse meg a sablon mintáját.  A létrehozni kívánt peremhálózati csomópontok számának megfelelően frissítenie kell a **targetInstanceCount** .
 
 ## <a name="access-an-edge-node"></a>Hozzáférés egy peremhálózati csomóponthoz
-Az Edge Node SSH-végpontja &lt;> EdgeNodeName.&lt; ClusterName > – ssh.azurehdinsight.net:22.  Például: new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
+Az Edge Node SSH-végpontja &lt;EdgeNodeName >.&lt;ClusterName >-ssh.azurehdinsight.net:22.  Például: new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
 
 A peremhálózati csomópont alkalmazásként jelenik meg a Azure Portalon.  A portálon megtekintheti a peremhálózati csomópont SSH használatával való eléréséhez szükséges információkat.
 
@@ -151,13 +151,13 @@ A Azure Portalból törölhet egy peremhálózati csomópontot.
 4. Kattintson a jobb gombbal a törölni kívánt peremhálózati csomópontra, majd kattintson a **Törlés**parancsra.
 5. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan adhat hozzá egy peremhálózati csomópontot, és hogyan érheti el a peremhálózati csomópontot. További információt a következő cikkekben talál:
 
-* [HDInsight alkalmazások telepítése](hdinsight-apps-install-applications.md): Ismerje meg, hogyan telepíthet HDInsight-alkalmazásokat a fürtökre.
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
-* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Ismerje meg, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Marketplace-en.
-* [MSDN HDInsight-alkalmazás](https://msdn.microsoft.com/library/mt706515.aspx)telepítése: Megtudhatja, hogyan definiálhat HDInsight-alkalmazásokat.
+* [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): megtudhatja, hogyan helyezhet üzembe egy közzé nem tett HDInsight alkalmazást a HDInsight.
+* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
+* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
 * [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md) (Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek segítségével): megtudhatja, hogyan telepíthet további alkalmazásokat parancsfájlműveletek használatával.
-* [Linux-alapú Apache Hadoop-fürtök létrehozása a Resource Manager-sablonok használatával HDInsight](hdinsight-hadoop-create-linux-clusters-arm-templates.md): ismerje meg, hogyan hívhat meg Resource Manager-sablonokat HDInsight-fürtök létrehozásához.
+* [Linux-alapú Apache Hadoop-fürtök létrehozása a HDInsight Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md): megtudhatja, hogyan hívhat Resource Manager-sablonokat HDInsight-fürtök létrehozásához.
 

@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1c87c34e6024916052b03e4868139fba30c23190
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b815776b8ff6dddf74c8aaa31a489b56751c0c73
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969552"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162334"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Oktatóanyag: Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással az Terraform használatával
 
@@ -343,9 +343,9 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform apply” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. A Azure Portal a bal oldali menüben a **minden szolgáltatás** elemre kattintva megtekintheti az új Kubernetes-fürthöz létrehozott erőforrásokat.
+1. A Azure Portal a bal oldali menüben válassza az **összes erőforrás** lehetőséget az új Kubernetes-fürthöz létrehozott erőforrások megtekintéséhez.
 
-    ![Cloud Shell-parancssor](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![A Azure Portal összes erőforrása](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Helyreállítás a Cloud Shell időtúllépéséből
 

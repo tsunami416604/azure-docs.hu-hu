@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelhet egy Analysis Services-kiszolgálót az
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63591da8d7661f7f3a29b321c20a2e05351c71fd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6846eaedc7f20f5a7597ee889193e977e86a5ed6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298591"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146844"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
 Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, lehet, hogy bizonyos adminisztrációs és felügyeleti feladatok elvégzéséhez azonnal el kell végeznie az utat. Például futtasson feldolgozást az adatfrissítésre, szabályozhatja, hogy ki férhet hozzá a modellekhez a kiszolgálón, vagy figyelje a kiszolgáló állapotát. Egyes felügyeleti feladatok csak Azure Portalban hajthatók végre, másokat SQL Server Management Studio (SSMS), és néhány feladatot bármelyikben elvégezhet.

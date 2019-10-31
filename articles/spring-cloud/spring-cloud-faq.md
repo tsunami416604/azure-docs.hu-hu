@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592308"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163776"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -66,13 +66,13 @@ Itt láthatja az Azure Spring Cloud ismert korlátozásait, miközben a szolgál
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hogyan adhatok visszajelzést és jelenthetem a jelentéssel kapcsolatos problémákat?
 
-Ha létrehozta a Spring Service-példányokat az Azure Spring Cloud-ban, létrehozhat egy [Azure-támogatási kérelmet](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Ha még nem állította be az Azure Spring Cloud-t, az [Azure feedback](https://feedback.azure.com/) szolgáltatásban kérheti a funkciók kérését, és visszajelzést is küldhet.
+Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létre egy [Azure-támogatási kérelmet](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). A szolgáltatásra vonatkozó kérelmek esetében lépjen az [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback) szolgáltatásban a funkciók kérése vagy a visszajelzések megadásához.
 
 ## <a name="development"></a>Fejlesztés
 
 ### <a name="i-am-a-spring-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-aazure-spring-cloud-application"></a>Tavasszal fejlesztem az Azure-t, de ez a leggyorsabb módszer a Azure Spring Cloud-alkalmazások fejlesztéséhez?
 
-Az Azure Spring Cloud első lépéseinek leggyorsabb módja, ha [ezt a gyors üzembe helyezést](spring-cloud-quickstart-launch-app-portal.md)követi.
+Az Azure Spring Cloud első lépéseinek leggyorsabb módja a rövid [útmutató követése](spring-cloud-quickstart-launch-app-portal.md).
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Milyen Java-futtatókörnyezetet támogat az Azure Spring Cloud?
 

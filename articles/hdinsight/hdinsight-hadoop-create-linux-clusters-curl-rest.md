@@ -1,6 +1,6 @@
 ---
-title: Azure REST API – Azure használatával az Apache Hadoop-fürtök létrehozása
-description: Ismerje meg, hogyan hozhat létre HDInsight-fürtök Azure Resource Manager-sablonok az Azure REST API elküldésével.
+title: Apache Hadoop-fürtök létrehozása az Azure REST API használatával – Azure
+description: Megtudhatja, hogyan hozhat létre HDInsight-fürtöket Azure Resource Manager-sablonok Azure-REST API való elküldésével.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,29 +8,29 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059413"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152011"
 ---
-# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával az Apache Hadoop-fürtök létrehozása
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop-fürtök létrehozása az Azure REST API használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ismerje meg, hogyan hozhat létre egy HDInsight-fürtöt az Azure Resource Manager-sablon és az Azure REST API használatával.
+Megtudhatja, hogyan hozhat létre HDInsight-fürtöt egy Azure Resource Manager sablonnal és az Azure REST API használatával.
 
-Az Azure REST API felügyeleti műveletek végrehajtása a szolgáltatások az Azure platformon, beleértve az új erőforrások, például a HDInsight-fürtök létrehozását teszi lehetővé.
+Az Azure REST API lehetővé teszi, hogy felügyeleti műveleteket hajtson végre az Azure platformon üzemeltetett szolgáltatásokon, beleértve az új erőforrások, például a HDInsight-fürtök létrehozását.
 
 > [!NOTE]  
-> A lépéseket, a jelen dokumentum-használat a [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) segédprogram az Azure REST API folytatott kommunikációhoz.
+> A jelen dokumentumban szereplő lépések a [curl (https://curl.haxx.se/)](https://curl.haxx.se/) segédprogramot használják az Azure-REST API való kommunikációhoz.
 
 ## <a name="create-a-template"></a>Sablon létrehozása
 
-Az Azure Resource Manager-sablonok JSON-dokumentumok, amelyek bemutatják, olyan **erőforráscsoport** és az összes-erőforrásokat (például a HDInsight.) Ez a sablon-alapú módszer lehetővé teszi a HDInsight egy sablont a szükséges erőforrások meghatározása.
+Azure Resource Manager sablonok olyan JSON-dokumentumok, amelyek egy **erőforráscsoportot** és az összes erőforrást (például HDInsight) írják le. Ez a sablon alapú megközelítés lehetővé teszi, hogy meghatározza a HDInsight szükséges erőforrásokat egy sablonban.
 
-A következő JSON-dokumentum a sablon és paraméterek fájlok egyesülés [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), ami létrehoz egy Linux-alapú fürtöt az SSH-felhasználói fiókhoz jelszót használ.
+A következő JSON-dokumentum a sablon és a paramétereket tartalmazó fájlok egyesítése a [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ból ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), amely egy Linux-alapú fürtöt hoz létre jelszó használatával az SSH-felhasználói fiók biztonságossá tételéhez.
 
    ```json
    {
@@ -145,7 +145,7 @@ A következő JSON-dokumentum a sablon és paraméterek fájlok egyesülés [ ht
                                "name": "headnode",
                                "targetInstanceCount": "2",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}" 
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -158,7 +158,7 @@ A következő JSON-dokumentum a sablon és paraméterek fájlok egyesülés [ ht
                                "name": "workernode",
                                "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}"
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -205,60 +205,60 @@ A következő JSON-dokumentum a sablon és paraméterek fájlok egyesülés [ ht
    }
    ```
 
-Ebben a példában a jelen dokumentumban leírt lépések használatban van. Cserélje le a példában *értékek* a a **paraméterek** szakasz azokra az értékekre a fürt számára.
+Ez a példa a jelen dokumentum lépéseiben használatos. Cserélje le a **Parameters (paraméterek** ) szakasz example *értékeit* a fürt értékeire.
 
 > [!IMPORTANT]  
-> A sablon a feldolgozó csomópontok (4) alapértelmezett száma egy HDInsight-fürtöt használ. Ha azt tervezi, hogy több mint 32 feldolgozó csomópontokat, majd jelöljön ki egy fő csomópont méretének legalább 8 maggal és 14 GB ram.
+> A sablon a munkavégző csomópontok alapértelmezett számát (4) használja egy HDInsight-fürthöz. Ha több mint 32 feldolgozó csomópontot tervez, ki kell választania egy fő csomópont-méretet legalább 8 maggal és 14 GB RAM-mal.
 >
 > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
 
-Kövesse a leírt lépéseket [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) , és az előfizetés használatával kapcsolódhat a `az login` parancsot.
+Kövesse az [Azure CLI használatának első](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) lépései című cikkben ismertetett lépéseket, és kapcsolódjon az előfizetéséhez az `az login` paranccsal.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 > [!NOTE]  
-> Ezen lépések végrehajtása egy rövidített verzióját a *egyszerű szolgáltatás létrehozása a jelszó* szakaszában a [erőforrások eléréséhez egy szolgáltatásnév létrehozásához használható Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dokumentumot. Ezeket a lépéseket az Azure REST API-t hitelesítésre használt egyszerű szolgáltatás létrehozása.
+> Ezek a lépések a szolgáltatásnév létrehozása az Azure CLI- *vel* című részben olvashatók az egyszerű [szolgáltatásnév létrehozásához az erőforrások eléréséhez](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) . Ezek a lépések létrehoznak egy egyszerű szolgáltatásnevet, amely az Azure REST API való hitelesítéshez használatos.
 
-1. Egy parancssorból a következő paranccsal listázhatja az Azure-előfizetést.
+1. A parancssorból használja az alábbi parancsot az Azure-előfizetések listázásához.
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    A listában válassza ki az előfizetést, amelyet szeretne használni, és jegyezze fel a **Subscription_ID** és __Tenant_ID__ oszlopokat. Mentse ezeket az értékeket.
+    A listából válassza ki a használni kívánt előfizetést, és jegyezze fel a **Subscription_ID** és a __Tenant_ID__ oszlopokat. Mentse ezeket az értékeket.
 
-2. A következő paranccsal hozzon létre egy alkalmazást az Azure Active Directoryban.
+2. A következő parancs használatával hozzon létre egy alkalmazást a Azure Active Directory.
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    A tartozó értékeket cserélje le a `--display-name`, `--homepage`, és `--identifier-uris` a saját értékeire. Adjon meg egy jelszót az új Active Directory-bejegyzést.
+    Cserélje le a `--display-name`, `--homepage`és `--identifier-uris` értékeit a saját értékeire. Adja meg az új Active Directory bejegyzéshez tartozó jelszót.
 
    > [!NOTE]  
-   > A `--home-page` és `--identifier-uris` értékek nem az interneten lévő üzemeltetett tényleges weblap hivatkoznia kell. Egyedi URI-k kell lenniük.
+   > A `--home-page` és `--identifier-uris` értékeknek nem kell az interneten futó tényleges weblapra hivatkoznia. Egyedi URI-azonosítóknak kell lenniük.
 
-   Ez a parancs által visszaadott értéke a __Alkalmazásazonosító__ az új alkalmazás. Mentse ezt az értéket.
+   A parancs által visszaadott érték az új alkalmazáshoz tartozó __alkalmazás azonosítója__ . Mentse ezt az értéket.
 
-3. A következő paranccsal hozzon létre egy egyszerű szolgáltatás használatával a **Alkalmazásazonosító**.
+3. Használja az alábbi parancsot egy egyszerű szolgáltatásnév létrehozásához az **alkalmazás-azonosító**használatával.
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Ez a parancs által visszaadott értéke a __Objektumazonosító__. Mentse ezt az értéket.
+     A parancs által visszaadott érték az __objektumazonosító__. Mentse ezt az értéket.
 
-4. Rendelje hozzá a **tulajdonosa** szerepkört a szolgáltatás egyszerű történő a **Objektumazonosító** értéket. Használja a **előfizetés-azonosító** korábban szerzett be.
+4. Rendelje hozzá a **tulajdonosi** szerepkört az egyszerű szolgáltatáshoz az **objektumazonosító** érték használatával. Használja a korábban beszerzett **előfizetés-azonosítót** .
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
-## <a name="get-an-authentication-token"></a>A hitelesítési jogkivonat beszerzése
+## <a name="get-an-authentication-token"></a>Hitelesítési jogkivonat beszerzése
 
-A következő paranccsal beolvasni egy hitelesítési jogkivonatot:
+Használja a következő parancsot egy hitelesítési jogkivonat lekéréséhez:
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -270,11 +270,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Állítsa be `$TENANTID`, `$APPID`, és `$PASSWORD` kapott, vagy a korábban használt értékeket.
+`$TENANTID`, `$APPID`és `$PASSWORD` beállítása a korábban beszerzett vagy felhasznált értékekre.
 
-Ha a kérelem sikeres, 200 sorozat választ kap, és a válasz törzse tartalmazza a JSON-dokumentumok.
+Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse JSON-dokumentumot tartalmaz.
 
-A kérelem által visszaadott JSON-dokumentumok nevű elemet tartalmaz **access_token**. Az érték **access_token** hitelesítési kéréseket a REST API segítségével.
+A kérelem által visszaadott JSON-dokumentum egy **access_token**nevű elemet tartalmaz. A **access_token** értéke a REST API felé irányuló kérelmek hitelesítésére szolgál.
 
 ```json
 {
@@ -286,14 +286,14 @@ A kérelem által visszaadott JSON-dokumentumok nevű elemet tartalmaz **access_
 }
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-A következő használatával hozzon létre egy erőforráscsoportot.
+Erőforráscsoport létrehozásához használja a következőt.
 
-* Állítsa be `$SUBSCRIPTIONID` az egyszerű szolgáltatás létrehozása során kapott Azonosítót az előfizetés.
-* Állítsa be `$ACCESSTOKEN` , az előző lépésben kapott hozzáférési jogkivonat.
-* Cserélje le `DATACENTERLOCATION` kíván létrehozni az erőforráscsoportot és az erőforrások, a data-központban. Például: USA déli középső Régiója".
-* Állítsa be `$RESOURCEGROUPNAME` szeretné használni a csoport neve:
+* `$SUBSCRIPTIONID` beállítása az egyszerű szolgáltatásnév létrehozásakor kapott előfizetés-AZONOSÍTÓra.
+* `$ACCESSTOKEN` beállítása az előző lépésben kapott hozzáférési jogkivonatra.
+* Cserélje le a `DATACENTERLOCATION`t arra az adatközpontra, amelyben létre kívánja hozni az erőforráscsoportot és az erőforrásokat. Például: "USA déli középső régiója".
+* Adja meg a `$RESOURCEGROUPNAME`t a csoporthoz használni kívánt névre:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Ha a kérelem sikeres, 200 sorozat választ kap, és a válasz törzse tartalmazza a csoport adatait tartalmazó JSON-dokumentumok. A `"provisioningState"` elem tartalmazza a egy értéke `"Succeeded"`.
+Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse tartalmaz egy JSON-dokumentumot, amely a csoportra vonatkozó információkat tartalmazza. A `"provisioningState"` elem `"Succeeded"`értékét tartalmazza.
 
 ## <a name="create-a-deployment"></a>Központi telepítés létrehozása
 
-Az alábbi parancs segítségével helyezheti üzembe a sablont az erőforráscsoporthoz.
+A következő parancs használatával telepítse a sablont az erőforráscsoporthoz.
 
-* Állítsa be `$DEPLOYMENTNAME` ehhez a központi telepítéshez használni kívánt nevet.
+* Állítsa be `$DEPLOYMENTNAME`t a központi telepítéshez használni kívánt névre.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -320,18 +320,18 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Ha mentette a sablont egy fájlba, a következő parancs helyett használhatja `-d "{ template and parameters}"`:
+> Ha a sablont egy fájlba mentette, a következő parancsot használhatja `-d "{ template and parameters}"`helyett:
 >
 > `--data-binary "@/path/to/file.json"`
 
-Ha a kérelem sikeres, 200 sorozat választ kap, és a válasz törzse tartalmazza a központi telepítési művelettel kapcsolatos adatokat tartalmazó JSON-dokumentumok.
+Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse tartalmaz egy JSON-dokumentumot, amely az üzembe helyezési műveletre vonatkozó információkat tartalmaz.
 
 > [!IMPORTANT]  
-> Az üzemelő példány elküldése megtörtént, de nem fejeződött be. Általában körülbelül 15., a központi telepítés befejezése több percet is igénybe vehet.
+> A központi telepítés elküldve, de még nem fejeződött be. A telepítés befejezéséhez több percet is igénybe vehet, általában 15 kb.
 
-## <a name="check-the-status-of-a-deployment"></a>A központi telepítési állapotának ellenőrzése
+## <a name="check-the-status-of-a-deployment"></a>Központi telepítés állapotának megkeresése
 
-Az üzembe helyezés állapotának ellenőrzéséhez használja a következő parancsot:
+A központi telepítés állapotának megtekintéséhez használja a következő parancsot:
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -339,29 +339,29 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Ez a parancs visszaadja a központi telepítési művelettel kapcsolatos adatokat tartalmazó JSON-dokumentumok. A `"provisioningState"` elem tartalmazza a központi telepítés állapotát. Ha ez az elem értéke tartalmaz `"Succeeded"`, majd a telepítés sikeresen befejeződött.
+Ez a parancs egy JSON-dokumentumot ad vissza, amely a telepítési műveletre vonatkozó információkat tartalmaz. A `"provisioningState"` elem tartalmazza a telepítés állapotát. Ha ez az elem `"Succeeded"`értéket tartalmaz, a központi telepítés sikeresen befejeződött.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő segítségével megtudhatja, hogyan működik a fürttel.
+Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő paranccsal megismerheti, hogyan dolgozhat a fürttel.
 
-### <a name="apache-hadoop-clusters"></a>Az Apache Hadoop-fürtök
+### <a name="apache-hadoop-clusters"></a>Fürtök Apache Hadoop
 
-* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig és a HDInsight használata](hadoop/hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="apache-hbase-clusters"></a>Az Apache HBase-fürtök
+### <a name="apache-hbase-clusters"></a>Apache HBase-fürtök
 
-* [A HDInsight Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Az Apache HBase on HDInsight Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
+* [Ismerkedés az Apache HBase a HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Java-alkalmazások fejlesztése az Apache HBase a HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Apache Storm-fürtök
+### <a name="apache-storm-clusters"></a>Fürtök Apache Storm
 
-* [Java-topológiák fejlesztése a HDInsight az Apache stormmal](storm/apache-storm-develop-java-topology.md)
-* [Az Apache Storm on HDInsight használata a Python-összetevők](storm/apache-storm-develop-python-topology.md)
-* [Telepítheti és figyelheti a HDInsight Apache Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Java-topológiák fejlesztése a HDInsight Apache Storméhez](storm/apache-storm-develop-java-topology.md)
+* [Python-összetevők használata a HDInsight-ben Apache Storm](storm/apache-storm-develop-python-topology.md)
+* [Topológiák üzembe helyezése és figyelése Apache Storm a HDInsight-on](storm/apache-storm-deploy-monitor-topology-linux.md)

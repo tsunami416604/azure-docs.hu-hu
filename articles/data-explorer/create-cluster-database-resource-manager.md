@@ -7,26 +7,26 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e2e051db00c9b8de5268e64be70ab99752bf7a55
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 34f5daaf074e011176610caed883cef9d1dbb2ea
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001414"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152041"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM-sablon](create-cluster-database-resource-manager.md)
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
 
-Ebben a cikkben egy Azure Adatkezelő-fürtöt és-adatbázist hoz létre egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-overview.md)használatával. A cikk bemutatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok készítése](/azure/azure-resource-manager/resource-group-authoring-templates). A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Kusto-erőforrástípusok](/azure/templates/microsoft.kusto/allversions).
+Ebben a cikkben egy Azure Adatkezelő-fürtöt és-adatbázist hoz létre egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-overview.md)használatával. A cikk bemutatja, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok készítése](/azure/azure-resource-manager/resource-group-authoring-templates). A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Kusto-erőforrástípusok](/azure/templates/microsoft.kusto/allversions).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -129,14 +129,14 @@ Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz ig�
     $resourceGroupName = "${projectName}rg"
     $clusterName = "${projectName}cluster"
     $parameters = @{}
-    $parameters.Add(“clusters_kustocluster_name”, $clusterName)
+    $parameters.Add("clusters_kustocluster_name", $clusterName)
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json"
     New-AzResourceGroup -Name $resourceGroupName -Location $location
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Válassza ki **másolási** másolása a PowerShell-parancsfájlt.
+1. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
 1. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
 Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz igénybe.
 
@@ -176,6 +176,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Adatkezelő-fürt és-adatbázis betöltése](ingest-data-overview.md)

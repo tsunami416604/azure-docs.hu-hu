@@ -1,6 +1,6 @@
 ---
-title: A Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
-description: Ismerje meg, hogyan állítható be az Azure-ban a Pivotal Cloud Foundry (PCF)-fürt üzembe helyezése szükséges paraméterek
+title: Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
+description: Megtudhatja, hogyan állíthatja be az Azure-beli Pivotal Cloud Foundry (PCF) fürt kiépítéséhez szükséges paramétereket.
 services: Cloud Foundry
 documentationcenter: CloudFoundry
 author: ruyakubu
@@ -14,77 +14,77 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: f5ae599b516ac3ce6a9fcc40c0e26d242134e7d7
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226621"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161780"
 ---
-# <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>A Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
+# <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
 
-Ebben az oktatóanyagban lépéseit gyors létrehozása és a paraméterek, az Azure-ban a Pivotal Cloud Foundry (PCF)-fürt üzembe helyezése kell létrehozni. A Pivotal Cloud Foundry-megoldás megkeresése, a keresés végrehajtása az Azure-ban [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
+Ez az oktatóanyag gyors lépéseket biztosít a Pivotal Cloud Foundry (PCF) fürt Azure-beli üzembe helyezéséhez szükséges paraméterek létrehozásához és létrehozásához. A Pivotal Cloud Foundry megoldás megkereséséhez végezzen keresést az Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)-en.
 
-![Keresés a Pivotal Cloud Foundry az Azure-ban](media/deploy/pcf-marketplace.png)
+![Pivotal Cloud Foundry keresése az Azure-ban](media/deploy/pcf-marketplace.png)
 
 
 ## <a name="generate-an-ssh-public-key"></a>Nyilvános SSH-kulcs létrehozása
 
-Többféleképpen is lehet hozzon létre egy secure shell-(SSH) nyilvános kulcsot a Windows, Mac vagy Linux.
+A nyilvános Secure Shell-(SSH-) kulcs többféleképpen is létrehozható Windows, Mac vagy Linux használatával.
 
 ```Bash
 ssh-keygen -t rsa -b 2048
 ```
 
-További információkért lásd: [használata SSH-kulcsok az Azure-on Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+További információ: SSH- [kulcsok használata az Azure-ban Windowson](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 > [!NOTE]
 >
-> Hozzon létre egy egyszerű szolgáltatást, tulajdonos fiók engedéllyel kell. Automatizálhatja az egyszerű szolgáltatásnév létrehozása egy parancsfájlt is írhat. Például használhatja az Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
+> Egyszerű szolgáltatásnév létrehozásához tulajdonosi fiókra van szükség. Emellett parancsfájlt is írhat az egyszerű szolgáltatás létrehozásának automatizálására. Használhatja például az Azure CLI az [ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
 
 1. Jelentkezzen be Azure-fiókjába.
 
     `az login`
 
-    ![Azure CLI-azonosító](media/deploy/az-login-output.png )
+    ![Azure CLI-bejelentkezés](media/deploy/az-login-output.png )
  
-    Másolja az "id" értéket, a **előfizetés-azonosító**, és másolja a "tenantId" értéket későbbi használatra.
+    Másolja az "id" értéket előfizetés- **azonosítóként**, és másolja a "tenantId" értéket a későbbi használatra.
 
 2. Állítsa be az alapértelmezett előfizetést ehhez a konfigurációhoz.
 
     `az account set -s {id}`
 
-3. A PCF egy Azure Active Directory-alkalmazás létrehozása. Adjon meg egy egyedi alfanumerikus jelszót. Store a jelszót, mint a **clientSecret** későbbi használat céljából.
+3. Hozzon létre egy Azure Active Directory alkalmazást a PCF. Egyedi alfanumerikus jelszót kell megadnia. Tárolja a jelszót, amelyet később **clientSecret** használni.
 
     `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
 
-    A kimenetben: az "appId" értéke másolja a **clientID** későbbi használat céljából.
+    Másolja az "appId" értéket a kimenetben, amelyet később a **clientID** használ.
 
     > [!NOTE]
     >
-    > Válassza ki a saját alkalmazás kezdőlapját és azonosító URI-t, például http\://www\.contoso.com.
+    > Válassza ki a saját alkalmazás kezdőlapját és azonosítójának URI-JÁT, például: http\://www\.contoso.com.
 
-4. Egyszerű szolgáltatás létrehozása új app ID azonosítójával.
+4. Hozzon létre egy egyszerű szolgáltatást az új alkalmazás-AZONOSÍTÓval.
 
     `az ad sp create --id {appId}`
 
-5. Állítsa be a jogosultsági szerepkört, az egyszerű szolgáltatás közreműködője.
+5. Adja meg az egyszerű szolgáltatásnév engedélyezési szerepkörét közreműködőként.
 
-    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor”`
+    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
 
-    Is használhatja, vagy
+    Emellett használhatja a
 
-    `az role assignment create --assignee {service-principal-name} --role “Contributor”`
+    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
 
-    ![Szolgáltatás egyszerű szerepkör-hozzárendelés](media/deploy/svc-princ.png )
+    ![Egyszerű szolgáltatás szerepkör-hozzárendelése](media/deploy/svc-princ.png )
 
-6. Győződjön meg arról, hogy sikeresen bejelentkezhet az egyszerű szolgáltatás használatával, az alkalmazás-Azonosítóját, a jelszót és a bérlő azonosítója.
+6. Győződjön meg arról, hogy sikeresen bejelentkezhet a szolgáltatásba az alkalmazás-azonosító, a jelszó és a bérlő azonosítója használatával.
 
     `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. Hozzon létre egy .JSON kiterjesztésű fájlt a következő formátumban. Használja a **előfizetés-azonosító**, **tenantID**, **clientID**, és **clientSecret** korábban kimásolt értékekkel. Mentse a fájlt.
+7. Hozzon létre egy. JSON fájlt a következő formátumban. Használja a korábban átmásolt **előfizetés-azonosítót**, a **tenantID**, a **clientID**és a **clientSecret** értékeket. Mentse a fájlt.
 
     ```json
     {
@@ -95,37 +95,37 @@ További információkért lásd: [használata SSH-kulcsok az Azure-on Windows](
     }
     ```
 
-## <a name="get-the-pivotal-network-token"></a>A Pivotal hálózat token beszerzése
+## <a name="get-the-pivotal-network-token"></a>A Pivotal hálózati jogkivonat beszerzése
 
-1. Regisztráljon vagy jelentkezzen be a [Pivotal hálózat](https://network.pivotal.io) fiókot.
-2. Válassza ki a profil nevét a lap jobb felső sarkában. Válassza ki **profil szerkesztése**.
-3. Görgessen a lap, és másolja a aljára a **ÖRÖKÖLT API TOKEN** értéket. Ez az érték a **Pivotal hálózat Token** érték, amely későbbi használatra.
+1. Regisztráljon vagy jelentkezzen be a [Pivotal hálózati](https://network.pivotal.io) fiókjába.
+2. Válassza ki a profil nevét az oldal jobb felső sarkában. Válassza a **Profil szerkesztése**lehetőséget.
+3. Görgessen a lap aljára, és másolja az **örökölt API-jogkivonat** értékét. Ez az érték a **Pivotal hálózati jogkivonat** értéke, amelyet később használ.
 
-## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Az Azure-ban a Cloud Foundry-fürt üzembe helyezése
+## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>A Cloud Foundry-fürt kiépítése az Azure-ban
 
-Most, hogy minden a paramétereket kell rendelkezni a [Pivotal Cloud Foundry Azure-beli fürt](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
-Adja meg a paramétereket, és a PCF-fürt létrehozásához.
+Most már rendelkezik a [pivotal Cloud Foundry-fürt Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)-beli üzembe helyezéséhez szükséges összes paraméterrel.
+Adja meg a paramétereket, és hozza létre a PCF-fürtöt.
 
-## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>A telepítés ellenőrzése, és jelentkezzen be a Pivotal az Ops Manager
+## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>Ellenőrizze a központi telepítést, és jelentkezzen be a Pivotal Ops-kezelőbe
 
-1. A PCF-fürt egy központi telepítési állapotát jeleníti meg.
+1. A PCF-fürtben egy telepítési állapot látható.
 
-    ![Az Azure-telepítés állapota](media/deploy/deployment.png )
+    ![Azure-beli üzembe helyezés állapota](media/deploy/deployment.png )
 
-2. Válassza ki a **központi telepítések** hitelesítő adatainak lekérése a PCF az Ops Manager a bal oldali navigációs hivatkozás. Válassza ki a **üzemelő példány neve** a következő oldalon.
-3. A bal oldali navigációs sávján válassza ki a **kimenetek** jeleníti meg az URL-címe, felhasználónév és jelszó a PCF az Ops Manager mutató hivatkozást. Az "OPSMAN-FQDN" érték: az URL-címet.
+2. A bal oldali navigációs sávon a PCF Ops-kezelőhöz tartozó hitelesítő adatok beszerzéséhez kattintson a **központi telepítések** hivatkozásra. Válassza ki a **központi telepítés nevét** a következő oldalon.
+3. A bal oldali navigációs sávon válassza a **kimenetek** hivatkozást, amely MEGJELENÍTI a PCF Ops-kezelő URL-címét, felhasználónevét és jelszavát. A "OPSMAN-FQDN" érték az URL-cím.
  
-    ![Cloud Foundry üzembe helyezési kimenet](media/deploy/deploy-outputs.png )
+    ![Cloud Foundry központi telepítés kimenete](media/deploy/deploy-outputs.png )
  
-4. Indítsa el az URL-CÍMÉT egy webböngészőben. Adja meg a hitelesítő adatokat, jelentkezzen be az előző lépésben.
+4. Indítsa el az URL-címet egy böngészőben. A bejelentkezéshez adja meg az előző lépésben megadott hitelesítő adatokat.
 
-    ![A Pivotal bejelentkezési oldal](media/deploy/pivotal-login.png )
+    ![Pivotal bejelentkezési oldal](media/deploy/pivotal-login.png )
          
     > [!NOTE]
     >
-    > Ha az Internet Explorer böngésző "Hely nem biztonságos" figyelmeztető üzenet miatt hiúsul meg, válassza ki a **bővebben** és a képernyőn látható weblapon. Firefox kiválasztása **előzetes** , és adja hozzá a tanúsítvány a folytatáshoz.
+    > Ha az Internet Explorer böngésző a "hely nem biztonságos" figyelmeztető üzenet miatt sikertelen, válassza a **További információk** lehetőséget, és lépjen a weblapra. A Firefox esetében válassza az **Advance** lehetőséget, majd a folytatáshoz adja hozzá a minősítést.
 
-5. A PCF az Ops Manager megjeleníti a telepített Azure-példányokon. Most már telepítheti és kezelheti az alkalmazások itt.
+5. A PCF Ops Manager megjeleníti az üzembe helyezett Azure-példányokat. Most már üzembe helyezheti és kezelheti az alkalmazásait.
                
-    ![Pivotal üzembe helyezett Azure-példány](media/deploy/ops-mgr.png )
+    ![Üzembe helyezett Azure-példány a Pivotal](media/deploy/ops-mgr.png )
  

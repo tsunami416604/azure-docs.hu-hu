@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: e6a1dba603cbeea276dc6153f82ae599e3d29b3d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101344"
+ms.locfileid: "73162817"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -34,7 +34,7 @@ Ez a rövid útmutató a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, lépjen kapcsolatba velünk e-mailben: azure-spring-cloud@service.microsoft.com.
+> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, töltse ki és küldje be az [Azure Spring Cloud (privát előzetes verzió) érdeklődési formáját](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). Habár az Azure Spring Cloud előzetes verzióban érhető el, a Microsoft korlátozott támogatást biztosít SLA nélkül.  Az előzetes verziókkal kapcsolatos támogatásról további információt ebben a [támogatási gyikban](https://azure.microsoft.com/support/faq/)találhat.
 
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben

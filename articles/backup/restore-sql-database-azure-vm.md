@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8bdc77ba81c5a9ec47a02ef5a1ede82365314941
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968862"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161898"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -68,19 +68,19 @@ Visszaállítás a következőképpen:
     - A legrégebbi és a legújabb visszaállítási pontok.
     - A napló biztonsági mentési állapota az elmúlt 24 órában olyan adatbázisok esetén, amelyek teljes és tömegesen naplózott helyreállítási módban vannak, és amelyek a tranzakciós napló biztonsági mentésére vannak konfigurálva.
 
-6. Válassza az **adatbázis visszaállítása**lehetőséget.
+6. Válassza a **visszaállítás**lehetőséget.
 
-    ![A visszaállítási adatbázis kiválasztása](./media/backup-azure-sql-database/restore-db-button.png)
+    ![Visszaállítás kiválasztása](./media/backup-azure-sql-database/restore-db.png)
 
-7. A **visszaállítási konfiguráció**területen adja meg, hová szeretné visszaállítani az adatkészletet:
+7. A **visszaállítási konfiguráció**területen adja meg, hogy hol (vagy hogyan) szeretné visszaállítani az adatértékeket:
    - **Másik hely**: állítsa vissza az adatbázist egy másik helyre, és tartsa meg az eredeti forrás-adatbázist.
    - **Adatbázis felülírása**: állítsa vissza az adatforrást ugyanarra a SQL Server példányra, mint az eredeti forrást. Ez a beállítás felülírja az eredeti adatbázist.
 
-     > [!Important]
-     > Ha a kiválasztott adatbázis egy always on rendelkezésre állási csoporthoz tartozik, SQL Server nem teszi lehetővé az adatbázis felülírását. Csak a **másik hely** érhető el.
-     >
-
-     ![Konfiguráció visszaállítása menü](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+           > [!IMPORTANT]
+           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
+           >
+   - **Visszaállítás fájlként**: adatbázisként való visszaállítás helyett állítsa vissza azokat a biztonsági másolati fájlokat, amelyeket később adatbázisként helyreállíthat bármely olyan gépen, ahol a fájlok SQL Server Management Studio használatával jelennek meg.
+     ![visszaállítási konfigurációs menü](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Visszaállítás másik helyre
 
@@ -90,7 +90,7 @@ Visszaállítás a következőképpen:
 4. Ha van ilyen, válassza **a felülírás lehetőséget, ha már létezik ilyen nevű adatbázis a kiválasztott SQL-példányon**.
 5. Kattintson az **OK** gombra.
 
-    ![Értékek megadása a konfiguráció visszaállítása menühöz](./media/backup-azure-sql-database/restore-configuration-menu.png)
+    ![Értékek megadása a konfiguráció visszaállítása menühöz](./media/backup-azure-sql-database/restore-configuration.png)
 
 6. A **visszaállítási pont kiválasztása lapon**válassza ki, hogy [egy adott időpontra kívánja-e visszaállítani a visszaállítást](#restore-to-a-specific-point-in-time) , vagy [egy adott helyreállítási pontra kíván visszaállítani](#restore-to-a-specific-restore-point).
 
@@ -107,6 +107,25 @@ Visszaállítás a következőképpen:
 
     > [!NOTE]
     > Az időponthoz való visszaállítás csak a teljes és tömegesen naplózott helyreállítási módban lévő adatbázisok biztonsági másolatai esetében érhető el.
+
+### <a name="restore-as-files"></a>Visszaállítás fájlként
+
+Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsági mentési adatmennyiséget, válassza a **visszaállítás fájlként**lehetőséget. Ha a fájlok egy megadott elérési útra lettek kiadva, ezeket a fájlokat bármely olyan gépre elvégezheti, ahol adatbázisként szeretné visszaállítani őket. Azzal, hogy a fájlokat bármilyen gépen át tudja helyezni, most már visszaállíthatja az adatátvitelt és a régiókat.
+
+1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye**területen válassza a **visszaállítás fájlként**lehetőséget.
+2. Válassza ki azt a SQL Server nevet, amelyre vissza kívánja állítani a biztonságimásolat-fájlokat.
+3. A **kiszolgáló célhelyének elérési útja** a 2. lépésben kiválasztott kiszolgálón adja meg a mappa elérési útját. Ez az a hely, ahol a szolgáltatás kiírja az összes szükséges biztonságimásolat-fájlt. A célként megadott elérési úttal megegyező hálózati megosztási elérési út vagy egy csatlakoztatott Azure-fájlmegosztás elérési útja lehetővé teszi, hogy a fájlok könnyebben hozzáférhessenek az azonos hálózatban lévő más gépekhez, illetve az azokhoz csatlakoztatott Azure-fájlmegosztáshoz.
+4. Kattintson az **OK** gombra.
+
+![Válassza a visszaállítás fájlokként lehetőséget.](./media/backup-azure-sql-database/restore-as-files.png)
+
+5. Válassza ki azt a **visszaállítási pontot** , amelyik a rendelkezésre álló. bak összes fájlt vissza fogja állítani.
+
+![Válasszon egy visszaállítási pontot](./media/backup-azure-sql-database/restore-point.png)
+
+6. A rendszer a kijelölt helyreállítási ponthoz társított összes biztonságimásolat-fájlt a célhely elérési útjára írja. A fájlokat bármely olyan gépen visszaállíthatja adatbázisként, amelyen a SQL Server Management Studio használatával van jelen.
+
+![Visszaállított biztonságimásolat-fájlok a célhely elérési útján](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Visszaállítás adott időpontra
 

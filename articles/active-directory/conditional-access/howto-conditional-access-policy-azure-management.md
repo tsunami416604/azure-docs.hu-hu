@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd2259dc715fb54122b721ce40a715c6987947d2
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ad44cc83d65206ec1f199e57685b0dcc3cbb07a5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170114"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151169"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Feltételes hozzáférés: MFA megkövetelése az Azure felügyeletéhez
 
@@ -49,8 +49,8 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy actions**@no__t-**1 területen válassza az** **alkalmazások kiválasztása**lehetőséget, válassza a **Microsoft Azure felügyelet**lehetőséget, majd válassza a **kiválasztás** , majd a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés**@no__t-**1 támogatás**területen válassza a **hozzáférés engedélyezése**, a **többtényezős hitelesítés megkövetelése**és a **kiválasztás**lehetőséget.
+1. A **Cloud apps vagy actions** > **között**válassza az **alkalmazások kiválasztása**lehetőséget, válassza a **Microsoft Azure felügyelet**lehetőséget, majd válassza a **kiválasztás** , majd a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés** > a **támogatás**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**és a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 

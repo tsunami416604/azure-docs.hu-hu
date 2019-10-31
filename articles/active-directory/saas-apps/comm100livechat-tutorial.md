@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció az Comm100 élő csevegés |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Comm100 élő csevegés között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Comm100 élő csevegéssel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Comm100 élő csevegés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 0340d7f3-ab54-49ef-b77c-62a0efd5d49c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,263 +16,263 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a03b185f6df5e32012883d210d684ec08b119019
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91a7bf535a4afe0d46a13bbdc5643da7d5ce3334
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105028"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157345"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Oktatóanyag: Az Azure Active Directory-integráció az Comm100 élő csevegés
+# <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Oktatóanyag: Azure Active Directory integráció a Comm100 élő csevegéssel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Comm100 élő csevegés integrálása az Azure Active Directoryval (Azure AD).
-Az Azure AD integrálása a Comm100 élő csevegés nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Comm100 élő csevegést Azure Active Directory (Azure AD) használatával.
+Az Comm100 Live Chat és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Comm100 élő csevegés az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett Comm100 élő csevegés (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá az élő csevegés Comm100.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az élő csevegés (egyszeri bejelentkezés) Comm100 az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Comm100 élő csevegés az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció Comm100 élő csevegéssel való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Comm100 élő csevegés egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Comm100 élő csevegéses egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja a Comm100 élő csevegés **SP** által kezdeményezett egyszeri bejelentkezés
+* Comm100 élő csevegés támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-comm100-live-chat-from-the-gallery"></a>Hozzáadás a katalógusból, Comm100 élő csevegés
+## <a name="adding-comm100-live-chat-from-the-gallery"></a>Élő csevegés Comm100 hozzáadása a katalógusból
 
-Az Azure AD integrálása a Comm100 élő csevegés konfigurálásához hozzá kell Comm100 élő csevegés a galériából a felügyelt SaaS-alkalmazások listájára.
+A Comm100 élő csevegés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Comm100 élő csevegést a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Élő csevegés a Comm100 hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha élő csevegést szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket a Comm100:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Comm100 élő csevegés**válassza **Comm100 élő csevegés** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **Comm100 Live Chat**, válassza a **Comm100 élő csevegés** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Comm100 az eredménylistában élő csevegés](common/search-new-app.png)
+     ![Élő csevegés Comm100 az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Comm100 élő csevegés nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználót és a kapcsolódó felhasználó Comm100 élő csevegés hivatkozás kapcsolatának kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Comm100 Live chattel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti Comm100 élő csevegéssel kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés az Comm100 élő csevegés tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés Comm100 élő csevegéssel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Comm100 élő csevegés egyszeri bejelentkezés konfigurálása](#configure-comm100-live-chat-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre tesztfelhasználót Comm100 élő csevegés](#create-comm100-live-chat-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon Comm100 élő csevegés, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Comm100 élő csevegéses egyszeri bejelentkezés](#configure-comm100-live-chat-single-sign-on)** konfigurálása – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Comm100 élő csevegési teszt felhasználó létrehozása](#create-comm100-live-chat-test-user)** – a Comm100 élő csevegés Britta, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Comm100 élő csevegés, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés Comm100 élő csevegéssel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Comm100 élő csevegés** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/) **Comm100 Live Chat** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Comm100 élő csevegés tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
+    ![Comm100 élő csevegési tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<SUBDOMAIN>.comm100.com/AdminManage/LoginSSO.aspx?siteId=<SITEID>`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.comm100.com/AdminManage/LoginSSO.aspx?siteId=<SITEID>`
 
     > [!NOTE] 
-    > A bejelentkezési URL-érték nem valódi. A tényleges bejelentkezési URL-címet, az oktatóanyag későbbi részében ismertetett frissíteni a bejelentkezési URL-érték.
+    > A bejelentkezési URL-cím értéke nem valós. A bejelentkezési URL-címet a tényleges bejelentkezési URL-címmel fogja frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-5. Comm100 élő csevegőalkalmazás létrehozása a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Az Comm100 Live Chat-alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name (Név) |  Adatforrás-attribútum|
+    | Név |  Forrás attribútum|
     | ---------------| --------------- |
-    |   email    | user.mail |
+    |   e-mail    | User. mail |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson a **Ok**
+    f. Kattintson **az OK** gombra
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. Az a **Comm100 élő csevegés beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **Comm100 élő csevegés beállítása** szakaszban adja meg a megfelelő URL (eke) t a követelménynek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Bejelentkezési URL-cím
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-comm100-live-chat-single-sign-on"></a>Élő csevegés Comm100 egyszeri bejelentkezés konfigurálása
+### <a name="configure-comm100-live-chat-single-sign-on"></a>Comm100 élő csevegéses egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban, jelentkezzen be Comm100 élő csevegés egy biztonsági-rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be, hogy Comm100 az élő csevegést biztonsági rendszergazdaként.
 
-1. Kattintson a lap felső jobb oldalán, **My Account**.
+1. A lap jobb felső részén kattintson a **saját fiók**elemre.
 
-   ![Myaccount Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+   ![Comm100 élő csevegés MyAccount](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
-1. A menüt a bal oldali menüjében kattintson az **biztonsági** majd **ügynök egyszeri bejelentkezés**.
+1. A menü bal oldalán kattintson a **Biztonság** elemre, majd az **ügynök egyszeri bejelentkezés**elemre.
 
-   ![Biztonsági Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Comm100 élő csevegés biztonsága](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
-1. Az a **ügynök egyszeri bejelentkezés** lapon, a következő lépésekkel:
+1. Az **ügynök egyszeri bejelentkezés** lapján hajtsa végre a következő lépéseket:
 
-   ![Biztonsági Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+   ![Comm100 élő csevegés biztonsága](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
 
-   a. Az első kiemelt hivatkozásra másolja és illessze be azt a **bejelentkezési URL-** szövegmezőjébe **Comm100 élő csevegés tartomány és URL-címek** szakaszban az Azure Portalon.
+   a. Másolja ki az első Kiemelt hivatkozást, és illessze be a **bejelentkezési URL** szövegmezőbe a **Comm100 élő csevegési tartomány és URL-címek** szakaszában Azure Portal.
 
-   b. Az a **SAML egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+   b. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portal másolt.
 
-   c. Az a **távoli kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezési URL-címe**, az Azure Portalról másolt.
+   c. A **távoli kijelentkezési URL-cím** szövegmezőbe illessze be a **KIjelentkezési URL-cím**értékét, amelyet a Azure Portal másolt.
 
-   d. Kattintson a **válasszon ki egy fájlt** feltölteni a base-64 kódolású tanúsítványt, amelyet már letöltötte az Azure Portalról, a **tanúsítvány**.
+   d. Kattintson a **fájl kiválasztása** lehetőségre a Azure Portalból letöltött base-64 kódolt tanúsítvány feltöltéséhez a **tanúsítványba**.
 
-   e. Kattintson a **módosítások mentése**
+   e. Kattintson a **módosítások mentése** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával Comm100 élő csevegés Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Comm100 élő csevegéshez.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Comm100 élő csevegés**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Comm100 élő csevegés**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Comm100 élő csevegés**.
+2. Az alkalmazások listában válassza a **Comm100 élő csevegés**lehetőséget.
 
-    ![Az alkalmazások listáját a Comm100 élő csevegés hivatkozás](common/all-applications.png)
+    ![A Comm100 élő csevegési hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-comm100-live-chat-test-user"></a>Hozzon létre tesztfelhasználót Comm100 élő csevegés
+### <a name="create-comm100-live-chat-test-user"></a>Comm100 élő csevegési teszt felhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Comm100 élő csevegés jelentkezzen be, akkor ki kell építeni Comm100 élő csevegés be. Élő csevegés Comm100 kiépítése a manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az élő csevegés Comm100, a Comm100 élő csevegésbe kell kiépíteni őket. Az élő csevegés Comm100 a kiépítés manuális feladat.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Élő csevegés Comm100 egy biztonsági-rendszergazdaként jelentkezzen be.
+1. Jelentkezzen be az élő csevegés Comm100 biztonsági rendszergazdaként.
 
-2. Kattintson a lap felső jobb oldalán, **My Account**.
+2. A lap jobb felső részén kattintson a **saját fiók**elemre.
 
-    ![Myaccount Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+    ![Comm100 élő csevegés MyAccount](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
-3. A menüt a bal oldali menüjében kattintson az **ügynökök** majd **új ügynök**.
+3. A menü bal oldalán kattintson az **ügynökök** elemre, majd az **új ügynök**elemre.
 
-    ![Az ügynök Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_agent.png)
+    ![Comm100 élő csevegési ügynök](./media/comm100livechat-tutorial/tutorial_comm100livechat_agent.png)
 
-4. Az a **új ügynök** lapon, a következő lépésekkel:
+4. Az **új ügynök** oldalon hajtsa végre a következő lépéseket:
 
-    ![Új ügynök Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
+    ![Comm100 élő csevegés – új ügynök](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon\@contoso.com**.
+    a. a. Az **e-mail** -szövegmezőbe írja be a felhasználó, például a **Brittasimon\@contoso.com**.
 
-    b. A **Utónév** szöveget adja meg például a felhasználó utónevét **Britta**.
+    b. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
 
-    c. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **simon**.
+    c. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    d. Az a **megjelenítendő név** szövegmezőbe írja be például a felhasználó megjelenített neve **Britta simon**
+    d. A **megjelenítendő név** szövegmezőbe írja be a felhasználó megjelenítendő nevét, például **Britta Simon**
 
-    e. Az a **jelszó** szövegmezőbe írja be a jelszavát.
+    e. A **jelszó** szövegmezőbe írja be a jelszót.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen Comm100 élő csevegés csempére kattint, akkor kell automatikusan megtörténik a a Comm100 élő csevegés, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Comm100 élő csevegés csempére kattint, automatikusan be kell jelentkeznie a Comm100 Live Chat szolgáltatásba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

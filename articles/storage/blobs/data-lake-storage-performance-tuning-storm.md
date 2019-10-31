@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855427"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159860"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és Azure Data Lake Storage Gen2
 
@@ -22,8 +22,8 @@ Megismerheti azokat a tényezőket, amelyeket figyelembe kell venni az Azure Sto
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd [: gyors útmutató: Hozzon létre egy Storage-](data-lake-storage-quickstart-create-account.md)fiókot az analitikai szolgáltatáshoz.
-* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)-fürtökkel. Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
+* **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Storage-fiók létrehozása analitikai szolgáltatáshoz](data-lake-storage-quickstart-create-account.md).
+* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 * **Storm-fürt futtatása Data Lake Storage Gen2on**. További információ: [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen2**.  Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen2 teljesítmény-finomhangolási útmutató](data-lake-storage-performance-tuning-guidance.md).   
 
@@ -110,10 +110,10 @@ Ha eléri a Data Lake Storage Gen2 által biztosított sávszélesség korlátai
 
 Ha szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, engedélyezze a hibakeresési naplózást az ügyféloldali oldalon:
 
-1. A **Ambari** > **Storm** **config Advanced Storm-Worker-log4j**,  **&lt;Change root level = "info&gt; "** a root Level = >  >   **&lt; "hibakeresés"&gt;** . A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
-2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon (&gt;a/var/log/Storm/Worker-artifacts/&lt;&gt;TopologyName/&lt;-port/Worker.log alatt) Data Lake Storage Gen2 szabályozási kivételek esetében.
+1. A **Ambari** > **storm** > **config** > **Advanced Storm-Worker-log4j**, módosítsa **&lt;root level = "info"&gt;** a **root level = "debug"&lt;** . A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
+2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon (a/var/log/Storm/Worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/Worker.log) a Data Lake Storage Gen2 szabályozási kivételek esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Storm további teljesítmény-finomhangolását ebben a [blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)lehet hivatkozni.
 
 Ha további példát szeretne futtatni, tekintse [meg ezt a githubon](https://github.com/hdinsight/storm-performance-automation).

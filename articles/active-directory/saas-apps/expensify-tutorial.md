@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1e761484-7a2f-4321-91f4-6d5d0b69344e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe57c0655cf01f8dfa0f9cd0d75584fd4f130c0a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: e9ed129bccbd763bf4459fa7818e0dba4e7e65b5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976110"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156520"
 ---
-# <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Oktatóanyag: A drága integrálása Azure Active Directory
+# <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Oktatóanyag: a drága és a Azure Active Directory integrálása
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a drága a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az drága-t az Azure AD-vel, a következőket teheti:
 
@@ -75,42 +76,42 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/) **drága** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://www.expensify.com/authentication/saml/login`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következő URL-címet: `https://www.expensify.com/authentication/saml/login`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://www.expensify.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be a következő URL-címet: `https://www.expensify.com`
 
-    c. b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
+    c. b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
 
     > [!NOTE]
-    > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [drága](mailto:help@expensify.com) ügyfélszolgálatával. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [drága](mailto:help@expensify.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
 1. A **drága beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a drága.
 
@@ -118,7 +119,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **drága**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -130,7 +131,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-expensify-sso"></a>Drága SSO konfigurálása
 
-Ha engedélyezni szeretné az egyszeri bejelentkezést a drága-ben, először engedélyeznie kell a **tartomány** -vezérlést az alkalmazásban. Az alkalmazásban az [itt](https://help.expensify.com/domain-control)felsorolt lépéseket követve engedélyezheti a tartomány-vezérlést. További támogatásért a [drága ügyfél-támogatási csapatával](mailto:help@expensify.com)dolgozhat. Miután engedélyezte a tartomány vezérlését, kövesse az alábbi lépéseket:
+Ha engedélyezni szeretné az egyszeri bejelentkezést a drága-ben, először engedélyeznie kell a **tartomány-vezérlést** az alkalmazásban. Az alkalmazásban az [itt](https://help.expensify.com/domain-control)felsorolt lépéseket követve engedélyezheti a tartomány-vezérlést. További támogatásért a [drága ügyfél-támogatási csapatával](mailto:help@expensify.com)dolgozhat. Miután engedélyezte a tartomány vezérlését, kövesse az alábbi lépéseket:
 
 ![Egyszeri bejelentkezés konfigurálása](./media/expensify-tutorial/tutorial_expensify_51.png)
 
@@ -148,7 +149,7 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a drága-ben. A 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a drága csempére kattint, automatikusan be kell jelentkeznie arra a drága, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

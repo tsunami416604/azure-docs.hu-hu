@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555513"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161974"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás Azure Diagnostics
 Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
@@ -30,13 +30,13 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Összetevő | Útvonal |
 | --- | --- |
-| **Azure Diagnostics konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \Config.txt |
+| **Azure Diagnostics konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verziója > \Config.txt |
 | **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
 | **Diagnosztikai célú helyi tároló** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
 | **Figyelési ügynök konfigurációs fájlja** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Diagnostics kiterjesztési csomag** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > |
+| **Azure Diagnostics kiterjesztési csomag** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verziója > |
 | **A log Collection segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost naplófájl** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID >.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 | Összetevő | Útvonal |
@@ -48,7 +48,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **Állapot fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
 | **Azure Diagnostics kiterjesztési csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
 | **A log Collection segédprogram elérési útja** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikus adatok nem jelennek meg a Azure Portal
 A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a WADMetrics \* táblázatot a Azure Diagnostics Storage-fiókban, és ellenőrizze, hogy vannak-e a megfelelő metrikai rekordok.
@@ -64,14 +64,14 @@ Ha nincs adat az adott metrika esetében, ellenőrizze, hogy a **diagnosztikai k
 - \ ASP.NET alkalmazások (__összesen__) \Errors összesen/mp
 - \ASP.NET\Requests várólistán
 - \ASP.NET\Requests elutasítva
-- \Processor (w3wp) \% processzoridő
+- \Processor (w3wp)\% processzoridő
 - \Process (w3wp) \Private bájtok
-- \Process (WaIISHost) \% processzoridő
+- \Process (WaIISHost)\% processzoridő
 - \Process (WaIISHost) \Private bájtok
-- \Process (WaWorkerHost) \% processzoridő
+- \Process (WaWorkerHost)\% processzoridő
 - \Process (WaWorkerHost) \Private bájtok
 - \Memory\Page hibák másodpercenként
-- \.NET CLR memória (_globális_) \% idő a GC-ben
+- \.NET CLR memória (_globális_)\% idő a GC-ben
 - \Logikai lemez (C:) \ írási sebesség (bájt/s)
 - \Logikai lemez (C:) \ olvasási sebesség (bájt/s)
 - \Logikai lemez (D:) \ írási sebesség (bájt/s)
@@ -208,8 +208,8 @@ Ez a kód négy táblát hoz létre:
 
 | Esemény | Tábla neve |
 | --- | --- |
-| Provider = "Prov1" &lt;Event azonosító = "1"/&gt; |WADEvent + MD5 ("Prov1") + "1" |
-| Provider = "Prov1" &lt;Event azonosító = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "Prov1" &lt;Event ID = "1"/&gt; |WADEvent + MD5 ("Prov1") + "1" |
+| Provider = "Prov1" &lt;Event ID = "2" eventDestination = "dest1"/&gt; |WADdest1 |
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
@@ -260,7 +260,7 @@ A figyelési ügynök a naplókat és összetevőket `.tsf` fájlként gyűjti. 
 Egy `<relevantLogFile>.csv` nevű új fájl ugyanabban az elérési úton jön létre, mint a megfelelő `.tsf` fájl.
 
 >[!NOTE]
-> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a csatolt fájlokat (például PerformanceCountersTables_ \* \*001. TSF, PerformanceCountersTables_ \* \*002. TSF stb.).
+> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a csatolt fájlokat (például PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF stb.).
 
 ### <a name="more-about-missing-trace-logs"></a>További információ a hiányzó nyomkövetési naplókról
 

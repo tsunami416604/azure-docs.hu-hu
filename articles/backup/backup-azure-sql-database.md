@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437836"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162200"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -45,20 +45,10 @@ Mielőtt elkezdené, ellenőrizze az alábbiakat:
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott központi telepítések** | Az SQL Marketplace Azure-beli virtuális gépek és a nem piactér (SQL Server manuálisan telepített) virtuális gépek támogatottak.
-**Támogatott térségek** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br> Észak-Svájc, Nyugat-Svájc
-**Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> A Linux jelenleg nem támogatott.
-**Támogatott SQL Server verziók** | SQL Server 2017-as részletes leírást [itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS részletesen [itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, standard, web, Developer, Express.
-**Támogatott .NET-verziók** | A .NET-keretrendszer 4.5.2-es és újabb verziójának telepítése a virtuális gépen
-
-### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatása
-
-Azure Backup nemrég bejelentette a következőt: [EOS SQL Servers](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) -SQL Server 2008 és SQL Server 2008 R2. A megoldás jelenleg előzetes verzióban érhető el az EOS SQL Serverban, és a következő konfigurációt támogatja:
-
-1. SQL Server 2008 és SQL Server 2008 R2 fut Windows 2008 R2 SP1 rendszeren
-2. A .NET-keretrendszer 4.5.2-es vagy újabb verzióját a virtuális gépre kell telepíteni
-3. Az és a tükrözött adatbázisok biztonsági mentése nem támogatott
-
-A szolgáltatás csak az általánosan elérhető idő után számítja fel a felhasználókat. Az összes többi [szolgáltatásra vonatkozó szempont és korlátozás](#feature-consideration-and-limitations) ezekre a verzióra is érvényes. Kérjük, tekintse át az [előfeltételeket](backup-sql-server-database-azure-vms.md#prerequisites) , mielőtt konfigurálja a védelmet a 2008-es és a 2008 R2-es SQL-kiszolgálókon.
+**Támogatott térségek** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br> Észak-Svájc, Nyugat-Svájc <br> Közép-Franciaország <br> Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2
+**Támogatott operációs rendszerek** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> A Linux jelenleg nem támogatott.
+**Támogatott SQL Server verziók** | SQL Server 2019, SQL Server 2017 a [termék életciklusának keresése lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS a [termék életciklusa lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, standard, web, Developer, Express.
+**Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve a virtuális gépen
 
 ## <a name="feature-consideration-and-limitations"></a>Funkciókkal kapcsolatos szempontok és korlátozások
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 10/29/2019
+ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809461"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162263"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése – áttekintés
 
@@ -37,14 +37,20 @@ Mielőtt elkezdené, győződjön meg róla, hogy tisztában van az alábbi rés
 A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics munkaterületet:
 
 - USA nyugati középső régiója
+- USA nyugati régiója<sup>1</sup>
 - USA<sup>2.</sup> nyugati régiója
+- USA déli középső régiója<sup>1</sup>
 - USA keleti régiója
 - Kelet-RÉGIÓJA<sup>1</sup>
+- USA középső régiója<sup>1</sup>
+- USA északi középső régiója<sup>1</sup>
 - Közép-Kanada
 - Egyesült Királyság déli régiója
 - Észak-Európa<sup>1</sup>
 - Nyugat-Európa
+- Kelet-Ázsia<sup>1</sup>
 - Délkelet-Ázsia
+- Közép-India<sup>1</sup>
 - Kelet-japán<sup>1</sup>
 - Kelet-Ausztrália<sup>1</sup>
 - Délkelet-Ausztrália<sup>1</sup>
@@ -199,6 +205,9 @@ Azure Monitor for VMs engedélyezése a táblázatban leírt módszerek egyikén
 ## <a name="performance-counters-enabled"></a>Teljesítményszámlálók engedélyezve 
 
 Azure Monitor for VMs konfigurálja a Log Analytics munkaterületet az általa használt teljesítményszámlálók összegyűjtéséhez. Az alábbi táblázatok felsorolják az 60 másodpercenként összegyűjtött objektumokat és számlálókat.
+
+>[!NOTE]
+>A Azure Monitor for VMs által engedélyezett teljesítményszámlálók következő listája nem korlátozza a munkaterületre jelentett virtuális gépekről összegyűjtött további számlálók engedélyezését. Emellett, ha letiltja ezeket a számlálókat, a teljesítmény-diagramok készletét is megakadályozza, hogy az erőforrás-kihasználtságot a virtuális gépekről jelenítse meg.
 
 ### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
 

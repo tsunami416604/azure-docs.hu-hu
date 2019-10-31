@@ -6,21 +6,20 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d79ad88cf87e0ac8a08245558233eb92008f11e2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166534"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163665"
 ---
-# <a name="what-is-azure-spring-cloud"></a>Mi az Azure Spring Cloud?
+# <a name="what-is-azure-spring-cloud"></a>Mi az az Azure Spring Cloud?
 
 Az Azure Spring Cloud segítségével egyszerűen üzembe helyezhetők a Spring boot-alapú Service-alkalmazások az Azure-ban nulla kód módosításával.  Az Azure Spring Cloud lehetővé teszi a fejlesztők számára, hogy a saját programkódra összpontosítsanak a Spring Cloud Applications életciklusának kezelésével.  A Spring Cloud átfogó monitorozást és diagnosztikát, a konfiguráció felügyeletét, a szolgáltatások felderítését, a CI/CD-integrációt, a kék zöld környezeteket és egyebeket is lehetővé teszi.
 
 Az Azure-ökoszisztéma részeként az Azure Spring Cloud egyszerű kötést tesz lehetővé más Azure-szolgáltatásokhoz, többek között a tároláshoz, az adatbázisokhoz, a figyeléshez és egyebekhez.
 
-Az Azure Spring Cloud jelenleg előzetes verzióban érhető el.  A szolgáltatás előzetes verzióban való eléréséhez töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+Az Azure Spring Cloud jelenleg előzetes verzióban érhető el.  A szolgáltatás előzetes verzióban való eléréséhez töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Habár az Azure Spring Cloud előzetes verzióban érhető el, a Microsoft korlátozott támogatást biztosít SLA nélkül.  Az előzetes verziókkal kapcsolatos támogatásról további információt ebben a [támogatási gyikban](https://azure.microsoft.com/support/faq/)találhat.
 
 Első lépésként fejezze be a Spring Cloud rövid útmutatót az [Azure CLI](spring-cloud-quickstart-launch-app-cli.md), a [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)vagy a [Maven](spring-cloud-quickstart-launch-app-maven.md)használatával.
 

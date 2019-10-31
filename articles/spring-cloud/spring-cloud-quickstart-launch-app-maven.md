@@ -9,19 +9,19 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 5777d728f61b3ffe7d0fdaaac1391f600dca12fd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: ce07d43a289cf527664b120dd832cf832fb2b05e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097841"
+ms.locfileid: "73161413"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
 Az Azure Spring Cloud Maven beépülő modullal egyszerűen létrehozhatja és frissítheti Azure Spring Cloud Service-alkalmazásait. Egy konfiguráció elődefiniálásával alkalmazásokat telepíthet a meglévő Azure Spring Cloud Service-be. Ebben a cikkben egy PiggyMetrics nevű minta alkalmazást használ a funkció bemutatásához.
 
 >[!Note]
-> A rövid útmutató elkezdése előtt győződjön meg arról, hogy az Azure-előfizetés hozzáfér az Azure Spring Cloudhoz. Előzetes verzióként meghívjuk Önt, hogy felvegye velünk a kapcsolatot, hogy fel tudja venni az előfizetését az engedélyezési listára. Ha szeretné felfedezni az Azure Spring Cloud képességeit, töltse ki és küldje be az [Azure Spring Cloud (privát előzetes verzió) érdeklődési formáját](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).
+> A rövid útmutató elkezdése előtt győződjön meg arról, hogy az Azure-előfizetés hozzáfér az Azure Spring Cloudhoz. Előzetes verzióként meghívjuk Önt, hogy felvegye velünk a kapcsolatot, hogy fel tudja venni az előfizetését az engedélyezési listára. Ha szeretné felfedezni az Azure Spring Cloud képességeit, töltse ki és küldje be az [Azure Spring Cloud (privát előzetes verzió) érdeklődési formáját](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). Habár az Azure Spring Cloud előzetes verzióban érhető el, a Microsoft korlátozott támogatást biztosít SLA nélkül.  Az előzetes verziókkal kapcsolatos támogatásról további információt ebben a [támogatási gyikban](https://azure.microsoft.com/support/faq/)találhat.
 
 >[!TIP]
 > A Azure Cloud Shell egy ingyenes interaktív felület, amelyet a cikkben szereplő parancsok futtatására használhat. A közös Azure-eszközök előre telepítve vannak, beleértve a git legújabb verzióit, a Java Development Kit (JDK), a Maven és az Azure CLI-t. Ha bejelentkezett az Azure-előfizetésbe, indítsa el [Azure Cloud Shell](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](../cloud-shell/overview.md).

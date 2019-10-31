@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514009"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146391"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rövid útmutató: adatbázis visszaállítása felügyelt példányra
 
@@ -35,12 +35,12 @@ Ez a rövid útmutató:
 - Erőforrásokat használ a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatóból.
 - A számítógépen telepítve kell lennie a legújabb [SQL Server Management Studionak](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) .
 - A SSMS használata szükséges a felügyelt példányhoz való kapcsolódáshoz. A kapcsolódás menetét a következő útmutatókban tekintheti meg:
+  - [Nyilvános végpont engedélyezése](sql-database-managed-instance-public-endpoint-configure.md) felügyelt példányon – ez az oktatóanyag ajánlott megközelítése.
   - [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
   - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
-- Az Azure Blob Storage fiók (például Standard_LRS v2) használatát igényli a **nyilvános IP-** címen, amely `rw` engedéllyel rendelkező **sas-hitelesítő adatokkal** védett. A tűzfal és az Azure Blob Storage Service-végpontok [által védett blob Storage magánhálózati IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) -címei jelenleg nem támogatottak.
 
 > [!NOTE]
-> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további [információt a](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)című témakörben talál.
+> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további [információt a](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)című témakörben talál.
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Adatbázis visszaállítása biztonságimásolat-fájlból
 
@@ -86,7 +86,11 @@ A SSMS-ben kövesse az alábbi lépéseket a Wide World importing-adatbázis a f
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Ha a visszaállítás elkészült, tekintse meg az Object Explorerben.
+7. Ha a visszaállítás befejeződött, tekintse meg az adatbázist Object Explorerban. Ellenőrizheti, hogy az adatbázis-visszaállítás a [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézet használatával fejeződött-e be.
+
+> [!NOTE]
+> Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer bizonyos hibákat SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy bizonyos időtúllépés lejár. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és nyomon követheti a visszaállítás előrehaladását a [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával.
+> A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. További információ a `RESTORE` nyilatkozat viselkedési [eltérésekről](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement).
 
 ## <a name="next-steps"></a>Következő lépések
 

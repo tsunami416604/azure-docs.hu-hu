@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 22521a3619482361c8f556b05436bb3b78c7dc9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0031a0c96ecadbb3c7d3a479384bee92ba4d102c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932343"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161987"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz
 
@@ -222,8 +222,6 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 |Microsoft. Network/applicationGateways|ApplicationGatewayAccessLog|Hozzáférési napló Application Gateway|
 |Microsoft. Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway Teljesítménynapló|
 |Microsoft. Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway tűzfal naplója|
-|Microsoft. Network/securegateways|AzureFirewallApplicationRule|Azure Firewall alkalmazási szabály|
-|Microsoft. Network/securegateways|AzureFirewallNetworkRule|Azure Firewall hálózati szabály|
 |Microsoft. Network/azurefirewalls|AzureFirewallApplicationRule|Azure Firewall alkalmazási szabály|
 |Microsoft. Network/azurefirewalls|AzureFirewallNetworkRule|Azure Firewall hálózati szabály|
 |Microsoft. Network/virtualNetworkGateways|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|

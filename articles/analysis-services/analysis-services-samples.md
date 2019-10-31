@@ -4,15 +4,15 @@ description: Tudnivalók a kód-, projekt-és adatbázis-mintákról Azure Analy
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 77f909f616f75406e3f6428a884d60f39514468f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 17ce7de58afcf9ef2090371b897ff1bbbef824e3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301115"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146300"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services minták
 
@@ -43,5 +43,5 @@ Ha Azure Portal Analysis Services-kiszolgálóval rendelkezik, gyorsan és könn
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Adventure Works-oktatóanyag](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)@no__t – 1  
+[Adventure Works-oktatóanyag](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Helyszíni Azure-adatátjáró](analysis-services-gateway.md)  

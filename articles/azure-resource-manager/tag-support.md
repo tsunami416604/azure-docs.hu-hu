@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: eaf4ba303caa405a170322828add944487908365
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 6b64eb955476a8ab5307b7d508484c290fd7660a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968582"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162174"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](resource-group-using-tags.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek.
@@ -749,7 +749,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | részlegek | Nem | Nem |
 > | Dimenziók | Nem | Nem |
 > | enrollmentAccounts | Nem | Nem |
-> | Export | Nem | Nem |
+> | Exportálások | Nem | Nem |
 > | ExternalBillingAccounts | Nem | Nem |
 > | ExternalBillingAccounts/riasztások | Nem | Nem |
 > | ExternalBillingAccounts/méretek | Nem | Nem |
@@ -1445,7 +1445,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | publicIPPrefixes | Igen | Igen |
 > | routeFilters | Igen | Igen |
 > | routeTables | Igen | Igen |
-> | secureGateways | Igen | Igen |
 > | serviceEndpointPolicies | Igen | Igen |
 > | trafficManagerGeographicHierarchies | Nem | Nem |
 > | trafficmanagerprofiles | Igen | Igen |

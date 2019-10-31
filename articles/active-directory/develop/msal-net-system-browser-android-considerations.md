@@ -1,7 +1,7 @@
 ---
-title: Xamarin Android-megfontolások (Microsoft Authentication Library for .NET)
+title: Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások (Microsoft Authentication Library for .NET)
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
+description: Ismerje meg, hogy milyen szempontokat kell figyelembe venni, amikor a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával a rendszerböngészőket használja a Xamarin Android rendszeren.
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5caad4b136c9ef2686cc4befc70e6720e27855
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802747"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150359"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus megfontolások a MSAL.NET
+#  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások a MSAL.NET
+
 Ez a cikk a .NET-hez készült Microsoft Authentication Library (MSAL.NET) Xamarin Android rendszerhez készült rendszerböngészővel kapcsolatos szempontokat ismerteti.
 
 A MSAL.NET 2.4.0 – előzetes verziótól kezdődően a MSAL.NET a Chrome-tól eltérő böngészőket is támogat, és a továbbiakban nincs szükség a Chrome telepítésére az Android-eszközön a hitelesítéshez.

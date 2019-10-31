@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abcca0d2712a462e4d2ecf9c8023d0cb0e68ad6c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1991a3fe844b3a8669a67e491359e1a96658c844
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576679"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151250"
 ---
-# <a name="common-conditional-access-policies"></a>Általános feltételes hozzáférési szabályzatok
+# <a name="common-conditional-access-policies"></a>Gyakori feltételes hozzáférési szabályzatok
 
 Az alapkonfiguráció-védelmi szabályzatok nagyszerűek, de számos szervezetnek nagyobb rugalmasságra van szüksége az általuk kínáltnál. Például számos szervezetnek képesnek kell lennie arra, hogy bizonyos fiókokat kizárjon, például vészhelyzeti hozzáférési vagy bomlás-üveg felügyeleti fiókjait a többtényezős hitelesítést igénylő feltételes hozzáférési szabályzatokból. Ezekben a szervezeteknél a cikkben hivatkozott általános szabályzatok is használhatók.
 
@@ -35,12 +35,13 @@ További információ a segélyhívó fiókokról és azok fontos okairól a kö
 
 * [MFA megkövetelése rendszergazdák számára](howto-conditional-access-policy-admin-mfa.md)
 * [MFA megkövetelése az Azure-felügyelethez](howto-conditional-access-policy-azure-management.md)
+* [MFA megkövetelése minden felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)
 * [Örökölt hitelesítés tiltása](howto-conditional-access-policy-block-legacy.md)
 * [Kockázatalapú feltételes hozzáférés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk.md)
 * [Megbízható hely megkövetelése az MFA-regisztrációhoz](howto-conditional-access-policy-registration.md)
 * [Hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)
 * [Megfelelő eszköz megkövetelése](howto-conditional-access-policy-compliant-device.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

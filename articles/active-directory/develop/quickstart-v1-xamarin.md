@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e354894700ec92a444f288b3e09f5d7af88329
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f93816168a95fa10639da91d72a070660157a96f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321040"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149543"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Gyors útmutató: Microsoft-bejelentkezést integráló Xamarin-alkalmazás létrehozása
 
@@ -31,5 +31,6 @@ A [Microsoft Identity platform](v2-overview.md) a Azure Active Directory (Azure 
 
 A [Microsoft Authentication Library (MSAL)](msal-overview.md) lehetővé teszi a fejlesztők számára a tokenek beszerzését a Microsoft Identity platform-végpontból a biztonságos webes API-k eléréséhez. Active Directory-hitelesítési tár (ADAL) integrálható az Azure AD for Developers (v 1.0) végponttal, ahol a MSAL a Microsoft Identity platform (v 2.0) végponttal integrálódik.
 
-Az új Xamarin alkalmazások alkalmazásai esetében javasoljuk, hogy a Microsoft Identity platformot (v 2.0) és a MSAL használja a jogkivonatok beszerzéséhez és a biztonságos webes API-k eléréséhez: [A Microsoft Identity és a Microsoft Graph integrálása Xamarin Forms-alkalmazásba a MSAL használatával](https://github.com/azure-samples/active-directory-xamarin-native-v2#integrate-microsoft-identity-and-the-microsoft-graph-into-a-xamarin-forms-app-using-msal) (a választható lépések nélkül).
+## <a name="next-steps"></a>Következő lépések
 
+Az új Xamarin alkalmazások esetében javasoljuk, hogy a Microsoft Identity platformot (v 2.0) és a MSAL használja a jogkivonatok beszerzéséhez és a biztonságos webes API-k eléréséhez. Az első lépésekhez lásd: a [Microsoft Identity és a Microsoft Graph integrálása egy Xamarin Forms-alkalmazásba a MSAL használatával](https://github.com/azure-samples/active-directory-xamarin-native-v2#integrate-microsoft-identity-and-the-microsoft-graph-into-a-xamarin-forms-app-using-msal) (a választható lépések nélkül).

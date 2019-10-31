@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515715"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164056"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével
 
@@ -54,7 +54,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
     |Region (Régió)| Válassza az **USA keleti régiója** lehetőséget.|
     |Név|myVirtualNetwork1|
-    ! [Alapszintű virtuális hálózati beállítások konfigurálása] (
+   
 4. Az **IP-címek** lapon adja meg a 10.0.0.0/16 értéket a **címterület** mezőben. Kattintson a lenti **alhálózat hozzáadása** gombra, és adja meg a Subnet1 az alhálózat **neve** és a 10.0.0.0/24 **alhálózati címtartomány**mezőben.
    
 5. Végezze el ismét az 1–3. lépést az alábbi módosításokkal:
@@ -147,7 +147,7 @@ A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor foly
 6. Egy későbbi lépésben pingeléssel fog kommunikálni a *myVm2* virtuális géppel a *myVm1* virtuális gépről. A pingelés az ICMP protokollt használja, amelyet a Windows tűzfal alapértelmezés szerint letilt. A *myVm1* virtuális gépen engedélyezze az ICMP-t a Windows tűzfalon, hogy egy később lépésben pingelhesse ezt a virtuális gépet a *myVm2* virtuális gépről a PowerShell használatával.
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     Habár ebben az oktatóanyagban pingelést használunk a virtuális gépek közötti kommunikációhoz, az éles környezetekben üzemelő példányok esetében nem ajánlott az ICMP engedélyezése a Windows tűzfalon.
