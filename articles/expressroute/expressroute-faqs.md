@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027785"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063098"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – gyakori kérdések
 
@@ -43,7 +43,7 @@ Nem. A szolgáltatótól bármilyen sebességű VPN-kapcsolat is megvásárolhat
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, igény szerint magasabb sebességre lehet szükségem?
 
-Igen. A ExpressRoute-áramkörök úgy vannak konfigurálva, hogy a maximálisan engedélyezett sávszélesség-korlátot akár kétszer is fel lehessen venni. Forduljon a szolgáltatóhoz, és ellenőrizze, hogy támogatják-e ezt a funkciót. Ez nem hosszabb ideig tart, és nem garantált. 
+Igen. A ExpressRoute-áramkörök úgy vannak konfigurálva, hogy a maximálisan engedélyezett sávszélesség-korlátot akár kétszer is fel lehessen venni. Forduljon a szolgáltatóhoz, és ellenőrizze, hogy támogatják-e ezt a funkciót. Ez nem hosszabb ideig tart, és nem garantált.  Ha a forgalom egy ExpressRoute-átjárón keresztül áramlik, az SKU sávszélessége rögzített, és nem használható fel.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Használhatom ugyanazt a magánhálózati hálózati kapcsolatokat a virtuális hálózattal és más Azure-szolgáltatásokkal egyidejűleg?
 

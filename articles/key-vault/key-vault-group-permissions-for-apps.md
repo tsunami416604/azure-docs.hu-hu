@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718992"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102369"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -22,9 +22,9 @@ ms.locfileid: "71718992"
 
 A felhőalapú alkalmazások Key Vaulthoz való hitelesítésének legegyszerűbb módja felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](managed-identity.md) című témakört.  Ha helyszíni alkalmazást hoz létre, helyi fejlesztést végez, vagy más módon nem tud felügyelt identitást használni, ehelyett manuálisan is regisztrálhat egy egyszerű szolgáltatásnevet, és hozzáférést biztosíthat a kulcstartóhoz egy hozzáférés-vezérlési házirend használatával.  
 
-A Key Vault legfeljebb 1024 hozzáférési szabályzatot támogat, és mindegyik bejegyzés külön engedélyeket biztosít a "rendszerbiztonsági tag" számára:   Ez például azt mutatja be, hogy a [Azure Key Vault .net-hez készült ügyféloldali kódtáraban](quick-create-net.md) található Console alkalmazás hogyan fér hozzá a kulcstartóhoz.
+A Key Vault legfeljebb 1024 hozzáférési szabályzatot támogat, és minden bejegyzést, amely külön engedélyeket biztosít egy "rendszerbiztonsági tag" számára, például azt, hogy a Azure Key Vault a .NET-hez készült [ügyféloldali kódtáran](quick-create-net.md) lévő konzol alkalmazás hogyan fér hozzá a kulcstartóhoz.
 
-Key Vault hozzáférés-vezérléssel kapcsolatos részletes információkért lásd: [Azure Key Vault biztonság: Identitás-és hozzáférés-kezelés @ no__t-0. A [kulcsok, titkok és tanúsítványok](about-keys-secrets-and-certificates.md) hozzáférés-vezérlésének részletes ismertetését lásd: 
+A Key Vault hozzáférés-vezérléssel kapcsolatos részletes információkért lásd [: Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management). A [kulcsok, titkok és tanúsítványok](about-keys-secrets-and-certificates.md) hozzáférés-vezérlésének részletes ismertetését lásd: 
 
 - [Kulcsok hozzáférés-vezérlése](about-keys-secrets-and-certificates.md#key-access-control)
 - [Titkok hozzáférés-vezérlése](about-keys-secrets-and-certificates.md#secret-access-control)
@@ -46,7 +46,7 @@ A Key Vault hozzáférési szabályzatának bejegyzései külön engedélyeket b
 
 - **Egy alkalmazás** Ha az alkalmazás felhőalapú, ehelyett [felügyelt identitás használatával férhet hozzá Azure Key Vaulthoz](managed-identity.md), ha lehetséges
 - **Azure ad-csoport** Bár a Key Vault csak a 1024 hozzáférési szabályzatot támogatja, több alkalmazást és felhasználót is hozzáadhat egyetlen Azure AD-csoporthoz, és ezt a csoportot egyetlen bejegyzésként hozzáadhatja a hozzáférés-vezérlési házirendhez.
-- **Egy felhasználó** A felhasználók közvetlen hozzáférésének biztosítása a kulcstartóhoz nem **ajánlott**. Ideális esetben a felhasználókat hozzá kell adni egy Azure AD-csoporthoz, amely a Key vaulthoz való hozzáférést is lehetővé tette. Lásd: @no__t – 0Azure Key Vault biztonság: Identitás-és hozzáférés-kezelés @ no__t-0.
+- **Egy felhasználó** A felhasználók közvetlen hozzáférésének biztosítása a kulcstartóhoz nem **ajánlott**. Ideális esetben a felhasználókat hozzá kell adni egy Azure AD-csoporthoz, amely a Key vaulthoz való hozzáférést is lehetővé tette. Lásd: [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management).
 
 
 ### <a name="get-the-objectid"></a>A objectID beolvasása
@@ -65,7 +65,7 @@ A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban
 az ad sp create-for-rbac -n "http://mySP"
 ```
 
-A objectId a kimenetben `clientID` lesz látható.
+A objectId a kimenetben `clientID`jelenik meg.
 
 A Azure PowerShell használatával használja a [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal?view=azps-2.7.0) parancsmagot.
 
@@ -80,10 +80,10 @@ A objectId a kimenetben `Id` (nem `ApplicationId`) jelenik meg.
 
 Hozzáadhat több alkalmazást és felhasználót egy Azure AD-csoporthoz, majd a csoport számára hozzáférést adhat a kulcstartóhoz.  További részletekért tekintse meg a [tagok létrehozása és hozzáadása egy Azure ad-csoporthoz](#creating-and-adding-members-to-an-azure-ad-group) szakaszt alább.
 
-Az Azure parancssori felülettel rendelkező Azure AD-csoportok objectId az az [ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) parancs használatával keresheti meg. A szervezetében esetlegesen felhasználható csoportok nagy száma miatt a `--display-name` paraméternek is meg kell adnia egy keresési karakterláncot.
+Az Azure parancssori felülettel rendelkező Azure AD-csoportok objectId az az [ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) parancs használatával keresheti meg. A szervezetben esetlegesen használt csoportok nagy száma miatt a `--display-name` paraméterhez is meg kell adnia egy keresési karakterláncot.
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 A objectId a rendszer a JSON-ban adja vissza:
 
@@ -93,13 +93,13 @@ A objectId a rendszer a JSON-ban adja vissza:
     "odata.type": "Microsoft.DirectoryServices.Group",
 ```
 
-Ha Azure PowerShell használatával szeretné megkeresni egy Azure AD-csoport objectId, használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) parancsmagot. A szervezetében esetlegesen felhasználható csoportok nagy száma miatt valószínűleg egy keresési karakterláncot is meg kíván adni a `-SearchString` paraméterhez.
+Ha Azure PowerShell használatával szeretné megkeresni egy Azure AD-csoport objectId, használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) parancsmagot. A szervezetben esetlegesen használt csoportok nagy száma miatt valószínűleg keresési karakterláncot is meg kíván adni a `-SearchString` paraméterhez.
 
 ```azurepowershell-interactive
 Get-AzADGroup -SearchString <search-string>
 ```
 
-A kimenetben a objectId `Id` értékkel jelenik meg:
+A kimenetben a objectId `Id`jelenik meg:
 
 ```console
 ...
@@ -133,7 +133,7 @@ Azure PowerShellt használó felhasználó kereséséhez használja a [Get-AzADU
  Get-AzAdUser -UserPrincipalName <email-address-of-user>
 ```
 
-A rendszer a kimenetben `Id` értékként adja vissza a felhasználó objectId.
+A rendszer a kimenetben `Id`ként adja vissza a felhasználó objectId.
 
 ```console
 ...
@@ -203,7 +203,7 @@ A felhasználók objectIds megkereséséhez kövesse a fenti [felhasználók](#u
 
 Most adja hozzá a objectIds az újonnan létrehozott Azure AD-csoporthoz.
 
-Az Azure CLI-vel használja az az [ad Group tag Add](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add), a objectId átadása az `--member-id` paraméternek.
+Az Azure CLI-vel használja az az [ad Group tag Add](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add), a objectId átadása a `--member-id` paraméternek.
 
 
 ```azurecli-interactive
@@ -221,9 +221,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 Végül adja meg az AD-csoport engedélyeit a kulcstartónak az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancs vagy a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) parancsmag használatával. Példaként tekintse meg az [alkalmazás, az Azure ad-csoport vagy a felhasználó hozzáférése a Key vaulthoz](#give-the-principal-access-to-your-key-vault) című szakaszt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- @no__t – 0Azure Key Vault biztonság: Identitás-és hozzáférés-kezelés @ no__t-0
+- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
 - [App Service felügyelt identitással rendelkező Key Vault hitelesítés megadása](managed-identity.md)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
 - [A kulcstartó védelme](key-vault-secure-your-key-vault.md).

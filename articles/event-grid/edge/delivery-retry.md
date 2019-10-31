@@ -5,20 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 0a678023b1097c4bdec70d866632da6ae4ad57bb
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992391"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100711"
 ---
 # <a name="delivery-and-retry"></a>Teljesítés és újrapróbálkozás
 
-Event Grid tartós kézbesítést biztosít. Minden egyes megegyező előfizetés esetében minden üzenetet legalább egyszer megpróbál kézbesíteni. Ha egy előfizető végpontja nem igazolja egy esemény fogadását, vagy ha hiba történt, Event Grid újrapróbálkozik a kézbesítéssel egy rögzített **Újrapróbálkozás-ütemterv** alapján, és **újrapróbálkozási házirendet**.  Jelenleg Event Grid modul egy eseményt biztosít az előfizetőnek. A hasznos adatok azonban egy tömb, amely egyetlen eseménnyel rendelkezik.
+Event Grid tartós kézbesítést biztosít. Minden egyes megegyező előfizetés esetében minden üzenetet legalább egyszer megpróbál kézbesíteni. Ha egy előfizető végpontja nem igazolja egy esemény fogadását, vagy ha hiba történt, Event Grid újrapróbálkozik a kézbesítéssel egy rögzített **Újrapróbálkozás-ütemterv** alapján, és **újrapróbálkozási házirendet**.  Alapértelmezés szerint a Event Grid modul egyszerre egy eseményt biztosít az előfizetőnek. A hasznos adatok azonban egy tömb, amely egyetlen eseménnyel rendelkezik. A modult egyszerre több esemény is elvégezheti, ha engedélyezi a kimeneti köteg funkciót. A szolgáltatással kapcsolatos további információkért lásd: a [kimenetek kötegelt feldolgozása](delivery-output-batching.md).  
 
 > [!IMPORTANT]
 >Az események nem rendelkeznek adatmegőrzési támogatással. Ez azt jelenti, hogy a Event Grid modul újbóli üzembe helyezése vagy újraindítása miatt a még nem szállított események elvesznek.

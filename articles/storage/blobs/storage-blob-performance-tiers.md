@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ac483a338b7d71142b89b13e41fc048346ac037f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802655"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063260"
 ---
 # <a name="azure-block-blob-storage-performance-tiers"></a>Azure Block blob Storage – teljesítmény szintjei
 
@@ -28,7 +28,7 @@ A következő szempontokat kell figyelembe venni a különböző teljesítménys
 
 - A standard szintű teljesítmény minden [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/?products=storage)elérhető. A prémium szintű teljesítmény a [kiválasztott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=storage)érhető el.
 - A prémium szintű teljesítmény optimális díjszabást biztosít a nagy tranzakciós díjszabású alkalmazások számára, így csökkentheti a számítási feladatokhoz szükséges [összes tárolási költséget](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) .
-- A prémium szintű teljesítmény működéséhez a blob Storage-fiókok blokkolása és a blob hozzáfűzése.
+- A blokkos Blobok prémium szintű teljesítményének eléréséhez a BlockBlobStorage fiók típusát kell használnia.
 - A standard szintű teljesítmény általános célú v1, általános célú v2 és blob Storage-fiókokkal érhető el.
 - A prémium és a standard szintű teljesítmény egyaránt támogatja a nagy teljesítményű [blokkos blobokat](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/). A nagy adatforgalom-blokkoló Blobok a prémium szintű teljesítmény érdekében érhetők el 256 KiB-nál nagyobb mértékben. A nagy teljesítményű blokk Blobok standard teljesítményhez érhetők el, mint 4 MiB Put blokk, vagy blob-méreteket tesznek elérhetővé.
 - A prémium szintű teljesítmény jelenleg csak helyileg redundáns tárolással (LRS) érhető el.
@@ -54,7 +54,7 @@ További információ: [Az Azure Blob Storage életciklusának kezelése](storag
 
 A prémium szintű blokk blob Storage-fiókban tárolt adatok nem helyezhetők át a gyors, a lassú elérésű és az archív rétegek között. Egy blokk blob Storage-fiókból is másolhat blobokat egy *másik* fiókban lévő gyors elérési szinthez. Az adatok egy másik fiókba való másolásához használja a [put blokkot az URL](/rest/api/storageservices/put-block-from-url) API vagy a [AzCopy v10](../common/storage-use-azcopy-v10.md) használatával. A **put blokk from URL** API szinkron módon másolja az adatok a kiszolgálón. A hívás csak azt követően fejeződik be, hogy az összes adatok át lettek helyezve az eredeti kiszolgáló helyéről a célhelyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GPv2-és blob Storage-fiókok gyors, ritka és archív verzióinak kiértékelése
 

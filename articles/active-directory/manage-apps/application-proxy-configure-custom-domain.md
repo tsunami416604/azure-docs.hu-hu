@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756507"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062524"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
@@ -77,38 +77,40 @@ További részletekért lásd az [Egyéni tartománynév hozzáadása a Azure Ac
 
 Az alkalmazás közzététele az Application proxyn keresztül egyéni tartománnyal:
 
-1. Új alkalmazás esetén a Azure Active Directory területen válassza a **vállalati alkalmazások** lehetőséget a bal oldali navigációs sávon, válassza az **új alkalmazás**lehetőséget, majd válassza **a helyszíni alkalmazás**lehetőséget. 
+1. Új alkalmazás esetén a Azure Active Directory válassza a **vállalati alkalmazások** lehetőséget a bal oldali navigációs sávon. Válassza az **Új alkalmazás** lehetőséget. A helyszíni **alkalmazások** szakaszban válassza **a helyszíni alkalmazás hozzáadása**lehetőséget. 
    
    Ha egy alkalmazás már **vállalati alkalmazásokban**van, válassza ki a listából, majd válassza ki a bal oldali navigációs felületen a **alkalmazásproxy** elemet. 
 
-1. Az **alkalmazásproxy** lap **belső URL** mezőjében adja meg az alkalmazás belső URL-címét. 
+2. Az alkalmazásproxy beállításai lapon adjon meg egy **nevet** , ha saját helyszíni alkalmazást ad hozzá.
+
+3.  A **belső URL-cím** mezőben adja meg az alkalmazás belső URL-címét.
    
-1. A **külső URL-cím** mezőben adja le a listát, és válassza ki a használni kívánt egyéni tartományt.
+4. A **külső URL-cím** mezőben adja le a listát, és válassza ki a használni kívánt egyéni tartományt.
    
-1. Kattintson a **Mentés** gombra.
+5. Válassza a **Hozzáadás** lehetőséget.
    
    ![Egyéni tartomány kiválasztása](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. Ha a tartomány már rendelkezik tanúsítvánnyal, a **tanúsítvány** mező a tanúsítvány adatait jeleníti meg. Ellenkező esetben válassza a **tanúsítvány** mezőt. 
+6. Ha a tartomány már rendelkezik tanúsítvánnyal, a **tanúsítvány** mező a tanúsítvány adatait jeleníti meg. Ellenkező esetben válassza a **tanúsítvány** mezőt. 
    
    ![Kattintson ide a tanúsítvány feltöltéséhez](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése**lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt.
+7. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése**lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt.
    
    ![Tanúsítvány feltöltése](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Az egyéni tartományoknak csak egyszer kell feltölteniük a tanúsítványát. Ezt követően a rendszer automatikusan alkalmazza a feltöltött tanúsítványt, ha az egyéni tartományt használja más alkalmazásokhoz.
    
-1. Ha hozzáadta a tanúsítványt, az **alkalmazásproxy** lapon válassza a **Mentés**lehetőséget. 
+8. Ha hozzáadta a tanúsítványt, az **alkalmazásproxy** lapon válassza a **Mentés**lehetőséget. 
    
-1. Az **alkalmazásproxy** oldalon található információs sávban jegyezze fel a DNS-zónához hozzáadandó CNAME-bejegyzést. 
+9. Az **alkalmazásproxy** oldalon található információs sávban jegyezze fel a DNS-zónához hozzáadandó CNAME-bejegyzést. 
    
    ![CNAME DNS-bejegyzés hozzáadása](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. Kövesse a [DNS-rekordok és-rekordhalmazok kezelése a Azure Portal használatával](../../dns/dns-operations-recordsets-portal.md) című témakör utasításait, és adjon hozzá egy DNS-rekordot, amely átirányítja az új külső URL-címet a *msappproxy.net* tartományhoz.
+10. Kövesse a [DNS-rekordok és-rekordhalmazok kezelése a Azure Portal használatával](../../dns/dns-operations-recordsets-portal.md) című témakör utasításait, és adjon hozzá egy DNS-rekordot, amely átirányítja az új külső URL-címet a *msappproxy.net* tartományhoz.
    
-1. Annak ellenőrzéséhez, hogy a DNS-rekord megfelelően van-e konfigurálva, az [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal ellenőrizze, hogy a külső URL-cím elérhető-e, és hogy a *msapproxy.net* tartomány aliasként jelenik-e meg.
+11. Annak ellenőrzéséhez, hogy a DNS-rekord megfelelően van-e konfigurálva, az [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal ellenőrizze, hogy a külső URL-cím elérhető-e, és hogy a *msapproxy.net* tartomány aliasként jelenik-e meg.
 
 Az alkalmazás mostantól az egyéni tartomány használatára van beállítva. Győződjön meg arról, hogy a tesztelés vagy a kibocsátás előtt a felhasználókat az alkalmazáshoz rendeli. 
 

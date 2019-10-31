@@ -2,18 +2,18 @@
 title: Az Apache Ambari kaptár nézet használata az Azure HDInsight Apache Hadoop
 description: Megtudhatja, hogyan használhatja a kaptár nézetet a webböngészőjéből a kaptár-lekérdezések elküldéséhez. A kaptár nézet a Linux-alapú HDInsight-fürthöz elérhető Ambari webes felhasználói felület részét képezi.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044812"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097107"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari kaptár nézet használata a HDInsight Apache Hadoop
 
@@ -30,9 +30,9 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  Útmutatásért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) . A fürt megnyílik egy új portálon.
 
-2. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer felszólítja a hitelesítésre, használja a fürt létrehozásakor megadott bejelentkezési (alapértelmezett `admin`) fióknevet és jelszót.
+1. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer felszólítja a hitelesítésre, használja a fürt létrehozásakor megadott bejelentkezési (alapértelmezett `admin`) fióknevet és jelszót. Másik lehetőségként navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/views` a böngészőben, ahol `CLUSTERNAME` a fürt neve.
 
-3. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
+1. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
 
     ![Apache Ambari – Apache Hive nézet kiválasztása](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
 
     ![A struktúra nézet lekérdezési munkalapjának képe](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. A __lekérdezés__ lapon illessze be az alábbi HiveQL-utasításokat a munkalapra:
+1. A __lekérdezés__ lapon illessze be az alábbi HiveQL-utasításokat a munkalapra:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
    > [!IMPORTANT]  
    > Hagyja meg az __adatbázis__ __alapértelmezett__beállítását. A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
 
-5. A lekérdezés elindításához válassza a **végrehajtás** a munkalap alatt lehetőséget. A gomb a narancssárga színűre változik, és a szöveg **leáll**.
+1. A lekérdezés elindításához válassza a **végrehajtás** a munkalap alatt lehetőséget. A gomb a narancssárga színűre változik, és a szöveg **leáll**.
 
-6. A lekérdezés befejeződése után az **eredmények** lap a művelet eredményét jeleníti meg. A lekérdezés eredménye a következő szöveg:
+1. A lekérdezés befejeződése után az **eredmények** lap a művelet eredményét jeleníti meg. A lekérdezés eredménye a következő szöveg:
 
         loglevel       count
         [ERROR]        3
@@ -133,7 +133,7 @@ Deklaráljon és mentsen egy UDF a kaptár nézet tetején található **UDF** l
 
 Miután hozzáadta az UDF-t a kaptár nézethez, megjelenik egy **beszúrási UDF** gomb a **lekérdezési szerkesztő**alján. Ennek a bejegyzésnek a kiválasztásával megjelenítheti a kaptár nézetben meghatározott UDF legördülő listáját. Az UDF kiválasztásával HiveQL-utasítások adhatók hozzá a lekérdezéshez az UDF engedélyezéséhez.
 
-Ha például meghatározta az UDF-t a következő tulajdonságokkal:
+Ha például egy UDF-t definiált a következő tulajdonságokkal:
 
 * Erőforrás neve: myudfs
 

@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 772fccc96f757c6165238e4041ce98c17c647880
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992300"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098689"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Oktatóanyag: események továbbítása a IoTHub
 
@@ -160,7 +160,9 @@ Frissítse az Edge hub útvonalát az esemény-előfizetés eseményeinek továb
 
 ## <a name="setup-iot-hub-route"></a>IoT Hub útvonal beállítása
 
-Tekintse meg a IoT Hub [útválasztási oktatóanyagot](../../iot-hub/tutorial-routing.md) az IoT hub útvonalának beállításához, így megtekintheti a Event Grid modulból továbbított eseményeket.
+Tekintse meg a [IoT hub útválasztási oktatóanyagot](../../iot-hub/tutorial-routing.md) az IoT hub útvonalának beállításához, így megtekintheti a Event Grid modulból továbbított eseményeket. A lekérdezés `true` használatával egyszerűen megtarthatja az oktatóanyagot.  
+
+
 
 ## <a name="publish-an-event"></a>Esemény közzététele
 
@@ -205,6 +207,7 @@ Az események megtekintéséhez szükséges lépéseket a IoT Hub [útválasztá
 
 Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, az Edge hub-előfizetést és a közzétett eseményeket. Most, hogy már ismeri az egy peremhálózati hubhoz való továbbítás alapvető lépéseit, tekintse meg a következő cikkeket:
 
+* A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
 * Az [Edge hub](../../iot-edge/module-composition.md) Route Filters használata az események particionálásához
 * Event Grid modul megőrzésének beállítása [Linux](persist-state-linux.md) vagy [Windows](persist-state-windows.md) rendszeren
 * Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)

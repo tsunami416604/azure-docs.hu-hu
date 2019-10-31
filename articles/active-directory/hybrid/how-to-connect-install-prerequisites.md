@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596325"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062678"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és a Azure AD Connect hardverre vonatkozó követelményeit.
@@ -85,7 +85,7 @@ További tudnivalókért lásd:
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint a SQL Server 2012 Express LocalDB (SQL Server Express) egy egyszerűsített verziója van telepítve. A SQL Server Express 10 GB méretű korláttal rendelkezik, amely lehetővé teszi körülbelül 100 000 objektum kezelését. Ha nagyobb mennyiségű címtár-objektumot kell kezelnie, a telepítővarázslót a SQL Server egy másik telepítésére kell irányítani. A SQL Server telepítésének típusa hatással lehet [Azure ad Connect teljesítményére](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Ha a SQL Server eltérő telepítését használja, a következő követelmények érvényesek:
   * A Azure AD Connect a Microsoft SQL Server összes verzióját támogatja a 2008 R2-ről (a legújabb szervizcsomaggal) a SQL Server 2019. A Microsoft Azure SQL Database adatbázisként **nem támogatott** .
-  * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a nevükben \_CI_ azonosítjuk. A kis-és nagybetűket megkülönböztető rendezés használata **nem támogatott** a nevükben \_CS_ azonosítva.
+  * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a nevükben egy \_CI_ azonosítjuk. A kis-és nagybetűket megkülönböztető rendezés használata **nem támogatott** , \_CS_ azonosítva a nevükben.
   * SQL-példányon csak egy szinkronizálási motor tartozhat. **Nem támogatott** SQL-példányok megosztása FIM/a rendszerbe történő szinkronizálással, vagy a következővel: Azure ad-szinkronizáló.
 
 ### <a name="accounts"></a>Fiókok
@@ -221,7 +221,7 @@ Az alábbi táblázat a Azure AD Connect szinkronizálására szolgáló számí
 | 300000 – 600000 |1,6 GHz-es |32 GB |450 GB |
 | Több mint 600 000 |1,6 GHz-es |32 GB |500 GB |
 
-AD FS vagy webalkalmazás-kiszolgálókat futtató számítógépek minimális követelményei a következők:
+AD FS vagy webalkalmazás-proxy kiszolgálókat futtató számítógépek minimális követelményei a következők:
 
 * CPU: kétmagos 1,6 GHz-es vagy újabb
 * MEMÓRIA: 2 GB vagy magasabb

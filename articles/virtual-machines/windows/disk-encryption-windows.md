@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244992"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064004"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption forgatókönyvek Windows rendszerű virtuális gépeken
 
@@ -26,15 +26,12 @@ A lemezes titkosítást csak a [támogatott virtuálisgép-méretek és operáci
 - [Csoportházirend követelmények](disk-encryption-overview.md#group-policy-requirements)
 - [Titkosítási kulcs tárolási követelményei](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Részletekért lásd: [Azure Disk Encryption az Azure ad-vel (előző kiadás)](disk-encryption-overview-aad.md) . 
 >
 > - Készítsen [pillanatképet](snapshot-copy-managed-disk.md) , és/vagy készítsen biztonsági másolatot a lemezek titkosítása előtt. A biztonsági másolatok gondoskodnak arról, hogy a rendszer egy helyreállítási lehetőséget akkor lehessen, ha nem várt hiba történik a titkosítás során. A felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentés után a [set-AzVMDiskEncryptionExtension parancsmag](/powershell/module/az.compute/set-azvmdiskencryptionextension) használatával titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása](../../backup/backup-azure-vms-encryption.md). 
 >
 > - A titkosítás titkosítása vagy letiltása miatt előfordulhat, hogy a virtuális gép újraindul.
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>Eszközök telepítése és az Azure-hoz való kapcsolódás
 
@@ -139,7 +136,7 @@ A következő táblázat a Resource Manager-sablon paramétereit sorolja fel a m
 | vmName | A titkosítási műveletet futtató virtuális gép neve. |
 | keyVaultName | Annak a kulcstárolónak a neve, amelyre a BitLocker-kulcsot fel kell tölteni. A `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` parancsmaggal vagy az Azure CLI-parancs `az keyvault list --resource-group "MyKeyVaultResourceGroup"` paranccsal kérheti le.|
 | keyVaultResourceGroup | A kulcstárolót tartalmazó erőforráscsoport neve|
-|  keyEncryptionKeyURL | A kulcs titkosítási kulcsának URL-címe: https://@no__t -0keyvault-name&gt;.vault.azure.net/Key/&lt;key-Name @ no__t-3. Ha nem szeretne KEK-t használni, hagyja üresen ezt a mezőt. |
+|  keyEncryptionKeyURL | A kulcs titkosítási kulcsának URL-címe a https://formátumban&lt;kulcstartó-név&gt;. vault.azure.net/key/&lt;kulcs-neve&gt;. Ha nem szeretne KEK-t használni, hagyja üresen ezt a mezőt. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
 | forceUpdateTag | Adjon meg egy egyedi értéket, például egy GUID-azonosítót, amikor a műveletnek kényszerített futtatást kell futtatnia. |
 | resizeOSDisk | Ha az operációsrendszer-partíciót át szeretné méretezni a teljes operációsrendszer-lemez elfoglalásához a rendszerkötet felosztása előtt. |
@@ -244,7 +241,8 @@ A titkosítást a Azure PowerShell, az Azure CLI vagy egy Resource Manager-sablo
 A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológiák esetében nem működik:
 
 - A klasszikus virtuálisgép-létrehozási módszerrel létrehozott alapszintű virtuális gép vagy virtuális gépek titkosítása.
-- A szoftveres RAID-rendszerekkel konfigurált Windows-alapú virtuális gépek titkosítása.
+- Szoftveres RAID-rendszerekkel konfigurált virtuális gépek titkosítása.
+- Közvetlen tárolóhelyek-(S2D-) vagy Windows Server-verziókkal konfigurált virtuális gépek titkosítása, mielőtt 2016 a Windows Storage Spaces szolgáltatással konfigurálva.
 - Integráció egy helyszíni kulcskezelő rendszerrel.
 - Azure Files (megosztott fájlrendszer).
 - Hálózati fájlrendszer (NFS).

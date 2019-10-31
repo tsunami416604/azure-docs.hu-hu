@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803401"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064032"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -21,7 +21,7 @@ Ez a cikk áttekintést nyújt a Azure Cosmos DB különböző erőforrásaihoz 
 
 Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókban lévő adatokat [adatbázisok, tárolók és elemek létrehozásával](databases-containers-items.md)kezelheti. Az átviteli sebességet tároló szinten vagy adatbázis-szinten is kiépítheti a [kérési egységek (ru/s vagy RUs)](request-units.md)szempontjából. A következő táblázat felsorolja a tárolók és az adatbázisok tárolási és átviteli korlátait.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
 | Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
@@ -38,7 +38,7 @@ Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókb
 
 A Cosmos-tárolónak (vagy a megosztott átviteli sebesség adatbázisának) legalább 400 RUs-nek kell lennie. Ahogy a tároló növekszik, a minimálisan támogatott átviteli sebesség az alábbi tényezőktől függ:
 
-* A tárolón megadható minimális átviteli sebesség a tárolón kiépített maximális átviteli sebességtől függ. A szolgáltatás támogatja a tárolók átviteli sebességének csökkentését a kiépített maximum 10%-ában. Ha például az átviteli sebesség a 10000 RUs értékre lett növelve, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 1000 RUs
+* A tárolón megadható minimális átviteli sebesség a tárolón kiépített maximális átviteli sebességtől függ. Ha például az átviteli sebesség a 10000 RUs értékre lett növelve, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 1000 RUs
 * A megosztott átviteli sebességű adatbázis minimális átviteli sebessége a megosztott átviteli sebességű adatbázisban korábban létrehozott tárolók teljes számától függ, amelyet a rendszer az 100 RUs/tárolón mért. Ha például öt tárolót hozott létre egy megosztott átviteli sebességű adatbázison belül, az átviteli sebességnek legalább 500 RUs-nek kell lennie
 
 A tárolók vagy adatbázisok aktuális és minimális átviteli sebessége a Azure Portal vagy az SDK-k alapján kérhető le. További információkért lásd: [átviteli sebesség tárolók és adatbázisok](set-throughput.md)számára. 
@@ -49,7 +49,7 @@ A tárolók vagy adatbázisok aktuális és minimális átviteli sebessége a Az
 
 Összefoglalva: itt vannak a minimálisan kiépített RU-korlátok. 
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
@@ -61,7 +61,7 @@ A Cosmos DB az SDK-k vagy a portál használatával támogatja a tárolók vagy 
 
 Azure Cosmos-fiókját az Azure Portal, az Azure PowerShell, az Azure CLI és a Azure Resource Manager sablonok használatával is [kiépítheti és kezelheti](how-to-manage-database-account.md) . A következő táblázat felsorolja az előfizetések, a fiókok és a műveletek számát.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Adatbázis-fiókok maximális száma (előfizetés) | 50 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
 | Regionális feladatátvételek maximális száma | Alapértelmezés szerint 1/óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
@@ -73,7 +73,7 @@ A Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot ké
 
 ## <a name="per-account-limits"></a>Felhasználónkénti korlátok
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Adatbázisok maximális száma | Korlátlan |
 | Tárolók maximális száma adatbázison (vagy fiók) | Korlátlan |
@@ -83,7 +83,7 @@ A Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot ké
 
 Attól függően, hogy melyik API-t használja, az Azure Cosmos-tárolók gyűjteményeket, táblákat vagy diagramokat is jelenthetnek. A tárolók támogatják az [egyedi kulcsokra vonatkozó megkötések](unique-keys.md), [tárolt eljárások, eseményindítók és UDF](stored-procedures-triggers-udfs.md)konfigurációját, valamint az [indexelési szabályzatot](how-to-manage-indexing-policy.md). A következő táblázat felsorolja a tárolón belüli konfigurációkra vonatkozó korlátozásokat. 
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Az adatbázis vagy a tároló nevének maximális hossza | 255 |
 | Tárolt eljárások maximális száma tárolóban | 100 <sup>*</sup>|
@@ -92,13 +92,13 @@ Attól függően, hogy melyik API-t használja, az Azure Cosmos-tárolók gyűjt
 | Egyedi kulcsok maximális száma egy tárolóban|10 <sup>*</sup>|
 | Elérési utak maximális száma egyedi kulcs megkötése esetén|16 <sup>*</sup>|
 
-<sup>*</sup>Az Azure támogatási szolgálatával növelheti az egyes tárolók korlátainak bármelyikét.
+<sup>*</sup> Az Azure támogatási szolgálatával növelheti az egyes tárolók korlátainak bármelyikét.
 
 ## <a name="per-item-limits"></a>Cikkenként érvényes korlátok
 
 Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjteményben szereplő dokumentumot, egy tábla egy sorát, vagy egy gráf egyik csomópontját vagy szegélyét jelöli. A következő táblázat a Cosmos DBban található határértékeket mutatja. 
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Elemek maximális mérete | 2 MB (UTF-8 a JSON-ábrázolás hossza) |
 | Partíciós kulcs értékének maximális hossza | 2048 bájt |
@@ -116,7 +116,7 @@ Az elemekre nem vonatkoznak korlátozások (például a tulajdonságok száma é
 
 Cosmos DB támogatja a [szifilisz-és lekérdezési műveleteket](https://docs.microsoft.com/rest/api/cosmos-db/) olyan erőforrásokon, mint például a tárolók, elemek és adatbázisok.  
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Egy művelet maximális végrehajtási ideje (például egy tárolt eljárás végrehajtása vagy egy lekérdezési lap beolvasása)| 5 MP |
 | Kérelmek maximális mérete (tárolt eljárás, szifilisz)| 2 MB |
@@ -126,7 +126,7 @@ Ha egy művelet, például a lekérdezés eléri a végrehajtás időtúllépés
 
 Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vagy egy [erőforrás-jogkivonatot](secure-access-to-data.md) a részletes hozzáférés-vezérléshez olyan erőforrásokhoz, mint a tárolók, a partíciós kulcsok vagy az elemek. Az alábbi táblázat a Cosmos DB engedélyezési jogkivonatának korlátait sorolja fel.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Fő jogkivonat lejárati idejének maximális ideje | 15 perc  |
 | Erőforrás-jogkivonat minimális lejárati ideje | 10 perc  |
@@ -139,7 +139,7 @@ Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A s
 
 A Cosmos DB az [SQL](how-to-sql-query.md)használatával támogatja az elemek lekérdezését. Az alábbi táblázat a lekérdezési utasítások korlátozásait mutatja be, például a záradékok vagy a lekérdezés hosszának a számát.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | SQL-lekérdezés maximális hossza| 256 KB <sup>*</sup>|
 | Illesztések maximális száma lekérdezés szerint| 5 <sup>*</sup>|
@@ -149,7 +149,7 @@ A Cosmos DB az [SQL](how-to-sql-query.md)használatával támogatja az elemek le
 | Argumentumok maximális száma a kifejezésben| 6000 <sup>*</sup>|
 | Maximális pont/sokszög| 4096 <sup>*</sup>|
 
-<sup>*</sup>Az SQL-lekérdezési korlátok bármelyikének növeléséhez vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
+<sup>*</sup> Az SQL-lekérdezési korlátok bármelyikének növeléséhez vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API-specifikus korlátok
 
@@ -157,7 +157,7 @@ A Cosmos DB a MongoDB-on írt alkalmazások esetében támogatja a MongoDB átvi
 
 A következő táblázat felsorolja a MongoDB funkcióinak támogatására vonatkozó korlátozásokat. Az SQL (Core) API számára említett egyéb szolgáltatási korlátok a MongoDB API-ra is érvényesek.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Maximális MongoDB-lekérdezési memória mérete | 40 MB |
 | MongoDB műveletek maximális végrehajtási ideje| 30-as |
@@ -166,7 +166,7 @@ A következő táblázat felsorolja a MongoDB funkcióinak támogatására vonat
 
 A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipróbálási Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) korlátozásait.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | A próbaverzió időtartama | 30 nap (tetszőleges számú alkalommal megújítható) |
 | Tárolók maximális száma/előfizetés (SQL, Gremlin, Table API) | 1 |
@@ -177,7 +177,7 @@ A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipr
 
 Próbálja ki, Cosmos DB támogatja a globális terjesztést csak az USA középső, Észak-és Délkelet-ázsiai régiójában. Nem hozhatók létre Azure-támogatási jegyek az Azure Cosmos DB-fiókok kipróbálásához. Azonban támogatást biztosítanak a meglévő támogatási csomagokkal rendelkező előfizetőknek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

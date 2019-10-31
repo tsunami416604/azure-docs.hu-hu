@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/22/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 31e19034f6a2c6f5ab52cbc34d8b3f6e0a1051bc
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803589"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101296"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -114,6 +114,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 | [Felügyelt alkalmazások olvasója](#managed-applications-reader) | Lehetővé teszi az erőforrások olvasását egy felügyelt alkalmazásban, valamint a JIT-hozzáférés kérését. |
 | [Felügyelt identitás közreműködői](#managed-identity-contributor) | Felhasználóhoz rendelt identitás létrehozása, olvasása, frissítése és törlése |
 | [Felügyelt identitás operátora](#managed-identity-operator) | Felhasználóhoz rendelt identitás olvasása és hozzárendelése |
+| [Felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepköre](#managed-services-registration-assignment-delete-role) | A felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepköre lehetővé teszi a bérlői felhasználók számára a bérlőhöz rendelt regisztrációs hozzárendelés törlését. |
 | [Felügyeleti csoport közreműködője](#management-group-contributor) | Felügyeleti csoport közreműködői szerepköre |
 | [Felügyeleti csoport olvasója](#management-group-reader) | Felügyeleti csoport olvasójának szerepköre |
 | [Közreműködő figyelése](#monitoring-contributor) | Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
@@ -1963,6 +1964,23 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft. Resources/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft. Resources/üzemelő példány/* | Erőforráscsoport-telepítések létrehozása és kezelése |
 > | Microsoft. support/* | Támogatási jegyek létrehozása és kezelése |
+> | **Nincs tapintat** |  |
+> | *nEz egy* |  |
+> | **DataActions** |  |
+> | *nEz egy* |  |
+> | **NotDataActions** |  |
+> | *nEz egy* |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>Felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepköre
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | A felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepköre lehetővé teszi a bérlői felhasználók számára a bérlőhöz rendelt regisztrációs hozzárendelés törlését. |
+> | **Azonosító** | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | **Műveletek** |  |
+> | Microsoft. ManagedServices/registrationAssignments/READ | A felügyelt szolgáltatások regisztrációs hozzárendeléseinek listáját kéri le. |
+> | Microsoft. ManagedServices/registrationAssignments/delete | Eltávolítja a felügyelt szolgáltatások regisztrációjának hozzárendelését. |
+> | Microsoft. ManagedServices/operationStatuses/READ | Az erőforrás műveleti állapotának beolvasása. |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
 > | **DataActions** |  |

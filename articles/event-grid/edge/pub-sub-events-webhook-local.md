@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b484306504af8f83a393feb0469fff5b524948ab
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992209"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098625"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
 
@@ -81,6 +81,8 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
     >[!IMPORTANT]
     > Ebben az oktatóanyagban a Event Grid modult az ügyfél-hitelesítés letiltásával és a HTTP-előfizetők engedélyezésével fogja telepíteni. Az éles számítási feladatokhoz javasoljuk, hogy engedélyezze az ügyfél-hitelesítést, és engedélyezze a csak HTTPs-előfizetőket. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](security-authentication.md).
+    > 
+    > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, hogy engedélyezze a bejövő forgalmat a 4438-es porton. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Az Azure Function IoT Edge modul üzembe helyezése
@@ -257,7 +259,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
     Windows rendszeren futtassa a következő parancsot:
 
     ```sh
-    iotedge logs subscriber -f
+    docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
    Linux rendszeren futtassa a következő parancsot:
@@ -299,6 +301,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 ## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést és közzétett eseményeket. Most, hogy már ismeri az alapszintű lépéseket, tekintse meg a következő cikkeket: 
 
+- A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
 - Előfizetés létrehozása/frissítése [szűrőkkel](advanced-filtering.md).
 - Event Grid modul megőrzésének engedélyezése [Linux](persist-state-linux.md) vagy [Windows](persist-state-windows.md) rendszeren
 - Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)

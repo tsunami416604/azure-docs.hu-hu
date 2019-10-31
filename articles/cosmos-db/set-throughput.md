@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 4c25e8b93fe9bcce17189bd7b787eaf4c3885716
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dcdc9c6a22f5d291b3773da02a79cc5ceebc3db1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752477"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101461"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -28,7 +28,7 @@ Az Azure Cosmos-tárolón kiépített átviteli sebesség kizárólag az adott t
 
 A kiépített átviteli sebesség egy tárolón való beállítása a leggyakrabban használt lehetőség. A tárolók kapacitása rugalmasan méretezhető, ha a [kérelmek egységei (RUs)](request-units.md)használatával bármilyen mennyiségű átviteli sebességet kiépít. 
 
-Az Azure Cosmos-tárolón kiépített átviteli sebesség egységesen oszlik meg a tároló logikai partíciói között. A logikai partíciók átviteli sebességét nem lehet szelektív módon megadni. Mivel a tárolók egy vagy több logikai partíciója egy fizikai partíción fut, a fizikai partíciók kizárólag a tárolóhoz tartoznak, és támogatják a tárolón kiosztott átviteli sebességet. 
+Feltételezve, hogy egy jó partíciós kulcs egyenletesen osztja el a logikai partíciókat a fizikai partíciók között, a rendszer egyenletesen osztja el az átviteli sebességet a tároló logikai partíciói között is. A logikai partíciók átviteli sebességét nem lehet szelektív módon megadni. Mivel a tárolók egy vagy több logikai partíciója egy fizikai partíción fut, a fizikai partíciók kizárólag a tárolóhoz tartoznak, és támogatják a tárolón kiosztott átviteli sebességet. 
 
 Ha a logikai partíción futó munkaterhelés több, mint az adott logikai partícióhoz lefoglalt átviteli sebesség, a műveletek lekérési díja korlátozott. Az arány korlátozása esetén növelheti a kiosztott átviteli sebességet a teljes tárolón, vagy megismételheti a műveleteket. További információ a particionálásról: [logikai partíciók](partition-data.md).
 

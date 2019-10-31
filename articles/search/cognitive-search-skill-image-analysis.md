@@ -1,28 +1,29 @@
 ---
-title: Képelemzés – kognitív képesség
-titleSuffix: Azure Cognitive Search
-description: Szemantikai szöveg kinyerése képelemzéssel a képelemzés kognitív képességgel az Azure Cognitive Search mesterséges intelligencia-gazdagító folyamatában.
+title: Képelemzési kognitív keresési képesség – Azure Search
+description: Szemantikai szöveg kinyerése a képelemzés segítségével a ImageAnalysis kognitív képességgel egy Azure Search alkoholtartalom-növelési folyamatban.
+services: search
 manager: nitinme
 author: luiscabrer
-ms.author: luisca
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 04114d00f3905675a1794a3875e650661febc832
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 08/28/2019
+ms.author: luisca
+ms.openlocfilehash: e2c8f0519ffcbdbc2445d1fed2725b6f6b948cd1
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791993"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064078"
 ---
-# <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
+#   <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
 
 A **képelemzési** képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. 
 
 > [!NOTE]
-> A kis méretű kötetek (20 tranzakció alatt) ingyenesen végrehajthatók az Azure Cognitive Searchban, de a nagyobb munkaterhelésekhez [számlázható Cognitive Services erőforrást kell csatolni](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
+> A kis méretű kötetek (20 tranzakció alatt) ingyenesen végrehajthatók Azure Searchban, de a nagyobb munkaterhelésekhez [számlázható Cognitive Services erőforrást kell csatolni](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -321,8 +322,8 @@ Az alacsonyabb szintű tulajdonságokhoz (például tereptárgyak vagy híressé
 ```json
     "outputFieldMappings": [
         {
-            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
-            "targetFieldName": "landmarks"
+            "sourceFieldName": "/document/normalized_images/*/categories/detail/celebrities/*",
+            "targetFieldName": "celebrities"
         }
 ```
 ##  <a name="sample-input"></a>Minta bemenet
@@ -520,6 +521,6 @@ Ha a `"One or more skills are invalid. Details: Error in skill #<num>: Outputs a
 
 ## <a name="see-also"></a>Lásd még:
 
-+ [Beépített szaktudás](cognitive-search-predefined-skills.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

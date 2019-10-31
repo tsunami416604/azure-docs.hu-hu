@@ -14,18 +14,18 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b6cd17fac77361fa20d3b3e048e64228a2ed3d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809023"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063070"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>Multi-Factor Authentication és Privileged Identity Management
 
 Javasoljuk, hogy a többtényezős hitelesítés (MFA) megkövetelése az összes rendszergazda számára. Ez csökkenti a támadás kockázatát egy sérült jelszó miatt.
 
-Megkövetelheti, hogy a felhasználók a bejelentkezéskor több = faktoros hitelesítési kihívást is végezzenek. Azt is megkövetelheti, hogy a felhasználók egy többtényezős hitelesítési kihívást végezzenek, amikor aktiválást végeznek Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szerepkörben. Így ha a felhasználó a bejelentkezéskor nem fejeződött be több = faktoros hitelesítési kérdés, a rendszer Privileged Identity Management fogja kérni őket.
+Megkövetelheti, hogy a felhasználók a bejelentkezéskor egy multi-Factor Authentication-kihívást végezzenek. Azt is megkövetelheti, hogy a felhasználók a Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szerepkör aktiválásakor végezzenek el egy multi-Factor Authentication-kihívást. Így ha a felhasználó nem adott meg többtényezős hitelesítési kihívást, amikor bejelentkezett, a rendszer Privileged Identity Management fogja kérni őket.
 
 > [!IMPORTANT]
 > Az Azure Multi-Factor Authentication csak munkahelyi vagy iskolai fiókokkal működik, nem a Microsoft személyes fiókjaival (általában személyes fiókkal, amely a Microsoft-szolgáltatásokba (például Skype, Xbox vagy Outlook.com) való bejelentkezéshez használatos. Emiatt a személyes fiókot használó felhasználók nem jogosultak a rendszergazda szerepkörre, mert nem használhatják a többtényezős hitelesítést a szerepköreik aktiválásához. Ha ezeknek a felhasználóknak továbbra is a munkaterhelések felügyeletét Microsoft-fiók segítségével kell megadniuk, akkor az állandó rendszergazdák számára is megemelheti őket.

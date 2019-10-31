@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477264"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062816"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Lista nélküli (nem katalógusos) alkalmazás hozzáadása az Azure AD-szervezethez
 
-Az [Azure ad Application Galleryben](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)választható lehetőségek mellett lehetősége van egy nem katalógusbeli **alkalmazás**hozzáadására is. Hozzáadhat bármely olyan alkalmazást, amely már létezik a szervezetében, vagy bármely harmadik féltől származó alkalmazás olyan szállítótól, amely még nem része az Azure AD-katalógusnak. A licencszerződéstől függően [](https://azure.microsoft.com/pricing/details/active-directory/)a következő lehetőségek érhetők el:
+Az [Azure ad Application Galleryben](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)választható lehetőségek mellett lehetősége van egy nem katalógusbeli **alkalmazás**hozzáadására is. Hozzáadhat bármely olyan alkalmazást, amely már létezik a szervezetében, vagy bármely harmadik féltől származó alkalmazás olyan szállítótól, amely még nem része az Azure AD-katalógusnak. A [licencszerződéstől](https://azure.microsoft.com/pricing/details/active-directory/)függően a következő lehetőségek érhetők el:
 
 - Bármely olyan alkalmazás önkiszolgáló integrációja, amely támogatja az [Security Assertion Markup Language (SAML) 2,0-](https://wikipedia.org/wiki/SAML_2.0) es identitás-szolgáltatót (SP által kezdeményezett vagy identitásszolgáltató)
 - A HTML-alapú bejelentkezési oldallal rendelkező webalkalmazások önkiszolgáló integrációja [jelszó-alapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso) használatával
@@ -33,21 +33,36 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 ## <a name="add-a-non-gallery-application"></a>Nem Gallery-alkalmazás hozzáadása
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) a Microsoft Identity platform rendszergazdai fiókjának használatával.
-1. Válassza a **vállalati alkalmazások** > **új alkalmazás**lehetőséget.
-2. (Nem kötelező, de ajánlott) A **Hozzáadás a** katalógusból mezőben adja meg az alkalmazás megjelenítendő nevét. Ha az alkalmazás megjelenik a keresési eredmények között, válassza ki, és hagyja ki az eljárás hátralévő részét.
-3. Válassza a **nem Gallery-alkalmazás**lehetőséget. Megjelenik a **saját alkalmazás hozzáadása** lap.
 
-   ![Alkalmazás hozzáadása](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Adja meg az új alkalmazás megjelenítendő nevét.
-6. Válassza a **Hozzáadás** lehetőséget. Megnyílik az  alkalmazás áttekintő lapja.
+2. Válassza a **vállalati alkalmazások** > **új alkalmazás**lehetőséget.
+
+3. (Nem kötelező, de ajánlott) Az **Azure ad** -katalógus tallózása mezőben adja meg az alkalmazás megjelenítendő nevét. 
+
+4. Válassza **a saját alkalmazás létrehozása**lehetőséget. Megjelenik a **saját alkalmazás létrehozása** lap.
+
+   ![Alkalmazás hozzáadása](media/add-non-gallery-app/create-your-own-application.png)
+
+5. Kezdje el beírni az új alkalmazás megjelenítendő nevét. Ha vannak hasonló nevű katalógus-alkalmazások, akkor azok megjelennek a keresési eredmények listájában.
+
+   > [!NOTE]
+   > Ha lehetséges, javasoljuk, hogy használja az alkalmazás katalógusának verzióját. Ha a hozzáadni kívánt alkalmazás megjelenik a keresési eredmények között, válassza ki az alkalmazást, és hagyja ki az eljárás hátralévő részét.
+
+6. **Mit szeretne tenni az alkalmazással?** válassza **a gyűjtemény bármely más alkalmazás integrálása**elemet. Ezt a beállítást általában az SAML és a WS-fed alkalmazások használják.
+
+   > [!NOTE]
+   > A másik két lehetőség a következő esetekben használható:
+   >* Az **alkalmazásproxy konfigurálása a helyi alkalmazásokhoz való biztonságos távoli hozzáféréshez** megnyitja az Azure ad Application proxy és összekötők konfigurációs lapját.
+   >* Az **Azure ad-vel való integrációhoz használt alkalmazás regisztrálása** megnyitja a **Alkalmazásregisztrációk** lapot. Ez a beállítás általában OpenID Connect-alkalmazásokhoz használatos.
+
+7. Kattintson a **Létrehozás** gombra. Megnyílik az alkalmazás **áttekintő** lapja.
 
 ## <a name="configure-user-sign-in-properties"></a>Felhasználó bejelentkezési tulajdonságainak konfigurálása
 
 1. Válassza a **Tulajdonságok** lehetőséget a Tulajdonságok ablaktábla szerkesztéshez való megnyitásához.
 
-    ![Tulajdonságok ablaktábla szerkesztése](media/add-application-portal/edit-properties.png)
+    ![Tulajdonságok ablaktábla szerkesztése](media/add-non-gallery-app/edit-properties.png)
 
-1. A következő beállítások megadásával meghatározhatja, hogy az alkalmazáshoz hozzárendelt vagy hozzá nem rendelt felhasználók hogyan jelentkezhetnek be az alkalmazásba, és ha egy felhasználó láthatja az alkalmazást a hozzáférési panelen.
+2. A következő beállítások megadásával meghatározhatja, hogy az alkalmazáshoz hozzárendelt vagy hozzá nem rendelt felhasználók hogyan jelentkezhetnek be az alkalmazásba, és ha egy felhasználó láthatja az alkalmazást a hozzáférési panelen.
 
     - Az **Engedélyezett a felhasználók számára a bejelentkezés** meghatározza, hogy az alkalmazáshoz hozzárendelt felhasználók bejelentkezhetnek-e.
     - A **felhasználó-hozzárendelés kötelezően** meghatározza, hogy az alkalmazáshoz nem rendelt felhasználók bejelentkezhetnek-e.
@@ -71,7 +86,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 
        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
        |---|---|---|---|---|
-       | Engedélyezve van a felhasználók számára a bejelentkezés? | Kell felhasználó-hozzárendelés? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
+       | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
        | igen | igen | igen | nem  | nem   |
        | igen | igen | nem  | nem  | nem   |
        | igen | nem  | igen | igen | nem   |
@@ -83,13 +98,13 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 
      *Látható az alkalmazás a felhasználó számára a hozzáférési panelen és az Office 365 alkalmazás indítójában?
 
-1. Egyéni embléma használatához hozzon létre egy 215 és 215 képpont közötti emblémát, és mentse PNG formátumban. Ezután keresse meg az emblémát, és töltse fel.
+3. Egyéni embléma használatához hozzon létre egy 215 és 215 képpont közötti emblémát, és mentse PNG formátumban. Ezután keresse meg az emblémát, és töltse fel.
 
-    ![Embléma módosítása](media/add-application-portal/change-logo.png)
+    ![Embléma módosítása](media/add-non-gallery-app/change-logo.png)
 
-1. Ha elkészült, válassza a **Mentés**lehetőséget.
+4. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy hozzáadta az alkalmazást az Azure AD-szervezethez, [válassza ki a használni kívánt egyszeri bejelentkezési módszert](what-is-single-sign-on.md#choosing-a-single-sign-on-method) , és tekintse meg az alábbi megfelelő cikket:
 

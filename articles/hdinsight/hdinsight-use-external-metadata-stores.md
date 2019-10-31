@@ -7,15 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 10/29/2019
+ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027706"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063288"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadat-tárolók használata az Azure HDInsight
+
+A HDInsight lehetővé teszi az adatok és a metaadatok felügyeletét azáltal, hogy kulcsfontosságú metaadat-megoldásokat és felügyeleti adatbázisokat helyez üzembe a külső adattárakban. Ez a funkció jelenleg [Apache Hive metaadattár](#custom-metastore), [Apache Oozie Metaadattár](#apache-oozie-metastore) és [Apache Ambari adatbázishoz](#custom-ambari-db)érhető el.
 
 A HDInsight Apache Hive metaadattár a Apache Hadoop architektúra alapvető részét képezi. A metaadattár a központi séma tárháza, amelyet más big data olyan hozzáférési eszközök is használhatnak, mint például a Apache Spark, az interaktív lekérdezés (LLAP), a Presto vagy az Apache Pig. A HDInsight Azure SQL Database használ Hive-metaadattárként.
 
@@ -92,6 +94,10 @@ Az alábbi általános HDInsight Hive-metaadattár ajánlott eljárások:
 Az Apache Oozie egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli.  A Oozie támogatja az Apache MapReduce, a Pig, a kaptár és mások Hadoop-feladatait.  A Oozie metaadattár használ az aktuális és befejezett munkafolyamatok adatainak tárolására. A Oozie használata esetén a teljesítmény növeléséhez használhatja a Azure SQL Databaset egyéni metaadattár. A metaadattár a fürt törlése után is biztosíthat hozzáférést a Oozie-feladatok adataihoz.
 
 A Oozie-metaadattár Azure SQL Database használatával történő létrehozásával kapcsolatos utasításokért lásd: [az Apache Oozie használata a munkafolyamatokhoz](hdinsight-use-oozie-linux-mac.md).
+
+## <a name="custom-ambari-db"></a>Egyéni Ambari-adatbázis
+
+Ha saját külső adatbázist szeretne használni az Apache Ambari a HDInsight-on, tekintse meg az [Egyéni Apache Ambari-adatbázist](hdinsight-custom-ambari-db.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

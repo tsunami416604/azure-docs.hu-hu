@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fab9a8a8c28f2f75e7e5af69b70229c1de74c684
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992287"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098662"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul üzembe helyezése
 
@@ -24,7 +24,7 @@ A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindeg
 
 >[!IMPORTANT]
 > Ebben az oktatóanyagban Event Grid modult kell telepíteni az ügyfél-hitelesítéssel, és engedélyezni kell a HTTP-előfizetőket. Éles számítási feladatokhoz javasoljuk, hogy csak HTTPS-kérelmeket és-előfizetőket engedélyezzen engedélyezett ügyfél-hitelesítéssel. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](../articles/event-grid/edge/security-authentication.md).
-
+ 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge eszköz kiválasztása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
@@ -67,6 +67,10 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
  1. Kattintson a **Mentés** gombra.
  1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
+
+    > [!NOTE]
+    > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, hogy engedélyezze a bejövő forgalmat a 4438-es porton. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
+
 
 ### <a name="setup-routes"></a>Telepítési útvonalak
 

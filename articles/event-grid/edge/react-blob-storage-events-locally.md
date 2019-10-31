@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043171"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100240"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az Azure Blob Storaget a IoT modulban, amely Event Grid közzétevőként fog működni a Blobok létrehozásával és a Blobok törlésével kapcsolatos események Event Grid.  
@@ -167,7 +167,10 @@ Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe az Azure Blob Storag
 5. Kattintson a **Mentés** gombra.
 6. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
- ### <a name="setup-routes"></a>Telepítési útvonalak
+    > [!NOTE]
+    > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, amely engedélyezi a bejövő forgalmat az oktatóanyagban használt gazdagép-portokon: 4438, 5888, 8080 és 11002. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md).
+
+### <a name="setup-routes"></a>Telepítési útvonalak
 
 Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
 
@@ -184,7 +187,7 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
 
    Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 
-## <a name="publish-created-and-deleted-events"></a>Létrehozott és törölt események közzététele
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>BlobCreated-és BlobDeleted-események közzététele
 
 1. Ez a modul automatikusan létrehozza a témakör **MicrosoftStorage**. Annak ellenőrzése, hogy létezik-e
     ```sh

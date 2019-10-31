@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a77cdcf332d450b2d3d9219ebfbaed2f799e7e6d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991175"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063986"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatmodellezés Azure Time Series Insights előzetes verzióban
 
@@ -34,7 +34,7 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 1. Válassza a **+ Hozzáadás** lehetőséget.
 1. Adja meg a típusokra vonatkozó összes adatot, majd válassza a **Létrehozás**lehetőséget. Ez a művelet típusokat hoz létre a környezetben.
 
-    [a típus hozzáadásának![kiválasztása](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
+    [a típus hozzáadásának ![kiválasztása](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>Egy vagy több típus tömeges feltöltése
 
@@ -42,14 +42,14 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 1. Válassza ki azt a fájlt, amely a típus adattartalmát tartalmazza.
 1. Válassza a **Feltöltés** lehetőséget.
 
-    [egy vagy több típus tömeges feltöltésének![kiválasztása](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
+    [egy vagy több típus tömeges feltöltésének ![kiválasztása](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
 
 ### <a name="edit-a-single-type"></a>Egyetlen típus szerkesztése
 
 1. Válassza ki a típust, és válassza a **Szerkesztés**lehetőséget. 
 1. Végezze el a szükséges módosításokat, majd kattintson a **Mentés**gombra.
 
-    [a típus szerkesztésének![kiválasztása](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
+    [a típus szerkesztésének ![kiválasztása](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
 
 ### <a name="delete-a-type"></a>Típus törlése
 
@@ -84,14 +84,14 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 1. Válassza ki a hierarchia adattartalmát tartalmazó fájlt.
 1. Válassza a **Feltöltés** lehetőséget.
 
-    [a hierarchiák tömeges feltöltésének![kiválasztása](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
+    [a hierarchiák tömeges feltöltésének ![kiválasztása](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>Egyetlen hierarchia szerkesztése
 
 1. Válassza ki a hierarchiát, és válassza a **Szerkesztés**lehetőséget.
 1. Végezze el a szükséges módosításokat, majd kattintson a **Mentés**gombra.
 
-    [egyetlen hierarchia szerkesztésének![kiválasztása](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
+    [egyetlen hierarchia szerkesztésének ![kiválasztása](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>Hierarchia törlése
 
@@ -110,7 +110,7 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
-    [példányok hozzáadásának![kiválasztása](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
+    [példányok hozzáadásának ![kiválasztása](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
 
 1. Adja meg a példány részleteit, válassza ki a típus és hierarchia társítást, és válassza a **Létrehozás**lehetőséget.
 
@@ -119,7 +119,7 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 1. Válassza a **JSON feltöltése**lehetőséget.
 1. Válassza ki a példányok hasznos adatait tartalmazó fájlt.
 
-    [egy vagy több példány tömeges feltöltésének![kiválasztása](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
+    [egy vagy több példány tömeges feltöltésének ![kiválasztása](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
 
 1. Válassza a **Feltöltés** lehetőséget.
 
@@ -128,7 +128,7 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 1. Válassza ki a példányt, és válassza a **Szerkesztés**lehetőséget. 
 1. Végezze el a szükséges módosításokat, majd kattintson a **Mentés**gombra.
 
-    [egyetlen példány szerkesztésének![kiválasztása](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
+    [egyetlen példány szerkesztésének ![kiválasztása](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 

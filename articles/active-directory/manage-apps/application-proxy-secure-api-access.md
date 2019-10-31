@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés helyszíni API-k az Azure AD-alkalmazásproxyval
-description: Az Azure Active Directory alkalmazásproxy lehetővé teszi, hogy a natív alkalmazások biztonságosan férjenek hozzá az API-k és az üzleti logikát üzemelteti a helyszíni vagy felhőbeli VM-eken.
+title: Helyszíni API-k elérése az Azure AD Application Proxy
+description: Azure Active Directory alkalmazásproxy lehetővé teszi a natív alkalmazások számára a helyszíni vagy felhőalapú virtuális gépeken üzemeltetett API-k és üzleti logika biztonságos elérését.
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -8,135 +8,135 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/24/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108616"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063017"
 ---
-# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-k az Azure AD-alkalmazásproxy
+# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-khoz az Azure AD Application Proxy
 
-Előfordulhat, hogy a helyszínen futó API-k üzleti logikát, vagy virtuális gépeken a felhőben üzemeltetett. A natív Android, iOS, Mac vagy Windows-alkalmazások használatával kommunikálhat az adatok használatával, vagy adja meg a felhasználói beavatkozás során a API-végpontokat kell. Az Azure AD-alkalmazásproxy és a [Azure Active Directory Authentication Libraries (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) tegye lehetővé a natív alkalmazások biztonságosan hozzáférhessenek a helyszíni API-k. Az Azure Active Directory Application Proxy a gyorsabb és biztonságosabb megoldás, mint a tűzfal portjainak megnyitása, és a hitelesítés és engedélyezés az alkalmazás rétegben ellenőrzés alatt tartásával. 
+Előfordulhat, hogy a helyszínen vagy a felhőben futó virtuális gépeken üzemeltetett üzleti logikai API-kkal rendelkezik. A natív Android-, iOS-, Mac-vagy Windows-alkalmazásoknak kommunikálnia kell az API-végpontokkal az adatfelhasználáshoz vagy a felhasználói beavatkozás biztosításához. Az Azure AD Application Proxy és az [Azure Active Directory Authentication Library (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) lehetővé teszi, hogy a natív alkalmazások biztonságosan hozzáférjenek a helyszíni API-khoz. Azure Active Directory Application Proxy gyorsabb és biztonságosabb megoldás, mint a tűzfal portjainak megnyitása, valamint a hitelesítés és engedélyezés szabályozása az alkalmazás rétegében. 
 
-Ez a cikk végigvezeti egy Azure AD-alkalmazásproxy megoldás üzemeltetéséhez egy webes API-szolgáltatás, amely natív alkalmazások hozzáférhetnek-beállítása. 
+Ez a cikk végigvezeti egy Azure AD Application Proxy megoldás beállításán, amely a natív alkalmazások által elérhető webes API-szolgáltatások üzemeltetésére szolgál. 
 
 ## <a name="overview"></a>Áttekintés
 
-Az alábbi ábrán egy hagyományos módon helyszíni API-k közzétételét. Ezt a megközelítést igényel, 80-as és 443-as porton bejövő portok megnyitása.
+Az alábbi ábrán a helyszíni API-k közzétételének hagyományos módja látható. Ehhez a megközelítéshez a 80-es és a 443-es bejövő portok megnyitása szükséges.
 
 ![Hagyományos API-hozzáférés](./media/application-proxy-secure-api-access/overview-publish-api-open-ports.png)
 
-Az alábbi ábrán látható, hogyan használhatja az Azure AD-alkalmazásproxy az API-k biztonságos közzétételét, minden bejövő portok megnyitása nélkül:
+Az alábbi ábra bemutatja, hogyan használható az Azure AD Application Proxy az API-k biztonságos közzétételére a bejövő portok megnyitása nélkül:
 
-![Az Azure AD Application Proxy API-hozzáférés](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
+![Azure AD Application Proxy API-hozzáférés](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Az Azure AD-alkalmazásproxy forms gerincét a megoldást, és a egy nyilvános végpontot API-hozzáférés megfelelően működik, valamint a hitelesítési és engedélyezési magas. A keresztül elérhető API-k platformok hatalmas választékának használatával a [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) kódtárakat. 
+Az Azure AD Application Proxy a megoldás gerincét képezi, amely nyilvános végpontként működik az API-hozzáféréshez, és biztosítja a hitelesítést és az engedélyezést. Az API-kat a platformok széles köréből érheti el a [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) -kódtárak használatával. 
 
-Mivel az Azure AD-alkalmazásproxy-hitelesítés és engedélyezés az Azure AD épülnek, használhatja az Azure AD feltételes hozzáférés annak érdekében, hogy csak megbízható eszközök érhessék el a alkalmazásproxyn keresztül közzétett API-k. Az Azure AD Join vagy Azure AD hibrid csatlakoztatott asztali számítógépeken, és az Intune által felügyelt eszközök esetében. Azure Active Directory Premium-szolgáltatások, mint az Azure multi-factor Authentication szolgáltatás előnyeit, és a machine learning-alapú biztonságát is számos [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
+Mivel az Azure AD Application Proxy hitelesítés és engedélyezés az Azure AD-re épül, az Azure AD feltételes hozzáférés használatával biztosíthatja, hogy csak a megbízható eszközök férhessenek hozzá az Application proxyn keresztül közzétett API-khoz. Az Azure AD JOIN vagy az Azure AD hibrid csatlakoztatása asztali számítógépekhez és az Intune által felügyelt eszközökhöz. Kihasználhatja az Azure-Multi-Factor Authentication, valamint az [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)gépi tanulásra képes biztonsági mentésével prémium szintű Azure Active Directory szolgáltatásokat is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató követéséhez lesz szüksége:
+Az útmutató követéséhez a következőkre lesz szüksége:
 
-- Rendszergazdai hozzáférés egy Azure-címtárhoz, egy olyan fiókkal, amely létrehozása és alkalmazások regisztrálása
-- A mintául szolgáló webes API-t és a natív ügyfélalkalmazások [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
+- Rendszergazdai hozzáférés egy Azure-címtárhoz egy olyan fiókkal, amely alkalmazásokat hozhat létre és regisztrálhat
+- A mintául szolgáló webes API és a natív ügyfélalkalmazások [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
 
-## <a name="publish-the-api-through-application-proxy"></a>Az API-t a proxyn keresztül történő alkalmazás közzététele
+## <a name="publish-the-api-through-application-proxy"></a>Az API közzététele az alkalmazásproxy használatával
 
-Az intranet proxyn keresztül történő alkalmazás-en kívül API közzététele, kövesse ugyanazt a mintát, mint a webes alkalmazások közzététele. További információkért lásd: [oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban](application-proxy-add-on-premises-application.md).
+Ha az intraneten kívüli API-t az Application proxyn keresztül szeretné közzétenni, a webalkalmazások közzétételével megegyező mintát kell követnie. További információ: [oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az Application proxyn keresztül Azure Active Directory](application-proxy-add-on-premises-application.md).
 
-A proxyn keresztül történő alkalmazás SecretAPI webes API közzététele:
+A SecretAPI webes API közzététele az Application proxyn keresztül:
 
-1. Hozhat létre, és a egy ASP.NET-webalkalmazást, a helyi számítógépen vagy intranetes a mintaprojekt SecretAPI közzététele. Ellenőrizze, hogy elérheti a webalkalmazást helyileg. 
+1. Hozza létre és tegye közzé a minta SecretAPI-projektet ASP.NET-webalkalmazásként a helyi számítógépen vagy intraneten. Győződjön meg arról, hogy a webalkalmazást helyileg éri el. 
    
-1. Az a [az Azure portal](https://portal.azure.com), jelölje be **Azure Active Directory** a bal oldali navigációs menüben. Ezután a a **áttekintése** lapon jelölje be **vállalati alkalmazások**.
+1. A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory** lehetőséget a bal oldali navigációs sávon. Ezután az **Áttekintés** lapon válassza a **vállalati alkalmazások**lehetőséget.
    
-1. Felső részén a **nagyvállalati alkalmazások – minden alkalmazás** lapon jelölje be **új alkalmazás**.
+1. A **vállalati alkalmazások – minden alkalmazás** lap tetején válassza az **új alkalmazás**lehetőséget.
    
-1. Az a **alkalmazás hozzáadása** lap **saját alkalmazás hozzáadása**válassza **helyszíni alkalmazás**. 
+1. Az **Azure ad** -katalógus tallózása oldalon a helyszíni **alkalmazások**területen válassza **a helyszíni alkalmazás hozzáadása**lehetőséget. Megjelenik a **saját helyszíni alkalmazás hozzáadása** lap.
    
-1. Ha nem rendelkezik egy alkalmazásproxy-összekötő telepítve van, kérni fogja a telepítéshez. Válassza ki **Application Proxy Connector letöltése** töltse le és telepítse az összekötőt. 
+1. Ha nincs telepítve alkalmazásproxy-összekötő, a rendszer kérni fogja a telepítését. Válassza az **alkalmazásproxy-összekötő letöltése** lehetőséget az összekötő letöltéséhez és telepítéséhez. 
    
-1. Miután telepítette az alkalmazásproxy-összekötő, az a **saját helyszíni alkalmazás hozzáadása** oldalon:
+1. Miután telepítette az alkalmazásproxy-összekötőt, a **saját helyszíni alkalmazás hozzáadása** oldalon:
    
-   1. Adja meg *SecretAPI* melletti **neve**.
+   1. A **név**elem mellett adja meg a *SecretAPI* .
       
-   1. Adja meg az URL-cím, az API-t az intraneten belüli melletti eléréséhez használt **belső URL-cím**. 
+   1. Adja meg azt az URL-címet, amellyel az API-t a **belső URL-cím**melletti intraneten belülről érheti el. 
       
-   1. Győződjön meg arról, hogy **előhitelesítés** értékre van állítva **Azure Active Directory**. 
+   1. Győződjön meg arról, hogy az **előhitelesítés** **Azure Active Directoryra**van beállítva. 
       
-   1. Válassza ki **Hozzáadás** a lapot, és várja meg a létrehozandó alkalmazás tetején.
+   1. A lap tetején kattintson a **Hozzáadás** gombra, és várja meg, amíg létre nem jön az alkalmazás.
    
    ![API-alkalmazás hozzáadása](./media/application-proxy-secure-api-access/3-add-api-app.png)
    
-1. Az a **nagyvállalati alkalmazások – minden alkalmazás** lapon válassza ki a **SecretAPI** alkalmazást. 
+1. A **vállalati alkalmazások – minden alkalmazás** lapon válassza ki a **SecretAPI** alkalmazást. 
    
-1. A a **SecretAPI – áttekintés** lapon jelölje be **tulajdonságok** a bal oldali navigációs menüben.
+1. A **SecretAPI – áttekintés** oldalon válassza a **Tulajdonságok** lehetőséget a bal oldali navigációs sávon.
    
-1. Nem szeretné, hogy a végfelhasználók számára elérhető API-k a **MyApps** panelen, ezért **a felhasználók számára látható** való **nem** alján a **tulajdonságok**oldalra, és kattintson **mentése**.
+1. Nem szeretné, hogy az API-k elérhetők legyenek a végfelhasználók számára a **MyApps** panelen, ezért a **Tulajdonságok** lap alján a **nem** értékre állítva **látható a felhasználók** számára, majd válassza a **Mentés**lehetőséget.
    
-   ![Nem látják a felhasználók](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
+   ![A felhasználók számára nem látható](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
    
-A webes API Azure AD-alkalmazásproxyn keresztül közzétett. Ezután adja hozzá az alkalmazáshoz hozzáférő felhasználók. 
+Közzétette a webes API-t az Azure AD Application Proxyon keresztül. Most adja hozzá azokat a felhasználókat, akik hozzáférhetnek az alkalmazáshoz. 
 
-1. Az a **SecretAPI – áttekintés** lapon jelölje be **felhasználók és csoportok** a bal oldali navigációs menüben.
+1. A **SecretAPI – áttekintés** oldalon válassza a **felhasználók és csoportok** lehetőséget a bal oldali navigációs sávon.
    
-1. Az a **felhasználók és csoportok** lapon jelölje be **felhasználó hozzáadása**.  
+1. A **felhasználók és csoportok** lapon válassza a **felhasználó hozzáadása**elemet.  
    
-1. Az a **-hozzárendelés hozzáadása** lapon jelölje be **felhasználók és csoportok**. 
+1. A **hozzárendelés hozzáadása** lapon válassza a **felhasználók és csoportok**lehetőséget. 
    
-1. Az a **felhasználók és csoportok** lapon keresse meg és válassza a felhasználók, akik hozzáférhetne az alkalmazáshoz, beleértve a legalább saját magának. Miután kijelölte az összes felhasználó, jelölje ki **kiválasztása**. 
+1. A **felhasználók és csoportok** lapon keresse meg és válassza ki azokat a felhasználókat, akik hozzáférhetnek az alkalmazáshoz, beleértve legalább a sajátját is. Az összes felhasználó kijelölése után válassza a **kiválasztás**lehetőséget. 
    
-   ![Válassza ki, és rendelje hozzá felhasználót](./media/application-proxy-secure-api-access/7-select-admin-user.png)
+   ![Felhasználó kiválasztása és kiosztása](./media/application-proxy-secure-api-access/7-select-admin-user.png)
    
-1. Lépjen vissza a **hozzárendelés hozzáadása** lapon jelölje be **hozzárendelése**. 
+1. Vissza a **hozzárendelés hozzáadása** oldalon válassza a **hozzárendelés**lehetőséget. 
 
 > [!NOTE]
-> Integrált Windows-hitelesítést használó API-k szükség lehet [további lépéseket](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd).
+> Az integrált Windows-hitelesítést használó API-k [további lépéseket](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)is igényelhetnek.
 
-## <a name="register-the-native-app-and-grant-access-to-the-api"></a>A natív alkalmazás regisztrálása és hozzáférést biztosít az API-hoz
+## <a name="register-the-native-app-and-grant-access-to-the-api"></a>A natív alkalmazás regisztrálása és az API-hoz való hozzáférés biztosítása
 
-A natív alkalmazások olyan platformon vagy eszközön használatára kifejlesztett programok. Mielőtt a natív alkalmazás képes csatlakozni és API-k elérésére, regisztrálnia kell azt az Azure ad-ben. A következő lépések bemutatják, hogyan natív alkalmazás regisztrálása és adjon neki hozzáférést a webes alkalmazásproxyn keresztül közzétett API-hoz.
+A natív alkalmazások olyan programok, amelyek egy adott platformon vagy eszközön való használatra lettek kifejlesztve. Ahhoz, hogy a natív alkalmazás csatlakozhasson és hozzáférhessen egy API-hoz, regisztrálnia kell az Azure AD-ben. A következő lépések bemutatják, hogyan regisztrálhat egy natív alkalmazást, és hogyan férhet hozzá az Application proxyn keresztül közzétett webes API-hoz.
 
 A AppProxyNativeAppSample natív alkalmazás regisztrálása:
 
-1. Az Azure Active Directoryban **áttekintése** lapon jelölje be **alkalmazásregisztrációk**, és a felső részén a **alkalmazásregisztrációk** ablaktáblán válassza **új regisztrációs** .
+1. Az Azure Active Directory **áttekintése** lapon válassza a **Alkalmazásregisztrációk**lehetőséget, majd a **Alkalmazásregisztrációk** panel felső részén válassza az **új regisztráció**lehetőséget.
    
-1. Az a **alkalmazás regisztrálása** oldalon:
+1. Az **alkalmazás regisztrálása** oldalon:
    
-   1. A **neve**, adja meg *AppProxyNativeAppSample*. 
+   1. A **név**mezőben adja meg a *AppProxyNativeAppSample*. 
       
-   1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**. 
+   1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**. 
       
-   1. A **átirányítási URL-cím**, a legördülő listára, és válassza ki **(mobil és asztali) nyilvános ügyfél**, majd adja meg *https:\//appproxynativeapp*. 
+   1. Az **átirányítás URL-címe**területen válassza a legördülő menü **nyilvános ügyfél (mobil & asztal)** lehetőséget, majd írja be a *https:\//appproxynativeapp*értéket. 
       
-   1. Válassza ki **regisztrálása**, és várjon, amíg az alkalmazás regisztrálása sikeres volt. 
+   1. Válassza a **regisztráció**lehetőséget, és várja meg, amíg az alkalmazás regisztrálása sikeresen megtörtént. 
       
       ![Új alkalmazásregisztráció](./media/application-proxy-secure-api-access/8-create-reg-ga.png)
    
-Most már regisztrálta az AppProxyNativeAppSample alkalmazást az Azure Active Directoryban. A natív alkalmazás-hozzáférés biztosítása a SecretAPI webes API-hoz:
+Most regisztrálta a AppProxyNativeAppSample alkalmazást a Azure Active Directoryban. A natív alkalmazás hozzáférésének biztosítása a SecretAPI webes API-hoz:
 
-1. Az Azure Active Directoryban **áttekintése** > **Alkalmazásregisztrációk** lapon válassza ki a **AppProxyNativeAppSample** alkalmazást. 
+1. A Azure Active Directory **áttekintés** > **alkalmazás-regisztrációk** lapon válassza ki a **AppProxyNativeAppSample** alkalmazást. 
    
-1. Az a **AppProxyNativeAppSample** lapon jelölje be **API-engedélyek** a bal oldali navigációs menüben. 
+1. A **AppProxyNativeAppSample** lapon válassza az **API-engedélyek** lehetőséget a bal oldali navigációs sávon. 
    
-1. Az a **API-engedélyek** lapon jelölje be **adjon hozzá egy engedélyt**.
+1. Az **API-engedélyek** lapon válassza az **engedély hozzáadása**elemet.
    
-1. Az első **kérelem API-engedélyek** lapon válassza ki a **API-k saját szervezete** fülre, és keressen rá, és válassza ki **SecretAPI**. 
+1. Az első **kérés API-engedélyek** lapon válassza a **saját szervezet által használt API** -k fület, majd keresse meg és válassza a **SecretAPI**lehetőséget. 
    
-1. A következő **kérelem API-engedélyek** lapra, jelölje be a jelölőnégyzetet a **user_impersonation**, majd válassza ki **engedélyek hozzáadása**. 
+1. A következő **kérelmek API-engedélyei** lapon jelölje be a **user_impersonation**melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**elemet. 
    
     ![API kiválasztása](./media/application-proxy-secure-api-access/10-secretapi-added.png)
    
-1. Lépjen vissza a **API-engedélyek** lapon kiválaszthatja **biztosítson rendszergazdai jóváhagyás contoso** meg, hogy más felhasználók nem kell külön-külön jóváhagyhatják az alkalmazást. 
+1. Az API- **engedélyek** lapon megadhatja a **contoso rendszergazdai jóváhagyása** lehetőséget, így megakadályozhatja, hogy más felhasználók ne kelljen egyénileg beleegyezniük az alkalmazásba. 
 
-## <a name="configure-the-native-app-code"></a>Konfigurálja a natív alkalmazás kódját
+## <a name="configure-the-native-app-code"></a>A natív alkalmazás kódjának konfigurálása
 
-Az utolsó lépés, hogy a natív alkalmazás konfigurálása. A következő kódrészlet a a *Form1.cs* fájlt a NativeClient mintaalkalmazás hatására az ADAL könyvtár beszerezni a jogkivonatot az API-hívás kérelmezési és tulajdonosi, csatlakoztassa azt az alkalmazás fejléce. 
+Az utolsó lépés a natív alkalmazás konfigurálása. A NativeClient-minta alkalmazás *Form1.cs* fájljának következő kódrészlete azt eredményezi, hogy a ADAL-függvénytár szerzi be a tokent az API-hívás igényléséhez, és csatolja a tulajdonosként az alkalmazás fejlécébe. 
    
    ```csharp
        AuthenticationResult result = null;
@@ -155,24 +155,24 @@ Az utolsó lépés, hogy a natív alkalmazás konfigurálása. A következő kó
        MessageBox.Show(s);
    ```
    
-A natív alkalmazás csatlakoztatása az Azure Active Directoryhoz, és hívja az API App Proxy konfigurálása, frissítse a szereplő helyőrző értékeket az *App.config* fájlt a NativeClient mintaalkalmazásról az Azure AD-ből származó értékekkel: 
+Ha úgy szeretné konfigurálni a natív alkalmazást, hogy az Azure Active Directoryhoz kapcsolódjon, és meghívja az API app proxyt, frissítse a helyőrző értékeket a NativeClient-minta alkalmazás *app. config* fájljában az Azure ad-ből származó értékekkel: 
 
-- Illessze be a **(bérlő) címtár-azonosító** a a `<add key="ida:Tenant" value="" />` mező. Keresse meg, és másolja a (egy GUID azonosítója) értékét a **áttekintése** oldalán az alkalmazások valamelyike. 
+- Illessze be a **könyvtár (bérlő) azonosítóját** a `<add key="ida:Tenant" value="" />` mezőbe. Ezt az értéket (GUID) a bármelyik alkalmazás **Áttekintés** lapjáról tekintheti meg és másolhatja. 
   
-- Illessze be a AppProxyNativeAppSample **Alkalmazásazonosítót (ügyfél)** a a `<add key="ida:ClientId" value="" />` mező. Keresse meg, és másolja ezt az értéket (GUID), a AppProxyNativeAppSample **áttekintése** lapot.
+- Illessze be a AppProxyNativeAppSample **alkalmazás (ügyfél) azonosítóját** a `<add key="ida:ClientId" value="" />` mezőbe. Ezt az értéket (GUID) a AppProxyNativeAppSample **– Áttekintés** oldalon találja és másolhatja.
   
-- Illessze be a AppProxyNativeAppSample **átirányítási URI-t** a a `<add key="ida:RedirectUri" value="" />` mező. Keresse meg, és másolja a értékét (URI) a AppProxyNativeAppSample **hitelesítési** lapot. 
+- Illessze be a AppProxyNativeAppSample **átirányítási URI** -t a `<add key="ida:RedirectUri" value="" />` mezőbe. Ezt az értéket (URI) megkeresheti és átmásolhatja a AppProxyNativeAppSample- **hitelesítés** oldaláról. 
   
-- Illessze be a SecretAPI **Alkalmazásazonosító URI-ja** a a `<add key="todo:TodoListResourceId" value="" />` mező. Keresse meg, és másolja a értékét (URI) a SecretAPI **közzé API-k** lap.
+- Illessze be a SecretAPI- **alkalmazás azonosítójának URI-ját** a `<add key="todo:TodoListResourceId" value="" />` mezőbe. Ezt az értéket (URI) megkeresheti és átmásolhatja az SecretAPI **elérhetővé tenni egy API** -lapot.
   
-- Illessze be a SecretAPI **kezdőlap URL-címe** a a `<add key="todo:TodoListBaseAddress" value="" />` mező. Keresse meg, és másolja a értékét (URL) a SecretAPI **Branding** lapot.
+- Illessze be a SecretAPI **kezdőlapjának URL-címét** a `<add key="todo:TodoListBaseAddress" value="" />` mezőbe. Ezt az értéket (URL-címet) megkeresheti és átmásolhatja a SecretAPI **branding** oldaláról.
 
-Miután konfigurálta a paramétereket, hozhat létre, és futtassa a natív alkalmazást. Amikor kiválasztja a **bejelentkezés** gombra, az alkalmazás lehetővé teszi a bejelentkezés, és ezután jeleníti meg egy sikert jelző képernyő, győződjön meg arról, hogy sikeresen csatlakozik a SecretAPI.
+A paraméterek konfigurálása után hozza létre és futtassa a natív alkalmazást. Amikor kiválasztja a **Bejelentkezés** gombot, az alkalmazás lehetővé teszi a bejelentkezést, majd egy sikeres képernyőt jelenít meg annak ellenőrzéséhez, hogy sikeresen csatlakozott-e a SecretAPI.
 
-![Siker](./media/application-proxy-secure-api-access/success.png)
+![Sikeres](./media/application-proxy-secure-api-access/success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban](application-proxy-add-on-premises-application.md)
-- [Rövid útmutató: Webes API-k eléréséhez ügyfélalkalmazás konfigurálása](../develop/quickstart-configure-app-access-web-apis.md)
-- [Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése](application-proxy-configure-native-client-application.md)
+- [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez](../develop/quickstart-configure-app-access-web-apis.md)
+- [Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz](application-proxy-configure-native-client-application.md)

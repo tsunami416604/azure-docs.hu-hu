@@ -8,28 +8,28 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755376"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063947"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
-A szolgáltatások világában minden logikai művelet végrehajtásához a szolgáltatás különböző összetevőinek kell működniük. Ezeket az összetevőket az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)külön is figyelheti. A webalkalmazás-összetevő a hitelesítési szolgáltató összetevővel kommunikál a felhasználói hitelesítő adatok érvényesítéséhez, valamint az API-összetevővel a vizualizációk adatainak lekérdezéséhez. Az API-összetevő más szolgáltatásokból származó adatok lekérdezésére és a gyorsítótár-szolgáltatói összetevők használatával értesíti az adott hívás számlázási összetevőjét. A Application Insights támogatja az elosztott telemetria korrelációt, amelyet annak észlelésére használ, hogy melyik összetevő felelős a hibákért vagy a teljesítmény romlásához.
+A szolgáltatások világában minden logikai művelet végrehajtásához a szolgáltatás különböző összetevőinek kell működniük. Ezeket az összetevőket az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)külön is figyelheti. A Application Insights támogatja az elosztott telemetria korrelációt, amelyet annak észlelésére használ, hogy melyik összetevő felelős a hibákért vagy a teljesítmény romlásához.
 
 Ez a cikk a Application Insights által a több összetevő által elküldett telemetria korrelációt okozó adatmodellt ismerteti. Magában foglalja a kontextus-propagálási technikákat és protokollokat. Emellett ismerteti a korrelációs fogalmak megvalósítását a különböző nyelveken és platformokon.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Telemetria korrelációs adatmodell
 
-Application Insights definiál egy [adatmodellt](../../azure-monitor/app/data-model.md) az elosztott telemetria korrelációhoz. A telemetria a logikai művelethez való hozzárendeléséhez minden telemetria-elemhez tartozik egy `operation_Id` nevű környezeti mező. Ezt az azonosítót az elosztott nyomkövetés minden telemetria-eleme megosztja. Tehát még a telemetria egyetlen rétegből való elvesztése esetén is társíthat más összetevők által jelentett telemetria.
+Application Insights definiál egy [adatmodellt](../../azure-monitor/app/data-model.md) az elosztott telemetria korrelációhoz. A telemetria a logikai művelethez való hozzárendeléséhez minden telemetria-elemhez tartozik egy `operation_Id`nevű környezeti mező. Ezt az azonosítót az elosztott nyomkövetés minden telemetria-eleme megosztja. Tehát még a telemetria egyetlen rétegből való elvesztése esetén is társíthat más összetevők által jelentett telemetria.
 
-Az elosztott logikai műveletek jellemzően kisebb műveletekből állnak, amelyek az egyik összetevő által feldolgozott kérelmek. Ezeket a műveleteket a [kérelem telemetria](../../azure-monitor/app/data-model-request-telemetry.md)határozza meg. Minden kérelem telemetria saját `id`, amely egyedileg és globálisan azonosítja azt. Továbbá az ehhez a kérelemhez társított összes telemetria-elemet (például a nyomkövetéseket és a kivételeket) a kérelem `id` értékére kell beállítania a `operation_parentId`.
+Az elosztott logikai műveletek jellemzően kisebb műveletekből állnak, amelyek az egyik összetevő által feldolgozott kérelmek. Ezeket a műveleteket a [kérelem telemetria](../../azure-monitor/app/data-model-request-telemetry.md)határozza meg. Minden kérelem telemetria saját `id`, amely egyedileg és globálisan azonosítja azt. Továbbá az ehhez a kérelemhez társított összes telemetria-elemet (például a nyomkövetéseket és a kivételeket) a kérelem `id`értékére kell beállítania a `operation_parentId`.
 
 Minden kimenő művelet, például egy HTTP-hívás egy másik összetevőhöz, a [függőségi telemetria](../../azure-monitor/app/data-model-dependency-telemetry.md)szerint jelenik meg. A függőségi telemetria a globálisan egyedi `id` is meghatározza. A függőségi hívás által kezdeményezett telemetria kérelme ezt a `id` használja `operation_parentId`ként.
 
-Az elosztott logikai művelet nézetét `operation_Id`, `operation_parentId` és `request.id` használatával hozhatja létre `dependency.id`. Ezek a mezők a telemetria-hívások oksági sorrendjét is meghatározzák.
+Az elosztott logikai művelet nézetét `operation_Id`, `operation_parentId`és `request.id` használatával hozhatja létre `dependency.id`. Ezek a mezők a telemetria-hívások oksági sorrendjét is meghatározzák.
 
 A Service-környezetekben az összetevőkből származó nyomkövetési adatok különböző tárolóhelyekre léphetnek. Minden összetevő rendelkezhet saját kialakítási kulccsal Application Insightsban. A logikai művelet telemetria beszerzéséhez a Application Insights UX minden tárolóeszközről lekérdezi az összes elemet. Ha a tárolási elemek száma hatalmas, szüksége lesz egy tippre, ahol a következőt kell megkeresnie. A Application Insights adatmodell két mezőt határoz meg a probléma megoldásához: `request.source` és `dependency.target`. Az első mező azonosítja a függőségi kérelmet kezdeményező összetevőt, a második pedig azt, hogy melyik összetevő adta vissza a függőségi hívás válaszát.
 
@@ -70,7 +70,7 @@ A [korrelációs HTTP-protokoll más néven a Request-ID](https://github.com/dot
 - `Request-Id`: a hívás globálisan egyedi AZONOSÍTÓját végzi.
 - `Correlation-Context`: az elosztott nyomkövetési tulajdonságok név-érték párok összegyűjtését végzi.
 
-A Application Insights a korrelációs HTTP protokoll [bővítményét](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) is meghatározza. @No__t_0 név-érték párokat használ a közvetlen hívó vagy a hívott által használt tulajdonságok gyűjteményének propagálásához. A Application Insights SDK ezt a fejlécet használja `dependency.target` és `request.source` mezők beállításához.
+A Application Insights a korrelációs HTTP protokoll [bővítményét](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) is meghatározza. `Request-Context` név-érték párokat használ a közvetlen hívó vagy a hívott által használt tulajdonságok gyűjteményének propagálásához. A Application Insights SDK ezt a fejlécet használja `dependency.target` és `request.source` mezők beállításához.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése klasszikus ASP.NET-alkalmazásokhoz
  
@@ -92,7 +92,7 @@ Alapértelmezés szerint le van tiltva. Ennek engedélyezéséhez módosítsa `A
 
 - A `RequestTrackingTelemetryModule` területen adja hozzá a `EnableW3CHeadersExtraction` elemet a következő értékkel: `true`.
 - A `DependencyTrackingTelemetryModule` területen adja hozzá a `EnableW3CHeadersInjection` elemet a következő értékkel: `true`.
-- @No__t_0 hozzáadása a `TelemetryInitializers` hasonló módon 
+- `W3COperationCorrelationTelemetryInitializer` hozzáadása a `TelemetryInitializers` hasonló módon 
 
 ```xml
 <TelemetryInitializers>
@@ -221,7 +221,7 @@ A OpenCensus Python a fentiekben ismertetett `OpenTracing` adatmodell-specifiká
 
 ### <a name="incoming-request-correlation"></a>Bejövő kérelmek korrelációja
 
-A OpenCensus Python összekapcsolja a W3C nyomkövetési környezet fejléceit a bejövő kérelmektől a kérések által a kérelmekből generált felölelve. A OpenCensus ezt automatikusan elvégzi a népszerű webalkalmazási keretrendszerek, például a `flask`, a `django` és a `pyramid` integrálásával. A W3C nyomkövetési környezet fejléceit egyszerűen fel kell tölteni a [megfelelő formátummal](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format), és a kéréssel kell elküldeni. Az alábbiakban egy példa `flask` alkalmazás szemlélteti ezt.
+A OpenCensus Python összekapcsolja a W3C nyomkövetési környezet fejléceit a bejövő kérelmektől a kérések által a kérelmekből generált felölelve. A OpenCensus ezt automatikusan végrehajtja a következő népszerű webalkalmazás-keretrendszerek integrációs szolgáltatásával: `flask`, `django` és `pyramid`. A W3C nyomkövetési környezet fejléceit egyszerűen fel kell tölteni a [megfelelő formátummal](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) , és a kéréssel kell elküldeni. Az alábbiakban egy példa `flask` alkalmazás szemlélteti ezt.
 
 ```python
 from flask import Flask
@@ -253,7 +253,7 @@ A [nyomkövetési kontextus fejlécének formátuma](https://www.w3.org/TR/trace
  `parent-id/span-id`: `00f067aa0ba902b7` 
  0: 1
 
-Ha megvizsgáljuk a Azure Monitorba küldendő kérelem bejegyzését, láthatjuk, hogy a nyomkövetési fejléc adataival feltöltött mezők láthatók.
+Ha megvizsgáljuk a Azure Monitorba küldendő kérelem bejegyzését, láthatjuk, hogy a nyomkövetési fejléc adataival feltöltött mezők láthatók. Ezeket az adatnaplókat (Analitika) a Azure Monitor Application Insights erőforrásban találja.
 
 ![Képernyőkép a naplók (Analytics) telemetria, a nyomkövetési fejléc mezőinek kijelölése piros mezőben](./media/opencensus-python/0011-correlation.png)
 
@@ -290,6 +290,8 @@ A kód futtatásakor a következő a konzolon érhető el:
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
 Figyelje meg, hogy van-e olyan spanId, amely a tartományon belüli naplófájlhoz tartozik, amely ugyanaz a spanId, amely a (z) `hello` nevű tartományhoz tartozik.
+
+A naplózási adatai a `AzureLogHandler`használatával exportálhatók. További információt [itt](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs) találhat
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetria korreláció a .NET-ben
 

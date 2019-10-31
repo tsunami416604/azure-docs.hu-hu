@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802450"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062255"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -59,10 +59,10 @@ Az eszköz rendszergazdai szerepkörének módosításához **további helyi ren
 >[!NOTE]
 > Ehhez a beállításhoz prémium szintű Azure AD bérlő szükséges. 
 
-Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Az eszközök rendszergazdái nem állíthatók be egy adott eszközre. Az eszköz rendszergazdai szerepkörének frissítése nem feltétlenül jelent azonnali hatást az érintett felhasználókra. Az eszközök esetében a felhasználó már be van jelentkezve, a jogosultságok frissítése zajlik le:
+Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Az eszközök rendszergazdái nem állíthatók be egy adott eszközre. Az eszköz rendszergazdai szerepkörének frissítése nem feltétlenül jelent azonnali hatást az érintett felhasználókra. Azokon az eszközökön, amelyeken a felhasználó már be van jelentkezve, a jogosultsági frissítés akkor kerül sor, ha az alábbi műveletek *is* megtörténnek:
 
-- Amikor egy felhasználó kijelentkezik.
-- 4 óra elteltével új elsődleges frissítési jogkivonat kiállítása után. 
+- 4 óra telt el az Azure AD számára, hogy új elsődleges frissítési jogkivonatot adjon ki a megfelelő jogosultságokkal. 
+- A felhasználó kijelentkezik, és visszajelentkezik, nem zárolja vagy oldja fel a profil frissítését.
 
 ## <a name="manage-regular-users"></a>Normál felhasználók kezelése
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231175"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099495"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -41,10 +41,10 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 * A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node. js](https://aka.ms/ams-v3-nodejs-ref), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
 * [Azure CLI](https://aka.ms/ams-v3-cli-ref) -integráció az egyszerű parancsfájlok támogatásához.
 
-### <a name="new-features"></a>Új funkciók
+### <a name="new-features"></a>ÚJ funkciók
 
 * A fájl alapú feladatok feldolgozásához a HTTP (S) URL-címet használhatja bemenetként.<br/>Nem kell az Azure-ban tárolt tartalmakat használnia, és nem kell eszközöket létrehoznia.
-* Bevezeti a [](transforms-jobs-concept.md) fájl alapú feladatok feldolgozásának átalakítási koncepcióját. Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között.
+* Bevezeti a fájl alapú feladatok feldolgozásának [átalakítási](transforms-jobs-concept.md) koncepcióját. Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között.
 * Egy eszközhöz több [folyamatos átviteli lokátor](streaming-locators-concept.md) is tartozhat, amelyek különböző [dinamikus csomagolási](dynamic-packaging-overview.md) és dinamikus titkosítási beállításokkal rendelkeznek.
 * A [Content Protection](content-key-policy-concept.md) támogatja a többkulcsos funkciókat.
 * Akár 24 órán át tartó élő eseményeket is továbbíthat, ha Media Services használ egy sávszélesség-összefoglalást egy olyan kimeneti adatfolyamba, amely több bitrátát tartalmaz.
@@ -58,7 +58,7 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 ## <a name="changes-from-v2"></a>Változások a v2-ből
 
 * A v3-vel létrehozott eszközök esetében a Media Services csak az [Azure Storage kiszolgálóoldali tároló-titkosítását](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)támogatja.
-    * A V3 API-kat a Media Services által biztosított [Storage encryption](../previous/media-services-rest-storage-encryption.md) (AES 256) tárolóval rendelkező v2 API-kkal rendelkező eszközökhöz lehet használni.
+    * A V3 API-kat a Media Services által biztosított Storage encryption (AES 256) [tárolóval](../previous/media-services-rest-storage-encryption.md) rendelkező v2 API-kkal rendelkező eszközökhöz lehet használni.
     * V3 API-kkal nem hozhatók létre új adategységek a régi AES 256 [Storage encryption](../previous/media-services-rest-storage-encryption.md) használatával.
 * Az [eszköznek](assets-concept.md)a v3-as tulajdonságai eltérnek a v2-től, lásd: [a tulajdonságok leképezése](assets-concept.md#map-v3-asset-properties-to-v2).
 * A v3 SDK-k mostantól le vannak választva a Storage SDK-ból, így nagyobb mértékben szabályozható a használni kívánt Storage SDK verziója, és elkerülheti a verziószámozási problémákat. 
@@ -70,19 +70,20 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 * A következő entitások lettek átnevezve
     * A feladat kimenete lecseréli a feladatot, és most egy feladat része.
     * A folyamatos átviteli lokátor helyettesíti a lokátort.
-    * Az élő esemény lecseréli a csatornát.<br/>Az élő események számlázása az élő csatorna mérőszámán alapul. További információt a számlázással [](live-event-states-billing.md) és a [díjszabással](https://azure.microsoft.com/pricing/details/media-services/)foglalkozó témakörben talál.
+    * Az élő esemény lecseréli a csatornát.<br/>Az élő események számlázása az élő csatorna mérőszámán alapul. További információt a [számlázással](live-event-states-billing.md) és a [díjszabással](https://azure.microsoft.com/pricing/details/media-services/)foglalkozó témakörben talál.
     * Az élő kimenet lecseréli a programot.
 * Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak. A programok a v2 API-kkal eltérően működnek, amelyeket a létrehozás után kell elindítani.
-*  A feladattal kapcsolatos információk lekéréséhez ismernie kell az átalakítás nevét, amely alatt a feladatot létrehozták. 
+* A feladattal kapcsolatos információk lekéréséhez ismernie kell az átalakítás nevét, amely alatt a feladatot létrehozták. 
+* A v2-ben az XML [bemeneti](../previous/media-services-input-metadata-schema.md) és [kimeneti](../previous/media-services-output-metadata-schema.md) metaadat-fájljai a kódolási feladatok eredményeképpen jönnek létre. A v3-as verzióban a metaadatok formátuma XML-ből JSON-ra változott. 
 
 > [!NOTE]
-> Tekintse át [Media Services v3 erőforrásokra](media-services-apis-overview.md#naming-conventions)alkalmazott elnevezési konvenciókat. Tekintse [](assets-concept.md#naming-blobs)át a Blobok elnevezését is.
+> Tekintse át [Media Services v3 erőforrásokra](media-services-apis-overview.md#naming-conventions)alkalmazott elnevezési konvenciókat. Tekintse át a [Blobok elnevezését](assets-concept.md#naming-blobs)is.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Hiányosságok a v2 API-k tekintetében
 
 A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartalmaz. A hiányosságok lezárása folyamatban van.
 
-* A [prémium szintű kódoló](../previous/media-services-premium-workflow-encoder-formats.md) és az örökölt [Media Analytics](../previous/media-services-analytics-overview.md) -processzorok (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül.<br/>Azok az ügyfelek, akik a Media Indexer 1 vagy 2 előzetes verzióról kívánnak áttérni, azonnal használhatják a AudioAnalyzer-készletet a V3 API-ban.  Ez az új beállításkészlet több funkciót tartalmaz, mint a régebbi Media Indexer 1 vagy 2. 
+* A [prémium szintű kódoló](../previous/media-services-premium-workflow-encoder-formats.md) és az örökölt [Media Analytics-processzorok](../previous/media-services-analytics-overview.md) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül.<br/>Azok az ügyfelek, akik a Media Indexer 1 vagy 2 előzetes verzióról kívánnak áttérni, azonnal használhatják a AudioAnalyzer-készletet a V3 API-ban.  Ez az új beállításkészlet több funkciót tartalmaz, mint a régebbi Media Indexer 1 vagy 2. 
 * A v2 API-k [Media Encoder standard számos speciális funkciója](../previous/media-services-advanced-encoding-with-mes.md) jelenleg nem érhető el a v3 verzióban, például:
   
     * Eszközök összefűzése
@@ -100,11 +101,11 @@ A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartal
 
 Az alábbi táblázat a v2 és v3 kód közötti különbségeket mutatja be a gyakori forgatókönyvek esetében.
 
-|Forgatókönyv|V2 API|V3 API|
+|Alkalmazási helyzet|V2 API|V3 API|
 |---|---|---|
 |Eszköz létrehozása és fájl feltöltése |[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Feladatok elküldése|[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Bemutatja, hogyan hozhat létre először egy átalakítót, majd küldhet el egy feladatot.|
-|Eszköz közzététele AES-titkosítással |1. ContentKeyAuthorizationPolicyOption létrehozása<br/>2. ContentKeyAuthorizationPolicy létrehozása<br/>3. Create AssetDeliveryPolicy<br/>4. Eszköz létrehozása és tartalom feltöltése vagy feladatok elküldése és kimeneti eszköz használata<br/>5. AssetDeliveryPolicy hozzárendelése eszközhöz<br/>6. ContentKey létrehozása<br/>7. ContentKey csatolása az eszközhöz<br/>8. AccessPolicy létrehozása<br/>9. Lokátor létrehozása<br/><br/>[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tartalmi kulcs szabályzatának létrehozása<br/>2. Eszköz létrehozása<br/>3. Tartalom feltöltése vagy eszköz használata JobOutput<br/>4. Adatfolyam-kereső létrehozása<br/><br/>[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Eszköz közzététele AES-titkosítással |1. ContentKeyAuthorizationPolicyOption létrehozása<br/>2. ContentKeyAuthorizationPolicy létrehozása<br/>3. AssetDeliveryPolicy létrehozása<br/>4. eszköz létrehozása és tartalom feltöltése vagy feladatok elküldése és kimeneti eszköz használata<br/>5. AssetDeliveryPolicy hozzárendelése az objektumhoz<br/>6. ContentKey létrehozása<br/>7. ContentKey csatolása az eszközhöz<br/>8. AccessPolicy létrehozása<br/>9. lokátor létrehozása<br/><br/>[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. tartalom-kulcs házirend létrehozása<br/>2. eszköz létrehozása<br/>3. tartalom feltöltése vagy eszköz használata JobOutput<br/>4. adatfolyam-kereső létrehozása<br/><br/>[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |Feladat részleteinek beolvasása és feladatok kezelése |[Feladatok kezelése a v2-sel](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Feladatok kezelése a v3-vel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Ismert problémák
@@ -123,7 +124,7 @@ Az alábbi táblázat a v2 és v3 kód közötti különbségeket mutatja be a g
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [fájlok streamelésével](stream-files-dotnet-quickstart.md) foglalkozó témakörben tekintheti meg, hogy milyen egyszerűen kezdheti meg a videofájlok kódolását és streamelését. 
 

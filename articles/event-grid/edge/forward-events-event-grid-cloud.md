@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d73f64463d3e56d7bd2e59fcb719c6320cbc6321
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992352"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100654"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: események továbbítása Event Grid felhőbe
 
@@ -102,7 +102,7 @@ Ha például az USA nyugati régiójában létrehozott egy `testegcloudtopic` ne
    ```
 
    >[!NOTE]
-   > A **endpointUrl** megadja, hogy a Event Grid témakör URL-címe a felhőben. A **sasKey** Event Grid Felhőbeli témakör kulcsára hivatkozik. A rendszer az **topicName** -ben lévő értéket fogja használni az összes kimenő esemény Event Grid. Ez akkor lehet hasznos, ha Event Grid tartományi témakörbe való feladást végez. További információ a Event Grid tartományi témakörről: [Event Domains]] (... /event-domains.md)
+   > A **endpointUrl** megadja, hogy a Event Grid témakör URL-címe a felhőben. A **sasKey** Event Grid Felhőbeli témakör kulcsára hivatkozik. A rendszer az **topicName** -ben lévő értéket fogja használni az összes kimenő esemény Event Grid. Ez akkor lehet hasznos, ha Event Grid tartományi témakörbe való feladást végez. További információ a Event Grid tartományi témakörről: [esemény-tartományok](../event-domains.md)
 
     Például:
   
@@ -198,5 +198,6 @@ A Felhőbeli témakör által megjelenített események megtekintésével kapcso
 
 Ebben az oktatóanyagban egy eseményt tett közzé az Edge-ben, és továbbítottuk az Azure-felhőben lévő Event Gridra. Most, hogy ismeri a felhőben való Event Gridre való továbbítás alapvető lépéseit:
 
+* A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
 * Események továbbítása a IoTHub az [oktatóanyag](forward-events-iothub.md) követésével
 * Események továbbítása a webhookba a felhőben az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével

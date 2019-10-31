@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529026"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096964"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -102,6 +102,8 @@ Ha korlátozott számú memóriával rendelkező korlátozott méretű eszközö
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>A korlátozott eszközök teljesítményének optimalizálása
 
 Az IoT Edge hub alapértelmezés szerint a teljesítményre van optimalizálva, így nagy mennyiségű memóriát próbál lefoglalni. Ez a konfiguráció stabilitási problémákat okozhat a kisebb eszközökön, például a málna PI-ben. Ha korlátozott erőforrásokkal rendelkező eszközöket helyez üzembe, érdemes lehet **hamis** értékre állítani a **OptimizeForPerformance** környezeti változót az IoT Edge központban. 
+
+Ha a **OptimizeForPerformance** értéke **true (igaz**), a MQTT-protokoll feje a PooledByteBufferAllocator-t használja, amely jobb teljesítményt nyújt, de több memóriát foglal le. A lefoglaló nem működik megfelelően a 32 bites operációs rendszereken, illetve az alacsony memóriával rendelkező eszközökön. Emellett, ha teljesítményre optimalizált, a RocksDb több memóriát foglal le a szerepköréhez, mint a helyi tároló szolgáltatója. 
 
 További információ: [stabilitási problémák az erőforrás által korlátozott eszközökön](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
@@ -195,7 +197,7 @@ Ha az eszközök egy proxykiszolgálót használó hálózaton lesznek telepítv
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A démon-naplók lekérdezéséhez használhatja a `journalctl` parancssori eszközt. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. @No__t_0 használatával kérdezheti le a naplókat a démonból. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
+Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A démon-naplók lekérdezéséhez használhatja a `journalctl` parancssori eszközt. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. `Get-IoTEdgeLog` használatával kérdezheti le a naplókat a démonból. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

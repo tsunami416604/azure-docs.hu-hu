@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477283"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062565"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Gallery-alkalmazás hozzáadása az Azure AD-szervezethez
 
 Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak a vállalati egyszeri bejelentkezéssel. Ez a cikk az alkalmazások katalógusból az Azure AD-szervezetbe való hozzáadásának általános lépéseit ismerteti.
 
 > [!IMPORTANT]
-> Először keresse meg az alkalmazást az oktatóanyagok listájában arról, [Hogyan integrálható az SaaS-alkalmazások Azure Active Directory használatával](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). A hozzáadni kívánt Gallery-alkalmazás hozzáadásával és konfigurálásával kapcsolatban valószínűleg részletes útmutatást talál.
+> Először keresse meg az alkalmazást az [oktatóanyagok listájában arról, hogyan integrálható az SaaS-alkalmazások Azure Active Directory használatával](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). A hozzáadni kívánt Gallery-alkalmazás hozzáadásával és konfigurálásával kapcsolatban valószínűleg részletes útmutatást talál.
 
 ## <a name="add-a-gallery-application"></a>Gyűjteménybeli alkalmazás hozzáadása
 
@@ -34,27 +34,30 @@ Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alk
 
 1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget.
 
-    ![Vállalati alkalmazások megnyitása](media/add-application-portal/open-enterprise-apps.png)
+    ![Vállalati alkalmazások megnyitása](media/add-gallery-app/open-enterprise-apps.png)
 
-1. Válassza az **Új alkalmazás** lehetőséget.
 
-    ![Új alkalmazás](media/add-application-portal/new-application.png)
+3. Ha szeretne hozzáadni egy Gallery-alkalmazást a bérlőhöz, válassza az **új alkalmazás**lehetőséget.
 
-1. A **Hozzáadás a**katalógusból területen a keresőmezőbe írja be a hozzáadni kívánt alkalmazás nevét. 
+    ![Válassza az új alkalmazás lehetőséget, ha egy katalógus-alkalmazást szeretne hozzáadni a bérlőhöz](media/add-gallery-app/new-application.png)
 
-    ![Keresés név vagy kategória alapján](media/add-application-portal/categories.png)
+ 4. Váltson az új katalógus előzetes verziójára: az **alkalmazás hozzáadása lap**tetején található szalagcímen válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-katalógus kipróbálásához kattintson ide**.
 
-1. Válassza ki az alkalmazást az eredmények közül.
+5. Megnyílik az **Azure ad Gallery tallózása** panel, és megjeleníti a Felhőbeli platformok, a helyszíni alkalmazások és a Kiemelt alkalmazások csempéit. Vegye figyelembe, hogy a **Kiemelt alkalmazások** szakaszban felsorolt alkalmazások rendelkeznek ikonokkal, amelyek azt jelzik, hogy támogatják-e az összevont egyszeri bejelentkezést (SSO) és az üzembe helyezést.
 
-1. Választható Az alkalmazás-specifikus űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek.
+    ![Alkalmazás keresése név vagy kategória szerint](media/add-gallery-app/browse-gallery.png)
 
-1. Válassza a **Hozzáadás** lehetőséget. Megnyílik az  alkalmazás áttekintő lapja.
+6. Tallózással keresse meg a hozzáadni kívánt alkalmazás katalógusát, vagy keresse meg az alkalmazást úgy, hogy beírja a nevét a keresőmezőbe. Ezután válassza ki az alkalmazást az eredmények közül. Választható Az űrlapon szerkesztheti az alkalmazás nevét, hogy az megfeleljen a szervezet igényeinek.
+
+    ![Bemutatja, hogyan adhat hozzá egy alkalmazást a katalógusból](media/add-gallery-app/create-application.png)
+
+7. Kattintson a **Létrehozás** gombra. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára.
 
 ## <a name="configure-user-sign-in-properties"></a>Felhasználó bejelentkezési tulajdonságainak konfigurálása
 
 1. Válassza a **Tulajdonságok** lehetőséget a Tulajdonságok ablaktábla szerkesztéshez való megnyitásához.
 
-    ![Tulajdonságok ablaktábla szerkesztése](media/add-application-portal/edit-properties.png)
+    ![Tulajdonságok ablaktábla szerkesztése](media/add-gallery-app/edit-properties.png)
 
 1. A következő beállítások megadásával meghatározhatja, hogy az alkalmazáshoz hozzárendelt vagy hozzá nem rendelt felhasználók hogyan jelentkezhetnek be az alkalmazásba, és ha egy felhasználó láthatja az alkalmazást a hozzáférési panelen.
 
@@ -80,7 +83,7 @@ Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alk
 
        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
        |---|---|---|---|---|
-       | Engedélyezve van a felhasználók számára a bejelentkezés? | Kell felhasználó-hozzárendelés? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
+       | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
        | igen | igen | igen | nem  | nem   |
        | igen | igen | nem  | nem  | nem   |
        | igen | nem  | igen | igen | nem   |
@@ -94,11 +97,11 @@ Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alk
 
 1. Egyéni embléma használatához hozzon létre egy 215 és 215 képpont közötti emblémát, és mentse PNG formátumban. Ezután keresse meg az emblémát, és töltse fel.
 
-    ![Embléma módosítása](media/add-application-portal/change-logo.png)
+    ![Embléma módosítása](media/add-gallery-app/change-logo.png)
 
 1. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy hozzáadta az alkalmazást az Azure AD-szervezethez, [válassza ki a használni kívánt egyszeri bejelentkezési módszert](what-is-single-sign-on.md#choosing-a-single-sign-on-method) , és tekintse meg az alábbi megfelelő cikket:
 

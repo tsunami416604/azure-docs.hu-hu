@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b2003b9c7520cfa3e82576fd3430063c20d452ff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104562"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101538"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Hálózati házirendek letiltása a Private link Service forrás IP-címéhez
 
-A privát kapcsolati szolgáltatás forrás IP-címének kiválasztásához explicit letiltási beállítást `privateLinkServiceNetworkPolicies` kell megadni az alhálózaton. Ez a beállítás csak arra a privát IP-címére érvényes, amelyet a privát kapcsolati szolgáltatás forrás IP-címeként választott. Az alhálózatban található egyéb erőforrásokhoz a hozzáférés a hálózati biztonsági csoportok (NSG) biztonsági szabályok definíciója alapján van szabályozva. 
+A privát kapcsolati szolgáltatás forrás IP-címének kiválasztásához az alhálózaton explicit letiltási beállítást `privateLinkServiceNetworkPolicies` szükséges. Ez a beállítás csak arra a privát IP-címére érvényes, amelyet a privát kapcsolati szolgáltatás forrás IP-címeként választott. Az alhálózatban található egyéb erőforrásokhoz a hozzáférés a hálózati biztonsági csoportok (NSG) biztonsági szabályok definíciója alapján van szabályozva. 
  
 Ha bármely Azure-ügyfelet (PowerShell, CLI vagy sablonok) használ, további lépésekre van szükség a tulajdonság módosításához. A szabályzatot letilthatja a Cloud shellrel Azure Portal vagy Azure PowerShell helyi telepítése, az Azure CLI vagy a Azure Resource Manager sablonok használatával.  
  
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
@@ -72,6 +70,6 @@ Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózati végpont-ház
 } 
  
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private-végpontról](private-endpoint-overview.md)
  

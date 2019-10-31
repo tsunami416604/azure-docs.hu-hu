@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/25/2019
+ms.date: 10/29/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 639b73c95d5a2cceef24044a5247a401f50da860
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e20f90a510795080f4f2e1f9dbd6961e700baab0
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934929"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061472"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,6 +120,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Módosítási napló
+- 10/29/2019: a [Virtual Machines nyilvános végponti kapcsolatának kiadása az Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával](high-availability-guide-standard-load-balancer-outbound-connections.md)
 - 10/25/2019: változások a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , és SAP HANA az Azure-beli virtuális gépek [készenléti csomópontjának kibővítésével az Azure NetApp Files on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) a/Hana/Shared-kötet NFS-protokolljának tisztázásához
 - 10/22/2019: az SAP [NetWeaver magas rendelkezésre állásának megváltozása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)esetében, [magas rendelkezésre állás az Azure-beli virtuális SUSE Linux Enterprise Server gépeken futó SAP NetWeaver számára az SAP-alkalmazásokhoz Azure NetApp Files ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Magas rendelkezésre állás a SUSE Linux Enterprise Server Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), a [pacemaker beállítása az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)-beli SUSE Linux Enterprise Server számára, [magas rendelkezésre állás az Azure-beli virtuális GÉPEKen elérhető IBM DB2-LUW, SUSE Linux Enterprise Server a pacemakerrel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) Az Azure-beli [virtuális gépeken futó SAP HANA magas rendelkezésre állása a SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) Azure Load-Balancer észlelésének megerősítéséhez
 - A ANF szakasz és fejléc szakaszának módosítása [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)

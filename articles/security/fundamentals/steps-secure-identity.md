@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053073"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101423"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -175,21 +175,21 @@ Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshe
 
 A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket.
 
-## <a name="step-5---enable-end-user-self-help"></a>5\. lépés – a végfelhasználói önkiszolgáló Súgó engedélyezése
+## <a name="step-5---enable-end-user-self-service"></a>5\. lépés – a végfelhasználói önkiszolgáló engedélyezése
 
-Amennyire csak lehet, érdemes egyensúlyba állítani a biztonságot a hatékonysággal. Ha hosszú távon is megközelíti az Ön utazását, azzal a gondolkodásmódtal, hogy a biztonságra vonatkozó alapszintű biztonsági beállításokat a munkahelyen, a felhasználók továbbra is körültekintően vehetik igénybe. 
+Amennyire csak lehet, érdemes egyensúlyba állítani a biztonságot a hatékonysággal. Ha hosszú távon is megközelíti az Ön utazását, azzal a gondolkodásmódtal, hogy a biztonságra vonatkozó alapszintű biztonsági beállításokat a munkahelyen, a felhasználók továbbra is körültekintően vehetik igénybe.
 
 ### <a name="implement-self-service-password-reset"></a>Önkiszolgáló jelszó-visszaállítás implementálása
 
-Az Azure önkiszolgáló [jelszavának alaphelyzetbe állítása (SSPR)](../../active-directory/authentication/quickstart-sspr.md) egyszerű módszert kínál a rendszergazdáknak, hogy rendszergazdai beavatkozás nélkül engedélyezzék vagy oldják fel jelszavukat vagy fiókjaikat. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre. 
+Az Azure AD önkiszolgáló [jelszó-visszaállítási szolgáltatása (SSPR)](../../active-directory/authentication/quickstart-sspr.md) egyszerű módszert kínál a rendszergazdáknak arra, hogy az ügyfélszolgálat vagy a rendszergazda beavatkozása nélkül visszaállítsák vagy feloldják a jelszavukat vagy fiókjaikat. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik, hogy a felhasználók hogyan állíthatják alaphelyzetbe a jelszavukat, valamint az értesítéseket, amelyek a visszaélés vagy a visszaélés ellen figyelmeztetnek
 
-### <a name="implement-self-service-group-management"></a>Önkiszolgáló csoport kezelésének megvalósítása
+### <a name="implement-self-service-group-and-application-access"></a>Önkiszolgáló csoport és alkalmazás-hozzáférés megvalósítása
 
-Az Azure AD lehetővé teszi az erőforrásokhoz való hozzáférés kezelését a biztonsági csoportok és az Office 365-csoportok használatával. Ezeket a csoportokat a rendszergazdák felügyelik a csoport tulajdonosai helyett. Ez a funkció lehetővé teszi, hogy az [önkiszolgáló csoportok felügyeletének](../../active-directory/users-groups-roles/groups-self-service-management.md)részeként olyan tulajdonosokat engedélyezzen, akik nem rendeltek rendszergazdai szerepkört a csoportok létrehozásához és kezeléséhez anélkül, hogy a rendszergazdák a kéréseiket kezelni tudják.
+Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférés kezelését, a biztonsági csoportok, az Office 365-csoportok, az alkalmazás szerepkörei és a hozzáférési csomagok katalógusának használatával.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/users-groups-roles/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók az Office 365-csoportok létrehozását és felügyeletét anélkül is létrehozhatják és kezelhetik, hogy a rendszergazdákra támaszkodnak a kéréseik kezelésére, a nem használt csoportok pedig automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, amelyekhez a hozzáférés jóváhagyásához szükséges egyéni szabályzatok érvényesek, beleértve az alkalmazottak a vezetők és az üzleti partnerek támogatói.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD hozzáférési felülvizsgálatok megvalósítása
 
-Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így meggyőződhet arról, hogy olyan biztonsági szabványt tart fenn, amely nem biztosít hozzáférést a felhasználóknak hosszabb ideig, amikor nem szükség van rá.
+Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók rendszeres felügyelete alá tartoznak, az erőforrás-tulajdonosok és az egyéb felülvizsgálók biztosítják, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
 
 ## <a name="summary"></a>Összefoglalás
 

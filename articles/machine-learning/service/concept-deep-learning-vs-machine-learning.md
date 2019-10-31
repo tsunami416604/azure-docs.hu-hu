@@ -1,7 +1,7 @@
 ---
 title: Mélyreható tanulás és gépi tanulás
 titleSuffix: Azure Machine Learning
-description: Ismerkedjen meg a Deep learning és a Machine learning szolgáltatással, valamint a mesterséges intelligenciával kapcsolatos fogalmakkal. A mélyreható tanulás olyan helyzetekben alkalmazható, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
+description: Ismerje meg, hogy a Deep learning hogyan kapcsolódik a gépi tanuláshoz és a mesterséges intelligenciához. A mélyreható tanulást olyan forgatókönyvek használják, mint például a csalások észlelése, a hang & Az Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123139"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063141"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Mélyreható tanulás és gépi tanulás
 
@@ -24,7 +24,7 @@ Ez a cikk segítséget nyújt a Deep learning és a Machine learning összehason
 
 ![Kapcsolati diagram: AI vs. Machine learning és Deep learning](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-Vegye figyelembe az alábbi definíciókat a Deep learning és a Machine learning megismerése érdekében. AI
+Vegye figyelembe a következő definíciókat a Deep learning és a Machine learning és a AI megismerése érdekében:
 
 - A **Deep learning** a gépi tanulás egy olyan részhalmaza, amely mesterséges neurális hálózatokon alapul. A _tanulási folyamat_ _mély_ , mert a mesterséges neurális hálózatok szerkezete több bemeneti, kimeneti és rejtett rétegből áll. Minden réteg olyan egységeket tartalmaz, amelyek átalakítja a bemeneti adatokat olyan adatokba, amelyeket a következő réteg használhat egy adott prediktív feladathoz. Ennek a struktúrának köszönhetően a gépek saját adatfeldolgozással is megismerhetik.
 
@@ -108,7 +108,7 @@ A többrendszeres neurális hálózat egy különösen hatékony mesterséges ne
 
 A többszintű neurális hálózatok olyan területeken lettek felhasználva, mint a videó-felismerés, a képfelismerés és az ajánlott rendszerek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 

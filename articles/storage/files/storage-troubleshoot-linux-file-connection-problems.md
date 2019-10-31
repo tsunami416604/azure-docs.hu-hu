@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926538"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097366"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 
@@ -126,7 +126,7 @@ Egyes Linux-disztribúciók még nem támogatják az SMB 3.0 titkosítási szolg
 
 ### <a name="solution"></a>Megoldás
 
-A Linux rendszerhez készült SMB 3.0 titkosítási szolgáltatása a 4.11-es kernellel jelent meg. Ez a szolgáltatás lehetővé teszi egy helyszíni vagy egy más Azure régióban tárolt Azure-fájlmegosztás csatlakoztatását. A lehetőség minden Linux-disztribúcióban elérhető, amely szerepel a következőben: [Minimális ajánlott verzió az egyes csatlakoztatási képességekhez (SMB 2.1-es és SMB 3.0-s verzió)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Az egyéb disztribúciók esetében a 4.11-es vagy újabb kernelverzió szükséges.
+A Linux rendszerhez készült SMB 3.0 titkosítási szolgáltatása a 4.11-es kernellel jelent meg. Ez a szolgáltatás lehetővé teszi egy helyszíni vagy egy más Azure régióban tárolt Azure-fájlmegosztás csatlakoztatását. Előfordulhat, hogy egyes Linux-disztribúciók backported a 4,11 kerneltől az általuk karbantartott Linux kernel régebbi verzióira. Annak megállapításához, hogy a Linux verziója támogatja-e a titkosítást az SMB 3,0-es verziójában, forduljon a [Azure Files Linux](storage-how-to-use-files-linux.md)rendszerhez. 
 
 Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, az Azure Files csatlakoztatásához használja az SMB 2.1-et egy olyan Azure-beli, Linux rendszerű virtuális gépen, amely ugyanabban az adatközpontban található, mint a fájlmegosztás. Győződjön meg arról, hogy [Biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva a tárfiókban. 
 
@@ -281,7 +281,7 @@ Ez a Linux kernelben található újracsatlakozási hiba a következő változta
 - [CIFS: a lehetséges memória sérülésének javítása az Újracsatlakozás során](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: javítsa a mutex lehetséges kettős zárolását az Újracsatlakozás során (kernel v 4.9 és újabb verziók esetén)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Azonban előfordulhat, hogy ezen módosítások még nem mindegyike lett portolva az összes Linux-disztribúcióba. Az [Az Azure Files használata Linux rendszerrel](storage-how-to-use-files-linux.md) című cikk [Minimális ajánlott verzió az egyes csatlakozási képességekhez (SMB 2.1-es és SMB 3.0-s verzió)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) szakasza ismerteti ezt a javítást és az egyéb, az újracsatlakozással kapcsolatos javításokat. A javítás az ajánlott kernelverziók egyikére való frissítéssel szerezhető be.
+Azonban előfordulhat, hogy ezen módosítások még nem mindegyike lett portolva az összes Linux-disztribúcióba. Ha népszerű Linux-disztribúciót használ, akkor a [Azure Files használata Linuxon](storage-how-to-use-files-linux.md) lehetőségre kattintva megtekintheti, hogy a disztribúció melyik verziója tartalmazza a szükséges kernel-módosításokat.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 

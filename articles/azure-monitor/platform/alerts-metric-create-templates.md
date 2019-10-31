@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052324"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099757"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -27,8 +27,9 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal
 Az alapszintű lépések a következők:
 
 1. Használja az alábbi sablonok egyikét egy olyan JSON-fájlként, amely leírja, hogyan kell létrehozni a riasztást.
-2. A riasztás testreszabásához a megfelelő paramétereket tartalmazó fájlt JSON-ként szerkessze és használja
-3. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/resource-group-template-deploy.md)használatával.
+2. Szerkessze és használja a megfelelő paramétereket tartalmazó fájlt JSON-ként a riasztás testreszabásához.
+3. A `metricName` paraméternél tekintse meg [Azure monitor támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)elérhető metrikáit.
+4. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/resource-group-template-deploy.md)használatával.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
 

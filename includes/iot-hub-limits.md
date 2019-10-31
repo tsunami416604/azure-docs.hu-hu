@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391661"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083737"
 ---
 A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgáltatási szintjeihez társított korlátokat. További információ az egyes *egységek* költségéről: [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -27,7 +27,7 @@ A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlát
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |50 |
+| Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |100 |
 | Azure-előfizetésenkénti ingyenes IoT Hubok maximális száma |1 |
 | Az eszköz AZONOSÍTÓjában szereplő karakterek maximális száma | 128 |
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1,000 |
@@ -53,7 +53,7 @@ A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlát
 | Az eszköz adatfolyamának maximális adatátvitele | 300 MB/nap (csak S1, S2, S3 és F1 esetén) |
 
 > [!NOTE]
-> Ha egy Azure-előfizetésben több mint 50 fizetős IoT-hubhoz van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
+> Ha egy Azure-előfizetésben több mint 100 fizetős IoT-hubhoz van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
 
 > [!NOTE]
 > Jelenleg az egyetlen IoT-hubhoz regisztrálható eszközök és modulok száma 1 000 000. Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
