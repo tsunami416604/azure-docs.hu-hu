@@ -29,7 +29,7 @@
     - name: Regisztrálás új jelszó kérésére
       href: active-directory-passwords-reset-register.md
     - name: Új jelszó kérése
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: A Microsoft Authenticator alkalmazás súgója
   items:
     - name: Áttekintés
