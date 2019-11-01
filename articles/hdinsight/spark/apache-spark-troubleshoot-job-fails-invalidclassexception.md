@@ -1,5 +1,5 @@
 ---
-title: A Apache Spark-feladatok sikertelenek a InvalidClassException az Azure HDInsight
+title: InvalidClassException hiba a Apache Spark-Azure HDInsight
 description: Apache Spark a feladatok meghiúsulnak a InvalidClassException, az osztály verziószáma nem egyezik az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c32b6a5ed7e8c052096f6125a5246fc9685302d4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ad9ec8e97827fb6158476165a610c9d69b12a528
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088683"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241174"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark a feladatok meghiúsulnak a InvalidClassException, az osztály verziószáma nem egyezik az Azure HDInsight
 
@@ -34,18 +34,18 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Ok
 
-Ezt a hibát okozhatja, ha hozzáad egy további jar- `spark.yarn.jars` t a konfigurációhoz, amely egy "árnyékolt" jar, amely a `commons-lang3` csomag egy másik verzióját tartalmazza, és egy osztály-eltérést mutat be. Alapértelmezés szerint a Spark 2.1/2/3 verziója a `commons-lang3`3,5-es verzióját használja.
+Ezt a hibát okozhatja egy további jar hozzáadásával a `spark.yarn.jars` config, amely egy "árnyékolt" jar, amely a `commons-lang3` csomag egy másik verzióját tartalmazza, és egy osztály-eltérést mutat be. Alapértelmezés szerint a Spark 2.1/2/3 verziója a `commons-lang3`3,5-es verzióját használja.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Felbontás
 
 Távolítsa el a jar-t, vagy fordítsa újra a testreszabott jar-t (AzureLogAppender), és használja a [Maven-Shade-beépülő modult](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) az osztályok áthelyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Csatlakozás az Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők. [@AzureSupport](https://twitter.com/azuresupport)
+* Csatlakozás a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiók a felhasználói élmény javításához az Azure-Közösség és a megfelelő erőforrások összekapcsolásával: válaszok, támogatás és szakértők.
 
 * Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

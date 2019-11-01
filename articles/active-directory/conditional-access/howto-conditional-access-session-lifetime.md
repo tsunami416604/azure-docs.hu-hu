@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389668"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241694"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenet felügyeletének konfigurálása feltételes hozzáféréssel
 
@@ -53,7 +53,7 @@ Az Azure AD alapértelmezett böngésző-munkamenetének megőrzése lehetővé 
 A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium szintű licencre van szükség. Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [Mi a feltételes hozzáférés Azure Active Directory?](overview.md#license-requirements) című témakört.
 
 > [!WARNING]
-> Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másikat konfigurálható jogkivonat használatával. élettartam funkció. A Microsoft azt tervezi, hogy november 1-jén kivonja a konfigurálható jogkivonat élettartama funkciót, és lecseréli a feltételes hozzáférés hitelesítési munkamenet-kezelési funkciójával.  
+> Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másikat konfigurálható jogkivonat használatával. élettartam funkció. A Microsoft azt tervezi, hogy a konfigurálható jogkivonat élettartama funkciót a 2020-as és a feltételes hozzáférési hitelesítési munkamenet-kezelési szolgáltatással helyettesíti.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>1\. szabályzat: a bejelentkezés gyakoriságának szabályozása
 
@@ -63,7 +63,7 @@ A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium s
    > [!NOTE]
    > A legjobb felhasználói élmény érdekében javasoljuk, hogy a kulcs Microsoft Office alkalmazások, például az Exchange Online és a SharePoint Online esetében az egyenlő hitelesítési kérések gyakoriságát adja meg.
 
-1. Lépjen a **hozzáférés-vezérlés**@no__t – 1**munkamenetre** , és kattintson a **bejelentkezési gyakoriság** lehetőségre.
+1. Nyissa meg a **hozzáférés-vezérlés** > **munkamenetet** , és kattintson a **bejelentkezési gyakoriság** lehetőségre.
 1. Adja meg az első szövegmezőben a napok és órák szükséges értékét
 1. Válassza ki az **órák** vagy **napok** értékét a legördülő listából
 1. Szabályzat mentése
@@ -82,7 +82,7 @@ Ha az azonos böngésző-munkamenetben futó különböző webalkalmazásokhoz e
    > [!NOTE]
    > Vegye figyelembe, hogy ehhez a vezérlőhöz a "minden felhőalapú alkalmazás" lehetőséget kell választania feltételként. A böngésző-munkamenet megőrzését a hitelesítési munkamenet tokenje vezérli. A böngésző-munkamenet összes lapja egyetlen munkamenet-jogkivonattal rendelkezik, ezért mindegyiknek meg kell egyeznie az adatmegőrzési állapottal.
 
-1. Lépjen a **hozzáférés-vezérlés**@no__t – 1**munkamenetre** , és kattintson az **állandó böngésző-munkamenet** elemre.
+1. Lépjen a **hozzáférés-vezérlések** > **munkamenethez** , és kattintson az **állandó böngésző-munkamenet** elemre.
 1. Válasszon ki egy értéket a legördülő listából
 1. Szabályzat mentése
 

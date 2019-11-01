@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning munkaterhelések futtatása Apache Spark Azure HDInsight
+title: Azure Machine Learning munkaterhelések futtatása Apache Spark HDInsight
 description: Megtudhatja, hogyan futtathat Azure Machine Learning számítási feladatokat automatikus gépi tanulással (AutoML) az Azure HDInsight Apache Spark.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814037"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241487"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
 
@@ -21,7 +21,7 @@ Azure Machine Learning leegyszerűsíti és felgyorsítja a gépi tanulási mode
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Azure Machine Learning telepítése HDInsight-fürtön
 
-Az automatizált gépi tanulással [kapcsolatos általános útmutatók: oktatóanyag: A regressziós modell](../../machine-learning/service/tutorial-auto-train-models.md)létrehozásához használja az automatikus gépi tanulást.
+Az automatizált gépi tanulással kapcsolatos általános útmutatókért lásd [: oktatóanyag: automatikus gépi tanulás használata a regressziós modell létrehozásához](../../machine-learning/service/tutorial-auto-train-models.md).
 Minden új HDInsight-Spark-fürt előre telepítve van a AzureML-AutoML SDK-val. A AutoML a HDInsight-on való használatával megkezdheti ezt a [minta Jupyter notebookot](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi). Ez a Jupyter Notebook bemutatja, hogyan használható egy automatizált gépi tanulási osztályozó egy egyszerű besorolási probléma megoldásához.
 
 > [!Note]
@@ -71,10 +71,10 @@ Az adattárt egyszeri regisztrációval is regisztrálhatja a munkaterületen.
 
 ## <a name="experiment-submission"></a>Kísérlet elküldése
 
-Az [automatikus gépi tanulás konfigurációjában](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)be kell állítani `spark_context` a tulajdonságot, hogy a csomag elosztott módban fusson. A párhuzamosan végrehajtott ismétlések maximális számát megadó tulajdonságot `concurrent_iterations`a Spark-alkalmazás végrehajtó magoknál kisebb számra kell beállítani.
+Az [automatikus gépi tanulás konfigurációjában](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)a `spark_context` tulajdonságot úgy kell beállítani, hogy a csomag elosztott módban fusson. Az `concurrent_iterations`tulajdonság, amely a párhuzamosan végrehajtott ismétlések maximális számát adja meg, a Spark-alkalmazás végrehajtó magoknál kisebb számra kell állítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az automatizált gépi tanulás mögötti motivációról: [modellek kiadása a Microsoft automatizált gépi tanulásával!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
-* Az Azure ML automatizált ML-funkcióival kapcsolatos további információkért lásd: [új automatizált gépi tanulási képességek Azure Machine learning szolgáltatásban](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
+* Az Azure ML automatizált ML-funkcióival kapcsolatos további információkért lásd: [az új automatizált gépi tanulási képességek Azure Machine learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [AutoML-projekt a Microsoft Research-ből](https://www.microsoft.com/research/project/automl/)

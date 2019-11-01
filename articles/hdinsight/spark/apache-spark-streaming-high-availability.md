@@ -1,5 +1,5 @@
 ---
-title: Magasan elérhető Spark streaming-feladatok létrehozása a FONALban – Azure HDInsight
+title: Magasan elérhető Spark streaming-feladatok a FONALban – Azure HDInsight
 description: Apache Spark streaming beállítása magas rendelkezésre állású forgatókönyvhöz az Azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3e48f220035c56d34d6ca5a7347e9a4ee100e1f1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002978"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241248"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Apache Spark folyamatos átviteli feladatok létrehozása a FONALral
 
@@ -71,8 +71,8 @@ Ha azonban egy **illesztőprogram** meghibásodik, akkor az összes hozzá tarto
 
 Az DStream ellenőrzőpontokkal rendelkező illesztőprogramok helyreállítása:
 
-* Konfigurálja az automatikus illesztőprogram-újraindítást a SZÁLon a konfigurációs beállítással `yarn.resourcemanager.am.max-attempts`.
-* Egy HDFS-kompatibilis fájlrendszerben `streamingContext.checkpoint(hdfsDirectory)`állítson be ellenőrzőpont-könyvtárat.
+* Konfigurálja az automatikus illesztőprogram-újraindítást a FONALon a `yarn.resourcemanager.am.max-attempts`konfigurációs beállításával.
+* Állítson be egy ellenőrzőpont-könyvtárat egy HDFS-kompatibilis fájlrendszerben `streamingContext.checkpoint(hdfsDirectory)`.
 * A forráskód újrastrukturálása a helyreállításhoz szükséges ellenőrzőpontok használatához, például:
 
     ```scala
@@ -88,7 +88,7 @@ Az DStream ellenőrzőpontokkal rendelkező illesztőprogramok helyreállítása
         context.start()
     ```
 
-* Állítsa be az elveszett adat-helyreállítást úgy `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`, hogy engedélyezi a Write-Ahead naplót (Wal) és letiltja a memórián belüli replikációt a bemeneti `StorageLevel.MEMORY_AND_DISK_SER`DStreams.
+* Állítsa be az elveszett adat-helyreállítást úgy, hogy engedélyezi a Write-Ahead naplót (WAL) a `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`val, és letiltja a memóriában történő replikálást a bemeneti DStreams `StorageLevel.MEMORY_AND_DISK_SER`használatával.
 
 Ha az ellenőrzőpontok és a WAL + megbízható fogadók használatával szeretne összefoglalni, "legalább egyszer" adathelyreállítást tud biztosítani:
 
@@ -106,7 +106,7 @@ Ha az ellenőrzőpontok és a WAL + megbízható fogadók használatával szeret
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* A Spark és a Spark streaming felhasználói felülete konfigurálható metrikai rendszerrel rendelkezik. További kódtárakat is használhat, például a grafit/Grafana az irányítópult-metrikák letöltéséhez, például a "NUM Records által feldolgozott", a "memória/GC használatot az illesztőprogram & végrehajtók", a "teljes késés", a "fürt kihasználtsága" és így tovább. A strukturált streaming 2,1-es vagy újabb verziójában `StreamingQueryListener` további mérőszámokat is gyűjthet.
+* A Spark és a Spark streaming felhasználói felülete konfigurálható metrikai rendszerrel rendelkezik. További kódtárakat is használhat, például a grafit/Grafana az irányítópult-metrikák letöltéséhez, például a "NUM Records által feldolgozott", a "memória/GC használatot az illesztőprogram & végrehajtók", a "teljes késés", a "fürt kihasználtsága" és így tovább. A strukturált streaming 2,1-es vagy újabb verziójában további mérőszámokat gyűjthet a `StreamingQueryListener` használatával.
 
 * A hosszú ideig futó feladatokat érdemes szegmentálni.  Amikor egy Spark streaming-alkalmazást küld a fürtnek, meg kell határozni a szál várólistáját, amelyben a feladatot futtatni kell. A [fonalak kapacitása ütemező](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) használatával hosszan futó feladatokat küldhet el külön várólistákra.
 
@@ -117,10 +117,10 @@ Ha az ellenőrzőpontok és a WAL + megbízható fogadók használatával szeret
     // to be able to recover on restart, store all offsets in an external database
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark streaming – áttekintés](apache-spark-streaming-overview.md)
 * [Apache Spark streaming-feladatok létrehozása pontosan egyszeri esemény-feldolgozással](apache-spark-streaming-exactly-once.md)
 * [Hosszú ideig futó Apache Spark streaming-feladatok a FONALon](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Strukturált streaming: Hibatűrő szemantika](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Diszkretizált streamek: Hibatűrő modell méretezhető adatfolyam-feldolgozáshoz](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Strukturált streaming: hibatűrő szemantika](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [Diszkretizált Streams: hibatűrő modell a skálázható adatfolyamok feldolgozásához](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105419"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241632"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Gépi tanulás a HDInsight-on
 
-A HDInsight lehetővé teszi a gépi tanulást a big dataokkal, így értékes információkhoz juthat a strukturált, strukturálatlan és gyorsan mozgó adatok nagy mennyiségű (petabájt vagy akár több exabájt) adatairól. Több gépi tanulási lehetőség is létezik a HDInsight-ben:  SparkML és Apache Spark MLlib, R, Apache Hive és a Microsoft Cognitive Toolkit.
+A HDInsight lehetővé teszi a gépi tanulást a big dataokkal, így értékes információkhoz juthat a strukturált, strukturálatlan és gyorsan mozgó adatok nagy mennyiségű (petabájt vagy akár több exabájt) adatairól. A HDInsight több gépi tanulási lehetőség is létezik: a SparkML és a Apache Spark MLlib, az R, a Apache Hive és a Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>SparkML és MLlib
 
-A [HDInsight Spark](spark/apache-spark-overview.md) egy [Apache Spark](https://spark.apache.org/), egy egységes, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big Data Analitika fellendítéséhez. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. Két skálázható gépi tanulási függvénytár van, amely a következő elosztott környezethez biztosít algoritmikus modellezési képességeket: MLlib és SparkML. A MLlib a RDD-re épülő eredeti API-t tartalmazza. A SparkML egy újabb csomag, amely egy magasabb szintű API-t biztosít, amely a DataFrames-re épül a ML-folyamatok létrehozásához. A SparkML még nem támogatja a MLlib összes funkcióját, de a MLlib-t a Spark szabványos Machine learning-könyvtáraként váltja fel.
+A [HDInsight Spark](spark/apache-spark-overview.md) egy [Apache Spark](https://spark.apache.org/), egy egységes, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big Data Analitika fellendítéséhez. A Spark-feldolgozó motor a sebességre, a könnyű használatra és a kifinomult elemzésekre épül. A Spark memóriában elosztott számítási képességei jó választást biztosítanak a gépi tanulásban és a Graph-számításokban használt iterációs algoritmusok számára. Két skálázható gépi tanulási kódtár használható a következő elosztott környezethez: MLlib és SparkML. A MLlib a RDD-re épülő eredeti API-t tartalmazza. A SparkML egy újabb csomag, amely egy magasabb szintű API-t biztosít, amely a DataFrames-re épül a ML-folyamatok létrehozásához. A SparkML még nem támogatja a MLlib összes funkcióját, de a MLlib-t a Spark szabványos Machine learning-könyvtáraként váltja fel.
 
 A Apache Spark Microsoft Machine Learning könyvtára [MMLSpark](https://github.com/Azure/mmlspark). Ez a könyvtár úgy lett kialakítva, hogy a Sparknál termelékenyebb adatszakértőket hozzon létre, növelje a kísérletezés mértékét, és kihasználja az élvonalbeli gépi tanulási technikákat, beleértve a mély tanulást, nagyon nagy adatkészleteken. A MMLSpark méretezhető ML-modellek, például indexelési karakterláncok, a gépi tanulási algoritmusok által várt elrendezésre, valamint a szolgáltatás-vektorok összeállítására szolgáló réteget biztosít a SparkML alacsony szintű API-jai felett. A MMLSpark könyvtár leegyszerűsíti ezeket és egyéb gyakori feladatokat a PySpark-modellek létrehozásához.
 
@@ -41,7 +41,7 @@ Azure Machine Learning eszközöket biztosít a prediktív elemzések modellezé
 
 ![Microsoft Azure Machine learning – áttekintés](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-HDInsight Hadoop-fürtben található adatszolgáltatások létrehozása a [kaptár-lekérdezések](../machine-learning/team-data-science-process/create-features-hive.md)használatával. A szolgáltatások *mérnöki* célja, hogy a tanulási algoritmusok által létrehozott nyers adatokból származó funkciók létrehozásával növelje a tanulási algoritmusok prediktív erejét. Azure Machine Learning studióból futtathat HiveQL-lekérdezéseket, és a kaptárban feldolgozott és a blob Storage-ban tárolt adatokhoz az [adatok importálása modul](../machine-learning/studio/import-data.md)használatával férhet hozzá.
+HDInsight Hadoop-fürtben található adatszolgáltatások létrehozása a [kaptár-lekérdezések](../machine-learning/team-data-science-process/create-features-hive.md)használatával. A szolgáltatások *mérnöki* célja, hogy a tanulási algoritmusok által létrehozott nyers adatokból származó funkciók létrehozásával növelje a tanulási algoritmusok prediktív erejét. HiveQL-lekérdezéseket futtathat Azure Machine Learning Studio (klasszikus), és a kaptárban feldolgozott és a blob Storage-ban tárolt adatokhoz férhet hozzá az [adatok importálása modul](../machine-learning/studio/import-data.md)használatával.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
@@ -49,12 +49,12 @@ A [Deep learning](https://www.microsoft.com/en-us/research/group/dltc/) a gépi 
 
 A Microsoft az ingyenes, könnyen használható, nyílt forráskódú [Microsoft Cognitive Toolkitt](https://www.microsoft.com/en-us/cognitive-toolkit/)fejlesztette ki, hogy elősegítse a munkát a mélyreható tanulásban. Ezt az eszközkészletet számos Microsoft-termék, a vállalatok világszerte használják, és a nagy léptékű tanulás, valamint a legújabb algoritmusok és technikák érdeklik.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [Filmkészítési javaslatok készítése az Apache Mahout](hadoop/apache-hadoop-mahout-linux-mac.md)
 * [Apache Hive és Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
 * [Apache Hive és Azure Machine Learning végpontok közötti](../machine-learning/team-data-science-process/hive-walkthrough.md)

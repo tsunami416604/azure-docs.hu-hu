@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight-eszközök – interaktív PySpark-környezet a Visual Studio Code-hoz
+title: PySpark interaktív környezet az Azure HDInsight-eszközökkel
 description: Megtudhatja, hogyan hozhat létre és küldhet el lekérdezéseket és parancsfájlokat a Visual Studio Code-hoz készült Azure HDInsight Tools használatával.
 keywords: VScode, Azure HDInsight-eszközök, struktúra, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktív struktúra, interaktív lekérdezés
 author: jejiang
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f62f7994818e487202e35e4931472355fb6ac3d2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130192"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241543"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A PySpark interaktív környezet beállítása a Visual Studio Code-hoz
 
@@ -23,8 +23,8 @@ A **Python/pip** parancs használatával virtuális környezetet építhet ki a 
 
 1. Telepítse a [Pythont](https://www.python.org/downloads/) és a [pip](https://pip.pypa.io/en/stable/installing/)-et.
 
-   + Telepítse a Pythont a alkalmazásból [https://www.python.org/downloads/](https://www.python.org/downloads/).
-   + A pip [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) telepítése (ha nem a Python-telepítésből van telepítve).
+   + Telepítse a Pythont [https://www.python.org/downloads/ ról ](https://www.python.org/downloads/).
+   + Telepítse a pip-et [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (ha nem a Python-telepítésből van telepítve).
    + Ellenőrizze, hogy a Python és a pip telepítése sikeresen megtörtént-e az alábbi parancsokkal. Választható
 
         ![A Python pip Version parancsának keresése](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
@@ -52,12 +52,12 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-Indítsa újra a vs Code-ot, majd térjen vissza a HDInsight-t **futtató parancsfájl-szerkesztőhöz: PySpark interaktív**.
+Indítsa újra a VS Code-ot, majd térjen vissza a HDInsight-t futtató parancsfájl-szerkesztőhöz **: PySpark Interactive**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-### <a name="demo"></a>Demó
-* HDInsight a VS Code-hoz: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+### <a name="demo"></a>Bemutató
+* HDInsight a VS Code-hoz: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [A Visual Studio Code-hoz készült Azure HDInsight Tool használata](hdinsight-for-vscode.md)

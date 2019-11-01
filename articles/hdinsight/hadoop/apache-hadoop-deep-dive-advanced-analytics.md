@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066987"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241651"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -45,10 +45,10 @@ A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfonto
 
 | Algoritmus kategóriája| Használat | Tanulás típusa | Algoritmusok |
 | --- | --- | --- | -- |
-| Besorolás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
-| Fürtözés | Példák halmazának elosztása homogén csoportokba | Unsupervised | K – fürtözés |
+| Osztályozás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
+| Fürtszolgáltatás | Példák halmazának elosztása homogén csoportokba | Unsupervised | K – fürtözés |
 | Mintázat észlelése | Az adatkezelés gyakori hozzárendeléseinek azonosítása | Unsupervised | Társítási szabályok |
-| Regresszió | Numerikus eredmények előrejelzése | Felügyelt | Lineáris regresszió, neurális hálózatok |
+| Regressziós | Numerikus eredmények előrejelzése | Felügyelt | Lineáris regresszió, neurális hálózatok |
 | Megerősítő | A robotok optimális viselkedésének meghatározása | Megerősítő | Monte Carlo-szimulációk, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Gépi tanulás a HDInsight-on
@@ -63,7 +63,7 @@ A HDInsight számos gépi tanulási lehetőséggel rendelkezik a fejlett elemzé
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning és Apache Spark
 
 
-A [HDInsight Spark](../spark/apache-spark-overview.md) egy [Apache Spark](https://spark.apache.org/), egy egységes, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszer, amely memórián belüli feldolgozást használ a Big adatelemzéshez. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. 
+A [HDInsight Spark](../spark/apache-spark-overview.md) egy [Apache Spark](https://spark.apache.org/), egy egységes, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszer, amely memórián belüli feldolgozást használ a Big adatelemzéshez. A Spark-feldolgozó motor a sebességre, a könnyű használatra és a kifinomult elemzésekre épül. A Spark memóriában elosztott számítási képességei jó választást biztosítanak a gépi tanulásban és a Graph-számításokban használt iterációs algoritmusok számára. 
 
 
 Három skálázható gépi tanulási kódtár van, amelyek a következő elosztott környezethez biztosítanak algoritmikus modellezési képességeket:
@@ -78,7 +78,7 @@ A HDInsight részeként létrehozhat egy HDInsight-fürtöt ml- [szolgáltatáso
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning és Apache Hive
 
-[Azure Machine learning Studio](https://studio.azureml.net/) eszközöket biztosít a prediktív elemzések modellezéséhez, valamint egy teljes körűen felügyelt szolgáltatáshoz, amellyel a prediktív modelleket használatra kész webszolgáltatásként helyezheti üzembe. A Azure Machine Learning eszközöket biztosít a felhőben a teljes prediktív elemzési megoldások létrehozásához, teszteléséhez, működővé tenni és a prediktív modellek kezeléséhez. Válasszon egy nagyméretű algoritmus-függvénytárból, használjon webalapú stúdiót modellek létrehozásához, és egyszerűen üzembe helyezheti a modellt webszolgáltatásként.
+A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) eszközöket biztosít a prediktív elemzések modellezéséhez, valamint egy teljes körűen felügyelt szolgáltatáshoz, amely a prediktív modellek használatra kész webszolgáltatásként való üzembe helyezésére használható. A Azure Machine Learning eszközöket biztosít a felhőben a teljes prediktív elemzési megoldások létrehozásához, teszteléséhez, működővé tenni és a prediktív modellek kezeléséhez. Válasszon egy nagyméretű algoritmus-függvénytárból, használjon webalapú stúdiót modellek létrehozásához, és egyszerűen üzembe helyezheti a modellt webszolgáltatásként.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark és mély tanulás
 
@@ -117,7 +117,7 @@ Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy p
 
 [Ez az oktatóanyag](../spark/apache-spark-microsoft-cognitive-toolkit.md) a megoldás végpontok közötti megvalósítását ismerteti: HDInsight Spark-fürt beállítása, Cognitive Toolkit telepítése, valamint a 10 000-es CIFAR-lemezképeket követő Jupyter notebook futtatása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Apache Hive és Azure Machine Learning
 
@@ -127,8 +127,8 @@ Apache Hive és Azure Machine Learning
 Apache Spark és MLLib
 
 * [Gépi tanulás a Apache Spark on HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark a Machine Learningkal: A HDInsight Apache Spark használata az építési hőmérséklet elemzéséhez a HVAC-adatok használatával](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: A HDInsight Apache Spark használata az élelmiszer-ellenőrzés eredményeinek előrejelzéséhez](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark a Machine Learning használatával: Apache Spark használata a HDInsight az építési hőmérséklet elemzéséhez a HVAC-adatok használatával](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: a HDInsight Apache Spark használata az élelmiszer-ellenőrzés eredményeinek előrejelzéséhez](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 Mély tanulás, Cognitive Toolkit és egyebek
 
