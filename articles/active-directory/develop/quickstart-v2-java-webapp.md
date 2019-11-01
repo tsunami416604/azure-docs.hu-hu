@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ff7563a9ebbbc996af56f94b8e23d349752ef9f4
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964118"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200276"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -58,14 +58,15 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 > 
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/linkid=2083908) oldalára.
+> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](/azure/active-directory/develop/) oldalára.
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `java-webapp`).
 >    - Hagyja üresen az **átirányítási URI** -t, majd válassza a **regisztráció**lehetőséget.
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Az **átirányítási URI**-k területen adja hozzá a `http://localhost:8080/msal4jsamples/secure/aad` és `https://localhost:8080/msal4jsamples/graph/me`.
+>    - Az **átirányítási URI**-k területen adja hozzá a `http://localhost:8080/msal4jsamples/secure/aad` és `http://localhost:8080/msal4jsamples/graph/me`.
+>    - A **Speciális beállítások**területen adja hozzá `https://localhost:8080/msal4jsample/sign-out` a **KIJELENTKEZÉSI URL-címhez**.
 >    - Kattintson a **Mentés** gombra.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
 > 
@@ -79,10 +80,10 @@ A minta futtatásához a következőkre lesz szüksége:
 > 
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
 > 
-> 1. Adja hozzá a válasz URL-címeket `http://localhost:8080/msal4jsamples/secure/aad` és `https://localhost:8080/msal4jsamples/graph/me`ként.
+> 1. Adja hozzá a válasz URL-címeket `http://localhost:8080/msal4jsamples/secure/aad` és `http://localhost:8080/msal4jsamples/graph/me`ként.
 > 1. Hozzon létre egy ügyfél titkot.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás alkalmazása]()
+> > [A módosítások elvégzése]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
@@ -100,7 +101,7 @@ A minta futtatásához a következőkre lesz szüksége:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Name_Here/
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
@@ -111,7 +112,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
-> - `Enter_the_Tenant_Name_Here` – a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
+> - `Enter_the_Tenant_Info_Here` – a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
 
 #### <a name="step-4-run-the-code-sample"></a>4\. lépés: a kód mintájának futtatása
 
@@ -149,7 +150,7 @@ Vegyen fel MSAL4J az alkalmazásba a Maven vagy a Gradle használatával a függ
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása

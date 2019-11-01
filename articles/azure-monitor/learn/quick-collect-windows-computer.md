@@ -1,5 +1,5 @@
 ---
-title: Adatok gyűjtése hibrid Windows-számítógépről Azure Monitorsal | Microsoft Docs
+title: Adatok gyűjtése hibrid Windows-számítógépről Azure Monitor
 description: Ebből a rövid útmutatóból megtudhatja, hogyan helyezheti üzembe a Log Analytics-ügynököt az Azure-on kívül futó Windows rendszerű számítógépeken, és hogyan engedélyezheti az adatgyűjtést Azure Monitor naplók használatával
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677233"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199023"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése egy Windows rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -99,7 +99,7 @@ A következő lépésekkel telepítheti és konfigurálhatja az ügynököt Log 
 
 10. A **Konfigurálás sikeresen befejeződött** lapon válassza a **Befejezés**lehetőséget.
 
-Ha a telepítés és a telepítés befejeződött, a Microsoft monitoring Agent megjelenik a Vezérlőpulton. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök csatlakoztatva van-e a Log Analytics munkaterülethez. Ha csatlakoztatva van, az **Azure log Analytics** lapon az ügynök megjeleníti ezt az üzenetet: **a Microsoft monitoring Agent sikeresen csatlakozott a Microsoft log Analytics szolgáltatáshoz.**<br><br> ![MMA a kapcsolatok állapota ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Ha a telepítés és a telepítés befejeződött, a Microsoft monitoring Agent megjelenik a Vezérlőpulton. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök csatlakoztatva van-e a Log Analytics munkaterülethez. Ha csatlakoztatva van, az **Azure log Analytics** lapon az ügynök megjeleníti ezt az üzenetet: **a Microsoft monitoring Agent sikeresen csatlakozott a Microsoft log Analytics szolgáltatáshoz.**<br><br> ![MMA-kapcsolatok állapota](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Esemény- és teljesítményadatok gyűjtése
 
