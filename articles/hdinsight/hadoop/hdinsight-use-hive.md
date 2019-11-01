@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/31/2019
 ms.locfileid: "72167356"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
@@ -143,7 +143,7 @@ Az előző példában a HiveQL utasítások a következő műveleteket hajtják 
 
 * `SELECT`: kiválasztja az összes olyan sor számát, amelyben a **T4** oszlop tartalmazza a **[Error]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
 
-* @no__t – 0 – a struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.
+* `INPUT__FILE__NAME LIKE '%.log'` – a struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.
 
 > [!NOTE]  
 > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy automatizált adatfeltöltési folyamat vagy MapReduce művelet.
