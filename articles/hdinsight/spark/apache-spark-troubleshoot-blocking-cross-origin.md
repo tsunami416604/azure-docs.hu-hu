@@ -1,5 +1,5 @@
 ---
-title: Jupyter Server 404 hiba a "Cross Origin API blokkolása" miatt az Azure HDInsight
+title: Jupyter 404 hiba – "a Cross Origin API blokkolása" – Azure HDInsight
 description: A Jupyter-kiszolgáló 404 "nem található" hibát okozott a "Cross Origin API blokkolása" miatt az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: f5ac70381f0879a896e96cb37a70c1b1a1f0b5da
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7f8eb000533673d243258d569834869bbb2a1778
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091008"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241126"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Forgatókönyv: A Jupyter-kiszolgáló 404 "nem található" hibát okozott a "Cross Origin API blokkolása" miatt az Azure HDInsight
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Forgatókönyv: a Jupyter-kiszolgáló 404 "nem található" hibát okozott a "Cross Origin API blokkolása" miatt az Azure HDInsight
 
 Ez a cikk a Apache Spark-összetevők Azure HDInsight-fürtökben való használatakor felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
@@ -36,9 +36,9 @@ Ezt a hibát egy pár dolog okozhatja:
 
 - Ha konfigurálta a hálózati biztonsági csoport (NSG) szabályait, hogy korlátozza a hozzáférést a fürthöz. A NSG-szabályokkal való hozzáférés korlátozása továbbra is lehetővé teszi az Apache Ambari és más szolgáltatások közvetlen elérését a fürt neve helyett az IP-cím használatával. A Jupyter elérésekor azonban egy 404 "nem található" hibaüzenet jelenhet meg.
 
-- Ha a HDInsight-átjárót a standardtól `xxx.azurehdinsight.net`eltérő egyéni DNS-névvel adta meg.
+- Ha a HDInsight-átjárót a standard `xxx.azurehdinsight.net`tól eltérő testreszabott DNS-névvel adta meg.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Felbontás
 
 1. Módosítsa a jupyter.py-fájlokat a következő két helyen:
 
@@ -47,20 +47,20 @@ Ezt a hibát egy pár dolog okozhatja:
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Keresse meg a sort, amely a következőket írja: `NotebookApp.allow_origin='\"https://{2}.{3}\"'`És módosítsa a következőre `NotebookApp.allow_origin='\"*\"'`:.
+1. Keresse meg a következő sort: `NotebookApp.allow_origin='\"https://{2}.{3}\"'`, majd módosítsa a következőre: `NotebookApp.allow_origin='\"*\"'`.
 
 1. Indítsa újra a Jupyter szolgáltatást a Ambari.
 
-1. A `ps aux | grep jupyter` parancssorba való beíráskor meg kell jeleníteni, hogy bármely URL-cím lehetővé teszi a kapcsolódást.
+1. A parancssorban `ps aux | grep jupyter` beírásakor meg kell jeleníteni, hogy bármely URL-cím lehetővé teszi a kapcsolódást.
 
 Ez kevésbé biztonságos, mint a már meglévő beállítás. A rendszer azonban feltételezi, hogy a fürthöz való hozzáférés korlátozott, és egy-egy kívülről csatlakozhat a fürthöz, mert NSG a helyükön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Csatlakozás az Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők. [@AzureSupport](https://twitter.com/azuresupport)
+* Csatlakozás a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiók a felhasználói élmény javításához az Azure-Közösség és a megfelelő erőforrások összekapcsolásával: válaszok, támogatás és szakértők.
 
 * Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

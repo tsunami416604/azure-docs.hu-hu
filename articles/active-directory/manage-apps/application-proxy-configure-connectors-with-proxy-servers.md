@@ -1,6 +1,6 @@
 ---
-title: Munka a meglévő helyszíni proxykiszolgálók és az Azure AD |} A Microsoft Docs
-description: Ismerteti a meglévő helyszíni proxykiszolgálók használata.
+title: Meglévő helyszíni proxykiszolgálók és Azure AD használata | Microsoft Docs
+description: Ismerteti, hogyan használható a meglévő helyszíni proxykiszolgálók használata.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,33 +12,33 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e4b073a63b5b6bec565aed67bcaec7ed014261b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d305f3354e7b1af6d43f31f0dd5fe9f54ef3e66f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807875"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242284"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
-Ez a cikk ismerteti az Azure Active Directory (Azure AD) alkalmazásproxy-összekötők dolgozhat a kimenő proxy-kiszolgálók konfigurálása. Az ügyfelek számára hálózati környezetekben, ahol a meglévő proxyk szolgál.
+Ez a cikk bemutatja, hogyan konfigurálhatja a Azure Active Directory (Azure AD) alkalmazásproxy-összekötőket a kimenő proxykiszolgálók működéséhez. Olyan hálózati környezetű ügyfelek számára készült, amelyek meglévő proxykkal rendelkeznek.
 
-Megnézzük a fő üzembe helyezési forgatókönyvekben kezdődik meg:
+Első lépésként tekintse meg a következő központi telepítési forgatókönyveket:
 
-* Konfigurálja az összekötőket a helyszíni kimenő proxyk kihagyásához.
-* Konfigurálja az összekötőket egy kimenő proxy használatát az Azure AD-alkalmazásproxy eléréséhez.
+* Konfigurálja az összekötőket a helyszíni kimenő proxyk megkerüléséhez.
+* Konfigurálja az összekötőket egy kimenő proxy használatára az Azure AD Application Proxy eléréséhez.
 
-Összekötők működése kapcsolatos további információkért lásd: [megismerheti az Azure AD-alkalmazásproxy összekötőit](application-proxy-connectors.md).
+További információ az összekötők működéséről: az [Azure ad Application proxy-összekötők ismertetése](application-proxy-connectors.md).
 
-## <a name="bypass-outbound-proxies"></a>Kimenő Proxy megkerülése
+## <a name="bypass-outbound-proxies"></a>Kimenő proxyk megkerülése
 
-Összekötők alapjául szolgáló operációs rendszer összetevőket kimenő kérelmek rendelkezik. Ezeket az összetevőket automatikusan megpróbálja megkeresni egy proxykiszolgálót a hálózati Proxy automatikus felderítési WPAD (Web) használatával.
+Az összekötők olyan operációsrendszer-összetevőkkel rendelkeznek, amelyek kimenő kérelmeket hajtanak végre. Ezek az összetevők automatikusan megpróbálnak megkeresni egy proxykiszolgálót a hálózaton a webproxy automatikus felderítése (WPAD) használatával.
 
-Az operációs rendszer összetevők megpróbálja megkeresni a proxykiszolgálót egy DNS-címkeresése wpad.domainsuffix elvégzésével. Ha a keresési DNS-ben, egy HTTP-kérelem majd kérés érkezett wpad.dat IP-címét. A kérelem válik a proxy konfigurációs parancsprogramja a környezetben. Az összekötő válassza ki a kívánt kimenő proxykiszolgáló használja ezt a szkriptet. Azonban összekötő forgalom előfordulhat, hogy továbbra is halad át, a proxy szükség további konfigurációs beállítások miatt.
+Az operációs rendszer összetevői a WPAD. domainsuffix DNS-címkeresés végrehajtásával kísérlik meg a proxykiszolgáló megkeresését. Ha a keresés a DNS-ben oldódik fel, akkor a WPAD. dat IP-címére kell HTTP-kérelmet készíteni. Ez a kérelem a proxy konfigurációs parancsfájlja lesz a környezetben. Az összekötő ezt a parancsfájlt használja a kimenő proxykiszolgáló kiválasztásához. Előfordulhat azonban, hogy az összekötői forgalom továbbra sem halad át a proxyn szükséges további konfigurációs beállítások miatt.
 
-Beállíthatja, hogy az összekötő, győződjön meg arról, hogy az Azure-szolgáltatásokhoz való közvetlen kapcsolódás használ a helyszíni proxy megkerülése. Javasoljuk, hogy ez a megközelítés mindaddig, amíg a hálózati házirend lehetővé teszi, hogy, mert azt jelenti, hogy egy kisebb konfigurációs fenntartásához.
+Az összekötőt úgy is beállíthatja, hogy megkerülje a helyszíni proxyt, hogy az az Azure-szolgáltatásokhoz közvetlen kapcsolatot használjon. Ezt a megközelítést javasoljuk, ha a hálózati házirend lehetővé teszi a számára, mert az azt jelenti, hogy egy kisebb konfigurációt kell fenntartania.
 
-Kimenő proxy használatát az összekötő letiltásához módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *system.net* szakasz ebben a kódmintában látható:
+Az összekötő kimenő proxy használatának letiltásához szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *System.net* szakaszt a következő példában látható módon:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -55,28 +55,28 @@ Kimenő proxy használatát az összekötő letiltásához módosítsa a C:\Prog
 </configuration>
 ```
 
-Győződjön meg arról, hogy az összekötő frissítési szolgáltatást is megkerüli a proxy, egy hasonló módosítást a ApplicationProxyConnectorUpdaterService.exe.config fájlt. Ez a fájl található: C:\Program Files\Microsoft AAD alkalmazás Proxy Connector Updater.
+Annak biztosítása érdekében, hogy a Connector Updater szolgáltatás a proxyt is megkerüljék, végezze el a ApplicationProxyConnectorUpdaterService. exe. config fájl hasonló módosítását. Ez a fájl a C:\Program Files\Microsoft HRE app proxy Connector Updater található.
 
-Ügyeljen arra, hogy az eredeti fájlok másolatait abban az esetben meg kell visszaállítania az alapértelmezett .config fájl.
+Készítsen másolatot az eredeti fájlokról, ha az alapértelmezett. config fájlokra kell visszaállítania.
 
 ## <a name="use-the-outbound-proxy-server"></a>A kimenő proxykiszolgáló használata
 
-Bizonyos környezetekben szükséges haladhat végig egy kimenő proxy, kivétel nélkül minden kimenő forgalmat. Ennek eredményeképpen a proxy megkerülése lehetőség nem.
+Egyes környezetekben az összes kimenő forgalomnak a kimenő proxyn keresztül kell haladnia, kivétel nélkül. Ennek eredményeképpen a proxy mellőzése nem választható.
 
-Az összekötő adatforgalom haladjon végig a kimenő proxy konfigurálhatja az alábbi ábrán látható módon:
+Az összekötő adatforgalmát beállíthatja úgy, hogy a kimenő proxyn Haladjon végig, ahogy az alábbi ábrán is látható:
 
- ![Nyissa meg egy kimenő proxy használatával az Azure AD-alkalmazásproxy-összekötő forgalom konfigurálása](./media/application-proxy-configure-connectors-with-proxy-servers/configure-proxy-settings.png)
+ ![Az összekötő-forgalom konfigurálása egy kimenő proxyn keresztüli váltáshoz az Azure AD Application Proxy](./media/application-proxy-configure-connectors-with-proxy-servers/configure-proxy-settings.png)
 
-Miatt kellene csak a kimenő forgalmat, nincs szükség a tűzfalon keresztül bejövő hozzáférés konfigurálásához.
+A csak kimenő forgalom miatt nem kell konfigurálnia a tűzfalon keresztüli bejövő hozzáférést.
 
 > [!NOTE]
-> Az alkalmazásproxy nem támogatja a más proxyk-hitelesítést. Az összekötő/updater hálózati szolgáltatásfiókok proxykiszolgálóhoz való csatlakozáshoz az éppen lekéri a hitelesítés nélküli képesnek kell lennie.
+> Az alkalmazásproxy nem támogatja más proxyk hitelesítését. Az összekötő/Updater hálózati szolgáltatás fiókjainak képesnek kell lenniük a proxyhoz való csatlakozásra anélkül, hogy a hitelesítésre kellene figyelni.
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>1\. lépés: Az összekötő és a kapcsolódó szolgáltatások haladhat végig a kimenő proxy konfigurálása
+### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>1\. lépés: az összekötő és a kapcsolódó szolgáltatások konfigurálása a kimenő proxyn való átugráshoz
 
-Ha WPAD engedélyezve van a környezetben, és megfelelően konfigurálta, az összekötő automatikusan felderíti a kimenő proxy server és a használata azt. Azonban explicit módon konfigurálhatja az összekötő haladhat végig egy kimenő proxy.
+Ha a WPAD engedélyezve van a környezetben, és megfelelően van konfigurálva, az összekötő automatikusan felfedi a kimenő proxykiszolgálót, és megpróbálja használni azt. Az összekötőt azonban explicit módon úgy konfigurálhatja, hogy átugorjon egy kimenő proxyn.
 
-Ehhez módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *system.net* szakasz ebben a kódmintában látható. Változás *proxyserver:8080* , hogy a helyi proxykiszolgáló nevét vagy IP-címet, és a portot, amelyet figyel a következőn:. Az érték a előtag http:// kell rendelkeznie, még akkor is, ha egy IP-címet használ.
+Ehhez szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *System.net* szakaszt a kódban. Módosítsa a *ProxyServer: 8080* , hogy tükrözze a helyi proxykiszolgáló nevét vagy IP-címét, valamint azt a portot, amelyen a figyel. Az értéknek az előtag http://akkor is szerepelnie kell, ha IP-címet használ.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -95,95 +95,95 @@ Ehhez módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\A
 </configuration>
 ```
 
-Ezután konfigurálja a összekötő frissítési szolgáltatást használja a proxy hasonló módosítást végez a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config fájlt.
+Ezután konfigurálja a Connector Updater szolgáltatást a proxy használatára úgy, hogy hasonló módosítást végez a C:\Program Files\Microsoft HRE app proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config fájlhoz.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2\. lépés: Az összekötő és a kapcsolódó szolgáltatások keresztül érkező adatforgalom engedélyezéséhez a proxy konfigurálása
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2\. lépés: konfigurálja a proxyt úgy, hogy az összekötő és a kapcsolódó szolgáltatások forgalmát a
 
-Négy szempontot kell figyelembe venni, a kimenő proxy:
+A kimenő proxyn négy szempontot kell figyelembe venni:
 
-* Proxy kimenő szabályok
+* Proxy kimenő szabályai
 * Proxy hitelesítése
-* Proxy-portok
+* Proxy portok
 * SSL-ellenőrzés
 
-#### <a name="proxy-outbound-rules"></a>Proxy kimenő szabályok
+#### <a name="proxy-outbound-rules"></a>Proxy kimenő szabályai
 
-A következő URL-hozzáférés engedélyezése:
+A következő URL-címek elérésének engedélyezése:
 
-| URL | Hogyan használja fel azokat |
+| URL-cím | Használatuk módja |
 | --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok |
-| login.windows.net<br>login.microsoftonline.com | Az összekötő URL-használ a regisztrációs folyamat során. |
+| \*. msappproxy.net<br>\*. servicebus.windows.net | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>* . microsoftonline-p.com<br>*. msauth.net<br>* . msauthimages.net<br>*. msecnd.net<br>* . msftauth.net<br>*. msftauthimages.net<br>* . phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
-Ha a tűzfal vagy proxy konfigurálását teszi DNS lehetővé teszi a listákat, kapcsolatokat engedélyezheti \*. msappproxy.net és \*. servicebus.windows.net. Ha nem, engedélyeznie kell a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Az IP-címtartományok minden héten frissülnek.
+Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, engedélyezheti a kapcsolódást \*. msappproxy.net és a \*. servicebus.windows.net. Ha nem, engedélyeznie kell az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
 
-Ha nem engedélyezi a csatlakozást a teljes tartománynév alapján, és meg kell adnia ehelyett az IP-címtartományok, használja az alábbi beállításokat:
+Ha a teljes tartománynév nem engedélyezhető, és az IP-címtartományok megadására van szükség, használja a következő beállításokat:
 
-* Az összes destinations összekötő kimenő elérését teszi lehetővé.
-* Az összekötő kimenő hozzáférést minden olyan a [Azure adatközpont IP-címtartományait](https://www.microsoft.com//download/details.aspx?id=41653). Az Azure-adatközpont IP-címtartományok lista segítségével a kihívás abban áll, hogy hetente kell frissíteni. Kell helyezni egy folyamatot annak érdekében, hogy az, hogy a hozzáférési szabályok ennek megfelelően frissülnek. Csak egy részét az IP-címek okozhat a konfigurációt, kezdetét.
+* Az összekötő kimenő hozzáférésének engedélyezése az összes célhelyre.
+* Az összekötő kimenő hozzáférésének engedélyezése az összes [Azure Datacenter IP-tartományhoz](https://www.microsoft.com//download/details.aspx?id=41653). Az Azure Datacenter IP-címtartományok listájának használatával kapcsolatos kihívás az, hogy hetente frissül. Egy olyan folyamatot kell létrehoznia, amely biztosítja, hogy a hozzáférési szabályok megfelelően frissüljenek. A konfigurációt csak az IP-címek egy részhalmaza használatával lehet megszakítani.
 
 #### <a name="proxy-authentication"></a>Proxy hitelesítése
 
-Proxy hitelesítése jelenleg nem támogatott. Az aktuális ajánljuk, hogy az összekötő az internetes célhelyeket névtelen hozzáférés engedélyezése.
+A proxy hitelesítés jelenleg nem támogatott. A jelenlegi Javaslatunk lehetővé teszi, hogy az összekötő névtelen hozzáférést biztosítson az internetes célhelyekhez.
 
-#### <a name="proxy-ports"></a>Proxy-portok
+#### <a name="proxy-ports"></a>Proxy portok
 
-Az összekötő lehetővé teszi a kimenő SSL-alapú kapcsolatokat a CONNECT módszer használatával. Ez a módszer lényegében állít be egy alagutat a kimenő proxyn keresztül. A proxykiszolgáló, hogy a 443-as és a 80-as bújtatás konfigurálása.
+Az összekötő az SSL-alapú kapcsolatokat a KAPCSOLÓDÁSi módszer használatával teszi elérhetővé. Ez a metódus lényegében egy alagutat állít be a kimenő proxyn keresztül. Konfigurálja a proxykiszolgálót a 443-es és a 80-es portok bújtatásának engedélyezéséhez.
 
 > [!NOTE]
-> A Service Bus fut a HTTPS-kapcsolaton keresztül, használja a 443-as porton. Azonban alapértelmezés szerint a Service Bus megkísérli közvetlen TCP-kapcsolatokat, és csak akkor, ha közvetlen kapcsolódás sikertelen visszavált HTTPS.
+> Ha Service Bus a HTTPS-en keresztül fut, a 443-es portot használja. Alapértelmezés szerint azonban Service Bus megkísérli a közvetlen TCP-kapcsolatokat, és csak akkor térhet vissza a HTTPS-re, ha a közvetlen kapcsolat meghiúsul.
 
 #### <a name="ssl-inspection"></a>SSL-ellenőrzés
 
-Ne használjon SSL-ellenőrzés az összekötő-forgalom esetén, mert az összekötő forgalom problémákat okoz. Az összekötő tanúsítványt használ hitelesítésre az alkalmazásproxy-szolgáltatás, és ezt a tanúsítványt az SSL-ellenőrzés során elvesznek.
+Ne használja az SSL-ellenőrzést az összekötő forgalmához, mert az az összekötő forgalmával kapcsolatos problémákat okoz. Az összekötő tanúsítvány használatával hitelesíti az alkalmazásproxy szolgáltatását, és a tanúsítvány elvész az SSL-ellenőrzés során.
 
-## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Összekötő proxy problémák és a szolgáltatás kapcsolódási problémák elhárítása
+## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Az összekötő-proxyval kapcsolatos problémák elhárítása és a szolgáltatás csatlakozási problémái
 
-Most már megtekintheti a proxyn keresztül áramló teljes forgalomra. Ha problémába ütközik, a következő hibaelhárítási információk webhelyünkre.
+Most látnia kell a proxyn keresztül áramló összes forgalmat. Ha problémák merülnek fel, a következő hibaelhárítási információk segíthetnek.
 
-Összekötő csatlakozási problémák azonosítása és elhárítása a legjobb módszer, hogy az összekötő-szolgáltatás indítása közben hálózati rögzítőeszközt igénybe vehet. Az alábbiakban néhány gyors tippek rögzítése és hálózati nyomkövetés szűrés.
+Az összekötők kapcsolódási problémáinak azonosítására és elhárítására a legjobb módszer, ha az összekötő szolgáltatás elindítása közben hálózati rögzítést végez. Íme néhány gyors tipp a hálózati nyomkövetés rögzítéséről és szűréséről.
 
-A figyelési választott eszközzel, használhatja. Ez a cikk az alkalmazásában a Microsoft Message Analyzer használtuk. Is [töltse le a Microsoft](https://www.microsoft.com/download/details.aspx?id=44226).
+Az Ön által választott figyelési eszközt használhatja. A cikk értelmében a Microsoft Message Analyzert használtuk. [Letöltheti a Microsofttól](https://www.microsoft.com/download/details.aspx?id=44226).
 
-Az alábbi példák konkrétan a Message Analyzer, de az elvek alkalmazhatók minden olyan elemző eszközt.
+Az alábbi példák az üzenetsor-kezelőre vonatkoznak, de az alapelvek bármely Analysis Tool eszközre alkalmazhatók.
 
-### <a name="take-a-capture-of-connector-traffic"></a>Igénybe vehet egy összekötő forgalom rögzítése
+### <a name="take-a-capture-of-connector-traffic"></a>Összekötő-forgalom rögzítésének elvégzése
 
-Kezdeti hibaelhárítási, hajtsa végre az alábbi lépéseket:
+A kezdeti hibaelhárításhoz hajtsa végre a következő lépéseket:
 
-1. A services.msc az Azure AD alkalmazásproxy-összekötő szolgáltatás leállítása.
+1. A Services. msc ablakból állítsa le az Azure AD Application Proxy Connector szolgáltatást.
 
-   ![Az Azure AD alkalmazásproxy-összekötő szolgáltatást a Services.msc alkalmazással](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
+   ![Azure AD Application Proxy Connector szolgáltatás a Services. msc-ben](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
-1. Az Üzenetelemző futtassa rendszergazdaként.
-1. Válassza ki **helyi nyomkövetés indítása**.
-1. Indítsa el az Azure AD alkalmazásproxy-összekötő szolgáltatást.
-1. A hálózati Rögzítés leállítása
+1. Futtassa a Message Analyzert rendszergazdaként.
+1. Válassza a **helyi Nyomkövetés indítása**lehetőséget.
+1. Indítsa el az Azure AD Application Proxy Connector szolgáltatást.
+1. Állítsa le a hálózati rögzítést.
 
-   ![A képernyőfelvételen a leállítási hálózati rögzítési gomb](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![A képernyőfelvétel a hálózati rögzítés leállítása gombra mutat.](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
-### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Ellenőrizze, hogy ha az összekötő forgalom megkerüli a kimenő proxy
+### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Ellenőrizze, hogy az összekötő-forgalom megkerüli-e a kimenő proxykat
 
-Ha konfigurálta az Application Proxy connector a proxykiszolgálót, és közvetlenül csatlakozhat az alkalmazásproxy-szolgáltatás, tekintse meg a hálózati rögzítés sikertelen TCP-kapcsolati kísérletek az szeretné.
+Ha az alkalmazásproxy-összekötőt úgy konfigurálta, hogy kihagyja a proxykiszolgálót, és közvetlenül kapcsolódjon az alkalmazásproxy szolgáltatáshoz, akkor a sikertelen TCP-kapcsolódási kísérletek hálózati rögzítését kell megkeresnie.
 
-A Message Analyzer szűrő használatával azonosíthatja ezeket a kísérleteket. Adja meg `property.TCPSynRetransmit` a Szűrő mezőbe, és válasszon **alkalmaz**.
+A próbálkozások azonosításához használja az üzenetsor-elemző szűrőt. Adja meg `property.TCPSynRetransmit` a szűrő mezőben, majd kattintson az **alkalmaz**gombra.
 
-Egy külön csomagot küld a TCP-kapcsolatot létesítsen az első csomag. Ha a csomag nem adott vissza választ, a szinkronizálás a mi reattempted van. A fenti szűrőt használhatja bármely újraküldött SYNs megtekintéséhez. Ezután ellenőrizheti, hogy ezek SYNs megfelelnek-e minden olyan összekötő kötődő forgalmat.
+Egy SYN-csomag az első, TCP-kapcsolat létesítéséhez küldött csomag. Ha a csomag nem ad vissza választ, a rendszer újrapróbálkozik a SYN-vel. Az előző szűrő használatával megtekintheti az újraküldött SYNs. Ezután megtekintheti, hogy ezek a SYNs megfelelnek-e az összekötővel kapcsolatos adatforgalomnak.
 
-Ha várhatóan a connector közvetlen kapcsolat az Azure-szolgáltatások, SynRetransmit válaszok 443-as porton arra utal, hogy a hálózati vagy a tűzfal hibája.
+Ha arra számít, hogy az összekötő közvetlen kapcsolattal csatlakozik az Azure-szolgáltatásokhoz, az 443-as porton SynRetransmit válaszok jelzik, hogy van hálózati vagy tűzfallal kapcsolatos probléma.
 
-### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Ellenőrizze, hogy az összekötő-forgalmat használ-e a kimenő proxy
+### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Ellenőrizze, hogy az összekötő forgalma kimenő proxykat használ-e
 
-Ha konfigurálta az Application Proxy connector adatforgalom haladhat végig a proxykiszolgálók, keresse meg a proxy sikertelen https-kapcsolatok szeretné.
+Ha az alkalmazásproxy-összekötő forgalmát úgy konfigurálta, hogy a proxykiszolgálót átugorja, a sikertelen HTTPS-kapcsolatokat szeretné keresni a proxyhoz.
 
-Adja meg a hálózati rögzítés a csatlakozási kísérleteket, a szűrési, `(https.Request or https.Response) and tcp.port==8080` a Message Analyzer szűrő cseréje a 8080-as a proxy portja. Válassza ki **alkalmaz** megtekintéséhez az eredmények szűréséhez.
+Ha szűrni szeretné a kapcsolódási kísérletek hálózati rögzítését, írja be a `(https.Request or https.Response) and tcp.port==8080` értéket az üzenet-elemző szűrőbe, majd cserélje le a 8080-et a proxy Service-portra. Válassza az **alkalmaz** lehetőséget a szűrő eredményeinek megtekintéséhez.
 
-A fenti szűrő csak a HTTPs-kérelmek és válaszok látható és-tárolókról a proxy portja. A csatlakozási kérelmek azt mutatják be a proxykiszolgáló folytatott kommunikáció keres. Sikeres, Befejezés esetén (200-as) HTTP-OK választ kap.
+Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válaszokat jeleníti meg. A proxykiszolgáló kommunikációját bemutató csatlakozási kérelmeket keresi. A művelet sikeressége után egy HTTP OK (200) választ kap.
 
-Ha más válaszkódokat, mint a 407-es vagy 502-es, ez azt jelenti, hogy a proxy hitelesítést igénylő, illetve nem engedélyezi a forgalmat a valamilyen más okból. Ezen a ponton vegye fel a kapcsolatot a proxy server támogatási csapatával.
+Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
-* Ha problémába ütközik az összekötő kapcsolódási problémák, tegye fel a kérdését a [Azure Active Directory-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) vagy az ügyfélszolgálati csapatunkhoz jegy létrehozása.
+* [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
+* Ha problémája van az összekötő kapcsolódási problémáinak megoldásával, kérdezze meg kérdéseit a [Azure Active Directory fórumon](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) , vagy hozzon létre egy jegyet a támogatási csapatával.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025003"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242222"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -73,7 +73,7 @@ Ha nyilvános IP-címet használ végpontként, a nyilvános IP-cím erőforrás
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Az IP-cím vagy a DNS-név módosul az Application Gateway élettartama során?
 
-Ha leállítja és elindítja az Application Gatewayt, a VIP megváltozhat. Az Application gatewayhez társított DNS-név azonban nem változik az átjáró élettartama során. Mivel a DNS-név nem változik, CNAME aliast kell használnia, és az Application Gateway DNS-címeként kell mutatnia.
+Application Gateway v1 SKU-ban a virtuális IP-cím változhat, ha leállítja és elindítja az Application Gatewayt. Az Application gatewayhez társított DNS-név azonban nem változik az átjáró élettartama során. Mivel a DNS-név nem változik, CNAME aliast kell használnia, és az Application Gateway DNS-címeként kell mutatnia. Application Gateway v2 SKU-ban az IP-címet statikusként állíthatja be, így az IP-cím és a DNS-név nem változik az Application Gateway élettartama során. 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Támogatja a Application Gateway a statikus IP-címet?
 
@@ -322,7 +322,7 @@ További információ: [OWASP Top-10 biztonsági rések](https://www.owasp.org/i
 
 ### <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS Protectiont?
 
-Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
+Igen. DDoS elleni védelmet engedélyezhet azon a virtuális hálózaton, ahol az alkalmazásátjáró telepítve van. Ez a beállítás biztosítja, hogy az Azure DDoS Protection szolgáltatás az alkalmazásátjáró virtuális IP-címét (VIP) is védje.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Van elérhető útmutató a v1 SKU-ról a v2 SKU-ra való Migrálás céljából?
 

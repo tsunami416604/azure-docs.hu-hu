@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003889"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242414"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: A titkok tárolása a Linux rendszerű virtuális gépen és egy Python-alkalmazásban Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és egy Python-alkalmazás használata a titkok tárolására Azure Key Vault
 
 A Azure Key Vault segítségével megvédheti a titkokat, például az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges API-kulcsokat és adatbázis-kapcsolati karakterláncokat.
 
@@ -58,11 +58,11 @@ Ha az Azure CLI használatával szeretne bejelentkezni az Azure-ba, írja be a k
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az USA `az group create` nyugati régiójában található parancs használatával a következő kóddal. Cserélje `YourResourceGroupName` le a nevet tetszőleges névre.
+Hozzon létre egy erőforráscsoportot az USA nyugati régiójában található `az group create` parancs használatával a következő kóddal. Cserélje le a `YourResourceGroupName`t az Ön által választott névre.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -75,9 +75,9 @@ Ezt az erőforráscsoportot az oktatóanyag során használhatja.
 
 Ezután létre kell hoznia egy kulcstartót az előző lépésben létrehozott erőforráscsoporthoz. Adja meg az alábbi információkat:
 
-* Key Vault neve: A névnek 3-24 karakterből álló sztringnek kell lennie, és csak 0-9, a-z, A-Z és kötőjeleket (-) tartalmazhat.
+* Key Vault neve: a névnek 3-24 karakterből álló karakterláncnak kell lennie, és csak 0-9, a-z, A-Z és kötőjeleket (-) tartalmazhat.
 * Az erőforráscsoport neve.
-* Helyen **USA nyugati**régiója.
+* Hely: **West US**.
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -97,9 +97,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
 
-Hozzon létre egy virtuális gépet `az vm create` a parancs használatával.
+Hozzon létre egy virtuális gépet a `az vm create` parancs használatával.
 
-A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan létrehoz egy SSH-kulcsot, és az alapértelmezett kulcs helyére helyezi ( **~/.ssh**). Ha ehelyett egy adott kulcsot szeretne létrehozni, használja a `--ssh-key-value` kapcsolót.
+A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan létrehoz egy SSH-kulcsot, és azt az alapértelmezett kulcs helyén ( **~/.ssh**) helyezi el. Ha ehelyett a kulcsok adott készletét szeretné létrehozni, használja a `--ssh-key-value` kapcsolót.
 
 ```azurecli-interactive
 az vm create \
@@ -125,7 +125,7 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 }
 ```
 
-Jegyezze fel a saját `publicIpAddress` virtuális gépe kimenetét. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
+Jegyezze fel a saját `publicIpAddress` a virtuális gép kimenetében. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
 
@@ -144,11 +144,11 @@ A parancs kimenete a következő.
 }
 ```
 
-Jegyezze fel a `systemAssignedIdentity`-t. Ezt a következő lépéssel használhatja.
+Jegyezze fel a `systemAssignedIdentity`. Ezt a következő lépéssel használhatja.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép személyazonosságának engedélyezése Key Vault
 
-Most Key Vault engedélyt adhat a létrehozott identitásnak. Futtassa a következő parancsot:
+Most Key Vault engedélyt adhat a létrehozott identitásnak. Futtassa az alábbi parancsot:
 
 ```azurecli-interactive
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -164,7 +164,7 @@ ssh azureuser@<PublicIpAddress>
 
 ## <a name="install-python-library-on-the-vm"></a>A Python-könyvtár telepítése a virtuális gépre
 
-Töltse le és telepítse [](https://pypi.org/project/requests/2.7.0/) a Python-függvénytárat a HTTP Get-hívások létrehozásához.
+Töltse le és telepítse [a Python-függvénytárat a http](https://pypi.org/project/requests/2.7.0/) Get-hívások létrehozásához.
 
 ## <a name="create-edit-and-run-the-sample-python-app"></a>A Python-alkalmazás létrehozása, szerkesztése és futtatása
 
@@ -174,20 +174,20 @@ Nyissa meg a Sample.py, és szerkessze úgy, hogy az tartalmazza a következő k
 
 ```python
 # importing the requests library
-  import requests
-  
+import requests
+
 # Step 1: Fetch an access token from an MSI-enabled Azure resource      
-  # Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
-  MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-  r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
+# Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
+MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
+r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
 
 # Extracting data in JSON format 
-  # This request gets an access token from Azure Active Directory by using the local MSI endpoint
-  data = r.json()
+# This request gets an access token from Azure Active Directory by using the local MSI endpoint
+data = r.json()
 
 # Step 2: Pass the access token received from the previous HTTP GET call to the key vault
-  KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
-  kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
+KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
+kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
 
 print(kvSecret.json()["value"])
 ```
@@ -209,7 +209,7 @@ Ebben az oktatóanyagban megtanulta, hogyan használhatja a Azure Key Vaultt egy
 
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-Törölje a Key vaultot a `az keyvault delete` paranccsal:
+Törölje a Key vaultot a `az keyvault delete` parancs használatával:
 
 ```azurecli-interactive
 az keyvault delete --name
@@ -217,7 +217,7 @@ az keyvault delete --name
                    [--subscription]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

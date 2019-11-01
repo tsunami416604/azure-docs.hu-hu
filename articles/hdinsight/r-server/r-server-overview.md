@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941692"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241872"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi az az Azure HDInsight a ML-szolgáltatások?
 
@@ -23,7 +23,7 @@ A HDInsight ML-szolgáltatásai az R-alapú elemzések legújabb képességeit b
 
 A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópontok esetében lehetősége van a skálázás párhuzamosan elosztott funkcióinak futtatására a peremhálózati csomópont-kiszolgáló magjai között. Azokat a fürt csomópontjain is futtathatja, ha a méretezőt a Hadoop-Térkép használatával csökkenti vagy Apache Spark a számítási környezeteket.
 
-Az elemzésből eredő modellek vagy előrejelzések a helyszíni használatra tölthetők le. Az Azure-ban máshol is üzembe helyezhetők, különösen [Azure Machine learning Studio](https://studio.azureml.net) [](../../machine-learning/studio/publish-a-machine-learning-web-service.md)webszolgáltatáson keresztül.
+Az elemzésből eredő modellek vagy előrejelzések a helyszíni használatra tölthetők le. Az Azure-ban máshol is üzembe helyezhetők, különösen [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) [webszolgáltatással](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Ismerkedés a HDInsight által nyújtott ML-szolgáltatásokkal
 
@@ -35,7 +35,7 @@ A HDInsight ML-szolgáltatásai a következő előnyöket biztosítják:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>A Microsoft és a nyílt forráskódú AI-innováció
 
-  A ML-szolgáltatások olyan nagy mértékben méretezhető, elosztott algoritmusokat tartalmaznak, mint például a [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a [Revoscalepy csomagjai](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)és a [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , amelyek a fizikai memória méreténél nagyobb adatméreteken dolgozhatnak, és a különböző platformokon futnak elosztott mód. További információ a Microsoft egyéni [R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) -csomagjainak és a termékben található [Python-csomagok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) gyűjteményéről.
+  A ML-szolgáltatások olyan nagy mértékben méretezhető, elosztott algoritmusokat tartalmaznak, mint például a [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a [Revoscalepy csomagjai](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)és a [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , amelyek a fizikai memória méreténél nagyobb adatméreteken dolgozhatnak, és a különböző platformokon futnak elosztott mód. További információ a Microsoft egyéni [R-csomagjainak](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) és a termékben található [Python-csomagok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) gyűjteményéről.
   
   A ML-szolgáltatások a nyílt forráskódú Közösségtől (R, Python és AI-eszközkészlet) származó Microsoft-innovációkat és-hozzájárulásokat egyaránt egyetlen nagyvállalati szintű platformra épülnek. Bármely R vagy Python nyílt forráskódú gépi tanulási csomag a Microsoft tulajdonában lévő bármilyen üzleti innovációval párhuzamosan működhet.
 
@@ -43,7 +43,7 @@ A HDInsight ML-szolgáltatásai a következő előnyöket biztosítják:
 
   A hagyományos paradigmák és környezetek révén a vállalatok sok időt és erőfeszítést fektetnek a operacionalizálási irányába. Ennek eredményeképpen a költségek és a késések is megmaradnak, beleértve a modellek fordítási idejét, az ismétléseket, hogy érvényes és aktuális, szabályozási jóváhagyást és a operacionalizálási-on keresztül kezelhesse az engedélyeket.
 
-  A ML-szolgáltatások nagyvállalati szintű [operacionalizálási](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)biztosítanak, a gépi tanulási modell befejezése után mindössze néhány kattintással létrehozzák a webszolgáltatási API-kat. Ezek [](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) a webszolgáltatások a felhőben egy kiszolgálói rácson futnak, és az üzletági alkalmazásokkal is integrálhatók. A rugalmas rácsra való üzembe helyezés lehetősége lehetővé teszi, hogy zökkenőmentesen méretezhető legyen az üzleti igényeknek megfelelően, a Batch és a valós idejű pontozás esetében is. Útmutatásért lásd: [MŰKÖDŐVÉ tenni ml szolgáltatások a HDInsight-on](r-server-operationalize.md).
+  A ML-szolgáltatások nagyvállalati szintű [operacionalizálási](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)biztosítanak, a gépi tanulási modell befejezése után mindössze néhány kattintással létrehozzák a webszolgáltatási API-kat. Ezek a [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) a felhőben egy kiszolgálói rácson futnak, és az üzletági alkalmazásokkal is integrálhatók. A rugalmas rácsra való üzembe helyezés lehetősége lehetővé teszi, hogy zökkenőmentesen méretezhető legyen az üzleti igényeknek megfelelően, a Batch és a valós idejű pontozás esetében is. Útmutatásért lásd: [MŰKÖDŐVÉ tenni ml szolgáltatások a HDInsight-on](r-server-operationalize.md).
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -68,9 +68,9 @@ A következő szolgáltatások a HDInsight ML-szolgáltatásaiban szerepelnek.
 
 A HDInsight-fürtök HDFS-fájlrendszerének alapértelmezett tárolója társítható egy Azure Storage-fiókhoz vagy egy Azure Data Lake Storagehoz is. Ezzel a társítással biztosítható, hogy az elemzés során a rendszer a fürt tárterületén lévő bármilyen adattal feltöltse az adattárolást, és az adatai még a fürt törlése után is elérhetők legyenek. Az adatátvitelt a kiválasztott tárolási lehetőséghez különböző eszközökkel kezelheti, beleértve a Storage-fiók és a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogram portálon alapuló feltöltési létesítményét is.
 
-Lehetősége van arra, hogy a fürt üzembe helyezési folyamata során engedélyezze a további blob-és adattárakhoz való hozzáférést a használatban lévő elsődleges tárterülettől függetlenül.  A több Storage-fiók használatával kapcsolatos további információkért lásd: [Az Azure Storage lehetőségei a HDINSIGHT ml](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) -szolgáltatásaihoz.
+Lehetősége van arra, hogy a fürt üzembe helyezési folyamata során engedélyezze a további blob-és adattárakhoz való hozzáférést a használatban lévő elsődleges tárterülettől függetlenül.  A több Storage-fiók használatával kapcsolatos további információkért lásd: [Az Azure Storage lehetőségei a HDINSIGHT ml-szolgáltatásaihoz](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) .
 
-A peremhálózati csomóponton a [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) tárolási lehetőségként is használhatja. A Azure Files lehetővé teszi, hogy az Azure Storage-ban létrehozott fájlmegosztást a Linux fájlrendszerbe csatlakoztassa. További információ ezekről az adattárolási lehetőségekről a HDInsight-fürtön található ML-szolgáltatások esetében: [Az Azure Storage lehetőségei a HDINSIGHT ml](r-server-storage.md)-szolgáltatásaihoz.
+A peremhálózati csomóponton a [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) tárolási lehetőségként is használhatja. A Azure Files lehetővé teszi, hogy az Azure Storage-ban létrehozott fájlmegosztást a Linux fájlrendszerbe csatlakoztassa. További információ ezekről az adattárolási lehetőségekről a HDInsight-fürtön található ML-szolgáltatások esetében: [Az Azure Storage lehetőségei a HDINSIGHT ml-szolgáltatásaihoz](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>A ML-szolgáltatások peremhálózati csomópontjának elérése
 
@@ -78,7 +78,7 @@ A peremhálózati csomóponton böngésző használatával kapcsolódhat a Micro
 
 ## <a name="develop-and-run-r-scripts"></a>R-parancsfájlok fejlesztése és futtatása
 
-Az Ön által létrehozott és futtatott R-szkriptek az 8000-es és a nyílt forráskódú R-csomagok bármelyikét használhatják a skálázhatósági könyvtárban elérhető párhuzamos és elosztott rutinok mellett. Általánosságban elmondható, hogy egy, a peremhálózati csomóponton található ML-szolgáltatásokkal futtatott szkript az adott csomóponton az R-tolmácson belül fut. A kivételek azok a lépések, amelyeknek a méretezési függvényt olyan számítási környezettel kell meghívni, amely a Hadoop Térkép csökkentése (RxHadoopMR) vagy a Spark (RxSpark) értékre van beállítva. Ebben az esetben a függvény elosztott módon fut a fürt azon adatai (Task) csomópontjain, amelyek a hivatkozott adatokhoz vannak társítva. A különböző számítási környezeti lehetőségekkel kapcsolatos további információkért lásd: [számítási környezeti beállítások a HDINSIGHT ml](r-server-compute-contexts.md)-szolgáltatásokhoz.
+Az Ön által létrehozott és futtatott R-szkriptek az 8000-es és a nyílt forráskódú R-csomagok bármelyikét használhatják a skálázhatósági könyvtárban elérhető párhuzamos és elosztott rutinok mellett. Általánosságban elmondható, hogy egy, a peremhálózati csomóponton található ML-szolgáltatásokkal futtatott szkript az adott csomóponton az R-tolmácson belül fut. A kivételek azok a lépések, amelyeknek a méretezési függvényt olyan számítási környezettel kell meghívni, amely a Hadoop Térkép csökkentése (RxHadoopMR) vagy a Spark (RxSpark) értékre van beállítva. Ebben az esetben a függvény elosztott módon fut a fürt azon adatai (Task) csomópontjain, amelyek a hivatkozott adatokhoz vannak társítva. A különböző számítási környezeti lehetőségekkel kapcsolatos további információkért lásd: [számítási környezeti beállítások a HDINSIGHT ml-szolgáltatásokhoz](r-server-compute-contexts.md).
 
 ## <a name="operationalize-a-model"></a>Modell üzembe helyezése
 
@@ -92,17 +92,17 @@ A HDInsight való pontozáshoz írjon egy R-függvényt, amely meghívja a model
 
 A Azure Machine Learning használatának értékeléséhez használja a [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) néven ismert nyílt forráskódú Azure Machine learning R-csomagot a modell Azure-webszolgáltatásként való közzétételéhez. A kényelem érdekében ez a csomag előre telepítve van a peremhálózati csomóponton. Ezután használja a Azure Machine Learning található létesítményeket a webszolgáltatás felhasználói felületének létrehozásához, majd a pontozáshoz szükség szerint hívja meg a webszolgáltatást.
 
-Ha ezt a beállítást választja, a webszolgáltatáshoz való használathoz a méretezési modell összes objektumát egyenértékű, nyílt forráskódú objektummodell-objektumokra kell konvertálnia. Ehhez az átalakításhoz használjon skálázhatósági kényszerítési `as.randomForest()` funkciókat, például az Ensemble-alapú modellekhez.
+Ha ezt a beállítást választja, a webszolgáltatáshoz való használathoz a méretezési modell összes objektumát egyenértékű, nyílt forráskódú objektummodell-objektumokra kell konvertálnia. Az átalakításhoz használjon skálázhatósági kényszerítési funkciókat, például a `as.randomForest()` az Ensemble-alapú modellekhez.
 
 ### <a name="score-on-premises"></a>Helyszíni pontozás
 
-Ha a modellt a modell létrehozása után szeretné kipróbálni, a modellt az R-ben szerializálhatja, letöltheti, deszerializálhatja, majd felhasználhatja az új adatértékek kiértékeléséhez. Az új adatforrások a [HDInsight](#score-in-hdinsight) vagy a webszolgáltatások használatával a pontszámban korábban ismertetett módszer használatával adhatók meg. [](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)
+Ha a modellt a modell létrehozása után szeretné kipróbálni, a modellt az R-ben szerializálhatja, letöltheti, deszerializálhatja, majd felhasználhatja az új adatértékek kiértékeléséhez. Az új adatforrások a HDInsight vagy a [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)használatával a [pontszámban](#score-in-hdinsight) korábban ismertetett módszer használatával adhatók meg.
 
 ## <a name="maintain-the-cluster"></a>A fürt karbantartása
 
 ### <a name="install-and-maintain-r-packages"></a>R-csomagok telepítése és karbantartása
 
-Az r-csomagok többsége szükséges a peremhálózati csomóponton, mivel az R-szkriptek legtöbb lépése ott fut. Ha további r-csomagokat szeretne telepíteni a peremhálózati csomóponton, használhatja az `install.packages()` r metódust.
+Az r-csomagok többsége szükséges a peremhálózati csomóponton, mivel az R-szkriptek legtöbb lépése ott fut. Ha további R-csomagokat szeretne telepíteni a peremhálózati csomóponton, használhatja az R `install.packages()` metódusát.
 
 Ha csak rutinokat használ a skálázhatósági könyvtárból a fürtben, általában nem kell további R-csomagokat telepítenie az adatcsomópontokra. Előfordulhat azonban, hogy további csomagokat kell használnia a **rxExec** vagy a **RxDataStep** végrehajtásának támogatásához az adatcsomópontokon.
 
@@ -138,7 +138,7 @@ Emellett az r-konzolt a peremhálózati csomóponton is elérheti, ha az SSH vag
 
 A ML-szolgáltatások HDInsight-fürthöz társított árak a más HDInsight-fürtök áraihoz hasonlóan vannak strukturálva. Ezek a mögöttes virtuális gépek méretén alapulnak a név, az adat és a peremhálózati csomópontok között, és egy fő órás felemelkedést is igénybe vesznek. További információ: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a HDInsight-fürtökön található ML-szolgáltatások használatáról, tekintse meg a következő témaköröket:
 

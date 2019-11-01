@@ -1,5 +1,5 @@
 ---
-title: Spark streaming-feladatok a pontosan egyszeri események feldolgozásával – Azure HDInsight
+title: Spark streaming & pontosan egyszeri események feldolgozása – Azure HDInsight
 description: Apache Spark streaming beállítása egy esemény egyszeri és egyszeri feldolgozásához.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 34cb3f4cdcc5bfc11bba300ff1aa04422e0fcc57
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091018"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241146"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-feladatok létrehozása pontosan egyszeri esemény-feldolgozással
 
 Az adatfolyam-feldolgozó alkalmazások különböző megközelítéssel látják el, hogyan kezelik az üzenetek újrafeldolgozását a rendszeren előforduló hibák után:
 
-* Legalább egyszer: Minden üzenet feldolgozható, de többször is feldolgozhatók.
-* Legfeljebb egyszer: Előfordulhat, hogy minden üzenet fel van dolgozva vagy fel van dolgozva. Ha egy üzenet feldolgozása történik meg, csak egyszer dolgozza fel a rendszer.
-* Pontosan egyszer: Minden üzenet garantáltan egyszer és egyszer feldolgozható.
+* Legalább egyszer: minden üzenet feldolgozható, de többször is feldolgozhatók.
+* Legfeljebb egyszer: minden üzenet feldolgozható vagy nem végezhető el. Ha egy üzenet feldolgozása történik meg, csak egyszer dolgozza fel a rendszer.
+* Pontosan egyszer: minden üzenet csak egyszer és egyszer dolgozható fel.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a Spark streaminget a pontosan egyszeri feldolgozás eléréséhez.
 
@@ -49,7 +49,7 @@ A Spark Streamingben a források, például a Event Hubs és a Kafka *megbízhat
 
 ### <a name="use-the-write-ahead-log"></a>A Write-Ahead napló használata
 
-A Spark streaming támogatja egy írási idejű napló használatát, amelyben az egyes fogadott eseményeket először a Spark ellenőrzőpont-könyvtárába írja a hibatűrő tárolóban, majd egy rugalmasan elosztott adatkészlet (RDD) tárolja. Az Azure-ban a hibatűrő tárolót az Azure Storage vagy a Azure Data Lake Storage HDFS. A Spark streaming-alkalmazásban az írási és olvasási napló minden fogadó esetében engedélyezve van, ha `spark.streaming.receiver.writeAheadLog.enable` `true`a konfigurációs beállítást a értékre állítja. Az írási és olvasási napló hibatűrést biztosít mind az illesztőprogram, mind a végrehajtók meghibásodása esetén.
+A Spark streaming támogatja egy írási idejű napló használatát, amelyben az egyes fogadott eseményeket először a Spark ellenőrzőpont-könyvtárába írja a hibatűrő tárolóban, majd egy rugalmasan elosztott adatkészlet (RDD) tárolja. Az Azure-ban a hibatűrő tárolót az Azure Storage vagy a Azure Data Lake Storage HDFS. A Spark streaming-alkalmazásban az írási és olvasási napló minden fogadó esetében engedélyezve van, ha a `spark.streaming.receiver.writeAheadLog.enable` konfigurációs beállítást `true`értékre állítja. Az írási és olvasási napló hibatűrést biztosít mind az illesztőprogram, mind a végrehajtók meghibásodása esetén.
 
 Az esemény adataival kapcsolatos feladatokat futtató munkavégzők esetében minden RDD definíciója a több feldolgozón replikált és elosztott. Ha egy feladat meghiúsul, mert az azt futtató feldolgozó összeomlott, a feladat újraindul egy másik feldolgozón, amely az esemény adatai replikáját használja, így az esemény nem vész el.
 
@@ -87,7 +87,7 @@ Használhat például egy olyan Azure SQL Database tárolt eljárást, amely ese
 
 Egy másik példa egy particionált fájlrendszer, például az Azure Storage-Blobok vagy a Azure Data Lake Storage használatára. Ebben az esetben a fogadó logikának nem kell ellenőriznie a fájl létezését. Ha az eseményt jelképező fájl létezik, egyszerűen felülírja ugyanazokat az adattípusokat. Ellenkező esetben a rendszer létrehoz egy új fájlt a számított útvonalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark streaming – áttekintés](apache-spark-streaming-overview.md)
 * [Magasan elérhető Apache Spark folyamatos átviteli feladatok létrehozása Apache Hadoop-FONALban](apache-spark-streaming-high-availability.md)

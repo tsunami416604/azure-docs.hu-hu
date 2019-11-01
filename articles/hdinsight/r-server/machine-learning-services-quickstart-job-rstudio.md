@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: RStudio-kiszolgáló az R-t a ML-szolgáltatások (Azure HDInsight) használatával hajtja végre'
+title: 'Gyors útmutató: RStudio Server & ML szolgáltatások az R-Azure HDInsight'
 description: A gyors útmutatóban egy R-szkriptet hajt végre az Azure HDInsight egy ML Services-fürtön az RStudio-kiszolgáló használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e2fcdeb91517b048766d59a9714346f76091a8c8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123124"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241882"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight az RStudio-kiszolgáló használatával
 
@@ -27,13 +27,13 @@ Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozá
 
 ## <a name="connect-to-rstudio-server"></a>Csatlakozás az RStudio Serverhez
 
-A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Nyissa meg a következő URL `CLUSTERNAME` -címet, ahol a a létrehozott ml Services-fürt neve:
+A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Nyissa meg a következő URL-címet, ahol a `CLUSTERNAME` a létrehozott ML Services-fürt neve:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Amikor először jelentkezik be, kétszer kell hitelesítenie. Az első hitelesítési kéréshez adja meg a fürt rendszergazdai felhasználónevét és jelszavát, az `admin`alapértelmezett érték:. A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót `sshuser`, az alapértelmezett érték:. A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
+Amikor először jelentkezik be, kétszer kell hitelesítenie. Az első hitelesítési kéréshez adja meg a fürt rendszergazdai felhasználónevét és jelszavát, az alapértelmezett érték `admin`. A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót, az alapértelmezett érték pedig `sshuser`. A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
 
 A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kinéznie:
 
@@ -176,7 +176,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan futtathat egy R-szkriptet a Spark által elosztott R-számításokhoz használt RStudio-kiszolgálóval.  A következő cikkből megtudhatja, hogy milyen lehetőségek érhetők el annak megadásához, hogy a végrehajtás hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között.
 

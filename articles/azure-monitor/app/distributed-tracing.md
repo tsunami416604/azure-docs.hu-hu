@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677120"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242457"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
 
@@ -40,6 +40,7 @@ A .NET, a .NET Core, a Java, a Node. js és a JavaScript Application Insights SD
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (előzetes verzió)](opencensus-python.md)
 
 A megfelelő Application Insights SDK telepítésével és konfigurálásával az SDK-függőségi automatikus gyűjtők automatikusan gyűjtik a nyomkövetési információkat a népszerű keretrendszerek, könyvtárak és technológiák számára. A támogatott technológiák teljes listája [a függőségi automatikus gyűjtemény dokumentációjában](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)érhető el.
 
@@ -49,7 +50,7 @@ A megfelelő Application Insights SDK telepítésével és konfigurálásával a
 
 A Application Insights SDK-k mellett Application Insights is támogatja az elosztott nyomkövetést a [OpenCensus](https://opencensus.io/)-en keresztül. A OpenCensus egy nyílt forráskódú, szállítói-agnosztikus, a könyvtárak egyetlen eloszlása, amely metrikák gyűjtését és elosztott nyomkövetését biztosítja a szolgáltatásokhoz. Emellett lehetővé teszi a nyílt forráskódú közösség számára, hogy lehetővé tegye az elosztott nyomkövetést olyan népszerű technológiákkal, mint a Redis, a Memcached vagy a MongoDB. [A Microsoft számos más monitorozási és felhőalapú partnerrel együttműködve együttműködik a OpenCensus](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Ha elosztott nyomkövetési képességeket szeretne hozzáadni egy alkalmazáshoz a OpenCensus-ben, először [telepítse és konfigurálja az Application Insights helyi továbbítót](./../../azure-monitor/app/opencensus-local-forwarder.md). Az elosztott nyomkövetési adatok helyi továbbítón keresztül történő átirányításához konfigurálja a OpenCensus. A [Python](./../../azure-monitor/app/opencensus-python.md) és a [Go](./../../azure-monitor/app/opencensus-go.md) is támogatott.
+[Python (előzetes verzió)](opencensus-python.md) 
 
 A OpenCensus webhely a [Python](https://opencensus.io/api/python/trace/usage.html) és a [Go](https://godoc.org/go.opencensus.io)API-referenciájának dokumentációját, valamint a OpenCensus használatának különböző útmutatóit tartalmazza. 
 

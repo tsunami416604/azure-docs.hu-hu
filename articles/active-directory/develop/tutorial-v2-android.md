@@ -11,26 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b29e5815ec39e850bee0707a9c92c12201c7f21e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934528"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242216"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból
 
 > [!NOTE]
 > Ez az oktatóanyag még nem frissült, hogy működjön a MSAL for Android 1,0-es verziójának könyvtárával. Ez az oktatóanyag egy korábbi verziójával működik.
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhat egy Android-alkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához, és kérelmet küld a Microsoft Graph API-nak.  
 
-Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
+> [!div class="checklist"]
+> * Android-alkalmazás integrálása a Microsoft Identity platformmal
+> * Bejelentkezés felhasználóként
+> * Hozzáférési jogkivonat beszerzése a Microsoft Graph API meghívásához
+> * Hívja meg a Microsoft Graph API-t.  
+
+Az oktatóanyag elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi vagy iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="how-this-tutorial-works"></a>Az oktatóanyag működése
 
@@ -56,7 +64,7 @@ Ez a példa az Androidhoz készült Microsoft Authentication Library (MSAL) hasz
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, [töltse le a kódot](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
+Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, [töltse le a kódot](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 
 1. Nyissa meg Android Studio, majd válassza **az új Android Studio projekt indítása**lehetőséget.
 2. Válassza az **alaptevékenység** lehetőséget, majd kattintson a **Tovább gombra**.
@@ -538,6 +546,10 @@ A bejelentkezést követően az alkalmazás megjeleníti a Microsoft Graph `/me`
 ### <a name="consent"></a>Hozzájárulása
 
 Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyezett.  Habár a legtöbb felhasználó képes hozzájárulni, néhány Azure AD-bérlő letiltotta a felhasználói beleegyezését, amelyhez a rendszergazdáknak minden felhasználó nevében hozzá kell járulniuk. A forgatókönyv támogatásához regisztrálja az alkalmazás hatóköreit a Azure Portalban.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#register-your-application) lépésben létrehozott alkalmazás-objektumot.
 
 ## <a name="get-help"></a>Segítség
 

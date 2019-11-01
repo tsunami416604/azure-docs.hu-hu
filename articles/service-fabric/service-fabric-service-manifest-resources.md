@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170440"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242915"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása szolgáltatásjegyzékben
 ## <a name="overview"></a>Áttekintés
@@ -30,6 +30,8 @@ Ha egy végponti erőforrás van definiálva a szolgáltatás jegyzékfájljába
 
 > [!WARNING] 
 > A statikus portok megtervezése nem fedi át a ClusterManifest megadott alkalmazási porttartomány tartományát. Ha statikus portot ad meg, az alkalmazás-porttartomány kívülre rendeli, ellenkező esetben a port ütközéseket eredményez. A Release 6.5 CU2 esetében az ütközés észlelése után **Figyelmeztetés** jelenik meg, de az üzemelő példány szinkronizálása a szállított 6,5-viselkedéssel folytatódik. Előfordulhat azonban, hogy az alkalmazás központi telepítését a következő jelentős kiadásokból meggátoljuk.
+>
+> Az 7,0-es kiadásban az alkalmazás-porttartomány használatának észlelése után az HostingConfig:: ApplicationPortExhaustThresholdPercentage (alapértelmezett 80%) **állapotra vonatkozó figyelmeztetést** adunk ki.
 >
 
 ```xml
@@ -56,7 +58,7 @@ Ha egyetlen szervizcsomagban több kód is található, akkor azt is a **végpon
 Tekintse át az [állapot-nyilvántartó Reliable Services konfigurálását](service-fabric-reliable-services-configuration.md) , ha többet szeretne megtudni a végpontokról a konfigurációs csomag beállítási fájljáról (Settings. xml).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Példa: HTTP-végpont megadása a szolgáltatáshoz
-A következő szolgáltatási jegyzékfájl egy TCP-végponti erőforrást és két HTTP-végponti erőforrást határoz meg a &lt;Resources @ no__t-1 elemben.
+A következő szolgáltatási jegyzékfájl egy TCP-végponti erőforrást és két HTTP-végponti erőforrást határoz meg a &lt;erőforrások&gt; elemben.
 
 A HTTP-végpontok Service Fabric automatikusan ACL-t kapnak.
 

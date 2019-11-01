@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984126"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242479"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -31,7 +31,7 @@ Azure NetApp Files kötetek úgy vannak kialakítva, hogy egy speciális célú 
 
 Azure NetApp Files hálózat tervezésekor érdemes figyelembe vennie néhány megfontolandó szempontot.
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 Az alábbi funkciók jelenleg nem támogatottak a Azure NetApp Files esetén: 
 
@@ -54,7 +54,7 @@ A következő táblázat a Azure NetApp Files által támogatott hálózati topo
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Kapcsolat a kötettel a helyi VNet    |    Igen    |         |
 |    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Igen    |         |
-|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    Nincsenek    |
+|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    None    |
 |    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Igen    |         |
 |    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Igen    |        |
 |    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Igen    |         |
@@ -95,11 +95,11 @@ Az alábbi ábra egy Azure-beli natív környezetet ábrázol:
 
 Alapszintű forgatókönyv egy Azure NetApp Files kötet létrehozása vagy összekötése egy virtuális gépről (VM) ugyanabban a VNet. A fenti ábrán a fenti diagramon a 2. kötet egy delegált alhálózatban jön létre, és az alapértelmezett alhálózatban az 1. virtuális gépre csatlakoztatható VNet.
 
-### <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
+### <a name="vnet-peering"></a>Társviszony-létesítés virtuális hálózatok között
 
 Ha ugyanabban a régióban további virtuális hálózatok van szükség, amelynek hozzá kell férnie egymás erőforrásaihoz, a virtuális hálózatok az Azure-infrastruktúrán keresztüli biztonságos kapcsolat engedélyezéséhez a [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) -társítás használatával csatlakozhat. 
 
-A fenti ábrán vegye fontolóra a 2. és a 3. VNet VNet. Ha a 2. VM-nek csatlakoznia kell a 3. vagy a 2. kötethez, vagy ha a 3. virtuálisgép-hálózathoz vagy 1. kötethez kell csatlakoznia, akkor engedélyeznie kell a VNet-társítást a VNet 2 és a VNet 3 között. 
+A fenti ábrán vegye fontolóra a 2. és a 3. VNet VNet. Ha a VM 1 virtuális GÉPHEZ 2 vagy 2. kötethez kell csatlakoznia, vagy ha a 2. VM 1. vagy 1. kötethez csatlakoznia kell, engedélyeznie kell a VNet-társítást a 2. és a 3. VNet között. 
 
 Emellett Vegyünk például egy olyan forgatókönyvet, ahol a VNet 1 a VNet 2-vel van társítva, a 2. VNet pedig ugyanabban a régióban található VNet 3. Az 1. VNet erőforrásai a VNet 2 erőforrásaihoz kapcsolódhatnak, de nem tudnak csatlakozni a 3. VNet lévő erőforrásokhoz, kivéve, ha a VNet 1 és a VNet 3 nem található. 
 
@@ -126,6 +126,6 @@ A fenti ábrán látható topológiában a helyszíni hálózat egy Azure-beli h
 
 A küllős VNet 1 virtuális gép 4-es verziójában nem lehet csatlakozni a 3. kötethez a küllős VNet 2. Emellett a küllős VNet2 5. virtuális gép nem tud csatlakozni a 2. kötethez a küllős VNet 1. Ez azért van így, mert a küllős virtuális hálózatok nem támogatottak, és az _átviteli útválasztás nem támogatott a VNet_-társítások esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alhálózat delegálása Azure NetApp Filesre](azure-netapp-files-delegate-subnet.md)

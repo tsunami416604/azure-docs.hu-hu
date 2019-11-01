@@ -1,5 +1,5 @@
 ---
-title: A HDInsight Apache Kafka beállítása a Azure Resource Manager-gyors útmutató használatával
+title: 'Gyors útmutató: Apache Kafka Azure Resource Manager-HDInsight használatával'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsight Azure Resource Manager sablon használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: deae58c30e37aa4df1dd8ca9b1b64cc79e9509ae
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: d908d210ff0448069a9abc76209c72d9b2a7595c
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123178"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242021"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával
 
 A [Apache Kafka](https://kafka.apache.org/) egy nyílt forráskódú, elosztott streaming platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
 
@@ -39,11 +39,11 @@ Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop
 
 2. A Kafka-fürt létrehozásához használja a következő értékeket:
 
-    | Tulajdonság | Value |
+    | Tulajdonság | Value (Díj) |
     | --- | --- |
-    | Subscription | Az Azure-előfizetése. |
-    | Resource group | Az az erőforráscsoport, amelyben a fürt létrejön. |
-    | Location | Az az Azure-régió, amelyben a fürt létrejön. |
+    | Előfizetés | Az Azure-előfizetése. |
+    | Erőforráscsoport | Az az erőforráscsoport, amelyben a fürt létrejön. |
+    | Földrajzi egység | Az az Azure-régió, amelyben a fürt létrejön. |
     | Fürt neve | A Kafka-fürt neve. |
     | Fürt bejelentkezési felhasználóneve | A fürtön futtatott HTTPs-alapú szolgáltatásokba való bejelentkezéshez használt fióknév. |
     | Fürt bejelentkezési jelszava | A bejelentkezési felhasználónévhez tartozó jelszó. |
@@ -242,11 +242,11 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
 > [!WARNING]  
-> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
+> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban.
 > 
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Apache Spark használata a Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

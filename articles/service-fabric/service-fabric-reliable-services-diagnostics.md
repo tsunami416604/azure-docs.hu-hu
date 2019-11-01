@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric Stateful Reliable Services diagnosztikai |} A Microsoft Docs
-description: Az Azure Service Fabric Stateful Reliable Services diagnosztikai funkciói
+title: Azure Service Fabric állapot-nyilvántartó Reliable Services diagnosztika | Microsoft Docs
+description: Az Azure állapot-nyilvántartó Reliable Services diagnosztikai funkciója Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,113 +14,115 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50e3368aa8808307fa479a290eaf10ca3f22289d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772958"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242876"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
-Az Azure Service Fabric Stateful Reliable Services StatefulServiceBase osztály bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) eseményeket, amelyek a szolgáltatás hibakeresése segítségével hogyan a futtatókörnyezet üzemeltetési, és hibaelhárítást betekintést nyújtson.
+Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
 
 ## <a name="eventsource-events"></a>EventSource események
-A Stateful Reliable Services StatefulServiceBase osztály az eseményforrás neve: "A Microsoft-ServiceFabric-szolgáltatások." Származó események megjelennek a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakot, amikor folyamatban van, a szolgáltatás [hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md).
+Az állapot-nyilvántartó Reliable Services StatefulServiceBase osztály EventSource neve "Microsoft-ServiceFabric-Services". Az eseményforrás eseményei a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakban jelennek meg, amikor a szolgáltatás [hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)folyamatban van.
 
-Példa eszközöket és technológiákat, amelyek segítségével gyűjtése és/vagy EventSource események megtekintése a [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), és a [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Példák olyan eszközökre és technológiákra, amelyek a EventSource-események összegyűjtését és/vagy megtekintését segítik a [perfview eszköz](https://www.microsoft.com/download/details.aspx?id=28567), a [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)és a [Microsoft TraceEvent könyvtárában](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Events
+## <a name="events"></a>Események
 | Esemény neve | Eseményazonosító | Szint | Esemény leírása |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |1 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat elindult |
-| StatefulRunAsyncCancellation |2 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat meg lett szakítva |
-| StatefulRunAsyncCompletion |3 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat befejeződött |
-| StatefulRunAsyncSlowCancellation |4 |Figyelmeztetés |Amikor a szolgáltatás RunAsync feladat hajtsa végre a megszakítási túl sokáig tart |
-| StatefulRunAsyncFailure |5 |Hiba |Amikor a szolgáltatás RunAsync feladat kivételt jelez. |
+| StatefulRunAsyncInvocation |1 |Tájékoztató |A szolgáltatás RunAsync feladat elindításakor lett kibocsátva |
+| StatefulRunAsyncCancellation |2 |Tájékoztató |A szolgáltatás RunAsync feladatának megszakításakor lett kibocsátva |
+| StatefulRunAsyncCompletion |3 |Tájékoztató |A szolgáltatás RunAsync feladat befejezése után lett kibocsátva |
+| StatefulRunAsyncSlowCancellation |4 |Figyelmeztetés |Kibocsátva, ha a szolgáltatás RunAsync feladata túl sokáig tart a lemondás befejezéséhez |
+| StatefulRunAsyncFailure |5 |Hiba |Kibocsátva, ha a szolgáltatás RunAsync feladata kivételt vet fel |
 
 ## <a name="interpret-events"></a>Események értelmezése
-A szolgáltatás-író szolgáltatás, valamint amikor szolgáltatás elindul, megszakítása vagy befejezi az időzítési életciklusának megértése StatefulRunAsyncInvocation StatefulRunAsyncCompletion és StatefulRunAsyncCancellation események hasznosak. Ez az információ esetekben lehet hasznos szolgáltatás hibáinak vagy szolgáltatás életciklusának ismertetése.
+A StatefulRunAsyncInvocation, a StatefulRunAsyncCompletion és a StatefulRunAsyncCancellation események hasznosak a szolgáltatás írója számára a szolgáltatás életciklusának megismeréséhez, valamint a szolgáltatás elindulásának, megszakításának vagy befejezésének időzítéséhez. Ezek az információk hasznosak lehetnek a szolgáltatással kapcsolatos problémák hibakeresése vagy a szolgáltatás életciklusának megismerése során.
 
-Szolgáltatás írók elolvassa az események StatefulRunAsyncSlowCancellation és StatefulRunAsyncFailure kell fordítani, mert azt jelzik, hogy a szolgáltatással kapcsolatos problémák.
+A szolgáltatás-íróknak Kiemelt figyelmet kell fordítaniuk az események StatefulRunAsyncSlowCancellation és StatefulRunAsyncFailure, mivel a szolgáltatással kapcsolatos problémákat jeleznek.
 
-StatefulRunAsyncFailure bocsásson ki, amikor a szolgáltatás RunAsync() feladat kivételt jelez. Általában egy kivétel lépett fel azt jelzi, hogy egy hiba vagy a hiba a szolgáltatásban. Ezenkívül a kivétel rendelkezik, a szolgáltatás sikertelen lesz, így áthelyezése egy másik csomópont. A művelet költséges lehet, és közben a szolgáltatás áthelyezése késleltetheti a bejövő kérelmeket. Szolgáltatás írók meg kell állapítsa meg a kivétel okát, és ha lehetséges, csökkenti azt.
+A StatefulRunAsyncFailure akkor kerül kibocsátásra, ha a Service RunAsync () feladat kivételt jelez. Az eldobott kivételek általában hibát vagy hibát jeleznek a szolgáltatásban. Emellett a kivétel hatására a szolgáltatás meghibásodik, így azt egy másik csomópontra helyezi át. Ez a művelet költséges lehet, és késleltetheti a bejövő kérelmeket a szolgáltatás áthelyezésekor. A szolgáltatás-íróknak meg kell határozniuk a kivétel okát, és ha lehetséges, enyhíteni kell.
 
-StatefulRunAsyncSlowCancellation bocsásson ki, amikor a RunAsync feladathoz megszakítási kérelem 4 másodpercnél hosszabb ideig tart. Ha a szolgáltatás megszakítás túl sokáig tart, a szolgáltatás azon képessége, hogy gyorsan indítható újra egy másik csomóponton befolyásolja. Ebben a forgatókönyvben hatással lehet a szolgáltatás általános rendelkezésre állását.
+A StatefulRunAsyncSlowCancellation akkor bocsátja ki, ha a RunAsync feladat megszakítási kérelme négy másodpercnél hosszabb időt vesz igénybe. Ha egy szolgáltatás túl sokáig tart a lemondás befejezéséhez, azzal hatással van arra, hogy a szolgáltatás gyorsan újrainduljon egy másik csomóponton. Ez a forgatókönyv hatással lehet a szolgáltatás általános rendelkezésre állására.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-A Reliable Services-modul határozza meg a következő teljesítményszámláló-kategóriák:
+A Reliable Services futtatókörnyezet a következő teljesítményszámláló-kategóriákat definiálja:
 
-| Category | Leírás |
+| Kategória | Leírás |
 | --- | --- |
-| Service Fabric tranzakciós replikátor |Adott, az Azure Service Fabric tranzakciós replikátor számlálói |
-| Service Fabric TStore |Az Azure Service Fabric TStore vonatkozó számlálók |
+| Tranzakciós replikátor Service Fabric |Az Azure Service Fabric tranzakciós Replikátorra jellemző számlálók |
+| Service Fabric TStore |Az Azure Service Fabric TStore kapcsolódó számlálók |
 
-A Service Fabric tranzakciós replikátor által használt a [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) belül egy adott halmazát tranzakciók replikálásához [replikák](service-fabric-concepts-replica-lifecycle.md).
+A [megbízható állapot-kezelő](service-fabric-reliable-services-reliable-collections-internals.md) a Service Fabric tranzakciós replikálása használatával replikálja a tranzakciókat egy adott [replikán](service-fabric-concepts-replica-lifecycle.md)belül.
 
-A Service Fabric TStore-e egy összetevő, a használt [a Reliable Collections](service-fabric-reliable-services-reliable-collections-internals.md) tárolására, és a kulcs-érték párok beolvasása.
+A Service Fabric TStore a [megbízható gyűjteményekben](service-fabric-reliable-services-reliable-collections-internals.md) a kulcs-érték párok tárolására és lekérésére használt összetevő.
 
-A [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely a Windows operációs rendszerben alapértelmezés szerint elérhető használható összegyűjtése és megtekintése a teljesítményszámláló-adatokat. [Az Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) van egy másik lehetőség a teljesítményszámlálók adatainak összegyűjtése, majd feltölteni a Azure-táblákat.
+A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
 
-### <a name="performance-counter-instance-names"></a>Teljesítményszámlálók példány nevét
-Egy fürt, amelyben a reliable services és reliable Services partíció nagy számú nagy számú tranzakciós replikátor teljesítmény számlálópéldány lesz. Ez a helyzet akkor is TStore teljesítményszámlálókkal, de is van a megbízható szótárakban és megbízható várólisták száma szorozva. A teljesítményszámláló-példány neveket segítséget nyújthat az azonosító az adott [partíció](service-fabric-concepts-partitioning.md), szolgáltatás-replikát, és állapotszolgáltató TStore, amelyhez társítva van a teljesítményszámláló-példány esetén.
+### <a name="performance-counter-instance-names"></a>Teljesítményszámláló-példányok nevei
+A nagy mennyiségű megbízható szolgáltatást vagy megbízható szolgáltatási partíciót tartalmazó fürtök nagy számú tranzakciós replikáló teljesítményszámláló-példánnyal rendelkeznek. Ez a TStore teljesítményszámlálók esetében is igaz, de a megbízható szótárak és a használt megbízható várólisták száma is megszorozva. A teljesítményszámláló-példányok nevei segítenek a TStore esetében az adott [partíció](service-fabric-concepts-partitioning.md), a szolgáltatás replikájának és az állami szolgáltatónak az azonosításában, hogy a teljesítményszámláló-példány társítva legyen.
 
-#### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric tranzakciós replikátor kategória
-A kategória `Service Fabric Transactional Replicator`, a teljesítményszámlálók példány nevét a következő formátumban van:
+#### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric tranzakciós replikátor kategóriája
+A (z) `Service Fabric Transactional Replicator`kategóriához a számláló példányainak neve a következő formátumú:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* a Service Fabric partícióazonosító: a teljesítményszámláló-példány tartozó karakterlánca ábrázolása. A Partícióazonosító egy GUID Azonosítót, és annak karakterláncként jön létre keresztül [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) a "D" specifikátor formátu.
+A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID azonosító, és a karakterlánc-ábrázolás a "D" formátumot megadó [`Guid.ToString`on](https://msdn.microsoft.com/library/97af8hh4.aspx) keresztül jön létre.
 
-*ServiceFabricReplicaId* replikájának egy reliable Services-azonosítója. A teljesítményszámláló példány nevének az egyediség biztosítása céljából, és ugyanazon a partíción által létrehozott egyéb teljesítmény számlálópéldányt való ütközés elkerülése Replikaazonosító tartalmazza. A reliable services és a replikák kapcsolatos további részletek találhatók [Itt](service-fabric-concepts-replica-lifecycle.md).
+A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
-A következő teljesítményszámláló-példány nevét a jellemző, a számláló a `Service Fabric Transactional Replicator` kategória:
+A számláló következő neve általában a `Service Fabric Transactional Replicator` kategóriába tartozó számlálóra jellemző:
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571`
 
-Az előző példában `00d0126d-3e36-4d68-98da-cc4f7195d85e` a Service Fabric Partícióazonosító karakterlánca ábrázolása és `131652217797162571` a replika azonosítója.
+Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` a Service Fabric partíció-azonosító karakterlánc-ábrázolása, a `131652217797162571` pedig a replika azonosítója.
 
-#### <a name="service-fabric-tstore-category"></a>Service Fabric TStore-kategória
-A kategória `Service Fabric TStore`, a teljesítményszámlálók példány nevét a következő formátumban van:
+#### <a name="service-fabric-tstore-category"></a>Service Fabric TStore kategóriája
+A (z) `Service Fabric TStore`kategóriához a számláló példányainak neve a következő formátumú:
 
-`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+`ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* a Service Fabric partícióazonosító: a teljesítményszámláló-példány tartozó karakterlánca ábrázolása. A Partícióazonosító egy GUID Azonosítót, és annak karakterláncként jön létre keresztül [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) a "D" specifikátor formátu.
+A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID azonosító, és a karakterlánc-ábrázolás a "D" formátumot megadó [`Guid.ToString`on](https://msdn.microsoft.com/library/97af8hh4.aspx) keresztül jön létre.
 
-*ServiceFabricReplicaId* replikájának egy reliable Services-azonosítója. A teljesítményszámláló példány nevének az egyediség biztosítása céljából, és ugyanazon a partíción által létrehozott egyéb teljesítmény számlálópéldányt való ütközés elkerülése Replikaazonosító tartalmazza. A reliable services és a replikák kapcsolatos további részletek találhatók [Itt](service-fabric-concepts-replica-lifecycle.md).
+A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
-*ServiceFabricStateProviderId* belül egy reliable Services állapot szolgáltatóval azonosítója. Állapotazonosító szolgáltató tartalmazza a teljesítményszámláló példány nevének egy TStore megkülönböztetni egymástól.
+A *állapotszolgáltató azonosítója* egy megbízható szolgáltatáson belüli állami szolgáltatóhoz tartozó azonosító. A teljesítményszámláló-példány neve tartalmazza az állapot-szolgáltató AZONOSÍTÓját, hogy megkülönböztesse a TStore egy másikból.
 
-*PerformanceCounterInstanceDifferentiator* egy megkülönböztető belül egy szolgáltatóját egy teljesítményszámláló-példány azonosítója. Ezt a különbséget jelent a teljesítményszámláló példány nevének az egyediség biztosítása céljából, és egyéb teljesítmény számlálópéldányt állapot ugyanaz a szolgáltató által létrehozott való ütközés elkerülése tartalmazza.
+A *PerformanceCounterInstanceDifferentiator* egy, az állami szolgáltatón belüli teljesítményszámláló-példányhoz társított megkülönböztető azonosító. Ezt a megkülönböztető nevet a teljesítményszámláló példányának neve tartalmazza, hogy biztosítsa annak egyediségét, és elkerülje az azonos állami szolgáltató által generált teljesítményszámláló-példányok ütközését.
 
-A következő teljesítményszámláló-példány nevét a jellemző, a számláló a `Service Fabric TStore` kategória:
+A *StateProviderName* egy megbízható szolgáltatáson belüli állami szolgáltatóhoz tartozó név. Az állapot-szolgáltató neve tartalmazza a teljesítményszámláló-példány nevét, amellyel a felhasználók könnyen azonosíthatják, hogy milyen állapotot biztosít.
 
-`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+A számláló következő neve általában a `Service Fabric TStore` kategóriába tartozó számlálóra jellemző:
 
-Az előző példában `00d0126d-3e36-4d68-98da-cc4f7195d85e` a Service Fabric Partícióazonosító karakterlánca ábrázolása `131652217797162571` a másodpéldány-azonosító van `142652217797162571` állapota szolgáltató azonosítója, és `1337` van a teljesítmény számláló példány különbséget jelent.
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-### <a name="transactional-replicator-performance-counters"></a>Tranzakciós replikátor teljesítményszámlálók
+Az előző példában `00d0126d-3e36-4d68-98da-cc4f7195d85e` a Service Fabric partíció AZONOSÍTÓjának karakterlánc-ábrázolása, `131652217797162571` a replika azonosítója, `142652217797162571` az állami szolgáltató azonosítója, a `1337` pedig a teljesítményszámláló-példányok differenciálása. `urn:MyReliableDictionary/dataStore` a `urn:MyReliableDictionary`nevű gyűjteményhez tartozó adattárolási szolgáltató neve.
 
-A Reliable Services modul a következő események alapján bocsát ki a `Service Fabric Transactional Replicator` kategória
+### <a name="transactional-replicator-performance-counters"></a>Tranzakciós replikáló teljesítményszámlálók
 
- Számláló neve | Leírás |
-| --- | --- |
-| Kezdje a tranzakciós művelet/mp | A másodpercenként létrehozott új írási tranzakciók száma.|
-| Tranzakciós művelet/mp | A reliable collections másodpercenként végrehajtott hozzáadása/frissítése/törlése műveletek száma.|
-| Naplófájl kiürítése (bájt/mp) | A másodpercenkénti tranzakciós replikátor által a lemezre kiürített bájtok száma |
-| Szabályozott művelet/mp | Műveletek száma másodpercenként a szabályozás miatt tranzakciós replikátor által elutasították. |
-| Átl. Ms/véglegesítés | Véglegesítés átlagos késése ezredmásodpercben tranzakciónként |
-| Átl. Kiürítési késés (ms) | Lemezes flush ezredmásodpercben a tranzakciós replikátor által kezdeményezett műveletek átlagos időtartama |
-
-### <a name="tstore-performance-counters"></a>TStore-teljesítményszámlálók
-
-A Reliable Services modul a következő események alapján bocsát ki a `Service Fabric TStore` kategória
+A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric Transactional Replicator` kategóriában
 
  Számláló neve | Leírás |
 | --- | --- |
-| Elemek száma | A tárolóban lévő elemek száma.|
-| Lemezméret | A teljes lemez méretét, a tároló ellenőrzőpontfájljainak bájtban.|
-| Ellenőrzőpont fájl Zapsané Bajty/s | Az utolsó ellenőrzőpont fájlja számára másodpercenként írt bájtok száma.|
-| Másolja a lemez adatátviteli bájt/mp | (Az elsődleges replikán) olvasása vagy írása (a másodlagos replika) másodpercenként egy tároló másolása során lemez bájtok száma.|
+| Tranzakció művelet/s megkezdése | A másodpercenként létrehozott új írási tranzakciók száma|
+| Tranzakció művelet/mp | A megbízható gyűjteményeken végrehajtott hozzáadási/frissítési/törlési műveletek száma másodpercenként.|
+| Napló kiürítési sebessége (bájt/s) | A tranzakciós replikátor által a lemezre kiürített bájtok száma másodpercenként |
+| Szabályozott művelet/s | A tranzakciós replikátor által a szabályozás miatt másodpercenként visszautasított műveletek száma. |
+| Átlagos tranzakció: MS/commit | Átlagos végrehajtási késleltetés másodpercenként ezredmásodpercben |
+| Átlagos ürítési késés (MS) | A tranzakciós replikátor által kezdeményezett lemezes ürítési műveletek átlagos időtartama ezredmásodpercben |
 
-## <a name="next-steps"></a>További lépések
-[A PerfView EventSource szolgáltatók](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+### <a name="tstore-performance-counters"></a>TStore teljesítményszámlálók
+
+A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric TStore` kategóriában
+
+ Számláló neve | Leírás |
+| --- | --- |
+| Elemek száma | Az áruházban lévő elemek száma.|
+| Lemezméret | Az áruházhoz tartozó ellenőrzőpont-fájlok teljes mérete (bájtban).|
+| Ellenőrzőpont-fájl írási sebessége (bájt/s) | A legutóbbi ellenőrzőpont-fájl másodpercenként írt bájtjainak száma.|
+| Lemez átviteli sebességének másolása (bájt/s) | Az elolvasott lemezes bájtok száma (az elsődleges replikán) vagy a másodpercenként írt (másodlagos replikán).|
+
+## <a name="next-steps"></a>Következő lépések
+[EventSource-szolgáltatók a Perfview eszköz-ben](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053823"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242955"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure-beli virtuális gép feladatátvétele Azure-régiók között
 
@@ -58,7 +58,7 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
     ![Virtuális gép elsődleges és másodlagos régiókban](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> A Site Recovery Extension 9.28. x. x verziót futtató gépek esetében a 40-es [kumulatív frissítéssel](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery a másodlagos vész-helyreállítási régióban lévő gépek tisztítása, a nafter feladat-visszavétel befejeződött, és a virtuális gépek újbóli védelme megtörténik. Nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket.
+> A Site Recovery Extension 9.28. x. x verziót futtató gépek esetében a [40 kumulatív frissítéssel](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery a másodlagos vész-helyreállítási régióban lévő gépek tisztítása, a feladat-visszavétel befejezése és a virtuális gépek ismételt védelme után. A másodlagos régióban nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket. Ha a feladatátvételt követően teljesen letiltja a replikálást, Site Recovery a virtuális gépek és hálózati adapterek mellett a vész-helyreállítási régióban lévő lemezeket is törli.
 
 ## <a name="next-steps"></a>Következő lépések
 

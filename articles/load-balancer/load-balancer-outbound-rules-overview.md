@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fd43e9c71db9ae553b24e6cd774495ee8cc5b621
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790248"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242347"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer kimenő szabályok
 
@@ -86,7 +86,7 @@ A következő paraméter használatával 10 000 SNAT-portot foglalhat le virtuá
 
 A kimenő szabályok összes felületének minden nyilvános IP-címe akár 64 000 ideiglenes portot is felhasználhat SNAT-portokként való használatra.  Load Balancer SNAT-portokat foglal le a 8 többszörösében. Ha a 8 értékkel nem osztható értéket ad meg, a rendszer elutasítja a konfigurációs műveletet.  Ha a nyilvános IP-címek száma alapján több SNAT-portot próbál kiosztani, akkor a rendszer elutasítja a konfigurációs műveletet.  Ha például egy virtuális gépenként 10 000 portot foglal le, és a háttérbeli készlet 7 virtuális gépe egyetlen nyilvános IP-címet oszt meg, akkor a rendszer elutasítja a konfigurációt (7 x 10 000 SNAT-port > 64 000 SNAT-portok).  A forgatókönyv engedélyezéséhez több nyilvános IP-címet is hozzáadhat a Kimenő szabály előtérbeli felületéhez.
 
-Az [automatikus SNAT-portok kiosztására a háttérbeli készlet mérete alapján](load-balancer-outbound-connections.md#preallocatedports) , a portok számának 0 értékének megadásával térhet vissza.
+Az [automatikus SNAT-portok kiosztására a háttérbeli készlet mérete alapján](load-balancer-outbound-connections.md#preallocatedports) , a portok számának 0 értékének megadásával térhet vissza. Ebben az esetben az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig 512-et kapnak, így a táblázat szerint. Ha egynél több, a kimenő szabályhoz társított nyilvános IP-címmel rendelkezik, az egyes virtuálisgép-példányokhoz lefoglalt portok száma nem növekszik.
 
 ### <a name="idletimeout"></a>A kimenő forgalom üresjárati időkorlátjának szabályozása
 

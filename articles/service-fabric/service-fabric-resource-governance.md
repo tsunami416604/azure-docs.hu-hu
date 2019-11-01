@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: atsenthi
-ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166555"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242919"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -110,6 +110,18 @@ Az optimális teljesítmény érdekében a következő beállítást is be kell 
 </Section>
 ```
 
+> [!IMPORTANT]
+> Az 7,0-Service Fabric es verziótól kezdődően a rendszer frissítette a csomópont-erőforrás-kapacitások kiszámításának szabályát azokban az esetekben, amikor a felhasználó manuálisan megadja a csomóponti erőforrás-kapacitások értékeit. Tekintsük át a következő forgatókönyvet:
+>
+> * A csomóponton 10 CPU-mag van összesen.
+> * Az SF úgy van konfigurálva, hogy a felhasználói szolgáltatások teljes erőforrásainak 80%-át használja (alapértelmezett beállítás), amely 20%-os puffert hagy a csomóponton futó többi szolgáltatáshoz (beleértve Service Fabric rendszerszolgáltatásokat).
+> * A felhasználó úgy dönt, hogy manuálisan felülbírálja a CPU-magok metrikai csomópontjának erőforrás-kapacitását, és beállítja 5 maggal
+>
+> Módosítottuk azt a szabályt, hogy a Service Fabric felhasználói szolgáltatások rendelkezésre álló kapacitása a következő módon legyen kiszámítva:
+>
+> * A 7,0 Service Fabric előtt a felhasználói szolgáltatások rendelkezésre álló kapacitása **5 maggal** lesz kiszámítva (a 20%-os kapacitási puffer figyelmen kívül lesz hagyva)
+> * A Service Fabric 7,0-től kezdődően a felhasználói szolgáltatások rendelkezésre álló kapacitása **4 mag** (a 20%-os kapacitási puffer figyelmen kívül hagyása) lesz kiszámítva.
+
 ## <a name="specify-resource-governance"></a>Erőforrás-szabályozás meghatározása
 
 Az erőforrás-irányítási korlátok az Application manifest (ServiceManifestImport) szakaszban vannak megadva, az alábbi példában látható módon:
@@ -141,7 +153,7 @@ A memória korlátai abszolútak, ezért a csomagok 1024 MB memóriára korláto
 
 ### <a name="using-application-parameters"></a>Alkalmazás paramétereinek használata
 
-Az erőforrás-szabályozás megadásakor az [alkalmazás paramétereinek](service-fabric-manage-multiple-environment-app-configuration.md) használatával több alkalmazás-konfiguráció is kezelhető. Az alábbi példa az alkalmazás paramétereinek használatát mutatja be:
+Az erőforrás-irányítási beállítások megadásakor az [alkalmazás paramétereinek](service-fabric-manage-multiple-environment-app-configuration.md) használatával több alkalmazás-konfiguráció is kezelhető. Az alábbi példa az alkalmazás paramétereinek használatát mutatja be:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -185,6 +197,27 @@ Ebben a példában az alapértelmezett paraméterérték az éles környezethez 
 > Az erőforrás-szabályozás és az alkalmazás paramétereinek megadása Service Fabric 6,1-es verziótól kezdődően érhető el.<br>
 >
 > Ha az alkalmazás paramétereinek használatával határozza meg az erőforrás-szabályozást, Service Fabric nem lehet visszaminősíteni az 6,1-es verzió előtti verzióra.
+
+## <a name="enforcing-the-resource-limits-for-user-services"></a>A felhasználói szolgáltatások erőforrás-korlátainak érvényesítése
+
+Az erőforrás-szabályozásnak a Service Fabric-szolgáltatásokra való alkalmazása során garantálható, hogy az erőforrás-szabályozott szolgáltatások nem haladhatják meg az erőforrás-kvótát, sok felhasználónak továbbra is le kell futtatnia a Service Fabric szolgáltatásait a nem szabályozott módban. A nem szabályozott Service Fabric szolgáltatások használatakor lehetséges, hogy olyan helyzetekben is futtathatók, ahol a "szökevény" nem szabályozott szolgáltatások a Service Fabric-csomópontokon elérhető összes erőforrást használják, ami a következő súlyos problémákhoz vezethet:
+
+* A csomópontokon futó egyéb szolgáltatások (köztük a Service Fabric rendszerszolgáltatások) erőforrásainak éhezése
+* Sérült állapotban végződő csomópontok
+* Nem válaszol Service Fabric fürt felügyeleti API-jai
+
+Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hogy a *csomóponton futó összes Service Fabric felhasználói szolgáltatáshoz érvényesítse az erőforrás-korlátozásokat* (mind a szabályozott, mind a nem szabályozott), hogy a felhasználói szolgáltatások soha ne használják a következőt: megadott mennyiségű erőforrás. Ezt úgy érheti el, ha a ClusterManifest PlacementAndLoadBalancing szakaszában a EnforceUserServiceMetricCapacities konfiguráció értékét True értékre állítja. Ez a beállítás alapértelmezés szerint ki van kapcsolva.
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+További megjegyzések:
+
+* Az erőforrás-korlátozás kényszerítése csak a `servicefabric:/_CpuCores` és `servicefabric:/_MemoryInMB` erőforrás-metrikára vonatkozik
+* Az erőforrás-korlátozás kényszerítése csak akkor működik, ha az erőforrás-metrikák csomópont-kapacitása elérhető a Service Fabric számára, akár automatikus észlelési mechanizmussal, akár a felhasználókkal manuálisan, a csomópontok kapacitásának megadásával (a [fürt beállításának engedélyezésével erőforrás-szabályozás](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) szakasz). Ha a csomópont kapacitása nincs konfigurálva, az erőforrás-korlát kényszerítési funkciója nem használható, mert Service Fabric nem tudja, hogy mennyi erőforrást kell lefoglalni a felhasználói szolgáltatásokhoz. Ha a "EnforceUserServiceMetricCapacities" érték igaz, de a csomópont kapacitása nincs konfigurálva, a Service Fabric állapot figyelmeztetést ad ki.
 
 ## <a name="other-resources-for-containers"></a>A tárolók egyéb erőforrásai
 

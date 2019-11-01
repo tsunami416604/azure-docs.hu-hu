@@ -1,104 +1,76 @@
 ---
-title: VMware virtuális gépek és fizikai kiszolgálók az Azure-bA az Azure Site Recovery vészhelyreállításhoz használt folyamatkiszolgáló kezelése |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, felügyelhetők a folyamatkiszolgálók állítható be a vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA az Azure Site Recovery használatával.
+title: A VMware virtuális gépeket és fizikai kiszolgálókat az Azure-ba való vész-helyreállításhoz használt folyamat-kiszolgáló kezelése Azure Site Recovery használatával | Microsoft Docs
+description: Ez a cikk a VMware-alapú virtuális gépek és fizikai kiszolgálók Azure-beli vész-helyreállítására beállított folyamat-kiszolgáló kezelését ismerteti Azure Site Recovery használatával.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 509b9aed9f5daebb70a18336837da2152667a458
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925622"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242838"
 ---
 # <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 
-Ez a cikk azt ismerteti, hogy a Site Recovery folyamatkiszolgáló kezeléséhez kapcsolódó gyakori feladatok.
+Ez a cikk a Site Recovery Process Server felügyeletének általános feladatait ismerteti.
 
-A folyamatkiszolgáló kapni, optimalizálása és a replikációs adatok küldése az Azure-bA szolgál. VMware virtuális gépeken és fizikai kiszolgálókat szeretne replikálni, is végez leküldéses telepítését a mobilitási szolgáltatást, és elvégzi a helyszíni gépek automatikus felderítését. A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók replikálása az Azure-ba, a folyamatkiszolgáló alapértelmezés szerint telepítve van a konfigurációs kiszolgáló gépen. 
+A Process Server replikációs adatfogadásra, optimalizálásra és az Azure-ba történő küldésére szolgál. Emellett elvégzi a mobilitási szolgáltatás leküldéses telepítését a replikálni kívánt VMware virtuális gépeken és fizikai kiszolgálókon, valamint a helyszíni gépek automatikus felderítését. A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba történő replikálásához a Process Server alapértelmezés szerint telepítve van a konfigurációs kiszolgáló számítógépén. 
 
-- Nagyméretű környezetekben szükség lehet további helyszíni folyamatkiszolgálók kapacitást.
-- A feladat-visszavételhez az Azure-ból a helyszíni be kell állítania egy ideiglenes folyamatkiszolgáló az Azure-ban. Ez a virtuális gép feladat-visszavétel végeztével törölhetők. 
+- Nagyméretű telepítések esetén további helyszíni folyamat-kiszolgálókra lehet szükség a kapacitás skálázásához.
+- Az Azure-ból a helyszíni rendszerbe való feladat-visszavételhez be kell állítania egy ideiglenes folyamat-kiszolgálót az Azure-ban. Ezt a virtuális gépet akkor törölheti, ha a feladat-visszavétel befejeződött. 
 
-További információ a folyamatkiszolgáló.
+További információ a Process Serverről.
 
 
-## <a name="upgrade-a-process-server"></a>Frissítse a folyamatkiszolgálót
+## <a name="upgrade-a-process-server"></a>Folyamat kiszolgálójának frissítése
 
-Amikor folyamatkiszolgáló üzembe helyezése a helyszínen, vagy Azure virtuális gépként a feladat-visszavételhez, az a folyamatkiszolgáló legújabb verziója van telepítve. A Site Recovery csapatok kiadás javításokat és rendszeres időközönként fejlesztések, és azt javasoljuk, tartsa naprakészen a folyamatkiszolgálók. Folyamatkiszolgáló következőképpen frissítheti:
+Ha helyszíni vagy Azure-beli kiszolgálóként helyez üzembe egy folyamatot a feladat-visszavételhez, a rendszer telepíti a Process Server legújabb verzióját. A Site Recovery csapatok rendszeresen javítanak a javításokon és fejlesztéseken, és javasoljuk, hogy a folyamat-kiszolgálók naprakészen maradjanak. A folyamat-kiszolgálót a következőképpen frissítheti:
 
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
 
-## <a name="move-vms-to-balance-the-process-server-load"></a>Helyezze át a virtuális gépek, a folyamat kiszolgáló terhelés kiegyenlítése érdekében
+## <a name="move-vms-to-balance-the-process-server-load"></a>Virtuális gépek áthelyezése a folyamat-kiszolgáló terhelésének kiegyensúlyozására
 
-A terhelés kiegyenlítése a következő két folyamatot kiszolgálók között, helyezze át virtuális gépeket:
+Az alábbiak szerint kiegyensúlyozhatja a terhelést úgy, hogy áthelyezi a virtuális gépeket két folyamat kiszolgálója között:
 
-1. A tároló alatt **kezelés** kattintson **Site Recovery-infrastruktúra**. A **a VMware és fizikai gépek**, kattintson a **konfigurációs kiszolgálók**.
-2. Kattintson a konfigurációs kiszolgálón, amelyhez a folyamatkiszolgálók van regisztrálva.
-3. Kattintson a folyamat, amelynek meg szeretné betölteni a forgalom terheléselosztása kiszolgálón.
+1. A tárolóban a **kezelés** alatt kattintson **site Recovery infrastruktúra**elemre. **A VMware & fizikai gépek**területen kattintson a **konfigurációs kiszolgálók**elemre.
+2. Kattintson arra a konfigurációs kiszolgálóra, amelyen a folyamat-kiszolgálók regisztrálva vannak.
+3. Kattintson arra a folyamat-kiszolgálóra, amelynek terheléselosztási forgalmát el szeretné osztani.
 
-    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Terheléselosztási](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Kattintson a **terheléselosztása**, válassza ki a cél folyamatkiszolgáló, amelyre át szeretné helyezni a gépek. Kattintson a **OK**
+4. Kattintson a **terheléselosztás**elemre, válassza ki azt a cél-feldolgozási kiszolgálót, amelyre a gépeket át szeretné helyezni. Ezután kattintson **az OK** gombra.
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. Kattintson a **gépek kijelölése**, és válassza ki a gépeket szeretne áthelyezni a folyamat-célkiszolgáló az aktuális. Átlagos változás részletei jelennek meg minden egyes virtuális gépek ellen. Ezután kattintson az **OK** gombra. 
-3. A tárolóban, a feladat előrehaladásának figyeléséhez **figyelés** > **Site Recovery-feladatok**.
+2. Kattintson a **gépek kiválasztása**lehetőségre, majd válassza ki azokat a gépeket, amelyeket az aktuálisról a cél-feldolgozási kiszolgálóra szeretne áthelyezni. Az átlagos adatváltozás részletei az egyes virtuális gépeken jelennek meg. Ezután kattintson az **OK** gombra. 
+3. A tárolóban figyelje a feladat előrehaladását a **figyelés** > **site Recovery feladatok**területen.
 
-A módosítások megjelennek a portálon hozzávetőlegesen 15 percet vesz igénybe. A gyorsabb hatás [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+Körülbelül 15 percet vesz igénybe, hogy a változások tükrözzék a portálon. A gyorsabb hatás érdekében [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-## <a name="switch-an-entire-workload-to-another-process-server"></a>Egy teljes terhelést váltson egy másik folyamatkiszolgálóra
+## <a name="switch-an-entire-workload-to-another-process-server"></a>Teljes munkaterhelés váltása másik folyamat-kiszolgálóra
 
-Helyezze át a teljes terhelés kezelése egy másik folyamatkiszolgálóra a folyamatkiszolgáló a következő:
+Helyezze át a folyamat-kiszolgáló által kezelt teljes munkaterhelést egy másik folyamat-kiszolgálóra, az alábbiak szerint:
 
-1. A tároló alatt **kezelés** kattintson **Site Recovery-infrastruktúra**. A **a VMware és fizikai gépek**, kattintson a **konfigurációs kiszolgálók**.
-2. Kattintson a konfigurációs kiszolgálón, amelyhez a folyamatkiszolgálók van regisztrálva.
-3. Kattintson a folyamatkiszolgáló, amelyről szeretne váltani a számítási feladatok.
-4. Kattintson a **kapcsoló**, válassza ki a cél folyamatkiszolgáló, amelyre át szeretné helyezni a a számítási feladatok. Kattintson a **OK**
+1. A tárolóban a **kezelés** alatt kattintson **site Recovery infrastruktúra**elemre. **A VMware & fizikai gépek**területen kattintson a **konfigurációs kiszolgálók**elemre.
+2. Kattintson arra a konfigurációs kiszolgálóra, amelyen a folyamat-kiszolgálók regisztrálva vannak.
+3. Kattintson arra a folyamat-kiszolgálóra, amelyről át szeretné váltani a munkaterhelést.
+4. Kattintson a **kapcsoló**elemre, válassza ki azt a cél-feldolgozási kiszolgálót, amelyre át szeretné helyezni a munkaterhelést. Ezután kattintson **az OK** gombra.
 
     ![Kapcsoló](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. A tárolóban, a feladat előrehaladásának figyeléséhez **figyelés** > **Site Recovery-feladatok**.
+5. A tárolóban figyelje a feladat előrehaladását a **figyelés** > **site Recovery feladatok**területen.
 
-A módosítások megjelennek a portálon hozzávetőlegesen 15 percet vesz igénybe. A gyorsabb hatás [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+Körülbelül 15 percet vesz igénybe, hogy a változások tükrözzék a portálon. A gyorsabb hatás érdekében [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
+## <a name="register-a-master-target-server"></a>Fő célkiszolgáló regisztrálása
 
+A fő célkiszolgáló a konfigurációs kiszolgálón és a kibővíthető folyamat-kiszolgálókon található. Regisztrálni kell a konfigurációs kiszolgálóval. Ha a regisztráció során hiba lép fel, az hatással lehet a védett elemek állapotára. A fő célkiszolgáló konfigurációs kiszolgálóval való regisztrálásához jelentkezzen be az adott konfigurációs kiszolgáló/kibővítő folyamat kiszolgálójára, amelyen a regisztráció szükséges. Navigáljon a mappa **%PROGRAMDATA%\ASR\Agent**, és futtassa a következő parancsot a rendszergazdai parancssorban.
 
-## <a name="reregister-a-process-server"></a>A folyamatkiszolgáló regisztrálása
-
-A helyszínen futó folyamatkiszolgáló regisztrálása vagy egy Azure virtuális gépen a konfigurációs kiszolgálóval, az alábbiak szerint:
-
-[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
-
-A beállítások mentését követően tegye a következőket:
-
-1. A folyamatkiszolgáló nyisson meg egy rendszergazdai parancssort.
-2. Keresse meg a mappa **%PROGRAMDATA%\ASR\Agent**, és futtassa a parancsot:
-
-    ```
-    cdpcli.exe --registermt
-    net stop obengine
-    net start obengine
-    ```
-
-## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>A helyszíni folyamatkiszolgálót proxybeállításainak módosítása
-
-A helyszíni folyamatkiszolgálót egy proxy segítségével csatlakozzon az Azure-ba, ha a proxykiszolgáló beállításai a következőképpen módosíthatja:
-
-1. Jelentkezzen be a folyamat server gépre. 
-2. Nyisson meg egy rendszergazdai PowerShell-parancsablakot, és futtassa a következő parancsot:
-   ```powershell
-   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
-   net stop obengine
-   net start obengine
-   ```
-2. Keresse meg a mappa **%PROGRAMDATA%\ASR\Agent**, és futtassa a következő parancsot:
    ```
    cmd
    cdpcli.exe --registermt
@@ -110,19 +82,60 @@ A helyszíni folyamatkiszolgálót egy proxy segítségével csatlakozzon az Azu
    exit
    ```
 
-## <a name="remove-a-process-server"></a>Távolítsa el a folyamatkiszolgáló
+## <a name="reregister-a-process-server"></a>Folyamat-kiszolgáló újraregisztrálása
+
+A következő módon regisztrálja újra a helyszíni vagy egy Azure-beli virtuális gépen futó folyamat-kiszolgálót a konfigurációs kiszolgálóval:
+
+[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
+
+A beállítások mentése után tegye a következőket:
+
+1. Nyisson meg egy rendszergazdai parancssort a Process Server kiszolgálón.
+2. Tallózással keresse meg a **%PROGRAMDATA%\ASR\Agent**mappát, és futtassa a következő parancsot:
+
+    ```
+    cdpcli.exe --registermt
+    net stop obengine
+    net start obengine
+    ```
+
+## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Helyi folyamat kiszolgálójának proxybeállításait módosítva
+
+Ha egy helyszíni folyamat-kiszolgáló egy proxy használatával csatlakozik az Azure-hoz, a proxybeállításokat a következőképpen módosíthatja:
+
+1. Jelentkezzen be a Process Server-gépre. 
+2. Nyisson meg egy rendszergazdai PowerShell-parancssorablakot, és futtassa a következő parancsot:
+   ```powershell
+   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
+   net stop obengine
+   net start obengine
+   ```
+2. Tallózással keresse meg a **%PROGRAMDATA%\ASR\Agent**mappát, és futtassa a következő parancsot:
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
+
+## <a name="remove-a-process-server"></a>Folyamat kiszolgálójának eltávolítása
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
-## <a name="exclude-folders-from-anti-virus-software"></a>Kizárhat bizonyos mappákat a víruskereső szoftver
+## <a name="exclude-folders-from-anti-virus-software"></a>Mappák kizárása a víruskereső szoftverből
 
-Ha víruskereső fut egy horizontális felskálázási folyamatkiszolgáló (vagy a fő célkiszolgáló), a következő mappák kizárása víruskereső műveletek:
+Ha a víruskereső szoftver egy kibővíthető folyamat-kiszolgálón (vagy fő célkiszolgálón) fut, akkor zárja ki a következő mappákat a vírusellenőrző műveletekből:
 
 
-- C:\Program Files\Microsoft Azure Recovery Services-ügynök
+- C:\Program Files\Microsoft Azure Recovery Services ügynök
 - C:\ProgramData\ASR
 - C:\ProgramData\ASRLogs
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- Folyamat kiszolgáló telepítési könyvtárában. Példa: C:\Program Files (x86)\Microsoft Azure Site Recovery
+- A Process Server telepítési könyvtára. Például: C:\Program Files (x86) \Microsoft Azure Site Recovery

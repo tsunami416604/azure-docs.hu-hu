@@ -7,16 +7,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333121"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243026"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Felügyelt identitás Service Fabric alkalmazáshoz (előzetes verzió)
 
-A felhőalapú alkalmazások készítése során általános kihívást jelenti a hitelesítő adatok a kódban való kezelése, amelyekkel az alkalmazás magát a felhőalapú szolgáltatásokban hitelesíti. A hitelesítő adatok biztonságossá tétele fontos feladat, mivel soha nem jelennek meg a fejlesztői munkaállomásokon, és nincsenek bejelölve a verziókövetés számára. A Azure Active Directory (Azure AD) Azure-erőforrásainak felügyelt identitás funkciója megoldja ezt a problémát. A szolgáltatás automatikusan felügyelt identitással biztosítja az Azure-szolgáltatásokat az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének.
+A felhőalapú alkalmazások készítése során általános kihívást jelenti a hitelesítő adatok a kódban való kezelése, amelyekkel az alkalmazás magát a felhőalapú szolgáltatásokban hitelesíti. A hitelesítő adatok biztonságossá tétele fontos feladat, mivel soha nem jelennek meg a fejlesztői munkaállomásokon, és nincsenek bejelölve a verziókövetés számára. A Azure Active Directory (Azure AD) Azure-erőforrásainak felügyelt identitás funkciója megoldja ezt a problémát. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének.
 
 Az Azure-erőforrások felügyelt identitás funkciója ingyenes az Azure AD-vel az Azure-előfizetésekhez. Nincs további díj.
 
@@ -45,7 +45,7 @@ A felügyelt identitás az Azure-erőforrások dokumentációs készletében a k
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric alkalmazások támogatott forgatókönyvei
 
-A Service Fabric felügyelt identitásai csak az Azure-ban üzembe helyezett Service Fabric-fürtökön támogatottak, és csak az Azure-erőforrásként üzembe helyezett alkalmazásokhoz. a nem Azure-erőforrásként üzembe helyezett alkalmazások nem rendelhetők hozzá identitáshoz. Elméletileg a felügyelt identitások támogatása az Azure Service Fabric-fürtben két fázisból áll:
+A Service Fabric felügyelt identitásai csak az Azure-ban üzembe helyezett Service Fabric-fürtökön támogatottak, és csak az Azure-erőforrásként üzembe helyezett alkalmazásokhoz. egy nem Azure-erőforrásként üzembe helyezett alkalmazás nem rendelhető hozzá identitáshoz. Elméletileg a felügyelt identitások támogatása az Azure Service Fabric-fürtben két fázisból áll:
 
 1. Rendeljen hozzá egy vagy több felügyelt identitást az alkalmazás-erőforráshoz; egy alkalmazáshoz egyetlen rendszer által hozzárendelt identitás és/vagy 32 felhasználó által hozzárendelt identitás rendelhető hozzá.
 
@@ -78,3 +78,4 @@ A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye fig
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Service Fabric alkalmazás felügyelt identitásának kihasználása a szolgáltatási kódból](./how-to-managed-identity-service-fabric-app-code.md)
 * [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)
+* [Alkalmazás-titkok deklarálása és használata KeyVaultReferences-ként](./service-fabric-keyvault-references.md) 
