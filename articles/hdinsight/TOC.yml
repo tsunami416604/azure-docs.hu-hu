@@ -41,6 +41,10 @@
           href: ./hdinsight-streaming-at-scale-overview.md
         - name: Apache Hadoop-architektúra a HDInsightban
           href: ./hdinsight-hadoop-architecture.md
+        - name: A HDInsight által támogatott virtuálisgép-méretek
+          href: ./hdinsight-supported-node-configuration.md
+        - name: A megfelelő virtuálisgép-méret kiválasztása
+          href: ./hdinsight-selecting-vm-size.md
         - name: A fürtök kapacitástervezése
           href: ./hdinsight-capacity-planning.md
         - name: Rendelkezésre állás és megbízhatóság

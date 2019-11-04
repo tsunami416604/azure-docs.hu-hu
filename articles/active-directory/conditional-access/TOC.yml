@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: Vezérlők
       href: controls.md
+    - name: Csak jelentési mód
+      href: concept-conditional-access-report-only.md
     - name: Szolgáltatásfüggőségek
       href: service-dependencies.md
     - name: Lehetőségelemzési eszköz
@@ -76,6 +78,8 @@
       href: untrusted-networks.md
     - name: Használati feltételek megkövetelése
       href: terms-of-use.md
+    - name: A csak jelentési mód konfigurálása
+      href: howto-conditional-access-report-only.md
     - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
       href: howto-conditional-access-session-lifetime.md
     - name: Klasszikus szabályzatok migrálása

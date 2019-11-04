@@ -396,6 +396,10 @@
               href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Áthelyezés régiók között
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Hibaelhárítás
+          items:
+            - name: Késési problémák
+              href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referencia
       items:
         - name: Azure PowerShell

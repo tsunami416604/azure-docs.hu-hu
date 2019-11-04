@@ -47,6 +47,17 @@
           href: ./samples/cis-azure-1.1.0/index.md
         - name: Az ajánlások leképezése
           href: ./samples/cis-azure-1.1.0/control-mapping.md
+    - name: FedRAMP Moderate
+      items:
+        - name: Áttekintés
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/index.md
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/deploy.md
     - name: IRS 1075
       items:
         - name: Áttekintés

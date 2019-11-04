@@ -131,10 +131,14 @@
           items:
             - name: Felhasználói beleegyezés konfigurálása
               href: configure-user-consent.md
+            - name: Rendszergazdai beleegyezés konfigurálásának munkafolyamata (előzetes verzió)
+              href: configure-admin-consent-workflow.md
             - name: Módszerek felhasználók és csoportok alkalmazáshoz való hozzárendelésére
               href: methods-for-assigning-users-and-groups.md
             - name: Felhasználó hozzárendelése egy alkalmazáshoz
               href: assign-user-or-group-access-portal.md
+            - name: Munkaterületek létrehozása a Saját alkalmazások területen (előzetes verzió)
+              href: access-panel-workspaces.md
             - name: Az önkiszolgáló alkalmazás-hozzáférés használata
               href: access-panel-manage-self-service-access.md
             - name: Módszerek egy felhasználó alkalmazás-hozzáférésének eltávolítására
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: Egy ADFS-alkalmazás migrálása az Azure-ba
               href: migrate-adfs-apps-to-azure.md
+            - name: Az AD FS alkalmazástevékenységi jelentésének használata (előzetes verzió)
+              href: migrate-adfs-application-activity.md
         - name: Hibaelhárítás
           items:
             - name: Alkalmazások hozzáadásával kapcsolatos hibaelhárítás

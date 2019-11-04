@@ -116,3 +116,13 @@
       href: my-apps-portal-end-user-access-reviews.md
     - name: Problémák elhárítása
       href: my-apps-portal-end-user-troubleshoot.md
+- name: A Saját alkalmazások (előzetes verzió) portál súgója
+  items:
+    - name: Áttekintés
+      href: my-applications-portal-overview.md
+    - name: A Saját alkalmazások portál elérése és használata
+      href: my-applications-portal-access.md
+    - name: Munkaterületek elérése és használata
+      href: my-applications-portal-workspaces.md
+    - name: Alkalmazásengedélyek szerkesztése vagy visszavonása
+      href: my-applications-portal-permissions-saved-accounts.md

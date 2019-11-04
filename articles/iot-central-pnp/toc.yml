@@ -37,6 +37,10 @@
           href: ../iot-central/core/tutorial-define-edge-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: IoT Edge-eszköz csatlakoztatása
           href: ../iot-central/core/tutorial-add-edge-as-leaf-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: A kapcsolat fenntartása
+      items:
+        - name: Eszközcsoport létrehozása
+          href: ../iot-central/core/tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Átalakítás
       items:
         - name: Szabály létrehozása
@@ -71,8 +75,10 @@
           href: ../iot-central/core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Feladat futtatása
           href: ../iot-central/core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Eszközcsoportok használata
-          href: ../iot-central/core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Verzióeszköz-sablon
+          href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Figyelés és elemzés
+      items:
         - name: Eszközadatok elemzése
           href: ../iot-central/core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Átalakítás

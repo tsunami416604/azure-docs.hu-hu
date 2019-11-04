@@ -135,7 +135,7 @@
     - name: Biztonságos
       items:
         - name: Web- és mobilalkalmazások
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl'
+          href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
     - name: Backup
       items:
         - name: Web- és mobilalkalmazások
