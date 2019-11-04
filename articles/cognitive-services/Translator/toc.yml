@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: A dinamikus szótár funkció használata
           href: dynamic-dictionary.md
+        - name: Tárolók használata
+          items:
+            - name: Tárolók telepítése és futtatása
+              href: how-to-install-containers.md
+            - name: Tárolók konfigurálása
+              href: translator-text-container-config.md
         - name: Fordítás tűzfalak mögött
           href: firewalls.md
     - name: Példák
