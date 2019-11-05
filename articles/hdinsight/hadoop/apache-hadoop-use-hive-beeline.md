@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97470494af0d64cc20d78d69957d84a8acebc16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027713"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494909"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Használja az Apache Beeline-ügyfelet Apache Hive
 
@@ -24,7 +24,7 @@ A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain talá
 
 ### <a name="from-an-ssh-session"></a>SSH-munkamenetből
 
-Ha egy SSH-munkamenetből egy fürt átjárócsomóponthoz kapcsolódik, akkor a `10001`porton csatlakozhat a `headnodehost`-címnek:
+Ha egy SSH-munkamenetből egy fürt átjárócsomóponthoz kapcsolódik, akkor a `headnodehost` címen csatlakozhat a következő porton: `10001`:
 
 ```bash
 beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -34,32 +34,32 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 
 ### <a name="over-an-azure-virtual-network"></a>Azure-Virtual Network
 
-Amikor egy ügyfélről csatlakozik egy Azure-Virtual Network HDInsight keresztül, meg kell adnia a fürt fő csomópontjának teljes tartománynevét (FQDN). Mivel ez a kapcsolódás közvetlenül a fürtcsomópontok számára történik, a csatlakozás a `10001`portot használja:
+Amikor egy ügyfélről csatlakozik egy Azure-Virtual Network HDInsight keresztül, meg kell adnia a fürt fő csomópontjának teljes tartománynevét (FQDN). Mivel ez a kapcsolódás közvetlenül a fürtcsomópontok számára történik, a csatlakozás a következő portot használja: `10001`:
 
 ```bash
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-Cserélje le a `<headnode-FQDN>`t egy fürt átjárócsomóponthoz teljes tartománynevére. A átjárócsomóponthoz teljes tartománynevének megkereséséhez használja a [HDInsight kezelése az Apache Ambari REST API dokumentum segítségével](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) című témakört.
+Cserélje le a `<headnode-FQDN>` értéket a fürt átjárócsomóponthoz teljes tartománynevére. A átjárócsomóponthoz teljes tartománynevének megkereséséhez használja a [HDInsight kezelése az Apache Ambari REST API dokumentum segítségével](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) című témakört.
 
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Enterprise Security Package (ESP) fürt HDInsight Kerberos használatával
 
-Amikor az ügyfélről egy Enterprise Security Package (ESP) fürthöz csatlakozik, amely a (z) Azure Active Directory (HRE)-DS-hez csatlakozik a fürt ugyanazon tartományában található számítógépen, meg kell adnia a tartománynevet is `<AAD-Domain>` és egy olyan tartományi felhasználói fiók nevét, amely jogosult a következőre: a fürt `<username>`elérése:
+Amikor az ügyfélről egy Enterprise Security Package (ESP) fürthöz csatlakozik, amely a (z) Azure Active Directory (HRE)-DS-hez csatlakozik a fürt ugyanazon tartományában található számítógépen, meg kell adnia a tartománynevet is `<AAD-Domain>`, valamint egy tartományi felhasználói fiók nevét, amely jogosult a következőre: hozzáférés a (z) `<username>` fürthöz:
 
 ```bash
 kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-Cserélje le a `<username>`t egy olyan fiók nevére, amely a fürt eléréséhez szükséges engedélyekkel rendelkezik. A `<AAD-DOMAIN>` helyére írja be annak a Azure Active Directorynak (HRE) a nevét, amelyhez a fürt csatlakozik. Használjon nagybetűs karakterláncot a `<AAD-DOMAIN>` értékhez, ellenkező esetben a hitelesítő adat nem található. Szükség esetén ellenőrizze `/etc/krb5.conf` a tartománynevek nevét.
+Cserélje le a `<username>` értéket a tartományhoz tartozó, a fürt elérésére jogosult fiók nevére. A `<AAD-DOMAIN>` helyére írja be annak a Azure Active Directorynak (HRE) a nevét, amelyhez a fürt csatlakozik. Használjon nagybetűs karakterláncot a `<AAD-DOMAIN>` értékhez, ellenkező esetben a hitelesítő adat nem található. Szükség esetén ellenőrizze `/etc/krb5.conf` a tartománynevek nevét.
 
 ---
 
 ### <a name="over-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (az alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `<clustername>.azurehdinsight.net`-címnek való kapcsolódáshoz. Ez a kapcsolat a `443`porton keresztül történik, és SSL használatával titkosítva:
+Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (az alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `<clustername>.azurehdinsight.net` címnek való kapcsolódáshoz. Ez a kapcsolat a `443` porton keresztül történik, és SSL használatával titkosítva:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
@@ -71,9 +71,9 @@ vagy privát végpont esetén:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `<username>`t a fürthöz tartozó bejelentkezési fiókkal. Vegye figyelembe, hogy az ESP-fürtök a teljes UPN-t használják (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
+Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `<username>` értéket a fürthöz tartozó bejelentkezési fiókkal. Vegye figyelembe, hogy az ESP-fürtök a teljes UPN-t használják (például user@domain.com). Cserélje le a `password` értéket a fürt bejelentkezési fiókjának jelszavára.
 
-A privát végpontok egy alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse meg [ezt](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) a témakört. A Beeline használata előtt a `curl` parancsot használhatja `-v` lehetőséggel, hogy elhárítsa a nyilvános vagy privát végpontokkal fennálló csatlakozási problémákat.
+A privát végpontok egy alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse [meg a globális VNet-társítási és terheléselosztó-korlátozásokat](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . A `curl` parancsot használhatja `-v` lehetőséggel a nyilvános vagy privát végpontokkal kapcsolatos csatlakozási problémák elhárításához a beelin használata előtt.
 
 ---
 
@@ -83,7 +83,7 @@ Apache Spark a HiveServer2 saját implementációját biztosítja, amelyet más 
 
 #### <a name="through-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-A használt kapcsolatok karakterlánca némileg eltér. Ahelyett, hogy a `httpPath=/hive2` `httpPath/sparkhive2`:
+A használt kapcsolatok karakterlánca némileg eltér. A `httpPath=/hive2` érték nem tartalmaz `httpPath/sparkhive2` értéket:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
@@ -95,15 +95,15 @@ vagy privát végpont esetén:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `<username>`t a fürthöz tartozó bejelentkezési fiókkal. Vegye figyelembe, hogy az ESP-fürtök a teljes UPN-t használják (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
+Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `<username>` értéket a fürthöz tartozó bejelentkezési fiókkal. Vegye figyelembe, hogy az ESP-fürtök a teljes UPN-t használják (például user@domain.com). Cserélje le a `password` értéket a fürt bejelentkezési fiókjának jelszavára.
 
-A privát végpontok egy alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse meg [ezt](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) a témakört. A Beeline használata előtt a `curl` parancsot használhatja `-v` lehetőséggel, hogy elhárítsa a nyilvános vagy privát végpontokkal fennálló csatlakozási problémákat.
+A privát végpontok egy alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse [meg a globális VNet-társítási és terheléselosztó-korlátozásokat](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . A `curl` parancsot használhatja `-v` lehetőséggel a nyilvános vagy privát végpontokkal kapcsolatos csatlakozási problémák elhárításához a beelin használata előtt.
 
 ---
 
 #### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>A fürt feje vagy az Azure Virtual Networkon belül Apache Spark
 
-Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos Azure-Virtual Network található erőforráshoz csatlakozik, akkor a `10001`helyett a Spark takarékosság-kiszolgálóhoz `10002` portot kell használnia. Az alábbi példa bemutatja, hogyan csatlakozhat közvetlenül a fő csomóponthoz:
+Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos Azure-Virtual Network található erőforráshoz csatlakozik, a `10002` portot kell használni a Spark takarékosság-kiszolgálóhoz a `10001` helyett. Az alábbi példa bemutatja, hogyan csatlakozhat közvetlenül a fő csomóponthoz:
 
 ```bash
 /usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
@@ -115,7 +115,7 @@ Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos 
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Figyelje meg a fürt elsődleges tárolójának [URI-sémáját](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Például `wasb://` az Azure Storage-hoz, `abfs://` a Azure Data Lake Storage Gen2hoz, vagy a Azure Data Lake Storage Gen1 `adl://`. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI `wasbs://`. További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* Figyelje meg a fürt elsődleges tárolójának [URI-sémáját](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Például `wasb://` az Azure Storage-hoz, `abfs://` for Azure Data Lake Storage Gen2, vagy `adl://` for Azure Data Lake Storage Gen1. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI `wasbs://`. További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 * 1\. lehetőség: egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t.
 
@@ -137,9 +137,9 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. A Beeline parancsok `!` karakterrel kezdődnek, például `!help` megjeleníti a súgót. Egyes parancsok esetében azonban a `!` kihagyható. Például `help` is működik.
+3. A Beeline parancsok `!` karakterrel kezdődnek, például a `!help` megjeleníti a súgót. Egyes parancsok esetében azonban a `!` is kihagyható. Például `help` is működik.
 
-    Van `!sql`, amely a HiveQL utasítások végrehajtásához használatos. A HiveQL azonban általában úgy használják, hogy kihagyhatja az előző `!sql`. A következő két utasítás egyenértékű:
+    Van `!sql`, amely a HiveQL utasítások végrehajtásához használatos. A HiveQL azonban általában úgy használják, hogy kihagyhatja az előző `!sql` értéket. A következő két utasítás egyenértékű:
 
     ```hiveql
     !sql show tables;
@@ -236,7 +236,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. A Beeline kilépéséhez használja a `!exit`.
+6. A Beeline kilépéséhez használja a következőt: `!exit`.
 
 ## <a id="file"></a>HiveQL-fájl futtatása
 
@@ -273,7 +273,7 @@ Ez az előző példa folytatása. A következő lépésekkel hozzon létre egy f
     ```
 
     > [!NOTE]  
-    > A `-i` paraméter elindítja és futtatja a `query.hql` fájlban szereplő utasításokat. A lekérdezés befejeződése után megérkezik a `jdbc:hive2://headnodehost:10001/>` parancssorba. A `-f` paraméterrel is futtathat egy fájlt, amely a lekérdezés befejeződése után kilép.
+    > A `-i` paraméter elindítja a beelinét, és futtatja az utasításokat a `query.hql` fájlban. A lekérdezés befejeződése után megérkezik a `jdbc:hive2://headnodehost:10001/>` parancssorba. A `-f` paraméterrel is futtathat egy fájlt, amely a lekérdezés befejeződése után kizárja a betöltést.
 
 5. A **alkalmazásnaplókat** tábla létrehozásának ellenőrzéséhez használja a következő utasítást a **alkalmazásnaplókat**összes sorának visszaküldéséhez:
 

@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: 44cdc2d6b93ac9a62f96875ca6c679fbb97d85a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555396"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477127"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor engedélyezése tárolók számára
 
-Ez a cikk áttekintést nyújt a Kubernetes környezetekben üzembe helyezett és az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)-ben üzemeltetett munkaterhelések teljesítményének figyelésére szolgáló tárolók Azure monitor telepítésének lehetőségeiről.
+Ez a cikk áttekintést nyújt a Kubernetes környezetekben üzembe helyezett és az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)-ben üzemeltetett munkaterhelések teljesítményének figyelésére szolgáló tárolók Azure monitor telepítésének lehetőségeiről [Azure stack ](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)vagy a helyszínen üzembe helyezett Kubernetes.
 
 A tárolók Azure Monitor a következő támogatott módszerek használatával engedélyezhető az új, illetve egy vagy több AK-beli üzemelő példányhoz:
 
@@ -26,6 +26,7 @@ A tárolók Azure Monitor a következő támogatott módszerek használatával e
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
 
 * **Log Analytics munkaterület.**
@@ -40,7 +41,41 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* A Prometheus-metrikákat a rendszer alapértelmezés szerint nem gyűjti. Mielőtt [konfigurálja az ügynököt](container-insights-agent-config.md) a gyűjtéshez, fontos, hogy áttekintse a Prometheus [dokumentációját](https://prometheus.io/) , hogy megtudja, mit határozhat meg.
+* A Prometheus-metrikákat a rendszer alapértelmezés szerint nem gyűjti. Mielőtt [konfigurálja az ügynököt](container-insights-prometheus-integration.md) a gyűjtéshez, fontos, hogy áttekintse a Prometheus [dokumentációját](https://prometheus.io/) , hogy megtudja, mit határozhat meg.
+
+## <a name="network-firewall-requirements"></a>Hálózati tűzfalra vonatkozó követelmények
+
+A következő táblázatban található információk a tároló-ügynök által a tárolók Azure Monitor való kommunikációhoz szükséges proxy-és tűzfal-konfigurációs információkat ismertetik. Az ügynöktől érkező összes hálózati forgalom a Azure Monitor felé irányul.
+
+|Ügynök erőforrása|Portok |
+|--------------|------|
+| *.ods.opinsights.azure.com | 443 |  
+| *.oms.opinsights.azure.com | 443 | 
+| *.blob.core.windows.net | 443 |
+| dc.services.visualstudio.com | 443 |
+| *.microsoftonline.com | 443 |
+| *. monitoring.azure.com | 443 |
+| login.microsoftonline.com | 443 |
+
+Az alábbi táblázatban található információk az Azure China proxy-és tűzfal-konfigurációs információit ismertetik.
+
+|Ügynök erőforrása|Portok |Leírás | 
+|--------------|------|-------------|
+| *. ods.opinsights.azure.cn | 443 | Adatfeldolgozás |
+| *. oms.opinsights.azure.cn | 443 | OMS bevezetése |
+| *.blob.core.windows.net | 443 | A kimenő kapcsolatok figyelésére szolgál. |
+| microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
+| dc.services.visualstudio.com | 443 | Az Azure Public Cloud Application Insightst használó ügynök telemetria. |
+
+Az alábbi táblázatban található információk az Azure US government proxy-és tűzfal-konfigurációs információit ismertetik.
+
+|Ügynök erőforrása|Portok |Leírás | 
+|--------------|------|-------------|
+| *. ods.opinsights.azure.us | 443 | Adatfeldolgozás |
+| *. oms.opinsights.azure.us | 443 | OMS bevezetése |
+| *.blob.core.windows.net | 443 | A kimenő kapcsolatok figyelésére szolgál. |
+| microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
+| dc.services.visualstudio.com | 443 | Az Azure Public Cloud Application Insightst használó ügynök telemetria. |
 
 ## <a name="components"></a>Összetevők
 
@@ -67,7 +102,8 @@ A tárolók Azure Monitor a következő táblázatban leírt módszerek egyikév
 | | [Engedélyezés Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| A Azure Monitorban engedélyezheti egy vagy több, az AK többfürtes oldaláról már üzembe helyezett AK-fürtök figyelését. |
 | | [Engedélyezés az AK-fürtből](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| A figyelést közvetlenül a Azure Portal AK-fürtjéből is engedélyezheti. |
 | | [Engedélyezés Azure Resource Manager sablon használatával](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Egy AK-fürt figyelését előre konfigurált Azure Resource Manager sablonnal is engedélyezheti. |
+| | [Hibrid Kubernetes-fürt engedélyezése](container-insights-hybrid-setup.md) | Engedélyezheti Azure Stack vagy helyszíni Kubernetes üzemeltetett AK-motor figyelését. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha a figyelés engedélyezve van az AK-fürtcsomópontok és-hüvelyek állapot-metrikáinak rögzítéséhez, ezek az állapot-mérőszámok a Azure Portal érhetők el. Az Azure Monitor for containers használatának megismeréséhez tekintse meg az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md)című témakört.

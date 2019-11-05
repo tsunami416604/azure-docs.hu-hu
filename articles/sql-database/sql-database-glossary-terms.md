@@ -11,24 +11,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f23ef5506027a5de9f4189a11636d323679707f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883347"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488479"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>A kifejezések szószedetének Azure SQL Database
 
-|Környezet|Kifejezés|További információ|
+|Környezet|Időtartam|További információ|
 |:---|:---|:---|
 |Azure-szolgáltatás neve|Azure SQL Database vagy SQL Database|[A Azure SQL Database szolgáltatás](sql-database-technical-overview.md)|
-|Számítási szint|Kiszolgáló nélküli (előzetes verzió)|[Kiszolgáló nélküli számítási szintek](sql-database-serverless.md)
+|Számítási szintek|Kiszolgáló nélküli |[Kiszolgáló nélküli számítási szintek](sql-database-serverless.md)
 ||Kiépítve|[Kiszolgáló nélküli számítási szintek](sql-database-serverless.md)
-|Telepítési beállítások |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
+|Üzembe helyezési beállítások |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
 ||Rugalmas készlet|[Rugalmas készlet](sql-database-elastic-pool.md)|
 ||Felügyelt példány|[Felügyelt példány](sql-database-managed-instance.md)|
-|Kiszolgálóobjektumok|SQL Database kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
+|Kiszolgálói objektumok|SQL Database kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
 ||SQL Database felügyelt példány kiszolgálója, felügyelt példány kiszolgálója vagy példány-kiszolgálója|[Felügyelt példány](sql-database-managed-instance.md)|
 Adatbázis-objektumok|Azure SQL-adatbázis|Azure SQL Database összes adatbázisa|
 ||Önálló adatbázis|Egyetlen adatbázis-telepítési beállítással létrehozott adatbázis|
@@ -43,8 +43,8 @@ Adatbázis-objektumok|Azure SQL-adatbázis|Azure SQL Database összes adatbázis
 ||Kiépített adatbázis|A kiépített számítási szinten konfigurált adatbázis|
 |[Modellek és erőforrások vásárlása](sql-database-purchase-models.md)|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
 ||Virtuálismag-alapú vásárlási modell|[Virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)|
-||virtuális mag|A vendég operációs rendszer által a hypervisor által biztosított mag.|
-||Szolgáltatási szint|Egy szolgáltatási szint egy beszerzési modellen belül|
+||Virtuális mag|A vendég operációs rendszer által a hypervisor által biztosított mag.|
+||Szolgáltatásszint|Egy szolgáltatási szint egy beszerzési modellen belül|
 ||Számítási méret|A szolgáltatási rétegen belüli önálló adatbázis, rugalmas készlet vagy felügyelt példány számítási erőforrásainak mennyisége|
 ||Tárolási mennyiség|Egy adatbázis, rugalmas készlet vagy felügyelt példány számára elérhető tárterület|
 ||Számítási generáció|A processzor egy szolgáltatási szinten belüli generálása|

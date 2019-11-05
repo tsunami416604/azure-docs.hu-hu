@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása az Azure Data Factory használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan alakíthat át adatokat vagy dolgozza fel az adatokat az Azure Data Factoryban Hadoop, a Machine Learning vagy az Azure Data Lake Analytics használatával való.
+title: Adatátalakítás az Azure Data Factory használatával | Microsoft Docs
+description: Megtudhatja, hogyan alakíthatja át az adatgyűjtési és-feldolgozási Azure Data Factory Hadoop, Machine Learning vagy Azure Data Lake Analytics használatával.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,85 +11,97 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2c674f77ef0f779c9764771e2e0ae7a4aea47548
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa344915b8d5b4ff6e874f64d44ce3f665cd7a5a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622107"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464345"
 ---
-# <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryban az adatok átalakítása
+# <a name="transform-data-in-azure-data-factory"></a>Az adatátalakítás Azure Data Factory
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
-> * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
+> * [HDInsight streaming](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
 > * [Machine Learning](transform-data-using-machine-learning.md) 
 > * [Tárolt eljárás](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
-> * [Databricks-jegyzetfüzet](transform-data-databricks-notebook.md)
-> * [Databricks Jar](transform-data-databricks-jar.md)
+> * [Databricks notebook](transform-data-databricks-notebook.md)
+> * [Databricks jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
-> * [.NET egyéni](transform-data-using-dotnet-custom-activity.md)
+> * [.NET – egyéni](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk ismerteti az Azure Data Factory segítségével átalakíthatja, és a nyers adatok feldolgozza az előrejelzési díjat és az elemzések adat-átalakítási tevékenységeket. Egy Adatátalakítási tevékenységgel hajt végre, például Azure HDInsight-fürt vagy egy Azure Batch számítási környezetben. Az egyes átalakítási tevékenységek részletes információt biztosít cikkekre mutató hivatkozások.
+Ez a cikk a Azure Data Factory Adatátalakítási tevékenységeit ismerteti, amelyekkel a nyers adatait átalakíthatja és feldolgozhatja a jóslatok és az elemzések során. Az átalakítási tevékenységek olyan számítástechnikai környezetben hajthatók végre, mint például az Azure HDInsight-fürt vagy egy Azure Batch. Az egyes átalakítási tevékenységekre vonatkozó részletes információkat tartalmazó cikkekre mutató hivatkozásokat tartalmaz.
 
-A Data Factory támogatja a következő az Adatátalakítási tevékenységeket is hozzáadhatók [folyamatok](concepts-pipelines-activities.md) vagy külön-külön vagy visszavezethetők más tevékenységekkel.
+A Data Factory a következő Adatátalakítási tevékenységeket támogatja, amelyeket akár egyénileg, akár egy másik tevékenységgel összekapcsolva is hozzáadhat a [folyamatokhoz](concepts-pipelines-activities.md) .
 
-## <a name="hdinsight-hive-activity"></a>HDInsight Hive-tevékenység
-A HDInsight Hive tevékenység, a Data Factory-folyamatok futtatják a Hive-lekérdezések saját maga, vagy igény szerinti Windows/Linux-alapú HDInsight-fürt. Lásd: [Hive-tevékenység](transform-data-using-hadoop-hive.md) cikket ezzel a tevékenységgel kapcsolatos részletekért. 
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>A Azure Data Factory natív módon történő átalakítása adatfolyamatokkal
 
-## <a name="hdinsight-pig-activity"></a>HDInsight Pig-tevékenység
-A HDInsight Pig-tevékenység, a Data Factory-folyamatok Pig-lekérdezéseket a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. Lásd: [Pig-tevékenység alapú](transform-data-using-hadoop-pig.md) cikket ezzel a tevékenységgel kapcsolatos részletekért. 
+### <a name="mapping-data-flows"></a>Adatfolyamok leképezése
 
-## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-tevékenység
-A HDInsight MapReduce-tevékenység, a Data Factory-folyamatok MapReduce-programok saját maga, vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. Lásd: [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md) cikket ezzel a tevékenységgel kapcsolatos részletekért.
+Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure Data Factoryban. Az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az eredményül kapott adatfolyamatok olyan Azure Data Factory-folyamatokon belül lesznek végrehajtva, amelyek felskálázást használó Spark-fürtöket használnak. Az adatfolyam-tevékenységek a meglévő Data Factory ütemezési, vezérlési, folyamat-és figyelési képességein keresztül is működőképesek. További információ: [az adatfolyamatok leképezése](concepts-data-flow-overview.md).
 
-## <a name="hdinsight-streaming-activity"></a>HDInsight Streaming-tevékenység
-A HDInsight Streaming-tevékenység a Data Factory-folyamatok Hadoop Streamelési programok saját maga vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. Lásd: [HDInsight Streaming-tevékenység](transform-data-using-hadoop-streaming.md) ezzel a tevékenységgel kapcsolatos részletekért.
+### <a name="wrangling-data-flows"></a>Huzavona-adatfolyamok
 
-## <a name="hdinsight-spark-activity"></a>HDInsight Spark-tevékenység
-A HDInsight Spark-tevékenység, Data Factory-folyamatok a Spark-programok saját HDInsight-fürtön hajtja végre. További információkért lásd: [Invoke Spark-programok Azure Data Factory](transform-data-using-spark.md). 
+A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak a [Power Query online](https://docs.microsoft.com/power-query/) -nal, és a Spark-végrehajtással elérhetővé teszi Power Query M funkciókat az adatok huzavona a felhőben. További információ: huzavona- [adatfolyamok](wrangling-data-flow-overview.md).
 
-## <a name="machine-learning-activities"></a>Machine Learning-tevékenységek
-Az Azure Data Factory lehetővé teszi, hogy egyszerűen hozzon létre egy közzétett Azure Machine Learning webszolgáltatás prediktív elemzési használó folyamatok. Használatával a [kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md) az Azure Data Factory-folyamatot, az előrejelzéseket a batch szolgáltatásban az adatok egy Machine Learning webszolgáltatás hívhatók meg.
+## <a name="external-transformations"></a>Külső átalakítások
 
-Az idő múlásával a prediktív modelleket a Machine Learning pontozási kísérletek kell kell retrained új bemeneti adatkészletek használatával. Miután elkészült, az átképezési, frissítse a pontozási webszolgáltatás retrained Machine Learning-modellhez szeretne. Használhatja a [Update-erőforrástevékenység](update-machine-learning-models.md) a webszolgáltatás újonnan betanított modell frissítésével.  
+### <a name="hdinsight-hive-activity"></a>HDInsight-struktúra tevékenység
+A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket. A tevékenység részleteiért lásd a [kaptári tevékenységről](transform-data-using-hadoop-hive.md) szóló cikket. 
 
-Lásd: [használata a Machine Learning-tevékenységek](transform-data-using-machine-learning.md) ezek a Machine Learning-tevékenységek részleteit. 
+### <a name="hdinsight-pig-activity"></a>HDInsight Pig-tevékenység
+A HDInsight Pig-tevékenység egy Data Factory folyamat során a Pig-lekérdezéseket a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. A tevékenység részleteiért lásd a [Pig-tevékenységről](transform-data-using-hadoop-pig.md) szóló cikket. 
 
-## <a name="stored-procedure-activity"></a>Tárolt eljárási tevékenység
-Az SQL Server tárolt eljárás tevékenység használhatja a Data Factory-folyamat a következő adattárakat egyikét a tárolt eljárás meghívása: Az Azure SQL Database, Azure SQL Data Warehouse, SQL Server-adatbázis a vállalati vagy egy Azure virtuális Gépen. Lásd: [Stored Procedure-tevékenység](transform-data-using-stored-procedure.md) részleteivel.  
+### <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-tevékenység
+A Data Factory-folyamat HDInsight MapReduce-tevékenysége a MapReduce-programokat saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. A tevékenység részleteiért tekintse meg a [MapReduce-tevékenységről](transform-data-using-hadoop-map-reduce.md) szóló cikket.
 
-## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
-Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürt. Lásd: [Data Analytics U-SQL-tevékenység](transform-data-using-data-lake-analytics.md) részleteivel. 
+### <a name="hdinsight-streaming-activity"></a>HDInsight streaming-tevékenység
+A Data Factory-folyamat HDInsight adatfolyam-továbbítási tevékenysége a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre a Hadoop streaming-programokat. A tevékenység részleteiért lásd: [HDInsight streaming Activity](transform-data-using-hadoop-streaming.md) .
 
-## <a name="databricks-notebook-activity"></a>Databricks-jegyzetfüzetek tevékenységeit
+### <a name="hdinsight-spark-activity"></a>HDInsight Spark-tevékenység
+A Data Factory folyamat HDInsight Spark-tevékenysége Spark-programokat hajt végre a saját HDInsight-fürtön. Részletekért lásd: [Spark-programok Meghívása Azure Data Factoryról](transform-data-using-spark.md). 
 
-Az Azure Databricks-jegyzetfüzetek tevékenységeit a Data Factory-folyamatok Databricks-jegyzetfüzet fut az Azure Databricks-munkaterületen. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform. Lásd: [adatok átalakítása a Databricks-jegyzetfüzet futtatásával](transform-data-databricks-notebook.md).
+### <a name="machine-learning-activities"></a>Machine Learning tevékenységek
+Azure Data Factory lehetővé teszi, hogy könnyedén hozzon létre olyan folyamatokat, amelyek közzétett Azure Machine Learning webszolgáltatást használnak a prediktív elemzésekhez. A [Batch végrehajtási tevékenység](transform-data-using-machine-learning.md) Azure Data Factory folyamatokban való használatával meghívhat egy Machine learning webszolgáltatást, hogy előrejelzéseket készítsen a Batch-ben lévő adatairól.
 
-## <a name="databricks-jar-activity"></a>Databricks Jar-tevékenység
+Idővel a Machine Learning pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített Machine Learning modellel. Az [erőforrás frissítése tevékenységgel](update-machine-learning-models.md) frissítheti az újonnan betanított modellt használó webszolgáltatást.  
 
-Az Azure Databricks Jar tevékenység a Data Factory-folyamatok futtat egy Spark-Jar az Azure Databricks-fürt. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform. Lásd: [alakíthat át adatokat egy Jar tevékenység futtatja az Azure Databricksben](transform-data-databricks-jar.md).
+A Machine Learning tevékenységekkel kapcsolatos részletekért tekintse meg [Machine learning tevékenységek használata](transform-data-using-machine-learning.md) című témakört. 
 
-## <a name="databricks-python-activity"></a>Databricks Python-tevékenység
+### <a name="stored-procedure-activity"></a>Tárolt eljárási tevékenység
+A Data Factory folyamat SQL Server tárolt eljárás tevékenységében tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure SQL Data Warehouse, SQL Server adatbázis a vállalatában vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](transform-data-using-stored-procedure.md) szóló cikket.  
 
-A Data Factory-folyamatot az Azure Databricks Python tevékenység fut egy Python-fájlt az Azure Databricks-fürt. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform. Lásd: [adatok átalakítása az Azure Databricks egy Python-tevékenység futtatásával](transform-data-databricks-python.md).
+### <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Data Lake Analytics tevékenység
+Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürtön. Részletekért lásd: [adatelemzési U-SQL-tevékenység](transform-data-using-data-lake-analytics.md) . 
 
-## <a name="custom-activity"></a>Egyéni tevékenység
-Adatok átalakítása a Data Factory által nem támogatott módon van szüksége, ha egyéni tevékenységek létrehozása a saját adatok feldolgozási logikáját, és használja a tevékenységet a folyamat. Konfigurálhatja úgy az egyéni .NET-tevékenységet egy Azure Batch szolgáltatás vagy egy Azure HDInsight-fürt futtatásához. Lásd: [egyéni tevékenységek használata](transform-data-using-dotnet-custom-activity.md) részleteivel. 
+### <a name="databricks-notebook-activity"></a>Databricks-jegyzetfüzet tevékenység
+
+A Data Factory folyamat Azure Databricks notebook tevékenysége egy Databricks-jegyzetfüzetet futtat a Azure Databricks munkaterületen. A Azure Databricks felügyelt platform a Apache Spark futtatásához. Lásd: [az adatátalakítás Databricks notebook futtatásával](transform-data-databricks-notebook.md).
+
+### <a name="databricks-jar-activity"></a>Databricks jar-tevékenység
+
+A Data Factory folyamat Azure Databricks jar-tevékenysége egy Spark jar-t futtat a Azure Databricks-fürtben. A Azure Databricks felügyelt platform a Apache Spark futtatásához. Lásd: az [Adatátalakítások jar-tevékenység futtatásával Azure Databricksban](transform-data-databricks-jar.md).
+
+### <a name="databricks-python-activity"></a>Databricks Python-tevékenység
+
+A Data Factory folyamat Azure Databricks Python-tevékenysége egy Python-fájlt futtat a Azure Databricks-fürtben. A Azure Databricks felügyelt platform a Apache Spark futtatásához. Lásd: az [adatátalakítás a Azure Databricks Python-tevékenység futtatásával](transform-data-databricks-python.md).
+
+### <a name="custom-activity"></a>Egyéni tevékenység
+Ha olyan módon kell adatátalakítást végeznie, amelyet a Data Factory nem támogat, létrehozhat egy egyéni tevékenységet a saját adatfeldolgozási logikával, és felhasználhatja a folyamat tevékenységeit. Az egyéni .NET-tevékenységeket beállíthatja úgy, hogy az Azure Batch vagy egy Azure HDInsight-fürtön fusson. További részletekért tekintse meg az [egyéni tevékenységek használata](transform-data-using-dotnet-custom-activity.md) című cikket. 
 
 Létrehozhat egy egyéni tevékenységet R-parancsfájlok futtatására egy olyan HDInsight-fürtön, amelyen telepítve van az R. Lásd: [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (R-parancsfájl futtatása az Azure Data Factory használatával). 
 
-## <a name="compute-environments"></a>Számítási környezetek
-Ön létrehoz egy társított szolgáltatást a számítási környezet, majd a társított szolgáltatás egy Adatátalakítási tevékenységgel meghatározásakor. A Data Factory által támogatott számítási környezetek két típusa van. 
+### <a name="compute-environments"></a>Számítási környezetek
+Hozzon létre egy társított szolgáltatást a számítási környezethez, majd használja a társított szolgáltatást egy átalakítási tevékenység definiálásakor. Data Factory által támogatott számítási környezeteknek két típusa van. 
 
-- **Igény szerinti**:  Ebben az esetben a számítási környezet teljes körűen felügyelt adat-előállítók által. Automatikusan létrejön a Data Factory szolgáltatás előtt egy feladat küldött adatok feldolgozásához, és eltávolítja a feladat elvégzésekor. Konfigurálja, és a feladat-végrehajtási, a kezelő és a műveletek rendszerindítása igény szerinti számítási környezet részletes beállításainak kezeléséhez. 
-- **Használhat sajátot**: Ebben az esetben a saját számítási környezetben (például a HDInsight fürt) regisztrálhat a Data Factory társított szolgáltatásként. A számítási környezet Ön által felügyelt és a Data Factory szolgáltatás használ a tevékenységek végrehajtásához. 
+- **Igény szerinti**: ebben az esetben a számítástechnikai környezetet teljes mértékben a Data Factory felügyeli. A Data Factory szolgáltatás automatikusan hozza létre, mielőtt egy feladatot elküld az adatok feldolgozásához, és eltávolítja azokat a feladatok befejezésekor. Konfigurálhatja és szabályozhatja az igény szerinti számítási környezet részletes beállításait a feladatok végrehajtásához, a fürtözés kezeléséhez és a rendszerindítás műveleteihez. 
+- **Saját**környezet használata: ebben az esetben regisztrálhat saját számítástechnikai környezetet (például HDInsight-fürtöt) a Data Factory társított szolgáltatásként. A számítástechnikai környezetet Ön felügyeli, és a Data Factory szolgáltatás ezt használja a tevékenységek végrehajtásához. 
 
-Lásd: [számítási társított szolgáltatások](compute-linked-services.md) a cikkben megismerheti a Data Factory által támogatott számítási szolgáltatások. 
+A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](compute-linked-services.md) című cikket. 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő oktatóanyaggal egy példát egy Adatátalakítási tevékenységgel használatával: [Oktatóanyag: adatok átalakítása a Spark használatával](tutorial-transform-data-spark-powershell.md)
+Tekintse át a következő oktatóanyagot, amely egy átalakítási tevékenység használatát szemlélteti: [oktatóanyag: az adatgyűjtés a Spark használatával](tutorial-transform-data-spark-powershell.md)

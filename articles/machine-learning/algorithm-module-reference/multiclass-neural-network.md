@@ -1,24 +1,24 @@
 ---
 title: 'Többosztályos neurális hálózat: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a többosztályos neurális hálózati modul a Azure Machine Learning szolgáltatásban egy olyan neurális hálózati modell létrehozásához, amely egy több értékkel rendelkező cél előrejelzésére használható.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használható a többosztályos neurális hálózati modul a Azure Machine Learning egy olyan neurális hálózati modell létrehozásához, amely egy több értékkel rendelkező cél előrejelzésére használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692727"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466029"
 ---
 # <a name="multiclass-neural-network-module"></a>Többosztályos neurális hálózati modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy olyan neurális hálózati modellt, amely egy több értékkel rendelkező cél előrejelzésére használható. 
 
@@ -40,7 +40,7 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
 
 ## <a name="configure-multiclass-neural-network"></a>Többosztályos neurális hálózat konfigurálása
 
-1. Adja hozzá a **Többosztályos neurális hálózati** modult a folyamathoz az illesztőfelületen. Ezt a modult a **besorolás** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja.
+1. Adja hozzá a **Többosztályos neurális hálózati** modult a folyamathoz a tervezőben. Ezt a modult a **besorolás** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja.
 
 2. **Oktatói mód létrehozása**: ezzel a beállítással adhatja meg, hogyan kívánja képezni a modellt:
 
@@ -82,7 +82,7 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
     - Ha úgy állítja be az **oktatói módot** , hogy az **egyetlen paraméter**legyen, használja a [Train modellt](train-model.md).  
   
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
@@ -91,6 +91,6 @@ A betanítás befejezése után:
 - A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal a **betanított modell** kimenetére, és válassza a **Mentés betanítva modellként**lehetőséget. Ez a modell nem frissül ugyanazon folyamat egymást követő futtatásakor.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 45eaa6d4c66c9ec8e25d728fb70f389912a00793
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928439"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991398"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Gyors útmutató: Azure Security Center a IoT Service-ben IoT Hub
 
@@ -44,7 +44,7 @@ A IoT Hub biztonságának engedélyezése:
 
 1. Nyissa meg a **IoT Hubt** Azure Portal. 
 1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele**lehetőségre.    
-1. Kattintson a **Save** (Mentés) gombra. 
+
 
 Gratulálunk! Befejezte a IoT Azure Security Centerének engedélyezését a IoT Hub. 
 
@@ -75,7 +75,7 @@ A IoT szolgáltatás Azure Security Centerának bekapcsolása adott IoT Hub be-v
 2. Válassza a **Beállítások** képernyőt, és módosítsa az Azure-előfizetésében található bármely IoT hub biztonsági beállításait.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásához...
 

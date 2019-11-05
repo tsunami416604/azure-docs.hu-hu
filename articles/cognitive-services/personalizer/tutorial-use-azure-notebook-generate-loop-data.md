@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515169"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467242"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: személyre szabott használata az Azure jegyzetfüzetben
 
@@ -81,9 +81,9 @@ Fájl leírása:
 
 ## <a name="configure-personalizer-resource"></a>Személyre szabott erőforrás konfigurálása
 
-A Azure Portalban konfigurálja a [személyre szabott erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) a **frissítési modell gyakorisága** beállításnál 15 másodpercre, a **jutalom várakozási idejét** pedig 15 másodpercre. Ezek a beállítások a **[Beállítások](how-to-settings.md#configure-service-settings-in-the-azure-portal)** lapon találhatók. 
+A Azure Portalban konfigurálja a [személyre szabott erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) a **frissítési modell gyakorisága** beállításnál 15 másodpercre, a **jutalom várakozási idejét** pedig 15 másodpercre. Ezek az értékek a **[konfiguráció](how-to-settings.md#configure-service-settings-in-the-azure-portal)** oldalon találhatók. 
 
-|Beállítás|Value (Díj)|
+|Beállítás|Érték|
 |--|--|
 |modell frissítési gyakorisága|15 másodperc|
 |jutalom várakozási ideje|15 másodperc|
@@ -97,7 +97,7 @@ Ezeknek az értékeknek nagyon rövid az időtartama, hogy megjelenjenek az okta
 
 ## <a name="run-notebook-cells"></a>Jegyzetfüzet-cellák futtatása
 
-Futtassa az egyes végrehajtható cellákat, és várjon, amíg vissza nem tér. Tudja, hogy a cella melletti szögletes zárójelek egy `*` helyett egy számot jelenítenek meg. A következő szakaszokból megtudhatja, hogy az egyes cellák hogyan végzik el programozott módon, és mire számíthatnak a kimenetre. 
+Futtassa az egyes végrehajtható cellákat, és várjon, amíg vissza nem tér. Tudja, hogy a cella melletti szögletes zárójelek egy `*`helyett egy számot jelenítenek meg. A következő szakaszokból megtudhatja, hogy az egyes cellák hogyan végzik el programozott módon, és mire számíthatnak a kimenetre. 
 
 ### <a name="include-the-python-modules"></a>A Python-modulok belefoglalása
 
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 Ellenőrizze a szolgáltatás állapotát a következő két REST-hívással.
 
-Ezek a cellák nem rendelkeznek kimenettel. A függvény a szolgáltatás beállításait adja meg a híváskor.
+Ezek a cellák nem rendelkeznek kimenettel. A függvény kiírja a szolgáltatás értékeit a híváskor.
 
 ```python
 def get_service_settings():
@@ -574,11 +574,11 @@ Ez a diagram a modell sikerességét mutatja az aktuális alapértelmezett tanul
 ![Ez a diagram a jelenlegi tanulási szabályzat sikerességét mutatja be a teszt időtartamára.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Az ideális cél, amely a teszt végére esik, a hurok átlagosan 100%-os sikerességi arányt eredményez, amely mínusz a feltárás. A feltárás alapértelmezett beállítása 20%. 
+Az ideális cél, amely a teszt végére esik, a hurok átlagosan 100%-os sikerességi arányt eredményez, amely mínusz a feltárás. A feltárás alapértelmezett értéke 20%. 
 
 `100-20=80`
 
-Ez a feltárási beállítás a személyre szabott erőforráshoz tartozó Azure Portal található a **Beállítások** lapon. 
+Ez a kutatási érték a személyre szabott erőforráshoz tartozó Azure Portal található a **konfiguráció** lapon. 
 
 Ha jobb tanulási szabályzatot szeretne találni a rangsor API adatai alapján, a személyre szabott hurokhoz futtasson egy [Offline értékelést](how-to-offline-evaluation.md) a portálon.
 
@@ -587,7 +587,7 @@ Ha jobb tanulási szabályzatot szeretne találni a rangsor API adatai alapján,
 1. A Azure Portal nyissa meg a személyre szabott erőforrás- **értékelések** lapot.
 1. Válassza az **Értékelés létrehozása**lehetőséget.
 1. Adja meg a kiértékelési név és a dátumtartomány értékeit a hurok kiértékeléséhez. A dátumtartomány csak azokat a napokat tartalmazza, amelyeknek a kiértékelésére koncentrál. 
-    ![In a Azure Portal, nyissa meg a személyre szabott erőforrás-értékelések lapot. Válassza az értékelés létrehozása lehetőséget. Adja meg a kiértékelés nevét és a dátumtartományt. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    ![a Azure Portalban nyissa meg a személyre szabott erőforrás értékeléseit ismertető lapot. Válassza az értékelés létrehozása lehetőséget. Adja meg a kiértékelés nevét és a dátumtartományt.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Az offline értékelés futtatásának célja annak megállapítása, hogy van-e jobb tanulási szabályzat az ebben a hurokban használt funkciókhoz és műveletekhez. Ha szeretné megkeresni a jobb tanulási szabályzatot, ellenőrizze, hogy be van-e kapcsolva az **optimalizálási szabályzat** .
 
@@ -598,7 +598,7 @@ Ha jobb tanulási szabályzatot szeretne találni a rangsor API adatai alapján,
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Frissítési modell gyakoriságának módosítása 5 percre
 
-1. A Azure Portal továbbra is a személyre szabott erőforrás lapon válassza a **Beállítások** lapot. 
+1. A Azure Portal továbbra is a személyre szabott erőforrás lapon válassza a **konfiguráció** lapot. 
 1. Módosítsa a **modell frissítési gyakoriságát** és a **jutalmazási várakozási időt** 5 percre, majd válassza a **Mentés**lehetőséget.
 
 További információ a [jutalmazási várakozási idő](concept-rewards.md#reward-wait-time) és a [modell frissítési gyakoriságáról](how-to-settings.md#model-update-frequency).
@@ -661,7 +661,7 @@ Ha nem kívánja folytatni az oktatóanyag-sorozatot, törölje a következő er
 * Törölje az Azure notebook-projektet. 
 * A személyre szabott erőforrás törlése. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a mintában használt [Jupyter-jegyzetfüzet és-adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) elérhetők a GitHub-tárházban a személyre szabáshoz. 
 

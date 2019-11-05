@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176654"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472240"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -25,7 +25,10 @@ A fejlesztői portál egy automatikusan létrehozott, teljesen testreszabható w
 
 Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felügyelt verziói közötti különbségeket ismerteti. Emellett ismerteti az architektúráját, és választ ad a gyakori kérdésekre.
 
-> [!IMPORTANT]
+> [!WARNING]
+> Az új fejlesztői portál jelenleg API Management szolgáltatásokra van bevezetve.
+> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetésének befejezése a 2019. november 11-én történik.
+>
 > [Megtudhatja, hogyan telepítheti át az előzetes verzióról a fejlesztői portál általánosan elérhető verziójára](#preview-to-ga) .
 
 ![API Management fejlesztői portál](media/api-management-howto-developer-portal/cover.png)
@@ -114,9 +117,9 @@ Nem.
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>CORS hibaüzenetet kapok az interaktív konzol használatakor. Mit tegyek?
 
-Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) az API (ok) ra. Manuálisan is megadhatja az összes paramétert (például a forrást https://contoso.com) ként, vagy helyettesítő karaktert `*` értéket használhat.
+Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) az API (ok) ra. Manuálisan is megadhatja az összes paramétert (például a forrást https://contoso.com)ként, vagy helyettesítő karaktert `*` értéket használhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az új fejlesztői portálról:
 

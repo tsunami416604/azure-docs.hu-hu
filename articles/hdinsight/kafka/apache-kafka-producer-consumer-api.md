@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata – Azure HDInsight '
+title: 'Oktatóanyag: Apache Kafka producer & fogyasztói API-k – Azure HDInsight'
 description: Ismerkedjen meg az Apache Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával. Ez az oktatóanyag ezen API-k használatát mutatja be egy Java-alkalmazásból futtatott Kafka on HDInsighttal.
 author: dhgoelmsft
 ms.author: dhgoel
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 3ac68732042016c747b693e97bf8da15e1843b1e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817792"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242009"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -65,7 +65,7 @@ A `pom.xml` fájl fontosabb elemei a következők:
     </dependency>
     ```
 
-    A `${kafka.version}` bejegyzés a `pom.xml` fájl `<properties>..</properties>` szakaszában van meghatározva, és a HDInsight-fürt Kafka-verziójához van konfigurálva.
+    A `${kafka.version}` bejegyzés a `<properties>..</properties>` fájl `pom.xml` szakaszában van meghatározva, és a HDInsight-fürt Kafka-verziójához van konfigurálva.
 
 * Beépülő modulok: A Maven beépülő modulok különböző képességekkel rendelkeznek. Ebben a projektben a következő beépülő modulokat használjuk:
 
@@ -230,7 +230,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtanulta, hogyan használhatja a Apache Kafka producer és fogyasztói API-t a Kafka on HDInsight. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 

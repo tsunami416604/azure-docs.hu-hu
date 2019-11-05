@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 46ada91060aa095b7c041ff75abb6256f3d05853
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527576"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464697"
 ---
 # <a name="try-speech-services-for-free"></a>A Speech Services ingyenes kipróbálása
 
@@ -26,7 +26,7 @@ Ha több időre van szüksége, regisztráljon egy Microsoft Azure-fiókra, amel
 
 Végül a Speech Services egy ingyenes, kis mennyiségű, az alkalmazások fejlesztéséhez megfelelő szintet kínál. Ezt az ingyenes előfizetést akkor is megtarthatja, ha a szolgáltatási kredit lejár.
 
-## <a name="free-trial"></a>Ingyenes próbalehetőség
+## <a name="free-trial"></a>Ingyenes próbaidőszak
 
 A 30 napos ingyenes próbaverzió korlátozott ideig biztosít hozzáférést a standard díjszabási szinthez.
 
@@ -118,10 +118,10 @@ Ha az egyik előfizetésből egy másikra szeretne váltani, például ha az ing
 
 A régióhoz létrehozott kulcsok csak az adott régióban érvényesek. A más régiókkal való használatának megkísérlése hitelesítési hibákat eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fejezze be az egyik 10 perces rövid útmutatót, vagy tekintse meg az SDK-mintákat:
 
 > [!div class="nextstepaction"]
-> Gyors útmutató [: beszédfelismerés felismerése C# ](quickstart-csharp-dotnet-windows.md) 
+> Gyors útmutató [: beszédfelismerés felismerése C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
 > [Speech SDK-mintákban](speech-sdk.md#get-the-samples)

@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326601"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469154"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Bejelentkezés iOS-alkalmazás használatával
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: bejelentkezés iOS-alkalmazás használatával
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A nyílt szabványú protokoll használatával további fejlesztői lehetőségek közül választhat, amikor kijelöl egy könyvtárat a szolgáltatásokkal való integrációhoz. Ezt a bemutatót és másokat, például a Microsoft Identity platformhoz kapcsolódó alkalmazások írásához segítséget nyújt a fejlesztőknek. [A RFC6749 OAuth2 SPECT](https://tools.ietf.org/html/rfc6749) megvalósító kódtárak többsége képes csatlakozni a Microsoft Identity platformhoz.
 
@@ -29,7 +29,7 @@ A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t
 Ha még nem ismeri a OAuth2 vagy az OpenID Connectet, akkor előfordulhat, hogy a minta konfigurációjának nagy része nem lenne értelme. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
-Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt. A címtár minden felhasználó, alkalmazás, csoport és egyéb tároló. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
+Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtár minden felhasználó, alkalmazás, csoport és egyéb tároló. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
@@ -37,14 +37,16 @@ Ezután regisztráljon egy alkalmazást a Azure AD B2C-bérlőben. Ez biztosítj
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Jegyezze fel az **alkalmazás azonosítóját** egy későbbi lépésben való használatra. Ezután válassza ki az alkalmazást a listában, és jegyezze fel az **Egyéni átirányítási URI**-t, amely egy későbbi lépésben is használható. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
+
+Az egyéni átirányítási URI-t is rögzítheti egy későbbi lépésben való használatra. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Felhasználói folyamatok létrehozása
 Azure AD B2C minden felhasználói élményt egy [felhasználói folyamat](active-directory-b2c-reference-policies.md)definiál. Ez az alkalmazás egyetlen identitási élményt tartalmaz: egy kombinált bejelentkezést és egy regisztrációt. A felhasználói folyamat létrehozásakor ügyeljen arra, hogy:
 
 * A **regisztrálási attribútumok**területen válassza ki az attribútum **megjelenítendő nevét**.  Más attribútumok is kiválaszthatók.
 * Az **alkalmazás jogcímei**területen válassza ki a jogcímek **megjelenítendő nevét** és a **felhasználó objektumának azonosítóját**. Más jogcímeket is kijelölhet.
-* A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A felhasználói folyamat neve `b2c_1_` előtaggal van ellátva a felhasználói folyamat mentésekor.  A felhasználói folyamat nevét később kell megadnia.
+* A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A felhasználói folyamat neve a felhasználói folyamat mentésekor a `b2c_1_` előtaggal van ellátva.  A felhasználói folyamat nevét később kell megadnia.
 
 Miután létrehozta a felhasználói folyamatokat, készen áll az alkalmazás létrehozására.
 
@@ -63,15 +65,15 @@ Ezt a mintát a [githubon lévő iOS AppAuth projekt](https://github.com/openid/
 
 Az Azure AD B2Cval való kommunikációt az engedélyezési végpont és a jogkivonat-végpont URI-k megadásával állíthatja be.  Az URI-k létrehozásához a következő információk szükségesek:
 * Bérlő azonosítója (például contoso.onmicrosoft.com)
-* Felhasználói folyamat neve (például B2C @ no__t-01 @ no__t-1SignUpIn)
+* Felhasználói folyamat neve (például B2C\_1\_SignUpIn)
 
-A jogkivonat-végpont URI-ja a következő URL-címben a bérlő @ no__t-0ID és a Policy @ no__t-1Name lecserélése után hozható létre:
+A jogkivonat-végpont URI-ja a bérlői\_AZONOSÍTÓjának és a házirend\_nevének a következő URL-címben való lecserélésével hozható létre:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Az engedélyezési végpont URI-ja a bérlő @ no__t-0ID és a Policy @ no__t-1Name a következő URL-címben való lecserélésével hozható létre:
+Az engedélyezési végpont URI-ja a bérlő\_AZONOSÍTÓjának és a házirend\_nevének a következő URL-címben való lecserélése után hozható létre:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -85,7 +87,7 @@ OIDServiceConfiguration *configuration =
 // now we are ready to perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyezés folyamatban
+### <a name="authorizing"></a>Engedélyezése
 
 Az engedélyezési szolgáltatás konfigurációjának konfigurálása vagy beolvasása után egy engedélyezési kérelem is létrehozható. A kérelem létrehozásához a következő információk szükségesek:
 

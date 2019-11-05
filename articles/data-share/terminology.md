@@ -1,21 +1,21 @@
 ---
-title: Az Azure-beli adatmegosztás előzetes verziójának terminológiája
-description: Ismerje meg az Azure-beli adatmegosztások előzetes verziójában használt erőforrások (adatszolgáltató, adatfogyasztó, adatmegosztás, megosztási előfizetés, pillanatkép, meghívó, címzett) leírására használt általános kifejezéseket.
+title: Az Azure Data Share terminológiája
+description: Ismerje meg az Azure-adatmegosztásban használt erőforrások (adatszolgáltató, adatfogyasztó, adatmegosztás, megosztási előfizetés, pillanatkép, meghívás, címzett) leírására használt általános kifejezéseket.
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166279"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468554"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Az Azure-beli adatmegosztás előzetes verziójának alapfogalmai 
+# <a name="azure-data-share-concepts"></a>Az Azure-adatmegosztás fogalmai 
 
-Az Azure-beli adatmegosztás előzetes verziója az adatmegosztással kapcsolatos új terminológiát ismerteti. Ez a cikk néhány olyan gyakran használt kifejezést ismertet, amelyet láthat a szolgáltatás során. 
+Az Azure-beli adatmegosztás néhány új, az adatmegosztással kapcsolatos terminológiát mutat be. Ez a cikk néhány olyan gyakran használt kifejezést ismertet, amelyet láthat a szolgáltatás során. 
 
 ## <a name="data-provider"></a>Adatszolgáltató
 
@@ -47,7 +47,7 @@ Egy adatszolgáltató engedélyezheti az adatmegosztás pillanatkép-beállítá
 
 Ha egy adatszolgáltató engedélyezi ezt a beállítást, egy ismétlődési időköz is kiválasztható. Az ismétlődési időköz lehet óránként vagy naponta. 
 
-Egy adatfogyasztó lehetősége van arra, hogy ezt a pillanatkép-ütemtervet olyan növekményes frissítések fogadására használja, amelyek az új pillanatkép létrehozása óta megváltoztatott adatokkal rendelkeznek. 
+Egy adatfogyasztónak lehetősége van arra, hogy a pillanatkép-ütemterven belül fogadja a növekményes frissítéseket, beleértve azokat az adattípusokat is, amelyek megváltoztak, mert először létrehoztak egy új pillanatképet. 
 
 ## <a name="invitation"></a>Meghívás
 
@@ -61,7 +61,6 @@ A meghívások naponta akár ötször is elküldhetők.
 
 A címzett olyan személy, aki meghívót kap egy adatmegosztásra. Egy adatszolgáltató jellemzően a létrehozott adatmegosztáshoz adja hozzá a címzetteket. Ha egy meghívás címzettjei elfogadják a meghívót, az adatfogyasztónak lesznek.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
-

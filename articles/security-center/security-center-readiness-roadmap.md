@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: b2b4dc1aa9486e432fb2fae48343c21fba620221
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: ea029e62ac1273d9796e52edc3f7a46868964d2a
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996692"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520753"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -105,7 +105,7 @@ Cikkek
 
 * [Security Center – gyakorlati labor](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Webalkalmazási tűzfal (WAF) javasolt forgatókönyve a Security Centerben](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Azure Security Center-forgatókönyv: Biztonsági riasztások @ no__t-0
+* [Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>További források
 * [Security Center – dokumentációs oldal](https://docs.microsoft.com/azure/security-center/)
@@ -115,7 +115,7 @@ Cikkek
 * [Az identitásbiztonságra vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Ajánlott hálózati biztonsági eljárások](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS-javaslatok](https://docs.microsoft.com/azure/security/security-paas-deployments)
-* [Megfelelőség](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
+* [Megfelelőség](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
 * [A log Analytics-ügyfelek mostantól a Azure Security Center használatával védik a hibrid felhőalapú számítási feladatait](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Közösségi forrásanyagok

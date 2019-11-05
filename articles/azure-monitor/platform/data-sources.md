@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/23/2019
-ms.openlocfilehash: 7c03c0c649876143eaa75c98fa0c9001f2b24fbd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932385"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476740"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
 Azure Monitor egy [közös figyelési adatplatformon](data-platform.md) alapul, amely [naplókat](data-platform-logs.md) és [mérőszámokat](data-platform-metrics.md)tartalmaz. Az adatok ebbe a platformba való gyűjtése lehetővé teszi, hogy a több erőforrásból származó adatok együttesen legyenek elemezve az Azure Monitor-ban lévő eszközök közös eszközkészletének használatával. A figyelési adatokat más helyszínekre is elküldheti bizonyos forgatókönyvek támogatása céljából, és egyes erőforrások a naplókba vagy metrikába való összegyűjtésük előtt más helyszínekre is írhatnak.
@@ -107,7 +107,7 @@ A konfigurációs követelmények és az erőforrás-naplók tartalma az erőfor
 | Cél | Leírás | Leírások |
 |:---|:---|:---|
 | Azure Monitor-naplók | Az erőforrás-naplók elküldése Azure Monitor naplókba más összegyűjtött naplózási adatok elemzéséhez. | [Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen Azure Monitor](resource-logs-collect-storage.md) |
-| Adattárolás | Erőforrás-naplók küldése az Azure Storage-ba archiválás céljából. | [Azure-beli erőforrás-naplók archiválása](resource-logs-collect-workspace.md) |
+| Storage | Erőforrás-naplók küldése az Azure Storage-ba archiválás céljából. | [Azure-beli erőforrás-naplók archiválása](resource-logs-collect-workspace.md) |
 | Azure Event Hubs-eseményközpontok | Az erőforrás-naplók továbbítása más helyszínekre Event Hubs használatával. |[Azure-beli erőforrás-naplók továbbítása egy Event hubhoz](resource-logs-stream-event-hubs.md) |
 
 ## <a name="operating-system-guest"></a>Operációs rendszer (vendég)
@@ -120,7 +120,7 @@ Az Azure Diagnostics bővítmény Azure-beli virtuális gépekhez való engedél
 
 | Cél | Leírás | Leírások |
 |:---|:---|:---|
-| Adattárolás | Ha engedélyezi a diagnosztikai bővítményt, a rendszer alapértelmezés szerint egy Storage-fiókba ír. | [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](diagnostics-extension-to-storage.md) |
+| Storage | Ha engedélyezi a diagnosztikai bővítményt, a rendszer alapértelmezés szerint egy Storage-fiókba ír. | [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](diagnostics-extension-to-storage.md) |
 | Azure Monitor metrikák | Ha a diagnosztikai bővítményt a teljesítményszámlálók gyűjtésére konfigurálja, a rendszer a Azure Monitor metrikák adatbázisába írja. | [Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Resource Manager-sablon használatával a Windows rendszerű virtuális gépekhez](collect-custom-metrics-guestos-resource-manager-vm.md) |
 | Naplók Application Insights | Naplók és teljesítményszámlálók gyűjtése a számítási erőforrásból, amely támogatja az alkalmazás más alkalmazásadatok alapján történő elemzését. | [A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatbázis küldése Application Insights](diagnostics-extension-to-application-insights.md) |
 | Azure Event Hubs-eseményközpontok | Konfigurálja a diagnosztikai bővítményt úgy, hogy az Event Hubs használatával továbbítsa az adatait más helyszínekre.  | [Azure Diagnostics adatok továbbítása a gyors elérési úton a Event Hubs használatával](diagnostics-extension-stream-event-hubs.md) |
@@ -173,14 +173,14 @@ A [monitorozási megoldások](../insights/solutions.md) és elemzések [adatokat
 | Azure Monitor-naplók | A figyelési megoldások adatokat gyűjtenek Azure Monitor naplókba, ahol elemezni lehet a megoldásban általában szereplő lekérdezési nyelv vagy [nézetek](view-designer.md) használatával. | [Az Azure-beli monitorozási megoldások adatgyűjtési adatai](../insights/solutions-inventory.md) |
 
 
-### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolók számára
+### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 A [tárolók Azure monitor](../insights/container-insights-overview.md) testreszabott figyelési élményt biztosítanak az [Azure Kubernetes szolgáltatáshoz (ak)](/azure/aks/). A következő táblázatban ismertetett erőforrásokra vonatkozó további adatokat gyűjt.
 
 | Cél | Leírás | Leírások |
 |:---|:---|:---|
 | Azure Monitor-naplók | Tárolja a figyelési adattáblákat, beleértve a leltárt, a naplókat és az eseményeket. A metrikák adatait a rendszer a naplókban is tárolja, hogy az elemzési funkcióit kihasználja a portálon. | [AKS-fürt teljesítményvizsgálata tárolókhoz készült Azure Monitor segítségével](../insights/container-insights-analyze.md) |
 | Azure Monitor metrikák | A metrikai adatok a metrikus adatbázisban tárolódnak a vizualizációk és a riasztások megjelenítéséhez. | [Tároló metrikáinak megtekintése a metrikák Explorerben](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | A közel valós idejű élmény érdekében Azure Monitor a tárolók közvetlenül az Azure Kubernetes szolgáltatásból származó adatokkal Azure Portal. | [Tárolónaplók valós idejű megtekintése a tárolókhoz készült Azure Monitorral (előzetes verzió)](../insights/container-insights-live-logs.md) |
+| Azure Kubernetes Service | Közvetlen hozzáférést biztosít az Azure Kubernetes szolgáltatás (ak) tároló naplóihoz (StdOut/stderror), az eseményekhez és a pod metrikához a portálon. | [A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése](../insights/container-insights-livedata-overview.md) |
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
 A [Azure monitor for VMS](../insights/vminsights-overview.md) testreszabott felhasználói élményt biztosít a virtuális gépek figyeléséhez. A Azure Monitor for VMs által gyűjtött adatok leírását a fenti [operációs rendszer (vendég)](#operating-system-guest) szakasza tartalmazza.
@@ -205,7 +205,7 @@ Az Azure egyéb szolgáltatásai a Azure Monitor adatplatformba írnak be adatf�
 | [Azure Sentinel](/azure/sentinel/) | Azure Monitor-naplók | Az Azure Sentinel a különböző adatforrásokból gyűjtött adatokat egy Log Analytics munkaterületen tárolja, amely lehetővé teszi, hogy a rendszer a Azure Monitor által gyűjtött egyéb naplózási adatokkal elemezze.  | [Adatforrások összekötése](/azure/sentinel/quickstart-onboard) |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor által gyűjtött megfigyelési adatok típusairól](data-platform.md) , valamint az adatok megtekintésének és elemzésének módjáról.
 - Sorolja fel azokat a [különböző helyeket, amelyekben az Azure-erőforrások tárolják az adattárolási](data-locations.md) és elérési módját. 

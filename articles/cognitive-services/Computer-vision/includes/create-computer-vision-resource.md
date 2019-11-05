@@ -6,33 +6,28 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
+ms.date: 10/07/2019
 ms.author: dapine
-ms.openlocfilehash: cbf11c13bfb5c90739ea67fab92df08796a88e50
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2cb2cfbdfbac5d496f109d85977b41a050766ab0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717282"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499101"
 ---
-## <a name="create-an-computer-vision-resource"></a>Számítógépes Látástechnológia erőforrás létrehozása
+## <a name="create-an-computer-vision-resource"></a>Computer Vision erőforrás létrehozása
 
-1. Jelentkezzen be a [Azure Portalon](https://portal.azure.com)
-1. Kattintson a [létrehozás **Computer Vision** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) erőforrás
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Kattintson [a **Computer Vision** erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) elemre.
 1. Adja meg az összes szükséges beállítást:
 
     |Beállítás|Érték|
     |--|--|
-    |Name (Név)|Kívánt nevét (2-64 karakter)|
-    |Subscription|Válassza ki a megfelelő előfizetést|
-    |Location|Minden olyan közeli és a rendelkezésre álló hely kiválasztása|
-    |Tarifacsomag|`F0` – a minimális tarifacsomag|
-    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló|
+    |Name (Név)|Kívánt név (2-64 karakter)|
+    |Előfizetés|Válassza ki a megfelelő előfizetést|
+    |Földrajzi egység|Válasszon ki egy közeli és elérhető helyet|
+    |Tarifacsomag|`F0` – a minimális díjszabási réteg|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot|
 
-1. Kattintson a **létrehozás** és várja meg a létrehozandó erőforrás. Miután elkészült, lépjen az erőforrás oldalára
-1. Adatokat gyűjthet konfigurált `endpoint` és API-kulcs:
-
-    |Portál erőforrás lapján|Beállítás|Value|
-    |--|--|--|
-    |**Áttekintés**|Végpont|Másolja a végpont. Hasonló `https://computer-vision.cognitiveservices.azure.com/`|
-    |**kulcsok**|API-kulcs|1\. a két kulcs másolása. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+1. Kattintson a **Létrehozás** gombra, és várja meg az erőforrás létrehozását. A létrehozást követően navigáljon az erőforrás lapra.
+1. A konfigurált `{ENDPOINT_URI}` és `{API_KEY}`összegyűjtése a részletekért tekintse meg a [szükséges paraméterek összegyűjtését](../computer-vision-how-to-install-containers.md#gathering-required-parameters) ismertető témakört.

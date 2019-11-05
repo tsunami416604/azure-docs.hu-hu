@@ -1,25 +1,25 @@
 ---
 author: IEvangelist
 ms.author: dapine
-ms.date: 06/25/2019
+ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 46376477aae9f94c1c8f6e1dd6bc718d213cc373
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712593"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484077"
 ---
 A tároló a következő konfigurációs beállításokkal rendelkezik:
 
-|Szükséges|Beállítás|Cél|
+|Kötelező|Beállítás|Cél|
 |--|--|--|
-|Igen|[ApiKey](#apikey-configuration-setting)|Nyomon követi a számlázási adatokat.|
-|Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi, hogy hozzáadása [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetriai támogatása a tárolóba.|
-|Igen|[Billing](#billing-configuration-setting)|Az Azure-ban található szolgáltatás-erőforrás végponti URI-ját adja meg.|
-|Igen|[Eula](#eula-setting)| Azt jelzi, hogy Ön már elfogadta a tároló licencét.|
-|Nem|[Fluentd](#fluentd-settings)|Napló írási és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.|
-|Nem|Http Proxy|Egy HTTP-proxy konfigurálása, hogy a kimenő kérelmek.|
-|Nem|[Logging](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
-|Nem|[Fluentd](#mount-settings)|Adatokat olvas be ír a tárolót a gazdaszámítógép és a tároló vissza a gazdaszámítógéphez.|
+|Igen|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követése.|
+|Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
+|Igen|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
+|Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
+|Nem|[Fluentd](#fluentd-settings)|Naplózza a naplót, és opcionálisan metrikus adatokat is egy Fluent-kiszolgálóra.|
+|Nem|HTTP-proxy|Konfigurál egy HTTP-proxyt a kimenő kérések elkészítése céljából.|
+|Nem|[Naplózás](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|Nem|[Tartók](#mount-settings)|Adatokat olvas és ír a gazdagépről a tárolóba, a tárolóból pedig vissza a gazdagépre.|

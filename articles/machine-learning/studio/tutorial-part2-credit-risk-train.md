@@ -1,7 +1,7 @@
 ---
-title: '2. oktatóanyag: Kredit kockázati modelleket taníthat be'
-titleSuffix: Azure Machine Learning Studio
-description: Hitelkockázat értékelésére szolgáló prediktív elemzési megoldás létrehozása az Azure Machine Learning Studio bemutató részletes oktatóanyag. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat második részére. Azt mutatja be, a modellek betanítása és kiértékelése.
+title: '2\. Oktatóanyag: a kredit kockázati modelljeinek betanítása'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást a Azure Machine Learning Studio klasszikus verziójában. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat második része. Bemutatja, hogyan kell betanítani és kiértékelni a modelleket.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 author: sdgilley
 ms.author: sgilley
@@ -10,198 +10,195 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce3661a75d35ab39b7e8b551cc0b84b57a76e032
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735628"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492552"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>2. oktatóanyag: Kockázati kredit - modellek Azure Machine Learning Studióban
+# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>2\. Oktatóanyag: a kredit kockázati modelljeinek betanítása – Azure Machine Learning Studio (klasszikus)
 
-Ebben az oktatóanyagban a folyamat egy prediktív elemzési megoldás fejlesztése tekintjük igénybe vehet. A Machine Learning Studio egy egyszerű modellt fejleszt.  A modell Azure Machine Learning-webszolgáltatásként majd rendszerbe.  Ez a modell üzembe helyezett végezhet előrejelzéseket új adatokkal. Ez az oktatóanyag **második része a háromrészes oktatóanyag-sorozat**.
+Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. A Machine Learning Studio klasszikus verziójában egy egyszerű modellt fejlesztünk.  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
 
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat értékelése összetett probléma, de ebben az oktatóanyagban leegyszerűsíti azt egy kicsit. Ez a példa használatával a Microsoft Azure Machine Learning Studio prediktív elemzési megoldások létrehozásának módját fogja használni. Az Azure Machine Learning Studio és a egy Machine Learning webszolgáltatás ehhez a megoldáshoz fogja használni.  
+A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz a Azure Machine Learning Studio klasszikus verzióját és egy Machine Learning webszolgáltatást kell használnia.  
 
-A háromrészes oktatóanyag megkezdése nyilvánosan elérhető hitelkockázati adatokkal.  Fejlesztés és betanítunk egy prediktív modellt.  Végül, a modell üzembe webszolgáltatásként.
+Ebben a három részből álló oktatóanyagban nyilvánosan elérhető hitelkockázat-adatforrásokkal kezdheti meg.  Ezután fejlesztheti és betaníthatja a prediktív modellt.  Végül üzembe helyezi a modellt webszolgáltatásként.
 
-A [az oktatóanyag részében](tutorial-part1-credit-risk.md), a Machine Learning Studio-munkaterület létrehozása, adatokat töltött fel, és létrehozott egy kísérletet.
+[Az oktatóanyag első részében](tutorial-part1-credit-risk.md)létrehozott egy Machine learning Studio (klasszikus) munkaterületet, feltöltött és létrehozott egy kísérletet.
 
-Az oktatóanyag ezen részében meg:
+Az oktatóanyag ezen részében:
  
 > [!div class="checklist"]
 > * Több modell betanítása
-> * Pontszám a modellek és kiértékelése
+> * A modellek pontszáma és kiértékelése
 
 
-A [az oktatóanyag harmadik része](tutorial-part3-credit-risk-deploy.md), a modellt webszolgáltatásként fogja központilag telepíteni.
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
+Az [oktatóanyag harmadik részében](tutorial-part3-credit-risk-deploy.md)webszolgáltatásként fogja telepíteni a modellt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Teljes [az oktatóanyag részében](tutorial-part1-credit-risk.md).
+Fejezze be [az oktatóanyag első részét](tutorial-part1-credit-risk.md).
 
 ## <a name="train"></a>Több modell betanítása
 
-A machine learning-modellek létrehozása az Azure Machine Learning Studio használatának előnyei egyike egyetlen kísérletben egyszerre próbálja ki a modell egynél több típusa és az eredmények összehasonlítása. Kísérletezés az ilyen típusú segítséget a legjobb megoldás a probléma.
+A gépi tanulási modellek létrehozásához a Azure Machine Learning Studio klasszikus verziójának egyik előnye, hogy egyetlen kísérlet során egyszerre több típust is kipróbálhat, és összehasonlítja az eredményeket. Ez a fajta kísérletezés segít megtalálni a legjobb megoldást a problémára.
 
-A kísérletben ebben az oktatóanyagban fejlesztést, két különböző modelleket hozhat létre, és ezután hasonlítsa össze a pontozási eredményeinek dönthet arról, hogy az elkészült kísérletnek a következőképpen a használni kívánt algoritmus.  
+Az oktatóanyagban fejlesztés alatt álló kísérlet során két különböző típusú modellt hoz létre, majd összehasonlítja a pontozási eredményeit, hogy eldöntse, melyik algoritmust kívánja használni a végső kísérlet során.  
 
-Nincsenek dönthet a különböző modellek. Elérhető modellek megtekintéséhez bontsa ki a **Machine Learning** a modulpaletta csomópontja majd **modell inicializálása** és a csomópontok alatta. Ez a kísérlet célja, hogy ki kell választania a [Kétosztályos támogató Vektorgép] [ two-class-support-vector-machine] (SVM) és a [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modulok.
+Többféle modell közül választhat. A rendelkezésre álló modellek megtekintéséhez bontsa ki a **Machine learning** csomópontot a modul palettáján, majd bontsa ki az **inicializálási modell** és az alatta lévő csomópontok elemet. Ebben a kísérletben kiválasztja a [kétosztályos támogató vektoros gépet][two-class-support-vector-machine] (SVM) és a [kétosztályos kibővített döntési][two-class-boosted-decision-tree] famodulokat.
 
 > [!TIP]
-> Annak eldöntése, mely Machine Learning algoritmus ajánlott megoldani kívánt probléma megfelelő segítséget szeretne kérni, lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning Studio](algorithm-choice.md).
+> Ha szeretné eldönteni, hogy melyik Machine Learning algoritmus a legjobban megfelel a megoldani kívánt problémának, tekintse meg az [algoritmusok kiválasztása Microsoft Azure Machine learning Studio (klasszikus)](algorithm-choice.md)című témakört.
 > 
 > 
 
-Mindkét fogja hozzáadni a [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modul és [Kétosztályos támogató Vektorgép] [ two-class-support-vector-machine] modul a kísérletben .
+Ebben a kísérletben a [kétosztályos növelt döntési fa][two-class-boosted-decision-tree] modult és a [kétosztályos támogatás vektoros gépi][two-class-support-vector-machine] modulját is fel kell vennie.
 
-### <a name="two-class-boosted-decision-tree"></a>Kétosztályos gyorsított döntési fa
+### <a name="two-class-boosted-decision-tree"></a>Kétosztályos, megnövelt döntési fa
 
-Először állítsa be a gyorsított döntési fa modell.
+Először állítsa be a megnövelt döntési fa modelljét.
 
-1. Keresse meg a [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modulban a modulpaletta, és húzza a vászonra.
+1. Keresse meg a [kétosztályos növelt döntési fa][two-class-boosted-decision-tree] modult a modul palettáján, és húzza a vászonra.
 
-1. Keresse meg a [tanítási modell] [ train-model] modult, húzza a vászonra, és csatlakoztassa a kimenete a [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modul bal oldali bemeneti portjával a [tanítási modell] [ train-model] modul.
+1. Keresse meg a [betanítási modell][train-model] modult, húzza a vászonra, majd kapcsolja a [kétosztályos növelt döntési fa][two-class-boosted-decision-tree] modul kimenetét a [Train Model][train-model] modul bal oldali bemeneti portjához.
    
-   A [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modul inicializálja az általános modell és [Train Model] [ train-model] használ a betanítási adatok taníthat be a modell. 
+   A [kétosztályos felerősített döntési][two-class-boosted-decision-tree] famodul inicializálja az általános modellt, és a [betanítási modell][train-model] betanítási adatként használja a modell betanításához. 
 
-1. Csatlakozás a bal oldalon, a bal oldali kimeneti [R-szkript végrehajtása] [ execute-r-script] modul jobb oldali bemeneti portjával a [tanítási modell] [ train-model] modul (Ez az oktatóanyag Ön [bal oldalán származó adatokon használt](#train) a felosztási adatok modul tanítási).
+1. A bal oldali [végrehajtási R script][execute-r-script] modul bal oldali kimenetének összekötése a [betanítási modell][train-model] moduljának jobb oldali bemeneti portjára (ebben az oktatóanyagban az adatok felosztása modul [bal oldaláról származó adatokat használta](#train) a betanításhoz).
    
    > [!TIP]
-   > nem kell a két bemenet és a egy kimeneteire a [R-szkript végrehajtása] [ execute-r-script] ehhez a kísérlethez, így hagyhatja őket nem csatolt modul. 
+   > Ehhez a kísérlethez nem szükséges két bemenet és az [R-szkript végrehajtása][execute-r-script] modul egyik kimenete, hogy ne legyenek csatolva. 
    > 
    > 
 
-Ez a része a kísérletet most alábbihoz hasonlóan jelenik meg:  
+A kísérletnek ez a része most a következőhöz hasonlóan néz ki:  
 
-![A modell tanítása](./media/tutorial-part2-credit-risk-train/experiment-with-train-model.png)
+![Modell betanítása](./media/tutorial-part2-credit-risk-train/experiment-with-train-model.png)
 
-Most meg kell adnia a [tanítási modell] [ train-model] modult, amelyet a modell előre jelezni a hitelkockázat-érték.
+Most meg kell adnia a [betanítási modell][train-model] modulját, amely alapján a modell megjósolhatja a hitelkockázat értékét.
 
-1. Válassza ki a [tanítási modell] [ train-model] modul. Az a **tulajdonságok** ablaktáblán kattintson a **Oszlopválasztás indítása**.
+1. Válassza ki a [Train Model][train-model] modult. A **Tulajdonságok** ablaktáblán kattintson az **oszlop kiválasztó indítása**elemre.
 
-1. Az a **csak egy oszlop kiválasztása** párbeszédpanelen írja be a "kockázati jóváírás" a keresőmező alatt a **elérhető oszlopok**, válassza ki a "Kredit kockázati" alatt, és kattintson a jobbra mutató nyíl gombra (**>**) "Hitelkockázat" áthelyezése **kijelölt oszlopok**. 
+1. Az **egyetlen oszlop kijelölése** párbeszédpanelen írja be a "hitelkockázat" kifejezést az **elérhető oszlopok**területen található Keresés mezőbe, válassza a "hitelkockázat" lehetőséget az alábbi listában, majd kattintson a jobbra mutató nyílra ( **>** ) a "hitelkockázat" a **kijelölt oszlopokra**való áthelyezéséhez. 
 
-    ![A hitelkockázat kiszámításához a tanítási modell modulhoz oszlop kiválasztása](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
+    ![Válassza ki a betanítási modell moduljának hitelkockázat oszlopát](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
-1. Kattintson a **OK** pipa jelre.
+1. Kattintson az **OK** pipa jelre.
 
-### <a name="two-class-support-vector-machine"></a>Kétosztályos tartóvektor-gép
+### <a name="two-class-support-vector-machine"></a>Kétosztályos támogató vektorgép
 
-Ezután a SVM modell beállítása.  
+Ezután állítsa be a SVM modellt.  
 
-Első, némi magyarázatát SVM. Gyorsított döntési fák algoritmus jól működnek a funkciók bármilyen típusú. Azonban a SVM modul lineáris besorolás állít elő, mert a létrehozott modellnek a legjobb sikerült ha összes numerikus szolgáltatás ugyanolyan skála. Az azonos méretezési csoport összes numerikus szolgáltatás konvertálásához használja "Tanh" átalakítás (az a [normalizálása adatok] [ normalize-data] modul). A számok alakítja a [0,1] tartományon. A SVM modul konvertálja karakterlánc funkciók kategorikus szolgáltatásokat, majd bináris 0/1 szolgáltatásait, így nem kell manuálisan átalakítja a karakterlánc-funkciókat. Ezenkívül nem kívánja a hitelkockázat oszlop (oszlop 21) átalakítása – numerikus, de az értéke azt a modell tanítása előre, ezért meg kell felügyeli azt.  
+Először is, egy kis magyarázat a SVM-ről. A megnövelt döntési fák bármilyen típusú funkcióval jól működnek. Mivel azonban a SVM modul lineáris osztályozó hoz létre, az általa generált modell a legjobb tesztelési hibával rendelkezik, ha az összes numerikus funkció ugyanazzal a mérettel rendelkezik. Ha az összes numerikus funkciót ugyanarra a skálára szeretné átalakítani, használja a "TANH" transzformációt (az [adategység normalizálása][normalize-data] modullal). Ez átalakítja a számokat a [0, 1] tartományba. A SVM modul a karakterlánc-szolgáltatásokat a kategorikus funkciókra, majd a bináris 0/1-funkciókra konvertálja, így nem kell manuálisan átalakítania a karakterlánc-szolgáltatásokat. Azt is megteheti, hogy nem kívánja átalakítani a hitelkockázat oszlopot (21. oszlop) – Ez numerikus, de ez az az érték, amelyet a modell betanításával jósolunk meg, így egyedül kell hagyni.  
 
-Állítsa be a SVM modell, tegye a következőket:
+A SVM modell beállításához tegye a következőket:
 
-1. Keresse meg a [Kétosztályos támogató Vektorgép] [ two-class-support-vector-machine] modulban a modulpaletta, és húzza a vászonra.
+1. Keresse meg a [kétosztályos támogatás Vector Machine][two-class-support-vector-machine] modult a modul palettáján, és húzza a vászonra.
 
-1. Kattintson a jobb gombbal a [tanítási modell] [ train-model] modult, válassza **másolási**, majd kattintson jobb gombbal a vásznon, majd válassza **beillesztési**. A másolata a [tanítási modell] [ train-model] modul rendelkezik a azonos kijelölés az eredetivel.
+1. Kattintson a jobb gombbal a [vonat modell][train-model] modulra, válassza a **Másolás**lehetőséget, majd kattintson a jobb gombbal a vászonra, és válassza a **Beillesztés**lehetőséget. A [betanítási modell][train-model] moduljának másolata ugyanazzal az oszloppal van kiválasztva, mint az eredeti.
 
-1. Csatlakozzon a kimenetét a [Kétosztályos támogató Vektorgép] [ two-class-support-vector-machine] modul bal oldali bemeneti portját a második [tanítási modell] [ train-model] modul.
+1. A [kétosztályos támogatású vektoros gép][two-class-support-vector-machine] kimenetének összekötése a második [Train Model][train-model] -modul bal oldali bemeneti portjával.
 
-1. Keresse meg a [normalizálása adatok] [ normalize-data] modul, és húzza a vászonra.
+1. Keresse meg az [adathalmaz normalizálása][normalize-data] modult, és húzza a vászonra.
 
-1. Csatlakozás a bal oldalon, a bal oldali kimeneti [R-szkript végrehajtása] [ execute-r-script] modul (figyelje meg, hogy a modul kimeneti portjára csatlakoztathatók más modul egynél több) Ez a modul bemenetével.
+1. Csatlakoztassa a bal oldali [végrehajtási R script][execute-r-script] modul bal oldali kimenetét a modul bemenetéhez (figyelje meg, hogy egy modul kimeneti portja több másik modulhoz is kapcsolódhat).
 
-1. A bal oldali kimeneti portjára, csatlakozzon a [normalizálása adatok] [ normalize-data] modul jobb oldali bemeneti portját a második [tanítási modell] [ train-model] modul.
+1. A [normalizált adat][normalize-data] modul bal oldali kimeneti portját a második [Train Model][train-model] -modul megfelelő bemeneti portjához kapcsolja.
 
-Ez a kísérlet részének kell kinéznie ehhez hasonló:  
+A kísérlet ezen részében a következőhöz hasonló módon kell kinéznie:  
 
-![A második modell tanítása](./media/tutorial-part2-credit-risk-train/svm-model-added.png)
+![A második modell betanítása](./media/tutorial-part2-credit-risk-train/svm-model-added.png)
 
-Mostantól konfigurálhatja az [normalizálása adatok] [ normalize-data] modul:
+Most konfigurálja a [normalizálás][normalize-data] adatmodult:
 
-1. Kattintással jelölje ki a [normalizálása adatok] [ normalize-data] modul. Az a **tulajdonságok** ablaktáblán válassza **Tanh** számára a **átalakítási metódus** paraméter.
+1. Kattintson ide az [Adatnormalizálás][normalize-data] modul kiválasztásához. A **Tulajdonságok** panelen válassza a **TANH** lehetőséget az **átalakítási módszer** paraméterhez.
 
-1. Kattintson a **Oszlopválasztás indítása**, válassza ki a "Nem szerepelnek oszlopok a" for **megkezdése a**, jelölje be **Belefoglalás** az első legördülő menüben válassza **oszloptípus** a második legördülő menüből, és válasszon **numerikus** a harmadik legördülő listában. Azt határozza meg, hogy minden a numerikus oszlopok (és csak numerikus) átalakításából származnak.
+1. Kattintson **az oszlop kiválasztásának indítása**lehetőségre, válassza a "nincs oszlop" lehetőséget a **kezdéshez**, **jelölje be az** első legördülő menüben válassza az **oszlop típusa** lehetőséget a második legördülő menüben, majd válassza a **numerikus** lehetőséget a harmadik legördülő menüben. Ez azt jelenti, hogy az összes numerikus oszlop (és csak numerikus) át lett alakítva.
 
-1. Ez a sor jobb oldalán kattintson a plusz jelre (+) – Ez létrehoz egy legördülő menük sorát. Válassza ki **kizárása** az első legördülő menüben válassza **oszlopnevek** a második legördülő listában, és adja meg a "Kockázati jóváírás" a szövegmezőben. Azt határozza meg, hogy a hitelkockázat oszlop figyelmen kívül lehet hagyni (kell ehhez, mivel ez az oszlop numerikus, és így lenne lesz átalakítva, ha nem zárja ki).
+1. Kattintson a sor jobb oldalán a pluszjelre (+), ez egy sort hoz létre a legördülő listáról. Válassza a **kizárás** lehetőséget az első legördülő menüben, majd a második legördülő listában válassza az **oszlopnevek** lehetőséget, majd a szövegmezőbe írja be a "hitelkockázat" értéket. Ez azt jelenti, hogy a hitelkockázat oszlopot figyelmen kívül kell hagyni (ezt azért kell megtennie, mert ez az oszlop numerikus, ezért a rendszer átalakítja, ha nem zárja ki).
 
-1. Kattintson a **OK** pipa jelre.  
+1. Kattintson az **OK** pipa jelre.  
 
-    ![Adatok optimalizálása modul oszlopok kijelölése](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
+    ![Oszlopok kiválasztása az adatnormalizálás modulhoz](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
 
 
-A [normalizálása adatok] [ normalize-data] modul most már van beállítva a hitelkockázat oszlop kivételével az összes numerikus oszlopokhoz Tanh átalakítás végrehajtásához.  
+A [normalizálás][normalize-data] adatmodul most úgy van beállítva, hogy az összes numerikus oszlopon TANH-átalakítást végezzen, kivéve a hitelkockázat oszlopot.  
 
-## <a name="score-and-evaluate-the-models"></a>Pontszám a modellek és kiértékelése
+## <a name="score-and-evaluate-the-models"></a>A modellek pontszáma és kiértékelése
 
-a tesztelési adatok, amelyek volt elválasztva ki a [Split Data] [ split] modult a betanított modellek pontozása. Ezután összehasonlíthatja a eredményeinek megtekintéséhez a jobb eredmények jön létre, amely a két modell.  
+az [adatok felosztása][split] modul által elválasztott tesztelési adatok segítségével kiértékelheti a betanított modelleket. Ezután összehasonlíthatja a két modell eredményét, hogy megtudja, melyik generált jobb eredményeket.  
 
-### <a name="add-the-score-model-modules"></a>A pontszám modell modulok hozzáadása
+### <a name="add-the-score-model-modules"></a>A pontszám modell moduljainak hozzáadása
 
-1. Keresse meg a [Score Model] [ score-model] modul, és húzza a vászonra.
+1. Keresse meg a [pontszám modell][score-model] modult, és húzza rá a vászonra.
 
-1. Csatlakozás a [tanítási modell] [ train-model] modul, amely csatlakozik a [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modul bal oldali bemeneti portjával a [Score Model] [ score-model] modul.
+1. Csatlakoztassa a [kétosztályos felerősített döntési fa][two-class-boosted-decision-tree] modulhoz csatlakoztatott [Train Model][train-model] modult a [pontszám modell][score-model] modul bal oldali bemeneti portjához.
 
-1. Csatlakozás a jobb oldalon [R-szkript végrehajtása] [ execute-r-script] (a tesztelési adatok) modul jobb oldali bemeneti portjával a [Score Model] [ score-model] modul.
+1. A jobb oldali [végrehajtási R script][execute-r-script] modul (tesztelési adatok) összekötése a [pontszám-modell][score-model] modul megfelelő bemeneti portjára.
 
-    ![Csatlakoztatott score Model-modul](./media/tutorial-part2-credit-risk-train/score-model-connected.png)
+    ![Pontszám modell modul csatlakoztatva](./media/tutorial-part2-credit-risk-train/score-model-connected.png)
 
    
-   A [Score Model] [ score-model] modul mostantól a kredit információkat a tesztelési adatokból venni, futtassa a modellel, és hasonlítsa össze az előrejelzés a modell állít elő, a tényleges kredit kockázati oszloppal a adatok ellenőrzése.
+   A [pontszám modell][score-model] modul mostantól elvégezheti a kreditek adatait a tesztelési adatokból, futtathatja azt a modellen keresztül, és összehasonlíthatja a modell által generált előrejelzéseket a tesztelési adatok tényleges hitelkockázat oszlopával.
 
-1. Másolja és illessze be a [Score Model] [ score-model] modul egy másolat létrehozásához.
+1. Másolja és illessze be a [pontszám modell][score-model] modult egy második másolat létrehozásához.
 
-1. Csatlakozás a kimenet a SVM modell (azt jelenti, a kimeneti portjára, a [tanítási modell] [ train-model] modul, amely csatlakozik a [Kétosztályos támogató Vektorgép] [ two-class-support-vector-machine] modul) a második bemeneti portjával [Score Model] [ score-model] modul.
+1. Csatlakoztassa a SVM-modell kimenetét (vagyis a [kétosztályos támogatású, a Kétosztályú támogató vektoros][two-class-support-vector-machine] modulhoz csatlakoztatott [Train Model][train-model] modul kimeneti portját) a második [pontszám-modell][score-model] modul bemeneti portjához.
 
-1. SVM modell ugyanazt az átalakítást a tesztadatok, tegye a betanítási adatok ugyanúgy kell. Ezért másolja és illessze be a [normalizálása adatok] [ normalize-data] hozzon létre egy második példányt, és csatlakoztathatja azt a jogot a modul [R-szkript végrehajtása] [ execute-r-script] modul.
+1. A SVM modell esetében ugyanazt az átalakítást kell végrehajtania, mint a betanítási adatként. Ezért másolja ki és illessze be a [normalizálás][normalize-data] adatmodult egy második másolat létrehozásához, és kapcsolja össze a jobb oldali [végrehajtási R-szkript][execute-r-script] modulhoz.
 
-1. Csatlakoztassa a második a bal oldali kimeneti [normalizálása adatok] [ normalize-data] modul jobb oldali bemeneti portját a második [Score Model] [ score-model] modul.
+1. A második [normalizált][normalize-data] adatmodul bal oldali kimenetét a második [pontszám modell][score-model] moduljának jobb oldali bemeneti portjára kell kapcsolni.
 
-    ![Mindkét csatlakoztatott Score Model modulok](./media/tutorial-part2-credit-risk-train/both-score-models-added.png)
+    ![Mindkét pontszám modell modulok csatlakoztatva](./media/tutorial-part2-credit-risk-train/both-score-models-added.png)
 
 
 ### <a name="add-the-evaluate-model-module"></a>A modell kiértékelése modul hozzáadása
 
-A két pontozási eredményeinek kiértékeléséhez, és hasonlítsa össze azokat, használjon egy [Evaluate Model] [ evaluate-model] modul.  
+A két pontozási eredmény kiértékeléséhez és összehasonlításához használja a [modell kiértékelése][evaluate-model] modult.  
 
-1. Keresse meg a [Evaluate Model] [ evaluate-model] modul, és húzza a vászonra.
+1. Keresse meg a [modell kiértékelése][evaluate-model] modult, és húzza rá a vászonra.
 
-1. A kimeneti portjára, csatlakozzon a [Score Model] [ score-model] modul bal oldali bemeneti portjával, a gyorsított döntési fa modell társított a [Evaluate Model] [ evaluate-model] modul.
+1. A [modell kiértékelése][evaluate-model] modul bal oldali bemeneti portjához kapcsolódjon a Kiemelt döntési famodellhez társított [pontszám modell][score-model] modul kimeneti portjához.
 
-1. Csatlakozzon a többi [Score Model] [ score-model] modul jobb oldali bemeneti porthoz.  
+1. Kapcsolódjon a másik [pontszám modell][score-model] modulhoz a megfelelő bemeneti porthoz.  
 
-    ![Modell értékelése csatlakoztatott](./media/tutorial-part2-credit-risk-train/evaluate-model-added.png)
-
-
-### <a name="run-the-experiment-and-check-the-results"></a>A kísérlet futtatásához és az eredmények ellenőrzése
-
-A kísérlet futtatásához kattintson a **futtatása** gombot a vászon alatti. Ennek futtatása eltarthat néhány percig. Az egyes modulok tartalomfogyasztás mutató mutatja, hogy fut-e, és ezután egy zöld pipa jeleníti meg, miután befejezte a modult. Minden modul be van jelölve, amikor a kísérlet befejezését követően.
-
-A kísérlet kell kinéznie ehhez hasonló:  
-
-![Mindkét modellt kiértékelése](./media/tutorial-part2-credit-risk-train/final-experiment.png)
+    ![Modellhez kapcsolódó modul kiértékelése](./media/tutorial-part2-credit-risk-train/evaluate-model-added.png)
 
 
-Az eredmények ellenőrzéséhez kattintson a kimeneti portjára, a [Evaluate Model] [ evaluate-model] modul, és válassza ki **Visualize**.  
+### <a name="run-the-experiment-and-check-the-results"></a>Futtassa a kísérletet, és vizsgálja meg az eredményeket
 
-A [Evaluate Model] [ evaluate-model] modul görbék és mérőszámok, amelyek lehetővé teszik, hogy a két pontozott modell eredményeinek összehasonlítására két eredményez. Megtekintheti az eredményeket, fogadó operátor jellemző (ROC) görbék, pontosság/visszaírási görbék, vagy át. További adatok jelennek meg a keveredési mátrix a terület alatt a görbe (AUC) és egyéb mérőszámok összesített értékeket tartalmaz. Módosítsa a küszöbértéket a csúszkát balra vagy jobbra, és tekintse meg, milyen hatással van a metrikák készletét.  
+A kísérlet futtatásához kattintson a vászon alatti **Futtatás** gombra. Ennek futtatása eltarthat néhány percig. Az egyes modulokon futó forgó kijelzőn látható, hogy fut, majd egy zöld pipa jelzi, hogy mikor fejeződött be a modul. Ha az összes modulnál pipa szerepel, a kísérlet befejezte a futtatást.
 
-A diagram jobb, kattintson a **Pontozását adatkészlet** vagy **Pontozását összehasonlítására adatkészlet** jelölje ki a társított görbe és megjelenítheti a kapcsolódó metrikákat az alábbi. A bal oldali bemeneti portjával "Adatkészlet Pontozását" megfelel a görbék a jelmagyarázatban, a [Evaluate Model] [ evaluate-model] modul – ebben az esetben ez az a gyorsított döntési fa modell. "Adatkészlet összehasonlítására pontozását" felel meg a jobb oldali bemeneti portját – ebben az esetben az SVM modellt. Ha ezek a címkék egyikét kattint, a modell a görbe ki van jelölve, és a megfelelő metrikák jelennek meg, az alábbi ábrán látható módon.  
+A kísérletnek ekkor az alábbihoz hasonlóan kell kinéznie:  
 
-![A modellek ROC görbévé](./media/tutorial-part2-credit-risk-train/roc-curves.png)
+![Mindkét modell kiértékelése](./media/tutorial-part2-credit-risk-train/final-experiment.png)
 
-Ezek az értékek megvizsgálásával eldöntheti, melyik modellben a legközelebbi a keresett eredményeket biztosít. Lépjen vissza, és a kísérlet iterálása a különböző modellek paraméter értékeinek módosításával. 
 
-Az adatelemzési és az eredmények értelmezésében és a modellek teljesítményének hangolása art ebben az oktatóanyagban hatókörén kívül esik. További segítségre van szüksége akkor előfordulhat, hogy olvassa el a következő cikkeket:
-- [Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban](evaluate-model-performance.md)
-- [Válassza ki az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel](algorithm-parameters-optimize.md)
-- [Az Azure Machine Learning Studióban modell eredményeinek értelmezése](interpret-model-results.md)
+Az eredmények ellenőrzéséhez kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a **Megjelenítés**lehetőséget.  
+
+A [modell kiértékelése][evaluate-model] modul olyan görbéket és mérőszámokat hoz létre, amelyek lehetővé teszik a két pontozásos modell eredményének összehasonlítását. Az eredményeket megtekintheti a fogadó operátor jellemző (ROC) görbék, a pontosság/visszahívás görbék vagy a lift görbék használatával. További megjelenített adatok: a görbe (AUC) alatti terület összesített értékei, valamint egyéb mérőszámok. A küszöbértéket a csúszka balra vagy jobbra mozgatásával módosíthatja, és megtekintheti, hogyan befolyásolja a metrikák készletét.  
+
+A gráftól jobbra kattintson a **pontozásos adatkészlet** vagy a **pontozásos adatkészlet** elemre a társított görbe kiemeléséhez és az alábbi kapcsolódó mérőszámok megjelenítéséhez. A görbék jelmagyarázatában a "pontozásos adatkészlet" a [modell kiértékelése][evaluate-model] modul bal oldali bemeneti portjához tartozik – ebben az esetben ez a megnövelt döntési famodell. "Az összehasonlítandó adathalmaz" megfelel a megfelelő bemeneti portnak – a SVM modell. Ha az egyik címkére kattint, a rendszer kijelöli a modell görbéjét, és megjeleníti a megfelelő mérőszámokat, ahogy az alábbi ábrán is látható.  
+
+![ROC-görbék modellek számára](./media/tutorial-part2-credit-risk-train/roc-curves.png)
+
+Ezeknek az értékeknek a vizsgálatával eldöntheti, hogy melyik modell legyen a legközelebb a keresett eredmények megadásához. Visszatérhet a kísérlethez, és megismételheti a paramétereket a különböző modellekben lévő paraméterek értékének módosításával. 
+
+Az eredmények értelmezése és a modell teljesítményének finomhangolása az oktatóanyag hatókörén kívül esik. További segítségért olvassa el a következő cikkeket:
+- [Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)](evaluate-model-performance.md)
+- [Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine Learning Studio (klasszikus)](algorithm-parameters-optimize.md)
+- [A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)](interpret-model-results.md)
 
 > [!TIP]
-> Minden alkalommal futtassa a kísérletet, ismétlés egy rekordot a futtatási előzmények maradjanak. Ezeket az ismétlések megtekintheti, és bármelyiket, kattintva térjen **FUTTATÁSI előzmények megtekintése** a vászon alatti. Is **előzetes futtatása** a a **tulajdonságok** panelre való visszatéréshez a közvetlenül megelőző egy iteráció meg van nyitva.
+> Minden alkalommal, amikor futtatja a kísérletet, a rendszer a futtatási előzményekben tárolja az iterációs rekordokat. Ezeket az iterációkat megtekintheti, és visszatérhet bármelyikhez a vászon alatti **futtatási előzmények megtekintése** lehetőségre kattintva. A **Tulajdonságok** ablaktáblán a **korábbi Futtatás** lehetőségre kattintva visszatérhet a megnyíló előtt közvetlenül megjelenő iterációhoz.
 > 
-> Meghatározhat egy példányát is futtathatja a kísérletet ismétlések kattintva **SAVE AS** a vászon alatti. 
-> Használja a kísérlet **összegzése** és **leírás** tárolja a kísérlet ismétléseinek a már kipróbált tulajdonságokat.
+> A kísérlet ismétlésének másolatát a vászon alatti **Mentés** gombra kattintva teheti meg. 
+> A kísérlet **összefoglalásának** és **leírásának** tulajdonságaival rögzítheti, hogy mit próbált meg a kísérlet ismétlései között.
 > 
-> További információkért lásd: [kísérlet ismétléseinek kezelése az Azure Machine Learning Studio](manage-experiment-iterations.md).  
+> További információ: [a kísérletek közelítésének kezelése Azure Machine learning Studio (klasszikus)](manage-experiment-iterations.md).  
 > 
 > 
 
@@ -211,14 +208,14 @@ Az adatelemzési és az eredmények értelmezésében és a modellek teljesítm�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban elvégezte ezeket a lépéseket: 
+Ebben az oktatóanyagban a következő lépéseket végezte el: 
  
 > [!div class="checklist"]
 > * Kísérlet létrehozása
 > * Több modell betanítása
-> * Pontszám a modellek és kiértékelése
+> * A modellek pontszáma és kiértékelése
 
-Most már készen áll, ezeket az adatokat a modellek üzembe helyezése.
+Most már készen áll az ilyen típusú adatmodellek üzembe helyezésére.
 
 > [!div class="nextstepaction"]
 > [3. oktatóanyag – Modellek üzembe helyezése](tutorial-part3-credit-risk-deploy.md)

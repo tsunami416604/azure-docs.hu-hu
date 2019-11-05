@@ -1,7 +1,7 @@
 ---
 title: Tudnivalók a Speech Devices SDK-Speech szolgáltatásról
 titleSuffix: Azure Cognitive Services
-description: Első lépések a beszédfelismerő Devices SDK-val. A beszédfelismerési szolgáltatás együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val egy előre beállított kódtár, amely az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel.
+description: Ismerkedés a Speech Devices SDK-val. A beszédfelismerési szolgáltatás számos különböző eszközzel és hangforrással működik. Most a következő szintre állíthatja a beszédfelismerési alkalmazásokat a megfelelő hardverekkel és szoftverekkel. A Speech Devices SDK egy előre beállított könyvtár, amely a célnak megfelelő, a mikrofon tömbje.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f2819dd2194193ffa8171034fdbe01ac4cb26174
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 243072477c7d249d7066a7a448061c51a0bd2f34
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558917"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468721"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Tudnivalók a Speech Devices SDK-ról
 
-A [beszédfelismerési szolgáltatások](overview.md) számos különböző eszközzel és hangforrással működnek. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
+A [beszédfelismerési szolgáltatások](overview.md) számos különböző eszközzel és hangforrással működnek. Most a következő szintre állíthatja a beszédfelismerési alkalmazásokat a megfelelő hardverekkel és szoftverekkel. A Speech Devices SDK egy előre beállított könyvtár, amely a célzott, a mikrofonos tömb fejlesztői csomagjaival párosítva van.
 
-A beszédfelismerés eszközök SDK segítségével:
+A Speech Devices SDK a következőket nyújtja:
 
-* Gyorsan tesztelheti az új hangalapú forgatókönyvek.
+* Gyorsan tesztelheti az új hang-forgatókönyveket.
 * Könnyebben integrálhatja a felhőalapú beszédfelismerési szolgáltatásokat az eszközre.
-* Hozzon létre egy kivételes felhasználói élmény az ügyfelek számára.
+* Kivételes felhasználói élményt hozhat létre ügyfelei számára.
 
-A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md). A Speech SDK használatával küldi el a speciális hangfeldolgozási algoritmus által feldolgozott hanganyagot az eszköz mikrofon-tömbből a [Speech servicesbe](overview.md). Többcsatornás hang pontosabb távolságban mező biztosításához használt [beszédfelismerés](speech-to-text.md) zaj tiltási, echo törlését, beamforming és dereverberation keresztül.
+A Speech Devices SDK a [SPEECH SDK](speech-sdk.md)-t használja. A Speech SDK használatával küldi el a speciális hangfeldolgozási algoritmus által feldolgozott hanganyagot az eszköz mikrofon-tömbből a [Speech servicesbe](overview.md). Többcsatornás [hangfelismerést](speech-to-text.md) használ, hogy pontosabb, sokkal részletesebb beszédfelismerést biztosítson a zajcsökkentéssel, az ECHO megszakításával, a beamforming és a devisszaverődéssel kapcsolatban.
 
-A Speech Devices SDK-val olyan környezeti eszközöket is létrehozhat, amelyek rendelkeznek saját [testreszabott](speech-devices-sdk-create-kws.md) Felébresztési Szóval, így a felhasználói beavatkozást kezdeményező Cue egyedi a márka számára.
+A beszédfelismerési eszközök SDK-val olyan környezeti eszközöket is létrehozhat, amelyek saját [testreszabott kulcsszóval](speech-devices-sdk-create-kws.md) rendelkeznek, így a felhasználói beavatkozást kezdeményező Cue egyedi a márka számára.
 
-A Speech Devices SDK számos hang-kompatibilis forgatókönyvet támogat, például az [Egyéni hangvezérelt virtuális asszisztenseket](https://aka.ms/bots/speech/va), a meghajtó-átrendezési rendszereket, a [társalgási](conversation-transcription-service.md)átírást és az intelligens hangszórókat. Vissza a azokat egy alapértelmezett beszél, hogy a felhasználók a szöveges, reagáljon vagy [egyéni beszédfelismerési](how-to-customize-voice-font.md), adja meg a keresési eredmények között, [fordítása](speech-translation.md) az más nyelvekre, és egyéb. Kíváncsian várjuk, mit hoz létre!
+A Speech Devices SDK számos hang-kompatibilis forgatókönyvet támogat, például a [hangsegédeket](https://aka.ms/bots/speech/va), a meghajtó-átrendezési rendszereket, a [társalgási átírást](conversation-transcription-service.md)és az intelligens hangszórókat. Válaszolhat a felhasználókra szöveggel, visszaállíthatja őket egy alapértelmezett vagy [Egyéni hangon](how-to-customize-voice-font.md), megadhatja a keresési eredményeket, [lefordíthat](speech-translation.md) más nyelvekre, és így tovább. Várjuk, hogy lássuk, mit épít!
 
 ## <a name="get-the-speech-devices-sdk"></a>Beszédeszközök SDK letöltése
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 17dd4862a02a736237257c50802135fb62883d77
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: c51af15d2334e873c8c7c399322fbd1279de3784
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200615"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468193"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>Felhasználók és szerepkörök kezelése a IoT Central alkalmazásban (előzetes verziójú szolgáltatások)
 
@@ -93,36 +93,36 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Eszköz sablonjának engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Kezelés | Megtekintés <br/> Egyéb függőségek: eszközök példányainak megtekintése  |
+| Nézet | None     |
+| Kezelés | Nézet <br/> Egyéb függőségek: eszközök példányainak megtekintése  |
 | Teljes hozzáférés | Megtekintés, kezelés <br/> Egyéb függőségek: eszközök példányainak megtekintése |
 
 **Eszköz-példány engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait |
-| Frissítés | Megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-| Létrehozás | Megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-| Törlés | Megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
+| Nézet | None <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait |
+| Frissítés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
+| Létrehozás | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
+| Törlés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
 | Parancsok végrehajtása | Frissítés, megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
 | Teljes hozzáférés | Megtekintheti, frissítheti, létrehozhatja, törölheti, végrehajthatja a parancsokat <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
 
 **Eszközök csoportjai engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése |
-| Frissítés | Megtekintés <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
+| Nézet | None <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése |
+| Frissítés | Nézet <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
 | Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
-| Törlés | Megtekintés <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
+| Törlés | Nézet <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése |
 
 **Eszköz kapcsolati kezelési engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
 | Példány olvasása | None <br/> Egyéb függőségek: eszköz-sablonok, eszközcsoport, eszköz-példányok megtekintése |
 | Példány kezelése | None |
@@ -132,48 +132,48 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Feladatok engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Frissítés | Megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
+| Nézet | None <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
+| Frissítés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
 | Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Törlés | Megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Végrehajtás | Megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait; Eszköz példányainak frissítése; Parancsok végrehajtása az eszköz példányain |
+| Törlés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
+| Végrehajtás | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait; Eszköz példányainak frissítése; Parancsok végrehajtása az eszköz példányain |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés, végrehajtás <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait; Eszköz példányainak frissítése; Parancsok végrehajtása az eszköz példányain |
 
 **Szabályok engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
-| Frissítés | Megtekintés <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
+| Nézet | None <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
+| Frissítés | Nézet <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
 | Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
-| Törlés | Megtekintés <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
+| Törlés | Nézet <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
 
 #### <a name="managing-the-app"></a>Az alkalmazás kezelése
 
 **Alkalmazásbeállítások engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Frissítés | Megtekintés   |
-| Másolás | Megtekintés <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
-| Törlés | Megtekintés   |
+| Nézet | None     |
+| Frissítés | Nézet   |
+| Másolás | Nézet <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
+| Törlés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés, másolás, törlés <br/> Egyéb függőségek: megtekintheti az eszközöket, az eszközöket, az alkalmazás-irányítópultokat, az adatexportálást, a branding, a Súgó hivatkozásait, az egyéni szerepköröket |
 
 **Alkalmazásspecifikus sablon exportálási engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Exportálás | Megtekintés <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
+| Nézet | None     |
+| Exportálás | Nézet <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
 | Teljes hozzáférés | Megtekintés, exportálás <br/> Egyéb függőségek: megtekintheti az eszközöket, az eszközöket, az alkalmazás-irányítópultokat, az adatexportálást, a branding, a Súgó hivatkozásait, az egyéni szerepköröket |
 
 **Számlázási engedélyek**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
 | Kezelés | None     |
 | Teljes hozzáférés | Kezelés |
@@ -182,21 +182,21 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Egyéni szerepkörök engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None |
-| Frissítés | Megtekintés |
+| Nézet | None |
+| Frissítés | Nézet |
 | Létrehozás | Megtekintés, frissítés |
-| Törlés | Megtekintés |
+| Törlés | Nézet |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
 
 **Felhasználói kezelési engedélyek**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
-| Hozzáadás | Megtekintés <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
-| Törlés | Megtekintés <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
+| Nézet | None <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
+| Hozzáadás | Nézet <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
+| Törlés | Nézet <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
 | Teljes hozzáférés | Megtekintés, Hozzáadás, törlés <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
 
 > [!NOTE]
@@ -206,61 +206,61 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Alkalmazás-irányítópult engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Frissítés | Megtekintés   |
+| Nézet | None     |
+| Frissítés | Nézet   |
 | Létrehozás | Megtekintés, frissítés |
-| Törlés | Megtekintés   |
+| Törlés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
 
 **Személyes irányítópultok engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Frissítés | Megtekintés   |
+| Nézet | None     |
+| Frissítés | Nézet   |
 | Létrehozás | Megtekintés, frissítés   |
-| Törlés | Megtekintés   |
+| Törlés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
 
 **A branding, a favicon és a Colors engedélyek**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Frissítés | Megtekintés   |
+| Nézet | None     |
+| Frissítés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés |
 
 **Súgó hivatkozásainak engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Frissítés | Megtekintés   |
+| Nézet | None     |
+| Frissítés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés |
 
 #### <a name="extending-the-app"></a>Az alkalmazás kiterjesztése
 
 **Adatexportálási engedélyek**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Frissítés | Megtekintés   |
+| Nézet | None     |
+| Frissítés | Nézet   |
 | Létrehozás | Megtekintés, frissítés  |
-| Törlés | Megtekintés   |
+| Törlés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
 
 **API-jogkivonat engedélyei**
 
-| Név | Függőségek |
+| Name (Név) | Függőségek |
 | ---- | -------- |
-| Megtekintés | None     |
-| Létrehozás | Megtekintés   |
-| Törlés | Megtekintés   |
+| Nézet | None     |
+| Létrehozás | Nézet   |
+| Törlés | Nézet   |
 | Teljes hozzáférés | Megtekintés, létrehozás, törlés |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan kezelheti a felhasználókat és a szerepköröket az Azure IoT Central alkalmazásban, a javasolt következő lépés a [számla kezelésének](/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)megismerése.
+Most, hogy megismerte, hogyan kezelheti a felhasználókat és a szerepköröket az Azure IoT Central alkalmazásban, a javasolt következő lépés a [számla kezelésének](howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)megismerése.

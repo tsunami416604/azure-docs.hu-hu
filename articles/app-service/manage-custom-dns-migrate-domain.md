@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679801"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470364"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név átmigrálása Azure App Service
 
@@ -48,15 +48,15 @@ Ha végül áttelepíti az egyéni DNS-nevet a régi helyről a App Service alka
 
 ### <a name="create-domain-verification-record"></a>Tartomány-ellenőrzési rekord létrehozása
 
-A tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy TXT-rekordot. A TXT rekord leképezi a _awverify. &lt;subdomain >_ _&lt;appname >. azurewebsites. net_fájlra. 
+A tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy TXT-rekordot. A TXT rekord a _awverify.&lt;altartományból >_ , hogy _&lt;AppName >. azurewebsites. net_. 
 
 A szükséges TXT-rekord az áttelepíteni kívánt DNS-rekordtól függ. Példákat a következő táblázat tartalmaz (`@` általában a legfelső szintű tartományt jelöli):
 
 | Példa DNS-rekordra | TXT-gazdagép | TXT-érték |
 | - | - | - |
-| \@ (root) | _awverify_ | _&lt;appname >. azurewebsites. net_ |
-| www (Sub) | _awverify. www_ | _&lt;appname >. azurewebsites. net_ |
-| \* (helyettesítő karakter) | _awverify. \*_ | _&lt;appname >. azurewebsites. net_ |
+| \@ (root) | _awverify_ | _&lt;AppName >. azurewebsites. net_ |
+| www (Sub) | _awverify. www_ | _&lt;AppName >. azurewebsites. net_ |
+| \* (helyettesítő karakter) | _awverify.\*_ | _&lt;AppName >. azurewebsites. net_ |
 
 A DNS-rekordok oldalon jegyezze fel az áttelepíteni kívánt DNS-név bejegyzéstípusát. A App Service támogatja a CNAME és A rekordok leképezését.
 
@@ -119,11 +119,11 @@ A tartományi szolgáltató DNS-rekordok lapján válassza ki a felvenni kíván
 
 A `contoso.com` gyökértartomány esetében például a következő táblázatban szereplő példáknak megfelelően a (z) vagy a CNAME rekord újratársítása: 
 
-| Példa FQDN-re | Rekordtípus | Gazdagép | Value (Díj) |
+| Példa FQDN-re | Rekordtípus | Gazdagép | Érték |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-| www \.contoso. com (Sub) | CNAME | `www` | _&lt;appname >. azurewebsites. net_ |
-| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;appname >. azurewebsites. net_ |
+| www\.contoso.com (Sub) | CNAME | `www` | _&lt;AppName >. azurewebsites. net_ |
+| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;AppName >. azurewebsites. net_ |
 
 Mentse a beállításokat.
 
@@ -135,9 +135,9 @@ A DNS-lekérdezések a DNS-propagálás megkezdése után azonnal megoldják a A
 
 Az alkalmazás üzembe helyezési egységét az FTP/S URL-cím `<deployment-unit>.ftp.azurewebsites.windows.net`jának tartománynevével tekintheti meg. Ellenőrizze, hogy a telepítési egység különbözik-e a forrásoldali alkalmazás és a cél alkalmazás között. Az alkalmazás központi telepítési egységét az [app Service-csomag](overview-hosting-plans.md) határozza meg. Az Azure véletlenszerűen választja ki a csomag létrehozásakor, és nem módosítható. Az Azure-ban csak két csomag van ugyanabban a telepítési egységben, amikor [ugyanabban az erőforráscsoportban *és* ugyanabban a régióban hozza létre őket](app-service-plan-manage.md#create-an-app-service-plan), de nem rendelkezik logikai értékkel, hogy a csomagok különböző üzembe helyezési egységekben legyenek. Az egyetlen módja, ha egy másik üzembe helyezési egységben is létrehoz egy csomagot, hogy egy új erőforráscsoport vagy régió számára hozzon létre egy csomagot, amíg egy másik üzembe helyezési egységet nem kap.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató egyéni SSL-tanúsítvány kötéséhez App Servicehoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-hez](app-service-web-tutorial-custom-ssl.md)
+> [SSL-tanúsítvány kötése Azure App Service](configure-ssl-bindings.md)

@@ -3,15 +3,15 @@ title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176340"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464051"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -25,6 +25,7 @@ Ezek a hatások jelenleg a szabályzatok definíciójában támogatottak:
 - [Tagadja](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Letiltva](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) (előzetes verzió)
 - [EnforceRegoPolicy](#enforceregopolicy) (előzetes verzió)
 - [Módosítása](#modify)
 
@@ -39,7 +40,7 @@ Az erőforrásoknak a Azure Resource Manager alapján történő létrehozásár
 
 Miután az erőforrás-szolgáltató egy sikerességi kódot ad vissza, a **AuditIfNotExists** és a **DeployIfNotExists** kiértékelésével megállapíthatja, hogy szükséges-e további megfelelőségi naplózás vagy művelet.
 
-Jelenleg nincs kiértékelési sorrend a **EnforceRegoPolicy** hatáshoz.
+Jelenleg nincs kiértékelési sorrend a **EnforceOPAConstraint** vagy a **EnforceRegoPolicy** effektushoz.
 
 ## <a name="disabled"></a>Letiltva
 
@@ -99,7 +100,7 @@ A hozzáfűzési effektushoz csak a **részletek** tömbje szükséges. A **rés
 
 ## <a name="modify"></a>Módosítás
 
-A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó címkék hozzáadására, frissítésére és eltávolítására szolgál. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A módosítási házirendnek mindig `mode` értékűnek _kell lennie, ha_ a célként megadott erőforrás egy erőforráscsoport. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
+A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó címkék hozzáadására, frissítésére és eltávolítására szolgál. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A módosítási házirendnek mindig _`mode` kell lennie, ha_ a célként megadott erőforrás egy erőforráscsoport. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
 
 > [!IMPORTANT]
 > A módosítás jelenleg csak címkékkel használható. Ha címkéket kezel, javasolt a hozzáfűzés helyett a módosítás használata, amely további műveleti típusokat és a meglévő erőforrások javítását is lehetővé teszi. A Hozzáfűzés azonban ajánlott, ha nem tud felügyelt identitást létrehozni.
@@ -132,8 +133,8 @@ A Modify Effect **details** tulajdonsága minden olyan altulajdonsággal rendelk
 
 Az **Operations** Property Array lehetővé teszi több címke különböző módon történő módosítását egyetlen házirend-definícióból. Minden művelet **művelet**, **mező**és **érték** tulajdonságaiból tevődik fel. A művelet meghatározza, hogy a Szervizelési feladat mit tesz a címkék területen, a mező határozza meg, hogy melyik címke módosult, és az érték határozza meg az adott címke új beállítását. Az alábbi példa a következő címke-módosításokat végzi el:
 
-- A `environment` címkét úgy állítja be, hogy "test" legyen, még akkor is, ha már létezik egy másik érték.
-- Eltávolítja a `TempResource` címkét.
+- A `environment` címkét "teszt" értékre állítja, még akkor is, ha már létezik egy másik érték.
+- Eltávolítja a `TempResource`címkét.
 - Beállítja a `Dept` címkét a szabályzat-hozzárendelésen konfigurált _DeptName_ házirend-paraméterre.
 
 ```json
@@ -188,7 +189,7 @@ A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 }
 ```
 
-2\. példa: távolítsa el a `env` címkét, adja hozzá a `environment` címkét, vagy cserélje le a meglévő `environment` címkéket paraméteres értékkel:
+2\. példa: távolítsa el a `env` címkét, és adja hozzá a `environment` címkét, vagy cserélje le a meglévő `environment` címkéket paraméteres értékre:
 
 ```json
 "then": {
@@ -218,7 +219,7 @@ A Megtagadás megakadályozza egy olyan erőforrás-kérelem használatát, amel
 
 ### <a name="deny-evaluation"></a>Kiértékelés megtagadása
 
-Egyeztetett erőforrás létrehozásakor vagy frissítésekor a Megtagadás megakadályozza a kérést az erőforrás-szolgáltatónak való küldés előtt. A kérést a rendszer `403 (Forbidden)` értékként adja vissza. A portálon a tiltott megtekinthető állapotként az üzemelő példányon, amelyet a szabályzat-hozzárendelés megakadályozott.
+Egyeztetett erőforrás létrehozásakor vagy frissítésekor a Megtagadás megakadályozza a kérést az erőforrás-szolgáltatónak való küldés előtt. A kérést a rendszer `403 (Forbidden)`ként adja vissza. A portálon a tiltott megtekinthető állapotként az üzemelő példányon, amelyet a szabályzat-hozzárendelés megakadályozott.
 
 A meglévő erőforrások kiértékelése során a megtagadási szabályzat definíciójának megfelelő erőforrások nem megfelelőként vannak megjelölve.
 
@@ -431,12 +432,68 @@ Példa: kiértékeli SQL Server adatbázisokat annak megállapítására, hogy e
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Ez a hatás a `Microsoft.ContainerService.Data` házirend-definíciós *módjával* használható. A [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) által meghatározott belépésvezérlés-szabályok átadására szolgálnak [az](https://www.openpolicyagent.org/) [Azure Kubernetes Service](../../../aks/intro-kubernetes.md)-ben.
+Ez a hatás `Microsoft.Kubernetes.Data`házirend-definíciós *módjával* van használatban. A rendszer az [Opa-korlátozási keretrendszerben](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiált forgalomirányító v3 belépésvezérlés-szabályok átadására szolgál a házirendügynök (OPA) és az Azure-beli önálló felügyelt Kubernetes-fürtök [megnyitásához](https://www.openpolicyagent.org/) .
 
 > [!NOTE]
-> A [Kubernetes Azure Policy](rego-for-aks.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzat-definíciókat támogatja.
+> Az [AK-motor Azure Policy](aks-engine.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzat-definíciókat támogatja.
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint kiértékelése
+
+A nyílt házirend-ügynök beléptetési vezérlője valós időben értékeli ki a fürtön lévő új kéréseket.
+5 percenként a fürt teljes vizsgálata befejeződött, és az eredmények Azure Policynak.
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint tulajdonságai
+
+A EnforceOPAConstraint Effect **details** tulajdonsága a forgalomirányító v3 belépésvezérlés szabályának altulajdonságaival rendelkezik.
+
+- **constraintTemplate** [kötelező]
+  - A korlátozási sablon CustomResourceDefinition (CRD), amely új korlátozásokat határoz meg. A sablon meghatározza a Rego logikát, a megkötési sémát és a megkötési paramétereket, amelyek a Azure Policy **értékein** keresztül lesznek átadva.
+- **korlátozás** [kötelező]
+  - A korlátozási sablon CRD-implementációja. Az **értékeken** keresztül átadott paramétereket `{{ .Values.<valuename> }}`ként használja. Az alábbi példában ez `{{ .Values.cpuLimit }}` és `{{ .Values.memoryLimit }}`.
+- **értékek** [nem kötelező]
+  - Meghatározza a korlátozásnak átadandó paramétereket és értékeket. Minden értéknek léteznie kell a korlátozási sablon CRD-ben.
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy példa
+
+Példa: forgalomirányító v3 belépésvezérlés-szabály a tároló CPU-és memória-erőforrás-korlátainak beállításához az AK-motorban.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Ez a hatás `Microsoft.ContainerService.Data`házirend-definíciós *módjával* van használatban. A [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) által meghatározott forgalomirányító v2 belépésvezérlés-szabályok átadására szolgálnak [az](https://www.openpolicyagent.org/) [Azure Kubernetes Service](../../../aks/intro-kubernetes.md)-ben.
+
+> [!NOTE]
+> Az AK-hoz készült [Azure Policy](rego-for-aks.md) korlátozott előzetes verzióban érhető el, és csak a beépített szabályzat-definíciókat támogatja
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy kiértékelése
 
@@ -445,7 +502,7 @@ A nyílt házirend-ügynök beléptetési vezérlője valós időben értékeli 
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy tulajdonságai
 
-A EnforceRegoPolicy-effektus **details** tulajdonsága a Rego belépésvezérlés szabályát leíró altulajdonságokkal rendelkezik.
+A EnforceRegoPolicy effektus **details** tulajdonsága a forgalomirányító v2 belépésvezérlés szabályát leíró altulajdonságokkal rendelkezik.
 
 - **policyId** [kötelező]
   - Egy egyedi név, amelyet paraméterként adott át a Rego belépésvezérlési szabálynak.
@@ -456,7 +513,7 @@ A EnforceRegoPolicy-effektus **details** tulajdonsága a Rego belépésvezérlé
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy példa
 
-Példa: Rego-szabály, amely csak a megadott tároló lemezképeit engedélyezi az AK-ban.
+Példa: forgalomirányító v2 belépésvezérlési szabály, amely csak a megadott tároló lemezképeit engedélyezi az AK-ban.
 
 ```json
 "if": {
@@ -512,7 +569,7 @@ Ha az 1. és a 2. házirend mindkét esetben megtagadta a Megtagadás hatását,
 
 Minden hozzárendelés külön kiértékelésre kerül. Ilyen esetben nincs lehetőség arra, hogy egy erőforrás a hatókörben lévő eltérések miatt nem csúszik meg. A rétegbeli házirendek vagy a szabályzatok átfedésének nettó eredménye az **összesítő legszigorúbbnak**minősül. Ha például az 1. és a 2. szabályzat is megtagadási hatást gyakorolt, az átfedésben lévő és ütköző házirendek letiltják az erőforrásokat. Ha továbbra is szüksége van az erőforrás létrehozására a célként megadott hatókörben, tekintse át az egyes hozzárendelések kizárásait, hogy a megfelelő házirendek a megfelelő hatókörökre legyenek hatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.

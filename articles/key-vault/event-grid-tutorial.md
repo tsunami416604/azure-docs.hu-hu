@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 56490ede89a5859ef73d9110b46ea55fd9b96d54
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 3b24da4d988554da240baba2984df44ff4744aaf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033554"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464104"
 ---
 # <a name="how-to-receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Útmutató: a Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)
 
@@ -120,7 +120,7 @@ Most hozzon létre egy webhookot az újonnan létrehozott runbook elindításáh
 
 Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com)használatával.
 
-1.  Nyissa meg a Azure Portal a következő hivatkozással: https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
+1.  Nyissa meg a Azure Portal a következő hivatkozással: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
 
 1.  Nyissa meg a Key vaultot, és válassza az "események" fület. Ha nem látja az események lapot, győződjön meg arról, hogy a [portál előzetes verzióját](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)használja.
 
@@ -182,13 +182,13 @@ Ellenőrizze, hogy a Event Grid-előfizetése tulajdonság konfigurálva van-e. 
 
 1. Válassza ki a legutóbbi feladatot, és tekintse meg az Event gridből a webhookba küldendő POST kérelmet. Vizsgálja meg a JSON-t, és ellenőrizze, hogy helyesek-e a Key Vault és az eseménytípus paraméterei. Ha a JSON-objektum "eseménytípus" paramétere megegyezik a Key vaultban bekövetkezett eseménnyel (ebben a példában a Microsoft. kulcstartó. SecretNearExpiry), a teszt sikeres volt.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="unable-to-create-event-subscription"></a>Nem sikerült létrehozni az esemény-előfizetést
 
 Regisztrálja újra Event Grid és Key Vault szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Ha követte a fenti lépéseket, most már készen áll arra, hogy programozott módon válaszoljon a Key vaultban tárolt titkok állapotának változásaira.
 

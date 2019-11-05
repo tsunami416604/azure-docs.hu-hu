@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 11/02/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018970"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468467"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával
 
@@ -72,7 +72,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Először hozza létre az oktatóanyaghoz tartozó erőforrásokat tartalmazó erőforráscsoportot:
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. A Azure Portal kezdőlapon válassza az **erőforráscsoportok** > **Hozzáadás**lehetőséget.
+2. A Azure Portal kezdőlapon válassza az **erőforráscsoportok** > **Hozzáadás**elemet.
 3. Az **erőforráscsoport neve**mezőbe írja be a következőt: **FW-Hybrid-test**.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 5. A régió területen válassza az **USA keleti** **régiója**lehetőséget. A későbbiekben létrehozott összes erőforrásnak ugyanazon a helyen kell lennie.
@@ -107,14 +107,6 @@ Most hozza létre a VNet:
 9. Az **Alhálózat** területen a **Név** mezőbe írja be a következőt: **SN-Workload**.
 10. A **címtartomány**mezőbe írja be a következőt: **10.6.0.0/24**.
 11. Fogadja el a többi alapértelmezett beállítást, majd kattintson a **Létrehozás**gombra.
-
-Most hozzon létre egy második alhálózatot az átjáróhoz.
-
-1. A **VNet-küllő** lapon válassza az **alhálózatok**lehetőséget.
-2. Válassza a **+ alhálózat**lehetőséget.
-3. A **név**mezőbe írja be a következőt: **GatewaySubnet**.
-4. A **címtartomány (CIDR blokk)** **10.6.1.0/24**típusában.
-5. Kattintson az **OK** gombra.
 
 ## <a name="create-the-on-premises-virtual-network"></a>Helyszíni virtuális hálózat létrehozása
 
@@ -157,14 +149,14 @@ Most telepítse a tűzfalat a tűzfal hub virtuális hálózatára.
 2. A bal oldali oszlopban válassza a **hálózatkezelés**, majd a **tűzfal**lehetőséget.
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
-   |Beállítás  |Value  |
+   |Beállítás  |Érték  |
    |---------|---------|
-   |Subscription     |\<az Ön előfizetése\>|
-   |Resource group     |**FW-Hybrid-test** |
+   |Előfizetés     |\<az Ön előfizetése\>|
+   |Erőforráscsoport     |**FW-Hybrid-test** |
    |Name (Név)     |**AzFW01**|
-   |Location     |Válassza a korábban használt helyet|
-   |Virtuális hálózat választása     |**Meglévő használata**:<br> **VNet – központ**|
-   |Nyilvános IP-cím     |Új létrehozása: <br>Név - **FW-pip**. |
+   |Földrajzi egység     |Válassza a korábban használt helyet|
+   |Válasszon egy virtuális hálózatot     |**Meglévő használata**:<br> **VNet – központ**|
+   |Nyilvános IP-cím     |Új létrehozása: <br>**Név** - **FW-pip**. |
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
 6. Tekintse át az összegzést, majd válassza a **Létrehozás** lehetőséget a tűzfal létrehozásához.
@@ -341,7 +333,7 @@ Most hozza létre az alapértelmezett útvonalat a küllő alhálózatból.
 2. Az útválasztási táblázat létrehozása után válassza ki azt az útválasztási táblázat lap megnyitásához.
 3. Válassza az **útvonalak** lehetőséget a bal oldali oszlopban.
 4. Válassza a **Hozzáadás** lehetőséget.
-5. Az útvonal neve mezőbe írja be a következőt: **ToSpoke**.
+5. Az útvonal neve mezőbe írja be a következőt: **ToHub**.
 6. A címzési előtag mezőbe írja be a következőt: **0.0.0.0/0**.
 7. A következő ugrás típusa beállításnál válassza a **virtuális berendezés**lehetőséget.
 8. A következő ugrási cím mezőbe írja be a tűzfal a korábban feljegyzett magánhálózati IP-címét.
@@ -368,12 +360,12 @@ Hozzon létre egy virtuális gépet a küllős virtuális hálózaton, amely nyi
 2. A **népszerű**területen válassza a **Windows Server 2016 Datacenter**elemet.
 3. Adja meg a következő értékeket a virtuális gép számára:
     - **Erőforráscsoport** – válassza az **FW-Hybrid-test**elemet.
-    - **Virtuális gép neve**: *VM – küllős-01*.
+    - **Virtuális gép neve**: *VM-küllős-01*.
     - **Régió** – a korábban használt régió.
     - **Felhasználónév**: *azureuser*.
     - **Jelszó**: *Azure123456!*
 4. Válassza a **Tovább: lemezek**lehetőséget.
-5. Fogadja el az alapértelmezett értékeket **, és válassza a tovább lehetőséget: Hálózatkezelés**.
+5. Fogadja el az alapértelmezett értékeket, és válassza a **Tovább: hálózatkezelés**lehetőséget.
 6. Válassza ki a virtuális hálózat **VNet** , és az alhálózat az **SN-munkaterhelés**.
 7. A **nyilvános IP-címek**esetében válassza a **nincs**lehetőséget.
 8. **Nyilvános bejövő portok**esetében válassza a **kiválasztott portok engedélyezése**lehetőséget, majd válassza a **http (80)** és az **RDP (3389) lehetőséget.**
@@ -384,7 +376,7 @@ Hozzon létre egy virtuális gépet a küllős virtuális hálózaton, amely nyi
 ### <a name="install-iis"></a>Az IIS telepítése
 
 1. A Azure Portal nyissa meg a Cloud Shell, és győződjön meg róla, hogy a **PowerShell**-re van állítva.
-2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez:
+2. A következő parancs futtatásával telepítse az IIS-t a virtuális gépre, és szükség esetén módosítsa a helyet:
 
    ```azurepowershell-interactive
    Set-AzVMExtension `
@@ -420,15 +412,15 @@ Ez egy virtuális gép, amelyet a Távoli asztal a nyilvános IP-címhez való k
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 
-1. Először kérje le, majd jegyezze fel a **VM-küllős-01** virtuális gép magánhálózati IP-címét.
+1. Először jegyezze fel a **VM-küllős-01** virtuális gép magánhálózati IP-címét.
 
 2. Az Azure Portalról csatlakozzon a **VM-Onprem** virtuális géphez.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse\<meg a http://VM-küllő-\>01 magánhálózati IP-címét.
+3. Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse meg a http://\<VM-küllős-01 magánhálózati IP-\>.
 
-   A **VM-küllős-01** weblapnak kell megjelennie: ![VM-küllős-01 weblap](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   Meg kell jelennie a **VM-küllős-01** weboldalnak: ![VM-küllős-01 weblap](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 
 4. A **VM-helyszíni** virtuális gépről nyisson meg egy távoli asztalt a virtuális gép **által küllő-01** ÉRTÉKre a magánhálózati IP-címen.
 
@@ -459,4 +451,4 @@ A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is haszn
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)
+> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

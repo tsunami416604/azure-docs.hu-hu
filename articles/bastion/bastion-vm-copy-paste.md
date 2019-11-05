@@ -1,66 +1,59 @@
 ---
-title: 'Másolja és illessze be a és a virtuális gépről: Az Azure megerősített |} A Microsoft Docs'
-description: Ebből a cikkből megtudhatja, hogyan másolja és illessze be a és a megerősített használata Azure virtuális gépből.
+title: 'Másolás és beillesztés egy virtuális gépről: Azure-megerősített | Microsoft Docs'
+description: Ebből a cikkből megtudhatja, hogyan másolhat és illeszthet be egy Azure-beli virtuális gépről a Bastion használatával.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9d69d1a9fae258c9546a8c794fc0b0c68b952049
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191810"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519355"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion-preview"></a>Másolja és illessze be a virtuális géphez: Az Azure megerősített (előzetes verzió)
+# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Másolás és beillesztés virtuális gépre: Azure Bastion
 
-Ez a cikk segít másolja és illessze be a szöveget, és a virtuális gépek Azure megerősített használatakor. Egy virtuális gép használata előtt győződjön meg arról, hogy követte a lépéseket [hozzon létre egy bástyagazdagép](bastion-create-host-portal.md). Ezután csatlakozzon a virtuális Géphez, amelyek segítségével a használni kívánt [RDP](bastion-connect-vm-rdp.md) vagy [SSH](bastion-connect-vm-ssh.md).
+Ebből a cikkből megtudhatja, hogyan másolhat és illeszthet be szöveget virtuális gépekre az Azure Bastion használatakor. A virtuális gép használata előtt győződjön meg arról, hogy követte a [megerősített gazdagép létrehozásának](bastion-create-host-portal.md)lépéseit. Ezután csatlakozzon ahhoz a virtuális géphez, amelyet [RDP](bastion-connect-vm-rdp.md) vagy [SSH](bastion-connect-vm-ssh.md)használatával szeretne használni.
 
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+A vágólap speciális API-hozzáférését támogató böngészők esetében a helyi eszköz és a távoli munkamenet között ugyanúgy másolhatja és illesztheti be a szöveget, ahogyan a helyi eszközön lévő alkalmazások között másol és beilleszti. Más böngészők esetében használhatja a megerősített vágólap-hozzáférési eszköz palettáját.
 
-A speciális vágólapra API-hozzáférést támogató böngészőkben másolja, és illessze be a szöveget a helyi eszköz és a távoli munkamenet között, közötti másolást és beillesztést a helyi eszközön alkalmazások ugyanúgy. Más böngészők használhatja a megerősített vágólapra hozzáférés eszköz palettáját.
+   ![Vágólap engedélyezése](./media/bastion-vm-manage/allow.png)
 
-  ![A vágólap engedélyezése](./media/bastion-vm-manage/allow.png)
+Csak a szöveg másolása/beillesztése támogatott. A közvetlen másolás és beillesztés esetében előfordulhat, hogy a böngésző a megerősített munkamenet inicializálásakor kéri a vágólap-hozzáférés megadását. A vágólap elérésének **engedélyezése** a weblap számára.
 
-Csak szöveg másolási és beillesztési használata támogatott. A közvetlen másolás és beillesztés a böngésző kérheti a vágólap hozzáférésének a megerősített munkamenet inicializálásakor. **Lehetővé teszi** a weblap a vágólap elérésére.
+## <a name="to"></a>Másolás távoli munkamenetbe
 
-## <a name="to"></a>A távoli munkamenet másolása
+Miután a [Azure Portal ](https://portal.azure.com)használatával kapcsolódott a virtuális géphez, hajtsa végre a következő lépéseket:
 
-A virtuális gépet a csatlakozást követően a [az Azure portal](https://aka.ms/BastionHost) a megerősített előzetes verzió:
+1. Másolja a szöveget/tartalmat a helyi eszközről a helyi vágólapra.
+1. A távoli munkamenet során a két nyíl kiválasztásával indítsa el a megerősített vágólap-hozzáférési eszköz palettáját. A nyilak a munkamenet bal középső részén találhatók.
 
-1. A szöveges tartalom másolja vágólapra a helyi eszközről.
-1. A távoli munkamenet során indítsa el a két nyíl kiválasztásával a megerősített vágólapra hozzáférés eszköz palettáját. A nyilak a munkamenet a bal oldalon középen találhatók.
+   ![eszközpaletta](./media/bastion-vm-manage/left.png)
 
-    ![paletta eszköz](./media/bastion-vm-manage/left.png)
+   ![vágólapra](./media/bastion-vm-manage/clipboard.png)
+1. A másolt szöveg általában automatikusan megjelenik a bástya másolási beillesztési palettáján. Ha a szöveg nem létezik, illessze be a szöveget a paletta szöveg területén.
+1. Miután a szöveg szerepel a szövegmezőben, beillesztheti a távoli munkamenetbe.
 
-    ![a vágólap](./media/bastion-vm-manage/clipboard.png)
+   ![illessze be](./media/bastion-vm-manage/local.png)
 
-1. A másolt szöveget általában automatikusan megjeleníti a megerősített másolás-beillesztés palettán. Ha a szöveg nem létezik, majd illessze be a szöveget a terület a palettán.
-1. Ha a szöveget szöveges területén, illessze be azt a távoli munkamenethez.
+## <a name="from"></a>Másolás távoli munkamenetből
 
-    ![Beillesztés](./media/bastion-vm-manage/local.png)
+Miután a [Azure Portal ](https://portal.azure.com)használatával kapcsolódott a virtuális géphez, hajtsa végre a következő lépéseket:
 
-## <a name="from"></a>Másolja át a távoli munkamenet
+1. Másolja a távoli munkamenet szövegét/tartalmát a távoli vágólapra (a CTRL-C használatával).
 
-A virtuális gépet a csatlakozást követően a [az Azure portal](https://aka.ms/BastionHost) a megerősített előzetes verzió:
+   ![eszközpaletta](./media/bastion-vm-manage/remote.png)
+1. A távoli munkamenet során a két nyíl kiválasztásával indítsa el a megerősített vágólap-hozzáférési eszköz palettáját. A nyilak a munkamenet bal középső részén találhatók.
 
-1. A szöveges tartalom másolása a távoli munkamenet távoli vágólapra (Ctrl + C használatával).
+   ![vágólapra](./media/bastion-vm-manage/clipboard2.png)
+1. A másolt szöveg általában automatikusan megjelenik a bástya másolási beillesztési palettáján. Ha a szöveg nem létezik, illessze be a szöveget a paletta szöveg területén.
+1. Miután a szöveg szerepel a szövegmezőben, beillesztheti azt a helyi eszközre.
 
-    ![paletta eszköz](./media/bastion-vm-manage/remote.png)
-
-1. A távoli munkamenet során indítsa el a két nyíl kiválasztásával a megerősített vágólapra hozzáférés eszköz palettáját. A nyilak a munkamenet a bal oldalon középen találhatók.
-
-    ![a vágólap](./media/bastion-vm-manage/clipboard2.png)
-
-1. A másolt szöveget általában automatikusan megjeleníti a megerősített másolás-beillesztés palettán. Ha a szöveg nem létezik, majd illessze be a szöveget a terület a palettán.
-1. Ha a szöveget szöveges területén, illessze be azt a helyi eszközre.
-
-    ![Beillesztés](./media/bastion-vm-manage/local2.png)
+   ![illessze be](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [megerősített – gyakori kérdések](bastion-faq.md).
+Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

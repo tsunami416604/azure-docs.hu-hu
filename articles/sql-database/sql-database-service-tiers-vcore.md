@@ -1,141 +1,183 @@
 ---
-title: Azure SQL Database szolgáltatás – virtuális mag | Microsoft Docs
-description: A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független méretezését, a helyszíni teljesítmény egyeztetését és az árak optimalizálását.
+title: Azure SQL Database Service – virtuális mag-modell áttekintése | Microsoft Docs
+description: A virtuális mag beszerzési modellje lehetővé teszi a számítási és tárolási erőforrások egymástól független méretezését, a helyszíni teljesítmény egyeztetését és az árak optimalizálását.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 11/04/2019
+ms.openlocfilehash: 2bbdd565a861004014ca4161856bba83ec0be511
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034999"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496045"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Válasszon a virtuális mag szolgáltatási szintjei közül, és térjen át a DTU szolgáltatási szintjeiről
+# <a name="vcore-model-overview"></a>a virtuális mag-modell áttekintése
 
-A Virtual Core (virtuális mag) alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független méretezését, a helyszíni teljesítmény egyeztetését és az árak optimalizálását. Azt is lehetővé teszi, hogy kiválassza a hardverek generációját:
+A Virtual Core (virtuális mag) modell számos előnyt kínál:
 
-- **Gen4**: Akár 24 logikai processzor Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, virtuális mag = 1 PP (fizikai mag), 7 GB/virtuális mag, csatlakoztatott SSD
-- **Gen5**: Akár 80 logikai processzor Intel E5-2673 v4 (Broadwell) 2,3-GHz processzorok, virtuális mag = 1 LP (Hyper-thread), 5,1 GB/virtuális mag a kiépített számítási feladatokhoz és akár 24 GB/virtuális mag a kiszolgáló nélküli számításokhoz, gyors eNVM SSD
+- Nagyobb számítási, memória-, IO-és tárolási korlátok.
+- Szabályozhatja a hardver generációját, hogy jobban megfeleljen a számítási és memória-követelményeknek.
+- A [Azure Hybrid Benefit (AHB)](sql-database-azure-hybrid-benefit.md) és a [fenntartott példány (ri)](sql-database-reserved-capacity.md)díjszabási kedvezményei.
+- A hardver részletes adatainak nagyobb átláthatósága a számítási teljesítmény érdekében megkönnyíti a helyszíni telepítések áttelepítésének megtervezését.
 
-A Gen4-hardver lényegesen több memóriát kínál virtuális mag. A Gen5-hardverek azonban jóval nagyobb számítási erőforrások vertikális felskálázását teszik lehetővé.
+## <a name="service-tiers"></a>Szolgáltatásszintek
 
-> [!IMPORTANT]
-> Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
-> [!NOTE]
-> További információ a DTU-alapú szolgáltatási rétegekről: [szolgáltatási szintek a DTU-alapú vásárlási modellhez](sql-database-service-tiers-dtu.md). További információ a DTU-alapú és a virtuális mag-alapú vásárlási modellek szolgáltatási szintjei közötti különbségekről: [Azure SQL Database vásárlási modellek](sql-database-purchase-models.md).
-
-## <a name="service-tier-characteristics"></a>A szolgáltatási réteg jellemzői
-
-A virtuális mag-alapú vásárlási modell három szolgáltatási szintet biztosít: általános célú, nagy kapacitású és üzleti szempontból kritikus fontosságú. Ezeket a szolgáltatási szinteket számos számítási méret, magas rendelkezésre állású kialakítás, hibatűrési módszerek, a tárolási típusok és méretek, valamint az I/O-tartományok különböztetik meg.
-
-A biztonsági mentések elvégzéséhez külön kell konfigurálni a szükséges tárolási és megőrzési időt. A biztonsági mentés megőrzési időtartamának beállításához nyissa meg a Azure Portal, lépjen a kiszolgálóra (nem az adatbázisra), majd lépjen a **biztonsági másolatok kezelése** >  a**házirend konfigurálása** > **időpontra vonatkozó visszaállítási konfiguráció** > **7-35 nap**.
-
-A következő táblázat a három szintje közötti különbségeket ismerteti:
+A virtuális mag modellben található szolgáltatási rétegek beállításai közé tartozik a általános célú, a üzletileg kritikus és a nagy kapacitású. A szolgáltatási szinten általában a tárolási architektúra, a tárhely és az IO-korlátok, valamint a rendelkezésre állással és a vész-helyreállítással kapcsolatos üzletmenet-folytonossági lehetőségek vannak meghatározva.
 
 ||**Általános célú**|**Üzleti szempontból kritikus**|**Nagy kapacitású**|
 |---|---|---|---|
-|A következőkre alkalmas|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|A legtöbb üzleti számítási feladat. A tárterület méretének automatikus skálázása 100 TB-ig, folyékony vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|
-|Compute|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 0,5 – 16 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|
-|Memory (Memória)|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 Akár 24 GB/virtuális mag|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag |**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag|
-|Storage|Távoli tárterületet használ.<br/>**Önálló adatbázis és rugalmas készlet kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB - 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázis és rugalmas készlet kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
-|I/O-átviteli sebesség (hozzávetőleges)|**Önálló adatbázis és rugalmas készlet**: 500 IOPS/virtuális mag legfeljebb 40000 maximális IOPS.<br/>**Felügyelt példány**: A [fájl méretétől](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)függ.|5000 IOPS maximum 200 000 maximális IOPS|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ.|
-|Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](sql-database-read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](sql-database-read-scale-out.md)|
+|A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
+|Storage|Távoli tárterületet használ.<br/>**Önálló adatbázis és rugalmas készlet kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázis és rugalmas készlet kiépített számítási felszámítása**:<br/>5 GB – 8 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|I/O-átviteli sebesség (hozzávetőleges)|**Önálló adatbázis és rugalmas készlet**: 500 IOPS/virtuális mag legfeljebb 40000 maximális IOPS.<br/>**Felügyelt példány**: a [fájl méretétől](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)függ.|5000 IOPS/virtuális mag legfeljebb 320 000 maximális IOPS|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ.|
+|Elérhetőség|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](sql-database-read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](sql-database-read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
 |Memóriabeli|Nem támogatott|Támogatott|Nem támogatott|
 |||
 
-> [!NOTE]
-> Az alapszintű szolgáltatási szinten ingyenes Azure SQL-adatbázist szerezhet be az ingyenes Azure-fiókkal együtt. További információkért lásd: [felügyelt felhőalapú adatbázis létrehozása az ingyenes Azure-fiókkal](https://azure.microsoft.com/free/services/sql-database/).
 
-- További információ a virtuális mag erőforrás-korlátairól: [virtuális mag erőforrás-korlátai egyetlen adatbázisban](sql-database-vcore-resource-limits-single-databases.md) és a [virtuális mag erőforrás-korlátai felügyelt példányokban](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- További információ az általános célú és az üzleti szempontból kritikus szolgáltatási szinten: [általános célú és üzleti szempontból kritikus szolgáltatási szintek](sql-database-service-tiers-general-purpose-business-critical.md).
-- További információ a nagy kapacitású szolgáltatási szintjéről a virtuális mag-alapú vásárlási modellben: [nagy kapacitású szolgáltatási réteg](sql-database-service-tier-hyperscale.md).  
+### <a name="choosing-a-service-tier"></a>Szolgáltatási szint kiválasztása
 
-## <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
+Az adott munkaterhelés szolgáltatási szintjeinek kiválasztásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy Azure SQL Database akár 30%-ot is megtakaríthat a helyszíni SQL Server-licencek frissítési garanciával való használatával.
+- [Mikor válassza ki az általános célú szolgáltatási szintet](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Mikor válassza ki a üzletileg kritikus szolgáltatási szintet](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [Mikor válassza ki a nagy kapacitású szolgáltatási szintet](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
-![Árképzési](./media/sql-database-service-tiers/pricing.png)
 
-A Azure Hybrid Benefit segítségével csak az alapul szolgáló Azure-infrastruktúráért kell fizetnie, ha az SQL-adatbázis motorjának meglévő SQL Server licencét használja (alapszintű számítási díjszabás), vagy a mögöttes infrastruktúráért és a SQL Serverért is fizethet. licenc (licencbe foglalt díjszabás).
+## <a name="compute-tiers"></a>Számítási szintek
 
-A licencelési modellt a Azure Portal használatával vagy a következő API-k egyikével választhatja ki vagy módosíthatja:
+A virtuális mag modellben a számítási rétegek lehetőségei közé tartoznak a kiépített és a kiszolgáló nélküli számítási szintek.
 
-- A licenc típusának beállítása vagy frissítése a PowerShell használatával:
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+### <a name="provisioned-compute"></a>Kiépített számítási teljesítmény
 
-- A licenc típusának beállítása vagy frissítése az Azure CLI használatával:
+A kiépített számítási szintek meghatározott mennyiségű számítási erőforrást biztosítanak, amelyek a munkaterhelés-tevékenységektől függetlenül folyamatosan vannak kiépítve, és az óránként rögzített számítási kapacitás mennyiségét számlázzák.
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- A licenc típusának beállítása vagy frissítése a REST API használatával:
+### <a name="serverless-compute"></a>Kiszolgáló nélküli számítástechnika
 
-  - [Adatbázisok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Adatbázisok – frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Felügyelt példányok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+A [kiszolgáló nélküli számítási réteg](sql-database-serverless.md) automatikusan méretezi a számítási erőforrásokat a munkaterhelés-tevékenységek alapján, és a másodpercenként felhasznált számítási kapacitás mennyiségét.
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrálás a DTU-alapú modellből a virtuális mag-alapú modellbe
 
-### <a name="migrate-a-database"></a>Adatbázisok migrálása
 
-A DTU-alapú vásárlási modellből a virtuális mag-alapú vásárlási modellbe való Migrálás hasonló a standard és prémium szintű szolgáltatási szintek a DTU-alapú vásárlási modellben való frissítéséhez vagy visszalépéséhez.
+## <a name="hardware-generations"></a>Hardver generációi
 
-### <a name="migrate-databases-with-geo-replication-links"></a>Adatbázisok migrálása geo-replikációs hivatkozásokkal
+A virtuális mag modell hardver-létrehozási lehetőségei közé tartozik a Gen 4/5, az M-Series (előzetes verzió) és a Fsv2 sorozat (előzetes verzió). A hardverek létrehozása általában meghatározza a számítási és a memóriabeli korlátokat, valamint azokat a jellemzőket, amelyek hatással vannak a munkaterhelés teljesítményére.
 
-A DTU-alapú modellről a virtuális mag-alapú vásárlási modellre való Migrálás hasonló a standard és prémium szintű szolgáltatási szinten lévő adatbázisok közötti földrajzi replikálási kapcsolatok frissítéséhez vagy visszaminősítéséhez. Az áttelepítés során nem kell leállítania a Geo-replikálást, de a következő sorrendi szabályokat kell követnie:
+### <a name="gen4gen5"></a>Gen4/Gen5
 
-- A frissítéskor először frissítenie kell a másodlagos adatbázist, majd frissítenie kell az elsődlegest.
-- A visszalépéskor a sorrend megfordítása: először az elsődleges adatbázist kell visszaadnia, majd vissza kell állítani a másodlagosat.
+- A Gen4/Gen5-hardver kiegyensúlyozott számítási és memória-erőforrásokat biztosít, és a legtöbb olyan adatbázis-számítási feladathoz alkalmas, amely nem rendelkezik nagyobb memóriával, magasabb virtuális mag vagy gyorsabb, virtuális mag követelményekkel, amelyet a Fsv2-sorozat vagy az M sorozat biztosít.
 
-Ha a Geo-replikációt két rugalmas készlet között használja, javasoljuk, hogy jelöljön ki egy készletet elsődlegesként, a másikat pedig másodlagosként. Ebben az esetben, ha rugalmas készleteket telepít át, ugyanazt a sorrendi útmutatást kell használnia. Ha azonban olyan rugalmas készletekkel rendelkezik, amelyek elsődleges és másodlagos adatbázisokat is tartalmaznak, akkor a készletet a magasabb kihasználtsággal kell kezelni elsődlegesként, és ennek megfelelően kövesse az előkészítési szabályokat.  
+Azokon a régiókban, ahol a Gen4/Gen5 elérhető, tekintse meg a [Gen4/Gen5 rendelkezésre állását](#gen4gen5-1).
 
-Az alábbi táblázat a speciális áttelepítési forgatókönyvekhez nyújt útmutatást:
+### <a name="fsv2-seriespreview"></a>Fsv2 sorozat (előzetes verzió)
 
-|Aktuális szolgáltatási szintek|Cél szolgáltatási szintje|Áttelepítés típusa|Felhasználói műveletek|
-|---|---|---|---|
-|Standard|Általános célú|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
-|Prémium|Üzletileg kritikus|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
-|Standard|Üzletileg kritikus|Frissítés|Először át kell telepítenie a másodlagost|
-|Üzletileg kritikus|Standard|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Prémium|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Általános célú|Prémium|Frissítés|Először át kell telepítenie a másodlagost|
-|Üzletileg kritikus|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Általános célú|Üzletileg kritikus|Frissítés|Először át kell telepítenie a másodlagost|
-||||
+- A Fsv2 sorozat egy számítási optimalizált hardveres beállítás, amely alacsony CPU-késést és nagy órajelet biztosít a legtöbb CPU-igényű munkaterheléshez.
+- A számítási feladattól függően a Fsv2 sorozat több CPU-teljesítményt biztosíthat virtuális mag, mint a Gen5, és az 72 virtuális mag mérete nagyobb CPU-teljesítményt biztosít, kevesebb, mint 80 virtuális mag a Gen5. 
+- A Fsv2 kevesebb memóriát és tempdb biztosít, mint a többi hardver, így a korlátokra érzékeny munkaterhelések Ehelyett a Gen5 vagy az M sorozatokat is érdemes figyelembe venni.  
 
-@no__t – 0 a standard szint 100 DTU legalább 1 virtuális mag kell lennie, és a prémium szint 125 DTU legalább 1 virtuális mag kell lennie.
+Azokon a régiókban, ahol elérhető a Fsv2 sorozat, tekintse meg a [Fsv2-sorozat elérhetőségét](#fsv2-series)ismertető témakört.
 
-### <a name="migrate-failover-groups"></a>Feladatátvételi csoportok áttelepíthetők
 
-A több adatbázissal rendelkező feladatátvételi csoportok áttelepítése az elsődleges és a másodlagos adatbázisok egyedi áttelepítését igényli. A folyamat során ugyanazok a megfontolások és az előkészítési szabályok érvényesek. Miután az adatbázisok át lettek konvertálva a virtuális mag-alapú vásárlási modellre, a feladatátvételi csoport ugyanazokkal a házirend-beállításokkal marad érvényben.
+### <a name="m-seriespreview"></a>M-sorozat (előzetes verzió)
 
-### <a name="create-a-geo-replication-secondary-database"></a>Geo-replikációs másodlagos adatbázis létrehozása
+- Az M-sorozat egy memória-optimalizált hardveres beállítás, amely több memóriát és nagyobb számítási korlátot igényel, mint amennyit a Gen5 biztosít.
+- Az M-sorozat 29 GB-ot biztosít virtuális mag és 128 virtuális mag, ami növeli a Gen5 viszonyított memória korlátját a 8x-tól közel 4 TB-ig.
 
-A Geo-replikációs másodlagos adatbázist (a Geo-másodlagost) csak az elsődleges adatbázishoz használt szolgáltatási réteg használatával lehet létrehozni. A nagy log-generálási arányú adatbázisok esetében javasoljuk, hogy a Geo-másodlagost ugyanazzal a számítási mérettel hozza létre, mint az elsődleges.
+Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést. Ha a támogatási kérést jóváhagyják, az M sorozat kiválasztási és kiépítési tapasztalatai ugyanazt a mintát követik, mint az egyéb hardveres generációk esetében. Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
 
-Ha egyetlen elsődleges adatbázishoz hoz létre egy geo-másodlagost a rugalmas készletben, akkor győződjön meg arról, hogy a készlet `maxVCore` beállítása megfelel az elsődleges adatbázis számítási méretének. Ha egy másik rugalmas készletben elsődlegesként hoz létre egy geo-másodlagost, azt javasoljuk, hogy a készletek azonos `maxVCore` beállításokkal rendelkezzenek.
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Adatbázis-másolat használata DTU-alapú adatbázis virtuális mag-alapú adatbázisba való átalakításához
+### <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
-A DTU-alapú számítási mérettel rendelkező adatbázisok bármely adatbázisba másolhatók egy virtuális mag-alapú számítási mérettel korlátozás vagy speciális sorrendbe rendezés nélkül, feltéve, hogy a célként megadott számítási méret támogatja a forrásadatbázis maximális adatbázis-méretét. Az adatbázis-másolat létrehoz egy pillanatképet az adatokról a másolási művelet kezdési időpontjáról, és nem szinkronizálja az adatokat a forrás és a cél között.
+
+|Hardver létrehozása  |Compute  |Memory (Memória)  |
+|:---------|:---------|:---------|
+|Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorok<br>-Akár 24 virtuális mag (1 virtuális mag = 1 fizikai mag)  |-7 GB/virtuális mag<br>– Akár 168 GB-nyi kiépítés|
+|Gen5     |**Kiépített számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorok<br>– Akár 16 virtuális mag automatikus méretezés (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítás**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 48 GB-ig terjedő automatikus méretezés|
+|Fsv2-sorozat     |-Intel Xeon Platinum 8168 (SkyLake) processzorok<br>– A 3,4 GHz-es és az összes Core Turbo órajel-sebesség, valamint a 3,7 GHz-es maximális, egyetlen Core Turbo órajel.<br>-Kiépítés 72 virtuális mag (1 virtuális mag = 1 Hyper-thread)|-1,9 GB/virtuális mag<br>– 136 GB kiépítése|
+|M sorozat     |-Intel Xeon E7-8890 v3 2,5 GHz-es processzorok<br>-Kiépítés 128 virtuális mag (1 virtuális mag = 1 Hyper-thread)|– 29 GB/virtuális mag<br>– 3,7 TB kiépítése|
+
+
+Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az önálló adatbázisok erőforrás-korlátai (virtuális mag)](sql-database-vcore-resource-limits-single-databases.md)vagy a [rugalmas készletek erőforrás-korlátai (virtuális mag)](sql-database-vcore-resource-limits-elastic-pools.md).
+
+### <a name="selecting-a-hardware-generation"></a>Hardver-létrehozás kiválasztása
+
+A Azure Portal a létrehozáskor kiválaszthatja egy SQL-adatbázis vagy-készlet hardver-generációját, vagy megváltoztathatja egy meglévő SQL-adatbázis vagy-készlet hardveres létrehozását is.
+
+**Hardveres generáció kiválasztása SQL-adatbázis vagy-készlet létrehozásakor**
+
+Részletes információkat az [SQL Database létrehozása](sql-database-single-database-get-started.md)című témakörben talál.
+
+Az **alapvető** beállítások lapon válassza az **adatbázis konfigurálása** hivatkozást a **számítás + tárolás** szakaszban, majd válassza a **konfiguráció módosítása** hivatkozást:
+
+  ![adatbázis konfigurálása](media/sql-database-service-tiers-vcore/configure-sql-database.png)
+
+Válassza ki a kívánt hardver-generálást:
+
+  ![hardver kiválasztása](media/sql-database-service-tiers-vcore/select-hardware.png)
+
+
+**Meglévő SQL-adatbázis vagy-készlet hardveres létrehozásának módosítása**
+
+Adatbázis esetén az Áttekintés lapon válassza ki a **díjszabási szintet** mutató hivatkozást:
+
+  ![hardver módosítása](media/sql-database-service-tiers-vcore/change-hardware.png)
+
+Készlet esetén az Áttekintés lapon válassza a **Konfigurálás**lehetőséget.
+
+Kövesse a konfiguráció módosításához szükséges lépéseket, és válassza ki a hardver generációját az előző lépésekben leírtak szerint.
+
+### <a name="hardware-availability"></a>Hardver rendelkezésre állása
+
+#### <a name="gen4gen5"></a>Gen4/Gen5
+
+Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában. 
+
+A Gen5 a világ legtöbb régiójában elérhető.
+
+#### <a name="fsv2-series"></a>Fsv2-sorozat
+
+A Fsv2 sorozat a következő régiókban érhető el: Ausztrália középső régiója, Ausztrália középső régiója 2, Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Ázsia, USA keleti régiója, Közép-India, Közép-India, Nyugat-India, Közép-Korea, Dél-Korea, Észak Európa, Dél-Afrika északi régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA 2. nyugati régiója.
+
+
+#### <a name="m-series"></a>M sorozat
+
+Az M-sorozat a következő régiókban érhető el: USA keleti régiója, Észak-Európa, Nyugat-Európa, USA 2. nyugati régiója.
+Az M-sorozat további régiókban is korlátozott rendelkezésre állással rendelkezhet. Az itt felsoroltakon kívül más régiót is igényelhet, de előfordulhat, hogy egy másik régióban való teljesítés nem lehetséges.
+
+Az M-sorozat rendelkezésre állásának az előfizetésben való engedélyezéséhez [egy új támogatási kérelem bejelentésével](#create-a-support-request-to-enable-m-series)kell megkövetelni a hozzáférést.
+
+
+##### <a name="create-a-support-request-to-enable-m-series"></a>Hozzon létre egy támogatási kérést az M-sorozat engedélyezéséhez: 
+
+1. Válassza a **Súgó + támogatás** lehetőséget a portálon.
+2. Válassza az **Új támogatási kérelem** lehetőséget.
+
+Az **alapok** lapon adja meg a következőket:
+
+1. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+2. **Előfizetés** = válassza ki az M-sorozat engedélyezéséhez szükséges előfizetést.
+3. A **kvóta típusa**beállításnál válassza az **SQL Database**lehetőséget.
+4. Kattintson a **tovább** gombra a **részletek** lapra való ugráshoz.
+
+A **részletek** lapon adja meg a következőket:
+
+5. A **probléma részletei** szakaszban válassza a **részletek megadása** hivatkozást. 
+6. **SQL Database a kvóta típusa** lapon válassza az **M-sorozat**lehetőséget.
+7. A **régió**területen válassza ki az M-sorozat engedélyezésének régióját.
+    Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
+
+A jóváhagyott támogatási kérelmek általában 5 munkanapon belül teljesülnek.
+
 
 ## <a name="next-steps"></a>További lépések
 
+- SQL-adatbázis létrehozásához tekintse meg [az SQL-adatbázis létrehozása a Azure Portal használatával](sql-database-single-database-get-started.md)című témakört.
 - Az önálló adatbázisok számára elérhető számítási méretek és a tárolási méretek tekintetében lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok az önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md).
-- A rugalmas készletekhez rendelkezésre álló számítási méretek és a tárhelyek méretére vonatkozó választási lehetőségekért tekintse meg a [rugalmas készletek SQL Database virtuális mag-alapú erőforrás-korlátozásait](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- A rugalmas készletekhez rendelkezésre álló számítási méretek és a tárhelyek méretére vonatkozó választási lehetőségekért tekintse meg a [rugalmas készletek SQL Database virtuális mag-alapú erőforrás-korlátozásait](sql-database-vcore-resource-limits-elastic-pools.md).
+- A díjszabással kapcsolatos részletekért tekintse meg a [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/single/).

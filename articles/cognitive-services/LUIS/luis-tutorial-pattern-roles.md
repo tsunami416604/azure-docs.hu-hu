@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Minta szerepkörei – LUIS'
+title: 'Oktatóanyag: minta szerepkörei – LUIS'
 titleSuffix: Azure Cognitive Services
 description: A minták a jól formázott sablon hosszúságú kimondott szöveg kinyerik az adatforrásokat. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.
 ms.custom: seodec18
@@ -9,19 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 13a1589a6cc6ed48f159f361ff69a5a3ba8f0f80
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387645"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499453"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Oktatóanyag: Kontextussal kapcsolatos minták kinyerése szerepkörök használatával
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Oktatóanyag: kontextusban kapcsolódó minták kibontása szerepkörök használatával
 
 Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A sablon kimondása [egyszerű entitást](luis-concept-entity-types.md#simple-entity) és [szerepköröket](luis-concept-roles.md) használ a kapcsolódó adatok, például a forrás helye és a célhely kinyeréséhez.  A minták használatakor kevesebb kimondottszöveg-példára van szükség egy adott szándékhoz.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -47,7 +48,7 @@ Az új alkalmazott, Billy Patterson neve egyelőre nem része az **Alkalmazott**
 
 Az új alkalmazottat át kell költöztetni a jelenlegi városból abba a városba, ahol a kitalált vállalat található. Mivel az új alkalmazottak bármely városból származhatnak, a helyeket fel kell deríteni. Egy készletlista, például egy listaentitás azért nem működne, mert ekkor csak a listában szereplő városokat lehetne kinyerni.
 
-A kiindulási és célvárosokhoz tartozó szerepkörneveknek egyedinek kell lenniük az összes entitás körében. A szerepkörök egyedisége könnyedén biztosítható, ha a tartalmazó entitáshoz kötjük őket egy elnevezési stratégia alkalmazásával. A **NewEmployeeRelocation** entitás egy egyszerű entitás két szerepkörrel: **NewEmployeeReloOrigin** és **NewEmployeeReloDestination**. A „Relo” a relocation (áthelyezés) szó rövidítése.
+A kiindulási és célvárosokhoz tartozó szerepkörneveknek egyedinek kell lenniük az összes entitás körében. A szerepkörök egyedisége könnyedén biztosítható, ha a tartalmazó entitáshoz kötjük őket egy elnevezési stratégia alkalmazásával. A **NewEmployeeRelocation** entitás egy egyszerű entitás, amely két szerepkört tartalmaz, ezek a **NewEmployeeReloOrigin** és a **NewEmployeeReloDestination**. A „Relo” a relocation (áthelyezés) szó rövidítése.
 
 Mivel a `Move new employee Robert Williams from Sacramento and San Francisco` példa kimondott szöveg csak gép által tanult entitásokkal rendelkezik, fontos, hogy elegendő példaszöveget adjunk meg az adott szándékhoz, hogy a rendszer észlelje az entitásokat.  
 
@@ -107,7 +108,7 @@ Az ezekben a lépésekben szereplő entitások címkézése egyszerűbb lehet, h
     |**J. Benson** áthelyezése **Bostonból** **Staines-upon-Thamesbe**|J. Benson|Boston, Staines-upon-Thames|
     |**Travis „Trav” Hinton** áthelyezése **Castelo Brancóból** **Orlandóba**|Travis „Trav” Hinton|Castelo Branco, Orlando|
     |**Trevor Nottington III** áthelyezése **Aranda de Dueróból** **Boise**-ba|Trevor Nottington III|Aranda de Duero, Boise|
-    |**Dr. Greg Williams** áthelyezése **Orlandóból** **Ellicott Citybe**|Dr. Greg Williams|Orlando, Ellicott City|
+    |**Dr. Greg Williams** áthelyezése **Orlando** -ról **Ellicott városba**|Dr. Greg Williams|Orlando, Ellicott City|
     |**Robert „Bobby” Gregson** áthelyezése **Kansas Cityből** **San Juan Capistranóba**|Robert „Bobby” Gregson|Kansas City, San Juan Capistrano|
     |**Patti Owens** áthelyezése **Bellevue**-ből **Rockfordba**|Patti Owens|Bellevue, Rockford|
     |**Janet Bartlet** áthelyezése **Tuscanből** **Santa Fébe**|Janet Bartlet|Tuscan, Santa Fe|

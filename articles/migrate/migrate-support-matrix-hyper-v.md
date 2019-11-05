@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802180"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498699"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -35,26 +35,7 @@ A táblázat összefoglalja a Hyper-V virtuális gépek támogatott forgatókön
 --- | ---
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
 Hyper-V virtuális gépek | Akár 35 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
-földrajz | Azure Migrate-projekteket számos földrajzi régióban is létrehozhatja. Bár bizonyos földrajzi területeken létrehozhat projekteket, a gépeket más célhelyekre is felhasználhatja vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
-
-  **Régiócsoport** | **Metaadatok tárolási helye**
-  --- | ---
-  Azure Government | US Gov Virginia
-  Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
-  Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
-  Brazília | Dél-Brazília
-  Kanada | Közép-Kanada vagy Kelet-Kanada
-  Európa | Észak-Európa vagy Nyugat-Európa
-  Franciaország | Közép-Franciaország
-  India | Közép-India vagy Dél-India
-  Japán |  Kelet-japán vagy Nyugat-Japán
-  Dél-Korea | Korea középső régiója vagy Dél-Korea
-  Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
-  Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
-
-
- > [!NOTE]
- > A Azure Government támogatása jelenleg csak a Azure Migrate [régebbi verziójához](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) érhető el.
+földrajz | [Tekintse át](migrate-support-matrix.md#supported-geographies) a támogatott földrajzi régiókat.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Értékelés – Hyper-V gazdagépre vonatkozó követelmények
@@ -185,6 +166,6 @@ Hyper-V-gazdagépek/virtuális gépek | Kimenő kapcsolatok a 443-es HTTPS-porto
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felkészülés a Hyper-V virtuális](tutorial-prepare-hyper-v.md) gépek áttelepítésre való értékelésére.

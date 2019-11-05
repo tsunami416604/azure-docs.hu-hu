@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózati Szolgáltatásvégpontok – Azure Event Hubs |} A Microsoft Docs
-description: Ez a cikk információt nyújt az hátralékának szolgáltatásvégpont hozzáadása egy virtuális hálózatot.
+title: Virtual Network szolgáltatási végpontok – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. EventHub szolgáltatási végpontot egy virtuális hálózathoz.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,73 +11,72 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 15912ce2e100a4317e775d72972ca6eacfac0d42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5a1b293d4d7f652c0cdd95226113ec3ce8f8222c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080539"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466140"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
+# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtual Network szolgáltatási végpontok használata az Azure-Event Hubs
 
-Az Event hubs-integráció [virtuális hálózat (VNet) Szolgáltatásvégpontok] [ vnet-sep] lehetővé teszi, hogy biztonságos hozzáférést üzenetküldési funkciókat biztosít a számítási feladatok, például a virtuális gépek, virtuális vannak kötve hálózatok mindkét végén védeni kívánt hálózati forgalom elérési útját.
+Event Hubs és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint a virtuális hálózatokhoz kötött virtuális gépek, valamint a hálózati forgalom elérési útja végződik.
 
-Miután legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kötött konfigurálva, az adott Event Hubs-névtér már nem fogadja a forgalmat bárhonnan, de engedélyezett virtuális hálózatok alhálózataihoz. A virtuális hálózati szempontból a kötés Event Hubs-névtér egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be. 
+Ha úgy van konfigurálva, hogy legalább egy virtuális hálózati alhálózat szolgáltatási végpontra legyen kötve, a megfelelő Event Hubs névtér többé nem fogadja el a forgalmat bárhonnan, de a virtuális hálózatokban engedélyezett alhálózatokat. A virtuális hálózat szempontjából a Event Hubs névterek egy szolgáltatás-végponthoz kötése egy elkülönített hálózati alagutat állít be a virtuális hálózat alhálózatáról az üzenetküldési szolgáltatásba. 
 
-Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő Event Hubs-névtér értéket a megfigyelhető hálózati cím az az üzenetkezelési szolgáltatás végpontja egy nyilvános IP-címtartomány kötött számítási feladatok között. Ez a viselkedés kivétel van. Alapértelmezés szerint egy szolgáltatásvégpont engedélyezése lehetővé teszi, hogy a virtuális hálózathoz tartozó IP-tűzfalon a denyall szabályt. Az Event Hub nyilvános végponthoz való hozzáférés engedélyezéséhez IP-tűzfalon is hozzáadhat adott IP-címek. 
+Az eredmény az alhálózathoz és a megfelelő Event Hubs névtérhez kötött munkaterhelések közötti privát és elkülönített kapcsolat, annak ellenére, hogy az üzenetküldési szolgáltatás végpontjának megfigyelhető hálózati címe egy nyilvános IP-tartományban van. Ez a viselkedés kivételt jelent. A szolgáltatás végpontjának engedélyezése alapértelmezés szerint engedélyezi az denyall szabályt a virtuális hálózathoz társított IP-tűzfalon. Adott IP-címeket adhat hozzá az IP-tűzfalon az Event hub nyilvános végponthoz való hozzáférés engedélyezéséhez. 
 
 
 >[!WARNING]
-> Virtuális hálózatok integráció megvalósítása megakadályozhatja az egyéb Azure-szolgáltatásokhoz az Event hubs szolgáltatással való interakcióhoz.
+> A virtuális hálózatok integrálásának megvalósításával megakadályozható, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
 >
-> A megbízható Microsoft-szolgáltatások nem támogatottak, amikor a virtuális hálózatok vannak megvalósítva.
+> A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
 >
-> Gyakori Azure forgatókönyvek, amelyek nem használhatók a virtuális hálózatok (vegye figyelembe, hogy a lista **nem** teljes körű) –
+> Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
 > - Azure Monitor
 > - Azure Stream Analytics
-> - Az Azure Event Grid-integráció
-> - Azure IoT Hub Routes
+> - Integráció a Azure Event Grid
+> - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
-> - Azure Data Explorer
 >
-> Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton
+> Az alábbi Microsoft-szolgáltatások szükségesek virtuális hálózaton
 > - Azure Web Apps
 > - Azure Functions
 
 > [!IMPORTANT]
-> A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott.
+> A virtuális hálózatok a **standard** és a **dedikált** Event Hubsban támogatottak. Alapszintű csomag esetén nem támogatott.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>A VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
-Megoldásokat igénylő szoros és elméleti biztonsági, és hogy a virtuális hálózat alhálózataiban, adja meg a szegmentálási a compartmentalized szolgáltatás között kell elvégeznie ezeket veremből a hozzá tartozó szolgáltatások közötti kommunikációs útvonalat.
+Azok a megoldások, amelyek feszes és compartmentalized biztonságot igényelnek, és ahol a virtuális hálózati alhálózatok biztosítják a compartmentalized szolgáltatások közötti szegmentálást, továbbra is szükség van kommunikációs útvonalakra az ezekben a rekeszekben található szolgáltatások között.
 
-A környezetben, beleértve a szerepkör végrehajtsa a HTTPS TCP/IP, felett közötti bármely azonnali IP útvonal a hálózati réteg biztonsági rések kiaknázását kockázatát hordozza az fel. Üzenetkezelési szolgáltatások teljesen szigetelt kommunikációs útvonalat, ahol üzeneteket is írja a lemezre, azok tarifacsomagokból a felek biztosítják. Két különböző virtuális hálózatok mindkét kötött ugyanarra az Event Hubs-példányra a számítási feladatok kommunikálhatnak hatékonyan és megbízhatóan keresztül üzenetek, míg a megfelelő hálózati elkülönítési határ integritása.
+A rekeszek közötti közvetlen IP-útvonal, beleértve a TCP/IP protokollon keresztüli HTTPS-t is, a hálózati réteg biztonsági réseinak kiaknázásának kockázatát hordozza. Az üzenetkezelési szolgáltatások teljes mértékben szigetelt kommunikációs útvonalakat biztosítanak, ahol az üzenetek a felek közötti váltáskor lemezre is írhatók. Az ugyanahhoz a Event Hubs-példányhoz kötött két különálló virtuális hálózatban a munkaterhelések hatékonyan és megbízhatóan kommunikálhatnak az üzeneteken keresztül, miközben a hálózat elkülönítési határának megfelelő integritása megmarad.
  
-Azt jelenti, hogy a bizalmas felhőmegoldások csak nem férnek hozzá az Azure-szolgáltatás piacvezető megbízható és méretezhető aszinkron üzenetkezelési képességeket, de most használhatnak üzenetkezelés a biztonságos megoldás közötti kommunikációs útvonalat hozzon létre biztonsági kocsiban olyan eleve biztonságosabb, mint bármely társ-társ-kommunikációs móddal, többek között a HTTPS és az egyéb TLS biztonságos szoftvercsatorna-protokollok kezelhető.
+Ez azt jelenti, hogy a biztonsági szempontból érzékeny felhőalapú megoldások nem csupán az Azure piacvezető megbízható és skálázható üzenetkezelési képességeihez férnek hozzá, de mostantól az üzenetküldés használatával kommunikációs útvonalakat hozhatnak létre a biztonságos Megoldási rekeszek között, amelyek a szolgáltatás természeténél fogva biztonságosabb, mint bármely egyenrangú kommunikációs mód, beleértve a HTTPS-t és más TLS-védelemmel ellátott szoftvercsatorna-protokollokat.
 
-## <a name="bind-event-hubs-to-virtual-networks"></a>Az Event Hubs kötést létrehozni a virtuális hálózatokhoz
+## <a name="bind-event-hubs-to-virtual-networks"></a>Event Hubs kötése virtuális hálózatokhoz
 
-*A virtuális hálózati szabályok* van a tűzfal biztonsági szolgáltatás, amely szabályozza, hogy az Azure Event Hubs-névtér egy adott virtuális hálózati alhálózat érkező kapcsolatokat fogad-e.
+A *virtuális hálózati szabályok* a tűzfal biztonsági funkciója, amely azt szabályozza, hogy az Azure Event Hubs-névtér fogadjon-e kapcsolatokat egy adott virtuális hálózati alhálózatból.
 
-Event Hubs-névtér kötése egy virtuális hálózatot két lépésből áll. Először hozzon létre egy **virtuális hálózati szolgáltatásvégpont** egy virtuális hálózat alhálózatán, és engedélyezze a Microsoft.eventhub"", azt mutatjuk be a [szolgáltatási végpont áttekintő] [ vnet-sep]. Miután hozzáadta a szolgáltatásvégpont, azt a kötést létrehozni az Event Hubs-névtér egy *virtuális hálózati szabályt*.
+Egy Event Hubs névtér egy virtuális hálózathoz kötése kétlépéses folyamat. Először létre kell hoznia egy **Virtual Network szolgáltatási végpontot** egy Virtual Network alhálózaton, és engedélyeznie kell azt a "Microsoft. EventHub" számára a [szolgáltatási végpont áttekintése][vnet-sep]című részben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Event Hubs névteret egy *virtuális hálózati szabállyal*kell kötnie.
 
-A virtuális hálózati szabály az Event Hubs-névtér egy virtuális hálózat alhálózatához van társítva. A szabály létezik, míg az alhálózat kötött összes számítási feladatokhoz, amelyekhez hozzáférést az Event Hubs-névtér. Az Event Hubs maga soha nem kimenő kapcsolatot hoz létre, nem kell hozzáférést, és ezért soha nem kap hozzáférést az alhálózat szerint ez a szabály engedélyezése.
+A virtuális hálózati szabály a Event Hubs névtér egy virtuális hálózati alhálózattal való társítása. Amíg a szabály létezik, az alhálózathoz kötött összes munkaterhelés hozzáférést kap a Event Hubs névtérhez. Event Hubs maga soha nem hoz létre kimenő kapcsolatokat, nem kell elérnie a hozzáférést, ezért a szabály engedélyezésével soha nem kapnak hozzáférést az alhálózathoz.
 
-### <a name="create-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Hozzon létre egy virtuális hálózati szabályt az Azure Resource Manager-sablonok
+### <a name="create-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Virtuális hálózati szabály létrehozása Azure Resource Manager-sablonokkal
 
-A következő Resource Manager-sablon lehetővé teszi, hogy egy virtuális hálózati szabályt ad hozzá egy meglévő Event Hubs-névtér.
+A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Event Hubs névtérhez.
 
 Sablon paraméterei:
 
-* **namespaceName**: Event Hubs-névtér.
-* **vnetRuleName**: A létrehozandó virtuális hálózati szabály neve.
-* **virtualNetworkingSubnetId**: A virtuális hálózat alhálózatához; teljesen minősített erőforrás-kezelő elérési útja Ha például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` az alapértelmezett alhálózat egy virtuális hálózat.
+* **namespacename tulajdonság**: Event Hubs névtér.
+* **vnetRuleName**: a létrehozandó Virtual Network szabály neve.
+* **virtualNetworkingSubnetId**: a virtuális hálózati alhálózat teljes erőforrás-kezelő útvonala; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózatához.
 
 > [!NOTE]
-> Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
-> Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
+> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
+> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a ***"defaultAction"***
 > 
-> from
+> a
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -185,14 +184,14 @@ Sablon paraméterei:
   }
 ```
 
-A sablon üzembe helyezéséhez kövesse az utasításokat [Azure Resource Manager][lnk-deploy].
+A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
 ## <a name="next-steps"></a>További lépések
 
-Virtuális hálózatokkal kapcsolatos további információkért lásd az alábbi hivatkozásokat:
+A virtuális hálózatokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 
-- [Az Azure virtuális hálózati Szolgáltatásvégpontok][vnet-sep]
-- [Az Azure Event Hubs IP-szűrés][ip-filtering]
+- [Azure Virtual Network szolgáltatásbeli végpontok][vnet-sep]
+- [Azure Event Hubs IP-szűrés][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
 [lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md

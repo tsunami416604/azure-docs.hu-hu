@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480123"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
-Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni és a felhőalapú gépet az Azure-ba való Migrálás megkezdése előtt [Azure Migrate kiszolgáló áttelepítésével](migrate-services-overview.md#azure-migrate-server-migration).
+Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni gépeket az Azure-ba való Migrálás megkezdése [Azure Migrate kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool)előtt.
 
 
 Ebben a cikkben:
@@ -78,7 +78,7 @@ Más operációs rendszerek esetén manuálisan kell előkészítenie a gépeket
 Ha Windows rendszerű gépet telepít át, hajtsa végre ezeket a módosításokat az áttelepítés előtt. Ha a módosítások végrehajtása előtt telepíti át a virtuális gépet, előfordulhat, hogy a virtuális gép nem indul el az Azure-ban.
 
 1. [Engedélyezze az Azure soros hozzáférési konzolt](../virtual-machines/troubleshooting/serial-console-windows.md) az Azure-beli virtuális géphez. Ez segít a hibaelhárításban. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni. Ez egyenértékű az új virtuális gép újraindításával. 
-2. Ha Windows Server 2003 rendszert futtató gépeket telepít át, telepítse a Hyper-V vendég integrációs szolgáltatásait a VM operációs rendszerbe. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+2. Ha Windows Server 2003 rendszert futtató gépeket telepít át, telepítse a Hyper-V vendég integrációs szolgáltatásait a VM operációs rendszerbe. [Részletek](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
 
 ### <a name="prepare-linux-machines"></a>Linuxos gépek előkészítése
 
@@ -136,7 +136,7 @@ A helyszíni Linux rendszerű gépeken tegye a következőket:
 
 Az áttelepítés után tegye a következőket a létrehozott Azure-beli virtuális gépeken.
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Nem használhatja ugyanazt a nyilvános IP-címet a helyszíni géphez használt Azure-beli virtuális géphez. [További információk](../virtual-network/virtual-network-public-ip-address.md).
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Nem használhatja ugyanazt a nyilvános IP-címet a helyszíni géphez használt Azure-beli virtuális géphez. [Részletek](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 
@@ -145,6 +145,6 @@ Az áttelepítés után tegye a következőket a létrehozott Azure-beli virtuá
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Döntse el, hogy melyik módszert szeretné használni a [VMWare virtuális gépek Azure-ba való áttelepítéséhez](server-migrate-overview.md) , vagy a [Hyper-V virtuális gépek](tutorial-migrate-hyper-v.md) vagy [fizikai kiszolgálók vagy virtualizált/Felhőbeli virtuális gépek](tutorial-migrate-physical-virtual-machines.md)áttelepítésének megkezdéséhez.

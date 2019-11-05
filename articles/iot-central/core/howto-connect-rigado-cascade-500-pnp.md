@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 8727de7b13b6ac036e714ac5aca7ae017200097c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b07ce135d9efec6ecad369b6333d0a3bf2c3aab1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951223"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468245"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500-átjáró eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -32,7 +32,7 @@ A Cascade 500 előzetes tanúsítvánnyal rendelkezik az Azure IoT Plug and Play
 A útmutató lépéseinek elvégzéséhez a következő erőforrásokra van szükség:
 
 * Egy Rigado lépcsőzetes 500-eszköz. További információért látogasson el a [Rigado](https://www.rigado.com/)webhelyre.
-* Azure IoT Central-alkalmazás, amely az egyik előzetes verziójú alkalmazás-sablonból lett létrehozva. További információt az [új alkalmazás létrehozása](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)című témakörben talál.
+* Azure IoT Central-alkalmazás, amely az egyik előzetes verziójú alkalmazás-sablonból lett létrehozva. További információt az [új alkalmazás létrehozása](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)című témakörben talál.
 
 ## <a name="add-a-device-template"></a>Eszköz sablonjának hozzáadása
 
@@ -68,6 +68,6 @@ Ez a frissítés alkalmazza a IoT Central kapcsolat részleteit a lépcsőzetes 
 
 Most már készen áll a C500-eszköz használatára a IoT Central alkalmazásban!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan csatlakoztatható a Rigado Cascade 500 az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés annak megismerése, hogyan [hozhat létre egy beépített elemzési alkalmazást](../retail/tutorial-in-store-analytics-create-app-pnp.md) a teljes körű megoldás létrehozásához. 

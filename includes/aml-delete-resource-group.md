@@ -8,22 +8,22 @@ ms.topic: include
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 46a7eb25152c8c7e9ac22c5b4df67bbf6416df4d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 00980cc69acbe0da8773aa798b693171d07cc1e1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69894116"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476150"
 ---
 >[!IMPORTANT]
->A létrehozott erőforrások előfeltételként is használhatók az Azure Machine Learning szolgáltatás más oktatóanyagaiban vagy útmutatóiban. 
+>A létrehozott erőforrások előfeltételként is használhatók más Azure Machine Learning-oktatóanyagokban vagy -útmutatókban. 
 
 
 Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így nem számítunk fel díjat:
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen.
  
-   [![Delete a Azure Portal](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
+   [![törlés a Azure Portal](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
 
 1. Válassza ki a listában az Ön által létrehozott erőforráscsoportot.
 

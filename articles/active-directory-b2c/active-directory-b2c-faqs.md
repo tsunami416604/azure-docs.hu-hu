@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
-ms.translationtype: MT
+ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302543"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468940"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -35,9 +35,9 @@ Azure AD B2C nem használható a felhasználók Microsoft Office 365-hez való h
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Mik a Azure AD B2C helyi fiókjai? Miben különböznek a munkahelyi vagy iskolai fiókok az Azure AD-ben?
 
-Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók a következő formátumú e-mail-címmel rendelkeznek: `<xyz>@<tenant domain>`. A `<tenant domain>` a bérlő egyik ellenőrzött tartománya vagy a kezdeti `<...>.onmicrosoft.com` tartomány. Ez a fióktípus munkahelyi vagy iskolai fiók.
+Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók a `<xyz>@<tenant domain>`űrlap e-mail-címével rendelkeznek. A `<tenant domain>` a bérlő egyik ellenőrzött tartománya vagy a kezdeti `<...>.onmicrosoft.com` tartomány. Ez a fióktípus munkahelyi vagy iskolai fiók.
 
-Egy Azure AD B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be (például joe@comcast.net, bob@gmail.com, sarah@contoso.com vagy jim@live.com). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
+Egy Azure AD B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be (például joe@comcast.net, bob@gmail.com, sarah@contoso.comvagy jim@live.com). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
 
 Az alkalmazásokhoz tartozó felhasználói fiókokat mindig létre kell hozni egy regisztrációs felhasználói folyamaton, regisztrációs vagy bejelentkezési felhasználói folyamaton, vagy az Azure AD Graph API használatával. A Azure Portal létrehozott felhasználói fiókokat csak a bérlő felügyeletére használják.
 
@@ -130,15 +130,20 @@ Jelenleg nincs. Ez a funkció az ütemterven található. A tartomány ellenőrz
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törölni a Azure AD B2C bérlőt?
 
-A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket:
+A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket.
 
+Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az előzetes](http://aka.ms/b2cappregintro)verzióról.
+
+#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Törölje a Azure AD B2C bérlő összes **felhasználói folyamatát (szabályzatát)** .
 1. Törölje az Azure AD B2C-bérlőben regisztrált összes **alkalmazást** .
-1. Ezután jelentkezzen be a [Azure Portalra](https://portal.azure.com/) előfizetés-rendszergazdaként. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
-1. Váltson a törölni kívánt Azure AD B2C-bérlőre.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. A **Kezelés** alatt válassza a **Felhasználókat**.
-1. Jelölje ki az egyes felhasználókat, és válassza ki azt az előfizetés-rendszergazda felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
+1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
 1. A **kezelés**területen válassza a **Alkalmazásregisztrációk** (vagy **Alkalmazásregisztrációk (örökölt)** lehetőséget.
 1. Válassza **az összes alkalmazás megtekintése** lehetőséget
 1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
@@ -149,6 +154,28 @@ A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket:
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Törölje az összes **felhasználói folyamatot (szabályzatot)** a Azure ad B2C-bérlőben.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **minden alkalmazás** lapot.
+1. Az összes regisztrált alkalmazás törlése.
+1. A **B2C-Extensions-app**törlése.
+1. A **Kezelés** alatt válassza a **Felhasználókat**.
+1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
+1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
+1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
+1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
+1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Lekérhetek Azure AD B2C a nagyvállalati mobilitási csomag részeként?
 

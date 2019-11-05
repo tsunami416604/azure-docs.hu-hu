@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A New York-i taxik betöltése Azure SQL Data Warehouseba | Microsoft Docs'
-description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy nyilvános Azure-blobból a Azure SQL Data Warehouseba.
+title: 'Oktatóanyag: a New York-i taxik betöltése az Azure SQL Data Warehouseba | Microsoft Docs'
+description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy globális Azure-blobból a Azure SQL Data Warehouseba.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575203"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482391"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: A New York taxik-beli adatAzure SQL Data Warehouse betöltése
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: a New York taxik-beli betöltési Azure SQL Data Warehouse
 
-Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait egy nyilvános Azure-blobból a Azure SQL Data Warehouseba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
+Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait egy globális Azure-blobból a Azure SQL Data Warehouseba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
 > * Adattárház létrehozása az Azure Portalon
@@ -33,14 +33,14 @@ Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait e
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL Data Warehouse létrehozása
 
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse.
     | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. | 
     | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
-    | **Location** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
+    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
@@ -132,8 +132,8 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza az **SQL** -adattárházak lehetőséget a bal oldali menüben, majd kattintson az adatbázisra az **SQL** -adattárházak lapon. 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. Válassza az **SQL-adattárházak** lehetőséget a bal oldali menüben, majd kattintson az adatbázisra az **SQL-adattárházak** lapon. 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név mynewserver-20180430.database.windows.net. 
 
     ![kapcsolatadatok](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
@@ -142,7 +142,7 @@ Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Kés�
 
 Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával építjük fel a kapcsolatot az Azure SQL-kiszolgálóval.
 
-1. Nyissa meg az SQL Server Management Studio alkalmazást.
+1. Nyissa meg az SQL Server Management Studiót.
 
 2. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanelen adja meg a következő adatokat:
 
@@ -150,13 +150,13 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
     | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
-    | Authentication | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
+    | Authentication | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
-    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
+    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
 
     ![kapcsolódás a kiszolgálóhoz](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
+4. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
 5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **mySampleDatabase** csomópontot az új adatbázisban található objektumok megtekintéséhez.
 
@@ -164,7 +164,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális száma a SQL Data Warehouse kiépített, adatraktár- [egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)és [erőforrás-osztály](resource-classes-for-workload-management.md)generációjának megfelelően van meghatározva. 
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális száma a SQL Data Warehouse kiépített, [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)és [erőforrás-osztály](resource-classes-for-workload-management.md)generációjának megfelelően van meghatározva. 
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
@@ -181,7 +181,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. Kattintson az **Execute** (Végrehajtás) parancsra.
+3. Kattintson a **Végrehajtás** parancsra.
 
 4. Kattintson jobb gombbal a **mySampleDataWarehouse** elemre, majd válassza a **New Query** (Új lekérdezés) elemet. Megnyílik egy új lekérdezési ablak.  
 
@@ -195,7 +195,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. Kattintson az **Execute** (Végrehajtás) parancsra.
+6. Kattintson a **Végrehajtás** parancsra.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Csatlakozás a kiszolgálóhoz a betöltést végző felhasználóként
 
@@ -207,7 +207,7 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
 2. Gépelje be a teljes kiszolgálónevet, és adja meg a **LoaderRC20** felhasználónévként.  Adja meg a LoaderRC20-hoz tartozó jelszót.
 
-3. Kattintson a **Csatlakozás** gombra.
+3. Kattintson a **Connect** (Csatlakozás) gombra.
 
 4. Ha a kapcsolat készen áll, az Object Explorerben két kiszolgálói kapcsolat lesz látható. Az egyik kapcsolat ServerAdmin-ként, a másik pedig MedRCLogin-ként jelenik meg.
 
@@ -567,10 +567,10 @@ A legbiztonságosabb módszer a VNet-alapú és a felügyelt identitásokon kere
 ### <a name="prerequisites"></a>Előfeltételek
 1.  Azure PowerShell telepítése az [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps)segítségével.
 2.  Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)használatával kell frissítenie az általános célú v2-re.
-3.  Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage** -fiókhoz az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
+3.  Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
 
 #### <a name="steps"></a>Lépések
-1. A PowerShellben **regisztrálja SQL Database** -kiszolgálóját Azure Active Directory (HRE) használatával:
+1. A PowerShellben **regisztrálja SQL Database-kiszolgálóját** Azure Active Directory (HRE) használatával:
 
    ```powershell
    Connect-AzAccount
@@ -581,9 +581,9 @@ A legbiztonságosabb módszer a VNet-alapú és a felügyelt identitásokon kere
    1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)segítségével.
 
    > [!NOTE]
-   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re** kell frissítenie az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
+   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
     
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob** -adatközreműködői RBAC szerepkört a SQL Database-kiszolgálóhoz.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködői** RBAC szerepkört a SQL Database-kiszolgálóhoz.
 
    > [!NOTE] 
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
@@ -596,14 +596,14 @@ A legbiztonságosabb módszer a VNet-alapú és a felügyelt identitásokon kere
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
-       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert [](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ez a mechanizmus felügyelt identitást használ a borítók alatt.
+       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) használ a borítók alatt.
        > - Az identitás nevének **"Managed Service Identity"** kell lennie az Azure Storage-fiókkal való együttműködéshez.
     
    1. Hozza létre a külső adatforrást, amely megadja az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat a Managed Service Identity.
         
    1. Lekérdezés normál módon [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)használatával.
 
-Ha a SQL Data Warehouse virtuális [](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) hálózati szolgáltatás-végpontokat szeretne beállítani, tekintse meg az alábbi dokumentációt. 
+Ha a SQL Data Warehouse virtuális hálózati szolgáltatás-végpontokat szeretne beállítani, tekintse meg az alábbi [dokumentációt](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) . 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

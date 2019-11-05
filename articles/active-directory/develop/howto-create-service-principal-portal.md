@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473844"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 
@@ -51,7 +51,7 @@ Az előfizetés erőforrásainak eléréséhez hozzá kell rendelnie az alkalmaz
 
 Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein vannak örökölve. Ha például hozzáad egy alkalmazást az erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást.
 
-1. Navigáljon ahhoz a hatókörhöz, amelyhez hozzá szeretné rendelni az alkalmazást. Ha például egy szerepkört szeretne hozzárendelni az előfizetés hatókörében, válassza a **minden szolgáltatás** és **előfizetés**lehetőséget.
+1. A Azure Portal válassza ki azt a hatóköri szintet, amelyhez az alkalmazást hozzá szeretné rendelni. Ha például egy szerepkört szeretne hozzárendelni az előfizetés hatóköréhez, keresse meg és válassza ki az **előfizetések**elemet, vagy válassza az **előfizetések** lehetőséget a **kezdőlapon** .
 
    ![Például rendeljen hozzá egy szerepkört az előfizetés hatókörében](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -163,7 +163,7 @@ Az előfizetési engedélyek ellenőrzését:
 
    ![Ez a példa azt mutatja be, hogy a felhasználó hozzá van rendelve a tulajdonosi szerepkörhöz](./media/howto-create-service-principal-portal/view-user-role.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A biztonsági szabályzatok megadásával kapcsolatos információkért lásd: [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md).  
 * A felhasználók számára megadható vagy megtagadható elérhető műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md).

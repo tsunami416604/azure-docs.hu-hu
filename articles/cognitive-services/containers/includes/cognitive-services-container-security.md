@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842564"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499181"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services tároló biztonsága
 
-Az alkalmazások fejlesztésekor a biztonságnak elsődleges fókusznak kell lennie. A biztonság fontossága a siker mérőszáma. Cognitive Services tárolókat tartalmazó szoftver-megoldás tervezésekor elengedhetetlen az Ön számára elérhető korlátozások és képességek megismerése. További információ: [Azure Security][az-security].
+Az alkalmazások fejlesztésekor a biztonságnak elsődleges fókusznak kell lennie. A biztonság fontossága a siker mérőszáma. Cognitive Services tárolókat tartalmazó szoftver-megoldás tervezésekor elengedhetetlen az Ön számára elérhető korlátozások és képességek megismerése. A hálózati biztonsággal kapcsolatos további információkért lásd: az [Azure Cognitive Services Virtual Networks konfigurálása][az-security].
 
 > [!IMPORTANT]
 > Alapértelmezés szerint nincs *Biztonság* a Cognitive Services Container API-ban. Ennek az az oka, hogy a tároló a legtöbb esetben egy olyan Pod részeként fut, amely egy hálózati híddal kívülről van védve. Azonban engedélyezhető a hitelesítés, amely azonos módon működik a [felhőalapú Cognitive Serviceshoz][request-authentication]való hozzáféréskor használt hitelesítéssel.
@@ -44,11 +44,11 @@ A gazdagépnek engedélyezni kell a 443-es **port** és a következő tartomány
 
 #### <a name="disable-deep-packet-inspection"></a>Mélyreható csomagok ellenőrzésének letiltása
 
-> [Mélyreható csomagok ellenőrzése](https://en.wikipedia.org/wiki/Deep_packet_inspection) A (DPI) olyan adatfeldolgozási típus, amely részletesen megvizsgálja a számítógépes hálózaton keresztül küldött adatokat, és általában a művelet elindítását, újrairányítását vagy ennek megfelelő naplózását végzi.
+> A [Deep Packet-ellenőrzés](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) olyan adatfeldolgozási típus, amely részletesen megvizsgálja a számítógépes hálózaton keresztül küldött adatokat, és általában blokkolja, átirányítja vagy naplózza a műveletet.
 
 Tiltsa le a DPI-t azon biztonságos csatornákon, amelyeket a Cognitive Services tárolók a Microsoft-kiszolgálókhoz hoznak létre. Ennek elmulasztása megakadályozza, hogy a tároló megfelelően működjön.
 
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com
 [request-authentication]: ../../authentication.md
-[az-security]: ../../../security/fundamentals/overview.md
+[az-security]: ../../cognitive-services-virtual-networks.md

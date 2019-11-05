@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257262"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496453"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure Security and Compliance Blueprint: analitika a FFIEC Financial Serviceshez
 
@@ -29,7 +29,7 @@ A FFIEC-megfelelőség megvalósítása megköveteli, hogy a minősített ellen�
 
 Ez a Azure Security and Compliance Blueprint egy elemzési platformot biztosít, amely alapján az ügyfelek létrehozhatják saját elemzési eszközeiket. A hivatkozási architektúra olyan általános használati esetet vázol fel, amelyben az ügyfelek az SQL/adat-rendszergazda vagy az operatív adatok frissítésein keresztül, egy operatív felhasználón keresztül adatokat küldenek a tömeges adatimportáláshoz. A munkafolyamatok mindkét Azure Functions belefoglalják az adatAzure SQL Databaseba való adatimportálást. Az Azure Functionst az ügyfélnek kell konfigurálnia az Azure Portal segítségével, hogy az egyes ügyfelek saját elemzési igényeihez egyedi importálási feladatokat kezeljen.
 
-Az Azure számos jelentéskészítési és elemzési szolgáltatást kínál az ügyfelek számára. Ez a megoldás Azure Machine Learning szolgáltatásokat tartalmaz, amelyek Azure SQL Database segítségével gyorsan böngészhetnek az adatkezelésen, és gyorsabb eredményeket biztosítanak az intelligens modellezéssel. Azure Machine Learning az adathalmazok közötti új kapcsolatok felfedezésével növeli a lekérdezési sebességet. Ha az adatok több statisztikai függvényen keresztül lettek kitanítva, legfeljebb 7 további lekérdezési készlet (8 összesen, beleértve az ügyfél-kiszolgálót is) szinkronizálható ugyanazzal a táblázatos modellel a lekérdezési számítási feladatok terjesztéséhez és a válaszadási idő csökkentéséhez.
+Az Azure számos jelentéskészítési és elemzési szolgáltatást kínál az ügyfelek számára. Ez a megoldás Azure Machine Learningt tartalmaz, és a Azure SQL Database segítségével gyorsan böngészhet az adatkezelésen, és gyorsabb eredményeket biztosít az intelligens modellezéssel. Azure Machine Learning az adathalmazok közötti új kapcsolatok felfedezésével növeli a lekérdezési sebességet. Ha az adatok több statisztikai függvényen keresztül lettek kitanítva, legfeljebb 7 további lekérdezési készlet (8 összesen, beleértve az ügyfél-kiszolgálót is) szinkronizálható ugyanazzal a táblázatos modellel a lekérdezési számítási feladatok terjesztéséhez és a válaszadási idő csökkentéséhez.
 
 A továbbfejlesztett elemzési és jelentéskészítési szolgáltatásokhoz az Azure SQL Database-adatbázisok oszlopcentrikus indexekkel konfigurálhatók. A Azure Machine Learning és az Azure SQL-adatbázisok egyaránt méretezhetők felfelé vagy lefelé, vagy kikapcsolhatók teljes mértékben az ügyfelek általi használatra adott válaszként. Az összes SQL-forgalom SSL-titkosítással rendelkezik az önaláírt tanúsítványok belefoglalásával. Az ajánlott eljárás az, hogy az Azure megbízható hitelesítésszolgáltató használatát javasolja a fokozott biztonság érdekében.
 
@@ -71,7 +71,7 @@ A következő szakasz az üzembe helyezési és megvalósítási elemeket részl
 
 **Azure functions**: a [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) egy kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi a felhasználók számára az igény szerinti kód futtatását anélkül, hogy explicit módon kellene kiépíteni vagy kezelni az infrastruktúrát. Az Azure Functions használatával különféle eseményekre reagálva futtathat szkripteket vagy kódrészleteket.
 
-**Azure Machine learning szolgáltatás**: a [Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/) egy adatelemzési módszer, amely lehetővé teszi a számítógépek számára a meglévő adatelemzések használatát a jövőbeli viselkedések, eredmények és trendek előrejelzéséhez.
+**Azure Machine learning**: a [Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/) egy adatelemzési módszer, amely lehetővé teszi a számítógépek számára a meglévő adatelemzések használatát a jövőbeli viselkedések, eredmények és trendek előrejelzéséhez.
 
 **Azure Data Catalog**: a [Data Catalog](../../data-catalog/overview.md) az adatforrások könnyen felderíthetők és érthetők az adatkezelő felhasználók számára. A közös adatforrások regisztrálása, címkézett és pénzügyi adatként való keresése is lehetséges. Az adatok a meglévő helyükön maradnak, de a metaadatok egy példánya hozzá lett adva a Data Cataloghoz, valamint az adatforrás helyére mutató hivatkozás. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetővé és könnyen értelmezhetővé válnak a felhasználók számára.
 
@@ -182,7 +182,7 @@ A [Azure Security and Compliance Blueprint – FFIEC adatelemzési implementáci
 
 A biztonságos VPN-alagutat vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) úgy kell konfigurálni, hogy biztonságosan létesítsen kapcsolatot az adatelemzési hivatkozási architektúra részeként üzembe helyezett erőforrásokkal. A VPN-vagy ExpressRoute megfelelő beállításával az ügyfelek hozzáadhatnak egy védelmi réteget az átvitelhez.
 
-A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat egy helyszíni hálózat és egy Azure-Virtual Network közötti virtuális magánhálózati kapcsolatot. Ez a kapcsolat az interneten keresztül történik, és lehetővé teszi, hogy az ügyfelek biztonságosan &quot;tunnel &quot; adatokat egy titkosított kapcsolaton belül az ügyfél&#39;-hálózat és az Azure között. A helyek közötti VPN egy olyan biztonságos, érett technológia, amelyet évtizedek óta minden méretben üzembe helyezett a vállalatok. Ebben a beállításban az [IPsec-alagút mód](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) titkosítási mechanizmusként van használatban.
+A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat egy helyszíni hálózat és egy Azure-Virtual Network közötti virtuális magánhálózati kapcsolatot. Ez a kapcsolat az interneten keresztül történik, és lehetővé teszi, hogy az ügyfelek biztonságosan &quot;alagúton&quot; információt egy titkosított&#39;kapcsolaton belül az ügyfél és az Azure között. A helyek közötti VPN egy olyan biztonságos, érett technológia, amelyet évtizedek óta minden méretben üzembe helyezett a vállalatok. Ebben a beállításban az [IPsec-alagút mód](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) titkosítási mechanizmusként van használatban.
 
 Mivel a VPN-alagúton belüli forgalom egy helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft egy másik, még biztonságosabb kapcsolódási lehetőséget kínál. Az Azure ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. Mivel a ExpressRoute-kapcsolatok nem az interneten keresztül haladnak át, ezek a kapcsolatok megbízhatóbbak, gyorsabbak, kisebb késések és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok az interneten keresztül. Továbbá, mivel ez az ügyfél&#39;-távközlési szolgáltató közvetlen kapcsolata, az adatforgalom nem az interneten keresztül történik, ezért nem teszi elérhetővé.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) – gyors útmutató
-description: Gyors útmutató elosztott táblák létrehozásához és lekérdezéséhez Azure Database for PostgreSQL nagy kapacitású (Citus) (előzetes verzió).
+title: Azure Database for PostgreSQL – nagy kapacitású (Citus) gyors útmutató
+description: Gyors útmutató elosztott táblák létrehozásához és lekérdezéséhez Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 6b5bfbf16e76cbf90a5536332d8e3bf1035f983a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70164018"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500077"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verzió) a Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-nagy kapacitású (Citus) létrehozása a Azure Portal
 
-Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verziójú) kiszolgálói csoportot a Azure Portal használatával. Tekintse át az elosztott adatmennyiségeket: a csomópontok közötti horizontális skálázást, a mintaadatok betöltését és a több csomóponton futtatott lekérdezések futtatását.
+Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálói csoportot a Azure Portal használatával. Tekintse át az elosztott adatmennyiségeket: a csomópontok közötti horizontális skálázást, a mintaadatok betöltését és a több csomóponton futtatott lekérdezések futtatását.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -62,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-@No__t_1 `payload` mezője JSONB adattípussal rendelkezik. A JSONB a postgres bináris formátumú JSON-adattípusa. Az adattípussal könnyedén tárolhat egy rugalmas sémát egyetlen oszlopban.
+`github_events` `payload` mezője JSONB adattípussal rendelkezik. A JSONB a postgres bináris formátumú JSON-adattípusa. Az adattípussal könnyedén tárolhat egy rugalmas sémát egyetlen oszlopban.
 
 Az postgres létrehozhat egy `GIN` indexet ezen a típuson, amely a benne található összes kulcsot és értéket indexeli. Az indextel gyorsan és egyszerűen lekérdezheti a hasznos adatokat különböző feltételekkel. Nézzük meg, és hozzon létre néhány indexet az adatbetöltése előtt. A psql-ben:
 
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Eddig a lekérdezések a GitHub-\_eventst is felvettek, de ezeket az információkat a GitHub-\_users kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón (`user_id`) osztottuk fel, a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek el](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) , és könnyen csatlakoztathatók.
+Eddig a lekérdezések kizárólag a GitHub-\_eseményeket érintették, de ezeket az információkat a GitHub\_felhasználókkal kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón (`user_id`) osztottuk fel, a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek el](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) , és könnyen csatlakoztathatók.
 
-Ha `user_id` csatlakozunk, a nagy kapacitású a munkavégző csomópontokon párhuzamosan végezheti el a csatlakozás végrehajtását a szegmensekre. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
+Ha `user_id`csatlakozunk, a nagy kapacitású a munkavégző csomópontokon párhuzamosan végezheti el a csatlakozás végrehajtását a szegmensekre. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
 
 ```sql
 SELECT gu.login, count(*)
@@ -132,7 +132,7 @@ SELECT gu.login, count(*)
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport **Áttekintés** lapján kattintson a **Törlés** gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet.
 

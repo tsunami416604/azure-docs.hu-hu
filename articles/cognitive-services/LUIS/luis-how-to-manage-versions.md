@@ -1,7 +1,7 @@
 ---
 title: Verziók kezelése – LUIS
 titleSuffix: Azure Cognitive Services
-description: Verzió létrehozása és közzététele a különböző modellek lehetővé teszik. Bevált gyakorlat, hogy az alkalmazás más verzióra az aktuális aktív modell klónozza a modell módosítása előtt.
+description: A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik verziójára.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,63 +9,65 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 982dbf3555648c6a7c82da90a62740a584473c1e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa1cbd08bdf8d92653a8f30ae67ecd813e563999
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932833"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467514"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verziók használata az átmeneti vagy éles alkalmazások befolyásolása nélkül
 
-Verzió létrehozása és közzététele a különböző modellek lehetővé teszik. Bevált gyakorlat, hogy a jelenlegi active modell egy másik klónozza [verzió](luis-concept-version.md) az alkalmazás a modell módosítása előtt. 
+A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik [verziójára](luis-concept-version.md) . 
 
-Verzióival működnek, nyissa meg az alkalmazás nevére a kiválasztásával **saját alkalmazások** oldalra, és kattintson **kezelés** a felső sávon, majd válassza ki **verziók** a bal oldali navigációs. 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+A verziókhoz való munkavégzéshez nyissa meg az alkalmazást a saját **alkalmazások** lapján, majd válassza a **kezelés** lehetőséget a felső sávon, majd válassza a **verziók** elemet a bal oldali navigációs felületen. 
 
 A verziók listája megjeleníti a közzétett verziókat, a közzétételük helyét, valamint a jelenleg aktív verziót. 
 
-[![Kezelés szakaszhoz, verziók lap](./media/luis-how-to-manage-versions/versions-import.png "kezelés szakaszhoz, verziók lap")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![Kezelés szakasz, verziók lap](./media/luis-how-to-manage-versions/versions-import.png "Kezelés szakasz, verziók lap")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
-## <a name="clone-a-version"></a>Klónozza a verzió
+## <a name="clone-a-version"></a>Verzió klónozása
 
-1. Válassza ki a klónozásához, majd válassza ki a kívánt verziót **Klónozás** az eszköztáron. 
+1. Válassza ki a klónozott verziót, majd válassza a **klónozás** lehetőséget az eszköztáron. 
 
-2. Az a **Klónozás verzió** párbeszédpanelen írjon be egy nevet az új verziót, például a "0.2-es".
+2. A **klón verziója** párbeszédpanelen írja be az új verzió nevét, például: "0,2".
 
-   ![Klónozás verziójára párbeszédpanel](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
+   ![Verzió klónozása párbeszédpanel](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
      > [!NOTE]
-     > Verzió azonosítója csak karakterek, számjegyek állhat vagy '.', és nem lehet hosszabb 10 karakter hosszúságú.
+     > A verzióazonosító csak karakterből, számjegyből vagy "." állhat, és nem lehet hosszabb 10 karakternél.
  
-   A megadott nevű új verzióját, és a állítja be aktív verziója.
+   A rendszer létrehoz egy új, a megadott névvel ellátott verziót, és beállítja az aktív verziót.
 
 ## <a name="set-active-version"></a>Aktív verzió beállítása
 
-Jelöljön ki egy verziót a listából, majd **aktív győződjön meg arról,** az eszköztáron. 
+Válasszon egy verziót a listából, majd válassza az **aktív** lehetőséget az eszköztárból. 
 
 [![A szakasz, a verziók lap, a verzióra vonatkozó művelet kezelése](./media/luis-how-to-manage-versions/versions-other.png "A szakasz, a verziók lap, a verzióra vonatkozó művelet kezelése")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
-## <a name="import-version"></a>Importálás verzió
+## <a name="import-version"></a>Importálási verzió
 
-1. Válassza ki **importálás verzió** az eszköztáron. 
+1. Válassza a **verzió importálása** elemet az eszköztárból. 
 
-2. Az a **importálása új verzió** előugró ablak, írja be az új tíz karakter verzió neve. Csak egy beállítani, ha a verzió a JSON-fájl már létezik az alkalmazásban kell.
+2. Az **új verzió importálása** előugró ablakban adja meg az új tíz karakteres verzió nevét. Ha a JSON-fájl verziója már létezik az alkalmazásban, akkor csak a verzió AZONOSÍTÓját kell beállítania.
 
     ![Szakasz, verziók lap, új verzió importálása](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-    -Verziót importált, miután az új verzió válik az aktív verziót.
+    A verzió importálása után az új verzió lesz az aktív verzió.
 
 ### <a name="import-errors"></a>Importálási hibák
 
-* Tokenizer hibák: Ha az importálás során **tokenizer hibaüzenetet** kap, egy olyan verziót próbál importálni, amely a jelenleg használt alkalmazástól eltérő [tokenizer](luis-language-support.md#custom-tokenizer-versions) használ. A probléma megoldásához tekintse meg az [áttelepítés a tokenizer-verziók között](luis-language-support.md#migrating-between-tokenizer-versions)című témakört.
+* Tokenizer hibák: Ha az importálás során **Tokenizer hibaüzenetet** kap, egy olyan verziót próbál importálni, amely a jelenleg használt alkalmazástól eltérő [Tokenizer](luis-language-support.md#custom-tokenizer-versions) használ. A probléma megoldásához tekintse meg az [áttelepítés a tokenizer-verziók között](luis-language-support.md#migrating-between-tokenizer-versions)című témakört.
 
 <a name = "export-version"></a>
 
 ## <a name="other-actions"></a>Egyéb műveletek
 
-* A **törlése** egy verzió-verzió kiválasztása a listából, majd jelölje ki **törlése** az eszköztáron. Kattintson az **OK** gombra. 
-* A **átnevezése** egy verzió-verzió kiválasztása a listából, majd jelölje ki **átnevezése** az eszköztáron. Adjon meg új nevet, és válassza ki **kész**. 
-* A **exportálása** egy verzió-verzió kiválasztása a listából, majd jelölje ki **exportálási alkalmazás** az eszköztáron. Válassza ki a JSON-t a biztonsági mentéshez való exportáláshoz, majd válassza az **Exportálás tárolóként** lehetőséget az [alkalmazás egy Luis](luis-container-howto.md)-tárolóban való használatához.  
+* Ha **törölni** szeretne egy verziót, válasszon ki egy verziót a listából, majd válassza a **Törlés** lehetőséget az eszköztárból. Kattintson az **OK** gombra. 
+* Egy verzió **átnevezéséhez** válasszon egy verziót a listából, majd válassza az **Átnevezés** lehetőséget az eszköztárból. Adja meg az új nevet, és válassza a **kész**lehetőséget. 
+* Egy verzió **exportálásához** válasszon ki egy verziót a listából, majd válassza az **alkalmazás exportálása** lehetőséget az eszköztárból. Válassza ki a JSON-t a biztonsági mentéshez való exportáláshoz, majd válassza az **Exportálás tárolóként** lehetőséget az [alkalmazás egy Luis-tárolóban való használatához](luis-container-howto.md).  
 

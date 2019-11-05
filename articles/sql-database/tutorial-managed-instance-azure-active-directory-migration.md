@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.date: 10/30/2019
+ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795279"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163969"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: SQL Server helyszíni Windows-felhasználók és-csoportok migrálása Azure SQL Database felügyelt példányra T-SQL DDL-szintaxis használatával
 
@@ -41,6 +41,8 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek érvényesek:
 - Hozzáférés Active Directory felhasználók/csoportok létrehozásához.
 - Meglévő SQL Server a helyszíni környezetben.
 - Egy meglévő felügyelt példány. Lásd [: gyors útmutató: Azure SQL Database felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
+  - Azure AD-bejelentkezések létrehozásához a felügyelt példányon `sysadmin` kell használni.
+- [Hozzon létre egy Azure ad-rendszergazdát a felügyelt példányhoz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 - Kapcsolódhat a felügyelt példányhoz a hálózaton belül. További információkat a következő cikkekben talál: 
     - [Az alkalmazás összekötése Azure SQL Database felügyelt példánnyal](sql-database-managed-instance-connect-app.md)
     - [Gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből](sql-database-managed-instance-configure-p2s.md)
@@ -214,7 +216,7 @@ Kövesse a rövid útmutatót [: adatbázis visszaállítása felügyelt példá
 
 Hajtsa végre az ALTER USER parancsot az áttelepítési folyamat végrehajtásához a felügyelt példányon.
 
-1. Jelentkezzen be a felügyelt példányba a felügyelt példányhoz tartozó SQL-rendszergazdai fiók használatával. Ezután hozza létre az Azure AD-bejelentkezést a felügyelt példányon a következő szintaxis használatával:
+1. Jelentkezzen be a felügyelt példányba a felügyelt példányhoz tartozó SQL-rendszergazdai fiók használatával. Ezután hozza létre az Azure AD-bejelentkezést a felügyelt példányon a következő szintaxissal. További információ: [oktatóanyag: felügyelt példányok biztonsága Azure SQL Database az Azure ad-kiszolgáló résztvevői (bejelentkezések) használatával](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 
@@ -338,6 +340,6 @@ A felügyelt példányok hitelesítésének tesztelése egy Windows-csoport tagj
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
 > Az aktuális megkerülő megoldás egy meglévő sémával rendelkező tábla létrehozása a fenti esetben < dbo. New >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

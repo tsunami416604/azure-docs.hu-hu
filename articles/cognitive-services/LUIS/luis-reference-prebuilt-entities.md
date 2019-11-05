@@ -1,7 +1,7 @@
 ---
 title: Az összes előre összeépített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk az előre összeállított entitások, a Language Understanding (LUIS) részét képező tartalmaz.
+description: Ez a cikk a Language Understanding (LUIS) részét képező, előre elkészített entitások listáját tartalmazza.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,300 +9,306 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: 66cdedb402392340d38ab9a72f6f19012c359664
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a5fcccc18a453101bd1166f2c85b0c3cdc747c3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677625"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464967"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
-Language Understanding (LUIS) biztosít az előre összeállított entitások. Ha az alkalmazás tartalmaz egy előre összeállított entitások, LUIS a kapcsolódó entitás előrejelzési a végpont-válasz tartalmazza. Valamennyi példa utterances is az a entitás vannak ellátva. Előre összeállított entitások viselkedését **nem** módosítható. Ha nincs másképp jelölve, előre összeállított entitások érhető el minden, a LUIS alkalmazás területi beállítások (kulturális környezetek). Az alábbi táblázat az előre összeállított entitások minden kulturális környezet által támogatott.
+Language Understanding (LUIS) előre összeépített entitásokat biztosít. Ha egy előre összeépített entitás szerepel az alkalmazásban, a LUIS tartalmazza a megfelelő entitás-előrejelzést a végpont válaszában. Az összes példa hosszúságú kimondott szöveg is címkével kell ellátni az entitással. Az előre elkészített entitások viselkedése **nem** módosítható. Ha másként nincs jelezve, az előre elkészített entitások az összes LUIS alkalmazás-területi beállításban (kulturális környezetekben) érhetők el. A következő táblázat az egyes kulturális környezetekben támogatott előre összeépített entitásokat tartalmazza.
 
-|Kulturális környezet|Tápfolyadékok cseréjét|Megjegyzések|
+|Kulturális környezet|Szubkultúrák|Megjegyzések|
 |--|--|--|
 |kínai|[zh-CN](#chinese-entity-support)||
-|holland|[NL-NL](#dutch-entity-support)||
+|holland|[nl-NL](#dutch-entity-support)||
 |Angol|[en-US (amerikai)](#english-american-entity-support)||
-|francia|[FR-hitelesítésszolgáltató (Kanada)](#french-canadian-entity-support), [fr-FR (Franciaország)](#french-france-entity-support), ||
+|francia|[fr-Ca (Kanada)](#french-canadian-entity-support), [fr-fr (Franciaország)](#french-france-entity-support), ||
 |német|[de-DE](#german-entity-support)||
-|olasz|[It-IT](#italian-entity-support)||
+|olasz|[informatikai](#italian-entity-support)||
 |japán|[ja-JP](#japanese-entity-support)||
 |koreai|[ko-KR](#korean-entity-support)||
-|portugál|[pt-BR (Brazília)](#portuguese-brazil-entity-support)||
-|spanyol|[es-ES (Spanyolország)](#spanish-spain-entity-support), [gen-MX (Mexikó)](#spanish-mexico-entity-support)||
+|portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
+|spanyol|[es-es (Spanyolország)](#spanish-spain-entity-support), [es-MX (Mexikó)](#spanish-mexico-entity-support)||
 |török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
 
-## <a name="chinese-entity-support"></a>Kínai entitás támogatása
+## <a name="prediction-endpoint-runtime"></a>Előrejelzési végpont futtatókörnyezete
 
-Támogatottak a következő entitásokat:
+Az előre elkészített entitások egy adott nyelven való rendelkezésre állását az előrejelzési végpont futásidejű verziója határozza meg. 
 
-|Előre összeállított entitások|```zh-CN``` |
+## <a name="chinese-entity-support"></a>Kínai entitások támogatása
+
+A következő entitások támogatottak:
+
+|Előre elkészített entitás|```zh-CN``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   | 
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="dutch-entity-support"></a>Holland entitás támogatása
+## <a name="dutch-entity-support"></a>Holland entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```nl-NL``` |
+|Előre elkészített entitás|```nl-NL``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="english-american-entity-support"></a>Angol (amerikai) entitás támogatása
+## <a name="english-american-entity-support"></a>Angol (amerikai) entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```en-US``` |
+|Előre elkészített entitás|```en-US``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    ✔   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   | 
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="french-france-entity-support"></a>Francia (Franciaország) entitás támogatása
+## <a name="french-france-entity-support"></a>Francia (franciaországi) entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```fr-FR``` |
+|Előre elkészített entitás|```fr-FR``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |  
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |   -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="french-canadian-entity-support"></a>Francia (kanadai) entitás támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```fr-CA``` |
+|Előre elkészített entitás|```fr-CA``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="german-entity-support"></a>Német entitás támogatása
+## <a name="german-entity-support"></a>Német entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```de-DE``` |
+|Előre elkészített entitás|```de-DE``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |  
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="italian-entity-support"></a>Olasz entitás támogatása
+## <a name="italian-entity-support"></a>Olasz entitások támogatása
 
-Támogatottak a következő entitásokat:
+Olasz előre elkészített kor, pénznem, dimenzió, szám, százalék _felbontás_ változása v2 és v3 előzetes verzióról.
 
-|Előre összeállított entitások|```it-IT``` |
+A következő entitások támogatottak:
+
+|Előre elkészített entitás|```it-IT``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="japanese-entity-support"></a>Japán entitás támogatása
+## <a name="japanese-entity-support"></a>Japán entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```ja-JP``` |
+|Előre elkészített entitás|```ja-JP``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2,-   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2,-   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2,-   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2,-   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2,-   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2,-   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2,-   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="korean-entity-support"></a>Koreai entitás támogatása
+## <a name="korean-entity-support"></a>Koreai entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```ko-KR``` |
+|Előre elkészített entitás|```ko-KR``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    -   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    -   |
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    -   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    -   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    -   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    -   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    -   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    -   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    -   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    -   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    -   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="portuguese-brazil-entity-support"></a>Portugál (brazíliai) entitás támogatása
+## <a name="portuguese-brazil-entity-support"></a>Portugál (brazíliai) entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```pt-BR``` |
+|Előre elkészített entitás|```pt-BR``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-spain-entity-support"></a>Spanyol (Spanyolország) entitás támogatása
+## <a name="spanish-spain-entity-support"></a>Spanyol (spanyolországi) entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```es-ES``` |
+|Előre elkészített entitás|```es-ES``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    V2, V3   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    V2, V3   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-mexico-entity-support"></a>Spanyol (Mexikó) entitás támogatása
+## <a name="spanish-mexico-entity-support"></a>Spanyol (mexikói) entitások támogatása
 
-Támogatottak a következő entitásokat:
+A következő entitások támogatottak:
 
-|Előre összeállított entitások|```es-MX``` |
+|Előre elkészített entitás|```es-MX``` |
 ------|:------:|
-[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    -   |
-[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    -   | 
-[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    -   | 
-[E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>Héten<br>nap   |    -   |
+[Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    -   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>Terület<br>tömeg<br>információ (pl. bit/bájt)<br>Hossz (pl. Meter)<br>sebesség (pl.: mérföld/óra)  |    -   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    -   | 
+[Százalékos](luis-reference-prebuilt-percentage.md)   |    -   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
-[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    -   | 
-[URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    -   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-Tekintse meg a megjegyzéseit a [elavult előre összeállított entitások](luis-reference-prebuilt-deprecated.md)
+Tekintse meg az [elavult előre összeépített entitások](luis-reference-prebuilt-deprecated.md) megjegyzéseit
 
-Nem áll rendelkezésre, portugál (brazíliai) – összes tápfolyadékok cseréjét KeyPhrase ```pt-BR```.
+A KeyPhrase nem érhető el a portugál (brazíliai) alkultúrában – ```pt-BR```.
 
 ## <a name="turkish-entity-support"></a>Török entitások támogatása
 
@@ -333,11 +339,11 @@ See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.m
 KeyPhrase is not available.
 -->
 
-## <a name="contribute-to-prebuilt-entity-cultures"></a>Hozzájárul az előre összeállított entitások kulturális környezetek
-Az előre összeállított entitások lettek kifejlesztve, a felismerő szöveges nyílt forráskódú projekt. [Közreműködés](https://github.com/Microsoft/Recognizers-Text) a projekthez. Ez a projekt a kulturális környezet pénznem vonatkozó példákat tartalmaz. 
+## <a name="contribute-to-prebuilt-entity-cultures"></a>Az előre elkészített entitások kultúrájának elősegítése
+Az előre összeállított entitások a felismerők – szöveg nyílt forráskódú projektben vannak kifejlesztve. [Hozzájárul](https://github.com/Microsoft/Recognizers-Text) a projekthez. Ez a projekt kulturális pénznemre vonatkozó példákat tartalmaz. 
 
-GeographyV2 és PersonName nem szerepelnek a szöveges felismerő projekt. Az alábbi előre összeállított entitások problémáival kapcsolatban, nyissa meg a [támogatási kérelem](../../azure-supportability/how-to-create-azure-support-request.md). 
+A GeographyV2 és a PersonName nem szerepelnek a felismerők – Text projektben. Az előre elkészített entitásokkal kapcsolatos problémák esetén nyisson meg egy [támogatási kérést](../../azure-supportability/how-to-create-azure-support-request.md). 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [szám](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), és [pénznem](luis-reference-prebuilt-currency.md) entitásokat. 
+Tudnivalók a [számokról](luis-reference-prebuilt-number.md), a [datetimeV2](luis-reference-prebuilt-datetimev2.md)és a [Pénznem](luis-reference-prebuilt-currency.md) entitásokról. 

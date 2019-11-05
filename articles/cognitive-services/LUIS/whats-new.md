@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813279"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498925"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
-Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
+Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések 
+
+### <a name="november-4-2019---ignite"></a>November 4., 2019-Ignite
+
+* Továbbfejlesztett fejlesztői hatékonyság
+    * Az [előrejelzési végpont v3](luis-migration-api-v3.md)verziójának általános elérhetősége. 
+    * Alkalmazások importálása és exportálása a. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) formátummal. Ez kikövezi a hatékony CI/CD-folyamat módját. 
+* Nyelvi bővítés
+    * Az [arab és a hindi](luis-language-support.md) nyilvános előzetes verzióban érhető el.
+* Előépítő modellek
+    * Az előre [elkészített tartományok](luis-reference-prebuilt-domains.md) már általánosan elérhetők (GA)
+    * Japán előre [elkészített entitások](luis-reference-prebuilt-entities.md#japanese-entity-support) – az Age, a Currency, a number, a százalék nem támogatott a v3-as verzióban.
+    * Olasz előre [összeépített entitások](luis-reference-prebuilt-entities.md#italian-entity-support) – kor, pénznem, dimenzió, szám, a százalékos felbontás változása: v2.
+* Fokozza a felhasználói élményt a [preview.Luis.ai-portálon](https://preview.luis.ai) – az összetett modellek létrehozásának és hibakeresésének lehetővé tételéhez szükséges, kitatarozt címkézési élmény.
+* Előzetes nyelvi ismeretek – a [kifinomult nyelvi modellek fejlesztése](luis-concept-entity-types.md) kevesebb erőfeszítéssel. 
+* A gépi tanulási funkciók definiálása a modell szintjén, valamint a modellek más modellként való használatának engedélyezése, például az entitások használata a szándékok és más entitások számára.
+* Új, kibővített [korlátok](luis-boundaries.md) – nagyobb maximális érték a kifejezések és az összes kifejezés, valamint az új modell funkció korlátai
+* Kinyerheti az adatokat a szövegből a mély hierarchia struktúrájának formátumában, így hatékonyabban fejlesztheti a beszélgetési alkalmazásokat.
+
+    ![gépi megtanult entitás képe](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>Szeptember 3., 2019
 

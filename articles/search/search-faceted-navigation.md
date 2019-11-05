@@ -1,29 +1,29 @@
 ---
-title: Sokoldalú Navigálás megvalósítása kategória-hierarchiában – Azure Search
-description: Vegyen fel dimenziós navigálást olyan alkalmazásokhoz, amelyek integrálva vannak a Azure Search, egy felhőalapú keresési szolgáltatással Microsoft Azureon.
-author: HeidiSteen
+title: Sokoldalú navigáció megvalósítása kategória-hierarchiában
+titleSuffix: Azure Cognitive Search
+description: Vegyen fel egy dimenziós navigálást olyan alkalmazásokba, amelyek integrálva vannak az Azure Cognitive Search, egy felhőalapú keresési szolgáltatással Microsoft Azureon.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: bf6b7372856ccc41b52c995b37a2e244e6a5c5fb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163238"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496514"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
+# <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
+
 A sokoldalú Navigálás olyan szűrési mechanizmus, amely a keresési alkalmazásokban a saját irányítású részletezési navigációt teszi lehetővé. Előfordulhat, hogy a "sokoldalú navigáció" kifejezés ismeretlen, de korábban már használta. Az alábbi példa azt mutatja, hogy a csiszolatlan Navigálás nem több, mint az eredmények szűréséhez használt kategóriák.
 
- ![Azure Search Job Portal bemutatója](media/search-faceted-navigation/azure-search-faceting-example.png "Azure Search Job Portal bemutatója")
+ ![Azure Cognitive Search Job Portal – bemutató](media/search-faceted-navigation/azure-search-faceting-example.png "Azure Cognitive Search Job Portal – bemutató")
 
 A sokoldalú Navigálás egy alternatív belépési pont a kereséshez. Kényelmes alternatívát kínál összetett keresési kifejezések kézzel történő beírásához. Az aspektusok segítségével megtalálhatja, hogy mit keres, és ezzel biztosíthatja, hogy ne kapjon nulla eredményt. Fejlesztőként a dimenziók lehetővé teszik, hogy elérhetővé tegye a keresési indexhez való navigálás leghasznosabb keresési feltételeit. Az online kiskereskedelmi alkalmazásokban a sokoldalú Navigálás gyakran a márkák, a részlegek (gyerek cipők), a méret, az ár, a népszerűség és a minősítések alapján történik. 
 
-A sokoldalú navigáció megvalósítása különböző keresési technológiákkal tér el. Azure Search a lecsiszolt navigáció a lekérdezési időpontra épül, a sémában korábban használt mezők használatával.
+A sokoldalú navigáció megvalósítása különböző keresési technológiákkal tér el. Az Azure Cognitive Search-ban a lecsiszolt navigáció a lekérdezési időpontra épül, a sémában korábban használt mezők használatával.
 
 -   Az alkalmazás által létrehozott lekérdezésekben a lekérdezésnek meg kell küldenie a *dimenzió lekérdezési paramétereit* , hogy lekérje a dokumentumhoz tartozó eredményhalmaz elérhető dimenzióinak értékeit.
 
@@ -34,7 +34,7 @@ Az alkalmazásfejlesztés során a lekérdezéseket alkotó kód megírása a mu
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
 Ez a cikk a feladatok keresési portálját használja példaként. A példa ASP.NET MVC-alkalmazásként van implementálva.
 
--   Tekintse meg és tesztelje a munkahelyi bemutatót a [Azure Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
 
 -   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -47,13 +47,13 @@ A sokoldalú Navigálás keresési felülete iterációs megoldás, ezért kezdj
 
 A kiindulási pont egy olyan alkalmazási oldal, amely sokoldalú navigálást tesz lehetővé, jellemzően a periférián helyezi el. A sokoldalú Navigálás gyakran faszerkezetes, az egyes értékekhez tartozó jelölőnégyzetekkel vagy a szövegre kattintva. 
 
-1. Azure Search eljuttatott lekérdezés megadja a részletes navigációs struktúrát egy vagy több aspektus lekérdezési paraméter használatával. Előfordulhat például, hogy a lekérdezés `facet=Rating` tartalmaz, például `:values` vagy `:sort` lehetőséggel, hogy tovább pontosítsa a bemutatót.
+1. Az Azure Cognitive Searchba eljuttatott lekérdezés megadja a csiszolt navigációs szerkezetet egy vagy több aspektus lekérdezési paraméterrel. Előfordulhat például, hogy a lekérdezés `facet=Rating`tartalmaz, például `:values` vagy `:sort` lehetőséggel, hogy tovább pontosítsa a bemutatót.
 2. A megjelenítési réteg olyan keresési oldalt jelenít meg, amely sokoldalú navigálást tesz lehetővé a kérésben megadott aspektusok használatával.
 3. A minősítést tartalmazó, sokoldalú navigációs struktúra esetén a "4" gombra kattintva jelezheti, hogy csak a 4-es vagy magasabb minősítésű termékek jelennek meg. 
 4. Válaszként az alkalmazás olyan lekérdezést küld, amely tartalmazza a `$filter=Rating ge 4` 
 5. A megjelenítési réteg frissíti az oldalt, amely egy csökkentett eredményhalmazt mutat, amely csak azokat az elemeket tartalmazza, amelyek megfelelnek az új feltételeknek (ebben az esetben a 4. és az összes termék).
 
-A dimenzió egy lekérdezési paraméter, de nem tévesztendő össze a lekérdezési bevitelsel. A lekérdezésben soha nem használjuk kiválasztási feltételként. Ehelyett a dimenzió lekérdezési paramétereit a válaszban visszakapott navigációs struktúra bemenetként kell megtekintenie. Az egyes megadott dimenziós lekérdezési paraméterek esetében Azure Search kiértékeli, hogy hány dokumentum szerepel a részleges eredményekben az egyes dimenziós értékeknél.
+A dimenzió egy lekérdezési paraméter, de nem tévesztendő össze a lekérdezési bevitelsel. A lekérdezésben soha nem használjuk kiválasztási feltételként. Ehelyett a dimenzió lekérdezési paramétereit a válaszban visszakapott navigációs struktúra bemenetként kell megtekintenie. Az Azure Cognitive Search kiértékeli, hogy az egyes dimenziós lekérdezési paraméterek közül hány dokumentum szerepel az egyes dimenziós értékek részleges eredményei között.
 
 Figyelje meg a 4. lépésben szereplő `$filter`. A szűrő a sokoldalú Navigálás fontos aspektusa. Bár a dimenziók és a szűrők függetlenek az API-ban, mindkét esetben a kívánt élményt kell biztosítania. 
 
@@ -63,7 +63,7 @@ Az alkalmazás kódjában a minta a dimenzió lekérdezési paramétereit haszn�
 
 ### <a name="query-basics"></a>Lekérdezés alapjai
 
-Azure Search a kérelem egy vagy több lekérdezési paraméterrel van megadva (lásd a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a leíráshoz című témakört). A lekérdezési paraméterek egyike sem szükséges, de legalább egyet meg kell adni ahhoz, hogy egy lekérdezés érvényes legyen.
+Az Azure Cognitive Searchban a kérelem egy vagy több lekérdezési paraméteren keresztül van megadva (lásd a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a leíráshoz című témakört). A lekérdezési paraméterek egyike sem szükséges, de legalább egyet meg kell adni ahhoz, hogy egy lekérdezés érvényes legyen.
 
 A nem releváns találatok kiszűrésének lehetősége a következő kifejezések egyikén vagy mindkettőn keresztül érhető el:
 
@@ -89,17 +89,17 @@ A sokoldalú navigációt tartalmazó alkalmazásokban ügyeljen arra, hogy az e
 <a name="howtobuildit"></a>
 
 ## <a name="build-a-faceted-navigation-app"></a>Sokoldalú navigációs alkalmazás készítése
-A keresési kérést felépítő alkalmazás kódjában Azure Searchokkal is megvalósítható a navigációs felület. A sokoldalú Navigálás a séma azon elemein alapul, amelyeket a korábban definiált.
+A keresési kérést felépítő alkalmazás kódjában az Azure Cognitive Search felületes navigálást hajt végre. A sokoldalú Navigálás a séma azon elemein alapul, amelyeket a korábban definiált.
 
 A keresési indexben előre megadott érték a `Facetable [true|false]` index attribútum, amely a kiválasztott mezőkön állítható be, és lehetővé teszi a használatuk kikapcsolását egy sokoldalú navigációs struktúrában. `"Facetable" = true`nélkül nem használható mező a dimenziós navigálásban.
 
-A kódban a megjelenítési réteg biztosítja a felhasználói élményt. Tartalmaznia kell a csiszolt navigációs elemek, például a felirat, az értékek, a jelölőnégyzetek és a darabszám alkotóelemeit. A Azure Search REST API a platform agnosztikus, ezért a kívánt nyelvet és platformot kell használnia. A lényeg a növekményes frissítést támogató felhasználói felületi elemek belefoglalása, a felhasználói felület frissített állapota, mivel minden további aspektus ki van választva. 
+A kódban a megjelenítési réteg biztosítja a felhasználói élményt. Tartalmaznia kell a csiszolt navigációs elemek, például a felirat, az értékek, a jelölőnégyzetek és a darabszám alkotóelemeit. Az Azure Cognitive Search REST API a platform agnosztikus, ezért a kívánt nyelvet és platformot kell használnia. A lényeg a növekményes frissítést támogató felhasználói felületi elemek belefoglalása, a felhasználói felület frissített állapota, mivel minden további aspektus ki van választva. 
 
 A lekérdezési időpontnál az alkalmazás kódja olyan kérést hoz létre, amely tartalmazza a `facet=[string]`t, egy olyan kérési paramétert, amely a mező számára a dimenziót biztosítja. Egy lekérdezés több dimenzióval is rendelkezhet, például `&facet=color&facet=category&facet=rating`, amelyek mindegyike egy jellel (&) karakterrel elválasztható.
 
 Az alkalmazás kódjának meg kell adnia egy `$filter` kifejezést is, amely a kattintásos navigációban lévő eseményeket kezeli. A `$filter` csökkenti a keresési eredményeket, a dimenzió értékének a szűrési feltételként való használatával.
 
-Azure Search a keresési eredményeket adja vissza egy vagy több megadott kifejezés alapján, valamint a sokoldalú navigációs szerkezet frissítéseivel. Azure Search a sokoldalú Navigálás egy egyszintű kialakítás, amelynek a dimenzió értékeit, valamint az egyes eredmények eredményének számát mutatja.
+Az Azure Cognitive Search a keresési eredményeket egy vagy több megadott kifejezés alapján adja vissza, a sokoldalú navigációs struktúra frissítéseivel együtt. Az Azure Cognitive Search-ban a csiszolatlan navigáció egy egyszintű kialakítás, amely a dimenzió értékeit tartalmazza, és megszámolja, hány eredményt talál.
 
 A következő szakaszokban alaposabban megvizsgáljuk, hogyan hozhat létre egyes részeket.
 
@@ -107,7 +107,7 @@ A következő szakaszokban alaposabban megvizsgáljuk, hogyan hozhat létre egye
 
 ## <a name="build-the-index"></a>Az index összeállítása
 Az adatbontás engedélyezve van az indexben, a következő index attribútumon keresztül: `"Facetable": true`.  
-Alapértelmezés szerint az összes olyan mezőtípus, amely felhasználható a sokoldalú navigálásban, `Facetable`. Ilyen típusú mezők például a következők: `Edm.String`, `Edm.DateTimeOffset` és az összes numerikus mezőtípus (lényegében az összes mezőtípus látható, kivéve a `Edm.GeographyPoint`, amely nem használható sokoldalú navigáláskor). 
+Alapértelmezés szerint az összes olyan mezőtípus, amely felhasználható a sokoldalú navigálásban, `Facetable`. Ilyen típusú mezők például a következők: `Edm.String`, `Edm.DateTimeOffset`és az összes numerikus mezőtípus (lényegében az összes mezőtípus látható, kivéve a `Edm.GeographyPoint`, amely nem használható sokoldalú navigáláskor). 
 
 Az indexek létrehozásakor az ajánlott eljárás a sokoldalú navigáláshoz, ha explicit módon kikapcsolja azokat a mezőket, amelyeket soha nem szabad dimenzióként használni.  Az egyedi értékek, például az AZONOSÍTÓk vagy a terméknév karakterlánc-mezőinek beállítását úgy kell beállítani, hogy a `"Facetable": false` a véletlen (és nem hatékony) használatát a sokoldalú navigálásban. Ha nincs szüksége a méretezésre, nem kell megtartania az index méretét, és általában javítja a teljesítményt.
 
@@ -167,7 +167,7 @@ A bemutató rétegből való munkavégzés segítséget nyújt az esetlegesen ki
 
 A sokoldalú navigáció szempontjából a web vagy az alkalmazás oldal megjeleníti a sokoldalú navigációs struktúrát, észleli a felhasználói adatokat a lapon, és beszúrja a módosított elemeket. 
 
-A webalkalmazások esetében az AJAX általában a bemutató rétegben használatos, mivel lehetővé teszi a növekményes módosítások frissítését. Használhatja a ASP.NET MVC-t vagy bármely más vizualizációs platformot is, amely képes HTTP-n keresztül kapcsolódni egy Azure Search szolgáltatáshoz. A jelen cikk során hivatkozott minta alkalmazás – a **Azure Search Job Portal bemutatója** – egy ASP.net MVC-alkalmazás.
+A webalkalmazások esetében az AJAX általában a bemutató rétegben használatos, mivel lehetővé teszi a növekményes módosítások frissítését. Használhatja a ASP.NET MVC-t vagy bármely más vizualizációs platformot is, amely képes HTTP-n keresztül kapcsolódni egy Azure Cognitive Search szolgáltatáshoz. A jelen cikkben hivatkozott minta alkalmazás – az **Azure Cognitive Search Job Portal bemutatója** – egy ASP.net MVC-alkalmazás.
 
 A példában a csiszolt navigáció a keresési eredmények oldalon van beépítve. Az alábbi példa a minta alkalmazás `index.cshtml` fájljában a statikus HTML-struktúrát jeleníti meg a keresési eredmények lapon a csiszolatlan Navigálás megjelenítéséhez. A metszetek listája dinamikusan lett létrehozva vagy újraépítve, amikor beküld egy keresési kifejezést, vagy kijelöl vagy töröl egy dimenziót.
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-A dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól függően további paramétert adhat meg a vesszővel tagolt lista, amely tartalmazza `count:<integer>`, `sort:<>`, `interval:<integer>` és `values:<list>`. A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
+A dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól függően további paramétert adhat meg a vesszővel tagolt lista, amely tartalmazza `count:<integer>`, `sort:<>`, `interval:<integer>`és `values:<list>`. A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
 
 Az egyes aspektusokkal együtt az alkalmazás által létrehozott kérelemnek olyan szűrőket is kell kiépítenie, amelyekkel szűkítheti a jelölt dokumentumok készletét egy adott dimenzió érték kiválasztása alapján. A bike Store-ban a sokoldalú Navigálás olyan kérdéseket *tesz elérhetővé, mint a színek, a gyártók és a különböző típusú kerékpárok típusai?* . A szűrés olyan kérdésekre ad választ, mint a *pontos kerékpárok piros, Mountain Bikes, ebben az árakban?* . Ha a "vörös" gombra kattint, hogy csak a vörös termékek jelenjenek meg, az alkalmazás által küldött következő lekérdezés tartalmazza a `$filter=Color eq ‘Red’`.
 
@@ -260,7 +260,7 @@ A numerikus és a DateTime érték esetén explicit módon megadhatja az érték
 
 **Alapértelmezés szerint csak egy szinttel rendelkező navigáció lehet** 
 
-Ahogy azt említettük, nincs közvetlen támogatás az aspektusok hierarchiában való beágyazásához. Alapértelmezés szerint a Azure Search csiszolatlan Navigálás csak egy szintű szűrőt támogat. A megkerülő megoldások azonban léteznek. Hierarchikus dimenziós struktúrát is használhat egy `Collection(Edm.String)` egyetlen belépési ponttal a hierarchiában. Ennek a megkerülő megoldásnak a megvalósítása meghaladja a jelen cikk hatókörét. 
+Ahogy azt említettük, nincs közvetlen támogatás az aspektusok hierarchiában való beágyazásához. Alapértelmezés szerint az Azure Cognitive Search-alapú Navigálás csak egy szintű szűrőt támogat. A megkerülő megoldások azonban léteznek. Hierarchikus dimenziós struktúrát is használhat egy `Collection(Edm.String)` egyetlen belépési ponttal a hierarchiában. Ennek a megkerülő megoldásnak a megvalósítása meghaladja a jelen cikk hatókörét. 
 
 ### <a name="querying-tips"></a>Tippek lekérdezése
 **Mezők érvényesítése**
@@ -302,7 +302,7 @@ A navigációs fa minden egyes csiszolt mezőjénél van egy alapértelmezett ko
 Figyelje meg, hogy különbséget tesz a dimenzió eredményei és a keresési eredmények között. A keresési eredmények az összes olyan dokumentum, amely megfelel a lekérdezésnek. A dimenziók eredményei az egyes dimenziók értékeinek felelnek meg. A példában a keresési eredmények közé tartoznak azok a városok neve, amelyek nem szerepelnek a Face besorolási listán (5 a példánkban). A sokoldalú Navigálás során kiszűrt eredmények láthatóvá válnak, ha törli a dimenziókat, vagy más aspektusokat választ a város mellett. 
 
 > [!NOTE]
-> `count` megvitatása, ha egynél több típus is zavaró lehet. Az alábbi táblázat röviden összefoglalja, hogyan használják a kifejezést Azure Search API-ban, a mintakódben és a dokumentációban. 
+> `count` megvitatása, ha egynél több típus is zavaró lehet. Az alábbi táblázat röviden összefoglalja, hogyan használható a kifejezés az Azure Cognitive Search API-ban, a mintakódben és a dokumentációban. 
 
 * `@colorFacet.count`<br/>
   A megjelenítési kódban a Faces paramétert kell látni a dimenzióban, amelyet a rendszer a Faces eredmények számának megjelenítésére használ. A dimenzió eredményei között a Count (dimenzió) érték jelzi, hogy hány dokumentum felel meg az adott aspektusnak vagy tartománynak.
@@ -317,23 +317,23 @@ Ha szűrőket ad hozzá egy sokoldalú lekérdezéshez, érdemes megtartania a F
 
 **Győződjön meg róla, hogy pontos dimenziók száma**
 
-Bizonyos körülmények között előfordulhat, hogy a dimenziók száma nem egyezik meg az eredményhalmaz értékével (lásd a részletes [navigálást Azure Searchban (hozzászólás)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch).
+Bizonyos körülmények között előfordulhat, hogy a dimenziók száma nem egyezik meg az eredményekkel (lásd: részletes [Navigálás az Azure Cognitive Search (fórum közzététele)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
 
 A metszeti architektúra miatt pontatlan lehet a dimenziók száma. Minden keresési indexnek több szegmense van, és az egyes szegmensek az első N aspektust jelentik a dokumentumok száma alapján, amelyet aztán egyetlen eredménybe egyesít. Ha egyes szegmensek több egyező értékkel rendelkeznek, míg mások kevesebbet tartalmaznak, előfordulhat, hogy bizonyos aspektusok hiányoznak, vagy az eredmények között szerepelnek.
 
-Bár ez a viselkedés bármikor megváltozhat, ha ez a viselkedés még ma tapasztalható, a darabszám mesterséges feltöltésével: \<number > nagy számra, hogy az egyes szegmensek teljes jelentéskészítését kikényszerítse. Ha a Count érték értéke: nagyobb vagy egyenlő, mint a mezőben szereplő egyedi értékek száma, akkor a pontos eredmények garantáltak. Ha azonban a dokumentumok száma magas, akkor teljesítménybeli szankció van, ezért ezt a beállítást megfontoltan kell használni.
+Bár ez a viselkedés bármikor megváltozhat, ha ez a viselkedés még ma tapasztalható, a darabszám mesterséges feltöltésével:\<szám > nagy számra, hogy az egyes szegmensek teljes jelentéskészítését kikényszerítse. Ha a Count érték értéke: nagyobb vagy egyenlő, mint a mezőben szereplő egyedi értékek száma, akkor a pontos eredmények garantáltak. Ha azonban a dokumentumok száma magas, akkor teljesítménybeli szankció van, ezért ezt a beállítást megfontoltan kell használni.
 
 ### <a name="user-interface-tips"></a>Felhasználói felülettel kapcsolatos tippek
 **Címkék hozzáadása az egyes mezőkhöz a dimenziós navigációban**
 
-A címkék általában a HTML-ben vagy az űrlapon vannak definiálva (`index.cshtml` a minta alkalmazásban). Nincs API a Azure Search a Face navigációs címkék vagy más metaadatok esetében.
+A címkék általában a HTML-ben vagy az űrlapon vannak definiálva (`index.cshtml` a minta alkalmazásban). Nincs olyan API az Azure Cognitive Searchban, amely dimenziós navigációs címkéket vagy egyéb metaadatokat tartalmaz.
 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Szűrés tartomány alapján
-Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. A tartományok numerikus adatok és DateTime értékek esetén támogatottak. További információt a [keresési dokumentumok (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)egyes módszereiről a következő cikkekben olvashat:.
+Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. A tartományok numerikus adatok és DateTime értékek esetén támogatottak. További információt a [keresési dokumentumok (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)egyes módszereiről itt olvashat.
 
-Azure Search egyszerűsíti a tartomány-kialakítást azáltal, hogy két módszert biztosít a különböző számítási felépítéshez. Mindkét módszer esetében Azure Search létrehozza a megfelelő tartományokat a megadott bemenetek alapján. Ha például 10 | 20 | 30 tartomány értéket ad meg, akkor a automatikusan 0-10, 10-20, 20-30 tartományt hoz létre. Az alkalmazás opcionálisan eltávolíthatja az összes olyan intervallumot, amely üres. 
+Az Azure Cognitive Search egyszerűsíti a tartomány-kialakítást azáltal, hogy két módszert biztosít a különböző számítási felépítéshez. Mindkét megközelítés esetében az Azure Cognitive Search létrehozza a megfelelő tartományokat a megadott bemenetek alapján. Ha például 10 | 20 | 30 tartomány értéket ad meg, akkor a automatikusan 0-10, 10-20, 20-30 tartományt hoz létre. Az alkalmazás opcionálisan eltávolíthatja az összes olyan intervallumot, amely üres. 
 
 **1. módszer: az intervallum paraméter használata**  
 Az $10-es növekmények értékének megadásához adja meg a következőt: `&facet=price,interval:10`
@@ -347,7 +347,7 @@ Ha meg szeretné adni az előző képernyőképen látható egyik dimenziót, ha
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-Az egyes tartományok kiindulási pontként, a listában szereplő értékekkel és végpontként, majd az előző tartományból kivágással, különálló időközök létrehozásához lettek létrehozva. Azure Search ezeket a dolgokat a csiszolatlan Navigálás részeként. Az egyes intervallumok strukturálásához nem kell kódot írnia.
+Az egyes tartományok kiindulási pontként, a listában szereplő értékekkel és végpontként, majd az előző tartományból kivágással, különálló időközök létrehozásához lettek létrehozva. Az Azure Cognitive Search a sokoldalú Navigálás részeként teszi ezeket a dolgokat. Az egyes intervallumok strukturálásához nem kell kódot írnia.
 
 ### <a name="build-a-filter-for-a-range"></a>Szűrő létrehozása tartományhoz
 A dokumentumok a kiválasztott tartomány alapján történő szűréséhez használhatja a `"ge"` és `"lt"` szűrési operátorokat egy kétrészes kifejezésben, amely meghatározza a tartomány végpontját. Ha például az 10-25 tartományt választja egy `listPrice` mezőhöz, a szűrő `$filter=listPrice ge 10 and listPrice lt 25`. A mintakód **priceFrom** és **priceTo** paramétereket használ a végpontok beállításához. 
@@ -359,19 +359,19 @@ A dokumentumok a kiválasztott tartomány alapján történő szűréséhez hasz
 ## <a name="filter-based-on-distance"></a>Szűrés távolság alapján
 Gyakori, hogy olyan szűrőket lát, amelyek segítenek az áruház, az étterem vagy a célhely kiválasztásában az aktuális tartózkodási hely közelsége alapján. Habár az ilyen típusú szűrők kitűnnek a kicsiszolt navigációhoz, csak egy szűrő lehet. Itt megemlítjük azokat a felhasználókat, akik kifejezetten az adott tervezési problémára vonatkozó megvalósítási tanácsokat keresik.
 
-Két térinformatikai függvény van a Azure Search, a **Geo. Distance** és a **Geo. metszetekben**.
+Két térinformatikai függvény van az Azure Cognitive Search, a **Geo. Distance** és a **Geo. metszetekben**.
 
 * A **Geo. Distance** függvény két pont közötti távolságot adja vissza kilométerben. Az egyik pont egy mező, a másik pedig a szűrő részeként kapott állandó. 
 * A **Geo. metszetek** függvény Igaz értéket ad vissza, ha egy adott pont egy adott sokszögen belül van. A pont egy mező, a sokszög pedig a szűrő részeként átadott koordináták állandó listájának van megadva.
 
-A szűrési példákat a [OData kifejezés szintaxisában (Azure Search)](query-odata-filter-orderby-syntax.md)találhatja meg.
+A szűrési példákat a [OData kifejezés szintaxisában (Azure Cognitive Search)](query-odata-filter-orderby-syntax.md)találja.
 
 <a name="tryitout"></a>
 
 ## <a name="try-the-demo"></a>A bemutató kipróbálása
-A Azure Search Job Portal bemutatója a cikkben hivatkozott példákat tartalmazza.
+Az Azure Cognitive Search Job Portal bemutatója a cikkben hivatkozott példákat tartalmazza.
 
--   Tekintse meg és tesztelje a munkahelyi bemutatót a [Azure Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
 
 -   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -395,8 +395,8 @@ Amikor a keresési eredményekkel dolgozik, tekintse meg az URL-címet a lekérd
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>További információ
-Tekintse meg [Azure Search a Deep divet](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). A 45:25-es verzióban egy bemutató mutatja be, hogyan valósíthatók meg a dimenziók.
+## <a name="learn-more"></a>Részletek
+Tekintse meg az [Azure Cognitive Search a Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)szolgáltatást. A 45:25-es verzióban egy bemutató mutatja be, hogyan valósíthatók meg a dimenziók.
 
 A részletes Navigálás tervezési alapelveivel kapcsolatos további információk a következő hivatkozásokat ajánljuk:
 

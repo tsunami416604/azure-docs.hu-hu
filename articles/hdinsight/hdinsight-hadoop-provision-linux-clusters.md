@@ -1,5 +1,5 @@
 ---
-title: Fürt beállítása Apache Hadoop, Spark, Kafka, HBase vagy R Server – Azure
+title: Fürt beállítása az Apache és a R Server számára az Azure HDInsight
 description: Hadoop-, Kafka-, Spark-, HBase-, R Server-vagy Storm-fürtöket állíthat be a HDInsight böngészőből, a klasszikus Azure CLI-ből, a Azure PowerShell, a REST-ból vagy az SDK-ból.
 keywords: Hadoop-fürt beállítása, Kafka-fürt beállítása, Spark-fürt beállítása, mi a fürt a Hadoop-ben
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 28038743f859b1a41bb332bf70b481e07b2ff29c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677036"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498262"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és más szolgáltatásokkal
 
@@ -53,7 +53,7 @@ Kövesse a képernyőn megjelenő utasításokat. A részleteket az alábbi táb
 * [Fürtök típusai és konfigurációja](#cluster-types)
 * [Fürt neve](#cluster-name)
 * [Fürt bejelentkezési és SSH-felhasználóneve](#cluster-login-and-ssh-username)
-* [Location](#location)
+* [Hely](#location)
 
 ## <a name="resource-group-name"></a>Erőforráscsoport neve
 
@@ -66,7 +66,7 @@ Az Azure HDInsight jelenleg a következő típusú fürtöket biztosítja, amely
 > [!IMPORTANT]  
 > A HDInsight-fürtök különböző típusokban érhetők el, amelyek mindegyike egyetlen munkaterheléshez vagy technológiához használható. Nincs támogatott módszer a több típust egyesítő fürt létrehozására, például a Storm és a HBase egy fürtön. Ha a megoldás olyan technológiákat igényel, amelyek több HDInsight között oszlanak el, az Azure-beli [virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network) kapcsolódhatnak a szükséges fürtökhöz.
 
-| Fürt típusa | Funkció |
+| Fürttípus | Funkció |
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |A tárolt adatmennyiségek kötegelt lekérdezése és elemzése |
 | [HBase](hbase/apache-hbase-overview.md) |Nagy mennyiségű séma nélküli, NoSQL-adatbázis feldolgozása |
@@ -94,19 +94,19 @@ A HDInsight-fürtök neve a következő korlátozásokkal rendelkezhet:
 
 A HDInsight-fürtök esetében két felhasználói fiókot is beállíthat a fürt létrehozása során:
 
-* HTTP-felhasználó: Az alapértelmezett felhasználónév az *admin*. A Azure Portal alapszintű konfigurációját használja. Néha a "fürt felhasználó" néven is ismert.
-* SSH-felhasználó: Az SSH-n keresztül a fürthöz való kapcsolódásra szolgál. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+* HTTP-felhasználó: az alapértelmezett Felhasználónév a *rendszergazda*. A Azure Portal alapszintű konfigurációját használja. Néha a "fürt felhasználó" néven is ismert.
+* SSH-felhasználó: az SSH-n keresztül a fürthöz való kapcsolódásra szolgál. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A HTTP-Felhasználónév a következő korlátozásokkal rendelkezik:
 
 * Engedélyezett speciális karakterek: _ és @
-* Nem engedélyezett karakterek: #;. "", \/: "! *? $ () {} [] < > | &--= +% ~ ^ Space
+* Nem engedélyezett karakterek: #;. "",\/: "! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maximális hossz: 20
 
 Az SSH-Felhasználónév a következő korlátozásokkal rendelkezik:
 
 * Engedélyezett speciális karakterek: _ és @
-* Nem engedélyezett karakterek: #;. "", \/: "! *? $ () {} [] < > | &--= +% ~ ^ Space
+* Nem engedélyezett karakterek: #;. "",\/: "! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maximális hossz: 64
 * Fenntartott nevek: Hadoop, felhasználók, oozie, kaptár, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, fonal, hcat, AMS, hbase, Storm, Administrator, admin, user, Felhasználó1, test, Felhasználó2, test1, user3, Rendszergazda1, 1, 123, a, actuser, adm, admin2, ASPNET,, a konzol, David, vendég, János, tulajdonos, gyökér, kiszolgáló, SQL, támogatás, support_388945a0, sys, teszt2, test3, user4, user5, Spark
 
@@ -114,7 +114,7 @@ A nagyvállalati biztonsági csomag lehetővé teszi a HDInsight integrálását
 
 ## <a name="location"></a>A fürtök és a tároló helye (régiói)
 
-Nem kell explicit módon megadnia a fürt helyét: A fürt az alapértelmezett tárolóval megegyező helyen található. A támogatott régiók listájának megtekintéséhez kattintson a **régió** legördülő listára a [HDInsight díjszabásában](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
+Nem kell explicit módon megadnia a fürt helyét: a fürt az alapértelmezett tárolóval megegyező helyen található. A támogatott régiók listájának megtekintéséhez kattintson a **régió** legördülő listára a [HDInsight díjszabásában](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 ## <a name="storage-endpoints-for-clusters"></a>Fürtök tárolási végpontjai
 
@@ -122,8 +122,8 @@ Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) ha
 
 A HDInsight-fürtök a következő tárolási lehetőségeket használhatják:
 
-* Azure Data Lake Storage Gen2
-* Azure Data Lake Storage Gen1
+* 2\. generációs Azure Data Lake Storage
+* 1\. generációs Azure Data Lake Storage
 * Azure Storage általános célú v2
 * Azure Storage általános célú v1
 * Azure Storage Block-blob (**csak másodlagos tárolóként támogatott**)
@@ -154,14 +154,14 @@ Ha a HDInsight-fürt törlése után szeretné megőrizni a kaptár-táblákat, 
 
 Az egyik HDInsight létrehozott metaadattár nem oszthatók meg különböző HDInsight-fürt verziói között. An méretű HDInsight A HDInsight-verziók listáját lásd: [támogatott HDInsight-verziók](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-### <a name="oozie-metastore"></a>Oozie-metaadattár
+### <a name="oozie-metastore"></a>Oozie metaadattár
 
 A Oozie használatakor a teljesítmény növeléséhez használjon egyéni metaadattár. A metaadattár a fürt törlése után is biztosíthat hozzáférést a Oozie-feladatok adataihoz.
 
 > [!IMPORTANT]  
 > Egyéni Oozie-metaadattár nem használható fel újra. Ha egyéni Oozie-metaadattár szeretne használni, üres Azure SQL Database kell megadnia a HDInsight-fürt létrehozásakor.
 
-## <a name="enterprise-security-package"></a>Enterprise Security Package
+## <a name="enterprise-security-package"></a>Vállalati biztonsági csomag
 
 A Hadoop, a Spark, a HBase, a Kafka és az interaktív lekérdezési fürt típusainál engedélyezheti a **Enterprise Security Package**. Ez a csomag lehetővé teszi, hogy az Apache Ranger használatával biztonságosabb fürtöt lehessen beállítani, és integrálja Azure Active Directory. További információ: [a vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).
 
@@ -185,7 +185,7 @@ A csomópont-használat számlázása addig történik, amíg a fürt létezik. 
 
 Mindegyik fürt típusa saját számú csomóponttal, csomópontok terminológiával és alapértelmezett virtuálisgép-mérettel rendelkezik. Az alábbi táblázatban az egyes csomópont-típusok csomópontjainak száma zárójelben van.
 
-| Type | Csomópontok | Diagram |
+| Típus | Csomópontok | Ábra |
 | --- | --- | --- |
 | Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |![HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
@@ -218,15 +218,15 @@ Ha a Azure Portal a fürt konfigurálására használja, a csomópont mérete a 
 
 Fürtök telepítésekor a telepítendő megoldás alapján válassza a számítási erőforrások lehetőséget. A következő virtuális gépek használatosak a HDInsight-fürtökhöz:
 
-* A és D1-4 sorozatú virtuális gépek: [Általános célú linuxos virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* D11-14 sorozatú virtuális gép: [Memóriára optimalizált linuxos virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A és D1-4 sorozatú virtuális gépek: [általános célú LINUXOS VM-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
+* D11-14 sorozatú virtuális gép: [memóriára optimalizált LINUXOS VM-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 Annak megállapításához, hogy milyen értéket kell használnia a virtuális gép méretének megadásához a különböző SDK-k használatával vagy a Azure PowerShell használata közben, lásd: [HDInsight-fürtökhöz használandó](../cloud-services/cloud-services-sizes-specs.md#size-tables)virtuálisgép-méretek. Ebből a csatolt cikkből a táblázatok **méret** oszlopában található értéket használja.
 
 > [!IMPORTANT]  
 > Ha a fürtben több mint 32 feldolgozó csomópontra van szüksége, ki kell választania egy fő csomópont-méretet legalább 8 maggal és 14 GB RAM-mal.
 
-További információkért lásd: [virtuális gépek méretei](../virtual-machines/windows/sizes.md). További információ a különböző méretek díjszabásáról: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight).
+További információ: [virtuális gépek méretei](../virtual-machines/windows/sizes.md). További információ a különböző méretek díjszabásáról: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight).
 
 ## <a name="classic-cluster-setup"></a>Klasszikus fürt beállítása
 
@@ -241,9 +241,9 @@ A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Li
 
 A HDInsight alkalmazások többsége üres peremhálózati csomópontra van telepítve.  Az üres peremhálózati csomópont egy Linux rendszerű virtuális gép, amelyen ugyanaz az ügyféleszközök van telepítve és konfigurálva, mint a fő csomópontban. Használhatja a peremhálózati csomópontot a fürt eléréséhez, az ügyfélalkalmazások teszteléséhez és az ügyfélalkalmazások üzemeltetéséhez. További információ: [üres peremhálózati csomópontok használata a HDInsight-ben](hdinsight-apps-use-edge-node.md).
 
-## <a name="advanced-settings-script-actions"></a>Speciális beállítások: Szkriptműveletek
+## <a name="advanced-settings-script-actions"></a>Speciális beállítások: parancsfájl-műveletek
 
-További összetevőket is telepíthet, vagy testre szabhatja a fürt konfigurációját parancsfájlok használatával a létrehozás során. Az ilyen parancsfájlokat parancsfájl- **művelettel**hívja meg, amely a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. További információ: a [HDInsight-fürt testreszabása parancsfájl](hdinsight-hadoop-customize-cluster-linux.md)-művelettel.
+További összetevőket is telepíthet, vagy testre szabhatja a fürt konfigurációját parancsfájlok használatával a létrehozás során. Az ilyen parancsfájlokat parancsfájl- **művelettel**hívja meg, amely a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. További információ: a [HDInsight-fürt testreszabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md).
 
 Egyes natív Java-összetevők, például az Apache Mahout és a kaszkádolt, Java Archive (JAR) fájlokként futtathatók a fürtön. Ezek a JAR-fájlok eloszthatók az Azure Storage-ba, és a Hadoop-feladatok beküldési mechanizmusaival HDInsight-fürtökbe elküldve További információt a [Apache Hadoop feladatok programozott beküldése](hadoop/submit-apache-hadoop-jobs-programmatically.md)című témakörben talál.
 
@@ -254,20 +254,20 @@ Egyes natív Java-összetevők, például az Apache Mahout és a kaszkádolt, Ja
 
 Időnként a következő konfigurációs fájlokat szeretné konfigurálni a létrehozási folyamat során:
 
-* clusterIdentity.xml
+* clusterIdentity. XML
 * Core-site. XML
-* gateway.xml
-* hbase-env.xml
-* hbase-site.xml
-* hdfs-site.xml
-* hive-env.xml
-* hive-site.xml
+* Gateway. XML
+* hbase-env. XML
+* hbase-site. XML
+* hdfs-site. XML
+* Hive-env. XML
+* Hive-site. XML
 * mapred – hely
 * oozie-site. XML
-* oozie-env.xml
+* oozie-env. XML
 * Storm-site. XML
-* tez-site.xml
-* webhcat-site.xml
+* Tez-site. XML
+* webhcat-site. XML
 * yarn-site. XML
 
 További információ: HDInsight- [fürtök testreszabása a bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md).

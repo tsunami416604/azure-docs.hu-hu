@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784931"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466818"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Példa: egyéni képesség létrehozása a Bing Entity Search API használatával
 
@@ -33,9 +33,9 @@ Bár ez a példa egy Azure-függvényt használ a webes API-k üzemeltetéséhez
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-1. A Visual Studióban válassza a Fájl menü **új**  > **projekt** elemét.
+1. A Visual Studióban válassza a Fájl menü **új** > **projekt** elemét.
 
-1. Az új projekt párbeszédpanelen válassza a **telepített**, a  **C# vizualizáció**  >  a**felhő**elemet, válassza a **Azure functions**lehetőséget, írja be a projekt nevét, majd kattintson **az OK gombra**. A Function alkalmazás nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más, nem alfanumerikus karaktereket.
+1. Az új projekt párbeszédpanelen válassza a **telepített**, a  **C# vizualizáció** > a **felhő**elemet, válassza a **Azure functions**lehetőséget, írja be a projekt nevét, majd kattintson **az OK gombra**. A Function alkalmazás nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más, nem alfanumerikus karaktereket.
 
 1. Válassza a **Azure functions v2 (.net Core)** lehetőséget. Azt is megteheti az 1. verzióban, de az alább írt kód a v2-sablonon alapul.
 
@@ -313,7 +313,7 @@ namespace SampleSkills
 
 Ügyeljen arra, hogy a saját *kulcs* értékét a `key` konstansban adja meg a Bing Entity Search API-ra való regisztráció során kapott kulcs alapján.
 
-Ez a minta minden szükséges kódot tartalmaz egyetlen fájlban a kényelem érdekében. Megtalálhatja ugyanezen képességek egy kicsit strukturált verzióját, valamint az [energiagazdálkodási ismeretek tárházában](https://aka.ms/entity-search-power-skill)található egyéni ismereteket is.
+Ez a minta minden szükséges kódot tartalmaz egyetlen fájlban a kényelem érdekében. [Az energiagazdálkodási képességek tárházában](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)megtalálhatja ugyanezen képességek egy kicsit strukturált verzióját is.
 
 Természetesen előfordulhat, hogy átnevezi a fájlt `Function1.cs`ról `BingEntitySearch.cs`ra.
 
@@ -375,7 +375,7 @@ Az alábbi példához hasonló válasznak kell megjelennie:
 
 Ha elégedett a funkció működésével, közzéteheti.
 
-1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válassza az új  > **Közzététel** **létrehozása** lehetőséget.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válassza az új > **Közzététel** **létrehozása** lehetőséget.
 
 1. Ha még nem csatlakoztatta a Visual studiót az Azure-fiókjához, válassza a **fiók hozzáadása...** lehetőséget.
 
@@ -475,11 +475,11 @@ Itt számítjuk fel a beépített [entitás-felismerési képességet](cognitive
 },
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Gratulálunk! Létrehozta az első egyéni gazdagabbá. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. 
+## <a name="next-steps"></a>További lépések
+Gratulálunk! Létrehozta az első egyéni szaktudását. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. További információért kattintson az alábbi hivatkozásokra.
 
-+ [Energiaellátási készségek: az egyéni képességek tárháza](https://aka.ms/powerskills)
-+ [Egyéni képesség hozzáadása egy kognitív keresési folyamathoz](cognitive-search-custom-skill-interface.md)
++ [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)

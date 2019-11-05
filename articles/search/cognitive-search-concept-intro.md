@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784994"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466873"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Az AI-gazdagítás bemutatása az Azure Cognitive Search
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Az AI bemutatása az Azure-ban Cognitive Search
 
-Az AI-bővítés az Azure Cognitive Search indexelésének egyik funkciója, amely a képekből, blobokból és egyéb strukturálatlan adatforrásokból való szöveg kinyerésére szolgál – a tartalom gazdagítása, hogy azok kereshetőek legyenek egy indexben vagy egy Tudásbázisban. A kinyerést és a dúsítást az indexelési folyamathoz csatolt *kognitív képességek* valósítják meg. A kognitív képességek a következő kategóriákba sorolhatók: 
+Az AI-bővítés az Azure Cognitive Search indexelésének egyik funkciója, amely a képekből, blobokból és egyéb strukturálatlan adatforrásokból való szöveg kinyerésére szolgál – a tartalom gazdagítása, hogy azok kereshetőek legyenek egy indexben vagy egy Tudásbázisban. A kinyerést és a dúsítást az indexelési folyamathoz csatolt *kognitív képességek* valósítják meg. A szolgáltatásba beépített kognitív képességek a következő kategóriákba sorolhatók: 
 
 + A **természetes nyelvi feldolgozási** képességek közé tartozik az [entitások felismerése](cognitive-search-skill-entity-recognition.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md), a [kulcsfontosságú kifejezés kinyerése](cognitive-search-skill-keyphrases.md), a szöveg-manipuláció és a [hangulat észlelése](cognitive-search-skill-sentiment.md). Ezekkel a képességekkel a strukturálatlan szöveg feltételezheti, hogy az indexben kereshető és szűrhető mezőkként leképezett új űrlapok is megadhatók.
 
@@ -36,6 +36,12 @@ A természetes nyelv és a képfeldolgozás az adatfeldolgozási fázisban tört
 
 ## <a name="when-to-use-cognitive-skills"></a>Mikor kell használni a kognitív képességeket
 
+Érdemes megfontolni a beépített kognitív ismeretek használatát, ha a nyers tartalma strukturálatlan szöveg, képtartalom vagy olyan tartalom, amely nyelvi észlelést és fordítást igényel. Ha a mesterséges intelligenciát a beépített kognitív ismeretek használatával szeretné feloldani, a keresési és adatelemzési alkalmazásaiban megnövelheti a tartalmat, és növelheti annak értékét és hasznosságát. 
+
+Emellett érdemes lehet egyéni képességet is felvennie, ha olyan nyílt forráskódú, harmadik féltől származó vagy első féltől származó kóddal rendelkezik, amelyet be szeretne építeni a folyamatba. A különböző dokumentumtípusok kiugró jellemzőit azonosító besorolási modellek ebbe a kategóriába tartoznak, de a tartalomhoz hozzáadott csomagok is felhasználhatók.
+
+### <a name="more-about-built-in-skills"></a>További információ a beépített képességekről
+
 A beépített képességekkel összeállított készségkészlet jól illeszkedik a következő alkalmazási forgatókönyvekhez:
 
 + A teljes szöveges keresést végezni kívánó beolvasott dokumentumok (JPEG). A JPEG-fájlok szövegének azonosításához, kinyeréséhez és betöltéséhez egy optikai karakterfelismerési (OCR) képességet is csatolhat.
@@ -49,6 +55,8 @@ A beépített képességekkel összeállított készségkészlet jól illeszkedi
   A Blobok különösen gyakran tartalmaznak egy olyan nagy méretű tartalmat, amely egyetlen "mező"be van csomagolva. Ha rendszerképeket és természetes nyelvi feldolgozási képességeket csatol egy indexelő alkalmazáshoz, létrehozhat olyan új adatokat, amelyek a nyers tartalomban is fennmaradnak, de másképp nem különálló mezőkként. Néhány használatra kész, beépített kognitív képesség, amely segítséget nyújt a kulcsfontosságú kifejezés kinyeréséhez, a hangulat elemzéséhez és az entitások felismeréséhez (személyek, szervezetek és helyszínek).
 
   Emellett a beépített készségek is használhatók a tartalom átstrukturálása a szöveg felosztása, egyesítése és alakja műveletekkel.
+
+### <a name="more-about-custom-skills"></a>További információ az egyéni képességekről
 
 Az egyéni képességek olyan összetettebb forgatókönyveket is támogatnak, mint például az űrlapok felismerése vagy az egyéni entitások észlelése az Ön által megadott és az [Egyéni szakértelem webes felületén](cognitive-search-custom-skill-interface.md)beburkolt modell használatával. Az egyéni képességek számos példája például az [űrlap-felismerő](/azure/cognitive-services/form-recognizer/overview), a [Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)integrációja és az [egyéni entitások felismerése](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
@@ -93,7 +101,7 @@ Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott i
 
 <a name="feature-concepts"></a>
 
-## <a name="key-features-and-concepts"></a>Alapfunkciók és -fogalmak
+## <a name="key-features-and-concepts"></a>A legfontosabb jellemzők és fogalmak
 
 | Fogalom | Leírás| Hivatkozások |
 |---------|------------|-------|
@@ -158,7 +166,7 @@ Ez a lépés a REST API-kkal hozza létre az AI-gazdagító megoldást. Az AI-b�
 
 További információ az adott kérdésekről vagy problémákról: [hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [AI-gazdagító dokumentációs hivatkozások](cognitive-search-resources-documentation.md)
 + [Gyors útmutató: az AI-gazdagítás kipróbálása egy portálon](cognitive-search-quickstart-blob.md)

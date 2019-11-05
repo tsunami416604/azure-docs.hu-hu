@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467193"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -25,6 +25,8 @@ Az Azure személyre szabott felhőalapú API-szolgáltatás lehetővé teszi a f
 * A személyre szabás használata előtt nem kell megtisztítani és címkéznie az adatfeliratot.
 * Visszajelzés küldése a személyre szabáshoz, ha az kényelmes Önnek. 
 * Valós idejű elemzések megtekintése. 
+
+Tekintse meg a [személyre szabási funkció működésének](https://personalizercontentdemo.azurewebsites.net/) bemutatóját
 
 ## <a name="how-does-personalizer-work"></a>Hogyan működik a személyre szabás?
 
@@ -63,7 +65,7 @@ A személyre szabott szolgáltatás két API-val rendelkezik:
 
 ![Személyre szabott események alapszintű eseménysorozat](media/what-is-personalizer/personalization-intro.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A személyre szabás újdonságai](whats-new.md)
 * [Hogyan működik a megszemélyesítő?](how-personalizer-works.md)

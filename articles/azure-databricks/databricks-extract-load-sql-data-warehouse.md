@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: c2d7d7d97dce974ad8d72cc98f9ec6d3d554fb6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 39f71e109b0d9d7b3b0375c0ec2c4d1e4a657994
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783982"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469476"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
 
@@ -65,7 +65,7 @@ Az oktatóanyag megkezdése előtt végezze el ezeket a feladatokat:
 
    * A cikk beléptetési [értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
-* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+* Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Gyűjtse össze a szükséges információkat
 
@@ -89,9 +89,15 @@ Győződjön meg arról, hogy elvégezte az oktatóanyag előfeltételeit.
 
 Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Portal használatával.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Elemzés** > **Azure Databricks** elemet.
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
 
-    ![Databricks Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks Azure Portal")
+    ![Erőforrás létrehozása Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
+
+    Ezután válassza az **elemzési** > **Azure Databricks**lehetőséget.
+
+    ![Azure Databricks létrehozása Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
+
+
 
 2. A **Azure Databricks szolgáltatás**területen adja meg a következő értékeket egy Databricks szolgáltatás létrehozásához:
 
@@ -182,9 +188,9 @@ Ebben a szakaszban egy jegyzetfüzetet hoz létre Azure Databricks munkaterület
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. Ebben a kódban a blokkban cserélje le a `<app-id>`, `<password>`, `<tenant-id>` és `<storage-account-name>` helyőrző értékeket az oktatóanyag előfeltételeinek teljesítése során gyűjtött értékekre. Cserélje le a `<file-system-name>` helyőrző értéket a fájlrendszert adni kívánt névre.
+6. Ebben a kódban a blokkban cserélje le a `<app-id>`, `<password>`, `<tenant-id>`és `<storage-account-name>` helyőrző értékeit az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le a `<file-system-name>` helyőrző értékét bármilyen névre, amelyet a fájlrendszerhez szeretne adni.
 
-   * A `<app-id>` és a `<password>` az Active Directory szolgáltatásban regisztrált alkalmazásból származik, egy egyszerű szolgáltatásnév létrehozása során.
+   * A `<app-id>`és az `<password>` az Active Directory szolgáltatásban regisztrált alkalmazásból származnak.
 
    * A `<tenant-id>` az előfizetésből származik.
 
@@ -385,7 +391,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. A Azure Databricks 
 
 Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
-ms.translationtype: MT
+ms.openlocfilehash: b30b96e6ae931e0df41b60e16f04127e82a068ad
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146623"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469747"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -21,7 +21,7 @@ Az Azure Application Gateway egy webes forgalomra vonatkozó terheléselosztó, 
 
 ![Application Gateway fogalma](media/overview/figure1-720.png)
 
-A Application Gateway használatával a HTTP-kérések további attribútumain alapuló útválasztási döntéseket hozhat létre, például az URI elérési útvonalát vagy a gazdagép fejléceit. A forgalmat például a bejövő URL-cím alapján irányíthatja. Tehát ha a bejövő URL-cím a `/images` kifejezést tartalmazza, a forgalmat adott, képekre konfigurált kiszolgálókra irányíthatja (azaz egy készletbe). Ha `/video` a értéke az URL-cím, akkor a rendszer átirányítja a forgalmat egy másik, videókra optimalizált készletbe.
+A Application Gateway használatával a HTTP-kérések további attribútumain alapuló útválasztási döntéseket hozhat létre, például az URI elérési útvonalát vagy a gazdagép fejléceit. A forgalmat például a bejövő URL-cím alapján irányíthatja. Tehát ha a bejövő URL-cím a `/images` kifejezést tartalmazza, a forgalmat adott, képekre konfigurált kiszolgálókra irányíthatja (azaz egy készletbe). Ha `/video` szerepel az URL-címben, a rendszer átirányítja a forgalmat egy másik, videókra optimalizált készletbe.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
@@ -45,13 +45,20 @@ A Standard_v2 vagy a WAF_v2 SKU alá tartozó Application Gateway vagy WAF-alap�
 
 Az Application Gateway VIP on Standard_v2 vagy WAF_v2 SKU kizárólag a statikus VIP-típusokat támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím még a Application Gateway élettartama alatt sem változik.
 
-## <a name="web-application-firewall"></a>Webalkalmazási tűzfal
+## <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
 
 A webalkalmazási tűzfal (WAF) az Application Gateway egyik szolgáltatása, amely központi védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések ellen. A WAF a [OWASP (webalkalmazás-biztonsági projekt megnyitása) alapszabálya](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) , a 3,1 (csak WAF_v2), a 3,0 és a 2.2.9 szabályokon alapul. 
 
 A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának számos rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
 További információ: [webalkalmazási tűzfal (WAF) Application Gatewayban](https://docs.microsoft.com/azure/application-gateway/waf-overview).
+
+## <a name="ingress-controller-for-aks"></a>Bejövő adatkezelő az AK-hoz
+A Application Gateway beáramlási vezérlő (AGIC) lehetővé teszi, hogy a Application Gateway használja az [Azure Kubernetes-szolgáltatás (ak)](https://azure.microsoft.com/services/kubernetes-service/) fürtjének bemenő példánya számára. 
+
+A bejövő vezérlő egy Pod-ként fut az AK-fürtön belül, és a [Kubernetes bejövő erőforrásait](https://kubernetes.io/docs/concepts/services-networking/ingress/) használja, és átalakítja azokat egy Application Gateway konfigurációba, amely lehetővé teszi az átjáró számára a forgalom terheléselosztását a Kubernetes-hüvelybe. A bejövő vezérlő csak Application Gateway v2 SKU-t támogatja. 
+
+További információ: [Application Gateway Inbehatolási vezérlő (AGIC)](ingress-controller-overview.md).
 
 ## <a name="url-based-routing"></a>URL-alapú útválasztás
 
@@ -85,7 +92,7 @@ Az Application Gateway átirányítási támogatása a következő funkciókat n
 
 További információ: a [forgalom átirányítása](https://docs.microsoft.com/azure/application-gateway/redirect-overview) a Application Gatewaysal.
 
-## <a name="session-affinity"></a>Munkamenetaffinitás
+## <a name="session-affinity"></a>Munkamenet-affinitás
 
 A Cookie-alapú munkamenet-affinitás akkor hasznos, ha egy felhasználói munkamenetet egy adott kiszolgálón szeretne tartani. Az átjáróval kezelt cookie-k használatával az Application Gateway képes egy felhasználói munkamenet minden újabb forgalmát ugyanarra a kiszolgálóra irányítani feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer a kiszolgálón.
 
@@ -96,12 +103,6 @@ Az Application Gateway natív támogatást nyújt a Websocket- és HTTP/2-protok
 A WebSocket és a HTTP/2 protokollok teljes körű duplex kommunikációt tesznek lehetővé egy kiszolgáló és egy ügyfél között egy hosszú ideig futó TCP-kapcsolaton. Ez interaktívabb kommunikációt eredményez a webkiszolgáló és az ügyél között, amely anélkül marad kétirányú, hogy a HTTP-alapú implementációkban kötelező lekérdezésekre lenne szükség. Ezek a protokollok alacsony terheléssel rendelkeznek, ellentétben a HTTP-vel, és több kérelem/válasz esetében is felhasználhatják ugyanazt a TCP-kapcsolatokat, ami hatékonyabb erőforrás-kihasználtságot eredményez. Ezek a protokollok a hagyományos, 80-as és 443-as HTTP-portokon működnek.
 
 További információ: [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) és [http/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
-
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Az Azure Kubernetes Service (AKS) bejövőforgalom-vezérlője (előzetes verzió) 
-
-Az Application Gateway bejövőforgalom-vezérlője podként fut az AKS-fürtön belül, és lehetővé teszi az Application Gateway egy AKS-fürt bemeneti pontjaként való üzemeltetését. Ez csak Application Gateway v2 esetén támogatott.
-
-További információt az [Azure Application Gateway bejövőforgalom-vezérlőjét](https://azure.github.io/application-gateway-kubernetes-ingress/) ismertető részben talál.
 
 ## <a name="connection-draining"></a>Kapcsolatkiürítés
 
@@ -131,7 +132,7 @@ További információt a HTTP- [fejlécek újraírása](rewrite-http-headers.md)
 
 Application Gateway Standard_v2 és a WAF_v2 SKU konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. Ezek a SKU-ket nem biztosítanak különböző méretű példányok. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd: automatikus [skálázás v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-A Application Gateway standard és WAF SKU jelenleg három méretben érhető el: **Kis**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+A Application Gateway standard és WAF SKU jelenleg három méretben érhető el: **kicsi**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -140,7 +141,7 @@ Az alábbi táblázat az egyes Application Gateway v1-példányok átlagos telje
 | Az átlagos háttér-oldal válaszának mérete | Kicsi | Közepes | Nagy |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+| 100 KB |35 Mbps |100 Mb/s |200 Mbps |
 
 > [!NOTE]
 > Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
@@ -149,6 +150,6 @@ Az alábbi táblázat az egyes Application Gateway v1-példányok átlagos telje
 
 Az igényeitől és a környezetétől függően az Azure Portallal, az Azure PowerShellel vagy az Azure CLI-vel hozhat létre egy Application Gateway-tesztet:
 
-- [Rövid útmutató: Webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure Portal](quick-create-portal.md)
-- [Rövid útmutató: Webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure PowerShell](quick-create-powershell.md)
-- [Rövid útmutató: Webes forgalom közvetlen továbbítása az Azure Application Gateway – Azure CLI](quick-create-cli.md)
+- [Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure Portal](quick-create-portal.md)
+- [Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure PowerShell](quick-create-powershell.md)
+- [Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI](quick-create-cli.md)

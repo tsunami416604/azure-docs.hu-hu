@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Összetett entitások oktatóanyaga – LUIS'
+title: 'Oktatóanyag: összetett entitások oktatóanyaga – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Adjon hozzá egy összetett entitást szeretné a különböző típusú kinyert adatok egyetlen tartalmazó entitásba. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
+description: Összetett entitás hozzáadása a különböző típusú kinyert adatmennyiségek egyetlen tartalmazó entitásba való kinyeréséhez. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,25 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: adb8941fd60a955a44a04717958c5203b721639a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70388032"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498984"
 ---
-# <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: Kapcsolódó adatok csoportosítása és kinyerése
-Ebben az oktatóanyagban egy összetett entitás szeretné a kinyert adatokkal történő tartalmazó egyetlen entitás hozzáadása. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
+# <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: kapcsolódó adatok csoportosítása és kinyerése
+Ebben az oktatóanyagban egy összetett entitást ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
 
-Az összetett entitás az a célja, hogy egy szülőentitás kategória kapcsolódó entitások csoportosíthatja. Az információk létezik külön entitásokként összetett létrehozása előtt. 
+Az összetett entitás célja, hogy a kapcsolódó entitásokat egy szülő kategóriába tartozó entitásba csoportosítsa. Az információk különálló entitásként léteznek az összetett létrehozása előtt. 
 
-Az összetett entitás ideális ehhez az adattípushoz, mert az adatok:
+Az összetett entitás jól illeszkedik az ilyen típusú adattípusokhoz, mert az alábbi adatmennyiségeket adja meg:
 
 * Kapcsolódnak egymáshoz. 
-* Többféle típusú entitás használja.
+* Többféle típusú entitást használhat.
 * Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -50,7 +52,7 @@ Az összetett entitás ideális ehhez az adattípushoz, mert az adatok:
 
 3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `composite` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
-## <a name="composite-entity"></a>Összetett entitást
+## <a name="composite-entity"></a>Összetett entitás
 
 Ebben az alkalmazásban a részleg neve a **Department** List entitásban van definiálva, és szinonimákat tartalmaz. 
 
@@ -85,25 +87,25 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 1. Válassza a **TransferEmployeeToDepartment** lehetőséget a cél listából.
 
-1. A részletek `John Jackson`területen válassza ki a personName entitást, majd válassza a **becsomagolás az összetett entitásban** lehetőséget az előugró menüben a következő részletek megjelenítéséhez. `place John Jackson in engineering` 
+1. A részletek `place John Jackson in engineering`válassza ki a personName entitást, `John Jackson`, majd válassza a **tördelés az összetett entitásban** lehetőséget az előugró menü listában a következő kifejezéshez. 
 
     ![Képernyőkép a wrap Composite kiválasztásáról a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Azonnal válassza ki az utolsó entitás `engineering` az utterance (kifejezés) található. Zöld sáv megjelenítése a kiválasztott szavakat jelző egy összetett entitás alapján. Az előugró menüben adja meg az összetett név `TransferEmployeeInfo` majd válassza ki az Entert. 
+1. Ezután azonnal válassza ki az utolsó entitást, `engineering` a teljes verzióban. Az összetett entitást jelölő kijelölt szavak alatt egy zöld sáv található. Az előugró menüben adja meg az összetett nevet `TransferEmployeeInfo` majd válassza az ENTER billentyűt. 
 
     ![Képernyőkép az összetett név beírásáról a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. **Milyen típusú entitást kíván létrehozni?** az összes szükséges mező a következő listában szerepel: `personName` és. `Department` Válassza a **Done** (Kész) lehetőséget. Figyelje meg, hogy az előre összeállított entitás (personName) hozzá lett adva az összetett entitáshoz. Ha egy előre összeállított entitások jelennek meg a kezdő és záró jogkivonatok összetett entitás között lehetnek, az összetett entitás ezeket előre összeállított entitások kell tartalmaznia. Ha az előre összeállított entitások nem szerepelnek, az összetett entitás nem jelzett megfelelően, de az egyes elemeket.
+1. **Milyen típusú entitást kíván létrehozni?** az összes szükséges mező a következő listában szerepel: `personName` és `Department`. Válassza a **Done** (Kész) lehetőséget. Figyelje meg, hogy az előre összeállított entitás (personName) hozzá lett adva az összetett entitáshoz. Ha egy összetett entitás kezdő és záró jogkivonatai között egy előre összeállított entitás látható, az összetett entitásnak tartalmaznia kell az előre elkészített entitásokat. Ha az előre elkészített entitások nem szerepelnek a csomagban, az összetett entitás nem megfelelően van megjósolva, hanem minden egyes elem.
 
     ![Képernyőkép az összetett név beírásáról a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
-## <a name="label-example-utterances-with-composite-entity"></a>Az összetett entitás címke példa kimondott szöveg
+## <a name="label-example-utterances-with-composite-entity"></a>Címke – példa hosszúságú kimondott szöveg összetett entitással
 
-1. Valamennyi példa utterance (kifejezés) válassza ki a bal szélső entitást, amely az összetett kell lennie. Válassza ki **Zabalit do összetett entitást**.
+1. Az egyes példákban válassza ki a bal szélső entitást, amely a kompozitban legyen. Ezután válassza **a tördelés az összetett entitásban**lehetőséget.
 
 1. Válassza ki az összetett entitás utolsó szavát, majd az előugró menüből válassza a **TransferEmployeeInfo** lehetőséget. 
 
-1. Ellenőrizze, hogy a célt az összes utterances vannak ellátva, az összetett entitáshoz. 
+1. Győződjön meg arról, hogy a szándékban lévő összes hosszúságú kimondott szöveg az összetett entitással van megjelölve. 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait 
 
@@ -117,9 +119,9 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Jill Jones to DevOps`. Az utolsó lekérdezési karakterlánc paraméter `q`, az utterance (kifejezés) lekérdezést. 
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Jill Jones to DevOps`. Az utolsó querystring paraméter `q`, a teljes lekérdezés. 
 
-    Mivel ez a teszt ellenőrzése az összetett ki kell olvasni megfelelően, egy tesztet vagy tartalmazhat egy meglévő minta utterance (kifejezés) vagy egy új utterance (kifejezés). Ellenőrzi, hogy a gyermekentitások tartalmazza az összetett entitásban.
+    Mivel ez a teszt azt ellenőrzi, hogy a kompozit helyesen van-e kibontva, a tesztek tartalmazhatnak egy meglévő minta-kivonást vagy egy új megnyilatkozás. Egy jó teszt az összetett entitásban lévő összes alárendelt entitás belefoglalása.
 
     ```json
     {
@@ -183,7 +185,7 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
     }
     ```
 
-   Az utterance (kifejezés) egy összetett entitások tömböt ad vissza. Minden entitás egy típusa és értéke van megadva. Minden gyermek entitásnak pontossággal megkereséséhez használja a megfelelő elem található entitások tömbben típusa és értéke összetett tömb elemének kombinációja.  
+   Ez a Kimondás egy összetett entitások tömbjét adja vissza. Minden entitás típust és értéket kap. Az egyes alárendelt entitások pontosabb megkereséséhez használja az összetett tömb elemében a típus és az érték kombinációját, hogy megtalálja a megfelelő elemet az entitások tömbben.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -200,7 +202,7 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy összetett entitást, hogy magába foglalja a meglévő entitásokat. Ez lehetővé teszi, hogy az ügyfélalkalmazás található kapcsolódó adatok csoportja folytatja a beszélgetés különböző adattípusokat. Egy ügyfélalkalmazás az emberi erőforrások alkalmazás megkérheti, mely napokon és időpontban az áthelyezés kell kezdődik és ér véget. Azt is megteheti, hogy az áthelyezés más logisztikai adatait, például egy fizikai telefont. 
+Ez az oktatóanyag egy összetett entitást hozott létre a meglévő entitások beágyazásához. Ez lehetővé teszi az ügyfélalkalmazás számára, hogy a beszélgetés folytatásához különböző adattípusokban lévő kapcsolódó adat csoportját keresse. Az emberi erőforrások alkalmazáshoz tartozó ügyfélalkalmazás megkérdezheti, hogy milyen napra és időpontra van szükség a költözés kezdéséhez és befejezéséhez. Azt is megteheti, hogy az áthelyezés más logisztikai adatait, például egy fizikai telefont. 
 
 > [!div class="nextstepaction"] 
-> [Egy kifejezés listát egy egyszerű entitás hozzáadása](luis-quickstart-primary-and-secondary-data.md)  
+> [Megtudhatja, hogyan adhat hozzá egy egyszerű entitást egy kifejezési listához](luis-quickstart-primary-and-secondary-data.md)  

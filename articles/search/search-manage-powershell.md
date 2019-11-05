@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466532"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
-> * [Portal](search-manage.md)
+> * [Portál](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
@@ -40,7 +40,7 @@ Habár nincsenek a tartalomkezelésre vonatkozó dedikált PowerShell-parancsok,
 
 A PowerShell vagy más API-k (csak portál) által nem támogatott egyéb feladatok a következők:
 + [Egy kognitív szolgáltatások erőforrásának](cognitive-search-attach-cognitive-services.md) összekapcsolása [AI-gazdagított indexeléshez](cognitive-search-concept-intro.md). A kognitív szolgáltatás egy készségkészlet, nem pedig előfizetéshez vagy szolgáltatáshoz van csatolva.
-+ [Kiegészítő figyelési megoldások](search-monitor-usage.md#add-on-monitoring-solutions) a Azure Search figyeléséhez.
++ [Kiegészítő figyelési megoldások](search-monitor-usage.md#add-on-monitoring-solutions) az Azure Cognitive Search monitorozásához.
 
 <a name="check-versions-and-load"></a>
 
@@ -197,7 +197,7 @@ Tags
 
 A [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) a felügyeleti [API-kulcsok](search-security-api-keys.md)átadására szolgál. A hitelesített hozzáféréshez a szolgáltatás két rendszergazdai kulcsot hoz létre. Minden kérelemhez kulcsokra van szükség. Mindkét rendszergazdai kulcs funkcionálisan egyenértékű, és teljes írási hozzáférést biztosít egy keresési szolgáltatáshoz bármilyen információ lekéréséhez, illetve bármely objektum létrehozásához és törléséhez. Két kulcs létezik, hogy a másikat cserélje le. 
 
-Egyszerre csak egyszer lehet újból előállítani, ha a `primary` vagy a `secondary` kulccsal van megadva. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
+Egyszerre csak egy `primary` vagy `secondary` kulcsként megadott újragenerált. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
 
 Ahogy várható, ha az ügyfél kódjának frissítése nélkül újragenerálja a kulcsokat, a régi kulcsot használó kérelmek sikertelenek lesznek. Az összes új kulcs újragenerálása nem zárja ki véglegesen a szolgáltatást, és a portálon keresztül továbbra is hozzáférhet a szolgáltatáshoz. Az elsődleges és a másodlagos kulcsok újragenerálása után frissítheti az ügyfélszoftvert az új kulcsok használatára, és ennek megfelelően folytathatja a műveletet.
 
@@ -253,7 +253,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 

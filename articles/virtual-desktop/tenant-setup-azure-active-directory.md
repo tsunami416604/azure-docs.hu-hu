@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: 04a65442e86168239f08fb71303b8d9e9e152e72
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71679472"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466547"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
 
@@ -68,44 +68,50 @@ Azure Active Directory felhasználó kiosztása a TenantCreator alkalmazási sze
 
 A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
 
-1. Nyisson meg egy böngészőt, és kapcsolódjon a [Azure Portalhoz](https://portal.azure.com) a globális rendszergazdai fiókkal.
+1. A TenantCreator-alkalmazás szerepkörének kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . **Vállalati alkalmazások**keresése és kiválasztása. Ha több Azure Active Directory Bérlővel dolgozik, ajánlott megnyitnia egy privát böngésző-munkamenetet, és az URL-címeket a címsorba másolhatja és beillesztheti.
+
+   ![Képernyőkép a nagyvállalati alkalmazások kereséséről a Azure Portal](media/azure-portal-enterprise-applications.png)
+2. A **vállalati alkalmazásokban**keresse meg a **Windows rendszerű virtuális asztal**kifejezést. Ekkor megjelenik a két, az előző szakaszban megadott beleegyezett alkalmazás. A két alkalmazás közül válassza a **Windows virtuális asztal**lehetőséget.
    
-   Ha több Azure Active Directory Bérlővel dolgozik, ajánlott megnyitnia egy privát böngésző-munkamenetet, és az URL-címeket a címsorba másolhatja és beillesztheti.
-2. A Azure Portal található keresési sávban keresse meg a **vállalati alkalmazások** kifejezést, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
-3. A **vállalati alkalmazásokban**keresse meg a **Windows rendszerű virtuális asztal**kifejezést. Ekkor megjelenik a két, az előző szakaszban megadott beleegyezett alkalmazás. A két alkalmazás közül válassza a **Windows virtuális asztal**lehetőséget.
-   ![A a keresési eredményekről a "vállalati alkalmazásokban" a "Windows virtuális asztal" kifejezésre való kereséskor. A "Windows virtuális asztal" nevű alkalmazás ki van emelve. ](media/tenant-enterprise-app.png)
-4. Válassza a **Felhasználók és csoportok** elemet. Láthatja, hogy az alkalmazáshoz beleegyezett jogosultsággal rendelkező rendszergazda már szerepel a hozzárendelt **alapértelmezett hozzáférési** szerepkörben. Ez nem elég a Windows rendszerű virtuális asztali bérlő létrehozásához. Kövesse az alábbi utasításokat a **TenantCreator** szerepkör felhasználóhoz való hozzáadásához.
-   ![A képernyőkép a "Windows virtuális asztal" vállalati alkalmazás kezeléséhez rendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat. ](media/tenant-default-access.png)
-5. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
-6. Keressen egy olyan felhasználói fiókot, amely létrehozza a Windows rendszerű virtuális asztali bérlőt. Az egyszerűség kedvéért ez lehet a globális rendszergazdai fiók.
+   ![Képernyőkép a keresési eredményekről, amikor a "Windowsos virtuális asztal" kifejezést keres a "vállalati alkalmazások" kifejezésben. A "Windows virtuális asztal" nevű alkalmazás ki van emelve.](media/tenant-enterprise-app.png)
+3. Válassza a **Felhasználók és csoportok** elemet. Láthatja, hogy az alkalmazáshoz beleegyezett jogosultsággal rendelkező rendszergazda már szerepel a hozzárendelt **alapértelmezett hozzáférési** szerepkörben. Ez nem elég a Windows rendszerű virtuális asztali bérlő létrehozásához. Kövesse az alábbi utasításokat a **TenantCreator** szerepkör felhasználóhoz való hozzáadásához.
+   
+   ![Képernyőkép a "Windows Virtual Desktop" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat.](media/tenant-default-access.png)
+4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
+5. Keressen egy olyan felhasználói fiókot, amely létrehozza a Windows rendszerű virtuális asztali bérlőt. Az egyszerűség kedvéért ez lehet a globális rendszergazdai fiók.
    - Ha olyan Microsoft-identitás-szolgáltatót használ, mint például contosoadmin@live.com vagy contosoadmin@outlook.com, előfordulhat, hogy nem tud bejelentkezni a Windows rendszerű virtuális asztalra. Azt javasoljuk, hogy inkább olyan tartományi fiókot használjon, mint például a admin@contoso.com vagy a admin@contoso.onmicrosoft.com.
 
    ![Képernyőkép a "TenantCreator" felvenni kívánt felhasználó kiválasztásáról.](media/tenant-assign-user.png)
-
    > [!NOTE]
    > Ki kell választania egy felhasználót (vagy egy csoportot, amely tartalmazza a felhasználót) Ebből az Azure Active Directory-példányból származik. Nem választhat vendég (B2B) felhasználót vagy egyszerű szolgáltatásnevet.
 
-7. Válassza ki a felhasználói fiókot, kattintson a **kiválasztás** gombra, majd válassza a **hozzárendelés**lehetőséget.
-8. A **Windows rendszerű virtuális asztal – felhasználók és csoportok** lapon ellenőrizze, hogy megjelenik-e egy új bejegyzés a **TenantCreator** szerepkörrel, amely ahhoz a felhasználóhoz van rendelve, aki létrehozza a Windows rendszerű virtuális asztali bérlőt.
-   ![A képernyőkép a "Windows virtuális asztal" vállalati alkalmazás kezeléséhez rendelt felhasználókról és csoportokról. A képernyőkép most már tartalmaz egy, a "TenantCreator" szerepkörhöz rendelt felhasználó második bejegyzését. ](media/tenant-tenant-creator-added.png)
+6. Válassza ki a felhasználói fiókot, kattintson a **kiválasztás** gombra, majd válassza a **hozzárendelés**lehetőséget.
+7. A **Windows rendszerű virtuális asztal – felhasználók és csoportok** lapon ellenőrizze, hogy megjelenik-e egy új bejegyzés a **TenantCreator** szerepkörrel, amely ahhoz a felhasználóhoz van rendelve, aki létrehozza a Windows rendszerű virtuális asztali bérlőt.
+
+   ![Képernyőkép a "Windows Virtual Desktop" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőkép most már tartalmaz egy, a "TenantCreator" szerepkörhöz rendelt felhasználó második bejegyzését.](media/tenant-tenant-creator-added.png)
 
 Mielőtt továbblépne a Windows rendszerű virtuális asztali bérlő létrehozásához, két információra van szüksége:
-- Az Azure Active Directory bérlői AZONOSÍTÓját (vagy a **CÍMTÁR azonosítóját**)
-- Az Azure-előfizetés azonosítója
+
+   - Az Azure Active Directory bérlői AZONOSÍTÓját (vagy a **CÍMTÁR azonosítóját**)
+   - Az Azure-előfizetés azonosítója
 
 A Azure Active Directory bérlői AZONOSÍTÓjának (vagy a **könyvtár azonosítójának**) megkeresése:
-1. Ugyanebben a Azure Portal-munkamenetben keresse meg **Azure Active Directory** a keresősáv alatt, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
-   ![A képernyőkép a "Azure Active Directory" keresési eredményeiről a Azure Portalban. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve. ](media/tenant-search-azure-active-directory.png)
+1. Ugyanebben a [Azure Portal](https://portal.azure.com) -munkamenetben keresse meg és válassza a **Azure Active Directory**lehetőséget.
+
+   ![A Azure Portal "Azure Active Directory" keresési eredményeinek képernyőképe. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve.](media/tenant-search-azure-active-directory.png)
 2. Görgessen lefelé, amíg meg nem találja a **tulajdonságokat**, majd válassza ki.
 3. Keresse meg a **CÍMTÁR azonosítóját**, majd válassza a vágólap ikont. Illessze be egy praktikus helyre, hogy később a **AadTenantId** értékeként is használhassa.
-   ![A képernyőkép a Azure Active Directory tulajdonságairól. Az egérmutatót a vágólap ikonja fölé helyezi a másoláshoz és beillesztéshez. ](media/tenant-directory-id.png)
+
+   ![Képernyőkép a Azure Active Directory tulajdonságairól. Az egérmutatót a vágólap ikonja fölé helyezi a másoláshoz és beillesztéshez.](media/tenant-directory-id.png)
 
 Az Azure-előfizetés AZONOSÍTÓjának megkeresése:
-1. Ugyanebben a Azure Portal-munkamenetben keresse meg az **előfizetéseket** a keresősáv alatt, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
-   ![A képernyőkép a "Azure Active Directory" keresési eredményeiről a Azure Portalban. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve. ](media/tenant-search-subscription.png)
+1. Ugyanebben a [Azure Portal](https://portal.azure.com) -munkamenetben keresse meg és válassza ki az **előfizetéseket**.
+   
+   ![A Azure Portal "Azure Active Directory" keresési eredményeinek képernyőképe. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve.](media/tenant-search-subscription.png)
 2. Válassza ki azt az Azure-előfizetést, amelyet a Windows rendszerű virtuális asztali szolgáltatás értesítéseinek fogadásához használni kíván.
 3. Keresse meg az **előfizetés azonosítóját**, majd vigye a kurzort az érték fölé, amíg meg nem jelenik a vágólap ikonja. Válassza a vágólap ikont, és illessze be egy praktikus helyre, hogy később a **AzureSubscriptionId** értékeként is használhassa.
-   ![A képernyőkép az Azure-előfizetés tulajdonságairól. Az egérmutatót a vágólap ikon fölé helyezi a másoláshoz és beillesztéshez az "előfizetés azonosítója" elemnél. ](media/tenant-subscription-id.png)
+   
+   ![Képernyőkép az Azure-előfizetés tulajdonságairól. Az egérmutatót a vágólap ikon fölé helyezi a másoláshoz és beillesztéshez az "előfizetés azonosítója" elemnél.](media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-tenant"></a>Windows rendszerű virtuális asztali bérlő létrehozása
 
@@ -131,7 +137,7 @@ Cserélje le a zárójelben lévő értékeket a szervezete és a bérlője szem
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A bérlő létrehozása után létre kell hoznia egy egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzá kell rendelnie egy szerepkört a Windows rendszerű virtuális asztalon belül. Az egyszerű szolgáltatásnév lehetővé teszi a Windows rendszerű virtuális asztali Azure Marketplace-ajánlat sikeres üzembe helyezését egy gazda készlet létrehozásához. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
 

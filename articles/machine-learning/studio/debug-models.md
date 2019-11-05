@@ -1,7 +1,7 @@
 ---
-title: A modell hibáinak keresése
-titleSuffix: Azure Machine Learning Studio
-description: Hibák hibakeresése tanítási és pontszám modell által előállított modulok az Azure Machine Learning Studióban.
+title: A modell hibakeresése
+titleSuffix: Azure Machine Learning Studio (classic)
+description: A betanítási modell által létrehozott hibák hibakeresése a Azure Machine Learning Studio (klasszikus) modulban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,62 +10,62 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 053bb75bb7beea86215397bdfd81a1dbc9d1bcb9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751121"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493065"
 ---
-# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studio a modell hibáinak keresése
+# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>A modell hibakeresése Azure Machine Learning Studio (klasszikus)
 
-A minta futtatásakor felmerülhet a hibák a következők:
+A modellek futtatásakor a következő hibák léphetnek fel:
 
-* a [tanítási modell] [ train-model] modul hibát ad vissza. 
-* a [Score Model] [ score-model] modul helytelen eredményt ad. 
+* a [Train Model][train-model] modul hibát eredményez 
+* a [pontszám modell][score-model] modul helytelen eredményeket hoz létre 
 
-Ez a cikk azt ismerteti, ezek a hibák lehetséges okát.
+Ez a cikk a hibák lehetséges okait ismerteti.
 
 
-## <a name="train-model-module-produces-an-error"></a>Train Model-modul hibát ad vissza.
+## <a name="train-model-module-produces-an-error"></a>A betanítási modell modulja hibát eredményez
 
 ![image1](./media/debug-models/train_model-1.png)
 
-A [tanítási modell] [ train-model] modul két bemenetet vár:
+A [Train Model][train-model] modul két bemenetet vár:
 
-1. A gyűjtemény-modellek Azure Machine Learning Studióban által biztosított gépi tanulási modell típusa.
-2. A betanítási adatok, amely meghatározza a változó előre meghatározott címke oszlop (a többi oszlopot is azt feltételezi, hogy funkciók).
+1. A gépi tanulási modell típusa a Azure Machine Learning Studio (klasszikus) által biztosított modellek gyűjteményéből.
+2. A betanítási érték egy megadott feliratú oszloppal, amely meghatározza az előre jelzett változót (a többi oszlop funkcióknak kell lennie).
 
-Ez a modul hozhatnak, egy hibaüzenet a következő esetekben:
+Ez a modul hibát eredményezhet a következő esetekben:
 
-1. A címke oszlop helytelenül van megadva. Ez akkor fordulhat elő, ha egynél több oszlop van kijelölve a címkét, vagy egy helytelen oszlopindex van kiválasztva. Például a második eset lenne a alkalmazni, ha egy oszlop indexét 30 szolgál egy bemeneti adatkészlet csak 25 oszlopból.
+1. A Label oszlop helytelenül van megadva. Ez akkor fordulhat elő, ha egynél több oszlop van kiválasztva, mert a címke vagy a helytelen oszlop index van kiválasztva. A második eset például akkor érvényes, ha egy 30 oszlopos indexet használ egy olyan bemeneti adatkészlettel, amely csak 25 oszlopot tartalmaz.
 
-2. Az adatkészlet nem tartalmaz oszlopokat funkció. Például ha a bemeneti adatkészlet csak egy oszlop, amely a címke oszlop van megjelölve, lenne nem szolgáltatások, amellyel a modell létrehozásához. Ebben az esetben a [tanítási modell] [ train-model] modul hibát ad vissza.
+2. Az adatkészlet nem tartalmaz funkció-oszlopokat. Ha például a bemeneti adatkészlet csak egy oszloppal van megjelölve, amely felirat oszlopként van megjelölve, akkor nem lesz olyan szolgáltatás, amellyel a modellt fel kell építeni. Ebben az esetben a [betanítási modell][train-model] modul hibát eredményez.
 
-3. A bemeneti adatkészlet (szolgáltatások vagy címke) Infinity értéket tartalmazza.
+3. A bemeneti adatkészlet (funkciók vagy címke) végtelen értéket tartalmaz.
 
-## <a name="score-model-module-produces-incorrect-results"></a>Score Model-modul nem megfelelő eredményt ad.
+## <a name="score-model-module-produces-incorrect-results"></a>A pontszám modell modul helytelen eredményeket eredményez
 
 ![image2](./media/debug-models/train_test-2.png)
 
-Felügyelt tanítás, a tipikus képzési tesztelési kísérletben a [Split Data] [ split] modul osztja fel az eredeti adathalmazból két részből áll: az egyik rész a modell betanításához szolgál, és az egyik rész szolgál pontozása hogyan a betanított modell is végez. A betanított modell pontozása a tesztadatok, amely után az eredmények értékeli ki a modell pontosságának majd szolgál.
+A felügyelt tanulásra jellemző tanítási/tesztelési kísérlet során a [felosztott][split] adatmodul két részre osztja az eredeti adatkészletet: az egyik rész a modell betanítására szolgál, az egyik rész pedig a betanított modell teljesítményének értékelésére szolgál. A rendszer ezután a betanított modellt használja a tesztelési adatok kiértékelésére, amely után a rendszer kiértékeli az eredményeket a modell pontosságának meghatározásához.
 
-A [Score Model] [ score-model] modulnak szüksége van a két bemenet:
+A [pontszám modell][score-model] modulhoz két bemenet szükséges:
 
-1. A betanított modell kimenete a [tanítási modell] [ train-model] modul.
-2. Pontozó adatkészletet, amely eltér az adatkészlet, a modell betanításához használja.
+1. Egy betanított modell kimenete a [betanítási modell][train-model] modulból.
+2. Egy olyan pontozási adatkészlet, amely eltér a modell betanításához használt adatkészlettől.
 
-Lehetséges, hogy akkor is, ha a kísérlet sikeres, a [Score Model] [ score-model] modul helytelen eredményt ad. Számos forgatókönyv fordulhat elő, a problémát okozhatja:
+Lehetséges, hogy bár a kísérlet sikeres, a [pontszám modell][score-model] modul helytelen eredményeket hoz létre. A probléma több esetben is előfordulhat:
 
-1. Ha a megadott címkével kategorikus és a egy regressziós modell tanítása az adatokon, helytelen kimenet által előállított lenne a [Score Model] [ score-model] modul. Ez azért van így, mert regressziós megköveteli egy folyamatos válasz változó. Ebben az esetben lenne megfelelő a besorolási modell. 
+1. Ha a megadott címke kategorikus, és egy regressziós modell van betanítva az adatmennyiségre, a [pontszám modell][score-model] modul helytelen kimenetet állít elő. Ennek az az oka, hogy a regresszióhoz folytonos válasz változó szükséges. Ebben az esetben megfelelőbb lenne a besorolási modell használata. 
 
-2. Hasonlóképpen, ha egy osztályozási modell egy adatkészleten, a címke oszlopban szereplő számok lebegőpontos kellene be van tanítva, nemkívánatos eredményeket hozhat. Ez azért van így, mert besorolási megköveteli egy különálló válasz változót, hogy az csak értékek tartományban lévő osztályok véges, és kis készletét keresztül.
+2. Hasonlóképpen, ha egy besorolási modellt olyan adatkészleten tanítanak, amely lebegőpontos számmal rendelkezik a Label (címke) oszlopban, akkor nem kívánatos eredményeket eredményezhet. Ennek az az oka, hogy a besoroláshoz egy különálló válasz-változóra van szükség, amely csak a véges és a kis méretű, osztályokból álló értékeket engedi meg.
 
-3. Ha a pontozási adatkészlet nem tartalmazza a modell betanításához használja minden funkció a [Score Model] [ score-model] hibát ad vissza.
+3. Ha a pontozási adatkészlet nem tartalmazza a modell betanításához használt összes funkciót, a [pontszám modell][score-model] hibát eredményez.
 
-4. Ha a pontozási adatkészlet egy sort tartalmaz a hiányzó értékeket vagy egy végtelen érték összes funkcióját, a [Score Model] [ score-model] nem állít elő semmilyen kimenetet a sorhoz tartozó.
+4. Ha a pontozási adatkészlet egyik sora hiányzó értéket vagy végtelen értéket tartalmaz valamelyik funkcióhoz, a [pontszám modell][score-model] nem hoz létre az adott sorhoz tartozó kimenetet.
 
-5. A [Score Model] [ score-model] pontozási adathalmazban szereplő összes sor azonos kimenetek eredményezhet. Fordulhat elő, ha például döntési erdő használata, ha ki van választva a minták levél csomópontok minimális száma nagyobb, mint a a rendelkezésre álló példák legyen besorolási megkísérlése során.
+5. A [pontszám modell][score-model] azonos kimeneteket hozhat létre a pontozási adatkészlet összes sorában. Ez például akkor fordulhat elő, ha döntési erdőket használó besorolást próbál meg használni, ha a leküldéses csomópontok minimális száma nagyobb, mint az elérhető képzési példák száma.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 2fc22a8f2a9e1e9410f2e6a9738c50a296a6287f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180718"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472127"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
@@ -35,6 +35,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A fejlesztői portálról az [Azure API Management fejlesztői portál áttekintésében](api-management-howto-developer-portal.md)talál további információt.
 
 ![API Management fejlesztői portál – felügyeleti mód](media/api-management-howto-developer-portal-customize/cover.png)
+
+> [!WARNING]
+> A fejlesztői portál jelenleg API Management szolgáltatások számára van bevezetve.
+> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetésének befejezése a 2019. november 11-én történik. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -123,7 +127,7 @@ Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a lát
 
 A portál közzététele után a felügyeleti panellel megegyező URL-címen érheti el, például `https://contoso-api.portal.azure-api.net`. Nyissa meg egy új böngésző lapon, és tekintse meg külső látogatóként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fejlesztői portálról:
 

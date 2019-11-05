@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 846650fce6701bb7e382df049902f427390b3051
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931215"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499998"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvi és területi támogatása
 
@@ -31,7 +31,7 @@ Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejez
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Hangulatelemzés, Kulcsszókeresés és elnevezett entitások felismerése
 
-Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások felismeréséhez a támogatott nyelvek listája sokkal szelektívebb, mivel az elemzők finomítása a további nyelvek nyelvi szabályainak betartása érdekében történik. Az [entitások](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) teljes készletének támogatása jelenleg a következő nyelvekre korlátozódik: 
+Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások felismeréséhez a támogatott nyelvek listája sokkal szelektívebb, mivel az elemzők finomítása a további nyelvek nyelvi szabályainak betartása érdekében történik. Az elnevezett Entity Recognition v2-ben az [entitások](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) teljes készletének támogatása jelenleg a következő nyelvekre korlátozódik: 
 * Angol
 * Egyszerűsített kínai
 * francia
@@ -44,39 +44,40 @@ A többi nyelvhez csak a `Person`, a `Location` és az `Organization` entitást 
 
 A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhető (GA) állapotra kell bevezetni, amely egymástól függetlenül, és a Text Analytics szolgáltatás teljes egészében. Lehetséges, hogy a nyelvek előzetes verzióban maradnak, még akkor is, ha a Text Analytics API általánosan elérhetővé vált.
 
-| Nyelv    | Nyelvkód | Vélemény | Kulcskifejezések | Nevesített entitások felismerése |   Megjegyzések  |
-|:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
-| arab      | `ar`          |           |             | ✔ \*                     | |
-| cseh       | `cs`          |           |             | ✔ \*                     | |
-| Egyszerűsített kínai | `zh-hans`| ✔ \***     |             | ✔         |    |
-| Kínai – hagyományos | `zh-hant`| ✔ \***     |             |          |    |
-| dán      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
-| holland       | `nl`          | ✔ \***     | ✔          |  ✔ \*           |     |
-| Angol     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
-| finn     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| francia      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| német      | `de`          | ✔ \***     | ✔           |  ✔           |     |
-| görög       | `el`          | ✔ \*     |             |            |     |
-| magyar   | `hu`          |           |             |  ✔ \*          |     | 
-| olasz     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
-| japán    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
-| koreai      | `ko`          |          | ✔           |  ✔ \*          |     |
-| Norvég (nyelven) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
-| lengyel      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| Portugál (portugáliai) | `pt-PT`| ✔ \***        |  ✔          | ✔ \*      |`pt` is elfogadva|
-| Portugál (brazíliai)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
-| orosz     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| spanyol     | `es`          | ✔ \***       | ✔           |   ✔ \*\*      |     | 
-| svéd     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
-| török     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
+> [!NOTE]
+> Az elnevezett Entity Recognition (megnevezett entitások) v3 nyilvános előzetes verziójának részletes nyelvi támogatását lásd: [nevesített entitások típusai](named-entity-types.md).
+
+| Nyelv              | Nyelvkód | Hangulat | Kulcskifejezések | Megnevezett entitások felismerése | Entitás összekapcsolása |       Megjegyzések        |
+|:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
+| arab                |     `ar`      |           |             |           ✔ \*           |                |                    |
+| cseh                 |     `cs`      |           |             |           ✔ \*           |                |                    |
+| Egyszerűsített kínai    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Kínai – hagyományos   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| dán                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| holland                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Angol               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| finn               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| francia                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| német                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| görög                 |     `el`      |   ✔ \*    |             |                          |                |                    |
+| magyar             |     `hu`      |           |             |           ✔ \*           |                |                    |
+| olasz               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| japán              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| koreai                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| Norvég (nyelven)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| lengyel                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Portugál (portugáliai) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is elfogadva |
+| Portugál (brazíliai)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
+| orosz               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| spanyol               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
+| svéd               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| török               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
 
 a \* nyelvi támogatása előzetes verzióban érhető el
 
-\*\* [megnevezett entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és az [entitások összekapcsolása](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) egyaránt elérhető ehhez a nyelvhez.  
+a \** a [Hangulatelemzés v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) és/vagy a [named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) nyilvános előzetes verzióban is elérhető.
 
-\** * elérhető [Hangulatelemzés v3 nyilvános előzetes](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) verzióban
-
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Cognitive Services dokumentációs oldal](https://docs.microsoft.com/azure/cognitive-services/)   
 [A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)

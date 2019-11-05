@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: bf2441d5c0947ec94cbee247bdc4634ff9e53bfd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 768e354281aeb5e2143ddb0e190b0f27bf4f4e24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070298"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470708"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service környezetek egyéni konfigurációs beállításai
 ## <a name="overview"></a>Áttekintés
@@ -54,7 +54,7 @@ A **clusterSettings** attribútum egy Resource Manager-sablonban is szerepelhet 
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>App Service Environment frissítése a Azure Erőforrás-kezelő használatával
 Azt is megteheti, hogy a [Azure erőforrás-kezelő](https://resources.azure.com)használatával frissíti a app Service Environment.  
 
-1. A erőforrás-kezelőban nyissa meg a app Service Environment (előfizetések > **resourceGroups** > **providers** > **Microsoft. Web**  >   **) csomópontját. hostingEnvironments**). Ezután kattintson a frissíteni kívánt App Service Environmentra.
+1. Erőforrás-kezelő a App Service Environment (**előfizetések** > **resourceGroups** > **providers** > **Microsoft. Web** > **hostingEnvironments**) csomópontját válassza. Ezután kattintson a frissíteni kívánt App Service Environmentra.
 2. A jobb oldali ablaktáblán kattintson az **olvasás/írás** lehetőségre a felső eszköztáron a erőforrás-kezelő interaktív szerkesztésének engedélyezéséhez.  
 3. Kattintson a kék **Szerkesztés** gombra, hogy a Resource Manager-sablon szerkeszthető legyen.
 4. Görgessen a jobb oldali ablaktábla aljára. A **clusterSettings** attribútum a legalul található, ahol megadhatja vagy frissítheti az értékét.
@@ -66,7 +66,7 @@ Ha például egy App Service Environment négy előtérrel rendelkezik, a konfig
 
 ## <a name="disable-tls-10-and-tls-11"></a>A TLS 1,0 és a TLS 1,1 letiltása
 
-Ha egy alkalmazáson keresztül szeretné kezelni a TLS-beállításokat, akkor használhatja a [TLS-beállítások érvényesítése](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) dokumentációban ismertetett útmutatást. 
+Ha egy alkalmazáson keresztül szeretné kezelni a TLS-beállításokat, akkor használhatja a [TLS-beállítások érvényesítése](../configure-ssl-bindings.md#enforce-tls-versions) dokumentációban ismertetett útmutatást. 
 
 Ha le szeretné tiltani az összes bejövő TLS 1,0-és TLS 1,1-forgalmat egy kiegészítő csomag összes alkalmazásához, a következő **clusterSettings** -bejegyzést állíthatja be:
 
@@ -80,7 +80,7 @@ Ha le szeretné tiltani az összes bejövő TLS 1,0-és TLS 1,1-forgalmat egy ki
 A beállítás neve 1,0, de ha be van állítva, akkor a TLS 1,0 és a TLS 1,1 is letiltja.
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS titkosítási csomag sorrendjének módosítása
-Egy másik kérdés az ügyfelektől, ha módosíthatják a kiszolgáló által egyeztetett titkosítási algoritmusok listáját, és ez a **clusterSettings** az alább látható módon történő módosításával is megvalósítható. A rendelkezésre álló titkosítási csomagok listáját [ebből az MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)-cikkből lehet lekérni.
+Egy másik kérdés az ügyfelektől, ha módosíthatják a kiszolgáló által egyeztetett titkosítási algoritmusok listáját, és ez a **clusterSettings** az alább látható módon történő módosításával is megvalósítható. A rendelkezésre álló titkosítási csomagok listáját [ebből az MSDN-cikkből](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)lehet lekérni.
 
         "clusterSettings": [
             {
@@ -94,7 +94,7 @@ Egy másik kérdés az ügyfelektől, ha módosíthatják a kiszolgáló által 
 > 
 > 
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 Az Azure rövid útmutató Resource Manager-sablon webhelye tartalmaz egy [app Service Environment létrehozásához](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)szükséges alapdefiníciót tartalmazó sablont.
 
 <!-- LINKS -->

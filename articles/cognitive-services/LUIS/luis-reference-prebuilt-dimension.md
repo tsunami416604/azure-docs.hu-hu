@@ -1,7 +1,7 @@
 ---
 title: Dimenzió előre elkészített entitások – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk előre összeállított entitások információ a Language Understanding (LUIS) dimenzióban.
+description: Ez a cikk Language Understanding (LUIS) dimenzió előre felépített entitási információit tartalmazza.
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
@@ -9,126 +9,91 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 15ba8ad4d3bcf00024a0c7b14b004de08d37621a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6699b1617ccd1fef9a507e71fdd73a02b0e98bea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677666"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465036"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>A dimenzió előre elkészített entitása egy LUIS-alkalmazáshoz
-Az előre összeállított dimenzió entitás észleli a különféle típusú dimenziókat, függetlenül a LUIS alkalmazás kulturális környezet. Az entitás már be van tanítva, mert nem kell az alkalmazás-leképezések a dimenziókat tartalmazó példa beszédmódok hozzáadása. Dimenzió entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
+Az előre elkészített dimenzió entitás különféle típusú dimenziókat észlel, függetlenül a LUIS alkalmazás kulturális környezettől. Mivel ez az entitás már be van tanítva, nem kell felvennie például a dimenziókat tartalmazó hosszúságú kimondott szöveg az alkalmazás-leképezésekhez. A dimenzió entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak. 
 
 ## <a name="types-of-dimension"></a>Dimenzió típusai
 
-A dimenzió a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) adattárból kezelhető
-
+A dimenzió kezelése a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) tárházból történik.
 
 ## <a name="resolution-for-dimension-entity"></a>Dimenzió entitás feloldása
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+A lekérdezés a következő entitás-objektumokat adja vissza:
 
-Az alábbi példa bemutatja a feloldása a **builtin.dimension** entitás.
+`10 1/2 miles of cable`
 
-```json
-{
-  "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.762141049
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.762141049
-    }
-  ],
-  "entities": [
-    {
-      "entity": "10 1/2 miles",
-      "type": "builtin.dimension",
-      "startIndex": 19,
-      "endIndex": 30,
-      "resolution": {
-        "unit": "Mile",
-        "value": "10.5"
-      }
-    }
-  ]
-}
-```
+#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
 
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
-
-A következő JSON a `verbose` paramétert állítja be a `false` értékre:
+A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 ```json
-{
-    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-    "prediction": {
-        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.400049
-            }
-        },
-        "entities": {
-            "dimension": [
-                {
-                    "number": 10.5,
-                    "unit": "Mile"
-                }
-            ]
+"entities": {
+    "dimension": [
+        {
+            "number": 10.5,
+            "units": "Mile"
         }
-    }
+    ]
 }
 ```
-
-A következő JSON a `verbose` paramétert állítja be a `true` értékre:
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 ```json
-{
-    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-    "prediction": {
-        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.400049
-            }
-        },
-        "entities": {
-            "dimension": [
-                {
-                    "number": 10.5,
-                    "unit": "Mile"
-                }
-            ],
-            "$instance": {
-                "dimension": [
-                    {
-                        "type": "builtin.dimension",
-                        "text": "10 1/2 miles",
-                        "startIndex": 19,
-                        "length": 12,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "dimension": [
+        {
+            "number": 10.5,
+            "units": "Mile"
+        }
+    ],
+    "$instance": {
+        "dimension": [
+            {
+                "type": "builtin.dimension",
+                "text": "10 1/2 miles",
+                "startIndex": 0,
+                "length": 12,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
 
+#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+
+A következő példa a **beépített. Dimension** entitás feloldását mutatja be.
+
+```json
+{
+    "entity": "10 1/2 miles",
+    "type": "builtin.dimension",
+    "startIndex": 0,
+    "endIndex": 11,
+    "resolution": {
+    "unit": "Mile",
+    "value": "10.5"
+    }
+}
+```
 * * * 
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [e-mail](luis-reference-prebuilt-email.md), [szám](luis-reference-prebuilt-number.md), és [sorszámnál](luis-reference-prebuilt-ordinal.md) entitások. 
+További információ az [e-mailek](luis-reference-prebuilt-email.md), a [számok](luis-reference-prebuilt-number.md)és a [sorszámok](luis-reference-prebuilt-ordinal.md) entitásokról. 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827357"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472847"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatással kapcsolatos gyakori kérdések
 
@@ -33,7 +33,7 @@ Igen, a [speciális hálózatkezelés funkció][aks-advanced-networking]használ
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Korlátozható, hogy ki férhet hozzá a Kubernetes API-kiszolgálóhoz?
 
-Igen, korlátozhatja a Kubernetes API-kiszolgálóhoz való hozzáférést az [API-kiszolgáló által engedélyezett IP-címtartományok][api-server-authorized-ip-ranges]használatával, amely jelenleg előzetes verzióban érhető el.
+Igen, az [API-kiszolgáló által engedélyezett IP-címtartományok][api-server-authorized-ip-ranges]használatával korlátozhatja a hozzáférést a Kubernetes API-kiszolgálóhoz.
 
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Elérhetővé tehetem a Kubernetes API-kiszolgálót csak a saját virtuális hálózaton belül?
 
@@ -41,7 +41,7 @@ Jelenleg nem, de ez tervezett. Nyomon követheti a folyamat előrehaladását az
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Használhatok különböző virtuálisgép-méreteket egyetlen fürtben?
 
-Igen, különböző virtuálisgép-méreteket használhat az AK-fürtben több, jelenleg előzetes verzióban elérhető [Node-készlet][multi-node-pools]létrehozásával.
+Igen, [több Node-készlet][multi-node-pools]létrehozásával különböző virtuálisgép-méreteket is HASZNÁLHAT az AK-fürtben.
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Az AK-ügynökök csomópontjain vannak biztonsági frissítések alkalmazva?
 
@@ -89,7 +89,7 @@ Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes-beléptetési vezérlőket támogat az AK? Hozzáadhatók vagy eltávolíthatók a beléptetési vezérlők?
 
-Az AK a következő [belépésvezérlés][admission-controllers]-vezérlőket támogatja:
+Az AK a következő [belépésvezérlés-vezérlőket][admission-controllers]támogatja:
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -110,36 +110,36 @@ Az AK jelenleg nincs natív módon integrálva a Azure Key Vaultba. A [Kubernete
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Futtathatok Windows Server-tárolókat az AK-ban?
 
-Igen, a Windows Server-tárolók előzetes verzióban érhetők el. A Windows Server-tárolók az AK-ban való futtatásához létre kell hoznia egy Windows Servert futtató csomópont-készletet a vendég operációs rendszerként. A Windows Server-tárolók csak a Windows Server 2019-es kiszolgálókat használhatják. Első lépésként tekintse meg a következőt: [AK-fürt létrehozása Windows Server Node][aks-windows-cli]-készlettel.
+Igen, a Windows Server-tárolók előzetes verzióban érhetők el. A Windows Server-tárolók az AK-ban való futtatásához létre kell hoznia egy Windows Servert futtató csomópont-készletet a vendég operációs rendszerként. A Windows Server-tárolók csak a Windows Server 2019-es kiszolgálókat használhatják. Első lépésként tekintse meg a következőt: [AK-fürt létrehozása Windows Server Node-készlettel][aks-windows-cli].
 
-A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozásokat tartalmaz, amelyek a felsőbb rétegbeli Windows-kiszolgáló részét képezik a Kubernetes projektben. További információ ezekről a korlátozásokról: a [Windows Server-tárolók AK-][aks-windows-limitations]beli korlátozásai.
+A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozásokat tartalmaz, amelyek a felsőbb rétegbeli Windows-kiszolgáló részét képezik a Kubernetes projektben. További információ ezekről a korlátozásokról: a [Windows Server-tárolók AK-beli korlátozásai][aks-windows-limitations].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Biztosít-e az AK szolgáltatás szintű szerződést?
 
 Egy szolgáltatói szerződés (SLA) esetében a szolgáltató beleegyezik, hogy a szolgáltatás költségeiért visszatéríti az ügyfelet, ha a közzétett szolgáltatási szint nem teljesül. Mivel az AK ingyenes, díjmentesen vehetik igénybe a költségtérítést, így az AK nem rendelkezik formális SLA-val. Azonban az AK a Kubernetes API-kiszolgáló legalább 99,5%-os rendelkezésre állását igyekszik fenntartani.
 
-Fontos felismerni az AK szolgáltatás rendelkezésre állása közötti különbséget, amely a Kubernetes-vezérlési sík felhasználhatóságát és az Azure-Virtual Machines futó adott számítási feladatok rendelkezésre állását jelenti. Bár előfordulhat, hogy a vezérlő síkja nem érhető el, ha a vezérlő síkja nem áll készen, az Azure-beli virtuális gépeken futó fürtözött számítási feladatok továbbra is működhetnek. Az Azure-beli virtuális gépek díjköteles erőforrásokkal rendelkeznek, amelyeket pénzügyi SLA-val támogatnak. Az Azure-beli virtuális gépekre vonatkozó SLA-val kapcsolatos [További részletekért](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) és a rendelkezésre állás növelésével kapcsolatban itt talál további információt, például [Availability Zones][availability-zones].
+Fontos felismerni az AK szolgáltatás rendelkezésre állása közötti különbséget, amely a Kubernetes-vezérlési sík felhasználhatóságát és az Azure-Virtual Machines futó adott számítási feladatok rendelkezésre állását jelenti. Bár előfordulhat, hogy a vezérlő síkja nem érhető el, ha a vezérlő síkja nem áll készen, az Azure-beli virtuális gépeken futó fürtözött számítási feladatok továbbra is működhetnek. Az Azure-beli virtuális gépek díjköteles erőforrásokkal rendelkeznek, amelyeket pénzügyi SLA-val támogatnak. Az Azure-beli virtuális gépekre vonatkozó SLA-val kapcsolatos [További részletekért](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) és a rendelkezésre állás növelésével kapcsolatban itt talál további információt, például [Availability Zones][availability-zones].
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Miért nem tudom beállítani a maxPods 30 alatt?
 
-Az AK-ban megadhatja `maxPods` az értéket, amikor létrehozza a fürtöt az Azure CLI és Azure Resource Manager sablonok használatával. A Kubenet és az Azure CNI azonban *minimális értéket* igényel (a létrehozáskor érvényesítve):
+Az AK-ban megadhatja a `maxPods` értéket, ha a fürtöt az Azure CLI-vel és a Azure Resource Manager-sablonokkal hozza létre. A Kubenet és az Azure CNI azonban *minimális értéket* igényel (a létrehozáskor érvényesítve):
 
 | Hálózat | Minimális | Maximum |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
+| Azure-CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Mivel az AK felügyelt szolgáltatás, a bővítmények és a hüvelyek üzembe helyezése és kezelése a fürt részeként történik. A múltban a felhasználók meghatározhatnak egy `maxPods` értéket, ami alacsonyabb a felügyelt hüvely futtatásához szükséges értéknél (például 30). Az AK most kiszámítja a hüvelyek minimális számát a következő képlet használatával: ((maxPods vagy (maxPods * vm_count)) > felügyelt kiegészítő hüvelyek minimuma.
+Mivel az AK felügyelt szolgáltatás, a bővítmények és a hüvelyek üzembe helyezése és kezelése a fürt részeként történik. A múltban a felhasználók meghatározhatnak egy `maxPods` értéket, amely alacsonyabb a felügyelt hüvely futtatásához szükséges értéknél (például 30). Az AK most kiszámítja a hüvelyek minimális számát a következő képlet használatával: ((maxPods vagy (maxPods * vm_count)) > felügyelt kiegészítő hüvelyek minimuma.
 
-A felhasználók nem írhatják `maxPods` felül a minimális érvényesítést.
+A felhasználók nem tudják felülbírálni a minimális `maxPods` érvényesítést.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Alkalmazhatom az Azure-beli foglalási kedvezményeket az AK-ügynökök csomópontjaira?
 
-Az AK-ügynökök csomópontjai standard Azure-beli virtuális gépekként vannak kiszámlázva, így ha az AK-ban használt virtuálisgép-mérethez vásárolt [Azure][reservation-discounts] -foglalást, a rendszer automatikusan alkalmazza ezeket a kedvezményeket.
+Az AK-ügynökök csomópontjai standard Azure-beli virtuális gépekként vannak kiszámlázva, így ha az AK-ban használt virtuálisgép-mérethez vásárolt [Azure-foglalást][reservation-discounts] , a rendszer automatikusan alkalmazza ezeket a kedvezményeket.
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az Azure-bérlők között?
 
-A `az aks update-credentials` parancs használatával egy AK-fürt helyezhető át az Azure-bérlők között. Kövesse a következő témakör utasításait: [frissítés vagy létrehozás egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/aks/update-credentials) , majd az [AK-fürt frissítése új hitelesítő adatokkal](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+Az `az aks update-credentials` parancs használatával egy AK-fürt helyezhető át az Azure-bérlők között. Kövesse a következő témakör utasításait: [frissítés vagy létrehozás egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/aks/update-credentials) , majd az [AK-fürt frissítése új hitelesítő adatokkal](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az előfizetések között?
 
@@ -161,17 +161,17 @@ De az AK nem javasolja ezt. A frissítéseket ideális esetben kell végrehajtan
 
 Nem, törölje vagy távolítsa el a meghibásodott állapotú csomópontokat, vagy távolítsa el a fürtöt a frissítés előtt.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hiba jelenik meg: `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg: `[Errno 11001] getaddrinfo failed` 
 
 Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati biztonsági csoporttal (NSG) rendelkeznek még használatban, és a fürthöz vannak társítva.  Távolítsa el őket, és próbálkozzon újra a törléssel.
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Futtattam egy frissítést, de most a hüvelyem összeomlott hurkokban van, és a készültségi mintavétel meghiúsul?
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: Az AK-beli [szolgáltatásnév](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) és az AK-beli [hitelesítő adatok frissítése](https://docs.microsoft.com/azure/aks/update-credentials).
+Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](https://docs.microsoft.com/azure/aks/update-credentials).
 
 ## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem dolgoztam, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási PVC-ket stb.? 
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: Az AK-beli [szolgáltatásnév](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) és az AK-beli [hitelesítő adatok frissítése](https://docs.microsoft.com/azure/aks/update-credentials).
+Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](https://docs.microsoft.com/azure/aks/update-credentials).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Használhatom a virtuálisgép-méretezési csoport API-jait a manuális méretezéshez?
 

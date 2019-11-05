@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: gwallace
-ms.openlocfilehash: 9e7b7526f13fa6b9ae648c4ddb4004a627d85154
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359734"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469017"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Az SSL konfigurálása Azure-beli alkalmazásokhoz
 
 Az SSL-alapú titkosítás a leggyakrabban használt módszer az interneten keresztül küldött adatok biztonságossá tételéhez. Ebben az általános feladatban azt fejtjük ki, hogy miként lehet HTTPS-végpontokat meghatározni webes szerepkörökhöz, és hogyan tölthetők fel SSL-tanúsítványok az alkalmazások biztonságossá tételéhez.
 
 > [!NOTE]
-> A feladat eljárásai az Azure Cloud Servicesra vonatkoznak; App Services esetén [Ez](../app-service/app-service-web-tutorial-custom-ssl.md)a következő:.
+> A feladat eljárásai az Azure Cloud Servicesra vonatkoznak; App Services esetén [Ez](../app-service/configure-ssl-bindings.md)a következő:.
 >
 
 Ez a feladat éles üzembe helyezést használ. A témakör végén található az átmeneti üzembe helyezés használatával kapcsolatos információk.
@@ -43,10 +43,10 @@ Ezután meg kell adnia a tanúsítványra vonatkozó adatokat a szolgáltatás d
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>2\. lépés: A szolgáltatás definíciójának és konfigurációs fájljainak módosítása
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>2\. lépés: a szolgáltatás definíciójának és konfigurációs fájljainak módosítása
 Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá kell adni egy HTTPS-végpontot. Ennek eredményeképpen frissíteni kell a szolgáltatás definícióját és a szolgáltatás konfigurációs fájljait.
 
-1. A fejlesztési környezetében nyissa meg a Service Definition (CSDEF) fájlt, adja hozzá a **tanúsítványok** szakaszt a webrole szakaszban, és adja meg a következő információkat a tanúsítványról (és a köztes tanúsítványokról):
+1. A fejlesztési környezetében nyissa meg a Service Definition (CSDEF) fájlt, adja hozzá a **tanúsítványok** szakaszt a **webrole** szakaszban, és adja meg a következő információkat a tanúsítványról (és a köztes tanúsítványokról):
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -74,7 +74,7 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
 
    A **tanúsítványok** szakasz a tanúsítvány nevét és helyét, valamint annak az áruháznak a nevét határozza meg, ahol az található.
 
-   Az engedélyek`permissionLevel` (attribútumok) a következő értékek egyikére állíthatók be:
+   Az engedélyek (`permissionLevel` attribútum) az alábbi értékek egyikére állíthatók be:
 
    | Engedély értéke | Leírás |
    | --- | --- |
@@ -132,7 +132,7 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
 
 Most, hogy frissítettük a szolgáltatás definícióját és a szolgáltatás konfigurációs fájljait, csomagolja ki az üzembe helyezést az Azure-ba való feltöltéshez. Ha a **cspack**-t használja, ne használja a **/generateConfigurationFile** jelzőt, mert ez felülírja az imént beszúrt tanúsítvány-információkat.
 
-## <a name="step-3-upload-a-certificate"></a>3\. lépés: Tanúsítvány feltöltése
+## <a name="step-3-upload-a-certificate"></a>3\. lépés: tanúsítvány feltöltése
 Kapcsolódás a Azure Portalhoz és...
 
 1. A portál **minden erőforrás** szakaszában válassza ki a felhőalapú szolgáltatást.
@@ -152,7 +152,7 @@ Kapcsolódás a Azure Portalhoz és...
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>4\. lépés: Kapcsolódás a szerepkör-példányhoz HTTPS használatával
 Most, hogy üzembe helyezése az Azure-ban működik, HTTPS használatával csatlakozhat hozzá.
 
-1. A **webhely URL** -címére kattintva nyissa meg a webböngészőt.
+1. A **webhely URL-címére** kattintva nyissa meg a webböngészőt.
 
    ![Kattintson a webhely URL-címére](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
@@ -166,7 +166,7 @@ Most, hogy üzembe helyezése az Azure-ban működik, HTTPS használatával csat
    ![Webhely előzetes verziója](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Ha éles üzembe helyezés helyett egy átmeneti üzembe helyezéshez SSL-t szeretne használni, először meg kell határoznia az átmeneti üzembe helyezéshez használt URL-címet. Miután telepítette a felhőalapú szolgáltatást, az átmeneti környezet URL-címét a **központi telepítési azonosító** GUID azonosítója határozza meg ebben a formátumban:`https://deployment-id.cloudapp.net/`  
+   > Ha éles üzembe helyezés helyett egy átmeneti üzembe helyezéshez SSL-t szeretne használni, először meg kell határoznia az átmeneti üzembe helyezéshez használt URL-címet. Miután telepítette a felhőalapú szolgáltatást, az átmeneti környezet URL-címét a **központi telepítési azonosító** GUID azonosítója határozza meg a következő formátumban: `https://deployment-id.cloudapp.net/`  
    >
    > Hozzon létre egy common name (CN) nevű tanúsítványt a GUID-alapú URL-címmel (például **328187776e774ceda8fc57609d404462.cloudapp.net**). A portál használatával adja hozzá a tanúsítványt a szakaszos felhőalapú szolgáltatáshoz. Ezután adja hozzá a tanúsítvány adatait a CSDEF és a CSCFG-fájlokhoz, csomagolja ki az alkalmazást, és frissítse a szakaszos üzembe helyezést az új csomag használatára.
    >

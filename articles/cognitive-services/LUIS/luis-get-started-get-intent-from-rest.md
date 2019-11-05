@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Cél a REST API-k beszerzése – LUIS'
+title: 'Gyors útmutató: leképezés a REST API-kkal – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben a REST API rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
 services: cognitive-services
@@ -9,19 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: f3eceed1c4ab06d9b7a1959bceda4122f0412b35
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 3a8badb74bb8919876f3c0670d785f44fbcbb397
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703155"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499685"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Gyors útmutató: Cél a REST API-k beszerzése
+# <a name="quickstart-get-intent-with-rest-apis"></a>Gyors útmutató: leképezés a REST API-kkal
 
-[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat. 
+
+Ez a rövid útmutató a végponti REST API-t használja. További információkért tekintse meg a [végponti API-dokumentációját](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78).
+
+Ehhez a cikkhez egy ingyenes [LUIS](https://www.luis.ai)-fiókra van szüksége. 
 
 <a name="create-luis-subscription-key"></a>
 

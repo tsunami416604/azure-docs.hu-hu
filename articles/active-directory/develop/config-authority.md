@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803831"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473796"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Útmutató: az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az iOS és macOS rendszer
 a `MSALPublicClientApplication` a `https://login.microsoftonline.com/common`alapértelmezett szolgáltatói URL-címével van konfigurálva, amely a legtöbb Azure Active Directory (HRE) forgatókönyvhöz megfelelő. Hacsak nem végez speciális forgatókönyveket, például a nemzeti felhőket, vagy a B2C-vel dolgozik, nem kell módosítania.
 
 > [!NOTE]
-> A Active Directory összevonási szolgáltatások (AD FS) as Identity Provider (ADFS) szolgáltatással való modern hitelesítés nem támogatott (lásd: [ADFS for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers) for details). Az ADFS-t az összevonás támogatja.
+> A Active Directory összevonási szolgáltatások (AD FS) as Identity Provider (ADFS) szolgáltatással való modern hitelesítés nem támogatott (lásd: [ADFS for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) for details). Az ADFS-t az összevonás támogatja.
 
 ## <a name="change-the-default-authority"></a>Az alapértelmezett szolgáltató módosítása
 
@@ -251,6 +251,6 @@ A következő alosztályok `MSALAuthority`, amelyek a szolgáltatótól függőe
 
 `MSALB2CAuthority` a B2C-hatóságot jelöli. Alapértelmezés szerint a B2C-szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező: `https://<host>:<port>/tfp/<tenant>/<policy>`. A MSAL azonban más, tetszőleges B2C-szolgáltatói formátumokat is támogat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

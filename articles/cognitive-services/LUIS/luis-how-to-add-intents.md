@@ -1,46 +1,48 @@
 ---
 title: Leképezések hozzáadása – LUIS
 titleSuffix: Azure Cognitive Services
-description: Leképezések hozzáadása a LUIS-alkalmazás olyan kérdésekre, vagy ugyanazon céljaira rendelkező parancsok azonosítására.
+description: Vegyen fel szándékokat a LUIS-alkalmazásba, hogy azonosítsa az azonos szándékkal rendelkező kérdések vagy parancsok csoportjait.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f2f001489552203f0157dd24356341eb3184c81
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932895"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467545"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
 
-Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések és azonos szándékkal rendelkező parancsok azonosítására a LUIS-alkalmazás. 
+Vegyen fel [leképezéseket](luis-concept-intent.md) a Luis-alkalmazásba, hogy azonosítsa az azonos szándékú kérdések vagy parancsok csoportjait. 
 
-Leképezések a felső navigációs sávban felügyelt **hozhat létre** című szakaszában, majd a bal oldali panelen **leképezések**. 
+A leképezéseket a rendszer a felső navigációs sáv **Build** szakasza, majd a bal oldali panel **szándékai**alapján kezeli. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-intent"></a>Szándék hozzáadása
 
 1. Az **Intents** (Szándékok) lapon válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
-1. Az a **új leképezésének létrehozása** párbeszédpanelen adja meg a leképezés nevét `GetEmployeeInformation`, és kattintson a **kész**.
+1. Az **Új leképezés létrehozása** párbeszédpanelen adja meg a leképezés nevét, `GetEmployeeInformation`, majd kattintson a **kész**gombra.
 
     ![Leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-## <a name="add-an-example-utterance"></a>Adjon hozzá egy példa utterance (kifejezés)
+## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
 
-Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS), akik az példa beszédmódok hozzáadása egy beszédszándék kell.
+Például a hosszúságú kimondott szöveg a felhasználói kérdések és parancsok szöveges példái. Language Understanding (LUIS) tanításához hozzá kell adnia egy példa hosszúságú kimondott szöveg egy szándékhoz.
 
-1. Az a **GetEmployeeInformation** szándék részletei lap, adja meg egy megfelelő utterance (kifejezés) adatraktáraktól a felhasználók számára, mint például `Does John Smith work in Seattle?` alatti leképezési nevét, és nyomja le az ENTER billentyűt a szövegmezőben.
+1. A **GetEmployeeInformation** -leképezés részletei lapon adja meg a felhasználóktól várt megfelelő értéket, például `Does John Smith work in Seattle?` a cél neve alatti szövegmezőben, majd nyomja le az ENTER billentyűt.
  
-    ![Képernyőkép a leképezések Részletek lapján az utterance (kifejezés) kiemelésével](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    ![A szándékok részletei oldal képernyőképe, a teljes kiemeléssel](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-    A LUIS kisbetűvé alakítja az összes kimondott szöveg, és hozzáadja a jogkivonatok kötőjeleket például szóközt.
+    A LUIS az összes hosszúságú kimondott szöveg kisbetűsre alakítja, és szóközöket, például kötőjeleket hoz létre.
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
@@ -48,7 +50,7 @@ Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. L
 
 A szándékok egyik példájának kimondása a szándék előrejelzési hibája lehet, ha a példa a Kimondás alatt áll, és az előrejelzési szándékot a képzés során határozzák meg. 
 
-A részletes előrejelzési hibák megkereséséhez és a kijavításához használja a **szűrési** lehetőség kiértékelési beállításait a helytelen és a nem egyértelmű beállításhoz a **Részletes nézet** **megtekintési** lehetőségével együtt. 
+A részletes előrejelzési hibák megkereséséhez és a kijavításához használja a **szűrési** lehetőség **kiértékelési** beállításait a helytelen és a nem egyértelmű beállításhoz a **Részletes nézet** **megtekintési** lehetőségével együtt. 
 
 ![A teljes előrejelzési hibák és a kijavításuk megkereséséhez használja a Filter (szűrő) beállítást.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
@@ -64,47 +66,47 @@ Ha meg szeretné tudni, hogyan lehet kijavítani a szándék-előrejelző hibák
 
 ## <a name="add-a-custom-entity"></a>Egyéni entitás hozzáadása
 
-Az utterance (kifejezés) megjelölésű ad hozzá, miután kiválaszthatja az utterance (kifejezés) hozhat létre egyéni entitásokat származó szöveg. Egyéni entitás módja a kinyerési, és a megfelelő leképezés címke szövegét. 
+Ha egy Kimondás bekerül egy szándékba, egy egyéni entitás létrehozásához kiválaszthatja a szöveget a teljes szövegből. Az egyéni entitások lehetővé teszik a szöveg címkézését a kinyeréshez, valamint a megfelelő szándékot. 
 
 További információért tekintse meg az [entitás hozzáadása a teljes](luis-how-to-add-example-utterances.md) információhoz című témakört.
 
-## <a name="entity-prediction-discrepancy-errors"></a>Entitás előrejelzési eltérést észlelt hibák 
+## <a name="entity-prediction-discrepancy-errors"></a>Entitás-előrejelzési eltérési hibák 
 
-Vörös jelzi az entitás aláhúzott egy [entitás előrejelzés eltérés](luis-how-to-add-example-utterances.md#entity-status-predictions). Ez az entitás a első előfordulása, mert nem áll elég nagy magabiztossággal rendelkeznie LUIS példákat, hogy ez a szöveg van megjelölve a megfelelő entitással. Ez az eltérés törlődik, ha az alkalmazás be van tanítva. 
+Az entitás piros színnel van aláhúzva, hogy jelezze az [entitások előrejelzési eltérését](luis-how-to-add-example-utterances.md#entity-status-predictions). Mivel ez egy entitás első előfordulása, nincs elég példa arra, hogy LUIS nagy megbízhatósággal rendelkezzen, hogy a szöveg a megfelelő entitással legyen címkézve. A rendszer eltávolítja ezt az eltérést az alkalmazás betanításakor. 
 
-![Képernyőkép a leképezések Részletek lap, kék színnel egyéni entitás neve](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
+![A szándékok részletei lap képernyőképe, amely a kék színnel jelölt egyéni entitás nevét adja meg](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-A szöveg kék színnel, egy entitás jelző van kiemelve.  
+A szöveg kék színnel van kijelölve, és egy entitást jelez.  
 
-## <a name="add-a-prebuilt-entity"></a>Egy előre létrehozott entitás hozzáadása
+## <a name="add-a-prebuilt-entity"></a>Előre összeépített entitás hozzáadása
 
-További információ: [előre összeállított entitások](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
+További információ: [előre összeépített entitás](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár
+## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár használata
 
 Ha a listában egy vagy több példa hosszúságú kimondott szöveg van kiválasztva, akkor a teljes képernyő bal oldalán lévő jelölőnégyzet bejelölésével a teljes lista fölötti eszköztár lehetővé teszi a következő műveletek végrehajtását:
 
-* Leképezés ismételt hozzárendelése: utterance(s) áthelyezése másik leképezés
-* Utterance(s) törlése
-* Entitás szűrők: csak a szűrt entitásokat tartalmazó kimondott szöveg megjelenítése
-* Az összes megjelenítése / csak a hibák: előrejelzés hibákkal kimondott szöveg vagy az összes kimondott szöveg megjelenítése
-* Entitások/tokenek megtekintése: entitás névvel rendelkező entitásokat nézet vagy az utterance (kifejezés) nyers szöveg megjelenítése
-* Nagyító: keresse meg a meghatározott szöveget tartalmazó kimondott szöveg
+* Hozzárendelés ismételt leképezése: a lemondás (ok) áthelyezése különböző célra
+* Kimondás (ok) törlése
+* Entitás-szűrők: csak a szűrt entitásokat tartalmazó hosszúságú kimondott szöveg megjelenítése
+* Csak az összes/csak hibák megjelenítése: hosszúságú kimondott szöveg megjelenítése előrejelzési hibákkal vagy az összes hosszúságú kimondott szöveg megjelenítése
+* Entitások/jogkivonatok nézet: entitások nézetének megjelenítése az entitások nevével vagy a Kimondás nyers szövegének megjelenítése
+* Nagyító: adott szöveget tartalmazó hosszúságú kimondott szöveg keresése
 
-## <a name="working-with-an-individual-utterance"></a>Az egyes utterance (kifejezés) használata
+## <a name="working-with-an-individual-utterance"></a>Egyéni Kimondás használata
 
-Az alábbi műveleteket az egyes utterance (kifejezés) a három pont menüben jobb oldalán az utterance (kifejezés) hajtható végre:
+A következő műveletek hajthatók végre a három pontból álló, a kiválasztástól jobbra lévő, egyedi Kimondás esetén:
 
-* Szerkesztés: az utterance (kifejezés) szövegének módosítása
-* Törlés: a leképezés eltávolítása az utterance (kifejezés). Ha továbbra is az utterance (kifejezés), célszerűbb áthelyezni, hogy-e a **nincs** szándékot. 
-* Minta hozzáadása: A minta lehetővé teszi egy közös szöveg-és visszahelyezhető szöveg és a figyelmen kívül hagyható szöveg megjelölését, így csökkentve a szándékot, hogy további hosszúságú kimondott szöveg legyenek. 
+* Szerkesztés: a Kimondás szövegének módosítása
+* Törlés: távolítsa el a kivágást a szándékból. Ha továbbra is szeretné kipróbálni a teljes értéket, a jobb módszer az, ha áthelyezi a **nincs** szándékra. 
+* Minta hozzáadása: A minta lehetővé teszi, hogy egy közös és megjelöléssel elválasztható szöveget és figyelmen kívül hagyható szöveget tegyen elérhetővé, így kevesebb hosszúságú kimondott szöveg van szükség a szándékban. 
 
-A **szándékot feliratú** oszlop lehetővé teszi, hogy az utterance (kifejezés) célját módosítani.
+A **címkézett leképezési** oszlop lehetővé teszi, hogy megváltoztassa a kiválasztás szándékát.
 
-## <a name="train-your-app-after-changing-model-with-intents"></a>Modell, szándék fog vonatkozni módosítása után az alkalmazás betanítása
+## <a name="train-your-app-after-changing-model-with-intents"></a>Az alkalmazás betanítása a modell leképezésekkel való módosítása után
 
-Miután hozzáadása, szerkesztése vagy eltávolítása a szándék fog vonatkozni, [betanításához](luis-how-to-train.md) és [közzététele](luis-how-to-publish-app.md) az alkalmazás úgy, hogy a módosítások a végpont-lekérdezésekre. 
+Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja](luis-how-to-train.md) és [közzéteszi](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre legyenek alkalmazva. 
 
 ## <a name="next-steps"></a>További lépések
 
-További adásával kapcsolatos [példa utterances](luis-how-to-add-example-utterances.md) entitásokkal. 
+További információ a [példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) az entitásokkal való hozzáadásáról. 

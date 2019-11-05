@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248164"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486026"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>Eszközök regisztrálása elosztott terhelésű IoT-központokon
 
@@ -48,9 +48,9 @@ A regisztrációs lista megmondja a Device Provisioning Service-nek, hogy melyik
 
 A kiosztási szabályzat egy Device Provisioning Service-beállítás, amely meghatározza az eszközök IoT hubokhoz való hozzárendelésének módját. Három támogatott kiosztási szabályzat létezik: 
 
-1. **Legkisebb késés**: Eszközök kiosztása egy IoT hubra a legkisebb mértékű késleltetéssel rendelkezik az eszközt a hubon alapján.
-2. **Egyenletesen súlyozott elosztás** (alapértelmezett): Összekapcsolt IoT-központok várhatóan egyaránt rendelkezik kiosztott eszközökkel. Ez az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket. 
-3. **A regisztrációs listán keresztül statikus konfiguráció**: A regisztrációs listában meghatározott IoT-központ specifikace prioritást élvez a Device Provisioning Service-szintű kiosztási szabályzattal keresztül.
+1. **Legkisebb mértékű késleltetés**: Az eszközök abban az IoT-központban lesznek kiépítve, amely a legkisebb mértékű késleltetéssel rendelkezik az adott eszköz irányába.
+2. **Egyenletesen súlyozott elosztás** (alapértelmezett): Az eszközök egyforma valószínűséggel lesznek kiépítve a csatolt IoT-központokban. Ez az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket. 
+3. **Statikus konfigurálás a regisztrációs listán keresztül**: A regisztrációs listában meghatározott IoT-központ elsőbbséget élvez a Device Provisioning Service-szintű kiosztási szabályzattal szemben.
 
 Kövesse az alábbi lépéseket a kiosztási szabályzat beállításához:
 
@@ -64,7 +64,7 @@ Kapcsolja össze a Device Provisioning Service-t és az IoT hubot, hogy a Device
 
 1. Az **Összes erőforrás** lapon kattintson a korábban létrehozott Device Provisioning Service szolgáltatásra.
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson az **Add** (Hozzáadás) parancsra.
 4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
 5. Kattintson a **Save** (Mentés) gombra.
 
@@ -81,5 +81,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md
 > [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind an existing custom SSL certificate to Azure Web Apps]()
 -->

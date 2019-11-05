@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/27/2018
-ms.openlocfilehash: ec75f607f707405d6a5bea98deb784f4306c04f1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 3d6ed3b13c134d8e9c1df72ae2cb880a477a803a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555368"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477041"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>A tárolók Azure Monitor hibaelhárítása
 
@@ -25,7 +25,7 @@ A bevezetési vagy frissítési folyamat során a rendszer a fürt erőforrásá
 
 Ezt a szerepkört manuálisan is megadhatja a Azure Portal az alábbi lépések végrehajtásával:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
 2. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában írja be a következőt: **Kubernetes**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza az **Azure Kubernetes**lehetőséget.
 3. A Kubernetes-fürtök listájában válasszon egyet a listából.
 2. A bal oldali menüben kattintson a **hozzáférés-vezérlés (iam)** elemre.
@@ -106,11 +106,31 @@ Az alábbi táblázat összefoglalja a Azure Monitor for containers használata 
 | Hibaüzenetek  | Műveletek |  
 | ---- | --- |  
 | Hibaüzenet `No data for selected filters`  | Eltarthat egy ideig, hogy az újonnan létrehozott fürtök monitorozási folyamatát is létrehozza. Legalább 10 – 15 percet is igénybe vehet, amíg az adatai megjelennek a fürt számára. |   
-| Hibaüzenet `Error retrieving data` | Az Azure Kubenetes Service-fürt állapota és a teljesítmény figyelése mellett kapcsolat jön létre a fürt és az Azure Log Analytics munkaterület között. A fürt összes figyelési adatait egy Log Analytics munkaterület használatával lehet tárolni. Ez a hiba akkor fordulhat elő, ha a Log Analytics munkaterület törölve lett. Ellenőrizze, hogy a munkaterület törölve lett-e, és ha igen, akkor újra engedélyeznie kell a fürt figyelését Azure Monitor a tárolók számára, és meg kell adnia egy meglévőt, vagy létre kell hoznia egy új munkaterületet. Az ismételt engedélyezéshez [le kell tiltania](container-insights-optout.md) a fürt figyelését, és újra [engedélyeznie](container-insights-enable-new-cluster.md) kell a tárolók Azure monitorét. |  
-| `Error retrieving data` a tárolók Azure Monitor hozzáadása után az az AK CLI használatával | Ha `az aks cli` használatával engedélyezi a figyelést, előfordulhat, hogy a tárolók Azure Monitor nincsenek megfelelően telepítve. Győződjön meg arról, hogy telepítve van-e a megoldás. Ehhez lépjen a Log Analytics munkaterületre, és ellenőrizze, hogy elérhető-e a megoldás a bal oldali ablaktáblán a **megoldások** lehetőség kiválasztásával. A probléma megoldásához újra kell telepítenie a megoldást a [Azure monitor a tárolók telepítésére](container-insights-onboard.md) vonatkozó utasításokat követve. |  
+| Hibaüzenet `Error retrieving data` | Az Azure Kubernetes Service-fürt állapota és a teljesítmény figyelése mellett kapcsolat jön létre a fürt és az Azure Log Analytics munkaterület között. A fürt összes figyelési adatait egy Log Analytics munkaterület használatával lehet tárolni. Ez a hiba akkor fordulhat elő, ha a Log Analytics munkaterület törölve lett. Ellenőrizze, hogy a munkaterület törölve lett-e, és ha igen, akkor újra engedélyeznie kell a fürt figyelését Azure Monitor a tárolók számára, és meg kell adnia egy meglévőt, vagy létre kell hoznia egy új munkaterületet. Az ismételt engedélyezéshez [le kell tiltania](container-insights-optout.md) a fürt figyelését, és újra [engedélyeznie](container-insights-enable-new-cluster.md) kell a tárolók Azure monitorét. |  
+| `Error retrieving data` a tárolók Azure Monitor hozzáadása után az az AK CLI használatával | Ha `az aks cli`használatával engedélyezi a figyelést, előfordulhat, hogy a tárolók Azure Monitor nincsenek megfelelően telepítve. Győződjön meg arról, hogy telepítve van-e a megoldás. Ehhez lépjen a Log Analytics munkaterületre, és ellenőrizze, hogy elérhető-e a megoldás a bal oldali ablaktáblán a **megoldások** lehetőség kiválasztásával. A probléma megoldásához újra kell telepítenie a megoldást a [Azure monitor a tárolók telepítésére](container-insights-onboard.md) vonatkozó utasításokat követve. |  
 
-A probléma diagnosztizálása érdekében az [itt](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)elérhető hibaelhárítási parancsfájlt biztosítunk.  
+A probléma diagnosztizálása érdekében az [itt](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)elérhető hibaelhárítási parancsfájlt biztosítunk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>A containers Agent ReplicaSet-hüvelyek Azure Monitor nem az Azure Kubernetes-fürtön vannak ütemezve
+
+Azure Monitor a containers Agent ReplicaSet-hüvelye a következő csomópont-választókkal rendelkezik a munkavégző (vagy ügynök) csomópontokon az ütemezéshez:
+
+```
+nodeSelector:
+  beta.kubernetes.io/os: Linux
+  kubernetes.io/role: agent
+```
+
+Ha a munkavégző csomópontokhoz nincsenek csatolva csomópont-címkék, akkor az Agent ReplicaSet-hüvelyek nem lesznek ütemezve. A címke csatolására vonatkozó utasításokért tekintse meg a [Kubernetes hozzárendelése címke-választókat](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) .
+
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>A teljesítmény-diagramok nem jelenítik meg a csomópontok és tárolók PROCESSZORát és memóriáját egy nem Azure-fürtön
+
+A containers Agent Azure Monitor a cAdvisor végpontot használja a csomópont-ügynökön a teljesítmény metrikáinak összegyűjtéséhez. Ellenőrizze, hogy a csomóponton lévő tároló ügynök úgy van-e konfigurálva, hogy az `cAdvisor port: 10255` a fürt összes csomópontján meg lehessen nyitni a teljesítmény-metrikák összegyűjtéséhez.
+
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Nem Azure-beli Kubernetes-fürt nem jelenik meg Azure Monitor tárolók számára
+
+Ha a nem Azure-beli Kubernetes-fürtöt tárolók Azure Monitor szeretné megtekinteni, olvasási hozzáférésre van szükség az ezt az elemzést támogató Log Analytics munkaterületen, valamint a Container betekintési megoldás erőforrás- **ContainerInsights (*munkaterület*)** .
+
+## <a name="next-steps"></a>További lépések
 
 Ha a figyelés engedélyezve van az AK-fürtcsomópontok és-hüvelyek állapot-metrikáinak rögzítéséhez, ezek az állapot-mérőszámok a Azure Portal érhetők el. Az Azure Monitor for containers használatának megismeréséhez tekintse meg az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md)című témakört.

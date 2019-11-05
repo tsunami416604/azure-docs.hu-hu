@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 79a04725c8289baa3008b229d5dc608357cde881
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 77137bcc708ee403571c4ca9fc0ee0333c068437
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72949598"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990325"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>Hozzon létre egy új sablon-verziót (előzetes verziójú funkciók)
 
@@ -45,7 +45,7 @@ Eszköz sablonjának verziója:
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki azt az eszközt, amelyre a verziót kívánja.
 1. Kattintson a lap tetején található **Version (verzió** ) gombra, és adjon meg egy új nevet a sablonnak. Egy új nevet javasoltunk, amely szerkeszthető.
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 1. Most az eszköz sablonja vázlat módban van. Látni fogja, hogy a felületek továbbra is zárolva vannak, és a szerkesztéshez egyenként kell verziót használnia. 
 
 ### <a name="versioning-an-interface"></a>Felület verziószámozása
@@ -58,7 +58,7 @@ Egy felület verziójának megrendeléséhez:
 1. Válassza ki a Piszkozat módban lévő sablont.
 1. Válassza ki azt a felületet, amelyet közzé szeretne tenni, és szerkeszteni kívánja a közzétett módban.
 1. Kattintson a **verzió** gombra a csatoló oldal tetején. 
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 1. Most az illesztőfelület vázlat módban van. A meglévő testreszabások és nézetek megszakítása nélkül lehetősége lesz felvenni vagy szerkeszteni a felület képességeit. 
 
 > [!NOTE]
@@ -79,9 +79,9 @@ Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatl
 
 ![Eszköz áttelepítésének módja](media/howto-version-device-template-pnp/pick-version.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan használhatja az eszköz sablonjának verzióit az Azure IoT Central alkalmazásban, a következő lépés a javasolt lépés:
 
 > [!div class="nextstepaction"]
-> [Telemetria-szabályok létrehozása](howto-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Telemetria-szabályok létrehozása](tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

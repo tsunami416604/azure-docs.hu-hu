@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1c9cdfa54494cd6d77edcd13110a79e5265e5032
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817847"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467920"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 Storage-fiók létrehozása
 
@@ -58,7 +58,7 @@ További információ a tárfiókokról: [Az Azure Storage-fiókok áttekintése
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Fiókok létrehozása az Azure Portalon
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
@@ -78,7 +78,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 4. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 5. Válassza ki a helyet.
 6. Győződjön meg arról, hogy a **StorageV2 (általános célú v2)** a **Fiók típusa** legördülő listából kiválasztva jelenik meg.
-7. Szükség esetén módosítsa a következő mezők értékeit: **teljesítmény**, **replikálás**, **hozzáférési szintek**. További információ ezekről a lehetőségekről: [Az Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction#introducing-the-azure-storage-services).
+7. Szükség esetén módosítsa a következő mezők értékeit: **teljesítmény**, **replikálás**, **hozzáférési szintek**. További információ ezekről a lehetőségekről: [Az Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
 8. Válassza a **speciális** lapot.
 10. A **Data Lake Storage Gen2** szakaszban a **hierarchikus névtér** beállítása **engedélyezve**értékre.
 11. A Storage-fiók létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
@@ -121,7 +121,7 @@ Használja a `Login-AzAccount` parancsot, és kövesse a képernyőn megjelenő 
 Login-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Új erőforráscsoport PowerShell-lel való létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
@@ -175,7 +175,7 @@ Ha a parancssori felülettel kívánja használni a Data Lake Storage Gen2t, hoz
 
 Ehhez írja be a következő parancsot a Cloud Shell vagy egy helyi rendszerhéj használatával: `az extension add --name storage-preview`
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group) parancsot.
 
@@ -210,7 +210,7 @@ Az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforrá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben Data Lake Storage Gen2 képességekkel rendelkező Storage-fiókot hozott létre. A következő témakörből megtudhatja, hogyan tölthet fel és tölthet le blobokat a Storage-fiókjából, illetve hogyan töltheti le azokat.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934743"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73412976"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -105,19 +105,19 @@ Kövesse az alábbi lépéseket a korábban kiválasztott felhasználók jóváh
 
 1. A kiválasztott felhasználóktól érkező kérések jóváhagyásának megköveteléséhez állítsa az **Igen**értékre a **jóváhagyás megkövetelése** kapcsolót. Ha szeretné, hogy a rendszer automatikusan jóváhagyja a kéréseket, állítsa a kapcsolót a **nem**értékre.
 
-    ![Hozzáférési csomag – kérelmek – jóváhagyási beállítások](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 1. Ha szeretné megkövetelni, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, állítsa a **kérelmező indoklásának megkövetelése** **beállítást igen**értékre.
 
-1. Annak megállapítása, hogy a kérelemhez szükség van-e egy vagy több lépésből álló jóváhagyásra. Állítsa be, hogy az adott fázis hány **szakasza** legyen **1** .
+    ![Hozzáférési csomag – kérelmek – jóváhagyási beállítások](./media/active-directory-entitlement-management-request-policy/approval.png)
+
+### <a name="single-stage-approval"></a>Egyfázisú jóváhagyás
 
 1. Jóváhagyók esetében válassza a **felettes jóváhagyása** lehetőséget, vagy **válassza a megadott jóváhagyók lehetőséget**.
 
-    A kezelőt az Azure AD felhasználói profiljának **Manager** attribútuma határozza meg. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
-
-    ![Azure Active Directory felhasználói profil – Manager attribútum](./media/active-directory-entitlement-management-request-policy/profile-manager.png)
+    ![Hozzáférési csomag – kérelmek – egyfázisú beállítások](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
 
 1. Ha a kezelő mint jóváhagyó lehetőséget választotta, kattintson a **tartalék hozzáadása** lehetőségre, ha egy vagy több felhasználót vagy csoportot kíván kijelölni a címtárban, hogy tartalék jóváhagyó legyen abban az esetben, ha a jogosultságok kezelése nem találja a kezelőt.
+
+    A kezelőt az Azure AD felhasználói profiljának **Manager** attribútuma határozza meg. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
 1. Ha az egyes jóváhagyók kiválasztása lehetőséget választotta, kattintson a **Jóváhagyók hozzáadása** lehetőségre a címtárban lévő felhasználók vagy csoportok jóváhagyásának kiválasztásához.
 
@@ -125,9 +125,34 @@ Kövesse az alábbi lépéseket a korábban kiválasztott felhasználók jóváh
 
     Ha egy kérelem nem lett jóváhagyva ezen az időtartamon belül, a rendszer automatikusan letiltja. A felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz.
 
-1. Ahhoz, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, az **Igen**értékre kell állítani az **indoklást** .
+1. Ahhoz, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, az **Igen**értékre kell állítani a **jóváhagyó indoklását** .
 
     Egy indoklás látható a többi jóváhagyó és a kérelmező számára.
+
+### <a name="alternate-approvers"></a>Alternatív jóváhagyók
+
+A kérelmeket jóváhagyó elsődleges jóváhagyók megadása mellett alternatív jóváhagyókat is megadhat. Ezzel biztosíthatja, hogy a rendszer a kérelmeket a lejárat előtt jóváhagyja vagy megtagadja (időtúllépés).
+
+Ha alternatív jóváhagyó (ka) t ad meg, abban az esetben, ha az elsődleges jóváhagyó (k) nem tudta jóváhagyni vagy megtagadni a kérést, a függőben lévő kérést a rendszer a házirend beállításakor megadott továbbítási ütemterv szerint továbbítja a másodlagos jóváhagyó (k) nek. E-mailt kapnak a függőben lévő kérelem jóváhagyásához vagy elutasításához.
+
+Miután a kérést továbbították a másodlagos jóváhagyóknak, az elsődleges jóváhagyók továbbra is jóváhagyják vagy eltagadhatják a kérést. A másodlagos jóváhagyók ugyanazt a saját hozzáférési helyet használják, mint az elsődleges jóváhagyó, a függőben lévő kérelem jóváhagyásához vagy elutasításához.
+
+Listázhat személyeket vagy csoportokat, akik az elsődleges jóváhagyók és az alternatív jóváhagyók. Győződjön meg arról, hogy az elsődleges jóváhagyóként és a másodlagos jóváhagyóként különböző személyek listáját sorolja fel.
+Ha például az Alice és a Bob elsődleges jóváhagyó (k), a Carol és a Dave listázása az alternatív jóváhagyó (k). A következő lépésekkel adhat hozzá alternatív jóváhagyókat egy hozzáférési csomaghoz:
+
+1. Kattintson a **speciális kérelmek beállításainak megjelenítése**lehetőségre.
+
+    ![Hozzáférési csomag – szabályzat – speciális kérelmek beállításainak megjelenítése](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+
+1. Állítsa be **, hogy nem történt-e művelet, továbbítsa a másodlagos jóváhagyóknak?** váltás az **Igen**értékre.
+
+1. Kattintson az **alternatív Jóváhagyók hozzáadása** lehetőségre, és válassza ki a listából a másodlagos jóváhagyó (ka) t.
+
+    ![Hozzáférési csomag – házirend – alternatív Jóváhagyók hozzáadása](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. A **továbbítás a másodlagos jóváhagyó (ok)** hoz a napok száma után, hogy a jóváhagyóknak hány napig kell jóváhagyni vagy megtagadni a kérést. Ha a kérelem időtartama előtt egyetlen jóváhagyó sem hagyta jóvá vagy nem utasította el a kérelmet, a kérelem lejár (időtúllépés), és a felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz. 
+
+    A kérések továbbítása csak a kérés időtartamát követő nap után lehetséges a másodlagos jóváhagyóknak. Ebben a példában a kérelem időtartama 14 nap. Ez azt jelenti, hogy a kérelem időtartama a 7. napon eléri a felezési időt. Így a kérést nem lehet a 8. nap elején továbbítani. A kérések időtartamának utolsó napján a kérelmeket nem lehet továbbítani a másodlagos jóváhagyónak. Így a példában a legutóbbi kérelem továbbítása a 13. nap.
 
 ## <a name="enable-requests"></a>Kérelmek engedélyezése
 

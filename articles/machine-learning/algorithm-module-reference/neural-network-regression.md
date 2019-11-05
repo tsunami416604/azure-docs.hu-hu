@@ -1,20 +1,20 @@
 ---
 title: 'Neurális hálózat regressziója: modul leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning-szolgáltatás neurális hálózat regressziós modulját egy regressziós modell létrehozásához egy testreszabható neurális hálózati algoritmus használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning neurális hálózat regressziós modulját a regressziós modell testreszabható neurális hálózati algoritmus használatával történő létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692733"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466009"
 ---
 # <a name="neural-network-regression-module"></a>Neurális hálózat regressziós modulja
 
@@ -24,7 +24,7 @@ ms.locfileid: "72692733"
   
 ## <a name="module-overview"></a>Modul áttekintése  
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy regressziós modellt egy testreszabható neurális hálózati algoritmus használatával.
   
@@ -51,8 +51,8 @@ A neurális hálózatokat széles körben lehet testreszabni. Ez a szakasz azt i
     Ez a lehetőség akkor a legjobb, ha már némileg ismeri a neurális hálózatokat. A hálózati architektúrát a net # nyelv használatával határozhatja meg.  
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Neurális hálózati modell létrehozása az alapértelmezett architektúra használatával
-  
-1.  Adja hozzá a **neurális hálózat regressziós** modulját a folyamathoz az illesztőfelületen. Ezt a modult a **regressziós** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja. 
+
+1.  Adja hozzá a **neurális hálózat regressziós** modulját a folyamathoz a tervezőben. Ezt a modult a **regressziós** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja. 
   
 2. Adja meg, hogyan szeretné képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
@@ -87,7 +87,7 @@ A neurális hálózatokat széles körben lehet testreszabni. Ez a szakasz azt i
    
 14. A folyamat futtatása.  
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
@@ -96,6 +96,6 @@ A betanítás befejezése után:
 + A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal a **betanított modell** kimenetére, és válassza a **Mentés betanítva modellként**lehetőséget. Ez a modell nem frissül ugyanazon folyamat egymást követő futtatásakor.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

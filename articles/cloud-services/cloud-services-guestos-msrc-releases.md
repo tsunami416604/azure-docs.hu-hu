@@ -10,43 +10,40 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/15/2019
+ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430164"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500268"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
 
 ## <a name="october-2019-guest-os"></a>Október 2019 vendég operációs rendszer
 
->[!NOTE]
->Az októberi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások az októberi vendég operációs rendszer részét képezik. A lista módosítása változhat.
-
 | Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 19-10   |  [4520003]  |  Windows-Biztonság   |  2,91  |  Október 8, 2019  |
-|  Rel 19-10   |  [4519985]  |  Windows-Biztonság   |  3,78  |  Október 8, 2019  |
-|  Rel 19-10   |  [4519990]  |  Windows-Biztonság   |  4,71  |  Október 8, 2019  |
-|  Rel 19-10   |  [4519998]  |  Legújabb összesítő frissítés   |  5,36  |  Október 8, 2019  |
-|  Rel 19-10   |  [4519338]  |  Legújabb összesítő frissítés   |  6,12  |  Október 8, 2019  |
-|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  2,91, 3,78, 4,71  |  Október 8, 2019  |
-|  Rel 19-10   |  [4516065]  |  Nem biztonsági   |  2,91  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4516655]  |  SSU   |  2,91  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4516055]  |  Nem biztonsági   |  3,78  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4512939]  |  SSU   |  3,78  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4514370]  |  .NET-keretrendszer 3,5   |  3,78  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4514368]  |  .NET-keretrendszer 4.5.2   |  3,78  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4516067]  |  Nem biztonsági   |  4,71  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4512938]  |  SSU   |  4,71  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4514371]  |  .NET-keretrendszer 3,5   |  4,71  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4514367]  |  .NET-keretrendszer 4.5.2   |  4,71  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4512574]  |  SSU   |  5,36  |  Szeptember 10., 2019  |
-|  Rel 19-10   |  [4512577]  |  SSU   |  6,12  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4520003]  |  Windows-Biztonság   |  [2,91]  |  Október 8, 2019  |
+|  Rel 19-10   |  [4519985]  |  Windows-Biztonság   |  [3,78]  |  Október 8, 2019  |
+|  Rel 19-10   |  [4519990]  |  Windows-Biztonság   |  [4,71]  |  Október 8, 2019  |
+|  Rel 19-10   |  [4519998]  |  Legújabb összesítő frissítés   |  [5,36]  |  Október 8, 2019  |
+|  Rel 19-10   |  [4519338]  |  Legújabb összesítő frissítés   |  [6,12]  |  Október 8, 2019  |
+|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  Október 8, 2019  |
+|  Rel 19-10   |  [4516065]  |  Nem biztonsági   |  [2,91]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4516655]  |  SSU   |  [2,91]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4516055]  |  Nem biztonsági   |  [3,78]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4512939]  |  SSU   |  [3,78]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4514370]  |  .NET-keretrendszer 3,5   |  [3,78]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4514368]  |  .NET-keretrendszer 4.5.2   |  [3,78]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4516067]  |  Nem biztonsági   |  [4,71]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4512938]  |  SSU   |  [4,71]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4514371]  |  .NET-keretrendszer 3,5   |  [4,71]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4514367]  |  .NET-keretrendszer 4.5.2   |  [4,71]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4512574]  |  SSU   |  [5,36]  |  Szeptember 10., 2019  |
+|  Rel 19-10   |  [4512577]  |  SSU   |  [6,12]  |  Szeptember 10., 2019  |
 
 [4520003]: https://support.microsoft.com/kb/4520003
 [4519985]: https://support.microsoft.com/kb/4519985
@@ -67,6 +64,11 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
+[6,12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>Szeptember 2019 vendég operációs rendszer
@@ -1206,7 +1208,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS15-075 |[3072633] |Az OLE-biztonsági rések megemelt jogosultságot adhatnak |4,22, 3,29, 2,41 |Július 14., 2015 |
 | MS15 – 076 |[3067505] |A Windows távoli eljáráshívás biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,22, 3,29, 2,41 |Július 14., 2015 |
 | MS15 – 077 |[3077657] |Az ATM betűkészlet-illesztőprogram biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,22, 3,29, 2,41 |Július 14., 2015 |
-| n/a |[3057154] |A DES titkosítás használatának korlátozására szolgáló frissítés |4,22, 3,29, 2,41 |Július 14., 2015 |
+| NA |[3057154] |A DES titkosítás használatának korlátozására szolgáló frissítés |4,22, 3,29, 2,41 |Július 14., 2015 |
 
 ## <a name="june-2015-guest-os"></a>Június 2015 vendég operációs rendszer
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
@@ -1239,7 +1241,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS15 – 040 |[3045711] |Az ADFS biztonsági rése lehetővé teszi az adatok közzétételét |4,20, 3,27, 2,39 |Április 17, 2015 |
 | MS15 – 041 |[3048010] |A .NET-keretrendszer biztonsági rése az adatok közzétételét teszi lehetővé |4,20, 3,27, 2,39 |Április 17, 2015 |
 | MS15 – 042 |[3047234] |A Windows Hyper-V biztonsági rése szolgáltatásmegtagadást eredményezhet |4,20, 3,27, 2,39 |Április 17, 2015 |
-| n/a |[3045755] |Frissítés a PKU2U-hitelesítés javítására |4,20, 3,27, 2,39 |Április 17, 2015 |
+| NA |[3045755] |Frissítés a PKU2U-hitelesítés javítására |4,20, 3,27, 2,39 |Április 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>Április 2015 vendég operációs rendszer
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |

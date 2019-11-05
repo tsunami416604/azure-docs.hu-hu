@@ -1,189 +1,173 @@
 ---
-title: Azure Migrate – gyakori kérdések (GYIK) | Microsoft Docs
-description: A Azure Migrateekkel kapcsolatos gyakori kérdések címei
+title: Gyakori kérdések a Azure Migrate
+description: Általános és gyakori kérdések a Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/22/2019
 ms.author: snehaa
-ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1663e1d418610bcfa2ada28770944bfc8cbf908f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934921"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480070"
 ---
-# <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Gyakori kérdések (GYIK)
+# <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
 
 Ez a cikk a Azure Migrateával kapcsolatos gyakori kérdésekre ad választ. Ha további lekérdezésekre van szüksége a cikk elolvasása után, tegye fel őket a [Azure Migrate fórumba](https://aka.ms/AzureMigrateForum).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
-### <a name="which-azure-geographies-does-azure-migrate-support"></a>Mely Azure-régiók támogatják a Azure Migrate?
+### <a name="which-azure-geographies-are-supported"></a>Mely Azure földrajzi területek támogatottak?
 
-Tekintse [meg a VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) és a [Hyper-V listájának](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)listáját.
+Tekintse át a [VMWare virtuális gép](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) és a [Hyper-V virtuális gépek](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)Azure Migrate támogatott földrajzi területeit.
 
-### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Mi a különbség a Azure Migrate és az Azure Site Recovery között?
+### <a name="whats-the-difference-between-azure-migrate-and-site-recovery"></a>Mi a különbség a Azure Migrate és az Site Recovery között?
 
-Azure Migrate központosított hubot biztosít a Migrálás elindításához, a gépek és munkaterhelések felderítésének és értékelésének végrehajtásához, valamint a gépek és számítási feladatok Azure-ba való áttelepítésének végrehajtásához és nyomon követéséhez. [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) vész-helyreállítási megoldás. Azure Migrate kiszolgáló áttelepítése a háttér-Azure Site Recovery használatával lehetővé teszi az áttelepítési forgatókönyvek használatát a helyszíni gépek áttelepítéséhez.
+Azure Migrate központosított központot biztosít a helyszíni gépek és számítási feladatok Azure-ba való felderítésének, értékelésének és áttelepítésének kezeléséhez és nyomon követéséhez. [Azure site Recovery](../site-recovery/site-recovery-overview.md) vész-helyreállítási megoldás. Azure Migrate: a kiszolgáló áttelepítési eszköze néhány háttérrendszer-Site Recovery funkciót használ a helyszíni gépek áttelepítéséhez.
 
-### <a name="how-do-i-delete-an-azure-migrate-project"></a>Azure Migrate projekt törlése Hogyan
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Hogyan törölni egy Azure Migrate projektet?
 
-Ha törölni szeretne egy Azure Migrate projektet és a hozzá tartozó erőforrásokat, beleértve a webhelyeket, a Recovery Services-tárolókat, a tárolókat, a kulcstartókat, az értékelési projekteket stb. Válassza a Azure Portal az "erőforráscsoportok" lapot, és válassza ki azt az erőforráscsoportot, amelyben az áttelepíteni kívánt projekt létrejött, és válassza a "rejtett típusok megjelenítése" lehetőséget. Ezután válassza ki az áttelepíteni kívánt projektet és a hozzá tartozó erőforrásokat, és törölje őket. Azt is megteheti, hogy ha az erőforráscsoportot kizárólag az áttelepíthető projekt és a hozzá tartozó erőforrások használják, törölheti a teljes erőforráscsoportot. Vegye figyelembe, hogy ez a lista az összes forgatókönyvhöz (felderítés, értékelés és áttelepítés) létrehozott összes erőforrástípus teljes listája. Csak azokat az erőforrásokat fogja megtalálni, amelyek az adott forgatókönyvhöz lettek létrehozva az erőforráscsoporthoz.
-
-#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>A VMware vagy a fizikai kiszolgálókon felderített, felderített vagy áttelepített kiszolgálókhoz létrehozott erőforrások [erőforrás (típus)]:
-
-- "Appliancename" kV (Key Vault)
-- "Appliancename" webhely (Microsoft. OffAzure/VMwareSites)
-- "Projektnév" (Microsoft. Migrálás/migrateprojects)
-- "Projektnév" projekt (Microsoft. Migrálás/assessmentProjects)
-- "Projektnév" rsvault (Recovery Services-tároló)
-- "Projektnév"-MigrateVault-* (Recovery Services-tároló)
-- migrateappligwsa * (Storage-fiók)
-- migrateapplilsa * (Storage-fiók)
-- migrateapplicsa * (Storage-fiók)
-- migrateapplikv * (Key Vault)
-- migrateapplisbns16041 (Service Bus névtér)
-
-Megjegyzés: Törölje a Storage-fiókokat és a kulcstartókat körültekintően, mivel azok tartalmazhatják az alkalmazásadatok és a biztonsági kulcsok.
-
-#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Felderített, értékelni vagy áttelepített kiszolgálókhoz létrehozott erőforrások a Hyper-V-ben [erőforrás (típus)]:
-
-- "Projektnév" (Microsoft. Migrálás/migrateprojects)
-- "Projektnév" projekt (Microsoft. Migrálás/assessmentProjects)
-- HyperV * kV (Key Vault)
-- HyperV * hely (Microsoft. OffAzure/HyperVSites)
-- "Projektnév"-MigrateVault-* (Recovery Services-tároló) 
-
-Megjegyzés: Törölje a Key vaultot körültekintően, mert biztonsági kulcsokat tartalmazhat.
+A projektek törléséhez kövesse az [alábbi utasításokat](how-to-delete-project.md) . [Tekintse át azokat az erőforrásokat](how-to-delete-project.md#created-resources) , amelyeket a rendszer egy Azure Migrate projektben felderített, értékel és telepít át gépeket és munkaterheléseket.
 
 
 ## <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
-### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Hogyan kapcsolódik az Azure Migrate készülék az Azure-hoz?
+### <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
-A kapcsolat lehet az interneten keresztül, vagy használhatja az Azure ExpressRoute-t nyilvános/Microsoft-partnerekkel is.
+A kapcsolat lehet az interneten keresztül, vagy használhatja az Azure ExpressRoute nyilvános/Microsoft-partnerekkel.
 
-### <a name="what-are-the-network-connectivity-requirements-for-azure-migrate-server-assessment-and-migration"></a>Milyen hálózati kapcsolati követelmények vonatkoznak a Azure Migrate Server Assessment and Migration szolgáltatásra?
+### <a name="what-network-connectivity-is-needed-for-azure-migrate-server-assessment-and-migration"></a>Milyen hálózati kapcsolatra van szükség a Azure Migrate-kiszolgáló felméréséhez és áttelepítéséhez?
 
-Tekintse meg a [VMware](migrate-support-matrix-vmware.md) és a [Hyper-V](migrate-support-matrix-hyper-v.md) támogatási mátrixait a Azure Migrate az Azure-ban való kommunikációhoz szükséges URL-címekkel és portokkal kapcsolatos információkért.
+Tekintse át a [VMware](migrate-support-matrix-vmware.md) és a [Hyper-V](migrate-support-matrix-hyper-v.md) támogatási mátrixait azokról az URL-címekről és portokról, amelyek szükségesek az Azure-hoz való kommunikáció Azure Migrateához.
 
-### <a name="can-i-harden-the-appliance-vm-that-i-set-up-with-the-template"></a>Megerősítem azt a készüléket használó virtuális gépet, amelyet a sablonnal állítottam be?
+### <a name="can-i-harden-the-appliance-vm-created-with-the-template"></a>Megerősíthető a sablonnal létrehozott készülék virtuális gépe?
 
 Hozzáadhat összetevőket (például víruskeresőt) a sablonhoz, feltéve, hogy a Azure Migrate berendezéshez szükséges kommunikációs és tűzfalszabályok megmaradnak.
 
 ### <a name="what-data-is-collected-by-the-azure-migrate-appliance"></a>Milyen adatokat gyűjtenek a Azure Migrate berendezés?
 
-A [Azure Migrate dokumentációjában](https://docs.microsoft.com/azure/migrate/migrate-appliance#collected-performance-data-vmware)megtekintheti az Azure Migrate készülék által összegyűjtött adatok részleteit.
+Tekintse át a készülék által gyűjtött adatokat a következőképpen:
+- [Teljesítményadatokat](migrate-appliance.md#collected-performance-data-vmware) és [metaadatokat](migrate-appliance.md#collected-metadata-vmware) a VMWare virtuális gépekhez.
+- [Teljesítményadatokat](migrate-appliance.md#collected-performance-data-hyper-v) és [metaadatokat](migrate-appliance.md#collected-metadata-hyper-v) a Hyper-V virtuális gépekhez.
 
-### <a name="is-there-any-performance-impact-on-the-analyzed-vmware-or-hyper-v-environment"></a>Hatással van-e az elemzett VMware vagy Hyper-V környezet teljesítményére?
+
+### <a name="does-appliance-analysis-impact-performance"></a>Befolyásolja a készülék elemzése a teljesítményt?
 
 A Azure Migrate berendezés a helyszíni gépeket folyamatosan a virtuális gép teljesítményadatait méri. Ez a profilkészítés szinte semmilyen hatással nincs a Hyper-V/ESXi-gazdagépekre vagy vCenter Serverra.
 
-### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Hol tárolódnak az összegyűjtött adatok, és mennyi ideig?
+### <a name="where-and-how-long-is-collected-data-stored"></a>Hol és mennyi ideig tárolja a rendszer az összegyűjtött adatokat?
 
-Az Azure Migrate készülék által gyűjtött adatokat az Azure-beli helyen tárolja, amelyet az áttelepítési projekt létrehozásakor választott ki. Az adattárolást a Microsoft-előfizetések biztonságosan tárolják, és a Azure Migrate-projekt törlésekor törlődnek.
+Az Azure Migrate készülék által gyűjtött adatokat az Azure-beli helyen tárolja, amelyet az áttelepítési projekt létrehozásakor választott ki. Az adattárolást a Microsoft-előfizetések biztonságosan tárolják, és törlődnek a Azure Migrate projekt törlésekor.
 
-A függőségi vizualizációk esetében, ha ügynököket telepít a virtuális gépekre, a függőségi ügynökök által gyűjtött adatokat az Egyesült Államokban tárolja az Azure-előfizetésben létrehozott Log Analytics munkaterületen. Ezek az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében. További információ: [függőségi vizualizáció](concepts-dependency-visualization.md).
+A függőségi vizualizációk esetében az összegyűjtött adatokat az Azure-előfizetésben létrehozott Log Analytics munkaterület Egyesült Államok tárolja. Ezek az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében. [További](concepts-dependency-visualization.md) információ a függőségi vizualizációról.
 
-### <a name="what-volume-of-data-is-uploaded-by-the-azure-migrate-appliance-during-continuous-profiling"></a>Milyen adatmennyiséget töltenek fel a Azure Migrate berendezés a folyamatos profilkészítés során?
+### <a name="what-volume-of-data-is-uploaded-during-continuous-profiling"></a>Milyen mennyiségű adattal töltődik fel a rendszer a folyamatos profilkészítés során?
 
-A Azure Migrate elküldett adatok mennyisége több paramétertől függ. A kötet értelmezéséhez: egy Azure Migrate-projekt 10 géppel (mindkettő egy lemezzel és egy hálózati adapterrel) körülbelül 50 MB-ot küld naponta. Ez az érték egy közelítés. A hálózati adapterek és lemezek adatpontjainak száma alapján változik. (A továbbított adatmennyiség növekedése nem lineáris, ha a gépek, hálózati adapterek vagy lemezek száma növekszik.)
+A Azure Migrate elküldett adatok mennyisége több paramétertől függ. Annak érdekében, hogy a kötet értelmet nyújtson, a 10 gépet tartalmazó Azure Migrate-projektek (amelyek mindegyike egy lemezzel és egy hálózati adapterrel) naponta 50 MB-ot küld. Ez az érték közelítő, és a hálózati adapterek és a lemezek adatpontjainak száma alapján változik. A továbbított adatmennyiség növekedése nem lineáris, ha a gépek, hálózati adapterek vagy lemezek száma növekszik.
 
 ### <a name="is-the-data-encrypted-at-rest-and-in-transit"></a>Titkosítva vannak-e az adatok a nyugalmi állapotban és az átvitel során?
 
-Igen, mindkettő. A metaadatokat a rendszer biztonságosan továbbítja a Azure Migrate szolgáltatásnak az interneten keresztül, HTTPS-kapcsolaton keresztül. A metaadatok egy [Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) adatbázisban és az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) -ban tárolódnak egy Microsoft-előfizetésben. A metaadatok titkosítva vannak a nyugalmi állapotban.
+Igen, mindkettő.
+- A metaadatokat a rendszer biztonságosan továbbítja a Azure Migrate szolgáltatásnak az interneten keresztül, HTTPS-kapcsolaton keresztül.
+- A metaadatok egy [Azure Cosmos adatbázis](../cosmos-db/database-encryption-at-rest.md) -adatbázisban és az [Azure Blob Storage](../storage/common/storage-service-encryption.md) -ban tárolódnak egy Microsoft-előfizetésben. A metaadatok titkosítva vannak a REST-ben.
+- A függőségek elemzéséhez használt adatforgalom is titkosítva van (biztonságos HTTPS). Ez az előfizetés egy Log Analytics munkaterületén van tárolva. Emellett a REST-titkosítás is titkosítva van.
 
-A függőségi ügynökök által gyűjtött adatok az átvitel során is titkosítva vannak (biztonságos HTTPS). Ez az előfizetés egy Log Analytics munkaterületén van tárolva. Emellett a szolgáltatás inaktív állapotban is titkosítva van.
+### <a name="how-does-the-appliance-communicate-with-vcenter-server-and-azure-migrate"></a>Hogyan kommunikál a készülék a vCenter Server és Azure Migrate?
 
-### <a name="how-does-the-azure-migrate-appliance-communicate-with-vcenter-server-and-the-azure-migrate-service"></a>Hogyan kommunikál a Azure Migrate készülék a vCenter Server és a Azure Migrate szolgáltatással?
-
-A berendezés a berendezés beállításakor megadott hitelesítő adatok használatával csatlakozik a vCenter Serverhoz (443-es port). A VMware PowerCLI használatával kérdezi le vCenter Server, hogy metaadatokat gyűjtsön a vCenter Server által felügyelt virtuális gépekről. Konfigurációs adatokat gyűjt a virtuális gépekről (magok, memória, lemezek, hálózati adapterek stb.), valamint az összes virtuális gép teljesítménybeli előzményeiről az elmúlt hónapban. Ezután az összegyűjtött metaadatokat a rendszer Azure Migrate kiszolgáló-felmérésre (az interneten keresztül HTTPS-kapcsolaton keresztül) elküldi az értékeléshez.
+1. A berendezés a berendezés beállításakor megadott hitelesítő adatok használatával csatlakozik a vCenter Serverhoz (443-es port).
+2. A készülék VMware PowerCLI-t használ a vCenter Server lekérdezéséhez, hogy metaadatokat gyűjtsön a vCenter Server által felügyelt virtuális gépekről. Konfigurációs adatokat gyűjt a virtuális gépekről (magok, memória, lemezek, hálózati adapterek) és az összes virtuális gép teljesítménybeli előzményeiről az elmúlt hónapban.
+3. Ezután az összegyűjtött metaadatokat a rendszer a Azure Migrate: Server Assessment (az interneten keresztül HTTPS-kapcsolaton keresztül) értékelés céljából elküldi.
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-server-instances"></a>Több vCenter Server példányhoz is csatlakozhatok ugyanahhoz a berendezéshez?
 
-Nem. A készülék és a vCenter Server között egy-az-egyhez típusú hozzárendelés található. Ha több vCenter Server példányon kell felderíteni a virtuális gépeket, több berendezést kell telepítenie.
+Nem. A készülék és a vCenter Server között egy-az-egyhez típusú hozzárendelés található. Több vCenter Server példányon futó virtuális gépek felderítéséhez több berendezést kell telepítenie.
 
 
-### <a name="i-changed-my-machine-size-can-i-run-the-assessment-again"></a>Módosítottam a gép méretét. Futtathatom újra az értékelést?
+### <a name="machine-size-changed-can-i-run-the-assessment-again"></a>A gép mérete megváltozott. Futtathatom újra az értékelést?
 
 A Azure Migrate berendezés folyamatosan gyűjt információkat a helyszíni környezetről. Az értékelés azonban a helyszíni virtuális gépekre vonatkozó időponthoz kapcsolódó pillanatkép. Ha módosítja egy olyan virtuális gép beállításait, amelyet fel szeretne mérni, használja az újraszámítási lehetőséget az értékelés frissítéséhez a legújabb módosításokkal.
 
-### <a name="how-can-i-perform-discovery-in-a-multitenant-environment-in-azure-migrate-server-assessment"></a>Hogyan végezhető el a felderítés több-bérlős környezetben Azure Migrate Server Assessment szolgáltatásban?
+### <a name="how-can-i-perform-discovery-in-a-multitenant-environment"></a>Hogyan végezhető el a felderítés több-bérlős környezetben?
 
-A VMware esetében, ha olyan környezettel rendelkezik, amely a bérlők között van elosztva, és nem szeretné felderíteni egy másik bérlő előfizetésében lévő virtuális gépeket, hozzon létre vCenter Server hitelesítő adatokat, amelyek csak a felderíteni kívánt virtuális gépekhez férhetnek hozzá. Ezután használja ezeket a hitelesítő adatokat, amikor elindítja a felderítést a Azure Migrate berendezésben.
+- A VMware esetében, ha a környezet a bérlők között van megosztva, és nem szeretné felderíteni egy másik bérlő előfizetésében lévő egyik bérlő virtuális gépeket, hozzon létre vCenter Server hitelesítő adatokat, amelyek csak a felderíteni kívánt virtuális gépeket érhetik el. Ezután használja ezeket a hitelesítő adatokat, amikor elindítja a felderítést a Azure Migrate berendezésben.
+- A Hyper-V esetében a felderítés a Hyper-V gazdagép hitelesítő adatait használja. Ha a virtuális gépek ugyanazt a Hyper-V-gazdagépet használják, jelenleg nincs lehetőség a felderítés elválasztására.  
 
-A Hyper-V esetében a felderítés a Hyper-V gazdagép hitelesítő adatait használja. Ha a virtuális gépek ugyanazt a Hyper-V-gazdagépet használják, jelenleg nincs lehetőség a felderítés elválasztására.  
-
-### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>Hány virtuális gépet lehet felderíteni egyetlen áttelepítési berendezéssel?
+### <a name="how-many-vms-can-i-discover-with-a-single-appliance"></a>Hány virtuális gépet lehet felderíteni egyetlen készülékkel?
 
 Akár 10 000 VMware virtuális gépet és akár 5 000 Hyper-V virtuális gépet is felfedezhet egyetlen áttelepítési berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, Ismerje meg, hogyan méretezheti a [Hyper-V](scale-hyper-v-assessment.md) és a [VMware](scale-vmware-assessment.md) értékelését.
 
 ### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Törölhetem a Azure Migrate készüléket a projektből?
-A készülék jelenleg nem törlődik a projektből. A készülék törlésének egyetlen módja, ha törli a Azure Migrate projektet tartalmazó erőforráscsoportot, amely a berendezéshez van társítva, de más regisztrált berendezéseket is töröl, a felderített leltárt, az értékeléseket és az összes többi Azure-összetevőt. az erőforráscsoport projekthez van társítva.
+
+A berendezés jelenleg a projektből való törlése nem támogatott.
+
+- A készülék törlésének egyetlen módja a berendezéshez társított Azure Migrate projektet tartalmazó erőforráscsoport törlése.
+- Az erőforráscsoport törlése azonban törli a többi regisztrált készüléket, a felderített leltárt, az értékeléseket és az erőforráscsoport projekthez társított összes többi Azure-összetevőt is.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate kiszolgáló értékelése
 
-### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>A Azure Migrate Server Assessment támogatja a fizikai kiszolgálók értékelését?
 
-Nem, Azure Migrate jelenleg nem támogatja a fizikai kiszolgálók értékelését.
-
-### <a name="does-azure-migrate-need-vcenter-server-to-perform-discovery-in-a-vmware-environment"></a>Szükség van Azure Migrate vCenter Server a felderítést a VMware-környezetben?
+### <a name="does-azure-migrate-need-vcenter-server-for-vmware-vm-discovery"></a>A VMWare virtuális gépek felderítéséhez Azure Migrate szükséges vCenter Server?
 
 Igen, Azure Migrate a felderítést a VMware-környezetben vCenter Server kell végrehajtania. Nem támogatja az vCenter Server által nem felügyelt ESXi-gazdagépek felderítését.
 
 ### <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Mi a különbség a Azure Migrate Server Assessment és a MAP Toolkit között?
 
-A Azure Migrate Server Assessment áttelepítési értékelést biztosít az áttelepítés készültségének biztosításához, valamint az Azure-ba való áttelepítéshez szükséges munkaterhelések kiértékeléséhez. A [Microsoft felmérési és tervezési (MAP) eszközkészlete](https://www.microsoft.com/download/details.aspx?id=7826) más feladatokkal, például a Windows-ügyfél és a kiszolgálói operációs rendszerek újabb verzióinak, illetve a szoftverek használatának nyomon követésének megtervezésében nyújt segítséget. Ilyen esetekben folytassa a MAP Toolkit használatát.
+A kiszolgáló értékelése értékelést nyújt az áttelepítésre való felkészüléshez és az Azure-ba való áttelepítéshez szükséges munkaterhelések kiértékeléséhez. A [Microsoft felmérési és tervezési (MAP) eszközkészlete](https://www.microsoft.com/download/details.aspx?id=7826) más feladatokkal is segít, beleértve a Windows ügyfél/kiszolgáló operációs rendszerek újabb verzióinak áttelepítésének megtervezését és a szoftverek használatának nyomon követését. Ezekben a forgatókönyvekben folytassa a MAP Toolkit használatát.
 
-### <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-azure-site-recovery-deployment-planner"></a>Mi a különbség a Azure Migrate Server Assessment és a Azure Site Recovery Deployment Planner között?
+### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Mi a különbség a kiszolgálók értékelése és a Site Recovery Deployment Planner között?
 
-Azure Migrate Server Assessment egy áttelepítési tervezési eszköz. A Azure Site Recovery Deployment Planner vész-helyreállítási tervezési eszköz.
+A kiszolgáló értékelése egy áttelepítési tervező eszköz. A Site Recovery Deployment Planner vész-helyreállítási tervezési eszköz. 
 
-**Áttelepítés VMware/Hyper-V-ről az Azure-** ba: Ha a helyszíni kiszolgálókat az Azure-ba szeretné áttelepíteni, használja a Azure Migrate kiszolgáló-értékelést az áttelepítés megtervezéséhez. Felméri a helyszíni számítási feladatokat, és útmutatást, megállapításokat és eszközöket biztosít a kiszolgálók Azure-ba való migrálása érdekében. Miután elkészült az áttelepítési tervvel, használhat olyan eszközöket, mint a Azure Migrate-kiszolgáló áttelepítése a gépek Azure-ba való áttelepítéséhez.
+- Helyszíni **áttelepítés megtervezése az Azure-** ba: Ha a helyszíni kiszolgálókat az Azure-ba szeretné áttelepíteni, használja az áttelepítés megtervezésére szolgáló kiszolgáló-értékelést. Felméri a helyszíni számítási feladatokat, és útmutatást és eszközöket biztosít a Migrálás megkönnyítéséhez. Az áttelepítési terv betartása után az eszközöket, például Azure Migrate kiszolgáló áttelepítését is használhatja a gépek Azure-ba való áttelepítéséhez.
+- Vész- **helyreállítási terv az Azure**-ba: Ha a helyszíni rendszerről az Azure-ba történő vész-helyreállítást tervezi a site Recovery használatával, használja a site Recovery Deployment Planner. A Deployment Planner a helyi környezet alapos, Site Recovery-specifikus értékelését biztosítja a vész-helyreállítási célra. Javaslatokat nyújt a vész-helyreállítási megoldásokról, például a replikálásról és a feladatátvételről.
 
-Vész- **helyreállítás a VMware/Hyper-V-ről az Azure-** ba: Az Azure-ban Site Recoveryon keresztüli vész-helyreállításhoz használja a Site Recovery Deployment Planner a tervezéshez. Site Recovery Deployment Planner a helyszíni környezet alapos, Site Recovery-specifikus értékelését végzi el. Ajánlásokat tesz Site Recovery számára a sikeres vészhelyzeti műveletekhez, például a virtuális gépek replikálásához és feladatátvételéhez.
+### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Azure Migrate becsült költségeket a Nagyvállalati Szerződés (EA) programhoz?
 
-### <a name="does-azure-migrate-support-cost-estimation-for-the-enterprise-agreement-ea-program"></a>Azure Migrate támogatja a Nagyvállalati Szerződés (EA) programra vonatkozó költségbecslés összegét?
-
-A Azure Migrate jelenleg nem támogatja a [nagyvállalati szerződés programhoz](https://azure.microsoft.com/offers/enterprise-agreement-support/)tartozó költségbecslés használatát. A megkerülő megoldás az **ajánlat** utólagos **elszámolású** módja, és az értékelési tulajdonságok **kedvezmény** mezőjében manuálisan megadhatja az engedmény százalékos arányát (az előfizetésre érvényes):
+Azure Migrate Server Assessment jelenleg nem támogatja a [nagyvállalati szerződés programhoz](https://azure.microsoft.com/offers/enterprise-agreement-support/)tartozó költségbecslés összegét. Megkerülő megoldásként az értékelés létrehozásakor megadhatja az **utólagos** elszámolású **ajánlatot**, és manuálisan hozzáadhatja az engedmény százalékát (az előfizetésre érvényes) az értékelés tulajdonságaiban foglalt **kedvezményként** :
 
   ![Értékelés tulajdonságai](./media/resources-faq/discount.png)
 
-### <a name="whats-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Mi a különbség a helyszíni méretezés és a teljesítmény-alapú méretezés között?
+### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Mi a különbség a helyszíni és a teljesítmény-alapú méretezés között?
 
-A helyszíni méretezéssel a Azure Migrate nem veszi figyelembe a virtuális gépek teljesítményadatait. A virtuális gépeket a helyszíni konfiguráció alapján méretezi. A teljesítmény-alapú méretezéssel a méretezés a kihasználtsági adatain alapul.
+Helyszíni méretezés esetén a Azure Migrate nem veszi figyelembe a virtuális gépek teljesítményadatait az értékeléshez. A helyszíni konfiguráció alapján felméri a virtuális gépek méretét. A teljesítmény-alapú méretezéssel a méretezés a kihasználtsági adatain alapul.
 
-Vegyünk például egy olyan helyszíni virtuális gépet, amely 4 maggal és 8 GB memóriával rendelkezik, 50%-os CPU-kihasználtság és 50% memória kihasználtsága esetén. Ehhez a virtuális géphez a helyszíni méretezés azt ajánlja, hogy egy Azure-beli virtuális gép SKU-jának négy maggal és 8 GB memóriával rendelkezik. A teljesítmény-alapú méretezés olyan virtuálisgép-SKU-t javasol, amely két maggal és 4 GB memóriával rendelkezik, mert a kihasználtság százalékos arányát veszi figyelembe.
+- Ha például egy helyszíni virtuális gép 4 maggal és 8 GB memóriával rendelkezik, 50%-os CPU-kihasználtsággal és 50%-os memória-kihasználtsággal, a következők történnek:
+    - A helyszíni méretezés olyan Azure VM SKU-t javasol, amely négy maggal és 8 GB memóriával rendelkezik.
+    - A teljesítmény-alapú méretezés olyan virtuálisgép-SKU-t javasol, amely két maggal és 4 GB memóriával rendelkezik, mert a kihasználtság százalékos arányát veszi figyelembe.
 
-Hasonlóképpen, a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól. Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus automatikus, Azure Migrate veszi figyelembe a lemez IOPS és átviteli értékeit, amikor azonosítja a céllemez típusát (standard vagy prémium).
+- Hasonlóképpen, a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól.
+    - Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus automatikus, Azure Migrate a lemez IOPS és átviteli értékeit veszi figyelembe, amikor azonosítja a céllemez típusát (standard vagy prémium).
+    - Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus prémium, Azure Migrate a helyszíni lemez méretétől függően a prémium szintű lemezes SKU-t javasolja. Ugyanez a logikát alkalmazza a lemez méretezésére, amikor a méretezés a helyszínen történik, és a tárolási típus a standard vagy a prémium.
 
-Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus prémium, Azure Migrate a prémium szintű lemezt javasolja. A prémium szintű lemez SKU a helyszíni lemez mérete alapján van kiválasztva. Ugyanez a logikát használja a lemezek méretezésére, ha a méretezési feltétel a helyszíni méretezés, és a tárolási típus a standard vagy a prémium.
-
-### <a name="what-impact-does-performance-history-and-utilization-percentile-have-on-size-recommendations"></a>Milyen hatással van a teljesítmény-előzmények és a kihasználtsági arány a méretre vonatkozó javaslatokkal?
+### <a name="does-performance-history-and-utilization-percentile-impact-size-recommendations"></a>A teljesítmény-előzmények és a kihasználtság százalékos arányának hatása a javaslatok?
 
 Ez a tulajdonságok csak a teljesítményalapú méretezés esetén számítanak.
 
-Azure Migrate gyűjti a helyszíni gépek teljesítményének előzményeit, és azt használja a virtuális gép méretének és a lemez típusának az Azure-ban való használatát.
+- Azure Migrate gyűjti a helyszíni gépek teljesítményének előzményeit, és azt használja a virtuális gép méretének és a lemez típusának az Azure-ban való használatát.
+- A berendezés folyamatosan a helyszíni környezetet, a valós idejű kihasználtsági adatok gyűjtését végzi 20 másodpercenként.
+- A készülék összesíti a 20 másodperces mintákat, és 15 percenként létrehoz egyetlen adatpontot.
+- Az adatpont létrehozásához a berendezés a 20 másodperces mintákból kiválasztja a csúcsérték értékét.
+- A készülék elküldi ezt az adatpontot az Azure-nak.
 
-A készülék folyamatosan a helyszíni környezetet gyűjti a valós idejű kihasználtsági adatok gyűjtésére 20 másodpercenként. A készülék összesíti a 20 másodperces mintákat, és minden 15 percenként létrehoz egyetlen adatpontot. Az adatpont létrehozásához a berendezés a 20 másodperces mintákból kiválasztja a csúcsérték értékét. A készülék elküldi ezt az adatpontot az Azure-nak.
+Amikor értékelést hoz létre az Azure-ban, a teljesítmény időtartama és a teljesítményi előzmények percentilis értéke alapján Azure Migrate kiszámítja a tényleges kihasználtság értékét, és azt használja a méretezéshez.
 
-Ha az Azure-ban hoz létre értékelést (a teljesítmény időtartama és a teljesítményi előzmények percentilis értéke alapján), Azure Migrate kiszámítja a tényleges kihasználtság értékét, és azt használja a méretezéshez.
+- Ha például egy napra állítja be a teljesítmény időtartamát, a percentilis értékét pedig 95 percentilis értékre, Azure Migrate rendezi a gyűjtő által az elmúlt napra vonatkozóan a növekvő sorrendben eljuttatott 15 perces mintavételi pontokat, és a 95. percentilis értékét a hatályos értékre választja. kihasználtsága.
+- A 95. percentilis értékének használata esetén a rendszer figyelmen kívül hagyja a kiugró értékeket. A kiugró értékek a esetek 99% percentilis használata esetén szerepelhetnek. Ha ki szeretné választani az időszak maximális kihasználtságát anélkül, hogy a kiugró értékek hiányoznak, válassza ki a esetek 99% percentilis értéket.
 
-Tegyük fel például, hogy a teljesítmény időtartamát egy napra és a percentilis értékét 95 percentilis értékre állítja. Azure Migrate rendezi a gyűjtő által az elmúlt nap során eljuttatott 15 perces mintát növekvő sorrendbe, és a 95. percentilis értékét a tényleges kihasználtság értékre választja.
+## <a name="server-assessment---dependency-visualization"></a>Kiszolgáló értékelése – függőségi vizualizáció
 
-A 95. percentilis értéke biztosítja a kiugró értékek figyelmen kívül hagyásával. A kiugró értékek a esetek 99% percentilis használata esetén szerepelhetnek. Ha ki szeretné választani az időszak maximális kihasználtságát, és nem szeretne kiugró értékeket kihagyni, válassza ki a esetek 99% percentilis értéket.
 
 ### <a name="what-is-dependency-visualization"></a>Mi a függőségi vizualizáció?
 
-A függőségek vizualizációja lehetővé teszi, hogy a nagyobb megbízhatósággal rendelkező virtuális gépek csoportjait mérje fel áttelepítésre. Az értékelés futtatása előtt ellenőrzi a gépek függőségeit. A függőségi vizualizáció segít biztosítani, hogy a váratlan kimaradások elkerülése érdekében ne maradjon hátra az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor-naplók Service Map megoldását használja.
+A függőségi vizualizáció használatával felmérhetővé teheti a virtuális gépek csoportjait a nagyobb megbízhatóság érdekében. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Ezzel biztosítható, hogy semmi ne maradjon hátra, így elkerülhető a váratlan kimaradások elkerülése az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > A függőségi vizualizáció nem érhető el Azure Governmentban.
 
 ### <a name="do-i-need-to-pay-to-use-dependency-visualization"></a>Fizetnem kell a függőségi vizualizáció használatához?
-
-Nem. További információ: [Azure Migrate díjszabása](https://azure.microsoft.com/pricing/details/azure-migrate/).
+Nem. [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Telepíteni kell bármit a függőségi vizualizációhoz?
 
@@ -198,11 +182,11 @@ Ezek az ügynökök csak akkor szükségesek, ha függőségi vizualizációt ha
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Használhatok egy meglévő munkaterületet a függőségi vizualizációhoz?
 
-Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. További információ: "hogyan működik ez a funkció" a [függőségi vizualizációban](concepts-dependency-visualization.md#how-does-it-work) .
+Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. [Részletek](concepts-dependency-visualization.md#how-does-it-work).
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Exportálhatók a függőségi vizualizációs jelentés?
 
-Nem, a függőségi vizualizációt nem lehet exportálni. Mivel azonban a Azure Migrate Service Map használ a függőségi vizualizációhoz, a [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) a függőségek JSON formátumban való lekéréséhez használhatja.
+Nem, a függőségi vizualizációt nem lehet exportálni. A Azure Migrate azonban Service Mapt használ, és az [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) használatával kérheti le a függőségeket JSON formátumban.
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Hogyan automatizálható a Microsoft monitoring Agent (MMA) és a függőségi ügynök telepítése?
 
@@ -210,26 +194,25 @@ Ezzel [a parancsfájllal telepítheti a függőségi ügynököt](../azure-monit
 
 A parancsfájlok mellett olyan központi telepítési eszközöket is használhat, mint a System Center Configuration Manager és a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) az ügynökök üzembe helyezéséhez.
 
+
 ### <a name="what-operating-systems-are-supported-by-mma"></a>Milyen operációs rendszereket támogat az MMA?
 
 - Tekintse meg az [MMA által támogatott Windows operációs rendszerek](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)listáját.
 - Megtekintheti az [MMA által támogatott Linux operációs rendszerek](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)listáját.
 
-### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Milyen operációs rendszereket támogat a függőségi ügynök?
+### <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>Megjeleníthető-e a függőségek több mint egy óráig?
+Nem. A függőségeket akár egy óráig is megjelenítheti. Visszatérhet egy adott dátumhoz az előzményekben, egy hónapra visszamenőleg, de a vizualizációk maximális időtartama egy óra. Használhatja például az időtartamot a függőségi térképen a tegnapi függőségek megjelenítéséhez, de csak egyórás időszakra vonatkozóan tekintheti meg a függőségeket. A [függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
 
-A [Azure monitor for VMS által támogatott Windows-és Linux-operációs rendszerek](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)listájának megtekintése.
-
-### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Megjeleníthetem a függőségeket Azure Migrateban több mint egy óráig?
-Nem. A függőségeket akár egy óráig is megjelenítheti. Visszatérhet egy adott dátumhoz az előzményekben, egy hónapra visszamenőleg, de a vizualizációk maximális időtartama egy óra. Használhatja például az időtartamot a függőségi térképen a tegnapi függőségek megtekintéséhez, de csak egyórás időszakra lehet megtekinteni. A [függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
-
-### <a name="can-i-use-dependency-visualization-for-groups-that-contain-more-than-10-vms"></a>Használhatok függőségi vizualizációt a több mint 10 virtuális gépet tartalmazó csoportok esetén?
-Megjelenítheti a legfeljebb 10 virtuális gépet tartalmazó [csoportok függőségeit](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
+### <a name="can-i-use-dependency-visualization-for-groups-of-more-than-10-vms"></a>Használhatom a függőségi vizualizációt több mint 10 virtuális gépet használó csoportok esetében?
+A legfeljebb 10 virtuális gépet tartalmazó csoportok [függőségeit megjelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
 
 ## <a name="azure-migrate-server-migration"></a>Azure Migrate kiszolgáló áttelepítése
 
-### <a name="whats-the-difference-between-azure-migrate-server-migration-and-azure-site-recovery"></a>Mi a különbség a Azure Migrate kiszolgáló áttelepítése és Azure Site Recovery között?
+### <a name="whats-the-difference-between-azure-migrate-server-migration-and-site-recovery"></a>Mi a különbség a Azure Migrate kiszolgáló áttelepítése és Site Recovery között?
 
-Azure Migrate a kiszolgáló áttelepítése a VMware virtuális gépek ügynök-alapú áttelepítéséhez, a Hyper-V virtuális gépek áttelepítéséhez és a fizikai kiszolgálók Azure-ba való áttelepítéséhez a Site Recovery replikációs motort használja. A VMware virtuális gépek áttelepítésére szolgáló ügynök nélküli beállítás natív módon van beépítve a kiszolgáló áttelepítésére.
+- A helyszíni VMware virtuális gépek ügynök nélküli áttelepítése Azure Migrate kiszolgáló áttelepítésen belül natív.
+- A Hyper-V virtuális gépek, a fizikai kiszolgálók és az ügynökön alapuló VMware virtuális gépek áttelepítéséhez Azure Migrate kiszolgáló áttelepítése a Azure Site Recovery replikációs motort használja.
+
 
 ## <a name="next-steps"></a>További lépések
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

@@ -1,7 +1,7 @@
 ---
 title: Kora előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmaz kora előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk az előre elkészített entitások adatait tartalmazza Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,34 +9,69 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2a49cf406dea045302f84e95318eca1557fc3e22
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677724"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465104"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás kora előre összeépített entitása
-Az előre összeállított kora entitás age értékét egyaránt numerikusan és tekintetében nap, hét, hónap és év rögzíti. Az entitás már be van tanítva, mert nem kell kora, az alkalmazás leképezések tartalmazó példa beszédmódok hozzáadása. Kor entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
+Az előre elkészített életkorú entitás számszerűen és napokon, heteken, hónapokban és években is rögzíti a kor értékét. Mivel ez az entitás már be van tanítva, nem kell felvennie az hosszúságú kimondott szöveg tartalmazó példát. Az Age entitást [számos kulturális](luis-reference-prebuilt-entities.md)környezet támogatja. 
 
-## <a name="types-of-age"></a>Kor típusai
+## <a name="types-of-age"></a>Típusú életkor
 A kor kezelése a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) adattárból történik
 
-## <a name="resolution-for-prebuilt-age-entity"></a>Előre összeállított kora entitás feloldása
+## <a name="resolution-for-prebuilt-age-entity"></a>Előre elkészített életkorú entitás feloldása
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
-Az alábbi példa bemutatja a feloldása a **builtin.age** entitás.
+
+#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+
+A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 ```json
-{
-  "query": "A 90 day old utilities bill is quite late.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8236133
-  },
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+A következő JSON a `verbose` paraméterrel van beállítva `true`:
+
+```json
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ],
+    "$instance": {
+        "age": [
+            {
+                "type": "builtin.age",
+                "text": "90 day old",
+                "startIndex": 2,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor"
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+
+A következő példa a **beépített. Age** entitás feloldását mutatja be.
+
+```json
   "entities": [
     {
       "entity": "90 day old",
@@ -48,78 +83,11 @@ Az alábbi példa bemutatja a feloldása a **builtin.age** entitás.
         "value": "90"
       }
     }
-  ]
-}
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
-
-A következő JSON a `verbose` paramétert állítja be a `false` értékre:
-
-```json
-{
-    "query": "A 90 day old utilities bill is quite late.",
-    "prediction": {
-        "normalizedQuery": "a 90 day old utilities bill is quite late.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.558252
-            }
-        },
-        "entities": {
-            "age": [
-                {
-                    "number": 90,
-                    "unit": "Day"
-                }
-            ]
-        }
-    }
-}
-```
-
-A következő JSON a `verbose` paramétert állítja be a `true` értékre:
-
-```json
-{
-    "query": "A 90 day old utilities bill is quite late.",
-    "prediction": {
-        "normalizedQuery": "a 90 day old utilities bill is quite late.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.558252
-            }
-        },
-        "entities": {
-            "age": [
-                {
-                    "number": 90,
-                    "unit": "Day"
-                }
-            ],
-            "$instance": {
-                "age": [
-                    {
-                        "type": "builtin.age",
-                        "text": "90 day old",
-                        "startIndex": 2,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [pénznem](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), és [dimenzió](luis-reference-prebuilt-dimension.md) entitásokat. 
+Tudnivalók a [pénznemről](luis-reference-prebuilt-currency.md), a [datetimeV2](luis-reference-prebuilt-datetimev2.md)és a [dimenzió](luis-reference-prebuilt-dimension.md) entitásokról. 

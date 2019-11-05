@@ -9,18 +9,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485389"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
 
 Ez az útmutató bemutatja, hogyan végezheti el számos gyakori adatelemzési feladatot a Linux Data Science Virtual Machine (DSVM) használatával. A Linux DSVM az Azure-ban elérhető virtuálisgép-rendszerkép, amely az adatok elemzéséhez és a gépi tanuláshoz gyakran használt eszközök gyűjteményével van előtelepítve. A legfontosabb szoftver-összetevők a [linuxos Data Science Virtual Machine](linux-dsvm-intro.md)kiépítésében vannak részletezve. A DSVM-rendszerkép megkönnyíti az adatelemzés percek alatt történő megkezdését anélkül, hogy mindegyik eszközt külön kell telepítenie és konfigurálnia. Ha szükséges, egyszerűen méretezheti a DSVM, és leállíthatja, ha nincs használatban. A DSVM-erőforrás rugalmas és költséghatékony.
 
-Az ebben az útmutatóban bemutatott adatelemzési feladatok követik a [Mi a csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) lépéseit? A csoportos adatelemzési folyamat az adatelemzés szisztematikus megközelítése, amely segítséget nyújt az adatszakértőknek a csapatok számára az intelligens alkalmazások létrehozásának életciklusa során. Az adatelemzési folyamat is biztosít egy iteratív keretrendszer adatelemzési módszer, amely egy egyéni követheti.
+Az ebben az útmutatóban bemutatott adatelemzési feladatok követik a [Mi a csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) lépéseit? A csoportos adatelemzési folyamat az adatelemzés szisztematikus megközelítése, amely segítséget nyújt az adatszakértőknek a csapatok számára az intelligens alkalmazások létrehozásának életciklusa során. Az adatelemzési folyamat olyan iterációs keretrendszert is biztosít az adatelemzéshez, amelyet egy személy követhet.
 
 Ebben az útmutatóban elemezzük a [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) adatkészletet. A Spambase a levélszemét vagy a sonka (nem levélszemét) jelölésű e-mailek halmaza. A Spambase az e-mailek tartalmával kapcsolatos statisztikát is tartalmaz. A statisztikáról az útmutató későbbi részében olvashat.
 
@@ -31,10 +31,10 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
 * A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` `about:config`jelölőt. [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). `mousewheel.enable_pixel_scrolling` A`False`beállítást is érdemes megfontolni. [További információk](https://support.mozilla.org/questions/981140).
-* **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://studio.azureml.net/). Kipróbálhatja ingyenesen, hogy segítsen az első lépésekben.
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox-böngészőjében kapcsolja be a `gfx.xrender.enabled` jelzőt `about:config`. [Részletek](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Érdemes megfontolni a `False``mousewheel.enable_pixel_scrolling` beállítását is. [Részletek](https://support.mozilla.org/questions/981140).
+* **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://azure.microsoft.com/free/services/machine-learning//).
 
-## <a name="download-the-spambase-dataset"></a>Töltse le a spambase adatkészlet
+## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
 
 A [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) adatkészlet egy viszonylag kis mennyiségű adat, amely 4 601-példákat tartalmaz. Az adatkészlet kényelmes méretet jelent a DSVM egyes főbb funkcióinak bemutatására, mivel az erőforrásokra vonatkozó követelmények szerények maradnak.
 
@@ -47,7 +47,7 @@ Az adatletöltéshez nyisson meg egy terminál ablakot, majd futtassa a követke
 
     wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-A letöltött fájlnak nincs fejlécsora. Hozzon létre egy másik fájlt, amelynek van fejléce. Hozzon létre egy fájlt a megfelelő fejlécek a következő parancs futtatásával:
+A letöltött fájlnak nincs fejlécsora. Hozzon létre egy másik fájlt, amelynek van fejléce. Futtassa ezt a parancsot a megfelelő fejlécekkel rendelkező fájl létrehozásához:
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
@@ -58,12 +58,12 @@ Ezután fűzze össze a két fájlt:
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint a **Word\_freq\_ *Word*** az e-mailben *szereplő szavak százalékos*arányát jelölik. Ha például a **Word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
-* Oszlopok, például a **char\_freq\_ *karakter*** az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
-* **tőke\_futtatása\_hossza\_leghosszabb** a leghosszabb hosszúsága nagybetűk sorozata.
-* **tőke\_futtatása\_hossza\_átlagos** átlagos hosszúsága nagybetűk összes sorrendje.
-* **tőke\_futtatása\_hossza\_teljes** teljes hosszúsága nagybetűk összes sorrendje.
-* **Levélszemét** azt jelzi, hogy az e-mailben tekintették levélszemét, vagy nem (1 = levélszemét, 0 = nem levélszemét).
+* Az olyan oszlopok, mint például a **word\_a freq\_* Word*** az e-mailben szereplő szavak százalékos arányát *jelzi.* Ha például a **word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
+* Oszlopok, például **char\_freq\_* char*** az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
+* a nagybetűs **\_futtatási\_hossza\_leghosszabb** a nagybetűk sorozatának leghosszabb hosszúsága.
+* a **capital\_futtatási\_hossza\_átlag** a nagybetűk összes sorozatának átlagos hossza.
+* **\_futtatási\_hossza\_összesen** érték a nagybetűk összes sorozatának teljes hosszát adja meg.
+* a **Levélszemét** azt jelzi, hogy az e-mail levélszemétnek minősül-e (1 = levélszemét, 0 = nem levélszemét).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Az adatkészlet megismerése az R Open használatával
 
@@ -80,17 +80,17 @@ Az adatimportálás és a környezet beállítása:
     data <- read.csv("spambaseHeaders.data")
     set.seed(123)
 
-Minden oszlop összefoglaló statisztikája megtekintése:
+Az egyes oszlopokra vonatkozó összegző statisztika megtekintése:
 
     summary(data)
 
-Az adatok különböző megjelenítéséhez:
+Az egyes adatnézetek esetében:
 
     str(data)
 
 Ez a nézet az egyes változók típusát és az adatkészlet első néhány értékét jeleníti meg.
 
-A **levélszemét** oszlop olvasta egész számként, de ez valójában egy kategorikus változó (vagy tényező). A típus megadása:
+A **Levélszemét** oszlop egész számként lett beolvasva, de valójában egy kategorikus változó (vagy faktor). A típusának beállítása:
 
     data$spam <- as.factor(data$spam)
 
@@ -143,21 +143,21 @@ Az eredmény a következő:
 
 ![A létrehozott döntési fa diagramja](./media/linux-dsvm-walkthrough/decision-tree.png)
 
-Annak megállapításához, hogy arról, hogy az a gyakorlókészlethez hajt végre, a következő kód használatával:
+A következő kóddal állapíthatja meg, hogy milyen jól teljesíti a betanítási készletet:
 
     trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
     t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Annak megállapítása, hogy arról, hogy a teszt esetén hajtja végre:
+Annak meghatározása, hogy milyen jól hajtja végre a tesztelési készleten:
 
     testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
     t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Próbáljuk meg még egy véletlenszerű erdőmodell. A véletlenszerű erdők számos döntési fát vezetnek be, és olyan osztályt mutatnak be, amely az összes egyéni döntési fában lévő besorolások módját képezi. Nagyobb teljesítményű gépi tanulási megközelítést biztosítanak, mivel a döntési fa modelljének overfit egy képzési adathalmazt.
+Próbáljon ki egy véletlenszerű erdő modellt is. A véletlenszerű erdők számos döntési fát vezetnek be, és olyan osztályt mutatnak be, amely az összes egyéni döntési fában lévő besorolások módját képezi. Nagyobb teljesítményű gépi tanulási megközelítést biztosítanak, mivel a döntési fa modelljének overfit egy képzési adathalmazt.
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -172,11 +172,11 @@ Próbáljuk meg még egy véletlenszerű erdőmodell. A véletlenszerű erdők s
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Modell üzembe helyezése Azure Machine Learning Studio
+## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Modell üzembe helyezése Azure Machine Learning Studio (klasszikus)
 
-A [Azure Machine learning Studio](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amely megkönnyíti a prediktív elemzési modellek elkészítését és üzembe helyezését. A Azure Machine Learning Studio egy szép funkciója, hogy bármely R-funkciót webszolgáltatásként tehet közzé. A Azure Machine Learning Studio R-csomag megkönnyíti az üzembe helyezést az R-munkamenetből, közvetlenül a DSVM.
+A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amely megkönnyíti a prediktív elemzési modellek kiépítését és üzembe helyezését. A Azure Machine Learning Studio klasszikus verziójának szép funkciója, hogy bármilyen R-funkciót webszolgáltatásként tehet közzé. A Azure Machine Learning Studio R-csomag megkönnyíti az üzembe helyezést az R-munkamenetből, közvetlenül a DSVM.
 
-Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentkezzen be Azure Machine Learning Studioba. A munkaterület-Azonosítót és a egy engedélyezési jogkivonatot jelentkezzen be van szüksége. Ezeknek az értékeknek a megkereséséhez és a Azure Machine Learning változók inicializálásához hajtsa végre a következő lépéseket:
+Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentkezzen be Azure Machine Learning Studio (klasszikus) webhelyre. A bejelentkezéshez szüksége lesz a munkaterület-AZONOSÍTÓra és egy engedélyezési jogkivonatra. Ezeknek az értékeknek a megkereséséhez és a Azure Machine Learning változók inicializálásához hajtsa végre a következő lépéseket:
 
 1. A bal oldali menüben válassza a **Beállítások**lehetőséget. Jegyezze fel a **munkaterület azonosítójának**értékét.
 
@@ -192,14 +192,14 @@ Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentke
         wsAuth = "<authorization-token>"
         wsID = "<workspace-id>"
 
-1. Hozzunk egyszerűsíteni a modellt, hogy ez a bemutató könnyebben. Válassza ki a három változót a gyökérhez legközelebb lévő döntési fában, és hozzon létre egy új fát úgy, hogy csak a három változót használja:
+1. Egyszerűbbé teheti a modellt, hogy könnyebben megvalósítsa ezt a bemutatót. Válassza ki a három változót a gyökérhez legközelebb lévő döntési fában, és hozzon létre egy új fát úgy, hogy csak a három változót használja:
 
         colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
         smallTrainSet <- trainSet[, colNames]
         smallTestSet <- testSet[, colNames]
         model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
 
-1. Előrejelzési függvény, amely az funkciók fogadja bemenetként, és adja vissza az előre jelzett értékek kell:
+1. Olyan előrejelzési függvényre van szükségünk, amely bemenetként fogadja a szolgáltatásokat, és visszaadja az előre jelzett értékeket:
 
         predictSpam <- function(newdata) {
         predictDF <- predict(model.rpart, newdata = newdata)
@@ -219,7 +219,7 @@ Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentke
         ep <- endpoints(ws,s)
         ep
 
-1. Próbálja ki az első 10 sort a teszt beállítása:
+1. A tesztelési készlet első 10 sorában próbálja ki:
 
         consume(ep, smallTestSet[1:10, ])
 
@@ -227,15 +227,15 @@ Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentke
 
 ## <a name="deep-learning-tutorials-and-walkthroughs"></a>Mélyreható tanulási útmutatók és útmutatók
 
-A keretrendszeren alapuló minták mellett átfogó útmutatók is elérhetők. Ezek az útmutatók segítségével gyorsan elindíthatja a tartományokban, mint például a lemezkép és a szöveg/language understanding deep learning-alkalmazások fejlesztését.
+A keretrendszeren alapuló minták mellett átfogó útmutatók is elérhetők. Ezek a forgatókönyvek megkönnyítik a mélyreható tanulási alkalmazások fejlesztését olyan tartományokban, mint például a képek és a szövegek és a nyelvek megismerése.
 
-- [Neurális hálózatok futtatása különböző keretrendszerek között](https://github.com/ilkarman/DeepLearningFrameworks): Átfogó útmutató, amely bemutatja, hogyan telepítheti át a kódokat egyik keretrendszerről a másikra. Azt is bemutatja, hogyan lehet összehasonlítani a modelleket és a futásidejű teljesítményt a keretrendszerek között. 
+- [Neurális hálózatok futtatása különböző keretrendszerek között](https://github.com/ilkarman/DeepLearningFrameworks): átfogó útmutató, amely bemutatja, hogyan telepíthet át programkódot egyik keretrendszerről a másikra. Azt is bemutatja, hogyan lehet összehasonlítani a modelleket és a futásidejű teljesítményt a keretrendszerek között. 
 
-- [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: A képészlelés olyan módszer, amellyel objektumokat lehet megkeresni és osztályozni a képeken belül. A technológiának lehetősége van arra, hogy hatalmas előnyökkel jutalmazza a sok valós üzleti tartományát. A kiskereskedők például használhatja ezt a módszert meghatározni, melyik terméket olyan rendelkezik felülettől a kereskedelmi. Ez az információ viszonzásul segíti a Termékleltár kezelése tárolók. 
+- [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: a képészlelés egy olyan technika, amely képes objektumokat megkeresni és osztályozni a képeken belül. A technológiának lehetősége van arra, hogy hatalmas előnyökkel jutalmazza a sok valós üzleti tartományát. A kiskereskedők például használhatják ezt a technikát annak meghatározására, hogy az ügyfél melyik terméket választotta fel a polcról. Ezek az információk segítenek a termékek leltározásának kezelésében. 
 
-- [Mély tanulási hang](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Ebből az oktatóanyagból megtudhatja, hogyan taníthat mély tanulási modellt a [városi hangok adatkészletében](https://urbansounddataset.weebly.com/)a Hangesemények észlelésére. Az oktatóanyag áttekintést nyújt a hangadatokkal való munkavégzésről.
+- [Mély tanulás a hanghoz](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): ez az oktatóanyag azt mutatja be, hogyan lehet betanítani a mély tanulási modellt a Hangesemények észlelésére a [városi hangokat tartalmazó adatkészletben](https://urbansounddataset.weebly.com/). Az oktatóanyag áttekintést nyújt a hangadatokkal való munkavégzésről.
 
-- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez az útmutató bemutatja, hogyan hozhat létre és taníthat két különböző neurális hálózati architektúrát: Hierarchikus figyelmet igényel a hálózat és a hosszú rövid távú memória (LSTM). Ezeket a Neurális hálózatokat a deep learninghez a Keras API használatával szöveges dokumentumok besorolását. A kerasz a legelterjedtebb mély tanulási keretrendszerek közül három: Microsoft Cognitive Toolkit, TensorFlow és theano.
+- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két különböző neurális hálózati architektúrát felépíteni és betanítani: a hierarchikus hálózati és hosszú távú memória (LSTM). Ezek a neurális hálózatok a kerasz API-t használják a mélyreható tanuláshoz a szöveges dokumentumok besorolásához. A kerasz a legelterjedtebb mély tanulási keretrendszerek: Microsoft Cognitive Toolkit, TensorFlow és theano.
 
 ## <a name="other-tools"></a>Egyéb eszközök
 
@@ -244,9 +244,9 @@ A többi szakaszban bemutatjuk, hogyan használhatja a Linux DSVM telepített es
 * XGBoost
 * Python
 * JupyterHub
-* Rattle
+* Csörgő
 * PostgreSQL és mókus SQL
-* Az SQL Server Data Warehouse
+* Adattárház SQL Server
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -285,7 +285,7 @@ Ismerkedjen meg néhány spambase adatkészlettel, és osztályozza az e-maileke
     clf = svm.SVC()
     clf.fit(X, y)
 
-Az előrejelzéseket:
+Előrejelzések készítése:
 
     clf.predict(X.ix[0:20, :])
 
@@ -322,17 +322,17 @@ A modell közzététele Azure Machine Learning:
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. A bejelentkezéshez használja a helyi Linux-felhasználónevet és-jelszót a\<https://DSVM DNS-neve vagy\>IP-címe: 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
+A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. Jelentkezzen be a helyi Linux-felhasználónevével és-jelszavával a https://\<DSVM DNS-név vagy IP-cím\>: 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
 
 > [!NOTE]
-> Ha a Python Package Managert (a `pip` paranccsal) szeretné használni a jelenlegi kernel egyik Jupyter Notebookjában, használja ezt a parancsot a Code (kód) cellában:
+> Ha a Python Package Managert (a `pip` parancs használatával) szeretné használni az aktuális kernel egyik Jupyter Notebook, használja ezt a parancsot a Code (kód) cellában:
 >
 >   ```python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> Ha a Conda-telepítőt (a `conda` parancs használatával) szeretné használni az aktuális kernel egy Jupyter notebook, akkor ezt a parancsot kell használnia a kód cellájában:
+> Ha a Conda-telepítőt (a `conda` parancs használatával) szeretné használni az aktuális kernel egy Jupyter Notebook, akkor ezt a parancsot kell használnia a kód cellájában:
 >
 >   ```python
 >    import sys
@@ -350,9 +350,9 @@ Több minta jegyzetfüzet már telepítve van a DSVM:
 > [!NOTE]
 > A Júlia nyelve a Linux DSVM parancssorában is elérhető.
 
-### <a name="rattle"></a>Rattle
+### <a name="rattle"></a>Csörgő
 
-[Csörgő](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *a*analitikus *t*OOL *t*o *L*keres *E*asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő Az R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) adatbányászati grafikus felhasználói felülete egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
+A [csörgő](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *a*analitikus *t*OOL *t*o *L*keres *E*asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő: az R adatbányászati grafikus felhasználói felülete](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
 
 Telepítse és indítsa el a csörgőt a következő parancsok futtatásával:
 
@@ -363,24 +363,24 @@ Telepítse és indítsa el a csörgőt a következő parancsok futtatásával:
 > [!NOTE]
 > Nem kell telepítenie a csörgőt a DSVM. Előfordulhat azonban, hogy a rendszer megkéri a további csomagok telepítését a csörgő megnyitásakor.
 
-Rattle egy lapon-alapú felületet használja. A lapok többsége megfelel a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)lépéseinek, például az adat betöltésének vagy az adatfelderítésnek. Az adatelemzési folyamat folyamatok balról jobbra a lapfülekre. Az utolsó lapon a csörgő által futtatott R-parancsok naplója szerepel.
+A csörgő egy tabulátor-alapú felületet használ. A lapok többsége megfelel a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)lépéseinek, például az adat betöltésének vagy az adatfelderítésnek. Az adatelemzési folyamat balról jobbra halad a lapokon. Az utolsó lapon a csörgő által futtatott R-parancsok naplója szerepel.
 
-Betölteni, és az adatkészlet konfigurálása:
+Az adatkészlet betöltése és konfigurálása:
 
 1. A fájl betöltéséhez válassza az **adatlapot.**
 1. Válassza ki a **fájlnév**melletti választót, majd válassza az **spambaseHeaders.** -adatelemet.
-1. A fájl betöltése. Válassza a **végrehajtás**lehetőséget. Az egyes oszlopok összegzését kell látnia, beleértve az azonosított adattípust is. legyen szó bemenetről, célhoz vagy más típusú változóról; és az egyedi értékek száma.
-1. Rattle tartozik helyesen azonosítani a **levélszemét** oszlop célként. Válassza ki a **Levélszemét** oszlopot, majd állítsa a **Target adattípus** értéket **Categoric**értékre.
+1. A fájl betöltéséhez. Válassza a **végrehajtás**lehetőséget. Az egyes oszlopok összegzését kell látnia, beleértve az azonosított adattípust is. legyen szó bemenetről, célhoz vagy más típusú változóról; és az egyedi értékek száma.
+1. A csörgő helyesen azonosította a **Levélszemét** oszlopot célként. Válassza ki a **Levélszemét** oszlopot, majd állítsa a **Target adattípus** értéket **Categoric**értékre.
 
-Az adatok megismerése:
+Az adatelemzés:
 
-1. Válassza ki a **Intéző** fülre.
-1. Ha szeretné megtekinteni a változó típusokkal és néhány összefoglaló statisztikával kapcsolatos információkat, válassza az **Összefoglalás** > **végrehajtás**lehetőséget.
+1. Kattintson a **Tallózás** fülre.
+1. Ha szeretné megtekinteni a változó típusokkal és néhány összefoglaló statisztikával kapcsolatos információkat, válassza az **összefoglalás** > **végrehajtás**lehetőséget.
 1. Ha meg szeretné tekinteni az egyes változókkal kapcsolatos egyéb statisztikai adatokat, válassza a további lehetőségek, például a **Leírás** vagy az **alapvető**beállítások lehetőséget.
 
-A **Tallózás** lapon éleslátó ábrákat is létrehozhat. Az adatok hisztogram ábrázol:
+A **Tallózás** lapon éleslátó ábrákat is létrehozhat. Az adathisztogram ábrázolása:
 
-1. Válassza ki **Disztribúciók**.
+1. Válassza a **disztribúciók**lehetőséget.
 1. A **word_freq_remove** és a **word_freq_you**beállításnál válassza a **hisztogram**lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget. Mindkét sűrűséget egyetlen Graph-ablakban kell látnia, ahol egyértelmű, hogy _a szó sokkal gyakrabban jelenik meg az_ e-mailekben, mint az _Eltávolítás_.
 
@@ -388,15 +388,15 @@ A **korrelációs** mintaterületek is érdekesek. Egy mintaterület létrehozá
 
 1. A **Típus mezőben**válassza a **korreláció**lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget.
-1. Rattle figyelmeztetést jelenít meg, hogy azt javasolja, legfeljebb 40 változókat. Válassza ki **Igen** megtekintéséhez az ábrázolást.
+1. A csörgő figyelmezteti, hogy legfeljebb 40 változót javasol. A mintaterület megtekintéséhez válassza az **Igen** lehetőséget.
 
 Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel és a _laborokkal_, például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
 
 A szavak közötti korrelációk numerikus értékei a **Tallózás** ablakban érhetők el. Fontos megjegyezni, hogy például a _technológia_ negatívan összefügg a _saját és a_ _pénzével_.
 
-Az adatkészlet kezelni néhány olyan gyakori problémát rattle alakíthatja át. Például átméretezheti a szolgáltatásokat, kiszámíthatja a hiányzó értékeket, kezelheti a kiugró elemeket, és eltávolíthatja a hiányzó adatokat tartalmazó változókat vagy megjegyzéseket. A csörgő a megfigyelések és változók közötti társítási szabályokat is képes azonosítani. Ezek a lapok nem szerepelnek ebben a bevezető bemutatóban.
+A csörgő átalakíthatja az adatkészletet, hogy kezelni tudja a gyakori problémákat. Például átméretezheti a szolgáltatásokat, kiszámíthatja a hiányzó értékeket, kezelheti a kiugró elemeket, és eltávolíthatja a hiányzó adatokat tartalmazó változókat vagy megjegyzéseket. A csörgő a megfigyelések és változók közötti társítási szabályokat is képes azonosítani. Ezek a lapok nem szerepelnek ebben a bevezető bemutatóban.
 
-A csörgő a fürt elemzését is képes futtatni. Nézzük kizárni néhány funkciót kínál, amellyel a kimeneti könnyebben olvasható. Az **adatok** lapon válassza a **figyelmen kívül hagyása** az egyes változók mellett jelölőnégyzetet az alábbi 10 elem kivételével:
+A csörgő a fürt elemzését is képes futtatni. Kizárunk néhány funkciót, hogy a kimenet könnyebben olvasható legyen. Az **adatok** lapon válassza a **figyelmen kívül hagyása** az egyes változók mellett jelölőnégyzetet az alábbi 10 elem kivételével:
 
 * word_freq_hp
 * word_freq_technology
@@ -407,38 +407,38 @@ A csörgő a fürt elemzését is képes futtatni. Nézzük kizárni néhány fu
 * word_freq_money
 * capital_run_length_longest
 * word_freq_business
-* Levélszemét
+* spam
 
-Térjen vissza a **fürt** lapra. Válassza a **KMeans**lehetőséget, majd állítsa a **fürtök számát** **4**-re. Válassza a **Végrehajtás** lehetőséget. Az eredmények jelennek meg a kimeneti ablakban. Az egyik fürt a _George_ és a _HP_nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
+Térjen vissza a **fürt** lapra. Válassza a **KMeans**lehetőséget, majd állítsa be a **fürtök számát** **4**-re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
 
 Alapszintű döntés faszerkezetű gépi tanulási modell létrehozása:
 
-1. Válassza ki a **modell** lap
+1. Válassza a **modell** fület,
 1. A **típushoz**válassza a **fa**elemet.
-1. Válassza ki **Execute** szöveg űrlap a kimeneti ablakban a fa megjelenítéséhez.
-1. Válassza ki a **rajzolása** gombra egy grafikus verzió megtekintéséhez. A döntési fa hasonlít a korábban a rpart használatával beszerzett fához.
+1. Az **Execute (végrehajtás** ) lehetőség kiválasztásával megjelenítheti a faszerkezetet szöveges formában a kimeneti ablakban.
+1. A **Rajzolás** gomb megnyomásával megtekintheti a grafikus verziót. A döntési fa hasonlít a korábban a rpart használatával beszerzett fához.
 
 A Rattle hasznos funkciója, hogy több gépi tanulási módszert is futtathat, és gyorsan kiértékelheti azokat. A lépések a következők:
 
 1. A **Típus mezőben**válassza az **összes**lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget.
 1. Ha a csörgő befejezi a futást, kiválaszthat bármilyen **típusú** értéket, például a **SVM**, és megtekintheti az eredményeket.
-1. Az ellenőrzési csoport modelljeinek teljesítményét az **értékelés** lapon is összehasonlíthatja. Ha például a **hiba mátrix** kijelölés bemutatja, a keveredési mátrix, általános hiba, és az egyes átlagolt osztály hiba ellenőrzés esetén. Emellett a ROC-görbék, az érzékenységi elemzések és más típusú modellek kiértékelései is megtekinthetők.
+1. Az ellenőrzési csoport modelljeinek teljesítményét az **értékelés** lapon is összehasonlíthatja. A **hiba-mátrix** kiválasztása például megjeleníti a zűrzavar mátrixot, a teljes hibát és az átlagos osztály-hibát az ellenőrzési készlet egyes modelljeinél. Emellett a ROC-görbék, az érzékenységi elemzések és más típusú modellek kiértékelései is megtekinthetők.
 
-Amikor elkészült a modellek létrehozásával, a **napló** lapon megtekintheti a csörgő által a munkamenet során futtatott R-kódot. Kiválaszthatja a **exportálása** gombra kattintva mentse azt.
+Amikor elkészült a modellek létrehozásával, a **napló** lapon megtekintheti a csörgő által a munkamenet során futtatott R-kódot. Válassza az **Exportálás** gombot a mentéshez.
 
 > [!NOTE]
-> A csörgő jelenlegi kiadása hibát tartalmaz. Ha módosítani szeretné a parancsfájlt, vagy a használatával szeretné később megismételni a lépéseket, **#** be kell szúrnia egy karaktert a napló exportálása előtt.. *.* a napló szövegében.
+> A csörgő jelenlegi kiadása hibát tartalmaz. Ha módosítani szeretné a parancsfájlt, vagy a használatával szeretné később megismételni a lépéseket, be kell szúrnia egy **#** karaktert a napló exportálása előtt.. *.* a napló szövegében.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL és mókus SQL
 
-A DSVM együttműködik a PostgreSQL telepítése. PostgreSQL egy olyan kifinomult, nyílt forráskódú relációs adatbázis. Ebben a szakaszban bemutatjuk, hogyan tölthető be a spambase adatkészlet a PostgreSQL-be, majd hogyan kérdezhető le.
+A DSVM a PostgreSQL telepítve van. A PostgreSQL egy kifinomult, nyílt forráskódú, összehasonlítható adatbázis. Ebben a szakaszban bemutatjuk, hogyan tölthető be a spambase adatkészlet a PostgreSQL-be, majd hogyan kérdezhető le.
 
 Az adatok betöltése előtt engedélyeznie kell a jelszó-hitelesítést a localhost-ból. Egy parancssorból futtassa az alábbi parancsot:
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
-A lap alsó részén található a konfigurációs fájl, amely részletes információkat talál az engedélyezett kapcsolatok több sort a következők:
+A konfigurációs fájl aljának közelében több sor is található, amelyek részletezik az engedélyezett kapcsolatokat:
 
     # "local" is only for Unix domain socket connections:
     local   all             all                                     trust
@@ -481,33 +481,33 @@ Importálja az új adatbázisba:
 
 Most Ismerkedjen meg az adataival, és futtasson néhány lekérdezést a mókus SQL használatával, amely egy grafikus eszköz, amellyel a JDBC-illesztőn keresztül használhatja az adatbázisokat.
 
-Első lépésként nyissa meg a mókus SQL **alkalmazást az alkalmazások** menüben. Az illesztőprogram telepítéséhez:
+Első lépésként nyissa meg a mókus SQL **alkalmazást az alkalmazások** menüben. Az illesztőprogram beállítása:
 
-1. Válassza a **Windows** > -**illesztőprogramok megtekintése**lehetőséget.
+1. Válassza a **Windows** > **illesztőprogramok megtekintése**lehetőséget.
 1. Kattintson a jobb gombbal a **PostgreSQL** elemre, és válassza az **illesztőprogram módosítása**lehetőséget.
 1. Válassza a **további osztály elérési útja** > **Hozzáadás**lehetőséget.
 1. A **fájlnév**mezőben adja meg a **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**nevet.
 1. Válassza az **Open** (Megnyitás) elemet.
 1. Válassza az **illesztőprogramok listázása**lehetőséget. Az **Osztálynév**mezőben válassza a **org. PostgreSQL. Driver**elemet, majd kattintson **az OK gombra**.
 
-A kapcsolat a helyi kiszolgáló beállítása:
+A helyi kiszolgálóhoz való kapcsolódás beállítása:
 
-1. Válassza a **Windows** > **View aliasok lehetőséget.**
-1. Az új **+** alias létrehozásához kattintson a gombra. Az új alias neve mezőbe írja be a **Levélszemét-adatbázist**. 
+1. Válassza a **Windows** > az **aliasok megjelenítése lehetőséget.**
+1. Az új alias létrehozásához kattintson a **+** gombra. Az új alias neve mezőbe írja be a **Levélszemét-adatbázist**. 
 1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
-1. Az URL-Címének beállítása **jdbc:postgresql://localhost/spam**.
+1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
 1. Adja meg a felhasználónevét és a jelszavát.
 1. Kattintson az **OK** gombra.
-1. Megnyitásához a **kapcsolat** ablakban kattintson duplán a **levélszemét adatbázis** alias.
+1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
 1. Kattintson a **Csatlakozás** gombra.
 
-Néhány lekérdezés futtatása:
+Lekérdezések futtatása:
 
-1. Válassza ki a **SQL** fülre.
-1. Az **SQL** lap tetején található lekérdezés mezőben adjon meg egy alapszintű lekérdezést, `SELECT * from data;`például:.
+1. Válassza az **SQL** lapot.
+1. Az **SQL** lap tetején található lekérdezés mezőben adjon meg egy alapszintű lekérdezést, például `SELECT * from data;`.
 1. A lekérdezés futtatásához nyomja le a CTRL + ENTER billentyűkombinációt. Alapértelmezés szerint a mókus SQL a lekérdezés első 100 sorát adja vissza.
 
-Az adatelemzéshez számos további lekérdezés is futtatható. Például hogyan történik a gyakoriságát, a word *győződjön meg arról,* eltérnek a levélszemét és sonka?
+Az adatelemzéshez számos további lekérdezés is futtatható. Hogyan változik például *a szó* gyakorisága a levélszemét és a sonka között?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
@@ -521,9 +521,9 @@ Ha a PostgreSQL-adatbázisban tárolt adataival szeretne gépi tanulást végezn
 
 ### <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-A Azure SQL Data Warehouse egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem rokon adatmennyiséget képes feldolgozni. További információkért lásd: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+A Azure SQL Data Warehouse egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem rokon adatmennyiséget képes feldolgozni. További információ: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Kapcsolódás az adattárházhoz, és a tábla létrehozásához futtassa a következő parancsot a parancssorba:
+Az adatraktárhoz való kapcsolódáshoz és a tábla létrehozásához futtassa a következő parancsot egy parancssorból:
 
     sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
 
@@ -550,4 +550,4 @@ A mókus SQL használatával is lekérdezheti. Kövesse a PostgreSQL-hez hasonl�
 
 Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos cikkek áttekintését itt találja: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
-A csoportos adatelemzési folyamat lépéseit bemutató, részletes útmutatót a csoportos adatelemzési [folyamatról szóló útmutatóban](../team-data-science-process/walkthroughs.md)talál. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőalapú és helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására is.
+A csoportos adatelemzési folyamat lépéseit bemutató, részletes útmutatót a csoportos adatelemzési [folyamatról szóló útmutatóban](../team-data-science-process/walkthroughs.md)talál. A forgatókönyvek azt is bemutatják, hogyan kombinálhatja a Felhőbeli és a helyszíni eszközöket és szolgáltatásokat munkafolyamat vagy folyamatba egy intelligens alkalmazás létrehozásához.

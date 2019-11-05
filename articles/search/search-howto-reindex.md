@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793711"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466441"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Cognitive Search index újraépítése
 
@@ -46,7 +46,7 @@ Bármely más módosítás a meglévő fizikai szerkezetek befolyásolása nélk
 
 Új mező hozzáadásakor a meglévő indexelt dokumentumok null értéket kapnak az új mezőhöz. A jövőbeli adatfrissítéskor a külső forrásadatok értékei lecserélik az Azure Cognitive Search által hozzáadott nullák értékét. Az index tartalmának frissítésével kapcsolatos további információkért lásd: [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="partial-or-incremental-indexing"></a>Részleges vagy növekményes indexelés
+## <a name="partial-indexing"></a>Részleges indexelés
 
 Az Azure Cognitive Searchban az indexelést nem lehet mező alapján szabályozni, ha a megadott mezők törlését vagy újbóli létrehozását választja. Ehhez hasonlóan nincs olyan beépített mechanizmus, amellyel a [dokumentumok a feltételek alapján indexelve](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)vannak. A feltételekkel vezérelt indexeléshez szükséges követelményeket egyéni kódokon keresztül kell teljesíteni.
 
@@ -93,7 +93,7 @@ Amikor betölti az indexet, az egyes mezők fordított indexe az egyes dokumentu
 
 Az első dokumentum betöltését követően azonnal megkezdheti az index lekérdezését. Ha ismeri a dokumentum AZONOSÍTÓját, a [keresési dokumentum REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) az adott dokumentumot adja vissza. A szélesebb körű teszteléshez várnia kell, amíg az index teljesen be nem töltődik, majd a lekérdezések segítségével ellenőrizze a várt környezetet.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Az indexelő áttekintése](search-indexer-overview.md)
 + [Nagyméretű adathalmazok indexelése nagy méretekben](search-howto-large-index.md)

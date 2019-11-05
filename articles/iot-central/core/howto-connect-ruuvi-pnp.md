@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 0a93bedb697a0d5a514fddab55c79b969b2bd77b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1d152c921d38931f8c67396fc5769cfd2dfcf58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468235"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással
 
@@ -34,7 +34,7 @@ A RuuviTag-érzékelők összekapcsolásához a következő erőforrásokra van 
 
 * Egy RuuviTag-érzékelő. További információért látogasson el a [RuuviTag](https://ruuvi.com/)webhelyre. 
 * Egy Rigado lépcsőzetes 500-eszköz vagy egy másik-átjáró. További információért látogasson el a [Rigado](https://www.rigado.com/)webhelyre.
-* Azure IoT Central-alkalmazás, amely az egyik előzetes verziójú alkalmazás-sablonból lett létrehozva. További információt az [új alkalmazás létrehozása](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)című témakörben talál.
+* Azure IoT Central-alkalmazás, amely az egyik előzetes verziójú alkalmazás-sablonból lett létrehozva. További információt az [új alkalmazás létrehozása](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)című témakörben talál.
 
 ## <a name="add-a-ruuvitag-device-template"></a>RuuviTag-eszköz sablonjának hozzáadása
 
@@ -68,6 +68,6 @@ Szimulált RuuviTag létrehozása:
 1. Engedélyezze a **szimulált** beállítást.
 1. Kattintson a **Létrehozás** gombra.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan csatlakozhat egy RuuviTag az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés annak megismerése, hogyan [szabhatja testre a IoT Central alkalmazást](../retail/tutorial-in-store-analytics-customize-dashboard-pnp.md) teljes körű megoldás létrehozásához. 

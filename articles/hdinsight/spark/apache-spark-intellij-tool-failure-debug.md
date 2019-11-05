@@ -1,5 +1,5 @@
 ---
-title: 'Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió) '
+title: Spark-feladatok hibakeresése a IntelliJ Azure Toolkit (előzetes verzió) használatával – HDInsight
 description: Útmutatás az alkalmazások hibakereséséhez a Azure Toolkit for IntelliJ HDInsight eszközeinek használatával
 keywords: távoli IntelliJ hibakeresése, távoli hibakeresés IntelliJ, SSH, IntelliJ, hdinsight, hibakeresési IntelliJ, hibakeresés
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 0275cd6ff83fd5fdcc75c8b88602e8943f9504dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266169"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494589"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatja a HDInsigh
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Ez az oktatóanyag a Java-verzió 8.0.202 használja.
   
-* IntelliJ IDEA. Ez a cikk [a IntelliJ IDEA Community ver-t használja. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
+* IntelliJ ötlet. Ez a cikk a [INTELLIJ Idea Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)-t használja.
   
 * Azure Toolkit for IntelliJ. Lásd: [a Azure Toolkit for IntelliJ telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
 
@@ -40,7 +40,7 @@ Hozzon létre egy Spark 2.3.2-projektet a hibák hibakeresésének folytatásáh
 
    a. Válassza ki az **Azure Spark/HDInsight** elemet a bal oldali panelen.
 
-   b. A főablakból válassza a hiba feladatának hibakeresése (előzetes verzió) lehetőséget a **Spark Project szolgáltatásban** .
+   b. A főablakból válassza a **hiba feladatának hibakeresése (előzetes verzió) lehetőséget a Spark Project szolgáltatásban** .
 
      ![Hibakeresési projekt létrehozása a IntelliJ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
@@ -58,7 +58,7 @@ Hozzon létre egy Spark 2.3.2-projektet a hibák hibakeresésének folytatásáh
 
    d. Válassza a **Finish** (Befejezés) elemet.
 
-3. Válassza a **src** > **Main** > **Scala** elemet a kód a projektben való megnyitásához. Ez a példa a **AgeMean_Div ()** parancsfájlt használja.
+3. Válassza a **src** > **Main** > **Scala** lehetőséget a kód a projektben való megnyitásához. Ez a példa a **AgeMean_Div ()** parancsfájlt használja.
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Spark Scala/Java-alkalmazás futtatása HDInsight-fürtön
 
@@ -72,7 +72,7 @@ Hozzon létre egy Spark Scala/Java-alkalmazást, majd futtassa az alkalmazást e
 
    ![IntelliJ új konfiguráció hozzáadása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név**, a **Spark-fürt**és a **fő osztály nevét**. Eszközeink támogatják a **végrehajtókkal**való hibakeresést. A **numExectors**, az alapértelmezett érték 5, és jobb, ha nem nagyobb, mint 3. A futási idő csökkentése érdekében a **Spark. fonál. maxAppAttempts** felveheti a **feladatok konfigurációba** , és az értéket 1-re állíthatja. A konfiguráció mentéséhez kattintson **az OK** gombra.
+3. Váltson **távoli futtatásra a fürt** lapon. adja meg a **név**, a **Spark-fürt**és a **fő osztály nevét**. Eszközeink támogatják a **végrehajtókkal**való hibakeresést. A **numExectors**, az alapértelmezett érték 5, és jobb, ha nem nagyobb, mint 3. A futási idő csökkentése érdekében a **Spark. fonál. maxAppAttempts** felveheti a **feladatok konfigurációba** , és az értéket 1-re állíthatja. A konfiguráció mentéséhez kattintson **az OK** gombra.
 
    ![IntelliJ új hibakeresési konfigurációk futtatása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -90,7 +90,7 @@ Hozzon létre egy Spark Scala/Java-alkalmazást, majd futtassa az alkalmazást e
 
 Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a sikertelen feladatot a helyi gépre.
 
-1. Nyissa meg **Microsoft Azure Storage Explorer**, keresse meg a sikertelen feladatokhoz tartozó fürt HDInsight-fiókját, töltse le a sikertelen feladatok erőforrásait a megfelelő helyről: **\hdp\spark2-Events\\.\\ Spark-hibákaz\<alkalmazás-azonosító >** egy helyi mappába. A **tevékenységek** ablakban megjelennek a letöltési folyamat.
+1. Nyissa meg **Microsoft Azure Storage Explorer**, keresse meg a sikertelen feladatokhoz tartozó fürt HDInsight-fiókját, töltse le a sikertelen feladatok erőforrásait a megfelelő helyről: **\hdp\spark2-Events\\. spark-hibák\\\<az alkalmazás-azonosító >** egy helyi mappába. A **tevékenységek** ablakban megjelennek a letöltési folyamat.
 
    ![Azure Storage Explorer letöltési hiba](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -100,7 +100,7 @@ Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a 
 
 1. Nyissa meg az eredeti projektet, vagy hozzon létre egy új projektet, és társítsa az eredeti forráskódhoz. Jelenleg csak a Spark 2.3.2 verziója támogatott a hibák hibakereséséhez.
 
-1. A IntelliJ IDEA-ben hozzon létre egy **Spark-hiba hibakeresési** konfigurációs fájlját, válassza ki az FTD-fájlt a korábban letöltött sikertelen feladatok erőforrásai közül a Spark-feladatokhoz tartozó **környezeti hely** mezőnél.
+1. A IntelliJ IDEA-ben hozzon létre egy **Spark-hiba hibakeresési** konfigurációs fájlját, válassza ki az FTD-fájlt a korábban letöltött sikertelen feladatok erőforrásai közül a **Spark-feladatokhoz tartozó környezeti hely** mezőnél.
 
    ![Crete-hibák konfigurálása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
@@ -116,18 +116,18 @@ Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a 
 
 ## <a name="seealso"></a>Következő lépések
 
-* [Áttekintés Alkalmazások hibakeresése Apache Spark](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Áttekintés: Apache Spark alkalmazások hibakeresése](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
-### <a name="demo"></a>Demó
+### <a name="demo"></a>Bemutató
 
 * Scala-projekt létrehozása (videó): [Apache Spark Scala-alkalmazások létrehozása](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Távoli hibakeresés (videó): [Apache Spark alkalmazások távoli hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ használatával](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Távoli hibakeresés (videó): a [Azure Toolkit for IntelliJ használata Apache Spark alkalmazások távoli hibakereséséhez egy HDInsight-fürtön](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark BI-val: Interaktív adatelemzés a Spark in HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatszolgáltatások használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI-val: interaktív adatelemzést végezhet a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learningrel: a Spark in HDInsight használatával elemezze az építési hőmérsékletet a HVAC-adataival](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

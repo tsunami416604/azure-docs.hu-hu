@@ -1,5 +1,5 @@
 ---
-title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrába
+title: 'Architektúra: helyszíni Apache Hadoop az Azure HDInsight'
 description: Ismerje meg az architektúrával kapcsolatos ajánlott eljárásokat a helyszíni Hadoop-fürtök Azure HDInsight történő áttelepítéséhez.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735884"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499253"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
 
@@ -32,7 +32,7 @@ Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kial
 |IoT/streaming|Kafka, Storm, Spark|
 |NoSQL tranzakciós feldolgozás|HBase|
 |Interaktív és gyorsabb lekérdezések memórián belüli gyorsítótárazással|Interaktív lekérdezés|
-|Adatelemzés|ML szolgáltatások, Spark|
+|Adattudomány|ML szolgáltatások, Spark|
 
 A következő táblázat a HDInsight-fürtök létrehozásához használható különböző metódusokat mutatja be.
 

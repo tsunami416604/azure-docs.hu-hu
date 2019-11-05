@@ -1,7 +1,7 @@
 ---
 title: Funkciók – LUIS
 titleSuffix: Azure Cognitive Services
-description: Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell.
+description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,33 +9,53 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949597"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487522"
 ---
-# <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás kifejezés-listájának funkciói
+# <a name="machine-learned-features"></a>Gépi megtanult funkciók 
 
-A machine learning szolgáltatás egy *funkció* egy megkülönböztető is leálljon vagy attribútum, amelyek a rendszer figyelembe veszi. 
+A gépi tanulásban a *funkció* egy olyan megkülönböztető tulajdonság vagy adatattribútum, amelyet a rendszer a & megismerésével megfigyel. A Language Understanding (LUIS) egy funkció leírja és ismerteti a szándékait és entitásait illető jelentős jelentőséget.
 
-Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell. Szolgáltatások révén is szándékok és entitások felismerésére LUIS, de a funkciók nem állnak a leképezések vagy entitások magukat. Ehelyett szolgáltatásokat biztosíthatnak példák a vonatkozó feltételek.  
+## <a name="features-in-language-understanding"></a>A Language Understanding szolgáltatásai
 
-## <a name="what-is-a-phrase-list-feature"></a>Mi az a kifejezés lista szolgáltatás?
-A kifejezések listája az alkalmazás szempontjából jelentős szavakat vagy kifejezéseket sorolja fel, így több, mint a hosszúságú kimondott szöveg többi szava. A kifejezések listája az alkalmazás tartományának szókincséhez további jelet helyez el a LUIS-vel kapcsolatban. Mi a LUIS megismerkedik az egyik automatikusan alkalmazza a mások számára is. Ez a lista nem a pontos szöveges egyezések lezárt [lista entitása](luis-concept-entity-types.md#types-of-entities) .
+A funkciók, más néven leírók, leírják a Language Understanding azonosítására szolgáló hosszúságú kimondott szöveg. Funkciók: 
 
-A kifejezések listája nem segít a létrehozásban, ezért olyan teljes példákat kell hozzáadnia, amelyek számos jelentős szókincset és kifejezést használnak.
+* Kifejezések listája a szándékok vagy entitások szolgáltatásként
+* Entitások szolgáltatásként a szándékok vagy az entitások számára
 
-## <a name="phrase-lists-help-all-models"></a>A kifejezések listája az összes modell súgóját tartalmazza
+A funkciókat a séma szükséges részeként kell figyelembe venni a modell kibontásához. 
 
-A kifejezések listája nem kapcsolódik egy adott szándékhoz vagy entitáshoz, de jelentős lökésként hozzá lett adva az összes szándékhoz és entitáshoz. Ennek célja, hogy javítsa a szándék észlelését és az entitások besorolását.
+## <a name="what-is-a-phrase-list"></a>A kifejezések listája
 
-## <a name="how-to-use-phrase-lists"></a>A kifejezés listák használata
+A kifejezés lista a szavak, kifejezések, számok vagy más karakterek listája, amelyek segítenek azonosítani az azonosítani kívánt koncepciót. A lista megkülönbözteti a kis-és nagybetűket. 
 
-[Hozzon létre egy kifejezést](luis-how-to-add-features.md) tartalmazó listát, ha az alkalmazás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak az alkalmazáshoz, például:
+## <a name="when-to-use-a-phrase-list"></a>Mikor kell használni a kifejezések listáját
+
+A kifejezést tartalmazó listával LUIS a kontextust és az általánosításokat úgy tekinti meg, hogy azonosítsa a hasonló elemeket, de nem pontos szöveges egyezést. Ha a LUIS-alkalmazásnak képesnek kell lennie az új elemek általánosítására és azonosítására, használjon kifejezéseket tartalmazó listát. 
+
+Ha szeretné tudni, hogy az új példányok felismerhetők legyenek, például egy olyan értekezlet-ütemező, amelynek fel kell ismernie az új névjegyek nevét, vagy egy olyan leltározási alkalmazást, amely új termékeket ismer fel, kezdjen egy géppel megtanult entitással. Ezután hozzon létre egy olyan kifejezést, amely segít a LUIS hasonló jelentéssel rendelkező szavak megkeresésében. Ez a kifejezési lista a LUIS-t a példák felismerésére szolgáló további jelentőséggel bír a szavak értékének megadásával. 
+
+A kifejezések listája hasonló a tartományhoz tartozó szókincshez, amely segít a szándékok és az entitások megismerésének javításában. 
+
+## <a name="considerations-when-using-a-phrase-list"></a>Szempontok kifejezések listájának használatakor
+
+Alapértelmezés szerint a rendszer az alkalmazás összes modelljére alkalmazza a kifejezések listáját. Ez a kifejezés felsorolja az összes szándékot és entitást. A dekomponálás esetében a kifejezések listáját csak azokra a modellekre kell alkalmazni, amelyekre a szükséges. 
+
+Ha létrehoz egy kifejezés listát (alapértelmezés szerint globálisan létrehozva), akkor később egy adott modellre alkalmazza azt leíróként (funkcióként), akkor azt a rendszer eltávolítja a többi modellből. Ez az Eltávolítás a modellhez tartozó kifejezési listához ad hozzá fontosságot, amely segít a modellben elérhető pontosság javításában. 
+
+A `enabledForAllModels` jelző a modell hatókörét szabályozza az API-ban. 
+
+<a name="how-to-use-phrase-lists"></a>
+
+### <a name="how-to-use-a-phrase-list"></a>Kifejezések listájának használata
+
+[Hozzon létre egy kifejezés lista](luis-how-to-add-features.md) listát, ha a szándék vagy az entitás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak például a következők:
 
 * iparági feltételek
 * szleng
@@ -44,48 +64,29 @@ A kifejezések listája nem kapcsolódik egy adott szándékhoz vagy entitáshoz
 * más nyelvről származó, de gyakran az alkalmazásban használt nyelv
 * a példában szereplő hosszúságú kimondott szöveg és kifejezések
 
-Ha néhány szót vagy kifejezést adott meg, a **javasolt** funkció használatával megkeresheti a kapcsolódó értékeket. Tekintse át a kapcsolódó értékeket, mielőtt hozzáadja a kifejezés-lista értékeihez.
-
-A kifejezések listája szinonimákat tartalmazó értékekre mutat. Ha például azt szeretné, hogy az összes víztest található, és van például hosszúságú kimondott szöveg, például: 
-
-* Milyen városokhoz közelítenek a Nagy tavak? 
-* Milyen úton fut a Lake Havasu?
-* Hol kezdődik és végződik a Nílus? 
-
-Minden Kimondás esetén a kiértékelést és az entitásokat a víztesttől függetlenül kell meghatározni: 
-
-* Milyen városokhoz közeledik a [bodyOfWater]?
-* Milyen úton fut a [bodyOfWater]?
-* Hol tart a [bodyOfWater] kezdete és vége? 
-
-Mivel a víz törzsének szavai vagy kifejezései szinonimák, és a hosszúságú kimondott szöveg szinonimaként is használhatók. 
+Ne **adjon hozzá** minden lehetséges szót vagy kifejezést. Ehelyett adjon hozzá néhány szót vagy kifejezést egyszerre, majd végezze el az újratanítást és a közzétételt. Ahogy a lista az idő múlásával növekszik, előfordulhat, hogy néhány kifejezésnek számos formája van (szinonimák). Ezeket egy másik listára bontja. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>A kifejezések listája segítséget nyújt az egyszerű, felcserélhető entitások azonosításához
-Cserélhető kifejezés listák helyes módon a LUIS-alkalmazás teljesítményének finomhangolása. Ha az alkalmazás hiba történt a megfelelő leképezés kimondott szöveg előrejelzésére vagy entitások FELISMERVE, gondolja át e a kimondott szöveg tartalmazza-e a szokatlan szavakat vagy szavak, amelyek lehet, hogy a jelentése nem egyértelmű. Ezeknek a szavaknak esetén használható jól az egy kifejezést listára.
+## <a name="when-to-use-an-entity-as-a-feature"></a>Ha egy entitást szolgáltatásként kíván használni 
 
-## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Kifejezés tartalmazza a Súgó azonosíthatja a leképezések jobb megértése környezet
-Egy kifejezés lista tehát nem a LUIS szigorú az egyeztetés elvégzéséhez, vagy a címke mindig a kifejezés lista összes használati azok, ugyanúgy utasítást. Érdemes egyszerűen csak egy érhető el. Például rendelkezhet, amely azt jelzi, hogy "Patti" és "Selma" nevek kifejezések listáját, de a LUIS továbbra is használhatja környezeti információkat felismerje, hogy azok jelentését mutatják a más "2 foglalás tenni a Patti Diner ma a" és "-fiókom vezetési utasításokat Selma, Grúzia". 
+Az entitások a szándék vagy az entitás szintjén vehetők fel szolgáltatásként. 
 
-A kifejezéslista hozzáadása nem megjelölésű további példa beszédmódok hozzáadása helyett. 
+### <a name="entity-as-a-feature-to-an-intent"></a>Entitás szolgáltatásként egy szándék
 
-## <a name="when-to-use-phrase-lists-versus-list-entities"></a>A kifejezés listák és a lista entitások használata
-Noha a kifejezések listája és a [lista entitások](reference-entity-list.md) is befolyásolhatják az összes cél hosszúságú kimondott szöveg, mindkettő más módon működik. Egy kifejezés listával szándék előrejelzési pontszám hatással. Egy lista entitás használatával hatással vannak a szöveg pontos egyezéssel entitások kinyeréséhez. 
+Adja hozzá az entitást leíróként (szolgáltatásként), ha az adott entitás észlelése jelentős a szándék szempontjából.
 
-### <a name="use-a-phrase-list"></a>Egy kifejezés helyett szerepel a listában
-Kifejezés listáját a LUIS továbbra is figyelembe kell venni a környezet, és általánosítsa a géphez való azonosításához az elemek, amelyek hasonló, de nem pontos egyezést, egy listán szereplő elemeket. Ha a LUIS-alkalmazás lehessen generalize és az új elemeket egy kategória van szüksége, használja a kifejezés listáját. 
+Ha például a cél egy járat foglalása, és az entitás a jegyekkel kapcsolatos információk (például a munkaállomások száma, a forrás és a célhely), akkor a Ticket Information (jegy) információval rendelkező entitásnak hozzá kell adnia súlyozást a könyv repülési szándékának előrejelzéséhez. 
 
-Ha egy entitás új példányait szeretné felismerni, például egy olyan értekezlet-ütemező, amelynek fel kell ismernie az új névjegyek nevét, vagy egy olyan leltározási alkalmazást, amely fel kell ismernie az új termékeket, használjon más típusú gépi megtanult entitást, például egy egyszerű entitást. Ezután hozzon létre egy kifejezést szavak és kifejezések, amellyel a LUIS hasonló az entitás keresése más szavakat. Ez a lista végigvezeti a LUIS példák az entitás felismerje a további többszörösére hozzáadja azokat a szavakat értékét. 
+### <a name="entity-as-a-feature-to-another-entity"></a>Entitás szolgáltatásként egy másik entitáshoz
 
-Kifejezés listák hasonlóak a tartomány-specifikus szöveg szóhasználati, amely a szándékok és entitások ismertetése minőségének javítása érdekében. Egy kifejezés listáját közös használata tulajdonnevek, például a város nevét. Egy város nevét több szóból kötőjeleket vagy aposztrófot többek között lehet.
- 
-### <a name="dont-use-a-phrase-list"></a>Ne használjon egy kifejezéslista 
-Egy lista entitás egyértelműen meghatározza egy entitás is igénybe vehet, és csak azonosítja az értékeket, amelyek pontosan meg minden egyes értékhez. Egy lista entitásra, amelyben egy entitás összes példánya ismert, és nem módosítja a gyakran egy alkalmazás lehet. Példák találhatók food elemek egy étterem menüben, amely csak ritkán változnak. Ha egy entitás egy pontos egyezés egyeztetése, ne használja a kifejezések listáját. 
+Az entitást (A) szolgáltatásként hozzá kell adni egy másik entitáshoz (B), ha az adott entitás (A) észlelése a (B) esetében jelentős.
+
+Ha például a rendszer az utca címe entitást (A) észleli, akkor az utca címe (A) a szállítási címek entitásának (B) kiszámításához hozzáadja a súlyozást az előrejelzéshez. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
+Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [szolgáltatások hozzáadása](luis-how-to-add-features.md) további információt a szolgáltatások hozzáadása a LUIS-alkalmazás.
+További információ a szolgáltatások hozzáadása a LUIS-alkalmazáshoz [című témakörben](luis-how-to-add-features.md) talál további információt.

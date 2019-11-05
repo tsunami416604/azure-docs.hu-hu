@@ -1,5 +1,5 @@
 ---
-title: A Visual studióhoz készült Data Lake eszközök Hortonworks-alapú homokozóval – Azure HDInsight
+title: Data Lake Tools for Visual Studio & Hortonworks – Azure HDInsight
 description: Megtudhatja, hogyan használhatja a Visual studióhoz készült Azure Data Lake-eszközöket a helyi virtuális gépen futó Hortonworks-homokozóval. Ezekkel az eszközökkel létrehozhat és futtathat kaptár-és Pig-feladatokat a homokozóban, és megtekintheti a feladatok kimenetét és előzményeit.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098776"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500156"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Visual studióhoz készült Azure Data Lake Tools használata a Hortonworks sandbox használatával
 
@@ -33,7 +33,7 @@ A Hortonworks sandbox használatával helyileg dolgozhat a Hadoop a fejlesztői 
 
 ## <a name="configure-passwords-for-the-sandbox"></a>A homokozó jelszavainak konfigurálása
 
-Győződjön meg arról, hogy a Hortonworks-homokozó fut. Ezután kövesse az [első lépések a Hortonworks homokozóban](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) című dokumentum lépéseit. Ezekkel a lépésekkel konfigurálhatja az `root` SSH-fiók és az Apache `admin` Ambari-fiók jelszavát. Ezeket a jelszavakat akkor használja a rendszer, amikor a Visual studióból csatlakozik a Sandboxhoz.
+Győződjön meg arról, hogy a Hortonworks-homokozó fut. Ezután kövesse az [első lépések a Hortonworks homokozóban](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) című dokumentum lépéseit. Ezekkel a lépésekkel konfigurálhatja az SSH `root` fiók és az Apache Ambari `admin` fiók jelszavát. Ezeket a jelszavakat akkor használja a rendszer, amikor a Visual studióból csatlakozik a Sandboxhoz.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Az eszközök összekötése a homokozóval
 
@@ -49,7 +49,7 @@ Győződjön meg arról, hogy a Hortonworks-homokozó fut. Ezután kövesse az [
 
     A folytatáshoz kattintson a **Tovább** gombra.
 
-4. A **jelszó** mező használatával adja meg a `root` fiókhoz konfigurált jelszót. Hagyja meg a többi mezőt az alapértelmezett értéken.
+4. A **jelszó** mező használatával adja meg a `root`-fiókhoz konfigurált jelszót. Hagyja meg a többi mezőt az alapértelmezett értéken.
 
     ![Képernyőkép a párbeszédpanelről, a gyökér jelszava szövegmező kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
@@ -63,7 +63,7 @@ Győződjön meg arról, hogy a Hortonworks-homokozó fut. Ezután kövesse az [
     > A frissítési folyamat a Ambari használatával módosítja a Hortonworks-homokozó konfigurációját a Visual studióhoz készült Data Lake Tools által várt módon.
 
 6. Az érvényesítés befejezése után a **Befejezés** gombra kattintva fejezze be a konfigurálást.
-    ![Képernyőkép a párbeszédpanelről, a Befejezés gombbal kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
+    ![képernyőkép a párbeszédpanelről, a Befejezés gombbal kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > A fejlesztési környezet sebességétől és a virtuális géphez lefoglalt memória mennyiségétől függően több percet is igénybe vehet, hogy konfigurálja és érvényesítse a szolgáltatásokat.
@@ -99,7 +99,7 @@ A kaptár egy SQL-szerű lekérdezési nyelvet (HiveQL) biztosít a strukturált
     A **feladatok állapotának** **befejezését**követően egy irányított aciklikus gráf (Dag) jelenik meg. Ez az ábra a TEZ által a kaptár-lekérdezés feldolgozásakor meghatározott végrehajtási útvonalat ismerteti. A TEZ az alapértelmezett végrehajtási motor a kaptár számára a helyi fürtön.
 
     > [!NOTE]  
-    > A Linux-alapú HDInsight-fürtök használatakor az Apache TEZ is az alapértelmezett. A Windows-alapú HDInsight nem ez az alapértelmezett érték. Ha itt szeretné használni, a sort `set hive.execution.engine = tez;` hozzá kell adnia a kaptár-lekérdezés elejéhez.
+    > A Linux-alapú HDInsight-fürtök használatakor az Apache TEZ is az alapértelmezett. A Windows-alapú HDInsight nem ez az alapértelmezett érték. Ha ott szeretné használni, adja hozzá a `set hive.execution.engine = tez;` sort a kaptár-lekérdezés elejéhez.
 
     A kimenet megtekintéséhez használja a **feladatok kimeneti** hivatkozását. Ebben az esetben ez 823, a sorok száma a sample_08 táblában. A feladatra vonatkozó diagnosztikai információkat a **Projektnapló** és a **fonalas naplók letöltése** hivatkozásra kattintva tekintheti meg.
 

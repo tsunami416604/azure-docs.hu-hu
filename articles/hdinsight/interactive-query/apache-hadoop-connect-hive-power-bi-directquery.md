@@ -1,5 +1,5 @@
 ---
-title: Interaktív lekérdezési struktúra adatmegjelenítése Power BI az Azure HDInsight
+title: 'Lásd: az interaktív lekérdezési struktúra adatPower BI az Azure HDInsight'
 description: Az interaktív lekérdezési struktúra adatainak megjelenítése a Microsoft Power BI használatával az Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123022"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467138"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interaktív lekérdezési Apache Hive adatai megjelenítése a Microsoft Power BI használatával közvetlen lekérdezéssel a HDInsight-ben
 
-Ez a cikk azt ismerteti, hogyan csatlakoztathatók a Microsoft Power BI az Azure HDInsight interaktív lekérdezési fürtökhöz, és Hogyan jeleníthető meg a Apache Hive adatai közvetlen lekérdezéssel. A példában szereplő példa egy `hivesampletable` struktúra-táblázat adatait Power BIba tölti be. A `hivesampletable` kaptár tábla néhány mobiltelefon-használati adatokat tartalmaz. Ezután kinyomtatja a használati adatokat a globális térképen:
+Ez a cikk azt ismerteti, hogyan csatlakoztathatók a Microsoft Power BI az Azure HDInsight interaktív lekérdezési fürtökhöz, és Hogyan jeleníthető meg a Apache Hive adatai közvetlen lekérdezéssel. A megadott példa egy `hivesampletable` struktúra-tábla adatait Power BIba tölti be. A `hivesampletable` struktúra tábla néhány mobiltelefon-használati adatokat tartalmaz. Ezután kinyomtatja a használati adatokat a globális térképen:
 
 ![HDInsight Power BI a leképezési jelentés](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -31,11 +31,11 @@ A cikk végrehajtása előtt a következő elemeket kell megadnia:
 
 ## <a name="load-data-from-hdinsight"></a>Adatok betöltése a HDInsight
 
-A `hivesampletable` kaptár tábla minden HDInsight-fürtöt tartalmaz.
+A `hivesampletable` struktúra tábla minden HDInsight-fürtöt tartalmaz.
 
 1. Power BI Desktop elindítása.
 
-2. A > menüsávban navigáljon a **Kezdőlap** > **adatok beolvasása** **továbbiak...** elemre.
+2. A menüsávban navigáljon a **kezdőlap** > az **adatok lekérése** > **továbbiak...** elemre.
 
     ![HDInsight Power BI további információ](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

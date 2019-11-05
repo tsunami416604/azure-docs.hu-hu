@@ -6,21 +6,21 @@ manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789979"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484995"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Tudásbázis megtekintése Storage Explorer
 
 > [!Note]
-> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. Az [Azure Cognitive Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
+> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. A portál és a [Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 >
-Ebből a cikkből megtudhatja, hogyan csatlakozhat és vizsgálhat meg egy Knowledge Store-t a Azure Portal Storage Explorer használatával. Az útmutatóban használt Knowledge Store-minta létrehozásával kapcsolatban tekintse meg a [Knowledge Store létrehozása a Azure Portalban](knowledge-store-create-portal.md)című témakört.
+Ebből a cikkből megtudhatja, hogyan csatlakozhat a tudásbázishoz, és hogyan derítheti fel a Storage Explorer használatával a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat és vizsgálhat meg egy Knowl
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Tudásbázis megtekintése, szerkesztése és lekérdezése Storage Explorer
 
-1. A Azure Portal nyissa meg azt a Storage-fiókot, amelyet a Knowledge Store létrehozásához használt.
+1. A Azure Portal [nyissa meg](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) azt a Storage-fiókot, amelyet a Knowledge Store létrehozásához használt.
 
 1. A Storage-fiók bal oldali navigációs paneljén kattintson a **Storage Explorer**elemre.
 
@@ -56,14 +56,10 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő cikkből megtudhatja, hogyan csatlakoztatható a Power BI a Knowledge Store-hoz.
-
-> [!div class="nextstepaction"]
-> [Kapcsolódás PowerBI-jal](knowledge-store-connect-power-bi.md)
-
-A következő cikkből megtudhatja, hogyan hozhat létre egy tudásbázist a REST API-k és a Poster használatával.  
+A Knowledge Store-t összekapcsolhatjuk a mélyebb elemzés érdekében, vagy a REST API és a Poster használatával egy másik Tudásbázis létrehozásával Power BI.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-howto.md)
+> [Kapcsolódjon Power BI](knowledge-store-connect-power-bi.md)
+> [hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-howto.md)

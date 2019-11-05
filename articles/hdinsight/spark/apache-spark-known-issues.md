@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575682"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494536"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Ismert problémák a Apache Spark-fürtön a HDInsight-on
 
@@ -32,7 +32,7 @@ A probléma megkerüléséhez kövesse az alábbi eljárást:
 
         yarn application –list
 
-    Az alapértelmezett feladatok neve Livy, ha a feladatok olyan interaktív Livy-munkamenettel kezdődtek, amelyben nincsenek megadva explicit nevek. A [Jupyter notebook](https://jupyter.org/)által elindított Livy-munkamenethez a feladatok neve a `remotesparkmagics_*`következővel kezdődik:.
+    Az alapértelmezett feladatok neve Livy, ha a feladatok olyan interaktív Livy-munkamenettel kezdődtek, amelyben nincsenek megadva explicit nevek. A [Jupyter notebook](https://jupyter.org/)által elindított Livy-munkamenethez a feladatnév a következővel kezdődik: `remotesparkmagics_*`.
 
 3. Futtassa a következő parancsot a feladatok leöléséhez.
 
@@ -81,17 +81,17 @@ Ne használjon nem ASCII-karaktereket a Jupyter notebook fájlnevében. Ha a Jup
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Hiba történt a nagyobb méretű jegyzetfüzetek betöltésekor
 
-Előfordulhat, hogy a hibával találkozik **`Error loading notebook`** Ha a jegyzetfüzet-nál nagyobb terhelése.  
+A nagyobb méretű jegyzetfüzetek betöltésekor **`Error loading notebook`** hibaüzenet jelenhet meg.  
 
 **Kockázatcsökkentő**
 
-Ha ezt a hibaüzenetet kapja, nem jelenti azt, hogy az adatai sérültek vagy elvesznek.  A jegyzetfüzetek még mindig a lemezen vannak `/var/lib/jupyter`a-ben, és az SSH-t a fürtbe is elérheti. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Ha ezt a hibaüzenetet kapja, nem jelenti azt, hogy az adatai sérültek vagy elvesznek.  A jegyzetfüzetek továbbra is `/var/lib/jupyter`lemezen vannak, és az SSH-t a fürtbe is elérheti. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Miután az SSH-val csatlakozott a fürthöz, a notebookot a fürtből a helyi gépre (SCP vagy megnyerő használatával) biztonsági másolatként másolhatja, hogy megakadályozza a jegyzetfüzetben található fontos adatok elvesztését. Ezután az 8001-as porton keresztül az SSH-alagúttal elérheti a átjárócsomóponthoz a Jupyter eléréséhez anélkül, hogy az átjárón kellene haladnia.  Innen törölheti a jegyzetfüzet kimenetét, és visszaállíthatja a notebook méretének minimalizálásához.
 
 Ha meg szeretné akadályozni, hogy ez a hiba a jövőben is megtörténjen, kövesse az ajánlott eljárásokat:
 
-* Fontos, hogy a jegyzetfüzet mérete kicsi legyen. A Spark-feladatok olyan kimenetét, amelyet visszaküld a Jupyter-be, megőrzi a jegyzetfüzetben.  Az ajánlott eljárás az általános Jupyter, hogy ne fusson `.collect()` a nagyméretű RDD vagy dataframes; Ehelyett ha egy RDD tartalmát szeretné megtekinteni, érdemes lehet a futtatást `.take()` vagy `.sample()` a kimenetet, hogy a kimenet ne legyen túl nagy.
+* Fontos, hogy a jegyzetfüzet mérete kicsi legyen. A Spark-feladatok olyan kimenetét, amelyet visszaküld a Jupyter-be, megőrzi a jegyzetfüzetben.  Az ajánlott eljárás a Jupyter általánosságban, hogy ne fusson `.collect()` a nagy RDD vagy dataframes; Ehelyett, ha egy RDD tartalmát szeretné megtekinteni, érdemes `.take()` vagy `.sample()` futtatni, hogy a kimenet ne legyen túl nagy.
 * Emellett a jegyzetfüzetek mentésekor törölje az összes kimeneti cella méretét a méret csökkentése érdekében.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>A jegyzetfüzet kezdeti indítása a vártnál hosszabb időt vesz igénybe
@@ -117,13 +117,13 @@ Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található S
 
 ## <a name="see-also"></a>Lásd még
 
-* [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
+* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

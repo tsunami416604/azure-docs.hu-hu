@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516762"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464995"
 ---
 # <a name="speech-services-for-telephony-data"></a>Beszédfelismerési szolgáltatások a telefonos szolgáltatásokhoz
 
@@ -38,9 +38,9 @@ A beszédfelismerési szolgáltatások funkcionális aspektusán felül az első
 
 * Hívás utáni elemzés, amely a hívási felvételek kötegelt feldolgozását
 * A hangjelek valós idejű elemzése a különböző elemzések kinyeréséhez, ahogy a hívás zajlik (a hangulat Kiemelt használati eset), és
-* Virtuális asszisztensek (bots), vagy az ügyfél és a robot közötti párbeszédet próbálják megoldani, hogy az ügyfél nem vesz részt az ügynök részvételével, vagy hogy az AI-protokollok alkalmazásával segítséget nyújtson az ügynöknek.
+* Hangvezérelt asszisztensek (bots), vagy az ügyfél és a robot közötti párbeszédet úgy próbálják megoldani, hogy az ügynök részvétele nélkül oldják meg az ügyfelet, vagy az AI-protokollok alkalmazása az ügynök támogatásához.
 
-A Batch-forgatókönyvek megvalósításának tipikus architektúrás diagramja az alábbi ábrán látható ![Call Center transzkripciós Architecture ](media/scenarios/call-center-transcription-architecture.png)
+A Batch-forgatókönyvek megvalósításának tipikus architektúrás diagramja az alábbi ábrán látható ![Call Center transzkripciós Architecture](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>A Speech Analytics technológiai összetevői
 
@@ -50,7 +50,7 @@ Ha a tartomány hívás vagy valós idejű, az Azure számos fejlett és feltör
 
 A hívási központ bármely megoldásában a leggyakrabban keresett [beszéd – szöveg](speech-to-text.md) . Mivel számos alsóbb rétegbeli elemzési folyamat támaszkodik az átadott szövegre, a Word-hibák aránya (WER) rendkívül fontos. A Call Center átiratának egyik fő kihívása a Call Centerben elterjedt zaj (például a háttérben megjelenő más ügynökök), a különböző nyelvi területi beállítások és dialektusok, valamint a tényleges telefonos jel alacsony minősége. A WER szorosan összefügg azzal, hogy az akusztikai és nyelvi modellek hogyan vannak betanítva egy adott területi beállításhoz, ezért fontos, hogy a modell testreszabható legyen a területi beállításhoz. A legújabb, egységes 4-es verziójú 4. x modellek az átírás pontosságát és késését jelentik. Több tízezer akusztikus adatmennyiséggel és több milliárd lexikális információval rendelkezik, és az egységes modellek a legpontosabb modellek a piacon a Call Center adatainak átírásához.
 
-### <a name="sentiment"></a>Vélemény
+### <a name="sentiment"></a>Hangulat
 Annak mérése, hogy az ügyfél jó tapasztalattal rendelkezik-e a Speech Analytics egyik legfontosabb területén, ha alkalmazva van a Call Center területére. A [Batch-átírási API](batch-transcription.md) -ban a vélemények elemzését is kimondjuk. Összeállíthatja a hívási átirat részeként kapott értékek halmazát, hogy meghatározza az ügynökök és az ügyfél hívásának hangulatát.
 
 ### <a name="silence-non-talk"></a>Csend (nem beszélő)
@@ -59,17 +59,17 @@ Nem ritka, hogy egy támogatási hívás 35%-ában a nem beszélgetési időpont
 ### <a name="translation"></a>Fordítás
 Néhány vállalat kísérletezik, hogy idegen nyelvekről származó lefordított átiratokat biztosít, így a kézbesítési vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](translation.md) képességek felülmúlhatatlanok. A hanganyagot hangra vagy hangra is lefordíthatja nagy számú területi beállításból származó szövegre.
 
-### <a name="text-to-speech"></a>Text to Speech
+### <a name="text-to-speech"></a>Szövegfelolvasás
 A [szöveg és a beszéd](text-to-speech.md) egy másik fontos része az ügyfelekkel kommunikáló robotok megvalósításának. A tipikus elérési út az, hogy az ügyfél beszél, a hangja szövegbe kerül, a szöveget pedig a szándékok alapján elemezzük, a rendszer a felismert szándék alapján szintetizálja a választ, majd egy adategységet az ügyfélnek vagy egy szintetizált hangválasztó létrehozott. Természetesen mindeznek gyorsan kell történnie – így a késés a rendszerek sikeres sikerességének fontos eleme.
 
 A végpontok közötti késés meglehetősen alacsony, figyelembe véve az olyan különböző technológiákat, mint például a [beszéd-szöveg](speech-to-text.md), a [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), a [bot Framework](https://dev.botframework.com/), a [szöveg és a beszéd](text-to-speech.md).
 
 Az új hangok is megkülönböztetni az emberi hangokat. Felhasználhatja a hangokat, hogy a robotja egyedi személyisége legyen.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Keresés
 Az elemzések egy másik része az olyan interakciók azonosítása, amelyekben egy adott esemény vagy tapasztalat történt. Ez általában két módszer egyikével történik, vagy egy ad hoc keresésre, ahol a felhasználó egyszerűen begépel egy kifejezést és a rendszer válaszait, vagy egy strukturált lekérdezést, ahol egy elemző olyan logikai utasításokat hozhat létre, amelyek azonosítják a hívást. , majd minden hívást indexelni lehet a lekérdezésekkel. Jó keresési példa a mindennapos megfelelőségi nyilatkozat, amely szerint a rendszer a felhívást minőségi célokra rögzíti... "– minél több vállalat szeretné meggyőződni arról, hogy az ügynökök a hívás tényleges rögzítése előtt biztosítják ezt a jogi nyilatkozatot az ügyfeleknek. A legtöbb elemzési rendszer képes a lekérdezési/Search algoritmusok által észlelt viselkedések trendjeire, mivel a trendek ezen jelentése végső soron az analitikai rendszer legfontosabb funkcióinak egyike. A [kognitív szolgáltatások címtárában](https://azure.microsoft.com/services/cognitive-services/directory/search/) a végpontok közötti megoldás jelentősen fokozható az indexelési és keresési képességekkel.
 
-### <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
+### <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 Ez a terület az egyik nagyobb kihívást jelentő elemzési alkalmazás, amely az AI és a ML alkalmazásából származik. Az elsődleges forgatókönyv az, hogy az ügyfél szándékát következteti ki. Miért hívja meg az ügyfelet? Mi az ügyfél problémája? Miért adta meg az ügyfél negatív felhasználói élményt? A [text Analytics szolgáltatás](https://azure.microsoft.com/services/cognitive-services/text-analytics/) számos elemzést biztosít a végpontok közötti gyors verziófrissítéshez a legfontosabb kulcsszavak vagy kifejezések kinyeréséhez.
 
 Most nézzük meg a kötegelt feldolgozást és a beszédfelismerés valós idejű folyamatait egy kicsit részletesebben.
@@ -92,7 +92,7 @@ Egy tipikus megoldás ezeket a szolgáltatásokat használja:
 * A [Webhookok](webhooks.md) az átírások elvégzése után kapják meg az értesítéseket.
 
 Belsőleg a fenti technológiákat használjuk a Microsoft ügyfél-hívások kötegelt módban történő támogatásához.
-![Batch architektúra ](media/scenarios/call-center-batch-pipeline.png)
+![batch-architektúra](media/scenarios/call-center-batch-pipeline.png)
 
 ## <a name="real-time-transcription-for-call-center-data"></a>A Call Center-adattovábbítás valós idejű átírása
 
@@ -139,7 +139,7 @@ A mintakód minden Azure Speech Services esetében elérhető a GitHubon. Ezek a
 * [REST API: szövegről beszédre](rest-text-to-speech.md)
 * [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)

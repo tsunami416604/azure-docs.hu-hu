@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2019
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: d1f3f1c00ab8d92ee598a3ef52c1e6f05303b004
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755593"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498397"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure biztonsági naplózás és naplózás
 
@@ -60,7 +60,7 @@ A következő táblázat az Azure-ban elérhető naplók legfontosabb típusait 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>A helyszíni SIEM-rendszerekkel való integráció naplózása
 A [Security Center riasztások integrálása](../../security-center/security-center-export-data-to-siem.md) azt ismerteti, hogyan lehet szinkronizálni Security Center riasztásokat, az Azure Diagnostics-naplók által gyűjtött virtuális gépek biztonsági eseményeit, valamint az Azure-naplókat az Azure monitor naplók vagy Siem-megoldás segítségével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Naplózás és naplózás](management-monitoring-overview.md): az adatvédelmet a láthatóság fenntartása és az időben gyorsan reagáló riasztások megválaszolásával biztosíthatja.
 

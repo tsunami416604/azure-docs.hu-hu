@@ -1,21 +1,21 @@
 ---
 title: Forgatókönyv rendelkezésre állása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatás régiók referenciája.
+description: A Speech Service régióira mutató hivatkozás.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959024"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491343"
 ---
 # <a name="scenario-availability"></a>Forgatókönyv rendelkezésre állása
 
@@ -31,13 +31,13 @@ A Speech Service SDK számos különböző forgatókönyvet tartalmaz a programo
   - Swift
   - Objective-C
   - A TTS REST API minden más helyzetben használható.
-- **Wake Word (kulcsszó-megfigyelő/KWS)**
+- **Kulcsszavas pecsételés (KWS)**
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (Speech Devices SDK)
-  - A Felébresztési szó (a felderítő/KWS) funkció bármilyen mikrofonos típussal működhet, a hivatalos KWS-támogatás azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
-- **Hang – első virtuális asszisztens**
+  - A "a" kulcsszó-bepecsételés (KWS) funkció bármilyen mikrofonos típussal működhet, a hivatalos KWS-támogatás azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
+- **Hangvezérelt asszisztensek**
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (Speech Devices SDK)

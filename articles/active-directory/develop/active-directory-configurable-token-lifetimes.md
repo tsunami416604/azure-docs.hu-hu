@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473955"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
 
@@ -66,11 +66,14 @@ Amikor egy ügyfél hozzáférési jogkivonatot kap egy védett erőforrás elé
 Fontos, hogy különbséget tegyen a bizalmas ügyfelek és a nyilvános ügyfelek között, mivel ez azt befolyásolja, hogy mennyi ideig használhatók a frissítési tokenek. További információ a különböző típusú ügyfelekről: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Jogkivonat-élettartamok bizalmas ügyfél-frissítési jogkivonatokkal
-A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatják az ügyfél jelszavát (titkos kulcs). Bizonyítani tudják, hogy a kérések a biztonságos ügyfélalkalmazás felől érkeznek, nem rosszindulatú színésztől. Egy webalkalmazás például egy bizalmas ügyfél, mert a webkiszolgálón tárolhatja az ügyfél titkos kulcsát. Nincs kitéve. Mivel ezek a folyamatok biztonságosabbak, az ezekre a folyamatokra kiállított frissítési tokenek alapértelmezett élettartama `until-revoked`, nem módosítható a szabályzat használatával, és nem vonható vissza az önkéntes jelszó-visszaállítások.
+A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatják az ügyfél jelszavát (titkos kulcs). Bizonyítani tudják, hogy a kérések a biztonságos ügyfélalkalmazás felől érkeznek, nem rosszindulatú színésztől. Egy webalkalmazás például egy bizalmas ügyfél, mert a webkiszolgálón tárolhatja az ügyfél titkos kulcsát. Nincs kitéve. Mivel ezek a folyamatok biztonságosabbak, az ezekre a folyamatokra kiállított frissítési jogkivonatok alapértelmezett élettartama `until-revoked`, a szabályzat nem módosítható, és a rendszer nem vonja vissza az önkéntes jelszó-visszaállítást.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokenek élettartama nyilvános ügyfél-frissítési jogkivonatokkal
 
 A nyilvános ügyfelek nem tudják biztonságosan tárolni az ügyfél jelszavát (titkos kulcs). Egy iOS-/Android-alkalmazás például nem tud titkos kulcsot kialakítani az erőforrás-tulajdonostól, ezért nyilvános ügyfélnek számít. Az erőforrásokra vonatkozó szabályzatok megadásával megakadályozhatja, hogy a frissítési tokenek a megadott időszaknál régebbi nyilvános ügyfelekről szerezzenek új hozzáférési vagy frissítési jogkivonat-párokat. (Ehhez használja a refresh token Max inaktív idő tulajdonságát (`MaxInactiveTime`).) Házirendeket is használhat egy olyan időszak megadására, amelyen túl a frissítési tokenek már nem lesznek elfogadva. (Ehhez használja a refresh token Max Age tulajdonságát.) A frissítési token élettartama beállítható annak szabályozására, hogy a felhasználó mikor és milyen gyakran írja elő a hitelesítő adatok újbóli hitelesítését, ahelyett, hogy a rendszer egy nyilvános ügyfélalkalmazás használatával visszaadja a hitelesítő adatokat.
+
+> [!NOTE]
+> A Max Age tulajdonság azt az időtartamot használja, ameddig egyetlen jogkivonat használható. 
 
 ### <a name="id-tokens"></a>Azonosító jogkivonatok
 Az azonosító jogkivonatok átadása a webhelyeknek és a natív ügyfeleknek. Az azonosító jogkivonatok egy felhasználó profiljára vonatkozó adatokat tartalmaznak. Az azonosító jogkivonat a felhasználó és az ügyfél adott kombinációjára van kötve. Az azonosító jogkivonatok érvényessége csak a lejárat után tekinthető érvényesnek. A webalkalmazások általában a felhasználó munkamenetének élettartamát tükrözik az alkalmazásban a felhasználó számára kiállított azonosító jogkivonat élettartama alapján. Az azonosító token élettartama beállítható annak szabályozására, hogy a webalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges, hogy a felhasználó újra hitelesítve legyen az Azure AD-vel (csendes vagy interaktív módon).
@@ -121,7 +124,7 @@ További információ az alkalmazásobjektumok és a szolgáltatás-objektumok k
 
 A jogkivonat érvényességét a rendszer a jogkivonat használatának időpontjában értékeli ki. Az elérni kívánt alkalmazás legmagasabb prioritású szabályzata érvénybe lép.
 
-Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan) objektum – D. HH: PP: mm.  Tehát 80 nap és 30 perc `80.00:30:00`.  A vezető D-t nullára lehet dobni, így 90 perc `00:90:00`.  
+Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan) objektum – D. HH: PP: mm.  Tehát 80 nap és 30 perc lenne `80.00:30:00`.  A vezető D-t nullára lehet dobni, így 90 perc `00:90:00`.  
 
 > [!NOTE]
 > Példa erre a forgatókönyvre.
@@ -219,7 +222,7 @@ Az alábbi példákban létrehozhat, frissíthet, csatolhat és törölhet szab�
 A kezdéshez hajtsa végre a következő lépéseket:
 
 1. Töltse le a legújabb [Azure ad PowerShell-modul nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Az `Connect` parancs futtatásával jelentkezzen be az Azure AD-rendszergazdai fiókjába. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
+2. Futtassa az `Connect` parancsot az Azure AD-beli rendszergazdai fiókjába való bejelentkezéshez. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -364,7 +367,7 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. A `IsOrganizationDefault` jelző beállítása false (hamis) értékre:
+3. A `IsOrganizationDefault` jelző beállítása false értékre:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
@@ -378,7 +381,7 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
     Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
-## <a name="cmdlet-reference"></a>A parancsmagok leírása
+## <a name="cmdlet-reference"></a>Parancsmag-referencia
 
 ### <a name="manage-policies"></a>Házirendek kezelése
 

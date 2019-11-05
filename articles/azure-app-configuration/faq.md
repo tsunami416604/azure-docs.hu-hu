@@ -1,67 +1,75 @@
 ---
-title: Azure-alkalmazás konfigurációja – gyakori kérdések |} A Microsoft Docs
-description: Gyakori kérdések az Azure-alkalmazások konfigurálása
+title: Azure-alkalmazás konfigurálása – GYIK | Microsoft Docs
+description: Az Azure-alkalmazás konfigurálásával kapcsolatos gyakori kérdések
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e321c0b473b110597b5b87a6e67666737116daa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbfb6a1c4c53b1bd255560e688d3dc0cf3835a3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393351"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469631"
 ---
-# <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurációja – gyakori kérdések
+# <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
-Ez a cikk foglalkozik az Azure-alkalmazások konfigurálása – gyakori kérdések.
+Ez a cikk az Azure-alkalmazás konfigurálásával kapcsolatos gyakori kérdéseket tárgyalja.
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Miben tér el az App Configuration az Azure Key Vaulttól?
 
-Használati esetek külön készlete készült alkalmazások konfigurálása: segít a fejlesztőknek Alkalmazásbeállítások felügyelheti és ellenőrizheti a szolgáltatás rendelkezésre állási. A cél egyszerűsítése érdekében számos feladata az összetett konfigurációs adatok használatát.
+Az alkalmazás konfigurációja különböző használati esetekhez készült: segít a fejlesztőknek az Alkalmazásbeállítások és a vezérlési funkciók rendelkezésre állásának kezelésében. Célja, hogy leegyszerűsítse az összetett konfigurációs adatok használatának számos feladatát.
 
-Alkalmazáskonfiguráció támogatja:
+Az alkalmazás konfigurációja a következőket támogatja:
 
-- Hierarchikus névtér
-- Címkézés
-- Széles körű lekérdezések
-- A Batch lekéréséhez
-- Speciális felügyeleti műveleteket
-- A szolgáltatás-felügyelet felhasználói felületét
+- Hierarchikus névterek
+- címkézés
+- Részletes lekérdezések
+- Kötegelt lekérés
+- Speciális felügyeleti műveletek
+- Egy szolgáltatás-felügyeleti felhasználói felület
 
-Alkalmazáskonfiguráció kiegészíti a Key Vaultban, és a két egymás mellett a legtöbb központi alkalmazástelepítéshez használandó.
+Az alkalmazás konfigurációja kiegészíti a Key Vault, a kettőt pedig a legtöbb alkalmazás-telepítésnél egymás mellett kell használni.
 
-## <a name="should-i-store-secrets-in-app-configuration"></a>Ezért titkos kulcsokat is tárolja az Alkalmazáskonfigurációt?
+## <a name="should-i-store-secrets-in-app-configuration"></a>A titkokat az alkalmazás konfigurációjában kell tárolni?
 
-Alkalmazáskonfiguráció megerősített biztonságot nyújt, bár a Key Vault még mindig a legjobb hely az alkalmazás titkainak tárolásához. Key Vault lehetővé teszi a hardver-titkosítást, részletes hozzáférés-házirendek és felügyeleti műveletek, például a tanúsítvány rotációja.
+Bár az alkalmazás konfigurációja megerősített biztonságot nyújt, Key Vault még mindig az alkalmazási titkok tárolására szolgáló legjobb hely. A Key Vault hardveres titkosítást, részletes hozzáférési házirendeket és felügyeleti műveleteket biztosít, például a tanúsítvány elforgatását.
 
-## <a name="does-app-configuration-encrypt-my-data"></a>Alkalmazáskonfiguráció titkosítja az adataimat?
+## <a name="does-app-configuration-encrypt-my-data"></a>Titkosítja az alkalmazás konfigurációja az adataimat?
 
-Igen. Alkalmazáskonfiguráció tart fenn minden kulcsérték titkosítja, és hogy titkosítja a hálózati kommunikáció. A kulcsnevek indexeket, konfigurációs adatainak beolvasása céljából használja, és nem titkosított.
+Igen. Az alkalmazás konfigurációja titkosítja az összes általa birtokolt kulcs értékét, és titkosítja a hálózati kommunikációt. A kulcsok nevei indexként használatosak a konfigurációs adatok beolvasásához, és nincsenek titkosítva.
 
-## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Hogyan kell tárolni a konfiguráció több környezethez (tesztelési, átmeneti, éles és így tovább)?
+## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Vannak korlátozások az alkalmazás konfigurációjában tárolt kulcsokra és értékekre?
 
-Jelenleg szabályozhatja, ki férhet hozzá konfigurálása tároló szinten. Használjon külön tárolhatják az egyes környezetekhez, amely a különböző engedélyekkel kell rendelkeznie. Ez a megközelítés biztosítja a legjobb biztonsági elkülönítés.
+Egyetlen kulcs-érték elemhez 10KB korlát van.
 
-## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Mik azok a javasolt módszereket használhatja az Alkalmazáskonfigurációt?
+## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Hogyan tárolhatom a konfigurációkat több környezethez (tesztelés, előkészítés, gyártás stb.)?
+
+Jelenleg szabályozhatja, hogy ki és hogyan férhet hozzá az alkalmazás-konfigurációhoz egy áruházi szinten. Használjon külön tárolót minden olyan környezethez, amelyhez eltérő engedélyek szükségesek. Ez a megközelítés biztosítja a legjobb biztonsági elkülönítést.
+
+## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Mik az alkalmazások konfigurációjának használatának ajánlott módjai?
 
 Lásd: [ajánlott eljárások](./howto-best-practices.md).
 
-## <a name="how-much-does-app-configuration-cost"></a>Alkalmazáskonfiguráció mennyibe?
+## <a name="how-much-does-app-configuration-cost"></a>Mennyibe kerül az alkalmazás konfigurációja?
 
-A szolgáltatás használata a nyilvános előzetes verzió ideje alatt ingyenes.
+A szolgáltatás ingyenesen használható a nyilvános előzetes verzióban.
 
-## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>Hogyan lehet probléma jelentéséhez vagy adjon meg egy javaslatot?
+## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Hogyan kaphatok értesítéseket az új kiadásokról és az alkalmazás konfigurálásával kapcsolatos egyéb információkról?
 
-Akkor is kapcsolatba lépni velünk közvetlenül a [GitHub](https://github.com/Azure/AppConfiguration/issues).
+Fizessen elő a [GitHub-hirdetmények](https://github.com/Azure/AppConfiguration-Announcements)tárházában.
+
+## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>Hogyan jelenthetem a problémát vagy javaslatot?
+
+Közvetlenül a [githubon](https://github.com/Azure/AppConfiguration/issues)érhet el minket.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure-alkalmazás konfigurálásával kapcsolatban](./overview.md)
+* [Az Azure-alkalmazások konfigurációjának ismertetése](./overview.md)

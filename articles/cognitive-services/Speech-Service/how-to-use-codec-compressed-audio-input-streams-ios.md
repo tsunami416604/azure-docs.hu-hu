@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803810"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464278"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>A codec tömörített hangbemenetének használata az iOS-es Speech SDK-val
 
@@ -39,29 +39,29 @@ Licencelési okokból ezek a függvények nem tölthetők le az SDK-val, de az e
 A burkoló könyvtár létrehozásához először töltse le és telepítse a [GSTREAMER SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)-t.
 Ezután töltse le a [burkoló könyvtár](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper)Xcode-projektjét.
 Nyissa meg a projektet a Xcode-ben, és hozza létre az **általános iOS-eszközök** céljához – ez nem fog működni, hogy egy adott célra felépítse.
-A Build lépés egy dinamikus keretrendszerű köteget hoz létre egy dinamikus könyvtárral a `GStreamerWrapper.framework` nevű összes szükséges architektúrához.
+A Build lépés dinamikus keretrendszerű köteget hoz létre egy dinamikus könyvtárral a `GStreamerWrapper.framework`nevű összes szükséges architektúrához.
 Ezt a keretrendszert minden olyan alkalmazásnak tartalmaznia kell, amely a Speech Services SDK-val tömörített hangadatfolyamokat használ.
 
 A következő beállítások alkalmazása a Xcode-projektben a következőképpen valósítható meg:
 
-1. Másolja ki az imént létrehozott `GStreamerWrapper.framework` csomagot, valamint a Cognitive Services Speech SDK keretrendszerét, amelyet [innen](https://aka.ms/csspeech/iosbinary)tölthet le a minta projektet tartalmazó könyvtárba.
+1. Másolja mind az imént létrehozott `GStreamerWrapper.framework`, mind a Cognitive Services Speech SDK keretrendszerét, amelyet [innen](https://aka.ms/csspeech/iosbinary)tölthet le a minta projektet tartalmazó könyvtárba.
 1. Állítsa be a keretrendszerek elérési útját a *projekt beállításai*között.
-    1. A **beágyazott bináris fájlok** fejlécének **általános** LAPJÁN adja hozzá az SDK-tárat keretrendszerként: **Beágyazott bináris fájlok hozzáadása** >  **...** > navigáljon a kiválasztott könyvtárhoz, és válassza ki mindkét keretrendszert.
+    1. A **beágyazott bináris fájlok** fejlécének **általános** LAPJÁN adja hozzá az SDK-tárat keretrendszerként: **beágyazott bináris fájlok hozzáadása** > **továbbiak hozzáadása...** > navigáljon a kiválasztott könyvtárhoz, és válassza ki mindkét keretrendszert.
     1. Lépjen a **Build Settings** lapra, és engedélyezze az **összes** beállítást.
 1. Vegye fel a könyvtárat `$(SRCROOT)/..` a keretrendszer-keresési útvonalak közé (*Framework Search Paths* a **Search Paths** részben).
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
-Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre egy `SPXPullAudioInputStream` vagy `SPXPushAudioInputStream` értéket.
-Az alábbi kódrészletből megtudhatja, hogyan hozhat létre egy `SPXAudioConfiguration` egy `SPXPushAudioInputStream`-példányból, amely az adatfolyam tömörítési formátumának megfelelő MP3-értéket ad meg.
+Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre egy `SPXPullAudioInputStream` vagy `SPXPushAudioInputStream`.
+Az alábbi kódrészletből megtudhatja, hogyan hozhat létre egy `SPXAudioConfiguration`t egy `SPXPushAudioInputStream`egy példányáról, és hogyan adható meg az adatfolyam tömörítési formátuma az MP3-ban.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=66-77&highlight=2-11)]
 
-A következő kódrészlet azt mutatja be, hogyan olvashatók be a tömörített hangadatok egy fájlból, és hogyan tölthetők be a `SPXPushAudioInputStream`.
+A következő kódrészlet azt mutatja be, hogyan olvashatók be a tömörített hangadatok egy fájlból, és hogyan tölthetők be a `SPXPushAudioInputStream`ba.
 
 [!code-objectivec[Push compressed audio data into the stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=105-151&highlight=19-44)]
 
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)
+* [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -1,7 +1,7 @@
 ---
 title: Új alkalmazás létrehozása – LUIS
 titleSuffix: Azure Cognitive Services
-description: Létrehozhat és kezelhet az alkalmazások, a Language Understanding (LUIS) weblapon.
+description: Alkalmazások létrehozása és kezelése a Language Understanding (LUIS) weblapon.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,31 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258504"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500315"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
-Nincsenek többféle módon LUIS-alkalmazások létrehozásához. A LUIS-alkalmazásokon hozhat létre a [LUIS](https://www.luis.ai) portál, vagy a LUIS szerzői [API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a [Luis](https://www.luis.ai) -portálon vagy a Luis authoring [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-kon keresztül hozhat létre.
 
-## <a name="using-the-luis-portal"></a>A LUIS-portál használatával
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-A LUIS portálon többféle módon hozhat létre egy új alkalmazást:
+## <a name="using-the-luis-portal"></a>A LUIS-portál használata
 
-* Üres alkalmazás kezdődhet, és szándék fog vonatkozni, utterances és entitások létrehozásához.
-* Kezdje egy üres alkalmazást, és adja hozzá a [előre összeállított tartomány](luis-how-to-use-prebuilt-domains.md).
-* A LUIS-alkalmazás importálása egy JSON-fájlt, amely már tartalmazza a szándék fog vonatkozni, utterances és entitásokat.
+A LUIS-portálon többféleképpen is létrehozhat egy új alkalmazást:
 
-## <a name="using-the-authoring-apis"></a>Az Authoring Tool API-k használatával
-Az Authoring Tool API-khoz többféle módon hozhat létre egy új alkalmazást:
+* Kezdjen egy üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
+* Kezdjen egy üres alkalmazással, és adjon hozzá egy [előre elkészített tartományt](luis-how-to-use-prebuilt-domains.md).
+* Importáljon egy LUIS-alkalmazást egy olyan JSON-fájlból, amely már tartalmaz szándékokat, hosszúságú kimondott szöveg és entitásokat.
 
-* [Indítsa el](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) egy üres alkalmazást és szándék fog vonatkozni, utterances és entitások létrehozásához.
-* [Indítsa el](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) egy előre elkészített tartománnyal.  
+## <a name="using-the-authoring-apis"></a>A szerzői API-k használata
+Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
+
+* [Kezdjen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) egy üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
+* [Kezdje](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) egy előre elkészített tartománnyal.  
 
 
 <a name="export-app"></a>
@@ -43,18 +45,18 @@ Az Authoring Tool API-khoz többféle módon hozhat létre egy új alkalmazást:
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS
+## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS-ban
 
-1. A **saját alkalmazások** lapon jelölje be **új alkalmazás létrehozása**.
+1. A **saját alkalmazások** oldalon válassza a **+ Létrehozás**elemet.
 
     ![LUIS-alkalmazások listája](./media/luis-create-new-app/apps-list.png)
 
 
-2. A párbeszédpanelen adjon nevet az alkalmazás "TravelAgent".
+2. A párbeszédpanelen nevezze el az alkalmazást "TravelAgent" néven.
 
-    ![Hozzon létre új alkalmazás párbeszédpanel](./media/luis-create-new-app/create-app.png)
+    ![Új alkalmazás létrehozása párbeszédpanel](./media/luis-create-new-app/create-app.png)
 
-3. Válassza ki az alkalmazás kulturális környezet (TravelAgent alkalmazások esetén válassza az angol nyelvű), majd válassza ki **kész**. 
+3. Válassza ki az alkalmazás kulturális környezetét (a TravelAgent alkalmazáshoz válassza az angol nyelvet), majd kattintson a **kész**gombra. 
 
     > [!NOTE]
     > A kulturális környezet az alkalmazás létrehozása után nem módosítható. 
@@ -92,4 +94,4 @@ Lehetséges hibák:
 
 ## <a name="next-steps"></a>További lépések
 
-Az első az alkalmazás feladata [leképezések hozzáadása](luis-how-to-add-intents.md).
+Az alkalmazás első feladata a [leképezések hozzáadása](luis-how-to-add-intents.md).

@@ -1,6 +1,6 @@
 ---
-title: Méretezés Machine Learning-függvények az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk ismerteti, amelyek Machine Learning-függvényekkel, a particionálás és a stream egységek konfigurálásával Stream Analytics-feladatok méretezése.
+title: Machine Learning függvények méretezése Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan méretezhetők a Machine Learning függvényeket használó Stream Analytics feladatok a particionálási és a stream-egységek konfigurálásával.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,60 +8,60 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3d478c2421066c8347622f9064c479bb8255b112
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621750"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467877"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>A Stream Analytics-feladatot az Azure Machine Learning Studio functions méretezése
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
-Ez a cikk ismerteti a hatékony méretezése az Azure Stream Analytics-feladatok, amelyek használják az Azure Machine Learning-függvényekkel. A Stream Analytics-feladatok méretezése az általános információkat lásd: a cikk [feladatok méretezése](stream-analytics-scale-jobs.md).
+Ez a cikk azt ismerteti, hogyan lehet hatékonyan méretezni Azure Stream Analytics Azure Machine Learning függvényeket használó feladatokat. A Stream Analytics feladatok általános méretezésével kapcsolatos információkért tekintse meg a [feladatok skálázását](stream-analytics-scale-jobs.md)ismertető cikket.
 
-## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Mi az az Azure Machine Learning-függvény a Stream Analytics?
+## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Mi az a Azure Machine Learning függvény a Stream Analyticsban?
 
-A Stream Analytics a Machine Learning-függvény is használható, mint egy normál függvény hívásához szükséges a Stream Analytics lekérdezési nyelv a. A háttérben azonban az ezen függvényhívásokat is a valójában az Azure Machine Learning Web Service kérelmeket.
+A Stream Analytics Machine Learning függvénye, például a Stream Analytics lekérdezési nyelvben egy normál függvény hívásához is használható. A színfalak mögött azonban ezek a függvények ténylegesen Azure Machine Learning webszolgáltatási kérelmeket.
 
-"Kötegelés" együtt, az azonos web service API-hívás több sort is javítható az átviteli sebességének Machine Learning webszolgáltatási kérelmeket. Ez a csoportosítás mini köteg neve. További információkért lásd: [Azure Machine Learning Studio-webszolgáltatások](../machine-learning/studio/consume-web-services.md). Az Azure Machine Learning Studio a Stream Analytics támogatása előzetes verzióban van.
+Az Machine Learning webszolgáltatási kérelmek átviteli sebességét a "batching" több sorból is javíthatja ugyanabban a webszolgáltatás API-hívásban. Ezt a csoportosítást mini-batch-nek nevezzük. További információ: [Azure Machine learning Studio (klasszikus) webszolgáltatások](../machine-learning/studio/consume-web-services.md). A Stream Analytics Azure Machine Learning Studio (klasszikus) támogatása előzetes verzióban érhető el.
 
-## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning-függvényekkel a Stream Analytics-feladat konfigurálása
+## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Stream Analytics-feladatok konfigurálása Machine Learning függvényekkel
 
-Nincsenek konfigurálása a Stream Analytics-feladat által használt Machine Learning-függvény két paramétert:
+A Stream Analytics feladat által használt Machine Learning függvényt két paraméterrel konfigurálhatja:
 
-* Meghívja a Köteg mérete, a Machine Learning-függvény.
-* A folyamatos átviteli egységek számát (su) a Stream Analytics-feladat kiépítve.
+* A Machine Learning függvény meghívásának batch-mérete.
+* A Stream Analytics feladatokhoz kiépített folyamatos átviteli egységek (SUs) száma.
 
-A megfelelő értékek meghatározásáról SUS-t a, döntse el, hogy szeretné-e a Stream Analytics-feladat késleltetése vagy átviteli sebességének SU optimalizálása. SUS-t mindig hozzá egy feladatot, amely egy jól particionált Stream Analytics-lekérdezés növeléséhez. További SUs növelje meg a feladat futtatásával járó költségeket.
+Az SUs megfelelő értékeinek meghatározásához döntse el, hogy szeretné-e optimalizálni a Stream Analytics feladatok késését vagy az egyes SU átviteli sebességét. Az SUs mindig hozzáadható egy feladatokhoz, így növelheti a jól particionált Stream Analytics lekérdezések átviteli sebességét. A további SUs megnövelheti a feladatok futtatásának költségeit.
 
-A késés meghatározása *tolerancia* a Stream Analytics-feladat. A köteg méretének növelésével növeli a az Azure Machine Learning szolgáltatás kérések késleltetésére és a Stream Analytics-feladat késését.
+Határozza meg a Stream Analyticsi feladatokhoz tartozó késési *toleranciát* . A köteg méretének növelése növeli a Azure Machine Learning kérelmek késését és a Stream Analytics feladatok késését.
 
-A köteg méretének növelése lehetővé teszi, hogy a Stream Analytics-feladat feldolgozása **további események** együtt a **azonos számú** a gépi tanulás webes kérelmeket. A Machine Learning web service késés növekedése általában sublinear a köteg méretének növekedésével. 
+A Batch méretének növelése lehetővé teszi, hogy a Stream Analytics feladatok **több eseményt** is feldolgozzanak **ugyanazzal a számú** Machine learning webszolgáltatási kéréssel. A Machine Learning webszolgáltatás késésének növekedése általában lineáris a Batch méretének növeléséhez. 
 
-Fontos figyelembe venni a leginkább költséghatékony kötegméret bármilyen adott helyzetben a Machine Learning webszolgáltatáshoz. A webszolgáltatási kérelmeket kötegméret az alapértelmezett érték 1000. Az alapértelmezett méret használatával módosíthatja a [Stream Analytics REST API](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "Stream Analytics REST API") vagy a [Stream Analytics-ügyfél PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md).
+Fontos figyelembe venni a Machine Learning webszolgáltatások leghatékonyabb batch-méretét az adott helyzetben. A webszolgáltatási kérelmek alapértelmezett mérete 1000. Ezt az alapértelmezett méretet a Stream Analytics [Stream Analytics REST API](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "Stream Analytics – REST API") vagy a [PowerShell-ügyfél](stream-analytics-monitor-and-manage-jobs-use-powershell.md)használatával módosíthatja.
 
-Miután kiválasztotta, az a Köteg mérete, is megadhatja a streamelési egységek (su), a függvénynek szüksége van az események száma alapján száma másodpercenként feldolgozása. További információ a streamelési egységek: [Stream Analytics feladatok méretezése](stream-analytics-scale-jobs.md).
+Ha úgy döntött, hogy a Batch-méretet választotta, beállíthatja a folyamatos átviteli egységek számát azon események száma alapján, amelyeket a függvénynek másodpercenként kell feldolgoznia. További információ a folyamatos átviteli egységekről: [stream Analytics skálázási feladatok](stream-analytics-scale-jobs.md).
 
-Minden 6 SUS-t kaphat a Machine Learning web Service 20 egyidejű kapcsolatok. 1 SU-feladat, és 3 SU feladat első 20 egyidejű kapcsolatok.  
+Minden 6 SUs 20 egyidejű kapcsolatot kap a Machine Learning webszolgáltatással. Azonban 1 SU feladat és 3 SU feladat 20 egyidejű kapcsolatot kap.  
 
-Ha az alkalmazás másodpercenként 200 000 eseményeket hoz létre, és a Köteg mérete 1000, a web service késés 200 ms. Ez a díjszabás, az azt jelenti, hogy minden olyan kapcsolatot kezdeményezhetik öt kérés a Machine Learning web Service másodpercenként. 20 egyéni kapcsolattal a Stream Analytics-feladat feldolgozhatja a 200 ms 20 000 események és 100 000 események másodpercenként.
+Ha az alkalmazás másodpercenként 200 000 eseményt hoz létre, és a köteg mérete 1000, akkor az eredményül kapott webszolgáltatás késése 200 MS. Ez az arány azt jelenti, hogy minden kapcsolat öt kérést tesz elérhetővé a Machine Learning webszolgáltatásnak másodpercenként. A 20 kapcsolattal a Stream Analytics feladatokkal 20 000 eseményt dolgozhat fel 200 MS-és 100 000-eseményekbe egy másodperc alatt.
 
-200 000, másodpercenként események feldolgozását, a Stream Analytics-feladat 40 egyidejű kapcsolat, amely 12 SUS-t térjen kell rendelkeznie. Az alábbi ábra a Stream Analytics-feladat kérelmeit, a Machine Learning web service-végpont – 6 SUS-t minden rendelkezik Machine Learning web Service 20 egyidejű kapcsolatok maximális száma.
+Az 200 000-események másodpercenkénti feldolgozásához a Stream Analytics feladatoknak 40 egyidejű kapcsolatokra van szükségük, amelyek a 12 SUs-hez tartoznak. Az alábbi ábra a Stream Analytics-feladatokból a Machine Learning webszolgáltatás-végpontra irányuló kérelmeket mutatja be – minden 6 SUs 20 egyidejű kapcsolattal rendelkezik a Machine Learning webszolgáltatás max.
 
-![Stream Analytics méretezés Machine Learning-függvényekkel két feladat például](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "méretezési Stream Analytics a Machine Learning-függvényekkel két feladat példa")
+![Stream Analytics méretezése a Machine Learning functions két feladatának példája](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Stream Analytics méretezése a Machine Learning functions két feladatának példája")
 
-Általánosságban véve ***B*** a Köteg mérete, ***L*** webes szolgáltatás késésének a Köteg mérete B (MS), az átviteli sebességet egy Stream Analytics feladat ***N*** SUs van:
+A ***"b"*** köteg mérete, a webszolgáltatási késés a (z) "b" köteg méretében ***, Stream Analytics*** a (z)
 
-![Méretezheti a Stream Analytics a Machine Learning függvények képletben](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Stream Analytics a Machine Learning függvények képletben méretezése")
+![Stream Analytics méretezése Machine Learning functions-képlettel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Stream Analytics méretezése Machine Learning functions-képlettel")
 
-A "max párhuzamos hívások" a Machine Learning web service is elvégezheti. Azt javasoljuk, hogy a paraméter értéke a maximális értéket (200-as jelenleg).
+Az Machine Learning webszolgáltatáson az "egyidejű hívások maximális száma" beállítás is megadható. Ajánlott ezt a paramétert a maximális értékre beállítani (jelenleg 200).
 
-Ezzel a beállítással kapcsolatban további információért tekintse át a [méretezés a cikk a Machine Learning webszolgáltatások](../machine-learning/studio/scaling-webservice.md).
+A beállítással kapcsolatos további információkért tekintse át [Machine learning webszolgáltatások méretezési cikkét](../machine-learning/studio/scaling-webservice.md).
 
 ## <a name="example--sentiment-analysis"></a>Példa – Hangulatelemzés
-Az alábbi példában megtalálhatja az hangulatelemzés Machine Learning-függvény, a Stream Analytics-feladat leírtak szerint a [Stream Analytics Machine Learning integrációs oktatóanyagát](stream-analytics-machine-learning-integration-tutorial.md).
+Az alábbi példa egy Stream Analytics feladatot tartalmaz az a [Stream Analytics Machine learning Integration oktatóanyagban](stream-analytics-machine-learning-integration-tutorial.md)ismertetett, a hangulat elemzése Machine learning függvénnyel.
 
-A lekérdezés végrehajtása egy egyszerű teljes követ lekérdezés particionálva az **vélemények** működik, az alábbi példában látható módon:
+A lekérdezés egy egyszerű, teljes particionált lekérdezés, amelyet az **érzelem** függvény követ, ahogy az az alábbi példában is látható:
 
 ```SQL
     WITH subquery AS (
@@ -73,75 +73,75 @@ A lekérdezés végrehajtása egy egyszerű teljes követ lekérdezés particion
     From subquery
 ```
 
-Most vizsgálja meg a Stream Analytics-feladat, mely segített hangulatelemzés / 10 000 tweetek gyakorisággal tweetet a második létrehozásához szükséges konfigurációt.
+Vizsgáljuk meg a Stream Analytics feladatok létrehozásához szükséges konfigurációt, amely a tweetek elemzését a másodpercenként 10 000 tweetek alapján végzi.
 
-1 SU használja, a Stream Analytics-feladat kezelheti a forgalom? A feladat továbbra is a bemeneti kötegmérettel az alapértelmezett 1000. Alapértelmezett késését a hangulatelemzés Machine Learning webszolgáltatás (az alapértelmezett kötegméret 1000) legfeljebb egy másodperc késéssel hoz létre.
+Az 1 SU használatával a Stream Analytics-feladatok kezelni tudják a forgalmat? A művelet az alapértelmezett batch 1000-as mérettel lépést tarthat a bemenettel. Az érzelmek elemzése Machine Learning webszolgáltatás alapértelmezett késése (a 1000-as alapértelmezett mérettel) nem hoz létre több késést.
 
-A Stream Analytics-feladat **általános** vagy a végpontok közötti késés általában lehet néhány másodpercre. Részletesebb figyelje azokat a Stream Analytics-feladat *különösen* a Machine Learning függvényhívásokat. A Köteg mérete 1000, az egy átviteli sebesség 10 000 esemény körülbelül 10 kérést a webszolgáltatás vesz igénybe. Egy SU mellett is van elég egyidejű kapcsolatok, amelyek a bemeneti forgalmat.
+A Stream Analytics-feladathoz tartozó **teljes** vagy végpontok közötti késés általában néhány másodperc. Részletesebben tekintse át ezt a Stream Analytics feladatot, *különösen* a Machine learning függvény hívásait. A Batch mérete 1000, a 10 000-es események átviteli sebessége körülbelül 10 kérelmet tesz a webszolgáltatásnak. Még egy SU esetében is elég egyidejű kapcsolat áll rendelkezésre a bemeneti forgalom befogadásához.
 
-Ha a bemeneti események száma növekszik a 100-szor, majd a Stream Analytics-feladat kell feldolgozni másodpercenként 1 000 000 tweeteket. A nagyobb méretezés elvégzéséhez két lehetőség van:
+Ha a bemeneti esemény sebessége a 100x értékkel növekszik, akkor a Stream Analytics feladatnak másodpercenként 1 000 000 tweetet kell feldolgoznia. A megnövekedett méretezés két lehetőséggel valósítható meg:
 
-1. A köteg méretének növeléséhez.
-2. Az események párhuzamos feldolgozásához adatfolyam-partíció.
+1. Növelje a köteg méretét.
+2. Particionálja a bemeneti adatfolyamot, hogy párhuzamosan dolgozza fel az eseményeket.
 
-Az első lehetőség, a feladat a **késés** növeli.
+Az első lehetőséggel a feladatok **késése** növekszik.
 
-A második lehetőség lesz rendelkező kiépítése több SUS-t szeretné, hogy több egyidejű Machine Learning webszolgáltatási kérelmeket. SUS-t, a nagyobb számú növeli a feladat **költség**.
+A második lehetőséggel további SUs-t kell kiépíteni, hogy több párhuzamos Machine Learning webszolgáltatási kérelem legyen. Ez a nagyobb számú SUs, növeli a feladatok **költségeit**.
 
-Nézzük meg a méretezési használja a következő késési mérések minden egyes köteg mérete:
+Nézzük meg a skálázást az egyes batch-méretek következő késési mértékének használatával:
 
 | Késés | Köteg mérete |
 | --- | --- |
-| 200 ms | 1000-esemény kötegek és korábbi verziók |
-| 250 ms | 5000-esemény kötegek |
-| 300 ms | 10 000-esemény kötegek |
-| 500 ms | 25 000-esemény kötegek |
+| 200 MS | 1000 – eseményvezérelt kötegek vagy alul |
+| 250 MS | 5 000 – eseményvezérelt kötegek |
+| 300 MS | 10 000 – eseményvezérelt kötegek |
+| 500 ms | 25 000 – eseményvezérelt kötegek |
 
-1. Az első lehetőség használatával (**nem** kiépítése több SUS-t). Sikerült a Köteg mérete növelhető **25 000**. Ezzel a módszerrel a köteg méretének növelésével a feladat 20 egyidejű kapcsolatok a Machine Learning web Service 1 000 000 eseményeinek feldolgozása (500 ms hívásonként késéssel) lehetővé teszi. Így a Stream Analytics-feladat miatt a Machine Learning webszolgáltatási kérelmeket vélemények függvény kérelmeket a további késleltetés szeretné növelni a **200 ms** való **500 ms**. Azonban a kötegméret **nem** korlátlanul a Machine Learning-webszolgáltatások megköveteli a kérelem hasznos adat mérete 4 MB vagy kisebb növelni, valamint a szolgáltatás-kérelmek időtúllépési webes művelet 100 másodperc múlva.
-1. Használja a második lehetőség, a kötegméret marad, 1000, 200 ezredmásodperces webes szolgáltatás késéssel, a web Service minden 20 egyidejű kapcsolatok tudná események feldolgozása 1000 * 20 * 5 = 100 000, másodpercenként. Másodpercenként 1 000 000 eseményeinek feldolgozására, tehát a feladat kellene 60 SUS-t. Az első lehetőség képest, Stream Analytics-feladat biztosítja, további webszolgáltatás batch-kérelmek, egy nagyobb költséget viszont létrehozása.
+1. Az első lehetőség használata (további SUs kiépítés**nélkül** ). A köteg mérete **25 000**-ra növelhető. A Batch méretének növelése lehetővé teszi, hogy a feladatok feldolgozzák a 1 000 000-es eseményt 20 egyidejű kapcsolattal a Machine Learning webszolgáltatással (a 500 ms-os késéssel). Így a Stream Analytics feladat további késése az Machine Learning webszolgáltatási kérelmekkel szembeni, a hangulatra vonatkozó kérések miatt **200 MS** -ról **500 MS**-ra emelkedett. A Batch mérete azonban **nem** növelhető végtelenül, mivel a Machine learning webszolgáltatások esetében a kérések adattartalmának mérete 4 MB vagy kisebb lehet, és a webszolgáltatás a 100-as művelet után időtúllépési időt igényel.
+1. A második lehetőség használatával a köteg mérete 1000-kor marad, az 200-MS webszolgáltatás késése esetén pedig a webszolgáltatás 20 egyidejű kapcsolata képes lesz az 1000 * 20 * 5 esemény = 100 000 másodpercenkénti feldolgozására. Így a 1 000 000-események másodpercenkénti feldolgozásához a feladatoknak 60 SUs-re van szükségük. Az első lehetőséghez képest Stream Analytics a feladatok több webszolgáltatási batch-kérést is igénybe vennének, ami nagyobb költségeket eredményez.
 
-Az alábbi, a táblát, az átviteli sebességet a Stream Analytics-feladat különböző SUS-t és a batch-méretek (események másodpercenkénti száma).
+Alább látható a különböző SUs-és batch-méretekhez tartozó Stream Analytics-feladatok átviteli sebességének táblázata (az események másodpercenkénti száma).
 
-| Kötegméret (gépi tanulás késése) | 500 (200 ms) | 1,000 (200 ms) | 5,000 (250 ms) | 10,000 (300 ms) | 25 000 (500 ms) |
+| köteg mérete (ML késleltetés) | 500 (200 MS) | 1 000 (200 MS) | 5 000 (250 MS) | 10 000 (300 MS) | 25 000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **3 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **6 SUS-t** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **12 SUS-t** |5,000 |10,000 |40,000 |60,000 |100,000 |
-| **18 SUS-t** |7,500 |15,000 |60,000 |90,000 |150,000 |
-| **24 SUS-t** |10,000 |20,000 |80,000 |120,000 |200,000 |
-| **…** |… |… |… |… |… |
-| **60 SUS-t** |25,000 |50,000 |200,000 |300,000 |500,000 |
+| **1 SU** |2 500 |5000 |20 000 |30 000 |50 000 |
+| **3 SUs** |2 500 |5000 |20 000 |30 000 |50 000 |
+| **6 SUs** |2 500 |5000 |20 000 |30 000 |50 000 |
+| **12 SUs** |5000 |10,000 |40 000 |60 000 |100 000 |
+| **18 SUs** |7500 |15 000 |60 000 |90 000 |150 000 |
+| **24 SUs** |10,000 |20 000 |80 000 |120 000 |200,000 |
+| **...** |... |... |... |... |... |
+| **60 SUs** |25 000 |50 000 |200,000 |300 000 |500 000 |
 
-Már rendelkezik már jól ismerik a Machine Learning-függvényekkel a Stream Analytics működését. Valószínűleg is ismernie, hogy a Stream Analytics-feladatok "PULL"parancs adatokat adatforrásokból, és minden egyes "PULL"parancs eseményeinek feldolgozása a Stream Analytics-feladat kötegelt adja vissza. Hogyan a lekéréses modell hatás a Machine Learning szolgáltatáskérések webes?
+Mostantól már jól megértette, hogyan Machine Learning függvények a Stream Analytics működésében. Valószínűleg azt is tudomásul veszi, hogy Stream Analytics feladatok "lekéréses" adatai az adatforrásokból és az egyes "lekérések" az Stream Analytics feladathoz tartozó események kötegét adja vissza. Hogyan befolyásolja ez a lekérési modell a Machine Learning webszolgáltatási kérelmeket?
 
-A Machine Learning-függvényekkel megadni kötegméret általában pontosan nem osztható minden Stream Analytics-feladat "PULL parancs" által visszaadott események száma. Ha ez történik, a Machine Learning webszolgáltatás hívása "részleges" kötegek. Részleges kötegeket használatával elkerülheti a további feldolgozás késéses többletterhelést okoz az összevonási eseményeket generálnak lekéréses lekéréses.
+A Machine Learning függvényekhez beállított batch-méret általában nem osztható meg pontosan az egyes Stream Analytics feladatok "lekérése" által visszaadott események számával. Ebben az esetben a Machine Learning webszolgáltatást "részleges" kötegekkel hívja meg a rendszer. A részleges kötegek használata elkerüli, hogy a lekéréses művelet során felmerülő további feladatok késése coalescing-eseményeknél.
 
-## <a name="new-function-related-monitoring-metrics"></a>Új függvény kapcsolatos figyelési metrikák
-A Stream Analytics-feladat figyelése területen három további függvény kapcsolatos metrikák érhetők el. Ezek **FÜGGVÉNYKÉRÉSEK**, **FÜGGVÉNYESEMÉNYEK** és **sikertelen FÜGGVÉNYKÉRÉSEK**, ahogy az alábbi ábrán látható.
+## <a name="new-function-related-monitoring-metrics"></a>Új függvényekkel kapcsolatos figyelési metrikák
+Egy Stream Analytics feladat figyelés területén három további függvényhez kapcsolódó metrika lett hozzáadva. Ezek a **függvények,** a **függvények** és a **sikertelen függvények kérései**, az alábbi ábrán látható módon.
 
-![Méretezheti a Stream Analytics a Machine Learning funkciók metrikák](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "méretezése a Stream Analytics a Machine Learning funkciók metrikák")
+![Stream Analytics méretezése Machine Learning functions-metrikákkal](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Stream Analytics méretezése Machine Learning functions-metrikákkal")
 
-A rendszer a következők:
+A a következőképpen van meghatározva:
 
-**FÜGGVÉNYKÉRÉSEK**: A függvény kérések száma.
+**Function kérelmek**: a függvények kéréseinek száma.
 
-**FÜGGVÉNYESEMÉNYEK**: Az események számát felé küldött kérésekben a függvényt.
+**Function Events**: a függvény kéréseinek száma.
 
-**SIKERTELEN FÜGGVÉNYKÉRÉSEK**: Sikertelen függvény kérések száma.
+**Sikertelen függvények kérései**: a sikertelen függvények kéréseinek száma.
 
-## <a name="key-takeaways"></a>Kulcs Takeaways
+## <a name="key-takeaways"></a>Kulcs elvihető
 
-Méretezhető Machine Learning-függvényekkel a Stream Analytics-feladat, a következő tényezőket kell figyelembe venni:
+Stream Analytics feladatok Machine Learning függvényekkel való méretezéséhez vegye figyelembe a következő tényezőket:
 
-1. A bemeneti események száma.
-2. A futó Stream Analytics-feladat (és így a Machine Learning webszolgáltatási kérelmeket a Köteg mérete) eltűrt késése.
-3. Az üzembe helyezett Stream Analytics SUS-t és a Machine Learning webszolgáltatási kérelmeket (a további funkciót kapcsolatos költségek) számát.
+1. A bemeneti esemény díjszabása.
+2. A futó Stream Analytics feladatokhoz (és így a Machine Learning webszolgáltatási kérelmek batch-méretéhez) tartozó tolerált késés.
+3. A kiépített Stream Analytics SUs és a Machine Learning webszolgáltatási kérelmek száma (a további függvényekkel kapcsolatos költségek).
 
-Egy teljes körűen particionált Stream Analytics lekérdezési példa lett megadva. Ha egy összetettebb lekérdezésre van szükség, a [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) további segítség kérése a Stream Analytics-csapattól egy nagyszerű erőforrás.
+Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Azure stream Analytics fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) egy nagyszerű erőforrás, amellyel további segítséget kaphat a stream Analytics csapattól.
 
 ## <a name="next-steps"></a>További lépések
-A Stream Analytics kapcsolatos további információkért lásd:
+A Stream Analyticsról további információt a következő témakörben talál:
 
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

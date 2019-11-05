@@ -1,8 +1,7 @@
 ---
-title: Webalkalmazás-paraméterek – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Hogyan használható az Azure Machine Learning webszolgáltatás-paraméterek a web service elérésekor a modell működésének módosítása céljából.
+title: Webszolgáltatás-paraméterek – Azure Machine Learning Studio (klasszikus) | Microsoft Docs
+description: A Azure Machine Learning webszolgáltatás paramétereinek használata a modell működésének módosításához a webszolgáltatáshoz való hozzáféréskor.
 services: machine-learning
-documentationcenter: ''
 author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
@@ -11,73 +10,71 @@ ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: a236043d5622e5a2e1ffd572c887fb5ffac2174a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62c6488cfcb30c969c388343c766c482cff7e03b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345447"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466990"
 ---
-# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata
-Az Azure Machine Learning webszolgáltatás tegye közzé konfigurálható paraméterek és modulokat tartalmazó kísérlet jön létre. Bizonyos esetekben előfordulhat, hogy módosítani szeretné a modul viselkedését a webszolgáltatás futtatása közben. *Webalkalmazás-paraméterek* lehetővé teszi, hogy a feladat végrehajtásához. 
+# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás paramétereinek használata
+A Azure Machine Learning webszolgáltatás egy olyan kísérlet közzétételével jön létre, amely konfigurálható paraméterekkel rendelkező modulokat tartalmaz. Bizonyos esetekben érdemes lehet módosítani a modul működését, amíg a webszolgáltatás fut. A *webszolgáltatás paraméterei* lehetővé teszik a feladat elvégzését. 
 
-Ilyenek például állítsa be a [adatok importálása] [ reader] modul úgy, hogy a felhasználó a közzétett webes szolgáltatás egy másik adatforráshoz adhatja meg a webszolgáltatás eléréséhez. Vagy konfigurálása a [adatok exportálása] [ writer] modul úgy, hogy egy másik célhelyet lehet megadni. Néhány példa szemlélteti tartalmazza a bits számának módosítása a [Szolgáltatáskivonatolás] [ feature-hashing] modul vagy a száma a kívánt funkcióinak a [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] modul. 
+Gyakori példa az [adatimportálási][reader] modul beállítása, hogy a közzétett webszolgáltatás felhasználója más adatforrást is megadhat a webszolgáltatáshoz való hozzáféréskor. Vagy konfigurálja az [adatexportálási][writer] modult úgy, hogy más célhely is megadható legyen. Néhány példa a [funkció-kivonatolási][feature-hashing] modulhoz tartozó bitek számának módosítására, illetve a [Filter-alapú funkciók kiválasztási][filter-based-feature-selection] moduljának kívánt funkcióinak megváltoztatására. 
 
-Állítsa be a webszolgáltatás-paraméterek, és rendelje azokat egy vagy több modulja paraméter a kísérlet során, és megadhatja, hogy azok a szükséges és választható. A felhasználó a webszolgáltatás majd megadhat értékeket a paraméterekhez, a webszolgáltatás hívásakor. 
+Beállíthatja a webszolgáltatás paramétereit, és társíthatja azokat egy vagy több modul-paraméterrel a kísérletben, és megadhatja, hogy kötelező vagy opcionális-e. A webszolgáltatás felhasználója ezután megadhatja a paraméterek értékeit, amikor meghívja a webszolgáltatást. 
 
 
 
-## <a name="how-to-set-and-use-web-service-parameters"></a>Állítsa be, és webszolgáltatás-paraméterek használata
-A paraméter egy modul melletti ikonra kattintva, majd válassza a "Webes szolgáltatás paraméter beállítása" meghatározhat egy webes szolgáltatás paramétert. Ez létrehoz egy új webes szolgáltatás paramétert, és csatlakoztatja, hogy a modul paraméter. Ezután a web service érhető el, amikor a felhasználó egyik értékét adhatja meg a Web Service paraméterhez, és a modul paramétert alkalmazza a rendszer.
+## <a name="how-to-set-and-use-web-service-parameters"></a>Webszolgáltatás paramétereinek beállítása és használata
+A webszolgáltatás paramétereit úgy definiálhatja, hogy rákattint a paraméter melletti ikonra a modulhoz, és kiválasztja a "Set as Web Service paraméter" lehetőséget. Ez létrehoz egy új webszolgáltatás-paramétert, és csatlakoztatja azt a modul paraméteréhez. Ezt követően a webszolgáltatáshoz való hozzáféréskor a felhasználó megadhatja a webszolgáltatás paraméter értékét, és a modul paraméterére lesz alkalmazva.
 
-Miután meghatározott egy webes szolgáltatás paraméter, érhető el a kísérletben bármely más modul paraméteréhez. Egy olyan paramétert egy modul társított webszolgáltatási paraméter határozza meg, ha használható a webszolgáltatási paraméter bármely egyéb modult, mindaddig, amíg a paraméter a ugyanolyan típusú értéket vár. Például ha a Web Service paraméter egy numerikus értéket, majd csak használat modul paraméterek egy numerikus értéket várt. A felhasználó beállít egy értéket a Web Service paraméter, akkor lépnek érvénybe az összes társított modul paraméterei.
+Ha meghatároz egy webszolgáltatás-paramétert, a kísérletben elérhető bármely más modul paramétere. Ha egy modulhoz egy paraméterhez társított webszolgáltatás-paramétert ad meg, akkor ugyanazt a webszolgáltatás-paramétert használhatja bármely más modulhoz, feltéve, hogy a paraméter ugyanolyan típusú értéket vár. Ha például a webszolgáltatás paraméter egy numerikus érték, akkor csak numerikus értéket várható modul-paraméterekhez használhatja. Ha a felhasználó beállítja a webszolgáltatás paraméter értékét, a rendszer az összes társított modul paraméterére alkalmazza.
 
-Eldöntheti, hogy adja meg a Web Service paraméter alapértelmezett értékét. Ha így tesz, a paraméter megadása esetén a felhasználó a webszolgáltatás nem kötelező. Ha nem ad meg alapértelmezett értéket, majd a felhasználó szükséges adjon meg egy értéket, ha a webszolgáltatás.
+Eldöntheti, hogy megadhat-e alapértelmezett értéket a webszolgáltatás paraméterhez. Ha így tesz, a paraméter nem kötelező a webszolgáltatás felhasználója számára. Ha nem ad meg alapértelmezett értéket, a felhasználónak értéket kell megadnia a webszolgáltatás elérésekor.
 
-A webszolgáltatás API-dokumentáció programozott módon megadása a Web Service paraméter, a web service elérésekor a szolgáltatás felhasználó információkat biztosít.
+A webszolgáltatás API-dokumentációja a webszolgáltatás azon felhasználója számára nyújt információt, amely a webszolgáltatás paraméterének programozott módon való megadását mutatja be a webszolgáltatáshoz való hozzáférés során.
 
 > [!NOTE]
-> A klasszikus webszolgáltatások API dokumentációjában érhető el a **API súgóoldalt** hivatkozásra a web service **IRÁNYÍTÓPULT** a Machine Learning Studióban. Az API-dokumentáció egy új webszolgáltatás által biztosított a [Azure Machine Learning webszolgáltatások](https://services.azureml.net/Quickstart) a portál a **felhasználás** és **Swagger API** a webes oldalak a szolgáltatás.
+> A klasszikus webszolgáltatások API-dokumentációja az Machine Learning Studio (klasszikus) webszolgáltatási **irányítópultján** található **API-Súgó oldal** hivatkozásán keresztül érhető el. Az új webszolgáltatások API-dokumentációja a webszolgáltatások felhasználására **és** kivágására szolgáló **API** -lapokon elérhető [Azure Machine learning webszolgáltatások](https://services.azureml.net/Quickstart) portálján keresztül érhető el.
 > 
 > 
 
 ## <a name="example"></a>Példa
-Például tegyük fel, hogy kísérletezés az egy [adatok exportálása] [ writer] modul, amely adatokat küld az Azure blob storage-bA. Fogunk meghatározni a "Blob elérési útja" nevű Web Service paraméter, amely lehetővé teszi, hogy a szolgáltatás felhasználó elérési útjának módosítása a blob Storage, a szolgáltatás eléréséhez.
+Tegyük fel például, hogy egy olyan [adatexportálási][writer] modullal kísérletezünk, amely adatokat küld az Azure Blob Storage szolgáltatásnak. Definiálunk egy "blob Path" nevű webszolgáltatás-paramétert, amely lehetővé teszi, hogy a webszolgáltatás-felhasználó módosítsa a blob Storage elérési útját a szolgáltatás elérésekor.
 
-1. A Machine Learning Studióban, kattintson a [adatok exportálása] [ writer] modult, válassza ki azt. A tulajdonságainak jobb oldalán a kísérletvászonra a Tulajdonságok panelen látható.
-2. Adja meg a tárolás típusát:
+1. A Machine Learning Studio klasszikus verziójában kattintson az [adatexportálás][writer] modulra a kiválasztásához. A tulajdonságok a kísérlet vászontól jobbra látható Tulajdonságok ablaktáblán jelennek meg.
+2. Adja meg a tárolási típust:
    
-   * A **adja meg az adat célhelyét**, válassza az "Azure Blob Storage".
-   * A **adja meg a hitelesítési típus**, válassza az "Account".
-   * Írja be a fiók adatait az Azure blob storage. 
+   * Az adja **meg az adat célhelyét**területen válassza az "Azure Blob Storage" lehetőséget.
+   * A **kérjük, adja meg a hitelesítés típusát**területen válassza a "fiók" lehetőséget.
+   * Adja meg az Azure Blob Storage-fiók adatait. 
 
-3. Kattintson az ikonra a jobb oldalán a **blob-tároló paraméter kezdődő elérési útja**. Ez a következőhöz hasonló:
+3. Kattintson az elérési út jobb oldalán lévő ikonra a **Container paraméterrel kezdődő blobra**. Így néz ki:
    
-   ![Webes szolgáltatás paraméter ikon](./media/web-service-parameters/icon.png)
+   ![Webszolgáltatás paraméterének ikonja](./media/web-service-parameters/icon.png)
    
-   Válassza ki a "Webes szolgáltatás paraméter beállítása".
+   Válassza a "Set as Web Service paraméter" lehetőséget.
    
-   Bejegyzés kerül a **webszolgáltatás-paraméterek** alján, a Tulajdonságok panelen a "Blob-tároló kezdődő elérési" néven. Ez az a Web Service paraméter, amely mostantól a társított [adatok exportálása] [ writer] modul paraméter.
-4. Nevezze át a webes paraméter, kattintson a nevére, adja meg a "Blob elérési útja", és nyomja le az **Enter** kulcsot. 
-5. Adja meg a webszolgáltatási paraméter alapértelmezett értékét, kattintson az ikonra a jobb oldalon a név, jelölje ki "Adja meg az alapértelmezett érték", adjon meg egy értéket (például "container1/output1.csv"), és nyomja le az **Enter** kulcs.
+   A Tulajdonságok ablaktábla alján található **webszolgáltatás-paraméterek** alatt egy bejegyzést adnak hozzá, amelynek a neve "a tárolótól kezdve a blobhoz" nevű elérési út. Ez az a webszolgáltatás-paraméter, amely most már társítva van ehhez az [adatexportálási][writer] modul-paraméterhez.
+4. A webszolgáltatás paraméterének átnevezéséhez kattintson a névre, írja be a "blob elérési útja" kifejezést, majd nyomja le az **ENTER** billentyűt. 
+5. A webszolgáltatás paraméter alapértelmezett értékének megadásához kattintson a név jobb oldalán látható ikonra, válassza az "alapértelmezett érték megadása" lehetőséget, adjon meg egy értéket (például "container1/output1. csv"), és nyomja le az **ENTER** billentyűt.
    
-   ![Webszolgáltatási paraméter](./media/web-service-parameters/parameter.png)
+   ![Webszolgáltatás paraméter](./media/web-service-parameters/parameter.png)
 6. Kattintson a **Run** (Futtatás) parancsra. 
-7. Kattintson a **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** vagy **[Új] Web Service telepítése** a webszolgáltatás üzembe helyezéséhez.
+7. Kattintson a webszolgáltatás **telepítése** lehetőségre, és válassza a **webszolgáltatás telepítése [klasszikus]** vagy a **webszolgáltatás telepítése [új]** lehetőséget a webszolgáltatás telepítéséhez.
 
 > [!NOTE] 
-> Egy új webszolgáltatás üzembe helyezéséhez rendelkeznie megfelelő engedélyekkel, amelyhez az előfizetésben, a web Service szolgáltatásának telepítése. További információ: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md). 
+> Új webszolgáltatás telepítéséhez megfelelő engedélyekkel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a webszolgáltatást telepíti. További információ: [webszolgáltatások kezelése a Azure Machine learning webszolgáltatások portálján](manage-new-webservice.md). 
 
-A felhasználó a webszolgáltatás most adjon meg egy új célhelyet a [adatok exportálása] [ writer] modul, a web service elérésekor.
+A webszolgáltatás felhasználója mostantól megadhat egy új célhelyet az [adatexportálási][writer] modulhoz, amikor a webszolgáltatáshoz fér hozzá.
 
 ## <a name="more-information"></a>További információ
-Egy részletes példa: a [webszolgáltatás-paraméterek](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) bejegyzést a [Machine Learning blogon](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Részletesebb példaként tekintse meg a [webszolgáltatási paraméterek](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) bejegyzést a [Machine learning blogban](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-A Machine Learning webszolgáltatás eléréséhez további információkért lásd: [használata az Azure Machine Learning Web service](consume-web-services.md).
+A Machine Learning webszolgáltatások elérésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás](consume-web-services.md)használata.
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -1,7 +1,7 @@
 ---
 title: Mi az a Speaker Recognition API?
 titleSuffix: Azure Cognitive Services
-description: A Cognitive Services Speaker Recognition API-jával fejlett algoritmusokat használhat beszélő-ellenőrzéshez és beszélőazonosításhoz.
+description: A hangszórók ellenőrzése és a hangszórók azonosítása a Cognitive Services Speaker Recognition API.
 services: cognitive-services
 author: dwlin
 manager: nitinme
@@ -11,50 +11,59 @@ ms.topic: overview
 ms.date: 10/01/2018
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f354793e3779f4d9f7be9bae8a21545a15ed1c4c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707167"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464915"
 ---
-# <a name="speaker-recognition-api"></a>Beszélőfelismerés API
+# <a name="speaker-recognition-api---preview"></a>Speaker Recognition API – előzetes verzió
 
-Üdvözlik a Cognitive Services Speaker Recognition API-jai! A Speaker Recognition API-k olyan felhőalapú API-k, amelyek a legfejlettebb algoritmusokat biztosítják a beszélő-ellenőrzéshez és beszélőazonosításhoz. A Speaker Recognition két kategóriára oszlik: beszélő-ellenőrzés és beszélőazonosítás.
-
+A Speaker Recognition API-k olyan felhőalapú API-k, amelyek fejlett AI-algoritmusokat biztosítanak a hangszórók ellenőrzéséhez és a hangszórók azonosításához. Speaker Recognition két kategóriára oszlik: a hangszórók ellenőrzése és a beszélő azonosítása.
 
 ## <a name="speaker-verification"></a>Beszélő-ellenőrzés
 
-A hangnak olyan egyedi jellemzői vannak, amelyek segítségével ugyanúgy azonosítható egy személy, mint egy ujjlenyomattal.  A hang jelként való használata a hozzáférés-vezérlési és a hitelesítési forgatókönyvekben új, innovatív eszközként jelent meg – lényegében a biztonság magasabb szintjét kínálja, amely egyszerűsíti a hitelesítési folyamatot az ügyfelek számára.
+A hang egyedi tulajdonságokkal rendelkezik, amelyek egy adott személyhez társíthatók.  Az alkalmazások a hang használatát további tényezőként használhatják az ellenőrzéshez, például a call centerek és a webszolgáltatások esetében.
 
-A beszélő-ellenőrzési API-k automatikusan ellenőrzik és hitelesítik a felhasználókat a hangjuk vagy beszédük alapján.
+Speaker Verification API-k intelligens eszközként szolgálnak a felhasználók hang-és beszédfelismerési hozzáférési jelszavuk használatával történő ellenőrzéséhez.
 
 ### <a name="enrollment"></a>Regisztráció
 
-A beszélő-ellenőrzésre történő regisztráció szövegfüggő, ami azt jelenti, hogy a beszélőknek választaniuk kell egy jelszóként használt kifejezést, amelyet a regisztráció és az ellenőrzés fázisában használnak.
+A hangszórók ellenőrzésének beléptetése szövegtől függ, ami azt jelenti, hogy a hangsugárzóknak ki kell választaniuk egy adott jelszót, amelyet a regisztrálási és ellenőrzési fázisokban kell használni.
 
-A regisztráció során a rendszer rögzíti a beszélő hangját, miközben kimondja a választott kifejezést, majd számos jellemzőt kinyer, és felismeri a választott kifejezést. A kinyert jellemzők és a választott kifejezés együttesen alkot egy egyedi hangaláírást.
+A beszélő beléptetési fázisában a beszélő hangja egy adott kifejezéssel van rögzítve. A hangfunkciók kinyerése egyedi hangaláírást alkot, miközben a kiválasztott kifejezés felismerhető. Ezzel együtt a rendszer a hangszórók regisztrálására szolgáló adatkezelési adatként is ellenőrzi a hangszórót. A hangszórók beléptetési adatai biztonságos rendszeren vannak tárolva. Az ügyfél határozza meg, hogy mennyi ideig kell megőrizni. Az ügyfelek az API-hívásokon keresztül létrehozhatják, frissíthetik és eltávolíthatják az egyes hangszórók regisztrálási szolgáltatásait.  Az előfizetés törlésekor a rendszer az előfizetéshez társított összes hangszóró-regisztrációs adatmennyiséget is törli.
+
+Az ügyfeleknek biztosítaniuk kell, hogy megkapják a megfelelő engedélyeket a felhasználóktól a hangszórók ellenőrzéséhez.
 
 ### <a name="verification"></a>Ellenőrzés
 
-Az ellenőrzés során a rendszer egy bemeneti hangot és kifejezést hasonlít össze a regisztrált hangaláírással és kifejezéssel, majd ellenőrzi, hogy ugyanattól a személytől származnak-e, és hogy a megfelelő kifejezés hangzott-e el.
+Az ellenőrzési fázisban az ügyfélnek meg kell hívnia a beszélő ellenőrző API-t az ellenőrizendő személyhez tartozó AZONOSÍTÓval.  A szolgáltatás kibontja a hangfunkciókat és a jelszót a bemeneti beszéd rögzítéséről. Ezt követően összehasonlítja a szolgáltatásokat a beszélő regisztrációjának megfelelő elemeivel, az ügyfél pedig ellenőrzi, hogy van-e egyezés.  A válasz "elfogadás" vagy "elutasítás" értéket ad vissza különböző megbízhatósági szintekkel.  Az ügyfél ezután meghatározza, hogy az eredmények hogyan használhatók annak eldöntésére, hogy ez a személy a regisztrált szónak.
 
-A hangszórók ellenőrzésével kapcsolatos további információkért tekintse meg az API [Speaker-ellenőrzés](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652)című témakört.
+A küszöbérték megbízhatósági szintjét a forgatókönyv és a használatban lévő egyéb ellenőrzési tényezők alapján kell beállítani. Javasoljuk, hogy kísérletezzen a megbízhatósági szinttel, és vegye figyelembe az egyes alkalmazások megfelelő beállítását. Az API-k nem határozzák meg, hogy a hang élő személyből vagy utánzatból származik-e.
 
-## <a name="speaker-identification"></a>Beszélőfelismerés
+A szolgáltatás nem őrzi meg a szolgáltatásnak az ellenőrzési fázis során eljuttatott beszédfelismerési és kinyert hangfunkciókat.
 
-A beszélőazonosítási API-k automatikusan azonosítják a hangfájlban beszélő személyt, ha rendelkezésre áll a leendő beszélők egy csoportja. A rendszer a bemeneti hangot veti össze a megadott beszélők csoportjával, és egyezés esetén visszaadja a beszélő személyazonosságát.
+A beszélő-ellenőrzéssel kapcsolatos további információért tekintse meg a [beszélő-ellenőrzési](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652) API dokumentációját.
 
-Először az összes beszélőnek át kell esnie a regisztrációs folyamaton a hangjuknak a rendszerben történő regisztrálásához, és a hanglenyomat létrehozásához.
+## <a name="speaker-identification"></a>Beszélőazonosítás
 
+Az alkalmazások hang használatával azonosíthatják a "ki beszél" csoportot a regisztrált hangszórókból. Speaker Identification API-k olyan forgatókönyvekben használhatók, mint például a hatékonyság, a személyre szabás és a Call Center átírása.
 
 ### <a name="enrollment"></a>Regisztráció
 
-A beszélőazonosításba történő regisztráció szövegfüggetlen, ami azt jelenti, hogy nincsenek korlátozások arra vonatkozóan, mit mond a beszélő a hanganyagban. A rendszer rögzíti a beszélő hangját, és több jellemzőt kinyer egy egyedi hangaláírás létrehozása céljából.
+A beszélőazonosításba történő regisztráció szövegfüggetlen, ami azt jelenti, hogy nincsenek korlátozások arra vonatkozóan, mit mond a beszélő a hanganyagban. Nincs szükség hozzáférési kód megírására.
 
+A beléptetési fázisban a beszélő hangja rögzített, a hangfunkciók pedig egyedi hangaláírást alkotnak. A kinyert hanghangok és funkciók biztonságos rendszeren vannak tárolva. Az ügyfél ellenőrzi, hogy mennyi ideig tart. Az ügyfelek az API-hívásokon keresztül létrehozhatják, frissíthetik és eltávolíthatják az egyes hangszórókhoz tartozó beléptetési adatkészleteket. Az előfizetés törlésekor a rendszer az előfizetéshez társított összes hangszóró-regisztrációs adatmennyiséget is törli.
 
-### <a name="recognition"></a>Felismerés
+Az ügyfeleknek biztosítaniuk kell, hogy megkapják a megfelelő engedélyeket a felhasználóktól a beszélő azonosításához.
 
-Az ismeretlen beszélő hangjának biztosítása a leendő beszélők csoportjával együtt történik a felismerés során. A rendszer összehasonlítja a bemeneti hangot minden beszélőével, hogy meghatározza, kinek a hangjáról van szó, és ha van egyezés, visszaadja a beszélő személyazonosságát.
+### <a name="identification"></a>Szoftverazonosító
+
+Az azonosítási fázisban a hangszóró-azonosító szolgáltatás kibontja a hangfunkciókat a bemeneti beszéd rögzítésével. Ezután összehasonlítja a funkciókat a megadott hangszórók beléptetési adatlistájával. Ha a rendszer megtalál egy egyezést egy regisztrált hangszóróval, a válasz a beszélő AZONOSÍTÓját adja vissza megbízhatósági szinttel.  Ellenkező esetben a válasz "elutasítás" értéket ad vissza, ha egyetlen beszélő sem felel meg egy regisztrált szónak.
+
+A küszöbérték megbízhatósági szintjét a forgatókönyv alapján kell beállítani. Javasoljuk, hogy kísérletezzen a megbízhatósági szinttel, és vegye figyelembe az egyes alkalmazások megfelelő beállítását. Az API-k nem határozzák meg, hogy a hang élő személyből vagy utánzatból származik-e.
+
+A szolgáltatás nem őrzi meg az azonosítási fázisban a szolgáltatásnak eljuttatott beszédfelismerési és kinyert hangfunkciókat.
 
 A hangszórók azonosításával kapcsolatos további információkért tekintse meg az API [-hangszóró – azonosítás](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e)című témakört.

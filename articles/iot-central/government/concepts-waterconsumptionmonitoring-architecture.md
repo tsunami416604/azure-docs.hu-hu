@@ -7,14 +7,14 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: c9eea0b78916cc3bc5994eabfd029418b634db3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d979c4210c7de4588338c8e3c30b179056102d0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026679"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498808"
 ---
-# <a name="water-consumption-monitoring-reference-architecture"></a>A víz fogyasztásának figyelési referenciájának architektúrája 
+# <a name="water-consumption-monitoring-reference-architecture"></a>A vízfogyasztás-monitorozás referenciaarchitektúrája 
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -34,7 +34,7 @@ Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában
 ## <a name="devices-and-connectivity"></a>Eszközök és kapcsolatok 
 Ebben a szakaszban az intelligens vizes megoldásokhoz használt eszközöket, például a víz minőségének monitorozását vagy a vízfelhasználás figyelését, általában az intelligens víz eszközeit fogjuk használni. Az intelligens vizes eszközök lehetnek flow-mérők, vízminőség-figyelők, intelligens szelepek, szivárgás-felismerők stb.
 
-Az intelligens vizes megoldásokban használt eszközök általában alacsony teljesítményű, nagy kiterjedésű hálózatokon (LPWAN) keresztül kapcsolódnak egy külső hálózati szolgáltatón keresztül. Az ilyen típusú eszközök esetében kihasználhatja az [azure IoT Central Device Bridge](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge) eszközt, hogy az eszköz adatait a IoT alkalmazásba küldje az Azure IoT Centralban. Előfordulhat, hogy az IP-címmel rendelkező eszköz-átjárók képesek, és közvetlenül a IoT Centralhoz tudnak csatlakozni.
+Az intelligens vizes megoldásokban használt eszközök általában alacsony teljesítményű, nagy kiterjedésű hálózatokon (LPWAN) keresztül kapcsolódnak egy külső hálózati szolgáltatón keresztül. Az ilyen típusú eszközök esetében kihasználhatja az [azure IoT Central Device Bridge](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) eszközt, hogy az eszköz adatait a IoT alkalmazásba küldje az Azure IoT Centralban. Előfordulhat, hogy az IP-címmel rendelkező eszköz-átjárók képesek, és közvetlenül a IoT Centralhoz tudnak csatlakozni.
 
 ## <a name="iot-central"></a>IoT Central 
 Az Azure IoT Central egy IoT alkalmazási platform, amellyel gyorsan elindíthatja és futtathatja a IoT-megoldását. A megoldásokat a harmadik féltől származó szolgáltatásokkal is kiegészítheti, testreszabhatja és integrálhatja.
@@ -51,7 +51,7 @@ Kiterjesztheti a IoT alkalmazást IoT Central és opcionálisan:
 A IoT-adatforrások számos üzleti alkalmazást használhatnak a víz-eszközön belül. Ha szeretné megismerni, hogyan csatlakoztatható a IoT Central a vízfelhasználást figyelő alkalmazáshoz a Field Services használatával, kövesse az oktatóanyagot a [Dynamics 365 Field Services integrálásával](./how-to-configure-connected-field-services.md) kapcsolatban. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [hozhat létre vízfelhasználást](./tutorial-water-consumption-monitoring.md) IoT Central alkalmazást
 * További információ a [IoT Central Government-sablonokról](./overview-iot-central-government.md)
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)

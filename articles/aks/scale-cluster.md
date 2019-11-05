@@ -1,32 +1,32 @@
 ---
-title: Az Azure Kubernetes Service (AKS)-fürt méretezése
-description: Ismerje meg az Azure Kubernetes Service (AKS)-fürt méretezése a csomópontok számát.
+title: Azure Kubernetes szolgáltatásbeli (ak-) fürt méretezése
+description: Megtudhatja, hogyan méretezheti a csomópontok számát egy Azure Kubernetes-szolgáltatásbeli (ak-) fürtben.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614504"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472588"
 ---
-# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>A csomópontok száma az Azure Kubernetes Service (AKS)-fürt skálázása
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Csomópontok számának skálázása Azure Kubernetes szolgáltatásbeli (ak-) fürtben
 
-Ha az erőforrás van szüksége az alkalmazások módosítása, manuálisan méretezhetők egy AKS-fürt futtatásához egy különböző számú csomópontokra. Leskálázás, amikor a csomópontok használata gondosan [szigetelve és ürítve][kubernetes-drain] minimalizálása érdekében a futó alkalmazásokra. Vertikális, az AKS megvárja, amíg a csomópontok lesznek megjelölve `Ready` által a Kubernetes-fürt előtt podok ütemezett rajtuk.
+Ha az alkalmazások erőforrás-szükséglete megváltozik, manuálisan méretezheti egy AK-fürtöt úgy, hogy más számú csomópontot futtasson. A skálázás során a rendszer gondosan [kiüríti és kiüríti][kubernetes-drain] a csomópontokat az alkalmazások futtatásának minimalizálásához. Ha vertikális felskálázást végez, az AK megvárja, amíg a csomópontokat a Kubernetes-fürt `Ready` jelöli meg a hüvelyek ütemezése előtt.
 
 ## <a name="scale-the-cluster-nodes"></a>A fürtcsomópontok méretezése
 
-Először kérje le a *neve* a csomópont készlethez használatával a [az aks show][az-aks-show] parancsot. Az alábbi példa lekéri a csomópont-készlet nevét, a fürt nevű *myAKSCluster* a a *myResourceGroup* erőforráscsoportot:
+Először kérje le a Node-készlet *nevét* az az az [AK show][az-aks-show] paranccsal. A következő példa beolvassa a *myAKSCluster* nevű fürt Node-készletének nevét a *myResourceGroup* erőforráscsoporthoz:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-Az alábbi példa kimenetében látható, amely a *neve* van *nodepool1*:
+A következő példa kimenete azt mutatja, hogy a *név* *nodepool1*:
 
 ```console
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -44,13 +44,13 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 ]
 ```
 
-Használja a [az aks méretezési][az-aks-scale] parancsot a fürtcsomópontok méretezéséhez. Az alábbi példa bemutatja egy nevű fürtöt *myAKSCluster* egyetlen csomópont. Adja meg a saját *--nodepool-name* az előző parancs által például *nodepool1*:
+A fürtcsomópontok méretezéséhez használja az az [AK Scale][az-aks-scale] parancsot. Az alábbi példa egy *myAKSCluster* nevű fürtöt egyetlen csomópontra méretezi. Adja meg saját *nodepool-nevét* az előző parancsból, például *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-Az alábbi példa kimenetében látható az a fürt sikeresen van méretezve, hogy egy csomópont, ahogyan az a *agentPoolProfiles* szakaszban:
+A következő példa kimenete azt mutatja, hogy a fürt egy csomópontra való skálázása sikeresen megtörtént, ahogy az a *agentPoolProfiles* szakaszban is látható:
 
 ```json
 {
@@ -74,7 +74,7 @@ Az alábbi példa kimenetében látható az a fürt sikeresen van méretezve, ho
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben azt manuálisan méretezi a AKS-fürt növelése vagy csökkentése érdekében a csomópontok számát. Is használhatja a [méretező fürt][cluster-autoscaler] (jelenleg előzetes verzióban érhető el az aks-ben) a fürtök automatikus méretezése.
+Ebben a cikkben manuálisan méretezhető egy AK-fürtöt a csomópontok számának növeléséhez vagy csökkentéséhez. A fürt automatikus [méretezésével][cluster-autoscaler] is automatikusan méretezheti a fürtöt.
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

@@ -1,9 +1,8 @@
 ---
-title: Hibakódok REST API – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Az ezen hibakódok által az Azure Machine Learning webszolgáltatás-művelet sikerült visszaadni.
+title: REST API hibakódok – Azure Machine Learning Studio (klasszikus) | Microsoft Docs
+description: Ezeket a hibakódokat egy Azure Machine Learning webszolgáltatáson végzett művelet is visszaküldheti.
 keywords: ''
 services: machine-learning
-documentationcenter: ''
 author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
@@ -11,166 +10,163 @@ editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15e73740f5d932d0fa4cfb9a56c9fe7b155555cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736564"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468162"
 ---
-# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio REST API Error Codes
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasszikus) REST API hibakódok
  
-Az alábbi hibakódok által az Azure Machine Learning Studio webszolgáltatás-művelet sikerült visszaadni.
+A következő hibakódokat egy Azure Machine Learning Studio (klasszikus) webszolgáltatás egyik művelete is visszaküldheti.
  
-## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP-állapotkód: 400)
+## <a name="badargument-http-status-code-400"></a>BadArgument (400-es HTTP-állapotkód)
  
 Érvénytelen argumentum van megadva.
  
-Ez az osztály a hibák azt jelenti, hogy valahol a megadott argumentum érvénytelen volt. Ez lehet egy hitelesítő adatok vagy az Azure storage értékről a web Service átadott helyét. Tekintse meg a hiba a "code" mező a "details" szakaszban diagnosztizálásához mely adott argumentum érvénytelen volt.
+Ez az osztály azt jelenti, hogy a megadott argumentum érvénytelen. Ez lehet egy hitelesítő adat vagy az Azure Storage egy olyan helye, amelyet a webszolgáltatásnak továbbítanak. A "Részletek" szakasz "code" (kód) mezőjéből megtudhatja, hogy melyik adott argumentum érvénytelen.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| BadParameterValue | A megadott paraméter értéke nem felel meg a paraméter a szabály a paraméter |
-| BadSubscriptionId | Előfizetés-azonosítója, amellyel pontozása nem található az erőforrás egy |
-| BadVersionCall | Neplatná verze paraméter lett átadva az API-hívás közben: {0}. Ellenőrizze az API súgóoldalt átadására a megfelelő verziót, és próbálkozzon újra. |
-| BatchJobInputsNotSpecified | A következő szükséges input(s) nem voltak megadva a kérelem: {0}. Ellenőrizze, hogy az összes bemeneti adat van megadva, és próbálkozzon újra. |
-| BatchJobInputsTooManySpecified | A kérelem, mint a szolgáltatásban definiált további bemenetei között megadott. Elfogadott input(s) listája: {0}. Ellenőrizze, hogy az összes bemeneti adatok helyesen van megadva, és próbálkozzon újra. |
-| BlobNameTooLong | Az Azure blob storage elérési utat a diagnosztikai kimenetet érték túl hosszú: {0}. Lerövidítheti az elérési utat, és próbálkozzon újra. |
-| BlobNotFound | Nem érhető el a megadott Azure blob - {0}.  Azure-hibaüzenet: {1}. |
-| ContainerIsEmpty | Nincs az Azure storage-tároló neve lett megadva. Adjon meg egy érvényes tároló nevet, és próbálkozzon újra. |
-| ContainerSegmentInvalid | A Tárolónév érvénytelen. Adjon meg egy érvényes tároló nevet, és próbálkozzon újra. |
-| ContainerValidationFailed | BLOB-tároló érvényesítése sikertelen volt, hiba: {0}. |
-| DataTypeNotSupported | A megadott adattípus nem támogatott. Adjon meg érvényes adatot típus(ok), és próbálkozzon újra. |
-| DuplicateInputInBatchCall | A kötegelt kérelem érvénytelen. Egy- és több bemenet egyszerre nem adható meg. Távolítsa el, ezek az elemek egyikét a kérelemből, majd próbálkozzon újra. |
-| ExpiryTimeInThePast | Megadott lejárati időpont egy múltbeli időpont: {0}. Adjon meg egy jövőbeli lejárati ideje UTC Formátumban, és próbálkozzon újra. Soha ne járjon le a lejárati idő NULL értékre állítja. |
-| IncompleteSettings | Diagnosztikai beállítások nem teljesek. |
-| InputBlobRelativeLocationInvalid | Nincs az Azure storage blob megadott név. Adjon meg egy érvényes blob nevet, és próbálkozzon újra. |
-| InvalidBlob | Érvénytelen blob-specifikációt blob: {0}. Győződjön meg arról, hogy a kapcsolati karakterlánc / relatív elérési út vagy SAS-token specifikációnak megfelelő, és próbálkozzon újra. |
-| InvalidBlobConnectionString | Érvénytelen a bemeneti/kimeneti blobok egyik kapcsolati karakterlánca: {0}. A probléma megoldása, és próbálkozzon újra. |
-| InvalidBlobExtension | A blob-hivatkozás: {0} érvénytelen vagy hiányzó fájl kiterjesztése. Támogatott fájltípusok a kimeneti típus: "{1}". |
-| InvalidInputNames | Érvénytelen szolgáltatási bemeneti a kérelemben megadott neve(i): {0}. A bemeneti adatok leképezése a megfelelő szolgáltatás bemenetei között, és próbálkozzon újra. |
-| InvalidOutputOverrideName | Érvénytelen kimeneti név felülbírálása: {0}. A szolgáltatás nem rendelkezik egy ilyen nevű kimeneti csomópont. Adjon meg egy megfelelő kimeneti csomópontnév felülbírálása (kis-és nagybetűk vonatkozik). |
-| InvalidQueryParameter | Érvénytelen a lekérdezési paraméter "{0}". {1} |
-| MissingInputBlobInformation | Az Azure storage blob adatainak hiányzik. Adjon meg egy érvényes kapcsolati karakterláncot és a relatív elérési út vagy URI-t, és próbálkozzon újra. |
-| MissingJobId | Nincs feladat megadott azonosítója. Egy feladat azonosítóját adja vissza, amikor egy feladat el lett küldve az első alkalommal. Ellenőrizze, hogy a feladat-azonosító helyességéről, majd próbálkozzon újra. |
-| MissingKeys | Nincsenek kulcsok a megadott, vagy egy elsődleges vagy másodlagos kulcs nincs megadva. |
-| MissingModelPackage | Nincs modell csomag azonosítója és a modell csomag. Adjon meg egy érvényes modellt csomag azonosítója vagy csomag modellezheti, és próbálkozzon újra. |
-| MissingOutputOverrideSpecification | A kérelem nem tartalmaz a blob-specifikációt kimeneti felülbírálás {0}. Adjon meg egy érvényes blob helyére a kérelemmel, vagy távolítsa el a kimeneti specifikációját, ha nincs hely felülbírálás van szükség. |
-| MissingRequestInput | A web service bemenetet vár, de nincs bemenet lett megadva. Ellenőrizze, érvényes biztosított a közzétett bemeneti portok a modell alapján, és próbálkozzon újra. |
-| MissingRequiredGlobalParameters | Nem minden kötelező a web service pedig a megadott. Ellenőrizze, hogy helyesek-e a várt a társításhoz tartozó modulok paraméter(ek) használatával történt, és próbálkozzon újra. |
-| MissingRequiredOutputOverrides | Kötelező megadni egy titkosított szolgáltatásvégpont hívása során kimenetet a szolgáltatás kimenetek felülbírálásokat. Hiányzó felülbírálások most ezeket a kimeneteket: {0} |
-| MissingWebServiceGroupId | Nincs webes szolgáltatás csoport megadva azonosító. Adjon meg egy érvényes webes szolgáltatás csoport azonosítóját, és próbálkozzon újra. |
-| MissingWebServiceId | Nincs webes szolgáltatás megadott azonosító. Adjon meg egy érvényes webszolgáltatás azonosítója, és próbálkozzon újra. |
-| MissingWebServicePackage | Nincs webes szolgáltatás csomag megadott. Adjon meg egy érvényes web service-csomag, és próbálkozzon újra. |
-| MissingWorkspaceId | Nincs munkaterület-azonosító. Adjon meg egy érvényes munkaterület azonosítóját, és próbálkozzon újra. |
-| ModelConfigurationInvalid | A modell csomagban konfigurációja érvénytelen. Győződjön meg arról, a modell konfiguráció tartalmazza a kimeneti végpont definíciójában standard hiba végpont, és a standard végpont, és próbálkozzon újra. |
-| ModelPackageIdInvalid | Érvénytelen modell csomag azonosítója. Ellenőrizze, hogy a modell csomag azonosítója helyes-e, és próbálkozzon újra. |
-| RequestBodyInvalid | Nincs megadva a kérelem törzsében vagy a kéréstörzs deszerializálása során hiba. |
-| RequestIsEmpty | Nem biztosított kérelmet. Adjon meg egy érvényes kérelmet, és próbálkozzon újra. |
-| UnexpectedParameter | Váratlan paramétereknek. Ellenőrizze, helyesen írja be a minden paraméternévre, csak a várt paraméterek vannak-e átadva, és próbálkozzon újra. |
+| BadParameterValue | A paraméter megadott értéke nem felel meg a paraméter szabályának. |
+| BadSubscriptionId | A pontszámhoz használt előfizetés-azonosító nem az erőforrásban lévő egyik. |
+| BadVersionCall | Érvénytelen Version paraméter lett átadva az API-hívás során: {0}. A megfelelő verzió átadásához tekintse meg az API-Súgó lapot, és próbálkozzon újra. |
+| BatchJobInputsNotSpecified | A kérelemben nem voltak megadva a következő kötelező bevitel (ek): {0}. Gondoskodjon arról, hogy minden bemeneti adat meg legyen adva, majd próbálkozzon újra. |
+| BatchJobInputsTooManySpecified | A kérelem több bemenetet adott meg, mint amennyit a szolgáltatás meghatároz. Az elfogadott bemenet (ek) listája: {0}. Győződjön meg arról, hogy az összes bemeneti adat helyesen van megadva, és próbálkozzon újra. |
+| BlobNameTooLong | A diagnosztikai kimenethez megadott Azure Blob Storage-elérési út túl hosszú: {0}. Rövidítse le az elérési utat, és próbálkozzon újra. |
+| BlobNotFound | Nem érhető el a megadott Azure Blob-{0}.  Azure-hibaüzenet: {1}. |
+| ContainerIsEmpty | Nem adta meg az Azure Storage-tároló nevét. Adjon meg egy érvényes nevet, és próbálkozzon újra. |
+| ContainerSegmentInvalid | A tároló neve érvénytelen. Adjon meg egy érvényes nevet, és próbálkozzon újra. |
+| ContainerValidationFailed | A blob-tároló érvényesítése a következő hiba miatt sikertelen volt: {0}. |
+| DataTypeNotSupported | Nem támogatott adattípus van megadva. Adjon meg érvényes adattípust, és próbálkozzon újra. |
+| DuplicateInputInBatchCall | A Batch-kérelem érvénytelen. Egyszerre csak egy és több bemenet adható meg. Távolítsa el az egyik elemet a kérelemből, majd próbálkozzon újra. |
+| ExpiryTimeInThePast | A megadott lejárati idő a múltban: {0}. Adja meg az UTC jövőbeli lejárati idejét, és próbálkozzon újra. Ha soha nem jár le, állítsa a lejárati időt NULL értékre. |
+| IncompleteSettings | A diagnosztikai beállítások hiányosak. |
+| InputBlobRelativeLocationInvalid | Nem adta meg az Azure Storage-blob nevét. Adjon meg egy érvényes blob-nevet, és próbálkozzon újra. |
+| InvalidBlob | Érvénytelen blob-specifikáció a blobhoz: {0}. Győződjön meg arról, hogy a kapcsolati karakterlánc/relatív elérési út vagy az SAS-jogkivonat specifikációja helyes, és próbálkozzon újra. |
+| InvalidBlobConnectionString | A bemeneti/kimeneti Blobok egyikéhez megadott, érvénytelen: {0}. Javítsa ki ezt, és próbálkozzon újra. |
+| InvalidBlobExtension | A blob-hivatkozás: a {0} érvénytelen vagy hiányzik a fájlkiterjesztés. A következő kimeneti típushoz támogatott fájlkiterjesztések: "{1}". |
+| InvalidInputNames | Érvénytelen a kérésben megadott szolgáltatás-bemeneti név (ek): {0}. Rendelje hozzá a bemeneti adatokat a megfelelő szolgáltatási bemenetekhez, és próbálkozzon újra. |
+| InvalidOutputOverrideName | A kimeneti felülbírálás neve érvénytelen: {0}. A szolgáltatásnak nincs ilyen nevű kimeneti csomópontja. Adja át a megfelelő kimeneti csomópont nevét a felülbíráláshoz (a kis-és nagybetűk megkülönböztetése érvényes). |
+| InvalidQueryParameter | A (z) "{0}" lekérdezési paraméter érvénytelen. {1} |
+| MissingInputBlobInformation | Hiányzó Azure Storage-blob-információ. Adjon meg érvényes karakterláncot és relatív elérési utat vagy URI-t, majd próbálkozzon újra. |
+| MissingJobId | Nem adta meg a megadott azonosítójú feladatot. A rendszer egy feladatot ad vissza, amikor első alkalommal küldi el a feladatot. Ellenőrizze, hogy helyes-e a feladatokhoz tartozó azonosító, majd próbálkozzon újra. |
+| MissingKeys | Nincsenek megadva kulcsok, vagy az elsődleges vagy a másodlagos kulcs egyike sincs megadva. |
+| MissingModelPackage | Nincs megadva modell-csomag azonosítója vagy modell-csomag. Adjon meg egy érvényes Model Package ID-t vagy modell-csomagot, és próbálkozzon újra. |
+| MissingOutputOverrideSpecification | A kérelemből hiányzik a blob-specifikáció a kimenet felülbírálásához {0}. Adjon meg egy érvényes blob-helyet a kérelemben, vagy távolítsa el a kimeneti specifikációt, ha nincs szükség a hely felülbírálására. |
+| MissingRequestInput | A webszolgáltatás egy bemenetet vár, de nincs megadva bemenet. Győződjön meg arról, hogy az érvényes bemenetek a modellben közzétett bemeneti portok alapján vannak megadva, és próbálkozzon újra. |
+| MissingRequiredGlobalParameters | Nem minden szükséges webszolgáltatás-paraméter (ek) van megadva. Ellenőrizze, hogy helyesek-e a modul (ok) re várt paraméter (ek), és próbálkozzon újra. |
+| MissingRequiredOutputOverrides | Egy titkosított szolgáltatási végpont meghívásakor kötelező megadni a kimeneti felülbírálásokat az összes szolgáltatás kimenete számára. A következő kimeneteken jelenleg nincsenek felülbírálások: {0} |
+| MissingWebServiceGroupId | Nincs megadva webszolgáltatás-csoport azonosítója. Adja meg egy érvényes webszolgáltatás-csoport azonosítóját, és próbálkozzon újra. |
+| MissingWebServiceId | Nincs megadva webszolgáltatás-azonosító. Adjon meg egy érvényes webszolgáltatás-azonosítót, és próbálkozzon újra. |
+| MissingWebServicePackage | Nincs megadva webszolgáltatás-csomag. Adjon meg egy érvényes webszolgáltatás-csomagot, és próbálkozzon újra. |
+| MissingWorkspaceId | Nincs megadva munkaterület-azonosító. Adjon meg egy érvényes munkaterület-azonosítót, és próbálkozzon újra. |
+| ModelConfigurationInvalid | Érvénytelen modell-konfiguráció a modell csomagban. Győződjön meg arról, hogy a modell konfigurációja kimeneti végpont (ok) definícióját, STD-hiba végpontját és kifelé tartozó végpontot tartalmaz, és próbálkozzon újra. |
+| ModelPackageIdInvalid | A modell-csomag azonosítója érvénytelen. Ellenőrizze, hogy helyes-e a modell-csomag azonosítója, és próbálkozzon újra. |
+| RequestBodyInvalid | A kérés törzsének deszerializálása során nincs megadva a kérelem törzse vagy a hiba. |
+| RequestIsEmpty | Nincs megadva kérelem. Adjon meg egy érvényes kérelmet, és próbálkozzon újra. |
+| UnexpectedParameter | Váratlan paraméterek vannak megadva. Ellenőrizze, hogy az összes paraméter neve helyesen van-e megadva, csak a várt paraméterek lesznek átadva, majd próbálkozzon újra. |
 | UnknownError | Ismeretlen hiba. |
 | UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | Nem tudja módosítani az egyidejű kérelmek követelményei {0} webes szolgáltatás. |
-| WebServiceIdInvalid | Érvénytelen webszolgáltatás-azonosítót a megadott. Webszolgáltatás-azonosítót érvényes guid lehet. |
-| WebServiceTooManyConcurrentRequestRequirement | Nem állítható be a párhuzamos kérés követelmény több mint {0}. |
-| WebServiceTypeInvalid | Érvénytelen webes szolgáltatás típusa a megadott. Ellenőrizze, hogy az érvényes webes szolgáltatás típus helyességéről, majd próbálkozzon újra. Érvénytelen a webes szolgáltatástípusok: {0}. |
+| WebServiceConcurrentRequestRequirementInvalid | {0} webszolgáltatáshoz tartozó egyidejű kérelmekre vonatkozó követelmények nem módosíthatók. |
+| WebServiceIdInvalid | Érvénytelen webszolgáltatás-azonosító van megadva. A webszolgáltatás azonosítójának érvényes GUID-azonosítónak kell lennie. |
+| WebServiceTooManyConcurrentRequestRequirement | Az egyidejű kérelmek nem állíthatók be több mint {0}. |
+| WebServiceTypeInvalid | Érvénytelen a megadott webszolgáltatás-típus. Győződjön meg arról, hogy az érvényes webszolgáltatás-típus helyes, és próbálkozzon újra. Érvényes webszolgáltatás-típusok: {0}. |
  
-## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (HTTP-állapotkód: 400)
+## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (400-es HTTP-állapotkód)
  
-Érvénytelen felhasználó a megadott argumentum.
+A megadott felhasználói argumentum érvénytelen.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| InputMismatchError | Bemeneti adatok nem egyezik a bemeneti portját séma. |
-| InputParseError | Nem sikerült a bemeneti vektor elemzése.  Ellenőrizze a bemeneti vektor rendelkezik a megfelelő számú oszlopai és adattípusai.  További részletek: {0}. |
-| MissingRequiredGlobalParameters | A webszolgáltatás által várt paraméterek hiányoznak. Ellenőrizze, hogy a webszolgáltatás által várt szükséges paraméterek helyesek, és próbálkozzon újra. |
-| UnexpectedParameter | Győződjön meg arról, csak a szükséges paramétereket a webszolgáltatás által várt lesznek átadva, és próbálkozzon újra. |
+| InputMismatchError | A bemeneti adatok nem felelnek meg a bemeneti port sémájának. |
+| InputParseError | A bemeneti vektor elemzése sikertelen volt.  Ellenőrizze, hogy a bemeneti vektor megfelelő számú oszloppal és adattípussal rendelkezik-e.  További részletek: {0}. |
+| MissingRequiredGlobalParameters | A webszolgáltatás által várt paraméter (ek) hiányoznak. Győződjön meg arról, hogy a webszolgáltatás által várt összes szükséges paraméter helyes, és próbálkozzon újra. |
+| UnexpectedParameter | Győződjön meg arról, hogy csak a webszolgáltatás által várt szükséges paraméterek lesznek átadva, majd próbálkozzon újra. |
 | UserParameterInvalid | {0} |
  
-## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation (HTTP-állapotkód: 400)
+## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation (400-es HTTP-állapotkód)
  
-A kérés nem érvényes az aktuális környezetben.
- 
-| Hibakód | Felhasználói üzenet |
-| ---------- |--------------|
-| CannotStartJob | A feladat nem indítható el, mert {0} állapota. |
-| IncompatibleModel | A modell nem kompatibilis a kérelem verziójával. A kérelem verziója csak egyetlen datatable kimeneti modellek támogatja. |
-| MultipleInputsNotAllowed | A modell nem engedélyezi több bemenet. |
- 
-## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (HTTP-állapotkód: 400)
- 
-Modul végrehajtása egy belső könyvtár hibába ütközött.
- 
- 
-## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (HTTP-állapotkód: 400)
- 
-Modul végrehajtási hibát észlelt.
- 
- 
-## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (HTTP-állapotkód: 400)
- 
-Érvénytelen web service-csomag. Ellenőrizze a megadott web service-csomag helyességét, és próbálkozzon újra.
+A kérelem érvénytelen az aktuális környezetben.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| FormatError | A web service-csomag formátuma hibás. Részletek: {0} |
-| RuntimesError | A web service csomag graph je neplatná. Részletek: {0} |
-| ValidationError | A web service csomag graph je neplatná. Részletek: {0} |
+| CannotStartJob | A feladatot nem lehet elindítani, mert {0} állapotban van. |
+| IncompatibleModel | A modell nem kompatibilis a kérelem verziójával. A kérelem verziója csak egyetlen DataTable kimeneti modellt támogat. |
+| MultipleInputsNotAllowed | A modell nem engedélyez több bemenetet. |
  
-## <a name="unauthorized-http-status-code-401"></a>Nem engedélyezett (HTTP 401-es állapotkód)
+## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (400-es HTTP-állapotkód)
  
-Kérelem nincs hitelesítve a hozzáférés-erőforráshoz.
+A modul végrehajtása belső függvénytár-hibát észlelt.
+ 
+ 
+## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (400-es HTTP-állapotkód)
+ 
+A modul végrehajtása hibát észlelt.
+ 
+ 
+## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (400-es HTTP-állapotkód)
+ 
+Érvénytelen webszolgáltatási csomag. Ellenőrizze, hogy a megadott webszolgáltatás-csomag megfelelő-e, majd próbálkozzon újra.
+ 
+| Hibakód | Felhasználói üzenet |
+| ---------- |--------------|
+| FormatError | A webszolgáltatási csomag helytelen formátumú. Részletek: {0} |
+| RuntimesError | A webszolgáltatás-csomag gráfja érvénytelen. Részletek: {0} |
+| ValidationError | A webszolgáltatás-csomag gráfja érvénytelen. Részletek: {0} |
+ 
+## <a name="unauthorized-http-status-code-401"></a>Nem engedélyezett (HTTP-állapotkód 401)
+ 
+A kérés nem engedélyezett az erőforráshoz való hozzáféréshez.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | AdminRequestUnauthorized | Nem engedélyezett |
 | ManagementRequestUnauthorized | Nem engedélyezett |
-| ScoreRequestUnauthorized | A megadott érvénytelen hitelesítő adatok. |
+| ScoreRequestUnauthorized | A megadott hitelesítő adatok érvénytelenek. |
  
-## <a name="notfound-http-status-code-404"></a>NotFound (HTTP-állapotkód: 404)
+## <a name="notfound-http-status-code-404"></a>NotFound (404-es HTTP-állapotkód)
  
 Az erőforrás nem található.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| ModelPackageNotFound | Modell-csomag nem található. Ellenőrizze, hogy a modell csomag azonosító helyességéről, majd próbálkozzon újra. |
-| WebServiceIdNotFoundInWorkspace | Webszolgáltatás alatt ez a munkaterület nem található. Nincs a webServiceId és a munkaterület azonosítója nem egyeznek. Ellenőrizze, hogy a megadott webes szolgáltatás része a munkaterületet, és próbálkozzon újra. |
-| WebServiceNotFound | A webszolgáltatás nem található. Ellenőrizze, hogy a webszolgáltatás azonosító helyességéről, majd próbálkozzon újra. |
-| WorkspaceNotFound | A munkaterület nem található. Ellenőrizze, hogy a munkaterület-azonosító helyességéről, majd próbálkozzon újra. |
+| ModelPackageNotFound | A modell csomagja nem található. Ellenőrizze, hogy helyes-e a modell-csomag azonosítója, és próbálkozzon újra. |
+| WebServiceIdNotFoundInWorkspace | Nem található webszolgáltatás ezen a munkaterületen. Eltérés van a webServiceId és a munkaterület azonosítója között. Ellenőrizze, hogy a megadott webszolgáltatás része-e a munkaterületnek, majd próbálkozzon újra. |
+| WebServiceNotFound | A webszolgáltatás nem található. Ellenőrizze a webszolgáltatás azonosítójának helyességét, és próbálkozzon újra. |
+| WorkspaceNotFound | A munkaterület nem található. Ellenőrizze a munkaterület azonosítójának helyességét, és próbálkozzon újra. |
  
-## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (HTTP-állapotkódot 408)
+## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (408-es HTTP-állapotkód)
  
-A műveletet nem sikerült a rendelkezésre álló időn belül befejezni.
- 
-| Hibakód | Felhasználói üzenet |
-| ---------- |--------------|
-| RequestCanceled | Kérelem az ügyfél megszakította. |
-| ScoreRequestTimeout | Végrehajtási kérelem túllépte az időkorlátot. |
- 
-## <a name="conflict-http-status-code-409"></a>Ütközés (HTTP-állapotkód: 409)
- 
-Erőforrás már létezik.
+A művelet nem hajtható végre a megengedett időn belül.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| ModelOutputMetadataMismatch | Érvénytelen kimeneti paraméter neve. Próbálja meg a metaadatok szerkesztő modul használatával nevezze át az oszlopokat, és próbálkozzon újra. |
+| RequestCanceled | Az ügyfél megszakította a kérést. |
+| ScoreRequestTimeout | A végrehajtási kérelem időkorlátja lejárt. |
  
-## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (HTTP-állapotkód: 413)
+## <a name="conflict-http-status-code-409"></a>Ütközés (HTTP-állapotkód 409)
  
-A modell nagyobb volt hozzárendelve memóriakvótáját.
+Az erőforrás már létezik.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| OutOfMemoryLimit | A modell több memóriára, a rendszer sajátíthatja használja fel. A maximális megengedett memória a modell {0} MB. Tekintse meg a problémákat a modellt. |
+| ModelOutputMetadataMismatch | A kimeneti paraméter neve érvénytelen. A metaadatok szerkesztő moduljának használatával nevezze át az oszlopokat, és próbálkozzon újra. |
  
-## <a name="internalerror-http-status-code-500"></a>InternalError (HTTP-állapotkód: 500)
+## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (413-es HTTP-állapotkód)
  
-Végrehajtási belső hibába ütközött.
+A modell túllépte a hozzá rendelt memória-kvótát.
+ 
+| Hibakód | Felhasználói üzenet |
+| ---------- |--------------|
+| OutOfMemoryLimit | A modell a megfelelőnél több memóriát használt. A modell számára engedélyezett maximális memória {0} MB. Ellenőrizze a modellt a problémákhoz. |
+ 
+## <a name="internalerror-http-status-code-500"></a>InternalError (500-es HTTP-állapotkód)
+ 
+A végrehajtás belső hibába ütközött.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
@@ -178,9 +174,9 @@ Végrehajtási belső hibába ütközött.
 | BackendArgumentError |  |
 | BackendBadRequest |  |
 | ClusterConfigBlobMisconfigured |  |
-| ContainerProcessTerminatedWithSystemError | A rendszer hiba miatt összeomlott tárolófolyamat |
-| ContainerProcessTerminatedWithUnknownError | Ismeretlen hiba miatt összeomlott a tárolófolyamat |
-| ContainerValidationFailed | BLOB-tároló érvényesítése sikertelen volt, hiba: {0}. |
+| ContainerProcessTerminatedWithSystemError | A tároló folyamata rendszerhiba miatt összeomlott |
+| ContainerProcessTerminatedWithUnknownError | A tároló folyamata ismeretlen hiba miatt összeomlott |
+| ContainerValidationFailed | A blob-tároló érvényesítése a következő hiba miatt sikertelen volt: {0}. |
 | DeleteWebServiceResourceFailed |  |
 | ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
@@ -189,21 +185,21 @@ Végrehajtási belső hibába ütközött.
 | InvalidResourceCacheConfiguration |  |
 | InvalidResourceDownloadConfiguration |  |
 | InvalidWebServiceResources |  |
-| MissingTaskInstance | Nincsenek megadva argumentumok. Győződjön meg arról, hogy érvényes argumentumok lesznek átadva, és próbálkozzon újra. |
+| MissingTaskInstance | Nincsenek megadva argumentumok. Győződjön meg arról, hogy érvényes argumentumok lettek átadva, majd próbálkozzon újra. |
 | ModelPackageInvalid |  |
 | ModuleExecutionFailed |  |
 | ModuleLoadFailed |  |
 | ModuleObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | Portazonosító ={0} nem támogatott adattípusú: {1}. |
+| PortDataTypeNotSupported | A port ID ={0} nem támogatott adattípussal rendelkezik: {1}. |
 | ResourceDownload |  |
 | ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
-| SwaggerGeneration | Swagger létrehozása nem sikerült, részletek: {0} |
+| SwaggerGeneration | A hencegés létrehozása nem sikerült, részletek: {0} |
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | UnknownError |  |
-| UnknownJobStatusCode | Ismeretlen feladat állapotkód {0}. |
+| UnknownJobStatusCode | Ismeretlen a feladathoz tartozó állapotkód {0}. |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
@@ -211,47 +207,47 @@ Végrehajtási belső hibába ütközött.
 | WorkerAuthorizationFailed |  |
 | WorkerUnreachable |  |
  
-## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (HTTP-állapotkód: 500)
+## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (500-es HTTP-állapotkód)
  
-Végrehajtási belső hibába ütközött. A rendszer kevés a memória. Kérjük, próbálkozzon újból.
- 
- 
-## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (HTTP-állapotkód: 500)
- 
-Érvénytelen a csomag. Ellenőrizze a megadott modell csomag helyességét, és próbálkozzon újra.
+A végrehajtás belső hibába ütközött. A rendszer kevés a memóriában. Kérjük, próbálkozzon újból.
  
  
-## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (HTTP-állapotkód: 500)
+## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (500-es HTTP-állapotkód)
  
-Érvénytelen web service-csomag. Ellenőrizze a megadott webes csomag helyességét, és próbálkozzon újra.
- 
-| Hibakód | Felhasználói üzenet |
-| ---------- |--------------|
-| ModuleError | A web service csomag graph je neplatná. Részletek: {0} |
- 
-## <a name="initializingcontainers-http-status-code-503"></a>InitializingContainers (HTTP-állapotkód: 503)
- 
-A kérelem nem hajtható végre, mint a tárolók inicializálása közben.
+A modell csomagja érvénytelen. Győződjön meg arról, hogy a megadott modell-csomag helyes, és próbálkozzon újra.
  
  
-## <a name="serviceunavailable-http-status-code-503"></a>ServiceUnavailable (HTTP-állapotkód: 503)
+## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (500-es HTTP-állapotkód)
  
-Szolgáltatás átmenetileg nem érhető el.
+Érvénytelen webszolgáltatási csomag. Ellenőrizze, hogy helyes-e a megadott webcsomag, és próbálkozzon újra.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| NoMoreResources | Erőforrások nem érhetők el a kérelmet. |
-| RequestThrottled | A kérelem szabályozta {0} végpont. A végpont a maximális egyidejűség {1}. |
-| TooManyConcurrentRequests | Túl sok egyidejű kérelem érkezett. |
-| TooManyHostsBeingInitialized | Túl sok gazdagép egyszerre inicializálása közben. Fontolja meg a szabályozás / újrapróbálkozás. |
-| TooManyHostsBeingInitializedPerModel | Túl sok gazdagép egyszerre inicializálása közben. Fontolja meg a szabályozás / újrapróbálkozás. |
+| ModuleError | A webszolgáltatás-csomag gráfja érvénytelen. Részletek: {0} |
  
-## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (HTTP-állapotkód: 504)
+## <a name="initializingcontainers-http-status-code-503"></a>InitializingContainers (503-es HTTP-állapotkód)
  
-A műveletet nem sikerült a rendelkezésre álló időn belül befejezni.
+A kérelem nem hajtható végre, mert a tárolók inicializálva vannak.
+ 
+ 
+## <a name="serviceunavailable-http-status-code-503"></a>ServiceUnavailable (503-es HTTP-állapotkód)
+ 
+A szolgáltatás átmenetileg nem érhető el.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| BackendInitializationTimeout | A webes szolgáltatás inicializálása nem fejeződött be a rendelkezésre álló időn belül. |
-| BackendScoreTimeout | A web service kérelem végrehajtása nem sikerült a rendelkezésre álló időn belül. |
+| NoMoreResources | Nem érhető el erőforrás a kérelemhez. |
+| RequestThrottled | A kérelmet {0} végpontra vonatkozóan szabályozták. A végpontok maximális párhuzamossága {1}. |
+| TooManyConcurrentRequests | Túl sok egyidejű kérelem elküldése. |
+| TooManyHostsBeingInitialized | Túl sok gazdagép van inicializálva egyszerre. Vegye fontolóra a szabályozást és az újrapróbálkozást. |
+| TooManyHostsBeingInitializedPerModel | Túl sok gazdagép van inicializálva egyszerre. Vegye fontolóra a szabályozást és az újrapróbálkozást. |
+ 
+## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (504-es HTTP-állapotkód)
+ 
+A művelet nem hajtható végre a megengedett időn belül.
+ 
+| Hibakód | Felhasználói üzenet |
+| ---------- |--------------|
+| BackendInitializationTimeout | A webszolgáltatás inicializálása nem fejeződött be a megengedett időn belül. |
+| BackendScoreTimeout | A webszolgáltatás-kérelem végrehajtása nem fejeződött be a megengedett időn belül. |
  

@@ -11,14 +11,14 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0035495d9dd3b82b65aa3b4a7b1d918c73288df8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496151"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Gyors útmutató: Önálló adatbázis létrehozása Azure SQL Database a Azure Portal, a PowerShell és az Azure CLI használatával
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Portal, a PowerShell és az Azure CLI használatával
 
 [Egyetlen adatbázis](sql-database-single-database.md) létrehozása a leggyorsabb és legegyszerűbb üzembe helyezési lehetőség az adatbázisok Azure SQL Database-ben való létrehozásához. Ez a rövid útmutató bemutatja, hogyan hozhat létre és kérdez le egyetlen adatbázist a Azure Portal használatával.
 
@@ -28,7 +28,7 @@ Az ebben a rövid útmutatóban szereplő összes lépésnél jelentkezzen be a 
 
 ## <a name="create-a-single-database"></a>Önálló adatbázis létrehozása
 
-Egyetlen adatbázis hozható létre a kiépített vagy kiszolgáló nélküli (előzetes) számítási rétegben.
+Egyetlen adatbázis hozható létre a kiépített vagy kiszolgáló nélküli számítási rétegben.
 
 - A kiépített számítási réteg egyetlen adatbázisa előre lefoglalt számítási erőforrások (például CPU és memória) rögzített mennyiségét használja a két [beszerzési modell](sql-database-purchase-models.md)egyikével.
 - A kiszolgáló nélküli számítási réteg egyetlen adatbázisa számos számítási erőforrást tartalmaz, beleértve a CPU-t és a memóriát, amely automatikusan skálázható, és csak a [virtuális mag-alapú vásárlási modellekben](sql-database-service-tiers-vcore.md)érhető el.

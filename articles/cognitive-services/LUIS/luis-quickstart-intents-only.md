@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Előrejelzési szándékok – LUIS'
+title: 'Oktatóanyag: a szándékok előrejelzése – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban hozzon létre egy egyéni alkalmazást, amely előrejelzést készít a felhasználó szándékáról. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
 services: cognitive-services
@@ -11,16 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 83ecf0767f2b21065c698421e3ad8f07f31d5b16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375821"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465282"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: a felhasználói szándékok meghatározására szolgáló LUIS-alkalmazás létrehozása
 
 Ebben az oktatóanyagban létrehoz egy egyéni Emberi erőforrások (HR) alkalmazást, amely előrejelzi a felhasználók szándékát a kimondott szöveg alapján. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -47,9 +49,9 @@ Az alkalmazás rendelkezik szándékokkal.
 
 |Szándék|Cél|
 |--|--|
-|ApplyForJob|Annak megállapítása, hogy a felhasználó alkalmaz-e feladatot.|
-|GetJobInformation|Állapítsa meg, hogy a felhasználó az általános vagy egy adott feladatra vonatkozó információt keres-e.|
-|Nincsenek|Annak megállapítása, hogy a felhasználó kér-e valamilyen alkalmazást, nem kell válaszolnia. Ez a szándék az alkalmazások létrehozásának részeként van megadva, és nem törölhető. |
+|`ApplyForJob`|Annak megállapítása, hogy a felhasználó alkalmaz-e feladatot.|
+|`GetJobInformation`|Állapítsa meg, hogy a felhasználó az általános vagy egy adott feladatra vonatkozó információt keres-e.|
+|`None`|Annak megállapítása, hogy a felhasználó kér-e valamilyen alkalmazást, nem kell válaszolnia. Ez a szándék az alkalmazások létrehozásának részeként van megadva, és nem törölhető. |
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
@@ -59,7 +61,7 @@ Az alkalmazás rendelkezik szándékokkal.
 
 1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. Ezt a szándékot akkor kell megjósolni, amikor egy felhasználó információt kér a vállalatban megnyitott feladatokról. 
 
-    ![Új leképezési párbeszédpanel képernyőképe a Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "új szándék párbeszédpanel képernyőképe a Language Understanding (LUIS)")
+    ![Képernyőkép Language Understanding (LUIS) új leképezési párbeszédpanelről](media/luis-quickstart-intents-only/create-intent.png "Képernyőkép Language Understanding (LUIS) új leképezési párbeszédpanelről")
 
 1. Válassza a **Done** (Kész) lehetőséget.
 
@@ -67,24 +69,24 @@ Az alkalmazás rendelkezik szándékokkal.
 
     | Példák kimondott szövegekre|
     |--|
-    |Vannak ma megjelent új állásajánlatok?|
-    |Vannak új állások meghirdetve a seattle-i irodában?|
-    |Nyitottak-e a mérnökök a távoli munkavégzők vagy a távmunka-feladatok?|
-    |Elérhető adatbázisokkal kapcsolatos állás?|
-    |Közös munkavégzést keresek a Tampa-irodában.|
-    |Van gyakornok a San Francisco-beli irodában?|
-    |Van-e részmunkaidős munka a kollégiumban dolgozó személyek számára?|
-    |Új lehetőségek keresése a könyvelés területén|
-    |Munkát keres a New York-i régióban a kétnyelvű hangszórókhoz.|
-    |Új helyzetet keres a nyilvántartási feladatokkal kapcsolatban.|
-    |Új állások?|
-    |Az elmúlt 2 napban hozzáadott mérnökök összes feladatának megjelenítése.|
-    |A mai feladatok közzétételei?|
-    |Milyen nyilvántartási pozíciók vannak nyitva a londoni irodában?|
-    |Milyen állások érhetők el vezető mérnökök számára?|
-    |Hol található a meghirdetett állások listája?|
+    |`Any new jobs posted today?`|
+    |`Are there any new positions in the Seattle office?`|
+    |`Are there any remote worker or telecommute jobs open for engineers?`|
+    |`Is there any work with databases?`|
+    |`I'm looking for a co-working situation in the tampa office.`|
+    |`Is there an internship in the san francisco office?`|
+    |`Is there any part-time work for people in college?`|
+    |`Looking for a new situation with responsibilities in accounting`|
+    |`Looking for a job in new york city for bilingual speakers.`|
+    |`Looking for a new situation with responsibilities in accounting.`|
+    |`New jobs?`|
+    |`Show me all the jobs for engineers that were added in the last 2 days.`|
+    |`Today's job postings?`|
+    |`What accounting positions are open in the london office?`|
+    |`What positions are available for Senior Engineers?`|
+    |`Where is the job listings`|
 
-    [![Képernyőkép MyStore szándékot az új utterances megadásáról](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "képernyőkép megadásáról MyStore szándékot az új kimondott szöveg")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Képernyőfelvétel: új hosszúságú kimondott szöveg beírása a MyStore szándékához](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Képernyőfelvétel: új hosszúságú kimondott szöveg beírása a MyStore szándékához")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     Ha _például hosszúságú kimondott szöveg_-t használ, akkor a Luis betanítása arról nyújt segítséget, hogy milyen hosszúságú kimondott szöveg kell előre jelezni. 
 
@@ -149,29 +151,22 @@ Térjen vissza a LUIS-portálra, és hozzon létre egy új szándékot annak meg
 
     | Példák kimondott szövegekre|
     |--|
-    |Jelentkezés kitöltése az 123456. számú álláshoz|
-    |Ez az önéletrajzom a 654234. számú álláshoz|
-    |Itt van a folytatás a részmunkaidőben lévő recepciós bejegyzésben.|
-    |Erre a papírmunkára alkalmazom az Art Desk-feladatot.|
-    |Felhasználom a nyári főiskolai gyakorlatot a San Diego-beli kutatás és fejlesztés terén|
-    |Kérésem, hogy beküldem a folytatást a cafeteria ideiglenes helyére.|
-    |Elküldem a folytatást az új Autocar csapatnak a Columbus-ben, OH|
-    |Szeretnék jelentkezni az új könyvelői állásra|
-    |A 456789-es feladatok nyilvántartási gyakorlata|
-    |567890. számú állás és a dokumentumaim|
-    |A Tulsa-nyilvántartási gyakorlattal kapcsolatos dokumentumok csatolva vannak.|
-    |Saját papírmunka az ünnepi kézbesítési pozícióhoz|
-    |Kérjük, küldje el újra az új számviteli feladatot Seattle-ben|
-    |Önéletrajz beadása a mérnöki pozícióra|
-    |Ez az önéletrajzom a post 234123-es verziójának a Tampa-ban.|
+    |`Fill out application for Job 123456`|
+    |`Here is my c.v. for position 654234`|
+    |`Here is my resume for the part-time receptionist post.`|
+    |`I'm applying for the art desk job with this paperwork.`|
+    |`I'm applying for the summer college internship in Research and Development in San Diego`|
+    |`I'm requesting to submit my resume to the temporary position in the cafeteria.`|
+    |`I'm submitting my resume for the new Autocar team in Columbus, OH`|
+    |`I want to apply for the new accounting job`|
+    |`Job 456789 accounting internship paperwork is here`|
+    |`Job 567890 and my paperwork`|
+    |`My papers for the tulsa accounting internship are attached.`|
+    |`My paperwork for the holiday delivery position`|
+    |`Please send my resume for the new accounting job in seattle`|
+    |`Submit resume for engineering position`|
+    |`This is my c.v. for post 234123 in Tampa.`|
 
-<!--
-
-    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
-
-    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
-
--->
 
 ## <a name="train-again"></a>Betanítás újra
 

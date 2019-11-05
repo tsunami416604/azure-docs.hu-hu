@@ -1,5 +1,5 @@
 ---
-title: Kormányzati megoldások kiépítése az Azure IoT Central
+title: Kormányzati megoldások létrehozása az Azure IoT Centrallal
 description: Ismerje meg, hogyan hozhat létre intelligens városi megoldásokat az Azure IoT Central alkalmazás-sablonok használatával.
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 02918df348414058d176246da5c2d0f14df7b405
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026650"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464081"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások kiépítése az Azure IoT Central
+# <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások létrehozása az Azure IoT Centrallal
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -73,11 +73,11 @@ A csatlakoztatott hulladékkezelési alkalmazás sablonja előre konfigurált:
 Ismerkedés a [csatlakoztatott hulladékgazdálkodási alkalmazás oktatóanyagával](./tutorial-connected-waste-management.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Próbálja ki a IoT Centralban az ingyenes [create app](https://apps.azureiotcentral.com/build/government) (kormányzati alkalmazás sablonjait)
 * További tudnivalók a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md)
 * További információ a víz-használat [figyelésével kapcsolatos fogalmakról](./concepts-waterconsumptionmonitoring-architecture.md)
 * További tudnivalók a [kapcsolódó hulladékgazdálkodási fogalmakról](./concepts-connectedwastemanagement-architecture.md)  
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
  

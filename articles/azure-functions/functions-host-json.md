@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927451"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469200"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
 
@@ -71,6 +71,9 @@ A következő minta *Host. JSON* fájlokhoz minden lehetséges beállítás van 
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -78,10 +81,7 @@ A következő minta *Host. JSON* fájlokhoz minden lehetséges beállítás van 
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -223,9 +223,9 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők: `never`, `always`, `debugOnly`. |
-|Naplózási szint|–|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x verzió a naplózási kategória szűrésének ASP.NET Core elrendezését követi. Ez lehetővé teszi adott függvények naplózásának szűrését. További információ: [naplózási szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
-|konzol|–| A [konzol](#console) naplózási beállítása. |
-|applicationInsights|–| A [applicationInsights](#applicationinsights) beállítás. |
+|Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x verzió a naplózási kategória szűrésének ASP.NET Core elrendezését követi. Ez lehetővé teszi adott függvények naplózásának szűrését. További információ: [naplózási szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
+|konzol|n/a| A [konzol](#console) naplózási beállítása. |
+|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="console"></a>konzol
 
@@ -246,6 +246,18 @@ Ez a beállítás a [naplózás](#logging)gyermeke. A konzol naplózását vezé
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |isEnabled|hamis|Engedélyezheti vagy letilthatja a konzol naplózását.| 
+
+## <a name="manageddependency"></a>managedDependency
+
+A felügyelt függőség egy olyan szolgáltatás, amely jelenleg csak PowerShell-alapú függvények esetén támogatott. Lehetővé teszi a függőségek automatikus kezelését a szolgáltatással. Ha a `enabled` tulajdonság értéke `true`, a rendszer feldolgozza a `requirements.psd1` fájlt. A függőségek akkor frissülnek, ha minden másodlagos verzió megjelent. További információ: [felügyelt függőség](functions-reference-powershell.md#dependency-management) a PowerShell-cikkben.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
 
 ## <a name="queues"></a>üzenetsorok
 
@@ -281,11 +293,11 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
 |lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
-|lockAcquisitionPollingInterval|–|A zárolási beszerzési kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
 
 ## <a name="version"></a>version
 
-A v2-es futtatókörnyezetet megcélzó Function alkalmazás esetében a `"version": "2.0"` verziószámú karakterlánc szükséges.
+A v2-es futtatókörnyezetet célzó Function alkalmazás esetében a Version string `"version": "2.0"` szükséges.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
@@ -297,19 +309,7 @@ A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csh
 }
 ```
 
-## <a name="manageddependency"></a>managedDependency
-
-A felügyelt függőség egy előzetes verziójú funkció, amely jelenleg csak a PowerShell-alapú függvények esetében támogatott. Lehetővé teszi a függőségek automatikus kezelését a szolgáltatással. Ha az enabled tulajdonság értéke TRUE (igaz), a rendszer feldolgozza a [követelmények. psd1](functions-reference-powershell.md#dependency-management) fájlt. A függőségek akkor frissülnek, ha minden másodlagos verzió megjelent.
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
-}
-```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a Host. JSON fájl frissítéséhez](functions-reference.md#fileupdate)

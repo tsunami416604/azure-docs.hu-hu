@@ -1,7 +1,7 @@
 ---
 title: 'Csatlakozás az adatkezeléshez: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan egyesítheti az adatkészleteket az Azure Machine Learning szolgáltatás JOIN JOIN adatmoduljának használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan egyesítheti az adatkészleteket az Azure Machine Learning csatlakoztatási csatlakozás adatmoduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693094"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495090"
 ---
 # <a name="join-data"></a>Adatok összekapcsolása
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning szolgáltatás vizuális felületének **JOIN** adatmodulja két adatkészlet egyesítésére egy adatbázis-stílusú csatlakozási művelettel.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Csatlakozás** adatmodulja két adatkészlet egyesítéséhez egy adatbázis-stílusú csatlakozási művelettel.  
 
 ## <a name="how-to-configure-join-data"></a>Csatlakozási adatbevitel konfigurálása
 
@@ -64,8 +64,8 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
 
 1. Futtassa a folyamatot, vagy válassza ki az összekapcsolási modult, és a kiválasztott **Futtatás** elemre kattintva végezze el a csatlakozást.
 
-1. Az eredmények megtekintéséhez kattintson a jobb gombbal az **illesztési adatokat**  > **results adatkészlet**  > **Megjelenítés**elemre.
+1. Az eredmények megtekintéséhez kattintson a jobb gombbal az **illesztési adatokat** > **results adatkészlet** > **Megjelenítés**elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

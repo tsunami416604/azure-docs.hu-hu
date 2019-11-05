@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0fdc58ba54c63ba7dd6b74f56aa91e9c2b3c0936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562832"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464609"
 ---
 # <a name="create-a-custom-voice"></a>Egyéni hang létrehozása
 
-Az [Egyéni hangra való felkészülés](how-to-custom-voice-prepare-data.md)során a különböző adattípusokat ismertetjük, amelyek segítségével betaníthatja az egyéni hangokat és a különböző formátumokra vonatkozó követelményeket. Az adatok előkészítése után megkezdheti a feltöltést az [Egyéni](https://aka.ms/custom-voice-portal)hangportálra, vagy az egyéni hangképzési API-n keresztül. Itt ismertetjük az egyéni hangoknak a portálon keresztül történő betanításának lépéseit.
+Az [Egyéni hangra való felkészülés](how-to-custom-voice-prepare-data.md)során a különböző adattípusokat ismertetjük, amelyek segítségével betaníthatja az egyéni hangokat és a különböző formátumokra vonatkozó követelményeket. Az adatok előkészítése után megkezdheti a feltöltést az [Egyéni hangportálra](https://aka.ms/custom-voice-portal), vagy az egyéni hangképzési API-n keresztül. Itt ismertetjük az egyéni hangoknak a portálon keresztül történő betanításának lépéseit.
 
 > [!NOTE]
-> Ez az oldal azt feltételezi, hogy elolvasta az első [lépéseket az egyéni](how-to-custom-voice.md) hangon, és előkészíti [az egyéni](how-to-custom-voice-prepare-data.md)hangfelvételt, és létrehozott egy egyéni hangprojektet.
+> Ez az oldal azt feltételezi, hogy elolvasta az első [lépéseket az egyéni](how-to-custom-voice.md) hangon, és [előkészíti az egyéni](how-to-custom-voice-prepare-data.md)hangfelvételt, és létrehozott egy egyéni hangprojektet.
 
 Győződjön meg arról, hogy milyen nyelveken támogatott az egyéni hang: a [Testreszabás nyelve](language-support.md#customization).
 
 ## <a name="upload-your-datasets"></a>Az adatkészletek feltöltése
 
-Ha készen áll az adatok feltöltésére, nyissa meg az [Egyéni](https://aka.ms/custom-voice-portal)hangportált. Hozzon létre vagy válasszon ki egy egyéni hangprojektet. A projektnek meg kell osztania a megfelelő nyelvi/területi beállításokat és a nemek tulajdonságait a hangképzéshez használni kívánt adatként. Válassza ki `en-GB` például, hogy az angol nyelvű hangfelvételek angol nyelvűek-e, és az Egyesült Királyság akcentusa.
+Ha készen áll az adatok feltöltésére, nyissa meg az [Egyéni hangportált](https://aka.ms/custom-voice-portal). Hozzon létre vagy válasszon ki egy egyéni hangprojektet. A projektnek meg kell osztania a megfelelő nyelvi/területi beállításokat és a nemek tulajdonságait a hangképzéshez használni kívánt adatként. Válassza például a `en-GB` lehetőséget, ha a hangfelvételeket angol nyelven, az Egyesült Királyság hangsúlyozásával szeretné elvégezni.
 
 Lépjen az **adatok** lapra, és kattintson az **adatok feltöltése**elemre. A varázslóban válassza ki a megfelelő adattípust, amely megfelel az előkészített előírásoknak.
 
@@ -68,21 +68,21 @@ Az adatkészlet ellenőrzése után felhasználhatja az egyéni hangmodell össz
 
 3.  Ezután adjon meg egy **nevet** és egy **leírást** , amely segítséget nyújt a modell azonosításához.
 
-    Gondosan válassza ki a nevet. Az itt megadott név lesz az a név, amelyet a SSML-bevitel részeként a beszédfelismerési kérelemben szereplő hang megadására fog használni. Csak betűket, számokat és néhány írásjelet (például:-, \_, és (",") tartalmazhat. Használjon különböző neveket a különböző hangmodellekhez.
+    Gondosan válassza ki a nevet. Az itt megadott név lesz az a név, amelyet a SSML-bevitel részeként a beszédfelismerési kérelemben szereplő hang megadására fog használni. Csak betűket, számokat és néhány írásjelet (például-, \_és (",") tartalmazhat. Használjon különböző neveket a különböző hangmodellekhez.
 
     A **Leírás** mező gyakori használata a modell létrehozásához használt adatkészletek nevének rögzítése.
 
-4.  A betanítási **adatok kiválasztása** lapon válasszon ki egy vagy több olyan adatkészletet, amelyet a képzéshez használni szeretne. Mielőtt elküldi a hosszúságú kimondott szöveg számát, tekintse át a következőt:. Az en-US és a zh-CN hangmodellek tetszőleges számú hosszúságú kimondott szöveg elkezdheti. Más területi beállítások esetén több mint 2 000 hosszúságú kimondott szöveg kell kijelölnie, hogy egy hang betanítható legyen.
+4.  A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több olyan adatkészletet, amelyet a képzéshez használni szeretne. Mielőtt elküldi a hosszúságú kimondott szöveg számát, tekintse át a következőt:. Az en-US és a zh-CN hangmodellek tetszőleges számú hosszúságú kimondott szöveg elkezdheti. Más területi beállítások esetén több mint 2 000 hosszúságú kimondott szöveg kell kijelölnie, hogy egy hang betanítható legyen.
 
     > [!NOTE]
     > Az ismétlődő hangnevek el lesznek távolítva a betanításból. Győződjön meg arról, hogy a kiválasztott adatkészletek nem tartalmazzák ugyanazokat a hangneveket több. zip-fájlban.
 
     > [!TIP]
-    > Az ugyanahhoz a beszélőhöz tartozó adatkészletek használata szükséges a minőségi eredményekhez. Ha a betanításhoz beküldött adatkészletek teljes száma kevesebb, mint 6 000 különböző hosszúságú kimondott szöveg, akkor a hangmodellt a statisztikai számszerű szintézis technikán keresztül fogja betanítani. Abban az esetben, ha a betanítási adat meghaladja a 6 000 különböző hosszúságú kimondott szöveg, a betanítási folyamat elindítható az összefűzési szintézis technikával. Az összefűzési technológia általában természetesebb és magasabb szintű hangfelismerési eredményeket eredményezhet. [Vegye fel a kapcsolatot az egyéni](mailto:speechsupport@microsoft.com) hangcsapattal, ha olyan modellt szeretne betanítani a legújabb neurális TTS-technológiával, amely képes a nyilvánosan elérhető [neurális hangokkal](language-support.md#neural-voices)egyenértékű digitális hang létrehozására.
+    > Az ugyanahhoz a beszélőhöz tartozó adatkészletek használata szükséges a minőségi eredményekhez. Ha a betanításhoz beküldött adatkészletek teljes száma kevesebb, mint 6 000 különböző hosszúságú kimondott szöveg, akkor a hangmodellt a statisztikai számszerű szintézis technikán keresztül fogja betanítani. Abban az esetben, ha a betanítási adat meghaladja a 6 000 különböző hosszúságú kimondott szöveg, a betanítási folyamat elindítható az összefűzési szintézis technikával. Az összefűzési technológia általában természetesebb és magasabb szintű hangfelismerési eredményeket eredményezhet. [Vegye fel a kapcsolatot az egyéni hangcsapattal](https://go.microsoft.com/fwlink/?linkid=2108737) , ha olyan modellt szeretne betanítani a legújabb neurális TTS-technológiával, amely képes a nyilvánosan elérhető [neurális hangokkal](language-support.md#neural-voices)egyenértékű digitális hang létrehozására.
 
 5.  A hangmodell létrehozásának megkezdéséhez kattintson a **tanítás** elemre.
 
-A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az újonnan létrehozott modellnek. A tábla az állapotot is megjeleníti: A feldolgozás, sikeres, sikertelen.
+A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az újonnan létrehozott modellnek. A tábla a következő állapotot is megjeleníti: feldolgozás, sikeres, sikertelen.
 
 A megjelenített állapot az adatkészlet hangmodellre alakításának folyamatát tükrözi, ahogy az itt látható.
 
@@ -100,11 +100,13 @@ A betanítási idő a feldolgozott hangadatok mennyiségétől függően változ
 > [!NOTE]
 > Az előfizetéshez engedélyezett hangmodellek maximális száma 10 modell ingyenes előfizetés (F0) felhasználóhoz és 100 a standard előfizetés (S0) felhasználói számára.
 
+Ha a neurális hangképzési funkciót használja, kiválaszthatja a valós idejű adatfolyam-forgatókönyvekre optimalizált modellek betanítását, vagy egy olyan HD neurális modellt, amely aszinkron, [hosszú hangszintézisre](long-audio-api.md)van optimalizálva.  
+
 ## <a name="test-your-voice-model"></a>A hangmodell tesztelése
 
 A hangalapú betűkészlet sikeres létrehozása után tesztelheti a használatát a használathoz való üzembe helyezése előtt.
 
-1.  Navigáljon a **szöveg-beszéd > egyéni hang >** a teszteléshez.
+1.  Navigáljon a **szöveg-beszéd > egyéni hang > a teszteléshez**.
 
 2.  Kattintson a **teszt hozzáadása**gombra.
 
@@ -115,7 +117,7 @@ A hangalapú betűkészlet sikeres létrehozása után tesztelheti a használat�
     > [!NOTE]
     > A szöveg nyelvének meg kell egyeznie a hang betűkészletének nyelvével. Csak a sikeresen betanított modellek tesztelése lehetséges. Ebben a lépésben csak egyszerű szöveg támogatott.
 
-5.  Kattintson a **Create** (Létrehozás) gombra.
+5.  Kattintson a **Létrehozás** elemre.
 
 A tesztelési kérelem elküldése után vissza fog térni a teszt lapra. A tábla most már tartalmaz egy bejegyzést, amely megfelel az új kérésnek és az állapot oszlopnak. Néhány percet is igénybe vehet a beszédfelismerés. Ha az Állapot oszlopban a **sikeres**művelet látható, lejátszhatja a hangot, vagy letöltheti a szövegbeviteli szöveget (egy. txt fájlt) és hangkimenetet (egy. wav fájlt), és az utóbbit a minőségre is meghallgathatja.
 
@@ -143,5 +145,6 @@ Az egyéni végpont funkcionálisan megegyezik a szöveg-beszéd kérelmekhez ha
 
 ## <a name="next-steps"></a>További lépések
 
-* [Útmutató Hangminták rögzítése](record-custom-voice-samples.md)
+* [Útmutató: hangminták rögzítése](record-custom-voice-samples.md)
 * [Szöveg – beszéd API-hivatkozás](rest-text-to-speech.md)
+* [Hosszú hang API](long-audio-api.md)

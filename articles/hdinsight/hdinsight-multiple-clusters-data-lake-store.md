@@ -1,5 +1,5 @@
 ---
-title: Több HDInsight-fürt használata egy Azure Data Lake Storage fiókkal
+title: Több HDInsight-fürt & egy Azure Data Lake Storage fiókot
 description: Megtudhatja, hogyan használhat egynél több HDInsight-fürtöt egyetlen Data Lake Storage-fiókkal
 keywords: hdinsight tárolás, hdfs, strukturált adat, strukturálatlan adat, adat-Lake Store
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 776d8f31a5353604ff1c887bdfa214d07b2bfb48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733188"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498184"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
 
 A HDInsight 3,5-es verziójától kezdve a Azure Data Lake Storage-fiókokkal rendelkező HDInsight-fürtöket alapértelmezett fájlrendszerként is létrehozhatja.
-Data Lake Storage támogatja a korlátlan tárhelyet, amely nem csak nagy mennyiségű adattárolást tesz lehetővé. Ugyanakkor több HDInsight-fürt üzemeltetéséhez, amelyek egyetlen Data Lake Storage-fiókkal osztoznak. A Data Lake Storage tárolóval rendelkező HDInsight-fürtök létrehozásával kapcsolatos utasításokért lásd [: gyors útmutató: Fürtök beállítása a HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)-ben.
+Data Lake Storage támogatja a korlátlan tárhelyet, amely nem csak nagy mennyiségű adattárolást tesz lehetővé. Ugyanakkor több HDInsight-fürt üzemeltetéséhez, amelyek egyetlen Data Lake Storage-fiókkal osztoznak. A HDInsight-fürt Data Lake Storage tárolóként való létrehozásával kapcsolatos útmutatásért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Ez a cikk ajánlásokat nyújt a Data Lake Storage rendszergazdának egy olyan önálló és megosztott Data Lake Storage-fiók beállításához, amely több **aktív** HDInsight-fürtön is felhasználható. Ezek az ajánlások több biztonságos és nem biztonságos Apache Hadoop-fürtök üzemeltetésére vonatkoznak egy megosztott Data Lake Storage-fiókon.
 
@@ -36,9 +36,9 @@ Annak engedélyezéséhez, hogy a HDInsight-fürtök hatékonyan használják a 
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Megnevezett felhasználó | Elnevezett felhasználói engedélyek | Elnevezett csoport | Névvel ellátott csoport engedélyei |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |felügyeleti |felügyeleti  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |felügyeleti |felügyeleti |Szolgáltatásnév |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |felügyeleti |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |Felügyeleti |Felügyeleti  |Egyszerű szolgáltatásnév |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |Felügyeleti |Felügyeleti |Egyszerű szolgáltatásnév |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |Felügyeleti |FINGRP  |Egyszerű szolgáltatásnév |rwx  |-  |-     |
 
 A táblázatban
 
@@ -57,7 +57,7 @@ Néhány fontos szempontot figyelembe kell venni.
 
     |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Megnevezett felhasználó | Elnevezett felhasználói engedélyek | Elnevezett csoport | Névvel ellátott csoport engedélyei |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |Egyszerű szolgáltatás |FINGRP  |- |-  |-   |-  | 
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |Szolgáltatásnév |FINGRP  |- |-  |-   |-  | 
    
 
 
@@ -88,9 +88,9 @@ Ezek a beállítások a 247-as [fonalban](https://hwxmonarch.atlassian.net/brows
 Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása közben, a Localizer ellenőrzi, hogy az összes kért erőforrás valóban nyilvános-e, ha ellenőrzi a távoli fájlrendszerre vonatkozó engedélyeiket. Minden olyan LocalResource, amely nem fér el ehhez a feltételhez, elutasítja a honosítást. Az engedélyek keresése, a "mások" számára olvasási hozzáférés a fájlhoz. Ez a forgatókönyv nem működik, ha a HDInsight-fürtöket Azure Data Lakeon futtatja, mivel Azure Data Lake megtagadja a hozzáférést a "mások" számára a gyökérmappa szintjén.
 
 #### <a name="workaround"></a>Áthidaló megoldás
-Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például **/** a következő táblázatban látható módon:, **/Clusters** és **/Clusters/Finance** .
+Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például: **/** , **/Clusters** és **/Clusters/Finance** , ahogyan az a fenti táblázatban látható.
 
 ## <a name="see-also"></a>Lásd még
 
-* [Rövid útmutató: Fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-storage-gen2.md)

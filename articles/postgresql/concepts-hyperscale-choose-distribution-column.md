@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a61c52773c4c6036a76d7b233988c713c1da861f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947591"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482857"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Terjesztési oszlopok kiválasztása Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
-Az egyes táblák terjesztési oszlopának kiválasztása a legfontosabb modellezési döntések egyike. Azure Database for PostgreSQL – a nagy kapacitású (Citus) előnézete a sorok eloszlás oszlopának értéke alapján a szegmensekben lévő sorokat tárolja.
+Az egyes táblák terjesztési oszlopának kiválasztása a legfontosabb modellezési döntések egyike. Azure Database for PostgreSQL – a nagy kapacitású (Citus) a sorok eloszlás oszlopának értéke alapján a szegmensekben lévő sorokat tárolja.
 
 A megfelelő választás a kapcsolódó adatokkal együtt ugyanazon fizikai csomópontokon csoportosítja a lekérdezéseket, így a lekérdezések gyorsak, és az összes SQL-funkció támogatását biztosítja. Helytelen választás miatt a rendszer lassan fut, és nem támogatja az összes csomóponton futó SQL-funkciót.
 
@@ -28,7 +28,7 @@ A több-bérlős architektúra hierarchikus adatbázis-modellezési formát hasz
 
 A nagy kapacitású (Citus) megvizsgálja a lekérdezéseket, hogy megtudja, melyik bérlői AZONOSÍTÓval jár, és megkeresi a megfelelő tábla szegmensét. A lekérdezést egyetlen, a szegmenst tartalmazó munkavégző csomópontra irányítja. Egy lekérdezés futtatása az azonos csomóponton elhelyezett összes releváns adathoz közös elhelyezésű.
 
-A következő ábra a több-bérlős adatmodell közös elhelyezését szemlélteti. Két táblát, fiókot és kampányt tartalmaz, amelyeket `account_id` terjeszt. Az árnyékolt mezők szegmenseket jelölnek. A zöld szegmensek tárolása egy munkavégző csomóponton történik, és a kék szegmensek egy másik munkavégző csomóponton vannak tárolva. Figyelje meg, hogy a fiókok és a kampányok közötti csatlakozási lekérdezés az összes szükséges adattal együtt az egyik csomóponton található, ha mindkét tábla ugyanahhoz a fiókhoz (@ no__t-0id) van korlátozva.
+A következő ábra a több-bérlős adatmodell közös elhelyezését szemlélteti. Két, `account_id`által terjesztett táblát, fiókot és kampányt tartalmaz. Az árnyékolt mezők szegmenseket jelölnek. A zöld szegmensek tárolása egy munkavégző csomóponton történik, és a kék szegmensek egy másik munkavégző csomóponton vannak tárolva. Figyelje meg, hogy a fiókok és a kampányok közötti csatlakozási lekérdezés az összes szükséges adattal együtt az egyik csomóponton található, ha mindkét tábla ugyanahhoz a fiókhoz\_azonosítóra van korlátozva.
 
 ![Több-bérlős közös elhelyezés](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
@@ -37,9 +37,9 @@ A több-bérlős modellben lévő lekérdezések hatóköre egy bérlőre vonatk
 
 #### <a name="best-practices"></a>Ajánlott eljárások
 
--   **Elosztott táblák particionálása közös bérlői @ no__t-1id oszlop szerint.** Például egy SaaS-alkalmazásban, ahol a bérlők a vállalatok, a bérlő @ no__t-0id valószínűleg a következő Vállalat: @ no__t-1id.
+-   **Elosztott táblák particionálása közös bérlő\_ID oszlop alapján.** Például egy SaaS-alkalmazásban, ahol a bérlők a vállalatok, a bérlő\_azonosítója valószínűleg a vállalat\_azonosítója.
 -   **Kisméretű, több-bérlős táblák átalakítása táblázatokra.** Ha több bérlő is osztozik egy kis táblázatban, küldje el hivatkozási táblázatként.
--   **Az összes alkalmazás lekérdezésének korlátozása a bérlő @ no__t-1id alapján.** Minden lekérdezésnek egyszerre egy bérlő adatait kell kérnie.
+-   **Az összes alkalmazás lekérdezésének korlátozása a bérlő\_azonosítója alapján.** Minden lekérdezésnek egyszerre egy bérlő adatait kell kérnie.
 
 A [több-bérlős oktatóanyagban](./tutorial-design-database-hyperscale-multi-tenant.md) megtudhatja, hogyan építhet ki ilyen típusú alkalmazást.
 

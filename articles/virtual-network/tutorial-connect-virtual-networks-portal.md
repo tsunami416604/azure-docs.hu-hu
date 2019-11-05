@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164056"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499872"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével
 
@@ -44,24 +44,24 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
-1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 2. Válassza a **Hálózatkezelés**, majd a **Virtuális hálózat** elemet.
 3. Az **alapvető** beállítások lapon adja meg vagy válassza ki az alábbi adatokat, és fogadja el a többi beállítás alapértelmezett beállításait:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-    |Region (Régió)| Válassza az **USA keleti régiója** lehetőséget.|
-    |Név|myVirtualNetwork1|
-   
+    |Régió| Válassza az **USA keleti régiója** lehetőséget.|
+    |Name (Név)|myVirtualNetwork1|
+
 4. Az **IP-címek** lapon adja meg a 10.0.0.0/16 értéket a **címterület** mezőben. Kattintson a lenti **alhálózat hozzáadása** gombra, és adja meg a Subnet1 az alhálózat **neve** és a 10.0.0.0/24 **alhálózati címtartomány**mezőben.
    
 5. Végezze el ismét az 1–3. lépést az alábbi módosításokkal:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
-    |Név|myVirtualNetwork2|
+    |Name (Név)|myVirtualNetwork2|
     |Címtér|10.1.0.0/16|
     |Erőforráscsoport| Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget.|
     |Alhálózat címtartománya|10.1.0.0/24|
@@ -69,13 +69,13 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 ## <a name="peer-virtual-networks"></a>Virtuális hálózatok közötti társviszony létesítése
 
 1. Kezdje el begépelni a *MyVirtualNetwork1* kifejezést az Azure Portal tetején található keresőmezőbe. Amikor a **myVirtualNetwork1** elem megjelenik a keresési eredmények között, válassza ki.
-2. A **BEÁLLÍTÁSOK** területen válassza a **Társviszonyok**, majd a **+Hozzáadás** elemet az alábbi ábrán látható módon:
+2. Válassza a társítások lehetőséget, a **Beállítások** **területen, majd**válassza a **Hozzáadás**lehetőséget, ahogyan az a következő képen látható:
 
     ![Társviszony létrehozása](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |A myVirtualNetwork1-ből távoli virtuális hálózatra irányuló társ neve|myVirtualNetwork1-myVirtualNetwork2 – az oldal első betöltésekor Itt láthatja a "távoli virtuális hálózat" kifejezést. A távoli virtuális hálózat kiválasztása után a "távoli virtuális hálózat" kifejezés a távoli virtuális hálózat nevével lesz lecserélve.|
     |Előfizetés| Válassza ki előfizetését.|
@@ -96,14 +96,14 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 
 ### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. Választhat másik operációs rendszert is, de a következő lépések itt azt feltételezik, hogy a **Windows Server 2016 Datacentert** választotta. 
 3. Adja meg vagy válassza ki az alábbi adatokat az **Alapvető beállítások** területen, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Erőforráscsoport| Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget.|
-    |Név|myVm1|
+    |Name (Név)|myVm1|
     |Földrajzi egység| Válassza az **USA keleti régiója** lehetőséget.|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -111,7 +111,7 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 4. Válasszon egy virtuálisgép-méretet a **méret** beállításhoz.
 5. Válassza ki az alábbi értékeket a **hálózat**területen:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| myVirtualNetwork1 – ha még nincs kiválasztva, válassza a **virtuális hálózat** elemet, majd válassza a **myVirtualNetwork1**lehetőséget.|
     |Alhálózat| Subnet1 – ha még nincs kiválasztva, válassza az **alhálózat** lehetőséget, majd válassza a **Subnet1**lehetőséget.|
@@ -127,9 +127,9 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 
 Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
 
-|Beállítás|Value (Díj)|
+|Beállítás|Érték|
 |---|---|
-|Név | myVm2|
+|Name (Név) | myVm2|
 |Virtuális hálózat | myVirtualNetwork2|
 
 A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
@@ -174,7 +174,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerhette, hogyan kapcsolhat össze két, ugyanabban az Azure-régióban található virtuális hálózatot virtuális hálózatok közötti társviszony létesítésével. Más [támogatott régiókban](virtual-network-manage-peering.md#cross-region) és [különböző Azure-előfizetésekben](create-peering-different-subscriptions.md#portal) található virtuális hálózatok között is létesíthet társviszonyt, illetve a társviszony létesítésével [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) is létrehozhat. További információ a virtuális hálózatok közötti társviszony létesítéséről: [Virtuális hálózatok közötti társviszony létesítésének áttekintése](virtual-network-peering-overview.md) és[Virtuális hálózatok közötti társviszonyok kezelése](virtual-network-manage-peering.md).
 

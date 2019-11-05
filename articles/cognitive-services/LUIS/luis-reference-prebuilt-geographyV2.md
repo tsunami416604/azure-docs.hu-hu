@@ -1,7 +1,7 @@
 ---
 title: Földrajz v2 előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmaz geographyV2 előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk a Language Understanding (LUIS) geographyV2 előre felépített entitási információit tartalmazza.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,192 +9,206 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 7a269f93820a6029370490448f02038f5aa3eb3e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464904"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeépített entitása egy LUIS-alkalmazáshoz
-Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Angol nyelven támogatott GeographyV2 entitás [kulturális környezet](luis-reference-prebuilt-entities.md).
+Az előre elkészített geographyV2 entitás észleli a helyeket. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a GeographyV2-t tartalmazó hosszúságú kimondott szöveg az Application szándékokhoz. Az GeographyV2 entitás angol [kulturális](luis-reference-prebuilt-entities.md)környezetekben támogatott.
 
-## <a name="subtypes"></a>Altípus
-A földrajzi helyeket altípus rendelkezik:
+## <a name="subtypes"></a>Altípusok
+A földrajzi helyszínek altípusokkal rendelkeznek:
 
 |Altípus|Cél|
 |--|--|
-|`poi`|hasznos helyekre vezető útvonalak|
-|`city`|Város neve|
+|`poi`|érdekes pont|
+|`city`|város neve|
 |`countryRegion`|ország vagy régió neve|
-|`continent`|kontinens neve|
+|`continent`|a kontinens neve|
 |`state`|állam vagy megye neve|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás feloldása
+## <a name="resolution-for-geographyv2-entity"></a>GeographyV2-entitás feloldása
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+A lekérdezés a következő entitás-objektumokat adja vissza:
 
-Az alábbi példa bemutatja a feloldása a **builtin.geographyV2** entitás.
+`Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
+
+#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+
+A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 ```json
-{
-    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-    "topScoringIntent": {
-        "intent": "None",
-        "score": 0.8008023
-    },
-    "intents": [
+"entities": {
+    "geographyV2": [
         {
-            "intent": "None",
-            "score": 0.8008023
-        }
-    ],
-    "entities": [
-        {
-            "entity": "the sphinx",
-            "type": "builtin.geographyV2.poi",
-            "startIndex": 18,
-            "endIndex": 27
+            "value": "the sphinx",
+            "type": "poi"
         },
         {
-            "entity": "gizah",
-            "type": "builtin.geographyV2.city",
-            "startIndex": 32,
-            "endIndex": 36
+            "value": "gizah",
+            "type": "city"
         },
         {
-            "entity": "egypt",
-            "type": "builtin.geographyV2.countryRegion",
-            "startIndex": 38,
-            "endIndex": 42
+            "value": "egypt",
+            "type": "countryRegion"
         },
         {
-            "entity": "africa",
-            "type": "builtin.geographyV2.continent",
-            "startIndex": 47,
-            "endIndex": 52
+            "value": "africa",
+            "type": "continent"
         },
         {
-            "entity": "texas",
-            "type": "builtin.geographyV2.state",
-            "startIndex": 72,
-            "endIndex": 76
-        },
-        {
-            "entity": "carol",
-            "type": "builtin.personName",
-            "startIndex": 0,
-            "endIndex": 4
+            "value": "texas",
+            "type": "state"
         }
     ]
-} 
-```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
-
-A következő JSON a `verbose` paramétert állítja be a `false` értékre:
-
-```json
-{
-    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-    "prediction": {
-        "normalizedQuery": "carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5115521
-            }
-        },
-        "entities": {
-            "geographyV2": [
-                "the sphinx",
-                "gizah",
-                "egypt",
-                "africa",
-                "texas"
-            ]
-        }
-    }
 }
 ```
 
-A következő JSON a `verbose` paramétert állítja be a `true` értékre:
+Az előző JSON-ban `poi` az **érdekes pont**rövidítése.
+
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+
+A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 ```json
-{
-    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-    "prediction": {
-        "normalizedQuery": "carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5115521
-            }
+"entities": {
+    "geographyV2": [
+        {
+            "value": "the sphinx",
+            "type": "poi"
         },
-        "entities": {
-            "geographyV2": [
-                "the sphinx",
-                "gizah",
-                "egypt",
-                "africa",
-                "texas"
-            ],
-            "$instance": {
-                "geographyV2": [
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "the sphinx",
-                        "startIndex": 18,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "gizah",
-                        "startIndex": 32,
-                        "length": 5,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "egypt",
-                        "startIndex": 38,
-                        "length": 5,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "africa",
-                        "startIndex": 47,
-                        "length": 6,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "texas",
-                        "startIndex": 72,
-                        "length": 5,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+        {
+            "value": "gizah",
+            "type": "city"
+        },
+        {
+            "value": "egypt",
+            "type": "countryRegion"
+        },
+        {
+            "value": "africa",
+            "type": "continent"
+        },
+        {
+            "value": "texas",
+            "type": "state"
+        }
+    ],
+    "$instance": {
+        "geographyV2": [
+            {
+                "type": "builtin.geographyV2.poi",
+                "text": "the sphinx",
+                "startIndex": 18,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.city",
+                "text": "gizah",
+                "startIndex": 32,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.countryRegion",
+                "text": "egypt",
+                "startIndex": 38,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.continent",
+                "text": "africa",
+                "startIndex": 47,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.state",
+                "text": "texas",
+                "startIndex": 72,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
 
+Az alábbi példa a **beépített. geographyV2** entitás feloldását mutatja be.
+
+```json
+"entities": [
+    {
+        "entity": "the sphinx",
+        "type": "builtin.geographyV2.poi",
+        "startIndex": 18,
+        "endIndex": 27
+    },
+    {
+        "entity": "gizah",
+        "type": "builtin.geographyV2.city",
+        "startIndex": 32,
+        "endIndex": 36
+    },
+    {
+        "entity": "egypt",
+        "type": "builtin.geographyV2.countryRegion",
+        "startIndex": 38,
+        "endIndex": 42
+    },
+    {
+        "entity": "africa",
+        "type": "builtin.geographyV2.continent",
+        "startIndex": 47,
+        "endIndex": 52
+    },
+    {
+        "entity": "texas",
+        "type": "builtin.geographyV2.state",
+        "startIndex": 72,
+        "endIndex": 76
+    },
+    {
+        "entity": "carol",
+        "type": "builtin.personName",
+        "startIndex": 0,
+        "endIndex": 4
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [e-mail](luis-reference-prebuilt-email.md), [szám](luis-reference-prebuilt-number.md), és [sorszámnál](luis-reference-prebuilt-ordinal.md) entitások. 
+További információ az [e-mailek](luis-reference-prebuilt-email.md), a [számok](luis-reference-prebuilt-number.md)és a [sorszámok](luis-reference-prebuilt-ordinal.md) entitásokról. 

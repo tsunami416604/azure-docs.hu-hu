@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044403"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469730"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -47,8 +47,9 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Az oktatóanyag első lépéseként engedélyezze az Update Management megoldást a virtuális gépen:
 
-1. Az Azure Portal bal oldali menüjében válassza a **Virtuális gépek** elemet. Válasszon ki egy virtuális gépet a listából.
-2. A virtuális gép lapjának **MŰVELETEK** szakaszában válassza a **Frissítéskezelés** elemet. Megjelenik **Az Update Management engedélyezése** ablaktábla.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **virtuális gépek** lehetőséget, vagy keresse meg és válassza ki a **virtuális gépek** lehetőséget a **kezdőlapon** .
+1. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Update Management.
+1. A virtuális gép lapjának **MŰVELETEK** szakaszában válassza a **Frissítéskezelés** elemet. Megjelenik **Az Update Management engedélyezése** ablaktábla.
 
 A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen, illetve hogy létezik-e Azure Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, és az Update Management már jelen van-e a munkaterületen.
 
@@ -97,7 +98,7 @@ Kattintson a **feltétel hozzáadása** elemre a frissítés telepítéséhez me
 |**Összes frissítés központi telepítési futtatása**|-Központi telepítési név frissítése</br>– Állapot|Ez a jel a frissítések központi telepítésének általános állapotára való riasztásra szolgál.|
 |**Összes frissítés központi telepítési gép futtatása**|-Központi telepítési név frissítése</br>– Állapot</br>– Célszámítógép</br>-A központi telepítés futtatási AZONOSÍTÓjának frissítése|Ez a jel egy adott gépen megcélzott frissítési központi telepítés állapotára való riasztásra szolgál.|
 
-A dimenzió értékeihez válasszon ki egy érvényes értéket a listából. Ha a keresett érték nem szerepel a listában, kattintson a dimenzió melletti **\+** jelre, és írja be az egyéni nevet. Ezután kiválaszthatja a keresni kívánt értéket. Ha az összes értéket ki szeretné jelölni egy dimenzióból, kattintson a **select \*** gombra. Ha nem választja ki a dimenzió értékét, a rendszer figyelmen kívül hagyja a dimenziót a kiértékelés során.
+A dimenzió értékeihez válasszon ki egy érvényes értéket a listából. Ha a keresett érték nem szerepel a listában, kattintson a dimenzió melletti **\+** jelre, és írja be az egyéni nevet. Ezután kiválaszthatja a keresni kívánt értéket. Ha az összes értéket ki szeretné jelölni egy dimenzióból, kattintson a **\*kiválasztása** gombra. Ha nem választja ki a dimenzió értékét, a rendszer figyelmen kívül hagyja a dimenziót a kiértékelés során.
 
 ![Jellogika konfigurálása](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -143,7 +144,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
   A választható besorolási típusok a következők:
 
-   |Operációs rendszer  |Type (Típus)  |
+   |Operációs rendszer  |Típus  |
    |---------|---------|
    |Windows     | Kritikus frissítések</br>Biztonsági frissítések</br>Kumulatív frissítések</br>Funkciócsomagok</br>Szervizcsomagok</br>Definíciófrissítések</br>Eszközök</br>Frissítések        |
    |Linux     | Kritikus vagy biztonsági frissítések</br>Egyéb frissítések       |
@@ -153,7 +154,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 * **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg.
 
 > [!NOTE]
-> Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például `*` kizárási szabályt ad meg, akkor a rendszer nem telepíti a javításokat és a csomagokat, mivel azok ki vannak zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha csomag szerepel a csomagban, de egy kizárt függő csomaggal rendelkezik, a csomag nincs telepítve.
+> Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy `*`kizárási szabályát, akkor a rendszer nem telepíti a javításokat és a csomagokat, mivel azok ki vannak zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha csomag szerepel a csomagban, de egy kizárt függő csomaggal rendelkezik, a csomag nincs telepítve.
 
 * **Ütemezési beállítások**: Megnyitja az **Ütemezési beállítások** ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
@@ -217,7 +218,7 @@ Ha a frissítés telepítése sikeresen befejeződött, az alábbihoz hasonló e
 
 ![E-mail konfigurálása műveletcsoport](./media/automation-tutorial-update-management/email-notification.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

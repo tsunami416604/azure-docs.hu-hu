@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437191"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465732"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding fejlesztői erőforrásai
 
@@ -54,6 +54,17 @@ A szerzői és előrejelzési végpont API-jai a REST API-kon keresztül érhet�
 |Node.js|[Tartalomkészítés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Előrejelzés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM készítése](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Előrejelzés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Szerzői műveletek a REST használatával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[Előrejelzés REST használatával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
 |Python|[Szerzői műveletek és előrejelzések](sdk-python-quickstart-authoring-app.md)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Tartalomkészítés](sdk-python-quickstart-authoring-app.md)<br>[Előrejelzés REST használatával](luis-get-started-python-get-intent.md)
 
+
+### <a name="containers"></a>Tárolók
+
+A Language Understanding (LUIS) egy [tárolót](luis-container-howto.md) biztosít az alkalmazás helyszíni és a benne foglalt verziói számára. 
+
+### <a name="export-and-import-formats"></a>Exportálási és importálási formátumok
+
+Language Understanding lehetővé teszi, hogy az alkalmazás és a modelljei JSON formátumban, a `.LU` ([LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)) formátumban és a Language Understanding tároló tömörített csomagjaival is kezelhetők legyenek. 
+
+Ezen formátumok importálása és exportálása az API-kon és a LUIS-portálon érhető el. A portál az alkalmazások listájának és a verziók listájának részeként biztosítja az importálást és az exportálást. 
+
 ## <a name="other-tools-and-sdks"></a>Egyéb eszközök és SDK-k
 
 A bot Framework számos különböző nyelven és szolgáltatásként, [Azure bot Service](https://dev.botframework.com/)használatával érhető el [SDK](https://github.com/Microsoft/botframework) -val. 
@@ -67,6 +78,10 @@ A bot Framework [számos eszközt](https://github.com/microsoft/botbuilder-tools
 * [Robot-emulátor](https://github.com/Microsoft/BotFramework-Emulator/releases) – egy asztali alkalmazás, amely lehetővé teszi a robot-fejlesztők számára a bot Framework SDK használatával létrehozott robotok tesztelését és hibakeresését
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A gyakori http- [hibakódok](luis-reference-response-codes.md) ismertetése
+* A gyakori http- [hibakódok](luis-reference-response-codes.md) ismertetése
+* Az API-k és SDK-k [hivatkozási dokumentációja](https://docs.microsoft.com/azure/index#pivot=sdkstools)
+* [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) és [Azure bot Service](https://dev.botframework.com/)
+* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
+* [Kognitív tárolók](../cognitive-services-container-support.md)

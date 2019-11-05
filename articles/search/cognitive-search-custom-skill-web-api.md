@@ -1,24 +1,23 @@
 ---
-title: Egyéni kognitív keresési képességek – Azure Search
-description: A kognitív keresési szakértelmével képességeinek kiterjesztése a webes API-k meghívásával
-services: search
+title: Egyéni webes API-képesség egy alkoholtartalom-növelési folyamatban
+titleSuffix: Azure Cognitive Search
+description: Kiterjesztheti az Azure Cognitive Search szakértelmével képességeit a webes API-k meghívásával. Egyéni kód integrálásához használja az egyéni webes API-képességet.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901321"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466733"
 ---
-# <a name="custom-web-api-skill"></a>Egyéni webes API-képesség
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
 
-Az **egyéni webes API** -képesség lehetővé teszi a kognitív keresés kiterjesztését, ha az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
+Az **egyéni webes API** -képesség lehetővé teszi, hogy kiterjessze az AI-bővítést úgy, hogy az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
 
 A JSON-adattartalom szerkezetét részletesebben ismertetjük ebben a dokumentumban.
 
@@ -58,7 +57,7 @@ Ehhez a szakértelemhöz nem tartoznak "előre definiált" kimenetek. Attól fü
 ```json
   {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "A custom skill that can count the number of words or characters or lines in text",
+        "description": "A custom skill that can identify positions of different phrases in the source text",
         "uri": "https://contoso.count-things.com",
         "batchSize": 4,
         "context": "/document",
@@ -72,14 +71,13 @@ Ehhez a szakértelemhöz nem tartoznak "előre definiált" kimenetek. Attól fü
             "source": "/document/languageCode"
           },
           {
-            "name": "countOf",
-            "source": "/document/propertyToCount"
+            "name": "phraseList",
+            "source": "/document/keyphrases"
           }
         ],
         "outputs": [
           {
-            "name": "count",
-            "targetName": "countOfThings"
+            "name": "hitPositions"
           }
         ]
       }
@@ -103,7 +101,7 @@ Mindig a következő korlátozásokat fogja követni:
            {
              "text": "Este es un contrato en Inglés",
              "language": "es",
-             "countOf": "words"
+             "phraseList": ["Este", "Inglés"]
            }
       },
       {
@@ -112,16 +110,16 @@ Mindig a következő korlátozásokat fogja követni:
            {
              "text": "Hello world",
              "language": "en",
-             "countOf": "characters"
+             "phraseList": ["Hi"]
            }
       },
       {
         "recordId": "2",
         "data":
            {
-             "text": "Hello world \r\n Hi World",
+             "text": "Hello world, Hi world",
              "language": "en",
-             "countOf": "lines"
+             "phraseList": ["world"]
            }
       },
       {
@@ -130,7 +128,7 @@ Mindig a következő korlátozásokat fogja követni:
            {
              "text": "Test",
              "language": "es",
-             "countOf": null
+             "phraseList": []
            }
       }
     ]
@@ -159,7 +157,7 @@ A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak
             },
             "errors": [
               {
-                "message" : "Cannot understand what needs to be counted"
+                "message" : "'phraseList' should not be null or empty"
               }
             ],
             "warnings": null
@@ -167,7 +165,7 @@ A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak
         {
             "recordId": "2",
             "data": {
-                "count": 2
+                "hitPositions": [6, 16]
             },
             "errors": null,
             "warnings": null
@@ -175,7 +173,7 @@ A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak
         {
             "recordId": "0",
             "data": {
-                "count": 6
+                "hitPositions": [0, 23]
             },
             "errors": null,
             "warnings": null
@@ -183,10 +181,12 @@ A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak
         {
             "recordId": "1",
             "data": {
-                "count": 11
+                "hitPositions": []
             },
             "errors": null,
-            "warnings": null
+            "warnings": {
+                "message": "No occurrences of 'Hi' were found in the input text"
+            }
         },
     ]
 }
@@ -201,9 +201,8 @@ Amellett, hogy a webes API nem érhető el, vagy a nem sikeres állapotkódot k�
 
 Azokban az esetekben, amikor a webes API nem érhető el vagy HTTP-hibát ad vissza, a HTTP-hibával kapcsolatos összes rendelkezésre álló adathoz tartozó rövid hiba lesz hozzáadva az indexelő végrehajtási előzményeihez.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-+ [Energiaellátási készségek: az egyéni képességek tárháza](https://aka.ms/powerskills)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Egyéni szakértelem hozzáadása a kognitív kereséshez](cognitive-search-custom-skill-interface.md)
-+ [Példa: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)
++ [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
++ [Példa: egyéni képesség létrehozása AI-bővítéshez (kognitív-Search-Create-Custom-skill-example.md)

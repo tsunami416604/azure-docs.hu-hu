@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f8493794df2ec0c6123a85cc5405b18fbe1f6786
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: dfb550fd0bc93a6b865495bf2c19f394fb0737ed
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957810"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987885"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Mi az Azure IoT Central (előzetes verziójú funkciók)?
 
@@ -26,10 +26,6 @@ ms.locfileid: "72957810"
 Az Azure IoT Central egy IoT-alkalmazási platform, amely csökkenti a nagyvállalati szintű IoT-megoldások fejlesztésének, kezelésének és karbantartásának terheit és költségeit. Az Azure IoT Central létrehozásával lehetőség van arra, hogy az időt, pénzt és energiát a IoT adataival alakítsa át, nem csupán a komplex és folyamatosan fejlődő IoT-infrastruktúra karbantartására és frissítésére.
 
 A webes felhasználói felülettel figyelheti az eszközök feltételeit, szabályokat hozhat létre, és több millió eszközt és adatmennyiséget kezelhet életciklusa során. Továbbá lehetővé teszi, hogy az IoT-intelligenciát az üzletági alkalmazásokra kiterjesztve az eszköz elemzéseit is fellépjen.
-
-A következő videó áttekintést nyújt az Azure IoT Centralról:
-
->[!VIDEO https://azure.microsoft.com/resources/videos/iot-central-updates/]
 
 Ez a cikk az Azure IoT Central esetében ismerteti:
 
@@ -194,7 +190,7 @@ Az Azure IoT Central az alábbi módon osztályozza Azure IoT Edge eszközök t�
 
 - Azure IoT Edge átjáró-eszköz az Edge Gateway által biztosított identitást használó alsóbb rétegbeli eszközökhöz ![Azure IoT Edge az identitás nélküli alsóbb rétegbeli eszközzel,](./media/overview-iot-central-pnp-edge/edgewithoutdownstreamdeviceidentity.png) Azure IoT Edge eszköz az alsóbb réteggel együtt lesz kiépítve a Azure IoT Edge eszközhöz csatlakoztatott eszközök. A rendszer az átjáró támogatását biztosítja az alsóbb rétegbeli eszközök személyazonosságának biztosításához és az alsóbb rétegbeli eszközök kiépítési tervekhez. Saját személyazonosság-fordítási modult is használhat, és a IoT Central támogatni fogja ezt a mintát. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az Azure IoT Central jellemzőit, tekintse meg a javasolt következő lépéseket:
 

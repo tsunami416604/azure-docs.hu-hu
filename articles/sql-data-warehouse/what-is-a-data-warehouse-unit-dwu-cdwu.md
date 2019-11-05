@@ -1,5 +1,5 @@
 ---
-title: Adatraktár-egységek (DWU, cDWUs) a Azure SQL Data Warehouseban | Microsoft Docs
+title: Adattárház-egységek (DWU, cDWUs) az Azure szinapszis Analyticsben (korábban SQL DW) | Microsoft Docs
 description: Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036044"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475746"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs-EK)
 
@@ -24,15 +24,15 @@ Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválaszt�
 
 ## <a name="what-are-data-warehouse-units"></a>Mik az adatraktár-egységek
 
-Azure SQL Data Warehouse a CPU, a memória és az IO az adattárház-egységek (DWU-EK) által kiszámított számítási léptékű egységbe van csomagolva. A DWU a számítási erőforrások és a teljesítmény absztrakt, normalizált mértékét jelöli. A szolgáltatási szint módosítása megváltoztatja a rendszer számára elérhető DWU számát, ami viszont a teljesítmény és a szolgáltatás költségeit is módosítja.
+Az SQL-készlet az [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)használatakor kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikai erőforrások a CPU, a memória és az IO kombinációja vannak meghatározva. Ez a három erőforrás az adatraktár-egységek (DWU) számítási skálázási egységei között van. A DWU a számítási erőforrások és a teljesítmény absztrakt, normalizált mértékét jelöli. A szolgáltatási szint módosítása megváltoztatja a rendszer számára elérhető DWU számát, ami viszont a teljesítmény és a szolgáltatás költségeit is módosítja.
 
 A nagyobb teljesítmény érdekében növelheti az adatraktár-egységek számát. Kevesebb teljesítmény esetén csökkentse az adatraktár-egységeket. A tárolási és a számítási költségek számlázása külön történik, így az adatraktár-egységek módosítása nem befolyásolja a tárolási költségeket.
 
-Az adatraktár-egységek teljesítménye a következő adatraktár-számítási feladatok mérőszámán alapul:
+Az adatraktár-egységek teljesítménye a következő számítási feladatok mérőszámán alapul:
 
 - A szabványos adattárház-lekérdezések gyors vizsgálata nagy mennyiségű sort vizsgál, majd összetett összesítést hajt végre. Ez a művelet I/O-és CPU-igényes.
 - Az adattárház az Azure Storage-Blobokból vagy Azure Data Lakeokból származó adatok betöltésének gyorsasága. A művelet a hálózati és a CPU-igényes.
-- A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-parancs által a tábla másolásának gyorsasága. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
+- A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) t-SQL-parancs gyors másolása egy tábla másolásához. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
 
 Növekvő DWU:
 
@@ -42,11 +42,11 @@ Növekvő DWU:
 
 ## <a name="service-level-objective"></a>Szolgáltatási szint célkitűzése
 
-A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 szolgáltatási szintjeit számítási adattárház-egységek (cDWU-EK) mérik, például DW2000c. A Gen1 szolgáltatási szintjei a DWU-ben vannak mérve, például DW2000.
+A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 SQL-készlet szolgáltatási szintjeit számítási adattárház-egységek (cDWU-EK) mérik, például DW2000c. A Gen1 SQL-készlet szolgáltatási szintjei a DWU-ben mérhetőek, például a DW2000.
   > [!NOTE]
-  > Azure SQL Data Warehouse Gen2 a közelmúltban hozzáadott további méretezési képességeket a számítási rétegek támogatásához, amely a 100-cDWU alacsony. A jelenleg a Gen1-on található meglévő adattárházak, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.md).
+  > A 2. generációs SQL-készlet a közelmúltban hozzáadott további méretezési képességeket a számítási rétegek támogatásához, amely a 100 cDWU alacsony. A jelenleg Gen1-alapú meglévő SQL-készletek, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.md).
 
-A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az adattárház szolgáltatási szintjét és teljesítményét.
+A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az SQL-készlet szolgáltatási szintjét és teljesítményét.
 
 ```sql
 --Gen1
@@ -68,10 +68,10 @@ CREATE DATABASE myComputeSQLDW
 
 Minden teljesítményszint némileg eltérő mértékegységet használ az adattárház-egységek számára. Ez a különbség a számlán jelenik meg, mivel a skálázási egység közvetlenül a számlázásra van lefordítva.
 
-- A Gen1 adattárházak mérése adatraktár-egységekben történik (DWU).
-- A Gen2 adattárházak mérése számítási adattárház-egységekben történik (cDWUs).
+- A Gen1 SQL-készletek mérése adatraktár-egységekben történik (DWU).
+- A Gen2 SQL-készleteket számítási adattárház-egységek (cDWUs-EK) mérik.
 
-Mind a DWU, mind a cDWUs támogatja a méretezési számítási kapacitást, és szünetelteti a számítást, ha nem kell használnia az adattárházat. Ezek a műveletek mind igény szerint használhatók. A Gen2 egy helyi lemezes gyorsítótárat használ a számítási csomópontokon a teljesítmény javítása érdekében. A rendszer skálázása vagy szüneteltetése után a gyorsítótár érvénytelenné válik, így az optimális teljesítmény elérése előtt szükség van egy gyorsítótár-felmelegedésre.  
+Mind a DWU, mind a cDWUs támogatja a méretezést a számítási feladatokhoz, illetve a számítás felfüggesztéséhez, ha nem kell használnia az SQL-készletet. Ezek a műveletek mind igény szerint használhatók. A Gen2 egy helyi lemezes gyorsítótárat használ a számítási csomópontokon a teljesítmény javítása érdekében. A rendszer skálázása vagy szüneteltetése után a gyorsítótár érvénytelenné válik, így az optimális teljesítmény elérése előtt szükség van egy gyorsítótár-felmelegedésre.  
 
 Az adatraktár-egységek növelése során lineárisan növelheti a számítástechnikai erőforrásokat. A Gen2 a legjobb lekérdezési teljesítményt és a legmagasabb szintű méretezést biztosítja. A Gen2 rendszerek a gyorsítótár legtöbbjét is használják.
 
@@ -89,7 +89,7 @@ A számítási feladatok legjobb DWU megkeresésének lépései:
 2. Az alkalmazások teljesítményének figyelése az adatterhelések a rendszeren való tesztelésekor, a kiválasztott DWU számának megjelölésével.
 3. Azonosítsa a maximális tevékenység időszakos időszakára vonatkozó további követelményeket. Előfordulhat, hogy a jelentős csúcsokat és a tevékenységekben lévő vályúkat bemutató munkaterheléseket gyakran kell méretezni.
 
-A SQL Data Warehouse egy kibővíthető rendszer, amely nagy mennyiségű számítási és lekérdezési kapacitást tud kiépíteni. Ha szeretné megtekinteni a skálázás valódi képességeit, különösen nagyobb DWU esetében, javasoljuk, hogy az adatkészletet méretezéssel méretezheti, hogy elegendő mennyiségű adattal rendelkezzen a processzorok megadásához. A méretezési teszteléshez legalább 1 TB-ot ajánlott használni.
+Az SQL Analytics egy kibővíthető rendszer, amely nagy mennyiségű számítási és lekérdezési mennyiségű adatmennyiséget tud kiépíteni. Ha szeretné megtekinteni a skálázás valódi képességeit, különösen nagyobb DWU esetében, javasoljuk, hogy az adatkészletet méretezéssel méretezheti, hogy elegendő mennyiségű adattal rendelkezzen a processzorok megadásához. A méretezési teszteléshez legalább 1 TB-ot ajánlott használni.
 
 > [!NOTE]
 >
@@ -128,7 +128,7 @@ DWU vagy cDWUs módosítása:
 
 2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Kattintson a **Save** (Mentés) gombra. Megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
+3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -185,25 +185,26 @@ A kibővíthető műveletekhez tartozó adatbázis-állapot nem ellenőrizhető 
 A DWU változásainak állapotának ellenõrzése:
 
 1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
-2. Az adatbázis állapotának vizsgálatához küldje el a következő lekérdezést.
 
-```sql
-SELECT    *
-FROM      sys.databases
-;
-```
+1. Az adatbázis állapotának vizsgálatához küldje el a következő lekérdezést.
 
+    ```sql
+    SELECT    *
+    FROM      sys.databases
+    ;
+    ```
+    
 1. A művelet állapotának vizsgálatához küldje el a következő lekérdezést
 
-```sql
-SELECT    *
-FROM      sys.dm_operation_status
-WHERE     resource_type_desc = 'Database'
-AND       major_resource_id = 'MySQLDW'
-;
-```
-
-Ez a DMV információt ad vissza a SQL Data Warehouse különböző kezelési műveleteiről, például a műveletről és a művelet állapotáról, amely vagy IN_PROGRESS, vagy befejeződött.
+    ```sql
+    SELECT    *
+    FROM      sys.dm_operation_status
+    WHERE     resource_type_desc = 'Database'
+    AND       major_resource_id = 'MySQLDW'
+    ;
+    ```
+    
+Ez a DMV az SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS, vagy befejeződött.
 
 ## <a name="the-scaling-workflow"></a>A skálázási munkafolyamat
 

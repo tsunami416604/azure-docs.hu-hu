@@ -1,6 +1,6 @@
 ---
 title: Python Machine learning-parancsfájlok végrehajtása
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Ismerje meg, hogyan használhatja a Python-szkriptek végrehajtása a Python-kódokat Machine Learning Studio (klasszikus) kísérletekben és webszolgáltatásokban.
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 1be367191ab042611f45d1f773df0d499400c500
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053786"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492992"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
 
 A Python egy értékes eszköz, amely számos adatszakértőkből álló eszközben található. Ez a szokásos gépi tanulási munkafolyamatok minden szakaszában használatos, beleértve az adatfeltárást, a szolgáltatások kinyerését, a modellek betanítását és az érvényesítést, valamint a telepítést.
 
-Ez a cikk azt ismerteti, hogyan használható a Python-szkript végrehajtása a Python-kód használatára a Azure Machine Learning Studio kísérletekben és webszolgáltatásokban.
+Ez a cikk azt ismerteti, hogyan használható a Python-szkript végrehajtása a Python-kód használatára a Azure Machine Learning Studio (klasszikus) kísérletekben és a webszolgáltatásokban.
 
 ## <a name="using-the-execute-python-script-module"></a>A Python-parancsfájl végrehajtása modul használata
 
-A Studióban a Pythonhoz készült elsődleges felület a [Python parancsfájl][execute-python-script] -futtatási modulján keresztül történik. Legfeljebb három bemenetet fogad el, és legfeljebb két kimenetet hoz létre, hasonlóan az [R-szkript végrehajtása][execute-r-script] modulhoz. A Python-kód bekerül a paraméter mezőbe egy `azureml_main`nevű, külön névvel ellátott belépési pont függvénnyel.
+Az elsődleges felület a Pythonhoz a Studióban (klasszikus) a [Python-szkript végrehajtása][execute-python-script] modulon keresztül történik. Legfeljebb három bemenetet fogad el, és legfeljebb két kimenetet hoz létre, hasonlóan az [R-szkript végrehajtása][execute-r-script] modulhoz. A Python-kód bekerül a paraméter mezőbe egy `azureml_main`nevű, külön névvel ellátott belépési pont függvénnyel.
 
 ![Python parancsfájl-modul végrehajtása](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -53,7 +53,7 @@ A `azureml_main` függvénynek egy Python- [sorozatba](https://docs.python.org/2
 
 ## <a name="translation-of-input-and-output-data-types"></a>Bemeneti és kimeneti adattípusok fordítása
 
-A Studio-adatkészletek nem egyeznek a Panda DataFrames. Ennek eredményeképpen a Studióban lévő bemeneti adatkészletek a pandák DataFrame lesznek konvertálva, és a kimeneti DataFrames vissza lesznek alakítva a Studio-adatkészletekbe. Az átalakítási folyamat során a következő fordításokat is elvégzik:
+A Studio-adatkészletek nem egyeznek a Panda DataFrames. Ennek eredményeképpen a Studio klasszikus verziójában lévő bemeneti adatkészletek a Panda DataFrame konvertálódnak, a kimeneti DataFrames pedig a Studio (klasszikus) adatkészletekre lesznek konvertálva. Az átalakítási folyamat során a következő fordításokat is elvégzik:
 
  **Python-adattípus** | **Studio-fordítási eljárás** |
 | --- | --- |
@@ -67,9 +67,9 @@ A Studio-adatkészletek nem egyeznek a Panda DataFrames. Ennek eredményeképpen
 
 ## <a id="import-modules"></a>Meglévő Python parancsfájl-modulok importálása
 
-A Python végrehajtásához használt háttér a [anaconda](https://www.anaconda.com/distribution/), egy széles körben használt tudományos Python-disztribúción alapul. Az adat-központú számítási feladatokban használt leggyakoribb Python-csomagok 200-es közelségbe kerül. A Studio jelenleg nem támogatja az olyan csomagkezelő rendszerek használatát, mint a PIP vagy a Conda a külső könyvtárak telepítéséhez és kezeléséhez.  Ha a további kódtárak beépítésének szükségességét tapasztalja, használja a következő forgatókönyvet útmutatóként.
+A Python végrehajtásához használt háttér a [anaconda](https://www.anaconda.com/distribution/), egy széles körben használt tudományos Python-disztribúción alapul. Az adat-központú számítási feladatokban használt leggyakoribb Python-csomagok 200-es közelségbe kerül. A Studio klasszikus verziója jelenleg nem támogatja az olyan csomagkezelő rendszerek használatát, mint a PIP vagy a Conda a külső könyvtárak telepítéséhez és kezeléséhez.  Ha a további kódtárak beépítésének szükségességét tapasztalja, használja a következő forgatókönyvet útmutatóként.
 
-Gyakori használati eset a meglévő Python-parancsfájlok Studio-kísérletekbe való beépítése. A [Python-szkript végrehajtása][execute-python-script] modul egy, a harmadik bemeneti porton található Python-modulokat tartalmazó zip-fájlt fogad el. A fájlt a végrehajtási keretrendszer kibontja a futtatókörnyezetben, és a rendszer hozzáadja a tartalmat a Python-tolmács könyvtári elérési útjához. A `azureml_main` belépési pont funkció ezután közvetlenül importálhatja ezeket a modulokat. 
+Gyakori használati eset a meglévő Python-parancsfájlok beépítése a Studio-kísérletek klasszikus verziójába. A [Python-szkript végrehajtása][execute-python-script] modul egy, a harmadik bemeneti porton található Python-modulokat tartalmazó zip-fájlt fogad el. A fájlt a végrehajtási keretrendszer kibontja a futtatókörnyezetben, és a rendszer hozzáadja a tartalmat a Python-tolmács könyvtári elérési útjához. A `azureml_main` belépési pont funkció ezután közvetlenül importálhatja ezeket a modulokat. 
 
 Tegyük fel például, hogy a fájl Hello.py egy egyszerű "Helló, világ" függvényt tartalmaz.
 
@@ -79,7 +79,7 @@ Ezután létrehozunk egy Hello. zip fájlt, amely tartalmazza a Hello.py:
 
 ![Felhasználó által definiált Python-kódot tartalmazó Zip-fájl](./media/execute-python-scripts/figure5.png)
 
-Töltse fel a zip-fájlt adatkészletként a studióba. Ezután hozzon létre és futtasson egy kísérletet, amely a Python-kódot használja a Hello. zip fájlban úgy, hogy a következő képen látható módon csatolja a **Python-szkript végrehajtása** modul harmadik bemeneti portjához.
+Töltse fel a zip-fájlt adatkészletként a Studio klasszikus verziójába. Ezután hozzon létre és futtasson egy kísérletet, amely a Python-kódot használja a Hello. zip fájlban úgy, hogy a következő képen látható módon csatolja a **Python-szkript végrehajtása** modul harmadik bemeneti portjához.
 
 ![Példa a Hello. zip-alapú kísérletre egy végrehajtási Python parancsfájl-modulba való bemenetként](./media/execute-python-scripts/figure6a.png)
 
@@ -94,7 +94,7 @@ A modul kimenete azt mutatja, hogy a zip-fájl kicsomagolása megtörtént, és 
 Az Azure Blob Storage-fiókban tárolt adatai a következő lépésekkel érhetők el:
 
 1. Töltse le helyileg a [Pythonhoz készült Azure Blob Storage csomagot](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) .
-1. Töltse fel a zip-fájlt a Studio-munkaterületre adatkészletként.
+1. Töltse fel a zip-fájlt a Studio (klasszikus) munkaterületre adatkészletként.
 1. Hozza létre a BlobService objektumot `protocol='http'`
 
 ```
@@ -141,11 +141,11 @@ Ez a folyamat az alábbi, a pandák scatter_matrix függvény használatával l�
 
 ![Minták ábrázolása a Python-kód használatával](./media/execute-python-scripts/figure-v2-9b.png)
 
-Több adatot is vissza lehet adni, ha más lemezképbe menti őket. A Studio Runtime felveszi az összes rendszerképet, és összefűzi őket a vizualizációhoz.
+Több adatot is vissza lehet adni, ha más lemezképbe menti őket. A Studio Runtime klasszikus verziója minden rendszerképet felvesz, és összefűzi őket a vizualizációhoz.
 
 ## <a name="advanced-examples"></a>Speciális példák
 
-A Studióban telepített anaconda-környezet olyan közös csomagokat tartalmaz, mint például a NumPy, a SciPy és a Scikits-Learn. Ezeket a csomagokat hatékonyan lehet használni az adatfeldolgozáshoz a Machine learning-folyamatokban.
+A Studio klasszikus verziójában telepített anaconda-környezet olyan közös csomagokat tartalmaz, mint például a NumPy, a SciPy és a Scikits-Learn. Ezeket a csomagokat hatékonyan lehet használni az adatfeldolgozáshoz a Machine learning-folyamatokban.
 
 Például az alábbi kísérlet és szkript szemlélteti a Scikits együttes használatát – Ismerje meg, hogyan számítja ki a számítási funkció fontossági pontszámait egy adatkészlethez. A pontszámok a felügyelt funkciók kiválasztásához használhatók, mielőtt bekerülnek egy másik modellbe.
 
@@ -153,7 +153,7 @@ Itt látható a Python-függvény, amely a fontossági pontszámok kiszámítás
 
 ![Funkciók rangsorolása pontszámok szerint](./media/execute-python-scripts/figure8.png)
 
-A következő kísérlet ezután kiszámítja és visszaadja a "Pima Indian diabétesz" adatkészlethez tartozó szolgáltatások fontossági pontszámait Azure Machine Learning Studioban:
+A következő kísérlet ezután kiszámítja és visszaadja a "Pima Indian diabétesz" adatkészlethez tartozó szolgáltatások fontossági pontszámait a Azure Machine Learning Studio klasszikus verziójában:
 
 ![Kísérletezzen a Pima indiai cukorbetegség-adathalmazban található funkciókkal a Python használatával](./media/execute-python-scripts/figure9a.png)
 
@@ -173,13 +173,13 @@ A Python-modul jelenleg nem támogatja az olyan IDE-szolgáltatásokat, mint az 
 
 ### <a name="single-data-frame-output"></a>Egyetlen adatkeret kimenete
 
-A Python belépési pontja csak egy adatkeret kimenetként való visszaküldésére engedélyezett. Jelenleg nem lehetséges olyan tetszőleges Python-objektumokat visszaadni, mint például a betanított modellek közvetlenül a Studio futtatókörnyezethez. A [végrehajtási R-szkripthez][execute-r-script]hasonlóan, amely azonos korlátozással rendelkezik, számos esetben lehetséges, hogy az objektumokat egy byte-tömbbe írja, majd egy adatkereten belül visszaadja.
+A Python belépési pontja csak egy adatkeret kimenetként való visszaküldésére engedélyezett. Jelenleg nem lehetséges olyan tetszőleges Python-objektumokat visszaadni, mint például a betanított modellek közvetlenül a Studio (klasszikus) futtatókörnyezethez. A [végrehajtási R-szkripthez][execute-r-script]hasonlóan, amely azonos korlátozással rendelkezik, számos esetben lehetséges, hogy az objektumokat egy byte-tömbbe írja, majd egy adatkereten belül visszaadja.
 
 ### <a name="inability-to-customize-python-installation"></a>A Python-telepítés testreszabásának lehetősége
 
 Jelenleg az egyéni Python-modulok hozzáadásának egyetlen módja a korábban ismertetett zip-fájl mechanizmuson keresztül. Habár ez a kis modulok esetében is lehetséges, nehézkes a nagyméretű modulok (különösen a natív DLL-eket tartalmazó modulok) vagy nagy számú modul használata esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470070"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "73242222"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -328,6 +328,19 @@ Igen. DDoS elleni védelmet engedélyezhet azon a virtuális hálózaton, ahol a
 
 Igen. Részletekért lásd: az [Azure Application Gateway és a webalkalmazási tűzfal áttelepítésének v1-ről v2-re](migrate-v1-v2.md).
 
+## <a name="configuration---ingress-controller-for-aks"></a>Konfiguráció – bejövő forgalom vezérlője AK-hoz
+
+### <a name="what-is-an-ingress-controller"></a>Mi az a beáramló vezérlő?
+
+A Kubernetes lehetővé teszi `deployment` és `service` erőforrás létrehozását, hogy a fürtön belül belső hüvelyek csoportját tegye elérhetővé. Ahhoz, hogy a szolgáltatás külsőleg is elérhető legyen, egy [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrás van meghatározva, amely terheléselosztást, SSL-lezárást és név-alapú virtuális üzemeltetést biztosít.
+Ennek a `Ingress` erőforrásnak a kielégítéséhez be kell állítani egy bejövő vezérlőt, amely figyeli a `Ingress` erőforrásainak változásait, és konfigurálja a terheléselosztó-házirendeket.
+
+Az Application Gateway beáramlási vezérlő lehetővé teszi az [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) számára, hogy az Azure Kubernetes szolgáltatás beáramlási [szolgáltatásaként](https://azure.microsoft.com/services/kubernetes-service/) más néven AK-fürtöt használjanak.
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Több Application Gateway-példányt is kezelhet?
+
+Jelenleg a bejövő adatkezelő egyik példánya csak egy Application Gatewayhoz társítható.
+
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 
 ### <a name="what-types-of-logs-does-application-gateway-provide"></a>Milyen típusú naplókat Application Gateway nyújtani?
@@ -373,6 +386,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

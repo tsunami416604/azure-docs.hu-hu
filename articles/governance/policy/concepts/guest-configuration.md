@@ -6,22 +6,22 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: MT
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255849"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464060"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy vendég konfigurációjának ismertetése
 
-Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) után Azure Policy naplózhatja a beállításokat a gépen belül. Az érvényesítést a vendég konfigurációs bővítmény és az ügyfél hajtja végre. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például:
+Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) után Azure Policy naplózhatja a beállításokat a gépen belül. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
 - Az operációs rendszer konfigurációja
 - Alkalmazás konfigurációja vagy jelenléte
 - Környezeti beállítások
 
-Jelenleg Azure Policy vendég konfiguráció csak a gépen belüli beállításokat naplózza. Nem alkalmaz konfigurációkat.
+Az Azure Policy Vendégkonfiguráció jelenleg csak a gépen belüli beállításokat naplózza. Nem alkalmaz konfigurációkat.
 
 ## <a name="extension-and-client"></a>Kiterjesztés és ügyfél
 
@@ -75,7 +75,7 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Gyártó/kiadó|Név|Verziók|
+|Gyártó/kiadó|Name (Név)|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Credativ|Debian|8, 9|
@@ -123,6 +123,29 @@ Azure Policy a vendég-konfiguráció erőforrás-szolgáltatói **complianceSta
 
 A vendég konfigurációhoz tartozó összes beépített szabályzatot egy olyan kezdeményezés tartalmazza, amely csoportosítja a definíciókat a hozzárendelésekben való használathoz. A (z) [előzetes verzió] nevű beépített kezdeményezés *: a jelszó biztonsági beállításainak naplózása a Linux és a Windows rendszerű gépeken* 18 szabályzatot tartalmaz. A Windows hat **DeployIfNotExists** és **AuditIfNotExists** pár, a Linux esetében pedig három pár. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
 
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
+
+A Azure Policyban elérhető kezdeményezések egyike lehetővé teszi a virtuális gépeken belüli operációs rendszer beállításainak naplózását a Microsoft alapkonfigurációját követve.  A definíció, *[előzetes verzió]: az Azure-beli biztonsági alapbeállításoknak nem megfelelő Windows-alapú virtuális gépek naplózása* a Active Directory csoportházirend beállításain alapuló naplózási szabályok teljes készletét tartalmazza.
+
+A beállítások többsége paraméterekként érhető el.  Ez a funkció lehetővé teszi, hogy testreszabja, hogy a rendszer hogyan naplózza a szabályzatot a szervezeti követelményekkel, vagy hogy a szabályzatot harmadik féltől származó információkra, például iparági szabályozási szabványokra képezze.
+
+Egyes paraméterek egy egész érték tartományát támogatják.  A jelszó maximális élettartama paraméter például beállítható egy tartomány operátor használatával, hogy rugalmasságot biztosítson a gépek tulajdonosainak.  Azt is megteheti, hogy a felhasználó által a jelszavuk módosítására vonatkozó érvényes Csoportházirend beállítás nem lehet hosszabb 70 nap, de nem lehet kevesebb, mint 1 nap.  A paraméterhez tartozó info-Bubble kifejezésben leírtak szerint az érvényes naplózási értéket állítsa "1, 70" értékre.
+
+Ha a szabályzatot egy Azure Resource Manager dployment-sablonnal rendeli hozzá, egy paraméter-fájllal kezelheti ezeket a beállításokat a verziókövetés segítségével.
+Ha egy olyan eszközt használ, mint például a git a naplózási szabályzatok változásainak az egyes bejelentkezésekhez fűzött megjegyzésekkel való kezeléséhez, dokumentálja a bizonyítékokat arról, hogy a hozzárendelés miért van a várt értéktől eltekintve.
+
+#### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása a vendég konfiguráció használatával
+
+A Azure Policy legújabb funkciója a számítógépeken belüli beállítások konfigurálását végzi.
+A definíció a *Windows rendszerű gépeken beállított időzónát konfigurálja* úgy, hogy az időzóna konfigurálásával módosítja a gépet.
+
+Ha a *konfigurálással*kezdődő definíciókat rendeli hozzá, akkor a definíciók *központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés*
+Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Szabályzatok kiosztása az Azure-on kívüli gépekhez
+
+A vendég konfigurációhoz elérhető naplózási házirendek közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus.  A rendszer automatikusan felvesz minden olyan gépet, amely a hozzárendelés hatókörébe tartozó Azure-ív részét képezi.
+
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
 A vendég-konfigurációs házirendek jelenleg csak egyszer használják a vendég-hozzárendelést egy gépenként, még akkor is, ha a házirend-hozzárendelés eltérő paramétereket használ.
@@ -136,11 +159,11 @@ A ". nupkg" fájlformátumot átnevezheti ". zip" névre a kibontáshoz és a fe
 
 A vendég konfigurációs bővítmény naplófájlokat ír a következő helyszínekre:
 
-Windows: @no__t – 0
+Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
-Linux: @no__t – 0
+Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Ahol a `<version>` a jelenlegi verziószámra hivatkozik.
+Ahol a `<version>` az aktuális verziószámra hivatkozik.
 
 ### <a name="collecting-logs-remotely"></a>Naplók távoli gyűjtése
 
@@ -176,7 +199,7 @@ A házirend vendég konfigurációjának mintái a következő helyszíneken ér
 - [Minták indexe – vendég konfigurációja](../samples/index.md#guest-configuration)
 - [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.

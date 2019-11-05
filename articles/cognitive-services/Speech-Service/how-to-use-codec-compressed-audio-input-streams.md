@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802245"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464361"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>A codec tömörített hangbemenetének használata a Speech SDK-val
 
@@ -43,9 +43,9 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
-Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream` értéket. Ezután hozzon létre egy `AudioConfig` értéket a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
-Tegyük fel, hogy van egy `myPushStream` nevű bemeneti adatfolyam-osztály, amely OPUS/OGG-t használ. A kód így néz ki:
+Tegyük fel, hogy rendelkezik egy `myPushStream` nevű bemeneti adatfolyam-osztállyal, és az OPUS/OGG-t használja. A kód így néz ki:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -67,4 +67,4 @@ var text = result.GetText();
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)
+* [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

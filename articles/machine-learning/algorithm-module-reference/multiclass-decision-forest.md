@@ -1,24 +1,24 @@
 ---
 title: 'Többosztályos döntési erdő: modul leírása'
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a többosztályos döntési erdő modul a Azure Machine Learning szolgáltatásban egy gépi tanulási modell létrehozásához a *döntési erdő* algoritmusa alapján.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning többosztályos döntési erdő modulját egy gépi tanulási modell létrehozásához a *döntési erdő* algoritmusa alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692765"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466026"
 ---
 # <a name="multiclass-decision-forest-module"></a>Többosztályos döntési erdő modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal gépi tanulási modellt hozhat létre a *döntési erdő* algoritmusa alapján. A döntési erdő egy olyan Ensemble-modell, amely gyorsan kiépíti a döntési fák egy sorozatát, miközben a címkézett adatokból tanul.
 
@@ -39,9 +39,7 @@ Azure Machine Learning a döntési erdő besorolása a döntési fák együttes�
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Többosztályos döntési erdő konfigurálása
 
-
-
-1. Adja hozzá a **többosztályos döntési erdő** modult a folyamathoz az illesztőfelületen. Ez a modul a **Machine learning**, a **modell inicializálása**és a **besorolás**területen található.
+1. Adja hozzá a **többosztályos döntési erdő** modult a folyamathoz a tervezőben. Ez a modul a **Machine learning**, a **modell inicializálása**és a **besorolás**területen található.
 
 2. A **Tulajdonságok** ablaktábla megnyitásához kattintson duplán a modulra.
 
@@ -78,7 +76,7 @@ Azure Machine Learning a döntési erdő besorolása a döntési fák együttes�
 
 11. A folyamat futtatása.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
@@ -86,6 +84,6 @@ A betanítás befejezése után:
 + Ha meg szeretné tekinteni az egyes csomópontok szabályait, kattintson az egyes faszerkezetekre a felosztások részletezéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "72167356"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499209"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
 
 A [Apache Hive](https://hive.apache.org/) egy adattárház-rendszer Apache Hadoop számára. A struktúra lehetővé teszi az adatösszesítést, az adatlekérdezést és az adatelemzést. A kaptár-lekérdezések a HiveQL-ben íródnak, amely az SQL-hez hasonló lekérdezési nyelv.
 
-A struktúra lehetővé teszi a nagy strukturálatlan adatmennyiségek struktúrájának kivetítését. A struktúra meghatározása után a HiveQL segítségével lekérdezheti az adatait Java vagy MapReduce ismerete nélkül.
+A struktúra lehetővé teszi a nagy mértékben strukturált adatmennyiségek struktúrájának kivetítését. A struktúra meghatározása után a HiveQL segítségével lekérdezheti az adatait Java vagy MapReduce ismerete nélkül.
 
 A HDInsight többféle típusú fürtöt biztosít, amelyek meghatározott számítási feladatokhoz vannak hangolva. A következő típusú fürtök leggyakrabban a kaptár-lekérdezésekhez használatosak:
 
@@ -137,9 +137,9 @@ Az előző példában a HiveQL utasítások a következő műveleteket hajtják 
 
 * `CREATE EXTERNAL TABLE`: új **külső** táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen és az eredeti formátumban marad.
 
-* `ROW FORMAT`: az adat formázásának elolvasása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
+* `ROW FORMAT`: azt jelzi, hogy az adat hogyan formázott. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
 
-* `STORED AS TEXTFILE LOCATION`: Megadja, hogy a rendszer hol tárolja az adattárolási struktúrát (a `example/data` könyvtárat), és hogy a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.
+* `STORED AS TEXTFILE LOCATION`: azt jelzi, hogy a struktúra hol tárolja az adattárolást (a `example/data` könyvtárat), valamint azt, hogy az a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.
 
 * `SELECT`: kiválasztja az összes olyan sor számát, amelyben a **T4** oszlop tartalmazza a **[Error]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
 
@@ -212,7 +212,7 @@ További információt az [Azure Feature Pack](https://docs.microsoft.com/sql/in
 
 Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie és a kaptár használatával kapcsolatos további információkért tekintse meg az [Apache Oozie használata munkafolyamat-dokumentum definiálásához és futtatásához](../hdinsight-use-oozie-linux-mac.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogy mi a kaptár, és hogyan használható a Hadoop-ben a HDInsight-ben, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight szolgáltatással való munkavégzés más módszereit.
 

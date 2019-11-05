@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 06/20/2019
-ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727510"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466405"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure Ügyfélszéf
 
@@ -49,7 +49,7 @@ Az alábbi lépések egy Ügyfélszéf-kérelem tipikus munkafolyamatát ismerte
     
     A kérés most már egy **ügyfél által bejelentett** állapotban van, és az ügyfél jóváhagyására vár a hozzáférés megadása előtt.
 
-7. Az ügyfél szervezetében az Azure-előfizetéshez [](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles) tartozó tulajdonosi szerepkörrel rendelkező felhasználó e-mailt kap a Microsofttól, hogy értesítést kapjon a függőben lévő hozzáférési kérelemről. Ügyfélszéf kérelmek esetében ez a személy a kijelölt jóváhagyó.
+7. Az ügyfél szervezetében az Azure-előfizetéshez tartozó [tulajdonosi szerepkörrel](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles) rendelkező felhasználó e-mailt kap a Microsofttól, hogy értesítést kapjon a függőben lévő hozzáférési kérelemről. Ügyfélszéf kérelmek esetében ez a személy a kijelölt jóváhagyó.
     
     Példa e-mailre:
     
@@ -61,7 +61,7 @@ Az alábbi lépések egy Ügyfélszéf-kérelem tipikus munkafolyamatát ismerte
     
    A kérelem négy napig az ügyfél-várólistában marad. Ezt követően a hozzáférési kérelem automatikusan lejár, és a Microsoft-mérnökök nem kapnak hozzáférést.
 
-9. A függőben lévő kérelem részleteinek beszerzéséhez a kijelölt jóváhagyó kiválaszthatja a függőben **lévő kérelmekből**származó kulcstároló-kéréseket:
+9. A függőben lévő kérelem részleteinek beszerzéséhez a kijelölt jóváhagyó kiválaszthatja a **függőben lévő kérelmekből**származó kulcstároló-kéréseket:
     
     ![Azure Ügyfélszéf – a függőben lévő kérelem megtekintése](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
@@ -74,8 +74,8 @@ Az alábbi lépések egy Ügyfélszéf-kérelem tipikus munkafolyamatát ismerte
     ![Azure Ügyfélszéf – válassza a jóváhagyás vagy a Megtagadás lehetőséget](./media/customer-lockbox-overview/customer-lockbox-approval.png)
     
     A kijelölés eredményeképpen:
-    - **Jóváhagyás**:  A hozzáférést a Microsoft mérnökének kell megadnia. A hozzáférés az alapértelmezett nyolc órás időszakra van megadva.
-    - **Megtagadás**: A Microsoft Engineer emelt szintű hozzáférési kérelmét a rendszer elutasítja, és nem végez további műveletet.
+    - **Jóváhagyás**: a Microsoft mérnöke hozzáférést kap. A hozzáférés az alapértelmezett nyolc órás időszakra van megadva.
+    - **Megtagadás**: a Microsoft mérnök emelt szintű hozzáférési kérelmét a rendszer elutasítja, és nem végez további műveletet.
 
 Naplózási célokra az ebben a munkafolyamatban végrehajtott műveletek naplózása [Ügyfélszéf kérelmek naplófájljaiban](#auditing-logs)történik.
 
@@ -87,11 +87,11 @@ Naplózási célokra az ebben a munkafolyamatban végrehajtott műveletek napló
 - **Kulcstároló-kérelem jóváhagyása**
 - **Kulcstároló-kérelem lejárata**
 
-Példa:
+Lássunk erre egy példát:
 
 ![Azure Ügyfélszéf – tevékenységek naplói](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios"></a>Támogatott szolgáltatások és forgatókönyvek
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé
 
 A következő szolgáltatások és forgatókönyvek jelenleg általánosan elérhetők a Ügyfélszéf számára.
 
@@ -109,7 +109,24 @@ A Ügyfélszéf jelenleg engedélyezve van a távoli asztali hozzáférési kér
 
 A távoli asztal elérését érintő forgatókönyvek esetében a Windows-eseménynaplók segítségével áttekintheti a Microsoft mérnök által végrehajtott műveleteket. Az eseménynaplók összegyűjtéséhez és az adatok a munkaterületre való másolásához vegye fontolóra a Azure Security Center használatát elemzés céljából. További információ: [adatgyűjtés Azure Security Centerban](../../security-center/security-center-enable-data-collection.md).
 
-## <a name="exclusions"></a>Kizárások
+## <a name="supported-services-and-scenarios-in-preview"></a>Az előzetes verzióban támogatott szolgáltatások és forgatókönyvek
+
+A következő szolgáltatások jelenleg előzetes verzióban érhetők el a Ügyfélszéf számára:
+
+- Azure Storage 
+
+- Azure SQL DB 
+
+- Azure Data Explorer 
+
+- Virtual Machines (mostantól a memóriaképek és a felügyelt lemezek hozzáférését is magában foglalja) 
+
+- Azure-előfizetés továbbítása
+
+Ha engedélyezni szeretné a Ügyfélszéf a szervezete számára az előzetes verzióhoz, regisztráljon a [Ügyfélszéf az Azure nyilvános előzetes](https://aka.ms/customerlockbox/insiderprogram)verziójára.
+
+
+## <a name="exclusions"></a>Korlátozások
 
 Ügyfélszéf kérelmeket a következő mérnöki támogatási helyzetekben nem indítja el a rendszer:
 

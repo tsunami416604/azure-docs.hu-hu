@@ -1,24 +1,24 @@
 ---
 title: 'Többosztályos logisztikai regresszió: modul leírása'
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a többosztályos logisztikai regressziós modul a Azure Machine Learning szolgáltatásban egy logisztikai regressziós modell létrehozásához, amely több érték előrejelzésére is használható.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használható a többosztályos logisztikai regressziós modul a Azure Machine Learning egy logisztikai regressziós modell létrehozásához, amely több érték előrejelzésére is használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692754"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465966"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Többosztályos logisztikai regressziós modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy logisztikai regressziós modellt, amely több érték előrejelzésére is használható.
 
@@ -60,11 +60,11 @@ A többosztályos logisztikai regresszió esetében az osztályozó használatá
 
 9. A folyamat futtatása.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után megtekintheti a modell paramétereinek összegzését, valamint a képzésből beszerzett funkciók súlyozását, a jobb gombbal kattintson a [Train Model](./train-model.md) modul kimenetére, majd válassza a **Megjelenítés**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: bd65fcf6ebff931fbb408ca8337a37d355221dfe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053284"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480236"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -89,10 +89,10 @@ A következő táblázat bemutatja, hogyan működnek a különböző szabályza
 
 | Erőforrás állapota | Következmény | Szabályzat kiértékelése | Megfelelőségi állapot |
 | --- | --- | --- | --- |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Hamis | Megfelelőség |
-| Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelőség |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False (Hamis) | Megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | False (Hamis) | Megfelelő |
 
 \* Az Append, a DeployIfNotExist és az AuditIfNotExist hatás esetében az IF utasításnak TRUE értéket kell visszaadnia.
 Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
@@ -131,9 +131,16 @@ Mivel egy házirend vagy kezdeményezés különböző hatókörökhöz rendelhe
 Az **erőforrás-megfelelőség** lapon található erőforrások listája az aktuális hozzárendelés meglévő erőforrásainak kiértékelési állapotát jeleníti meg. A lap alapértelmezett értéke **nem megfelelő**, de szűrhető.
 Az erőforrás-létrehozási kérelem által aktivált események (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) az **események** lapon jelennek meg.
 
+> [!NOTE]
+> Az AK-motor házirendjének esetében a megjelenő erőforrás az erőforráscsoport.
+
 ![Azure Policy megfelelőségi események – példa](../media/getting-compliance-data/compliance-events.png)
 
-Kattintson a jobb gombbal az esemény azon sorára, amelyről további részleteket szeretne gyűjteni, majd válassza a **tevékenységek naplóinak megjelenítése**lehetőséget. Megnyílik a műveletnapló lap, és a rendszer előre szűri a hozzárendelés részleteit és az eseményeket. A műveletnapló további kontextust és információkat nyújt ezekről az eseményekről.
+[Erőforrás-szolgáltatói mód](../concepts/definition-structure.md#resource-provider-modes) erőforrásai esetében az **erőforrás-megfelelőség** lapon válassza ki az erőforrást, vagy kattintson a jobb gombbal a sorra, és válassza a **megfelelőség megtekintése részletei** lehetőséget. Ekkor megnyílik az összetevő megfelelőségi adatai. Ez a lap lapokat is kínál az ehhez az erőforráshoz, eseményekhez, összetevő-eseményekhez és változási előzményekhez rendelt házirendek megtekintéséhez.
+
+![Azure Policy összetevő megfelelőségi részletei – példa](../media/getting-compliance-data/compliance-components.png)
+
+Az erőforrás-megfelelőség lapon kattintson a jobb gombbal az esemény azon sorára, amelyről további részleteket szeretne gyűjteni, majd válassza a **tevékenységi naplók megjelenítése**lehetőséget. Megnyílik a műveletnapló lap, és a rendszer előre szűri a hozzárendelés részleteit és az eseményeket. A műveletnapló további kontextust és információkat nyújt ezekről az eseményekről.
 
 ![Azure Policy megfelelőségi tevékenység naplójának példája](../media/getting-compliance-data/compliance-activitylog.png)
 
@@ -395,7 +402,7 @@ Ha [log Analytics munkaterülettel](../../../log-analytics/log-analytics-overvie
 
 ![Megfelelőség Azure Policy Azure Monitor naplók használatával](../media/getting-compliance-data/compliance-loganalytics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

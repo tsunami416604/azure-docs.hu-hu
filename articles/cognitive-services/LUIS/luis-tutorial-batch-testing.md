@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Batch test – LUIS'
+title: 'Oktatóanyag: batch test – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.
+description: Ez az oktatóanyag azt mutatja be, hogyan használhatók a Batch-tesztek az alkalmazásban felmerülő előrejelzési problémák megkereséséhez és a kijavításához.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,39 +9,41 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: a0aa4d334dc5a42da8a3a8f269f70c874c9ad54d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: ac88931d79df6c2527a2a5fd72b440baeb463115
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375512"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499057"
 ---
-# <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: Batch test adatkészletek
+# <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: batch test adatkészletek
 
-Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.  
+Ez az oktatóanyag azt mutatja be, hogyan használhatók a Batch-tesztek az alkalmazásban felmerülő előrejelzési problémák megkereséséhez és a kijavításához.  
 
-Batch tesztelés lehetővé teszi, hogy ellenőrizze az aktív, betanított modell állapotának ismert vannak beállítva címkézett utterances és entitásokat. A JSON-formátumú parancsfájlba a beszédmódok hozzáadása, és állítsa be az entitás címkék van szüksége, előre meghatározott az utterance (kifejezés) belül. 
+A Batch Testing lehetővé teszi az aktív, betanított modell állapotának érvényesítését a címkézett hosszúságú kimondott szöveg és entitások ismert készletével. A JSON-formátumú batch-fájlban adja hozzá a hosszúságú kimondott szöveg, és állítsa be az entitások feliratait, amelyeknek a teljes kifejezésen belül kell lenniük. 
 
-Batch-tesztelés vonatkozó követelmények:
+A Batch-tesztelésre vonatkozó követelmények:
 
-* Legfeljebb 1000 utterances tesztenként. 
+* Legfeljebb 1000 hosszúságú kimondott szöveg. 
 * Nincsenek ismétlődések. 
-* Engedélyezett entitások típusai: az egyszerű és az összetett elemek csak a géppel megtanult entitások. Batch-tesztelés hasznos csak megmunkált megtanult szándékokat és entitásokat.
+* Engedélyezett entitások típusai: az egyszerű és az összetett elemek csak a géppel megtanult entitások. A Batch-tesztelés csak a gépi megszerzett szándékok és entitások esetén hasznos.
 
-Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van adva egy leképezés példa megcímkézzen használja. 
+Ha az oktatóanyagtól eltérő *alkalmazást használ, ne használja a* hosszúságú kimondott szöveg már hozzáadott példát. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Alkalmazás importálása – példa
-> * Hozzon létre egy kötegfájlt teszt 
-> * Egy batch-teszt futtatása
-> * Vizsgálati eredmények áttekintése
+> * Batch-teszt fájl létrehozása 
+> * Batch-teszt futtatása
+> * Tesztek eredményeinek áttekintése
 > * Hibák javítása 
-> * A batch ellenőrzése hosszadalmas
+> * A köteg újratesztelése
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -61,169 +63,169 @@ Ehhez a következő lépések szükségesek:
 
 ## <a name="batch-file"></a>Batch-fájl
 
-1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztő vagy [letöltése](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) azt. 
+1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztőben, vagy [töltse le](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) . 
 
-2. A JSON-formátumú parancsfájlba, az beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. 
+2. A JSON-formátumú batch-fájlban adja hozzá a hosszúságú kimondott szöveg a tesztben előre jelezni kívánt **szándékkal** . 
 
    [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
-## <a name="run-the-batch"></a>Futtassa a köteget
+## <a name="run-the-batch"></a>A köteg futtatása
 
-1. Válassza ki **teszt** a felső navigációs sávban. 
+1. Válassza a **teszt** lehetőséget a felső navigációs sávon. 
 
-2. Válassza ki **Batch-tesztelési panel** a jobb oldali panelen. 
+2. Válassza a **Batch-tesztelés panelt** a jobb oldali panelen. 
 
-    [![Kiemelt Batch teszt panel képernyőképe a LUIS-alkalmazás](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
+    [![a LUIS alkalmazás képernyőképe a Batch test panel kiemelésével](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
-3. Válassza ki **importálás adatkészlet**.
+3. Válassza az **adatkészlet importálása**lehetőséget.
 
-    [![Képernyőkép a LUIS alkalmazás importálása adatkészlettel kiemelésével](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
+    [![a LUIS-alkalmazás képernyőképét az importálási adatkészlet kiemelésével](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Válassza ki a fájl helyét a `HumanResources-jobs-batch.json` fájlt.
+4. Válassza ki a `HumanResources-jobs-batch.json` fájljának helyét.
 
-5. Nevezze el az adatkészlet `intents only` válassza **kész**.
+5. Nevezze el az adathalmazt `intents only` majd válassza a **kész**lehetőséget.
 
     ![Fájl kiválasztása](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
 6. Kattintson a **Futtatás** gombra. 
 
-7. Válassza ki **eredmények megtekintéséhez**.
+7. Válassza az **eredmények megtekintése**lehetőséget.
 
-8. Tekintse át az eredményeket a graph és jelmagyarázat.
+8. Tekintse át az eredményeket a gráfban és a jelmagyarázatban.
 
-    [![Képernyőkép a LUIS-alkalmazás és a batch terhelésiteszt-eredményei](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+    [a LUIS-alkalmazás ![képernyőképe a Batch-tesztek eredményeivel](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
-## <a name="review-batch-results"></a>Batch-eredmények áttekintése
+## <a name="review-batch-results"></a>A Batch eredményeinek áttekintése
 
-A batch diagram jeleníti meg az eredmények négy elemzésében. A diagram jobb szűrő van. A szűrő leképezéseket és entitásokat tartalmaz. Amikor kiválaszt egy [szakaszban, a diagram](luis-concept-batch-test.md#batch-test-results) vagy egy pontot a diagramon belül, a társított utterance(s) megjeleníti a diagram alatt. 
+A Batch-diagram az eredmények négy negyedét jeleníti meg. A diagram jobb oldalán egy szűrő látható. A szűrő leképezéseket és entitásokat tartalmaz. Amikor kijelöl egy [szakaszt](luis-concept-batch-test.md#batch-test-results) a diagramon, vagy egy pontot a diagramon belül, a társított kimaradás (ek) a diagram alatt látható. 
 
-A diagram rámutatáskor egérkereket nagyítása vagy csökkentheti a megjelenített a diagramon. Ez akkor hasznos, ha a fürtözött szorosan együtt diagramra hány pontot. 
+Amikor a diagram fölé viszi a kurzort, az egér kereke megnövelheti vagy csökkentheti a diagram megjelenítését. Ez akkor hasznos, ha a diagramon több pont is van, és szorosan össze van kapcsolva. 
 
-A diagram van négy elemzésében, és két a szakaszok vörös színnel jelenik meg. **Ezek a szakaszok a fókusz a a**. 
+A diagram négy részből áll, és a piros színnel megjelenő két részből áll. **Ezek a csoportok, amelyekre összpontosítani kell**. 
 
-### <a name="getjobinformation-test-results"></a>GetJobInformation terhelésiteszt-eredményei
+### <a name="getjobinformation-test-results"></a>GetJobInformation-tesztek eredményei
 
-A **GetJobInformation** terhelésiteszt-eredményei jelennek meg a szűrő megjelenítése, hogy sikeres volt-e 2. a négy előrejelzéseket. A diagram alatti hosszúságú kimondott szöveg megtekintéséhez válassza a **hamis negatív** nevet a bal alsó sarokban. 
+A szűrőben megjelenített **GetJobInformation** -teszt eredményei azt mutatják, hogy a négy előrejelzés közül 2 sikeres volt. A diagram alatti hosszúságú kimondott szöveg megtekintéséhez válassza a **hamis negatív** nevet a bal alsó sarokban. 
 
 A CTRL + E billentyűkombinációval váltson a felirat nézetre, és tekintse meg a felhasználó teljes szövegét. 
 
-A Kimondás `Is there a database position open in Los Colinas?` _GetJobInformation_ van megjelölve, de a jelenlegi modell a _ApplyForJob_-ként számította ki a teljes kiosztást. 
+A kimaradás `Is there a database position open in Los Colinas?` _GetJobInformation_ van megjelölve, de az aktuális modell a _ApplyForJob_. 
 
 A **ApplyForJob** -nál majdnem háromszor annyi példa van, mint a **GetJobInformation**. Ez a hosszúságú kimondott szöveg a **ApplyForJob** -cél előnyben tart, ami a helytelen előrejelzést eredményezi. 
 
-Figyelje meg, hogy mindkét leképezések rendelkezik-e hibák azonos száma. Az egyik célja egy helytelen előrejelzési más szándéka is hatással van. Mindkettő rendelkezik hibák, mert megcímkézzen is helytelenül előre jelzett egy leképezés a, és a másik szándékot is helytelenül nem jelzett. 
+Figyelje meg, hogy mindkét leképezés azonos számú hibát tartalmaz. Az egyik szándékban helytelen előrejelzés a másik szándékot is érinti. Mindkettő hibákba ütközik, mert a hosszúságú kimondott szöveg helytelenül lettek jelezve egy szándékhoz, és helytelenül nem jósolták meg a másik szándékot. 
 
 <a name="fix-the-app"></a>
 
 ## <a name="how-to-fix-the-app"></a>Az alkalmazás javítása
 
-Ez a szakasz célja, hogy megcímkézzen megfelelően az előre jelzett összes **GetJobInformation** azzal, hogy az alkalmazást. 
+Ennek a szakasznak a célja, hogy az alkalmazás kijavításával minden hosszúságú kimondott szöveg megfelelően előre megjósolható legyen a **GetJobInformation** számára. 
 
-A látszólag gyors javítás ezek batch fájl beszédmódok hozzáadása a megfelelő leképezés lenne. Ez nem az, amit szeretne tenni. Azt szeretné, hogy a LUIS megfelelően előre, anélkül, hogy hozzáadják őket a példaként a kimondott szöveg. 
+A látszólagos gyors javítás a megfelelő szándékhoz adja hozzá a batch-fájl hosszúságú kimondott szöveg. Ez nem az, amit szeretne tenni. Azt szeretné, hogy a LUIS helyesen előre megjósolja ezeket a hosszúságú kimondott szöveg, anélkül, hogy példákat adna hozzájuk. 
 
-A kimondott szöveg eltávolításával kapcsolatos is vezetőnév **ApplyForJob** mindaddig, amíg az utterance (kifejezés) mennyiség megegyezik a **GetJobInformation**. Amely előfordulhat, hogy javítsa ki a vizsgálati eredmények, de a pontos előrejelzésére adott szándékot legközelebb akadályozná az intelligens HANGFELISMERÉSI. 
+A hosszúságú kimondott szöveg a **ApplyForJob** -ből való eltávolítására is kíváncsi lehet, amíg a teljes mennyiség nem egyezik meg a **GetJobInformation**. Ez javíthatja a teszt eredményeit, azonban a LUIS-t a következő időpontra való pontos előrejelzés alapján akadályozhatja. 
 
 A javítás célja, hogy további hosszúságú kimondott szöveg adjon hozzá a **GetJobInformation**-hoz. Ne felejtse el, hogy eltér a teljes hossz, a Word Choice és a Word megegyezése _, miközben_ továbbra is a feladatra vonatkozó információk keresésének szándékát célozza meg.
 
-### <a name="add-more-utterances"></a>További beszédmódok hozzáadása
+### <a name="add-more-utterances"></a>További hosszúságú kimondott szöveg hozzáadása
 
-1. Zárja be a batch-teszt panelen válassza a **tesztelése** gombot a felső navigációs panelen. 
+1. A felső navigációs panelen kattintson a **teszt** gombra a Batch-teszt panel bezárásához. 
 
-2. Válassza ki **GetJobInformation** leképezések listájából. 
+2. Válassza a **GetJobInformation** lehetőséget a cél listából. 
 
-3. Több, különböző hossza, a word választási lehetőség és a word-előkészítés, olyan a feltételek feltétlenül beszédmódok hozzáadása `resume`, `c.v.`, és `apply`:
+3. Vegyen fel további hosszúságú kimondott szöveg, amelyek a hossz, a Word Choice és a Word-elrendezés esetében eltérőek, és ügyeljen arra, hogy tartalmazza a `resume`, a `c.v.`és a `apply`feltételeit:
 
-    |A példa utterances **GetJobInformation** leképezés|
+    |Példa a **GetJobInformation** szándékának hosszúságú kimondott szöveg|
     |--|
-    |Az új feladat egy stocker a raktári igényel, hogy I egy folytatása a alkalmazni?|
-    |Hol találhatók még ma a Tetőfedő feladatok?|
-    |Hallottam a folytatási igénylő orvosi kódolási feladat volt.|
-    |Szeretném, így azok c.v.s. írási college gyerek feladat |
-    |Íme a saját folytatása, a számítógépek használatával főiskolában, új bejegyzés keres.|
-    |Milyen pozíciók gyermek és az otthoni ellátás érhetők el?|
-    |Van egy belső munkatársa ügyfélszolgálati, a újság?|
-    |Saját C.v. látható, hogy jó elemzése a beszerzés, költségvetések és elveszett pénzt vagyok. Van-e ilyen jellegű munka?|
-    |Hol vannak a föld részletes elemzések kibontásáról feladatok most?|
-    |Az EMS illesztőprogramként 8 évig dolgoztam. Az új feladatokat?|
-    |Új élelmiszer-kezelési feladatok programra?|
-    |Hány új yard munkahelyi feladatok érhetők el?|
-    |Van egy új HR-bejegyzés a munkaerő kapcsolatok és egyeztetést végezni?|
-    |A főkiszolgálók erőforrástár és az archív felügyeleti vannak. Minden olyan új helyre?|
-    |Milyen babysitting feladatok a 13 éves korosztály az városa ma?|
+    |Az új feladatot a tárházban egy Stocker megköveteli, hogy egy folytatást alkalmazzon?|
+    |Hol vannak jelenleg a tetőfedési feladatok?|
+    |Hallottam, hogy egy orvosi kódolási feladatokra van szükség, amely folytatást igényel.|
+    |Szeretnék egy feladatot segíteni a kollégium gyermekeinek, hogy megírják a c.v.s. |
+    |Itt látható a folytatás, új bejegyzés keresése a közösségi Egyetemen a számítógépek használatával.|
+    |Milyen pozíciók érhetők el a gyermek-és otthoni gondozásban?|
+    |Van egy Intern Desk az újságban?|
+    |Saját azt mutatja, hogy jó vagyok a beszerzések, a költségvetések és az elveszett pénzmennyiség elemzéséhez. Van valami ehhez a típusú munkához?|
+    |Hol vannak most a föld fúrási feladatai?|
+    |8 évig dolgoztam EMS-illesztőprogramként. Minden új feladat?|
+    |Az új élelmiszer-kezelési feladatokhoz alkalmazás szükséges?|
+    |Hány új munkafeladat érhető el?|
+    |Van új HR-bejegyzés a munkakapcsolatokhoz és a tárgyalásokhoz?|
+    |A könyvtár és az Archívum kezelése főkiszolgálóval rendelkezik. Minden új pozíció?|
+    |Van olyan gyermekfelügyeleti feladat, amely 13 éves korban van ma a városban?|
 
-    Nincs címke a **feladat** megcímkézzen entitás. Az oktatóanyag ezen szakaszában csak a leképezési előrejelzési összpontosít.
+    Ne címkézze fel a **feladattípust** a hosszúságú kimondott szöveg. Az oktatóanyag ezen szakasza kizárólag a szándék-előrejelzésre koncentrál.
 
-4. Az alkalmazás betanításához kiválasztásával **Train** a jobb felső navigációs.
+4. Az alkalmazás betanításához válassza a jobb felső navigációs sávon a **betanítás** lehetőséget.
 
-## <a name="verify-the-new-model"></a>Ellenőrizze az új modell
+## <a name="verify-the-new-model"></a>Az új modell ellenőrzése
 
-Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelelően előre jelzett, futtassa újra a batch-vizsgálat.
+Annak ellenőrzéséhez, hogy a Batch-teszt hosszúságú kimondott szöveg megfelelően vannak-e előre jelezve, futtassa újra a Batch-tesztet.
 
-1. Válassza ki **teszt** a felső navigációs sávban. Ha a batch-eredmények meg nyitva, válassza ki a **vissza a listához**.  
+1. Válassza a **teszt** lehetőséget a felső navigációs sávon. Ha a Batch-eredmények továbbra is nyitva vannak, válassza a **vissza a listához**lehetőséget.  
 
-1. A Batch neve mellett kattintson a három pont (***..***.) gombra, és válassza a **Futtatás**lehetőséget. Várjon, amíg a batch-teszt történik. Figyelje meg, hogy a **eredmények megtekintéséhez** már zöld gombot. Ez azt jelenti, hogy az egész köteget sikeresen lefutott.
+1. A Batch neve mellett kattintson a három pont (***..***.) gombra, és válassza a **Futtatás**lehetőséget. Várjon, amíg a Batch-teszt elkészült. Figyelje meg, hogy az **eredmények megtekintése** gomb most zöld. Ez azt jelenti, hogy a teljes köteg sikeresen futott.
 
-1. Válassza ki **eredmények megtekintéséhez**. A leképezések összes kell zöld ikonok a leképezés neve a bal oldalon. 
+1. Válassza az **eredmények megtekintése**lehetőséget. A szándékoknak mind zöld ikonokkal kell rendelkezniük a leképezési nevek bal oldalán. 
 
-## <a name="create-batch-file-with-entities"></a>Az entitások kötegfájl létrehozása 
+## <a name="create-batch-file-with-entities"></a>Batch-fájl létrehozása entitásokkal 
 
-Ellenőrizze az entitások egy batch-teszt, az entitások kell az a batch JSON-fájl neve. 
+A Batch-tesztben lévő entitások ellenőrzéséhez az entitásokat a Batch JSON-fájljában kell megcímkézni. 
 
-Az entitások teljes Word változata ([jogkivonat](luis-glossary.md#token)) száma befolyásolhatja az előrejelzési minőségét. Ellenőrizze, hogy a betanítási adatok, a célt a címkézett utterances megadott hosszúságú entitás számos tartalmaz. 
+A teljes Word-([token](luis-glossary.md#token)-) darabszám entitások variációja hatással lehet a jóslat minőségére. Győződjön meg arról, hogy a megcímkézett hosszúságú kimondott szöveg megjelenő kiképzési információk számos különböző típusú entitást tartalmaznak. 
 
-Amikor először és a tesztelésre kötegfájlok, érdemes néhány utterances kezdődhet, és entitások, hogy tudja, hogy működik, valamint néhány, amely, áttekinteni helytelenül előrejelzett előfordulhat, hogy lehet. Ez segít összpontosíthat a a problémás területek gyorsan. Tesztelés után a **GetJobInformation** és **ApplyForJob** leképezések számos különböző feladat-neveket használó, nem jelzett, amely a batch tesztfájlt célja a e előrejelzési probléma bizonyos értékekkel **feladat** entitás. 
+A Batch-fájlok első írásakor és tesztelésekor érdemes megkezdeni néhány hosszúságú kimondott szöveg és az Ön által jól ismert entitásokat, valamint néhányat, hogy azt gondolja, hogy nem megfelelően van-e előre jelezve. Ez segítséget nyújt a problémás területek gyors kiépítésében. Miután tesztelte a **GetJobInformation** és a **ApplyForJob** -leképezéseket több különböző feladatnév használatával, amelyek nem lettek előre jelezve, a rendszer kidolgozta ezt a Batch-tesztoldalt, hogy ellenőrizze, van-e előrejelzési probléma a **feladatok** entitásának bizonyos értékeivel. 
 
-Az érték egy **feladat** entitás, a teszt utterances megadott, általában egy vagy két szavak, néhány példa alatt további szavakat. Ha _saját_ emberi erőforrások alkalmazáson általában számos szavak feladat nevét, a példában megcímkézzen címkézte **feladat** entitás ebben az alkalmazásban nem működne.
+Egy, a teszt hosszúságú kimondott szöveg megadott **feladathoz** tartozó entitás értéke általában egy vagy két szó, és néhány példa több szót is tartalmaz. Ha _a saját_ emberi erőforrás-alkalmazásnak általában sok szó van a feladatokhoz, akkor az alkalmazásban a hosszúságú kimondott szöveg címkével **ellátott példa** nem fog megfelelően működni.
 
-1. Hozzon létre `HumanResources-entities-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/) vagy [letöltése](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) azt.
+1. Hozzon létre `HumanResources-entities-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/) , vagy [töltse le](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) .
 
-2. A JSON-formátumú batch fájlban adja hozzá a kimondott szöveg objektumok egy tömbjét a **szándékot** szeretné a tesztelési, valamint a helyek az utterance (kifejezés) bármely entitáslistájában előre jelzett. Mivel egy entitás jogkivonat-alapú, ügyeljen arra, hogy elindíthatja és leállíthatja a minden entitás az a karakter. Ne kezdő vagy záró szóközt az utterance (kifejezés). Ez hibát okoz a batch-fájl importálása során.  
+2. A JSON-formátumú batch-fájlban adjon hozzá olyan objektumokat tartalmazó tömböt, amelyek a tesztben előre jelezni kívánt **szándékot** , valamint a teljes hosszúságú kimondott szöveg lévő entitások helyét tartalmazzák. Mivel az entitás jogkivonat-alapú, mindenképpen indítsa el és állítsa le az egyes entitásokat a karaktereken. Ne kezdjen el vagy fejezze be a teljes területet. Ez hibát okoz a batch-fájl importálása során.  
 
    [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
-## <a name="run-the-batch-with-entities"></a>Futtassa a köteget az entitások
+## <a name="run-the-batch-with-entities"></a>A Batch futtatása entitásokkal
 
-1. Válassza ki **teszt** a felső navigációs sávban. 
+1. Válassza a **teszt** lehetőséget a felső navigációs sávon. 
 
-2. Válassza ki **Batch-tesztelési panel** a jobb oldali panelen. 
+2. Válassza a **Batch-tesztelés panelt** a jobb oldali panelen. 
 
-3. Válassza ki **importálás adatkészlet**.
+3. Válassza az **adatkészlet importálása**lehetőséget.
 
-4. Válassza ki a fájl rendszer helyét a `HumanResources-entities-batch.json` fájlt.
+4. Válassza ki a `HumanResources-entities-batch.json` fájl fájlrendszerének helyét.
 
-5. Nevezze el az adatkészlet `entities` válassza **kész**.
+5. Nevezze el az adathalmazt `entities` majd válassza a **kész**lehetőséget.
 
-6. Kattintson a **Futtatás** gombra. Várjon, amíg a teszt történik.
+6. Kattintson a **Futtatás** gombra. Várjon, amíg a teszt elkészült.
 
-7. Válassza ki **eredmények megtekintéséhez**.
+7. Válassza az **eredmények megtekintése**lehetőséget.
 
-## <a name="review-entity-batch-results"></a>Entity batch eredmények áttekintése
+## <a name="review-entity-batch-results"></a>Entitás-köteg eredményeinek áttekintése
 
-A diagram megnyílik a megfelelő előrejelzett szándék fog vonatkozni. Görgessen lefelé a jobb oldali szűrőben, és keresse meg az entitások előrejelzéseit a hibákkal. 
+Ekkor megnyílik a diagram az összes olyan szándékkal, amely megfelelően előre jelzett. Görgessen lefelé a jobb oldali szűrőben, és keresse meg az entitások előrejelzéseit a hibákkal. 
 
-1. Válassza ki a **feladat** szűrő entitás.
+1. Válassza ki a szűrőben a **feladatok** entitást.
 
     ![Hiba az entitások előrejelzésében a szűrőben](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
-    A diagram változik az entitás előrejelzések megjelenítéséhez. 
+    A diagram megváltoztatja az entitás-előrejelzések megjelenítését. 
 
-2. Válassza ki **téves negatív** alsó, bal oldali quadrant a diagram. A billentyűzet kombináció CTRL + E majd használja a jogkivonat nézetre. 
+2. Válassza a **hamis negatív** elemet a diagram alsó, bal oldali negyedében. Ezután a billentyűzet kombináció vezérlő + E használatával váltson át a jogkivonat nézetre. 
 
-    [![Token nézet és az entitás előrejelzések](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
+    [entitás-előrejelzések ![jogkivonat-nézete](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
     
-    A diagram alatt megcímkézzen megtekintésével tárja fel egy egységes hiba, amikor a feladat neve tartalmazza a `SQL`. A példa kimondott szöveg és a feladatlistában kifejezés áttekintése, SQL van csak egyszer használt, és a egy nagyobb méretű feladat neve csak részeként `sql/oracle database administrator`.
+    A diagram alatti hosszúságú kimondott szöveg áttekintése konzisztens hibát mutat be, ha a feladatnév `SQL`tartalmaz. A példa hosszúságú kimondott szöveg és a feladattípusok listájának áttekintéséhez az SQL csak egyszer használatos, és csak egy nagyobb feladatnév részeként `sql/oracle database administrator`.
 
-## <a name="fix-the-app-based-on-entity-batch-results"></a>Javítsa ki az alkalmazást, entity batch eredményei alapján
+## <a name="fix-the-app-based-on-entity-batch-results"></a>Az alkalmazás kijavítása az entitás batch-eredményei alapján
 
-Az alkalmazás kompatibilitását meg megfelelően az SQL-feladatok változata, a LUIS van szükség. Többféle módon is, hogy a javítást. 
+Az alkalmazás kijavításához az szükséges, hogy a LUIS helyesen határozza meg az SQL-feladatok változatait. A javításnak több lehetősége is van. 
 
-* Explicit módon fel további példa kimondott szöveg, amely SQL használata, és azokat a szavakat címkézését feladat egységként. 
-* Explicit módon további SQL-feladatok hozzáadása a kifejezéslista
+* Explicit módon adjon hozzá több példát a hosszúságú kimondott szöveg, amelyek az SQL-t használják, és felcímkézik ezeket a szavakat feladatokként. 
+* További SQL-feladatok explicit hozzáadása a kifejezések listájához
 
-Ezek a feladatok elvégzéséhez van hátra.
+Ezeket a feladatokat elvégezheti.
 
-Hozzáadás egy [minta](luis-concept-patterns.md) előtt az entitás megfelelően előre jelzett, nem történik a probléma megoldása érdekében. Ez azért, mert a minta nem egyeznek, amíg a rendszer észleli a minta összes entitást. 
+Egy [minta](luis-concept-patterns.md) hozzáadása az entitás megfelelő előrejelzése előtt nem fogja elhárítani a problémát. Ennek az az oka, hogy a minta nem egyezik, amíg a rendszer a minta összes entitását észleli. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -231,8 +233,8 @@ Hozzáadás egy [minta](luis-concept-patterns.md) előtt az entitás megfelelőe
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag egy batch-teszt segítségével keresse meg a problémákat a jelenlegi modellel. A modell volt rögzített, és ellenőrizze a módosítás megfelelő volt-e a batch-fájllal vizsgálni.
+Az oktatóanyag egy batch-tesztet használt az aktuális modellel kapcsolatos problémák kereséséhez. A modell meg lett javítva, és újra lett tesztelve a Batch-fájllal, hogy ellenőrizze a módosítás helyességét.
 
 > [!div class="nextstepaction"]
-> [További információ a minták](luis-tutorial-pattern.md)
+> [A minták ismertetése](luis-tutorial-pattern.md)
 

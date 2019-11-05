@@ -9,68 +9,75 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5b8d97005d8f404a296ddb45e92b65e4aa811aa3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486770"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Az előrejelzési pontszámok előrejelzési pontosságot jeleznek a szándék és az entitások számára
 
-Az előrejelzési pontszám azt jelzi, hogy a LUIS megbízhatósági foka az előrejelzési eredményekre utal, a felhasználók teljes száma alapján.
+Az előrejelzési pontszám azt jelzi, hogy a LUIS megbízhatósági foka a felhasználók teljes számának előrejelzési eredményeire utal.
 
-Egy előrejelzési pontszám, nulla (0) és a egy (1) között. Egy példát egy magas abban a LUIS-pontszám 0.99. Egy példa egy alacsony megbízhatósági pontszám, 0,01. 
+Az előrejelzési pontszám nulla (0) és egy (1) között van. Egy példa arra, hogy egy nagyon magabiztos LUIS-pontszám 0,99. Az alacsony megbízhatósági pontszám például 0,01. 
 
-|Pontszám értéke|Megbízhatóság|
+|Pontszám értéke|megbízhatósági|
 |--|--|
-|1|egyértelmű egyezés|
-|0.99|magas megbízhatóság|
-|0.01|alacsony megbízhatósági|
-|0|megfelelő határozott hiba|
+|1|határozott egyezés|
+|0,99|magas megbízhatóság|
+|0,01|alacsony megbízhatóság|
+|0|nem megfelelőnek határozott hiba|
 
-Az utterance (kifejezés) egy alacsony-megbízhatósági pontszám eredményez, amikor a LUIS kiemeli, hogy a a [LUIS](luis-reference-regions.md) webhely **szándékot** oldala, amelyen az azonosított **feliratú szándékot** piros vázolt.
+## <a name="top-scoring-intent"></a>Top-pontozási szándék
 
-![Pontszám eltérés](./media/luis-concept-score/score-discrepancy.png)
+Minden Kimondás becslése egy top-pontozási szándékot ad vissza. Ez az előrejelzés az előrejelzési pontszámok számszerű összehasonlítását. 
 
-## <a name="top-scoring-intent"></a>Felső-pontozás leképezés
+## <a name="proximity-of-scores-to-each-other"></a>A pontszámok közelsége egymáshoz
 
-Minden utterance (kifejezés) előrejelzési adja vissza egy felső pontozási szándékot. Ez az előrejelzés az előrejelzési pontszámok számszerű összehasonlítását. A 2 legfontosabb pontszámok között nagyon kis különbség lehet. LUIS nem jelzi ezt a közelséget, mint a felső pontszámot.  
+A 2 legfontosabb pontszámok között nagyon kis különbség lehet. LUIS nem jelzi ezt a közelséget, mint a felső pontszámot.  
 
-## <a name="return-prediction-score-for-all-intents"></a>Minden leképezések előrejelzési pontszámának visszaadása
+## <a name="return-prediction-score-for-all-intents"></a>Az összes cél visszaadott előrejelzési pontszáma
 
-Teszt vagy a végpont eredményeképpen minden leképezések is tartalmazhatnak. Ez a beállítás be van állítva a [végpont](https://aka.ms/v1-endpoint-api-docs) az a `verbose=true` lekérdezési karakterlánc név-érték pár.
+Egy tesztelési vagy végponti eredmény az összes leképezést tartalmazhatja. Ez a konfiguráció a végponton a megfelelő querystring név/érték párok használatával van beállítva.
 
-## <a name="review-intents-with-similar-scores"></a>Tekintse át a hasonló pontszámok leképezések
+|Prediction API|QueryString neve|
+|--|--|
+|V3|`show-all-intents=true`|
+|2\. verzió|`verbose=true`|
 
-Tekintse át az összes leképezések pontszámának módja a helyes győződjön meg arról, hogy nem csak a megfelelő leképezés azonosított azonban, hogy a következő azonosítja a leképezés a pontszám jelentősen alacsonyabb egységesen a kimondott szöveg.
+## <a name="review-intents-with-similar-scores"></a>Hasonló pontszámokkal rendelkező leképezések áttekintése
 
-Ha több leképezések Bezárás előrejelzési pontok utterance (kifejezés) egy, a környezet alapján LUIS a leképezések is végrehajtható. A probléma megoldásához folytassa a hosszúságú kimondott szöveg hozzáadásával az egyes szándékokhoz a kontextusbeli különbségek széles skáláját, vagy megadhatja, hogy az ügyfélalkalmazás, például a csevegési robot, hogyan kezelje a 2 legfontosabb szándékot.
+Az összes cél pontszámának áttekintése jó módszer annak ellenőrzésére, hogy nem csak a megfelelő szándék van-e azonosítva, de a következő azonosított szándékok pontszáma jelentősen és következetesen alacsonyabb a hosszúságú kimondott szöveg.
 
-A nem determinisztikus betanítás miatt a 2 cél, amely túl szorosan mutat, megfordítható. A felső pontszám második felső válhat, és a második felső pontszám válhat az első felső pontszámot. Az ilyen helyzetek megelőzése érdekében vegyen fel például hosszúságú kimondott szöveg az első két cél elé, hogy a szó kiválasztásával és kontextusával a 2 szándékot megkülönböztetse. A két szándék kapcsolatos példa utterances azonos számú kell rendelkeznie. El, hogy a betanítás, mert invertálásának tapasztalatok 15 %-os különbség a pontszámokat.
+Ha több cél is van, a Kimondás kontextusa alapján az előrejelzési pontszámok is megváltozhatnak a leképezések között. A probléma megoldásához folytassa a hosszúságú kimondott szöveg hozzáadásával az egyes szándékokhoz a kontextusbeli különbségek széles skáláját, vagy megadhatja, hogy az ügyfélalkalmazás, például a csevegési robot, hogyan kezelje a 2 legfontosabb szándékot.
 
-Kikapcsolhatja a nem determinisztikus képzést az [összes adattal](luis-how-to-train.md#train-with-all-data)betanítva.
+A **nem determinisztikus betanítás**miatt a 2 cél, amely túl szorosan mutat, megfordítható. A legfelső pontszámot lehet a második csúcs, a második pedig az első legfelső pontszámot. Az ilyen helyzetek megelőzése érdekében vegyen fel például hosszúságú kimondott szöveg az első két cél elé, hogy a szó kiválasztásával és kontextusával a 2 szándékot megkülönböztetse. A két szándéknak azonos számú példa hosszúságú kimondott szöveg kell lennie. A leválasztásra szolgáló szabály, amely megakadályozza a betanítást, 15%-os különbség a pontszámokban.
+
+Kikapcsolhatja a **nem determinisztikus képzést** az [összes adattal betanítva](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="differences-with-predictions-between-different-training-sessions"></a>A különböző képzési munkamenetek közötti előrejelzések közötti különbségek
 
-Ha egy másik alkalmazásban ugyanazt a modellt tanítja, és a pontszámok nem azonosak, ez a különbség azért van, mert nem determinisztikus (véletlenszerű) képzésre van szüksége. Másodszor az utterance (kifejezés) egynél több beszédszándék bármely átfedésének azt jelenti, hogy az azonos utterance (kifejezés) a felső leképezésének képzési alapján módosíthatja.
+Ha egy másik alkalmazásban ugyanazt a modellt tanítja, és a pontszámok nem azonosak, ez a különbség azért van, mert nem determinisztikus (véletlenszerű) **képzésre** van szüksége. Másodszor, hogy a Kimondás bármely átfedése egynél több szándékot jelent, az azonos Kimondás alapjául szolgáló cél a képzés alapján változhat.
 
 Ha a csevegési robot egy konkrét LUIS-pontszámra van szüksége, hogy jelezze a megbízhatóságot egy szándékban, használja a pontszám különbségét az első két cél között. Ez a helyzet rugalmasságot biztosít a betanítás változásaihoz.
 
+Kikapcsolhatja a **nem determinisztikus képzést** az [összes adattal betanítva](luis-how-to-train.md#train-with-all-data).
+
 ## <a name="e-exponent-notation"></a>E (kitevő) jelölés
 
-Előrejelzési pontszámok használható kitevő jelöléssel *jelennek meg* fent a 0 – 1 tartományban, mint például `9.910309E-07`. Ezt az értéket arra utalhat, hogy egy rendkívül **kis** számát.
+Az előrejelzési pontszámok használhatnak kitevő-jelölést, amely az 0-1 tartomány fölött *jelenik* meg, például `9.910309E-07`. Ez a pontszám nagyon **kis** számot jelez.
 
-|E jelöléssel pontszám |Tényleges eredmény|
+|E jelölési pontszám |Tényleges pontszám|
 |--|--|
-|9.910309E-07|.0000009910309|
+|9.910309 e-07|.0000009910309|
 
-## <a name="punctuation"></a>Absztrakt
+## <a name="punctuation"></a>központozási
 
 [További](luis-concept-utterance.md#punctuation-marks) információ a központozás használatáról vagy kihagyásáról. 
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) további információ entitások hozzáadása a LUIS-alkalmazás.
+Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.

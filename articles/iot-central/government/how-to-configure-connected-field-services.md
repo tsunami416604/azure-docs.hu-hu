@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d8eda3aefb317b9c6383561dd2094913e5d8f7d1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 957e9337bf8ea5941b140ba4f3266417d36df6a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026622"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498760"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Teljes körű megoldás létrehozása az Azure IoT Central és a Dynamics 365 Field Service használatával 
 
@@ -32,7 +32,7 @@ Az alábbi végpontok közötti integrációs folyamat egyszerűen megvalósíth
 * Az Azure IoT Central eszköz irányítópultja frissíthető a vonatkozó szolgáltatás-és ütemezési információkkal.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [IoT Central Government-sablonokról](./overview-iot-central-government.md)
-* További információ a [IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* További információ a [IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
 * További információ a [Dynamics 365 Field Services szolgáltatásról](https://docs.microsoft.com/dynamics365/field-service/cfs-iot-overview)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468025"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez:
 A forrásrégió kivételével bármelyik régióban létrehozhat tárolót.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. Kattintson **az erőforrás** > létrehozása**felügyeleti eszközök** > **biztonsági mentése és site Recovery**elemre.
+2. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget. Ezután válassza a **felügyeleti eszközök** > **a biztonsági mentés és a site Recovery**lehetőséget.
 3. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 4. Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
 5. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
@@ -86,7 +86,7 @@ Ha az URL-címek helyett IP-címeket használó kimenő kapcsolatot szeretne vez
   - [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery-szolgáltatásvégpontok IP-címei](https://aka.ms/site-recovery-public-ips)
 
-Ha a NSG-t használja, létrehozhat egy tárolási szolgáltatáshoz tartozó NSG-szabályt a forrás régióhoz. [További információk](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+Ha a NSG-t használja, létrehozhat egy tárolási szolgáltatáshoz tartozó NSG-szabályt a forrás régióhoz. [Részletek](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 
@@ -175,20 +175,20 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 Ha a forrásoldali virtuális gépnek engedélyezve van az Azure Disk Encryption (ADE), tekintse át a beállításokat.
 
 1. Ellenőrizze a beállításokat:
-    - **Lemezes titkosítási kulcstartók**: Alapértelmezés szerint a Site Recovery létrehoz egy új kulcstartót a forrásként szolgáló virtuális gép lemezének titkosítási kulcsain egy "ASR" utótaggal. Ha a kulcstartó már létezik, a rendszer újra felhasználja.
-    - **Key encryption Key vaultok**: Alapértelmezés szerint a Site Recovery egy új kulcstartót hoz létre a célhelyen. A név "ASR" utótaggal rendelkezik, és a forrás virtuális gép kulcsának titkosítási kulcsain alapul. Ha a Site Recovery által létrehozott Key Vault már létezik, a rendszer újra felhasználja.
+    - **Lemezes titkosítási kulcstartók**: alapértelmezés szerint a site Recovery létrehoz egy új kulcstárolót a forrásként szolgáló virtuális gép lemezének titkosítási kulcsain egy "ASR" utótaggal. Ha a kulcstartó már létezik, a rendszer újra felhasználja.
+    - **Key encryption Key vaultok**: alapértelmezés szerint a site Recovery egy új kulcstartót hoz létre a céltartományban. A név "ASR" utótaggal rendelkezik, és a forrás virtuális gép kulcsának titkosítási kulcsain alapul. Ha a Site Recovery által létrehozott Key Vault már létezik, a rendszer újra felhasználja.
 
 2. Kattintson a **Testreszabás** elemre az egyéni kulcstartók kiválasztásához.
 
 >[!NOTE]
->Azure Site Recovery jelenleg csak a Windows operációs rendszert futtató és [Az Azure ad](https://aka.ms/ade-aad-app) -alkalmazással való titkosításra engedélyezett Azure-beli virtuális gépeket támogatja.
+>Azure Site Recovery jelenleg csak a Windows operációs rendszert futtató és [Az Azure ad-alkalmazással való titkosításra engedélyezett](https://aka.ms/ade-aad-app) Azure-beli virtuális gépeket támogatja.
 >
 
 ### <a name="track-replication-status"></a>A replikáció állapotának nyomon követése
 
 1. Az aktuális állapot megtekintéséhez kattintson a **Beállítások** menü **Frissítés** elemére.
 2. Nyomon követheti a folyamat előrehaladását és állapotát a következőképpen:
-    - A **védelem engedélyezése** feladat előrehaladásának nyomon követése a **Beállítások** > **feladatok** > **site Recovery feladatok**részen.
+    - A **védelem engedélyezése** feladat előrehaladásának nyomon követése a **beállítások** > **feladatok** > **site Recovery feladatokban**.
     - A **Beállítások** > **Replikált elemek** pontban tekintheti meg a virtuális gépek és a kezdeti replikáció folyamatának állapotát. A beállítások részleteinek megjelenítéséhez kattintson az adott virtuális gépre.
 
 ## <a name="next-steps"></a>További lépések

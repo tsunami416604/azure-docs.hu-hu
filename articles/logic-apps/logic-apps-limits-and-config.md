@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
-ms.translationtype: MT
+ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968604"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464020"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -26,7 +26,7 @@ Ez a cikk az automatikus munkafolyamatok létrehozásával és futtatásával ka
 
 Egyetlen logikai alkalmazás definíciójának korlátai:
 
-| Név | Korlát | Megjegyzések |
+| Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
 | Műveletek/munkafolyamat | 500 | A korlát meghosszabbításához szükség szerint beágyazott munkafolyamatokat adhat hozzá. |
 | Engedélyezett beágyazási mélység a műveletekhez | 8 | A korlát meghosszabbításához szükség szerint beágyazott munkafolyamatokat adhat hozzá. |
@@ -48,7 +48,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 Egyetlen logikai alkalmazás futtatásának korlátai:
 
-| Név | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
+| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | Futtatás időtartama | 90 nap | 365 nap | Az alapértelmezett korlát módosításához tekintse meg a [Futtatás időtartamának módosítása](#change-duration)című témakört. |
 | Tárterület megőrzése | 90 nap a Futtatás kezdő időpontjából | 365 nap | Az alapértelmezett korlát módosításához tekintse meg a [tárterület megőrzésének módosítása](#change-retention)című témakört. |
@@ -75,13 +75,13 @@ A futtatási időtartam és a tárolási megőrzés alapértelmezett korlátján
 
 Egyetlen logikai alkalmazás futtatásának korlátai:
 
-| Név | Korlát | Megjegyzések |
+| Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
 | Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Ha a Egyidejűség-vezérlő be van kapcsolva, a várakozási idő minimális száma 10, az egyidejű futtatások száma (Egyidejűség). A maximális számot akár 100-ig is megváltoztathatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát írja le, amelyek csak akkor tudnak futni, ha a logikai alkalmazás már futtatja az egyidejű példányokat. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
-| Foreach | 100 000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](../connectors/connectors-native-query.md). |
+| Foreach | 100 000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](../connectors/connectors-native-query.md). |
 | Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes " [egyidejűségek korlátait](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtatását](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)" részben tekintse meg egymás után. |
-| SplitOn elemek | 100 000 | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. |
+| SplitOn elemek | 100 000 | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. |
 | Iterációig | 5000 | |
 ||||
 
@@ -93,7 +93,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Több-bérlős Logic Apps szolgáltatás
 
-| Név | Korlát | Megjegyzések |
+| Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
 | Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Az alapértelmezett korlát módosításához tekintse [meg a logikai alkalmazás futtatása nagy teljesítményű módban](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), amely előzetes verzióban érhető el. Vagy a számítási feladatok több logikai alkalmazásban is eloszthatók a szükséges módon. |
 | Művelet: egyidejű kimenő hívások | ~ 2 500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
@@ -107,7 +107,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 A prémium SKU átviteli sebességének korlátai:
 
-| Név | Korlát | Megjegyzések |
+| Name (Név) | Korlát | Megjegyzések |
 |------|-------|-------|
 | Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta | |
 | Skálázási egység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden egyes méretezési egység percenként 2 000 további művelet-végrehajtást biztosít, ami ~ 80 000 000 további műveletek végrehajtása havonta | |
@@ -135,7 +135,7 @@ Az alábbi korlátozások érvényesek egyetlen HTTP-kérelemre vagy szinkron ö
 
 Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-kérelmeket, így a műveletek időtúllépése hosszabb lehet a határértéknél. További információkért tekintse meg az adott összekötő technikai részleteit, valamint a [munkafolyamat-eseményindítókat és műveleteket](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Név | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
+| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | Kimenő kérelem | 120 másodperc | 240 másodperc | A hosszú ideig futó műveletekhez használjon [aszinkron lekérdezési mintát](../logic-apps/logic-apps-create-api-app.md#async-pattern) vagy egy [ciklusig](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
 | Szinkron válasz | 120 másodperc | 240 másodperc | Ahhoz, hogy az eredeti kérelem kapjon választ, a válaszban szereplő összes lépésnek befejeznie kell a korláton belül, kivéve, ha egy másik logikai alkalmazást beágyazott munkafolyamatként hív meg. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). |
@@ -143,16 +143,16 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 #### <a name="message-size"></a>Üzenet mérete
 
-| Név | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
+| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | Üzenet mérete | 100 MB | 200 MB | A korlát megkerüléséhez lásd: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják a darabolást, vagy akár az alapértelmezett korlátot is. |
-| Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p>Az integrációs szolgáltatási környezet esetében a Logic Apps motor támogatja ezt a korlátot, de az összekötők a motor korlátján belül saját darabolási korlátokkal rendelkeznek, például lásd: az [Azure Blob Storage CONNECTOR API-referenciája](https://docs.microsoft.com/connectors/azureblob/). További információk a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
-| Kifejezés kiértékelési korlátja | 131 072 karakter | 131 072 karakter | A `@concat()`, `@base64()`, `@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
+| Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p>Az integrációs szolgáltatási környezet esetében a Logic Apps motor támogatja ezt a korlátot, de az összekötők a motor korlátján belül saját darabolási korlátokkal rendelkeznek, például lásd: az [Azure Blob Storage CONNECTOR API-referenciája](https://docs.microsoft.com/connectors/azureblob/). További információk a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
+| Kifejezés kiértékelési korlátja | 131 072 karakter | 131 072 karakter | A `@concat()`, `@base64()``@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
 |||||
 
 #### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
-| Név | Korlát | Megjegyzések |
+| Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
 | Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Újrapróbálkozás maximális késleltetése | 1 nap | Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
@@ -165,7 +165,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 A webes API-k által létrehozott egyéni összekötők korlátai.
 
-| Név | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
+| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | Egyéni összekötők száma | Azure-előfizetésenként 1000 | Azure-előfizetésenként 1000 ||
 | Kérelmek percenkénti száma egyéni összekötő esetén | 500 percenkénti kérelmek száma kapcsolatonként | 2 000 kérelem/perc/ *egyéni összekötő* ||
@@ -175,7 +175,7 @@ A webes API-k által létrehozott egyéni összekötők korlátai.
 
 ## <a name="managed-identities"></a>Felügyelt identitások
 
-| Név | Korlát |
+| Name (Név) | Korlát |
 | ---- | ----- |
 | A rendszer által hozzárendelt identitással rendelkező logikai alkalmazások száma régiónként | 100 |
 |||
@@ -213,7 +213,7 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 |----------|------|-------|----------|
 | EDI kereskedelmi szerződések | 10 | 1 | 1,000 |
 | EDI kereskedelmi partnerek | 25 | 2 | 1,000 |
-| Térképek | 25 | 500 | 1,000 |
+| Maps | 25 | 500 | 1,000 |
 | Sémák | 25 | 500 | 1,000 |
 | Szerelvények | 10 | 25 | 1,000 |
 | Tanúsítványok | 25 | 2 | 1,000 |
@@ -245,7 +245,7 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 
 Itt láthatók a B2B protokollokra vonatkozó üzenetek mérete:
 
-| Név | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
+| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 – 100 MB<br>v1 – 50 MB | v2 – 200 MB <br>v1 – 50 MB | A dekódolásra és a kódolásra vonatkozik |
 | X12 | 50 MB | 50 MB | A dekódolásra és a kódolásra vonatkozik |
@@ -273,13 +273,11 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 
 * A [Microsoft által felügyelt összekötők](../connectors/apis-list.md) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve. 
 
-* Az integrációs szolgáltatási környezetben (ISE) futó Logic apps esetén győződjön meg arról, hogy [megnyitotta ezeket a portokat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+* Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások kommunikációjának engedélyezéséhez győződjön meg arról, hogy [megnyitotta ezeket a portokat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-* A Logic apps nem tud közvetlenül hozzáférni olyan Azure Storage-fiókokhoz, amelyek [Tűzfalszabályok](../storage/common/storage-network-security.md) és ugyanabban a régióban vannak. Ha azonban engedélyezi a [kimenő IP-címeket a felügyelt összekötők számára a régióban](../logic-apps/logic-apps-limits-and-config.md#outbound), a Logic apps egy másik régióban fér hozzá a Storage-fiókokhoz, kivéve, ha az Azure Table Storage-összekötőt vagy az Azure Queue Storage-összekötőt használja. A Table Storage vagy Queue Storage eléréséhez továbbra is használhatja a HTTP-triggert és a műveleteket. Ellenkező esetben használhatja a további speciális beállításokat is:
+* Ha a logikai alkalmazások problémákba ütközik a [tűzfalakat és tűzfalszabályokat](../storage/common/storage-network-security.md)használó Azure Storage-fiókokhoz való hozzáférés során, a [hozzáférés engedélyezéséhez számos lehetőség](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)áll rendelkezésére.
 
-  * Hozzon létre egy [integrációs szolgáltatási környezetet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy Azure-beli virtuális hálózat erőforrásaihoz tud csatlakozni.
-
-  * Ha API Management dedikált szintet használ, a tárolási API-t a API Management használatával is elvégezheti, és engedélyezheti az utóbbi IP-címeit a tűzfalon keresztül. Alapvetően adja hozzá a API Management által használt Azure-beli virtuális hálózatot a Storage-fiók tűzfal-beállításához. Ezután használhatja a API Management műveletet vagy a HTTP-műveletet az Azure Storage API-k meghívásához. Ha azonban ezt a lehetőséget választja, a hitelesítési folyamatot saját kezűleg kell kezelnie. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
+  A Logic apps például nem fér hozzá közvetlenül a tűzfalszabályok használatát használó Storage-fiókokhoz, és ugyanabban a régióban található. Ha azonban engedélyezi a [kimenő IP-címeket a felügyelt összekötők számára a régióban](../logic-apps/logic-apps-limits-and-config.md#outbound), a logikai alkalmazások hozzáférhetnek egy másik régióban található Storage-fiókokhoz, kivéve ha az Azure Table Storage vagy az Azure Queue Storage-összekötőt használja. Table Storage vagy Queue Storage eléréséhez használhatja a HTTP-triggert és a műveleteket. További lehetőségek: hozzáférés a [Storage-fiókokhoz a tűzfalak mögött](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
 * Egyéni összekötők, [Azure Government](../azure-government/documentation-government-overview.md)és [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)esetén a rögzített vagy fenntartott IP-címek nem érhetők el.
 
@@ -290,9 +288,9 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>Bejövő IP-címek – csak Logic Apps szolgáltatás
 
-| Region (Régió) | IP |
+| Régió | IP |
 |--------|----|
-| Ausztrália keleti régiója | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
+| Kelet-Ausztrália | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | Délkelet-Ausztrália | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Dél-Brazília | 191.234.166.198, 191.235.86.199, 191.235.94.220, 191.235.95.229 |
 | Közép-Kanada | 13.88.249.209, 40.85.241.105, 52.233.29.79, 52.233.30.218 |
@@ -307,7 +305,7 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 | Kelet-Japán | 13.71.146.140, 13.78.43.164, 13.78.62.130, 13.78.84.187 |
 | Nyugat-Japán | 40.74.68.85, 40.74.81.13, 40.74.85.215, 40.74.140.173 |
 | Korea középső régiója | 52.231.14.182, 52.231.103.142, 52.231.39.29, 52.231.14.42 |
-| Dél-Korea | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
+| Korea déli régiója | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
 | USA északi középső régiója | 65.52.9.64, 65.52.211.164, 168.62.249.81, 157.56.12.202 |
 | Észak-Európa | 13.79.173.49, 40.112.90.39, 52.169.218.253, 52.169.220.174 |
 | USA déli középső régiója | 13.65.98.39, 13.84.41.46, 13.84.43.45, 40.84.138.132 |
@@ -319,16 +317,16 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 | USA nyugati régiója | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | USA 2. nyugati régiója | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |
 | Egyesült Királyság déli régiója | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
-| Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
+| Az Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
 <a name="outbound"></a>
 
 ### <a name="outbound-ip-addresses---logic-apps-service--managed-connectors"></a>Kimenő IP-címek – Logic Apps szolgáltatás & felügyelt összekötők
 
-| Region (Régió) | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
+| Régió | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
 |--------|---------------|-----------------------|
-| Ausztrália keleti régiója | 13.75.149.4, 52.187.226.96, 52.187.226.139, 52.187.227.245, 52.187.229.130, 52.187.231.184, 104.210.90.241, 104.210.91.55 | 13.70.72.192 - 13.70.72.207, 13.72.243.10 |
+| Kelet-Ausztrália | 13.75.149.4, 52.187.226.96, 52.187.226.139, 52.187.227.245, 52.187.229.130, 52.187.231.184, 104.210.90.241, 104.210.91.55 | 13.70.72.192 - 13.70.72.207, 13.72.243.10 |
 | Délkelet-Ausztrália | 13.70.159.205, 13.73.114.207, 13.77.3.139, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75, 52.189.222.77 | 13.77.50.240 - 13.77.50.255, 13.70.136.174 |
 | Dél-Brazília | 191.234.161.28, 191.234.161.168, 191.234.162.131, 191.234.162.178, 191.234.182.26, 191.235.82.221, 191.235.91.7, 191.237.255.116 | 191.233.203.192 - 191.233.203.207, 104.41.59.51 | 
 | Közép-Kanada | 13.71.184.150, 13.71.186.1, 40.85.250.135, 40.85.250.212, 40.85.252.47, 52.233.29.92, 52.228.39.241, 52.228.39.244 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126 |
@@ -343,7 +341,7 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 | Kelet-Japán | 13.71.158.3, 13.71.158.120, 13.73.4.207, 13.78.18.168, 13.78.20.232, 13.78.21.155, 13.78.35.229, 13.78.42.223 | 13.78.108.0 - 13.78.108.15, 13.71.153.19 |
 | Nyugat-Japán | 40.74.64.207, 40.74.68.85, 40.74.74.21, 40.74.76.213, 40.74.77.205, 40.74.140.4, 104.214.137.243, 138.91.26.45 | 40.74.100.224 - 40.74.100.239, 104.215.61.248 |
 | Korea középső régiója | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.141.36.214, 52.231.18.208 - 52.231.18.223 |
-| Dél-Korea | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.163.10, 52.231.147.0 - 52.231.147.15 |
+| Korea déli régiója | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.163.10, 52.231.147.0 - 52.231.147.15 |
 | USA északi középső régiója | 52.162.208.216, 52.162.213.231, 65.52.8.225, 65.52.9.96, 65.52.10.183, 157.55.210.61, 157.55.212.238, 168.62.248.37 | 52.162.107.160 - 52.162.107.175, 52.162.242.161 |
 | Észak-Európa | 40.112.92.104, 40.112.95.216, 40.113.1.181, 40.113.3.202, 40.113.4.18, 40.113.12.95, 52.178.165.215, 52.178.166.21 | 13.69.227.208 - 13.69.227.223, 52.178.150.68 |
 | USA déli középső régiója | 13.65.82.17, 13.66.52.232, 23.100.124.84, 23.100.127.172, 23.101.183.225, 70.37.54.122, 70.37.50.6, 104.210.144.48 | 104.214.19.48 - 104.214.19.63, 13.65.86.57 |
@@ -355,10 +353,10 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 | USA nyugati régiója | 40.83.164.80, 40.118.244.241, 40.118.241.243, 52.160.92.112, 104.42.38.32, 104.42.49.145, 157.56.162.53, 157.56.167.147 | 40.112.243.160 - 40.112.243.175, 104.42.122.49 |
 | USA 2. nyugati régiója | 13.66.201.169, 13.66.210.167, 13.66.246.219, 13.77.149.159, 52.175.198.132, 52.183.29.132, 52.183.30.169 | 13.66.140.128 - 13.66.140.143, 52.183.78.157 |
 | Egyesült Királyság déli régiója | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.148.0 - 51.140.148.15, 51.140.80.51 |
-| Egyesült Királyság nyugati régiója | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
+| Az Egyesült Királyság nyugati régiója | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [hozhatja létre első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * Tudnivalók a [gyakori példákról és forgatókönyvekről](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972654"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990316"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
@@ -28,9 +28,13 @@ A Active Directory tartománya és tartományvezérlői a következő módokon �
 * A saját felhőben futó új Active Directory tartomány és tartományvezérlők
 * Azure Active Directory szolgáltatás
 
-Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tartomány és tartományvezérlők állíthatók be a helyszíni vagy virtuális gépeken az előfizetésekben.  Ha az Azure AD-t identitás forrásaként szeretné használni, tekintse meg az Azure AD-t identitás-szolgáltatóként a [CloudSimple privát felhőben történő vCenter](azure-ad.md) című témakört, amely részletes útmutatást nyújt az Identity Source beállításához.
+Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tartomány és tartományvezérlők állíthatók be a helyszíni vagy virtuális gépeken az előfizetésekben.  Ha az Azure AD-t identitás forrásaként szeretné használni, tekintse [meg az Azure ad-t identitás-szolgáltatóként a CloudSimple privát felhőben történő vCenter](azure-ad.md) című témakört, amely részletes útmutatást nyújt az Identity Source beállításához.
 
-[Az Identity forrás hozzáadása](#add-an-identity-source-on-vcenter)előtt átmenetileg megnövelheti [a vCenter](escalate-private-cloud-privileges.md)-jogosultságokat.
+[Az Identity forrás hozzáadása előtt átmenetileg megnövelheti](#add-an-identity-source-on-vcenter) [a vCenter-jogosultságokat](escalate-private-cloud-privileges.md).
+
+> [!CAUTION]
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  Csak a *rendszergazdák* csoporthoz kell tartoznia a szolgáltatásfiókok hozzáadásához.  
+
 
 ## <a name="identity-source-options"></a>Személyazonossági forrás beállításai
 
@@ -49,14 +53,14 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 
 | **Beállítás** | **Leírás** |
 |------------|-----------------|
-| **Name** | Az Identity forrás neve. |
+| **Name (Név)** | Az Identity forrás neve. |
 | **A felhasználók alapszintű megkülönböztető neve** | A felhasználók alapszintű megkülönböztető neve. |
 | **Tartománynév** | A tartomány FQDN, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
 | **Tartomány aliasa** | A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
 | **A csoportok alapszintű megkülönböztető neve** | A csoportok alapszintű megkülönböztető neve. |
-| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot `ldap://hostname:port` használja. `ldaps://hostname:port` A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az elsődleges vagy másodlagos LDAP URL-cím használata `ldaps://` esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
+| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>Használja a `ldap://hostname:port` vagy `ldaps://hostname:port`formátumot. A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>A Active Directory kiszolgáló LDAPs-végpontjának megbízhatóságát kiépítő tanúsítványra akkor van szükség, ha az elsődleges vagy a másodlagos LDAP URL-címben `ldaps://` használ. |
 | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
-| **Tanúsítvány kiválasztása** | Ha LDAPS-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor az URL-cím `ldaps://`szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
+| **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitási forrásával, akkor az URL-cím szövegmezőben a `ldaps://` beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
 | **Felhasználónév** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
 | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
@@ -81,7 +85,7 @@ A részletes lépésekért lásd: [új Windows Server 2012 Active Directory erd�
 > [!TIP]
 > A szolgáltatások magas rendelkezésre állása érdekében ajánlott több tartományvezérlő és DNS-kiszolgáló beállítása.
 
-A Active Directory erdő és tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter](#add-an-identity-source-on-vcenter) az azonosítóhoz.
+A Active Directory erdő és tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter az azonosítóhoz](#add-an-identity-source-on-vcenter) .
 
 ### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Új Active Directory tartomány egy meglévő Active Directory erdőben
 
@@ -102,23 +106,23 @@ A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Direct
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Identity forrás hozzáadása a vCenter
 
-1. [](escalate-private-cloud-privileges.md) Adja meg a jogosultságokat a saját felhőben.
+1. Adja meg a [jogosultságokat](escalate-private-cloud-privileges.md) a saját felhőben.
 
 2. Jelentkezzen be a vCenter a saját felhőbe.
 
 3. Válassza a **kezdőlap > felügyelet**lehetőséget.
 
-    ![Felügyelet](media/OnPremAD01.png)
+    ![Adminisztráció](media/OnPremAD01.png)
 
 4. Válassza **az egyszeri bejelentkezés > konfiguráció**lehetőséget.
 
     ![Egyszeri bejelentkezés](media/OnPremAD02.png)
 
-5. Nyissa meg az **Identity** sources **+** fület, és kattintson rá egy új Identity forrás hozzáadásához.
+5. Nyissa meg az **Identitáskezelés** lapot, és kattintson a **+** elemre egy új Identity forrás hozzáadásához.
 
     ![Azonosító források](media/OnPremAD03.png)
 
-6. Válassza ki a **Active Directory LDAP** -kiszolgálóként, majd kattintson a **tovább**gombra.
+6. Válassza ki a **Active Directory LDAP-kiszolgálóként** , majd kattintson a **tovább**gombra.
 
     ![Active Directory](media/OnPremAD04.png)
 

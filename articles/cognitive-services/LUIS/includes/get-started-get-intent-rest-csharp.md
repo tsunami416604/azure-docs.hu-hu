@@ -1,66 +1,181 @@
 ---
-title: A REST-hívással megkezdheti a leképezéstC#
+title: Előrejelzés beszerzése REST-hívássalC#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: e6ae9590cee3a2ddc3b8e121161fcf84815da28a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 81c95dc58e8cfaddf981e3911e88310cea508115
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499675"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Visual Studio Community 2017-es kiadása](https://visualstudio.microsoft.com/vs/community/)
-* C# programozási nyelv (a VS Community 2017 része)
+* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/)
 * A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
-
-
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-Ha C# nyelven lekérdezi a GET [API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) előrejelzési végpontot, ugyanazokat az eredményeket kapja, mint amelyeket az előző szakaszban látott a böngészőablakban. 
+C# A segítségével lekérdezheti az előrejelzési végpont Get [API](https://aka.ms/luis-apim-v3-prediction) -ját az előrejelzés eredményének lekéréséhez. 
 
-1. Hozzon létre egy új konzolalkalmazást a Visual Studióban. 
+1. Hozzon létre egy új, a C# nyelvet célzó alkalmazást, amelyben a projekt és a mappa neve `predict-with-rest`. 
 
-    ![Új Console-alkalmazás létrehozása a Visual Studióban](../media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ```console
+    dotnet new console -lang C# -n predict-with-rest
+    ```
 
-2. A Visual Studio projekt Megoldáskezelő ablakában válassza az **Add reference** (Referencia hozzáadása) elemet, majd válassza a **System.Web** lehetőséget az Assemblies (Szerelvények) lapon.
+1. Telepítse a szükséges függőségeket a következő DotNet CLI-parancsokkal.
 
-    ![Válassza a hivatkozás hozzáadása lehetőséget, majd válassza a System. Web elemet a szerelvények lapon.](../media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
-
-3. Írja felül a Program.cs fájlt a következő kóddal:
+    ```console
+    dotnet add package System.Net.Http
+    ```
+1. Írja felül a Program.cs fájlt a következő kóddal:
     
-   [!code-csharp[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/csharp/Program.cs)]
+   ```csharp
+    using System;
+    using System.Net.Http;
+    using System.Web;
+    
+    namespace predict_with_rest
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                // YOUR-KEY: for example, the starter key
+                var key = "YOUR-KEY";
+                
+                // YOUR-ENDPOINT: example is westus2.api.cognitive.microsoft.com
+                var endpoint = "YOUR-ENDPOINT";
 
-4. Cserélje le a `YOUR_KEY` értéket a LUIS-kulcsra.
+                // //public sample app
+                var appId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"; 
+    
+                var utterance = "turn on all lights";
+    
+                MakeRequest(key, endpoint, appId, utterance);
+    
+                Console.WriteLine("Hit ENTER to exit...");
+                Console.ReadLine();
+            }
+            static async void MakeRequest(string key, string endpoint, string appId, string utterance)
+            {
+                var client = new HttpClient();
+                var queryString = HttpUtility.ParseQueryString(string.Empty);
+    
+                // The request header contains your subscription key
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+    
+                // The "q" parameter contains the utterance to send to LUIS
+                queryString["query"] = utterance;
+    
+                // These optional request parameters are set to their default values
+                queryString["verbose"] = "true";
+                queryString["show-all-intents"] = "true";
+                queryString["staging"] = "false";
+                queryString["timezoneOffset"] = "0";
+    
+                var endpointUri = String.Format("https://{0}/luis/prediction/v3.0/apps/{1}/slots/production/predict?query={2}", endpoint, appId, queryString);
+    
+                var response = await client.GetAsync(endpointUri);
+    
+                var strResponseContent = await response.Content.ReadAsStringAsync();
+                
+                // Display the JSON result from LUIS
+                Console.WriteLine(strResponseContent.ToString());
+            }
+        }
+    }
 
-5. Buildelje és futtassa a konzolalkalmazást. Megjelenik a korábban a böngészőablakban látott JSON.
+   ```
 
-    ![A LUIS által visszaadott JSON-eredményt megjelenítő konzolablak](../media/luis-get-started-cs-get-intent/console-turn-on.png)
+1. Cserélje le a következő értékeket:
 
+    * `YOUR-KEY` az alapszintű kulccsal
+    * `YOUR-ENDPOINT` a végponttal, például `westus2.api.cognitive.microsoft.com`
 
+1. Hozza létre a konzolalkalmazást. 
+
+    ```console
+    dotnet build
+    ```
+
+1. Futtassa a konzolalkalmazást. A konzol kimenete ugyanazt a JSON-t jeleníti meg, amelyet korábban a böngészőablakban látott.
+
+    ```console
+    dotnet run
+    ```
+
+1. Az előrejelzési válasz áttekintése JSON formátumban:
+
+    ```console
+    Hit ENTER to exit...
+    {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
+    ```
+
+    Az olvashatóságra formázott JSON-Válasz: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
 ## <a name="luis-keys"></a>LUIS-kulcsok
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor végzett ezzel a rövid útmutatóval, zárja be a Visual Studio-projektet, és távolítsa el a projekt könyvtárát a fájlrendszerből. 
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kimondott szövegek hozzáadása és betanítás a C# használatával](../luis-get-started-cs-add-utterance.md)
+> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../luis-get-started-cs-add-utterance.md)

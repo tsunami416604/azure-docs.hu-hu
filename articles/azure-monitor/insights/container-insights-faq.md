@@ -6,17 +6,21 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 08/14/2019
-ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555428"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477420"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor a tárolók számára – gyakori kérdések
 
 Ez a Microsoft gyakori kérdések listája a Azure Monitor for containers szolgáltatással kapcsolatos gyakori kérdésekre mutat. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
+
+## <a name="can-i-view-metrics-collected-in-grafana"></a>Megtekinthetem a Grafana összegyűjtött mérőszámokat?
+
+A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok való megjelenítéshez. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Megfigyelhető az AK-motor fürtje Azure Monitor for containers használatával?
 
@@ -72,21 +76,16 @@ A probléma részletes megtekintéséhez tekintse meg a következő GitHub- [hiv
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Az élő naplók engedélyezésekor Hogyan az Azure AD-hibák elhárítása? 
 
-A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "< Application ID \>"** . A megoldás megoldása a következő cikkben található: a [tárolók valós idejű megtekintése Azure monitor a tárolók](container-insights-live-logs.md#configure-aks-with-azure-active-directory)használatával. 
+A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "< Application ID\>"** . A megoldás megoldása a következő cikkben található: a [tárolók információinak valós idejű megtekintése Azure monitor a tárolók](container-insights-livedata-setup.md#configure-ad-integrated-authentication)használatával. 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudom frissíteni a fürtöt a bevezetést követően?
 
 Ha egy AK-fürthöz engedélyezte a Azure Monitort a tárolók számára, akkor törölje azt a Log Analytics-munkaterületet, amelyhez a fürt az adatokat küldi, amikor a fürt frissítésére tett kísérlet során sikertelen lesz. Ennek megkerüléséhez le kell tiltania a figyelést, majd újra engedélyeznie kell, hogy az előfizetés egy másik érvényes munkaterületre hivatkozik. Ha újra megpróbálja végrehajtani a fürt frissítését, akkor a folyamatnak sikeresen fel kell dolgoznia és el kell végeznie a műveletet.  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Mely portokra és tartományokra van szükségem az ügynök megnyitásához/engedélyezési listához?
-- *. ods.opinsights.azure.com 443
-- *. oms.opinsights.azure.com 443
-- *. blob.core.windows.net 443
-- dc.services.visualstudio.com 443
-- *. microsoftonline.com 443
-- *. monitoring.azure.com 443
-- login.microsoftonline.com 443
 
-## <a name="next-steps"></a>Következő lépések
+Tekintse meg a [hálózati tűzfalra vonatkozó követelményeket](container-insights-onboard.md#network-firewall-requirements) a proxy-és tűzfal-konfigurációs információkhoz, amelyek a tároló ügynökhöz szükségesek az Azure-ban, az Azure US governmentben és az Azure China felhőkben.
+
+## <a name="next-steps"></a>További lépések
 
 Az AK-fürt figyelésének megkezdéséhez tekintse át az [Azure monitor a tárolók számára című témakört](container-insights-onboard.md) , és Ismerje meg a figyelés engedélyezésének követelményeit és rendelkezésre álló módszereit. 

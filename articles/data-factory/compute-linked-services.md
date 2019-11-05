@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7426493a575ceb38211f5e6e3b4f7e2ba558b670
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: fd874776e5be94831322bce839a502ebc43e1958
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754738"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481195"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
 Ez a cikk az adatok feldolgozásához és átalakításához használható különböző számítási környezeteket ismerteti. Emellett a Data Factory által támogatott különböző konfigurációkról (igény szerinti és saját) is gondoskodik, ha a társított szolgáltatások konfigurálásával a számítási környezeteket egy Azure-beli adat-előállítóhoz kapcsolja.
@@ -28,7 +28,8 @@ A következő táblázat felsorolja a Data Factory által támogatott számítá
 | [Igény szerinti HDInsight-fürt](#azure-hdinsight-on-demand-linked-service) vagy [a saját HDInsight-fürt](#azure-hdinsight-linked-service) | [Kaptár](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Egyéni](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) |
-| [Azure Machine Learning szolgáltatás](#azure-machine-learning-service-linked-service) | [Azure Machine Learning folyamat végrehajtása](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning folyamat végrehajtása](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning folyamat végrehajtása](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Tárolt eljárás](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Jegyzetfüzet](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
@@ -90,17 +91,17 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ```
 
 > [!IMPORTANT]
-> A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a program tervezett működésének része. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer mindig létrehoz egy HDInsight-fürt, amikor fel kell dolgozni egy szeletet, kivéve, ha van meglévő élő fürt (**timeToLive**), majd a feldolgozás végén a rendszer törli a fürtöt. 
+> A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer mindig létrehoz egy HDInsight-fürt, amikor fel kell dolgozni egy szeletet, kivéve, ha van meglévő élő fürt (**timeToLive**), majd a feldolgozás végén a rendszer törli a fürtöt. 
 >
 > Ahogy egyre több tevékenység fut, számos tároló jelenik meg az Azure Blob Storage-ban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 >
 > 
 
 ### <a name="properties"></a>Tulajdonságok
-| Tulajdonság                     | Leírás                              | Szükséges |
+| Tulajdonság                     | Leírás                              | Kötelező |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | A Type tulajdonságot **HDInsightOnDemand**értékre kell beállítani. | Igen      |
-| clusterSize                  | A fürtben lévő feldolgozó/adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal, valamint a tulajdonsághoz megadott munkavégző csomópontok számával együtt jön létre. A csomópontok olyan méretű Standard_D3 rendelkeznek, amelyek 4 maggal rendelkeznek, így a 4 feldolgozó csomópont-fürt 24 magot használ (4 \*4 = 16 magot a feldolgozó csomópontokhoz, plusz 2 \*4 = 8 magot a főcsomópontok számára). További részletekért lásd: [fürtök beállítása a HDInsight-ben a Hadoop, Spark, Kafka és más](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) rendszerekben. | Igen      |
+| clusterSize                  | A fürtben lévő feldolgozó/adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal, valamint a tulajdonsághoz megadott munkavégző csomópontok számával együtt jön létre. A csomópontok olyan méretű Standard_D3 rendelkeznek, amelyek 4 maggal rendelkeznek, így a 4 feldolgozó csomópont-fürt 24 magot használ (4\*4 = 16 maggal a feldolgozó csomópontok számára, plusz 2\*4 = 8 mag a fő csomópontok számára). További részletekért lásd: [fürtök beállítása a HDInsight-ben a Hadoop, Spark, Kafka és más](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) rendszerekben. | Igen      |
 | linkedServiceName            | Az Azure Storage társított szolgáltatása, amelyet az igény szerinti fürt használ az adattároláshoz és az adatfeldolgozáshoz. A HDInsight-fürt ugyanabban a régióban jön létre, mint ez az Azure Storage-fiók. Az Azure HDInsightban korlátozott azon magok száma, amelyek az egyes támogatott Azure-régiókban felhasználhatók. Győződjön meg arról, hogy az Azure-régióban van elég alapvető kvóta ahhoz, hogy megfeleljen a szükséges clusterSize. Részletekért lásd: [fürtök beállítása a HDInsight-ben a Hadoop, a Spark, a Kafka és más](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) szolgáltatásokkal<p>Jelenleg nem hozhat létre olyan igény szerinti HDInsight-fürtöt, amely egy Azure Data Lake Store használ tárolóként. Ha az eredményeket egy Azure Data Lake Store HDInsight-feldolgozásból szeretné tárolni, a másolási tevékenységgel másolja át az Azure Blob Storage adatait az Azure Data Lake Store. </p> | Igen      |
 | clusterResourceGroup         | Ez az erőforráscsoport létrehozza a HDInsight-fürtöt. | Igen      |
 | TimeToLive                   | Az igény szerinti HDInsight-fürt számára engedélyezett üresjárati idő. Meghatározza, hogy az igény szerinti HDInsight-fürt mennyi ideig maradjon életben a tevékenység futtatása után, ha nincsenek más aktív feladatok a fürtben. A minimálisan megengedett érték 5 perc (00:05:00).<br/><br/>Ha például egy tevékenység futása 6 percet vesz igénybe, és a TimeToLive 5 percre van állítva, a fürt a tevékenység futtatásának 6 perce után 5 perccel továbbra is életben marad. Ha egy másik tevékenység futtatása a 6 perces időszakot futtatja, a rendszer ugyanazt a fürtöt dolgozza fel.<br/><br/>Egy igény szerinti HDInsight-fürt létrehozása költséges művelet (eltarthat egy darabig), ezért szükség szerint ezt a beállítást használja az adat-előállító teljesítményének növeléséhez egy igény szerinti HDInsight-fürt újbóli felhasználásával.<br/><br/>Ha a TimeToLive értéket 0-ra állítja, akkor a rendszer a tevékenység futtatása után azonnal törli a fürtöt. Míg ha magas értéket ad meg, a fürt tétlen maradhat, ha valamilyen hibaelhárítási céllal jelentkezik be, de magas költségekhez vezethet. Ezért fontos, hogy az igényeinek megfelelően állítsa be a megfelelő értéket.<br/><br/>Ha a TimeToLive tulajdonság értéke megfelelően van beállítva, több folyamat is megoszthatja az igény szerinti HDInsight-fürt példányát. | Igen      |
@@ -147,7 +148,7 @@ Az igény szerinti HDInsight társított szolgáltatáshoz a HDInsight-fürtök 
 
 Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
 
-| Tulajdonság                | Leírás                              | Szükséges |
+| Tulajdonság                | Leírás                              | Kötelező |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Igen      |
 | **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása.           | Igen      |
@@ -157,7 +158,7 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 
 Az igény szerinti HDInsight-fürt részletes konfigurálásához a következő tulajdonságokat is megadhatja.
 
-| Tulajdonság               | Leírás                              | Szükséges |
+| Tulajdonság               | Leírás                              | Kötelező |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Meghatározza a létrehozandó HDInsight-fürt alapvető konfigurációs paramétereit (a Core-site. xml fájlban). | Nem       |
 | hBaseConfiguration     | Megadja a HDInsight-fürt HBase-konfigurációs paramétereit (hbase-site. xml). | Nem       |
@@ -225,7 +226,7 @@ Az igény szerinti HDInsight-fürt részletes konfigurálásához a következő 
 ### <a name="node-sizes"></a>Csomópontok méretei
 A következő tulajdonságokkal adhatja meg a fej, az adatmennyiség és a Zookeeper-csomópont méretét: 
 
-| Tulajdonság          | Leírás                              | Szükséges |
+| Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Megadja a fő csomópont méretét. Az alapértelmezett érték: Standard_D3. A részletekért tekintse **meg a csomópont-méretek megadása** szakaszt. | Nem       |
 | dataNodeSize      | Megadja az adatcsomópont méretét. Az alapértelmezett érték: Standard_D3. | Nem       |
@@ -285,7 +286,7 @@ Létrehozhat egy Azure HDInsight társított szolgáltatást, hogy regisztrálja
 ```
 
 ### <a name="properties"></a>Tulajdonságok
-| Tulajdonság          | Leírás                                                  | Szükséges |
+| Tulajdonság          | Leírás                                                  | Kötelező |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | A Type tulajdonságot **HDInsight**értékre kell beállítani.            | Igen      |
 | clusterUri        | A HDInsight-fürt URI-ja.                            | Igen      |
@@ -345,7 +346,7 @@ Tekintse meg a következő cikkeket, ha új Azure Batch szolgáltatás:
 
 
 ### <a name="properties"></a>Tulajdonságok
-| Tulajdonság          | Leírás                              | Szükséges |
+| Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | A Type tulajdonságot **AzureBatch**értékre kell beállítani. | Igen      |
 | accountName       | A Azure Batch fiók neve.         | Igen      |
@@ -381,9 +382,9 @@ Hozzon létre egy Azure Machine Learning Studio társított szolgáltatást egy 
 ```
 
 ### <a name="properties"></a>Tulajdonságok
-| Tulajdonság               | Leírás                              | Szükséges                                 |
+| Tulajdonság               | Leírás                              | Kötelező                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type (Típus)                   | A Type tulajdonságot a következőre kell beállítani: **AzureML**. | Igen                                      |
+| Típus                   | A Type tulajdonságot a következőre kell beállítani: **AzureML**. | Igen                                      |
 | mlEndpoint             | A Batch-pontozási URL-cím.                   | Igen                                      |
 | apiKey                 | A közzétett munkaterület-modell API-ját.     | Igen                                      |
 | updateResourceEndpoint | A prediktív webszolgáltatás a betanított modellel való frissítéséhez használt Azure Machine Learning webszolgáltatás-végpont frissítési erőforrásának URL-címe | Nem                                       |
@@ -392,11 +393,11 @@ Hozzon létre egy Azure Machine Learning Studio társított szolgáltatást egy 
 | Bérlő                 | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Kötelező, ha a updateResourceEndpoint meg van adva |
 | Connectvia tulajdonsággal             | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem                                       |
 
-## <a name="azure-machine-learning-service-linked-service"></a>Azure Machine Learning szolgáltatáshoz társított szolgáltatás
-Hozzon létre egy Azure Machine Learning szolgáltatáshoz társított szolgáltatást egy Azure Machine Learning szolgáltatás munkaterületének egy adatgyárhoz való összekapcsolásához.
+## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
+Egy Azure Machine Learning társított szolgáltatást hoz létre egy Azure Machine Learning munkaterület egy adatgyárhoz való összekapcsolásához.
 
 > [!NOTE]
-> A Azure Machine Learning szolgáltatáshoz társított szolgáltatás jelenleg csak az egyszerű szolgáltatásnév hitelesítését támogatja.
+> A Azure Machine Learning társított szolgáltatás jelenleg csak az egyszerű szolgáltatásnév hitelesítését támogatja.
 
 ### <a name="example"></a>Példa
 
@@ -425,12 +426,12 @@ Hozzon létre egy Azure Machine Learning szolgáltatáshoz társított szolgált
 ```
 
 ### <a name="properties"></a>Tulajdonságok
-| Tulajdonság               | Leírás                              | Szükséges                                 |
+| Tulajdonság               | Leírás                              | Kötelező                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type (Típus)                   | A Type tulajdonságot a következőre kell beállítani: **AzureMLService**. | Igen                                      |
+| Típus                   | A Type tulajdonságot a következőre kell beállítani: **AzureMLService**. | Igen                                      |
 | subscriptionId         | Azure-előfizetés azonosítója              | Igen                                      |
 | resourceGroupName      | név | Igen                                      |
-| mlWorkspaceName        | Azure Machine Learning szolgáltatás munkaterületének neve | Igen  |
+| mlWorkspaceName        | Azure Machine Learning munkaterület neve | Igen  |
 | servicePrincipalId     | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Nem |
 | servicePrincipalKey    | Az alkalmazás kulcsának meghatározása.           | Nem |
 | Bérlő                 | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Kötelező, ha a updateResourceEndpoint meg van adva | Nem |
@@ -468,7 +469,7 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Tulajdonság             | Leírás                              | Szükséges                                 |
+| Tulajdonság             | Leírás                              | Kötelező                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. | Igen                                      |
 | accountName          | Azure Data Lake Analytics fiók neve.  | Igen                                      |
@@ -530,7 +531,7 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Tulajdonság             | Leírás                              | Szükséges                                 |
+| Tulajdonság             | Leírás                              | Kötelező                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | név                 | A társított szolgáltatás neve               | Igen   |
 | type                 | A Type tulajdonságot a következőre kell beállítani: **Azure Databricks**. | Igen                                      |
@@ -564,5 +565,5 @@ Hozzon létre egy Azure Function társított szolgáltatást, és használja az 
 | függvény kulcsa | Az Azure-függvény elérési kulcsa. Kattintson a **Manage (kezelés** ) szakaszra a megfelelő függvényhez, és másolja a **függvény** vagy a **gazda kulcsot**. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | igen |
 |   |   |   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Data Factory által támogatott átalakítási tevékenységek listáját lásd: az [adatátalakítás](transform-data.md).

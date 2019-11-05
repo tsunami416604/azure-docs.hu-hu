@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: acda549ffc03679de43b4e5956e65ccada766c15
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 957b12ad00f53a5aed7ff2a1ecd4afd21e58eb93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819950"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467447"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Szerzői és futtatókörnyezeti erőforrás-kulcsok használata
 
 A szerzői és futtatókörnyezeti erőforrások hitelesítést biztosítanak a LUIS-alkalmazás és az előrejelzési végpont számára.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
@@ -58,7 +60,7 @@ Ha készen áll az előrejelzési végpont közzétételére, hozzon létre és 
 
     ![A Language Understanding-erőforrás létrehozása](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Név|Rendeltetés|
+    |Name (Név)|Cél|
     |--|--|
     |Erőforrás neve| Egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használ.|
     |Előfizetés neve| az erőforrásért fizetendő előfizetés.|
@@ -134,7 +136,7 @@ Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes au
 
     A POST API-nak a következő beállításokat kell megadnia:
 
-    |Fejléc|Value (Díj)|
+    |Fejléc|Érték|
     |--|--|
     |`Authorization`|A `Authorization` értéke `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szó `Bearer` és egy szóköznek.| 
     |`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
@@ -145,7 +147,7 @@ Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes au
 
     A POST API-nak a következő beállításokat kell megadnia:
 
-    |Type (Típus)|Beállítás|Value (Díj)|
+    |Típus|Beállítás|Érték|
     |--|--|--|
     |Fejléc|`Authorization`|A `Authorization` értéke `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szó `Bearer` és egy szóköznek.|
     |Fejléc|`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
@@ -212,7 +214,7 @@ Ha szeretné tudni, hogy mikor ért el egy bizonyos tranzakciós küszöbérték
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akinek meg kell kapnia a riasztást. Webhookok hozzáadása a riasztást fogadó összes rendszerhez. Egy logikai alkalmazást is futtathat a riasztás elindítása után. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .

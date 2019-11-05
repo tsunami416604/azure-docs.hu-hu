@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egyszerű entitás, kifejezések listája – LUIS'
+title: 'Oktatóanyag: egyszerű entitás, kifejezések listája – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban az egyszerű entitás használatával kinyerheti a feldolgozói feladatokból származó, a vállalat által megtanult adatok nevét. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376262"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465401"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Nevek kinyerése egyszerű entitással és egy kifejezés listával
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: nevek kinyerése egyszerű entitással és egy kifejezés listával
 
 Ebben az oktatóanyagban egy állás nevével kapcsolatos gépi tanulással létrejött adatokat nyer ki egy kimondott szövegből az **Egyszerű** entitás használatával. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 
 Az egyszerű entitás egyetlen, szavakban vagy kifejezésekben szereplő adatfogalmat észlelésére szolgál.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -58,7 +60,7 @@ Vegyük például egy csevegőrobot által kimondott következő szövegeket:
 |Adja be az önéletrajzomat a mérnöki pozícióra.|mérnöki terület|
 |Jelentkezés kitöltése az 123456 számú állásra|123456|
 
-Az állás nevét nehéz megállapítani, mert a név lehet főnév, ige, vagy több szóból álló kifejezés. Például:
+Az állás nevét nehéz megállapítani, mert a név lehet főnév, ige, vagy több szóból álló kifejezés. Példa:
 
 |Feladatok|
 |--|
@@ -93,7 +95,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
 1. Az `I want to apply for the new accounting job` kimondott szövegben válassza az `accounting` lehetőséget, az előugró menü felső mezőjébe írja be a `Job` kifejezést, majd válassza a **Create new entity** (Új entitás létrehozása) elemet az előugró menüben. 
 
-    [![Képernyőkép a LUIS "ApplyForJob" leképezést és a kiemelt entitás lépéseket létrehozása](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "képernyőképe a LUIS \"ApplyForJob\" leképezést és az entitás lépéseket kiemelt létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![A LUIS képernyőképe a "ApplyForJob" szándékkal az entitás létrehozása lépések kiemelésével](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "A LUIS képernyőképe a "ApplyForJob" szándékkal az entitás létrehozása lépések kiemelésével")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. Az előugró ablakban ellenőrizze az entitás nevét és típusát, majd válassza a **Done** (Kész) lehetőséget.
 
@@ -101,7 +103,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
 1. A fennmaradó hosszúságú kimondott szöveg jelölje meg a feladattal kapcsolatos szavakat a **feladattal** együtt a szó vagy kifejezés kiválasztásával, majd a felugró menüből válassza a **feladat** lehetőséget. 
 
-    [![Képernyőkép a LUIS kiemelt feladat entitás címkézés](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "képernyőképe, a LUIS címkézés feladat entitás kiemelésével")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Képernyőkép a LUIS címkéző feladat entitás kiemeléséről](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Képernyőkép a LUIS címkéző feladat entitás kiemeléséről")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>További példa a hosszúságú kimondott szöveg és az entitás megjelölésére
@@ -192,7 +194,7 @@ Az egyszerű entitásoknak számos példát kell megadniuk ahhoz, hogy magas szi
 ## <a name="names-are-tricky"></a>A nevek bonyolultak
 A LUIS-alkalmazás nagy magabiztossággal megtalálta a megfelelő szándékot és kinyerte az állás nevét, a nevek azonban bonyolultak. Próbálja meg a `This is the lead welder paperwork` kimondott szöveget.  
 
-A következő JSON-ben, a LUIS a megfelelő szándékkal (`lead welder`) válaszol, de nem nyerte ki a `ApplyForJob` állásnevet. 
+A következő JSON-ben, a LUIS a megfelelő szándékkal (`ApplyForJob`) válaszol, de nem nyerte ki a `lead welder` állásnevet. 
 
 ```json
 {
@@ -231,7 +233,7 @@ Nyissa meg a [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognitive-
 
 1. Az új kifejezéslistának adja a `JobNames` nevet és a jobs-phrase-list.csv fájlban található listát másolja a **Values** (Értékek) szövegmezőbe.
 
-    [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Az új kifejezések listájának létrehozása párbeszédpanel előugró ablakának képernyőképe](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Az új kifejezések listájának létrehozása párbeszédpanel előugró ablakának képernyőképe")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Ha további szavakat szeretne felvenni a kifejezés listára, válassza az újraellenőrzés **lehetőséget,** majd tekintse át az új **kapcsolódó értékeket** , és adja hozzá a megfelelőt. 
 
@@ -239,7 +241,7 @@ Nyissa meg a [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognitive-
 
 1. Kattintson a **kész** gombra a kifejezések listájának aktiválásához.
 
-    [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "képernyőkép hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Képernyőkép az új kifejezések listázása párbeszédpanel előugró ablakában a kifejezési lista értékei mezőben](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Képernyőkép az új kifejezések listázása párbeszédpanel előugró ablakában a kifejezési lista értékei mezőben")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. A kifejezések listájának használatához betaníthatja és közzéteheti az alkalmazást.
 

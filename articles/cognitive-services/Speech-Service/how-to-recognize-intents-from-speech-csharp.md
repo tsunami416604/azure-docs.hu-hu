@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Beszédfelismerési szándék felismerése a Speech SDK-valC#'
+title: 'Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával'
 titleSuffix: Azure Cognitive Services
 description: Ezen oktatóanyag segítségével megtanulhatja, hogyan ismerheti fel a szándékot beszédből a C#-hez készült Speech SDK használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326831"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464629"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: A beszédfelismerési szándékok felismerése a Speech SDK használatávalC#
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával
 
 A Cognitive Services [SPEECH SDK](speech-sdk.md) a [Language Understanding szolgáltatással (Luis)](https://www.luis.ai/home) integrálódik a **szándék-felismerés**biztosításához. A szándék az, amit a felhasználó tenni szeretne: például repülőutat foglalni, megnézni az időjárást vagy telefonhívást indítani. A felhasználó bármilyen kifejezést használhat, amely számára természetes. A Machine learning használatával a LUIS leképezi a felhasználói kéréseket a definiált szándékokra.
 
@@ -45,11 +45,12 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy rendelkezik az 
 
 A LUIS integrálva van a Speech Services szolgáltatással, hogy felismerje a beszédfelismerési szándékokat. Nincs szüksége a Speech Services-előfizetésre, csak LUIS-ra.
 
-A LUIS kétféle kulcsot kezel:
+A LUIS háromféle kulcsot használ:
 
-|Kulcstípus|Cél|
+|Kulcs típusa|Cél|
 |--------|-------|
-|Szerzői műveletek|Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását|
+|Tartalomkészítés|Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását|
+|Kezdő|Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával|
 |Végpont |Engedélyezi a hozzáférést egy adott LUIS-alkalmazáshoz|
 
 Ebben az oktatóanyagban a végponti kulcs típusát kell megadnia. Az oktatóanyag a példa Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használata](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) című rövid útmutatóban hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
@@ -85,7 +86,7 @@ Ezután adja hozzá a projekthez egy kódot.
 
 1. A **megoldáskezelő**nyissa meg a **program.cs**fájlt.
 
-1. A következő deklarációkkal cserélje le a `using` utasítások blokkját a fájl elejére:
+1. Cserélje le `using` utasítások blokkját a fájl elejére a következő deklarációkkal:
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
@@ -97,7 +98,7 @@ Ezután adja hozzá a projekthez egy kódot.
    Console.ReadLine();
    ```
 
-1. Hozzon létre egy üres aszinkron módszert @no__t – 0, ahogy az itt látható:
+1. Hozzon létre egy üres aszinkron metódust `RecognizeIntentAsync()`, ahogy az itt látható:
 
    ```csharp
    static async Task RecognizeIntentAsync()
@@ -123,7 +124,7 @@ A kód ismertetése a következő szakaszokban szerepel.
 
 ## <a name="create-an-intent-recognizer"></a>Szándékfelismerő létrehozása
 
-Először létre kell hoznia egy beszédfelismerési konfigurációt a LUIS Endpoint kulcsból és régióból. A beszédfelismerési konfigurációk segítségével felismerőket hozhat létre a Speech SDK különböző képességeihez. A beszédfelismerési konfiguráció több módon is megadhatja a használni kívánt előfizetést. Itt a `FromSubscription` értéket használjuk, amely az előfizetési kulcsot és a régiót veszi igénybe.
+Először létre kell hoznia egy beszédfelismerési konfigurációt a LUIS Endpoint kulcsból és régióból. A beszédfelismerési konfigurációk segítségével felismerőket hozhat létre a Speech SDK különböző képességeihez. A beszédfelismerési konfiguráció több módon is megadhatja a használni kívánt előfizetést. Itt `FromSubscription`t használunk, amely az előfizetési kulcsot és régiót veszi igénybe.
 
 > [!NOTE]
 > Használja a LUIS-előfizetés kulcsát és régióját, nem pedig a Speech Services-előfizetést.
@@ -134,21 +135,21 @@ A következő lépés egy szándékfelismerő létrehozása a `new IntentRecogni
 
 Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppId()` használatával, majd adja hozzá azokat a LUIS-szándékokat, amelyeket a felismerő `AddIntent()` metódusával fel szeretne ismerni. Ezzel a két lépéssel növelheti a beszédfelismerés pontosságát, ha megadja azokat a szavakat, amelyeket a felhasználó a kérésekben nagy valószínűséggel használni fog. Nem kell hozzáadnia az összes alkalmazást, ha az alkalmazásban nem kell felismernie őket.
 
-A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak, és neve `model`), a cél neve és a szándék azonosítója. Az azonosító és a név közötti különbség a következő.
+A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak, és a neve `model`), a szándék neve és a szándék azonosítója. Az azonosító és a név közötti különbség a következő.
 
-|`AddIntent()` @ no__t-1argument|Cél|
+|`AddIntent()`&nbsp;argumentum|Cél|
 |--------|-------|
 |intentName|A szándék LUIS-appban meghatározott neve. Ennek az értéknek pontosan egyeznie kell a LUIS-cél nevével.|
 |intentID|A Speech SDK által felismert szándékhoz rendelt azonosító. Ez az érték lehet bármilyen hasonló; nem kell megegyeznie a cél nevével a LUIS alkalmazásban meghatározottak szerint. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót.|
 
-A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `RecognizeIntentAsync()` metódus három `AddIntent` sorát erre a kódra.
+A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `AddIntent` metódus három `RecognizeIntentAsync()` sorát erre a kódra.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
 
-Az egyéni leképezések hozzáadása helyett használhatja a `AddAllIntents` metódust is, amellyel a modellben lévő összes leképezést hozzáadhatja a felismerőhöz.
+Az egyéni leképezések hozzáadása helyett a `AddAllIntents` metódussal is hozzáadhatja a modellben található összes leképezést a felismerőhöz.
 
 ## <a name="start-recognition"></a>Felismerés indítása
 
@@ -157,7 +158,7 @@ A felismerő létrehozása és a szándékok hozzáadása után elkezdődhet a f
 |Felismerési mód|Meghívandó metódusok|Eredmény|
 |----------------|-----------------|---------|
 |Egyszeri|`RecognizeOnceAsync()`|Egyszer kimondott szöveg alapján visszaadja a felismert szándékot (ha van).|
-|Folytonos|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Több hosszúságú kimondott szöveg felismerése; eseményeket bocsát ki (például `IntermediateResultReceived`), ha az eredmények elérhetők.|
+|Folyamatos|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Több hosszúságú kimondott szöveg felismerése; eseményeket bocsát ki (például `IntermediateResultReceived`), ha az eredmények elérhetők.|
 
 Az oktatóalkalmazás az egyszeri módot használja, ezért a felismerés megkezdéséhez a `RecognizeOnceAsync()` metódust alkalmazza. Az eredmény egy `IntentRecognitionResult` objektum, amely a felismert szándékra vonatkozó információkat tartalmaz. A LUIS JSON-választ kinyerheti a következő kifejezés használatával:
 
@@ -175,7 +176,7 @@ A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szánd
 
 ## <a name="continuous-recognition-from-a-file"></a>Folyamatos felismerés fájlból
 
-Az alábbi kód szemlélteti a Speech SDK-val való szándékfelismerés két további képességét. Az első a korábban említett folyamatos felismerés, amelynek esetén a felismerő eseményeket bocsát ki, ha eredmények érhetők el. Ezeket az események aztán feldolgozhatók az Ön által megadott eseménykezelőkkel. A folyamatos felismeréssel a felismerő `StartContinuousRecognitionAsync()` metódusának meghívásával elindíthatja az elismerést a `RecognizeOnceAsync()` helyett.
+Az alábbi kód szemlélteti a Speech SDK-val való szándékfelismerés két további képességét. Az első a korábban említett folyamatos felismerés, amelynek esetén a felismerő eseményeket bocsát ki, ha eredmények érhetők el. Ezeket az események aztán feldolgozhatók az Ön által megadott eseménykezelőkkel. A folyamatos felismeréssel a felismerő `StartContinuousRecognitionAsync()` metódusának meghívásával elindíthatja az elismerést `RecognizeOnceAsync()`helyett.
 
 A másik képesség a feldolgozandó beszédet tartalmazó hangfelvétel leolvasása egy WAV-fájlból. A megvalósítás magában foglalja egy hangkonfiguráció létrehozását, amelyet a rendszer a szándék-felismerő létrehozásakor használhat. A fájlnak egycsatornásnak (mono) kell lennie, 16 kHz-es mintavételi aránnyal.
 
@@ -183,7 +184,7 @@ A funkciók kipróbálásához törölje vagy véleményezze a `RecognizeIntentA
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-Módosítsa a kódot úgy, hogy benne legyen a LUIS végpontkulcsa, a régió és az app azonosítója, illetve hogy az előzőekhez hasonlóan hozzáadhassa az otthonautomatizálási szándékokat. Módosítsa @no__t – 0 értéket a rögzített hangfájl nevére. Ezután hozza létre, másolja a hangfájlt a Build könyvtárba, és futtassa az alkalmazást.
+Módosítsa a kódot úgy, hogy benne legyen a LUIS végpontkulcsa, a régió és az app azonosítója, illetve hogy az előzőekhez hasonlóan hozzáadhassa az otthonautomatizálási szándékokat. Módosítsa `whatstheweatherlike.wav` a rögzített hangfájl nevére. Ezután hozza létre, másolja a hangfájlt a Build könyvtárba, és futtassa az alkalmazást.
 
 Ha például a "fények kikapcsolása", a pause, majd a "fények bekapcsolása" lehetőséget választja a rögzített hangfájlban, a konzol kimenete az alábbihoz hasonló lehet:
 
@@ -195,4 +196,4 @@ Keresse meg a kódot ebből a cikkből a **Samples/csharp/sharedcontent/Console*
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Beszéd felismerése](quickstart-csharp-dotnetcore-windows.md)
+> [Beszéd felismerése](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

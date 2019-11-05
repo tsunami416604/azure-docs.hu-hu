@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning szolgáltatási folyamatok végrehajtása a Azure Data Factory-folyamatokban | Microsoft Docs
-description: Ismerje meg, hogyan futtathatja Azure Machine Learning szolgáltatási folyamatait a Azure Data Factory folyamatokban.
+title: Azure Machine Learning folyamatok végrehajtása a Azure Data Factory-folyamatokban | Microsoft Docs
+description: Megtudhatja, hogyan futtathatja Azure Machine Learning folyamatait a Azure Data Factory folyamatokban.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: ddaa020b3567f8f00cfd7fc7f7728f1160d9306b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c05a0fde7019d9162a051a04696c2251301d70dc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301346"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490589"
 ---
-# <a name="execute-azure-machine-learning-service-pipelines-in-azure-data-factory"></a>Azure Machine Learning szolgáltatási folyamatok végrehajtása a Azure Data Factory
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning folyamatok végrehajtása Azure Data Factory
 
-Azure Machine Learning szolgáltatási folyamatait a Azure Data Factory-folyamatok lépéseként futtathatja. A Machine Learning folyamat végrehajtása tevékenység lehetővé teszi a kötegelt előrejelzési forgatókönyvek használatát, például a lehetséges kölcsönzési beállítások azonosítását, a hangulat meghatározását és az ügyfelek viselkedési mintáinak elemzését.
+Futtassa a Azure Machine Learning folyamatokat a Azure Data Factory folyamatok lépéseként. A Machine Learning folyamat végrehajtása tevékenység lehetővé teszi a kötegelt előrejelzési forgatókönyvek használatát, például a lehetséges kölcsönzési beállítások azonosítását, a hangulat meghatározását és az ügyfelek viselkedési mintáinak elemzését.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -44,18 +44,18 @@ Azure Machine Learning szolgáltatási folyamatait a Azure Data Factory-folyamat
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A folyamatban szereplő tevékenység neve | Sztring | Igen
 type | A tevékenység típusa "AzureMLExecutePipeline". | Sztring | Igen
-linkedServiceName | Társított szolgáltatás Azure Machine Learning szolgáltatáshoz | Társított szolgáltatás leírása | Igen
+linkedServiceName | Társított szolgáltatás Azure Machine Learning | Társított szolgáltatás leírása | Igen
 mlPipelineId | A közzétett Azure Machine Learning folyamat azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen
 experimentName | A Machine Learning folyamat futtatási kísérletének neve | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 mlPipelineParameters | A közzétett Azure Machine Learning folyamat-végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Machine Learningi folyamatban megadott folyamat-paraméterek neveivel. | Kulcs értékű párokkal (vagy resultType objektummal rendelkező kifejezéssel) rendelkező objektum | Nem
-mlParentRunId | A szülő Azure Machine Learning szolgáltatási folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
+mlParentRunId | A szülő Azure Machine Learning folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 continueOnStepFailure | Annak megadása, hogy folytatja-e a Machine Learning folyamat más lépéseinek végrehajtását, ha egy lépés meghiúsul | logikai | Nem
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [Adatfolyam-tevékenység végrehajtása](control-flow-execute-data-flow-activity.md)

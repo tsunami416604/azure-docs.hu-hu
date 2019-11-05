@@ -1,7 +1,7 @@
 ---
 title: 'Többosztályos növelt döntési fa: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használható a többosztályos növelt döntési famodul a Azure Machine Learning szolgáltatásban a címkézett információkkal rendelkező osztályozó létrehozásához.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a többosztályos növelt döntési famodult a Azure Machine Learning egy osztályozó használatával a címkézett adategységek létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b53e504e98cab34fdc50ee8715ec162c910dd40d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692822"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465980"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Többosztályos súlyozott döntési fa
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy gépi tanulási modellt, amely a megnövelt döntési fák algoritmusán alapul.
 
@@ -59,6 +59,6 @@ Az ilyen típusú modellt a [Train modellel](././train-model.md)is betaníthatja
 > [!Note]
 > Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](./train-model.md) modult.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a59d9783eac122f96b1671f2dba5d0d708e1d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499392"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: közös szándékok és entitások azonosítása
 
@@ -24,13 +24,15 @@ Ebben az oktatóanyagban előre elkészített leképezéseket és entitásokat a
 
 Az előre elkészített modellek (tartományok, leképezések és entitások) segítenek a modell gyors létrehozásában.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Új alkalmazás létrehozása
 > * Előre összeállított szándékok hozzáadása 
 > * Előre összeállított entitások hozzáadása 
-> * Tanítás 
+> * Betanítás 
 > * Közzététel 
 > * Szándék és entitások lekérése a végpontról
 
@@ -194,7 +196,7 @@ További információ a LUIS-alkalmazás használatáról:
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az előre összeállított szándékok és entitások hozzáadásával az ügyfélalkalmazás képes észlelni a gyakori felhasználói szándékokat és kinyerni a gyakori adattípusokat.  
 

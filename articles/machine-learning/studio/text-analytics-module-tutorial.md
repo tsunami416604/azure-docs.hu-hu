@@ -1,7 +1,7 @@
 ---
-title: Vélemények elemzése modell létrehozása
-titleSuffix: Azure Machine Learning Studio
-description: Hogyan szövegelemzési modellek létrehozása az Azure Machine Learning Studióban szöveg előfeldolgozása, N-gramokat vagy a szolgáltatáskivonatolás modulok használata
+title: Hangulati elemzési modell létrehozása
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Szöveges elemzési modellek létrehozása a Azure Machine Learning Studioban (klasszikus) a szöveges előfeldolgozáshoz, az N-grammhoz vagy a szolgáltatás-kivonatoláshoz használható modulok használatával
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,82 +10,82 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 08d62e7a6c9503d415fe144da57eee72ce3bfafd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d24e4f98e987cb911a8bc0ffcd1b49e1bed8b920
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636618"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467160"
 ---
-# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Vélemények elemzése modell létrehozása az Azure Machine Learning Studióban
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Hangulati elemzési modell létrehozása Azure Machine Learning Studio (klasszikus)
 
-Az Azure Machine Learning Studio használatával hozhat létre és szövegelemzési modelleket. Ezek a modellek, például dokumentum besorolását vagy sentiment analysis problémák megoldásában is segítenek.
+A Text Analytics-modellek létrehozásához és működővé tenni Azure Machine Learning Studio (klasszikus) is használható. Ezek a modellek segítenek megoldani például a dokumentumok besorolását vagy az érzelmek elemzésével kapcsolatos problémákat.
 
-A text analytics kísérletben ugyanúgy általában:
+Egy szöveges elemzési kísérletben általában a következőkre lesz szüksége:
 
-1. Tisztítása és szöveges adatkészlet előfeldolgozása
-2. Bontsa ki a numerikus funkció vektorok Előfeldolgozott szövegből
-3. Tanítási osztályozási vagy regressziós modell
-4. Pontszám, és a modell érvényesítése
-5. A modell üzembe helyezése éles környezetbe
+1. Szöveges adatkészlet tisztítása és előfeldolgozása
+2. Numerikus funkciós vektorok kinyerése előre feldolgozott szövegből
+3. Betanítási besorolás vagy regressziós modell
+4. A modell pontszáma és ellenőrzése
+5. A modell üzembe helyezése éles környezetben
 
-Ez az oktatóanyag bemutatja ezeket a lépéseket, hogy végig Amazon könyv felülvizsgálatok adatkészletet használó sentiment analysis modell (lásd: Ez a tanulmány "adatainak, Bollywood, bumm-mezőket és Blenders: Tartomány betanítás a különböző vélemények osztályozásával"John Blitzer, amelyet megjelölése Dredze és Fernando Pereira; Társítás számítási Linguistics (ACL), a 2007.) Ez az adatkészlet felülvizsgálati eredmények (1-2 vagy 4 – 5) és a egy szabad formátumú szöveges áll. A célja, hogy előre jelezni a felülvizsgálati pontszám: alacsony (1 - 2) vagy a nagy (4 – 5).
+Ebben az oktatóanyagban megtudhatja ezeket a lépéseket, ahogy az Amazon Book Reviews adatkészletet használó, a "biográfok, a Bollywood, a Boom és a Keverőgépek: tartomány-alkalmazkodás az érzelmek besorolásához" című tanulmányban talál. Mark Dredze és Fernando Pereira; A számítási nyelvészek (ACL) társítása, 2007.) Ez az adatkészlet felülvizsgálati pontszámokból (1-2 vagy 4-5) és egy szabad formátumú szövegből áll. A cél az, hogy előre megjósolja a felülvizsgálati pontszámot: alacsony (1-2) vagy magas (4-5).
 
-A jelen oktatóanyagban tárgyalt Azure AI-katalógusban található kísérletek találhatja meg:
+A jelen oktatóanyagban ismertetett kísérletek a következő címen találhatók: Azure AI Gallery:
 
-[Könyv felülvizsgálatok előrejelzése](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
+[A könyv felülvizsgálatának előrejelzése](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Könyv felülvizsgálatok – prediktív Kísérletté előrejelzése](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Book Reviews – prediktív kísérlet](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
-## <a name="step-1-clean-and-preprocess-text-dataset"></a>1\. lépés: Tisztítása és szöveges adatkészlet előfeldolgozása
-Az első lépések a kísérletet a felülvizsgálati eredmények határozhatja meg a probléma, két osztályú osztályozási kategorikus alacsony és magas gyűjtők való felosztásával. Használjuk a [metaadatainak szerkesztése](https://msdn.microsoft.com/library/azure/dn905986.aspx) és [csoport kategóriaértékeket](https://msdn.microsoft.com/library/azure/dn906014.aspx) modulok.
+## <a name="step-1-clean-and-preprocess-text-dataset"></a>1\. lépés: szöveges adatkészlet tisztítása és előfeldolgozása
+A kísérletet úgy kezdjük el, hogy a felülvizsgálati pontszámokat kategorikus alacsony és magas gyűjtőre osztja, hogy a probléma a kétosztályos besorolással legyen kialakítva. A [metaadatok](https://msdn.microsoft.com/library/azure/dn905986.aspx) és a [csoport kategorikus értékek](https://msdn.microsoft.com/library/azure/dn906014.aspx) modulját használjuk.
 
 ![Címke létrehozása](./media/text-analytics-module-tutorial/create-label.png)
 
-Majd, hogy törölni a szövegelemzés a következőkkel [előfeldolgozása szöveg](https://msdn.microsoft.com/library/azure/mt762915.aspx) modul. A tisztítás csökkenti a lényeget a az adatkészlet, amellyel találja a legfontosabb funkciókat és a kész modell pontosságának javítása. Áll – gyakori szavakat, például az "a" vagy "a" - és a számok, különleges karaktereket, ismétlődő karaktereket, e-mail-címeket és URL-címek eltávolítjuk. Azt is kisbetűket, a szavakat lemmatize szöveg átalakítása és észlel majd változáskövető által mondat határok "|||" Előfeldolgozott szöveges szimbólum.
+Ezután megtisztítjuk a szöveget a [előfeldolgozási szöveg](https://msdn.microsoft.com/library/azure/mt762915.aspx) modul használatával. A tisztítás csökkenti az adatkészlet zajszintjét, segít megtalálni a legfontosabb funkciókat, és javítja a végső modell pontosságát. Eltávolítjuk a indexelendő szavakat, például az "a" vagy az "a"-és számokat, speciális karaktereket, duplikált karaktereket, e-mail-címeket és URL-címeket. A szöveget kisbetűsre is konvertáljuk, lemmatize a szavakat, és felderítjük a mondatokat, amelyeket a "| | |" szimbólum jelez az előre feldolgozott szövegben.
 
 ![Szöveg előfeldolgozása](./media/text-analytics-module-tutorial/preprocess-text.png)
 
-Mi történik, ha szeretné használni a listán szereplő áll? A nem kötelező bemenő adatként adhat át. Akkor is használhatja az egyéni C# szintaxis reguláris kifejezést cserélje le a karakterláncrész, és törölnie szavak rész melyik: főneveket, a műveletek vagy melléknevek.
+Mi a teendő, ha egyéni indexelendő szeretne használni? Átadhatja azt opcionális bemenetként. Egyéni C# szintaxisú reguláris kifejezést is használhat az alsztringek cseréjére, és a szavak a beszédek egy részébe való eltávolítására is lehetőség van.
 
-Az előfeldolgozási befejeződése után azt az adatok felosztása tanítási, és tesztelje a csoportok.
+Az előfeldolgozás befejezése után a rendszer felbontotta az adatgyűjtést a betanítási és a tesztelési készletekbe.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>2\. lépés: Bontsa ki a numerikus funkció vektorok Előfeldolgozott szövegből
-A modell egy szöveges adatok, általában akkor szabad formátumú szöveges konvertálása a numerikus funkció vektorok. Ebben a példában használjuk [N-Gram típusú szolgáltatások kinyerése szövegből](https://msdn.microsoft.com/library/azure/mt762916.aspx) modul átalakítja az ilyen formátumú szöveges adatokat. Ez a modul veszi tartalmazó oszlop, elválasztó karakter elválasztott szavakat, és kiszámítja az szókészletet tartalmazó vagy N-gramokat szó, amely az adatkészlet megjelenik. Ezt követően számolja hány alkalommal minden egyes szó, vagy N-gram, minden egyes rekord jelenik meg, és hozza létre a szolgáltatás vektorok azoktól, akik száma. Ebben az oktatóanyagban azt N-Gram típusú méretének beállítása 2, így a szolgáltatás vektorok önálló szavak és a két következő szavak kombinációi tartalmazza.
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>2\. lépés: a numerikus funkciós vektorok kinyerése az előre feldolgozott szövegből
+Ahhoz, hogy modellt lehessen készíteni a szöveges adathoz, általában a szabad formátumú szöveget kell konvertálnia numerikus funkciós vektorokra. Ebben a példában a szöveges modulból [kinyert N-Gram-funkciókat](https://msdn.microsoft.com/library/azure/mt762916.aspx) használjuk a szöveges adatok ilyen formátumba való átalakításához. Ez a modul a szóközökkel elválasztott szavak egy oszlopát veszi figyelembe, és kiszámítja az adathalmazban megjelenő szavakat vagy N-gramm szavakat. Ezt követően megszámolja, hogy az egyes szavak és az N-grammok hányszor jelennek meg az egyes rekordokban, és ezekből a szolgáltatásokból származó vektorokat hoz létre. Ebben az oktatóanyagban az N-Gram méretet 2 értékre állítjuk, így a funkció-vektorok egyetlen szót és két következő szó kombinációit tartalmazzák.
 
-![Bontsa ki az N-gramokat](./media/text-analytics-module-tutorial/extract-ngrams.png)
+![N-gramm kibontása](./media/text-analytics-module-tutorial/extract-ngrams.png)
 
-Mi a alkalmazni TF * N-Gram típusú súlyozást IDF (kifejezés gyakorisága inverz dokumentum Frequency) száma. Ez a megközelítés szavak, amelyek egyetlen rekordot gyakran jelennek meg, de a teljes adatkészleten ritkák súlyozást hozzáadja. Egyéb lehetőségek közé tartozik a bináris, TF, és a gráf a mérlegelni az elbírálása során.
+A TF * IDF (kifejezés gyakorisága inverz dokumentum gyakorisága) súlyozást alkalmaz az N-grammos számokra. Ez a megközelítés felveszi a gyakran előforduló szavak súlyozását egy adott rekordban, de a teljes adathalmazban ritkán fordulnak elő. A további lehetőségek közé tartozik a bináris, a TF és a Graph mérés.
 
-Ezek a szolgáltatások gyakran rendelkeznek magas dimenziói. Például ha a forrásgyűjteményébe 100 000 egyedi szavakat tartalmaz, a szolgáltatás tárhely kellene 100 000 dimenziókat, vagy több N-gramokat használata. Az N-Gram típusú szolgáltatások kinyerése a modul lehetővé teszi olyan beállítási lehetőségekkel dimenzióinak csökkentése érdekében. Is ki szeretne zárni a szavak, amelyek rövid vagy hosszú, vagy túl ritka, vagy túl gyakran jelentős prediktív értékkel. Ebben az oktatóanyagban Elzárkózunk N-gramokat, amelyek kevesebb mint 5 rekordjának vagy a több mint 80 %-a rekordok jelennek meg.
+Az ilyen szöveges funkciók gyakran magas dimenzióját rendelkeznek. Ha például a corpus 100 000 egyedi szavakat tartalmaz, a szolgáltatási terület mérete 100 000, vagy több, ha N-gramm van használatban. Az N-Gram-szolgáltatások kinyerése modul lehetőséget nyújt a dimenzióját csökkentésére. Kiválaszthatja azokat a szavakat, amelyek rövid vagy hosszúak, vagy túl ritkák vagy túl gyakoriak, hogy jelentős prediktív értékkel rendelkezzenek. Ebben az oktatóanyagban kizárjuk az N-grammot, amely kevesebb mint 5 rekordot vagy a rekordok több mint 80%-ában jelenik meg.
 
-Szolgáltatás kiválasztása segítségével is, csak azokat a szolgáltatásokat, amelyek a leginkább az előrejelzési cél a korrelált kiválasztása. 1000 jellemzőket KHI szolgáltatás kiválasztása használjuk. Az jobban illeszkedhet kiválasztott szavakat vagy N-gramokat jobb kinyerési N-gramokat modul kimenete kattintva tekintheti meg.
+Emellett a szolgáltatás kijelölésével is kiválaszthatja azokat a funkciókat, amelyek a leginkább összefügg az előrejelzési céllal. A KHI-négyzetes funkció kiválasztásával kiválaszthatja az 1000 funkciókat. Az N-gramm kibontása modul jobb kimenetére kattintva megtekintheti a kijelölt szavak szókincsét vagy az N-grammot.
 
-Az N-Gram típusú szolgáltatások kinyerése egy másik módszert, mint a Szolgáltatáskivonatolás modul is használhatja. Vegye figyelembe azonban, hogy [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/dn906018.aspx) nem rendelkezik beépített kijelölés funkciók vagy TF * IDF mérlegelni az elbírálása során.
+Az N-Gram-funkciók kinyerésének alternatív megközelítése használhatja a funkció-kivonatolási modult. Vegye figyelembe, hogy a [szolgáltatás kivonatolása](https://msdn.microsoft.com/library/azure/dn906018.aspx) nem rendelkezik beépített funkció-kiválasztási képességekkel vagy TF * IDF-súlyozással.
 
-## <a name="step-3-train-classification-or-regression-model"></a>3\. lépés: Tanítási osztályozási vagy regressziós modell
-Most már a szöveg átalakítása numerikus funkció oszlopaihoz. Az adatkészlet az előző lépésben, karakterlánc típusú oszlopokra továbbra is tartalmazza, így használjuk Select Columns in Dataset kizárja őket.
+## <a name="step-3-train-classification-or-regression-model"></a>3\. lépés: besorolás vagy regressziós modell betanítása
+Most a szöveg át lett alakítva numerikus funkciók oszlopaira. Az adatkészlet továbbra is tartalmaz előző fázisokból származó karakterlánc-oszlopokat, ezért a kizárni kívánt oszlopokat használjuk az adatkészletben.
 
-Használjuk majd [Two-Class logisztikai regressziós](https://msdn.microsoft.com/library/azure/dn905994.aspx) előre, a célt: nagyon vagy kevésbé gyakori felülvizsgálati pontszámot. Ezen a ponton a text analytics probléma átalakítása egy rendszeres besorolás a problémát. Az Azure Machine Learning Studióban elérhető eszközök segítségével a modell továbbfejlesztése. Például kísérletezhet a különböző osztályozó eszközökkel, ismerje meg, hogy pontos eredményeket biztosít, vagy használja a hiperparaméter finomhangolása a pontosságának növelése érdekében.
+Ezután [kétosztályos logisztikai regressziót](https://msdn.microsoft.com/library/azure/dn905994.aspx) használunk, hogy megjósoljuk a célunkat: magas vagy alacsony felülvizsgálati pontszám. Ezen a ponton a szöveges elemzési probléma egy rendszeres besorolási problémára lett átalakítva. A modell fejlesztéséhez használhatja a Azure Machine Learning Studio klasszikus verziójában elérhető eszközöket. Például kísérletezheti különböző besorolásokkal, hogy megtudja, milyen eredményeket adnak, vagy a hiperparaméter hangolásával javítsa a pontosságot.
 
-![Tanítási és pontszám](./media/text-analytics-module-tutorial/scoring-text.png)
+![Betanítás és pontszám](./media/text-analytics-module-tutorial/scoring-text.png)
 
-## <a name="step-4-score-and-validate-the-model"></a>4\. lépés: Pontszám, és a modell érvényesítése
-Hogyan szeretné ellenőrizze, hogy a betanított modell? Azt az élelmiszer-vizsgálati pontszám, és pontossága kiértékelése. A modell megtudhatta, azonban az jobban illeszkedhet N-gramokat és a betanítási adatkészletet a súlyukat. Ezért kell használjuk, hogy a szöveg szóhasználati, és ezek súlyok amikor funkciók beolvasása a teszt adatai, a szöveg szóhasználati képest létrehozása helyett. Ezért azt kinyerése N-Gram típusú szolgáltatások modul hozzáadása a kísérlet pontozási ága képzési ágból a kimeneti szókincsből eredőket csatlakoztatása és a szöveg szóhasználati mód beállítása legyen írásvédett. Azt is tiltsa le a szűrést az N-gramokat a gyakoriság 1 példány, és legfeljebb 100 %-os minimális beállításával, és kapcsolja ki a szolgáltatás kiválasztása.
+## <a name="step-4-score-and-validate-the-model"></a>4\. lépés: a modell pontszáma és ellenőrzése
+Hogyan érvényesítheti a betanított modellt? A teszt adatkészletre mutatunk, és kiértékeljük a pontosságot. A modell azonban megtanulta az N-gramm szókincsét és azok súlyait a betanítási adatkészletből. Ezért ezeket a szókincset és a súlyozást a funkciók tesztelési adatokból való kinyerése során kell használni, a szókincs újbóli létrehozása helyett. Ezért az N-Gram-funkciók modult hozzáadjuk a kísérlet pontozási ágában, összekapcsoljuk a kimeneti szókincset a képzési ágban, és a szókincs módot a csak olvasható értékre állíthatja. Az N-g szűrését is letilthatja a gyakorisággal, ha a minimumot 1 és legfeljebb 100%-ra állítja be, majd kikapcsolja a funkció kijelölését.
 
-Után a szöveges oszlop, a teszt adatai a szolgáltatás numerikus oszlopok átalakítása, hogy a karakterlánc típusú oszlopokra zárja ki a képzési ág például a korábbi szakaszaiban. Használunk majd, Score Model-modul előrejelzéseket és a pontosság kiértékelheti, hogy a modell kiértékelése modul.
+A tesztelési adatokban szereplő szöveges oszlop numerikus funkciós oszlopokra való átalakítását követően kizárjuk az előző szakaszokból származó karakterlánc-oszlopokat, például az oktatási ágban. Ezt követően a score Model modul használatával előrejelzéseket készíthet, és kiértékelheti a modell modult a pontosság kiértékeléséhez.
 
-## <a name="step-5-deploy-the-model-to-production"></a>5\. lépés: A modell üzembe helyezése éles környezetbe
-A modell csaknem készen áll az éles környezetben üzembe helyezhető. Amikor üzembe webszolgáltatásként, szabad formátumú szöveges karakterlánc bemenetként vesz igénybe, és adja vissza "nagy" vagy "alacsony". egy előrejelzési A megismert N-gram szókincsből eredőket használ a funkciók és betanított logisztikai regressziós modell segítségével előrejelzést ezek a funkciók a szöveg átalakítása. 
+## <a name="step-5-deploy-the-model-to-production"></a>5\. lépés: a modell üzembe helyezése éles környezetben
+A modell majdnem készen áll az éles környezetbe való üzembe helyezésre. Webszolgáltatásként való üzembe helyezéskor a rendszer a szabadszöveges karakterláncot adja meg bemenetként, és egy "magas" vagy "alacsony" előrejelzést ad vissza. A megtanult N-Gram szókincs használatával átalakítja a szöveget a szolgáltatásokra, és betanítja a logisztikai regressziós modellt, hogy előrejelzést készítsen ezekről a funkciókról. 
 
-Állítsa be a prediktív kísérletet, azt először mentse az N-gram szókincsből eredőket adatkészletként, és a betanított logisztikai regressziós modell a betanítási ágból a kísérlet. Majd a "Mentés másként" használatával hozzon létre egy prediktív kísérletet a kísérlet graph kísérlet mentse azt. A kísérlet eltávolítjuk a felosztási adatok modul és a képzési ágat. Ezután csatlakozunk a korábban mentett N-gram szóhasználatának és modell N-Gram típusú szolgáltatások kinyerése és a Score Model-modulok jelölik. Azt is eltávolítja a modell kiértékelése modul.
+A prediktív kísérlet beállításához először mentse az N-Gram szókincset adatkészletként, és a betanított logisztikai regressziós modellt a kísérlet betanítási ágának. Ezt követően a "Mentés másként" paranccsal mentheti a kísérletet, hogy létrehozzon egy kísérleti gráfot a prediktív kísérlethez. Eltávolítjuk az adatbontási modult és a betanítási ágat a kísérletből. Ezután összekapcsolhatjuk a korábban mentett N-grammos szókincset és modellt az N-Gram funkciók és a modell modulok kinyeréséhez. Emellett eltávolítjuk a modell kiértékelése modult is.
 
-Azt a beszúrandó oszlopok kiválasztása az adathalmaz modul előfeldolgozása szöveg modul a címke oszlop eltávolítása előtt, és törölje a pontszám modul "Pontszám oszlop hozzáfűzése adatkészlethez" lehetőséget. Ezzel a módszerrel a webszolgáltatás nem kér a címkét próbál előre jelezni, és nem echo válasz szolgáltatások a bemeneti biztosítja.
+Az adatkészletek modulban az oszlop kiválasztása előtt szúrjuk be a Select Columns elemet, mielőtt a Text (címke) oszlopot el kellene távolítani, majd a pontszám modulban a "Hozzáfűzés pontszám oszlopból" lehetőséget. Így a webszolgáltatás nem kéri le az előre jelzett címkét, és nem a válaszban szereplő bemeneti funkciók visszhangját.
 
-![Prediktív Kísérletté](./media/text-analytics-module-tutorial/predictive-text.png)
+![Prediktív kísérlet](./media/text-analytics-module-tutorial/predictive-text.png)
 
-Így most hozzáadtuk a kísérletet, amelyek a közzétett webes szolgáltatás, és neve a kérés-válasz vagy kötegelt végrehajtási API-k használatával.
+Most már van egy kísérlet, amely webszolgáltatásként, a Request-Response vagy a Batch végrehajtási API-k használatával hívható meg.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg a szövegelemzési moduljait [MSDN-dokumentáció](https://msdn.microsoft.com/library/azure/dn905886.aspx).
+Ismerje meg az [MSDN-dokumentációból](https://msdn.microsoft.com/library/azure/dn905886.aspx)származó Text Analytics-modulokat.
 

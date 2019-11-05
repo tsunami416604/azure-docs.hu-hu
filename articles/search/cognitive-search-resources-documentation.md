@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792056"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466719"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Az AI-bővítés dokumentációs erőforrásai az Azure-ban Cognitive Search
 
@@ -21,9 +21,9 @@ Az AI-bővítés az Azure Cognitive Search indexelésének egyik funkciója, ame
 
 A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumentációt tartalmaznak.
 
-## <a name="getting-started"></a>Bevezetés
-+ [Az AI-gazdagítás bemutatása az Azure Cognitive Search](cognitive-search-concept-intro.md)
-+ [Gyors útmutató: az AI-gazdagítás kipróbálása a portálon](cognitive-search-quickstart-blob.md)
+## <a name="getting-started"></a>Első lépések
++ [Az AI bemutatása az Azure-ban Cognitive Search](cognitive-search-concept-intro.md)
++ [Gyors útmutató: kognitív készségkészlet létrehozása a Azure Portalban](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: bővített indexelés az AI-vel](cognitive-search-tutorial-blob.md)
 + [Példa: egyéni képesség létrehozása AI-bővítéshez](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
   + [Microsoft. Skills. vízió. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft. Skills. vízió. OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft. Skills. util. ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft. Skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft. Skills. util. ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Egyéni készségek
@@ -61,7 +62,7 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
   + [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indexelő az Azure Cognitive Search](search-indexer-overview.md)

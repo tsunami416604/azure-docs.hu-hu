@@ -8,25 +8,25 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 08/14/2019
-ms.openlocfilehash: 1da2afc6c0dfa0571d6e7ccbf358bb574aa736c5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: d49a84f26453a6a7b2ff6d7f419fbc53ad8b98ba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71830101"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476060"
 ---
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a használt Azure-előfizetés hitelesítő adataival. 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával.
 
 1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
 
       ![Új erőforrás létrehozása](media/aml-create-in-portal/portal-create-resource.png)
 
-1. A keresősáv használatával megkeresheti **Machine learning szolgáltatás munkaterületét**.
+1. A keresősáv használatával megkeresheti **Machine learning**.
 
-1. Válassza **Machine learning szolgáltatás munkaterületet**.
+1. Válassza a **Machine learning**lehetőséget.
 
-1. A **Machine learning szolgáltatás munkaterülete** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
+1. A **Machine learning** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
 
 1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
 
@@ -36,8 +36,9 @@ ms.locfileid: "71830101"
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
    Földrajzi egység | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
+   Munkaterület kiadása | Válassza az **alapszintű** lehetőséget az oktatóanyag munkaterület-típusaként. A munkaterület típusa (alapszintű & Enterprise) meghatározza azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szükség. Az oktatóanyagban szereplő összes adat egy alapszintű vagy egy vállalati munkaterülettel végezhető el.
 
-1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 
+1. Miután befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás**lehetőséget. 
 
    > [!Warning] 
    > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.

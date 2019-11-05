@@ -8,20 +8,25 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: d223bcbb13c29d74c1b6a038e5ce88766f61e766
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1ec0c83655574cb09724bcf97be19519e1f6d72f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886066"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467065"
 ---
 # <a name="whats-new-in-personalizer"></a>A személyre szabás újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek tartalmazhatnak kibocsátási megjegyzéseket, videókat, blogbejegyzéseket és más típusú információkat. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések 
+
+### <a name="november-2019---ignite-conference"></a>November 2019 – Ignite konferencia
+
+* A személyre szabott általánosan elérhető (GA)
+* Azure Notebooks [oktatóanyag](tutorial-use-azure-notebook-generate-loop-data.md) teljes életciklussal
 
 ### <a name="may-6-2019---build-conference"></a>Május 6., 2019 – Build konferencia
 
@@ -41,5 +46,5 @@ A Build 2019 konferencián a következő előzetes funkciók jelentek meg:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Visszajelzési hurok létrehozása aC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Gyors útmutató: visszajelzési hurok létrehozása aC#](csharp-quickstart-commandline-feedback-loop.md)
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

@@ -1,5 +1,5 @@
 ---
-title: A példában Jupyter notebookok
+title: Példa Jupyter-jegyzetfüzetekre
 titleSuffix: Azure Machine Learning
 description: Megkeresheti és használhatja például a Jupyter jegyzetfüzeteket a Azure Machine Learning Python for SDK megismeréséhez.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997064"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476079"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
 
@@ -24,7 +24,7 @@ A [Azure Machine learning jegyzetfüzetek tárháza](https://github.com/azure/ma
 
 Ez a cikk bemutatja, hogyan érheti el a tárházat az alábbi környezetekben:
 
-- [Azure Machine Learning notebook VM](#notebookvm)
+- [Azure Machine Learning számítási példány](#notebookvm)
 - [Saját notebook-kiszolgáló használata](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
@@ -32,9 +32,9 @@ Ez a cikk bemutatja, hogyan érheti el a tárházat az alábbi környezetekben:
 > Miután klónozotta a tárházat, az **oktatóanyagok** mappában és a szolgáltatás-specifikus jegyzetfüzetekben találja a **használati útmutatóban** szereplő jegyzetfüzeteket a azureml mappában.
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Minták beolvasása Azure Machine Learning notebook virtuális gépen
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Minták beolvasása Azure Machine Learning számítási példányon
 
-A minták megkezdésének legegyszerűbb módja az [oktatóanyag befejezése: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása. Ha elkészült, az SDK-val és a minta adattárral előre be kell töltenie egy dedikált jegyzetfüzet-kiszolgálót. Nincs szükség letöltésre vagy telepítésre.
+A minták megkezdésének legegyszerűbb módja az [oktatóanyag: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beszerzése. Ha elkészült, az SDK-val és a minta adattárral előre be kell töltenie egy dedikált jegyzetfüzet-kiszolgálót. Nincs szükség letöltésre vagy telepítésre.
 
 <a name="byo"></a>
 
@@ -57,6 +57,6 @@ A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerk
 
 Ismerkedjen meg a [minta jegyzetfüzetekkel](https://aka.ms/aml-notebooks) , hogy megismerje, milyen Azure Machine learning teheti, vagy próbálja ki a következő oktatóanyagokat:
 
-- [Betanítása és a egy kép osztályozási modell a MNIST üzembe helyezése](tutorial-train-models-with-aml.md)
+- [Rendszerkép-besorolási modell betanítása és üzembe helyezése a MNIST](tutorial-train-models-with-aml.md)
 
-- [Adatok előkészítése, és automatizált gépi tanulás a NYC taxi adatkészlet regressziós modell betanítása](tutorial-auto-train-models.md)
+- [Készítse elő az adatfeldolgozást, és használja az automatizált gépi tanulást a regressziós modell betanításához a New York-i taxiban](tutorial-auto-train-models.md)

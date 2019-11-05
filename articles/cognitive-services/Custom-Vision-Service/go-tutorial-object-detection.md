@@ -1,29 +1,30 @@
 ---
-title: 'Gyors útmutató: Objektum-észlelési projekt létrehozása az Custom Vision SDK for go használatával'
+title: 'Gyors útmutató: objektum-észlelési projekt létrehozása az Custom Vision SDK for go használatával'
 titleSuffix: Azure Cognitive Services
 description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és felderítheti az objektumokat a go SDK használatával.
 services: cognitive-services
 author: areddish
+ms.author: areddish
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.author: daauld
-ms.openlocfilehash: 3831f89842f969ecce582c5b5d7a5f8a54c5e7a1
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 050d0593f64c939c687601eb25677f2356f4ba51
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946206"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73519093"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision go SDK-val
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Gyors útmutató: objektum-észlelési projekt létrehozása a Custom Vision go SDK-val
 
 Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével megkezdheti a Custom Vision SDK-val való ismerkedést az objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját Go-alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Go 1.8 +](https://golang.org/doc/install)
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
@@ -33,7 +34,7 @@ Az Custom Vision Service SDK for go telepítéséhez futtassa a következő para
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-vagy ha a- `dep`t használja, a tárházon belül futtassa a következőket:
+vagy ha `dep`használ, a tárházon belül futtassa a következőket:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -48,7 +49,9 @@ Hozzon létre egy *sample. go* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódust a projekt létrehozásakor a további beállítások megadásához (lásd: a detektor webportáljának [összeállítása](get-started-build-detector.md) útmutató).
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
+
+Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódust a projekt létrehozásakor a további beállítások megadásához (lásd: a detektor webportáljának [összeállítása](get-started-build-detector.md) útmutató).
 
 ```go
 import(
@@ -67,7 +70,7 @@ var (
     training_key string = "<your training key>"
     prediction_key string = "<your prediction key>"
     prediction_resource_id = "<your prediction resource id>"
-    endpoint string = "https://southcentralus.api.cognitive.microsoft.com"
+    endpoint string = "<your endpoint URL>"
     project_name string = "Go Sample OD Project"
     iteration_publish_name = "detectModel"
     sampleDataDirectory = "<path to sample images>"

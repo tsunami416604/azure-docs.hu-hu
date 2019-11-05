@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498314"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) Azure Cosmos DB 
 
 Az **élettartam vagy a** TTL esetében a Azure Cosmos db lehetővé teszi, hogy egy adott időszak után automatikusan törölje a tárolóból az elemeket. Alapértelmezés szerint beállíthatja az időt a tároló szintjén, és felülbírálhatja az értéket cikkenként. Miután beállította az ÉLETTARTAMot egy tárolóban vagy egy elem szintjén, Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az időszak után az utolsó módosítás időpontja óta. Az élettartam értéke másodpercben van konfigurálva. Az élettartam beállításakor a rendszer automatikusan törli a lejárt elemeket az élettartam értéke alapján, anélkül, hogy az ügyfélalkalmazás által explicit módon kiállított törlési műveletre lenne szükség.
 
-A lejárt elemek törlése olyan háttérbeli feladat, amely felhasználja a [kérelmeket, és](request-units.md)ez olyan kérelmeket foglal magába, amelyeket a felhasználói kérések nem használnak fel. A lejárat késleltethető, ha a tároló nagy terhelés alatt van, és a karbantartási feladatok nem maradnak a kérések egységében.
+A lejárt elemek törlése olyan háttérbeli feladat, amely felhasználja a [kérelmeket, és](request-units.md)ez olyan kérelmeket foglal magába, amelyeket a felhasználói kérések nem használnak fel. Még az élettartam lejárta után is, ha a tároló túlterhelt a kérelmekkel, és ha nincs elegendő RU elérhető, az adattörlés késleltetve van. Az adatok törlődnek, ha elegendő RUs áll rendelkezésre a törlési művelet végrehajtásához. Bár az adattörlés késleltetve van, az élettartam lejárta után bármely lekérdezés (bármely API által) nem adja vissza az adatmennyiséget.
 
 ## <a name="time-to-live-for-containers-and-items"></a>A tárolók és elemek élettartama
 
@@ -84,7 +84,7 @@ A tárolón lévő TTL értéke 1000 (DefaultTimeToLive = 1000)
 |TTL =-1   |Az élettartam engedélyezve van. Az adott tétel soha nem jár le.|
 |TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan konfigurálhatja az élettartamot a következő cikkekben:
 

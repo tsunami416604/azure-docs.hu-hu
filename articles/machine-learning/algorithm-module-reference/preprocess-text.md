@@ -1,7 +1,7 @@
 ---
 title: 'Szöveg előfeldolgozása: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning-szolgáltatásban az előfeldolgozási szöveges modult a szöveg tisztításához és egyszerűsítéséhez.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használható a szöveg megtisztítása és leegyszerűsítése Azure Machine Learning a szöveg előfeldolgozására szolgáló modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692692"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497681"
 ---
 # <a name="preprocess-text"></a>Szöveg előfeldolgozása
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 A szöveg megtisztításához és leegyszerűsítéséhez használja az **előfeldolgozási szöveg** modult. Támogatja ezeket a gyakori szöveg-feldolgozási műveleteket:
 
@@ -33,7 +33,7 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
 
 ## <a name="configure-text-preprocessing"></a>Szöveg előfeldolgozásának konfigurálása  
 
-1.  Adja hozzá az **előfeldolgozási szöveg** modult a kísérlethez Azure Machine learning szolgáltatásban. Ez a modul a **text Analytics**alatt található.
+1.  Adja hozzá az **előfeldolgozó szöveg** modult a folyamathoz Azure Machine learning. Ez a modul a **text Analytics**alatt található.
 
 1. Csatlakoztasson egy olyan adatkészletet, amelynek legalább egy oszlopa tartalmaz szöveget.
 
@@ -47,7 +47,7 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
 
 1. **Morfológiai elemzéshez**: akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a szavak a kanonikus űrlapon megjelenjenek. Ez a beállítás akkor hasznos, ha csökkenteni szeretné az egyéb hasonló szöveges tokenek egyedi előfordulásának számát.
 
-    A morfológiai elemzéshez folyamat nagyon nyelvtől függ.
+    A morfológiai elemzéshez folyamat nagymértékben nyelvtől függ.
 
 1. **Mondatok észlelése**: akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a modul az elemzés végrehajtásakor beillesszen egy mondathoz tartozó határt.
 
@@ -79,12 +79,12 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
 
 1. **Fordított perjelek normalizálása a perjelhez**: válassza ezt a lehetőséget, ha a `\\` összes példányát le szeretné képezni `/`.
 
-1. **Tokenek felosztása speciális karaktereknél**: akkor válassza ezt a lehetőséget, ha a szavakat olyan karaktereken szeretné megszüntetni, mint például a `&`, `-` és így tovább. Ez a beállítás a speciális karaktereket is csökkentheti, ha kétszer ismétlődik. 
+1. **Tokenek felosztása speciális karaktereknél**: akkor válassza ezt a lehetőséget, ha a szavakat olyan karaktereken szeretné megszüntetni, mint például a `&`, `-`és így tovább. Ez a beállítás a speciális karaktereket is csökkentheti, ha kétszer ismétlődik. 
 
     A `MS---WORD` sztring például három tokenre, `MS`ra, `-`ra és `WORD`re lesz elválasztva.
 
-1. Futtassa a kísérletet.
+1. A folyamat futtatása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

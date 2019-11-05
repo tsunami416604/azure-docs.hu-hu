@@ -1,7 +1,7 @@
 ---
 title: Kifejezések listája – LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUIS) használja, amely javítja az észlelésük vagy szándékok és entitások előrejelzését funkciók hozzáadása, a kategóriák és minták
+description: A Language Understanding (LUIS) használatával olyan alkalmazás-funkciókat adhat hozzá, amelyek javítják a kategóriákat és a mintákat tartalmazó szándékok és entitások észlelését vagy előrejelzését
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,52 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932915"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467619"
 ---
-# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Használja a kifejezés boost jelre a word lista sorolja fel
+# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>A szólisták használata a szavak listájának növelésére
 
-A pontosság javítása érdekében a LUIS-alkalmazás funkciókat adhat hozzá. Szolgáltatások révén a LUIS mutatók azáltal, hogy egyes szavak és kifejezések egy alkalmazás tartomány szókincsből eredőket részét képezik. 
+A LUIS-alkalmazáshoz további funkciókat adhat hozzá, hogy javítsa a pontosságot. A-funkciók segítséget nyújtanak a LUIS számára olyan javaslatok biztosításához, amelyekkel bizonyos szavak és kifejezések egy alkalmazás-tartománybeli szókincs részét képezik. 
 
-A [kifejezéslista](luis-concept-feature.md) tartalmaz egy csoportot az értékek (szavak vagy kifejezések), amely ugyanahhoz az osztályhoz tartozik, és hasonló módon (például az városok vagy a termék nevét) kell kezelni. Mi a LUIS megismerkedik az egyik automatikusan alkalmazza a mások számára is. Ez a lista nem ugyanaz, mint a [listában szereplő entitások](reference-entity-list.md) (pontos szöveges egyezések) a megfeleltetett szavak esetében.
+A [kifejezések listája](luis-concept-feature.md) olyan értékek (szavak vagy kifejezések) egy csoportját tartalmazza, amelyek ugyanahhoz az osztályhoz tartoznak, és hasonló módon kell kezelni őket (például városok vagy termékek neve). Arról, hogy a LUIS hogyan tanulja meg az egyiket, automatikusan alkalmazza a többire is. Ez a lista nem ugyanaz, mint a [listában szereplő entitások](reference-entity-list.md) (pontos szöveges egyezések) a megfeleltetett szavak esetében.
 
-Kifejezések listáját, LUIS egy második jelzés ezeket szavakkal kapcsolatos hozzáadja az jobban illeszkedhet az alkalmazás tartomány.
+A kifejezések listája az alkalmazás tartományának szókincsét adja hozzá második jelként, amely az említett szavakat mutatja.
 
-## <a name="add-phrase-list"></a>A kifejezés lista hozzáadása
+A [szolgáltatással kapcsolatos fogalmak](luis-concept-feature.md) áttekintésével megtudhatja, hogy mikor és miért érdemes használni a kifejezések listáját. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+## <a name="add-phrase-list"></a>Kifejezések listájának hozzáadása
 
 A LUIS legfeljebb 10 kifejezési listát tesz lehetővé az alkalmazásokban. 
 
-1. Nyissa meg az alkalmazás nevére kattintva **saját alkalmazások** lapon, és kattintson a **hozhat létre**, majd kattintson a **listák kifejezés** az alkalmazás bal oldali panelen. 
+1. Nyissa meg az alkalmazást a saját **alkalmazások** lapján a nevére kattintva, majd kattintson a **Létrehozás**, majd a **kifejezések listája** elemre az alkalmazás bal oldali paneljén. 
 
-1. Az a **listák kifejezés** kattintson **új lista létrehozása a kifejezés**. 
+1. A **listák felsorolása** lapon kattintson az **új kifejezések listájának létrehozása**elemre. 
  
-1. A **kifejezések listájának hozzáadása** párbeszédpanelen írja be `Cities` a kifejezést a kifejezés lista neveként. Az a **érték** mezőbe írja be a kifejezést lista értékeit. Írjon be egy értéket egy időben, vagy értékek vesszővel elválasztva, és nyomja le az **Enter**.
+1. A **kifejezések listájának hozzáadása** párbeszédpanelen írja be a `Cities` nevet a kifejezések listájának neveként. Az **érték** mezőbe írja be a kifejezési lista értékeit. Egyszerre csak egy értéket lehet beírni, vagy vesszővel elválasztva az értékek halmazát, majd nyomja le az **ENTER**billentyűt.
 
-    ![Lista városok kifejezés hozzáadása](./media/luis-add-features/add-phrase-list-cities.png)
+    ![Kifejezések listázása városok hozzáadása](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. A LUIS is javasol kapcsolódó értékeket a kifejezés listához való hozzáadásához. Kattintson a **javasoljuk** javasolt értékek a added value(s) szemantikailag kapcsolódó csoport beolvasásához. Kattintson a javasolt értékeket, vagy kattintson **adja hozzá az összes** adja hozzá őket az összes.
+1. A LUIS javasolhat kapcsolódó értékeket a kifejezések listájához való hozzáadáshoz. Kattintson az **ajánlott** elemre, ha a javasolt értékek egy csoportját szeretné beolvasni, amely szemantikailag kapcsolódik a hozzáadott érték (ek) hez. Bármelyik javasolt értékre kattinthat, vagy az **összes hozzáadása** lehetőségre kattintva hozzáadhatja őket.
 
     ![Kifejezések listájának javasolt értékei – az összes hozzáadása](./media/luis-add-features/related-values.png)
 
-1. Kattintson a **ezeket az értékeket felcserélhetők** Ha hozzáadott kifejezés listaértékek alternatívával felcserélhetők.
+1. Kattintson **ezekre az értékekre,** ha a hozzáadott kifejezési lista értékei olyan alternatívák, amelyek szinonimaként használhatók.
 
     ![Kifejezések listájának javasolt értékei – jelölje ki a felcserélhetők jelölőnégyzetet](./media/luis-add-features/interchangeable.png)
 
-1. Kattintson a **Done** (Kész) gombra. A "Város" kifejezés helyett szerepel lista adnak hozzá a **listák kifejezés** lap.
+1. Kattintson a **Done** (Kész) gombra. A "városok" kifejezést a rendszer hozzáadja a **kifejezések** listája oldalhoz.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Törölheti, vagy a kifejezést a lista a környezetfüggő eszköztár inaktiválása a **listák kifejezés** lapot.
+> A kifejezések listáját törölheti vagy inaktiválhatja a **kifejezési listák** oldalon található környezetfüggő eszköztárból.
 
 ## <a name="next-steps"></a>További lépések
 
-Utána hozzáadása, szerkesztése, törlése vagy kifejezés listáját inaktiválása [betanítása és az alkalmazás tesztelése](luis-interactive-test.md) ismételt használatával ellenőrizheti, ha növeli a teljesítményt.
+A kifejezések listájának hozzáadását, szerkesztését, törlését vagy inaktiválását követően ismét [betaníthatja és tesztelheti az alkalmazást, és](luis-interactive-test.md) ellenőrizheti, hogy javul-e a teljesítmény.

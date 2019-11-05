@@ -7,18 +7,29 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 10/21/2019
-ms.custom: seodec18
-ms.openlocfilehash: c845966c86659c0ff983bf33c492a67dd99275f0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: f0f9a2e59e0e231c956e9f1c36bb6a54bcbaca24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692934"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476313"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
-A Azure Machine Learning egy felhőalapú szolgáltatás, amely a gépi tanulási modellek betanítására, üzembe helyezésére, automatizálására és felügyeletére használható, mindezt a felhő által biztosított széles skálán.
+Ebből a cikkből megAzure Machine Learning tudhatja, hogyan használhatók a felhőalapú környezetek, amelyek segítségével betaníthatja, üzembe helyezheti, automatizálhatja, kezelheti és nyomon követheti a ML-modelleket. 
+
+A Azure Machine Learning bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra. Akár Python, akár R-kód, akár nulla-kód/alacsony kódú beállítások (például a [tervező](ui-tutorial-automobile-price-train-score.md)) írására van szüksége, a gépi tanulás és a részletes tanulási modellek kiépítését, betanítását és nyomon követését is elvégezheti egy Azure Machine learning-munkaterület. 
+
+Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. 
+
+A szolgáltatás a népszerű, nyílt forráskódú eszközökkel, például a PyTorch, a TensorFlow és a scikit-Learn eszközzel is együttműködik.
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
+
+> [!Tip]
+> **Ingyenes próbaverzió!**  Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma. Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez.
+
 
 ## <a name="what-is-machine-learning"></a>Mi a gépi tanulás?
 
@@ -26,47 +37,54 @@ A Machine Learning egy olyan adatelemzési módszer, amely lehetővé teszi, hog
 
 A gépi tanulás által biztosított előrejelzéseket felhasználva intelligensebbé tehetők az alkalmazások és az eszközök. Ha például online vásárol, a gépi tanulás segítséget nyújt más, a vásárolt termékek alapján. Vagy például a bankkártya lehúzásakor a gépi tanulás összeveti az adott tranzakciót az adatbázisában található tranzakciókkal, így segít a csalások felismerésében. Ha robotporszívóra bízza a szoba kitakarítását, a gépi tanulás segít eldönteni, hogy a feladat el lett-e végezve.
 
-## <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
+## <a name="machine-learning-tools-to-fit-each-task"></a>Gépi tanulási eszközök az egyes feladatokhoz 
 
-A Azure Machine Learning felhőalapú környezetet biztosít, amely lehetővé teszi az adatelőkészítést, a betanítást, a tesztelést, az üzembe helyezést, a felügyeletet és nyomon követni a gépi tanulási modelleket. Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. A szolgáltatás teljes mértékben támogatja a nyílt forráskódú technológiákat, például a PyTorch, a TensorFlow és a scikit, és bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra.
+Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szükséges összes eszközt a fejlesztők és az adatszakértők számára, beleértve a következőket:
++ A [Azure Machine learning Designer](ui-tutorial-automobile-price-train-score.md) (előzetes verzió): húzzon-n-drop modulokat a kísérletek létrehozásához, majd a folyamatok üzembe helyezéséhez.
 
-Felderítheti és előkészítheti az adatfeldolgozási és-tesztelési modelleket, és számos olyan eszközt alkalmazhat, mint például a:
-+ Olyan [vizualizációs felület](ui-tutorial-automobile-price-train-score.md) , amelyben az n-drop modulok használatával felépítheti a kísérleteket, majd üzembe helyezheti a modelleket
-+ [Jupyter jegyzetfüzetek](https://jupyter.org) , amelyekben az [SDK](https://docs.microsoft.com/azure/machine-learning) -k segítségével saját kódokat írhat, például a [minta jegyzetfüzeteket](https://aka.ms/aml-notebooks)
++ Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://aka.ms/aml-notebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python</a> -mintákhoz. 
+
++ R-parancsfájlok vagy jegyzetfüzetek, amelyekben a saját kód írásához használja az <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html on" target="_blank">SDK</a> -t, vagy használja a tervező R modulját.
+
 + [Visual Studio Code-bővítmény](how-to-vscode-tools.md)
 
++ [Machine learning parancssori felület](reference-azure-machine-learning-cli.md)
 
-> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
++ Nyílt forráskódú keretrendszerek, mint például a PyTorch, a TensorFlow és a scikit – Learn és sok más
 
-## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Mire használhatom az Azure Machine Learning szolgáltatást?
+A [MLflow használatával nyomon követheti a metrikákat, és üzembe helyezheti a modelleket](how-to-use-mlflow.md) vagy a Kubeflow, így teljes [körű munkafolyamat-folyamatokat hozhat létre](https://www.kubeflow.org/docs/azure/).
 
-A <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine learning PYTHON SDK</a> -t nyílt forráskódú Python-csomagokkal használhatja, vagy a [Visual Interface (előzetes verzió)](ui-tutorial-automobile-price-train-score.md) használatával magas szintű gépi tanulást és mélyreható tanulási modelleket építhet ki és taníthat ki egy Azure Machine learning-szolgáltatásban Munkaterület.
 
-A nyílt forráskódú Python-csomagokban elérhető számos gépi tanulási összetevő közül választhat, például a <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-Learn</a>, a <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, a <a href="https://pytorch.org" target="_blank">PyTorch</a>és a <a href="https://mxnet.io" target="_blank">MXNet</a>.
+## <a name="build-ml-models-in-python-or-r"></a>ML modellek készítése a Pythonban vagy az R-ben
 
-Akár kódot ír, akár a vizualizáció felületét használja, több futtatást is nyomon követheti a legjobb megoldás megtalálásához, valamint az üzembe helyezett modellek kezeléséhez.
+Indítsa el a képzést a helyi gépen a Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">PYTHON SDK</a> vagy az <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>használatával. Ezután kibővítheti a felhőt. 
 
-### <a name="code-first-experience"></a>Kód – első élmény
-
-Indítsa el a képzést a helyi gépen a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine learning PYTHON SDK</a> használatával, majd a felhőbe. Számos elérhető [számítási cél](how-to-set-up-training-targets.md), például a Azure Machine learning számítási és [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), valamint a [fejlett hiperparaméter-hangolási szolgáltatások](how-to-tune-hyperparameters.md)révén a felhő hatékonyságával gyorsabban hozhat létre jobb modelleket.
+Számos elérhető [számítási cél](how-to-set-up-training-targets.md), például a Azure Machine learning számítási és [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), valamint a [fejlett hiperparaméter-hangolási szolgáltatások](how-to-tune-hyperparameters.md)révén a felhő hatékonyságával gyorsabban hozhat létre jobb modelleket.
 
 Az SDK segítségével [automatizálhatja a modell betanítását és finomhangolását](tutorial-auto-train-models.md) is.
 
-### <a name="ui-based-low-code-experience"></a>Felhasználói felület-alapú, alacsony kódú élmény
+## <a name="build-ml-models-with-no-code-tools"></a>A kód nélküli eszközökkel rendelkező ML-modellek készítése
 
-A kód nélküli képzéshez és üzembe helyezéshez próbálkozzon az alábbiakkal:
+A kód nélküli vagy alacsony kódú képzés és üzembe helyezés esetén próbálkozzon a következő lépésekkel:
 
-+ [AUTOMATIZÁLT ml-kísérletek](tutorial-first-experiment-automated-ml.md) létrehozása a könnyen használható felületen.
-+ A [drag-n-drop kísérletezés a vizualizációs felületen](ui-tutorial-automobile-price-train-score.md).
-  Azure Machine Learning ![Visual felülete ](media/overview-what-is-azure-ml/visual-interface.png)
++ **Azure Machine Learning Designer (előzetes verzió)**
 
+  A Designer segítségével előkészítheti a gépi tanulási modelleket, betaníthatja, üzembe helyezheti, kezelheti és nyomon követheti, anélkül, hogy kódot kellene írnia. Nincs szükség programozásra, vizuálisan összekapcsolhatók az adatkészletek és modulok a modell létrehozásához.   Próbálja ki a [tervezői oktatóanyagot](tutorial-designer-automobile-price-train-score.md).
 
+  További információt [a Azure Machine learning Designer áttekintő cikkében](concept-designer.md)talál. 
 
-### <a name="operationalization-mlops"></a>Operacionalizálási (MLOps)
+  ![Azure Machine Learning Designer – példa](/media/concept-ml-pipelines/visual-design-surface.gif)
 
++ **Automatikus gépi tanulás felhasználói felülete**
+
+  Megtudhatja, hogyan hozhat létre [AUTOMATIZÁLT ml-kísérleteket](tutorial-first-experiment-automated-ml.md) a könnyen használható felületen. 
+
+  [![Azure Machine Learning Studio navigációs panelje](media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
+## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & életciklus-felügyelet üzembe helyezése
 Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
 
-Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk), a [Azure Portal](https://portal.azure.com/) vagy a munkaterület kezdőlapja [(előzetes verzió)](https://ml.azure.com)használatával.
+Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk)-val, a [Azure Machine learning Studióval](https://ml.azure.com)vagy a [Machine learning parancssori](reference-azure-machine-learning-cli.md)felülettel.
 
 Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](how-to-run-batch-predictions.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
 
@@ -77,51 +95,33 @@ A fejlett [gépi tanulási folyamatokkal](concept-ml-pipelines.md)pedig az üzem
 * Különböző számítási erőforrások használata az egyes lépésekben
 * Batch-pontozási feladatok futtatása
 
+Ha parancsfájlokkal szeretné automatizálni a gépi tanulási munkafolyamatot, a [Machine learning CLI](reference-azure-machine-learning-cli.md) olyan parancssori eszközöket biztosít, amelyek gyakori feladatokat hajtanak végre, például beküldenek egy képzést, vagy egy modellt telepítenek.
+
 A Azure Machine Learning használatának megkezdéséhez tekintse meg a [következő lépéseket](#next-steps).
 
-## <a name="how-does-azure-machine-learning-differ-from-studio"></a>Miben különbözik Azure Machine Learning a Studiótól?
+## <a name="sku"></a>Alapszintű & Enterprise kiadás
 
-A [Machine learning Studio](../studio/what-is-ml-studio.md) egy együttműködésen alapuló, húzással ellátható vizualizációs munkaterület, amely képes gépi tanulási megoldások létrehozására, tesztelésére és üzembe helyezésére anélkül, hogy kódot kellene írnia. Előre összeépített és előre konfigurált gépi tanulási algoritmusokat és adatkezelési modulokat, valamint egy szabadalmaztatott számítási platformot használ.
+Azure Machine Learning két, a gépi tanulási igényekhez igazított kiadást kínál:
++ Alapszintű (általánosan elérhető)
++ Enterprise (előzetes verzió)
 
-A Azure Machine Learning az SDK **-k és a-** a vizualizációs felületet (előzetes verzió) is biztosítja az adatelőkészítés, a gépi tanulási modellek betanítása és üzembe helyezése során. Ez a vizuális felület (előzetes verzió) hasonló húzási felületet biztosít a studióhoz. A Studio tulajdonosi számítási platformjának eltérően azonban a vizualizációs felület saját számítási erőforrásokat használ, és teljes mértékben integrálva van Azure Machine Learningba.
+Ezek a kiadások határozzák meg, hogy mely gépi tanulási eszközök érhetők el a fejlesztők és az adatszakértők számára a munkaterületről.   
 
-Íme egy gyors összehasonlítás.
+Az alapszintű munkaterületek lehetővé teszik a Azure Machine Learning használatának folytatását, és csak a gépi tanulási folyamat során felhasznált Azure-erőforrásokért kell fizetni. Az Enterprise Edition-munkaterületek csak az Azure-beli felhasználásra lesznek felszámítva, miközben a kiadás előzetes verzióban érhető el. További információ a Azure Machine Learning [kiadás áttekintése & díjszabási oldalán](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
-|| Machine Learning Studio | Azure Machine Learning:<br/>Vizuális felület|
-|---| --- | --- |
-|| Általánosan elérhető (GA) | Előzetes verzióban|
-|Húzási interfész| Igen | Igen|
-|Kísérlet| Scale (10GB betanítási adatkorlátja) | Méretezés számítási céllal|
-|Illesztőfelületi modulok| Számos | Népszerű modulok kezdeti készlete|
-|Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU|PÉNZMOSÁS-számítás (GPU/CPU)<br/> Notebook virtuális gépek |
-|Viszonyítási számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Azure Kubernetes szolgáltatás (valós idejű következtetés) <br/>PÉNZMOSÁS-számítás (batch-következtetés) |
-|ML-folyamat| Nem támogatott | Folyamat létrehozása <br/> közzétett folyamat <br/> Folyamat végpontja <br/> [További információ az ML-folyamatról](concept-ml-pipelines.md)|
-|ML-Ops| Alapszintű modell kezelése és üzembe helyezése | Konfigurálható üzembe helyezés, modell és folyamat verziószámozása|
-|Modell| Tulajdonosi formátum. Nem használható a studión kívül | A standard formátum, amely a betanítási feladatoktól függ|
-|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (A Python SDK és a munkaterület kezdőlapján támogatott.) |
+A kiadást a munkaterület létrehozásakor rendeli hozzá. A meglévő munkaterületek pedig az alapszintű kiadásra lettek konvertálva. Az alapszintű kiadás minden olyan funkciót magában foglal, amely már általánosan elérhető a 2019. októberi verzióban. A vállalati kiadási funkciók használatával létrehozott munkaterületek összes kísérlete továbbra is csak olvasható lesz, amíg nem frissít a vállalatra. Megtudhatja, hogyan [frissíthet egy alapszintű munkaterületet nagyvállalati verzióra](how-to-manage-workspace.md#upgrade). 
 
-Próbálja ki a vizualizációs felületet (előzetes verzió) az [oktatóanyaggal: az autó árának előrejelzése a vizualizációs felületen](ui-tutorial-automobile-price-train-score.md).
+Az ügyfelek felelősek a számítási és egyéb Azure-erőforrásokért felmerülő költségekért.
 
-> [!NOTE]
-> A Studióban létrehozott modellek nem helyezhetők üzembe vagy nem kezelhetők Azure Machine Learning. A szolgáltatás vizualizációs felületén létrehozott és üzembe helyezett modellek azonban a Azure Machine Learning munkaterületen kezelhetők.
+## <a name="next-steps"></a>További lépések
 
-## <a name="free-trial"></a>Ingyenes próbalehetőség
-
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
-
-Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez. Vagy [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), amelyek havi kreditet biztosítanak a fizetős Azure-szolgáltatásokhoz.
-
-## <a name="next-steps"></a>Következő lépések
-
-- A kezdéshez [hozzon létre egy Machine learning szolgáltatás-munkaterületet](how-to-manage-workspace.md) .
-
-- Kövesse a teljes hosszúságú oktatóanyagokat:
-  + [Munkaterület létrehozása és az első ML-modell betanítása](tutorial-1st-experiment-sdk-setup.md)
-  + [Rendszerkép-besorolási modell betanítása Azure Machine Learning](tutorial-train-models-with-aml.md)
-
+- Hozza létre első kísérletét a kívánt módszerrel:
+  + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)
+  + [Az R Markdown használata & ML-modellek üzembe helyezéséhez](tutorial-1st-r-experiment.md) 
+  + [Az automatizált gépi tanulás használata & ML-modellek üzembe helyezéséhez](  tutorial-first-experiment-automated-ml.md) 
+  + [A tervező drag & drop funkciói a & üzembe helyezéséhez](tutorial-designer-automobile-price-train-score.md) 
+  + [Modellek betanítása és üzembe helyezése a Machine learning parancssori felület használatával](tutorial-train-deploy-model-cli.md)
 
 - Ismerje meg a [gépi tanulási folyamatokat](/azure/machine-learning/service/concept-ml-pipelines) a gépi tanulási forgatókönyvek létrehozásához, optimalizálásához és felügyeletéhez.
 
 - Olvassa el a részletes [Azure Machine learning architektúrát és fogalmakat](concept-azure-machine-learning-architecture.md) ismertető cikket.
-
-- További információ: [a Microsoft egyéb gépi tanulási termékei](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning).

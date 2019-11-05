@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning adat folyamat – Adatlap – csoportos adatelemzési folyamat
-description: Nyomtatható Adatlap, amely bemutatja, hogyan állítható be egy automatizált adatfeldolgozási folyamat az Azure Machine Learning webszolgáltatás felé, hogy-e az adatok a helyszínen, streaming, az Azure-ban, vagy egy külső felhőszolgáltatásban.
+title: Azure Machine Learning adatcsatorna-Cheat adatlap – csoportos adatelemzési folyamat
+description: Egy nyomtatható Cheat Sheet, amely bemutatja, hogyan állíthat be egy automatizált adatfolyamatot a Azure Machine Learning webszolgáltatáshoz, függetlenül attól, hogy az adatok helyszíni, streaming, Azure vagy harmadik féltől származó felhőalapú szolgáltatásban találhatóak-e.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,33 +11,31 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 1245255e65412f9bbcba3c8d9caa76b9ffd2dcc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826194"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495074"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
-A **Microsoft Azure Machine Learning automatikus adatok folyamat – adatlap** segít, lépjen a technológia segítségével az adatok a Machine Learning webszolgáltatás, azt is pontozandó által a prediktív elemzés modell.
+Az **Microsoft Azure Machine learning automatizált adatcsatorna-Cheat Sheet** segítségével navigálhat az adatoknak a Machine learning webszolgáltatásba való beolvasására szolgáló technológiában, ahol a prediktív elemzési modell által is megadható.
 
-Attól függően, hogy az adatok a helyszínen, a felhőben, vagy valós idejű folyamatos átvitel, helyezze át az adatokat a web service-végpont pontozó számára elérhető különböző mechanizmusokat.
-Cikkek, amelyek segítségével a megoldás fejlesztéséhez mutató hivatkozásokat biztosít, és ez Adatlap ismerteti a döntéseket kell végezni.
+Attól függően, hogy az adatai a helyszínen, a felhőben vagy a valós idejű folyamatos átvitelben vannak-e, különböző mechanizmusok érhetők el, amelyekkel áthelyezheti az adatait a webszolgáltatási végpontba a pontozáshoz.
+Ez a Cheat-táblázat végigvezeti a szükséges döntéseken, és hivatkozásokat tartalmaz olyan cikkekre, amelyek segíthetnek a megoldás fejlesztésében.
 
-## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>A Machine Learning automatizált adatfeldolgozási folyamat – Adatlap letöltése
-Miután letöltötte a Adatlap, nyomtathatja tabloid méretben (11 x 17).
+## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Töltse le a Machine Learning automatizált adatcsatorna-Cheat lapot
+A Cheat Sheet letöltése után kinyomtathatja azt a bulvárlap méretében (11 x 17 a következőben:.).
 
-A Adatlap letöltése: **[A Microsoft Azure Machine Learning automatikus adatok folyamat – Adatlap](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Töltse le a Cheat Sheet itt:  **[Microsoft Azure Machine learning automatizált adatcsatorna-Cheat Sheet](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
-![Microsoft Azure Machine Learning Studio képességek áttekintése][op-cheat-sheet]
+![A Microsoft Azure Machine Learning Studio (klasszikus) képességeinek áttekintése][op-cheat-sheet]
 
 [op-cheat-sheet]: ./media/automated-data-pipeline-cheat-sheet/machine-learning-automated-data-pipeline-cheat-sheet_v1.1.png
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>További segítség a Machine Learning Studio használatához
-* A Microsoft Azure Machine Learning áttekintését lásd: [Bevezetés a Microsoft Azure machine learning](../studio/what-is-machine-learning.md).
-* A pontozási webszolgáltatás üzembe helyezése egy ismertetése: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md).
-* Bemutatja, hogyan pontozási webszolgáltatás felhasználása, lásd: [használata az Azure Machine Learning Web service](../studio/consume-web-services.md).
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+* A Microsoft Azure Machine Learning áttekintését lásd: [Bevezetés a Microsoft Azure Machine learning](../studio/what-is-machine-learning.md)használatába.
+* A pontozási webszolgáltatás üzembe helyezésének ismertetése: [Azure Machine learning webszolgáltatás telepítése](../studio/publish-a-machine-learning-web-service.md).
+* A pontozási webszolgáltatás használatáról a következő témakörben talál további információt: [Azure Machine learning webszolgáltatások felhasználása](../studio/consume-web-services.md).
 

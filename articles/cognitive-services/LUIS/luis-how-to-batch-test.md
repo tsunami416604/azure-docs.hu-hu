@@ -1,7 +1,7 @@
 ---
 title: Batch test – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tesztelési Language Understanding (LUIS) batch használatával kereshet a helytelen szándékok és entitások kimondott szöveg.
+description: Használjon Language Understanding (LUIS) batch-tesztelési készleteket a helytelen szándékokkal és entitásokkal rendelkező hosszúságú kimondott szöveg kereséséhez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,100 +9,102 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a99b2e7097f2abf36f184368b3b4fdaba8f2730b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932876"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467408"
 ---
-# <a name="batch-testing-with-a-set-of-example-utterances"></a>A Batch példa utterances vannak beállítva tesztelése
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-tesztelés példaként megadott hosszúságú kimondott szöveg
 
- A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. A Batch-teszteléshez használt adatkészletek nem tartalmazhatnak példaként megadott hosszúságú kimondott szöveg az előrejelzési futtatókörnyezet végpontján kapott szándékokban vagy hosszúságú kimondott szöveg. 
+ A Batch Testing egy átfogó teszt a jelenlegi betanított modellen a teljesítményének méréséhez a LUIS-ben. A Batch-teszteléshez használt adatkészletek nem tartalmazhatnak példaként megadott hosszúságú kimondott szöveg az előrejelzési futtatókörnyezet végpontján kapott szándékokban vagy hosszúságú kimondott szöveg. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
-## <a name="import-a-dataset-file-for-batch-testing"></a>Egy batch teszteléséhez adatkészletfájlt importálása
+## <a name="import-a-dataset-file-for-batch-testing"></a>Adatkészlet-fájl importálása batch-teszteléshez
 
-1. Válassza ki **teszt** felső sáv, és adja meg **Batch-tesztelési panel**.
+1. Válassza a **teszt** elemet a felső sávon, majd válassza a **Batch Testing (tesztelés) panel**elemet.
 
     ![Batch-tesztelési hivatkozás](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Válassza ki **importálás adatkészlet**. A **importálása új adatkészlet** párbeszédpanel jelenik meg. Válassza ki **fájl kiválasztása** , és keresse meg a JSON-fájlt a megfelelő [JSON formátumban](luis-concept-batch-test.md#batch-file-format) tartalmazó *legfeljebb 1000* teszteléséhez kimondott szöveg.
+2. Válassza az **adatkészlet importálása**lehetőséget. Megjelenik az **új adatkészlet importálása** párbeszédpanel. Válassza a **fájl kiválasztása** lehetőséget, és keresse meg a megfelelő [JSON-formátumú](luis-concept-batch-test.md#batch-file-format) JSON-formátumot, amely *nem tartalmaz több mint 1 000* hosszúságú kimondott szöveg a teszteléshez.
 
-    Az importálási hibák kell jelenteni, egy piros értesítési sáv felső részén a böngészőben. Ha az importálás hibákkal rendelkezik, egyetlen adatkészlet jön létre. További információkért lásd: [gyakran előforduló hibák](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    Az importálási hibák jelentése a böngésző tetején található piros értesítési sávon történik. Ha egy importálás hibákat tartalmaz, a rendszer nem hoz létre adatkészletet. További információ: [gyakori hibák](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
-3. Az a **Adatkészletnevet** mezőben adja meg az adatkészlet-fájl nevét. Az adatkészlet-fájl tartalmaz egy **kimondott szöveg egy tömbjét** többek között a *szándékot feliratú* és *entitások*. Tekintse át a [példafájl](luis-concept-batch-test.md#batch-file-format) szintaxis. 
+3. Az **adatkészlet neve** mezőben adja meg az adatkészlet fájljának nevét. Az adatkészlet-fájl a **hosszúságú kimondott szöveg tömbjét tartalmazza,** beleértve a *címkézett szándékot* és az *entitásokat*. Tekintse át a [példaként szolgáló batch-fájlt](luis-concept-batch-test.md#batch-file-format) szintaxisként. 
 
-4. Válassza a **Done** (Kész) lehetőséget. Az adatkészlet fájlt adnak hozzá.
+4. Válassza a **Done** (Kész) lehetőséget. Az adatkészlet fájlja hozzá van adva.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Futtassa, átnevezése, exportálhatja vagy adatkészlet törlése
+## <a name="run-rename-export-or-delete-dataset"></a>Adatkészlet futtatása, átnevezése, exportálása vagy törlése
 
-Futtassa, átnevezése, exportálhatja vagy törli az adatkészletet, használja a három pontra (***...*** ) gombra az adatkészlet sor végén található.
+Az adatkészlet futtatásához, átnevezéséhez, exportálásához vagy törléséhez használja az adatkészlet sor végén lévő három pont (***..***.) gombot.
 
-![Adatkészlet műveletek](./media/luis-how-to-batch-test/batch-testing-options.png)
+![Adatkészlet műveletei](./media/luis-how-to-batch-test/batch-testing-options.png)
 
-## <a name="run-a-batch-test-on-your-trained-app"></a>Egy batch-teszt futtatása a betanított alkalmazásban
+## <a name="run-a-batch-test-on-your-trained-app"></a>Batch-teszt futtatása a betanított alkalmazáson
 
-Futtassa a tesztet, jelölje be az adatkészlet nevét. A teszt befejezését követően a sor az adatkészlet teszt eredményét jeleníti meg.
+A teszt futtatásához válassza ki az adatkészlet nevét. Ha a teszt befejeződött, ez a sor az adatkészlet tesztelési eredményét jeleníti meg.
 
 ![Batch-teszt eredménye](./media/luis-how-to-batch-test/run-test.png)
 
-A letölthető adatkészlet ugyanazt a fájlt, amely a feltöltött batch tesztelési.
+A letölthető adatkészlet ugyanaz a fájl, amelyet a Batch-teszteléshez töltöttek fel.
 
 |Állapot|Jelentés|
 |--|--|
-|![A sikeres vizsgálat zöld kör ikon](./media/luis-how-to-batch-test/batch-test-result-green.png)|Az összes utterances is sikeres.|
-|![Meghibásodott teszt piros x ikon](./media/luis-how-to-batch-test/batch-test-result-red.png)|Legalább egy utterance (kifejezés) célja nem felelt meg az előrejelzést.|
-|![Készen áll a teszt ikonja](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Teszt készen áll a futásra.|
+|![Sikeres teszt zöld kör ikon](./media/luis-how-to-batch-test/batch-test-result-green.png)|Minden hosszúságú kimondott szöveg sikeres.|
+|![Nem sikerült tesztelni a piros x ikont](./media/luis-how-to-batch-test/batch-test-result-red.png)|Legalább egy Kimondás nem egyezik meg az előrejelzéssel.|
+|![Készen áll a teszt ikonra](./media/luis-how-to-batch-test/batch-test-result-blue.png)|A teszt készen áll a futtatásra.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>Batch-teszt eredményeinek megtekintése 
+## <a name="view-batch-test-results"></a>A Batch-tesztek eredményeinek megtekintése 
 
-Válassza ki a batch-vizsgálati eredmények áttekintéséhez **eredmények megtekintéséhez**.
+A Batch-tesztek eredményeinek áttekintéséhez válassza az **eredmények megtekintése**lehetőséget.
 
-![A Batch terhelésiteszt-eredményei](./media/luis-how-to-batch-test/run-test-results.png)
+![A Batch-tesztek eredményei](./media/luis-how-to-batch-test/run-test-results.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
 
-## <a name="filter-chart-results"></a>Diagram eredmények szűréséhez
+## <a name="filter-chart-results"></a>Diagram eredményeinek szűrése
 
-A diagram egy adott szándékot vagy egy entitás szűréséhez válassza a leképezés vagy entitás a szűrési jobb oldali panelen. Az adatok és a terjesztési frissítse a grafikon a kijelölés alapján. 
+Ha egy adott szándék vagy entitás alapján szeretné szűrni a diagramot, válassza ki a szándékot vagy az entitást a jobb oldali szűrés panelen. Az adatpontok és a terjesztési frissítésük a diagramon a választott módon történik. 
  
-![A Batch teszi teszteredménye](./media/luis-how-to-batch-test/filter-by-entity.png) 
+![Vizualizációs batch-teszt eredménye](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-## <a name="view-single-point-utterance-data"></a>Pont utterance (kifejezés) adatok megtekintése
+## <a name="view-single-point-utterance-data"></a>Egypontos Kimondás-adatelemek megtekintése
 
-A diagram egy adatpontra, az előrejelzési bizonyossággal pontszám mutasson. Válasszon ki egy adatpontot beolvasni a megfelelő utterance (kifejezés) a kimondott szöveg lista az oldal alján. 
+A diagramon vigye az egérmutatót egy adatpontra, és tekintse meg az előrejelzésének bizonyossági pontszámát. A lap alján található hosszúságú kimondott szöveg listában válasszon ki egy adatpontot a megfelelő kifejezés beolvasásához. 
 
-![Kiválasztott utterance (kifejezés)](./media/luis-how-to-batch-test/selected-utterance.png)
+![Kijelölt Kimondás](./media/luis-how-to-batch-test/selected-utterance.png)
 
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-## <a name="view-section-data"></a>A szakasz adatok megtekintése
+## <a name="view-section-data"></a>Szakaszra vonatkozó adatnézet
 
-A négy szakaszt tartalmazó diagram, válassza ki a szakasz nevét, például **hamis pozitív** , a jobb felső sarkában a diagramot. A diagram alatt található összes kimondott szöveg megjelenítése a diagram egy lista alatt. 
+A négy szakaszból álló diagramon válassza ki a szakasz nevét, például a **hamis pozitív értéket** a diagram jobb felső sarkában. A diagram alatt az adott szakaszban található összes hosszúságú kimondott szöveg megjelenik a diagram alatt a listában. 
 
-![A szakasz által kiválasztott kimondott szöveg](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
+![Kijelölt hosszúságú kimondott szöveg szakasz szerint](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-A fenti ábrán az utterance (kifejezés) `switch on` TurnAllOn készítésében feliratú, de nincs szándék előrejelzését kapott. Ez az azt jelzi, hogy kell-e a TurnAllOn célt további példa utterances annak érdekében, hogy a várt előrejelzést. 
+Ebben az előző képen a kimaradás `switch on` a TurnAllOn szándékkal van megjelölve, de a rendszer a nincs szándék előrejelzését kapta. Ez azt jelzi, hogy a TurnAllOn szándéknak több példát kell hosszúságú kimondott szöveg a várható előrejelzés elvégzéséhez. 
 
-A két szakasz a diagram vörös színnel, amely nem egyezik a várt előrejelzési kimondott szöveg jelzi. Ezek azt jelzik, hogy kimondott szöveg melyik LUIS további betanítási van szüksége. 
+A diagram két része piros színnel jelöli azt a hosszúságú kimondott szöveg, amely nem felel meg a várt előrejelzésnek. Ezek azt jelzik, hosszúságú kimondott szöveg, hogy a LUIS több betanításra van szüksége. 
 
-A két szakasz a diagram zöld színnel egyezik a várt előrejelzési.
+A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, használhatja a LUIS-alkalmazás teljesítményének növelése további utterances címkézés vagy szolgáltatások hozzáadására. 
+Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás teljesítményét. 
 
-* [Az intelligens hangfelismerési szolgáltatással javasolt utterances felirat](luis-how-to-review-endpoint-utterances.md) 
-* [A LUIS-alkalmazás a teljesítmény javítása szolgáltatások használata](luis-how-to-add-features.md) 
-* [Ebben az oktatóanyagban tesztelés batch ismertetése](luis-tutorial-batch-testing.md)
-* [Ismerje meg, a batch-fogalmak tesztelése](luis-concept-batch-test.md).
+* [Címke javasolt hosszúságú kimondott szöveg a LUIS-vel](luis-how-to-review-endpoint-utterances.md) 
+* [Szolgáltatások használata a LUIS-alkalmazás teljesítményének növeléséhez](luis-how-to-add-features.md) 
+* [A Batch tesztelésének megismerése az Oktatóanyaggal](luis-tutorial-batch-testing.md)
+* A [Batch tesztelési koncepcióinak megismerése](luis-concept-batch-test.md).

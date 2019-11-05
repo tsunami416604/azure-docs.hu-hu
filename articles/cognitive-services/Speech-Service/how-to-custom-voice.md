@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959397"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464529"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
@@ -37,6 +37,13 @@ Az alábbi ábra az egyéni hangmodellek [Egyéni hangportál](https://aka.ms/cu
 
 4.  [A modell üzembe helyezése](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) – hozzon létre egy egyéni végpontot a szöveg-beszéd hangmodellhez, és használja a beszédfelismeréshez a termékeiben, eszközein és alkalmazásaiban.
 
+## <a name="custom-neural-voices"></a>Egyéni neurális hangok
+
+A neurális hang testreszabási funkciója jelenleg nyilvános előzetes verzióban érhető el, és csak a kiválasztott ügyfelekre korlátozódik. Az első lépésekhez töltse ki az [alkalmazás űrlapját](https://go.microsoft.com/fwlink/?linkid=2108737) .
+
+> [!NOTE]
+> A Microsoft a felelős AI megtervezése iránti elkötelezettségének részeként célunk az egyének és a társadalom jogainak védelme, valamint az átlátható emberi számítógépes interakciók elősegítése. Ezért az egyéni neurális hang általában nem érhető el minden ügyfél számára. Csak az alkalmazások felülvizsgálatát követően férhet hozzá a technológiához, és Ön kötelezte magát arra, hogy az etikai alapelveivel való összhangban használja. További információ az [alkalmazás kapuzás folyamatáról](https://aka.ms/custom-neural-gating-overview).
+
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
 Egy Speech Services-előfizetésre van szükség ahhoz, hogy a Custom Speech portálon egyéni modellt lehessen létrehozni. Kövesse ezeket az utasításokat egy Speech Services-előfizetés létrehozásához az Azure-ban. Ha nem rendelkezik Azure-fiókkal, regisztrálhat egy újat.  
@@ -55,10 +62,10 @@ Miután létrehozott egy Azure-fiókot és egy Speech Services-előfizetést, be
 
 A tartalmak, például az adattípusok, modellek, tesztek és végpontok az egyéni hangportálon belüli **projektekben** vannak rendszerezve. Minden projekt egy adott országra/nyelvre és a létrehozni kívánt hang nemre vonatkozik. Létrehozhat például egy projektet a Call Center csevegési robotok számára, amelyek az angol nyelvet használják a Egyesült Államokban (en-US).
 
-Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni hang** fület, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. A projekt létrehozása után négy lap jelenik meg: **Az adatkezelés**, a **képzés**, a **tesztelés**és az **üzembe helyezés**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
+Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni hang** fület, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. A projekt létrehozása után négy lap jelenik meg: **az adatkezelés**, a **képzés**, a **tesztelés**és az **üzembe helyezés**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni hangalapú adatfeldolgozás előkészítése](how-to-custom-voice-prepare-data.md)
 - [Egyéni hang létrehozása](how-to-custom-voice-create-voice.md)
-- @no__t – 0Guide: Hangminták rögzítése @ no__t-0
+- [Útmutató: hangminták rögzítése](record-custom-voice-samples.md)

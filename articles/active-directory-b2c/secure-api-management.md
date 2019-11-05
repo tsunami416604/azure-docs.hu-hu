@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717151"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474744"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
 
@@ -35,11 +35,25 @@ A cikk lépéseinek folytatása előtt a következő erőforrásokra van szüks�
 
 Ha az Azure-API Managementban található API-t Azure AD B2C használatával védi, több értékre van szüksége a APIM-ben létrehozott [bejövő házirendhez](../api-management/api-management-howto-policies.md) . Először jegyezze fel egy korábban a Azure AD B2C-bérlőben létrehozott alkalmazás AZONOSÍTÓját. Ha az előfeltételekben létrehozott alkalmazást használja, használja a *webbapp1*alkalmazás-azonosítóját.
 
-1. Tallózással keresse meg Azure AD B2C-bérlőjét a [Azure Portalban](https://portal.azure.com).
-1. A **kezelés**területen válassza az **alkalmazások**lehetőséget.
-1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazás **azonosítóját** .
+Az alkalmazás AZONOSÍTÓjának beszerzéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói felületét. [További információ az előzetes](http://aka.ms/b2cappregintro)verzióról.
 
-  ![B2C-alkalmazás alkalmazás-AZONOSÍTÓjának helye a Azure Portal](media/secure-apim-with-b2c-token/portal-02-app-id.png)
+#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. A **kezelés**területen válassza az **alkalmazások**lehetőséget.
+1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazás **alkalmazás-azonosító** oszlopában található értéket.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
+1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosító** oszlopában található értéket.
+
+* * *
 
 ## <a name="get-token-issuer-endpoint"></a>Jogkivonat kiállítói végpontjának beolvasása
 
@@ -70,15 +84,15 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 Most már készen áll arra, hogy hozzáadja a bejövő szabályzatot az Azure API Managementban, amely ellenőrzi az API-hívásokat. Egy olyan [JWT-érvényesítési](../api-management/api-management-access-restriction-policies.md#ValidateJWT) szabályzat hozzáadásával, amely egy hozzáférési jogkivonatban ellenőrzi a célközönséget és a kiállítót, biztosíthatja, hogy csak az érvényes tokent tartalmazó API-hívások legyenek elfogadva.
 
-1. Tallózással keresse meg az Azure API Management- [](https://portal.azure.com)példányát a Azure Portalban.
+1. Tallózással keresse meg az Azure API Management-példányát a [Azure Portalban](https://portal.azure.com).
 1. Válassza az **API-k** lehetőséget.
 1. Válassza ki azt az API-t, amelyet Azure AD B2C szeretne biztonságossá tenni.
 1. Válassza ki a **Tervezés** fület.
-1. A **bejövő feldolgozás**területen válassza a **\< @ no__t-3 @ no__t-4** lehetőséget a szabályzat-szerkesztő megnyitásához.
+1. A **bejövő feldolgozás**területen válassza a **\</\>** lehetőséget a szabályzat-szerkesztő megnyitásához.
 1. Helyezze a következő `<validate-jwt>` címkét a `<inbound>` házirendbe.
 
-    1. Frissítse a `url` értéket a `<openid-config>` elemben a szabályzat jól ismert konfigurációs URL-címével.
-    1. Frissítse a `<audience>` elemet a B2C-bérlőben korábban létrehozott alkalmazás (például *webapp1*) alkalmazás-azonosítójával.
+    1. Frissítse a `<openid-config>` elem `url` értékét a szabályzat jól ismert konfigurációs URL-címével.
+    1. Frissítse az `<audience>` elemet a B2C-bérlőben korábban létrehozott alkalmazás (például *webapp1*) alkalmazás-azonosítójával.
     1. Frissítse a `<issuer>` elemet a korábban feljegyzett jogkivonat-kiállítói végponttal.
 
     ```xml
@@ -109,18 +123,18 @@ Az API meghívásához a Azure AD B2C által kiállított hozzáférési jogkivo
 
 ### <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-Először Azure AD B2C által kiállított jogkivonatra van szüksége a Poster `Authorization` fejlécében való használatra. A regisztrálási/bejelentkezési felhasználói folyamat **Futtatás most** funkciójának használatával beszerezhet egyet, amelyet az előfeltételek egyikének kell létrehoznia.
+Először Azure AD B2C által kiállított jogkivonatra van szüksége, amelyet a Poster `Authorization` fejlécében kell használni. A regisztrálási/bejelentkezési felhasználói folyamat **Futtatás most** funkciójának használatával beszerezhet egyet, amelyet az előfeltételek egyikének kell létrehoznia.
 
 1. Tallózással keresse meg Azure AD B2C-bérlőjét a [Azure Portalban](https://portal.azure.com).
 1. A **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget.
 1. Válasszon ki egy meglévő regisztrációs vagy bejelentkezési felhasználói folyamatot, például *B2C_1_signupsignin1*.
 1. **Alkalmazás**esetében válassza a *webapp1*lehetőséget.
-1. A **Válasz URL-címéhez**válassza az `https://jwt.ms` lehetőséget.
+1. A **Válasz URL-címéhez**válassza a `https://jwt.ms`lehetőséget.
 1. Válassza a **felhasználói folyamat futtatása**lehetőséget.
 
     ![Felhasználói folyamat futtatása lap a bejelentkezéshez használt felhasználói folyamat Azure Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
-1. Fejezze be a bejelentkezést. @No__t-0-ra kell átirányítani.
+1. Fejezze be a bejelentkezést. `https://jwt.ms`re kell átirányítani.
 1. Jegyezze fel a böngészőben megjelenő kódolt jogkivonat értékét. Ezt a jogkivonat-értéket használja a Poster hitelesítési fejlécében.
 
     ![A jwt.ms megjelenített kódolt jogkivonat értéke](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
@@ -131,8 +145,8 @@ A közzétett API-t meghívó ügyfélalkalmazás (ebben az esetben a posta) ér
 
 1. Tallózással keresse meg az Azure API Management Service-példányt a [Azure Portalban](https://portal.azure.com).
 1. Válassza az **Előfizetések** lehetőséget.
-1. Válassza ki a három pontot a **Product: Korlátlan @ no__t-0, majd válassza a **kulcsok megjelenítése/elrejtése**lehetőséget.
-1. Jegyezze fel a termék **elsődleges kulcsát** . Ezt a kulcsot a Poster HTTP-kérelmében található `Ocp-Apim-Subscription-Key` fejlécre használja.
+1. Válassza ki a termék három pontját **: korlátlan**, majd válassza a **kulcsok megjelenítése/elrejtése**lehetőséget.
+1. Jegyezze fel a termék **elsődleges kulcsát** . Ezt a kulcsot a Poster-ben a HTTP-kérelemben szereplő `Ocp-Apim-Subscription-Key` fejléchez használhatja.
 
 ![Előfizetési kulcs lapja a Azure Portalban kiválasztott kulcsok megjelenítése/elrejtése elemnél](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
@@ -146,9 +160,9 @@ Ha a hozzáférési jogkivonat és a APIM-előfizetés kulcsa rögzített, most 
 
 1. Ezután adja hozzá a következő fejléceket:
 
-    | Kulcs | Value |
+    | Jelmagyarázat | Érték |
     | --- | ----- |
-    | `Authorization` | A korábban feljegyzett kódolt jogkivonat értéke `Bearer ` előtaggal van ellátva (beleértve a "tulajdonos" utáni szóközt is) |
+    | `Authorization` | A korábban feljegyzett kódolt jogkivonat-érték, `Bearer ` (a "tulajdonos" utáni területtel együtt) |
     | `Ocp-Apim-Subscription-Key` | A korábban rögzített APIM-előfizetés kulcsa |
 
     A **Get** kérelem URL-címének és **fejlécének** a következőhöz hasonlóan kell megjelennie:
@@ -184,7 +198,7 @@ Ha a hozzáférési jogkivonat és a APIM-előfizetés kulcsa rögzített, most 
 
 ### <a name="test-an-insecure-api-call"></a>Nem biztonságos API-hívás tesztelése
 
-Most, hogy sikeresen elvégezte a kérést, tesztelje a hiba esetét, hogy a rendszer a várt módon visszautasítja az API-nak egy *érvénytelen* tokent tartalmazó hívásokat. A teszt végrehajtásának egyik módja a jogkivonat értékében szereplő néhány karakter hozzáadása vagy módosítása, majd a korábban megadott `GET` kérelem végrehajtása.
+Most, hogy sikeresen elvégezte a kérést, tesztelje a hiba esetét, hogy a rendszer a várt módon visszautasítja az API-nak egy *érvénytelen* tokent tartalmazó hívásokat. A teszt végrehajtásának egyik módja a jogkivonat értékében szereplő néhány karakter hozzáadása vagy módosítása, majd a korábban megegyező `GET` kérelem végrehajtása.
 
 1. Adjon hozzá több karaktert a jogkivonat értékéhez egy érvénytelen token szimulálása érdekében. Például adja hozzá az "Érvénytelen" értéket a jogkivonat értékéhez:
 
@@ -199,11 +213,11 @@ Most, hogy sikeresen elvégezte a kérést, tesztelje a hiba esetét, hogy a ren
     }
     ```
 
-Ha a `401` állapotkódot látja, ellenőrizte, hogy csak a Azure AD B2C által kiadott érvényes hozzáférési jogkivonattal rendelkező hívók tudnak sikeres kéréseket készíteni az Azure API Management API-hoz.
+Ha a `401` állapotkód jelenik meg, akkor ellenőrizte, hogy csak a Azure AD B2C által kiadott érvényes hozzáférési jogkivonattal rendelkező hívók tudnak sikeres kéréseket készíteni az Azure API Management API-hoz.
 
 ## <a name="support-multiple-applications-and-issuers"></a>Több alkalmazás és kiállító támogatása
 
-Számos alkalmazás általában egyetlen REST APIsal kommunikál. Annak engedélyezéséhez, hogy az API több alkalmazáshoz tartozó jogkivonatokat fogadjon el, adja hozzá az alkalmazás-azonosítókat a APIM bejövő házirend `<audiences>` eleméhez.
+Számos alkalmazás általában egyetlen REST APIsal kommunikál. Annak engedélyezéséhez, hogy az API több alkalmazáshoz tartozó jogkivonatokat fogadjon el, adja hozzá az alkalmazás azonosítóit a APIM bejövő házirend `<audiences>` eleméhez.
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -213,7 +227,7 @@ Számos alkalmazás általában egyetlen REST APIsal kommunikál. Annak engedél
 </audiences>
 ```
 
-Hasonlóképpen, a többszörös jogkivonat-kiállítók támogatásához adja hozzá a végponti URI-ket a APIM bejövő házirend `<issuers>` eleméhez.
+Hasonlóképpen, a több jogkivonat-kiállítók támogatásához adja hozzá a végponti URI-ket a APIM bejövő házirend `<issuers>` eleméhez.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->

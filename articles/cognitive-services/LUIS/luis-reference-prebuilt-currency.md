@@ -1,7 +1,7 @@
 ---
 title: Pénznem előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmazza a pénznem előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk Language Understanding (LUIS) pénznemben előre felépített entitásokra vonatkozó információkat tartalmaz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,130 +9,85 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 61be3225f22aca821f8c26522ab37eab0c82bc26
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5b49dcc7e999757e119c399bdf01bed7cb312e02
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677720"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465051"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS-alkalmazás pénznemének előre felépített entitása
-Az előre felépített pénznem entitások számos címletben és országban/régióban észlelik a pénznemet, függetlenül a LUIS-alkalmazás kulturális környezettől. Az entitás már be van tanítva, mert nem kell az alkalmazás-leképezések a pénznem tartalmazó példa beszédmódok hozzáadása. Pénznem entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
+Az előre felépített pénznem entitások számos címletben és országban/régióban észlelik a pénznemet, függetlenül a LUIS-alkalmazás kulturális környezettől. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a pénznemet tartalmazó hosszúságú kimondott szöveg az Application-leképezésekhez. A pénznem entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak. 
 
-## <a name="types-of-currency"></a>Pénznem típusa
+## <a name="types-of-currency"></a>A pénznem típusai
 A pénznem kezelése a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) adattárból történik.
 
 ## <a name="resolution-for-currency-entity"></a>Pénznem entitás feloldása
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
 
-Az alábbi példa bemutatja a feloldása a **builtin.currency** entitás.
+A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 ```json
-{
-  "query": "search for items under $10.99",
-  "topScoringIntent": {
-    "intent": "SearchForItems",
-    "score": 0.926173568
-  },
-  "intents": [
-    {
-      "intent": "SearchForItems",
-      "score": 0.926173568
-    },
-    {
-      "intent": "None",
-      "score": 0.07376878
+"entities": {
+    "money": [
+        {
+            "number": 10.99,
+            "units": "Dollar"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+A következő JSON a `verbose` paraméterrel van beállítva `true`:
+
+```json
+"entities": {
+    "money": [
+        {
+            "number": 10.99,
+            "unit": "Dollar"
+        }
+    ],
+    "$instance": {
+        "money": [
+            {
+                "type": "builtin.currency",
+                "text": "$10.99",
+                "startIndex": 23,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor"
+            }
+        ]
     }
-  ],
-  "entities": [
+}
+```
+
+#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+
+A következő példa a **beépített. pénznem** entitás feloldását mutatja be.
+
+```json
+"entities": [
     {
-      "entity": "$10.99",
-      "type": "builtin.currency",
-      "startIndex": 23,
-      "endIndex": 28,
-      "resolution": {
+        "entity": "$10.99",
+        "type": "builtin.currency",
+        "startIndex": 23,
+        "endIndex": 28,
+        "resolution": {
         "unit": "Dollar",
         "value": "10.99"
-      }
-    }
-  ]
-}
-```
-
-
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
-
-A következő JSON a `verbose` paramétert állítja be a `false` értékre:
-
-```json
-{
-    "query": "search for items under $10.99",
-    "prediction": {
-        "normalizedQuery": "search for items under $10.99",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.605889857
-            }
-        },
-        "entities": {
-            "money": [
-                {
-                    "number": 10.99,
-                    "unit": "Dollar"
-                }
-            ]
         }
     }
-}
+]
 ```
-
-A következő JSON a `verbose` paramétert állítja be a `true` értékre:
-
-```json
-{
-    "query": "search for items under $10.99",
-    "prediction": {
-        "normalizedQuery": "search for items under $10.99",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.605889857
-            }
-        },
-        "entities": {
-            "money": [
-                {
-                    "number": 10.99,
-                    "unit": "Dollar"
-                }
-            ],
-            "$instance": {
-                "money": [
-                    {
-                        "type": "builtin.currency",
-                        "text": "$10.99",
-                        "startIndex": 23,
-                        "length": 6,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
-
 * * * 
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [datetimeV2](luis-reference-prebuilt-datetimev2.md), [dimenzió](luis-reference-prebuilt-dimension.md), és [e-mail](luis-reference-prebuilt-email.md) entitásokat. 
+Ismerje meg a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [dimenziót](luis-reference-prebuilt-dimension.md)és az [e-mail](luis-reference-prebuilt-email.md) entitásokat. 

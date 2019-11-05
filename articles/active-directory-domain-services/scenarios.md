@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6f81bc2ccf11cbcc3621dc1149879864c88cf0cf
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980517"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474436"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gyakori használati esetek és forgatókönyvek Azure Active Directory Domain Services
 
-A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományi szolgáltatásokat biztosít, például a tartományhoz való csatlakozást, a csoportházirendet, az LDAP-t és a Kerberos/NTLM-hitelesítést. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel, ami lehetővé teszi a felhasználók számára, hogy a meglévő hitelesítő adataikkal jelentkezzenek be. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja a felhőben, ami zökkenőmentesebb átállást biztosít a helyszíni erőforrások számára az Azure-ba.
+Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, a Lightweight Directory Access Protocol (LDAP) és a Kerberos/NTLM hitelesítés. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel, ami lehetővé teszi a felhasználók számára, hogy a meglévő hitelesítő adataikkal jelentkezzenek be. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja a felhőben, ami zökkenőmentesebb átállást biztosít a helyszíni erőforrások számára az Azure-ba.
 
 Ez a cikk néhány olyan gyakori üzleti forgatókönyvet mutat be, ahol az Azure AD DS értékkel rendelkezik, és megfelel ezeknek az igényeknek.
 
@@ -28,11 +28,11 @@ Ez a cikk néhány olyan gyakori üzleti forgatókönyvet mutat be, ahol az Azur
 
 Az Active Directory-beli hitelesítő adatok egyetlen készletének használatához az Azure Virtual Machines (VM) csatlakoztatható egy Azure AD DS felügyelt tartományhoz. Ez a megközelítés csökkenti a hitelesítő adatok kezelésével kapcsolatos problémákat, például a helyi rendszergazdai fiókok karbantartását minden virtuális gépen, illetve a különböző fiókokat és jelszavakat.
 
-Az Azure AD DS felügyelt tartományhoz csatlakoztatott virtuális gépeket Csoportházirend használatával is felügyelheti és biztonságossá teheti. A szükséges biztonsági alaptervek alkalmazhatók a virtuális gépekre, hogy a vállalati biztonsági irányelveknek megfelelően zárolják őket. A Csoportházirend kezelése funkció segítségével például korlátozhatja a virtuális gépen indítható alkalmazások típusát.
+Az Azure AD DS felügyelt tartományhoz csatlakoztatott virtuális gépeket a csoportházirend használatával is felügyelheti és biztonságossá teheti. A szükséges biztonsági alaptervek alkalmazhatók a virtuális gépekre, hogy a vállalati biztonsági irányelveknek megfelelően zárolják őket. A Csoportházirend kezelése funkció segítségével például korlátozhatja a virtuális gépen indítható alkalmazások típusát.
 
 ![Azure-beli virtuális gépek egyszerűbb felügyelete](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Nézzük meg egy gyakori példát. Mivel a kiszolgálók és más infrastruktúra eléri a teljes élettartamot, a contoso a helyileg üzemeltetett alkalmazásokat szeretné áthelyezni a felhőbe. Az aktuális IT standard megbízatása szerint a vállalati alkalmazásokat üzemeltető kiszolgálóknak tartományhoz kell csatlakozniuk, és a csoportházirend használatával kell felügyelni őket. A contoso informatikai rendszergazdája szívesebben szeretné az Azure-ban üzembe helyezett virtuális gépeket csatlakozni a felügyelet megkönnyítéséhez, mivel a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be. A tartományhoz csatlakoztatott virtuális gépek a Csoportházirend használatával is konfigurálhatók a szükséges biztonsági alapterveknek való megfeleléshez. A contoso szívesebben nem helyezheti üzembe, figyelheti és felügyelheti saját tartományvezérlőit az Azure-ban.
+Nézzük meg egy gyakori példát. Mivel a kiszolgálók és más infrastruktúra eléri a teljes élettartamot, a contoso a helyileg üzemeltetett alkalmazásokat szeretné áthelyezni a felhőbe. Az aktuális IT standard megbízatása szerint a vállalati alkalmazásokat üzemeltető kiszolgálóknak tartományhoz kell csatlakozniuk, és a csoportházirend használatával kell felügyelni őket. A contoso informatikai rendszergazdája szívesebben szeretné az Azure-ban üzembe helyezett virtuális gépeket csatlakozni a felügyelet megkönnyítéséhez, mivel a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be. A tartományhoz csatlakoztatott virtuális gépek úgy is konfigurálhatók, hogy a csoportházirend-objektumok (GPO-k) használatával betartsák a szükséges biztonsági alapterveket. A contoso szívesebben nem helyezheti üzembe, figyelheti és felügyelheti saját tartományvezérlőit az Azure-ban.
 
 Az Azure AD DS kiválóan alkalmas ehhez a használati esethez. Az Azure AD DS felügyelt tartományok lehetővé teszi a tartományhoz való csatlakozást, a hitelesítő adatok egyetlen készletének használatát és a csoportházirend alkalmazását. Felügyelt tartományként nem szükséges a tartományvezérlők konfigurálása és karbantartása.
 
@@ -63,7 +63,7 @@ A következő üzembe helyezési szempontok vonatkoznak erre a példa használat
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>Az LDAP-t használó helyszíni alkalmazások átemelése a címtár eléréséhez
 
-Az előző példához hasonlóan tegyük fel, hogy a contoso egy olyan helyszíni üzletági (LOB) alkalmazással rendelkezik, amelyet majdnem egy évtizeden át fejlesztettünk ki. Ez az alkalmazás a címtárral tisztában van, és úgy lett kialakítva, hogy a Lightweight Directory Access Protocol (LDAP) használatával olvassa el a felhasználókra vonatkozó információkat és attribútumokat AD DS. Az alkalmazás nem módosítja az attribútumokat, vagy más módon ír a könyvtárba.
+Az előző példához hasonlóan tegyük fel, hogy a contoso egy olyan helyszíni üzletági (LOB) alkalmazással rendelkezik, amelyet majdnem egy évtizeden át fejlesztettünk ki. Ez az alkalmazás a címtárral tisztában van, és a rendszer az LDAP használatával olvasta el a felhasználókkal kapcsolatos információkat és attribútumokat AD DS. Az alkalmazás nem módosítja az attribútumokat, vagy más módon ír a könyvtárba.
 
 A contoso szeretné áttelepíteni ezt az alkalmazást az Azure-ba, és kivonni az alkalmazást futtató, a helyszíni helyi hardvert. Az alkalmazás nem írható át olyan modern címtár-API-k használatára, mint például a REST-alapú Azure AD Graph API. A rendszer egy emelt szintű váltási lehetőséget választ arra az esetre, ha az alkalmazás a felhőben való futtatásra, kód módosítása vagy az alkalmazás átírása nélkül telepíthető.
 
@@ -99,7 +99,7 @@ Az Azure AD DS használatával felügyelt tartományi szolgáltatásokat biztos�
 
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>Tartományhoz csatlakoztatott HDInsight-fürtök (előzetes verzió)
 
-Beállíthat olyan Azure HDInsight-fürtöt, amely egy Azure AD DS felügyelt tartományhoz csatlakozik, és engedélyezve van az Apache Ranger. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az Apache Ranger segítségével hozhat létre és alkalmazhat kaptár-házirendeket, és lehetővé teheti a felhasználók, például az adatszakértők számára, hogy az ODBC-alapú eszközök, például az Excel vagy a tabló használatával csatlakozzanak a Kaptárhoz. Továbbra is dolgozunk további munkaterhelések, például a HBase, a Spark és a Storm hozzáadásával a tartományhoz csatlakoztatott HDInsight.
+Beállíthat olyan Azure HDInsight-fürtöt, amely egy Azure AD DS felügyelt tartományhoz csatlakozik, és engedélyezve van az Apache Ranger. Az Apache Ranger segítségével hozhat létre és alkalmazhat kaptár-házirendeket, és lehetővé teheti a felhasználók, például az adatszakértők számára, hogy az ODBC-alapú eszközök, például az Excel vagy a tabló használatával csatlakozzanak a Kaptárhoz. Továbbra is dolgozunk további munkaterhelések, például a HBase, a Spark és a Storm hozzáadásával a tartományhoz csatlakoztatott HDInsight.
 
 További információ erről az üzembe helyezési forgatókönyvről: [tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása][hdinsight]
 

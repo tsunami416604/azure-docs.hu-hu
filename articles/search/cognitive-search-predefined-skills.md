@@ -1,5 +1,5 @@
 ---
-title: Beépített adatok kinyerése, természetes nyelv, képfeldolgozás
+title: Beépített készségek az adatok kinyeréséhez, természetes nyelvhez, képfeldolgozáshoz az indexelés során.
 titleSuffix: Azure Cognitive Search
 description: Az adatok kinyerése, természetes nyelve, képfeldolgozása kognitív szaktudása szemantikai és strukturálatlan tartalmat ad egy Azure Cognitive Search-folyamat nyers tartalmához.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792099"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466793"
 ---
 # <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>Beépített kognitív képességek a tartalom dúsításához (Azure Cognitive Search)
 
@@ -25,7 +25,7 @@ Ebben a cikkben megismerheti az Azure Cognitive Search által biztosított kogni
 > A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 
-## <a name="built-in-skills"></a>Beépített szaktudás
+## <a name="built-in-skills"></a>Beépített képességek
 
 Az általuk felhasznált vagy előállított képességek számos képességgel rendelkeznek. Általánosságban elmondható, hogy a legtöbb ismeret az előre betanított modelleken alapul, ami azt jelenti, hogy a modellt nem lehet a saját betanítási adataival betanítani. A következő táblázat felsorolja és leírja a Microsoft által biztosított képességeket. 
 
@@ -41,13 +41,14 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 | [Microsoft. Skills. vízió. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Ez a képesség egy képészlelési algoritmust használ a rendszerkép tartalmának azonosításához és szöveges leírás létrehozásához. |
 | [Microsoft. Skills. vízió. OcrSkill](cognitive-search-skill-ocr.md) | Optikai karakterfelismerés. |
 | [Microsoft. Skills. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Lehetővé teszi a szűrést, az alapértelmezett érték hozzárendelését és az adategyesítést egy feltétel alapján.|
+| [Microsoft. Skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | A tartalom kibontása egy fájlból a dúsítási folyamaton belül. |
 | [Microsoft. Skills. util. ShaperSkill](cognitive-search-skill-shaper.md) | Leképezi a kimenetet egy összetett típusra (egy többrészes adattípusra, amely a teljes név, a többsoros címek vagy a vezetéknév és a személyes azonosító kombinációja esetén használható) |
 | [Microsoft. Skills. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Lehetővé teszi egy mesterséges intelligencia-bővítési folyamat bővíthetőségét azáltal, hogy HTTP-hívást végez egy egyéni webes API-n |
 
 
 Az [egyéni képességek](cognitive-search-custom-skill-web-api.md)létrehozásával kapcsolatos útmutatásért lásd: [Egyéni felület definiálása](cognitive-search-custom-skill-interface.md) és [példa: egyéni képesség létrehozása AI](cognitive-search-create-custom-skill-example.md)-bővítéshez.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Egyéni képességek kezelőfelületének definíciója](cognitive-search-custom-skill-interface.md)

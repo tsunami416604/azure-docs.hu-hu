@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 7ccf6d93419b981203067e28f8c85ef8445ab0c2
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6e85e33cf0488cf688303c590c2bbaf5d671d9b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595287"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467112"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -71,16 +71,17 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 |Azure App Service|[Azure webalkalmazás-tanúsítvány üzembe helyezése Key Vault használatával](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Database|[Transzparens adattitkosítás a Azure SQL Database és az adattárház bring your own Key támogatásával](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage Service encryption az ügyfél által felügyelt kulcsokat Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
-|Azure Data Lake adattár|A [Azure Data Lake Storeban lévő adattitkosítás](../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
+|Azure Data Lake Store|A [Azure Data Lake Storeban lévő adattitkosítás](../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
 |Azure Databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[Egyéni tartomány tanúsítványainak központi telepítése Key Vault az MSI használatával](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure Data Factory|[Adattároló hitelesítő adatainak beolvasása a Key Vault Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 
 
 
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kulcstartó védelme](key-vault-secure-your-key-vault.md)
 * [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](key-vault-network-security.md)

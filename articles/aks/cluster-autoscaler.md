@@ -7,40 +7,22 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 9d7a404b767d3975cefd55e1db8487fbb45042e2
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174189"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472867"
 ---
-# <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes Service-ben (ak)
+# <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
 Az alkalmazások az Azure Kubernetes szolgáltatásban (ak) való megtartásához szükség lehet a számítási feladatokat futtató csomópontok számának módosítására. A fürt autoscaleer összetevője megtekintheti a fürtben lévő hüvelyeket, amelyek erőforrás-korlátozások miatt nem ütemezhetők. Problémák észlelése esetén a Node-készlet csomópontjainak száma megnő az alkalmazás iránti igény kielégítése érdekében. A csomópontokat a futó hüvelyek hiánya is rendszeresen ellenőrzi, a csomópontok számával azonban szükség szerint csökken. Ez a lehetőség lehetővé teszi a csomópontok számának automatikus méretezését az AK-fürtben, így hatékony és költséghatékony fürtöt futtathat.
 
-Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt automéretezőjét egy AK-fürtben. A fürt automéretezőjét csak előzetes verzióban kell tesztelni az AK-fürtökön.
-
-> [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
->
-> * [AK-támogatási szabályzatok][aks-support-policies]
-> * [Azure-támogatás – gyakori kérdések][aks-faq]
+Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt automéretezőjét egy AK-fürtben. 
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
-
-### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
-
-A fürt automéretező használatához a CLI *-előnézet CLI-* bővítmény 0.4.12 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Ehhez a cikkhez az Azure CLI 2.0.76 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -90,21 +72,19 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --enable-vmss \
+  --vm-set-type VirtualMachineScaleSets \
+  --load-balancer-sku standard \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
 ```
-
-> [!NOTE]
-> Ha a *--kubernetes-Version* értéket ad meg `az aks create`-nél, a verziónak meg kell felelnie vagy meg kell haladnia a szükséges minimális verziószámot, amelyet az előzőekben ismertetett [lépések szakaszban talál](#before-you-begin) .
 
 A fürt létrehozása és a fürt autoskálázási beállításainak konfigurálása néhány percet vesz igénybe.
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>A fürt autoskálázási beállításainak módosítása
 
 > [!IMPORTANT]
-> Ha az előfizetésben engedélyezve van *több ügynök-készlet* funkció, ugorjon az [autoskálázás több ügynök-készlettel szakaszra](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). A több ügynököt tartalmazó fürtök esetében a `az aks nodepool` parancs használatára van szükség, hogy a csomópont-készletre vonatkozó tulajdonságok a `az aks` helyett legyenek módosítva. Az alábbi utasítások feltételezik, hogy nem engedélyezte a több csomópontos készletet. Ha szeretné megnézni, hogy engedélyezve van-e, futtassa `az feature  list -o table` parancsot, és keresse meg a `Microsoft.ContainerService/multiagentpoolpreview` értéket.
+> Ha több Node-készlettel rendelkezik az AK-fürtben, ugorjon az [autoskálázás több ügynök-készlettel szakaszra](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). A több ügynököt tartalmazó fürtökhöz a `az aks nodepool` parancs használatára van szükség, hogy `az aks`helyett a csomópont-készletre vonatkozó tulajdonságok legyenek módosítva.
 
 Az előző lépésben egy AK-fürt létrehozásához vagy egy meglévő csomópont-készlet frissítéséhez a fürthöz tartozó minimális csomópontok számának értéke *1*, a csomópontok maximális száma pedig *3*. Az alkalmazás követelményeinek változása esetén előfordulhat, hogy módosítania kell a fürt automatikusan méretezhető csomópontjának darabszámát.
 
@@ -122,7 +102,7 @@ az aks update \
 A fenti példa frissíti a fürt automéretezőjét az egyetlen csomópontos készleten a *myAKSCluster* -ben legalább *1* és legfeljebb *5* csomópontra.
 
 > [!NOTE]
-> Az előzetes verzióban nem állítható be magasabb minimális csomópontok száma, mint a jelenleg a csomópont-készlethez. Ha például jelenleg a minimális darabszám értéke *1*, akkor a percek száma nem frissíthető *3*értékre.
+> Nem állítható be magasabb minimális csomópontok száma, mint ami jelenleg be van állítva a csomópont-készlethez. Ha például jelenleg a minimális darabszám értéke *1*, akkor a percek száma nem frissíthető *3*értékre.
 
 Figyelje az alkalmazások és szolgáltatások teljesítményét, és állítsa be úgy a fürt automatikusan méretezhető csomópontjának számát, hogy az megfeleljen a szükséges teljesítménynek.
 
@@ -141,35 +121,37 @@ A fürt automéretezőjét az az [AK Scale][az-aks-scale] paranccsal manuálisan
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Letiltott fürt autoskálázásának újbóli engedélyezése
 
-Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK Update][az-aks-update] paranccsal, amely az *--enable-cluster-autoscaleer* paramétert is megadja.
+Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK Update][az-aks-update] paranccsal, amely megadja az *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket.
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>A fürt autoskálázásának használata több Node-készlettel engedélyezve
 
-A fürt automéretezője együtt használható a [több csomópontos készletek előzetes verziójának funkciójának](use-multiple-node-pools.md) használatával. Ezt a dokumentumot követve megtudhatja, hogyan engedélyezheti több csomópontos készletet, és hogyan adhat hozzá további csomópont-készleteket egy meglévő fürthöz. Mindkét funkció együttes használatakor engedélyezheti a fürt automatikus méretezését a fürt minden egyes csomópontján, és egyedi automatikus skálázási szabályokat adhat át mindegyiknek.
+A fürt automéretezője a [több csomópontos készlettel](use-multiple-node-pools.md) együtt is használható. Ezt a dokumentumot követve megtudhatja, hogyan engedélyezheti több csomópontos készletet, és hogyan adhat hozzá további csomópont-készleteket egy meglévő fürthöz. Mindkét funkció együttes használatakor engedélyezheti a fürt automatikus méretezését a fürt minden egyes csomópontján, és egyedi automatikus skálázási szabályokat adhat át mindegyiknek.
 
 Az alábbi parancs feltételezi, hogy követte a jelen dokumentum korábbi részében ismertetett [kezdeti útmutatást](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) , és frissíteni szeretné egy meglévő csomópont-készlet maximális darabszámát *3* és *5*között. A meglévő Node-készlet beállításainak frissítéséhez használja az az [AK nodepool Update][az-aks-nodepool-update] parancsot.
 
 ```azurecli-interactive
 az aks nodepool update \
   --resource-group myResourceGroup \
-  --cluster-name multipoolcluster \
-  --name mynodepool \
-  --enable-cluster-autoscaler \
+  --cluster-name myAKSCluster \
+  --name nodepool1 \
+  --update-cluster-autoscaler \
   --min-count 1 \
   --max-count 5
 ```
 
-A fürt automéretezője le lehet tiltani az [az AK nodepool Update paranccsal][az-aks-nodepool-update] , és a `--disable-cluster-autoscaler` paramétert kell átadni.
+A fürt automéretezője le lehet tiltani az [az AK nodepool Update paranccsal][az-aks-nodepool-update] , és a `--disable-cluster-autoscaler` paramétert kell átadnia.
 
 ```azurecli-interactive
 az aks nodepool update \
   --resource-group myResourceGroup \
-  --cluster-name multipoolcluster \
-  --name mynodepool \
+  --cluster-name myAKSCluster \
+  --name nodepool1 \
   --disable-cluster-autoscaler
 ```
 
-## <a name="next-steps"></a>Következő lépések
+Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely a *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket használja. .
+
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan méretezni az AK-csomópontok számát. A vízszintes Pod automatikus méretezés használatával automatikusan módosíthatja az alkalmazást futtató hüvelyek számát. A horizontális Pod automéretező használatának lépéseiért lásd: [alkalmazások méretezése az AK-ban][aks-scale-apps].
 

@@ -3,15 +3,15 @@ title: A házirend-definíciós struktúra részletei
 description: Azt írja le, hogyan használja az erőforrás-házirend definícióját a Azure Policy a szervezet erőforrásaira vonatkozó konvenciók létrehozásához, ha leírja, hogy mikor lép érvénybe a házirend, és milyen hatással van rájuk.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053497"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464028"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -81,12 +81,17 @@ Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all`. A portálon
 
 a címkéket vagy helyszíneket kikényszerítő házirendek létrehozásakor `indexed`t kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok**. Az erőforráscsoportok helyét vagy címkéit kényszerítő házirendeknek úgy kell beállítaniuk a **módot** , hogy `all` és kifejezetten a `Microsoft.Resources/subscriptions/resourceGroups` típust célozzák meg. Példaként tekintse meg az [erőforráscsoport-címkék betartatása](../samples/enforce-tag-rg.md)című témakört. A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/tag-support.md).
 
-### <a name="resource-provider-modes"></a>Erőforrás-szolgáltatói módok
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />erőforrás-szolgáltatói módok (előzetes verzió)
 
-Jelenleg az egyetlen támogatott erőforrás-szolgáltatói mód `Microsoft.ContainerService.Data` a belépésvezérlés-szabályok [Azure Kubernetes-szolgáltatásban](../../../aks/intro-kubernetes.md)való kezeléséhez.
+Az előzetes verzióban jelenleg a következő erőforrás-szolgáltatói módok támogatottak:
+
+- `Microsoft.ContainerService.Data` a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó házirendeknek a [EnforceRegoPolicy](./effects.md#enforceregopolicy) hatást **kell** használniuk.
+- `Microsoft.Kubernetes.Data` az Azure-beli önfelügyelt Kubernetes-fürtök kezeléséhez.
+  Az ezt az erőforrás-szolgáltatói módot használó házirendeknek a [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatást **kell** használniuk.
+- `Microsoft.KeyVault.Data` [Azure Key Vault](../../../key-vault/key-vault-overview.md)-tárolók és-tanúsítványok kezeléséhez.
 
 > [!NOTE]
-> A [Kubernetes Azure Policy](rego-for-aks.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzat-definíciókat támogatja.
+> Az erőforrás-szolgáltatói módok csak a beépített szabályzat-definíciókat támogatják, és az előzetes verzióban nem támogatottak a kezdeményezések.
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -134,7 +139,7 @@ Például meghatározhat egy házirend-definíciót, amely korlátozza az erőfo
 
 ### <a name="using-a-parameter-value"></a>Paraméter értékének használata
 
-A házirend szabályban a paramétereket a következő `parameters` központi telepítési érték függvény szintaxisával hivatkozhat:
+A házirend szabályban a paramétereket a következő `parameters` függvény szintaxisával hivatkozhat:
 
 ```json
 {
@@ -272,7 +277,7 @@ A következő mezők támogatottak:
 - `tags['''<tagName>''']`
   - Ez a zárójel-szintaxis támogatja az aposztrófokat tartalmazó címkéket dupla aposztrófokkal.
   - Ahol a **"\<tagName\>"** a címke neve, amely ellenőrzi a feltételt.
-  - Példa: `tags['''My.Apostrophe.Tag''']`, ahol a **"\<tagName\>"** a címke neve.
+  - Példa: `tags['''My.Apostrophe.Tag''']`, ahol a **"My. aposztróf. tag"** a címke neve.
 - tulajdonság-aliasok – lista esetén lásd: [aliasok](#aliases).
 
 > [!NOTE]
@@ -282,7 +287,7 @@ A következő mezők támogatottak:
 
 Egy paraméter értéke adható át egy címke mezőnek. Ha egy paramétert egy címke mezőre továbbít, a házirend-hozzárendelés során növeli a házirend-definíció rugalmasságát.
 
-A következő `concat` példában a rendszer a **TagName** paraméter értékének megadásával létrehoz egy címkéket a címke mezőinek kereséséhez. Ha ez a címke nem létezik, a **Hozzáfűzés** hatására a rendszer felveszi a címkét a naplózott erőforrások szülő erőforráscsoporthoz tartozó azonos nevű címke értékével a `resourcegroup()` lookup függvénnyel.
+A következő `concat` példában a rendszer a **TagName** paraméter értékének megadásával létrehoz egy címkéket a címke mezőinek kereséséhez. Ha ez a címke nem létezik, a **módosítás** hatására a rendszer hozzáadja a címkét a naplózott erőforrások szülő erőforráscsoporthoz tartozó megnevezett címke értékével a `resourcegroup()` lookup függvénnyel.
 
 ```json
 {
@@ -291,16 +296,22 @@ A következő `concat` példában a rendszer a **TagName** paraméter értékén
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
 
-### <a name="value"></a>Value (Díj)
+### <a name="value"></a>Érték
 
 A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi.
 az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
@@ -390,42 +401,15 @@ A módosított szabályzattal rendelkező szabály `if()` ellenőrzi a **név** 
 
 Azure Policy a következő típusú hatásokat támogatja:
 
-- **Megtagadás**: eseményt hoz létre a tevékenység naplójában, és sikertelenül kéri a kérést.
-- **Naplózás**: figyelmeztetési esemény generálása a tevékenység naplójában, de a kérelem nem sikerül
 - **Hozzáfűzés**: hozzáadja a mezők meghatározott készletét a kéréshez.
-- **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik
-- **DeployIfNotExists**: olyan erőforrást telepít, amely még nem létezik
+- **Naplózás**: figyelmeztetési esemény generálása a tevékenység naplójában, de a kérelem nem sikerül
+- **AuditIfNotExists**: figyelmeztetési eseményt állít elő a tevékenység naplójában, ha nem létezik kapcsolódó erőforrás
+- **Megtagadás**: eseményt hoz létre a tevékenység naplójában, és sikertelenül kéri a kérést.
+- **DeployIfNotExists**: egy kapcsolódó erőforrás üzembe helyezése, ha még nem létezik
 - **Letiltva**: nem értékeli ki a házirend-szabálynak való megfeleléshez szükséges erőforrásokat
-- **EnforceRegoPolicy**: az Azure Kubernetes szolgáltatásban (előzetes verzió) megnyitja a házirend-ügynök beléptetési vezérlőjét.
+- **EnforceOPAConstraint** (előzetes verzió): az Azure-beli önfelügyelt Kubernetes-fürtökhöz az Open Policy Agent beléptetési vezérlőt konfigurálja az Azure-ban (előzetes verzió)
+- **EnforceRegoPolicy** (előzetes verzió): az Azure Kubernetes Service-ben a (z)
 - **Módosítás**: a definiált címkék hozzáadását, frissítését vagy eltávolítását egy erőforrásból
-
-A **hozzáfűzéshez**meg kell adnia a következő adatokat:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-Az érték lehet karakterlánc vagy JSON formátumú objektum.
-
-A **AuditIfNotExists** és a **DeployIfNotExists** kiértékeli egy kapcsolódó erőforrás létezését, és alkalmazza a szabályt. Ha az erőforrás nem felel meg a szabálynak, a hatás implementálva lesz. Megkövetelheti például, hogy hálózati figyelő legyen telepítve az összes virtuális hálózathoz. További információ: a naplózás, [Ha a bővítmény nem létezik](../samples/audit-ext-not-exist.md) példa.
-
-A **DeployIfNotExists** hatásához a **roleDefinitionId** tulajdonságra van szükség a szabályzat szabályának **részletek** részében. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-Hasonlóképpen, a **módosításhoz** a **roleDefinitionId** tulajdonság szükséges a szabályzat szabályának **részletek** részében a [szervizelési feladathoz](../how-to/remediate-resources.md). A **módosításhoz** egy **műveleti** tömbre is szükség van, amely meghatározza, hogy milyen műveleteket kell végrehajtani az erőforrások címkén.
 
 Az egyes effektusok, a kiértékelési sorrend, a tulajdonságok és a példák részletes ismertetését lásd: a [Azure Policy effektusok ismertetése](effects.md).
 
@@ -618,7 +602,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy kezdeményezést két cím
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatok hatásainak ismertetése](effects.md).

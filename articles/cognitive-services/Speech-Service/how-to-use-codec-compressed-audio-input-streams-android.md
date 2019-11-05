@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: df5eb123a2fd47a3eceea8153786442bf56a2718
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803832"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464374"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>A kodekkel tömörített hangbemenet használata az Androidon futó Speech SDK-val
 
@@ -37,13 +37,13 @@ A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját.  A 
 
 A kodekkel tömörített hang a [GStreamer](https://gstreamer.freedesktop.org)használatával valósítható meg. Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva az SDK-val. Az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
 
-`libgstreamer_android.so` szükséges. Győződjön meg arról, hogy a GStreamer beépülő modul a `libgstreamer_android.so`-ban van-e csatolva.
+`libgstreamer_android.so` megadása kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`van csatolva.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
 ```
 
-Alább `Android.mk` és `Application.mk` fájlt kell megadnia. A GStreamer megosztott objektum létrehozásához kövesse az alábbi lépéseket: `libgstreamer_android.so`.
+Alább látható egy példa `Android.mk` és `Application.mk` fájlra. A GStreamer megosztott objektum létrehozásához kövesse az alábbi lépéseket: `libgstreamer_android.so`.
 
 ```make
 # Android.mk
@@ -97,7 +97,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Az Ubuntu 16,04-as vagy 18,04-es verziójában a következő paranccsal hozhat létre `libgstreamer_android.so`. A következő parancssorok csak a [GStreamer Android-verzió 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) lettek tesztelve [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+`libgstreamer_android.so` a következő paranccsal hozhat létre Ubuntu 16,04 vagy 18,04 rendszeren. A következő parancssorok csak a [GStreamer Android-verzió 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) lettek tesztelve [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # assuming wget and unzip already installed on the system
@@ -133,9 +133,9 @@ Miután a megosztott objektum (libgstreamer_android. so) létrehozta az alkalmaz
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 
-Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream` értéket. Ezután hozzon létre egy `AudioConfig` értéket a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+Ha tömörített hangformátumot szeretne továbbítani a Speech Servicesbe, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
-Tegyük fel, hogy van egy `myPullStream` nevű bemeneti adatfolyam-osztály, amely OPUS/OGG-t használ. A kód így néz ki:
+Tegyük fel, hogy rendelkezik egy `myPullStream` nevű bemeneti adatfolyam-osztállyal, és az OPUS/OGG-t használja. A kód így néz ki:
 
 ```java
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)
+* [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

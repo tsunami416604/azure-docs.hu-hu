@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326313"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468954"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Bejelentkezés Android-alkalmazással Azure Active Directory B2C
 
@@ -38,14 +38,16 @@ Ezután regisztráljon egy alkalmazást a Azure AD B2C-bérlőben. Ez biztosítj
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Jegyezze fel az **alkalmazás azonosítóját** egy későbbi lépésben való használatra. Ezután válassza ki az alkalmazást a listában, és jegyezze fel az **Egyéni átirányítási URI**-t, amely egy későbbi lépésben is használható. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
+
+Az egyéni átirányítási URI-t is rögzítheti egy későbbi lépésben való használatra. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Felhasználói folyamatok létrehozása
 
 Azure AD B2C minden felhasználói élményt egy [felhasználói folyamat](active-directory-b2c-reference-policies.md)definiál, amely az Azure ad viselkedését vezérlő szabályzatok összessége. Az alkalmazáshoz be kell jelentkeznie és regisztrálnia kell a felhasználói folyamatot. A felhasználói folyamat létrehozásakor ügyeljen arra, hogy:
 
 * Válassza ki a **megjelenítendő nevet** regisztrációs attribútumként a felhasználói folyamatban.
-* Válassza ki a **megjelenítendő nevet** és az **objektumazonosító** -alkalmazás jogcímeit minden felhasználói folyamatban. Kiválaszthat egyéb jogcímeket is.
+* Válassza ki a **megjelenítendő nevet** és az **objektumazonosító** -alkalmazás jogcímeit minden felhasználói folyamatban. Ezenfelül más jogcímeket is használhat.
 * A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A felhasználói folyamat nevét később kell megadnia.
 
 Miután létrehozta a felhasználói folyamatokat, készen áll az alkalmazás létrehozására.
@@ -67,9 +69,9 @@ A minta a [AppAuth](https://openid.github.io/AppAuth-Android/)által megadott mi
 A Azure AD B2Choz való kommunikáció konfigurálásához adja meg a felderítési URI-t, vagy adja meg az engedélyezési végpontot és a jogkivonat-végpont URI-JÁT is. Mindkét esetben a következő információkra lesz szüksége:
 
 * Bérlő azonosítója (pl. contoso.onmicrosoft.com)
-* Felhasználói folyamat neve (pl. B2C @ no__t-01 @ no__t-1SignUpIn)
+* Felhasználói folyamat neve (pl. B2C\_1\_SignUpIn)
 
-Ha úgy dönt, hogy automatikusan felderíti az engedélyezési és jogkivonat-végponti URI-ket, le kell kérnie az adatokat a felderítési URI-ból. A felderítési URI a bérlő @ no__t-0ID és a (z) @ no__t-1Name házirend a következő URL-címben való lecserélésével hozható létre:
+Ha úgy dönt, hogy automatikusan felderíti az engedélyezési és jogkivonat-végponti URI-ket, le kell kérnie az adatokat a felderítési URI-ból. A felderítési URI a bérlői\_AZONOSÍTÓjának és a házirend\_nevének a következő URL-címben való lecserélésével hozható létre:
 
 ```java
 String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
@@ -96,7 +98,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Ahelyett, hogy a felderítést az engedélyezési és jogkivonat-végponti URI-k beszerzéséhez használja, explicit módon megadhatja őket a bérlő @ no__t-0ID és a Policy @ no__t-1Name kifejezésnek a következő URL-címben való kiváltásával:
+Ahelyett, hogy a felderítést az engedélyezési és jogkivonat-végponti URI-k beszerzésére használja, explicit módon megadhatja azokat a bérlő\_AZONOSÍTÓjának és a házirend\_nevének a következő URL-címben való lecserélésével:
 
 ```java
 String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -113,7 +115,7 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyezés folyamatban
+### <a name="authorizing"></a>Engedélyezése
 
 Az engedélyezési szolgáltatás konfigurációjának konfigurálása vagy beolvasása után egy engedélyezési kérelem is létrehozható. A kérelem létrehozásához a következő információkra lesz szüksége:
 

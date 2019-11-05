@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73102369"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467175"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -162,7 +162,7 @@ Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys
 
 Létrehozhat egy Azure AD-csoportot, alkalmazásokat és felhasználókat vehet fel a csoportba, és hozzáférést biztosíthat a csoportnak a kulcstartóhoz.  Ez lehetővé teszi, hogy több alkalmazást adjon hozzá egy kulcstartóhoz egyetlen hozzáférési házirend-bejegyzésként, és megakadályozza, hogy a felhasználóknak közvetlenül hozzáférjenek a kulcstartóhoz (amit nem lehet lemondani). További részletekért lásd: [alkalmazás-és erőforrás-hozzáférés kezelése Azure Active Directory csoportok használatával](../active-directory/fundamentals/active-directory-manage-groups.md).
 
-### <a name="addition-prerequisites"></a>További előfeltételek
+### <a name="additional-prerequisites"></a>További előfeltételek
 
 A [fenti előfeltételeken](#prerequisites)kívül a csoportok létrehozásához és szerkesztéséhez is engedélyre van szüksége a Azure Active Directory-bérlőben. Ha nem rendelkezik megfelelő engedélyekkel, előfordulhat, hogy kapcsolatba kell lépnie Azure Active Directory rendszergazdájával.
 
@@ -221,7 +221,7 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 Végül adja meg az AD-csoport engedélyeit a kulcstartónak az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancs vagy a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) parancsmag használatával. Példaként tekintse meg az [alkalmazás, az Azure ad-csoport vagy a felhasználó hozzáférése a Key vaulthoz](#give-the-principal-access-to-your-key-vault) című szakaszt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
 - [App Service felügyelt identitással rendelkező Key Vault hitelesítés megadása](managed-identity.md)

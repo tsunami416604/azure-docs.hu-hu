@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: Xamarin-t tartalmazó Todo-alkalmazás létrehozása'
+title: 'Azure Cosmos DB: Teendőkezelő alkalmazás fejlesztése Xamarin használatával'
 description: A cikk egy Xamarin-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre az adatbázisra vonatkozóan.
 author: codemillmatt
 ms.service: cosmos-db
@@ -8,22 +8,22 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615736"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466303"
 ---
-# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Xamarin-alkalmazás létrehozása a Azure Cosmos DB SQL API-fiók használatával
+# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Azure Cosmos DB SQL API-fiókkal rendelkező Xamarin-alkalmazás létrehozása a használatával
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
@@ -61,9 +61,9 @@ Mac gépek esetében letöltheti az **ingyenes** [Visual Studio for Mac](https:/
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon klónozott Xamarin SQL API-alkalmazást a GitHubról, tekintse át a kódot, szerezze be az API-kulcsokat, és futtassa. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.
+Most hozzon klónozott Xamarin SQL API-alkalmazást a GitHubról, tekintse át a kódot, szerezze be az API-kulcsokat, és futtassa. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal.
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -75,7 +75,7 @@ Most hozzon klónozott Xamarin SQL API-alkalmazást a GitHubról, tekintse át a
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
@@ -111,26 +111,26 @@ Ez a megoldás bemutatja, hogy hogyan hozhat létre egy teendőkezelő alkalmaz�
 
 A ToDoItems megoldásban található kód az alábbiakat tartalmazza:
 
-* ToDoItems.Core: Ez egy olyan .NET Standard-projekt, amely egy Xamarin. Forms projektet és egy közös alkalmazás-logikai kódot tart fenn, amely Azure Cosmos DBon belüli teendőket tart fenn.
-* ToDoItems.Android: Ez a projekt tartalmazza az Android-alkalmazást.
-* ToDoItems.iOS: Ez a projekt tartalmazza az iOS-alkalmazást.
+* ToDoItems.Core: Ez egy Xamarin.Forms-projektet és az Azure Cosmos DB-ben a teendőket kezelő, megosztott alkalmazáslogikai kódot tartalmazó .NET Standard-projekt.
+* ToDoItems.Android: Ez a projekt az Android-alkalmazást tartalmazza.
+* ToDoItems.iOS: Ez a projekt az iOS-alkalmazást tartalmazza.
 
 Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos DB-vel.
 
 * A [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) NuGet-csomagot minden projekthez hozzá kell adni.
-* A Azure-documentdb-DotNet/Samples/xamarin/ToDoItems/ToDoItems. Core/models mappában található osztályafentlétrehozottelemektárolóbanlévődokumentumokatmodellezi`ToDoItem` . Vegye figyelembe, hogy a tulajdonságok elnevezése különbséget tesz a kis- és nagybetűk között.
+* A Azure-documentdb-DotNet/Samples/xamarin/ToDoItems/ToDoItems. Core/models mappában található `ToDoItem` osztály a fent létrehozott **elemek** tárolóban lévő dokumentumokat modellezi. Vegye figyelembe, hogy a tulajdonságok elnevezése különbséget tesz a kis- és nagybetűk között.
 * Az azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services mappában található `CosmosDBService` osztály foglalja magában az Azure Cosmos DB-vel folytatott kommunikációt.
-* A `CosmosDBService` osztályban egy `DocumentClient` típusú változó található. A `DocumentClient` (z) a Azure Cosmos db fiókra vonatkozó kérelmek konfigurálásához és végrehajtásához használatos, és a példánya a következő:
+* A `CosmosDBService` osztályban egy `DocumentClient` típusú változó található. A `DocumentClient` a Azure Cosmos DB-fiókra vonatkozó kérelmek konfigurálásához és végrehajtásához használatos, és a példánya a következő:
 
     ```csharp
     docClient = new DocumentClient(new Uri(APIKeys.CosmosEndpointUrl), APIKeys.CosmosAuthKey);
     ```
 
-* A dokumentumok tárolójának lekérdezése során a rendszer `DocumentClient.CreateDocumentQuery<T>` a metódust használja, ahogy az itt látható `CosmosDBService.GetToDoItems` a függvényben:
+* A dokumentumok tárolójának lekérdezése során a rendszer a `DocumentClient.CreateDocumentQuery<T>` metódust használja, ahogy az a `CosmosDBService.GetToDoItems` függvényben látható:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
 
-    A `CreateDocumentQuery<T>` fogad egy URI-t, amely az előző szakaszban létrehozott tárolóra mutat. Emellett LINQ-operátorokat is megadhat, például egy `Where` záradékot. Ebben az esetben a rendszer csak a nem elvégzett teendőket adja vissza.
+    A `CreateDocumentQuery<T>` egy olyan URI-t vesz fel, amely az előző szakaszban létrehozott tárolóra mutat. Emellett LINQ-operátorokat is megadhat, például egy `Where` záradékot. Ebben az esetben a rendszer csak a nem elvégzett teendőket adja vissza.
 
     A `CreateDocumentQuery<T>` függvény végrehajtása szinkron módon történik, és egy `IQueryable<T>` objektumot ad vissza. Az `AsDocumentQuery` metódus azonban a `IQueryable<T>` objektumot `IDocumentQuery<T>` objektummá alakítja át, amely aszinkron módon hajtható végre. Így nem blokkolja a mobilalkalmazások felhasználói felületi szálját.
 
@@ -139,17 +139,17 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
 > [!TIP]
 > Az Azure Cosmos-tárolók és-dokumentumok által működtetett függvények számos funkciója egy URI-t fogad el paraméterként, amely meghatározza a tároló vagy a dokumentum címeit. Ezen URI létrehozása az `URIFactory` osztállyal történik. Az adatbázisokhoz, tárolóhoz és dokumentumokhoz tartozó URI-k mindegyike létrehozható ezzel az osztállyal.
 
-* A `ComsmosDBService.InsertToDoItem` függvény bemutatja, hogyan szúrhat be új dokumentumot:
+* A `ComsmosDBService.InsertToDoItem` függvény azt mutatja be, hogyan szúrhat be új dokumentumot:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
 
     Az Item URI meg van adva, valamint a beszúrandó elemet is.
 
-* A `CosmosDBService.UpdateToDoItem` függvény bemutatja, hogyan cserélhet le egy meglévő dokumentumot egy újat:
+* A `CosmosDBService.UpdateToDoItem` függvény azt mutatja be, hogyan cserélhet le egy meglévő dokumentumot egy újat:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
 
-    Itt új URI-t kell megadnia a lecserélni kívánt dokumentum egyedi azonosításához, `UriFactory.CreateDocumentUri` amelyet a rendszer az adatbázis és a tárolók nevének és a dokumentum azonosítójának átadásával kapott.
+    Itt új URI-ra van szükség a lecserélni kívánt dokumentum egyedi azonosításához, amelyet a rendszer a `UriFactory.CreateDocumentUri` használatával szerez be, és továbbítja az adatbázist és a tároló nevét, valamint a dokumentum AZONOSÍTÓját.
 
     A `DocumentClient.ReplaceDocumentAsync` a paraméterként meghatározott dokumentumra cseréli le az URI által azonosított dokumentumot.
 
@@ -157,11 +157,11 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
 
-    Ismét jegyezze fel `DocumentClient.DeleteDocumentAsync` , hogy a rendszer létrehozza és átadja a függvénynek az egyedi dokumentum URI-ját.
+    Jegyezze fel újra az egyedi dokumentum-URI-t, amelyet a rendszer a `DocumentClient.DeleteDocumentAsync` függvénynek átadott.
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
+Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
 A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visual Studio for Mac hibakeresőjével.
 
