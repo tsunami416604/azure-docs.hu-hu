@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390160"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499244"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -125,7 +125,7 @@ A foglalási kedvezmény csak nagyvállalati, Microsoft-ügyfélszerződéses, C
 
 ## <a name="when-the-reservation-term-expires"></a>A foglalási időszak lejárata
 
-A foglalási időszak végén a számlázási kedvezmény lejár. A virtuális gépért, az SQL Database-adatbázisért, az Azure Cosmos DB-ért és más erőforrásokért használatalapú díjakat számlázunk. Az Azure-foglalások nem újulnak meg automatikusan. Ahhoz, hogy továbbra is megkapja a számlázási kedvezményt, vásárolnia kell egy új foglalást egy jogosult szolgáltatáshoz vagy szoftverhez.
+A foglalási időszak végén a számlázási kedvezmény lejár, és az erőforrások számlázása használatalapú díjjal történik. Alapértelmezés szerint a foglalások automatikus megújítása nincs beállítva. A megújítási beállításokban elérhető lehetőség kiválasztásával engedélyezheti a foglalások automatikus megújítását. Az automatikus megújítás esetén a rendszer a meglévő foglalás lejáratakor megvásárol egy cserefoglalást. Alapértelmezés szerint a cserefoglalás ugyanolyan jellemzőkkel rendelkezik, mint a lejáró foglalás. Igény szering módosíthatja a számlázási gyakoriságot, az időszakot vagy a mennyiséget a megújítási beállításokban. A megújítást bármely felhasználó beállíthatja, aki tulajdonosi hozzáféréssel rendelkezik a foglaláshoz, valamint a számlázáshoz használt előfizetéshez.  
 
 ## <a name="discount-applies-to-different-sizes"></a>A kedvezmény különböző méretekre érvényes
 

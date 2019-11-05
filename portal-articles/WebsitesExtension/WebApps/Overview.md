@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60530861"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488426"
 ---
 # <a name="app-service-documentation"></a>App Service – dokumentáció
 Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps Services vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
@@ -42,7 +42,7 @@ Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkal
   - [Java és MySQL](/app-service/app-service-web-tutorial-java-mysql)
   - [Python és PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [Meglévő egyéni tartomány kapcsolása az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-domain)
-- [Meglévő SSL-tanúsítvány kötése az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-SSL)
+- [SSL-tanúsítvány kötése az alkalmazáshoz](/azure/app-service/configure-ssl-bindings)
 
 ## <a name="free-pluralsight-video-training"></a>Ingyenes Pluralsight videós képzés
 
