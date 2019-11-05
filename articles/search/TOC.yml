@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: Oktatóanyagok
   items:
-    - name: Az első alkalmazás létrehozása
+    - name: 'Az első C#-alkalmazás létrehozása'
       items:
         - name: 1 – Alapszintű keresőoldal
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: Mezők leképezése
           href: search-indexer-field-mappings.md
-        - name: Növekményes indexelés
-          href: search-howto-incremental-index.md
         - name: Csatlakozás felügyelt SQL-példányhoz
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Csatlakozás az SQL Server virtuális gépeihez
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: Képeken szereplő információk feldolgozása és kinyerése
               href: cognitive-search-concept-image-scenarios.md
+            - name: A növekményes indexelés beállítása
+              href: search-howto-incremental-index.md
         - name: Egyéni készségek
           items:
             - name: Egyéni képesség integrálása
               href: cognitive-search-custom-skill-interface.md
             - name: Példa – Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: Példa – Teljesítménybeli képességek
-              href: 'https://aka.ms/powerskills'
             - name: Példa – Tárolók
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Hibaelhárítási tippek
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: Feltételes
           href: cognitive-search-skill-conditional.md
+        - name: Dokumentumkinyerés
+          href: cognitive-search-skill-document-extraction.md
     - name: Egyéni készségek
       items:
         - name: Egyéni webes API

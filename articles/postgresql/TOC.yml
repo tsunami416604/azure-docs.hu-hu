@@ -92,6 +92,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: Kapcsolati architektúra
               href: concepts-connectivity-architecture.md
+            - name: Azure AD-hitelesítés
+              href: concepts-aad-authentication.md
         - name: Az üzletmenet folytonossága
           items:
             - name: Az üzletmenet folytonossága – bevezetés
@@ -153,8 +155,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Az SSL konfigurálása
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Figyelés és hangolás
+          items:
+            - name: Figyelés és hangolás
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL-bővítmények
           href: concepts-hyperscale-extensions.md
+        - name: Magas rendelkezésre állás
+          href: concepts-hyperscale-high-availability.md
         - name: További források
           items:
             - name: Beállítási lehetőségek
@@ -163,8 +171,12 @@
   items:
     - name: Egyetlen kiszolgáló
       items:
-        - name: Felhasználók létrehozása
-          href: howto-create-users.md
+        - name: Hitelesítés
+          items:
+            - name: Felhasználók létrehozása
+              href: howto-create-users.md
+            - name: Az Azure AD-integráció konfigurálása
+              href: howto-configure-sign-in-aad-authentication.md
         - name: Optimalizálás
           items:
             - name: Tömeges beszúrások
@@ -245,12 +257,20 @@
               href: howto-read-replicas-cli.md
     - name: Rugalmas skálázás (Citus)
       items:
+        - name: Felhasználók létrehozása
+          href: howto-hyperscale-create-users.md
         - name: Méretezés
           href: howto-hyperscale-scaling.md
         - name: Tűzfal kezelése
           items:
             - name: Azure Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Magas rendelkezésre állás
+          href: howto-hyperscale-high-availability.md
+        - name: Figyelés
+          items:
+            - name: Riasztások létrehozása metrikákhoz
+              href: howto-hyperscale-alert-on-metric.md
         - name: Hibaelhárítás
           items:
             - name: Csatlakozási hibák elhárítása

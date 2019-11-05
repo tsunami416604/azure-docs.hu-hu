@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Az Azure Machine Learning Studio dokumentációja
-summary: A Machine Learning Studio olyan egérrel kezelhető eszköz, amellyel prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe.
+title: Az Azure Machine Learning Studio (klasszikus) dokumentációja
+summary: A Machine Learning Studio (klasszikus) olyan, egérrel kezelhető eszköz, amellyel prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe.
 metadata:
-  title: A Machine Learning Studio dokumentációja – Azure
-  description: A Machine Learning Studio olyan egérrel kezelhető eszköz, amellyel prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe.
+  title: Machine Learning Studio (klasszikus) dokumentáció – Azure
+  description: A Machine Learning Studio (klasszikus) olyan, egérrel kezelhető eszköz, amellyel prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
@@ -12,18 +12,18 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 09/04/2019
-  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.openlocfilehash: 651c816b72dd63845b786dcf73a8c395b9c8f337
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309188"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492880"
 landingContent:
-- title: A Studio használatának első lépései
+- title: A (klasszikus) Studio használatának első lépései
   linkLists:
   - linkListType: get-started
     links:
-    - text: Mi az a Studio?
+    - text: Mi az a (klasszikus) Studio?
       url: what-is-ml-studio.md
     - text: Az első gépi tanulási kísérlet létrehozása
       url: create-experiment.md
@@ -45,7 +45,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Machine Learning szolgáltatás
+    - text: Azure Machine Learning
       url: /azure/machine-learning/
     - text: Adatelemzési virtuális gép
       url: /azure/machine-learning/data-science-virtual-machine

@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: API-importálási korlátozások
       href: api-management-api-import-restrictions.md
+    - name: Saját üzemeltetésű átjáró áttekintése
+      href: self-hosted-gateway-overview.md
 - name: Útmutatók
   items:
     - name: API-k meghatározása
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: Egyéni tartomány konfigurálása
           href: configure-custom-domain.md
+        - name: Üzembe helyezés több Azure-régióban
+          href: api-management-howto-deploy-multi-region.md
+        - name: Saját üzemeltetésű átjáró üzembe helyezése
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Saját üzemeltetésű átjáró üzembe helyezése Kubernetesben
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: Saját üzemeltetésű átjáró üzembe helyezése Dockerben
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: Egyéni tartomány konfigurálása saját üzemeltetésű átjáróhoz
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: Gyorsítótár
       items:
         - name: Gyorsítótárazás hozzáadása a hatékonyabb működés érdekében
@@ -195,8 +207,6 @@
       items:
         - name: Csoportok kezelése
           href: api-management-howto-create-groups.md
-        - name: Üzembe helyezés több Azure-régióban
-          href: api-management-howto-deploy-multi-region.md
         - name: IP-címek lekérése
           href: api-management-howto-ip-addresses.md
         - name: Eseménynaplózás az Azure Event Hubs segítségével

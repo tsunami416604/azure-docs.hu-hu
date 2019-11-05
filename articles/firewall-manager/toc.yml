@@ -1,0 +1,57 @@
+- name: Az Azure Firewall Manager dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure Firewall Manager?
+      href: overview.md
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: A felhőhálózat védelme – portál
+      href: secure-cloud-network.md
+- name: Alapelvek
+  items:
+    - name: Mi az a biztonságos virtuális központ?
+      href: secured-virtual-hub.md
+    - name: Az üzembe helyezés általános folyamata
+      href: deployment-overview.md
+    - name: Megbízható biztonsági partnerek
+      href: trusted-security-partners.md
+    - name: Szabályfeldolgozási logika
+      href: rule-processing.md
+- name: Útmutatók
+  items:
+    - name: Megbízható biztonsági partnerek hozzáadása
+      href: deploy-trusted-security-partner.md
+    - name: Migrálás tűzfalszabályzatba
+      href: migrate-to-policy.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: További források
+  items:
+    - name: Szerzői sablonok
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Közösségi sablonok
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'

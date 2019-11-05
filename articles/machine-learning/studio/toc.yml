@@ -1,9 +1,9 @@
-- name: A Machine Learning Studio dokumentációja
+- name: A Machine Learning Studio (klasszikus) dokumentációja
   href: index.yml
 - name: Áttekintés
   expanded: true
   items:
-    - name: Machine Learning Studio
+    - name: Machine Learning Studio (klasszikus)
       displayName: overview
       href: what-is-ml-studio.md
     - name: Machine Learning-termékeink összehasonlítása
@@ -106,8 +106,6 @@
       items:
         - name: Algoritmusok kiválasztása
           href: algorithm-choice.md
-        - name: Algoritmus-adatlap
-          href: algorithm-cheat-sheet.md
         - name: Algoritmuspéldák
           displayName: 'infographic, studio basics'
           href: basics-infographic-with-algorithm-examples.md
@@ -153,11 +151,11 @@
           href: azure-ml-customer-churn-scenario.md
         - name: Hangulatelemzés
           href: text-analytics-module-tutorial.md
-        - name: Elemzések migrálása Excelből a Studióba
+        - name: Elemzések migrálása Excelből a (klasszikus) Studióba
           href: linear-regression-in-azure.md
     - name: Ügyféladatok törlése és exportálása
       items:
-        - name: Studio-adatok
+        - name: Studio (klasszikus) adatai
           displayName: export
           href: export-delete-personal-data-dsr.md
         - name: Katalógusadatok

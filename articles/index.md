@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b451763a4d359d18ccb4d53cd3ee96fdafd53818
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 4c1b7c49002d9ff6cd8c782c3308edaaa5d2373d
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501249"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520264"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -27,7 +27,7 @@ ms.locfileid: "68501249"
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Azure fejlesztői útmutató az első lépésekhez</span>
+                                    <span class="likeAnH3">Első lépéseket ismertető útmutató Azure-fejlesztőknek</span>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@ ms.locfileid: "68501249"
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Útmutató az Azure alkalmazásarchitektúrájához</span>
+                                    <span class="likeAnH3">Útmutató Azure-alkalmazásarchitektúrákhoz</span>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@ ms.locfileid: "68501249"
                                                             <img src="media/index/logo_NET.svg" alt=""> .NET</a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/python/azure/">
+                                                        <a class="barLink" href="/azure/python/">
                                                             <img src="media/index/logo_python.svg" alt=""> Python</a>
                                                     </li>
                                                     <li>
@@ -159,11 +159,11 @@ ms.locfileid: "68501249"
                                                             <img src="media/index/logo_PHP.svg" alt=""> PHP</a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/javascript/azure/">
+                                                        <a class="barLink" href="/azure/javascript/">
                                                             <img src="media/index/logo_nodejs.svg" alt=""> Node.js</a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/go/azure/">
+                                                        <a class="barLink" href="/azure/go/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg" alt=""> Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
@@ -189,8 +189,9 @@ ms.locfileid: "68501249"
                                                 <h4>Relációs adatbázisok</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">Szolgáltatásként nyújtott SQL Database</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-database-edge/">SQL Database a peremhálózatokhoz</a></li>
                                                     <li><a class="barLink" href="/azure/virtual-machines/windows/sql/">Azure-beli virtuális gépen futó SQL Server</a></li>
-                                                    <li><a class="barLink" href="/azure/sql-data-warehouse/">Szolgáltatásként nyújtott SQL Data Warehouse</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-data-warehouse/">Synapse Analytics (korábban SQL DW)</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">Szolgáltatásként nyújtott PostgreSQL</a></li>
                                                     <li><a class="barLink" href="/azure/mysql/">Szolgáltatásként nyújtott MySQL Database</a></li>
                                                 </ul>
@@ -331,7 +332,7 @@ ms.locfileid: "68501249"
                 <a href="#products">Termékek</a>
                 <ul id="products">
                     <li>
-                        <a href="#all">Mind</a>
+                        <a data-default="true" href="#all">Az összes</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
@@ -345,7 +346,7 @@ ms.locfileid: "68501249"
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/welcome">
-                                                <img src="media/index/machinelearning.svg" alt="" />
+                                                <img src="media/index/i_azure-cognitive-services-color.svg" alt="" />
                                                 <p>Cognitive Services</p>
                                             </a>
                                         </li>
@@ -588,8 +589,8 @@ ms.locfileid: "68501249"
                                     <ul>
                                         <li>
                                             <a href="/azure/sql-data-warehouse/">
-                                                <img src="media/index/sqldatawarehouse.svg" alt="" />
-                                                <p>SQL Data Warehouse</p>
+                                                <img src="media/index/azure_synapse_icon.svg" alt="" />
+                                                <p>Azure Synapse Analytics (korábban SQL DW)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -825,6 +826,12 @@ ms.locfileid: "68501249"
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                                                <img src="media/index/i_azure-cognitive-services-color.svg" alt="" />
+                                                <p>Cognitive Services</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/service-fabric/">
                                                 <img src="media/index/Fabric.svg" alt="" />
                                                 <p>Service Fabric</p>
@@ -857,6 +864,12 @@ ms.locfileid: "68501249"
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/sql-database-edge/">
+                                                <img src="media/index/sqldatabaseedge.svg" alt="" />
+                                                <p>Azure SQL Database Edge</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/cosmos-db/">
                                                 <img src="media/index/cosmosdb.svg" alt="" />
                                                 <p>Azure Cosmos DB</p>
@@ -864,8 +877,8 @@ ms.locfileid: "68501249"
                                         </li>
                                         <li>
                                             <a href="/azure/sql-data-warehouse/">
-                                                <img src="media/index/SQLDataWarehouse.svg" alt="" />
-                                                <p>SQL Data Warehouse</p>
+                                                <img src="media/index/azure_synapse_icon.svg" alt="" />
+                                                <p>Azure Synapse Analytics (korábban SQL DW)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1122,6 +1135,12 @@ ms.locfileid: "68501249"
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/iot-pnp/">
+                                                <img src="media/index/cloud-check.svg" alt="" />
+                                                <p>IoT Plug and Play</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/iot-suite/">
                                                 <img src="media/index/iot-solution-accelerators.svg" alt="" />
                                                 <p>IoT-megoldásgyorsítók</p>
@@ -1356,6 +1375,12 @@ ms.locfileid: "68501249"
                                             <a href="/azure/billing/">
                                                 <img src="media/index/billing.svg" alt="" />
                                                 <p>Számlázás</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/lighthouse/">
+                                                <img src="media/index/azure-resource-manager.svg" alt="" />
+                                                <p>Azure Lighthouse</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1605,6 +1630,36 @@ ms.locfileid: "68501249"
                                                 <p>Azure Bastion</p>
                                             </a>
                                         </li>
+                                        <li>
+                                          <a href="/azure/web-application-firewall/">
+                                                <img src="media/index/web-app-firewall.svg" alt="" />
+                                                <p>Web Application Firewall (Webalkalmazási tűzfal)</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="https://go.microsoft.com/fwlink/?linkid=2097091">
+                                                <img src="media/index/private-link.svg" alt="" />
+                                                <p>Azure Private Link</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/peering-service/">
+                                                <img src="media/index/peering-service.svg" alt="" />
+                                                <p>Peering Service</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/firewall-manager/">
+                                                <img src="media/index/icon-networking-361-azure-firewall-manager.svg" alt="" />
+                                                <p>Azure Firewall Manager</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/internet-analyzer/">
+                                                <img src="media/index/internet-analyzer.svg" alt="" />
+                                                <p>Azure Internet Analyzer</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>Biztonság</h3>
                                     <ul>
@@ -1627,19 +1682,19 @@ ms.locfileid: "68501249"
                                             </a>
                                         </li>
                                         <li>
-                                        <li>
                                             <a href="/azure/dedicated-hsm">
                                                 <img src="media/index/dedicated-hsm.svg" alt="" />
                                                 <p>Azure Dedicated HSM</p>
                                             </a>
                                         </li>
+                                        <li>
                                             <a href="/azure/virtual-network/ddos-protection-overview">
                                                 <img src="media/index/ddos-protection.svg" alt="" />
                                                 <p>Azure DDoS Protection</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/security/azure-threat-detection">
+                                            <a href="/azure/security/fundamentals/threat-detection">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
                                                 <p>Azure Komplex veszélyforrások elleni védelem</p>
                                             </a>
@@ -1851,10 +1906,13 @@ ms.locfileid: "68501249"
                                                 <p>Azure SignalR szolgáltatás</p>
                                             </a>
                                         </li>
+                                    </ul>
+                                    <h3>Windows Virtual Desktop</h3>
+                                    <ul>
                                         <li>
-                                            <a href="/azure/lighthouse/">
-                                                <img src="media/index/azure-resource-manager.svg" alt="" />
-                                                <p>Azure Lighthouse</p>
+                                            <a href="/azure/virtual-desktop/">
+                                                <img src="media/index/windows-virtual-desktop.svg" alt="" />
+                                                <p>Windows Virtual Desktop</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1863,7 +1921,7 @@ ms.locfileid: "68501249"
                         </ul>
                     </li>
                     <li>
-                        <a href="#ai">Mesterséges intelligencia és gépi tanulás</a>
+                        <a href="#ai">AI + Machine Learning</a>
                         <ul id="ai" class="cardsA">
                             <li class="fullSpan">
                                 <h2>Mesterséges intelligencia + Machine Learning</h2>
@@ -2188,12 +2246,12 @@ ms.locfileid: "68501249"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/sqldatawarehouse.svg" alt="" />
+                                                        <img src="media/index/azure_synapse_icon.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SQL Data Warehouse</h3>
-                                                    <p>Szolgáltatásként nyújtott rugalmas adattárház nagyvállalati szintű funkciókkal</p>
+                                                    <h3>Azure Synapse Analytics (korábban SQL DW)</h3>
+                                                    <p>Korlátlan elemzési szolgáltatás a megállapítások páratlan gyorsaságú kinyerésével</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2288,7 +2346,7 @@ ms.locfileid: "68501249"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>Valós idejű streamfeldolgozás IoT-eszközök millióiról érkező adatokhoz</p>
+                                                    <p>Alkalmazások és eszközök gyors adatstreamjeinek valós idejű elemzései</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2607,7 +2665,7 @@ ms.locfileid: "68501249"
                         </ul>
                     </li>
                     <li>
-                        <a data-default="true" href="#Compute">Compute</a>
+                        <a href="#Compute">Compute</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -2717,6 +2775,25 @@ ms.locfileid: "68501249"
                                                 <div class="cardText">
                                                     <h3>Tárolópéldányok</h3>
                                                     <p>Könnyedén futtathat tárolókat egyetlen paranccsal</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/cognitive-services/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/i_azure-cognitive-services-color.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Cognitive Services</h3>
+                                                    <p>Intelligencia bevezetése az alkalmazásokba, webhelyekre és robotprogramokba a látás, hallás, beszéd és megértés érdekében</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2976,6 +3053,25 @@ ms.locfileid: "68501249"
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/i_azure-cognitive-services-color.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Cognitive Services</h3>
+                                                    <p>Azure Cognitive Services-tárolók használata a Dockerrel, a Kubernetesszel, az AKS-szel és a Container Instanceszel</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/service-fabric/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3073,7 +3169,7 @@ ms.locfileid: "68501249"
                         </ul>
                     </li>
                     <li>
-                        <a href="#databases">Databases</a>
+                        <a href="#databases">Adatbázisok</a>
                         <ul id="databases" class="cardsA">
                             <li>
                                 <a href="/azure/sql-database/">
@@ -3088,6 +3184,25 @@ ms.locfileid: "68501249"
                                                 <div class="cardText">
                                                     <h3>Azure SQL Database</h3>
                                                     <p>Szolgáltatásként nyújtott felügyelt relációs SQL Database</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/sql-database-edge/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/sqldatabaseedge.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure SQL Database Edge</h3>
+                                                    <p>IoT- és peremhálózati környezetekre optimalizált relációsadatbázis-motor.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3120,12 +3235,12 @@ ms.locfileid: "68501249"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/SQLDataWarehouse.svg" alt="" />
+                                                        <img src="media/index/azure_synapse_icon.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SQL Data Warehouse</h3>
-                                                    <p>Szolgáltatásként nyújtott rugalmas adattárház nagyvállalati szintű funkciókkal</p>
+                                                    <h3>Azure Synapse Analytics (korábban SQL DW)</h3>
+                                                    <p>Korlátlan elemzési szolgáltatás a megállapítások páratlan gyorsaságú kinyerésével</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3918,6 +4033,25 @@ ms.locfileid: "68501249"
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/iot-pnp/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/cloud-check.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT Plug and Play</h3>
+                                                    <p>Eszközök csatlakoztatása az IoT-megoldáshoz eszközkódolás nélkül</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/iot-suite/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -4657,6 +4791,25 @@ ms.locfileid: "68501249"
                                                 <div class="cardText">
                                                     <h3>Számlázás</h3>
                                                     <p>Az Azure-előfizetés használatának és számlájának értelmezése</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/lighthouse/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-resource-manager.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Lighthouse</h3>
+                                                    <p>Ügyfélerőforrások kezelése nagy léptékben</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5430,24 +5583,19 @@ ms.locfileid: "68501249"
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#security">Biztonság</a>
-                        <ul id="security" class="cardsA">
                             <li>
-                                <a href="/azure/security/">
+                                <a href="/azure/web-application-firewall/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/SecurityCenter.svg" alt="" />
+                                                        <img src="media/index/web-app-firewall.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Biztonsági tudnivalók</h3>
-                                                    <p>Bemutatjuk, hogy az Azure miként nyújt biztonságos infrastruktúrát a felhőalapú megoldások létrehozásához</p>
+                                                    <h3>Web Application Firewall (Webalkalmazási tűzfal)</h3>
+                                                    <p>Központosított védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5455,7 +5603,67 @@ ms.locfileid: "68501249"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/security-center">
+                                <a href="/azure/peering-service/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/peering-service.svg" alt="" />
+                                                    </div>
+                                            </div>
+                                            <div class="cardText">
+                                                    <h3>Peering Service</h3>
+                                                    <p>Optimális internetkapcsolat a Microsoft-hálózat eléréséhez</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#security">Biztonság</a>
+                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="https://go.microsoft.com/fwlink/?linkid=2097091">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/private-link.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Private Link</h3>
+                                                    <p>Privát hozzáférés az Azure platformon üzemelő szolgáltatásokhoz, így az adatok a Microsoft hálózatán belül maradnak</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/firewall-manager/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/icon-networking-361-azure-firewall-manager.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Firewall Manager</h3>
+                                                    <p>Globálisan elosztott biztonsági felügyeleti szolgáltatás</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                               <a href="/azure/security-center/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5531,7 +5739,7 @@ ms.locfileid: "68501249"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/security/azure-threat-detection">
+                                <a href="/azure/security/fundamentals/threat-detection">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5819,25 +6027,6 @@ ms.locfileid: "68501249"
                                                 <div class="cardText">
                                                     <h3>2\. generációs Data Lake Storage</h3>
                                                     <p>Rendkívül rugalmasan méretezhető, Blob Storage-on alapuló biztonságos Data Lake Storage-tároló</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/lighthouse/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/azure-resource-manager.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Lighthouse</h3>
-                                                    <p>Ügyfélerőforrások kezelése nagy léptékben</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -6212,13 +6401,37 @@ ms.locfileid: "68501249"
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#windowsvirtualdesktop">Windows Virtual Desktop</a>
+                        <ul id="windowsvirtualdesktop" class="cardsA">
+                            <li>
+                                <a href="/azure/virtual-desktop">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/windows-virtual-desktop.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Windows Virtual Desktop</h3>
+                                                    <p>Virtuális asztal biztosítása bármilyen eszközhöz felhőszinten</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
              <li>
                 <a href="#sdkstools">SDK-k/eszközök</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">mind</a>
+                        <a href="#sdkstools-all">összes</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -6261,10 +6474,10 @@ Azure .NET-fejlesztőknek </h3>
                                                 <h3>
 Azure Python-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/python/azure">Első lépések</a>
+                                                    <a href="/azure/python">Első lépések</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/python/api/overview/azure/">API-referencia</a>
+                                                    <a href="/python/api/?view=azure-python">API-referencia</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6284,7 +6497,7 @@ Azure Python-fejlesztőknek </h3>
                                                 <h3>
 Azure Node.js-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/javascript/azure/">Első lépések</a>
+                                                    <a href="/azure/javascript/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/javascript/api/overview/azure/">API-referencia</a>
@@ -6330,7 +6543,7 @@ Azure Java-fejlesztőknek </h3>
                                                 <h3>
 Azure Go-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/go/azure/">Első lépések</a>
+                                                    <a href="/azure/go/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">API-referencia</a>

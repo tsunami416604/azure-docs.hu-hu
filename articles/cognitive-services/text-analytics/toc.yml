@@ -104,6 +104,8 @@
       href: text-analytics-resource-faq.md
     - name: Nyelvi és régiós támogatás
       href: language-support.md
+    - name: Nevesített entitástípusok
+      href: named-entity-types.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Régiónkénti rendelkezésre állás

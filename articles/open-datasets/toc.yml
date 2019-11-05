@@ -9,7 +9,13 @@
 - name: Oktatóanyag
   items:
     - name: Regresszió automatizált gépi tanulással
-      href: tutorial-opendatasets-automl.md
+      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+    - name: Képbesorolási modell bővítése
+      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+- name: Útmutatók
+  items:
+    - name: Adathalmazok az Azure Machine Learningben
+      href: ../machine-learning/service/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: Példák
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

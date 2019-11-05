@@ -1,229 +1,267 @@
 # displayName: additional text for filtering down the ToC in meaningful way.
-- name: A Speech Services dokumentációja
-  href: index.yml
+- name: A Speech szolgáltatás dokumentációja
+  href: index.md
 - name: Áttekintés
-  expanded: true
+  expanded: false
   items:
-    - name: Mi az a Speech Services?
+    - name: Mi az a beszédszolgáltatás?
       href: overview.md
+- name: Diktálás
+  expanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az a diktálás?
+          href: speech-to-text.md
+    - name: Gyors útmutatók
+      items:
+        - name: Beszéd felismerése hangfájlból
+          href: quickstarts/speech-to-text-from-file.md
+        - name: Beszéd felismerése mikrofonbemenettel
+          href: quickstarts/speech-to-text-from-microphone.md
+        - name: Blobtárolóban tárolt beszéd felismerése
+          href: quickstarts/from-blob.md
+    - name: Útmutatók
+      items:
+        - name: Beszédfelismerési forrásnyelv módosítása
+          href: how-to-specify-source-language.md
+        - name: Pontosság javítása Custom Speech segítségével
+          href: how-to-custom-speech.md
+        - name: Pontosság javítása kifejezéslistákkal
+          href: how-to-phrase-lists.md
+        - name: Pontosság javítása bérlőmodellekkel
+          href: tutorial-tenant-model.md
+        - name: Válasszon ki egy adott mikrofon típusú bemeneti eszközt
+          href: how-to-select-audio-input-devices.md
+        - name: Automatikus forrásnyelv-felismerés használata
+          href: how-to-automatic-language-detection.md
+        - name: Tömörített hangbemeneti formátumok használata
+          href: how-to-use-codec-compressed-audio-input-streams.md
+        - name: Beszédfelismerés használata Docker-tárolókkal
+          href: speech-container-howto.md
+    - name: Referencia
+      items:
+        - name: Beszéd SDK API-k
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: Kibocsátási megjegyzések
+              href: releasenotes.md
+        - name: REST API-k
+          items:
+            - name: Diktálás REST API
+              href: rest-speech-to-text.md
+            - name: Kötegelt átírás REST API-k
+              href: batch-transcription.md
+- name: Szövegfelolvasás
+  exanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az a szövegfelolvasás?
+          href: text-to-speech.md
+    - name: Gyors útmutatók
+      items:
+        - name: Beszédszintézis egy hangfájlba
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: Beszédszintézis hangszóróra
+          href: quickstarts/text-to-speech.md
+        - name: Aszinkron szintézis a hosszú formátumú hangokhoz
+          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: Útmutatók
+      items:
+        - name: Kimenet javítása SSML-lel
+          href: speech-synthesis-markup.md
+        - name: Kimenet javítása a Custom Voices használatával
+          href: how-to-custom-voice.md
+        - name: Beszédszintézis a Long Audio API-val
+          href: long-audio-api.md
+        - name: Beszédszintézis használata Docker-tárolókkal
+          href: speech-container-howto.md
+    - name: Referencia
+      items:
+        - name: Beszéd SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: Kibocsátási megjegyzések
+              href: releasenotes.md
+        - name: REST API-k
+          items:
+            - name: Szövegfelolvasás REST API
+              href: rest-text-to-speech.md
+- name: Szándékfelismerés
+  exanded: false
+  items:
+    - name: Gyors útmutatók
+      items:
+        - name: 'Beszéd, szándékok és entitások felismerése'
+          href: quickstarts/intent-recognition.md
+    - name: Útmutatók
+      items:
+        - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: Referencia
+      items:
+        - name: Beszéd SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: Kibocsátási megjegyzések
+              href: releasenotes.md
+        - name: LUIS szolgáltatás
+          items:
+            - name: LUIS fejlesztői erőforrások
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
+- name: Beszédfordítás
+  exanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az a beszédfordítás?
+          href: speech-translation.md
+    - name: Gyors útmutatók
+      items:
+        - name: Diktálás fordítása
+          href: quickstarts/translate-speech-to-text.md
+        - name: Beszéd fordítása több célnyelvre
+          href: quickstarts/translate-speech-to-text-multiple-languages.md
+        - name: Beszéd fordítása beszédre
+          href: quickstarts/translate-speech-to-speech.md
+    - name: Oktatóanyagok
+      items:
+        - name: 'Flask-alkalmazás létrehozása szöveg fordításához és szintetizálásához, REST'
+          href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
+    - name: Referencia
+      items:
+        - name: Beszéd SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: Kibocsátási megjegyzések
+              href: releasenotes.md
+- name: Beszédátírás
+  expanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az a beszédátírás?
+          href: conversation-transcription-service.md
+    - name: Útmutatók
+      items:
+        - name: Valós idejű beszédátírás
+          href: how-to-use-conversation-transcription-service.md
+        - name: Aszinkron beszédátírás
+          href: how-to-async-conversation-transcription.md
+    - name: Referencia
+      items:
+        - name: Beszéd SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: Kibocsátási megjegyzések
+              href: releasenotes.md
+        - name: REST API-k
+          items:
+            - name: Beszédátírás REST API-k
+              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+- name: Hangvezérelt asszisztensek
+  expanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az a hangvezérelt asszisztens?
+          href: voice-assistants.md
+    - name: Asszisztens létrehozása
+      items:
+        - name: Egyéni parancsok (előzetes verzió)
+          href: custom-commands.md
+        - name: Direct Line Speech
+          href: direct-line-speech.md
+    - name: Gyors útmutatók
+      items:
+        - name: 'C# (UWP)'
+          href: quickstart-voice-assistant-csharp-uwp.md
+        - name: 'Java (Windows, macOS, Linux)'
+          href: quickstart-voice-assistant-java-jre.md
+        - name: Java (Android)
+          href: quickstart-voice-assistant-java-android.md
+        - name: Egyéni parancs létrehozása (előzetes verzió)
+          href: quickstart-custom-speech-commands-create-new.md
+        - name: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
+          href: quickstart-custom-speech-commands-create-parameters.md
+        - name: Egyéni parancsok használata a Speech SDK-val (előzetes verzió)
+          href: quickstart-custom-speech-commands-speech-sdk.md
+    - name: Útmutatók
+      items:
+        - name: Egyéni parancsok teljesítése a Speech SDK-val
+          href: how-to-custom-speech-commands-fulfill-sdk.md
+        - name: Paraméter-ellenőrzés hozzáadása az egyéni parancsokhoz
+          href: how-to-custom-speech-commands-validations.md
+    - name: Oktatóanyagok
+      items:
+        - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
+          href: tutorial-voice-enable-your-bot-speech-sdk.md
+    - name: Referencia
+      items:
+        - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
+          href: faq-voice-assistants.md
+- name: Testreszabás
+  exanded: false
+  items:
     - name: Diktálás
-      href: speech-to-text.md
-      displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-    - name: Szövegfelolvasás
-      href: text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-    - name: Beszédfordítás
-      href: speech-translation.md
-      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-    - name: Hangközpontú virtuális asszisztensek előzetes verziója
-      href: voice-first-virtual-assistants.md
-      displayName: 'virtual assistants, speech-enabled bots, conversational agents'
-- name: Gyors útmutatók
-  items:
-    - name: Beszéd SDK
       items:
-        - name: Diktálás
-          items:
-            - name: 'C# (.NET-keretrendszer – Windows)'
-              href: quickstart-csharp-dotnet-windows.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: 'C# (.NET Core – Windows)'
-              href: quickstart-csharp-dotnetcore-windows.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: 'C# (UWP)'
-              href: quickstart-csharp-uwp.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, universal windows platform'
-            - name: 'C# (Xamarin)'
-              href: quickstart-csharp-xamarin.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, universal windows platform, android, ios, xamarin, cross-platform'
-            - name: 'C# (Unity)'
-              href: quickstart-csharp-unity.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, unity 3d, windows, android, universal windows platform, uwp'
-            - name: C++ (Windows)
-              href: quickstart-cpp-windows.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: C++ (Linux)
-              href: quickstart-cpp-linux.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: C++ (macOS)
-              href: quickstart-cpp-macos.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: Java (Android)
-              href: quickstart-java-android.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: 'Java (Windows, macOS, Linux)'
-              href: quickstart-java-jre.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, jre, jvm'
-            - name: JavaScript (Böngésző)
-              href: quickstart-js-browser.md
-            - name: JavaScript (Node.js)
-              href: quickstart-js-node.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: Objective-C (iOS)
-              href: quickstart-objectivec-ios.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Objective-C (macOS)
-              href: quickstart-objective-c-macos.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Swift (iOS)
-              href: quickstart-swift-ios.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Swift (macOS)
-              href: quickstart-swift-macos.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Python
-              href: quickstart-python.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-        - name: Beszéd fordítása
-          items:
-            - name: 'C# (.NET Core – Windows)'
-              href: quickstart-translate-speech-dotnetcore-windows.md
-              displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-            - name: 'C# (.NET-keretrendszer – Windows)'
-              href: quickstart-translate-speech-dotnetframework-windows.md
-              displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-            - name: 'C# (UWP)'
-              href: quickstart-translate-speech-uwp.md
-              displayName: 'translate speech, speech translation, translator, s2s, speech to speech, universal windows platform'
-            - name: C++ (Windows)
-              href: quickstart-translate-speech-cpp-windows.md
-              displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-            - name: 'Java (Windows, macOS, Linux)'
-              href: quickstart-translate-speech-java-jre.md
-              displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-        - name: Szövegfelolvasás
-          items:
-            - name: 'C# (.NET-keretrendszer – Windows)'
-              href: quickstart-text-to-speech-dotnet-windows.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: 'C# (.NET Core – Windows)'
-              href: quickstart-text-to-speech-dotnetcore.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: 'C# (UWP)'
-              href: quickstart-text-to-speech-csharp-uwp.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, universal windows platform'
-            - name: 'C# (Unity)'
-              href: quickstart-text-to-speech-csharp-unity.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, unity 3d, windows, android, universal windows platform, uwp'
-            - name: C++ (Windows)
-              href: quickstart-text-to-speech-cpp-windows.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: C++ (Linux)
-              href: quickstart-text-to-speech-cpp-linux.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: Java (Android)
-              href: quickstart-text-to-speech-java-android.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: 'Java (Windows, Linux, macOS)'
-              href: quickstart-text-to-speech-java-jre.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, jre, jvm'
-            - name: Objective-C (iOS)
-              href: quickstart-text-to-speech-objectivec-ios.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, xcode'
-            - name: Objective-C (macOS)
-              href: quickstart-text-to-speech-objectivec-macos.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, xcode'
-            - name: Swift (iOS)
-              href: quickstart-text-to-speech-swift-ios.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, xcode'
-            - name: Swift (macOS)
-              href: quickstart-text-to-speech-swift-macos.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, xcode'
-            - name: Python
-              href: quickstart-text-to-speech-python.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-        - name: Hangközpontú virtuális asszisztensek (előzetes verzió)
-          items:
-            - name: 'C# (UWP)'
-              href: quickstart-virtual-assistant-csharp-uwp.md
-              displayName: 'virtual assistant, speech-enabled bot, conversational agent, universal windows platform'
-            - name: 'Java (Windows, macOS, Linux)'
-              href: quickstart-virtual-assistant-java-jre.md
-              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
-            - name: Java (Android)
-              href: quickstart-virtual-assistant-java-android.md
-              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
-    - name: REST API-k
-      items:
-        - name: Támogatott hangok régiónkénti felsorolása
-          items:
-            - name: Node.js
-              href: quickstart-nodejs-get-text-to-speech-voices.md
-              displayName: 'voices, synthesize speech, speech synthesis, text-to-speech, tts, rest'
-            - name: Python
-              href: quickstart-python-get-text-to-speech-voices.md
-              displayName: 'voices, synthesize speech, speech synthesis, text-to-speech, tts, rest'
-        - name: Szöveg átalakítása beszéddé
-          items:
-            - name: 'C# (.NET Core)'
-              href: quickstart-dotnet-text-to-speech.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, rest'
-            - name: Node.js
-              href: quickstart-nodejs-text-to-speech.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, rest'
-            - name: Python
-              href: quickstart-python-text-to-speech.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, rest'
-    - name: Beszédeszközök SDK
-      items:
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
-          displayName: 'roobo, speech devices sdk'
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-          displayName: 'Azure Kinect DK, speech devices sdk'
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-          displayName: 'Azure Kinect DK, speech devices sdk'
-- name: Oktatóanyagok
-  items:
-    - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
-      href: how-to-recognize-intents-from-speech-csharp.md
-      displayName: 'recognize intent, intent recognition, language understanding service, luis'
-    - name: 'Robot hangvezérlésének engedélyezése a Speech SDK, C# használatával'
-      href: tutorial-voice-enable-your-bot-speech-sdk.md
-      displayName: 'voice assistant, voice enable a bot, bot speech SDK'
-    - name: 'Flask-alkalmazás létrehozása szöveg fordításához és szintetizálásához, REST'
-      href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
-- name: Alapelvek
-  items:
-    - name: Beszédátírás
-      href: conversation-transcription-service.md
-    - name: Telefonos ügyfélszolgálati felvételek átírása
-      href: call-center-transcription.md
-- name: Útmutatók
-  items:
-    - name: Regisztrálás a Speech Services szolgáltatásra
-      href: get-started.md
-    - name: Kötegelt átírás (REST)
-      href: batch-transcription.md
-      displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-    - name: Hangbemeneti streamek használata (SDK)
-      href: how-to-use-audio-input-streams.md
-    - name: Kodekkel tömörített hangbemeneti streamek használata (SDK)
-      href: how-to-use-codec-compressed-audio-input-streams.md
-      displayName: 'mp3, opus, ogg, flac, alaw, mulaw'
-    - name: Kodekkel tömörített hangbemeneti streamek használata (SDK) Androidon
-      href: how-to-use-codec-compressed-audio-input-streams-android.md
-      displayName: 'mp3, opus, ogg, flac, alaw, mulaw'
-    - name: Kodekkel tömörített hangbemeneti streamek használata (SDK) iOS-en
-      href: how-to-use-codec-compressed-audio-input-streams-ios.md
-      displayName: 'mp3, opus, ogg, flac, alaw, mulaw'
-    - name: Hangbemeneti eszköz kiválasztása (SDK)
-      href: how-to-select-audio-input-devices.md
-      displayName: 'audio, microphone, input, device'
-    - name: Naplózás engedélyezése (SDK)
-      href: how-to-use-logging.md
-      displayName: 'debug, log, logging'
-    - name: Felismerés javítása kifejezéslistákkal
-      href: how-to-phrase-lists.md
-      displayname: 'phrase lists, phrase, list, recognition accuracy'
-    - name: Beszélgetések szöveggé konvertálása (SDK)
-      href: how-to-use-conversation-transcription-service.md
-      displayName: 'conversation, transcription, speech recognition'
-    - name: Testreszabás
-      items:
-        - name: Diktálás
+        - name: Custom Speech portál
           items:
             - name: Bevezetés a Custom Speech szolgáltatásba
               href: how-to-custom-speech.md
@@ -239,7 +277,27 @@
               href: how-to-custom-speech-deploy-model.md
             - name: Útmutató – Ember által címkézett átiratok létrehozása
               href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Szövegfelolvasás
+        - name: Bérlőmodellek
+          items:
+            - name: 'Modell létrehozása, közzététele és használata'
+              href: tutorial-tenant-model.md
+    - name: Szövegfelolvasás
+      items:
+        - name: Felelős üzembe helyezés
+          items:
+            - name: Custom Voice korlátozása
+              href: concepts-gating-overview.md
+            - name: Szintetikus technológia üzembe helyezése
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: Átláthatósági megjegyzés a Custom Voice-ról
+              href: 'https://aka.ms/neural-tts-transparency-note'
+            - name: Közzététel-tervezési irányelvek
+              href: concepts-disclosure-guidelines.md
+            - name: Közzététel-tervezési minták
+              href: concepts-disclosure-patterns.md
+            - name: Magatartási kódex
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: Custom Voice portál
           items:
             - name: Bevezetés a Custom Voice szolgáltatásba
               href: how-to-custom-voice.md
@@ -249,142 +307,113 @@
               href: how-to-custom-voice-create-voice.md
             - name: Hangminták felvétele
               href: record-custom-voice-samples.md
-            - name: Szövegfelolvasási kimenet finomhangolása
-              href: how-to-voice-tuning.md
-        - name: Egyéni ébresztőszó létrehozása (kulcsszófelismerés)
-          href: speech-devices-sdk-create-kws.md
-          displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
-    - name: Migrálás
-      items:
-        - name: A Bing Speechből
-          href: how-to-migrate-from-bing-speech.md
-        - name: A Custom Speech Service-ből
-          href: how-to-migrate-from-custom-speech-service.md
-        - name: A Translator Speech API-ból
-          href: how-to-migrate-from-translator-speech-api.md
-    - name: Tárolók használata
-      items:
-        - name: Tárolók telepítése és futtatása
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-          href: speech-container-howto.md
-        - name: Tárolók konfigurálása
-          href: speech-container-configuration.md
-          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-        - name: Használat Kubernetesszel és Helmmel
-          displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: A Container Instances használata
-          href: deploy-speech-on-container-instances.md
-          displayName: 'container instances, speech container, containers, images'
-- name: Példák
+        - name: Hanganyag létrehozása
+          items:
+            - name: 'Útmutató: Hanganyag létrehozása'
+              href: how-to-audio-content-creation.md
+    - name: Egyéni kulcsszófelismerés
+      href: speech-devices-sdk-create-kws.md
+- name: Beszédszolgáltatás
+  expanded: false
   items:
-    - name: Beszéd SDK
-      href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-    - name: Beszédeszközök SDK
-      href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: Szövegfelolvasás (REST)
-      href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-    - name: Kötegelt átírás (REST)
-      href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-- name: Referencia
-  items:
-    - name: Beszéd SDK
+    - name: Útmutatók
       items:
-        - name: Áttekintés
+        - name: A Speech Service ingyenes kipróbálása
+          href: get-started.md
+        - name: Speech Service-erőforrás létrehozása
+          href: 'get-started.md#create-a-speech-resource-in-azure'
+        - name: Containers
+          exanded: false
+          items:
+            - name: Tárolók telepítése és futtatása
+              href: speech-container-howto.md
+            - name: Tárolók konfigurálása
+              href: speech-container-configuration.md
+            - name: Kubernetes és Helm
+              href: speech-container-howto-on-premises.md
+            - name: Azure Container Instances
+              href: deploy-speech-on-container-instances.md
+    - name: Példák
+      items:
+        - name: Szövegfelolvasási REST-minták
+          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
+        - name: Kötegelt átírási REST-minták
+          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
+    - name: Referencia
+      items:
+        - name: REST API-k
+          items:
+            - name: Kötegelt átírási és testreszabási REST API
+              href: 'https://westus.cris.ai/swagger/ui/index'
+            - name: Beszédátírás REST API
+              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+            - name: Diktálás REST API
+              href: rest-speech-to-text.md
+            - name: Szövegfelolvasás REST API
+              href: rest-text-to-speech.md
+            - name: Webhookok REST API
+              href: webhooks.md
+        - name: A Swagger dokumentációja
+          href: swagger-documentation.md
+- name: Beszéd SDK
+  expanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: A Speech SDK ismertetése
           href: speech-sdk.md
-          displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
         - name: Forgatókönyvek rendelkezésre állása
           href: scenario-availability.md
-        - name: Alkalmazáskészítés
-          href: ship-application.md
-        - name: Kibocsátási megjegyzések
-          href: releasenotes.md
+    - name: Gyors útmutatók
+      items:
+        - name: 'Speech SDK beállítása C#-pal'
+          href: quickstarts/setup-platform.md?pivots=programming-language-csharp
+        - name: Speech SDK beállítása C++ -szal
+          href: quickstarts/setup-platform.md?pivots=programming-language-cpp
+        - name: Speech SDK beállítása Javával
+          href: quickstarts/setup-platform.md?pivots=programming-language-java
+        - name: Speech SDK beállítása Pythonnal
+          href: quickstarts/setup-platform.md?pivots=programming-language-python
+        - name: Speech SDK beállítása más platformokkal
+          href: quickstarts/setup-platform.md?pivots=programming-language-more
+    - name: Útmutatók
+      items:
+        - name: Naplózás engedélyezése
+          href: how-to-use-logging.md
+    - name: Példák
+      items:
+        - name: Speech SDK-minták (GitHub)
+          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
+        - name: Speech Device SDK-minták (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Referencia
+      items:
         - name: C++
           href: 'https://aka.ms/csspeech/cppref'
         - name: 'C#'
           href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java/Android
+        - name: Java
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript/Node.js
+        - name: JavaScript
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
           href: 'https://aka.ms/csspeech/objectivecref'
         - name: Python
           href: 'https://aka.ms/csspeech/pythonref'
-    - name: Beszédeszközök SDK
-      items:
-        - name: Beszédeszközök SDK letöltése
-          href: get-speech-devices-sdk.md
-        - name: Kibocsátási megjegyzések
-          href: devices-sdk-release-notes.md
-        - name: A Roobo v1 részletei
-          href: speech-devices-sdk-roobo-v1.md
-        - name: A mikrofon specifikációi
-          href: speech-devices-sdk-microphone.md
-    - name: REST API-k
-      items:
-        - name: Diktálás
-          href: rest-speech-to-text.md
-          displayName: 'recognize speech, speech recognition, speech-to-text, stt, rest'
-        - name: Szövegfelolvasás
-          href: rest-text-to-speech.md
-          displayName: 'synthesize speech, speech synthesis, text-to-speech, tts, rest'
-        - name: Kötegelt átírás és testreszabás
-          href: 'https://westus.cris.ai/swagger/ui/index'
-          displayName: 'batch transcription, transcription, custom models, customization, model management, rest'
-        - name: Beszédátírás
-          href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-          displayName: 'Conversation transcription, signature generation'
-        - name: Webhookok
-          href: webhooks.md
-    - name: A Swagger dokumentációja
-      href: swagger-documentation.md
-    - name: Beszédszintézis-jelölőnyelv (SSML)
-      href: speech-synthesis-markup.md
-    - name: PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
-    - name: Nyelvi támogatás
-      href: language-support.md
-    - name: Régiók
-      href: regions.md
-- name: További források
+        - name: A Beszéd SDK kibocsátási megjegyzései
+          href: releasenotes.md
+- name: Migrálás
+  exanded: false
   items:
-    - name: GYIK
-      items:
-        - name: Diktálás
-          href: faq-stt.md
-          displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-        - name: Szövegfelolvasás
-          href: faq-text-to-speech.md
-          displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-        - name: Beszédfordítás
-          href: 'https://www.microsoft.com/translator/faq.aspx'
-          displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-        - name: Hangközpontú virtuális asszisztensek (előzetes verzió)
-          href: faq-voice-first-virtual-assistants.md
-    - name: Speech SDK-licencek
-      items:
-        - name: Licenc
-          href: 'https://aka.ms/csspeech/license201809'
-        - name: Harmadik felekkel kapcsolatos közlemények
-          href: 'https://aka.ms/csspeech/toctpn'
-    - name: Beszédeszközök SDK
-      items:
-        - name: Névjegy
-          href: speech-devices-sdk.md
-          displayName: 'roobo, speech devices sdk'
-        - name: Licenc
-          href: 'https://aka.ms/sdsdk-license'
-          displayName: 'roobo, speech devices sdk'
-        - name: Harmadik felekkel kapcsolatos közlemények
-          href: 'https://aka.ms/sdsdk-toctpn'
-          displayName: 'roobo, speech devices sdk'
-    - name: A Speech SDK hibaelhárítása
-      href: troubleshooting.md
-    - name: A Beszédeszközök SDK hibaelhárítása
-      href: speech-devices-sdk-troubleshooting.md
+    - name: A Bing Speechből
+      href: how-to-migrate-from-bing-speech.md
+    - name: A Custom Speech Service-ből
+      href: how-to-migrate-from-custom-speech-service.md
+    - name: A Translator Speech API-ból
+      href: how-to-migrate-from-translator-speech-api.md
+- name: További források
+  exanded: false
+  items:
     - name: Támogatás
       href: support.md
     - name: Díjszabás és korlátok

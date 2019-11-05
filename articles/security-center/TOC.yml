@@ -37,6 +37,14 @@
       href: security-center-using-recommendations.md
     - name: Bérlők közötti felügyelet
       href: security-center-cross-tenant-management.md
+    - name: Tárolóbiztonság
+      items:
+        - name: Tárolóbiztonság áttekintése
+          href: container-security.md
+        - name: Integráció az Azure Container Registryvel
+          href: azure-container-registry-integration.md
+        - name: Integráció az Azure Kubernetes Service-szel
+          href: azure-kubernetes-service-integration.md
     - name: Fenyegetésészlelési riasztások és incidensek
       items:
         - name: Biztonsági riasztások áttekintése
@@ -51,7 +59,7 @@
           href: security-center-alerts-compute.md
         - name: Adatszolgáltatások fenyegetéseinek észlelése
           href: security-center-alerts-data-services.md
-        - name: Azure-szolgáltatásréteg fenyegetéseinek észlelése
+        - name: Azure-szolgáltatásrétegek fenyegetésészlelése
           href: security-center-alerts-service-layer.md
         - name: Integráció az Azure Security-termékekkel
           href: security-center-alerts-integration.md
@@ -69,31 +77,45 @@
       href: security-center-onboarding.md
     - name: Kiszolgálóvédelem a Microsoft Defender ATP-vel
       href: security-center-wdatp.md
-    - name: Advanced Data Security SQL Azure-beli virtuális gépeken (nyilvános előzetes verzió)
+    - name: Az Advanced Data Security használata Azure-beli virtuális gépeken futó SQL-hez
       href: security-center-iaas-advanced-data.md
     - name: Az alkalmazások védelme az App Service-szel
       href: security-center-app-services.md
     - name: Biztonsági szabályzatok használata
-      href: tutorial-security-policy.md
+      items:
+        - name: A biztonsági szabályzatok áttekintése
+          href: tutorial-security-policy.md
+        - name: Beépített biztonsági szabályzatok használata
+          href: security-center-policy-definitions.md
+        - name: Egyéni biztonsági szabályzatok létrehozása
+          href: custom-security-policies.md
+        - name: Szabályzatok kezelése az Azure Policy REST API-val
+          href: configure-security-policy-azure-policy.md
+    - name: Dinamikus megfelelőségi csomagok hozzáadása
+      href: update-regulatory-compliance-packages.md
     - name: Az Information Protection-szabályzat testreszabása
       href: security-center-info-protection-policy.md
     - name: Biztonsági megoldások kezelése
       href: security-center-partner-integration.md
     - name: Előkészítés automatizálása a PowerShell használatával
       href: security-center-powershell-onboarding.md
-    - name: A Security Center beállításai
-      href: security-center-policies-overview.md
+    - name: Integráció a Windows Admin Centerrel
+      href: windows-admin-center-integration.md
     - name: Alapértékek összehasonlítása fájlintegritási monitorozással
       href: security-center-file-integrity-monitoring-baselines.md
-    - name: Adatgyűjtés
+    - name: Riasztásokra és javaslatokra adott válaszok automatizálása
+      href: workflow-automation.md
+    - name: Riasztások és javaslatok exportálása
+      href: continuous-export.md
+    - name: Adatgyűjtés konfigurálása
       href: security-center-enable-data-collection.md
-    - name: Beépített biztonsági szabályzatok
-      href: security-center-policy-definitions.md
-    - name: E-mail-értesítések
+    - name: Az Advanced Threat Protection beállítása az Azure Key Vaulthoz
+      href: advanced-threat-protection-key-vault.md
+    - name: E-mail-értesítések beállítása
       href: security-center-provide-security-contact-details.md
     - name: Díjszabás
       href: security-center-pricing.md
-    - name: Bérlőszintű láthatóság
+    - name: Bérlőszintű áttekintés
       href: security-center-management-groups.md
     - name: Biztonsági javaslatok megvalósítása
       items:
@@ -160,7 +182,7 @@
     - name: Felhasználói adatok kezelése
       href: security-center-privacy.md
     - name: Azure Security Center for IoT – dokumentáció
-      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
+      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: GYIK
       href: security-center-faq.md
     - name: Az Azure biztonsági dokumentációja

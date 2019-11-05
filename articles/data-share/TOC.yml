@@ -1,9 +1,11 @@
-- name: Az Azure Data Share előzetes verziójának dokumentációja
+- name: Azure Data Share-dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Azure Data Share előzetes verzió?
+    - name: Mi az az Azure Data Share?
       href: overview.md
+    - name: Támogatott adattárak
+      href: supported-data-stores.md
 - name: Oktatóanyagok
   expanded: true
   items:
@@ -19,6 +21,8 @@
       href: concepts-roles-permissions.md
 - name: Példák
   items:
+    - name: Kódminták
+      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: Útmutatók
@@ -52,7 +56,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+      href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'
     - name: Microsoft Tech Community
       href: 'https://techcommunity.microsoft.com/'
     - name: Termékkel kapcsolatos visszajelzés

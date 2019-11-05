@@ -253,8 +253,8 @@
           href: functions-monitor-log-analytics.md
     - name: Biztonságos
       items:
-        - name: SSL-tanúsítvány vásárlása
-          href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: SSL-tanúsítvány hozzáadása
+          href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Felhasználók hitelesítése
           items:
             - name: Hitelesítés az Azure AD-vel

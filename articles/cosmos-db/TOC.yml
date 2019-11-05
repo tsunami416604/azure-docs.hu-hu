@@ -12,7 +12,9 @@
       items:
         - name: Azure Portal
           href: create-cosmosdb-resources-portal.md
-        - name: .NET-alkalmazás
+        - name: .NET-alkalmazás – V4 SDK
+          href: create-sql-api-dotnet-v4.md
+        - name: .NET-alkalmazás – V3 SDK
           href: create-sql-api-dotnet.md
         - name: Java-alkalmazás
           href: create-sql-api-java.md
@@ -47,8 +49,11 @@
             - name: Xamarin
               href: mobile-apps-with-xamarin.md
     - name: 2 – Adatok migrálása
-      displayName: import
-      href: import-data.md
+      items:
+        - name: Az adatmigrálási eszköz használata
+          href: import-data.md
+        - name: A .NET tömeges támogatás használata
+          href: tutorial-sql-api-dotnet-bulk-import.md
     - name: 3 – Adatok lekérdezése
       href: tutorial-query-sql-api.md
     - name: 4 – Notebook létrehozása
@@ -122,6 +127,8 @@
         - name: Átviteli sebesség kiosztása tárolókra és adatbázisokra
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
+        - name: Átviteli sebesség kiosztása – automatikus mód
+          href: provision-throughput-autopilot.md
     - name: SQL-lekérdezési referencia
       items:
         - name: Első lépések
@@ -953,6 +960,11 @@
           href: how-to-configure-firewall.md
         - name: Hozzáférés konfigurálása virtuális hálózatokról
           href: how-to-configure-vnet-service-endpoint.md
+        - name: Privát végpontokról való hozzáférés konfigurálása
+          href: how-to-configure-private-endpoints.md
+        - name: Privát csatlakozás Cosmos DB-fiókhoz
+          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
+          maintainContext: true
         - name: Eltérő eredetű erőforrások megosztásának (CORS) konfigurálása
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Azure Cosmos-kulcsok védelme a Key Vaulttal

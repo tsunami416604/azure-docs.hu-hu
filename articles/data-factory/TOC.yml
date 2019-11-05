@@ -80,8 +80,12 @@
           items:
             - name: Adatok másolása eszköz
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Adatok átalakítása adatfolyam-leképezéssel
-      href: tutorial-data-flow.md
+    - name: Adatok átalakítása és előkészítése adatfolyamokkal
+      items:
+        - name: Adatok átalakítása leképezési adatfolyammal
+          href: tutorial-data-flow.md
+        - name: Adatok előkészítése szervezési adatfolyammal
+          href: wrangling-data-flow-tutorial.md
     - name: Külső átalakítások
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrációs modul
       href: concepts-integration-runtime.md
-    - name: Adatfolyamok leképezése
+    - name: Adatfolyamok
       items:
-        - name: Adatfolyam-leképezés áttekintése
-          href: concepts-data-flow-overview.md
-        - name: Hibakeresési mód
-          href: concepts-data-flow-debug-mode.md
-        - name: JSON kezelése
-          href: concepts-data-flow-json.md
-        - name: Sémaeltérés
-          href: concepts-data-flow-schema-drift.md
-        - name: Oszlopminták
-          href: concepts-data-flow-column-pattern.md
-        - name: Adatfolyam-figyelés
-          href: concepts-data-flow-monitoring.md
-        - name: Adatfolyam-teljesítmény
-          href: concepts-data-flow-performance.md
-        - name: Csomópontok áthelyezése
-          href: concepts-data-flow-move-nodes.md
-        - name: Kifejezésszerkesztő
-          href: concepts-data-flow-expression-builder.md
-        - name: Kifejezés nyelve
-          href: data-flow-expression-functions.md
+        - name: Adatok átalakítása leképezési adatfolyamokkal
+          items:
+            - name: Adatfolyam-leképezés áttekintése
+              href: concepts-data-flow-overview.md
+            - name: Hibakeresési mód
+              href: concepts-data-flow-debug-mode.md
+            - name: JSON kezelése
+              href: concepts-data-flow-json.md
+            - name: Sémaeltérés
+              href: concepts-data-flow-schema-drift.md
+            - name: Oszlopminták
+              href: concepts-data-flow-column-pattern.md
+            - name: Adatfolyam-figyelés
+              href: concepts-data-flow-monitoring.md
+            - name: Adatfolyam-teljesítmény
+              href: concepts-data-flow-performance.md
+            - name: Csomópontok áthelyezése
+              href: concepts-data-flow-move-nodes.md
+            - name: Kifejezésszerkesztő
+              href: concepts-data-flow-expression-builder.md
+            - name: Kifejezés nyelve
+              href: data-flow-expression-functions.md
+        - name: Adatok előkészítése szervezési adatfolyamokkal
+          items:
+            - name: Szervezési adatfolyam áttekintése
+              href: wrangling-data-flow-overview.md
+            - name: Támogatott függvények
+              href: wrangling-data-flow-functions.md
     - name: Szerepkörök és engedélyek
       href: concepts-roles-permissions.md
     - name: A díjszabás ismertetése

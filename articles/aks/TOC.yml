@@ -102,6 +102,8 @@
       href: supported-kubernetes-versions.md
     - name: A biztonság megerősítése a gazda operációs rendszeren
       href: security-hardened-vm-host-image.md
+    - name: Azure Kubernetes Service – Diagnosztikai áttekintés
+      href: concepts-diagnostics.md
 - name: Útmutatók
   items:
     - name: Fürtműveletek
@@ -128,11 +130,11 @@
               href: virtual-nodes-portal.md
         - name: A Virtual Kubelet használata
           href: virtual-kubelet.md
-        - name: Automatikus fürtméretező használata (előzetes verzió)
+        - name: Automatikus fürtméretező használata
           href: cluster-autoscaler.md
-        - name: Az Availability Zones (előzetes verzió) használata
+        - name: Rendelkezésre állási zónák használata
           href: availability-zones.md
-        - name: Több csomópontkészlet használata (előzetes verzió)
+        - name: Több csomópontkészlet használata
           href: use-multiple-node-pools.md
         - name: Az AKS üzembe helyezése Terraform használatával
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -199,7 +201,7 @@
           href: use-network-policies.md
         - name: Podbiztonsági szabályzatok használata
           href: use-pod-security-policies.md
-        - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása (előzetes verzió)
+        - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása
           href: api-server-authorized-ip-ranges.md
         - name: Központi telepítések ellenőrzése az Azure Policy használatával (előzetes verzió)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
@@ -225,8 +227,8 @@
           href: view-master-logs.md
         - name: Kubelet-naplók megtekintése
           href: kubelet-logs.md
-        - name: Valós idejű tárolónaplók megtekintése (előnézet)
-          href: ../azure-monitor/insights/container-insights-live-logs.md
+        - name: Tárolóadatok megtekintése valós időben
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
     - name: Windows Server-tárolók használata (előzetes verzió)
       items:

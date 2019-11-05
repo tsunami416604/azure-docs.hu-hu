@@ -1,0 +1,18 @@
+- name: Az Azure Arc dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi az az Azure Arc for Servers?
+      href: ./servers/overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Gépek csatlakoztatása az Azure-hoz az Azure Arc for Servers használatával – Portal
+      href: ./servers/quickstart-onboard-portal.md
+    - name: Gépek csatlakoztatása az Azure-hoz az Azure Arc for Servers használatával – PowerShell
+      href: ./servers/quickstart-onboard-powershell.md
+- name: Referencia
+  items:
+    - name: Azure-beli csatlakoztatottgép-ügynök parancssori felülete
+      href: ./servers/azcmagent-reference.md

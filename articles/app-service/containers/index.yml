@@ -94,7 +94,7 @@ sections:
         items:
           - html: 'Alkalmazás létrehozása a <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core és az Azure SQL Database</a>, a <a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterprise és a PostgreSQL</a> vagy a <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával'
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány kapcsolása az alkalmazáshoz </a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Meglévő SSL-tanúsítvány kötése az alkalmazáshoz</a>
+          - html: <a href="/azure/app-service/configure-ssl-bindings">Egyéni DNS-név védelme SSL-kötéssel az Azure App Service-ben</a>
           - html: <a href="/azure/cdn/cdn-add-to-web-app">CDN hozzáadása az alkalmazáshoz</a>
   - title: Példák
     items:

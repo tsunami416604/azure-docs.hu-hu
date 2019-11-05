@@ -1,0 +1,140 @@
+- name: Az Azure Web Application Firewall dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure Web Application Firewall?
+      href: overview.md
+    - name: Application Gateway
+      items:
+        - name: Web Application Firewall az Application Gatewayen
+          href: ./ag/ag-overview.md
+        - name: Újdonságok
+          href: ./ag/whats-new.md
+    - name: Front Door
+      items:
+        - name: Web Application Firewall az Azure Front Dooron
+          href: ./afds/afds-overview.md
+- name: Oktatóanyagok
+  items:
+    - name: Application Gateway
+      items:
+        - name: Web Application Firewall engedélyezése
+          href: ./ag/application-gateway-web-application-firewall-portal.md
+    - name: Front Door
+      items:
+        - name: WAF-szabályzat konfigurálása – portál
+          href: ./afds/waf-front-door-create-portal.md
+- name: Példák
+  items:
+    - name: Azure PowerShell
+      href: ./ag/powershell-samples.md
+    - name: Resource Manager-sablonok
+      href: ./ag/resource-manager-template-samples.md
+- name: Alapelvek
+  items:
+    - name: Application Gateway
+      items:
+        - name: Felügyelt szabályok
+          href: ./ag/application-gateway-crs-rulegroups-rules.md
+        - name: Egyéni szabályok áttekintése
+          href: ./ag/custom-waf-rules-overview.md
+        - name: Kérelmek méretkorlátai és kizárási listái
+          href: ./ag/application-gateway-waf-configuration.md
+    - name: Front Door
+      items:
+        - name: Egyéni szabályok
+          href: ./afds/waf-front-door-custom-rules.md
+        - name: Szabályzatbeállítások
+          href: ./afds/waf-front-door-policy-settings.md
+        - name: Geoszűrés
+          href: ./afds/waf-front-door-geo-filtering.md
+        - name: GYIK
+          href: ./afds/waf-faq.md
+- name: Útmutatók
+  items:
+    - name: Application Gateway
+      items:
+        - name: WAF-szabályzat létrehozása
+          href: ./ag/create-waf-policy-ag.md
+        - name: Webalkalmazási tűzfal konfigurálása
+          items:
+            - name: Azure PowerShell
+              href: ./ag/tutorial-restrict-web-traffic-powershell.md
+            - name: Azure CLI
+              href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: WAF-szabályok testreszabása
+          items:
+            - name: Azure Portal
+              href: ./ag/application-gateway-customize-waf-rules-portal.md
+            - name: Azure PowerShell
+              href: ./ag/application-gateway-customize-waf-rules-powershell.md
+            - name: Azure CLI
+              href: ./ag/application-gateway-customize-waf-rules-cli.md
+        - name: Egyéni WAF v2-szabály konfigurálása – PowerShell
+          href: ./ag/configure-waf-custom-rules.md
+        - name: Példák egyéni szabályokra
+          href: ./ag/create-custom-waf-rules.md
+        - name: Robotvédelem
+          href: ./ag/bot-protection.md
+        - name: Szabályzat társítása meglévő Application Gatewayjel
+          href: ./ag/associate-waf-policy-existing-gateway.md
+        - name: Diagnosztikai naplók
+          href: ./ag/web-application-firewall-logs.md
+        - name: A WAF hibaelhárítása
+          href: ./ag/web-application-firewall-troubleshoot.md
+    - name: Front Door
+      items:
+        - name: WAF-szabályzat konfigurálása – PowerShell
+          href: ./afds/waf-front-door-custom-rules-powershell.md
+        - name: Robotvédelem konfigurálása
+          href: ./afds/waf-front-door-policy-configure-bot-protection.md
+        - name: Egyéni válaszkód konfigurálása
+          href: ./afds/waf-front-door-configure-custom-response-code.md
+        - name: IP-korlátozások konfigurálása
+          href: ./afds/waf-front-door-configure-ip-restriction.md
+        - name: Sebességkorlát konfigurálása – PowerShell
+          href: ./afds/waf-front-door-rate-limit-powershell.md
+        - name: Geoszűrési WAF-szabályzat konfigurálása
+          href: ./afds/waf-front-door-tutorial-geo-filtering.md
+        - name: Monitorozás és naplózás
+          href: ./afds/waf-front-door-monitor.md
+- name: Hibaelhárítás
+  items:
+    - name: Application Gateway
+      items:
+        - name: A WAF hibaelhárítása
+          href: ./ag/web-application-firewall-troubleshoot.md
+        - name: Log Analytics
+          href: ./ag/log-analytics.md
+- name: Referencia
+  items:
+    - name: CRS-szabályok
+      href: ./ag/application-gateway-crs-rulegroups-rules.md
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: További források
+  items:
+    - name: Szerzői sablonok
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Közösségi sablonok
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/web-application-firewall/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'

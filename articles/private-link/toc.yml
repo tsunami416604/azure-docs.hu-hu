@@ -30,6 +30,8 @@
   items:
     - name: Privát csatlakozás tárfiókokhoz
       href: create-private-endpoint-storage-portal.md
+    - name: Privát csatlakozás Cosmos DB-fiókhoz
+      href: create-private-endpoint-cosmosdb-portal.md
     - name: Privát végpont hálózati szabályzatainak letiltása
       href: disable-private-endpoint-network-policy.md
     - name: Privát kapcsolati szolgáltatás hálózati szabályzatainak letiltása

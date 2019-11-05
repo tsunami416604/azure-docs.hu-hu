@@ -781,20 +781,32 @@
                   href: insights/container-insights-enable-new-cluster.md
                 - name: Engedélyezés meglévő fürtön
                   href: insights/container-insights-enable-existing-clusters.md
+                - name: Engedélyezés hibrid fürtön
+                  href: insights/container-insights-hybrid-setup.md
                 - name: Régióleképezések
                   href: insights/container-insights-region-mapping.md
             - name: Elemzés
               href: insights/container-insights-analyze.md
             - name: Monitorozás letiltása
               href: insights/container-insights-optout.md
-            - name: Élő naplók megtekintése
-              href: insights/container-insights-live-logs.md
+            - name: Élő adatok megtekintése
+              items:
+                - name: Élő adatok (előzetes verzió) áttekintése
+                  href: insights/container-insights-livedata-overview.md
+                - name: Beállítás
+                  href: insights/container-insights-livedata-setup.md
+                - name: Fürtmetrikák megtekintése
+                  href: insights/container-insights-livedata-metrics.md
+                - name: Üzemelő példányok megtekintése
+                  href: insights/container-insights-livedata-deployments.md
             - name: Adatelemzés naplólekérdezésekkel
               href: insights/container-insights-log-search.md
             - name: Riasztások kezelése
               href: insights/container-insights-alerts.md
             - name: Ügynökkezelés
               href: insights/container-insights-manage-agent.md
+            - name: Prometheus-metrikagyűjtés konfigurálása
+              href: insights/container-insights-prometheus-integration.md
             - name: Ügynökgyűjtemény-beállítások konfigurálása
               href: insights/container-insights-agent-config.md
             - name: Frissítés a metrikák engedélyezéséhez

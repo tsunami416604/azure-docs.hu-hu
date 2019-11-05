@@ -20,29 +20,34 @@
           items:
             - name: Áttekintés
               href: sql-database-purchase-models.md
-            - name: vCore-alapú modell
-              href: sql-database-service-tiers-vcore.md
+            - name: Virtuálismag-alapú modell
               items:
-                - name: Kiszolgáló nélküli számítási szint
+                - name: Virtuálismag-alapú modell áttekintése
+                  href: sql-database-service-tiers-vcore.md
+                - name: Kiszolgáló nélküli
                   href: sql-database-serverless.md
-                - name: Előre fizetés fenntartott kapacitásért
+                - name: Azure Hybrid Benefit
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: Fenntartott kapacitás
                   href: sql-database-reserved-capacity.md
-            - name: DTU szolgáltatási szint
+            - name: DTU-modell áttekintése
               href: sql-database-service-tiers-dtu.md
+            - name: Migrálás DTU-ról virtuálismag-alapú modellre
+              href: sql-database-dtu-to-vcore.md
         - name: Számítás és tárolás
           items:
             - name: Áttekintés
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: Általános célú/Standard szolgáltatási szint
+            - name: Általános célú / Standard
               href: sql-database-service-tier-general-purpose.md
-            - name: Üzleti szempontból kritikus/Prémium szolgáltatási szint
+            - name: Üzletileg kritikus / Prémium
               href: sql-database-service-tier-business-critical.md
-            - name: Rugalmas skálázás szolgáltatási szint
+            - name: Rugalmas skálázás
               href: sql-database-service-tier-hyperscale.md
             - name: Rugalmas skálázással kapcsolatos gyakori kérdések
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Migrálás prémium RS szolgáltatási szintről
+            - name: Migrálás prémium RS-ről
               href: sql-database-service-tiers-prs.md
 - name: Gyors útmutatók
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: Az önálló adatbázis erőforrásai
           items:
-            - name: vCore-alapú erőforráskorlátok
+            - name: Virtuális mag – erőforráskorlátok
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: DTU-alapú erőforráskorlátok
+            - name: DTU-erőforráskorlátok
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: Erőforrások skálázása
               href: sql-database-single-database-scale.md
         - name: A rugalmas készlet erőforrásai
           items:
-            - name: vCore-alapú erőforráskorlátok
+            - name: Virtuális mag – erőforráskorlátok
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU-alapú erőforráskorlátok
+            - name: DTU-erőforráskorlátok
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: Erőforrások skálázása
               href: sql-database-elastic-pool-scale.md

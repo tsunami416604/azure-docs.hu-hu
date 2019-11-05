@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: A Web Application Firewall dokumentációja
+summary: A Web Application Firewall (WAF) központosított védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen. A WAF-ot üzembe helyezheti az Azure Application Gatewayen vagy az Azure Front Door Service-en.
+metadata:
+  title: A Web Application Firewall dokumentációja
+  description: Az Application Gatewayen és a Front Dooron üzembe helyezhető webalkalmazási tűzfal ismertetése
+  services: web-application-firewall
+  ms.service: web-application-firewall
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 09/28/2019
+  ms.openlocfilehash: 1fb58cdf0f5c88a560ccbd4140564497745b503e
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508771"
+landingContent:
+- title: Áttekintés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Web Application Firewall?
+      url: overview.md
+    - text: Web Application Firewall az Application Gatewayen
+      url: ./ag/ag-overview.md
+    - text: Web Application Firewall a Front Dooron
+      url: ./afds/afds-overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web Application Firewall az Application Gatewayen
+      url: ./ag/application-gateway-web-application-firewall-portal.md
+    - text: Web Application Firewall a Front Dooron
+      url: ./afds/waf-front-door-create-portal.md
+- title: WAF-szabályok kezelése az Application Gatewayen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Web Application Firewall-szabályok testreszabása az Azure Application Gatewayen
+      url: ./ag/application-gateway-customize-waf-rules-portal.md
+  - linkListType: overview
+    links:
+    - text: Web Application Firewall CRS-szabálycsoportjai és szabályai
+      url: ./ag/application-gateway-crs-rulegroups-rules.md
+- title: A WAF konfigurálása a Front Dooron
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Robotvédelem konfigurálása
+      url: ./afds/waf-front-door-policy-configure-bot-protection.md
+    - text: Egyéni válasz konfigurálása
+      url: ./afds/waf-front-door-configure-custom-response-code.md

@@ -147,6 +147,10 @@
       href: limits.md
     - name: Hibaelhárítás
       href: troubleshooting.md
+    - name: Fájlformátumok
+      items:
+        - name: TSV kötegelt tesztelése
+          href: reference-tsv-format-batch-testing.md
     - name: REST API-referencia
       items:
         - name: API-k készítése

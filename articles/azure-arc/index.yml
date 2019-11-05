@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Azure Arc
+summary: Az Azure Arc bármely helyszíni, többfelhős vagy peremhálózati található infrastruktúrán üzemelő Linux- és Windows-kiszolgálókra, valamint Kubernetes-fürtökre kiterjeszti az Azure Resource Manager képességeit. Az Azure Arc segítségével az ügyfelek bárhol futtathatják az Azure-adatszolgáltatásokat, így élhetnek a felhőinnováció előnyeivel, például a mindig naprakész adatokkal, a(z órák helyett) másodpercek alatt elvégezhető üzembe helyezéssel, valamint a minden infrastruktúrán elérhető dinamikus skálázással. Az Azure Arc for Servers jelenleg nyilvános előzetes verzióban érhető el.
+metadata:
+  title: Azure Arc for Servers
+  description: Tudnivalók a helyszíni gépek Azure-ban történő felügyeletéről
+  author: bobbytreed
+  manager: carmonm
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 11/04/2019
+  ms.author: robreed
+  ms.openlocfilehash: 2ff0b9a194faf4d5a6b9e5181c52dc135208bdee
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508550"
+landingContent:
+- title: Az Azure Arc áttekintése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: További információ az Azure Arcról
+      url: https://aka.ms/Azure-Arc-Info
+- title: Gépek csatlakoztatása az Azure-hoz az Azure Arc for Servers használatával
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Arc for Servers?
+      url: ./servers/overview.md
+  - linkListType: quickstart
+    links:
+    - text: Gépek csatlakoztatása az Azure-hoz az Azure Arc for Servers használatával – Portal
+      url: ./servers/quickstart-onboard-portal.md
+    - text: Gépek csatlakoztatása az Azure-hoz az Azure Arc for Servers használatával – PowerShell
+      url: ./servers/quickstart-onboard-portal.md

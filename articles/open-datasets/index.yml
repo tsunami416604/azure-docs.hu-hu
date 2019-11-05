@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Az Azure Open Datasets előzetes verziójának dokumentációja
-summary: Az Azure Open Datasets válogatott és tisztított, minimális előkészítés után használható adatokat kínál – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatokat – a gépi tanulási modellek gazdagításához.
+title: Az Azure Open Datasets dokumentációja
+summary: Az Azure Open Datasets válogatott és tisztított adatok – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatok – halmaza, amelyet minimális előkészítés után használhat a gépi tanulási modellek bővítéséhez.
 metadata:
-  title: Az Open Datasets előzetes verziójának dokumentációja – Azure
-  description: Az Azure Open Datasets válogatott és tisztított, minimális előkészítés után használható adatokat kínál – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatokat – a gépi tanulási modellek gazdagításához.
+  title: Az Open Datasets dokumentációja – Azure
+  description: Az Azure Open Datasets válogatott és tisztított adatok – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatok – halmaza, amelyet minimális előkészítés után használhat a gépi tanulási modellek bővítéséhez.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 44dea30e44e204664a5266a37c740b2eb23a49f7
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.date: 11/04/2019
+  ms.openlocfilehash: b6813c3fd521b12ec91eddb0176efedb8c5c120a
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309364"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73496620"
 landingContent:
 - title: Az Open Datasets bemutatása
   linkLists:
@@ -32,7 +32,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Regressziós modell létrehozása automatizált gépi tanulással
-      url: tutorial-opendatasets-automl.md
+      url: /azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+    - text: Képbesorolási modell bővítése az Azure Machine Learningben
+      url: /azure/machine-learning/service/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
 - title: A referencia tartalmának áttekintése
   linkLists:
   - linkListType: reference

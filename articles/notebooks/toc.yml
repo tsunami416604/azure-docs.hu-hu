@@ -46,5 +46,5 @@
       href: access-data-resources-jupyter-notebooks.md
     - name: A Data Science Virtual Machine használata
       href: use-data-science-virtual-machine.md
-    - name: Az Azure Machine Learning-szolgáltatások használata
+    - name: Az Azure Machine Learning használata
       href: use-machine-learning-services-jupyter-notebooks.md

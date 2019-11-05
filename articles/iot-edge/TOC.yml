@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: Átlagértékek keresése az Azure Stream Analytics segítségével
           href: tutorial-deploy-stream-analytics.md
-        - name: Adatok pontozása az Azure Machine Learning Service-szel
+        - name: Adatok pontozása az Azure Machine Learninggel
           href: tutorial-deploy-machine-learning.md
         - name: Képek besorolása a Custom Vision használatával
           href: tutorial-deploy-custom-vision.md

@@ -137,6 +137,8 @@
           href: disk-encryption.md
         - name: Nagy teljesítményű rendszer tervezése
           href: premium-storage-performance.md
+        - name: Lemezek adatlöket-kezelése
+          href: disk-bursting.md
         - name: Lemezek skálázási célértékei
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása

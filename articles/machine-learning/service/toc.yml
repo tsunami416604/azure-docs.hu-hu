@@ -6,6 +6,9 @@
     - name: Mi az Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning és Studio
+      displayName: 'AML, Studio, designer'
+      href: ../compare-azure-ml-to-studio-classic.md
     - name: Architektúra és kifejezések
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -32,15 +35,22 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: Machine Learning-folyamatok (speciális)
-          href: tutorial-pipeline-batch-scoring-classification.md
-    - name: Vizuális felület
+          items:
+            - name: Besorolási modell kötegelt kiértékelése
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: Az első ML-kísérlet létrehozása (R)
+          href: tutorial-1st-r-experiment.md
+    - name: Tervező
       items:
         - name: 1. Regressziós modell betanítása
           displayName: studio
-          href: ui-tutorial-automobile-price-train-score.md
+          href: tutorial-designer-automobile-price-train-score.md
         - name: 2. Regressziós modell üzembe helyezése
           displayName: studio
-          href: ui-tutorial-automobile-price-deploy.md
+          href: tutorial-designer-automobile-price-deploy.md
     - name: Automatizált ML (interfész)
       displayName: 'automl, automated, auto ml, portal, ui'
       href: tutorial-first-experiment-automated-ml.md
@@ -57,42 +67,51 @@
   items:
     - name: Munkaterület
       href: concept-workspace.md
-    - name: Számítási cél
-      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
-      href: concept-compute-target.md
     - name: A modell betanítása
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
-    - name: Vizuális felület
-      displayName: studio
-      href: ui-concept-visual-interface.md
-    - name: Automatizált gépi tanulás
-      displayName: 'automl, auto ml'
-      href: concept-automated-ml.md
     - name: Modellkezelés (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: Értelmezhetőség
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 'Tervező: kód nélküli ML'
+      displayName: studio
+      href: concept-designer.md
+    - name: Algoritmus-adatlap
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: Automatizált gépi tanulás
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: Számítási példány
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: Számítási cél
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
     - name: Gépi tanulási folyamatok
       href: concept-ml-pipelines.md
-    - name: Modell értelmezhetősége
-      displayName: explainability
-      href: machine-learning-interpretability-explainability.md
     - name: ONNX
       href: concept-onnx.md
-    - name: Biztonság
+    - name: Alkalmasság vállalati használatra és biztonság
       items:
-        - name: Vállalati biztonság áttekintése
-          displayName: authorization authentication encryption aad azure active directory
-          href: concept-enterprise-security.md
-        - name: Felhasználók és szerepkörök kezelése
-          href: how-to-assign-roles.md
-        - name: Virtuális hálózatok használata
-          displayName: vnet
-          href: how-to-enable-virtual-network.md
-        - name: Webszolgáltatások biztonságossá tétele SSL használatával
-          href: how-to-secure-web-service.md
-        - name: Tárelérési kulcsok újragenerálása
-          href: how-to-change-storage-access-key.md
+        - name: Vállalati biztonság
+          items:
+            - name: Vállalati biztonság áttekintése
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: Felhasználók és szerepkörök kezelése
+              href: how-to-assign-roles.md
+            - name: Virtuális hálózatok használata
+              displayName: vnet
+              href: how-to-enable-virtual-network.md
+            - name: Webszolgáltatások biztonságossá tétele SSL használatával
+              href: how-to-secure-web-service.md
+            - name: Tárelérési kulcsok újragenerálása
+              href: how-to-change-storage-access-key.md
+        - name: Az Azure Machine Learning monitorozása
+          href: monitor-azure-machine-learning.md
     - name: Deep learning
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
@@ -138,32 +157,38 @@
         - name: Betanítás adathalmazok használatával
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: Eltérések észlelése az adathalmazokban
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
         - name: Verzió és adathalmazok nyomon követése
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
     - name: Modellek betanítása
       items:
-        - name: Vizuális felület használata
-          displayName: sample visual interface experiments
+        - name: A tervező használata
+          displayName: sample designer experiments
           items:
             - name: Ár előrejelzése
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+              href: how-to-designer-sample-regression-automobile-price-basic.md
             - name: Ár előrejelzése (speciális)
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
-            - name: Hitelkockázat előrejelzése
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: Bevétel előrejelzése
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+              href: how-to-designer-sample-classification-predict-income.md
             - name: Hitelkockázat előrejelzése (speciális)
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
             - name: Forgalom előrejelzése
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-churn.md
+              href: how-to-designer-sample-classification-churn.md
             - name: Repülőjáratok késéseinek előrejelzése
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-flight-delay.md
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: Teszt osztályozása
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
         - name: Becslők használata gépi tanuláshoz
           items:
             - name: Becslők létrehozása a betanítás során
@@ -187,6 +212,15 @@
           href: how-to-train-pytorch.md
         - name: Chainer
           href: how-to-train-chainer.md
+    - name: Modellek értelmezése
+      displayName: interpretability
+      items:
+        - name: Helyi és távoli modellek értelmezése
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: Automatizált gépi tanulási modellek értelmezése
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
     - name: Gépi tanulás automatizálása
       displayName: 'automl, auto ml'
       items:
@@ -236,7 +270,7 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Notebook virtuális gépek
+        - name: Számítási példányok
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Egyéni Docker-rendszerkép használata
           href: how-to-deploy-custom-docker-image.md
@@ -253,6 +287,9 @@
         - name: Köteg-előrejelzések futtatása
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
+        - name: A tervező használata kötegelt előrejelzésekre
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions-ui.md
     - name: Modellek monitorozása
       items:
         - name: Modelladatok gyűjtése és kiértékelése
@@ -262,18 +299,18 @@
           href: how-to-monitor-data-drift.md
         - name: Monitorozás az Application Insights segítségével
           href: how-to-enable-app-insights.md
-    - name: Újrahasználható munkafolyamatok létrehozása
+    - name: ML-folyamatok összeállítása és használata
       displayName: pipelines
       items:
-        - name: Gépi tanulási folyamatok létrehozása Pythonban
+        - name: ML-folyamatok létrehozása (Python)
           href: how-to-create-your-first-pipeline.md
-        - name: Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
+        - name: Folyamat ütemezése (Python)
+          href: how-to-schedule-pipelines.md
+        - name: Folyamatok hibakeresése és hibaelhárítása
           href: how-to-debug-pipelines.md
         - name: Azure Pipelines a CI/CD-hez
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Gépi tanulási folyamatok ütemezése Pythonban
-          href: how-to-schedule-pipelines.md
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md
@@ -282,15 +319,20 @@
       href: how-to-export-delete-data.md
 - name: Referencia
   items:
-    - name: Machine learning SDK
+    - name: ML SDK (Python)
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: ML SDK (R)
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: Adatreferencia monitorozása
+      href: monitor-resource-reference.md
     - name: Machine Learning-folyamatok – YAML-referencia
       href: reference-pipeline-yaml.md
-    - name: Vizuális felület moduljai
+    - name: Tervezőmodulok
       displayName: 'module, reference, algorithm, studio'
       items:
         - name: Modulhivatkozás áttekintése
@@ -299,18 +341,14 @@
           items:
             - name: Konvertálás CSV formátumba
               href: ../algorithm-module-reference/convert-to-csv.md
+            - name: Átalakítás adathalmazzá
+              href: ../algorithm-module-reference/convert-to-dataset.md
         - name: Adatbemenet és -kimenet
           items:
             - name: Adatok importálása
               items:
                 - name: Adatok importálása
                   href: ../algorithm-module-reference/import-data.md
-                - name: Importálás webes URL-ről HTTP-kapcsolaton keresztül
-                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
-                - name: Importálás Azure Blob Storage-modulból
-                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
-                - name: Importálás Azure SQL Database-ből
-                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Adatok exportálása
               href: ../algorithm-module-reference/export-data.md
             - name: Manuális adatbevitel
@@ -319,12 +357,18 @@
           items:
             - name: Oszlopok kiválasztása az adathalmazban
               href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: Oszlopok kiválasztása átalakításhoz
+              href: ../algorithm-module-reference/select-columns-transform.md
             - name: Metaadatok szerkesztése
               href: ../algorithm-module-reference/edit-metadata.md
             - name: Hiányzó adatok törlése
               href: ../algorithm-module-reference/clean-missing-data.md
             - name: Funkciókivonatolás
               href: ../algorithm-module-reference/feature-hashing.md
+            - name: A permutáció funkció fontossága
+              href: ../algorithm-module-reference/permutation-feature-importance.md
+            - name: Szűrőalapú szolgáltatásválasztás
+              href: ../algorithm-module-reference/filter-based-feature-selection.md
             - name: N-Gram-funkciók kinyerése szövegből
               href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: Oszlopok hozzáadása
@@ -341,6 +385,8 @@
               href: ../algorithm-module-reference/split-data.md
             - name: Adatok normalizálása
               href: ../algorithm-module-reference/normalize-data.md
+            - name: SMOTE
+              href: ../algorithm-module-reference/smote.md
             - name: Partíció és minta
               href: ../algorithm-module-reference/partition-and-sample.md
             - name: Értékek levágása
@@ -351,14 +397,24 @@
           items:
             - name: Relevanciamodell
               href: ../algorithm-module-reference/score-model.md
+            - name: SVD-ajánló pontozása
+              href: ../algorithm-module-reference/score-svd-recommender.md
             - name: Adatok hozzárendelése fürtökhöz
               href: ../algorithm-module-reference/assign-data-to-clusters.md
             - name: Modell betanítása
               href: ../algorithm-module-reference/train-model.md
             - name: Csoportosítási modell betanítása
               href: ../algorithm-module-reference/train-clustering-model.md
+            - name: SVD-ajánló betanítása
+              href: ../algorithm-module-reference/train-svd-recommender.md
+            - name: Modell-hiperparaméterek hangolása
+              href: ../algorithm-module-reference/tune-model-hyperparameters.md
+            - name: Modell keresztellenőrzése
+              href: ../algorithm-module-reference/cross-validate-model.md
             - name: Modell értékelése
               href: ../algorithm-module-reference/evaluate-model.md
+            - name: Ajánló értékelése
+              href: ../algorithm-module-reference/evaluate-recommender.md
             - name: Átalakítás alkalmazása
               href: ../algorithm-module-reference/apply-transformation.md
             - name: Lineáris regresszió
@@ -381,6 +437,8 @@
               href: ../algorithm-module-reference/multiclass-decision-forest.md
             - name: Többosztályos súlyozott döntési fa
               href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
+            - name: One vs. All Multiclass
+              href: ../algorithm-module-reference/one-vs-all-multiclass.md
             - name: Kétosztályos átlagolt perceptron
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Kétosztályos döntési erdő

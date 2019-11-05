@@ -1,0 +1,27 @@
+- name: Az SQL Database Edge dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az SQL Database Edge?
+      href: overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Az SQL Database Edge üzembe helyezése
+      href: deploy-portal.md
+    - name: Az ONNX üzembe helyezése az SQL Database Edge-ben
+      href: deploy-onnx.md
+- name: Oktatóanyagok
+  items:
+    - name: Adatok szinkronizálása az Azure Data Factoryvel
+      href: tutorial-sync-data-factory.md
+    - name: Adatok szinkronizálása az SQL Data Synckel
+      href: tutorial-sync-data-sync.md
+- name: Útmutató
+  items:
+    - name: DAC-csomagok és Stream Analytics-feladatok
+      href: stream-analytics.md
+- name: Alapelvek
+  items:
+    - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
+      href: onnx-overview.md

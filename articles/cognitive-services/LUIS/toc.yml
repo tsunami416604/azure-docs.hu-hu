@@ -36,17 +36,7 @@
         - name: Szándék lekérése
           href: luis-get-started-get-intent-from-rest.md
         - name: Modell módosítása
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-add-utterance.md
-            - name: Indítás
-              href: luis-get-started-go-add-utterance.md
-            - name: Java
-              href: luis-get-started-java-add-utterance.md
-            - name: Node.js
-              href: luis-get-started-node-add-utterance.md
-            - name: Python
-              href: luis-get-started-python-add-utterance.md
+          href: get-started-get-model-rest-apis.md
 - name: Oktatóanyagok
   items:
     - name: Alkalmazás létrehozása
@@ -103,49 +93,47 @@
               href: luis-tutorial-bot-nodejs-appinsights.md
 - name: Alapelvek
   items:
-    - name: Ajánlott eljárások
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
-    - name: A LUIS és a QnA Maker használata
-      href: choose-natural-language-processing-service.md
-      displayName: 'nlp, qna maker'
+    - name: Fejlesztési életciklus
+      href: luis-concept-app-iteration.md
     - name: Az alkalmazás megtervezése
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Tartalomkészítési és futtatókörnyezeti kulcsok
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
-    - name: Tartalomkészítési alkalmazás modellje
+    - name: Alkalmazásmodellek
       items:
-        - name: Tartalomkészítési ciklus
-          href: luis-concept-app-iteration.md
-        - name: Verziókezelés
-          href: luis-concept-version.md
-          displayName: import
-    - name: Tervezési modell
-      items:
+        - name: Típusok
+          href: luis-concept-model.md
         - name: Leképezések
           href: luis-concept-intent.md
+        - name: Beszédmódok
+          href: luis-concept-utterance.md
         - name: Entitások
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
-        - name: Entitásszerepkörök
-          href: luis-concept-roles.md
-        - name: Beszédmódok
-          href: luis-concept-utterance.md
         - name: Előre összeállított modellek
           href: luis-concept-prebuilt-model.md
-    - name: Az alkalmazás teljesítményének növelése
-      items:
-        - name: Előrejelzési pontszám
-          href: luis-concept-prediction-score.md
-        - name: A végpont beszédmódjainak áttekintése
-          href: luis-concept-review-endpoint-utterances.md
-        - name: Kifejezéslisták
-          href: luis-concept-feature.md
         - name: Minták
           href: luis-concept-patterns.md
           displayName: roles
+        - name: Szolgáltatások
+          href: luis-concept-feature.md
+    - name: Előrejelzési pontszám
+      href: luis-concept-prediction-score.md
+    - name: Ajánlott eljárások
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: Az alkalmazás teljesítményének növelése
+      items:
+        - name: A végpont beszédmódjainak áttekintése
+          href: luis-concept-review-endpoint-utterances.md
+    - name: Tesztelés
+      items:
+        - name: Interaktív tesztelés
+          href: luis-concept-test.md
+        - name: Kötegelt tesztelés
+          href: luis-concept-batch-test.md
+    - name: Tartalomkészítési és futtatókörnyezeti kulcsok
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
     - name: Adatkezelés
       items:
         - name: Adatok módosítása
@@ -157,12 +145,9 @@
           displayName: roles
         - name: Adattárolás
           href: luis-concept-data-storage.md
-    - name: Tesztelés
-      items:
-        - name: Interaktív tesztelés
-          href: luis-concept-test.md
-        - name: Kötegelt tesztelés
-          href: luis-concept-batch-test.md
+    - name: A LUIS és a QnA Maker használata
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: Enterprise
       items:
         - name: Tervezési stratégiák
@@ -183,13 +168,7 @@
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Előre összeállított modellek használata
-          items:
-            - name: Tartományok használata
-              href: luis-prebuilt-domains.md
-            - name: Leképezések használata
-              href: luis-prebuilt-intent.md
-            - name: Entitások használata
-              href: luis-prebuilt-entities.md
+          href: howto-add-prebuilt-models.md
         - name: REST API-kkal
           items:
             - name: Alkalmazás létrehozása programozott módon a Node.js használatával
@@ -218,6 +197,7 @@
           href: luis-how-to-model-intent-pattern.md
     - name: Betanítás
       href: luis-how-to-train.md
+      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
     - name: Tesztelés
       items:
         - name: Interaktív tesztelés
@@ -246,13 +226,17 @@
           diplayName: 'import, export, container'
         - name: A Traffic Managerrel
           href: luis-traffic-manager.md
-    - name: Migrate API
+    - name: API-k használata
       items:
-        - name: Migrálás a REST API 2-es verziójára
-          href: luis-migration-api-v1-to-v2.md
-        - name: Migrálás a REST API 3-as verziójára
+        - name: Fejlesztőknek
+          href: developer-reference-resource.md
+        - name: API-k készítése
+          href: luis-migration-api-authoring.md
+        - name: Migrálás a V3 API-re
           href: luis-migration-api-v3.md
           displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
+        - name: Áttérés az API 2-es verziójára
+          href: luis-migration-api-v1-to-v2.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása
@@ -262,6 +246,9 @@
           href: luis-container-configuration.md
         - name: A Container Instances használata
           href: deploy-luis-on-container-instances.md
+        - name: Tárolókorlátozások
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
 - name: Referencia
   items:
     - name: Felhasználói adatvédelem
@@ -325,6 +312,8 @@
           href: reference-entity-regular-expression.md
         - name: Egyszerű entitás
           href: reference-entity-simple.md
+    - name: Hangulat
+      href: luis-reference-prebuilt-sentiment.md
     - name: Fejlesztői forrásanyagok
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
@@ -334,9 +323,15 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: REST API-k
       items:
-        - name: Tartalomkészítés 2-es verziójú REST API-kkal
+        - name: V3 tartalomkészítési REST API-k (előzetes verzió)
+          href: 'https://aka.ms/luis-apim-v3-authoring'
+        - name: V3 előrejelzési REST API-k
+          href: 'https://aka.ms/luis-apim-v3-prediction'
+        - name: V2 tartalomkészítési REST API-k
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
-        - name: 2-es verziójú REST API-végpont
+        - name: V2 előrejelzési REST API-k
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
+        - name: V3 REST API-végpont
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: HTTP-kódok
           displayName: '400, 401, 403, 409, 410, 414, 429'
@@ -413,7 +408,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Nyelvi és régiós támogatás
       href: luis-language-support.md
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure-ütemterv
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Szószedet

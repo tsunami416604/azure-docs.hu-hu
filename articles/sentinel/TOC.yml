@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: Az F5 csatlakoztatása
               href: connect-f5.md
+            - name: Az F5 BIG-IP csatlakoztatása
+              href: connect-f5-big-ip.md
             - name: A Syslog csatlakoztatása
               href: connect-syslog.md
             - name: Symantec ICDX csatlakoztatása
               href: connect-symantec.md
             - name: A Cisco csatlakoztatása
               href: connect-cisco.md
+            - name: A Barracuda CloudGen tűzfal csatlakoztatása
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Citrix Analytics (Security) csatlakoztatása
+              href: connect-citrix-analytics.md
+            - name: ExtraHop Reveal(x) csatlakoztatása
+              href: connect-extrahop.md
+            - name: One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Trend Micro Deep Security
+              href: connect-trend-micro.md
+            - name: Zscaler csatlakoztatása
+              href: connect-zscaler.md
         - name: Fenyegetésfelderítés csatlakoztatása
           href: connect-threat-intelligence.md
         - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: Veszélyforrás-keresés könyvjelzőkkel
           href: bookmarks.md
+        - name: Veszélyforrás-keresés a Livestreammel
+          href: livestream.md
     - name: Az Azure Sentinel eltávolítása
       href: offboard.md
 - name: További források
