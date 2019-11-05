@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6847384177e71c7f2b012e46211a5c09fa80fedb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7db35b89903de6c5027bb7ea445245d84b96d6ef
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149009"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473306"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -39,7 +39,7 @@ Ez az oldal havonta frissül, ezért rendszeresen újra kell látogatnia. Ha hat
 
 ---
 
-## <a name="october-2019"></a>Október 2019
+## <a name="october-2019"></a>2019. október
 
 ### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>A identityRiskEvent API elavult változata Azure AD Identity Protection kockázati észlelések esetén  
 
@@ -198,7 +198,7 @@ Az új **biztonsági** menü a következőket tartalmazza:
 - Identity Protection
 - Security Center
 - Identitás biztonságos pontszáma
-- Hitelesítési módok
+- Hitelesítési módszerek
 - MFA
 - Kockázati jelentések – kockázatos felhasználók, kockázatos bejelentkezések, kockázati észlelések
 - És még sok minden más...
@@ -434,7 +434,7 @@ A modern biztonsági jelentések további képességeket biztosítanak a régebb
 - Kockázati állapot, amely a következőkre terjed ki: veszélyeztetett, elvetett, szervizelt és megerősített sérült
 - Új kockázattal kapcsolatos észlelések (prémium szintű Azure AD előfizetők számára elérhető)
 
-További információ: [kockázatos felhasználók](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report), [kockázatos bejelentkezések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report)és [kockázati észlelések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections-report).
+További információ: [kockázatos felhasználók](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users), [kockázatos bejelentkezések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)és [kockázati észlelések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections).
 
 ---
 
@@ -466,7 +466,7 @@ További információkért lásd [: Hogyan működik az Azure ad önkiszolgáló
 **Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
 A **termék képességei:** Felhasználói hitelesítés
 
-Az Azure AD Authentication Library (ADAL.NET) verziójának 5.0.0-előzetes verziójától kezdődően az alkalmazások fejlesztőinek [a Web Apps és a webes API-k esetében egy gyorsítótárat kell szerializálni](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Ellenkező esetben előfordulhat, hogy egyes forgatókönyvek, amelyek a [folyamaton](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kívüli folyamatot használják, és `UserAssertion` bizonyos használati eseteivel rendelkeznek, magasabb szintű jogosultságot eredményezhetnek. A biztonsági rés elkerülése érdekében a ADAL.NET mostantól figyelmen kívül hagyja a Microsoft hitelesítési függvénytárát a DotNet (MSAL.NET) megosztott gyorsítótárához a következő esetekben:.
+Az Azure AD Authentication Library (ADAL.NET) verziójának 5.0.0-előzetes verziójától kezdődően az alkalmazások fejlesztőinek [a Web Apps és a webes API-k esetében egy gyorsítótárat kell szerializálni](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Ellenkező esetben előfordulhat, hogy egyes forgatókönyvek, amelyek a [folyamaton](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kívüli folyamatot használják, valamint `UserAssertion`bizonyos használati eseteit, a jogosultság megemelését eredményezhetik. A biztonsági rés elkerülése érdekében a ADAL.NET mostantól figyelmen kívül hagyja a Microsoft hitelesítési függvénytárát a DotNet (MSAL.NET) megosztott gyorsítótárához a következő esetekben:.
 
 További információ erről a hibáról: [Azure Active Directory a hitelesítési függvénytár jogosultságszint-emelését érintő biztonsági rés](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258).
 
@@ -494,7 +494,7 @@ A **termék képességei:** Directory
 
 A AzureAD és a AzureAD előzetes verziójának PowerShell-moduljainak új frissítései elérhetők:
 
-- Új `-Filter` paraméter lett hozzáadva az `Get-AzureADDirectoryRole` paraméterhez a AzureAD modulban. Ez a paraméter segít a parancsmag által visszaadott címtárbeli szerepkörök szűrésében.
+- Új `-Filter` paraméter lett hozzáadva a `Get-AzureADDirectoryRole` paraméterhez a AzureAD modulban. Ez a paraméter segít a parancsmag által visszaadott címtárbeli szerepkörök szűrésében.
 - Új parancsmagok lettek hozzáadva az AzureADPreview modulhoz, amely segít az egyéni szerepkörök definiálásában és hozzárendelésében az Azure AD-ben, beleértve a következőket:
 
     - `Get-AzureADMSRoleAssignment`
@@ -551,7 +551,7 @@ A **termék képességei:** Felhasználói hitelesítés
 
 2019. szeptember 25-én kikapcsoljuk a régi, nem továbbfejlesztett biztonsági információkat a felhasználói biztonsági adatok regisztrálásához és kezeléséhez, és csak az új, [továbbfejlesztett verzió](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)bekapcsolását. Ez azt jelenti, hogy a felhasználók többé nem fogják tudni használni a régi felhasználói élményt.
 
-A fokozott biztonsági információkkal kapcsolatos további információkért tekintse meg a [rendszergazdai dokumentációt](https://aka.ms/securityinfodocs)  and [felhasználói dokumentációját](https://aka.ms/securityinfoguide).
+A fokozott biztonsági információkkal kapcsolatos további információkért tekintse meg a [rendszergazdai dokumentációs](https://aka.ms/securityinfodocs) és a [felhasználói dokumentációt](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Az új felhasználói élmény bekapcsolásához a következőket kell tennie:
 
@@ -568,7 +568,7 @@ A fokozott biztonsági információkkal kapcsolatos további információkért t
     A beállítások mentése után már nem fog tudni hozzáférni a régi biztonsági információkhoz.
 
 >[!Important]
->Ha nem hajtja végre ezeket a lépéseket a 2019. szeptember 25. előtt, a Azure Active Directory bérlője automatikusan engedélyezve lesz a továbbfejlesztett felhasználói élményhez. Ha kérdése van, lépjen kapcsolatba velünk a következő címen: registrationpreview@microsoft.com.
+>Ha nem hajtja végre ezeket a lépéseket a 2019. szeptember 25. előtt, a Azure Active Directory bérlője automatikusan engedélyezve lesz a továbbfejlesztett felhasználói élményhez. Ha kérdése van, vegye fel velünk a kapcsolatot registrationpreview@microsoft.comcímen.
 
 ---
 
@@ -739,7 +739,7 @@ Az összes Azure AD-rendszergazda mostantól kiválaszthatja a meglévő biztons
 
 - Kockázati állapot, amely a következőkre terjed ki: veszélyeztetett, elvetett, szervizelt és megerősített sérült
 
-További információ: [kockázatos felhasználók jelentés](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report) és [kockázatos bejelentkezések jelentés](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report).
+További információ: [kockázatos felhasználók jelentés](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users) és [kockázatos bejelentkezések jelentés](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins).
 
 ---
 
@@ -809,7 +809,7 @@ További információ: [csoportok kezelése az Azure ad-portálon](https://docs.
 **Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
 A **termék képességei:** Felhasználói hitelesítés
 
-Az Azure AD-alkalmazások most már regisztrálhatják és használhatják a válasz (átirányítás) URI-ket statikus lekérdezési paraméterekkel (például `https://contoso.com/oauth2?idp=microsoft`) a OAuth 2,0-kérelmek esetében. A statikus lekérdezési paraméter a válasz URI azonosítójának megfelelő karakterláncra vonatkozik, ugyanúgy, mint a válasz URI más része. Ha nincs olyan regisztrált karakterlánc, amely megfelel az URL-cím-dekódolású átirányítás-URI azonosítónak, a rendszer elutasítja a kérelmet. Ha a válasz URI-ja megtalálható, a rendszer a teljes karakterláncot használja a felhasználó átirányítására, beleértve a statikus lekérdezési paramétert is.
+Az Azure AD-alkalmazások most már regisztrálhatják és használhatják a válasz-(átirányítási) URI-ket statikus lekérdezési paraméterekkel (például `https://contoso.com/oauth2?idp=microsoft`) a OAuth 2,0-kérelmek esetében. A statikus lekérdezési paraméter a válasz URI azonosítójának megfelelő karakterláncra vonatkozik, ugyanúgy, mint a válasz URI más része. Ha nincs olyan regisztrált karakterlánc, amely megfelel az URL-cím-dekódolású átirányítás-URI azonosítónak, a rendszer elutasítja a kérelmet. Ha a válasz URI-ja megtalálható, a rendszer a teljes karakterláncot használja a felhasználó átirányítására, beleértve a statikus lekérdezési paramétert is.
 
 A dinamikus válasz URI-k továbbra is tiltottak, mert biztonsági kockázatot jelentenek, és nem használhatók az állapotadatok megőrzésére a hitelesítési kérelem során. Erre a célra használja a `state` paramétert.
 

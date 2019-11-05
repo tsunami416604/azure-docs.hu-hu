@@ -1,5 +1,5 @@
 ---
-title: 'Azure Toolkit for Eclipse: Scala-alkalmazások létrehozása a HDInsight Sparkhoz '
+title: 'Azure Toolkit for Eclipse: Scala-alkalmazások létrehozása a HDInsight Sparkhoz'
 description: Az Azure Toolkit for Eclipse HDInsight eszközeivel fejlesztheti a Scalaban írt Spark-alkalmazásokat, és beküldheti azokat egy HDInsight Spark-fürtbe közvetlenül az Eclipse IDE-ből.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5336153a776f3324e5f73564ba2804389cd96938
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257568"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494685"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -71,7 +71,7 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 ## <a name="link-a-cluster"></a>Fürt csatolása
 
-A Ambari által felügyelt Felhasználónév használatával összekapcsolhatja a normál fürtöt. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév használatával is kapcsolódhat, például `user1@contoso.com`:.
+A Ambari által felügyelt Felhasználónév használatával összekapcsolhatja a normál fürtöt. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév (például `user1@contoso.com`) használatával kapcsolódhat.
 
 1. Válassza **a fürt csatolása** az **Azure Explorerben**lehetőséget.
 
@@ -206,7 +206,7 @@ A HDInsight-eszközök használatával különböző műveleteket hajthat végre
 
 1. Az Azure Explorerben kattintson a jobb gombbal a Spark-fürt nevére, majd válassza a **Spark-előzmények megnyitása felhasználói felület**lehetőséget. Amikor a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adatait. Ezeket a fürt kiépítés közben adta meg.
 
-1. A Spark verziótörténete-kiszolgáló irányítópultján az alkalmazás neve segítségével keresse meg az éppen futó alkalmazást. Az előző kódban a paranccsal `val conf = new SparkConf().setAppName("MyClusterApp")`állíthatja be az alkalmazás nevét. Így a Spark-alkalmazás neve **MyClusterApp**volt.
+1. A Spark verziótörténete-kiszolgáló irányítópultján az alkalmazás neve segítségével keresse meg az éppen futó alkalmazást. Az előző kódban a `val conf = new SparkConf().setAppName("MyClusterApp")`használatával állíthatja be az alkalmazás nevét. Így a Spark-alkalmazás neve **MyClusterApp**volt.
 
 ### <a name="start-the-apache-ambari-portal"></a>Az Apache Ambari portál elindítása
 
@@ -318,13 +318,13 @@ Két mód van a feladatok elküldésére. Ha megadja a tárolási hitelesítő a
 
 ## <a name="seealso"></a>Lásd még:
 
-* [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
+* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Alkalmazások létrehozása és futtatása

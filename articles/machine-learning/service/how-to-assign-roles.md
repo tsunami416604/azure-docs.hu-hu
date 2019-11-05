@@ -11,14 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0ceb21d6f77fd9694f7cd564c2e89735cf2a774d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497423"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
+[!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkaterülethez való hozzáférést. A [szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. A Azure Active Directory lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
 
@@ -26,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkat
 
 Az Azure Machine Learning munkaterület egy Azure-erőforrás. Más Azure-erőforrásokhoz hasonlóan, amikor létrejön egy új Azure Machine Learning munkaterület, három alapértelmezett szerepkör jön létre. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
-| Role | Hozzáférési szint |
+| Szerepkör | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók megtekinthetik és megtekinthetik a munkaterületen lévő objektumokat, de nem hozhatnak létre és nem frissíthetik ezeket az eszközöket. |
 | **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtathatnak és telepíthetnek egy webszolgáltatást. |
@@ -52,7 +53,7 @@ Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-A `user` mező egy meglévő felhasználó e-mail-címe a Azure Active Directory példányában, ahol a munkaterület szülő-előfizetése él. Az alábbi példa bemutatja, hogyan használhatja ezt a parancsot:
+A `user` mező egy meglévő felhasználó e-mail-címe azon Azure Active Directory-példányban, ahol a munkaterület szülő-előfizetése él. Az alábbi példa bemutatja, hogyan használhatja ezt a parancsot:
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
@@ -115,5 +116,5 @@ További információ az egyéni szerepkörökkel használható műveletekről (
 
 - [A nagyvállalati biztonság áttekintése](concept-enterprise-security.md)
 - [A kísérletek és következtetések/pontszámok biztonságos futtatása virtuális hálózaton belül](how-to-enable-virtual-network.md)
-- [Oktatóanyag: Modellek betanítása](tutorial-train-models-with-aml.md)
+- [Oktatóanyag: modellek betanítása](tutorial-train-models-with-aml.md)
 - [Erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

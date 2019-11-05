@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332277"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483889"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -111,11 +111,11 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 1. Váltson az **ütemezések** lapra, és válassza az eszköztár **ütemezett esemény hozzáadása** elemét. 
 
     ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/add-schedule-button.png)
-2. Ellenőrizze, hogy a **standard** érték van-e kiválasztva az **esemény típusára**. A **csak indítás** gombra kattintva adhatja meg a virtuális gépek kezdési idejét. Ha csak a virtuális gépek leállítási idejét szeretné megadni, válassza a **Leállítás** lehetőséget. 
-7. Az **ismétlés** szakaszban válassza ki az aktuális ütemtervet. 
+2. Győződjön meg arról, hogy az **esemény típusaként**a **standard** van kiválasztva. A **csak indítás** gombra kattintva adhatja meg a virtuális gépek kezdési idejét. Ha csak a virtuális gépek leállítási idejét szeretné megadni, válassza a **Leállítás** lehetőséget. 
+3. Az **ismétlés** szakaszban válassza ki az aktuális ütemtervet. 
 
     ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/select-current-schedule.png)
-5. A **REPEAT (ismétlés** ) párbeszédpanelen hajtsa végre a következő lépéseket:
+4. Az ütemterv kiválasztásával megnyílik a **REPEAT (ismétlés** ) párbeszédpanel. Ezen a párbeszédpanelen hajtsa végre a következő lépéseket:
     1. Győződjön meg arról, hogy **minden héten** be van állítva az **ismétlés** mező. 
     3. A **kezdő dátum**meghatározása.
     4. Itt adhatja meg azt a **kezdési időpontot** , amikor a virtuális gépeket el szeretné indítani.
@@ -124,10 +124,8 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
     2. Válassza ki azokat a napokat, amelyeknek érvénybe szeretné venni az ütemtervet. A következő példában a hétfő-csütörtök van kiválasztva. 
     8. Kattintson a **Mentés** gombra. 
 
-        ![Ismétlődő ütemterv beállítása](../media/how-to-create-schedules/set-repeat-schedule.png)
-
-3. Az **ütemezett esemény hozzáadása** lapon a **Megjegyzések (nem kötelező)** mezőben adja meg az ütemezés leírását vagy megjegyzéseit. 
-4. Az **ütemezett esemény hozzáadása** lapon válassza a **Mentés**lehetőséget. 
+5. Az **ütemezett esemény hozzáadása** lapon a **Megjegyzések (nem kötelező)** mezőben adja meg az ütemezés leírását vagy megjegyzéseit. 
+6. Az **ütemezett esemény hozzáadása** lapon válassza a **Mentés**lehetőséget. 
 
     ![Heti ütemterv](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
@@ -140,9 +138,9 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 1. A **Meghívás küldése e-mailben** lapon adjon meg egy opcionális üzenetet, majd válassza a **Küldés**lehetőséget. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. Ezt a regisztrációs hivatkozást a következő parancs kiválasztásával érheti el: **... (három pont)** az eszköztáron és a **regisztrációs hivatkozáson**. 
 
     ![Regisztrációs hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
-4. A **meghívás** állapota megjelenik a **felhasználók** listájában. Az állapotnak a **küldésre** kell váltania, majd el kell **küldenie a következőre: &lt;date @ no__t-3**. 
+4. A **meghívás** állapota megjelenik a **felhasználók** listájában. Az állapotnak a **Küldés** gombra kell váltania, majd **&lt;dátummal kell elküldenie&gt;** . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy osztályterem-tesztkörnyezetet, és konfigurálta azt. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935206"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988792"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
 
@@ -117,7 +117,7 @@ Az [eszközök fejlesztői](#device-developer) a [digitális kettős definíció
 
 ## <a name="device-provisioning-service"></a>Eszköz kiépítési szolgáltatása
 
-Az [Azure IoT Central](#azure-iot-central) az eszköz kiépítési szolgáltatásával kezeli az összes eszköz regisztrációját és kapcsolódását. További információ: [Device connectivity in Azure IoT Central](../iot-central/core/concepts-connectivity-pnp.md). A Device kiépítési szolgáltatással felügyelheti az eszközök regisztrációját és a IoT Hub-alapú IoT-megoldáshoz való kapcsolódást is. További információ: [eszközök kiépítés az Azure IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+Az [Azure IoT Central](#azure-iot-central) az eszköz kiépítési szolgáltatásával kezeli az összes eszköz regisztrációját és kapcsolódását. További információ: [Device connectivity in Azure IoT Central](../iot-central/core/overview-iot-central-get-connected-pnp.md). A Device kiépítési szolgáltatással felügyelheti az eszközök regisztrációját és a IoT Hub-alapú IoT-megoldáshoz való kapcsolódást is. További információ: [eszközök kiépítés az Azure IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Eszközregisztráció
 

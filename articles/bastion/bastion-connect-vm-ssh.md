@@ -1,81 +1,72 @@
 ---
-title: Csatlakozás egy Linux virtuális gép Azure megerősített |} A Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan kapcsolódhat a Linux rendszerű virtuális gép Azure megerősített.
+title: Kapcsolódás Linux rendszerű virtuális géphez az Azure Bastion használatával | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan csatlakozhat Linux rendszerű virtuális géphez az Azure Bastion használatával.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69548541d16db95f633400808f72aebaf59cff08
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b88327ea0b5d2958cc1c86fa317415f2441af894
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477783"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494470"
 ---
-# <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion-preview"></a>Csatlakozás Azure megerősített (előzetes verzió) használata Linux rendszerű virtuális géphez SSH-val
+# <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Kapcsolódás az SSH-val egy Linux rendszerű virtuális géphez az Azure Bastion használatával
 
-Ez a cikk bemutatja, hogyan, biztonságos és zökkenőmentes SSH a Linux rendszerű virtuális gépek az Azure-beli virtuális hálózathoz. A virtuális gépekhez közvetlenül az Azure Portalon csatlakozhat. Az Azure Bastion használatával a virtuális gépeken nincs szükség ügyfélre, ügynökre és további szoftverekre sem. Azure megerősített kapcsolatos további információkért lásd: a [áttekintése](bastion-overview.md).
+Ebből a cikkből megtudhatja, hogyan teheti meg biztonságosan és zökkenőmentesen az SSH-t egy Azure-beli virtuális hálózatban lévő linuxos virtuális gépeken. A virtuális gépekhez közvetlenül az Azure Portalon csatlakozhat. Az Azure Bastion használatával a virtuális gépeken nincs szükség ügyfélre, ügynökre és további szoftverekre sem. További információ az Azure Bastion-ről: [Áttekintés](bastion-overview.md).
 
-Azure megerősített használatával egy Linux rendszerű virtuális gép SSH-val csatlakozhat. A hitelesítéshez felhasználónév/jelszó és SSH-kulcsokat is használható. Csatlakozhat a virtuális gép SSH-kulcsokkal való használatával:
+Az Azure Bastion használatával Linux rendszerű virtuális gépekhez csatlakozhat SSH-val. A hitelesítéshez felhasználónevet/jelszót és SSH-kulcsokat is használhat. Az SSH-kulcsokkal csatlakozhat a virtuális géphez az alábbiak használatával:
 
-* Manuálisan adja meg a titkos kulcs
-* Egy fájl, amely tartalmazza a titkos kulcs adataival
+* Egy manuálisan megadott titkos kulcs
+* A titkos kulcs adatait tartalmazó fájl
 
-A titkos SSH-kulcs, amely a következővel kezdődik: formátumban kell lennie `"-----BEGIN RSA PRIVATE KEY-----"` és végződik `"-----END RSA PRIVATE KEY-----"`.
+Az SSH titkos kulcsának olyan formátumúnak kell lennie, amely a `"-----BEGIN RSA PRIVATE KEY-----"` és a `"-----END RSA PRIVATE KEY-----"`végződik.
 
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+## <a name="before-you-begin"></a>Előzetes teendők
 
-## <a name="before-you-begin"></a>Előkészületek
+Győződjön meg arról, hogy beállította az Azure-beli megerősített gazdagépet ahhoz a virtuális hálózathoz, amelyben a virtuális gép található. További információ: [Azure Bastion-gazdagép létrehozása](bastion-create-host-portal.md). A megerősített szolgáltatás a virtuális hálózatban való üzembe helyezése és telepítése után a használatával csatlakozhat a virtuális hálózat bármely virtuális GÉPHEZ. Amikor a Bastion használatával csatlakozik, feltételezi, hogy az RDP-t használja egy Windows rendszerű virtuális géphez való csatlakozáshoz, és SSH-t a linuxos virtuális gépekhez való csatlakozáshoz.
 
-Győződjön meg arról, hogy rendelkezik-e beállítva, amelyben a virtuális gép található a virtuális hálózat Azure bástyagazdagép. További információkért lásd: [hozzon létre egy Azure bástyagazdagép](bastion-create-host-portal.md). A megerősített szolgáltatás kiépítése, és a virtuális hálózaton üzembe helyezett, miután a virtuális hálózatban lévő bármely virtuális Géphez való csatlakozáshoz használhatja. Ebben az előzetes verzióban való csatlakozáshoz, megerősített használatakor azt feltételezi, hogy egy Windows virtuális gép és az SSH a Linux rendszerű virtuális géphez való kapcsolódásra való kapcsolódáshoz használ az RDP.
+A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 
-Annak érdekében, hogy a kapcsolat létrehozása a következő szerepkörök szükségesek:
+* Olvasó szerepkör a virtuális gépen
+* Olvasó szerepkör a virtuális gép magánhálózati IP-címével rendelkező hálózati adapteren
+* Olvasói szerepkör az Azure-beli megerősített erőforráson
 
-* A virtuális gépen olvasói szerepköre
-* A hálózati adapteren a virtuális gép magánhálózati IP-Címmel rendelkező olvasói szerepköre
-* Az Azure megerősített erőforráson olvasói szerepköre
+## <a name="username"></a>Kapcsolat: Felhasználónév és jelszó használata
 
-## <a name="username"></a>Csatlakozás: Felhasználónév és jelszó használatával
+1.   Nyissa meg az [Azure portált](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás**elemre. SSH-kapcsolatok használata esetén a virtuális gépnek linuxos virtuális gépnek kell lennie.
+1. Miután rákattintott a kapcsolat lehetőségre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, olvassa el a következő témakört: a [Bastion konfigurálása](bastion-create-host-portal.md).
 
+   ![VM-kapcsolat](./media/bastion-connect-vm-ssh/bastion.png)
+1. Adja meg az SSH felhasználónevét és jelszavát a virtuális géphez.
+1. A kulcs beírása után kattintson a **kapcsolat** gombra.
 
-1.  Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
-1. Connect gombra kattint, az oldalsó sáv megjelenik, amely három lap található – RDP, SSH és a megerősített. Megerősített lett üzembe helyezve, a virtuális hálózathoz, ha a megerősített lap alapértelmezés szerint aktív. Ha a virtuális hálózat a megerősített töltötte, tekintse meg [konfigurálása megerősített](bastion-create-host-portal.md). Ha nem látja, akkor **megerősített** felsorolt, nem nyitott a betekintő portálon. Nyissa meg a portál használatával [ezt a hivatkozást](https://aka.ms/BastionHost).
+## <a name="privatekey"></a>Kapcsolat: manuálisan adjon meg egy titkos kulcsot
 
-      ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/bastion.png)
+1. Nyissa meg az [Azure portált](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás**elemre. SSH-kapcsolatok használata esetén a virtuális gépnek linuxos virtuális gépnek kell lennie.
+1. Miután rákattintott a kapcsolat lehetőségre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, olvassa el a következő témakört: a [Bastion konfigurálása](bastion-create-host-portal.md).
 
-1. Adja meg a felhasználónevet és jelszót az SSH-hoz a virtuális géphez.
-1. Kattintson a **Connect** gomb a kulcs megadása után.
+   ![VM-kapcsolat](./media/bastion-connect-vm-ssh/bastion.png)
+1. Adja meg a felhasználónevet, és válassza az **SSH titkos kulcs**lehetőséget.
+1. Adja meg a titkos kulcsot a szövegmezőben található **SSH titkos kulcsban** (vagy illessze be közvetlenül a vágólapra).
+1. A kulcs beírása után kattintson a **kapcsolat** gombra.
 
-## <a name="privatekey"></a>Csatlakozás: Manuálisan adja meg a titkos kulcsot
+## <a name="ssh"></a>Összekapcsolás: titkos kulcsfájl használata
 
-1.  Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
-1. Connect gombra kattint, az oldalsó sáv megjelenik, amely három lap található – RDP, SSH és a megerősített. Megerősített lett üzembe helyezve, a virtuális hálózathoz, ha a megerősített lap alapértelmezés szerint aktív. Ha a virtuális hálózat a megerősített töltötte, tekintse meg [konfigurálása megerősített](bastion-create-host-portal.md). Ha nem látja, akkor **megerősített** felsorolt, nem nyitott a betekintő portálon. Nyissa meg a portál használatával [ezt a hivatkozást](https://aka.ms/BastionHost).
+1. Nyissa meg az [Azure portált](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás**elemre. SSH-kapcsolatok használata esetén a virtuális gépnek linuxos virtuális gépnek kell lennie.
 
-      ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/bastion.png)
+   ![VM-kapcsolat](./media/bastion-connect-vm-ssh/connect.png)
+1. Miután rákattintott a kapcsolat lehetőségre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, olvassa el a következő témakört: a [Bastion konfigurálása](bastion-create-host-portal.md).
 
-1. Adja meg a felhasználónevet, és válassza ki **SSH titkos kulcs**.
-1. Adja meg a titkos kulcsot a text területre **SSH titkos kulcs** (vagy beillesztheti közvetlenül).
-1. Kattintson a **Connect** gomb a kulcs megadása után.
-
-## <a name="ssh"></a>Csatlakozás: A titkos kulcsfájl használata
-
-1.  Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
-
-    ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/connect.png)
-
-1. Connect gombra kattint, az oldalsó sáv megjelenik, amely három lap található – RDP, SSH és a megerősített. Megerősített lett üzembe helyezve, a virtuális hálózathoz, ha a megerősített lap alapértelmezés szerint aktív. Ha a virtuális hálózat a megerősített töltötte, tekintse meg [konfigurálása megerősített](bastion-create-host-portal.md). Ha nem látja, akkor **megerősített** felsorolt, nem nyitott a betekintő portálon. Nyissa meg a portál használatával [ezt a hivatkozást](https://aka.ms/BastionHost).
-
-    ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/bastion.png)
-
-1. Adja meg a felhasználónevet, és válassza ki **SSH titkos kulcs helyi fájlból**.
-1. Kattintson a **Tallózás** gombra (mappa ikon a helyi fájl).
-1. Keresse meg a fájlt, majd kattintson a **nyílt**.
-1. Kattintson a **Connect** a virtuális Géphez való csatlakozáshoz. Kattintva Connect, az ssh-KAPCSOLATOT a virtuális gép közvetlenül megnyílik az Azure Portalon. Ez a kapcsolat nem keresztül HTML5 használatával a megerősített szolgáltatás a 443-as porton keresztül a magánhálózati IP-címét a virtuális gép.
+   ![VM-kapcsolat](./media/bastion-connect-vm-ssh/bastion.png)
+1. Adja meg a felhasználónevet, és válassza az **SSH titkos kulcs lehetőséget a helyi fájlból**.
+1. Kattintson a **Tallózás** gombra (a mappa ikon a helyi fájlban).
+1. Tallózással keresse meg a fájlt, majd kattintson a **Megnyitás**gombra.
+1. Kattintson a **Kapcsolódás** gombra a virtuális géphez való kapcsolódáshoz. Ha a kapcsolódás gombra kattint, az SSH-t a virtuális géphez közvetlenül a Azure Portal fogja megnyitni. Ez a kapcsolat a HTML5-en keresztül a 443-es portot használja a virtuális gép magánhálózati IP-címén keresztül.
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [megerősített – gyakori kérdések](bastion-faq.md)
+A [megerősített GYIK](bastion-faq.md) áttekintése

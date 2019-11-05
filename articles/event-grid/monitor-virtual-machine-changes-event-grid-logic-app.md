@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: ed48a4e5bab807695000fe6cdbecf1c1b7b01e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5d852378812d8e69480ceb2c5dcea95f1d5f3770
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325768"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488615"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Oktatóanyag: a virtuális gépek változásainak figyelése Azure Event Grid és Logic Apps használatával
 
@@ -63,11 +63,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
    ![A logikai alkalmazás részleteinek megadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Name (Név)** | Igen | <*Logic-app-name*> | Adjon egyedi nevet a logikai alkalmazásnak. |
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Válassza ki ugyanazt az Azure-előfizetést az oktatóanyag összes szolgáltatásához. |
-   | **Erőforráscsoport** | Igen | <*Azure-Resource-group*> | Az Azure-erőforráscsoport neve a logikai alkalmazáshoz, amelyet az oktatóanyag összes szolgáltatásához kiválaszthat. |
+   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport*> | Az Azure-erőforráscsoport neve a logikai alkalmazáshoz, amelyet az oktatóanyag összes szolgáltatásához kiválaszthat. |
    | **Hely** | Igen | <*Azure-régió*> | Válassza ugyanazt a régiót az oktatóanyagban szereplő minden szolgáltatáshoz. |
    |||
 
@@ -83,7 +83,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Most adja hozzá a Event Grid triggert, amelyet a virtuális géphez tartozó erőforráscsoport figyelésére használ.
 
-1. A tervezőben a keresőmezőbe írja be a `event grid` értéket a szűrőként. Az eseményindítók listából válassza ki az **erőforrás-esemény bekövetkeztekor** eseményindítót.
+1. A tervezőben a keresőmezőbe írja be a `event grid` szűrőt a szűrő mezőbe. Az eseményindítók listából válassza ki az **erőforrás-esemény bekövetkeztekor** eseményindítót.
 
    ![Válassza ki ezt az eseményindítót: "erőforrás-esemény esetén"](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
@@ -92,18 +92,18 @@ Most adja hozzá a Event Grid triggert, amelyet a virtuális géphez tartozó er
    ![Bejelentkezés az Azure-beli hitelesítő adatokkal](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Ha személyes Microsoft-fiókkal jelentkezett be (például @outlook.com vagy @hotmail.com), az Event Grid-trigger esetleg nem megfelelően jelenik meg. Megkerülő megoldásként válassza a [kapcsolat egyszerű szolgáltatásnév](../active-directory/develop/howto-create-service-principal-portal.md)használatával lehetőséget, vagy az Azure-előfizetéshez társított Azure Active Directory tagjaként hitelesítse magát, például: *Felhasználónév*@emailoutlook.onmicrosoft.com.
+   > Ha személyes Microsoft-fiókkal jelentkezett be (például @outlook.com vagy @hotmail.com), az Event Grid-trigger esetleg nem megfelelően jelenik meg. Megkerülő megoldásként válassza a [kapcsolat az egyszerű szolgáltatásnév](../active-directory/develop/howto-create-service-principal-portal.md)használatával lehetőséget, vagy az Azure-előfizetéshez társított Azure Active Directory tagjaként történő hitelesítést, például: *user-name*@emailoutlook.onmicrosoft.com.
 
 1. Most fizessen elő a logikai alkalmazást a közzétevő eseményeire. Adja meg az esemény-előfizetés részleteit az alábbi táblázatban leírtak szerint, például:
 
    ![Eseményfeliratkozás adatainak megadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Előfizetés** | Igen | <*esemény – közzétevő-Azure-előfizetés-név*@no__t – 2 | Válassza ki az *esemény-közzétevőhöz*társított Azure-előfizetés nevét. Ebben az oktatóanyagban válassza ki a virtuális géphez tartozó Azure-előfizetés nevét. |
-   | **Erőforrás típusa** | Igen | @no__t – 0*esemény – közzétevő-Azure-Resource-type*> | Válassza ki az esemény-közzétevőhöz tartozó Azure-erőforrás típusát. Az Azure-erőforrásokkal kapcsolatos további információkért lásd: [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md). Ebben az oktatóanyagban válassza ki a `Microsoft.Resources.ResourceGroups` értéket az Azure-erőforráscsoportok figyeléséhez. Ha csak a virtuális gépeket szeretné figyelni,  |
-   | **Erőforrás neve** |  Igen | <*esemény – közzétevő-Azure-Resource-name*> | Válassza ki az esemény-közzétevőhöz tartozó Azure-erőforrás nevét. Ez a lista a kiválasztott erőforrástípus alapján változik. Ebben az oktatóanyagban válassza ki a virtuális gépet tartalmazó Azure-erőforráscsoport nevét. |
-   | **Eseménytípus eleme** |  Nem | <*Event-types*> | Válasszon ki egy vagy több olyan eseménytípus-típust, amelyet szűrni szeretne, majd küldje el az Event Gridnek. Megadhatja például, hogy az ilyen típusú eseménytípus felderítse az erőforrások módosításait vagy törlését: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>További információkért tekintse meg a következő témaköröket: <p><p>@no__t – 0[Azure Event Grid az erőforráscsoportok esetén](../event-grid/event-schema-resource-groups.md) <br>@no__t – 0 –[események szűrésének megismerése](../event-grid/event-filtering.md) <br>@no__t – 0[szűrési események Event Grid](../event-grid/how-to-filter-events.md) |
+   | **Előfizetés** | Igen | <*Event-Publisher-Azure-előfizetés-name*> | Válassza ki az *esemény-közzétevőhöz*társított Azure-előfizetés nevét. Ebben az oktatóanyagban válassza ki a virtuális géphez tartozó Azure-előfizetés nevét. |
+   | **Erőforrás típusa** | Igen | <*Event-Publisher-Azure-Resource-type*> | Válassza ki az esemény-közzétevőhöz tartozó Azure-erőforrás típusát. Az Azure-erőforrásokkal kapcsolatos további információkért lásd: [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md). Ebben az oktatóanyagban válassza a `Microsoft.Resources.ResourceGroups` értéket az Azure-erőforráscsoportok figyeléséhez. |
+   | **Erőforrás neve** |  Igen | <*esemény – Publisher-Azure-Resource-name*> | Válassza ki az esemény-közzétevőhöz tartozó Azure-erőforrás nevét. Ez a lista a kiválasztott erőforrástípus alapján változik. Ebben az oktatóanyagban válassza ki a virtuális gépet tartalmazó Azure-erőforráscsoport nevét. |
+   | **Eseménytípus eleme** |  Nem | <*eseménytípus*> | Válasszon ki egy vagy több olyan eseménytípus-típust, amelyet szűrni szeretne, majd küldje el az Event Gridnek. Megadhatja például, hogy az ilyen típusú eseménytípus felderítse az erőforrások módosításait vagy törlését: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>További információkért tekintse meg a következő témaköröket: <p><p>- [Azure Event Grid-esemény sémája az erőforráscsoportok esetében](../event-grid/event-schema-resource-groups.md) <br>- az [események szűrésének megismerése](../event-grid/event-filtering.md) <br>[Event Grid - szűrési eseményei](../event-grid/how-to-filter-events.md) |
    | Opcionális tulajdonságok hozzáadásához válassza az **új paraméter hozzáadása**lehetőséget, majd válassza ki a kívánt tulajdonságokat. | Nem | {lásd a leírások} | * **előtag-szűrő**: ebben az oktatóanyagban hagyja üresen ezt a tulajdonságot. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy előtagsztringet is, például egy elérési útvonalat és egy adott erőforrás paraméterét. <p>* **utótag-szűrő**: ebben az oktatóanyagban hagyja üresen ezt a tulajdonságot. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy utótagsztringet is, például egy fájlnévkiterjesztést, ha csak adott fájltípusokra kíváncsi. <p>* **előfizetés neve**: ebben az oktatóanyagban megadhatja az esemény-előfizetés egyedi nevét. |
    |||
 
@@ -123,7 +123,7 @@ Ha azt szeretné, hogy a logikai alkalmazás csak akkor fusson, amikor egy adott
 
    ![Válassza az "új lépés" lehetőséget](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be a `condition` értéket a szűrő mezőbe. A műveletek listából válassza ki a **feltétel** műveletet.
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `condition` szűrőt. A műveletek listából válassza ki a **feltétel** műveletet.
 
    ![Feltétel hozzáadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
@@ -131,11 +131,11 @@ Ha azt szeretné, hogy a logikai alkalmazás csak akkor fusson, amikor egy adott
 
    ![Üres feltétel jelenik meg](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
-1. Nevezze át a feltétel címét a következőre: `If a virtual machine in your resource group has changed`. A feltétel címsorán válassza a három pontot ( **...** ), majd az **Átnevezés**lehetőséget.
+1. Nevezze át a feltétel címét `If a virtual machine in your resource group has changed`ra. A feltétel címsorán válassza a három pontot ( **...** ), majd az **Átnevezés**lehetőséget.
 
    ![A feltétel átnevezése](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
-1. Hozzon létre egy olyan feltételt, amely ellenőrzi a `body` eseményt egy olyan `data` objektum esetében, amelyben a `operationName` tulajdonság megegyezik a `Microsoft.Compute/virtualMachines/write` művelettel. További tudnivalók az [Event Grid eseménysémáról](../event-grid/event-schema.md).
+1. Hozzon létre egy olyan feltételt, amely egy `data` objektum esemény-`body` ellenőrzi, hogy a `operationName` tulajdonság megegyezik-e a `Microsoft.Compute/virtualMachines/write` művelettel. További tudnivalók az [Event Grid eseménysémáról](../event-grid/event-schema.md).
 
    1. Az első sorban az **And** (És) alatt kattintson a bal oldali mezőbe. A megjelenő dinamikus tartalmak listájában válassza a **kifejezés**lehetőséget.
 
@@ -173,7 +173,7 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
    ![Művelet hozzáadása a feltétel igaz értéke esetére](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be a `send an email` értéket a szűrő mezőbe. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ezután válassza ki az „e-mail küldése” műveletet az összekötőn. Példa:
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `send an email` szűrőt. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ezután válassza ki az „e-mail küldése” műveletet az összekötőn. Példa:
 
    * Azure munkahelyi vagy iskolai fiókok esetében válassza az Office 365 Outlook-összekötőt.
 
@@ -196,11 +196,11 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
    > [!TIP]
    > A munkafolyamat előző lépéseiből származó kimenet kiválasztásához kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalom lista, vagy válassza a **dinamikus tartalom hozzáadása**lehetőséget. További találatok esetén válassza a **továbbiak** lehetőséget a lista egyes szakaszaiban. A dinamikus tartalom listájának bezárásához válassza ismét a **dinamikus tartalom hozzáadása** lehetőséget.
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Címzett** | Igen | <*címzett @ no__t-2domain*> | Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Címzett** | Igen | <*címzett\@tartomány*> | Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. |
    | **Tárgy** | Igen | `Resource updated:` **Tárgy** | Adja meg az e-mail tárgymezőjének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, majd válassza ki az esemény **Tárgy** mezőjét. Itt az e-mail tárgya a frissített erőforrás (virtuális gép) nevét tartalmazza. |
-   | **Törzs** | Igen | @no__t – 0 **témakör** <p>@no__t – 0 **eseménytípus**<p>@no__t – 0 **azonosító**<p>@no__t – 0 **esemény időpontja** | Adja meg az e-mail törzsének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, és válassza ki az esemény **témakörét**, az **esemény típusát**, az **azonosítóját**és az **esemény időpontját** , hogy az e-mail-cím tartalmazza az eseményt elindító erőforrást, az esemény típusát, az esemény időbélyegét és az esemény azonosítóját frissítése. Ebben az oktatóanyagban az erőforrás az a triggerben kiválasztott Azure-erőforráscsoport. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. |
+   | **Törzs** | Igen | `Resource:` **témakör** <p>`Event type:` **eseménytípus**<p>`Event ID:` **azonosítója**<p>`Time:` **esemény időpontja** | Adja meg az e-mail törzsének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, és válassza ki az esemény **témakörét**, az **esemény típusát**, az **azonosítóját**és az **esemény időpontját** , hogy az e-mail-cím tartalmazza az eseményt elindító erőforrást, az esemény típusát, az esemény időbélyegét és az esemény azonosítóját frissítése. Ebben az oktatóanyagban az erőforrás az a triggerben kiválasztott Azure-erőforráscsoport. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. |
    ||||
 
    > [!NOTE]
@@ -258,6 +258,6 @@ Ez az oktatóprogram olyan erőforrásokat és műveleteket alkalmaz, amelyek k�
 
 * A logikai alkalmazás végleges törléséhez a logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az eszköztáron válassza a **Törlés**lehetőséget. Erősítse meg, hogy törölni kívánja a logikai alkalmazást, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyéni események létrehozása és átirányítása az Event Griddel](../event-grid/custom-event-quickstart.md)

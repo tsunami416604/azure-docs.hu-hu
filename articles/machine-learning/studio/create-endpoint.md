@@ -1,7 +1,7 @@
 ---
-title: Webes végpontok létrehozása
-titleSuffix: Azure Machine Learning Studio
-description: Hozzon létre webes Szolgáltatásvégpontok az Azure Machine Learning Studióban. A web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt.
+title: Webszolgáltatás-végpontok létrehozása
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Webszolgáltatás-végpontok létrehozása Azure Machine Learning Studio (klasszikus). A webszolgáltatás minden végpontja független módon van kezelve, szabályozva és felügyelve.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,45 +10,45 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d98df3e2dcc8112df9d56033bece069607380d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751178"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493232"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>A telepített Azure Machine Learning Studio-webszolgáltatásokhoz végpontok létrehozása
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Végpontok létrehozása központilag telepített Azure Machine Learning Studio (klasszikus) webszolgáltatásokhoz
 
 > [!NOTE]
-> Ez a témakör ismerteti a technikákat egy **klasszikus** Machine Learning webszolgáltatáshoz.
+> Ez a témakör a **klasszikus** Machine learning webszolgáltatásokra vonatkozó technikákat ismerteti.
 
-A webszolgáltatások telepítése után egy alapértelmezett végpont kerül létrehozásra az adott szolgáltatáshoz. Az alapértelmezett végpont az API-kulcs használatával hívható meg. Saját további végpontokat adhat hozzá a Web Services portálon.
-A web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt. Minden végpont egy engedélyezési kulcsot az ügyfelek számára terjeszthető egy egyedi URL-CÍMÉT.
+A webszolgáltatások telepítése után egy alapértelmezett végpont kerül létrehozásra az adott szolgáltatáshoz. Az alapértelmezett végpont az API-kulcs használatával hívható meg. A webszolgáltatások portálján több végpontot is hozzáadhat a saját kulcsaihoz.
+A webszolgáltatás minden végpontja független módon van kezelve, szabályozva és felügyelve. Mindegyik végpont egy egyedi URL-cím, amely egy olyan engedélyezési kulccsal rendelkezik, amelyet továbbíthat az ügyfeleknek.
 
-## <a name="add-endpoints-to-a-web-service"></a>Végpontok hozzáadása egy webszolgáltatás
+## <a name="add-endpoints-to-a-web-service"></a>Végpontok hozzáadása egy webszolgáltatáshoz
 
-A végpont egy webszolgáltatás, az Azure Machine Learning Web Services portál használatával is hozzáadhat. A végpont a létrehozás után szinkron API-k segítségével, a batch API-k, ezért használja fel, és excel-munkalapokat.
+A Azure Machine Learning webszolgáltatások portál használatával hozzáadhat egy végpontot egy webszolgáltatáshoz. A végpont létrehozása után a rendszer a szinkron API-k, a Batch API-k és az Excel-munkalapok használatával is felhasználhatja.
 
 > [!NOTE]
-> Ha további végpontokat hozzáadta a web Service, az alapértelmezett végpont nem törölhető.
+> Ha további végpontokat adott hozzá a webszolgáltatáshoz, nem törölheti az alapértelmezett végpontot.
 
-1. Machine Learning Studio a bal oldali navigációs oszlopban kattintson a Web Services.
-2. A webszolgáltatás irányítópultján alján kattintson **Végpontkezelés**. Az Azure Machine Learning Web Services portálon megnyitja a webszolgáltatás a végpontok lapot.
+1. Machine Learning Studio (klasszikus), a bal oldali navigációs oszlopban kattintson a webszolgáltatások elemre.
+2. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése**elemre. Megnyílik az Azure Machine Learning webszolgáltatások portál a webszolgáltatás végpontok lapjára.
 3. Kattintson az **Új** lehetőségre.
-4. Írjon be egy nevet és leírást az új végpont. A Végpontnevek 24 karakter vagy kevesebb, hosszúságúnak kell lennie, és kisbetűket betűk vagy számok el kell készíteni. Válassza ki a naplózási szint, és hogy engedélyezve van-e a mintaadatok. A naplózás további információkért lásd: [naplózás engedélyezése a Machine Learning-webszolgáltatások](web-services-logging.md).
+4. Adja meg az új végpont nevét és leírását. A végpontok neveinek 24 vagy kevesebb karakterből kell állnia, és csak kisbetűkből vagy számokból állhatnak. Válassza ki a naplózási szintet, valamint azt, hogy a mintaadatok engedélyezve vannak-e. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
 
-## <a id="scaling"></a> Webszolgáltatás méretezése további végpontokat hozzáadásával
+## <a id="scaling"></a>Webszolgáltatás méretezése további végpontok hozzáadásával
 
-Alapértelmezés szerint minden egyes közzétett webszolgáltatás 20 egyidejű kérés támogatására van konfigurálva, és magas, mint végpontonként 200 egyidejű kérelemre is lehet. Az Azure Machine Learning Studio automatikusan optimalizálja a beállításokat, hogy a legjobb teljesítmény elérése érdekében a webes szolgáltatás és portál értékét a rendszer figyelmen kívül hagyja.
+Alapértelmezés szerint minden közzétett webszolgáltatás 20 egyidejű kérés támogatására van konfigurálva, és akár 200 egyidejű kérelem is lehet. A Azure Machine Learning Studio klasszikus verziója automatikusan optimalizálja a beállítást, hogy a legjobb teljesítményt nyújtsa a webszolgáltatás számára, és a portál értékét a rendszer figyelmen kívül hagyja.
 
-Ha tervezi az API-t a párhuzamos hívások maximális értéke 200-nál magasabb terheléssel, több végpontot kell létrehoznia a azonos webszolgáltatásban. Ezután véletlenszerűen terjesztheti a betöltés összes őket.
+Ha azt tervezi, hogy az API-t nagyobb terheléssel hívja meg, mint az egyidejű hívások maximális száma 200, akkor több végpontot is létre kell hoznia ugyanazon a webszolgáltatáson. Ezután véletlenszerűen terjesztheti a terhelést az összes közül.
 
-Webszolgáltatás méretezése a gyakori feladat. Néhány ok méretezése támogatja a több mint 200 egyidejű kérelemre, növelheti a rendelkezésre állás több végpontot, vagy adjon meg különböző végpontok a web service fel. A méretezési csoport növelheti a azonos webszolgáltatás keresztül további végpontok hozzáadása a [Azure Machine Learning Web Service](https://services.azureml.net/) portálon.
+A webszolgáltatás skálázása gyakori feladat. A skálázás bizonyos okai több mint 200 egyidejű kérés támogatásához, a rendelkezésre állás növeléséhez több végponton keresztül, vagy külön végpontokat biztosítanak a webszolgáltatásnak. A skálázás növeléséhez további végpontokat adhat hozzá ugyanahhoz a webszolgáltatáshoz a [Azure Machine learning webszolgáltatás](https://services.azureml.net/) -portálon keresztül.
 
-Ne feledje, hogy egy nagy feldolgozási száma használatával hátrányos, ha nem hívás az API-t ennek megfelelően nagy sebesség lehet. Időnként időtúllépések és/vagy adatforgalmi csúcsokhoz a késéseknél Ha viszonylag kis terhelésű helyezi az API konfigurálva a magas terhelés jelenhet meg.
+Ne feledje, hogy a magas egyidejűségek használata hátrányos lehet, ha nem hívja meg az API-t megfelelő magas díjszabással. Ha a nagy terheléshez konfigurált API viszonylag alacsony terhelést eredményez, előfordulhat, hogy a késési időkorlát és/vagy a tüskék is megjelennek.
 
-A szinkron API-k jellemzően olyan helyzetekben, ahol egy alacsony késleltetésű van szükség. Késés Itt azt jelenti, hogy az idő, az API-t egy kérés teljesítéséhez szükséges időt, és bármely hálózati késések a fiók nem. Tegyük fel, hogy egy 50 ezredmásodperces késés az API-e meg. A teljes mértékben használhassák a késleltetési szintű magas rendelkezésre álló kapacitás és a párhuzamos hívások maximális száma = 20, meg kell hívnia az API 20 * 1000 és 50 = 400 időpontok másodpercenként. Ez további kiterjesztése, a Max. egyidejű hívás 200-as lehetővé teszi hívás / másodperc, feltéve, hogy egy 50 ezredmásodperces késés az API 4000 időpontokat.
+A szinkron API-kat jellemzően olyan helyzetekben használják, ahol alacsony késésre van szükség. A késés itt azt jelenti, hogy az API-nak egy kérést kell végrehajtania, és nem veszi figyelembe a hálózati késéseket. Tegyük fel, hogy van egy API-val egy 50-MS késéssel. Ahhoz, hogy teljes mértékben felhasználja a rendelkezésre álló kapacitást a magas szintű és a maximális párhuzamos hívásokkal: 20, meg kell hívnia ezt az API-t 20 * 1000/50 = 400-szor másodpercenként. Ezen túlmenően az 200-es maximális egyidejű hívások lehetővé teszik a 4000-os API-k meghívását másodpercenként, a 50 – MS késést feltételezve.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Machine Learning webszolgáltatás használata](consume-web-services.md).
+[Azure Machine learning webszolgáltatás felhasználása](consume-web-services.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934367"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991431"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -48,7 +48,7 @@ A következő lépésekkel telepítheti a IoT Edge IoT biztonsági moduljának A
     - A naplózott ellenőrzés aktív a következő parancs futtatásával: 
    
     `sudo systemctl status auditd`<br>
-    - Várt válasz: `active (running)` 
+    - A várt válasz: `active (running)` 
         
 
 ### <a name="deployment-using-azure-portal"></a>Üzembe helyezés Azure Portal használatával
@@ -166,11 +166,11 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
    
-   | Név | LEMEZKÉP |
+   | Name (Név) | LEMEZKÉP |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
-   | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
+   | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
    
    Ha a minimálisan szükséges tárolók nem jelennek meg, ellenőrizze, hogy a IoT Edge központi telepítési jegyzékfájlja az ajánlott beállításokkal van-e igazítva. További információ: [IoT Edge modul üzembe helyezése](#deployment-using-azure-portal).
 
@@ -182,7 +182,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. A részletes naplókhoz adja hozzá a következő környezeti változót a **azureiotsecurity** modul telepítéséhez: `logLevel=Debug`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A konfigurációs beállításokkal kapcsolatos további információkért folytassa a modul konfigurálásának útmutatójában. 
 > [!div class="nextstepaction"]

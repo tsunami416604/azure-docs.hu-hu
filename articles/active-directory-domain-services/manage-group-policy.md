@@ -8,24 +8,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958543"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474524"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományban
 
 Azure Active Directory Domain Services (Azure AD DS) felhasználói és számítógép-objektumainak beállításait a rendszer gyakran Csoportházirend objektumok (GPO-k) használatával kezeli. Az Azure AD DS beépített csoportházirend-objektumokat tartalmaz a *AADDC-felhasználók* és a *AADDC számítógép* -tárolók számára. Ezeket a beépített csoportházirend-objektumokat testreszabhatja úgy, hogy a környezetéhez szükség szerint konfigurálja Csoportházirend. Az *Azure ad DC-rendszergazdák* csoport tagjai csoportházirend rendszergazdai jogosultságokkal rendelkeznek az Azure AD DS tartományban, és egyéni csoportházirend-objektumokat és szervezeti egységeket (OU-ket) is létrehozhatnak. További információ a Csoportházirendről és annak működéséről: [csoportházirend Overview (áttekintés][group-policy-overview]).
 
+Hibrid környezetben a helyszíni AD DS környezetekben konfigurált csoportházirendek nem szinkronizálhatók az Azure AD DS. Az Azure AD DSban található felhasználók vagy számítógépek konfigurációs beállításainak megadásához szerkessze az egyik alapértelmezett csoportházirend-objektumot, vagy hozzon létre egy egyéni GPO-t.
+
 Ez a cikk bemutatja, hogyan telepítheti a Csoportházirend felügyeleti eszközöket, és hogyan szerkesztheti a beépített csoportházirend-objektumokat, és hogyan hozhat létre egyéni csoportházirend-objektumokat.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 

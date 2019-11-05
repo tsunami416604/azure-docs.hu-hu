@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803355"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473779"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -39,13 +39,13 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazás szerepköreinek deklarálása Azure Portal használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját, majd **váltson át a könyvtárra**.
 1. Miután megnyitotta a **címtár + előfizetés** panelt, válassza ki azt a Active Directory bérlőt, ahová regisztrálni kívánja az alkalmazást, a **Kedvencek** vagy az **összes címtár** listából.
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menüben, majd válassza a **Azure Active Directory**lehetőséget.
-1. Az **Azure Active Directory** ablaktáblán válassza a **Alkalmazásregisztrációk** lehetőséget az alkalmazások listájának megtekintéséhez.
+1. Az **Azure Active Directory** ablaktáblán válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget az alkalmazások listájának megtekintéséhez.
 
-     Ha nem látja a használni kívánt alkalmazást, használja a **Alkalmazásregisztrációk** lista tetején található különféle szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
+     Ha nem látja a használni kívánt alkalmazást, használja a **Alkalmazásregisztrációk (örökölt)** lista tetején található különféle szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
 
 1. Válassza ki azt az alkalmazást, amelyben az alkalmazás-szerepköröket meg szeretné adni.
 1. Az alkalmazás paneljén válassza a **jegyzékfájl**lehetőséget.

@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 07/24/2019
-ms.openlocfilehash: d0e0c5601a6cddf936604df6d5b48b8bf48e7c8d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 2e088557bf61141d3ea3cbeb25d53f711a71fd97
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162446"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496868"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez a cikk bemutatja, hogyan használható a Azure Machine Learning egy GPU-t támogató modell webszolgáltatásként való üzembe helyezéséhez. A cikkben található információk az Azure Kubernetes Service (ak) modell üzembe helyezésén alapulnak. Az AK-fürt egy GPU-erőforrást biztosít, amelyet a modell használ a következtetésekhez.
 
@@ -136,7 +137,7 @@ A fájl neve `score.py`. A beléptetési parancsfájlokkal kapcsolatos további 
 
 ## <a name="define-the-conda-environment"></a>A Conda-környezet definiálása
 
-A Conda-környezeti fájl meghatározza a szolgáltatás függőségeit. Magában foglalja a modell és a beléptetési parancsfájl által igényelt függőségeket is. A következő YAML határozzák meg egy Tensorflow-modell környezetét. Ez határozza `tensorflow-gpu`meg, hogy a rendszer milyen GPU-t használ az üzemelő példányban:
+A Conda-környezeti fájl meghatározza a szolgáltatás függőségeit. Magában foglalja a modell és a beléptetési parancsfájl által igényelt függőségeket is. A következő YAML határozzák meg egy Tensorflow-modell környezetét. Meghatározza `tensorflow-gpu`, amely az üzemelő példányban használt GPU-t használja:
 
 ```yaml
 name: project_environment
@@ -153,7 +154,7 @@ channels:
 - conda-forge
 ```
 
-Ebben a példában a fájl a következőként lesz `myenv.yml`mentve:.
+Ebben a példában a fájl `myenv.yml`lesz mentve.
 
 ## <a name="define-the-deployment-configuration"></a>A központi telepítési konfiguráció megadása
 
@@ -185,7 +186,7 @@ inference_config = InferenceConfig(runtime="python",
 
 További információkért tekintse meg a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)dokumentációját.
 
-## <a name="deploy-the-model"></a>A modell üzembe helyezése
+## <a name="deploy-the-model"></a>A modell rendszerbe állítása
 
 Telepítse a modellt az AK-fürtre, és várja meg, amíg létrehozza a szolgáltatást.
 
@@ -209,7 +210,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Ha az `InferenceConfig` objektumnak `enable_gpu=True`van, akkor `deployment_target` a paraméternek egy GPU-t biztosító fürtre kell hivatkoznia. Ellenkező esetben a telepítés sikertelen lesz.
+> Ha a `InferenceConfig` objektum `enable_gpu=True`, akkor a `deployment_target` paraméternek egy GPU-t biztosító fürtre kell hivatkoznia. Ellenkező esetben a telepítés sikertelen lesz.
 
 További információ: a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)dokumentációja.
 

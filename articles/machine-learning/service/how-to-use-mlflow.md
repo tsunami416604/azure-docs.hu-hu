@@ -11,14 +11,15 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
-ms.translationtype: MT
+ms.openlocfilehash: d98e45d3ef77fea6b64efef10c20ecce3787b14c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489326"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Metrikák nyomon követése és modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez a cikk bemutatja, hogyan engedélyezhető a MLflow követési URI-ja és naplózási API-ja, együttesen [MLflow-követésként](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), Azure Machine learning használatával. Ez a következőket teszi lehetővé:
 
@@ -39,7 +40,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével bármilye
  A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-n keresztül érhetők el.
 
 
-| | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Portal vagy munkaterület kezdőlapja (előzetes verzió)|
+| | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Munkaterület kezelése |   | ✓ | ✓ | ✓ |
 | Adattárak használata  |   | ✓ | ✓ | |
@@ -61,7 +62,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével bármilye
 
 A MLflow követése Azure Machine Learning lehetővé teszi a naplózott metrikák és összetevők tárolását a helyi futtatásokból a Azure Machine Learning-munkaterületre.
 
-Telepítse a `azureml-contrib-run` csomagot a MLflow-követés használatára Azure Machine learning a kísérleteken helyileg futtatott Jupyter notebook vagy Kódszerkesztő használatával.
+Telepítse a `azureml-contrib-run` csomagot a MLflow-követés használatára a kísérletekben helyileg futtatott Azure Machine Learning a Jupyter Notebook vagy a Kódszerkesztő használatával.
 
 ```shell
 pip install azureml-contrib-run
@@ -70,9 +71,9 @@ pip install azureml-contrib-run
 >[!NOTE]
 >A azureml. a névterek gyakran változnak, ahogy dolgozunk a szolgáltatás tökéletesítésén. Ennek megfelelően az ebben a névtérben található bármit előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
 
-Importálja `mlflow` a [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) és osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
+Importálja a `mlflow` és [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
 
-A következő kódban a `get_mlflow_tracking_uri()` metódus egyedi nyomkövetési URI-címeket rendel a `ws`munkaterülethez, és `set_tracking_uri()` a MLflow nyomon követi az adott címnek megfelelő URI-t.
+A következő kódban a `get_mlflow_tracking_uri()` metódus egyedi nyomkövetési URI-címeket rendel hozzá a munkaterülethez, `ws`és `set_tracking_uri()` a MLflow követési URI-t az adott címhez.
 
 ```Python
 import mlflow
@@ -86,7 +87,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 >[!NOTE]
 >A nyomkövetési URI-azonosító legfeljebb egy órán belül érvényes. Ha némi üresjárati idő után újraindítja a szkriptet, a get_mlflow_tracking_uri API-val új URI-t kap.
 
-Állítsa be a MLflow-kísérlet `set_experiment()` nevét a (z) értékre, és indítsa el a képzést a alkalmazással. `start_run()` Ezután aktiválja a MLflow naplózási API- t,éskezdjemegabetanításifuttatásimetrikáknaplózását.`log_metric()`
+Állítsa be a MLflow-kísérlet nevét `set_experiment()` és indítsa el a betanítást a `start_run()`. Ezután a `log_metric()` használatával aktiválja a MLflow naplózási API-t, és megkezdheti a betanítási futtatási metrikák naplózását.
 
 ```Python
 experiment_name = 'experiment_with_mlflow'
@@ -100,9 +101,9 @@ with mlflow.start_run():
 
 A MLflow követése Azure Machine Learning lehetővé teszi a naplózott metrikák és összetevők tárolását a távoli futtatásokból a Azure Machine Learning-munkaterületre.
 
-A távoli futtatások lehetővé teszik, hogy a modelleket nagyobb teljesítményű számításokra, például GPU-t használó virtuális gépekre vagy Machine Learning Compute fürtökre tanítsa. A különböző számítási lehetőségek megismeréséhez lásd: [számítási célok beállítása a modell](how-to-set-up-training-targets.md) betanításához.
+A távoli futtatások lehetővé teszik, hogy a modelleket nagyobb teljesítményű számításokra, például GPU-t használó virtuális gépekre vagy Machine Learning Compute fürtökre tanítsa. A különböző számítási lehetőségek megismeréséhez lásd: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md) .
 
-Állítsa be a számítási és képzési környezetét a [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) osztállyal. Belefoglalási `mlflow` `azure-contrib-run` [és`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) pip-csomagok a környezet szakaszában. Ezután hozza [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) létre a számítási célként a távoli számítási célt.
+Konfigurálja a számítási és képzési környezetét a [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) osztállyal. `mlflow` és `azure-contrib-run` pip-csomagok belefoglalása a környezeti [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) szakaszba. Ezután hozza létre [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) a távoli számítási célként.
 
 ```Python
 from azureml.core import Environment
@@ -124,7 +125,7 @@ src.run_config.target = 'my-remote-compute-compute'
 src.run_config.environment = mlflow_env
 ```
 
-A betanítási szkriptben `mlflow` importálja a MLflow-naplózási API-k használatára, és kezdje meg a futtatási metrikák naplózását.
+A betanítási szkriptben importálja `mlflow` a MLflow-naplózási API-k használatára, és kezdje meg a futtatási metrikák naplózását.
 
 ```Python
 import mlflow
@@ -133,7 +134,7 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-Ennek a számítási és betanítási futtatási konfigurációnak `Experiment.submit('train.py')` a használatával elküldheti a futtatást a metódussal. Ez automatikusan beállítja a MLflow követési URI-t, és a naplózást a munkaterületre irányítja a MLflow.
+Ezzel a számítási és betanítási futtatási konfigurációval a `Experiment.submit('train.py')` metódus használatával küldhet el egy futtatást. Ez automatikusan beállítja a MLflow követési URI-t, és a naplózást a munkaterületre irányítja a MLflow.
 
 ```Python
 run = exp.submit(src)
@@ -217,7 +218,7 @@ Ha helyesen van konfigurálva, a MLflow nyomon követheti a Azure Machine Learni
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Metrikák és összetevők megtekintése a munkaterületen
 
-A MLflow-naplózás metrikái és összetevői a munkaterületen maradnak. Ha bármikor meg szeretné tekinteni őket, keresse meg a munkaterületet, és keresse meg a kísérletet név szerint a [Azure Portal](https://portal.azure.com) vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com).  Vagy futtassa az alábbi kódot. 
+A MLflow-naplózás metrikái és összetevői a munkaterületen maradnak. Ha bármikor meg szeretné tekinteni őket, keresse meg a munkaterületet, és keresse meg a kísérletet név szerint a munkaterületen a [Azure Machine learning Studióban](https://ml.azure.com).  Vagy futtassa az alábbi kódot. 
 
 ```python
 run.get_metrics()
@@ -244,7 +245,7 @@ import mlflow.sklearn
 mlflow.sklearn.log_model(regression_model, model_save_path)
 ```
 >[!NOTE]
-> Adja meg `conda_env` a paramétert annak a függőségeknek és környezetnek az átadásához, amelynek a modellnek futnia kell.
+> Adja meg a `conda_env` paramétert a függőségek és a környezet szótári ábrázolásának átadásához, amelyet a modellnek futnia kell.
 
 ### <a name="retrieve-model-from-previous-run"></a>Modell beolvasása az előző futtatásból
 
@@ -385,10 +386,10 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet.
 
 
-## <a name="example-notebooks"></a>Példa notebookok
+## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
 
 Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://aka.ms/azureml-mlflow-examples) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
 ## <a name="next-steps"></a>További lépések
 * [A modellek kezelése](concept-model-management-and-deployment.md).
-* Figyelje az adateltolódáshoz [](how-to-monitor-data-drift.md)használt üzemi modelleket.
+* Figyelje az [adateltolódáshoz](how-to-monitor-data-drift.md)használt üzemi modelleket.

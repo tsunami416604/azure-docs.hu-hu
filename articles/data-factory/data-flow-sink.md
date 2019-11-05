@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882447"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519317"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
-
-
 
 Az adatfolyamatok átalakítását követően az adatokat egy célként megadott adatkészletbe lehet elosztani. A fogadó átalakításban válassza ki a cél kimeneti adatokat tartalmazó adatkészlet-definíciót. Az adatáramláshoz annyi fogadó átalakításra van szükség.
 
@@ -108,5 +106,12 @@ Adatbázis-beállítások kiválasztása:
 > [!NOTE]
 > Az adatbázis-fogadóban lévő sorok frissítésekor vagy törlésekor a kulcs oszlopot kell megadnia. Ez a beállítás lehetővé teszi, hogy az Alter-Row transzformáció meghatározza az adatátviteli függvénytár (DML) egyedi sorát.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="cosmosdb-specific-settings"></a>CosmosDB-specifikus beállítások
+
+A CosmosDB-ben való kirakodáskor ezeket a további lehetőségeket kell figyelembe vennie:
+
+* Partíciós kulcs: ez egy kötelező mező. Adjon meg egy karakterláncot, amely a gyűjtemény partíciós kulcsát jelöli. Például: ```/movies/title```
+* Átviteli sebesség: állítsa be azt a nem kötelező értéket, amelyet az adott adatfolyam minden egyes végrehajtásához alkalmazni kíván a CosmosDB-gyűjteményre. Minimális értéke 400.
+
+## <a name="next-steps"></a>További lépések
 Most, hogy létrehozta az adatfolyamatot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz](concepts-data-flow-overview.md).

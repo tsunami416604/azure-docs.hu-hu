@@ -1,89 +1,96 @@
 ---
-title: Az Azure és helyszíni környezeteket az ExpressRoute-kapcsolatok létrehozásához használja az Azure virtuális WAN |} A Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre az Azure és helyszíni környezeteket az ExpressRoute-kapcsolatok használata Azure virtuális WAN.
+title: Az Azure Virtual WAN használatával ExpressRoute-kapcsolatokat hozhat létre az Azure-hoz és a helyszíni környezetekhez | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Virtual WAN-t az Azure-hoz és a helyszíni környezetekhez való ExpressRoute-kapcsolatok létrehozásához.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077515"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491547"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Oktatóanyag: Azure virtuális WAN (előzetes verzió) használatával egy ExpressRoute-társítás létrehozása
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
-Az oktatóanyag bemutatja, hogyan kapcsolódhat a Virtual WAN használatával az Azure-ban lévő erőforrásaihoz egy ExpressRoute-kapcsolatcsoport és társítás segítségével. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Virtual WAN-t az Azure-beli erőforrásokhoz való kapcsolódáshoz egy ExpressRoute áramkörben. A virtuális WAN-és virtuális WAN-erőforrásokkal kapcsolatos további információkért tekintse meg a [virtuális WAN áttekintése](virtual-wan-about.md)című témakört.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális WAN létrehozása
-> * Elosztó létrehozása
-> * Egy kapcsolatcsoport keresése és társítása a központhoz
-> * A kapcsolatcsoport társítása a központ(ok)hoz
+> * Hub és átjáró létrehozása
 > * Virtuális hálózat csatlakoztatása elosztóhoz
-> * A virtuális WAN megtekintése
-> * Erőforrás állapotának megtekintése
-> * Kapcsolatok monitorozása
+> * Áramkör összekapcsolása egy hub-átjáróval
+> * Kapcsolat tesztelése
+> * Átjáró méretének módosítása
+> * Alapértelmezett útvonal meghirdetése
 
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+## <a name="before-you-begin"></a>Előzetes teendők
 
-## <a name="before-you-begin"></a>Előkészületek
+A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* Rendelkezik egy virtuális hálózattal, amelyhez csatlakozni szeretne. Győződjön meg arról, hogy a helyszíni hálózatok egyik alhálózata sem fedi át azokat a virtuális hálózatokat, amelyekhez csatlakozni szeretne. Ha virtuális hálózatot szeretne létrehozni a Azure Portalban, tekintse meg a rövid [útmutatót.](../virtual-network/quick-create-portal.md)
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* A virtuális hálózat nem rendelkezik virtuális hálózati átjárókkal. Ha a virtuális hálózat átjáróval rendelkezik (VPN vagy ExpressRoute), akkor el kell távolítania az összes átjárót. Ehhez a konfigurációhoz az szükséges, hogy a virtuális hálózatok a virtuális WAN hub-átjáróhoz legyenek csatlakoztatva.
 
-## <a name="register"></a>A funkció regisztrálása
+* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális WAN által létrehozott és használt virtuális hálózat. Az hubhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatait, amelyhez csatlakozik. Emellett nem lehet átfedésben azokkal a címtartományokkal sem, amelyekhez a helyszínen csatlakozik. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
 
-A Virtual WAN konfigurálása előtt regisztrálnia kell az előfizetését az előzetes verzióban. Máskülönben nem használhatja a Virtual WAN-t a portálon. E-mail küldése a regisztrációhoz **azurevirtualwan\@microsoft.com** az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni.
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-**Előzetes verzióval kapcsolatos szempontok:**
+## <a name="openvwan"></a>Virtuális WAN létrehozása
 
-  * Az ExpressRoute-kapcsolatcsoport engedélyezve kell lennie, amely támogatja az országot/régiót [ExpressRoute globális elérhetőségű](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
-  * Az ExpressRoute-kapcsolatcsoport kell lennie a prémium szintű expressroute-kapcsolatcsoporthoz szeretne csatlakozni a virtuális WAN hub. 
+Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-## <a name="vnet"></a>1. Virtuális hálózat létrehozása
+1. Navigáljon a virtuális WAN lapra. A portálon kattintson az **+Erőforrás létrehozása** gombra. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az ENTER billentyűt.
+2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
+3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+   ![WAN létrehozása](./media/virtual-wan-expressroute-portal/createwan.png)
 
-## <a name="openvwan"></a>2. Virtuális WAN létrehozása
+   * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
+   * **Erőforráscsoport** – Hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt.
+   * **Erőforráscsoport helye** – válasszon ki egy erőforrás-helyet a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
+   * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
+   * **Típus** – válassza a **standard**lehetőséget. Nem hozhat létre ExpressRoute-átjárót az alapszintű SKU használatával.
+4. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+5. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.
 
-Egy böngészőből lépjen az [Azure Portalra (előzetes verzió)](https://aka.ms/azurevirtualwanpreviewfeatures), majd jelentkezzen be Azure-fiókjával.
+## <a name="hub"></a>Virtuális központ és átjáró létrehozása
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+A virtuális központ egy virtuális WAN által létrehozott és használt virtuális hálózat. Több átjárót is tartalmazhat, például a VPN-t és a ExpressRoute. Ebben a szakaszban létre fog hozni egy ExpressRoute-átjárót a virtuális hubhoz. Létrehozhatja az átjárót [új virtuális központ létrehozásakor](#newhub), vagy egy [meglévő hubhoz](#existinghub) is létrehozhatja az átjárót szerkesztéssel. 
 
-### <a name="getting-started-page"></a>Első lépések oldal
+A ExpressRoute-átjárók 2 GB/s egységekben vannak kiépítve. 1 méretezési egység = 2 GB/s, amely legfeljebb 10 méretezési egységet támogat: 20 GB/s. A virtuális központ és az átjáró teljes létrehozása körülbelül 30 percet vesz igénybe.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-gettingstarted-include.md)]
+### <a name="newhub"></a>Új virtuális központ és átjáró létrehozása
 
-## <a name="hub"></a>3. Elosztó létrehozása
+Hozzon létre egy új virtuális hubot. A hub létrehozása után a központ díjat számítunk fel, még akkor is, ha nem csatlakoztat semmilyen helyet.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-## <a name="hub"></a>4. Egy kapcsolatcsoport keresése és társítása a központhoz
+### <a name="existinghub"></a>Átjáró létrehozása meglévő hubhoz
 
-1. Válassza ki a vWAN és **virtuális WAN architektúra**válassza **ExpressRoute-Kapcsolatcsoportok**.
-1. Ha az ExpressRoute-kapcsolatcsoport a vWAN ugyanazt az előfizetést, kattintson a **válassza ki az ExpressRoute-kapcsolatcsoport** az előfizetéséhez vagy előfizetéseihez. 
-1. A legördülő használ, válassza ki az ExpressRoute, amelyet szeretne hozzárendelni a hub.
-1. Ha az ExpressRoute-kapcsolatcsoport nem ugyanabban az előfizetésben, vagy hogy adtak meg [hitelesítési kulcsot és a társ azonosító](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)válassza **váltja be egy engedélyezési kulcsot expressroute-kapcsolatcsoporthoz keresése**
-1. Adja meg a következő részleteket:
-1. **Hitelesítési kulcs** – A kapcsolatcsoport tulajdonosa hozza létre a fent leírt módon
-1. **Társ-kapcsolatcsoport URI** – A kapcsolatcsoport URI-je, amelyet a kapcsolatcsoport tulajdonosa ad meg, és a kapcsolatcsoport egyedi azonosítójaként szolgál.
-1. **Útválasztás súly** - [útválasztás súly](../expressroute/expressroute-optimize-routing.md) lehetővé teszi, hogy inkább az egyes elérési utakat, több Kapcsolatcsoportok társviszony-létesítési különböző helyekről ugyanahhoz a hubhoz csatlakoztatott
-1. Kattintson a **keresse meg a kapcsolatcsoport** , és válassza ki a kapcsolatcsoportot, ha található.
-1. Válassza ki a legördülő listából legalább 1 hubs le, és kattintson a **mentése**.
+Az átjárót egy meglévő hubhoz is létrehozhatja szerkesztéssel.
 
-## <a name="vnet"></a>5. A virtuális hálózat csatlakoztatása egy elosztóhoz
+1. Navigáljon a szerkeszteni kívánt virtuális hubhoz, és válassza ki azt.
+2. A **virtuális központ szerkesztése** lapon jelölje be a ExpressRoute- **átjáró belefoglalása**jelölőnégyzetet.
+3. A módosítások megerősítéséhez válassza a **Confirm (megerősítés** ) lehetőséget. Körülbelül 30 percet vesz igénybe, hogy a hub és a hub erőforrásai teljesen létre legyenek hozni.
 
-Ebben a lépésben a társviszony-kapcsolatot hozzuk létre az elosztó és egy virtuális hálózat között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
+   ![meglévő központ](./media/virtual-wan-expressroute-portal/edithub.png "központ szerkesztése")
+
+### <a name="to-view-a-gateway"></a>Átjáró megtekintése
+
+Miután létrehozott egy ExpressRoute-átjárót, megtekintheti az átjáró részleteit. Navigáljon a hubhoz, válassza a **ExpressRoute**lehetőséget, és tekintse meg az átjárót.
+
+![Átjáró megtekintése](./media/virtual-wan-expressroute-portal/viewgw.png "átjáró megtekintése")
+
+## <a name="connectvnet"></a>A VNet összekötése a hubhoz
+
+Ebben a szakaszban a hub és a VNet közötti összekapcsolási kapcsolatot hozza létre. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
 
 1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolat** elemre.
 2. A virtuális hálózati kapcsolat lapján kattintson a **+Kapcsolat hozzáadása** elemre.
@@ -92,44 +99,58 @@ Ebben a lépésben a társviszony-kapcsolatot hozzuk létre az elosztó és egy 
     * **Kapcsolat neve** – Nevezze el a kapcsolatot.
     * **Elosztók** – Válassza ki azt az elosztót, amelyet a kapcsolattal társítani kíván.
     * **Előfizetés** – Ellenőrizze az előfizetést.
-    * **Virtuális hálózat** – Válassza ki azt a virtuális hálózatot, amelyet az elosztóhoz csatlakoztatni kíván. A virtuális hálózat nem rendelkezhet már meglévő virtuális hálózati átjáróval.
+    * **Virtuális hálózat** – Válassza ki azt a virtuális hálózatot, amelyet az elosztóhoz csatlakoztatni kíván. A virtuális hálózat nem rendelkezhet már meglévő virtuális hálózati átjáróval (sem VPN-, sem ExpressRoute).
 
+## <a name="connectcircuit"></a>Az áramkör összekapcsolása a hub-átjáróval
 
-## <a name="viewwan"></a>6. A virtuális WAN megtekintése
+Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Vegye figyelembe, hogy a ExpressRoute Global Reach által támogatott helyszíneken elérhető ExpressRoute prémium szintű áramkörök csatlakozhatnak egy virtuális WAN ExpressRoute-átjáróhoz.
 
-1. Lépjen a virtuális WAN-ra.
-2. Az Áttekintés lapon a térképen látható pontok mindegyike egy elosztót jelöl. Az elosztók állapotösszegzéséért vigye a mutatót az egyes pontok fölé.
-3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Az áramkör összekapcsolása a hub-átjáróval
 
-## <a name="viewhealth"></a>7. Az erőforrás állapotának megtekintése
+A portálon nyissa meg a **virtuális központ – > kapcsolat – > ExpressRoute** lapot. Ha egy ExpressRoute-áramkörhöz fér hozzá az előfizetéshez, a használni kívánt áramkör megjelenik az áramköri listán. Ha egyetlen áramkör sem jelenik meg, de egy engedélyezési kulccsal és egy társ áramköri URI azonosítóval rendelkezik, az áramkört beválthatja és összekapcsolhatja. [A kapcsolódáshoz egy engedélyezési kulcs beváltásával](#authkey)tájékozódhat.
 
-1. Lépjen a WAN-ra.
-2. A WAN lapjának **TÁMOGATÁS + hibaelhárítás** szakaszában kattintson az **Állapot** lehetőségre, és tekintse meg az erőforrást.
+1. Válassza ki az áramkört.
+2. Válassza a **csatlakozási áramkör (eke) t**.
 
-## <a name="connectmon"></a>8. Kapcsolatok monitorozása
+   ![áramkörök összekapcsolása](./media/virtual-wan-expressroute-portal/cktconnect.png "áramkörök összekapcsolása")
 
-Létrehozhat egy kapcsolatot az Azure-beli virtuális gépek és a távoli helyek közötti kommunikáció monitorozására. A kapcsolatmonitor beállításával kapcsolatos információkért lásd a [hálózati kommunikáció monitorozását](~/articles/network-watcher/connection-monitor.md) ismertető szakaszt. A forrásmező a virtuális gép IP-címe az Azure-ban, a cél IP-cím pedig a hely IP-címe.
+### <a name="authkey"></a>Kapcsolódás egy engedélyezési kulcs beváltásával
 
-## <a name="cleanup"></a>9. Az erőforrások eltávolítása
+Használja a kapcsolódáshoz megadott engedélyezési kulcsot és az áramköri URI-t.
 
-Ha ezekre az erőforrásokra már nincs szüksége, használhatja [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
+1. A ExpressRoute lapon kattintson a **+ engedélyezési kulcs beváltása** elemre.
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   ![beváltása](./media/virtual-wan-expressroute-portal/redeem.png "beváltása")
+2. Az engedélyezési kulcs beváltása lapon adja meg az értékeket.
+
+   ![kulcs értékének beváltása](./media/virtual-wan-expressroute-portal/redeemkey2.png "kulcs értékének beváltása")
+3. A kulcs hozzáadásához válassza a **Hozzáadás** lehetőséget.
+4. Tekintse meg az áramkört. A beváltott áramkör csak a nevet jeleníti meg (típus, szolgáltató és egyéb információ nélkül), mert a felhasználótól eltérő előfizetésben szerepel.
+
+## <a name="to-test-connectivity"></a>A kapcsolat tesztelése
+
+Az áramköri kapcsolat létrejötte után a hub kapcsolati állapota "Ez a hub" lesz, ami azt jelenti, hogy a kapcsolat létrejött a hub ExpressRoute-átjáróhoz. Várjon körülbelül 5 percet, mielőtt teszteli a kapcsolatot a ExpressRoute-áramkör mögötti ügyféllel, például egy, a korábban létrehozott VNet található virtuális géppel.
+
+Ha a virtuális WAN VPN-átjáróhoz olyan helyek vannak csatlakoztatva, amelyek ugyanabban a központban vannak, mint a ExpressRoute-átjáró, kétirányú kapcsolat létesíthető a VPN és a ExpressRoute végpontok között. A dinamikus útválasztás (BGP) támogatott. A hub átjáróinak ASN-je rögzített, és jelenleg nem szerkeszthető.
+
+## <a name="to-change-the-size-of-a-gateway"></a>Átjáró méretének módosítása
+
+Ha módosítani szeretné a ExpressRoute-átjáró méretét, keresse meg az ExpressRoute-átjárót az elosztón belül, és válassza ki a méretezési egységeket a legördülő listából. Mentse a változást. A hub-átjáró frissítése körülbelül 30 percet vesz igénybe.
+
+![átjáró méretének módosítása](./media/virtual-wan-expressroute-portal/changescale.png "átjáró méretének módosítása")
+
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Az alapértelmezett 0.0.0.0/0 útvonal meghirdetése végpontokra
+
+Ha szeretné, hogy az Azure-beli virtuális központ meghirdesse az alapértelmezett 0.0.0.0/0 útvonalat a ExpressRoute, engedélyeznie kell az "alapértelmezett útvonal propagálása" beállítást.
+
+1. Válassza ki az **áramkör->... – > a kapcsolat szerkesztése**lehetőséget.
+
+   ![Kapcsolatok szerkesztése](./media/virtual-wan-expressroute-portal/defaultroute1.png "Kapcsolatok szerkesztése")
+
+2. Válassza az **Engedélyezés** lehetőséget az alapértelmezett útvonal propagálásához.
+
+   ![Alapértelmezett útvonal propagálása](./media/virtual-wan-expressroute-portal/defaultroute2.png "Alapértelmezett útvonal propagálása")
 
 ## <a name="next-steps"></a>További lépések
-
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Virtuális WAN létrehozása
-> * Elosztó létrehozása
-> * Egy kapcsolatcsoport keresése és társítása a központhoz
-> * A kapcsolatcsoport társítása a központ(ok)hoz
-> * Virtuális hálózat csatlakoztatása elosztóhoz
-> * A virtuális WAN megtekintése
-> * Erőforrás állapotának megtekintése
-> * Kapcsolatok monitorozása
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

@@ -1,24 +1,24 @@
 ---
 title: 'Konvertálás CSV-re: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan alakíthatja át az adatkészletet a Azure Machine Learning szolgáltatásban a CSV konvertálása modulba úgy, hogy olyan CSV-formátumra alakítsa át, amely letölthető, exportálható vagy megosztható R vagy Python parancsfájl-modulok használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan alakíthatja át az adatkészletet a Azure Machine Learning CSV-formátumba úgy, hogy az adathalmazokat egy, az R-vagy Python-parancsfájl-modulok használatával letöltött, exportált vagy megosztható CSV formátumúra alakítsa át
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693201"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493851"
 ---
 # <a name="convert-to-csv-module"></a>Konvertálás CSV-modulba
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal olyan CSV-formátumba alakíthatja át az adatkészletet, amely letölthető, exportálható vagy megosztható R-vagy Python-parancsfájl-modulok használatával.
 
@@ -36,13 +36,14 @@ Ha az adatkészletet CSV-fájllá alakítja át, a fájl az Azure ML-munkaterül
 
 ## <a name="how-to-configure-convert-to-csv"></a>A CSV-re történő konvertálás konfigurálása
 
-1.  Adja hozzá a [Konvertálás CSV](./convert-to-csv.md) -modult a folyamathoz. Ezt a modult a csatoló **adatformátum-konverziók** csoportjába is megtalálhatja. 
+
+1.  Adja hozzá a [Konvertálás CSV](./convert-to-csv.md) -modult a folyamathoz. Ez a modul a tervező **adatformátum-konverziók** csoportjában található. 
 
 2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
   
 3.  A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
   
 
 Kattintson duplán a CSV-re történő [Konvertálás](./convert-to-csv.md)kimenetére, és válasszon egyet ezek közül.  
@@ -54,6 +55,6 @@ Kattintson duplán a CSV-re történő [Konvertálás](./convert-to-csv.md)kimen
 
  + **Adatelérési kód generálása**: az Azure ml két kódrészletet hoz létre az adateléréshez a Python vagy az R használatával. Az adatelemek eléréséhez másolja a kódrészletet az alkalmazásba. (*Az adatelérési kód előállítása hamarosan elérhető lesz.* )
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

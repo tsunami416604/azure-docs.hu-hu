@@ -1,40 +1,36 @@
 ---
-title: Módosítsa a virtuális gép munkamenet nézet Azure megerősített a teljes képernyős |} A Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan módosíthatja a nézet a teljes képernyős.
+title: Virtuális gép munkamenet-nézetének módosítása az Azure-ban teljes képernyős megjelenítésre | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan módosíthatja a nézetet a teljes képernyőre.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a063d6c8891133126924bfb934770f7818db71a
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a8c9cab825644fe797713c80d3a710c7a2d54850
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191550"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498048"
 ---
-# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion-preview"></a>Módosítsa a virtuális gép munkamenet teljes képernyős nézetben: Az Azure megerősített (előzetes verzió)
+# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Váltás a virtuális gép munkamenetének teljes képernyős nézetére: Azure Bastion
 
-Ez a cikk segít módosítsa a virtuális gép megtekintése teljes képernyős és vissza a böngészőben. Egy virtuális gép használata előtt győződjön meg arról, hogy követte a lépéseket [hozzon létre egy bástyagazdagép](bastion-create-host-portal.md). Ezután csatlakozzon a virtuális Géphez, amelyek segítségével a használni kívánt [RDP](bastion-connect-vm-rdp.md) vagy [SSH](bastion-connect-vm-ssh.md).
+Ebből a cikkből megtudhatja, hogyan módosíthatja a virtuális gép nézetét teljes képernyős és vissza a böngészőben. A virtuális gép használata előtt győződjön meg arról, hogy követte a [megerősített gazdagép létrehozásának](bastion-create-host-portal.md)lépéseit. Ezután csatlakozzon ahhoz a virtuális géphez, amelyet [RDP](bastion-connect-vm-rdp.md) vagy [SSH](bastion-connect-vm-ssh.md)használatával szeretne használni.
 
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+## <a name="launch-the-clipboard-tool"></a>A vágólap eszköz elindítása
 
-## <a name="launch-the-clipboard-tool"></a>A vágólap eszköz indítása
-
-A távoli munkamenet során indítsa el a megerősített vágólapra hozzáférés eszköz palettáját az, hogy a munkamenet a bal oldalon középen lévő két nyíl kiválasztásával.
+A távoli munkamenet során indítsa el a megerősített vágólap-hozzáférési eszköz palettáját a munkamenet bal középső részén található két nyíl kiválasztásával.
 
 ![eszközök](./media/bastion-vm-manage/left.png)
 
-## <a name="select-full-screen"></a>Válassza ki a teljes képernyős
+## <a name="select-full-screen"></a>Teljes képernyő kiválasztása
 
-Válassza ki a **nA celou obrazovku –** gomb a munkamenet egy teljes képernyő felülete. Vált, ha a munkamenet teljes képernyős rendszerbeli lesz.
+Kattintson a **teljes képernyős gombra a** munkamenet teljes képernyős élményre váltásához. A váltás után a munkamenet újrainicializálja a teljes képernyőt.
 
-![teljes képernyős](./media/bastion-vm-manage/full-screen.png)
+![teljes képernyő](./media/bastion-vm-manage/full-screen.png)
  
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [megerősített – gyakori kérdések](bastion-faq.md).
-Ismerje meg, hogyan [másolás és Beillesztés](bastion-vm-copy-paste.md) , és a egy Azure virtuális gépből.
+Olvassa el a [megerősített GYIK](bastion-faq.md)-t.
+Megtudhatja, hogyan [másolhat és illeszthet be](bastion-vm-copy-paste.md) egy Azure-beli virtuális gépre.

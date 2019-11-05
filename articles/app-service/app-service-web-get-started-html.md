@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ac0fe7a77496a0dae8606e4599bcb262a191196c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 12c034e6521a1afd25e2390502faec39461bf5b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471525"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
@@ -89,7 +89,7 @@ Jegyezze fel a `resourceGroup` értékét. Szüksége lesz rá [az erőforrások
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-A böngészőben nyissa meg az alkalmazás URL-címét `http://<app_name>.azurewebsites.net`:.
+A böngészőben nyissa meg az alkalmazás URL-címét: `http://<app_name>.azurewebsites.net`.
 
 Az oldal Azure App Service webalkalmazásként fut.
 
@@ -117,9 +117,11 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
+A létrehozott webalkalmazás kezeléséhez keresse meg a [Azure Portal](https://portal.azure.com), és válassza a **app Services**lehetőséget. 
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+![Válassza ki a App Services a Azure Portal](./media/app-service-web-get-started-html/portal0.png)
+
+A **app Services** lapon válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-html/portal1.png)
 

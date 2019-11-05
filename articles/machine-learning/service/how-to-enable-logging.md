@@ -10,28 +10,29 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002753"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489881"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Bejelentkezés engedélyezése Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 A Azure Machine Learning Python SDK lehetővé teszi, hogy az alapértelmezett Python-naplózási csomaggal engedélyezze a naplózást, valamint a helyi naplózáshoz és a portálon a munkaterületre való bejelentkezéshez egyaránt használja az SDK-specifikus funkciókat. A naplók valós idejű információkat biztosítanak a fejlesztőknek az alkalmazás állapotáról, és segíthetnek a hibák vagy figyelmeztetések diagnosztizálásában. Ebből a cikkből megismerheti a naplózás engedélyezésének különböző módjait a következő területeken:
 
 > [!div class="checklist"]
 > * Modellek és számítási célok betanítása
-> * Lemezkép létrehozása
+> * Rendszerkép létrehozása
 > * Üzembe helyezett modellek
-> * Python `logging` -beállítások
+> * Python-`logging` beállításai
 
 [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md). Az SDK-val kapcsolatos további információkért tekintse meg az [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
 ## <a name="training-models-and-compute-target-logging"></a>Képzési modellek és számítási cél naplózása
 
-Több módon is engedélyezheti a naplózást a modell betanítási folyamata során, és a bemutatott példák a közös tervezési mintákat szemléltetik. A futtatással kapcsolatos adatait könnyedén naplózhatja a munkaterületen a felhőben, ha `start_logging` a függvényt `Experiment` használja az osztályban.
+Több módon is engedélyezheti a naplózást a modell betanítási folyamata során, és a bemutatott példák a közös tervezési mintákat szemléltetik. A futtatással kapcsolatos adatait könnyedén naplózhatja a munkaterületen a felhőben a `start_logging` függvény használatával a `Experiment` osztályban.
 
 ```python
 from azureml.core import Experiment
@@ -43,7 +44,7 @@ run.log("test-val", 10)
 
 További naplózási függvényekért tekintse meg a [futtatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) osztály dokumentációját.
 
-Az alkalmazás állapotának helyi naplózásának engedélyezéséhez a betanítási `show_output` folyamat során használja a (z) paramétert. A részletes naplózás engedélyezése lehetővé teszi, hogy megtekintse a betanítási folyamat részleteit, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információkat. A következő kód használatával engedélyezheti a naplózást a kísérlet beküldéséhez.
+Az alkalmazás állapotának helyi naplózásának engedélyezéséhez a betanítási folyamat során használja a `show_output` paramétert. A részletes naplózás engedélyezése lehetővé teszi, hogy megtekintse a betanítási folyamat részleteit, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információkat. A következő kód használatával engedélyezheti a naplózást a kísérlet beküldéséhez.
 
 ```python
 from azureml.core import Experiment
@@ -52,13 +53,13 @@ experiment = Experiment(ws, experiment_name)
 run = experiment.submit(config=run_config_object, show_output=True)
 ```
 
-Ugyanezt a paramétert `wait_for_completion` használhatja a függvényben az eredményül kapott futtatásnál is.
+Ugyanezt a paramétert használhatja a `wait_for_completion` függvényben is az eredményül kapott futtatásnál.
 
 ```python
 run.wait_for_completion(show_output=True)
 ```
 
-Az SDK az alapértelmezett Python-naplózási csomag használatát is támogatja bizonyos helyzetekben a betanításhoz. A következő példa egy `INFO` `AutoMLConfig` objektum naplózási szintjét engedélyezi.
+Az SDK az alapértelmezett Python-naplózási csomag használatát is támogatja bizonyos helyzetekben a betanításhoz. A következő példa lehetővé teszi `INFO` naplózási szintjét egy `AutoMLConfig` objektumban.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -73,7 +74,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-A `show_output` paramétert állandó számítási cél létrehozásakor is használhatja. A `wait_for_completion` függvény paraméterének megadásával engedélyezheti a naplózást a számítási cél létrehozásakor.
+Állandó számítási cél létrehozásakor a `show_output` paramétert is használhatja. A `wait_for_completion` függvény paraméterének megadásával engedélyezheti a naplózást a számítási cél létrehozásakor.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -85,7 +86,7 @@ compute.wait_for_completion(show_output=True)
 
 ## <a name="logging-during-image-creation"></a>Naplózás a rendszerkép létrehozásakor
 
-A naplózás engedélyezése a rendszerkép létrehozásakor lehetővé teszi, hogy a felépítési folyamat során hibákat láthasson. Állítsa be a `wait_for_deployment()`paramétert a függvényen. `show_output`
+A naplózás engedélyezése a rendszerkép létrehozásakor lehetővé teszi, hogy a felépítési folyamat során hibákat láthasson. Állítsa be a `show_output` paramétert a `wait_for_deployment()` függvényen.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -101,7 +102,7 @@ service.wait_for_deployment(show_output=True)
 
 ## <a name="logging-for-deployed-models"></a>Üzembe helyezett modellek naplózása
 
-A korábban üzembe helyezett webszolgáltatás naplófájljainak beolvasásához töltse be a szolgáltatást, és használja `get_logs()` a függvényt. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
+A korábban üzembe helyezett webszolgáltatás naplófájljainak beolvasásához töltse be a szolgáltatást, és használja a `get_logs()` függvényt. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -111,13 +112,13 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-A webszolgáltatás egyéni verem-nyomkövetéseit a Application Insights engedélyezésével is naplózhatja, amely lehetővé teszi a kérés/válasz időpontjának, a meghibásodási arányok és a kivételek figyelését. A Application Insights `update()` engedélyezéséhez hívja meg a függvényt egy meglévő webszolgáltatáson.
+A webszolgáltatás egyéni verem-nyomkövetéseit a Application Insights engedélyezésével is naplózhatja, amely lehetővé teszi a kérés/válasz időpontjának, a meghibásodási arányok és a kivételek figyelését. A Application Insights engedélyezéséhez hívja meg a `update()` függvényt egy meglévő webszolgáltatáson.
 
 ```python
 service.update(enable_app_insights=True)
 ```
 
-További információt [](how-to-enable-app-insights.md) a Azure Portal Application Insights használatáról a következő témakörben talál:.
+További információ a Application Insights Azure Machine Learning Studióban való használatáról: [útmutató](how-to-enable-app-insights.md) .
 
 ## <a name="python-native-logging-settings"></a>Python natív naplózási beállításai
 

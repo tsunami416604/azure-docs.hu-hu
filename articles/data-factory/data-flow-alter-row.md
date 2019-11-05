@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387267"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486210"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter sor átalakítása
 
@@ -22,7 +22,7 @@ Az Alter sort Transformation paranccsal szúrhatja be a sorokba az INSERT, DELET
 ![Módosítási sor beállításai](media/data-flow/alter-row1.png "Módosítási sor beállításai")
 
 > [!NOTE]
-> Az Alter sorok átalakítása csak az adatfolyamatban található adatbázis-tárolókban fog működni. A sorokhoz rendelt műveletek (INSERT, Update, DELETE, upsert) nem fordulnak elő hibakeresési munkamenetekben. Hozzá kell adnia egy végrehajtási adatfolyam-feladatot egy folyamathoz, és a folyamat hibakeresése vagy eseményindítók használatával kell megadnia az Alter Row Policy-szabályzatokat az adatbázis tábláiban.
+> Az Alter sor átalakítások csak adatbázis-vagy CosmosDB-tárolókban működnek az adatfolyamban. A sorokhoz rendelt műveletek (INSERT, Update, DELETE, upsert) nem fordulnak elő hibakeresési munkamenetekben. Hozzá kell adnia egy végrehajtási adatfolyam-feladatot egy folyamathoz, és a folyamat hibakeresése vagy eseményindítók használatával kell megadnia az Alter Row Policy-szabályzatokat az adatbázis tábláiban.
 
 ## <a name="indicate-a-default-row-policy"></a>Alapértelmezett sor házirendet jelöl
 
@@ -52,6 +52,6 @@ Az ADF-adatforgalomban az adatbázis-elsüllyedés alapértelmezett viselkedése
 > [!NOTE]
 > Ha a lapkák, a frissítések vagy a upsert módosítja a cél tábla sémáját a fogadóban, az adatfolyam sikertelen lesz. Ha módosítani szeretné a célként megadott sémát az adatbázisban, válassza a fogadóban a "tábla újbóli létrehozása" lehetőséget. Ezzel eldobásra kerül, és újból létrehozza a táblát az új séma-definícióval.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A módosítási sor átalakítását követően érdemes lehet [az adatait egy célhely adattárba menteni](data-flow-sink.md).

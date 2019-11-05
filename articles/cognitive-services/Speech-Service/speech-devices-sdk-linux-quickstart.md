@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Speech Devices SDK futtatása a Linux-Speech Service-ben'
+title: 'Rövid útmutató: a Speech Devices SDK futtatása a Linux-Speech Service-ben'
 titleSuffix: Azure Cognitive Services
 description: Előfeltételek és utasítások a Linux Speech Devices SDK használatának első lépéseihez.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 3ee39f4cf0c78850b0128fc5e497f2b2aee57bbc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559084"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490967"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Gyors útmutató: A Speech Devices SDK minta alkalmazás futtatása Linuxon
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Linuxon
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses](conversation-transcription-service.md) átírási eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](conversation-transcription-service.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
 
 Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 Ehhez az útmutatóhoz egy Speech Services-erőforrással rendelkező [Azure Cognitive Services](get-started.md) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
-A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speech Devices SDK tartalmazza. Is [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 Az Eclipse elindítása előtt győződjön meg róla, hogy ezek a függőségek telepítve vannak.
 
-* On Ubuntu:
+* Ubuntu rendszeren:
 
   ```sh
   sudo apt-get update
@@ -80,7 +80,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![A Package Explorer képernyőképe](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok**, majd az új **Beállítások futtatása/hibakeresés** >  **..** . lehetőséget. > **Java-alkalmazás**. 
+1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok**, majd a **Futtatás/hibakeresés beállítások** > **új... lehetőséget.** > **Java-alkalmazást**. 
 
 1. Megjelenik a **konfiguráció szerkesztése** ablak. A **név** mezőbe írja be a **Main**értéket, és a **fő osztály** **keresése** elemre kattintva keresse meg és válassza ki a következőt: **com. microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
 
@@ -88,14 +88,14 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Emellett a **konfiguráció szerkesztése** ablakban válassza ki a **környezet** lapot és az **új**elemet. Megjelenik az **új környezeti változó** ablak. A **név** mezőbe írja be a **LD_LIBRARY_PATH** értéket, és az **érték** mezőbe írja be a *. so fájlokat tartalmazó mappát, például **/Home/wcaltest/JRE-Sample-Release**
 
-1. Másolás `kws.table` és`participants.properties` a projekt mappájának **célja/osztályai**
+1. `kws.table` és `participants.properties` másolása a Project mappa **céljába/osztályaiba**
 
 
 ## <a name="configure-the-sample-application"></a>A minta alkalmazás konfigurálása
 
-1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját.
+1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.
 
-   A Speech and LUIS esetében az adatai a következőre mutatnak `FunctionsList.java`:
+   A Speech és a LUIS esetében az adatai bekerülnek a `FunctionsList.java`ba:
 
    ```java
     // Subscription
@@ -106,23 +106,23 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Ha a társalgási átiratot használja, a beszédfelismerési kulcsra és a régióra `Cts.java`vonatkozó információkra is szükség van a következőkben:
+    Ha a beszélgetés átírását használja, a beszédfelismerési kulcsra és a régióra vonatkozó információkra is szükség van `Cts.java`ban:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Az alapértelmezett ébresztési szó (kulcsszó) az "Számítógép". Megpróbálhatja egy másik megadott ébresztési szavakat, például "Gép" vagy "Assistant". Az erőforrásfájlokat, az alternatív ébresztési szavak szerepelnek, a beszéd Devices SDK-val, a kulcsszó mappában. Például a " `/home/wcaltest/JRE-Sample-Release/keyword/Computer` számítógép" felébresztéséhez használt fájlokat tartalmazza.
+1. Az alapértelmezett kulcsszó (kulcsszó) a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. A `/home/wcaltest/JRE-Sample-Release/keyword/Computer` például a "számítógép" kulcsszóhoz használt fájlokat tartalmazza.
 
    > [!TIP]
-   > Emellett [hozzon létre egy egyéni ébresztési szó](speech-devices-sdk-create-kws.md).
+   > [Egyéni kulcsszó is létrehozható](speech-devices-sdk-create-kws.md).
 
-    Új Felébresztési szó használatához frissítse a következő két sort `FunctionsList.java`a alkalmazásban, és másolja a Wake Word-csomagot az alkalmazásba. Ha például a "gép" ébresztési szót szeretné használni a Wake Word-csomagból `kws-machine.zip`:
+    Új kulcsszó használatához frissítse a `FunctionsList.java`következő két sorát, és másolja a Kulcsszóválasztó csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag `kws-machine.zip`:
 
-   * Másolja a Wake Word-csomagot a Project Folder **cél/osztályok**mappájába.
+   * Másolja a kulcsszó-csomagot a Project Folder **cél/osztályok**mappájába.
 
-   * Frissítse a `FunctionsList.java` kulcsszót és a csomag nevét:
+   * Frissítse a `FunctionsList.java`t a kulcsszóval és a csomag nevével:
 
      ```java
      private static final String Keyword = "Machine";
@@ -131,13 +131,13 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 ## <a name="run-the-sample-application-from-eclipse"></a>A minta alkalmazás futtatása az Eclipse-ből
 
-1. Az Eclipse menüsávban **futtassa** > a Run parancsot. 
+1. Az Eclipse menüsávban **futtassa** > **Run** parancsot. 
 
-1. A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
+1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
 
-   ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet** > elindításával. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai `participants.properties` vannak, akkor a projekt mappájában lévő **cél/osztályokba**helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK)](how-to-use-conversation-transcription-service.md)című témakört.
+1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. A **munkamenet** - > **indításának**megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor azokat `participants.properties`ba helyezheti a projekt mappájában **célként vagy osztályokban**. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](how-to-use-conversation-transcription-service.md).
 
    ![Bemutató beszélgetés átirata alkalmazás](media/speech-devices-sdk/cts-sample-app-linux.png)
 
@@ -148,11 +148,11 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![Az exportálási ablak képernyőképe](media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki  az alkalmazás exportálási célját, majd kattintson a **Befejezés gombra**.
+1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
  
    ![Képernyőfelvétel a futtatható JAR-fájl exportálásáról](media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
-1. `kws.table` Adjamegafentkiválasztottcélmappát,mivelazalkalmazásnak`participants.properties` szüksége van rájuk.
+1. Helyezze el `kws.table` és `participants.properties` a fenti célmappában, mivel az alkalmazásnak szüksége van ezekre a fájlokra.
 
 1. Állítsa a LD_LIBRARY_LIB a *. so fájlokat tartalmazó mappára.
 
@@ -169,4 +169,4 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tekintse át a kibocsátási megjegyzések](devices-sdk-release-notes.md)
+> [A kibocsátási megjegyzések áttekintése](devices-sdk-release-notes.md)

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172927"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474693"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 
@@ -54,7 +54,8 @@ Ha szeretné megtekinteni, hogyan csatlakoztatható egy számítógép egy Azure
 
 Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne csatlakoztatni, ugorjon a szakaszra a [virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
-1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+
 1. Az első **lépések**területen válassza a **Windows Server 2016 Datacenter**lehetőséget.
 
     ![Válassza a Windows Server 2016 Datacenter rendszerű virtuális gép létrehozását a Azure Portal](./media/join-windows-vm/select-vm-image.png)
@@ -65,7 +66,7 @@ Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne
     |----------------------|-------------------|
     | Erőforráscsoport       | Válasszon ki vagy hozzon létre egy erőforráscsoportot, például *myResourceGroup* |
     | Virtuális gép neve | Adja meg a virtuális gép nevét, például *myVM* |
-    | Region (Régió)               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
+    | Régió               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
     | Felhasználónév             | Adjon meg egy felhasználónevet a virtuális gépen létrehozandó helyi rendszergazdai fiókhoz, például: *Azureus* |
     | Jelszó             | Adja meg és erősítse meg a virtuális gépen a helyi rendszergazda számára létrehozott biztonságos jelszót. Ne határozzon meg tartományi felhasználói fiók hitelesítő adatait. |
 
@@ -227,7 +228,7 @@ A hibaelhárítási lépések elvégzése után próbáljon újra csatlakozni a 
 * Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][password-sync] a felügyelt tartományhoz. A konfigurációs lépés nélkül a szükséges jelszó-kivonatok nem jelennek meg az Azure AD DS felügyelt tartományában, hogy megfelelően hitelesítse a bejelentkezési kísérletet.
 * Várjon, amíg a jelszó-szinkronizálás be nem fejeződik. A felhasználói fiók jelszavának módosításakor az Azure AD automatikus háttérben történő szinkronizálása frissíti az Azure AD DSban található jelszót. Időbe telik, amíg a jelszó elérhetővé válik a tartományhoz való csatlakozáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

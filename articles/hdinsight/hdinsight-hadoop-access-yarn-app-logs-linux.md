@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli HDInsight-naplók Apache Hadoop elérése a Linux-alapú Azure-ban
+title: Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz – Azure HDInsight
 description: Megtudhatja, hogyan érheti el a fonal-alkalmazási naplókat egy Linux-alapú HDInsight-(Apache Hadoop-) fürtön a parancssori felület és a webböngésző használatával.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494878"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight
 
@@ -40,7 +40,7 @@ Az alkalmazás naplói (és a kapcsolódó tárolók naplói) kritikus fontossá
 
     /app-logs/<user>/logs/<applicationId>
 
-Az elérési útban `user` az alkalmazást elindító felhasználó neve. Az `applicationId` egy alkalmazáshoz hozzárendelt egyedi azonosító a fonal RM használatával.
+Az elérési útban `user` az alkalmazást elindító felhasználó neve. A `applicationId` a fonal RM-alkalmazáshoz rendelt egyedi azonosító.
 
 Az összesített naplók nem olvashatók közvetlenül, mivel azok [TFile][T-file], a tároló által indexelt [bináris formátumban][binary-format] vannak írva. A erőforráskezelő-naplók vagy a CLI-eszközök segítségével egyszerű szövegként tekintheti meg ezeket a naplókat alkalmazások vagy tárolók esetében.
 
@@ -53,13 +53,13 @@ Ezeket a naplókat egyszerű szövegként tekintheti meg a következő parancsok
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-A parancsok &lt;futtatásakor határozza &lt;meg a applicationId >, a felhasználó által elindított- &lt;The-The- &lt;Application >, a containerId > és a feldolgozói csomópont-címek > információkat.
+A parancsok futtatásakor határozza meg a &lt;applicationId >, &lt;a felhasználó által elindított >, &lt;containerId > és &lt;feldolgozó-csomópont-címek > információit.
 
 ## <a name="yarn-resourcemanager-ui"></a>FONAL erőforráskezelő felhasználói felülete
 
 A fonal erőforráskezelő felhasználói felülete a fürt átjárócsomóponthoz fut. Ez a Ambari webes felhasználói felületén keresztül érhető el. A következő lépések végrehajtásával tekintheti meg a FONALak naplóit:
 
-1. A böngészőben nyissa https://CLUSTERNAME.azurehdinsight.net meg a következőt:. Cserélje le a CLUSTERNAME-t a HDInsight-fürt nevére.
+1. A böngészőben nyissa meg a https://CLUSTERNAME.azurehdinsight.net. Cserélje le a CLUSTERNAME-t a HDInsight-fürt nevére.
 2. A bal oldali szolgáltatások listájából válassza a **fonal**lehetőséget.
 
     ![Apache Ambari fonal-szolgáltatás kiválasztva](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a9d74d94e139427027f68b2c26675447ae6da18c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3dacea5c1d77bfead85e42ae312bfafbe70d8ca1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954876"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990383"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central architektúra (előzetes verziójú funkciók)
 
@@ -32,7 +32,7 @@ Az eszközök az Azure IoT Central alkalmazással cserélik át az adatait. Az e
 
 Az Azure IoT Central-ban az eszköz által az alkalmazással megadható adatcsere megadására kerül egy eszköz sablonjában. További információ az eszközök sablonjairól: [metaadatok kezelése](#metadata-management).
 
-Ha többet szeretne megtudni arról, hogy az eszközök hogyan csatlakoznak az Azure IoT Central-alkalmazáshoz, tekintse meg az [eszköz kapcsolatát](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Ha többet szeretne megtudni arról, hogy az eszközök hogyan csatlakoznak az Azure IoT Central-alkalmazáshoz, tekintse meg az [eszköz kapcsolatát](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="cloud-gateway"></a>Felhőbeli átjáró
 
@@ -44,7 +44,7 @@ Az Azure IoT Central az Azure IoT Hubt használja Felhőbeli átjáróként, ame
 
 További információ a IoT Hubről: [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/).
 
-Ha többet szeretne megtudni az Azure IoT Central eszközével való kapcsolatról, tekintse meg az [eszköz kapcsolatát](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)ismertető témakört.
+Ha többet szeretne megtudni az Azure IoT Central eszközével való kapcsolatról, tekintse meg az [eszköz kapcsolatát](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)ismertető témakört.
 
 ## <a name="data-stores"></a>Adattárak
 
@@ -108,6 +108,6 @@ A rendszergazdák egyéni témák alkalmazásával szabhatják testre az alkalma
 
 Az operátorok személyre szabott alkalmazás-irányítópultokat hozhatnak létre. Több irányítópultot is beállíthat, amelyek különböző adathalmazokat jelenítenek meg, és válthatnak egymás között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az Azure-IoT Central architektúráját, a javasolt következő lépés az [eszköz kapcsolatának](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) megismerése az Azure IoT Centralban.
+Most, hogy megismerte az Azure-IoT Central architektúráját, a javasolt következő lépés az [eszköz kapcsolatának](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) megismerése az Azure IoT Centralban.

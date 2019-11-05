@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: mvc
-ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489551"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495659"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
@@ -85,7 +84,7 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az Azure VPN-átjáró helyszínek közötti kapcsolatot és P2S VPN-kiszolgálói funkciókat biztosít a virtuális hálózatán. A VPN-átjárót hozzáadhatja egy meglévő virtuális hálózathoz, vagy létrehozhat egy új virtuális hálózatot az átjáróval együtt. Figyelje meg, hogy a példa pontosan megadja az átjáró-alhálózat nevét. Az átjáró-alhálózat nevét mindig az "GatewaySubnet" értékkel kell megadnia ahhoz, hogy megfelelően működjön. Ez a példa egy új virtuális hálózatot hoz létre három alhálózattal: A frontend, a háttér és a GatewaySubnet a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) és a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)használatával:
+Az Azure VPN-átjáró helyszínek közötti kapcsolatot és P2S VPN-kiszolgálói funkciókat biztosít a virtuális hálózatán. A VPN-átjárót hozzáadhatja egy meglévő virtuális hálózathoz, vagy létrehozhat egy új virtuális hálózatot az átjáróval együtt. Figyelje meg, hogy a példa pontosan megadja az átjáró-alhálózat nevét. Az átjáró-alhálózat nevét mindig az "GatewaySubnet" értékkel kell megadnia ahhoz, hogy megfelelően működjön. Ez a példa egy új virtuális hálózatot hoz létre három alhálózattal: a frontend, a háttér és a GatewaySubnet a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) és a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)használatával:
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -126,9 +125,9 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 ```
 
 Fő paraméterértékek:
-* GatewayType **VPN** használata helyek közötti és VNet-VNet kapcsolatokhoz
-* VpnType A **útvonalalapú** használata a VPN-eszközök szélesebb körének és több útválasztási funkciójának használatával
-* Gatewaysku paraméterben A **VpnGw1** az alapértelmezett; módosítsa a VpnGw2 vagy a VpnGw3, ha nagyobb átviteli sebességre vagy több kapcsolatra van szüksége. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* GatewayType: Használja a **Vpn** értéket a helyek közötti és a virtuális hálózatok közötti kapcsolatokhoz
+* VpnType: A **RouteBased** értékkel VPN-eszközök szélesebb választékát használhatja, több útválasztási szolgáltatással
+* Gatewaysku paraméterben: a **VpnGw1** az alapértelmezett; módosítsa egy másik VpnGw SKU-ra, ha nagyobb átviteli sebességre vagy több kapcsolatra van szüksége. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 Ha a TryIt használja, előfordulhat, hogy a munkamenet időtúllépést okoz. rendben van. Az átjáró továbbra is létrejön.
 
@@ -147,7 +146,7 @@ $myGwIp.IpAddress
 
 ## <a name="resize-a-gateway"></a>Átjáró átméretezése
 
-A VPN-átjáró termékváltozata az átjáró létrehozása után is módosítható. A különböző átjáró-termékváltozatok különböző specifikációkat, például sebességet, kapcsolatszámot stb. támogatnak. Az alábbi példa a [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) használatával átméretezi az átjárót a VpnGw1-ről a VpnGw2-re. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+A VPN-átjáró termékváltozata az átjáró létrehozása után is módosítható. A különböző átjárók a különböző specifikációkat támogatják, például az átviteli sebességet, a kapcsolatok számát stb. Az alábbi példa a [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) használatával átméretezi az átjárót a VpnGw1-ről a VpnGw2-re. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1

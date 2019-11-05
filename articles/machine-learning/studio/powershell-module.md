@@ -1,7 +1,7 @@
 ---
-title: A Machine Learning Studio PowerShell-modulok
-titleSuffix: Azure Machine Learning Studio
-description: Létrehozása és kezelése az Azure Machine Learning Studio-munkaterületek, kísérletek, webszolgáltatások és további PowerShell használatával.
+title: PowerShell-modulok Machine Learning Studio (klasszikus)
+titleSuffix: Azure Machine Learning Studio (classic)
+description: A PowerShell használatával Azure Machine Learning Studio (klasszikus) munkaterületeket, kísérleteket, webszolgáltatásokat és egyebeket hozhat létre és kezelhet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,61 +9,61 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: bee42f8a9582908963c0eef95a2fd04742cd425e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dae20a86c7a16e1d989b529a3f2dd4e32253a354
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496811"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio"></a>PowerShell-modulokat az Azure Machine Learning Studióban
+# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>PowerShell-modulok Azure Machine Learning Studio (klasszikus)
 
-Használja a PowerShell-modulok, programozott módon kezelheti a Studio erőforrásainak és az adategységeket, mint a-munkaterületek, adatkészletek és webszolgáltatások.
+A PowerShell-modulok használatával programozott módon kezelheti a Studio (klasszikus) erőforrásait és eszközeit, például munkaterületeket, adatkészleteket és webszolgáltatásokat.
 
-Studio erőforrások három Powershell-modulok használata kezelheti:
+A Studio-erőforrások klasszikus verzióját három PowerShell-modul használatával használhatja:
 
-* [Az Azure PowerShell Az](#az-rm) kiadás dátuma: 2018-ban, habár a különböző parancsmagok neveivel AzureRM, funkciókat tartalmazza
-* [AzureRM](#az-rm) kiadás dátuma: 2016 PowerShell Az cserélve
-* [Az Azure Machine Learning PowerShell – klasszikus](#classic) kiadás dátuma: 2016-ban
+* [Azure PowerShell az](#az-rm) az 2018-ben megjelent, a AzureRM összes funkcióját tartalmazza, bár különböző parancsmag-nevekkel
+* A 2016-ben kiadott [AzureRM](#az-rm) , a PowerShell helyébe
+* A [Azure Machine learning PowerShell klasszikus](#classic) változata 2016-ben megjelent
 
-Bár ezek a PowerShell-modulok elérésük szempontjából, adott helyzetekben egyes lett tervezve. Ez a cikk a PowerShell-modulokat, és eldöntheti, melyiket válassza segít közötti különbségeket ismerteti.  
+Habár ezek a PowerShell-modulok hasonlóságot mutatnak, mindegyiket bizonyos forgatókönyvekhez tervezték. Ez a cikk a PowerShell-modulok közötti különbségeket ismerteti, és segít eldönteni, hogy melyiket kell választania.  
 
-Ellenőrizze a [támogatási tábla](#support-table) állapotellenőrzésére melyik erőforrást egyes modul által támogatott. 
+Az alábbi [támogatási táblázatban](#support-table) megtekintheti, hogy az egyes modulok milyen erőforrásokat támogatnak. 
 
-## <a name="az-rm"></a> Az Azure PowerShell Az és AzureRM
+## <a name="az-rm"></a>Azure PowerShell az és AzureRM
 
-Az ezzel a megfelelő PowerShell-modult az Azure-ral való interakcióhoz és AzureRM az előző funkciókat tartalmazza. AzureRM továbbra is fogadni hibajavításokat tartalmaz, de nincs új parancsmagok vagy a szolgáltatások fog fogadni.  Az és AzureRM mindkettő használatával üzembe helyezett megoldások kezelése az **Azure Resource Manager** üzemi modellt. Ilyen erőforrások többek között a Studio-munkaterületek és a Studio-webszolgáltatások "Új". 
+Az mostantól az Azure-hoz való interakcióhoz készült PowerShell-modul, amely a AzureRM összes korábbi funkcióját tartalmazza. A AzureRM továbbra is megkapja a hibajavításokat, de nem fog új parancsmagokat vagy szolgáltatásokat kapni.  Az és a AzureRM egyaránt felügyeli a **Azure Resource Manager** üzembe helyezési modell használatával üzembe helyezett megoldásokat. Ezek az erőforrások például a Studio (klasszikus) munkaterületek és a Studio (klasszikus) "új" webszolgáltatások. 
 
-Klasszikus PowerShell mellett Az vagy a AzureRM mindkét "új" és "klasszikus" erőforrástípusok fedezésére is telepíthető. Azonban nem ajánlott Az és a egy időben telepített AzureRM. Annak eldöntéséhez, Az és AzureRM között, a Microsoft javasolja Az összes későbbi központi telepítésekhez.  További információ Az AzureRM- és az áttelepítési elérési utat és [bemutatása az Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+A klasszikus PowerShell-t az az vagy a AzureRM együtt is telepítheti, hogy az "új" és a "klasszikus" típusú erőforrásokra is vonatkozzon. Azonban az az és a AzureRM nem ajánlott egyszerre telepíteni. Az az és a AzureRM közötti döntéshez a Microsoft az az összes jövőbeli üzembe helyezését javasolja.  További információ az az és a AzureRM és az áttelepítési útvonalról a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)az az.
 
-Az használatának megkezdéséhez kövesse a [telepítési utasításokat Azure Az](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Az az használatával való ismerkedéshez kövesse az [Azure telepítési utasításait az az](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-## <a name="classic"></a> Klasszikus PowerShell
+## <a name="classic"></a>Klasszikus PowerShell
 
-A Studio [klasszikus PowerShell-modul](https://aka.ms/amlps) lehetővé teszi, hogy használatával üzembe helyezett erőforrások kezelése a **klasszikus üzemi modell**. Ilyen erőforrások többek között a Studio felhasználói eszközök, a "klasszikus" és a "klasszikus" webszolgáltatás-végpontok.
+A Studio (klasszikus) [PowerShell klasszikus modul](https://aka.ms/amlps) lehetővé teszi a **klasszikus üzemi modell**használatával üzembe helyezett erőforrások kezelését. Ezek az erőforrások a Studio (klasszikus) felhasználói eszközök, a "klasszikus" webszolgáltatások és a "klasszikus" webszolgáltatás-végpontok közé tartoznak.
 
-Azonban a Microsoft azt javasolja, hogy az összes jövőbeli erőforrások Resource Manager üzemi modell használatával egyszerűsíthető a központi telepítési és az erőforrások kezelését. Ha szeretne további információ az üzembe helyezési modellel, tekintse meg a [Azure Resource Manager és klasszikus üzembe helyezési](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) cikk.
+A Microsoft azonban azt javasolja, hogy a Resource Manager-alapú üzemi modellt minden jövőbeli erőforráshoz használja az erőforrások üzembe helyezésének és kezelésének egyszerűsítése érdekében. Ha többet szeretne megtudni az üzembe helyezési modellekről, tekintse meg a Azure Resource Manager és a [klasszikus üzembe helyezési](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) cikket.
 
-Klasszikus PowerShell használatának megkezdéséhez töltse le a [kiadási csomag](https://github.com/hning86/azuremlps/releases) a Githubról, majd kövesse a [telepítési utasításokat](https://github.com/hning86/azuremlps/blob/master/README.md). Az útmutató azt ismerteti, hogy feloldása a letöltött/kicsomagolt DLL zárolását, és importálja azt a PowerShell-környezet.
+A klasszikus PowerShell megkezdéséhez töltse le a [kiadási csomagot](https://github.com/hning86/azuremlps/releases) a githubról, és kövesse a [telepítésre vonatkozó utasításokat](https://github.com/hning86/azuremlps/blob/master/README.md). Az útmutató ismerteti, hogyan lehet feloldani a letöltött/kibontott DLL-t, majd importálni a PowerShell-környezetbe.
 
-Klasszikus PowerShell mellett Az vagy a AzureRM mindkét "új" és "klasszikus" erőforrástípusok fedezésére is telepíthető.
+A klasszikus PowerShell-t az az vagy a AzureRM együtt is telepítheti, hogy az "új" és a "klasszikus" típusú erőforrásokra is vonatkozzon.
 
-## <a name="support-table"></a> PowerShell-támogatás tábla
+## <a name="support-table"></a>PowerShell-támogatási tábla
 
 
 | | **Az** |  **Klasszikus PowerShell** |
 | --- | --- | --- |
 | Munkaterületek létrehozása/törlése | [Resource Manager-sablonok](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
-| Munkaterület kötelezettségvállalásos csomagok kezelése | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
+| Munkaterület-kötelezettségvállalási tervek kezelése | [Új – AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | Munkaterület-felhasználók kezelése |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| Webszolgáltatások kezelése | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>(a "új" web services)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasszikus" webszolgáltatások) |
-| Webes szolgáltatás végpontok és kulcsok kezelése |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
-| Felhasználói adatkészletet és betanított modellek kezelése| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
-| Felhasználói kísérletek kezelése |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
-| Egyéni modulok kezelése | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
+| Webszolgáltatások kezelése | [Új – AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>("új" webszolgáltatások)|| [Új – AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasszikus" webszolgáltatások) |
+| Webszolgáltatás-végpontok/kulcsok kezelése |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| Felhasználói adatkészletek/betanított modellek kezelése| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
+| Felhasználói kísérletek kezelése |  | [Start – AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
+| Egyéni modulok kezelése | | [Új – AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át az alábbi PowerShell-modul teljes dokumentációját:
+Tanulmányozza a PowerShell-modul teljes dokumentációját:
 * [Klasszikus PowerShell](https://aka.ms/amlps)
-* [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)
+* [Azure PowerShell az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

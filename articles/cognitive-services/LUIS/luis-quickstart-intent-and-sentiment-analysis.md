@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hangulat elemzése – LUIS'
+title: 'Oktatóanyag: érzelmek elemzése – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban hozzon létre egy alkalmazást, amely bemutatja, hogyan szerezhet be pozitív, negatív és semleges érzést a hosszúságú kimondott szöveg. A hangulat meghatározása a teljes kimondott szövegből történik.
 services: cognitive-services
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 07afd197e514adb0f2fc65c11e9fec552aa05b99
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307575"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492656"
 ---
-# <a name="tutorial--get-sentiment-of-utterance"></a>Oktatóanyag:  A Kimondás érzésének beolvasása
+# <a name="tutorial--get-sentiment-of-utterance"></a>Oktatóanyag: a Kimondás érzésének beolvasása
 
 Ebben az oktatóanyagban egy olyan alkalmazást hoz létre, amely bemutatja, hogyan határozható meg a hosszúságú kimondott szöveg pozitív, negatív és semleges hangulata. A hangulat meghatározása a teljes kimondott szövegből történik.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -93,7 +95,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
     Válassza ki a **megtekintési beállításokat**, válassza az **entitás értékeinek megjelenítése** lehetőséget a nevek megtekintéséhez.
 
-    [![Képernyőkép a LUIS-alkalmazásról a EmployeeFeedback szándékban található példa hosszúságú kimondott szöveg](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [![a LUIS-alkalmazás képernyőképe, például hosszúságú kimondott szöveg a EmployeeFeedback szándékában](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz 
 
@@ -109,7 +111,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
 1. Válassza a **hangulat elemzése lehetőséget annak megállapításához, hogy a felhasználó abszolút értéke pozitív, negatív vagy semleges.** a beállítás engedélyezéséhez. 
 
-    ![Hangulatelemzés bekapcsolása közzétételi beállításai](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![Hangulatelemzés bekapcsolása közzétételi beállításként](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, hogy a betanított modell lekérdezhető legyen a végpontról.
 
@@ -159,7 +161,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
     A sentimentAnalysis pozitív, 86%-os pontszámmal. 
 
-    Próbáljon ki egy másikat, ha `q` eltávolítja a böngésző címsorában található értéket: `William Jones did a terrible job presenting his ideas.`Az érzelmek pontszáma negatív eredményt jelez, ha alacsony pontszámot `0.18597582`ad vissza.
+    Próbáljon ki egy másikat a böngésző címsorában található `q` értékének eltávolításával: `William Jones did a terrible job presenting his ideas.` az értékelés pontszáma negatív érzést jelez, ha alacsony pontszámot ad vissza `0.18597582`.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

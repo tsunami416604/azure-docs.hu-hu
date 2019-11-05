@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc4336629a4c3b9da906daefca160c5a305603dc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f5a12ca2bdccee1d2f738aa3c810577caf3d8eac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990846"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491959"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
@@ -43,7 +43,7 @@ Time Series Insights előnézeti környezet kiépítésekor két Azure-erőforr�
 * Azure Time Series Insights előnézeti környezet
 * Azure Storage általános célú v1-fiók
 
-A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyezni a meleg tárolót. A meleg tárolás többplatformos lekérdezési élményt biztosít. Ha engedélyezve van, meg kell adnia egy 7 és 30 nap közötti megőrzési időtartamot. A meleg tárolási megőrzési időszakon belül végrehajtott lekérdezések általában gyorsabb válaszidőt biztosítanak. Ha egy lekérdezés a meleg tároló megőrzési idejére nyúlik át, a rendszer a hűtőházi tárolóból kézbesíti.
+A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyezni a meleg tárolót. A meleg tárolás többplatformos lekérdezési élményt biztosít. Ha engedélyezve van, meg kell adnia egy 7 és 30 nap közötti megőrzési időtartamot. A meleg tárolási megőrzési időszakon belül végrehajtott lekérdezések általában gyorsabb válaszidőt biztosítanak. Ha egy lekérdezés a meleg tároló megőrzési időtartamára terjed ki, a rendszer a hűtőházi tárolóból kézbesíti.
 
 A melegen tárolt lekérdezések ingyenesek, míg a hűtőházi tárolással kapcsolatos lekérdezések költségekkel járnak. Fontos megérteni a lekérdezési mintákat, és ennek megfelelően tervezze meg a meleg tároló konfigurációját. Azt javasoljuk, hogy az interaktív elemzések a legújabb, a meleg áruházban található és a minták elemzése, valamint a hosszú távú trendek esetében is naprakészek legyenek.
 
@@ -97,7 +97,7 @@ További információ: [Shape Events](./time-series-insights-send-events.md#supp
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
 - További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.

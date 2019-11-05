@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: ETL-műveletek végrehajtása az interaktív lekérdezés használatával az Azure HDInsight'
+title: 'Oktatóanyag: ETL-műveletek interaktív lekérdezéssel – Azure HDInsight'
 description: Oktatóanyag – Ismerje meg, hogyan nyerheti ki az adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át interaktív lekérdezéssel a HDInsight, majd az átalakított adatokat az Apache Sqoop használatával töltse be az Azure SQL Database-be.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735834"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494162"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
 
 Ebben az oktatóanyagban egy nyers CSV-adatfájlt helyez el a nyilvánosan elérhető repülési adatairól, importálhatja azt a HDInsight, majd az Azure HDInsight interaktív lekérdezés használatával átalakíthatja azokat. Az adatátalakítást követően a rendszer az [Apache Sqoop](https://sqoop.apache.org/)használatával tölti be ezeket az Azure SQL Database-adatbázisba.
 
@@ -54,7 +54,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tartozó tárolóra. Ebben a szakaszban az `scp` segítségével fogja feltölteni az adatokat. Az adatok feltöltésének egyéb módjaival kapcsolatban lásd: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
 
-1. Töltse fel a. zip fájlt a HDInsight-fürt fő csomópontjára. Szerkessze az alábbi parancsot úgy `FILENAME` , hogy a. zip-fájl nevét és a `CLUSTERNAME` HDInsight-fürt nevét helyettesíti. Ezután nyisson meg egy parancssort, állítsa be a munkakönyvtárat a fájl helyére, majd írja be a parancsot.
+1. Töltse fel a. zip fájlt a HDInsight-fürt fő csomópontjára. Szerkessze az alábbi parancsot úgy, hogy lecseréli `FILENAME` a. zip-fájl nevére, és `CLUSTERNAME` a HDInsight-fürt nevével. Ezután nyisson meg egy parancssort, állítsa be a munkakönyvtárat a fájl helyére, majd írja be a parancsot.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
@@ -62,13 +62,13 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
 
     Ha a folytatáshoz meg kell adnia az igen vagy a nem értéket, írja be az igen parancsot a parancssorba, majd nyomja le az ENTER billentyűt. A szöveg nem látható az ablakban gépelés közben.
 
-2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a nevet a HDInsight-fürt nevére. Ezután írja be a következő parancsot:
+2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Szerkessze az alábbi parancsot úgy, hogy lecseréli `CLUSTERNAME` a HDInsight-fürt nevére. Ezután írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Környezeti változó beállítása az SSH-kapcsolatok létrehozása után. `FILE_NAME` Cseréljele`SQL_USER`a,, ,,`SQL_PASWORD` és értéket a megfelelő értékekre. `SQL_DATABASE` `SQL_SERVERNAME` Ezután írja be a parancsot:
+3. Környezeti változó beállítása az SSH-kapcsolatok létrehozása után. Cserélje le a `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`és `SQL_PASWORD` értékeket a megfelelő értékekre. Ezután írja be a parancsot:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -260,15 +260,15 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Ez a parancs az adatbázisok listáját adja vissza, beleértve azt az adatbázist, amelyben korábban `delays` létrehozta a táblát.
+    Ez a parancs az adatbázisok listáját adja vissza, beleértve azt az adatbázist, amelyben korábban létrehozta a `delays` táblát.
 
-2. Exportálja az `/tutorials/flightdelays/output` adatokat `delays` a táblázatba az alábbi parancs beírásával:
+2. Az alábbi parancs beírásával exportálja `/tutorials/flightdelays/output` adatokat a `delays` táblába:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    A Sqoop a `delays` táblázatot tartalmazó adatbázishoz csatlakozik, és a `/tutorials/flightdelays/output` címtárból exportálja az adatait a `delays` táblába.
+    A Sqoop a `delays` táblát tartalmazó adatbázishoz kapcsolódik, és az `/tutorials/flightdelays/output` könyvtárból exportálja az adatait a `delays` táblába.
 
 3. A sqoop parancs befejeződése után a TSQL segédprogrammal csatlakozhat az adatbázishoz az alábbi parancs beírásával:
 

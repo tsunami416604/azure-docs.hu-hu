@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed302b9c98cf5931afa745f5aab4611a54fedb60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989987"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492064"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
 
@@ -30,7 +30,7 @@ Ez a cikk a következő kérdésekre ad választ:
 
 A következő szakaszokban ismertetjük a használati forgatókönyvek áttekintését.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Azure Time Series Insights egy teljes körű, szolgáltatásként nyújtott platformot kínál. A szolgáltatás a kifejezetten környezetfüggő, idősorozat-optimalizált IoT adatok gyűjtésére, feldolgozására, tárolására, elemzésére és lekérdezésére szolgál. A Time Series Insights ideális megoldás az alkalmi adatfeltárásra és az operatív elemzésre. A Time Series Insights egy egyedileg bővíthető, testreszabott szolgáltatás, amely megfelel az ipari IoT üzemelő példányok széles körű igényeinek.
 
@@ -60,7 +60,7 @@ A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
     * További információ az URL-címek és az új felhasználói felület megosztásáról: [a Azure Time Series Insights Preview Explorerben](time-series-insights-update-explorer.md)tekintheti meg az adatmegjelenítést.
 
-- A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights olyan időbeli operátorokkal rendelkezik, mint például a `from`, a `to`, a `first` és a `last`. Összesítések és átalakítások, például `average`, `min`, `max`, `split by`, `order by` és `DateHistogram`. Emellett olyan szűrési operátorokat is tartalmaz, mint például a `has`, `in`, `and`, `or`, `greater than` és `REGEX`. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
+- A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights olyan időbeli operátorokkal rendelkezik, mint például a `from`, a `to`, a `first`és a `last`. Összesítések és átalakítások, például `average`, `min`, `max`, `split by`, `order by`és `DateHistogram`. Emellett olyan szűrési operátorokat is tartalmaz, mint például a `has`, `in`, `and`, `or`, `greater than`és `REGEX`. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Üzemeltetéselemzés és a folyamatok hatékonyságának növelése
 
@@ -70,7 +70,7 @@ A Time Series Insights használatával figyelheti az állapotot, a használatot 
 
 A működési folyamatokból érkező adatok folyamatos átvitele és folyamatos feldolgozása a megfelelő technológiával vagy megoldással együtt sikeresen átalakíthatja a vállalatokat. Ezek a megoldások gyakran több rendszer kombinációját jelentik. Lehetővé teszik az állandóan módosult, különösen az IoT-tartományon belüli adatelemzést és elemzést, és megosztanak egy közös mintát.
 
-Ezek a minták gyakran olyan IoT-kompatibilis platformokkal kezdődnek, amelyek több milliárd eseményt is betöltenek az eszközöktől és érzékelőktől, amelyek különböző területi beállításokra terjednek ki. Ezek a rendszerek a valós idejű elemzések és műveletek elvégzése érdekében dolgozzák fel és elemzik a streaming-adatforrásokat. Az adatok archiválása általában a meleg és a hideg tárolóba történik a közel valós idejű és a kötegelt elemzésekhez.
+Ezek a minták gyakran olyan IoT-kompatibilis platformokkal kezdődnek, amelyek több milliárd eseményt is betöltenek az eszközöktől és érzékelőktől, amelyek különböző területi beállításokra terjednek ki. Ezek a rendszerek a valós idejű elemzések és műveletek elvégzése érdekében dolgozzák fel és elemzik a streaming-adatforrásokat. Az adatok általában a meleg és a hideg tárolóba kerülnek, közel valós időben és kötegelt elemzésekhez.
 
 Az összegyűjtött adatok több feldolgozási folyamaton keresztül megtisztíthatók és contextualize az alsóbb rétegbeli lekérdezési és elemzési forgatókönyvek esetében. Az Azure gazdag szolgáltatásokat kínál, amelyek alkalmazhatók olyan IoT-forgatókönyvek esetén, mint az eszközök karbantartása és a gyártás. Ezek a szolgáltatások többek között a következők: Time Series Insights, IoT Hub, Event Hubs, Azure Stream Analytics, Azure Functions, Azure Logic apps, Azure Databricks, Azure Machine Learning és Power BI.
 
@@ -98,7 +98,7 @@ Time Series Insights áthidalja a IoT és a fejlett Analitika közötti szakadé
 
 - Másodszor, a gépi tanulási és előrejelzési modellek kimenete Time Series Insightsba is helyezhető az eredmények megjelenítéséhez és tárolásához. Ez az eljárás segít a szervezeteknek a modelljeik optimalizálásában és finomhangolásában. A Time Series Insights megkönnyíti a folyamatos átviteli telemetria-adatokat a betanított modell kimenetével megegyező síkban ábrázolni. Így segít az adatelemzési csapatoknak észrevenni a rendellenességeket és azonosítani a mintákat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md).
 - A környezet megtervezéséhez olvassa el [Time Series Insights előzetes verziójának tervezését](./time-series-insights-update-plan.md) .

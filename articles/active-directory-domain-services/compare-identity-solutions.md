@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173166"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474717"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
 
@@ -41,7 +41,7 @@ Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek olyan hag
 
 Az Azure AD DS az alapvető szolgáltatási összetevőket a Microsoft *felügyelt* tartományi felhasználói felületként telepíti és tartja karban. Nem kell telepítenie, felügyelni, javítani és biztonságossá tenni a AD DS infrastruktúrát olyan összetevőkhöz, mint a virtuális gépek, a Windows Server operációs rendszer vagy a tartományvezérlők.
 
- Az Azure AD DS szolgáltatások kisebb részhalmazát kínálja a hagyományos, önfelügyelt AD DS-környezet számára, ami csökkenti a tervezési és a felügyeleti komplexitást. Például nincs olyan AD-erdő, tartomány, hely, és replikációs hivatkozás a tervezéshez és a karbantartáshoz. A felhőben futó alkalmazások és szolgáltatások esetében, valamint a hagyományos hitelesítési mechanizmusokhoz (például Kerberos vagy NTLM) való hozzáférésre van szükség, az Azure AD DS felügyelt tartományi élményt biztosít a minimális adminisztratív terhelésnek megfelelően.
+Az Azure AD DS szolgáltatások kisebb részhalmazát kínálja a hagyományos, önfelügyelt AD DS-környezet számára, ami csökkenti a tervezési és a felügyeleti komplexitást. Például nincs olyan AD-erdő, tartomány, hely, és replikációs hivatkozás a tervezéshez és a karbantartáshoz. A felhőben futó alkalmazások és szolgáltatások esetében, valamint a hagyományos hitelesítési mechanizmusokhoz (például Kerberos vagy NTLM) való hozzáférésre van szükség, az Azure AD DS felügyelt tartományi élményt biztosít a minimális adminisztratív terhelésnek megfelelően.
 
 Ha önálló felügyelet alatt álló AD DS környezetet telepít és futtat, meg kell őriznie az összes kapcsolódó infrastruktúrát és címtár-összetevőt. Az önfelügyelt AD DS-környezetek További karbantartási terheléssel rendelkeznek, azonban további feladatokat is végrehajthat, például kiterjesztheti a sémát, vagy erdőszintű megbízhatósági kapcsolatot hozhat létre.
 
@@ -102,12 +102,12 @@ Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az N
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Eszköz által vezérelt            | Azure AD                                            | Azure AD DS felügyelt tartomány                                                |
 | Képviselet a címtárban | Eszközök objektumai az Azure AD-címtárban            | Számítógép-objektumok az Azure AD DS felügyelt tartományban                        |
-| Hitelesítés                  | OAuth/OpenID Connect-alapú protokollok              | Kerberos és NTLM protokollok                                               |
-| Felügyelet                      | Mobileszköz-felügyeleti (MDM) szoftverek, például az Intune | Csoportházirend                                                              |
-| Hálózatkezelés                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
+| Authentication                  | OAuth/OpenID Connect-alapú protokollok              | Kerberos és NTLM protokollok                                               |
+| Kezelés                      | Mobileszköz-felügyeleti (MDM) szoftverek, például az Intune | Csoportházirend                                                              |
+| Hálózat                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
 | Nagyszerű...                    | Végfelhasználói mobil-vagy asztali eszközök                  | Az Azure-ban üzembe helyezett kiszolgálói virtuális gépek                                              |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD DS használatának megkezdéséhez [hozzon létre egy azure AD DS felügyelt tartományt a Azure Portal használatával][tutorial-create].
 

@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002632"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489711"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A gépi tanulási bővítmény a parancssori felülethez parancsokat biztosít a Azure Machine Learning erőforrásainak használatához.
 
@@ -39,7 +40,7 @@ Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületr
 az login
 ```
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások egy engedélyezési kód [https://aka.ms/devicelogin](https://aka.ms/devicelogin) böngészését és beírását foglalják magukban.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások a [https://aka.ms/devicelogin](https://aka.ms/devicelogin) böngészését és az engedélyezési kód beírását foglalják magukban.
 
 A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
@@ -61,14 +62,14 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | Szolgáltatás | Paraméter egy meglévő példány megadásához |
 | ---- | ---- |
 | **Azure-erőforráscsoport** | `-g <resource-group-name>`
-| **Azure Storage Account** | `--storage-account <service-id>` |
+| **Azure Storage-tárfiók** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az-t az erőforráscsoporthoz használni kívánt névre. Cserélje `<location>` le az az Azure-régiót az erőforráscsoport használatára:
+Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje le a `<resource-group-name>` nevet az erőforráscsoport számára használni kívánt névre. Cserélje le a `<location>`t az erőforráscsoporthoz használni kívánt Azure-régióra:
 
 > [!TIP]
 > Ki kell választania egy régiót, ahol a Azure Machine Learning elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -133,7 +134,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
 > [!IMPORTANT]
 > Nem kell megadnia az összes meglévő erőforrást. Megadhat egyet vagy többet is. Megadhat például egy meglévő Storage-fiókot, és a munkaterület létrehozza a többi erőforrást is.
 
-+ **Azure Storage-fiók**:`az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage-fiók**: `az storage account show --name <storage-account-name> --query "id"`
 
     A parancs válasza az alábbi szöveghez hasonló, és a Storage-fiók azonosítója:
 
@@ -163,7 +164,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     A parancs válasza az alábbi szöveghez hasonló, és a tároló-beállításjegyzék azonosítója:
 
@@ -172,7 +173,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
     > [!IMPORTANT]
     > A tároló beállításjegyzékének az Azure Machine Learning munkaterülettel való használata előtt engedélyeznie kell a [rendszergazdai fiókot](/azure/container-registry/container-registry-authentication#admin-account) .
 
-Miután megtörtént a munkaterülethez használni kívánt erőforrás (ok) azonosítóinak azonosítója, használja az `az workspace create -w <workspace-name> -g <resource-group-name>` alapparancst, és adja hozzá a meglévő erőforrások paraméter (eke) t és azonosítóját. A következő parancs például egy meglévő tároló-beállításjegyzéket használó munkaterületet hoz létre:
+Ha a munkaterülethez használni kívánt erőforrás (ok) azonosítói vannak, használja a Base `az workspace create -w <workspace-name> -g <resource-group-name>` parancsot, és adja hozzá a meglévő erőforrások paraméter (eke) t és AZONOSÍTÓját. A következő parancs például egy meglévő tároló-beállításjegyzéket használó munkaterületet hoz létre:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"

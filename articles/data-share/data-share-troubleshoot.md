@@ -1,22 +1,22 @@
 ---
-title: Az Azure-beli adatmegosztás előzetes verziójának hibáinak megoldása
-description: Megtudhatja, hogyan lehet elhárítani a meghívásokkal és hibákkal kapcsolatos problémákat, amikor adatmegosztásokat hoz létre vagy fogad az Azure-beli adatmegosztás előzetes
+title: Az Azure Data Share hibaelhárítása
+description: Megtudhatja, hogyan lehet elhárítani a meghívásokkal és hibákkal kapcsolatos problémákat az Azure-beli adatmegosztások létrehozásakor vagy fogadásakor.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169225"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490564"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Az Azure-beli adatmegosztás előzetes verziójának gyakori problémáinak elhárítása
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure-adatmegosztás gyakori problémáinak elhárítása 
 
-Ez a cikk bemutatja, hogyan lehet elhárítani az Azure-beli adatmegosztás előzetes verziójával kapcsolatos gyakori problémákat. 
+Ez a cikk bemutatja, hogyan lehet elhárítani az Azure-adatmegosztással kapcsolatos gyakori problémákat. 
 
 ## <a name="azure-data-share-invitations"></a>Azure-adatmegosztási meghívások 
 
@@ -56,7 +56,21 @@ Ha egy új adatmegosztás létrehozása vagy fogadása során a fenti hibák val
 1. Kattintson a **Hozzáadás** gombra
 1. Önmaga hozzáadása tulajdonosként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting-sql-based-sharing"></a>SQL-alapú megosztás hibaelhárítása
+
+"Hiba: az x-adatkészletek nem lettek hozzáadva, mert nem rendelkezik a megosztáshoz szükséges engedélyekkel."
+
+Ha ezt a hibaüzenetet akkor kapja meg, amikor SQL-alapú forrásból vesz fel egy adatkészletet, annak oka az lehet, hogy nem hozott létre felhasználót az Azure-beli adatmegosztási MSI-hez a SQL Server.  A probléma megoldásához futtassa a következő parancsfájlt:
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+Vegye figyelembe, hogy a *< share_acc_name >* az adatmegosztási fiók neve. Ha még nem hozott létre adatmegosztási fiókot, később is visszatérhet ehhez az előfeltételhöz.         
+
+Győződjön meg arról, hogy követte az [adatmegosztási](share-your-data.md) oktatóanyagban felsorolt összes előfeltételt.
+
+## <a name="next-steps"></a>További lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 

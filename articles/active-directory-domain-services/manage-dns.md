@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612337"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474573"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>DNS felügyelete Azure AD Domain Services felügyelt tartományban
 
@@ -23,18 +23,20 @@ A Azure Active Directory Domain Services (Azure AD DS) egyik kulcsfontosságú �
 
 A saját alkalmazások és szolgáltatások futtatásakor előfordulhat, hogy DNS-rekordokat kell létrehoznia a tartományhoz nem csatlakoztatott gépekhez, konfigurálnia kell a terheléselosztó virtuális IP-címeit, vagy külső DNS-továbbítókat kell beállítania. Az *HRE DC-rendszergazdák* csoportba tartozó felhasználók DNS-rendszergazdai jogosultságokat kapnak az Azure AD DS felügyelt tartományhoz, és létrehozhatnak és szerkeszthetnek egyéni DNS-rekordokat.
 
-Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgáló eszközeit, majd a DNS-konzollal kezelheti a rekordokat.
+Hibrid környezetben a helyszíni AD DS környezetekben konfigurált DNS-zónák és-rekordok nincsenek szinkronizálva az Azure AD DSval. Saját DNS-bejegyzések definiálásához és használatához hozzon létre rekordokat az Azure AD DS DNS-kiszolgálón, vagy használjon olyan feltételes továbbítókat, amelyek a környezetében meglévő DNS-kiszolgálókra mutatnak.
+
+Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgálói eszközöket, majd a DNS-konzollal kezelheti a rekordokat az Azure AD DSban.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
 * Aktív Azure-előfizetés.
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
@@ -43,12 +45,12 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="install-dns-server-tools"></a>DNS-kiszolgálói eszközök telepítése
 
-A DNS létrehozásához és módosításához telepítenie kell a DNS-kiszolgáló eszközeit. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
+Az Azure AD DS DNS-rekordjainak létrehozásához és módosításához telepítenie kell a DNS-kiszolgáló eszközeit. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
 
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
-1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő**lehetőséget.
+1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
 1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek lapján kattintson a **Tovább gombra**.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
 1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
 1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.contoso.com*, majd kattintson a **tovább**gombra.
 1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.

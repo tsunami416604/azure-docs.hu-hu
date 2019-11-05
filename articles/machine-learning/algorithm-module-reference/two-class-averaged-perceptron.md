@@ -1,24 +1,24 @@
 ---
 title: 'Döntési erdő regressziója: modul leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a kétosztályos átlagú Perceptron modult gépi tanulási modell létrehozásához az átlagos Perceptron algoritmus alapján.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használható a kétosztályos átlagú Perceptron modul a Azure Machine Learningban egy gépi tanulási modell létrehozásához az átlagos Perceptron algoritmus alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693632"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490364"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Kétosztályos átlagú Perceptron modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal gépi tanulási modellt hozhat létre az átlagos perceptron algoritmus alapján.  
   
@@ -52,13 +52,13 @@ Az egyszerűbb perceptron modellek a lineárisan elválasztható minták tanulá
   
     -   Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](train-model.md) modult.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
 + Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett funkciók súlyozását, kattintson a jobb gombbal a [vonat modell](./train-model.md)kimenetére.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

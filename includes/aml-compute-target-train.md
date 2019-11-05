@@ -9,21 +9,22 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 1b62d4b2ac1bb69e2270c3202d29eb595df7aac4
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.openlocfilehash: aa1120db5451583153928bd2cbc383a46781a267
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806029"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489570"
 ---
-**Tárolók is felhasználható egy betanítási feladat a következő számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
+A **számítási célok az egyik betanítási feladatokból a következőre használhatók**. Ha például egy távoli virtuális gépet csatlakoztat a munkaterülethez, újra felhasználhatja azt több feladathoz is.
 
-|Képzési &nbsp;célok| GPU-támogatással |[Automatizált gépi tanulás](../articles/machine-learning/service/concept-automated-ml.md) | [Gépi Tanulási folyamatok](../articles/machine-learning/service/concept-ml-pipelines.md) | [Vizuális felhasználói felületet](../articles/machine-learning/service/ui-concept-visual-interface.md)
+|&nbsp;célok betanítása| GPU-támogatás |[Automatikus ML](../articles/machine-learning/service/concept-automated-ml.md) | [ML-folyamatok](../articles/machine-learning/service/concept-ml-pipelines.md) | [Azure Machine Learning Designer](../articles/machine-learning/service/concept-designer.md)
 |----|:----:|:----:|:----:|:----:|
-|[Helyi számítógép](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| Talán | igen | &nbsp; | &nbsp; |
-|[Az Azure Machine Learning Compute](../articles/machine-learning/service/how-to-set-up-training-targets.md#amlcompute)| igen | Igen & <br/>hiperparaméter&nbsp;hangolása | igen | igen |
-|[Távoli virtuális Gépen](../articles/machine-learning/service/how-to-set-up-training-targets.md#vm) |igen | Igen & <br/>hiperparaméter finomhangolása | igen | &nbsp; |
+|[Helyi számítógép](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| talán | igen | &nbsp; | &nbsp; |
+|[Azure Machine Learning számítási példány](../articles/machine-learning/service/concept-compute-instance.md)| igen | | igen |  |
+|[Számítási fürt Azure Machine Learning](../articles/machine-learning/service/how-to-set-up-training-targets.md#amlcompute)| igen | Igen & <br/>hiperparaméter&nbsp;finomhangolása | igen | igen |
+|[Távoli virtuális gép](../articles/machine-learning/service/how-to-set-up-training-targets.md#vm) |igen | Igen & <br/>hiperparaméter finomhangolása | igen | &nbsp; |
 |[Azure&nbsp;Databricks](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#databricks)| &nbsp; | igen | igen | &nbsp; |
-|[Az Azure Data Lake Analytics](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | igen | &nbsp; |
-|[Az Azure HDInsight](../articles/machine-learning/service/how-to-set-up-training-targets.md#hdinsight)| &nbsp; | &nbsp; | igen | &nbsp; |
+|[Azure Data Lake Analytics](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | igen | &nbsp; |
+|[Azure-HDInsight](../articles/machine-learning/service/how-to-set-up-training-targets.md#hdinsight)| &nbsp; | &nbsp; | igen | &nbsp; |
 |[Azure Batch](../articles/machine-learning/service/how-to-set-up-training-targets.md#azbatch)| &nbsp; | &nbsp; | igen | &nbsp; |

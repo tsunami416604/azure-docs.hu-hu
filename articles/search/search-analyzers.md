@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 67ee2790cbf0f9e147222c5cf3ea4448362d9f87
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791214"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496498"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
@@ -312,7 +312,7 @@ Hívja meg az [analizátort](https://docs.microsoft.com/dotnet/api/microsoft.azu
 
 Ha testreszabásra vagy konfigurálásra van szükség, hozzá kell adnia egy Analyzer-szerkezetet egy indexhez. A Definiálás után hozzáadhatja a mező definícióját az előző példában bemutatott módon.
 
-Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {
@@ -334,7 +334,7 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Tekintse át a [teljes szöveges keresés az Azure Cognitive Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
 
@@ -344,7 +344,7 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 
 + [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

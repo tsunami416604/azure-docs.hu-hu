@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: yexu
-ms.openlocfilehash: b330c6010ddb5401dbf9753c2ea91bfeedf35c3b
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 22ff4adfa3cbb8ead500e817620b9236fe32ed0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020069"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490870"
 ---
-# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: Adatok másolása az Adatok másolása eszközzel
+# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -31,13 +31,18 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
-1. Kattintson az **Erőforrás létrehozása** elemre a bal oldali menüben, majd az **Analitika**, végül a **Data Factory** elemre. 
-   
-   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
+
+    ![Erőforrás létrehozása a Azure Portal menüből](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
+
+1. Válassza az **elemzés**lehetőséget, majd válassza a **Data Factory**lehetőséget.
+
+   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
  
    Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a következő hibaüzenetet kapja, módosítsa az adat-előállító nevét (például a **&lt;sajátneve&gt;ADFTutorialDataFactory** értékre), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
@@ -87,7 +92,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
    a. A **Tallózás** gombra kattintva keresse meg a **adftutorial/input** mappát, válassza ki az **EMP. txt** fájlt, majd kattintson a **kiválasztás**elemre. 
 
-   d. A **bináris másolás** jelölőnégyzet bejelölésével másolja a fájlt a következőre, majd kattintson a **tovább**gombra. 
+   d. A **bináris másolás** jelölőnégyzet bejelölésével másolja a fájlt a **következőre**, majd kattintson a Tovább gombra. 
 
    ![„A bemeneti fájl vagy mappa kiválasztása” lap](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 
@@ -106,7 +111,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
     ![„Üzembe helyezés kész” lap](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Az alkalmazás ekkor átvált a **Monitorozás** lapra. Ezen a lapon látható a folyamat állapota. A lista frissítéséhez kattintson a **Frissítés** gombra. 
+1. Az alkalmazás a **figyelő** lapra vált. Ezen a lapon látható a folyamat állapota. a lista frissítéséhez kattintson a **frissítés** gombra. 
     
 1. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. A folyamathoz egyetlen **Másolás** típusú tevékenység tartozik. 
     

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Környezetfüggő adat szerepkörökkel – LUIS'
+title: 'Oktatóanyag: környezetfüggő adatkezelési szerepkörök – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Kapcsolódó adat keresése a kontextus alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308055"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488741"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: Kontextussal kapcsolatos adatok kinyerése a teljes tartalomból
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: a kontextussal kapcsolatos adatok kinyerése a teljes tartalomból
 
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Például egy forrás-és célhely az egyik városból a másikba történő átvitelhez. Mindkét adathoz szükség lehet, és egymáshoz kapcsolódnak.  
 
 A szerepkörök bármely előre elkészített vagy egyéni entitás típussal használhatók, és a példaként használt hosszúságú kimondott szöveg és mintákban is használhatók. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -36,7 +38,7 @@ A szerepkörök bármely előre elkészített vagy egyéni entitás típussal ha
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="related-data"></a>Kapcsolódó adatok
+## <a name="related-data"></a>Kapcsolódó adat
 
 Ez az alkalmazás határozza meg, hogy a rendszer hol helyezi át az alkalmazottat a forrás városból a célhelyre. Egy GeographyV2 előre összeépített entitást használ a városok nevének azonosítására, és szerepkörök használatával határozza meg a hely típusát (forrás és cél) a teljes értéken belül.
 
@@ -75,7 +77,7 @@ A kinyerni kívánt entitások esetében egy szerepkört kell használni:
     |Steve Standish átvitele San Diegoból a Bellevue felé |
     |a Kansas Cityből emelt Tanner Thompson és a Chicago felé irányuló váltás|
 
-    [![A LUIS képernyőképe új hosszúságú kimondott szöveg a MoveEmployee szándékban](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    [![a LUIS új hosszúságú kimondott szöveg a MoveEmployee szándékban](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Előre összeépített entitás geographyV2 hozzáadása
 
@@ -83,12 +85,12 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
 
 1. Válassza ki az **entitásokat** a bal oldali navigációs sávon.
 
-1. Válassza az **előre elkészített entitás hozzáadása**lehetőséget `geo` , majd a keresési sávban válassza az előre elkészített entitások szűrése lehetőséget. 
+1. Válassza az **előre elkészített entitás hozzáadása**lehetőséget, majd a keresési sávban a `geo` gombra kattintva szűrheti az előre elkészített entitásokat. 
 
     ![Előre elkészített geographyV2-entitás hozzáadása az alkalmazáshoz](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Jelölje be a jelölőnégyzetet, majd válassza a **kész**lehetőséget.
 1. Az **entitások** listában válassza ki a **geographyV2** az új entitás megnyitásához. 
-1. Vegyen fel két `Origin`szerepkört `Destination`, és. 
+1. Vegyen fel két szerepkört, `Origin`és `Destination`. 
 
     ![Szerepkörök hozzáadása előre felépített entitáshoz](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. A bal oldali navigációs sávon válassza a **leképezések** lehetőséget, majd válassza ki a **MoveEmployeeToCity** szándékát. Figyelje meg, hogy a város neve az előre elkészített entitás **geographyV2**van megjelölve.
@@ -113,7 +115,7 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please move Carl Chamerlin from Tampa to Portland`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. Ez a Kimondás nem ugyanaz, mint a címkézett hosszúságú kimondott szöveg, ezért jó teszt, és vissza kell térnie `MoveEmployee` a kinyert entitás szándékával.
+1. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please move Carl Chamerlin from Tampa to Portland`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. Ez a Kimondás nem ugyanaz, mint a címkével ellátott hosszúságú kimondott szöveg, ezért ez jó teszt, és a kinyert entitás `MoveEmployee` szándékát kell visszaadnia.
 
     ```json
     {

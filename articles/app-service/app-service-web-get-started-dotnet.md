@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240940"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471553"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -39,8 +39,8 @@ Az oktatóanyag elvégzéséhez telepítse a <a href="https://www.visualstudio.c
 
 Ha már telepítette a Visual Studio 2019-et:
 
-- A**frissítések keresése**lehetőség **kiválasztásával** > telepítse a legújabb frissítéseket a Visual Studióban.
-- A számítási feladat hozzáadásához **válassza az eszközök** > **beolvasása eszközök és szolgáltatások**lehetőséget.
+- Telepítse a legújabb frissítéseket a Visual Studióban a **súgó** > **frissítések keresése**lehetőség kiválasztásával.
+- A számítási feladatok hozzáadásához **válassza az eszközök > ** **eszközök és szolgáltatások beolvasása**lehetőséget.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -95,12 +95,12 @@ Hozzon létre egy ASP.NET Core webalkalmazást a következő lépések végrehaj
    | Beállítás | Ajánlott érték | Leírás |
    |-|-|-|
    |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-   | Location | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-   | Size | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
+   | Földrajzi egység | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+   | Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
    ![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 
-1. A **név**mezőben adjon meg egy `a-z`egyedi nevet, amely csak az érvényes karaktereket `A-Z` `0-9`tartalmazza:,, és `-`. Elfogadhatja az automatikusan létrehozott egyedi nevet is. A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
+1. A **név**mezőben adjon meg egy egyedi nevet, amely csak az érvényes karaktereket tartalmazza `a-z`, `A-Z`, `0-9`és `-`. Elfogadhatja az automatikusan létrehozott egyedi nevet is. A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
 
    ![Az alkalmazás nevének konfigurálása](./media/app-service-web-get-started-dotnet/web-app-name-vs2019.png)
 
@@ -110,7 +110,7 @@ Miután a varázsló befejeződött, közzéteszi az ASP.NET Core-webalkalmazás
 
 ![Közzétett ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
-A (z) **app Service új lap létrehozása** lapon megadott alkalmazásnév URL-előtagként lesz megadva a ( `http://<app_name>.azurewebsites.net`z) formátumban.
+A **app Service új oldal létrehozása** lapon megadott alkalmazásnév URL-előtagként van megadva a (z) `http://<app_name>.azurewebsites.net`formátumban.
 
 **Gratulálunk!** A ASP.NET Core webalkalmazása Azure App Serviceon fut.
 
@@ -139,17 +139,19 @@ Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmaz�
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-1. Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és felügyelje a létrehozott webalkalmazást.
+A webalkalmazás kezeléséhez lépjen a [Azure Portalra](https://portal.azure.com), és keresse meg, majd válassza a **app Services**lehetőséget.
 
-1. A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
+![App Services kiválasztása](./media/app-service-web-get-started-dotnet/app-services.png)
 
-   ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
+A **app Services** lapon válassza ki a webalkalmazás nevét.
 
-   Megtekintheti a webalkalmazás Áttekintés oldalát. Itt olyan alapszintű felügyeletet hajthat végre, mint a Tallózás, a Leállítás, az indítás, az újraindítás és a törlés.
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
 
-   ![App Service a Azure Portal](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+Megtekintheti a webalkalmazás Áttekintés oldalát. Itt olyan alapszintű felügyeletet hajthat végre, mint a Tallózás, a Leállítás, az indítás, az újraindítás és a törlés.
 
-   A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat.
+![App Service a Azure Portal](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+
+A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat.
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

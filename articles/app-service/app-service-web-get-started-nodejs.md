@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433205"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471460"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban 
 
@@ -41,9 +41,9 @@ Miután telepítette a bővítményt, jelentkezzen be az Azure-fiókjába. Az **
 
 ![Bejelentkezés az Azure-ba](containers/media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Hibakeresés
+### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. A `HTTP_PROXY` és a `HTTPS_PROXY` környezeti változókat a `export` használatával konfigurálhatja a terminálban található proxy adataival.
+Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. A `export`használatával konfigurálhatja a `HTTP_PROXY` és `HTTPS_PROXY` környezeti változókat a terminálon a proxy adataival.
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -70,15 +70,15 @@ Ezután hozzon létre egy Node. js-alkalmazást, amely üzembe helyezhető a fel
 
 ### <a name="scaffold-a-new-application-with-the-express-generator"></a>Új alkalmazás készítése az expressz generátorral
 
-Az [Express](https://www.expressjs.com) egy népszerű keretrendszer Node. js-alkalmazások létrehozásához és futtatásához. Az [Express Generator](https://expressjs.com/en/starter/generator.html) Tool használatával új expressz alkalmazást készíthet (létrehozhatja). Az expressz generátor NPM-modulként van elküldve, és közvetlenül (telepítés nélkül) futtatható a NPM parancssori eszköz használatával `npx`.
+Az [Express](https://www.expressjs.com) egy népszerű keretrendszer Node. js-alkalmazások létrehozásához és futtatásához. Az [Express Generator](https://expressjs.com/en/starter/generator.html) Tool használatával új expressz alkalmazást készíthet (létrehozhatja). Az expressz generátor NPM-modulként van elküldve, és közvetlenül (telepítés nélkül) futtatható a NPM parancssori eszköz `npx`használatával.
 
 ```bash
 npx express-generator myExpressApp --view pug --git
 ```
 
-A @no__t 0 paraméterrel megadhatja, hogy a generátor a [mopsz](https://pugjs.org/api/getting-started.html) -sablon motorját használja (korábbi nevén `jade`), és hozzon létre egy `.gitignore` fájlt.
+A `--view pug --git` paraméterek közlik a létrehozóval, hogy a [mopsz](https://pugjs.org/api/getting-started.html) -sablon motorját (korábbi nevén `jade`) használja, és egy `.gitignore` fájlt hozzon létre.
 
-Az alkalmazás összes függőségének telepítéséhez nyissa meg az új mappát, és futtassa a `npm install` parancsot.
+Az alkalmazás összes függőségének telepítéséhez nyissa meg az új mappát, és futtassa a `npm install`.
 
 ```bash
 cd myExpressApp
@@ -87,13 +87,13 @@ npm install
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indítsa el az alkalmazást a `npm start` paranccsal, hogy elindítsa a kiszolgálót.
+Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indítsa el az alkalmazást a `npm start` parancs használatával a kiszolgáló indításához.
 
 ```bash
 npm start
 ```
 
-Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000](http://localhost:3000)címre, ahol a következőhöz hasonlónak kell megjelennie:
+Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000hoz ](http://localhost:3000), ahol a következőhöz hasonlónak kell megjelennie:
 
 ![Expressz alkalmazás futtatása](containers/media/quickstart-nodejs/express.png)
 
@@ -124,13 +124,13 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
 
     - Linux: válassza az **új Webalkalmazás létrehozása**lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**.
+    - Windows: válassza az **új Webalkalmazás létrehozása** lehetőséget, és válassza a **speciális** lehetőséget.
 
 1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az ENTER billentyűt. Az alkalmazás nevének érvényes karaktereinek neve: "a-z", "0-9" és "-".
 
 1. A Linux megcélzása esetén válasszon egy Node. js-verziót, ha a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
-1. Ha a Windows rendszert a *speciális** beállítással célozza meg, kövesse a további utasításokat:
+1. Ha a Windowst a **speciális** beállítással célozza meg, kövesse a további utasításokat:
     1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét.
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
     1. Válasszon ki egy meglévő App Service csomagot, vagy hozzon létre egy újat. Új csomag létrehozásakor kiválaszthat egy díjszabási szintet.
@@ -139,7 +139,7 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 1. Az összes kérésre való válaszadás után az értesítési csatorna az alkalmazáshoz létrehozott Azure-erőforrásokat jeleníti meg.
 
-1. Válassza az **Igen** lehetőséget, ha a rendszer kéri, hogy frissítse a konfigurációt `npm install` futtatására a célkiszolgálón. Ezután üzembe helyezi az alkalmazást.
+1. Válassza az **Igen** lehetőséget, ha a rendszer kéri, hogy frissítse a konfigurációt `npm install` futtatásához a célkiszolgálón. Ezután üzembe helyezi az alkalmazást.
 
     ![Konfigurált üzemelő példány](containers/media/quickstart-nodejs/server-build.png)
 
@@ -148,13 +148,13 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
     ![Konfigurált üzemelő példány](containers/media/quickstart-nodejs/save-configuration.png)
 
 > [!TIP]
-> Győződjön meg arról, hogy az alkalmazás figyeli a PORT környezeti változója által biztosított portot: `process.env.PORT`.
+> Győződjön meg arról, hogy az alkalmazás figyeli a PORT környezeti változó által biztosított portot: `process.env.PORT`.
 
 ### <a name="browse-the-app-in-azure"></a>Az alkalmazás tallózása az Azure-ban
 
 Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallózás webhely** lehetőséget a frissen telepített webalkalmazás megtekintéséhez.
 
-### <a name="troubleshooting"></a>Hibakeresés
+### <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."** , akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
 
@@ -167,7 +167,7 @@ Az alkalmazás módosításait ugyanazzal a folyamattal telepítheti, és a megl
 
 ## <a name="viewing-logs"></a>Naplók megtekintése
 
-Ebből a szakaszból megtudhatja, hogyan tekintheti meg (vagy "farok") a naplókat a futó App Service alkalmazásból. Az alkalmazásban az `console.log` meghívása a Visual Studio Code kimenet ablakában jelenik meg.
+Ebből a szakaszból megtudhatja, hogyan tekintheti meg (vagy "farok") a naplókat a futó App Service alkalmazásból. Az alkalmazásban `console.log` összes hívás megjelenik a Visual Studio Code kimenet ablakában.
 
 Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **folyamatos átviteli naplók megtekintése**lehetőséget.
 
@@ -189,7 +189,7 @@ Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatla
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475928"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
-Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül az Ön számára biztosít privát és biztonságos szolgáltatásokat. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás lehet egy Azure-szolgáltatás, például az Azure Storage, az SQL stb. vagy a saját [privát kapcsolati szolgáltatása](private-link-service-overview.md).
+Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül az Ön számára biztosít privát és biztonságos szolgáltatásokat. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás olyan Azure-szolgáltatás lehet, mint például az Azure Storage, az Azure Cosmos DB, az SQL vagy a saját [privát kapcsolati szolgáltatása](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Magánhálózati végpont tulajdonságai 
  A privát végpontok a következő tulajdonságokat határozzák meg: 
@@ -24,7 +24,7 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-k
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Név    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Name (Név)    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
@@ -57,7 +57,7 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |**Azure SQL Data Warehouse** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Tábla (tábla, table_secondary)<BR> Üzenetsor (Üzenetsor, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)       |
- 
+|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, Table|
  
 ## <a name="network-security-of-private-endpoints"></a>Privát végpontok hálózati biztonsága 
 Ha privát végpontokat használ az Azure-szolgáltatásokhoz, a forgalom egy adott privát kapcsolati erőforráshoz van védve. A platform egy hozzáférés-vezérléssel ellenőrzi, hogy a hálózati kapcsolatok csak a megadott privát kapcsolati erőforrást érik-e el. Ha további erőforrásokat szeretne elérni ugyanazon az Azure-szolgáltatáson belül, további privát végpontokra van szükség. 
@@ -107,9 +107,12 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 |Storage-fiók (Microsoft. Storage/storageAccounts)   |    Fájl (fájl, file_secondary)      |    privatelink.file.core.windows.net      |
 |Storage-fiók (Microsoft. Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
 |Data Lake fájlrendszer Gen2 (Microsoft. Storage/storageAccounts)  |  Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tábla|privatelink.table.cosmos.azure.com|
  
-
 Az Azure egy kanonikus DNS-rekordot (CNAME) hoz létre a nyilvános DNS-ben, hogy átirányítsa a felbontást a javasolt tartomány nevére. A felbontás felülbírálható a privát végpontok magánhálózati IP-címével. 
  
 Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyilvános DNS-sel próbál feloldani, a DNS-kiszolgáló most feloldja a saját végpontokat. A folyamat nem befolyásolja az alkalmazásait. 
@@ -123,12 +126,13 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 |---------|---------|---------|
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához        |
 |  A privát végpontokkal rendelkező Virtual Network csak nem támogatottak   |   Ha a privát végpontokhoz való csatlakozás a Virtual Network más számítási feladatok nélkül nem támogatott.       | Egyetlen virtuális gép üzembe helyezése a Virtual Network a kapcsolat engedélyezéséhez |
-|A speciális számítási feladatok nem férnek hozzá privát végpontokhoz    |   A virtuális hálózatba központilag telepített következő szolgáltatások nem férhetnek hozzá privát végpontokat használó privát kapcsolati erőforrásokhoz:<br>App Service-csomag</br>Azure Container Instance</br>Azure NetApp Files</br>Azure-beli dedikált HSM<br>       |   Az előzetes verzióban nem érhető el mérséklés.       |
+|A speciális számítási feladatok nem férnek hozzá privát végpontokhoz    |   A virtuális hálózatba központilag telepített következő szolgáltatások nem férhetnek hozzá privát végpontokat használó privát kapcsolati erőforrásokhoz:<br>App Service-csomag</br>Azure Container Instance</br>Azure NetApp Files</br>Azure Dedicated HSM<br>       |   Az előzetes verzióban nem érhető el mérséklés.       |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
 - [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
 - [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)
 - [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)

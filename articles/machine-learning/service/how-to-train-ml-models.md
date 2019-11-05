@@ -11,14 +11,15 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 087e1cd84aa182a0aae1bef6ba3dd38f369d5189
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb3b9504abcd453977d63a9bfccf77a33da6455a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755959"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489467"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 A Azure Machine Learning segítségével könnyedén elküldheti a betanítási szkriptet [különféle számítási célokba](how-to-set-up-training-targets.md#compute-targets-for-training)a [RunConfiguration objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és a [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális szabályozást biztosít.
 
@@ -30,7 +31,7 @@ Miután létrehozta a [munkaterületet](concept-workspace.md) , és beállított
 1. Hozzon létre egy [távoli számítási célt](how-to-set-up-training-targets.md) (vegye figyelembe, hogy a helyi számítógépet számítási célként is használhatja)
 2. [Betanítási adatok](how-to-access-data.md) feltöltése az adattárba (opcionális)
 3. A [betanítási parancsfájl](tutorial-train-models-with-aml.md#create-a-training-script) létrehozása
-4. @No__t_0 objektum létrehozása
+4. `Estimator` objektum létrehozása
 5. A kalkulátor beküldése a munkaterület alá tartozó kísérleti objektumra
 
 Ez a cikk az 4-5. lépésre koncentrál. Az 1-3-as lépéseknél tekintse meg a [Train a Model oktatóanyagot](tutorial-train-models-with-aml.md) példaként.
@@ -59,9 +60,9 @@ Ez a kódrészlet a következő paramétereket adja meg a `Estimator` konstrukto
 Paraméter | Leírás
 --|--
 `source_directory`| A betanítási feladatokhoz szükséges összes kódot tartalmazó helyi könyvtár. Ezt a mappát a rendszer átmásolja a helyi gépről a távoli számításba.
-`script_params`| A szótár adja meg a betanítási parancsfájlnak `entry_script` `<command-line argument, value>` pár formájában átadandó parancssori argumentumokat. A `script_params`ban található részletes jelző megadásához használja a `<command-line argument, "">`.
+`script_params`| A szótár adja meg a betanítási parancsfájlnak `entry_script``<command-line argument, value>` pár formájában átadandó parancssori argumentumokat. A `script_params`ban található részletes jelző megadásához használja a `<command-line argument, "">`.
 `compute_target`| Távoli számítási cél, amelyet a képzési parancsfájl fog futni, ebben az esetben egy Azure Machine Learning számítási ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)-) fürt. (Vegye figyelembe, hogy bár a AmlCompute-fürt a leggyakrabban használt cél, más számítási célpontok is kiválaszthatók, például az Azure-beli virtuális gépek vagy akár a helyi számítógép is.)
-`entry_script`| A távoli számításon futtatandó betanítási szkript filepath (`source_directory` képest). Ez a fájl és az attól függő további fájlok a mappában találhatók.
+`entry_script`| A távoli számításon futtatandó betanítási szkript filepath (`source_directory`képest). Ez a fájl és az attól függő további fájlok a mappában találhatók.
 `conda_packages`| Azoknak a Python-csomagoknak a listája, amelyeket a betanítási szkriptnek szüksége van a Conda-on keresztül.  
 
 A konstruktor egy másik, `pip_packages` nevű paraméterrel rendelkezik, amelyet minden szükséges pip-csomaghoz használhat.
@@ -138,7 +139,7 @@ A betanítási modellekhez tartozó jegyzetfüzetek mélyreható tanulási keret
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
 * [PyTorch-modellek betanítása](how-to-train-pytorch.md)

@@ -1,5 +1,5 @@
 ---
-title: 'A képbesorolás oktatóanyaga: Modellek üzembe helyezése'
+title: 'Képek besorolása oktatóanyag: modellek üzembe helyezése'
 titleSuffix: Azure Machine Learning
 description: Ez az oktatóanyag bemutatja, hogyan használhatók a Azure Machine Learning egy képbesorolási modell üzembe helyezéséhez a scikit-Learn használatával egy Python Jupyter notebookon. Ez az oktatóanyag a két részből álló sorozat második része.
 services: machine-learning
@@ -10,14 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 988f91d9ab644df4ecb375114abf4245440cbf13
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162523"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476143"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: Rendszerkép-besorolási modell üzembe helyezése Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: lemezkép besorolási modell üzembe helyezése Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az [előző oktatóanyagban](tutorial-train-models-with-aml.md) gépi tanulási modelleket tanított be, majd regisztrált egy modellt a felhőbeli munkaterületen.  
 
@@ -32,16 +33,22 @@ Az oktatóanyag ezen részében a Azure Machine Learning a következő feladatok
 > * A modell üzembe helyezése Container Instances.
 > * Tesztelje az üzembe helyezett modellt.
 
-A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és megismerésére. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információ: [a telepítés és a hol](how-to-deploy-and-where.md).
+A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és megismerésére. Méretezhető éles üzembe helyezés esetén érdemes lehet az Azure Kubernetes szolgáltatást használni. További információ: [a telepítés és a hol](how-to-deploy-and-where.md).
 
 >[!NOTE]
 > A cikkben ismertetett kód Azure Machine Learning SDK 1.0.41-verzióval lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jegyzetfüzet futtatásához először végezze el [a modell betanítását az oktatóanyagban (1. rész): Képbesorolási modell](tutorial-train-models-with-aml.md)betanítása.   Ezután nyissa meg az **oktatóanyagok/IMG-Classification-part2-Deploy. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
+A jegyzetfüzet futtatásához először végezze el a modell betanítását az [oktatóanyagban (1. rész): képbesorolási modell betanítása](tutorial-train-models-with-aml.md).   Ezután nyissa meg az **IMG-besorolás-part2-Deploy. ipynb** notebookot a klónozott **oktatóanyagok** mappában.
 
-Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy `matplotlib` telepítve `scikit-learn` van és a környezetében. 
+Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy telepítette `matplotlib` és `scikit-learn` a környezetében. 
+
+> [!Important]
+> A cikk többi része ugyanazt a tartalmat tartalmazza, mint amit a jegyzetfüzetben lát.  
+>
+> Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni.
+> Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
 
 ## <a name="start"></a>A környezet beállítása
 
@@ -220,7 +227,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Környezeti fájl létrehozása
 
-Ezután hozzon létre egy **myenv. YML**nevű környezeti fájlt, amely a parancsfájl összes csomag-függőségét megadja. Ezzel a fájllal meggyőződhet arról, hogy az összes függőség telepítve van-e a Docker-rendszerképben. Ehhez a modellhez `azureml-sdk`a következő igények szükségesek `scikit-learn` :
+Ezután hozzon létre egy **myenv. YML**nevű környezeti fájlt, amely a parancsfájl összes csomag-függőségét megadja. Ezzel a fájllal meggyőződhet arról, hogy az összes függőség telepítve van-e a Docker-rendszerképben. Ehhez a modellhez `scikit-learn` és `azureml-sdk`szükséges:
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies 
@@ -258,8 +265,8 @@ Az üzembe helyezés befejezésének becsült ideje **körülbelül hét – nyo
 Konfigurálja, majd helyezze üzembe a rendszerképet. Az alábbi kód a következő lépéseket hajtja végre:
 
 1. Hozzon létre egy rendszerképet a következő fájlok használatával:
-   * A pontozási fájl `score.py`.
-   * A környezeti fájl `myenv.yml`.
+   * A pontozási fájl, `score.py`.
+   * A környezeti fájl, `myenv.yml`.
    * A modell fájlja.
 1. Regisztrálja a rendszerképet a munkaterületen. 
 1. Küldje el a rendszerképet a Container Instances tárolóba.
@@ -379,7 +386,7 @@ service.delete()
 ## <a name="next-steps"></a>További lépések
 
 + További információ a Azure Machine Learning összes [üzembe helyezési lehetőségéről](how-to-deploy-and-where.md).
-+ Ismerje meg, hogyan [hozhat létre ügyfeleket a](how-to-consume-web-service.md)webszolgáltatáshoz.
++ Ismerje meg, hogyan [hozhat létre ügyfeleket a webszolgáltatáshoz](how-to-consume-web-service.md).
 +  [Előrejelzések készítése aszinkron módon nagy mennyiségű adattal](how-to-run-batch-predictions.md) .
 + A Azure Machine Learning-modellek monitorozása [Application Insightsokkal](how-to-enable-app-insights.md).
 + Próbálja ki az [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyagot. 

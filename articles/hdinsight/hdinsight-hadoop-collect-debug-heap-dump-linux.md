@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091501"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494849"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight
 
@@ -37,12 +37,12 @@ A térképhez is engedélyezheti a kupacbeli memóriaképeket, és csökkentheti
 
 A heap-memóriaképek a szolgáltatás indításakor a JVM (más néven a kiválasztások vagy paraméterek) átadásával engedélyezhetők. A legtöbb [Apache Hadoop](https://hadoop.apache.org/) szolgáltatás esetében módosíthatja a szolgáltatás elindításához használt rendszerhéj-parancsfájlt, hogy átadja ezeket a beállításokat.
 
-Minden parancsfájlban van egy  **\*exportálás \_, amely**a JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** szkriptben például a kezdetű `export HADOOP_NAMENODE_OPTS=` sor tartalmazza a NameNode szolgáltatás beállításait.
+Az egyes parancsfájlokban az **\*\_** exportálását választja, amely a JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** parancsfájlban például a `export HADOOP_NAMENODE_OPTS=` kezdetű sor tartalmazza a NameNode szolgáltatás beállításait.
 
 A leképezés és a folyamatok csökkentése némileg eltér, mivel ezek a műveletek a MapReduce szolgáltatás alárendelt folyamatai. A rendszer minden egyes térképet vagy csökkentési folyamatot egy gyermek tárolóban futtat, és két bejegyzést tartalmaz, amelyek tartalmazzák a JVM beállításait. Mindkettő a **mapred-site. xml fájlban**található:
 
-* **mapreduce.admin.map.child.java.opts**
-* **mapreduce.admin.reduce.child.java.opts**
+* **MapReduce. admin. map. Child. Java. dönt**
+* **MapReduce. admin. csökkentse. Child. Java. dönt**
 
 > [!NOTE]  
 > Javasoljuk, hogy az [Apache Ambari](https://ambari.apache.org/) használatával módosítsa a szkripteket és a mapred-site. xml-beállításokat is, mivel a Ambari kezeli a módosításokat a fürt csomópontjai között. Az [Apache Ambari használata](#using-apache-ambari) című szakaszban talál konkrét lépéseket.
@@ -53,7 +53,7 @@ A következő beállítás lehetővé teszi a halom memóriaképét, ha működ�
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-Az **+** azt jelzi, hogy ez a beállítás engedélyezve van. Ez a beállítás alapértelmezés szerint le van tiltva.
+A **+** jelzi, hogy ez a beállítás engedélyezve van. Ez a beállítás alapértelmezés szerint le van tiltva.
 
 > [!WARNING]  
 > A HDInsight alapértelmezés szerint nincsenek engedélyezve a Hadoop-szolgáltatásokhoz, mivel a memóriaképek nagy méretűek lehetnek. Ha engedélyezi őket a hibaelhárításhoz, ne felejtse el letiltani őket, ha a probléma reprodukálása és a memóriakép fájljainak gyűjtése megtörtént.
@@ -64,7 +64,7 @@ A memóriakép fájljának alapértelmezett helye az aktuális munkakönyvtár. 
 
     -XX:HeapDumpPath=/path
 
-A használatával `-XX:HeapDumpPath=/tmp` például a rendszer a/tmp könyvtárban tárolja a memóriaképeket.
+A `-XX:HeapDumpPath=/tmp` használata például a memóriaképek tárolását okozza a/tmp könyvtárban.
 
 ### <a name="scripts"></a>Scripts
 
@@ -75,13 +75,13 @@ A használatával `-XX:HeapDumpPath=/tmp` például a rendszer a/tmp könyvtárb
 > [!NOTE]  
 > Mivel Apache Hadoop egy elosztott rendszer, a használt parancsfájlokat a fürt összes olyan csomópontján el kell helyezni, amelyen a szolgáltatás fut.
 > 
-> A parancsfájlnak olyan helyen kell lennie, amelyet a szolgáltatás által futtatott fiók is elérhet, és meg kell adnia a végrehajtás engedélyeit. Előfordulhat például, hogy a `/usr/local/bin` és a használatával `chmod go+rx /usr/local/bin/filename.sh` szeretne parancsfájlokat tárolni az olvasási és végrehajtási engedélyek megadásához.
+> A parancsfájlnak olyan helyen kell lennie, amelyet a szolgáltatás által futtatott fiók is elérhet, és meg kell adnia a végrehajtás engedélyeit. Előfordulhat például, hogy a parancsfájlokat a `/usr/local/bin`ban szeretné tárolni, és a `chmod go+rx /usr/local/bin/filename.sh` használatával adja meg az olvasási és végrehajtási engedélyeket.
 
 ## <a name="using-apache-ambari"></a>Az Apache Ambari használata
 
 Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL- https://YOURCLUSTERNAME.azurehdinsight.net cím:.
+1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL-cím https://YOURCLUSTERNAME.azurehdinsight.net.
 
     Ha a rendszer kéri, végezzen hitelesítést a helyen a fürthöz tartozó HTTP-fióknév (alapértelmezett: rendszergazda) és a jelszó használatával.
 
@@ -96,7 +96,7 @@ Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi l�
 
     ![Apache Ambari-konfiguráció szűrt listája](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Keresse meg azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja meg az engedélyezni kívánt beállításokat.  **\* \_** Az alábbi ábrán `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` a **HADOOP\_NAMENODE:\_**
+4. Keresse meg a **\*\_** jelölje be azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja hozzá az engedélyezni kívánt beállításokat. Az alábbi képen a `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` a **HADOOP\_NAMENODE\_** a következő bejegyzést adta meg:
 
     ![Apache Ambari Hadoop-namenode – dönt](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

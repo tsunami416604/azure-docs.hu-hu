@@ -1,24 +1,24 @@
 ---
 title: 'Kétosztályos kibővített döntési fa: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a kétosztályos növelt döntési famodult egy gépi tanulási modell létrehozásához, amely a megnövelt döntési fák algoritmusán alapul.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning kétosztályos felerősítő döntési famodulját egy gépi tanulási modell létrehozásához, amely a megnövelt döntési fák algoritmusán alapul.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692635"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490176"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Kétosztályos növelt döntési fa modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy gépi tanulási modellt, amely a megnövelt döntési fák algoritmusán alapul. 
 
@@ -65,7 +65,7 @@ Ezt a modellt betaníthatja a [betanítási modell](././train-model.md)használa
     + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](./train-model.md) modult.  
   
    
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A modell képzésének befejezése után a jobb gombbal kattintson a [Train Model](./train-model.md) kimenetére az eredmények megtekintéséhez:
 
@@ -73,6 +73,6 @@ A modell képzésének befejezése után a jobb gombbal kattintson a [Train Mode
 + A felosztások részletezéséhez és az egyes csomópontok szabályainak megtekintéséhez kattintson az egyes faszerkezetekre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

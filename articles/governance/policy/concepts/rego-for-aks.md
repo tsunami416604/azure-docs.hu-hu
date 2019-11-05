@@ -3,20 +3,20 @@ title: Az Azure Kubernetes Service Azure Policy megismerése
 description: Megtudhatja, hogyan kezeli a Azure Policy a Rego és a nyílt házirend-ügynököt a fürtök Azure Kubernetes szolgáltatásban való kezeléséhez.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/24/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176321"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480894"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service Azure Policy megismerése
 
 A Azure Policy integrálható az [Azure Kubernetes szolgáltatással](../../../aks/intro-kubernetes.md) (ak), hogy központosított, konzisztens módon alkalmazza a fürtökön a kikényszerítéseket és a védelmet.
-A [forgalomirányító](https://github.com/open-policy-agent/gatekeeper)használatának kibővítésével egy [Open Policy Agent](https://www.openpolicyagent.org/) (OPA), Azure Policy lehetővé _teszi az Azure_ -erőforrások és az AK-fürtök megfelelőségi állapotának felügyeletét és jelentését egy helyről.
+Ha kiterjeszti a [forgalomirányító](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2-t, az [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) _beléptetési vezérlő webhooka_ , Azure Policy lehetővé teszi az Azure-erőforrások és az AK-fürtök megfelelőségi állapotának kezelését és jelentését egy helyről.
 
 > [!NOTE]
 > Az AK-hoz készült Azure Policy korlátozott előzetes verzióban érhető el, és csak a beépített szabályzat-definíciókat támogatja.
@@ -38,7 +38,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
   1. Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-  1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+  1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
      ![Szabályzat keresése az összes szolgáltatásban](../media/rego-for-aks/search-policy.png)
 
@@ -120,7 +120,7 @@ Mielőtt telepítené a bővítményt az AK-fürtben, telepítenie kell az előn
    ```
 
    > [!NOTE]
-   > Ha korábban már telepítette az _AK-előnézeti_ bővítményt, telepítse az összes frissítést a `az extension update --name aks-preview` parancs használatával.
+   > Ha korábban már telepítette az _AK-előnézeti_ bővítményt, telepítse a frissítéseket a `az extension update --name aks-preview` parancs használatával.
 
 #### <a name="installation-steps"></a>Telepítési lépések
 
@@ -162,7 +162,7 @@ A bővítmény 5 percenként meghívja a fürt teljes vizsgálatát. Miután ös
 
 ## <a name="policy-language"></a>Házirend nyelve
 
-Az AK kezelésének Azure Policy nyelvi szerkezete a meglévő szabályzatokat követi. A _EnforceRegoPolicy_ hatására a rendszer az AK-fürtök kezelésére szolgál, és _részletesen ismerteti_ az OPA és a forgalomirányító használatára vonatkozó tulajdonságokat. További részletekért és példákért tekintse meg a [EnforceRegoPolicy](effects.md#enforceregopolicy) hatást.
+Az AK kezelésének Azure Policy nyelvi szerkezete a meglévő szabályzatokat követi. A _EnforceRegoPolicy_ hatására a rendszer az AK-fürtök kezelésére szolgál, és az OPA és a forgalomirányító v2 használatára vonatkozó _részletes_ tulajdonságokat is felhasználja. További részletekért és példákért tekintse meg a [EnforceRegoPolicy](effects.md#enforceregopolicy) hatást.
 
 A _details. Policy_ tulajdonság részeként Azure Policy átadja egy Rego-házirend URI-ját a bővítménynek. A Rego az a nyelv, amelyet az OPA és a forgalomirányító támogat a Kubernetes-fürtre irányuló kérelem érvényesítéséhez vagy átváltoztatásához. A Kubernetes-kezelés meglévő szabványának támogatásával a Azure Policy lehetővé teszi a meglévő szabályok újbóli használatát, és azok párosítását Azure Policy egy egységes Felhőbeli megfelelőségi jelentéskészítési élmény érdekében. További információ: [What is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
@@ -182,6 +182,9 @@ A következő lépésekkel megkeresheti az ak-nak a Azure Portal használatával
 > Az AK-definíciók Azure Policyjának kiosztásakor a **hatókörnek** tartalmaznia kell az AK fürterőforrás-erőforrást.
 
 Másik lehetőségként használja a [házirend társítása – portál](../assign-policy-portal.md) rövid útmutatóját egy AK-szabályzat megkereséséhez és hozzárendeléséhez. Keressen egy Kubernetes házirend-definíciót a "naplózási virtuális gépek" minta helyett.
+
+> [!IMPORTANT]
+> A beépített szabályzatok a **Kubernetes szolgáltatásban** csak az AK-val használhatók.
 
 ## <a name="logging"></a>Naplózás
 
@@ -228,7 +231,30 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure Policy bővítmény által gyűjtött diagnosztikai adatok
+
+A Kubernetes Azure Policy-bővítménye korlátozott számú fürt diagnosztikai adatokat gyűjt. A diagnosztikai adat a szoftverrel és teljesítménnyel kapcsolatos létfontosságú technikai jellegű adat. A következő módokon használható:
+
+- Azure Policy bővítmény naprakészen tartása
+- Azure Policy-bővítmény biztonságos, megbízható, teljesítménybeli megőrzése
+- A bővítmény használatának összesített elemzésével Azure Policy kiegészítő bővítmények továbbfejlesztése
+
+A bővítmény által gyűjtött információk nem személyes adatok. A rendszer jelenleg a következő adatokat gyűjti össze:
+
+- Azure Policy bővítmény ügynökének verziója
+- Fürttípus
+- Fürt régiója
+- Fürterőforrás-csoport
+- Fürterőforrás-azonosító
+- Fürt-előfizetés azonosítója
+- Fürt operációs rendszer (példa: Linux)
+- Fürt városa (példa: Seattle)
+- Fürt állapota vagy tartománya (példa: Washington)
+- Fürt országa vagy régiója (példa: Egyesült Államok)
+- Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
+- Azure Policy bővítmény által nem telepített forgalomirányító-házirendek száma
+
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

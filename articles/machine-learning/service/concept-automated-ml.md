@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: nacharya1
-ms.author: nilesha
-ms.date: 06/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+author: cartacioS
+ms.author: sacartac
+ms.date: 11/04/2019
+ms.openlocfilehash: 5c8ce6a588fd630f69d8ffc682b611baba3afdd4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497578"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi az az automatizált gépi tanulás?
 
@@ -54,7 +53,9 @@ A **Azure Machine learning**használatával a következő lépésekkel megtervez
 
 1. **Konfigurálja a számítási célt a modell betanításához**, például a [helyi számítógép, a Azure Machine learning számítások, a távoli virtuális gépek vagy a Azure Databricks](how-to-set-up-training-targets.md).  Ismerje meg a [távoli erőforrások](how-to-auto-train-remote.md)automatizált képzését.
 
-1. **Konfigurálja az automatikus gépi tanulás paramétereit** , amelyek meghatározzák, hogy a különböző modellek, a hiperparaméter-beállítások, a speciális előfeldolgozási/featurization, valamint a legjobb modell meghatározásakor milyen mérőszámokat kell megvizsgálni.  Az automatikus betanítási kísérlet beállításait a [Azure Portal](how-to-create-portal-experiments.md), [a munkaterület kezdőlapja (előzetes verzió)](https://ml.azure.com)vagy [az SDK](how-to-configure-auto-train.md)használatával konfigurálhatja. 
+1. **Konfigurálja az automatikus gépi tanulás paramétereit** , amelyek meghatározzák, hogy a különböző modellek, a hiperparaméter-beállítások, a speciális előfeldolgozási/featurization, valamint a legjobb modell meghatározásakor milyen mérőszámokat kell megvizsgálni.  Megadhatja az automatikus betanítási kísérlet beállításait [Azure Machine learning Studióban](https://ml.azure.com)vagy [az SDK-val](how-to-configure-auto-train.md). 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 1. **A betanítási Futtatás elküldése.**
 
@@ -94,6 +95,8 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 ### <a name="advanced-preprocessing-optional-featurization"></a>Speciális előfeldolgozás: opcionális featurization
 
 További speciális előfeldolgozási és featurization is elérhetők, például a hiányzó értékek: imputálási, kódolás és átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess). A beállítás engedélyezése a következővel:
+
++ Azure Machine Learning Studio: az [alábbi lépésekkel](how-to-create-portal-experiments.md)kiválaszthatja a **featurization beállításainak megtekintése** a **konfigurációs Futtatás** szakaszban.
 
 + Python SDK: `"feauturization": auto' / 'off' / FeaturizationConfig` megadása a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -168,14 +171,14 @@ Az automatikus ML más Microsoft-megoldásokban is elérhető, például:
 |[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Gépi tanulási modellek meghívása közvetlenül Power BI (előzetes verzió).|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Új gépi tanulási modelleket hozhat létre SQL Server 2019 big data-fürtök adatain keresztül.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
 
 + Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása az Azure automatizált Machine learning](tutorial-auto-train-models.md)
 
 + Konfigurálja az automatikus betanítási kísérlet beállításait:
-  + A Azure Portal felületen vagy a munkaterület kezdőlapján (előzetes verzió) [kövesse az alábbi lépéseket](how-to-create-portal-experiments.md).
+  + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-create-portal-experiments.md).
   + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
 
 + Ismerje meg, hogyan [végezheti](how-to-auto-train-forecast.md)el az automatikus betanítást az idősorozat-adatkészletek használatával.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488463"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -41,7 +41,7 @@ Fejezze be az előző oktatóanyagokat:
 3. Ebben az oktatóanyagban bemutatjuk, hogyan replikálhat egyetlen virtuális gépet. Több VMware virtuális gép üzembe helyezésekor a [Deployment Planner eszközt](https://aka.ms/asr-deployment-planner)kell használnia. [További információ](site-recovery-deployment-planner.md) az eszközről.
 4. Ez az oktatóanyag számos lehetőséget használ, amelyeket érdemes másképpen végrehajtani:
     - Az oktatóanyag egy PETESEJT-sablont használ a konfigurációs kiszolgáló VMware virtuális gép létrehozásához. Ha ezt valamilyen okból nem tudja elvégezni, a konfigurációs kiszolgáló manuális beállításához kövesse az [alábbi utasításokat](physical-manage-configuration-server.md) .
-    - Ebben az oktatóanyagban Site Recovery automatikusan letölti és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, manuálisan is beállíthatja. [További információk](vmware-azure-deploy-configuration-server.md#configure-settings).
+    - Ebben az oktatóanyagban Site Recovery automatikusan letölti és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, manuálisan is beállíthatja. [Részletek](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 
@@ -60,9 +60,9 @@ Fejezze be az előző oktatóanyagokat:
 
 A forrás-környezetben egyetlen, magasan elérhető helyszíni gépre van szükség a helyszíni Site Recovery-összetevők üzemeltetéséhez:
 
-- **Konfigurációs kiszolgáló**: A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
-- **Folyamatkiszolgáló**: A folyamatkiszolgáló replikációs átjáróként üzemel. Replikációs adatkérést kap; a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és egy gyorsítótárbeli Storage-fiókba küldi az Azure-ban. A Process Server a mobilitási szolgáltatás ügynökét is telepíti a replikálni kívánt virtuális gépekre, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
-- **Fő célkiszolgáló**: A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
+- **Konfigurációs kiszolgáló**: a konfigurációs kiszolgáló koordinálja a helyszíni és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
+- **Folyamat kiszolgálója**: a Process Server replikációs átjáróként működik. Replikációs adatkérést kap; a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és egy gyorsítótárbeli Storage-fiókba küldi az Azure-ban. A Process Server a mobilitási szolgáltatás ügynökét is telepíti a replikálni kívánt virtuális gépekre, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
+- **Fő célkiszolgáló**: a fő célkiszolgáló kezeli a replikálási adatait az Azure-beli feladat-visszavétel során.
 
 
 Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helyszíni gépeken együtt települ. Alapértelmezés szerint a VMware vész-helyreállítás esetén a konfigurációs kiszolgálót egy magasan elérhető VMware virtuális gépként kell beállítani. Ehhez le kell töltenie egy előkészített Open Virtualization Application (PETESEJT) sablont, és importálnia kell a sablont a VMware-be a virtuális gép létrehozásához. 
@@ -158,7 +158,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és válassza a **Minden erőforrás** elemet.
+1. Nyissa meg az [Azure portált](https://portal.azure.com). Keresse meg és válassza ki **Recovery Services**tárolókat.
 2. Válassza ki a Recovery Services helyreállítási tárat (ebben az oktatóanyagban ez a **ContosoVMVault**).
 3. A replikációs szabályzat létrehozásához válassza a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** >  **+Replikációs szabályzat** elemet.
 4. A **Replikációs szabályzat létrehozása** területen adja meg a szabályzat nevét. Itt a **VMwareRepPolicy** nevet használjuk.
@@ -171,7 +171,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 - A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 - Alapértelmezés szerint a rendszer a feladat-visszavételhez is automatikusan létrehoz egy megfelelő szabályzatot. Ha például a replikációs szabályzat a **rep-policy**, a feladat-visszavételi szabályzat a **rep-policy-failback** lesz. Ezt a szabályzatot nem használja a rendszer, amíg nem indít el egy feladat-visszavételt az Azure-ból.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 Engedélyezze a virtuális gépek replikálását a következőképpen:
 

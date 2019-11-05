@@ -7,20 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255466"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472628"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
 Ha az Azure Kubernetes szolgáltatásban (ak) kíván hozzáférést biztosítani az alkalmazásaihoz, létrehozhat és használhat egy Azure Load Balancer. Az AK-on futó Load Balancer belső vagy külső terheléselosztóként is használható. A belső terheléselosztó csak az AK-fürttel azonos virtuális hálózaton futó alkalmazások számára teszi elérhetővé a Kubernetes szolgáltatást. A külső terheléselosztó egy vagy több nyilvános IP-címet kap a bejövő forgalom számára, és a nyilvános IP-címek használatával a Kubernetes szolgáltatás kívülről is elérhetővé válik.
 
-Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a rendszer az *alapszintű* SKU-t használja, amikor egy szolgáltatási jegyzékfájlt használ a TERHELÉSELOSZTÓ az AK-ban való létrehozásához. A *standard* SKU Load Balancer használata további funkciókat és funkciókat kínál, például nagyobb méretű háttérrendszer-készletet és Availability Zones. Fontos, hogy megértse a *standard* és az *alapszintű* terheléselosztó közötti különbségeket, mielőtt kiválasztja, hogy melyiket kívánja használni. Ha egy AK-fürtöt hoz létre, az adott fürthöz tartozó terheléselosztó SKU nem módosítható. Az *alapszintű* és a *standard* SKU-ról további információt az [Azure Load Balancer SKU-összehasonlítását][azure-lb-comparison]ismertető témakörben talál.
-
-Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat egy *szabványos* SKU-val rendelkező Azure Load Balancert az Azure Kubernetes Service (ak) használatával.
+Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a *standard* SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre. A *standard* SKU Load Balancer használata további funkciókat és funkciókat kínál, például nagyobb méretű háttérrendszer-készletet és Availability Zones. Fontos, hogy megértse a *standard* és az *alapszintű* terheléselosztó közötti különbségeket, mielőtt kiválasztja, hogy melyiket kívánja használni. Ha egy AK-fürtöt hoz létre, az adott fürthöz tartozó terheléselosztó SKU nem módosítható. Az *alapszintű* és a *standard* SKU-ról további információt az [Azure Load Balancer SKU-összehasonlítását][azure-lb-comparison]ismertető témakörben talál.
 
 Ez a cikk a Kubernetes és a Azure Load Balancer fogalmak alapszintű megismerését feltételezi. További információ: a [Kubernetes alapvető fogalmai az Azure Kubernetes Service-ben (ak)][kubernetes-concepts] és [Mi az Azure Load Balancer?][azure-lb]
 
@@ -31,10 +29,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Előzetes teendők
+Ez a cikk azt feltételezi, hogy van egy AK-fürt a *standard* SKU Azure Load Balancer. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Ha meglévő alhálózatot vagy erőforráscsoportot használ, a (z) alhálózati erőforrás-kezelőhöz a hálózati erőforrások kezeléséhez engedély szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
-
-Létre kell hoznia egy AK-fürtöt, amely a terheléselosztó SKU-jának *standard* értékre állítja az alapértelmezett *alapszintű*helyett.
+Ha meglévő alhálózatot vagy erőforráscsoportot használ, az AK-fürt egyszerű szolgáltatása a hálózati erőforrások kezeléséhez is szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -48,220 +45,11 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * A terheléselosztó SKU definiálása csak akkor hajtható végre, ha AK-fürtöt hoz létre. Egy AK-fürt létrehozása után nem módosíthatja a terheléselosztó SKU-t.
 * Egyetlen fürtben csak egy terheléselosztó SKU-t használhat.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="configure-the-load-balancer-to-be-internal"></a>A terheléselosztó belső beállítása
 
-Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create][az-group-create] paranccsal.
+Azt is beállíthatja, hogy a terheléselosztó belső legyen, és ne tegye közzé a nyilvános IP-címet. A terheléselosztó belsőként való konfigurálásához vegyen fel `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jegyzetként a *terheléselosztó* szolgáltatásba. [Itt][internal-lb-yaml]láthat egy példát a YAML-jegyzékre, valamint további részleteket is megtudhat a belső terheléselosztó használatával kapcsolatban.
 
-A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen létrejött:
-
-```json
-{
-  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
-  "location": "eastus",
-  "managedBy": null,
-  "name": "myResourceGroup",
-  "properties": {
-    "provisioningState": "Succeeded"
-  },
-  "tags": null,
-  "type": null
-}
-```
-
-## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
-Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a *standard* SKU-t a terheléselosztó számára, a fürtnek a *Load-Balancer-SKU* paramétert a *standard*értékre kell állítania. Ez a paraméter létrehoz egy Load balancert a *standard* SKU-val a fürt létrehozásakor. Amikor *terheléselosztó* szolgáltatást futtat a fürtön, a *standard* SKU Load Balancer konfigurációja frissül a szolgáltatás konfigurációjával. Az az [AK Create][az-aks-create] paranccsal hozzon létre egy *myAKSCluster*nevű AK-fürtöt.
-
-> [!NOTE]
-> A *Load-Balancer-SKU* tulajdonság csak akkor használható, ha a fürt létrejött. Egy AK-fürt létrehozása után nem módosíthatja a terheléselosztó SKU-t. Emellett egyetlen fürtben csak egyetlen típusú terheléselosztó SKU-t használhat.
-> 
-> Ha saját nyilvános IP-címeket szeretne használni, használja a *Load-Balancer-kimenő-* IP-címeket vagy a *Load-Balancer-kimenő-IP-előtag* paramétereket. Mindkét paraméter használható [a fürt frissítésekor](#optional---provide-your-own-public-ips-or-prefixes-for-egress)is.
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys
-```
-
-Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza.
-
-## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
-
-A Kubernetes-fürtök kezeléséhez a [kubectl][kubectl], a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shell használ, a `kubectl` már telepítve van. @No__t-0 helyi telepítéséhez használja az az [AK install-CLI][az-aks-install-cli] parancsot:
-
-```azurecli
-az aks install-cli
-```
-
-A `kubectl` konfigurálásához a Kubernetes-fürthöz való kapcsolódáshoz használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
-
-```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
-
-A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kubectl-get] parancsot a fürtcsomópontok listájának lekéréséhez.
-
-```azurecli-interactive
-kubectl get nodes
-```
-
-A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota *kész*:
-
-```
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.10
-```
-
-## <a name="verify-your-cluster-uses-the-standard-sku"></a>Ellenőrizze, hogy a fürt a *szabványos* SKU-t használja-e
-
-A fürt konfigurációjának megjelenítéséhez használja az az [AK show][az-aks-show] -t.
-
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster
-
-{
-  "aadProfile": null,
-  "addonProfiles": null,
-   ...
-   "networkProfile": {
-    "dnsServiceIp": "10.0.0.10",
-    "dockerBridgeCidr": "172.17.0.1/16",
-    "loadBalancerSku": "standard",
-    ...
-```
-
-Ellenőrizze, hogy a *loadBalancerSku* tulajdonság *szabványosként*jelenik-e meg.
-
-## <a name="use-the-load-balancer"></a>A terheléselosztó használata
-
-A terheléselosztó a fürtön való használatához hozzon létre egy szolgáltatási jegyzékfájlt a *terheléselosztó*szolgáltatás típusával. A terheléselosztó működésének megjelenítéséhez hozzon létre egy újabb jegyzékfájlt egy minta alkalmazással a fürtön való futtatáshoz. Ez a minta alkalmazás a terheléselosztó segítségével érhető el, és böngészőben megtekinthető.
-
-Hozzon létre egy `sample.yaml` nevű jegyzékfájlt az alábbi példában látható módon:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-back
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
-  template:
-    metadata:
-      labels:
-        app: azure-vote-back
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-back
-        image: redis
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 6379
-          name: redis
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-back
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: azure-vote-back
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-front
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
-  template:
-    metadata:
-      labels:
-        app: azure-vote-front
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-        env:
-        - name: REDIS
-          value: "azure-vote-back"
-```
-
-A fenti jegyzékfájl két üzemelő példányt konfigurál: *Azure-vote-elsőfékes* és *Azure-vote-back*. Ahhoz, hogy az *Azure-vote-elsőfékes* üzembe helyezést a terheléselosztó használatával lehessen elérhetővé tenni, hozzon létre egy `standard-lb.yaml` nevű jegyzékfájlt az alábbi példában látható módon:
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-front
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-vote-front
-```
-
-Az *Azure-vote* szolgáltatás a *terheléselosztó* típus használatával konfigurálja a TERHELÉSELOSZTÓ-t az AK-fürtön az *Azure-vote-elsőfékes* üzembe helyezéshez való kapcsolódáshoz.
-
-Telepítse a minta alkalmazást és a Load balancert a [kubectl alkalmazásával][kubectl-apply] , és adja meg a YAML-jegyzékfájlok nevét:
-
-```console
-kubectl apply -f sample.yaml
-kubectl apply -f standard-lb.yaml
-```
-
-A *standard* SKU Load Balancer már konfigurálva van a minta alkalmazás elérhetővé tételéhez. A Load Balancer nyilvános IP-címének megtekintéséhez tekintse meg az *Azure-vote-* [kubectl][kubectl-get] használatával kapcsolatos információkat. A terheléselosztó nyilvános IP-címe a *külső IP-* oszlopban látható. Előfordulhat, hogy az IP-cím a *\<pending @ no__t-2* értékről a tényleges külső IP-címére vált, az alábbi példában látható módon:
-
-```
-$ kubectl get service azure-vote-front
-
-NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
-```
-
-Nyissa meg a nyilvános IP-címet egy böngészőben, és ellenőrizze, hogy megjelenik-e a minta alkalmazás. A fenti példában a nyilvános IP-cím `52.179.23.131`.
-
-![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
-
-> [!NOTE]
-> Azt is beállíthatja, hogy a terheléselosztó belső legyen, és ne tegye közzé a nyilvános IP-címet. A terheléselosztó belsőként való konfigurálásához vegyen fel `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` megjegyzést a *terheléselosztó* szolgáltatásba. [Itt][internal-lb-yaml]láthat egy példát a YAML-jegyzékre, valamint további részleteket is megtudhat a belső terheléselosztó használatával kapcsolatban.
-
-## <a name="optional---scale-the-number-of-managed-public-ips"></a>Nem kötelező – a felügyelt nyilvános IP-címek számának méretezése
+## <a name="scale-the-number-of-managed-public-ips"></a>A felügyelt nyilvános IP-címek számának méretezése
 
 Ha egy *szabványos* SKU-Load balancert használ a felügyelt kimenő nyilvános IP-címekkel, amelyek alapértelmezés szerint jönnek létre, akkor a felügyelt kimenő nyilvános IP-címeket a *terheléselosztó – felügyelt-IP-Count* paraméter használatával méretezheti.
 
@@ -278,7 +66,7 @@ A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a
 
 A *terheléselosztás – felügyelt IP-Count* paraméterrel is beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor, ha hozzáfűzi a `--load-balancer-managed-outbound-ip-count` paramétert, és beállítja a kívánt értékre. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
 
-## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Opcionális – saját nyilvános IP-címek vagy előtagok megadása a kimenő forgalomhoz
+## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Saját nyilvános IP-címek vagy előtagok megadása a kimenő forgalomhoz
 
 *Standard* SKU Load Balancer használatakor az AK-fürt automatikusan létrehoz egy nyilvános IP-címet ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, és hozzárendeli a nyilvános IP-címet a *standard* SKU Load Balancerhez. Azt is megteheti, hogy a fürt létrehozási idején saját nyilvános IP-címet rendel hozzá, vagy frissítheti a meglévő fürt terheléselosztó-tulajdonságait.
 
@@ -336,7 +124,7 @@ Előfordulhat, hogy saját IP-címeket vagy IP-előtagokat kíván létrehozni a
 
 *A* *Load-Balancer-kimenő-IPS* paraméterrel hozzon létre egy új fürtöt a nyilvános IP-címekkel az elején.
 
-```
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -349,7 +137,7 @@ az aks create \
 
 Használja az az *AK Create* parancsot a *Load-Balancer-kimenő-IP-előtag* paraméterrel egy új fürt létrehozásához a nyilvános IP-előtagokkal az elején.
 
-```
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -360,16 +148,7 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>A standard SKU Load Balancer konfigurációjának törlése
-
-A minta alkalmazás és a terheléselosztó konfigurációjának eltávolításához használja a [kubectl delete][kubectl-delete]parancsot:
-
-```console
-kubectl delete -f sample.yaml
-kubectl delete -f standard-lb.yaml
-```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 
@@ -408,4 +187,3 @@ További információ a Kubernetes Services szolgáltatásról a [Kubernetes Ser
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-

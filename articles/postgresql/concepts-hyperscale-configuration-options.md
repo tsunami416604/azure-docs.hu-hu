@@ -1,44 +1,56 @@
 ---
-title: Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) Teljesítménybeállítások
-description: Egy nagy kapacitású (Citus) kiszolgálócsoportot, beleértve a csomópont számítási, tárolási és régiók beállítások.
+title: Azure Database for PostgreSQL – nagy kapacitású (Citus) teljesítményének beállításai
+description: Nagy kapacitású-(Citus-) kiszolgálócsoport beállításai, beleértve a csomópontok számítását, tárolását és régióit.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: e8c1c2e51ca14ae9b17f0d7efb20552cdd55139b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/17/2019
+ms.openlocfilehash: 2b848827d3d2017e5e787989553c0bf1e26d48e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077290"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482630"
 ---
-# <a name="azure-database-for-postgresql--hyperscale-citus-preview-performance-options"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) Teljesítménybeállítások
+# <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) teljesítményének beállításai
 
 ## <a name="compute-and-storage"></a>Számítás és tárolás
  
-Választhat a számítási és tárolási beállításai egymástól függetlenül feldolgozó csomópontokat, a koordinátor-csomópont egy nagy kapacitású (Citus) kiszolgáló csoportban.  A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. A tároló mérete üzembe helyezés a koordinátor és a feldolgozó csomópontok a nagy kapacitású (Citus) kiszolgáló csoportban a rendelkezésre álló kapacitás hivatkozik. A storage magában foglalja az adatbázisfájlokat, az ideiglenes fájlok, a tranzakciós naplók és a az Postgres server-naplók. A teljes összeg tárhelyet is üzembe helyezi a rendelkezésre álló i/o-kapacitás minden feldolgozó és koordináló csomóponton határozza meg.
+A számítási és tárolási beállításokat a munkavégző csomópontok és a nagy kapacitású-(Citus-) kiszolgálócsoport koordinátor csomópontja egymástól függetlenül is kiválaszthatja.  A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. A kiépítés tárolási mérete a nagy kapacitású-(Citus-) kiszolgálócsoport koordinátora és munkavégző csomópontjai számára elérhető kapacitásra utal. A tároló tartalmazza az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a postgres-kiszolgáló naplóit. A kiépített tárterület teljes mennyisége határozza meg az egyes feldolgozók és a koordinátorok csomópontja számára elérhető I/O-kapacitást is.
  
-|                       | Munkavégző csomópont           | Koordinátor-csomópont      |
+|                       | Munkavégző csomópont           | Koordinátor csomópont      |
 |-----------------------|-----------------------|-----------------------|
-| Számítás, a virtuális magok       | 4, 8, 16, 32          | 4, 8, 16, 32          |
-| Virtuális mag, GiB-memória | 8                     | 4                     |
-| A tárhely mérete Tib-ra     | 0.5, 1, 2             | 0.5, 1, 2             |
+| Számítás, virtuális mag       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
+| Memória/virtuális mag, GiB | 8                     | 4                     |
+| Tároló mérete, TiB     | 0,5, 1, 2             | 0,5, 1, 2             |
 | Tárolási típus          | Általános célú (SSD) | Általános célú (SSD) |
-| IO                  | Legfeljebb 3 IOPS/GiB      | Legfeljebb 3 IOPS/GiB      |
+| IOPS                  | Legfeljebb 3 IOPS/GiB      | Legfeljebb 3 IOPS/GiB      |
 
 
 ## <a name="regions"></a>Régiók
-Nagy kapacitású (Citus) kiszolgálócsoportok a következő Azure-régiókban érhetők el:
-* USA 2. keleti régiója
-* Délkelet-Ázsia
-* Nyugat-Európa
-* USA nyugati régiója, 2.
+A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókban érhetők el:
+
+* Amerika
+    * Közép-Kanada *
+    * USA keleti régiója
+    * USA 2. keleti régiója
+    * USA északi középső régiója *
+    * USA 2. nyugati régiója
+* Ázsia és a Csendes-óceáni térség:
+    * Kelet-Ausztrália *
+    * Délkelet-Ázsia
+* Európa
+    * Észak-Európa
+    * Egyesült Királyság déli régiója
+    * Nyugat-Európa
+
+A csillaggal (\*) rendelkező régiók még nem támogatják a [magas rendelkezésre állást](concepts-hyperscale-high-availability.md).
 
 ## <a name="pricing"></a>Díjszabás
-A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/postgresql/).
-A költség, a konfiguráció azt szeretné, hogy a [az Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) havi költségét jeleníti meg a **konfigurálása** lapon a kiválasztott beállítások alapján. Ha nem rendelkezik Azure-előfizetéssel, az Azure díjkalkulátorát segítségével a becsült ár beolvasása. A a [Azure díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) webhely, válassza **elemek hozzáadása**, bontsa ki a **adatbázisok** kategória, és válassza **, Azure Database for PostgreSQL – Nagy kapacitású (Citus)** testre szabhatja beállítások.
+A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/postgresql/).
+A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) a kiválasztott beállítások alapján a **configure (Konfigurálás** ) lapon szereplő havi költséget jeleníti meg. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és válassza a **Azure Database for PostgreSQL – nagy kapacitású (Citus)** lehetőséget a beállítások testreszabásához.
  
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [egy nagy kapacitású (Citus) kiszolgálócsoport létrehozása a portálon](quickstart-create-hyperscale-portal.md).
+Ismerje meg, hogyan [hozhat létre nagy kapacitású-(Citus-) kiszolgálócsoport a portálon](quickstart-create-hyperscale-portal.md).

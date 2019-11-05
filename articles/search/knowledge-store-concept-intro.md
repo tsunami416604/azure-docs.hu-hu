@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 82f8606f4b4201833667347d3ed16fdd73f70a36
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2e6d20a1eca7a6b3281e33d8534ab3456e79ccdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790354"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485082"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Az Azure Cognitive Search tudásbázisának bemutatása
 
@@ -21,7 +21,7 @@ ms.locfileid: "72790354"
 > A Knowledge áruház előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 >
 
-A Knowledge Store az Azure Cognitive Search egyik funkciója, amely egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kimenetét is megőrzi későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozáshoz. A *dúsított dokumentum* egy folyamat kimenete, amely az AI-folyamatokkal kinyert, strukturált és elemzett tartalomból készült. A standard AI-folyamatokban a dúsított dokumentumok átmenetiek, csak indexelés során használhatók, majd elvetették őket. A Knowledge Store-ban a dúsított dokumentumok megmaradnak. 
+A Knowledge Store az Azure Cognitive Search egyik funkciója, amely egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kimenetét őrzi meg későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozásokhoz. A *dúsított dokumentum* egy folyamat kimenete, amely az AI-folyamatokkal kinyert, strukturált és elemzett tartalomból készült. A standard AI-folyamatokban a dúsított dokumentumok átmenetiek, csak indexelés során használhatók, majd elvetették őket. A Knowledge Store-ban a dúsított dokumentumok megmaradnak. 
 
 Ha korábban már használta a kognitív képességeket az Azure Cognitive Search, akkor már tudja, hogy a *szakértelmével* a bővítési folyamaton keresztül helyezi át a dokumentumot. Az eredmény lehet keresési index, vagy (ebben az előzetes verzióban új) vetítések egy Tudásbázisban. A két kimenet, a keresési index és a Tudásbázis, ugyanazokat a tartalmakat használja, de a tárolása és használata nagyon különböző módokon történik.
 
@@ -29,13 +29,11 @@ Fizikailag a Knowledge Store az [Azure Storage](https://docs.microsoft.com/azure
 
 ![Knowledge Store a folyamat ábráján](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Knowledge Store a folyamat ábráján")
 
-A kivetítések az adattárakban lévő adatstrukturálás mechanizmusa. A kivetítések segítségével például megadhatja, hogy a kimenet egyetlen blobként vagy kapcsolódó táblák gyűjteménye legyen mentve. 
-
 A Knowledge Store használatához adjon hozzá egy `knowledgeStore` elemet egy készségkészlet, amely az indexelési folyamat lépés-Wise műveleteit definiálja. A végrehajtás során az Azure Cognitive Search létrehoz egy helyet az Azure Storage-fiókban, és a dúsított dokumentumokat a konfigurációtól függően blobként vagy táblázatként adja meg.
 
 ## <a name="benefits-of-knowledge-store"></a>A Knowledge Store előnyei
 
-A Knowledge Store strukturálatlan és félig strukturált adatfájlok, például a Blobok, az elemzésen átesett képfájlok, vagy akár az új űrlapokra átalakított strukturált adatok összegyűjtését teszi lehetővé. Az előzetes verzióra írt [lépésenkénti útmutatóban](knowledge-store-howto.md) megtekintheti, hogy a vastag JSON-dokumentumok hogyan vannak particionálva alstruktúrákba, új struktúrákba felépítve, és egyéb módon elérhetővé válnak az alárendelt folyamatokhoz, például a géphez tanulási és adatelemzési számítási feladatok.
+A Knowledge Store strukturálatlan és félig strukturált adatfájlok, például a Blobok, az elemzésen átesett képfájlok, vagy akár az új űrlapokra átalakított strukturált adatok összegyűjtését teszi lehetővé. Egy [lépésenkénti útmutatóban](knowledge-store-howto.md)megtekintheti, hogyan particionálja a vastag JSON-dokumentumot alstruktúrákba, új struktúrákba felépítve, és egyéb módon elérhetővé teszi azokat az alárendelt folyamatokhoz, mint például a gépi tanulás és az adattudomány számítási feladatok.
 
 Bár hasznos lehet megtekinteni, hogy mit hozhat létre az AI-bővítési folyamat, a Knowledge Store valódi ereje az Adatátalakítási képesség. Érdemes lehet egy alapszintű készségkészlet, majd megismételni a szerkezet növelését, amelyet később új struktúrákba, más alkalmazásokban pedig az Azure Cognitive Search is használhat.
 
@@ -48,13 +46,13 @@ Enumerált, a Knowledge Store előnyei a következők:
 + Az új űrlapokra alakítja az adathalmazt. Az átformálás a szakértelmével-ben kodifikált, de a lényeg az, hogy egy készségkészlet most már megadhatja ezt a képességet. A feladathoz való igazodás érdekében a [shapeer-képesség](cognitive-search-skill-shaper.md) az Azure Cognitive Search kiterjeszthető. Az átformálás lehetővé teszi, hogy olyan leképezést határozzon meg, amely igazodik az adatfelhasználáshoz a kapcsolatok megőrzése mellett.
 
 > [!Note]
-> Nem ismeri a Cognitive Servicest használó AI-enrichcment? Az Azure Cognitive Search Cognitive Services látási és nyelvi funkciókkal integrálható és gazdagíthatja a forrásadatokat az optikai karakterfelismerés (OCR) révén a képfájlok, az entitások felismerése és a szöveges fájlokból kinyert kulcsfontosságú kifejezések használatával. További információ: [AI-bővítés az Azure Cognitive Searchban](cognitive-search-concept-intro.md).
+> Újdonságok a mesterséges intelligencia és a kognitív képességek terén? Az Azure Cognitive Search Cognitive Services látási és nyelvi funkciókkal integrálható és gazdagíthatja a forrásadatokat az optikai karakterfelismerés (OCR) révén a képfájlok, az entitások felismerése és a szöveges fájlokból kinyert kulcsfontosságú kifejezések használatával. További információ: [AI-bővítés az Azure Cognitive Searchban](cognitive-search-concept-intro.md).
 
 ## <a name="creating-a-knowledge-store"></a>Tudásbázis létrehozása
 
 A Tudásbázis egy [készségkészlet](cognitive-search-working-with-skillsets.md)része, amely viszont egy [Indexelő](search-indexer-overview.md)része. 
 
-Ebben az előzetes verzióban létrehozhat egy tudásbázist a REST API és a `api-version=2019-05-06-Preview` használatával vagy a portál **adatimportálás** varázslójával.
+Ebben az előzetes verzióban létrehozhat egy tudásbázist a REST API és a `api-version=2019-05-06-Preview`használatával vagy a portál **adatimportálás** varázslójával.
 
 ### <a name="json-representation-of-a-knowledge-store"></a>A Knowledge Store JSON-ábrázolása
 
@@ -62,7 +60,7 @@ A következő JSON egy olyan `knowledgeStore`t határoz meg, amely egy készség
 
 A `knowledgeStore` kapcsolatokből és kivetítésből áll. 
 
-+ A kapcsolódás egy olyan Storage-fiókhoz van, amely ugyanabban a régióban található, mint Azure Search. 
++ A kapcsolódás egy olyan Storage-fiókhoz, amely ugyanabban a régióban található, mint az Azure Cognitive Search. 
 
 + A vetítések Tables-Objects párok. `Tables` megadhatja a dúsított dokumentumok fizikai kifejezését az Azure Table Storage-ban. `Objects` adja meg a fizikai objektumokat az Azure Blob Storage-ban.
 
@@ -182,59 +180,12 @@ Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table St
 
 + [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) a további manipulációhoz.
 
-
-<!---
-## Data lifecycle and billing
-
-Each time you run the indexer, the cache in Azure storage is updated if the skillset definition or underlying source data has changed. As input documents are edited or deleted, changes are propagated through the annotation cache to the projections, ensuring that your projected data is a current representation of your inputs at the end of the indexer run. 
-
-Generally speaking, pipeline processing can be an all-or-nothing operation, but Azure Search can process incremental changes, which saves you time and money.
-
-If a document is new or updated, all skills are run. If only the skillset changes, reprocessing is scoped to just those skills and documents affected by your edit.
-
-### Changes to a skillset
-Suppose that you have a pipeline composed of multiple skills, operating over a large body of static data (for example, scanned documents), that takes 8 hours and costs $200 to create the knowledge store. Now suppose you need to tweak one of the skills in the skillset. Rather than starting over, Azure Search can determine which skill is affected, and reprocess only that skill. Cached data and projections that are unaffected by the change remain intact in the knowledge store.
-
-### Changes in the data
-Scenarios can vary considerably, but let's suppose instead of static data, you have volatile data that changes between indexer invocations. Given no changes to the skillset, you are charged for processing the delta of new and modified document. The timestamp information varies by data source, but for illustration, in a Blob container, Azure Search looks at the `lastmodified` date to determine which blobs need to be ingested.
-
-> [!Note]
-> While you can edit the data in the projections, any edits will be overwritten on the next pipeline invocation, assuming the document in source data is updated. 
-
-### Deletions
-
-Although Azure Search creates and updates structures and content in Azure storage, it does not delete them. Projections and cached documents continue to exist even when the skillset is deleted. As the owner of the storage account, you should delete a projection if it is no longer needed. 
-
-### Tips for development
-
-+ Start small with a representative sample of your data as you make significant changes to skillset composition. As your design finalizes, you can slowly add more data during later-stage development, and then roll in the entire data set when you are comfortable with the pipeline composition.
-
-+ Retain control over indexer invocation. Indexers can run on a schedule, which is helpful for solutions that are rolled into production, but less helpful if you are actively developing your pipeline. During development, avoid schedules so that you don’t lose track of cache or projection state. Once your solution is in production and skillset composition is static, you can put the indexer on a schedule to pick up routine changes in the external source data. 
-
--->
-
-<!-- ## Where do I start?
-
-We recommend the Free service for learning purposes, but be aware that the number of free transactions is limited to 20 documents per day, per subscription.
-
-When using multiple services, create all of your services in the same region for best performance and to minimize costs. You are not charged for bandwidth for inbound data or outbound data that goes to another service in the same region.
-
-**Step 1: [Create an Azure Cognitive Search resource](search-create-service-portal.md)** 
-
-**Step 2: [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
-
-**Step 3: [Create a Cognitive Services resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
-
-**Step 4: [Get started with the portal](cognitive-search-quickstart-blob.md) - or - [Get started with sample data using REST and Postman](knowledge-store-howto.md)** 
-
-You can use REST `api-version=2019-05-06-Preview` to construct an AI-based pipeline that includes knowledge store. In the newest preview API, the Skillset object provides the `knowledgeStore` definition. -->
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Knowledge Store az Azure Storage-fiókokhoz való hozzáférésre alkalmas bármely ügyfélalkalmazás által a készségkészlet tervezésekor hasznosnak tartja a dúsított dokumentumok megőrzését, illetve az új struktúrák és tartalmak felhasználását.
 
 A dúsított dokumentumok létrehozásának legegyszerűbb módja az **adatimportálás** varázsló, de a Poster és a REST API is használható, ami akkor hasznos, ha az objektumok létrehozásának és hivatkozásának módját szeretné betekintésbe venni.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy tudásbázist a portálon](knowledge-store-create-portal.md) [, 
->  hozzon létre egy tudásbázist a Poster és a REST APi használatával](knowledge-store-create-rest.md)
+> [Hozzon létre egy tudásbázist a portálon](knowledge-store-create-portal.md) [,
+> hozzon létre egy tudásbázist a Poster és a REST APi használatával](knowledge-store-create-rest.md)

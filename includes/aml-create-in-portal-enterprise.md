@@ -1,0 +1,49 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: machine-learning
+author: sdgilley
+ms.service: machine-learning
+ms.author: sgilley
+manager: cgronlund
+ms.custom: include file
+ms.topic: include
+ms.date: 10/04/2019
+ms.openlocfilehash: 8b333dbd043ea0a0fe6fb1042e255e7e9c07ade5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493425"
+---
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával. 
+
+1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
+
+      ![Új erőforrás létrehozása](media/aml-create-in-portal/portal-create-resource.png)
+
+1. A keresősáv használatával megkeresheti **Machine learning szolgáltatás munkaterületét**.
+
+1. Válassza **Machine learning szolgáltatás munkaterületet**.
+
+1. A **Machine learning szolgáltatás munkaterülete** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
+
+1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
+
+   Mező|Leírás 
+   ---|---
+   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
+   Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
+   Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
+   Földrajzi egység | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
+   Munkaterület kiadása | Válassza a **vállalat**lehetőséget.  Ez az oktatóanyag az Enterprise Edition használatát igényli.  Az Enterprise Edition előzetes verzióban érhető el, és jelenleg nem vesz fel további költségeket.  
+
+1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 
+
+   > [!Warning] 
+   > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.
+
+   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. 
+ 
+ 1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
+

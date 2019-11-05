@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Új alkalmazás létrehozása a LUIS portálon'
+title: 'Rövid útmutató: új alkalmazás létrehozása a LUIS portálon'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. Az alkalmazás, a szándékok és az entitások alapvető részeinek létrehozása. Tesztelje az alkalmazást úgy, hogy az interaktív teszt paneljén megadta a minta felhasználójának az előre jelzett szándékot. Az alkalmazások létrehozása ingyenes; nincs szükség Azure-előfizetésre.
 services: cognitive-services
@@ -10,14 +10,17 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307723"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488827"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Gyors útmutató: Új alkalmazás létrehozása a LUIS portálon
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
+
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 Ebben a rövid útmutatóban egy új alkalmazást hoz létre a [Luis portálon](https://www.luis.ai). Először hozza létre az alkalmazás, a **szándékok**és az **entitások**alapvető részeit. Ezt követően tesztelheti az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
 
@@ -27,17 +30,17 @@ Az alkalmazások létrehozása ingyenes, és nem igényel Azure-előfizetést. H
 
 ## <a name="create-an-app"></a>Alkalmazás létrehozása
 
-1. Válassza az **új alkalmazás létrehozása** lehetőséget a helyi eszköztáron.
+1. Válassza a **+ Létrehozás** lehetőséget a helyi eszköztáron.
 
-   [![Új alkalmazás létrehozása a LUIS Portalon](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [új alkalmazás létrehozása a LUIS Portalon ![](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
 1. Az előugró ablakban konfigurálja az alkalmazást a következő beállításokkal, majd válassza a **kész**lehetőséget.
 
-   |Beállítás neve| Value | Cél|
+   |Beállítás neve| Érték | Cél|
    |--|--|--|
-   |Name (Név)|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>szükséges|
-   |Kulturális környezet|**angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>szükséges|
-   |Leírás|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
+   |Name (Név)|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>Szükséges|
+   |Kulturális környezet|**angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>Szükséges|
+   |Leírás|`App made with LUIS Portal`|Az alkalmazás leírása<br>Választható|
    | | | |
 
    ![Adja meg az új alkalmazás beállításait](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -60,19 +63,19 @@ A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
 1. Az alkalmazás létrehozása után a **Build** szakasz **szándékok** lapján található. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
-   [![Válassza az új leképezés létrehozása gombot](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![válassza az új leképezés létrehozása gombot](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Adja meg a leképezés nevét, `FindForm`majd kattintson a **kész**gombra.
+1. Adja meg a leképezés nevét, `FindForm`, majd válassza a **kész**lehetőséget.
 
    ![Adja meg a FindForm leképezési nevét](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
-## <a name="add-an-example-utterance"></a>Adjon hozzá egy példa utterance (kifejezés)
+## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
 
 A leképezések létrehozása után példaként adja hozzá a hosszúságú kimondott szöveg. Például a hosszúságú kimondott szöveg olyan szöveg, amelyet a felhasználó egy csevegési robotba vagy más ügyfélalkalmazásba ír. A felhasználó szövegének szándékát egy LUIS-szándékra képezik le.
 
-Ebben a példában az alkalmazás `FindForm` célja, például a hosszúságú kimondott szöveg fogja tartalmazni az űrlapot. Az ügyfélalkalmazás számára szükséges, hogy megfeleljen a felhasználó kérelmének, ezért fontos, hogy belefoglalja azt a teljességbe.
+Ebben a példában az alkalmazás `FindForm` szándéka, például a hosszúságú kimondott szöveg tartalmazni fogja az űrlapot. Az ügyfélalkalmazás számára szükséges, hogy megfeleljen a felhasználó kérelmének, ezért fontos, hogy belefoglalja azt a teljességbe.
 
-[![Adja meg például a FindForm szándék hosszúságú kimondott szöveg](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![adja meg például a FindForm szándékának hosszúságú kimondott szöveg](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 Adja hozzá a következő 15 példa hosszúságú kimondott szöveg a `FindForm` szándékhoz.
 
@@ -112,7 +115,7 @@ Ha vissza szeretné állítani az űrlap számát a futásidejű előrejelzési 
 
 1. Válassza az **új entitás létrehozása** elemet az **entitások** lapon.
 
-1. Adja meg a `Human Resources Form Number`nevet, válassza ki a **regex** entitás típusát, és adja meg `hrf-[0-9]{6}`a reguláris kifejezést. Ez a bejegyzés megegyezik a literális `hrf-`karakterekkel, és pontosan 6 számjegyet tesz lehetővé.
+1. Adja meg a `Human Resources Form Number`nevet, válassza ki a **regex** entitás típusát, és adja meg a reguláris kifejezést, `hrf-[0-9]{6}`. Ez a bejegyzés megegyezik a literális karakterekkel, `hrf-`, és pontosan 6 számjegyet tesz lehetővé.
 
    ![Adja meg a reguláris kifejezés entitásához tartozó entitás adatait](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
@@ -146,7 +149,7 @@ A jobb felső sarokban válassza a **betanítás** lehetőséget a szándék és
 
    Az entitás meg van jelölve, ahol megjelenik a példában szereplő hosszúságú kimondott szöveg. Ha az entitás neve helyett az eredeti szöveget szeretné látni, váltson az **entitások nézetre** az eszköztárból.
 
-   [![Az összes példa entitásokkal jelölt hosszúságú kimondott szöveg](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [az összes hosszúságú kimondott szöveg jelölt példa ![](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Tesztelje az új alkalmazást az interaktív teszt panel segítségével
 
@@ -166,9 +169,9 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-[![Alkalmazás törlése a saját alkalmazások listájáról](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[alkalmazás törlése a saját alkalmazások listájáról ![](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [2. Alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)
+> [2. alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)

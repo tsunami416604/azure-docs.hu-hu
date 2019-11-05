@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 09/13/2019
-ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489677"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatásban üzembe helyezett modellek adateltolódásának (előzetes verzió) észlelése
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan figyelheti az adateltolódást a betanítási adatkészlet és a központilag telepített modell információi között. A gépi tanulás kontextusában a betanított gépi tanulási modellek a drift miatt csökkenhetnek az előrejelzési teljesítménytől. A Azure Machine Learning segítségével figyelheti az adateltolódást, és a szolgáltatás elküldheti az e-mail-riasztást, ha a rendszer a drift észlelését észleli.
 
@@ -40,7 +41,7 @@ A Azure Machine Learning segítségével figyelheti a bemeneteket egy AK-ra tele
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Az adateltolódás figyelése Azure Machine Learning
 
-A Azure Machine Learning használatával az adateltolódást adathalmazok vagy központi telepítések figyelik. Az adateltolódás figyeléséhez egy alapkonfigurációt – általában a modell betanítási adatkészletét – kell megadni. Egy második adatkészlet – általában az üzembe helyezésből összegyűjtött bemeneti adatok modellezése az alapadatkészlet alapján történik. Mind az adathalmazok, mind az adateltolódás-figyelési szolgáltatás bemenete. A Machine learning-modellek a két adathalmaz közötti különbségek észlelésére vannak kiképezve. A modell teljesítményét a rendszer a drift együtthatóra konvertálja, amely a két adathalmaz közötti eltolódás mértékét méri. A [modell értelmezése](machine-learning-interpretability-explainability.md)alapján a rendszer kiszámítja a drift együtthatóhoz hozzájáruló funkciókat. Az adatkészlet-profilban az egyes szolgáltatásokra vonatkozó statisztikai adatokat követjük nyomon. 
+A Azure Machine Learning használatával az adateltolódást adathalmazok vagy központi telepítések figyelik. Az adateltolódás figyeléséhez egy alapkonfigurációt – általában a modell betanítási adatkészletét – kell megadni. Egy második adatkészlet – általában az üzembe helyezésből összegyűjtött bemeneti adatok modellezése az alapadatkészlet alapján történik. Mind az adathalmazok, mind az adateltolódás-figyelési szolgáltatás bemenete. A Machine learning-modellek a két adathalmaz közötti különbségek észlelésére vannak kiképezve. A modell teljesítményét a rendszer a drift együtthatóra konvertálja, amely a két adathalmaz közötti eltolódás mértékét méri. A [modell értelmezése](how-to-machine-learning-interpretability.md)alapján a rendszer kiszámítja a drift együtthatóhoz hozzájáruló funkciókat. Az adatkészlet-profilban az egyes szolgáltatásokra vonatkozó statisztikai adatokat követjük nyomon. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,12 +59,12 @@ A Azure Machine Learning használatával az adateltolódást adathalmazok vagy k
 - Telepítse az adatdrift SDK-t a következő parancs használatával:
 
     ```shell
-    pip install azureml-contrib-datadrift
+    pip install azureml-datadrift
     ```
 
 - Hozzon létre egy [adatkészletet](how-to-create-register-datasets.md) a modell betanítási adataiból.
 
-- Válassza ki a betanítási adatkészletet a modell [regisztrálása](concept-model-management-and-deployment.md) során. Az alábbi példa azt mutatja be, `datasets` hogyan használhatja a paramétert a betanítási adatkészlet megadásához:
+- Válassza ki a betanítási adatkészletet a modell [regisztrálása](concept-model-management-and-deployment.md) során. Az alábbi példa azt mutatja be, hogyan használhatja a `datasets` paramétert a betanítási adatkészlet megadásához:
 
     ```python
     model = Model.register(model_path=model_file,
@@ -74,17 +75,17 @@ A Azure Machine Learning használatával az adateltolódást adathalmazok vagy k
     print(model_name, image_name, service_name, model)
     ```
 
-- [Engedélyezheti a modell adatgyűjtését](how-to-enable-data-collection.md) , hogy adatokat gyűjtsön a modell AK-ból történő telepítéséről, és `modeldata` erősítse meg az adatok gyűjtését a blob-tárolóban.
+- A Model [adatgyűjtés lehetővé teszi](how-to-enable-data-collection.md) , hogy adatokat gyűjtsön a modell AK-ból történő üzembe helyezéséről, és erősítse meg az adatok gyűjtését a `modeldata` blob-tárolóban.
 
 ## <a name="configure-data-drift"></a>Az adateltolódás konfigurálása
 Ha a kísérlethez adateltolódást szeretne beállítani, importálja a függőségeket a következő Python-példában látható módon. 
 
-Ez a példa az [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) objektum konfigurálását mutatja be:
+Ez a példa a [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) objektum konfigurálását mutatja be:
 
 ```python
 # Import Azure ML packages
 from azureml.core import Experiment, Run, RunDetails
-from azureml.contrib.datadrift import DataDriftDetector, AlertConfiguration
+from azureml.datadrift import DataDriftDetector, AlertConfiguration
 
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
@@ -97,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>DataDriftDetector futtatásának elküldése
 
-Ha az `DataDriftDetector` objektum konfigurálva van, elküldheti a modell egy adott dátumára vonatkozó [adateltolódást](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) . A Futtatás részeként engedélyezze a DataDriftDetector riasztásokat a `drift_threshold` paraméter beállításával. Ha a [datadrift_coefficient](#metrics) a megadott `drift_threshold`érték felett van, a rendszer elküld egy e-mailt.
+Ha a `DataDriftDetector` objektum konfigurálva van, elküldheti a modell egy adott dátumára vonatkozó [adateltolódást](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) . A Futtatás részeként engedélyezze a DataDriftDetector riasztásokat a `drift_threshold` paraméter beállításával. Ha a [datadrift_coefficient](#metrics) az adott `drift_threshold`felett van, a rendszer e-mailt küld.
 
 ```python
 # adhoc run today
@@ -131,9 +132,9 @@ datadrift_contribution|A funkciók fontossága a drifthez hozzájáruló szolgá
 
 A drift mérőszámok több módon is megtekinthetők:
 
-* Használja a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
-* Használja a [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) függvényt bármely `datadrift` futtatási objektumon.
-* A mérőszámokat a munkaterület kezdőlapjának **modellek** szakaszában tekintheti meg [(előzetes verzió)](https://ml.azure.com).
+* Használja a `RunDetails`[Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
+* Használja a [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) függvényt bármely `datadrift` Run objektumon.
+* Tekintse meg a munkaterületének **modellek** szakaszának mérőszámait [Azure Machine learning Studióban](https://ml.azure.com).
 
 A következő Python-példa bemutatja, hogyan ábrázolhatja a kapcsolódó adateltolódási metrikákat. A visszaadott metrikák használatával egyéni vizualizációkat hozhat létre:
 
@@ -151,22 +152,22 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Adateltolódások ellenőrzésének ütemezett időpontja 
 
-Ha engedélyezi az adateltolódás észlelését, a DataDriftDetector a megadott ütemezett gyakorisággal fut le. Ha a datadrift_coefficient eléri a megadott `drift_threshold`értéket, a rendszer minden ütemezett futtatással elküld egy e-mailt. 
+Ha engedélyezi az adateltolódás észlelését, a DataDriftDetector a megadott ütemezett gyakorisággal fut le. Ha a datadrift_coefficient eléri a megadott `drift_threshold`, a rendszer minden ütemezett futtatással elküld egy e-mailt. 
 
 ```python
 datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Az adatdrift detektor konfigurációját a munkaterület kezdőlapjának **részletek** lapjának **modellek** területén tekintheti meg [(előzetes verzió)](https://ml.azure.com).
+Az adatdrift-detektor konfigurációját a [Azure Machine learning Studio](https://ml.azure.com)munkaterületének **részletek** lapján található **modellek** területen tekintheti meg.
 
-![Adateltolódás Azure Portal](media/how-to-monitor-data-drift/drift-config.png)
+![Azure Machine Learning Studio-adateltolódás](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-your-workspace-landing-page"></a>Eredmények megtekintése a munkaterület kezdőlapján
+## <a name="view-results-in-your-azure-machine-learning-studio"></a>Eredmények megtekintése a Azure Machine Learning Studióban
 
-Ha meg szeretné tekinteni az eredményeket a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com), navigáljon a modell lapra. A modell részletek lapján megjelenik az adatdrift-konfiguráció. Mostantól elérhető egy **adatdrift** lap az adatdrift mérőszámok megjelenítéséhez. 
+Ha [Azure Machine learning Studióban](https://ml.azure.com)szeretné megtekinteni az eredményeket a munkaterületen, navigáljon a modell lapra. A modell részletek lapján megjelenik az adatdrift-konfiguráció. Mostantól elérhető egy **adatdrift** lap az adatdrift mérőszámok megjelenítéséhez. 
 
-[![munkaterület kezdőlapjának adateltolódása](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
+[![Azure Machine Learning Studio-adateltolódás](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
 
 ## <a name="receiving-drift-alerts"></a>Drift-riasztások fogadása

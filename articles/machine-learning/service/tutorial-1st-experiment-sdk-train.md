@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/03/2019
-ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173304"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476170"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 
@@ -37,7 +39,7 @@ Az oktatóanyag ezen részében a kódot az első rész végén megnyitott Jupyt
 
 ## <a name="open-the-notebook"></a>A jegyzetfüzet megnyitása
 
-1. Jelentkezzen be a [munkaterület](https://ml.azure.com/)kezdőlapján.
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 
 1. Nyissa meg az **oktatóanyag-1st-Experiment-SDK-Train. ipynb** a mappában az első [részben](tutorial-1st-experiment-sdk-setup.md#open)látható módon.
 
@@ -62,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Most hozzon létre egy kísérletet a munkaterületen. A kísérlet egy másik, alapszintű felhőalapú erőforrás, amely a próbaverziók gyűjteményét jelöli (az egyes modellek futtatása). Ebben az oktatóanyagban a kísérletet használja a futtatások létrehozásához és a modell képzésének nyomon követéséhez a Azure Portal. A paraméterek közé tartozik a munkaterület-hivatkozás, valamint a kísérlet karakterlánc-neve.
+Most hozzon létre egy kísérletet a munkaterületen. A kísérlet egy másik, alapszintű felhőalapú erőforrás, amely a próbaverziók gyűjteményét jelöli (az egyes modellek futtatása). Ebben az oktatóanyagban futtatja a kísérletet a futtatások létrehozásához és a modell képzésének nyomon követéséhez a Azure Machine Learning Studióban. A paraméterek közé tartozik a munkaterület-hivatkozás, valamint a kísérlet karakterlánc-neve.
 
 
 ```python
@@ -72,15 +74,17 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Adatgyűjtés és felkészülés a képzésre
 
-Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a scikit-Learn csomagban található, előre normalizált adathalmaz. Ez az adathalmaz olyan szolgáltatásokat használ, mint az Age, a nemek és a BMI a diabéteszes megbetegedések előrehaladásának előrejelzéséhez. Töltse be az `load_diabetes()` statikus függvény adatait, és ossza ki a képzési és tesztelési készletekbe `train_test_split()` használatával. Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
+Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a diabéteszes megbetegedések előrehaladásának előrejelzéséhez olyan szolgáltatásokat használ, mint az Age, a gender és a BMI. Töltse be az adatokat az [Azure Open adatkészletek](https://azure.microsoft.com/services/open-datasets/) osztályból, és ossza ki a képzési és tesztelési készletekbe `train_test_split()`használatával. Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
 
 
 ```python
-from sklearn.datasets import load_diabetes
+from azureml.opendatasets import Diabetes
 from sklearn.model_selection import train_test_split
 
-X, y = load_diabetes(return_X_y = True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
+x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
+y_df = x_df.pop("Y")
+
+X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
 ## <a name="train-a-model"></a>Modell betanítása
@@ -129,7 +133,7 @@ A képzés befejeződése után hívja meg a `experiment` változót a kísérle
 experiment
 ```
 
-<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációra</td></tr></table>
+<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Képzés eredményeinek megtekintése a portálon
 
@@ -139,7 +143,7 @@ Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalo
 
 ![A fő kísérlet oldala a portálon](./media/tutorial-quickstart/experiment-main.png)
 
-A `RUN NUMBER` oszlopban található futtatási szám hivatkozásra kattintva megtekintheti az egyes futtatások lapját. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek** lapra, és megjelenik a modellhez tartozó `.pkl` fájl, amely az egyes képzések ismétlése során a futtatásra lett feltöltve. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
+A `RUN NUMBER` oszlopban található futtatási szám hivatkozásra kattintva megtekintheti az egyes futtatások lapját. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek** lapra, és megtekintheti a modellhez tartozó `.pkl` fájlt, amelyet az egyes képzések ismétlése során a futtatásra töltöttek fel. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
 
 ![A portálon a Részletek lap futtatása](./media/tutorial-quickstart/model-download.png)
 
@@ -193,19 +197,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 
-### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
+### <a name="stop-the-compute-instance"></a>A számítási példány leállítása
 
-Ha Felhőbeli jegyzetfüzet-kiszolgálót használt, állítsa le a virtuális gépet, ha nem használja a költségeket.
-
-1. A munkaterületen válassza a **notebook virtuális gépek**lehetőséget.
-
-   ![A virtuális gép kiszolgálójának leállítása](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. Válassza ki a virtuális gépet a listából.
-
-1. Válassza a **Leállítás**lehetőséget.
-
-1. Ha készen áll a kiszolgáló ismételt használatára, válassza az **Indítás**lehetőséget.
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>Mindent törölni
 
@@ -213,7 +207,7 @@ Ha Felhőbeli jegyzetfüzet-kiszolgálót használt, állítsa le a virtuális g
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

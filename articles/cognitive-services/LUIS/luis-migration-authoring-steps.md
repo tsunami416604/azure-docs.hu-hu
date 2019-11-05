@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bebfad57da41d257749acd3842a75ace114ed643
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516794"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492763"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Az Azure authoring-erőforrásba való Migrálás lépései
 
 A Language Understanding (LUIS) portálon telepítse át az összes olyan alkalmazást, amelyet az Azure authoring Resource használatára használ.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -98,7 +100,7 @@ Az áttelepítési folyamat akkor érhető el, ha Ön a LUIS-alkalmazások tulaj
 
 ## <a name="app-contributor-begins-the-migration-process"></a>Az alkalmazás közreműködője megkezdi az áttelepítési folyamatot
 
-Kövesse az alkalmazás tulajdonosának áttelepítéséhez szükséges lépéseket. A folyamat létrehoz egy `LUIS.Authoring` típusú új szerzői erőforrást. 
+Kövesse az alkalmazás tulajdonosának áttelepítéséhez szükséges lépéseket. A folyamat létrehoz egy `LUIS.Authoring`típusú új szerzői erőforrást. 
 
 A fiókját át kell telepíteni ahhoz, hogy közreműködőként hozzá lehessen adni a mások tulajdonában lévő áttelepített alkalmazásokat.  
 
@@ -112,7 +114,7 @@ Ismerje meg [, hogyan vehet fel közreműködőket](luis-how-to-collaborate.md).
 
 Ha `MissingSubscriptionRegistration` hibát kap a LUIS-portálon, és az áttelepítési folyamat során piros értesítési sáv jelenik meg, hozzon létre egy kognitív szolgáltatási erőforrást a [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)-ben. További információ a [hiba okairól](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 * A szerzői és futtatókörnyezeti kulcsokkal kapcsolatos [fogalmak](luis-concept-keys.md) áttekintése

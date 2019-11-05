@@ -1,24 +1,24 @@
 ---
 title: 'Hiányzó adatértékek: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan távolíthatja el, cserélheti vagy következtetheti ki a hiányzó értékeket a Azure Machine Learning szolgáltatás tiszta hiányzó adatmoduljának használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan távolíthatja el, cserélheti vagy következtetheti ki a hiányzó értékeket a Azure Machine Learning tiszta hiányzó adatmoduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693215"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493815"
 ---
 # <a name="clean-missing-data-module"></a>Hiányzó adatmodul törlése
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal törölheti, lecserélheti vagy következtetheti ki a hiányzó értékeket. 
 
@@ -115,7 +115,7 @@ Minden alkalommal, amikor a [tiszta hiányzó](./clean-missing-data.md) adatmodu
   
 8. A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A modul két kimenetet ad vissza:  
 
@@ -133,8 +133,8 @@ Ha gyakran kell megismételni a tisztítási műveleteket, javasoljuk, hogy ment
   
 2.  Adja hozzá a tisztítani kívánt adatkészletet, és kapcsolja össze az adatkészletet a jobb oldali bemeneti porthoz.  
   
-3.  Bontsa ki az **átalakítások** csoportot az interfész bal oldali paneljén. Keresse meg a mentett átalakítást, és húzza a folyamatba.  
-  
+3.  Bontsa ki az **átalakítások** csoportot a tervező bal oldali paneljén. Keresse meg a mentett átalakítást, és húzza a folyamatba.  
+
 4.  Kapcsolja össze a mentett átalakítást az [alkalmazás átalakításának](./apply-transformation.md)bal oldali bemeneti portjával. 
 
     Ha mentett transzformációt alkalmaz, nem választhatja ki azokat az oszlopokat, amelyekre az átalakítást alkalmazni szeretné. Ennek oka, hogy a transzformáció már definiálva van, és automatikusan az eredeti műveletben megadott oszlopokra vonatkozik.
@@ -143,6 +143,6 @@ Ha gyakran kell megismételni a tisztítási műveleteket, javasoljuk, hogy ment
 
 6.  A folyamat futtatása.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

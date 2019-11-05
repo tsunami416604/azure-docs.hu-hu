@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345548"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476950"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
@@ -25,7 +25,7 @@ További információ az Azure díjszabásáról: az [Azure díjszabásának át
 > [!NOTE]
 > Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, [Nyisson meg egy online ügyfélszolgálati kérést díjmentesen](azure-resource-manager/resource-manager-quota-errors.md). A határértékek nem állíthatók fel az alábbi táblázatokban látható maximális határérték fölé. Ha nincs maximális korlát oszlop, az erőforrás nem rendelkezik állítható korlátokkal.
 >
-> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha rendelkezik egy [ingyenes próba-előfizetésre](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Korlátok és Azure Resource Manager
@@ -56,7 +56,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Azure Firewall](#azure-firewall-limits)
 * [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
-* [Azure Machine Learning szolgáltatás](#azure-machine-learning-service-limits)
+* [Azure Machine Learning](#azure-machine-learning-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -84,6 +84,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Többtényezős hitelesítés](#multi-factor-authentication-limits)
 * [Hálózat](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
+  * [Azure-bástya](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
@@ -93,21 +94,21 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Nyilvános IP-cím](#publicip-address)
   * [Privát hivatkozás](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtual Network](#networking-limits)
+  * [Virtuális hálózat](#networking-limits)
   * [Virtuális WAN](#virtual-wan-limits)
 * [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
-* [Szolgáltatásbusz](#service-bus-limits)
+* [Service Bus](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Storage](#storage-limits)
+* [Tárolás](#storage-limits)
 * [StorSimple-rendszeren](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
-* [Virtuális gépek](#virtual-machines-limits)
+* [Virtual Machines](#virtual-machines-limits)
 * [Virtuálisgép-méretezési csoportok](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
@@ -154,7 +155,7 @@ Az alábbi táblázat az alapszintű, standard és prémium [szintű szolgáltat
 ### <a name="azure-kubernetes-service-limits"></a>Az Azure Kubernetes szolgáltatás korlátai
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
-### <a name="azure-machine-learning-service-limits"></a>Azure Machine Learning szolgáltatási korlátok
+### <a name="azure-machine-learning-limits"></a>Azure Machine Learning korlátok
 Azure Machine Learning számítási kvóták legújabb értékei a [Azure Machine learning kvóta lapon](../articles/machine-learning/service/how-to-manage-quotas.md) találhatók.
 
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
@@ -179,6 +180,9 @@ A következő táblázat a v1, v2, standard és WAF SKU-ra vonatkozik, hacsak m�
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager korlátok
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
+
+#### <a name="azure-bastion-limits"></a>Azure-beli megerősített korlátok
+[!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Azure DNS korlátok
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
@@ -260,7 +264,7 @@ Az alábbi táblázat az Azure BizTalk Services korlátozásait mutatja be.
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB korlátok
 Azure Cosmos DB korlátok esetében lásd: [korlátok a Azure Cosmos DBban](cosmos-db/concepts-limits.md).
 
-### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+### <a name="azure-database-for-mysql"></a>A MySQL-hez készült Azure Database
 Azure Database for MySQL korlátokat a [Azure Database for MySQL korlátozásai](mysql/concepts-limits.md)című témakörben talál.
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL

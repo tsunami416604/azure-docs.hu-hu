@@ -1,7 +1,7 @@
 ---
 title: Szolgáltatás-kivonatolási modul referenciája
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a szabadkézi a Azure Machine Learning szolgáltatásban található szolgáltatás-kivonatolási modul használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning szabadkézi a szöveges adatokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170874"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497828"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
 
 A szolgáltatás-kivonatolási modul használatával az angol nyelvű adatfolyamokat egész számokból álló funkciókba alakíthatja át. Ezt követően átadhatja ezt a kivonatoló funkciót egy gépi tanulási algoritmusba egy szöveges elemzési modell betanításához.
 
@@ -39,7 +39,7 @@ Tegyük fel például, hogy a fentiekhez hasonló egyszerű mondatokat, majd egy
 
 Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az adatkészlet bigrams listája például a következőhöz hasonló lesz:
 
-|Kifejezés (bigrams)|Gyakoriság|
+|Kifejezés (bigrams)|Frequency|
 |------------|---------------|
 |Ez a könyv|3|
 |Szerettem|1|
@@ -48,12 +48,12 @@ Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az 
 
 Az n-gramm méretének szabályozására az **n-gramm** tulajdonság használható. Ha a bigrams lehetőséget választja, a rendszer a unigrams is kiszámítja. A szótár a következőhöz hasonló egyetlen kifejezést is tartalmaz:
 
-|Kifejezés (unigrams)|Gyakoriság|
+|Kifejezés (unigrams)|Frequency|
 |------------|---------------|
 |könyv|3|
 |I|3|
-|Könyvek|1|
-|a következő volt:|1|
+|könyvek|1|
+|lett|1|
 
 A szótár felépítése után a funkció-kivonatolási modul a szótári kifejezést kivonatoló értékre konvertálja. Ezután kiszámítja, hogy az egyes esetekben használták-e a szolgáltatást. A modul minden egyes sornyi szöveges adatokat tartalmaz, és az egyes kivonatoló funkciók egy oszlopát adja vissza.
 
@@ -73,7 +73,7 @@ A numerikus kimenetek a gyakori gépi tanulási módszerek használatát is tesz
 
 ## <a name="configure-the-feature-hashing-module"></a>A szolgáltatás kivonatolási moduljának konfigurálása
 
-1.  Adja hozzá a szolgáltatás kivonatolási modulját a kísérlethez egy vizuális felületen.
+1.  Adja hozzá a szolgáltatás-kivonatolási modult a folyamathoz a tervezőben.
 
 1. Az elemezni kívánt szöveget tartalmazó adatkészlet csatlakoztatása.
 
@@ -94,7 +94,7 @@ A numerikus kimenetek a gyakori gépi tanulási módszerek használatát is tesz
 
     Ha például a 3, a unigrams, a bigrams és a Trigrams értéket adja meg, a rendszer létrehozza a következőt:.
 
-1. Futtassa a kísérletet.
+1. A folyamat futtatása.
 
 ## <a name="results"></a>Results (Eredmények)
 
@@ -127,8 +127,8 @@ Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolás
     * Írásjelek és speciális karakterek eltávolítása
     * Eredő  
 
-Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti igényektől függ. Kísérletezzen az adataival, és nézze meg, mely szöveg-feldolgozási módszerek a leghatékonyabbak.
+Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti igényektől függ. a folyamat adataival megtekintheti, hogy mely szöveg-feldolgozási módszerek a leghatékonyabbak.
 
 ## <a name="next-steps"></a>További lépések
             
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) 

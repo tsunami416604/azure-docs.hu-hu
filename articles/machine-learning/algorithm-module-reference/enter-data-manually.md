@@ -1,24 +1,24 @@
 ---
 title: 'Adja meg manuálisan az adatbevitelt: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja az adatok manuális megadása modult a Azure Machine Learning szolgáltatásban egy kisebb adatkészlet létrehozásához az értékek beírásával. Az adatkészlet több oszloppal is rendelkezhet.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja az adatok manuális megadása modult Azure Machine Learning egy kisebb adatkészlet létrehozásához az értékek beírásával. Az adatkészlet több oszloppal is rendelkezhet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693164"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497928"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy kis adatkészletet az értékek beírásával. Az adatkészlet több oszloppal is rendelkezhet.
   
@@ -100,6 +100,6 @@ Ez a modul a következő helyzetekben lehet hasznos:
 5.  Kattintson a jobb gombbal a modulra, és válassza a **kijelölt futtatása** lehetőséget, hogy elemezze az adatokat, és betöltse azt a munkaterületre adatkészletként.  
   
      Az adatkészlet megtekintéséhez kattintson a kimeneti portra, majd válassza a **Megjelenítés**lehetőséget.  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

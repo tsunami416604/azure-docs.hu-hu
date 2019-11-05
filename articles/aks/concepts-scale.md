@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097846"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472875"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások méretezési lehetőségei az Azure Kubernetes szolgáltatásban (ak)
 
@@ -56,8 +56,6 @@ Ahhoz, hogy válaszoljon a pod-re vonatkozó igényekre, a Kubernetes tartalmaz 
 ![Kubernetes-fürt autoskálázása](media/concepts-scale/cluster-autoscaler.png)
 
 A fürt autoskálázása jellemzően a horizontális Pod autoskálázás mellett használatos. Ha a kombinált, a horizontális Pod autoskálázás növeli vagy csökkenti a hüvelyek számát az alkalmazás igénye alapján, és a fürt automatikusan méretezhető, hogy a további hüvelyek megfelelő futtatásához szükség van-e a csomópontok számának megadására.
-
-A fürt automéretezőjét csak előzetes verzióban kell tesztelni az AK-fürtökön.
 
 A fürt autoskálázási szolgáltatásának az AK-ban való megkezdéséhez lásd: [fürt automéretezője az AK][aks-cluster-autoscaler]-ban.
 

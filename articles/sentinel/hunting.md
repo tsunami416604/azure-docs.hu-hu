@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372408"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489200"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Fenyegetések vadászata az Azure Sentinelben
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>A fenyegetések vadászata az Azure Sentinel szolgáltatással
 
 Ha Ön olyan nyomozó, aki proaktívan szeretné megkeresni a biztonsági fenyegetéseket, az Azure Sentinel hatékony vadászati és lekérdezési eszközöket kínál a szervezet adatforrásaiban felhasználható biztonsági fenyegetések felderítéséhez. A rendszerek és a biztonsági berendezések azonban olyan adathegyeket hoznak, amelyek nehezen elemezhetők és szűrhetők az értelmes események alapján. Ahhoz, hogy a biztonsági elemzők proaktív módon megnézzék a biztonsági alkalmazások által nem észlelt új rendellenességeket, az Azure Sentinel beépített vadászati lekérdezései segítséget nyújtanak a hálózatban már meglévő adataival kapcsolatos problémák megtalálásában. 
 
@@ -48,7 +46,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 ## <a name="get-started-hunting"></a>Ismerkedés a vadászattal
 
 1. Az Azure Sentinel-portálon kattintson a **vadászat**gombra.
-  @no__t – a 0Azure Sentinel elkezdi a vadászatot @ no__t-1
+  ![Azure Sentinel vadászatot kezd](media/tutorial-hunting/hunting-start.png)
 
 2. A **vadászati** oldal megnyitásakor az összes vadászati lekérdezés egyetlen táblában jelenik meg. A táblázat felsorolja a Microsoft biztonsági elemzők csapata által írt összes lekérdezést, valamint a létrehozott vagy módosított további lekérdezéseket. Mindegyik lekérdezés leírja, hogy mire vadászik, és milyen típusú adatfeldolgozást futtat. Ezek a sablonok különböző taktikák szerint vannak csoportosítva – a jobb oldali ikonok kategorizálják a fenyegetés típusát, például a kezdeti hozzáférést, az adatmegőrzést és a kiszűrése. Ezeket a vadászati lekérdezési sablonokat bármely mező alapján szűrheti. Bármilyen lekérdezést menthet a Kedvencek közé. Ha egy lekérdezést a Kedvencek közé ment, a lekérdezés automatikusan lefut, amikor a **vadászati** oldal elérhető. Létrehozhatja saját vadászati lekérdezését vagy klónját, és testre is szabhatja a meglévő vadászati lekérdezési sablont. 
  
@@ -78,7 +76,7 @@ Tekintse meg a [vadászati lekérdezés tárházát](https://github.com/Azure/Or
 
 ## <a name="sample-query"></a>Példa lekérdezésre
 
-Egy tipikus lekérdezés a táblázat nevével kezdődik, majd a \| karakterrel elválasztott operátorok sorozata.
+Egy tipikus lekérdezés a táblázat nevével kezdődik, majd a \|által elválasztott operátorok sorozata.
 
 A fenti példában Kezdje a Table Name SecurityEvent, és szükség szerint adja hozzá a vezetékes elemeket.
 
@@ -140,7 +138,7 @@ Meglévő vadászati lekérdezés klónozása és módosítása:
 
    ![egyéni lekérdezés](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan futtathat egy vadászati vizsgálatot az Azure Sentinel használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 

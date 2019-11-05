@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d2571b04f10bbbd3a461e553a56904abb3b46588
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063079"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496037"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
-Ez a cikk azt ismerteti, hogyan méretezheti a számítási és tárolási erőforrásokat a kiépített számítási szinten lévő Azure SQL Database számára. Azt is megteheti, hogy a [kiszolgáló nélküli (előzetes verzió) számítási réteg](sql-database-serverless.md) a számítási feladatokhoz másodpercenként számítási automatikus skálázást és számlákat használ.
+Ez a cikk azt ismerteti, hogyan méretezheti a számítási és a tárolási erőforrásokat a kiépített számítási szinten lévő Azure SQL Database számára. Azt is megteheti, hogy a [kiszolgáló nélküli számítási réteg](sql-database-serverless.md) számítási automatikus skálázást és másodpercenkénti számlákat biztosít a felhasznált számítási feladatokhoz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -57,7 +57,7 @@ A szolgáltatási réteg vagy a számítási méret módosítása főleg a köve
 
 A szolgáltatási réteg módosításának becsült késése vagy egy önálló adatbázis vagy rugalmas készlet számítási méretének átméretezése a következő paraméterekkel történik:
 
-|Szolgáltatáscsomag|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
+|Szolgáltatásszint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
 |:---|:---|:---|:---|
 |**Alapszintű önálló adatbázis,</br> standard (S0-S1)**|&bull; &nbsp;állandó időbeli késés a felhasznált területtől függetlenül</br>&bull; &nbsp;általában kevesebb, mint 5 perc|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 |**Alapszintű rugalmas készlet, </br>standard (S2-S12), </br>nagy kapacitású, </br>általános célú önálló adatbázis vagy rugalmas készlet**|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;állandó időbeli késés a felhasznált területtől függetlenül</br>&bull; &nbsp;általában kevesebb, mint 5 perc|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
@@ -142,6 +142,6 @@ A prémium szinten több mint 1 TB tárterület érhető el az összes régióba
   - Az elsődleges adatbázis frissítése földrajzi replikálási kapcsolatban: az elsődleges adatbázison az 1 TB-nál nagyobb maximális méret megváltozása a másodlagos adatbázison ugyanezt a változást indítja el. Mindkét frissítésnek sikeresnek kell lennie ahhoz, hogy az elsődleges módosítás érvénybe lépjen. Az 1 TB-nál nagyobb területi korlátozások érvényesek. Ha a másodlagos olyan régióban található, amely nem támogatja az 1 TB-ot, az elsődleges nem frissül.
 - Az import/export szolgáltatás használata az 1 TB-nál nagyobb P11-vagy P15-adatbázisok betöltéséhez nem támogatott. Az SqlPackage. exe használatával [importálhat](sql-database-import.md) és [exportálhat](sql-database-export.md) adatfájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [SQL Database DTU-alapú erőforrás-korlátok – rugalmas készletek](sql-database-dtu-resource-limits-single-databases.md).

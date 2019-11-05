@@ -1,7 +1,7 @@
 ---
 title: Hibaelhárítási útmutató
 titleSuffix: Microsoft Genomics
-description: További tudnivalók a Microsoft Genomics használatának hibaelhárítási módszereiről.
+description: További információ a Microsoft Genomics használatának hibaelhárítási módszereiről, beleértve a hibaüzeneteket és azok megoldásának módját.
 keywords: hibaelhárítás, hiba, hibakeresés
 services: genomics
 author: ruchir
@@ -11,12 +11,12 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248515"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485999"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -27,10 +27,10 @@ ms.locfileid: "72248515"
 
 A munkafolyamathoz társított hibaüzeneteket a következő módszerekkel érheti el:
 
-1. A parancssor használata és beírása `msgen status`
+1. A parancssor használata és a `msgen status` beírása
 2. A StandardOutput. txt fájl tartalmának vizsgálata.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. a parancssor használata @no__t – 0
+### <a name="1-using-the-command-line-msgen-status"></a>1. a parancssori `msgen status` használata
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -141,6 +141,6 @@ Ezek a hibák a felhasználók számára hajthatók végre. A fájl típusa és 
 
 Ha továbbra is felmerülnek a feladatok, vagy ha további kérdései vannak, forduljon Microsoft Genomics támogatási szolgálathoz a Azure Portal. A támogatási kérések beküldéséről [itt](file-support-ticket-genomics.md)találhat további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan lehet elhárítani a Microsoft Genomics szolgáltatással kapcsolatos gyakori problémákat. További információt és általánosabb gyakori [kérdéseket a gyakori kérdések](frequently-asked-questions-genomics.md)című témakörben talál. 

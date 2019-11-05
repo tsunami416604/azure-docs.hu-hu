@@ -1,7 +1,7 @@
 ---
 title: Előre elkészített entitások száma – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk előre összeállított entitások információ a Language Understanding (LUIS) tartalmazza.
+description: Ez a cikk Language Understanding (LUIS) számmal előre elkészített entitással kapcsolatos információt tartalmaz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: cb97cc5b0004442e00b970202dd01f76aa971a2a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6a59cf83b3912e31b8aae67319902ce516519af8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677572"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491295"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitások száma
-Számos módon, amelyben a numerikus értékek összeszámolása, express, és írja le az adatokat használják. Ez a cikk ismerteti a lehetséges példa csak néhányat. A LUIS a változások, a felhasználó utterances értelmezi, és egységes numerikus értéket adja vissza. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések számot tartalmazó példa beszédmódok hozzáadása. 
+A numerikus értékek számos módon vannak meghatározva, kifejezve és leírják az információk részleteit. Ez a cikk csak néhány lehetséges példát tárgyal. LUIS a felhasználói hosszúságú kimondott szöveg lévő eltéréseket értelmezi, és konzisztens numerikus értékeket ad vissza. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a számot tartalmazó hosszúságú kimondott szöveg az alkalmazás-leképezésekhez. 
 
-## <a name="types-of-number"></a>Szám típusú
+## <a name="types-of-number"></a>Típusú számok
 A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) adattárból kezeli
 
-## <a name="examples-of-number-resolution"></a>Példák a szám felbontás
+## <a name="examples-of-number-resolution"></a>Példák a szám feloldására
 
-| Kimondott szöveg        | Entitás   | Megoldás: |
+| Kimondott szöveg        | Entitás   | Felbontás |
 | ------------- |:----------------:| --------------:|
 | ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
@@ -38,113 +38,73 @@ A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microso
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS tartalmazza a felismert értékét egy **`builtin.number`** az entitás a `resolution` mezőjét, a JSON-választ adja vissza.
+A LUIS egy **`builtin.number`** entitás felismert értékét tartalmazza a visszaadott JSON-válasz `resolution` mezőjében.
 
-## <a name="resolution-for-prebuilt-number"></a>Feloldási előre összeállított maximális száma
+## <a name="resolution-for-prebuilt-number"></a>Előre elkészített szám feloldása
 
+A lekérdezés a következő entitás-objektumokat adja vissza:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+`order two dozen eggs`
 
-Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifejezés) "két tucat" értékének 24, LUIS, a JSON-választ.
+#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+
+A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 ```json
-{
-  "query": "order two dozen eggs",
-  "topScoringIntent": {
-    "intent": "OrderFood",
-    "score": 0.105443209
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.105443209
-    },
-    {
-      "intent": "OrderFood",
-      "score": 0.9468431361
-    },
-    {
-      "intent": "Help",
-      "score": 0.000399122015
-    },
-  ],
-  "entities": [
-    {
-      "entity": "two dozen",
-      "type": "builtin.number",
-      "startIndex": 6,
-      "endIndex": 14,
-      "resolution": {
-        "subtype": "integer",
-        "value": "24"
-      }
-    }
-  ]
+"entities": {
+    "number": [
+        24
+    ]
 }
 ```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
-
-A következő JSON a `verbose` paramétert állítja be a `false` értékre:
-
-```json
-{
-    "query": "order two dozen eggs",
-    "prediction": {
-        "normalizedQuery": "order two dozen eggs",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "number": [
-                24
-            ]
-        }
-    }
-}
-```
-
-A következő JSON a `verbose` paramétert állítja be a `true` értékre:
+A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 ```json
-{
-    "query": "order two dozen eggs",
-    "prediction": {
-        "normalizedQuery": "order two dozen eggs",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "number": [
-                24
-            ],
-            "$instance": {
-                "number": [
-                    {
-                        "type": "builtin.number",
-                        "text": "two dozen",
-                        "startIndex": 6,
-                        "length": 9,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "number": [
+        24
+    ],
+    "$instance": {
+        "number": [
+            {
+                "type": "builtin.number",
+                "text": "two dozen",
+                "startIndex": 6,
+                "length": 9,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
 
+Az alábbi példában a LUIS-ből származó JSON-válasz látható, amely magában foglalja a 24 érték felbontását a "két tucat" kifejezéshez.
+
+```json
+"entities": [
+  {
+    "entity": "two dozen",
+    "type": "builtin.number",
+    "startIndex": 6,
+    "endIndex": 14,
+    "resolution": {
+      "subtype": "integer",
+      "value": "24"
+    }
+  }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [pénznem](luis-reference-prebuilt-currency.md), [sorszámnál](luis-reference-prebuilt-ordinal.md), és [százalékos](luis-reference-prebuilt-percentage.md). 
+A [Pénznem](luis-reference-prebuilt-currency.md), a [sorszám](luis-reference-prebuilt-ordinal.md)és a [százalék](luis-reference-prebuilt-percentage.md)megismerése. 

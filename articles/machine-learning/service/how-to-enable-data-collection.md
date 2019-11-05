@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929365"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489995"
 ---
 # <a name="collect-data-for-models-in-production"></a>Adatok gyűjtése a termelési modellekhez
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > Ez az SDK hamarosan kivonásra kerül. Ez az SDK továbbra is megfelelő a fejlesztők számára a modellekben való adateltolódás figyeléséhez, de a legtöbb fejlesztőnek az egyszerűsített [adatfigyelést](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)kell használnia Application Insightsokkal. 
@@ -115,17 +116,17 @@ Az engedélyezéséhez a következőket kell tennie:
 
 Ha már van olyan szolgáltatás, amelynek függőségei a **környezet fájljában** és a **pontozási fájlban**vannak telepítve, engedélyezze az adatgyűjtést az alábbiak szerint:
 
-1. Lépjen [Azure Portal](https://portal.azure.com).
+1. Nyissa meg [Azure Machine learning Studio alkalmazást](https://ml.azure.com).
 
 1. Nyissa meg a munkaterületet.
 
-1. Lépjen az **üzembe helyezések** ->  Select Service  -> **Szerkesztés** **elemre**.
+1. Lépjen az **üzembe helyezések** -> **válassza a szolgáltatás** -> **Szerkesztés**lehetőséget.
 
    ![Szolgáltatás szerkesztése](media/how-to-enable-data-collection/EditService.PNG)
 
 1. A **Speciális beállítások**területen törölje a **modell adatgyűjtésének engedélyezése**beállítást. 
 
-    [Adatgyűjtés![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [Adatgyűjtés ![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    Ebben az ablakban a szolgáltatás állapotának nyomon követéséhez a "Appinsights-diagnosztika engedélyezése" lehetőséget is választhatja.  
 
@@ -133,24 +134,24 @@ Ha már van olyan szolgáltatás, amelynek függőségei a **környezet fájljá
 
 
 ## <a name="disable-data-collection"></a>Adatgyűjtés letiltása
-Bármikor leállíthatja az adatgyűjtést. Az adatgyűjtés letiltásához használja a Python-kódot vagy a Azure Portal.
+Bármikor leállíthatja az adatgyűjtést. A Python-kód vagy a Azure Machine Learning Studio használatával tiltsa le az adatgyűjtést.
 
-+ 1\. lehetőség – letiltás a Azure Portalban: 
-  1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
++ 1\. lehetőség – letiltás Azure Machine Learning Studióban: 
+  1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
 
   1. Nyissa meg a munkaterületet.
 
-  1. Lépjen az **üzembe helyezések** ->  Select Service  -> **Szerkesztés** **elemre**.
+  1. Lépjen az **üzembe helyezések** -> **válassza a szolgáltatás** -> **Szerkesztés**lehetőséget.
 
      [![szerkesztési lehetőség](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. A **Speciális beállítások**területen törölje a **modell adatgyűjtésének engedélyezése**beállítást. 
 
-     [Az adatgyűjtési![törlése](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [Az adatgyűjtési ![törlése](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. A módosítás alkalmazásához válassza a **frissítés** elemet.
 
-  Ezeket a beállításokat a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)is elérheti.
+  Ezeket a beállításokat [Azure Machine learning Studióban](https://ml.azure.com)is elérheti a munkaterületén.
 
 + 2\. lehetőség – az adatgyűjtés letiltása a Python használatával:
 
@@ -160,10 +161,10 @@ Bármikor leállíthatja az adatgyűjtést. Az adatgyűjtés letiltásához hasz
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>Ellenőrizze az adatait, és elemezze
-Az Azure-Blobba összegyűjtött adatok elemzéséhez bármelyik előnyt kiválaszthatja. 
+Az Azure-Blobba összegyűjtött adatok elemzéséhez bármelyik előnyt kiválaszthatja.
 
 A blob adatainak gyors elérése:
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
 
 1. Nyissa meg a munkaterületet.
 1. Kattintson a **tárterület**elemre.
@@ -220,7 +221,7 @@ A blob adatainak gyors elérése:
 
 1. A databricks munkaterületen válassza az **adatok feltöltése**lehetőséget.
 
-    [ADATBÁZIS![feltöltése](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [ADATBÁZIS ![feltöltése](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Hozzon létre új táblát, és válassza az **egyéb adatforrások** – > Azure Blob Storage-> CREATE TABLE in notebook (jegyzetfüzetben) elemet.
 

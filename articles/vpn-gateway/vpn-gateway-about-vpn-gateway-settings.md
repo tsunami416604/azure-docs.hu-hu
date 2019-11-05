@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970911"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495723"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -61,7 +61,7 @@ Ha a Azure Portal használatával hoz létre Resource Manager virtuális hálóz
 
 #### <a name="powershell"></a>PowerShell
 
-A következő PowerShell-példa a `-GatewaySku` értéket adja meg VpnGw1. Ha a PowerShell-lel átjárót hoz létre, először létre kell hoznia az IP-konfigurációt, majd egy változót kell használnia. Ebben a példában a konfigurációs változó $gwipconfig.
+A következő PowerShell-példa a VpnGw1 `-GatewaySku` adja meg. Ha a PowerShell-lel átjárót hoz létre, először létre kell hoznia az IP-konfigurációt, majd egy változót kell használnia. Ebben a példában a konfigurációs változó $gwipconfig.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -69,7 +69,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 Ha VPN-átjáróval rendelkezik, és egy másik átjáró-SKU-t szeretne használni, a lehetőségek az átjáró SKU-jának átméretezése, vagy egy másik SKU-ra való váltás. Ha másik átjáró SKU-ra vált, a meglévő átjárót teljesen törölni kell, és újat kell létrehoznia. Egy átjáró akár 45 percet is igénybe vehet. Összehasonlításban az átjáró SKU-jának átméretezése nem sok állásidőt eredményez, mert nem kell törölnie és újraépítenie az átjárót. Ha azt szeretné, hogy az átjáró SKU-jának átméretezése megtörténjen, és nem kell megváltoztatnia. Vannak azonban szabályok az átméretezéssel kapcsolatban:
 
-1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
+1. Az alapszintű SKU kivételével átméretezheti a VPN Gateway SKU-t egy másik VPN Gateway SKU-ra ugyanazon a generáción belül (Generation1 vagy Generation2). Például a Generation1 VpnGw1 átméretezhetők a Generation1 VpnGw2, de a VpnGw2 nem Generation2.
 2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.
-3. Az Alapszintű/Standard/Nagy teljesítményű termékváltozatokról **nem** méretezhet a VpnGw1/VpnGw2/VpnGw3 termékváltozatokra. Ehelyett az új SKU-ra kell [váltania](#change) .
+3. Az alapszintű/standard/HighPerformance SKU-ról VpnGw SKU-ra **nem** lehet átméretezni. Ehelyett az új SKU-ra kell [váltania](#change) .
 
 #### <a name="resizegwsku"></a>Átjáró átméretezése
 
@@ -118,7 +118,7 @@ A virtuális hálózati átjáró létrehozása után a VPN-típus nem módosít
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-A következő PowerShell-példa a `-VpnType` értéket adja meg *útvonalalapú*. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
+A következő PowerShell-példa a *útvonalalapú*`-VpnType` adja meg. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `

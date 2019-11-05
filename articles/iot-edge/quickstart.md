@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8264030593a1e44b2a50d9f95dce925136eb4d26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: edb100901dea4419d65635f9214555c27c1949f0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965992"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494077"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -22,7 +22,7 @@ Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális I
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
-1. IoT Hub létrehozása
+1. Hozzon létre egy IoT hubot.
 2. IoT Edge-eszköz regisztrálása az IoT Hubon
 3. Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
 4. Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
@@ -139,7 +139,7 @@ Az IoT Edge-futtatókörnyezet letöltése és telepítése a PowerShell haszná
 
 1. Ha még nem tette meg, kövesse az [új Azure IoT Edge eszköz regisztrálása](how-to-register-device.md) az eszköz regisztrálásához és az eszköz kapcsolódási karakterláncának beolvasásához című témakör lépéseit.
 
-2. Futtassa a PowerShellt rendszergazdaként.
+2. A virtuális gépen futtassa a PowerShellt rendszergazdaként.
 
    >[!NOTE]
    >A PowerShell AMD64-munkamenetének használatával telepítse a IoT Edge, nem a PowerShellt (x86). Ha nem biztos abban, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
@@ -242,7 +242,7 @@ Távolítsa el az **IoTEdgeResources** csoportot.
 az group delete --name IoTEdgeResources
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

@@ -1,24 +1,24 @@
 ---
 title: 'Oszlopok hozzáadása: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan összefűzheti a két adathalmazt a Azure Machine Learning-szolgáltatás oszlopok hozzáadása moduljának használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan összefűzheti a két adathalmazt a Azure Machine Learning oszlopok hozzáadása moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: cbb1249b529fde1368bfaff0c6c251c93fa6c309
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693863"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493973"
 ---
 # <a name="add-columns-module"></a>Oszlopok hozzáadása modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet létrehozásához a bemenetként megadott két adatkészlet összes oszlopát össze kell kapcsolni. Ha kettőnél több adatkészletet kell összefűzni, használja az **Oszlopok hozzáadása**több példányát.
 
@@ -35,7 +35,7 @@ Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet lé
 
 3. A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 A folyamat futtatása után:
 
 - Az új adatkészlet első sorainak megjelenítéséhez kattintson a jobb gombbal az **Oszlopok hozzáadása** elemre, majd válassza a Megjelenítés lehetőséget.
@@ -44,6 +44,6 @@ Az új adatkészlet oszlopainak száma megegyezik a bemeneti adatkészletek oszl
 
 Ha két azonos nevű oszlop szerepel a bemeneti adatkészletekben, a rendszer egy numerikus utótagot ad hozzá az oszlop nevéhez. Ha például egy TargetOutcome nevű oszlop két példánya van, a bal oldali oszlop átnevezve lesz TargetOutcome_1, és a jobb oldali oszlop átnevezve lesz TargetOutcome_2.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

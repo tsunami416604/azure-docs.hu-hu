@@ -8,26 +8,30 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ecdd419331c88e712644851f9213861f882cf0f6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a44dc35c27cd084e6589482f180b13b258f0b24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179279"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470990"
 ---
 ## <a name="prepare-your-web-app"></a>A webalkalmazás előkészítése
 
 Ha egy egyéni SSL-tanúsítványt (külső tanúsítványt vagy App Service-tanúsítványt) szeretne a webalkalmazáshoz kötni, az [App Service-csomagnak](https://azure.microsoft.com/pricing/details/app-service/) az **Alapszintű**, **Standard**, **Prémium** vagy **Izolált** szinten kell lennie. Ebben a lépésben ellenőrzi, hogy a webalkalmazás a támogatott tarifacsomagban van-e.
 
-### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Nyissa meg az [Azure Portalt](https://portal.azure.com).
+Nyissa meg az [Azure portált](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Keresse meg a webalkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd a webalkalmazás nevére.
+Keresse meg és válassza ki a **app Services**.
 
-![Webalkalmazás kiválasztása](./media/app-service-ssl-prepare-app/select-app.png)
+![App Services kiválasztása](./media/app-service-ssl-prepare-app/app-services.png)
+
+A **app Services** lapon válassza ki az Azure-alkalmazás nevét.
+
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-ssl-prepare-app/select-app.png)
 
 A webalkalmazás felügyeleti lapjára jut.  
 
@@ -41,7 +45,7 @@ Ellenőrizze, hogy a webalkalmazás nem az **F1** vagy a **D1** szinten van-e. A
 
 ![A tarifacsomag ellenőrzése](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-Az egyéni SSL nem támogatott az **F1** és a **D1** szinten. Ha vertikális felskálázásra van szüksége, kövesse az alábbi szakaszban található lépéseket. Egyébként zárja be a **vertikális felskálázás** lapon, majd ugorjon a [az App Service-csomag vertikális felskálázása](#scale-up-your-app-service-plan) szakaszban.
+Az egyéni SSL nem támogatott az **F1** és a **D1** szinten. Ha vertikális felskálázásra van szüksége, kövesse az alábbi szakaszban található lépéseket. Ellenkező esetben zárjuk be a vertikális **felskálázás** lapot, és hagyja [ki a app Service-csomag vertikális felskálázása](#scale-up-your-app-service-plan) szakaszt.
 
 ### <a name="scale-up-your-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 

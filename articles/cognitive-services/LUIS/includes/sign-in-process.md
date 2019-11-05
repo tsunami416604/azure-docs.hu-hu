@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 00eb6f40e77cbdb64249600e35ca8531f1a744a8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1effd07cef439a6257028549b7b7114b742eb478
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258137"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488759"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Bejelentkezés a LUIS portálra
 
@@ -41,8 +41,8 @@ A LUIS új felhasználójának a következő eljárást kell követnie:
 
 1. Megjelenik a létrehozandó erőforrás összegzése. Kattintson a **Tovább** gombra.
 
-    ![Szerzői erőforrás létrehozása](./media/sign-in-confirm-key-selection.png)
+    ![Szerzői erőforrás létrehozása](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. A 3. lépés megerősítő. A **Folytatás**gombra kattintva erősítse meg a kijelölést. 
+1. Erősítse meg a **Folytatás**lehetőséget. 
 
-    ![Szerzői erőforrás létrehozása](./media/sign-in-confirm-continue.png)
+    ![Szerzői erőforrás létrehozása](../media/sign-in/sign-in-confirm-continue.png)

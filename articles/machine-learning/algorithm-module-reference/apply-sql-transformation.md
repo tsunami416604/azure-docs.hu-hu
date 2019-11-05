@@ -1,5 +1,5 @@
 ---
-title: SQL-transzformáció alkalmazása
+title: SQL-átalakítás alkalmazása
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan használhatja az SQL-transzformációs modult a Azure Machine Learning szolgáltatásban egy SQLite-lekérdezés futtatásához a bemeneti adatkészleteken az adatok átalakításához.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 8eede9d1fbee7d8b70f6b6924b9767b4d3f4e0bf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694635"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493916"
 ---
-# <a name="apply-sql-transformation"></a>SQL-transzformáció alkalmazása
+# <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
 
-Ez a cikk a Azure Machine Learning Visual Interface modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
   
@@ -33,7 +33,7 @@ Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Az SQL-transzformáció alkalmazásának konfigurálása  
 
-A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a `t1`, a `t2` és a `t3` nevet kell használnia. A tábla száma a bemeneti port indexét jelzi.  
+A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a `t1`, a `t2`és a `t3`nevet kell használnia. A tábla száma a bemeneti port indexét jelzi.  
   
 A fennmaradó paraméter egy SQL-lekérdezés, amely az SQLite szintaxist használja. Ha több sort ír be az **SQL-parancsfájl** szövegmezőbe, használjon pontosvesszőt az egyes utasítások megszakításához. Ellenkező esetben a sortörések szóközökre lesznek konvertálva.  
 
@@ -55,13 +55,13 @@ Bár az SQLite az ANSI SQL standard nagy részét is támogatja, nem tartalmazza
   
 - `LEFT OUTER JOIN` implementálva van, de nem `RIGHT OUTER JOIN` vagy `FULL OUTER JOIN`.  
 
-- A `ALTER TABLE` paranccsal `RENAME TABLE` és `ADD COLUMN` utasításokat is használhat, de más záradékok nem támogatottak, például `DROP COLUMN`, `ALTER COLUMN` és `ADD CONSTRAINT`.  
+- A `ALTER TABLE` paranccsal `RENAME TABLE` és `ADD COLUMN` utasításokat is használhat, de más záradékok nem támogatottak, például `DROP COLUMN`, `ALTER COLUMN`és `ADD CONSTRAINT`.  
   
-- Létrehozhat egy nézetet SQLite-n belül, de ezt követően a nézetek csak olvashatók. Nézeteken nem hajtható végre `DELETE`, `INSERT` vagy `UPDATE` utasítás. Létrehozhat azonban egy olyan eseményindítót, amely egy nézet `DELETE`, `INSERT` vagy `UPDATE`t próbál végrehajtani, és más műveleteket hajt végre az eseményindító törzsében.  
+- Létrehozhat egy nézetet SQLite-n belül, de ezt követően a nézetek csak olvashatók. Nézeteken nem hajtható végre `DELETE`, `INSERT`vagy `UPDATE` utasítás. Létrehozhat azonban egy olyan eseményindítót, amely egy nézet `DELETE`, `INSERT`vagy `UPDATE`t próbál végrehajtani, és más műveleteket hajt végre az eseményindító törzsében.  
   
 
 A hivatalos SQLite webhelyen elérhető nem támogatott függvények listája mellett a következő wiki a többi nem támogatott funkció listáját tartalmazza: [SQLite –](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql) nem támogatott SQL  
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

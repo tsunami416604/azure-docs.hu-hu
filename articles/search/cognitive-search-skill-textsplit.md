@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479655"
 ---
 # <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
@@ -33,7 +33,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 |--------------------|-------------|
 | textSplitMode      | Vagy "Pages" vagy "mondatok" | 
 | maximumPageLength | Ha a textSplitMode "Pages" értékre van állítva, akkor a `String.Length`alapján mért maximális oldalszámra hivatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
-| defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint a kínai, Japán és koreai nyelveken.</li></ul>  |
+| defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint például a kínai, a japán és a koreai nyelv.</li><li>Ha nem ismeri a nyelvet (azaz a szöveget a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)való bevitelre kell bontania), az alapértelmezett angol (en) értéknek elegendőnek kell lennie. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
@@ -41,7 +41,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | Paraméter neve       | Leírás      |
 |----------------------|------------------|
 | szöveg  | Az alsztringbe feldarabolt szöveg |
-| languageCode  | Választható A dokumentumhoz tartozó nyelvi kód.  |
+| languageCode  | Választható A dokumentumhoz tartozó nyelvi kód. Ha nem ismeri a nyelvet (azaz a szöveget fel kell osztania a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), akkor a rendszer biztonságosan eltávolítja a bemenetet.  |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei 
 
@@ -130,7 +130,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 ## <a name="error-cases"></a>Hibák esetei
 Ha a nyelv nem támogatott, a rendszer figyelmeztetést generál, és a szöveg a karakter határain belülre van bontva.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

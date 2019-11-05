@@ -1,93 +1,98 @@
 ---
-title: Függőségi vizualizáció a Azure Migrateban | Microsoft Docs
+title: Függőségek vizualizációja az Azure Migrate-ben
 description: Áttekintést nyújt az értékelési számításokról a Azure Migrate Server Assessment Service-ben
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178121"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489211"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
-Azure Migrate: a kiszolgáló értékelése kiértékeli a helyszíni gépek csoportjait az Azure-ba való áttelepítéshez. Csoportok létrehozásához használhatja a kiszolgáló értékelése függőségi vizualizáció funkcióját. Ez a cikk a szolgáltatással kapcsolatos információkat tartalmaz.
+Ez a cikk a függőségek vizualizációs szolgáltatását ismerteti Azure Migrate: Server Assessment.
+
+A függőségi vizualizáció segítségével megismerheti a felmérni és áttelepíteni kívánt gépek közötti függőségeket. Jellemzően függőségi leképezést használ, ha a magasabb szintű megbízhatóságú gépeket szeretné felmérni.
+
+- Azure Migrate: a kiszolgáló értékelése során összegyűjtheti a gépeket csoportokba az értékeléshez. A csoportok általában az áttelepíteni kívánt gépekből állnak, és a függőségek vizualizációja segít a számítógépek függőségeinek átadásában, hogy pontosan csoportosítsa a gépeket.
+- A vizualizáció használatával felderítheti azokat az egymástól függő rendszereket, amelyeknek együtt kell áttelepíteniük. Meghatározhatja, hogy a futó rendszerek továbbra is használatban vannak-e, illetve hogy a rendszerek levonhatók-e az áttelepítés helyett.
+- A függőségek megjelenítésével gondoskodhat arról, hogy semmi ne maradjon hátra, és elkerülje a kiesést az áttelepítés során.
+- Ez a funkció különösen akkor hasznos, ha nem teljes mértékben ismeri az alkalmazások részét képező gépeket, ezért az Azure-ba kell migrálni.
+
 
 > [!NOTE]
 > A függőségi vizualizáció funkció Azure Governmentban nem érhető el.
 
-## <a name="overview"></a>Áttekintés
+## <a name="agent-based-and-agentless"></a>Ügynök-alapú és ügynök nélküli
 
-A kiszolgáló értékelése során a függőségi vizualizáció lehetővé teszi, hogy nagy megbízhatóságú csoportokat hozzon létre az áttelepítési felmérésekhez. A függőségi vizualizáció használatával megtekintheti a gépek hálózati függőségeit, és azonosíthatja azokat a kapcsolódó gépeket, amelyeket az Azure-ba kell migrálni. Ez a funkció olyan esetekben hasznos, amikor nem teljesen ismeri az alkalmazást alkotó gépeket, és az Azure-ba kell migrálni.
+A függőségi vizualizáció üzembe helyezésének két lehetősége van:
 
-## <a name="before-you-start"></a>Előkészületek
+- **Ügynök nélküli függőségi vizualizáció**: Ez a beállítás jelenleg előzetes verzióban érhető el. Nem szükséges ügynököket telepíteni a gépekre. 
+    - Úgy működik, hogy rögzíti a TCP-kapcsolatok adatait azokról a gépekről, amelyeken engedélyezve van. [Részletek](how-to-create-group-machine-dependencies-agentless.md).
+A függőségi felderítés elindítása után a készülék öt perces lekérdezési időköz alapján gyűjt adatokat a gépekről.
+    - A rendszer a következő adatokat gyűjti össze:
+        - TCP-kapcsolatok
+        - Aktív kapcsolattal rendelkező folyamatok nevei
+        - A fenti folyamatokat futtató telepített alkalmazások nevei
+        - Nem. az összes lekérdezési időszakban észlelt kapcsolatok
+- **Ügynök-alapú függőségi vizualizáció**: az ügynök-alapú függőségi vizualizáció használatához le kell töltenie és telepítenie kell az alábbi ügynököket minden olyan helyszíni gépen, amelyet elemezni szeretne.  
+    - A [Microsoft Monitoring Agentet (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) minden gépre fel kell telepíteni. [További](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) információ az MMA-ügynök telepítéséről.
+    - A [függőségi ügynököt](../azure-monitor/platform/agents-overview.md#dependency-agent) minden gépen telepíteni kell. [További](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) információ a függőségi ügynök telepítéséről.
+    - Továbbá ha olyan gépekkel rendelkezik, amelyeken nincs internetkapcsolat, ezekre le kell töltenie és telepítenie kell a Log Analytics-átjárót.
 
-- Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
-- Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
+## <a name="agent-based-requirements"></a>Ügynök-alapú követelmények
 
-## <a name="how-does-it-work"></a>Hogyan működik?
+### <a name="what-do-i-need-to-deploy-dependency-visualization"></a>Mire van szükség a függőségi vizualizáció üzembe helyezéséhez?
+
+A függőségi vizualizáció üzembe helyezése előtt rendelkeznie kell egy Azure Migrate-projekttel, és a Azure Migrate: Server Assessment Tool hozzáadva a projekthez. A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni gépek felderítése érdekében.
+
+[További](how-to-assess.md) információ az eszköz hozzáadásáról, valamint egy, a [Hyper-V](how-to-set-up-appliance-hyper-v.md), a [VMware](how-to-set-up-appliance-vmware.md)vagy a fizikai kiszolgálókhoz tartozó berendezések üzembe helyezéséről.
+
+
+### <a name="how-does-it-work"></a>Hogyan működik?
 
 A Azure Migrate a [Service Map](../operations-management-suite/operations-management-suite-service-map.md) megoldást használja [Azure monitor naplókban](../log-analytics/log-analytics-overview.md) a függőségi vizualizációhoz.
-- A függőségi vizualizáció kihasználása érdekében hozzá kell rendelnie egy Log Analytics munkaterületet, amely új vagy meglévő, egy Azure Migrate projekttel.
-- Csak abban az előfizetésben hozhat létre vagy csatolhat munkaterületet, ahol a Azure Migrate projektet létrehozták.
-- Log Analytics munkaterület csatolása egy projekthez:
-    1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **Áttekintés**elemre.
-    2. Az **Áttekintés**területen kattintson a lefelé mutató nyílra az **alapvető**erőforrások kibontásához.
-    3. A **OMS munkaterületen**kattintson a **Konfigurálás szükséges**elemre.
-    4. A **munkaterület konfigurálása**lapon adja meg, hogy új munkaterületet kíván-e létrehozni, vagy egy meglévőt szeretne használni:
-    
-    ![Munkaterület hozzáadása](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-- A munkaterület társítása során új munkaterületet kell létrehoznia, vagy egy meglévőt csatlakoztatni:
-  - Amikor új munkaterületet hoz létre, meg kell adnia a munkaterület nevét. Kiválaszthatja azt a [régiót](https://azure.microsoft.com/global-infrastructure/regions/) , amelyben a munkaterület létre lesz hozva.
-  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Vegye figyelembe, hogy csak azok a munkaterületek vannak felsorolva, amelyek olyan régióban lettek létrehozva, ahol a [Service Map támogatott](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). A munkaterület csatolásához győződjön meg arról, hogy van "olvasó" hozzáférése a munkaterülethez.
-
-  > [!NOTE]
-  > Miután csatolt egy munkaterületet egy projekthez, később nem módosítható.
-
-  > [!NOTE]
-  > Azure Migrate jelenleg az USA keleti, Délkelet-ázsiai és Nyugat-európai régióiban található Log Analytics-munkaterületek létrehozását vagy társítását támogatja. Ha a munkaterületet nem támogatott régió Azure Migrateján kívül hozza létre, a rendszer jelenleg nem társítható Azure Migrate projekthez. 
-
-- A társított munkaterület a kulcs **áttelepítési projektje**és az érték **projekt neve**alapján van címkézve, amely a Azure Portal való kereséshez használható.
-- A projekthez társított munkaterületre való belépéshez nyissa meg a projekt **áttekintő** oldalának **Essentials (alapvető** ) szakaszát, és nyissa meg a munkaterületet
+- A függőségi vizualizáció kihasználása érdekében hozzá kell rendelnie egy Log Analytics munkaterületet (új vagy meglévő) egy Azure Migrate projekthez.
+- A munkaterületnek ugyanahhoz az előfizetéshez kell tartoznia, mint amelyben a Azure Migrate projektet hozza létre.
+- Azure Migrate az USA keleti régiójában, Délkelet-Ázsiában és Nyugat-Európában található munkaterületeket támogatja. Más régiókban lévő munkaterületek nem társíthatók projekthez. Azt is vegye figyelembe, hogy a munkaterületnek olyan régióban kell lennie, amelyben a [Service Map támogatott](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).
+- Egy Azure Migrate projekt munkaterülete nem módosítható a hozzáadása után.
+- Log Analytics a Azure Migratehoz társított munkaterület az áttelepítési projekt kulcsával és a projekt nevével van megjelölve.
 
     ![Log Analytics munkaterület navigálása](./media/concepts-dependency-visualization/oms-workspace.png)
 
-A függőségek vizualizációjának használatához ügynököket kell letöltenie és telepítenie minden olyan helyszíni gépre, amelyet elemezni szeretne.  
 
-- A [Microsoft monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) szolgáltatást minden gépre telepíteni kell. [További](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) információ az MMA-ügynök telepítéséről.
-- A [függőségi ügynököt](../azure-monitor/platform/agents-overview.md#dependency-agent) minden gépen telepíteni kell. [További](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) információ a függőségi ügynök telepítéséről.
-- Továbbá ha olyan gépekkel rendelkezik, amelyeken nincs internetkapcsolat, ezekre le kell töltenie és telepítenie kell a Log Analytics-átjárót.
 
-Nincs szüksége ezekre az ügynökökre azon gépeken, amelyeket fel szeretne mérni, hacsak nem használ függőségi vizualizációt.
+### <a name="do-i-need-to-pay-for-it"></a>Kell fizetnem?
 
-## <a name="do-i-need-to-pay-for-it"></a>Kell fizetnem?
+A függőségi vizualizációhoz Service Map és társított Log Analytics munkaterület szükséges. 
 
-A függőség vizualizációs funkciója díjmentesen elérhető. A kiszolgálók értékelése során a függőségi vizualizáció funkció használatához Service Map szükséges, és a Azure Migrate projekthez hozzá kell rendelnie egy Log Analytics-munkaterületet (új vagy meglévő). A kiszolgáló értékelése során a függőségi vizualizáció funkció az első 180 napra ingyenes.
-
-1. A Log Analytics munkaterület Service Mapon kívüli bármely más megoldás használata esetén a [standard log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) díjat számítjuk fel.
-2. Az áttelepítési forgatókönyvek további költségek nélkül történő támogatásához a Service Map megoldás nem számít fel díjat az Log Analytics munkaterület Azure Migrate projekthez való társításának napjától számított első 180 nap után. 180 nap után a standard Log Analytics díjak érvényesek lesznek.
-
-Amikor ügynököt regisztrál a munkaterületre, használja a projekt által megadott azonosítót és kulcsot az ügynök telepítése lépések oldalon.
-
-A Azure Migrate-projekt törlésekor a munkaterület nem törlődik vele együtt. A projekt törlését követően a Service Map használat nem lesz ingyenes, és az egyes csomópontok a Log Analytics munkaterület fizetős szintjéhez hasonlóan lesznek felszámítva.
-
-> [!NOTE]
-> A függőségi vizualizáció funkció a Service Map Log Analytics munkaterületen keresztül használja. 2018. február 28-án, a Azure Migrate általános elérhetőségének bejelentésével a szolgáltatás díjmentesen elérhető. Létre kell hoznia egy új projektet, amely az ingyenes használati munkaterület használatát teszi elérhetővé. A meglévő munkaterületek az általános elérhetőség előtt továbbra is díjkötelesek, ezért javasoljuk, hogy váltson át egy új projektre.
+- Az Service Map-megoldás nem számít fel díjat az első 180 nap során. Ez az a nap, amikor a Log Analytics munkaterületet a Azure Migrate projekttel társította.
+- 180 nap után a standard Log Analytics díjak érvényesek lesznek.
+- A társított Log Analytics-munkaterületen a Service Maptól eltérő bármely megoldás használata esetén a rendszer [standard log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) díjat számít fel.
+- A Azure Migrate-projekt törlésekor a munkaterület nem törlődik vele együtt. A projekt törlése után Service Map használat nem ingyenes, és az egyes csomópontok a Log Analytics munkaterület fizetős szintjéhez hasonlóan lesznek felszámítva.
 
 További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/pricing/details/azure-migrate/) talál.
 
-## <a name="how-do-i-manage-the-workspace"></a>Hogyan felügyeli a munkaterületet?
+> [!NOTE]
+> Ha olyan projektekkel rendelkezik, amelyeket az általános rendelkezésre állás Azure Migrate a 2018. február 28. előtt hozott létre, előfordulhat, hogy további Service Map díjat is felmerült. Annak biztosítása érdekében, hogy csak 180 nap után fizessen, javasoljuk, hogy hozzon létre egy új projektet, mivel a meglévő munkaterületek továbbra is felszámítva maradnak.
 
-A Log Analytics munkaterületet Azure Migraten kívül is használhatja. Ha törli azt a Azure Migrate projektet, amelyben létrehozták, nem törli a rendszer. Ha már nincs szüksége a munkaterületre, [törölje](../azure-monitor/platform/manage-access.md) manuálisan.
 
-Ne törölje a Azure Migrate által létrehozott munkaterületet, hacsak nem törli a Azure Migrate projektet. Ha így tesz, a függőségi vizualizáció funkció nem a várt módon fog működni.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="how-do-i-manage-the-workspace"></a>Hogyan felügyeli a munkaterületet?
+
+- Amikor ügynököt regisztrál a munkaterületre, a Azure Migrate-projekt által megadott azonosítót és kulcsot használja.
+- A Log Analytics munkaterületet Azure Migraten kívül is használhatja.
+- Ha törli a társított Azure Migrate projektet, a munkaterület nem törlődik automatikusan. [Manuálisan kell törölnie](../azure-monitor/platform/manage-access.md).
+- Ne törölje a Azure Migrate által létrehozott munkaterületet, hacsak nem törli a Azure Migrate projektet. Ha így tesz, a függőségi vizualizáció funkció nem a várt módon fog működni.
+
+## <a name="next-steps"></a>További lépések
 - [Gépek csoportosítása számítógép-függőségek használatával](how-to-create-group-machine-dependencies.md)
 - [További](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) információ a függőségi vizualizációval kapcsolatos gyakori kérdésekért.
+
+

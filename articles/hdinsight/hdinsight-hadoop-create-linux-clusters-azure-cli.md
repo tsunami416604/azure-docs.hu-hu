@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809860"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494807"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-fürtök létrehozása az Azure CLI használatával
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -46,12 +46,12 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
 
     |Paraméter | Leírás |
     |---|---|
-    |`--size`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a változót `clusterSizeInNodes` használja az `--size`átadott értékként. |
-    |`--version`| A HDInsight-fürt verziója. Ez a cikk a változót `clusterVersion` használja az `--version`átadott értékként. Lásd még: [Támogatott HDInsight-verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| A HDInsight-fürt típusa, például: Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  Ez a cikk a változót `clusterType` használja az `--type`átadott értékként. Lásd még: [A fürtök típusai és konfigurációja](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
-    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a változót `componentVersion` használja az `--component-version`átadott értékként. Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--size`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a `clusterSizeInNodes` változót használja `--size`nak átadott értékként. |
+    |`--version`| A HDInsight-fürt verziója. Ez a cikk a `clusterVersion` változót használja `--version`nak átadott értékként. Lásd még: [támogatott HDInsight-verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| A HDInsight-fürt típusa, például: Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  Ez a cikk a `clusterType` változót használja `--type`nak átadott értékként. Lásd még: [fürtök típusai és konfigurálása](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a `componentVersion` változót használja `--component-version`nak átadott értékként. Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-    `RESOURCEGROUPNAME` Cseréljele`STORAGEACCOUNTNAME`a,, ,,`PASSWORD` és értéket a kívánt értékekre. `CLUSTERNAME` `LOCATION` Szükség szerint módosítsa a többi változó értékét. Ezután írja be a CLI-parancsokat.
+    Cserélje le a `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`és `PASSWORD` értékeket a kívánt értékekre. Szükség szerint módosítsa a többi változó értékét. Ezután írja be a CLI-parancsokat.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,7 +76,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő té
         --name $resourceGroupName
     ```
 
-    Az érvényes helyszínek listájához használja a `az account list-locations` parancsot, majd használja az `name` érték egyik helyét.
+    Az érvényes helyszínek listáját a `az account list-locations` parancs használatával adja meg, majd használja a `name` érték egyikének helyét.
 
 4. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) az alábbi parancs beírásával:
 

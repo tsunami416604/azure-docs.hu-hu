@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073210"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470587"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
 Azure App Service Environment a Azure App Service központi telepítése az ügyfél Azure-beli virtuális hálózatában lévő alhálózatba. A következőkből áll:
 
-- **Előtér**-végpontok: Az előtér a HTTP/HTTPS megszakítása egy App Service környezetben (bemutató).
-- Feldolgozók: A feldolgozók az alkalmazásokat üzemeltető erőforrások.
-- **Adatbázis**: Az adatbázis a környezetet meghatározó információkat tartalmazza.
-- **Tárterület**: A tároló a felhasználó által közzétett alkalmazások üzemeltetésére szolgál.
+- **Előtér**: az ELŐTÉR a HTTP/HTTPS megszakítása egy app Service környezetben (bemutató).
+- **Dolgozók**: a dolgozók az alkalmazásokat üzemeltető erőforrások.
+- **Adatbázis**: az adatbázis a környezetet meghatározó információkat tartalmazza.
+- **Tárolás**: a tároló a felhasználó által közzétett alkalmazások üzemeltetésére szolgál.
 
 > [!NOTE]
 > A App Service Environment két verziója létezik: ASEv1 és ASEv2. A ASEv1-ben a használat előtt kezelnie kell az erőforrásokat. A ASEv1 konfigurálásával és kezelésével kapcsolatos információkért lásd: [app Service Environment v1 konfigurálása][ConfigureASEv1]. A cikk többi része a ASEv2 koncentrál.
@@ -47,7 +47,7 @@ Ha nem rendelkezik központilag, a létrehozásához kövesse az [app Service-k�
 
 Alkalmazás létrehozása a kiegészítőben:
 
-1. Válassza **az erőforrás** > létrehozása**web és mobil** > **webalkalmazás**lehetőséget.
+1. Válassza **az erőforrás létrehozása** > **web és mobil** > **webalkalmazás**lehetőséget.
 
 2. Adja meg az alkalmazás nevét. Ha már kiválasztott egy App Service-csomagot a központhoz, az alkalmazás tartományneve a betanító tartománynevet is tartalmazza.
 
@@ -105,7 +105,7 @@ Az előtér-erőforrások a szolgáltatáshoz tartozó HTTP/HTTPS-végpont. Az a
 
 ## <a name="app-access"></a>Alkalmazás-hozzáférés ##
 
-Egy külső beadásban az alkalmazások létrehozásakor használt tartomány eltér a több-bérlős App Servicetól. Magában foglalja a kiegészítő csomag nevét. További információ a külső kiegészítő szolgáltatás létrehozásáról: [app Service környezet][MakeExternalASE]létrehozása. A külső kiegészítő szolgáltatásban lévő tartománynév a következőképpen néz ki: *.&lt; asename&gt;. p.azurewebsites.net*. Ha például a szolgáltató neve _külső-_ bemutató, és egy _contoso_ nevű alkalmazást üzemeltet a kiegészítőben, akkor a következő URL-címeken érheti el:
+Egy külső beadásban az alkalmazások létrehozásakor használt tartomány eltér a több-bérlős App Servicetól. Magában foglalja a kiegészítő csomag nevét. További információ a külső kiegészítő szolgáltatás létrehozásáról: [app Service környezet][MakeExternalASE]létrehozása. Egy külső betekintő tartománynév a következőhöz hasonló: *.&lt;asename&gt;. p.azurewebsites.net*. Ha például a szolgáltató neve _külső-_ bemutató, és egy _contoso_ nevű alkalmazást üzemeltet a kiegészítőben, akkor a következő URL-címeken érheti el:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
@@ -133,7 +133,7 @@ A közzétételsel kapcsolatos legfontosabb különbség egy ILB-bevezető. A IL
 
 Az internetalapú CI-rendszerek (például a GitHub és az Azure DevOps) nem működnek a ILB-bevezetéssel, mert a közzétételi végpont nem érhető el az interneten. Az Azure DevOps esetében úgy is megkerülhető, ha a belső hálózatban telepít egy saját üzemeltetésű kiadási ügynököt, ahol elérheti a ILB. Azt is megteheti, hogy olyan CI-rendszer használatát is használja, amely lekéréses modellt, például Dropbox-t használ.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés** > **alapjai** és a **Tulajdonságok**területén is). 
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **áttekintés** > **Essentials** , valamint a **Tulajdonságok**részben). 
 
 ## <a name="pricing"></a>Díjszabás ##
 
@@ -179,7 +179,7 @@ A bemutató rendszer törlése:
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515206"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494469"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Rövid útmutató: személyre szabott ügyféloldali kódtár a Node. js-hez
 
@@ -26,7 +26,7 @@ Ismerkedjen meg a következővel: Node. js-hez készült személyre szabott ügy
  * A személyre szabási műveletek listájának rangsorolása.
  * A legjobb rangsorolt művelet sikerességét jelző jelentés jutalmazási pontszáma.
 
-[Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  | [csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ Ismerkedjen meg a következővel: Node. js-hez készült személyre szabott ügy
 A rövid útmutató használatának számos lépése van:
 
 * A Azure Portal hozzon létre egy személyre szabott erőforrást
-* A Azure Portal a személyre szabott erőforráshoz a **Beállítások** lapon módosítsa a modell frissítési gyakoriságát
+* A Azure Portal a személyre szabott erőforráshoz a **konfiguráció** lapon módosítsa a modell frissítési gyakoriságát
 * Egy Kódszerkesztő alkalmazásban hozzon létre egy kódot tartalmazó fájlt, és szerkessze a kódot.
 * A parancssorban vagy a terminálban telepítse az SDK-t a parancssorból.
 * A parancssorban vagy a terminálban futtassa a fájl kódját.
@@ -68,7 +68,7 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-@No__t_1 fájl létrehozásához futtassa a `npm init -y` parancsot. 
+`package.json` fájl létrehozásához futtassa a `npm init -y` parancsot. 
 
 ```console
 npm init -y
@@ -90,7 +90,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-A Azure Portal a **Beállítások** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
+A Azure Portal a **konfiguráció** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
 
 ![Modell frissítési gyakoriságának módosítása](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -116,7 +116,7 @@ Ezek a kódrészletek megmutatják, hogyan hajthatja végre a következőket a k
 
 ## <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Hozzon létre egy új Node. js-alkalmazást az előnyben részesített szerkesztőben vagy `sample.js` nevű IDE. 
+Hozzon létre egy új Node. js-alkalmazást az előnyben részesített szerkesztőben vagy `sample.js`nevű IDE. 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
@@ -126,7 +126,7 @@ Nyissa meg a **sample. js** fájlt az előnyben részesített szerkesztőben vag
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_KEY` és `PERSONALIZER_ENDPOINT` nevű környezeti változókból. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_KEY` és `PERSONALIZER_ENDPOINT`nevű környezeti változókból. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
 
 [!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
 
@@ -189,10 +189,10 @@ node sample.js
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[A megszemélyesítő működése](how-personalizer-works.md)

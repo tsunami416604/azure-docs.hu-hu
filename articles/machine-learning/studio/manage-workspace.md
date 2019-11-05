@@ -1,7 +1,7 @@
 ---
-title: A Machine Learning Studio-munkaterület kezelése
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio-munkaterületek, való hozzáférés kezelése és üzembe helyezése és kezelése a Machine Learning API-webszolgáltatások
+title: Machine Learning Studio (klasszikus) munkaterület kezelése
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Azure Machine Learning Studio (klasszikus) munkaterületek hozzáférésének kezelése, valamint Machine Learning API-webszolgáltatások üzembe helyezése és kezelése
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,43 +10,43 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: a947f9a94dd4ceed624e6b04a671b21b8926d25e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f514079379143e001d72c0e6618c88e2fbb283b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322787"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489220"
 ---
-# <a name="manage-an-azure-machine-learning-studio-workspace"></a>Az Azure Machine Learning Studio-munkaterület kezelése
+# <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület kezelése
 
 > [!NOTE]
-> A Machine Learning Web Services portálon webszolgáltatások kezelésével kapcsolatban további információkért lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md).
+> A webszolgáltatások Machine Learning webszolgáltatások portálján való kezelésével kapcsolatos információkért lásd: [webszolgáltatások kezelése a Azure Machine learning webszolgáltatások portálján](manage-new-webservice.md).
 > 
 > 
 
-A Machine Learning Studio-munkaterületek az Azure Portalon kezelheti.
+A Azure Portal Machine Learning Studio (klasszikus) munkaterületeket is kezelheti.
 
 
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A Studio-munkaterület az Azure Portalon kezelheti:
+A Studio (klasszikus) munkaterületének kezelése a Azure Portalban:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy Azure-előfizetéshez rendszergazdai fiókkal.
-2. A keresőmezőbe, a lap tetején adja meg a "machine learning Studio-munkaterületek", és adja meg **a Machine Learning Studio-munkaterületek**.
-3. Kattintson a kezelni kívánt munkaterülethez.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) egy Azure-előfizetés rendszergazdai fiók használatával.
+2. A lap tetején található keresőmezőbe írja be a "Machine learning Studio (klasszikus) munkaterületek" kifejezést, majd válassza a **Machine learning Studio (klasszikus) munkaterületek**lehetőséget.
+3. Kattintson a kezelni kívánt munkaterületre.
 
-Standard erőforrásadatok felügyeleti és a rendelkezésre álló lehetőségek mellett a következő műveletek végezhetők el:
+A szabványos erőforrás-kezelési információk és a rendelkezésre álló lehetőségek mellett a következőket teheti:
 
-- Nézet **tulajdonságok** – ezen a lapon látható a munkaterület és az erőforrás adatait, és módosíthatja az előfizetésben és erőforráscsoportban csoport, amely ehhez a munkaterülethez van csatlakoztatva.
-- **Tárkulcsok újraszinkronizálása** – a munkaterület fenntart a tárfiókhoz kulcsot. A storage-fiók kulcsok megváltozik, akkor kattintson **kulcsok újraszinkronizálása** a kulcsok szinkronizálása a munkaterületen.
+- **Tulajdonságok** megtekintése – ezen a lapon látható a munkaterület és az erőforrás adatai, és módosíthatja azt az előfizetést és erőforráscsoportot, amelyhez ez a munkaterület csatlakozik.
+- A **tárolási kulcsok újraszinkronizálása** – a munkaterület kulcsok megtartása a Storage-fiókban. Ha a Storage-fiók megváltoztatja a kulcsokat, kattintson a **kulcsok újraszinkronizálása** lehetőségre a kulcsok munkaterülettel való szinkronizálásához.
 
-A webes szolgáltatások a Studio-munkaterülethez társított kezeléséhez használja a Machine Learning webszolgáltatások portálján. Lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md) teljes körű információkat.
+A Studio (klasszikus) munkaterülethez társított webszolgáltatások kezeléséhez használja a Machine Learning Web Services portált. A teljes körű tájékoztatásért lásd: [webszolgáltatások kezelése a Azure Machine learning webszolgáltatások portálján](manage-new-webservice.md) .
 
 > [!NOTE]
-> Telepítenie és felügyelnie az új webszolgáltatások, hozzá kell rendelni egy közreműködőjének vagy rendszergazdájának szerepkört az előfizetésre, amelyre a web service telepítve van. A machine learning Studio-munkaterület egy másik felhasználó meghívása meg, ha kell rendelnie őket az előfizetés közreműködőjének vagy rendszergazdájának szerepkörhöz üzembe helyezése vagy webszolgáltatások kezelése előtt. 
+> Új webszolgáltatások üzembe helyezéséhez vagy kezeléséhez hozzá kell rendelni egy közreműködői vagy rendszergazdai szerepkört azon az előfizetésen, amelyhez a webszolgáltatás telepítve van. Ha egy másik felhasználót egy Machine learning Studio (klasszikus) munkaterületre hívja meg, akkor a webszolgáltatások üzembe helyezése vagy kezelése előtt hozzá kell rendelnie őket egy közreműködői vagy rendszergazdai szerepkörhöz az előfizetésben. 
 > 
->Hozzáférési engedélyek beállítása a további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
+>A hozzáférési engedélyek beállításával kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [Machine Learning az Azure Resource Manager-sablonok üzembe helyezése](deploy-with-resource-manager-template.md). 
+* További információ a [Machine Learning Azure Resource Manager-sablonokkal való üzembe helyezéséről](deploy-with-resource-manager-template.md). 

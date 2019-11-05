@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Pontos szöveges egyezés – LUIS'
+title: 'Oktatóanyag: pontos szöveges egyezés – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Elemek előre meghatározott listájával egyező adatok lekérése. A lista minden elemének lehetnek pontosan megegyező szinonimái
 services: cognitive-services
@@ -9,24 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307615"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492703"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: Pontos szöveggel egyező adatok beolvasása a teljes használatból
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: pontos szöveggel egyező adatok beolvasása a teljes használatból
 
 Ebből az oktatóanyagból megtudhatja, hogyan kérhet le olyan entitás-adatokat, amelyek megfelelnek az előre meghatározott elemek listájának. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * App létrehozása
+> * Alkalmazás létrehozása
 > * Szándék hozzáadása
 > * Listaentitás hozzáadása 
 > * Betanítás 
@@ -104,9 +106,9 @@ Az egyes elemek elsődleges, _kanonikus_és neve a részleg neve. Az egyes kanon
 
 1. A felugró párbeszédpanelen adja meg az `Department` értéket az entitás neveként, és a **List** (Lista) értéket az entitás típusaként. Válassza a **Done** (Kész) lehetőséget.  
 
-    [![Új entitás felugró párbeszédpanel létrehozásának képernyőképe](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "létrehozása új entitás felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![Képernyőfelvétel: új entitás előugró ablakának létrehozása párbeszédpanel](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Képernyőfelvétel: új entitás előugró ablakának létrehozása párbeszédpanel")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-1. Az részleg entitása lapon adja meg `Accounting` az új értéket.
+1. Az részleg entitása lapon adja meg a `Accounting` értéket az új értékként.
 
 1. Szinonimák esetében adja hozzá az előző táblázat szinonimáit.
 
@@ -128,7 +130,7 @@ Az egyes elemek elsődleges, _kanonikus_és neve a részleg neve. Az egyes kanon
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-1. Lépjen az URL-cím végéhez, és írja be a következőt: `shift Joe Smith to IT`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **q**uery. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a `Department` szándékot kell visszaadnia, kinyerve a következőt: `TransferEmployeeToDepartment`.
+1. Lépjen az URL-cím végéhez, és írja be a következőt: `shift Joe Smith to IT`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **q**uery. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a `TransferEmployeeToDepartment` szándékot kell visszaadnia, kinyerve a következőt: `Department`.
 
    ```json
     {

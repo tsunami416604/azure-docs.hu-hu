@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496127"
 ---
 Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni. 
 
@@ -19,7 +19,7 @@ Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni.
 >
 > További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a számítógép kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása: [kiszolgálói szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
@@ -55,12 +55,12 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
      ![SQL Database részletei](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Válassza a **kiépített** és a **Gen5**lehetőséget.
+   - Válassza ki a **kiépített**lehetőséget.
 
      ![Kiépített Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - Tekintse át a **maximális virtuális mag**, a **min virtuális mag**, az automatikus **szüneteltetési késleltetés**és az **adatmaximális méret**beállításait. Módosítsa ezeket a kívánt módon.
-   - Fogadja el az előnézet feltételeit, majd kattintson **az OK**gombra.
+   - Tekintse át a **virtuális mag**és az **adatmaximális méret**beállításait. Módosítsa ezeket a kívánt módon. 
+     - Lehetőség van arra is, hogy a **konfiguráció módosítása** elemre kattintva módosítsa a hardver generációját.
    - Kattintson az **Alkalmaz** gombra.
 
 5. Válassza a **További beállítások** lapot. 

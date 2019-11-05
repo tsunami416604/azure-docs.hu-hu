@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 06b16af941004f6506b43fb36b4d79297b403595
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695145"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486868"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
@@ -24,7 +24,7 @@ A nyomon követéssel és a kontextussal kezelheti a több fordulatot, más név
 
 Ha szeretné megtekinteni, hogyan működik a több funkció, tekintse meg az alábbi bemutató videót:
 
-[![Multi – beszélgetés bekapcsolása QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![több-turn beszélgetés a QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>Mi az a több fordulatos beszélgetés?
 
@@ -42,12 +42,10 @@ Az előző képen egy felhasználó elindított egy beszélgetést **a fiókom b
 
 Ha a felhasználó kiválaszt egy beállítást (#3), a rendszer a finomítási beállítások (#4) következő listáját mutatja be. Ez a folyamat addig folytatódik (#5), amíg a felhasználó nem határozza meg a helyes, végleges választ (#6).
 
-> [!NOTE]
-> Az előző képen a **többszörös bekapcsolás engedélyezése** jelölőnégyzet be van jelölve, hogy biztosan megjelenjenek a promptok. 
 
 ### <a name="use-multi-turn-in-a-bot"></a>Több bekapcsoló használata a robotban
 
-A környezetfüggő beszélgetés kezeléséhez módosítsa az ügyfélalkalmazás [kódját a robothoz való hozzáadásával](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting). A kód hozzáadása lehetővé teszi a felhasználók számára, hogy meglássák az utasításokat.  
+Miután közzétette a KB-ot, a **robot létrehozása** gombra kattintva üzembe helyezheti QnA Maker robotját az Azure bot Service-be. A promptok megjelennek a csevegési ügyfeleken, amelyeken engedélyezve van a robot.
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Többfordulatú beszélgetés létrehozása a dokumentumok struktúrájából
 
@@ -55,27 +53,27 @@ Ha létrehoz egy tudásbázist, a **tudásbáziscikk feltöltése** szakasz megj
 
 ![A többszörös Kibontás engedélyezésének jelölőnégyzete](../media/conversational-context/enable-multi-turn.png)
 
-Ha ezt a lehetőséget választja, a többfordulatú beszélgetés a dokumentum szerkezetétől is utalhat. Ha ez a struktúra létezik, QnA Maker létrehozza az importálási folyamat részeként megjelenő kérdéseit és válaszait. 
+Ha ezt a beállítást választja, QnA Maker kibontja a dokumentum struktúrájában lévő hierarchiát. A rendszer átalakítja a hierarchiát, hogy kövesse az utasításokat, és a hierarchia gyökerének szülő QnA kell szolgálnia. Egyes dokumentumokban a hierarchia gyökere nem rendelkezik olyan tartalommal, amely válaszként szolgálhat, megadhatja az "alapértelmezett válasz szövege" karakterláncot helyettesítő válaszként a hierarchiák kinyeréséhez.   
 
-A többszörös kapcsolási struktúra csak URL-címekből, PDF-fájlokból vagy DOCX-fájlokból következtethető ki. A struktúra példájának megtekintéséhez tekintse meg a [Microsoft Surface felhasználói manuális PDF-fájljának](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)képét. A PDF-fájl mérete miatt a QnA Maker erőforrás a (z) **b** (15 index) **keresési árképzési szintet** igényli, vagy nagyobb. 
+A többszörös kapcsolási struktúra csak URL-címekből, PDF-fájlokból vagy DOCX-fájlokból következtethető ki. A struktúra példájának megtekintéséhez tekintse meg a [Microsoft Surface felhasználói manuális PDF-fájljának](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)képét. 
 
 ![! [A felhasználói kézikönyv struktúrájának példája] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="determine-multi-turn-structure-from-format"></a>Többszörös kapcsolási struktúra meghatározása formátumból
+### <a name="building-your-own-multi-turn-document"></a>Saját multi-turn dokumentum kiépítése
 
-A QnA Maker több-turn struktúrát határoz meg a következőtől:
+Ha több bekapcsoló dokumentumot hoz létre, vegye figyelembe a következő irányelveket:
 
-* Fejléc betűmérete – ha stílust, színt vagy valamilyen más mechanizmust használ a dokumentum struktúrájának megjelenítéséhez, QnA Maker nem fogja kibontani a többszörös bekapcsolási utasításokat. 
+* Fejlécek és alfejlécek használatával jelezheti a hierarchiát. Például a H1 paraméterrel jelezheti, hogy a szülő QnA és a H2 jelzi a QnA, amelyet a rendszer kérni fog. A kisebb fejlécek méretének használata a későbbi hierarchia jelölésére. Ne használjon stílust, színt vagy valamilyen más mechanizmust a dokumentum struktúrájának megjelenítéséhez, QnA Maker nem fogja kibontani a többszörös bekapcsolási utasításokat. 
 
-A fejlécek szabályai a következők:
+* Ne fejezze be a fejlécet kérdőjeltel, `?`. 
 
-* Ne fejezze be a fejlécet kérdőjeltel, `?` értékkel. 
+* Példaként használhatja a [minta dokumentumot](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) a saját többfunkciós dokumentum létrehozásához.
 
-### <a name="add-file-with-multi-turn-prompts"></a>Fájl hozzáadása több bekapcsolási kéréssel
+### <a name="adding-files-to-a-multi-turn-kb"></a>Fájlok hozzáadása több fordulatos KB-hoz
 
-Ha többfordulatos dokumentumot ad hozzá, QnA Maker meghatározza a folyamaton belüli követési kéréseket a beszélgetési folyamat létrehozásához. 
+Hierarchikus dokumentum hozzáadásakor a QnA Maker a folyamaton belüli követő kéréseket határozza meg a beszélgetési folyamat létrehozásához. 
 
-1. A QnA Maker területen válasszon ki egy meglévő tudásbázist, amely az **URL-címek,. PDF vagy. docx fájlok többszörös kinyerésének engedélyezése** beállítással lett létrehozva. engedélyezve. 
+1. A QnA Maker területen válasszon ki egy meglévő tudásbázist, amely az **URL-címek,. PDF vagy. docx fájlok többszörös kinyerésének engedélyezése** beállítással lett létrehozva. Engedélyezve. 
 1. Lépjen a **Beállítások** lapra, és válassza ki a hozzáadni kívánt fájlt vagy URL-címet. 
 1. **Mentse és tanítsa** a tudásbázist.
 
@@ -85,13 +83,13 @@ Ha többfordulatos dokumentumot ad hozzá, QnA Maker meghatározza a folyamaton 
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tudásbázis létrehozása több bekapcsolási kéréssel a Create API használatával
 
-A [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával létrehozhat egy, a több bekapcsolást kérő kérdésekkel kapcsolatos tudásbázist. A rendszer a `context` tulajdonság `prompts` tömbben való hozzáadását kéri. 
+A [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával létrehozhat egy, a több bekapcsolást kérő kérdésekkel kapcsolatos tudásbázist. A rendszer hozzáadja az utasításokat a `context` tulajdonság `prompts` tömbben. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Kérdések és válaszok megjelenítése a kontextusban
 
 Csökkentse a megjelenő kérdés-válasz párokat, hogy csak a környezetfüggő beszélgetésekkel rendelkezők jelenjenek meg. 
 
-Válassza a **megtekintési beállítások**, majd a **környezet megjelenítése (előzetes verzió)** lehetőséget. A lista a követő kérdéseket tartalmazó kérdés-válasz párokat jeleníti meg. 
+Válassza a **megtekintési beállítások**, majd a **környezet megjelenítése**lehetőséget. A lista a követő kérdéseket tartalmazó kérdés-válasz párokat jeleníti meg. 
 
 ![Kérdés-válasz párok szűrése környezetfüggő beszélgetések alapján](../media/conversational-context/filter-question-and-answers-by-context.png)
 
@@ -111,9 +109,9 @@ Olyan meglévő kérdés-válasz párokhoz adja hozzá a követési kérést, am
 
 1. Ha egy meglévő kérdés-válasz párokat szeretne felvenni egy követő parancssorba, válassza ki a kérdés-válasz párok sorát. A felszín manuális megjelenítéséhez keressen rá a **kijelentkezés** gombra a lista csökkentése érdekében.
 1. A **kijelentkezés**sorában, a **Válasz** oszlopban válassza a **követő kérés hozzáadása**lehetőséget.
-1. Adja meg a következő értékeket a **követési kérés (előzetes verzió)** előugró ablakának mezőiben:
+1. A következő értékeket kell megadnia a **követési kérés** előugró ablakának mezőiben:
 
-    |Mező|Value|
+    |Mező|Érték|
     |--|--|
     |Szöveg megjelenítése|Adja meg **az eszköz kikapcsolását**. Ez a követési parancssorban megjelenítendő egyéni szöveg.|
     |Csak kontextus| Jelölje be ezt a jelölőnégyzetet. A rendszer csak akkor adja vissza a választ, ha a kérdés a kontextust adja meg.|
@@ -150,7 +148,7 @@ Amikor új kérdés-válasz párokat ad hozzá a tudásbázishoz, az egyes páro
 1. A kérdéshez tartozó **Válasz** oszlopban válassza a **következő üzenet hozzáadása**lehetőséget. 
 1. A követő **üzenet (előzetes verzió)** alatt hozzon létre egy új követő kérdést a következő értékek megadásával: 
 
-    |Mező|Value|
+    |Mező|Érték|
     |--|--|
     |Szöveg megjelenítése|*Hozzon létre egy Windows-fiókot*. A követő parancssorban megjelenítendő egyéni szöveg|
     |Csak kontextus|Jelölje be ezt a jelölőnégyzetet. A rendszer csak akkor adja vissza ezt a választ, ha a kérdés a kontextust adja meg.|
@@ -186,7 +184,7 @@ Ha nem engedélyezi a többszörös bekapcsolást, a rendszer visszaadja a vála
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Egy JSON-kérelem, amely egy kezdeti választ ad vissza, és követő kéréseket küld
 
-Az üres `context` objektum használatával kérje meg a választ a felhasználó kérdésére, és vegyen fel követő utasításokat. 
+Az üres `context` objektum használatával kérje a választ a felhasználó kérdésére, és vegyen fel követő utasításokat. 
 
 ```JSON
 {
@@ -265,7 +263,7 @@ Az előző szakaszban választ kértek, és a rendszer a **fiókokat és a bejel
 }
 ```
 
-A `prompts` tömb szövegeket biztosít a `displayText` tulajdonságban és a `qnaId` értékben. Ezeket a válaszokat a beszélgetési folyamat következő megjelenő lehetőségeiként jelenítheti meg, majd a kijelölt @no__t – 0 visszaküldheti a QnA Makernak a következő kérelemben. 
+A `prompts` tömb szövegeket biztosít a `displayText` tulajdonságban és a `qnaId` értéket. Ezeket a válaszokat a beszélgetési folyamat következő megjelenő lehetőségeiként jelenítheti meg, majd a kijelölt `qnaId` visszaküldheti QnA Makerre a következő kérelemben. 
 
 <!--
 
@@ -295,7 +293,7 @@ A következő JSON-kérelemben az aktuális kérdés a *Windows Hello használat
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Egy nem kezdeti válasz és követő kérések visszaadására szolgáló JSON-válasz
 
-Az QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a követő utasításokat az `answers` objektum első eleme `context` tulajdonságában:
+Az QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a következő utasításokat az `answers` objektum első eleme `context` tulajdonságában:
 
 ```JSON
 {
@@ -355,11 +353,8 @@ Az QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a követő utasításokat
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>A Tudásbázis lekérdezése a QnA Maker azonosítója alapján
 
-Az első kérdés válaszában a rendszer minden követő kérdést és a hozzá tartozó `qnaId` értéket adja vissza. Most, hogy már rendelkezik AZONOSÍTÓval, átadhatja ezt a követési kérés törzsében. Ha a kérelem törzse tartalmazza a `qnaId` és a környezeti objektumot (amely az előző QnA Maker tulajdonságokat tartalmazza), akkor a GenerateAnswer az azonosító alapján a pontos kérdést adja vissza ahelyett, hogy a rangsorolási algoritmus használatával megkeresi a választ a kérdés szövege alapján. 
+Ha többfordulatos funkciót használó egyéni alkalmazást hoz létre. Az első kérdés válaszában a rendszer a követő lépéseket és a hozzá tartozó `qnaId` adja vissza. Most, hogy már rendelkezik AZONOSÍTÓval, átadhatja ezt a követési kérés törzsében. Ha a kérelem törzse tartalmazza a `qnaId`t, és a környezeti objektum (amely az előző QnA Maker tulajdonságokat tartalmazza), akkor a GenerateAnswer az azonosító alapján a pontos kérdést adja vissza ahelyett, hogy a rangsorolási algoritmus használatával megkeresi a választ a kérdés szövege alapján. 
 
-## <a name="display-prompts-and-send-context-in-the-client-application"></a>A promptok megjelenítése és a kontextus küldése az ügyfélalkalmazás számára 
-
-A Tudásbázisban felvette a kérdéseit, és tesztelte a folyamatot a teszt ablaktáblán. Most ezeket az utasításokat kell használnia az ügyfélalkalmazás számára. A bot Framework esetében a promptok nem jelennek meg automatikusan az ügyfélalkalmazások számára. A promptokat javasolt műveletként vagy gombként jelenítheti meg a válasz részeként a felhasználó lekérdezésében az ügyfélalkalmazások számára, ehhez a [bot Framework mintát](https://aka.ms/qnamakermultiturnsample) is beleértve a kódban. Az ügyfélalkalmazás tárolja az aktuális QnA Maker azonosítót és a felhasználói lekérdezést, majd átadja azokat a [GENERATEANSWER API környezeti objektumában](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts) a következő felhasználói lekérdezéshez. 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>A megjelenítési sorrend támogatott a frissítési API-ban
 
@@ -367,7 +362,7 @@ A JSON-válaszban visszaadott [szöveg és megjelenítési sorrend](https://docs
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Több bekapcsolási kérés hozzáadása vagy törlése a frissítési API-val
 
-A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával több bekapcsolási kérést is hozzáadhat vagy törölhet.  A rendszer a `context` tulajdonság `promptsToAdd` tömbben és a `promptsToDelete` tömbben adja hozzá az utasításokat. 
+A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával több bekapcsolási kérést is hozzáadhat vagy törölhet.  A rendszer hozzáadja az utasításokat a `context` tulajdonság `promptsToAdd` tömbben és a `promptsToDelete` tömbben. 
 
 ## <a name="export-knowledge-base-for-version-control"></a>Tudásbázis exportálása a verziókövetés számára
 

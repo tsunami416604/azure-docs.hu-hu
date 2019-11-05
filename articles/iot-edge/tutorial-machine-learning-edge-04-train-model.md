@@ -1,6 +1,6 @@
 ---
-title: Betanítása és a modell üzembe helyezése – Machine Learning az Azure IoT Edge |} A Microsoft Docs
-description: Betanítása egy gépi tanulási modellt az Azure Machine Learning használatával, és a modell egy tárolórendszerképet, mint az Azure IoT Edge-modul telepíthető, majd csomagot.
+title: Modell betanítása és üzembe helyezése Machine Learning Azure IoT Edgeon | Microsoft Docs
+description: Gépi tanulási modell betanítása Azure Machine Learning használatával, majd a modell becsomagolása Azure IoT Edge modulként üzembe helyezhető tároló lemezképként.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,121 +8,121 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: acf0b1984eb3e68858be6ed68731612448e672f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493990"
 ---
-# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning-modell betanítása és üzembe helyezése
+# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
 > [!NOTE]
-> Ez a cikk egy sorozat része az IoT Edge-ben az Azure Machine Learning használatával kapcsolatos oktatóanyagot. Ha érkezett, ez a cikk közvetlenül, javasoljuk, hogy először a [először cikk](tutorial-machine-learning-edge-01-intro.md) a sorozat a legjobb eredmények.
+> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ebben a cikkben használjuk az Azure-jegyzetfüzetek először betanítása egy gépi tanulási modellt az Azure Machine Learning használatával, és ehhez a modellhez, amely egy Azure IoT Edge-modul telepíthető egy tárolórendszerképet, majd csomagot. Az Azure-jegyzetfüzetek kihasználhatja az Azure Machine Learning szolgáltatás munkaterületen található, amely egy alapvető blokk kísérletezhet, betanítását és üzembe helyezése a machine learning-modellek segítségével.
+Ebben a cikkben a Azure Notebooks először a Machine learning-modellek betanítására használjuk a Azure Machine Learning, majd a modellt egy Azure IoT Edge modulként üzembe helyezhető tároló lemezképként csomagoljuk. A Azure Notebooks kihasználja az Azure Machine Learning munkaterület előnyeit, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használt alapvető blokk.
 
-Az oktatóanyag ezen részében a tevékenységek között két jegyzetfüzetet vannak osztva.
+Az oktatóanyag ezen részében szereplő tevékenységek két jegyzetfüzetben vannak megosztva.
 
-* **01-turbofan\_regression.ipynb:** Ez a jegyzetfüzet ismerteti a lépéseket, hogy a betanítás, közzététel a modell Azure Machine Learning segítségével. Széles körben a folyamat lépései a következők:
+* **01 – turbofan\_regresszió. ipynb:** Ez a jegyzetfüzet végigvezeti a modellek betanításának és közzétételének lépésein Azure Machine Learning használatával. A lépések széles körben a következők:
 
-  1. Töltse le, előkészítése és a betanítási adatok megismerése
-  2. A szolgáltatás munkaterület segítségével hozhat létre és futtathat a machine learning-kísérletből
-  3. A kísérlet modell eredményeinek kiértékelése
-  4. A legjobb modellt közzé a szolgáltatás munkaterületén
+  1. A betanítási adatgyűjtés letöltése, előkészítése és megismerése
+  2. A szolgáltatás munkaterület használata gépi tanulási kísérlet létrehozásához és futtatásához
+  3. A modell eredményeinek kiértékelése a kísérletből
+  4. A legjobb modell közzététele a szolgáltatás munkaterületen
 
-* **02-turbofan\_deploy\_model.ipynb:** Ez a jegyzetfüzet vesz igénybe a az előző jegyzetfüzetben létrehozott modellt, és készen áll az Azure IoT Edge-eszköz üzembe helyezhető a tárolórendszerkép létrehozásához használja.
+* **02 – turbofan\_\_Model üzembe helyezése. ipynb:** Ez a jegyzetfüzet az előző jegyzetfüzetben létrehozott modellt használja, és felhasználja egy Azure IoT Edge eszközre való üzembe helyezésre kész tároló-rendszerkép létrehozásához.
 
-  1. A modell egy pontozó szkript létrehozása
-  2. Hozzon létre és tehet közzé a lemezképet
-  3. A rendszerkép üzembe webszolgáltatásként, amely az Azure-Tárolópéldányon
-  4. A webszolgáltatás segítségével ellenőrizheti a modell és a rendszerkép az elvárt módon működnek
+  1. Pontozási parancsfájl létrehozása a modellhez
+  2. A rendszerkép létrehozása és közzététele
+  3. A rendszerkép üzembe helyezése webszolgáltatásként az Azure Container instance szolgáltatásban
+  4. A webszolgáltatással ellenőrizheti a modellt, és a rendszerkép a várt módon működik.
 
-A jelen cikkben ismertetett lépések a adatszakértők általában előfordulhat, hogy végre.
+A cikkben ismertetett lépéseket általában az adatszakértők végzik.
 
-## <a name="set-up-azure-notebooks"></a>Állítsa be az Azure-jegyzetfüzetek
+## <a name="set-up-azure-notebooks"></a>Azure Notebooks beállítása
 
-Az Azure-jegyzetfüzeteket a két Jupyter-notebookok és a kiegészítő fájlt használjuk. Itt hozunk létre, és egy Azure-jegyzetfüzetek projekt konfigurálása. Ha még nem használta a Jupyter és/vagy Azure notebookok, az alábbiakban néhány bevezető dokumentumok:
+A két Jupyter jegyzetfüzet és a támogató fájlok üzemeltetéséhez Azure Notebooks használjuk. Itt egy Azure Notebooks projektet hozunk létre és konfigurálunk. Ha nem használt Jupyter és/vagy Azure Notebooks, néhány bevezető dokumentum:
 
-* **Gyors útmutató:** [Hozzon létre és osszon meg a notebook](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Oktatóanyag:** [Létrehozása és futtatása a Jupyter notebook Python használatával](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* Rövid útmutató **:** [Jegyzetfüzet létrehozása és megosztása](../notebooks/quickstart-create-share-jupyter-notebook.md)
+* **Oktatóanyag:** [Jupyter-jegyzetfüzet létrehozása és futtatása Python-val](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-Mint a fejlesztői virtuális gépet, mielőtt Azure notebookok használatával biztosítja a gyakorlatban egy egységes környezetet.
+Csakúgy, mint a fejlesztői virtuális gép előtt, az Azure notebookok használata konzisztens környezetet biztosít a gyakorlathoz.
 
 > [!NOTE]
-> Beállítás után az Azure-jegyzetfüzetek szolgáltatás elérhetők minden olyan gép. A telepítés során a fejlesztési virtuális gépre, amely rendelkezik az összes szükséges fájlt kell használnia.
+> A beállítás után a Azure Notebooks szolgáltatás bármely gépről elérhető. A telepítés során a fejlesztői virtuális gépet kell használnia, amely az összes szükséges fájllal rendelkezik.
 
-### <a name="create-an-azure-notebooks-account"></a>Hozzon létre egy jegyzetfüzetet az Azure-fiókot
+### <a name="create-an-azure-notebooks-account"></a>Azure Notebooks fiók létrehozása
 
-Azure jegyzetfüzet-fiókok Azure-előfizetésekből függetlenek egymástól. Azure notebookok használata esetén szüksége hozhat létre fiókot.
+Az Azure notebook-fiókok függetlenek az Azure-előfizetéstől. A Azure Notebooks használatához létre kell hoznia egy fiókot.
 
-1. Navigáljon a [Azure notebookok](https://notebooks.azure.com).
+1. Navigáljon az [Azure-jegyzetfüzetekhez](https://notebooks.azure.com).
 
-2. Kattintson a **bejelentkezés** a lap felső, jobb oldali sarokban.
+2. Kattintson a **Bejelentkezés** elemre az oldal jobb felső sarkában.
 
-3. Jelentkezzen be a munkahelyi vagy iskolai fiókkal (Azure Active Directory), vagy a személyes fiókjával (Microsoft Account).
+3. Jelentkezzen be a munkahelyi vagy iskolai fiókjával (Azure Active Directory) vagy a személyes fiókjával (Microsoft-fiókkal).
 
-4. Ha még nem használta az Azure-jegyzetfüzetek előtt, a program kéri hozzáférést biztosít az Azure-jegyzetfüzetek alkalmazás.
+4. Ha korábban még nem használta Azure Notebooks, a rendszer felszólítja, hogy adjon hozzáférést a Azure Notebooks alkalmazáshoz.
 
-5. Felhasználói azonosító létrehozása az Azure-jegyzetfüzeteket.
+5. Hozzon létre egy felhasználói azonosítót a Azure Notebookshoz.
 
-### <a name="upload-jupyter-notebooks-files"></a>A Jupyter notebookok fájlok feltöltése
+### <a name="upload-jupyter-notebooks-files"></a>Jupyter-jegyzetfüzetek fájljainak feltöltése
 
-Ebben a lépésben hozunk létre egy új jegyzetfüzetet az Azure-projektet, és fájlokat feltölteni. Pontosabban a fájlokat, amelyek fel a következők:
+Ebben a lépésben új Azure Notebooks projektet hozunk létre, és fájlokat töltünk fel rá. Pontosabban a feltöltött fájlok a következők:
 
-* **01-turbofan\_regression.ipynb**: Jupyter notebook fájlt, amely végigvezeti a folyamat, az eszköz kihasználhatja az Azure storage-fiókból; által előállított adatok letöltése az adatok előkészítése az osztályozó által igénybe vett; oktatási elemzését és a a modell; a teszt tesztelése az adatokat a tesztelési adatkészletnél található\_FD003.txt fájlt, és végül mentése az osztályozó által igénybe vett minta a Machine Learning szolgáltatás munkaterületen.
+* **01-turbofan\_regresszió. ipynb**: Jupyter notebook-fájl, amely végigvezeti az eszköz-hám által az Azure Storage-fiókból generált adatok letöltésének folyamatán. az adatosztályozó képzésének feltárása és előkészítése; a modell betanítása; tesztelje az adatokat a test\_FD003. txt fájlban található tesztelési adatkészlet használatával; végül mentse az osztályozó modellt a Machine Learning szolgáltatás munkaterületen.
 
-* **02-turbofan\_deploy\_model.ipynb:** Jupyter notebookot, amely végigvezeti a tárolórendszerkép létrehozásához a Machine Learning szolgáltatás munkaterületén mentett osztályozó modellt használja. A lemezkép létrehozása után várható a notebook ismerteti, hogyan bemutatja, hogyan üzembe helyezését a kép webszolgáltatásként, így ellenőrizheti, hogy az megfelelően működik. Az ellenőrzött lemezképet telepíti az Edge-eszközön a a [létrehozása és üzembe helyezése az egyéni IoT Edge-modulok](tutorial-machine-learning-edge-06-custom-modules.md) ebben az oktatóanyagban részét.
+* **02 – turbofan\_\_Model üzembe helyezése. ipynb:** Jupyter notebook, amely végigvezeti Önt a Machine Learning szolgáltatás munkaterületen mentett osztályozó modell használatának folyamatán a tároló rendszerképének létrehozásához. A rendszerkép létrehozása után a jegyzetfüzet végigvezeti a lemezkép webszolgáltatásként való üzembe helyezésének folyamatán, hogy ellenőrizni tudja, hogy a várt módon működik-e. Az érvényesített lemezkép a IoT Edge eszközre lesz telepítve az oktatóanyag [egyéni IoT Edge modulok létrehozása és telepítése](tutorial-machine-learning-edge-06-custom-modules.md) részében.
 
-* **Test\_FD003.txt:** Ez a fájl tartalmazza az adatokat, állítsa be a betanított osztályozó érvényesítésekor tesztben használjuk. Használja a tesztadatok, ahogyan azt az eredeti verseny, állítsa be az a példában az egyszerűség tesztben választottuk.
+* **Teszt\_FD003. txt:** Ez a fájl tartalmazza azokat az adatkészleteket, amelyeket a rendszer a betanított osztályozó ellenőrzésekor használ. Úgy döntöttünk, hogy az eredeti versenyhez megadott tesztelési adatmennyiséget használjuk a példa egyszerűsége érdekében.
 
-* **RUL\_FD003.txt:** Ez a fájl tartalmazza az RUL a legutóbbi ciklus minden eszköz a teszt\_FD003.txt fájlt. Tekintse meg a **readme.txt** és a **kárt propagálás Modeling.pdf** a c: fájlok\\forrás\\IoTEdgeAndMlSample\\adatok\\a Turbofan egy az adatok részletes leírását.
+* **RUL\_FD003. txt:** Ez a fájl tartalmazza az egyes eszközök utolsó ciklusának RUL a test\_FD003. txt fájlban. Tekintse meg a **readme. txt** **fájlt, valamint a "** C:\\forrás\\IoTEdgeAndMlSample\\\\Turbofan" című témakört, amely az információk részletes ismertetését tartalmazza.
 
-* **Utils.PY:** Python-adatok használata segédprogram funkciót tartalmazza. Az első Jegyzetfüzet az funkciók részletes leírását tartalmazza.
+* **Utils.py:** Python segédprogram-függvényeket tartalmaz az adatokkal való munkavégzéshez. Az első jegyzetfüzet a függvények részletes magyarázatát tartalmazza.
 
-* **README.md:** A jegyzetfüzetek használatát ismertető információs fájlban olvasható.
+* **Readme.MD:** A jegyzetfüzetek használatát leíró readme.
 
-Hozzon létre egy új projektet, és töltse fel a fájlokat a notebookot.
+Hozzon létre egy új projektet, és töltse fel a fájlokat a jegyzetfüzetbe.
 
-1. Válassza ki **saját projektek** a felső menüsorban.
+1. Válassza a **saját projektek** lehetőséget a felső menüsorban.
 
-1. Válassza ki **+ új projekt**. Adjon meg egy nevet és egy. Létezik, a projekt nem szükséges, hogy egy információs vagy nyilvános.
+1. Válassza az **+ új projekt**lehetőséget. Adjon meg egy nevet és egy azonosítót. A projektnek nem kell nyilvánosnak lennie, vagy nem kell megadnia a readme-t.
 
-1. Válassza ki **feltöltése** válassza **a számítógép**.
+1. Válassza a **feltöltés** lehetőséget, és válassza **a számítógép**lehetőséget.
 
-1. Válassza ki **fájlok kiválasztása**.
+1. Válassza a **fájlok kiválasztása**lehetőséget.
 
-1. Navigáljon a **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Válassza ki az összes fájlt, és kattintson a **nyílt**.
+1. Navigáljon a **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Jelölje ki az összes fájlt, majd kattintson a **Megnyitás**gombra.
 
-1. Válassza ki **feltöltése** feltöltődnek, és válassza ki a **kész** a folyamat befejeződése után.
+1. Válassza a **feltöltés** lehetőséget a feltöltés megkezdéséhez, majd válassza a **kész** lehetőséget a folyamat befejezése után.
 
-## <a name="run-azure-notebooks"></a>Az Azure-jegyzetfüzetek futtatása
+## <a name="run-azure-notebooks"></a>Azure Notebooks futtatása
 
-Most, hogy a projekt létrejött, futtassa a **01-turbofan\_regression.ipynb** notebookot.
+Most, hogy létrejött a projekt, futtassa a **01-turbofan\_regresszió. ipynb** notebookot.
 
-1. Válassza ki a turbofan lapot, **01-turbofan\_regression.ipynb**.
+1. A turbofan projekt lapon válassza a **01-turbofan\_regresszió. ipynb**elemet.
 
-    ![Válassza ki az első jegyzetfüzet futtatásához](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    ![Válassza ki az első futtatandó jegyzetfüzetet](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-2. Ha a rendszer kéri, válassza a párbeszédpanelen, majd válassza a Python 3.6-os Kernel **beállítása Kernel**.
+2. Ha a rendszer kéri, válassza a Python 3,6 kernel elemet a párbeszédpanelen, és válassza a **kernel beállítása**lehetőséget.
 
-3. Ha a notebook **nem megbízható**, kattintson a a **nem megbízható** widget felső a notebookot, jobb. Amikor a párbeszédpanel megjelenik, válassza ki a **megbízható**.
+3. Ha a jegyzetfüzet **nem megbízhatóként**jelenik meg, kattintson a jegyzetfüzet jobb felső sarkában található **nem megbízható** elemre. Amikor megjelenik a párbeszédpanel, válassza a **megbízhatóság**lehetőséget.
 
-4. Kövesse a Notebookban lévő utasításokat.
+4. Kövesse a jegyzetfüzet utasításait.
 
-    * `Ctrl + Enter` egy cella futtatja.
-    * `Shift + Enter` egy cella fut, és a következő cella navigál.
-    * Egy cella fut, ha rendelkezik a szögletes zárójelek között csillag például **[\*]** . Ha befejeződött, a csillag váltja fel a szám, és megfelelő kimeneti lehet alatt jelennek meg. Cellák gyakran a korábbiakat munkájára hozhat létre, mert csak egy cella futtatható egyszerre.
+    * `Ctrl + Enter` egy cellát futtat.
+    * `Shift + Enter` futtat egy cellát, és a következő cellára navigál.
+    * Amikor egy cella fut, a szögletes zárójelek közé tartozik a csillag, például: **[\*]** . Ha a művelet befejeződött, a csillag helyére egy szám és egy kapcsolódó kimenet is tartozhat. Mivel a cellák gyakran az előzőek munkájára épülnek, egyszerre csak egy cella futhat.
 
-5. Miután végzett a futtatását a **01-turbofan\_regression.ipynb** jegyzetfüzet, térjen vissza a lapot.
+5. Ha befejezte a **01-turbofan\_regresszió. ipynb** jegyzetfüzet futtatását, térjen vissza a projekt lapra.
 
-6. Nyissa meg **02-turbofan\_üzembe helyezése\_model.ipynb** , és ismételje meg a lépéseket ebben a szakaszban a második jegyzetfüzet futtatásához.
+6. Nyissa meg a **02-turbofan\_telepítse\_Model. ipynb** , majd ismételje meg a szakasz lépéseit a második jegyzetfüzet futtatásához.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben, az adatok a turbofan eszközökről használja a fennmaradó hasznos élettartama (RUL) besorolás, az osztályozó által igénybe vett mentse őket egy modellt, hozza létre a tárolórendszerképet, és a üzembe helyezéséhez és teszteléséhez a képet a web se használtuk két jegyzetfüzetet az Azure-ban futó Jupyter-notebookok rvice.
+Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökből származó adatok használatára a hátralévő hasznos élettartam (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webes se-ként való üzembe helyezéséhez és teszteléséhez. rvice.
 
-Folytassa a következő cikk IoT Edge-eszköz létrehozása.
+IoT Edge-eszköz létrehozásához folytassa a következő cikkel.
 
 > [!div class="nextstepaction"]
-> [IoT Edge-eszköz konfigurálása](tutorial-machine-learning-edge-05-configure-edge-device.md)
+> [IoT Edge eszköz konfigurálása](tutorial-machine-learning-edge-05-configure-edge-device.md)

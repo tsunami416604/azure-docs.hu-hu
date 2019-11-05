@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cfaa2598d53fa57b4a628a7ad1b847a9b078bf2b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6b59995dc09c0ecf1e5700d8337bd30074083f76
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598159"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483916"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -73,11 +73,11 @@ Továbbá az Azure Key Vault-kulcstartók lehetővé teszik a titkos alkalmazás
 Az Azure-beli Biztonságos tár Key Vault a következő forgatókönyvek egyszerűsítésére lett felhasználva:
 -  [Azure Disk Encryption](../security/fundamentals/encryption-overview.md)
 -  Az SQL Server és a Azure SQL Database [Always encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkciója
-- [Azure app Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
+- [Azure app Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
 
 A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](quick-create-cli.md)
 - [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához](tutorial-web-application-keyvault.md)

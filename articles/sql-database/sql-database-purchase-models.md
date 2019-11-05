@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567005"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492493"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
 Azure SQL Database segítségével egyszerűen vásárolhat egy teljes körűen felügyelt, szolgáltatásként nyújtott platformot, amely megfelel a teljesítményének és a költséghatékonyságnak. A Azure SQL Database kiválasztott üzemi modelltől függően kiválaszthatja az Önnek megfelelő vásárlási modellt:
 
-- [Virtual Core (virtuális mag)-alapú beszerzési modell](sql-database-service-tiers-vcore.md) (ajánlott). Ez a vásárlási modell a kiépített számítási szintek és a kiszolgáló nélküli (előzetes verzió) számítási szintek közötti választást biztosítja. A kiépített számítási szinten kiválaszthatja a számítási erőforrások pontos mennyiségét, amelyek mindig kiépítve vannak a munkaterheléshez. A kiszolgáló nélküli számítási szinten megadhatja a számítási erőforrások automatikus skálázását egy konfigurálható számítási tartományon. Ezzel a számítási szinten automatikusan szüneteltetheti és folytathatja az adatbázist a munkaterhelés-tevékenység alapján. A virtuális mag egység ára (egységenként) alacsonyabb a kiépített számítási szinten, mint a kiszolgáló nélküli számítási szinten.
+- [Virtual Core (virtuális mag)-alapú beszerzési modell](sql-database-service-tiers-vcore.md) (ajánlott). Ez a vásárlási modell a kiépített számítási szintek és a kiszolgáló nélküli számítási szintek közötti választást biztosítja. A kiépített számítási szinten kiválaszthatja a számítási erőforrások pontos mennyiségét, amelyek mindig kiépítve vannak a munkaterheléshez. A kiszolgáló nélküli számítási szinten megadhatja a számítási erőforrások automatikus skálázását egy konfigurálható számítási tartományon. Ezzel a számítási szinten automatikusan szüneteltetheti és folytathatja az adatbázist a munkaterhelés-tevékenység alapján. A virtuális mag egység ára (egységenként) alacsonyabb a kiépített számítási szinten, mint a kiszolgáló nélküli számítási szinten.
 - [Adatbázis-tranzakciós egység (DTU) alapú beszerzési modell](sql-database-service-tiers-dtu.md). Ez a beszerzési modell a közös számítási feladatokhoz kiegyensúlyozott, kötegelt számítási és tárolási csomagokat biztosít.
 
 Különböző beszerzési modellek érhetők el különböző Azure SQL Database üzembe helyezési modellekhez:
@@ -53,7 +53,7 @@ A biztonsági mentési tár díja ugyanaz, mint az üzleti szempontból kritikus
 
 ### <a name="serverless-compute-costs"></a>Kiszolgáló nélküli számítási költségek
 
-A számítási kapacitás meghatározása és a költségek kiszámításának leírása a kiszolgáló nélküli számítási szinten: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).
+A számítási kapacitás definiálása és a költségek kiszámításának leírása a kiszolgáló nélküli számítási szinten: [SQL Database kiszolgáló](sql-database-serverless.md)nélküli.
 
 ## <a name="storage-costs"></a>Tárolási költségek
 
@@ -61,7 +61,7 @@ A különböző típusú tárolók számlázása másképp történik. Az adatt�
 
 Alapértelmezés szerint az adatbázisok 7 napos automatikus biztonsági mentését egy olvasási hozzáférésű geo-redundáns tárolási (RA-GRS) standard blob Storage-fiókba másolja a rendszer. Ezt a tárolót a heti teljes biztonsági mentések, a napi különbözeti biztonsági másolatok, valamint a tranzakciós naplók biztonsági másolatai használják, amelyek 5 percenként másolódnak át. A tranzakciós naplók mérete az adatbázis változásának mennyiségétől függ. Az adatbázis méretének 100%-ának megfelelő minimális tárterület külön díj nélkül elérhető. A biztonsági mentési tár további felhasználásának díja GB/hó.
 
-A tárolási díjszabással kapcsolatos további információkért tekintse [](https://azure.microsoft.com/pricing/details/sql-database/single/) meg az árképzést ismertető oldalt.
+A tárolási díjszabással kapcsolatos további információkért tekintse meg az [árképzést](https://azure.microsoft.com/pricing/details/sql-database/single/) ismertető oldalt.
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
@@ -76,7 +76,7 @@ A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és 
 - Biztonsági mentési tár (RA-GRS).
 
 > [!IMPORTANT]
-> A számítási erőforrások, az I/O-műveletek, valamint az adatok és a naplók tárolása adatbázis vagy rugalmas készlet alapján történik. A biztonsági mentési tárterületet minden adatbázis alapján számítjuk fel. A felügyelt példányok díjaival kapcsolatos további [](sql-database-managed-instance.md)információkért lásd: felügyelt példányok.
+> A számítási erőforrások, az I/O-műveletek, valamint az adatok és a naplók tárolása adatbázis vagy rugalmas készlet alapján történik. A biztonsági mentési tárterületet minden adatbázis alapján számítjuk fel. A felügyelt példányok díjaival kapcsolatos további információkért lásd: [felügyelt példányok](sql-database-managed-instance.md).
 > **Régióra vonatkozó korlátozások:** A támogatott régiók aktuális listájáért lásd: [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha felügyelt példányt szeretne létrehozni olyan régióban, amely jelenleg nem támogatott, [küldjön egy támogatási kérést a Azure Portalon keresztül](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 
 Ha az önálló adatbázis vagy a rugalmas készlet több mint 300 DTU használ, akkor a virtuális mag-alapú vásárlási modellre való áttérés csökkentheti a költségeket. A konverziót a választható API-k használatával vagy a Azure Portal használatával végezheti el állásidő nélkül. Azonban a konverzió nem szükséges, és nem történik meg automatikusan. Ha a DTU-alapú vásárlási modell megfelel a teljesítményre és az üzleti követelményekre, akkor továbbra is használja.
@@ -90,7 +90,7 @@ A DTU-alapú vásárlási modellről a virtuális mag-alapú vásárlási modell
 
 Az adatbázis-tranzakciós egység (DTU) a processzor, a memória, az olvasás és az írás kevert mértékét jelöli. A DTU-alapú vásárlási modell a számítási erőforrások előre konfigurált kötegeit és az alkalmazások különböző szintjeinek megadását is biztosítja. Ha az előre konfigurált kötegek és a havonta rögzített kifizetések egyszerűségét részesíti előnyben, a DTU-alapú modell megfelelőbb lehet az Ön igényeinek megfelelően.
 
-A DTU-alapú vásárlási modellben választhat az alapszintű, a standard és a prémium szolgáltatási szint közül mind az [önálló adatbázisok](sql-database-single-database-scale.md) , mind a [rugalmas készletek](sql-database-elastic-pool.md)esetében. A DTU-alapú beszerzési modell nem érhető el [](sql-database-managed-instance.md)a felügyelt példányok számára.
+A DTU-alapú vásárlási modellben választhat az alapszintű, a standard és a prémium szolgáltatási szint közül mind az [önálló adatbázisok](sql-database-single-database-scale.md) , mind a [rugalmas készletek](sql-database-elastic-pool.md)esetében. A DTU-alapú beszerzési modell nem érhető el a [felügyelt példányok](sql-database-managed-instance.md)számára.
 
 ### <a name="database-transaction-units-dtus"></a>Adatbázis-tranzakciós egységek (DTU)
 
@@ -109,7 +109,7 @@ A DTU leghasznosabb az Azure SQL Database-adatbázisok számára a különböző
 
 A számítási feladatok erőforrás-(DTU-) felhasználásának mélyebb megismeréséhez használja a [lekérdezési teljesítmény](sql-database-query-performance.md) elemzését a következőre:
 
-- A processzor/időtartam/végrehajtás száma alapján azonosíthatja a leggyakoribb lekérdezéseket, amelyek a jobb teljesítmény érdekében megadhatók. Az I/O-igényes lekérdezések például hasznosak lehetnek a memórián belüli [optimalizálási technikákban](sql-database-in-memory.md) , hogy a rendelkezésre álló memória jobban használható legyen bizonyos szolgáltatási szinten és számítási méretekben.
+- A processzor/időtartam/végrehajtás száma alapján azonosíthatja a leggyakoribb lekérdezéseket, amelyek a jobb teljesítmény érdekében megadhatók. Az I/O-igényes lekérdezések például hasznosak lehetnek a [memórián belüli optimalizálási technikákban](sql-database-in-memory.md) , hogy a rendelkezésre álló memória jobban használható legyen bizonyos szolgáltatási szinten és számítási méretekben.
 - A lekérdezés részleteinek részletezése a szöveg és az erőforrás-használat előzményeinek megtekintéséhez.
 - A [SQL Database Advisor](sql-database-advisor.md)által végrehajtott műveleteket bemutató teljesítmény-hangolási javaslatok elérése.
 

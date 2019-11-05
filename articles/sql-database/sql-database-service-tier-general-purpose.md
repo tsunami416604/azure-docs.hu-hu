@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 1c6bb557c11cf32449b440b0007e1cef929a026f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b4c0f88a1a21b0734c1652d19f74dc662d0a7ce1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259409"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496219"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Általános célú szolgáltatási réteg – Azure SQL Database
 
@@ -37,7 +37,7 @@ Az alábbi ábrán a standard építészeti modell négy csomópontja látható 
 
 Az általános célú szolgáltatási réteg építészeti modellje két rétegből áll:
 
-- Egy állapot nélküli számítási réteg, amely futtatja a `sqlservr.exe` folyamatot, és csak átmeneti és gyorsítótárazott adatokból áll (például: terv gyorsítótár, puffer készlet, oszlopdiagram-készlet). Ezt az állapot nélküli SQL Server csomópontot az Azure Service Fabric működteti, amely inicializálja a folyamatot, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik helyre.
+- Az `sqlservr.exe` folyamatot futtató állapot nélküli számítási réteg, amely csak átmeneti és gyorsítótárazott adatokból áll (például terv gyorsítótár, puffer készlet, oszlopdiagram-készlet). Ezt az állapot nélküli SQL Server csomópontot az Azure Service Fabric működteti, amely inicializálja a folyamatot, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik helyre.
 - Az Azure Blob Storage-ban tárolt, adatbázis-fájlokat (. MDF/. ldf) tartalmazó állapot-nyilvántartó adatréteg. Az Azure Blob Storage garantálja, hogy az adatbázis-fájlokban elhelyezett összes rekord adatvesztést nem eredményez. Az Azure Storage beépített adatelérhetőséget/redundanciát biztosít, amely biztosítja, hogy a naplófájlban vagy az adatfájlban lévő lapok minden rekordja megmaradjon, még akkor is, ha SQL Server folyamat összeomlik.
 
 Az adatbázismotor vagy az operációs rendszer frissítésekor az alapul szolgáló infrastruktúra egy része meghibásodik, vagy ha SQL Server folyamatban valamilyen kritikus problémát észlel, az Azure Service Fabric áthelyezi az állapot nélküli SQL Server folyamatot egy másik állapot nélküli számítási csomópontra. A tartalék csomópontok készlete új számítási szolgáltatás futtatására vár, ha az elsődleges csomópont feladatátvétele a feladatátvételi idő csökkentése érdekében történik. Az Azure Storage-rétegben tárolt adatműveletek nem érintettek, és az adatfájlok és a naplófájlok az újonnan inicializált SQL Server folyamathoz vannak csatolva. Ez a folyamat 99,99%-os rendelkezésre állást garantál, azonban lehetséges, hogy a nagy terhelésű számítási feladatok esetében az átmeneti idő miatt az új SQL Server csomópont a hideg gyorsítótárral kezdődik.
@@ -48,7 +48,7 @@ Az adatbázismotor vagy az operációs rendszer frissítésekor az alapul szolg�
 
 ## <a name="next-steps"></a>További lépések
 
-- Az erőforrás jellemzői (magok, IO, memória) a [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)általános célú/standard szint, a [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) -modellben vagy a [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)található önálló adatbázis, illetve a [virtuális mag-modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) és a [DTU-modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)rugalmas készlete.
+- Az erőforrás jellemzői (magok, IO, memória) a [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)általános célú/standard szint, a [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) -modellben vagy a [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)található önálló adatbázis, illetve a [virtuális mag-modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4) és a [DTU-modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)rugalmas készlete.
 - Ismerkedjen meg [üzletileg kritikus](sql-database-service-tier-business-critical.md) -és [nagy kapacitású](sql-database-service-tier-hyperscale.md) -szintekkel.
 - A [Service Fabric](../service-fabric/service-fabric-overview.md)megismerése.
 - A magas rendelkezésre állással és a vész-helyreállítással kapcsolatos további lehetőségekért lásd az [üzletmenet folytonosságát](sql-database-business-continuity.md)ismertető témakört.

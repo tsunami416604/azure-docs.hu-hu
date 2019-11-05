@@ -18,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65c68e4f24dd95696cc53b92dd7e2b59d940b6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175719"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473809"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
 Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különböző hitelesítési folyamatokat ismerteti.  Ezek a folyamatok különféle alkalmazási forgatókönyvekben használhatók.
 
-| Flow | Leírás | Használatban|  
+| Folyamat | Leírás | Használatban|  
 | ---- | ----------- | ------- | 
 | [Interaktív](#interactive) | Lekérdezi a jogkivonatot egy interaktív folyamaton keresztül, amely egy böngészőben vagy előugró ablakban kéri a felhasználótól a hitelesítő adatokat. | [Asztali alkalmazások](scenario-desktop-overview.md), [Mobile apps](scenario-mobile-overview.md) |
 | [Implicit támogatás](#implicit-grant) | Lehetővé teszi, hogy az alkalmazás jogkivonatokat kapjon a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.| [Egyoldalas alkalmazások (SPA)](scenario-spa-overview.md) |
@@ -44,7 +44,7 @@ Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különb
  
 Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket hozhatnak létre (id_tokens, frissítési tokeneket, hozzáférési jogkivonatokat), valamint engedélyezési kódokat, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram egy áttekintést nyújt:
  
-|Flow | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -83,7 +83,7 @@ Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amely
 
 A MSAL támogatja a [OAuth 2 engedélyezési kód engedélyezését](v2-oauth2-auth-code-flow.md). Ez a támogatás olyan alkalmazásokban használható, amelyek a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez vannak telepítve az eszközön. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. 
 
-Amikor a felhasználók bejelentkeznek a webalkalmazásba (webhelyekre), a webalkalmazás megkapja az engedélyezési kódot.  Az engedélyezési kód a webes API-k hívására szolgáló token beszerzéséhez lett beváltva. A ASP.NET és ASP.NET Core webalkalmazásokban a `AcquireTokenByAuthorizationCode` egyetlen célja, hogy adjon hozzá egy tokent a jogkivonat-gyorsítótárhoz. Ezt követően az alkalmazás használhatja a jogkivonatot (általában a vezérlőkben, amely csak az API-k tokenjét kapja meg `AcquireTokenSilent` használatával).
+Amikor a felhasználók bejelentkeznek a webalkalmazásba (webhelyekre), a webalkalmazás megkapja az engedélyezési kódot.  Az engedélyezési kód a webes API-k hívására szolgáló token beszerzéséhez lett beváltva. A ASP.NET és ASP.NET Core webalkalmazásokban a `AcquireTokenByAuthorizationCode` egyetlen célja, hogy adjon hozzá egy tokent a jogkivonat-gyorsítótárhoz. Ezt követően az alkalmazás használhatja a jogkivonatot (általában a vezérlőkben, amely csak az API-k tokenjét kapja meg `AcquireTokenSilent`használatával).
 
 ![Az engedélyezési kód folyamatának ábrája](media/msal-authentication-flows/authorization-code.png)
 
@@ -203,7 +203,7 @@ Ez azt jelenti, hogy az alábbiak egyike igaz:
 - Lehetővé teszi, hogy a felhasználók beleegyeznek az alkalmazásba (lásd: [egyéni felhasználói belefoglalási kérelem kérése](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Lehetővé teszi, hogy a bérlői rendszergazda beleegyezett az alkalmazásba (lásd: [rendszergazdai engedély](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Universal platform alkalmazásaihoz. A .NET Core-on csak a felhasználónevet terhelő túlterhelés érhető el. A .NET Core platform nem tudja megkérdezni a felhasználónevet az operációs rendszernek.
+A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Universal platform alkalmazásaihoz. A .NET Core-ban meg kell adnia a felhasználónevet a IWA számára, mivel a .NET Core nem tud felhasználóneveket beolvasni az operációs rendszerből.
   
 További információ a beleegyező adatokról: [v 2.0 engedélyek és beleegyezik](v2-permissions-and-consent.md).
 

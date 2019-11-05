@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató eléréséhez, és hozzon létre egy új bérlőt – Azure Active Directory |} A Microsoft Docs
-description: Azure Active Directoryban található, illetve hogyan hozhat létre egy új bérlőt a szervezetén belül kapcsolatos utasításokat.
+title: Rövid útmutató az új bérlők eléréséhez és létrehozásához – Azure Active Directory | Microsoft Docs
+description: Útmutatás a Azure Active Directory megkereséséhez és új bérlő létrehozásához a szervezet számára.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,36 +12,38 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bc3e3bb178efbbc8f4cee6d81417ce70bd7a662
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562066"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473377"
 ---
-# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Új bérlő létrehozása az Azure Active Directoryban
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: új bérlő létrehozása Azure Active Directory
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure portált és az Azure Active Directory-t, és megtudhatja, hogyan hozhat létre alapszintű bérlőt a szervezete számára.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/) globális rendszergazdai fiókkal.
-
-![Azure Portal képernyő az Azure AD lehetőséggel](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
-
 ## <a name="create-a-new-tenant-for-your-organization"></a>Új bérlő létrehozása a szervezetén belül
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
 
 ### <a name="to-create-a-new-tenant"></a>Új bérlő létrehozása
-1. Válassza **az erőforrás létrehozása**lehetőséget, válassza az **identitás**lehetőséget, majd válassza a **Azure Active Directory**lehetőséget.
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/) globális rendszergazdai fiókkal.
+
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.  
+
+    ![Azure Active Directory resoure lap létrehozása](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+
+1. Válassza az **identitás**lehetőséget, majd válassza a **Azure Active Directory**lehetőséget.
 
     Megjelenik a **Címtár létrehozása** lap.
 
     ![Azure Active Directory Létrehozás oldal](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
 
-2.  A **Címtár létrehozása** lapon adja meg a következő információkat:
+1.  A **Címtár létrehozása** lapon adja meg a következő információkat:
     
     - Írja be, hogy _Contoso_ a **Szervezet név** mezőbe.
 
@@ -49,7 +51,7 @@ Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szerv
 
     - Hagyja meg az _Egyesült Államok_ beállítást az **Ország vagy régió** mezőben.
 
-3. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
 Az új bérlő létrejön a contoso.onmicrosoft.com tartománnyal.
 

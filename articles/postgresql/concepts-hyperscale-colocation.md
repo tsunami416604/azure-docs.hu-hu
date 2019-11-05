@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998048"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482752"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Táblázatos elhelyezés Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -20,7 +20,7 @@ A közös elhelyezés azt jelenti, hogy a kapcsolódó információk tárolása 
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Adattárolási helyek kivonatoláshoz – elosztott táblák
 
-Azure Database for PostgreSQL – nagy kapacitású (Citus) előzetes verzióban a sor egy szegmensben tárolódik, ha a terjesztési oszlopban lévő érték kivonata a szegmens kivonatoló tartományán belülre esik. Az ugyanazzal a kivonatoló tartománnyal rendelkező szegmensek mindig ugyanarra a csomópontra kerülnek. Az egyenlő terjesztési oszlop értékekkel rendelkező sorok mindig ugyanazon a csomóponton vannak a táblák között.
+Azure Database for PostgreSQL – nagy kapacitású (Citus) esetében a sorok egy szegmensben tárolódnak, ha a terjesztési oszlopban lévő érték kivonata a szegmens kivonatoló tartományán belülre esik. Az ugyanazzal a kivonatoló tartománnyal rendelkező szegmensek mindig ugyanarra a csomópontra kerülnek. Az egyenlő terjesztési oszlop értékekkel rendelkező sorok mindig ugyanazon a csomóponton vannak a táblák között.
 
 ![Szilánkok](media/concepts-hyperscale-colocation/colocation-shards.png)
 
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Amíg a lekérdezés munkakészlete elfér a memóriában, egy egykiszolgálós tábla megfelelő megoldás. [](https://en.wikipedia.org/wiki/Working_set) Tekintsük át az adatmodell méretezésének lehetőségeit a nagy kapacitású (Citus) telepítési lehetőséggel.
+Amíg a lekérdezés [munkakészlete](https://en.wikipedia.org/wiki/Working_set) elfér a memóriában, egy egykiszolgálós tábla megfelelő megoldás. Tekintsük át az adatmodell méretezésének lehetőségeit a nagy kapacitású (Citus) telepítési lehetőséggel.
 
 ### <a name="distribute-tables-by-id"></a>Táblák elosztása azonosító alapján
 
 Az egykiszolgálós lekérdezések lelassulnak, mivel a bérlők száma és az egyes bérlők által tárolt adatmennyiség növekszik. A munkakészlet leáll a memóriában, és a CPU szűk keresztmetszetet eredményez.
 
-Ebben az esetben a nagy kapacitású (Citus) segítségével több csomóponton is eloszthatja az adatmennyiséget. Az első és legfontosabb választás, amikor a szegmensre dönt, a terjesztési oszlop. Kezdjük egy naiv választási lehetőséggel `event_id` az Event tábla és `page_id` a `page` táblázat számára:
+Ebben az esetben a nagy kapacitású (Citus) segítségével több csomóponton is eloszthatja az adatmennyiséget. Az első és legfontosabb választás, amikor a szegmensre dönt, a terjesztési oszlop. Kezdjük egy naiv választással, hogy `event_id`t használok az Event táblázathoz, és `page_id` a `page` táblázathoz:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +109,7 @@ Az adateloszlás megoszlik, így a lekérdezések párhuzamosak lehetnek. Ez csa
 
 ### <a name="distribute-tables-by-tenant"></a>Táblák terjesztése bérlő szerint
 
-A nagy kapacitású (Citus) esetében az azonos terjesztési oszlop értékével rendelkező sorok garantáltan ugyanazon a csomóponton lehetnek. A kezdéshez a táblázatokat `tenant_id` a terjesztési oszlopként is létrehozhatja.
+A nagy kapacitású (Citus) esetében az azonos terjesztési oszlop értékével rendelkező sorok garantáltan ugyanazon a csomóponton lehetnek. A kezdést követően létrehozhatjuk a táblákat `tenant_id` a terjesztési oszlopként.
 
 ```sql
 -- co-locate tables by using a common distribution column

@@ -1,6 +1,6 @@
 ---
-title: Az éles környezet – a csoportos adatelemzési folyamat modellek üzembe helyezése
-description: Hogyan helyezhet üzembe modelleket az éles környezetbe, így lehetővé válik az üzleti döntések elősegítése érdekében aktív szerepet játszanak.
+title: Modellek üzembe helyezése élesben – csoportos adatelemzési folyamat
+description: Modellek üzembe helyezése az éles környezetben, amely lehetővé teszi, hogy aktív szerepet játsszon az üzleti döntések meghozatalában.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,37 +10,37 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1a75c842989cfbaf7bb1880831fda2bc6994622b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 94843bfc30b0d0d44284d533c715ff9632e6a6bd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238351"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492362"
 ---
-# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Üzleti döntések elősegítése érdekében az aktív szerepet játszanak az üzemi modellek üzembe helyezése
+# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellek üzembe helyezése éles környezetben az üzleti döntések meghozatala érdekében
 
-Éles környezet lehetővé teszi, hogy egy aktív szerepet játszanak egy üzleti modell. A telepített modell előrejelzéses használható üzleti döntéseket hozhasson.
+Az éles környezetbe állítás lehetővé teszi, hogy egy modell aktív szerepet játsszon a vállalaton belül. Az üzembe helyezett modellből származó előrejelzések üzleti döntések meghozatalára is használhatók.
 
-## <a name="production-platforms"></a>Éles rendszerek
+## <a name="production-platforms"></a>Üzemi platformok
 
-Nincsenek különböző módszerek és platformok modellek éles üzembe helyezhető. Az alábbiakban néhány lehetőséget:
+A modellek éles környezetben való üzembe helyezéséhez különböző megközelítések és platformok tartoznak. Íme néhány lehetőség:
 
-- [Az üzembe helyezés modellek Azure Machine Learning szolgáltatással](../service/how-to-deploy-and-where.md)
-- [Egy modellt az SQL-kiszolgáló telepítése](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [A modellek üzembe helyezésének helye Azure Machine Learning](../service/how-to-deploy-and-where.md)
+- [Modell üzembe helyezése az SQL-Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
->Telepítés előtt egy rendelkezik elég alacsony-e az éles környezetben használt modell pontozása késését biztosítja.
+>Az üzembe helyezés előtt az egyiknek biztosítania kell, hogy a modell pontozásának késése elég alacsony legyen az éles környezetben való használathoz.
 >
 
 >[!NOTE]
->Az Azure Machine Learning Studio használatával olyan központi telepítésre, [egy Azure Machine Learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md).
+>A Azure Machine Learning Studio használatával történő üzembe helyezéssel kapcsolatban lásd: [Azure Machine learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md).
 >
 
-## <a name="ab-testing"></a>A / B tesztelés
+## <a name="ab-testing"></a>A/B tesztelés
 
-Ha több modell éles környezetben, végrehajtásához hasznos lehet [A / B tesztelés](https://en.wikipedia.org/wiki/A/B_testing) a modellek teljesítményének összehasonlítását. 
+Ha több modell van éles környezetben, hasznos lehet a [/B teszt](https://en.wikipedia.org/wiki/A/B_testing) végrehajtása a modellek teljesítményének összehasonlításához. 
  
 ## <a name="next-steps"></a>További lépések
 
-Forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
+Az **adott forgatókönyvek** folyamatának összes lépését bemutató útmutatókat is megadja. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példában szereplő forgatókönyvek](walkthroughs.md) című cikkben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 

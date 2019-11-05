@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/24/2019
+ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931370"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475076"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure Active Directory B2C (Azure AD B2C) használatával
 
@@ -48,13 +48,30 @@ Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 
 Az előfeltételek részeként elvégzett második oktatóanyagban egy webalkalmazást regisztrált Azure AD B2Cban. Az oktatóanyagban szereplő példával való kommunikáció engedélyezéséhez hozzá kell adnia egy átirányítási URI-t az alkalmazáshoz Azure AD B2C.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az előzetes](http://aka.ms/b2cappregintro)verzióról.
+
+#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
 1. A **Válasz URL-cím**területen adja hozzá a `http://localhost:6420`.
 1. Kattintson a **Mentés** gombra.
 1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját**. Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **tulajdonában lévő alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. Válassza a **hitelesítés**lehetőséget, majd válassza **az új felület kipróbálása** (ha látható) lehetőséget.
+1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja be a `http://localhost:6420`, majd kattintson a **Mentés**gombra.
+1. Válassza az **Áttekintés** lehetőséget.
+1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+
+* * *
 
 ## <a name="get-the-sample-code"></a>A mintakód letöltése
 
@@ -124,7 +141,7 @@ A minta támogatja a regisztrációt, a bejelentkezést, a profil szerkesztésé
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    ![A bejelentkezést és a regisztrációt követő felhasználói folyamat által bemutatott regisztrációs oldal](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![A bejelentkezést és a regisztrációt követő felhasználói folyamat által bemutatott regisztrációs oldal](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
 1. A **Létrehozás** gombra kattintva helyi fiókot hozhat létre a Azure ad B2C könyvtárban.
 
@@ -146,7 +163,7 @@ Ezt a hibaüzenetet kapja, mert a webalkalmazás megpróbál hozzáférni egy, a
 
 Ennek a hibának a kijavításához folytassa a sorozat következő oktatóanyagával (lásd a [következő lépéseket](#next-steps)) egy védett webes API létrehozásához a címtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

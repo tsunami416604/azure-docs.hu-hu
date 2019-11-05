@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b86a8df86b7f9b8a5936752a5f0413aa863ae85f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490804"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Gyors útmutató: személyre szabott ügyféloldali kódtár a .NET-hez
 
@@ -26,7 +26,7 @@ Ismerkedés a .NET-hez készült személyre szabott ügyféloldali kódtár hasz
  * A személyre szabási műveletek listájának rangsorolása.
  * A legjobb rangsorolt művelet sikerességét jelző jelentés jutalmazási pontszáma.
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,29 +38,28 @@ Ismerkedés a .NET-hez készült személyre szabott ügyféloldali kódtár hasz
 A rövid útmutató használatának számos lépése van:
 
 * A Azure Portal hozzon létre egy személyre szabott erőforrást
-* A Azure Portal a személyre szabott erőforráshoz a **Beállítások** lapon módosítsa a modell frissítési gyakoriságát
+* A Azure Portal a személyre szabott erőforráshoz a **konfiguráció** lapon módosítsa a modell frissítési gyakoriságát
 * Egy Kódszerkesztő alkalmazásban hozzon létre egy kódot tartalmazó fájlt, és szerkessze a kódot.
 * A parancssorban vagy a terminálban telepítse az SDK-t a parancssorból.
 * A parancssorban vagy a terminálban futtassa a fájl kódját.
 
 ## <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További lehetőségek:
+Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További lehetőségek:
 
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services) ingyenes 7 napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-<!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után hozzon létre két [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
 * `PERSONALIZER_RESOURCE_KEY` az erőforrás-kulcshoz.
 * `PERSONALIZER_RESOURCE_ENDPOINT` az erőforrás-végponthoz.
 
-A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
+A Azure Portalban a kulcs és a végpont értéke egyaránt elérhető a rövid útmutató **lapon.**
 
 ## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-A Azure Portal a **Beállítások** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
+A Azure Portal a **konfiguráció** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez a rövid időtartam gyorsan betanítja a szolgáltatást, így megtekintheti, hogyan változik az egyes iterációk legfelső szintű művelete.
 
 ![Modell frissítési gyakoriságának módosítása](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -70,7 +69,7 @@ Ha a rendszer először létrehoz egy személyre szabott hurkot, nem áll rendel
 
 Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. 
 
-A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, `personalizer-quickstart` nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: `Program.cs`. 
+A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, `personalizer-quickstart`nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: `Program.cs`. 
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -110,11 +109,11 @@ A tartalom rangjának megadásához hozzon létre egy [RankRequest](https://docs
 
 A személyre szabott jutalom elküldéséhez hozzon létre egy [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview), majd továbbítsa azt az [ügyfélnek. Jutalmazási](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) módszer. 
 
-A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendszerekben annak meghatározása, hogy milyen hatással van a [jutalom pontszáma](concept-rewards.md) , és hogy mekkora mértékben lehet egy összetett folyamat, dönthet úgy, hogy idővel változhat. Ennek az egyik elsődleges tervezési döntésnek kell lennie a személyre szabott architektúrában. 
+A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendszerekben annak meghatározása, hogy milyen hatással van a [jutalom pontszáma](concept-rewards.md) , és hogy mekkora mértékben lehet egy összetett folyamat, dönthet úgy, hogy idővel változhat. Ennek a tervezési döntésnek a személyre szabott architektúrájának egyik elsődleges döntésének kell lennie. 
 
 ## <a name="code-examples"></a>Példák a kódokra
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a .NET személyre szabott ügyféloldali kódtár használatával:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a személyre szabott ügyféloldali kódtáraval a .NET-hez:
 
 * [Személyre szabott ügyfél létrehozása](#create-a-personalizer-client)
 * [Rangsor igénylése](#request-a-rank)
@@ -128,7 +127,7 @@ A projekt könyvtárában nyissa meg a **program.cs** fájlt az előnyben része
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-A **program** osztályban hozzon létre változókat az erőforrás Azure-kulcsához, és a végpontot a `PERSONALIZER_RESOURCE_KEY` és `PERSONALIZER_RESOURCE_ENDPOINT` nevű környezeti változókból kihúzta. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+A **program** osztályban hozzon létre változókat az erőforrás Azure-kulcsához, és a végpontot a `PERSONALIZER_RESOURCE_KEY` és `PERSONALIZER_RESOURCE_ENDPOINT`nevű környezeti változókból kihúzta. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
@@ -272,10 +271,10 @@ A rövid útmutató [forráskódja](https://github.com/Azure-Samples/cognitive-s
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[A megszemélyesítő működése](how-personalizer-works.md)

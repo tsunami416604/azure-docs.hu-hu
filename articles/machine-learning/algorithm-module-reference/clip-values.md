@@ -1,5 +1,5 @@
 ---
-title: Klip értékei
+title: Értékek levágása
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhatja a Azure Machine Learning-szolgáltatásban található Clip Values modult a kiugró elemek észleléséhez és a klipek értékének kiváltásához.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a45755ca13aed6a514b548674ef424c40238fa42
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694739"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493826"
 ---
-# <a name="clip-values"></a>Klip értékei
+# <a name="clip-values"></a>Értékek levágása
 
-Ez a cikk a Azure Machine Learning Visual Interface modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 A Clip Values modul segítségével azonosíthatja és tetszés szerint lecserélheti a megadott küszöbérték alatti vagy feletti adatértékeket egy középérték, egy konstans vagy más helyettesítő érték megadásával.  
 
@@ -118,6 +118,6 @@ Most próbálja meg ugyanazt a folyamatot a 60-as értékkel, mint a felső perc
 |-------------------|--------------------------|----------------------------|  
 |1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|IGAZ<br /><br /> IGAZ<br /><br /> 3, HAMIS<br /><br /> 4, HAMIS<br /><br /> 5, HAMIS<br /><br /> 6, HAMIS<br /><br /> 7, HAMIS<br /><br /> 8, HAMIS<br /><br /> 9, HAMIS<br /><br /> IGAZ|4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 5, HAMIS<br /><br /> 6, HAMIS<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ| 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

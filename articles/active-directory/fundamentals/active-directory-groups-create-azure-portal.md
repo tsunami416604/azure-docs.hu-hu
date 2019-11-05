@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy alapszintű csoportot és felhasználókat adhatnának – Azure Active Directory |} A Microsoft Docs
-description: Az Azure Active Directory alapszintű csoport létrehozásával kapcsolatos útmutatást.
+title: Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat – Azure Active Directory | Microsoft Docs
+description: Útmutató egy alapszintű csoport létrehozásához a Azure Active Directory használatával.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 011f49596550ef4d515e0261419ab81c990e23cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9c551a81788df8d68664abaa03f467a4521222d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561946"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473416"
 ---
-# <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot és az Azure Active Directoryval tagok hozzáadása
+# <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../users-groups-roles/index.yml).
 
 ## <a name="create-a-basic-group-and-add-members"></a>Alapszintű csoport létrehozása és tagok hozzáadása
@@ -29,44 +29,43 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 ### <a name="to-create-a-basic-group-and-add-members"></a>Alapszintű csoport létrehozása és tagok hozzáadása
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza az **Azure Active Directory** a **Csoportok**, majd az **Új csoport** lehetőséget.
+1. Keresse meg és válassza ki a **Azure Active Directory**.
+
+    ![Azure AD-oldal, amelyben a csoportok láthatók](media/active-directory-groups-create-azure-portal/search-active-directory.png)
+
+1. A **Active Directory** lapon válassza a **csoportok** lehetőséget, majd válassza az **új csoport**lehetőséget.
 
     ![Azure AD-oldal, amelyben a csoportok láthatók](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-3. A **csoport** lapon, adja meg a szükséges adatokat.
+1. Az **új csoport** lapon adja meg a szükséges információkat.
 
     ![Új csoport oldal, példa adatokkal kitöltve](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-   - **Csoporttípus (kötelező).** Válasszon egy előre definiált csoportnevet. Az érintett műveletek közé tartoznak az alábbiak:
-        
-       - **Biztonság**. Segítségével kezelheti a tag és a számítógép hozzáféréseket a megosztott erőforrásokhoz a felhasználók egy csoportjára. Például létrehozhat egy biztonsági csoportot egy meghatározott biztonsági házirendhez. Ha így tesz, az összes tagnak egyszerre oszthatja ki az engedélyeket, nem kell az engedélyeket minden tagnak külön kiadni. Erőforrásokhoz való hozzáférés kezelésével kapcsolatos további információkért lásd: [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory-csoportokkal](active-directory-manage-groups.md).
-        
-       - **Office 365**. Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a beállítás lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz. Az Office 365-csoportokról bővebben lásd: [A Office 365-csoportok ismertetése](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+   - **Csoporttípus (kötelező).** Válasszon egy előre definiált csoportnevet. Ez a következőkre terjed ki:- **Security**. Segítségével kezelheti a tag és a számítógép hozzáféréseket a megosztott erőforrásokhoz a felhasználók egy csoportjára. Például létrehozhat egy biztonsági csoportot egy meghatározott biztonsági házirendhez. Ha így tesz, az összes tagnak egyszerre oszthatja ki az engedélyeket, nem kell az engedélyeket minden tagnak külön kiadni. Erőforrásokhoz való hozzáférés kezelésével kapcsolatos további információkért lásd: [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory-csoportokkal](active-directory-manage-groups.md).
+               - **Office 365**. Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a beállítás lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz. Az Office 365-csoportokról bővebben lásd: [A Office 365-csoportok ismertetése](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
    - **Csoport név (kötelező).** Olyan nevet adjon a csoportnak, aminek értelme van és nem felejti el. A rendszer egy ellenőrzés végrehajtásával megállapítja, hogy a név már használatban van-e egy másik csoport számára. Ha a név már használatban van, a duplikált nevek elkerülése érdekében a rendszer megkéri, hogy módosítsa a csoport nevét.
 
+   - **Csoport e-mail-címe (kötelező).** Adjon meg egy e-mail-címet a csoport számára, vagy tartsa meg az automatikusan kitöltött e-mail-címet.
+
    - **A csoport ismertetése.** Ha szeretne kiegészítő leírást adni a csoporthoz.
 
-   - **Tagság típusa (kötelező).** Válasszon egy előre definiált tagsági típust. Az érintett műveletek közé tartoznak az alábbiak:
+   - **Tagság típusa (kötelező).** Válasszon egy előre definiált tagsági típust. Ez a következőkből áll:- **Assigned.** Lehetővé teszi, hogy konkrét felhasználók a csoport tagjai lehessenek és egyedi engedélyekkel rendelkezzenek. A cikk céljaira ezt a lehetőséget használjuk.
+          - **dinamikus felhasználó.** Lehetővé teszi a dinamikus tagsági szabályok használatát a tagok automatikus hozzáadásához és eltávolításához. Ha a tag attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy a tag megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
+          - **dinamikus eszköz.** Lehetővé teszi a dinamikus csoport szabályok segítségével a távoli eszközök automatikus felvételét és eltávolítását. Ha az eszköz attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy az eszköz megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
 
-     - **Kiosztva.** Lehetővé teszi, hogy konkrét felhasználók a csoport tagjai lehessenek és egyedi engedélyekkel rendelkezzenek. A cikk céljaira ezt a lehetőséget használjuk.
+        >[!Important]
+        >Dinamikus csoportot létre lehet hozni eszközök és tagok számára is, de egyszerre mindkettőhöz nem. Nem lehet eszköz csoportot létrehozni az eszköz tulajdonosok attribútumai alapján sem. Eszköz tagsági szabályok csak eszköz attribútumokra hivatkozhatnak. A dinamikus csoportok felhasználókhoz és eszközökhöz való létrehozásával kapcsolatos további információkért lásd: [dinamikus csoport létrehozása és állapotának ellenõrzése](../users-groups-roles/groups-create-rule.md).
 
-     - **Dinamikus felhasználó.** Lehetővé teszi a dinamikus tagsági szabályok használatát a tagok automatikus hozzáadásához és eltávolításához. Ha a tag attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy a tag megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
-
-     - **Dinamikus eszköz.** Lehetővé teszi a dinamikus csoport szabályok segítségével a távoli eszközök automatikus felvételét és eltávolítását. Ha az eszköz attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy az eszköz megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
-
-       >[!Important]
-       >Dinamikus csoportot létre lehet hozni eszközök és tagok számára is, de egyszerre mindkettőhöz nem. Nem lehet eszköz csoportot létrehozni az eszköz tulajdonosok attribútumai alapján sem. Eszköz tagsági szabályok csak eszköz attribútumokra hivatkozhatnak. A dinamikus csoportok felhasználókhoz és eszközökhöz való létrehozásával kapcsolatos további információkért lásd: [dinamikus csoport létrehozása és állapotának ellenõrzése](../users-groups-roles/groups-create-rule.md).
-
-4. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
     A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
 
-5. Válassza ki a **Tagok** területet a **Csoport** lapon, és utána kezdje el megkeresni a csoportba felvenni kívánt tagokat a **Tagok kiválasztása** lapon.
+1. Válassza ki a **Tagok** területet a **Csoport** lapon, és utána kezdje el megkeresni a csoportba felvenni kívánt tagokat a **Tagok kiválasztása** lapon.
 
     ![Csoport tagjainak kiválasztása a csoport létrehozása során](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
 
-6. Amikor elkészült a tagok hozzáadásával, válassza a **kiválasztást**.
+1. Amikor elkészült a tagok hozzáadásával, válassza a **kiválasztást**.
 
     A **csoport – áttekintés** lap frissül és mutatja a csoportba most felvett tagok számát.
 

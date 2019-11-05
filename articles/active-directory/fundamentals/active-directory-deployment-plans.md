@@ -1,6 +1,6 @@
 ---
-title: Központi telepítési csomagok – Azure Active Directory |} A Microsoft Docs
-description: Teljes körű útmutatást üzembe helyezése az Azure Active Directory számos funkciót.
+title: Központi telepítési tervek – Azure Active Directory | Microsoft Docs
+description: A számos Azure Active Directory funkció üzembe helyezésének teljes körű útmutatója.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336866"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473283"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Az Azure Active Directory (Azure AD) képességeinek üzembe helyezésével kapcsolatos teljes körű útmutatást keres? Az Azure AD üzembehelyezési csomagjai végigvezetik a közös Azure AD-képességek sikeres üzembe helyezéséhez szükséges üzleti értékeken, tervezési szempontokon és üzemeltetési eljárásokon.
@@ -29,7 +29,7 @@ Amikor megkezdi az üzembe helyezést egy új képesség megtervezése során, f
 
 A szerepkörök a következők lehetnek: 
 
-|Role |Leírás |
+|Szerepkör |Leírás |
 |-|-|
 |Végfelhasználó|Azoknak a felhasználóknak a reprezentatív csoportja, amelyekhez a képességet alkalmazni kívánja. Gyakran megtekinti a kísérleti program módosításait.
 |INFORMATIKAI támogatás kezelője|Támogatja a szervezeti képviselőt, aki megadhatja a változás támogatását a helpdesk szemszögéből.  
@@ -61,16 +61,17 @@ A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzot
 
 | Képesség | Leírás|
 | -| -|
-| [Többtényezős hitelesítés](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti. |
+| [Többtényezős hitelesítés](https://aka.ms/deploymentplans/mfa)| Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti. |
 | [Feltételes hozzáférés](https://aka.ms/deploymentplans/ca)| A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz. |
 | [Új jelszó önkiszolgáló kérése](https://aka.ms/deploymentplans/sspr)| Az önkiszolgáló jelszó-visszaállítás segítségével a felhasználók rendszergazdai beavatkozás nélkül állíthatják vissza a jelszavukat, amikor és ahol szükségesek. |
+| [Passwordless](https://aka.ms/deploymentplans/passwordless) | Jelszó-alapú hitelesítés implementálása a szervezet Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsaival |
 
 ## <a name="deploy-application-management"></a>Az alkalmazások felügyeletének központi telepítése
 
 | Képesség | Leírás|
 | -| - |
 | [Egyszeri bejelentkezés](https://aka.ms/deploymentplans/sso)| Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók csak egyszer jelentkezzenek be az üzleti életbe lépésekhez szükséges alkalmazásokhoz és erőforrásokhoz. Miután bejelentkezett, a Microsoft Office SalesForce a belső alkalmazásokhoz, anélkül, hogy másodszor is meg kellene adniuk a hitelesítő adatokat. |
-| [Hozzáférési panel](https://aka.ms/deploymentplans/accesspanel)| A felhasználók egy egyszerű központ felderítése és érik el a alkalmazásokat kínál. Hatékonyabbá teheti őket az önkiszolgáló képességekkel, például az alkalmazásokhoz és csoportokhoz való hozzáférés kérelmezéséhez, illetve mások nevében az erőforrásokhoz való hozzáférés kezeléséhez. |
+| [Hozzáférési panel](https://aka.ms/deploymentplans/accesspanel)| Egy egyszerű központot biztosít a felhasználóknak az összes alkalmazás felderítéséhez és eléréséhez. Hatékonyabbá teheti őket az önkiszolgáló képességekkel, például az alkalmazásokhoz és csoportokhoz való hozzáférés kérelmezéséhez, illetve mások nevében az erőforrásokhoz való hozzáférés kezeléséhez. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Hibrid forgatókönyvek üzembe helyezése
@@ -86,8 +87,8 @@ A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzot
 
 | Képesség | Leírás|
 | -| -|
-| [Felhasználók regisztrálása](https://aka.ms/UserProvisioningDPDownload)| Az Azure AD-vel automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a felhőalapú (SaaS-) alkalmazásokban, például a Dropboxban, a Salesforce-ban vagy a ServiceNow-ban. |
-| [Bejövő felhasználók WORKDAY-központú átadása](https://aka.ms/WorkdayDeploymentPlan)| WORKDAY-központú bejövő Felhasználókiépítés az Active Directory hoz létre a folyamatban lévő identitáskezelést alapjait és üzleti folyamatok, a mérvadó identitási adatokat használó minőségét javítja. Ezzel a szolgáltatással zökkenőmentesen kezelheti az alkalmazottak és a függőben lévő munkavégzők személyazonossági életciklusát, ha olyan szabályokat konfigurál, amelyek leképezik az asztalos küldési műveletek (például az új bérlet, a megszüntetés, a továbbítás) műveleteit az IT üzembe helyezési műveleteihez (például Létrehozás, engedélyezés, Megbénít |
+| [Felhasználók regisztrálása](https://aka.ms/deploymentplans/userprovisioning)| Az Azure AD-vel automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a felhőalapú (SaaS-) alkalmazásokban, például a Dropboxban, a Salesforce-ban vagy a ServiceNow-ban. |
+| [Munkanapokon vezérelt bejövő felhasználók üzembe helyezése](https://aka.ms/WorkdayDeploymentPlan)| A munkanapokon vezérelt bejövő felhasználók kiépítése a Active Directory létrehozza az identitások folyamatos irányításának alapjait, és javítja a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét. Ezzel a szolgáltatással zökkenőmentesen kezelheti az alkalmazottak és a függőben lévő munkavégzők személyazonossági életciklusát, ha olyan szabályokat konfigurál, amelyek leképezik az asztalos küldési műveletek (például az új bérlet, a megszüntetés, a továbbítás) műveleteit az IT üzembe helyezési műveleteihez (például Létrehozás, engedélyezés, Megbénít |
 
 ## <a name="deploy-governance-and-reporting"></a>Irányítás és jelentéskészítés üzembe helyezése
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 44e9e7220594cc84c78e2f540cce8b595643ac56
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927469"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991369"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps helymeghatározáshoz lefedettsége
 
@@ -25,7 +25,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 * **Utca szintű** – a címek a címet tartalmazó utca szélességi/hosszúsági koordinátáihoz vannak feloldva. Lehetséges, hogy a házszám nem dolgozható fel.
 * A **városi szintű** nevek támogatottak.
 
-## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
+## <a name="americas"></a>Amerika
 
 | Ország/régió                                       | Címzési pontok | Házszámok | Utca szintje | Városi szint | Érdekes pontok |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
@@ -160,7 +160,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Belarusz                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Horvátország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ciprus                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Csehország                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Cseh Köztársaság                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dánia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Észtország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Feröer-szigetek                                       |                 |                |              |      ✓     |          ✓         |
@@ -297,7 +297,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure Maps helymeghatározáshoz kapcsolatos további információkért tekintse meg a [keresési](https://docs.microsoft.com/rest/api/maps/search) segédletek oldalain.
 

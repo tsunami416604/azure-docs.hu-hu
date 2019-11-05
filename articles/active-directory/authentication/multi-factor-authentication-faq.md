@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474277"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure Multi-Factor Authentication
 
 Ez a gyakori kérdések az Azure Multi-Factor Authentication és az Multi-Factor Authentication szolgáltatás használatával kapcsolatos gyakori kérdésekre adnak választ. A szolgáltatással kapcsolatos kérdésekre általánosságban, számlázási modellekkel, felhasználói élményekkel és hibaelhárítással foglalkozunk.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **K: hogyan kezeli az Azure Multi-Factor Authentication-kiszolgáló a felhasználói adatmennyiséget?**
 
@@ -215,11 +215,11 @@ A 0x800434D4L hiba akkor fordul elő, ha egy helyi számítógépen telepített,
 
 Ennek a hibának a megkerülő megoldás, ha külön felhasználói fiókkal rendelkezik a rendszergazdai és a nem rendszergazdai műveletekhez. Később a rendszergazdai fiók és a nem rendszergazdai fiók között is csatolhat postaládákat, így a nem rendszergazdai fiókkal is bejelentkezhet az Outlookba. A megoldással kapcsolatos további információkért tekintse meg, hogy a [rendszergazda hogyan nyithatja meg és tekintheti meg a felhasználó postaládájának tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a kérdés itt nem válaszol, kérjük, hagyja meg az oldal alján található megjegyzéseket. Vagy Íme néhány további lehetőség a Súgó beszerzéséhez:
 
-* A gyakori technikai problémák megoldásához keressen a [Microsoft ügyfélszolgálata Tudásbázisban](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) .
+* A gyakori technikai problémák megoldásához keressen a [Microsoft ügyfélszolgálata Tudásbázisban](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) .
 * Megkeresheti és böngészheti a Közösség technikai kérdéseit és válaszait, vagy megteheti a saját kérdéseit a [Azure Active Directory fórumokon](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Ha Ön örökölt PhoneFactor-ügyfél, és kérdései vannak, vagy segítségre van szüksége a jelszó [alaphelyzetbe](mailto:phonefactorsupport@microsoft.com) állításához, a jelszó-visszaállítási hivatkozás használatával nyisson meg egy támogatási esetet.
 * Forduljon a támogatási szakemberekhez az [Azure multi-Factor Authentication-kiszolgáló (PhoneFactor) támogatásával](https://support.microsoft.com/oas/default.aspx?prid=14947). Amikor kapcsolatba lép velünk, hasznos lehet, ha a lehető legtöbb információt felveheti a probléma megoldására. A megadható információk közé tartozik az a lap, ahol a hiba, a megadott hibakód, a megadott munkamenet-azonosító és a hibát megtekintő felhasználó azonosítója szerepel.

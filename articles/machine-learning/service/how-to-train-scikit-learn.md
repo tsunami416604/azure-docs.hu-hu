@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: MT
+ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710063"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489427"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan futtathatja a scikit – tanulja meg nagyvállalati szinten a Azure Machine Learning [SKlearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) -osztályának használatával. 
 
@@ -28,9 +29,9 @@ Legyen szó akár a gépi tanulás scikit, akár a modellről, akár egy meglév
 ## <a name="prerequisites"></a>Előfeltételek
 
 Futtassa ezt a kódot ezen környezetek bármelyikén:
- - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
+ - Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
 
-    - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
+    - Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
     - A notebook-kiszolgáló minták betanítási mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **How-to-use-azureml > ml-keretrendszerek > scikit-learn > training > Train-hiperparaméter-Tune-Deploy-with-sklearn** mappa.
 
  - Saját Jupyter Notebook-kiszolgáló
@@ -67,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
-Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
+Hozzon létre egy munkaterület-objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott `config.json` fájlból.
 
 ```Python
 ws = Workspace.from_config()
@@ -88,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 Ebben az oktatóanyagban már meg van biztosítva a **train_iris.** a betanítási szkript. A gyakorlatban a kód módosítása nélkül is elvégezheti az egyéni betanítási szkriptek futtatását, és futtathatja azt az Azure ML-ben.
 
-Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **train_iris.** a betanítási szkript bemutatja, hogyan naplózhat néhány mérőszámot az Azure ml-re az `Run` objektum használatával a parancsfájlon belül.
+Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **train_iris.** a betanítási szkript azt mutatja be, hogyan lehet naplózni néhány mérőszámot az Azure ml-re a szkripten belüli `Run` objektum használatával.
 
 A megadott betanítási parancsfájl a `iris = datasets.load_iris()` függvényből származó példákat használ.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md#data-upload) , hogy az adatok elérhetők legyenek a képzés során.
 
@@ -125,9 +126,9 @@ A számítási célokkal kapcsolatos további információkért tekintse meg a [
 
 ## <a name="create-a-scikit-learn-estimator"></a>Scikit létrehozása – Learn kalkulátor
 
-A [scikit-Learn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) egyszerű módszert kínál a scikit képzési feladatok számítási célra való elindítására. Ez az [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztályon keresztül valósul meg, amely az egycsomópontos CPU-képzések támogatásához használható.
+A [scikit-Learn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) egyszerű módszert kínál a scikit képzési feladatok számítási célra való elindítására. A szolgáltatás a [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztályon keresztül valósítható meg, amely az egycsomópontos CPU-képzések támogatásához használható.
 
-Ha a képzési szkriptnek további pip-vagy Conda-csomagokat kell futtatnia, akkor az eredményül kapott Docker-rendszerképre is telepítheti a csomagokat `pip_packages` , `conda_packages` ha a és az argumentumokat át szeretné adni a nevüknek.
+Ha a betanítási szkript további pip-vagy Conda-csomagokat igényel, akkor az eredményül kapott Docker-rendszerképre is telepíthetők, ha a `pip_packages` és `conda_packages` argumentumokkal átadják a nevüket.
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -156,13 +157,13 @@ run.wait_for_completion(show_output=True)
 
 A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Felkészülés**: A Docker-rendszerkép létrehozása a TensorFlow-kalkulátor alapján történik. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők.
+- **Előkészítés**: a Docker-rendszerkép létrehozása a TensorFlow-kalkulátor alapján történik. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők.
 
-- **Méretezés**: A fürt akkor kísérli meg a skálázást, ha a Batch AI-fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
+- **Skálázás**: a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futtatás**: A rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és a entry_script hajtja végre. Az stdout és a./Logs mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
+- **Futtatás**: a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és a entry_script hajtja végre. Az stdout és a./Logs mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Feldolgozás utáni**: A Futtatás./outputs mappáját a rendszer átmásolja a futtatási előzményekbe.
+- **Utómunka**: a Futtatás./outputs mappáját a rendszer átmásolja a futtatási előzményekbe.
 
 ## <a name="save-and-register-the-model"></a>A modell mentése és regisztrálása
 
@@ -189,7 +190,7 @@ Ebben a cikkben egy kerasz-modellt képzett és regisztrált Azure Machine Learn
 
 > [!div class="nextstepaction"]
 > [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
-* [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
-* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
-* [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
+* [Hiperparaméterek beállítása hangolása](how-to-tune-hyperparameters.md)
+* [Betanított modell üzembe helyezése](how-to-deploy-and-where.md)
 * [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

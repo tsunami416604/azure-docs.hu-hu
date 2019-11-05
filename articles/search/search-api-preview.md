@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792538"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496476"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Cognitive Search Service REST API – Version 2019-05-06 – előzetes verzió
 
@@ -24,6 +24,8 @@ Ez a cikk a Search Service REST API `api-version=2019-05-06-Preview` verzióját
 
 
 ## <a name="new-in-2019-05-06-preview"></a>Új a 2019-05-06-ben – előzetes verzió
+
+[* * A növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md) új mód az indexeléshez, amely az állapotot és a gyorsítótárazást is hozzáadja, így a meglévő kimenet újra felhasználható, ha az adatokat, indexelő és készségkészlet-definíciók változatlanok. Ez a funkció kizárólag kognitív készségkészlet keresztüli dúsításra vonatkozik.
 
 A [**Knowledge Store**](knowledge-store-concept-intro.md) a mesterséges intelligencia-alapú alkoholtartalom-növelési folyamat új célja. Az indexen kívül az Azure Storage-ban az indexelés során létrehozott, feltöltött adatstruktúrák is megmaradhatnak. A Készségkészlet elemein keresztül vezérelheti az adatai fizikai szerkezetét, beleértve az adattárolás módját, az adatokat a Table Storage-ban vagy a blob Storage-ban, valamint azt, hogy több nézet van-e tárolva.
 
@@ -48,7 +50,7 @@ A következő példa szintaxisa az előzetes verziójú API-verzió hívását m
 
 Az Azure Cognitive Search szolgáltatás több verzióban is elérhető. További információ: API- [verziók](search-api-versions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a Search REST API dokumentációját. Ha problémákba ütközik, kérjen segítséget a [StackOverflow](https://stackoverflow.com/) , vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 

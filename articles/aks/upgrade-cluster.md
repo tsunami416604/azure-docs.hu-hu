@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 36bd05940644b62bc3e58b642bfe6c00238383fa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264180"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472462"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (ak) fürt frissítése
 
@@ -20,7 +20,7 @@ Egy AK-alapú fürt életciklusának részeként gyakran frissítenie kell a leg
 
 A több csomópontot vagy Windows Server-csomópontokat (jelenleg előzetes verzióban) használó AK-fürtök esetében lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -36,9 +36,9 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> AK-fürt frissítésekor a Kubernetes alverziók nem hagyhatók ki. Például a *1.12. x* -> *1.13. x* vagy *1.13. x* -> *1.14. x* közötti frissítések engedélyezettek, a *1.12. x* -> *1.14. x* azonban nem.
+> AK-fürt frissítésekor a Kubernetes alverziók nem hagyhatók ki. Például a *1.12. x* -> *1.13. x* vagy *1.13. x* -> *1,14* . x-es verzióra való frissítés engedélyezett, a *1.12* . x -> *1,14* . x azonban nem.
 >
-> A frissítéshez *1.12. x* -> *1,14. x*-ről először a *1.12. x* -> *1.13. x*verzióról kell frissíteni, majd az 1.13. *x* -> *1.14. x*verziójáról kell frissíteni.
+> A frissítéshez *1.12. x* -> *1,14. x*-ről, először a *1.12. x* -> *1.13. x*verzióról frissítsen, majd frissítsen a *1.13* . x -> *1,14. x*-ről.
 
 A következő példa kimenete azt mutatja, hogy a fürt frissíthető a *1.13.9* és a *1.13.10*verzióra:
 
@@ -65,7 +65,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 A fürt frissítése néhány percet vesz igénybe, attól függően, hogy hány csomóponttal rendelkezik. 
 
 > [!NOTE]
-> A fürt frissítésének befejezéséhez teljes megengedett idő szükséges. Ezt az időt a termékének `10 minutes * total number of nodes in the cluster`kiszámításával számítjuk ki. Egy 20 csomópontos fürtben például a frissítési műveleteknek 200 percen belül sikeresnek kell lenniük, vagy az AK-ban sikertelen lesz a művelet, hogy elkerülje a nem helyreállítható fürt állapotát. A frissítési hiba helyreállításához próbálkozzon újra a frissítési művelettel az időkorlát lejárta után.
+> A fürt frissítésének befejezéséhez teljes megengedett idő szükséges. Ezt az időt a `10 minutes * total number of nodes in the cluster`szorzatának kiszámításával számítjuk ki. Egy 20 csomópontos fürtben például a frissítési műveleteknek 200 percen belül sikeresnek kell lenniük, vagy az AK-ban sikertelen lesz a művelet, hogy elkerülje a nem helyreállítható fürt állapotát. A frissítési hiba helyreállításához próbálkozzon újra a frissítési művelettel az időkorlát lejárta után.
 
 A frissítés sikerességének ellenőrzéséhez használja az az [AK show][az-aks-show] parancsot:
 

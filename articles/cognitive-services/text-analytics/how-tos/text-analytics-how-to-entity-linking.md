@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984264"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488651"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -23,51 +23,113 @@ Az [elnevezett entitás-felismerési API](https://westcentralus.dev.cognitive.mi
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entitások összekapcsolása és elnevezett entitások felismerése
 
-Az Text Analytics `entities` végpont támogatja az elnevezett entitások felismerését és az entitások összekapcsolását.
+A Text Analytics "`entities` végpontja támogatja az elnevezett entitások felismerését és az entitások összekapcsolását is.
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
-Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például azt, hogy a "Mars" a bolygó vagy a háború római isteneként van-e használatban). Ehhez a folyamathoz meg kell adni egy tudásbázist, amelyre az elismert entitások kapcsolódnak – a wikipedia a `entities` végpont Text Analytics tudásbázisa.
+Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például azt, hogy a "Mars" a bolygó vagy a háború római isteneként van-e használatban). Ehhez a folyamathoz meg kell adni egy tudásbázist, amelyre az elismert entitások kapcsolódnak – a wikipedia az `entities` Endpoint Text Analytics tudásbázisa.
 
 ### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
-Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra kategorizálja. Az entitások támogatott osztályai alább láthatók.
+Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra vagy típusokra kategorizálja. 
 
-A (z) Text Analytics 2,1-es [verziójában](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)az entitások összekapcsolása és elnevezett entitás-felismerés is számos nyelven elérhető. További információért tekintse meg a [nyelvi támogatásról](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) szóló cikket.
+## <a name="named-entity-recognition-v3-public-preview"></a>Elnevezett entitás-felismerés v3 nyilvános előzetes verziója
 
-### <a name="language-support"></a>Nyelvi támogatás
+Az [elnevezett entitások felismerésének következő verziója](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) már elérhető a nyilvános előzetes verzióban. Frissítéseket biztosít mind az entitások, mind a nevesített entitások felismeréséhez. 
 
-Az entitások különböző nyelveken való összekapcsolásához a megfelelő tudásbázist kell használnia minden nyelven. A Text Analyticsban található entitások esetén ez azt jelenti, hogy a `entities` végpont által támogatott összes nyelv a megfelelő wikipedia-corpushoz fog hivatkozni az adott nyelven. Mivel a Corpora mérete eltérő lehet a nyelvek között, a rendszer azt várta, hogy az entitás összekapcsolása funkció visszahívása is változhat.
+:::row:::
+    :::column span="":::
+        **Funkció**
+    :::column-end:::
+    ::: column span="":::
+        **Leírás** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        Kibontott entitások típusai és altípusai
+    :::column-end:::
+    :::column span="":::
+     Több elnevezett entitás típusának kibontott besorolása és észlelése.
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        Külön kérelem-végpontok 
+    :::column-end:::
+    :::column span="":::
+        Különálló végpontok az entitások összekapcsolását és a meghívást kérő kérelmek küldéséhez.
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version` paraméter
+    :::column-end:::
+    :::column span="":::
+        Választható paraméter a Text Analytics modell valamelyik verziójának kiválasztásához. Jelenleg csak az alapértelmezett modell használható.
+    :::column-end:::
+:::row-end:::
 
-## <a name="supported-types-for-named-entity-recognition"></a>Megnevezett entitások felismeréséhez támogatott típusok
+### <a name="entity-types"></a>Entitások típusai
 
-| Type  | Altípus | Példa |
+A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. Jelenleg az alábbi kategóriájú entitásokat ismeri fel: v3. A támogatott entitások és nyelvek részletes listáját az [elnevezett entitások típusai](../named-entity-types.md) című cikkben találja.
+
+* Általános kérdések
+* Személyes adatok 
+
+### <a name="request-endpoints"></a>Kérelmek végpontjai
+
+Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypéldányos és az entitás-összekapcsolási kérelmekhez Az alábbi URL-formátumot használja a kérelme alapján:
+
+NER
+* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Személyes információk entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Entitás összekapcsolása
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Modell verziószámozása
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Megnevezett Entity Recognition v2 támogatott típusai
+
+> [!NOTE]
+> A következő entitásokat a nevesített entitások felismerése (a (z) 2. verzió) támogatja. Nyilvános előzetes verzióban [érhető el, és](#named-entity-recognition-v3-public-preview) nagy mértékben kibővíti a szövegben felismert entitások számát és mélységét.   
+
+| Típus  | Altípus | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Location      | N/A\*         | „Redmond, Washington”, „Paris”  |
+| Földrajzi egység      | N/A\*         | „Redmond, Washington”, „Paris”  |
 | Szervezet  | N/A\*         | „Microsoft”   |
 | Mennyiség      | Szám        | „6”, „six”     |
 | Mennyiség      | Százalék    | „50%”, „fifty percent”|
 | Mennyiség      | Sorszám       | „2nd”, „second”     |
 | Mennyiség      | Kor           | "90 napos", "30 év régi"    |
-| Mennyiség      | Currency      | „$10.99”     |
+| Mennyiség      | Currency (Pénznem)      | „$10.99”     |
 | Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     |
 | Mennyiség      | Hőmérséklet   | „32 degrees”    |
 | DateTime      | N/A\*         | „6:30PM February 4, 2012”      |
-| DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
+| DateTime      | Dátum          | „May 2nd, 2017”, „05/02/2017”   |
 | DateTime      | Time          | "08:00", "8:00"  |
 | DateTime      | Dátumtartomány     | „May 2nd to May 5th”    |
 | DateTime      | Időtartomány     | „6pm to 7pm”     |
-| DateTime      | Duration      | „1 minute and 45 seconds”   |
+| DateTime      | Időtartam      | „1 minute and 45 seconds”   |
 | DateTime      | Beállítás           | „every Tuesday”     |
-| URL           | N/A\*         | "https:\//www.Bing.com"    |
-| Email         | N/A\*         | "support@contoso.com" |
+| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
+| E-mail         | N/A\*         | „support@contoso.com” |
 
-\*A bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos `SubType`entitások kihagyhatják a következőt:.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
+\* a bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos entitások kihagyhatják a `SubType`.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
 
+### <a name="language-support"></a>Nyelvi támogatás
 
+Az entitások különböző nyelveken való összekapcsolásához a megfelelő tudásbázist kell használnia minden nyelven. A Text Analyticsban található entitások esetén ez azt jelenti, hogy az `entities` végpont által támogatott összes nyelv a megfelelő wikipedia-corpusra hivatkozik az adott nyelven. Mivel a Corpora mérete eltérő lehet a nyelvek között, a rendszer azt várta, hogy az entitás összekapcsolása funkció visszahívása is változhat. További információért tekintse meg a [nyelvi támogatásról](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) szóló cikket.
 
 ## <a name="preparation"></a>Előkészítés
 
-A következő formátumú JSON-dokumentumok szükségesek: AZONOSÍTÓ, szöveg, nyelv
+A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg, nyelv
 
 A jelenleg támogatott nyelvek esetében tekintse meg [ezt a listát](../text-analytics-supported-languages.md).
 
@@ -90,13 +152,13 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie, és egy gy
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem szerkezete
+## <a name="step-1-structure-the-request"></a>1\. lépés: A kérés felépítése
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell a `/text/analytics/v2.1/entities`következőket:. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell `/text/analytics/v2.1/entities`. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
@@ -105,7 +167,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem közzététele
+## <a name="step-2-post-the-request"></a>2\. lépés: A kérés elküldése
 
 Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az [Áttekintés lapon](../overview.md#data-limits) tekintheti meg a percenkénti küldéshez.
 
@@ -275,7 +337,7 @@ Az entitások csatolásának kimenetét a következő példa szemlélteti:
     }
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 

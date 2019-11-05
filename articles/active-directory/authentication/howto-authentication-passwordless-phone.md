@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648316"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474356"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -31,7 +31,7 @@ A felhasználónevek beírása után a jelszó megadását nem kell látnia, ha 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure multi-Factor Authentication, leküldéses értesítések engedélyezése ellenőrzési módszerként 
+- Azure Multi-Factor Authentication, ellenőrzési módszerként engedélyezett leküldéses értesítésekkel 
 - Az Microsoft Authenticator legújabb verziója iOS 8,0 vagy újabb, vagy Android 6,0 vagy újabb rendszert futtató eszközökön.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Jelszó nélküli telefonos bejelentkezési hitelesítési módszerek engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg **Azure Active Directory** > **hitelesítési módszerek** > **hitelesítési módszerének házirendjét (előzetes verzió)**
+1. Tallózással keresse meg az **Azure ad biztonsági** > **hitelesítési módszereit** > **hitelesítési módszer házirendjének (előzetes verzió)**
 1. A **jelszó nélküli telefonos bejelentkezés**területen válassza a következő beállításokat
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
@@ -54,7 +54,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás felhasználói regisztrációja és kezelése
 
-1. Tallózással keresse meg a[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Tallózással keresse meg [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. Ha még nem tette meg, jelentkezzen be
 1. Adjon hozzá egy hitelesítő alkalmazást a **metódus hozzáadása**, a **hitelesítő alkalmazás**kiválasztása, majd a **Hozzáadás** elemre kattintva.
 1. Kövesse a Microsoft Authenticator alkalmazás telepítésére és konfigurálására vonatkozó utasításokat az eszközön
@@ -62,7 +62,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 1. A **Microsoft Authenticator**válassza a **telefonos bejelentkezés engedélyezése** lehetőséget a fiók legördülő menüből.
 1. A jelszó nélküli telefonos bejelentkezéshez való regisztráció befejezéséhez kövesse az alkalmazás utasításait. 
 
-A szervezetek arra is rámutatnak a felhasználóknak, hogy bejelentkeznek a [telefonnal, nem](../user-help/microsoft-authenticator-app-phone-signin-faq.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava.
+A szervezetek arra is rámutatnak a felhasználóknak [, hogy bejelentkeznek a telefonnal, nem](../user-help/microsoft-authenticator-app-phone-signin-faq.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
@@ -78,7 +78,7 @@ Miután beírta a felhasználónevet a weben, és kiválasztja a **Next (tovább
 
 Lehetséges, hogy a felhasználó egy bizonyos ponton létrehozott egy jelszó nélküli telefonos bejelentkezési hitelesítő adatot a jelenlegi Microsoft Authenticator alkalmazásában vagy egy korábbi eszközön. Miután a rendszergazda engedélyezte a hitelesítési módszer házirendjét a jelszó nélküli telefonos bejelentkezéshez, a hitelesítő adatokkal rendelkező felhasználók megkezdik az új bejelentkezési kérést, függetlenül attól, hogy engedélyezve vannak-e a szabályzat használatára. Ha a felhasználó nem engedélyezte a hitelesítő adatok használatát a házirend alapján, a hitelesítési folyamat befejezése után hibaüzenet jelenik meg. 
 
-A rendszergazda dönthet úgy, hogy engedélyezi a felhasználó számára a jelszó nélküli telefonos bejelentkezés használatát, vagy a felhasználónak el kell távolítania a metódust. Ha a felhasználó már nem rendelkezik a regisztrált eszközzel, megnyithatja [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) és eltávolíthatja. Ha továbbra is az MFA hitelesítő adatait használják, akkor a Microsoft Authenticatoron is választhatják a **telefonos bejelentkezés letiltása** lehetőséget.  
+A rendszergazda dönthet úgy, hogy engedélyezi a felhasználó számára a jelszó nélküli telefonos bejelentkezés használatát, vagy a felhasználónak el kell távolítania a metódust. Ha a felhasználó már nem rendelkezik a regisztrált eszközzel, akkor [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) , és távolítsa el azt. Ha továbbra is az MFA hitelesítő adatait használják, akkor a Microsoft Authenticatoron is választhatják a **telefonos bejelentkezés letiltása** lehetőséget.  
 
 ### <a name="ad-fs-integration"></a>AD FS integráció
 
@@ -103,4 +103,4 @@ Az új, erős hitelesítő adatok létrehozásának egyik előfeltétele, hogy a
 
 [Tudnivalók az eszközök regisztrálásáról](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Az Azure multi-Factor Authentication ismertetése](../authentication/howto-mfa-getstarted.md)
+[További tudnivalók az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 0ca73d75751259eccd9e952c2d704a09fc081396
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162265"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478613"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -27,11 +27,11 @@ Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
 
 ## <a name="enable-using-azure-cli"></a>Engedélyezés az Azure CLI használatával
 
-A következő lépés lehetővé teszi az AK-fürt figyelését az Azure CLI használatával. Ebben a példában nem kell létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban.  A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület-\<GUID >-\<Region >* formátumához hasonlít.  
+A következő lépés lehetővé teszi az AK-fürt figyelését az Azure CLI használatával. Ebben a példában nem kell létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban.  A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület-\<GUID >-\<régió >* formátumához hasonlít.  
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
@@ -47,7 +47,7 @@ provisioningState       : Succeeded
 
 Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a következő lépéseket a `--workspace-resource-id` paraméterhez szükséges Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓjának azonosításához, majd futtassa a parancsot a figyelési bővítmény engedélyezéséhez megadott munkaterület.  
 
-1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáférése van a következő parancs használatával:
+1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáféréssel rendelkezik a következő parancs használatával:
 
     ```azurecli
     az account list --all -o table
@@ -171,7 +171,7 @@ Ha nem ismeri az erőforrások sablon használatával történő központi telep
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version` parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
 
 ### <a name="create-and-execute-a-template"></a>Sablon létrehozása és végrehajtása
 
@@ -348,7 +348,7 @@ omsagent   2         2         2         2            2           beta.kubernete
 
 ## <a name="view-configuration-with-cli"></a>Konfiguráció megtekintése a parancssori felülettel
 
-A `aks show` paranccsal olyan részleteket kaphat, mint például a megoldás engedélyezve vagy sem, mi a Log Analytics munkaterület resourceID, valamint a fürt összegző információi.  
+A `aks show` parancs használatával olyan részleteket kaphat, mint például a megoldás engedélyezve vagy sem, mi a Log Analytics munkaterület resourceID, valamint a fürt összegző információi.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
@@ -367,8 +367,10 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
-* Ha a figyelés engedélyezve van az AK-fürtcsomópontok és-hüvelyek állapot-metrikáinak rögzítéséhez, ezek az állapot-mérőszámok a Azure Portal érhetők el. Az Azure Monitor for containers használatának megismeréséhez tekintse meg az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md)című témakört.
+* Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.
+
+

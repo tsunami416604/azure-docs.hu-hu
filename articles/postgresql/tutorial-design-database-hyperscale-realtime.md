@@ -1,6 +1,6 @@
 ---
-title: A valós idejű irányítópultok az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) megtervezése oktatóanyag
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, feltölti és lekérdezése az elosztott táblák, Azure database for PostgreSQL, nagy kapacitású (Citus) (előzetes verzió).
+title: Valós idejű irányítópult tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) oktatóanyaggal
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, tölthet fel és foglalhat le elosztott táblákat Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,35 +8,35 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791310"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482877"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Oktatóanyag: A valós idejű elemzési irányítópultok tervező által az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) használatával
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: valós idejű elemzési irányítópult tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
-Ebben az oktatóanyagban használja Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) megtudhatja, hogyan lehet:
+Ebben az oktatóanyagban a Azure Database for PostgreSQL-nagy kapacitású (Citus) használatával megismerheti a következőket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy nagy kapacitású (Citus) kiszolgálócsoportot
-> * Hozzon létre egy sémát a psql segédprogram használatával
-> * Szilánkleképezés táblák csomópont
+> * Rugalmas skálázási (Citus) kiszolgálócsoport létrehozása
+> * Séma létrehozása a psql segédprogram használatával
+> * Több csomópont közötti szegmens táblák
 > * Mintaadatok létrehozása
-> * Hajtsa végre a kumulatív
-> * Nyers és összesített adatok lekérdezése
-> * Adatok elévülése
+> * Kumulatív műveletek végrehajtása
+> * Nyers és összesített adatainak lekérdezése
+> * Az adatérvényesség lejárta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Hozzon létre egy sémát a psql segédprogram használatával
+## <a name="use-psql-utility-to-create-a-schema"></a>Séma létrehozása a psql segédprogram használatával
 
-Az Azure-adatbázis PostgreSQL - hez csatlakozó nagy kapacitású (Citus) (előzetes verzió) psql, használatával hajthatja végre néhány alapvető feladatot. Ez az oktatóanyag végigvezeti a webes elemzés, valós idejű irányítópultok az adatok alapján kiértékeli az adatokat, majd összesítéséhez forgalmi adatok.
+Miután csatlakozott a Azure Database for PostgreSQL-nagy kapacitású (Citus) a psql használatával, elvégezheti néhány alapvető feladatot. Ez az oktatóanyag végigvezeti Önt a webes elemzések adatforgalmának betöltésén, majd az adatokon alapuló valós idejű irányítópultok biztosításához.
 
-Hozzunk létre egy táblát, amely felhasználja a nyers webes forgalmi adatok mindegyikét. A Terminálszolgáltatások psql-jének futtassa a következő parancsokat:
+Hozzunk létre egy táblázatot, amely a nyers webes forgalmi adatokat fogja használni. Futtassa az alábbi parancsokat az psql-terminálban:
 
 ```sql
 CREATE TABLE http_request (
@@ -52,7 +52,7 @@ CREATE TABLE http_request (
 );
 ```
 
-Hozunk létre egy táblát, amely tartalmazza majd a percenkénti összesítések és a egy táblát, amely megőrzi az utolsó kumulatív pozícióját is. Futtassa az alábbi parancsokat a psql is:
+Létre fogunk hozni egy táblázatot, amely a percenkénti összesítéseket fogja tárolni, és egy táblázatot, amely az utolsó összesítés pozícióját tartja karban. Futtassa a következő parancsokat a psql is:
 
 ```sql
 CREATE TABLE http_request_1min (
@@ -76,17 +76,17 @@ CREATE TABLE latest_rollup (
 );
 ```
 
-Most már a psql parancsot a táblák listáját az újonnan létrehozott táblák megtekintéséhez:
+Az újonnan létrehozott táblákat a következő psql paranccsal tekintheti meg a táblák listájában:
 
 ```postgres
 \dt
 ```
 
-## <a name="shard-tables-across-nodes"></a>Szilánkleképezés táblák csomópont
+## <a name="shard-tables-across-nodes"></a>Több csomópont közötti szegmens táblák
 
-Nagy kapacitású központi telepítés a felhasználó által megadott oszlop értékei alapján különböző csomópontokon táblasorokat tárolja. A "elosztási oszlop" jelöli meg, hogyan adatok horizontálisan Skálázott a csomópontok között.
+A nagy kapacitású központi telepítése a különböző csomópontokon lévő táblázat sorait egy felhasználó által kijelölt oszlop értéke alapján tárolja. Ez a "terjesztési oszlop" azt jelzi, hogy az adatszegmensek hogyan oszlanak el a csomópontok között.
 
-Állítsa az elosztási oszlop helyként\_azonosító, a szegmenskulcs. A psql-jének ezek a függvények futtatása:
+Állítsa be, hogy a terjesztési oszlop legyen a hely\_azonosítója, a Szilánk kulcsa. A psql-ben futtassa a következő függvényeket:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
@@ -95,7 +95,7 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
-A kiszolgálócsoport most már készen áll, hogy néhány adatot kell lennie. Futtassa a következő parancsot helyileg a `psql` kapcsolat folyamatosan szúrja be az adatokat.
+A kiszolgálói csoportnak most már készen kell állnia az egyes adatbevitelre. A következő helyileg futtatható a `psql`-kapcsolatban az adatok folyamatos beszúrásához.
 
 ```sql
 DO $$
@@ -122,18 +122,18 @@ DO $$
 END $$;
 ```
 
-A lekérdezés a másodpercenként körülbelül nyolc sorok beszúrása. A sorok különböző munkavégző csomóponton vannak tárolva, útmutatása szerint az elosztási oszlop `site_id`.
+A lekérdezés másodpercenként körülbelül nyolc sort szúr be. A sorok tárolása különböző munkavégző csomópontokon történik a terjesztési oszlop alapján, `site_id`.
 
    > [!NOTE]
-   > Hagyja meg az generációs lekérdezés fut, és nyissa meg a többi parancsot egy második psql kapcsolatot ebben az oktatóanyagban.
+   > Hagyja meg a futó adatlétrehozási lekérdezést, és nyisson meg egy második psql-kapcsolatokat az oktatóanyag többi parancsához.
    >
 
 ## <a name="query"></a>Lekérdezés
 
-A nagy kapacitású üzemeltetési lehetővé teszi, hogy több csomópont sebességének párhuzamos lekérdezések feldolgozásához. Például az adatbázis összesítések mint az összeg és száma, a feldolgozó csomópontok számítja ki, és az eredmények egyesíti a végső választ.
+A nagy kapacitású-üzemeltetési beállítás lehetővé teszi, hogy több csomópont is feldolgozza a lekérdezéseket párhuzamosan a sebesség érdekében. Az adatbázis például kiszámítja az összesítéseket, például a munkavégző csomópontok ÖSSZEGét és DARABSZÁMát, és az eredményeket a végső válaszként ötvözi.
 
-Íme egy lekérdezést, webes kéréseket, és néhány statisztikai percenkénti számát.
-Próbálja meg futtatni a psql-jének, és vizsgálja meg az eredményeket.
+Íme egy lekérdezés a webes kérelmek percenkénti számlálásához, néhány statisztikával együtt.
+Próbálja meg futtatni a psql-ben, és figyelje meg az eredményeket.
 
 ```sql
 SELECT
@@ -149,13 +149,13 @@ GROUP BY site_id, minute
 ORDER BY minute ASC;
 ```
 
-## <a name="rolling-up-data"></a>A működés közbeni adatok
+## <a name="rolling-up-data"></a>Adattovábbítás
 
-Az előző lekérdezés jól működik, a korai fázisában, de a teljesítményét csökkenti az adatok skálázását követve rugalmasan méretezhető. Elosztott feldolgozási mellett is, a gyorsabb előre számítási az adatokat, mint a újraszámítja, ismételten.
+Az előző lekérdezés a korai fázisokban jól működik, de a teljesítménye az adatskála szerint csökken. Az elosztott feldolgozás még az adatok előzetes kiszámítását is lehetővé teszi, mint az ismételt kiszámításához.
 
-Gyors szerint összesített táblába a nyers adatok rendszeresen közbeni marad az irányítópultról is biztosítható. Az összesítési időtartama is kipróbálhat. A percalapú aggregációs táblában használtuk, de Ön sikerült felosztása data 5, 15 vagy 60 perc helyette.
+Biztosítjuk, hogy az irányítópulton gyorsan maradjon a nyers adatokat összesítő táblázatba. Kísérletezhet az összesítési időtartammal. Egy percenkénti összesítési táblázatot használunk, de az adatmennyiség 5, 15 vagy 60 percre megszakítható.
 
-Az összesítő könnyebben futtatásához a fogunk helyezzük el egy plpgsql függvényt. A psql-jének létrehozásához futtassa az alábbi parancsokat a `rollup_http_request` függvény.
+Ha könnyebben szeretné futtatni ezt a összesítést, egy plpgsql-függvénybe tesszük. Futtassa ezeket a parancsokat a psql az `rollup_http_request` függvény létrehozásához.
 
 ```sql
 -- initialize to a time long ago
@@ -190,13 +190,13 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-A függvény helyben hajtsa végre, hogy az adatok összesítő:
+A függvény helyett hajtsa végre az adatösszesítést:
 
 ```sql
 SELECT rollup_http_request();
 ```
 
-És a egy előre összesített formában az adatokat a összesítő táblát ugyanaz a jelentés első, korábban lekérdezheti azt. A következő lekérdezés futtatásával:
+Az adatokat pedig előre összevont formában is lekérdezheti a kumulatív táblázatból, hogy ugyanazt a jelentést kapja, mint korábban. Futtassa a következő lekérdezést:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -205,25 +205,25 @@ SELECT site_id, ingest_time as minute, request_count,
  WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
-## <a name="expiring-old-data"></a>Lejáró régi adatok
+## <a name="expiring-old-data"></a>Lejáró régi adatértékek
 
-A kumulatív gyorsabb, hatékonyabb lekérdezések, de továbbra is kell korlátlan tárolási költségek elkerülése érdekében a régi adatok lejárnak. Döntse el, hogy mennyi ideig szeretné megőrizni az adatokat az egyes részletességgel, és lekérdezéseket szokásos törli az elévült adatokat. A következő példában hogy úgy döntött, hogy a nyers adatot egy nap, de percalapú összesítések egy hónapig:
+Az összesítések gyorsabb lekérdezéseket tesznek lehetővé, de továbbra is le kell járni a régi adatmennyiségeket a nem kötött tárolási költségek elkerülése érdekében. Döntse el, hogy mennyi ideig szeretné megőrizni az adatokat az egyes részletességekhez, és normál lekérdezésekkel törölje a lejárt adatokat. A következő példában úgy döntöttünk, hogy egy hónapig egy nap és percenkénti összesítések alapján tartjuk a nyers adatmennyiséget:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';
 DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 ```
 
-Éles környezetben, ezeket a lekérdezéseket zabalit do egy függvényt, és adja neki egy cron feladat percenként sikerült.
+Éles környezetben ezeket a lekérdezéseket becsomagolhatja egy függvénybe, és percenként meghívja azt egy cron-feladatban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben létrehozott egy kiszolgálócsoport Azure-erőforrásokat. Ha várhatóan nincs ezekre az erőforrásokra a későbbiekben szüksége, a kiszolgálócsoport törlése. Nyomja le az *törlése* gombra a *áttekintése* a kiszolgálócsoport oldalán. Amikor a rendszer kéri, egy előugró oldalon, erősítse meg a kiszolgálói csoport nevére, majd kattintson az utolsó *törlése* gombra.
+Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan helyezhet üzembe egy nagy kapacitású (Citus) kiszolgálócsoport. A psql-jének csatlakozik, létrehozott egy sémát és elosztott adatok. Használatával adatokat lekérdezni mindkét nyers formában, a segítségével megtanulta rendszeresen összesíteni az adatokat, a lekérdezések összesített táblák és régi adatok lejárnak.
+Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogy a nyers űrlapon is lekérdezze az adatokat, rendszeresen összesíti az adatokat, lekérdezi az összesített táblákat, és lejárja a régi adatokat.
 
-Ezt követően ismerje meg a nagy kapacitású kapcsolatos fogalmakat.
+Ezután megismerheti a nagy kapacitású fogalmait.
 > [!div class="nextstepaction"]
-> [Nagy kapacitású csomóponttípusok](https://aka.ms/hyperscale-concepts)
+> [Nagy kapacitású csomópont-típusok](https://aka.ms/hyperscale-concepts)

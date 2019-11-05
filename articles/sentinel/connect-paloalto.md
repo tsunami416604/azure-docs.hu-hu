@@ -13,64 +13,93 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8b1331eb99fd3d061d231ae48c40a721911e74db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240239"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475856"
 ---
-# <a name="connect-your-palo-alto-networks-appliance"></a>A Palo Alto Networks-berendezés összekötése
+# <a name="connect-palo-alto-networks-to-azure-sentinel"></a>A Palo Alto-hálózatok összekapcsolhatók az Azure Sentinel-vel
 
 
 
-Az Azure Sentinel bármely Palo Alto Network-készülékhez csatlakoztatható, ha a naplófájlokat syslog Common Error Format (CEF) formátumban menti. Az Azure Sentinel szolgáltatással való integráció lehetővé teszi, hogy könnyedén futtasson elemzéseket és lekérdezéseket a Palo Alto hálózatokból származó naplófájlokban tárolt adatok között. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek összekapcsolása](connect-common-event-format.md).
-
-> [!NOTE]
-> Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
-
-## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>1\. lépés: A Palo Alto Networks-berendezés összekötése ügynök használatával
-
-A Palo Alto Networks-berendezés az Azure Sentinelhez való összekapcsolásához telepítenie kell egy ügynököt egy dedikált gépre (VM vagy helyszíni) a készülék és az Azure Sentinel közötti kommunikáció támogatásához. 
-
-Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azure-beli virtuális gépre, egy másik felhőben lévő virtuális gépre vagy egy helyszíni gépre.
-
-> [!NOTE]
-> Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. 
-
-Ha mindkét lehetőséghez hálózati diagramot szeretne látni, [](connect-data-sources.md#agent-options)tekintse meg az adatforrások összekapcsolását ismertető témakört.
+Ez a cikk azt ismerteti, hogyan csatlakoztatható a Palo Alto Networks-berendezés az Azure Sentinelhez. A Palo Alto Networks adatösszekötő segítségével könnyedén csatlakoztathatja a Palo Alto hálózati naplókat az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Palo Alto Networks használata az Azure Sentinelben további információkat nyújt a szervezet internetes használatáról, és fokozza a biztonsági üzemeltetési képességeit. 
 
 
-### <a name="deploy-the-agent"></a>Az ügynök üzembe helyezése 
+## <a name="how-it-works"></a>Működési elv
 
+A Palo Alto Networks és az Azure Sentinel közötti kommunikáció támogatásához telepítenie kell egy ügynököt egy dedikált linuxos gépen (VM vagy helyszíni). Az alábbi ábra az Azure-beli Linux rendszerű virtuális gépek esetén történő telepítést ismerteti.
+
+ ![CEF az Azure-ban](./media/connect-cef/cef-syslog-azure.png)
+
+Másik lehetőségként ez a beállítás akkor is fennáll, ha egy másik felhőben vagy egy helyszíni gépen használ virtuális gépet. 
+
+ ![CEF a helyszínen](./media/connect-cef/cef-syslog-onprem.png)
+
+
+## <a name="security-considerations"></a>Biztonsági szempontok
+
+Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. A következő útmutatást követve javíthatja a gép biztonsági konfigurációját:  [biztonságos virtuális gép az Azure-ban](../virtual-machines/linux/security-policy.md), [ajánlott eljárások a hálózati biztonsághoz](../security/fundamentals/network-best-practices.md).
+
+Ha TLS-kommunikációt szeretne használni a biztonsági megoldás és a syslog-gép között, konfigurálnia kell a syslog démont (rsyslog vagy syslog-ng) a TLS protokollon keresztüli kommunikációhoz: a [syslog-forgalom titkosítása TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), a [naplózási üzenetek titkosítása TLS használatával – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+
+ 
+## <a name="prerequisites"></a>Előfeltételek
+Győződjön meg arról, hogy a proxyként használt Linux-gép az alábbi operációs rendszerek egyikét futtatja:
+
+- 64 bites
+  - CentOS 6 és 7
+  - Amazon Linux 2017,09
+  - Oracle Linux 6 és 7
+  - Red Hat Enterprise Linux 6. és 7. kiszolgáló
+  - Debian GNU/Linux 8 és 9
+  - Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
+  - SUSE Linux Enterprise Server 12
+- 32 bites
+   - CentOS 6
+   - Oracle Linux 6
+   - Red Hat Enterprise Linux Server 6
+   - Debian GNU/Linux 8 és 9
+   - Ubuntu Linux 14,04 LTS és 16,04 LTS
+ 
+ - Daemon-verziók
+   - Syslog-ng: 2,1 – 3.22.1
+   - Rsyslog: V8
+  
+ - A syslog RFC-k támogatottak
+   - Syslog RFC 3164
+   - Syslog RFC 5424
+ 
+Győződjön meg arról, hogy a gép a következő követelményeknek is megfelel: 
+- Engedélyek
+    - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
+- Szoftverkövetelmények
+    - Győződjön meg arról, hogy a Python fut a gépen
+## <a name="step-1-deploy-the-agent"></a>1\. lépés: az ügynök üzembe helyezése
+
+Ebben a lépésben ki kell választania azt a Linux-gépet, amely proxyként fog működni az Azure Sentinel és a biztonsági megoldás között. Futtatnia kell egy parancsfájlt a proxy gépen, amely a következőket teszi:
+- Telepíti a Log Analytics ügynököt, és szükség szerint konfigurálja a syslog-üzeneteket a 514-as porton a TCP protokollon keresztül, és elküldi a CEF-üzeneteket az Azure Sentinel-munkaterületre.
+- Konfigurálja a syslog démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek az 25226-es port használatával.
+- Beállítja a syslog-ügynököt, hogy összegyűjtse az adatokat, és biztonságosan küldje el Log Analyticsba, ahol a rendszer elemzi és gazdagítja azokat.
+ 
+ 
 1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** lehetőségre, válassza a **Palo Alto Networks** elemet, majd **nyissa meg az összekötő lapot**. 
 
-1. **A syslog-ügynök letöltése és telepítése**alatt válassza ki a gép típusát, akár az Azure-t, akár a helyszínen. 
-1. A megnyíló **virtuális gépek** képernyőn válassza ki a használni kívánt gépet, és kattintson a **Kapcsolódás**gombra.
-1. Ha az **ügynök letöltése és telepítése Azure Linux rendszerű virtuális gépekhez**lehetőséget választja, válassza ki a gépet, és kattintson a **kapcsolat**elemre. Ha az **ügynök letöltése és telepítése nem Azure-beli Linux rendszerű virtuális gépekhez**lehetőséget választotta, a **közvetlen ügynök** képernyőjén futtassa a parancsfájlt a letöltés és a bevezetési **ügynök a Linux rendszerhez**című szakaszban.      1. Az összekötő képernyőjén a **syslog konfigurálása és továbbítása**területen állítsa be, hogy a syslog démon **rsyslog. d** vagy **syslog-ng**. 
-1. Másolja ezeket a parancsokat, és futtassa őket a készüléken:
-     - Ha a rsyslog. d elemet választotta:
-              
-       1. Tájékoztassa a syslog démont, hogy figyelje a létesítmény local_4, és küldje el a syslog-üzeneteket az Azure Sentinel-ügynöknek az 25226-es port használatával. `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-       2. Töltse le és telepítse a [security_events konfigurációs fájlt](https://aka.ms/asi-syslog-config-file-linux) , amely a syslog-ügynököt konfigurálja a 25226-es porton való figyeléshez. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`Hol {0} kell helyettesíteni a munkaterület GUID azonosítóját.
-            
-       1. A syslog démon újraindítása`sudo service rsyslog restart`
-             
-    - Ha a syslog-ng beállítást választotta:
+1. **A syslog-ügynök telepítése és konfigurálása**területen válassza ki a gép típusát, akár az Azure-t, akár a másik felhőt, akár a helyszínen. 
+   > [!NOTE]
+   > Mivel a következő lépésben a parancsfájl telepíti a Log Analytics ügynököt, és csatlakoztatja a gépet az Azure Sentinel-munkaterülethez, győződjön meg róla, hogy ez a számítógép nincs csatlakoztatva más munkaterülethez.
+1. Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. A következő paranccsal ellenőrizze, hogy rendelkezik-e a Python használatával a gépen: `python –version`
 
-         1. Tájékoztassa a syslog démont, hogy figyelje a létesítmény local_4, és küldje el a syslog-üzeneteket az Azure Sentinel-ügynöknek az 25226-es port használatával. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-         2. Töltse le és telepítse a [security_events konfigurációs fájlt](https://aka.ms/asi-syslog-config-file-linux) , amely a syslog-ügynököt konfigurálja a 25226-es porton való figyeléshez. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`Hol {0} kell helyettesíteni a munkaterület GUID azonosítóját.
-
-         3. A syslog démon újraindítása`sudo service syslog-ng restart`
- 1. Indítsa újra a syslog-ügynököt a következő parancs használatával:`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
- 1. A következő parancs futtatásával ellenőrizze, hogy nincsenek-e hibák az ügynök naplójában:`tail /var/opt/microsoft/omsagent/log/omsagent.log`
+1. Futtassa a következő szkriptet a proxy gépen.
+   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
 
 
  
-## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>2\. lépés: A Palo Alto hálózati naplók továbbítása a syslog-ügynökbe
+## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>2\. lépés: a Palo Alto hálózati naplók továbbítása a syslog-ügynökhöz
 
 A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban való továbbításához az Azure-munkaterületen a syslog-ügynök használatával:
 1.  Nyissa meg a [Common Event Format (CEF) konfigurációs útmutatóit](https://docs.paloaltonetworks.com/resources/cef) , és töltse le a készülék típusának PDF-fájlját. A CEF események gyűjtéséhez kövesse az útmutató utasításait a Palo Alto Networks-berendezés beállításához. 
@@ -78,7 +107,6 @@ A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban val�
 1.  Lépjen a [syslog-figyelés konfigurálása](https://aka.ms/asi-syslog-paloalto-forwarding) elemre, és kövesse a 2. és a 3. lépést a Palo Alto Networks-készülékről az Azure sentinelre történő CEF-továbbítás konfigurálásához.
 
     1. Győződjön meg arról, hogy a **syslog-kiszolgáló formátumát** a **BSD**értékre állítja be.
-    1. Ügyeljen arra, hogy a **rendelkezésre állási számot** a syslog-ügynökön beállított értékre állítsa be.
 
        > [!NOTE]
        > Előfordulhat, hogy a PDF-fájl másolási/beillesztési műveletei megváltoztatják a szöveget, és véletlenszerű karaktereket szúrnak be. Ennek elkerüléséhez másolja a szöveget egy Szerkesztőbe, és távolítson el minden olyan karaktert, amely megtöri a napló formátumát a beillesztés előtt, ahogy az ebben a példában látható.
@@ -87,48 +115,14 @@ A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban val�
 
 2. Ha a Log Analytics vonatkozó sémát szeretné használni a Palo Alto Networks-eseményekhez, keresse meg a **CommonSecurityLog**.
 
-## <a name="step-3-validate-connectivity"></a>3\. lépés: Kapcsolat ellenőrzése
+## <a name="step-3-validate-connectivity"></a>3\. lépés: a kapcsolat ellenőrzése
 
-Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
+1. A Log Analytics megnyitásával győződjön meg arról, hogy a naplók a CommonSecurityLog séma használatával érkeznek.<br> Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
-1. Győződjön meg arról, hogy a megfelelő eszközt használja. A létesítménynek meg kell egyeznie a készüléken és az Azure Sentinelben. Megtekintheti, hogy melyik Facility-fájlt használja az Azure Sentinelben, és hogyan módosíthatja `security-config-omsagent.conf`azt a fájlban. 
-
-2. Győződjön meg arról, hogy a naplók a syslog-ügynök jobb portjára kerülnek. Futtassa ezt a parancsot a syslog-ügynök gépén: `tcpdump -A -ni any  port 514 -vv`Ez a parancs megjeleníti azokat a naplókat, amelyek az eszközről a syslog-gépre mutatnak. Győződjön meg arról, hogy a megfelelő porton és a megfelelő eszközön érkeznek naplók a forrás készülékről.
-
-3. Győződjön meg arról, hogy a küldött naplók megfelelnek az [RFC 3164](https://tools.ietf.org/html/rfc3164)-nek.
-
-4. A syslog-ügynököt futtató számítógépen győződjön meg róla, hogy a (z) 514-es, 25226-as `netstat -a -n:`portok nyitva és figyelve vannak a parancs használatával. További információ a parancs használatáról: [netstat (8) – Linux man oldal](https://linux.die.net/man/8/netstat). Ha a figyelő megfelelően működik, a következőt fogja látni:
-
-   ![Azure Sentinel-portok](./media/connect-cef/ports.png) 
-
-5. Győződjön meg arról, hogy a démon úgy van beállítva, hogy figyelje a 514-es portot, amelyen a naplókat küldi.
-    - Rsyslog esetén:<br>Győződjön meg arról, hogy `/etc/rsyslog.conf` a fájl tartalmazza ezt a konfigurációt:
-
-           # provides UDP syslog reception
-           module(load="imudp")
-           input(type="imudp" port="514")
-        
-           # provides TCP syslog reception
-           module(load="imtcp")
-           input(type="imtcp" port="514")
-
-      További információkért lásd [: imudp: UDP syslog bemeneti modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) és [imtcp: TCP syslog bemeneti modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
-
-   - Syslog-ng esetén:<br>Győződjön meg arról, hogy `/etc/syslog-ng/syslog-ng.conf` a fájl tartalmazza ezt a konfigurációt:
-
-           # source s_network {
-            network( transport(UDP) port(514));
-             };
-     További információ: [syslog-ng nyílt forráskódú kiadás 3,16 – felügyeleti útmutató](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
-
-1. Győződjön meg arról, hogy van-e kommunikáció a syslog démon és az ügynök között. Futtassa ezt a parancsot a syslog-ügynök gépén: `tcpdump -A -ni any  port 25226 -vv`Ez a parancs megjeleníti azokat a naplókat, amelyek az eszközről a syslog-gépre mutatnak. Győződjön meg arról, hogy a naplók is érkeznek az ügynökön.
-
-6. Ha mindkét parancs sikeres eredményt adott, ellenőrizze, hogy a naplók érkeznek-e a Log Analytics. Az ezekről a készülékekről továbbított összes esemény nyers formában jelenik meg log Analytics `CommonSecurityLog` a típus területen.
-
-7. Ellenőrizze, hogy vannak-e hibák, vagy ha a naplók nem érkeznek meg, `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`tekintse meg a következőt:. Ha azt szeretné, hogy a napló formátuma nem felel meg a `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` hibáknak, ugorjon `security_events.conf`a fájlra, és ellenőrizze, hogy a naplók megfelelnek-e a fájlban látható regex-formátumnak.
-
-8. Győződjön meg arról, hogy a syslog-üzenet alapértelmezett mérete 2048 bájtra van korlátozva (2 KB). Ha a naplók túl hosszúak, frissítse a security_events. conf fájlt a következő parancs használatával:`message_length_limit 4096`
-
+1. A szkript futtatása előtt javasoljuk, hogy küldjön üzeneteket a biztonsági megoldásból, hogy azok továbbítva legyenek a konfigurált syslog-proxy gépre. 
+1. Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. A következő paranccsal ellenőrizze, hogy rendelkezik-e a Python használatával a gépen: `python –version`
+1. Futtassa a következő szkriptet az ügynök, az Azure Sentinel és a biztonsági megoldás közötti kapcsolat vizsgálatához. Ellenőrzi, hogy a démon továbbítása megfelelően van-e konfigurálva, figyeli a megfelelő portokat, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. A parancsfájl a "TestCommonEventFormat" nevű, a végpontok közötti kapcsolat vizsgálatához is elküldi a "" üzenetet. <br>
+ `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 

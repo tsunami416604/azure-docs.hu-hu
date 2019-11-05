@@ -18,15 +18,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f2d43455ff15089accc2463db83349abcea564
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 273a8b06b3bd3bf299b47a1cc52fd4660353cec3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802880"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473752"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL.NET-ben
-A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés és engedélyezés hozzáadását a fejleszthető alkalmazásokhoz. Ezek az alkalmazások közvetlenül a AD FSon keresztül hitelesítik a felhasználókat. További információkért olvassa el [AD FS fejlesztői forgatókönyvek](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)című témakört.
+A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés és engedélyezés hozzáadását a fejleszthető alkalmazásokhoz. Ezek az alkalmazások közvetlenül a AD FSon keresztül hitelesítik a felhasználókat. További információkért olvassa el [AD FS fejlesztői forgatókönyvek](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)című témakört.
 
 A .NET-hez készült Microsoft Authentication Library (MSAL.NET) két forgatókönyvet támogat a AD FS való hitelesítéshez:
 
@@ -61,6 +61,6 @@ Jelenleg nincsenek a közvetlen kapcsolódást támogató csomagok:
 
  Ha olyan forgatókönyveket kell támogatnia, amelyek közvetlen kapcsolódást igényelnek a AD FS 2016-hez, használja a [Azure Active Directory Authentication Library](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)legújabb verzióját. Ha a helyszíni rendszert a 2019-es AD FSra frissítette, akkor használhatja a MSAL.NET-t.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)

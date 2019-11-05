@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555411"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477096"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Naplók lekérdezése Azure Monitorról tárolók számára
 
@@ -46,7 +46,7 @@ A következő táblázatban láthatók például a tárolók Azure Monitor álta
 
 Azure Monitor naplók segítségével megkeresheti a trendeket, diagnosztizálhatja a szűk keresztmetszeteket, az előrejelzéseket, vagy korrelálhat olyan adatokkal, amelyek segítségével meghatározhatja, hogy az aktuális fürtkonfiguráció optimális teljesítményű-e. Az előre definiált naplók segítségével azonnal megkezdheti a használatát, vagy testre szabhatja az adatokat a kívánt módon.
 
-A munkaterületen lévő adatok interaktív elemzését az előnézet ablaktábla **Kubernetes-Eseménynaplók megtekintése** vagy a **tároló-naplók megtekintése** lehetőség kiválasztásával végezheti el. A **naplóbeli keresés** lap a Azure Portal lap jobb oldalán jelenik meg.
+A munkaterületen lévő adatok interaktív elemzését a nézet Kubernetes- **eseménynaplók** megtekintése vagy a **tároló-naplók** megtekintése lehetőség kiválasztásával végezheti el az előnézet ablaktáblán, az **elemzések** legördülő listában. A **naplóbeli keresés** lap a Azure Portal lap jobb oldalán jelenik meg.
 
 ![Adatok elemzése a Log Analyticsben](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -65,38 +65,58 @@ Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy 
 | **Válassza ki a diagram megjelenítési beállítását**:<br> Perf<br> &#124;ahol a ObjectName = = "K8SContainer" és a CounterName = = " &#124; memoryRssBytes" összegzi a AvgUsedRssMemoryBytes = AVG (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 30m), példánynév | Tárolómemória |
 | InsightsMetrics<br> &#124;where Name = = "requests_count"<br> &#124;összefoglalás val = any (val) by TimeGenerated = bin (TimeGenerated, 1M)<br> &#124;Rendezés TimeGenerated ASC szerint<br> &#124;projekt RequestsPerMinute = val-Prev (val), TimeGenerated <br> &#124;renderelési barchart  | Percenkénti kérések egyéni metrikákkal |
 
-A következő példa egy Prometheus-metrikák lekérdezése. A gyűjtött mérőszámok számítanak, és annak meghatározásához, hogy hány hiba történt egy adott időszakon belül, ki kell vonni a darabszámot. Az adatkészletet a *partitionKey*particionálja, ami azt jelenti, hogy a *név*, az *állomásnév*és a *OperationType*minden egyedi halmaza egy olyan allekérdezést futtat, amely a naplókat *TimeGenerated*szerint rendeli el, amely lehetővé teszi a a ráta megállapításához keresse meg az előző *TimeGenerated* és a rögzített darabszámot.
+## <a name="query-prometheus-metrics-data"></a>A Prometheus-metrikai adatok lekérdezése
+
+A következő példa egy olyan Prometheus-metrikai lekérdezés, amely percenkénti lemezeket jelenít meg másodpercenként.
 
 ```
-let data = InsightsMetrics 
-| where Namespace contains 'prometheus' 
-| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
-| extend Tags = todynamic(Tags) 
-| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
-| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
-| partition by partitionKey ( 
-    order by TimeGenerated asc 
-    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
-    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
-    | where isnull(Rate) == false 
-) 
-| project TimeGenerated, Name, HostName, OperationType, Rate; 
-let operationData = data 
-| where Name == 'kubelet_docker_operations' 
-| project-rename OperationCount = Rate; 
-let errorData = data 
-| where Name == 'kubelet_docker_operations_errors' 
-| project-rename ErrorCount = Rate; 
-operationData 
-| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
-| project-away TimeGenerated1, Name1, HostName1, OperationType1 
-| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+InsightsMetrics
+| where Namespace == 'container.azm.ms/diskio'
+| where TimeGenerated > ago(1h)
+| where Name == 'reads'
+| extend Tags = todynamic(Tags)
+| extend HostName = tostring(Tags.hostName), Device = Tags.name
+| extend NodeDisk = strcat(Device, "/", HostName)
+| order by NodeDisk asc, TimeGenerated asc
+| serialize
+| extend PrevVal = iif(prev(NodeDisk) != NodeDisk, 0.0, prev(Val)), PrevTimeGenerated = iif(prev(NodeDisk) != NodeDisk, datetime(null), prev(TimeGenerated))
+| where isnotnull(PrevTimeGenerated) and PrevTimeGenerated != TimeGenerated
+| extend Rate = iif(PrevVal > Val, Val / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1), iif(PrevVal == Val, 0.0, (Val - PrevVal) / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1)))
+| where isnotnull(Rate)
+| project TimeGenerated, NodeDisk, Rate
+| render timechart
+
+```
+
+A Azure Monitor névtér alapján megszűrt Prometheus-metrikák megtekintéséhez a "Prometheus" kifejezést kell megadnia. Íme egy példa egy lekérdezésre a Prometheus-metrikák megtekintéséhez a `default` kubernetes-névtérből.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| extend tags=parse_json(Tags)
+| summarize count() by Name
+```
+
+A Prometheus-adatlekérdezéseket a név alapján is közvetlenül lehet lekérdezni.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| where Name contains "some_prometheus_metric"
+```
+
+### <a name="query-config-or-scraping-errors"></a>Lekérdezési konfiguráció vagy karcolási hibák
+
+A konfigurációs vagy a leselejtezési hibák vizsgálatához a következő példában a lekérdezés a `KubeMonAgentEvents` táblázat tájékoztató eseményeit adja vissza.
+
+```
+KubeMonAgentEvents | where Level != "Info" 
 ```
 
 A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
 
-![Adatfeldolgozási kötet lekérdezési eredményeinek naplózása](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+![Az ügynöktől származó tájékoztató események lekérdezési eredményeinek naplózása](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tárolók Azure Monitor nem tartalmaz előre meghatározott riasztásokat. Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](container-insights-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatásához 

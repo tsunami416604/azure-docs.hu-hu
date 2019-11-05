@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121319"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470529"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -43,12 +43,12 @@ A App Service webalkalmazás egyéni tartományának megvásárlásáról és be
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hogyan a webalkalmazáshoz meglévő SSL-tanúsítvány feltöltése és konfigurálása?
 
-Ha meg szeretné tudni, hogyan tölthet fel és állíthat be egy meglévő egyéni SSL-tanúsítványt, tekintse meg a [meglévő egyéni SSL-tanúsítvány kötése egy Azure-webalkalmazáshoz](app-service-web-tutorial-custom-ssl.md#upload)című témakört.
+Ha szeretné megismerni, hogyan tölthet fel és állíthat be egy meglévő egyéni SSL-tanúsítványt, tekintse meg [az SSL-tanúsítvány hozzáadása a app Service alkalmazáshoz](configure-ssl-certificate.md)című témakört.
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hogyan új SSL-tanúsítvány vásárlása és konfigurálása az Azure-ban a webalkalmazáshoz?
 
-Az App Service webalkalmazás SSL-tanúsítványának megvásárlásáról és beállításáról további információt az [SSL-tanúsítvány hozzáadása a app Service alkalmazáshoz](web-sites-purchase-ssl-web-site.md)című témakörben talál.
+Az App Service webalkalmazás SSL-tanúsítványának megvásárlásáról és beállításáról további információt az [SSL-tanúsítvány hozzáadása a app Service alkalmazáshoz](configure-ssl-certificate.md)című témakörben talál.
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Hogyan Application Insights erőforrások áthelyezése?
@@ -71,7 +71,7 @@ A webalkalmazás kiszolgálói időzónájának beállítása:
     * Value = *a kívánt időzóna*
 3. Kattintson a **Mentés** gombra.
 
-A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: Amerika/Adak.
+A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért nem sikerül a folyamatos webjobs-feladatok néha?
 
@@ -139,7 +139,7 @@ Webjobs-naplók áttekintése:
 6. Válassza a **kimenet váltása** gombot.
 7. Válassza ki a letöltési hivatkozást.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>A SQL Server használatával Próbálom használni a Hibrid kapcsolatok. Miért jelenik meg a "System. OverflowException: Az aritmetikai művelet túlcsordulást eredményezett?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>A SQL Server használatával Próbálom használni a Hibrid kapcsolatok. Miért látom a "System. OverflowException: aritmetikai művelet túlcsordulást eredményezett" üzenetet?
 
 Ha Hibrid kapcsolatokt használ a SQL Server eléréséhez, Microsoft .NET a 2016-as számú frissítés sikertelen lehet, mert a kapcsolat meghiúsul. A következő üzenet jelenhet meg:
 
@@ -147,13 +147,13 @@ Ha Hibrid kapcsolatokt használ a SQL Server eléréséhez, Microsoft .NET a 201
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 A kivételt az a hibridkapcsolat-kezelő, amely azóta megoldódott. Ügyeljen rá, hogy a probléma megoldásához [frissítse a hibridkapcsolat-kezelő](https://go.microsoft.com/fwlink/?LinkID=841308) .
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hogyan adjon hozzá egy URL-átírási szabályt?
 
-URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web. config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információkért lásd [: Azure app Services: Az URL-cím](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)újraírásának ismertetése.
+URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web. config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információt az [Azure app Services: az URL-cím újraírásának ismertetése](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)című témakörben talál.
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hogyan a bejövő forgalom vezérlését App Servicere?
 
@@ -197,7 +197,7 @@ Egy HAR-fájl megtekintéséhez használhatja a [har Viewert](https://www.softwa
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Miért kapok hibaüzenetet, amikor megpróbálok csatlakoztatni egy App Service webalkalmazást egy ExpressRoute-hez csatlakozó virtuális hálózathoz?
 
-Ha Azure-webalkalmazást próbál csatlakoztatni egy Azure-ExpressRoute csatlakoztatott virtuális hálózathoz, az sikertelen lesz. A következő üzenet jelenik meg: "Az átjáró nem VPN-átjáró."
+Ha Azure-webalkalmazást próbál csatlakoztatni egy Azure-ExpressRoute csatlakoztatott virtuális hálózathoz, az sikertelen lesz. A következő üzenet jelenik meg: "az átjáró nem VPN-átjáró."
 
 Jelenleg nem rendelkezhet pont – hely típusú VPN-kapcsolattal olyan virtuális hálózattal, amely a ExpressRoute-hez csatlakozik. Egy pont – hely típusú VPN-és ExpressRoute nem létezhet egyszerre ugyanahhoz a virtuális hálózathoz. További információ: a [ExpressRoute és a helyek közötti VPN-kapcsolatok korlátai és korlátozásai](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
 

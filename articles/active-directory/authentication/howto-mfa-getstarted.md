@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474324"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -44,7 +44,7 @@ Az MFA bevezetési tervének tartalmaznia kell egy próba-telepítést, amelyet 
 
 Fontos, hogy tájékoztassa a felhasználókat a tervezett kommunikációról, a közelgő változásokról, az Azure MFA regisztrációs követelményeiről és a szükséges felhasználói műveletekről. Javasoljuk, hogy a kommunikációt a szervezeten belüli képviselőivel, például a kommunikációval, a változás-kezeléssel vagy az emberi erőforrásokkal foglalkozó szervezeti egységekkel együtt fejlesszék.
 
-A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.com ra](https://myprofile.microsoft.com) .
+A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.comra](https://myprofile.microsoft.com) .
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
@@ -220,6 +220,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdai fiók használatával.
 1. Tallózással keresse meg **Azure Active Directory**, **feltételes hozzáférést**.
 1. Válassza az **új szabályzat**lehetőséget.
+   ![hozzon létre egy feltételes hozzáférési szabályzatot, amely lehetővé teszi a többtényezős hitelesítés használatát Azure Portal felhasználók számára a kísérleti csoportban](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Adjon meg egy értelmes nevet a szabályzatnak.
 1. A **felhasználók és csoportok**területen:
    * A **beágyazás** lapon jelölje be a **minden felhasználó** választógombot.
@@ -236,9 +237,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
     * Kattintson a **Kiválasztás** gombra.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a  **Create** (Létrehozás) gombra.
-
-![Feltételes hozzáférési szabályzat létrehozása a többtényezős hitelesítés engedélyezéséhez Azure Portal-felhasználók számára a kísérleti csoportban](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+1. Kattintson a **Létrehozás** elemre.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -275,7 +274,7 @@ Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már 
 
 Válassza ki, hogy mi történjen, ha az MFA-ban nem regisztrált felhasználók hitelesítése történik meg. A szolgáltatás működésének vezérléséhez használja a beállításjegyzékbeli elérési út `HKLM\Software\Microsoft\AzureMFA` beállításjegyzék-beállítás `REQUIRE_USER_MATCH`. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik.
 
-| Jelmagyarázat | Value (Díj) | Alapértelmezett |
+| Jelmagyarázat | Érték | Alapértelmezett |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
@@ -353,7 +352,7 @@ Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon ke
 
 Az Azure MFA-val kapcsolatos gyakori problémák megoldásait az [azure multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mik a hitelesítési módszerek?](concept-authentication-methods.md)
 * [A konvergens regisztráció engedélyezése az Azure Multi-Factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállításhoz](concept-registration-mfa-sspr-converged.md)

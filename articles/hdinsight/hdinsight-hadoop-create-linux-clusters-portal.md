@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
-ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3a64ba088a24f6202b74ae84ad7fb6c011d3bcbf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71677087"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494759"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
 
@@ -34,9 +34,9 @@ A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resou
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali menüben navigáljon a **+ erőforrás létrehozása**  >  **Analytics**  > **HDInsight**elemre.
+1. A bal oldali menüben navigáljon a **+ erőforrás létrehozása** >  **Analytics** > **HDInsight**elemre.
 
     ![Új fürt létrehozása a Azure Portalban](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Új fürt létrehozása a Azure Portalban")
 
@@ -81,7 +81,7 @@ A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resou
 
      ![HDInsight létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Új fürt létrehozása a Azure Portalban")
 
-     | Adattárolás                                      | Leírás |
+     | Storage                                      | Leírás |
      |----------------------------------------------|-------------|
      | **Az Azure Storage-Blobok alapértelmezett tárolóként**   | <ul><li>Az **elsődleges tároló típusa**beállításnál válassza az **Azure Storage**lehetőséget. A **kiválasztási módszer**esetében válassza a **saját előfizetések** lehetőséget, ha olyan Storage-fiókot szeretne megadni, amely az Azure-előfizetéséhez tartozik. Ezután válassza ki a Storage-fiókot. Ellenkező esetben válassza a **hozzáférési kulcs**lehetőséget. Ezután adja meg az Azure-előfizetésen kívülről kiválasztani kívánt Storage-fiók adatait.</li><li>Az **alapértelmezett tárolónál**válassza ki a portál által javasolt alapértelmezett nevet, vagy adja meg a sajátját.</li><li>Ha az Azure Blob Storage az alapértelmezett tároló, a **további Storage-fiókok** lehetőség kiválasztásával további Storage-fiókokat adhat meg a fürthöz való hozzárendeléshez. Az **Azure Storage-kulcsok**esetében válassza **a Storage-kulcs hozzáadása**elemet. Ezután megadhat egy Storage-fiókot az Azure-előfizetésből vagy más előfizetésből. Adja meg a Storage-fiók elérési kulcsát.</li><li>Ha a blob Storage az alapértelmezett tároló, akkor a **Data Lake Storage hozzáférés** lehetőség kiválasztásával megadhatja a Azure Data Lake Storage további tárterületként. További információ [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
      | **Azure Data Lake Storage alapértelmezett tárolóként** | Az **elsődleges tároló típusa**beállításnál válassza a **Azure Data Lake Storage Gen1** vagy a **Azure Data Lake Storage Gen2**lehetőséget. Ezután tekintse meg a következő cikket: rövid útmutató [: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) utasításokért. |
@@ -142,7 +142,7 @@ A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resou
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen létrehozott egy HDInsight-fürtöt. Most megtudhatja, hogyan dolgozhat a fürttel.
 

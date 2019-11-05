@@ -9,35 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025392"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476129"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
 Ez a cikk segít megkeresni és kijavítani a Azure Machine Learning használatakor észlelt hibákat és hibákat.
 
-## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Közelgő SR-IOV frissítés NCv3-gépekre a AmlCompute-ben
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Leállás: SR-IOV frissítés NCv3-gépekre a AmlCompute-ben
 
-Az Azure számítási szolgáltatás a november elején kezdődő NCv3 SKU-ket fogja frissíteni az összes MPI-implementáció és-verzió támogatásához, valamint a InfiniBand-alapú virtuális gépek RDMA-műveleteinek elvégzéséhez. Ehhez rövid állásidőre lesz szükség – [További információ az SR-IOV frissítéséről](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+Az Azure-számítás a 2019. november elején kezdődő NCv3 SKU-ket fogja frissíteni az összes MPI-implementáció és-verzió támogatásához, valamint a InfiniBand-alapú virtuális gépekhez tartozó RDMA műveletekhez. Ehhez rövid állásidőre lesz szükség – [További információ az SR-IOV frissítéséről](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
 Azure Machine Learning felügyelt számítási ajánlatának (AmlCompute) ügyfeleként jelenleg nem szükséges módosítania a módosításokat. A [frissítési ütemterv](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) alapján meg kell terveznie a betanítást rövid idő alatt. A szolgáltatás a fürt csomópontjain lévő virtuálisgép-rendszerképek frissítését és a fürt automatikus skálázását végzi. Ha a frissítés befejeződik, használhatja az összes többi MPI-discibutions (például a OpenMPI és a Pytorch-t) a nagyobb InfiniBand-sávszélesség, az alacsonyabb késés és a jobb elosztott alkalmazások teljesítményének növelése mellett.
 
-## <a name="visual-interface-issues"></a>Vizuális felülettel kapcsolatos problémák
+## <a name="azure-machine-learning-designer-issues"></a>Azure Machine Learning Designer-problémák
 
-Vizuális felület a Machine learning szolgáltatással kapcsolatos problémákhoz.
+A tervezővel kapcsolatos ismert problémák.
 
 ### <a name="long-compute-preparation-time"></a>Hosszú számítási előkészítési idő
 
 Hozzon létre új számítást, vagy idézzen elő számítási időt, akár néhány percet is igénybe vehet. A csapat az optimalizáláshoz dolgozik.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nem lehet futtatni egy kísérletet, amely csak adatkészletet tartalmaz 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>A kísérlet nem futtatható, csak adatkészletet tartalmaz 
 
 Előfordulhat, hogy egy kísérletet csak olyan adatkészletet szeretne futtatni, amely megjeleníti az adatkészletet. Azonban a kísérletek futtatása nem engedélyezett, csak az adatkészletet tartalmazza. Aktívan kijavítottuk ezt a problémát.
  
@@ -103,7 +102,7 @@ Databricks és Azure Machine Learning problémák.
 
 ### <a name="failure-when-installing-packages"></a>Hiba a csomagok telepítésekor
 
-Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Bizonyos csomagok, például a `psutil`, ütközéseket okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
+Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Bizonyos csomagok, például a `psutil`ütközést okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -147,8 +146,9 @@ Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani
 Ha Azure Databricks fürtön lévő adatolvasáskor `FailToSendFeather` hibaüzenet jelenik meg, tekintse meg a következő megoldásokat:
 
 * `azureml-sdk[automl]` csomag frissítése a legújabb verzióra.
-* Adja hozzá a `azure-dataprep` 1.1.8 vagy újabb verziót.
-* Adja hozzá `pyarrow` 0,11-es vagy újabb verziót.
+* Adja hozzá `azure-dataprep` 1.1.8 vagy újabb verziót.
+* Adja hozzá a `pyarrow` 0,11-es vagy újabb verzióját.
+
 
 ## <a name="datasets"></a>Adathalmazok
 
@@ -158,11 +158,11 @@ Ezek Azure Machine Learning adatkészletek ismert problémái.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Ha közvetlenül a munkaterületet tekinti meg az SDK-ból vagy a portálról, akkor nem fogja tudni megtekinteni a normál áttekintő oldalt a bővítmény előfizetési adataival. Nem válthat másik munkaterületre is. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Portal](https://portal.azure.com) léphet, és megkeresheti a munkaterület nevét.
+Ha közvetlenül a munkaterületet tekinti meg az SDK-ból vagy a portálról, akkor nem fogja tudni megtekinteni a normál áttekintő oldalt a bővítmény előfizetési adataival. Nem válthat másik munkaterületre is. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Machine learning studióba](https://ml.azure.com) léphet, és megkeresheti a munkaterület nevét.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatokat is megadhat. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Portal](https://portal.azure.com) és lépjen a munkaterületre, és válassza ki a munkaterületet **> a kísérlet > > naplók futtatása**  Ezeket az információkat a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)megjelenő **kísérletek** szakaszban tekintheti meg.
+Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatokat is megadhat. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Machine learning Studio](https://ml.azure.com) webhelyére, és válassza ki a munkaterületet, és válassza a munkaterületet **> kísérlet > >**  
 
 > [!NOTE]
 > Azure Machine Learning a különböző forrásokból származó információkat naplózza a betanítás során, például a AutoML vagy a betanítási feladatot futtató Docker-tárolóban. A naplók közül sok nincs dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
@@ -193,13 +193,13 @@ Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy ol
 
 ## <a name="overloaded-azurefile-storage"></a>Túlterhelt AzureFile-tároló
 
-Ha `Unable to upload project files to working directory in AzureFile because the storage is overloaded` hibaüzenetet kap, alkalmazza a következő megkerülő megoldásokat.
+Ha `Unable to upload project files to working directory in AzureFile because the storage is overloaded`hibaüzenetet kap, alkalmazza a következő megkerülő megoldásokat.
 
 Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmegosztást, a javasolt a Blobok használata, hogy a fájlmegosztás díjmentesen használható legyen a futtatások elküldéséhez. A számítási feladatok felosztása két különböző munkaterület között is lehetséges.
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Webszolgáltatások az Azure Kubernetes szolgáltatásban – hibák 
 
-Az Azure Kubernetes szolgáltatásban számos webszolgáltatási hiba feloldható a fürthöz való csatlakozással `kubectl` használatával. Az Azure Kubernetes Service-fürthöz tartozó `kubeconfig.json` a következő futtatásával kérhető le:
+Az Azure Kubernetes szolgáltatásban számos webszolgáltatási hiba oldható fel, ha a `kubectl`használatával csatlakozik a fürthöz. Az Azure Kubernetes Service-fürt `kubeconfig.json` a következő futtatásával kérheti le:
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -233,7 +233,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Ha már nem rendelkezik SSL-tanúsítvánnyal és titkos kulccsal, vagy ha Azure Machine Learning által létrehozott tanúsítványt használ, lekérheti a fájlokat a fürt leválasztása előtt, ha a `kubectl` értékkel csatlakozik a fürthöz, és beolvassa a titkos `azuremlfessl`.
+Ha már nem rendelkezik SSL-tanúsítvánnyal és titkos kulccsal, vagy ha a Azure Machine Learning által létrehozott tanúsítványt használ, lekérheti a fájlokat a fürt leválasztása előtt a fürthöz való csatlakozással a `kubectl` és a titkos `azuremlfessl`beolvasásával.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml

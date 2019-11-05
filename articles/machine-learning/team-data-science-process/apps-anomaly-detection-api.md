@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning Anomáliadetektálás API – a csoportos adatelemzési folyamat
-description: Anomáliadetektálás API, amelyek a észleli a rendellenességeket, amely időben egyenletesen elosztásban numerikus értékek idősorozat-adatokat a Microsoft Azure Machine Learning használatával létrehozott.
+title: Azure Machine Learning rendellenesség észlelése API – csoportos adatelemzési folyamat
+description: Az anomália-észlelési API egy olyan Microsoft Azure Machine Learning, amely a Time Series-adatokban az időben egyenletesen elhelyezkedő numerikus értékekkel észlelt rendellenességeket észleli.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,57 +11,57 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 25b08bf78de61e556bab790869b45131a01ce6b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "64926189"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495101"
 ---
-# <a name="machine-learning-anomaly-detection-api"></a>A Machine Learning Anomáliadetektálás API
+# <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rendellenesség-észlelési API
 
 > [!NOTE]
-> Ez az elem karbantartás alatt áll. Javasoljuk, hogy az Azure Cognitive Services Machine Learning algoritmusait használó anomália- [érzékelő API-szolgáltatást](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) használja az üzleti, működési és IoT mérőszámokból származó rendellenességek észlelésére.
+> Ez az elem karbantartás alatt áll. Javasoljuk, hogy az Azure Cognitive Services Machine Learning algoritmusait használó [anomália-érzékelő API-szolgáltatást](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) használja az üzleti, működési és IoT mérőszámokból származó rendellenességek észlelésére.
 
 ## <a name="overview"></a>Áttekintés
-[Anomáliadetektálás API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) a, amely észleli a rendellenességeket, amely időben egyenletesen elosztásban numerikus értékek idősorozat-adatokat az Azure Machine Learning használatával létrehozott példa.
+Az [anomália-észlelési API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) egy olyan Azure Machine learning, amely a Time Series-adatokban az időben egyenletesen elhelyezkedő numerikus értékekkel észlelt rendellenességeket észleli.
 
-Az API felismeri a következő típusú rendellenes minták az időbeli:
+Ez az API a következő típusú rendellenes mintákat ismeri fel az idősorozat-adatsorokban:
 
-* **Pozitív és negatív trendek**: Például, ha a számítási feladatokban a memória használatának monitorozásakor a felfelé mutató tendencia hasznos lehet, mivel előfordulhat, hogy a memória szivárgását jelzi,
-* **Változások az értékek dinamikus tartományában**: Például a Cloud Service által okozott kivételek figyelése esetén az értékek dinamikus tartományának változásai a szolgáltatás állapotának instabilitását jelezhetik, és
-* **Tüskék és dips**: Ha például egy szolgáltatásban vagy egy e-kereskedelmi helyen található pénztárak számát figyeli, a tüskék vagy a dips rendellenes viselkedést jelezhet.
+* **Pozitív és negatív trendek**: Ha például a rendszer a memória használatának figyelése során felhasznál egy emelkedő trendet, előfordulhat, hogy a memória szivárgását jelezhetik,
+* **Értékek dinamikus tartományának változásai**: például a Cloud Service által okozott kivételek figyelése esetén az értékek dinamikus tartományának változásai a szolgáltatás állapotának instabilitását jelezhetik, és
+* **Tüskék és dipsok**: Ha például egy szolgáltatás bejelentkezési hibáinak számát vagy egy e-kereskedelmi helyen lévő pénztárak számát figyeli, a tüskék vagy a dips rendellenes viselkedést jelezhet.
 
-A machine learning derítik fel ilyen értékek változásainak követése keresztül folyamatban lévő változásai idő- és azok értékeit, anomáliadetektálási pontszámok. Nincs szükségük ad hoc ad hoc küszöbérték finomhangolása és eredményeiket téves riasztási aránnyal vezérlésére használható. Az anomáliadetektálás API hasznos számos olyan szituációkra, mint a figyelést az idő múlásával nyomon követése a KPI-k révén a használat monitorozása keresztül metrikákra keresések száma, a számok kattintással, alkalmazásteljesítmény-figyelő például a memória, Processzor, a teljesítményszámlálók segítségével olvassa be a fájlt, stb. idővel.
+Ezek a gépi tanulási érzékelők az értékek időbeli változásait követik, és az értékük folyamatos változásait az anomália pontszámként jelentik. Nem igénylik az alkalmi küszöbértékek finomhangolását, és a pontszámok a hamis pozitív arány szabályozására használhatók. Az anomáliák észlelése API számos olyan forgatókönyvben hasznos, mint például a szolgáltatások figyelése a KPI-k nyomon követésével, a használat monitorozásával, például a keresések számával, a kattintások számával, a teljesítmény figyelésével, például a memóriával, a CPU-val, a fájlok olvasásával az idő múlásával.
 
-Az Anomáliadetektálás ajánlat az első lépésekhez hasznos eszközöket tartalmaz.
+Az anomáliák észlelésére szolgáló ajánlat hasznos eszközöket kínál a kezdéshez.
 
-* A [webes alkalmazás](https://anomalydetection-aml.azurewebsites.net/) segítségével értékelje ki és jelenítheti meg az eredményeket az anomáliadetektálás API-k az adatokon.
+* A [webalkalmazás](https://anomalydetection-aml.azurewebsites.net/) segítségével kiértékelheti és megjelenítheti az adatrendellenesség-észlelési API-kat az adatain.
 
 > [!NOTE]
-> Próbálja ki **informatikai Anomáliaelemző megoldás** működteti [az API-t](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
+> Próbálja ki [az API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) által működtetett **anomália** -alapú megoldást
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
-## <a name="api-deployment"></a>API üzembe helyezés
-Annak érdekében, hogy az API-t használ, azt telepítenie kell az Azure-előfizetéshez ahol tárolható az Azure Machine Learning-webszolgáltatásként.  Az ehhez a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Ez két Azure Machine Learning Studio webszolgáltatást (és az azokhoz kapcsolódó erőforrásokat) helyez üzembe az Azure-előfizetésében – az egyiket a szezonális észlelés és a szezonális észlelés nélkül.  Az üzembe helyezés befejezése után az API-kat a [Azure Machine learning Studio](https://services.azureml.net/webservices/) webszolgáltatások oldaláról kezelheti.  Ezen az oldalon lesz a végpontok helyére, API-kulcsokat, valamint mintakód találhat az API-t hívná.  Részletes utasítások [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+## <a name="api-deployment"></a>API üzembe helyezése
+Az API használatához telepítenie kell azt az Azure-előfizetésre, ahol Azure Machine Learning webszolgáltatásként fog futni.  Ezt a [Azure AI Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)teheti meg.  Ez két Azure Machine Learning Studio (klasszikus) webszolgáltatást (és az azokhoz kapcsolódó erőforrásokat) helyez üzembe az Azure-előfizetésében – az egyiket a szezonális észlelés és a szezonális észlelés nélkül.  Az üzembe helyezés befejezése után az API-kat a [Azure Machine learning Studio (klasszikus) webszolgáltatások](https://services.azureml.net/webservices/) oldaláról kezelheti.  Ezen a lapon megtalálhatja a végpontok helyét, az API-kulcsokat, valamint az API meghívására szolgáló mintakód-kódot.  Részletesebb utasítások [itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)érhetők el.
 
-## <a name="scaling-the-api"></a>Az API-t méretezése
-Alapértelmezés szerint a központi telepítés kap egy ingyenes fejlesztési-tesztelési számlázási csomagot 1000 tranzakció havonta, és 2 számítási óra/hó.  Az igényeinek megfelelően frissítheti egy másik csomagra.  A különböző csomagokról díjszabásáról érhetők el [Itt](https://azure.microsoft.com/pricing/details/machine-learning/) "Élő webes API díjszabása" alatt.
+## <a name="scaling-the-api"></a>Az API skálázása
+Alapértelmezés szerint az üzembe helyezés ingyenes fejlesztési/tesztelési számlázási csomaggal rendelkezik, amely magában foglalja a 1 000 tranzakció/hónap és 2 számítási óra/hónap értéket.  Igény szerint frissíthet más csomagokra is.  A különböző csomagok díjszabásáról a "Production web API díjszabása" [című szakaszban olvashat](https://azure.microsoft.com/pricing/details/machine-learning/) bővebben.
 
-## <a name="managing-aml-plans"></a>Csomagok AML kezelése
-Kezelheti a számlázási csomag [Itt](https://services.azureml.net/plans/).  A csomagnév döntött az API-t üzembe helyezésekor az erőforráscsoport nevét, valamint egy karakterlánc, amely egyedi az előfizetés alapján.  Váltson magasabb szintű csomagra való érhetők el [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) a "Számlázási csomagot kezelése" szakaszban.
+## <a name="managing-aml-plans"></a>A pénzmosás-csomagok kezelése
+A számlázási tervet [itt](https://services.azureml.net/plans/)kezelheti.  A csomag neve az API telepítésekor választott erőforráscsoport-név alapján, valamint egy, az előfizetéshez egyedi karakterláncot fog alapulni.  A terv frissítésével kapcsolatos utasítások a "számlázási csomagok kezelése" [szakaszban találhatók.](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)
 
 ## <a name="api-definition"></a>API-definíció
-A webszolgáltatás REST-alapú API-t biztosít, amely képes használni a különféle módokon, például a webes vagy mobilalkalmazás, R, Python, az Excel, HTTPS-kapcsolaton keresztül stb.  Az idősoros adatokat küldeni a szolgáltatás REST API-hívás keresztül, és azt futtatja az alább ismertetett három anomáliadetektálási típusok kombinációját.
+A webszolgáltatás egy REST-alapú API-t biztosít a HTTPS-en keresztül, amely különböző módokon használható, például webes vagy mobil alkalmazások, R, Python, Excel stb. használatával.  Az idősoros adatait REST API híváson keresztül küldi el a szolgáltatásnak, és az alább leírt három rendellenesség-típus kombinációját futtatja.
 
 ## <a name="calling-the-api"></a>Az API meghívása
-Az API meghívása kell tudni, hogy a végpont helye és API-kulcsot.  Mindkettő, valamint az API meghívásához használható mintakód a [Azure Machine learning Studio](https://services.azureml.net/webservices/) webszolgáltatások oldaláról érhető el.  Keresse meg a kívánt API-t, majd kattintson a "Felhasználás" lapon találja meg azokat.  Vegye figyelembe, hogy meghívhatja az API-t egy Swagger API-ként (azaz az URL-cím paraméterrel `format=swagger`), vagy mint egy nem Swagger API-(azaz nélkül a `format` URL paraméter).  A mintakód a Swagger-formátumot használja.  Az alábbiakban egy példa kérések és válaszok a a Swagger formátumban van.  Ezekben a példákban vannak a szezonalitás végpontnak.  A nem szezonalitás végpont hasonlít.
+Az API meghívásához ismernie kell a végpont helyét és az API-kulcsot.  Mindkettő, valamint az API meghívásához használható mintakód a [Azure Machine learning Studio (klasszikus) webszolgáltatások](https://services.azureml.net/webservices/) oldaláról érhető el.  Keresse meg a kívánt API-t, majd kattintson a "felhasználás" fülre.  Vegye figyelembe, hogy az API-t hencegő API-ként (például a `format=swagger`URL-lel) vagy nem hencegő API-ként (például a `format` URL paraméter nélkül) hívhatja.  A mintakód a hencegő formátumot használja.  Az alábbi példa egy kérelem és válasz nem hencegő formátumú.  Ezek a példák a szezonális végpontra vonatkoznak.  A nem szezonális végpont hasonló.
 
-### <a name="sample-request-body"></a>Minta-kérelem törzse
-A kérés tartalmaz két objektum: `Inputs` és `GlobalParameters`.  Az alábbi példa kérelem néhány paraméter kell küldeni explicit módon nem vannak (görgessen le a végpontok paraméterek teljes listája).  A kérelem nem küldött explicit módon paraméterek az alább megadott alapértelmezett értékeket fogja használni.
+### <a name="sample-request-body"></a>Mintául szolgáló kérelem törzse
+A kérelem két objektumot tartalmaz: `Inputs` és `GlobalParameters`.  Az alábbi példában szereplő kérelemben bizonyos paraméterek küldése explicit módon megtörténik, míg mások nem (az egyes végpontok összes paraméterének teljes listáját lefelé görgetve).  A kérelemben nem kifejezetten elküldett paraméterek az alább megadott alapértelmezett értékeket fogják használni.
 
     {
                 "Inputs": {
@@ -83,7 +83,7 @@ A kérés tartalmaz két objektum: `Inputs` és `GlobalParameters`.  Az alábbi 
     }
 
 ### <a name="sample-response"></a>Mintaválasz
-Vegye figyelembe, hogy, annak érdekében, hogy tekintse meg a `ColumnNames` mezőben meg kell adni `details=true` a kérés URL-cím paraméterként.  Tekintse meg az alábbi táblázatokban ezek a mezők mindegyike mögött jelentését.
+Vegye figyelembe, hogy a `ColumnNames` mező megjelenítéséhez a kérelemben URL-paraméterként kell megadnia a `details=true`.  Tekintse meg az alábbi táblázatokat az egyes mezők mögötti jelentésekhez.
 
     {
         "Results": {
@@ -104,92 +104,92 @@ Vegye figyelembe, hogy, annak érdekében, hogy tekintse meg a `ColumnNames` mez
 
 
 ## <a name="score-api"></a>Pontszám API
-A pontszám API nem szezonális idősorozat-adatok a rendellenességek észlelése futtatásához használható. Az API anomáliadetektálási érzékelők számos futtat az adatokon, és azok anomáliadetektálási pontszámokat ad vissza.
-Az alábbi ábra a rendellenességeket, amelyek a pontszám API észleli egy példát mutat be. A time series rendelkezik a 2 különböző megváltozik, és 3 adatforgalmi csúcsokhoz. A piros pötty megjelenítése az idő, amelyen a szint észlelt, miközben a fekete pontok megjelenítése az észlelt adatforgalmi csúcsokhoz.
-![Score API][1]
+A score API-t a nem szezonális idősorozat-adatsorokon futó anomáliák észlelésére használják. Az API számos anomália-észlelést futtat az adatokon, és visszaadja a anomáliák pontszámait.
+Az alábbi ábrán egy példa látható a pontszám API által észlelt rendellenességekre. Ebben az idősorozatban 2 különböző szintű módosítás és 3 tüske látható. A piros pontok azt az időpontot mutatják, amikor a rendszer a szint változását észleli, míg a fekete pontok az észlelt tüskéket mutatják.
+![pontszám API][1]
 
-### <a name="detectors"></a>Érzékelők
-Az anomáliadetektálás API támogatja a derítik fel a 3 tág kategóriába. A megadott bemeneti paramétereket és kimeneteket az egyes detector használatával részletei a következő táblázatban található.
+### <a name="detectors"></a>Detektorok
+A rendellenesség-észlelési API 3 széles kategóriába tartozó érzékelők használatát támogatja. Az egyes detektorok megadott bemeneti paramétereinek és kimenetének részletei a következő táblázatban találhatók.
 
-| Kategória detector használatával | Detector használatával | Leírás | Bemeneti paraméterek | Kimenetek |
+| Detektor kategóriája | Detektor | Leírás | Bemeneti paraméterek | Kimenetek |
 | --- | --- | --- | --- | --- |
-| Megnövekedett érzékelők |TSpike detector használatával |Csúcsok és a DIP sokkal értékei alapján is az első és harmadik quartiles észlelése |*tspikedetector. érzékenység:* egész értéket vesz igénybe a 1-10 tartományba, alapértelmezés szerint: 3 A magasabb értékek több szélsőséges értéket kapnak, így kevésbé érzékenyek |TSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
-| Megnövekedett érzékelők | ZSpike detector használatával |Csúcsok és alapján illesztésnek a esetén a rendszer a középérték a DIP észlelése |*zspikedetector. érzékenység:* a 1-10 tartomány egész értékének megadása, alapértelmezett: 3 A magasabb értékek több szélsőséges értéket kapnak, ami kevésbé érzékeny |ZSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
-| Lassú Trend detector használatával |Lassú Trend detector használatával |A set-érzékenysége alapján lassú pozitív trend észlelése |*trenddetector. érzékenység:* a detektor pontszámának küszöbértéke (alapértelmezett: 3,25, 3,25 – 5 egy ésszerű tartomány, amelyből kiválaszthatja a következőt:; Minél nagyobb a kevésbé érzékeny) |tscore: a trend anomáliadetektálás pontszámot jelölő lebegőpontos szám |
-| Szint módosításának érzékelők | Kétirányú szint módosítása detector használatával |Felfelé és lefelé is megfelelően a beállított érzékenységi szint módosításának észlelése |*bileveldetector. érzékenység:* a detektor pontszámának küszöbértéke (alapértelmezett: 3,25, 3,25 – 5 egy ésszerű tartomány, amelyből kiválaszthatja a következőt:; Minél nagyobb a kevésbé érzékeny) |rpscore: anomáliadetektálási pontszám a felfelé és lefelé szint módosításának jelölő lebegőpontos szám |
+| Tüske-érzékelők |TSpike-detektor |A tüskék és a dips értékek észlelése az első és a harmadik quartiles alapján |*tspikedetector. érzékenység:* egész értéket vesz igénybe a 1-10 tartományban, alapértelmezett érték: 3; A magasabb értékek több szélsőséges értéket kapnak, így kevésbé érzékenyek |TSpike: bináris értékek – "1", ha a rendszer nyársat/dip-t észlel, máskülönben "0". |
+| Tüske-érzékelők | ZSpike-detektor |A tüskék és a dipsok észlelése attól függően, hogy a datapoints mennyi ideig tartanak |*zspikedetector. érzékenység:* egész értéket kell megtennie a 1-10 tartományban, alapértelmezett érték: 3; A magasabb értékek több szélsőséges értéket kapnak, ami kevésbé érzékeny |ZSpike: bináris értékek – "1", ha a rendszer nyársat/dip-t észlel, máskülönben "0". |
+| Lassú trend detektor |Lassú trend detektor |A lassú pozitív trend észlelése a beállított érzékenység alapján |*trenddetector. érzékenység:* a detektor pontszámának küszöbértéke (alapértelmezett: 3,25, 3,25 – 5 egy ésszerű tartomány, amelyből kiválaszthatja ezt Minél nagyobb a kevésbé érzékeny) |tscore: a trendi anomália pontszámát jelképező lebegőpontos szám |
+| Szint változási érzékelők | Kétirányú változás-érzékelő |A növekvő és a csökkenő szintű változások észlelése a beállított érzékenység alapján |*bileveldetector. érzékenység:* a detektor pontszámának küszöbértéke (alapértelmezett: 3,25, 3,25 – 5 egy ésszerű tartomány, amelyből kiválaszthatja ezt Minél nagyobb a kevésbé érzékeny) |rpscore: a felfelé és lefelé irányuló anomália pontszámát jelképező lebegőpontos szám |
 
 ### <a name="parameters"></a>Paraméterek
-Ezek a bemeneti paraméterek részletesebb információkat az alábbi táblázatban szerepel:
+A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi táblázat tartalmazza:
 
-| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes értékek | Javasolt tartomány |
+| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historywindow |Anomáliadetektálás pontszámot törölje a számításhoz használt előzmények (a adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
-| detectors.spikesdips | -E csak hirtelen megugró kihasználtság, csak DIP vagy mindkettő |Mindkettő |a felsorolt |Mindkét, adatforgalmi csúcsokhoz, DIP |Mindkettő |
-| bileveldetector.sensitivity |Bizalmassági szint kétirányú detector használatával módosíthatja. |3.25 |double |None |3,25 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| trenddetector.sensitivity |Pozitív trend detector használatával különbségtételt. |3.25 |double |None |3,25 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| tspikedetector.sensitivity |Különbségtételt TSpike detector használatával |3 |egész szám |1-10 |3 – 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| zspikedetector.sensitivity |Különbségtételt ZSpike detector használatával |3 |egész szám |1-10 |3 – 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| postprocess.tailRows |A kimeneti eredmények megőrizni a legújabb adatpontok száma |0 |egész szám |a 0 (az összes adatpont tartsa), vagy adja meg, hogy az eredményeket pontszám |– |
+| érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
+| érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
+| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| trenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| tspikedetector. érzékenység |TSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| zspikedetector. érzékenység |ZSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |– |
 
 ### <a name="output"></a>Kimenet
-Az API-t futtatja az összes derítik fel az idősoros adatokat, és anomáliadetektálási pontszámok és az egyes bináris kiugrás mutatók időt adja vissza. Az alábbi táblázat felsorolja az API-ból kimenetek.
+Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
 | Kimenetek | Leírás |
 | --- | --- |
-| Time |A nyers adatokat, vagy összesített (és/vagy) imputált adatok időbélyegeket Ha összesítés (és/vagy) hiányzik adatok imputálási alkalmazása |
-| Adatok |Értékek a nyers adatokat, vagy összesített (és/vagy) imputált adatokat, ha összesítés (és/vagy) hiányzó adatok imputálási alkalmazása |
-| TSpike |Bináris jelölő jelzi, hogy ugrásszerű észlel TSpike detector használatával |
-| ZSpike |Bináris jelölő jelzi, hogy ugrásszerű észlel ZSpike detector használatával |
-| rpscore |Egy lebegőpontos számot jelölő anomáliadetektálási pontszám a kétirányú szint módosítása |
-| rpalert |1/0 érték jelzi a kétirányú szintű módosítsa a bemeneti érzékenység szerint anomáliadetektálási |
-| tscore |Egy lebegőpontos számot jelölő anomáliadetektálás pontszámot rendelni az a pozitív trend |
-| talert |1/0 érték, amely jelzi a hiba egy pozitív trend anomáliadetektálási bemeneti érzékenysége alapján |
+| Time |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
+| Adatok |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |
+| TSpike |Bináris kijelző, amely azt jelzi, hogy a TSpike detektor észleli-e a nyársat |
+| ZSpike |Bináris kijelző, amely azt jelzi, hogy a ZSpike detektor észleli-e a nyársat |
+| rpscore |A kétszintű változáshoz tartozó anomália pontszámot jelképező lebegőpontos szám |
+| rpalert |1/0 érték, amely azt jelzi, hogy a bemeneti érzékenység alapján kétirányú változási rendellenesség van |
+| tscore |A pozitív trend anomália pontszámát jelképező lebegőpontos szám |
+| talert |1/0 érték, amely azt jelzi, hogy a bemeneti érzékenység alapján pozitív tendenciát észlelt a rendszer |
 
 ## <a name="scorewithseasonality-api"></a>ScoreWithSeasonality API
-Időbeli adatsorok szezonális minták rendelkező rendellenesség-észlelést futtat a ScoreWithSeasonality API használható. Ez az API hasznos szezonális minták eltérések észlelését.
-Az alábbi ábra egy szezonális idősor észlelt rendellenességek egy példát mutat be. A time series rendelkezik egy megnövekedett (az 1-től fekete pont), a két DIP (a 2. fekete pont és a végén egy) és a egy szint módosításának (piros pont). Vegye figyelembe, hogy mindkét a dip közepén az idősor és a szint módosítása csak lekérdezésteljesítmény után szezonális összetevők el lesznek távolítva az adatsorozathoz.
-![Szezonalitás API][2]
+A ScoreWithSeasonality API-t a rendszer a anomáliák észlelésére használja az idősorozatok szezonális mintázatával. Ez az API hasznos az eltérések észleléséhez az idényjellegű mintákban.
+Az alábbi ábrán egy példa látható a szezonális idősorokban észlelt rendellenességekre. Az idősorozat egy tüske (1. fekete pont), két dips (a második fekete pont és egy végén), valamint egy szint változás (piros pont). Vegye figyelembe, hogy az idősorozat közepén lévő dip és a szint változása csak a szezonális összetevők az adatsorozatból való eltávolítása után ismerhető fel.
+![szezonális API][2]
 
-### <a name="detectors"></a>Érzékelők
-A szezonalitás végpontját derítik fel azokat, de nem szezonalitás végpontját (lásd lent) kissé eltérő paraméterek nevei hasonlóak.
+### <a name="detectors"></a>Detektorok
+A szezonális végpontban található érzékelők hasonlók a nem szezonális végponthoz, de némileg eltérő paraméterek nevei (alább láthatók).
 
 ### <a name="parameters"></a>Paraméterek
 
-Ezek a bemeneti paraméterek részletesebb információkat az alábbi táblázatban szerepel:
+A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi táblázat tartalmazza:
 
-| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes értékek | Javasolt tartomány |
+| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |Összesítési időköz (másodperc) összesítéséhez szükséges bemeneti idősorozat |0 (nincs összesítés történik) |egész szám |0: ellenkező esetben hagyja ki az összesítést, > 0 |1 nap, az idősorozat-függő 5 perc |
-| preprocess.aggregationFunc |A függvény a megadott AggregationInterval az adatok összesítéséhez szükséges tartományt |középérték |a felsorolt |mean, sum, hossza |– |
-| preprocess.replaceMissing |Hiányzó adatok imputálására értékek |LKV (utolsó ismert érték) |a felsorolt |nulla, lkv, középérték |– |
-| detectors.historywindow |Anomáliadetektálás pontszámot törölje a számításhoz használt előzmények (a adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
-| detectors.spikesdips | -E csak hirtelen megugró kihasználtság, csak DIP vagy mindkettő |Mindkettő |a felsorolt |Mindkét, adatforgalmi csúcsokhoz, DIP |Mindkettő |
-| bileveldetector.sensitivity |Bizalmassági szint kétirányú detector használatával módosíthatja. |3.25 |double |None |3,25 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| postrenddetector.sensitivity |Pozitív trend detector használatával különbségtételt. |3.25 |double |None |3,25 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| negtrenddetector.sensitivity |Negatív trendek detector használatával különbségtételt. |3.25 |double |None |3,25 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| tspikedetector.sensitivity |Különbségtételt TSpike detector használatával |3 |egész szám |1-10 |3 – 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| zspikedetector.sensitivity |Különbségtételt ZSpike detector használatával |3 |egész szám |1-10 |3 – 5 (kisebb értékek jelenti azt, hogy a bizalmas adatokat kezelő) |
-| seasonality.enable |Szezonalitás elemzési végrehajtandó-e |true |logikai |IGAZ, hamis |Idősorozat-függő |
-| seasonality.numSeasonality |Rendszeres ciklusok észleltnek maximális száma |1 |egész szám |1, 2 |1-2 |
-| seasonality.transform |E szezonális (és) anomáliadetektálás alkalmazása előtt el kell távolítani a trend összetevők |deseason |a felsorolt |nincs, deseason, deseasontrend |– |
-| postprocess.tailRows |A kimeneti eredmények megőrizni a legújabb adatpontok száma |0 |egész szám |a 0 (az összes adatpont tartsa), vagy adja meg, hogy az eredményeket pontszám |– |
+| előfeldolgozás. aggregationInterval |Összesítési időköz másodpercben a bemeneti idősorozatok összesítéséhez |0 (nem történt összesítés) |egész szám |0: az Összesítés kihagyása, > 0, máskülönben |5 perc – 1 nap, idősorozat-függő |
+| előfeldolgozás. aggregationFunc |Az adatnak a megadott AggregationInterval való összesítéséhez használt függvény |Értem |felsorolt |középérték, összeg, hossz |– |
+| előfeldolgozás. replaceMissing |Hiányzó adatok eltulajdonítása esetén használt értékek |LKV (utolsó ismert érték) |felsorolt |nulla, LKV, Mean |– |
+| érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
+| érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
+| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| postrenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| negtrenddetector. érzékenység |A negatív trend detektorának érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| tspikedetector. érzékenység |TSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| zspikedetector. érzékenység |ZSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| szezonális. Enable |Azt határozza meg, hogy a szezonális elemzést kell-e elvégezni |igaz |logikai |igaz, hamis |Idősorozat-függő |
+| szezonális. numSeasonality |Az észlelni kívánt időszakos ciklusok maximális száma |1 |egész szám |1, 2 |1-2 |
+| szezonális. átalakítás |Azt határozza meg, hogy a szezonális (és) trend-összetevőket el kell-e távolítani az anomáliák észlelése előtt |leszezon |felsorolt |nincs, deszezon, deseasontrend |– |
+| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |– |
 
 ### <a name="output"></a>Kimenet
-Az API-t futtatja az összes derítik fel az idősoros adatokat, és anomáliadetektálási pontszámok és az egyes bináris kiugrás mutatók időt adja vissza. Az alábbi táblázat felsorolja az API-ból kimenetek.
+Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
 | Kimenetek | Leírás |
 | --- | --- |
-| Time |A nyers adatokat, vagy összesített (és/vagy) imputált adatok időbélyegeket Ha összesítés (és/vagy) hiányzik adatok imputálási alkalmazása |
-| OriginalData |Értékek a nyers adatokat, vagy összesített (és/vagy) imputált adatokat, ha összesítés (és/vagy) hiányzó adatok imputálási alkalmazása |
-| ProcessedData |A következők egyikét: <ul><li>A time series szezonálisan igazított, ha a jelentős szezonalitás észlelt, és lehetőség van kijelölve; deseason</li><li>szezonálisan igazított és trendmentes jelentős szezonalitás észlelésekor a time series és deseasontrend lehetőség van kijelölve</li><li>Ellenkező esetben ez megegyezik a OriginalData</li> |
-| TSpike |Bináris jelölő jelzi, hogy ugrásszerű észlel TSpike detector használatával |
-| ZSpike |Bináris jelölő jelzi, hogy ugrásszerű észlel ZSpike detector használatával |
-| BiLevelChangeScore |Egy lebegőpontos számot jelölő anomáliadetektálás pontszámot rendelni az a szint módosítása |
-| BiLevelChangeAlert |1/0 értéket jelezve van egy szint módosításának anomáliadetektálási bemeneti érzékenysége alapján |
-| PosTrendScore |Egy lebegőpontos számot jelölő anomáliadetektálás pontszámot rendelni az a pozitív trend |
-| PosTrendAlert |1/0 érték, amely jelzi a hiba egy pozitív trend anomáliadetektálási bemeneti érzékenysége alapján |
-| NegTrendScore |Egy lebegőpontos számot jelölő anomáliadetektálási pontszám a negatív trendek |
-| NegTrendAlert |1/0 érték, amely jelzi a hiba egy negatív trendek anomáliadetektálási bemeneti érzékenysége alapján |
+| Time |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
+| OriginalData |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |
+| ProcessedData |A következők valamelyike: <ul><li>Szezonálisan beállított idősorozat, ha a rendszer jelentős szezonális elemet észlelt, és kijelöli a kilépési lehetőséget.</li><li>szezonálisan igazított és elválasztott idősorozat, ha a rendszer jelentős szezonális észlelést észlelt, és kiválasztotta a deseasontrend beállítást</li><li>Ellenkező esetben ez ugyanaz, mint a OriginalData</li> |
+| TSpike |Bináris kijelző, amely azt jelzi, hogy a TSpike detektor észleli-e a nyársat |
+| ZSpike |Bináris kijelző, amely azt jelzi, hogy a ZSpike detektor észleli-e a nyársat |
+| BiLevelChangeScore |A szint változásakor a anomália pontszámot jelképező lebegőpontos szám |
+| BiLevelChangeAlert |1/0 érték, amely azt jelzi, hogy a bemeneti érzékenység alapján van egy szint változási rendellenesség |
+| PosTrendScore |A pozitív trend anomália pontszámát jelképező lebegőpontos szám |
+| PosTrendAlert |1/0 érték, amely azt jelzi, hogy a bemeneti érzékenység alapján pozitív tendenciát észlelt a rendszer |
+| NegTrendScore |A negatív trenden alapuló anomália-pontszámot jelölő lebegőpontos szám |
+| NegTrendAlert |1/0 érték, amely azt jelzi, hogy a bemeneti érzékenységen alapuló negatív trendi anomália |
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png

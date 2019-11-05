@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 90f83e3e6fa1910641b3e384460cf4aa14016c1a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 386229bc272a520ec8093c95bc861704ce9ea7eb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471419"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -77,7 +77,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy webalkalmazást a `myAppServicePlan` App Service-csomagban. 
+A Cloud Shellben az `myAppServicePlan`[`az webapp create` paranccsal hozzon létre egy webalkalmazást a ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service-csomagban. 
 
 A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot. 
 
@@ -182,17 +182,19 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
+1. A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>. Keresse meg és válassza ki a **app Services**.
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+    ![App Services keresése, Azure Portal, PHP-alapú Webalkalmazás létrehozása](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+2. Válassza ki az Azure-alkalmazás nevét.
 
-Megjelenik a webalkalmazás Áttekintés oldala. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
+    ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-![Az App Service lap az Azure Portalon](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+    Ekkor megjelenik a webalkalmazás **áttekintő** lapja. Itt olyan alapszintű felügyeleti feladatokat hajthat végre, mint a **Tallózás**, **Leállítás**, **Újraindítás**és **Törlés**.
 
-A bal oldali menü az alkalmazás konfigurálásához biztosít különböző lehetőségeket. 
+    ![Az App Service lap az Azure Portalon](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+
+    A webalkalmazás menü különböző beállításokat biztosít az alkalmazás konfigurálásához. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

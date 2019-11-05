@@ -1,7 +1,7 @@
 ---
-title: Modell telepítésének előkészítése
-titleSuffix: Azure Machine Learning Studio
-description: Hogyan készíti elő a betanított modellt webszolgáltatásként üzembe helyezés a Machine Learning Studio betanítási kísérlet átalakítása prediktív kísérletté.
+title: Modell előkészítése üzembe helyezéshez
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Hogyan készítse elő a betanított modellt webszolgáltatásként való üzembe helyezésre, ha átalakítja a Machine Learning Studio (klasszikus) betanítási kísérletet egy prediktív kísérletbe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,111 +9,111 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: caaed83417ac1eaadc407fb12dc8bb360aae45ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751970"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493277"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studióban
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Modell előkészítése a Azure Machine Learning Studio (klasszikus) üzembe helyezéséhez
 
-Az Azure Machine Learning Studio prediktív elemzési modellek fejlesztése majd kifejlesztéséhez, és egy Azure-alapú webes szolgáltatás telepítésével szükséges eszközöket biztosít.
+Azure Machine Learning Studio (klasszikus) megadja a prediktív elemzési modell kialakításához szükséges eszközöket, majd működővé tenni azt egy Azure-webszolgáltatásként való üzembe helyezésével.
 
-Ehhez a kísérlet létrehozásának - nevű használhatja Studio egy *betanítási kísérlet* –, amelyen a vonat, pontszám, és szerkesztheti a modell. Ha elégedett, Felkészülés a modell üzembe helyezéséhez a betanítási kísérlet átalakítása egy *prediktív kísérletté* pontszám felhasználói adatok megfelelően van konfigurálva.
+Ennek elvégzéséhez a Studio klasszikus verziójával hozzon létre egy kísérletet, amelyet egy *képzési kísérletnek* nevezünk. Ha meggyőződött arról, hogy a modell készen áll a telepítésre, alakítsa át a betanítási kísérletet egy *prediktív kísérletre* , amely a felhasználói adatgyűjtésre van konfigurálva.
 
-Ez a folyamat egy példa látható [1. oktatóanyag: Hitelkockázat előrejelzése](tutorial-part1-credit-risk.md).
+Ennek a folyamatnak egy példáját láthatja az [1. oktatóanyagban: hitelkockázat előrejelzése](tutorial-part1-credit-risk.md).
 
-Ez a cikk részletes hogyan alakulnak át betanítási kísérlet be egy prediktív kísérletet, és a prediktív kísérletté telepítési módját mélyreható vesz igénybe. Megismerésével ezeket az adatokat, ismerje meg az üzembe helyezett modell hatékonyabbá tétele konfigurálása.
+Ez a cikk részletesen bemutatja, hogyan alakítható át egy képzési kísérlet a prediktív kísérletbe, és hogyan történik a prediktív kísérlet üzembe helyezése. Ezen információk megismerésével megtudhatja, hogyan konfigurálhatja a telepített modellt, hogy hatékonyabbá váljon.
 
 
 
 ## <a name="overview"></a>Áttekintés 
 
-A betanítási kísérlet átalakítása prediktív kísérletté folyamat három lépésből áll:
+A betanítási kísérlet prediktív kísérletre való átalakításának folyamata három lépést tesz szükségessé:
 
-1. Cserélje le a gépi tanulási algoritmus-modulok a betanított modell.
-2. Trim csak a szükséges ahhoz, hogy pontozási modulok a kísérletet. Betanítási kísérlet számos, amelyek szükségesek a képzés, de nincs rájuk szükség, ha a modell tanítása.
-3. Határozza meg, hogy a modell a webes felhasználói adatokat fogad, és milyen adatokat vissza kell.
+1. Cserélje le a Machine learning-algoritmus moduljait a betanított modellre.
+2. A kísérletet csak azokra a modulokra vágja, amelyek a pontozáshoz szükségesek. A betanítási kísérlet több modult is tartalmaz, amelyek szükségesek a képzéshez, de nem szükségesek a modell betanítása után.
+3. Határozza meg, hogy a modell hogyan fogadja el az adatok elfogadását a webszolgáltatás-felhasználótól, és hogy milyen adatok lesznek visszaadva.
 
 > [!TIP]
-> A betanítási kísérlet során már az érintett a tanítási és pontozási a modell használatával saját adatai. De üzembe helyezését követően felhasználók küld-e az új adatokat a modellbe, és előrejelzési eredményeket adja vissza. Úgy ahogy a betanítási kísérlet átalakítása egy prediktív kísérletet, hogy előkészítse a telepítéshez, tartsa szem előtt a modell mások általi felhasználási módjáról.
+> A betanítási kísérlet során a saját adatai alapján a modell betanításával és pontozásával foglalkozott. Az üzembe helyezést követően azonban a felhasználók új adatait küldenek a modellbe, és az előrejelzési eredményeket fogják visszaadni. Tehát, ahogy átalakítja a betanítási kísérletet egy prediktív kísérletre, hogy készen álljon az üzembe helyezésre, ne feledje, hogy a modelleket mások is használják.
 > 
 > 
 
 ## <a name="set-up-web-service-button"></a>Webszolgáltatás beállítása gomb
-A kísérlet futtatása után (kattintson **futtatása** a kísérlet vászon alján), kattintson a **webszolgáltatás beállítása** gomb (válassza ki a **prediktív webszolgáltatás** lehetőséget). **Webszolgáltatás beállítása** hajt végre, az a betanítási kísérlet átalakítása prediktív kísérletté három lépést:
+A kísérlet futtatása után (a kísérlet vászon alján kattintson a **Futtatás** gombra), kattintson a **webszolgáltatás beállítása** gombra (válassza ki a **prediktív webszolgáltatás** lehetőséget). A **webszolgáltatás beállítása** a betanítási kísérlet prediktív kísérletre történő átalakításának három lépését végzi el:
 
-1. A betanított modell menti a **betanított modellek** a modulpaletta (a kísérleti vászonra a bal oldalon) szakaszában. Felülírja a gépi tanulási algoritmus és [tanítási modell] [ train-model] a mentett betanított modell rendelkező modulok.
-2. Az eszköz elemzi a kísérlethez, és eltávolítja a modult, amely egyértelműen használták csak képzés, és már nincs szükség.
-3. Beilleszt _bemenet webes_ és _kimeneti_ modulok az alapértelmezett helyek a kísérlet során (ezeket a modulokat elfogadása és a felhasználói adatokat adja vissza).
+1. Elmenti a betanított modellt a modul palettájának **betanított modellek** szakaszában (a kísérlet vászontól balra). Ezután lecseréli a Machine learning-algoritmust és [betanítja a modell][train-model] modulokat a mentett betanított modellel.
+2. Elemzi a kísérletet, és eltávolítja azokat a modulokat, amelyeket egyértelműen csak képzésre használtak, és amelyekre már nincs szükség.
+3. A _webszolgáltatások bemeneti_ és _kimeneti_ moduljait a kísérlet alapértelmezett helyeire szúrja be (ezek a modulok elfogadják és visszaadják a felhasználói adatokat).
 
-Ha például az alábbi kísérlet betanítja népszámlálási mintaadatokkal kétosztályos gyorsított döntési fa modell:
+Az alábbi kísérlet például egy kétosztályos, kibővített döntési famodellt alkalmaz a minta-számbavételi adataival:
 
 ![Betanítási kísérlet](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
-A kísérletben a modulok alapvetően négy különböző funkciók hajtsa végre:
+A kísérlet moduljai alapvetően négy különböző funkciót látnak el:
 
-![A modul funkciók](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
+![Modul függvények](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
-A betanítási kísérlet átalakítása prediktív kísérletté, ha ezeket a modulokat némelyike már nincs rá szükség, vagy már eltérő célra szolgál:
+Ha ezt a betanítási kísérletet prediktív kísérletre konvertálja, ezeknek a moduloknak már nincs rá szüksége, vagy már más célt szolgálnak:
 
-* **Adatok** – ebben a minta adatkészletben lévő adatok nem használatos a kiértékelés során – a felhasználó a webszolgáltatás meg fogja adni a pontozandó adatokat. Ez az adatkészlet, adattípusok, például metaadataiból azonban a betanított modell használják. Így kell tartani az adatkészletet a prediktív kísérletté úgy, hogy ezeket a metaadatokat.
+* **Adat** – a minta adatkészletben lévő adatokat a rendszer nem használja pontozás közben – a webszolgáltatás felhasználója megadja az adatokat. A betanított modell azonban a metaadatokat, például az adattípusokat használja. Ezért meg kell őriznie az adatkészletet a prediktív kísérletben, hogy meg tudja adni ezt a metaadatokat.
 
-* **Előkészítő** – attól függően, hogy a rendszer elküldi a pontozási, előfordulhat, hogy ezeket a modulokat, vagy nem lehet feldolgozni a bejövő adatok szükségesek a felhasználói adatok. A **webszolgáltatás beállítása** gomb nem touch ezek – el kell döntenie, hogyan szeretné kezelni őket.
+* **PREP** – attól függően, hogy milyen felhasználói adat lesz elküldve a pontozáshoz, ezek a modulok esetleg nem szükségesek a bejövő adat feldolgozásához. A **webszolgáltatás beállítása** gomb nem érinti ezeket – el kell döntenie, hogyan szeretné kezelni őket.
   
-    Például az ebben a példában a minta adatkészlet tehát hiányzó előfordulhat, hogy rendelkezik egy [Clean Missing Data] [ clean-missing-data] modul megtalálható azokkal kapcsolatban. A minta adatkészlet is oszlopokat, amelyeket nem szükségesek a modell betanításához. Ezért egy [Select Columns in Dataset] [ select-columns] modul megtalálható az adatfolyam felesleges oszlopok kizárása. Ha tudja, hogy az adatokat, hogy a rendszer elküldi a webszolgáltatással pontozó nem fog a hiányzó értékeket, majd eltávolíthatja a [Clean Missing Data] [ clean-missing-data] modul. Mivel azonban a [Select Columns in Dataset] [ select-columns] modul segítségével határozza meg az oszlopokat, amelyek a betanított modellt vár, a modulnak kell maradnia.
+    Ebben a példában például a minta adatkészlet hiányzó értékekkel rendelkezhet, ezért a rendszer egy [tiszta hiányzó][clean-missing-data] adatmodult tartalmazott a velük való kezeléshez. Emellett a minta adatkészlet olyan oszlopokat is tartalmaz, amelyek nem szükségesek a modell betanításához. Így az [adatkészlet modul Select oszlopai][select-columns] is kizárhatók a további oszlopoknak az adatfolyamatból való kizárásával. Ha tudja, hogy a webszolgáltatáson keresztüli pontozásra elküldött adatok nem rendelkeznek hiányzó értékekkel, akkor eltávolíthatja a [hiányzó adatok][clean-missing-data] törlése modult. Mivel azonban az [adatkészlet modul Select oszlopai][select-columns] segítenek meghatározni a betanított modell által várt adatoszlopokat, a modulnak meg kell maradnia.
 
-* **A vonat** – ezek a modulok használják a modell betanításához. Amikor rákattint **webszolgáltatás beállítása**, ezeket a modulokat, betanított modellt tartalmazó egyetlen modul helyén. Ez a modul a rendszer menti a **betanított modellek** a modulpaletta szakaszában.
+* **Betanítás** – ezek a modulok a modell betanítására szolgálnak. Ha a **webszolgáltatás beállítása**elemre kattint, a rendszer lecseréli ezeket a modulokat egyetlen modulra, amely tartalmazza a betanított modellt. Ezt az új modult a modul paletta **betanított modellek** szakasza menti.
 
-* **Pontszám** – ebben a példában a [Split Data] [ split] modul szolgál a streamből ossza Tesztadatok és a betanítási adatok. Az a prediktív kísérletet, hogy nem tanítása válik, így [Split Data] [ split] távolíthatja el. Hasonlóképpen, a második [Score Model] [ score-model] modul és a [Evaluate Model] [ evaluate-model] modul a Tesztadatok eredményeinek így összehasonlítására szolgálnak Ezek a modulok nem szükségesek az a prediktív kísérletet. A fennmaradó [Score Model] [ score-model] modult, azonban szükség van a webszolgáltatással pontszám eredményt adja vissza.
+* **Pontszám** – ebben a [példában az adatstreamek a][split] tesztelési és a betanítási adatként való felosztására szolgálnak. A prediktív kísérletben nem dolgozunk fel többé, ezért a [felosztott adatvesztést][split] el lehet távolítani. Hasonlóképpen, a második [pontszámot modellező][score-model] modul és a [modell kiértékelése][evaluate-model] modul a vizsgálati adatok eredményeinek összehasonlítására szolgál, így ezek a modulok nem szükségesek a prediktív kísérlet során. A fennmaradó [pontszám modell][score-model] modulnak azonban a webszolgáltatáson keresztüli pontszám eredményét kell visszaadnia.
 
-Példánkban kinézetét kattintás után a következő **webszolgáltatás beállítása**:
+A példa a **webszolgáltatás beállítása**elemre való kattintás után a következőképpen néz ki:
 
-![A konvertált prediktív kísérletté](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
+![Átalakított prediktív kísérlet](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
-Által végzett munka **webszolgáltatás beállítása** elegendő lehet, hogy készítse elő a kísérlethez webszolgáltatásként üzembe helyezni. Azonban érdemes néhány adott kísérletét, további munkát.
+A **webszolgáltatások beállításával** végzett munka elegendő lehet a kísérlet webszolgáltatásként való üzembe helyezésének előkészítéséhez. Azonban érdemes lehet elvégezni egy további, a kísérlethez kapcsolódó munkát.
 
-### <a name="adjust-input-and-output-modules"></a>Módosítsa a bemeneti és kimeneti modulok
-A betanítási kísérlet során használt betanítási adatok egy készletét, és ezután volt a feldolgozást egy képernyő, amely a machine learning algoritmus szükséges az adatok beolvasásához. Ha az adatokat kaphat a webes szolgáltatáson keresztül nem kell ezt a feldolgozást, elkerülheti,: kimenete csatlakoztatása a **webszolgáltatás bemeneti modul** , egy másik modul a kísérletben. A felhasználó adatait most érkezik a modellben, ezen a helyen.
+### <a name="adjust-input-and-output-modules"></a>Bemeneti és kimeneti modulok módosítása
+A betanítási kísérlet során a betanítási adatkészletet használta, majd elvégezte a feldolgozást, hogy a gépi tanulási algoritmust igénylő űrlapon beolvassa az adatait. Ha a webszolgáltatásban várhatóan megjelenő adatokra nem lesz szükség a feldolgozásra, megkerülheti azt: a **webszolgáltatások bemeneti moduljának** kimenetét a kísérlet egy másik moduljának összekapcsolásával is elvégezheti. A felhasználó ekkor megérkezik a modellbe ezen a helyen.
 
-Például alapértelmezés szerint **webszolgáltatás beállítása** helyezi a **bemenet webes** modul felső részén az adatfolyama, a fenti ábrán látható módon. Azt manuálisan is elhelyezheti, de a **bemenet webes** az adatfeldolgozás modulok korábbi:
+Alapértelmezés szerint például a **webszolgáltatás beállítása** a **webszolgáltatás bemeneti** modulját az adatfolyamat tetején helyezi el, ahogy az a fenti ábrán is látható. Azonban manuálisan is elhelyezheti a **webszolgáltatás bemenetét** az adatfeldolgozó moduloknál:
 
-![A web service bemeneti áthelyezése](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
+![Webszolgáltatás bemenetének áthelyezése](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
-A bemeneti adatokat a web service keresztül közvetlenül a Score Model-modul mostantól továbbítja a bármely előfeldolgozás nélkül.
+A webszolgáltatáson keresztül megadott bemeneti adatok mostantól közvetlenül a pontszám modell modulba kerülnek, előfeldolgozás nélkül.
 
-Hasonlóképpen, alapértelmezés szerint **webszolgáltatás beállítása** a szolgáltatás kimeneti modul alján, az adatfolyam-be illeszti be. Ebben a példában a web service vissza fogja küldeni a felhasználónak a kimenetét a [Score Model] [ score-model] modult, amely tartalmazza a bemeneti adatok teljes vektor- és a pontozási eredményeinek.
-Azonban, ha valami más vissza inkább, ezután adhatja csak hozzá további modulok előtt a **webes szolgáltatás kimeneti** modul. 
+Hasonlóképpen, alapértelmezés szerint a **webszolgáltatás** az adatfolyam alján helyezi üzembe a webszolgáltatás kimeneti modulját. Ebben a példában a webszolgáltatás visszaadja a felhasználónak a [pontszám modell][score-model] modul kimenetét, amely magában foglalja a teljes bemeneti adatvektort, valamint a pontozás eredményét.
+Ha azonban inkább egy másikat szeretne visszaadni, akkor a **webszolgáltatás kimeneti** modulja előtt további modulokat is hozzáadhat. 
 
-Például a csak a pontozási eredményeinek és a bemeneti adatok nem a teljes vektor visszaadása, adjon hozzá egy [Select Columns in Dataset] [ select-columns] modul összes oszlopot, kivéve a pontozási eredményeinek kizárása. Ezután lépjen a **webes szolgáltatás kimeneti** modul kimenete a [Select Columns in Dataset] [ select-columns] modul. A kísérlet így néz ki:
+Ha például csak a pontozás eredményét szeretné visszaadni, és nem a bemeneti adatok teljes vektorát, vegyen fel egy [Select oszlopot az adatkészlet][select-columns] modulban az összes oszlop kizárásához, kivéve a pontozás eredményét. Ezután helyezze át a **webszolgáltatás kimeneti** modulját a [Select oszlopok][select-columns] kimenetére az adatkészlet modulban. A kísérlet így néz ki:
 
-![A web service kimeneti áthelyezése](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
+![Webszolgáltatás kimenetének áthelyezése](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
-### <a name="add-or-remove-additional-data-processing-modules"></a>Adja hozzá, vagy távolítsa el a további adatokat feldolgozó modulok
-Ha a kísérlet során, hogy ismeri a kiértékelés során nem szükséges további modulok, ezek távolíthatja el. Például mert egekbe szökött a **bemenet webes** modul után az adatok feldolgozása modulok pontra, törölhetjük az [Clean Missing Data] [ clean-missing-data] modulnak a a prediktív kísérletet.
+### <a name="add-or-remove-additional-data-processing-modules"></a>További adatfeldolgozási modulok hozzáadása vagy eltávolítása
+Ha a kísérletben több modul is van, de nem lesz szükség a pontozásra, ezeket a rendszer eltávolítja. Mivel például áthelyezte a **webszolgáltatás bemeneti** modulját az adatfeldolgozási modulok utáni pontra, eltávolíthatja a [tiszta hiányzó][clean-missing-data] adatmodult a prediktív kísérletből.
 
-A prediktív kísérletet most néz ki:
+A prediktív kísérlet így néz ki:
 
 ![További modul eltávolítása](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
-### <a name="add-optional-web-service-parameters"></a>Nem kötelező webszolgáltatás-paraméterek hozzáadása
-Bizonyos esetekben érdemes, hogy a felhasználó a webszolgáltatás-modulok működésének módosításához, ha hozzáfér a szolgáltatáshoz. *Webalkalmazás-paraméterek* lehetővé teszi ezt.
+### <a name="add-optional-web-service-parameters"></a>Opcionális webszolgáltatás-paraméterek hozzáadása
+Bizonyos esetekben előfordulhat, hogy lehetővé szeretné tenni a webszolgáltatás felhasználójának, hogy megváltoztassa a modulok viselkedését a szolgáltatás elérésekor. A *webszolgáltatás paraméterei* lehetővé teszik ezt.
 
-Ilyenek például állítsa be egy [adatok importálása] [ import-data] modul, így a felhasználó az üzembe helyezett webszolgáltatás egy másik adatforráshoz adhatja meg a webszolgáltatás eléréséhez. Vagy konfigurálása egy [adatok exportálása] [ export-data] modul úgy, hogy egy másik célhelyet lehet megadni.
+Gyakori példa egy [adatimportálási][import-data] modul beállítása, hogy a telepített webszolgáltatás felhasználója más adatforrást is megadhat a webszolgáltatáshoz való hozzáféréskor. Vagy az [exportálási][export-data] modul konfigurálása, hogy egy másik célhely is megadható legyen.
 
-Webszolgáltatás-paraméterek megadása, és rendelje azokat egy vagy több modulja paraméter, és megadhatja, hogy azok a szükséges és választható. A felhasználó a webszolgáltatás értékek a szolgáltatás érhető el, és a modul műveletek módosítani ezeket a paramétereket biztosít.
+Meghatározhatja a webszolgáltatás paramétereit, és társíthatja azokat egy vagy több modul-paraméterrel, és megadhatja, hogy kötelező vagy opcionális-e. A webszolgáltatás felhasználója ezeket a paramétereket adja meg, ha a szolgáltatás elérhető, és a modul műveletei ennek megfelelően módosulnak.
 
-Webszolgáltatás-paraméterek vannak, és a használatukkal kapcsolatos további információkért lásd: [használata az Azure Machine Learning webszolgáltatás-paraméterek][webserviceparameters].
+A webszolgáltatás-paraméterekkel és azok használatának módjával kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás paramétereinek használata][webserviceparameters].
 
 [webserviceparameters]: web-service-parameters.md
 
 
-## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>A prediktív kísérletté üzembe webszolgáltatásként
-Most, hogy a prediktív kísérletté megfelelően elő van készítve, telepíthet egy Azure-webszolgáltatásként. A webszolgáltatás segítségével felhasználók küldhetnek adatokat a modell és a modell az előrejelzéseket adja vissza.
+## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>A prediktív kísérlet webszolgáltatásként való üzembe helyezése
+Most, hogy a prediktív kísérlet megfelelően elkészült, üzembe helyezhető Azure-webszolgáltatásként. A webszolgáltatás használatával a felhasználók elküldhetik az adatait a modellbe, és a modell visszaadja az előrejelzéseit.
 
-A teljes telepítési folyamatról további információkért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése][deploy]
+További információ a teljes telepítési folyamatról: [Azure Machine learning webszolgáltatás üzembe helyezése][deploy]
 
 [deploy]: publish-a-machine-learning-web-service.md
 

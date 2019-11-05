@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 5baa8c78ad581a00a3601706f31cf815359120c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3dee054f6c382a00a55e4acf07e2a188c5cc6a07
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077049"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490702"
 ---
-# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
+# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-portal.md)
 
-Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő *átalakításával* kapcsolatos oktatóanyagért lásd [: oktatóanyag: Az adatátalakítás a Spark](tutorial-transform-data-spark-portal.md)használatával.
+Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő *átalakításának* útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory szolgáltatással, a gyors útmutató elvégzése előtt tekintse meg a következő cikket: [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md). 
@@ -35,11 +35,14 @@ Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory fel
 A következő videó megtekintése segíthet az Azure Data Factory felhasználói felületének megismerésében: 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Visually-build-pipelines-for-Azure-Data-Factory-v2/Player]
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
-1. Kattintson az **Erőforrás létrehozása** elemre a bal oldali menüben, majd az **Analitika**, végül a **Data Factory** elemre. 
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
+   
+   ![Válassza az erőforrás létrehozása lehetőséget Azure Portal menüből](./media/doc-common-process/create-a-resource.png)
+1. Válassza az **elemzés**lehetőséget, majd válassza a **Data Factory**lehetőséget. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
@@ -87,7 +90,7 @@ A feladat részeként létrehoz egy társított szolgáltatást, hogy az adat-el
    d. A társított szolgáltatás mentéséhez kattintson a **Befejezés** gombra. 
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
-Ebben az eljárásban két adatkészletet hoz létre: **InputDataset** és **OutputDataset**. Ezek az adatkészletek **AzureBlob** típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak. 
+A feladat részeként két adatkészletet hoz létre, az **InputDataset** és az **OutputDataset** adatkészletet. Ezek az adatkészletek **AzureBlob** típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak. 
 
 A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A bemeneti adatkészlet definíciójában adhatja meg a forrásadatokat tartalmazó blobtároló (**adftutorial**), mappa (**input**) és fájl (**emp.txt**) nevét. 
 
@@ -175,7 +178,7 @@ A feladat részeként entitásokat (társított szolgáltatásokat, adatkészlet
 
    ![A másolási művelet részletei](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
 1. Győződjön meg arról, hogy megjelenik egy új fájl az **output** mappában. 
-1. A folyamat-futtatási nézetre visszaválthat a **folyamat** futtatása nézetre a **folyamat** futtatása hivatkozás kiválasztásával. 
+1. A folyamat-futtatási nézetre visszaválthat a **folyamat** futtatása nézetre **a** **folyamat** futtatása hivatkozás kiválasztásával. 
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>A folyamat aktiválása ütemezés szerint
 Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időközönként (például óránként, naponta) történő futtatásához létrehozhat egy *ütemező eseményindítót*. A feladat részeként egy olyan eseményindítót fog létrehozni, amely a megadott záró dátumig és időpontig percenként fut. 

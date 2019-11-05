@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: daaced0aae595e839f2b2476562fc5caffb63640
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430054"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473936"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Azure AD feltételes hozzáférés bevezetése
 
@@ -33,7 +33,7 @@ Az Azure AD feltételes hozzáférés használatának legfontosabb előnyei a k�
 * **Címek megfelelősége és szabályozása:** Az alkalmazáshoz kapcsolódó hozzáférési kérelmek és jóváhagyások naplózása, valamint az alkalmazások általános használatának megismerése egyszerűbb az Azure AD-ben, mivel a natív naplókat támogat minden egyes alkalmazás-hozzáférési kérelemhez. A naplózás magában foglalja a kérelmező identitását, a kért dátumot, az üzleti indoklást, a jóváhagyási állapotot és a jóváhagyó identitását. Ezek az adatok egy API-ból is elérhetők, amely lehetővé teszi az adatok importálását egy olyan biztonsági incidensre és esemény-figyelési (SIEM) rendszerre, amely választható.
 * **Kezelés díja:** A hozzáférési szabályzatok az Azure AD-be való áthelyezésével csökkenthető a feltételes hozzáférésre vonatkozó egyéni vagy helyszíni megoldások, például a Active Directory összevonási szolgáltatások (AD FS) (ADFS), ami csökkenti az infrastruktúra futtatásának költségeit.
 
-## <a name="customer-case-studies"></a>Ügyfél-esettanulmányok
+## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
 
 Ismerje meg, hogy a legtöbb szervezet hogyan használja az Azure AD feltételes hozzáférést az automatizált hozzáférés-vezérlési döntések definiálásához és megvalósításához a feltételek alapján a felhőalapú alkalmazások eléréséhez. A következő Kiemelt történetek bemutatják, hogyan teljesítik ezeket az ügyfelek igényeit.
 
@@ -43,7 +43,7 @@ Ismerje meg, hogy a legtöbb szervezet hogyan használja az Azure AD feltételes
 
 Ha többet szeretne megtudni az Azure AD feltételes hozzáférésével kapcsolatos ügyfelekkel és partneri tapasztalatokkal kapcsolatban, látogasson el ide [: az Azure-ban megjelenő csodálatos dolgok](https://azure.microsoft.com/case-studies/?service=active-directory).
 
-## <a name="announcements"></a>Bejelentések
+## <a name="announcements"></a>Közlemények
 
 Az Azure AD folyamatosan fejleszti a fejlesztéseket. Ha naprakészen szeretne maradni a legújabb fejleményekkel, tekintse meg az Újdonságok [a Azure Active Directory?](../fundamentals/whats-new.md) című témakört.
 
@@ -86,7 +86,7 @@ Emellett tekintse meg az alábbi hivatkozásokat, amelyekkel biztosíthatja az A
 **A feltételes hozzáférés Azure Active Directory engedélyezése a biztonságos felhasználói hozzáféréshez**
    > [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
 
-### <a name="online-courses"></a>Online tanfolyamok
+### <a name="online-courses"></a>Online képzések
 
 Tekintse meg a következő feltételes hozzáférési tanfolyamokat, és még többet a [Pluralsight.com](https://www.pluralsight.com/)-on:
 
@@ -104,7 +104,7 @@ Tekintse meg a következő feltételes hozzáférési tanfolyamokat, és még t�
 * O'Reilly – [Azure-megoldások megvalósítása – második kiadás.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
    * "Az Azure-szolgáltatások üzembe helyezésével és megismerésével megtudhatja, hogyan implementálhatja azokat a szervezetében. Az Azure AD feltételes hozzáférése a [Azure Active Directory üzembe helyezése és szinkronizálása](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml)című fejezetben található.
 
-* Wiley- [mastering Microsoft Azure infrastruktúra-szolgáltatások](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
+* Wiley- [Microsoft Azure infrastruktúra-szolgáltatások az építészek számára: felhőalapú megoldások tervezése](https://www.wiley.com/Microsoft+Azure+Infrastructure+Services+for+Architects%3A+Designing+Cloud+Solutions-p-9781119596547)
    * "A Microsoft Azuret használó környezetek megismeréséhez, kiértékeléséhez, üzembe helyezéséhez és karbantartásához szükséges minden."
 
 ## <a name="white-papers"></a>Tanulmányok
@@ -154,6 +154,6 @@ Itt találhat hasznos hivatkozásokat az első lépésekhez:
 
 A feltételes hozzáférés más Azure AD-funkciókat is használ, amelyek befolyásolhatják a végfelhasználói élményt. Használhatja például az Azure multi-Factor Authenticationt a felhasználók erős hitelesítésének engedélyezéséhez. Ebben az esetben az Azure MFA végfelhasználói sablonjait fogja használni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Indítsa el a telepítést a [feltételes hozzáférés telepítési tervezési dokumentációjában](plan-conditional-access.md).

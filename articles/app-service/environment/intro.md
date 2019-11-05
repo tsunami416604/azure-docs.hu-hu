@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5a7374af71b262a72b680ac215f6960f961b3a15
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069237"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470623"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
  
@@ -29,8 +29,8 @@ Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen 
 * Windows-webalkalmazások
 * Linux-webalkalmazások 
 * Docker-tárolók
-* Mobilalkalmazásokban
-* Funkciók
+* Mobilalkalmazások
+* Functions
 
 Az App Service Environment (ASE) a következő igényekkel rendelkező összes alkalmazási számítási feladat elvégzésére használható:
 
@@ -46,7 +46,7 @@ Elkülönítettségük révén az ASE-k környezetek egyetlen ügyfél alkalmaz�
 * Az [App Service-környezetek (v2)](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) egy olyan környezetet biztosítanak, amely védi a hálózat egy alhálózatán található alkalmazásokat, és egy saját, privát Azure App Service üzemelő példányt nyújt.
 * Több ASE is felhasználható a horizontális skálázásra. További információkért lásd a [földrajzilag elosztott alkalmazás beállítását](app-service-app-service-environment-geo-distributed-scale.md) ismertető részt.
 * Az ASE környezetek használatával a biztonsági architektúra is konfigurálható, ahogyan azt az AzureCon Deep Dive is bemutatja. Az AzureCon Deep Dive-ban látható biztonsági architektúra konfigurálásáról a [rétegelt biztonsági architektúra App Service Environmenttel történő megvalósításáról szóló cikkben](app-service-app-service-environment-layered-security.md) találhat további információkat.
-* Az ASE környezetekben futó alkalmazások hozzáférésében sorompós kapcsolatok alakíthatók ki alsóbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF-ok) segítségével. További információt a webalkalmazási [tűzfal (WAF)][AppGW]című témakörben talál.
+* Az ASE környezetekben futó alkalmazások hozzáférésében sorompós kapcsolatok alakíthatók ki alsóbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF-ok) segítségével. További információt a [webalkalmazási tűzfal (WAF)][AppGW]című témakörben talál.
 
 ## <a name="dedicated-environment"></a>Dedikált környezet ##
 
@@ -66,7 +66,7 @@ Az ASE átalányalapú havidíja fedezi az infrastruktúra költségét, és nem
 
 ## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása ##
 
-Az ASE szolgáltatás az Azure App Service üzemelő példánya közvetlenül az ügyfelek Azure Resource Managerének virtuális hálózatán. Az Azure virtuális hálózatairól további információt az [Azure virtuális hálózatok GYIK](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) dokumentumában talál. Az ASE mindig egy virtuális hálózaton belül, pontosabban a virtuális hálózat alhálózatán működik. A virtuális hálózatok biztonsági funkciói segítségével szabályozhatja az alkalmazásai bejövő és kimenő hálózati kommunikációját.
+A bevezetési funkció a Azure App Service közvetlen üzembe helyezése az ügyfél Azure Resource Manager virtuális hálózatában. Az Azure virtuális hálózatairól további információt az [Azure virtuális hálózatok GYIK](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) dokumentumában talál. Az ASE mindig egy virtuális hálózaton belül, pontosabban a virtuális hálózat alhálózatán működik. A virtuális hálózatok biztonsági funkciói segítségével szabályozhatja az alkalmazásai bejövő és kimenő hálózati kommunikációját.
 
 Az ASE lehet internetre irányuló, nyilvános IP-címmel, vagy befelé irányuló, Azure belső terheléselosztási (ILB) címmel.
 
@@ -80,7 +80,7 @@ További információ arról, hogyan működik a ASE a virtuális hálózatokkal
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
 
-App Service Environment két verziója van: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat. 
+Kétféle verzió érhető el az App Service Environment szolgáltatáshoz: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat. 
 
 Az ASEv1 esetén minden erőforrást manuálisan kell felügyelnie. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Mielőtt horizontálisan felskálázza az App Service-csomagot, először a feldolgozók készletét kell felskáláznia oda, ahol üzemeltetni szeretné azt.
 
@@ -104,7 +104,7 @@ Az ASEv1 díjszabása eltér az ASEv2-étől. Az ASEv1 esetében minden lefoglal
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md

@@ -1,6 +1,6 @@
 ---
-title: Üzenetek küldése MQTT-kiszolgálóra az Azure MQTT ügyféloldali kódtár használatával |} A Microsoft Docs
-description: A fejlesztői készlet használja ügyfélként üzenetek küldése MQTT-kiszolgálóra
+title: Üzenetek küldése egy MQTT-kiszolgálónak az Azure MQTT ügyféloldali kódtár használatával | Microsoft Docs
+description: Az fejlesztői készlet használata ügyfélként üzenetek küldésére egy MQTT-kiszolgálóra
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,85 +9,85 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61369352"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484032"
 ---
-# <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése MQTT-kiszolgálóra
+# <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
 
-Internet of Things (IoT) rendszerek gyakran időszakos, gyenge minőség foglalkozik, és a lassú hálózati kapcsolatok használata esetén. MQTT-gép – gép (M2M) csatlakozási protokoll, amely szem előtt az ilyen kihívások fejlesztettek. 
+A eszközök internetes hálózata-(IoT-) rendszerek gyakran időszakos, gyenge minőségű vagy lassú internetkapcsolattal foglalkoznak. A MQTT egy, a gép és a gép közötti (MESTERi) kapcsolati protokoll, amely az ilyen jellegű kihívásokkal lett kifejlesztve. 
 
-Az itt használt MQTT ügyféloldali kódtár része a [Eclipse Paho](https://www.eclipse.org/paho/) projekt, amely API-kat biztosít több szállítóeszközt MQTT-val.
+Az itt használt MQTT-ügyfél-függvénytár az [Eclipse PAHO](https://www.eclipse.org/paho/) projekt része, amely API-kat biztosít a MQTT több szállítóeszközön való használatához.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Ez a projekt bemutatja:
-- Hogyan üzenetek küldése egy MQTT broker az MQTT ügyféloldali kódtár használatával.
-- Hogyan konfigurálható az MXChip Iot DevKit MQTT-ügyfélként.
+Ebben a projektben a következőket tanulhatja meg:
+- A MQTT ügyféloldali kódtár használata üzenetek küldésére egy MQTT-közvetítőnek.
+- A MXChip IOT fejlesztői készlet konfigurálása MQTT-ügyfélként.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-Fejezze be a [– első lépések útmutató](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) való:
+Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
 
-* A fejlesztői készlet Wi-Fi csatlakozik
+* Csatlakoztassa a fejlesztői készlet a Wi-Fi-hez
 * A fejlesztési környezet előkészítése
 
-## <a name="open-the-project-folder"></a>A projektmappa fájllistájának megnyitásához.
+## <a name="open-the-project-folder"></a>A Project mappa megnyitása
 
-1. Ha a fejlesztői készlet már a számítógéphez, válassza le azt.
+1. Ha a fejlesztői készlet már csatlakozik a számítógéphez, válassza le azt.
 
-2. Indítsa el a VS Code.
+2. Indítsa el a VS Code-ot.
 
-3. A fejlesztői készlet csatlakoztatása a számítógéphez.
+3. Kapcsolódjon a fejlesztői készlet a számítógéphez.
 
-## <a name="open-the-mqttclient-sample"></a>Nyissa meg a MQTTClient minta
+## <a name="open-the-mqttclient-sample"></a>A MQTTClient minta megnyitása
 
-Bontsa ki a bal oldali **ARDUINO példák** területén keresse meg a **példák az MXCHIP AZ3166 > MQTT**, és válassza ki **MQTTClient**. Egy új VS Code-ablak megnyílik, a projektmappa.
-
-> [!NOTE]
-> A példában a parancskatalógus is megnyithatja. Használat `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) a parancskatalógus megnyitásához, írja be a **Arduino**, keresse meg és válassza a **Arduino: Példák**.
-
-## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Hozhat létre és tölt fel az Arduino vázlatot a fejlesztői készlet
-
-Típus `Ctrl+P` (macOS: `Cmd+P`) futtatásához `task device-upload`. Ha a feltöltés befejeződött, a fejlesztői készlet újraindul, és futtatja a Vázlat.
-
-![eszköz-feltöltést](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > MQTT**, és válassza a **MQTTClient**lehetőséget. Megnyílik egy új VS Code ablak a projekt mappájával.
 
 > [!NOTE]
-> Előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag"hibaüzenet jelenik meg. Ez akkor fordul elő, ha a tábla csomagindexet nem megfelelően frissül. Ez a hiba elhárításához tekintse meg a [IoT DevKit gyakori kérdések a fejlesztési szakaszban](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Megnyithatja például a parancssorból is. `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) használatával nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példákat**.
+
+## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Az Arduino-vázlat felépítése és feltöltése a fejlesztői készlet
+
+A `task device-upload`futtatásához írja be a `Ctrl+P` (macOS: `Cmd+P`) parancsot. A feltöltés befejezése után a fejlesztői készlet újraindítja és futtatja a vázlatot.
+
+![eszköz – feltöltés](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+
+> [!NOTE]
+> A "hiba: AZ3166: ismeretlen csomag" hibaüzenet jelenhet meg. Ez a hiba akkor fordul elő, ha a tábla csomagjának indexe nem frissül megfelelően. A hiba megoldásához tekintse meg a [IoT fejlesztői készlet – gyakori kérdések című témakör fejlesztés szakaszát](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
-A VS Code-ban kövesse az alábbi eljárás segítségével nyissa meg, és a soros figyelő beállítása:
+A VS Code-ban kövesse ezt az eljárást a soros figyelő megnyitásához és beállításához:
 
-1. Kattintson a `COM[X]` szót tartalmaz, a megfelelő COM-port beállítása az állapotsor `STMicroelectronics`: ![com-port beállítása](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Kattintson az állapotsorban található `COM[X]` szóra a megfelelő COM-port beállításához `STMicroelectronics`: ![set-com-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Kattintson az állapotsorban nyissa meg a soros figyelő power beépülő ikonjára: ![soros-figyelő](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Kattintson az állapotsorban található Power plugin ikonra a soros figyelő megnyitásához: ![soros figyelő](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Az állapotsoron kattintson az átviteli sebesség, beállíthatja azt a `115200`: ![set-sebesség](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Az állapotsoron kattintson arra a számra, amely a Baud arányt jelöli, majd állítsa be `115200`re: ![set-Baud-Rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
-A soros figyelő a minta áttekintése által küldött összes üzenetet jeleníti meg. A vázlat a DevKit Wi-Fi kapcsolódik. Ha a Wi-Fi-kapcsolat sikeresen megtörtént, a Vázlat üzenetet küld az MQTT broker. Ezt követően a minta ismételten QoS 0 és 1. a QoS, illetve használatával két "iot.eclipse.org" üzenetet küld.
+A soros figyelő megjeleníti a minta vázlat által küldött összes üzenetet. A vázlat csatlakoztatja a fejlesztői készlet a Wi-Fi-hez. A Wi-Fi-kapcsolat sikeressége után a vázlat üzenetet küld a MQTT-közvetítőnek. Ezután a minta ismételten két "iot.eclipse.org" üzenetet küld a QoS 0 és a QoS 1 használatával.
 
-![serial-output](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![soros kimenet](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
-Ha problémákat tapasztal, tekintse meg a [IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy létesítsen a következő csatornákon:
+Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos gyakori kérdéseket](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) , vagy kapcsolódjon a következő csatornákon keresztül:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Lásd még
 
-* [IoT DevKit AZ3166 csatlakoztatása Azure IoT hubhoz a felhőben](iot-hub-arduino-iot-devkit-az3166-get-started.md)
-* [Rázó, egy tweetet rázza meg](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+* [A IoT fejlesztői készlet AZ3166 összekötése az Azure IoT Hub a felhőben](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+* [Shake, Shake for a tweet](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy, hogyan konfigurálhatja az MXChip Iot DevKit MQTT-ügyfélként, és az MQTT ügyféloldali kódtár használata üzeneteket küldeni egy MQTT broker, Íme a javasolt következő lépések:
+Most, hogy megtanulta, hogyan konfigurálhatja a MXChip IOT fejlesztői készlet MQTT-ügyfélként, és az MQTT-ügyfél kódtár használatával küldhet üzeneteket egy MQTT-közvetítőnek, a javasolt következő lépések:
 
-* [Az Azure IoT távoli figyelési megoldásgyorsító áttekintése](https://docs.microsoft.com/azure/iot-suite/)
-* [Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Az Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+* [MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](/azure/iot-central/core/howto-connect-devkit)

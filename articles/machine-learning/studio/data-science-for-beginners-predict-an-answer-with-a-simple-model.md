@@ -1,7 +1,7 @@
 ---
-title: Regressziós modellek a válaszok előrejelzése
-titleSuffix: Azure Machine Learning Studio
-description: Hogyan lehet létrehozni egy egyszerű regressziós modell előre jelezni az adatelemzés kezdőknek videó 4 áron. Tartalmaz egy lineáris regressziós cél adatokkal.
+title: Válaszok előrejelzése regressziós modellekkel
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Egyszerű regressziós modell létrehozása az adatelemzési díj előrejelzéséhez a kezdők számára készült 4. videóban. Lineáris regressziót tartalmaz a célként megadott adattal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,122 +10,122 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 9165e51d07cf97756408c7f73720931abe067bb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 028422dd710f7e8d9021c6435250a05c73c76c42
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751579"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493122"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Válasz előrejelzése egy egyszerű modell segítségével
-## <a name="video-4-data-science-for-beginners-series"></a>4\. Videó: Adatelemzés kezdőknek sorozat
-Ismerje meg, hogyan hozhat létre egy egyszerű regressziós modell előre jelezni az adatelemzés kezdőknek videó 4 egy gyémánt árát. Azt fogjuk rajzoljon egy regressziós modellt a célként megadott adatokkal.
+## <a name="video-4-data-science-for-beginners-series"></a>4\. videó: az adatelemzés kezdőknek sorozata
+Megtudhatja, hogyan hozhat létre egy egyszerű regressziós modellt, amely a kezdőknek szóló 4. videóban megjósolhatja a Diamond adatelemzési díját. Egy regressziós modellt rajzolunk a célként megadott adattal.
 
-A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
+Ha ki szeretné próbálni a sorozatot, tekintse meg őket. [Ugrás a videók listájára](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
-*Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
+## <a name="other-videos-in-this-series"></a>További videók ebben a sorozatban
+Az *adatelemzés kezdőknek* az adatelemzés öt rövid videóban való bevezetésének első lépései.
 
-* 1\. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2\. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3\. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4\. Videó: Válasz előrejelzése egy egyszerű modell segítségével
-* 5\. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1\. videó: [az 5 kérdés adatelemzési válasz](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2\. videó: [készen áll](data-science-for-beginners-is-your-data-ready-for-data-science.md) az adatelemzésre? *(4 perc 56 mp)*
+* 3\. videó: [Kérdezzen rá az adatválaszra](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 mp)*
+* 4\. videó: válasz megjósolása egy egyszerű modellel
+* 5\. videó: [a többi személy munkájának másolása az adatelemzéshez](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 mp)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>A szövegben: Válasz előrejelzése egy egyszerű modell segítségével
-Üdvözli a negyedik videót a "Data Science a kezdők" sorozat. Ezt az eszközt hogy fog egy egyszerű modellt és előrejelzést.
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Átirat: válasz megjósolása egy egyszerű modellel
+Üdvözöljük az "adatelemzés kezdőknek" sorozat negyedik videójában. Ebben az esetben egy egyszerű modellt hozunk létre, és előrejelzést készítünk.
 
-A *modell* egy egyszerűsített történetet az adataival kapcsolatban van. Bemutatom, mi értem.
+Az *adatmodell* egy egyszerűsített történet az adatkezeléshez. Megmutatom, mire gondolok.
 
-## <a name="collect-relevant-accurate-connected-enough-data"></a>Megfelelő, a pontos, a csatlakoztatott, elegendő adat összegyűjtése
-Tegyük fel, hogy egy gyémánt szeretnék üzemi. Rendelkezem egy kör tartoztak a egy 1.35 karátot gyémánt beállítást a saját vezeték, és szeretném, hogy mennyibe kerül képet kapjon. A Jegyzettömb és a toll tenni az ékszerek tárolóba, és szeretnék írja le a díj az összes az az eset, és azok karát mennyi mérjük a gyémánt. Az első gyémánt - annak 1.01 karát és $7,366 kezdve.
+## <a name="collect-relevant-accurate-connected-enough-data"></a>Releváns, pontos, csatlakoztatott és elegendő adatok gyűjtése
+Tegyük fel, hogy egy gyémántot szeretnék vásárolni. Van egy olyan gyűrűm, amely egy 1,35 karátos Diamond-ra vonatkozó beállítással rendelkezett a nagymamám számára, és szeretnék megmutatni, hogy Mennyibe kerül a díj. Egy jegyzettömb és egy toll az ékszer-áruházban, és leírom az összes gyémánt árát az adott esetben, és mennyit mérjük az összes káró. Az első rombusztól kezdődően 1,01 karátos és $7 366.
 
-Most halad át, és tegye meg a tárolóban lévő összes többi gyémánt.
+Most megyek át, és ezt az összes többi, az áruházban található gyémánt esetében elvégezem.
 
-![Adatoszlopokat rombuszos](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
+![Rombusz típusú oszlopok](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
 
-Figyelje meg, hogy a lista két oszlopot tartalmaz. Minden oszlop rendelkezik egy másik attribútum - súlyozási karát és ár - és minden sor egy egyetlen gyémánt képviselő adatpont.
+Figyelje meg, hogy a lista két oszloppal rendelkezik. Minden oszlophoz eltérő attribútum tartozik, és minden egyes sor egyetlen gyémántot jelképező adatpont.
 
-Valójában létrehoztunk egy kisméretű adatkészlet itt – egy táblát. Figyelje meg, hogy megfelel a feltételeknek a minőségi:
+Egy kis adathalmazt hoztunk létre itt – egy táblát. Figyelje meg, hogy megfelel a minőségi követelményeknek:
 
-* Az adatok **megfelelő** -súlyozási mindenképp kapcsolatos ár
-* Rendelkezik **pontos** – hogy double-checked az árak, amelyek azt írja le
-* Rendelkezik **csatlakoztatott** – ne legyenek ezek az oszlopok valamelyikében üres szóközök
-* És láthatjuk, ahogy rendelkezik **elegendő** a kérdés megválaszolásában.
+* Az adat **releváns** – a súlyozás egyértelműen a díjszabáshoz kapcsolódik
+* **Pontos** – a rendszer duplán ellenőrizte, hogy milyen árakat írunk le
+* **Csatlakoztatva** van – nincsenek üres szóközök az oszlopok egyikében sem
+* És amint láthatjuk, **elég** az információ a kérdés megválaszolásához
 
-## <a name="ask-a-sharp-question"></a>Éles kérdés feltevése
-Most már azt fogja jelentenek a a kérdés éles módon: "Ez mennyibe kerül a 1.35 karátot rombusz megvásárlása?"
+## <a name="ask-a-sharp-question"></a>Tegyen fel egy éles kérdést
+Most a kérdést éles módon mutatjuk be: "Mennyibe kerül a 1,35 Carat Diamond megvásárlása?"
 
-A lista nem rendelkezik egy 1.35 karátot rombuszos, úgy kell beolvasni a választ a kérdésére, az adatok a rest használata.
+A lista nem tartalmaz 1,35 karátos gyémántot, ezért a többi adattal kell használnia, hogy választ kapjon a kérdésre.
 
-## <a name="plot-the-existing-data"></a>A meglévő adatok ábrázolásához.
-Az első felveszünk rajzolása vízszintes számát, nevű tengely a diagramhoz végpontkészletben. A súlyok tartománya 0, 2, így azt fogjuk vonal rajzolása, amely lefedi, amely a címtartomány, és csak a minden fél karátot órajel során.
+## <a name="plot-the-existing-data"></a>A meglévő adatterületek ábrázolása
+Az első dolog, hogy egy vízszintes, egy tengely nevű sort rajzolunk a súlyok ábrázolásához. A súlyok tartománya 0 és 2 közé esik, ezért rajzolunk egy sort, amely az adott tartományt lefedi, és minden fél Carat-re helyezi a kullancsot.
 
-Ezután azt fogja az ár és csatlakoztathatja azt a súly vízszintes tengely függőleges tengely dolgoznak. Ez lesz dollár egységekben. Most már rendelkezünk koordináta tengelyek készletét.
+A következő lépésben egy függőleges tengelyt rajzolunk az ár rögzítéséhez és a vízszintes súlyozási tengelyhez való kapcsolódáshoz. Ez lesz a dollár egységben. Most már van egy koordináta-tengelyünk.
 
-![Súly-és az ár](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
+![Súlyozási és díjszabási tengelyek](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-Mostantól igénybe ezeket az adatokat, és kapcsolja be fogunk egy *pontdiagram*. Ez remek módja numerikus adathalmaz képi megjelenítése érdekében.
+Most ezeket az adatsorokat fogjuk kialakítani, és egy *Scatter-területre*fogjuk kapcsolni. Ez nagyszerű módja a numerikus adatkészletek megjelenítésének.
 
-Az első adatpont eyeball azt egy függőleges vonal 1.01 karát címen. Majd hogy eyeball: $7,366 vízszintes vonal. Felel meg, ahol azt rajzoljon egy pont követ. Az első gyémánt Ez jelöli.
+Az első adatpontnál a szemgolyó egy függőleges vonal, 1,01 karátos. Ezt követően a $7 366-kor egy vízszintes vonalat. Ahol megfelelnek, egy pontot rajzolunk. Ez az első gyémántot jelöli.
 
-Most azt minden egyes gyémánt meg ezen a listán, és végre ugyanezt. Örömmel keresztül, ha ez az amit kapunk: pontokból álló, lemezcsoport, így az egyes gyémánt.
+Most haladunk végig az egyes gyémántokon ezen a listán, és ugyanezt a dolgot is megteheti. Amikor áthaladunk, ez az, amit kapunk: egy csomó pont, egy az egyes gyémántokhoz.
 
-![Pont](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
+![Pontdiagram](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
 
-## <a name="draw-the-model-through-the-data-points"></a>A modell az adatpontokra rajzolása
-A pontok és squint tekinti meg, ha a gyűjtemény néz ki egy fat, intelligens sort. Lehet igénybe vehet a jelölő és rajzoljon egy egyenes vonallal rajta.
+## <a name="draw-the-model-through-the-data-points"></a>A modell rajzolása az adatpontokon keresztül
+Most, ha megtekinti a pontokat és a kancsal, a gyűjtemény úgy néz ki, mint egy FAT, fuzzy line. Megtehetjük a jelölőt, és rajzolunk egy egyenes vonalat.
 
-A vonal rajzolása által létrehozott egy *modell*. Gondoljon erre úgy, mint véve a való világot és a egy egyszerűsített rajzolt verzió. Most már a rajzolt helytelen – a sor nem fogadja el a összes adatponttal. De, egy hasznos egyszerűsítését.
+Egy sor rajzolásával létrehozunk egy *modellt*. Képzelje el ezt úgy, hogy a valós világba kerül, és egy egyszerű rajzfilm-verziót használ. A Cartoon nem stimmel – a sor nem halad végig az összes adatponton. Ez azonban hasznos egyszerűsítés.
 
-![Lineáris regressziós egyenes](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
+![Lineáris regressziós vonal](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
-Az a tény, hogy minden pont nem pontosan a sor rendben. Az adatszakértők tájékoztatásának, hogy a modell -, amely a sor - és minden pont rendelkezik néhány kimondásával *zaj* vagy *variancia* társítva. Az alapul szolgáló tökéletes kapcsolat áll fenn, és azután ott van a kövecses valós világában, amely hozzáadja a zaj és bizonytalanságot.
+Az a tény, hogy az összes pont nem pontosan a sorban halad, rendben van. Az adatszakértők ezt a modellt ismertetik, amely azt jelzi, hogy létezik a modell – Ez a vonal, majd minden egyes ponthoz tartozik valamilyen *zaj* vagy *variancia* . Ott van a mögöttes tökéletes kapcsolat, és ott van a kavicsos, valós világ, amely zaj-és bizonytalanságot ad.
 
-Mivel azt a választ a kérdésre próbál *mennyi?* ezt nevezik a *regressziós*. Mivel egy egyenes vonallal használunk, és van egy *lineáris regressziós*.
+Mivel a kérdés megválaszolása mennyit jelent *?* ezt *regressziónak*nevezzük. És mivel egyenes vonalat használunk, *lineáris regresszió*.
 
-## <a name="use-the-model-to-find-the-answer"></a>A modell használatával találja a választ
-Most már van egy modellt, és megkérjük azt a kérdést: Egy 1.35 karátot gyémánt mennyibe kerül?
+## <a name="use-the-model-to-find-the-answer"></a>A modell használata a válasz megkereséséhez
+Most már van egy modellünk, és feltesszük a kérdést: Mennyibe kerül a 1,35 Carat Diamond díja?
 
-A kérdés megválaszolásához azt 1.35 karát szem és a egy függőleges vonal rajzolása. Ha a modell sor azt átlép azt eyeball dollár tengelyhez vízszintes vonal. 10 000, jobb elér. Bumm! Ez a válasz: Egy 1.35 karátot gyémánt 10 000 dollárt kapcsolatos költségek.
+A kérdés megválaszolásához a szemgolyó 1,35 karátos, és rajzoljon egy függőleges vonalat. Ha átlépi a modell sorát, a rendszer egy vízszintes vonalat helyez el a dollár tengelyen. Közvetlenül a 10 000-kor. Bumm! Ez a válasz: A 1,35 Carat Diamond költségei a $10 000-es kiadással kapcsolatban.
 
-![Keresse meg a választ a modell](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
+![Válasz keresése a modellen](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
-## <a name="create-a-confidence-interval"></a>Hozzon létre egy megbízhatósági intervallum
-Természetes wonder hogyan pontos ez előrejelzésére szolgáló funkció. Érdemes tudni, hogy a 1.35 karátot rombusz lesz nagyon közel 10 000 dollárt, vagy sokkal magasabb vagy alacsonyabb legyen. . Ábra ezt ki, nézzük rajzoljon boríték a regressziós egyenes, amely tartalmazza a legtöbb pont körül. A boríték nevezzük az *megbízhatósági intervallum*: Sajnáljuk, viszonylag abban, hogy árak tartoznak-e a boríték, mert az elmúlt többsége rendelkezik. Két további vízszintes vonal, ahol a 1.35 karátot sor átlép felső és alsó részén borítékot rajzolhat azt.
+## <a name="create-a-confidence-interval"></a>Megbízhatósági intervallum létrehozása
+Ez természetes, hogy meggondolja, mennyire pontos ez az előrejelzés. Hasznos tudni, hogy a 1,35 Carat Diamond nagyon közel van-e a $10 000-hez, vagy jóval magasabb vagy alacsonyabb. Ennek megállapításához rajzoljon egy keretet a regressziós vonal körül, amely a pontok többségét tartalmazza. Ezt a borítékot a *megbízhatósági intervallumnak*nevezzük: biztosak vagyunk abban, hogy az árak a borítékon belül esnek, mert a legkorábbi többségük. Két további vízszintes vonalat is megrajzolhat, amelyből a 1,35 karátos vonal a boríték tetején és alján halad.
 
 ![Megbízhatósági intervallum](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Most már azt is ismertetés a megbízhatósági intervallum:  Azt is tegyük fel, hogy magabiztosan, hogy egy 1.35 karátot gyémánt díja körülbelül $ 10 000 -, de akár $ 8000-re is lehet, és lehet magas, mint 12 000 $.
+Most mondhatjuk, hogy mi a megbízhatósági intervallumunk: nyugodtan mondhatjuk, hogy a 1,35 Carat Diamond ára körülbelül $10 000 – de a $8 000-as, de akár a $12 000-as szint is lehet.
 
-## <a name="were-done-with-no-math-or-computers"></a>Már nincs, nincs matematikai vagy számítógépek
-Milyen az adatszakértők első fizetős ehhez végrehajtott, és csak a rajzolási tettük:
+## <a name="were-done-with-no-math-or-computers"></a>Elkészült, matematikai vagy számítógép nélküli
+Megtettük, hogy milyen adatszakértők fizettek a teendőknek, és a következő lépésekkel rendelkezünk:
 
-* A Microsoft feltett egy kérdést, hogy erre a kérdésre sikerült adatokkal
-* Úgy alakítottuk ki egy *modell* használatával *lineáris regresszió*
-* Végeztünk egy *előrejelzési*, kész, de egy *megbízhatósági intervallum*
+* Feltettük azt a kérdést, hogy az adatválaszok
+* A *lineáris regressziót* használó *modellt* készítettünk
+* *Előrejelzést*készítettünk, amely *megbízhatósági intervallummal* fejeződött be
 
-És nem használjuk a matematikai vagy számítógépek működtet.
+A matematikai vagy a számítógépeket nem használjuk a művelet elvégzésére.
 
-Mostantól Ha kellett volna további információkat, például...
+Most, ha további információra volt szükségünk, például:...
 
-* a kivágási, a rombuszos
-* Szín változatok (hogyan zárja be a gyémánt, hogy folyamatban van a fehér)
-* az a rombusz befoglalások száma
+* a rombusz kivágása
+* színvariációk (Hogyan zárjuk be a gyémántot fehérre)
+* a gyémántba való felvételek száma
 
-...helyőrzőkre azt kellett volna több oszlopot. Ebben az esetben a matematikai hasznos lehet. Ha több mint két oszlop van, meglehetősen nehéz pontra rajzolása tanulmány. A matematikai lehetővé teszi, hogy sort, vagy az adatokhoz, hogy adatsík nagyon szépen.
+... Ezután több oszlop lett volna. Ebben az esetben a matematika hasznos lesz. Ha több mint két oszlopa van, nehéz rajzolni a pontokat a papíron. A Math lehetővé teszi, hogy szépen illeszkedjen a vonalhoz vagy az adataihoz.
 
-Is helyett mindössze néhány gyémánt, ha két Kaliforniában vagy kétmillió kellett, majd megteheti, hogy sokkal gyorsabban egy számítógépen.
+Emellett, ha csupán néhány rombusz helyett a 2000-es vagy a 2 000 000-es verziót használta, sokkal gyorsabban dolgozhat a számítógéppel.
 
-Még ma beszéltünk lineáris regressziós módjáról, és -adatok előrejelzési végeztünk.
+Ma már beszéltünk a lineáris regresszióval kapcsolatban, és az adatelemzés során készítettünk egy előrejelzést.
 
-Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning Studio más videókat.
+Tekintse meg a többi videót a "kezdő adatelemzés" Microsoft Azure Machine Learning Studio (klasszikus).
 
 ## <a name="next-steps"></a>További lépések
-* [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)
-* [Bevezetés a gépi tanulás a Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
+* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

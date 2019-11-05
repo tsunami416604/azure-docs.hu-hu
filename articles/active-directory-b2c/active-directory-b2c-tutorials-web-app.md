@@ -5,19 +5,19 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 09/19/2019
+ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b42634aa86f210382adb1ae224c847a92d89109b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
-ms.translationtype: MT
+ms.openlocfilehash: 587848c6718a003bf781f81d0298c73ef1549bb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103310"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474891"
 ---
-# <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hitelesítés engedélyezése webalkalmazásban Azure Active Directory B2C használatával
+# <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával
 
 Ez az oktatóanyag bemutatja, hogyan használható a Azure Active Directory B2C (Azure AD B2C) a bejelentkezéshez, és hogyan regisztrálhat felhasználókat egy ASP.NET-webalkalmazásban. Azure AD B2C lehetővé teszi az alkalmazások számára, hogy a nyílt szabványos protokollok használatával hitelesítsék a közösségi fiókokat, a vállalati fiókokat és a Azure Active Directory fiókokat.
 
@@ -35,18 +35,42 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * [Felhasználói folyamatokat hozhat létre](tutorial-create-user-flows.md) , amelyekkel engedélyezheti az alkalmazás felhasználói élményét.
 * Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást a **ASP.net és a webes fejlesztési** munkaterheléssel.
 
-## <a name="update-the-application"></a>Az alkalmazás frissítése
+## <a name="update-the-application-registration"></a>Az alkalmazás regisztrációjának frissítése
 
-Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást adott hozzá Azure AD B2C. Az oktatóanyagban szereplő példával való kommunikáció engedélyezéséhez hozzá kell adnia egy átirányítási URI-t az alkalmazáshoz Azure AD B2C.
+Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást regisztrált Azure AD B2Cban. Az oktatóanyagban szereplő példával való kommunikáció engedélyezéséhez hozzá kell adnia egy átirányítási URI-t, és létre kell hoznia egy ügyfél titkos kulcsot (kulcs) a regisztrált alkalmazáshoz.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+### <a name="add-a-redirect-uri-reply-url"></a>Átirányítási URI hozzáadása (válasz URL-címe)
+
+Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az előzetes](http://aka.ms/b2cappregintro)verzióról.
+
+#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
-1. A **Válasz URL-cím**területen adja hozzá `https://localhost:44316`a címet.
+1. A **Válasz URL-cím**területen adja hozzá a `https://localhost:44316`.
 1. Kattintson a **Mentés** gombra.
-1. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
-1. Válassza a **kulcsok**lehetőséget, válassza a **kulcs generálása**, majd a **Mentés**lehetőséget. Jegyezze fel a webalkalmazás konfigurálásakor használni kívánt kulcsot.
+1. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját a webalkalmazás konfigurálásakor egy későbbi lépésben való használatra.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **tulajdonában lévő alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. Válassza a **hitelesítés**lehetőséget, majd válassza **az új felület kipróbálása** (ha látható) lehetőséget.
+1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja be a `https://localhost:44316`, majd kattintson a **Mentés**gombra.
+1. Válassza az **Áttekintés** lehetőséget.
+1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** , hogy a webalkalmazás konfigurálásakor egy későbbi lépésben használhassa.
+
+* * *
+
+### <a name="create-a-client-secret"></a>Ügyfél titkos kulcsának létrehozása
+
+Ezután hozzon létre egy ügyfél-titkot a regisztrált webalkalmazáshoz. A webalkalmazás kódjának mintája a következőt használja az identitás igazolására a jogkivonatok kérésekor.
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 ## <a name="configure-the-sample"></a>A minta konfigurálása
 
@@ -67,12 +91,12 @@ Frissítse a web. config fájlban lévő beállításokat a felhasználói folya
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 1. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt.
-    1. Frissítse a `ida:Tenant` és `ida:AadInstance` a értékét a létrehozott Azure ad B2C bérlő nevével. Például cserélje le `fabrikamb2c` a `contoso`következőt:.
-    1. Cserélje le a értékét `ida:ClientId` a rögzített alkalmazás-azonosítóra.
+    1. Frissítse `ida:Tenant` és `ida:AadInstance` értékét a létrehozott Azure AD B2C bérlő nevével. Például cserélje le a `fabrikamb2c`t a `contoso`ra.
+    1. Cserélje le a `ida:ClientId` értékét a rögzített alkalmazás-AZONOSÍTÓra.
     1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ahhoz, hogy hozzáadja a web. config fájlhoz, XML-kódolással kell kódolnia az ügyfél titkos kulcsát.
-    1. Cserélje le a értékét `ida:SignUpSignInPolicyId` a `b2c_1_signupsignin1`értékre.
-    1. Cserélje le a értékét `ida:EditProfilePolicyId` a `b2c_1_profileediting1`értékre.
-    1. Cserélje le a értékét `ida:ResetPasswordPolicyId` a `b2c_1_passwordreset1`értékre.
+    1. Cserélje le a `ida:SignUpSignInPolicyId` értékét a `b2c_1_signupsignin1`ra.
+    1. Cserélje le a `ida:EditProfilePolicyId` értékét a `b2c_1_profileediting1`ra.
+    1. Cserélje le a `ida:ResetPasswordPolicyId` értékét a `b2c_1_passwordreset1`ra.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -91,7 +115,7 @@ Frissítse a web. config fájlban lévő beállításokat a felhasználói folya
 
 Az alkalmazás felhasználója mostantól az e-mail-címük használatával bejelentkezhet, és használhatja a webalkalmazást.
 
-A **Feladatlista** funkció azonban addig nem fog működni, amíg el nem végzi a következő oktatóanyagot a sorozatban, [oktatóanyag: A ASP.NET webes API](active-directory-b2c-tutorials-web-api.md)-k a Azure ad B2C használatával védhetők.
+A **Feladatlista** funkció azonban addig nem fog működni, amíg el nem végzi a következő oktatóanyagot a sorozatban, [oktatóanyag: Azure AD B2C használata a ASP.net webes API-k elleni védelemhez](active-directory-b2c-tutorials-web-api.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -105,4 +129,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most lépjen a következő oktatóanyagra a webalkalmazás **Feladatlista** funkciójának engedélyezéséhez. Ebben az esetben egy webes API-alkalmazást kell regisztrálnia a saját Azure AD B2C bérlőben, majd módosítania kell a kódot, hogy a bérlőt használja az API-hitelesítéshez.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A ASP.NET webes API-k elleni védelem Azure Active Directory B2C használata >](active-directory-b2c-tutorials-web-api.md)
+> [Oktatóanyag: a ASP.NET webes API-k elleni védelem Azure Active Directory B2C használata >](active-directory-b2c-tutorials-web-api.md)

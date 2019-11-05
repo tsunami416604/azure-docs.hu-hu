@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 49bab338f559b1b43389e12d98c75bbffbb25a85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694765"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493933"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
 
-Ez a cikk a Azure Machine Learning Visual Interface modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Használja a matematikai művelet alkalmazása lehetőséget a bemeneti adatkészlet numerikus oszlopaira alkalmazott számítások létrehozásához. 
 
@@ -72,7 +72,7 @@ A modul minden példánya egyszerre csak egy típusú műveletet tud végrehajta
 1.  Válasszon ki egy vagy több olyan oszlopot, amelyen végre szeretné hajtani a számítást.   
   
     - Bármely kiválasztott oszlopnak numerikus adattípusnak kell lennie. 
-    - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény jelenhet meg. Például az ln (-1,0) érvénytelen művelet, és a `NaN` értékét eredményezi.
+    - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény jelenhet meg. Például az ln (-1,0) érvénytelen művelet, és a `NaN`értékét eredményezi.
   
 1.  Kattintson a **category (kategória** ) elemre a végrehajtandó matematikai művelet **típusának** kiválasztásához.
     
@@ -88,14 +88,14 @@ A modul minden példánya egyszerre csak egy típusú műveletet tud végrehajta
   
 1.  A folyamat futtatása.  
   
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 Ha a **Hozzáfűzés** vagy a **ResultOnly** lehetőség használatával hoz eredményt, a visszaadott adatkészlet oszlopai a művelet és a használt oszlopok láthatók. Ha például összehasonlítja két oszlopot az **EQUAL** operátor használatával, az eredmények a következőképpen néznek ki:  
   
 -   **Egyenlő (Col2_Col1)** , amely azt jelzi, hogy a Col2 a Col1 ellen tesztelte.  
 -   **Egyenlő (Col2_ $10)** , amely azt jelzi, hogy összehasonlítja a 2. oszlopot a konstans 10 értékkel.  
 
-A forrásadatok nem törlődnek és nem módosulnak, még akkor is, ha a **inplace** kapcsolót használja. az eredeti adatkészlet oszlopa továbbra is elérhető a Visual Interface-ben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
+A forrásadatok nem törlődnek és nem módosulnak, még akkor is, ha a **inplace** kapcsolót használja. az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
     
 ## <a name="basic-math-operations"></a>Alapszintű Matematikai műveletek 
 
@@ -208,7 +208,7 @@ A kijelölt oszlopban lévő értékek négyzeteit jelöli.
 
 ## <a name="comparison-operations"></a>Összehasonlítási műveletek  
 
-A Azure Machine Learning Visual Interface összehasonlító függvényeit bármikor használhatja, ha két érték tesztelésére van szükség. Például egy folyamat esetében szükség lehet az alábbi összehasonlítási műveletek elvégzésére:  
+A Azure Machine Learning Designerben használja az összehasonlító függvényeket bármikor, amikor két érték tesztelését kell végezni egymásra. Például egy folyamat esetében szükség lehet az alábbi összehasonlítási műveletek elvégzésére:  
 
 - Értékelje ki a valószínűség pontszám-modell oszlopát egy küszöbérték alapján.
 - Állapítsa meg, hogy az eredmények két készlete azonos-e. Minden különböző sor esetében adjon hozzá egy hamis jelzőt, amely további feldolgozáshoz vagy szűréshez használható.  
@@ -280,13 +280,13 @@ Adja meg a működéshez használni kívánt értékek oszlopát (a *kisebbíten
 
 ##  <a name="rounding-operations"></a>Kerekítési műveletek 
 
-Azure Machine Learning Visual Interface számos kerekítési műveletet támogat. Számos művelet esetében meg kell adnia a kerekítéskor használandó pontosság mértékét. Használhat állandóként megadott statikus pontossági szintet, vagy az értékek oszlopaiból beszerzett dinamikus pontossági értéket is alkalmazhat.  
+A Azure Machine Learning Designer számos kerekítési műveletet támogat. Számos művelet esetében meg kell adnia a kerekítéskor használandó pontosság mértékét. Használhat állandóként megadott statikus pontossági szintet, vagy az értékek oszlopaiból beszerzett dinamikus pontossági értéket is alkalmazhat.  
 
 - Ha állandót használ, állítsa a **pontosság típusát** **állandó** értékre, majd írja be a számjegyek számát egész számként az **állandó pontosság** szövegmezőbe. Ha nem egész számot állít be, a modul nem eredményez hibát, de az eredmények váratlanok lehetnek.  
 
 - Ha más pontossági értéket szeretne használni az adatkészlet minden sorához, állítsa a **pontosság típusát** **ColumnSet**értékre, majd válassza ki a megfelelő pontossági értékeket tartalmazó oszlopot.  
 
-### <a name="ceiling"></a>Mennyezeti
+### <a name="ceiling"></a>Ceiling
 
 Az **oszlop**értékeinek felső határát adja vissza.  
 
@@ -294,7 +294,7 @@ Az **oszlop**értékeinek felső határát adja vissza.
 
 Az **oszlop**értékeinek négyzetes felső határát adja vissza.  
 
-### <a name="floor"></a>Padló
+### <a name="floor"></a>Floor
 
 A megadott pontosságú **oszlop**értékeinek a padlóját adja vissza.  
 
@@ -493,7 +493,7 @@ Kiszámítja az oszlopok értékeinek koszinuszát.
 
 Kiszámítja az oszlop értékeinek koszinuszát fokban megadva.  
 
-### <a name="cosh"></a>COSH
+### <a name="cosh"></a>Cosh
 
 Kiszámítja az oszlopok értékeinek koszinusz hiperbolikusát.  
 
@@ -564,7 +564,7 @@ Kiszámítja az oszlop értékeinek tangensét.
 
 Kiszámítja az argumentum tangensét fokban megadva.  
 
-### <a name="tanh"></a>TANH
+### <a name="tanh"></a>Tanh
 
 Kiszámítja az oszlopok értékeinek tangensét.  
   
@@ -588,6 +588,6 @@ Azt is megteheti, hogy az alábbi modulok egyikével végrehajtja az összes sz�
 + [Python-szkript végrehajtása](execute-python-script.md)
 + [SQL-transzformáció alkalmazása](apply-sql-transformation.md)   
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

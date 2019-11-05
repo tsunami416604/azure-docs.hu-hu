@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772903"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492683"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding a Node. js-ben 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata a Node. js-ben 
 
 A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált csevegési robot hozható létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
+
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -49,7 +51,7 @@ A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált c
     |Robot neve|Erőforrás neve|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Előfizetés|Az előfizetés, amelyben létre szeretné hozni a robotot.|Az Ön elsődleges előfizetése.
     |Erőforráscsoport|Az Azure-erőforrások logikai csoportja|Hozzon létre új csoportot a robothoz használt erőforrások tárolására. A csoport neve legyen: `luis-nodejs-bot-resource-group`.|
-    |Hely|Azure-régió – Nem kell a LUIS létrehozási vagy közzétételi régiójával azonosnak lennie.|`westus`|
+    |Földrajzi egység|Azure-régió – Nem kell a LUIS létrehozási vagy közzétételi régiójával azonosnak lennie.|`westus`|
     |Tarifacsomag|Szolgáltatáskérési korlátokhoz és számlázáshoz használható.|Az `F0` az ingyenes szint.
     |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
@@ -68,7 +70,7 @@ A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált c
     
 1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-nodejs-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
-    [![Webalkalmazás robotjának létrehozása](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [webalkalmazás-robot ![létrehozása](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
     A folytatás előtt várjon, amíg létrejött a robot szolgáltatás.
 
@@ -81,12 +83,12 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|Nincsenek|Az app tartományán kívül bármi.|
+|None|Az app tartományán kívül bármi.|
 
-## <a name="test-the-bot-in-web-chat"></a>A robot webes csevegési tesztelése
+## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
 1. Miközben az új robot Azure Portal továbbra is elérhető, válassza a **tesztelés webes csevegésben**lehetőséget. 
-1. Az írja be az **üzenet** szövegmezőbe írja be a `Book a flight from Seattle to Berlin tomorrow`szöveget. A robot ellenőrzi, hogy szeretne-e repülőjáratot foglalni. 
+1. Az **üzenet típusa** szövegmezőbe írja be a `Book a flight from Seattle to Berlin tomorrow`szöveget. A robot ellenőrzi, hogy szeretne-e repülőjáratot foglalni. 
 
     ![A Azure Portal képernyőképe a "Hello" szöveg beírásával.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
@@ -99,7 +101,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
 1. Válassza a **Robot forráskódjának letöltse** lehetőséget. 
 
-    [![Webalkalmazás-robot forráskódjának letöltése alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![webalkalmazás-robot forráskódjának letöltése az alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 1. Ha az előugró ablak **a letöltött zip-fájlban is**megkéri az Alkalmazásbeállítások megadását, válassza az **Igen**lehetőséget. Ez biztosítja a LUIS beállításait. 
 
@@ -199,17 +201,17 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 Kérdezze meg a robotot a könyv repülési szándékáról.
 
 1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
-1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`:. Az `/api/messages` útvonal a robot webes címe.
+1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`. A `/api/messages` útvonal a robot webes címe.
 1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
 
-1. A bot-emulátorban adja `Book a flight from Seattle to Berlin tomorrow` meg és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben**kapott.
+1. A robot-emulátorban adja meg a `Book a flight from Seattle to Berlin tomorrow`t, és ugyanazt a választ kapja meg az alapszintű robot esetében, mint amit a **webes csevegésben kapott a tesztben**.
 
-    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [alapszintű bot-válasz ![az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. Válassza az **Igen**lehetőséget. A robot a műveleteinek összegzésével válaszol. 
-1. A robot-emulátor naplójából válassza ki a sort, amely tartalmazza `Luis Trace`a elemet. Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
+1. Válassza az **Igen** lehetőséget. A robot a műveleteinek összegzésével válaszol. 
+1. A bot Emulator naplójából válassza ki a `Luis Trace`t tartalmazó sort. Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
 
-    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [alapszintű bot-válasz ![az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]

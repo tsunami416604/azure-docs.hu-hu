@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/25/2019
-ms.openlocfilehash: 06f4fd56ba5d0152b7e5d3fbfaa31dc4d6c4482d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 01553eb020c1493488e941705d9df8c8c946340a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554124"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478717"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Új Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -28,7 +28,7 @@ A támogatott módszerek egyikének használatával engedélyezheti az AK-fürt�
 Az Azure CLI-vel létrehozott új AK-fürt figyelésének engedélyezéséhez kövesse a rövid útmutató című cikk lépéseit az [AK-fürt létrehozása](../../aks/kubernetes-walkthrough.md#create-aks-cluster)című szakaszban.  
 
 >[!NOTE]
->Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version` parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. Ha telepítette az AK-előnézet CLI-bővítményének 0.4.12 vagy újabb verzióját, távolítsa el az előnézeti bővítmény engedélyezéséhez szükséges módosításokat, mivel ez felülbírálhatja az alapértelmezett Azure CLI-viselkedést, mivel az AK előzetes verziójának funkciói nem érhetők el az Azure US Governmnet-felhőben.
+>Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. Ha telepítette az AK-előnézet CLI-bővítményének 0.4.12 vagy újabb verzióját, távolítsa el az előnézeti bővítmény engedélyezéséhez szükséges módosításokat, mivel ez felülbírálhatja az alapértelmezett Azure CLI-viselkedést, mivel az AK előzetes verziójának funkciói nem érhetők el az Azure US Governmnet-felhőben.
 
 ## <a name="enable-using-terraform"></a>Engedélyezés a Terraform használatával
 
@@ -97,7 +97,7 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-configuration-with-cli"></a>Konfiguráció megtekintése a parancssori felülettel
-A `aks show` paranccsal olyan részleteket kaphat, mint például a megoldás engedélyezve vagy sem, mi a Log Analytics munkaterület resourceID, valamint a fürt összegző információi.  
+A `aks show` parancs használatával olyan részleteket kaphat, mint például a megoldás engedélyezve vagy sem, mi a Log Analytics munkaterület resourceID, valamint a fürt összegző információi.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
@@ -116,8 +116,8 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
-* Ha a figyelés engedélyezve van az AK-fürtcsomópontok és-hüvelyek állapot-metrikáinak rögzítéséhez, ezek az állapot-mérőszámok a Azure Portal érhetők el. Az Azure Monitor for containers használatának megismeréséhez tekintse meg az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md)című témakört.
+* Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.

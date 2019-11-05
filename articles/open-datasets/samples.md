@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 6991b641bc85a8944bfd12a43f9b049e44ea88d8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598962"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496570"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Példa a Jupyter-jegyzetfüzetek megmutatják, hogyan bővítheti az adatokat a megnyitott adatkészletekkel 
 Az Azure Open-adatkészletek számára készült Jupyter-jegyzetfüzetek bemutatják, hogyan tölthetők be a megnyitott adatkészletek, és hogyan használhatók a bemutató adatai gazdagítása érdekében. A technikák a Apache Spark és a pandák használatát is feldolgozzák az adatfeldolgozáshoz.
@@ -35,11 +35,11 @@ Az Azure Open-adatkészletek számára készült Jupyter-jegyzetfüzetek bemutat
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>Csatlakozzon a New York-i taxi-adatszolgáltatáshoz a NOAA ISD- 
 |Jegyzetfüzet        | Leírás                                    |
 |----------------|------------------------------------------------|
-|[Az időjárási adatvesztéssel dúsított taxi Trip-adatpanda](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | Töltse be a New York-i zöld taxi adatait (több mint 1 hónap), és gazdagítsa az időjárási adatokkal egy Panda dataframe. Ez a példa felülbírálja a metódust `get_pandas_limit` , és kiegyensúlyozza az adatterhelési teljesítményt az adat mennyiségével.|
+|[Az időjárási adatvesztéssel dúsított taxi Trip-adatpanda](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | Töltse be a New York-i zöld taxi adatait (több mint 1 hónap), és gazdagítsa az időjárási adatokkal egy Panda dataframe. Ez a példa felülbírálja a metódust `get_pandas_limit` és kiegyensúlyozza az adatterhelési teljesítményt az adat mennyiségével.|
 |[Az időjárási adatbevitelsel dúsított taxi Trip-adatcsatorna – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | A Spark dataframe-ben betöltheti a New York-i zöld taxi-adatgyűjtést  |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Regressziós modellezés automatizált gépi tanulással és nyitott adatkészlettel](tutorial-opendatasets-automl.md)
+* [Oktatóanyag: regressziós modellezés automatizált gépi tanulással és nyitott adatkészlettel](tutorial-opendatasets-automl.md)
 * [Python SDK a nyílt adatkészletekhez](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure Open-adatkészletek katalógusa](https://azure.microsoft.com/services/open-datasets/catalog/)

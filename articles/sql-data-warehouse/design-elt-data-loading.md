@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c90deefba75cd8bbeda126c9da8a05e1069831d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c248a2e3e6724388fa6402a70ac3bcb51f0f9ef3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597472"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492248"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Alapszintű betöltési stratégia tervezése Azure SQL Data Warehouse számára
 
@@ -38,12 +38,12 @@ A SQL Data Warehouse-alapú ELT megvalósításának alapvető lépései a köve
 6. Szúrja be az adatbevitelt az éles táblákba.
 
 
-Betöltési oktatóanyagért lásd: az [Azure Blob Storage-ból való adatok betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md)a Azure SQL Data Warehouseba.
+Betöltési oktatóanyagért lásd: az [Azure Blob Storage-ból való adatok betöltésének használata a Azure SQL Data Warehouseba](load-data-from-azure-blob-storage-using-polybase.md).
 
 További információ: [minták betöltése blog](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
 
-## <a name="1-extract-the-source-data-into-text-files"></a>1. Forrásadatok kibontása szövegfájlba
+## <a name="1-extract-the-source-data-into-text-files"></a>1. a forrásadatok kibontása szövegfájlba
 
 A forrásrendszer adatokból való beolvasása a tárterület helyétől függ.  A cél az, hogy az adatok a következőre legyenek áthelyezve: Base támogatott tagolt szövegfájlok. 
 
@@ -57,37 +57,37 @@ A kiinduló adatok az UTF-8 és az UTF-16 kódolású, tagolt szövegfájlokból
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        boolean        |                             bit                              |
-|        double         |                            float                             |
-|         float         |                             real                             |
-|        double         |                            money                             |
-|        double         |                          smallmoney                          |
-|        Karakterlánc         |                            nchar                             |
-|        Karakterlánc         |                           nvarchar                           |
-|        Karakterlánc         |                             char                             |
-|        Karakterlánc         |                           varchar                            |
-|        binary         |                            binary                            |
-|        binary         |                          varbinary                           |
-|       timestamp       |                             date                             |
-|       timestamp       |                        smalldatetime                         |
-|       timestamp       |                          datetime2                           |
-|       timestamp       |                           datetime                           |
-|       timestamp       |                             time                             |
-|       date            |                             date                             |
+|        logikai        |                             bites                              |
+|        double         |                            lebegőpontos                             |
+|         lebegőpontos         |                             valós                             |
+|        double         |                            pénzt                             |
+|        double         |                          túlcsordulási                          |
+|        sztring         |                            NCHAR                             |
+|        sztring         |                           nvarchar                           |
+|        sztring         |                             char                             |
+|        sztring         |                           varchar                            |
+|        Bináris         |                            Bináris                            |
+|        Bináris         |                          varbinary                           |
+|       időbélyeg       |                             dátum                             |
+|       időbélyeg       |                        idő adattípusúra                         |
+|       időbélyeg       |                          datetime2                           |
+|       időbélyeg       |                           dátum/idő                           |
+|       időbélyeg       |                             time                             |
+|       dátum            |                             dátum                             |
 |        tizedes tört        |                            tizedes tört                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Az Azure Blob Storage-ba vagy Azure Data Lake Storeba helyezheti az adatterületet
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. az adatgyűjtés az Azure Blob Storage-ba vagy Azure Data Lake Store
 
 Az Azure Storage-ban tárolt adatterületek áthelyezéséhez áthelyezheti azt az [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) -ba vagy [Azure Data Lake Storeba](../data-lake-store/data-lake-store-overview.md). Mindkét helyen az adatfájlokat szövegfájlokban kell tárolni. A Base bármelyik helyről betölthető.
 
 Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és szolgáltatások:
 
-- Az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. Az ExpressRoute egy szolgáltatása, amely az adatok egy dedikált privát kapcsolaton keresztül irányítja az Azure-bA. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
+- Az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
 - A [AZCopy segédprogram](../storage/common/storage-moving-data.md) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e. 
 - [Azure Data Factory (ADF)](../data-factory/introduction.md) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha a Data Factoryt SQL Data Warehouse használatával szeretné használni, olvassa el a következő témakört: [az Adatterhelés a SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 
-## <a name="3-prepare-the-data-for-loading"></a>3. Az adatgyűjtés előkészítése betöltéshez
+## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
 
 Előfordulhat, hogy az SQL Data Warehouseba való betöltés előtt elő kell készítenie és meg kell tisztítania a Storage-fiókban tárolt adatait. Az adatelőkészítés elvégezhető, miközben az adatai a forrásban vannak, miközben az adatait szövegfájlba exportálja, vagy az Azure Storage-ban tárolt adatai.  A lehető leghamarabb dolgozhat az adatkezelési folyamatokkal.  
 
@@ -112,7 +112,7 @@ A szövegfájlok formázása:
 - Külön mezők a szövegfájlban egy lezáró fájllal.  Ügyeljen arra, hogy olyan karaktert vagy karaktert használjon, amely nem található a forrásadatok között. Használja a [külső fájlformátum létrehozásakor](/sql/t-sql/statements/create-external-file-format-transact-sql)megadott lezárót.
 
 
-## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. Az adatok betöltése a SQL Data Warehouse-előkészítési táblákba a Base használatával
+## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. az adatok betöltése a SQL Data Warehouse-előkészítési táblákba a Base használatával
 
 Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi, hogy az adatátalakításhoz SQL Data Warehouse MPP-t használjon, mielőtt beilleszti az adatfeldolgozási táblákba.
 
@@ -122,20 +122,20 @@ Az adatok alapszintű betöltéséhez használhatja a következő betöltési le
 
 - A [T-SQL-](load-data-from-azure-blob-storage-using-polybase.md) sel jól használható, ha az adatok Azure Blob Storage-ban vagy Azure Data Lake Storeban vannak. A leghatékonyabban szabályozhatja a betöltési folyamatot, de külső adatobjektumokat is meg kell határoznia. A többi módszer ezeket az objektumokat a háttérben úgy definiálja, ahogy a forrástábla táblázatokra van leképezve.  A T-SQL-terhelések összehangolása érdekében Azure Data Factory, SSIS vagy Azure functions-T használhat. 
 - A [SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok SQL Server, vagy SQL Server a helyszínen vagy a felhőben. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek. 
-- [A Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) használatával egy másik összehangoló eszköz van.  Meghatározza a folyamatokat és az ütemezett feladatokat. 
-- [Az Azure DataBricks-alapú](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) DataBricks az adatok átvitelét egy SQL Data Warehouse táblából egy-dataframe, és/vagy egy DataBricks-dataframe származó adatot ír egy SQL Data Warehouse-táblába a Base használatával.
+- [A Azure Data Factory (ADF) használatával egy másik összehangoló](sql-data-warehouse-load-with-data-factory.md) eszköz van.  Meghatározza a folyamatokat és az ütemezett feladatokat. 
+- A [Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) a SQL Data Warehouse táblák adatait egy Databricks dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír egy SQL Data Warehouse táblába, a Base használatával.
 
 ### <a name="non-polybase-loading-options"></a>Nem albase betöltési beállítások
 
 Ha az adatok nem kompatibilisek a SQLBulkCopy, használhatja a [BCP](/sql/tools/bcp-utility) -t vagy a [API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)-t. a BCP közvetlenül az Azure Blob Storage-ba való SQL Data Warehouse nélkül töltődik be, és kizárólag kis terhelésekhez készült. Vegye figyelembe, hogy ezeknek a beállításoknak a betöltési teljesítménye jóval lassabb, mint a kiinduló. 
 
 
-## <a name="5-transform-the-data"></a>5. Az adatok átalakítása
+## <a name="5-transform-the-data"></a>5. az adatátalakítás
 
 Amíg az adatok az előkészítési táblában vannak, hajtsa végre a számítási feladatok által igényelt átalakításokat. Ezután helyezze át az adatátvitelt egy éles táblába.
 
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. Az adattábla beillesztése a termelési táblákba
+## <a name="6-insert-the-data-into-production-tables"></a>6. az adattábla beillesztése a termelési táblákba
 
 A Beszúrás a (...) A SELECT utasítás az átmeneti tábla adatait az állandó táblába helyezi át. 
 
@@ -149,6 +149,6 @@ Számos partnerünk betöltési megoldásokkal rendelkezik. További informáci�
 
 ## <a name="next-steps"></a>További lépések
 
-Útmutatást a betöltési [útmutatóban](guidance-for-loading-data.md)talál.
+Útmutatást a [betöltési útmutatóban](guidance-for-loading-data.md)talál.
 
 

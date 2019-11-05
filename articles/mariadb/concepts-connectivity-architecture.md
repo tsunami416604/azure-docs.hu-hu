@@ -1,32 +1,32 @@
 ---
-title: Kapcsolati architektúra MariaDB-hez készült Azure Database-ben
-description: A témakör ismerteti a kapcsolati architektúra az Azure Database for MariaDB-kiszolgáló.
+title: Kapcsolati architektúra a Azure Database for MariaDBban
+description: A Azure Database for MariaDB-kiszolgáló kapcsolati architektúráját ismerteti.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d49e4dff1664d6630c966583a722f8e136061de5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5c24a89ca12c36a54a84c61c6343ce960da012c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595258"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498075"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra MariaDB-hez készült Azure Database-ben
-Ez a cikk ismerteti az Azure Database for MariaDB kapcsolati architektúra, valamint, hogy hogyan a átirányítja a forgalmat az Azure Database for MariaDB-példány belül és kívül az Azure-ügyfelekről.
+# <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra a Azure Database for MariaDBban
+Ez a cikk ismerteti a Azure Database for MariaDB kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MariaDB-példányra az Azure-on belüli és kívüli ügyfelektől.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
-Az Azure Database for MariaDB kapcsolat jön létre, amely a kiszolgáló a fürtben használt fizikai helynek útválasztási bejövő kapcsolatokat az átjárón keresztül. A következő ábra szemlélteti a forgalom áramlását.
+A Azure Database for MariaDB kapcsolata egy olyan átjárón keresztül jön létre, amely felelős a bejövő kapcsolatok útválasztásához a fürtben lévő kiszolgáló fizikai helyén. A következő ábra a forgalmat mutatja be.
 
 ![A kapcsolati architektúra áttekintése](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-Ügyfél kapcsolódni az adatbázishoz, kapnak egy kapcsolati karakterláncot, amely az átjáró csatlakozik. Ez az átjáró van egy nyilvános IP-címet, amely a 3306-os porton figyel. Az adatbázis-fürtben forgalmat továbbítja megfelelő Azure database for MariaDB. Annak érdekében, hogy csatlakozni a kiszolgálóhoz, mint például a vállalati hálózatokra, ezért szükséges képes elérni az átjáró kimenő forgalom engedélyezésére az ügyfél oldalán tűzfalát megnyitnia. Az átjárók régiónként által használt IP-címek teljes listája az alábbiakban találja.
+Ahogy az ügyfél csatlakozik az adatbázishoz, egy kapcsolati karakterláncot kapnak, amely az átjáróhoz csatlakozik. Az átjáró egy nyilvános IP-címmel rendelkezik, amely a 3306-es portot figyeli. Az adatbázis-fürtön belül a rendszer a megfelelő Azure Database for MariaDB továbbítja a forgalmat. Ezért ahhoz, hogy csatlakozni tudjon a kiszolgálóhoz, például a vállalati hálózatokból, meg kell nyitnia az ügyféloldali tűzfalat, hogy a kimenő forgalom elérje az átjárókat. Az alábbiakban megtalálhatja az átjárók által régiónként használt IP-címek teljes listáját.
 
-## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>Azure Database for MariaDB-átjáró IP-címek
+## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>Átjáró IP-címeinek Azure Database for MariaDB
 
-Az alábbi táblázat az elsődleges és másodlagos IP-címek, az Azure Database for MariaDB átjáró adatok minden régió esetében az. Az elsődleges IP-cím az az aktuális IP-cím az átjáró, a második IP-cím pedig az elsődleges meghiúsulásának feladatátvételi IP-címet. Ahogy említettük, ügyfelek engedélyeznie kell a kimenő mindkét IP-címet. A második IP-cím nem figyel a függő szolgáltatások mindaddig, amíg aktívvá válik, amelyet, Azure Database for MariaDB-kapcsolatok fogadására.
+A következő táblázat felsorolja az Azure Database for MariaDB átjáró elsődleges és másodlagos IP-címeit az összes adatterülethez. Az elsődleges IP-cím az átjáró aktuális IP-címe, a második IP-cím pedig egy feladatátvételi IP-cím az elsődleges hiba esetén. Ahogy említettük, az ügyfeleknek engedélyezniük kell a kimenő forgalmat az IP-címekre is. A második IP-cím nem figyeli a szolgáltatásokat, amíg Azure Database for MariaDB nem aktiválja a kapcsolatokat.
 
 | **Régió neve** | **Elsődleges IP-cím** | **Másodlagos IP-cím** |
 |:----------------|:-------------|:------------------------|
@@ -37,11 +37,11 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, az Azure Databas
 | Kelet-Kanada | 40.86.226.166 | |
 | USA középső régiója | 23.99.160.139 | 13.67.215.62 |
 | Kelet-Kína 1 | 139.219.130.35 | |
-| Kelet-Kína 2 | 40.73.82.1 | |
+| Kína 2. keleti régiója | 40.73.82.1 | |
 | Észak-Kína 1 | 139.219.15.17 | |
-| Észak-Kína 2 | 40.73.50.0 | |
+| Kína 2. északi régiója | 40.73.50.0 | |
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
-| 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
+| USA keleti régiója 1 | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
 | Közép-Franciaország | 40.79.137.0 | 40.79.129.1 |
 | Közép-Németország | 51.4.144.100 | |
@@ -56,17 +56,20 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, az Azure Databas
 | Észak-Európa | 191.235.193.75 | 40.113.93.91 |
 | USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
 | Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
-| Az Egyesült Királyság déli régiója | 51.140.184.11 | |
+| Dél-Afrika északi régiója | 102.133.152.0 | |
+| Dél-Afrika nyugati régiója | 102.133.24.0 | |
+| Egyesült Arab Emírségek északi régiója | 65.52.248.0 | |
+| Egyesült Királyság déli régiója | 51.140.184.11 | |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11| |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
-| USA nyugati RÉGIÓJA 1 | 23.99.34.75 | 104.42.238.205 |
-| USA nyugati régiója, 2. | 13.66.226.202 | |
+| USA nyugati régiója 1 | 23.99.34.75 | 104.42.238.205 |
+| USA 2. nyugati régiója | 13.66.226.202 | |
 ||||
 
 > [!NOTE]
-> *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.
+> Az *USA 2. keleti* régiójában a `52.167.104.0`harmadlagos IP-címe is szerepel.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával](./howto-manage-firewall-portal.md)
-* [Hozzon létre és kezelhető az Azure Database for MariaDB-tűzfalszabályok Azure CLI használatával](./howto-manage-firewall-cli.md)
+* [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-portal.md)
+* [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-cli.md)

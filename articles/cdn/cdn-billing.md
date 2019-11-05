@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996816"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495487"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -30,7 +30,7 @@ A számlázási régió egy földrajzi terület, amelynek alapján megállapíth
 
 - 1\. zóna: Észak-Amerika, Európa, Közel-Kelet és Afrika
 
-- Zone 2: (2. zóna) Ázsia és a Csendes-óceáni térség (és Japán)
+- 2\. zóna: Ázsia és a csendes-óceáni térség (és Japán)
 
 - 3\. zóna: Dél-Amerika
 
@@ -55,11 +55,11 @@ A Azure CDN használata az objektumok forrásaként használt szolgáltatások h
 
 Ha az Azure Blob Storage-t használja a tartalom forrásaként, a gyorsítótár kitöltéséhez a következő tárolási díjakat is fel kell vennie:
 
-- Tényleges GB használatban: A forrásoldali objektumok tényleges tárterülete.
+- Tényleges GB használatban: a forrásoldali objektumok tényleges tárterülete.
 
-- Tranzakciók A gyorsítótár kitöltéséhez szükséges.
+- Tranzakciók: a gyorsítótár kitöltéséhez szükséges módon.
 
-- Átvitel GB-ban: A CDN-gyorsítótárak kitöltéséhez továbbított adatmennyiség.
+- Adatátvitel GB-ban: a CDN-gyorsítótárak kitöltéséhez továbbított adatmennyiség.
 
 > [!NOTE]
 > Október 2019-től kezdődően, ha Azure CDNt használ a Microsofttól, az Azure-ból a CDN-re üzemeltetett adatátviteli költségek díjmentesek. A Verizon és a Akamai Azure CDN Azure CDN a lent ismertetett díjszabás hatálya alá tartozik.
@@ -68,9 +68,9 @@ Az Azure Storage számlázási szolgáltatásával kapcsolatos további informá
 
 Ha *üzemeltetett szolgáltatás-kézbesítést*használ, a következő díjakat kell fizetnie:
 
-- Azure számítási idő: A forrásként tevékenykedő számítási példányok.
+- Azure számítási idő: a forrásként szolgáló számítási példányok.
 
-- Azure-beli számítási átvitel: Az adatforgalom a számítási példányokból a Azure CDN gyorsítótárak kitöltéséhez.
+- Az Azure számítási átadása: a számítási példányokból érkező adatforgalom a Azure CDN gyorsítótárak kitöltéséhez.
 
 Ha az ügyfél bájt-tartományra vonatkozó kérelmeket használ (a forrástól függetlenül), a következő szempontokat kell figyelembe venni:
 
@@ -81,19 +81,19 @@ Ha az ügyfél bájt-tartományra vonatkozó kérelmeket használ (a forrástól
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Mennyi adatátviteli tevékenység történik a gyorsítótár támogatásához?
 Minden alkalommal, amikor egy CDN-POP-nak ki kell töltenie a gyorsítótárát, kérést küld a gyorsítótárban lévő objektum eredetére. Ennek eredményeképpen a forrás számlázandó tranzakciót eredményezett minden egyes gyorsítótár-Kihagyás esetén. A gyorsítótár-kihagyók száma számos tényezőtől függ:
 
-- A tartalom gyorsítótárazása: Ha a tartalom magas ÉLETTARTAMmal (élettartammal)/Expiration, és gyakran van elérhető, hogy a gyorsítótárban is népszerű maradjon, akkor a terhelés túlnyomó többségét a CDN kezeli. Egy tipikus jó gyorsítótár-találati arány 90%-os, ami azt jelenti, hogy az ügyfelek kéréseinek kevesebb mint 10%-át vissza kell térni a forráshoz, vagy a gyorsítótár-kihagyás vagy az objektum frissítése érdekében.
+- A tartalom gyorsítótárazásának módja: Ha a tartalom magas ÉLETTARTAMmal (élettartammal)/Expiration, és gyakran van elérhető, így a gyorsítótárban népszerű marad, akkor a terhelés túlnyomó többségét a CDN kezeli. Egy tipikus jó gyorsítótár-találati arány 90%-os, ami azt jelenti, hogy az ügyfelek kéréseinek kevesebb mint 10%-át vissza kell térni a forráshoz, vagy a gyorsítótár-kihagyás vagy az objektum frissítése érdekében.
 
-- Hány csomópontra van szükség az objektum betöltéséhez: Minden alkalommal, amikor egy csomópont betölt egy objektumot a forrásból, egy számlázható tranzakciót hoz. Ennek eredményeképpen a több csomópontból elérhető globális tartalom több számlázható tranzakciót eredményez.
+- Hány csomópontra van szükség az objektum betöltéséhez: minden alkalommal, amikor egy csomópont betölt egy objektumot a forrásból, egy számlázható tranzakciót használ. Ennek eredményeképpen a több csomópontból elérhető globális tartalom több számlázható tranzakciót eredményez.
 
-- TTL-hatás: Az objektumok magasabb ÉLETTARTAMa azt jelenti, hogy a forrást ritkábban kell beolvasni. Ez azt is jelenti, hogy az ügyfelek (például a böngészők) továbbra is gyorsítótárazzák az objektumot, ami csökkentheti a tranzakciókat a CDN-nek.
+- TTL-befolyás: egy objektum magasabb ÉLETTARTAMa azt jelenti, hogy a forrást ritkábban kell beolvasni. Ez azt is jelenti, hogy az ügyfelek (például a böngészők) továbbra is gyorsítótárazzák az objektumot, ami csökkentheti a tranzakciókat a CDN-nek.
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Mely származási szolgáltatások jogosultak a Microsoft Azure CDN való ingyenes adatátvitelre? 
 Ha a következő Azure-szolgáltatások egyikét használja CDN-forrásként, nem számítunk fel díjat a forrásról a CDN-durranás felé irányuló adatátvitel alól. 
 
 - Azure Storage
 - Azure Media Services
-- Azure Virtual Machines
-- Virtuális hálózat
+- Azure-alapú virtuális gépek
+- Virtual Network
 - Load Balancer
 - Application Gateway
 - Azure DNS
@@ -113,7 +113,7 @@ Ha a következő Azure-szolgáltatások egyikét használja CDN-forrásként, ne
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Azure Machine Learning szolgáltatás 
+- Azure Machine Learning 
 - Azure SQL-adatbázis
 - Azure Cache for Redis
 

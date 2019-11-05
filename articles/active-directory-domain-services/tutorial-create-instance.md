@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d880bcc7c0c3f1b9cf647242a54cc779ba8945e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172371"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474431"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -55,7 +55,7 @@ Ebben az oktatóanyagban az Azure Portal használatával hozza létre és konfig
 
 A **Azure ad Domain Services engedélyezése** varázsló elindításához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 1. Adja meg a *tartományi szolgáltatásokat* a keresési sávban, majd válassza a *Azure ad Domain Services* lehetőséget a keresési javaslatok közül.
 1. A Azure AD Domain Services lapon válassza a **Létrehozás**lehetőséget. Elindul a **Azure ad Domain Services engedélyezése** varázsló.
 1. Válassza ki azt az Azure- **előfizetést** , amelyben létre szeretné hozni a felügyelt tartományt.
@@ -167,7 +167,7 @@ A csak felhőalapú felhasználók jelszavának módosításához a felhasznál�
 
 Néhány percet vesz igénybe, miután módosította az új jelszóhoz tartozó jelszót, hogy az Azure AD DS használható legyen, és hogy sikeresen bejelentkezzen a felügyelt tartományhoz csatlakoztatott számítógépekre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

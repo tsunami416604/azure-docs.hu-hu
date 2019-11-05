@@ -1,7 +1,7 @@
 ---
 title: Algoritmuspéldák
-titleSuffix: Azure Machine Learning Studio
-description: Könnyen érthető áttekintése machine learning alapjai algoritmus példákkal tartalmazza. A letölthető infografika kiterjed a legtöbb machine learning-kérdések.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: A Machine learning alapjaihoz egyszerűen érthető áttekintést talál, amely példákat tartalmaz az algoritmusokra. A letölthető infographic a legtöbb gépi tanulási kérdéssel foglalkozik.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,33 +10,33 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 6e0a355852be57a3b0869a6bf094e98a89f49f28
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0864bdaf31d94469d30a745cfb911cda2c2e493d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514920"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493332"
 ---
-# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető Infographic: A Machine learning alapjai az algoritmusokkal kapcsolatos példákkal
+# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető infografika: a gépi tanulás alapjai algoritmuspéldákkal
 
-Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető infografika áttekintése. Algoritmus példákkal a machine learning kezdő algoritmusok közül melyiket szeretné használni, és mire használhatók a megismerése érdekében.
+Töltse le ezt a könnyen értelmezhető infographic-áttekintést a gépi tanulási alapjairól, hogy megismerje a gyakori gépi tanulási kérdések megválaszolásához használt népszerű algoritmusokat. Az algoritmus példái segítenek a gépi tanulási kezdőknek megismerni, hogy mely algoritmusokat kell használni, és mire használják őket.
 
-## <a name="popular-algorithms-in-machine-learning-studio"></a>Népszerű algoritmusok, Machine Learning studióban
+## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Népszerű algoritmusok Machine Learning Studio (klasszikus)
 
-[Az Azure Machine Learning Studio](https://studio.azureml.net/) gazdag tára algoritmusokat kínál prediktív elemzőeszközöket tartalmaz. Ez a infographic négy népszerű algoritmust azonosít: a regressziót, a rendellenességek észlelését, a fürtözést és a besorolást, és hivatkozásokat tartalmaz a [Azure AI Galleryban](https://gallery.azure.ai/)működő példákra. A katalógus tartalmazza a példakísérletek és oktatóanyagok, amelyek bemutatják, hogyan ezeket az algoritmusokat a való életből vett számos megoldás alkalmazható.
+A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) a prediktív elemzési algoritmusok nagy könyvtára. Ez a infographic négy népszerű algoritmust azonosít: a regressziót, a rendellenességek észlelését, a fürtözést és a besorolást, és hivatkozásokat tartalmaz a [Azure AI Galleryban](https://gallery.azure.ai/)működő példákra. A katalógus példákat és oktatóanyagokat tartalmaz, amelyek bemutatják, hogyan alkalmazhatók ezek az algoritmusok számos valós megoldásban.
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Töltse le a algoritmuspéldákkal szemléltető ábra
+## <a name="download-the-infographic-with-algorithm-examples"></a>A infographic letöltése algoritmussal – példák
 
-**[Letöltés A Machine learning alapjai az algoritmusokra mutató hivatkozásokkal (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Letöltés: a Machine learning alapjai az algoritmusokra mutató hivatkozásokkal (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Szemléltető ábra: A gépi tanulás alapjai az algoritmusokkal kapcsolatos példákkal. Népszerű algoritmusokat. A Machine learning-kezdők számára.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infographic: a Machine learning alapjai az algoritmusokkal kapcsolatos példákkal. Népszerű algoritmusok. Gépi tanulás kezdőknek.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
-## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>További segítség algoritmusokat a kezdő és haladó felhasználók
+## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>További segítség a kezdők és a haladó felhasználók algoritmusai számára
 
-* A gépi tanulási algoritmusok különböző típusaival kapcsolatos mélyebb megbeszélések, hogyan használják őket, és hogyan választhatja ki a legmegfelelőbb megoldást a megoldásához: [algoritmusok kiválasztása Microsoft Azure Machine learning studiohoz](algorithm-choice.md).
-* A Machine Learning Studioban elérhető gépi tanulási algoritmusok kategóriája alapján a következő témakörben talál további információt: a [modell inicializálása][initialize-model] a Machine learning Studio algoritmus és modul súgójában.
-* A Machine Learning Studio található algoritmusok és modulok teljes betűrendes listáját az Machine Learning Studio algoritmus és modul súgójának [Machine learning Studio moduljainak listája tartalmazza][a-z-list] .
-* Az Azure AI-katalógusban, és a Közösség által készített rendelkezésére álló számos forrás áttekintését, lásd: [megosztás és az Azure AI katalógusban erőforrások felderítéséhez](gallery-how-to-use-contribute-publish.md).
+* A gépi tanulási algoritmusok különböző típusaival kapcsolatos mélyebb megbeszélések, hogyan használják őket, és hogyan választhatja ki a legmegfelelőbb megoldást a megoldásához: [algoritmusok kiválasztása Microsoft Azure Machine learning Studio (klasszikus)](algorithm-choice.md).
+* A Machine Learning Studio klasszikus verziójában elérhető gépi tanulási algoritmusok kategóriája alapján a [modell inicializálása][initialize-model] a Machine learning Studio (klasszikus) algoritmus és a modul súgójában található.
+* Az Machine Learning Studio klasszikus verziójában található algoritmusok és modulok teljes betűrendes listáját a (Z) Machine Learning Studio (klasszikus) [Machine learning Studio (klasszikus) modulok listáját][a-z-list] ismertető témakörben találhatja meg.
+* A rendelkezésre álló Azure AI Gallery és számos, Közösség által létrehozott erőforrás áttekintését lásd: [erőforrások megosztása és felderítése a Azure AI Gallery](gallery-how-to-use-contribute-publish.md).
 
 
 <!-- Module References -->

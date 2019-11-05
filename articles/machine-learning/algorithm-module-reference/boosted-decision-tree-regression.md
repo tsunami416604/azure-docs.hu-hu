@@ -1,24 +1,24 @@
 ---
 title: 'Gyorsított döntési fa regresszió: modul referenciája'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning Service-ben a megnövelt döntési fa regressziós modult a regressziós fák együttes létrehozásához a boosting használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhat létre a regressziós fák kombinációját a Azure Machine Learning a kihasználható döntési fa regressziós modullal a növeléssel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693840"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493882"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal a regressziós fák együttesét hozhatja létre a boosting használatával. A *kiemelés* azt jelenti, hogy az egyes faszerkezetek az előző fáktől függenek. Az algoritmus az előtte lévő fák maradékának beépítésével tanul. Így a döntési fazenekarban egyre nagyobb a pontosság, és kisebb a lefedettségük.  
   
@@ -87,7 +87,7 @@ A színátmenet-növelési módszer a besorolási problémákhoz is használhat�
 
 10. A folyamat futtatása.  
   
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
@@ -97,6 +97,8 @@ A betanítás befejezése után:
 
 + Ha a modellt a pontozáshoz szeretné használni, kapcsolja össze a [pontszám modellel](./score-model.md), hogy megjósolja az új bemeneti példák értékeit.
 
-## <a name="next-steps"></a>Következő lépések
++ A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal az oktatási modul **betanított modell** kimenetére, és válassza a **Mentés másként**lehetőséget. A menteni kívánt betanított modell másolata nem frissül a folyamat egymást követő futtatásakor.
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+## <a name="next-steps"></a>További lépések
+
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

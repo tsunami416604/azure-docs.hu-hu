@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481120"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Oktatóanyag: CI/CD-folyamat létrehozása meglévő kódhoz a Azure DevOps Projects használatával
 
@@ -46,9 +46,13 @@ Az alábbiakat fogja elvégezni:
 
 A Azure DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A Azure DevOps Projects Azure-erőforrásokat is létrehoz az Ön által választott Azure-előfizetésben.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs sávon, majd keressen rá **DevOps projects**a **Létrehozás**gombra.
+2. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
+
+   ![Azure Portal menü – erőforrás létrehozása](_img/azure-devops-project-github/createaresource.png)
+
+3. Válassza ki a **DevOps > DevOps projektet**.
 
    ![A DevOps Projects irányítópult](_img/azure-devops-project-github/azuredashboard.png)
 
@@ -56,7 +60,7 @@ A Azure DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. 
 
 ## <a name="configure-access-to-your-github-repo-and-choose-a-framework"></a>A GitHub-tárházhoz való hozzáférés konfigurálása és a keretrendszer kiválasztása
 
-1. Válassza a **GitHub** vagy egy külső **git** -kód tárház lehetőséget. Ehhez az oktatóanyaghoz válassza a **GitHub**lehetőséget. Előfordulhat, hogy először hitelesítenie kell a GitHubot, hogy az Azure hozzáférhessen a GitHub-tárházhoz.
+1. Válassza a **GitHub** vagy egy külső **git** -kód tárház lehetőséget. Ehhez az oktatóanyaghoz válassza a **GitHub**lehetőséget. Előfordulhat, hogy először hitelesítenie kell a GitHubot, hogy az Azure hozzáférjen a GitHub-tárházhoz.
 
 2. A **tárház** és az **ág**kiválasztásával fejezze be a **Next (tovább**) gombot.
 
@@ -114,7 +118,7 @@ Azure DevOps Projects automatikusan konfigurálja a CI/CD-folyamatokat az Azure-
 
 Ha már nincs rájuk szükség, törölheti az oktatóanyagban létrehozott Azure app Service-t és kapcsolódó erőforrásokat. Ehhez használja a **Törlés** funkciót a DevOps projects irányítópulton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az oktatóanyagban konfigurálta a CI/CD-folyamatot, a rendszer automatikusan létrehoz egy összeállítási és kiadási folyamatot Azure DevOps Projects. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

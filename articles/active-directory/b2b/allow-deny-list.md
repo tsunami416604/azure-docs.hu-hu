@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62cbe68bcf191c7ee6fc906bc8ba8ea66e3efb31
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233884"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474167"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Az adott szervezetek a B2B-felhasználók meghívások engedélyezése vagy letiltása
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek VÁLLALATKÖZI felhasználói meghívásának engedélyezése vagy letiltása
 
 Az engedélyezési és a megtagadási lista használatával engedélyezheti vagy letilthatja a VÁLLALATKÖZI felhasználók számára az adott szervezetektől érkező meghívókat. Ha például le szeretné tiltani a személyes e-mail-címek tartományait, beállíthat egy megtagadási listát, amely olyan tartományokat tartalmaz, mint a Gmail.com és a Outlook.com. Ha vállalata más vállalatokkal is rendelkezik, mint például a Contoso.com, a Fabrikam.com és a Litware.com, és csak ezekre a szervezetekre szeretné korlátozni a meghívókat, hozzáadhat Contoso.com, Fabrikam.com és Litware.com is az engedélyezési listához.
   
@@ -33,7 +33,7 @@ Az engedélyezési és a megtagadási lista használatával engedélyezheti vagy
 
 ## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>Az engedélyezési vagy letiltási lista szabályzatának beállítása a portálon
 
-Alapértelmezés szerint a meghívókat **bármely tartományba (a legtöbb befogadó)** beállítás engedélyezi. Ebben az esetben bármely szervezettől hívhat meg VÁLLALATKÖZI felhasználókat.
+Alapértelmezés szerint a **meghívókat bármely tartományba (a legtöbb befogadó)** beállítás engedélyezi. Ebben az esetben bármely szervezettől hívhat meg VÁLLALATKÖZI felhasználókat.
 
 ### <a name="add-a-deny-list"></a>Megtagadási lista hozzáadása
 
@@ -41,15 +41,15 @@ Ez a leggyakoribb forgatókönyv, ahol a szervezet szinte bármilyen szervezetet
 
 Megtagadási lista hozzáadása:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **Azure Active Directory** > felhasználó > **felhasználói beállításait**.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+2. Válassza **Azure Active Directory** > **felhasználók** > **felhasználói beállítások**lehetőséget.
 3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 4. Az **együttműködési korlátozások**területen válassza **a meghívások megtagadása a megadott tartományokra**lehetőséget.
 5. A **céltartomány**területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Példa:
 
    ![A megtagadási beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/DenyListSettings.png)
  
-6. Ha elkészült, kattintson a **mentése**.
+6. Ha elkészült, kattintson a **Mentés**gombra.
 
 Miután beállította a házirendet, ha egy felhasználót egy letiltott tartományból próbál meghívni, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
  
@@ -62,15 +62,15 @@ Ha az engedélyezési listát szeretné használni, ügyeljen arra, hogy az üzl
 
 Engedélyezési lista hozzáadása:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **Azure Active Directory** > felhasználó > **felhasználói beállításait**.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+2. Válassza **Azure Active Directory** > **felhasználók** > **felhasználói beállítások**lehetőséget.
 3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 4. Az **együttműködési korlátozások**területen jelölje be **a csak a megadott tartományokra vonatkozó meghívások engedélyezése (a legszigorúbb)** jelölőnégyzetet.
 5. A **céltartomány**területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Példa:
 
    ![Az engedélyezési beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/AllowListSettings.png)
  
-6. Ha elkészült, kattintson a **mentése**.
+6. Ha elkészült, kattintson a **Mentés**gombra.
 
 Miután beállította a házirendet, ha olyan tartományból próbál meg felhasználót meghívni, amely nem szerepel az engedélyezési listán, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
 
@@ -81,6 +81,9 @@ Ha az egyik házirendből a másikra vált, a rendszer elveti a meglévő házir
 ## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Az engedélyezési vagy letiltási lista házirend beállítása a PowerShell használatával
 
 ### <a name="prerequisite"></a>Előfeltétel
+
+> [!Note]
+> A AzureADPreview modul nem teljes mértékben támogatott modul, mert előzetes verzióban érhető el. 
 
 Az engedélyezési vagy megtagadási lista PowerShell használatával történő beállításához telepítenie kell a Windows PowerShell Azure Active Directory moduljának előzetes verzióját. Konkrétan telepítse a AzureADPreview modul 2.0.0.98 vagy újabb verzióját.
 

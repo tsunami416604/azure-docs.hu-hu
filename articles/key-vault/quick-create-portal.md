@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259220"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490413"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: Azure Key Vault titkos kulcsának beállítása és beolvasása a Azure Portal használatával
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával
 
 Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben a rövid útmutatóban egy kulcstartót hoz létre, majd eltárol benne egy titkos kulcsot. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](key-vault-overview.md) szakaszban talál.
 
@@ -29,24 +29,22 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra
-
-    ![Kimenet a Key Vault létrehozási parancsának befejeződése után](./media/quick-create-portal/search-services.png)
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 2. A keresőmezőbe írja be a **Key Vault** kifejezést.
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egyedi nevet kell megadni. Ehhez a rövid útmutatóhoz a **Contoso-vault2** nevet használjuk. 
-    - **Előfizetés**: Válasszon egy előfizetést.
-    - Az **Erőforráscsoport** területen válassza az **Új létrehozása** lehetőséget, és írja be az erőforráscsoport nevét.
+    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban a **contoso-vault2-** t használjuk. 
+    - **Előfizetés**: Válassza ki az előfizetést.
+    - Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* Tár **neve**: A példában ez a **contoso-Vault2**. Ezt a nevet fogja majd más lépésekben is használni.
-* Tároló **URI-ja**: A példában ez a következő https://contoso-vault2.vault.azure.net/:. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **Tároló neve**: A példában ez a **Contoso-Vault2**. Ezt a nevet fogja majd más lépésekben is használni.
+* **Tároló URI-ja**: A példában ez a https://contoso-vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
@@ -56,13 +54,13 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 
 Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fogunk megadni. A jelszó neve **ExamplePassword** , és a **hVFkk965BuUv** értékét tárolja.
 
-1. A Key Vault-tulajdonságok lapján válassza a **Titkos kódok** lehetőséget.
+1. A Key Vault tulajdonságok lapon válassza a **titkok**elemet.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **Titkos kód létrehozása** képernyőn válassza az alábbi értékeket:
-    - **Feltöltési beállítások**: Kézi.
+    - **Feltöltési beállítások**: Manuális.
     - **Név**: ExamplePassword.
     - **Érték**: hVFkk965BuUv
-    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Create** (Létrehozás) gombra.
+    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** elemre.
 
 Miután megérkezett az üzenet arról, hogy a titkos kulcs sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
 

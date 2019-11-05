@@ -1,5 +1,5 @@
 ---
-title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonság
+title: 'Biztonság: helyszíni Apache Hadoop migrálása az Azure HDInsight'
 description: Ismerje meg a biztonsági és DevOps ajánlott eljárásokat a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítéséhez.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736139"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494977"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
 
@@ -43,12 +43,12 @@ A tartományhoz csatlakoztatott HDInsight-fürt üzembe helyezéséhez kövesse 
 
 
 - A következő paraméterek megadásával telepítse a HDInsight ESP-fürtöt:
-    - **Tartománynév**: Az Azure AD DShoz társított tartománynév.
-    - **Tartományi Felhasználónév**: Az előző szakaszban létrehozott Azure AD DS DC által felügyelt tartományhoz tartozó szolgáltatásfiók, például: `hdiadmin@contoso.onmicrosoft.com`. Ez a tartományi felhasználó lesz a HDInsight-fürt rendszergazdája.
-    - **Tartományi jelszó**: A szolgáltatásfiók jelszava.
-    - **Szervezeti egység**: A HDInsight-fürthöz használni kívánt szervezeti egység megkülönböztető neve, például: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Ha ez a szervezeti egység nem létezik, a HDInsight-fürt megpróbálja létrehozni a szervezeti egységet a szolgáltatásfiók jogosultságainak használatával.
+    - **Tartománynév**: az Azure ad DShoz társított tartománynév.
+    - **Tartományi Felhasználónév**: az előző szakaszban létrehozott Azure AD DS DC által felügyelt tartományhoz tartozó szolgáltatásfiók, például: `hdiadmin@contoso.onmicrosoft.com`. Ez a tartományi felhasználó lesz a HDInsight-fürt rendszergazdája.
+    - **Tartományi jelszó**: a szolgáltatásfiók jelszava.
+    - **Szervezeti egység**: a HDInsight-fürthöz használni kívánt ou megkülönböztető neve, például: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Ha ez a szervezeti egység nem létezik, a HDInsight-fürt megpróbálja létrehozni a szervezeti egységet a szolgáltatásfiók jogosultságainak használatával.
     - **LDAPS URL-cím**: például `ldaps://contoso.onmicrosoft.com:636`.
-    - **Hozzáférés felhasználói csoport**: Azok a biztonsági csoportok, amelyek felhasználóit szinkronizálni szeretné a fürttel, például `HiveUsers`:. Ha több felhasználói csoportot szeretne megadni, pontosvesszővel válassza el őket egymástól. Az ESP-fürt létrehozása előtt a csoport (ok) nak léteznie kell a címtárban.
+    - **Hozzáférés a felhasználói csoporthoz**: azok a biztonsági csoportok, amelyek felhasználóit szinkronizálni szeretné a fürttel, például: `HiveUsers`. Ha több felhasználói csoportot szeretne megadni, pontosvesszővel válassza el őket egymástól. Az ESP-fürt létrehozása előtt a csoport (ok) nak léteznie kell a címtárban.
 
 További információkért tekintse át a következő cikkeket:
 
@@ -108,13 +108,13 @@ Rendszeresen frissítsen a legújabb HDInsight-verzióra, hogy kihasználhassa a
 1. Importálja a biztonsági mentés alatt álló átmeneti adatfájlokat.
 1. Feladatok indítása/a feldolgozás folytatása az új fürt használatával.
 
-További információt a következő cikkben talál: [Frissítse a HDInsight-fürtöt egy új verzióra](../hdinsight-upgrade-cluster.md).
+További információt a [HDInsight-fürt frissítése új verzióra](../hdinsight-upgrade-cluster.md)című cikkben talál.
 
 ## <a name="patch-cluster-operating-systems"></a>Fürt operációs rendszereinek javítása
 
 Felügyelt Hadoop szolgáltatásként a HDInsight gondoskodik a HDInsight-fürtök által használt virtuális gépek operációs rendszerének javításáról.
 
-További információt a következő cikkben talál: [Operációsrendszer-javítás a HDInsight-hez](../hdinsight-os-patching.md).
+További információkért tekintse meg a [HDInsight operációsrendszer-javítását](../hdinsight-os-patching.md)ismertető cikket.
 
 ## <a name="post-migration"></a>Áttelepítés utáni
 

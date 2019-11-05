@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8b8e7270851c71869b1a67f0f0f0ba2187f0e87
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069714"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470673"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és a App Service Environment 
 
@@ -32,7 +32,7 @@ Ha külső betekintő szolgáltatást használ, akkor az alkalmazások a követk
 
 A tanúsítványok a ILB-vel való konfigurálásának két lehetősége van.  Beállíthat egy helyettesítő karaktert a ILB beadásához, vagy beállíthat tanúsítványokat a központhoz tartozó egyes webalkalmazásokhoz.  A választott lehetőségtől függetlenül a következő tanúsítvány-attribútumokat megfelelően kell konfigurálni:
 
-- **Tulajdonos** Ezt az attribútumot a * értékre kell állítani. [a-root-domain-itt] a helyettesítő karakteres ILB-tanúsítványhoz. Ha létrehozta az alkalmazáshoz tartozó tanúsítványt, akkor a következőnek kell lennie: [AppName]. [a-root-domain-itt]
+- **Tárgy:** Ezt az attribútumot a * értékre kell állítani. [a-root-domain-itt] a helyettesítő karakteres ILB-tanúsítványhoz. Ha létrehozta az alkalmazáshoz tartozó tanúsítványt, akkor a következőnek kell lennie: [AppName]. [a-root-domain-itt]
 - **Tulajdonos alternatív neve:** Ennek az attribútumnak a következőket kell tartalmaznia: *. [a-root-domain-itt] és a *. SCM. [a-root-domain-itt] a helyettesítő karakteres ILB-tanúsítványhoz. Ha létrehozta az alkalmazáshoz tartozó tanúsítványt, akkor a következőnek kell lennie: [AppName]. [a-root-domain-itt] és [AppName]. SCM. [a-root-domain-itt].
 
 Harmadik változatként létrehozhat egy olyan ILB-alapú betekintő tanúsítványt, amely a tanúsítvány SAN-beli összes egyéni alkalmazásának nevét tartalmazza, nem helyettesítő karakteres hivatkozással. Ennek a módszernek a problémája az, hogy ismernie kell a bevezetésben üzembe helyezett alkalmazások nevét, vagy meg kell őriznie a ILB-beléptetési tanúsítvány frissítését.
@@ -64,7 +64,7 @@ A szolgáltatói környezetben üzemeltetett alkalmazások használhatják a tö
 - IP-alapú SSL, amely csak külső kiegészítő szolgáltatással támogatott.  Az ILB-alapú kiegészítő szolgáltatás nem támogatja az IP-alapú SSL-t.
 - Kulcstartó által üzemeltetett tanúsítványok 
 
-A tanúsítványok feltöltésével és kezelésével kapcsolatos utasítások a App Service SSL-oktatóanyagban https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl érhetők el.  Ha egyszerűen konfigurálja a tanúsítványokat úgy, hogy azok megfeleljenek a webalkalmazáshoz rendelt egyéni tartománynévnek, akkor ezek az utasítások elegendőek lesznek. Ha az alapértelmezett tartománynévvel tölti fel a tanúsítványt egy ILB-beadási webalkalmazáshoz, akkor az SCM-helyet a tanúsítvány TÁROLÓHÁLÓZATI helyén kell megadnia a korábban feljegyzett módon. 
+A tanúsítványok feltöltésével és kezelésével kapcsolatos utasítások az [SSL-tanúsítvány hozzáadása Azure app Serviceban](../configure-ssl-certificate.md)érhetők el.  Ha egyszerűen konfigurálja a tanúsítványokat úgy, hogy azok megfeleljenek a webalkalmazáshoz rendelt egyéni tartománynévnek, akkor ezek az utasítások elegendőek lesznek. Ha az alapértelmezett tartománynévvel tölti fel a tanúsítványt egy ILB-beadási webalkalmazáshoz, akkor az SCM-helyet a tanúsítvány TÁROLÓHÁLÓZATI helyén kell megadnia a korábban feljegyzett módon. 
 
 ## <a name="tls-settings"></a>TLS-beállítások 
 

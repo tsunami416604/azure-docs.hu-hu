@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Adatterhelés és lekérdezések futtatása Apache Spark-fürtön az Azure HDInsight'
+title: 'Oktatóanyag: az adatbetöltések & lekérdezések futtatása Apache Spark-Azure HDInsight'
 description: Oktatóanyag – Ismerje meg, hogyan tölthetők be az adathalmazok, és hogyan futtathat interaktív lekérdezéseket a Spark-fürtökön az Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: 3d6b7cf67faa94d0947d16cc79d0d5b839de7acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027790"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494492"
 ---
-# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatterhelés és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsight
+# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsightban
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre dataframe egy csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket egy [Apache Spark](https://spark.apache.org/) -fürtön az Azure HDInsight. A Sparkban az adathalmazok olyan elosztott adatgyűjtemények, amelyek megnevezett oszlopokba vannak rendezve. Az adathalmazok elméleti szinten azonosak a relációs adatbázisokban található táblákkal vagy R/Python-adathalmazokkal.
 
@@ -34,9 +34,9 @@ A Jupyter Notebook egy interaktív notebook-környezet, amely számos programoz�
 
 1. Szerkessze a `https://SPARKCLUSTER.azurehdinsight.net/jupyter` URL-t a Spark-fürt nevével `SPARKCLUSTER` helyére. Ezután írja be a szerkesztett URL-címet egy webböngészőbe. Ha a rendszer kéri, adja meg a fürthöz tartozó bejelentkezési hitelesítő adatokat.
 
-2. A Jupyter weblapon válassza az **új** > **PySpark** elemet egy jegyzetfüzet létrehozásához.
+2. A Jupyter weblapon válassza az **új** > **PySpark** lehetőséget egy jegyzetfüzet létrehozásához.
 
-   ![Jupyter notebook létrehozása interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter notebook létrehozása interaktív Spark SQL-lekérdezés futtatásához")
+   ![Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához")
 
    A rendszer létrehoz egy új jegyzetfüzetet, és a névtelen névvel nyitja meg (`Untitled.ipynb`).
 
@@ -47,7 +47,7 @@ A Jupyter Notebook egy interaktív notebook-környezet, amely számos programoz�
 
 Az alkalmazások közvetlenül a távoli tárolóban található fájlokból vagy mappákból hozhatnak létre dataframes, például az Azure Storage vagy a Azure Data Lake Storage; egy struktúra táblából; vagy a Spark által támogatott egyéb adatforrásokból, például az Cosmos DB, az Azure SQL DB, a DW stb. A következő képernyőképen az oktatóanyaghoz használt HVAC.csv fájl pillanatfelvétele látható. Ez a csv-fájl minden HDInsight Spark-fürtön megtalálható. Az adatok néhány épület hőmérséklet-változását rögzítik.
 
-![Az interaktív Spark SQL-lekérdezés adatainak pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezés adatainak pillanatképe")
+![Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe")
 
 1. Illessze be a következő kódot a Jupyter jegyzetfüzet egyik üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
 
@@ -81,15 +81,15 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
    Az alábbi táblázatos kimenet jelenik meg.
 
-     ![Az interaktív Spark-lekérdezési eredmény táblázati kimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Az interaktív Spark-lekérdezési eredmény táblázati kimenete")
+     ![Interaktív Spark-lekérdezés eredményének táblázatos kimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Interaktív Spark-lekérdezés eredményének táblázatos kimenete")
 
 2. Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon megjelenítéséhez válassza az **Area** (Terület) lehetőséget, majd állítsa be a további értékeket az ábra szerint.
 
-    ![Az interaktív Spark-lekérdezési eredmény területgrafikonja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezési eredmény területgrafikonja")
+    ![Az interaktív Spark-lekérdezés eredményének terület gráfja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezés eredményének terület gráfja")
 
-3. A notebook menüsávban navigáljon a **fájl**@no__t – 1**Mentés és ellenőrzőpont**elemre.
+3. A notebook menüsávban navigáljon a **fájl** > **Mentés és ellenőrzőpont**elemre.
 
-4. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a jegyzetfüzetet a fürterőforrások felszabadításához: a jegyzetfüzet menüsorában navigáljon a **fájl**@no__t – 1**Bezárás és**leállítás elemre.
+4. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a jegyzetfüzetet a fürterőforrások felszabadításához: a jegyzetfüzet menüsorában navigáljon a **fájl** >  **Bezárás és**leállítás lehetőségre.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

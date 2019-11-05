@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7c63639eea7176af36593983b08ad0c5213613
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073236"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470655"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Hálózatkezelési megfontolások App Service Environment #
 
@@ -26,8 +26,8 @@ ms.locfileid: "70073236"
 
  Az Azure [app Service Environment][Intro] a Azure app Service üzembe helyezése az Azure Virtual Network (VNet) egyik alhálózatában. Egy App Service-környezethez két központi telepítési típus létezik:
 
-- **Külső**bemutató: Elérhetővé teszi a bevezetés által üzemeltetett alkalmazásokat egy internetes elérésű IP-címen. További információkért lásd: külső betekintő [létrehozása][MakeExternalASE].
-- **ILB**-KIEGÉSZÍTŐ: A VNet belüli IP-címen elérhetővé teszi a bevezetés által üzemeltetett alkalmazásokat. A belső végpont egy belső terheléselosztó (ILB), ezért a rendszer ILB-központnak nevezi. További információkért lásd: [ILB-bekészítés létrehozása és használata][MakeILBASE].
+- **Külső**kisegítő lehetőség: elérhetővé teszi a beadási szolgáltatás által üzemeltetett alkalmazásokat egy internetről elérhető IP-címen. További információkért lásd: külső betekintő [létrehozása][MakeExternalASE].
+- **ILB**-Bevezetés: a VNet-on belüli IP-címen teszi elérhetővé a Bea beszolgáltatott alkalmazásokat. A belső végpont egy belső terheléselosztó (ILB), ezért a rendszer ILB-központnak nevezi. További információkért lásd: [ILB-bekészítés létrehozása és használata][MakeILBASE].
 
 Minden ASE, külső és ILB rendelkezik egy nyilvános virtuális IP-vel, amely a bejövő felügyeleti forgalomhoz és a feladó címéhez van használva, amikor hívásokat kezdeményez az internetre. Az internetre csatlakozó Beérkezők által kezdeményezett hívások elhagyják a VNet a központhoz rendelt VIP-en keresztül. Ennek a VIP-nek a nyilvános IP-címe az a forrás IP-cím, amely az interneten keresztül elérhető, a központból érkező összes hívást megadja. Ha a szolgáltató alkalmazásai a VNet vagy VPN-en keresztül kezdeményeznek erőforrásokat, a forrás IP-cím a szolgáltató által használt alhálózat egyik IP-címe. Mivel a kiegészítő szolgáltatás a VNet belül van, további konfiguráció nélkül is hozzáférhet a VNet belüli erőforrásokhoz. Ha a VNet csatlakoztatva van a helyszíni hálózathoz, akkor a központhoz tartozó alkalmazások további konfigurálás nélkül is hozzáférhetnek az erőforrásokhoz.
 
@@ -49,7 +49,7 @@ Ha rendelkezik ILB-bevezetéssel, akkor a ILB címe a HTTP/S, az FTP/S, a web De
 A bevezetéshez használt alhálózat mérete nem módosítható a bevezetési pont telepítése után.  A kiegészítő csomag az egyes infrastruktúra-szerepkörökhöz, valamint az egyes elkülönített App Service-példányokhoz tartozó címeket használ.  Emellett az Azure Networking minden létrehozott alhálózat esetében öt címet használ.  Egy App Service csomaggal nem rendelkező betekintő szolgáltató 12 címet fog használni az alkalmazások létrehozása előtt.  Ha ez egy ILB, akkor 13 címet fog használni, mielőtt létrehoz egy alkalmazást a kiegészítőben. A bevezetési folyamat felskálázása során az infrastruktúra-szerepköröket az App Service-csomag példányainak 15 és 20 többszöröse adja hozzá.
 
    > [!NOTE]
-   > Semmi más nem lehet az alhálózatban, de a központilag. Ügyeljen arra, hogy olyan címtartományt válasszon, amely lehetővé teszi a jövőbeli növekedést. Ez a beállítás később nem módosítható. A 256- `/24` es címmel rendelkező méretet javasoljuk.
+   > Semmi más nem lehet az alhálózatban, de a központilag. Ügyeljen arra, hogy olyan címtartományt válasszon, amely lehetővé teszi a jövőbeli növekedést. Ez a beállítás később nem módosítható. A 256-es címmel rendelkező `/24` mérete ajánlott.
 
 Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méretű új szerepköröket, majd a számítási feladatokat áttelepíti a jelenlegi méretről a célként megadott méretre. Az eredeti virtuális gépek csak a munkaterhelések áttelepítését követően törlődtek. Ha 100 ASP-példánnyal rendelkező beléptetési ponttal rendelkezett, akkor a virtuális gépek számának megduplázására van szükség.  Ezért javasoljuk, hogy a "/24" használatát az esetlegesen szükséges módosítások elfogadásához használja.  
 
@@ -59,11 +59,11 @@ Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méret�
 
 Ahhoz, hogy a bejelentési funkció működjön, a beadáshoz a következő portok megnyitása szükséges:
 
-| Használat | Forrás | Cél |
+| Használat | Kezdő ár | Művelet |
 |-----|------|----|
 | Kezelés | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
-|  Belső belső kommunikáció | Bekapcsolási alhálózat: Minden port | Bekapcsolási alhálózat: Minden port
-|  Azure Load Balancer bejövő engedélyezése | Azure-terheléselosztó | Bekapcsolási alhálózat: 16001
+|  Belső belső kommunikáció | Bekapcsolási alhálózat: minden port | Bekapcsolási alhálózat: minden port
+|  Azure Load Balancer bejövő engedélyezése | Azure Load Balancer | Bemutató alhálózat: 16001
 
 2 további port is megnyitható a portok vizsgálatához, a 7654-es és a 1221-es porton. Egy IP-címmel válaszolnak, és semmi más nem. Szükség esetén blokkolva lehetnek. 
 
@@ -112,15 +112,15 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 
 ## <a name="portal-dependencies"></a>Portál függőségei ##
 
-A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM_-helyhez való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
+A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
 -   Webes feladatok
--   Funkciók
--   Naplózási streaming
+-   Functions
+-   Naplózási adatfolyam
 -   Kudu
 -   Bővítmények
 -   Process Explorer
--   Konzol
+-   Console
 
 Ha ILB-beadást használ, az SCM-hely nem érhető el a VNet kívülről. Bizonyos funkciók nem fognak működni az alkalmazás-portálon, mert hozzáférést igényelnek egy alkalmazás SCM-helyéhez. A portál használata helyett közvetlenül is csatlakozhat az SCM-webhelyhez. 
 
@@ -130,10 +130,10 @@ Ha a ILB a tartománynév *contoso.appserviceenvironment.net* , és az alkalmaz�
 
 A kiegészítő szolgáltatásnak van néhány IP-címe, amelyről tisztában kell lennie. Ezek a következők:
 
-- **Nyilvános bejövő IP-cím**: Az alkalmazás adatforgalmára szolgál külső benyújtó és felügyeleti forgalomban, valamint egy külső benyújtó és egy ILB.
-- **Kimenő nyilvános IP-cím**: A (z) "from" IP-címe a kimenő kapcsolatok számára a VNet-ből kilépő, nem a VPN-kapcsolaton keresztül.
-- **ILB IP-címe**: A ILB IP-címe csak egy ILB-elővárosban létezik.
-- **Alkalmazáshoz rendelt IP-alapú SSL-címek**: Csak külső beadással lehetséges, és ha az IP-alapú SSL konfigurálva van.
+- **Nyilvános bejövő IP-cím**: az alkalmazás adatforgalmához használatos egy külső beadásban, a felügyeleti forgalom pedig egy külső bemenően és egy ILB-ben is.
+- **Kimenő nyilvános IP-cím**: "from" IP-címként használatos kimenő kapcsolatok esetén a VNet, amely nem a VPN-kapcsolaton keresztül van átirányítva.
+- **ILB IP-címe**: a ILB IP-címe csak a ILB-ben létezik.
+- **Alkalmazáshoz rendelt IP-alapú SSL-címek**: csak külső beadással lehetséges, és ha az IP-alapú SSL konfigurálva van.
 
 Ezek az IP-címek láthatók a Azure Portal a betekintő felhasználói felületen. Ha rendelkezik ILB-elősegítő lehetőséggel, megjelenik a ILB IP-címe.
 
@@ -144,7 +144,7 @@ Ezek az IP-címek láthatók a Azure Portal a betekintő felhasználói felület
 
 ### <a name="app-assigned-ip-addresses"></a>Alkalmazáshoz rendelt IP-címek ###
 
-A külső kiegészítő szolgáltatással IP-címeket rendelhet az egyes alkalmazásokhoz. Ezt nem teheti meg egy ILB-elősegítő lehetőséggel. Az alkalmazás saját IP-címmel történő konfigurálásával kapcsolatos további információkért lásd: [meglévő egyéni SSL-tanúsítvány kötése Azure app Servicehoz](../app-service-web-tutorial-custom-ssl.md).
+A külső kiegészítő szolgáltatással IP-címeket rendelhet az egyes alkalmazásokhoz. Ezt nem teheti meg egy ILB-elősegítő lehetőséggel. Az alkalmazás saját IP-címmel történő konfigurálásával kapcsolatos további információkért lásd: [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure app Serviceban](../configure-ssl-bindings.md).
 
 Ha egy alkalmazás saját IP-alapú SSL-címmel rendelkezik, a beadási osztály két portot rendel az adott IP-címhez. Egy port a HTTP-forgalomhoz, a másik pedig a HTTPS. Ezek a portok az IP-címek szakaszban lévő betekintő felhasználói felületen vannak felsorolva. A forgalomnak képesnek kell lennie a portok elérésére a VIP-címről, vagy az alkalmazások nem érhetők el. Ezt a követelményt fontos megjegyezni a hálózati biztonsági csoportok (NSG) konfigurálásakor.
 
@@ -181,11 +181,11 @@ A DNS-portot nem kell hozzáadni a DNS-be irányuló forgalomhoz, a NSG-szabály
 
 A bejövő és kimenő követelmények figyelembe vételével a NSG az ebben a példában bemutatott NSG hasonlóan kell kinéznie. 
 
-![Bejövő biztonsági szabályok][4]
+![Bejövő biztonsági szabály][4]
 
-Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. A AzureLoadBalancer egyenlő forrást kell használnia, amelynek a rendeltetése a és a **\*** portszáma. Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
+Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. Olyan forrást használjon, amely a AzureLoadBalancer egyenlő, **és** **\*** egy porttartomány. Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
 
-Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza ki **app Service Environment** > **IP-címeket**.  
+Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza **App Service Environment** > **IP-címek**elemet.  
 
 A következő kimenő szabályokban látható összes elemre az utolsó elem kivételével szükség van. Lehetővé teszik a jelen cikk korábbi részében említett, a kiszolgált kapcsolatokhoz való hálózati hozzáférést. Ha letiltja valamelyiket, a kiegészítő szolgáltatás leáll. A lista utolsó eleme lehetővé teszi, hogy a beadás a VNet más erőforrásaival kommunikáljon.
 
@@ -200,7 +200,7 @@ A kényszerített bújtatás akkor történik, amikor útvonalakat állít be a 
 Amikor létrehoz egy bevezetőt a portálon, az útválasztási táblázatokat is létrehozjuk a központból létrehozott alhálózaton.  Ezek az útvonalak egyszerűen csak azt mondják, hogy közvetlenül az internetre küldi a kimenő forgalmat.  
 Ha ugyanazt az útvonalat manuálisan szeretné létrehozni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Azure Portalt. Válassza a **hálózati** > **útválasztási táblák**lehetőséget.
+1. Nyissa meg az Azure Portalt. Válassza a **hálózatkezelés** > **útválasztási táblák**elemet.
 
 2. Hozzon létre egy új útválasztási táblázatot a VNet megegyező régióban.
 
@@ -251,7 +251,7 @@ Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal re
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

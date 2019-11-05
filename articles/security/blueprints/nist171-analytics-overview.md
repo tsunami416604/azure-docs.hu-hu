@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2bd2510b3b7aa72ac5e66ac9910f1c941f276564
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 0bed9f96ce04fae313672f2fa627c2e20bea2f6f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259898"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496412"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure Security and Compliance Blueprint – adatelemzés a NIST SP 800-171-hez
 
@@ -27,7 +27,7 @@ Ez a hivatkozási architektúra, a társított megvalósítási útmutató és a
 ## <a name="architecture-diagram-and-components"></a>Architektúra ábrája és összetevői
 Ez a megoldás egy elemzési platformot biztosít, amely alapján az ügyfelek létrehozhatják saját elemzési eszközeiket. A hivatkozási architektúra egy általános használati esetet vázol fel. Az ügyfelek az SQL/adatok rendszergazdája által a tömeges adatimportálások segítségével vihetik be az adatokat. Azt is felhasználhatják, hogy operatív adatokon keresztül adatokat adjanak az adatokhoz egy operatív felhasználó használatával. Mindkét workstreams belefoglalja Azure Functions az adatAzure SQL Databaseba való importáláshoz. A Azure Functionst az ügyfélnek kell konfigurálnia az Azure Portal segítségével, hogy az importálási feladatokat az ügyfél elemzési követelményeinek megfelelően kezelje.
 
-Az Azure számos jelentéskészítési és elemzési szolgáltatást kínál az ügyfelek számára. Ez a megoldás Azure Machine Learning-szolgáltatásokat használ, és SQL Database gyorsan böngészhet az adatkeresésen keresztül, és gyorsabb eredményeket biztosít az adatelemzések révén. Machine Learning a lekérdezések sebességének növelésére szolgál az adathalmazok közötti új kapcsolatok felfedezésével. Kezdetben az adatok több statisztikai funkcióval vannak betanítva. Ezt követően akár hét további lekérdezési készlet is szinkronizálható ugyanazzal a táblázatos modellekkel a lekérdezési munkaterhelés elosztása és a válaszadási idő csökkentése érdekében. Az ügyfél-kiszolgáló a lekérdezési készletek teljes számát nyolcra hozza.
+Az Azure számos jelentéskészítési és elemzési szolgáltatást kínál az ügyfelek számára. Ez a megoldás a Azure Machine Learning és SQL Database használatával gyorsan böngészhet az adatkeresésen, és gyorsabb eredményeket biztosít az adatmodellezési szolgáltatásokon keresztül. Machine Learning a lekérdezések sebességének növelésére szolgál az adathalmazok közötti új kapcsolatok felfedezésével. Kezdetben az adatok több statisztikai funkcióval vannak betanítva. Ezt követően akár hét további lekérdezési készlet is szinkronizálható ugyanazzal a táblázatos modellekkel a lekérdezési munkaterhelés elosztása és a válaszadási idő csökkentése érdekében. Az ügyfél-kiszolgáló a lekérdezési készletek teljes számát nyolcra hozza.
 
 A továbbfejlesztett elemzési és jelentéskészítési szolgáltatáshoz a SQL Database is konfigurálható az oszlopok tárolására szolgáló indexekkel. A Machine Learning és az SQL Database az ügyfelek általi használatra adott válaszként felfelé vagy lefelé is méretezhető. Az összes SQL-forgalom SSL-titkosítással rendelkezik az önaláírt tanúsítványok belefoglalásával. Ajánlott eljárásként javasoljuk, hogy használjon megbízható hitelesítésszolgáltatót a fokozott biztonság érdekében.
 
@@ -64,18 +64,18 @@ Ez a megoldás az alábbi Azure-szolgáltatásokat használja. További informá
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúra
 A következő szakasz az üzembe helyezési és megvalósítási elemeket részletezi.
 
-**Azure Event Grid**: A [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)segítségével az ügyfelek könnyedén készíthetnek alkalmazásokat az eseményvezérelt architektúrákkal. A felhasználók kiválaszthatják azt az Azure-erőforrást, amelyre előfizethetnek. Ezután egy végpontot adnak az eseménykezelőnek vagy a webhooknak, hogy elküldjék az eseményt. Az ügyfelek az esemény-előfizetések létrehozásakor is biztonságossá tehetik a webhook-végpontokat, ha lekérdezési paramétereket adnak hozzá a webhook URL-címéhez. A Event Grid csak a HTTPS-alapú webhook-végpontokat támogatja. A Event Grid segítségével az ügyfelek különböző felügyeleti műveleteket végezhetnek a különböző felhasználók számára megadott hozzáférési szint szabályozásához. A felhasználók listázhatja az esemény-előfizetéseket, újakat hozhat létre, és kulcsokat állíthat elő. Event Grid az Azure RBAC használja.
+**Azure Event Grid**: a [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)segítségével az ügyfelek könnyedén hozhatnak létre alkalmazásokat eseményvezérelt architektúrákkal. A felhasználók kiválaszthatják azt az Azure-erőforrást, amelyre előfizethetnek. Ezután egy végpontot adnak az eseménykezelőnek vagy a webhooknak, hogy elküldjék az eseményt. Az ügyfelek az esemény-előfizetések létrehozásakor is biztonságossá tehetik a webhook-végpontokat, ha lekérdezési paramétereket adnak hozzá a webhook URL-címéhez. A Event Grid csak a HTTPS-alapú webhook-végpontokat támogatja. A Event Grid segítségével az ügyfelek különböző felügyeleti műveleteket végezhetnek a különböző felhasználók számára megadott hozzáférési szint szabályozásához. A felhasználók listázhatja az esemény-előfizetéseket, újakat hozhat létre, és kulcsokat állíthat elő. Event Grid az Azure RBAC használja.
 
-**Azure functions**: [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) egy kiszolgáló nélküli számítási szolgáltatás, amely igény szerinti kódot futtat. Nem kell explicit módon kiépíteni vagy kezelni az infrastruktúrát. Az Azure Functions használatával különféle eseményekre reagálva futtathat szkripteket vagy kódrészleteket.
+**Azure functions**: a [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) egy kiszolgáló nélküli számítási szolgáltatás, amely igény szerinti kódot futtat. Nem kell explicit módon kiépíteni vagy kezelni az infrastruktúrát. Az Azure Functions használatával különféle eseményekre reagálva futtathat szkripteket vagy kódrészleteket.
 
-**Azure Machine learning szolgáltatás**: A [Machine learning](https://docs.microsoft.com/azure/machine-learning/service/) egy adatelemzési módszer, amely lehetővé teszi a számítógépek számára a meglévő adatelemzések használatát a jövőbeli viselkedések, eredmények és trendek előrejelzéséhez.
+**Azure Machine learning**: a [Machine learning](https://docs.microsoft.com/azure/machine-learning/service/) egy adatelemzési módszer, amely lehetővé teszi a számítógépek számára a meglévő adatelemzések használatát a jövőbeli viselkedések, eredmények és trendek előrejelzéséhez.
 
-**Azure Data Catalog**: A [Data Catalog](../../data-catalog/overview.md) megkönnyíti az adatforrások felderítését és értelmezését az azokat kezelő felhasználók számára. Az általános adatforrások regisztrálása, címkézése és adatkeresése is lehetséges. Az adatok a meglévő helyükön maradnak, de a metaadatok másolata Data Catalogba kerül. A rendszer az adatforrásra mutató hivatkozást tartalmaz. A metaadatok indexelve vannak, hogy minden adatforrás könnyen felderíthető legyen a keresésen keresztül. Az indexelés azt is lehetővé teszi, hogy a felhasználók megértsék a felderített felhasználókat.
+**Azure Data Catalog**: a [Data Catalog](../../data-catalog/overview.md) az adatforrásokat könnyen felderítheti és értelmezheti az adatkezelő felhasználók számára. Az általános adatforrások regisztrálása, címkézése és adatkeresése is lehetséges. Az adatok a meglévő helyükön maradnak, de a metaadatok másolata Data Catalogba kerül. A rendszer az adatforrásra mutató hivatkozást tartalmaz. A metaadatok indexelve vannak, hogy minden adatforrás könnyen felderíthető legyen a keresésen keresztül. Az indexelés azt is lehetővé teszi, hogy a felhasználók megértsék a felderített felhasználókat.
 
 ### <a name="virtual-network"></a>Virtuális hálózat
 Ez a hivatkozási architektúra a 10.0.0.0/16 címtartomány szerinti magánhálózati virtuális hálózatot definiálja.
 
-**Hálózati biztonsági csoportok**: [Hálózati biztonsági csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md) A (NSG) olyan hozzáférés-vezérlési listát tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a virtuális hálózaton belül. A NSG használatával biztonságossá teheti a forgalmat egy alhálózaton vagy egy virtuális gép szintjén. A következő NSG léteznek:
+**Hálózati biztonsági csoportok**: a [hálózati biztonsági csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md) (NSG-EK) olyan hozzáférés-vezérlési listát tartalmaznak, amelyek engedélyezik vagy megtagadják a forgalmat a virtuális hálózaton belül. A NSG használatával biztonságossá teheti a forgalmat egy alhálózaton vagy egy virtuális gép szintjén. A következő NSG léteznek:
   - Active Directory NSG
   - A munkaterhelés NSG
 
@@ -83,20 +83,20 @@ A NSG minden egyes portja és protokollja nyitva van, hogy a megoldás biztonsá
   - A [diagnosztikai naplók és események](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) engedélyezve vannak, és Storage-fiókban tárolódnak
   - Azure Monitor naplók a [NSG diagnosztikaához](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) csatlakoznak
 
-Alhálózatok: Minden alhálózat társítva van a hozzá tartozó NSG.
+**Alhálózatok**: minden alhálózat társítva van a hozzá tartozó NSG.
 
 ### <a name="data-in-transit"></a>Átvitt adatok
 Az Azure alapértelmezés szerint titkosítja az Azure-adatközpontok felé irányuló és onnan érkező összes kommunikációt. A Azure Portal a Storage-ba irányuló összes tranzakció HTTPS-n keresztül történik.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 
 Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel védi a nyugalmi állapotban lévő adatok védelmét.
 
-**Azure Storage**: A titkosított adatokra vonatkozó követelmények teljesítése érdekében az [](https://azure.microsoft.com/services/storage/) összes tárterület [Storage Service Encryptiont](../../storage/common/storage-service-encryption.md)használ. Ez a szolgáltatás segít megvédeni és megőrizni az adatvédelmet a NIST SP 800-171 által meghatározott szervezeti biztonsági kötelezettségvállalások és megfelelőségi követelmények támogatásával.
+**Azure Storage**: a titkosított adatokra vonatkozó követelmények teljesítése érdekében az [](https://azure.microsoft.com/services/storage/) összes tárterület [Storage Service encryption](../../storage/common/storage-service-encryption.md)használ. Ez a szolgáltatás segít megvédeni és megőrizni az adatvédelmet a NIST SP 800-171 által meghatározott szervezeti biztonsági kötelezettségvállalások és megfelelőségi követelmények támogatásával.
 
-**Azure Disk Encryption**: A [lemezes titkosítás](../azure-security-disk-encryption-overview.md) a Windows BitLocker szolgáltatásával biztosítja az adatlemezek mennyiségi titkosítását. A megoldás integrálva van Azure Key Vaultekkel a lemezes titkosítási kulcsok szabályozása és kezelése érdekében.
+**Azure Disk Encryption**: a [lemez titkosítása](../azure-security-disk-encryption-overview.md) a Windows BitLocker szolgáltatásával biztosítja az adatlemezek mennyiségi titkosítását. A megoldás integrálva van Azure Key Vaultekkel a lemezes titkosítási kulcsok szabályozása és kezelése érdekében.
 
-**Azure SQL Database**: A SQL Database példány a következő adatbázis-biztonsági mértékeket használja:
+**Azure SQL Database**: a SQL Database-példány a következő adatbázis-biztonsági mértékeket használja:
 -   [Active Directory a hitelesítés és az engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) lehetővé teszi az adatbázis-felhasználók és más Microsoft-szolgáltatások Identitáskezelés kezelését egy központi helyen.
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A SQL Database [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatára van konfigurálva. A szolgáltatás valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok között, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem vonatkoznak a jogosulatlan hozzáférésre.
@@ -114,7 +114,7 @@ Az alábbi technológiák az Azure-környezetben tárolt adathozzáférések kez
 -   [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) észleli a szervezet identitásait érintő lehetséges biztonsági réseket. Automatikus válaszokat konfigurál a szervezet identitásával kapcsolatos gyanús műveletek észlelésére. Emellett a gyanús incidenseket is megvizsgálja, hogy megfelelő lépéseket tegyenek a megoldásához.
 
 ### <a name="security"></a>Biztonság
-**Titkok kezelése**: A megoldás a kulcsok és titkok kezeléséhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) használ. Key Vault segít megőrizni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Az alábbi Key Vault-képességek segítenek az ügyfeleknek az adatvédelemben:
+**Titkok kezelése**: a megoldás [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) használ a kulcsok és titkok kezeléséhez. Key Vault segít megőrizni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Az alábbi Key Vault-képességek segítenek az ügyfeleknek az adatvédelemben:
 - A speciális hozzáférési szabályzatok a szükséges módon vannak konfigurálva.
 - Key Vault hozzáférési házirendek minimálisan szükséges engedélyekkel vannak definiálva a kulcsokhoz és a titkokhoz.
 - Key Vault összes kulcsának és titkának lejárati dátuma van.
@@ -123,7 +123,7 @@ Az alábbi technológiák az Azure-környezetben tárolt adathozzáférések kez
 - Key Vault diagnosztikai naplói legalább 365 napos megőrzési időtartammal engedélyezettek.
 - A kulcsok számára engedélyezett titkosítási műveletek csak a szükségesek.
 
-**Azure Security Center**: A [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)segítségével az ügyfelek központilag alkalmazhatják és kezelhetik a munkaterhelések biztonsági szabályzatait, korlátozhatja a fenyegetéseket, és észlelheti és reagálhat a támadásokra. Security Center az Azure-szolgáltatások meglévő konfigurációit is elérheti, hogy konfigurációs és szolgáltatási javaslatokat nyújtson a biztonsági helyzetek és az adatvédelem javításához.
+**Azure Security Center**: a [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)segítségével az ügyfelek központilag alkalmazhatják és kezelhetik a biztonsági házirendeket a számítási feladatokban, korlátozhatja a fenyegetéseket, és észlelheti és reagálhat a támadásokra. Security Center az Azure-szolgáltatások meglévő konfigurációit is elérheti, hogy konfigurációs és szolgáltatási javaslatokat nyújtson a biztonsági helyzetek és az adatvédelem javításához.
 
  Security Center különböző észlelési képességekkel figyelmezteti az ügyfeleket a környezetét célba vevő lehetséges támadásokra. Ezek a riasztások értékes információkat tartalmaznak arról, hogy mi váltotta ki a riasztást, valamint a támadás forrásáról és az általa célba vett erőforrásokról. A Security Center [előre meghatározott biztonsági riasztásokat](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) tartalmaz, amelyek akkor aktiválódnak, ha fenyegetés vagy gyanús tevékenység zajlik. Az ügyfelek [Egyéni riasztási szabályok](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) segítségével meghatározhatnak új biztonsági riasztásokat a környezetből már összegyűjtött adatok alapján.
 
@@ -132,22 +132,22 @@ Az alábbi technológiák az Azure-környezetben tárolt adathozzáférések kez
 ### <a name="logging-and-auditing"></a>Naplózás
 
 Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
-- **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, a tárolási naplókat, a Key Vault a naplókat, valamint az Azure Application Gateway hozzáférés-és tűzfal-naplókat tartalmazzák. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
+- **Tevékenységnaplók**: a [Tevékenységnaplók](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
+- **Diagnosztikai naplók**: a [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) a minden erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, a tárolási naplókat, a Key Vault a naplókat, valamint az Azure Application Gateway hozzáférés-és tűzfal-naplókat tartalmazzák. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
 
-**Naplók Azure monitor**: A naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer külön táblákba rendezi az adattípusokat Log Analytics munkaterületeken belül. Így az összes adatforrás együtt is elemezhető, az eredeti forrásától függetlenül. A Security Center Azure Monitor-naplókkal integrálódik. Az ügyfelek használhatnak Kusto-lekérdezéseket a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
+**Azure monitor naplók**: a rendszer a naplókat a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer külön táblákba rendezi az adattípusokat Log Analytics munkaterületeken belül. Így az összes adatforrás együtt is elemezhető, az eredeti forrásától függetlenül. A Security Center Azure Monitor-naplókkal integrálódik. Az ügyfelek használhatnak Kusto-lekérdezéseket a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
 Az architektúra részeként az alábbi Azure- [figyelési megoldások](../../monitoring/monitoring-solutions.md) szerepelnek:
--   [Active Directory értékelés](../../azure-monitor/insights/ad-assessment.md): A Active Directory Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát. A szolgáltatás a központilag telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza.
-- [SQL-értékelés](../../azure-monitor/insights/sql-assessment.md): Az SQL Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát. Az ügyfelek számára az üzembe helyezett kiszolgálói infrastruktúrára jellemző ajánlások rangsorolt listáját kínálja.
-- [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): A Agent Health-megoldás azt jelenti, hogy hány ügynök van üzembe helyezve és a földrajzi eloszlása. Azt is jelenti, hogy hány ügynök nem válaszol, és az operatív adatküldő ügynökök száma.
--   [Activity log Analytics](../../azure-monitor/platform/collect-activity-logs.md): Az Activity Log Analytics-megoldás segítséget nyújt az Azure-tevékenységek naplóinak elemzéséhez az ügyfelek összes Azure-előfizetése között.
+-   [Active Directory Assessment](../../azure-monitor/insights/ad-assessment.md): az Active Directory Health ellenőrzési megoldás rendszeres időközönként értékeli a kiszolgálói környezetek kockázatait és állapotát. A szolgáltatás a központilag telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza.
+- [SQL Assessment](../../azure-monitor/insights/sql-assessment.md): az SQL Health-ellenőrzési megoldás rendszeres időközönként értékeli a kiszolgálói környezetek kockázatait és állapotát. Az ügyfelek számára az üzembe helyezett kiszolgálói infrastruktúrára jellemző ajánlások rangsorolt listáját kínálja.
+- [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): a Agent Health-megoldás azt jelenti, hogy hány ügynök van üzembe helyezve és a földrajzi eloszlása. Azt is jelenti, hogy hány ügynök nem válaszol, és az operatív adatküldő ügynökök száma.
+-   [Activity log Analytics](../../azure-monitor/platform/collect-activity-logs.md): a Activity log Analytics megoldás segítséget nyújt az Azure-tevékenységek naplóinak elemzésében az ügyfelekhez tartozó összes Azure-előfizetésen belül.
 
-**Azure Automation**: Az [Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) tárolja, futtatja és felügyeli a runbookok. Ebben a megoldásban a runbookok segítséget nyújt a naplók SQL Databaseból való gyűjtésében. Az Automation [change Tracking](../../automation/change-tracking.md) megoldás segítségével könnyedén azonosíthatja a környezet változásait.
+**Azure Automation**: az [Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) tárolja, futtatja és felügyeli a runbookok. Ebben a megoldásban a runbookok segítséget nyújt a naplók SQL Databaseból való gyűjtésében. Az Automation [change Tracking](../../automation/change-tracking.md) megoldás segítségével könnyedén azonosíthatja a környezet változásait.
 
-**Azure monitor**: A [figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény nyomon követésében, a biztonság fenntartásában és a trendek felismerésében. A szervezetek felhasználhatják a naplózásra, a riasztások létrehozására és az adatok archiválására. Emellett az Azure-erőforrásokban is nyomon követhetik az API-hívásokat.
+**Azure monitor**: a [monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segítségével a felhasználók nyomon követhetik a teljesítményt, kezelhetik a biztonságot, és azonosíthatják a trendeket. A szervezetek felhasználhatják a naplózásra, a riasztások létrehozására és az adatok archiválására. Emellett az Azure-erőforrásokban is nyomon követhetik az API-hívásokat.
 
-**Application Insights**: A [Application Insights](https://docs.microsoft.com/azure/application-insights/) egy bővíthető Application Performance Management szolgáltatás a webes fejlesztők számára több platformon. Észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz. Az eszközök segítenek diagnosztizálni a problémákat, és segítenek az ügyfeleknek megérteni, hogy mit csinálnak a felhasználók az alkalmazással. A szolgáltatás úgy lett kialakítva, hogy a felhasználók folyamatosan javítsák a teljesítményt és a használhatóságot.
+**Application Insights**: a [Application Insights](https://docs.microsoft.com/azure/application-insights/) egy bővíthető Application Performance Management szolgáltatás a webes fejlesztők számára több platformon. Észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz. Az eszközök segítenek diagnosztizálni a problémákat, és segítenek az ügyfeleknek megérteni, hogy mit csinálnak a felhasználók az alkalmazással. A szolgáltatás úgy lett kialakítva, hogy a felhasználók folyamatosan javítsák a teljesítményt és a használhatóságot.
 
 ## <a name="threat-model"></a>Veszélyforrások modellje
 

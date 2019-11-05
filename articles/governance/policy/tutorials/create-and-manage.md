@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 43d39039d01b22e7d918755e9557d6a1030ef7a8
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d01a28e1b4cbd9b2dacef8059d46ea72e789094d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302856"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490444"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 
@@ -29,9 +29,9 @@ Ha szeretne hozzárendelni egy szabályzatot a meglévő erőforrások aktuális
 
 A megfelelőség Azure Policy használatával történő kikényszerítésének első lépése egy szabályzatdefiníció hozzárendelése. A szabályzatdefiníció határozza meg, hogy milyen feltétel teljesülése esetében lesz kikényszerítve a szabályzat, illetve milyen hatása lesz. Ebben a példában rendeljen hozzá egy, *Az SQL Server 12.0-s verziójának megkövetelése* nevű beépített szabályzatdefiníciót. Ezzel kikényszeríti azt a feltételt, hogy minden SQL Server-adatbázisnak 12.0-s verziójúnak kell lennie ahhoz, hogy teljesüljenek a megfelelőségi elvárások.
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+1. A házirendek hozzárendeléséhez lépjen a Azure Portal. Keresse meg és válassza ki a **szabályzatot**.
 
-   ![Szabályzat keresése az összes szolgáltatásban](../media/create-and-manage/search-policy.png)
+   ![Házirend keresése a keresősávban](../media/create-and-manage/search-policy.png)
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
@@ -41,7 +41,7 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
    ![Házirend-definíció hozzárendelése a hozzárendelések lapról](../media/create-and-manage/select-assign-policy.png)
 
-1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
+1. A **házirend kiosztása** lapon jelölje ki a **hatókört** a három pontot kiválasztva, majd válasszon ki egy felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután válassza a **kijelölés** elemet a **hatókör** lap alján.
 
    Ebben a példában a **Contoso** előfizetést használjuk. Saját előfizetése ettől eltérhet.
 
@@ -49,16 +49,16 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
 1. Kattintson a **Szabályzatdefiníció** melletti három pontra az elérhető definíciók listájának megjelenítéséhez. A szabályzatdefiníció **Típus** tulajdonságát szűrheti *Beépített* érték alapján az összes megtekintéséhez és a leírásaik elolvasásához.
 
-1. Válassza **Az SQL Server 12.0-s verziójának megkövetelése** lehetőséget. Ha nem találja meg azonnal, írja be az **SQL Server megkövetelése** a keresőmezőbe kifejezést, majd nyomja le az ENTER billentyűt, vagy kattintson a keresőmezőbe. Ha megtalálta és kijelölte a szabályzatdefiníciót, kattintson a **Kiválasztás** gombra az **Elérhető definíciók** oldal alján.
+1. Válassza **Az SQL Server 12.0-s verziójának megkövetelése** lehetőséget. Ha nem találja meg azonnal, írja be az **SQL Server megkövetelése** kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt, vagy válasszon ki a keresőmezőbe. Ha megtalálta és kiválasztotta a házirend-definíciót, válassza az **elérhető definíciók** lap alján található **Kiválasztás lehetőséget** .
 
    ![Keresési szűrő használata házirend megkereséséhez](../media/create-and-manage/select-available-definition.png)
 
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. Ebben a példában tartsa meg *Az SQL Server 12.0-s verziójának megkövetelése* nevet. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.
-   A **hozzárendelt** érték automatikusan ki van töltve a bejelentkezett felhasználó alapján. A mező kitöltése nem kötelező, megadhatók egyéni értékek.
+   A **hozzárendelt** érték automatikusan ki van töltve a bejelentkezett felhasználó alapján. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
-1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan házirendet tartalmaz, amely [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatással van. Mivel az oktatóanyaghoz használt szabályzat nem, hagyja üresen. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan házirendet tartalmaz, amely [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatással van. Mivel az oktatóanyaghoz használt szabályzat nem, hagyja üresen. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Kattintson a **Hozzárendelés** gombra.
+1. Válassza a **Hozzárendelés** elemet.
 
 ## <a name="implement-a-new-custom-policy"></a>Új egyéni szabályzat megvalósítása
 
@@ -340,7 +340,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. A **Kategória** megadásakor válasszon a meglévő lehetőségek közül, vagy hozzon létre új kategóriát.
 
-1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. A **Biztonságossá tétel** kezdeményezéshez adja hozzá az alábbi beépített szabályzatdefiníciókat a szabályzatdefiníció részletei mellett látható **+** gombra kattintva, vagy kattintson a szabályzatdefiníció sorára, majd a **+ Hozzáadás** lehetőségre a részleteket tartalmazó oldalon:
+1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. A **biztonságos** kezdeményezéshez adja hozzá a következő beépített szabályzat-definíciókat a házirend-definíciós információk melletti **+** kiválasztásával, majd a Részletek lapon a **+ Hozzáadás** lehetőség kiválasztásával:
 
    - Az SQL Server 12.0-ás verziójának megkövetelése
    - [Preview]: Monitor unprotected web applications in Security Center.
@@ -357,19 +357,19 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    ![Kezdeményezési definíció paramétereinek módosítása az engedélyezett értékekről](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
-   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Erre kattintva megjelenik a „Paraméter hatóköre (&lt;paraméter neve&gt;)” oldal. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
+   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Ha kiválasztja, megnyílik a "paraméter hatóköre (&lt;paraméter neve&gt;)" oldal. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="assign-an-initiative-definition"></a>Kezdeményezési definíció hozzárendelése
 
 1. A **Létrehozás** területen válassza a **Definíciók** elemet az Azure Policy lap bal oldalán.
 
-1. Keresse meg a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót, és kattintson rá. Kattintson az oldal tetején található **Hozzárendelés** lehetőségre a **Biztonságossá tétel: kezdeményezés hozzárendelése** oldal megnyitásához.
+1. Keresse meg és válassza ki a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót. Kattintson az oldal tetején található **Hozzárendelés** lehetőségre a **Biztonságossá tétel: kezdeményezés hozzárendelése** oldal megnyitásához.
 
    ![Definíció társítása a kezdeményezési definíciós lapról](../media/create-and-manage/assign-definition.png)
 
-   Azt is megteheti, hogy a jobb gombbal a kijelölt sorra kattint, vagy a sor végén lévő három pontra kattint a helyi menüben. Ott válassza a **Hozzárendelés** parancsot.
+   Azt is megteheti, hogy a jobb gombbal a kijelölt sorra kattint, vagy kiválasztja a sor végén található három pontot a helyi menühöz. Ott válassza a **Hozzárendelés** parancsot.
 
    ![A kezdeményezés alternatív lehetőségei](../media/create-and-manage/select-right-click.png)
 
@@ -380,26 +380,26 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    - Kizárások: a hatókörön belül bármely erőforrást konfigurálhatja úgy, hogy a kezdeményezési hozzárendelés ne legyen alkalmazva rá.
    - Kezdeményezési definíció és hozzárendelés neve: Biztonságossá tétel (a rendszer automatikusan a hozzárendelt kezdeményezés nevével tölti fel a mezőt).
    - Leírás: Ez a kezdeményezési hozzárendelés ennek a szabályzatdefiníció-csoportnak a kikényszerítésére lett létrehozva.
-   - Hozzárendelte: A kitöltése automatikus az éppen bejelentkezett felhasználó alapján. A mező kitöltése nem kötelező, megadhatók egyéni értékek.
+   - Hozzárendelte: A kitöltése automatikus az éppen bejelentkezett felhasználó alapján. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
-1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan házirendet tartalmaz, amely [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatással van. Mivel az oktatóanyaghoz használt szabályzat nem, hagyja üresen. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan házirendet tartalmaz, amely [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatással van. Mivel az oktatóanyaghoz használt szabályzat nem, hagyja üresen. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Kattintson a **Hozzárendelés** gombra.
+1. Válassza a **Hozzárendelés** elemet.
 
 ## <a name="check-initial-compliance"></a>Kezdeti megfelelőség ellenőrzése
 
 1. Válassza a **Megfelelőség** lehetőséget az Azure Policy lap bal oldalán.
 
 1. Keresse meg a **biztonságos** kezdeményezést. Valószínűleg továbbra is a **nem indult el** _megfelelőségi állapotban_ van.
-   Kattintson a kezdeményezésre a hozzárendelés előrehaladására vonatkozó részletes információkért.
+   Válassza ki a kezdeményezést, amely részletesen ismerteti a hozzárendelés előrehaladását.
 
    ![Kezdeményezés megfelelőségi lapja – nem indított értékelések](../media/create-and-manage/compliance-status-not-started.png)
 
-1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a **Megfelelő** _Megfelelőségi állapottal_.
+1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a _Megfelelő_ **Megfelelőségi állapottal**.
 
    ![Kezdeményezési megfelelőség lap – az erőforrások megfelelőek](../media/create-and-manage/compliance-status-compliant.png)
 
-1. Ha rákattint bármelyik szabályzatra a kezdeményezés megfelelősége lapon, akkor megnyílik a megfelelőség részletei lap a szabályzathoz. Ez a lap az erőforrás szintjén tartalmaz részleteket a megfelelőséghez.
+1. Ha a kezdeményezés megfelelősége lapon a szabályzatra kattint, megnyílik a szabályzat megfelelőségi részletek lapja. Ez a lap az erőforrás szintjén tartalmaz részleteket a megfelelőséghez.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Nem megfelelő vagy elutasított erőforrás mentesítése Kizárás használatával
 
@@ -408,11 +408,12 @@ A következő példában bármely SQL-kiszolgálóverzió megengedett egyetlen e
 
 A hozzárendelt házirend vagy kezdeményezés által meggátolt központi telepítést két helyen lehet megtekinteni:
 
-- A központi telepítés által megnevezett erőforráscsoport esetében: válassza a **központi telepítések** lehetőséget az oldal bal oldalán, majd kattintson a sikertelen telepítés **központi telepítési nevére** . Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. Az erőforrást megtagadó házirend vagy kezdeményezés és hozzárendelés meghatározásához kattintson a **sikertelen gombra. Kattintson ide a részletekért – >** a központi telepítés áttekintése lapon. A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. A **hiba részletei** szakaszban a kapcsolódó házirend-objektumok GUID azonosítói láthatók.
+- Az üzemelő példány által megnevezett erőforráscsoport esetében: válassza a **központi telepítés** lehetőséget a lap bal oldalán, majd válassza ki a sikertelen központi telepítés **központi telepítési nevét** . Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. Az erőforrást megtagadó házirend vagy kezdeményezés és hozzárendelés meghatározásához válassza a **sikertelen lehetőséget. Kattintson ide a részletekért – >** a központi telepítés áttekintése lapon.
+  A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. A **hiba részletei** szakaszban a kapcsolódó házirend-objektumok GUID azonosítói láthatók.
 
   ![Szabályzat-hozzárendelés által elutasított üzembe helyezés](../media/create-and-manage/rg-deployment-denied.png)
 
-- Az Azure Policy oldalon: Az oldal bal oldalán válassza a **Megfelelőség** elemet, és kattintson **Az SQL Server 12.0-s verziójának megkövetelése** szabályzatra. A megnyíló oldalon látni fogja, hogy nőtt a **Megtagadás** értéke. Az **események** lapon azt is láthatja, hogy ki próbálta meg a házirend által megtagadott telepítést.
+- A Azure Policy oldalon: válassza a **megfelelőség** lehetőséget az oldal bal oldalán, és válassza a **SQL Server 12,0-es verziójának megkövetelése** házirendet. A megnyíló oldalon látni fogja, hogy nőtt a **Megtagadás** értéke. Az **események** lapon azt is láthatja, hogy ki próbálta meg a házirend által megtagadott telepítést.
 
   ![Hozzárendelt szabályzatok megfelelőségének áttekintése](../media/create-and-manage/compliance-overview.png)
 
@@ -424,14 +425,14 @@ Ebben a példában a Trent Baker, az egyik contoso SR. Virtualization specialist
 
 1. Tallózzon az összes szabályzat-hozzárendelés között, majd nyissa meg az *Az SQL Server 12.0-ás verziójának megkövetelése* hozzárendelést.
 
-1. A **Kizárás** beállításához kattintson a három pontra, majd válassza ki a kizárni kívánt erőforráscsoportot, ami ebben a példában az *SQLServers_Excluded*.
+1. Állítsa be a **kizárást** úgy, hogy kiválasztja a három pontot, és kiválasztja a kizárni kívánt erőforráscsoportot, *SQLServers_Excluded* ebben a példában.
 
    ![Kizárt erőforráscsoport hozzáadása a szabályzat-hozzárendeléshez](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > A szabályzattól és annak hatásától függően a kizárás vonatkozhat a hozzárendelés hatókörén belül található erőforráscsoportok egyes erőforrásaira is. Mivel az oktatóanyagban egy **Megtagadás** hatást alkalmaztunk, nem lenne értelme kizárást beállítani egy már létező erőforrásra.
 
-1. Kattintson a **Kiválasztás**, majd a **Mentés** gombra.
+1. Válassza a **kijelölés** lehetőséget, majd válassza a **Mentés**lehetőséget.
 
 Ebben a szakaszban megoldotta a megtagadott kérelmet úgy, hogy egyetlen erőforráscsoport számára létrehoz egy kizárást.
 
@@ -445,7 +446,7 @@ Ha végzett az oktatóanyag erőforrásainak használatával, a következő lép
 
 1. Kattintson a jobb gombbal a sorra, vagy a bal gombbal a definíció (vagy a hozzárendelés) mellett található három pontra, majd a **Definíció törlése** (vagy a **Hozzárendelés törlése**) parancsra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 

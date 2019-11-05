@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag Apache Spark strukturált streaming Apache Kafka – Azure HDInsight
+title: 'Oktatóanyag: Apache Spark streaming & Apache Kafka – Azure HDInsight'
 description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban egy Jupyter notebookkal streamelünk adatokat a Spark on HDInsightból.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: db2174451f01ef38dc69e4e14561175203e075c3
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264267"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494371"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
@@ -88,13 +88,13 @@ kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
 
 Mindkét kódrészlet a Kafkából olvassa be az adatokat, majd fájlba írja azokat. A két példa közötti különbségek:
 
-| Batch | Folyamatos átvitel |
+| Batch | Streamelés |
 | --- | --- |
 | `read` | `readStream` |
 | `write` | `writeStream` |
 | `save` | `start` |
 
-Az adatfolyam-továbbítási művelet a `awaitTermination(30000)` értéket is használja, amely 30 000 MS után leállítja az adatfolyamot.
+A folyamatos átviteli művelet `awaitTermination(30000)`is használ, ami leállítja az adatfolyamot a 30 000 MS után.
 
 A strukturált streamelés a Kafkával való használatához a projektnek függőségi viszonyban kell lennie az `org.apache.spark : spark-sql-kafka-0-10_2.11` csomaggal. A csomag verziójának egyeznie kell a Spark on HDInsight verziójával. A Spark 2.2.0 (ez a HDInsight 3.6 verzióján érhető el) esetében a különböző projekttípusokra vonatkozó függőségek adatait a következő helyen találja: [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
 
@@ -140,7 +140,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
 2. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | --- | --- |
     | Előfizetés | Az Azure-előfizetése |
     | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
@@ -165,7 +165,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
 Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Kafka on HDInsight. A szolgáltatás a New York City által biztosított taxis utakon tárolt információk alapján működik.  A jegyzetfüzet által használt adatkészletből [2016 zöld taxis adat](https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb)található.
 
-1. A gazdagép adatainak összegyűjtése. A következő curl-és [jQ](https://stedolan.github.io/jq/) -parancsok használatával szerezheti be a Kafka-ZooKeeper és a közvetítő gazdagépeit. A parancsok Windows-parancssorhoz készültek, és más környezetekben kisebb eltérésekre lesz szükség. Cserélje le a `KafkaCluster` értéket a Kafka-fürt nevére, és `KafkaPassword` a fürt bejelentkezési jelszavával. Továbbá cserélje le a `C:\HDI\jq-win64.exe` értéket a jQ-telepítés tényleges elérési útjára. Adja meg a parancsokat egy Windows-parancssorban, és mentse a kimenetet a későbbi lépésekben való használatra.
+1. A gazdagép adatainak összegyűjtése. A következő curl-és [jQ](https://stedolan.github.io/jq/) -parancsok használatával szerezheti be a Kafka-ZooKeeper és a közvetítő gazdagépeit. A parancsok Windows-parancssorhoz készültek, és más környezetekben kisebb eltérésekre lesz szükség. Cserélje le a `KafkaCluster`t a Kafka-fürt nevére, és `KafkaPassword` a fürt bejelentkezési jelszavával. Továbbá cserélje le a `C:\HDI\jq-win64.exe`t a jQ-telepítés tényleges elérési útjára. Adja meg a parancsokat egy Windows-parancssorban, és mentse a kimenetet a későbbi lépésekben való használatra.
 
     ```cmd
     set CLUSTERNAME=KafkaCluster
@@ -199,7 +199,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     }
     ```
 
-5. Hozzon létre egy Kafka-témakört. Szerkessze az alábbi parancsot úgy, hogy a `YOUR_ZOOKEEPER_HOSTS` helyére cseréli az első lépésben kinyert Zookeeper-gazdagép adatait. A `tripdata` témakör létrehozásához adja meg a Jupyter Notebook szerkesztett parancsát.
+5. Hozzon létre egy Kafka-témakört. Szerkessze az alábbi parancsot úgy, hogy lecseréli `YOUR_ZOOKEEPER_HOSTS` az első lépésben kinyert Zookeeper-gazdagépi információkkal. A `tripdata` témakör létrehozásához adja meg a Jupyter Notebook szerkesztett parancsát.
 
     ```scala
     %%bash
@@ -224,7 +224,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     taxiDF.show()
     ```
 
-7. Adja meg a Kafka-közvetítő gazdagépek adatait. Cserélje le a `YOUR_KAFKA_BROKER_HOSTS` értéket a közvetítő gazdagépeken az 1. lépésben kinyert adatokra.  Adja meg a szerkesztett parancsot a következő Jupyter Notebook cellában.
+7. Adja meg a Kafka-közvetítő gazdagépek adatait. Cserélje le a `YOUR_KAFKA_BROKER_HOSTS`t a közvetítő gazdagépek az 1. lépésben kinyert adatokra.  Adja meg a szerkesztett parancsot a következő Jupyter Notebook cellában.
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -234,7 +234,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-8. Küldje el az adatgyűjtést a Kafka-nek. A következő parancsban a `vendorid` mezőt használja a Kafka-üzenet kulcsának értékeként. A kulcsot a Kafka az adatparticionáláskor használja. Az összes mezőt a Kafka-üzenetben egy JSON-karakterlánc értékként tárolja a rendszer. Adja meg a következő parancsot a Jupyter-ben, hogy egy batch-lekérdezéssel mentse az adataikat a Kafka-ba.
+8. Küldje el az adatgyűjtést a Kafka-nek. A következő parancsban az `vendorid` mező lesz a Kafka-üzenet kulcsának értéke. A kulcsot a Kafka az adatparticionáláskor használja. Az összes mezőt a Kafka-üzenetben egy JSON-karakterlánc értékként tárolja a rendszer. Adja meg a következő parancsot a Jupyter-ben, hogy egy batch-lekérdezéssel mentse az adataikat a Kafka-ba.
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -327,11 +327,11 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
 > [!WARNING]  
-> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban.
+> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
 >
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja [Apache Spark strukturált adatfolyamot](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) a HDInsight-on található [Apache Kafka](https://kafka.apache.org/) adatok írásához és olvasásához. A következő hivatkozásra kattintva megtudhatja, hogyan használhatja a [Apache Stormt](https://storm.apache.org/) a Kafka használatával.
 

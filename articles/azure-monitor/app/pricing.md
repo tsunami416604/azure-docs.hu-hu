@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4c56c8f98e536060ea18eb6b9d3a37179eebc89f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: eedb9d811e35d606f4d3e1df55d9303d68678b3c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478751"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -167,9 +167,9 @@ A napi korlát módosításához a Application Insights erőforrás **Konfigurá
 
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-003.png)
 
-A [napi korlát Azure Resource Manageron keresztüli módosításához](../../azure-monitor/app/powershell.md)a módosítandó tulajdonság a `dailyQuota`.  Azure Resource Manager a `dailyQuotaResetTime` és a napi korlát `warningThreshold` értéket is beállíthatja. 
+A [napi korlát Azure Resource Manageron keresztüli módosításához](../../azure-monitor/app/powershell.md)a módosítandó tulajdonság a `dailyQuota`.  Azure Resource Manager a `dailyQuotaResetTime` és a napi korlát `warningThreshold`is beállítható. 
 
-## <a name="sampling"></a>Mintavétel
+## <a name="sampling"></a>Mintavételezés
 A [mintavétel](../../azure-monitor/app/sampling.md) olyan módszer, amely csökkenti a telemetria az alkalmazásba való küldésének mértékét, miközben megőrzi a kapcsolódó események keresésének lehetőségét a diagnosztikai keresések során. Megőrzi a helyes események számát is.
 
 A mintavétel hatékony módszert jelent a költségek csökkentéséhez és a havi kvótán belüli tartózkodáshoz. A mintavételi algoritmus megőrzi a kapcsolódó telemetria, így például a keresés használatakor megkeresheti az adott kivételhez kapcsolódó kérelmet. Az algoritmus emellett megőrzi a helyes számadatokat, így a megfelelő értékeket látja a mérőszám-kezelőben a kérelmek díjszabása, a kivételek és az egyéb darabszámok tekintetében.
@@ -193,7 +193,7 @@ Ha a tényleges mintavételezési sebességet szeretné felderíteni, független
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-Az egyes megőrzött rekordokban a `itemCount` érték azt jelzi, hogy hány eredeti rekordot képvisel. A korábbi elvetett rekordok száma 1. 
+Minden megőrzött rekordban `itemCount` az eredeti rekordok számát jelöli. A korábbi elvetett rekordok száma 1. 
 
 ## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időszak módosítása
 
@@ -203,7 +203,7 @@ Az adatmegőrzés módosításához a Application Insights erőforrásból lépj
 
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-005.png)
 
-A megőrzés a [PowerShell használatával is beállítható](powershell.md#set-the-data-retention) a `retentionInDays` paraméterrel programozott módon. Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméterrel azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a kiürítési funkció csak Azure Resource Manageron keresztül érhető el, és rendkívül körültekintően használható. 
+A megőrzés a [PowerShell használatával is beállítható](powershell.md#set-the-data-retention) a `retentionInDays` paraméterrel programozott módon. Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméter használatával azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a kiürítési funkció csak Azure Resource Manageron keresztül érhető el, és rendkívül körültekintően használható. 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Adatátviteli díjak az Application Insights használatával
 
@@ -229,7 +229,7 @@ A per node (korábban nagyvállalati) szinten egy csomópontos díjat számítun
 A pénznem és a régió aktuális áraiért lásd: [Application Insights díjszabása](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> A 2018-es verzióban egy új díjszabási modellt [vezettünk be](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure monitoring szolgáltatáshoz. Ez a modell egy egyszerű "utólagos elszámolású" modellt alkalmaz a figyelési szolgáltatások teljes portfóliójában. További információ az [új díjszabási modellről](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), a [modellre való áttérés következményeinek felmérése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) a használati minták alapján, valamint [az új modell használatának módja](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+> A 2018-es verzióban egy új díjszabási modellt [vezettünk be](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure monitoring szolgáltatáshoz. Ez a modell egy egyszerű "utólagos elszámolású" modellt alkalmaz a figyelési szolgáltatások teljes portfóliójában. További információ az [új díjszabási modellről](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), a [modellre való áttérés következményeinek felmérése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs) a használati minták alapján, valamint [az új modell használatának módja](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model)
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>/Csomópontok és az Operations Management Suite előfizetési jogosultságai
 
@@ -274,7 +274,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [További tudnivalókat itt talál](powershell.md#price).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
 

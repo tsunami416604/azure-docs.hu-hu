@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: igény szerinti Apache Hadoop-fürtök az Azure HDInsight-Data Factory'
+title: 'Oktatóanyag: igény szerinti fürtök az Azure HDInsight-ban Data Factory'
 description: Oktatóanyag – megtudhatja, hogyan hozhat létre igény szerinti Apache Hadoop-fürtöket a HDInsight-ben Azure Data Factory használatával.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
-ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72264525"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494873"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával
 
@@ -42,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="create-preliminary-azure-objects"></a>Előzetes Azure-objektumok létrehozása
 
-Ebben a szakaszban különféle objektumokat hoz létre, amelyeket az igény szerint létrehozott HDInsight-fürthöz fog használni. A létrehozott Storage-fiók tartalmazni fogja a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlt (`partitionweblogs.hql`), amely a fürtön futó minta [Apache Hive](https://hive.apache.org/) -feladatok szimulálására használható.
+Ebben a szakaszban különféle objektumokat hoz létre, amelyeket az igény szerint létrehozott HDInsight-fürthöz fog használni. A létrehozott Storage-fiók tartalmazni fogja a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlt, `partitionweblogs.hql`, amely a fürtön futó minta [Apache Hive](https://hive.apache.org/) -feladatok szimulálására használható.
 
 Ez a szakasz egy Azure PowerShell parancsfájllal hozza létre a Storage-fiókot, és átmásolja a szükséges fájlokat a Storage-fiókon belül. A jelen szakaszban Azure PowerShell minta parancsfájl a következő feladatokat hajtja végre:
 
@@ -154,7 +154,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 **A Storage-fiók létrehozásának ellenőrzése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldalon navigáljon az **összes szolgáltatás** > **általános** > **erőforráscsoport**elemre.
+1. A bal oldalon navigáljon az **összes szolgáltatás** > **általános** > **erőforráscsoportok**elemre.
 1. Válassza ki a PowerShell-parancsfájlban létrehozott erőforráscsoport-nevet. Ha túl sok erőforráscsoport van felsorolva, használja a szűrőt.
 1. Az **Áttekintés** nézetből egyetlen erőforrás jelenik meg, hacsak nem osztja meg az erőforráscsoportot más projektekkel. Ez az erőforrás a korábban megadott névvel rendelkező Storage-fiók. Válassza ki a Storage-fiók nevét.
 1. Válassza ki a **tárolók** csempét.
@@ -183,17 +183,17 @@ Ebben a cikkben a struktúra tevékenységét konfigurálja egy igény szerinti 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali menüben navigáljon a **+ erőforrás létrehozása** > **Analitika** > **Data Factory**.
+2. A bal oldali menüben navigáljon a **+ erőforrás létrehozása** > **Analytics** > **Data Factory**.
 
     ![Azure Data Factory a portálon](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory a portálon")
 
 3. Adja meg vagy válassza ki a következő értékeket az **új adatok gyári** csempéhez:
 
-    |Tulajdonság  |Value (Díj)  |
+    |Tulajdonság  |Érték  |
     |---------|---------|
-    |Név | Adja meg az adatelőállító nevét. A névnek globálisan egyedinek kell lennie.|
+    |Name (Név) | Adja meg az adatelőállító nevét. A névnek globálisan egyedinek kell lennie.|
     |Előfizetés | Válassza ki az Azure-előfizetését. |
     |Erőforráscsoport | Válassza a **meglévő használata** lehetőséget, majd válassza ki a PowerShell-parancsfájl használatával létrehozott erőforráscsoportot. |
     |Verzió | Távozás: **v2**. |
@@ -233,9 +233,9 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
 4. Adja meg a következő értékeket a Storage társított szolgáltatáshoz:
 
-    |Tulajdonság |Value (Díj) |
+    |Tulajdonság |Érték |
     |---|---|
-    |Név |Írja be a `HDIStorageLinkedService` (igen) kifejezést.|
+    |Name (Név) |Írja be a `HDIStorageLinkedService` (igen) kifejezést.|
     |Azure-előfizetés |Válassza ki az előfizetését a legördülő listából.|
     |Storage account name (Tárfiók neve) |Válassza ki a PowerShell-parancsfájl részeként létrehozott Azure Storage-fiókot.|
 
@@ -255,10 +255,10 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
 4. Az **új társított szolgáltatás** ablakban adja meg a következő értékeket, és hagyja a többi értéket alapértelmezettként:
 
-    | Tulajdonság | Value (Díj) |
+    | Tulajdonság | Érték |
     | --- | --- |
-    | Név | Írja be a `HDInsightLinkedService` (igen) kifejezést.|
-    | Type (Típus) | **Igény szerinti HDInsight**kiválasztása. |
+    | Name (Név) | Írja be a `HDInsightLinkedService` (igen) kifejezést.|
+    | Típus | **Igény szerinti HDInsight**kiválasztása. |
     | Azure Storage társított szolgáltatás | Válassza a(z) `HDIStorageLinkedService` lehetőséget. |
     | Fürttípus | **Hadoop** kiválasztása |
     | Élettartam | Adja meg azt az időtartamot, ameddig szeretné, hogy a HDInsight-fürt elérhető legyen az automatikus törlés előtt.|
@@ -294,11 +294,11 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     1. A **parancsfájlhoz társított szolgáltatás**esetében válassza a **HDIStorageLinkedService** lehetőséget a legördülő listából. Ez az érték a korábban létrehozott Storage társított szolgáltatás.
 
-    1. A **fájl elérési útja**területen válassza a **Tallózás tároló** lehetőséget, és navigáljon arra a helyre, ahol a minta struktúra-parancsfájl elérhető. Ha korábban futtatta a PowerShell-parancsfájlt, ennek a helynek `adfgetstarted/hivescripts/partitionweblogs.hql` értékűnek kell lennie.
+    1. A **fájl elérési útja**területen válassza a **Tallózás tároló** lehetőséget, és navigáljon arra a helyre, ahol a minta struktúra-parancsfájl elérhető. Ha korábban futtatta a PowerShell-parancsfájlt, ezt a helyet kell `adfgetstarted/hivescripts/partitionweblogs.hql`.
 
         ![A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása")
 
-    1. A **speciális** > **Paraméterek**területen válassza **az automatikus kitöltés parancsfájlból**lehetőséget. Ez a beállítás minden olyan paramétert megkeres a kaptár-parancsfájlban, amely futásidőben értéket igényel. A használt szkript (**partitionweblogs. HQL**) **kimeneti** paraméterrel rendelkezik. Adja meg a `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` formátumú **értéket** , hogy az Azure Storage egy meglévő mappájára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az az elérési út, ahol a rendszer a parancsfájl kimenetét tárolja. A `wasbs` sémára azért van szükség, mert a Storage-fiókok mostantól alapértelmezés szerint engedélyezve vannak a biztonságos átvitelre.
+    1. A **speciális** > **Paraméterek**területen válassza **az automatikus kitöltés parancsfájlból**lehetőséget. Ez a beállítás minden olyan paramétert megkeres a kaptár-parancsfájlban, amely futásidőben értéket igényel. A használt szkript (**partitionweblogs. HQL**) **kimeneti** paraméterrel rendelkezik. Adja meg az **értéket** a `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` formátumban, hogy az Azure Storage-beli meglévő mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az az elérési út, ahol a rendszer a parancsfájl kimenetét tárolja. A `wasbs` sémára azért van szükség, mert a Storage-fiókok mostantól alapértelmezés szerint engedélyezve vannak a biztonságos átvitelhez.
     
         ![Adja meg a kaptár parancsfájl paramétereit](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Adja meg a kaptár parancsfájl paramétereit")
 
@@ -336,7 +336,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     - Megjelenik egy **adfgerstarted/OutputFolder** , amely a folyamat részeként futtatott struktúra-parancsfájl kimenetét tartalmazza.
 
-    - Megjelenik egy **adfhdidatafactory-\<linked-Service-name >-\<timestamp >** tároló. Ez a tároló a folyamat futtatásának részeként létrehozott HDInsight-fürt alapértelmezett tárolási helye.
+    - Megjelenik egy **adfhdidatafactory-\<társított-szolgáltatásnév >-\<timestamp >** tároló. Ez a tároló a folyamat futtatásának részeként létrehozott HDInsight-fürt alapértelmezett tárolási helye.
 
     - Megjelenik egy olyan **adfjobs** -tároló, amely tartalmazza a Azure Data Factory feladatok naplóit.  
 
@@ -360,7 +360,7 @@ Másik lehetőségként törölheti az oktatóanyaghoz létrehozott teljes erőf
 
 1. Adja meg az erőforráscsoport nevét a törlés megerősítéséhez, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a Azure Data Factoryt igény szerinti HDInsight-fürt létrehozására, és [Apache Hive](https://hive.apache.org/) feladatok futtatására. A következő cikkből megtudhatja, hogyan hozhat létre egyéni konfigurációval rendelkező HDInsight-fürtöket.
 
 > [!div class="nextstepaction"]

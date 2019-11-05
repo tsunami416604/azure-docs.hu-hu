@@ -3,17 +3,17 @@ title: Hitelesítés kezelése Azure Mapsban | Microsoft Docs
 description: A Azure Portal segítségével kezelheti a hitelesítést a Azure Mapsban.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/11/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2f4a3d791e6b5d6ff20c09408d1a0bf5995c32fd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756564"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478775"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -32,7 +32,7 @@ A hitelesítési adatokat a Azure Portalon tekintheti meg. Nyissa meg a fiókjá
 
 Azure Maps fiók létrehozása után létre kell hoznia egy hivatkozást az Azure AD-bérlő és a Azure Maps erőforrás között.
 
-1. Nyissa meg az Azure AD panelt, és hozzon létre egy alkalmazást. Adja meg a regisztráció nevét. A **bejelentkezési URL-cím** mezőben adja meg a webalkalmazás/API kezdőlapját (például https: \//localhost/). Ha már rendelkezik regisztrált alkalmazással, folytassa a 2. lépéssel.
+1. Nyissa meg az Azure AD panelt, és hozzon létre egy alkalmazást. Adja meg a regisztráció nevét. A **bejelentkezési URL-cím** mezőben adja meg a webalkalmazás/API kezdőlapját (például https:\//localhost/). Ha már rendelkezik regisztrált alkalmazással, folytassa a 2. lépéssel.
 
     ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
@@ -91,12 +91,17 @@ Miután regisztrálta az alkalmazást, és hozzárendelte Azure Mapshoz, hozzáf
 
 * Ha az alkalmazás felhasználói tokenes hitelesítést használ a Azure Maps web SDK-val, a HTML-lapot a Azure Maps ügyfél-AZONOSÍTÓval és az Azure AD-alkalmazás azonosítójával kell konfigurálnia.
 
-* Ha az alkalmazás kiszolgálói/alkalmazás-hitelesítést használ, akkor az Azure ad-bejelentkezési végpont `https://login.microsoftonline.com` az Azure AD erőforrás-azonosító `https://atlas.microsoft.com/`, a Azure Maps ügyfél-azonosító, az Azure AD-alkalmazás azonosítója és az Azure AD-alkalmazás regisztrációs jelszava vagy tanúsítvány.
+* Ha az alkalmazás kiszolgálói/alkalmazás-hitelesítést használ, akkor az Azure ad-jogkivonat végpontjának `https://login.microsoftonline.com` kell igényelnie az Azure AD erőforrás-azonosító `https://atlas.microsoft.com/`, az Azure Maps ügyfél-azonosító, az Azure AD-alkalmazás azonosítója és az Azure AD-alkalmazás regisztrációs jelszava vagy tanúsítvány.
+
+| Azure-környezet   | Azure AD-jogkivonat végpontja | Azure-erőforrás azonosítója |
+| --------------------|-------------------------|-------------------|
+| Nyilvános Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 További információ az Azure AD-től a felhasználók és az egyszerű szolgáltatások hozzáférési jogkivonatok igénylésével kapcsolatban: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-hitelesítéssel és a Azure Maps web SDK-val kapcsolatos további tudnivalókért tekintse meg az [Azure ad-t és a Azure Maps web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)-t.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097882"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472994"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Áttelepítés Azure Container Serviceról (ACS) az Azure Kubernetes szolgáltatásba (ak)
 
@@ -26,9 +26,9 @@ Az ACS és az AK különbözik az áttelepítést befolyásoló kulcsfontosság�
 
 * Az AK-csomópontok [felügyelt lemezeket](../virtual-machines/windows/managed-disks-overview.md)használnak.
     * A nem felügyelt lemezeket át kell alakítani az AK-csomópontokhoz való csatolás előtt.
-    * Az `StorageClass` Azure- `unmanaged` lemezekhez tartozó egyéni objektumokat a verzióról a `managed`verzióra kell módosítani.
-    * Mindenképpen `PersistentVolumes` használjon `kind: Managed`.
-* Az AK [több Node-készletet](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) támogat (jelenleg előzetes verzióban érhető el).
+    * Az Azure-lemezekhez tartozó egyéni `StorageClass` objektumokat `unmanaged`ról `managed`re kell módosítani.
+    * Minden `PersistentVolumes` a `kind: Managed`t kell használnia.
+* Az AK [több csomópontos készletet](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)is támogat.
 * A Windows Serveren alapuló csomópontok jelenleg előzetes verzióban érhetők [el az AK-ban](https://azure.microsoft.com/blog/kubernetes-on-azure/).
 * Az AK támogatja a [régiók](https://docs.microsoft.com/azure/aks/quotas-skus-regions)korlátozott készletét.
 * Az AK felügyelt szolgáltatás egy üzemeltetett Kubernetes-vezérlési síkon. Előfordulhat, hogy módosítania kell az alkalmazásait, ha korábban már módosította az ACS-főkiszolgálók konfigurációját.
@@ -41,13 +41,13 @@ Ha a Kubernetes egy újabb verziójára végez áttelepítést, tekintse át a k
 
 ## <a name="migration-considerations"></a>Migrálási szempontok
 
-### <a name="agent-pools"></a>Ügynökkészletek
+### <a name="agent-pools"></a>Ügynök készletek
 
 Bár az AK kezeli a Kubernetes-vezérlő síkot, az új fürtben található csomópontok méretét és számát is meghatározza. Feltételezve, hogy a 1:1-es ACS-ről az AK-ra szeretne leképezést készíteni, rögzítenie kell a meglévő ACS-csomópont adatait. Használja ezeket az adatait az új AK-fürt létrehozásakor.
 
 Példa:
 
-| Name (Név) | Count | Virtuális gép mérete | Operációs rendszer |
+| Name (Név) | Mennyiség | Virtuális gép mérete | Operációs rendszer |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
@@ -58,7 +58,7 @@ További információ: Azure- [előfizetés és-szolgáltatási korlátok](https
 
 ### <a name="networking"></a>Hálózat
 
-Összetett alkalmazások esetében általában az idő múlásával, nem pedig egyszerre kell áttérnie. Ez azt jelenti, hogy a régi és az új környezetnek kommunikálnia kell a hálózaton keresztül. Előfordulhat, hogy a `ClusterIP` korábban a kommunikációhoz használt szolgáltatásokat be `LoadBalancer` kell állítani, és megfelelő védelemmel kell elvégezniük.
+Összetett alkalmazások esetében általában az idő múlásával, nem pedig egyszerre kell áttérnie. Ez azt jelenti, hogy a régi és az új környezetnek kommunikálnia kell a hálózaton keresztül. Előfordulhat, hogy a korábban `ClusterIP` szolgáltatásokkal való kommunikációra használt alkalmazásokat `LoadBalancer` kell tenni, és a megfelelő védelemmel kell rendelkeznie.
 
 Az áttelepítés befejezéséhez az ügyfeleket az AK-on futó új szolgáltatásokra kell irányítani. Javasoljuk, hogy a forgalom átirányításához frissítse a DNS-t úgy, hogy az AK-fürt előtt található Load Balancer mutasson.
 
@@ -112,13 +112,13 @@ Ha az alkalmazás több replikát is képes tárolni, amelyek ugyanarra a megosz
 4. Érvényesít.
 5. Mutasson forgalmat az AK-fürtre.
 
-Ha üres megosztással szeretne kezdeni, és másolatot készít a forrásadatokről, a [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) parancsok segítségével áttelepítheti az adatait.
+Ha üres megosztást szeretne használni, és másolatot készít a forrásadatok másolatáról, akkor a [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) parancsokkal áttelepítheti az adatait.
 
 ### <a name="deployment-strategy"></a>Központi telepítési stratégia
 
-Javasoljuk, hogy a meglévő CI/CD-folyamat használatával helyezzen üzembe egy jól ismert konfigurációt az AK-ban. A meglévő üzembe helyezési feladatok klónozásával `kubeconfig` ellenőrizze, hogy az új AK-fürtre mutat-e.
+Javasoljuk, hogy a meglévő CI/CD-folyamat használatával helyezzen üzembe egy jól ismert konfigurációt az AK-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` mutat-e az új AK-fürtre.
 
-Ha ez nem lehetséges, exportálja az erőforrás-definíciókat az ACS-ből, majd alkalmazza őket az AK-ra. Az objektumok exportálására használható `kubectl` .
+Ha ez nem lehetséges, exportálja az erőforrás-definíciókat az ACS-ből, majd alkalmazza őket az AK-ra. Az objektumok exportálásához `kubectl` is használhatja.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
@@ -126,9 +126,9 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 Számos nyílt forráskódú eszköz segíthet a telepítési igényektől függően:
 
-* [Velero](https://github.com/heptio/ark) (Ehhez az eszközhöz Kubernetes 1,7 szükséges.)
+* [Velero](https://github.com/heptio/ark) (ehhez az eszközhöz Kubernetes 1,7 szükséges.)
 * [Azure Kube CLI-bővítmény](https://github.com/yaron2/azure-kube-cli)
-* [ReShifter](https://github.com/mhausenblas/reshifter)
+* [Újraeltolás](https://github.com/mhausenblas/reshifter)
 
 ## <a name="migration-steps"></a>A migrálás lépései
 
@@ -137,9 +137,9 @@ Számos nyílt forráskódú eszköz segíthet a telepítési igényektől függ
    > [!NOTE]
    > A GitHubon található [Azure/AK-](https://github.com/Azure/AKS/tree/master/examples/vnet) tárházban talál minta Azure Resource Manager sablonokat.
 
-2. Végezze el a szükséges módosításokat a YAML-definíciókban. Például cserélje le `apps/v1beta1` `apps/v1` a következőre `Deployments`:.
+2. Végezze el a szükséges módosításokat a YAML-definíciókban. Például cserélje le a `apps/v1beta1`t a `Deployments``apps/v1`.
 
-3. [Kötetek migrálása](#migrating-persistent-volumes) (nem kötelező) az ACS-fürtről az AK-fürtre.
+3. [Kötetek migrálása](#migrating-persistent-volumes) (nem kötelező) az ACS-fürtről az AK-fürtbe.
 
 4. A CI/CD rendszer használatával alkalmazásokat telepíthet az AK-ba. Vagy használja a kubectl-t a YAML-definíciók alkalmazásához.
 

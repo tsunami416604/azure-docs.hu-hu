@@ -12,14 +12,14 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758233"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473342"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>A felhasználók automatikus üzembe helyezésének megtervezése
+# <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
 Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint a ServiceNow, a Zscaler és a Slack a végfelhasználói hatékonyság érdekében. A hagyományos informatikai munkatársak olyan manuális üzembe helyezési módszerekre támaszkodtak, mint például a CSV-fájlok feltöltése vagy egyéni parancsfájlok használata a felhasználói identitások biztonságos kezelésére az egyes SaaS-alkalmazásokban. Ezek a folyamatok a hibák, a nem biztonságos és a nehezen kezelhetők.
 
@@ -63,7 +63,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 * Célrendszer – azon felhasználók tárháza, akikre az Azure AD kiépít. A célként megadott rendszer általában SaaS-alkalmazás, például ServiceNow, Zscaler és Slack. A célként megadott rendszer lehet egy helyszíni rendszer is, például az AD.
 
-* [Rendszer a tartományok közötti Identitáskezelés kezeléséhez (scim)](http://www.simplecloud.info/)) – Egy nyílt szabvány, amely lehetővé teszi a felhasználók üzembe helyezésének automatizálását. A SCIM a felhasználói azonosító adatokat a Microsoft és a szolgáltatók, például a Salesforce vagy más olyan SaaS-alkalmazások között közli, amelyek felhasználói azonosító adatokat igényelnek.
+* [Rendszer a tartományok közötti Identitáskezelés (scim)](https://aka.ms/scimoverview) számára – egy nyílt szabvány, amely lehetővé teszi a felhasználók üzembe helyezésének automatizálását. A SCIM a felhasználói azonosító adatokat a Microsoft és a szolgáltatók, például a Salesforce vagy más olyan SaaS-alkalmazások között közli, amelyek felhasználói azonosító adatokat igényelnek.
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
@@ -282,6 +282,8 @@ A sikeres [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/ma
 
 Az események áttekintéséhez és a kiépítési szolgáltatás által végzett összes egyéb tevékenységhez tekintse meg az Azure AD- [kiépítési naplókat](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context).
 
+Annak megismeréséhez, hogy a kiépítési ciklusok mennyi ideig tartanak és figyeljenek a kiépítési feladatok állapotát, [ellenőrizheti a felhasználók üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)helyezésének állapotát.
+
 ### <a name="gain-insights-from-reports"></a>Betekintést nyerhet a jelentésekből
 
 Az Azure AD [további betekintést](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) nyújt a szervezet felhasználó általi használatára és működési állapotára a naplók és a jelentések segítségével.
@@ -324,7 +326,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Stack túlfolyó Azure AD-fórum](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Automatikus felhasználó-kiépítés konfigurálása](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
 
 * [Kiépítési konfiguráció exportálása vagy importálása Microsoft Graph API használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)

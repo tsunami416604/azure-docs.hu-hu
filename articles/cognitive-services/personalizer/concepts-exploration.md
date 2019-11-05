@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490817"
 ---
 # <a name="exploration-and-exploitation"></a>Feltárás és kiaknázás
 
@@ -25,22 +25,15 @@ Ha a megszemélyesítő hívást kap, egy olyan RewardActionID ad vissza, amely 
 * A az aktuális Machine learning-modell alapján a legvalószínűbb felhasználói viselkedésnek megfelelő kiaknázást használja.
 * A feltárást használ, amely nem felel meg a rangsorban a legnagyobb valószínűséggel rendelkező műveletnek.
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 A személyre szabott funkció jelenleg egy *epszilon mohó* nevű algoritmust használ a megismeréshez. 
 
 ## <a name="choosing-an-exploration-setting"></a>Feltárási beállítás kiválasztása
 
-A személyre szabáshoz a Azure Portal **Beállítások** lapján konfigurálhatja a felderítéshez használandó forgalom százalékos arányát. Ez a beállítás határozza meg a feltárást végző rangsorolt hívások százalékos arányát. 
+A Azure Portal **Configuration** (személyre szabás) lapján konfigurálhatja a felderítéshez használandó forgalom százalékos arányát. Ez a beállítás határozza meg a feltárást végző rangsorolt hívások százalékos arányát. 
 
 A személyre szabhatja, hogy a rangsorban megjelenő valószínűséggel megvizsgálja vagy kihasználja ezt a valószínűséget. Ez különbözik az egyes olyan/B keretrendszerek működésének, amelyek adott felhasználói azonosítók kezelését zárolják.
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>Ajánlott eljárások a feltárási beállítások kiválasztásához
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 A feltárási beállítások kiválasztása üzleti döntés a felhasználói interakciók arányos arányáról a modell tökéletesítése érdekében. 
 

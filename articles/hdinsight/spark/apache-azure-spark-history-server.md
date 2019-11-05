@@ -1,5 +1,5 @@
 ---
-title: Kiterjesztett Spark-előzmények kiszolgálója Spark-alkalmazások hibakereséséhez – Azure HDInsight
+title: Kiterjesztett Spark-előzmények kiszolgálója alkalmazások hibakereséséhez – Azure HDInsight
 description: Kiterjesztett Spark-előzmények használata a Spark-alkalmazások hibakereséséhez és diagnosztizálásához – Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130353"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494735"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
@@ -28,11 +28,11 @@ A Apache Spark History Server a Spark-alkalmazások befejezéséhez és futtatá
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a Spark-fürtöt. További információ: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. A **Gyorshivatkozások**területen kattintson a **fürt irányítópultja**, majd a **Spark-előzmények kiszolgáló**elemre. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
 
-    a ![Portal indítása Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-előzmények kiszolgálója")
+    ![a Portal indítása Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-előzmények kiszolgálója")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>A Spark History Server webes felhasználói felületének megnyitása URL-cím alapján
 
-Nyissa meg a Spark History-kiszolgálót úgy, hogy megkeresi a következő URL-címet, a helyére `<ClusterName>` pedig a Spark-fürt nevét használja.
+Nyissa meg a Spark History-kiszolgálót a következő URL-címre való tallózással, cserélje le a `<ClusterName>`t az ügyfél Spark-fürtjének nevére.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -106,16 +106,16 @@ Válassza a feladatok azonosítója lehetőséget, majd kattintson a **Graph** e
 
 + A feladatot a **Lejátszás** gombra kattintva, majd a Leállítás gombra kattintva bármikor leállíthatja. A feladat színesben jelenik meg, hogy a lejátszás közben eltérő állapot jelenjen meg:
 
-  + A következő zöld: A feladatot sikeresen befejezte.
-  + A narancssárga az újrapróbálkozáshoz: A sikertelen feladatok példányai, amelyek nem befolyásolják a feladat végeredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeztek, amelyek később esetleg sikeresek lehetnek.
-  + Kék a futtatáshoz: A feladat fut.
-  + A várt vagy kihagyott fehér: A feladat futásra vár, vagy a szakasz kimaradt.
-  + Nem sikerült a vörös: A feladat nem sikerült.
+  + Sikeres zöld: a művelet sikeresen befejeződött.
+  + A narancssárga az újrapróbálkozáshoz: a feladatok olyan példányai, amelyek sikertelenek voltak, de nem befolyásolják a feladat végeredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeztek, amelyek később esetleg sikeresek lehetnek.
+  + Kék a futtatáshoz: a feladat fut.
+  + Fehér a várakozáshoz vagy a kihagyáshoz: a feladat futásra vár, vagy a szakasz ki lett hagyva.
+  + Nem sikerült a vörös: a feladat sikertelen volt.
 
     ![Spark-alkalmazás és a feladatütemezés színmintája, Futtatás](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
     A kihagyott szakasz fehérre van állítva.
-    ![Spark-alkalmazás és a feladatütemezés színének mintája, kihagyás](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    ![Spark-alkalmazás és a feladatütemezés színes mintája, kihagyás](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
     ![A Spark-alkalmazás és a feladatütemezés színes mintája sikertelen](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
@@ -168,7 +168,7 @@ Válassza ki a feladatok AZONOSÍTÓját, majd kattintson a **diagnosztika** ele
 
 Kattintson az **adatok eldöntése** lapra, a megadott paraméterek alapján megjelennek a megfelelő ferde feladatok.
 
-+ **Paraméterek megadása** – az első szakasz azokat a paramétereket jeleníti meg, amelyek az adatok eldöntésének észlelésére szolgálnak. A beépített szabály a következőket eredményezi: A feladathoz tartozó adatok olvasása nagyobb, mint az átlagos feladathoz tartozó adatok olvasási ideje, és a feladat adatolvasása meghaladja a 10 MB-ot. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket, az eldöntött **szakasz**és a **ferde karakter** elválasztása szakaszt.
++ **Paraméterek megadása** – az első szakasz azokat a paramétereket jeleníti meg, amelyek az adatok eldöntésének észlelésére szolgálnak. A beépített szabály a következő: a tevékenységi adatok olvasása nagyobb, mint 3-szor az átlagos feladathoz tartozó adat olvasásakor, és a feladatban tárolt adatok száma meghaladja a 10 MB-ot. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket, az eldöntött **szakasz**és a **ferde karakter** elválasztása szakaszt.
 
 + **Ferde fázis** – a második szakasz azokat a szakaszokat jeleníti meg, amelyek a fent megadott feltételeknek megfelelő ferde feladatokat látnak el. Ha egy adott szakaszban több elferdített feladat van, akkor a ferde szakasz tábla csak a leginkább ferde feladatot jeleníti meg (például az elferdítés legnagyobb adatát).
 
@@ -200,9 +200,9 @@ A végrehajtói használati gráf megjeleníti a Spark-feladatok tényleges vég
 
     ![sparkui-diagnosztika – diagram kiválasztása](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
-### <a name="1-revert-to-community-version"></a>1. A közösségi verzió visszaállítása
+### <a name="1-revert-to-community-version"></a>1. a közösségi verzió visszaállítása
 
 A közösségi verzióra való visszaálláshoz hajtsa végre a következő lépéseket:
 
@@ -224,7 +224,7 @@ A közösségi verzióra való visszaálláshoz hajtsa végre a következő lép
     ![Apache Ambari Spark2 előzmények újraindítása](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 9. Frissítse a Spark History Server webes FELÜLETét, és a rendszer visszaállít egy közösségi verzióra.
 
-### <a name="2-upload-history-server-event"></a>2. Feltöltési előzmények kiszolgálói esemény
+### <a name="2-upload-history-server-event"></a>2. feltöltési előzmények kiszolgálói esemény
 
 Ha az előzmények kiszolgálói hibát futtat, kövesse az alábbi lépéseket az esemény megadásához:
 
@@ -240,11 +240,11 @@ Ha az előzmények kiszolgálói hibát futtat, kövesse az alábbi lépéseket 
 
     ![példa az Apache Spark file problémájára](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Jar-fájl frissítése gyorsjavítási forgatókönyvhöz
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. frissítse a jar-fájlt a gyorsjavítási forgatókönyvhöz
 
 Ha gyorsjavítással szeretné frissíteni, használja az alábbi parancsfájlt, amely frissíti a Spark-Enhancement. jar * fájlt.
 
-**upgrade_spark_enhancement.sh**:
+**upgrade_spark_enhancement. sh**:
 
    ```bash
     #!/usr/bin/env bash
@@ -330,4 +330,4 @@ Ha gyorsjavítással szeretné frissíteni, használja az alábbi parancsfájlt,
 
 ## <a name="contact-us"></a>Kapcsolat
 
-Ha visszajelzést szeretne küldeni, vagy ha az eszköz használata során bármilyen más problémába ütközik, küldjön egy e-mailt a[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)következő címre: ().
+Ha visszajelzést szeretne küldeni, vagy ha az eszköz használata során bármilyen más problémába ütközik, küldjön egy e-mailt a következő címen: ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).

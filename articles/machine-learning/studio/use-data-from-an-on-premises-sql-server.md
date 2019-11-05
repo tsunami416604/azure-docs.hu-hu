@@ -1,7 +1,7 @@
 ---
-title: On-premises SQL Server
-titleSuffix: Azure Machine Learning Studio
-description: Az Azure Machine Learning Studio fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
+title: Helyszíni SQL Server
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Helyszíni SQL Server-adatbázisból származó adatok használatával speciális elemzéseket végezhet Azure Machine Learning Studio klasszikus verziójával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +10,21 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60735471"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492537"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Hajtsa végre az analytics az Azure Machine Learning Studiót egy helyszíni SQL Server-adatbázisból
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Elemzések elvégzése Azure Machine Learning Studio (klasszikus) használatával helyszíni SQL Server-adatbázis segítségével
 
-Gyakran olyan vállalatok, amelyek a helyszíni adatok használata, ha a méretezési csoport és a gépi tanulási célú számítási feladatokhoz a felhő rugalmasságát. De azok nem szeretné, hogy megszakítja az aktuális üzleti és munkafolyamatok által a helyszíni adatok áthelyezése a felhőbe. Az Azure Machine Learning Studio mostantól támogatja az adatok beolvasása helyszíni SQL Server-adatbázisból, és ezután képzés, és ezeket az adatokat a modell pontozása. Már nem kell manuálisan másolja, és szinkronizálja az adatokat a felhőben és a helyszíni kiszolgáló között. Ehelyett a **adatok importálása** modul az Azure Machine Learning Studióban elolvashatja közvetlenül a helyszíni SQL Server-adatbázisát a tanítási és pontozási feladatok.
+A helyszíni adatokkal dolgozó vállalatok gyakran szeretnék kihasználni a felhő méretezését és rugalmasságát a gépi tanulási munkaterhelésekhez. Azonban nem szeretnék megszakítani a jelenlegi üzleti folyamatokat és munkafolyamatokat azáltal, hogy áthelyezik a helyszíni és a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok helyszíni SQL Server-adatbázisból való beolvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan átmásolnia és szinkronizálnia az adatait a felhő és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio klasszikus verziójának **adatimportálási** modulja közvetlenül a helyszíni SQL Server-adatbázisból is beolvashatja a betanítási és pontozási feladatait.
 
-Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok Azure Machine Learning studióba. Feltételezi, hogy ismeri a Studio fogalmakat, mint a munkaterületek, a modulok, az adatkészletek, a kísérletek, *stb.* .
+Ez a cikk áttekintést nyújt arról, hogyan lehet a helyszíni SQL Server-információkat beáramlani a Azure Machine Learning Studio klasszikus verziójába. Feltételezi, hogy már ismeri a Studio-fogalmak klasszikus verzióját, például a munkaterületeket, modulokat, adatkészleteket, kísérleteket *stb*.
 
 > [!NOTE]
-> Ez a funkció nem érhető el a munkaterületek. További információ a Machine Learning díjszabás és szint: [Azure Machine Learning szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
+> Ez a funkció ingyenes munkaterületek esetén nem érhető el. További információ a Machine Learning díjszabásáról és szintjeiről: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
 >
 >
 
@@ -32,116 +32,116 @@ Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok Azure
 
 
 
-## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>A Data Factory saját üzemeltetésű integrációs modul telepítése
-Az Azure Machine Learning Studio egy helyszíni SQL Server-adatbázis eléréséhez szüksége töltse le és telepítse a Data Factory helyi Integration Runtime, korábbi nevén az adatkezelési átjárót. Amikor a kapcsolat a Machine Learning Studióban konfigurálja, lehetősége van, töltse le és telepítse az Integration Runtime (IR) használatával a **töltse le és register data gatewayt** párbeszédpanel az alábbiakban.
+## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>A Data Factory saját üzemeltetésű Integration Runtime telepítése
+Ha helyszíni SQL Server-adatbázist szeretne elérni a Azure Machine Learning Studio klasszikus verziójában, le kell töltenie és telepítenie kell a Data Factory saját üzemeltetésű Integration Runtime, korábbi nevén adatkezelés átjáróként. Ha a Machine Learning Studio (klasszikus) szolgáltatásban konfigurálja a kapcsolatot, lehetősége van a Integration Runtime (IR) letöltésére és telepítésére az alább ismertetett **letöltés és regisztrálás adatátjáró** használatával.
 
 
-Is telepítheti a kívánt időben integrációs modul letöltésével és futtatásával az MSI-telepítő csomag az a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Az MSI is használható egy már meglévő integrációs modul frissítése a legújabb verzióra, az összes beállítás megőrzi.
+Az IR-t az idő előtt is telepítheti, ha letölti és futtatja az MSI-telepítőcsomagot a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). Az MSI-t a meglévő IR legújabb verzióra történő frissítésére is használhatja, minden beállítás megőrzött.
 
-A Data Factory integrációs modulnak előfeltételei a következők:
+A Data Factory saját üzemeltetésű Integration Runtime a következő előfeltételekkel rendelkezik:
 
-* A Data Factory helyi integráció csak a .NET-keretrendszer 4.6.1-es verzióját vagy újabb 64 bites operációs rendszer.
-* A Windows operációs rendszerek támogatott verzióinak a Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 rendszer. 
-* Az ajánlott konfiguráció az integrációs modul gép legalább 2 GHz-es, 4 mag CPU, 8GB RAM-MAL és 80GB lemezterület.
-* Ha a gazdagép frissítéséből hibernálás az integrációs modul kérelmek nem fog válaszolni. Ezért egy megfelelő energiasémát beállítani a számítógépen bemutathatja telepítése előtt Ha a számítógép hibernált állapotba van konfigurálva, az integrációs modul telepítése üzenetet jelenít meg.
-* A másolási tevékenység egy adott gyakorisággal következik be, mert az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, csúcs-és üresjárati. Erőforrás-használat is nagyban függ az áthelyezett adatok mennyisége. Több másolási feladat van folyamatban, meg fogjuk megfigyelheti csúcsidőben feljebb görgetünk erőforrás-használat. Bár technikailag elegendő a fent felsorolt minimális konfiguráció, érdemes több erőforrást, mint a minimális konfigurációs függően az adatok áthelyezését a meghatározott típusú konfigurációt.
+* A Data Factory saját üzemeltetésű integrációja 64 bites operációs rendszert igényel a .NET-keretrendszer 4.6.1-es vagy újabb verziójának használatával.
+* A Windows operációs rendszer támogatott verziói a Windows 10, a Windows Server 2012, a Windows Server 2012 R2, a Windows Server 2016. 
+* Az IR-gép ajánlott konfigurációja legalább 2 GHz-es, 4 magos PROCESSZORral, 8 GB RAM-mal és 80 GB-os lemezzel rendelkezik.
+* Ha a gazdaszámítógép hibernált állapotba kerül, az IR nem válaszol az adatkérésekre. Ezért konfigurálja a megfelelő energiasémát a számítógépen az IR telepítése előtt. Ha a gép hibernált állapotra van állítva, az IR-telepítés üzenet jelenik meg.
+* Mivel a másolási tevékenység meghatározott gyakorisággal történik, az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, mint a csúcs és az üresjárati idő. Az erőforrás-használat az áthelyezett adatok mennyiségétől függ. Ha folyamatban van több másolási feladat, megfigyelheti az erőforrás-használatot csúcsidőben. Habár a fent felsorolt minimális konfiguráció technikailag elegendő, érdemes lehet olyan konfigurációt használni, amely több erőforrással rendelkezik, mint a minimális konfiguráció az adatáthelyezéshez megadott terheléstől függően.
 
-Vegye figyelembe a következőket, amikor beállításával és használatával a Data Factory helyi Integration Runtime:
+Data Factory saját üzemeltetésű Integration Runtime beállításakor és használatakor vegye figyelembe a következőket:
 
-* Integrációs modul csak egyetlen példányát telepítheti egyetlen számítógépre.
-* Több helyszíni adatforrás olyan egységes integrációs modul is használhat.
-* Több IRs más-más számítógépekre csatlakozhat a helyszíni ugyanazon az adatforráson.
-* Egyszerre csak egy munkaterülethez az IRs konfigurálja. Integrációs modulok jelenleg nem oszthatók meg munkaterületek között.
-* Egyetlen munkaterület több IRs konfigurálhatja. Például előfordulhat, hogy használni kívánt egy integrációs Modult, amely az adatforrásokhoz kapcsolódik, a teszt során fejlesztési és a egy éles integrációs modul Ha készen áll az üzembe helyezés.
-* Az integrációs modul nem kell ugyanarra a gépre, az adatforrással kell. De az adatforrás közelebb tartózkodó lerövidíti az átjáró csatlakozik az adatforráshoz. Azt javasoljuk, hogy az integrációs modul telepítését olyan számítógépen, amelyen eltér, amely üzemelteti a helyszíni adatforrás úgy, hogy az erőforrások az átjáró és az adatforrás nem vagyunk versenyképesek.
-* Ha már rendelkezik egy Power bi-ban vagy az Azure Data Factory forgatókönyvek szolgáló számítógépre telepített integrációs modul, telepítse külön IR az Azure Machine Learning Studio egy másik számítógépen.
+* Egyetlen számítógépre csak egyetlen IR-példányt telepíthet.
+* Több helyszíni adatforráshoz is használhat egyetlen IR-t.
+* A különböző számítógépeken több IRs is csatlakoztatható ugyanazon helyszíni adatforráshoz.
+* Egyszerre csak egy munkaterülethez konfigurálhat egy IRs-t. Jelenleg az IRs nem osztható meg a munkaterületek között.
+* Egyetlen munkaterülethez több IRs is konfigurálható. Előfordulhat például, hogy egy olyan IR-t szeretne használni, amely a tesztelési adatforrásokhoz van csatlakoztatva a fejlesztés során, valamint egy éles IR-t, amikor készen áll a működővé tenni.
+* Az IR-nek nem kell ugyanazon a gépen lennie, mint az adatforrásnak. Az adatforráshoz közelebb maradva azonban kevesebb időt biztosít az átjárónak az adatforráshoz való kapcsolódásra. Azt javasoljuk, hogy az IR-t olyan gépre telepítse, amely eltér a helyszíni adatforrást üzemeltető gépen, így az átjáró és az adatforrás nem versenyez az erőforrásokkal.
+* Ha a számítógépen már telepítve van egy Power BI vagy Azure Data Factory forgatókönyveket kiszolgáló IR, telepítsen egy különálló IR-t a Azure Machine Learning Studio klasszikus verziójára egy másik számítógépen.
 
   > [!NOTE]
-  > Data Factory helyi integrációs modul és a Power BI Gateway ugyanazon a számítógépen nem futtatható.
+  > Nem futtathat Data Factory saját üzemeltetésű Integration Runtime és Power BI Gateway ugyanazon a számítógépen.
   >
   >
-* Szeretné használni a Data Factory helyi integrációs modul az Azure Machine Learning Studio, még akkor is, ha az Azure ExpressRoute használ az egyéb adatokat. Kezelje az adatforrás egy helyszíni adatforráshoz (Ez egy tűzfal mögé), még akkor is az ExpressRoute használatakor. A Data Factory helyi integrációs modul használatával Machine Learning és az adatforrás közötti kapcsolatot.
+* A Azure Machine Learning Studio klasszikus verziójához a Data Factory saját üzemeltetésű Integration Runtimet kell használnia, még akkor is, ha az Azure ExpressRoute más adatmennyiséget használ. Az adatforrást helyszíni adatforrásként (tűzfal mögött) kell kezelnie, még akkor is, ha a ExpressRoute-t használja. A Machine Learning és az adatforrás közötti kapcsolat létesítéséhez használja a Data Factory saját üzemeltetésű Integration Runtime.
 
-A cikk részletes információkat a telepítési előfeltételek, telepítés lépéseit, hibaelhárítási tippekkel szolgál találhatja [a Data Factory saját üzemeltetésű integrációs](../../data-factory/concepts-integration-runtime.md).
+A telepítési előfeltételekről, a telepítési lépésekről és a hibaelhárítási tippekről a [Data Factory Integration Runtime](../../data-factory/concepts-integration-runtime.md)cikkben talál részletes információt.
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Bejövő adatok a helyszíni SQL Server-adatbázisát az Azure Machine Learningbe
-Ez az útmutató egy Azure Data Factory integrációs modul beállítása az Azure Machine Learning-munkaterület, konfigurálása, és ezután olvassa el az adatokat a helyszíni SQL Server-adatbázisból.
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>A helyszíni SQL Server-adatbázisból származó adatok beáramlása Azure Machine Learning
+Ebben az útmutatóban egy Azure Data Factory Integration Runtime kell beállítania egy Azure Machine Learning munkaterületen, konfigurálnia kell, majd el kell olvasnia egy helyszíni SQL Server-adatbázis adatait.
 
 > [!TIP]
-> A Kezdés előtt tiltsa le a böngésző előugróablak-blokkolóját a `studio.azureml.net`. Ha a Google Chrome böngészőt használ, töltse le és telepítsen több beépülő modulok érhető el a Google Chrome Webáruház [kattintson egyszer bővítmény](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
+> Mielőtt elkezdené, tiltsa le a böngésző előugró ablak-blokkoló `studio.azureml.net`ét. Ha a Google Chrome böngészőt használja, töltse le és telepítse a Google Chrome webáruházban elérhető több beépülő modul egyikét, [majd kattintson az alkalmazás kiterjesztésére](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
 >
 > [!NOTE]
-> Az Azure Data Factory integrációs modulnak volt nevén adatkezelési átjáró. A részletes oktatóanyag továbbra is átjáróként hivatkozik rá.  
+> Azure Data Factory saját üzemeltetésű Integration Runtime korábbi nevén adatkezelés átjáró. Az útmutató lépésről lépésre oktatóanyag továbbra is átjáróként hivatkozik rá.  
 
-### <a name="step-1-create-a-gateway"></a>1\. lépés: Átjáró létrehozása
-Az első lépéseként hozhat létre, és állítsa be az átjáró a helyszíni SQL-adatbázis eléréséhez.
+### <a name="step-1-create-a-gateway"></a>1\. lépés: átjáró létrehozása
+Első lépésként létre kell hoznia és be kell állítania az átjárót a helyszíni SQL-adatbázis eléréséhez.
 
-1. Jelentkezzen be [Azure Machine Learning Studio](https://studio.azureml.net/Home/) , és válassza ki használni kívánt munkaterületet.
-2. Kattintson a **beállítások** a bal oldali panelen, és kattintson a **DATA GATEWAYS** a felső fülön.
-3. Kattintson a **új DATA GATEWAYRE** a képernyő alján.
+1. Jelentkezzen be [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/Home/) webhelyre, és válassza ki azt a munkaterületet, amelyen dolgozni szeretne.
+2. Kattintson a bal oldali **Beállítások** panelre, majd kattintson a felül található **adatátjárók** fülre.
+3. Kattintson a képernyő alján található **új adatátjáró** elemre.
 
-    ![Új átjáró](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. Az a **új data gatewayre** párbeszédpanelen adja meg a **átjárónév** , és ha szükséges, hozzáadhat egy **leírás**. Kattintson a konfiguráció a következő lépéssel, jobb alsó sarokban lévő nyílra.
+    ![Új adatátjáró](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
+4. Az **új adatátjáró** párbeszédpanelen adja meg az **átjáró nevét** , és szükség esetén adjon meg egy **leírást**. Kattintson a jobb alsó sarokban található nyílra a konfiguráció következő lépéseként.
 
     ![Adja meg az átjáró nevét és leírását](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
-5. Töltse le és register data átjáró párbeszédpanelen az ÁTJÁRÓ SZOLGÁLTATÁSREGISZTRÁCIÓS kulcs másolása a vágólapra.
+5. Az adatátjáró letöltése és regisztrálása párbeszédpanelen másolja az ÁTJÁRÓ regisztrációs KULCSát a vágólapra.
 
-    ![Töltse le és regisztrálása az adatátjáróval](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>Ha még nincs letöltötte és telepítette a Microsoft adatkezelési átjáró, majd kattintson **letöltési adatkezelési átjáró**. Ekkor megjelenik a Microsoft Download Centert, amelyen van szüksége, töltse le az átjáró-verziónak a kiválasztása, és telepítse azt. Annak részletes információt a telepítési előfeltételek, telepítés lépéseit, hibaelhárítási tippekkel szolgál az a cikk elején szakaszok [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md) .
-7. Az átjáró telepítése után a Data Management Gateway Configuration Manager megnyílik, és a **Register átjáró** párbeszédpanel jelenik meg. Illessze be a **átjáró Szolgáltatásregisztrációs kulcs** , hogy másolja a vágólapra, majd kattintson a **regisztrálása**.
-8. Ha már rendelkezik egy átjáró telepített, futtassa a Data Management Gateway Configuration Manager. Kattintson a **módosítókulcs**, illessze be a **átjáró Szolgáltatásregisztrációs kulcs** , az előző lépésben a vágólapra, majd kattintson az **OK**.
-9. Ha a telepítés befejeződött, a **Register átjáró** for Microsoft Data Management Gateway Configuration Manager párbeszédpanel jelenik meg. Illessze be az előző lépésben a vágólapra kimásolt ÁTJÁRÓ regisztrációs kulcsot, és kattintson a **regisztrálása**.
+    ![Az adatátjáró letöltése és regisztrálása](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
+6. <span id="note-1" class="anchor"></span>Ha még nem töltötte le és nem telepítette a Microsoft adatkezelés-átjárót, kattintson az **adatkezelési átjáró letöltése**elemre. Ezzel elvégezheti a Microsoft letöltőközpontból, ahol kiválaszthatja a szükséges átjáró verzióját, letöltheti és telepítheti. A telepítési előfeltételekről, a telepítési lépésekről és a hibaelhárítási tippekről részletes információkat talál az [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md)című cikkben.
+7. Az átjáró telepítése után a adatkezelés átjáró Configuration Manager megnyílik, és megjelenik az **átjáró regisztrálása** párbeszédpanel. Illessze be a vágólapra másolt **átjáró-regisztrációs kulcsot** , majd kattintson a **regisztráció**elemre.
+8. Ha már telepített egy átjárót, futtassa a adatkezelés átjáró Configuration Manager. Kattintson a **kulcs módosítása**gombra, illessze be az előző lépésben vágólapra másolt **átjáró regisztrációs kulcsot** , majd kattintson **az OK**gombra.
+9. Ha a telepítés befejeződött, megjelenik a Microsoft adatkezelés Gateway-Configuration Manager-átjárójának **regisztrálása** párbeszédpanel. Illessze be az ÁTJÁRÓ regisztrációs KULCSát, amelyet az előző lépésben a vágólapra másolt, majd kattintson a **regisztráció**elemre.
 
     ![Átjáró regisztrálása](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
-10. Az átjáró konfigurációja befejeződött, a következő értékeket a beállításakor a **kezdőlap** lapon a Microsoft Data Management Gateway Configuration Managerben:
+10. Az átjáró konfigurációja akkor fejeződik be, ha a Microsoft adatkezelés Gateway Configuration Manager **Kezdőlap** lapján a következő értékek vannak beállítva:
 
-    * **Átjáró neve** és **példánynév** vannak beállítva az átjárója nevére.
-    * **Regisztrációs** értékre van állítva **regisztrált**.
-    * **Állapot** értékre van állítva **elindítva**.
-    * A lent láthatók az állapotsorban **Data Management Gateway Felhőszolgáltatás csatlakoztatott** mellett egy zöld pipa.
+    * Az **átjáró** neve és a **példány neve** az átjáró nevére van beállítva.
+    * A **regisztráció** a **regisztrált**értékre van állítva.
+    * Az **állapot** az **elindítva**értékre van állítva.
+    * A Lenti állapotsor megjeleníti a **adatkezelés Gateway Cloud Service-hez csatlakoztatott átjárót** , zöld pipa mellett.
 
-      ![Data Management Gateway Manager](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
+      ![adatkezelés Gateway Manager](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-      Az Azure Machine Learning Studio is frissül a Ha a regisztráció sikeres volt.
+      Ha a regisztráció sikeres, a Azure Machine Learning Studio klasszikus verziója is frissül.
 
-    ![Átjáró regisztrálása sikeres](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
-11. Az a **töltse le és regisztrálása az adatátjáróval** párbeszédpanelen kattintson a pipa jelre a telepítés befejezéséhez. A **beállítások** lapon megjelenik az "Elérhető" az átjáró állapotának ellenőrzéséhez. A jobb oldali ablaktáblán állapota és egyéb hasznos információkat találhat.
+    ![Az átjáró regisztrálása sikerült](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
+11. Az **adatátjáró letöltése és regisztrálása** párbeszédpanelen kattintson a pipa jelre a beállítás befejezéséhez. A **Beállítások** lap az átjáró állapotát "online" állapotként jeleníti meg. A jobb oldali ablaktáblában megtalálhatja az állapotot és egyéb hasznos információkat.
 
     ![Átjáró beállításai](./media/use-data-from-an-on-premises-sql-server/gateway-status.png)
-12. Váltás a Microsoft Data Management Gateway Configuration Manager a **tanúsítvány** fülre. Ezen a lapon megadott tanúsítvány segítségével a helyszíni adattár, amely a portálon megadott hitelesítő adatok titkosítása/visszafejtése. Ez a tanúsítvány az alapértelmezett tanúsítvány. A Microsoft javasolja, hogy ez a tanúsítvány felügyeleti rendszer biztonsági mentése a saját tanúsítványban módosításával. Kattintson a **módosítása** inkább saját tanúsítvány használata.
+12. A Microsoft adatkezelés átjáró Configuration Manager váltson a **tanúsítvány** lapra. Az ezen a lapon megadott tanúsítvány a portálon megadott helyszíni adattároló hitelesítő adatainak titkosítására és visszafejtésére szolgál. Ez a tanúsítvány az alapértelmezett tanúsítvány. A Microsoft azt javasolja, hogy változtassa meg a saját tanúsítványát, amelyről biztonsági másolatot készít a Tanúsítványkezelő rendszerében. Kattintson a **módosítás** gombra a saját tanúsítványának használatához.
 
-    ![Átjáró-tanúsítvány módosítása](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (nem kötelező) Ha azt szeretné, hogy hibaelhárítási részletes naplózás engedélyezése az átjáró, a Microsoft Data Management Gateway Configuration Manager problémái váltson a **diagnosztikai** fülre és ellenőrizze a **részletes engedélyezése hibaelhárítás céljából naplózás** lehetőséget. A naplózási információk mellett a Windows eseménynaplójában található a **alkalmazások és szolgáltatásnaplók**  - &gt; **adatkezelési átjáró** csomópont. Is használhatja a **diagnosztikai** fülre, és tesztelje a kapcsolatot egy helyszíni adatforráshoz az átjárót.
+    ![Átjáró tanúsítványának módosítása](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
+13. választható Ha engedélyezni szeretné a részletes naplózást az átjáróval kapcsolatos problémák elhárítása érdekében, a Microsoft adatkezelés átjáró Configuration Manager váltson a **diagnosztika** lapra, és ellenőrizze a **részletes naplózás engedélyezése hibaelhárítási célokra lehetőséget.** lehetőség. A naplózási információk a Windows Eseménynapló -&gt; **adatkezelés átjáró** csomópontjának **alkalmazások és szolgáltatások naplói** alatt találhatók. A **diagnosztika** lapon is tesztelheti a helyszíni adatforrással létesített kapcsolatokat az átjáró használatával.
 
     ![Részletes naplózás engedélyezése](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-Ezzel befejezte az átjáró telepítési folyamat az Azure Machine Learning Studióban.
-Most már készen áll a helyszíni adatok használatát.
+Ezzel befejezte az átjáró telepítési folyamatát a Azure Machine Learning Studio klasszikus verziójában.
+Most már készen áll a helyszíni adatai használatára.
 
-Hozzon létre, és állítsa be a Studióban minden munkaterülethez több átjárót. Például előfordulhat, hogy szeretne csatlakozni a fejlesztés során, a teszt adatforrások átjáró és a egy másik átjáró a termelési adatforrások. Az Azure Machine Learning Studio rugalmasságot biztosít, attól függően, hogy a vállalati környezethez több átjáró beállításához. Jelenleg nem oszthat meg egy átjárót a munkaterületek között, és csak egy átjáró telepíthető ugyanazon a számítógépen. További információkért lásd: [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md).
+Mindegyik munkaterülethez létrehozhat és beállíthat több átjárót a Studio (klasszikus) használatával. Előfordulhat például, hogy egy átjáróval szeretne csatlakozni a tesztelési adatforrásokhoz a fejlesztés során, valamint egy másik átjárót az éles adatforrásokhoz. A Azure Machine Learning Studio klasszikus verziója rugalmasságot biztosít a vállalati környezettől függően több átjáró beállításához. Jelenleg nem oszthat meg átjárókat a munkaterületek között, és csak egy átjárót telepíthet egyetlen számítógépre. További információkért lásd: [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md).
 
-### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2\. lépés: Az átjáró használatára egy helyszíni adatforrásból származó adatokat olvasni.
-Az átjáró beállítása után hozzáadhat egy **adatok importálása** modult egy, amely bemenetként az adatokat a helyszíni SQL Server-adatbázisból.
+### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2\. lépés: a helyszíni adatforrásból származó adatok beolvasása az átjáró használatával
+Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult egy olyan kísérlethez, amely beírja az adatokat a helyszíni SQL Server adatbázisból.
 
-1. A Machine Learning Studióban, válassza ki a **kísérletek** lapra, majd **+ új** a bal alsó sarokban, és válassza a **üres kísérlet** (vagy válassza ki az egyik több minta kísérletek érhető el).
-2. Keresse meg és húzza a **adatok importálása** modult a kísérletvászonra.
-3. Kattintson a **Mentés másként** a vászon alatti. Adja meg az "Azure Machine Learning Studio a helyszíni SQL Server-oktatóanyag" kísérlet nevét, válassza ki a munkaterületet, majd kattintson a **OK** pipa jelre.
+1. A Machine Learning Studio (klasszikus) területen válassza a **kísérletek** fület, kattintson a bal alsó sarokban található **+ új** elemre, majd válassza az **üres kísérlet** lehetőséget (vagy válassza ki az elérhető több minta kísérlet egyikét).
+2. Keresse meg és húzza az **adatimportálási** modult a kísérleti vászonra.
+3. Kattintson a **Save (Mentés** ) gombra a vászon alatt. Írja be a "Azure Machine Learning Studio (klasszikus) helyszíni SQL Server oktatóanyag" kifejezést a kísérlet neveként, válassza ki a munkaterületet, majd kattintson az **OK** pipa jelre.
 
-   ![Kísérlet mentése új néven](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
-4. Kattintson a **adatok importálása** modult, válassza ki, majd a **tulajdonságok** panelen a vászontól jobbra a "Helyi SQL Database" Válassza ki a **adatforrás** legördülő listában.
-5. Válassza ki a **adatátjáró** telepítve, és regisztrálva. Válassza a "(új Data átjáró hozzáadása...)" állíthat be egy másik átjárót.
+   ![Kísérlet mentése új névvel](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
+4. Kattintson az **adatimportálási** modulra a kiválasztásához, majd a vászon jobb oldalán található **Tulajdonságok** ablaktáblán válassza a "helyszíni SQL Database" lehetőséget az **adatforrás** legördülő listájában.
+5. Válassza ki a telepített és regisztrált **adatátjárót** . Beállíthat egy másik átjárót az "(új adatátjáró hozzáadása...)" lehetőség kiválasztásával.
 
-   ![Adatok importálása modullal data gateway kiválasztása](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Adja meg az SQL **adatbázis-kiszolgáló neve** és **adatbázisnév**, és az SQL **adatbázis-lekérdezés** kíván végrehajtatni.
-7. Kattintson a **adja meg az értékeket** alatt **felhasználónevet és jelszót** adja meg az adatbázis hitelesítő adatait. Használhatja az integrált Windows-hitelesítést vagy SQL Server-hitelesítéssel attól függően, hogy hogyan a helyszíni SQL Server konfigurálva van-e.
+   ![Adatátjáró kiválasztása adatmodul importálásához](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
+6. Adja meg az SQL **Database-kiszolgáló nevét** és az **adatbázis nevét**, valamint azt az SQL **Database-lekérdezést** , amelyet végre szeretne hajtani.
+7. Kattintson az **értékek megadása** a **Felhasználónév és a jelszó** területen, majd adja meg az adatbázis hitelesítő adatait. A helyszíni SQL Server konfigurálásának módjától függően integrált Windows-hitelesítést vagy SQL Server hitelesítést használhat.
 
-   ![Adja meg az adatbázis-hitelesítő adatok](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
+   ![Adja meg az adatbázis hitelesítő adatait](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   A "értékek set", egy zöld pipának üzenet "értékeket a kötelező" megváltozik. Csak meg kell a hitelesítő adatok egyszer, kivéve, ha az adatbázis-információ vagy jelszavának megváltozása után. Az Azure Machine Learning Studio a felhőben a hitelesítő adatok titkosításához az átjáró telepítésekor megadott tanúsítványt használja. Az Azure soha nem tárolja a helyszíni hitelesítő adatok titkosítás nélkül.
+   Az "értékek szükségesek" érték a "Values set" változót zöld pipa jelöli. Csak egyszer kell megadnia a hitelesítő adatokat, hacsak nem változik az adatbázis adatai vagy jelszava. A Azure Machine Learning Studio klasszikus verziója az átjáró telepítésekor megadott tanúsítványt használja a Felhőbeli hitelesítő adatok titkosításához. Az Azure nem tárolja titkosítás nélkül a helyszíni hitelesítő adatokat.
 
-   ![Adattulajdonságok modul importálása](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
-8. Kattintson a **futtatása** a kísérlet futtatásához.
+   ![Adatmodul tulajdonságainak importálása](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
+8. A kísérlet futtatásához kattintson a **Futtatás** gombra.
 
-A kísérlet a lejáratot követően újrainduljon, ha a kimeneti portjára, kattintson az adatbázisból importált adatokat jelenítheti meg a **adatok importálása** modul és kiválasztásával **Visualize**.
+Miután a kísérlet futása befejeződött, az **adatok importálása** modul kimeneti portjára kattintva megjelenítheti az adatbázisból importált adatokat, és kiválaszthatja a **Megjelenítés**elemet.
 
-Ha befejezte a kísérletét fejlesztése, üzembe helyezése, és a modell üzembe helyezése. A kötegelt végrehajtási szolgáltatás, a helyszíni SQL Server adatainak használatával adatbázis konfigurált a **adatok importálása** modul lesznek olvashatók és pontozás használt. Használhatja a kérés-válasz szolgáltatás pontozási a helyszíni adatokat, amíg a Microsoft használatát javasolja a [Excel-bővítményben](excel-add-in-for-web-services.md) helyette. Jelenleg egy helyszíni SQL Server-adatbázis – írás **adatok exportálása** nem támogatott, vagy a kísérleti vagy közzétett webszolgáltatásokat.
+Miután befejezte a kísérletet, üzembe helyezheti és működővé tenni a modellt. A Batch végrehajtási szolgáltatás használatával az adatok **importálása** modulban konfigurált helyszíni SQL Server adatbázisból származó adatok beolvasása és pontozása történik. Habár a kérés-válasz szolgáltatást használhatja a helyszíni adatkereséshez, a Microsoft az [Excel-bővítmény](excel-add-in-for-web-services.md) használatát javasolja helyette. A helyszíni SQL Server adatbázisra való írás jelenleg nem támogatott a kísérletekben vagy a közzétett webszolgáltatásokban.

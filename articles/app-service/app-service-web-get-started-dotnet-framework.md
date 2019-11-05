@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 258e547c58016cb449c74b058d02f2a2e4d7d683
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04dd7cb55f9a6d4ceb722606f0eb90792413e414
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471752"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
@@ -131,9 +131,11 @@ Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmaz�
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-1. Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és felügyelje a létrehozott webalkalmazást.
+1. A webalkalmazás kezeléséhez lépjen a [Azure Portalra](https://portal.azure.com), és keresse meg, majd válassza a **app Services**lehetőséget.
 
-2. A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
+   ![App Services kiválasztása](./media/app-service-web-get-started-dotnet-framework/app-services.png)
+
+2. A **app Services** lapon válassza ki a webalkalmazás nevét.
 
    ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 
@@ -143,7 +145,7 @@ Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmaz�
 
    A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [ASP.NET-alkalmazás és SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)

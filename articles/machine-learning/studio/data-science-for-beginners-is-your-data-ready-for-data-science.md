@@ -1,7 +1,7 @@
 ---
-title: Az adatok kiértékelése
-titleSuffix: Azure Machine Learning Studio
-description: Négy feltétel az adatokat meg kell felelnie ahhoz, hogy készen áll az adatelemzéshez. Ez a videó rendelkezik konkrét példák nyújtanak segítséget az alapszintű adatok kiértékelése.
+title: Az adatértékelés
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Négy feltételnek kell megfelelnie az adatelemzési igényeknek. Ez a videó olyan konkrét példákat tartalmaz, amelyek segítséget nyújtanak az alapszintű adatok kiértékeléséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,98 +10,98 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0903bbd5e0000e26472660271bd2fc8970279061
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493137"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
-## <a name="video-2-data-science-for-beginners-series"></a>2\. videó: Adatelemzés kezdőknek sorozat
-Útmutató: az adatok, hogy megfelel-e, készen áll az adatelemzés alapvető feltételek.
+## <a name="video-2-data-science-for-beginners-series"></a>2\. videó: adatelemzés kezdőknek sorozat
+Ismerje meg, hogyan értékelheti ki az adatait, és győződjön meg arról, hogy megfelel az alapvető feltételeknek, hogy készen álljon az adatelemzésre.
 
-A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
+Ha ki szeretné próbálni a sorozatot, tekintse meg őket. [Ugrás a videók listájára](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
-*Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
+## <a name="other-videos-in-this-series"></a>További videók ebben a sorozatban
+Az *adatelemzés kezdőknek* az adatelemzés öt rövid videóban való bevezetésének első lépései.
 
-* 1\. videó: [Az 5 kérdés adatelemzési válasz](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2\. videó: Készen állnak adatai az elemzésre?
-* 3\. videó: [Kérdés feltevése az adatkezeléssel kapcsolatban](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 mp)*
+* 1\. videó: [az 5 kérdés adatelemzési válasz](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2\. videó: készen áll az adatelemzésre?
+* 3\. videó: [Kérdezzen rá az adatválaszra](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 mp)*
 * 4\. videó: [Válasz Megjósolása egy egyszerű modellel](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 mp)*
-* 5\. videó: [Más személyek munkájának másolása az](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) adatelemzéshez *(3 perc 18 mp)*
+* 5\. videó: [a többi személy munkájának másolása az adatelemzéshez](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 mp)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Átirat Készen állnak adatai az elemzésre?
-Üdvözli az "Az adatok készen áll a data science?" az a sorozat második videó *adatelemzés kezdőknek*.  
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Átirat: készen áll az adatelemzésre?
+Üdvözli a "készen áll az adatelemzésre?" az adatsorozat-adatelemzés második videója *kezdőknek*.  
 
-Előtt adatelemzési adhat meg a kívánt válaszokat, akkor adjon meg néhány kiváló minőségű nyersanyagok dolgozhat. Csakúgy, mint egy kétpizzás, annál jobbak az összetevők, először a, annál jobb végtermékben elvégzése. 
+Ahhoz, hogy az adatelemzés meg tudja adni a kívánt válaszokat, meg kell adnia néhány kiváló minőségű nyersanyagot a használatához. Ugyanúgy, mint egy pizzát, annál jobbnak kell lennie a kezdő összetevőknek, annál jobb a végtermék. 
 
-## <a name="criteria-for-data"></a>Adatok feltételeit
-Az adatelemzés vannak bizonyos összetevők, például együtt kell lekérni:
+## <a name="criteria-for-data"></a>Az adatértékek feltételei
+Az adatelemzésben vannak olyan összetevők, amelyeket össze kell húzni, beleértve a következőket:
 
-* Megfelelő
+* Vonatkozó
 * Csatlakozva
 * Pontos
-* Elegendő használata
+* Ahhoz, hogy működjön a
 
-## <a name="is-your-data-relevant"></a>Fontos az adatok?
-Ezért az első összetevő - kell nyújtaniuk, amely az adatokat.
+## <a name="is-your-data-relevant"></a>Relevánsak az adatai?
+Az első összetevő tehát a megfelelő adatokat kell használnia.
 
-![A vonatkozó adatokat, és irreleváns adatok - adatok kiértékelése](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
+![Releváns adatokat és irreleváns adatokat – kiértékelési adatokat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
-A bal oldalon a tábla egy Boston sáv, az utolsó játék Red Sox batting átlagos és az ár a legközelebbi kényelmi tárolójában tej kívül tesztelt hét személyek vér alkohol szintjét mutatja be.
+A bal oldalon a táblázat a bostoni sávon kívül tesztelt hét személy, az utolsó játék Red Sox szemrebbenés átlagát, a legközelebbi kényelmi tárolóban pedig a tej árát mutatja be.
 
-Ez az összes tökéletesen jogos adatokat. Ez azt csak tartalék, hogy nem megfelelő. Ezek a számok között sem nyilvánvaló kapcsolat áll fenn. Ha valaki kaptunk tej és a piros Sox batting átlagos aktuális ára, nincs sikerült kitalálni a vér alkohol tartalmak lehetőség.
+Ez minden teljesen megbízható. Csak az a hiba, hogy nem releváns. A számok között nincs egyértelmű kapcsolat. Ha valaki a tej aktuális árát és a Red Sox szemrebbenés átlagát adta meg, akkor nem lehet kitalálni a véralkohol tartalmát.
 
-Most nézzük meg a tábla a jobb oldalon. Mindenki, aki a szervezet ezúttal háttértár és ital már volt száma mérték.  Az egyes sorokban szereplő számok most kapcsolódnak egymáshoz. Ha e kaptunk saját szervezet háttértár és a már korábban Margaritas számát, sikerült választja ki a saját vér cikkekből alkohol tartalom.
+Most tekintse meg a jobb oldalon található táblázatot. Ezúttal az egyes személyek testtömegének mérését, valamint az azokhoz tartozó italok számát kell megmérni.  Az egyes sorokban szereplő számok mostantól egymásra is érvényesek. Ha adtam a testem tömegét, és megadta a Margaritas számát, kitalálhatja a véralkoholom tartalmát.
 
-## <a name="do-you-have-connected-data"></a>Tegye csatlakoztatta adatokat?
-A következő összetevője csatlakoztatott adatok.
+## <a name="do-you-have-connected-data"></a>Van csatlakoztatva az adatkapcsolat?
+A következő összetevő a csatlakoztatott adatkapcsolattal rendelkezik.
 
-![Csatlakoztatott vagy leválasztott adat - adatok feltételeinek, készen áll az adatok](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
+![Csatlakoztatott adatkapcsolatok és leválasztott adatkapcsolatok – adatfeltételek, kész adatfeldolgozás](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
-Íme néhány fontos adatokat hamburgers minőségét: rács hőmérséklet patty súly és a helyi élelmiszer újság minősítése. Azonban megfigyelheti a bal oldalon található a táblázatban a hiányosságok pótlásában.
+Itt láthatók a hamburgerek minőségével kapcsolatos fontos adatokat: a grill hőmérséklete, a Patty Weight és a minősítés a helyi élelmiszer-magazinban. De figyelje meg a bal oldali táblázatban lévő hézagokat.
 
-A legtöbb adatkészletek néhány érték hiányzik. Gyakori, hogy ehhez hasonló lyuk, és többféleképpen őket. De ha túl sok hiányzik, az adatok a következő módon Svájc sajtok iránti szenvedélyének kezdődik.
+Az adatkészletek többsége hiányzik néhány értékből. Gyakori, hogy a lyukak hasonlóak, és többféleképpen is megkerülheti őket. Ha azonban túl sok hiányzik, az adatai megkezdik a svájci sajtok megjelenését.
 
-A tábla a bal oldali tekinti meg, ha nincs, hogy mennyi a hiányzó adatokat, legyen nehezen rács hőmérséklet és patty súly között kapja meg bármilyen típusú kapcsolat. Ez a példa bemutatja a leválasztott adatokat.
+Ha a bal oldalon megtekinti a táblázatot, elég sok a hiányzó adatmennyiség, mert a grill hőmérséklete és a Patty súlyozása között bármilyen kapcsolat áll fenn. Ez a példa leválasztott adatkapcsolatot mutat be.
 
-A jobb oldali tábla, megtelt, és kész - csatlakoztatott adatok egy példát.
+A jobb oldali tábla azonban teljes és teljes – példa a csatlakoztatott adatra.
 
-## <a name="is-your-data-accurate"></a>Az adatok pontos van?
-A következő összetevője pontosságát. Íme négy célok érni.
+## <a name="is-your-data-accurate"></a>Pontosak az adatai?
+A következő összetevő pontossággal rendelkezik. Íme négy cél a találatok között.
 
-![Hibás adatokat – adatok feltételek és pontos adatok](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
+![Pontos adatelemzési és pontatlan adatértékek](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
-Tekintse meg a cél a jobb felső sarokban. Nincs megfelelő bikák szem köré szoros csoportosítása. Természetesen ez pontos. Furcsa viselkedése a nyelvet, az adatelemzés, az alatta a cél jobb teljesítményt is figyelembe veszi pontos.
+A jobb felső sarokban tekintse meg a célt. A bikák szeme szoros csoportosításban van. Ez természetesen pontos. Az adatelemzési nyelvben a cél közvetlenül az adattudományi nyelven is pontosnak számít.
 
-Ha Ön hozzá van rendelve, ezek a nyilak közepén, jelennének meg, hogy nagyon közelében van bikák szemmel. A nyilak helyezkednek el minden körül a cél, így azokat a rendszer nem pontos, de azok még eltérése a bikák szem, így azokat a rendszer pontos.
+Ha leképezte a nyilak középpontját, láthatja, hogy nagyon közel van a bikák szeméhez. A nyilak a cél körül oszlanak el, így pontatlannak számítanak, de a Bulls szem körül vannak, így pontosnak számítanak.
 
-Most nézzük meg a bal felső cél. Itt a nyilak találati nagyon egymáshoz, szoros csoportosítást. Pontos zajlik, de pontatlan, mert a center módja a bikák szem ki. A nyilak a bal alsó célzott pontos és nem pontos is. Ez archer további eljárás kell.
+Most tekintse meg a bal felső célt. Itt a nyilak nagyon közel vannak egymáshoz, és egy szoros csoportosítás. Pontosak, de pontatlanok, mert a központ a bikák szemének kifelé mutat. A bal alsó cél nyilai pontatlanok és nem pontosak. Ennek az íjásznak további gyakorlatra van szüksége.
 
-## <a name="do-you-have-enough-data-to-work-with"></a>Elég adatokra van?
-Végül összetevő #4 elegendő adat áll rendelkezésre.
+## <a name="do-you-have-enough-data-to-work-with"></a>Elegendő adattal rendelkezik a működéséhez?
+Végül az összetevők #4 elegendő mennyiségű adattal rendelkeznek.
 
-![Elég adat elemzéshez van? Az adatok kiértékelése](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
+![Van elegendő adatai az elemzéshez? Az adatértékelés](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
-Úgy gondolja, hogy az egyes adatpontok, hogy az egy festmény egy ecsetvonás a táblában. Ha csak néhány őket, lehet, hogy a rajzolást intelligens – nehéz mondja el, Mi ez.
+Úgy gondolja, hogy a tábla minden adatpontja ecseti ecsetvonásként szerepel a festészetben. Ha csak néhány közülük van, a festés zavaros lehet – nehéz megállapítani, hogy mi ez.
 
-Néhány további ecset körvonalak ad hozzá, ha a rajzolást elindít egy kicsit élesebb beolvasásához.
+Ha több ecsetvonást ad hozzá, akkor a festés egy kicsit élesebben fog megjelenni.
 
-Ha Jéghegy elegendő körvonalak, csak láthatja elegendő az egyes átfogó döntéseket hozhat. Ennyi az egész valahol szeretném előfordulhat, hogy látogassa meg? Világos úgy tűnik, tűnik tiszta víz – Igen, hol fogom szabadságon is.
+Ha alig elég ecsetvonása van, csak annyit kell látnia, hogy elvégezze a szélesebb körű döntéseket. Valahol érdemes meglátogatni? Úgy néz ki, mint a tiszta víz – igen, ez az a hely, ahol nyaralni fogok.
 
-További adatok hozzáadása a kép világosabb lesz, és döntéseket hozhat részletesebb. Most, tekintse meg a bal oldali Bank három hotels. Egy, az előtérben architekturális jellemzője is láthatja. Választhatja azt is, miatt a nézet a harmadik emelet maradjon.
+További információk hozzáadásakor a kép világosabb lesz, és részletesebb döntéseket hozhat. Most megtekintheti a három hotelt a bal oldali banknál. Láthatja az előtérben található egyik építészeti funkcióját. Dönthet úgy is, hogy a nézet miatt a harmadik emeleten marad.
 
-A megfelelő, a csatlakoztatott, a pontos adatokat, és ahhoz, hogy rendelkezik minden összetevője szükséges néhány kiváló minőségű adatelemzés.
+A releváns, a csatlakoztatott, a pontos és a megfelelő adatokat tartalmazó összetevők mindegyike rendelkezik a kiváló minőségű adatelemzéshez szükséges összes összetevővel.
 
-Tekintse meg a további négy videót az adatelemzésben a Microsoft Azure Machine Learning Studio *kezdőknek* .
+Tekintse meg a további négy videót az *adatelemzésben* a Microsoft Azure Machine learning Studio (klasszikus) kezdőknek.
 
 ## <a name="next-steps"></a>További lépések
-* [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)
-* [Bevezetés a gépi tanulás a Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
+* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
